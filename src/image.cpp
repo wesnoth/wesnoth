@@ -212,32 +212,44 @@ locator::value::value(const locator::value& a) :
 }
 
 locator::value::value() :
-	type_(NONE)
+	type_(NONE), filename_(), loc_(), modifications_(),
+  center_x_(0), center_y_(0)
+
 {}
 
 locator::value::value(const char *filename) :
-  type_(FILE), filename_(filename)
+  type_(FILE), filename_(filename), loc_(), modifications_(),
+  center_x_(0), center_y_(0)
+
 {
 }
 
 
 locator::value::value(const char *filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), modifications_(modifications)
+  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications), 
+  center_x_(0), center_y_(0)
+
 {
 }
 
 locator::value::value(const std::string& filename) :
-  type_(FILE), filename_(filename)
+  type_(FILE), filename_(filename),  loc_(), modifications_(),
+  center_x_(0), center_y_(0)
+
 {
 }
 
 locator::value::value(const std::string& filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), modifications_(modifications)
+  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications), 
+  center_x_(0), center_y_(0)
+
 {
 }
 
 locator::value::value(const std::string& filename, const gamemap::location& loc, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications)
+  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), 
+  center_x_(0), center_y_(0)
+
 {
 }
 

@@ -2521,7 +2521,7 @@ static int play_game(int argc, char** argv)
 
 	loadscreen::global_loadscreen->set_progress(100, _("Loading title screen."));
 	delete loadscreen::global_loadscreen;
-	loadscreen::global_loadscreen = NULL;
+	loadscreen::global_loadscreen = 0;
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 

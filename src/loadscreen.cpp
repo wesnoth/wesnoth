@@ -23,16 +23,20 @@
 #include "filesystem.hpp"
 
 #include <iostream>
+#include <cassert>
 
 #include <SDL_image.h>
 
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
 
+loadscreen::global_loadscreen_manager* loadscreen::global_loadscreen_manager::manager = 0;
+
 loadscreen::global_loadscreen_manager::global_loadscreen_manager(CVideo& screen)
-  : owns(global_loadscreen == NULL)
+  : owns(global_loadscreen == 0)
 {
 	if(owns) {
+		manager = this;
 		global_loadscreen = new loadscreen(screen);
 		global_loadscreen->clear_screen();
 	}
@@ -40,10 +44,18 @@ loadscreen::global_loadscreen_manager::global_loadscreen_manager(CVideo& screen)
 
 loadscreen::global_loadscreen_manager::~global_loadscreen_manager()
 {
-	if(owns && global_loadscreen) {
+	reset();
+}
+
+void loadscreen::global_loadscreen_manager::reset()
+{
+	if(owns) {
+		owns = false;
+		manager = 0;
+		assert(global_loadscreen);
 		global_loadscreen->clear_screen();
 		delete global_loadscreen;
-		global_loadscreen = NULL;
+		global_loadscreen = 0;
 	}
 }
 

@@ -27,6 +27,7 @@
 
 #include <iostream>
 #include <string>
+#include <cassert>
 
 class loadscreen {
 	public:
@@ -66,7 +67,11 @@ class loadscreen {
 		struct global_loadscreen_manager {
 			explicit global_loadscreen_manager(CVideo& screen);
 			~global_loadscreen_manager();
-
+			static global_loadscreen_manager& get()
+			{ assert(manager); return *manager; }
+			void reset();
+private:
+			static global_loadscreen_manager* manager;
 			bool owns;
 		};
 	private:

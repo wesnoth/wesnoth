@@ -68,7 +68,7 @@ play_controller::~play_controller(){
 }
 
 void play_controller::init(CVideo& video, bool is_replay){
-	loadscreen::global_loadscreen_manager loadscreen_manager(video);
+	loadscreen::global_loadscreen_manager& loadscreen_manager = loadscreen::global_loadscreen_manager::get();
 
 	// If the recorder has no event, adds an "game start" event
 	// to the recorder, whose only goal is to initialize the RNG
@@ -145,7 +145,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 
 	init_managers();
 	loadscreen::global_loadscreen->set_progress(100, _("Starting game"));
-	loadscreen::global_loadscreen = NULL;
+	loadscreen_manager.reset();
 }
 
 void play_controller::init_managers(){
