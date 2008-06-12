@@ -856,6 +856,46 @@ twidget* tbuilder_listbox::build() const
 	list_area->set_definition("default");
 	list_area->set_id("_list");
 
+	if(header || footer) {
+
+		// Create a grid to hold header (if needed), list and footer (if needed).
+		tgrid* grid = new tgrid();
+		grid->set_rows_cols(header && footer ? 3 : 2, 1);
+
+		// Create and add the header.
+		if(header) {
+			twidget* widget = header->build();
+			assert(widget);
+
+			/**
+			 * @todo
+			 *
+			 * We need sort indicators, which are tristat_buttons;
+			 * none, acending, decending. Once we have them we can write them in.
+			 */
+			grid->add_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+		}
+
+		// Create and add the footer.
+		if(footer) {
+			twidget* widget = footer->build();
+			assert(widget);
+
+			grid->add_child(widget, header && footer ? 2 : 1, 0, 
+				tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+		}
+
+		// Add the list itself.
+		grid->add_child(list_area, header ? 1 : 0, 0, 
+			tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
+			| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+			, 0);
+
+		// Now make the list_area the grid so the code with and without a header
+		// or footer is the same.
+		list_area = grid;
+	}
+
 	listbox->grid().set_rows_cols(1, 2);
 	listbox->grid().add_child(list_area, 0, 0, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
