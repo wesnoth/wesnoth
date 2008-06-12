@@ -211,7 +211,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
 
 		if(description != NULL) {
-			desc << (increase_accuracy[0] == '-' ? "" : "+") << increase_accuracy << " " << _n("accuracy","accuracy",lexical_cast<int>(increase_accuracy));
+			desc << (increase_accuracy[0] == '-' ? "" : "+") << increase_accuracy << _("% accuracy");
 		}
 	}
 
@@ -219,7 +219,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
 
 		if(description != NULL) {
-			desc << (increase_parry[0] == '-' ? "" : "+") << increase_parry << " " << _n("parry","parry",lexical_cast<int>(increase_parry));
+			desc << (increase_parry[0] == '-' ? "" : "+") << increase_parry << _("% parry");
 		}
 	}
 
