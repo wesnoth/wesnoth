@@ -38,6 +38,10 @@
 #include <assert.h>
 #include <clocale>
 
+#ifdef _WIN32
+#include "locale.h"
+#endif
+
 #define LOG_NG LOG_STREAM(info, engine)
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_G  LOG_STREAM(err, general)
@@ -481,8 +485,12 @@ void save_preview_pane::draw_contents()
 		ypos = maximum<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
 		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
 	}
-
+    
+    #ifndef _WIN32
 	char* old_locale = std::setlocale(LC_TIME, get_locale().localename.c_str());
+	#else
+	char* old_locale = ::setlocale(LC_TIME, get_locale().localename.c_str());	
+	#endif
 	char time_buf[256] = {0};
 	const save_info& save = (*info_)[index_];
 	tm* tm_l = localtime(&save.time_modified);
@@ -496,7 +504,11 @@ void save_preview_pane::draw_contents()
 	}
 
 	if(old_locale) {
+        #ifndef _WIN32           
 		std::setlocale(LC_TIME, old_locale);
+		#else
+		::setlocale(LC_TIME, old_locale);
+		#endif
 	}
 
 	std::stringstream str;

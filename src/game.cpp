@@ -62,6 +62,10 @@
 #include "serialization/string_utils.hpp"
 #include "sha1.hpp"
 
+#ifdef _WIN32
+#include "locale.h"
+#endif
+
 #ifdef HAVE_PYTHON
 #include "ai_python.hpp"
 #endif
@@ -2457,8 +2461,13 @@ static int play_game(int argc, char** argv)
 	// initialized to have get_intl_dir() to work.  Note: this
 	// setlocale() but this does not take GUI language setting
 	// into account.
+#ifndef _WIN32	
 	std::setlocale(LC_ALL, "C");
 	std::setlocale(LC_MESSAGES, "");
+#else
+     ::setlocale(LC_ALL, "C");
+     ::setlocale(LC_MESSAGES, "");
+#endif
 	const std::string& intl_dir = get_intl_dir();
 	bindtextdomain (PACKAGE, intl_dir.c_str());
 	bind_textdomain_codeset (PACKAGE, "UTF-8");

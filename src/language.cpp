@@ -1,4 +1,3 @@
-/* $Id$ */
 /* vim:set encoding=utf-8: */
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
@@ -39,6 +38,7 @@
 #include <stdexcept>
 
 #ifdef _WIN32
+#include "locale.h"
 #include <windows.h>
 #endif
 
@@ -226,15 +226,27 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 	while (true) {
+        #ifndef _WIN32  
 		res = std::setlocale(category, try_loc);
+		#else
+		res = ::setlocale(category, try_loc);
+		#endif
 		if (res) break;
 
 		std::string utf8 = std::string(try_loc) + std::string(".utf-8");
+		#ifndef _WIN32
 		res = std::setlocale(category, utf8.c_str());
+		#else
+		res = ::setlocale(category, try_loc);
+		#endif
 		if (res) break;
 
 		utf8 = std::string(try_loc) + std::string(".UTF-8");
+		#ifndef _WIN32
 		res = std::setlocale(category, utf8.c_str());
+		#else
+		res = ::setlocale(category, utf8.c_str());
+		#endif
 		if (res) break;
 
 		if (!alternates) break;
