@@ -107,10 +107,11 @@ namespace {
 
 static bool needs_escaping(char c) { return c == 0 || c == escape_char; }
 
-bool IsCR(const char& c)
+static bool IsCR(const char& c)
 {
 	return c == 13;
 }
+
 static std::string strip_cr(std::string str, bool strip)
 {
 	if(!strip)

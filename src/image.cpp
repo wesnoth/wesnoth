@@ -777,7 +777,7 @@ bool exists(const image::locator& i_locator, bool precached)
 	return cache;
 }
 
-void precache_file_existence_internal(const std::string& dir, const std::string& subdir)
+static void precache_file_existence_internal(const std::string& dir, const std::string& subdir)
 {
 	const std::string checked_dir = dir + "/" + subdir;
 	if (precached_dirs.find(checked_dir) != precached_dirs.end())
