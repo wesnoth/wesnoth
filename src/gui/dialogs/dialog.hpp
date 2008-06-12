@@ -38,6 +38,8 @@ public:
 		retval_(0)
 	{}
 
+	virtual ~tdialog() {}
+
 	/** Shows the window */
 	void show(CVideo& video);
 
