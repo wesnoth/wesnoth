@@ -125,8 +125,8 @@ macro(ADD_PO4A_TRANSLATE_TARGET INFILE OUTFILE STAMPFILE DOMAIN FORMAT CHARSET O
       set(_CHARSET ${${CHARSET}_default})
       if(NOT _CHARSET)
         set(_CHARSET "utf-8")
-      endif(NOT _CHAREST)
-    endif(NOT _CHAREST)
+      endif(NOT _CHARSET)
+    endif(NOT _CHARSET)
 
     set_source_files_properties(${_POFILE} PROPERTIES GENERATED TRUE)
 
