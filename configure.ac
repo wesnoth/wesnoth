@@ -239,6 +239,11 @@ AC_ARG_ENABLE([editor],
 	      [editor=$enableval],
 	      [editor=no])
 
+AC_ARG_WITH([editor2],
+            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game]),
+	      [editor2=$withval],
+	      [editor2=""])
+
 AC_ARG_ENABLE([tools],
               AS_HELP_STRING([--enable-tools], [enable building and installation of tools for artists and WML maintainers]),
 	      [tools=$enableval],
@@ -296,11 +301,17 @@ AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([TESTS], [test x$tests = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
+AM_CONDITIONAL([EDITOR2], [test x$editor2 = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
+
+if test "x$editor2" = "xyes"
+then
+	CXXFLAGS="$CXXFLAGS -DUSE_EDITOR2"
+fi
 
 if test x$dummylocales = xyes; then
   AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])

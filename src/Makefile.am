@@ -135,6 +135,22 @@ wesnoth_source = \
 	variant.cpp \
 	widgets/combo.cpp \
 	widgets/scrollpane.cpp
+    
+# used with editor2 option in the wesnoth target
+wesnoth_editor2_SOURCES = \
+	editor2/editor_main.cpp \
+	editor/editor.cpp \
+	editor/editor_layout.cpp \
+	editor/map_manip.cpp \
+	editor/editor_display.cpp \
+	editor/editor_palettes.cpp \
+	editor/editor_dialogs.cpp \
+	editor/editor_undo.cpp
+    
+if EDITOR2
+wesnoth_source += $(wesnoth_editor2_SOURCES)
+endif
+
 
 #############################################################################
 #    Wesnoth                                                                #
