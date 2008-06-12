@@ -15,9 +15,8 @@
 #ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 #define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 
+#include "tstring.hpp"
 #include "gui/widgets/container.hpp"
-
-class t_string;
 
 namespace gui2 {
 
@@ -98,15 +97,47 @@ public:
 	 */
 
 	/**
-	 * Adds an item to the list, it requires the builder_list to be defined. 
-	 * NOTE this is for a listbox with one item per row, for multiple items
-	 * there will be a version with gets a vector with values. Probably there
-	 * also will be a version which gets the name of an image next to the
-	 * label so we can define lists even easier.
+	 * Listbox item definition.
 	 *
-	 * Probably the hardcoded list will disappear as well at some point
+	 * A row in a listbox can have one or more items (widgets) each of them can
+	 * be defined from the code. Every wiget can have an item 'assigned' which
+	 * means the fields in that widget get the values of the items set after
+	 * constructing.
 	 */
-	void add_item(const t_string& label, const std::string& icon = "");
+	struct titem {
+
+		titem(const t_string& label, const std::string& icon = "") :
+			label(label),
+			icon(icon)
+		{}
+		
+		/** The label for the widget. */
+		t_string label;
+
+		/** the filename of the icon for the widget. */
+		std::string icon;
+	};
+
+	/**
+	 * Adds an item to the list.
+	 *
+	 * The widget added gets the item assigned to it.
+	 *
+	 * @param item                The item to assign to the widget.
+	 */
+	void add_item(const titem& item);
+
+	/**
+	 * Adds an item to the list.
+	 *
+	 * An item is most of the time a row which contains one or more widgets.
+	 * This map contains the items to assign to those widgets. If a widget with
+	 * the 'id' of a map exists then that widget gets that 'item' assigned. Else if
+	 * there is an empty map 'id', that 'item' gets assigned.
+	 *
+	 * @param data                Map with the items to assign to the row items.
+	 */
+	void add_item(const std::map<std::string /*id*/, titem /*item*/>& data);
 
 	/**
 	 * Adds one or more items to the listbox.
@@ -204,8 +235,9 @@ private:
 	class trow {
 
 	public:
+
 		trow(const tbuilder_grid& list_builder_, 
-			const t_string& label, const std::string& icon);
+			const std::map<std::string, titem>& data);
 
 		void select(const bool sel = true);
 	
@@ -230,7 +262,7 @@ private:
 		bool selected_;
 
 		void init_in_grid(tgrid* grid, 
-			const t_string& label, const std::string& icon);
+			const std::map<std::string, titem>& data);
 
 		void select_in_grid(tgrid* grid, const bool sel);
 	};

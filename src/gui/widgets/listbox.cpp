@@ -371,11 +371,18 @@ const twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_b
 	return result;
 }
 
-void tlistbox::add_item(const t_string& label, const std::string& icon)
+void tlistbox::add_item(const titem& item)
+{
+	std::map<std::string, titem> data;
+	data.insert(std::make_pair("", item));
+	add_item(data);
+}
+
+void tlistbox::add_item(const std::map<std::string, titem>& data)
 {
 	assert(list_builder_);
 
-	trow row(*list_builder_, label, icon);
+	trow row(*list_builder_, data);
 	assert(row.grid());
 
 	row.grid()->set_parent(this);
@@ -403,7 +410,7 @@ void tlistbox::add_items(const std::vector< std::map<std::string, t_string> >& d
 		assert(itor != cell.end());
 		const std::string& label = itor->second;
 
-		add_item(label, icon);
+		add_item(titem(label, icon));
 	}
 }
 
@@ -478,17 +485,19 @@ void tlistbox::set_row_active(const unsigned row, const bool active)
 	rows_[row].grid()->set_active(active);
 }
 
-tlistbox::trow::trow(const tbuilder_grid& list_builder_,const t_string& label, const std::string& icon) :
+tlistbox::trow::trow(const tbuilder_grid& list_builder_, 
+		const std::map<std::string, titem>& data) :
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
 	selected_(false)
 {
 	assert(grid_);
-	init_in_grid(grid_, label, icon);
+	init_in_grid(grid_, data);
 }
 
-void tlistbox::trow::init_in_grid(tgrid* grid, const t_string& label, const std::string& icon) 
-{
+void tlistbox::trow::init_in_grid(tgrid* grid, 
+		const std::map<std::string, titem>& data)
+{		
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 			twidget* widget = grid->widget(row, col);
@@ -500,16 +509,23 @@ void tlistbox::trow::init_in_grid(tgrid* grid, const t_string& label, const std:
 
 			if(btn) {
 				btn->set_callback_mouse_left_click(callback_select_list_item);
-				btn->set_label(label);
-				btn->set_icon_name(icon);
+				std::map<std::string, titem>::const_iterator itor = data.find(btn->id());
+				if(itor == data.end()) {
+					itor = data.find("");
+				}
+				if(itor != data.end()) {
+					btn->set_label(itor->second.label);
+					btn->set_icon_name(itor->second.icon);
+				}
 			} else if(grid) {
-				init_in_grid(child_grid, label, icon);
+				init_in_grid(child_grid, data);
 			} else {
 				std::cerr << "Widget type " << typeid(*widget).name() << ".\n";
 				assert(false);
 			}
 		}
 	}
+
 }
 
 void tlistbox::trow::select(const bool sel) 
