@@ -53,7 +53,7 @@ twindow tmp_method_selection::build_window(CVideo& video)
 	return build(video, get_id(MP_METHOD_SELECTION));
 }
 
-void tmp_method_selection::pre_show(CVideo& video, twindow& window)
+void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	user_name_ = preferences::login();
 	ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));

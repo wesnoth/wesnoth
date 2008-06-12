@@ -51,7 +51,7 @@ twindow tlanguage_selection::build_window(CVideo& video)
 	return build(video, get_id(LANGUAGE_SELECTION));
 }
 
-void tlanguage_selection::pre_show(CVideo& video, twindow& window)
+void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
 	VALIDATE(list, missing_widget("language_list"));

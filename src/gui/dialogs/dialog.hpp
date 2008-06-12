@@ -66,14 +66,14 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(CVideo& video, twindow& window) {}
+	virtual void pre_show(CVideo& /*video*/, twindow& /*window*/) {}
 
 	/**
 	 * Actions to be taken after the window has been shown.
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void post_show(twindow& window) {}
+	virtual void post_show(twindow& /*window*/) {}
 };
 
 } // namespace gui2

@@ -51,7 +51,7 @@ twindow taddon_connect::build_window(CVideo& video)
 	return build(video, get_id(ADDON_CONNECT));
 }
 
-void taddon_connect::pre_show(CVideo& video, twindow& window)
+void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
 	VALIDATE(host_widget, missing_widget("host_name"));
