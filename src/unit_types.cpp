@@ -39,6 +39,10 @@
 #define LOG_UT LOG_STREAM(info, engine)
 #define ERR_UT LOG_STREAM(err, engine)
 
+namespace {
+	std::map< std::string, std::set< std::string > > future_advancefroms;
+}
+
 attack_type::attack_type(const config& cfg)
 {
 	cfg_ = cfg;
@@ -762,6 +766,16 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	hide_help_= utils::string_bool(cfg["hide_help"],false);
 
 	build_status_ = HELP_INDEX;
+
+	std::map< std::string, std::set< std::string > >::const_iterator adv_froms = future_advancefroms.find(id_);
+	if (adv_froms != future_advancefroms.end()) {
+		std::set< std::string >::const_iterator adv_it,
+			adv_end = adv_froms->second.end();
+		for(adv_it = adv_froms->second.begin(); adv_it != adv_end; ++adv_it) {
+			add_advancesfrom(*adv_it);
+		}
+		future_advancefroms.erase(id_);
+	}
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -1131,7 +1145,13 @@ void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_c
             count++;
             DBG_UT << "Unit: " << unit_cfg["id"] << ", AdvanceTo " << count << ": " << *i_adv << "\n";
             unit_type_map::iterator itor_advanceto = types_.find(*i_adv);
-            itor_advanceto->second.add_advancesfrom(unit_cfg["id"]);
+            if(itor_advanceto == types_.end()) {
+            	// if we can't add the advancefrom information yet, we should
+            	// just remember it for later (to prevent infinite recursion)
+            	future_advancefroms[*i_adv].insert(unit_cfg["id"]);
+            } else {
+				itor_advanceto->second.add_advancesfrom(unit_cfg["id"]);
+            }
         }
     }
 }
