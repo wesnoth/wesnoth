@@ -202,11 +202,12 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #ifdef USE_DUMMYLOCALES
 	static enum { UNINIT, NONE, PRESENT } status = UNINIT;
 	static std::string locpath;
-	if (status == UNINIT)
+	if (status == UNINIT) {
 		if (char const *p = getenv("LOCPATH")) {
 			locpath = p;
 			status = PRESENT;
 		} else status = NONE;
+	}
 	if (slocale.empty())
 		if (status == NONE)
 			unsetenv("LOCPATH");
