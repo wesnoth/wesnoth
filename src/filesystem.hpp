@@ -83,11 +83,6 @@ std::string get_cwd();
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname);
 
-//! Sets whether a "userdata" dir located in the working path
-//! should be used instead of per-user directories in Windows.
-//! This has no effect on other systems.
-void set_local_userdata(bool use_local);
-
 // Basic disk I/O:
 
 //! Basic disk I/O - read file.
