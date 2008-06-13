@@ -1,7 +1,7 @@
 # translation of wesnoth-lib.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004 - 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-01 11:41+0200\n"
-"PO-Revision-Date: 2008-03-21 12:26+0100\n"
+"PO-Revision-Date: 2008-06-12 22:41+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -205,10 +205,11 @@ msgstr "Pole"
 msgid "Swamp"
 msgstr "Mokřina"
 
+# pseudoterén
 #. [terrain]
 #: data/core/terrain.cfg:634
 msgid "Lit"
-msgstr ""
+msgstr "Osvětlený"
 
 #. [terrain]
 #: data/core/terrain.cfg:644
@@ -217,9 +218,8 @@ msgstr "Jeskyně"
 
 #. [terrain]
 #: data/core/terrain.cfg:662
-#, fuzzy
 msgid "Cave path"
-msgstr "Osvětlená jeskyně"
+msgstr "Jeskynní stezka"
 
 #. [terrain]
 #: data/core/terrain.cfg:671
@@ -282,9 +282,8 @@ msgstr "Jeskynní hradba"
 
 #. [terrain]
 #: data/core/terrain.cfg:983
-#, fuzzy
 msgid "Wall"
-msgstr "Jeskynní hradba"
+msgstr "Zeď"
 
 # nicota?
 #. [terrain]
@@ -292,26 +291,28 @@ msgstr "Jeskynní hradba"
 msgid "Void"
 msgstr "Prázdnota"
 
+# pseudoterén
 #. [terrain]
 #: data/core/terrain.cfg:1006
 msgid "Flat"
-msgstr ""
+msgstr "Plochý"
 
+# pseudoterén
 #. [terrain]
 #: data/core/terrain.cfg:1012
 msgid "Frozen"
-msgstr ""
+msgstr "Zmrzlý"
 
 #. [terrain]
 #: data/core/terrain.cfg:1018
-#, fuzzy
 msgid "Impassable"
-msgstr "Neschůdné hory"
+msgstr "Neprůchozí"
 
+# pseudoterén
 #. [terrain]
 #: data/core/terrain.cfg:1024
 msgid "Unwalkable"
-msgstr ""
+msgstr "Neschůdný"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:552
@@ -402,19 +403,19 @@ msgstr "Klávesové zkratky"
 
 #: src/editor/editor_dialogs.cpp:306
 msgid "Lighting levels (time of day):"
-msgstr ""
+msgstr "Nastavení osvětlení mapy (denní doba):"
 
 #: src/editor/editor_dialogs.cpp:313
 msgid "light_level^Red:"
-msgstr ""
+msgstr "Červené:"
 
 #: src/editor/editor_dialogs.cpp:314
 msgid "light_level^Green:"
-msgstr ""
+msgstr "Zelené:"
 
 #: src/editor/editor_dialogs.cpp:315
 msgid "light_level^Blue:"
-msgstr ""
+msgstr "Modré:"
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
 #: src/hotkeys.cpp:123
@@ -892,15 +893,15 @@ msgstr "Žádná známá témata. Zkus změnit během existující hry."
 
 #: src/gui/widgets/canvas.cpp:252
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Čára se nevejde na plátno."
 
 #: src/gui/widgets/canvas.cpp:360
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Obdélník se nevejde na plátno."
 
 #: src/gui/widgets/canvas.cpp:706
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Text nezačíná na plátně."
 
 #: src/gui/widgets/settings.cpp:126
 #, fuzzy
@@ -909,17 +910,16 @@ msgstr "Nebyl definován žádný server."
 
 #: src/gui/widgets/settings.cpp:232
 msgid "Window not defined."
-msgstr ""
+msgstr "Okno není definováno."
 
 #: src/gui/widgets/settings.cpp:291
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 
 #: src/gui/widgets/settings.cpp:403 src/gui/widgets/window_builder.cpp:329
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Nebyl definován žádný server."
+msgstr "Není definováno žádné rozlišení."
 
 #: src/gui/widgets/settings.cpp:435
 #, fuzzy
@@ -927,37 +927,35 @@ msgid "No state or draw section defined."
 msgstr "Nebyl definován žádný server."
 
 #: src/gui/widgets/settings.cpp:587
-#, fuzzy
 msgid "No scrollbar defined."
-msgstr "Nebyl definován žádný server."
+msgstr "Není definován žádný posuvník."
 
 #: src/gui/widgets/window_builder.cpp:391
 #: src/gui/widgets/window_builder.cpp:902
-#, fuzzy
 msgid "No grid defined."
-msgstr "Nebyl definován žádný server."
+msgstr "Není definována žádná mřížka."
 
 #: src/gui/widgets/window_builder.cpp:606
 msgid "A row must have a column."
-msgstr ""
+msgstr "Řádek musí mít sloupec."
 
 #: src/gui/widgets/window_builder.cpp:607
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Počet sloupců se liší."
 
 #: src/gui/widgets/window_builder.cpp:806
-#, fuzzy
 msgid "No list defined."
-msgstr "Nebyl definován žádný server."
+msgstr "Nebyl definován žádný seznam."
 
 #: src/gui/widgets/window_builder.cpp:809
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
 
 #: src/gui/widgets/window_builder.cpp:828
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
+"'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
 #: src/hotkeys.cpp:55
 msgid "Next Unit"
@@ -1307,14 +1305,12 @@ msgid "Map-Screenshot"
 msgstr "Screenshot (kopie obrazovky)"
 
 #: src/hotkeys.cpp:835
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Screenshot (kopie obrazovky)"
+msgstr "Screenshot dokončen"
 
 #: src/hotkeys.cpp:837
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Screenshot (kopie obrazovky)"
+msgstr "Screenshot selhal"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"
@@ -1409,9 +1405,8 @@ msgid "Change Hotkey"
 msgstr "Změň klávesovou zkratku"
 
 #: src/preferences_display.cpp:272
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "Změň klávesovou zkratku"
+msgstr "Odeber klávesovou zkratku"
 
 #: src/preferences_display.cpp:339
 msgid "This Hotkey is already in use."

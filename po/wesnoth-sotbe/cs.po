@@ -1,7 +1,7 @@
 # translation of wesnoth-sotbe.po to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004 - 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -9,13 +9,14 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006, 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007, 2008.
+# Karel Doleček <KDolecek@seznam.cz>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:40+0200\n"
-"PO-Revision-Date: 2008-04-20 17:33+0100\n"
+"PO-Revision-Date: 2008-06-12 22:36+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +106,7 @@ msgstr "Dokončení a údržba"
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:44
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "Kresby a grafika"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:4
@@ -462,15 +463,14 @@ msgstr ""
 # předpoklad ohledně jména...
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:261
-#, fuzzy
 msgid ""
 "Don't be afraid, $name.name. The trolls have been our allies in the past--"
 "maybe they will help us. And what true orc has ever feared dwarvish stinky-"
 "midgets? Hurry up, we must leave as soon as possible."
 msgstr ""
-"Neboj se, $name.user_description|e. Trollové byli v minulosti našimi "
-"spojenci - možná nám pomohou. A copak se někdy nějaký skřet bál trpasličích "
-"lakomých skrčků? Musíme spěchat a odejít co nejdříve."
+"Neboj se, $name.name|e. Trollové byli v minulosti našimi spojenci - možná "
+"nám pomohou. A copak se někdy nějaký skřet bál trpasličích lakomých skrčků? "
+"Musíme spěchat a odejít co nejdříve."
 
 #. [option]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:274
@@ -596,9 +596,8 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:159
-#, fuzzy
 msgid " $stored_helper.name|!"
-msgstr " $stored_helper.user_description|!"
+msgstr " $stored_helper.name|!"
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:164
@@ -677,7 +676,7 @@ msgstr "Kwili"
 #. [side]: type=Dwarvish Lord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:90
 msgid "Dwarves"
-msgstr ""
+msgstr "Trpaslíci"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:131
@@ -1024,7 +1023,7 @@ msgstr "Etheliel"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:108
 msgid "Elves"
-msgstr ""
+msgstr "Elfové"
 
 #. [side]: type=Orcish Slayer
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:107
@@ -1090,9 +1089,8 @@ msgstr "Co bys čekal, náčelníku. Jsou to koneckonců elfové."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:344
-#, fuzzy
 msgid "Hmmm, $scout.name go find out what they are up to."
-msgstr "Hmm, $name.user_description|e, běž zjistit co tu pohledávají."
+msgstr "Hmm, $scout.name|e, běž zjistit co tu pohledávají."
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:349
@@ -1184,9 +1182,8 @@ msgstr "K čertu, utekl!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:505
-#, fuzzy
 msgid "So, what news do you bring $scout.name?"
-msgstr "Takže jaké zprávy jsi přinesl, $name.user_description|e?"
+msgstr "Takže jaké zprávy jsi přinesl, $scout.name|e?"
 
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:510
@@ -1391,7 +1388,7 @@ msgstr "Na-Mana"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:162
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:189
 msgid "Undead"
-msgstr ""
+msgstr "Nemrtví"
 
 #. [side]: type=Lich
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:186
@@ -1569,9 +1566,8 @@ msgstr "Slowhand"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:78
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:111
-#, fuzzy
 msgid "Humans"
-msgstr "Harman"
+msgstr "Lidé"
 
 #. [side]: type=Transport Galleon
 #. [unit]: type=Transport Galleon
@@ -1828,9 +1824,8 @@ msgstr "Ar Dant"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:242
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:99
-#, fuzzy
 msgid "Villains"
-msgstr "Valan"
+msgstr "Nepřátele"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:103
@@ -3586,7 +3581,7 @@ msgstr "Braga"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:108
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:69
 msgid "Rebels"
-msgstr ""
+msgstr "Odbojní"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:88
@@ -3940,7 +3935,6 @@ msgstr ""
 
 #. [message]: speaker=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:41
-#, fuzzy
 msgid ""
 "Cease your lies, Lanbec'h. We all know that you were the one who started "
 "this war. But enough, it is time for all this to end. I call for both sides "
@@ -3996,7 +3990,6 @@ msgstr "Jestli si pamatuji správně, byl to skřet jménem Šan Taum."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:76
-#, fuzzy
 msgid "Funny, that name sounds oddly familiar..."
 msgstr "Zábavné. To jméno zní povědomě."
 
@@ -4012,7 +4005,6 @@ msgstr "Zadrž lidi"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:178
-#, fuzzy
 msgid ""
 "As Kapou'e expected, by the time his forces had been defeated Shan Taum was "
 "nowhere to be found. Gritting his teeth and vowing that he would yet make a "

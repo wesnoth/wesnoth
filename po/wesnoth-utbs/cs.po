@@ -1,7 +1,7 @@
 # translation of wesnoth-utbs.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2006 Wesnoth development team
+# Copyright (C) 2006-2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:41+0200\n"
-"PO-Revision-Date: 2008-04-25 12:07+0100\n"
+"PO-Revision-Date: 2008-06-11 18:07+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -5667,27 +5667,23 @@ msgstr ""
 
 #. [message]: speaker=Othgar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1634
-#, fuzzy
 msgid "Hey look! It's a dwarf!"
-msgstr "Hej! Podívej, to je $ally_race|!"
+msgstr "Hej! Podívej, to je trpaslík!"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1638
-#, fuzzy
 msgid "Huh? A dwarf?"
-msgstr "He? Tohle je $ally_race|?"
+msgstr "He? Tohle je trpaslík?"
 
 #. [message]: speaker=Othgar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1644
-#, fuzzy
 msgid "Hey look! It's a troll!"
-msgstr "Hej! Podívej, to je $ally_race|!"
+msgstr "Hej! Podívej, to je troll!"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1648
-#, fuzzy
 msgid "Huh? A troll?"
-msgstr "He? Tohle je $ally_race|?"
+msgstr "Cože? Troll? Teď, tady?"
 
 #. [message]: speaker=Bellerin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1666
@@ -5925,7 +5921,6 @@ msgstr "Stráž brány"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2241
-#, fuzzy
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -5935,7 +5930,7 @@ msgstr ""
 "Tahle jeskyně se zdá docela prázdná, s výjimkou těch dvou zářících run "
 "uprostřed. Tato pevnost musela být kdysi hojně obydlená, protože nesčetná "
 "chodidla opotřebovala jeskynní podlahu a vyhladila spoustu cestiček "
-"vedoucích sem a tam všemi směry. Co na to $ally_name? Kudy dál?"
+"vedoucích sem a tam všemi směry. Co na to $unittest.name? Kudy dál?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2246
@@ -6385,11 +6380,10 @@ msgstr "Cítím nějakou přítomnost... ech... nahání mi husí kůži."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3297
-#, fuzzy
 msgid ""
 "I though you said $intl_ally_name, that you'd been here before? Where are we "
 "supposed to go from here?"
-msgstr "Neříkal $ally_name|, že už tu někdy byl? Tak, kudy teď?"
+msgstr "Neříkal $intl_ally_name|, že už tu někdy byl? Tak, kudy teď?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3302
@@ -6663,15 +6657,14 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3741
-#, fuzzy
 msgid ""
 "$intl_ally_name, I want to thank you so much for guiding us out of the "
 "caves. We never would have found our way without your help. But with the "
 "tunnels flooded, how are you going to find your way back to your people?"
 msgstr ""
-" $ally_name|e, chci ti moc poděkovat za provedení jeskyněmi a ven. Bez tvé "
-"pomoci bychom nikdy nenašli cestu. Jenže, teď když jsou tunely zatopené, jak "
-"najdeš cestu zpět ke svému lidu?"
+" $intl_ally_name|e, chci ti moc poděkovat za provedení jeskyněmi a ven. Bez "
+"tvé pomoci bychom nikdy nenašli cestu. Jenže, teď když jsou tunely zatopené, "
+"jak najdeš cestu zpět ke svému lidu?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3746
@@ -6725,30 +6718,27 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3768
-#, fuzzy
 msgid ""
 "$intl_ally_name, thank you so much for leading us out of the caves. We never "
 "would have found our way without your help. But with the tunnels flooded, "
 "how are you going to find your way back to your people?"
 msgstr ""
-"Kde je $ally_name|? Aha, tady. Mockrát ti děkuji, že jsi nás vyvedl z těch "
-"jeskyní. Nikdy bychom bez tvé pomoci nenašli cestu. Ale když jsou teď tunely "
-"zaplavené, jak najdeš cestu zpět ke svému lidu?"
+"Kde je $intl_ally_name|? Aha, tady. Mockrát ti děkuji, že jsi nás vyvedl z "
+"těch jeskyní. Nikdy bychom bez tvé pomoci nenašli cestu. Ale když jsou teď "
+"tunely zaplavené, jak najdeš cestu zpět ke svému lidu?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3773
-#, fuzzy
 msgid ""
 "$intl_ally_name proud of little elves too. He would not have made it this "
 "far without all your help. $intl_ally_name is surprised by your bravery and "
 "strength."
 msgstr ""
-" $ally_name taky hrdý na malé elfy. Nikdy by se nedostal až sem bez vaší "
-"pomoci. $ally_name překvapený vaší odvahou a sílou."
+" $intl_ally_name taky hrdý na malé elfy. Nikdy by se nedostal až sem bez "
+"vaší pomoci. $intl_ally_name překvapený vaší odvahou a sílou."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3778
-#, fuzzy
 msgid ""
 "Truth is that $intl_ally_name not know much of sunlight lands. Sun and stars "
 "are scary, everything is open, exposed, no safe places to hide. But "
@@ -6756,14 +6746,13 @@ msgid ""
 "doesn't know where to find other tunnels back to his home. He is as lost as "
 "elves are."
 msgstr ""
-"Pravda je že $ally_name neví moc o slunečních zemích. Slunce a hvězdy jsou "
-"děsivé, všechno je otevřené, vystavené, nikde bezpečné místo ke schování. "
-"Ale $ally_name nemůže jít zpátky vodou. A $ally_name neví kde hledat další "
-"chodby domů. Taky ztracený jako elfové."
+"Pravda je taková, že $intl_ally_name neví moc o slunečních zemích. Slunce a "
+"hvězdy jsou děsivé, všechno je otevřené, vystavené, nikde bezpečné místo ke "
+"schování. Ale $intl_ally_name nemůže jít zpátky vodou. A $intl_ally_name "
+"neví kde hledat další chodby domů. Taky ztracený jako elfové."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3783
-#, fuzzy
 msgid ""
 "But $intl_ally_name not afraid. Great leader told $intl_ally_name to guide "
 "and protect elves, and $intl_ally_name will keep his oath. $intl_ally_name "
@@ -6772,11 +6761,11 @@ msgid ""
 "caves of his people. But for now, $intl_ally_name will continue to serve and "
 "protect you."
 msgstr ""
-"Ale $ally_name se nebojí. Velký vůdce řekl, $ally_name bude vést a chránit "
-"elfy, a $ally_name splní svůj slib. $ally_name bude následovat elfy kamkoliv "
-"půjdou a chránit je před nebezpečím, jak jen to půjde. Třeba později najde "
-"jinou cestu zpátky do jeskyní ke trollům. Ale zatím vám bude $ally_name dál "
-"sloužit a chránit vás."
+"Ale $intl_ally_name se nebojí. Velký vůdce řekl, $intl_ally_name bude vést a "
+"chránit elfy, a $intl_ally_name splní svůj slib. $intl_ally_name bude "
+"následovat elfy kamkoliv půjdou a chránit je před nebezpečím, jak jen to "
+"půjde. Třeba později najde jinou cestu zpátky do jeskyní ke trollům. Ale "
+"zatím vám bude $intl_ally_name dál sloužit a chránit vás."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3882
@@ -7077,13 +7066,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4399
-#, fuzzy
 msgid ""
 "We made it. Outside look strange to $intl_ally_name, $intl_ally_name not "
 "used to big open spaces."
 msgstr ""
-"Zvládli jsme to. $ally_name není zvyklý na velké místa, venek mu připadne "
-"divný."
+"Zvládli jsme to. $intl_ally_name není zvyklý na velké místa, venek mu "
+"připadne divný."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4425
@@ -7212,7 +7200,6 @@ msgstr "Kalehu, jenom otázečku-"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4694
-#, fuzzy
 msgid "Not now $intl_ally_name, I'm busy."
 msgstr "Teď ne, nemám čas."
 
@@ -7526,13 +7513,12 @@ msgstr "No, teď jsme v tom tedy až po uši. Doufám že víš co děláš, Kal
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4958
-#, fuzzy
 msgid ""
 "$intl_ally_name no like humans either. They mean. But they sound great when "
 "they go squish."
 msgstr ""
-" $ally_name taky nemá rád lidi. Jsou skoupí. Ale dělají skvělé zvuky když se "
-"rozmačkávají."
+" $intl_ally_name taky nemá rád lidi. Jsou skoupí. Ale dělají skvělé zvuky "
+"když se rozmačkávají."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4965
@@ -8389,12 +8375,11 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:762
-#, fuzzy
 msgid ""
 "Trees look big and strong, like trolls. Dark, too. $intl_ally_name tired of "
 "walking under hot sun."
 msgstr ""
-"Stromy vypadají velké a silné, jako trollové. A taky tmavé. $ally_name "
+"Stromy vypadají velké a silné, jako trollové. A taky tmavé. $intl_ally_name "
 "unavený chozením pod horkým sluncem."
 
 #. [message]: speaker=Esanoo
@@ -8895,15 +8880,14 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1224
-#, fuzzy
 msgid ""
 "Great Leader told $intl_ally_name to serve you, and so $intl_ally_name will "
 "still follow your command. But other elves must be out on a separate island. "
 "How will we cross deep water?"
 msgstr ""
-"Velký vůdce řekl, $ally_name bude sloužit Kalehovi, a $ally_name bude stále "
-"poslouchat tvé rozkazy. Ale druzí elfové musí být na dalším ostrově. Jak "
-"překročíme hlubokou vodu?"
+"Velký vůdce řekl, $intl_ally_name bude sloužit Kalehovi, a $intl_ally_name "
+"bude stále poslouchat tvé rozkazy. Ale druzí elfové musí být na dalším "
+"ostrově. Jak překročíme hlubokou vodu?"
 
 # Má to původní anglické vůbec smysl? Podle mě ne. Nehodláme nijak škodit // činy hovoří ... eh? Jak to souvisí?
 #. [message]: role=merfolk
@@ -9835,14 +9819,14 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3461
-#, fuzzy
 msgid ""
 "$intl_ally_name scared of big water and bright sun, but $intl_ally_name will "
 "not dishonor Great Leader. Great Leader say follow Kaleh, and "
 "$intl_ally_name will do so."
 msgstr ""
-" $ally_name bojí velké vody a ostrého slunce, ale $ally_name nezahanbí "
-"Velkého vůdce. Velký vůdce řekl jdi s Kalehem, a $ally_name to udělá."
+" $intl_ally_name bojí velké vody a ostrého slunce, ale $intl_ally_name "
+"nezahanbí Velkého vůdce. Velký vůdce řekl jdi s Kalehem, a $intl_ally_name "
+"to udělá."
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3468
@@ -10226,11 +10210,10 @@ msgstr ""
 msgid "This is--"
 msgstr "Toto je--"
 
-# pův.: A musím říct, že $ally_name mě svými činy přesvědčil, že ???.
+# pův.: A musím říct, že $intl_ally_name mě svými činy přesvědčil, že ???.
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:243
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:256
-#, fuzzy
 msgid ""
 "No, you don't have to introduce yourselves. I already know who you are and "
 "why you have been journeying all this way. And I must say, $intl_ally_name, "
@@ -10238,9 +10221,9 @@ msgid ""
 "credit to your race."
 msgstr ""
 "Ne, nemusíte se představovat. Vím již, kdo jste a proč jste putovali až sem. "
-"A musím říct, že dosavadní činy $ally_name|a a nakonec i jeho přítomnost ve "
-"společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt si u mne "
-"dobrou pověst."
+"A musím říct, že dosavadní činy $intl_ally_name|a a nakonec i jeho "
+"přítomnost ve společnosti tohoto ušlechtilého lidu pomohly jeho rase vydobýt "
+"si u mne dobrou pověst."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:249
@@ -10249,9 +10232,8 @@ msgstr "Děkuji ti za tvou laskavost."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:262
-#, fuzzy
 msgid "$intl_ally_name says thank you."
-msgstr " $ally_name říká díky tobě."
+msgstr " $intl_ally_name říká díky tobě."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:271
@@ -10702,13 +10684,12 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:620
-#, fuzzy
 msgid ""
 "$intl_ally_name not sure if he trust fish lady. What if she just want you "
 "elves to fight her war for her?"
 msgstr ""
-" $ally_name neví jestli věří rybí paní. Co když chce aby elfové bojovali za "
-"ni v její válce?"
+" $intl_ally_name neví jestli věří rybí paní. Co když chce aby elfové "
+"bojovali za ni v její válce?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:628
@@ -10818,7 +10799,6 @@ msgstr "Ano, chlapče; pamatuj, boj ještě neskončil, dokud stále dýcháme."
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:697
-#, fuzzy
 msgid ""
 "Do not give up yet, little one. The battle is not yet lost while we still "
 "fight."
@@ -10881,7 +10861,6 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:738
-#, fuzzy
 msgid ""
 "Even in deepest tunnels my people could not escape Yechnagoth's power "
 "forever if she is not stopped. Against such evil I am sure the Great Leader "
@@ -10891,8 +10870,8 @@ msgid ""
 msgstr ""
 "Ani v nejhlubších tunelech můj lid neunikne silám Yechnagoth navždy, jestli "
 "ji nikdo nezastaví. Proti takovému zlu by vám určitě dal Velký vůdce celou "
-"armádu trollů, ale teď je tu jenom $ally_name|. I tak $ally_name udělá "
-"všechno aby ji zničil."
+"armádu trollů, ale teď je tu jenom $intl_ally_name|. I tak $intl_ally_name "
+"udělá všechno aby ji zničil."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:746
@@ -12051,17 +12030,16 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:2076
-#, fuzzy
 msgid ""
 "$intl_ally_name not going to just sit here while Kaleh does all the "
 "fighting. Kaleh will need strong fighter like $intl_ally_name|. Other elves "
 "may be scared, but $intl_ally_name fear no dark place. $intl_ally_name just "
 "hope there still something to smash when he gets there."
 msgstr ""
-" $ally_name tu nebude sedět když Kaleh musí dělat celý boj. Kaleh potřebuje "
-"silného bojovníka jako $ally_name|. Ostatní malí elfové se můžou bát, ale "
-"$ally_name nebojí žádného tmavého místa. $ally_name doufá že na něj zbude "
-"něco k bití až tam dojde."
+" $intl_ally_name tu nebude sedět když Kaleh musí dělat celý boj. Kaleh "
+"potřebuje silného bojovníka jako $intl_ally_name|. Ostatní malí elfové se "
+"můžou bát, ale $intl_ally_name nebojí žádného tmavého místa. $intl_ally_name "
+"doufá že na něj zbude něco k bití až tam dojde."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:2242
@@ -12154,9 +12132,8 @@ msgstr ""
 # nutnost vyhnout se 5. pádu allyho!
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:602
-#, fuzzy
 msgid "Nym, Zhul, $intl_ally_name|, you shouldn't have."
-msgstr "Nym, Zhul, to jste neměly. Ani $ally_name."
+msgstr "Nym, Zhul, to jste neměly. Ani $intl_ally_name."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:610
@@ -12437,13 +12414,13 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1846
-#, fuzzy
 msgid ""
 "Ugh. $intl_ally_name is covered in blood and guts and nasty blue goo. "
 "Whatever creature was, she doesn't smell any better dead than she did alive."
 msgstr ""
-"Uh. $ally_name je pokrytý krví a zbytky a hnusnou modrou břečkou. $ally_name "
-"neví, jaká potvora to byla, ale mrtvá smrdí hnusně jako když byla živá."
+"Uh. $intl_ally_name je pokrytý krví a zbytky a hnusnou modrou břečkou. "
+"$intl_ally_name neví, jaká potvora to byla, ale mrtvá smrdí stejně hnusně "
+"jako když byla živá."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1872
@@ -12585,10 +12562,9 @@ msgstr ""
 "a bojovala po mém boku, tak dlouho, a nakonec jsem ji přece ztratil... Přeji "
 "si, abych se mohl vrátit a všechno to udělat znovu, napravit co se dá."
 
-# Premisa 1: $ally_name nabývá následujících hodnot: Jarl, Rogrimir, Grog, Nog; premisa 2: všechna ta jména se skloňují stejně; závěr: kromě 5. pádu jde použít všude přípona pomocí |.
+# Premisa 1: $intl_ally_name nabývá následujících hodnot: Jarl, Rogrimir, Grog, Nog; premisa 2: všechna ta jména se skloňují stejně; závěr: kromě 5. pádu jde použít všude přípona pomocí |.
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:174
-#, fuzzy
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
 "blood, I do not know if I would have had the strength to take that first "
@@ -12601,9 +12577,9 @@ msgstr ""
 "Kdybych byl na začátku naší cesty věděl, že cena, kterou zaplatíme, bude "
 "krvavá, nevím, zda bych měl dost sil udělat první krok. Měl jsem vědět, že "
 "mě mí přátelé nenechají čelit Yechnagoth samotného. Ale s radostí bych se "
-"dnes vzdal svého života, kdybych tak mohl vrátit $ally_name|a. Opustil svoji "
-"domovinu, bojoval se mnou věrně, a přece nakonec musel zemřít... Kdybych se "
-"tak mohl vrátit, všechno bych udělal znovu a napravil co se dá."
+"dnes vzdal svého života, kdybych tak mohl vrátit $intl_ally_name|a. Opustil "
+"svoji domovinu, bojoval se mnou věrně, a přece nakonec musel zemřít... "
+"Kdybych se tak mohl vrátit, všechno bych udělal znovu a napravil co se dá."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:191
@@ -12672,7 +12648,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:243
-#, fuzzy
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
 "I am still haunted by the death of $intl_ally_name in that dark place. And "
@@ -12687,14 +12662,15 @@ msgid ""
 "underground, it seems a small consolation."
 msgstr ""
 "I když věřím, že náš boj v černé citadele byl naší nejskvělejší hodinou, "
-"stále mě děsí vzpomínka na to, jak na tom temném místě zemřel $ally_name|. A "
-"tak přicházím každé ráno po východu slunce na jihovýchodní cíp ostrova a "
-"hledím na vody, na svět, kterému jsme tolik obětovali, abychom jej uchovali. "
-"Připomínám si, co říkala Zhul, a čemu všichni věřili, totiž že tento svět je "
-"navzdory všem bojům a smrti, které jsme zažili během naší cesty natolik "
-"pěkné místo, že $ally_name neváhal obětovat svůj život, aby jej zachránil. "
-"Jak hledím přes vody a připomínám si blahobyt, v němž nyní žije můj lid, "
-"opakuji si, že to za to stálo. Ale někdy je to malá útěcha."
+"stále mě děsí vzpomínka na to, jak na tom temném místě zemřel "
+"$intl_ally_name|. A tak přicházím každé ráno po východu slunce na "
+"jihovýchodní cíp ostrova a hledím na vody, na svět, kterému jsme tolik "
+"obětovali, abychom jej uchovali. Připomínám si, co říkala Zhul, a čemu "
+"všichni věřili, totiž že tento svět je navzdory všem bojům a smrti, které "
+"jsme zažili během naší cesty natolik pěkné místo, že $intl_ally_name neváhal "
+"obětovat svůj život, aby jej zachránil. Jak hledím přes vody a připomínám si "
+"blahobyt, v němž nyní žije můj lid, opakuji si, že to za to stálo. Ale někdy "
+"je to malá útěcha."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:260
@@ -12769,7 +12745,6 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:318
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:326
-#, fuzzy
 msgid ""
 "I am saddened by the death of $intl_ally_name, but by saving my life in the "
 "end he did fulfill his life debt to me. I think he also would have been glad "
@@ -12782,16 +12757,16 @@ msgid ""
 "under some solid rock. And so we buried him with much honor and will long "
 "remember the service that his kind has done for our people."
 msgstr ""
-"Smrt $ally_name|a mě zarmoutila, ale zachránil mi život a tak naplnil svůj "
-"dluh. Myslím, že je rád, že padl v bitvě. Uvažoval jsem o vyslání expedice, "
-"která by vrátila jeho tělo jeho lidu, ale všichni jsme byli vysíleni "
-"strázněmi dlouhé cesty a nechtěl jsem zbytečně riskovat. Místo toho jsme po "
-"celém ostrově hledali příhodné místo, které jsme nakonec nalezli v "
+"Smrt $intl_ally_name|a mě zarmoutila, ale zachránil mi život a tak naplnil "
+"svůj dluh. Myslím, že je rád, že padl v bitvě. Uvažoval jsem o vyslání "
+"expedice, která by vrátila jeho tělo jeho lidu, ale všichni jsme byli "
+"vysíleni strázněmi dlouhé cesty a nechtěl jsem zbytečně riskovat. Místo toho "
+"jsme po celém ostrově hledali příhodné místo, které jsme nakonec nalezli v "
 "severozápadních skaliscích, několik menších jeskyní. Nebyly tak hluboké, "
-"jako v jeho domově, ale myslím, že $ally_name by ocenil alespoň tu trochu "
-"solidního kamene nad místem jeho posledního odpočinku. Tak jsme jej tedy "
-"pohřbili se všemi poctami. Dlouho budeme vzpomínat na jeho službu, kterou "
-"nám prokázal on a jeho lid."
+"jako v jeho domově, ale myslím, že $intl_ally_name by ocenil alespoň tu "
+"trochu solidního kamene nad místem jeho posledního odpočinku. Tak jsme jej "
+"tedy pohřbili se všemi poctami. Dlouho budeme vzpomínat na jeho službu, "
+"kterou nám prokázal on a jeho lid."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:344
@@ -12847,7 +12822,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:383
-#, fuzzy
 msgid ""
 "By saving my life, $intl_ally_name fulfilled his life debt to me, but we "
 "convinced him to hang around for a while and revel in the celebrations that "
@@ -12863,14 +12837,14 @@ msgid ""
 "All the same I treasure the memory of him and his kind, and I will long "
 "remember his steadfast loyalty and all that he did to aid us in our struggle."
 msgstr ""
-"Záchranou mého života naplnil $ally_name svůj dluh života, ale přesvědčili "
-"jsme jej, aby s námi ještě chvíli zůstal a veselil se; po našem úžasném "
-"vítězství jsme celé dny slavili, děkujíc Eloh a bohu mořského lidu a radujíc "
-"se z krásy a bohatství našeho nového domova. Poté jsme se dali do práce a "
-"začali si budovat nové příbytky. $ally_name s námi ještě zůstal a pomáhal "
-"při stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém čase za "
-"mnou přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s námi "
-"strávil, mu podle jeho slov připadal jako krásný sen; slíbil, že na nás "
+"Záchranou mého života naplnil $intl_ally_name svůj dluh života, ale "
+"přesvědčili jsme jej, aby s námi ještě chvíli zůstal a veselil se; po našem "
+"úžasném vítězství jsme celé dny slavili, děkujíc Eloh a bohu mořského lidu a "
+"radujíc se z krásy a bohatství našeho nového domova. Poté jsme se dali do "
+"práce a začali si budovat nové příbytky. $intl_ally_name s námi ještě zůstal "
+"a pomáhal při stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém "
+"čase za mnou přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s "
+"námi strávil, mu podle jeho slov připadal jako krásný sen; slíbil, že na nás "
 "nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
 "jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. I "
 "já si budu navždy pamatovat jej i jeho druh, a dlouho budu vzpomínat na jeho "
@@ -12878,7 +12852,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:391
-#, fuzzy
 msgid ""
 "By saving my life, $intl_ally_name fulfilled his life debt to me, but we "
 "convinced him to hang around for a while and revel in the celebrations that "
@@ -12895,14 +12868,14 @@ msgid ""
 "long remember his steadfast loyalty and all that he did to aid us in our "
 "struggle. "
 msgstr ""
-"Záchranou mého života naplnil $ally_name svůj dluh života, ale přesvědčili "
-"jsme jej, aby s námi ještě chvíli zůstal a veselil se; po našem úžasném "
-"vítězství jsme celé dny slavili, děkujíc Eloh a bohu mořského lidu a radujíc "
-"se z krásy a bohatství našeho nového domova. Poté jsme se dali do práce a "
-"začali si budovat nové příbytky. $ally_name s námi ještě zůstal a pomáhal "
-"při stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém čase za "
-"mnou přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s námi "
-"strávil, mu podle jeho slov připadal jako krásný sen; slíbil, že na nás "
+"Záchranou mého života naplnil $intl_ally_name svůj dluh života, ale "
+"přesvědčili jsme jej, aby s námi ještě chvíli zůstal a veselil se; po našem "
+"úžasném vítězství jsme celé dny slavili, děkujíc Eloh a bohu mořského lidu a "
+"radujíc se z krásy a bohatství našeho nového domova. Poté jsme se dali do "
+"práce a začali si budovat nové příbytky. $intl_ally_name s námi ještě zůstal "
+"a pomáhal při stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém "
+"čase za mnou přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s "
+"námi strávil, mu podle jeho slov připadal jako krásný sen; slíbil, že na nás "
 "nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
 "jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. I "
 "já si budu navždy pamatovat jej i jeho druh, a dlouho budu vzpomínat na jeho "
@@ -12911,15 +12884,14 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:421
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:429
-#, fuzzy
 msgid ""
 "And I will always remember $intl_ally_name who died along our journey. A "
 "braver warrior I have never seen, and though he was taken from us too soon, "
 "I am glad for the short time that I knew him."
 msgstr ""
-"Stále budu vzpomínat i na $ally_name|a, který zemřel během naší cesty. Nikdy "
-"jsem neviděl statečnějšího válečníka, a i když nás opustil příliš brzy, jsem "
-"rád, že jsem jej znal alespoň po ten krátký čas."
+"Stále budu vzpomínat i na $intl_ally_name|a, který zemřel během naší cesty. "
+"Nikdy jsem neviděl statečnějšího válečníka, a i když nás opustil příliš "
+"brzy, jsem rád, že jsem jej znal alespoň po ten krátký čas."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:439
@@ -16579,9 +16551,8 @@ msgstr "Odcházím přidat se ke předkům..."
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:111
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:205
-#, fuzzy
 msgid "No, $unit.name can't die now!"
-msgstr "Ne, $ally_name nesmí zemřít teď!"
+msgstr "Ne, $unit.name nesmí zemřít teď!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:125

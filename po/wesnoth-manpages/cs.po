@@ -1,7 +1,7 @@
 # translation of wesnoth-manpages.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2006 Wesnoth development team
+# Copyright (C) 2006 - 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:41+0200\n"
-"PO-Revision-Date: 2008-02-04 14:23+0100\n"
+"PO-Revision-Date: 2008-06-12 22:32+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -128,14 +128,14 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "skip menu, show directly the campaign menu."
-msgstr ""
+msgstr "přeskočí hlavní menu a zobrazí ihned seznam tažení."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
@@ -266,14 +266,14 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:94
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:97
 msgid "replays the game loaded with --load option."
-msgstr ""
+msgstr "přehraje záznam načtený volbou --load."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:97 ../../doc/man/wesnothd.6:58
@@ -321,9 +321,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:114
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:120
@@ -369,15 +369,14 @@ msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:129
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid "prints the name of the user configuration directory and exits."
-msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
+msgstr "pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132 ../../doc/man/wesnoth_editor.6:62
@@ -392,9 +391,9 @@ msgstr "nastavuje rozlišení. Příklad: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:136
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [hostitel]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:140
@@ -402,6 +401,8 @@ msgid ""
 "skip menu, connect to specified host if any, otherwise connect to the first "
 "server in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"přeskočí menu, připojí se k určenému hostiteli (pokud byl určen) nebo "
+"prvnímu serveru v nastavení. Příklad: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:140

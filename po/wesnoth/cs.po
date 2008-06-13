@@ -1,7 +1,7 @@
 # translation of wesnoth.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004 - 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-01 11:40+0200\n"
-"PO-Revision-Date: 2008-06-01 17:19+0100\n"
+"PO-Revision-Date: 2008-06-11 18:14+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -2113,7 +2113,6 @@ msgstr "Led"
 
 #. [topic]
 #: data/core/help.cfg:516
-#, fuzzy
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_snow text=Snow</ref>. Note that swimming "
@@ -2121,8 +2120,8 @@ msgid ""
 msgstr ""
 "Ledem je jakákoliv struktura zamrzlé vody. Pro hraní hry má identické "
 "vlastnosti jako <ref>dst=terrain_tundra text=Sníh</ref>. Pamatujte, že "
-"jednotky schopné plavání, vyjma těch co mohou dýchat pod vodou, nemohou "
-"plavat pod ledem."
+"jednotky schopné plavání, ani ty, co mohou dýchat pod vodou, nemohou plavat "
+"pod ledem."
 
 #. [topic]
 #: data/core/help.cfg:521
@@ -3225,7 +3224,6 @@ msgstr "Maximální bonus HP +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr ""
 "Přišel jsi ke studně přání.\n"
@@ -3392,6 +3390,7 @@ msgstr "Jen vodní lidé mohou používat tento předmět!"
 msgid "storm trident"
 msgstr "trojzubec bouře"
 
+# pův.: "Vyzvednout"
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:540
 msgid "Pick it up"
@@ -3399,9 +3398,8 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:557
-#, fuzzy
 msgid "Leave it"
-msgstr "Přejmenuj jednotku"
+msgstr ""
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -4201,6 +4199,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"Počítačový hráč nemůže v tomto scénáři hrát za stranu č. $side_number. "
+"Strana č. $side_number je vyhrazena lidskému hráči."
 
 #. [time]
 #. [illuminated_time]
@@ -4268,7 +4268,6 @@ msgstr ""
 "některými typy útoků, ale pouze při obraně."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
@@ -4623,7 +4622,6 @@ msgstr "Drakonidé"
 
 #. [race]
 #: data/core/units.cfg:66
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4702,11 +4700,10 @@ msgstr ""
 "Drakonidé jsou magická stvoření - život jim dává tajemný magický oheň, "
 "planoucí v jejich útrobách. To je nejlépe vidět, když některý zemře v boji "
 "násilnou smrtí: jeho niterný plamen je prudce uvolněn, načež sežehne tělesné "
-"pozůstatky na popel. Tento vnitřní oheň je zároveň i Achillovou patou; "
-"tvorové tak uvyklí žáru nesnášejí chlad, což proti nim lze snadno využít. "
-"Navzdory magickému původu nedokáží drakonidé kontrolovat a využívat magii, a "
-"to ani tu „uzamčenou“ v jejich tělech, bez níž by nedokázali přežít, natož "
-"pak plivat oheň.\n"
+"pozůstatky na popel. Tento vnitřní oheň je zároveň i jejich největší "
+"slabinou, činí je velmi zranitelné chladem. Navzdory magickému původu "
+"nedokáží drakonidé kontrolovat a využívat magii, a to ani tu „uzamčenou“ v "
+"jejich tělech, bez níž by nedokázali přežít, natož pak plivat oheň.\n"
 "\n"
 "<header>text='Společnost'</header>\n"
 "Drakonidé se zdají být velmi bojovnou rasou. Jejich společnost lze nejlépe "
@@ -4737,13 +4734,13 @@ msgstr ""
 "legendách.\n"
 "\n"
 "<header>text='Geografie'</header>\n"
-"Drakonidé pocházejí z ostrova Morogor, který se nalézá ve Velkém oceánu. "
-"Tento ostrov se však již po staletí pomalu potápí, a drakonidé tak postupně "
-"přesidlují na Velký kontinent, kde zakládají kolonie a zvolna se šíří. "
-"Nejraději mají jeskynní komplexy v blízkosti činných sopek, které jim "
-"skýtají ochranu a kde je jim příjemně teplo. Jejich vnitřní žár jim však "
-"umožňuje žít i v relativně chladném klimatu, díky čemuž obývají i kraje "
-"dálného severu Velkého kontinentu."
+"Drakonidé původně pocházejí z řetězce vulkanických ostrovů ve Velkém oceánu. "
+"Mnoho jejich domovských ostrovů se však pomalu potápí, a navíc populace "
+"drakonidů roste a tak se postupně přesidlují na Velký kontinent. Zakládají "
+"kolonie v jeskynních komplexech v blízkosti činných sopek, které skýtají "
+"ochranu jejich vejcím, mláďatům a kovárnám. Ačkoli od přirozenosti mají rádi "
+"teplo, jejich vnitřní žár jim umožňuje žít i v relativně chladném klimatu, "
+"díky čemuž obývají i kraje dálného severu Velkého kontinentu."
 
 #. [race]
 #: data/core/units.cfg:73
@@ -6639,9 +6636,8 @@ msgid "Show replay"
 msgstr "Ukaž záznamy"
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:669
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Zrušit"
+msgstr "Zrušit příkazy"
 
 #: src/dialogs.cpp:672 src/multiplayer_create.cpp:87
 msgid "OK"
@@ -7015,11 +7011,12 @@ msgid "invisible: "
 msgstr "neviditelný: "
 
 #: src/generate_report.cpp:107
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
-msgstr "Tato jednotka byla zpomalena. Způsobuje polovinu normálního poškození."
+msgstr ""
+"Tato jednotka byla zpomalena. Způsobuje polovinu normálního poškození a "
+"pohyb ji stojí dvojnásobek bodů pohybu."
 
 #: src/generate_report.cpp:107
 msgid "slowed: "
@@ -7059,7 +7056,7 @@ msgstr "Odolnosti: "
 
 #: src/generate_report.cpp:176
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Út / Obr)"
 
 #: src/generate_report.cpp:195 src/multiplayer_create.cpp:399
 msgid "Experience Modifier: "
@@ -7081,21 +7078,19 @@ msgstr[1] "útoky"
 msgstr[2] "útoků"
 
 #: src/generate_report.cpp:271
-#, fuzzy
 msgid "tooltip^accuracy"
 msgid_plural "accuracy"
-msgstr[0] "útok"
-msgstr[1] "útoky"
-msgstr[2] "útoků"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 # pův.: "celkové poškození"
 #: src/generate_report.cpp:276
-#, fuzzy
 msgid "tooltip^parry"
 msgid_plural "parry"
-msgstr[0] "poškození"
-msgstr[1] "poškození"
-msgstr[2] "poškození"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/generate_report.cpp:287
 msgid "weapon range: "
@@ -7373,9 +7368,8 @@ msgid "Do you really want to dismiss him?"
 msgstr "Určitě se jej chceš zbavit?"
 
 #: src/menu_events.cpp:307
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Můj pane, tato jednotka má již jen krůček k povýšení!"
+msgstr "Můj pane, tato jednotka je věrná a nevyžaduje žold!"
 
 #: src/menu_events.cpp:308 src/menu_events.cpp:311 src/menu_events.cpp:315
 msgid "Do you really want to dismiss her?"
@@ -7654,9 +7648,8 @@ msgid "Search"
 msgstr "Najdi popisek nebo jednotku"
 
 #: src/menu_events.cpp:1997
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "K dispozici nejsou žádná tažení.\n"
+msgstr "Tento příkaz nelze momentálně použít."
 
 #: src/menu_events.cpp:2008
 msgid ""
@@ -7665,47 +7658,50 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2113
-#, fuzzy
 msgid " No help available."
-msgstr "K dispozici nejsou žádné úkoly"
+msgstr "K dispozici není žádná nápověda."
 
 #: src/menu_events.cpp:2233
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Zašli dotaz na server.\n"
+"Pokud se nepoužije žádný argument, server by měl vypsat seznam možných "
+"příkazů."
 
 #: src/menu_events.cpp:2236
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Zakaž přístup a odpoj hráče nebo pozorovatele.\n"
+"Pokud není ve hře, ale jen na serveru, bude mu pouze zakázán přístup."
 
 #: src/menu_events.cpp:2239
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Odpoj hráče nebo pozorovatele."
 
 #: src/menu_events.cpp:2241
 msgid "Mute an observer."
-msgstr ""
+msgstr "Umlč pozorovatele."
 
 #: src/menu_events.cpp:2243
 msgid "Mute all observers."
-msgstr ""
+msgstr "Umlč všechny pozorovatele."
 
 #: src/menu_events.cpp:2247
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "Napiš, co děláš, nebo jak se cítíš, do chatu. Použití: /me <message>"
+msgstr "Napiš, co děláš, nebo jak se cítíš, do chatu."
 
 #: src/menu_events.cpp:2250
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control a "
 "side in a running game you are in."
 msgstr ""
-"Pošli soukromou zprávu. Nelze poslat zprávu hráči, který hraje za jakoukoli "
-"stranu ve hře. Použití: /msg <přezdívka> <zpráva>"
+"Pošli soukromou zprávu.\n"
+"Nelze poslat zprávu hráči, který hraje za jakoukoli stranu v právě běžící "
+"hře."
 
 #: src/menu_events.cpp:2256
 msgid "Change the log level of a log domain."
@@ -7713,92 +7709,77 @@ msgstr ""
 
 # nekonzistence addignore/ignore i v angl
 #: src/menu_events.cpp:2258
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr "Přidej uživatele do seznamu otrapů. Použití: /list ignore <uživatel>"
+msgstr "Přidej uživatele do seznamu otrapů."
 
 #: src/menu_events.cpp:2260
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Přidáni do seznamu přátel: "
+msgstr "Přidej uživatele do seznamu přátel"
 
 #: src/menu_events.cpp:2262
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Smaž uživatele ze seznamu otrapů nebo přátel. Použití: /list remove "
-"<uživatel>"
+msgstr "Smaž uživatele ze seznamu otrapů nebo přátel."
 
 #: src/menu_events.cpp:2264
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Zobraz seznam otrapů a přátel. Použití: /list display"
+msgstr "Zobraz seznam otrapů a přátel."
 
 # Když nedostane klient v datech která éra je použita.
 #: src/menu_events.cpp:2267
-#, fuzzy
 msgid "Display version information."
-msgstr "Nenalezeny žádné informace o věku."
+msgstr "Zobraz informace o verzi"
 
 #: src/menu_events.cpp:2386
 msgid "Refresh gui."
-msgstr ""
+msgstr "Obnov grafické rozhraní"
 
 #: src/menu_events.cpp:2388
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Předej/odejmi ovládání strany AI."
 
 #: src/menu_events.cpp:2391
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Převeď ovládání strany jinému hráči nebo pozorovateli"
 
 #: src/menu_events.cpp:2393
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Smaže zprávy rozhovoru.\n"
-"\n"
+msgstr "Smaž zprávy rozhovoru."
 
 #: src/menu_events.cpp:2395
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Vizualizuj obnovovací proceduru obrazovky"
 
 #: src/menu_events.cpp:2398
-#, fuzzy
 msgid "Save game."
 msgstr "Ulož hru"
 
 #: src/menu_events.cpp:2400
-#, fuzzy
 msgid "Quit game."
 msgstr "Ukončit hru"
 
 #: src/menu_events.cpp:2404
 msgid "Save and quit."
-msgstr ""
+msgstr "Uložit a skončit."
 
 #: src/menu_events.cpp:2407
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Ignoruj chyby záznamu"
 
 #: src/menu_events.cpp:2409
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Vypnutí automatického ukládání"
 
 #: src/menu_events.cpp:2411
-#, fuzzy
 msgid "Advance to the next scenario."
 msgstr "Čekám na další scénář..."
 
 #: src/menu_events.cpp:2414
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Příkazy ladícího módu"
+msgstr "Zapnout ladící mód"
 
 #: src/menu_events.cpp:2416
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Vypnout ladící mód"
 
 #: src/menu_events.cpp:2418
 msgid "Set the command used by the custom command hotkey"
@@ -7809,20 +7790,12 @@ msgid "Set a alias to a command"
 msgstr ""
 
 #: src/menu_events.cpp:2422
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"Zobrazí proměnnou stavu hry.\n"
-"\n"
+msgstr "Nastav proměnnou stavu hry."
 
 #: src/menu_events.cpp:2424
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"Zobrazí proměnnou stavu hry.\n"
-"\n"
+msgstr "Zobrazí proměnnou stavu hry."
 
 #: src/menu_events.cpp:2426
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -7830,36 +7803,27 @@ msgstr ""
 
 #: src/menu_events.cpp:2428
 msgid "Add a trait to a unit."
-msgstr ""
+msgstr "Přidej jednotce vlastnost."
 
 #: src/menu_events.cpp:2430
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Odeber jednotce vlastnost. (Zatím nefunkční)"
 
 #: src/menu_events.cpp:2432
-#, fuzzy
 msgid "Create a unit."
-msgstr "Vytvoř hru"
+msgstr "Vytvoř jednotku"
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Přepíná zobrazování mlhy/tmy pro aktivní stranu.\n"
-"\n"
+msgstr "Přepíná zobrazování mlhy pro aktivní stranu."
 
 #: src/menu_events.cpp:2436
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"Přepíná zobrazování mlhy/tmy pro aktivní stranu.\n"
-"\n"
+msgstr "Přepíná zobrazování tmy pro aktivní stranu."
 
 #: src/menu_events.cpp:2438
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Přiděl zlato stávájícímu hráči."
 
 #: src/menu_events.cpp:2440
 msgid "Fire a game event."
@@ -7927,7 +7891,7 @@ msgstr "Ladící mód je aktivní!"
 
 #: src/menu_events.cpp:2828
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Ladící mód nelze spustit během síťové hry"
 
 #: src/menu_events.cpp:2833
 msgid "Debug mode deactivated!"
@@ -7935,7 +7899,7 @@ msgstr "Ladící mód byl ukončen!"
 
 #: src/menu_events.cpp:2966 src/menu_events.cpp:2968
 msgid "ai"
-msgstr ""
+msgstr "AI"
 
 #: src/menu_events.cpp:2974 src/menu_events.cpp:2989
 msgid "prompt^Command:"
@@ -8825,9 +8789,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Rozšíření"
 
 #: src/titlescreen.cpp:372
-#, fuzzy
 msgid "TitleScreen button^Editor"
-msgstr "Konec"
+msgstr "Editor"
 
 #: src/titlescreen.cpp:374
 msgid "TitleScreen button^Language"
@@ -8887,7 +8850,7 @@ msgstr "Stažení dalších tažení, ér či balíčků map vytvořených uživ
 
 #: src/titlescreen.cpp:392
 msgid "Start the map editor"
-msgstr ""
+msgstr "Otevři editor"
 
 #: src/titlescreen.cpp:394
 msgid "Change the language"
@@ -8975,12 +8938,14 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+# Nepřekládal bych až tak moc. Navrhuji "Parování"
 #: src/unit_types.cpp:218
+#, fuzzy
 msgid "parry"
 msgid_plural "parry"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "parování"
+msgstr[1] "parování"
+msgstr[2] "parování"
 
 #: src/unit_types.cpp:858
 msgid "chaotic"
