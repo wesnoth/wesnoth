@@ -687,16 +687,19 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 			damage = slow_damage;
 
 		// Compute the number of blows and handle swarm.
-		unit_ability_list swarm_specials = weapon->get_specials("attacks");
+		unit_ability_list swarm_specials = weapon->get_specials("swarm");
 
 		if (!swarm_specials.empty()) {
 			swarm = true;
-			swarm_min = swarm_specials.highest("attacks_min").first;
-			swarm_max = swarm_specials.highest("attacks_max", weapon->num_attacks()).first;
+			swarm_min = swarm_specials.highest("swarm_attacks_min").first;
+			swarm_max = swarm_specials.highest("swarm_attacks_max", weapon->num_attacks()).first;
 			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
 		} else {
 			swarm = false;
 			num_blows = weapon->num_attacks();
+			unit_ability_list attacks_specials = weapon->get_specials("attacks");
+			unit_abilities::effect attacks_effect(attacks_specials,num_blows,backstab_pos);
+			num_blows = attacks_effect.get_composite_value();
 			swarm_min = num_blows;
 			swarm_max = num_blows;
 		}
