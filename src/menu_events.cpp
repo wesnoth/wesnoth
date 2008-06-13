@@ -2893,9 +2893,15 @@ private:
 			return;
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if (i == menu_handler_.units_.end()) return;
-		const std::string name = get_arg(1);
-		const std::string value = get_data(2);
-		if (value.empty()) return;
+		const std::string data = get_data(1);
+		std::vector<std::string> parameters = utils::split(data, '=',
+			utils::REMOVE_EMPTY | utils::STRIP_SPACES);
+		if (parameters.size() < 2)
+			return;
+		
+		const std::string& name = parameters[0];
+		const std::string& value = parameters[1];
+
 		// FIXME: Avoids a core dump on display
 		// because alignment strings get reduced
 		// to an enum, then used to index an
