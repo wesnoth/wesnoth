@@ -12,6 +12,15 @@ Version 1.5.0+svn:
        second scenario
    * Son of the Black Eye:
      * fixed a crash in 'Dwarvish Stand'
+   * An Orcish Incursion
+	 * new storyline and dialogues to scenario 1
+	 * new storyline and dialogues to scenario 2
+	 * made the AI do mixed recruits in scenario 2
+	 * new storyline and dialogues to scenario 3
+	 * added a form of gold bonus to scenario 3
+	 * new storyline to scenario 4
+   * Under the Burning Suns
+	 * fixed event spawning elves in outer villages
  * game engine:
    * poison no longer prevents resting
  * graphics:
@@ -74,6 +83,9 @@ Version 1.5.0+svn:
    * rename the "hides" status as "hidden"
    * add a new image path function : GS to greyscale the image
    * [store_map_dimensions] also stores map border size now.
+   * renamed old [attacks] special to [swarm]
+   * created [attacks] special with expected behaviour and usage similar to
+	 [damage] special
  * wesnothd
    * added expiration time to bans
    * added restart command to server that does graceful restart
@@ -124,7 +136,8 @@ Version 1.5.0+svn:
    * Give its name to the "Fog clearer" (fixing blank in "Create Unit" dialog)
    * fix bug with filter + delete savegame (Gna! bug #11779)
    * Optimize cache validation and first display initialization.
-
+   * corrected setlocale() usage on win32
+   
 Version 1.5.0:
  * campaigns:
    * synchronize all campaign ids with their directory name
