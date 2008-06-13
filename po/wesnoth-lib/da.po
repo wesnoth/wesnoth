@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-01 11:41+0200\n"
+"POT-Creation-Date: 2008-06-13 13:27+0200\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -878,49 +878,54 @@ msgstr "Nyt tema vil være aktivt i næste nye eller hentede spil."
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 
-#: src/gui/widgets/canvas.cpp:252
+#: src/gui/widgets/canvas.cpp:255
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:360
+#: src/gui/widgets/canvas.cpp:366
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:706
+#: src/gui/widgets/canvas.cpp:714
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:126
+#: src/gui/widgets/helper.cpp:184
+#, fuzzy
+msgid "Mandatory widget '$id' hasn't been defined."
+msgstr "Ingen server er defineret."
+
+#: src/gui/widgets/settings.cpp:128
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:232
+#: src/gui/widgets/settings.cpp:234
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:291
+#: src/gui/widgets/settings.cpp:293
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:403 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:435
+#: src/gui/widgets/settings.cpp:437
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:587
+#: src/gui/widgets/settings.cpp:589
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Ingen server er defineret."
 
 #: src/gui/widgets/window_builder.cpp:391
-#: src/gui/widgets/window_builder.cpp:902
+#: src/gui/widgets/window_builder.cpp:942
 #, fuzzy
 msgid "No grid defined."
 msgstr "Ingen server er defineret."

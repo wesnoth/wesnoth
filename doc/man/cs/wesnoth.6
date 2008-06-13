@@ -48,7 +48,7 @@ ostatními.
 nastavuje hodnotu BitsPerPixel \- poèet bitù na bod. Pøíklad: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
-skip menu, show directly the campaign menu.
+pøeskoèí hlavní menu a zobrazí ihned seznam ta¾ení.
 .TP 
 \fB\-\-compress\fP\fI\ vstupní_soubor\ výstupní_soubor\fP
 komprimuje soubor s ulo¾enou hrou (\fIvstupní_soubor\fP), který je v textovém
@@ -85,7 +85,7 @@ zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 nahraje ulo¾enou hru ze souboru ze standardního adresáøe pro ulo¾ené hry.
 .TP 
 \fB\-\-with\-replay\fP
-replays the game loaded with \-\-load option.
+pøehraje záznam naètený volbou \-\-load.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
 nastavuje úroveò záva¾nosti pro jednotlivé kategorie. \fBall\fP znamená, ¾e
@@ -113,14 +113,14 @@ spustí hru bez zvukù a hudby.
 pouze zobrazí cestu k adresáøi s daty a skonèí.
 .TP 
 \fB\-\-config\-path\fP
-prints the name of the user configuration directory and exits.
+pouze zobrazí cestu k adresáøi s konfiguraèními soubory a skonèí.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastavuje rozli¹ení. Pøíklad: \fB\-r 800x600\fP
 .TP 
-\fB\-s,\ \-\-server\ [host]\fP
-skip menu, connect to specified host if any, otherwise connect to the first
-server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+\fB\-s,\ \-\-server\ [hostitel]\fP
+pøeskoèí menu, pøipojí se k urèenému hostiteli (pokud byl urèen) nebo
+prvnímu serveru v nastavení. Pøíklad: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 spou¹tí hru v malém testovacím scénáøi.

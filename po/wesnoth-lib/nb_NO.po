@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-01 11:41+0200\n"
+"POT-Creation-Date: 2008-06-13 13:27+0200\n"
 "PO-Revision-Date: 2007-02-16 19:40+0100\n"
 "Last-Translator: Gauteamus <gauteamusATgmailDOTcom>\n"
 "Language-Team: none\n"
@@ -875,47 +875,51 @@ msgstr "Nytt tema vil tre i effekt ved neste nye eller lastede spill."
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Ingen kjente tema. Prøv å endre fra et eksisterende spill."
 
-#: src/gui/widgets/canvas.cpp:252
+#: src/gui/widgets/canvas.cpp:255
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:360
+#: src/gui/widgets/canvas.cpp:366
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:706
+#: src/gui/widgets/canvas.cpp:714
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:126
+#: src/gui/widgets/helper.cpp:184
+msgid "Mandatory widget '$id' hasn't been defined."
+msgstr ""
+
+#: src/gui/widgets/settings.cpp:128
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:232
+#: src/gui/widgets/settings.cpp:234
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:291
+#: src/gui/widgets/settings.cpp:293
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:403 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Kartlaging mislyktes."
 
-#: src/gui/widgets/settings.cpp:435
+#: src/gui/widgets/settings.cpp:437
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:587
+#: src/gui/widgets/settings.cpp:589
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Kartlaging mislyktes."
 
 #: src/gui/widgets/window_builder.cpp:391
-#: src/gui/widgets/window_builder.cpp:902
+#: src/gui/widgets/window_builder.cpp:942
 msgid "No grid defined."
 msgstr ""
 

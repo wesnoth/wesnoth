@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-01 11:41+0200\n"
+"POT-Creation-Date: 2008-06-13 13:27+0200\n"
 "PO-Revision-Date: 2008-06-03 20:48+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -871,47 +871,52 @@ msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Aucun thème connu. Essayez de le changer à partie d'une partie en cours."
 
-#: src/gui/widgets/canvas.cpp:252
+#: src/gui/widgets/canvas.cpp:255
 msgid "Line doesn't fit on canvas."
 msgstr "La ligne ne tient pas dans le cadre."
 
-#: src/gui/widgets/canvas.cpp:360
+#: src/gui/widgets/canvas.cpp:366
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Le rectangle ne tient pas dans le cadre."
 
-#: src/gui/widgets/canvas.cpp:706
+#: src/gui/widgets/canvas.cpp:714
 msgid "Text doesn't start on canvas."
 msgstr "Le texte ne commence pas dans le cadre."
 
-#: src/gui/widgets/settings.cpp:126
+#: src/gui/widgets/helper.cpp:184
+#, fuzzy
+msgid "Mandatory widget '$id' hasn't been defined."
+msgstr "Aucun serveur défini"
+
+#: src/gui/widgets/settings.cpp:128
 msgid "No default gui defined."
 msgstr "Aucune IHM définie par défaut."
 
-#: src/gui/widgets/settings.cpp:232
+#: src/gui/widgets/settings.cpp:234
 msgid "Window not defined."
 msgstr "Fenêtre non définie."
 
-#: src/gui/widgets/settings.cpp:291
+#: src/gui/widgets/settings.cpp:293
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "La définition de Widget « $definition » ne contient pas la définition de "
 "« $id »."
 
-#: src/gui/widgets/settings.cpp:403 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
 msgid "No resolution defined."
 msgstr "Aucune résolution définie."
 
-#: src/gui/widgets/settings.cpp:435
+#: src/gui/widgets/settings.cpp:437
 msgid "No state or draw section defined."
 msgstr "Aucun état ou zone de dessin défini."
 
-#: src/gui/widgets/settings.cpp:587
+#: src/gui/widgets/settings.cpp:589
 msgid "No scrollbar defined."
 msgstr "Aucune barre de défilement définie."
 
 #: src/gui/widgets/window_builder.cpp:391
-#: src/gui/widgets/window_builder.cpp:902
+#: src/gui/widgets/window_builder.cpp:942
 msgid "No grid defined."
 msgstr "Aucune grille définie."
 
