@@ -60,11 +60,11 @@ ADDON_TYPE get_addon_type(const std::string& str)
 		return ADDON_SP_CAMPAIGN;
 	else if (str == "scenario")
 		return ADDON_SP_SCENARIO;
-	else if (str == "era" || str == "era_mp")
+	else if (str == "era")
 		return ADDON_MP_ERA;
-	else if (str == "faction" || str == "faction_mp")
+	else if (str == "faction")
 		return ADDON_MP_FACTION;
-	else if (str == "maps_mp" || str == "maps" || str == "map_pack" || str == "map_pack_mp")
+	else if (str == "map_pack")
 		return ADDON_MP_MAPS;
 	else if (str == "scenario_mp")
 		return ADDON_MP_SCENARIO;
