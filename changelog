@@ -87,6 +87,9 @@ Version 1.5.0+svn:
    * created [attacks] special with expected behaviour and usage similar to
 	 [damage] special
  * wesnothd
+   * added selective ping support - saves server bandwidth
+   * updated pings to use new simple_wml
+   * pings now sent using raw method to they only get compressed once for batch
    * added expiration time to bans
    * added restart command to server that does graceful restart
    * added option to do graceful shut down for server
@@ -100,6 +103,7 @@ Version 1.5.0+svn:
    * authors can specify the type of their content ('type'
      field in .pbl files)
  * miscellaneous and bug fixes:
+   * Client now sends 'selective_ping="1"' during login
    * fixed parser bug that prevented loading binary data strings
    * fixed issues with campaign info in non-compressed saved games
      (bug #11386)

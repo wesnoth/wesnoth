@@ -25,13 +25,14 @@
 class player
 {
 public:
-	player(const std::string& n, simple_wml::node& cfg, const size_t max_messages=4, const size_t time_period=10);
+  player(const std::string& n, simple_wml::node& cfg, const size_t max_messages=4, const size_t time_period=10, const bool sp=false);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
 	void mark_available(const int game_id=0, const std::string location="");
 
 
 	const std::string& name() const { return name_; }
+        const bool selective_ping() const { return selective_ping_ ; }
 
 	simple_wml::node* config_address() const { return &cfg_; }
 
@@ -41,6 +42,7 @@ public:
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
+        const bool selective_ping_ ;
 
 	time_t flood_start_;
 	unsigned int messages_since_flood_start_;

@@ -260,6 +260,8 @@ private:
 
 	//! std::map<network::connection,player>
 	player_map players_;
+        player_map ghost_players_ ;
+
 	std::vector<game*> games_;
 	game not_logged_in_;
 	//! The lobby is implemented as a game.
@@ -469,6 +471,7 @@ void server::dump_stats(const time_t& now) {
 	LOG_SERVER << "Statistics:"
 		<< "\tnumber_of_games = " << games_.size()
 		<< "\tnumber_of_users = " << players_.size()
+	     << "\tnumber_of_ghost_users = " << ghost_players_.size()
 		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
 }
 
@@ -491,11 +494,13 @@ void server::run() {
 				process_command("msg All games ended. Shutting down now. Reconnect to the new server.");
 				throw network::error("shut down");
 			}
+
 			if (config_reload == 1) {
 				cfg_ = read_config();
 				load_config();
 				config_reload = 0;
 			}
+
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_.read_line(admin_cmd)) {
@@ -503,7 +508,7 @@ void server::run() {
 			}
 
 			time_t now = time(NULL); 
-			if (last_ping_ + 15 <= now) {
+			if (last_ping_ + 30 <= now) {
 				// and check if bans have expired
 				ban_manager_.check_ban_times(now);
 				// Make sure we log stats every 5 minutes
@@ -511,12 +516,28 @@ void server::run() {
 					dump_stats(now);
 				}
 				// send a 'ping' to all players to detect ghosts
-				config ping;
-				ping["ping"] = lexical_cast<std::string>(now);
-				for (player_map::const_iterator i = players_.begin();
-					i != players_.end(); ++i)
+				DBG_SERVER << "Pinging inactive players.\n" ;
+ 				std::ostringstream strstr ;
+ 				strstr << "ping=\"" << lexical_cast<std::string>(now) << "\"" ;
+ 				simple_wml::document ping( strstr.str().c_str(),
+ 							   simple_wml::INIT_COMPRESSED ) ;
+ 				simple_wml::string_span s = ping.output_compressed() ;
+ 				for (player_map::const_iterator i = ghost_players_.begin();
+ 				     i != ghost_players_.end(); ++i)
+ 				  {
+ 				    DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n" ;
+ 				    network::send_raw_data( s.begin(), 
+ 							    s.size(),
+ 							    i->first ) ;
+ 				  }
+ 
+ 				// Copy new player list on top of ghost_players_ list.
+ 				// Only a single thread should be accessing this
 				{
-					network::send_data(ping, i->first, true);
+ 				  // Erase before we copy - speeds inserts
+ 				  ghost_players_.clear() ;
+ 				  std::copy( players_.begin(), players_.end(),
+ 					     std::inserter( ghost_players_, ghost_players_.begin() ) ) ;
 				}
 				last_ping_ = now;
 			}
@@ -558,6 +579,7 @@ void server::run() {
 				//message. (ugh). We will see if this looks like binary WML
 				//and if it does, assume it's a leave_game message
 				if(buf.front() < 5) {
+				  std::cerr << "hit wesnoth bug...forcing disconnection incorrectly." << buf.front() << std::endl ;
 					static simple_wml::document leave_game_doc(
 					    "[leave_game]\n[/leave_game]\n",
 						simple_wml::INIT_COMPRESSED);
@@ -684,6 +706,15 @@ void server::process_data(const network::connection sock,
 		proxy::received_data(sock, data);
 	}
 
+	// We know the client is alive for this interval
+	// Remove player from ghost_players map if selective_ping
+	// is enabled for the player.
+	const player_map::const_iterator pl = ghost_players_.find( sock ) ;
+	if( pl != ghost_players_.end() && pl->second.selective_ping() ) {
+	  ghost_players_.erase( sock ) ;
+	}
+
+	// Process the message
 	simple_wml::node& root = data.root();
 	if(root.has_attr("ping")) {
 		// Ignore client side pings for now.
@@ -701,6 +732,7 @@ void server::process_data(const network::connection sock,
 		process_data_game(sock, data);
 	}
 }
+
 
 
 void server::process_login(const network::connection sock,
@@ -813,12 +845,29 @@ void server::process_login(const network::connection sock,
 		}
 	}
 
+	// Check if the version is now avaliable. If it is not, this player must
+	// always be pinged.
+	bool selective_ping = false ;
+	if( (*login)["selective_ping"].to_bool() ) {
+	  selective_ping = true ;
+	  DBG_SERVER << "selective ping is ENABLED for " << sock << "\n" ;
+	} else {
+	  DBG_SERVER << "selective ping is DISABLED for  " << sock << "\n" ;
+	}
+
 	send_doc(join_lobby_response_, sock);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 	const player new_player(username, player_cfg, default_max_messages_,
-		default_time_period_);
+				default_time_period_, selective_ping );
+
+	// If the new player does not have selective ping enabled, immediately
+	// add the player to the ghost player's list. This ensures a client won't
+	// have to wait as long as x2 the current ping delay; which could cause
+	// a client-side disconnection.
 	players_.insert(std::pair<network::connection,player>(sock, new_player));
+	if( !selective_ping )
+	  ghost_players_.insert( std::pair<network::connection,player>(sock, new_player) ) ;
 
 	not_logged_in_.remove_player(sock);
 	lobby_.add_player(sock, true);
@@ -940,8 +989,9 @@ std::string server::process_command(const std::string& query) {
 		out << help_msg;
 	} else if (command == "metrics") {
 		out << metrics_ << "Current number of games = " << games_.size() << "\n"
-		"Total number of users = " << players_.size() << "\n"
-		"Number of users in the lobby = " << lobby_.nobservers() << "\n";
+		  "Total number of users = " << players_.size() << "\n"
+		  "Total number of ghost users = " << ghost_players_.size() << "\n"
+		  "Number of users in the lobby = " << lobby_.nobservers() << "\n";
 	} else if (command == "wml") {
 		out << simple_wml::document::stats();
 	} else if (command == "netstats") {

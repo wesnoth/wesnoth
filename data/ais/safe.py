@@ -33,7 +33,7 @@ _NODE_CLASS_OK = [
     'Assert', 'Assign','AugAssign', 'Bitand', 'Bitor', 'Bitxor', 'Break',
     'CallFunc', 'Class', 'Compare', 'Const', 'Continue',
     'Dict', 'Discard', 'Div', 'Ellipsis', 'Expression', 'FloorDiv',
-    'For', 'Function', 'Getattr', 'If', 'Keyword',
+    'For', 'Function', 'Getattr', 'If', 'Keyword', 'Lambda',
     'LeftShift', 'List', 'ListComp', 'ListCompFor', 'ListCompIf', 'Mod',
     'Module', 'Mul', 'Name', 'Node', 'Not', 'Or', 'Pass', 'Power',
     'Print', 'Printnl', 'Return', 'RightShift', 'Slice', 'Sliceobj',
@@ -126,7 +126,7 @@ def safe_run(code,context=None):
 
 # If you want to disable safe python, use this instead:
 #
-# def safe_exec(code, context = None): exec code in context
+##def safe_exec(code, context = None): exec code in context
 def safe_exec(code, context = None):
     """Check the code to be safe, then run it with only safe builtins on."""
     safe_check(code)

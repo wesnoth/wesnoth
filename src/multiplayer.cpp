@@ -239,8 +239,22 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 				first_time = false;
 
-				config response;
-				response.add_child("login")["username"] = login;
+				config response ;
+				config &sp = response.add_child("login") ;
+				sp["username"] = login ;
+
+				// Login and enable selective pings -- saves server bandwidth
+				// If ping_timeout has a non-zero value, do not enable
+				// selective pings as this will cause clients to falsely
+				// believe the server has died and disconnect.
+				if( preferences::get_ping_timeout() ) {
+				  // Pings required so disable selective pings
+				  sp["selective_ping"] = "0" ;
+				} else {
+				  // Client is bandwidth friendly so allow
+				  // server to optimize ping frequency as needed.
+				  sp["selective_ping"] = "1" ;
+				}
 				network::send_data(response, 0, true);
 
 				network::connection data_res = network::receive_data(data, 0, 3000);
