@@ -14,6 +14,7 @@
 #ifndef UNIT_TYPES_H_INCLUDED
 #define UNIT_TYPES_H_INCLUDED
 
+#include "disable_gcc_concept_checks.hpp"
 #include "unit_animation.hpp"
 #include "config.hpp"
 #include "map.hpp"
