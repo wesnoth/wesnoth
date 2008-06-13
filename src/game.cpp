@@ -1707,13 +1707,15 @@ bool game_controller::play_multiplayer()
 	}
 
 	try {
-
 		/* do */ {
 			reset_defines_map();
 			defines_map_[state_.campaign_define] = preproc_define();
 			refresh_game_cfg();
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
+			// update binary paths
+			paths_manager_.set_paths(game_config_);
+			clear_binary_paths_cache();
 		}
 
 		if(res == 2) {
