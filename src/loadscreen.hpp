@@ -38,10 +38,7 @@ class loadscreen {
 		// Destructor, dumps the counter values to stderr
 		~loadscreen()
 		{
-			std::cerr << "loadscreen: filesystem counter = " << filesystem_counter << std::endl;
-			std::cerr << "loadscreen: binarywml counter = "  << binarywml_counter  << std::endl;
-			std::cerr << "loadscreen: setconfig counter = "  << setconfig_counter  << std::endl;
-			std::cerr << "loadscreen: parser counter = "     << parser_counter     << std::endl;
+			dump_counters();
 			if (logo_surface_) {
 				SDL_FreeSurface (logo_surface_);
 			}
@@ -85,6 +82,8 @@ private:
 		bool logo_drawn_;
 		int pby_offset_;
 		int prcnt_;
+
+		void dump_counters() const;
 };
 
 // Global accessible functions that centralize the loadscreen related work.

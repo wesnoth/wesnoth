@@ -17,6 +17,7 @@
 
 #include "loadscreen.hpp"
 
+#include "log.hpp"
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
@@ -26,6 +27,9 @@
 #include <cassert>
 
 #include <SDL_image.h>
+
+#define INFO_DISP LOG_STREAM(info, display)
+#define ERR_DISP LOG_STREAM(err, display)
 
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
@@ -72,7 +76,7 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 	std::string path = get_binary_file_location("images","misc/logo.png");
 	logo_surface_ = IMG_Load(path.c_str());
 		if (!logo_surface_) {
-			std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
+			ERR_DISP << "loadscreen: Failed to load the logo: " << path << std::endl;
 		}
 	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
 }
@@ -106,7 +110,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 			pby_offset_ = (pbh + area.h)/2;
 			SDL_BlitSurface (logo_surface_, 0, gdis, &area);
 		} else {
-			std::cerr << "loadscreen: Logo image is too big." << std::endl;
+			ERR_DISP << "loadscreen: Logo image is too big." << std::endl;
 		}
 		logo_drawn_ = true;
 		SDL_UpdateRect(gdis, area.x, area.y, area.w, area.h);
@@ -189,6 +193,14 @@ void loadscreen::clear_screen(const bool commit)
 }
 
 loadscreen *loadscreen::global_loadscreen = 0;
+
+void loadscreen::dump_counters() const
+{
+	INFO_DISP << "loadscreen: filesystem counter = " << filesystem_counter << '\n';
+	INFO_DISP << "loadscreen: binarywml counter = "  << binarywml_counter  << '\n';
+	INFO_DISP << "loadscreen: setconfig counter = "  << setconfig_counter  << '\n';
+	INFO_DISP << "loadscreen: parser counter = "     << parser_counter     << '\n';
+}
 
 // Amount of work to expect during the startup-stages,
 // for scaling the progressbars:
