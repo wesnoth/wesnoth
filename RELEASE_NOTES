@@ -22,4 +22,7 @@ compatible with recent changes to the addon server.
 Now content authors can specify the type of their addons. See the documentation
 updates at http://www.wesnoth.org/wiki/PblWML for details.
 
-
+Multiplayer era authors can put their [binary_path] declarations inside the
+MULTIPLAYER #ifdef block (or similar). This was a fix to an ancient, forgotten
+bug that a developer noticed while playing a single-player campaign that
+conflicted with a multiplayer era's binary_path.
