@@ -141,6 +141,8 @@ Version 1.5.0+svn:
    * fix bug with filter + delete savegame (Gna! bug #11779)
    * Optimize cache validation and first display initialization.
    * corrected setlocale() usage on win32
+   * Fixed [binary_path] declarations not being recognized inside the MULTIPLAYER
+     #ifdef for eras
    
 Version 1.5.0:
  * campaigns:
