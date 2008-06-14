@@ -18,6 +18,8 @@
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/mp_connect.hpp"
+#include "gui/widgets/button.hpp"
 #include "log.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
@@ -134,13 +136,25 @@ static server_type open_connection(game_display& disp, const std::string& origin
 	std::string h = original_host;
 
 	if(h.empty()) {
-		gui::dialog d(disp, _("Connect to Host"), "", gui::OK_CANCEL);
-		d.set_textbox(_("Choose host to connect to: "), preferences::network_host());
-		d.add_button( new server_button(disp.video()), gui::dialog::BUTTON_EXTRA);
-		if(d.show() || d.textbox_text().empty()) {
-			return ABORT_SERVER;
+		if(gui2::new_widgets) {
+			gui2::tmp_connect dlg;
+
+			dlg.show(disp.video());
+			if(dlg.get_retval() == gui2::tbutton::OK) {
+				h = dlg.host_name();
+			} else {
+				return ABORT_SERVER;
+			}
+			
+		} else {
+			gui::dialog d(disp, _("Connect to Host"), "", gui::OK_CANCEL);
+			d.set_textbox(_("Choose host to connect to: "), preferences::network_host());
+			d.add_button( new server_button(disp.video()), gui::dialog::BUTTON_EXTRA);
+			if(d.show() || d.textbox_text().empty()) {
+				return ABORT_SERVER;
+			}
+			h = d.textbox_text();
 		}
-		h = d.textbox_text();
 	}
 
 	network::connection sock;

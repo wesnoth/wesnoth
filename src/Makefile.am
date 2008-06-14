@@ -72,6 +72,7 @@ wesnoth_source = \
 	gui/dialogs/addon_connect.cpp \
 	gui/dialogs/dialog.cpp \
 	gui/dialogs/language_selection.cpp \
+	gui/dialogs/mp_connect.cpp \
 	gui/dialogs/mp_method_selection.cpp \
 	gui/widgets/button.cpp \
 	gui/widgets/canvas.cpp \

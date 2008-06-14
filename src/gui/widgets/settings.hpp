@@ -34,10 +34,12 @@ namespace gui2 {
 extern bool new_widgets;
 
 enum twindow_type {
-	ADDON_CONNECT,           //<! The addon connection dialog.
+	ADDON_CONNECT,           //<! The addon server connection dialog.
 	LANGUAGE_SELECTION,      //<! The language selection dialog.
+	MP_CONNECT,              //<! The mp server connection dialog.
 	MP_METHOD_SELECTION,     //<! The dialog which allows you to choose the kind
 	                         //!  mp game the user wants to play.
+	MP_SERVER_LIST,          //<! The mp server list dialog.
 
 	DUMMY                    //<! Dummy always the last one.
 };
