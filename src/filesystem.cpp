@@ -860,21 +860,23 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	const std::vector<std::string>& paths = get_binary_paths(type);
-	if(!filename.empty()) {
-		DBG_FS << "Looking for " << filename << " in  '.'\n";
-		if(file_exists(filename)) {
-		  DBG_FS << "  Found at " << filename << "\n";
-			return filename;
-		}
-	}
+	DBG_FS << "Looking for " << filename << "\n";
 
+	const std::vector<std::string>& paths = get_binary_paths(type);
 	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
 		const std::string file = *i + filename;
 		DBG_FS << "  Checking " << *i << "\n";
 		if(file_exists(file)) {
 		  DBG_FS << "  Found at " << file << "\n";
 			return file;
+		}
+	}
+
+	if(!filename.empty()) {
+		DBG_FS << "  Checking '.' \n";
+		if(file_exists(filename)) {
+		  DBG_FS << "  Found at " << filename << "\n";
+			return filename;
 		}
 	}
 
