@@ -32,9 +32,9 @@ public:
 
 
 	const std::string& name() const { return name_; }
-        const bool selective_ping() const { return selective_ping_ ; }
+	bool selective_ping() const { return selective_ping_ ; }
 
-	simple_wml::node* config_address() const { return &cfg_; }
+	const simple_wml::node* config_address() const { return &cfg_; }
 
 	bool silenced() const { return messages_since_flood_start_ > MaxMessages; }
 	bool is_message_flooding();
@@ -42,7 +42,7 @@ public:
 private:
 	const std::string name_;
 	simple_wml::node& cfg_;
-        const bool selective_ping_ ;
+	const bool selective_ping_ ;
 
 	time_t flood_start_;
 	unsigned int messages_since_flood_start_;
