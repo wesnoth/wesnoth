@@ -1419,6 +1419,11 @@ void game_controller::download_addons(std::string host)
 		gui::menu *addon_menu = new gui::menu(disp().video(), options, false, -1,
 			gui::dialog::max_menu_width, &sorter, &addon_style, false);
 		addon_dialog.set_menu(addon_menu);
+
+		gui::filter_textbox* filter = new gui::filter_textbox(disp().video(),
+			_("Filter: "), options, addon_dialog, 300);
+		addon_dialog.set_textbox(filter);
+
 		const int index = addon_dialog.show();
 		if(index < 0) {
 			return;
