@@ -1018,7 +1018,8 @@ bool game_controller::new_campaign()
 			_("Select difficulty level:"), gui::OK_CANCEL);
 		dlg.set_menu(difficulty_options);
 		if(dlg.show() == -1) {
-			return false;
+			// canceled difficulty dialog, relaunch the campaign selection dialog
+			return new_campaign();
 		}
 
 		state_.difficulty = difficulties[dlg.result()];
