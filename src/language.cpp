@@ -359,19 +359,25 @@ void init_textdomains(const config& cfg)
 		} else {
 			//This is adapted version from a call to get_binary_file_location()
 			DBG_FS << "  Looking for textdomain path" << path << "\n";
+			std::string location;
+
 			const std::vector<std::string>& paths = get_binary_paths(path);
 			for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
 				DBG_FS << "  Checking " << *i << "\n";
-				const std::string location = *i + path;
-				if(is_directory(location)) {
-					DBG_FS << "  Found at " << location << "\n";
-					t_string::add_textdomain(name, location);
-				} else {
-					//if location is empty, this causes a crash on Windows, so we
-					//disallow adding empty domains
-					std::cerr << "no location found for '" << path << "', not adding textdomain\n";
+				if(is_directory(*i + path)) {
+					location = *i + path;
+					break;
 				}
 			}
+
+			if (location.empty()) {
+				//if location is empty, this causes a crash on Windows, so we
+				//disallow adding empty domains
+				std::cerr << "no location found for '" << path << "', not adding textdomain\n";
+			} else {
+				DBG_FS << "  Found at " << location << "\n";
+				t_string::add_textdomain(name, location);
+			} 
 		}
 	}
 
