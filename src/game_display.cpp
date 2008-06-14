@@ -278,9 +278,13 @@ void game_display::draw(bool update,bool force)
 	bool changed = display::draw_init();
 
 	//log_scope("Drawing");
+	// invalidate all that needs to be invalidated
 	invalidate_animations();
+	// at this stage we have everything that needs to be invalidated for this redraw
+	// save it as the previous invalidated, and merge with the previous invalidated_
 	previous_invalidated_.swap(invalidated_);
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
+	// call invalidate_animation again to deal with new conflict arising from the merge
 	invalidate_animations();
 
 	process_reachmap_changes();
