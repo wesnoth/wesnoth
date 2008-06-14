@@ -78,7 +78,7 @@ private:
 	void post_show(twindow& window);
 };
 
-void tmp_server_list::pre_show(CVideo& video, twindow& window)
+void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox* list = 
 		dynamic_cast<tlistbox*>(window.find_widget("server_list", false));
@@ -172,7 +172,7 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	}
 }
 
-void tmp_connect::post_show(twindow& window)
+void tmp_connect::post_show(twindow& /*window*/)
 {
 	if(get_retval() == tbutton::OK) {
 		host_name_widget_->save_to_history();
