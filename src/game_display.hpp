@@ -299,6 +299,9 @@ private:
 	//! Animated flags for each team
 	std::vector<animated<image::locator> > flags_;
 
+	//! the tiles invalidated at last redraw, 
+	//! to simplify the cleaning up of tiles left by units
+	std::set<gamemap::location> previous_invalidated_;
 	static game_display * singleton_;
 };
 

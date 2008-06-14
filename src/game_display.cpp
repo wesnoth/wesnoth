@@ -279,6 +279,9 @@ void game_display::draw(bool update,bool force)
 
 	//log_scope("Drawing");
 	invalidate_animations();
+	previous_invalidated_.swap(invalidated_);
+	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
+	invalidate_animations();
 
 	process_reachmap_changes();
 
