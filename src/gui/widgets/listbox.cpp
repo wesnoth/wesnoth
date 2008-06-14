@@ -485,6 +485,12 @@ void tlistbox::set_row_active(const unsigned row, const bool active)
 	rows_[row].grid()->set_active(active);
 }
 
+const tgrid* tlistbox::get_row_grid(const unsigned row) const
+{
+	assert(row < rows_.size());
+	return rows_[row].grid();
+}
+
 tlistbox::trow::trow(const tbuilder_grid& list_builder_, 
 		const std::map<std::string, titem>& data) :
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),

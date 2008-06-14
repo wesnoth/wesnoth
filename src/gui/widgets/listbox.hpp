@@ -171,6 +171,20 @@ public:
 	 */
 	void set_row_active(const unsigned row, const bool active);
 
+	/**
+	 * Returns the grid of the wanted row.
+	 *
+	 * There's only a const version since allowing callers to modify the grid
+	 * behind our backs might give problems. We return a pointer instead of a
+	 * reference since dynamic casting of pointers is easier (no try catch
+	 * needed).
+	 *
+	 * @param row                 The row to get the grid from, the caller has
+	 *                            to make sure the row is a valid row.
+	 * @returns                   The grid of the wanted row.
+	 */
+	const tgrid* get_row_grid(const unsigned row) const;
+
 private:
 
 	/** 
