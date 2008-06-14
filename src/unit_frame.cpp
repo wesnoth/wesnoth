@@ -317,7 +317,7 @@ bool frame_builder::need_update() const
 	return false;
 }
 
-void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -325,10 +325,9 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
 	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
 
-	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
+	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
 	int d2 = game_display::get_singleton()->hex_size() / 2;
-
 	if(first_time ) {
 		// stuff sthat should be done only once per frame
 		if(!current_data.sound.empty()  ) {
@@ -353,7 +352,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
 		image=image::get_image(image_loc,
 				image::SCALED_TO_ZOOM,
-				false
+				primary
 				);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
@@ -407,7 +406,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		}
 	}
 }
-void unit_frame::invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
+bool unit_frame::invalidate(const bool force,const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -435,7 +434,7 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 		 */
 		image=image::get_image(image_loc,
 				image::SCALED_TO_ZOOM,
-				false
+				primary
 				);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;
@@ -446,12 +445,33 @@ void unit_frame::invalidate(const int frame_time,const gamemap::location & src,c
 				image->w  == game_display::get_singleton()->hex_size() &&
 				image->h  == game_display::get_singleton()->hex_size()) {
 
-			game_display::get_singleton()->invalidate(src);
+			// if we need to update ourselve because we changed, invalidate our hex
+			// and return whether or not our hex was invalidated
+			 if(force || need_update()){
+				 bool tmp = game_display::get_singleton()->invalidate(src);
+				 return tmp;
+			 }
+			// if not, then do nothing, either our hex has been invalidated for other reasons, and we did not do it
+			// or it wasn't and we don't want to do it
+			return false;
 		} else {
-			game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+			// if we need to update ourselve because we changed, invalidate our hexs
+			// and return whether or not our hexs was invalidated
+			 if(force || need_update()){
+				 bool tmp = game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+				 return tmp;
+			}
+			// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
+			if(game_display::get_singleton()->zone_need_update(x,y,x+image->w,y+image->h)) {
+			       	bool tmp = game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
+				 return tmp;
+			}
+			return false;
+
 		}
 
 	}
+	return false;
 }
 
 

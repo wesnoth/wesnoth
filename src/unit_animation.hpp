@@ -52,11 +52,12 @@ class unit_animation
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
 		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0,const bool accelerate = true);
+		void update_parameters(const gamemap::location &src, const gamemap::location &dst);
                 void pause_animation();
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw(const frame_parameters& value);
-		void invalidate(const frame_parameters& value ) const;
+		bool invalidate(const frame_parameters& value ) const;
 
 	friend class unit;
 	protected:
@@ -82,9 +83,10 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
-			void redraw( const frame_parameters& value);
-			void invalidate(const frame_parameters& value, const bool primary = false) const;
+			void redraw( const frame_parameters& value,const bool primary=false);
+			bool invalidate(const frame_parameters& value, const bool primary = false) const;
 			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false);
+			void update_parameters(const gamemap::location& src,const  gamemap::location& dst);
 			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
 			bool accelerate;
 		private:

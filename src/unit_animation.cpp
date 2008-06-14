@@ -713,6 +713,15 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 		anim_itor->second.start_animation(start_time,src,dst,cycles);
 	}
 }
+
+void unit_animation::update_parameters(const gamemap::location &src, const gamemap::location &dst)
+{
+	unit_anim_.update_parameters(src, dst);
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.update_parameters(src,dst);
+	}
+}
 void unit_animation::pause_animation()
 {
 
@@ -735,35 +744,38 @@ void unit_animation::redraw(const frame_parameters& value)
 {
 
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+	//unit_anim_.redraw(value,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.redraw( value);
 	}
 }
-void unit_animation::invalidate(const frame_parameters& value) const
+bool unit_animation::invalidate(const frame_parameters& value) const
 {
 
+	bool result = false;
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	unit_anim_.invalidate(value,true);
+	result |= unit_anim_.invalidate(value,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.invalidate(value);
+		result |= anim_itor->second.invalidate(value);
 	}
+	return result;
 }
-void unit_animation::particule::redraw(const frame_parameters& value)
+void unit_animation::particule::redraw(const frame_parameters& value,const bool primary)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_,default_val,value,primary);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val,value,primary);
 	}
 }
-void unit_animation::particule::invalidate(const frame_parameters& value,const bool primary ) const
+bool unit_animation::particule::invalidate(const frame_parameters& value,const bool primary ) const
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	current_frame.invalidate(get_current_frame_time(),src_,dst_,default_val,value,primary);
+	return current_frame.invalidate(need_update(),get_current_frame_time(),src_,dst_,default_val,value,primary);
 }
 
 unit_animation::particule::~particule()
@@ -781,6 +793,16 @@ void unit_animation::particule::start_animation(int start_time,
 	parameters_.duration(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles);
 	last_frame_begin_time_ = get_begin_time() -1;
+	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
+		src_ = src;
+		dst_ = dst;
+	}
+}
+
+
+
+void unit_animation::particule::update_parameters(const gamemap::location &src, const gamemap::location &dst)
+{
 	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
 		src_ = src;
 		dst_ = dst;
@@ -851,6 +873,8 @@ void unit_animator::start_animations()
 		if(anim->animation) {
 			anim->my_unit->start_animation(begin_time,anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
 			anim->animation = NULL;
+		} else {
+			anim->my_unit->get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));
 		}
 		
 	}

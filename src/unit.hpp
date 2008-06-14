@@ -205,7 +205,7 @@ public:
 	void set_facing(gamemap::location::DIRECTION dir);
 	gamemap::location::DIRECTION facing() const { return facing_; }
 
-	std::set<gamemap::location> overlaps(const gamemap::location &loc) const;
+	bool invalidate(const gamemap::location &loc);
 	const t_string& traits_description() const { return traits_description_; }
 
 	int cost () const { return unit_value_; }

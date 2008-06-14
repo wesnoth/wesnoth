@@ -177,14 +177,14 @@ class unit_frame {
 	public:
 		// Constructors
 		unit_frame(const frame_builder builder=frame_builder()):builder_(builder){};
-		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
+		void redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const;
 		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters(),bool primary=false) const;
 		const frame_parameters parameters(int current_time) const {return builder_.parameters(current_time);};
 
 		int duration() const { return builder_.duration();};
 		bool does_not_change() const{ return builder_.does_not_change();};
 		bool need_update() const{ return builder_.need_update();};
-		void invalidate(const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const;
+		bool invalidate(const bool force,const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const;
 	private:
 		frame_builder builder_;
 

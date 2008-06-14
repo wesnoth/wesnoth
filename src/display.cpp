@@ -1046,16 +1046,18 @@ void display::highlight_hex(gamemap::location hex)
 	invalidate(mouseoverHex_);
 }
 
-void display::invalidate_locations_in_rect(SDL_Rect r)
+bool display::invalidate_locations_in_rect(SDL_Rect r)
 {
+	bool result = false;
 	gamemap::location topleft, bottomright;
 	get_rect_hex_bounds(r, topleft, bottomright);
 	for (int x = topleft.x; x <= bottomright.x; ++x) {
 		for (int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x, y);
-			invalidate(loc);
+			result |= invalidate(loc);
 		}
 	}
+	return result;
 }
 
 void display::set_diagnostic(const std::string& msg)
@@ -2020,17 +2022,32 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 		reportSurfaces_[report_num].assign(NULL);
 	}
 }
+bool display::invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) {
+	// unused variable - const SDL_Rect& rect = map_area();
+	bool result = false;
+	for (int x = minimum<int>(first_corner.x,second_corner.x); x <= maximum<int>(first_corner.x,second_corner.x);x++) {
+		for (int y = minimum<int>(first_corner.y,second_corner.y); y <= maximum<int>(first_corner.y,second_corner.y);y++) {
+			result |= invalidate(gamemap::location(x,y));
+		}
+	}
+	return result;
+}
 
-void display::invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) {
+bool display::invalidate_zone(const int x1,const int y1, const int x2, const int y2) {
+	const SDL_Rect& rect = map_area();
+	return invalidate_rectangle(pixel_position_to_hex(x1 - rect.x+xpos_, y1 - rect.y+ypos_),pixel_position_to_hex(x2 - rect.x+xpos_, y2 - rect.y+ypos_));
+}
+bool display::rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const {
 	// unused variable - const SDL_Rect& rect = map_area();
 	for (int x = minimum<int>(first_corner.x,second_corner.x); x <= maximum<int>(first_corner.x,second_corner.x);x++) {
 		for (int y = minimum<int>(first_corner.y,second_corner.y); y <= maximum<int>(first_corner.y,second_corner.y);y++) {
-			invalidate(gamemap::location(x,y));
+			if(invalidated_.find(gamemap::location(x,y)) != invalidated_.end()) return true;
 		}
 	}
+	return false;
 }
 
-void display::invalidate_zone(const int x1,const int y1, const int x2, const int y2) {
+bool display::zone_need_update(const int x1,const int y1, const int x2, const int y2) const {
 	const SDL_Rect& rect = map_area();
-	invalidate_rectangle(pixel_position_to_hex(x1 - rect.x, y1 - rect.y),pixel_position_to_hex(x2 - rect.x, y2 - rect.y));
+	return rectangle_need_update(pixel_position_to_hex(x1 - rect.x+xpos_, y1 - rect.y+ypos_),pixel_position_to_hex(x2 - rect.x+xpos_, y2 - rect.y+ypos_));
 }

@@ -208,7 +208,6 @@ int animated<T,T_void_value>::get_animation_time_potential() const
 
 	return  tick_to_time(current_ticks);
 }
-
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_animation_time() const
 {

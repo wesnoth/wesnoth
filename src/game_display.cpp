@@ -991,83 +991,56 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 	return calculate_energy_bar(surf);
 }
 
-void game_display::invalidate(const gamemap::location& loc)
+bool game_display::invalidate(const gamemap::location& loc)
 {
 	if(!invalidateAll_) {
-		if (invalidated_.insert(loc).second) {
-			// Units can overlap adjacent tiles.
-			unit_map::iterator u = units_.find(loc);
-
-			if (u != units_.end()) {
-				std::set<gamemap::location> overlaps = u->second.overlaps(u->first);
-				for (std::set<gamemap::location>::iterator i = overlaps.begin(); i != overlaps.end(); i++) {
-					invalidate(*i);
-				}
-			}
-			if (temp_unit_  && temp_unit_loc_ == loc ) {
-				std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
-				for (std::set<gamemap::location>::iterator i = overlaps.begin(); i != overlaps.end(); i++) {
-					invalidate(*i);
-				}
-			}
-			// If neighbour has a unit which overlaps us, invalidate him
-			gamemap::location adjacent[6];
-			get_adjacent_tiles(loc, adjacent);
-			for (unsigned int i = 0; i < 6; i++) {
-				u = units_.find(adjacent[i]);
-				if (u != units_.end()) {
-					std::set<gamemap::location> overlaps = u->second.overlaps(u->first);
-					if (overlaps.find(loc) != overlaps.end()) {
-						invalidate(u->first);
-					}
-				}
-				if (temp_unit_  && temp_unit_loc_ == adjacent[i] ) {
-					std::set<gamemap::location> overlaps = temp_unit_->overlaps(temp_unit_loc_);
-					if (overlaps.find(loc) != overlaps.end()) {
-						invalidate(temp_unit_loc_);
-					}
-				}
-			}
-		}
+		bool tmp = invalidated_.insert(loc).second;
+		return tmp;
 	}
+	return false;
 }
-
 void game_display::invalidate_animations()
 {
-	new_animation_frame();
+	if (preferences::animate_map()) {
 
-	unit_map::iterator unit;
-	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
-		unit->second.refresh(*this, unit->first);
-		if (unit->second.get_animation() && unit->second.get_animation()->need_update())
-			invalidate(unit->first);
-	}
-	if (temp_unit_ ) {
-		temp_unit_->refresh(*this, temp_unit_loc_);
-		if (temp_unit_->get_animation() && temp_unit_->get_animation()->need_update())
-			invalidate(temp_unit_loc_);
-	}
+		gamemap::location topleft;
+		gamemap::location bottomright;
+		get_visible_hex_bounds(topleft, bottomright);
 
-	if (!preferences::animate_map()) {return;}
-	
-	gamemap::location topleft;
-	gamemap::location bottomright;
-	get_visible_hex_bounds(topleft, bottomright);
-
-	for(int x = topleft.x; x <= bottomright.x; ++x) {
-		for(int y = topleft.y; y <= bottomright.y; ++y) {
-			const gamemap::location loc(x,y);
-			if (!shrouded(loc)) {
-				if (builder_.update_animation(loc)) {
-					invalidate(loc);
-				} else if (map_.is_village(loc)) {
-					const int owner = player_teams::village_owner(loc);
-					if (owner >= 0 && flags_[owner].need_update() && (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1)))
+		for(int x = topleft.x; x <= bottomright.x; ++x) {
+			for(int y = topleft.y; y <= bottomright.y; ++y) {
+				const gamemap::location loc(x,y);
+				if (!shrouded(loc)) {
+					if (builder_.update_animation(loc)) {
 						invalidate(loc);
+					} else if (map_.is_village(loc)) {
+						const int owner = player_teams::village_owner(loc);
+						if (owner >= 0 && flags_[owner].need_update() && (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1)))
+							invalidate(loc);
+					}
 				}
 			}
 		}
 	}
+
+	unit_map::iterator unit;
+	for(unit=units_.begin() ; unit != units_.end() ; unit++) 
+		unit->second.refresh(*this, unit->first);
+	if (temp_unit_ ) 
+		temp_unit_->refresh(*this, temp_unit_loc_);
+	bool new_inval = true;
+	while(new_inval) {
+		new_inval = false;
+		for(unit=units_.begin() ; unit != units_.end() ; unit++) {
+			new_inval |= unit->second.invalidate(unit->first);
+		}
+		if (temp_unit_ ) {
+			//new_inval |=invalidate(temp_unit_loc_);
+			new_inval |=temp_unit_->invalidate(temp_unit_loc_);
+		}
+	}
+	new_animation_frame();
+
 }
 
 void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)

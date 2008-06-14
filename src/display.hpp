@@ -187,9 +187,11 @@ public:
 		      bool brightened = false);
 
 	// Will be overridden in the display subclass
-	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
-	virtual void invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) ;
-	virtual void invalidate_zone(const int x1,const int y1, const int x2, const int y2); 
+	virtual bool invalidate(const gamemap::location& loc) {return invalidated_.insert(loc).second;};
+	virtual bool invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) ;
+	virtual bool invalidate_zone(const int x1,const int y1, const int x2, const int y2); 
+	virtual bool rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const;
+	virtual bool zone_need_update(const int x1,const int y1, const int x2, const int y2) const; 
 	virtual void draw_minimap_units() {};
 
 	const gamemap& get_map()const { return map_;}
@@ -547,7 +549,7 @@ protected:
 	//! redraw all panels associated with the map display
 	void draw_all_panels();
 
-	void invalidate_locations_in_rect(SDL_Rect r);
+	bool invalidate_locations_in_rect(SDL_Rect r);
 
 	//! Strict weak ordering to sort a STL-set of hexes
 	//! for drawing using the z-order.

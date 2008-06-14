@@ -107,7 +107,7 @@ public:
 	void draw_movement_info(const gamemap::location& loc);
 
 	//! Function to invalidate a specific tile for redrawing.
-	void invalidate(const gamemap::location& loc);
+	bool invalidate(const gamemap::location& loc);
 
 	const gamestatus &get_game_status() { return status_; }
 	void draw_report(reports::TYPE report_num);

@@ -1878,10 +1878,9 @@ void unit::clear_haloes()
 		unit_anim_halo_ = halo::NO_HALO;
 	}
 }
-
-std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
+bool unit::invalidate(const gamemap::location &loc)
 {
-	std::set<gamemap::location> over;
+	bool result = false;
 
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
@@ -1911,19 +1910,9 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 		}
 		params.image_mod = image_mods();
 
-		frame_parameters adjusted_params= anim_->get_current_params(params);
-		// Invalidate adjacent neighbours if we don't stay in our hex
-		if(adjusted_params.offset != 0) {
-			gamemap::location::DIRECTION dir = (adjusted_params.offset > 0) ? facing_ : loc.get_opposite_dir(facing_);
-			gamemap::location adj_loc = loc.get_direction(dir);
-			over.insert(adj_loc);
-			gamemap::location arr[6];
-			get_adjacent_tiles(adj_loc, arr);
-			for (unsigned int i = 0; i < 6; i++) {
-				over.insert(arr[i]);
-			}
-		}
-		get_animation()->invalidate(params);
+                get_animation()->update_last_draw_time();
+		frame_parameters adjusted_params= get_animation()->get_current_params(params);
+		result |= get_animation()->invalidate(params);
 	}
 
 
@@ -1932,11 +1921,11 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 		gamemap::location arr[6];
 		get_adjacent_tiles(loc, arr);
 		for (unsigned int i = 0; i < 6; i++) {
-			over.insert(arr[i]);
+			result |= game_display::get_singleton()->invalidate(arr[i]);
 		}
 	}
+	return result;
 
-	return over;
 }
 
 int unit::upkeep() const
