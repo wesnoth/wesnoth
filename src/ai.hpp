@@ -31,7 +31,7 @@ public:
 	virtual ~ai() {}
 
 	virtual void play_turn();
-	virtual void new_turn(info& info);
+	virtual void new_turn();
 
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
@@ -324,6 +324,17 @@ private:
 		const std::multimap<gamemap::location,gamemap::location>& dstsrc,
 		const std::map<gamemap::location,paths>& possible_moves,
 		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
+};
+
+class ai_manager {
+
+	typedef std::map<std::string, boost::shared_ptr<ai_interface> > ai_map;
+
+	public: 
+		static boost::shared_ptr<ai_interface> get_ai(ai_interface::info&, std::string, std::string);
+
+	private:
+		static ai_map ais;
 };
 
 #endif

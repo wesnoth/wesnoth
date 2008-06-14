@@ -28,6 +28,7 @@ class formula_ai : public ai {
 public:
 	explicit formula_ai(info& i);
 	virtual void play_turn();
+	virtual void new_turn();
 
 	using ai_interface::get_info;
 	using ai_interface::current_team;

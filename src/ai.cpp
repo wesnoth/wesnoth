@@ -252,17 +252,11 @@ ai::ai(ai_interface::info& info) :
 	attack_depth_(0)
 {}
 
-void ai::new_turn(info& info) 
+void ai::new_turn() 
 {
-	ai_interface::new_turn(info);
 	defensive_position_cache_.clear();
 	threats_found_ = false;
 	attacks_.clear();
-	map_ = info.map;
-	units_ = info.units;
-	teams_ = info.teams;
-	team_num_ = info.team_num;
-	state_ = info.state;
 	consider_combat_ = true;
 	additional_targets_.clear();
 	unit_movement_scores_.clear();
@@ -272,6 +266,7 @@ void ai::new_turn(info& info)
 	avoid_.clear();
 	unit_stats_cache_.clear();
 	attack_depth_ = 0;
+	ai_interface::new_turn();
 }
 
 bool ai::recruit_usage(const std::string& usage)
@@ -2371,3 +2366,18 @@ void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inp
 	inputs->push_back(formula_input("uses_leader", FORMULA_READ_ONLY));
 	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }
+
+std::map<std::string, boost::shared_ptr<ai_interface> > ai_manager::ais = std::map<std::string, boost::shared_ptr<ai_interface> >();
+
+boost::shared_ptr<ai_interface> ai_manager::get_ai(ai_interface::info& ai_info, std::string ai_key, std::string ai_algo) {
+	ai_map::const_iterator itor = ais.find(ai_key);
+	if(itor == ais.end()) {
+		boost::shared_ptr<ai_interface> new_ai(create_ai(ai_algo, ai_info));
+		ai_map::value_type new_ai_pair(ai_key, new_ai);
+		itor = ais.insert(new_ai_pair).first;
+	} else {
+		itor->second->new_turn();
+	}
+	return itor->second;
+}
+

@@ -86,14 +86,8 @@ public:
 
 	//! Function called when a a new turn is played 
 	//! Derived persistant AIs should call this function each turn (expect first)
-	virtual void new_turn(info& i) {
+	virtual void new_turn() {
 		last_interact_ = 0;
-		info_.map = i.map;
-		info_.units = i.units;
-		info_.teams = i.teams;
-		info_.team_num = i.team_num;
-		info_.state = i.state;
-		info_.game_state_ = i.game_state_;
 	}
 
 	//! Return a reference to the 'team' object for the AI.

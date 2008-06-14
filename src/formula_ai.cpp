@@ -943,6 +943,12 @@ formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false)
 	vars_.add_ref();
 }
 
+void formula_ai::new_turn() 
+{
+	move_maps_valid_ = false;
+
+	ai::new_turn();
+}
 void formula_ai::play_turn()
 {
 	ai_function_symbol_table function_table(*this);
