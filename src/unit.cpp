@@ -1543,10 +1543,7 @@ void unit::set_standing(const gamemap::location& loc, bool with_bars)
 	game_display * disp =  game_display::get_singleton();
 	gamemap::location arr[6];
 	get_adjacent_tiles(loc, arr);
-	for (unsigned int i = 0; i < 6; i++) {
-		disp->invalidate(arr[i]);
-	}
-	if (preferences::show_standing_animations()) {
+	if (preferences::show_standing_animations()&& !incapacitated()) {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
 	} else {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"_disabled_"),with_bars,true,"",0,STATE_STANDING);
@@ -1910,7 +1907,7 @@ bool unit::invalidate(const gamemap::location &loc)
 		}
 		params.image_mod = image_mods();
 
-                get_animation()->update_last_draw_time();
+                //get_animation()->update_last_draw_time();
 		frame_parameters adjusted_params= get_animation()->get_current_params(params);
 		result |= get_animation()->invalidate(params);
 	}
