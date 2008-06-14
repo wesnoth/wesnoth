@@ -315,7 +315,7 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 		for (i = 0; i < 6; i++) {
 			for (unsigned int j = 1; j <= d; j++) {
 				loc = loc.get_direction(direction[i], 1);
-				if (map.on_board(loc, true)) {
+				if (map.on_board_with_border(loc)) {
 					res.push_back(loc);
 				}
 			}
@@ -369,7 +369,7 @@ std::set<gamemap::location> get_component(const gamemap &map,
 		std::vector<gamemap::location> adj = get_tiles(map, loc, 2);
 		for (std::vector<gamemap::location>::iterator it2 = adj.begin();
 			 it2 != adj.end(); it2++) {
-			if (map.on_board(*it2, true) && map.get_terrain(*it2) == terrain_to_fill
+			if (map.on_board_with_border(*it2) && map.get_terrain(*it2) == terrain_to_fill
 				&& filled.find(*it2) == filled.end()) {
 				to_fill.insert(*it2);
 			}

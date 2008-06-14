@@ -547,7 +547,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 t_translation::t_terrain gamemap::get_terrain(const gamemap::location& loc) const
 {
 
-	if(on_board(loc, true)) {
+	if(on_board_with_border(loc)) {
 		return tiles_[loc.x + border_size_][loc.y + border_size_];
 	}
 
@@ -643,11 +643,14 @@ void gamemap::set_starting_position(int side, const gamemap::location& loc)
 	}
 }
 
-bool gamemap::on_board(const location& loc, const bool include_border) const
+bool gamemap::on_board(const location& loc) const
 {
-	if(!include_border) {
-		return loc.valid() && loc.x < w_ && loc.y < h_;
-	} else if(tiles_.empty()) {
+	return loc.valid() && loc.x < w_ && loc.y < h_;
+}
+
+bool gamemap::on_board_with_border(const location& loc) const
+{
+	if(tiles_.empty()) {
 		return false;
 	} else {
 		return loc.x >= (0 - border_size_) && loc.x < (w_ + border_size_) && 
@@ -728,7 +731,7 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 }
 
 void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_terrain terrain, const tmerge_mode mode, bool replace_if_failed) {
-	if(!on_board(loc, true)) {
+	if(!on_board_with_border(loc)) {
 		// off the map: ignore request
 		return;
 	}
@@ -739,7 +742,7 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_t
 		return;
 	}
 
-	if(on_board(loc, false)) {
+	if(on_board(loc)) {
 		const bool old_village = is_village(loc);
 		const bool new_village = is_village(new_terrain);
 

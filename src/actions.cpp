@@ -1886,7 +1886,7 @@ namespace {
 
 			// We clear one past the edge of the board, so that the half-hexes
 			// at the edge can also be cleared of fog/shroud.
-			if (on_board_loc || map.on_board(adj[i],true)) {
+			if (on_board_loc || map.on_board_with_border(adj[i])) {
 				// Both functions should be executed so don't use || which
 				// uses short-cut evaluation.
 				const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);

@@ -340,13 +340,13 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 		}
 		if (button == SDL_BUTTON_LEFT) {
 			gamemap::location hex_clicked = gui_.hex_clicked_on(mousex, mousey);
-			if (map_.on_board(hex_clicked, true)) {
+			if (map_.on_board_with_border(hex_clicked)) {
 				left_click(hex_clicked);
 			}
 		}
 		if (button == SDL_BUTTON_RIGHT) {
 			gamemap::location hex_clicked = gui_.hex_clicked_on(mousex, mousey);
-			if (map_.on_board(hex_clicked, true)) {
+			if (map_.on_board_with_border(hex_clicked)) {
 				right_click(hex_clicked);
 			}
 		}
@@ -831,7 +831,7 @@ void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location 
 		//the addition of locations is not commutative !
 		gamemap::location target = it->offset + loc;
 
-		if (map_.on_board(target, true)) {
+		if (map_.on_board_with_border(target)) {
 			undo_action.add_terrain(map_.get_terrain(target), it->terrain, target);
 			map_.set_terrain(target, it->terrain);
 			terrain_changed(target);
@@ -870,7 +870,7 @@ void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
 	const t_translation::t_terrain terrain, map_undo_action &undo_action) {
 	std::set<gamemap::location>::const_iterator it;
 	for (it = fill_hexes.begin(); it != fill_hexes.end(); it++) {
-		if (map_.on_board(*it, true)) {
+		if (map_.on_board_with_border(*it)) {
 			undo_action.add_terrain(map_.get_terrain(*it), terrain, *it);
 			if (terrain.base == t_translation::NO_LAYER) {
 				map_.set_terrain(*it, terrain, gamemap::OVERLAY);
@@ -1202,7 +1202,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 		std::set<gamemap::location>::const_iterator it;
 		for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
 			const gamemap::location hl_loc = (*it-selection_move_start_) + hex;
-			if (map_.on_board(hl_loc, true)) {
+			if (map_.on_board_with_border(hl_loc)) {
 				gui_.add_highlighted_loc(hl_loc);
 			}
 		}
@@ -1210,7 +1210,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 }
 
 void map_editor::draw_on_mouseover_hexes(const t_translation::t_terrain terrain, const bool one_layer_only) {
-	if(map_.on_board(selected_hex_, true)) {
+	if(map_.on_board_with_border(selected_hex_)) {
 		std::vector<gamemap::location> hexes =
 			get_tiles(map_, selected_hex_, brush_.selected_brush_size());
 		draw_terrain(terrain, hexes, one_layer_only);

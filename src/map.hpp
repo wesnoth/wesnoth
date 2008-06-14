@@ -202,7 +202,9 @@ public:
 
 	//! Tell if a location is on the map. 
 	//! Should be called before indexing using [].
-	bool on_board(const location& loc, const bool include_border = false) const;
+	//! @todo inline for performace? -- Ilor
+	bool on_board(const location& loc) const;
+	bool on_board_with_border(const location& loc) const;
 
 	//! Tell if the map is of 0 size.
 	bool empty() const

@@ -65,7 +65,7 @@ void editor_display::draw(bool update,bool force)
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
-			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_, true)) {
+			if(*it == mouseoverHex_ && map_.on_board_with_border(mouseoverHex_)) {
 				image_type = image::BRIGHTENED;
 			}
 			else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
@@ -100,10 +100,10 @@ void editor_display::draw(bool update,bool force)
 			}
 
 			// Paint selection and mouseover overlays
-			if(*it == selectedHex_ && map_.on_board(selectedHex_, true) && selected_hex_overlay_ != NULL) {
+			if(*it == selectedHex_ && map_.on_board_with_border(selectedHex_) && selected_hex_overlay_ != NULL) {
 				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
 			}
-			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_, true) && mouseover_hex_overlay_ != NULL) {
+			if(*it == mouseoverHex_ && map_.on_board_with_border(mouseoverHex_) && mouseover_hex_overlay_ != NULL) {
 				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
 			}
 
@@ -122,7 +122,7 @@ void editor_display::draw(bool update,bool force)
 	}
 
 	// Fill in the terrain report
-	if(map_.on_board(mouseoverHex_, true)) {
+	if(map_.on_board_with_border(mouseoverHex_)) {
 		const t_translation::t_terrain terrain = map_.get_terrain(mouseoverHex_);
 		const t_translation::t_list& underlying = map_.underlying_union_terrain(terrain);
 

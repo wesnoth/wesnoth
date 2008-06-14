@@ -905,8 +905,8 @@ static PyObject* wrapper_getmap_is_border( wesnoth_gamemap* map, PyObject* args 
 	bool on_board, on_board_without_borders;
 	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_location_type, &location ) )
 		return NULL;
-	on_board = map->map_->on_board(*location->location_, true);
-	on_board_without_borders = map->map_->on_board(*location->location_, false);
+	on_board = map->map_->on_board_with_border(*location->location_);
+	on_board_without_borders = map->map_->on_board(*location->location_);
 	return Py_BuildValue(INTVALUE, on_board && !on_board_without_borders ? 1 : 0);
 }
 
