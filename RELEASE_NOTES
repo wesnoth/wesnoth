@@ -26,3 +26,9 @@ Multiplayer era authors can put their [binary_path] declarations inside the
 MULTIPLAYER #ifdef block (or similar). This was a fix to an ancient, forgotten
 bug that a developer noticed while playing a single-player campaign that
 conflicted with a multiplayer era's binary_path.
+
+The confusion caused by name and wiki entry regarding [attacks] special has been
+sorted out. What was [attacks] up till now was now logicaly renamed [swarm] and
+a completely new [attacks] has been created behaving alike to [damage] and 
+[chance_to_hit]. If an attack uses [swarm] any [attacks] declared will be
+ignored.
