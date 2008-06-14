@@ -79,6 +79,9 @@ public:
 
 	const t_string& get_attribute(const std::string& key) const;
 	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
+	bool add_attribute(const std::string& key, const t_string& value) {
+		return values.insert(string_map::value_type(key, value)).second;
+	}
 
 	config* find_child(const std::string& key, const std::string& name,
 	                   const t_string& value);
