@@ -42,6 +42,8 @@
 #include <windows.h>
 #endif
 
+#define DBG_FS LOG_STREAM(debug, filesystem)
+
 /** Tests one locale to be available. */
 static bool has_locale(const char* s) {
 	try {
@@ -355,16 +357,23 @@ void init_textdomains(const config& cfg)
 		if(path.empty()) {
 			t_string::add_textdomain(name, get_intl_dir());
 		} else {
-			const std::string& location = get_binary_file_location(path, "");
-
-			//if location is empty, this causes a crash on Windows, so we
-			//disallow adding empty domains
-			if(location.empty()) {
-				std::cerr << "no location found for '" << path << "', not adding textdomain\n";
-			} else {
-				t_string::add_textdomain(name, location);
+			//This is adapted version from a call to get_binary_file_location()
+			DBG_FS << "  Looking for textdomain path" << path << "\n";
+			const std::vector<std::string>& paths = get_binary_paths(path);
+			for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
+				DBG_FS << "  Checking " << *i << "\n";
+				const std::string location = *i + path;
+				if(is_directory(location)) {
+					DBG_FS << "  Found at " << location << "\n";
+					t_string::add_textdomain(name, location);
+				} else {
+					//if location is empty, this causes a crash on Windows, so we
+					//disallow adding empty domains
+					std::cerr << "no location found for '" << path << "', not adding textdomain\n";
+				}
 			}
 		}
 	}
+
 }
 
