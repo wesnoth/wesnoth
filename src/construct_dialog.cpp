@@ -871,7 +871,6 @@ void filter_textbox::delete_item(int selection) {
 	selection += header_row_;
 
 	const size_t size = index_map_.size();
-	assert(size == filtered_items_.size());
 	if (selection >= size)
 		return;
 	int selection_index = index_map_[selection];
