@@ -64,4 +64,13 @@ tdialog* twidget::dialog()
 	return window ? window->dialog() : 0;
 }
 
+void twidget::set_size(const SDL_Rect& rect)
+{
+	x_ = rect.x;
+	y_ = rect.y;
+	w_ = rect.w;
+	h_ = rect.h;
+	set_dirty();
+}
+
 } // namespace gui2

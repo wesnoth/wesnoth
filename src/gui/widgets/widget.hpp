@@ -28,8 +28,17 @@ class tdialog;
 class tevent_handler;
 class twindow;
 
-//! Base class with all possible events, most widgets can ignore most of
-//! these, but they are available.
+/**
+ * Event execution calls.
+ *
+ * Base class with all possible events, most widgets can ignore most of these,
+ * but they are available. In order to use an event simply override the
+ * execution function and implement the wanted behaviour. The default behaviour
+ * defined here is to do nothing.
+ *
+ * For more info about the event handling have a look at the tevent_handler
+ * class which 'translates' sdl events into 'widget' events.
+ */
 class tevent_executor
 {
 public:
@@ -39,81 +48,213 @@ public:
 		wants_mouse_middle_double_click_(false),
 		wants_mouse_right_double_click_(false)
 		{}
+
 	virtual ~tevent_executor() {}
 
-// Description of various event generating scenarios
-//
-// mouse moves on a widget and the focus isn't stolen:
-// - mouse enter
-//
-// mouse on widget clicked without moving
-// - mouse down
-// - mouse up
-// wait for possible double click if widget wants double click
-// - mouse click
+	/***** ***** ***** ***** mouse movement ***** ***** ***** *****/
 
-	virtual void mouse_enter(tevent_handler&) {}
-	virtual void mouse_move(tevent_handler&) {}
-	virtual void mouse_hover(tevent_handler&) {}
-	virtual void mouse_leave(tevent_handler&) {}
+	/** 
+	 * The mouse 'enters' the widget. 
+	 *
+	 * Entering happens when the mouse moves on a widget it wasn't on before.
+	 * When the mouse is captured by another widget this event does not occur.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_enter(tevent_handler& /*event_handler*/) {}
 
-	virtual void mouse_left_button_down(tevent_handler&) {}
-	virtual void mouse_left_button_up(tevent_handler&) {}
-	virtual void mouse_left_button_click(tevent_handler&) {}
-	virtual void mouse_left_button_double_click(tevent_handler&) {}
+	/** 
+	 * The mouse moves 'over' the widget. 
+	 *
+	 * The mouse either moves over the widget or it has the mouse captured in
+	 * which case every move causes a move event for the capturing widget.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_move(tevent_handler& /*event_handler*/) {}
 
+	/**
+	 * The mouse 'leaves' the widget.
+	 *
+	 * If the mouse is moves off the widget this event is called. When the leave
+	 * occurs while the mouse is captured the event will be send when still of
+	 * the widget if the capture is released. This event is only triggered when
+	 * wants_mouse_hover_ is set.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_hover(tevent_handler& /*event_handler*/) {}
+
+	/**
+	 * The mouse 'hovers' over a widget.
+	 *
+	 * If the mouse remains a while without moving over a widget this event can
+	 * be send. This event can be used to show a tooltip.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_leave(tevent_handler& /*event_handler*/) {}
+
+	/***** ***** ***** ***** mouse left button ***** ***** ***** *****/
+
+	/** 
+	 * The left mouse button is pressed down. 
+	 *
+	 * This is a rather low level event, most of the time you want to have a
+	 * look at mouse_left_button_click instead.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_left_button_down(tevent_handler& /*event_handler*/) {}
+
+	/** 
+	 * The left mouse button is released down.
+	 *
+	 * This is a rather low level event, most of the time you want to have a
+	 * look at mouse_left_button_click instead.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_left_button_up(tevent_handler& /*event_handler*/) {}
+
+	/**
+	 * The left button is clicked.
+	 *
+	 * This event happens when the left mouse button is pressed and released on
+	 * the same widget. It's execution can be a little delayed when
+	 * wants_mouse_left_double_click_ is set.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_left_button_click(tevent_handler& /*event_handler*/) {}
+
+	/**
+	 * The left button is double clicked.
+	 *
+	 * This event happens when the left mouse button is pressed and released on
+	 * the same widget twice within a short time. This event will only occur if
+	 * wants_mouse_left_double_click_ is set.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void mouse_left_button_double_click(tevent_handler& /*event_handler*/) {}
+
+	/***** ***** ***** ***** mouse middle button ***** ***** ***** *****/
+
+	/** See mouse_left_button_down. */
 	virtual void mouse_middle_button_down(tevent_handler&) {}
+
+	/** See mouse_left_button_up. */
 	virtual void mouse_middle_button_up(tevent_handler&) {}
+
+	/** See mouse_left_button_click. */
 	virtual void mouse_middle_button_click(tevent_handler&) {}
+
+	/** See mouse_left_button_double_click. */
 	virtual void mouse_middle_button_double_click(tevent_handler&) {}
 
+	/***** ***** ***** ***** mouse right button ***** ***** ***** *****/
+
+	/** See mouse_left_button_down. */
 	virtual void mouse_right_button_down(tevent_handler&) {}
+
+	/** See mouse_left_button_up. */
 	virtual void mouse_right_button_up(tevent_handler&) {}
+
+	/** See mouse_left_button_click. */
 	virtual void mouse_right_button_click(tevent_handler&) {}
+
+	/** See mouse_left_button_double_click. */
 	virtual void mouse_right_button_double_click(tevent_handler&) {}
 
-	//! Handled, if there's a keyboard focus it will get the change to
-	//! handle the key first, if not done it's send to the window.
-	//! SDLKey the sdl key code needed for special keys
-	//! SDLMod the keyboard modifiers at moment of pressing
-	//! Unit16 the unicode for the pressed key
-	virtual void key_press(tevent_handler&, bool&, SDLKey, SDLMod, Uint16) {} 
+	/***** ***** ***** ***** mouse right button ***** ***** ***** *****/
 
+	/**
+	 * A key is pressed.
+	 *
+	 * When a key is pressed it's send to the widget that has the focus, if this
+	 * widget doesn't handle the key it is send to the next handler. Some keys
+	 * might get captured before send to the widget (eg F1).
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 * @param handled             Do we handle the event.
+	 * @param key                 The SDL key code, needed for special keys.
+	 * @param modifier            The keyboard modifiers when the key was
+	 *                            pressed.
+	 * @param unicode             The unicode for the pressed key.
+	 */
+	virtual void key_press(tevent_handler& /*event_handler*/, bool& /*handled*/, 
+		SDLKey /*key*/, SDLMod /*modifier*/, Uint16 /*unicode*/) {} 
+
+	/**
+	 * The F1 key was pressed.
+	 *
+	 * This event is special since we normally want a help when this key is
+	 * pressed.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void help_key(tevent_handler&) {}
+
+	/***** ***** ***** ***** window management ***** ***** ***** *****/
+
+	/**
+	 * The window is resized.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 * @param new_width           Width of the application window after resizing.
+	 * @param new_height          Height of the application window after
+	 *                            resizing.
+	 */
 	virtual void window_resize(tevent_handler&, const unsigned /* new_width */, 
 		const unsigned /* new_height */) {}
 
-	//! When F1 is pressed this event is triggered.
-	virtual void help_key(tevent_handler&) {}
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+	void set_wants_mouse_hover(const bool hover = true) 
+		{ wants_mouse_hover_ = hover; }
 	bool wants_mouse_hover() const { return wants_mouse_hover_; }
 
-	bool wants_mouse_left_double_click() const { return wants_mouse_left_double_click_; }
-	bool wants_mouse_middle_double_click() const { return wants_mouse_middle_double_click_; }
-	bool wants_mouse_right_double_click() const { return wants_mouse_right_double_click_; }
+	void set_wants_mouse_left_double_click(const bool click = true) 
+		{ wants_mouse_left_double_click_ = click; }
+	bool wants_mouse_left_double_click() const 
+		{ return wants_mouse_left_double_click_; }
 
-	tevent_executor& set_wants_mouse_hover(const bool hover = true) 
-		{ wants_mouse_hover_ = hover; return *this; }
-
-	tevent_executor& set_wants_mouse_left_double_click(const bool click = true) 
-		{ wants_mouse_left_double_click_ = click; return *this; }
-
-	tevent_executor& set_wants_mouse_middle_double_click(const bool click = true) 
-		{ wants_mouse_middle_double_click_ = click; return *this; }
+	void set_wants_mouse_middle_double_click(const bool click = true) 
+		{ wants_mouse_middle_double_click_ = click; }
+	bool wants_mouse_middle_double_click() const 
+		{ return wants_mouse_middle_double_click_; }
 
 	tevent_executor& set_wants_mouse_right_double_click(const bool click = true) 
 		{ wants_mouse_right_double_click_ = click; return *this; }
+	bool wants_mouse_right_double_click() const 
+		{ return wants_mouse_right_double_click_; }
 
 private:
-	//! If a widget doesn't want a double click we need to send a second
-	//! click instead of double click.
+
+	/** Does the widget want a hover event? See mouse_hover. */
 	bool wants_mouse_hover_;
+
+	/** 
+	 * Does the widget want a left button double click? See
+	 * mouse_left_button_double_click.
+	 */ 
 	bool wants_mouse_left_double_click_;
+
+	/** See wants_mouse_left_double_click_ */
 	bool wants_mouse_middle_double_click_;
+
+	/** See wants_mouse_left_double_click_ */
 	bool wants_mouse_right_double_click_;
 };
 
-//! Base class for all widgets.
-//! This is a non visible widget but it does have dimentions and size hints.
+/**
+ * Base class for all widgets.
+ *
+ * From this abstract all other items should inherit. It contains the minimal
+ * info needed for a real widget and some pure abstract functions which need to
+ * be implemented by classes inheriting from this class.
+ */
 class twidget : public virtual tevent_executor
 {
 public:
@@ -127,55 +268,82 @@ public:
 		h_(0),
 		dirty_(true)
 		{}
+
 	virtual ~twidget() {}
 
-	twidget* parent() { return parent_; }
-	void set_parent(twidget* parent) { parent_ = parent; }
+	/**
+	 * Loads the configuration of the widget.
+	 *
+	 * Controls have their definition stored in a definition object. In order to
+	 * determine sizes and drawing the widget this definition needs to be
+	 * loaded. The member definition_ contains the name of the definition and
+	 * function load the proper configuration.
+	 */
+	virtual void load_config() {} 
 
-	const std::string& id() const { return id_; }
-	void set_id(const std::string& id) { id_ = id; }
+	/***** ***** ***** ***** get optimal sizes ***** ***** ***** *****/
 
-	const std::string& definition() const { return definition_; }
-
-	//! This should not be changed after the widget is shown, strange things
-	//! might occur.
-	virtual void set_definition(const std::string& definition) 
-		{ definition_ = definition; }
-
-	//! Draws a widget.
-	// FIXME add force as parameter
-	virtual void draw(surface& /*surface*/) = 0;
-
-	// invisible widgets never hit, only items with a size NOT here
-	// virtual bool does_hit(const int x, const int y) const { return false; }
-
-
-	int get_x() const { return x_; }
-	int get_y() const { return y_; }
-	unsigned get_width() const { return w_; }
-	unsigned get_height() const { return h_; }
-
-	//! Is the widget dirty?
-	virtual bool dirty() const { return dirty_; }
-
-	//! Gets the minimum size for the object, 0,0 means no size required.
+	/**
+	 * Gets the minimum size for the widget.
+	 *
+	 * @returns                      The minimum size for the widget.
+	 * @retval 0,0                   The minimum size is 0,0.
+	 */
 	virtual tpoint get_minimum_size() const = 0;	
 
-	//! Gets the best size for the object, 0,0 means no size required.
+	/**
+	 * Gets the best size for the widget.
+	 *
+	 * @returns                      The best size for the widget.
+	 * @retval 0,0                   The best size is 0,0.
+	 */
 	virtual tpoint get_best_size() const = 0;	
 
-	//! Gets the best size for an object, 0,0 means no limits.
+	/**
+	 * Gets the maximum size for the widget.
+	 *
+	 * @returns                      The maximum size for the widget.
+	 * @retval 0,0                   The widget has no maximum size.
+	 */
 	virtual tpoint get_maximum_size() const = 0;	
 
-	//! Sets a predefined size for the object.
-	virtual void set_size(const SDL_Rect& rect)
-	{
-		x_ = rect.x;
-		y_ = rect.y;
-		w_ = rect.w;
-		h_ = rect.h;
-		dirty_ = true;
-	}
+	/**
+	 * Does the widget have a vertical scrollbar.
+	 *
+	 * We want to use the best size for a widget, when the best size for all
+	 * widgets doesn't fit inside the window some widgets need to be reduced in
+	 * size. Widgets that have a scrollbar in the wanted direction are resized
+	 * first. The next option is to look at the minimum size.
+	 *
+	 * @returns                   Whether or not the widget has a vertical
+	 *                            scrollbar.
+	 */
+	virtual bool has_vertical_scrollbar() const { return false; }
+
+	/**
+	 * Does the widget have a vertical scrollbar.
+	 *
+	 * See has_vertical_scrollbar for more info.
+	 * @returns                   Whether or not the widget has a horizontal
+	 *                            scrollbar.
+	 */
+	virtual bool has_horizontal_scrollbar() const { return false; }
+
+	/***** ***** ***** ***** drawing ***** ***** ***** *****/
+
+	/**
+	 *  Draws a widget.
+	 *
+	 *  The widget is (rather should) only (be) drawn if dirty.
+	 * 
+	 *  @todo add force as parameter.
+	 *
+	 *  @param surface            The surface to draw the widget upon using the
+	 *                            coordinates and size of the widget.
+	 */
+	virtual void draw(surface& /*surface*/) = 0;
+
+	/***** ***** ***** ***** query ***** ***** ***** *****/
 
 	/**
 	 * Gets the widget at the wanted coordinates.
@@ -225,16 +393,27 @@ public:
 	virtual const twidget* find_widget(const std::string& id, 
 			const bool /*must_be_active*/) const
 		{ return id_ == id ? this : 0; }
-
 	/** 
 	 * Does the widget contain the widget.
 	 *
-	 * This makes more sence in container classes.
+	 * Widgets can be containers which have more widgets inside them, this
+	 * function will traverse in those child widgets and tries to find the
+	 * wanted widget.
+	 *
+	 * @param widget              Pointer to the widget to find.
+	 * @returns                   Whether or not the widget was found.
 	 */
 	virtual bool has_widget(const twidget* widget) const 
 		{ return widget == this; }
 
-	//! The toplevel item should always be a window if not null is returned
+	/***** ***** ***** ***** query parents ***** ***** ***** *****/
+
+	/**
+	 * Get the parent window.
+	 *
+	 * @returns                   Pointer to parent window.
+	 * @retval 0                  No parent window found.
+	 */
 	twindow* get_window();
 
 	/** 
@@ -249,19 +428,41 @@ public:
 	 */
 	tdialog* dialog();
 
-	//! loads the configuration of the widget, mainly used for controls.
-	virtual void load_config() {} 
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+	twidget* parent() { return parent_; }
+	void set_parent(twidget* parent) { parent_ = parent; }
+
+	const std::string& id() const { return id_; }
+	void set_id(const std::string& id) { id_ = id; }
+
+	const std::string& definition() const { return definition_; }
+
+	/**
+	 * Sets the definition.
+	 *
+	 * This function should be set as soon as possible after creating the widget
+	 * and shouldn't be changed after showing the widget. If this is done
+	 * undefined things happen and the code doesn't enforce this rule.
+	 */
+	virtual void set_definition(const std::string& definition) 
+		{ definition_ = definition; }
+
+	/**
+	 * Sets the size (and location) of the widget.
+	 *
+	 * There are no separate setters for the size only this function. Most of
+	 * the time (or always) all sizes are modified together.
+	 */
+	virtual void set_size(const SDL_Rect& rect);
+	
+	/** Gets the sizes in one rect structure. */
 	SDL_Rect get_rect() const 
 		{ return ::create_rect( x_, y_, w_, h_ ); }
-
-
-	/** 
-	 * If the best size doesn't fit we want to use the best size for normal 
-	 * widgets, and resize those who own a scrollbar. 
-	 */
-	virtual bool has_vertical_scrollbar() const { return false; }
-	virtual bool has_horizontal_scrollbar() const { return false; }
+	int get_x() const { return x_; }
+	int get_y() const { return y_; }
+	unsigned get_width() const { return w_; }
+	unsigned get_height() const { return h_; }
 
 protected:	
 	virtual void set_dirty(const bool dirty = true) 
@@ -270,21 +471,52 @@ protected:
 		if(parent_ && dirty) parent_->set_dirty(true);
 	}
 
+public:	
+	virtual bool dirty() const { return dirty_; }
+
 private:
-	//! The id is the unique name of the widget in a certain context. This is
-	//! needed for certain widgets so the engine knows which widget is which. 
-	//! Eg it knows which button is pressed and thuswhich engine action is 
-	//! connected to the button.
+	/**
+	 * The id is the unique name of the widget in a certain context. This is
+	 * needed for certain widgets so the engine knows which widget is which. 
+	 * Eg it knows which button is pressed and thus which engine action is 
+	 * connected to the button. This doesn't mean that the id is unique in a
+	 * window, eg a listbox can have the same id for every row.
+	 */
 	std::string id_;
 
-	//! The definition is the id of that widget class. Eg for a button it
-	//! [button_definition]id. A button can have multiple definitions which all
-	//! look different but for the engine still is a button.
+	/**
+	 * The definition is the id of that widget class. Eg for a button it
+	 * [button_definition]id. A button can have multiple definitions which all
+	 * look different but for the engine still is a button.
+	 */
 	std::string definition_;
 
+	/**
+	 * The parent widget, if the widget has a parent it contains a pointer to
+	 * the parent, else it's set to 0.
+	 */
 	twidget* parent_;
-	int x_, y_;
-	unsigned w_, h_;
+
+	/** The x coordinate of the widget. */
+	int x_;
+
+	/** The y coordinate of the widget. */
+	int y_;
+
+	/** The width of the widget. */
+	unsigned w_;
+	
+	/** The height of the widget. */
+	unsigned h_;
+
+	/** 
+	 * Is the widget dirty? When a widget is dirty it needs to be redrawn at
+	 * the next drawing cycle, setting it to dirty also need to set it's parent
+	 * dirty so at so point the toplevel parent knows which item to redraw.
+	 *
+	 * NOTE dirtying the parent might be inefficient and this behaviour might be
+	 * optimized later on.
+	 */
 	bool dirty_;
 
 };
@@ -303,7 +535,7 @@ public:
 	/** Is the control selected? */
 	virtual bool is_selected() const = 0;
 
-	/** Select the control */
+	/** Select the control. */
 	virtual void set_selected(const bool = true) = 0;
 };
 
