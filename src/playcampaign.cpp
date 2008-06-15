@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file playcampaign.cpp
-//! Controls setup, play, (auto)save and replay of campaigns.
+/**
+ *  @file playcampaign.cpp
+ *  Controls setup, play, (auto)save and replay of campaigns.
+ */
 
 #include "global.hpp"
 
@@ -503,7 +505,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						player_info *player = gamestate.get_player(id);
 						if (player) {
 							(**side)["current_player"] = player->name;
-							//! @todo TODO : remove (see TODO line 276 in server/game.cpp)
+							/** @todo TODO : remove (see TODO line 276 in server/game.cpp) */
 							(**side)["user_description"] = player->name;
 						}
 						(**side)["controller"] = ctr->second.controller;
