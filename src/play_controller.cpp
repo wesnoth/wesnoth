@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file play_controller.cpp
-//! Handle input via mouse & keyboard, events, schedule commands.
+/**
+ *  @file play_controller.cpp
+ *  Handle input via mouse & keyboard, events, schedule commands.
+ */
 
 #include "play_controller.hpp"
 #include "dialogs.hpp"
@@ -502,7 +504,6 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 	return command_executor::execute_command(command, index);
 }
 
-//! Check if a command can be executed.
 bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	if(index >= 0) {
@@ -629,7 +630,6 @@ const team& play_controller::current_team() const
 	return teams_[player_number_-1];
 }
 
-//! Find a human team (ie one we own) starting backwards from 'team_num'.
 int play_controller::find_human_team_before(const size_t team_num) const
 {
 	if (team_num > teams_.size())
@@ -653,7 +653,6 @@ int play_controller::find_human_team_before(const size_t team_num) const
 	return human_side+1;
 }
 
-//! Process mouse- and keypress-events from SDL.
 void play_controller::handle_event(const SDL_Event& event)
 {
 	if(gui::in_dialog()) {
@@ -949,8 +948,6 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_);
 }
 
-//! Determines whether the command should be in the context menu or not.
-//! Independant of whether or not we can actually execute the command.
 bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 {
 	switch(command) {

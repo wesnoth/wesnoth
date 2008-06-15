@@ -77,12 +77,19 @@ public:
 	int get_ticks();
 
 protected:
+	/** Process mouse- and keypress-events from SDL. */
 	void handle_event(const SDL_Event& event);
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
+	/** Check if a command can be executed. */
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 	virtual bool execute_command(hotkey::HOTKEY_COMMAND command, int index=-1);
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+
+	/**
+	 *  Determines whether the command should be in the context menu or not.
+	 *  Independant of whether or not we can actually execute the command.
+	 */
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	virtual void init(CVideo& video, bool is_replay);
@@ -101,6 +108,7 @@ protected:
 	team& current_team();
 	const team& current_team() const;
 
+	/** Find a human team (ie one we own) starting backwards from 'team_num'. */
 	int find_human_team_before(const size_t team) const;
 
 	//managers
