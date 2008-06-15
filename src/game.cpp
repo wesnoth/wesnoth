@@ -1657,14 +1657,14 @@ void game_controller::start_wesnothd()
 
 	std::string config = "data/lan_server.cfg";
 #ifndef _WIN32
-	config = game_config::wesnothd_name +" -c " + config + " -d -t 2 -T 5 ";
+	config = "\"" + game_config::wesnothd_name +"\" -c " + config + " -d -t 2 -T 5 ";
 	LOG_GENERAL << "Starting wesnothd: "<< config << "\n";
 	if (std::system(config.c_str()) != 0)
 #else
 	LOG_GENERAL << "Starting wesnothd\n";
 	// Wesnothd_start.bat has to be included in windows as windows don't know how to start
 	// background job
-	if (std::system(("cmd /C start /B " + game_config::wesnothd_name + " -c " + config + " -t 2 -T 5 ").c_str()) != 0)
+	if (std::system(("cmd /C start /B \"" + game_config::wesnothd_name + "\" -c " + config + " -t 2 -T 5 ").c_str()) != 0)
 #endif
 	{
 		LOG_GENERAL << "Failed to run server start script\n";
