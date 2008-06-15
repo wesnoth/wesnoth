@@ -855,24 +855,42 @@ int filter_textbox::get_index(int selection) const {
 	if(selection < 0) {
 		return selection;
 	}
-	//we must add one to the index to ignore the header row, and
-	//then subtract one from the result to return the index not including
-	//the header row.
+	//we must the header row value to the index to ignore this row and
+	//then subtract it from the result to return the index not including
+	//the possible header row.
 
-	size_t header = 1; // for now, just assume there's a header row
-
-	if (size_t(selection+header) >= index_map_.size()) {
+	if (size_t(selection+header_row_) >= index_map_.size()) {
 		return -1; // bad index, cancel
 	}
 
-	return index_map_[selection+header]-header;
+	return index_map_[selection+header_row_]-header_row_;
 }
 
 void filter_textbox::delete_item(int selection) {
-	size_t header = 1; // for now, just assume there's a header row
-	filtered_items_.erase(filtered_items_.begin() + selection+header);
-	items_.erase(items_.begin() + index_map_[selection+header]);
-	index_map_.erase(index_map_.begin() + selection+header);
+	// use the real selection
+	selection += header_row_;
+
+	const size_t size = index_map_.size();
+	assert(size == filtered_items_.size());
+	if (selection >= size)
+		return;
+	int selection_index = index_map_[selection];
+
+	// we erase the selected element by shifting the following others
+	for(size_t i = selection; i < size-1; ++i) {
+		filtered_items_[i] = filtered_items_[i+1];
+		// don't forget to also shift the next index values
+		index_map_[i] = index_map_[i+1] - 1;
+	}
+	// same operation for item, but starting from the index of selection
+	for(size_t i = selection_index; i < items_.size()-1; ++i) {
+		items_[i] = items_[i+1];
+	}
+
+	// finally, we resize to remove the last doubled element
+	filtered_items_.resize(size - 1);
+	index_map_.resize(size - 1);
+	items_.resize(items_.size() - 1);
 
 	//for now, assume the dialog menu item is deleted using DELETE_ITEM
 	/* dialog_.set_menu_items(filtered_items_); */
@@ -883,7 +901,7 @@ void filter_textbox::handle_text_changed(const wide_string& text) {
 	index_map_.clear();
 	const std::string t = utils::wstring_to_string(text);
 	for(size_t n = 0; n != items_.size(); ++n) {
-		if(n == 0 || std::search(items_[n].begin(), items_[n].end(),
+		if(n < header_row_ || std::search(items_[n].begin(), items_[n].end(),
 								 t.begin(), t.end(),
 								 chars_equal_insensitive) != items_[n].end())
 		{
