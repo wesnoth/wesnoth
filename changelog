@@ -24,7 +24,7 @@ Version 1.5.0+svn:
  * game engine:
    * poison no longer prevents resting
  * graphics:
-   * new portraits: Red Mages, Dark Adepts, White Mage (female)
+   * new portraits: Red Mages, Dark Adepts, White Mages
    * new ford graphics from Syntax_Error
    * added a sea serpent portrait by Pic
    * various improvements to the new widget library
@@ -67,7 +67,10 @@ Version 1.5.0+svn:
    * Add a filter text box for the "Create Unit" dialog
    * Fixed chatlog not to so lobby joins if set in preferences
    * Also highlight the fog under the mouse (not just the terrain)
-   * The class of each add-on is displayed in the downloads dialog
+   * Add-ons download dialog:
+     * The class of each add-on is displayed in the downloads dialog
+     * It is possible to filter what add-ons are displayed by text (matching
+       against any of the information fields)
  * WML engine:
    * titlescreen is now randomly loaded
    * removeitem now can take an image key so that overlays can be removed one at
