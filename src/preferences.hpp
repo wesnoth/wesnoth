@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file preferences.hpp 
-//!
+/** @file preferences.hpp */
 
 #ifndef PREFERENCES_HPP_INCLUDED
 #define PREFERENCES_HPP_INCLUDED
@@ -139,18 +138,18 @@ namespace preferences {
 	bool mouse_scroll_enabled();
 	void enable_mouse_scroll(bool value);
 
-	//! Set editor red tint level.
+	/** Set editor red tint level. */
 	void set_editor_r(int value);
-	//! Set editor green tint level.
+	/** Set editor green tint level. */
 	void set_editor_g(int value);
-	//! Set editor blue tint level.
+	/** Set editor blue tint level. */
 	void set_editor_b(int value);
 	
-	//! Get editor red tint level.
+	/** Get editor red tint level. */
 	int editor_r(void);
-	//! Get editor green tint level.
+	/** Get editor green tint level. */
 	int editor_g(void);
-	//! Get editor blue tint level.
+	/** Get editor blue tint level. */
 	int editor_b(void);
 
 	int draw_delay();
