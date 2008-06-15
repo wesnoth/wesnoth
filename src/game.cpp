@@ -2713,7 +2713,7 @@ int main(int argc, char** argv)
 	try {
 		std::string program(argv[0]);
 		std::string wesnoth("wesnoth");
-		program.replace(program.find(wesnoth), wesnoth.length(), "wesnothd");
+		program.replace(program.rfind(wesnoth), wesnoth.length(), "wesnothd");
 		game_config::wesnothd_name = program;
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		time_t t = time(NULL);
