@@ -874,6 +874,7 @@ void filter_textbox::delete_item(int selection) {
 		return;
 
 	filtered_items_.erase(filtered_items_.begin() + selection);
+	items_to_filter_.erase(items_to_filter_.begin() + index_map_[selection]);
 	items_.erase(items_.begin() + index_map_[selection]);
 	index_map_.erase(index_map_.begin() + selection);
 
@@ -891,10 +892,10 @@ void filter_textbox::handle_text_changed(const wide_string& text) {
 	filtered_items_.clear();
 	index_map_.clear();
 	const std::string t = utils::wstring_to_string(text);
-	for(size_t n = 0; n != items_.size(); ++n) {
-		if(n < header_row_ || std::search(items_[n].begin(), items_[n].end(),
+	for(size_t n = 0; n != items_to_filter_.size(); ++n) {
+		if(n < header_row_ || std::search(items_to_filter_[n].begin(), items_to_filter_[n].end(),
 								 t.begin(), t.end(),
-								 chars_equal_insensitive) != items_[n].end())
+								 chars_equal_insensitive) != items_to_filter_[n].end())
 		{
 			filtered_items_.push_back(items_[n]);
 			index_map_.push_back(n);

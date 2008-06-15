@@ -1302,7 +1302,7 @@ void game_controller::download_addons(std::string host)
 			return;
 		}
 
-		std::vector<std::string> campaigns, versions, uploads, types, options;
+		std::vector<std::string> campaigns, versions, uploads, types, options, options_to_filter;
 
 		std::string sep(1, COLUMN_SEPARATOR);
 
@@ -1381,13 +1381,16 @@ void game_controller::download_addons(std::string host)
 					addon_type_label = _("addon_type^(unknown)");
 					break;
 			}
-			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
-			                  title + COLUMN_SEPARATOR +
-			                  version + COLUMN_SEPARATOR +
-			                  author + COLUMN_SEPARATOR +
-			                  addon_type_label + COLUMN_SEPARATOR +
-			                  (**i)["downloads"].str() + COLUMN_SEPARATOR +
-			                  format_file_size((**i)["size"]) + COLUMN_SEPARATOR);
+			const std::string text_columns =
+				title + COLUMN_SEPARATOR +
+				version + COLUMN_SEPARATOR +
+				author + COLUMN_SEPARATOR +
+				addon_type_label + COLUMN_SEPARATOR +
+				(**i)["downloads"].str() + COLUMN_SEPARATOR +
+				format_file_size((**i)["size"]) + COLUMN_SEPARATOR;
+
+			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
+			options_to_filter.push_back(text_columns);
 		}
 
 		options.push_back(heading.str());
@@ -1396,10 +1399,12 @@ void game_controller::download_addons(std::string host)
 
 		for(std::vector< std::string >::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
 			options.push_back(sep + _("Publish add-on: ") + *j);
+			options_to_filter.push_back(options.back());
 		}
 
 		for(std::vector< std::string >::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
 			options.push_back(sep + _("Delete add-on: ") + *d);
+			options_to_filter.push_back(options.back());
 		}
 
 		if(campaigns.empty() && publish_options.empty()) {
@@ -1422,7 +1427,7 @@ void game_controller::download_addons(std::string host)
 		addon_dialog.set_menu(addon_menu);
 
 		gui::filter_textbox* filter = new gui::filter_textbox(disp().video(),
-			_("Filter: "), options, 0, addon_dialog, 300);
+			_("Filter: "), options, options_to_filter, 0, addon_dialog, 300);
 		addon_dialog.set_textbox(filter);
 
 		const int index = addon_dialog.show();

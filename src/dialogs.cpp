@@ -664,7 +664,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	sorter.set_alpha_sort(0).set_id_sort(1);
 	lmenu.set_menu(items, &sorter);
 
-	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, 1, lmenu);
+	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, 1, lmenu);
 	lmenu.set_textbox(filter);
 
 	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,summaries,*filter);

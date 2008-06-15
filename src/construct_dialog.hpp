@@ -122,13 +122,14 @@ class dialog;
 class filter_textbox : public gui::dialog_textbox {
 public:
 	filter_textbox(CVideo& video, const std::string& header,
-		const std::vector<std::string>& items, size_t header_row,
+		const std::vector<std::string>& items, const std::vector<std::string>& items_to_filter,
+		 size_t header_row,
 		dialog& dialog, int width = 250)
 		: dialog_textbox(new label(video, header), video, width),
 		items_(items),
+		items_to_filter_(items_to_filter),
 		header_row_(header_row),
-		dialog_(dialog),
-		first_time_(true)
+		dialog_(dialog)
 	{
 		set_text("");
 	}
@@ -139,11 +140,10 @@ public:
 	void delete_item(int selection);
 
 private:
-	std::vector<std::string> items_, filtered_items_;
+	std::vector<std::string> items_, items_to_filter_, filtered_items_;
 	std::vector<int> index_map_;
 	size_t header_row_;
 	gui::dialog& dialog_;
-	bool first_time_;
 	virtual void handle_text_changed(const wide_string& text);
 };
 
