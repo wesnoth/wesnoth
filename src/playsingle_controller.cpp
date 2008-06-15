@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file playsingle_controller.cpp
-//! Logic for single-player game.
+/**
+ *  @file playsingle_controller.cpp
+ *  Logic for single-player game.
+ */
 
 #include "playsingle_controller.hpp"
 
