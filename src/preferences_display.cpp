@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file preferences_display.cpp 
-//! Manage display-related preferences, e.g. screen-size, gamma etc.
+/**
+ *  @file preferences_display.cpp 
+ *  Manage display-related preferences, e.g. screen-size, gamma etc.
+ */
 
 #include "global.hpp"
 
@@ -214,8 +216,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int centerx = disp.w()/2;
 	const int centery = disp.h()/2;
 #ifdef USE_TINY_GUI
-	const int width  = 300;			  //! @todo FIXME: We should compute this, but using what data ? 
-		//! @todo FIXME:  suokko: window width and height could be usefull. min(300,disp.w()*0.9)  So it would be either 300 or max 90% of width
+	const int width  = 300;			  /** @todo FIXME: We should compute this, but using what data ? */
+		/** @todo FIXME:  suokko: window width and height could be usefull. min(300,disp.w()*0.9)  So it would be either 300 or max 90% of width */
 	const int height = 220;
 #else
 	const int width  = 700;
@@ -268,7 +270,6 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::button change_button (disp.video(), _("Change Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(30));
 
-	//! @todo Remember to make Clear Hotkey translateable
 	gui::button clear_button (disp.video(), _("Clear Hotkey"));
 	clear_button.set_location(xpos + width - clear_button.width () - font::relative_size(30),ypos + font::relative_size(80));
 //	gui::button save_button (disp.video(), _("Save Hotkeys"));
