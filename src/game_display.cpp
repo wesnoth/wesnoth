@@ -388,12 +388,12 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if(!is_shrouded) {
-				// NOTE: A possible hack is to draw terrain in the unit layer
+				//FIXME: Use a hack to draw terrain in the unit layer
 				// but with a higher drawing_order, so it's rendered on top of the unit
-				// drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
-				//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
-				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
 					get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
+				// drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+				//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
 			}
 
 			// Draw the time-of-day mask on top of the terrain in the hex.
