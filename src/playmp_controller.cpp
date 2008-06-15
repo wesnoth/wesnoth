@@ -333,7 +333,6 @@ void playmp_controller::linger(upload_log& log)
 	LOG_NG << "ending end-of-scenario linger\n";
 }
 
-//! Wait for the host to upload the next scenario.
 void playmp_controller::wait_for_upload()
 {
 	// If the host is here we'll never leave since we wait for the host to
