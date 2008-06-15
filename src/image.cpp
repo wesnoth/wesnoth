@@ -314,7 +314,7 @@ surface locator::load_image_file() const
 		}
 	} while (try_units);
 
-	if (res.null()) {
+	if (res.null() && !val_.filename_.empty()) {
 		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
 	}
 
