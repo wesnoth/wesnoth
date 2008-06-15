@@ -51,7 +51,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 public:
-	friend void callback_view_list_button(twidget* caller);
 	void show_server_list();
 };
 
