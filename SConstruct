@@ -479,7 +479,7 @@ install = env.Alias('install', [])
 for installable in ('wesnoth', 'wesnoth_editor',
                     'wesnothd', 'campaignd',
                     'exploder', 'cutter'):
-    if os.path.exists(installable) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
+    if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
 
 #
