@@ -65,6 +65,7 @@ Version 1.5.0+svn:
      a command. Also accept incomplete command and pass parameters (ex: "alias
      hp=unit hitpoints", then use "hp 100")
    * Add a filter text box for the "Create Unit" dialog
+   * Added "Host Network Game" option back to multiplayer menu
    * Fixed chatlog not to so lobby joins if set in preferences
    * Also highlight the fog under the mouse (not just the terrain)
    * Add-ons download dialog:
@@ -118,6 +119,7 @@ Version 1.5.0+svn:
    * dissallow_observers is on as default if side has controller=null
    * Fixed null-pointer reference in network code
    * Made networking code check system buffer size and limit send length
+   * Made wesnoth start wesnothd for lan games
    * Implemented send_file to reduce memory usage when sending files
    * Implemented send_file using sendfile() system call 
    * Fixed tokenizer not to strip CR from quoted string because it would

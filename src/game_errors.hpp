@@ -28,6 +28,9 @@ struct error {
 	std::string message;
 };
 
+struct mp_server_error : public error {
+	mp_server_error(const std::string& msg) : error("MP server error: " + msg) {}
+};
 //an exception object used when loading a game fails.
 struct load_game_failed : public error {
 	load_game_failed() {}

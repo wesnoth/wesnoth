@@ -50,6 +50,7 @@ namespace game_config
 #else
 	const std::string revision = VERSION;
 #endif
+	std::string wesnothd_name = "wesnothd";
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, lobby_music;
@@ -215,6 +216,8 @@ namespace game_config
 			sinf.address = (**server)["address"];
 			server_list.push_back(sinf);
 		}
+		if (!v["wesnothd_name"].empty())
+			wesnothd_name = v["wesnothd_name"];
 	}
 
 	void add_color_info(const config& v){

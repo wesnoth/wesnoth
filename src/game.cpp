@@ -149,6 +149,7 @@ public:
 #ifdef USE_EDITOR2
 	editor2::EXIT_STATUS start_editor();
 #endif
+	void start_wesnothd();
 	const config& game_config(){return game_config_;};
 
 private:
@@ -1651,6 +1652,27 @@ void game_controller::remove_addon(const std::string& addon)
 	remove_local_addon(addon);
 }
 
+void game_controller::start_wesnothd()
+{
+
+	std::string config = "data/lan_server.cfg";
+#ifndef WIN32
+	config = game_config::wesnothd_name +" -c " + config + " -d -t 2 -T 5 ";
+	LOG_GENERAL << "Starting wesnothd: "<< config << "\n";
+	if (std::system(config.c_str()) != 0)
+#else
+	LOG_GENERAL << "Starting wesnothd\n";
+	// Wesnothd_start.bat has to be included in windows as windows don't know how to start
+	// background job
+	if (std::system(("cmd /C start /B " game_config::wesnothd_name + " -c " + config + " -t 2 -T 5 ").c_str()) != 0)
+#endif
+	{
+		LOG_GENERAL << "Failed to run server start script\n";
+		throw game::mp_server_error("Starting MP server failed!");
+	}
+	// Give server a moment to start up
+	SDL_Delay(100);
+}
 
 bool game_controller::play_multiplayer()
 {
@@ -1688,6 +1710,9 @@ bool game_controller::play_multiplayer()
 			host_or_join.push_back(pre + "serverother.png"
 				+ sep1 + _("Connect to Server")
 				+ sep2 + _("Join a different server"));
+			host_or_join.push_back(pre + "hostgame.png"
+				+ sep1 + _("Host Networked Game")
+				+ sep2 + _("Host a game using dedicated server 'wesnothd'"));
 			host_or_join.push_back(pre + "hotseat.png"
 				+ sep1 + _("Local Game")
 				+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
@@ -1709,10 +1734,15 @@ bool game_controller::play_multiplayer()
 		}
 
 	}else{
-		res = 3;
+		res = 4;
 	}
 
 	try {
+		if (res == 2)
+		{
+			start_wesnothd();
+		}
+
 		/* do */ {
 			reset_defines_map();
 			defines_map_[state_.campaign_define] = preproc_define();
@@ -1724,7 +1754,7 @@ bool game_controller::play_multiplayer()
 			clear_binary_paths_cache();
 		}
 
-		if(res == 2) {
+		if(res == 3) {
 			std::vector<std::string> chat;
 			config game_data;
 
@@ -1733,16 +1763,21 @@ bool game_controller::play_multiplayer()
 
 			mp::start_server(disp(), game_config_, cntr, is_server);
 
-		} else if(res == 0 || res == 1 || res == 3 ) {
+		} else if(res >= 0 && res <= 2 || res == 4) {
 			std::string host;
 			if(res == 0) {
 				host = preferences::server_list().front().address;
-			}else if(res == 3){
+			}else if(res == 2) {
+				host = "localhost";
+			}else if(res == 4){
 				host = multiplayer_server_;
 				multiplayer_server_ = "";
 			}
 			mp::start_client(disp(), game_config_, host);
 		}
+
+	} catch(game::mp_server_error& e) {
+		gui::show_error_message(disp(), _("Error while starting server: ") + e.message);
 	} catch(game::load_game_failed& e) {
 		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
@@ -2663,6 +2698,10 @@ int main(int argc, char** argv)
 #endif
 
 	try {
+		std::string program(argv[0]);
+		std::string wesnoth("wesnoth");
+		program.replace(program.find(wesnoth), wesnoth.length(), "wesnothd");
+		game_config::wesnothd_name = program;
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";

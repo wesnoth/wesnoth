@@ -287,6 +287,8 @@ private:
 	size_t default_time_period_;
 	size_t concurrent_connections_;
 	bool graceful_restart;
+	time_t lan_server_;
+	time_t last_user_seen_time_;
 	std::string restart_command;
 	//! Parse the server config into local variables.
 	void load_config();
@@ -344,6 +346,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	last_ping_(time(NULL)), 
 	last_stats_(last_ping_)
 {
+	last_user_seen_time_ = time(0);
 	load_config();
 	signal(SIGHUP, reload_config);
 	signal(SIGINT, exit_sigint);
@@ -390,6 +393,7 @@ config server::read_config() const {
 void server::load_config() {
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
+	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
 
 	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
@@ -509,6 +513,12 @@ void server::run() {
 
 			time_t now = time(NULL); 
 			if (last_ping_ + 30 <= now) {
+				if (lan_server_ && players_.empty() && last_user_seen_time_ + lan_server_ < now)
+				{
+					LOG_SERVER << "Lan server has been empty for  " << (now - last_user_seen_time_) << " seconds. Shutting down!\n";
+					// We have to shutdown
+					graceful_restart = true;
+				}
 				// and check if bans have expired
 				ban_manager_.check_ban_times(now);
 				// Make sure we log stats every 5 minutes
@@ -694,6 +704,10 @@ void server::run() {
 				}
 			}
 			players_.erase(pl_it);
+			if (lan_server_)
+			{
+				last_user_seen_time_ = time(0);
+			}
 			e.disconnect();
 			DBG_SERVER << "done closing socket...\n";
 		}

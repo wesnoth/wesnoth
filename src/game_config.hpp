@@ -36,6 +36,8 @@ namespace game_config
 	extern const std::string version;
 	extern const std::string revision;
 
+	extern std::string wesnothd_name;
+
 	//! Default percentage gold carried over to the next scenario.
 	extern const int gold_carryover_percentage;
 
