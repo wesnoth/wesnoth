@@ -855,12 +855,25 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 		res.push_back(*i + type + "/");
 	}
 
+	// not found in "/type" directory, try main directory
+	res.push_back(get_user_data_dir());
+
+	if(!game_config::path.empty())
+		res.push_back(game_config::path+"/");
+
+	res.push_back("");
+
 	return res;
 }
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
 	DBG_FS << "Looking for " << filename << "\n";
+
+	if (filename.empty()) {
+		DBG_FS << "  invalid filename ( type: " << type <<")\n";
+		return "";
+	}
 
 	const std::vector<std::string>& paths = get_binary_paths(type);
 	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
@@ -869,14 +882,6 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		if(file_exists(file)) {
 		  DBG_FS << "  Found at " << file << "\n";
 			return file;
-		}
-	}
-
-	if(!filename.empty()) {
-		DBG_FS << "  Checking '.' \n";
-		if(file_exists(filename)) {
-		  DBG_FS << "  Found at " << filename << "\n";
-			return filename;
 		}
 	}
 
