@@ -309,6 +309,11 @@ surface locator::load_image_file() const
 		if (res.null() && (!try_units)) {
 			try_units = true;
 			location = get_binary_file_location("images", "units/" + val_.filename_);
+			if (!location.empty() && !val_.filename_.empty()) {
+				LOG_STREAM(err, filesystem) << "warning: implict prefix 'units/' for '" <<
+					val_.filename_ << "'. Support of this will be removed in 1.5.3\n";
+			}
+
 		} else {
 			try_units = false;
 		}
