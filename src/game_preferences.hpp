@@ -84,6 +84,9 @@ namespace preferences {
 	bool use_map_settings();
 	void set_use_map_settings(bool value);
 
+	int mp_server_warning_disabled();
+	void set_mp_server_warning_disabled(int value);
+
 	bool random_start_time();
 	void set_random_start_time(bool value);
 

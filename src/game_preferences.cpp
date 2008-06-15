@@ -357,6 +357,17 @@ void set_use_map_settings(bool value)
 	preferences::set("mp_use_map_settings", value ? "yes" : "no");
 }
 
+int mp_server_warning_disabled()
+{
+	return lexical_cast_default<int>(preferences::get("mp_server_warning_disabled"), 0);
+}
+
+void set_mp_server_warning_disabled(int value)
+{
+	preferences::set("mp_server_warning_disabled", lexical_cast<std::string>(value));
+}
+
+
 bool random_start_time()
 {
 	return settings::use_random_start_time(preferences::get("mp_random_start_time"));

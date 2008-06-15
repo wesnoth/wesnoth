@@ -1656,7 +1656,7 @@ void game_controller::start_wesnothd()
 {
 
 	std::string config = "data/lan_server.cfg";
-#ifndef WIN32
+#ifndef _WIN32
 	config = game_config::wesnothd_name +" -c " + config + " -d -t 2 -T 5 ";
 	LOG_GENERAL << "Starting wesnothd: "<< config << "\n";
 	if (std::system(config.c_str()) != 0)
@@ -1664,7 +1664,7 @@ void game_controller::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd\n";
 	// Wesnothd_start.bat has to be included in windows as windows don't know how to start
 	// background job
-	if (std::system(("cmd /C start /B " game_config::wesnothd_name + " -c " + config + " -t 2 -T 5 ").c_str()) != 0)
+	if (std::system(("cmd /C start /B " + game_config::wesnothd_name + " -c " + config + " -t 2 -T 5 ").c_str()) != 0)
 #endif
 	{
 		LOG_GENERAL << "Failed to run server start script\n";
@@ -1705,27 +1705,40 @@ bool game_controller::play_multiplayer()
 			char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
 
 			host_or_join.push_back(pre + "server.png"
-				+ sep1 + _("Join Official Server")
-				+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
+					+ sep1 + _("Join Official Server")
+					+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
 			host_or_join.push_back(pre + "serverother.png"
-				+ sep1 + _("Connect to Server")
-				+ sep2 + _("Join a different server"));
+					+ sep1 + _("Connect to Server")
+					+ sep2 + _("Join a different server"));
 			host_or_join.push_back(pre + "hostgame.png"
-				+ sep1 + _("Host Networked Game")
-				+ sep2 + _("Host a game using dedicated server 'wesnothd'"));
+					+ sep1 + _("Host Networked Game")
+					+ sep2 + _("Host a game using dedicated server 'wesnothd'"));
 			host_or_join.push_back(pre + "hotseat.png"
-				+ sep1 + _("Local Game")
-				+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
+					+ sep1 + _("Local Game")
+					+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
 
 			std::string login = preferences::login();
 
-			{
+			int start_server;
+			do {
+				start_server = 0;
 				gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
 				d.set_menu(host_or_join);
 				d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
 				res = d.show();
 				login = d.textbox_text();
-			}
+				if (res == 2 && preferences::mp_server_warning_disabled() < 2)
+				{
+					gui::dialog d(disp(), _("Do you realy want to start the server?"), _("Server will run in background process untill all users have disconnected."), gui::OK_CANCEL);
+					bool checked = preferences::mp_server_warning_disabled() != 1;
+
+					d.add_option(_("Don't show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
+					start_server = d.show();
+					if (start_server == 0)
+						preferences::set_mp_server_warning_disabled(d.option_checked()?2:1);
+
+				}
+			} while (start_server);
 			if (res < 0)
 				return false;
 
