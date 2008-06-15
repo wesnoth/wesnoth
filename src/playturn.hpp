@@ -11,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
@@ -48,7 +49,7 @@ public:
 		PROCESS_CONTINUE,
 		PROCESS_RESTART_TURN,
 		PROCESS_END_TURN,
-		//! When the host uploaded the next scenario this is returned.
+		/** When the host uploaded the next scenario this is returned. */
 		PROCESS_END_LINGER
 		};
 
