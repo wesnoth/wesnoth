@@ -868,19 +868,19 @@ int filter_textbox::get_index(int selection) const {
 
 void filter_textbox::delete_item(int selection) {
 	// use the real selection
-	selection += header_row_;
+	int adjusted_selection = selection + header_row_;
 
-	if (selection >= index_map_.size())
+	if (adjusted_selection >= index_map_.size())
 		return;
 
-	filtered_items_.erase(filtered_items_.begin() + selection);
-	items_to_filter_.erase(items_to_filter_.begin() + index_map_[selection]);
-	items_.erase(items_.begin() + index_map_[selection]);
-	index_map_.erase(index_map_.begin() + selection);
+	filtered_items_.erase(filtered_items_.begin() + adjusted_selection);
+	items_to_filter_.erase(items_to_filter_.begin() + index_map_[adjusted_selection]);
+	items_.erase(items_.begin() + index_map_[adjusted_selection]);
+	index_map_.erase(index_map_.begin() + adjusted_selection);
 
 	// don't forget to also shift the next index values
 	// this assume that index_map_and items_ have the same order
-	for(size_t i = selection; i < index_map_.size(); ++i) {
+	for(size_t i = adjusted_selection; i < index_map_.size(); ++i) {
 		index_map_[i] = index_map_[i]-1;
 	}
 
