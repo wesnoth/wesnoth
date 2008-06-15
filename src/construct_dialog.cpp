@@ -889,20 +889,38 @@ void filter_textbox::delete_item(int selection) {
 }
 
 void filter_textbox::handle_text_changed(const wide_string& text) {
+	const std::vector<std::string> words = utils::split(utils::wstring_to_string(text),' ');
+	if (words == last_words)
+		return;
+	last_words = words;
+
 	filtered_items_.clear();
 	index_map_.clear();
-	const std::string t = utils::wstring_to_string(text);
-	for(size_t n = 0; n != items_to_filter_.size(); ++n) {
-		if(n < header_row_ || std::search(items_to_filter_[n].begin(), items_to_filter_[n].end(),
-								 t.begin(), t.end(),
-								 chars_equal_insensitive) != items_to_filter_[n].end())
+
+	if(header_row_ == 1) {
+			filtered_items_.push_back(items_[0]);
+			index_map_.push_back(0);
+	}
+
+	// we keep all items containing each word
+	for(size_t n = header_row_; n < items_to_filter_.size(); ++n) {
+		std::vector<std::string>::const_iterator w = words.begin();
+		for(; w != words.end(); ++w)
 		{
+			if (std::search(items_to_filter_[n].begin(), items_to_filter_[n].end(),
+						w->begin(), w->end(),
+						chars_equal_insensitive) == items_to_filter_[n].end())
+				break; // one word doesn't match, we don't reach words.end()
+		}
+		if (w == words.end()) {
+			// all words have matched, keep the item
 			filtered_items_.push_back(items_[n]);
 			index_map_.push_back(n);
 		}
 	}
 
 	dialog_.set_menu_items(filtered_items_);
+	dialog_.get_menu().reset_selection();
 }
 
 int message_dialog::show(msecs minimum_lifetime)

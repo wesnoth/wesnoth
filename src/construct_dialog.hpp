@@ -123,7 +123,7 @@ class filter_textbox : public gui::dialog_textbox {
 public:
 	filter_textbox(CVideo& video, const std::string& header,
 		const std::vector<std::string>& items, const std::vector<std::string>& items_to_filter,
-		 size_t header_row,
+		size_t header_row,
 		dialog& dialog, int width = 250)
 		: dialog_textbox(new label(video, header), video, width),
 		items_(items),
@@ -131,6 +131,7 @@ public:
 		header_row_(header_row),
 		dialog_(dialog)
 	{
+		last_words.push_back(""); // dummy word to trigger an update
 		set_text("");
 	}
 
@@ -142,6 +143,7 @@ public:
 private:
 	std::vector<std::string> items_, items_to_filter_, filtered_items_;
 	std::vector<int> index_map_;
+	std::vector<std::string> last_words;
 	size_t header_row_;
 	gui::dialog& dialog_;
 	virtual void handle_text_changed(const wide_string& text);
