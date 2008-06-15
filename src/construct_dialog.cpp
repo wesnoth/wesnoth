@@ -870,26 +870,18 @@ void filter_textbox::delete_item(int selection) {
 	// use the real selection
 	selection += header_row_;
 
-	const size_t size = index_map_.size();
-	if (selection >= size)
+	if (selection >= index_map_.size())
 		return;
-	int selection_index = index_map_[selection];
 
-	// we erase the selected element by shifting the following others
-	for(size_t i = selection; i < size-1; ++i) {
-		filtered_items_[i] = filtered_items_[i+1];
-		// don't forget to also shift the next index values
-		index_map_[i] = index_map_[i+1] - 1;
-	}
-	// same operation for item, but starting from the index of selection
-	for(size_t i = selection_index; i < items_.size()-1; ++i) {
-		items_[i] = items_[i+1];
-	}
+	filtered_items_.erase(filtered_items_.begin() + selection);
+	items_.erase(items_.begin() + index_map_[selection]);
+	index_map_.erase(index_map_.begin() + selection);
 
-	// finally, we resize to remove the last doubled element
-	filtered_items_.resize(size - 1);
-	index_map_.resize(size - 1);
-	items_.resize(items_.size() - 1);
+	// don't forget to also shift the next index values
+	// this assume that index_map_and items_ have the same order
+	for(size_t i = selection; i < index_map_.size(); ++i) {
+		index_map_[i] = index_map_[i]-1;
+	}
 
 	//for now, assume the dialog menu item is deleted using DELETE_ITEM
 	/* dialog_.set_menu_items(filtered_items_); */
