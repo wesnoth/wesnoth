@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file preferences.cpp 
-//! Get and set user-preferences.
+/**
+ *  @file preferences.cpp 
+ *  Get and set user-preferences.
+ */
 
 #include "global.hpp"
 
