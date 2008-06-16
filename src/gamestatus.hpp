@@ -22,6 +22,7 @@
 #include "filesystem.hpp"
 #include "random.hpp"
 #include "team.hpp"
+#include "time_of_day.hpp"
 #include "unit.hpp"
 #include "variable.hpp"
 
@@ -30,35 +31,6 @@
 #include <vector>
 
 class scoped_wml_variable;
-
-//! Object which defines the current time of day.
-struct time_of_day
-{
-	explicit time_of_day(const config& cfg);
-	void write(config& cfg) const;
-
-	// The % bonus lawful units receive.
-	// Chaotic units will receive -lawful_bonus.
-	int lawful_bonus;
-	int bonus_modified;
-
-	// The image to be displayed in the game status.
-	std::string image;
-	t_string name;
-	std::string id;
-
-	// The image that is to be laid over all images
-	// while this time of day lasts.
-	std::string image_mask;
-
-	// The colour modifications that should be made
-	// to the game board to reflect the time of day.
-	int red, green, blue;
-
-	//! List of "ambient" sounds associated with this time_of_day,
-	//! Played at the beginning of turn.
-	std::string sounds;
-};
 
 struct wml_menu_item
 {

@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "game_preferences.hpp"
 #include "statistics.hpp"
+#include "time_of_day.hpp"
 #include "util.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
@@ -129,55 +130,6 @@ player_info* game_state::get_player(const std::string& id) {
 		return &found->second;
 }
 
-time_of_day::time_of_day(const config& cfg)
-                 : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
-                   bonus_modified(0),
-                   image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
-			       image_mask(cfg["mask"]),
-                   red(atoi(cfg["red"].c_str())),
-                   green(atoi(cfg["green"].c_str())),
-                   blue(atoi(cfg["blue"].c_str())),
-		   sounds(cfg["sound"])
-{
-}
-
-void time_of_day::write(config& cfg) const
-{
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",lawful_bonus);
-	cfg["lawful_bonus"] = buf;
-
-	snprintf(buf,sizeof(buf),"%d",red);
-	cfg["red"] = buf;
-
-	snprintf(buf,sizeof(buf),"%d",green);
-	cfg["green"] = buf;
-
-	snprintf(buf,sizeof(buf),"%d",blue);
-	cfg["blue"] = buf;
-
-	cfg["image"] = image;
-	cfg["name"] = name;
-	cfg["id"] = id;
-	cfg["mask"] = image_mask;
-}
-
-static void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
-{
-	const config::child_list& times = cfg.get_children("time");
-	config::child_list::const_iterator t;
-	for(t = times.begin(); t != times.end(); ++t) {
-		normal_times.push_back(time_of_day(**t));
-	}
-
-	if(normal_times.empty())
-	{
-		// Make sure we have at least default time
-		config dummy_cfg;
-		normal_times.push_back(time_of_day(dummy_cfg));
-	}
-}
-
 #ifdef __UNUSED__
 std::string generate_game_uuid()
 {
@@ -216,7 +168,7 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 		turn_ = atoi(turn_at.c_str());
 	}
 
-	parse_times(time_cfg,times_);
+	time_of_day::parse_times(time_cfg,times_);
 
 	set_start_ToD(const_cast<config&>(time_cfg),s_o_g);
 
@@ -227,7 +179,7 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 		area.xsrc = (**t)["x"];
 		area.ysrc = (**t)["y"];
 		std::copy(locs.begin(),locs.end(),std::inserter(area.hexes,area.hexes.end()));
-		parse_times(**t,area.times);
+		time_of_day::parse_times(**t,area.times);
 		areas_.push_back(area);
 	}
 }

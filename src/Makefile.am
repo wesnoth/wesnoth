@@ -122,6 +122,7 @@ wesnoth_source = \
 	statistics.cpp \
 	team.cpp \
 	terrain_filter.cpp \
+	time_of_day.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \
 	unit.cpp \
