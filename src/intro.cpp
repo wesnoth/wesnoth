@@ -124,7 +124,7 @@ bool show_intro_part(display &disp, const config& part,
 	SDL_Rect dstrect;
 
 	if(background.null() || background->w*background->h == 0) {
-		background.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,video.getx(),video.gety(),32,0xFF0000,0xFF00,0xFF,0xFF000000));
+		background.assign(create_neutral_surface(video.getx(),video.gety()));
 	}
 
 	double xscale = 1.0 * video.getx() / background->w;

@@ -768,7 +768,7 @@ void tcanvas::draw(const bool force)
 
 	// create surface
 	DBG_G_D << "Canvas: create new empty canvas.\n";
-	canvas_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE, w_, h_, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+	canvas_.assign(create_neutral_surface(w_, h_));
 
 	// draw items 
 	for(std::vector<tshape_ptr>::iterator itor = 

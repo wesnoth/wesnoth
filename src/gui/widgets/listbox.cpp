@@ -305,8 +305,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 		row.set_height(height);
 
 		row.grid()->set_size(::create_rect(0, 0, list_rect_.w, height));
-		row.canvas().assign(SDL_CreateRGBSurface(SDL_SWSURFACE, 
-			list_rect_.w, height, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+		row.canvas().assign(create_neutral_surface(list_rect_.w, height));
 	}
 
 	// FIXME we assume fixed row height atm.

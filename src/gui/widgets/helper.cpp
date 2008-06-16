@@ -121,8 +121,7 @@ surface save_background(const surface& background, const SDL_Rect& rect)
 	assert(rect.x + rect.w <= background->w);
 	assert(rect.y + rect.h <= background->h);
 
-	surface result(SDL_CreateRGBSurface(SDL_SWSURFACE, 
-		rect.w, rect.h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+	surface result(create_neutral_surface(rect.w, rect.h));
 
 	{
 		// Extra scoping used for the surface_lock.
