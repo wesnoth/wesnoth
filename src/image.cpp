@@ -35,6 +35,7 @@
 #include <string>
 
 #define ERR_DP LOG_STREAM(err, display)
+#define INFO_DP LOG_STREAM(info, display)
 
 namespace {
 
@@ -505,12 +506,28 @@ void set_wm_icon()
 #endif
 }
 
-SDL_PixelFormat* pixel_format = NULL;
+SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)
 {
-	pixel_format = format;
-	flush_cache();
+	assert(format != NULL);
+	
+	SDL_PixelFormat &f = *format;
+	SDL_PixelFormat &l = last_pixel_format;
+	// if the pixel format change, we clear the cache,
+	// because some images are now optimized for the wrong display format
+	// FIXME: 8 bpp use palette, need to compare them. For now assume a change
+	if (format->BitsPerPixel == 8 ||
+		f.BitsPerPixel != l.BitsPerPixel || f.BytesPerPixel != l.BytesPerPixel ||
+		f.Rmask != l.Rmask || f.Gmask != l.Gmask || f.Bmask != l.Bmask ||
+		f.Rloss != l.Rloss || f.Gloss != l.Gloss || f.Bloss != l.Bloss ||
+		f.Rshift != l.Rshift || f.Gshift != l.Gshift || f.Bshift != l.Bshift ||
+		f.colorkey != l.colorkey || f.alpha != l.alpha)
+	{
+		INFO_DP << "detected a new display format\n";
+		flush_cache();
+	}
+	last_pixel_format = *format;
 }
 
 void set_colour_adjustment(int r, int g, int b)

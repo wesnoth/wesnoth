@@ -183,8 +183,6 @@ namespace image {
 	///the 'mask' is blitted onto all scaled images.
 	void set_image_mask(const std::string& image_name);
 
-	extern SDL_PixelFormat* pixel_format;
-
 	///sets the pixel format used by the images. Is called every time the
 	///video mode changes. Invalidates all images.
 	void set_pixel_format(SDL_PixelFormat* format);
