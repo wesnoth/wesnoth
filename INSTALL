@@ -89,7 +89,7 @@ exploder wesnothd campaignd'.
 So, for example, this builds game, editor, and campaign server,
 enabling debugging on all:
 
-    scons debug=yes wesnoth wesnoth_editor campaignd 
+    scons build=debug wesnoth wesnoth_editor campaignd 
 
 To build wesnothd:
 
@@ -183,8 +183,8 @@ Optional Features:
   --disable-dependency-tracking  N/A
   --enable-dependency-tracking   N/A
   --disable-rpath           N/A
-  --enable-debug            debug=yes
-  --enable-profile          profile=yes
+  --enable-debug            build=debug
+  --enable-profile          build=profile
   --enable-tests            (See --help documentation on choice of targets)
   --enable-static           static=yes
   --disable-python          python=no
