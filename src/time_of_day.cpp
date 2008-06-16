@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file gamestatus.cpp
-//! Maintain status of a game, load&save games.
+/** @file time_of_day.cpp */
 
 #include "global.hpp"
 

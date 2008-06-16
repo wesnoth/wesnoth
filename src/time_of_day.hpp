@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file time_of_day.hpp
-//!
-//!
+/** @file time_of_day.hpp */
 
 #ifndef TIME_OF_DAY_HPP_INCLUDED
 #define TIME_OF_DAY_HPP_INCLUDED
