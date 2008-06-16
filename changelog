@@ -10,17 +10,19 @@ Version 1.5.0+svn:
      * fixed the Wesfolk Outcast line's distract ability not working
      * increased the gold you get from not letting Lady Outlaw join you in the
        second scenario
+     * removed the outlaw princess and outlaw queen and instead made Jessica
+       only have one unit line
    * Son of the Black Eye:
      * fixed a crash in 'Dwarvish Stand'
    * An Orcish Incursion
-	 * new storyline and dialogues to scenario 1
-	 * new storyline and dialogues to scenario 2
-	 * made the AI do mixed recruits in scenario 2
-	 * new storyline and dialogues to scenario 3
-	 * added a form of gold bonus to scenario 3
-	 * new storyline to scenario 4
+     * new storyline and dialogues to scenario 1
+     * new storyline and dialogues to scenario 2
+     * made the AI do mixed recruits in scenario 2
+     * new storyline and dialogues to scenario 3
+     * added a form of gold bonus to scenario 3
+     * new storyline to scenario 4
    * Under the Burning Suns
-	 * fixed event spawning elves in outer villages
+     * fixed event spawning elves in outer villages
  * game engine:
    * poison no longer prevents resting
  * graphics:
@@ -79,7 +81,7 @@ Version 1.5.0+svn:
    * fix [teleport] capturing villages with the wrong side (bug #11683)
    * SideWML recruit= no longer locks the faction except if explicitely wanted
      with the new key faction_from_recruit=yes
-   * add "default_base" parameter to overlay terrains, which specifies the 
+   * add "default_base" parameter to overlay terrains, which specifies the
      base terrain the editor draws by default.
    * New [heal_unit] action.
    * Make it possible to change base and overlay separately in [terrain] and
@@ -89,7 +91,7 @@ Version 1.5.0+svn:
    * [store_map_dimensions] also stores map border size now.
    * renamed old [attacks] special to [swarm]
    * created [attacks] special with expected behaviour and usage similar to
-	 [damage] special
+     [damage] special
  * wesnothd
    * added selective ping support - saves server bandwidth
    * updated pings to use new simple_wml
@@ -121,7 +123,7 @@ Version 1.5.0+svn:
    * Made networking code check system buffer size and limit send length
    * Made wesnoth start wesnothd for lan games
    * Implemented send_file to reduce memory usage when sending files
-   * Implemented send_file using sendfile() system call 
+   * Implemented send_file using sendfile() system call
    * Fixed tokenizer not to strip CR from quoted string because it would
      destroy images transfered over network
    * Added possibility to use per fight EV statistics proposed by maboul
@@ -148,7 +150,7 @@ Version 1.5.0+svn:
    * corrected setlocale() usage on win32
    * Fixed [binary_path] declarations not being recognized inside the MULTIPLAYER
      #ifdef for eras
-   
+
 Version 1.5.0:
  * campaigns:
    * synchronize all campaign ids with their directory name
@@ -178,7 +180,7 @@ Version 1.5.0:
    * image_diagonal now also works with normal [frame]
    * sub-frames now obey terrain height
    * selecting a poisoned unit now does the selection anim properly
-   * convert the render engine to a z-ordered based engine, this allows to 
+   * convert the render engine to a z-ordered based engine, this allows to
      have multiple layers and the calculation and rendering are separated
      which means things can be drawn in front of units.
    * removed the now unused tilestack based drawing.
@@ -214,7 +216,7 @@ Version 1.5.0:
  * user interface:
    * placement of the counters and displays of the top panel optimized
    * Refactored the in-game console and added help function (patch #1036)
-   * Refactored chat /commands and added help.  Made :commands a superset 
+   * Refactored chat /commands and added help.  Made :commands a superset
      of chat /commands
    * optional cancelling of unit orders in load-game dialog (patch #1024)
    * fixed sub-optimal multi-turn pathfinding which avoided ZoC too much
@@ -241,11 +243,11 @@ Version 1.5.0:
      --with-replay replays the file loaded with --load option.
  * WML engine:
    * new tag [insert_tag] to place dynamic WML content
-   * Extended most C++ checks for boolean WML attributes to use 
+   * Extended most C++ checks for boolean WML attributes to use
      utils::string_bool() rather than true/false or yes/no string comparisons;
      as a result, they should accept true non-zero values, "on", "yes" or "true"
      strings; and "0", "off", "no" or "false" are considered false values.
-   * A variable string's length can now be obtained with [set_variable] 
+   * A variable string's length can now be obtained with [set_variable]
      string_length=
    * Implemented [variable] boolean_not_equals= for simmetry with [variable]
      boolean_equals=
@@ -258,22 +260,22 @@ Version 1.5.0:
    * The UnitWML [unit] tag is changed to [unit_type].  [unit] will still
      be accepted for backwards compatibility until 1.5.3.  wmllint can safely
      do this up-conversion.
-   * In SingleUnitWML and SideWML, the description= attribute is now id=. 
+   * In SingleUnitWML and SideWML, the description= attribute is now id=.
      description= will still be accepted for backwards compatibility.
      wmllint can safely do this up-conversion.
-   * In SingleUnitWML and SideWML, the user_description= attribute is now 
-     name=. user_description= will still be accepted for backwards 
+   * In SingleUnitWML and SideWML, the user_description= attribute is now
+     name=. user_description= will still be accepted for backwards
      compatibility.  wmllint can safely do this up-conversion.
    * In SingleUnitWML and SideWML, the generate_description= attribute is
-     now generate_name=. generate_description= will still be accepted for 
+     now generate_name=. generate_description= will still be accepted for
      backwards compatibility. wmllint can safely do this up-conversion.
    * In UnitWML, the unit_description= attribute is now description=.
-     unit_description= will still be accepted for backwards 
+     unit_description= will still be accepted for backwards
      compatibility.  wmllint can safely do this up-conversion.
    * In ThemeWML, the unit_description= attribute is now unit_name=.
      unit_description= will still be accepted for backwards compatibility.
-     wmllint can safely do this up-conversion. 
-   * In AnimationWML, the [unit_filter] tag is now [filter], the    
+     wmllint can safely do this up-conversion.
+   * In AnimationWML, the [unit_filter] tag is now [filter], the
      [secondary_unit_filter] tag is now [filter_second], and the
      [attack_filter] tag is now [filter_attack], and the
      [secondary_attack_filter] tag is now [filter_second_attack]
@@ -377,9 +379,9 @@ Version 1.4:
      (bug #11150)
    * Fixed UI sounds toggle crash on Windows
    * when a new unit is spawned when the attacker dies and the new unit has
-     a lower number of weapons then the weapon number used in the attack an 
+     a lower number of weapons then the weapon number used in the attack an
      wml_exception was thrown (bug #10926).
-   * truncate names in the load dialog utf8 aware, might be related to 
+   * truncate names in the load dialog utf8 aware, might be related to
      bug #11186
    * fix bug #11187 play_once=yes and fix musical cross-fading
 
