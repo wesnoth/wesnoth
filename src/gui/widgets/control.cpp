@@ -47,9 +47,9 @@ namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count) :
 	visible_(true),
+	label_(),
 	multiline_label_(false),
 	wrapped_label_(),
-	label_(),
 	tooltip_(),
 	help_message_(),
 	canvas_(canvas_count),
@@ -70,31 +70,20 @@ void tcontrol::help_key(tevent_handler& event)
 	event.show_help_popup(help_message_, settings::help_show_time);
 }
 
-void tcontrol::set_size(const SDL_Rect& rect)
+void tcontrol::load_config()
 {
-	// resize canvasses
-	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_width(rect.w);
-		canvas.set_height(rect.h);
+	if(!config()) {
+		set_config(get_control(get_control_type(), definition()));
+
+		assert(canvas().size() == config()->state.size());
+		for(size_t i = 0; i < canvas().size(); ++i) {
+			canvas(i) = config()->state[i].canvas;
+		}
+
+		set_canvas_text();
+
+		load_config_extra();
 	}
-
-	// clear the cache.
-	wrapped_label_.clear();
-	
-	// inherited
-	twidget::set_size(rect);
-}
-
-void tcontrol::set_label(const t_string& label)
-{
-	if(label == label_) {
-		return;
-	}
-
-	label_ = label;
-	wrapped_label_.clear();
-	set_canvas_text();
-	set_dirty();
 }
 
 tpoint tcontrol::get_minimum_size() const
@@ -133,6 +122,104 @@ tpoint tcontrol::get_maximum_size() const
 {
 	assert(config_);
 	return tpoint(config_->max_width, config_->max_height);
+}
+
+void tcontrol::draw(surface& surface)
+{
+	assert(config_);
+
+	set_dirty(false);
+	SDL_Rect rect = get_rect();
+
+	if(!visible_) {
+		// When not visible we first restore our original surface.
+		// Next time when visible we grab the background again.
+		if(restorer_) {
+			DBG_G_D << "Control: drawing setting invisible.\n";
+			restore_background(surface);
+			restorer_ = 0;
+		}
+		return;
+	}
+
+	DBG_G_D << "Control: drawing.\n";
+	if(!restorer_) {
+		save_background(surface);
+	} else if(full_redraw()) {
+		restore_background(surface);
+	}
+
+	if(multiline_label_) {
+		// Set the text hardcoded in multiline mode.
+		if(wrapped_label_.empty()) {
+			wrapped_label_ = font::word_wrap_text(label_, config_->text_font_size, get_width());
+		}
+		canvas(get_state()).set_variable("text", variant(wrapped_label_));
+	}
+
+	canvas(get_state()).draw(true);
+	blit_surface(canvas(get_state()).surf(), 0, surface, &rect);
+}
+
+void tcontrol::set_definition(const std::string& definition)
+{
+	assert(!config());
+	twidget::set_definition(definition);
+	load_config();
+	assert(config());
+}
+
+void tcontrol::set_size(const SDL_Rect& rect)
+{
+	// resize canvasses
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_width(rect.w);
+		canvas.set_height(rect.h);
+	}
+
+	// clear the cache.
+	wrapped_label_.clear();
+	
+	// inherited
+	twidget::set_size(rect);
+}
+
+void tcontrol::set_label(const t_string& label)
+{
+	if(label == label_) {
+		return;
+	}
+
+	label_ = label;
+	wrapped_label_.clear();
+	set_canvas_text();
+	set_dirty();
+}
+
+bool tcontrol::full_redraw() const
+{
+	assert(config());
+	return config()->state[get_state()].full_redraw;
+}
+
+void tcontrol::set_canvas_text()
+{
+	// set label in canvases
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_variable("text", variant(label_));
+	}
+}
+
+void tcontrol::save_background(const surface& src)
+{
+	assert(!restorer_);
+
+	restorer_ = gui2::save_background(src, get_rect());
+}
+
+void tcontrol::restore_background(surface& dst)
+{
+	gui2::restore_background(restorer_, dst, get_rect());
 }
 
 tpoint tcontrol::get_single_line_best_size(const tpoint& config_size) const
@@ -179,7 +266,7 @@ tpoint tcontrol::get_multi_line_best_size(const tpoint& config_size) const
 	}
 	unsigned width = 0;
 	if(!config_size.x && !maximum_size.x) {
-		// FIMXE implement
+		/** @todo FIMXE implement */
 /*		const twindow* window = get_window();
 		if(window) {
 			const SDL_Rect rect = window->get_client_rect();
@@ -208,112 +295,5 @@ tpoint tcontrol::get_multi_line_best_size(const tpoint& config_size) const
 	return tpoint(surf->w + config_->text_extra_width, surf->h + config_->text_extra_height);
 }
 
-//! Does the widget need to restore the surface before (re)painting?
-bool tcontrol::full_redraw() const
-{
-	assert(config());
-	return config()->state[get_state()].full_redraw;
-}
-
-//! Sets the text variable for the canvases.
-void tcontrol::set_canvas_text()
-{
-	// set label in canvases
-	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_variable("text", variant(label_));
-	}
-}
-
-void tcontrol::set_definition(const std::string& definition)
-{
-	assert(!config());
-	twidget::set_definition(definition);
-	load_config();
-	assert(config());
-}
-
-void tcontrol::draw(surface& surface)
-{
-	assert(config_);
-
-	set_dirty(false);
-	SDL_Rect rect = get_rect();
-
-	if(!visible_) {
-		// When not visible we first restore our original surface.
-		// Next time when visible we grab the background again.
-		if(restorer_) {
-			DBG_G_D << "Control: drawing setting invisible.\n";
-			restore_background(surface);
-			restorer_ = 0;
-		}
-		return;
-	}
-
-	DBG_G_D << "Control: drawing.\n";
-	if(!restorer_) {
-		save_background(surface);
-	} else if(full_redraw()) {
-		restore_background(surface);
-	}
-
-	if(multiline_label_) {
-		// Set the text hardcoded in multiline mode.
-		if(wrapped_label_.empty()) {
-			wrapped_label_ = font::word_wrap_text(label_, config_->text_font_size, get_width());
-		}
-		canvas(get_state()).set_variable("text", variant(wrapped_label_));
-	}
-
-	canvas(get_state()).draw(true);
-	blit_surface(canvas(get_state()).surf(), 0, surface, &rect);
-}
-
-//! Saves the portion of the background.
-//!
-//! We expect an empty restorer and copy the part in get_rect() to the new 
-//! surface. We copy the data since we want to put it back 1:1 and not a blit
-//! so can't use get_surface_portion.
-//!
-//! @param src          background to save.
-void tcontrol::save_background(const surface& src)
-{
-	assert(!restorer_);
-
-	restorer_ = gui2::save_background(src, get_rect());
-}
-
-//! Restores a portion of the background.
-//!
-//! See save_background for more info.
-//! 
-//! @param dst          Background to restore.
-void tcontrol::restore_background(surface& dst)
-{
-	gui2::restore_background(restorer_, dst, get_rect());
-}
-
-//! Inherited from twidget.
-//!
-//! All classes which use this class as base should call this function in
-//! their constructor. Abstract classes shouldn't call this routine. The 
-//! classes which call this routine should also define get_control_type().
-void tcontrol::load_config()
-{
-	if(!config()) {
-		set_config(get_control(get_control_type(), definition()));
-
-		assert(canvas().size() == config()->state.size());
-		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = config()->state[i].canvas;
-		}
-
-		set_canvas_text();
-
-		load_config_extra();
-	}
-}
-
 } // namespace gui2
-
 

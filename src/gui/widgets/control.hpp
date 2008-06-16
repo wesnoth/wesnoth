@@ -24,24 +24,68 @@
 
 namespace gui2 {
 
-//! Base class for all visible items.
+/** Base class for all visible items. */
 class tcontrol : public virtual twidget
 {
-
-	tcontrol();
 public:
 
 	tcontrol(const unsigned canvas_count);
+
 	virtual ~tcontrol() {}
 
-	//! Inherted from twidget.
+	/***** ***** ***** ***** State handling ***** ***** ***** *****/
+
+	/**
+	 * Sets the control's state.
+	 *
+	 *  Sets the control in the active state, when inactive a control can't be
+	 *  used and doesn't react to events. (Note read-only for a ttext_ is a
+	 *  different state.)
+	 */
+	virtual void set_active(const bool active) = 0;
+
+	/** Gets the active state of the control. */
+	virtual bool get_active() const = 0;
+
+protected:
+	/** Returns the id of the state.
+	 *
+	 * The current state is also the index canvas_.
+	 */
+	virtual unsigned get_state() const = 0;
+
+public:
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
+	/** Inherted from tevent_executor. */
 	void mouse_hover(tevent_handler& event);
 
-	//! Inherted from twidget.
+	/** Inherted from tevent_executor. */
 	void help_key(tevent_handler& event);
 
-	//! Inherited from twidget.
-	void set_size(const SDL_Rect& rect);
+	/**
+	 * Inherited from twidget.
+	 *
+	 * This function shouldn't be called directly it's called by set_definition().
+	 * All classes which use this class as base should call this function in
+	 * their constructor. Abstract classes shouldn't call this routine. The 
+	 *
+	 * classes which call this routine should also define get_control_type().
+	 */
+	void load_config();
+
+	/** Inherited from twidget. */
+	tpoint get_minimum_size() const;
+
+	/** Inherited from twidget. */
+	tpoint get_best_size() const;
+
+	/** Inherited from twidget. */
+	tpoint get_maximum_size() const;
+
+	/** Inherited from twidget. */
+	void draw(surface& surface);
 
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
@@ -73,30 +117,6 @@ public:
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
-	void set_visible(const bool visible = true) 
-		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
-	bool get_visible() const { return visible_; }
-
-	void set_multiline_label(const bool multiline = true) 
-		{ if(multiline != multiline_label_) { multiline_label_ = multiline; set_dirty(); } }
-
-	void set_label(const t_string& label);
-
-	const t_string& label() const { return label_; }
-
-	// Note setting the tooltip_ doesn't dirty an object.
-	void set_tooltip(const t_string& tooltip) 
-		{ tooltip_ = tooltip; set_wants_mouse_hover(!tooltip_.empty()); }
-	const t_string& tooltip() const { return tooltip_; }
-
-	// Note setting the help_message_ doesn't dirty an object.
-	void set_help_message(const t_string& help_message) { help_message_ = help_message; }
-	const t_string& help_message() const { return help_message_; }
-
-	std::vector<tcanvas>& canvas() { return canvas_; }
-	tcanvas& canvas(const unsigned index) 
-		{ assert(index < canvas_.size()); return canvas_[index]; }
-
 	/** 
 	 * Inherited from twidget. 
 	 * 
@@ -108,101 +128,176 @@ public:
 	 */
 	void set_definition(const std::string& definition);
 
-	//! Inherited from twidget.
-	void draw(surface& surface);
+	/** Inherited from twidget. */
+	void set_size(const SDL_Rect& rect);
 
-	//! Sets the control in the active state, when inactive a control can't be
-	//! used and doesn't react to events. (Note read-only for a ttext_ is a
-	//! different state.)
-	virtual void set_active(const bool active) = 0;
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	//! Gets the active state of the control.
-	virtual bool get_active() const = 0;
+	bool get_visible() const { return visible_; }
+	void set_visible(const bool visible = true) 
+		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 
-	// note we should check whether the label fits in the button
-	// Inherited from twidget.
-	tpoint get_minimum_size() const;
-	tpoint get_best_size() const;
-	tpoint get_maximum_size() const;
+	// Getter isn't needed yet will be added when needed.
+	void set_multiline_label(const bool multiline = true) 
+		{ if(multiline != multiline_label_) { multiline_label_ = multiline; set_dirty(); } }
 
-	/**
-	 * Inherited from twidget.
-	 *
-	 * This function shouldn't be called directly it's called by set_definition().
-	 */
-	void load_config();
+	const t_string& label() const { return label_; }
+	void set_label(const t_string& label);
 
-private:
-	//! Helpers
-	tpoint get_single_line_best_size(const tpoint& config_size) const;
-	tpoint get_multi_line_best_size(const tpoint& config_size) const;
+	const t_string& tooltip() const { return tooltip_; }
+	// Note setting the tooltip_ doesn't dirty an object.
+	void set_tooltip(const t_string& tooltip) 
+		{ tooltip_ = tooltip; set_wants_mouse_hover(!tooltip_.empty()); }
 
-public:
+	const t_string& help_message() const { return help_message_; }
+	// Note setting the help_message_ doesn't dirty an object.
+	void set_help_message(const t_string& help_message) { help_message_ = help_message; }
+
+	// const versions will be added when needed
+	std::vector<tcanvas>& canvas() { return canvas_; }
+	tcanvas& canvas(const unsigned index) 
+		{ assert(index < canvas_.size()); return canvas_[index]; }
+
 protected:
-
-	//! Returns the id of the state, which is also the index for the canvas.
-	virtual unsigned get_state() const = 0;
-
-	//! Does the widget need to restore the surface before (re)painting?
-	virtual bool full_redraw() const;
-
-	//! Sets the text variable for the canvases.
-	virtual void set_canvas_text();
-
 	tresolution_definition_* config() { return config_; }
 	const tresolution_definition_* config() const { return config_; }
 
 	void set_config(tresolution_definition_* config) { config_ = config; }
 
+	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
+
+	/** Does the widget need to restore the surface before (re)painting? */
+	virtual bool full_redraw() const;
+
+	/** Sets the text variable for the canvases. */
+	virtual void set_canvas_text();
+
 private:
 
-	//! Visible state of the control, invisible isn't drawn.
+	/** Visible state of the control, invisible controls aren't drawn. */
 	bool visible_;
 
-	//! Can the label contain multiple lines.
-	bool multiline_label_;
-
-	//! If multiline we need to have a version of the label wrapped to fit
-	//! in the widget. This value is cached so changes to the label or widget
-	//! size should clear us.
-	std::string wrapped_label_;
-
-	//! The label associated with a lot of widgets to show a (non editable) text.
+	/** Contain the non-editable text associated with control. */
 	t_string label_;
 
-	//! When hovering a tooltip with extra information can show up.
+	/** 
+	 * Can the label contain multiple lines.
+	 *
+	 * This is needed in order to get the sizing, when the control can contain
+	 * multiple lines of text we need to find the best width/height combination.
+	 */
+	bool multiline_label_;
+
+	/**
+	 * Contains the wrapped text for a multiline label.
+	 *
+	 * This is a cache which contains the translated label text with extra line
+	 * endings. The extra line endings are determined in the sizing code and
+	 * which text will be rendered in the end.
+	 */
+	std::string wrapped_label_;
+
+	/**
+	 * Tooltip text.
+	 *
+	 * The hovering event can cause a small tooltip to be shown, this is the
+	 * text to be shown. At the moment the tooltip is a single line of text.
+	 */
 	t_string tooltip_;
 
-	//! When the user presses help a tooltip with even more info can be shown.
+	/**
+	 * Tooltip text.
+	 *
+	 * The help event can cause a tooltip to be shown, this is the text to be
+	 * shown. At the moment the tooltip is a single line of text.
+	 */
 	t_string help_message_;
 
-	//! Holds all canvas objects for a control. 
+	/**
+	 * Holds all canvas objects for a control. 
+	 *
+	 * A control can have multiple states, which are defined in the classes
+	 * inheriting from us. For every state there is a separate canvas, which is
+	 * stored here. When drawing the state is determined and that canvas is
+	 * drawn.
+	 */
 	std::vector<tcanvas> canvas_;
 
-	//! Holds a copy of the original background which can be used before
-	//! redrawing. This is needed for semi-tranparent items, the user
-	//! defines whether it's required or not.
+	/**
+	 * Holds a copy of the original background.
+	 *
+	 * This background can be used before redrawing. This is needed for
+	 * semi-tranparent items, the user defines whether it's required or not.
+	 */
 	surface restorer_;
 
-	//! Saves the portion of the background.
+	/***** ***** ***** ***** private functions ***** ***** ***** *****/
+
+	/**
+	 * Saves the portion of the background.
+	 * 
+	 * We expect an empty restorer and copy the part in get_rect() to the new
+	 * surface. We copy the data since we want to put it back 1:1 and not a
+	 * blit so can't use get_surface_portion.
+	 * 
+	 * @param src          background to save.
+	 */
 	void save_background(const surface& src);
 
-	//! Restores a portion of the background.
+	/**
+	 * Restores a portion of the background.
+	 *
+	 * See save_background for more info.
+	 * 
+	 * @param dst          Background to restore.
+	 */
 	void restore_background(surface& dst);
 
-	//! Contains a pointer to the configuration of this button at the 
-	//! current resolution.
+	/**
+	 * Contains the pointer to the configuration.
+	 *
+	 * Every control has a definition of how it should look, this contains a
+	 * pointer to the definition. The definition is resolution dependant, where
+	 * the resolution is the size of the Wesnoth application window. Depending
+	 * on the resolution widgets can look different, use different fonts.
+	 * Windows can use extra scrollbars use abbreviations as text etc.
+	 */
  	tresolution_definition_* config_;
 
-	//! Once the config is loaded this function is called.
+	/**
+	 * Load class dependant config settings.
+	 *
+	 * load_config will call this method after loading the config, by default it
+	 * does nothing but classes can override it to implement custom behaviour.
+	 */
 	virtual void load_config_extra() {}
 
-	//! The control_type parameter for tgui_definition::get_control()
-	//! To keep the code more generic this type is required so the
-	//! controls need to return the proper string here.
-	//! Might be used at other parts as well the get the type of 
-	//! control involved.
+	/**
+	 * Returns the control_type of the control.
+	 *
+	 * The control_type parameter for tgui_definition::get_control() To keep the
+	 * code more generic this type is required so the controls need to return
+	 * the proper string here.  Might be used at other parts as well the get the
+	 * type of 
+	 * control involved.
+	 */
 	virtual const std::string& get_control_type() const = 0;
+
+	/** 
+	 * Gets the best size for a single line label. 
+	 *
+	 * @param config_size         The wanted size.
+	 * @returns                   The best size.
+	 */
+	tpoint get_single_line_best_size(const tpoint& config_size) const;
+
+	/** 
+	 * Gets the best size for a multiline line label. 
+	 *
+	 * @param config_size         The wanted size.
+	 * @returns                   The best size.
+	 */
+	tpoint get_multi_line_best_size(const tpoint& config_size) const;
 };
 
 } // namespace gui2
