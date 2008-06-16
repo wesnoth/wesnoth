@@ -2022,7 +2022,6 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 		reportSurfaces_[report_num].assign(NULL);
 	}
 }
-extern int debug;
 bool display::invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) {
 	// unused variable - const SDL_Rect& rect = map_area();
 	bool result = false;
@@ -2034,7 +2033,7 @@ bool display::invalidate_rectangle(const gamemap::location& first_corner, const 
 		if(is_odd(x)) {
 			result |= invalidate(gamemap::location(x,minimum<int>(first_corner.y,second_corner.y)-1));
 		} else {
-			result |= invalidate(gamemap::location(x,minimum<int>(first_corner.y,second_corner.y)+1));
+			result |= invalidate(gamemap::location(x,maximum<int>(first_corner.y,second_corner.y)+1));
 		}
 	}
 	return result;
