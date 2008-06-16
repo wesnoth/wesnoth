@@ -481,21 +481,18 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 	// If unit has specific profile, remember it and keep it after advancing
-	bool specific_profile = false;
-	std::string profile;
-	if (type() != NULL)
-	{
-		specific_profile = (cfg_["profile"] != type()->get_gender_unit_type(gender_).get_variation(variation_).cfg_["profile"]);
-
-		if (specific_profile)
-		{
-			profile = cfg_["profile"];
+	std::string specific_profile;
+	if (type() != NULL)	{
+		const std::string profile = cfg_["profile"];
+		if (!profile.empty() &&
+				profile != type()->get_gender_unit_type(gender_).get_variation(variation_).cfg_["profile"]){
+			specific_profile = profile;
 		}
 	}
+
 	cfg_.merge_with(t->cfg_);
-	if (specific_profile)
-	{
-	cfg_["profile"] = profile;
+	if (!specific_profile.empty()) {
+		cfg_["profile"] = specific_profile;
 	}
 	cfg_.clear_children("male");
 	cfg_.clear_children("female");
