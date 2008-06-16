@@ -536,12 +536,11 @@ namespace{
 		height = 5 + (fs + 2) * hp_prob_vector.size();
 
 		// Create the surface.
-		surf = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height,
-									image::pixel_format->BitsPerPixel,
-								image::pixel_format->Rmask,
-								image::pixel_format->Gmask,
-								image::pixel_format->Bmask,
-								image::pixel_format->Amask);
+		surf = create_neutral_surface(width, height);
+		// following SDL code will use color key,
+		// so we need to remove the alpha channel to make it work
+		// FIXME: use standard alpha and blit_surface instead
+		SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
 		SDL_Rect clip_rect = {0, 0, width, height};
 		Uint32 grey_color = SDL_MapRGB(surf->format, 0xb7, 0xc1, 0xc1);

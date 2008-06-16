@@ -132,6 +132,23 @@ surface make_neutral_surface(surface const &surf)
 	return result;
 }
 
+surface create_neutral_surface(int w, int h)
+{
+	if (w < 0 || h < 0) {
+		std::cerr << "error : neutral surface with negative dimensions\n";
+		return NULL;
+	}
+
+	SDL_PixelFormat format = get_neutral_pixel_format();
+	surface result = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h,
+			format.BitsPerPixel,
+			format.Rmask,
+			format.Gmask,
+			format.Bmask,
+			format.Amask);
+
+	return result;
+}
 
 surface create_optimized_surface(surface const &surf)
 {
@@ -164,9 +181,8 @@ surface stretch_surface_horizontal(
 	}
 	assert(w > 0);
 
-	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE, 
-		w, surf->h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
-		
+	surface dst(create_neutral_surface(w, surf->h));
+
 	surface src(make_neutral_surface(surf));
 	// Now both surfaces are always in the "neutral" pixel format
 
@@ -210,8 +226,7 @@ surface stretch_surface_vertical(
 	}
 	assert(h > 0);
 
-	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE, 
-		surf->w, h, 32, 0xFF0000, 0xFF00, 0xFF, 0xFF000000));
+	surface dst(create_neutral_surface(surf->w, h));
 		
 	surface src(make_neutral_surface(surf));
 	// Now both surfaces are always in the "neutral" pixel format
@@ -255,7 +270,7 @@ surface scale_surface(surface const &surf, int w, int h, bool optimize)
 	assert(w >= 0);
 	assert(h >= 0);
 
-	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+	surface dst(create_neutral_surface(w,h));
 		
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
@@ -412,7 +427,7 @@ surface scale_surface_blended(surface const &surf, int w, int h, bool optimize)
 	assert(w >= 0);
 	assert(h >= 0);
 
-	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+	surface dst(create_neutral_surface(w,h));
 
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
@@ -1416,7 +1431,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &
 	SDL_BlitSurface(tmp,NULL,target,&rect);
 }
 
-surface get_surface_portion(surface const &src, SDL_Rect &area)
+surface get_surface_portion(surface const &src, SDL_Rect &area, bool optimize)
 {
 	// Check if there is something in the portion
 	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0) {
@@ -1431,15 +1446,15 @@ surface get_surface_portion(surface const &src, SDL_Rect &area)
 		area.h = src->h - area.y;
 	}
 
-	surface const dst = create_compatible_surface(src,area.w,area.h);
+	surface dst = create_neutral_surface(area.w,area.h);
 	if(dst == NULL) {
 		std::cerr << "Could not create a new surface in get_surface_portion()\n";
 		return NULL;
 	}
 
-	SDL_BlitSurface(src,&area,dst, NULL);
+	SDL_BlitSurface(src, &area, dst, NULL);
 
-	return dst;
+	return optimize ? create_optimized_surface(dst) : dst;
 }
 
 namespace {

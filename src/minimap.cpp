@@ -37,13 +37,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 		return surface(NULL);
 	}
 
-	surface minimap(SDL_CreateRGBSurface(SDL_SWSURFACE,
-	                               map_width,map_height,
-	                               pixel_format->BitsPerPixel,
-	                               pixel_format->Rmask,
-	                               pixel_format->Gmask,
-	                               pixel_format->Bmask,
-	                               pixel_format->Amask));
+	surface minimap(create_neutral_surface(map_width, map_height));
 	if(minimap == NULL)
 		return surface(NULL);
 
