@@ -220,11 +220,18 @@ if env['editor2']:
 # Target declarations
 #
 
-if have_client_prereqs:
-    wesnoth = env.Program("wesnoth", ["game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd] + wesnoth_res)
-else:
-    wesnoth = None
-Export("wesnoth")
+def WesnothProgram(env, target, source, can_build, **kw):
+    if can_build:
+        bin = env.Program(target, source, **kw)
+    else:
+        bin = None
+    exec target + " = bin"
+    Export(target)
+
+from SCons.Script.SConscript import SConsEnvironment
+SConsEnvironment.WesnothProgram = WesnothProgram
+
+env.WesnothProgram("wesnoth", ["game.cpp"] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd] + wesnoth_res, have_client_prereqs)
 
 wesnoth_editor_sources = Split("""
     editor/editor.cpp
@@ -237,21 +244,13 @@ wesnoth_editor_sources = Split("""
     editor/editor_undo.cpp
     animated_editor.cpp
     """)
-if have_client_prereqs:
-    wesnoth_editor = env.Program("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res)
-else:
-    wesnoth_editor = None
-Export("wesnoth_editor")
+env.WesnothProgram("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res, have_client_prereqs)
 
 campaignd_sources = Split("""
     campaign_server/campaign_server.cpp
     server/input_stream.cpp
     """)
-if have_server_prereqs:
-    campaignd = env.Program("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd])
-else:
-    campaignd = None
-Export("campaignd")
+env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
 
 wesnothd_sources = Split("""
 	server/ban.cpp
@@ -264,32 +263,20 @@ wesnothd_sources = Split("""
     server/simple_wml.cpp
 	time.cpp
     """)
-if have_server_prereqs:
-    wesnothd = env.Program("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd])
-else:
-    wesnothd = None
-Export("wesnothd")
+env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd], have_server_prereqs)
 
 cutter_sources = Split("""
     tools/cutter.cpp
     """)
-if have_client_prereqs:
-    cutter = env.Program("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
-        LIBS = env["LIBS"] + ["png"])
-else:
-    cutter = None
-Export("cutter")
+env.WesnothProgram("cutter", cutter_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs,
+    LIBS = env["LIBS"] + ["png"])
 
 exploder_sources = Split("""
     tools/exploder.cpp
     tools/exploder_composer.cpp
     """)
-if have_client_prereqs:
-    exploder = env.Program("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth],
-        LIBS = env["LIBS"] + ["png"])
-else:
-    exploder = None
-Export("exploder")
+env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, libwesnoth_sdl, libwesnothd, libwesnoth], have_client_prereqs,
+    LIBS = env["LIBS"] + ["png"])
 
 test_sources = Split("""
     tests/main.cpp
