@@ -1781,7 +1781,7 @@ bool game_controller::play_multiplayer()
 
 			mp::start_server(disp(), game_config_, cntr, is_server);
 
-		} else if(res >= 0 && res <= 2 || res == 4) {
+		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
 			if(res == 0) {
 				host = preferences::server_list().front().address;
