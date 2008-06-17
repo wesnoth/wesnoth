@@ -19,7 +19,9 @@
 
 namespace gui2 {
 
-// Class for a simple push button
+/**
+ * Simple push button.
+ */
 class tbutton : public tcontrol
 {
 public:
@@ -31,47 +33,93 @@ public:
 	{
 	}
 
-	void mouse_enter(tevent_handler&);
-	void mouse_leave(tevent_handler&);
+	/***** ***** ***** ***** Return value handling ***** ***** ***** *****/ 
 
-	void mouse_left_button_down(tevent_handler& event);
-	void mouse_left_button_up(tevent_handler&);
-	void mouse_left_button_click(tevent_handler&);
-
-	void set_retval(const int retval) { retval_ = retval; }
-
-	//! Default button values, values are subject to change.
-	//! Note this might be moved somewhere else since it will
-	//! force people to include the button, while it should
-	//! be and implementation detail for most callers.
+	/**
+	 * Default button values.
+	 *
+	 * These values are named return values and most are assigned to a widget
+	 * automatically when using a certain id for that widget.
+	 *
+	 * Note this might be moved somewhere else since it will force people to
+	 * include the button, while it should be and implementation detail for most
+	 * callers.
+	 */
 	enum RETVAL {
-		NONE = 0,                      //!< Dialog is closed with no return 
-		                               //!< value, should be rare but eg a
-		                               //!< message popup can do it.
-		OK = -1,                       //!< Dialog is closed with ok button.
-		CANCEL = -2                    //!< Dialog is closed with the cancel 
-		                               //!<  button.
+		NONE = 0,                      /**< 
+										* Dialog is closed with no return
+										* value, should be rare but eg a
+										* message popup can do it.
+										*/
+		OK = -1,                       /**< Dialog is closed with ok button. */
+		CANCEL = -2                    /**< 
+										* Dialog is closed with the cancel
+										* button.
+										*/
 		};
 
-	//! Gets the retval for the default buttons.
+	/** Gets the retval for the default buttons. */
 	static RETVAL get_retval_by_id(const std::string& id);
-
-	//! Inherited from tcontrol.
-	void set_active(const bool active) 
-		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
-	bool get_active() const { return state_ != DISABLED; }
-	unsigned get_state() const { return state_; }
 
 	void set_callback_mouse_left_click(void (*callback) (twidget*))
 		{ callback_mouse_left_click_ = callback; }
 
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
+	/** Inherted from tevent_executor. */
+	void mouse_enter(tevent_handler&);
+
+	/** Inherted from tevent_executor. */
+	void mouse_leave(tevent_handler&);
+
+
+	/** Inherted from tevent_executor. */
+	void mouse_left_button_down(tevent_handler& event);
+
+	/** Inherted from tevent_executor. */
+	void mouse_left_button_up(tevent_handler&);
+
+	/** Inherted from tevent_executor. */
+	void mouse_left_button_click(tevent_handler&);
+
+
+	/** Inherited from tcontrol. */
+	void set_active(const bool active) 
+		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+
+	/** Inherited from tcontrol. */
+	bool get_active() const { return state_ != DISABLED; }
+
+	/** Inherited from tcontrol. */
+	unsigned get_state() const { return state_; }
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_retval(const int retval) { retval_ = retval; }
+
 private:
-	//! Note the order of the states must be the same as defined in settings.hpp.
+	/**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 */
 	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
 
 	void set_state(tstate state);
+	/** 
+	 * Current state of the widget.
+	 *
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
+	 */
 	tstate state_;
  
+ 	/**
+	 * The return value of the button.
+	 *
+	 * If this value is not 0 and the button is clicked it sets the retval of
+	 * the window and the window closes itself.
+	 */
 	int retval_;
 
 	/** 
@@ -80,7 +128,7 @@ private:
 	 */
 	void (*callback_mouse_left_click_) (twidget*);
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "button"; return type; }
 };
