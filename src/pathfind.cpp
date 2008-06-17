@@ -13,8 +13,10 @@ but WITHOUT ANY WARRANTY.
 See the COPYING file for more details.
 */
 
-//! @file pathfind.cpp
-//! Various pathfinding functions and utilities.
+/**
+ * @file pathfind.cpp
+ * Various pathfinding functions and utilities.
+ */
 
 #include "global.hpp"
 
