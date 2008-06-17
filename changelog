@@ -65,11 +65,14 @@ Version 1.5.0+svn:
      a command to this hotkey. Also accept sequence of commands ("this; that").
    * Add a command "alias <name>[=<command>]". To set or show shorter alias to
      a command. Also accept incomplete command and pass parameters (ex: "alias
-     hp=unit hitpoints", then use "hp 100")
+     hp=unit hitpoints", then use "hp 100"). Saved bewteen sessions.
    * Add a filter text box for the "Create Unit" dialog
+   * Various improvements of filter text box, now words separated by space give
+     a filter doing an "and" combination of them.
    * Added "Host Network Game" option back to multiplayer menu
    * Fixed chatlog not to so lobby joins if set in preferences
    * Also highlight the fog under the mouse (not just the terrain)
+   * debug command "unit" now uses equal sign again ("unit hitpoints=100")
    * Add-ons download dialog:
      * The class of each add-on is displayed in the downloads dialog
      * It is possible to filter what add-ons are displayed by text (matching
@@ -92,6 +95,8 @@ Version 1.5.0+svn:
    * renamed old [attacks] special to [swarm]
    * created [attacks] special with expected behaviour and usage similar to
      [damage] special
+   * add a warning about future end of support for implicit prefix "units/" in
+     images url.
  * wesnothd
    * added selective ping support - saves server bandwidth
    * updated pings to use new simple_wml
@@ -150,6 +155,11 @@ Version 1.5.0+svn:
    * corrected setlocale() usage on win32
    * Fixed [binary_path] declarations not being recognized inside the MULTIPLAYER
      #ifdef for eras
+   * Silence the warning "error display: could not open image ''"
+   * Optimize fullscreen toggle and windows resizing.
+   * Fix various rendering bugs in 8bpp display mode.
+   * fix bug #11630 (preventing redo and rename during opponent's turn).
+   * fix a regression about missing default portrait in dialogs.
 
 Version 1.5.0:
  * campaigns:
