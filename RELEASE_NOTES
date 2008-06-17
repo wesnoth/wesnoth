@@ -19,6 +19,12 @@ to test this feature and report bugs when found.
 Users of Wesnoth 1.5.0 are encouraged to upgrade since Wesnoth 1.5.0 won't be
 compatible with recent changes to the addon server.
 
+"Host Network Game" feature in multiplayer menu requires "wesnothd" server to 
+be compiled. Wesnothd is found from same directory as wesnoth was launched with
+default configuration. User can change wesnothd path from userdata/preferences
+using wesnothd_name="/path/to/wesnothd". Windows version is
+wesnothd_name="C:\path\to\wesnothd.exe"
+
 Now content authors can specify the type of their addons. See the documentation
 updates at http://www.wesnoth.org/wiki/PblWML for details.
 
@@ -32,3 +38,4 @@ sorted out. What was [attacks] up till now was now logicaly renamed [swarm] and
 a completely new [attacks] has been created behaving alike to [damage] and 
 [chance_to_hit]. If an attack uses [swarm] any [attacks] declared will be
 ignored.
+

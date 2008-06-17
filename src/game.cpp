@@ -1715,9 +1715,11 @@ bool game_controller::play_multiplayer()
 			host_or_join.push_back(pre + "serverother.png"
 					+ sep1 + _("Connect to Server")
 					+ sep2 + _("Join a different server"));
+#ifndef __APPLE__
 			host_or_join.push_back(pre + "hostgame.png"
 					+ sep1 + _("Host Networked Game")
 					+ sep2 + _("Host a game using dedicated server 'wesnothd'"));
+#endif
 			host_or_join.push_back(pre + "hotseat.png"
 					+ sep1 + _("Local Game")
 					+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
