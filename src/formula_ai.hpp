@@ -19,9 +19,31 @@
 #include "ai_interface.hpp"
 #include "formula_fwd.hpp"
 #include "formula_callable.hpp"
+#include "formula_function.hpp"
+
+// Forward declaration needed for ai function symbol table
+class formula_ai;
 
 namespace game_logic {
-	typedef	std::map<const std::string, const_formula_ptr> candidate_move_map;
+
+typedef	std::map<const std::string, const_formula_ptr> candidate_move_map;
+
+class ai_function_symbol_table : public function_symbol_table {
+
+public:
+	explicit ai_function_symbol_table(formula_ai& ai) : ai_(ai) {};
+	void register_candidate_move(const std::string name, 
+			const_formula_ptr formula, const_formula_ptr eval, 
+			const_formula_ptr precondition, const std::vector<std::string>& args);
+
+private:
+	formula_ai& ai_;
+	std::set<std::string> move_functions;
+	candidate_move_map candidate_move_evals;
+	expression_ptr create_function(const std::string& fn,
+	                               const std::vector<expression_ptr>& args) const; 
+};
+
 }
 
 class formula_ai : public ai {
@@ -69,6 +91,8 @@ private:
 	mutable variant keeps_cache_;
 
 	game_logic::map_formula_callable vars_;
+	game_logic::ai_function_symbol_table function_table;
 };
 
 #endif
+

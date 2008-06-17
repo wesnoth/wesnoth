@@ -861,82 +861,75 @@ private:
 
 	const formula_ai& ai_;
 };
+} 
 
-class ai_function_symbol_table : public function_symbol_table {
-	formula_ai& ai_;
-	std::set<std::string> move_functions;
-	candidate_move_map candidate_move_evals;
-
-	expression_ptr create_function(const std::string& fn,
-	                               const std::vector<expression_ptr>& args) const {
-		if(fn == "outcomes") {
-			return expression_ptr(new outcomes_function(args, ai_));
-		} else if(fn == "evaluate_for_position") {
-			return expression_ptr(new evaluate_for_position_function(args, ai_));
-		} else if(fn == "evaluate_village_possession") {
-			return expression_ptr(new evaluate_village_possession_function(args, ai_));
-		} else if(fn == "move") {
-			return expression_ptr(new move_function(args));
-		} else if(fn == "attack") {
-			return expression_ptr(new attack_function(args, ai_));
-		} else if(fn == "recruit") {
-			return expression_ptr(new recruit_function(args));
-		} else if(fn == "unit_chooser") {
-			return expression_ptr(new unit_chooser_function(args, ai_));
-		} else if(fn == "is_village") {
-			return expression_ptr(new is_village_function(args));
-		} else if(fn == "unit_at") {
-			return expression_ptr(new unit_at_function(args, ai_));
-		} else if(fn == "unit_moves") {
-			return expression_ptr(new unit_moves_function(args, ai_));
-		} else if(fn == "set_var") {
-			return expression_ptr(new set_var_function(args));
-		} else if(fn == "fallback") {
-			return expression_ptr(new fallback_function(args));
-		} else if(fn == "units_can_reach") {
-			return expression_ptr(new units_can_reach_function(args, ai_));
-		} else if(fn == "defense_on") {
-			return expression_ptr(new defense_on_function(args, ai_));
-		} else if(fn == "chance_to_hit") {
-			return expression_ptr(new chance_to_hit_function(args, ai_));
-		} else if(fn == "max_possible_damage") {
-			return expression_ptr(new max_possible_damage_function(args, ai_));
-		} else if(fn == "distance_to_nearest_unowned_village") {
-			return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
-		} else if(fn == "nearest_keep") {
-			return expression_ptr(new nearest_keep_function(args, ai_));
-		} else if(fn == "nearest_loc") {
-			return expression_ptr(new nearest_loc_function(args, ai_));
-		} else if(fn == "close_enemies") {
-			return expression_ptr(new close_enemies_function(args, ai_));
-		} else if(fn == "calculate_outcome") {
-			return expression_ptr(new calculate_outcome_function(args, ai_));
-		} else if(fn == "distance_between") {
-			return expression_ptr(new distance_between_function(args));
-		} else {
-			return function_symbol_table::create_function(fn, args);
-		}
+namespace game_logic { 
+expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
+				const std::vector<expression_ptr>& args) const {
+	if(fn == "outcomes") {
+		return expression_ptr(new outcomes_function(args, ai_));
+	} else if(fn == "evaluate_for_position") {
+		return expression_ptr(new evaluate_for_position_function(args, ai_));
+	} else if(fn == "evaluate_village_possession") {
+		return expression_ptr(new evaluate_village_possession_function(args, ai_));
+	} else if(fn == "move") {
+		return expression_ptr(new move_function(args));
+	} else if(fn == "attack") {
+		return expression_ptr(new attack_function(args, ai_));
+	} else if(fn == "recruit") {
+		return expression_ptr(new recruit_function(args));
+	} else if(fn == "unit_chooser") {
+		return expression_ptr(new unit_chooser_function(args, ai_));
+	} else if(fn == "is_village") {
+		return expression_ptr(new is_village_function(args));
+	} else if(fn == "unit_at") {
+		return expression_ptr(new unit_at_function(args, ai_));
+	} else if(fn == "unit_moves") {
+		return expression_ptr(new unit_moves_function(args, ai_));
+	} else if(fn == "set_var") {
+		return expression_ptr(new set_var_function(args));
+	} else if(fn == "fallback") {
+		return expression_ptr(new fallback_function(args));
+	} else if(fn == "units_can_reach") {
+		return expression_ptr(new units_can_reach_function(args, ai_));
+	} else if(fn == "defense_on") {
+		return expression_ptr(new defense_on_function(args, ai_));
+	} else if(fn == "chance_to_hit") {
+		return expression_ptr(new chance_to_hit_function(args, ai_));
+	} else if(fn == "max_possible_damage") {
+		return expression_ptr(new max_possible_damage_function(args, ai_));
+	} else if(fn == "distance_to_nearest_unowned_village") {
+		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
+	} else if(fn == "nearest_keep") {
+		return expression_ptr(new nearest_keep_function(args, ai_));
+	} else if(fn == "nearest_loc") {
+		return expression_ptr(new nearest_loc_function(args, ai_));
+	} else if(fn == "close_enemies") {
+		return expression_ptr(new close_enemies_function(args, ai_));
+	} else if(fn == "calculate_outcome") {
+		return expression_ptr(new calculate_outcome_function(args, ai_));
+	} else if(fn == "distance_between") {
+		return expression_ptr(new distance_between_function(args));
+	} else {
+		return function_symbol_table::create_function(fn, args);
 	}
-	
-public:
-
-	void register_candidate_move(const std::string name, 
-			const_formula_ptr formula, const_formula_ptr eval, 
-			const_formula_ptr precondition, const std::vector<std::string>& args)
-	{
-		candidate_move_evals.insert(std::pair<const std::string, 
-				                         game_logic::const_formula_ptr>
-								         (name, eval));
-		function_symbol_table::add_formula_function(name, formula, 
-				                                    precondition, args);
-	}
-
-	explicit ai_function_symbol_table(formula_ai& ai) : ai_(ai)
-	{}
-};
 }
 
-formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false)
+void ai_function_symbol_table::register_candidate_move(const std::string name, 
+		const_formula_ptr formula, const_formula_ptr eval, 
+		const_formula_ptr precondition, const std::vector<std::string>& args)
+{
+	candidate_move_evals.insert(std::pair<const std::string, 
+			game_logic::const_formula_ptr>
+			(name, eval));
+	function_symbol_table::add_formula_function(name, formula, 
+			precondition, args);
+}
+
+
+}
+
+formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false), function_table(*this)
 {
 	//make sure we don't run out of refcount
 	add_ref();
@@ -951,7 +944,6 @@ void formula_ai::new_turn()
 }
 void formula_ai::play_turn()
 {
-	ai_function_symbol_table function_table(*this);
 	const config& ai_param = current_team().ai_parameters();
 
 	// Register candidate moves in function symbol table
