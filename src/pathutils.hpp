@@ -12,33 +12,39 @@ but WITHOUT ANY WARRANTY.
 See the COPYING file for more details.
 */
 
-//! @file pathutils.hpp
-//!
+/** @file pathutils.hpp */
 
 #ifndef PATHUTILS_H_INCLUDED
 #define PATHUTILS_H_INCLUDED
 
 #include "map.hpp"
 
-//! Function which tells if two locations are adjacent.
+/** Function which tells if two locations are adjacent. */
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 
-//! Function which, given a location, will place all adjacent locations in res.
-//! res must point to an array of 6 location objects.
+/**
+ * Function which, given a location, will place all adjacent locations in res.
+ * res must point to an array of 6 location objects.
+ */
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
 
-
-//! Function which, given a location, will place all locations in a ring of
-//! distance r in res. res must be a std::vector of location
+/**
+ * Function which, given a location, will place all locations in a ring of
+ * distance r in res. res must be a std::vector of location
+ */
 void get_tile_ring(const gamemap::location& a, const int r, std::vector<gamemap::location>& res);
 
-//! Function which, given a location, will place all locations in the radius of r in res
-//! res must be a std::vector of location
+/**
+ * Function which, given a location, will place all locations in the radius of r in res
+ * res must be a std::vector of location
+ */
 void get_tiles_in_radius(const gamemap::location& a, const int r, std::vector<gamemap::location>& res);
 
-//! Function which gives the number of hexes between two tiles
-//! (i.e. the minimum number of hexes that have to be traversed
-//! to get from one hex to the other).
+/**
+ * Function which gives the number of hexes between two tiles
+ * (i.e. the minimum number of hexes that have to be traversed
+ * to get from one hex to the other).
+ */
 size_t distance_between(const gamemap::location& a, const gamemap::location& b);
 
 #endif

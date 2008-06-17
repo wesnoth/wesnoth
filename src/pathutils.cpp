@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file pathutils.cpp
-//! Various pathfinding functions and utilities.
+/**
+ * @file pathutils.cpp
+ * Various pathfinding functions and utilities.
+ */
 
 #include "global.hpp"
 
