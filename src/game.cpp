@@ -1733,6 +1733,13 @@ bool game_controller::play_multiplayer()
 				d.set_menu(host_or_join);
 				d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
 				res = d.show();
+#ifdef __APPLE__
+				// hack to make hotseat to have res number 3 in mac
+				if (res == 2)
+				{
+					res = 3;
+				}
+#endif
 				login = d.textbox_text();
 				if (res == 2 && preferences::mp_server_warning_disabled() < 2)
 				{
