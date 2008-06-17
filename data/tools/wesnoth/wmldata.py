@@ -20,17 +20,23 @@ class Data:
     def __init__(self, name):
         self.name = name
 
-    def debug(self, show_contents = False, use_color = False, indent = [0]):
+    def __str__( self ):
+        return self.debug( show_contents=True, write=False )
+
+    def debug(self, show_contents = False, use_color = False, indent=0, write=True):
         if use_color:
             magenta = "\x1b[35;1m"
             off = "\x1b[0m"
         else:
             magenta = off = ""
-        pos = indent[0] * "  "
-        sys.stdout.write(pos + "\ " + magenta + self.name + off + " (" + self.__class__.__name__ + ")")
+        pos = indent * "  "
+        result = pos + "\ " + magenta + self.name + off + " (" + self.__class__.__name__ + ")"
         if show_contents:
-            sys.stdout.write(self.get_value().encode("utf8"))
-        sys.stdout.write("\n")
+            result += "'" + self.get_value().encode("utf8") + "'"
+        if write:
+            sys.stdout.write(result + "\n")
+
+        else: return result
 
     def copy(self):
         c = self.__class__(self.name, self.data) # this makes a new instance or so I was told
@@ -532,18 +538,26 @@ class DataSub(Data):
                 ifdef = self.get_or_create_ifdef(["EASY", "NORMAL", "HARD"][d])
                 ifdef.set_text_val(name, q[d])
 
-    def debug(self, show_contents = False, use_color = False, indent = [0]):
+    def debug(self, show_contents = False, use_color = False, indent=0, write=True):
         if use_color:
             red = "\x1b[31;1m"
             off = "\x1b[0m"
         else:
             red = off = ""
-        pos = indent[0] * "  "
-        print pos + "\ " + red + self.name + off + " (" + self.__class__.__name__ + ")"
-        indent[0] += 1
+        pos = indent * "  "
+        result = pos + "\ " + red + self.name + off + " (" + self.__class__.__name__ + ")\n"
+        if write:
+            sys.stdout.write( result )
+        indent += 1
         for child in self.data:
-            child.debug(show_contents, use_color, indent)
-        indent[0] -= 1
+            cresult = child.debug(show_contents, use_color, indent, write=write)
+            if not write:
+                result += "\n" + cresult
+        indent -= 1
+
+        if not write:
+            return result
+
 
 class DataIfDef(DataSub):
     """
