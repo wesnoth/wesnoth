@@ -1,4 +1,4 @@
-
+/* $Id$ */
 /*
    Copyright (C) 2007 by David White <dave.net>
    Part of the Silver Tree Project
@@ -10,11 +10,26 @@
 
    See the COPYING file for more details.
 */
+
 #ifndef FORMATTER_HPP_INCLUDED
 #define FORMATTER_HPP_INCLUDED
 
 #include <sstream>
 
+/**
+ * std::ostringstream wrapper.
+ *
+ * ostringstream's operator<< doesn't return a ostringstream&. It returns an
+ * ostream& instead. This is unfortunate, because it means that you can't do
+ * something like this: (ostringstream() << n).str() to convert an integer to a
+ * string, all in one line instead you have to use this far more tedious
+ * approach:
+ *  ostringstream s; 
+ *  s << n;
+ *  s.str();
+ * This class corrects this shortcoming, allowing something like this:
+ *  string result = (formatter() << "blah " << n << x << " blah").str();
+ */
 class formatter
 {
 public:
@@ -32,9 +47,6 @@ public:
 		return str().c_str();
 	}
 
-	operator std::string() {
-		return stream_.str();
-	}
 private:
 	std::ostringstream stream_;
 };

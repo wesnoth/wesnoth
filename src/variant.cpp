@@ -8,7 +8,6 @@
 
 #include "boost/lexical_cast.hpp"
 
-//#include "foreach.hpp"
 #include "formatter.hpp"
 #include "formula.hpp"
 #include "formula_callable.hpp"
@@ -235,7 +234,10 @@ const variant& variant::operator[](const variant v) const
 	} else if(type_ == TYPE_LIST) {
 		return operator[](v.as_int());
 	} else {
-		throw type_error(formatter() << "type error: " << " expected a list or a map but found " << variant_type_to_string(type_) << " (" << to_debug_string() << ")");
+		throw type_error((formatter() << "type error: " 
+			<< " expected a list or a map but found " 
+			<< variant_type_to_string(type_) 
+			<< " (" << to_debug_string() << ")").str());
 	}	
 }
 
@@ -280,7 +282,10 @@ size_t variant::num_elements() const
 		assert(map_);
 		return map_->elements.size();
 	} else {
-		throw type_error(formatter() << "type error: " << " expected a list or a map but found " << variant_type_to_string(type_) << " (" << to_debug_string() << ")");
+		throw type_error((formatter() << "type error: " 
+			<< " expected a list or a map but found " 
+			<< variant_type_to_string(type_) 
+			<< " (" << to_debug_string() << ")").str());
 	}
 }
 
@@ -374,7 +379,7 @@ variant variant::operator/(const variant& v) const
 	const int numerator = as_int();
 	const int denominator = v.as_int();
 	if(denominator == 0) {
-		throw type_error(formatter() << "divide by zero error");
+		throw type_error((formatter() << "divide by zero error").str());;
 	}
 
 	return variant(numerator/denominator);
@@ -385,7 +390,7 @@ variant variant::operator%(const variant& v) const
 	const int numerator = as_int();
 	const int denominator = v.as_int();
 	if(denominator == 0) {
-		throw type_error(formatter() << "divide by zero error");
+		throw type_error((formatter() << "divide by zero error").str());
 	}
 
 	return variant(numerator%denominator);
@@ -514,7 +519,10 @@ bool variant::operator>(const variant& v) const
 void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {
-		throw type_error(formatter() << "type error: " << " expected " << variant_type_to_string(t) << " but found " << variant_type_to_string(type_) << " (" << to_debug_string() << ")");
+		throw type_error((formatter() << "type error: " << " expected " 
+			<< variant_type_to_string(t) << " but found " 
+			<< variant_type_to_string(type_) 
+			<< " (" << to_debug_string() << ")").str());
 	}
 }
 
