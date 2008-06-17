@@ -65,7 +65,7 @@ Version 1.5.0+svn:
      a command to this hotkey. Also accept sequence of commands ("this; that").
    * Add a command "alias <name>[=<command>]". To set or show shorter alias to
      a command. Also accept incomplete command and pass parameters (ex: "alias
-     hp=unit hitpoints", then use "hp 100"). Saved bewteen sessions.
+     hp=unit hitpoints", then use "hp 100"). Saved between sessions.
    * Add a filter text box for the "Create Unit" dialog
    * Various improvements of filter text box, now words separated by space give
      a filter doing an "and" combination of them.
@@ -106,9 +106,9 @@ Version 1.5.0+svn:
    * added option to do graceful shut down for server
  * campaignd
    * made campaign server use gzip compression for networking
-   * detect client connection mode and ue same for sending data
+   * detect client connection mode and use same for sending data
    * made campaign server use gzip for storing addons
-   * added configuraion option to choose gzip compression level
+   * added configuration option to choose gzip compression level
    * made it possible to store content authors' e-mail addresses
      for administrative purposes
    * authors can specify the type of their content ('type'
@@ -133,7 +133,7 @@ Version 1.5.0+svn:
      destroy images transfered over network
    * Added possibility to use per fight EV statistics proposed by maboul
    * Added smoother FPS limit to server
-   * Fixed a mememory leak in networking code
+   * Fixed a memory leak in networking code
    * Removed bug introduced in 1.5.0 that allowed use of :debug commands during
      network play
    * added some includes to fix compilation problems with Sun Studio 12
