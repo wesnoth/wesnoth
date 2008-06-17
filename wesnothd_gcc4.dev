@@ -11,8 +11,8 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=
-CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-mthreads_@@_-fexceptions_@@__@@__@@__@@_
-Linker=-mthreads_@@_-lmingw32_@@_-lmingwthrd_@@_-lSDLmain _@@_-lSDL _@@_-lboost_iostreams_dw2_@@_-lintl_@@_-lSDL_net_@@_-lwsock32_@@_-lz_@@_
+CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-mthreads_@@_-fexceptions_@@_-O3_@@_-march=native_@@__@@__@@__@@_
+Linker=-mthreads_@@_-lmingw32_@@_-lmingwthrd_@@_-lSDLmain _@@_-lSDL _@@_-lboost_iostreams_dw2_@@_-lintl_@@_-lSDL_net_@@_-lws2_32_@@_-lz_@@_
 IsCpp=1
 Icon=
 ExeOutput=

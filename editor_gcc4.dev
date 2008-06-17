@@ -1,7 +1,7 @@
 [Project]
 FileName=editor_gcc4.dev
 Name=editor
-UnitCount=70
+UnitCount=69
 Type=0
 Ver=1
 ObjFiles=
@@ -11,7 +11,7 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=
-CppCompiler=
+CppCompiler=-DUSE_GZIP_@@_-march=native_@@_-O3_@@_
 Linker=-lmingw32_@@_-lSDLmain_@@_-lSDL_@@_-lintl_@@_-lSDL_ttf_@@_-lSDL_image_@@_-lboost_iostreams_dw2_@@_-lSDL_mixer_@@_-lz_@@_
 IsCpp=1
 Icon=

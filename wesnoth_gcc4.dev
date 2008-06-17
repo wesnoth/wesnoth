@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth_gcc4.dev
 Name=wesnoth
-UnitCount=157
+UnitCount=159
 Type=0
 Ver=1
 ObjFiles=
@@ -11,7 +11,7 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=_@@_
-CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-mthreads_@@_-mtune=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
+CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
 Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@__@@__@@_
 IsCpp=1
 Icon=
@@ -1638,7 +1638,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit158]
-FileName=src\unit_abilities.hpp
+FileName=src\gui\dialogs\mp_connect.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -1648,7 +1648,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit159]
-FileName=src\gui\dialogs\dialog.cpp
+FileName=src\time_of_day.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
