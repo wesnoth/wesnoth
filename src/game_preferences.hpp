@@ -174,6 +174,8 @@ namespace preferences {
 
 	bool compress_saves();
 
+	bool startup_effect();
+
 	std::set<std::string> &encountered_units();
 	std::set<t_translation::t_terrain> &encountered_terrains();
 

@@ -27,6 +27,7 @@
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "game_display.hpp"
+#include "game_preferences.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -83,8 +84,9 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 		return true;
 	}
 
-	// Only once, when the game is first started, the logo fades in
-	static bool faded_in = false;
+	// Only once, when the game is first started, the logo fades in unless
+	// it was disabled in adv. preferences
+	static bool faded_in = !preferences::startup_effect();
 //	static bool faded_in = true;	// for faster startup: mark logo as 'has already faded in'
 
 	CKey key;

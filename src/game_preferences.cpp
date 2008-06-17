@@ -682,6 +682,11 @@ bool compress_saves()
 	return utils::string_bool(preferences::get("compress_saves"), true);
 }
 
+bool startup_effect()
+{
+	return utils::string_bool(preferences::get("startup_effect"), true);
+}
+
 std::string get_chat_timestamp(const time_t& t) {
 	if (chat_timestamping()) {
 		return lg::get_timestamp(t, clock_format()) + " ";
