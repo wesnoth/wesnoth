@@ -1073,10 +1073,14 @@ namespace {
 		// range (i.e. -1..-10, 0..100, -10..10, etc).
 		const std::string random = cfg["random"];
 		if(random.empty() == false) {
+			/**
+			 * @todo random seems to be used quite often in mainline so need to
+			 * see what the best solution to avoid rand and random.
+			 */
 			// random is deprecated but will be available in the 1.4 branch
 			// so enable the message after forking
-			lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
-				"support will be removed in 1.5.3.\n";
+			//lg::wml_error << "Usage of 'random' is deprecated use 'rand' instead, "
+			//	"support will be removed in 1.5.3.\n";
 			std::string random_value;
 			// If we're not replaying, create a random number
 			if(get_replay_source().at_end()) {
