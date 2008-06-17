@@ -440,7 +440,6 @@ private:
 		h_;
 
 	SDL_Rect src_clip_;
-	SDL_Rect dst_clip_;
 	surface image_;
 
 	/** 
@@ -461,7 +460,6 @@ timage::timage(const config& cfg) :
 	w_(cfg["w"]),
 	h_(cfg["h"]),
 	src_clip_(),
-	dst_clip_(),
 	image_(),
 	image_name_(cfg["name"]),
 	stretch_(utils::string_bool(cfg["stretch"]))
@@ -553,9 +551,7 @@ void timage::draw(surface& canvas,
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
-	SDL_Rect dst_clip = dst_clip_;
-	dst_clip.x = x;
-	dst_clip.y = y;
+	SDL_Rect dst_clip = {x, y, 0, 0};
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.
