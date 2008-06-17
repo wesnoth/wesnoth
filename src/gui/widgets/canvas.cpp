@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file canvas.cpp
-//! Implementation of canvas.hpp.
+/**
+ * @file canvas.cpp
+ * Implementation of canvas.hpp.
+ */
 
 #include "gui/widgets/canvas.hpp"
 
@@ -24,8 +26,8 @@
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "log.hpp"
-#include "sdl_utils.hpp"
 #include "serialization/parser.hpp"
+#include "variant.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -51,30 +53,47 @@
 #define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
-namespace gui2{
+namespace gui2 {
 
-//! Definition of a line shape.
+namespace {
+
+/***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
+
+/** Definition of a line shape. */
 class tline : public tcanvas::tshape
 {
 public:
+
+	/** 
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the line see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Line
+	 *                            for more info.
+	 */
 	tline(const config& cfg);
 
-	//! Implement shape::draw().
+	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 		const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned> 
-		x1_, 
-		y1_,
-		x2_,
-		y2_;
+		x1_, /**< The start x coordinate of the line. */
+		y1_, /**< The start y coordinate of the line. */
+		x2_, /**< The end x coordinate of the line. */
+		y2_; /**< The end y coordinate of the line. */
 
+	/** The colour of the line. */
 	Uint32 colour_;
-	//! The thickness of the line:
-	//! if the value is odd the x and y are the middle of the line.
-	//! if the value is even the x and y are the middle of a line
-	//! with width - 1. (0 is special case, does nothing.)
+
+	/**
+	 * The thickness of the line.
+	 *
+	 * if the value is odd the x and y are the middle of the line.
+	 * if the value is even the x and y are the middle of a line
+	 * with width - 1. (0 is special case, does nothing.)
+	 */
 	unsigned thickness_;
 };
 
@@ -235,9 +254,11 @@ tline::tline(const config& cfg) :
 void tline::draw(surface& canvas,
 	const game_logic::map_formula_callable& variables)
 {
-	//@todo formulas are now recalculated every draw cycle which is a 
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
+	/**
+	 * @todo formulas are now recalculated every draw cycle which is a bit silly
+	 * unless there has been a resize. So to optimize we should use an extra
+	 * flag or do the calculation in a separate routine.
+	 */
 	
 	const unsigned x1 = x1_(variables);
 	const unsigned y1 = y1_(variables);
@@ -254,7 +275,7 @@ void tline::draw(surface& canvas,
 		 static_cast<int>(y2) < canvas->h, 
 		 _("Line doesn't fit on canvas."));
 
-	// FIXME respect the thickness.
+	// @todo FIXME respect the thickness.
 
 	// now draw the line we use Bresenham's algorithm, which doesn't
 	// support antialiasing. The advantage is that it's easy for testing.
@@ -269,30 +290,52 @@ void tline::draw(surface& canvas,
 	}
 }
 
+/***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
 
-
-//! Definition of a rectangle shape.
+/** Definition of a rectangle shape. */
 class trectangle : public tcanvas::tshape
 {
 public:
+
+	/** 
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the rectangle see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Rectangle
+	 *                            for more info.
+	 */
 	trectangle(const config& cfg);
 
-	//! Implement shape::draw().
+	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 		const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned> 
-		x_, 
-		y_,
-		w_,
-		h_;
+		x_, /**< The x coordinate of the rectangle. */
+		y_, /**< The y coordinate of the rectangle. */
+		w_, /**< The width of the rectangle. */
+		h_; /**< The height of the rectangle. */
 
-	//! Border thickness if 0 the fill colour is used for the entire 
-	//! widget.
+	/**
+	 * Border thickness. 
+	 *
+	 * If 0 the fill colour is used for the entire widget.
+	 */
 	unsigned border_thickness_;
+
+	/** 
+	 * The border colour of the rectangle. 
+	 *
+	 * If the colour is fully transparent the border isn't drawn.
+	 */
 	Uint32 border_colour_;
 
+	/** 
+	 * The border colour of the rectangle. 
+	 *
+	 * If the colour is fully transparent the rectangle won't be filled.
+	 */
 	Uint32 fill_colour_;
 };
 
@@ -347,9 +390,11 @@ void trectangle::draw(surface& canvas,
 	const game_logic::map_formula_callable& variables)
 {
 
-	//@todo formulas are now recalculated every draw cycle which is a 
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
+	/**
+	 * @todo formulas are now recalculated every draw cycle which is a  bit
+	 * silly unless there has been a resize. So to optimize we should use an
+	 * extra flag or do the calculation in a separate routine.
+	 */
 	const unsigned x = x_(variables);
 	const unsigned y = y_(variables);
 	const unsigned w = w_(variables);
@@ -404,42 +449,39 @@ void trectangle::draw(surface& canvas,
 			draw_line(canvas, fill_colour_, left, i, right, i);
 		}
 	}
-/*
-	const unsigned left = x_ + border_thickness_ + 1;
-	const unsigned top = y_ + border_thickness_ + 1;
-	const unsigned width = w_ - (2 * border_thickness_) - 2;
-	const unsigned height = h_ - (2 * border_thickness_) - 2;
-	SDL_Rect rect = create_rect(left, top, width, height);
-
-	const Uint32 colour = fill_colour_ & 0xFFFFFF00;
-	const Uint8 alpha = fill_colour_ & 0xFF;
-
-	// fill
-	fill_rect_alpha(rect, colour, alpha, canvas);
-	canvas = blend_surface(canvas, 255, 0xAAAA00);	
-*/	
 }
 
+/***** ***** ***** ***** ***** IMAGE ***** ***** ***** ***** *****/
 
-
-//! Definition of an image shape.
+/** Definition of an image shape. */
 class timage : public tcanvas::tshape
 {
 public:
+
+	/** 
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the image see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Image
+	 *                            for more info.
+	 */
 	timage(const config& cfg);
 	
-	//! Implement shape::draw().
+	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 		const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned>
-		x_, 
-		y_,
-		w_,
-		h_;
+		x_, /**< The x coordinate of the image. */
+		y_, /**< The y coordinate of the image. */
+		w_, /**< The width of the image. */
+		h_; /**< The height of the image. */
 
+	/** Contains the size of the image. */
 	SDL_Rect src_clip_;
+
+	/** The image is cached in this surface. */
 	surface image_;
 
 	/** 
@@ -451,6 +493,11 @@ private:
 	 */
 	tformula<std::string> image_name_;
 
+	/**
+	 * When an image needs to be scaled in one direction there are two options:
+	 * - scale, which interpolates the image.
+	 * - stretch, which used the first row/column and copies those pixels.
+	 */
 	bool stretch_;
 };
 
@@ -517,9 +564,11 @@ void timage::draw(surface& canvas,
 {
 	DBG_G_D << "Image: draw.\n";
 
-	//@todo formulas are now recalculated every draw cycle which is a 
-	// bit silly unless there has been a resize. So to optimize we should
-	// use an extra flag or do the calculation in a separate routine.
+	/**
+	 * @todo formulas are now recalculated every draw cycle which is a  bit
+	 * silly unless there has been a resize. So to optimize we should use an
+	 * extra flag or do the calculation in a separate routine.
+	 */
 	if(image_name_.has_formula()) {
 		const std::string& name = image_name_(variables);
 
@@ -596,27 +645,43 @@ void timage::draw(surface& canvas,
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
 }
 
-//! Definition of a text shape.
+/***** ***** ***** ***** ***** TEXT ***** ***** ***** ***** *****/
+
+/** Definition of a text shape. */
 class ttext : public tcanvas::tshape
 {
 public:
+
+	/** 
+	 * Constructor.
+	 *
+	 * @param cfg                 The config object to define the text see
+	 *                            http://www.wesnoth.org/wiki/GUICanvasWML#Text
+	 *                            for more info.
+	 */
 	ttext(const config& cfg);
 	
-	//! Implement shape::draw().
+	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 		const game_logic::map_formula_callable& variables);
 
 private:
 	tformula<unsigned>
-		x_, 
-		y_,
-		w_,
-		h_;
+		x_, /**< The x coordinate of the text. */
+		y_, /**< The y coordinate of the text. */
+		w_, /**< The width of the text. */
+		h_; /**< The height of the text. */
 
+	/** The font size of the text. */
 	unsigned font_size_;
+
+	/** The style of the text. */
 	int font_style_;
+
+	/** The colour of the text. */
 	Uint32 colour_;
 
+	/** The text to draw. */
 	tformula<t_string> text_;
 };
 
@@ -722,6 +787,10 @@ void ttext::draw(surface& canvas,
 	blit_surface(surf, 0, canvas, &dst);
 }
 
+} // namespace 
+
+/***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
+
 tcanvas::tcanvas() :
 	shapes_(),
 	w_(0),
@@ -805,14 +874,13 @@ void tcanvas::parse_cfg(const config& cfg)
 	}
 }
 
+/***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
+
 void tcanvas::tshape::put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsigned x, unsigned y)
 {
 	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
 }
 
-// the surface should be locked
-// the colour should be a const and the value send should already
-// be good for the wanted surface
 void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour, 
 		const unsigned x1, unsigned y1, const unsigned x2, unsigned y2)
 {
@@ -882,5 +950,5 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	}
 }
 
-
 } // namespace gui2
+
