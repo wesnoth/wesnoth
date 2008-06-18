@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file actions.cpp
-//! Recruiting, Fighting.
+/**
+ * @file actions.cpp
+ * Recruiting, Fighting.
+ */
 
 #include "actions.hpp"
 #include "attack_prediction.hpp"
@@ -340,7 +342,7 @@ battle_context& battle_context::operator=(const battle_context &other)
 	return *this;
 }
 
-//! @todo FIXME: Hand previous defender unit in here.
+/** @todo FIXME: Hand previous defender unit in here. */
 int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 		const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 		const gamestatus& status,
@@ -541,8 +543,7 @@ bool battle_context::better_combat(const combatant &us_a, const combatant &them_
 	return them_a.average_hp() < them_b.average_hp();
 }
 
-// Get the simulation results.
-//! @todo FIXME: better to initialize combatant initially (move into unit_stats?), just do fight() when required.
+/** @todo FIXME: better to initialize combatant initially (move into unit_stats?), just do fight() when required. */
 const combatant &battle_context::get_attacker_combatant(const combatant *prev_def)
 {
 	// We calculate this lazily, since AI doesn't always need it.
@@ -604,7 +605,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		weapon = &u.attacks()[attack_num];
 	}
 	if(u.hitpoints() < 0) {
-		//! @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante
+		/** @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante */
 		//		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
@@ -799,12 +800,14 @@ void attack::fire_event(const std::string& n)
 	// defender, so we have to make sure they still exist
 	a_ = units_.find(attacker_);
 	d_ = units_.find(defender_);
-	//! @todo FIXME: If the event removes this attack, we should stop attacking.
-	// The previous code checked if 'attack_with' and 'defend_with'
-	// were still within the bounds of the attack arrays,
-	// or -1, but it was incorrect.
-	// The attack used could be removed and '*_with' variables
-	// could still be in bounds but point to a different attack.
+	/**
+	 * @todo FIXME: If the event removes this attack, we should stop attacking.
+	 * The previous code checked if 'attack_with' and 'defend_with'
+	 * were still within the bounds of the attack arrays,
+	 * or -1, but it was incorrect.
+	 * The attack used could be removed and '*_with' variables
+	 * could still be in bounds but point to a different attack.
+	 */
 	if(a_ == units_.end() || d_ == units_.end()) {
 		if (update_display_){
 			recalculate_fog(map_,units_,teams_,attacker_side-1);
@@ -838,8 +841,6 @@ attack::~attack()
 	delete delayed_exception;
 	delete bc_;
 }
-
-//! Battle logic
 
 attack::attack(game_display& gui, const gamemap& map,
 		std::vector<team>& teams,
@@ -1655,7 +1656,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 					healing = map.gives_healing(i->first);
 					healers.clear();
 				}
-				//! @todo FIXME
+				/** @todo FIXME */
 				curing = "cured";
 				curer = units.end();
 			}
@@ -1921,9 +1922,11 @@ namespace {
 		return result;
 	}
 
-	//! Returns true if some shroud is cleared.
-	//! seen_units will return new units that have been seen by this unit.
-	//! If known_units is NULL, seen_units can be NULL and will not be changed.
+	/**
+	 * Returns true if some shroud is cleared.
+	 * seen_units will return new units that have been seen by this unit.
+	 * If known_units is NULL, seen_units can be NULL and will not be changed.
+	 */
 	bool clear_shroud_unit(const gamemap& map,
 			const unit_map& units, const gamemap::location& loc,
 			std::vector<team>& teams, int team,
@@ -2128,10 +2131,12 @@ size_t move_unit(game_display* disp,
 		// during a sighted event in clear_shroud_unit()
 		ui = units.find(route.front());
 		if(ui == units.end()) {
-			//! @todo FIXME: the correct behavior for sighted event would be
-			// to halt movement, then fire "sighted" after firing "moveto" (see below).
-			// However, since we have fired "sighted" during movement calculations
-			// this is a workaround to prevent a crash.
+			/**
+			 * @todo FIXME: the correct behavior for sighted event would be
+			 * to halt movement, then fire "sighted" after firing "moveto" (see below).
+			 * However, since we have fired "sighted" during movement calculations
+			 * this is a workaround to prevent a crash.
+			 */
 			if(move_recorder != NULL) {
 				move_recorder->add_movement(route.front(),*step);
 			}
