@@ -23,6 +23,7 @@
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -71,15 +72,15 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		invalidateUnit_(true),
 		displayedUnitHex_(),
 		overlays_(),
-		currentTeam_(0), 
+		currentTeam_(0),
 		activeTeam_(0),
 		sidebarScaling_(1.0),
-		first_turn_(true), 
+		first_turn_(true),
 		in_game_(false),
 		observers_(),
 		chat_messages_(),
-		tod_hex_mask1(NULL), 
-		tod_hex_mask2(NULL), 
+		tod_hex_mask1(NULL),
+		tod_hex_mask2(NULL),
 		reach_map_(),
 		reach_map_old_(),
 		reach_map_changed_(true),
@@ -134,11 +135,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
 	image::set_team_colors(&side_colors);
-
-	// Clear the screen contents
-	surface const disp(screen_.getSurface());
-	SDL_Rect area = screen_area();
-	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
+	clear_screen();
 }
 
 game_display::~game_display()
@@ -218,12 +215,12 @@ void game_display::select_hex(gamemap::location hex)
 
 void game_display::highlight_hex(gamemap::location hex)
 {
-	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]); 
+	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]);
 	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = find_visible_unit(units_,mouseoverHex_, map_, teams_,teams_[viewing_team()]); 
+		u = find_visible_unit(units_,mouseoverHex_, map_, teams_,teams_[viewing_team()]);
 		if (u != units_.end()) {
 			// mouse moved from unit hex to non-unit hex
 			if (units_.count(selectedHex_)) {
@@ -240,7 +237,7 @@ void game_display::highlight_hex(gamemap::location hex)
 
 void game_display::display_unit_hex(gamemap::location hex)
 {
-	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]); 
+	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]);
 	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -269,260 +266,151 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 	}
 }
 
-void game_display::draw(bool update,bool force)
-{
-	if (screen_.update_locked()) {
-		return;
-	}
-
-	bool changed = display::draw_init();
-
-	//log_scope("Drawing");
-	// invalidate all that needs to be invalidated
-	invalidate_animations();
+void game_display::pre_draw() {
 	// at this stage we have everything that needs to be invalidated for this redraw
 	// save it as the previous invalidated, and merge with the previous invalidated_
 	previous_invalidated_.swap(invalidated_);
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
 	// call invalidate_animation again to deal with new conflict arising from the merge
 	invalidate_animations();
-
 	process_reachmap_changes();
-
 	//! @todo FIXME: must modify changed, but best to do it
 	//! at the floating_label level
 	prune_chat_messages();
+}
 
-	if(map_.empty()) {
-		display::draw_wrap(update, force, changed);
-		return;
+std::vector<gamemap::location> game_display::get_invalidated_unit_locations() {
+	std::vector<gamemap::location> unit_locations;
+	foreach (const gamemap::location& loc, invalidated_) {
+		if ((temp_unit_ && temp_unit_loc_ == loc) || units_.find(loc) != units_.end()) {
+			unit_locations.push_back(loc);
+		}		
 	}
+	//sorted according to a drawing ordering object in order to render correctly 
+	std::sort(unit_locations.begin(), unit_locations.end(), ordered_draw());
+	return unit_locations;
+}
 
-	halo::unrender(invalidated_);
-
-	//int simulate_delay = 0;
-	if(!invalidated_.empty()) {
-		changed = true;
-
-		// z-ordered set to store invalidated units
-		std::set<gamemap::location, ordered_draw> unit_invals;
-
-		const time_of_day& tod = status_.get_time_of_day();
-		const std::string shroud_image = "terrain/" +
-			map_.get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png";
-		const std::string fog_image = "terrain/" +
-			map_.get_terrain_info(t_translation::FOGGED).minimap_image() + ".png";
-
-		SDL_Rect clip_rect = map_area();
-		surface screen = get_screen_surface();
-		clip_rect_setter set_clip_rect(screen, clip_rect);
-
-		std::set<gamemap::location>::const_iterator it;
-		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
-			int xpos = get_location_x(*it);
-			int ypos = get_location_y(*it);
-
-			tblit blit(xpos, ypos);
-			int drawing_order = gamemap::get_drawing_order(*it);
-
-			// Store invalidated units
-			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
-				unit_invals.insert(*it);
-			}
-
-			SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
-			if(!rects_overlap(hex_rect,clip_rect)) {
-				continue;
-			}
-
-			// If the terrain is off the map,
-			// it shouldn't be included for reachmap,
-			// fog, shroud and the grid.
-			// In the future it may not depend on
-			// whether the location is on the map,
-			// but whether it's an _off^* terrain.
-			// (atm not too happy with how the grid looks)
-			// (the shroud has some glitches due to
-			// commented out code, but enabling it looks worse).
-			const bool on_map = map_.on_board(*it);
-			const bool off_map_tile = (map_.get_terrain(*it) == t_translation::OFF_MAP_USER);
-			const bool is_shrouded = shrouded(*it); 
-
-			image::TYPE image_type = image::SCALED_TO_HEX;
-
-			// We highlight hex under the mouse,
-			//  or under a selected unit.
-			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_src_)) {
-				image_type = image::BRIGHTENED;
-			} else if (on_map && *it == selectedHex_) {
-				unit_map::iterator un = find_visible_unit(units_, *it, map_,
+image::TYPE game_display::get_image_type(const gamemap::location& loc) {
+	// We highlight hex under the mouse, or under a selected unit.
+	if (map_.on_board(loc)) {
+		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
+			return image::BRIGHTENED;
+		} else if (loc == selectedHex_) {
+			unit_map::iterator un = find_visible_unit(units_, loc, map_, 
 				teams_,teams_[currentTeam_]);
-				if (un != units_.end()) {
-					image_type = image::BRIGHTENED;
-				}
-			}
-
-			// Currently only used in editor
-			/*
-				else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
-				image_type = image::SEMI_BRIGHTENED;
-			}
-			*/
-
-			if(!is_shrouded) {
-				// unshrouded terrain (the normal case)
-				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, 
-					get_terrain_images(*it,tod.id, image_type, ADJACENT_BACKGROUND)));
-
-				// village-control flags.
-				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(*it)));
-
-				typedef overlay_map::const_iterator Itor;
-
-				for(std::pair<Itor,Itor> overlays = overlays_.equal_range(*it);
-					overlays.first != overlays.second; ++overlays.first) {
-
-					drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
-						image::get_image(overlays.first->second.image,image_type)));
-				}
-			}
-
-			if(!is_shrouded) {
-				//FIXME: Use a hack to draw terrain in the unit layer
-				// but with a higher drawing_order, so it's rendered on top of the unit
-				drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
-					get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
-				// drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
-				//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
-			}
-
-			// Draw the time-of-day mask on top of the terrain in the hex.
-			// tod may differ from tod if hex is illuminated.
-			std::string tod_hex_mask = timeofday_at(status_,units_,*it,map_).image_mask;
-			if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
-				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask1));
-				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask2));
-			} else if(tod_hex_mask != "") {
-				drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
-					image::get_image(tod_hex_mask,image::UNMASKED)));
-			}
-
-			// Draw the grid, if that's been enabled
-			if(grid_ && !is_shrouded && on_map && !off_map_tile) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
-					image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
-			}
-
-			// Draw reach_map information.
-			// We remove the reachability mask of the unit
-			// that we want to attack.
-			if (!is_shrouded && !reach_map_.empty()
-					&& reach_map_.find(*it) == reach_map_.end() && *it != attack_indicator_dst_) {
-				drawing_buffer_add(LAYER_REACHMAP, drawing_order, tblit(xpos, ypos,
-					image::get_image(game_config::unreachable_image,image::UNMASKED)));
-			}
-
-			// Draw cross images for debug highlights
-			if(game_config::debug && debugHighlights_.count(*it)) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
-					image::get_image(game_config::cross_image, image::UNMASKED)));
-			}
-
-			// Add the top layer overlay surfaces
-			if(!hex_overlay_.empty()) {
-				std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(*it);
-				if(itor != hex_overlay_.end())
-					drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, itor->second));
-			}
-
-			// Footsteps indicating a movement path
-			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, footsteps_images(*it)));
-
-			// Paint selection and mouseover overlays
-			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
-			}				
-			if(*it == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
-			}
-
-			// Draw the attack direction indicator
-			if(on_map && *it == attack_indicator_src_) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
-					image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED)));
-			} else if (on_map && *it == attack_indicator_dst_) {
-				drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
-					image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED)));
-			}
-
-			// Apply shroud, fog and linger overlay
-			if(is_shrouded) {
-				// We apply void also on off-map tiles
-				// to shroud the half-hexes too
-				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
-					image::get_image(shroud_image, image_type)));
-			} else if(fogged(*it)) {
-				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
-					image::get_image(fog_image, image_type)));
-			}
-
-			if(!is_shrouded) {
-				drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
-					get_terrain_images(*it, tod.id, image_type, ADJACENT_FOGSHROUD)));
-			}
-
-			// Linger overlay unconditionally otherwise it might give glitches
-			// so it's drawn over the shroud and fog.
-			if(game_mode_ != RUNNING) {
-				blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
-				drawing_buffer_add(LAYER_LINGER_OVERLAY, drawing_order, blit);
-				blit.surf.clear();
-			}
-
-			// Show def% and turn to reach infos
-			if(!is_shrouded && on_map) {
-				draw_movement_info(*it);
-			}
-			//simulate_delay += 1;
-
-			// If the tile is at the border, we start to blend it
-			if(!on_map && !off_map_tile) {
-				 draw_border(*it, xpos, ypos);
+			if (un != units_.end()) {
+				return image::BRIGHTENED;
 			}
 		}
+	}
+	return image::SCALED_TO_HEX;
+}
 
-		// Units can overlap multiple hexes, so we need
-		// to redraw them last and in the good sequence.
-		std::set<gamemap::location, struct display::ordered_draw>::const_iterator it2;
-		for(it2 = unit_invals.begin(); it2 != unit_invals.end(); ++it2) {
-			unit_map::iterator u_it = units_.find(*it2);
-			if (u_it != units_.end()) {
-				u_it->second.redraw_unit(*this, *it2);
-				//simulate_delay += 1;
-			}
 
-			if (temp_unit_ && temp_unit_loc_ == *it2) {
-				temp_unit_->redraw_unit(*this, temp_unit_loc_, true);
-				//simulate_delay += 1;
-			}
+void game_display::draw_invalidated()
+{
+	display::draw_invalidated();
+	std::vector<gamemap::location> unit_invals = get_invalidated_unit_locations();
+	redraw_units(unit_invals);
+}
+
+void game_display::draw_hex(const gamemap::location& loc)
+{
+	const bool on_map = map_.on_board(loc);
+	const bool is_shrouded = shrouded(loc);
+	int xpos = get_location_x(loc);
+	int ypos = get_location_y(loc);
+	int drawing_order = gamemap::get_drawing_order(loc);
+	tblit blit(xpos, ypos);
+	
+	image::TYPE image_type = get_image_type(loc);
+
+	display::draw_hex(loc);
+	
+	if(!is_shrouded) {
+		typedef overlay_map::const_iterator Itor;
+		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
+		for( ; overlays.first != overlays.second; ++overlays.first) {
+			drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+				image::get_image(overlays.first->second.image,image_type)));
 		}
-
-		invalidated_.clear();
+		// village-control flags.
+		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(loc)));		
+	}
+					
+	// Draw the time-of-day mask on top of the terrain in the hex.
+	// tod may differ from tod if hex is illuminated.
+	std::string tod_hex_mask = timeofday_at(status_,units_,loc,map_).image_mask;
+	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask1));
+		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask2));
+	} else if(tod_hex_mask != "") {
+		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+			image::get_image(tod_hex_mask,image::UNMASKED)));
 	}
 
+	// Draw reach_map information.
+	// We remove the reachability mask of the unit
+	// that we want to attack.
+	if (!is_shrouded && !reach_map_.empty()
+			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
+		drawing_buffer_add(LAYER_REACHMAP, drawing_order, tblit(xpos, ypos,
+			image::get_image(game_config::unreachable_image,image::UNMASKED)));
+	}
 
-	drawing_buffer_commit();
+	// Footsteps indicating a movement path
+	drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, footsteps_images(loc)));
+	// Draw cross images for debug highlights
+	if(game_config::debug && debugHighlights_.count(loc)) {
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+			image::get_image(game_config::cross_image, image::UNMASKED)));
+	}
+	// Draw the attack direction indicator
+	if(on_map && loc == attack_indicator_src_) {
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED)));
+	} else if (on_map && loc == attack_indicator_dst_) {
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED)));
+	}
 
-	halo::render();
+	// Linger overlay unconditionally otherwise it might give glitches
+	// so it's drawn over the shroud and fog.
+	if(game_mode_ != RUNNING) {
+		blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_LINGER_OVERLAY, drawing_order, blit);
+		blit.surf.clear();
+	}
 
-	draw_sidebar();
-	//! @todo FIXME: This changed can probably be smarter
-	changed = true;
+	// Show def% and turn to reach infos
+	if(!is_shrouded && on_map) {
+		draw_movement_info(loc);
+	}
+	//simulate_delay += 1;	
+}
 
-	// Simulate slow PC:
-	//SDL_Delay(2*simulate_delay + rand() % 20);
+void game_display::update_time_of_day()
+{
+	tod_ = status_.get_time_of_day();
+}
 
-	display::draw_wrap(update, force, changed);
+
+void game_display::redraw_units(const std::vector<gamemap::location>& invalidated_unit_locations)
+{
+	// Units can overlap multiple hexes, so we need
+	// to redraw them last and in the good sequence.
+	foreach (gamemap::location loc, invalidated_unit_locations) {
+		unit_map::iterator u_it = units_.find(loc);
+		if (u_it != units_.end()) {
+			u_it->second.redraw_unit(*this, loc);
+			//simulate_delay += 1;
+		}
+		if (temp_unit_ && temp_unit_loc_ == loc) {
+			temp_unit_->redraw_unit(*this, temp_unit_loc_, true);
+			//simulate_delay += 1;
+		}
+	}
 }
 
 void game_display::draw_report(reports::TYPE report_num)
@@ -627,7 +515,7 @@ void game_display::draw_minimap_units()
 	}
 }
 
-void game_display::draw_bar(const std::string& image, int xpos, int ypos, 
+void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
 
@@ -692,7 +580,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
 		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
-	} 
+	}
 }
 
 void game_display::set_game_mode(const tgame_mode game_mode)
@@ -800,9 +688,9 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 
 	for (int h = first_half; h <= second_half; h++) {
 		const std::string sense( h==0 ? "-in" : "-out" );
-	
+
 		if (!tiles_adjacent(*(i-1+h), *(i+h))) {
-			std::string teleport_image = 
+			std::string teleport_image =
 			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
 			teleport = image::get_image(teleport_image, image::UNMASKED);
 			continue;
@@ -1006,34 +894,24 @@ bool game_display::invalidate(const gamemap::location& loc)
 	}
 	return false;
 }
-void game_display::invalidate_animations()
-{
-	if (preferences::animate_map()) {
 
-		gamemap::location topleft;
-		gamemap::location bottomright;
-		get_visible_hex_bounds(topleft, bottomright);
-
-		for(int x = topleft.x; x <= bottomright.x; ++x) {
-			for(int y = topleft.y; y <= bottomright.y; ++y) {
-				const gamemap::location loc(x,y);
-				if (!shrouded(loc)) {
-					if (builder_.update_animation(loc)) {
-						invalidate(loc);
-					} else if (map_.is_village(loc)) {
-						const int owner = player_teams::village_owner(loc);
-						if (owner >= 0 && flags_[owner].need_update() && (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1)))
-							invalidate(loc);
-					}
-				}
-			}
+void game_display::invalidate_animations_location(gamemap::location loc) {
+	if (map_.is_village(loc)) {
+		const int owner = player_teams::village_owner(loc);
+		if (owner >= 0 && flags_[owner].need_update()
+		&& (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1))) {
+			invalidate(loc);
 		}
 	}
+}
 
+void game_display::invalidate_animations()
+{
+	display::invalidate_animations();
 	unit_map::iterator unit;
-	for(unit=units_.begin() ; unit != units_.end() ; unit++) 
+	for(unit=units_.begin() ; unit != units_.end() ; unit++)
 		unit->second.refresh(*this, unit->first);
-	if (temp_unit_ ) 
+	if (temp_unit_ )
 		temp_unit_->refresh(*this, temp_unit_loc_);
 	bool new_inval = true;
 	while(new_inval) {
@@ -1047,7 +925,6 @@ void game_display::invalidate_animations()
 		}
 	}
 	new_animation_frame();
-
 }
 
 void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)
@@ -1223,7 +1100,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		action = true;
 	} else {
 		msg = message;
-	} 
+	}
 
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients

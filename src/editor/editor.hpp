@@ -22,6 +22,7 @@
 
 #include "SDL.h"
 
+#include "editor_display.hpp"
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
 #include "editor_undo.hpp"

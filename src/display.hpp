@@ -26,11 +26,13 @@ class unit_map;
 
 #include "builder.hpp"
 #include "generic_event.hpp"
+#include "halo.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
 #include "reports.hpp"
+#include "time_of_day.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -157,11 +159,13 @@ public:
 	int get_location_y(const gamemap::location& loc) const;
 
 	//! Returns true if location (x,y) is covered in shroud.
-	bool shrouded(const gamemap::location& loc) const
-		{return viewpoint_ && viewpoint_->shrouded(loc);}
+	bool shrouded(const gamemap::location& loc) const {
+		return viewpoint_ && viewpoint_->shrouded(loc);
+	}
 	//! Returns true if location (x,y) is covered in fog.
-	bool fogged(const gamemap::location& loc) const
-		{return viewpoint_ && viewpoint_->fogged(loc);}
+	bool fogged(const gamemap::location& loc) const { 
+		return viewpoint_ && viewpoint_->fogged(loc);
+	}
 
 	//! Determines whether a grid should be overlayed on the game board.
 	//! (to more clearly show where hexes are)
@@ -189,10 +193,16 @@ public:
 	// Will be overridden in the display subclass
 	virtual bool invalidate(const gamemap::location& loc) {return invalidated_.insert(loc).second;};
 	virtual bool invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) ;
-	virtual bool invalidate_zone(const int x1,const int y1, const int x2, const int y2); 
+	virtual bool invalidate_zone(const int x1,const int y1, const int x2, const int y2);
 	virtual bool rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const;
-	virtual bool zone_need_update(const int x1,const int y1, const int x2, const int y2) const; 
+	virtual bool zone_need_update(const int x1,const int y1, const int x2, const int y2) const;
 	virtual void draw_minimap_units() {};
+	virtual void invalidate_animations();
+	/**
+	 * Per-location invalidation called by invalidate_animations()
+	 * defaults to no action, overriden by derived classes
+	 */
+	virtual void invalidate_animations_location(gamemap::location loc){}
 
 	const gamemap& get_map()const { return map_;}
 
@@ -328,10 +338,14 @@ public:
 	//! Check if a tile is fully on screen.
 	bool tile_on_screen(const gamemap::location& loc);
 
-	//! Draws invalidated items.
-	//! If update is true, will also copy the display to the frame buffer.
-	//! If force is true, will not skip frames, even if running behind.
-	virtual void draw(bool update=true,bool force=false) = 0;
+	/** 
+	 * Draws invalidated items.
+	 * If update is true, will also copy the display to the frame buffer.
+	 * If force is true, will not skip frames, even if running behind.
+	 * Not virtual, since it gathers common actions. Calls various protected
+	 * virtuals (further below) to allow specialized behaviour in derived classes.
+	 */
+	void draw(bool update=true, bool force=false);
 
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }
@@ -357,7 +371,52 @@ public:
 	std::map<reports::TYPE, std::string> get_report_contents() {return report_;};
 
 protected:
+	/** Clear the screen contents */
+	void clear_screen();
 
+	/**
+	 * Called near the beginning of each draw() call.
+	 * Derived classes can use this to add extra actions before redrawing
+	 * invalidated hexes takes place
+	 */
+	virtual void pre_draw();
+	
+	/**
+	 * Get the clipping rectangle for drawing.
+	 * Virtual since the editor might use a slightly different approach.
+	 */
+	virtual const SDL_Rect& get_clip_rect();
+	
+	/**
+	 * Only called when there's actual redrawing to do. Loops through
+	 * invalidated locations and redraws them. Derived classes can override
+	 * this, possibly to insert pre- or post-processing around a call to the
+	 * base class's function.
+	 */
+	virtual void draw_invalidated();
+	
+	/**
+	 * Redraws a single gamemap location.
+	 */
+	virtual void draw_hex(const gamemap::location& loc);
+	
+	/**
+	 * @returns the image type to be used for the passed hex
+	 * (mostly to do with brightening like for mouseover)
+	 */
+	virtual image::TYPE get_image_type(const gamemap::location& loc);
+
+	/**
+	 * Update time of day member to the tod to be used in the current drawing
+	 */
+	virtual void update_time_of_day();
+	
+	/**
+	 * Called near the end of a draw operation, derived classes can use this 
+	 * to render a specific sidebar
+	 */
+	virtual void draw_sidebar();
+	
 	/**
 	 * Draws the border tile overlay.
 	 * The routine determines by itself which border it is on
@@ -406,6 +465,10 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	map_labels map_labels_;
+	std::string shroud_image_;
+	std::string fog_image_;
+	time_of_day tod_;
+
 	//! Event raised when the map is being scrolled
 	mutable events::generic_event _scroll_event;
 	//! Holds the tick count for when the next drawing event is scheduled.
@@ -427,7 +490,7 @@ protected:
 	std::set<gamemap::location> highlighted_locations_;
 	CKey keys_;
 
-public:	
+public:
 	//! Helper structure for rendering the terrains.
 	struct tblit{
 		tblit(const int x, const int y) :
@@ -437,7 +500,7 @@ public:
 			clip()
 			{}
 
-		tblit(const int x, const int y, const surface& surf, 
+		tblit(const int x, const int y, const surface& surf,
 				const SDL_Rect& clip = SDL_Rect()) :
 			x(x),
 			y(y),
@@ -445,7 +508,7 @@ public:
 			clip(clip)
 			{}
 
-		tblit(const int x, const int y, const std::vector<surface>& surf, 
+		tblit(const int x, const int y, const std::vector<surface>& surf,
 				const SDL_Rect& clip = SDL_Rect()) :
 			x(x),
 			y(y),
@@ -463,17 +526,17 @@ public:
 
 	//! The layers to render something on. This value should never be stored
 	//! it's the internal drawing order and adding removing and reordering
-	//! the layers should be save.
+	//! the layers should be safe.
 	//! If needed in WML use the name and map that to the enum value.
-	enum tdrawing_layer{ 
-		LAYER_TERRAIN_BG,          //!< Layer for the terrain drawn behind the 
+	enum tdrawing_layer{
+		LAYER_TERRAIN_BG,          //!< Layer for the terrain drawn behind the
 		                           //!< unit.
 		LAYER_TERRAIN_TMP_BG,      //!< Layer which holds stuff that needs to be
 		                           //!< sorted out further, but under units
 		LAYER_UNIT_BG,             //!< Used for the ellipse behind the unit.
 		LAYER_UNIT_FIRST,          //!< Reserve layeres to be selected for WML.
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_UNIT_FG,             //!< Used for the ellipse in front of the 
+		LAYER_UNIT_FG,             //!< Used for the ellipse in front of the
 		                           //!< unit.
 		LAYER_UNIT_FAKE,           //!< The fake unit is drawn on this layer.
 		LAYER_TERRAIN_FG,          //!< Layer for the terrain drawn in front of
@@ -486,7 +549,7 @@ public:
 		                           //!< this layer (for testing here).
 		LAYER_MOVE_INFO,           //!< Movement info (defense%, ect...)
 		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
-		
+
 		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy
 		                           //! to size the vector.
 		};
@@ -494,7 +557,7 @@ public:
 	//! Draw text on a hex. (0.5, 0.5) is the center.
 	//! The font size is adjusted to the zoom factor
 	//! and divided by 2 for tiny-gui.
-	void draw_text_in_hex(const gamemap::location& loc, 
+	void draw_text_in_hex(const gamemap::location& loc,
 		const tdrawing_layer layer, const std::string& text, size_t font_size,
 		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 
@@ -503,16 +566,16 @@ protected:
 	// Initially tdrawing_buffer was a vector but profiling showed that a map
 	// was more efficient. Tested with the LAYER_UNIT_LAST for various values
 	// and different types the results were. (Tested with oprofile.)
-  
+
  	// container    unit layers    counts
 	// vector       100            3748
 	// vector       10000          147338
 	// map          10000          3362
 
 	// Since a map with 10000 items was more efficient I didn't test the map
-	// with 100 items. I want to retest once more is converted, since with 
+	// with 100 items. I want to retest once more is converted, since with
 	// a different usage it numbers might differ so the old code is disabled
-	// with TDRAWING_BUFFER_USES_VECTOR 
+	// with TDRAWING_BUFFER_USES_VECTOR
 	//     20080308 -- Mordante
 
 	//! * Surfaces are rendered per level in a map.
@@ -523,9 +586,9 @@ protected:
 	//! * every vector element has a vector with surfaces to render.
 #if TDRAWING_BUFFER_USES_VECTOR
 	typedef std::vector<std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
-#else	
+#else
 	typedef std::map<tdrawing_layer, std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
-#endif	
+#endif
 	tdrawing_buffer drawing_buffer_;
 
 public:
@@ -577,30 +640,6 @@ private:
 	double idle_anim_rate_;
 
 	surface map_screenshot_surf_;
-};
-
-//! Simplified display class for the editor.
-//! It only needs to draw terrain, no units, no fog, etc.
-class editor_display : public display
-{
-public:
-	editor_display(CVideo& video, const gamemap& map, const config& theme_cfg,
-			const config& cfg, const config& level);
-
-	bool in_editor() const { return true; }
-
-	//! draw() for the editor display.
-	//! It only has to know about terrain.
-	void draw(bool update=true,bool force=false);
-
-	//! Rebuild the dynamic terrain at the given location.
-	void rebuild_terrain(const gamemap::location &loc)
-		{ builder_.rebuild_terrain(loc); }
-
-	//! Updates editor light levels from preferences
-	void update_light_levels();
-private:
-	int lr_, lg_, lb_;
 };
 
 #endif

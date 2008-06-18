@@ -60,9 +60,6 @@ public:
 	//! This will normally be the playing team.
 	void scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type = ONSCREEN);
 
-	//! Draw for the game display has to know about units
-	void draw(bool update=true,bool force=false);
-
 	//! Function to display a location as selected.
 	//! If a unit is in the location, and there is no unit
 	//! in the currently highlighted hex,
@@ -118,10 +115,35 @@ public:
 	//! Same as invalidate_unit() if moving the displayed unit.
 	void invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst);
 
-private:
+protected:
+	/**
+	 * game_display pre_draw does specific things related e.g. to unit rendering
+	 */
+	void pre_draw();
+	
+	/**
+	 * This function runs through invalidated_ and returns a vector of tiles
+	 * containing units, sorted according to a custom ordering
+	 */
+	std::vector<gamemap::location> get_invalidated_unit_locations();
+	
+	image::TYPE get_image_type(const gamemap::location& loc);
+	
+	/**
+	 * Draws units on specified hexes
+	 */
+	void redraw_units(const std::vector<gamemap::location>& invalidated_unit_locations);
+	
+	void draw_invalidated();
+	
+	void draw_hex(const gamemap::location& loc);
+	
+	void update_time_of_day();
+	
+
 	//! Function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
-
+	void invalidate_animations_location(gamemap::location loc);
 	virtual void draw_minimap_units();
 
 public:
@@ -133,9 +155,10 @@ public:
 	void set_attack_indicator(const gamemap::location& src, const gamemap::location& dst);
 	void clear_attack_indicator();
 	//! Function to get attack direction suffix
-	const std::string attack_indicator_direction() const
-	{ return gamemap::location::write_direction(
-		attack_indicator_src_.get_relative_dir(attack_indicator_dst_)); }
+	const std::string attack_indicator_direction() const { 
+		return gamemap::location::write_direction(
+			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
+	}
 
 	//! Functions to add and remove overlays from locations.
 	//! An overlay is an image that is displayed on top of the tile.
@@ -191,7 +214,7 @@ public:
 	void begin_game();
 
 	virtual bool in_game() const { return in_game_; }
-	void draw_bar(const std::string& image, int xpos, int ypos, 
+	void draw_bar(const std::string& image, int xpos, int ypos,
 		const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
 	//! Sets the linger mode for the display.
@@ -199,9 +222,9 @@ public:
 	//! the extra variables make it easier to modify the behaviour. There
 	//! might even be a split between victory and defeat.
 	//
-	//! @todo if the current implementation is wanted we can change 
+	//! @todo if the current implementation is wanted we can change
 	//! the stuff back to a boolean
-	enum tgame_mode { 
+	enum tgame_mode {
 		RUNNING,         //!< no linger overlay, show fog and shroud
 		LINGER_SP,       //!< linger overlay, show fog and shroud
 		LINGER_MP };     //!< linger overlay, show fog and shroud

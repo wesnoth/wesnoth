@@ -22,6 +22,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
@@ -92,6 +93,9 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(*this,map, 0),
+	shroud_image_("terrain/" + map_.get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
+	fog_image_("terrain/" + map_.get_terrain_info(t_translation::FOGGED).minimap_image() + ".png"),
+	tod_(time_of_day()),
 	_scroll_event("scrolled"),
 	nextDraw_(0),
 	report_(),
@@ -1412,8 +1416,14 @@ void display::scroll(int xmove, int ymove)
 	SDL_Rect srcrect = dstrect;
 	srcrect.x -= dx;
 	srcrect.y -= dy;
-
-	SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+	DBG_DP << "xmove is " << xmove << ", ymove is " << ymove << "\n";
+	DBG_DP << "screen is: w" << screen->w << " h" << screen->h << "\n";	
+	DBG_DP << "map_area() is: x" << map_area().x << " y" << map_area().y << " w" << map_area().w << " h" << map_area().h << "\n";
+	DBG_DP << "srcrect is: x" << srcrect.x << " y" << srcrect.y << " w" << srcrect.w << " h" << srcrect.h << "\n";
+	DBG_DP << "dstrect is: x" << dstrect.x << " y" << dstrect.y << " w" << dstrect.w << " h" << dstrect.h << "\n";
+	if (!screen_.update_locked())
+		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+	DBG_DP << "blitted\n";
 
 	// Invalidate locations in the newly visible rects
 
@@ -1431,7 +1441,6 @@ void display::scroll(int xmove, int ymove)
 		r.w = abs(dx);
 		invalidate_locations_in_rect(r);
 	}
-
 	_scroll_event.notify_observers();
 	update_rect(map_area());
 
@@ -1490,7 +1499,6 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	if(screen_.update_locked()) {
 		return;
 	}
-
 	const SDL_Rect area = map_area();
 	const int xmove_expected = screenxpos - (area.x + area.w/2);
 	const int ymove_expected = screenypos - (area.y + area.h/2);
@@ -1632,7 +1640,7 @@ void display::scroll_to_tiles(const std::vector<gamemap::location>& locs,
 			miny = miny_new;
 			maxx = maxx_new;
 			maxy = maxy_new;
-			
+
 		}
 	}
 	//if everything is fogged or the locs list is empty
@@ -1821,10 +1829,156 @@ void display::redraw_everything()
 	map_labels_.recalculate_labels();
 
 	redraw_background_ = true;
-
+	
+	int ticks1 = SDL_GetTicks();
 	invalidate_all();
+	int ticks2 = SDL_GetTicks();
 	draw(true,true);
+	int ticks3 = SDL_GetTicks();
+	INFO_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 }
+
+void display::draw(bool update,bool force) {
+//	log_scope("display::draw");
+	if (screen_.update_locked()) {
+		return;
+	}
+	bool changed = draw_init();
+	// invalidate all that needs to be invalidated
+	invalidate_animations();
+	pre_draw();
+	update_time_of_day();
+	if(!map_.empty()) {
+		halo::unrender(invalidated_);
+		//int simulate_delay = 0;
+		if(!invalidated_.empty()) {
+			changed = true;
+			INFO_DP << invalidated_.size() << "\n";
+			draw_invalidated();	
+			invalidated_.clear();
+		}
+		drawing_buffer_commit();
+		halo::render();
+		draw_sidebar();
+		//! @todo FIXME: This changed can probably be smarter
+		changed = true;
+		// Simulate slow PC:
+		//SDL_Delay(2*simulate_delay + rand() % 20);
+	}
+	draw_wrap(update, force, changed);
+}
+
+void display::clear_screen()
+{
+	surface const disp(screen_.getSurface());
+	SDL_Rect area = screen_area();
+	SDL_FillRect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));	
+}
+
+void display::pre_draw()
+{
+	//no action by default		
+}
+
+const SDL_Rect& display::get_clip_rect()
+{
+	return map_area();
+}
+
+void display::draw_invalidated() {
+//	log_scope("display::draw_invalidated");
+	SDL_Rect clip_rect = get_clip_rect();
+	surface screen = get_screen_surface();
+	clip_rect_setter set_clip_rect(screen, clip_rect);
+	foreach (gamemap::location loc, invalidated_) {
+		int xpos = get_location_x(loc);
+		int ypos = get_location_y(loc);
+		const bool on_map = map_.on_board(loc);
+		const bool off_map_tile = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
+		SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
+		if(!rects_overlap(hex_rect,clip_rect)) {
+			continue;
+		}			
+		draw_hex(loc);
+		drawing_buffer_commit();
+		// If the tile is at the border, we start to blend it
+		if(!on_map && !off_map_tile) {
+			 draw_border(loc, xpos, ypos);
+		}			
+	}		
+}
+
+void display::draw_hex(const gamemap::location& loc) {
+	int xpos = get_location_x(loc);
+	int ypos = get_location_y(loc);
+	int drawing_order = gamemap::get_drawing_order(loc);
+	image::TYPE image_type = get_image_type(loc);
+	const bool on_map = map_.on_board(loc);	
+	const bool off_map_tile = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
+	if(!shrouded(loc)) {
+		// unshrouded terrain (the normal case)
+		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+			get_terrain_images(loc,tod_.id, image_type, ADJACENT_BACKGROUND)));
+
+		//FIXME: Use a hack to draw terrain in the unit layer
+		// but with a higher drawing_order, so it's rendered on top of the unit
+		drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
+			get_terrain_images(loc,tod_.id,image_type,ADJACENT_FOREGROUND)));
+		// drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+		//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
+				
+	// Draw the grid, if that's been enabled
+		if(grid_ && on_map && !off_map_tile) {
+			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+				image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
+		}
+	}
+
+
+	// Add the top layer overlay surfaces
+	if(!hex_overlay_.empty()) {
+		std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(loc);
+		if(itor != hex_overlay_.end())
+			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, itor->second));
+	}
+
+	// Paint selection and mouseover overlays
+	if(loc == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
+	}
+	if(loc == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL) {
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
+	}
+	
+	// Apply shroud, fog and linger overlay
+	if(shrouded(loc)) {
+		// We apply void also on off-map tiles
+		// to shroud the half-hexes too
+		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+			image::get_image(shroud_image_, image_type)));
+	} else if(fogged(loc)) {
+		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+			image::get_image(fog_image_, image_type)));
+	}
+
+	if(!shrouded(loc)) {
+		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+			get_terrain_images(loc, tod_.id, image_type, ADJACENT_FOGSHROUD)));
+	}
+}
+
+image::TYPE display::get_image_type(const gamemap::location& loc) {
+	return image::SCALED_TO_HEX;
+}
+
+void display::update_time_of_day() {
+	//no action
+}
+
+void display::draw_sidebar() {
+	
+}
+
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
@@ -2071,4 +2225,24 @@ bool display::rectangle_need_update(const gamemap::location& first_corner, const
 bool display::zone_need_update(const int x1,const int y1, const int x2, const int y2) const {
 	const SDL_Rect& rect = map_area();
 	return rectangle_need_update(pixel_position_to_hex(x1 - rect.x+xpos_, y1 - rect.y+ypos_),pixel_position_to_hex(x2 - rect.x+xpos_, y2 - rect.y+ypos_));
+}
+
+void display::invalidate_animations() {
+	if (preferences::animate_map()) {
+		gamemap::location topleft;
+		gamemap::location bottomright;
+		get_visible_hex_bounds(topleft, bottomright);
+		for(int x = topleft.x; x <= bottomright.x; ++x) {
+			for(int y = topleft.y; y <= bottomright.y; ++y) {
+				const gamemap::location loc(x,y);
+				if (!shrouded(loc)) {
+					if (builder_.update_animation(loc)) {
+						invalidate(loc);
+					} else {
+						invalidate_animations_location(loc);
+					}
+				}
+			}
+		}
+	}
 }
