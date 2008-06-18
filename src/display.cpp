@@ -1954,7 +1954,7 @@ void display::draw_hex(const gamemap::location& loc) {
 	}
 }
 
-image::TYPE display::get_image_type(const gamemap::location& loc) {
+image::TYPE display::get_image_type(const gamemap::location& /*loc*/) {
 	return image::SCALED_TO_HEX;
 }
 
