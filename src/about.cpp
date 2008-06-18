@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file about.cpp
-//! Show screen with scrolling credits.
+/**
+ * @file about.cpp
+ * Show screen with scrolling credits.
+ */
 
 #include "about.hpp"
 #include "config.hpp"
@@ -26,20 +28,24 @@
 #include "video.hpp"
 #include "show_dialog.hpp"
 
-//! @namespace about
-//! Display credits about all contributors.
-//!
-//! This module is used from the startup screen. \n
-//! When show_about() is called, a list of contributors
-//! to the game will be presented to the user.
+/**
+ * @namespace about
+ * Display credits about all contributors.
+ *
+ * This module is used from the startup screen. \n
+ * When show_about() is called, a list of contributors
+ * to the game will be presented to the user.
+ */
 namespace about
 {
 	static config about_list = config();
 	static std::map<std::string , std::string> images;
 	static std::string images_default;
 
-// Given a vector of strings, and a config representing an [about] section,
-// add all the credits lines from the about section to the list of strings.
+/**
+ * Given a vector of strings, and a config representing an [about] section,
+ * add all the credits lines from the about section to the list of strings.
+ */
 static void add_lines(std::vector<std::string> &res, config const &c) {
 	std::string title=c["title"];
 	if(title.size()) {
@@ -147,9 +153,12 @@ void set_about(const config& cfg){
 	}
 }
 
-//! Show credits with list of contributors.
-//! Names of people are shown scrolling up like in movie-credits.\n
-//! Uses map from wesnoth or campaign as background.
+/**
+ * Show credits with list of contributors.
+ *
+ * Names of people are shown scrolling up like in movie-credits.\n
+ * Uses map from wesnoth or campaign as background.
+ */
 void show_about(display &disp, std::string campaign)
 {
 	cursor::set(cursor::WAIT);
