@@ -13,9 +13,15 @@ finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterfl
 finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print )
 # List non-installable utility files
 findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
+# List all Header files
 findnoinst_headers=(cd $(top_srcdir) && find src -name "*.hpp" -print )
+# List all files required for scons build recipe
 findsconscript=(cd $(top_srcdir) && find . -name "SConscript" -print )
 findsconstruct=(cd $(top_srcdir) && find . -name "SConstruct" -print )
+findsconsdir=(cd $(top_srcdir) && find scons $(findfilterflags) -print )
+# List all files required for cmake build recipe
+findcmakelists=(cd $(top_srcdir) && find . -name "CMakeLists.txt" -print )
+findcmakedir=(cd $(top_srcdir) && find cmake $(findfilterflags) -print )
 
 # Find files derived from the manual that should go in a distribution
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
@@ -148,7 +154,7 @@ endif
 
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	( $(finddata); $(finddocdist); $(findnoinst); $(findnoinst_headers); $(findextrapo); $(findsconscript); $(findsconstruct) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
+	( $(finddata); $(finddocdist); $(findnoinst); $(findnoinst_headers); $(findextrapo); $(findsconscript); $(findsconstruct); $(findsconsdir); $(findcmakelists); $(findcmakedir) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = copyright changelog players_changelog campaign_server.dsp editor.dev editor_gcc4.dev map_editor.dsp server.dev server.dsp unit_test.dev wesnothd.dev wesnoth.dev wesnothd_gcc4.dev wesnoth.dsp wesnoth.dsw wesnoth_gcc4.dev wesnoth.kdevelop
 
