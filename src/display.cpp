@@ -25,6 +25,7 @@
 #include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "halo.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"

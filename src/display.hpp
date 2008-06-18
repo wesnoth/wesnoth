@@ -26,7 +26,6 @@ class unit_map;
 
 #include "builder.hpp"
 #include "generic_event.hpp"
-#include "halo.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
