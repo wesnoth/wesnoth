@@ -2025,16 +2025,19 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 bool display::invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) {
 	// unused variable - const SDL_Rect& rect = map_area();
 	bool result = false;
-	for (int x = minimum<int>(first_corner.x,second_corner.x); x <= maximum<int>(first_corner.x,second_corner.x);x++) {
-		for (int y = minimum<int>(first_corner.y,second_corner.y); y <= maximum<int>(first_corner.y,second_corner.y);y++) {
+
+	const int min_x = minimum<int>(first_corner.x,second_corner.x);
+	const int min_y = minimum<int>(first_corner.y,second_corner.y);
+	const int max_x = maximum<int>(first_corner.x,second_corner.x);
+	const int max_y = maximum<int>(first_corner.y,second_corner.y);
+
+	for (int x = min_x; x <= max_x;x++) {
+		for (int y = min_y; y <= max_y;y++) {
 			result |= invalidate(gamemap::location(x,y));
 		}
-		// take a margin on Y because of "misaligned hexes" 
-		if(is_odd(x)) {
-			result |= invalidate(gamemap::location(x,minimum<int>(first_corner.y,second_corner.y)-1));
-		} else {
-			result |= invalidate(gamemap::location(x,maximum<int>(first_corner.y,second_corner.y)+1));
-		}
+		// take a margin on Y because of "misaligned hexes"
+		gamemap::location margein(x, is_odd(x) ? min_y-1 : max_y+1);
+		result |= invalidate(margein);
 	}
 	return result;
 }
@@ -2043,12 +2046,25 @@ bool display::invalidate_zone(const int x1,const int y1, const int x2, const int
 	const SDL_Rect& rect = map_area();
 	return invalidate_rectangle(pixel_position_to_hex(x1 - rect.x+xpos_, y1 - rect.y+ypos_),pixel_position_to_hex(x2 - rect.x+xpos_, y2 - rect.y+ypos_));
 }
+
 bool display::rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const {
-	for (int x = minimum<int>(first_corner.x,second_corner.x); x <= maximum<int>(first_corner.x,second_corner.x);x++) {
-		for (int y = minimum<int>(first_corner.y,second_corner.y); y <= maximum<int>(first_corner.y,second_corner.y);y++) {
-			if(invalidated_.find(gamemap::location(x,y)) != invalidated_.end()) return true;
+	const int min_x = minimum<int>(first_corner.x,second_corner.x);
+	const int min_y = minimum<int>(first_corner.y,second_corner.y);
+	const int max_x = maximum<int>(first_corner.x,second_corner.x);
+	const int max_y = maximum<int>(first_corner.y,second_corner.y);
+
+	for (int x = min_x; x <= max_x;x++) {
+		for (int y = min_y; y <= max_y;y++) {
+			// take a margin on Y because of "misaligned hexes"
+			if(invalidated_.find(gamemap::location(x,y)) != invalidated_.end())
+				return true;
 		}
+		// take a margin on Y because of "misaligned hexes"
+		gamemap::location margein(x, is_odd(x) ? min_y-1 : max_y+1);
+		if(invalidated_.find(margein) != invalidated_.end())
+			return true;
 	}
+
 	return false;
 }
 
