@@ -933,16 +933,6 @@ formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false), function_table
 {
 	//make sure we don't run out of refcount
 	vars_.add_ref();
-}
-
-void formula_ai::new_turn() 
-{
-	move_maps_valid_ = false;
-	ai::new_turn();
-}
-
-void formula_ai::play_turn()
-{
 	const config& ai_param = current_team().ai_parameters();
 
 	// Register candidate moves in function symbol table
@@ -985,6 +975,17 @@ void formula_ai::play_turn()
 	recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
 	move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
 	}
+
+}
+
+void formula_ai::new_turn() 
+{
+	move_maps_valid_ = false;
+	ai::new_turn();
+}
+
+void formula_ai::play_turn()
+{
 	//execute units formulas first
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
