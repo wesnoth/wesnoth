@@ -51,6 +51,11 @@ public:
 	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_terrain terrain) const;
 	const t_translation::t_list& underlying_def_terrain(t_translation::t_terrain terrain) const;
 	const t_translation::t_list& underlying_union_terrain(t_translation::t_terrain terrain) const;
+	/**
+	 * Get a formatted terrain name -- terrain (underlying, terrains)
+	 */
+	std::string get_terrain_string(t_translation::t_terrain terrain) const;
+
 
 	//! Throws exception if the map file is not in the correct format.
 	struct incorrect_format_exception {
@@ -137,7 +142,7 @@ public:
 		{ return on_board(loc) && is_castle(get_terrain(loc)); }
 	bool is_keep(const location& loc) const
 		{ return on_board(loc) && is_keep(get_terrain(loc)); }
-
+		
 	enum tborder {
 		NO_BORDER = 0,
 		SINGLE_TILE_BORDER
