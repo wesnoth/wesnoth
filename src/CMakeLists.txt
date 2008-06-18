@@ -66,6 +66,10 @@ if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   set(editor-external-libs ${editor-external-libs} ${FRIBIDI_LIBRARIES})
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
+if(X11_FOUND)
+  include_directories( ${X11_INCLUDE_DIR} )
+  set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
+endif(X11_FOUND)
 #
 # Create targets for revision.hpp
 #
