@@ -1,5 +1,7 @@
 src/about.cpp
 src/actions.cpp
+src/addon_checks.cpp
+src/addon_management.cpp
 src/ai_attack.cpp
 src/ai.cpp
 src/ai_dfool.cpp
@@ -59,7 +61,9 @@ src/multiplayer_create.cpp
 src/multiplayer_lobby.cpp
 src/multiplayer_ui.cpp
 src/multiplayer_wait.cpp
+src/network_boost.cpp
 src/network.cpp
+src/network_new.cpp
 src/network_worker.cpp
 src/pathfind.cpp
 src/pathutils.cpp
@@ -68,7 +72,6 @@ src/play_controller.cpp
 src/playmp_controller.cpp
 src/playsingle_controller.cpp
 src/playturn.cpp
-src/publish_campaign.cpp
 src/race.cpp
 src/random.cpp
 src/replay_controller.cpp
@@ -81,6 +84,7 @@ src/serialization/parser.cpp
 src/serialization/preprocessor.cpp
 src/serialization/string_utils.cpp
 src/serialization/tokenizer.cpp
+src/server/ban.cpp
 src/server/forum_auth.cpp
 src/server/forum_auth/md5.cpp
 src/server/game.cpp
@@ -102,6 +106,8 @@ src/tests/test_network_worker.cpp
 src/tests/test_util.cpp
 src/theme.cpp
 src/thread.cpp
+src/time.cpp
+src/time_of_day.cpp
 src/titlescreen.cpp
 src/tools/cutter.cpp
 src/tools/dummy_video.cpp
