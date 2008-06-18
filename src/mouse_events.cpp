@@ -796,9 +796,19 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			}
 		}
 
-
-
+		// reset current_route_ and current_paths if not valid anymore
+		// we do it before cursor selection, because it uses current_paths_
 		if(new_hex.valid() == false) {
+			current_route_.steps.clear();
+			(*gui_).set_route(NULL);
+		}
+
+		if(enemy_paths_) {
+			enemy_paths_ = false;
+			current_paths_ = paths();
+			gui_->unhighlight_reach();
+		} else if(over_route_) {
+			over_route_ = false;
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
 		}
@@ -837,16 +847,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			gui_->set_attack_indicator(attack_from, new_hex);
 		} else {
 			gui_->clear_attack_indicator();
-		}
-
-		if(enemy_paths_) {
-			enemy_paths_ = false;
-			current_paths_ = paths();
-			gui_->unhighlight_reach();
-		} else if(over_route_) {
-			over_route_ = false;
-			current_route_.steps.clear();
-			(*gui_).set_route(NULL);
 		}
 
 		// the destination is the pointed hex or the adjacent hex
