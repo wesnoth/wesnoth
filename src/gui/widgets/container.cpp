@@ -39,14 +39,6 @@
 
 namespace gui2 {
 
-void tcontainer_::draw(surface& surface)
-{
-	// Inherited.
-	tcontrol::draw(surface);
-
-	grid_.draw(surface);
-}
-
 tpoint tcontainer_::get_minimum_size() const
 {
 	tpoint size = grid_.get_maximum_size();
@@ -77,6 +69,14 @@ tpoint tcontainer_::get_best_size() const
 	}
 
 	return size;
+}
+
+void tcontainer_::draw(surface& surface)
+{
+	// Inherited.
+	tcontrol::draw(surface);
+
+	grid_.draw(surface);
 }
 
 } // namespace gui2

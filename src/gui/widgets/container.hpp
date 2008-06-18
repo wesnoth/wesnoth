@@ -36,8 +36,34 @@ public:
 		grid_.set_parent(this);
 	}
 
+	virtual SDL_Rect get_client_rect() const { return get_rect(); }
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
+	/** 
+	 * Inherited from twidget. 
+	 * 
+	 * Since we can't define a good default behaviour we force the inheriting
+	 * classes to define this function. So inheriting classes act as one widget
+	 * others as a collection of multiple objects.
+	 */
+	bool has_vertical_scrollbar() const = 0;
+
+	/** Inherited from twidget.*/
+	bool has_widget(const twidget* widget) const 
+		{ return grid_.has_widget(widget); }
+
 	/** Inherited from twidget. */
 	bool dirty() const { return twidget::dirty() || grid_.dirty(); }
+
+	/** Inherited from tcontrol. */
+	tpoint get_minimum_size() const;
+
+	/** Inherited from tcontrol. */
+	tpoint get_best_size() const;
+
+	/** Inherited from tcontrol. */
+	void draw(surface& surface);
 
 	/** Inherited from tcontrol. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
@@ -61,26 +87,7 @@ public:
 		const twidget* result = tcontrol::find_widget(id, must_be_active);
 		return result ? result : grid_.find_widget(id, must_be_active); 
 	}
-
-	/** Inherited from twidget.*/
-	bool has_widget(const twidget* widget) const 
-		{ return grid_.has_widget(widget); }
-
-	/** 
-	 * Inherited from twidget. 
-	 * 
-	 * Since we can't define a good default behaviour we force the inheriting
-	 * classes to define this function. So inheriting classes act as one widget
-	 * others as a collection of multiple objects.
-	 */
-	bool has_vertical_scrollbar() const = 0;
-
-	/** Inherited from tcontrol. */
-	tpoint get_minimum_size() const;
-
-	/** Inherited from tcontrol. */
-	tpoint get_best_size() const;
-
+	
 	/** Inherited from tcontrol. */
 	void set_size(const SDL_Rect& rect) 
 	{	
@@ -88,13 +95,7 @@ public:
 		set_client_size(get_client_rect());
 	}
 
-	/** FIXME see whether needed to be exported. */
-	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
-
-	/** Inherited from tcontrol. */
-	void draw(surface& surface);
-	
-	/***** **** wrappers to the grid **** ****/
+	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
 	tgrid::iterator begin() { return grid_.begin(); }
 	tgrid::iterator end() { return grid_.end(); }
@@ -121,21 +122,26 @@ public:
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
 		{ grid_.set_col_grow_factor(col, factor); }
 
-	virtual SDL_Rect get_client_rect() const { return get_rect(); }
+	/** FIXME see whether needed to be exported. */
+	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
+
 protected:
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
 	const tgrid& grid() const { return grid_; }
 	tgrid& grid() { return grid_; }
 		
 private:
 
+	/** The grid which holds the child objects. */
 	tgrid grid_;
 
-	//! Returns the space used by the border.
+	/** Returns the space used by the border. */
 	virtual tpoint border_space() const { return tpoint(0, 0); }
 };
 
 } // namespace gui2
 
 #endif
-
 
