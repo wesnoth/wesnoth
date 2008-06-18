@@ -328,10 +328,10 @@ private:
 
 class ai_manager {
 
-	typedef std::map<std::string, boost::shared_ptr<ai_interface> > ai_map;
+	typedef std::map<std::string, boost::intrusive_ptr<ai_interface> > ai_map;
 
 	public: 
-		static boost::shared_ptr<ai_interface> get_ai(ai_interface::info&, std::string, std::string);
+		static boost::intrusive_ptr<ai_interface> get_ai(ai_interface::info&, std::string, std::string);
 
 	private:
 		static ai_map ais;

@@ -932,16 +932,15 @@ void ai_function_symbol_table::register_candidate_move(const std::string name,
 formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false), function_table(*this)
 {
 	//make sure we don't run out of refcount
-	add_ref();
 	vars_.add_ref();
 }
 
 void formula_ai::new_turn() 
 {
 	move_maps_valid_ = false;
-
 	ai::new_turn();
 }
+
 void formula_ai::play_turn()
 {
 	const config& ai_param = current_team().ai_parameters();

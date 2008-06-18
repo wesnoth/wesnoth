@@ -18,6 +18,7 @@
  *  Logic for single-player game.
  */
 
+#include <boost/intrusive_ptr.hpp>
 #include "playsingle_controller.hpp"
 
 #include "construct_dialog.hpp"
@@ -707,9 +708,13 @@ void playsingle_controller::play_ai_turn(){
 	ai_interface::info ai_info(*gui_,map_,units_,teams_,player_number_,status_, turn_data, gamestate_);
 	std::string ai_algorithm = current_team().ai_algorithm();
 
-	boost::shared_ptr<ai_interface> ai_obj(ai_algorithm == "formula_ai" ? 
-			ai_manager::get_ai(ai_info,current_team().name(),ai_algorithm) : 
-		 	boost::shared_ptr<ai_interface> (create_ai(ai_algorithm,ai_info)));
+	boost::intrusive_ptr<ai_interface> ai_obj;
+
+	if(ai_algorithm == "formula_ai") {
+		ai_obj = ai_manager::get_ai(ai_info,current_team().name(), ai_algorithm);
+	} else {
+		ai_obj = create_ai(ai_algorithm, ai_info);
+	}
 
 	ai_obj->user_interact().attach_handler(this);
 	ai_obj->unit_recruited().attach_handler(this);

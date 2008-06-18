@@ -2367,12 +2367,12 @@ void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inp
 	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }
 
-std::map<std::string, boost::shared_ptr<ai_interface> > ai_manager::ais = std::map<std::string, boost::shared_ptr<ai_interface> >();
+ai_manager::ai_map ai_manager::ais = ai_manager::ai_map();
 
-boost::shared_ptr<ai_interface> ai_manager::get_ai(ai_interface::info& ai_info, std::string ai_key, std::string ai_algo) {
+boost::intrusive_ptr<ai_interface> ai_manager::get_ai(ai_interface::info& ai_info, std::string ai_key, std::string ai_algo) {
 	ai_map::const_iterator itor = ais.find(ai_key);
 	if(itor == ais.end()) {
-		boost::shared_ptr<ai_interface> new_ai(create_ai(ai_algo, ai_info));
+		boost::intrusive_ptr<ai_interface> new_ai(create_ai(ai_algo, ai_info));
 		ai_map::value_type new_ai_pair(ai_key, new_ai);
 		itor = ais.insert(new_ai_pair).first;
 	} else {
