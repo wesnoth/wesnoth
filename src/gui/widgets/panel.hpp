@@ -32,20 +32,6 @@ public:
 	{
 	}
 
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
-		{ return tcontainer_::find_widget(coordinate, must_be_active); }
-
-	const twidget* find_widget(const tpoint& coordinate, 
-			const bool must_be_active) const
-		{ return tcontainer_::find_widget(coordinate, must_be_active); }
-
-	twidget* find_widget(const std::string& id, const bool must_be_active)
-		{ return tcontainer_::find_widget(id, must_be_active); }
-
-	const twidget* find_widget(const std::string& id, 
-			const bool must_be_active) const
-		{ return tcontainer_::find_widget(id, must_be_active); }
-
 	bool has_vertical_scrollbar() const { return false; }
 
 	//! A panel is always active atm so ignore the request.
