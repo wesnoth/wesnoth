@@ -197,12 +197,17 @@ public:
 	virtual bool rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const;
 	virtual bool zone_need_update(const int x1,const int y1, const int x2, const int y2) const;
 	virtual void draw_minimap_units() {};
+	
+	/**
+	 * Function to invalidate animated terrains which may have changed.
+	 */
 	virtual void invalidate_animations();
+	
 	/**
 	 * Per-location invalidation called by invalidate_animations()
 	 * defaults to no action, overriden by derived classes
 	 */
-	virtual void invalidate_animations_location(gamemap::location loc){}
+	virtual void invalidate_animations_location(gamemap::location loc) {}
 
 	const gamemap& get_map()const { return map_;}
 
@@ -377,9 +382,9 @@ protected:
 	/**
 	 * Called near the beginning of each draw() call.
 	 * Derived classes can use this to add extra actions before redrawing
-	 * invalidated hexes takes place
+	 * invalidated hexes takes place. No action here by default.
 	 */
-	virtual void pre_draw();
+	virtual void pre_draw() {}
 	
 	/**
 	 * Get the clipping rectangle for drawing.
@@ -394,6 +399,12 @@ protected:
 	 * base class's function.
 	 */
 	virtual void draw_invalidated();
+	
+	/**
+	 * Hook for actions to take right after draw() calls drawing_buffer_commit
+	 * No action here by default.
+	 */
+	virtual void post_commit() {} 
 	
 	/**
 	 * Redraws a single gamemap location.
@@ -413,7 +424,7 @@ protected:
 	
 	/**
 	 * Called near the end of a draw operation, derived classes can use this 
-	 * to render a specific sidebar
+	 * to render a specific sidebar. Very similar to post_commit.
 	 */
 	virtual void draw_sidebar();
 	

@@ -310,9 +310,15 @@ image::TYPE game_display::get_image_type(const gamemap::location& loc) {
 
 void game_display::draw_invalidated()
 {
+	halo::unrender(invalidated_);
 	display::draw_invalidated();
 	std::vector<gamemap::location> unit_invals = get_invalidated_unit_locations();
 	redraw_units(unit_invals);
+}
+
+void game_display::post_commit() 
+{
+	halo::render();
 }
 
 void game_display::draw_hex(const gamemap::location& loc)
@@ -394,7 +400,6 @@ void game_display::update_time_of_day()
 {
 	tod_ = status_.get_time_of_day();
 }
-
 
 void game_display::redraw_units(const std::vector<gamemap::location>& invalidated_unit_locations)
 {

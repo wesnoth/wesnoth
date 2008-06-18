@@ -1416,14 +1416,8 @@ void display::scroll(int xmove, int ymove)
 	SDL_Rect srcrect = dstrect;
 	srcrect.x -= dx;
 	srcrect.y -= dy;
-	DBG_DP << "xmove is " << xmove << ", ymove is " << ymove << "\n";
-	DBG_DP << "screen is: w" << screen->w << " h" << screen->h << "\n";	
-	DBG_DP << "map_area() is: x" << map_area().x << " y" << map_area().y << " w" << map_area().w << " h" << map_area().h << "\n";
-	DBG_DP << "srcrect is: x" << srcrect.x << " y" << srcrect.y << " w" << srcrect.w << " h" << srcrect.h << "\n";
-	DBG_DP << "dstrect is: x" << dstrect.x << " y" << dstrect.y << " w" << dstrect.w << " h" << dstrect.h << "\n";
 	if (!screen_.update_locked())
 		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
-	DBG_DP << "blitted\n";
 
 	// Invalidate locations in the newly visible rects
 
@@ -1849,16 +1843,14 @@ void display::draw(bool update,bool force) {
 	pre_draw();
 	update_time_of_day();
 	if(!map_.empty()) {
-		halo::unrender(invalidated_);
 		//int simulate_delay = 0;
 		if(!invalidated_.empty()) {
 			changed = true;
-			INFO_DP << invalidated_.size() << "\n";
 			draw_invalidated();	
 			invalidated_.clear();
 		}
 		drawing_buffer_commit();
-		halo::render();
+		post_commit();
 		draw_sidebar();
 		//! @todo FIXME: This changed can probably be smarter
 		changed = true;
@@ -1873,11 +1865,6 @@ void display::clear_screen()
 	surface const disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
 	SDL_FillRect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));	
-}
-
-void display::pre_draw()
-{
-	//no action by default		
 }
 
 const SDL_Rect& display::get_clip_rect()

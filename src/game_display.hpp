@@ -127,6 +127,9 @@ protected:
 	 */
 	std::vector<gamemap::location> get_invalidated_unit_locations();
 	
+	/**
+	 * Hex brightening for game - take units into account
+	 */
 	image::TYPE get_image_type(const gamemap::location& loc);
 	
 	/**
@@ -136,14 +139,22 @@ protected:
 	
 	void draw_invalidated();
 	
+	void post_commit();
+	
 	void draw_hex(const gamemap::location& loc);
 	
 	void update_time_of_day();
 	
-
-	//! Function to invalidate animated terrains which may have changed.
+	/**
+	 * Animated hex invalidation specific to gameplay
+	 */
 	void invalidate_animations();
+	
+	/**
+	 * Extra game per-location invalidation (village ownership)
+	 */
 	void invalidate_animations_location(gamemap::location loc);
+	
 	virtual void draw_minimap_units();
 
 public:
