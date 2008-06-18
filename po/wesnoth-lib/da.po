@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-13 13:27+0200\n"
+"POT-Creation-Date: 2008-06-18 20:02+0200\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -360,7 +360,7 @@ msgid "Map creation failed."
 msgstr "Oprettelse af kort mislykkedes."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
-#: src/preferences_display.cpp:227
+#: src/preferences_display.cpp:229
 msgid "Close Window"
 msgstr "Luk vindue"
 
@@ -878,48 +878,48 @@ msgstr "Nyt tema vil være aktivt i næste nye eller hentede spil."
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 
-#: src/gui/widgets/canvas.cpp:255
+#: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:366
+#: src/gui/widgets/canvas.cpp:411
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:714
+#: src/gui/widgets/canvas.cpp:775
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:184
+#: src/gui/widgets/helper.cpp:183
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:128
+#: src/gui/widgets/settings.cpp:130
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:234
+#: src/gui/widgets/settings.cpp:236
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:293
+#: src/gui/widgets/settings.cpp:295
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:407 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:437
+#: src/gui/widgets/settings.cpp:439
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:589
+#: src/gui/widgets/settings.cpp:591
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Ingen server er defineret."
@@ -1362,15 +1362,15 @@ msgstr "Ø"
 msgid "The maximum text width is less than 1."
 msgstr "Den maksimale tekstbredde er mindre end 1."
 
-#: src/minimap.cpp:87
+#: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
 msgstr "Kunne ikke indlæse terrænbillede: $terrain."
 
-#: src/minimap.cpp:111 src/minimap.cpp:123
+#: src/minimap.cpp:105 src/minimap.cpp:117
 msgid "Error creating or aquiring an image."
 msgstr "Fejl ved oprettelse eller indlæsning af billede."
 
-#: src/preferences_display.cpp:83 src/preferences_display.cpp:116
+#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1380,46 +1380,46 @@ msgstr ""
 "pixel for at afvikle spillet i et vindue. Din skærm skal understøtte "
 "1024x768x16 for at køre spillet i fuld skærm."
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:233
 msgid "Hotkey Settings"
 msgstr "Genvejsindstillinger"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Tryk ønsket genvejstast"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Action"
 msgstr "Aktion"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Binding"
 msgstr "Sammenfæstning"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:270
 msgid "Change Hotkey"
 msgstr "Skift genvejstast"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:273
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Skift genvejstast"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
 msgstr "Denne genvejstast er allerede i brug."
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:352
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
 msgstr "Der er ingen alternative videomodes tilgængelige"
 
-#: src/preferences_display.cpp:459
+#: src/preferences_display.cpp:460
 msgid "Choose Resolution"
 msgstr "Vælg opløsning"
 

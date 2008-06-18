@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-13 13:27+0200\n"
+"POT-Creation-Date: 2008-06-18 20:02+0200\n"
 "PO-Revision-Date: 2008-03-02 01:14+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -372,7 +372,7 @@ msgid "Map creation failed."
 msgstr "Ошибка создания карты."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
-#: src/preferences_display.cpp:227
+#: src/preferences_display.cpp:229
 msgid "Close Window"
 msgstr "Закрыть окно"
 
@@ -884,48 +884,48 @@ msgstr ""
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
-#: src/gui/widgets/canvas.cpp:255
+#: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:366
+#: src/gui/widgets/canvas.cpp:411
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:714
+#: src/gui/widgets/canvas.cpp:775
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:184
+#: src/gui/widgets/helper.cpp:183
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Сервер не определён"
 
-#: src/gui/widgets/settings.cpp:128
+#: src/gui/widgets/settings.cpp:130
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Сервер не определён"
 
-#: src/gui/widgets/settings.cpp:234
+#: src/gui/widgets/settings.cpp:236
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:293
+#: src/gui/widgets/settings.cpp:295
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:407 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Сервер не определён"
 
-#: src/gui/widgets/settings.cpp:437
+#: src/gui/widgets/settings.cpp:439
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Сервер не определён"
 
-#: src/gui/widgets/settings.cpp:589
+#: src/gui/widgets/settings.cpp:591
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Сервер не определён"
@@ -1367,15 +1367,15 @@ msgstr "Остров"
 msgid "The maximum text width is less than 1."
 msgstr "Максимальная ширина текста меньше 1"
 
-#: src/minimap.cpp:87
+#: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
 msgstr "Не могу найти изображения для территории $terrain."
 
-#: src/minimap.cpp:111 src/minimap.cpp:123
+#: src/minimap.cpp:105 src/minimap.cpp:117
 msgid "Error creating or aquiring an image."
 msgstr "Ошибка при создании или получении изображения."
 
-#: src/preferences_display.cpp:83 src/preferences_display.cpp:116
+#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1385,46 +1385,46 @@ msgstr ""
 "установить 16 битный цвет. Чтобы запускать игру на весь экран, ваш монитор "
 "должен поддерживать разрешение не менее 1024x768x16."
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:233
 msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Нажмите желаемую горячую клавишу"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Action"
 msgstr "Действие"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Binding"
 msgstr "Клавиша"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:270
 msgid "Change Hotkey"
 msgstr "Изменить"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:273
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Изменить"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
 msgstr "Данная горячая клавиша уже используется."
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:352
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
 msgstr "Нет доступных альтернативных видео режимов"
 
-#: src/preferences_display.cpp:459
+#: src/preferences_display.cpp:460
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 

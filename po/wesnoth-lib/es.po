@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-13 13:27+0200\n"
+"POT-Creation-Date: 2008-06-18 20:02+0200\n"
 "PO-Revision-Date: 2008-01-20 20:52+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -363,7 +363,7 @@ msgid "Map creation failed."
 msgstr "Ha fallado la creación del mapa."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
-#: src/preferences_display.cpp:227
+#: src/preferences_display.cpp:229
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
@@ -894,48 +894,48 @@ msgstr ""
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hay temas conocidos. Intente cambiarlos desde un juego existente."
 
-#: src/gui/widgets/canvas.cpp:255
+#: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:366
+#: src/gui/widgets/canvas.cpp:411
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:714
+#: src/gui/widgets/canvas.cpp:775
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:184
+#: src/gui/widgets/helper.cpp:183
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "No se ha definido ningún servidor."
 
-#: src/gui/widgets/settings.cpp:128
+#: src/gui/widgets/settings.cpp:130
 #, fuzzy
 msgid "No default gui defined."
 msgstr "No se ha definido ningún servidor."
 
-#: src/gui/widgets/settings.cpp:234
+#: src/gui/widgets/settings.cpp:236
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:293
+#: src/gui/widgets/settings.cpp:295
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:407 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "No se ha definido ningún servidor."
 
-#: src/gui/widgets/settings.cpp:437
+#: src/gui/widgets/settings.cpp:439
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "No se ha definido ningún servidor."
 
-#: src/gui/widgets/settings.cpp:589
+#: src/gui/widgets/settings.cpp:591
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "No se ha definido ningún servidor."
@@ -1377,15 +1377,15 @@ msgstr "Isla"
 msgid "The maximum text width is less than 1."
 msgstr "La anchura máxima del texto es menos de 1."
 
-#: src/minimap.cpp:87
+#: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
 msgstr "No es posible obtener la imagen para el terreno: $terrain."
 
-#: src/minimap.cpp:111 src/minimap.cpp:123
+#: src/minimap.cpp:105 src/minimap.cpp:117
 msgid "Error creating or aquiring an image."
 msgstr "Error al crear o adquirir una imagen."
 
-#: src/preferences_display.cpp:83 src/preferences_display.cpp:116
+#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1395,46 +1395,46 @@ msgstr ""
 "para poder funcionar en modo ventana. Su pantalla debe soportar una "
 "resolución de 1024x768x16 para jugar a pantalla completa."
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:233
 msgid "Hotkey Settings"
 msgstr "Configuración de accesos rápidos"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Presione la tecla deseada"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Action"
 msgstr "Acción"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Binding"
 msgstr "Tecla"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:270
 msgid "Change Hotkey"
 msgstr "Cambiar acceso rápido"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:273
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Cambiar acceso rápido"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
 msgstr "Este acceso rápido ya se está usando."
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:352
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
 msgstr "No tiene modos de vídeo alternativos disponibles"
 
-#: src/preferences_display.cpp:459
+#: src/preferences_display.cpp:460
 msgid "Choose Resolution"
 msgstr "Seleccione resolución"
 

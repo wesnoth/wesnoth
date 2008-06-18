@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-13 13:27+0200\n"
+"POT-Creation-Date: 2008-06-18 20:02+0200\n"
 "PO-Revision-Date: 2008-03-10 17:51+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -357,7 +357,7 @@ msgid "Map creation failed."
 msgstr "Erstellen der Karte ist fehlgeschlagen"
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
-#: src/preferences_display.cpp:227
+#: src/preferences_display.cpp:229
 msgid "Close Window"
 msgstr "Fenster schließen"
 
@@ -883,48 +883,48 @@ msgstr ""
 "Keine Grafikthemen gefunden. Versucht die Einstellungen in einem laufenden "
 "Spiel anzupassen."
 
-#: src/gui/widgets/canvas.cpp:255
+#: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:366
+#: src/gui/widgets/canvas.cpp:411
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:714
+#: src/gui/widgets/canvas.cpp:775
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:184
+#: src/gui/widgets/helper.cpp:183
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Es wurde kein Server angegeben."
 
-#: src/gui/widgets/settings.cpp:128
+#: src/gui/widgets/settings.cpp:130
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Es wurde kein Server angegeben."
 
-#: src/gui/widgets/settings.cpp:234
+#: src/gui/widgets/settings.cpp:236
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:293
+#: src/gui/widgets/settings.cpp:295
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:407 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Es wurde kein Server angegeben."
 
-#: src/gui/widgets/settings.cpp:437
+#: src/gui/widgets/settings.cpp:439
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Es wurde kein Server angegeben."
 
-#: src/gui/widgets/settings.cpp:589
+#: src/gui/widgets/settings.cpp:591
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Es wurde kein Server angegeben."
@@ -1366,15 +1366,15 @@ msgstr "Insel"
 msgid "The maximum text width is less than 1."
 msgstr "Die maximale Textlänge ist kleiner als 1."
 
-#: src/minimap.cpp:87
+#: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
 msgstr "Für Gelände $terrain wurde keine Grafik gefunden."
 
-#: src/minimap.cpp:111 src/minimap.cpp:123
+#: src/minimap.cpp:105 src/minimap.cpp:117
 msgid "Error creating or aquiring an image."
 msgstr "Fehler beim Erstellen oder Laden einer Grafik."
 
-#: src/preferences_display.cpp:83 src/preferences_display.cpp:116
+#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1385,46 +1385,46 @@ msgstr ""
 "zu können. Um das Spiel im Vollbildmodus zu spielen, muss Euer Bildschirm "
 "1024x768x16 unterstützen."
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:233
 msgid "Hotkey Settings"
 msgstr "Tastenkürzel anpassen"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Drückt das gewünschte Tastenkürzel"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Action"
 msgstr "Aktion"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Binding"
 msgstr "Tastenkürzel"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:270
 msgid "Change Hotkey"
 msgstr "Tastenkürzel ändern"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:273
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Tastenkürzel ändern"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
 msgstr "Dieses Tastenkürzel wird bereits verwendet."
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:352
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
 msgstr "Es sind keine weitere Videomodi verfügbar"
 
-#: src/preferences_display.cpp:459
+#: src/preferences_display.cpp:460
 msgid "Choose Resolution"
 msgstr "Wählt die gewünschte Auflösung"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-13 13:27+0200\n"
+"POT-Creation-Date: 2008-06-18 20:02+0200\n"
 "PO-Revision-Date: 2008-03-02 01:26+0800\n"
 "Last-Translator: \n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -358,7 +358,7 @@ msgid "Map creation failed."
 msgstr "創建地圖失敗"
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:103
-#: src/preferences_display.cpp:227
+#: src/preferences_display.cpp:229
 msgid "Close Window"
 msgstr "關閉視窗"
 
@@ -867,48 +867,48 @@ msgstr "新主題在下次新建或載入遊戲時生效。"
 msgid "No known themes. Try changing from within an existing game."
 msgstr "當前無已知主題。請嘗試在遊戲時切换主題。"
 
-#: src/gui/widgets/canvas.cpp:255
+#: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:366
+#: src/gui/widgets/canvas.cpp:411
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:714
+#: src/gui/widgets/canvas.cpp:775
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:184
+#: src/gui/widgets/helper.cpp:183
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "没有已定義的伺服器"
 
-#: src/gui/widgets/settings.cpp:128
+#: src/gui/widgets/settings.cpp:130
 #, fuzzy
 msgid "No default gui defined."
 msgstr "没有已定義的伺服器"
 
-#: src/gui/widgets/settings.cpp:234
+#: src/gui/widgets/settings.cpp:236
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:293
+#: src/gui/widgets/settings.cpp:295
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:405 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:407 src/gui/widgets/window_builder.cpp:329
 #, fuzzy
 msgid "No resolution defined."
 msgstr "没有已定義的伺服器"
 
-#: src/gui/widgets/settings.cpp:437
+#: src/gui/widgets/settings.cpp:439
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "没有已定義的伺服器"
 
-#: src/gui/widgets/settings.cpp:589
+#: src/gui/widgets/settings.cpp:591
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "没有已定義的伺服器"
@@ -1351,15 +1351,15 @@ msgstr "島嶼"
 msgid "The maximum text width is less than 1."
 msgstr "最大文字寬度小于1"
 
-#: src/minimap.cpp:87
+#: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
 msgstr "無法獲取該地形圖片: $terrain。"
 
-#: src/minimap.cpp:111 src/minimap.cpp:123
+#: src/minimap.cpp:105 src/minimap.cpp:117
 msgid "Error creating or aquiring an image."
 msgstr "創建或獲取圖像文件錯誤。"
 
-#: src/preferences_display.cpp:83 src/preferences_display.cpp:116
+#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1368,46 +1368,46 @@ msgstr ""
 "無法改變影像模式。以視窗模式執行遊戲需要將視窗解析度設為16位元，全螢幕模式需"
 "要您的顯示器支援1024x768解析度和16位元。"
 
-#: src/preferences_display.cpp:231
+#: src/preferences_display.cpp:233
 msgid "Hotkey Settings"
 msgstr "快捷鍵設定"
 
-#: src/preferences_display.cpp:237 src/preferences_display.cpp:306
+#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "請鍵入您要設定的快捷鍵"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Action"
 msgstr "動作"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:258
 msgid "Binding"
 msgstr "綁定鍵"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:270
 msgid "Change Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:272
+#: src/preferences_display.cpp:273
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:339
+#: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
 msgstr "此快捷鍵已經被使用"
 
-#: src/preferences_display.cpp:351
+#: src/preferences_display.cpp:352
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:430
+#: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
 msgstr "没有其他可用的顯示模式"
 
-#: src/preferences_display.cpp:459
+#: src/preferences_display.cpp:460
 msgid "Choose Resolution"
 msgstr "選擇解析度"
 
