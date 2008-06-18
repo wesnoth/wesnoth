@@ -66,7 +66,6 @@ sanity-check:
 	cd utils; ./sanity_check
 	cd data/tools; make sanity-check
 
-# *** Not yet covered by scons recipe (dummylocales)
 install-data-local:
 	@$(NORMAL_INSTALL)
 if INSTALLDATA
