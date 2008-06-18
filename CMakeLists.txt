@@ -94,7 +94,7 @@ if(ENABLE_EDITOR2)
 endif(ENABLE_EDITOR2)
 
 if(X11_FOUND)
-  add_definitions(-_X11)
+  add_definitions(-D_X11)
 endif(X11_FOUND)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
