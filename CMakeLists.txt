@@ -29,6 +29,7 @@ find_package( Gettext )
 find_package( FriBiDi )
 find_package( PythonInterp 2.4 )
 find_package( PythonCustom )
+find_package( X11 )
 
 #
 # Options
@@ -91,6 +92,10 @@ endif(NOT WIN32)
 if(ENABLE_EDITOR2)
   add_definitions(-DUSE_EDITOR2)
 endif(ENABLE_EDITOR2)
+
+if(X11_FOUND)
+  add_definitions(-_X11)
+endif(X11_FOUND)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
