@@ -90,7 +90,7 @@ const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_
 	}
 }
 
-std::string gamemap::get_terrain_string(t_translation::t_terrain terrain) const
+std::string gamemap::get_terrain_string(const t_translation::t_terrain& terrain) const
 {
 	std::stringstream ss;
 	const std::string& name = get_terrain_info(terrain).name();

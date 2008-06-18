@@ -207,7 +207,7 @@ public:
 	 * Per-location invalidation called by invalidate_animations()
 	 * defaults to no action, overriden by derived classes
 	 */
-	virtual void invalidate_animations_location(gamemap::location /*loc*/) {}
+	virtual void invalidate_animations_location(const gamemap::location& /*loc*/) {}
 
 	const gamemap& get_map()const { return map_;}
 

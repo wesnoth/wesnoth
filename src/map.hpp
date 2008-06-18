@@ -54,7 +54,7 @@ public:
 	/**
 	 * Get a formatted terrain name -- terrain (underlying, terrains)
 	 */
-	std::string get_terrain_string(t_translation::t_terrain terrain) const;
+	std::string get_terrain_string(const t_translation::t_terrain& terrain) const;
 
 
 	//! Throws exception if the map file is not in the correct format.
