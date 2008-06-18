@@ -153,7 +153,7 @@ protected:
 	/**
 	 * Extra game per-location invalidation (village ownership)
 	 */
-	void invalidate_animations_location(gamemap::location loc);
+	void invalidate_animations_location(const gamemap::location& loc);
 	
 	virtual void draw_minimap_units();
 

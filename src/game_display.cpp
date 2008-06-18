@@ -900,7 +900,7 @@ bool game_display::invalidate(const gamemap::location& loc)
 	return false;
 }
 
-void game_display::invalidate_animations_location(gamemap::location loc) {
+void game_display::invalidate_animations_location(const gamemap::location& loc) {
 	if (map_.is_village(loc)) {
 		const int owner = player_teams::village_owner(loc);
 		if (owner >= 0 && flags_[owner].need_update()
