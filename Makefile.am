@@ -22,6 +22,7 @@ findsconsdir=(cd $(top_srcdir) && find scons $(findfilterflags) -print )
 # List all files required for cmake build recipe
 findcmakelists=(cd $(top_srcdir) && find . -name "CMakeLists.txt" -print )
 findcmakedir=(cd $(top_srcdir) && find cmake $(findfilterflags) -print )
+findcmakeextrafiles=(cd $(top_srcdir) && find . -name "po-update.sh" -print )
 
 # Find files derived from the manual that should go in a distribution
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
