@@ -12,12 +12,14 @@
    See the COPYING file for more details.
 */
 
-//! Network worker handles data transfers in threads
-//! Remember to use mutexs as little as possible
-//! All global vars should be used in mutex
-//! FIXME: @todo: All code which holds a mutex should run O(1) time
-//! for scalability. Implement read/write locks.
-//!  (postponed for 1.5)
+/**
+ * Network worker handles data transfers in threads
+ * Remember to use mutexs as little as possible
+ * All global vars should be used in mutex
+ * FIXME: @todo: All code which holds a mutex should run O(1) time
+ * for scalability. Implement read/write locks.
+ *  (postponed for 1.5)
+ */
 
 #include "global.hpp"
 
@@ -123,14 +125,18 @@ struct buffer {
 	mutable config config_buf;
 	std::string config_error;
 	std::ostringstream stream;
-	//! Do we wish to send the data gzipped, if not use binary wml.
-	//! This needs to stay until the last user of binary_wml has
-	//! been removed.
+
+	/**
+	 * Do we wish to send the data gzipped, if not use binary wml. This needs
+	 * to stay until the last user of binary_wml has been removed.
+	 */
 	bool gzipped;
 
-	//this field is used if we're sending a raw buffer instead of
-	//through a config object. It will contain the entire contents of
-	//the buffer being sent.
+	/**
+	 * This field is used if we're sending a raw buffer instead of through a
+	 * config object. It will contain the entire contents of the buffer being
+	 * sent.
+	 */
 	std::vector<char> raw_buffer;
 };
 
@@ -148,7 +154,7 @@ typedef std::map<TCPsocket,schema_pair> schema_map;
 
 schema_map schemas; //schemas_mutex
 
-//a queue of sockets that we are waiting to receive on
+/** a queue of sockets that we are waiting to receive on */
 typedef std::vector<TCPsocket> receive_list;
 receive_list pending_receives[NUM_SHARDS];
 
@@ -939,7 +945,7 @@ void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 namespace
 {
 
-//! Caller has to make sure to own the mutex for this shard
+/** Caller has to make sure to own the mutex for this shard */
 void remove_buffers(TCPsocket sock)
 {
 	{
