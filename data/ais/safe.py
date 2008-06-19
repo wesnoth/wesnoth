@@ -71,10 +71,12 @@ _BUILTIN_OK = [
     '__debug__','quit','exit',
     'Warning',
     'None','True','False',
-    'abs', 'bool', 'callable', 'cmp', 'complex', 'dict', 'divmod', 'filter',
-    'float', 'frozenset', 'hex', 'int', 'isinstance', 'issubclass', 'len',
-    'list', 'long', 'map', 'max', 'min', 'object', 'oct', 'pow', 'range',
-    'repr', 'round', 'set', 'slice', 'str', 'sum', 'tuple',  'xrange', 'zip',
+    'abs', 'bool', 'callable', 'chr', 'cmp', 'complex', 'dict', 'divmod', 'filter',
+    'float', 'frozenset', 'hash', 'hex', 'int', 'isinstance', 'issubclass', 'len',
+    'list', 'long', 'map', 'max', 'min', 'object', 'oct', 'ord', 'pow', 'range',
+    'repr', 'round', 'set', 'slice', 'str', 'sum', 'super', 'tuple',  'xrange', 'zip',
+    'ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'StopIteration',
+    'IndexError', 'KeyError', 'KeyboardInterrupt', 'RuntimeError', 'RuntimeWarning'
     ]
 
 _BUILTIN_STR = [
@@ -124,11 +126,20 @@ def safe_run(code,context=None):
         _builtin_restore()
         raise
 
-# If you want to disable safe python, use this instead:
-#
-##def safe_exec(code, context = None): exec code in context
-def safe_exec(code, context = None):
-    """Check the code to be safe, then run it with only safe builtins on."""
-    safe_check(code)
-    safe_run(code,context)
-    
+def safe_exec_noop( code, context=None ):
+    exec code in context
+
+def safe_exec_op( code, context=None ):
+    safe_check( code )
+    safe_run( code, context )
+
+# Wrapper allowing safe_exec to be dynamically controlled
+# from wesnoth binary.
+def safe_exec( code, context=None, runSafe=True ):
+    if runSafe:
+        safe_exec_op( code, context )
+
+    else:
+        safe_exec_noop( code, context )
+
+

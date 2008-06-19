@@ -46,6 +46,10 @@ Version 1.5.0+svn:
  * Python AI:
    * Implemented a function which detects if a location is on the map border.
    * Implemented a function which gives the game's gold parameters.
+   * Extended safe.py environment to expand AI's language capabilities; including:
+	collections, hotshot, psyco, Queue, sets, time, and the upcoming wail module
+	Use of chr, hash, lambda, ord, and super (new style classes) are now allowed
+	Control of safe_exec can now be toggled from the wesnoth binary (not implemented)
  * terrains:
    * Fixed city village not being alias of the village terrain type; this was
      causing a duplicate "Village" terrain being displayed in the defense ratios

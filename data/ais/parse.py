@@ -1,6 +1,6 @@
 import re, os, safe
 
-whitelisted = ["wesnoth", "heapq", "random", "math", "string", "re", "threading"]
+whitelisted = ["collections", "heapq", "hotshot", "math", "psyco", "Queue", "random", "re", "sets", "string", "threading", "time", "wail", "wesnoth"]
 rex = re.compile(r"^import\s+(.*)", re.M)
 modules = {}
 
@@ -24,8 +24,9 @@ def include(matchob):
                 pass
         else:
             raise safe.SafeException("Could not include %s." % name)
-            return None
+
         r += code
+
     return r
 
 def parse_file(name):
