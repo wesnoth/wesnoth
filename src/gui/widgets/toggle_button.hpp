@@ -19,7 +19,12 @@
 
 namespace gui2 {
 
-// Class for a toggle button
+/**
+ * Class for a toggle button.
+ *
+ * A toggle button is a button with two states 'up' and 'down' or 'selected' and
+ * 'deselected'. When the mouse is pressed on it the state changes.
+ */
 class ttoggle_button : public tcontrol, public tselectable_
 {
 public:
@@ -31,42 +36,67 @@ public:
 	{
 	}
 
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
+	/** Inherted from tevent_executor. */
 	void mouse_enter(tevent_handler&);
+
+	/** Inherted from tevent_executor. */
 	void mouse_leave(tevent_handler&);
 
+	/** Inherted from tevent_executor. */
 	void mouse_left_button_click(tevent_handler&);
 
+	/** Inherited from tcontrol. */
 	void set_active(const bool active);
+
+	/** Inherited from tcontrol. */
 	bool get_active() const
 		{ return state_ != DISABLED && state_ != DISABLED_SELECTED; }
+
+	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
+	/** Inherited from tcontrol. */
+	void set_canvas_text();
+	
 	/** Inherited from tselectable_ */
 	bool is_selected() const { return state_ >= ENABLED_SELECTED; }
 
 	/** Inherited from tselectable_ */
 	void set_selected(const bool selected = true);
 
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
 	void set_callback_mouse_left_click(void (*callback) (twidget*)) 
 		{ callback_mouse_left_click_ = callback; }
 
-	/** Inherited from tcontrol. */
-	void set_canvas_text();
-	
 	void set_icon_name(const std::string& icon_name) 
 		{ icon_name_ = icon_name; set_canvas_text(); }
 	const std::string& icon_name() const { return icon_name_; }
 	
 private:
-	//! Note the order of the states must be the same as defined in settings.hpp.
-	//! Also note the internals do assume the order for up and down to be the same
-	//! and also that 'up' is before 'down'.
+	/**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 * Also note the internals do assume the order for 'up' and 'down' to be the
+	 * same and also that 'up' is before 'down'. 'up' has no suffix, 'down' has
+	 * the SELECTED suffix.
+	 */
 	enum tstate { 
 		ENABLED,          DISABLED,          FOCUSSED, 
 		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED, 
 		COUNT};
 
 	void set_state(tstate state);
+
+	/** 
+	 * Current state of the widget.
+	 *
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
+	 */
 	tstate state_;
  
  	/** This callback is used when the control gets a left click. */
@@ -78,15 +108,13 @@ private:
 	 */
 	std::string icon_name_;
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "toggle_button"; return type; }
 
 };
 
-
 } // namespace gui2
 
 #endif
-
 
