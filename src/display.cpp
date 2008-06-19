@@ -1254,89 +1254,60 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 	 * This way this code doesn't need modifications for other border sizes.
 	 */
 
-	surface screen = get_screen_surface();
+	const int drawing_order = gamemap::get_drawing_order(loc);
 
 	// First handle the corners :
 	if(loc.x == -1 && loc.y == -1) { // top left corner
-		SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
-		const surface border(image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
+		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+			image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM)));
 	} else if(loc.x == map_.w() && loc.y == -1) { // top right corner
-		SDL_Rect rect = { xpos, -1, 3 * zoom_/4, zoom_ } ;
-		surface border;
+		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 0) {
-			rect.y = ypos + zoom_/2;
-			rect.h = zoom_/2;
-			// We use the map idea of odd and even,
-			// and map coords are internal coords + 1
-			border = image::get_image(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
+				image::get_image(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM)));
 		} else {
-			rect.y = ypos;
-			border = image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+				image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM)));
 		}
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
-
 	} else if(loc.x == -1 && loc.y == map_.h()) { // bottom left corner
-		SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_/2 } ;
-
-		const surface border(image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM));
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
+		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+			image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM)));
 
 	} else if(loc.x == map_.w() && loc.y == map_.h()) { // bottom right corner
-		SDL_Rect rect = { xpos, ypos, 3 * zoom_/4, zoom_/2 } ;
-		surface border;
+		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
-			// We use the map idea of odd and even, and map coords are internal coords + 1
-			border = image::get_image(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+				image::get_image(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM)));
 		} else {
-			border = image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+				image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM)));
 		}
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
 
 	// Now handle the sides:
 	} else if(loc.x == -1) { // left side
-		SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
-		const surface border(image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
-
+		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+			image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM)));
 	} else if(loc.x == map_.w()) { // right side
-		SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
-		const surface border(image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM));
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
-
+		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+			image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM)));
 	} else if(loc.y == -1) { // top side
-		SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
-		surface border;
-
+		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
-			rect.y = ypos;
-			border = image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+				image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM)));
 		} else {
-			rect.y = ypos + zoom_/2;
-			border = image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
+				image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM)));
 		}
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
-
 	} else if(loc.y == map_.h()) { // bottom side
-		SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
-		surface border;
-
+		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
-			rect.y = ypos;
-			border = image::get_image(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+				image::get_image(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM)));
 		} else {
-			rect.y = ypos + zoom_/2;
-			border = image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM);
+			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
+				image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM)));
 		}
-
-		SDL_BlitSurface( border, NULL, screen, &rect);
 	}
 }
 
@@ -1888,11 +1859,11 @@ void display::draw_invalidated() {
 			continue;
 		}			
 		draw_hex(loc);
-		drawing_buffer_commit();
 		// If the tile is at the border, we start to blend it
 		if(!on_map && !off_map_tile) {
 			 draw_border(loc, xpos, ypos);
 		}			
+		drawing_buffer_commit();
 	}		
 }
 

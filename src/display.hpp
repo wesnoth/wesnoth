@@ -559,6 +559,7 @@ public:
 		                           //!< this layer (for testing here).
 		LAYER_MOVE_INFO,           //!< Movement info (defense%, ect...)
 		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
+		LAYER_BORDER,              /**< The border of the map. */
 
 		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy
 		                           //! to size the vector.
