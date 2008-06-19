@@ -37,7 +37,8 @@ _NODE_CLASS_OK = [
     'LeftShift', 'List', 'ListComp', 'ListCompFor', 'ListCompIf', 'Mod',
     'Module', 'Mul', 'Name', 'Node', 'Not', 'Or', 'Pass', 'Power',
     'Print', 'Printnl', 'Return', 'RightShift', 'Slice', 'Sliceobj',
-    'Stmt', 'Sub', 'Subscript', 'Tuple', 'UnaryAdd', 'UnarySub', 'While',
+    'Stmt', 'Sub', 'Subscript', 'TryExcept', 'Tuple', 'UnaryAdd',
+    'UnarySub', 'While',
     ]
 _NODE_ATTR_OK = []
 _STR_OK = ['__init__']
