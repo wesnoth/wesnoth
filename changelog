@@ -50,6 +50,8 @@ Version 1.5.0+svn:
 	collections, hotshot, psyco, Queue, sets, time, and the upcoming wail module
 	Use of chr, hash, lambda, ord, and super (new style classes) are now allowed
 	Control of safe_exec can now be toggled from the wesnoth binary (not implemented)
+   * Added new advanced option, "Only Run Safe Python AIs". When disabled, the safe_exec
+	environment is disabled for all running AIs. Use caution when disabling this option!
  * terrains:
    * Fixed city village not being alias of the village terrain type; this was
      causing a duplicate "Village" terrain being displayed in the defense ratios

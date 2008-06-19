@@ -52,6 +52,7 @@
 #include "game_events.hpp"
 #include "game_config.hpp"
 #include "settings.hpp"
+#include "game_preferences.hpp"
 
 #include <cassert>
 #include <fstream>
@@ -1985,6 +1986,7 @@ void python_ai::play_turn()
 	// Run the python script. We actually execute a short inline python script,
 	// which sets up the module search path to the data path,
 	// runs the script, and then resets the path.
+	std::string runSafe = preferences::run_safe_python()?"True":"False" ;
 	std::string python_code;
 	python_code +=
 		"err = \"unknown error\"\n"
@@ -2001,7 +2003,7 @@ void python_ai::play_turn()
 		"\t\timport parse, safe\n"
 		"\t\tparse.pathes = [\"" + path + "\"]\n"
 		"\t\tcode, context = parse.parse(\"" + script + "\")\n"
-		"\t\tsafe.safe_exec(code, context)\n"
+		"\t\tsafe.safe_exec(code, context, " + runSafe + ")\n"
 		"\texcept:\n"
 		"\t\terr = str(traceback.format_exc())\n"
 		"\t\traise\n"
