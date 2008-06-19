@@ -49,7 +49,7 @@ Version 1.5.0+svn:
    * Extended safe.py environment to expand AI's language capabilities; including:
 	collections, hotshot, Queue, sets, time, and the upcoming wail module.
 	Use of chr, hash, lambda, ord, and super (new style classes) are now allowed
-	Control of safe_exec can now be toggled from the wesnoth binary (not implemented)
+	Control of safe_exec can now be toggled from the wesnoth binary.
    * Added new advanced option, "Only Run Safe Python AIs". When disabled, the safe_exec
 	environment is disabled for all running AIs. Use caution when disabling this option!
    * Try/Except clauses are now allowed.
@@ -84,6 +84,7 @@ Version 1.5.0+svn:
      * The class of each add-on is displayed in the downloads dialog
      * It is possible to filter what add-ons are displayed by text (matching
        against any of the information fields)
+   * Advanced prefences allows user to toggle allowing potentially unsafe python AIs
  * WML engine:
    * titlescreen is now randomly loaded
    * removeitem now can take an image key so that overlays can be removed one at
