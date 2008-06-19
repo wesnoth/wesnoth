@@ -42,7 +42,6 @@
 
 namespace gui2 {
 
-//! Inherited from tscrollbar.
 unsigned tvertical_scrollbar::minimum_positioner_length() const
 { 
 	const tvertical_scrollbar_definition::tresolution* conf = 
@@ -51,7 +50,6 @@ unsigned tvertical_scrollbar::minimum_positioner_length() const
 	return conf->minimum_positioner_length; 
 }
 
-//! Inherited from tscrollbar.
 unsigned tvertical_scrollbar::offset_before() const
 { 
 	const tvertical_scrollbar_definition::tresolution* conf = 
@@ -60,7 +58,6 @@ unsigned tvertical_scrollbar::offset_before() const
 	return conf->top_offset; 
 }
 
-//! Inherited from tscrollbar.
 unsigned tvertical_scrollbar::offset_after() const
 { 
 	const tvertical_scrollbar_definition::tresolution* conf = 
@@ -69,7 +66,6 @@ unsigned tvertical_scrollbar::offset_after() const
 	return conf->bottom_offset; 
 }
 
-//! Inherited from tscrollbar.
 bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
 {
 	// Note we assume the positioner is over the entire width of the widget.

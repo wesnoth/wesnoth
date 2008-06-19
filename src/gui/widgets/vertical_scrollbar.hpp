@@ -19,7 +19,7 @@
 
 namespace gui2 {
 
-//! A vertical scrollbar.
+/** A vertical scrollbar. */
 class tvertical_scrollbar : public tscrollbar_
 {
 public:
@@ -31,26 +31,26 @@ public:
 
 private:
 
-	//! Inherited from tscrollbar.
+	/** Inherited from tscrollbar. */
 	unsigned get_length() const { return get_height(); }
 
-	//! Inherited from tscrollbar.
+	/** Inherited from tscrollbar. */
 	unsigned minimum_positioner_length() const;
 
-	//! Inherited from tscrollbar.
+	/** Inherited from tscrollbar. */
 	unsigned offset_before() const;
 
-	//! Inherited from tscrollbar.
+	/** Inherited from tscrollbar. */
 	unsigned offset_after() const;
 
-	//! Inherited from tscrollbar.
+	/** Inherited from tscrollbar. */
 	bool on_positioner(const tpoint& coordinate) const;
 
-	//! Inherited from tscrollbar.
+	/** Inherited from tscrollbar. */
 	int get_length_difference(const tpoint& original, const tpoint& current) const
 		{ return current.y - original.y; }
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "vertical_scrollbar"; return type; }
 };
@@ -58,5 +58,4 @@ private:
 } // namespace gui2
 
 #endif
-
 
