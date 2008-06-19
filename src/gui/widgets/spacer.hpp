@@ -19,7 +19,15 @@
 
 namespace gui2 {
 
-// Class for a spacer
+/**
+ * An empty widget.
+ *
+ * Since every grid cell needs a widget this is a blank widget. This widget can
+ * also be used to 'force' sizes.
+ *
+ * Since we're a kind of dummy class we're always active, our drawing does
+ * nothing.
+ */
 class tspacer : public tcontrol
 {
 public:
@@ -29,26 +37,35 @@ public:
 	{
 	}
 
-	//! Inherited from tcontrol.
-	// We are always active, might not be visible but always active.
+	/** Inherited from tcontrol. */
 	void set_active(const bool) {}
+
+	/** Inherited from tcontrol. */
 	bool get_active() const { return true; }
+
+	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
-	void draw(surface&) {}
-	
-	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
-	
 	/** Inherited from tcontrol. */
 	tpoint get_best_size() const 
 		{ return best_size_ != tpoint(0, 0) ? best_size_ : tcontrol::get_best_size(); }
 
+	/** 
+	 * Inherited from tcontrol. 
+	 *
+	 * Since we're always empty the draw does nothing.
+	 */
+	void draw(surface&) {}
+	
+
+	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
+	
 private:
 
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "spacer"; return type; }
 };
