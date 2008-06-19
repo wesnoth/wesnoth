@@ -41,8 +41,51 @@
 #define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
 #define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
 
-
 namespace gui2 {
+
+void tscrollbar_::scroll(const tscroll scroll)
+{
+	switch(scroll) {
+		case BEGIN : 
+			set_item_position(0);
+			break;
+
+		case ITEM_BACKWARDS :
+			if(item_position_) {
+				set_item_position(item_position_ - 1);
+			}
+			break;
+
+		case HALF_JUMP_BACKWARDS :
+			set_item_position(item_position_ > (visible_items_ / 2) ? 
+				item_position_ - (visible_items_ / 2) : 0);
+			break;
+
+		case JUMP_BACKWARDS :
+			set_item_position(item_position_ > visible_items_ ? 
+				item_position_ - visible_items_  : 0);
+			break;
+
+		case END :
+			set_item_position(item_count_ - 1);
+			break;
+			
+		case ITEM_FORWARD :
+			set_item_position(item_position_ + 1);
+			break;
+
+		case HALF_JUMP_FORWARD :
+			set_item_position(item_position_ +  (visible_items_ / 2));
+			break;
+
+		case JUMP_FORWARD :
+			set_item_position(item_position_ +  visible_items_ );
+			break;
+
+		default :
+			assert(false);
+		}
+}
 
 void tscrollbar_::mouse_move(tevent_handler& event)
 {
@@ -83,6 +126,8 @@ void tscrollbar_::mouse_move(tevent_handler& event)
 
 void tscrollbar_::mouse_leave(tevent_handler&)
 {
+	DBG_G_E << "Scrollbar: mouse leave.\n";
+
 	if(state_ == FOCUSSED) {
 		set_state(ENABLED);
 	}
@@ -146,50 +191,6 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 	update_canvas();
 }
 
-void tscrollbar_::scroll(const tscroll scroll)
-{
-	switch(scroll) {
-		case BEGIN : 
-			set_item_position(0);
-			break;
-
-		case ITEM_BACKWARDS :
-			if(item_position_) {
-				set_item_position(item_position_ - 1);
-			}
-			break;
-
-		case HALF_JUMP_BACKWARDS :
-			set_item_position(item_position_ > (visible_items_ / 2) ? 
-				item_position_ - (visible_items_ / 2) : 0);
-			break;
-
-		case JUMP_BACKWARDS :
-			set_item_position(item_position_ > visible_items_ ? 
-				item_position_ - visible_items_  : 0);
-			break;
-
-		case END :
-			set_item_position(item_count_ - 1);
-			break;
-			
-		case ITEM_FORWARD :
-			set_item_position(item_position_ + 1);
-			break;
-
-		case HALF_JUMP_FORWARD :
-			set_item_position(item_position_ +  (visible_items_ / 2));
-			break;
-
-		case JUMP_FORWARD :
-			set_item_position(item_position_ +  visible_items_ );
-			break;
-
-		default :
-			assert(false);
-		}
-}
-
 void tscrollbar_::set_state(const tstate state)
 {
 	if(state != state_) {
@@ -198,17 +199,6 @@ void tscrollbar_::set_state(const tstate state)
 	}
 }
 
-//! Inherited from tcontrol.
-void tscrollbar_::load_config_extra()
-{
-	// These values won't change so set them here.
-	foreach(tcanvas& tmp, canvas()) {
-		tmp.set_variable("offset_before", variant(offset_before()));
-		tmp.set_variable("offset_after", variant(offset_after()));
-	}
-}
-
-//! Updates the size of the scroll bar.
 void tscrollbar_::recalculate()
 {
 	// We can be called before the size has been set up in that case we can't do
@@ -293,6 +283,15 @@ void tscrollbar_::move_positioner(const int distance)
 	}
 
 	update_canvas();
+}
+
+void tscrollbar_::load_config_extra()
+{
+	// These values won't change so set them here.
+	foreach(tcanvas& tmp, canvas()) {
+		tmp.set_variable("offset_before", variant(offset_before()));
+		tmp.set_variable("offset_after", variant(offset_after()));
+	}
 }
 
 } // namespace gui2

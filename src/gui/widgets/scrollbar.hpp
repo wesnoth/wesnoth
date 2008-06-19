@@ -19,14 +19,16 @@
 
 namespace gui2 {
 
-//! Base class for a scroll bar.
-//!
-//! class will be subclassed for the horizontal and vertical scroll bar. 
-//! It might be subclassed for a slider class.
-//!
-//! To make this class generic we talk a lot about offset and length and use 
-//! pure virtual functions. The classes implementing us can use the heights or
-//! widths, whichever is applicable.
+/**
+ * Base class for a scroll bar.
+ *
+ * class will be subclassed for the horizontal and vertical scroll bar. 
+ * It might be subclassed for a slider class.
+ *
+ * To make this class generic we talk a lot about offset and length and use 
+ * pure virtual functions. The classes implementing us can use the heights or
+ * widths, whichever is applicable.
+ */
 class tscrollbar_ : public tcontrol
 {
 public:
@@ -46,48 +48,12 @@ public:
 	{
 	}
 
-	//! Inherited from twidget.
-	//! We only need to track the mouse if it's on the positioner so the normal
-	//! enter doesn't help so transfer the control.
-	void mouse_enter(tevent_handler& event) { mouse_move(event); }
-
-	//! Inherited from twidget.
-	void mouse_move(tevent_handler& event);
-
-	//! Inherited from twidget.
-	//! Leave doesn't have the problem which mouse_enter has so it does it's own
-	//! job.
-	void mouse_leave(tevent_handler&);
-
-	//! Inherited from twidget.
-	void mouse_left_button_down(tevent_handler& event);
-
-	//! Inherited from twidget.
-	void mouse_left_button_up(tevent_handler& event);
-
-	//! Inherited from tcontrol.
-	void set_active(const bool active) 
-		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
-
-	//! Inherited from tcontrol.
-	bool get_active() const { return state_ != DISABLED; }
-
-	//! Inherited from tcontrol.
-	unsigned get_state() const { return state_; }
-
-	//! Inherited from tcontrol.
-	void set_size(const SDL_Rect& rect);
-
-	unsigned get_item_count() const { return item_count_; }
-	void set_item_count(const unsigned item_count)
-		{ item_count_ = item_count; recalculate(); }
-
-	unsigned get_item_position() const { return item_position_; }
-
-	//! Note the position isn't guaranteed to be the wanted position
-	//! the step size is honoured. The value will be rouded down
-	void set_item_position(const unsigned item_position);
-
+	/**
+	 * scroll 'step size'.
+	 *
+	 * When scrolling we always scroll a 'fixed' amount, these are the
+	 * parameters for these amounts.
+	 */
 	enum tscroll { 
 		BEGIN,               /**< Go to begin position. */
 		ITEM_BACKWARDS,      /**< Go one item towards the begin. */
@@ -98,8 +64,78 @@ public:
 		HALF_JUMP_FORWARD,   /**< Go half the visible items towards the end. */
 		JUMP_FORWARD };      /**< Go the visible items towards the end. */
 
-	/** Sets the item position. */ 
+	/** 
+	 * Sets the item position. 
+	 *
+	 * We scroll a predefined step.
+	 *
+	 * @param scroll              'step size' to scroll.
+	 */ 
 	void scroll(const tscroll scroll);
+
+	/** Is the positioner at the beginning of the scrollbar? */
+	bool at_begin() const { return item_position_ == 0; }
+
+	/**
+	 * Is the positioner at the and of the scrollbar?
+	 *
+	 * Note both begin and end might be true at the same time.
+	 */
+	bool at_end() const 
+		{ return item_position_ + visible_items_ == item_count_; }
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
+	/**
+	 * Inherited from tevent_executor.
+	 *
+	 * We only need to track the mouse if it's on the positioner so the normal
+	 * enter doesn't help so transfer the control.
+	 */
+	void mouse_enter(tevent_handler& event) { mouse_move(event); }
+
+	/** Inherited from tevent_executor. */
+	void mouse_move(tevent_handler& event);
+
+	/**
+	 * Inherited from tevent_executor.
+	 *
+	 * Leave doesn't have the problem which mouse_enter has so it does it's own
+	 * job.
+	 */
+	void mouse_leave(tevent_handler&);
+
+	/** Inherited from tevent_executor. */
+	void mouse_left_button_down(tevent_handler& event);
+
+	/** Inherited from tevent_executor. */
+	void mouse_left_button_up(tevent_handler& event);
+
+	/** Inherited from tcontrol. */
+	void set_active(const bool active) 
+		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+
+	/** Inherited from tcontrol. */
+	bool get_active() const { return state_ != DISABLED; }
+
+	/** Inherited from tcontrol. */
+	unsigned get_state() const { return state_; }
+
+	/** Inherited from tcontrol. */
+	void set_size(const SDL_Rect& rect);
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_item_count(const unsigned item_count)
+		{ item_count_ = item_count; recalculate(); }
+	unsigned get_item_count() const { return item_count_; }
+
+	/**
+	 * Note the position isn't guaranteed to be the wanted position
+	 * the step size is honoured. The value will be rouded down.
+	 */
+	void set_item_position(const unsigned item_position);
+	unsigned get_item_position() const { return item_position_; }
 
 	unsigned get_visible_items() const { return visible_items_; }
 	void set_visible_items(const unsigned visible_items)
@@ -108,14 +144,6 @@ public:
 	unsigned get_step_size() const { return step_size_; }
 	void set_step_size(const unsigned step_size)
 		{ step_size_ = step_size; recalculate(); }
-
-	//! Is the positioner at the beginning of the scrollbar.
-	bool at_begin() const { return item_position_ == 0; }
-
-	//! Is the positioner at the and of the scrollbar, note both begin and end
-	//! might be true at the same time.
-	bool at_end() const 
-		{ return item_position_ + visible_items_ == item_count_; }
 
 	void set_callback_positioner_move(void (*callback) (twidget*)) 
 		{ callback_positioner_move_ = callback; }
@@ -126,92 +154,140 @@ protected:
 	unsigned get_positioner_length() const { return positioner_length_; }
 
 private:
-	//! Note the order of the states must be the same as defined in settings.hpp.
+	/**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 */
 	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
 
 	void set_state(const tstate state);
+	/** 
+	 * Current state of the widget.
+	 *
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
+	 */
 	tstate state_;
 
-	//! Inherited from tcontrol.
-	void load_config_extra();
-
-	//! The number of items the scrollbar 'holds'.
+	/** The number of items the scrollbar 'holds'. */
 	unsigned item_count_;
 
-	//! The item the positioner is at, starts at 0.
+	/** The item the positioner is at, starts at 0. */
 	unsigned item_position_;
 
-	//! The number of items which can be shown at the same time.
-	//! As long as all items are visible we don't need to scroll.
+	/**
+	 * The number of items which can be shown at the same time.
+	 *
+	 * As long as all items are visible we don't need to scroll.
+	 */
 	unsigned visible_items_;
 
-	//! The step size is the minimum number of items we scroll through when we
-	//! move. Normally this value is 1, we can move per item. But for example
-	//! sliders want for example to move per 5 items.
+	/**
+	 * Number of items moved when scrolling.
+	 *
+	 * The step size is the minimum number of items we scroll through when we
+	 * move. Normally this value is 1, we can move per item. But for example
+	 * sliders want for example to move per 5 items.
+	 */
 	unsigned step_size_;
 
-	//! The number of pixels the positioner needs to move to go to the next step.
-	//! Note if there is too little space it can happen 1 pixel does more than 1
-	//! step.
+	/**
+	 * Number of pixels per step.
+	 *
+	 * The number of pixels the positioner needs to move to go to the next step.
+	 * Note if there is too little space it can happen 1 pixel does more than 1
+	 * step.
+	 */
 	float pixels_per_step_;
 
-	//! Get the length of the object.
+	/**
+	 * The position the mouse was at the last movement. 
+	 *
+	 * This is used during dragging the positioner.
+	 */
+	tpoint mouse_;
+
+	/**
+	 * The start offset of the positioner.
+	 *
+	 * This takes the offset before in consideration.
+	 */
+	unsigned positioner_offset_;
+
+	/** The current length of the positioner. */
+	unsigned positioner_length_;
+
+ 	/** This callback is used when the positioner is moved by the user. */
+	void (*callback_positioner_move_) (twidget*);
+
+	/***** ***** ***** ***** Pure virtual functions ***** ***** ***** *****/
+
+	/** Get the length of the scrollbar. */
 	virtual unsigned get_length() const = 0;
 
-	//! The minimum length of the positioner.
+	/** The minimum length of the positioner. */
 	virtual unsigned minimum_positioner_length() const = 0;
 
-	//! The number of pixels we can't use since they're used for borders.
-	//! These are the pixels before the widget (left side if horizontal,
-	//! top side if vertical).
+	/**
+	 * The number of pixels we can't use since they're used for borders.
+	 *
+	 * These are the pixels before the widget (left side if horizontal,
+	 * top side if vertical).
+	 */
 	virtual unsigned offset_before() const = 0;
-
-	//! The number of pixels we can't use since they're used for borders.
-	//! These are the pixels after the widget (right side if horizontal,
-	//! bottom side if vertical).
+	
+	/**
+	 * The number of pixels we can't use since they're used for borders.
+	 *
+	 * These are the pixels after the widget (right side if horizontal,
+	 * bottom side if vertical).
+	 */
 	virtual unsigned offset_after() const = 0;
 
-	//! Is the current location on the positioner?
+	/** 
+	 * Is the coordinate on the positioner?
+	 *
+	 * @param coordinate          Coordinate to test whether it's on the
+	 *                            positioner.
+	 *
+	 * @returns                   Whether the location on the positioner is.
+	 */
 	virtual bool on_positioner(const tpoint& coordinate) const = 0;
 
-	//! Gets the relevent difference in between the two positions.
-	//!
-	//! This function is used to determine how much the positioner needs to  be
-	//! moved.
+	/**
+	 * Gets the relevent difference in between the two positions.
+	 *
+	 * This function is used to determine how much the positioner needs to  be
+	 * moved.
+	 */
 	virtual int get_length_difference(
 		const tpoint& original, const tpoint& current) const = 0;
 
-	//! The position the mouse was at the last movement. This is used during
-	//! dragging the positioner.
-	tpoint mouse_;
+	/***** ***** ***** ***** Private functions ***** ***** ***** *****/
 
-	//! The start offset of the positioner.
-	//! This takes the offset before in consideration.
-	unsigned positioner_offset_;
-
-	//! The current length of the positioner.
-	unsigned positioner_length_;
-
-	//! Updates the scrollbar.
-	//!
-	//! Needs to be called when someting changes eg number of items
-	//! or available size. It can only be called once we have a size
-	//! otherwise we can't calulate a thing.
+	/**
+	 * Updates the scrollbar.
+	 *
+	 * Needs to be called when someting changes eg number of items
+	 * or available size. It can only be called once we have a size
+	 * otherwise we can't calulate a thing.
+	 */
 	void recalculate();
 
-	//! After a recalculation the canvasses also need to be updated.
+	/** After a recalculation the canvasses also need to be updated. */
 	void update_canvas();
 
-	//! Moves the positioner.
-	//!
-	//! @param distance                The distance moved, negative to begin,
-	//!                                positive to end.
+	/**
+	 * Moves the positioner.
+	 *
+	 * @param distance           The distance moved, negative to begin, positive
+	 *                           to end.
+	*/
 	void move_positioner(const int distance);
 
- 	/** 
-	 * This callback is used when the positioner is moved by the user.
-	 */
-	void (*callback_positioner_move_) (twidget*);
+	/** Inherited from tcontrol. */
+	void load_config_extra();
 };
 
 } // namespace gui2
