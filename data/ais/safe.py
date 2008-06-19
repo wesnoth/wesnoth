@@ -137,6 +137,8 @@ def safe_exec_op( code, context=None ):
 # Wrapper allowing safe_exec to be dynamically controlled
 # from wesnoth binary.
 def safe_exec( code, context=None, runSafe=True ):
+    # Allow the AI to know if it is restricted or not
+    context["restricted"] = runSafe
     if runSafe:
         safe_exec_op( code, context )
 
