@@ -19,6 +19,7 @@
 
 namespace gui2 {
 
+/** Label showing a text. */
 class tlabel : public tcontrol
 {
 public:
@@ -29,20 +30,36 @@ public:
 	{
 	}
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	void set_active(const bool active) 
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+
+	/** Inherited from tcontrol. */
 	bool get_active() const { return state_ != DISABLED; }
+
+	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
 private:
-	//! Note the order of the states must be the same as defined in settings.hpp.
+
+	/**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 */
 	enum tstate { ENABLED, DISABLED, COUNT };
 
 	void set_state(tstate state);
+
+	/** 
+	 * Current state of the widget.
+	 *
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
+	 */
 	tstate state_;
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "label"; return type; }
 };
