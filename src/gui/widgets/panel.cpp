@@ -38,21 +38,6 @@
 
 namespace gui2 {
 
-void tpanel::draw(surface& surface)
-{
-	// Need to preserve the state and inherited draw clear the flag.
-	const bool is_dirty = dirty();
-
-	tcontainer_::draw(surface);
-
-	// foreground
-	if(is_dirty) {
-		SDL_Rect rect = get_rect();
-    	canvas(1).draw(true);
-	    blit_surface(canvas(1).surf(), 0, surface, &rect);
-	}
-}
-
 SDL_Rect tpanel::get_client_rect() const
 {
 	const tpanel_definition::tresolution* conf = 
@@ -66,6 +51,21 @@ SDL_Rect tpanel::get_client_rect() const
 	result.h -= conf->top_border + conf->bottom_border;
 
 	return result;
+}
+
+void tpanel::draw(surface& surface)
+{
+	// Need to preserve the state and inherited draw clear the flag.
+	const bool is_dirty = dirty();
+
+	tcontainer_::draw(surface);
+
+	// foreground
+	if(is_dirty) {
+		SDL_Rect rect = get_rect();
+    	canvas(1).draw(true);
+	    blit_surface(canvas(1).surf(), 0, surface, &rect);
+	}
 }
 
 tpoint tpanel::border_space() const

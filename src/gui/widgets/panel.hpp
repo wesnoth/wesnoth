@@ -19,34 +19,55 @@
 
 namespace gui2 {
 
-//! Visible container to hold children.
+/**
+ * Visible container to hold multiple widgets.
+ *
+ * This widget can draw items beyond the widgets it holds and in front of them.
+ * A panel is always active so these functions return dummy values.
+ */
 class tpanel : public tcontainer_ 
 {
 
 public:
-	//! Constructor.
-	//!
-	//! @param canvas_count  The canvas count for tcontrol.
+
+	/**
+	 * Constructor.
+	 *
+	 * @param canvas_count        The canvas count for tcontrol.
+	 */
 	tpanel(const unsigned canvas_count = 2) : 
 		tcontainer_(canvas_count)
 	{
 	}
 
-	bool has_vertical_scrollbar() const { return false; }
+	/** 
+	 * Returns the client rect.
+	 *
+	 * The client rect is the area which is used for child items. The rest of
+	 * the area of this widget is used for its own decoration.
+	 *
+	 * @returns                   The client rect.
+	 */
+	SDL_Rect get_client_rect() const;
 
-	//! A panel is always active atm so ignore the request.
+	/** Inherited from tcontrol. */
 	void set_active(const bool /*active*/) {}
+
+	/** Inherited from tcontrol. */
 	bool get_active() const { return true; }
+
+	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	void draw(surface& surface);
 
-	SDL_Rect get_client_rect() const;
+	/** Inherited from tcontainer_. */
+	bool has_vertical_scrollbar() const { return false; }
 
 private:
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "panel"; return type; }
 
