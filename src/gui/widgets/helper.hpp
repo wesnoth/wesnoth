@@ -57,13 +57,6 @@ std::ostream &operator<<(std::ostream &stream, const tpoint& point);
 
 SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
 
-struct terror 
-{
-	terror(const std::string& msg) : message(msg) {}
-
-	const std::string message;
-};
-
 Uint32 decode_colour(const std::string& colour);
 
 int decode_font_style(const std::string& style);
