@@ -19,6 +19,12 @@
 
 namespace gui2 {
 
+/**
+ * A tooltip shows a 'floating' message.
+ *
+ * This is a small class which only has one state and that's active, so the
+ * functions implemented are mostly dummies.
+ */
 class ttooltip : public tcontrol
 {
 public:
@@ -29,14 +35,17 @@ public:
 		set_multiline_label();
 	}
 
-	//! Inherited from tcontrol.
-	// We are always active, might not be visible but always active.
+	/** Inherited from tcontrol. */
 	void set_active(const bool) {}
+
+	/** Inherited from tcontrol. */
 	bool get_active() const { return true; }
+
+	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
 private:	
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "tooltip"; return type; }
 };
