@@ -21,30 +21,32 @@
 
 class config;
 
-//! Values used for the directory scans
+/** Values used for the directory scans */
 enum ADDON_GROUP {
-	ADDON_SINGLEPLAYER,	//!< (userdir)/data/campaigns
-	ADDON_MULTIPLAYER,	//!< (userdir)/data/multiplayer
-	ADDON_ALL			//!< all of the above.
+	ADDON_SINGLEPLAYER,	/**< (userdir)/data/campaigns */
+	ADDON_MULTIPLAYER,	/**< (userdir)/data/multiplayer */
+	ADDON_ALL			/**< all of the above. */
 };
 
-//! Values used for add-on classification; UI-only
-//! at the moment, in the future it could be used for
-//! directory allocation too, removing the need for
-//! the ADDON_GROUP constants (TODO).
+/**
+ * Values used for add-on classification; UI-only
+ * at the moment, in the future it could be used for
+ * directory allocation too, removing the need for
+ * the ADDON_GROUP constants (TODO).
+ */
 enum ADDON_TYPE {
-	ADDON_UNKNOWN,		//!< a.k.a. anything.
-	ADDON_SP_CAMPAIGN,	//!< Single-player campaign.
-	ADDON_SP_SCENARIO,	//!< Single-player scenario.
-	ADDON_MP_CAMPAIGN,	//!< Multiplayer campaign.
-	ADDON_MP_SCENARIO,	//!< Multiplayer scenario.
-	ADDON_MP_MAPS,		//!< Multiplayer plain (no WML) map pack.
-	ADDON_MP_ERA,		//!< Multiplayer era.
-	ADDON_MP_FACTION,	//!< Multiplayer faction.
+	ADDON_UNKNOWN,		/**< a.k.a. anything. */
+	ADDON_SP_CAMPAIGN,	/**< Single-player campaign. */
+	ADDON_SP_SCENARIO,	/**< Single-player scenario. */
+	ADDON_MP_CAMPAIGN,	/**< Multiplayer campaign. */
+	ADDON_MP_SCENARIO,	/**< Multiplayer scenario. */
+	ADDON_MP_MAPS,		/**< Multiplayer plain (no WML) map pack. */
+	ADDON_MP_ERA,		/**< Multiplayer era. */
+	ADDON_MP_FACTION,	/**< Multiplayer faction. */
 	// NOTE: following two still require proper engine support
 	//ADDON_MOD,			// Modification of the game for SP and/or MP.
 	//ADDON_GUI,			// GUI add-ons/themes.
-	ADDON_MEDIA			//!< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.).
+	ADDON_MEDIA			/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
 };
 
 ADDON_TYPE get_addon_type(const std::string& str);
@@ -58,11 +60,11 @@ inline ADDON_GROUP is_addon_sp_or_mp(ADDON_TYPE t)
 	        t == ADDON_MP_FACTION) ? ADDON_MULTIPLAYER : ADDON_SINGLEPLAYER;
 }
 
-//! Checks whether an add-on name is legal or not.
+/** Checks whether an add-on name is legal or not. */
 bool addon_name_legal(const std::string& name);
-//! Probes an add-on archive for illegal names.
+/** Probes an add-on archive for illegal names. */
 bool check_names_legal(const config& dir);
-//! Return a vector of detected scripts.
+/** Return a vector of detected scripts. */
 std::vector<config *> find_scripts(const config &cfg, std::string extension);
 
 #endif /* !ADDON_CHECKS_HPP_INCLUDED */
