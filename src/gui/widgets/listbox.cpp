@@ -522,7 +522,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 					btn->set_label(itor->second.label);
 					btn->set_icon_name(itor->second.icon);
 				}
-			} else if(grid) {
+			} else if(child_grid) {
 				init_in_grid(child_grid, data);
 			} else {
 				std::cerr << "Widget type " << typeid(*widget).name() << ".\n";
