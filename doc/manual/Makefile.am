@@ -35,7 +35,7 @@ html: update-po4a
 		            "manual.$$lang.xml" > "manual.$$lang.html"; \
 	done
 
-dist-hook: html
+dist-hook:
 
 clean-local:
 	rm -f *.xml
