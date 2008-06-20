@@ -1863,8 +1863,7 @@ void display::draw_invalidated() {
 		if(!on_map && !off_map_tile) {
 			 draw_border(loc, xpos, ypos);
 		}			
-		drawing_buffer_commit();
-	}		
+	}
 }
 
 void display::draw_hex(const gamemap::location& loc) {
