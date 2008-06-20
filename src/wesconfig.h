@@ -22,7 +22,7 @@
 #  define LOCALEDIR "translations"
 # endif
 #endif
-#define VERSION "1.5.1"
+#define VERSION "1.5.1+svn"
 #define PACKAGE "wesnoth"
 
 /**
