@@ -121,19 +121,21 @@ class Parser:
         text = self.read_encoded(filename)
         self.push_text(filename, text, cd = os.path.dirname(filename))
 
-    def parse_stream(self, stream):
+    def parse_stream(self, stream, binary = False):
         """
         Set the parser to parse from a file object.
         """
         text = stream.read()
-        text = text.replace("\r\n", "\n").replace("\t", " ").replace("\r", "\n")
+        if not binary:
+            text = text.replace("\r\n", "\n").replace("\t", " ").replace("\r", "\n")
         self.push_text("inline", text)
 
-    def parse_text(self, text):
+    def parse_text(self, text, binary = False):
         """
         Set the parser to directly parse from the given string.
         """
-        text = text.replace("\r\n", "\n").replace("\t", " ")
+        if not binary:
+            text = text.replace("\r\n", "\n").replace("\t", " ")
         self.push_text("inline", text)
 
     def push_text(self, filename, text, params = None, cd = None,
@@ -145,7 +147,6 @@ class Parser:
         if self.verbose:
             sys.stderr.write("%s:%d: Now parsing %s.\n" % (self.filename,
                 self.line, filename))
-        text = text.replace("\r\n", "\n").replace("\t", " ")
         if not text: text = "\n"
         self.texts.append(self.TextState(self.filename, self.text, self.textpos,
             self.line, self.current_path, self.textdomain))
