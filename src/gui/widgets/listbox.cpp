@@ -310,8 +310,14 @@ void tlistbox::set_size(const SDL_Rect& rect)
 
 	// FIXME we assume fixed row height atm.
 	if(rows_.size() > 0) {
-		const unsigned rows = list()->get_best_size().y / rows_[0].get_height();
-		scrollbar()->set_visible_items(rows);
+		const unsigned row_height = rows_[0].get_height();
+		if(row_height) {
+			const unsigned rows = list()->get_best_size().y / row_height;
+			scrollbar()->set_visible_items(rows);
+		} else {
+			WRN_G << "Listbox row 0 has no height, making all rows visible.\n";
+			scrollbar()->set_visible_items(rows_.size());
+		}
 	} else {
 		scrollbar()->set_visible_items(1);
 	}
