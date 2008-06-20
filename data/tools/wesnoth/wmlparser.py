@@ -40,7 +40,7 @@ class Parser:
             self.current_path = current_path
             self.textdomain = textdomain
 
-    def __init__(self, data_dir, user_dir = None):
+    def __init__(self, data_dir, user_dir = None, no_macros_in_string = Flase):
         """
         Initialize a new WMLParser instance.
 
@@ -51,6 +51,7 @@ class Parser:
 
         self.data_dir = data_dir
         self.user_dir = user_dir
+        self.no_macros_in_string = no_macros_in_string
 
         self.textpos = 0
         self.line = 1
@@ -499,8 +500,11 @@ class Parser:
 
     def parse_string(self):
         text = ""
+        match_read_end = '"'
+        if not no_macros_in_string:
+            match_read_end += '{'
         while not self.at_end():
-            text += self.read_until('"{')
+            text += self.read_until(match_read_end)
             if text[-1] == '"':
                 if self.peek_next() == '"':
                     self.read_next()
