@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-18 20:01+0200\n"
+"POT-Creation-Date: 2008-06-20 12:42+0200\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -52,13 +52,18 @@ msgstr "单位站立动画"
 msgid "Show Combat"
 msgstr "显示战斗"
 
-#. [server]
+#. [advanced_preference]: type=boolean
 #: data/_main.cfg:106
+msgid "Only Run Safe Python AIs"
+msgstr ""
+
+#. [server]
+#: data/_main.cfg:113
 msgid "Official Wesnoth Server"
 msgstr "官方服务器"
 
 #. [server]
-#: data/_main.cfg:110 data/_main.cfg:114
+#: data/_main.cfg:117 data/_main.cfg:121
 msgid "Alternate Wesnoth Server"
 msgstr "其他服务器"
 
@@ -5822,91 +5827,91 @@ msgstr "视角"
 msgid "Skip animation"
 msgstr "省略动画"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:445
+#: src/about.cpp:52 src/multiplayer_connect.cpp:445
 #: src/multiplayer_connect.cpp:542 src/multiplayer_wait.cpp:520
 msgid "+"
 msgstr "+"
 
-#: src/about.cpp:54
+#: src/about.cpp:60
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2984 src/menu_events.cpp:168
+#: src/about.cpp:195 src/help.cpp:2984 src/menu_events.cpp:168
 #: src/menu_events.cpp:513 src/menu_events.cpp:536
 msgid "Close"
 msgstr "关闭"
 
-#: src/actions.cpp:144
+#: src/actions.cpp:146
 msgid "You don't have a leader to recruit with."
 msgstr "您没有领袖，无法征兵。"
 
-#: src/actions.cpp:151
+#: src/actions.cpp:153
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 
-#: src/actions.cpp:170
+#: src/actions.cpp:172
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:268 src/actions.cpp:291 src/actions.cpp:296
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "选择了一个无效的武器，可能是Python AI选择的。"
 
-#: src/actions.cpp:273
+#: src/actions.cpp:275
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "传出了一个无效的武器，可能是Python AI造成的。"
 
-#: src/actions.cpp:1012 src/actions.cpp:1272
+#: src/actions.cpp:1013 src/actions.cpp:1273
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:1016 src/actions.cpp:1276
+#: src/actions.cpp:1017 src/actions.cpp:1277
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:1022 src/actions.cpp:1282
+#: src/actions.cpp:1023 src/actions.cpp:1283
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2290
+#: src/actions.cpp:2295
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
-#: src/actions.cpp:2297
+#: src/actions.cpp:2302
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败!出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2336
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
 msgstr[1] "发现$friends个友好单位"
 
-#: src/actions.cpp:2339
+#: src/actions.cpp:2344
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
 msgstr[1] "发现$enemies个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2344
+#: src/actions.cpp:2349
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1个友好单位"
 msgstr[1] "$friends个友好单位"
 
-#: src/actions.cpp:2345
+#: src/actions.cpp:2350
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
 msgstr[1] "$enemies个敌方单位"
 
-#: src/actions.cpp:2346
+#: src/actions.cpp:2351
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2355
+#: src/actions.cpp:2360
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 

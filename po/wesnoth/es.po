@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-18 20:01+0200\n"
+"POT-Creation-Date: 2008-06-20 12:42+0200\n"
 "PO-Revision-Date: 2008-06-03 14:49+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -60,13 +60,18 @@ msgstr "Animaciones de Unidades Quietas"
 msgid "Show Combat"
 msgstr "Mostrar combate"
 
-#. [server]
+#. [advanced_preference]: type=boolean
 #: data/_main.cfg:106
+msgid "Only Run Safe Python AIs"
+msgstr ""
+
+#. [server]
+#: data/_main.cfg:113
 msgid "Official Wesnoth Server"
 msgstr "Servidor wesnoth oficial"
 
 #. [server]
-#: data/_main.cfg:110 data/_main.cfg:114
+#: data/_main.cfg:117 data/_main.cfg:121
 msgid "Alternate Wesnoth Server"
 msgstr "Servidor wesnoth alternativo"
 
@@ -6534,91 +6539,91 @@ msgstr "Punto de vista"
 msgid "Skip animation"
 msgstr "Saltar animación"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:445
+#: src/about.cpp:52 src/multiplayer_connect.cpp:445
 #: src/multiplayer_connect.cpp:542 src/multiplayer_wait.cpp:520
 msgid "+"
 msgstr "+"
 
-#: src/about.cpp:54
+#: src/about.cpp:60
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2984 src/menu_events.cpp:168
+#: src/about.cpp:195 src/help.cpp:2984 src/menu_events.cpp:168
 #: src/menu_events.cpp:513 src/menu_events.cpp:536
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/actions.cpp:144
+#: src/actions.cpp:146
 msgid "You don't have a leader to recruit with."
 msgstr "No tiene un líder con el que reclutar."
 
-#: src/actions.cpp:151
+#: src/actions.cpp:153
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Debe tener al líder en un torreón para reclutar o reincorporar unidades."
 
-#: src/actions.cpp:170
+#: src/actions.cpp:172
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "No hay zonas del castillo libres para reclutar unidades."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:268 src/actions.cpp:291 src/actions.cpp:296
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 "Se ha seleccionado una arma inválida, posiblemente por la IA de Python."
 
-#: src/actions.cpp:273
+#: src/actions.cpp:275
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "Se ha enviado una arma inválida, posiblemente a causa la IA de Python."
 
-#: src/actions.cpp:1012 src/actions.cpp:1272
+#: src/actions.cpp:1013 src/actions.cpp:1273
 msgid "poisoned"
 msgstr "envenenado"
 
-#: src/actions.cpp:1016 src/actions.cpp:1276
+#: src/actions.cpp:1017 src/actions.cpp:1277
 msgid "slowed"
 msgstr "ralentizado"
 
-#: src/actions.cpp:1022 src/actions.cpp:1282
+#: src/actions.cpp:1023 src/actions.cpp:1283
 msgid "stone"
 msgstr "piedra"
 
-#: src/actions.cpp:2290
+#: src/actions.cpp:2295
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions.cpp:2297
+#: src/actions.cpp:2302
 msgid "Failed teleport! Exit not empty"
 msgstr "No se ha podido teletransportar! La salida no está vacía"
 
-#: src/actions.cpp:2336
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unidad amiga divisada"
 msgstr[1] "$friends unidades amigas divisadas"
 
-#: src/actions.cpp:2339
+#: src/actions.cpp:2344
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "¡Unidad enemiga divisada!"
 msgstr[1] "¡$enemies unidades enemigas divisadas!"
 
-#: src/actions.cpp:2344
+#: src/actions.cpp:2349
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "amiga"
 msgstr[1] "$friends amigas"
 
-#: src/actions.cpp:2345
+#: src/actions.cpp:2350
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "enemiga"
 msgstr[1] "$enemies enemigas"
 
-#: src/actions.cpp:2346
+#: src/actions.cpp:2351
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "¡Unidades divisadas! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2355
+#: src/actions.cpp:2360
 msgid "(press $hotkey to keep moving)"
 msgstr "(pulse $hotkey para seguir moviéndose)"
 

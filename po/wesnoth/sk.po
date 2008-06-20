@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-18 20:01+0200\n"
+"POT-Creation-Date: 2008-06-20 12:42+0200\n"
 "PO-Revision-Date: 2007-10-01 20:03+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -49,13 +49,18 @@ msgstr ""
 msgid "Show Combat"
 msgstr "Zobrazuj súboj"
 
-#. [server]
+#. [advanced_preference]: type=boolean
 #: data/_main.cfg:106
+msgid "Only Run Safe Python AIs"
+msgstr ""
+
+#. [server]
+#: data/_main.cfg:113
 msgid "Official Wesnoth Server"
 msgstr "Oficiálny server Wesnothu"
 
 #. [server]
-#: data/_main.cfg:110 data/_main.cfg:114
+#: data/_main.cfg:117 data/_main.cfg:121
 msgid "Alternate Wesnoth Server"
 msgstr "Alternatívny server Wesnothu"
 
@@ -5673,95 +5678,95 @@ msgstr "Nápoj rozkladu"
 msgid "Skip animation"
 msgstr "Preskoč animáciu"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:445
+#: src/about.cpp:52 src/multiplayer_connect.cpp:445
 #: src/multiplayer_connect.cpp:542 src/multiplayer_wait.cpp:520
 msgid "+"
 msgstr "+"
 
-#: src/about.cpp:54
+#: src/about.cpp:60
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2984 src/menu_events.cpp:168
+#: src/about.cpp:195 src/help.cpp:2984 src/menu_events.cpp:168
 #: src/menu_events.cpp:513 src/menu_events.cpp:536
 msgid "Close"
 msgstr "Zavri"
 
-#: src/actions.cpp:144
+#: src/actions.cpp:146
 msgid "You don't have a leader to recruit with."
 msgstr "Nemáš veliteľa a tak nemôžeš verbovať."
 
-#: src/actions.cpp:151
+#: src/actions.cpp:153
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
 "veliteľa."
 
-#: src/actions.cpp:170
+#: src/actions.cpp:172
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:268 src/actions.cpp:291 src/actions.cpp:296
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:273
+#: src/actions.cpp:275
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:1012 src/actions.cpp:1272
+#: src/actions.cpp:1013 src/actions.cpp:1273
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:1016 src/actions.cpp:1276
+#: src/actions.cpp:1017 src/actions.cpp:1277
 msgid "slowed"
 msgstr "spomalený"
 
-#: src/actions.cpp:1022 src/actions.cpp:1282
+#: src/actions.cpp:1023 src/actions.cpp:1283
 msgid "stone"
 msgstr "kameň"
 
-#: src/actions.cpp:2290
+#: src/actions.cpp:2295
 msgid "Ambushed!"
 msgstr "Prepad!"
 
-#: src/actions.cpp:2297
+#: src/actions.cpp:2302
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2336
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Vidím $friends priateľských jednotiek"
 msgstr[1] "Vidím priateľskú jednotku"
 msgstr[2] "Vidím $friends priateľské jednotky"
 
-#: src/actions.cpp:2339
+#: src/actions.cpp:2344
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vidím $enemies nepriateľských jednotiek!"
 msgstr[1] "Vidím nepriateľskú jednotku!"
 msgstr[2] "Vidím $enemies nepriateľské jednotky!"
 
-#: src/actions.cpp:2344
+#: src/actions.cpp:2349
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends priateľov"
 msgstr[1] "1 priateľa"
 msgstr[2] "$friends priateľov"
 
-#: src/actions.cpp:2345
+#: src/actions.cpp:2350
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies nepriateľov"
 msgstr[1] "1 nepriateľa"
 msgstr[2] "$enemies nepriateľov"
 
-#: src/actions.cpp:2346
+#: src/actions.cpp:2351
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Vidím jednotky! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2355
+#: src/actions.cpp:2360
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(stlač $hotkey a pokračujeme)"

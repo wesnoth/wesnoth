@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Romana 0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-18 20:01+0200\n"
+"POT-Creation-Date: 2008-06-20 12:42+0200\n"
 "PO-Revision-Date: 2006-04-10 20:02+0100\n"
 "Last-Translator: Dex Stewart\n"
 "Language-Team: \n"
@@ -40,13 +40,18 @@ msgstr ""
 msgid "Show Combat"
 msgstr "Arata lupta"
 
-#. [server]
+#. [advanced_preference]: type=boolean
 #: data/_main.cfg:106
+msgid "Only Run Safe Python AIs"
+msgstr ""
+
+#. [server]
+#: data/_main.cfg:113
 msgid "Official Wesnoth Server"
 msgstr ""
 
 #. [server]
-#: data/_main.cfg:110 data/_main.cfg:114
+#: data/_main.cfg:117 data/_main.cfg:121
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -4816,93 +4821,93 @@ msgstr ""
 msgid "Skip animation"
 msgstr "Translatie in limba slovaca"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:445
+#: src/about.cpp:52 src/multiplayer_connect.cpp:445
 #: src/multiplayer_connect.cpp:542 src/multiplayer_wait.cpp:520
 msgid "+"
 msgstr ""
 
-#: src/about.cpp:54
+#: src/about.cpp:60
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:186 src/help.cpp:2984 src/menu_events.cpp:168
+#: src/about.cpp:195 src/help.cpp:2984 src/menu_events.cpp:168
 #: src/menu_events.cpp:513 src/menu_events.cpp:536
 msgid "Close"
 msgstr ""
 
-#: src/actions.cpp:144
+#: src/actions.cpp:146
 msgid "You don't have a leader to recruit with."
 msgstr ""
 
-#: src/actions.cpp:151
+#: src/actions.cpp:153
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 
-#: src/actions.cpp:170
+#: src/actions.cpp:172
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:268 src/actions.cpp:291 src/actions.cpp:296
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:273
+#: src/actions.cpp:275
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:1012 src/actions.cpp:1272
+#: src/actions.cpp:1013 src/actions.cpp:1273
 msgid "poisoned"
 msgstr "otravit"
 
-#: src/actions.cpp:1016 src/actions.cpp:1276
+#: src/actions.cpp:1017 src/actions.cpp:1277
 msgid "slowed"
 msgstr ""
 
-#: src/actions.cpp:1022 src/actions.cpp:1282
+#: src/actions.cpp:1023 src/actions.cpp:1283
 #, fuzzy
 msgid "stone"
 msgstr "piatra"
 
-#: src/actions.cpp:2290
+#: src/actions.cpp:2295
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:2297
+#: src/actions.cpp:2302
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2336
+#: src/actions.cpp:2341
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unitate aliata descoperita"
 msgstr[1] "Unitate aliata descoperita"
 
-#: src/actions.cpp:2339
+#: src/actions.cpp:2344
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitate inamica descoperita"
 msgstr[1] "Unitate inamica descoperita"
 
-#: src/actions.cpp:2344
+#: src/actions.cpp:2349
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2345
+#: src/actions.cpp:2350
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2346
+#: src/actions.cpp:2351
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitati descoperite! ($friends friendly, $enemies enemy)"
 
-#: src/actions.cpp:2355
+#: src/actions.cpp:2360
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(apasati $hotkey pentru a continua miscarea)"
