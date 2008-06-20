@@ -105,6 +105,9 @@ Version 1.5.0+svn:
      [damage] special
    * add a warning about future end of support for implicit prefix "units/" in
      images url.
+   * add a switch (delayed_variable_substitution, defaults to 'yes') allowing to 
+	 choose wether variables in [event] spawned inside an [event] are substituted at
+	 spawn or execution time. Fixes bug #11843 introduced by a change in this behavior.
  * wesnothd
    * added selective ping support - saves server bandwidth
    * updated pings to use new simple_wml
