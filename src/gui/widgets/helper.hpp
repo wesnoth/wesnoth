@@ -24,9 +24,15 @@ class t_string;
 
 namespace gui2 {
 
-// init needs a cfg object later to init the subsystem
+/**
+ * Initializes the gui subsystems.
+ *
+ * This function needs to be called before other parts of the gui engine are
+ * used.
+ */
 bool init();
 
+/** Holds a 2D point. */
 struct tpoint
 {
 	tpoint(const int x_, const int y_) : 
@@ -34,7 +40,10 @@ struct tpoint
 		y(y_) 
 		{}
 
+	/** x coodinate. */
 	int x;
+
+	/** y coodinate. */
 	int y;
 
 	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
@@ -52,15 +61,39 @@ struct tpoint
 
 };
 
-
 std::ostream &operator<<(std::ostream &stream, const tpoint& point);
 
+/**
+ * Creates a rectangle.
+ *
+ * @param origin                  The top left corner.
+ * @param size                    The width (x) and height (y).
+ *
+ * @returns                       SDL_Rect with the proper rectangle.
+ */
 SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
 
+/**
+ * Converts a colour string to a colour.
+ *
+ * @param colour                  A colour string see
+ *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                more info.
+ *
+ * @returns                       The colour.
+ */
 Uint32 decode_colour(const std::string& colour);
 
+/**
+ * Converts a font style string to a font style.
+ *
+ * @param colour                  A font style string see
+ *                                http://www.wesnoth.org/wiki/GUIVariable for
+ *                                more info.
+ *
+ * @returns                       The font style.
+ */
 int decode_font_style(const std::string& style);
-
 
 /**
  * Copies a portion of a surface.
@@ -76,7 +109,6 @@ int decode_font_style(const std::string& style);
  * @returns                       A copy of the wanted part of the background.
  */
 surface save_background(const surface& background, const SDL_Rect& rect);
-
 
 /**
  * Copies one surface unto another one.

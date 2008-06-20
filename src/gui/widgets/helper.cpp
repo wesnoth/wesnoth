@@ -65,6 +65,7 @@ SDL_Rect create_rect(const tpoint& origin, const tpoint& size)
 { 
 	return ::create_rect(origin.x, origin.y, size.x, size.y); 
 }
+
 tpoint& tpoint::operator+=(const tpoint& point)
 { 
 	x += point.x; 
@@ -77,7 +78,6 @@ std::ostream &operator<<(std::ostream &stream, const tpoint& point)
 	stream << point.x << ',' << point.y;
 	return stream;
 }
-
 
 int decode_font_style(const std::string& style)
 {
