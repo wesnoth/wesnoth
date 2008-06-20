@@ -40,7 +40,7 @@ class Parser:
             self.current_path = current_path
             self.textdomain = textdomain
 
-    def __init__(self, data_dir, user_dir = None, no_macros_in_string = False):
+    def __init__(self, data_dir, user_dir=None, no_macros_in_string=False):
         """
         Initialize a new WMLParser instance.
 
@@ -494,14 +494,15 @@ class Parser:
                 keep_macro = self.macro_not_found_callback(self, name, params)
                 if keep_macro: return keep_macro
             sys.stderr.write("No macro %s.\n" % name)
-            sys.stderr.write(" (%s:%d)\n" % (self.filename, self.line))
+            if self.verbose:
+                sys.stderr.write(" (%s:%d)\n" % (self.filename, self.line))
             return name
         return None
 
     def parse_string(self):
         text = ""
         match_read_end = '"'
-        if not no_macros_in_string:
+        if not self.no_macros_in_string:
             match_read_end += '{'
         while not self.at_end():
             text += self.read_until(match_read_end)
