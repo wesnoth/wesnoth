@@ -40,7 +40,7 @@ class Parser:
             self.current_path = current_path
             self.textdomain = textdomain
 
-    def __init__(self, data_dir, user_dir = None, no_macros_in_string = Flase):
+    def __init__(self, data_dir, user_dir = None, no_macros_in_string = False):
         """
         Initialize a new WMLParser instance.
 
