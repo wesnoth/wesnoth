@@ -2873,8 +2873,16 @@ namespace {
 		// Adding of new events
 	WML_HANDLER_FUNCTION(event,/*handler*/,/*event_info*/,cfg)
 	{
-		const config &parsed = cfg.get_parsed_config();
-		new_handlers.push_back(game_events::event_handler(vconfig(&parsed, &parsed)));
+        std::string behaviour_flag = cfg["delayed_variable_substitution"];
+        if(behaviour_flag == "no")
+        {
+        	const config &parsed = cfg.get_parsed_config();
+		    new_handlers.push_back(game_events::event_handler(vconfig(&parsed, &parsed)));
+        }
+        else
+        {
+            new_handlers.push_back(game_events::event_handler(cfg));
+        }
 	}
 
 
