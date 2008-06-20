@@ -22,12 +22,21 @@
 
 namespace gui2 {
 
-//! Base container class which needs to size children
+/**
+ * Base container class.
+ *
+ * This class holds a number of widgets and their wanted layout parameters. It
+ * also layouts the items in the grid and hanldes their drawing.
+ */
 class tgrid : public virtual twidget
 {
-
 public:
-	// ***** ***** FLAGS ***** *****
+
+	tgrid(const unsigned rows = 0, const unsigned cols = 0); 
+
+	virtual ~tgrid();
+
+	/***** ***** ***** ***** LAYOUT FLAGS ***** ***** ***** *****/
 	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << 0;
 
 	static const unsigned VERTICAL_ALIGN_TOP             = 3 << 1;   
@@ -45,16 +54,7 @@ public:
 	static const unsigned BORDER_LEFT                    = 1 << 8;
 	static const unsigned BORDER_RIGHT                   = 1 << 9;
 
-	
-	tgrid(const unsigned rows = 0, const unsigned cols = 0); 
-
-	virtual ~tgrid();
-
-	void add_child(twidget* widget, const unsigned row, 
-		const unsigned col, const unsigned flags, const unsigned border_size);
-	
-	void set_rows(const unsigned rows);
-	unsigned int get_rows() const { return rows_; }
+	/***** ***** ***** ***** ROW COLUMN MANIPULATION ***** ***** ***** *****/
 
 	/**
 	 * Addes a row to end of the grid.
@@ -65,11 +65,14 @@ public:
 	 */
 	unsigned add_row(const unsigned count = 1);
 
-	void set_cols(const unsigned cols);
-	unsigned int get_cols() const { return cols_; }
-
-	void set_rows_cols(const unsigned rows, const unsigned cols);
-
+	/**
+	 * Sets the grow factor for a row.
+	 *
+	 * @todo refer to a page with the layout manipulation info.
+	 *
+	 * @param row                 The row to modify.
+	 * @param factor              The grow factor.
+	 */
 	void set_row_grow_factor(const unsigned row, const unsigned factor)
 	{ 
 		assert(row < row_grow_factor_.size()); 
@@ -77,6 +80,14 @@ public:
 		set_dirty(); 
 	} 
 
+	/**
+	 * Sets the grow factor for a column.
+	 *
+	 * @todo refer to a page with the layout manipulation info.
+	 *
+	 * @param column              The column to modify.
+	 * @param factor              The grow factor.
+	 */
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
 	{ 
 		assert(col< col_grow_factor_.size());
@@ -84,7 +95,42 @@ public:
 		set_dirty(); 
 	}
 
+	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
+
+	/**
+	 * Sets a child in the grid.
+	 *
+	 * When the child is added to the grid the grid 'owns' the widget.
+	 * The widget is put in a cell, and every cell can only contain 1 widget if
+	 * the wanted cell already contains a widget, that widget is freed and
+	 * removed.
+	 *
+	 * @param widget              The widget to put in the grid.
+	 * @param row                 The row of the cell.
+	 * @param col                 The columnof the cell.
+	 * @param flags               The flags for the widget in the cell.
+	 * @param border_size         The size of the border for the cell, how the
+	 *                            border is applied depends on the flags.
+	 */
+	void set_child(twidget* widget, const unsigned row, 
+		const unsigned col, const unsigned flags, const unsigned border_size);
+
+	/**
+	 * Removes and frees a widget in a cell.
+	 *
+	 * @param row                 The row of the cell.
+	 * @param col                 The columnof the cell.
+	 */
 	void remove_child(const unsigned row, const unsigned col);
+
+	/**
+	 * Removes and frees a widget in a cell by it's id.
+	 *
+	 * @param id                  The id of the widget to free.
+	 * @param find_all            If true if removes all items with the id,
+	 *                            otherwise it stops after removing the first
+	 *                            item (or once all children have been tested).
+	 */
 	void remove_child(const std::string& id, const bool find_all = false);
 
 	/**
@@ -97,16 +143,31 @@ public:
 	 */
 	void set_active(const bool active);
 
+
+	/** Returns the widget in the selected cell. */
+	const twidget* widget(const unsigned row, const unsigned col) const
+		{ return child(row, col).widget(); }
+
+	/** Returns the widget in the selected cell. */
+	twidget* widget(const unsigned row, const unsigned col) 
+		{ return child(row, col).widget(); }
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
+	/** Inherited from twidget. */
+	tpoint get_minimum_size() const;
+
+	/** Inherited from twidget. */
+	tpoint get_best_size() const;
+
+	/** Inherited from twidget. */
+	tpoint get_maximum_size() const;
+
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const;
 
-	//! Inherited from twidget.
-	tpoint get_minimum_size() const;
-	tpoint get_best_size() const;
-	tpoint get_maximum_size() const;
-
-	//! Inherited from twidget.
-	void set_size(const SDL_Rect& rect);
+	/** Inherited from twidget. */
+	void draw(surface& surface);
 
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
@@ -125,18 +186,27 @@ public:
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;
 
-	//! Inherited from twidget.
-	void draw(surface& surface);
+	/** Inherited from twidget. */
+	void set_size(const SDL_Rect& rect);
 
-	/** Returns the widget in the selected cell. */
-	const twidget* widget(const unsigned row, const unsigned col) const
-		{ return child(row, col).widget(); }
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	/** Returns the widget in the selected cell. */
-	twidget* widget(const unsigned row, const unsigned col) 
-		{ return child(row, col).widget(); }
+	void set_rows(const unsigned rows);
+	unsigned int get_rows() const { return rows_; }
+
+	void set_cols(const unsigned cols);
+	unsigned int get_cols() const { return cols_; }
+
+	/**
+	 * Wrapper to set_rows and set_cols.
+	 *
+	 * @param rows                Parameter to call set_rows with.
+	 * @param cols                Parameter to call set_cols with.
+	 */
+	void set_rows_cols(const unsigned rows, const unsigned cols);
 
 private:
+	/** Child item of the grid. */
 	class tchild 
 	{
 	public:
@@ -154,6 +224,23 @@ private:
 			// regarding size etc.
 			{}
 	
+		/** Returns the best size for the cell. */
+		tpoint get_best_size() const;
+
+		/** Returns the minimum size for the cell. */
+		tpoint get_minimum_size() const;
+
+		/** Returns the maximum size for the cell. */
+		tpoint get_maximum_size() const;
+
+		/**
+		 * Sets the size of the widget in the cell.
+		 *
+		 * @param orig            The origin (x, y) for the widget.
+		 * @param size            The size for the widget.
+		 */
+		void set_size(tpoint orig, tpoint size);
+
 		const std::string& id() const { return id_; }
 		void set_id(const std::string& id) { id_ = id; }
 
@@ -169,50 +256,52 @@ private:
 
 		void set_widget(twidget* widget) { widget_ = widget; set_dirty(); }
 
-		//! Returns the best size for the cell.
-		tpoint get_best_size() const;
-
-		//! Returns the minimum size for the cell.
-		tpoint get_minimum_size() const;
-
-		//! Returns the maximum size for the cell.
-		tpoint get_maximum_size() const;
-
-		void set_size(tpoint orig, tpoint size);
-
 	private:
-		//! The id of the widget if it has a widget.
+		/** The id of the widget if it has a widget. */
 		std::string id_;
 
-		//! The flags for the border and cell setup.
+		/** The flags for the border and cell setup. */
 		unsigned flags_;
 
-		//! The size of the border, the actual configuration of the border
-		//! is determined by the flags.
+		/**
+		 * The size of the border, the actual configuration of the border
+		 * is determined by the flags.
+		 */
 		unsigned border_size_;
 
-		//! Pointer to the widget. FIXME who owns the widget....
+		/** 
+		 * Pointer to the widget.
+		 *
+		 * Once the widget is assigned to the grid we own the widget and are
+		 * responsible for it's destruction.
+		 */
 		twidget* widget_;
 
-		//! The best size for this cell, determined by the best size
-		//! of the widget and the border_size_ and flags_.
+		/**
+		 * The best size for this cell, determined by the best size of the
+		 * widget and the border_size_ and flags_.
+		 */
 		mutable tpoint best_size_;
 
-		//! The minimum size for this cell, like best_size_.
+		/** The minimum size for this cell, like best_size_. */
 		mutable tpoint minimum_size_;
 
-		//! The maximum size for this cell, like best_size_.
+		/** The maximum size for this cell, like best_size_. */
 		mutable tpoint maximum_size_;
 
-		//! Returns the space needed for the border.
+		/** Returns the space needed for the border. */
 		tpoint border_space() const;
 
-		//! The clipping area for the widget. This is also the size of 
-		//! the container.
+		/**
+		 * The clipping area for the widget. This is also the size of the
+		 * container.
+		 */
 		SDL_Rect clip_;
 
-		//! Sets the calculations to be dirty, this means all caches
-		//! are simply cleared.
+		/**
+		 * Sets the calculations to be dirty, this means all caches are simply
+		 * cleared.
+		 */
 		void set_dirty()  // FIXME rename to clear cache??
 		{ 
 			best_size_ = tpoint(0, 0); 
@@ -223,6 +312,7 @@ private:
 	}; // class tchild
 
 public:
+	/** Iterator for the tchild items. */
 	class iterator 
 	{
 
@@ -249,38 +339,78 @@ public:
 	iterator end() { return iterator(children_.end()); }
 
 private:
-	//! The number of rows / columns.
+	/** The number of grid rows. */
 	unsigned rows_;
+
+	/** The number of grid columns. */
 	unsigned cols_;
 
-	//! The optimal row heights / col widths.
+	/***** ***** ***** ***** size caching ***** ***** ***** *****/
+
+	/** Cache containing the best row heights. */
 	mutable std::vector<unsigned> best_row_height_;
+
+	/** Cache containing the best column widths. */
 	mutable std::vector<unsigned> best_col_width_;
 
-	//! The minimal row heights / col widths.
+	/** Cache containing the best minimum heights. */
 	mutable std::vector<unsigned> minimum_row_height_;
+
+	/** Cache containing the minimum column widths. */
 	mutable std::vector<unsigned> minimum_col_width_;
 
-	//! The row heights / col widths currently used.
+	/** 
+	 * Clears the size caches. 
+	 *
+	 * @todo we need to evaluate how useful caching is in the first place since
+	 * quite some functions invalidate the caches and most things are calculated
+	 * only a few times. This means the caches might be overkill and adding
+	 * complexity.
+	 */
+	void clear_cache();
+
+	/** The row heights in the grid. */
 	std::vector<unsigned> row_height_;
+
+	/** The column widths in the grid. */
 	std::vector<unsigned> col_width_;
 
-	//! The resize factors for rows / cols.
+
+	/** The grow factor for all rows. */
 	std::vector<unsigned> row_grow_factor_;
+
+	/** The grow factor for all columns. */
 	std::vector<unsigned> col_grow_factor_;
 
-	//! Contains all cells.
+
+	/** 
+	 * The child items. 
+	 *
+	 * All children are stored in a 1D vector and the formula to access a cell
+	 * is: rows_ * col + row. All other vectors use the same access formula.
+	 */
 	std::vector<tchild> children_;
 	const tchild& child(const unsigned row, const unsigned col) const
 		{ return children_[rows_ * col + row]; }
 	tchild& child(const unsigned row, const unsigned col)
 		{ clear_cache(); return children_[rows_ * col + row]; }
 
-	void clear_cache();
-
+	/** Layouts the children in the grid. */
 	void layout(const tpoint& origin);
 
-	//! Helper function to get the best or minimum size.
+	/** 
+	 * Helper function to get the best or minimum size.
+	 *
+	 * @param id                     Name to use in debug output.
+	 * @param width                  Reference to the vector width cache for the 
+	 *                               size function of the caller.
+	 * @param height                 Reference to the vector height cache for the 
+	 *                               size function of the caller.
+	 * @param size_proc              The function to call on the cells in order to
+	 *                               get their sizes.
+	 *
+	 * @return                       The wanted size.
+	 */
 	tpoint get_size(const std::string& id, std::vector<unsigned>& width, 
 		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const) const;
 };

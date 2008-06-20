@@ -288,7 +288,7 @@ twindow build(CVideo& video, const std::string& type)
 			}
 
 			twidget* widget = definition->grid->widgets[x * cols + y]->build();
-			window.add_child(widget, x, y, definition->grid->flags[x * cols + y],  definition->grid->border_size[x * cols + y]);
+			window.set_child(widget, x, y, definition->grid->flags[x * cols + y],  definition->grid->border_size[x * cols + y]);
 		}
 	}
 
@@ -873,7 +873,7 @@ twidget* tbuilder_listbox::build() const
 			 * We need sort indicators, which are tristat_buttons;
 			 * none, acending, decending. Once we have them we can write them in.
 			 */
-			grid->add_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+			grid->set_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
 		}
 
 		// Create and add the footer.
@@ -881,12 +881,12 @@ twidget* tbuilder_listbox::build() const
 			twidget* widget = footer->build();
 			assert(widget);
 
-			grid->add_child(widget, header && footer ? 2 : 1, 0, 
+			grid->set_child(widget, header && footer ? 2 : 1, 0, 
 				tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
 		}
 
 		// Add the list itself.
-		grid->add_child(list_area, header ? 1 : 0, 0, 
+		grid->set_child(list_area, header ? 1 : 0, 0, 
 			tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
 			| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
 			, 0);
@@ -897,14 +897,14 @@ twidget* tbuilder_listbox::build() const
 	}
 
 	listbox->grid().set_rows_cols(1, 2);
-	listbox->grid().add_child(list_area, 0, 0, 
+	listbox->grid().set_child(list_area, 0, 0, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
 		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
 		| tgrid::VERTICAL_ALIGN_CENTER
 		| tgrid::HORIZONTAL_ALIGN_CENTER
 		, 0);
 	listbox->grid().set_col_grow_factor(0, 1);
-	listbox->grid().add_child(scrollbar, 0, 1, 
+	listbox->grid().set_child(scrollbar, 0, 1, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 		| tgrid::VERTICAL_ALIGN_CENTER
 		| tgrid::HORIZONTAL_ALIGN_CENTER
@@ -970,7 +970,7 @@ twidget* tbuilder_panel::build() const
 			}
 
 			twidget* widget = grid->widgets[x * cols + y]->build();
-			panel->add_child(widget, x, y, grid->flags[x * cols + y],  grid->border_size[x * cols + y]);
+			panel->set_child(widget, x, y, grid->flags[x * cols + y],  grid->border_size[x * cols + y]);
 		}
 	}
 
@@ -1056,7 +1056,7 @@ twidget* tbuilder_grid::build() const
 			DBG_G << "Window builder: adding child at " << x << ',' << y << ".\n";
 
 			twidget* widget = widgets[x * cols + y]->build();
-			grid->add_child(widget, x, y, flags[x * cols + y],  border_size[x * cols + y]);
+			grid->set_child(widget, x, y, flags[x * cols + y],  border_size[x * cols + y]);
 		}
 	}
 

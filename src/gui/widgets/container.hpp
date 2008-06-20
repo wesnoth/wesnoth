@@ -112,9 +112,9 @@ public:
 	void set_rows_cols(const unsigned rows, const unsigned cols)
 		{ grid_.set_rows_cols(rows, cols); }
 
-	void add_child(twidget* widget, const unsigned row, 
+	void set_child(twidget* widget, const unsigned row, 
 		const unsigned col, const unsigned flags, const unsigned border_size)
-		{ grid_.add_child(widget, row, col, flags, border_size); }
+		{ grid_.set_child(widget, row, col, flags, border_size); }
 
 	void set_row_grow_factor(const unsigned row, const unsigned factor) 
 		{ grid_.set_row_grow_factor(row, factor); }

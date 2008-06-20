@@ -69,7 +69,18 @@ tgrid::~tgrid()
 	}
 }
 
-void tgrid::add_child(twidget* widget, const unsigned row, 
+unsigned tgrid::add_row(const unsigned count)
+{
+	assert(count);
+
+	//FIXME the warning in set_rows_cols should be killed.
+	
+	unsigned result = rows_;
+	set_rows_cols(rows_ + count, cols_);
+	return result;
+}
+
+void tgrid::set_child(twidget* widget, const unsigned row, 
 		const unsigned col, const unsigned flags, const unsigned border_size) 
 {
 	assert(row < rows_ && col < cols_);
@@ -96,53 +107,6 @@ void tgrid::add_child(twidget* widget, const unsigned row,
 		cell.set_id("");
 	}
 
-	clear_cache();
-}
-
-void tgrid::set_rows(const unsigned rows)
-{
-	if(rows == rows_) {
-		return;
-	}
-
-	set_rows_cols(rows, cols_);
-}
-
-unsigned tgrid::add_row(const unsigned count)
-{
-	assert(count);
-
-	//FIXME the warning in set_rows_cols should be killed.
-	
-	unsigned result = rows_;
-	set_rows_cols(rows_ + count, cols_);
-	return result;
-}
-
-void tgrid::set_cols(const unsigned cols)
-{
-	if(cols == cols_) {
-		return;
-	}
-
-	set_rows_cols(rows_, cols);
-}
-
-void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
-{
-	if(rows == rows_ && cols == cols_) {
-		return;
-	}
-
-	if(!children_.empty()) {
-		WRN_G << "Grid: resizing a non-empty grid may give unexpected problems.\n";
-	}
-
-	rows_ = rows;
-	cols_ = cols;
-	row_grow_factor_.resize(rows);
-	col_grow_factor_.resize(cols);
-	children_.resize(rows_ * cols_);
 	clear_cache();
 }
 
@@ -203,22 +167,6 @@ void tgrid::set_active(const bool active)
 	}
 }
 
-bool tgrid::has_vertical_scrollbar() const 
-{
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-		// FIXME we should check per row and the entire row
-		// should have the flag!!!!
-		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
-			return true;
-		} 
-
-	}
-	
-	// Inherit
-	return twidget::has_vertical_scrollbar();
-}
-
 tpoint tgrid::get_minimum_size() const
 {
 	return get_size("minimum", minimum_col_width_, 
@@ -237,60 +185,131 @@ tpoint tgrid::get_best_size() const
 		best_row_height_, &tchild::get_best_size);
 }
 
-//! Helper function to get the best or minimum size.
-//!
-//! @param id                     Name to use in debug output.
-//! @param width                  Reference to the vector width cache for the 
-//!                               size function of the caller.
-//! @param height                 Reference to the vector height cache for the 
-//!                               size function of the caller.
-//! @param size_proc              The function to call on the cells in order to
-//!                               get their sizes.
-//!
-//! @return                       The wanted size.
-tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width, 
-		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const) const
+bool tgrid::has_vertical_scrollbar() const 
 {
-	if(height.empty() || width.empty()) {
+	for(std::vector<tchild>::const_iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+		// FIXME we should check per row and the entire row
+		// should have the flag!!!!
+		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
+			return true;
+		} 
 
-		DBG_G << "Grid: calculate " << id << " size.\n";
+	}
+	
+	// Inherit
+	return twidget::has_vertical_scrollbar();
+}
 
-		height.resize(rows_, 0);
-		width.resize(cols_, 0);
-		
-		// First get the sizes for all items.
-		for(unsigned row = 0; row < rows_; ++row) {
-			for(unsigned col = 0; col < cols_; ++col) {
-
-				const tpoint size = (child(row, col).*size_proc)();
-
-				if(size.x > static_cast<int>(width[col])) {
-					width[col] = size.x;
-				}
-
-				if(size.y > static_cast<int>(height[row])) {
-					height[row] = size.y;
-				}
-
-			}
+void tgrid::draw(surface& surface)
+{
+	for(iterator itor = begin(); itor != end(); ++itor) {
+		if(! *itor || !itor->dirty()) {
+			continue;
 		}
-	} else {
-		DBG_G << "Grid: used cached " << id << " size.\n";
+
+		log_scope2(gui_draw, "Grid: draw child.");
+
+		itor->draw(surface);
 	}
 
-	for(unsigned row = 0; row < rows_; ++row) {
-		DBG_G << "Grid: the " << id << " height for row " << row 
-			<< " will be " << height[row] << ".\n";
-	}
+	set_dirty(false);
+}
 
-	for(unsigned col = 0; col < cols_; ++col) {
-		DBG_G << "Grid: the " << id << " width for col " << col 
-			<< " will be " << width[col]  << ".\n";
-	}
+twidget* tgrid::find_widget(const tpoint& coordinate, const bool must_be_active) 
+{
+	for(std::vector<tchild>::iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
 
-	return tpoint(
-		std::accumulate(width.begin(), width.end(), 0),
-		std::accumulate(height.begin(), height.end(), 0));
+		twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		widget = widget->find_widget(coordinate, must_be_active);
+		if(widget) { 
+			clear_cache();
+			return widget;
+		}
+		
+	}
+	
+	return 0;
+}
+
+const twidget* tgrid::find_widget(const tpoint& coordinate, 
+		const bool must_be_active) const
+{	
+	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
+
+		const twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		widget = widget->find_widget(coordinate, must_be_active);
+		if(widget) { 
+			return widget;
+		}
+		
+	}
+	
+	return 0;
+}
+
+twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
+{
+	for(std::vector<tchild>::iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
+
+		twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		widget = widget->find_widget(id, must_be_active);
+		if(widget) { 
+			clear_cache();
+			return widget;
+		}
+		
+	}
+	
+	return 0;
+}
+
+const twidget* tgrid::find_widget(const std::string& id, 
+		const bool must_be_active) const
+{
+	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
+			itor != children_.end(); ++itor) {
+
+		const twidget* widget = itor->widget();
+		if(!widget) {
+			continue;
+		}
+
+		widget = widget->find_widget(id, must_be_active);
+		if(widget) { 
+			return widget;
+		}
+		
+	}
+	
+	return 0;
+}
+
+bool tgrid::has_widget(const twidget* widget) const
+{
+	for(std::vector<tchild>::const_iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+	
+		if(itor->widget() == widget) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void tgrid::set_size(const SDL_Rect& rect)
@@ -419,145 +438,40 @@ void tgrid::set_size(const SDL_Rect& rect)
 */		
 }
 
-twidget* tgrid::find_widget(const tpoint& coordinate, const bool must_be_active) 
+void tgrid::set_rows(const unsigned rows)
 {
-	for(std::vector<tchild>::iterator itor = children_.begin(); 
-			itor != children_.end(); ++itor) {
-
-		twidget* widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(coordinate, must_be_active);
-		if(widget) { 
-			clear_cache();
-			return widget;
-		}
-		
-	}
-	
-	return 0;
-}
-
-const twidget* tgrid::find_widget(const tpoint& coordinate, 
-		const bool must_be_active) const
-{	
-	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
-			itor != children_.end(); ++itor) {
-
-		const twidget* widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(coordinate, must_be_active);
-		if(widget) { 
-			return widget;
-		}
-		
-	}
-	
-	return 0;
-}
-
-twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
-{
-	for(std::vector<tchild>::iterator itor = children_.begin(); 
-			itor != children_.end(); ++itor) {
-
-		twidget* widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(id, must_be_active);
-		if(widget) { 
-			clear_cache();
-			return widget;
-		}
-		
-	}
-	
-	return 0;
-}
-
-const twidget* tgrid::find_widget(const std::string& id, 
-		const bool must_be_active) const
-{
-	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
-			itor != children_.end(); ++itor) {
-
-		const twidget* widget = itor->widget();
-		if(!widget) {
-			continue;
-		}
-
-		widget = widget->find_widget(id, must_be_active);
-		if(widget) { 
-			return widget;
-		}
-		
-	}
-	
-	return 0;
-}
-
-bool tgrid::has_widget(const twidget* widget) const
-{
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-	
-		if(itor->widget() == widget) {
-			return true;
-		}
-	}
-	return false;
-}
-
-void tgrid::draw(surface& surface)
-{
-	for(iterator itor = begin(); itor != end(); ++itor) {
-		if(! *itor || !itor->dirty()) {
-			continue;
-		}
-
-		log_scope2(gui_draw, "Grid: draw child.");
-
-		itor->draw(surface);
+	if(rows == rows_) {
+		return;
 	}
 
-	set_dirty(false);
+	set_rows_cols(rows, cols_);
 }
 
-void tgrid::clear_cache()
+void tgrid::set_cols(const unsigned cols)
 {
-	best_row_height_.clear();
-	best_col_width_.clear();
-
-	minimum_row_height_.clear();
-	minimum_col_width_.clear();
-}
-
-void tgrid::layout(const tpoint& origin)
-{
-	tpoint orig = origin;
-	for(unsigned row = 0; row < rows_; ++row) {
-		for(unsigned col = 0; col < cols_; ++col) {
-
-			const tpoint size(col_width_[col], row_height_[row]);
-			DBG_G << "Grid: set widget at " << row << ',' << col 
-				<< " at origin " << orig << " with size " << size << ".\n";
-
-			if(child(row, col).widget()) {
-				child(row, col).set_size(orig, size);
-			}
-
-			orig.x += col_width_[col];
-		}
-		orig.y += row_height_[row];
-		orig.x = origin.x;
+	if(cols == cols_) {
+		return;
 	}
+
+	set_rows_cols(rows_, cols);
+}
+
+void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
+{
+	if(rows == rows_ && cols == cols_) {
+		return;
+	}
+
+	if(!children_.empty()) {
+		WRN_G << "Grid: resizing a non-empty grid may give unexpected problems.\n";
+	}
+
+	rows_ = rows;
+	cols_ = cols;
+	row_grow_factor_.resize(rows);
+	col_grow_factor_.resize(cols);
+	children_.resize(rows_ * cols_);
+	clear_cache();
 }
 
 tpoint tgrid::tchild::get_best_size() const
@@ -621,6 +535,35 @@ tpoint tgrid::tchild::border_space() const
 	return result;
 }
 
+void tgrid::clear_cache()
+{
+	best_row_height_.clear();
+	best_col_width_.clear();
+
+	minimum_row_height_.clear();
+	minimum_col_width_.clear();
+}
+
+void tgrid::layout(const tpoint& origin)
+{
+	tpoint orig = origin;
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			const tpoint size(col_width_[col], row_height_[row]);
+			DBG_G << "Grid: set widget at " << row << ',' << col 
+				<< " at origin " << orig << " with size " << size << ".\n";
+
+			if(child(row, col).widget()) {
+				child(row, col).set_size(orig, size);
+			}
+
+			orig.x += col_width_[col];
+		}
+		orig.y += row_height_[row];
+		orig.x = origin.x;
+	}
+}
 void tgrid::tchild::set_size(tpoint orig, tpoint size)
 {
 	assert(widget());
@@ -732,6 +675,51 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 
 
 	widget()->set_size(create_rect(widget_orig, widget_size));
+}
+
+tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width, 
+		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const) const
+{
+	if(height.empty() || width.empty()) {
+
+		DBG_G << "Grid: calculate " << id << " size.\n";
+
+		height.resize(rows_, 0);
+		width.resize(cols_, 0);
+		
+		// First get the sizes for all items.
+		for(unsigned row = 0; row < rows_; ++row) {
+			for(unsigned col = 0; col < cols_; ++col) {
+
+				const tpoint size = (child(row, col).*size_proc)();
+
+				if(size.x > static_cast<int>(width[col])) {
+					width[col] = size.x;
+				}
+
+				if(size.y > static_cast<int>(height[row])) {
+					height[row] = size.y;
+				}
+
+			}
+		}
+	} else {
+		DBG_G << "Grid: used cached " << id << " size.\n";
+	}
+
+	for(unsigned row = 0; row < rows_; ++row) {
+		DBG_G << "Grid: the " << id << " height for row " << row 
+			<< " will be " << height[row] << ".\n";
+	}
+
+	for(unsigned col = 0; col < cols_; ++col) {
+		DBG_G << "Grid: the " << id << " width for col " << col 
+			<< " will be " << width[col]  << ".\n";
+	}
+
+	return tpoint(
+		std::accumulate(width.begin(), width.end(), 0),
+		std::accumulate(height.begin(), height.end(), 0));
 }
 
 } // namespace gui2
