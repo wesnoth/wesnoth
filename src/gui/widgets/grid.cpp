@@ -153,6 +153,9 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 	tchild& cell = child(row, col);
 
 	cell.set_id("");
+	if(cell.widget()) {
+		delete cell.widget();
+	}
 	cell.set_widget(0);
 	clear_cache();
 }
@@ -164,6 +167,9 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 
 		if(itor->id() == id) {
 			itor->set_id("");
+			if(itor->widget()) {
+				delete itor->widget();
+			}
 			itor->set_widget(0);
 			clear_cache();
 
