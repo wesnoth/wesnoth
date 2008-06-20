@@ -502,10 +502,10 @@ class Parser:
         while not self.at_end():
             text += self.read_until('"{')
             if text[-1] == '"':
-				if self.peek_next() == '"':
-					self.read_next()
-				else:
-                	return text[:-1]
+                if self.peek_next() == '"':
+                    self.read_next()
+                else:
+                    return text[:-1]
             elif text[-1] == '{':
                 text = text[:-1]
                 not_found = self.parse_macro()
