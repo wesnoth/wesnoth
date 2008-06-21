@@ -113,10 +113,10 @@ namespace {
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
 
-void send_doc(simple_wml::document& doc, network::connection connection)
+void send_doc(simple_wml::document& doc, network::connection connection, std::string type = "unknown")
 {
 	simple_wml::string_span s = doc.output_compressed();
-	network::send_raw_data(s.begin(), s.size(), connection);
+	network::send_raw_data(s.begin(), s.size(), connection, type);
 }
 
 void make_add_diff(const simple_wml::node& src, const char* gamelist,
@@ -322,7 +322,7 @@ void server::send_error(network::connection sock, const char* msg) const
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
 	simple_wml::string_span output = doc.output_compressed();
-	network::send_raw_data(output.begin(), output.size(), sock);
+	network::send_raw_data(output.begin(), output.size(), sock, "error");
 }
 
 void server::send_error_dup(network::connection sock, const std::string& msg) const
@@ -330,7 +330,7 @@ void server::send_error_dup(network::connection sock, const std::string& msg) co
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
 	simple_wml::string_span output = doc.output_compressed();
-	network::send_raw_data(output.begin(), output.size(), sock);
+	network::send_raw_data(output.begin(), output.size(), sock, "error");
 }
 
 config server::read_config() const {
@@ -489,7 +489,7 @@ void server::run() {
 				for (player_map::const_iterator i = players_.begin();
 					i != players_.end(); ++i)
 				{
-					network::send_data(ping, i->first, true);
+					network::send_data(ping, i->first, true, "ping");
 				}
 				last_ping_ = now;
 			}
@@ -510,7 +510,7 @@ void server::run() {
 				} else {
 					DBG_SERVER << ip << "\tnew connection accepted. (socket: "
 						<< sock << ")\n";
-					send_doc(version_query_response_, sock);
+					send_doc(version_query_response_, sock,"command");
 					not_logged_in_.add_player(sock, true);
 				}
 			}
@@ -518,7 +518,14 @@ void server::run() {
 			static int sample_counter = 0;
 
 			std::vector<char> buf;
-			while ((sock = network::receive_data(buf)) != network::null_connection) {
+#ifdef BANDWIDTH_MONITOR
+			network::bandwidth_in_ptr bandwidth_type;
+#endif
+			while ((sock = network::receive_data(buf
+#ifdef BANDWIDTH_MONITOR
+							, &bandwidth_type
+#endif
+							)) != network::null_connection) {
 				metrics_.service_request();
 
 				if(buf.empty()) {
@@ -553,6 +560,9 @@ void server::run() {
 
 				process_data(sock, data);
 
+#ifdef BANDWIDTH_MONITOR
+				bandwidth_type->set_type("command");
+#endif
 				if(sample) {
 					const clock_t after_processing = get_cpu_time(sample);
 					metrics_.record_sample(data.root().first_child(),
@@ -693,7 +703,7 @@ void server::process_login(const network::connection sock,
 			LOG_SERVER << network::ip_address(sock)
 				<< "\tplayer joined using accepted version " << version_str
 				<< ":\ttelling them to log in.\n";
-			send_doc(login_response_, sock);
+			send_doc(login_response_, sock, "command");
 			return;
 		}
 		std::map<std::string,config>::const_iterator config_it;
@@ -711,7 +721,7 @@ void server::process_login(const network::connection sock,
 				<< ":" << config_it->second["port"] << "\n";
 			config response;
 			response.add_child("redirect",config_it->second);
-			network::send_data(response, sock, true);
+			network::send_data(response, sock, true, "redirect");
 			return;
 		}
 		// Check if it's a version we should start a proxy for.
@@ -743,7 +753,7 @@ void server::process_login(const network::connection sock,
 			ERR_SERVER << "ERROR: This server doesn't accept any versions at all.\n";
 			response["version"] = "null";
 		}
-		network::send_data(response, sock, true);
+		network::send_data(response, sock, true, "error");
 		return;
 	}
 
@@ -786,7 +796,7 @@ void server::process_login(const network::connection sock,
 		}
 	}
 
-	send_doc(join_lobby_response_, sock);
+	send_doc(join_lobby_response_, sock, "join_lobby");
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 	const player new_player(username, player_cfg, default_max_messages_,
@@ -797,7 +807,7 @@ void server::process_login(const network::connection sock,
 	lobby_.add_player(sock, true);
 
 	// Send the new player the entire list of games and players
-	send_doc(games_and_users_list_, sock);
+	send_doc(games_and_users_list_, sock, "lobby_list");
 
 	if (motd_ != "") {
 		lobby_.send_server_message(motd_.c_str(), sock);
@@ -839,7 +849,7 @@ void server::process_query(const network::connection sock,
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name());
 	} else if (command == "status " + pl->second.name() || command == "metrics"
-	|| command == "motd" || command == "wml" || command == "netstats") {
+	|| command == "motd" || command == "wml" || command == "netstats" || command == "netstats all") {
 		response << process_command(command.to_string());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "
@@ -922,6 +932,12 @@ std::string server::process_command(const std::string& query) {
 		out << "Network stats:\nPending send buffers: "
 		    << stats.npending_sends << "\nBytes in buffers: "
 			<< stats.nbytes_pending_sends << "\n";
+#ifdef BANDWIDTH_MONITOR
+		if (parameters == "all")
+			out << network::get_bandwidth_stats_all();
+		else
+			out << network::get_bandwidth_stats(); // stats from previuos hour
+#endif
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
@@ -1079,7 +1095,7 @@ void server::process_whisper(const network::connection sock,
 		  "message=\"Invalid number of arguments\"\n"
 		  "sender=\"server\"\n"
 		  "[/message]\n", simple_wml::INIT_COMPRESSED);
-		send_doc(data, sock);
+		send_doc(data, sock, "error");
 		return;
 	}
 	const player_map::const_iterator pl = players_.find(sock);
@@ -1109,7 +1125,7 @@ void server::process_whisper(const network::connection sock,
 
 		simple_wml::document cwhisper;
 		whisper.copy_into(cwhisper.root().add_child("whisper"));
-		send_doc(cwhisper, i->first);
+		send_doc(cwhisper, i->first, "command");
 		return;
 	}
 
@@ -1123,7 +1139,7 @@ void server::process_whisper(const network::connection sock,
 	}
 
 	msg.set_attr("sender", "server");
-	send_doc(data, sock);
+	send_doc(data, sock, "error");
 }
 
 void server::process_data_lobby(const network::connection sock,
@@ -1140,9 +1156,9 @@ void server::process_data_lobby(const network::connection sock,
 	if (data.root().child("create_game")) {
 		if (graceful_restart) {
 			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-			send_doc(leave_game_doc, sock);
+			send_doc(leave_game_doc, sock,"command");
 			lobby_.send_server_message("This server is shutting down. You aren't allowed to make new games. Please reconnect to the new server.", sock);
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 			return;
 		}
 		const std::string game_name = (*data.root().child("create_game"))["name"].to_string();
@@ -1180,41 +1196,41 @@ void server::process_data_lobby(const network::connection sock,
 		if (g == games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join unknown game:\t" << game_id << ".\n";
-			send_doc(leave_game_doc, sock);
+			send_doc(leave_game_doc, sock, "command");
 			lobby_.send_server_message("Attempt to join unknown game.", sock);
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 			return;
 		} else if ((*g)->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
-			send_doc(leave_game_doc, sock);
+			send_doc(leave_game_doc, sock, "command");
 			lobby_.send_server_message("You are banned from this game.", sock);
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 			return;
 		} else if(!observer && !(*g)->password_matches(password)) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join game:\t\"" << (*g)->name() << "\" ("
 				<< game_id << ") with bad password\n";
-			send_doc(leave_game_doc, sock);
+			send_doc(leave_game_doc, sock, "command");
 			lobby_.send_server_message("Incorrect password.", sock);
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 			return;
 		} else if (observer && !(*g)->allow_observers()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
 				<< game_id << ") which doesn't allow observers.\n";
-			send_doc(leave_game_doc, sock);
+			send_doc(leave_game_doc, sock, "command");
 			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers.", sock);
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 			return;
 		} else if (!(*g)->level_init()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join uninitialized game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
-			send_doc(leave_game_doc, sock);
+			send_doc(leave_game_doc, sock, "command");
 			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers.", sock);
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 			return;
 		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -1244,7 +1260,7 @@ void server::process_data_lobby(const network::connection sock,
 	// Player requests update of lobby content,
 	// for example when cancelling the create game dialog
 	if (data.child("refresh_lobby")) {
-		send_doc(games_and_users_list_, sock);
+		send_doc(games_and_users_list_, sock, "lobby_list");
 	}
 }
 
@@ -1502,7 +1518,7 @@ void server::process_data_game(const network::connection sock,
 			}
 
 			// Send the player who has quit the gamelist.
-			send_doc(games_and_users_list_, sock);
+			send_doc(games_and_users_list_, sock, "lobby_list");
 		}
 		return;
 	// If this is data describing side changes by the host.
@@ -1555,7 +1571,7 @@ void server::process_data_game(const network::connection sock,
 				update_game_in_lobby(g, user);
 			}
 			// Send the removed user the lobby game list.
-			send_doc(games_and_users_list_, user);
+			send_doc(games_and_users_list_, user, "lobby_list");
 			// FIXME: should also send a user diff to the lobby
 			//        to mark this player as available for others
 		}
@@ -1677,6 +1693,7 @@ int main(int argc, char** argv) {
 	std::string config_file;
 
 #ifndef FIFODIR
+# warning "No FIFODIR set"
 # define FIFODIR "/var/run/wesnothd"
 #endif
 	std::string fifo_path = std::string(FIFODIR) + "/socket";
