@@ -47,6 +47,12 @@ public:
 
 	// Argument passed to upload thread.
 	struct thread_info {
+		thread_info() :
+			t(0),
+			shutdown(false),
+			lastfile()
+		{}
+
 		threading::thread *t;
 		bool shutdown;
 		std::string lastfile;
