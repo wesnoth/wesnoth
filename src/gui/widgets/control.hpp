@@ -33,6 +33,22 @@ public:
 
 	virtual ~tcontrol() {}
 
+	/**
+	 * Sets the members of the control.
+	 *
+	 * The map contains named members it can set, controls inheriting from us
+	 * can add additional members to set by this function. The following
+	 * members can by the following key:
+	 *  * label_                  label
+	 *  * tooltip_                tooltip
+	 *  * help_message_           help
+	 *
+	 *
+	 * @param data                Map with the key value pairs to set the members.
+	 */
+	virtual void set_members(const std::map<
+		std::string /* member id */, t_string /* member value */>& data);
+
 	/***** ***** ***** ***** State handling ***** ***** ***** *****/
 
 	/**

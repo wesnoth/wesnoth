@@ -911,7 +911,7 @@ twidget* tbuilder_listbox::build() const
 		, 0);
 
 	if(!list_data.empty()) {
-		listbox->add_items(list_data);
+		listbox->add_rows(list_data);
 	}
 
 	listbox->finalize_setup();

@@ -42,6 +42,17 @@
 namespace gui2 {
 
 
+void ttoggle_button::set_members(const std::map<std::string, t_string>& data)
+{
+	// Inherit
+	tcontrol::set_members(data);
+
+	std::map<std::string, t_string>::const_iterator itor = data.find("icon");
+	if(itor != data.end()) {
+		set_icon_name(itor->second);
+	}
+}
+
 void ttoggle_button::mouse_enter(tevent_handler&) 
 { 
 	DBG_G_E << "Toggle button: mouse enter.\n"; 

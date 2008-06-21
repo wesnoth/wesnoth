@@ -47,6 +47,14 @@ public:
 	/** Inherted from tevent_executor. */
 	void mouse_left_button_click(tevent_handler&);
 
+	/** 
+	 * Inherited from tcontrol.
+	 *
+	 * Sets the additional member
+	 *  * icon_name_              icon
+	 */
+	void set_members(const std::map<std::string, t_string>& data);
+
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);
 

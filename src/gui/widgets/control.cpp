@@ -58,6 +58,25 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 {
 }
 
+void tcontrol::set_members(const std::map<
+		std::string /* member id */, t_string /* member value */>& data)
+{
+	std::map<std::string, t_string>::const_iterator itor = data.find("label");
+	if(itor != data.end()) {
+		set_label(itor->second);
+	}
+
+	itor = data.find("tooltip");
+	if(itor != data.end()) {
+		set_tooltip(itor->second);
+	}
+
+	itor = data.find("help");
+	if(itor != data.end()) {
+		set_help_message(itor->second);
+	}
+}
+
 void tcontrol::mouse_hover(tevent_handler& event)
 {
 	DBG_G_E << "Control: mouse hover.\n"; 

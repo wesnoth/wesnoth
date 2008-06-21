@@ -376,14 +376,18 @@ const twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_b
 	return result;
 }
 
-void tlistbox::add_item(const titem& item)
+void tlistbox::add_row(const std::map<
+		std::string /* member id */, t_string /* member value */>& item)
 {
-	std::map<std::string, titem> data;
+	std::map<std::string /* widget id */, std::map<
+		std::string /* member id */, t_string /* member value */> > data;
+
 	data.insert(std::make_pair("", item));
-	add_item(data);
+	add_row(data);
 }
 
-void tlistbox::add_item(const std::map<std::string, titem>& data)
+void tlistbox::add_row(const std::map<std::string /* widget id */, std::map<
+		std::string /* member id */, t_string /* member value */> >& data)
 {
 	assert(list_builder_);
 
@@ -401,21 +405,13 @@ void tlistbox::add_item(const std::map<std::string, titem>& data)
 	set_scrollbar_button_status();
 }
 
-void tlistbox::add_items(const std::vector< std::map<std::string, t_string> >& data)
+void tlistbox::add_rows(const std::vector< std::map<std::string, t_string> >& data)
 {
 	// foreach(const std::map<std::string, t_string>& cell, data) {
 	// doesn't compile it sees 3 paramters instead of 2 so use a typedef.
 	typedef std::map<std::string, t_string> hack ;
 	foreach(const hack& cell, data) {
-		std::map<std::string, t_string >::const_iterator itor = cell.find("icon");
-		assert(itor != cell.end());
-		const t_string& icon = itor->second;
-
-		itor = cell.find("label");
-		assert(itor != cell.end());
-		const std::string& label = itor->second;
-
-		add_item(titem(label, icon));
+		add_row(cell);
 	}
 }
 
@@ -497,7 +493,8 @@ const tgrid* tlistbox::get_row_grid(const unsigned row) const
 }
 
 tlistbox::trow::trow(const tbuilder_grid& list_builder_, 
-		const std::map<std::string, titem>& data) :
+		const std::map<std::string /* widget id */, std::map<
+		std::string /* member id */, t_string /* member value */> >& data) :
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
 	selected_(false)
@@ -507,7 +504,8 @@ tlistbox::trow::trow(const tbuilder_grid& list_builder_,
 }
 
 void tlistbox::trow::init_in_grid(tgrid* grid, 
-		const std::map<std::string, titem>& data)
+		const std::map<std::string /* widget id */, std::map<
+		std::string /* member id */, t_string /* member value */> >& data)
 {		
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
@@ -520,13 +518,15 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 
 			if(btn) {
 				btn->set_callback_mouse_left_click(callback_select_list_item);
-				std::map<std::string, titem>::const_iterator itor = data.find(btn->id());
+				std::map<std::string /* widget id */, std::map<
+					std::string /* member id */, t_string /* member value */> >
+					::const_iterator itor = data.find(btn->id());
+
 				if(itor == data.end()) {
 					itor = data.find("");
 				}
 				if(itor != data.end()) {
-					btn->set_label(itor->second.label);
-					btn->set_icon_name(itor->second.icon);
+					btn->set_members(itor->second);
 				}
 			} else if(child_grid) {
 				init_in_grid(child_grid, data);

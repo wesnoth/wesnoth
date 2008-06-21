@@ -89,12 +89,16 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 
 	foreach(const game_config::server_info& server, pref_servers) {
 		
-		std::map<std::string, tlistbox::titem> data;
-		data.insert(std::make_pair("name", tlistbox::titem(server.name, "")));
-		data.insert(std::make_pair(
-			"address", tlistbox::titem(server.address, "")));
+		std::map<std::string, std::map<std::string, t_string> > data;
+		std::map<std::string, t_string> item;
 
-		list->add_item(data);
+		item["label"] = server.name;
+		data.insert(std::make_pair("name", item));
+
+		item["label"] = server.address;
+		data.insert(std::make_pair("address", item));
+
+		list->add_row(data);
 	}
 
 	window.recalculate_size();

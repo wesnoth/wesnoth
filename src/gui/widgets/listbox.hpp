@@ -97,54 +97,48 @@ public:
 	 */
 
 	/**
-	 * Listbox item definition.
+	 * Adds a single row to the grid.
 	 *
-	 * A row in a listbox can have one or more items (widgets) each of them can
-	 * be defined from the code. Every wiget can have an item 'assigned' which
-	 * means the fields in that widget get the values of the items set after
-	 * constructing.
+	 * This function expects a row to have only one widget or all widgets need
+	 * the same settings.
+	 *
+	 * @param item                The data to send to set_members of the
+	 *                            widget or to all the widgets.
 	 */
-	struct titem {
-
-		titem(const t_string& label, const std::string& icon = "") :
-			label(label),
-			icon(icon)
-		{}
-		
-		/** The label for the widget. */
-		t_string label;
-
-		/** the filename of the icon for the widget. */
-		std::string icon;
-	};
+	void add_row(const std::map<
+		std::string /* member id */, t_string /* member value */>& item);
 
 	/**
-	 * Adds an item to the list.
+	 * Adds single row to the grid.
 	 *
-	 * The widget added gets the item assigned to it.
+	 * This function expect a row to have multiple widgets (either multiple
+	 * columns or one column with multiple widgets). 
 	 *
-	 * @param item                The item to assign to the widget.
+	 *
+	 * @param data                The data to send to the set_members of the
+	 *                            widgets. If the member id is not an empty
+	 *                            string it is only send to the widget that has
+	 *                            the wanted id (if any). If the member id is an
+	 *                            empty string, it is send to all members.
+	 *                            Having both empty and non-empty id's gives
+	 *                            undefined behaviour.
 	 */
-	void add_item(const titem& item);
+	void add_row(const std::map<std::string /* widget id */, std::map<
+		std::string /* member id */, t_string /* member value */> >& data);
 
 	/**
-	 * Adds an item to the list.
+	 * Adds multiple rows to the grid.
 	 *
-	 * An item is most of the time a row which contains one or more widgets.
-	 * This map contains the items to assign to those widgets. If a widget with
-	 * the 'id' of a map exists then that widget gets that 'item' assigned. Else if
-	 * there is an empty map 'id', that 'item' gets assigned.
+	 * Small wrapper to void add_row(const std::map<std::string, t_string>&).
+	 * NOTE it's _not_ a wrapper to void add_row(const std::map<std::string,
+	 * std::map<std::string, t_string> >&).
 	 *
-	 * @param data                Map with the items to assign to the row items.
+	 * @param data                Vector with the number of rows, for every row
+	 *                            it calls add_row(std::map<std::string,
+	 *                            t_string>&). 
 	 */
-	void add_item(const std::map<std::string /*id*/, titem /*item*/>& data);
-
-	/**
-	 * Adds one or more items to the listbox.
-	 *
-	 * Just a proof-of-concept version to add a list of items to a listbox.
-	 */
-	void add_items(const std::vector< std::map<std::string, t_string> >& data);
+	void add_rows(const std::vector<std::map<
+		std::string /* member id */, t_string /* member value */> >& data);
 
 	unsigned get_item_count() const { return rows_.size(); }
 
@@ -251,7 +245,8 @@ private:
 	public:
 
 		trow(const tbuilder_grid& list_builder_, 
-			const std::map<std::string, titem>& data);
+			const std::map<std::string /* widget id */, std::map<
+			std::string /* member id */, t_string /* member value */> >& data);
 
 		void select(const bool sel = true);
 	
@@ -276,7 +271,8 @@ private:
 		bool selected_;
 
 		void init_in_grid(tgrid* grid, 
-			const std::map<std::string, titem>& data);
+			const std::map<std::string /* widget id */, std::map<
+			std::string /* member id */, t_string /* member value */> >& data);
 
 		void select_in_grid(tgrid* grid, const bool sel);
 	};
