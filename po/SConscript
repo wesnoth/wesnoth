@@ -1,10 +1,21 @@
 # vi: syntax=python:et:ts=4
 from glob import glob
 from subprocess import Popen, PIPE
-import os
+import os, shutil
 import re
 from os.path import join
 Import("env")
+
+def remove_pot_cdate(path):
+    return "".join(filter(lambda line: "POT-Creation-Date: " not in line, open(path).readlines()))
+def update_pot(target, source, env):
+    pot = target[0].path
+    new_pot = source[0].path
+    if not os.path.exists(new_pot): return
+    if remove_pot_cdate(new_pot) != remove_pot_cdate(pot):
+        shutil.copy2(new_pot, pot)
+        print pot + " updated."
+    os.remove(new_pot)
 
 #
 # Gettext message catalog generation
@@ -50,8 +61,9 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
                 )
 
+        new_pot = str(pot) + ".new"
         if cfgs and sources:
-            env.Command(pot, [source_pot, wml_pot],
+            env.Command(new_pot, [source_pot, wml_pot],
                 [
                     "msgcat --sort-by-file $SOURCES -o $TARGET",
                     Delete(wml_pot),
@@ -59,9 +71,10 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 ]
             )
         elif cfgs:
-            env.Command(pot, wml_pot, Move(pot.path, wml_pot[0].path))
+            env.Command(new_pot, wml_pot, Move("$TARGET", "$SOURCE"))
         else:
-            env.Command(pot, source_pot, Move(pot.path, source_pot[0].path))
+            env.Command(new_pot, source_pot, Move("$TARGET", "$SOURCE"))
+        env.Command(pot, new_pot, Action(update_pot))
 
     env.Alias("pot-update", "../translations")
 
@@ -95,8 +108,8 @@ if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS
 
     manpages = Split("wesnoth.6 wesnoth_editor.6 wesnothd.6")
     charsets = { "ar":"utf8", "bg":"cp1251", "ca_ES@valencia":"iso-8859-15", "cs":"iso-8859-2", "el":"iso-8859-7",
-		  "he":"iso-8859-8", "hr":"utf8", "hu":"iso-8859-2", "ja":"euc-jp", "ko":"euc-kr", "lt":"iso-8859-13", "pl":"iso-8859-2",
-		  "ro":"iso-8859-2", "ru":"iso-8859-5", "sk":"iso-8859-2", "sl":"iso-8859-2", "sr":"utf8", "sr@latin":"utf8",
+          "he":"iso-8859-8", "hr":"utf8", "hu":"iso-8859-2", "ja":"euc-jp", "ko":"euc-kr", "lt":"iso-8859-13", "pl":"iso-8859-2",
+          "ro":"iso-8859-2", "ru":"iso-8859-5", "sk":"iso-8859-2", "sl":"iso-8859-2", "sr":"utf8", "sr@latin":"utf8",
           "tr":"iso-8859-9", "zh_CN":"gb2312" }
     env.Po4aGettextize("wesnoth-manpages/wesnoth-manpages.pot",
         [join("../doc/man", man) for man in manpages], PO4A_FORMAT = "man")
