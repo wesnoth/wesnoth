@@ -407,15 +407,16 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 }
 bool unit_frame::invalidate(const bool force,const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
 {
-	const int xsrc = game_display::get_singleton()->get_location_x(src);
-	const int ysrc = game_display::get_singleton()->get_location_y(src);
-	const int xdst = game_display::get_singleton()->get_location_x(dst);
-	const int ydst = game_display::get_singleton()->get_location_y(dst);
+	game_display* disp = game_display::get_singleton();
+	const int xsrc = disp->get_location_x(src);
+	const int ysrc = disp->get_location_y(src);
+	const int xdst = disp->get_location_x(dst);
+	const int ydst = disp->get_location_y(dst);
 	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
-	//unused var - int d2 = game_display::get_singleton()->hex_size() / 2;
+	//unused var - int d2 = disp->hex_size() / 2;
 
 	image::locator image_loc;
 	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
@@ -439,30 +440,29 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const gamemap:
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y;
 	if (image != NULL) {
 		// optimization for most common case
+		//FIXME : don't work for 72x72 images not fitting in a hex
 		if(x==xsrc && y == ysrc && 
-				image->w  == game_display::get_singleton()->hex_size() &&
-				image->h  == game_display::get_singleton()->hex_size()) {
+				image->w  == disp->hex_size() &&
+				image->h  == disp->hex_size()) {
 
 			// if we need to update ourselve because we changed, invalidate our hex
 			// and return whether or not our hex was invalidated
 			 if(force || need_update()){
-				 bool tmp = game_display::get_singleton()->invalidate(src);
-				 return tmp;
+				 return disp->invalidate(src);
 			 }
 			// if not, then do nothing, either our hex has been invalidated for other reasons, and we did not do it
 			// or it wasn't and we don't want to do it
 			return false;
 		} else {
-			// if we need to update ourselve because we changed, invalidate our hexs
+			// if we need to update ourselve because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
+			const SDL_Rect r = {x,y,image->w,image->h};
 			if(force || need_update()){
-				const SDL_Rect r = {x,y,image->w,image->h};
-				return game_display::get_singleton()->invalidate_locations_in_rect(r);
+				return disp->invalidate_locations_in_rect(r);
 			}
 			// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
-			const SDL_Rect r = {x,y,image->w,image->h};
-			if(game_display::get_singleton()->rectangle_need_update(r)) {
-				return game_display::get_singleton()->invalidate_locations_in_rect(r);
+			if(disp->rectangle_need_update(r)) {
+				return disp->invalidate_locations_in_rect(r);
 			}
 			return false;
 
