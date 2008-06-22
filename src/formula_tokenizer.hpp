@@ -31,6 +31,14 @@ enum TOKEN_TYPE { TOKEN_OPERATOR, TOKEN_STRING_LITERAL,
 				  TOKEN_COMMENT, TOKEN_POINTER  };
 
 struct token {
+	
+	token() :
+		type(TOKEN_COMMENT),
+		begin(),
+		end()
+	{
+	}
+
 	TOKEN_TYPE type;
 	iterator begin, end;
 };
