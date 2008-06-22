@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:28+0100\n"
-"PO-Revision-Date: 2006-07-19 18:43+0200\n"
-"Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
+"PO-Revision-Date: 2008-06-22 02:55+0200\n"
+"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "Wesnothin synty"
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:11
 msgid "TRoW"
-msgstr ""
+msgstr "Ws"
 
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
@@ -36,12 +36,12 @@ msgstr "Taistelija"
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
 msgid "(Easy)"
-msgstr ""
+msgstr "(Helppo)"
 
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
 msgid "(Normal)"
-msgstr ""
+msgstr "(Normaali)"
 
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
@@ -51,7 +51,7 @@ msgstr "Komentaja"
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "(Challenging)"
-msgstr ""
+msgstr "(Haastava)"
 
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
@@ -60,7 +60,6 @@ msgstr "Ylimys"
 
 #. [campaign]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
-#, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
@@ -68,29 +67,31 @@ msgid ""
 "\n"
 "(Intermediate level, 25 scenarios.)"
 msgstr ""
-"Johda prinssi Haldric läpi hävitetyn Vihersaaren ja halki meren perustamaan "
+"Johda prinssi Haldric läpi Vihersaaren hävityksen ja halki meren perustamaan "
 "itse Wesnothin kuningaskunta. Yhteenotto kuolleiden valtiaan Jevyanin kanssa "
-"odottaa..."
+"odottaa...\n"
+"\n"
+"(Keskivaikea, 25 skenaariota.)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
 msgid "Campaign Design"
-msgstr ""
+msgstr "Kampanjasuunnittelu"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:32
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Kampanjan ylläpito"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:42
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Taidetyö ja graafinen suunnittelu"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:51
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Sekalainen"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:4
@@ -205,7 +206,7 @@ msgstr "Kuningas Eldaricin kuolema"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:131
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:115
 msgid "Turns run out"
-msgstr "Ajan loppuminen"
+msgstr "Vuorot loppuvat"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:92
@@ -213,8 +214,8 @@ msgid ""
 "The trouble seems to have finally reached to the heart of the Isle, to the "
 "isolated lands of King Eldaric IV."
 msgstr ""
-"Sota ulottuu jo saaren keskiosiinkin, kuningas Eldaric IV:n eristyneeseen "
-"valtioon asti."
+"Sota ulottuu jo saaren keskiosiinkin, kuningas Eldaric IV:n eristyneille "
+"maille asti."
 
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:97
@@ -250,7 +251,7 @@ msgid ""
 "Look, a little princeling and his merry men! We'll teach you a lesson for "
 "what your kind did to us!"
 msgstr ""
-"Katsokaa, Pikku Prinssi ja seitsemän kääpiötä! Annetaan niille oikein isän "
+"Katsokaa, pikku prinssi ja seitsemän kääpiötä! Annetaan niille oikein isän "
 "kädestä! Saavat maksaa siitä mitä tekivät meille!"
 
 #. [message]: description=King Eldaric IV
@@ -258,7 +259,8 @@ msgstr ""
 msgid ""
 "Don't forget about some of the more isolated villages, we'll need the gold!"
 msgstr ""
-"Älä unohda eristyneitäkään kyliä, tarvitsemme kaiken rahan mitä saamme!"
+"Älä unohda eristyneempiäkään kyliä, tarvitsemme kaikki kultarahat mitä "
+"saamme!"
 
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:137
@@ -284,7 +286,7 @@ msgid ""
 "lands. The Lich-Lords had no choice... They opened a gate... and..."
 msgstr ""
 "Riehumaan! Hah! Teidän hölmö Suvilahden ruhtinaanne hyökkäsi meidän "
-"maillemme. Kuolemanherroilla ei ollut muuta mahdollisuutta kuin avata "
+"maillemme. Kuolonherroilla ei ollut muuta mahdollisuutta kuin avata "
 "portti... ja..."
 
 #. [message]: description=King Eldaric IV
@@ -300,8 +302,8 @@ msgid ""
 "distant west! Now even we Wesfolk must flee or be slaves."
 msgstr ""
 "He kutsuivat kaikki helvetin kauhut tälle saarelle. He rakensivat suuren "
-"taikaportin, joka johtaa örkkien kotimaailmaan kaukana lännessä. Nyt jopa "
-"meidän wessien täytyy paeta örkkien orjuutta."
+"kiviportin, joka johtaa örkkien kotimaahan kaukana lännessä. Nyt jopa meidän "
+"wessien täytyy paeta örkkien orjuutta."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:168
@@ -380,38 +382,37 @@ msgstr "Tan-Erang"
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:128
 msgid "Thomas"
-msgstr ""
+msgstr "Thomas"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:130
 msgid "Richard"
-msgstr ""
+msgstr "Richard"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:131
 msgid "Henry"
-msgstr ""
+msgstr "Henry"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:132
 msgid "Robert"
-msgstr ""
+msgstr "Robert"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:141
 msgid "Thegwyn"
-msgstr ""
+msgstr "Thegwyn"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:142
 msgid "Galdred"
-msgstr ""
+msgstr "Galdred"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:143
-#, fuzzy
 msgid "Tromas"
-msgstr "Tirasch"
+msgstr "Tromas"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:156
@@ -469,7 +470,7 @@ msgstr ""
 #. [message]: description=Tan-Rarbag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:207
 msgid "So HUMAN, care to make your final stand?"
-msgstr "No niin IHMINEN, oletko valmis viimeiseen taistoosi?"
+msgstr "No niin, IHMINEN, oletko valmis viimeiseen taistoosi?"
 
 #. [message]: description=Tan-Erang
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:212
@@ -494,7 +495,7 @@ msgstr "Öh, minulla on oikeus antau..."
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:273
 msgid "Nay! Off with your hea- - -"
-msgstr "Ei käy! Pää poikk- - -"
+msgstr "Ei käy! Pää poikk–"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:278
@@ -508,7 +509,7 @@ msgstr ""
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:283
 msgid "Haldric, what say you on this matter?"
-msgstr "Hadric, mitä sanot tästä?"
+msgstr "Haldric, mitä sanot tästä?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:288
@@ -529,18 +530,18 @@ msgstr "Olkoon rauha välillämme, henkiinjäämisemme riippuu siitä."
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:303
 msgid "So what shall I call you?"
-msgstr "Mikä on nimesi?"
+msgstr "Siis kuinka kutsuisin sinua?"
 
 #. [message]: description=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:307
 msgid "The Lady Outlaw will do."
-msgstr "Olen vain lainsuojaton."
+msgstr "Sano vain Lady Lainsuojaton."
 
 #. [command]: (description=Lady Outlaw)}
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:318
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:355
 msgid "Lady Outlaw"
-msgstr "Lainsuojaton"
+msgstr "Lady Lainsuojaton"
 
 #. [option]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:338
@@ -563,8 +564,7 @@ msgid ""
 "She's clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind..."
 msgstr ""
-"Hän on todellakin kyvykäs! Ehkä valitsin väärin. No, ainakin hän jätti osan "
-"kullastaan..."
+"Hän on viisas! Ehkä valitsin väärin. No, ainakin hän jätti osan kullastaan..."
 
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:407
@@ -573,13 +573,12 @@ msgid ""
 "to hold off these vile monsters for as long as I can."
 msgstr ""
 "Poikani, johda kansamme eteläsolan läpi. Minä pysyn jäljessäsi ja pidättelen "
-"näitä hirviöitä niin kauan kuin voin."
+"näitä katalia hirviöitä niin kauan kuin voin."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:411
-#, fuzzy
 msgid "But, Father!"
-msgstr "Mutta isä!"
+msgstr "Mutta, isä!"
 
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:415
@@ -601,9 +600,8 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:461
-#, fuzzy
 msgid "Our home! Where shall we go!"
-msgstr "Mutta meidän kotimme! Minne oikein menisimme?"
+msgstr "Kotimme! Minnä me nyt menemme!"
 
 #. [message]: description=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:465
@@ -613,7 +611,7 @@ msgstr "Se on nyt menneisyyttä. Meidän on mentävä etelään."
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:4
 msgid "A Harrowing Escape"
-msgstr "Pitkä marssi"
+msgstr "Kiusallinen pako"
 
 #. [side]: type=Orcish Warlord, description=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:35
@@ -675,7 +673,7 @@ msgid ""
 msgstr ""
 "Arg, örkkien etujoukot ovat kiertäneet eteemme täälläkin! He pitävät jo "
 "hallussaan solan suuta. Meidän on päästävä solasta pois ennen talven tuloa "
-"tai kuolemme kaikki!"
+"tai olemme kaikki kuollutta lihaa!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:131
@@ -709,7 +707,7 @@ msgstr "Burin Kadonnut"
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:175
 msgid "Burin, Burin the Lost. Who be ye?"
-msgstr "Burin, Burin kadonnut. Kuka sinä olet?"
+msgstr "Burin, Burin Kadonnut. Kuka sinä olet?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:180
@@ -718,18 +716,18 @@ msgid ""
 "the pass... What are you?"
 msgstr ""
 "Olen prinssi Haldric, meillä ei ole aikaa jutella. Meidän on kiirehdittävä "
-"solan läpi... mikä sinä muuten olet?"
+"solan läpi... Mikä sinä muuten olet?"
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:185
-#, fuzzy
 msgid ""
 "I'm a dwarf, you fool of a boy! I got lost while exploring deep underground, "
 "almost a century ago. I've never found my way home. But it seems nice enough "
 "here."
 msgstr ""
-"Olen kääpiö! Hölmö poika! Eksyin noin vuosisata sitten tutkiessani luolia. "
-"En koskaan löytänyt takaisin kotiini, mutta täällä on ollut mukavaa."
+"Olen kääpiö, senkin pojantyperys! Eksyin miltei vuosisata sitten tutkiessani "
+"luolia. En koskaan löytänyt takaisin kotiini, mutta täällä on ollut "
+"tarpeeksi mukavaa."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:190
@@ -760,13 +758,12 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:213
-#, fuzzy
 msgid ""
 "We're trapped in the pass! I can see their reinforcements! All is lost! Is "
 "that... Is that snow?... We're doomed!"
 msgstr ""
 "Olemme juuttuneet solaan! Voin nähdä heidän vahvistusjoukkonsa! Kaikki on "
-"hukassa! Onko tuo... onko tuo lunta... Olemme tuhoon tuomittuja!"
+"hukassa! Onko tuo... Onko tuo lunta? Olemme tuhoon tuomittuja!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:233
@@ -774,8 +771,8 @@ msgid ""
 "SE - The River Road.\n"
 "SW - The Midlands."
 msgstr ""
-"Kaakkoon - Jokitie\n"
-"Lounaaseen - Keskiylänkö"
+"Kaakkoon – Jokitie\n"
+"Lounaaseen – Keskiylänkö"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:253
@@ -812,7 +809,7 @@ msgstr ""
 msgid ""
 "SWAMP! I'm under 5 feet tall, and I don't float! Argh, have it your way."
 msgstr ""
-"SUOTA! Minä olen 145 senttiä pitkä, enkä pysy pinnalla millään! Arg, tee "
+"SUOTA! Minä olen 145 senttiä pitkä, enkä pysy pinnalla millään! Argh, tee "
 "miten lystäät."
 
 #. [option]: description=Prince Haldric
@@ -823,7 +820,7 @@ msgstr "Mennään Keskiylängön kautta..."
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:290
 msgid "I suspect that the Midlands might be in ruins by now."
-msgstr "Luulen, että Keskiylänkö on jo raunioina."
+msgstr "Luulen, että Keskiylänkö voi jo olla raunioina."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:295
@@ -831,8 +828,8 @@ msgid ""
 "It's better than the swamp. I'm under 5 feet tall, and I don't float! "
 "Besides, I'd rather enjoy meeting more orcs."
 msgstr ""
-"On se suota parempi. Olen 145 senttiä pitkä, enkä pysy pinnalla millään! "
-"Lisäksi, tappaisin mielelläni pari örkkiä lisää..."
+"On se suota parempi. Minä olen 145 senttiä pitkä, enkä pysy pinnalla "
+"millään! Lisäksi, tappaisin mielelläni pari örkkiä lisää..."
 
 #. [else]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:339
@@ -878,7 +875,6 @@ msgstr "Minua ette niin helpolla saa!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:432
-#, fuzzy
 msgid ""
 "We've escaped the pass. Well, at least I know that the orcs can be beaten. "
 "Hmm, I guess that this is the last I'll see of my home... and my father. "
@@ -886,7 +882,7 @@ msgid ""
 msgstr ""
 "Olemme paenneet solasta. No, ainakin tiedän nyt, että örkitkään eivät ole "
 "voittamattomia. Hmm, tämä on varmaan viimeinen asia, mitä näen kodistani... "
-"ja Isästäni. (Huokaus)"
+"ja isästäni. (Huokaus)"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:436
@@ -954,14 +950,13 @@ msgstr "Skorpioni"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:163
-#, fuzzy
 msgid ""
 "With great trepidation, Prince Haldric leads his refugee band into the Swamp "
 "of Esten. In the center of that very swamp a shroud of fog descends over "
 "Young Prince Haldric."
 msgstr ""
 "Vastahakoisesti prinssi Haldric johtaa pakolaisryhmänsä Estenin soille. Suon "
-"keskellä oleva sumu laskeutuu nuoren prinssi Haldricin ympärille."
+"keskellä oleva sumu laskeutuu nuoren prinssi Haldricin ylle."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:169
@@ -989,7 +984,7 @@ msgid ""
 "I miss the orcs... We go all this way, and (SNIFF) what a lovely smell we "
 "have discovered."
 msgstr ""
-"Kaipaan örkkejä... olemme menneet näin kauas, ja (SNIFF) olemmepa löytäneet "
+"Kaipaan örkkejä... Olemme menneet näin kauas ja (SNIFF) olemmepa löytäneet "
 "ihanan tuoksun."
 
 #. [message]: description=Lady Outlaw
@@ -1019,14 +1014,14 @@ msgid ""
 "Back you vile--- Oh, sorry I thought you were undead. When are those goofs "
 "in Clearwater Port going to clear the swamp again?"
 msgstr ""
-"Peräänny kurja--- Oi anteeksi, luulin että olette epäkuolleita. Milloin nuo "
+"Peräänny kurja – Oi, anteeksi, luulin että olette epäkuolleita. Milloin nuo "
 "Kirkasvesisataman hölmöt siivoavat nämä suot uudelleen?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:255
-#, fuzzy
 msgid "Maybe they'll clear it some time after the APOCALYPSE is OVER!"
-msgstr "Kenties VÄHÄN SEN JÄLKEEN, KUN TÄMÄ HELVETTI ON LOPPUNUT!"
+msgstr ""
+"Kenties he puhdistavat sen VÄHÄN SEN JÄLKEEN, KUN TÄMÄ HELVETTI ON LOPPUNUT!"
 
 #. [message]: description=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:260
@@ -1044,13 +1039,13 @@ msgid ""
 "SW - The Oldwood Forest.\n"
 "Enter at Your Own Risk!"
 msgstr ""
-"Lounaaseen - Vanha metsä.\n"
+"Lounaaseen – Vanha metsä.\n"
 "Kulku omalla vastuulla!"
 
 #. [message]: description=Lollyra
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:372
 msgid "May I live forever in Un-death!"
-msgstr "Tulkoon minulle ikuinen epäkuolleen elämä!"
+msgstr "Eläköön minä ikuisesti epäkuolemassa!"
 
 #. [message]: description=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:383
@@ -1069,7 +1064,6 @@ msgstr "Sir Ruddry"
 
 #. [message]: description=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:434
-#, fuzzy
 msgid ""
 "I don't know who you are, but you can't continue down this road! There is a "
 "horde of those orcs bigger than any army I've ever seen just down the road!"
@@ -1080,12 +1074,11 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:439
-#, fuzzy
 msgid ""
 "I'm Haldric; my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, have you deserted your post?"
 msgstr ""
-"Olen Haldric, isäni oli kuningas Eldaric IV, jonka maat olivat täältä "
+"Olen Haldric. Isäni oli kuningas Eldaric IV, jonka maat olivat täältä "
 "koiliseen. Sotilas, oletko hyljännyt vartiopaikkasi?"
 
 #. [message]: description=Sir Ruddry
@@ -1097,7 +1090,7 @@ msgid ""
 msgstr ""
 "Ei, herra! Olen Kirkasvesisatamasta lähetetyn tiedusteluosaston viimeinen "
 "henkiinjäänyt. Uskokaa minua, herra, ette voi jatkaa tätä tietä pitkin. "
-"Mukananne on vaimoja ja lapsia, teidät teurastetaan varmasti."
+"Etenkin pakolaisten kanssa teidät teurastetaan varmasti."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:449
@@ -1129,12 +1122,11 @@ msgstr ""
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:464
-#, fuzzy
 msgid ""
 "Oh great, now a forest... I should have stayed at home and took my chances "
 "with the orcs!"
 msgstr ""
-"Hienoa, seuraavaksi metsä... Kunpa olisin jäänyt kotiin mittelemään örkkejä "
+"Hienoa, nyt sitten metsä... Kunpa olisin jäänyt kotiin mittelemään örkkejä "
 "vastaan!"
 
 #. [message]: description=Sir Ruddry
@@ -1226,12 +1218,12 @@ msgstr "Turpa tukkoon! Hoidellaan ne."
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:210
 msgid "SE - The Oldwood. Enter at Your Own Risk!"
-msgstr "Kaakkoon - Vanha Metsä. Kulku omalla vastuulla!"
+msgstr "Kaakkoon – Vanha Metsä. Kulku omalla vastuulla!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:230
 msgid "SW - Southbay."
-msgstr "Lounaaseen - Suvilahti."
+msgstr "Lounaaseen – Suvilahti."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:251
@@ -1305,7 +1297,7 @@ msgid ""
 "Soldier, aren't you on the wrong side of the lines?"
 msgstr ""
 "Olen Haldric, isäni oli kuningas Eldaric IV, jonka maat olivat täältä "
-"koiliseen. Sotilas, etkö ole linjojen väärällä puolella?"
+"luoteeseen. Sotilas, etkö ole linjojen väärällä puolella?"
 
 #. [message]: description=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:377
@@ -1361,7 +1353,7 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:4
 msgid "The Oldwood"
-msgstr "Vanha Metsä"
+msgstr "Vanha metsä"
 
 #. [side]: type=Orcish Warlord, description=Tan-Gralg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:37
@@ -1429,7 +1421,7 @@ msgid ""
 "overhead, blocking almost all of the light... The ominous noises of the deep "
 "woods echo all around."
 msgstr ""
-"Haldricin joukko on päätynyt Vanhan Metsän sydämeen. Tie kapenee pian ja "
+"Haldricin joukko on päätynyt Vanhan metsän sydämeen. Tie kapenee pian ja "
 "muuttuu poluksi. Kaikkialla on puita, jotka pimentävät valon melkein "
 "kokonaan... syvän metsän uhkaavat äänet kaikuvat joka puolella."
 
@@ -1468,19 +1460,17 @@ msgstr "Tuo puu, se puhuu! Ei, ei, me olemme puiden ystäviä, oikeasti!"
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:215
-#, fuzzy
 msgid ""
 "Your kind has long come with your axes, some tree-friends you are. Still, "
 "you seem less of a menace than these new monsters that have come to plague "
 "us. They cut the trees, and burn the trees for no reason at all!"
 msgstr ""
-"Olette tulleet pitkän matkan kirveidenne kanssa ollaksemme puiden ystäviä. "
-"Silti näytätte vähemmän uhkaavilta kuin ne uudet hirviöt, jotka ovat oikea "
-"vitsaus. Ne kaatavat ja polttavat puita ilman mitään syitä!"
+"Olette tulleet melkoisen pitkän matkan kirveidenne kanssa ollaksenne puiden "
+"ystäviä. Silti näytätte vähemmän uhkaavilta kuin ne uudet hirviöt, jotka "
+"ovat oikea vitsaus. Ne kaatavat puita ja polttavat puita ilman mitään syytä!"
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:219
-#, fuzzy
 msgid ""
 "You claim to be a tree-friend; show it to be true. For we are in dire need, "
 "or you may meet your fate with the rest of these monsters."
@@ -1524,7 +1514,7 @@ msgid ""
 "Without the help of these tree-folk we'll be trapped in these woods till we "
 "die! There will be nothing to hold the orcs back!"
 msgstr ""
-"Ilman apuamme Puukansa jää ansaan ja nuo puut kuolevat. Ja sen jälkeen "
+"Ilman apuamme puukansa jää ansaan ja nuo puut kuolevat. Ja sen jälkeen "
 "mikään ei pidättele örkkejä!"
 
 #. [message]: description=Burin the Lost
@@ -1535,7 +1525,7 @@ msgstr "Typerä puukansa."
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:287
 msgid "We've defeated the orcs!"
-msgstr "Olemme lyöneet örkit!"
+msgstr "Olemme kukistaneet örkit!"
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:291
@@ -1566,14 +1556,14 @@ msgid ""
 "orcs are gone as well. We were here before all others, and I suspect that we "
 "will be here in the end."
 msgstr ""
-"Hmmmmmm kaltaiseni olivat täällä ennen teitä ja ovat vielä kauan senkin "
-"jälkeen kun örkit ovat menneet. Me olimme täällä ennen muita ja uskon että "
+"Hmmmm, kaltaiseni olivat täällä ennen teitä ja ovat vielä kauan senkin "
+"jälkeen kun örkit ovat menneet. Me olimme täällä ennen muita, ja uskon, että "
 "olemme täällä loppuun asti."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:303
 msgid "Can you help us fight the orcs?"
-msgstr "Voitteko auttaa meitä taistelussa Örkkejä vastaan?"
+msgstr "Voitteko auttaa meitä taistelemaan örkkejä vastaan?"
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:307
@@ -1619,23 +1609,22 @@ msgid ""
 "it with us from the east. We thought it was lost in the war with your "
 "people, when Lich-Lord Lenvan fell!"
 msgstr ""
-"Hän tarkoittaa varmaankin Tulirubiinia. Se oli kaikkein arvokkain "
+"Hän tarkoittaa varmaankin tulirubiinia. Se oli kaikkein arvokkain "
 "taikaesineemme. Toimme sen mukanamme idästä. Luulimme, että se oli kadonnut "
-"sodassa kansaanne vastaan silloin, kun Kuolonherra Lenvan tuhoutui!"
+"sodassa kansaanne vastaan silloin, kun kuolonherra Lenvan kukistui!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:327
 msgid "At this point we need all of the help we can get!"
-msgstr "Tässä vaiheessa tarvitsemme kaiken avun jonka vain voimme saada!"
+msgstr "Tässä vaiheessa tarvitsemme kaiken avun, jonka vain voimme saada!"
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:331
 msgid "Then I will open the catacombs for you..."
-msgstr "Siinä tapauksessa avaan teille reitin katakombeihin..."
+msgstr "Siinä tapauksessa avaan teille katakombit..."
 
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:341
-#, fuzzy
 msgid ""
 "Young Prince, while the lich-lords have betrayed us by allying themselves "
 "with that orcish scum, I can't bring myself to fight against one of the "
@@ -1652,7 +1641,6 @@ msgstr "Lady, miksi annat näiden hirviöiden johtaa kansaasi?"
 
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:349
-#, fuzzy
 msgid ""
 "Haldric, we are an ancient people who lived in a land filled with all manner "
 "of man and beast. We needed vision that extended beyond the meager span of "
@@ -1660,7 +1648,7 @@ msgid ""
 "forever, and our worst got to serve as mindless slaves."
 msgstr ""
 "Haldric, olemme muinaista kansaa. Maassa, jossa elimme, oli kaikenlaisia "
-"ihmisiä ja eläimiä. Tarvitsimme vision, joka kestäisi yli ihmisen lyhyen "
+"ihmisiä ja eläimiä. Tarvitsimme näyn, joka kestäisi yli ihmisen lyhyen "
 "elinkaaren. Nekromantian taito salli parhaiden ja älykkäimpien meistä elää "
 "ikuisesti, ja huonoimmatkin saivat palvella mielensä menettäneinä orjina."
 
@@ -1672,23 +1660,22 @@ msgid ""
 "our greatest leaders. He led our escape to the west. Albeit, after being "
 "down in that hole for so long I don't imagine he's too happy."
 msgstr ""
-"Sopimus heidän kanssaan ei ollut mitenkään huono - lukuunottamatta sitä, "
+"Sopimus heidän kanssaan ei ollut mitenkään huono – lukuun ottamatta sitä, "
 "että hävisimme sotamme kaukana lännessä, sen jälkeen pakolaissodan kansaanne "
-"vastaan ja nyt vielä örkeille. Kuolonherra Lenvan oli yksi suurimmista "
-"johtajistamme. Hän johti meidät pakoon kohti länttä. Hän tosin voi olla aika "
-"käärmeissään oltuaan tuolla kolossa niinkin pitkään."
+"vastaan ja nyt vielä tämän örkkijutun. Kuolonherra Lenvan oli yksi "
+"suurimmista johtajistamme. Hän johti meidät pakoon kohti länttä. Hän tosin "
+"voi olla aika käärmeissään oltuaan tuolla kolossa niinkin pitkään."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:357
-#, fuzzy
 msgid ""
 "Uh-huh. Have you considered the possibility that the unholy act of turning "
 "your best and brightest into undead is what causes them to fall into "
 "darkness?"
 msgstr ""
-"Jahah. Oletko koskaan miettinyt sitä, että kenties sillä epäpyhällä "
-"toimituksella, joka muuttaa parhaat ja älykkäät teistä epäkuolleiksi, on "
-"jotain tekemistä sen kanssa että he lankeavat pahuuteen?"
+"Jaahas. Oletko koskaan miettinyt sitä mahdollisuutta, että kenties se "
+"epäpyhä toimitus, joka muuttaa parhaat ja välkyimmät teistä epäkuolleiksi, "
+"on juurikin se mikä aiheuttaa ne lankeamaan pimeyteen?"
 
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:361
@@ -1711,7 +1698,7 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:4
 msgid "Temple in the Deep"
-msgstr "Syvyyksien temppeli"
+msgstr "Temppeli syvyyksissä"
 
 #. [side]: type=Lich, description=Lich-Lord Lenvan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:39
@@ -1755,13 +1742,11 @@ msgstr "Kukista kuolonherra ja"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:113
-#, fuzzy
 msgid "Retrieve the Fire Ruby (with Prince Haldric)"
-msgstr "ota haltuusi Tulirubiini"
+msgstr "Hae tulirubiini prinssi Haldricille"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:132
-#, fuzzy
 msgid ""
 "Prince Haldric and his company, grim and watchful, descend into catacombs "
 "below the temple, buried deep in the bedrock, in the very roots of the world "
@@ -1773,34 +1758,32 @@ msgstr ""
 
 #. [message]: description=Lich-Lord Lenvan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:137
-#, fuzzy
 msgid ""
 "Free! I'm free at last! No mere magi could seal me in here forever! Rise, my "
 "soldiers of darkness, the world will be ours once more!"
 msgstr ""
-"Vapaus! Vihdoinkin olen vapaa! Tiesin etteivät ne säälittävät velhot voisi "
-"vangita minua ikuisiksi ajoiksi! Pimeyden sotilaani, nouskaa, vallatkaamme "
-"maailma jälleen omaksemme!"
+"Vapaus! Vihdoinkin olen vapaa! Tiesin etteivät ne säälittävät maagit voisi "
+"vangita minua ikuisiksi ajoiksi! Pimeyden sotilaani, nouskaa, maailma tulee "
+"vielä olemaan meidän jälleen kerran!"
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:141
-#, fuzzy
 msgid ""
 "Back underground... Och. this feels much better! As for the current "
 "residents, ugh!"
 msgstr ""
-"Taas maan alla... paljon parempi olo! Mutta nämä nykyiset asukkaat, argh!"
+"Taas maan alla... ah, tuntuu paljon paremmalta! Mutta nämä nykyiset "
+"asukkaat, ugh!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:145
-#, fuzzy
 msgid "Let's send these monsters to their final rest."
-msgstr "Päästetään nämä hirviöt lopulliseen lepoon."
+msgstr "Lähetetään nämä hirviöt lopulliseen lepoonsa."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:157
 msgid "All my days are ended."
-msgstr ""
+msgstr "Päiväni ovat luetut."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:165
@@ -1820,7 +1803,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:198
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:212
 msgid "INSCRIPTION: Embrace the Monolith to be Cured by the Powers of Light."
-msgstr "Kaiverrus: Syleile monoliittia ja anna Valon voimien parantaa sinut."
+msgstr "KAIVERRUS: Syleile monoliittia ja anna valon voimien parantaa sinut."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:227
@@ -1844,20 +1827,19 @@ msgid ""
 "apple, and burns with an internal fire, which is refracted through its "
 "faces. You can feel the power flowing from it..."
 msgstr ""
-"Avatessasi arkun näet viimein Tulirubiinin. Se on omenan kokoinen ja palaa "
-"sisäistä tulta, joka heijastuu sen jokaisesta pinnasta. Tunnet, miten voima "
-"sykkii siinä..."
+"Avatessasi arkun näet viimein tulirubiinin. Se on omenan kokoinen ja palaa "
+"sisäistä tulta, joka heijastuu sen pintojen läpi. Tunnet, kuinka voima "
+"sykkii siitä..."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:291
-#, fuzzy
 msgid ""
 "It's funny that the lich-Lord didn't have this on his person. Since I don't "
 "actually know what this thing does, I'll just put it in the bottom of my "
 "pack for right now."
 msgstr ""
-"Outoa ettei kuolonherra kantanut tätä itse mukanaan. Koska en varsinaisesti "
-"tiedä mitä tämä tekee, panen sen  vain reppuni pohjimmaiseksi."
+"On hupaisaa, ettei kuolonherra kantanut tätä mukanaan. Koska en oikeastaan "
+"tiedä mitä tämä juttu tekee, panen sen vain reppuni pohjimmaiseksi."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:315
@@ -1870,7 +1852,7 @@ msgid ""
 "I'm glad that's over! We have the Ruby of Fire, and that Lich-Lord is now a "
 "pile of dust, let's get out of these catacombs!"
 msgstr ""
-"Onneksi se on ohi! Meillä on Tulirubiini ja kuolonherra on pelkkä pölykasa "
+"Onneksi se on ohi! Meillä on tulirubiini ja kuolonherra on pelkkä pölykasa "
 "vain, häivytään tästä sokkelosta!"
 
 #. [message]: description=Prince Haldric
@@ -1881,7 +1863,7 @@ msgstr "Hän nostattaa kuolleemme meitä vastaan!"
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:4
 msgid "Return to Oldwood"
-msgstr "Paluu Vanhaan Metsään"
+msgstr "Paluu Vanhaan metsään"
 
 #. [side]: type=Wose, description=Surprisingly-Treelike
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:35
@@ -1916,67 +1898,62 @@ msgid ""
 "It is late into the fall, and the first snows should fall any day. Prince "
 "Haldric has returned to his forest keep, and is pondering what to do next..."
 msgstr ""
-"Prinssi Haldric on noussut kuolonherran haudasta Tulirubiinia kantaen. Metsä "
+"Prinssi Haldric on noussut kuolonherran haudasta tulirubiinia kantaen. Metsä "
 "näyttää hyvin kirkkaalta tänään, mutta viima on kylmä. On myöhäissyksy, ja "
 "ensilumi voi sataa minä päivänä hyvänsä. Prinssi Haldric on palannut "
 "metsälinnoitukseensa ja miettii mitä tehdä seuraavaksi..."
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:111
-#, fuzzy
 msgid ""
 "So, you have defeated the Lich and returned with his jewel of power. The "
 "earth feels happy beneath my toes."
 msgstr ""
-"Olette siis kukistaneet kuolonherran ja palanneet taikaesine mukananne. Maa "
-"varpaideni välissä tuntuu onnelliselta."
+"Olette siis kukistaneet kuolonherran ja palanneet taikahely mukananne. Maa "
+"varpaideni alla tuntuu onnelliselta."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:115
-#, fuzzy
 msgid ""
 "Yes, it was a tough battle, but we prevailed. Now, I'm having a problem. I "
 "know not what I should do next."
 msgstr ""
-"Kyllä, taistelu oli kova, mutta lopussa selvisimme. Nyt minulla on ongelma. "
-"Minulla ei ole aavistustakaan mitä tekisin seuraavaksi."
+"Kyllä, taistelu oli kova, mutta me voitimme. Nyt minulla on ongelma. En "
+"tiedä mitä minun pitäisi tehdä seuraavaksi."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:119
-#, fuzzy
 msgid ""
 "I have the jewel, but I have no idea what it does. To make matters worse, I "
 "have no idea what's going on outside this forest. The number of refugees is "
 "growing daily. We need to get to Southbay, but I dare not lead us onto the "
 "plains and risk a slaughter."
 msgstr ""
-"Minulla on nyt taikaesine, muttei pienintäkään käsitystä siitä, mitä se "
-"tekee. Vielä pahempaa on, etten tiedä yhtään mitä tämän metsän ulkopuolella "
+"Minulla on se koru, muttei pienintäkään käsitystä siitä, mitä se tekee. "
+"Vielä pahempaa on, etten tiedä yhtään mitä tämän metsän ulkopuolella "
 "tapahtuu. Pakolaisten määrä lisääntyy päivä päivältä. Meidän on päästävä "
-"Suvilahteen, mutten uskalla kulkea tasangon kautta, koska se voisi johtaa "
-"verilöylyyn."
+"Suvilahteen, mutten uskalla johtaa meitä tasangoille ja ottaa verilöylyn "
+"riskiä."
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:123
-#, fuzzy
 msgid ""
 "My eyes do not extend beyond the forest. You have indeed shown yourself a "
 "tree-friend, I would there were more I could do to help you."
 msgstr ""
-"Silmäni eivät näe metsää kauemmaksi. Olet ollut puiden ystävä, voisinpa "
-"tehdä enemmän hyväksesi."
+"Silmäni eivät näe metsää kauemmaksi. Olet tosiaan näyttänyt olevasi puiden "
+"ystävä. Kunpa voisin tehdä enemmän hyväksesi."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:127
-#, fuzzy
 msgid ""
 "We can't all stay here for the winter; we would starve, or freeze. Your "
 "hospitality, though generously meant, has barely sufficed. Hold - I see "
 "somebody!"
 msgstr ""
-"Emme voi kaikki jäädä tänne talveksi, muuten me näännymme nälkään tai "
-"jäädymme. Vieraanvaraisuutesi on hädin tuskin riittänyt tähän asti. Odota "
-"hetki, näen jonkun!"
+"Emme voi kaikki jäädä tänne talveksi tai näännymme nälkään tai jäädymme. "
+"Vieraanvaraisuutesi on hädin tuskin riittänyt tähän asti. Odota hetki, näen "
+"jonkun!"
 
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:189
@@ -2059,7 +2036,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:239
 msgid "I propose we join forces, and make a break for Clearwater Port."
 msgstr ""
-"Ehdotan että yhdistämme joukkomme, ja yritämme kohti Kirkasvesisatamaa."
+"Ehdotan että yhdistämme joukkomme ja yrittäisimme kohti Kirkasvesisatamaa."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:243
@@ -2094,21 +2071,20 @@ msgid ""
 "Other than losing our war back west, then our refugee war to your people, "
 "and this orc thing, it wasn't such a bad deal."
 msgstr ""
-"Sopimus heidän kanssaan ei ollut mitenkään huono - lukuunottamatta sitä, "
+"Sopimus heidän kanssaan ei ollut mitenkään huono – lukuun ottamatta sitä, "
 "että hävisimme sotamme kaukana lännessä, sen jälkeen pakolaissodan kansaanne "
-"vastaan ja nyt vielä örkeille. "
+"vastaan ja nyt vielä tämä örkkijuttu."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:259
-#, fuzzy
 msgid ""
 "Uh-huh. Have you considered the possibility that the unholy act of turning "
 "your best and brightest into undead is what caused them to fall into "
 "darkness?"
 msgstr ""
-"Jahah. Oletko koskaan miettinyt sitä, että kenties sillä epäpyhällä "
-"toimituksella, joka muuttaa parhaat ja älykkäät teistä epäkuolleiksi, on "
-"jotain tekemistä sen kanssa että he lankeavat pahuuteen?"
+"Jaahas. Oletko koskaan miettinyt sitä mahdollisuutta, että kenties se "
+"epäpyhä toimitus, joka muuttaa parhaat ja välkyimmät teistä epäkuolleiksi, "
+"on juurikin se mikä aiheuttaa ne lankeamaan pimeyteen?"
 
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:263
@@ -2117,13 +2093,12 @@ msgstr "Jättäkäämme tämä turha väittely myöhemmäksi. Oliko jotain muuta
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:267
-#, fuzzy
 msgid ""
 "Why should I trust you, or your information? I don't even know your name, "
 "and you have this nasty habit of mysteriously vanishing!"
 msgstr ""
-"Miksi luottaisin sinuun jai tietoihisi? En tiedä edes nimeäsi, ja ilmaannut "
-"usein paikalle epäilyttävästi."
+"Miksi minun pitäisi luottaa sinuun jai tietoihisi? En tiedä edes nimeäsi, ja "
+"sinulla on tuollainen kelju tapa vain katoilla salaperäisesti!"
 
 #. [message]: description=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:276
@@ -2137,19 +2112,18 @@ msgstr "Lady Jessica"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:340
-#, fuzzy
 msgid ""
 "I am the Lady Jessica, a noble, a princess of the Wesfolk! I was betrayed by "
 "the Lich-Lords' dark pact with the orcs, in no small part because your fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
-"Olen Lady Jessica, ylimys ja wessien prinsessa! Kuolonherrat pettivät meidät "
+"Olen Lady Jessica, ylimys ja wessien prinsessa! Kuolonherrat pettivät minut "
 "liittoutumalla örkkien kanssa, lähinnä siksi että hölmö Suvilahden "
-"prinssinne sai heidät uskomaan epäkuolleiden päiviensä olevan luetut!"
+"prinssinne sai heidät uskomaan epäelämiensä kuolemattomien päivien olevan "
+"luetut!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:344
-#, fuzzy
 msgid ""
 "And now, I'm as much a refugee as you. In truth, I don't know if the Lich-"
 "Lords are working with the orcs or not. The orcs may have gotten rid of the "
@@ -2157,27 +2131,24 @@ msgid ""
 "to tolerate living humans outside of the slave mines or stew pot!"
 msgstr ""
 "Ja nyt olen yhtä pakolainen kuin sinäkin. Tosiasiassa en edes tiedä "
-"tekevätkö örkit enää yhteistyötä kuolonherrojen kanssa vai ovatko ne jo "
-"hankkiutuneet heistä eroon. Minun tietääkseni örkit eivät ole sietäneet "
-"eläviä ihmisiä muualla kuin kaivosorjina tai keittopadassa!"
+"tekevätkö örkit enää yhteistyötä kuolonherrojen kanssa. He ovat voineet jo "
+"hankkiutua heistä eroon tai sitten eivät, mutta minun tietääkseni örkit "
+"eivät aio sietää eläviä ihmisiä muualla kuin orjakaivoksissa tai "
+"keittopadassa!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:348
-#, fuzzy
 msgid "Young prince, it is time to go! We must flee before the winter snow!"
-msgstr ""
-"Nuori prinssi, meidän on aika jatkaa. Meidän pitää lähteä ennen talven "
-"lumisateita!"
+msgstr "Nuori prinssi, on aika jatkaa! Ennen lumia tehdä taas matkaa!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:352
-#, fuzzy
 msgid ""
 "Fair enough. We will head for Clearwater Port. Thank you, Elilmaldur-"
 "Rithrandil, I will remember your hospitality!"
 msgstr ""
-"Selvä, lähdemme Kirkasvesisatamaan. Kiitos, Elilmaldur-Rithrandil, muistamme "
-"vieraanvaraisuutesi!"
+"Selvä, lähdemme kohti Kirkasvesisatamaa. Kiitos, Elilmaldur-Rithrandil, "
+"tulen muistamaan vieraanvaraisuutesi!"
 
 #. [message]: description=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:356
@@ -2185,7 +2156,7 @@ msgid ""
 "Always happy to help a tree-friend. May the Powers of Light guide you on "
 "your way!"
 msgstr ""
-"Olen aina iloinen kun voin auttaa puiden ystävää. Auttakoot Valon voimat "
+"Olen aina iloinen kun voin auttaa puiden ystävää. Auttakoot valon voimat "
 "sinua matkallasi!"
 
 #. [message]: description=Burin the Lost
@@ -2204,9 +2175,8 @@ msgstr "Kirkasvesisatama"
 #. [side]: type=Lieutenant, description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:659
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:39
-#, fuzzy
 msgid "Commander Aethyr"
-msgstr "Komentaja"
+msgstr "Komentaja Aethyr"
 
 #. [side]: type=Orcish Warlord, description=Tan-Vragar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:64
@@ -2267,23 +2237,21 @@ msgstr "Sankarin voitto: Kukista kaikki vihollisjohtajat"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:227
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:127
 msgid "Death of Lady Jessica"
-msgstr "Jos Jessica kuolee"
+msgstr "Lady Jessican kuolema"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:244
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:203
-#, fuzzy
 msgid "Death of Commander Aethyr"
-msgstr "Luutnantti Aethyrin kuolema"
+msgstr "Komentaja Aethyrin kuolema"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:248
 msgid "Miss the Last Ship"
-msgstr "Jos et ehdi viimeiseen laivaan"
+msgstr "Myöhästyminen viimeisestä laivasta"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:258
-#, fuzzy
 msgid ""
 "Our Prince has arrived at Clearwater Port, with the orcs on his heels. While "
 "the orcs haven't caught up with him yet, the winter snow has, and the ships "
@@ -2309,14 +2277,13 @@ msgstr ""
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:274
-#, fuzzy
 msgid ""
 "I am, my Lord, I command the local garrison. Our whole fishing fleet is "
 "evacuating people to Southbay as we speak. The ships should be back in a few "
 "days. Our forces engaged the orcs as they exited the Swamp of Esten. At "
 "first, we prevailed, and pushed them back into the swamp!"
 msgstr ""
-"Olen kyllä, herrani, komennan paikallista varuskuntaa. Koko "
+"Minä olen, herrani, komennan paikallista varuskuntaa. Koko "
 "kalastuslaivastomme tekee työtä parhaillaan saadakseen ihmiset evakuoitua "
 "Suvilahteen. Laivojen pitäisi palata parin päivän kuluttua. Joukkomme "
 "kohtasivat örkit, kun ne yrittivät murtautua ulos Estenin soilta. Löimme ne "
@@ -2324,15 +2291,14 @@ msgstr ""
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:279
-#, fuzzy
 msgid ""
 "But our victory did not hold; orc reinforcements quickly overran our "
 "positions. We lost most of our forces, my lord, including the King of "
 "Clearwater, who died bravely leading a charge."
 msgstr ""
-"Valitettavasti kyseessä oli pelkkä harhautus, ja örkkien pääjoukko jyräsi "
-"meidät nopeasti. Menetimme suuren osan joukoistanne, mukana Kirkasveden "
-"kuningas, joka johti rynnäkköä urheasti."
+"Mutta voittomme ei ollut kestävä: örkkien lisäjoukot jyräsivät asemamme "
+"nopeasti. Menetimme suurimman osan joukoistamme, herrani, mukaanluettuna "
+"Kirkasveden kuninkaan, joka kuoli johtaessaan rynnäkköä urheasti."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:284
@@ -2341,7 +2307,6 @@ msgstr "Sehän on kamalaa!"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:289
-#, fuzzy
 msgid ""
 "The blood of many good soldiers stained the frozen field that day. And still "
 "the orcs press on. The king left no heir, but the other nobles have fled to "
@@ -2350,11 +2315,12 @@ msgid ""
 "winter stores. They've gone to Southbay, which is brimming with refugees "
 "from all over."
 msgstr ""
-"Monien hyvien sotilasten veri tahrasi taistelukentän sinä päivänä. Ja örkit "
-"vain jatkavat etenemistään. Kuninkaalle ei ole perillistä, mutta muut "
-"aateliset ovat jo paenneet Suvilahteen. Armeijan ansiosta melkein kaikki oma "
-"väestömme ja talvivarastomme on jo saatu pelastettua sinne. Mutta yhä vain "
-"pakolaisia riittää."
+"Monien hyvien sotilasten veri tahrasi jäätyneen kentän sinä päivänä. Ja "
+"örkit yhä vain jatkavat painostamista. Kuningas ei jättänyt perillistä, "
+"mutta muut aateliset ovat jo paenneet Suvilahteen. Meillä on ollut kädet "
+"täynnä töitä evakuoidessa loppuja väestöstä. Armeijan ansiosta melkein "
+"kaikki oma väkemme ja talvivarastomme on jo saatu pelastettua sinne. "
+"Suvilahti on tulvillaan pakolaisia."
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:294
@@ -2366,7 +2332,7 @@ msgid ""
 "before the last of the people can be evacuated."
 msgstr ""
 "Pidämme kaupunkia vain siihen asti, että viimeiset pakolaiset ovat päässeet "
-"turvaan. Sinä, herrani, olet etusijalla seuraavaan laivaan Mutta jos saan "
+"turvaan. Sinä, herrani, olet etusijalla seuraavaan laivaan, mutta jos saan "
 "sanoa suoraan, niin puolustuksemme on heikentynyt ja tarvitsisimme kaiken "
 "mahdollisen avun estääksemme vihollisia pääsemästä muureille. Muuten "
 "pelkään, että meidät jyrätään ennen kuin saamme viimeisetkin kansalaiset "
@@ -2392,29 +2358,28 @@ msgid ""
 "I thank you, my lord. But we are to bring these Wesfolk too? It would be..."
 "highly irregular. Are you sure, my lord?"
 msgstr ""
-"Suuret kiitokset, herrani. Mutta otammeko todellakin nämä wessit mukaan? Se "
+"Kiitän sinua, herrani. Mutta otammeko todellakin nämä wessit mukaan? Se "
 "olisi... melko tavatonta. Oletko aivan varma, oi herrani?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:309
-#, fuzzy
 msgid ""
 "Yes. Be sure that it is understood that these are our allies and friends."
-msgstr "Kyllä. Varmista että kaikki ymmärtävät heidän olevan ystäviämme."
+msgstr ""
+"Kyllä. Varmista, että on ymmärretty näiden olevan liittolaisiamme ja "
+"ystäviämme."
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:314
-#, fuzzy
 msgid "Yes, sir!"
-msgstr "Kyllä herra!"
+msgstr "Kyllä, sir!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:319
-#, fuzzy
 msgid "Yes sir, indeed! You need us to help hold out until the ships arrive."
 msgstr ""
-"Kyllä herra, huolehdin asiasta! Tarvitsette apuamme puolustautumisessa, "
-"kunnes laivat saapuvat."
+"Kyllä herra, tosiaan! Tarvitsette apuamme puolustautumisessa, kunnes laivat "
+"saapuvat."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:324
@@ -2428,15 +2393,14 @@ msgstr ""
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:329
-#, fuzzy
 msgid ""
 "To your posts, men! We should be able to evacuate everyone in three more "
 "boatloads. Until then, let us make those orcs pay dearly for every inch of "
 "our land. For our homes, for our people, for our fallen king!"
 msgstr ""
-"Asemiinne, miehet! Kolme laivaa vielä, ja kaikki on evakuoitu. Siihen asti "
-"annetaan noiden örkkien maksaa kalliisti joka sentistä maatamme. Kotimme, "
-"kansamme ja kaatuneen kuninkaamme puolesta!"
+"Asemiinne, miehet! Kolme laivaa vielä, ja kaikkien pitäisi olla evakuoitu. "
+"Siihen asti annetaan noiden örkkien maksaa kalliisti joka tuumasta maatamme. "
+"Kotimme, kansamme ja kaatuneen kuninkaamme puolesta!"
 
 #. [message]: description=Angry Farmer
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:340
@@ -2445,23 +2409,21 @@ msgstr "Tapoit perheeni! Kuole siis!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:351
-#, fuzzy
 msgid ""
 "'Bring these Wesfolk too? It would be...highly irregular.' Bah! I'll show "
 "you irregular..."
 msgstr ""
-"<Mutisee> 'Otammeko todellakin nämä wessit mukaan?' Pöh! 'Se olisi... melko "
-"tavatonta.' Kyllä minä sinulle tavattomat näytän..."
+"”Otammeko todellakin nämä wessit mukaan? Se olisi... hyvin tavatonta.” Pah! "
+"Kyllä minä sinulle tavattomat näytän..."
 
 #. [message]: description=Ut'Tan-Vrork
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:359
-#, fuzzy
 msgid ""
 "Push 'em into the sea! They're in our winter homes! Heh...Tan-Vragar, I 'm "
 "sure they will enjoy your little surprise!"
 msgstr ""
-"Työntäkää heidät mereen! Häädetään heidät meidän talvikodeistamme! Niin, Tan-"
-"Vrangar, toivottavasti pidät pikku yllätyksestäsi!"
+"Työntäkää heidät mereen! He ovat meidän talvikodeissamme! Heh, Tan-Vrangar, "
+"olen varma, että he tulevat nauttimaan pikku yllätyksestäsi!"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:368
@@ -2483,20 +2445,20 @@ msgstr "Eriol"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:395
-#, fuzzy
 msgid "An ode to ye, on yer way, I hope you have a brighter day!"
-msgstr "Laulu sinulle matkallasi, toivottavasti päiväsi on kirkkaampi!"
+msgstr ""
+"Laulakaamme sinun matkatessasi tiellä, toivon kirkkaamman päivän koittavan "
+"vielä!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:416
-#, fuzzy
 msgid "Dead-Man's Ford"
 msgstr "Kuolleen miehen kahlaamo"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:437
 msgid "The River Road - To the Swamp of Esten."
-msgstr "Jokitie - Estenin suolle"
+msgstr "Jokitie – Estenin suolle"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:629
@@ -2541,7 +2503,7 @@ msgid ""
 "to safety. Prince Haldric, you and your men must go now! Go to the pier to "
 "board the ship for Southbay."
 msgstr ""
-"Herrani,viimeinen laiva on saapunut! Kansamme viimeisetkin voivat paeta "
+"Herrani, viimeinen laiva on saapunut! Kansamme viimeisetkin voivat paeta "
 "turvaan. Prinssi Haldric, teidän ja miestenne on lähdettävä nyt! Nouskaan "
 "laiturille nyt ja laiva vie teidät perille Suvilahteen."
 
@@ -2556,7 +2518,7 @@ msgstr "Herrani, viimeinen laiva lähtee. Jäimme jumiin tänne!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:914
 msgid "My lord, the ship isn't here yet. Come help us defend against the orcs."
 msgstr ""
-"Herrani, laiva ei ole vielä saapunut. Tulkaa auttamaan meitä puolustautumaan "
+"Herrani, laiva ei ole vielä saapunut. Tulkaa auttamaan meitä puolustamaan "
 "örkkejä vastaan."
 
 #. [message]: description=Commander Aethyr
@@ -2571,7 +2533,7 @@ msgid ""
 msgstr ""
 "Muista tehtäväsi, sotilas. Kun laiva saapuu, tämä paikka on se, mihin "
 "prinssi Haldricin täytyy tulla johtaaksesi sinut laivaan. Siihen asti autat "
-"meitä puolustautumaan örkkejä vastaan."
+"meitä puolustamaan örkkejä vastaan."
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:944
@@ -2626,15 +2588,14 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:993
-#, fuzzy
 msgid ""
 "Erm, yes... He was Caror, the arch rival of our dearly departed Lich-Lord "
 "Lenvan. He coveted the ruby, and was studying it. The only copy of his "
 "study, the Book of Fire and Darkness, was petrified along with him."
 msgstr ""
-"Ööh, niin... Hän oli suuren johtajamme kuolonherra Lenvanin perivihollinen. "
-"Hän oli omistautunut tutkimaan rubiinia. Ainoa kappale hänen "
-"muistiinpanoistaan kivettyi yhdessä hänen kanssaan."
+"Ööh, niin... Hän oli Caror, lähteneen johtajamme kuolonherra Lenvanin "
+"perivihollinen. Hän oli omistautunut tutkimaan rubiinia. Ainoa kappale hänen "
+"muistiinpanoistaan, Tulen ja pimeyden kirja, kivettyi yhdessä hänen kanssaan."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:998
@@ -2646,7 +2607,6 @@ msgstr ""
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1003
-#, fuzzy
 msgid ""
 "My family was from Southbay. My father was a soldier there. The city's sewer "
 "entrance is near that fossil of a lich."
@@ -2656,12 +2616,11 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1008
-#, fuzzy
 msgid ""
 "Wow, this is beginning to sound dangerously like a plan. Commander Aethyr, "
 "will you join us?"
 msgstr ""
-"Oi, tämähän alkaa pahasti kuulostaa suunnitelmalta. Luutnantti Aethyr, "
+"Vau, tämähän alkaa pahasti kuulostaa suunnitelmalta. Komentaja Aethyr, "
 "liitytkö meihin?"
 
 #. [message]: description=Commander Aethyr
@@ -2695,7 +2654,7 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:4
 msgid "Fallen Lich Point"
-msgstr "Kuolonherran luola"
+msgstr "Kaatuneen kuolonherran niemi"
 
 #. [side]: type=Orcish Warlord, description=Ut'Tan-Grilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:36
@@ -2714,9 +2673,8 @@ msgstr "Kuolonherra Caror"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:185
-#, fuzzy
 msgid "Kill the Lich to get his book and"
-msgstr "Tapa Kuolonherra ottaaksesi hänen kirjansa ja"
+msgstr "Surmaa kuolonherra ottaaksesi hänen kirjansa ja"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:189
@@ -2725,20 +2683,17 @@ msgstr "Haldric saapuu Suvilahden viemäriin"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:193
-#, fuzzy
 msgid "Heroic: In addition to above, kill all enemy leaders"
-msgstr ""
-"Sankarin voitto: Kuten yllä, mutta tapa lisäksi kaikki vihollisjohtajat."
+msgstr "Sankarin voitto: Ylläolevan lisäksi kukista kaikki vihollisjohtajat"
 
 #. [message]: description=Tan-Pulk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:215
-#, fuzzy
 msgid ""
 "Da big bosses said we'd be in da city by winter. Bosses wrong, human-worms "
 "still there, and I'm a tinkin- -"
 msgstr ""
-"Isot pomot väitti, et me vallattais kaupunki ennen talvee. Pomot väärässä, "
-"haisevat ihmiset siellä vielä, ja mä mietin- -"
+"Isot pomot väitti, että me vallattais kaupunki ennen talvee. Pomot väärässä, "
+"haisevat ihmiset siellä vielä, ja mä mietin –"
 
 #. [message]: description=Ut'Tan-Grilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:219
@@ -2747,23 +2702,21 @@ msgstr "Hei! Mä nään laivan! Ihmiset tulee! Murskataan niiden päät!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:238
-#, fuzzy
 msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich-Lord "
 "Caror's Book of Fire and Darkness, and flee into the Sewers of Southbay."
 msgstr ""
-"Prinssi Haldric on saapunut Kaatuneen kuolonherran niemeen. Hänen "
-"tarkoituksenaan on viedä mukanaan Kuolonherran kirja ja paeta Suvilahden "
-"viemäreihin."
+"Prinssi Haldric on saapunut Kaatuneen kuolonherran niemeen viedäkseen "
+"mukanaan kuolonherra Carorin Tulen ja pimeyden kirjan ja paetakseen sitten "
+"Suvilahden viemäreihin."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:262
-#, fuzzy
 msgid ""
 "Okay. Let's unstone that lich and take his book, then get into the sewers. "
 "Umm, what language would that book be in?"
 msgstr ""
-"Selvä. Puretaan sen Kuolonherran kivetys ja haetaan kirja, sitten "
+"Selvä. Puretaan sen kuolonherran kivetys ja haetaan kirja, sitten "
 "viemäreihin. Ömm, millähän kielellä se kirja on kirjoitettu?"
 
 #. [message]: description=Lady Jessica
@@ -2781,11 +2734,10 @@ msgstr "Ohh."
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:274
 msgid "Just get the book, I think I should be able to translate it."
-msgstr "Hae vain kirja, luulen että pystyn tulkitsemaan sitä."
+msgstr "Hae vain kirja. Luulen, että pystyn tulkitsemaan sitä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:278
-#, fuzzy
 msgid "Then, into Southbay's sewer."
 msgstr "Siispä Suvilahden viemäreihin."
 
@@ -2800,11 +2752,13 @@ msgid ""
 "There's an odd monolith standing near here. Maybe it has something to do "
 "with the Lich-Lord...I should investigate more closely."
 msgstr ""
+"Lähistöllä on outo monoliitti. Ehkä sillä on jotakin tekemistä kuolonherran "
+"kanssa... Minun on tutkittava lähemmin."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:313
 msgid "There's an odd monolith standing near here."
-msgstr ""
+msgstr "Lähistöllä on outo monoliitti."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:318
@@ -2812,20 +2766,21 @@ msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
 "Lich. Maybe you should get yourself over here."
 msgstr ""
+"Haldric, tämä vaikuttaa sopivalta tehtävältä sinulle. Sillä on varmaan "
+"jotain tekemistä kuolonherran kanssa. Ehkä sinun pitäisi hankkiutua tänne."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:337
-#, fuzzy
 msgid ""
 "INSCRIPTION: This monolith was erected by me, <CHIPPED AWAY>, first Mage of "
 "the good people of the Green Isle. By its power the Lich-Lord is bound in "
 "stone. To end the spell a noble of the line of Kings should utter the "
 "following..."
 msgstr ""
-"KAIVERRUS: Tämän kiven pystytin minä, <nimi hakattu tunnistamattomaksi>, "
-"Vihersaaren hyvän kansan ensimmäinen loitsija. Sen voimalla Kuolonherra on "
-"vangittu kiveen. Loitsu päättyy, jos kuninkaiden sukua oleva ylimys lausuu "
-"seuraavat sanat..."
+"KAIVERRUS: Tämän monoliitin pystytin minä, <nimi hakattu "
+"tunnistamattomaksi>, Vihersaaren hyvän kansan ensimmäinen velho. Sen "
+"voimalla kuolonherra on vangittu kiveen. Päättääkseen loitsun, aatelisen "
+"kuninkaiden sukua tulee lausua seuraava..."
 
 #. [option]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:361
@@ -2838,7 +2793,7 @@ msgid ""
 "The Lich is free! Let's bash him and grab that book. That sounds like a job "
 "for you, Lady Jessica!"
 msgstr ""
-"Kuoonherra on vapaa! Hajotetaan hänet ja napataan kirja. Tämä näyttää "
+"Kuolonherra on vapaa! Hajotetaan hänet ja napataan kirja. Tämä näyttää "
 "sopivalta hommalta sinulle, Lady Jessica!"
 
 #. [message]: description=Lady Jessica
@@ -2851,7 +2806,7 @@ msgstr ""
 #. [message]: description=Lich-Lord Caror
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:380
 msgid "Free, I'm free, and I feel the Ruby of Fire! It will be mine."
-msgstr "Vapaa, olen vapaa, ja tunnen Tulirubiinin voiman! Se on minun."
+msgstr "Vapaa, olen vapaa, ja tunnen tulirubiinin voiman! Se on minun."
 
 #. [message]: description=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:384
@@ -2867,18 +2822,18 @@ msgstr "Ehkä odotan hetken aikaa ennen kuin alan lausua loitsuja."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:395
 msgid "We have more pressing matters to deal with before we free that Lich."
 msgstr ""
-"Meillä on tärkeämpääkin tekemistä ennen kuin vapautamme tuon Kuolonherran."
+"Meillä on tärkeämpääkin tekemistä ennen kuin vapautamme tuon kuolonherran."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:400
 msgid "Afraid you'll find out you're not of the line of Kings?"
-msgstr "Pelkäätkö, ettet olekaan kuningasten sukua?"
+msgstr "Pelkäätkö, ettet olekaan kuninkaiden sukua?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:410
 msgid "This sounds like a job for Prince Haldric, hopefully."
 msgstr ""
-"Tämä kuulostaa sopivalta hommalta Prinssi Haldricille, ainakin toivottavasti."
+"Tämä kuulostaa sopivalta hommalta prinssi Haldricille, ainakin toivottavasti."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:423
@@ -2888,12 +2843,12 @@ msgstr "Kuolonherra on jo vapaana."
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:445
 msgid "NW - Southbay."
-msgstr "Luoteeseen - Suvilahti"
+msgstr "Luoteeseen – Suvilahti"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:450
 msgid "More Like NW - Every orc on the Isle. Hmph!"
-msgstr "Pikemminkin 'Lounaaseen: kaikki saaren örkit.' Hmph!"
+msgstr "Pikemminkin ”Luoteeseen – kaikki saaren örkit”. Hmph!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:481
@@ -2907,7 +2862,6 @@ msgstr "Kuulostaa hyvältä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:514
-#, fuzzy
 msgid "I feel like I'm forgetting something. Ohh, the book!"
 msgstr "Ihan kun olisin unohtanut jotakin. Eih, kirja!"
 
@@ -2924,7 +2878,7 @@ msgstr "Rarlg"
 #. [message]: description=Rarlg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:552
 msgid "Rarlg - argh, a raul-rarlg!"
-msgstr "Rarlg - argh, a raul-rarlg!"
+msgstr "Rarlg-argh, a raul-rarlg!"
 
 #. [message]: description=Prince Haldric
 #. [message]: description=Ut'Tan-Grilg
@@ -2965,7 +2919,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:663
 msgid "Sewer - Danger Keep Out!"
-msgstr "Viemäri - Vaara, pysykää poissa!"
+msgstr "Viemäri – vaara, pysykää poissa!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:5
@@ -2990,13 +2944,13 @@ msgstr "Hämähäkki"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:122
 msgid "Prince Haldric exits the sewer"
-msgstr "Prinssi Haldric pakenee viemäristä"
+msgstr "Prinssi Haldric poistuu viemäristä"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:126
-#, fuzzy
 msgid "Defeat all enemy leaders and Prince Haldric exits the sewer"
-msgstr "Prinssi Haldric pakenee viemäristä"
+msgstr ""
+"Kukista kaikki vihollisjohtajat ja saata prinssi Haldric ulos viemäristä"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:148
@@ -3004,8 +2958,8 @@ msgid ""
 "In the last leg of their journey to Southbay, Haldric and his companions "
 "find themselves in the Sewers of Southbay."
 msgstr ""
-"Viimeisellä etapillaan matkalla Suvilahteen Haldric kumppaneineen huomaa "
-"olevansa Suvilahden viemäreissä."
+"Viimeisellä etapillaan matkalla Suvilahteen Haldric kumppaneineen löytävät "
+"itsensä Suvilahden viemäreistä."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:153
@@ -3030,7 +2984,7 @@ msgstr ""
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:161
 msgid "This is the far end of that river bed. Legend has it- -"
-msgstr "Tässä joenuoma päättyy. Tarina kertoo, että- -"
+msgstr "Tässä joenuoma päättyy. Tarina kertoo, että –"
 
 #. [message]: description=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:165
@@ -3043,13 +2997,12 @@ msgstr ""
 
 #. [message]: description=Daellyn the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:169
-#, fuzzy
 msgid ""
 "Can you feel it, brother? This one bears the Ruby of Fire. After all our "
 "time searching, it has come to us!"
 msgstr ""
-"Tunnetko sen, veljeni? Tuo on tuonut mukanaan Tulirubiinin. Näin pitkän ajan "
-"kuluttua se on yksinkertaisesti kävellyt luoksemme."
+"Tunnetko sen, veljeni? Tuo on tuonut mukanaan tulirubiinin. Kaiken sen "
+"etsimiseen kulutetun ajan jälkeen se on yksinkertaisesti kävellyt luoksemme."
 
 #. [message]: description=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:173
@@ -3061,11 +3014,10 @@ msgstr ""
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:181
 msgid "Nooo! The wizards are flooding the sewer. We're doomed!"
-msgstr "Eiiii! Velhot täyttävät viemärin vedellä. Olemme hukassa!"
+msgstr "Eiii! Velhot täyttävät viemärin vedellä. Olemme hukassa!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:190
-#, fuzzy
 msgid ""
 "Haldric, I feel a strong foreboding. Have you noticed that anything that "
 "happens to be strong in the ways of magic can sense that ruby? Elilmaldur-"
@@ -3078,15 +3030,14 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:195
-#, fuzzy
 msgid ""
 "We retrieved the Lich-Lord's book, and I can literally feel the power of the "
 "ruby, even with it in my pack. Let's work out what it does, before we decide "
 "what to do with it."
 msgstr ""
-"Saimme kuolonherran kirjan, ja voin todellakin tuntea rubiinin voiman "
-"laukustani asti. Meidän on tiedettävä miten se toimii ennen kuin päätämme "
-"mitä teemme sille."
+"Saimme kuolonherran kirjan, ja voin todellakin tuntea rubiinin voiman jopa "
+"repustani asti. Ottakaamme selvää mitä se tekee ennen kuin päätämme mitä "
+"teemme sille."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:214
@@ -3111,7 +3062,7 @@ msgid ""
 "Argh, the stream bed is blocked! Only a pint of goo is getting through. "
 "We'll have to go around."
 msgstr ""
-"Arg, joenuoma on tukossa! Vain hiukan liejua pääsee läpi. Meidän on "
+"Argh, joenuoma on tukossa! Vain hiukan liejua pääsee läpi. Meidän on "
 "kierrettävä."
 
 #. [message]: speaker=narrator
@@ -3125,7 +3076,7 @@ msgid ""
 "It's not very Heroic if Prince Haldric isn't the one to lead his band from "
 "the Sewers of Southbay."
 msgstr ""
-"Ei ole kovinkaan sankarillista jos prinssi Haldric itse ei ole johtamassa "
+"Ei ole kovinkaan sankarillista, jos prinssi Haldric itse ei ole johtamassa "
 "miehiään ylös Suvilahden viemäreistä."
 
 #. [message]: speaker=narrator
@@ -3136,13 +3087,12 @@ msgstr "Vaara edessä!"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:389
 msgid "Ahead, so far it's been danger everywhere."
-msgstr "Eteenpäin, tähän mennessä vaaroja on ollut joka suunnassa."
+msgstr "Eteenpäin! Tähän mennessä vaaroja on ollut joka suunnassa."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:400
-#, fuzzy
 msgid "Finally, on to Southbay!"
-msgstr "Viimeinkin kohti Suvilahtea!"
+msgstr "Viimeinkin, kohti Suvilahtea!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:4
@@ -3157,14 +3107,13 @@ msgstr "Kuningas Addroran IX"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:92
-#, fuzzy
 msgid ""
 "Prince Haldric has emerged from the sewers of Southbay in the very heart of "
 "the city. After some commotion, he gains an audience with the King of "
 "Southbay."
 msgstr ""
-"Prinssi Haldric on noussut Suvilahden viemäreistä kaupungin keskustorille. "
-"Puhdistauduttuaan hän lähtee Suvilahden kuninkaan puheille."
+"Prinssi Haldric on ilmestynyt Suvilahden viemäreistä kaupungin keskelle. "
+"Pikku hälinän jälkeen hän pääsee Suvilahden kuninkaan puheille."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:97
@@ -3179,38 +3128,34 @@ msgstr "Tuon molempia, ja kaikki ovat uskollisia Suvilahden kuninkaalle!"
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:105
-#, fuzzy
 msgid ""
 "I knew you as a boy, and your people have preceded you. Your father was an "
 "honorable man, and so are you. Aren't you the king now?"
 msgstr ""
 "Tunsin sinut poikana, ja kansaasi on tullut edelläsi. Isäsi oli kunniallinen "
-"mies, ja niin olet sinäkin. Oletko siis nyt kuningas?"
+"mies, ja niin olet sinäkin. Etkö olekin nyt kuningas?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:109
-#, fuzzy
 msgid "A king with no land and no crown is no king, my Lord."
-msgstr ""
-"Herrani, jos kuninkaalla ei ole maata eikä kruunua, hän ei ole kuningas."
+msgstr "Kuningas ilman maata ja kruunua ei ole kuningas, herrani."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:113
-#, fuzzy
 msgid ""
 "It is so. These are dark days to live through, my young prince. You've done "
 "your father proud. Far better than my legacy, a dead adventurer and a "
 "missing fool! It is fitting that my line should end with my kingdom."
 msgstr ""
-"Ymmärrän. Nämä ovat pimeitä aikoja, nuori prinssini. Isäsi olisi ylpeä "
-"sinusta. Paljon parempi olet kuin minun jälkeläiseni, kuollut seikkailija ja "
-"kadonnut hullu! On ehkä sopivaakin, että sukuni sammuu samalla kuin "
-"kuningaskuntani tuhoutuu."
+"Näin on. Nämä ovat pimeitä aikoja, nuori prinssini. Olet tehnyt isäsi "
+"ylpeäksi. Paljon paremmin kuin minun jälkeläiseni, kuollut seikkailija ja "
+"kadonnut hullu! No, ehkä on ihan sopivaakin, että sukuni sammuu samalla "
+"kuningaskuntani kanssa."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:117
 msgid "You should not say such things!"
-msgstr "Älkää puhuko noin!"
+msgstr "Teidän ei kannattaisi sanoa tuollaisia asioita."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:122
@@ -3223,10 +3168,9 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:126
-#, fuzzy
 msgid "You've put my people out in the snow? Prepare to meet your fate you- -"
 msgstr ""
-"Olet heittänyt kansani ulos lumeen! Valmistaudu kohtaamaan kohtalosi sinä- -"
+"Olet heittänyt kansani ulos lumeen! Valmistaudu kohtaamaan kohtalosi, sinä –"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:130
@@ -3234,7 +3178,7 @@ msgid ""
 "She and her people have been of great service to me. Open the gates, let "
 "them in."
 msgstr ""
-"Hän ja hänen kansansa ovat olleet minulle suureksi avuksi. Avaa portit, "
+"Hän ja hänen kansansa ovat olleet minulle suureksi avuksi. Avaa portit ja "
 "päästä heidät sisään."
 
 #. [message]: description=King Addroran IX
@@ -3276,7 +3220,7 @@ msgid ""
 "Fire. The artifact should help with what must come."
 msgstr ""
 "Ensinnäkin, minä OSAAN kääntää kirjan, jonka avulla Haldric voi käyttää "
-"Tulirubiinia. Siitä taikaesineestä on varmasti hyötyä seuraavien uhkien "
+"tulirubiinia. Siitä taikaesineestä on varmasti hyötyä seuraavien uhkien "
 "voittamisessa."
 
 #. [message]: description=Lady Jessica
@@ -3285,13 +3229,13 @@ msgid ""
 "Second, I know the way to the mysterious lands of the east. Addroran, I was "
 "your son's navigator and companion. Believe me, you must go east."
 msgstr ""
-"Toiseksikin, tiedän reitin mystiseen maahan joka on idässä. Addoran, olin "
-"poikasi suunnistaja ja kumppani. Usko minua, sinun täytyy jatkaa itään."
+"Toiseksikin, tiedän reitin idän mystiseen maahan. Addoran, olin poikasi "
+"suunnistaja ja kumppani. Usko minua, sinun täytyy jatkaa itään."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:158
 msgid "Compan- - What?"
-msgstr "Kump- - Mitä?"
+msgstr "Kump– Mitä?"
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:162
@@ -3300,20 +3244,18 @@ msgstr "Hän on todellakin täynnä yllätyksiä."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:166
-#, fuzzy
 msgid ""
 "I was the navigator. Haldric, your people simply washed up here long ago, "
 "but my people came here on purpose. You'd all still be herding sheep and "
 "living in grass huts if it wasn't for my people."
 msgstr ""
 "Minä olin laivan suunnistaja. Haldric, sinun kansasi huuhtoutui tänne "
-"vahingossa aikoja sitten. Minun kansani tuli tarkoituksella. Te "
+"vahingossa aikoja sitten. Minun kansani taas tuli tarkoituksella. Te "
 "paimentaisitte vieläkin lampaita ja eläisitte ruohomajoissa jos meidän "
 "kansaamme ei olisi ollut."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:170
-#, fuzzy
 msgid ""
 "Some favor your people did for us. Why flee at all? And why east? We've "
 "already repelled one orcish assault. We should be working toward taking back "
@@ -3325,7 +3267,6 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:174
-#, fuzzy
 msgid ""
 "This is no time for bravado. You must head east because my people came from "
 "the west, which is teeming with every form of enemy and monster imaginable. "
@@ -3333,9 +3274,10 @@ msgid ""
 "what else comes behind us. You'd be slaves, or you'd be dead."
 msgstr ""
 "Nyt ei ole aika leikkiä sankaria. Teidän on paettava itään, koska kansamme "
-"tuli lännestä, jossa asuu mielikuvituksellisia ihmisiä ja hirviöitä. Siellä "
-"ei yksinkertaisesti ole tilaa. Jos mielestänne me olimme vaarallisia, "
-"katsokaa keitä muita siellä elää. Siellä olisitte jo orjia tai kuolleita."
+"tuli lännestä, jossa asuu mielikuvituksellisia vihollisia ja hirviöitä. "
+"Siellä ei yksinkertaisesti ole tilaa. Jos mielestänne me olimme vaarallisia, "
+"teidän tulisi tajuta millaisia ne ovat, jotka seuraavat  meitä. Siellä "
+"olisitte orjia tai kuolleita."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:178
@@ -3362,8 +3304,8 @@ msgid ""
 msgstr ""
 "Hmm. Sanoissasi on viisautta. Minä kuitenkin jään tänne. Voimme pitää paikan "
 "hallussamme helposti lopun talvesta. Örkkien edellisen hyökkäyksen aikana "
-"oli syksy ja sato oli korjattu. Nyt voimme kalastaa jään alla. Pääsette jopa "
-"kenties lähtemään hyvinvarustetuissa laivoissa!"
+"oli syksy ja sato oli korjattu. Nyt voimme kalastaa jään alla eläviä "
+"kalalajeja. Pääsette jopa kenties lähtemään hyvinvarustetuissa laivoissa!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:186
@@ -3372,50 +3314,46 @@ msgstr "Etkö aio tulla mukaamme?"
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:190
-#, fuzzy
 msgid ""
 "No. Flee, and flee east. It is my duty to hold this city as long as I can "
 "for the sake of all who can be evacuated. That means that it shall fall on "
 "Haldric and you to lead the evacuation."
 msgstr ""
-"Ei. Paetkaa, ja paetkaa itään. On minun tehtäväni pitää tätä kaupunkia "
-"hallussani niin kauan kuin voin, jotta evakuointi onnistuu. Siksi Haldricin "
-"ja sinun täytyy johtaa evakuointia."
+"Ei. Paetkaa, ja paetkaa itään. On minun velvollisuuteni pitää tätä kaupunkia "
+"hallussani niin kauan kuin voin, jotta evakuointi onnistuu. Se tarkoittaa, "
+"ettäi Haldricin ja sinun täytyy johtaa evakuointia."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:194
-#, fuzzy
 msgid ""
 "King, there will be a new kingdom in the east, and the bulk of the fleet "
 "will bear the flag of Southbay. A new throne and new lands await you in the "
 "east."
 msgstr ""
-"Kuninkaani, idässä odottaa uusi kuningaskunta, ja suurin osan laivastosta "
+"Kuningas, idässä odottaa uusi kuningaskunta, ja suurin osan laivastosta "
 "kantaa Suvilahden lippua. Uusi valtaistuin ja uudet maat odottavat sinua "
 "idässä."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:198
-#, fuzzy
 msgid ""
 "My bloodline has ended with my sons, and I am old. Let the ships take the "
 "women, children, and young men first. A new kingdom must be born of vital "
 "blood. We old men are still of some value. We will make the orcs pay dearly "
 "when they come to take this place!"
 msgstr ""
-"Sukuni on jo sammunut pojissani, ja olen vanha. Antakaa laivojen viedä "
+"Sukuni on jo sammunut pojissani, ja minä olen vanha. Antakaa laivojen viedä "
 "naiset, lapset ja nuoret miehet ensin. Uuden kuningaskunnan on synnyttävä "
-"nuoresta verestä. Meistä vanhoista miehistä on vielä jotain hyötyä. "
-"Maksatamme örkeillä vielä katkerasti kun ne tulevat tänne!"
+"nuoresta verestä. Meistä vanhoista miehistä on vielä jotain hyötyä. Pistämme "
+"vielä örkit maksamaan kalliisti, kun ne tulevat valloittamaan tätä paikkaa!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:202
-#, fuzzy
 msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
 "Kings of Southbay! Jessica, about that book?"
 msgstr ""
-"No, jos mitään muuta ei voi tehdä. Laulakoot runoniekat ikuisesti Suvilahden "
+"No, jos muuta keinoa ei ole. Laulakoot runoniekat ikuisesti Suvilahden "
 "kuninkaiden kunniaa! Jessica, miten se kirja?"
 
 #. [message]: description=Lady Jessica
@@ -3465,42 +3403,38 @@ msgstr ""
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:224
-#, fuzzy
 msgid "ruby of fire"
-msgstr "Tulirubiini"
+msgstr "tulirubiini"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:268
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:390
 msgid "Death of King Addroran IX"
-msgstr "Kuningas Addoran IX:n kuolema"
+msgstr "Kuningas Addroran IX:n kuolema"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:282
-#, fuzzy
 msgid ""
 "Several months pass. Jessica has translated Lich-Lord Caror's Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
-"Monta kuukautta kuluu. Jessica on saanut käännettyä kuolonherra Carorin "
-"kirjan. Prinssi Haldric viettää aikaansa yrittäen ymmärtää Tulirubiinin "
-"salaisuuksia."
+"Muutama kuukausi kuluu. Jessica on saanut käännettyä kuolonherra Carorin "
+"Tulen ja pimeyden kirjan. Prinssi Haldric viettää aikaansa yrittäen ymmärtää "
+"tulirubiinin salaisuuksia."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:287
 msgid "I think I've figured something out. Look."
-msgstr "Luulen että keksin jotain. Katso."
+msgstr "Luulen, että keksin jotain. Katso."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:299
-#, fuzzy
 msgid ""
 "Ouch! Hot, hot, hot! Gee, somebody should really attach this thing to a "
 "scepter or something! I think I'll save it for closer-ranged combat for now."
 msgstr ""
-"Ouh! Kuumaa, kuumaa, kuumaa! Voi vitsi, jonkun kannattaisi tosiaan "
-"kiinnittää tämä valtikkaan tai jotain! No, kyllä tästa ainakin "
-"lähitaisteluaseen saa."
+"Auts, se polttaa! Voi vitsi, jonkun kannattaisi tosiaan kiinnittää tämä "
+"valtikkaan tai jotain! Tai ehkä lähitaisteluaseeseen."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:303
@@ -3513,7 +3447,7 @@ msgid ""
 "Humph. Fool of a boy's just gonna burn us all up. Humans, always playing at "
 "being wizards."
 msgstr ""
-"Hmmmp. Hupsu pojan nulikka meinasi polttaa meidät kaikki. Ihmiset, luulevat "
+"Humph. Hupsu pojan nulikka meinasi polttaa meidät kaikki. Ihmiset, luulevat "
 "aina olevansa velhoja."
 
 #. [message]: description=Southbay Guard 1
@@ -3563,7 +3497,6 @@ msgstr "Kuka tämä kalamies on?"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:349
-#, fuzzy
 msgid ""
 "He's a large part of the reason your son made it to the lands of the east. "
 "Lord Typhon provided us with pearls and an escort for our voyages in "
@@ -3571,20 +3504,20 @@ msgid ""
 "blacksmith when you live underwater."
 msgstr ""
 "Hän on suurelta osalta syy siihen, miksi poikasi pääsi purjehtimaan idän "
-"maille. Typhon antoi meille helmiä ja saattueen matkallemme vaihdossa "
-"teräksisistä kolmikärjenkärjistä ja ongenkoukuista. Metallinkäsittely on "
-"hankalaa veden alla."
+"maille. Lordi Typhon antoi meille helmiä ja saattueen matkoillemme vaihdossa "
+"teräksisistä kolmikärjenkärjistä ja ongenkoukuista. Seppänä oleminen on "
+"hankalaa, jos asuu veden alla."
 
 #. [message]: description=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:353
 msgid "Indeed it is. But where is the Prince?"
-msgstr "Todellakin. Mutta missä prinssi on?"
+msgstr "Todellakin se on. Mutta missä on prinssi?"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:357
 msgid "The Crown Prince is dead. But we have need of your services again- -"
 msgstr ""
-"Kruununprinssi on kuollut. Mutta tarvitsemme teidän palveluksianne taas- -"
+"Kruununprinssi on kuollut. Mutta tarvitsemme teidän palveluksianne taas –"
 
 #. [message]: description=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:361
@@ -3610,8 +3543,8 @@ msgid ""
 "Good. We need the steel for our own war in the deep. I formally place the "
 "might of the Merfolk at your disposal!"
 msgstr ""
-"Hyvä. Tarvitsemme sen teräksen omissa meritaisteluissamme. Asetan "
-"virallisesti käyttöönne merenmiesten sotavoimat!"
+"Hyvä. Tarvitsemme sen teräksen omissa meritaisteluissamme. Muodollisesti "
+"asetan merenmiesten mahdin käyttöönne!"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:394
@@ -3651,18 +3584,16 @@ msgid ""
 "lucky I may raise you from death for my own amusement. Oh, and what's this? "
 "I sense, I sense the Ruby of Fire."
 msgstr ""
-"Kuningas Addoran, päiväsi ovat luetut. Valmistaudu hajoamaan tomuksi. Jos "
+"Kuningas Addroran, päiväsi ovat luetut. Valmistaudu hajoamaan tomuksi. Jos "
 "olet onnekas, saatan nostattaa sinut kuolleista omaksi ilokseni. Oi, ja mitä "
-"tämä on. Havaitsen, havaitsen Tulirubiinin."
+"tämä on. Havaitsen, havaitsen tulirubiinin."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:440
-#, fuzzy
 msgid ""
 "You monster! You've betrayed our people - to ally yourself with these orcs?!"
 msgstr ""
-"Sinä hirviö! Olet pettänyt kansamme- - liittoutuaksesi näiden örkkien "
-"kanssa?!"
+"Sinä hirviö! Olet pettänyt kansamme – liittoutuaksesi näiden örkkien kanssa?!"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:443
@@ -3671,15 +3602,14 @@ msgstr "Hullu prinssi"
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:448
-#, fuzzy
 msgid ""
 "Fool girl! My ambition is boundless; I will survive to rule the orcs and all "
 "else. That is more than can be said for you. King Addroran, meet your son - "
 "you'll be joining him soon enough."
 msgstr ""
-"Hölmö tyttö! Minun kunnianhimoni on pohjaton. Minä selviydyn. Samaa ei voi "
-"sanoa teistä. Kuningas Addoran, saanko esitellä poikasi, liityt kohta hänen "
-"seuraansa."
+"Hölmö tyttö! Minun kunnianhimoni on pohjaton. Minä selviydyn ja johdan "
+"örkkejä ja kaikkea muuta. Samaa ei voi sanoa teistä. Kuningas Addroran, "
+"saanko esitellä poikasi – liityt kohta hänen seuraansa."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:452
@@ -3689,7 +3619,7 @@ msgstr "EI!"
 #. [message]: description=Fool Prince
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:456
 msgid "Fath-er! Join... us..."
-msgstr "Is-ä! Liity... meihin..."
+msgstr "I-sä! Liity... meihin..."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:460
@@ -3698,12 +3628,11 @@ msgstr "Hänen vanhempi veljensä oli viehättävämpi..."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:503
-#, fuzzy
 msgid ""
 "Their reserves are arriving, and we haven't secured the frontier! We're dead!"
 msgstr ""
-"Heidän vahvistuksensa saapuvat, emmekä ole saaneet rajaa vallattua. Kuolemme "
-"kaikki!"
+"Heidän vahvistuksensa saapuvat, emmekä ole saaneet rajaseutua haltuumme. "
+"Kuolemme kaikki!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:520
@@ -3738,7 +3667,7 @@ msgstr "Uusi Suvilahti"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:640
 msgid "They sealed it, there is no escape for you!"
-msgstr "He lukitsivat sen, et pääse pakoon!"
+msgstr "He sinetöivät sen, et pääse pakoon!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:654
@@ -3757,11 +3686,10 @@ msgstr "Olemme kukistaneet örkit. Nostetaan purjeet ja häivytään täältä."
 
 #. [message]: description=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:675
-#, fuzzy
 msgid ""
 "Oh, for my sons... - As we agreed. I will hold Southbay until my last breath."
 msgstr ""
-"Poikani- - Kuten sovittu. Puolustan Suvilahtea viimeiseen hengenvetooni."
+"Oi, poikani... Kuten sovittu. Puolustan Suvilahtea viimeiseen hengenvetooni."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:679
@@ -3776,15 +3704,14 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:683
-#, fuzzy
 msgid ""
 "What I don't like is the fact that Lich-Lord Jevyan, after whom our very "
 "capital is named, betrayed my people. To make matters worse, he knows that "
 "you have that ruby."
 msgstr ""
-"Se, mikä minua huolestuttaa tässä on se, että kuolonherra Jevyan, jonka "
-"mukaan pääkaupunkimme on nimetty, petti kansamme. Asioita mutkistaa myös se, "
-"että hän tietää rubiinin olevan sinulla."
+"Se, mikä minua huolestuttaa, on se tosiasia, että kuolonherra Jevyan, jonka "
+"mukaan pääkaupunkimme on nimetty, petti kansani. Asioita mutkistaa myös se, "
+"että hän tietää sen rubiinin olevan sinulla."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:687
@@ -3797,7 +3724,6 @@ msgstr ""
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:691
-#, fuzzy
 msgid "Great, more boats, and now an ocean!"
 msgstr "Hienoa, lisää veneitä, ja vielä valtameri!"
 
@@ -3866,9 +3792,8 @@ msgstr "Tulemme rauhassa. Haluamme vain varustaa laivamme uudelleen."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:210
-#, fuzzy
 msgid "(whispered) I don't think diplomacy is going to work."
-msgstr "<Kuiskaten> En usko, että diplomatia toimii."
+msgstr "(Kuiskaten) En usko, että diplomatia toimii."
 
 #. [message]: description=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:214
@@ -3881,9 +3806,8 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:218
-#, fuzzy
 msgid "(whispered) Do I need to say, 'I told you so'?"
-msgstr "<Kuiskaten> Tarvitseeko minun sanoa, 'mitä minä sanoin'?"
+msgstr "(Kuiskaten) Tarvitseeko minun sanoa: ”Minähän sanoin”?"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:233
@@ -3895,9 +3819,8 @@ msgstr "Käärme Purijainen"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:244
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:273
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:238
-#, fuzzy
 msgid "Look out, a serpent has emerged from the deep."
-msgstr "Varokaa, merikäärme on noussut pintaan."
+msgstr "Varokaa! Merikäärme on ilmestynyt syvyyksistä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:255
@@ -3928,13 +3851,12 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:267
-#, fuzzy
 msgid ""
 "They seem rather intelligent. They're certainly belligerent and numerous. "
 "I'm sure they'll eventually evacuate. Just like us right now."
 msgstr ""
-"No, ne näyttävät varsin älykkäiltä. Ne ovat myös sotaisia ja niitä on "
-"paljon. Varmasti ne lopulta lähtevät täältä jonnekin, aivan kuin mekin."
+"Ne näyttävät varsin älykkäiltä. Ne ovat myös sotaisia ja niitä on paljon. "
+"Varmasti ne lopulta lähtevät täältä jonnekin, aivan kuin mekin."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:271
@@ -3952,12 +3874,11 @@ msgstr "Neep! Neep!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:305
-#, fuzzy
 msgid ""
 "The fleet is starving, we'll never pacify this island before we all die!"
 msgstr ""
-"Merimiehillämme on nälkä, emme saa saarta haltuumme ennen kuin kuolemme "
-"kaikki!"
+"Merimiehillämme on nälkä, emme ikinä ehdi saada rauhaa tälle saarelle ennen "
+"kuin me kaikki kuolemme!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:4
@@ -4024,7 +3945,7 @@ msgstr "Ruokaa! Ottakaa kiinni!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:195
 msgid "The fleet must regroup here. We have to defeat these monsters."
 msgstr ""
-"Tässä on laivaston kokoontumispaikka. Meidän on kukistettava nämä viholliset."
+"Tässä on laivaston kokoontumispaikka. Meidän on kukistettava nämä hirviöt."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:210
@@ -4043,7 +3964,6 @@ msgstr "Käärme Hampahinen"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:290
-#, fuzzy
 msgid "We've defeated the nagas. The fleet should be able to regroup here."
 msgstr "Olemme kukistaneet nagat. Laivaston pitäisi voida kokoontua täällä."
 
@@ -4065,7 +3985,7 @@ msgstr ""
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:332
 msgid "I think we're being followed..."
-msgstr "Luulen että meitä seurataan..."
+msgstr "Luulen, että meitä seurataan..."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:340
@@ -4136,7 +4056,7 @@ msgstr ""
 #. [message]: description=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:132
 msgid "By the right of treaty, ancient but still true- "
-msgstr "Sopimuksemme oikeudella. Vaikka se onkin vanha, se on yhä voimassa-"
+msgstr "Sopimuksemme oikeudella. Vaikka se onkin vanha, se on yhä voimassa –"
 
 #. [message]: description=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:136
@@ -4145,8 +4065,8 @@ msgid ""
 "Our axes can get the wood for a fifth of the cost! I can charge half of what "
 "your people do, and still be rich, and I'm not the first to have the thought!"
 msgstr ""
-"Hmph! Mokomat metsissä juoksentelevat haltiat: 'Emme katko puita, olemme "
-"yhtä luonnon kanssa.' Ja sitten peritte viisinkertaisen hinnan siitä mitä "
+"Hmph! Mokomat metsissä juoksentelevat haltiat: ”Emme katko puita, olemme "
+"yhtä luonnon kanssa.” Ja sitten peritte viisinkertaisen hinnan siitä mitä "
 "myytte. Päästäkää meidät metsään kirveinemme, voimme laskea puun hinnan "
 "puoleen siitä, mitä teikäläiset, ja silti rikastumme kuin hullut. Enkä ole "
 "ensimmäinen, joka tätä on ajatellut."
@@ -4184,8 +4104,8 @@ msgid ""
 msgstr ""
 "Voi hitto, ja sentään olit harjoitellut puhettasi päiviä. No, se "
 "diplomatiasta. Haldric, meidän ei pitäisi kutsua liikaa joukkoja paikalle, "
-"ja vältettävä taistelua viimeiseen asti. Tähän on löydyttävissä "
-"rauhanomainen ratkaisu."
+"ja vältettävä taistelua viimeiseen asti. Tähän on löydyttävä rauhanomainen "
+"ratkaisu."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:218
@@ -4193,7 +4113,7 @@ msgid ""
 "In the name of... This is the continent of my home. But I set out east. I "
 "must have traveled clear around the world."
 msgstr ""
-"Voihan... tämä on kotimantereeni. Mutta mehän lähdimme täältä itään. Olen "
+"Voihan... Tämä on kotimantereeni. Mutta minähän lähdin täältä itään. Olen "
 "siis kiertänyt koko maailman."
 
 #. [message]: description=Burin the Lost
@@ -4203,7 +4123,7 @@ msgid ""
 "with you until the end. You've been a good friend. Just no more sea voyages."
 msgstr ""
 "Minun kansani on liian etelässä. En tiedä mitä täällä tapahtuu. Pysyn teidän "
-"luonanne loppuun asti. Olette olleet hyviä ystäviä. Mutta pyydän - ei enää "
+"luonanne loppuun asti. Olette olleet hyviä ystäviä. Mutta pyydän: ei enää "
 "merimatkoja."
 
 #. [side]: type=Elvish Shyde, description=Lord Dionli
@@ -4251,7 +4171,8 @@ msgid ""
 "far from here."
 msgstr ""
 "Tämäpä häiritsevää. Ihminen, kiitä onneasi että olen täällä säästämässä "
-"henkenne. Sillä tänään Metsän neuvoston on määrä kokoontua lähettyvillä."
+"henkenne. Sillä tänään lordien neuvoston on määrä kokoontua läheisessä "
+"metsässä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:258
@@ -4269,7 +4190,7 @@ msgid ""
 "As for you, dwarf, return to the Brown Hills. Then tell your people to "
 "prepare to return to the north."
 msgstr ""
-"Ja sinä, kääpiö, palaa ruskeakukkuloille. Sitten sanot kansallesi, että "
+"Ja sinä, kääpiö, palaa Ruskeakukkuloille. Sitten sanot kansallesi, että "
 "palaavat pohjoiseen."
 
 #. [message]: description=Dursil
@@ -4280,22 +4201,20 @@ msgstr "Minä palaan kukkuloille, mutta en voi luvata kansani lähtöä. Hmph!"
 
 #. [message]: description=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:274
-#, fuzzy
 msgid ""
 "Haldric, is it? You are their leader? You and your advisers are to come with "
 "me. It will be safe for your passengers to disembark here."
 msgstr ""
 "Haldric, niinhän se oli? Olet heidän johtajansa? Ota neuvonantajasi mukaan "
-"ja tule kanssani. Miehistösi voi nousta rauhassa maihin tässä."
+"ja tule kanssani. Tässä matkustajillesi on turvallista nousta maihin."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:299
-#, fuzzy
 msgid ""
 "(whispered) Maybe it'd be best if you didn't mention our little friend "
 "following us..."
 msgstr ""
-"(Kuiskaten) Ehkä sinun ei kannata mainita perässämme tulevaa pientä "
+"(Kuiskaten) Ehkä olisi parasta, ettet mainitsisi perässämme seuraavaa pientä "
 "ystäväämme..."
 
 #. [message]: description=Lord Typhon
@@ -4321,21 +4240,19 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:325
-#, fuzzy
 msgid ""
 "May the currents carry you swiftly, my friend. (whispered) Jessica, send "
 "word that a third of the fleet is to return to the Green Isle, to look for "
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Kantakoot virrat sinua nopeasti, ystäväni. (Kuiskaa) Jessica, lähetä viesti "
-"laivastolle ja käske kolmasosaa palaamaan Vihersaarelle etsimään lisää "
-"henkiinjääneitä. Jos he palaavat, lähetä heidät uudestaan etsimään, kunnes "
-"henkiinjääneitä ei enää ole."
+"Kuljettakoot virrat sinua vikkelästi, ystäväni. (Kuiskaa) Jessica, lähetä "
+"viesti laivastolle ja käske kolmasosaa palaamaan Vihersaarelle etsimään "
+"lisää henkiinjääneitä. Jos he palaavat, lähetä heidät yhä uudelleen "
+"etsimään, kunnes henkiinjääneitä ei enää ole."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:329
-#, fuzzy
 msgid ""
 "(whispered) Man the ships with skeleton crews, and give them the remaining "
 "supplies. Pass the word to Lord Typhon. Make sure that no more than a third "
@@ -4343,11 +4260,11 @@ msgid ""
 "Make haste, return before it is time to meet with these, what are they? Ahh, "
 "elves."
 msgstr ""
-"(Kuiskaa edelleen) Miehitä laivat luurankomiehistöillä, ja anna heille "
-"jäljelläolevat varusteet. Varmista, että laivastosta ei lähde enempää kuin "
-"kolmannes - en halua että pahimmassakaan tapauksessa koko laivastomme jää "
-"örkkien käsiin. Kiirehdi ja palaa pian, koska haluan sinut mukaani "
-"tapaamiseen näiden... mitä nyt olivatkaan... haltioiden kanssa."
+"(Kuiskaa) Miehitä laivat luurankomiehistöillä ja anna heille jäljelläolevat "
+"varusteet. Välitä sana lordi Typhonille. Varmista, että laivastosta ei lähde "
+"enempää kuin kolmannes – en halua avustaa örkkejä valmiiksi varustetulla "
+"laivastolla. Kiirehdi ja palaa pian, koska haluan sinut mukaani tapaamiseen "
+"näiden... mitä ne nyt olivatkaan... haltioiden kanssa."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:333
@@ -4355,13 +4272,13 @@ msgid ""
 "This is the second Eldaric I get to say goodbye to. At least this time it is "
 "easier than the first."
 msgstr ""
-"Tämä on jo toinen Eldaric jonka hyvästelen. No, nämä jäähyväiset ovat "
+"Tämä on jo toinen Eldaric, jonka hyvästelen. No, nämä jäähyväiset ovat "
 "ainakin helpommat kuin ensimmäiset."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:389
 msgid "I bet this wasn't the welcome you were expecting."
-msgstr "Olen varma ettet odottanut tällaista vastaanottoa."
+msgstr "Lyön vetoa, ettet odottanut tällaista vastaanottoa."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:4
@@ -4388,24 +4305,21 @@ msgstr "Lordi El'Isomithir"
 
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:166
-#, fuzzy
 msgid "I think I'll fight the dragon!"
 msgstr "Taidan taistella lohikäärmettä vastaan!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:178
-#, fuzzy
 msgid "Lord Logalmier, I shall defeat your dragon."
 msgstr "Lordi Logalmier, minä kukistan lohikäärmeesi."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:195
 msgid "Umm, you already beat the dragon, Haldric."
-msgstr "Umm, Haldric, kukistit sen jo."
+msgstr "Ömm, Haldric, kukistit sen lohikäärmeen jo."
 
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:205
-#, fuzzy
 msgid "Let's get those saurians and nagas on that beach!"
 msgstr "Hoidellaan rannikon liskot ja nagat!"
 
@@ -4417,52 +4331,45 @@ msgstr "Ne kylmäveriset hirviöt saavat tuntea vihani kuumuuden!"
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:234
 msgid "Umm, you already cleared the beach."
-msgstr "Ömm, puhdistit jo rannikon liskoista."
+msgstr "Ömm, puhdistit jo rannikon niistä otuksista."
 
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:244
-#, fuzzy
 msgid "Let's clear out that troll hole!"
 msgstr "Puhdistetaan tuo peikonluola!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:256
-#, fuzzy
 msgid "So what exactly is a troll?"
-msgstr "Niin, siis millaisia peikot oikeastaan ovat?"
+msgstr "Niin, siis mikä oikeastaan on peikko?"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:272
-#, fuzzy
 msgid "Haldric, the trolls, scales and fangs - you don't remember?"
-msgstr "Haldric, suomukkaita ja pitkäkyntisiä. Etkö tosiaan muista?"
+msgstr "Haldric, peikot, suomukkaita ja torahampaisia. Etkö muista?"
 
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:282
-#, fuzzy
 msgid "Let's put those souls to rest on the cursed isle!"
-msgstr "No, saatamme Kirotun saaren sielut ikuiseen lepoon!"
+msgstr "Annetaan noille sieluille ikuinen lepo kirotulla saarella!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:294
 msgid "Undead. Bah! We're pros at fighting them."
-msgstr "Epäkuolleet. Pöh. Sellaisia kohtaamme joka päivä."
+msgstr "Epäkuolleet. Pöh! Sellaisia kohtaamme joka päivä."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:310
-#, fuzzy
 msgid "How could you possibly forget the horror of the Isle of Tears?"
-msgstr "Miten koskaan voisit unohtaa sitä hirveää saarta?"
+msgstr "Miten koskaan voisit unohtaa Kyynelsaaren kauhua?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:321
-#, fuzzy
 msgid "In the name of peace between our peoples:"
-msgstr "Kansojemme solmiman rauhan nimissä:"
+msgstr "Kansojemme solmiman rauhan nimessä:"
 
 #. [message]: description=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:338
-#, fuzzy
 msgid ""
 "I fear my kin are too easy on you. I decree that you should be made to fight "
 "the Dragon of the Green Swamp and its saurian minions. If you can defeat "
@@ -4470,12 +4377,11 @@ msgid ""
 msgstr ""
 "Pelkäänpä, että sukulaiseni päästävät teidät liian helpolla. Määrään, että "
 "teidän on taisteltava Vihersuon lohikäärmettä ja sen johtamaa liskoarmeijaa "
-"vastaan. Jos pystytte kukistamaan sen, olette todellakin ansainneet "
-"paikkanne tällä saarella."
+"vastaan. Jos pystytte kukistamaan hänet, olette todellakin ansainneet "
+"paikkanne tässä maassa."
 
 #. [message]: description=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:351
-#, fuzzy
 msgid ""
 "There is a group of saurians, friends of the dragon I'm sure, who are "
 "trading metal with the nagas of the sea. We should put a stop to this. They "
@@ -4487,28 +4393,26 @@ msgstr ""
 
 #. [message]: description=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:364
-#, fuzzy
 msgid ""
 "We are having a problem with a troll-hole in the Brown Hills. While I find "
 "the thought of those dwarves stumbling on the trolls vaguely amusing, this "
 "should make an adequate quest for you."
 msgstr ""
-"Meillä on ongelmia Ruskeavaaralla sijaitsevan peikonkolon kanssa. Vaikka "
-"minusta onkin välillä huvittavaa ajatella kääpiöitä kompastumassa "
-"peikkoihin, tästä tulee varmaankin kansallenne riittävän hyvä tehtävä."
+"Meillä on ongelmia Ruskeakukkuloilla sijaitsevan peikonkolon kanssa. Vaikka "
+"minusta onkin välillä huvittavaa ajatella niitä kääpiöitä kompastelemassa "
+"peikkoihin, tästä pitäisi tulla teille tarkoituksenmukainen tehtävä."
 
 #. [message]: description=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:377
-#, fuzzy
 msgid ""
 "Long ago a clan of elves on the Isle of Tears fell under the sway of a dark "
 "curse. Their souls still haunt that place and no elf will go there. You "
 "should clear this isle, and put their souls to rest."
 msgstr ""
-"Kauan sitten haltiaheimo eräällä saarella joutui pahuuden kirouksen uhriksi. "
+"Kauan sitten haltiaheimo Kyynelsaarella joutui pimeän kirouksen uhriksi. "
 "Heidän sielunsa vaanivat vieläkin sitä paikkaa, eikä kukaan haltia suostu "
-"menemään sinne. Tehtävä on puhdistaa saari epäkuolleista ja saattaa sielut "
-"lopulliseen lepoon."
+"menemään sinne. Tehtäväsi on puhdistaa saari epäkuolleista ja saattaa heidän "
+"sielunsa lopulliseen lepoon."
 
 #. [message]: description=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:393
@@ -4521,7 +4425,6 @@ msgstr ""
 
 #. [message]: description=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:405
-#, fuzzy
 msgid "So, you have defeated the trolls. Welcome back, Haldric."
 msgstr "Olet siis kukistanut peikot. Tervetuloa takaisin, Haldric."
 
@@ -4542,7 +4445,8 @@ msgid ""
 "Haldric and his companions find themselves before the Ka'lian, or the "
 "Council of Elven Lords."
 msgstr ""
-"Haldric kumppaneineen kutsutaan Ka'lianin, Metsän neuvoston, kokoukseen."
+"Haldric kumppaneineen löytävät itsensä Ka'lianin, haltialordien neuvoston "
+"kokouksen, edestä."
 
 #. [message]: description=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:452
@@ -4572,9 +4476,9 @@ msgid ""
 "The dwarves have come to the Brown Hills. While they live long, even they "
 "grow like weeds when in an empty field. There is trouble brewing."
 msgstr ""
-"Haltiat ovat laskeutuneet Ruskeakukkuloilta. He ovat pitkäikäisiä, mutta "
-"silti kasvavat kuin rikkaruohot kesantopellolla. Heistä tulee meille vielä "
-"paljon ongelmia."
+"Kääpiöt ovat tulleet Ruskeakukkuloille. He ovat pitkäikäisiä, mutta silti "
+"kasvavat kuin rikkaruohot kesantopellolla. Heistä tulee meille vielä paljon "
+"ongelmia."
 
 #. [message]: description=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:468
@@ -4583,8 +4487,8 @@ msgid ""
 "of Southbay was good, he was a credit to his people. Maybe these ones are "
 "made of the same stuff."
 msgstr ""
-"Ihmiset voisivat tasoittaa tilanteen eduksemme. Suvilahden prinssi oli hyvä "
-"ja kunniaksi kansalleen. Ehkä nämä on tehty samasta puusta."
+"On parempi olla suurempi kolmesta kuin vähäisempi kahdesta. Suvilahden "
+"prinssi oli hyvä ja kunniaksi kansalleen. Ehkä nämä on tehty samasta puusta."
 
 #. [message]: description=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:472
@@ -4679,7 +4583,6 @@ msgstr "Olet jälleen voitokas. Saatat vielä ansaita paikkasi tässä maassa."
 
 #. [message]: description=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:592
-#, fuzzy
 msgid "Ahh, my young prince, you're not as soft as I thought."
 msgstr "Ah, nuori prinssi, olet tehty kovemmasta puusta kuin miltä näytät."
 
@@ -4697,7 +4600,7 @@ msgstr "Luoteen mies, olet ansainnut paikkasi tällä suurella mantereella."
 #. [message]: description=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:629
 msgid "As per our agreement, you and your people -"
-msgstr "Kuten sovimme, sinä ja kansanne - "
+msgstr "Kuten sovimme, sinä ja kansanne –"
 
 #. [message]: description=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:634
@@ -4712,7 +4615,7 @@ msgid ""
 "time of need we may call upon you, remember our generosity."
 msgstr ""
 "Täten annamme haltuunne tasangot Suuresta joesta pohjoiseen, samoin kuin "
-"tasangot ja kukkulat joen eteläpuoellla. Eläkää sovussa maan kanssa. Jos "
+"tasangot ja kukkulat joen eteläpuoella. Eläkää sovussa maan kanssa. Jos "
 "tarvitsemme teitä ja kutsumme teidät apuun, muistakaa anteliaisuutemme."
 
 #. [message]: description=Prince Haldric
@@ -4721,12 +4624,11 @@ msgid ""
 "Fair enough. I decree a 'Pact of Mutual Aid' between our peoples. But, "
 "aren't you setting us in conflict with the Dwarves?"
 msgstr ""
-"Hyvä on. Julistan 'yhteisen avunantosopimuksen' kansojemme välille. Mutta "
+"Hyvä on. Julistan ”yhteisen avunantosopimuksen” kansojemme välille. Mutta "
 "entäs kääpiöt, johtaako tämä sopimus meidät riitoihin heidän kanssaan?"
 
 #. [message]: description=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:649
-#, fuzzy
 msgid ""
 "No. The Dwarves have returned to the north. But humans mine as well. No? "
 "They are your resources to guard now. In the future we would be willing to "
@@ -4743,17 +4645,15 @@ msgstr "Kuka tämä on?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:669
-#, fuzzy
 msgid ""
 "It's Commander Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there?"
 msgstr ""
-"Se on luutnantti Aethyr Kirkasvesisatamasta. Olin varma, että kaaduitte "
-"taistellessanne siellä?"
+"Se on komentaja Aethyr Kirkasvesisatamasta. Olin varma, että kaaduitte "
+"taistellessanne siellä!"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:674
-#, fuzzy
 msgid ""
 "No, sir. I was leading the final survivors of Clearwater Port. We were "
 "making our last stand at the lighthouse when one of your ships came. One of "
@@ -4770,12 +4670,11 @@ msgid ""
 "I come bearing news. Some 'old friends' have decided to make an appearance. "
 "You should go 'greet' them."
 msgstr ""
-"Tuon uutisia. Eräät 'vanhat ystävät' ovat päättäneet palata kuvioihin. Sinun "
-"pitäisi mennä 'tervehtimään' heitä."
+"Tuon uutisia. Eräät ”vanhat ystävät” ovat päättäneet palata kuvioihin. Sinun "
+"pitäisi mennä ”tervehtimään” heitä."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:684
-#, fuzzy
 msgid ""
 "(whispered) I fear our friend has said too much. You go on ahead, I'll catch "
 "up with you."
@@ -4811,7 +4710,7 @@ msgstr "Satras"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:215
 msgid "Slay the Dragon"
-msgstr "Tapa lohikäärme"
+msgstr "Surmaa lohikäärme"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:219
@@ -4826,8 +4725,8 @@ msgid ""
 "be the home of the dragon."
 msgstr ""
 "Muutaman päivän kuljettuaan Haldric huomaa joutuneensa valtavalle suolle. "
-"Suon keskellä on tulivuorisaari, joka hallitsee näkymää. Sen täytyy olla "
-"lohikäärmeen koti."
+"Pieni saari, jonka keskellä kohoaa vuori, hallitsee näkymää. Sen voi olla "
+"ainoastaan lohikäärmeen koti."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:247
@@ -4837,7 +4736,7 @@ msgstr "Kärpäsiä, kärpäsiä joka puolella! Arg!"
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:252
 msgid "'Prince Haldric the Dragonbane' sounds rather nice."
-msgstr "'Prinssi Haldric Lohikäärmeentappaja' kuulostaa hyvältä."
+msgstr "”Prinssi Haldric Lohikäärmeenturma” kuulostaa hyvältä."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:257
@@ -4856,14 +4755,13 @@ msgstr ""
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:270
 msgid "I'm still not calling you 'the Dragonbane'."
-msgstr "Minä en edelleenkään kutsu sinua Lohikäärmeentappajaksi."
+msgstr "Minä en edelleenkään kutsu sinua ”Lohikäärmeenturmaksi”."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:309
-#, fuzzy
 msgid "Watch for the big mudcrawlers. They divide when you kill them."
 msgstr ""
-"Varokaa isoja mutapaakkuja, kun luulette tappavanne ne, ne vain jakautuvat."
+"Varokaa isoja mutapaakkuja. Kun luulette tappavanne ne, ne vain jakautuvat."
 
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:347
@@ -4884,7 +4782,7 @@ msgstr "Sehän nähdään."
 #. [message]: description=Shek'kahan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:383
 msgid "Who dares disturb Shek'kahan the Terrible?"
-msgstr "Kuka uskaltaa häiritä Shek'kahanin, lisänimeltään Julman, rauhaa?"
+msgstr "Kuka uskaltaa häiritä Shek'kahanin, lisänimeltään Hurjan, rauhaa?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:387
@@ -4899,9 +4797,8 @@ msgstr "Meidän on vielä tapettava lohikäärme!"
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:433
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:497
-#, fuzzy
 msgid "The dragon's cave has yielded some treasure!"
-msgstr "Löysit hiukan aarteita lohikäärmeen luolasta!"
+msgstr "Lohikäärmeen luola on pikkuisen tuottava!"
 
 #. [message]: description=Shek'kahan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:457
@@ -4910,9 +4807,8 @@ msgstr "Ei!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:471
-#, fuzzy
 msgid "We've slain the dragon: "
-msgstr "Olemme tappaneet lohikäärmeen:"
+msgstr "Olemme surmanneet lohikäärmeen:"
 
 #. [option]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:474
@@ -4926,7 +4822,6 @@ msgstr "Tapetaan vielä loputkin noista hirviöistä!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:515
-#, fuzzy
 msgid "More saurians are arriving. They've surrounded us! We're doomed."
 msgstr "Lisää liskoja saapuu. Meidät on piiritetty! Olemme hukassa."
 
@@ -4949,7 +4844,6 @@ msgstr "Ssirk"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:141
-#, fuzzy
 msgid ""
 "After a long trek Prince Haldric, and his companions find themselves on a "
 "sunny beach. While normally this would be a pleasant occurrence, they find "
@@ -4966,29 +4860,24 @@ msgstr "Hirviöitä! Hirviöt hyökkäävät."
 
 #. [message]: description=Tirasch
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:152
-#, fuzzy
 msgid "We must hold the beach until we can call our naga friends."
 msgstr ""
-"Meidän on pidettävä ranta hallussamme siihen asti, että nagaystävämme "
-"ehtivät apuun."
+"Meidän on pidettävä ranta hallussamme, kunnes voimme kutsua nagaystäviämme."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:157
-#, fuzzy
 msgid "Us, monsters? Hmph... prepare to meet our blades."
 msgstr "Me hirviöitä? Hmph... maistakaa miekkaa."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:163
-#, fuzzy
 msgid "(Sigh) I bet he sees none of the irony in that."
-msgstr "(Huokaus) Lisko ei varmaan edes tajua ironiaa tuossa."
+msgstr "(Huokaus) Lyön vetoa, että hän ei varmaan edes tajua tuossa ironiaa."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:171
-#, fuzzy
 msgid "We were too slow... Every naga in the sea will be upon us!"
-msgstr "Olimme liian hitaita... kaikki merten nagat ovat kimpussamme!"
+msgstr "Olimme liian hitaita... Jokainen meren naga on kimpussamme!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:194
@@ -5003,7 +4892,6 @@ msgstr "Riaa"
 
 #. [message]: description=Riaa
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:251
-#, fuzzy
 msgid "We must protect the saurians. We need the metal!"
 msgstr "Meidän on suojeltava liskoja. Me tarvitsemme metallia!"
 
@@ -5036,7 +4924,7 @@ msgstr "Saxiala"
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:266
 msgid "Malix"
-msgstr ""
+msgstr "Malix"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:274
@@ -5093,7 +4981,6 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:285
-#, fuzzy
 msgid "Does anybody actually know anything about trolls?"
 msgstr "Niin, tietääkö joku jotain peikoista?"
 
@@ -5114,7 +5001,7 @@ msgid ""
 "all friendly."
 msgstr ""
 "Hmm... Tarvitseeko meidän edes tietää niin paljoa peikoista? Uskoakseni "
-"voimme olettaa, etteivät haltiat olisi lähettäneet meitä tänne alas jos ne "
+"voimme olettaa, etteivät haltiat olisi lähettäneet meitä tänne alas, jos ne "
 "olisivat lainkaan ystävällisiä."
 
 #. [message]: description=Prince Haldric
@@ -5126,17 +5013,16 @@ msgstr "Kuulostaa hyvältä. Otetaan heidät kiinni!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:308
 msgid ""
 "We have failed... More of the trolls' kin are arriving through the entrance."
-msgstr "Olemme epäonnistuneet... lisää peikkoja saapuu sisäänkäynnin kautta."
+msgstr "Olemme epäonnistuneet... Lisää peikkoja saapuu sisäänkäynnin kautta."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:348
-#, fuzzy
 msgid ""
 "The trolls are beaten, but they were no easy opponents. It is no wonder why "
 "the elves pressed us to do their dirty work."
 msgstr ""
-"Peikot on lyöty. Mokomat haltiat panevat meidät tekemään kaikki likaiset "
-"työt."
+"Peikot on lyöty, mutta ne eivät olleet helppoja vastuksia. Ei ihme miksi "
+"mokomat haltiat panivat meidät tekemään likaisen työn."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:4
@@ -5161,7 +5047,7 @@ msgstr "Hän on... Hän on kaunis."
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:155
 msgid "Midnight Queen"
-msgstr "Yön kuningatar"
+msgstr "Keskiyön kuningatar"
 
 #. [message]: description=Midnight Queen
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:168
@@ -5180,9 +5066,8 @@ msgstr "Haldric, käytä aivojasi!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:180
-#, fuzzy
 msgid "Get her before she ensorcels us all!"
-msgstr "Ottakaa hänet kiinni, ennen kuin hänestä on enempää harmia!"
+msgstr "Ottakaa hänet kiinni, ennen kuin hän lumoaa meidät kaikki!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:186
@@ -5197,13 +5082,12 @@ msgstr "Temppeli on typötyhjä."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:336
-#, fuzzy
 msgid ""
 "After a short trip by sea, Haldric arrives on the elves' cursed Isle of "
 "Tears. A fog hangs in the air."
 msgstr ""
-"Lyhyen meriretken jälkeen Haldric saapuu haltioiden kirotulle saarelle. Ilma "
-"on täynnä paksua sumua."
+"Lyhyen meriretken jälkeen Haldric saapuu haltioiden kirotulle "
+"Kyynelsaarelle. Sumu leijailee ilmassa."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:342
@@ -5216,9 +5100,8 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:347
-#, fuzzy
 msgid "I expect we'll be facing more undead. Be careful."
-msgstr "Luulen että kohtaamme lisää epäkuolleita. Ole varovainen."
+msgstr "Odotan, että kohtaamme vielä lisää epäkuolleita. Ole varovainen."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:352
@@ -5231,9 +5114,8 @@ msgstr ""
 
 #. [message]: description=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:357
-#, fuzzy
 msgid "All soldiers of darkness will meet the same fate by my hand."
-msgstr "Kaikki pimeyden soturit kohdatkoon saman kohtalon minun käteni kautta."
+msgstr "Kaikki pimeyden soturit kohtaavat vielä saman kohtalon käteni kautta."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:365
@@ -5242,12 +5124,12 @@ msgid ""
 "hold no weight."
 msgstr ""
 "Nuo haltiat ovat viimeinkin päässeet lepoon. Toivottavasti ne kiroukset, "
-"joita hän langetti päällemme, eivät vaikuta. <Koputtaa puuta.>"
+"joita hän langetti päällemme, eivät vaikuta."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:370
 msgid "Haldric, you're too paranoid."
-msgstr "Haldric, olet vainoharhainen."
+msgstr "Haldric, olet liian vainoharhainen."
 
 #. [message]: description=Isorfilad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:393
@@ -5263,13 +5145,12 @@ msgstr "Kirous sinun ja miestesi ylle. Älköön rauha koskaan tulko osaksenne."
 #. [message]: description=Midnight Queen
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:415
 msgid "My soul will haunt this place until the end of time! A curse upon you!"
-msgstr "Sieluni vaanikoon tätä paikkaa aikojen loppuun asti! Kirous päällenne!"
+msgstr "Sieluni vaanii tätä paikkaa aikojen loppuun asti! Kirous päällenne!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:423
-#, fuzzy
 msgid "Without their queen the undead are simply fading away!"
-msgstr "Ilman kuningatartaan epäkuolleet haihtuvat ilmaan!"
+msgstr "Ilman kuningatartaan epäkuolleet yksinkertaisesti katoavat pois!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:442
@@ -5278,9 +5159,8 @@ msgstr "Kaikotkaa takaisin hautoihinne!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:456
-#, fuzzy
 msgid "We still have to defeat that vampire queen!"
-msgstr "Meidän on siltikin kukistettava vampyyrien kuningatar!"
+msgstr "Meidän on vielä kukistettava vampyyrien kuningatar!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:492
@@ -5288,7 +5168,7 @@ msgid ""
 "No! The ship that was supposed to pick us up sees that there's still "
 "fighting. It's not stopping. We're trapped."
 msgstr ""
-"Ei! Meitä noutamaan tullut laiva näkee että täällä taistellaan vielä, eikä "
+"Ei! Meitä noutamaan tullut laiva näkee, että täällä taistellaan vielä, eikä "
 "pysähdy. Jäimme tänne."
 
 #. [scenario]
@@ -5308,7 +5188,7 @@ msgid ""
 "reported that orcs have made landfall. Orcs here, for the first time in "
 "centuries."
 msgstr ""
-"Tuho on siis seurannut heitä tänne aseti. Tiedustelijani kertovat örkkien "
+"Tuho on siis seurannut heitä tänne asti. Tiedustelijani kertovat örkkien "
 "nousseen maihin. Örkkejä täällä, ensimmäistä kertaa vuosisatoihin."
 
 #. [message]: description=Lord Dionli
@@ -5330,7 +5210,7 @@ msgid ""
 msgstr ""
 "Olemme saattaneet olla väärässä päätöksessämme. Jos ihmiset ajavat örkit "
 "pois, meidän kannattaa noudattaa lupaustamme. Jos ongelmat jatkuvat, meidän "
-"kannattaa antaa ihmisten ja örkkien tapella, 'hoidella' henkiinjääneet ja "
+"kannattaa antaa ihmisten ja örkkien tapella, ”hoidella” henkiinjääneet ja "
 "yrittää sovitella asioita kääpiöiden kanssa."
 
 #. [message]: description=Lord Dionli
@@ -5350,10 +5230,10 @@ msgid ""
 "should 'deal' with the survivors, and make compromise with the Dwarves.'"
 msgstr ""
 "Me olemme metsän kansaa, ja te tiedätte, että kaikki, mitä olemme luvanneet "
-"tuolle epä-kansalle, on vähemmän tärkeää kuin kansamme tarpeet. Kuten lordi "
-"Aryad sanoi: \"Jos ongelmat jatkuvat, meidän kannattaa antaa ihmisten ja "
-"örkkien tapella, 'hoidella' henkiinjääneet ja yrittää sovitella asioita "
-"kääpiöiden kanssa.\""
+"tälle epäkansalle, on vähemmän tärkeää kuin kansamme tarpeet. Kuten lordi "
+"Aryad sanoi: ”Jos ongelmat jatkuvat, meidän kannattaa antaa ihmisten ja "
+"örkkien tapella, ’hoidella’ henkiinjääneet ja yrittää sovitella asioita "
+"kääpiöiden kanssa.”"
 
 #. [message]: description=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:135
@@ -5362,14 +5242,13 @@ msgstr "(Huokaus) Sovittu."
 
 #. [message]: description=Jessica in Hiding
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:144
-#, fuzzy
 msgid "(whispered) Some friends. I must tell Haldric."
 msgstr "(Kuiskaten) Ystäviä muka. Minun on kerrottava tästä Haldricille."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:4
 msgid "The Vanguard"
-msgstr "Sillanpääasema"
+msgstr "Etujoukko"
 
 #. [side]: type=Orcish Warlord, description=Tan-Erirt
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:47
@@ -5388,14 +5267,14 @@ msgstr "Thruf"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:217
-#, fuzzy
 msgid ""
 "Haldric and his companions race across the plains to confront the resurgent "
 "orcish threat. On the eve of battle, Lady Jessica catches up with Haldric on "
 "a fog-covered plain."
 msgstr ""
 "Haldric kumppaneineen kulkee pikamarssia yli aron ehtiäkseen örkkien "
-"kimppuun. Taistelun aattona Lady Jessica kohtaa Haldricin sumuisella arolla."
+"kimppuun. Taistelun aattona Lady Jessica kohtaa Haldricin sumun peittämällä "
+"arolla."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:222
@@ -5413,27 +5292,25 @@ msgid ""
 "Haldric, it's bad. The elves are having second thoughts. They think we might "
 "be more trouble than we're worth. We have to defeat these orcs decisively."
 msgstr ""
-"Haldric, tilanne on huolestuttava. Haltiat ovat tulleet toisiin ajatuksiin. "
+"Haldric, tilanne on huolestuttava. Haltioilla on muitakin suunnitelmia. "
 "Heidän mielestään meistä on enemmän harmia kuin hyötyä. Meidän on lyötävä "
 "nämä örkit täydellisesti."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:235
-#, fuzzy
 msgid "That does not sound unreasonable."
-msgstr "Se kuulostaa kohtuulliselta."
+msgstr "Se ei kuulosta kohtuuttomalta."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:239
-#, fuzzy
 msgid ""
 "More orcs will follow after these. That ruby guarantees it. If more orcs "
 "follow us here, the elves seem content to let us fight it out. Then they "
 "said they would 'deal with the survivors'."
 msgstr ""
-"Lisää örkkejä seuraa näiden jälkeen, rubiini takaa sen. Jos enemmän örkkejä "
-"tulee, haltiat antavat meidän taistella niitä vastaan ja sen jälkeen "
-"'hoitelevat' henkiinjääneet."
+"Lisää örkkejä seuraa näiden jälkeen. Se rubiini takaa sen. Jos enemmän "
+"örkkejä tulee, haltiat antavat meidän taistella niitä vastaan ja sen jälkeen "
+"”hoitelevat” henkiinjääneet."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:243
@@ -5442,19 +5319,18 @@ msgid ""
 "prize as the Ruby of Fire just slip away. Especially when he sees that he "
 "has the advantage."
 msgstr ""
-"Jevyan on täällä... tuo lepakko on hänen taikaeläimensä. Hän ei varmasti "
-"päästä käsistään niin houkuttelevaa esinettä kuin Taikarubiini. Erityisesti "
+"Jevyan on täällä... Tuo lepakko on hänen taikaeläimensä. Hän ei varmasti "
+"päästä käsistään niin houkuttelevaa esinettä kuin tulirubiini. Erityisesti "
 "silloin, kun hän tietää olevansa voitolla."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:247
-#, fuzzy
 msgid ""
 "I have a plan. Jessica, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
 "Minulla on suunnitelma. Jessica, muistatko sen peikonkolon? Tässä, ota "
-"Tulirubiini ja piilota se koloon."
+"tulirubiini ja piilota se koloon."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:251
@@ -5468,23 +5344,21 @@ msgstr "Älä mieti vaan toimi."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:259
-#, fuzzy
 msgid ""
 "Commander Aethyr, did these orcs come on our ships? Did they capture the "
 "fleet we sent out?"
 msgstr ""
-"Luutnantti Aethyr, tulivatko nämä örkit meidän laivoillanne? Saivatko he "
-"vallattua laivaston, jonka lähetimme sinne?"
+"Komentaja Aethyr, tulivatko nämä örkit meidän laivoillanne? Saivatko he "
+"vallattua laivaston, jonka lähetimme?"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:263
-#, fuzzy
 msgid ""
 "No, sir! They must have seized all remaining boats on the Green Isle. Our "
 "fleet should be returning any day now."
 msgstr ""
-"Ei, herrani. Ne ovat luultavasti vallanneet kaikki Vihersaareen jätetyt "
-"laivat. Laivastomme pitäisi sen sijaan saapua minä päivänä hyvänsä."
+"Ei, herrani! Ne ovat luultavasti vallanneet kaikki Vihersaareen jätetyt "
+"laivat. Laivastomme pitäisi palata minä päivänä hyvänsä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:267
@@ -5514,7 +5388,7 @@ msgstr ""
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:308
 msgid "We have run out of time... We'll never beat the orcs to the beach."
-msgstr "Aikamme on loppu... emme koskaan ehdi rantaan ennen örkkejä."
+msgstr "Aikamme on loppu... Emme koskaan ehdi rannalle ennnen örkkejä."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:326
@@ -5528,9 +5402,8 @@ msgstr "Rabbin"
 
 #. [message]: description=Rabbin
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:358
-#, fuzzy
 msgid "You will be felled by my hand, useless fleshbags!"
-msgstr "Te, tarpeettomat lihasäkit, kaadutte käteni kautta!"
+msgstr "Kaadutte vielä käteni kautta, te tarpeettomat lihasäkit!"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:375
@@ -5612,9 +5485,8 @@ msgstr "Tan-Rinak"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:211
-#, fuzzy
 msgid "Death of Aethyr"
-msgstr "Luutnantti Aethyrin kuolema"
+msgstr "Aethyrin kuolema"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:225
@@ -5631,7 +5503,7 @@ msgid ""
 "Sir, some ships have landed... They look like they've been damaged by the "
 "voyage. Hmm, it seems that most of the ships are staying at sea."
 msgstr ""
-"Herrani, muutama alus on rantautunut... ne näyttävät vaurioituneen matkassa. "
+"Herrani, muutama alus on rantautunut... Ne näyttävät vaurioituneen matkassa. "
 "Hmm, näyttää siltä, että suurin osa aluksista on yhä merellä."
 
 #. [message]: description=Prince Haldric
@@ -5647,13 +5519,13 @@ msgstr ""
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:239
-#, fuzzy
 msgid ""
 "Yes sir! The rest of the refugees have fled south, to our initial landing "
 "site. But if we fail here they'll doubtless be slaughtered."
 msgstr ""
 "Kyllä herra! Loput pakolaiset ovat paenneet etelään alkuperäiselle "
-"rantautumispaikallemme. Jos epäonnistumme täällä, heidätkin teurastetaan."
+"rantautumispaikallemme. Jos epäonnistumme täällä, heidätkin epäilemättä "
+"teurastetaan."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:243
@@ -5662,25 +5534,21 @@ msgstr "Se sopii. On puhuttu tarpeeksi, taistelun aika!"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:247
-#, fuzzy
 msgid "For the glory of the men of the Green Isle!"
 msgstr "Vihersaaren miesten kunnian puolesta!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:251
-#, fuzzy
 msgid "No, for the glory of all of the people of the west-north! Charge!"
 msgstr "Ei, vaan luoteen miesten puolesta! Rynnäkköön!"
 
 #. [message]: description=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:255
-#, fuzzy
 msgid "Bah! Puny human-worm, we will stomp you under our heels!"
-msgstr "Pöh! Ihminen- murskaamme sinut kantapäidemme alle!"
+msgstr "Pöh! Hintelä Ihmismato, murskaamme sinut kantapäidemme alle!"
 
 #. [message]: description=General Heravan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:259
-#, fuzzy
 msgid "...And raise your dead to serve us forever!"
 msgstr "...Ja nostatamme kuolleesi palvelemaan meitä iäti!"
 
@@ -5691,9 +5559,9 @@ msgid ""
 "conceal the power of the Ruby of Fire. It makes little difference, your "
 "undead corpse will lay it at my feet."
 msgstr ""
-"Antaudu, poika! Et voi voittaa minua- Hmm, mitä tämä on? Olet oppinut "
-"kätkemään Tulirubiinin voiman. Sillä ei ole paljoa merkitystä, koska "
-"epäkuollut ruumiisi makaa pian jaloissani."
+"Antaudu, poika! Et voi voittaa minua – Hmm, mitä tämä on? Olet oppinut "
+"kätkemään tulirubiinin voiman. Sillä ei ole paljoa merkitystä, koska "
+"epäkuollut ruumiisi laskee sen pian jalkojeni juureen."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:295
@@ -5727,7 +5595,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:382
 msgid "Hmm, they left off the 'or the orcs will eat you' part."
-msgstr "Hmm, ne jättivät tuosta pois 'tai örkit syövät teidät' -osan."
+msgstr "Hmm, ne jättivät tuosta pois sen ”tai örkit syövät teidät”-osan."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:418
@@ -5758,7 +5626,7 @@ msgid ""
 "quickly-"
 msgstr ""
 "Olemme kukistaneet Jevyanin joukot. Laivojen on laskettava matkustajansa "
-"pian-"
+"pian –"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:438
@@ -5767,7 +5635,6 @@ msgstr "Haldric, mitä tapahtuu? Mikä on suunnitelmamme?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:442
-#, fuzzy
 msgid "We're going to confront Jevyan and destroy him."
 msgstr "No, aiomme ahdistaa Jevyania ja tuhota hänet."
 
@@ -5847,21 +5714,20 @@ msgid ""
 "our Naga friendsss- You'll pay! We have new friends now."
 msgstr ""
 "Te taasss. Joudutte kärsssimään hyökättyänne kansssaani vastaan! Shek'kahan, "
-"nagayssstävämme- Te maksssatte! Meillä on nyt uusssia yssstäviä!"
+"nagayssstävämme... Te maksssatte! Meillä on nyt uusssia yssstäviä!"
 
 #. [message]: description=Tan-Halg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:551
-#, fuzzy
 msgid ""
 "My people are like a rock slide, you can run, but we will crush you...Ahhck!"
 msgstr ""
 "Minun kansani on kuin kivivyöry, voitte juosta pakoon, mutta murskaamme "
-"teidät- Aargh!"
+"teidät... Aargh!"
 
 #. [message]: description=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:572
 msgid "I- I die?"
-msgstr "Minä - kuolen?"
+msgstr "Minä... kuolen?"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:4
@@ -5875,13 +5741,12 @@ msgstr "Mikä on siis suunnitelmasi?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:123
-#, fuzzy
 msgid ""
 "We're going to convince Jevyan that we gave the elves the Ruby of Fire to "
 "secure our place in this new land. Then if the orcs return, hopefully "
 "they'll go looking for our not-so-loyal elven allies first."
 msgstr ""
-"Aiomme vakuuttaa Jevyanille, että annoimme Tulirubiinin haltioille "
+"Aiomme vakuuttaa Jevyanille, että annoimme tulirubiinin haltioille "
 "saadaksemme heiltä asuinpaikan tässä uudessa maassa. Sitten, jos örkit "
 "palaavat, ne toivottavasti lähtevät etsimään ensin meidän vähemmän "
 "uskollisia haltialiittolaisiamme."
@@ -5898,40 +5763,37 @@ msgstr ""
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:131
-#, fuzzy
 msgid ""
 "Yes, and we may come to their aid. We'll have to weigh our options when and "
 "if the time comes. If the orcs return in great numbers, the brunt of their "
 "assault must fall on somebody else or we will not survive it. Who knows, "
 "maybe I won't even come to their aid at all -"
 msgstr ""
-"Kyllä, ja niin saatammekin tehdä. Mutta sitä mietimme jos ja kun sen aika "
-"tulee. Jos örkit palaavat suurina joukkoina, heidän päähyökkäyksensä on "
-"suuntauduttava jonnekin muualle. Kuka tietää, ehkä en tule heidän avukseen "
-"lainkaan-"
+"Kyllä, ja me voimme tulla auttamaan heitä. Meidän täytyy asettaa "
+"vaihtoehtomme järjestykseen jos ja kun sen aika tulee. Jos örkit palaavat "
+"suurina joukkoina, heidän päähyökkäyksensä on suuntauduttava jonnekin "
+"muualle tai emme kestä. Kuka tietää, ehkä en tule heidän avukseen lainkaan –"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:135
-#, fuzzy
 msgid ""
 "Many people would call you a coward if you did not. They would say that you "
 "turned your back on your pact with the elves. It's not like you can tell "
 "people what I overheard."
 msgstr ""
-"Monet ihmiset kutsuvat sinua pelkuriksi. He sanovat, että käänsit selkäsi "
-"haltioille. Et pysty vakuuttamaan ihmisille, että se, mitä kuuntelin, on "
-"totta."
+"Monet ihmiset kutsuisivat sinua pelkuriksi. He sanoisivat, että käänsit "
+"selkäsi sopimukselle haltioiden kanssa. Et noin vain voi kertoa ihmisille "
+"mitä kuulin."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:139
-#, fuzzy
 msgid ""
 "Recent events have taught me one thing: that survival trumps honor. Besides, "
 "they won't be screaming at me - I'll be dead."
 msgstr ""
-"Viimeaikaiset tapahtumat ovat opettaneet minulle yhden asian: "
-"hengissäsäilyminen on tärkeämpää kuin kunnia. Sitä paitsi he eivät jää "
-"syyttelemään minua, koska olen siinä vaiheessa jo kuollut."
+"Viimeaikaiset tapahtumat ovat opettaneet minulle yhden asian: hengissä "
+"säilyminen on tärkeämpää kuin kunnia. Sitä paitsi he eivät jää syyttelemään "
+"minua, koska siinä vaiheessa olen jo kuollut."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:144
@@ -5940,18 +5802,17 @@ msgstr "MITÄ!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:148
-#, fuzzy
 msgid ""
 "I'll be dead. I mean we can't just say that we gave away the Ruby of Fire, "
 "or send Jevyan a letter. Well, we are going to say it - but that's not the "
 "point. Jessica, you're going to forge a very official looking treaty, in "
 "which we give the elves the Ruby of Fire, in return for our place here."
 msgstr ""
-"Minun täytyy kuolla. Tarkoitan sitä, että emme voi vain lähettää sanaa tai "
-"viestiä Jevyanille siitä, että annoimme pois Tulirubiinin. No, kyllä me "
-"sanomme sen, mutta se ei ole olennaista. Jessica, sinun tehtäväsi on "
-"väärentää hyvin virallisen näköinen sopimus, jossa annoimme haltioiden "
-"haltuun Tulirubiinin korvauksena asuinpaikastamme täällä."
+"Minä kuolen. Tarkoitan siis, että emme voi vain lähettää sanaa tai viestiä "
+"Jevyanille siitä, että annoimme pois tulirubiinin. No, kyllä me sanomme sen, "
+"mutta se ei ole olennaista. Jessica, sinun tehtäväsi on väärentää hyvin "
+"virallisen näköinen sopimus, jossa annoimme haltioiden haltuun tulirubiinin "
+"korvauksena asuinpaikastamme täällä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:152
@@ -5968,34 +5829,30 @@ msgstr ""
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:156
-#, fuzzy
 msgid ""
 "Haldric! I won't do it... I won't help. What is it with your kind, always "
 "rushing to a fool's death? Who'll lead these people?"
 msgstr ""
-"Haldric! En suostu... en auta sinua. Mikä teikäläisillä on, kun aina "
+"Haldric! En suostu... En auta sinua. Mikä teikäläisillä on, kun aina "
 "juoksette päin kuolemaa kuin hullut. Kuka jäisi johtamaan kansaasi sinun "
 "jälkeesi?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:160
-#, fuzzy
 msgid ""
 "You will. I wouldn't have made it this far without you. We really have to "
 "convince Jevyan -"
 msgstr ""
 "Sinä. En olisi päässyt näin pitkälle ilman sinua. Meidän on todellakin "
-"vakuutettava Jevyan-"
+"vakuutettava Jevyan –"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:164
-#, fuzzy
 msgid "Haldric, this is ridiculous! I -"
-msgstr "Haldric, tämä on järjetöntä! Minä- -"
+msgstr "Haldric, tämä on naurettavaa! Minä –"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:197
-#, fuzzy
 msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
 "bodies, right Jessica?"
@@ -6011,7 +5868,7 @@ msgstr "Oikein!"
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:205
 msgid "I'll do it, sir. I'll sacrifice myself to plant the false treaty."
-msgstr ""
+msgstr "Minä teen sen, herrani. Uhraan itseni valesopimuksen vuoksi."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:209
@@ -6020,7 +5877,6 @@ msgstr "Ei. En voi pyytä sinua tekemään tätä."
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:213
-#, fuzzy
 msgid ""
 "You've denied me honorable death twice already. Once when you arrived at "
 "Clearwater Port, and once again when your ships rescued me. I'll not be "
@@ -6033,7 +5889,7 @@ msgstr ""
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:217
 msgid "No, this is my sacrifice to make!"
-msgstr "Ei, minun pitää tehdä tämä uhraus!"
+msgstr "Ei, tämä on minun uhraukseni!"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:223
@@ -6074,14 +5930,14 @@ msgid ""
 "to me. I want to rest in the ground, not be some mindless undead slave for "
 "all eternity!"
 msgstr ""
-"Kunnioittakaa minua tuhoamalla Jevyan! Mieluiten ennen, kuin hän voi tehdä "
+"Kunnioittakaa minua tuhoamalla Jevyan! Mieluiten ennen kuin hän voi tehdä "
 "mitään luonnotonta minulle. Haluan levätä maan povessa enkä olla mikään "
 "mieletön epäkuollut orja ikuisuuksien ajan!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:239
 msgid "We'll make sure. I promise."
-msgstr "Me varmistamme sen. Lupaan niin."
+msgstr "Me varmistamme sen. Minä lupaan."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:243
@@ -6092,8 +5948,8 @@ msgid ""
 "death'?"
 msgstr ""
 "Meidän on muistettava päästää yksi örkkien johtajista pakoon Vihersaarelle "
-"sen tiedon kanssa, että haltioilla 'on' Tulirubiini. Voi huokaus... miksi "
-"ihmeessä kansallanne on aina niin kiire 'kunniakkaaseen kuolemaan'?"
+"sen tiedon kanssa, että haltioilla ”on” tulirubiini. Voi huokaus... Miksi "
+"ihmeessä kansallanne on aina niin kiire ”kunniakkaaseen kuolemaan”?"
 
 #. [side]: type=Orcish Warlord, description=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:88
@@ -6117,9 +5973,8 @@ msgstr "Tan-Prodash"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:279
-#, fuzzy
 msgid "Commander Aethyr sacrifices himself to Lich-Lord Jevyan and"
-msgstr "Luutnantti Aethyr uhrautuu kuolonherra Jevyanille ja"
+msgstr "Komentaja Aethyr uhrautuu kuolonherra Jevyanille ja"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:283
@@ -6133,30 +5988,27 @@ msgstr "Kukista kaikki vihollisjohtajat yhtä lukuunottamatta"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:299
-#, fuzzy
 msgid "Death of Commander Aethyr by somebody other than Jevyan"
-msgstr "Jos joku muu kuin Jevyan tappaa luutnantti Aethyrin"
+msgstr "Komentaja Aethyrin kuolema jonkun muun kuin Jevyanin kynsissä"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:303
 msgid "Fail to leave one enemy leader behind"
-msgstr "Jos yhtään vihollisjohtajaa ei jää jäljelle"
+msgstr "Vihollisjohtajia ei jää jäljelle"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:317
-#, fuzzy
 msgid ""
 "Haldric approaches the place where Lich-Lord Jevyan has made landfall. The "
 "final confrontation looms before him."
 msgstr ""
-"Haldric siirtyy pikamarssia paikkaan, jossa kuolonherra Jevyan on noussut "
-"maihin. Viimeinen yhteenotto odottaa."
+"Haldric lähestyy paikkaa, jossa kuolonherra Jevyan on noussut maihin. "
+"Viimeinen yhteenotto odottaa hänen edessään."
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:322
-#, fuzzy
 msgid "You cannot win. Give me the Ruby of Fire and I will go in peace."
-msgstr "Et voi voittaa. Anna minulle Tulirubiini ja lähden rauhassa."
+msgstr "Et voi voittaa. Anna minulle tulirubiini ja lähden rauhassa."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:326
@@ -6165,7 +6017,7 @@ msgid ""
 "the Ruby of Fire."
 msgstr ""
 "Tämä päättyy tähän, Jevyan. Vaikka uskoisinkin sanojasi, en voisi antaa "
-"sinulle Tulirubiinia."
+"sinulle tulirubiinia."
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:331
@@ -6173,7 +6025,7 @@ msgid ""
 "Bah! Even if you have learned to conceal the power of the Ruby of Fire you "
 "will deliver it unto me in death!"
 msgstr ""
-"Bah! Vaikka oletkin oppinut piilottamaan Tulirubiinin voiman, annat sen "
+"Bah! Vaikka oletkin oppinut piilottamaan tulirubiinin voiman, annat sen "
 "silti minulle kuollessasi!"
 
 #. [message]: description=Lady Jessica
@@ -6184,7 +6036,7 @@ msgid ""
 "ensuring our place here."
 msgstr ""
 "Olet hölmö, Jevyan. Millä luulit meidän hankkineen tämän maan? Meidän oli "
-"annettava Tulirubiini haltioiden käsiin. Allekirjoitimme juuri heidän "
+"annettava tulirubiini haltioiden käsiin. Allekirjoitimme juuri heidän "
 "kanssaan sopimuksen, joka vahvistaa oikeutemme."
 
 #. [message]: description=Lich-Lord Jevyan
@@ -6207,21 +6059,20 @@ msgstr "Ei. Näin ei voi olla!"
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:352
-#, fuzzy
 msgid ""
 "Fool human, you shouldn't give such toys to elves! Bah! It matters little to "
 "me. I'm no wizard. All I got is my axe. Heh, heh. It's all I need - prepare "
 "to die, orcish scum!"
 msgstr ""
-"Ihmishölmö, sinun ei pitäisi antaa sellaisia leluja haltioiden käsiin! Pöh! "
-"Sillä ei ole merkitystä nyt. En ole mikään velho, minulla on vain kirveeni. "
-"Hahhah. Muuta en tarvitse -- valmistautukaa kuolemaan, örkkiroskaväki!"
+"Ihmishölmö, sinun ei pitäisi antaa sellaisia leluja haltioiden käsiin! Pah! "
+"Sillä ei ole minulle paljonkaan merkitystä nyt. En ole mikään velho. Kaikki "
+"mitä minulla on, on kirveeni. Heh heh. Se on kaikki mitä tarvitsen – "
+"valmistautukaa kuolemaan, örkkiroskaväki!"
 
 #. [message]: description=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:356
-#, fuzzy
 msgid "Ha. Let all of the minions of Darkness be cast down!"
-msgstr "Hah. Näin kaatukoon jokainen pimeyden sotilas!"
+msgstr "Hah. Kaatukoon kaikki pimeyden palvelijat!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:360
@@ -6240,7 +6091,6 @@ msgstr "Suvilahden kunniaksi!"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:373
-#, fuzzy
 msgid ""
 "We don't need some magic trinket to beat you! Prepare to meet your fate, you "
 "decrepit sack of bones! For the honor of all of the people of the west-north!"
@@ -6265,19 +6115,17 @@ msgstr ""
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:386
 msgid "We shall soon see if you have the Ruby of Fire!"
-msgstr "Kohta näemme onko sinulla Tulirubiini!"
+msgstr "Kohta näemme onko sinulla tulirubiini!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:395
-#, fuzzy
 msgid "(whispered) Commander, you remember the plan right?"
-msgstr "<Kuiskaten> Luutnantti, muistatko suunnitelman?"
+msgstr "(Kuiskaten) Komentaja, muistatko suunnitelman varmasti?"
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:399
-#, fuzzy
 msgid "(whispered) Yes, sir. I am ready."
-msgstr "<Kuiskaten> Kyllä herra. Olen valmis."
+msgstr "(Kuiskaten) Kyllä, herra. Olen valmis."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:410
@@ -6297,10 +6145,9 @@ msgstr ""
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:437
-#, fuzzy
 msgid "All life is finite; you will be made to serve along with the rest."
 msgstr ""
-"Kaikki elämä on katoavaista, sinä joudut palvelemaan yhdessä muiden kanssa."
+"Kaikki elämä on katoavaista ja sinä joudut palvelemaan yhdessä muiden kanssa."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:448
@@ -6314,9 +6161,8 @@ msgstr "Wessien puolesta!"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:473
-#, fuzzy
 msgid "Be careful, Commander!"
-msgstr "Ole varovainen, luutnantti!"
+msgstr "Ole varovainen, komentaja!"
 
 #. [message]: description=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:529
@@ -6357,7 +6203,7 @@ msgid ""
 "elfses have da fire ruby. Retreat!"
 msgstr ""
 "Vanha luukasa on murskattu, ja taistelumme hävitty. Me tiedetään että "
-"haltijoilla on Tulirubiini. Vetäydytään!"
+"haltijoilla on tulirubiini. Vetäydytään!"
 
 #. [message]: description=Ut'Tan-Grorag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:559
@@ -6369,8 +6215,8 @@ msgstr "Haltijoilla on tulirubiini, paetaan! Laivoihin!"
 msgid ""
 "We have many kinsmen on the Green Isle- we will return for the Ruby of Fire!"
 msgstr ""
-"Meillä on paljon sukulaisia Vihersaarella- me palaamme vielä hakemaan "
-"Tulirubiinin!"
+"Meillä on paljon sukulaisia Vihersaarella – me palaamme vielä hakemaan "
+"tulirubiinin!"
 
 #. [message]: description=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:573
@@ -6378,8 +6224,8 @@ msgid ""
 "We must get back to the Green Isle. The elfses have the Ruby of Fire and our "
 "assault has been stopped."
 msgstr ""
-"Meidän on palattava Vihersaarelle. Haltioilla on Tulirubiini ja "
-"hyökkäyksemme on pysäytetty."
+"Meidän on palattava Vihersaarelle. Haltijoilla on tulirubiini ja meidän "
+"hyökkäys on pysäytetty."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:595
@@ -6389,8 +6235,8 @@ msgid ""
 "the brunt of the next invasion."
 msgstr ""
 "Suunnitelmaan kuului, että örkit päästetään perääntymään Vihersaarelle, "
-"jotta örkit tietäisivät Tulirubiinin olevan haltioilla, ja seuraava örkkien "
-"maihinnousu tulisi haltioiden kimppuun."
+"jotta he kertoisivat lajitovereilleen tulirubiinin olevan haltioilla, joten "
+"meidän ei tarvitsisi huolehtia seuraavasta invaasiosta."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:599
@@ -6400,17 +6246,16 @@ msgstr "Mitä olemmekaan tehneet?"
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:674
 msgid "My love, my family, I'll be there soo-"
-msgstr "Rakkaani, perheeni, olen pian luonanne.."
+msgstr "Rakkaani, perheeni, olen siellä pi–"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:679
-#, fuzzy
 msgid ""
 "Aethyr! No! He was critical for convincing Jevyan that the elves have the "
 "Ruby of Fire."
 msgstr ""
-"Luutnantti Aethyr! Ei! Hän oli elintärkeä suunnitelmamme onnistumisen "
-"kannalta."
+"Aethyr! Ei! Hän oli elintärkeä suunnitelmamme onnistumisen kannalta, että "
+"Jevyan luulisi haltioilla olevan tulirubiini."
 
 #. [message]: description=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:700
@@ -6418,8 +6263,8 @@ msgid ""
 "Jevyan- I spit upon thee. Your end awaits. My love, my family, I'll be there "
 "soo-"
 msgstr ""
-"Jevyan- syljen päällesi. Loppusi on koittanut. Rakkaani, perheeni, tulen "
-"luoksenne pia-"
+"Jevyan, syljen päällesi. Loppusi on koittanut. Rakkaani, perheeni, tulen "
+"luoksenne pi–"
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:705
@@ -6428,7 +6273,7 @@ msgid ""
 "script."
 msgstr ""
 "Hölmö. Et mahda mitään voimalleni. Mitä! Mitä tämä on? Sopimus, "
-"haltiakielellä."
+"haltiakielellä!"
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:710
@@ -6436,14 +6281,13 @@ msgid ""
 "No. Why? You fools, you gave the Ruby of Fire to the elves. But that won't "
 "save you from me. I will destroy you, then I will deal with the elves."
 msgstr ""
-"Ei. Miksi? Hölmöt, annoitte Tulirubiinin haltioille. Mutta se ei pelasta "
+"Ei. Miksi? Hölmöt, annoitte tulirubiinin haltioille. Mutta se ei pelasta "
 "teitä minulta. Tuhoan teidät ja sen jälkeen hoitelen haltiat."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:715
-#, fuzzy
 msgid "We'll see about that. For the honor of Commander Aethyr, forward!"
-msgstr "Sehän nähdään. Luutnantti Aethyrin kunnian puolesta, eteenpäin!"
+msgstr "Sehän nähdään. Komentaja Aethyrin kunnian puolesta, eteenpäin!"
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:726
@@ -6466,18 +6310,17 @@ msgstr ""
 #. [message]: description=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:787
 msgid "Da old bag 'o bones is gone, but you haven't beat us yet!"
-msgstr "Vanha luukasa on kuollut, mutta meitä et ole vielä voittanut!"
+msgstr "Vanha luukasa on kuollu, mutta meitä et oo vielä voittanu!"
 
 #. [message]: description=Ut'Tan-Grorag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:791
-#, fuzzy
 msgid "We took yer home, now we'll take yer lives!"
-msgstr "Otimme kotinne, ja nyt otamme henkenne!"
+msgstr "Otimme kotinne. Nyt otamme henkenne."
 
 #. [message]: description=Tan-Erinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:795
 msgid "The elfses have da fire ruby, and you have nothing!"
-msgstr "Haltioilla on tulirubiini ja teillä ei mitään!"
+msgstr "Haltijoilla on tulirubiini ja teillä ei oo mitään!"
 
 #. [message]: description=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:799
@@ -6486,7 +6329,6 @@ msgstr "Narskutamme luunne ja syömme niiden ytimet!"
 
 #. [unit]: description=Squiddy, type=Cuttle Fish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:824
-#, fuzzy
 msgid "Squiddy"
 msgstr "Mikko Mustekala"
 
@@ -6498,7 +6340,7 @@ msgstr "Arg. Yksi näistä hirviöistä tuhoaa siltaa."
 #. [unit]: description=Inky, type=Cuttle Fish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:891
 msgid "Inky"
-msgstr "Inky"
+msgstr "Kalle Kalmari"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:904
@@ -6508,7 +6350,7 @@ msgstr "Silta!"
 #. [unit]: description=Beaky, type=Cuttle Fish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:958
 msgid "Beaky"
-msgstr "Beaky"
+msgstr "Otto Oktopus"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:971
@@ -6521,8 +6363,8 @@ msgid ""
 "It's the Haldric! Jevyan, you never said you came to destroy this monster. "
 "We will help you."
 msgstr ""
-"Se on Haldric! Jevyan, et koskaan kertonut, että tapoit tämän hirviön. Me "
-"autamme sinua."
+"Se on se Haldric! Jevyan, et koskaan kertonut, että tulit tappamaan tämän "
+"hirviön. Me autamme sinua."
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1054
@@ -6537,12 +6379,12 @@ msgstr "Nouskaa, nouskaa maasta!"
 #. [message]: description=Familiar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1115
 msgid "Neep! SPLAT!"
-msgstr "Neep! SPLAT!"
+msgstr "Neep! SPLÄT!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1119
 msgid "Ahh... That almost makes it all worth while!"
-msgstr "Ahh... tämä saa kaiken tuntumaan melkein vaivan arvoiselta!"
+msgstr "Ahh... Tämä saa kaiken tuntumaan melkein vaivan arvoiselta!"
 
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1123
@@ -6552,22 +6394,21 @@ msgstr "Saat maksaa tästä!"
 #. [message]: description=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1130
 msgid "Strike down these fools."
-msgstr "Tappakaa nuo hölmöt."
+msgstr "Lyökää nuo hölmöt."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1202
 msgid "We did it! We won!"
-msgstr "Me onnistuimme! Me voitimme!"
+msgstr "Me teimme sen! Me voitimme!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1206
-#, fuzzy
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let's put Commander Aethyr to "
 "rest and discuss what is to come in the following days."
 msgstr ""
-"Jevyan on kukistettu, mutta millä hinnalla? Lasketaan Aethyr lepoon ja "
-"mietitään mitä teemme lähiaikoina."
+"Jevyan on kukistettu, mutta kauhealla hinnalla. Lasketaan komentaja Aethyr "
+"lepoon ja mietitään mitä teemme lähipäivinä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1214
@@ -6584,30 +6425,28 @@ msgstr "Jälkinäytös"
 
 #. [message]: description=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:157
-#, fuzzy
 msgid ""
 "May Commander Aethyr have a peaceful journey into the next world, where he "
 "has been preceded by his wife and loving daughters. For his heroism in the "
 "face of adversity a place of glory is assured to him in the Halls of Light..."
 msgstr ""
 "Saakoon luutnantti Aethyr turvallisen matkan seuraavaan maailmaan, jossa "
-"häntä jo odottavat hänen vaimonsa ja tyttärensä. Hänen taistelussa "
-"osoittamansa urhoollisuuden takia hänelle on varattu kunniapaikka Valon "
-"saleissa..."
+"häntä jo odottavat hänen vaimonsa ja rakastavat tyttärensä. Hänen "
+"taistelussa osoittamansa urhoollisuuden takia hänelle on varattu "
+"kunniapaikka valon saleissa..."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:161
-#, fuzzy
 msgid ""
 "Without the Commander's noble sacrifice we would have never carried the day. "
 "We have won a great victory here today but much has been lost. My father "
 "Eldaric and King Addroran have fallen, and with them many other good people. "
 "However, there is hope, and a new land is open before us!"
 msgstr ""
-"Ilman luutnantin urheaa uhrausta emme olisi koskaan voittaneet. Olemme "
+"Ilman komentajan urheaa uhrausta emme olisi koskaan voittaneet. Olemme "
 "voittaneet suuren voiton täällä tänään, mutta paljon on menetetty. Isäni "
-"Eldaric ja kuningas Addoran ovat kuolleet, ja samoin monta muuta hyvää "
-"ihmistä heidän lisäkseen. Silti, toivo elää, ja edessämme aukaa uusi maa!"
+"Eldaric ja kuningas Addroran ovat kaatuneet, ja heidän mukanaan monta muuta "
+"hyvää ihmistä. Silti, toivo elää, ja edessämme aukeaa uusi maa!"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:180
@@ -6627,9 +6466,8 @@ msgstr "Olen seurannut sinua näinkin pitkälle, pidän salaisuuteni, lupaan sen
 
 #. [message]: description=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:188
-#, fuzzy
 msgid "Lord, I shall guard your secret until the day of my death."
-msgstr "Herrani, pidän salaisuutesi kuolemaani asti."
+msgstr "Herrani, vartioin salaisuuttasi kuolemani päivään saakka."
 
 #. [message]: description=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:192
@@ -6651,16 +6489,16 @@ msgid ""
 "The elves don't have the Ruby of Fire. We perpetrated a ruse on the orcs. If "
 "they return they will come looking for the elves."
 msgstr ""
-"Haltioilla ei ole Tulirubiinia. Puijasimme örkkejä. Jos ne tulevat "
+"Haltioilla ei ole tulirubiinia. Puijasimme örkkejä. Jos ne tulevat "
 "uudestaan, ne etsivät sitä haltioiden mailta."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:204
-#, fuzzy
 msgid ""
 "To be fair to you, Haldric, the elves were considering betraying their pact "
 "with us."
-msgstr "On myös sanottava, että haltiat suunnittelivat jo sopimusrikkoa."
+msgstr ""
+"Ollakseni sinulle reilu, Haldric, haltiat suunnittelivat jo sopimusrikkoa."
 
 #. [message]: description=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:208
@@ -6668,13 +6506,13 @@ msgid ""
 "Humph. I suspected as much -- from both the elves and you. Humans and elves "
 "always think they're so clever!"
 msgstr ""
-"Humph. Epäilinkin tätä -- sekä teidän että haltioiden puolelta. Ihmiset ja "
+"Humph. Epäilinkin tätä – sekä teidän että haltioiden puolelta. Ihmiset ja "
 "haltiat luulevat aina olevansa niin ovelia!"
 
 #. [message]: description=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:212
 msgid "May the Lords of Light have Mercy on you. But, I am bound by my word."
-msgstr "Antakoot Valon herrat teille armonne. Mutta valani sitoo minua."
+msgstr "Antakoot valon herrat teille armonne. Mutta valani sitoo minua."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:219
@@ -6703,12 +6541,11 @@ msgid ""
 "have to rely on elven charity if we are to survive this first winter."
 msgstr ""
 "Örkkejä on vähän, mutta haltiat eivät ole tottuneet sotimiseen. Kaiken "
-"lisäksi joudumme turvautumaan haltioiden ruokatarvikkeisiin jos haluamme "
+"lisäksi joudumme turvautumaan haltioiden ruokatarvikkeisiin, jos haluamme "
 "selvitä tästä ensimmäisestä talvesta hengissä."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:235
-#, fuzzy
 msgid ""
 "After that, we should build towns in all of the regions that the elves have "
 "given us. We should move our capital inland, away from the coast. I hope the "
@@ -6781,13 +6618,13 @@ msgstr "Loistavaa."
 msgid ""
 "I suppose I am King Haldric now. Hmm... but what to call this new kingdom?"
 msgstr ""
-"Olen nyt kai siis kuningas Haldric. Mutta... mikä nimeksi tälle uudelle "
-"kuningaskunnalle?"
+"Oletan, että olen kai siis kuningas Haldric nykyään. Mutta... mikä nimeksi "
+"tälle uudelle kuningaskunnalle?"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:287
 msgid "May I make a suggestion?"
-msgstr "Saanko ehdottaa jotain?"
+msgstr "Saanko ehdottaa jotakin?"
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:291
@@ -6802,10 +6639,10 @@ msgid ""
 "would be 'Wes Noth'. So I suggest that the new kingdom be called 'Wesnoth', "
 "in honor of our old home."
 msgstr ""
-"Wessien kansan nimi on vanhasta kielestänne. Se tarkoittaa 'lännen "
-"asukkeja'. Haltiat kutsuvat meitä länsi-pohjalaisiksi. Tällä vanhalla "
-"kielellä se kuuluisi 'Wes Noth'. Ehdotan siis, että uutta valtakuntaa "
-"kutsuttaisiin 'Wesnothiksi', vanhan kotimme kunniaksi."
+"Wessien kansan nimi on vanhasta kielestänne. Se tarkoittaa ”lännen "
+"asukkeja”. Haltiat kutsuvat meitä luoteen miehiksi, siis länsi-"
+"pohjalaisiksi. Tällä vanhalla kielellä se kuuluisi ”Wes Noth”. Ehdotan siis, "
+"että uutta valtakuntaa kutsuttaisiin ”Wesnothiksi”, vanhan kotimme kunniaksi."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:299
@@ -6813,7 +6650,7 @@ msgid ""
 "Hmm. 'Wesnoth'. I like it. Yes, 'Wesnoth' would be fine. So I am the first "
 "King of Wesnoth!"
 msgstr ""
-"Hmm. 'Wesnoth'. Pidän siitä. Kyllä, 'Wesnoth' sopii hyvin. Olen siis Haldric "
+"Hmm. ”Wesnoth”. Pidän siitä. Kyllä, ”Wesnoth” sopii hyvin. Olen siis Haldric "
 "I, Wesnothin ensimmäinen kuningas."
 
 #. [message]: description=Lady Jessica
@@ -6830,12 +6667,12 @@ msgid ""
 msgstr ""
 "Kansojeni keskuudessa on edelleen paljon wessejä. Meidän on säilyttävä yhden "
 "lipun alla. Tarvitsen sinua rinnalleni, jos koskaan aiomme rakentaa oikean "
-"'Wesnothin kuningaskunnan'. Tule, meillä on paljon työtä tehtävänä."
+"”Wesnothin kuningaskunnan”. Tule, meillä on paljon työtä tehtävänä."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:311
 msgid "We!?"
-msgstr "Me!?"
+msgstr "Meillä!?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:315
@@ -6845,9 +6682,9 @@ msgid ""
 "and his descendants would pay for that betrayal without knowing the whole "
 "truth."
 msgstr ""
-"Myöhempinä aikoina runoniekat laulaisivat 'Sopimusrikosta', siitä, miten "
+"Myöhempinä aikoina runoniekat laulaisivat ”Sopimusrikosta”, siitä, kuinka "
 "Haldric petti haltiat. He kuiskailisivat siitä hinnasta, jonka Haldric "
-"seuraajineen joutuisi maksamaan. He eivät kuitenkaan tiedä koko totuutta."
+"seuraajineen joutuisi maksamaan petturuudestaan tietämättä koko totuutta."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:320
@@ -6867,7 +6704,7 @@ msgstr "Tulipallo"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr "Tulipallo. Tätä ei tule käyttää muuhun kuin 'Move_Unit_Fake':en!"
+msgstr "Tulipallo. Tätä ei tule käyttää muuhun kuin tekemään 'Move_Unit_Fake'!"
 
 #. [attack]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
@@ -6888,10 +6725,11 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"Komentajan arvoa kantavat ne, jotka johtavat sotajoukot taisteluun. "
-"Johtamiskykyisinä he antavat ympäröiville matalamman tason yksiköille edun "
-"taistelussa. Komentajat ovat taidokkaimpia miekan kanssa, mutta heillä on "
-"myös jouset, jos tarve vaatii. Jos Komentaja menetetään, taistelu on hävitty."
+"Aatelisen komentajan arvoa kantavat ne, jotka johtavat sotajoukot "
+"taisteluun. Johtamiskykyisinä he antavat ympäröiville matalamman tason "
+"yksiköille edun taistelussa. Komentajat ovat taidokkaimpia miekan kanssa, "
+"mutta heillä on myös jouset, jos tarve vaatii. Jos komentaja menetetään, "
+"taistelu on hävitty."
 
 #. [attack]: type=blade
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:31
@@ -6920,7 +6758,7 @@ msgid ""
 msgstr ""
 "Soturit ovat nuoria ja röyhkeitä. He taistelevat miekalla ja ovat "
 "haavoittuvaisia kaukotaistelua vastaan. Kuitenkin heissä elää mahdollisuus "
-"tulla jonain päiväna suuriksi komentajiksi."
+"tulla jonakin päivänä suuriksi komentajiksi."
 
 #. [unit]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:4
@@ -6938,7 +6776,7 @@ msgstr ""
 "Ylimykset ovat monien joukkojen johtajia, ja ovat erityisen tehokkaita "
 "lähitaistelussa, vaikka hallitsevat myös jousen käytön. Kuten komentajat, "
 "ylimykset ovat johtamiskykyisiä ja nostavat ympärillään olevien "
-"matalatasoisten yksiköiden taistelutaitoja."
+"matalampitasoisten yksiköiden taistelutaitoja."
 
 #. [unit]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
@@ -6952,7 +6790,7 @@ msgid ""
 "become a Lord -- to join the elite of humanity."
 msgstr ""
 "Tänään hän on nuori mies, mutta huomenna hän haluaa uskollisuudella "
-"kruunulle tulla ylimykseksi - liittyä ihmiskunnan eliittiin."
+"kruunulle tulla ylimykseksi – liittyä ihmiskunnan eliittiin."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:26
@@ -6974,7 +6812,7 @@ msgid ""
 msgstr ""
 "Syntyjään aatelinen, lainsuojaton prinsessa on oppinut miekkailua suurimpien "
 "mestareiden kanssa, mutta hän on epäonnistuneen aristokratian jälkeläinen, "
-"joka on valinnut lainsuojattoman elämän. Hän uneksii oman kuningaskunnan "
+"joka on valinnut lainsuojattoman elämän. Hän uneksii oman kuningatarkunnan "
 "perustamisesta saaliilla, jonka hän saa."
 
 #. [attack]: type=impact
@@ -7010,10 +6848,11 @@ msgid ""
 "Queendom with the plunder she finds on the road, and she is ever so close to "
 "that goal."
 msgstr ""
-"Syntyjään aatelinen, lainsuojaton kuningatar on oppinut miekkailua "
-"suurimpien mestareiden kanssa, mutta hän on epäonnistuneen aristokratian "
-"jälkeläinen, joka on valinnut lainsuojattoman elämän. Hän uneksii oman "
-"kuningaskunnan perustamisesta saaliilla, jonka hän saa."
+"Syntyjään aatelinen, lainsuojaton kuningatar on oppinut miekkailua ja "
+"taistelutaktiikoita suurimpien mestareiden kanssa, tehden hänestä sekä "
+"suuren taistelijan että johtajan. Kuitenkin hän on epäonnistuneen "
+"aristokratian jälkeläinen, joka on valinnut lainsuojattoman elämän. Hän "
+"uneksii oman kuningatarkunnan perustamisesta saaliilla, jonka hän saa."
 
 #. [unit]: race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:4
@@ -7052,7 +6891,7 @@ msgid ""
 "units, thereby increasing their fighting efficiency."
 msgstr ""
 "Kuninkaat ovat ihmisten maiden johtajia. Heidän vastuullaan on alamaistensa "
-"suojelu ja johtaminen. Kuninkaat osaavat johtaa tason 1 ja 2 yksiköitä, "
+"suojelu ja johtaminen. Kuninkaat osaavat johtaa tasojen 1 ja 2 yksiköitä, "
 "suoden niille edun taistelussa."
 
 #. [attack]: type=impact
@@ -7062,9 +6901,8 @@ msgstr "helanuija"
 
 #. [unit]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:4
-#, fuzzy
 msgid "female^Wesfolk Lady"
-msgstr "Vampyyrirouva"
+msgstr "Wessirouva"
 
 #. [unit]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:24
@@ -7076,11 +6914,17 @@ msgid ""
 "in her veins and in the battlefield she has earned valuable experience, "
 "which continues increasing with time, as does her natural leadership."
 msgstr ""
+"Wessien aritokratiassa syntyneenä hän ja hänen kansansa karkotettiin "
+"yhteiskunnasta heidän lordiensa toimesta, sillä he eivät pysyneet "
+"uskollisina, kun he olivat häviöllä sodassa Haldricin kansaa vastaan. Tämä "
+"hylkiö on kuitenkin yhä siniverinen, ja taistelukentillä hän on ansainnut "
+"arvokasta kokemusta, joka jatkaa karttumistaan ajan kuluessa, kuten myös "
+"hänen luonnollinen johtajuutensa."
 
 #. [unit]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
 msgid "female^Wesfolk Outcast"
-msgstr ""
+msgstr "Wessihylkiötär"
 
 #. [unit]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:23
@@ -7091,6 +6935,12 @@ msgid ""
 "in her veins and in the battlefield she has earned valuable experience, "
 "which she can lend to her people for turning a fight in their favour."
 msgstr ""
+"Wessien aritokratiassa syntyneenä hän ja hänen kansansa karkotettiin "
+"yhteiskunnasta heidän lordiensa toimesta, sillä he eivät pysyneet "
+"uskollisina, kun he olivat häviöllä sodassa Haldricin kansaa vastaan. Tämä "
+"hylkiö on kuitenkin yhä siniverinen, ja taistelukentillä hän on ansainnut "
+"arvokasta kokemusta, jota hän voi jaella taistelutovereilleen kääntäen "
+"taistelun edukseen."
 
 #. [unit]: race=wose
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:4
@@ -7099,7 +6949,6 @@ msgstr "Puupaimenentaimi"
 
 #. [unit]: race=wose
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:25
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -7116,15 +6965,11 @@ msgstr ""
 "vähän. Suuri osa tästä tiedosta tulee haltioilta. He tietävät, että nämä "
 "olennot eivät ole puiden jälkeläisiä, vain samannäköisiä, ja että "
 "puupaimenet ovat lähempänä keijuja kuin haltiat, vaikkakin eri tavalla. "
-"Heidän motiivinsa ja työnsä ovat tuntemattomia, joskin useimmat esittävät "
-"itsestäänselvän ajatuksen että puupaimenet ovat luonnollisen maailman "
-"vartijoita.\n"
+"Heidän motiivinsa ja puuhansa ovat tuntemattomia, joskin useimmat esittävät "
+"ilmeisen ajatuksen, että puupaimenet ovat luonnollisen maailman vartijoita.\n"
 "\n"
-"Puupaimenet eivät ole sotaisia, mutta ovat hyvin vahvoja. He ovat myös "
-"varsin hitaita.\n"
-"\n"
-"Huomio: Puupaimenet uusiutuvat käyttämällä luonnon rikkauksia ympärillään, "
-"joten he eivät tarvitse kyliä parantuakseen."
+"Puupaimenet eivät ole sotaisia, mutta hallitsevat suuria voimia. He ovat "
+"kuitenkin myös varsin hitaita."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
@@ -7134,7 +6979,7 @@ msgstr "murskaus"
 #. [skirmisher]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:6
 msgid "distract"
-msgstr ""
+msgstr "häirintä"
 
 #. [skirmisher]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
@@ -7143,12 +6988,19 @@ msgid ""
 "This unit negates enemy Zones of Control around itself for friendly units "
 "(but not for itself)."
 msgstr ""
+"Häirintä:\n"
+"Tämä yksikkö kiinnittää ympärillään olevien vihollisyksiköiden huomion "
+"itseensä päästäen liittolaisyksiköt (itseään lukuun ottamatta) livahtamaan "
+"niiden hallitseman alueen ohi."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:26
 msgid ""
 "This unit is capable of distracting opponents, allowing friendly units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
+"Tämä yksikkö kykenee häiritsemään vastustajia, sallien liittolaisyksiköiden "
+"livahtaa tämän yksikön lähellä olevien vihollisyksiköiden hallitsemien "
+"alueiden ohitse huomaamatta."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:9
@@ -7164,7 +7016,7 @@ msgstr "Vielä ei ole aikani! Ei!"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:37
 msgid "No! I'll not go so easil--"
-msgstr "Ei! Minua ette saa niin helpos--"
+msgstr "Ei! Minua ette saa niin helpos–"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:51
@@ -7172,8 +7024,7 @@ msgid ""
 "Bah! I'm not dying today! (POOF! The Lady Outlaw vanishes in a puff of "
 "smoke.)"
 msgstr ""
-"Pöh! Tänään ei ole hyvä päivä kuolla! (PUFF! Lainsuojaton katoaa "
-"savupilveen.)"
+"Pah! Minä en kuole tänään! (PUFF! Lady Lainsuojaton katoaa savupilveen.)"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:73
@@ -7183,12 +7034,12 @@ msgstr "Hölmö poika. Ei olisi pitänyt lähteä hänen matkaansa."
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:84
 msgid "Hail the Kings, may their bloodlines continue beyond my time!"
-msgstr "Eläköön kuninkaat, jatkukoon heidän sukunsa minunkin aikani jälkeen!"
+msgstr "Eläköön kuninkaat! Jatkukoon heidän sukunsa minunkin aikani jälkeen!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:95
 msgid "For Land and Lord, I sacrifice all!"
-msgstr "Maan ja kuninkaan puolesta annan kaikkeni!"
+msgstr "Maan ja kuninkaan puolesta uhraan kaiken!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:106
@@ -7206,8 +7057,8 @@ msgid ""
 "In the days before Haldric the First saved our people and founded the "
 "country of Wesnoth, we came from an island kingdom far to the west..."
 msgstr ""
-"Niinä päivinä ennen kuin Haldric ensimmäinen pelasti kansamme ja perusti "
-"Wesnothin valtakunnan, kansamme asui kuningaskunnassa kaukana lännessä..."
+"Päivinä ennen kuin Haldric I pelasti kansamme ja perusti Wesnothin "
+"valtakunnan, kansamme asui kuningaskunnassa kaukana lännessä..."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-intro.cfg:10
@@ -7230,7 +7081,7 @@ msgstr ""
 "He olivat lyötyjä pakolaisia jostain sodasta, ja pakenivat kodeistaan "
 "maassa, joka oli vieläkin kauempana lännessä. Wessit eivät olleet "
 "monilukuisia, mutta he käyttivät pimeyden voimia, komensivat kostonhimoisia "
-"henkiä ja armeijoittain eläviä kuolleita..."
+"henkiä ja armeijoittain käveleviä kuolleita..."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-intro.cfg:24
@@ -7243,7 +7094,7 @@ msgstr ""
 "Suurten taistelujen jälkeen saatiin aikaan rauha. Me hallitsimme edelleen "
 "suurinta osaa saaresta, kun taas wessit oli työnnetty muutamalle "
 "joutomaakaistaleelle. Vahvistuimme taistellessamme heidän joukkojaan "
-"vastaan. Todellakin, tässä sodassa keräsimme ensimmäiset tietomme "
+"vastaan. Todellakin, tässä sodassa keräsimme ensimmäiset tietohippusemme "
 "taikuudesta."
 
 #. [part]
@@ -7256,8 +7107,8 @@ msgid ""
 msgstr ""
 "Seuraavat vuosisadat olivat rauhallisia. Muistakaa, että merireitti "
 "läntiseltä mantereelta Vihersaarellemme oli parhainakin aikoina turmiollinen "
-"- niin turmiollinen, että pysyviä kauppayhteyksiä mannermaan ja saaren "
-"välillä ei voinut syntyä."
+"– niin turmiollinen, että pysyviä kauppayhteyksiä mannermaan ja saaren "
+"välillä ei koskaan voisi syntyä."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-intro.cfg:42
@@ -7283,9 +7134,9 @@ msgid ""
 msgstr ""
 "Ajan kuluessa merenkulkutaitomme kehittyi. Sitten, eräänä päivänä, "
 "Suvilahden kruununprinssi, vahvasydäminen mies, palasi kotiin pitkältä "
-"matkaltaan kertoen uskomattomia tarinoita. Hän kertoi idässä olevista "
-"maista, jonne pääsi purjehtimalla koilliseen ja vastustaen näin etelään "
-"vievää merivirtaa."
+"matkaltaan kertoen uskomatonta tarinaa. Hän kertoi idässä olevista maista, "
+"jonne pääsi purjehtimalla koilliseen ja vastustaen näin etelään vievää "
+"merivirtaa."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-intro.cfg:55
@@ -7320,13 +7171,12 @@ msgstr ""
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-intro.cfg:73
 msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
-msgstr "Tämä tarina kertoo Haldric ensimmäisestä ja Wesnothin synnystä..."
+msgstr "Tämä tarina kertoo Haldric I:stä ja Wesnothin synnystä..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-macros.cfg:21
-#, fuzzy
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr "Keräät {AMOUNT} kultarahaa."
+msgstr "Keräät $amount_gold kultarahaa."
 
 #. [unit]: description=A Former Friend, type=Walking Corpse
 #. [unit]: description=A Former Friend, type=Soulless
@@ -7341,8 +7191,7 @@ msgstr "Entinen ystävä"
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:12
 msgid "I still think I should be called 'Dragonbane'."
 msgstr ""
-"Olen edelleen sitä mieltä, että minua pitäisi kutsua "
-"'Lohikäärmeentappajaksi'."
+"Olen edelleen sitä mieltä, että minua pitäisi kutsua ”Lohikäärmeenturmaksi”."
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:16
@@ -7385,13 +7234,13 @@ msgid ""
 "Haldric, just before we arrived here I got word that the your 'third of a "
 "fleet' has departed for our old home, the Green Isle."
 msgstr ""
-"Haldric, juuri ennen kuin saavuimme tänne kuulin, että kolmannes "
+"Haldric, juuri ennen kuin saavuimme tänne, kuulin että kolmannes "
 "laivastostasi on lähtenyt vanhaan kotiimme Vihersaarelle."
 
 #. [message]: description=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:93
 msgid "You were planning on sharing this with me when?"
-msgstr "Et sitten voinut aiemmin kertoa."
+msgstr "Et sitten voinut aiemmin kertoa?"
 
 #. [message]: description=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:109
@@ -7412,8 +7261,8 @@ msgid ""
 "That is excellent news indeed. Our numbers have doubled. Now on to the "
 "business at hand."
 msgstr ""
-"Tämä on vallan erinomaista. Voimamme ovat kaksinkertaistuneet. Nyt käsillä "
-"olevaan ongelmaan."
+"Tämä tosiaan on vallan erinomaista. Voimamme ovat kaksinkertaistuneet. Nyt "
+"käsillä olevaan ongelmaan..."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nohome.cfg:5
@@ -7468,11 +7317,12 @@ msgid ""
 "mysterious island that Lady Jessica has mentioned, and even more exotic "
 "lands even further to the East."
 msgstr ""
-"Monia päiviä myöhemmin prinssi Haldric lähtee laivallaan Eldaricistä. Hänen "
-"entiset kotinsa ja saarensa ovat hänelle nyt mennyttä elämää. Sydämessään "
-"tietää, ettei koskaan enää palaisi syrjäiseen laaksoonsa. Edessään hän näkee "
-"laajan myrskyisen meren, salaperäisen saaren, jonka Lady Jessica on "
-"maininnut, ja aivan tuntemattomia maita vielä kauempana idässä."
+"Muutamia päiviä myöhemmin prinssi Haldric lähtee laivallaan Eldaricillä. "
+"Hänen entiset kotinsa ja saarensa ovat hänelle nyt mennyttä elämää. "
+"Sydämessään tietää, ettei koskaan enää palaisi syrjäiseen laaksoonsa. "
+"Edessään hän näkee laajan myrskyisen meren ja sen salaperäisen saaren, jonka "
+"Lady Jessica on maininnut, ja yhä enemmän tuntemattomia maita vielä "
+"kauempana idässä."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-noisle.cfg:11
@@ -7485,9 +7335,9 @@ msgid ""
 msgstr ""
 "Ilmeisestikin saari, jonne kuningas Haldric miehistöineen ovat saapumassa, "
 "oli aiemmin tulivuori, joka nyt kuitenkin hitaasti uppoaa mereen. Suvilahden "
-"entinen kruununprinssi onnistui perustamaan tukikohdan tälle saarelle "
+"vanhempi kruununprinssi onnistui perustamaan tukikohdan tälle saarelle "
 "huolimatta sen sotaisista liskoasukkaista. Siitä tukikohdasta on tuskin enää "
-"paljon jäljellä."
+"paljoa jäljellä."
 
 #~ msgid "Heroic: As above and defeat all enemy leaders"
 #~ msgstr ""
