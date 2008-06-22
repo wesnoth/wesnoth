@@ -1660,6 +1660,10 @@ void game_controller::remove_addon(const std::string& addon)
 void game_controller::start_wesnothd()
 {
 
+	if(game_config::wesnothd_name.empty()) {
+		throw game::mp_server_error("Couldn't locate the server binary.");
+
+	}
 	std::string config = "data/lan_server.cfg";
 #ifndef _WIN32
 	config = "\"" + game_config::wesnothd_name +"\" -c " + config + " -d -t 2 -T 5 ";
@@ -2725,10 +2729,22 @@ int main(int argc, char** argv)
 #endif
 
 	try {
+		/**
+		 * @todo We try to guess the name of the server from the name of the
+		 * binary started. This is very fragile it breaks in at least the
+		 * following cases.
+		 * - Wesnoth got renamed to something without wesnoth in it.
+		 * - Wesnoth got a pre/suffix but the server not.
+		 */
 		std::string program(argv[0]);
 		std::string wesnoth("wesnoth");
-		program.replace(program.rfind(wesnoth), wesnoth.length(), "wesnothd");
-		game_config::wesnothd_name = program;
+		const size_t offset = program.rfind(wesnoth);
+		if(offset != std::string::npos) {
+			program.replace(offset, wesnoth.length(), "wesnothd");
+			game_config::wesnothd_name = program;
+		} else {
+			std::cerr << "Wesnoth doesn't have the name wesnoth, so can't locate the server.\n";
+		}
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
