@@ -22,6 +22,16 @@ See the COPYING file for more details.
 struct a_star_node
 {
 public:
+	
+	a_star_node() :
+		g(0.0),
+		h(0.0),
+		loc(),
+		nodeParent(0),
+		isInCloseList(false)
+	{
+	}
+
 	double g, h;  // g: already traveled time, h: estimated time still to travel
 	gamemap::location loc;
 	a_star_node* nodeParent;
