@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "POT-Creation-Date: 2008-06-13 13:31+0200\n"
-"PO-Revision-Date: 2008-04-05 17:14+0300\n"
+"PO-Revision-Date: 2008-06-15 10:34+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -362,11 +362,12 @@ msgid ""
 "Play a sequence of connected scenarios, known as a campaign, against the "
 "computer."
 msgstr ""
+"Žaisti susijusių scenarijų seką, žinomą kaip kampanija, prieš kompiuterį."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:274
 msgid "Play a single scenario against computer or human opponents."
-msgstr ""
+msgstr "Žaisti vieną scenarijų prieš kompiuteinius priešininkus arba žmones."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:279
@@ -471,6 +472,9 @@ msgid ""
 "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
+"Pakankamai užbaigtas oficialių ir žaidėjų įrengtų serverių sąrašas "
+"išvardintas puslapyje: <ulink url=\"http://wesnoth.org/wiki/"
+"MultiplayerServers\">Daugelio žaidėjų serveriai</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:339
@@ -487,6 +491,17 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
+"Kad galėtumėte paleisti daugelio žaidėjų žaidimą nenaudodami išorinio "
+"serverio, jus pats turite paleisti serverį, kuris paprastai vadinasi "
+"<emphasis>wesnothd</emphasis>. Tada turite prisijungti prie savo prie savo "
+"serverio surinkdami <emphasis>Prisijungti prie serverio</emphasis> dialoge "
+"127.0.0.1 kaip naudojamą adresą. Kiti žaidėjai turi galėti prisijungti prie "
+"jūsų prievado 15000 naudodami TCP, kad galėtų žaisti su jumis jūsų "
+"serveryje. Jeigu esate už ugniasienės, jums tikriausiai reiks pakeisti "
+"ugniasienės nustatymus ir leisti įeinančius susijungimus prievade 15000, ir "
+"liepti ugniasienei persiųsti duomenis į serverį. Jums neturėtų reikėti "
+"daryti ugniasienės pakeitimų norint žaisti žaidimus, patalpintus kieno nore "
+"kito viešame serveryje."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -1201,7 +1216,7 @@ msgstr "Alt-k"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:922
 msgid "Toggle shroud"
-msgstr ""
+msgstr "Perjungti uždangą"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:927
@@ -1434,7 +1449,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><title>
 #: ../../doc/manual/manual.en.xml:1095
 msgid "Time of the day and damage"
-msgstr ""
+msgstr "Dienos laikas ir žala"
 
 #: ../../doc/manual/manual.en.xml:1105
 msgid "Turn"
@@ -1732,7 +1747,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1385
 msgid "Healthy"
-msgstr ""
+msgstr "Sveikas"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1389
@@ -1856,7 +1871,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1501
 msgid "Drain"
-msgstr ""
+msgstr "Išsiurbia"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1505
@@ -2329,7 +2344,7 @@ msgstr ""
 msgid "Green"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1981
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
@@ -2349,7 +2364,7 @@ msgstr ""
 msgid "Yellow"
 msgstr "Sulėtina"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1997
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
@@ -2371,7 +2386,7 @@ msgstr ""
 msgid "Red"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2013
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
@@ -2392,7 +2407,7 @@ msgstr ""
 msgid "Blue"
 msgstr "Maras"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2029
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
@@ -2407,7 +2422,7 @@ msgstr ""
 "</inlinemediaobject> mėlynas, jei dalinys yra jūsų sąjungininkas, kurio jūs "
 "nevaldote."
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2045
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
@@ -2425,7 +2440,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2061
 msgid "Ellipses, Team Colors, and Hero Icons"
-msgstr ""
+msgstr "Elipsės, komandų spalvos ir herojų ženkliukai"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2062
@@ -3212,6 +3227,8 @@ msgid ""
 "gold from winning early than from all of the map's villages for the rest of "
 "the turns."
 msgstr ""
+"Kuo anksčiau baigsite scenaritų, tuo daugiau aukso gausite; jūs gausite "
+"daugiau aukso laimėję anksti, nei iš visų žemėlaio kaimų per likusius ėjimus."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2635
@@ -3247,64 +3264,3 @@ msgstr "Glosarijus"
 #: ../../doc/manual/manual.en.xml:2668
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr ""
-
-# type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Main Menu</phrase>"
-#~ msgstr "<phrase>Pagrindinis meniu</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Game Screen</phrase>"
-#~ msgstr "<phrase>Žaidimo ekranas</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-dawn.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-dawn.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-morning.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-morning.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-afternoon.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-afternoon.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-dusk.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-dusk.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-firstwatch.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-firstwatch.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-secondwatch.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-secondwatch.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-underground.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-underground.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Green orb</phrase>"
-#~ msgstr "<phrase>žalias rutulys</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Yellow orb</phrase>"
-#~ msgstr "<phrase>geltonas rutulys</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Red orb</phrase>"
-#~ msgstr "<phrase>raudonas rutulys</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Blue orb</phrase>"
-#~ msgstr "<phrase>mėlynas rutulys</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>No orb</phrase>"
-#~ msgstr "<phrase>raudonas rutulys</phrase>"
