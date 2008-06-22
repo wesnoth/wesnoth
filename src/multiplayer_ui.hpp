@@ -213,6 +213,15 @@ public:
 private:
 	struct user_info
 	{
+		user_info() :
+			name(),
+			game_id(),
+			location(),
+			relation(ME),
+			state(LOBBY)
+		{
+		}
+
 		std::string    name;
 		std::string    game_id;
 		std::string    location;
