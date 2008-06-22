@@ -40,6 +40,13 @@ public:
 private:
 
 	struct chamber {
+		chamber() :
+			center(),
+			locs(),
+			items(0)
+		{
+		}
+
 		gamemap::location center;
 		std::set<gamemap::location> locs;
 		config* items;
