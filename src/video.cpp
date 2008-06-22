@@ -269,7 +269,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	if( res == 0 )
 		return 0;
 
+#ifdef GP2X
 	SDL_GP2X_AllowGfxMemory(NULL, 0);
+#endif
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
