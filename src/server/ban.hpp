@@ -40,8 +40,6 @@ namespace wesnothd {
 		std::string reason_;
 		bool deleted_;
 
-		banned() {}
-
 	public:
 		banned(const std::string& ip, const time_t end_time, const std::string& reason);
 		banned(const config&);
