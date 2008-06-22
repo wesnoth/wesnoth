@@ -75,13 +75,17 @@ class scope_logger
 	std::ostream *output_;
 	const char* str_;
 public:
-	scope_logger(log_domain const &domain, const char* str)
-	: output_(0)
+	scope_logger(log_domain const &domain, const char* str) :
+		ticks_(0),
+		output_(0),
+		str_(0)
 	{
 		if (!debug.dont_log(domain)) do_log_entry(domain, str);
 	}
-	scope_logger(log_domain const &domain, const std::string& str)
-	: output_(0)
+	scope_logger(log_domain const &domain, const std::string& str) :
+		ticks_(0),
+		output_(0),
+		str_(0)
 	{
 		if (!debug.dont_log(domain)) do_log_entry(domain, str.c_str());
 	}
