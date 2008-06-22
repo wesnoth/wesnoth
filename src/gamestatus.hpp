@@ -89,6 +89,7 @@ public:
 		starting_pos(),
 		snapshot(),
 		last_selected(gamemap::location::null_location),
+		rng_(),
 		variables(),
 		temporaries()
 		{}
