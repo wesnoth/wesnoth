@@ -888,15 +888,6 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 	return calculate_energy_bar(surf);
 }
 
-bool game_display::invalidate(const gamemap::location& loc)
-{
-	if(!invalidateAll_) {
-		bool tmp = invalidated_.insert(loc).second;
-		return tmp;
-	}
-	return false;
-}
-
 void game_display::invalidate_animations_location(const gamemap::location& loc) {
 	if (map_.is_village(loc)) {
 		const int owner = player_teams::village_owner(loc);

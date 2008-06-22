@@ -219,11 +219,19 @@ public:
 		      bool brightened = false);
 
 	// Will be overridden in the display subclass
-	virtual bool invalidate(const gamemap::location& loc) {return invalidated_.insert(loc).second;};
-	bool rectangle_need_update(const SDL_Rect& rect) const;
 	virtual void draw_minimap_units() {};
+	
+	//! Function to invalidate all tiles.
+	void invalidate_all();
 
+	//! Function to invalidate a specific tile for redrawing.
+	bool invalidate(const gamemap::location& loc);
+	
+	//! invalidate all hexes under the rectangle rect (in screen coordinates)
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
+
+	//! check if an hexes under the rectangle is invalidated
+	bool rectangle_need_update(const SDL_Rect& rect) const;
 
 	/**
 	 * Function to invalidate animated terrains which may have changed.
@@ -325,9 +333,6 @@ public:
 
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
-
-	//! Function to invalidate all tiles.
-	void invalidate_all();
 
 	//! Scrolls the display by xmov,ymov pixels.
 	//! Invalidation and redrawing will be scheduled.

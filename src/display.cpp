@@ -1056,17 +1056,6 @@ void display::highlight_hex(gamemap::location hex)
 	invalidate(mouseoverHex_);
 }
 
-bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
-{
-	bool result = false;
-	rect_of_hexes hexes = hexes_under_rect(rect);
-	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-	for (;i != end; ++i) {
-		result |= invalidate(*i);
-	}
-	return result;
-}
-
 void display::set_diagnostic(const std::string& msg)
 {
 	if(diagnostic_label_ != 0) {
@@ -1739,14 +1728,6 @@ void display::bounds_check_position(int& xpos, int& ypos)
 	}
 }
 
-void display::invalidate_all()
-{
-	DBG_DP << "invalidate_all()\n";
-	invalidateAll_ = true;
-	invalidated_.clear();
-	update_rect(map_area());
-}
-
 double display::turbo_speed() const
 {
 	bool res = turbo_;
@@ -2134,8 +2115,41 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 	}
 }
 
+void display::invalidate_all()
+{
+	DBG_DP << "invalidate_all()\n";
+	invalidateAll_ = true;
+	invalidated_.clear();
+	update_rect(map_area());
+}
+
+bool display::invalidate(const gamemap::location& loc)
+{
+	if(invalidateAll_)
+		return false;
+	
+	return invalidated_.insert(loc).second;
+}
+
+bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
+{
+	if(invalidateAll_)
+		return false;
+
+	bool result = false;
+	rect_of_hexes hexes = hexes_under_rect(rect);
+	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+	for (;i != end; ++i) {
+		result |= invalidate(*i);
+	}
+	return result;
+}
+
 bool display::rectangle_need_update(const SDL_Rect& rect) const
 {
+	if(invalidateAll_)
+		return true;
+	
 	rect_of_hexes hexes = hexes_under_rect(rect);
 	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
 	for (;i != end; ++i) {
