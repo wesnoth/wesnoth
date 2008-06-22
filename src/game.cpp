@@ -1664,7 +1664,13 @@ void game_controller::start_wesnothd()
 		throw game::mp_server_error("Couldn't locate the server binary.");
 
 	}
-	std::string config = "data/lan_server.cfg";
+
+	std::string config = get_user_data_dir() + "/lan_server.cfg";
+	if (!file_exists(config))
+	{
+		// copy file if it isn't created yet
+		write_file(config, read_file("data/lan_server.cfg"));
+	}
 #ifndef _WIN32
 	config = "\"" + game_config::wesnothd_name +"\" -c " + config + " -d -t 2 -T 5 ";
 	LOG_GENERAL << "Starting wesnothd: "<< config << "\n";
@@ -1676,6 +1682,30 @@ void game_controller::start_wesnothd()
 	if (std::system(("cmd /C start \"wesnoth server\" /B \"" + game_config::wesnothd_name + "\" -c " + config + " -t 2 -T 5 ").c_str()) != 0)
 #endif
 	{
+#ifndef _WIN32
+		// try to locate wesnothd
+		std::string old_name = game_config::wesnothd_name;
+		std::string needle = "wesnothd";
+		size_t found = game_config::wesnothd_name.rfind(needle);
+		if (found != std::string::npos
+				&& found  + needle.size() < game_config::wesnothd_name.size())
+		{
+			game_config::wesnothd_name = game_config::wesnothd_name.substr(0, found + needle.size());
+
+			try {
+				start_wesnothd();
+				return;
+			} catch(...)
+			{
+				game_config::wesnothd_name = old_name;
+				throw;
+			}
+		}
+		else
+#endif
+		{
+			// We should show gui to set wesnothd_name
+		}
 		LOG_GENERAL << "Failed to run server start script\n";
 		throw game::mp_server_error("Starting MP server failed!");
 	}
@@ -1685,27 +1715,26 @@ void game_controller::start_wesnothd()
 
 bool game_controller::play_multiplayer()
 {
+
 	int res;
 
 	state_ = game_state();
 	state_.campaign_type = "multiplayer";
 	state_.campaign_define = "MULTIPLAYER";
 
-
-
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
 		if(gui2::new_widgets) {
 			gui2::tmp_method_selection dlg;
 
-				dlg.show(disp().video());
+			dlg.show(disp().video());
 
-				if(dlg.get_retval() == gui2::tbutton::OK) {
-					res = dlg.get_choice();
-				} else {
-					return false;
+			if(dlg.get_retval() == gui2::tbutton::OK) {
+				res = dlg.get_choice();
+			} else {
+				return false;
 
-				}
+			}
 
 		} else {
 
