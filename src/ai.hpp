@@ -130,6 +130,27 @@ protected:
 public:
 	struct attack_analysis : public game_logic::formula_callable
 	{
+		attack_analysis() : 
+			game_logic::formula_callable(),
+			target(),
+			movements(),
+			target_value(0.0),
+			avg_losses(0.0),
+			chance_to_kill(0.0),
+			avg_damage_inflicted(0.0),
+			target_starting_damage(0.0),
+			avg_damage_taken(0.0),
+			resources_used(0.0),
+			terrain_quality(0.0),
+			alternative_terrain_quality(0.0),
+			vulnerability(0.0),
+			support(0.0),
+			leader_threat(false),
+			uses_leader(false),
+			is_surrounded(false)
+		{
+		}
+
 		void analyze(const gamemap& map, unit_map& units,
 					 const std::vector<team>& teams,
 					 const gamestatus& status,
