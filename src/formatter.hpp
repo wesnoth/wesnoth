@@ -33,6 +33,11 @@
 class formatter
 {
 public:
+	formatter() :
+		stream_()
+	{
+	}
+
 	template<typename T>
 	formatter& operator<<(const T& o) {
 		stream_ << o;
