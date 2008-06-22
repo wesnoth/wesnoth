@@ -27,7 +27,7 @@ class unit_map;
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
 public:
-	terrain_filter(const vconfig& cfg, const gamemap& map, const gamestatus& game_status, 
+	terrain_filter(const vconfig& cfg, const gamemap& map, const gamestatus& game_status,
 		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	~terrain_filter() {};
@@ -60,23 +60,23 @@ private:
 	const unit_map& units_;
 
 	struct terrain_filter_cache {
-		terrain_filter_cache() : 
-			parsed_terrain(0), 
-			adjacent_matches(0),
+		terrain_filter_cache() :
+			parsed_terrain(NULL),
+			adjacent_matches(NULL),
 			adjacent_match_cache()
 		{
 		}
 
-		~terrain_filter_cache() { 
+		~terrain_filter_cache() {
 			delete parsed_terrain;
 			delete adjacent_matches;
-		}	
+		}
 
 		//parsed_terrain: optimizes handling of terrain="..."
-		t_translation::t_match *parsed_terrain; 
+		t_translation::t_match *parsed_terrain;
 
 		//adjacent_matches: optimize handling of [filter_adjacent_location] for get_locations()
-		std::vector< std::set<gamemap::location> > *adjacent_matches; 
+		std::vector< std::set<gamemap::location> > *adjacent_matches;
 
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
 		std::vector< std::pair<terrain_filter, std::map<gamemap::location,bool> > > adjacent_match_cache;
