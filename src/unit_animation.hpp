@@ -118,7 +118,13 @@ class unit_animation
 class unit_animator 
 {
 	public:
-		unit_animator():start_time_(INT_MIN){};
+		unit_animator() :
+			animated_units_(),
+			start_time_(INT_MIN)
+		{
+		}
+			
+			
 		void add_animation(unit* animated_unit,const std::string& event,
 				const gamemap::location &src = gamemap::location::null_location,
 				const int value=0,bool with_bars = false,bool cycles = false,
@@ -146,7 +152,19 @@ class unit_animator
 		void wait_for_end() const;
 		void wait_until( int animation_time) const;
 	private:
-		typedef struct {
+		 struct anim_elem {
+			
+			anim_elem() :
+				my_unit(0),
+				animation(0),
+				text(),
+				text_color(0),
+				src(),
+				with_bars(false),
+				cycles(false)
+			{
+			}
+
 			unit *my_unit;
 			const unit_animation * animation;
 			std::string text;
@@ -154,7 +172,8 @@ class unit_animator
 			gamemap::location src;
 			bool with_bars;
 			bool cycles;
-		} anim_elem;
+		};
+
 		std::vector<anim_elem> animated_units_;
 		int start_time_;
 };
