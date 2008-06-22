@@ -114,9 +114,17 @@ class sourcespec {
 	std::vector<gamemap::location> locations;
 
 public:
-	sourcespec(const std::string &id_, const std::string &files_, int min_delay_, int chance_)
-		: id(id_), files(files_), min_delay(min_delay_), chance(chance_), loops(0), 
-			range(1), faderange(range), check_fogged(false)
+	sourcespec(const std::string &id_, 
+			const std::string &files_, int min_delay_, int chance_) :
+		id(id_),
+		files(files_),
+		min_delay(min_delay_),
+		chance(chance_),
+		loops(0), 
+		range(1), 
+		faderange(range), 
+		check_fogged(false), 
+		locations()
 	{ 
 	}
 
