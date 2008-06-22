@@ -42,6 +42,15 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, metrics& met);
 
 	struct sample {
+		
+		sample() :
+			name(),
+			nsamples(0),
+			parsing_time(0),
+			processing_time(0)
+		{
+		}
+
 		simple_wml::string_span name;
 		int nsamples;
 		clock_t parsing_time, processing_time;
