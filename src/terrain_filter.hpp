@@ -60,7 +60,13 @@ private:
 	const unit_map& units_;
 
 	struct terrain_filter_cache {
-		terrain_filter_cache() : parsed_terrain(NULL), adjacent_matches(NULL) {}
+		terrain_filter_cache() : 
+			parsed_terrain(0), 
+			adjacent_matches(0),
+			adjacent_match_cache()
+		{
+		}
+
 		~terrain_filter_cache() { 
 			delete parsed_terrain;
 			delete adjacent_matches;
