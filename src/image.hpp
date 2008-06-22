@@ -55,7 +55,7 @@ namespace image {
 	class cache_type 
 	{
 		public:
-		cache_type():cache_size(0),cache_max_size(600){}
+		cache_type():cache_size(0),cache_max_size(2000){}
 		cache_item<T>& get_element(int index);
 		void on_load(int index);
 		void flush();
