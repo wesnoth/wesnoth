@@ -6,14 +6,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-20 12:42+0200\n"
-"PO-Revision-Date: 2008-04-18 00:07+0300\n"
+"PO-Revision-Date: 2008-06-15 17:42+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lietuvių <komp_lt@konf.lt>\n"
+"Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: LoKalize 0.2\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:36
@@ -33,7 +34,7 @@ msgstr "Animuoti žemėlapį"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Dalinių stovėjimo animacijos"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:64
@@ -152,7 +153,7 @@ msgstr "Įvairūs pagalbininkai"
 #. [about]
 #: data/core/about.cfg:748
 msgid "Internationalization Managers"
-msgstr ""
+msgstr "Internacionalizavimo koordinatoriai"
 
 #. [about]
 #: data/core/about.cfg:773
@@ -161,9 +162,8 @@ msgstr "Afrikaans vertimas"
 
 #. [about]
 #: data/core/about.cfg:789
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Serbų vertimas"
+msgstr "Arabų vertimas"
 
 #. [about]
 #: data/core/about.cfg:796
@@ -370,7 +370,7 @@ msgstr "Įvadas"
 #. [topic]
 #: data/core/help.cfg:27 data/core/help.cfg:126
 msgid "Gameplay"
-msgstr ""
+msgstr "Žaidimas"
 
 #. [section]
 #. [topic]
@@ -615,7 +615,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -625,7 +624,7 @@ msgstr ""
 "\n"
 "\n"
 "Pasamdyti daliniai turi du atsitiktinius <ref>dst=..traits_section "
-"text=Bruožus</ref>, kurie keičia jų statistiką."
+"text=Bruožus</ref>, kurie keičia jų statistikas."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -1046,7 +1045,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:268
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Patirtis ir Paaukštinimai"
 
 #. [topic]
 #: data/core/help.cfg:269
@@ -1056,6 +1055,10 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Jeigu abu daliniai išgyvena kovą, jie gauna patirties taškų skaičių lygų "
+"dalinio, su kuriuo jie kaunasi, lygiui. Tačiau jei dalinys kovoje užmuša "
+"kitą, jis gauna kur kas daugiau patirties – 4 už 0 lygio dalinį, 8 – už 1 "
+"lygio, 16 – už 2 lygio, 24 – už 3 lygio ir t.t."
 
 #. [topic]
 #: data/core/help.cfg:271
@@ -1165,6 +1168,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"Wesnoth'e nepakanka tiesiog samdyti dalinius ir kautis. Jūs taip pat "
+"privalote stebėti savo auksą, ypač kampanijose, kur galite persinešti "
+"papildomą auksą iš vieno scenarijaus į kitą. Yra du šito aspektai; Pajamos "
+"ir Išlaikymas."
 
 #. [topic]
 #: data/core/help.cfg:295
@@ -1199,6 +1206,10 @@ msgid ""
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 msgstr ""
+"\n"
+"\n"
+"Išlaikymo kaštai atimami iš jūsų pajamų, taigi dvylikos dalinių lygių ir "
+"dešimties kaimų atveju jūsų pajamos bus 10 aukso per ėjimą."
 
 #. [topic]
 #: data/core/help.cfg:300
@@ -1292,6 +1303,8 @@ msgstr "Protingas"
 #: data/core/help.cfg:337
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
+"Protingiems daliniams reikia 20% mažiau patirties nei įprasta, kad būtų "
+"paaukštinti."
 
 #. [topic]
 #: data/core/help.cfg:339
@@ -3234,6 +3247,8 @@ msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
+" Šis dalinys sugeba neutralizuoti nuodų veikimą, aplink jį esančiuose "
+"daliniuose."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
@@ -3340,6 +3355,8 @@ msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
+" Šis dalinys turi magiškas atakas, kurios visada turi dideles galimybes "
+"pataikyti į priešininką."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4324,6 +4341,9 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Daliniams su „protingas“ bruožu reikia mažiau patirties taškų, kad pasikeltų "
+"lygį. Anksti kampnijoje bandykite atiduoti mirtinus smūgius šiems daliniams, "
+"kad greičiau gautumėte aukšto lygio karių."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
@@ -4527,6 +4547,9 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
+"Pėstieji daliniai linkę geriau gintis kaimuose ir pilyse, nei kitose "
+"vietovėse, o raiti daliniai negauna jokių gynybinių privalumų kaimuose ir "
+"pilyse."
 
 #. [tip]
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
@@ -4638,6 +4661,9 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
+"Bandykite išvengti ėjimo į prie kaimo esančius laukelius. Priešo dalinys "
+"gali nueiti į kaimą ir pulti jus, ir tuo metu mėgautis kaimo teikiama gynyba "
+"ir gydymu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:135
@@ -4783,6 +4809,9 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Mažai dalinių turi gerą gynybą vandenyje; puolėjų eilutė išilgai upės krašto "
+"gali pridaryti daug netekčių. Elfai panašiu būdu gali naudoti miško kraštą, "
+"o dvorfai tą patį gali daryti su kalnais."
 
 #. [effect]: type=fire
 #: data/scenario-test.cfg:697
@@ -5057,7 +5086,7 @@ msgstr ""
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
-msgstr ""
+msgstr "Patobulinti dalinį"
 
 #: src/dialogs.cpp:113
 msgid "What should our victorious unit become?"
@@ -5149,7 +5178,7 @@ msgstr "Ėjimas"
 
 #: src/dialogs.cpp:588
 msgid "Scenario Start"
-msgstr ""
+msgstr "Scenarijaus pradžia"
 
 #: src/dialogs.cpp:591
 msgid "Difficulty: "
@@ -5185,6 +5214,9 @@ msgid ""
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
+"Nėra išsaugotų žaidimų, kuriuos būtų galima įkelti.\n"
+"\n"
+"(Žaidimai yra automatiškai išsaugomi, kai pabaigiate scenarijų)"
 
 #: src/dialogs.cpp:673
 msgid "Date"
@@ -5201,7 +5233,7 @@ msgstr "Įkelti žaidimą"
 
 #: src/dialogs.cpp:694
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Pasirinkite žaidimą, kurį įkelsite"
 
 #: src/dialogs.cpp:703 src/dialogs.cpp:705
 msgid "Show replay"
@@ -5277,9 +5309,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Failo I/O klaida, nuskaitant žaidimą"
 
 #: src/game.cpp:901
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "Nėra jokių tikslų"
+msgstr "Nėra jokių kampanijų.\n"
 
 #: src/game.cpp:905
 msgid "Play a campaign"
@@ -5679,11 +5710,11 @@ msgstr "<header>text='Daliniai turintys šį gebėjimą'</header>"
 
 #: src/help.cpp:1244
 msgid "Advances from: "
-msgstr ""
+msgstr "Tobulėja iš: "
 
 #: src/help.cpp:1273
 msgid "Advances to: "
-msgstr ""
+msgstr "Tobulėja į: "
 
 #: src/help.cpp:1304 src/help.cpp:1557 src/help.cpp:1612
 msgid "race^Miscellaneous"
@@ -5868,7 +5899,7 @@ msgstr ""
 
 #: src/menu_events.cpp:135 src/menu_events.cpp:190
 msgid "Advancements"
-msgstr ""
+msgstr "Patobulėjimai"
 
 #: src/menu_events.cpp:139 src/menu_events.cpp:197
 msgid "Losses"
@@ -5876,7 +5907,7 @@ msgstr "Netektys"
 
 #: src/menu_events.cpp:144 src/menu_events.cpp:204
 msgid "Kills"
-msgstr "Užmušimai"
+msgstr "Nužudymai"
 
 #: src/menu_events.cpp:163
 msgid "Details"
@@ -5888,7 +5919,7 @@ msgstr "Žala"
 
 #: src/menu_events.cpp:211
 msgid "Over All"
-msgstr ""
+msgstr "Iš viso"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -5900,7 +5931,7 @@ msgstr "Padaryta"
 
 #: src/menu_events.cpp:246
 msgid "Taken"
-msgstr ""
+msgstr "Patirta"
 
 #: src/menu_events.cpp:296 src/menu_events.cpp:300
 msgid "Do you really want to dismiss him?"
@@ -6095,7 +6126,7 @@ msgstr[2] "aukso"
 
 #: src/menu_events.cpp:1025
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Nėra dalinių, kuriuos galite samdyti."
 
 #: src/menu_events.cpp:1037
 msgid "Recruit"
@@ -6145,7 +6176,7 @@ msgstr "Jūs dar nepradėjote savo ėjimo. Ar tikrai norite pabaigti ėjimą?"
 
 #: src/menu_events.cpp:1544 src/menu_events.cpp:1549
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
+msgstr "Kai kurie daliniai dar gali judėti. Ar tikrai norite baigti ėjimą?"
 
 #: src/menu_events.cpp:1584
 msgid "Rename Unit"
@@ -6157,7 +6188,7 @@ msgstr "Rasė"
 
 #: src/menu_events.cpp:1646
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Sukurti dalinį (Derinimas!)"
 
 #: src/menu_events.cpp:1690
 msgid "Place Label"
@@ -6219,15 +6250,21 @@ msgstr ""
 #: src/menu_events.cpp:1959
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
+"Prideda slapyvardį į jūsų draugų sąrašą. Naudojimas: /list addfriend "
+"<slapyvardis>"
 
 #: src/menu_events.cpp:1964
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
+"Prideda slapyvardį į jūsų ignoruojamų sąrašą. Naudojimas: /list ignore "
+"<slapyvardis>"
 
 #: src/menu_events.cpp:1968
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
+"Pašalina slapyvardį iš jūsų ignoruojamų sąrašo. Naudojimas: /list remove "
+"<slapyvardis>"
 
 #: src/menu_events.cpp:1972
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
@@ -6235,7 +6272,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1976
 msgid "Show your ignores and friends list. Usage: /list display"
-msgstr ""
+msgstr "Rodo jūsų ignoruojamų ir draugų sąrašą. Naudojimas: /list display"
 
 #: src/menu_events.cpp:1979
 msgid "Unknown subcommand."
@@ -6251,7 +6288,7 @@ msgstr "Nežinoma komanda."
 
 #: src/menu_events.cpp:1993
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Pridėti į ignoruojamų sąrašą: "
 
 #: src/menu_events.cpp:1993 src/menu_events.cpp:1999
 msgid "Invalid username: "
@@ -6267,7 +6304,7 @@ msgstr "Pašalintas iš sąrašo: "
 
 #: src/menu_events.cpp:2017
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "Nėra žaidėjų jūsų draugų ar ignoruoamų sąraše."
 
 #: src/menu_events.cpp:2023
 msgid "Unknown command: "
@@ -6275,7 +6312,7 @@ msgstr "Nežinoma komanda: "
 
 #: src/menu_events.cpp:2130
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "Nepavyksta surasti žymės ar dalinio turinčio eilutę „$search“."
 
 #: src/menu_events.cpp:2159
 msgid "Can't droid invalid side: '$side'."
@@ -6410,7 +6447,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:232
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Jūs privalote prisijungti prie šito serverio"
 
 #: src/multiplayer_connect.cpp:80 src/multiplayer_connect.cpp:442
 #: src/multiplayer_connect.cpp:539
@@ -6594,19 +6631,19 @@ msgstr "Didžiausias laikas ledžiamas bet kuriam ėjimui (sekundėmis)"
 
 #: src/multiplayer_create.cpp:163
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Laikas bendroms užduotims kiekvieną ėjimą (sekundėmis)"
 
 #: src/multiplayer_create.cpp:169
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Laikas kiekvienai atakai, samdymui ir užgrobimui"
 
 #: src/multiplayer_create.cpp:174
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "Pajamų kiekis, kurį duoda kiekvienas kaimas per ėjimą"
 
 #: src/multiplayer_create.cpp:180
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "Patirties kiekis, kurio reikia, kad dalinys patobulėtų"
 
 #: src/multiplayer_create.cpp:183
 msgid "Use scenario specific settings"
@@ -7044,6 +7081,8 @@ msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Įvyko tinklo atsijungimas ir žaidimas negali tęstis. Ar norite išsaugoti šį "
+"žaidimą?"
 
 #: src/playsingle_controller.cpp:575
 msgid "It is now $name|'s turn"
@@ -7051,7 +7090,7 @@ msgstr "Dabar $name| ėjimas"
 
 #: src/playturn.cpp:223
 msgid "Replace with AI"
-msgstr ""
+msgstr "Pakeisti į DI"
 
 #: src/playturn.cpp:224
 msgid "Replace with local player"
@@ -7063,7 +7102,7 @@ msgstr "Nutraukti žaidimą"
 
 #: src/playturn.cpp:230 src/playturn.cpp:242
 msgid "Replace with $player"
-msgstr ""
+msgstr "Pakeisti į $player"
 
 #: src/playturn.cpp:248
 msgid "$player has left the game. What do you want to do?"
@@ -7334,15 +7373,3 @@ msgstr ""
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr ""
-
-#~ msgid ""
-#~ " This unit can teleport between any two villages instantly, though the "
-#~ "player must control both, and the destination village must be unoccupied."
-#~ msgstr ""
-#~ " Šis dalinys akimirksniu gali teleportuotis tarp bet kurių dviejų kaimų, "
-#~ "tačiau žaidėjas juos abu turi kontroliuoti, ir antrasis kaimas privalo "
-#~ "būti laisvas."
-
-#, fuzzy
-#~ msgid "Connect to Host/Server"
-#~ msgstr "Prisijungti prie serverio"
