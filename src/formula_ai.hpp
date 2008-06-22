@@ -31,7 +31,13 @@ typedef	std::map<const std::string, const_formula_ptr> candidate_move_map;
 class ai_function_symbol_table : public function_symbol_table {
 
 public:
-	explicit ai_function_symbol_table(formula_ai& ai) : ai_(ai) {};
+	explicit ai_function_symbol_table(formula_ai& ai) : 
+		ai_(ai),
+		move_functions(),
+		candidate_move_evals()
+	{
+	}
+
 	void register_candidate_move(const std::string name, 
 			const_formula_ptr formula, const_formula_ptr eval, 
 			const_formula_ptr precondition, const std::vector<std::string>& args);
@@ -61,7 +67,18 @@ public:
 	std::string evaluate(const std::string& formula_str);
 
 	struct move_map_backup {
-		move_map_backup() : move_maps_valid(false) {}
+		move_map_backup() : 
+			move_maps_valid(false),
+			srcdst(),
+			dstsrc(),
+			full_srcdst(),
+			full_dstsrc(),
+			enemy_srcdst(),
+			enemy_dstsrc(),
+			attacks_cache()
+		{
+		}
+
 		bool move_maps_valid;
 		move_map srcdst, dstsrc, full_srcdst, full_dstsrc, enemy_srcdst, enemy_dstsrc;
 		variant attacks_cache;
