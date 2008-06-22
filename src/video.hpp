@@ -79,7 +79,7 @@ class CVideo {
 	int getBpp();
 
 	void make_fake();
-	bool faked() const { return fake_screen; }
+	bool faked() const { return fake_screen_; }
 
 	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears
 	//at the bottom of the screen, so as to not be intrusive. Setting a help string sets what
@@ -100,10 +100,10 @@ private:
 
 	bool mode_changed_;
 
-	int bpp;	// Store real bits per pixel
+	int bpp_;	// Store real bits per pixel
 
 	//if there is no display at all, but we 'fake' it for clients
-	bool fake_screen;
+	bool fake_screen_;
 
 	//variables for help strings
 	int help_string_;

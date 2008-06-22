@@ -230,7 +230,7 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo() : mode_changed_(false), bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0)
+CVideo::CVideo() : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 
@@ -241,7 +241,7 @@ CVideo::CVideo() : mode_changed_(false), bpp(0), fake_screen(false), help_string
 }
 
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
-		 : mode_changed_(false), bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0)
+		 : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
@@ -278,7 +278,7 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 
 void CVideo::make_fake()
 {
-	fake_screen = true;
+	fake_screen_ = true;
 	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,16,16,24,0xFF0000,0xFF00,0xFF,0);
 	image::set_pixel_format(frameBuffer->format);
 }
@@ -291,7 +291,7 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	update_rects.clear();
-	if (fake_screen) return 0;
+	if (fake_screen_) return 0;
 	mode_changed_ = true;
 
 	flags = get_flags(flags);
@@ -360,7 +360,7 @@ int CVideo::getBlueMask()
 
 void CVideo::flip()
 {
-	if(fake_screen)
+	if(fake_screen_)
 		return;
 
 	if(update_all) {
@@ -421,12 +421,12 @@ bool CVideo::isFullScreen() const { return fullScreen; }
 
 void CVideo::setBpp( int bpp )
 {
-	this->bpp = bpp;
+	bpp_ = bpp;
 }
 
-int CVideo::getBpp( void )
+int CVideo::getBpp()
 {
-	return bpp;
+	return bpp_;
 }
 
 int CVideo::set_help_string(const std::string& str)
