@@ -50,7 +50,8 @@ public:
 	const std::string& str() const { return str_; }
 
 private:
-	formula();
+	formula() : expr_(), str_()
+   	{}
 	expression_ptr expr_;
 	std::string str_;
 };
