@@ -151,11 +151,44 @@ public:
 	//! Function to invalidate the game status displayed on the sidebar.
 	void invalidate_game_status() { invalidateGameStatus_ = true; }
 
-	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
-
 	//! Functions to get the on-screen positions of hexes.
 	int get_location_x(const gamemap::location& loc) const;
 	int get_location_y(const gamemap::location& loc) const;
+
+	/**
+	 * Rectangular area of hexes, allowing to decide how the top and bottom
+	 * edges handles the vertical shift for each parity of the x coordinate
+	 */
+	struct rect_of_hexes{
+		int left;
+		int right;
+		int top[2]; // for even and odd values of x, respectively
+		int bottom[2]; 
+
+		//!  very simple iterator to walk into the rect_of_hexes
+		struct iterator {
+			iterator(gamemap::location loc, rect_of_hexes& rect)
+				: loc_(loc), rect_(rect){};
+
+			//! increment y first, then when reaching bottom, increment x
+			void operator++();
+			bool operator!=(const iterator &that) const {return that.loc_ != loc_;};
+			const gamemap::location& operator*() const {return loc_;};
+
+			private:
+				gamemap::location loc_;
+				rect_of_hexes& rect_;
+		};
+
+		iterator begin();
+		iterator end();
+	};
+
+	//! Return the rectangular area of hexes overlapped by r (r is in screen coordinates)
+	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
+
+	//! Returns the rectangular area of visible hexes
+	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());};
 
 	//! Returns true if location (x,y) is covered in shroud.
 	bool shrouded(const gamemap::location& loc) const {
@@ -169,10 +202,6 @@ public:
 	//! Determines whether a grid should be overlayed on the game board.
 	//! (to more clearly show where hexes are)
 	void set_grid(const bool grid) { grid_ = grid; }
-
-	//! Returns the locations of 2 hexes
-	//! that bind the visible area of the map.
-	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	//! Save a (map-)screenshot and return the estimated file size
 	int screenshot(std::string filename, bool map_screenshot = false);
@@ -191,12 +220,11 @@ public:
 
 	// Will be overridden in the display subclass
 	virtual bool invalidate(const gamemap::location& loc) {return invalidated_.insert(loc).second;};
-	virtual bool invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) ;
-	virtual bool invalidate_zone(const int x1,const int y1, const int x2, const int y2);
-	virtual bool rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const;
-	virtual bool zone_need_update(const int x1,const int y1, const int x2, const int y2) const;
+	bool rectangle_need_update(const SDL_Rect& rect) const;
 	virtual void draw_minimap_units() {};
-	
+
+	bool invalidate_locations_in_rect(const SDL_Rect& rect);
+
 	/**
 	 * Function to invalidate animated terrains which may have changed.
 	 */
@@ -622,8 +650,6 @@ protected:
 
 	//! redraw all panels associated with the map display
 	void draw_all_panels();
-
-	bool invalidate_locations_in_rect(SDL_Rect r);
 
 	//! Strict weak ordering to sort a STL-set of hexes
 	//! for drawing using the z-order.

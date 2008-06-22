@@ -171,12 +171,10 @@ bool effect::render()
 	// If rendered the first time, need to determine the area affected. 
 	// If a halo changes size, it is not updated.
 	if(overlayed_hexes_.empty()) {
-		gamemap::location topleft, bottomright;
-		disp->get_rect_hex_bounds(rect, topleft, bottomright);
-		for (int x = topleft.x; x <= bottomright.x; ++x) {
-			for (int y = topleft.y; y <= bottomright.y; ++y) {
-				overlayed_hexes_.push_back(gamemap::location(x, y));
-			}
+		display::rect_of_hexes hexes = disp->hexes_under_rect(rect);
+		display::rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+		for (;i != end; ++i) {
+			overlayed_hexes_.push_back(*i);
 		}
 	}
 

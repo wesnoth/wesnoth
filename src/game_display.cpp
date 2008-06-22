@@ -775,20 +775,17 @@ void game_display::process_reachmap_changes()
 	if (reach_map_.empty() != reach_map_old_.empty()) {
 		// Invalidate everything except the non-darkened tiles
 		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
-		gamemap::location topleft;
-		gamemap::location bottomright;
-		get_visible_hex_bounds(topleft, bottomright);
-		for(int x = topleft.x; x <= bottomright.x; ++x) {
-			for(int y = topleft.y; y <= bottomright.y; ++y) {
-				gamemap::location loc(x, y);
-				reach_map::iterator reach = full.find(loc);
-				if (reach == full.end()) {
-					// Location needs to be darkened or brightened
-					invalidate(loc);
-				} else if (reach->second != 1) {
-					// Number needs to be displayed or cleared
-					invalidate(loc);
-				}
+
+		rect_of_hexes hexes = get_visible_hexes();
+		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+		for (;i != end; ++i) {
+			reach_map::iterator reach = full.find(*i);
+			if (reach == full.end()) {
+				// Location needs to be darkened or brightened
+				invalidate(*i);
+			} else if (reach->second != 1) {
+				// Number needs to be displayed or cleared
+				invalidate(*i);
 			}
 		}
 	} else if (!reach_map_.empty()) {

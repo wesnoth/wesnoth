@@ -455,14 +455,14 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const gamemap:
 		} else {
 			// if we need to update ourselve because we changed, invalidate our hexs
 			// and return whether or not our hexs was invalidated
-			 if(force || need_update()){
-				 bool tmp = game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
-				 return tmp;
+			if(force || need_update()){
+				const SDL_Rect r = {x,y,image->w,image->h};
+				return game_display::get_singleton()->invalidate_locations_in_rect(r);
 			}
 			// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
-			if(game_display::get_singleton()->zone_need_update(x,y,x+image->w,y+image->h)) {
-			       	bool tmp = game_display::get_singleton()->invalidate_zone(x,y,x+image->w,y+image->h);
-				 return tmp;
+			const SDL_Rect r = {x,y,image->w,image->h};
+			if(game_display::get_singleton()->rectangle_need_update(r)) {
+				return game_display::get_singleton()->invalidate_locations_in_rect(r);
 			}
 			return false;
 

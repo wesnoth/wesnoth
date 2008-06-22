@@ -331,47 +331,58 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 	return res;
 }
 
-void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
+void display::rect_of_hexes::iterator::operator++()
 {
-	// Change the coordinates of the rect send
-	// to be relative to the map area, instead of the screen area.
-	const SDL_Rect& map_rect = map_area();
-	rect.x -= map_rect.x;
-	rect.y -= map_rect.y;
-	// Only move the left side.
-	// The right side should remain
-	// at the same coordinates, so fix that
-	rect.w += map_rect.x;
-	rect.h += map_rect.y;
-
-	const int tile_width = hex_width();
-
-	// Adjust for the border
-	topleft.x = static_cast<int>(-theme_.border().size + (xpos_ + rect.x) / tile_width);
-	topleft.y = static_cast<int>(-theme_.border().size + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_);
-
-	bottomright.x = static_cast<int>(-theme_.border().size + (xpos_ + rect.x + rect.w) / tile_width);
-	bottomright.y = static_cast<int>(-theme_.border().size + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_);
-
-	// This routine does a rough approximation, so might be off by one.
-	// To be sure enough tiles are included, the boundaries are increased
-	// by one if the terrain is "on the map" due to the extra border.
-	// This uses a bit larger area.
-	//! @todo FIXME This routine should properly determine what to update,
-	//! and not increase by one just to be sure.
-	if(topleft.x >= -1) {
-		topleft.x--;
-	}
-	if(topleft.y >= -1) {
-		topleft.y--;
-	}
-	if(bottomright.x <= map_.w()) {
-		bottomright.x++;
-	}
-	if(bottomright.y <= map_.h()) {
-		bottomright.y++;
+	if (loc_.y < rect_.bottom[loc_.x & 1])
+		loc_.y++;
+	else {
+		loc_.x++;
+		loc_.y = rect_.top[loc_.x & 1];
 	}
 }
+
+// begin is top left, and end is after bottom right
+display::rect_of_hexes::iterator display::rect_of_hexes::begin()
+{
+	return iterator(gamemap::location(left, top[left & 1]), *this);
+}
+display::rect_of_hexes::iterator display::rect_of_hexes::end()
+{
+	return iterator(gamemap::location(right+1, top[(right+1) & 1]), *this);
+}
+
+const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
+{
+	rect_of_hexes res;
+
+	SDL_Rect map_rect = map_area();
+	// translate rect coordinates from screen-based to map_area-based
+	int x = xpos_ - map_rect.x + r.x;
+	int y = ypos_ - map_rect.y + r.y;
+	// we use the "double" type to avoid important rounding error (size of an hex!)
+	// we will also need to use std::floor to avoid bad rounding at border (negative values)
+	double tile_width = hex_width();
+	double tile_size = hex_size();
+	double border = theme_.border().size;
+	// the "-0.25" is for the horizontal imbrication of hexes (1/4 overlaps).
+	res.left = static_cast<int>(std::floor(-border + x / tile_width - 0.25));
+	// we remove 1 pixel of the rectangle dimensions
+	// (the rounded division take one pixel more than needed)
+	res.right = static_cast<int>(std::floor(-border + (x + r.w-1) / tile_width));
+
+	// for odd x, we must shift up one half-hex. Since x will vary along the edge,
+	// we store here the y values for even and odd x, respectively
+	res.top[0] = static_cast<int>(std::floor(-border + y / tile_size));
+	res.top[1] = static_cast<int>(std::floor(-border + y / tile_size - 0.5));
+	res.bottom[0] = static_cast<int>(std::floor(-border + (y + r.h-1) / tile_size));
+	res.bottom[1] = static_cast<int>(std::floor(-border + (y + r.h-1) / tile_size - 0.5));
+
+	// TODO: in some rare cases (1/16), a corner of the big rect is on a tile
+	// (the 72x72 rectangle containing the hex) but not on the hex itself
+	// Can maybe be optimized by using pixel_position_to_hex
+
+	return res;
+};
 
 int display::get_location_x(const gamemap::location& loc) const
 {
@@ -411,12 +422,6 @@ gamemap::location display::minimap_location_on(int x, int y)
 		loc.y = map_.h() - 1;
 
 	return loc;
-}
-
-void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
-{
-	SDL_Rect r = map_area();
-	get_rect_hex_bounds(r, topleft, bottomright);
 }
 
 int display::screenshot(std::string filename, bool map_screenshot)
@@ -1051,16 +1056,13 @@ void display::highlight_hex(gamemap::location hex)
 	invalidate(mouseoverHex_);
 }
 
-bool display::invalidate_locations_in_rect(SDL_Rect r)
+bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 {
 	bool result = false;
-	gamemap::location topleft, bottomright;
-	get_rect_hex_bounds(r, topleft, bottomright);
-	for (int x = topleft.x; x <= bottomright.x; ++x) {
-		for (int y = topleft.y; y <= bottomright.y; ++y) {
-			gamemap::location loc(x, y);
-			result |= invalidate(loc);
-		}
+	rect_of_hexes hexes = hexes_under_rect(rect);
+	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+	for (;i != end; ++i) {
+		result |= invalidate(*i);
 	}
 	return result;
 }
@@ -1114,13 +1116,10 @@ bool display::draw_init()
 
 	if(invalidateAll_) {
 		DBG_DP << "draw() with invalidateAll\n";
-		gamemap::location topleft;
-		gamemap::location bottomright;
-		get_visible_hex_bounds(topleft, bottomright);
-		for(int x = topleft.x; x <= bottomright.x; ++x)
-			for(int y = topleft.y; y <= bottomright.y; ++y)
-				invalidated_.insert(gamemap::location(x,y));
+
+		// toggle invalidateAll_ first to allow regular invalidations
 		invalidateAll_ = false;
+		invalidate_locations_in_rect(map_area());
 
 		redrawMinimap_ = true;
 	}
@@ -1395,15 +1394,15 @@ void display::scroll(int xmove, int ymove)
 
 	if (dy != 0) {
 		SDL_Rect r = map_area();
-		r.x = 0;
-		r.y = dy < 0 ? r.h+dy : 0;
+		if(dy < 0)
+			r.y = r.y + r.h + dy;
 		r.h = abs(dy);
 		invalidate_locations_in_rect(r);
 	}
 	if (dx != 0) {
 		SDL_Rect r = map_area();
-		r.x = dx < 0 ? r.w+dx : 0;
-		r.y = 0;
+		if (dx < 0)
+			r.x = r.x + r.w + dx;
 		r.w = abs(dx);
 		invalidate_locations_in_rect(r);
 	}
@@ -2134,71 +2133,29 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 		reportSurfaces_[report_num].assign(NULL);
 	}
 }
-bool display::invalidate_rectangle(const gamemap::location& first_corner, const gamemap::location& second_corner) {
-	// unused variable - const SDL_Rect& rect = map_area();
-	bool result = false;
 
-	const int min_x = minimum<int>(first_corner.x,second_corner.x);
-	const int min_y = minimum<int>(first_corner.y,second_corner.y);
-	const int max_x = maximum<int>(first_corner.x,second_corner.x);
-	const int max_y = maximum<int>(first_corner.y,second_corner.y);
-
-	for (int x = min_x; x <= max_x;x++) {
-		for (int y = min_y; y <= max_y;y++) {
-			result |= invalidate(gamemap::location(x,y));
-		}
-		// take a margin on Y because of "misaligned hexes"
-		gamemap::location margein(x, is_odd(x) ? min_y-1 : max_y+1);
-		result |= invalidate(margein);
-	}
-	return result;
-}
-
-bool display::invalidate_zone(const int x1,const int y1, const int x2, const int y2) {
-	const SDL_Rect& rect = map_area();
-	return invalidate_rectangle(pixel_position_to_hex(x1 - rect.x+xpos_, y1 - rect.y+ypos_),pixel_position_to_hex(x2 - rect.x+xpos_, y2 - rect.y+ypos_));
-}
-
-bool display::rectangle_need_update(const gamemap::location& first_corner, const gamemap::location& second_corner) const {
-	const int min_x = minimum<int>(first_corner.x,second_corner.x);
-	const int min_y = minimum<int>(first_corner.y,second_corner.y);
-	const int max_x = maximum<int>(first_corner.x,second_corner.x);
-	const int max_y = maximum<int>(first_corner.y,second_corner.y);
-
-	for (int x = min_x; x <= max_x;x++) {
-		for (int y = min_y; y <= max_y;y++) {
-			// take a margin on Y because of "misaligned hexes"
-			if(invalidated_.find(gamemap::location(x,y)) != invalidated_.end())
-				return true;
-		}
-		// take a margin on Y because of "misaligned hexes"
-		gamemap::location margein(x, is_odd(x) ? min_y-1 : max_y+1);
-		if(invalidated_.find(margein) != invalidated_.end())
+bool display::rectangle_need_update(const SDL_Rect& rect) const
+{
+	rect_of_hexes hexes = hexes_under_rect(rect);
+	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+	for (;i != end; ++i) {
+		if(invalidated_.find(*i) != invalidated_.end())
 			return true;
 	}
 
 	return false;
 }
 
-bool display::zone_need_update(const int x1,const int y1, const int x2, const int y2) const {
-	const SDL_Rect& rect = map_area();
-	return rectangle_need_update(pixel_position_to_hex(x1 - rect.x+xpos_, y1 - rect.y+ypos_),pixel_position_to_hex(x2 - rect.x+xpos_, y2 - rect.y+ypos_));
-}
-
 void display::invalidate_animations() {
 	if (preferences::animate_map()) {
-		gamemap::location topleft;
-		gamemap::location bottomright;
-		get_visible_hex_bounds(topleft, bottomright);
-		for(int x = topleft.x; x <= bottomright.x; ++x) {
-			for(int y = topleft.y; y <= bottomright.y; ++y) {
-				const gamemap::location loc(x,y);
-				if (!shrouded(loc)) {
-					if (builder_.update_animation(loc)) {
-						invalidate(loc);
-					} else {
-						invalidate_animations_location(loc);
-					}
+		rect_of_hexes hexes = get_visible_hexes();
+		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+		for (;i != end; ++i) {
+			if (!shrouded(*i)) {
+				if (builder_.update_animation(*i)) {
+					invalidate(*i);
+				} else {
+					invalidate_animations_location(*i);
 				}
 			}
 		}
