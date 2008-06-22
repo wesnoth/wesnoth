@@ -39,15 +39,15 @@
 
 namespace gui2 {
 
-void ttoggle_panel::set_data(const std::map<std::string /* widget id */, std::map<
+void ttoggle_panel::set_members(const std::map<std::string /* widget id */, std::map<
 		std::string /* member id */, t_string /* member value */> >& data)
 {
 	// typedef boost problem work around.
 	typedef std::pair<std::string, std::map<std::string, t_string> > hack ;
 	foreach(const hack& item, data) {
-		tcontrol* widget = dynamic_cast<tcontrol*>(find_widget(item.first, false));
-		if(widget) {
-			widget->set_members(item.second);
+		tcontrol* control = dynamic_cast<tcontrol*>(find_widget(item.first, false));
+		if(control) {
+			control->set_members(item.second);
 		}
 	}
 }

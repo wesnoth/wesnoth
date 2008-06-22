@@ -36,7 +36,15 @@ public:
 	{
 	}
 
-	void set_data(const std::map<std::string /* widget id */, std::map<
+	/**
+	 * Sets the members of the child controls.
+	 *
+	 * Sets the members for all controls which have the proper member id. See
+	 * tcontrol::set_members for more info.
+	 *
+	 * @param data                Map with the key value pairs to set the members.
+	 */
+	void set_members(const std::map<std::string /* widget id */, std::map<
 		std::string /* member id */, t_string /* member value */> >& data);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/

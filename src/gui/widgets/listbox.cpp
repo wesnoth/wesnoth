@@ -532,7 +532,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 				}
 			} else if(panel) {
 				panel->set_callback_mouse_left_click(callback_select_list_item);
-				panel->set_data(data);
+				panel->set_members(data);
 			} else if(child_grid) {
 				init_in_grid(child_grid, data);
 			} else {
