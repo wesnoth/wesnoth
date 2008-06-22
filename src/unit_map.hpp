@@ -101,13 +101,13 @@ public:
 	struct unit_iterator
 	{
 		unit_iterator() :
-			counter(),
+			counter_(),
 			i_(),
 			map_(0)
 		{ }
 		
-		unit_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { }
-		unit_iterator(umap::iterator i, unit_map* map) : counter(map), i_(i), map_(map) { }
+		unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
+		unit_iterator(umap::iterator i, unit_map* map) : counter_(map), i_(i), map_(map) { }
 					
 		std::pair<gamemap::location,unit> *operator->() const;
 		std::pair<gamemap::location,unit>& operator*() const;
@@ -132,7 +132,7 @@ public:
 		friend struct const_xy_accessor;
 		
 	private:
-		iterator_counter counter;
+		iterator_counter counter_;
 		
 		umap::iterator i_;
 		unit_map* map_;
@@ -140,16 +140,16 @@ public:
 	
 	struct const_unit_iterator
 	{
-		const_unit_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { }
+		const_unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
 		
 		const_unit_iterator() :
-			counter(),
+			counter_(),
 			i_(),
 			map_(0)
 		{ }
 				
-		const_unit_iterator(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) { }
-		const_unit_iterator(umap::const_iterator i, const unit_map* map): counter(map), i_(i), map_(map) { }
+		const_unit_iterator(const const_unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
+		const_unit_iterator(umap::const_iterator i, const unit_map* map): counter_(map), i_(i), map_(map) { }
 		
 		const std::pair<gamemap::location,unit>* operator->() const;
 		const std::pair<gamemap::location,unit>& operator*() const;
@@ -173,7 +173,7 @@ public:
 		friend struct const_xy_accessor;
 		
 	private:	
-		iterator_counter counter;
+		iterator_counter counter_;
 					
 		umap::const_iterator i_;	
 		const unit_map* map_;
@@ -191,21 +191,21 @@ public:
 		unit_xy_iterator(const unit_iterator &i);
 		
 		unit_xy_iterator() :
-			counter(),
+			counter_(),
 			i_(),
 			map_(0),
 			loc_()
 		{}
 				
 		unit_xy_iterator(const unit_xy_iterator &i) : 
-			counter(i.map_), 
+			counter_(i.map_), 
 			i_(i.i_), 
 			map_(i.map_),
 			loc_(i.valid() ? i.loc_ : gamemap::location())
 			{ 
 			}
 			
-		unit_xy_iterator(umap::iterator i, unit_map* map, gamemap::location loc): counter(map), i_(i), map_(map), loc_(loc) { }
+		unit_xy_iterator(umap::iterator i, unit_map* map, gamemap::location loc): counter_(map), i_(i), map_(map), loc_(loc) { }
 		
 		std::pair<gamemap::location,unit>* operator->() const;
 		std::pair<gamemap::location,unit>& operator*() const;
@@ -227,7 +227,7 @@ public:
 		friend struct const_xy_accessor;
 		
 	private:	
-		iterator_counter counter;	
+		iterator_counter counter_;	
 		
 		umap::iterator i_;	
 		unit_map* map_;
@@ -241,17 +241,17 @@ public:
 		const_unit_xy_iterator(const const_unit_iterator &i);
 		
 		const_unit_xy_iterator() :
-			counter(),
+			counter_(),
 			i_(),
 			map_(0),
 			loc_()
 		{ 
 		}
 							
-		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, gamemap::location loc): counter(map), i_(i), map_(map), loc_(loc)  { }
+		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, gamemap::location loc): counter_(map), i_(i), map_(map), loc_(loc)  { }
 					
 		const_unit_xy_iterator(const unit_xy_iterator &i) : 
-			counter(i.map_), 
+			counter_(i.map_), 
 			i_(i.i_), 
 			map_(i.map_),
 			loc_(i.valid() ? i.loc_ : gamemap::location())
@@ -259,7 +259,7 @@ public:
 		}
 
 		const_unit_xy_iterator(const const_unit_xy_iterator &i) : 
-			counter(i.map_), 
+			counter_(i.map_), 
 			i_(i.i_), 
 			map_(i.map_),
 			loc_(i.valid() ? i.loc_ : gamemap::location())
@@ -284,7 +284,7 @@ public:
 		friend struct const_xy_accessor;
 		
 	private:		
-		iterator_counter counter;
+		iterator_counter counter_;
 		
 		umap::const_iterator i_;	
 		const unit_map* map_;
@@ -301,7 +301,7 @@ public:
 		xy_accessor(const unit_iterator &i);
 		xy_accessor(const unit_xy_iterator &i);		
 		xy_accessor() :
-			counter(), 
+			counter_(), 
 			i_(), 
 			map_(),
 			loc_()
@@ -314,7 +314,7 @@ public:
 		bool valid();
 		
 	private:
-		iterator_counter counter;
+		iterator_counter counter_;
 		
 		umap::iterator i_;
 		unit_map* map_;
@@ -330,7 +330,7 @@ public:
 		const_xy_accessor(const const_unit_xy_iterator &i);
 				
 		const_xy_accessor() :
-			counter(), 
+			counter_(), 
 			i_(), 
 			map_(),
 			loc_()
@@ -343,7 +343,7 @@ public:
 		bool valid();
 		
 	private:
-		iterator_counter counter;
+		iterator_counter counter_;
 		
 		umap::const_iterator i_;
 		const unit_map* map_;

@@ -145,7 +145,7 @@ unit_map::const_unit_iterator unit_map::const_unit_iterator::operator++(int){
 	return const_unit_iterator(iter, map_);
 }
 
-unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
@@ -200,11 +200,11 @@ bool unit_map::unit_xy_iterator::valid() const {
 	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first;
 }
 
-unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
-unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_)  {
+unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_)  {
 	if (i.valid()) loc_ = i->first;
 }
 
@@ -258,11 +258,11 @@ bool unit_map::const_unit_xy_iterator::valid() const {
 }
 
 
-unit_map::xy_accessor::xy_accessor(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::xy_accessor::xy_accessor(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
-unit_map::xy_accessor::xy_accessor(const unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::xy_accessor::xy_accessor(const unit_xy_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
@@ -294,19 +294,19 @@ bool unit_map::xy_accessor::valid() {
 	return false;
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const const_unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::const_xy_accessor::const_xy_accessor(const const_unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const unit_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::const_xy_accessor::const_xy_accessor(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const const_unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::const_xy_accessor::const_xy_accessor(const const_unit_xy_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const unit_xy_iterator &i) : counter(i.map_), i_(i.i_), map_(i.map_) {
+unit_map::const_xy_accessor::const_xy_accessor(const unit_xy_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) {
 	if (i.valid()) loc_ = i->first;
 }
 
