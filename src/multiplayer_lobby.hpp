@@ -33,6 +33,33 @@ namespace mp {
 class gamebrowser : public gui::menu {
 public:
 	struct game_item {
+
+		game_item() :
+			mini_map(),
+			id(),
+			map_data(),
+			name(),
+			map_info(),
+			map_info_size(),
+			gold(),
+			xp(),
+			vision(),
+			status(),
+			time_limit(),
+			vacant_slots(0),
+			current_turn(0),
+			reloaded(false),
+			started(false),
+			fog(false),
+			shroud(false),
+			observers(false),
+			use_map_settings(false),
+			verified(false),
+			password_required(false),
+			have_era(false)
+		{
+		}
+
 		surface mini_map;
 		std::string id;
 		std::string map_data;
