@@ -87,7 +87,14 @@ class formula_function {
 	const_formula_ptr precondition_;
 	std::vector<std::string> args_;
 public:
-	formula_function() {}
+	formula_function() :
+		name_(),
+		formula_(),
+		precondition_(),
+		args_()
+	{
+	}
+
 	formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args) : name_(name), formula_(formula), precondition_(precondition), args_(args)
 	{}
 
@@ -97,6 +104,11 @@ public:
 class function_symbol_table {
 	std::map<std::string, formula_function> custom_formulas_;
 public:
+	function_symbol_table() :
+		custom_formulas_()
+	{
+	}
+
 	virtual ~function_symbol_table() {}
 	virtual void add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args);
 	virtual expression_ptr create_function(const std::string& fn,
