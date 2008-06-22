@@ -138,7 +138,7 @@ public:
 			avg_losses(0.0),
 			chance_to_kill(0.0),
 			avg_damage_inflicted(0.0),
-			target_starting_damage(0.0),
+			target_starting_damage(0),
 			avg_damage_taken(0.0),
 			resources_used(0.0),
 			terrain_quality(0.0),
