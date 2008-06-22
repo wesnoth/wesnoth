@@ -351,8 +351,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	surface image;
 	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
 		image=image::get_image(image_loc,
-				image::SCALED_TO_ZOOM,
-				primary
+				image::SCALED_TO_ZOOM
 				);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
@@ -433,8 +432,7 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const gamemap:
 		 * should cache it here and release it (if needed) after redrawn
 		 */
 		image=image::get_image(image_loc,
-				image::SCALED_TO_ZOOM,
-				primary
+				image::SCALED_TO_ZOOM
 				);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;

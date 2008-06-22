@@ -66,38 +66,33 @@ std::string image_mask;
 int zoom = image::tile_size;
 int cached_zoom = 0;
 
-// The "pointer to surfaces" vector is not cleared anymore
-// (the surface are still freed, of course).
-// I do not think it is a problem, as the number of different surfaces
-// the program may lookup has an upper limit, so its memory usage
-// won't grow indefinitely over time.
+} // end anon namespace
+
+namespace image {
+
 template<typename T>
-void reset_cache(std::vector<image::cache_item<T> >& cache)
+void cache_type<T>::flush()
 {
-	typename std::vector<image::cache_item<T> >::iterator beg = cache.begin();
-	typename std::vector<image::cache_item<T> >::iterator end = cache.end();
+	typename std::vector<cache_item<T> >::iterator beg = content.begin();
+	typename std::vector<cache_item<T> >::iterator end = content.end();
 
 	for(; beg != end; ++beg) {
 		beg->loaded = false;
 		beg->item = T();
 	}
 }
-} // end anon namespace
-
-namespace image {
-
 mini_terrain_cache_map mini_terrain_cache;
 mini_terrain_cache_map mini_fogged_terrain_cache;
 
 void flush_cache()
 {
-	reset_cache(images_);
-	reset_cache(hexed_images_);
-	reset_cache(scaled_to_hex_images_);
-	reset_cache(scaled_to_zoom_);
-	reset_cache(unmasked_images_);
-	reset_cache(brightened_images_);
-	reset_cache(semi_brightened_images_);
+	images_.flush();
+	hexed_images_.flush();
+	scaled_to_hex_images_.flush();
+	scaled_to_zoom_.flush();
+	unmasked_images_.flush();
+	brightened_images_.flush();
+	semi_brightened_images_.flush();
 	mini_terrain_cache.clear();
 	mini_fogged_terrain_cache.clear();
 	reversed_images_.clear();
@@ -115,13 +110,6 @@ void locator::init_index()
 		index_ = last_index_++;
 		locator_finder.insert(locator_finder_pair(val_, index_));
 
-		images_.push_back(cache_item<surface>());
-		hexed_images_.push_back(cache_item<surface>());
-		scaled_to_hex_images_.push_back(cache_item<surface>());
-		scaled_to_zoom_.push_back(cache_item<surface>());
-		unmasked_images_.push_back(cache_item<surface>());
-		brightened_images_.push_back(cache_item<surface>());
-		semi_brightened_images_.push_back(cache_item<surface>());
 
 	} else {
 		index_ = i->second;
@@ -460,34 +448,6 @@ surface locator::load_from_disk() const
 	}
 }
 
-#if 0
-template<typename T>
-bool locator::in_cache(const std::vector<cache_item<T> >& cache) const
-{
-	if(index_ == -1)
-		return false;
-
-	return cache[index_].loaded;
-}
-
-template<typename T>
-T locator::locate_in_cache(const std::vector<cache_item<T> >& cache) const
-{
-	if(index_ == -1)
-		return T();
-
-	return cache[index_].item;
-}
-
-template<typename T>
-void locator::add_to_cache(std::vector<cache_item<T> >& cache, const T& item) const
-{
-	if(index_ == -1)
-		return;
-
-	cache[index_] = cache_item<T>(item);
-}
-#endif
 
 manager::manager() {}
 
@@ -536,9 +496,9 @@ void set_colour_adjustment(int r, int g, int b)
 		red_adjust = r;
 		green_adjust = g;
 		blue_adjust = b;
-		reset_cache(scaled_to_hex_images_);
-		reset_cache(brightened_images_);
-		reset_cache(semi_brightened_images_);
+		scaled_to_hex_images_.flush();
+		brightened_images_.flush();
+		semi_brightened_images_.flush();
 		reversed_images_.clear();
 	}
 }
@@ -560,10 +520,10 @@ void set_image_mask(const std::string& /*image*/)
 /*
 	if(image_mask != image) {
 		image_mask = image;
-		reset_cache(scaled_to_hex_images_);
-		reset_cache(scaled_to_zoom_);
-		reset_cache(brightened_images_);
-		reset_cache(semi_brightened_images_);
+		scaled_to_hex_images_.flush();
+		scaled_to_zoom_.flush();
+		brightened_images_.flush();
+		semi_brightened_images_.flush();
 		reversed_images_.clear();
 	}
 */
@@ -573,17 +533,17 @@ void set_zoom(int amount)
 {
 	if(amount != zoom) {
 		zoom = amount;
-		reset_cache(scaled_to_hex_images_);
-		reset_cache(brightened_images_);
-		reset_cache(semi_brightened_images_);
+		scaled_to_hex_images_.flush();
+		brightened_images_.flush();
+		semi_brightened_images_.flush();
 		reversed_images_.clear();
 
 		// We keep these caches if:
 		// we use default zoom (it doesn't need those)
 		// or if they are already at the wanted zoom.
 		if (zoom != tile_size && zoom != cached_zoom) {
-			reset_cache(scaled_to_zoom_);
-			reset_cache(unmasked_images_);
+			scaled_to_zoom_.flush();
+			unmasked_images_.flush();
 			cached_zoom = zoom;
 		}
 	}
@@ -593,7 +553,7 @@ static surface get_hexed(const locator i_locator)
 {
 	// w.e don't want to add it to the unscaled cache,
 	// since we will normaly never need the non-hexed one.
-	surface image(get_image(i_locator, UNSCALED, false));
+	surface image(get_image(i_locator, UNSCALED));
 	// Re-cut scaled tiles according to a mask.
 	const surface hex(get_image(game_config::terrain_mask_image,
 					UNSCALED));
@@ -659,7 +619,7 @@ static surface get_semi_brightened(const locator i_locator)
 	return surface(brighten_image(image, ftofxp(1.25)));
 }
 
-surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache )
+surface get_image(const image::locator& i_locator, TYPE type)
 {
 	surface res(NULL);
 	image_cache *imap;
@@ -716,7 +676,7 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 		res = i_locator.load_from_disk();
 
 		if(res == NULL) {
-			if(add_to_cache) i_locator.add_to_cache(*imap, surface(NULL));
+			 i_locator.add_to_cache(*imap, surface(NULL));
 			return surface(NULL);
 		}
 	} else {
@@ -749,7 +709,7 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 
 	// Optimizes surface before storing it
 	res = create_optimized_surface(res);
-	if(add_to_cache) i_locator.add_to_cache(*imap, res);
+	 i_locator.add_to_cache(*imap, res);
 	return res;
 }
 
@@ -834,6 +794,38 @@ void precache_file_existence(const std::string& subdir)
 	}
 }
 
+
+template<typename T>
+cache_item<T>& cache_type<T>::get_element(int index){
+	assert (index != -1);
+	while(index >= content.size()) {
+		content.push_back(cache_item<T>());
+	}
+	cache_item<T>& elt = content[index];
+	if(elt.loaded) {
+		assert(*elt.position == index);
+		lru_list.erase(elt.position);
+		lru_list.push_front(index);
+		elt.position = lru_list.begin();
+	}
+	return elt;
+}
+template<typename T>
+void cache_type<T>::on_load(int index){
+	if(index == -1) return ;
+	cache_item<T>& elt = content[index];
+	if(!elt.loaded) return ;
+	lru_list.push_front(index);
+	cache_size++;
+	elt.position = lru_list.begin();
+	while(cache_size > cache_max_size-100) {
+		cache_item<T>& elt = content[lru_list.back()];
+		elt.loaded=false;
+		elt.item = T();
+		lru_list.pop_back();
+		cache_size--;
+	}
+}
 
 } // end namespace image
 

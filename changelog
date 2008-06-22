@@ -179,6 +179,7 @@ Version 1.5.1:
    * fix a regression about missing default portrait in dialogs.
    * fix false move-cursor around enemies after some dialog events.
    * fix some unit decapitation when placed on a keep
+   * made the image cache LRU, with a high limit of 600 images per cache
 
 Version 1.5.0:
  * campaigns:

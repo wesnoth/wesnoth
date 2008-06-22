@@ -1719,7 +1719,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	// The caching used to be disabled for the lowmem case but that actually
 	// resulted in a higher memory usage see bug ##11022.
-	surface image(image::get_image(image_loc, image::SCALED_TO_ZOOM, true));
+	surface image(image::get_image(image_loc, image::SCALED_TO_ZOOM));
 
 	if(image == NULL) {
 		image = still_image(true);

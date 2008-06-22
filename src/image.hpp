@@ -19,8 +19,10 @@
 #include "sdl_utils.hpp"
 
 #include "SDL.h"
+#include "cassert"
 #include <string>
 #include <vector>
+#include <list>
 
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
@@ -46,6 +48,22 @@ namespace image {
 
 		bool loaded;
 		T item;
+	       	std::list<int>::iterator position;
+	};
+
+	template<typename T>
+	class cache_type 
+	{
+		public:
+		cache_type():cache_size(0),cache_max_size(600){}
+		cache_item<T>& get_element(int index);
+		void on_load(int index);
+		void flush();
+		private:
+		int cache_size ;
+		int cache_max_size ;
+	       	std::list<int> lru_list;
+	       	std::vector<cache_item<T> > content;
 	};
 
 	//a generic image locator. Abstracts the location of an image.
@@ -65,7 +83,7 @@ namespace image {
 			value(const char *filename);
 			value(const char *filename, const std::string& modifications);
 			value(const std::string& filename);
-		     value(const std::string& filename, const std::string& modifications);
+			value(const std::string& filename, const std::string& modifications);
 			value(const std::string& filename, const gamemap::location& loc, const std::string& modifications);
 			value(const std::string& filename, const gamemap::location& loc, int center_x, int center_y, const std::string& modifications);
 
@@ -110,31 +128,19 @@ namespace image {
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
 
-#if 0
-		// returns true if the locator already was stored in the given
-		// cache
-		template<typename T>
-		bool in_cache(const std::vector<cache_item<T> >& cache) const;
-		// returns the image it is corresponding to in the given cache
-		template<typename T>
-		T locate_in_cache(const std::vector<cache_item<T> >& cache) const;
-		// adds the given image to the given cache, indexed with the
-		// current locator
-		template<typename T>
-		void add_to_cache(std::vector<cache_item<T> >& cache, const T &image) const;
-#endif
-		bool in_cache(const std::vector<cache_item<surface> >& cache) const
-			{ return index_ == -1 ? false : cache[index_].loaded; }
-		surface locate_in_cache(const std::vector<cache_item<surface> >& cache) const
-			{ return index_ == -1 ? surface() : cache[index_].item; }
-		void add_to_cache(std::vector<cache_item<surface> >& cache, const surface &image) const
-			{ if(index_ != -1 ) cache[index_] = cache_item<surface>(image); }
-		bool in_cache(const std::vector<cache_item<locator> >& cache) const
-			{ return index_ == -1 ? false : cache[index_].loaded; }
-		locator locate_in_cache(const std::vector<cache_item<locator> >& cache) const
-			{ return index_ == -1 ? locator() : cache[index_].item; }
-		void add_to_cache(std::vector<cache_item<locator> >& cache, const locator &image) const
-			{ if(index_ != -1) cache[index_] = cache_item<locator>(image); }
+		bool in_cache(cache_type<surface>& cache) const
+			{ return index_ == -1 ? false : cache.get_element(index_).loaded; }
+		surface locate_in_cache(cache_type<surface>& cache) const
+			{ return index_ == -1 ? surface() : cache.get_element(index_).item; }
+		void add_to_cache(cache_type<surface>& cache, const surface &image) const
+			{ if(index_ != -1 ) cache.get_element(index_) = cache_item<surface>(image); cache.on_load(index_); }
+
+		bool in_cache(cache_type<locator>& cache) const
+			{ return index_ == -1 ? false : cache.get_element(index_).loaded; cache.on_load(index_); }
+		locator locate_in_cache(cache_type<locator>& cache) const
+			{ return index_ == -1 ? locator() : cache.get_element(index_).item; }
+		void add_to_cache(cache_type<locator>& cache, const locator &image) const
+			{ if(index_ != -1) cache.get_element(index_) = cache_item<locator>(image); }
 	protected:
 		static int last_index_;
 	private:
@@ -147,8 +153,8 @@ namespace image {
 	};
 
 
-	typedef std::vector<cache_item<surface> > image_cache;
-	typedef std::vector<cache_item<locator> > locator_cache;
+	typedef cache_type<surface> image_cache;
+	typedef cache_type<locator> locator_cache;
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
@@ -201,7 +207,7 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	surface get_image(const locator& i_locator, TYPE type=UNSCALED, bool add_to_cache = true);
+	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()
