@@ -238,6 +238,7 @@ SET(wesnoth-main_SRC
     gui/widgets/text.cpp
     gui/widgets/text_box.cpp
     gui/widgets/toggle_button.cpp 
+    gui/widgets/toggle_panel.cpp 
     gui/widgets/tooltip.cpp
     gui/widgets/vertical_scrollbar.cpp
     gui/widgets/widget.cpp

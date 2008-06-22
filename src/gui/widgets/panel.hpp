@@ -48,7 +48,7 @@ public:
 	 *
 	 * @returns                   The client rect.
 	 */
-	SDL_Rect get_client_rect() const;
+	virtual SDL_Rect get_client_rect() const;
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool /*active*/) {}

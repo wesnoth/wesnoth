@@ -20,6 +20,7 @@
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -515,6 +516,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 
 			tgrid* child_grid = dynamic_cast<tgrid*>(widget);
 			ttoggle_button* btn = dynamic_cast<ttoggle_button*>(widget);
+			ttoggle_panel* panel = dynamic_cast<ttoggle_panel*>(widget);
 
 			if(btn) {
 				btn->set_callback_mouse_left_click(callback_select_list_item);
@@ -528,6 +530,9 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 				if(itor != data.end()) {
 					btn->set_members(itor->second);
 				}
+			} else if(panel) {
+				panel->set_callback_mouse_left_click(callback_select_list_item);
+				panel->set_data(data);
 			} else if(child_grid) {
 				init_in_grid(child_grid, data);
 			} else {

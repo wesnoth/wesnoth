@@ -183,6 +183,8 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   and selected. This is a more generic widget
  *                                   which is used for eg checkboxes and
  *                                   radioboxes.
+ *     toggle_panel_definition       Like a toggle button but then as panel so
+ *                                   can hold multiple items in a grid.
  *     tooltip_definition            A small tooltip with help.
  *     vertical_scrollbar_definition A vertical scrollbar.
  *     window_definition             A window.
@@ -212,6 +214,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
 	load_definitions<ttoggle_button_definition>("toggle_button", cfg.get_children("toggle_button_definition"));
+	load_definitions<ttoggle_panel_definition>("toggle_panel", cfg.get_children("toggle_panel_definition"));
 	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
 	load_definitions<tvertical_scrollbar_definition>
 		("vertical_scrollbar", cfg.get_children("vertical_scrollbar_definition"));
@@ -717,7 +720,6 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg) :
 
 ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
-
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -739,6 +741,50 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
  */
 
 	// Note the order should be the same as the enum tstate is toggle_button.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+	state.push_back(tstate_definition(cfg.child("state_focussed")));
+
+	state.push_back(tstate_definition(cfg.child("state_enabled_selected")));
+	state.push_back(tstate_definition(cfg.child("state_disabled_selected")));
+	state.push_back(tstate_definition(cfg.child("state_focussed_selected")));
+}
+
+ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg) : 
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing toggle panel " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg),
+	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
+	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
+	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
+	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_toggle_panel
+ *
+ * == Toogle panel ==
+ *
+ * The definition of a toggle panel.
+ *
+ * The following states exist:
+ * * state_enabled, the panel is enabled and not selected.
+ * * state_disabled, the panel is disabled and not selected.
+ * * state_focussed, the mouse is over the panel and not selected.
+ *
+ * * state_enabled_selected, the panel is enabled and selected.
+ * * state_disabled_selected, the panel is disabled and selected.
+ * * state_focussed_selected, the mouse is over the panel and selected.
+ *
+ */
+
+	// Note the order should be the same as the enum tstate is toggle_panel.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_focussed")));

@@ -23,6 +23,7 @@
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -236,6 +237,19 @@ public:
 
 private:	
 	std::string icon_name_;
+};
+
+struct tbuilder_toggle_panel : public tbuilder_control
+{
+
+private:
+	tbuilder_toggle_panel();
+public:
+	tbuilder_toggle_panel(const config& cfg);
+
+	twidget* build () const;
+
+	tbuilder_grid* grid;
 };
 
 struct tbuilder_vertical_scrollbar : public tbuilder_control
@@ -587,6 +601,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
 			} else if((**col_itor).child("toggle_button")) {
 				widgets.push_back(new tbuilder_toggle_button(*((**col_itor).child("toggle_button"))));
+			} else if((**col_itor).child("toggle_panel")) {
+				widgets.push_back(new tbuilder_toggle_panel(*((**col_itor).child("toggle_panel"))));
 			} else if((**col_itor).child("vertical_scrollbar")) {
 				widgets.push_back(
 					new tbuilder_vertical_scrollbar(*((**col_itor).child("vertical_scrollbar"))));
@@ -1001,6 +1017,64 @@ twidget* tbuilder_toggle_button::build() const
 		<< definition << "'.\n";
 
 	return toggle_button;
+}
+
+tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
+	tbuilder_control(cfg),
+	grid(0)
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_panel
+ *
+ * == Panel ==
+ *
+ * A panel is an item which can hold other items. The difference between a grid
+ * and a panel is that it's possible to define how a panel looks. A grid in an
+ * invisible container to just hold the items.
+ *
+ * @start_table = config
+ *     grid (section)                  Defines the grid with the widgets to
+ *                                     place on the panel.
+ * @end_table                                   
+ *
+ */
+	VALIDATE(cfg.child("grid"), _("No grid defined."));
+
+	grid = new tbuilder_grid(*(cfg.child("grid")));
+}
+
+twidget* tbuilder_toggle_panel::build() const
+{
+	ttoggle_panel* toggle_panel = new ttoggle_panel();
+
+	init_control(toggle_panel);
+
+	DBG_G << "Window builder: placed toggle panel '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+
+	log_scope2(gui, "Window builder: building grid for toggle panel.");
+
+	const unsigned rows = grid->rows;
+	const unsigned cols = grid->cols;
+
+	toggle_panel->set_rows_cols(rows, cols);
+
+	for(unsigned x = 0; x < rows; ++x) {
+		toggle_panel->set_row_grow_factor(x, grid->row_grow_factor[x]);
+		for(unsigned y = 0; y < cols; ++y) {
+
+			if(x == 0) {
+				toggle_panel->set_col_grow_factor(y, grid->col_grow_factor[y]);
+			}
+
+			twidget* widget = grid->widgets[x * cols + y]->build();
+			toggle_panel->set_child(widget, x, y, grid->flags[x * cols + y],  grid->border_size[x * cols + y]);
+		}
+	}
+
+	return toggle_panel;
 }
 
 twidget* tbuilder_text_box::build() const

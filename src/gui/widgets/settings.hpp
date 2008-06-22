@@ -201,6 +201,22 @@ struct ttoggle_button_definition : public tcontrol_definition
 	};
 };
 
+struct ttoggle_panel_definition : public tcontrol_definition
+{
+	ttoggle_panel_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		unsigned top_border;
+		unsigned bottom_border;
+
+		unsigned left_border;
+		unsigned right_border;
+	};
+};
+
 struct ttooltip_definition : public tcontrol_definition
 {
 	ttooltip_definition(const config& cfg);

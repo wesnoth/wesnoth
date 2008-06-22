@@ -204,10 +204,15 @@ bool tgrid::has_vertical_scrollbar() const
 void tgrid::draw(surface& surface)
 {
 	for(iterator itor = begin(); itor != end(); ++itor) {
+		/**
+		 * @todo temporary disabled until the nested drawing for
+		 * ttoggle_panel works with this flag set.
+		 */
+/*		
 		if(! *itor || !itor->dirty()) {
 			continue;
 		}
-
+*/
 		log_scope2(gui_draw, "Grid: draw child.");
 
 		itor->draw(surface);
