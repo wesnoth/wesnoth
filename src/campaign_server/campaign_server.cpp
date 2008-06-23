@@ -599,7 +599,7 @@ namespace {
 			} catch(network::error& e) {
 				if(!e.socket) {
 					LOG_CS << "fatal network error\n";
-					break;
+					throw;
 				} else {
 					LOG_CS <<"client disconnect : "<<e.message<<" " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
