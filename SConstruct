@@ -313,7 +313,8 @@ all = env.Alias("all")
 #
 
 # Make a tags file for Emacs
-env.Command("TAGS", sources, 'etags -l c++ $SOURCES.srcpath')
+# Exuberant Ctags doesn't understand the -l c++ flag so if the etags fails try the ctags version
+env.Command("TAGS", sources, 'etags -l c++ $SOURCES.srcpath || (ctags --tag-relative=yes -f src/tags $SOURCES.srcpath)')
 env.Clean(all, 'TAGS')
 
 #
