@@ -114,7 +114,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	const game_item& game = games_[index];
 	int xpos = item_rect.x + margin_;
 	int ypos = item_rect.y + margin_;
-
+    std::string no_era_string = "";
 	// Draw minimaps
 	if (game.mini_map != NULL) {
 		int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
@@ -125,7 +125,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	// Set font color
 	SDL_Color font_color;
-	if (!game.password_required) {
+	if (game.password_required) {
 		font_color = font::BAD_COLOUR;
 	} else if (game.vacant_slots > 0 && game.have_era) {
 		if (game.reloaded || game.started) {
@@ -140,14 +140,16 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 			font_color = font::BAD_COLOUR;
 		}
 	}
-
+    if(!game.have_era)
+        no_era_string = _(" (Unknown Era)");
+        
 	const surface status_text(font::get_rendered_text(game.status,
 	    font::SIZE_NORMAL, font_color));
 	const int status_text_width = status_text ? status_text->w : 0;
 
 	// First line: draw game name
 	const surface name_surf(font::get_rendered_text(
-	    font::make_text_ellipsis(game.name + _(" (Unknown Era)"), font::SIZE_PLUS,
+	    font::make_text_ellipsis(game.name + no_era_string, font::SIZE_PLUS,
 	        (item_rect.x + item_rect.w) - xpos - margin_ - status_text_width - h_padding_),
 	    font::SIZE_PLUS, font_color));
 	video().blit_surface(xpos, ypos, name_surf);
@@ -403,9 +405,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			if (era_cfg != NULL) {
 				games_.back().map_info = era_cfg->get_attribute("name");
 			} else {
-				if((**game)["require_era"] == "yes") {
+//				if((**game)["require_era"] == "yes") {
 					games_.back().have_era = false;
-				}
+//				}
 				games_.back().map_info = vgettext("Unknown era: $era_id", symbols);
 				verified = false;
 			}
