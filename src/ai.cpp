@@ -13,9 +13,10 @@
    See the COPYING file for more details.
 */
 
-
-//! @file ai.cpp
-//! Artificial intelligence - The computer commands the enemy.
+/**
+ * @file ai.cpp
+ * Artificial intelligence - The computer commands the enemy.
+ */
 
 #include "ai.hpp"
 #include "ai2.hpp"
@@ -47,7 +48,7 @@
 #define WRN_AI LOG_STREAM(warn, ai)
 #define ERR_AI LOG_STREAM(err, ai)
 
-//! A trivial ai that sits around doing absolutely nothing.
+/** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public ai_interface {
 public:
 	idle_ai(info& i) : ai_interface(i) {}
@@ -56,7 +57,7 @@ public:
 	}
 };
 
-//! Sample ai, with simple strategy.
+/** Sample ai, with simple strategy. */
 class sample_ai : public ai_interface {
 public:
 	sample_ai(info& i) : ai_interface(i) {}
@@ -814,7 +815,7 @@ void ai::remove_unit_from_moves(const gamemap::location& loc, move_map& srcdst, 
 
 namespace {
 
-//! A structure for storing an item we're trying to protect.
+/** A structure for storing an item we're trying to protect. */
 struct protected_item {
 	protected_item(double value, int radius, const gamemap::location& loc) :
 		value(value), radius(radius), loc(loc) {}
@@ -889,9 +890,11 @@ void ai::find_threats()
 void ai::play_turn()
 {
 	// Protect against a memory over commitment:
-	//! @todo Not in the mood to figure out the exact cause:
-	// For some reason -1 hitpoints cause a segmentation fault.
-	// If -1 hitpoints are sent, we crash :/
+	/**
+	 * @todo Not in the mood to figure out the exact cause:
+	 * For some reason -1 hitpoints cause a segmentation fault.
+	 * If -1 hitpoints are sent, we crash :/
+	 */
 	try {
 		consider_combat_ = true;
 		game_events::fire("ai turn");
@@ -1121,17 +1124,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	}
 }
 
-//! This function should be called to attack an enemy.
-//!
-//! @param u            The location of the attacking unit. (Note this shouldn't
-//!                     be a reference since attack::attack() can invalidate the
-//!                     unit_map and references to the map are also invalid then.)
-//! @param target       The location of the target unit. This unit must be in
-//!                     range of the attacking unit's weapon. (See note at param u.)
-//! @param weapon       The number of the weapon (0-based) which should be used
-//!                     by the attacker. (It must be a valid weapon of the attacker.)
-//! @param def_weapon   The number of the weapon (0-based) which should be used
-//!                     by the defender. (It must be a valid weapon of the defender.)
 void ai_interface::attack_enemy(const location u,
 		const location target, int weapon, int def_weapon)
 {
