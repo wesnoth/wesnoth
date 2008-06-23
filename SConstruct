@@ -72,6 +72,7 @@ opts.AddOptions(
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", PathOption.PathAccept), 
+    BoolOption("fast", "Make scons faster at cost of less precise dependency tracking.", False)
     )
 
 #
@@ -138,6 +139,12 @@ be appended to the appropriate variables within scons.
 
 if env["cachedir"]:
     CacheDir(env["cachedir"])
+
+if env["fast"]:
+    EnsureSConsVersion(0,98)
+    env.Decider('MD5-timestamp')
+    SetOption('max_drift', 1)
+    SetOption('implicit_cache', 1)
 
 #
 # Check some preconditions

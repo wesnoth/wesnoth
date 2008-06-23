@@ -13,7 +13,10 @@ def CheckBoostLib(context, boost_lib, require_version = None):
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
-    env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
+    if env["fast"]:
+        env.AppendUnique(CXXFLAGS = "-I" + boostdir, LIBPATH = [boostlibdir])
+    else:
+        env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     env.AppendUnique(LIBS = [libname])
 
     test_program = """
