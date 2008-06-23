@@ -88,7 +88,7 @@ if env["PLATFORM"] == "win32":
 else:
     env.Tool("default")
 
-if env['cxxtool']:
+if env.get('cxxtool',""):
 	env['CXX'] = env['cxxtool']
 
 opts.Save('.scons-option-cache', env)
