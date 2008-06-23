@@ -70,14 +70,14 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 
 void ttext_::mouse_move(tevent_handler&)
 {
-	DBG_G_E << "Text_box: mouse move.\n"; 
+	DBG_G_E << "Text: mouse move.\n"; 
 
 	// if in select mode select text and move cursor
 }
 
 void ttext_::mouse_left_button_down(tevent_handler& event) 
 { 
-	DBG_G_E << "Text_box: left mouse button down.\n"; 
+	DBG_G_E << "Text: left mouse button down.\n"; 
 
 	event.keyboard_capture(this);
 	event.mouse_capture();
@@ -86,12 +86,12 @@ void ttext_::mouse_left_button_down(tevent_handler& event)
 void ttext_::mouse_left_button_up(tevent_handler&) 
 { 
 	// reset select  mode
-	DBG_G_E << "Text_box: left mouse button up.\n";
+	DBG_G_E << "Text: left mouse button up.\n";
 }
 
 void ttext_::mouse_left_button_double_click(tevent_handler&) 
 { 
-	DBG_G_E << "Text_box: left mouse button double click.\n";
+	DBG_G_E << "Text: left mouse button double click.\n";
 
 	sel_start_ = 0;
 	sel_len_ = text_.size();
@@ -100,7 +100,7 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 
 void ttext_::mouse_middle_button_click(tevent_handler&)
 {
-	DBG_G_E << "Text_box: middle mouse button click.\n";
+	DBG_G_E << "Text: middle mouse button click.\n";
 #ifdef __unix__
 		// pastes on UNIX systems.
 		paste_selection(true);
@@ -110,7 +110,7 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 
 void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
-	DBG_G_E << "Text_box: key press.\n";
+	DBG_G_E << "Text: key press.\n";
 
 // For copy/paste we use a different key on the MAC. Other ctrl modifiers won't 
 // be modifed seems not to be required when I read the comment in 
@@ -293,7 +293,7 @@ void ttext_::paste_selection(const bool mouse)
 // shift selects while moving.
 void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 {
-	DBG_G_E << "Text_box: key press: left arrow.\n";
+	DBG_G_E << "Text: key press: left arrow.\n";
 
 	handled = true;
 	if(sel_start_) {
@@ -306,7 +306,7 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 // shift selects while moving.
 void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 {
-	DBG_G_E << "Text_box: key press: right arrow.\n";
+	DBG_G_E << "Text: key press: right arrow.\n";
 
 	handled = true;
 	if(sel_start_ < text_.size()) {
@@ -319,7 +319,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 // shift selects while moving.
 void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 {
-	DBG_G_E << "Text_box: key press: home.\n";
+	DBG_G_E << "Text: key press: home.\n";
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -334,7 +334,7 @@ void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 // shift selects while moving.
 void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 {
-	DBG_G_E << "Text_box: key press: end.\n";
+	DBG_G_E << "Text: key press: end.\n";
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -347,7 +347,7 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 // Deletes the character in front of the cursor (if not at the beginning).
 void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 {
-	DBG_G_E << "Text_box: key press: backspace.\n";
+	DBG_G_E << "Text: key press: backspace.\n";
 
 	handled = true;
 	if(sel_start_){
@@ -359,7 +359,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 // Deletes either the selection or the character beyond the cursor
 void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 {
-	DBG_G_E << "Text_box: key press: delete.\n";
+	DBG_G_E << "Text: key press: delete.\n";
 
 	handled = true;
 	if(sel_len_ != 0) {
@@ -371,7 +371,7 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 
 void ttext_::handle_key_default(bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
 {
-	DBG_G_E << "Text_box: key press: default.\n";
+	DBG_G_E << "Text: key press: default.\n";
 
 	if(unicode >= 32 && unicode != 127) {
 		handled = true;
