@@ -172,7 +172,7 @@ void tcontrol::draw(surface& surface, const bool force,
 	DBG_G_D << "Control: drawing.\n";
 	if(!restorer_) {
 		save_background(surface);
-	} else if(full_redraw()) {
+	} else if(needs_full_redraw()) {
 		restore_background(surface);
 	}
 
@@ -223,7 +223,7 @@ void tcontrol::set_label(const t_string& label)
 	set_dirty();
 }
 
-bool tcontrol::full_redraw() const
+bool tcontrol::needs_full_redraw() const
 {
 	assert(config());
 	return config()->state[get_state()].full_redraw;

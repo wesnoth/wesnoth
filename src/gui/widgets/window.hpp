@@ -116,7 +116,7 @@ public:
 	void set_active(const bool /*active*/) {}
 	bool get_active() const { return true; }
 	unsigned get_state() const { return 0; }
-	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
+	bool needs_full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
 	//! Inherited from tpanel.
 	void draw(surface& surface, const bool force = false, 

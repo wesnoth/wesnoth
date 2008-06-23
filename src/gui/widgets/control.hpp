@@ -184,7 +184,7 @@ protected:
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
 	/** Does the widget need to restore the surface before (re)painting? */
-	virtual bool full_redraw() const;
+	virtual bool needs_full_redraw() const;
 
 	/** Sets the text variable for the canvases. */
 	virtual void set_canvas_text();
