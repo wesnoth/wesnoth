@@ -56,6 +56,12 @@ public:
 	void mouse_capture(const bool capture = true);
 	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }
 
+	/** Adds the widget to the chain, widgets may only be added once. */
+	void add_to_keyboard_chain(twidget* widget);
+
+	/** Remove the widget (if in the vector) from the chain. */
+	void remove_from_keyboard_chain(twidget* widget);
+
 	tpoint get_mouse() const;
 
 	//! We impement the handling of the tip, but call the do functions
@@ -135,7 +141,20 @@ private:
 	twidget* mouse_focus_;
 	bool mouse_captured_;
 
+	/** The widget that holds the keyboard focus. */
 	twidget* keyboard_focus_;
+
+	/**
+	 * Fall back keyboard focus items.
+	 *
+	 * When the focussed widget didn't handle the keyboard event (or no handler
+	 * for the keyboard focus) it is send all widgets in this vector. The order
+	 * is from rbegin() to rend().  If the keyboard_focus_ is in the vector it
+	 * won't get the event twice. The first item added to the vector should be
+	 * the window, so it will be the last handler and can dispatch the hotkeys
+	 * registered.
+	 */
+	std::vector<twidget*> keyboard_focus_chain_;
 
 	void mouse_enter(const SDL_Event& event, twidget* mouse_over);
 	void mouse_move(const SDL_Event& event, twidget* mouse_over);

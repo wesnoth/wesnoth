@@ -65,6 +65,9 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
 	VALIDATE(list, missing_widget("method_list"));
 
+	window.add_to_keyboard_chain(list);
+	window.add_to_keyboard_chain(user_widget);
+
 	window.recalculate_size();
 }
 

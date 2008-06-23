@@ -108,7 +108,8 @@ tevent_handler::tevent_handler() :
 	help_popup_(0),
 	mouse_focus_(0),
 	mouse_captured_(false),
-	keyboard_focus_(0)
+	keyboard_focus_(0),
+	keyboard_focus_chain_()
 {
 	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
 		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
@@ -238,6 +239,25 @@ void tevent_handler::mouse_capture(const bool capture)
 tpoint tevent_handler::get_mouse() const
 { 
 	return get_window().client_position(tpoint(mouse_x_, mouse_y_)); 
+}
+
+void tevent_handler::add_to_keyboard_chain(twidget* widget) 
+{ 
+	assert(
+		std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget) 
+		== keyboard_focus_chain_.end());
+
+	keyboard_focus_chain_.push_back(widget);
+}
+
+void tevent_handler::remove_from_keyboard_chain(twidget* widget)
+{
+	std::vector<twidget*>::iterator itor = std::find(
+		keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget);
+
+	if(itor != keyboard_focus_chain_.end()) {
+		keyboard_focus_chain_.erase(itor);
+	}		
 }
 
 void tevent_handler::show_tooltip(const t_string& tooltip, const unsigned timeout)
@@ -510,11 +530,18 @@ void tevent_handler::key_down(const SDL_Event& event)
 
 	bool handled = false;
 	if(keyboard_focus_) {
-		keyboard_focus_->key_press(*this, handled, event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
+		keyboard_focus_->key_press(*this, handled, 
+			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
 	}
 
-	if(!handled) {
-		get_window().key_press(*this, handled, event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
+	std::vector<twidget*>::reverse_iterator ritor = keyboard_focus_chain_.rbegin();
+	for(; !handled && ritor != keyboard_focus_chain_.rend(); ++ritor) {
+		if(*ritor == keyboard_focus_) {
+			continue;
+		}
+
+		(**ritor).key_press(*this, handled, 
+			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
 	}
 }
 
