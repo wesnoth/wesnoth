@@ -676,7 +676,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	}
 	if(cancel_orders != NULL) {
 		lmenu.add_option(_("Cancel orders"), false,
-			game_config::small_gui ? gui::dialog::BUTTON_EXTRA : gui::dialog::BUTTON_STANDARD);
+			game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
 	}
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
@@ -685,7 +685,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 	
 	lmenu.add_button(delete_button,
-		game_config::small_gui ? gui::dialog::BUTTON_HELP : gui::dialog::BUTTON_STANDARD);
+		game_config::small_gui ? gui::dialog::BUTTON_HELP : gui::dialog::BUTTON_EXTRA);
 
 	int res = lmenu.show();
 
