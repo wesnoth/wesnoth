@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file animated.hpp
-//! Animate units.
+/**
+ * @file animated.hpp
+ * Animate units.
+ */
 
 #ifndef ANIMATED_IMAGE_H_INCLUDED
 #define ANIMATED_IMAGE_H_INCLUDED
@@ -47,12 +49,15 @@ public:
 	animated(const std::vector<frame_description> &cfg, int start_time = 0,bool force_change =false);
 
 
-	//! Adds a frame to an animation.
+	/** Adds a frame to an animation. */
 	void add_frame(int duration, const T& value,bool force_change =false);
 
-	//! Starts an animation cycle.
-	//! The first frame of the animation to start may be set
-	//! to any value by using a start_time different to 0.
+	/**
+	 * Starts an animation cycle.
+	 *
+	 * The first frame of the animation to start may be set to any value by
+	 * using a start_time different to 0.
+	 */
 	void start_animation(int start_time, bool cycles=false);
 	void pause_animation(){ started_ =false;};
 	void restart_animation(){if(start_tick_) started_ = true;};
@@ -69,7 +74,7 @@ public:
 
 	bool cycles() const {return cycles_;};
 
-	//! Returns true if the current animation was finished.
+	/** Returns true if the current animation was finished. */
 	bool animation_finished() const;
 	bool animation_finished_potential() const;
 	int get_animation_time() const;
