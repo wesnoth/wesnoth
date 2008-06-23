@@ -127,14 +127,14 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	SDL_Color font_color;
 	if (!game.password_required) {
 		font_color = font::BAD_COLOUR;
-	} else if (game.vacant_slots > 0) {
+	} else if (game.vacant_slots > 0 && game.have_era) {
 		if (game.reloaded || game.started) {
 			font_color = font::YELLOW_COLOUR;
 		} else {
 			font_color = font::GOOD_COLOUR;
 		}
 	} else {
-		if (game.observers) {
+		if (game.observers && game.have_era) {
 			font_color = font::NORMAL_COLOUR;
 		} else {
 			font_color = font::BAD_COLOUR;
@@ -147,7 +147,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	// First line: draw game name
 	const surface name_surf(font::get_rendered_text(
-	    font::make_text_ellipsis(game.name, font::SIZE_PLUS,
+	    font::make_text_ellipsis(game.name + _(" (Unknown Era)"), font::SIZE_PLUS,
 	        (item_rect.x + item_rect.w) - xpos - margin_ - status_text_width - h_padding_),
 	    font::SIZE_PLUS, font_color));
 	video().blit_surface(xpos, ypos, name_surf);
