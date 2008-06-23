@@ -621,8 +621,8 @@ namespace {
 				}
 			} catch(network::error& e) {
 				if(!e.socket) {
-					LOG_CS << "fatal network error\n";
-					break;
+					LOG_CS << "fatal network error: " << e.message <<"\n";
+					throw;
 				} else {
 					LOG_CS <<"client disconnect : "<<e.message<<" " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
