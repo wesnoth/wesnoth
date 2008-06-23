@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file ai_dfool.cpp
-//!
+/** @file ai_dfool.cpp */
 
 #include "global.hpp"
 
@@ -98,7 +97,7 @@ namespace dfool {
 	    //            LOG_STREAM(info, ai)<<"dfool filter:"<<std::endl;
             unit_list filtered_units=filter_units(ff,my_units,get_info().units);
 
-	    //! @todo FIXME: add sorting
+	    /** @todo FIXME: add sorting */
 
             for(unit_list::iterator i = filtered_units.begin(); i != filtered_units.end() && (num > order_units.size()); ++i) {
 	      unit_map::iterator ui=unit(*i,get_info().units);
@@ -251,7 +250,7 @@ namespace dfool {
 	int closest_distance = -1;
 	std::pair<location,location> closest_move;
 
-	//! @todo This undoubtedly could be done more cleanly
+	/** @todo This undoubtedly could be done more cleanly */
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 	  // Must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){

@@ -12,9 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file ai_dfool.hpp
-//! The Standard-AI ??.
-//! This ai uses for its decisions only units it has "seen".
+/**
+ * @file ai_dfool.hpp
+ * This ai uses for its decisions only units it has "seen".
+ */
 
 #ifndef AI_DFOOL_HPP_INCLUDED
 #define AI_DFOOL_HPP_INCLUDED
@@ -92,9 +93,11 @@ namespace dfool {
     std::string evaluate_tokens(std::list<std::string>&);
   };
 
-  //! An ai that keeps track of what it has "seen",
-  //! does not target units that it has not "seen",
-  //! and does not make decisions based on unseen units.
+  /**
+   * An ai that keeps track of what it has "seen",
+   * does not target units that it has not "seen",
+   * and does not make decisions based on unseen units.
+   */
   class dfool_ai : public ai_interface {
   public:
     dfool_ai(info& i) : ai_interface(i),unit_memory_(i.teams[i.team_num-1].ai_memory()){}
