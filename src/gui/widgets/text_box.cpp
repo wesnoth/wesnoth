@@ -203,9 +203,11 @@ void ttext_box::handle_mouse_selection(
 	dragging_ |= start_selection;
 }
 
-//! Inherited from twidget.
 void ttext_box::mouse_left_button_down(tevent_handler& event)
 {
+	// Inherit.
+	ttext_::mouse_left_button_down(event);
+
 	DBG_G_E << "Text box: left mouse down.\n";
 
 	handle_mouse_selection(event, true);

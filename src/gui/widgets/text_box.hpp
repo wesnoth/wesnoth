@@ -118,7 +118,7 @@ protected:
 	//! Handles the selection in a mouse down or mouse move event.
 	void handle_mouse_selection(tevent_handler& event, const bool start_selection);
 
-	//! Inherited from twidget.
+	/** Inherited from ttext_. */
 	void mouse_left_button_down(tevent_handler& event);
 
 	//! Inherited from twidget.
