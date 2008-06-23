@@ -28,18 +28,6 @@ class display;
 #include <utility>
 #include <set>
 
-// Only there temporary
-#ifdef USE_TINY_GUI
-const int min_allowed_width = 320;
-const int min_allowed_height = 240;
-#elif defined USE_SMALL_GUI
-const int min_allowed_width = 800;
-const int min_allowed_height = 480;
-#else
-const int min_allowed_width = 800;
-const int min_allowed_height = 600;
-#endif
-
 namespace preferences {
 
 	struct base_manager
@@ -63,6 +51,9 @@ namespace preferences {
 
 	bool fullscreen();
 	void _set_fullscreen(bool ison);
+
+	int min_allowed_width();
+	int min_allowed_height();
 
 	std::pair<int,int> resolution();
 	void _set_resolution(const std::pair<int,int>& res);

@@ -273,6 +273,8 @@ game_controller::game_controller(int argc, char** argv)
 			no_gui_ = true;
 			no_sound = true;
 			preferences::disable_preferences_save();
+		} else if(val == "--smallgui") {
+			game_config::small_gui = true;
 		} else if(val == "--windowed" || val == "-w") {
 			preferences::set_fullscreen(false);
 		} else if(val == "--fullscreen" || val == "-f") {
@@ -338,6 +340,11 @@ game_controller::game_controller(int argc, char** argv)
 		}
 	}
 	std::cerr << "Data at '" << game_config::path << "'\n";
+
+	//TODO: remove this and the configure option
+#ifdef USE_SMALL_GUI
+	game_config::small_gui = true;
+#endif
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -439,8 +446,7 @@ bool game_controller::init_video()
 		}
 #endif
 
-#ifdef USE_SMALL_GUI
-        if(bpp == 0) {
+        if(game_config::small_gui && bpp == 0) {
             std::cerr << "800x600x" << DefaultBPP << " not available - attempting 800x480x" << DefaultBPP << "...\n";
 
             resolution.first = 800;
@@ -448,7 +454,6 @@ bool game_controller::init_video()
 
             bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
         }
-#endif
 
 		if(bpp == 0) {
 			//couldn't do 1024x768 or 800x600
@@ -2215,9 +2220,8 @@ void game_controller::reset_defines_map()
 	defines_map_["TINY"] = preproc_define();
 #endif
 
-#ifdef USE_SMALL_GUI
-    defines_map_["SMALL_GUI"] = preproc_define();
-#endif
+	if (game_config::small_gui)
+    	defines_map_["SMALL_GUI"] = preproc_define();
 
 #ifdef HAVE_PYTHON
 	defines_map_["PYTHON"] = preproc_define();

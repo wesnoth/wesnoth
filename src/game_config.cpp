@@ -51,7 +51,7 @@ namespace game_config
 	const std::string revision = VERSION;
 #endif
 	std::string wesnothd_name;
-	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
+	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, small_gui = false, disable_autosave = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, lobby_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,

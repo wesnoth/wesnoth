@@ -46,7 +46,7 @@ namespace game_config
 	//! starting gold and carryover gold.
 	extern const bool gold_carryover_add;
 
-	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, disable_autosave;
+	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, small_gui, disable_autosave;
 
 	extern std::string path;
 

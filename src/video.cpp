@@ -80,8 +80,8 @@ namespace {
 	int disallow_resize = 0;
 }
 void resize_monitor::process(events::pump_info &info) {
-	if(info.resize_dimensions.first >= min_allowed_width
-	&& info.resize_dimensions.second >= min_allowed_height
+	if(info.resize_dimensions.first >= preferences::min_allowed_width()
+	&& info.resize_dimensions.second >= preferences::min_allowed_height()
 	&& disallow_resize == 0) {
 		preferences::set_resolution(info.resize_dimensions);
 	}

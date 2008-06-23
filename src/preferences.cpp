@@ -117,6 +117,25 @@ void _set_fullscreen(bool ison)
 	prefs["fullscreen"] = (ison ? "true" : "false");
 }
 
+int min_allowed_width()
+{
+#ifdef USE_TINY_GUI
+	return 320;
+#endif
+	return 800;
+}
+
+int min_allowed_height()
+{
+#ifdef USE_TINY_GUI
+	return 240;
+#endif
+	if (game_config::small_gui)
+		return 480;
+
+	return 600;
+}
+
 std::pair<int,int> resolution()
 {
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
@@ -124,8 +143,8 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find('y' + postfix);
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		std::pair<int,int> res (maximum(atoi(x->second.c_str()),min_allowed_width),
-		                        maximum(atoi(y->second.c_str()),min_allowed_height));
+		std::pair<int,int> res (maximum(atoi(x->second.c_str()),min_allowed_width()),
+		                        maximum(atoi(y->second.c_str()),min_allowed_height()));
 
 		// Make sure resolutions are always divisible by 4
 		//res.first &= ~3;

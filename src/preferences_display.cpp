@@ -435,7 +435,7 @@ bool show_video_mode_dialog(display& disp)
 	std::vector<std::pair<int,int> > resolutions;
 
 	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= min_allowed_width && modes[i]->h >= min_allowed_height) {
+		if(modes[i]->w >= min_allowed_width() && modes[i]->h >= min_allowed_height()) {
 			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
 		}
 	}
