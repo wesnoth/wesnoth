@@ -72,6 +72,7 @@ opts.AddOptions(
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", PathOption.PathAccept), 
+    ('host', 'Cross-compile host.', ''),
 	('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolOption("fast", "Make scons faster at cost of less precise dependency tracking.", False)
     )
@@ -80,18 +81,20 @@ opts.AddOptions(
 # Setup
 #
 
+sys.path.append("./scons")
 env = Environment(tools=["tar", "gettext", "install"], options = opts, toolpath = ["scons"])
+
+opts.Save('.scons-option-cache', env)
 
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
     env['ENV']['PATH'] = os.environ["PATH"]
 else:
-    env.Tool("default")
+    from cross_compile import *
+    setup_cross_compile(env)
 
 if env.get('cxxtool',""):
 	env['CXX'] = env['cxxtool']
-
-opts.Save('.scons-option-cache', env)
 
 Help("""Arguments may be a mixture of switches and targets an any order.
 Switches apply to the entire build regrdless of where they are in the order.
@@ -163,7 +166,6 @@ def Warning(message):
     print message
     return False
 
-sys.path.append("./scons")
 from metasconf import init_metasconf
 conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost"]), config_h = "config.h")
 

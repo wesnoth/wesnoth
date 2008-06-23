@@ -84,6 +84,9 @@ def CheckOgg(context):
 '''
     #context.env.AppendUnique(LIBS = "SDL_mixer")
     context.Message("Checking for Ogg Vorbis support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
     (result, output) = context.TryRun(test_program, ".c")
     if result:
         context.Result("yes")
