@@ -135,10 +135,10 @@ void twindow::layout(const SDL_Rect position)
 	need_layout_ = false;
 }
 
-//! Inherited from tpanel.
-void twindow::draw(surface& surface)
+void twindow::draw(surface& surface, const bool force, 
+		const bool invalidate_background)
 {
-	const bool draw_foreground = need_layout_;
+	const bool draw_foreground = need_layout_ || force;
 	if(need_layout_) {
 		DBG_G << "Window: layout client area.\n";
 		layout(get_client_rect());
@@ -154,7 +154,7 @@ void twindow::draw(surface& surface)
 
 		log_scope2(gui_draw, "Window: draw child.");
 
-		itor->draw(surface);
+		itor->draw(surface, force, invalidate_background);
 	}
 	if(draw_foreground) {
 		canvas(1).draw();

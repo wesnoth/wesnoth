@@ -95,7 +95,9 @@ public:
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tpanel. */
-	void draw(surface& surface) { tcontainer_::draw(surface); }
+	void draw(surface& surface, const bool force = false, 
+			const bool invalidate_background = false)
+		{ tcontainer_::draw(surface, force, invalidate_background); }
 
 	/** 
 	 * Inherited from tpanel. 

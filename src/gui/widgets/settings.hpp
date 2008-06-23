@@ -214,6 +214,8 @@ struct ttoggle_panel_definition : public tcontrol_definition
 
 		unsigned left_border;
 		unsigned right_border;
+
+		bool state_change_full_redraw;
 	};
 };
 

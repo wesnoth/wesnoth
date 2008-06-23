@@ -143,9 +143,17 @@ tpoint tcontrol::get_maximum_size() const
 	return tpoint(config_->max_width, config_->max_height);
 }
 
-void tcontrol::draw(surface& surface)
+void tcontrol::draw(surface& surface, const bool force, 
+		const bool invalidate_background)
 {
 	assert(config_);
+
+	if(!dirty() && !force && !invalidate_background) {
+		return;
+	}
+	if(invalidate_background) {
+		restorer_ = 0;
+	}
 
 	set_dirty(false);
 	SDL_Rect rect = get_rect();

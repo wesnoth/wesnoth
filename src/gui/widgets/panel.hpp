@@ -60,7 +60,8 @@ public:
 	unsigned get_state() const { return 0; }
 
 	/** Inherited from tcontrol. */
-	void draw(surface& surface);
+	void draw(surface& surface,  const bool force = false,
+	        const bool invalidate_background = false);
 
 	/** Inherited from tcontainer_. */
 	bool has_vertical_scrollbar() const { return false; }
@@ -73,6 +74,7 @@ private:
 
 	/** Inherited from tcontainer_. */
 	tpoint border_space() const;
+
 }; 
 
 } // namespace gui2

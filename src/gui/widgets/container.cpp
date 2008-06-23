@@ -71,12 +71,16 @@ tpoint tcontainer_::get_best_size() const
 	return size;
 }
 
-void tcontainer_::draw(surface& surface)
+void tcontainer_::draw(surface& surface, const bool force,
+		const bool invalidate_background)
 {
 	// Inherited.
-	tcontrol::draw(surface);
+	tcontrol::draw(surface, force, invalidate_background);
 
-	grid_.draw(surface);
+	const bool redraw_background = invalidate_background || has_background_changed();
+	set_background_changed(false);
+
+	grid_.draw(surface, force, redraw_background);
 }
 
 } // namespace gui2

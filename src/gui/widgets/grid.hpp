@@ -167,7 +167,8 @@ public:
 	bool has_vertical_scrollbar() const;
 
 	/** Inherited from twidget. */
-	void draw(surface& surface);
+	void draw(surface& surface,  const bool force = false,
+	        const bool invalidate_background = false);
 
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);

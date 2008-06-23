@@ -340,8 +340,20 @@ public:
 	 *
 	 *  @param surface            The surface to draw the widget upon using the
 	 *                            coordinates and size of the widget.
+	 *  @param force              Does the widget need to be drawn even if not
+	 *                            dirty?
+	 *  @param invalidate_background
+	 *                            Some widgets can cache the background in order
+	 *                            to undraw and redraw themselves if needed. If
+	 *                            the background changes this 'feature' will
+	 *                            cause glitches. When this parameter is set the
+	 *                            widget need to reload the background and use
+	 *                            that as new undraw cache. 
+	 *                            \n Note if this is set the widget should also
+	 *                            be redrawn.
 	 */
-	virtual void draw(surface& /*surface*/) = 0;
+	virtual void draw(surface& /*surface*/, const bool /*force*/ = false, 
+		const bool /*invalidate_background*/ = false) = 0;
 
 	/***** ***** ***** ***** query ***** ***** ***** *****/
 

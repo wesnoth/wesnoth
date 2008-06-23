@@ -622,7 +622,7 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
  * grid. A panel is always enabled and can't be disabled. Instead it uses the
  * states as layers to draw on.
  *
- * The resolution for a text box also contains the following keys:
+ * The resolution for a panel also contains the following keys:
  * @start_table = config
  *     top_border (unsigned = 0)     The size which isn't used for the client area.
  *     bottom_border (unsigned = 0)  The size which isn't used for the client area.
@@ -763,7 +763,8 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
 	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
 	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
 	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
-	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
+	right_border(lexical_cast_default<unsigned>(cfg["right_border"])),
+	state_change_full_redraw(utils::string_bool(cfg["state_change_full_redraw"], true))
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -771,7 +772,28 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
  *
  * == Toogle panel ==
  *
- * The definition of a toggle panel.
+ * The definition of a toggle panel. A toggle panel is like a toggle button, but
+ * instead of being a button it's a panel. This means it can hold multiple child
+ * items.
+ *
+ * The resolution for a toggle panel also contains the following keys:
+ * @start_table = config
+ *     top_border (unsigned = 0)     The size which isn't used for the client area.
+ *     bottom_border (unsigned = 0)  The size which isn't used for the client area.
+ *     left_border (unsigned = 0)    The size which isn't used for the client area.
+ *     right_border (unsigned = 0)   The size which isn't used for the client area.
+ *     state_change_full_redraw (bool = true)
+ *                                   When the state of the toggle panel changes
+ *                                   it can change it's background. If that
+ *                                   happens all child items need to redraw
+ *                                   themselves and need to modify their cached
+ *                                   background. Set this variable to true if
+ *                                   that's the case, in case of doubt set it to
+ *                                   true, it might give a small performance hit
+ *                                   but the drawing will always be correct.
+ * @end_table
+ *
+ * The following layers exist:
  *
  * The following states exist:
  * * state_enabled, the panel is enabled and not selected.

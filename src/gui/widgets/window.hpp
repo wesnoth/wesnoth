@@ -119,7 +119,8 @@ public:
 	bool full_redraw() const { return false; /* FIXME IMPLEMENT */ }
 
 	//! Inherited from tpanel.
-	void draw(surface& surface);
+	void draw(surface& surface, const bool force = false, 
+			const bool invalidate_background = false);
 
 	//! Gets the coordinates of the client area, for external use the height
 	//! and the width are the most interesting things.

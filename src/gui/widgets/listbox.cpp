@@ -234,10 +234,15 @@ tpoint tlistbox::get_best_size() const
 	return tcontainer_::get_best_size();
 }
 
-void tlistbox::draw(surface& surface)
+void tlistbox::draw(surface& surface, const bool force, 
+		const bool invalidate_background)
 {
 	// Inherit.
-	tcontainer_::draw(surface);
+	tcontainer_::draw(surface, force, invalidate_background);
+
+	if(invalidate_background) {
+		list_background_.assign(NULL);
+	}
 
 	// Handle our full redraw for the spacer area.
 	if(!list_background_) {
@@ -252,9 +257,7 @@ void tlistbox::draw(surface& surface)
 		trow& row = rows_[i + scrollbar()->get_item_position()];
 
 		assert(row.grid());
-		if(row.grid()->dirty()) {
-			row.grid()->draw(row.canvas());
-		}
+		row.grid()->draw(row.canvas(), force, invalidate_background);
 		
 		// draw background
 		const SDL_Rect rect = {list_rect_.x, offset, list_rect_.w, row.get_height() };

@@ -146,9 +146,19 @@ void ttoggle_panel::set_selected(const bool selected)
 
 void ttoggle_panel::set_state(tstate state)
 {
-	if(state != state_) {
-		state_ = state;
-		set_dirty(true);
+	if(state == state_) {
+		return;
+	}
+
+	state_ = state;
+	set_dirty(true);
+
+	const ttoggle_panel_definition::tresolution* conf = 
+		dynamic_cast<const ttoggle_panel_definition::tresolution*>(config());
+	assert(conf);
+
+	if(conf->state_change_full_redraw) {
+		set_background_changed();
 	}
 }
 

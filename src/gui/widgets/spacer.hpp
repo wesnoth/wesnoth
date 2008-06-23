@@ -55,7 +55,8 @@ public:
 	 *
 	 * Since we're always empty the draw does nothing.
 	 */
-	void draw(surface&) {}
+	void draw(surface& /*surface*/, const bool /*force*/ = false, 
+		const bool /*invalidate_background*/ = false) {}
 	
 
 	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }

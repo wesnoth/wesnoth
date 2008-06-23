@@ -77,7 +77,8 @@ public:
 	tpoint get_best_size() const;
 
 	/** Inherited from tcontainer. */
-	void draw(surface& surface);
+	void draw(surface& surface,  const bool force = false,
+	        const bool invalidate_background = false);
 
 	/** Inherited from tcontainer. */
 	void set_size(const SDL_Rect& rect);
