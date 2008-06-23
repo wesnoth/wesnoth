@@ -12,9 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file ai_village.cpp
-//! The village capturing part of the AI.
-//! ai::get_villages and ai::find_villages are based on ai::get_villages is ai.cpp
+/**
+ * @file ai_village.cpp
+ * The village capturing part of the AI.
+ * ai::get_villages and ai::find_villages are based on ai::get_villages is ai.cpp
+ */
 
 #include "global.hpp"
 
@@ -97,15 +99,14 @@
 //  9. Didn't find a solution, test all permutations.
 
 namespace {
-	//! Location of the keep the closest to our leader.
+	/** Location of the keep the closest to our leader. */
 	gamemap::location keep_loc = gamemap::location::null_location;
-	//! Locaton of our leader.
+	/** Locaton of our leader. */
 	gamemap::location leader_loc = gamemap::location::null_location;
-	//! The best possible location for our leader if it can't
-	//! reach a village.
+	/** The best possible location for our leader if it can't reach a village. */
 	gamemap::location best_leader_loc = gamemap::location::null_location;
 
-	//! debug log level for AI enabled?
+	/** debug log level for AI enabled? */
 	bool debug = false;
 
 	typedef std::map<gamemap::location /* unit location */, 
@@ -115,34 +116,38 @@ namespace {
 		gamemap::location /* start */ > > tmoves;
 }
 
-//! Dispatches all units to their best location.
+/** Dispatches all units to their best location. */
 static void dispatch(treachmap& reachmap, tmoves& moves);
 
-//! Dispatches all units who can reach one village.
-//! Returns true if it modified reachmap isn't empty
+/**
+ * Dispatches all units who can reach one village.
+ * Returns true if it modified reachmap isn't empty.
+ */
 static bool dispatch_unit_simple(treachmap& reachmap, tmoves& moves);
 
-//! Dispatches units to villages which can only be reached by one unit.
-//! Returns true if modified reachmap and reachmap isn't empty
+/*
+ * Dispatches units to villages which can only be reached by one unit.
+ * Returns true if modified reachmap and reachmap isn't empty.
+ */
 static bool dispatch_village_simple(
 	treachmap& reachmap, tmoves& moves, size_t& village_count);
 
-//! Removes a village for all units, returns true if anything is deleted.
+/** Removes a village for all units, returns true if anything is deleted. */
 static bool remove_village(
 	treachmap& reachmap, tmoves& moves, const gamemap::location& village);
 
-//! Removes a unit which can't reach any village anymore.
+/** Removes a unit which can't reach any village anymore. */
 static treachmap::iterator remove_unit(
 	treachmap& reachmap, tmoves& moves, treachmap::iterator unit);
 
-//! Dispatches the units to a village after the simple dispatching failed.
+/** Dispatches the units to a village after the simple dispatching failed. */
 static void dispatch_complex(
 	treachmap& reachmap, tmoves& moves, const size_t village_count);
 
-//! Dispatches all units to a village, every unit can reach every village.
+/** Dispatches all units to a village, every unit can reach every village. */
 static void full_dispatch(treachmap& reachmap, tmoves& moves);
 
-//! Shows which villages every unit can reach (debug function).
+/** Shows which villages every unit can reach (debug function). */
 static void dump_reachmap(treachmap& reachmap);
 
 bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
