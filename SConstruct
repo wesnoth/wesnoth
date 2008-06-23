@@ -72,6 +72,7 @@ opts.AddOptions(
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", PathOption.PathAccept), 
+	('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolOption("fast", "Make scons faster at cost of less precise dependency tracking.", False)
     )
 
@@ -80,11 +81,15 @@ opts.AddOptions(
 #
 
 env = Environment(tools=["tar", "gettext", "install"], options = opts, toolpath = ["scons"])
+
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
     env['ENV']['PATH'] = os.environ["PATH"]
 else:
     env.Tool("default")
+
+if env['cxxtool']:
+	env['CXX'] = env['cxxtool']
 
 opts.Save('.scons-option-cache', env)
 
