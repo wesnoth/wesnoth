@@ -551,8 +551,6 @@ void set_zoom(int amount)
 
 static surface get_hexed(const locator i_locator)
 {
-	// w.e don't want to add it to the unscaled cache,
-	// since we will normaly never need the non-hexed one.
 	surface image(get_image(i_locator, UNSCALED));
 	// Re-cut scaled tiles according to a mask.
 	const surface hex(get_image(game_config::terrain_mask_image,
