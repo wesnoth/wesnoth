@@ -303,7 +303,7 @@ class AI:
                 loc = wesnoth.get_location(x,y)
                 speed += 1.0 / recruit.movement_cost(loc)
                 rdm = recruit.defense_modifier(loc)
-                if rdm:
+                if rdm and rdm != 1:
                     defense += 100.0 / rdm - 1
 
                 else:
