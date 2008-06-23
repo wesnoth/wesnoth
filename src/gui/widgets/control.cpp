@@ -148,7 +148,7 @@ void tcontrol::draw(surface& surface, const bool force,
 {
 	assert(config_);
 
-	if(!dirty() && !force && !invalidate_background) {
+	if(!is_dirty() && !force && !invalidate_background) {
 		return;
 	}
 	if(invalidate_background) {

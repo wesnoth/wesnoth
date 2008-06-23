@@ -479,7 +479,7 @@ tpoint tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
-	if(widget_->dirty() || best_size_ == tpoint(0, 0)) {
+	if(widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
 		best_size_ = widget_->get_best_size() + border_space();
 	}
 
@@ -492,7 +492,7 @@ tpoint tgrid::tchild::get_minimum_size() const
 		return border_space();
 	}
 
-	if(widget_->dirty() || minimum_size_ == tpoint(0, 0)) {
+	if(widget_->is_dirty() || minimum_size_ == tpoint(0, 0)) {
 		minimum_size_ = widget_->get_minimum_size() + border_space();
 	}
 
@@ -505,7 +505,7 @@ tpoint tgrid::tchild::get_maximum_size() const
 		return tpoint(0, 0);
 	}
 
-	if(widget_->dirty() || maximum_size_ == tpoint(0, 0)) {
+	if(widget_->is_dirty() || maximum_size_ == tpoint(0, 0)) {
 		maximum_size_ = widget_->get_maximum_size();
 
 		// If the widget has no maximum return that 

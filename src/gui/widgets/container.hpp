@@ -55,7 +55,7 @@ public:
 		{ return grid_.has_widget(widget); }
 
 	/** Inherited from twidget. */
-	bool dirty() const { return twidget::dirty() || grid_.dirty(); }
+	bool is_dirty() const { return twidget::is_dirty() || grid_.is_dirty(); }
 
 	/** Inherited from tcontrol. */
 	tpoint get_minimum_size() const;

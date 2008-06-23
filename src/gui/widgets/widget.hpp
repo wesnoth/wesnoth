@@ -484,7 +484,7 @@ protected:
 	}
 
 public:	
-	virtual bool dirty() const { return dirty_; }
+	virtual bool is_dirty() const { return dirty_; }
 
 private:
 	/**

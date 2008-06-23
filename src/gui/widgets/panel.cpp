@@ -57,12 +57,12 @@ void tpanel::draw(surface& surface, const bool force,
 		const bool invalidate_background)
 {
 	// Need to preserve the state and inherited draw clear the flag.
-	const bool is_dirty = dirty();
+	const bool dirty = is_dirty();
 
 	tcontainer_::draw(surface, force, invalidate_background);
 
 	// foreground
-	if(is_dirty || force) {
+	if(dirty || force) {
 		SDL_Rect rect = get_rect();
     	canvas(1).draw(true);
 	    blit_surface(canvas(1).surf(), 0, surface, &rect);

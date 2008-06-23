@@ -100,7 +100,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 			break;
 		}
 
-		if(dirty() || need_layout_) {
+		if(is_dirty() || need_layout_) {
 			if(need_layout_) {
 				screen = make_neutral_surface(restorer);
 			}
@@ -148,7 +148,7 @@ void twindow::draw(surface& surface, const bool force,
 	}
 	
 	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
-		if(! *itor || !itor->dirty()) {
+		if(! *itor || !itor->is_dirty()) {
 			continue;
 		}
 
@@ -160,10 +160,10 @@ void twindow::draw(surface& surface, const bool force,
 		canvas(1).draw();
 		blit_surface(canvas(1).surf(), 0, surface, 0);
 	}
-	if(tooltip_.dirty()) {
+	if(tooltip_.is_dirty()) {
 		tooltip_.draw(surface);
 	}
-	if(help_popup_.dirty()) {
+	if(help_popup_.is_dirty()) {
 		help_popup_.draw(surface);
 	}
 
