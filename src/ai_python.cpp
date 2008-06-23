@@ -13,14 +13,16 @@
    See the COPYING file for more details.
 */
 
-//! @file ai_python.cpp
-//! Interface to python for ai-scripts.
-//
-//! Note this file isn't C-style cast safe:
-//! PyObject_NEW this macro contains 2 casts
-//! Py_DECREF this macro contains 3 casts
-//! Py_InitModule3 this macro contains 1 cast
-//! Py_XDECREF this macro contains 3 casts
+/**
+ * @file ai_python.cpp
+ * Interface to python for ai-scripts.
+ *
+ * Note this file isn't C-style cast safe:
+ * PyObject_NEW this macro contains 2 casts
+ * Py_DECREF this macro contains 3 casts
+ * Py_InitModule3 this macro contains 1 cast
+ * Py_XDECREF this macro contains 3 casts
+ */
 
 /* Note about Python exceptions:
 
@@ -1064,8 +1066,10 @@ PyObject *python_ai::wrapper_team_targets(PyObject *, PyObject *args)
 
     PyObject* dict = PyDict_New();
 
-    //! @todo FIXME: There should be a C++ method to return all targets instead,
-	// for now it's just copy&pasted.
+    /**
+	 * @todo FIXME: There should be a C++ method to return all targets instead,
+	 * for now it's just copy&pasted.
+	 */
     std::vector<team::target>& team_targets =
         running_instance->current_team().targets();
 
@@ -1479,9 +1483,11 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		&wesnoth_location_type, &to, &weapon ) )
 		return NULL;
 
-	//! @todo FIXME: Remove this check and let the C++ code do the check
-	// if the attack is valid at all (there may be ranged attacks or similar later,
-	// and then the code below will horribly fail).
+	/**
+	 * @todo FIXME: Remove this check and let the C++ code do the check if the
+	 * attack is valid at all (there may be ranged attacks or similar later,
+	 * and then the code below will horribly fail).
+	 */
 	if (!tiles_adjacent(*from->location_, *to->location_))
 		return_none;
 

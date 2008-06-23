@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file ai_python.hpp
-//!
+/** @file ai_python.hpp */
 
 #ifndef AI_PYTHON_HPP_INCLUDED
 #define AI_PYTHON_HPP_INCLUDED
