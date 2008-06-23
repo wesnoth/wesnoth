@@ -6,9 +6,7 @@ from glob import glob
 
 Import("*")
 
-python_env = env.Clone()
-if env['python']:
-    python_env.Append(CPPDEFINES = "HAVE_PYTHON")
+env.Append(CPPDEFINES = "$EXTRA_DEFINE")
 
 #color_range.cpp should be removed, but game_config depends on it.
 #game_config has very few things that are needed elsewhere, it should be
@@ -32,32 +30,23 @@ libwesnoth_core_sources = Split("""
     serialization/tokenizer.cpp
     """)
 
-if env['raw_sockets']:
-    libwesnoth_core_sources.extend( env.Object("network_worker.cpp", CPPDEFINES = "NETWORK_USE_RAW_SOCKETS"))
-else:
-    libwesnoth_core_sources.extend( env.Object("network_worker.cpp"))
-
+libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
 
 game_config_env = env.Clone()
-
-
-
+filesystem_env = env.Clone()
 if env["PLATFORM"] != "win32":
 	game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
+    if env['localedirname']:
+	    filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedirname'])
+	    if not os.path.isabs(env['localedirname']):
+		    filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
+    if env['prefsdir']:
+	    filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
 
-libwesnoth_core_sources.extend( game_config_env.Object("game_config.cpp"))
-
-filesystem_env = env.Clone()
-
-if env['localedirname']:
-	filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedirname'] )
-	if not os.path.isabs(env['localedirname']):
-		filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
-
-if env['prefsdir']:
-	filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"%s\"'" % env['prefsdir'] )
-
-libwesnoth_core_sources.extend( filesystem_env.Object("filesystem.cpp"))
+libwesnoth_core_sources.extend([
+    game_config_env.Object("game_config.cpp"),
+    filesystem_env.Object("filesystem.cpp")
+    ])
 
 libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
@@ -138,17 +127,10 @@ libwesnoth_sources = Split("""
     gui/widgets/window.cpp
     gui/widgets/window_builder.cpp
     """)
-
-if env['fribidi']:
-    libwesnoth_sources.extend( env.Object("font.cpp", CPPDEFINES = "HAVE_FRIBIDI"))
-else:
-	libwesnoth_sources.extend( env.Object("font.cpp"))
-
-if env['dummy_locales']:
-    libwesnoth_sources.extend( env.Object("language.cpp", CPPDEFINES = "USE_DUMMYLOCALES"))
-else:
-	libwesnoth_sources.extend( env.Object("language.cpp"))
-
+libwesnoth_sources.extend([
+    env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
+    env.Object("language.cpp", EXTRA_DEFINE = env['dummy_locales'] and "USE_DUMMYLOCALES" or None)
+    ])
 
 libwesnoth = env.Library("wesnoth", libwesnoth_sources)
 
@@ -240,9 +222,14 @@ wesnoth_sources = Split("""
     widgets/scrollpane.cpp
     """)
 
-wesnoth_sources.extend( python_env.Object("ai_python.cpp"))
-wesnoth_sources.extend( python_env.Object("ai.cpp"))
-wesnoth_sources.extend( python_env.Object("multiplayer_connect.cpp"))
+python_env = env.Clone()
+if env['python']:
+    python_env.Append(CPPDEFINES = "HAVE_PYTHON")
+wesnoth_sources.extend(python_env.Object(Split("""
+    ai_python.cpp
+    ai.cpp
+    multiplayer_connect.cpp
+    """)))
 
 # used with editor2 option in the wesnoth target
 wesnoth_editor2_sources = Split("""
@@ -295,10 +282,7 @@ campaignd_sources = Split("""
     server/input_stream.cpp
     """)
 
-if env['fifodir']:
-	campaignd_sources.extend( env.Object("campaign_server/campaign_server.cpp", CPPDEFINES = "FIFODIR='\"%s\"'" % env['fifodir']))
-else:
-	campaignd_sources.extend( env.Object("campaign_server/campaign_server.cpp"))
+campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"%s\"'" % env['fifodir'] or None))
 
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
 
@@ -312,10 +296,7 @@ wesnothd_sources = Split("""
     server/simple_wml.cpp
 	time.cpp
     """)
-if env['fifodir']:
-	wesnothd_sources.extend( env.Object("server/server.cpp", CPPDEFINES = "FIFODIR='\"%s\"'" % env['fifodir']))
-else:
-	wesnothd_sources.extend( env.Object("server/server.cpp"))
+wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"%s\"'" % env['fifodir'] or None))
 
 env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd], have_server_prereqs)
 
