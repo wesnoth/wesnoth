@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file animated_editor.cpp 
-//! Template instantiations for wesnoth-editor.
+/**
+ * @file animated_editor.cpp 
+ * Template instantiations for wesnoth-editor.
+ */
 
 #include "animated.i"
 // Force compilation of the following template instantiations
