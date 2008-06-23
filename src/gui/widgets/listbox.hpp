@@ -42,6 +42,13 @@ public:
 	bool get_active() const { return state_ != DISABLED; }
 	unsigned get_state() const { return state_; }
 
+	/** Inherited from tevent_executor. */
+	void mouse_left_button_down(tevent_handler& event);
+
+	/** Inherited from tevent_executor. */
+	void key_press(tevent_handler& event, bool& handled, 
+		SDLKey key, SDLMod modifier, Uint16 unicode);
+
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const { return true; }
 

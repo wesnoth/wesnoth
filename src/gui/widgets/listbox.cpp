@@ -16,11 +16,13 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -89,8 +91,61 @@ tlistbox::tlistbox() :
 {
 }
 
+void tlistbox::mouse_left_button_down(tevent_handler& event) 
+{ 
+	/**
+	 * @todo We never get called since the mouse events are captured by our
+	 * children.
+	 */
+	DBG_G_E << "Listbox: left mouse button down.\n"; 
+
+	event.keyboard_capture(this);
+}
+
+void tlistbox::key_press(tevent_handler& /*event*/, bool& handled, 
+		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
+{
+	DBG_G_E << "Listbox: key press.\n";
+
+	/** 
+	 * @todo Proof of concept only handles up and down and not too elegant.
+	 * Ignores the modifiers and also whether or not rows are active.  When
+	 * moving out of visible range we don't scroll down and possibly more minor
+	 * glitches exist in this hack.
+	 */
+	switch(key) {
+
+		case SDLK_UP : {
+
+			int i = get_selected_row() - 1;
+			if(i >= 0) {
+				select_row(i);
+				handled = true;
+			}
+			break;
+		}
+			
+		case SDLK_DOWN : {
+
+			int i = get_selected_row() + 1;
+			if(i < rows_.size()) {
+				select_row(i);
+				handled = true;
+			}
+			break;
+		}
+
+		default :
+			/* DO NOTHING */
+			break;
+	}
+}
+
 void tlistbox::list_item_selected(twidget* caller)
 {
+	/** @todo Hack to capture the keyboard focus. */
+	get_window()->keyboard_capture(this);
+
 	for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
 
 		const unsigned row = i + scrollbar()->get_item_position();
@@ -115,6 +170,9 @@ void tlistbox::list_item_selected(twidget* caller)
 
 void tlistbox::scrollbar_click(twidget* caller)
 {
+	/** @todo Hack to capture the keyboard focus. */
+	get_window()->keyboard_capture(this);
+
 	if(caller->id() == "_begin") {
 		scrollbar()->scroll(tscrollbar_::BEGIN);
 	} else if(caller->id() == "_line_up") {
