@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file array.hpp 
-//! Template for arrays.
+/**
+ * @file array.hpp 
+ * Template for arrays.
+ */
 
 #ifndef ARRAY_HPP_INCLUDED
 #define ARRAY_HPP_INCLUDED
