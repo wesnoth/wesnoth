@@ -17,7 +17,6 @@
 
 #include "global.hpp"
 
-#include "array.hpp"
 #include "builder.hpp"
 #include "config.hpp"
 #include "log.hpp"

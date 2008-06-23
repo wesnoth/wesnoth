@@ -25,6 +25,7 @@
 #include "ai_python.hpp"
 #endif
 #include "actions.hpp"
+#include "array.hpp"
 #include "callable_objects.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
@@ -47,6 +48,8 @@
 #define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)
 #define ERR_AI LOG_STREAM(err, ai)
+
+typedef util::array<gamemap::location,6> adjacent_tiles_array;
 
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public ai_interface {

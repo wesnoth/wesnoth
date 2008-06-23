@@ -24,7 +24,6 @@ class gamestatus;
 class unit;
 class unit_map;
 
-#include "array.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"
 #include "team.hpp"
@@ -35,9 +34,6 @@ class unit_map;
 #include <vector>
 #include <functional>
 
-
-/** A convenient type for storing a list of tiles adjacent to a certain tile. */
-typedef util::array<gamemap::location,6> adjacent_tiles_array;
 
 class xy_pred : public std::unary_function<gamemap::location const&, bool>
 {
