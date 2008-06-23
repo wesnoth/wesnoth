@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file ai_attack.cpp
-//! Calculate & analyse attacks.
+/**
+ * @file ai_attack.cpp
+ * Calculate & analyse attacks.
+ */
 
 #include "global.hpp"
 
@@ -30,7 +32,7 @@
 
 const int max_positions = 10000;
 
-//! Analyze possibility of attacking target on 'loc'.
+/** Analyze possibility of attacking target on 'loc'. */
 void ai::do_attack_analysis(
 	                 const location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
@@ -377,7 +379,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// Note we didn't fight at all if defender is already dead.
 		double prob_fought = (1.0 - prob_dead_already);
 
-		//! @todo FIXME: add combatant.prob_killed
+		/** @todo FIXME: add combatant.prob_killed */
 		double prob_killed = def.hp_dist[0] - prob_dead_already;
 		prob_dead_already = def.hp_dist[0];
 
@@ -437,8 +439,11 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// If we didn't advance, we took this damage.
 		avg_damage_taken += (up->second.hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
-		//! @todo FIXME: attack_prediction.cpp should understand advancement directly.
-		// For each level of attacker def gets 1 xp or kill_experience.
+		/**
+		 * @todo FIXME: attack_prediction.cpp should understand advancement
+		 * directly.  For each level of attacker def gets 1 xp or
+		 * kill_experience.
+		 */
 		def_avg_experience += up->second.level() *
 			(1.0 - att.hp_dist[0] + game_config::kill_experience * att.hp_dist[0]);
 		if (m == movements.begin()) {
@@ -701,8 +706,10 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 	return res / 100000.;
 }
 
-//! There is no real hope for us: we should try to do some damage to the enemy.
-//! We can spend some cycles here, since it's rare.
+/** 
+ * There is no real hope for us: we should try to do some damage to the enemy.
+ * We can spend some cycles here, since it's rare.
+ */
 bool ai::desperate_attack(const gamemap::location &loc)
 {
 	const unit &u = units_.find(loc)->second;
