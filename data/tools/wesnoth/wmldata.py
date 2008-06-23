@@ -12,7 +12,7 @@ textdomain stuff in here is therefore only useful to CampGen, as that does
 not allow composed strings like above.
 """
 
-import re, sys, os
+import re, sys
 import wmlparser
 
 class Data:
@@ -32,7 +32,7 @@ class Data:
         pos = indent * "  "
         result = pos + "\ " + magenta + self.name + off + " (" + self.__class__.__name__ + ")"
         if show_contents:
-            result += "'" + self.get_value().encode("utf8") + "'"
+            result += "'" + self.get_value() + "'"
         if write:
             sys.stdout.write(result + "\n")
 
@@ -127,6 +127,7 @@ class DataClosingTag(Data):
 
 class WMLException(Exception):
     def __init__(self, text):
+        super( WMLException, self ).__init__()
         self.text = text
         print text
     def __str__(self):
@@ -156,74 +157,92 @@ class DataSub(Data):
             print "Removing empty #ifdef %s" % item.name
             self.remove(item)
 
-    def write_file(self, f, indent = 0, textdomain = ""):
+    def write_file( self, f, indent=0, textdomain="" ):
+        f.write( self.make_string( indent, textdomain ) )
+        
+    def make_string( self, indent=0, textdomain="" ):
         """Write the data object to the given file object."""
         ifdef = 0
+        result = []
 
         self.clean_empty_ifdefs()
 
         for item in self.data:
-
             if ifdef:
                 if not isinstance(item, DataIfDef) or not item.type == "else":
-                    f.write("#endif\n")
+                    result.append("#endif\n")
                 ifdef = 0
 
             if isinstance(item, DataIfDef):
                 if item.type == "else":
-                    f.write("#else\n")
+                    result.append("#else\n")
                 else:
-                    f.write("#ifdef %s\n" % item.name)
-                item.write_file(f, indent + 4, textdomain)
+                    result.append("#ifdef %s\n" % item.name)
+                result.append( item.make_string(indent + 4, textdomain) )
                 ifdef = 1
+
             elif isinstance(item, DataSub):
-                f.write(" " * indent)
-                f.write("[%s]\n" % item.name)
-                item.write_file(f, indent + 4, textdomain)
-                f.write(" " * indent)
+                result.append(" " * indent)
+                result.append("[%s]\n" % item.name)
+                result.append( item.make_string(indent + 4, textdomain) )
+                result.append(" " * indent)
                 close = item.name
                 if close[0] == "+": close = close[1:]
-                f.write("[/%s]\n" % close)
+                result.append("[/%s]\n" % close)
+
             elif isinstance(item, DataText):
-                f.write(" " * indent)
-                text = item.data
-                text = text.replace('"', r'\"')
+                result.append(" " * indent)
+                text = item.data.replace('"', r'""')
                 # We always enclosed in quotes
                 # In theory, the parser will just remove then on reading in, so
                 # the actual value is 1:1 preserved
                 # TODO: is there no catch?
                 if textdomain and item.textdomain == "wesnoth":
-                    f.write("#textdomain wesnoth\n")
-                    f.write(" " * indent)
+                    result.append("#textdomain wesnoth\n")
+                    result.append(" " * indent)
+
+                # FIXME: don't compile regex's if they are one shots
                 if item.translatable:
                     if "=" in text:
                         text = re.compile("=(.*?)(?=[=;]|$)"
                             ).sub("=\" + _\"\\1\" + \"", text)
                         text = '"' + text + '"'
                         text = re.compile(r'\+ _""').sub("", text)
-                        f.write('%s=%s\n' % (item.name, text))
+                        result.append('%s=%s\n' % (item.name, text))
                     else:
-                        f.write('%s=_"%s"\n' % (item.name, text))
+                        result.append('%s=_"%s"\n' % (item.name, text))
+
                 else:
-                    f.write('%s="%s"\n' % (item.name, text))
+                    result.append('%s="%s"\n' % (item.name, text))
+
                 if textdomain and item.textdomain == "wesnoth":
-                    f.write(" " * indent)
-                    f.write("#textdomain %s\n" % textdomain)
+                    result.append(" " * indent)
+                    result.append("#textdomain %s\n" % textdomain)
+
             elif isinstance(item, DataMacro):
-                f.write(" " * indent)
-                f.write("%s\n" % item.data)
+                result.append(" " * indent)
+                result.append("%s\n" % item.data)
+
             elif isinstance(item, DataComment):
-                f.write("%s\n" % item.data)
+                result.append("%s\n" % item.data)
+
             elif isinstance(item, DataDefine):
-                f.write("#define %s %s\n%s#enddef\n" % (item.name, item.params,
+                result.append("#define %s %s\n%s#enddef\n" % (item.name, item.params,
                     item.data))
+
             elif isinstance(item, DataClosingTag):
-                f.write("[/%s]\n" % item.name)
+                result.append("[/%s]\n" % item.name)
+
+            elif isinstance( item, DataBinary ):
+                result.append( "[%s][/%s]\n" % item.name )
+
             else:
                 raise WMLException("Unknown item: %s" % item.__class__.__name__)
 
         if ifdef:
-            f.write("#endif\n")
+            result.append("#endif\n")
+
+        return "".join( result )
 
     def is_empty(self):
         return len(self.data) == 0

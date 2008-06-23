@@ -16,9 +16,13 @@ from wesnoth.campaignserver_client import CampaignClient
 
 if __name__ == "__main__":
     import optparse
-    try: import psyco
-    except ImportError: pass
-    else: psyco.full()
+
+    try:
+        import psyco
+        psyco.full()
+
+    except ImportError:
+        pass
 
     optionparser = optparse.OptionParser()
     optionparser.add_option("-a", "--address", help = "specify server address",
@@ -96,9 +100,12 @@ if __name__ == "__main__":
     def get(name, version, uploads, cdir):
         mythread = cs.get_campaign_async(name, options.raw_download)
 
+        pcounter = 0
         while not mythread.event.isSet():
             mythread.event.wait(1)
-            print "%s: %d/%d" % (name, cs.counter, cs.length)
+            if pcounter != cs.counter:
+                print "%s: %d/%d" % (name, cs.counter, cs.length)
+                pcounter = cs.counter
 
         if options.raw_download:
             file(name, "w").write(mythread.data)
@@ -122,7 +129,9 @@ if __name__ == "__main__":
         Get info for a locally installed add-on. It expects a direct path
         to the info.cfg file.
         """
-        if not os.path.exists(name): return None, None
+        if not os.path.exists(name):
+            return None, None
+
         p = wmlparser.Parser(None)
         p.parse_file(name)
         info = wmldata.DataSub("WML")
@@ -142,7 +151,8 @@ if __name__ == "__main__":
                         use_color = options.color)
             else:
                 column_sizes = [5, 7, 8, 8, 10, 5, 10, 13]
-                columns = [["name", "author", "version", "uploads", "downloads", "size", "timestamp", "translatable"]]
+                columns = [["name", "author", "version", "uploads", "downloads", \
+                            "size", "timestamp", "translatable"]]
                 for campaign in campaigns.get_all("campaign"):  
                     column = [campaign.get_text_val("name", "?"),
                         campaign.get_text_val("author", "?"),
@@ -164,6 +174,7 @@ if __name__ == "__main__":
                 print message.get_text_val("message")
         else:
             sys.stderr.write("Could not connect.\n")
+
     elif options.download:
         cs = CampaignClient(address)
         fetchlist = []
@@ -180,6 +191,7 @@ if __name__ == "__main__":
                 else:
                     if re.search(options.download, name):
                         fetchlist.append((name, version, uploads))
+
         for name, version, uploads in fetchlist:
             info = os.path.join(options.campaigns_dir, name, "info.cfg")
             local_uploads, local_version = get_info(info)
@@ -188,23 +200,25 @@ if __name__ == "__main__":
                 if version != local_version or uploads > local_uploads:
                     get(name, version, uploads, options.campaigns_dir)
                 else:
-                    print "Not downloading", name,\
-                        "as the version already is", local_version,\
+                    print "Not downloading", name, \
+                        "as the version already is", local_version, \
                         "(The add-on got re-uploaded.)"
             else:
                 if options.verbose:
-                    print "Not downloading", name,\
+                    print "Not downloading", name, \
                         "because it is already up-to-date."
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
         for message in data.find_all("message", "error"):
             print message.get_text_val("message")
+
     elif options.change_passphrase:
         cs = CampaignClient(address)
         data = cs.change_passphrase(*options.change_passphrase)
         for message in data.find_all("message", "error"):
             print message.get_text_val("message")
+
     elif options.upload:
         cs = CampaignClient(address)
         if os.path.isdir(os.path.join(options.campaigns_dir, options.upload)):
@@ -218,6 +232,7 @@ if __name__ == "__main__":
             name = os.path.basename(options.upload)
             name = os.path.splitext(name)[0]
             wmldir = os.path.join(os.path.dirname(options.upload), name)
+
         pbl = wmldata.read_file(pblfile, "PBL")
         mythread = cs.put_campaign_async(
             pbl.get_text_val("title"),
@@ -229,11 +244,17 @@ if __name__ == "__main__":
             pbl.get_text_val("icon"),
             options.upload.replace(".pbl", ".cfg"),
             wmldir)
+
+        pcounter = 0
         while not mythread.event.isSet():
             mythread.event.wait(1)
-            print "%d/%d" % (cs.counter, cs.length)
+            if cs.counter != pcounter:
+                print "%d/%d" % (cs.counter, cs.length)
+                pcounter = cs.counter
+
         for message in mythread.data.find_all("message", "error"):
             print message.get_text_val("message")
+
     elif options.update or options.status:
         if options.status:
             cdir = options.status
@@ -250,10 +271,10 @@ if __name__ == "__main__":
         for c in data.get_or_create_sub("campaigns").get_all("campaign"):
             name = c.get_text_val("name")
             campaigns[name] = c
-        for dir in dirs:
-            dirname = os.path.basename(dir)
+        for d in dirs:
+            dirname = os.path.basename(d)
             if dirname in campaigns:
-                info = os.path.join(dir, "info.cfg")
+                info = os.path.join(d, "info.cfg")
                 sversion = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
                 if os.path.exists(info):
@@ -271,7 +292,7 @@ if __name__ == "__main__":
 			    (lrev, srev))
                         if srev > lrev: # server reset?
                             if options.update:
-				get(dirname, sversion, srev, cdir)
+                                get(dirname, sversion, srev, cdir)
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
                             "revision " + lrev + " but revision " + srev +
@@ -285,6 +306,7 @@ if __name__ == "__main__":
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
+
     else:
         optionparser.print_help()
 

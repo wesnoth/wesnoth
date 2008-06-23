@@ -179,6 +179,11 @@ Version 1.5.1:
    * fix a regression about missing default portrait in dialogs.
    * fix false move-cursor around enemies after some dialog events.
    * fix some unit decapitation when placed on a keep
+   * wesnoth_addon_client now uses gzip compression and can receive (untested)
+	zlib compressed data. Tons of various additional changes required to
+	make this work. Tons of additional core wml parsing bugs have been
+	fixed by various others and my self. -oracle
+	Ran pylint against code - some results applied to code.
    * made the image cache LRU, with a high limit of 600 images per cache
 
 Version 1.5.0:

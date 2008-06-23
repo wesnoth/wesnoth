@@ -1,5 +1,14 @@
+import gzip, zlib, StringIO
 import socket, struct, glob, sys, shutil, threading, os
 import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser as wmlparser
+
+
+EMPTY_STRING = ''
+GZ_WRITE_MODE = 'wb'
+GZ_READ_MODE = 'rb'
+BWML_PREFIXES = "\x00\x01\x02\x03"
+
 
 class CampaignClient:
     # First port listed will be used as default.
@@ -18,6 +27,12 @@ class CampaignClient:
         self.wordcount = 4 # codewords in above dictionary
         self.codes = {} # dictionary for WML encoder
         self.codescount = 4 # codewords in above dictionary
+        self.gzIn = StringIO.StringIO()
+        self.gzOut = StringIO.StringIO()
+        self.event = None
+        self.name = None
+        self.args = None
+        self.cs = None
 
         if address != None:
             s = address.split(":")
@@ -66,32 +81,95 @@ class CampaignClient:
         except socket.error:
             pass # Well, what can we do?
 
+    def isBWML( self, packet ):
+        """
+        Return True if packet is encoded as binary WML. Else
+        return False.
+        """
+        if packet[0] in BWML_PREFIXES:
+            return True
+
+        return False
+
+    def makePacket( self, doc ):
+        root = wmldata.DataSub( "WML" )
+        root.insert( doc )
+        return root.make_string()
+
     def send_packet(self, packet):
         """
         Send binary data to the server.
         """
-        packet = struct.pack("!l", len(packet)) + packet
-        l = len(packet)
-        self.length = l
-        s = 0
-        while s < l and not self.canceled:
-            s += self.sock.send(packet[s:])
-            self.counter = s
+        # Compress the packet before we send it
+        z = gzip.GzipFile( EMPTY_STRING,
+                           mode=GZ_WRITE_MODE,
+                           fileobj=self.gzOut )
+        z.write( packet )
+        z.close()
+        zdata = self.gzOut.getvalue()
+        self.gzOut.seek(0)
+        self.gzOut.truncate()
+        zpacket = struct.pack("!l", len(zdata)) + zdata
+        self.sock.sendall( zpacket )
 
-    def read_packet(self):
+    def read_packet(self, shortRead=False):
         """
         Read binary data from the server.
+        shortRead is a hack to work around extra data delivered for unknown reason!
+        -oracle
         """
-        l = struct.unpack("!l", self.sock.recv(4))[0]
-        self.length = l
+        lenPacket = self.sock.recv(4)
+        self.length = l = struct.unpack("!l", lenPacket)[0]
         packet = ""
         while len(packet) < l and not self.canceled:
             packet += self.sock.recv(l - len(packet))
             self.counter = len(packet)
-        if self.canceled: return None
+        if self.canceled:
+            return None
+
+        if packet.startswith( '\x1F\x8B' ):
+            # If GZIP compressed, decompress - ignoring last byte
+            if shortRead:
+                self.gzIn.write( packet[:-1] )
+
+            else:
+                self.gzIn.write( packet )
+            self.gzIn.seek(0)
+            z = gzip.GzipFile( EMPTY_STRING,
+                               mode=GZ_READ_MODE,
+                               fileobj=self.gzIn )
+            packet = z.read()
+            z.close()
+            self.gzIn.seek(0)
+            self.gzIn.truncate()
+
+        elif packet.startswith( '\x78\x9C' ):
+            # If ZLIB compressed, decompress
+            packet = zlib.decompres( packet )
+
         return packet
 
-    def decode_WML(self, data):
+    def decode( self, data ):
+        if self.isBWML( data ):
+            data = self.decode_BWML( data )
+
+        else:
+            data = self.decode_WML( data )
+
+        return data
+
+    def decode_WML( self, data ):
+        p = wmlparser.Parser( None, no_macros_in_string=True )
+        p.verbose = False
+        p.do_preprocessor_logic = True
+        p.no_macros = True
+        p.parse_text( data, binary=True )
+        doc = wmldata.DataSub( "WML" )
+        p.parse_top( doc )
+
+        return doc
+
+    def decode_BWML(self, data):
         """
         Given a block of binary data, decode it as binary WML 
         and return it as a WML object.
@@ -148,8 +226,10 @@ class CampaignClient:
                 self.words[self.wordcount] = literal()
                 self.wordcount += 1
             else:
-                if code == 3: word = literal() # literal word
-                else: word = self.words[code] # code
+                if code == 3:
+                    word = literal() # literal word
+                else:
+                    word = self.words[code] # code
                 if open_element: # we handle opening an element
                     element = wmldata.DataSub(word)
                     tag[-1].insert(element) # add it to the current one
@@ -164,7 +244,13 @@ class CampaignClient:
 
         return WML
 
-    def encode_WML(self, data):
+    def encode_WML( self, data ):
+        """
+        Not needed - not sure this method should even be here.
+        """
+        pass
+
+    def encode_BWML(self, data):
         """
         Given a WML object, encode it into binary WML 
         and return it as a python string.
@@ -172,7 +258,8 @@ class CampaignClient:
         packet = str("")
 
         def literal(data):
-            if not data: return str("")
+            if not data:
+                return str("")
             data = data.replace("\01", "\01\02")
             data = data.replace("\00", "\01\01")
             return str(data)
@@ -194,7 +281,7 @@ class CampaignClient:
         if isinstance(data, wmldata.DataSub):
             packet += "\00" + encode(data.name)
             for item in data.data:
-                encoded = self.encode_WML(item)
+                encoded = self.encode_BWML(item)
                 packet += encoded
             packet += "\01"
         elif isinstance(data, wmldata.DataText):
@@ -205,17 +292,23 @@ class CampaignClient:
             packet += literal(data.data) + "\00"
         return packet
 
+    def encode( self, data ):
+        """
+        Always encode GZIP compressed - future use ZLIB
+        """
+        pass
+
     def list_campaigns(self):
         """
         Returns a WML object containing all available info from the server.
         """
-        if self.error: return None
+        if self.error:
+            return None
         request = wmldata.DataSub("request_campaign_list")
-        packet = self.encode_WML(request)
-        self.send_packet(packet);
-        packet = self.read_packet()
-        data = self.decode_WML(packet)
-        return data
+        self.send_packet( self.makePacket( request ) )
+
+        # Passing True to read_packet is a hack - likely a campaignd bug
+        return self.decode( self.read_packet( True ) )
 
     def validate_campaign(self, name, passphrase):
         """
@@ -224,11 +317,9 @@ class CampaignClient:
         request = wmldata.DataSub("validate_scripts")
         request.set_text_val("name", name)
         request.set_text_val("master_password", passphrase)
-        packet = self.encode_WML(request)
-        self.send_packet(packet);
-        packet = self.read_packet()
-        data = self.decode_WML(packet)
-        return data
+        self.send_packet( self.makePacket( request ) )
+
+        return self.decode( self.read_packet() )
 
     def delete_campaign(self, name, passphrase):
         """
@@ -237,11 +328,9 @@ class CampaignClient:
         request = wmldata.DataSub("delete")
         request.set_text_val("name", name)
         request.set_text_val("passphrase", passphrase)
-        packet = self.encode_WML(request)
-        self.send_packet(packet);
-        packet = self.read_packet()
-        data = self.decode_WML(packet)
-        return data
+
+        self.send_packet( self.makePacket( request ) )
+        return self.decode( self.read_packet( True) )
 
     def change_passphrase(self, name, old, new):
         """
@@ -251,25 +340,22 @@ class CampaignClient:
         request.set_text_val("name", name)
         request.set_text_val("passphrase", old)
         request.set_text_val("new_passphrase", new)
-        packet = self.encode_WML(request)
-        self.send_packet(packet);
-        packet = self.read_packet()
-        data = self.decode_WML(packet)
-        return data
+
+        self.send_packet( self.makePacket( request ) )
+        return self.decode( self.read_packet() )
 
     def get_campaign_raw(self, name):
         """
         Downloads the named campaign and returns it as a raw binary WML packet.
         """
-
         request = wmldata.DataSub("request_campaign")
-        request.insert(wmldata.DataText("name", name))
-        packet = self.encode_WML(request)
+        request.insert( wmldata.DataText("name", name) )
+        self.send_packet( self.makePacket( request ) )
+        raw_packet = self.read_packet()
+        packet = self.decode( raw_packet )
 
-        self.send_packet(packet);
-        packet = self.read_packet()
-
-        if self.canceled: return None
+        if self.canceled:
+            return None
 
         return packet
 
@@ -280,7 +366,9 @@ class CampaignClient:
 
         packet = self.get_campaign_raw(name)
 
-        if packet: return self.decode_WML(packet)
+        if packet:
+            return self.decode( packet )
+
         return None
 
     def put_campaign(self, title, name, author, passphrase, description,
@@ -302,17 +390,26 @@ class CampaignClient:
         request.set_text_val("description", description)
         request.set_text_val("version", version)
         request.set_text_val("icon", icon)
-        data = wmldata.DataSub("data")
+        dataNode = wmldata.DataSub( "data" )
+        request.insert( dataNode )
 
         def put_file(name, f):
-            data = wmldata.DataSub("file")
-            data.set_text_val("name", name)
-            data.insert(wmldata.DataBinary("contents", f.read()))
-            return data
+            fileNode = wmldata.DataSub("file")
+            fileNode.set_text_val("name", name)
+
+            # Order we apply escape sequences matters
+            contents = f.read().replace( "\x01", "\x01\x02" ).replace( "\x00", "\x01\x01" )
+##            import time
+##            contents = str(time.ctime())
+            fileContents = wmldata.DataText( "contents", contents )
+            fileNode.insert( fileContents )
+            
+            return fileNode
 
         def put_dir(name, path):
-            data = wmldata.DataSub("dir")
-            data.set_text_val("name", name)
+            print "put_dir(", name, path, ")"
+            dataNode = wmldata.DataSub("dir")
+            dataNode.set_text_val("name", name)
             for fn in glob.glob(path + "/*"):
                 if os.path.isdir(fn):
                     sub = put_dir(os.path.basename(fn), fn)
@@ -320,22 +417,25 @@ class CampaignClient:
                     continue
                 else:
                     sub = put_file(os.path.basename(fn), file(fn))
-                data.insert(sub)
-            return data
+                dataNode.insert(sub)
+            return dataNode
 
         # Only used if it's an old-style campaign directory
         # with an external config.
         if os.path.exists(cfgfile):
-            data.insert(put_file(name + ".cfg", file(cfgfile)))
-        data.insert(put_dir(name, directory))
-        request.insert(data)
+            dataNode.insert( put_file(name + ".cfg", file(cfgfile)) )
 
-        packet = self.encode_WML(request)
+        print "putting dir", name, os.path.basename(directory)
+        dataNode.insert( put_dir(name, directory) )
 
-        self.send_packet(packet);
-        packet = self.read_packet()
-        data = self.decode_WML(packet)
-        return data
+        request.debug()
+        print
+##        print "packet:", self.makePacket( request )
+        print "packet len:", len(self.makePacket( request ))
+        print
+        self.send_packet( self.makePacket( request ) )
+
+        return self.decode( self.read_packet( True ) )
 
     def get_campaign_async(self, name, raw = False):
         """
@@ -343,11 +443,16 @@ class CampaignClient:
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
+            def __init__( self, name, client ):
+                threading.Thread.__init__( self, name=name )
+                self.name = name
+                self.cs = client
+
+                self.event = threading.Event()
+                self.data = None
+
             def run(self):
-                if raw:
-                    data = self.cs.get_campaign_raw(self.name)
-                else:
-                    data = self.cs.get_campaign(self.name)
+                data = self.cs.get_campaign_raw(self.name)
                 self.data = data
                 self.event.set()
 
@@ -356,10 +461,7 @@ class CampaignClient:
                 self.event.set()
                 self.cs.async_cancel()
 
-        mythread = MyThread()
-        mythread.cs = self
-        mythread.name = name
-        mythread.event = threading.Event()
+        mythread = MyThread( name, self )
         mythread.start()
 
         return mythread
@@ -370,9 +472,17 @@ class CampaignClient:
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
+            def __init__( self, name, cs, args ):
+                threading.Thread.__init__( self, name=name )
+                self.name = name
+                self.cs = cs
+                self.args = args
+                self.data = None
+
+                self.event = threading.Event()
+                
             def run(self):
-                data = self.cs.put_campaign(*self.args)
-                self.data = data
+                self.data = self.cs.put_campaign(*self.args)
                 self.event.set()
 
             def cancel(self):
@@ -380,11 +490,7 @@ class CampaignClient:
                 self.event.set()
                 self.cs.async_cancel()
 
-        mythread = MyThread()
-        mythread.cs = self
-        mythread.name = args[1]
-        mythread.args = args
-        mythread.event = threading.Event()
+        mythread = MyThread( args[1], self, args )
         mythread.start()
 
         return mythread
@@ -395,24 +501,33 @@ class CampaignClient:
         to the filesystem. The data parameter is the WML object, 
         path is the path under which it will be placed.
         """
+
+        data.debug()
         try:
             os.mkdir(path)
-        except:
+        except OSError:
             pass
         for f in data.get_all("file"):
             name = f.get_text_val("name", "?")
-            contents = f.get_binary_val("contents")
-            if contents:
-                if verbose:
-                    print i * " " + name + " (" +\
-                        str(len(contents)) + ")"
-                file(path + "/" + name, "wb").write(contents)
+            contents = f.get_text("contents").get_value()
+            if verbose:
+                print i * " " + name + " (" +\
+                      str(len(contents)) + ")"
+            save = file( os.path.join(path, name), "wb")
+
+            # We MUST un-escape our data
+            # Order we apply escape sequences matter here
+            contents = contents.replace( "\x01\x01", "\x00" )
+            contents = contents.replace( "\x01\x02", "\x01" )
+            save.write( contents )
+            save.close()
+
         for dir in data.get_all("dir"):
             name = dir.get_text_val("name", "?")
-            shutil.rmtree(path + "/" + name, True)
-            os.mkdir(path + "/" + name)
+            shutil.rmtree(os.path.join(path, name), True)
+            os.mkdir(os.path.join(path, name))
             if verbose:
                 print i * " " + name
-            self.unpackdir(dir, path + "/" + name, i + 2, verbose)
+            self.unpackdir(dir, os.path.join(path, name), i + 2, verbose)
 
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:

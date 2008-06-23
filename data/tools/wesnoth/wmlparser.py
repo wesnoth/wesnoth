@@ -146,7 +146,7 @@ class Parser:
         """
         if self.verbose:
             sys.stderr.write("%s:%d: Now parsing %s.\n" % (self.filename,
-                self.line, filename))
+                                                           self.line, filename))
         if not text: text = "\n"
         self.texts.append(self.TextState(self.filename, self.text, self.textpos,
             self.line, self.current_path, self.textdomain))
@@ -483,7 +483,7 @@ class Parser:
                     rep = '"' + rep + '"'
                 if self.verbose:                        
                     s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
-                    sys.stderr.write(s.encode("utf8"))
+                    ##sys.stderr.write(s.encode("utf8"))
                 text = text.replace("{%s}" % macro.params[i], rep)
 
             if text:
@@ -735,7 +735,7 @@ class Parser:
                     comment = c + line
                     if self.verbose:
                         msg = "Comment removed: %s" % comment
-                        sys.stderr.write(msg.encode("utf8"))
+                        ##sys.stderr.write(msg.encode("utf8"))
             elif c == '[':
                 name = self.read_until("]")[:-1]
                 if name[0] == '/':
