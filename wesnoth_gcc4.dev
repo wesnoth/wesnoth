@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth_gcc4.dev
 Name=wesnoth
-UnitCount=159
+UnitCount=160
 Type=0
 Ver=1
 ObjFiles=
@@ -11,8 +11,8 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=_@@_
-CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
-Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@__@@__@@_
+CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
+Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@__@@_
 IsCpp=1
 Icon=
 ExeOutput=
@@ -610,7 +610,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit160]
-FileName=src\server\metrics.cpp
+FileName=src\gui\widgets\toggle_panel.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1

@@ -1,7 +1,7 @@
 [Project]
 FileName=editor_gcc4.dev
 Name=editor
-UnitCount=69
+UnitCount=70
 Type=0
 Ver=1
 ObjFiles=
@@ -11,8 +11,8 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=
-CppCompiler=-DUSE_GZIP_@@_-march=native_@@_-O3_@@_
-Linker=-lmingw32_@@_-lSDLmain_@@_-lSDL_@@_-lintl_@@_-lSDL_ttf_@@_-lSDL_image_@@_-lboost_iostreams_dw2_@@_-lSDL_mixer_@@_-lz_@@_
+CppCompiler=-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-march=native_@@_-O3_@@_
+Linker=-lmingw32_@@_-lSDLmain_@@_-lSDL_@@_-lintl_@@_-lSDL_ttf_@@_-lSDL_image_@@_-lboost_iostreams_dw2_@@_-lSDL_mixer_@@_-lz_@@_-lfribidi_@@_
 IsCpp=1
 Icon=
 ExeOutput=
@@ -27,7 +27,7 @@ CustomMakefile=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=0000000000000000010100
+CompilerSettings=0000000001000000010100
 
 [Unit8]
 FileName=src\editor\map_manip.cpp
@@ -270,7 +270,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit70]
-FileName=src\gamestatus_editor.cpp
+FileName=src\time_of_day.cpp
 CompileCpp=1
 Folder=editor
 Compile=1
