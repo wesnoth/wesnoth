@@ -1126,9 +1126,17 @@ std::string show_wesnothd_server_search(display& disp)
 {
 	// Showing file_chooser so user can search the wesnothd
 #ifndef _WIN32
+
+// HACK to avoid build problems with autotools which doesn't define 
+// WESNOTH_PREFIX yet.
+
 	std::string title =  _("Find wesnothd server binary");
+#ifdef WESNOTH_PREFIX
 	std::string path = WESNOTH_PREFIX + std::string("/bin");
 	if (!is_directory(path))
+#else
+	std::string
+#endif		
 		path = get_cwd();
 
 #else
