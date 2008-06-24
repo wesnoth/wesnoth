@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file cavegen.hpp 
-//!
+/** @file cavegen.hpp */
 
 #ifndef CAVEGEN_HPP_INCLUDED
 #define CAVEGEN_HPP_INCLUDED

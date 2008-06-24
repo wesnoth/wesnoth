@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file cavegen.cpp 
-//! Map-generator for caves.
+/**
+ * @file cavegen.cpp 
+ * Map-generator for caves.
+ */
 
 #include "global.hpp"
 
