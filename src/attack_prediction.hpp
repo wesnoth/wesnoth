@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file attack_prediction.hpp
-//!
+/** @file attack_prediction.hpp */
 
 #ifndef ATTACK_PREDICTION_H_INCLUDED
 #define ATTACK_PREDICTION_H_INCLUDED
@@ -24,61 +23,61 @@
 #include "actions.hpp"
 
 // This encapsulates all we need to know for this combat.
-//! All combat-related infos.
+/** All combat-related infos. */
 struct combatant
 {
-	//! Construct a combatant.
+	/** Construct a combatant. */
 	combatant(const battle_context::unit_stats &u, const combatant *prev = NULL);
 
-	//! Copy constructor
+	/** Copy constructor */
 	combatant(const combatant &that, const battle_context::unit_stats &u);
 
-	//! Simulate a fight!  Can be called multiple times for cumulative calculations.
+	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent);
 
-	//! Resulting probability distribution (may NOT be as large as max_hp)
+	/** Resulting probability distribution (may NOT be as large as max_hp) */
 	std::vector<double> hp_dist;
 
-	//! Resulting chance we were not hit by this opponent (important if it poisons)
+	/** Resulting chance we were not hit by this opponent (important if it poisons) */
 	double untouched;
 
-	//! Resulting chance we are poisoned.
+	/** Resulting chance we are poisoned. */
 	double poisoned;
 
-	//! Resulting chance we are slowed.
+	/** Resulting chance we are slowed. */
 	double slowed;
 
-	//! What's the average hp (weighted average of hp_dist).
+	/** What's the average hp (weighted average of hp_dist). */
 	double average_hp(unsigned int healing = 0) const;
 
 private:
 	combatant(const combatant &that);
 	combatant& operator=(const combatant &);
 
-	//! Minimum hp we could possibly have.
+	/** Minimum hp we could possibly have. */
 	unsigned min_hp() const;
 
-	//! HP distribution we could end up with.
+	/** HP distribution we could end up with. */
 	static unsigned hp_dist_size(const battle_context::unit_stats &u, const combatant *prev);
 
-	//! Combat without chance of death, berserk, slow or drain is simple.
+	/** Combat without chance of death, berserk, slow or drain is simple. */
 	void no_death_fight(combatant &opponent);
 
-	//! Combat with <= 1 strike each is simple, too.
+	/** Combat with <= 1 strike each is simple, too. */
 	void one_strike_fight(combatant &opponent);
 
-	//! All other cases.
+	/** All other cases. */
 	void complex_fight(combatant &opponent, unsigned int rounds);
 
-	//! We must adjust for swarm after every combat.
+	/** We must adjust for swarm after every combat. */
 	void adjust_hitchance();
 
 	const battle_context::unit_stats &u_;
 
-	//! Usually uniform, but if we have swarm, then can be different.
+	/** Usually uniform, but if we have swarm, then can be different. */
 	std::vector<double> hit_chances_;
 
-	//! Summary of matrix used to calculate last battle (unslowed & slowed).
+	/** Summary of matrix used to calculate last battle (unslowed & slowed). */
 	std::vector<double> summary[2];
 };
 

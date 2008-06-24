@@ -17,8 +17,10 @@
    this code is kinda tricky.  Do not remove it.
 */
 
-//! @file attack_prediction.cpp
-//! Simulate combat to calculate attacks. Standalone program, benchmark.
+/**
+ * @file attack_prediction.cpp
+ * Simulate combat to calculate attacks. Standalone program, benchmark.
+ */
 
 #include "attack_prediction.hpp"
 
@@ -49,7 +51,7 @@
 
 namespace
 {
-//! A matrix of A's hitpoints vs B's hitpoints.
+/** A matrix of A's hitpoints vs B's hitpoints. */
 struct prob_matrix
 {
 	// Simple matrix, both known HP.
@@ -112,7 +114,7 @@ private:
 	void shift_rows(unsigned dst, unsigned src,
 					unsigned damage, double prob, bool drain);
 
-	//! @todo FIXME: rename using _ at end.
+	/** @todo FIXME: rename using _ at end. */
 	unsigned int rows, cols;
 	double *plane[4];
 
@@ -683,7 +685,7 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 	unsigned int b_damage = opp.u_.damage, b_slow_damage = opp.u_.slow_damage;
 
 	// To simulate stoning, we set to amount which kills, and re-adjust after.
-	//! @todo FIXME: This doesn't work for rolling calculations, just first battle.
+	/** @todo FIXME: This doesn't work for rolling calculations, just first battle. */
 	if (u_.stones)
 		a_damage = a_slow_damage = opp.u_.max_hp;
 	if (opp.u_.stones)
@@ -818,7 +820,7 @@ void combatant::fight(combatant &opp)
 	if (u_.slows)
 		opp.slowed += (1 - opp.slowed) * opp_touched;
 
-	//! @todo FIXME: This is approximate: we could drain, then get hit.
+	/** @todo FIXME: This is approximate: we could drain, then get hit. */
 	untouched = hp_dist[hp];
 	opp.untouched = opp.hp_dist[opp_hp];
 }
