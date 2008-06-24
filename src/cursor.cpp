@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file cursor.cpp
-//! Support for different cursors-shapes.
+/**
+ * @file cursor.cpp
+ * Support for different cursors-shapes.
+ */
 
 #include "global.hpp"
 
@@ -247,7 +249,7 @@ void draw(surface screen)
 		set();
 	}
 
-	//! @todo FIXME: don't parse the file path every time
+	/** @todo FIXME: don't parse the file path every time */
 	const surface surf(image::get_image("cursors/" + colour_images[current_cursor]));
 	if(surf == NULL) {
 		// Fall back to b&w cursors
