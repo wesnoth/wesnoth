@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file builder.cpp
-//! Terrain builder.
+/**
+ * @file builder.cpp
+ * Terrain builder.
+ */
 
 #include "global.hpp"
 
@@ -212,7 +214,7 @@ bool terrain_builder::update_animation(const gamemap::location &loc)
 	return changed;
 }
 
-//! @todo TODO: rename this function
+/** @todo TODO: rename this function */
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
 	if (tile_map_.on_map(loc)) {

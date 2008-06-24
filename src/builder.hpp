@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file builder.hpp
-//! Definitions for the terrain builder.
+/**
+ * @file builder.hpp
+ * Definitions for the terrain builder.
+ */
 
 #ifndef BUILDER_H_INCLUDED
 #define BUILDER_H_INCLUDED
@@ -42,10 +44,16 @@ class config;
 class terrain_builder
 {
 public:
-	//! Used as a parameter for the get_terrain_at function.
+	/** Used as a parameter for the get_terrain_at function. */
 	enum ADJACENT_TERRAIN_TYPE {
-			ADJACENT_BACKGROUND,	//!< Represents terrains which are to be drawn behind unit sprites
-			ADJACENT_FOREGROUND	//!< Represents terrains which are to be drawn in front of them.
+			ADJACENT_BACKGROUND,	/**< 
+									 * Represents terrains which are to be
+									 * drawn behind unit sprites
+									 */
+			ADJACENT_FOREGROUND	    /**< 
+									 * Represents terrains which are to be
+									 * drawn in front of them.
+									 */
 	};
 
 	/** A shorthand typedef for a list of animated image locators,
