@@ -12,8 +12,23 @@
    See the COPYING file for more details.
 */
 
-//! @file display.hpp
-//!
+/** 
+ * @file display.hpp 
+ *
+ * map_display and display: classes which take care of
+ * displaying the map and game-data on the screen.
+ *
+ * The display is divided into two main sections:
+ * - the game area, which displays the tiles of the game board, and units on them,
+ * - and the side bar, which appears on the right hand side.
+ * The side bar display is divided into three sections:
+ * - the minimap, which is displayed at the top right
+ * - the game status, which includes the day/night image,
+ *   the turn number, information about the current side,
+ *   and information about the hex currently moused over (highlighted)
+ * - the unit status, which displays an image and stats
+ *   for the current unit.
+ */
 
 #ifndef DISPLAY_H_INCLUDED
 #define DISPLAY_H_INCLUDED
@@ -42,19 +57,6 @@ class unit_map;
 #include <set>
 #include <string>
 
-// map_display and display: classes which take care of
-// displaying the map and game-data on the screen.
-//
-// The display is divided into two main sections:
-// - the game area, which displays the tiles of the game board, and units on them,
-// - and the side bar, which appears on the right hand side.
-// The side bar display is divided into three sections:
-// - the minimap, which is displayed at the top right
-// - the game status, which includes the day/night image,
-//   the turn number, information about the current side,
-//   and information about the hex currently moused over (highlighted)
-// - the unit status, which displays an image and stats
-//   for the current unit.
 
 class display
 {
@@ -66,20 +68,22 @@ public:
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
-	// Gets the underlying screen object.
+	/** Gets the underlying screen object. */
 	CVideo& video() { return screen_; }
 
-	// return the screen surface or the surface used for map_screenshot
+	/** return the screen surface or the surface used for map_screenshot. */
 	surface get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
 
-	// the dimensions of the display. x and y are width/height.
-	// mapx is the width of the portion of the display which shows the game area.
-	// Between mapx and x is the sidebar region.
-	int w() const { return screen_.getx(); }	//!< width
-	int h() const { return screen_.gety(); }	//!< height
+	/**
+	 * the dimensions of the display. x and y are width/height.
+	 * mapx is the width of the portion of the display which shows the game area.
+	 * Between mapx and x is the sidebar region.
+	 */
+	int w() const { return screen_.getx(); }	/**< width */
+	int h() const { return screen_.gety(); }	/**< height */
 	const SDL_Rect& minimap_area() const
 		{ return theme_.mini_map_location(screen_area()); }
 	const SDL_Rect& unit_image_area() const
@@ -107,39 +111,49 @@ public:
 	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
 		max_map_area() : theme_.main_map_location(screen_area()); }
 
-	//! Check if the bbox of the hex at x,y has pixels outside the area rectangle.
+	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	bool outside_area(const SDL_Rect& area, const int x,const int y) const;
 
-	//! Function which returns the width of a hex in pixels,
-	//! up to where the next hex starts.
-	//! (i.e. not entirely from tip to tip -- use hex_size()
-	//! to get the distance from tip to tip)
+	/**
+	 * Function which returns the width of a hex in pixels,
+	 * up to where the next hex starts.
+	 * (i.e. not entirely from tip to tip -- use hex_size()
+	 * to get the distance from tip to tip)
+	 */
 	int hex_width() const { return (zoom_*3)/4; }
 
-	//! Function which returns the size of a hex in pixels
-	//! (from top tip to bottom tip or left edge to right edge).
+	/**
+	 * Function which returns the size of a hex in pixels
+	 * (from top tip to bottom tip or left edge to right edge).
+	 */
 	int hex_size() const { return zoom_; }
 
-	//! Returns the current zoom factor.
+	/** Returns the current zoom factor. */
 	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
 
-	// given x,y co-ordinates of an onscreen pixel, will return the
-	// location of the hex that this pixel corresponds to.
-	// Returns an invalid location if the mouse isn't over any valid location.
+	/**
+	 * given x,y co-ordinates of an onscreen pixel, will return the
+	 * location of the hex that this pixel corresponds to.
+	 * Returns an invalid location if the mouse isn't over any valid location.
+	 */
 	const gamemap::location hex_clicked_on(int x, int y,
 		gamemap::location::DIRECTION* nearest_hex=NULL,
 		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
 
-	// given x,y co-ordinates of a pixel on the map, will return the
-	// location of the hex that this pixel corresponds to.
-	// Returns an invalid location if the mouse isn't over any valid location.
+	/**
+	 * given x,y co-ordinates of a pixel on the map, will return the
+	 * location of the hex that this pixel corresponds to.
+	 * Returns an invalid location if the mouse isn't over any valid location.
+	 */
 	const gamemap::location pixel_position_to_hex(int x, int y,
 		gamemap::location::DIRECTION* nearest_hex=NULL,
 		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
 
-	// given x,y co-ordinates of the mouse, will return the location of the
-	// hex in the minimap that the mouse is currently over, or an invalid
-	// location if the mouse isn't over the minimap.
+	/**
+	 * given x,y co-ordinates of the mouse, will return the location of the
+	 * hex in the minimap that the mouse is currently over, or an invalid
+	 * location if the mouse isn't over the minimap.
+	 */
 	gamemap::location minimap_location_on(int x, int y);
 
 	const gamemap::location& selected_hex() { return selectedHex_; }
@@ -148,10 +162,10 @@ public:
 	virtual void select_hex(gamemap::location hex);
 	virtual void highlight_hex(gamemap::location hex);
 
-	//! Function to invalidate the game status displayed on the sidebar.
+	/** Function to invalidate the game status displayed on the sidebar. */
 	void invalidate_game_status() { invalidateGameStatus_ = true; }
 
-	//! Functions to get the on-screen positions of hexes.
+	/** Functions to get the on-screen positions of hexes. */
 	int get_location_x(const gamemap::location& loc) const;
 	int get_location_y(const gamemap::location& loc) const;
 
@@ -165,12 +179,12 @@ public:
 		int top[2]; // for even and odd values of x, respectively
 		int bottom[2]; 
 
-		//!  very simple iterator to walk into the rect_of_hexes
+		/**  very simple iterator to walk into the rect_of_hexes */
 		struct iterator {
 			iterator(gamemap::location loc, rect_of_hexes& rect)
 				: loc_(loc), rect_(rect){};
 
-			//! increment y first, then when reaching bottom, increment x
+			/** increment y first, then when reaching bottom, increment x */
 			void operator++();
 			bool operator!=(const iterator &that) const {return that.loc_ != loc_;};
 			const gamemap::location& operator*() const {return loc_;};
@@ -184,29 +198,31 @@ public:
 		iterator end();
 	};
 
-	//! Return the rectangular area of hexes overlapped by r (r is in screen coordinates)
+	/** Return the rectangular area of hexes overlapped by r (r is in screen coordinates) */
 	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
 
-	//! Returns the rectangular area of visible hexes
+	/** Returns the rectangular area of visible hexes */
 	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());};
 
-	//! Returns true if location (x,y) is covered in shroud.
+	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const gamemap::location& loc) const {
 		return viewpoint_ && viewpoint_->shrouded(loc);
 	}
-	//! Returns true if location (x,y) is covered in fog.
+	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const gamemap::location& loc) const { 
 		return viewpoint_ && viewpoint_->fogged(loc);
 	}
 
-	//! Determines whether a grid should be overlayed on the game board.
-	//! (to more clearly show where hexes are)
+	/**
+	 * Determines whether a grid should be overlayed on the game board.
+	 * (to more clearly show where hexes are)
+	 */
 	void set_grid(const bool grid) { grid_ = grid; }
 
-	//! Save a (map-)screenshot and return the estimated file size
+	/** Save a (map-)screenshot and return the estimated file size */
 	int screenshot(std::string filename, bool map_screenshot = false);
 
-	//! Invalidates entire screen, including all tiles and sidebar.
+	/** Invalidates entire screen, including all tiles and sidebar. */
 	void redraw_everything();
 
 	theme& get_theme() { return theme_; }
@@ -221,16 +237,16 @@ public:
 	// Will be overridden in the display subclass
 	virtual void draw_minimap_units() {};
 	
-	//! Function to invalidate all tiles.
+	/** Function to invalidate all tiles. */
 	void invalidate_all();
 
-	//! Function to invalidate a specific tile for redrawing.
+	/** Function to invalidate a specific tile for redrawing. */
 	bool invalidate(const gamemap::location& loc);
 	
-	//! invalidate all hexes under the rectangle rect (in screen coordinates)
+	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
 
-	//! check if an hexes under the rectangle is invalidated
+	/** check if an hexes under the rectangle is invalidated */
 	bool rectangle_need_update(const SDL_Rect& rect) const;
 
 	/**
@@ -246,14 +262,16 @@ public:
 
 	const gamemap& get_map()const { return map_;}
 
-	// The last action in drawing a tile is adding the overlays.
-	// These overlays are drawn in the following order:
-	// hex_overlay_			if the drawn location is in the map
-	// selected_hex_overlay_	if the drawn location is selected
-	// mouseover_hex_overlay_	if the drawn location is underneath the mouse
-	//
-	// These functions require a prerendered surface.
-	// Since they are drawn at the top, they are not influenced by TOD, shroud etc.
+	/**
+	 * The last action in drawing a tile is adding the overlays.
+	 * These overlays are drawn in the following order:
+	 * hex_overlay_			if the drawn location is in the map
+	 * selected_hex_overlay_	if the drawn location is selected
+	 * mouseover_hex_overlay_	if the drawn location is underneath the mouse
+	 *
+	 * These functions require a prerendered surface.
+	 * Since they are drawn at the top, they are not influenced by TOD, shroud etc.
+	 */
 	void set_hex_overlay(const gamemap::location& loc, surface image) { hex_overlay_[loc] = image; }
 	void clear_hex_overlay(const gamemap::location& loc);
 
@@ -263,33 +281,37 @@ public:
 	void set_mouseover_hex_overlay(const surface& image) { mouseover_hex_overlay_ = image; }
 	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
 
-	//! Debug function to toggle the "sunset" mode.
-	//! The map area become progressively darker,
-	//! except where hexes are refreshed.
-	//! delay is the number of frames between each darkening
-	//! (0 to toggle).
+	/**
+	 * Debug function to toggle the "sunset" mode.
+	 * The map area become progressively darker,
+	 * except where hexes are refreshed.
+	 * delay is the number of frames between each darkening
+	 * (0 to toggle).
+	 */
 	void sunset(const size_t delay = 0);
 
-	//! Toogle to continuously redraw the screen.
+	/** Toogle to continuously redraw the screen. */
 	void toggle_benchmark();
 
 	void flip();
 
-	//! Copy the backbuffer to the framebuffer.
+	/** Copy the backbuffer to the framebuffer. */
 	void update_display();
 
-	//! Rebuild all dynamic terrain.
+	/** Rebuild all dynamic terrain. */
 	void rebuild_all() { builder_.rebuild_all(); }
 
-	//! Draw the image of a unit at a certain location.
-	//! x,y: pixel location on screen to draw the unit
-	//! image: the image of the unit
-	//! reverse: if the unit should be flipped across the x axis
-	//! greyscale: used when the unit is stoned
-	//! alpha: the merging to use with the background
-	//! blendto: blend to this colour using blend_ratio
-	//! submerged: the amount of the unit out of 1.0 that is submerged
-	//!            (presumably under water) and thus shouldn't be drawn
+	/**
+	 * Draw the image of a unit at a certain location.
+	 * x,y: pixel location on screen to draw the unit
+	 * image: the image of the unit
+	 * reverse: if the unit should be flipped across the x axis
+	 * greyscale: used when the unit is stoned
+	 * alpha: the merging to use with the background
+	 * blendto: blend to this colour using blend_ratio
+	 * submerged: the amount of the unit out of 1.0 that is submerged
+	 *            (presumably under water) and thus shouldn't be drawn
+	 */
 	void render_unit_image(int x, int y, const bool fake_unit,
 			const int drawing_order, surface image,
 			bool hreverse=false, bool greyscale=false,
@@ -297,34 +319,41 @@ public:
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
 
 	const theme::menu* menu_pressed();
-
-	//! Finds the menu which has a given item in it,
-	//! and enables or disables it.
+	
+	/**
+	 * Finds the menu which has a given item in it,
+	 * and enables or disables it.
+	 */
 	void enable_menu(const std::string& item, bool enable);
 
 	void set_diagnostic(const std::string& msg);
 
-	// Delay routines: use these not SDL_Delay (for --nogui).
+	/** Delay routines: use these not SDL_Delay (for --nogui). */
 	void delay(unsigned int milliseconds) const;
-
-	//! Set/Get whether 'turbo' mode is on.
-	//! When turbo mode is on, everything moves much faster.
+	
+	/**
+	 * Set/Get whether 'turbo' mode is on.
+	 * When turbo mode is on, everything moves much faster.
+	 */
 	void set_turbo(const bool turbo) { turbo_ = turbo; }
 
 	double turbo_speed() const;
 
 	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
 
-	// control unit idle animations and their frequency
+	/** control unit idle animations and their frequency */
 	void set_idle_anim(bool ison) { idle_anim_ = ison; }
 	bool idle_anim() const { return idle_anim_; }
 	void set_idle_anim_rate(int rate);
 	double idle_anim_rate() const { return idle_anim_rate_; }
 
-	//! Add a location to highlight.
-	//! Note that this has nothing to do with selecting hexes,
-	//! it is pure highlighting. These hexes will be highlighted
-	//! slightly darker than the currently selected hex.
+	/**
+	 * Add a location to highlight.
+	 *
+	 * Note that this has nothing to do with selecting hexes,
+	 * it is pure highlighting. These hexes will be highlighted
+	 * slightly darker than the currently selected hex.
+	 */
 	void add_highlighted_loc(const gamemap::location &hex);
 
 	void clear_highlighted_locs();
@@ -334,45 +363,53 @@ public:
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
 
-	//! Scrolls the display by xmov,ymov pixels.
-	//! Invalidation and redrawing will be scheduled.
+	/**
+	 * Scrolls the display by xmov,ymov pixels.
+	 * Invalidation and redrawing will be scheduled.
+	 */
 	void scroll(int xmov, int ymov);
 
-	//! Zooms the display by the specified amount.
-	//! Negative values zoom out.
-	//! Note the amount should be a multiple of four,
-	//! otherwise the images might start to look odd
-	//! (hex_width() gets rounding errors).
+	/**
+	 * Zooms the display by the specified amount.
+	 * Negative values zoom out.
+	 * Note the amount should be a multiple of four,
+	 * otherwise the images might start to look odd
+	 * (hex_width() gets rounding errors).
+	 */
 	void set_zoom(int amount);
 
-	//! Sets the zoom amount to the default.
+	/** Sets the zoom amount to the default. */
 	void set_default_zoom();
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
 
-	//! Scroll such that location loc is on-screen.
-	//! WARP jumps to loc; SCROLL uses scroll speed;
-	//! ONSCREEN only scrolls if x,y is offscreen
+	/**
+	 * Scroll such that location loc is on-screen.
+	 * WARP jumps to loc; SCROLL uses scroll speed;
+	 * ONSCREEN only scrolls if x,y is offscreen
+	 */
 	void scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
-	//! Scroll such that location loc1 is on-screen.
-	//! It will also try to make it such that loc2 is on-screen,
-	//! but this is not guaranteed. For ONSCREEN scrolls add_spacing
-	//! sets the desired minimum distance from the border in hexes.
+	/**
+	 * Scroll such that location loc1 is on-screen.
+	 * It will also try to make it such that loc2 is on-screen,
+	 * but this is not guaranteed. For ONSCREEN scrolls add_spacing
+	 * sets the desired minimum distance from the border in hexes.
+	 */
 	void scroll_to_tiles(gamemap::location loc1, gamemap::location loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 			     double add_spacing=0.0);
 
-	//! Scroll to fit as many locations on-screen as possible, starting with the first.
+	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
 	void scroll_to_tiles(const std::vector<gamemap::location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 	                     bool only_if_possible=false,
 			     double add_spacing=0.0);
 
-	//! Expose the event, so observers can be notified about map scrolling.
+	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return _scroll_event; }
 
-	//! Check if a tile is fully on screen.
+	/** Check if a tile is fully on screen. */
 	bool tile_on_screen(const gamemap::location& loc);
 
 	/** 
@@ -387,23 +424,29 @@ public:
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }
 
-	//! Announce a message prominently.
+	/** Announce a message prominently. */
 	void announce(const std::string msg,
 		       const SDL_Color& colour = font::GOOD_COLOUR);
 
-	//! Schedule the minimap for recalculation.
-	//! Useful if any terrain in the map has changed.
+	/**
+	 * Schedule the minimap for recalculation.
+	 * Useful if any terrain in the map has changed.
+	 */
 	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; };
 
-	//! Schedule the minimap to be redrawn.
-	//! Useful if units have moved about on the map.
+	/**
+	 * Schedule the minimap to be redrawn.
+	 * Useful if units have moved about on the map.
+	 */
 	void redraw_minimap() { redrawMinimap_ = true; }
 
-	//! Set what will be shown for the report with type which_report.
-	//! Note that this only works for some reports,
-	//! i.e. reports that can not be deducted
-	//! from the supplied arguments to generate_report,
-	//! currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
+	/**
+	 * Set what will be shown for the report with type which_report.
+	 * Note that this only works for some reports,
+	 * i.e. reports that can not be deducted
+	 * from the supplied arguments to generate_report,
+	 * currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
+	 */
 	void set_report_content(const reports::TYPE which_report, const std::string &content);
 	std::map<reports::TYPE, std::string> get_report_contents() {return report_;};
 
@@ -512,10 +555,13 @@ protected:
 	std::string fog_image_;
 	time_of_day tod_;
 
-	//! Event raised when the map is being scrolled
+	/** Event raised when the map is being scrolled */
 	mutable events::generic_event _scroll_event;
-	//! Holds the tick count for when the next drawing event is scheduled.
-	//! Drawing shouldn't occur before this time.
+
+	/**
+	 * Holds the tick count for when the next drawing event is scheduled.
+	 * Drawing shouldn't occur before this time.
+	 */
 	int nextDraw_;
 
 	// Not set by the initializer:
@@ -534,7 +580,7 @@ protected:
 	CKey keys_;
 
 public:
-	//! Helper structure for rendering the terrains.
+	/** Helper structure for rendering the terrains. */
 	struct tblit{
 		tblit(const int x, const int y) :
 			x(x),
@@ -560,47 +606,67 @@ public:
 			{}
 
 
-		int x;                      //!< x screen coordinate to render at.
-		int y;                      //!< y screen coordinate to render at.
-		std::vector<surface> surf;  //!< surface(s) to render.
-		SDL_Rect clip;              //!< The clipping area of the source if
-		                            //!  ommitted the entire source is used.
+		int x;                      /**< x screen coordinate to render at. */
+		int y;                      /**< y screen coordinate to render at. */
+		std::vector<surface> surf;  /**< surface(s) to render. */
+		SDL_Rect clip;              /**< 
+									 * The clipping area of the source if
+									 * ommitted the entire source is used.
+									 */
 	};
 
-	//! The layers to render something on. This value should never be stored
-	//! it's the internal drawing order and adding removing and reordering
-	//! the layers should be safe.
-	//! If needed in WML use the name and map that to the enum value.
+	/**
+	 * The layers to render something on. This value should never be stored
+	 * it's the internal drawing order and adding removing and reordering
+	 * the layers should be safe.
+	 * If needed in WML use the name and map that to the enum value.
+	 */
 	enum tdrawing_layer{
-		LAYER_TERRAIN_BG,          //!< Layer for the terrain drawn behind the
-		                           //!< unit.
-		LAYER_TERRAIN_TMP_BG,      //!< Layer which holds stuff that needs to be
-		                           //!< sorted out further, but under units
-		LAYER_UNIT_BG,             //!< Used for the ellipse behind the unit.
-		LAYER_UNIT_FIRST,          //!< Reserve layeres to be selected for WML.
+		LAYER_TERRAIN_BG,          /**< 
+									* Layer for the terrain drawn behind the
+									* unit.
+									*/
+		LAYER_TERRAIN_TMP_BG,      /**< 
+									* Layer which holds stuff that needs to be
+									* sorted out further, but under units.
+									*/
+		LAYER_UNIT_BG,             /**< Used for the ellipse behind the unit. */
+		LAYER_UNIT_FIRST,          /**< Reserve layeres to be selected for WML. */
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_UNIT_FG,             //!< Used for the ellipse in front of the
-		                           //!< unit.
-		LAYER_UNIT_FAKE,           //!< The fake unit is drawn on this layer.
-		LAYER_TERRAIN_FG,          //!< Layer for the terrain drawn in front of
-		                           //!< the unit.
-		LAYER_TERRAIN_TMP_FG,      //!< Layer which holds stuff that needs to be
-		                           //!< sorted out further, but on top of units
-		LAYER_REACHMAP,            //!< "black stripes" on unreachable hexes
-		LAYER_FOG_SHROUD,          //!< Fog and shroud
-		LAYER_UNIT_BAR,            //!< Unit bars and overlays are drawn on
-		                           //!< this layer (for testing here).
-		LAYER_MOVE_INFO,           //!< Movement info (defense%, ect...)
-		LAYER_LINGER_OVERLAY,      //!< The overlay used for the linger mode.
+		LAYER_UNIT_FG,             /**< 
+									* Used for the ellipse in front of the
+									* unit.
+									*/
+		LAYER_UNIT_FAKE,           /**< The fake unit is drawn on this layer. */
+		LAYER_TERRAIN_FG,          /**< 
+									* Layer for the terrain drawn in front of
+									* the unit.
+									*/
+		LAYER_TERRAIN_TMP_FG,      /**< 
+									* Layer which holds stuff that needs to be
+									* sorted out further, but on top of units.
+									*/
+		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
+		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
+		LAYER_UNIT_BAR,            /**< 
+									* Unit bars and overlays are drawn on this
+									* layer (for testing here).
+									*/
+		LAYER_MOVE_INFO,           /**< Movement info (defense%, ect...). */
+		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
 
-		LAYER_LAST_LAYER           //!< Don't draw to this layer it's a dummy
-		                           //! to size the vector.
+		LAYER_LAST_LAYER           /**< 
+									* Don't draw to this layer it's a dummy to
+									* size the vector.
+									*/
 		};
 
-	//! Draw text on a hex. (0.5, 0.5) is the center.
-	//! The font size is adjusted to the zoom factor
-	//! and divided by 2 for tiny-gui.
+	/**
+	 * Draw text on a hex. (0.5, 0.5) is the center.
+	 * The font size is adjusted to the zoom factor
+	 * and divided by 2 for tiny-gui.
+	 */
 	void draw_text_in_hex(const gamemap::location& loc,
 		const tdrawing_layer layer, const std::string& text, size_t font_size,
 		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
@@ -622,12 +688,14 @@ protected:
 	// with TDRAWING_BUFFER_USES_VECTOR
 	//     20080308 -- Mordante
 
-	//! * Surfaces are rendered per level in a map.
-	//! * Per level the items are rendered per location these locations are
-	//!   stored in the drawing order required for units.
-	//! * every location has a vector with surfaces, each with its own screen
-	//!   coordinate to render at.
-	//! * every vector element has a vector with surfaces to render.
+	/**
+	 * * Surfaces are rendered per level in a map.
+	 * * Per level the items are rendered per location these locations are
+	 *   stored in the drawing order required for units.
+	 * * every location has a vector with surfaces, each with its own screen
+	 *   coordinate to render at.
+	 * * every vector element has a vector with surfaces to render.
+	 */
 #if TDRAWING_BUFFER_USES_VECTOR
 	typedef std::vector<std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
 #else
@@ -637,45 +705,52 @@ protected:
 
 public:
 
-	//! Add an item to the drawing buffer.
-	//!
-	//! @param layer              The layer to draw on.
-	//! @param drawing_order      The order in which to draw, needed for units.
-	//! @param blit               The structure to blit.
+	/**
+	 * Add an item to the drawing buffer.
+	 *
+	 * @param layer              The layer to draw on.
+	 * @param drawing_order      The order in which to draw, needed for units.
+	 * @param blit               The structure to blit.
+	 */
 	void drawing_buffer_add(const tdrawing_layer layer, const int drawing_order, const tblit& blit)
 		{ drawing_buffer_[layer][drawing_order].push_back(blit); }
 
 protected:
 
-	//! Draws the drawing_buffer_ and clears it.
+	/** Draws the drawing_buffer_ and clears it. */
 	void drawing_buffer_commit();
 
-	//! Clears the drawing buffer.
+	/** Clears the drawing buffer. */
 	void drawing_buffer_clear();
 
-	//! redraw all panels associated with the map display
+	/** redraw all panels associated with the map display */
 	void draw_all_panels();
 
-	//! Strict weak ordering to sort a STL-set of hexes
-	//! for drawing using the z-order.
-	//! (1000 are just to weight the y compare to x)
+	/**
+	 * Strict weak ordering to sort a STL-set of hexes
+	 * for drawing using the z-order.
+	 * (1000 are just to weight the y compare to x)
+	 */
 	struct ordered_draw : public std::binary_function<gamemap::location, gamemap::location, bool> {
 		bool operator()(gamemap::location a, gamemap::location b) {
 			return (a.y*2 + a.x%2) * 1024 + a.x < (b.y*2 + b.x%2) * 1024 + b.x;
 		}
 	};
 
-	//! Invalidate controls and panels when changed
-	//! after they have been drawn initially.
-	//! Useful for dynamic theme modification.
+	/**
+	 * Initiate a redraw.
+	 *
+	 * Invalidate controls and panels when changed after they have been drawn
+	 * initially. Useful for dynamic theme modification.
+	 */
 	bool draw_init();
 	void draw_wrap(bool update,bool force,bool changed);
 
-	//! Used to indicate to drawing funtions that we are doing a map screenshot
+	/** Used to indicate to drawing funtions that we are doing a map screenshot */
 	bool map_screenshot_;
 
 private:
-	//! Handle for the label which displays frames per second.
+	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
 
 	bool idle_anim_;

@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file display.cpp
-//! Routines to set up the display, scroll and zoom the map.
+/**
+ * @file display.cpp
+ * Routines to set up the display, scroll and zoom the map.
+ */
 
 #include "global.hpp"
 
@@ -841,14 +843,14 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		if(rects_overlap(b->location(),loc)) {
 			b->set_dirty(true);
 			if (first_time){
-				//! @todo FixMe YogiHH:
-				// This is only made to have the buttons store
-				// their background information, otherwise
-				// the background will appear completely black.
-				// It would more straightforward to call bg_update,
-				// but that is not public and there seems to be
-				// no other way atm to call it.
-				// I will check if bg_update can be made public.
+				/**
+				 * @todo FixMe YogiHH:
+				 * This is only made to have the buttons store their background
+				 * information, otherwise the background will appear completely
+				 * black. It would more straightforward to call bg_update, but
+				 * that is not public and there seems to be no other way atm to
+				 * call it. I will check if bg_update can be made public.
+				 */
 				b->hide(true);
 				b->hide(false);
 			}
@@ -1068,8 +1070,6 @@ void display::set_diagnostic(const std::string& msg)
 	}
 }
 
-//! Initiate a redraw.
-//! May require redrawing panels and background.
 bool display::draw_init()
 {
 	bool changed = false;
@@ -1150,7 +1150,6 @@ void display::draw_wrap(bool update,bool force,bool changed)
 	}
 }
 
-//! Delay routines: use these instead of SDL_Delay (for --nogui).
 void display::delay(unsigned int milliseconds) const
 {
 	if (!game_config::no_delay)
@@ -1493,7 +1492,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
 
-		//! @todo Those values might need some fine-tuning:
+		/** @todo Those values might need some fine-tuning: */
 		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached
 		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
 
@@ -1804,7 +1803,7 @@ void display::draw(bool update,bool force) {
 		drawing_buffer_commit();
 		post_commit();
 		draw_sidebar();
-		//! @todo FIXME: This changed can probably be smarter
+		/** @todo FIXME: This changed can probably be smarter */
 		changed = true;
 		// Simulate slow PC:
 		//SDL_Delay(2*simulate_delay + rand() % 20);
