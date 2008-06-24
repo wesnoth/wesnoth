@@ -35,13 +35,13 @@ libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = e
 game_config_env = env.Clone()
 filesystem_env = env.Clone()
 if env["PLATFORM"] != "win32":
-	game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"%s\"'" % env['datadir'])
+	game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
     if env['localedirname']:
-	    filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"%s\"'" % env['localedirname'])
+	    filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
 	    if not os.path.isabs(env['localedirname']):
 		    filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
     if env['prefsdir']:
-	    filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"%s\"'" % env['prefsdir'])
+	    filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
 
 libwesnoth_core_sources.extend([
     game_config_env.Object("game_config.cpp"),
@@ -220,7 +220,7 @@ wesnoth_sources = Split("""
     widgets/combo.cpp
     widgets/scrollpane.cpp
     """)
-wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"%s\"'" % env['prefix'] or None))
+wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 python_env = env.Clone()
 if env['python']:
@@ -283,7 +283,7 @@ campaignd_sources = Split("""
     """)
 
 if env["PLATFORM"] == "win32": env["fifodir"] = ""
-campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"%s\"'" % env['fifodir'] or None))
+campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
 
@@ -297,7 +297,7 @@ wesnothd_sources = Split("""
     server/simple_wml.cpp
 	time.cpp
     """)
-wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"%s\"'" % env['fifodir'] or None))
+wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
 env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, libwesnothd], have_server_prereqs)
 
