@@ -405,9 +405,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			if (era_cfg != NULL) {
 				games_.back().map_info = era_cfg->get_attribute("name");
 			} else {
-//				if((**game)["require_era"] == "yes") {
+				if((**game)["require_era"] == "no") {
+				    games_.back().have_era = true;
+				} else {
 					games_.back().have_era = false;
-//				}
+				}
 				games_.back().map_info = vgettext("Unknown era: $era_id", symbols);
 				verified = false;
 			}

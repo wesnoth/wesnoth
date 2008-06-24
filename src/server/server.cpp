@@ -1421,8 +1421,8 @@ void server::process_data_game(const network::connection sock,
 		}
 		if(data.child("era")) {
 			desc.set_attr_dup("mp_era", data.child("era")->attr("id"));
-			if(data.child("era")->attr("require_era").to_bool()) {
-				desc.set_attr("require_era", "yes");
+			if(!(utils::string_bool(data.child("era")->attr("require_era").to_string(),true))) {
+				desc.set_attr("require_era", "no");
 			}
 		} else {
 			desc.set_attr("mp_era", "");
