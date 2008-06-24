@@ -22,6 +22,7 @@
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
+#include "file_chooser.hpp"
 #include "game_display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
@@ -1662,11 +1663,39 @@ void game_controller::remove_addon(const std::string& addon)
 	remove_local_addon(addon);
 }
 
+	class file_preview_pane : public gui::preview_pane {
+
+	};
+
+
+	class filebrowser : public gui::dialog {
+		std::string directory_;
+		std::string regex_match_;
+		bool show_dirs_;
+		public:
+		filebrowser(display &disp, const std::string& title="", const std::string& message="");
+		int show();
+	};
+
+	filebrowser::filebrowser(display &disp, const std::string& title, const std::string& message) :
+		gui::dialog(disp, title, message,gui::OK_CANCEL),
+		directory_(), regex_match_(), show_dirs_(false)
+	{
+		
+	}
+
+	int filebrowser::show()
+	{
+		return gui::dialog::show();
+	}
+
 void game_controller::start_wesnothd()
 {
+	// Make sure that we have laoded name from preferences
+	preferences::check_mp_server_program_name();
 
 	if(game_config::wesnothd_name.empty()) {
-		throw game::mp_server_error("Couldn't locate the server binary.");
+		throw game::mp_server_error("No server name given the server binary.");
 
 	}
 
@@ -1687,7 +1716,6 @@ void game_controller::start_wesnothd()
 	if (std::system(("cmd /C start \"wesnoth server\" /B \"" + game_config::wesnothd_name + "\" -c " + config + " -t 2 -T 5 ").c_str()) != 0)
 #endif
 	{
-#ifndef _WIN32
 		// try to locate wesnothd
 		std::string old_name = game_config::wesnothd_name;
 		std::string needle = "wesnothd";
@@ -1696,21 +1724,24 @@ void game_controller::start_wesnothd()
 				&& found  + needle.size() < game_config::wesnothd_name.size())
 		{
 			game_config::wesnothd_name = game_config::wesnothd_name.substr(0, found + needle.size());
-
-			try {
-				start_wesnothd();
-				return;
-			} catch(...)
+#ifdef _WIN32
+			game_config::Wesnothd_name += ".exe";
+#endif
+			if (old_name != game_config::wesnothd_name)
 			{
-				game_config::wesnothd_name = old_name;
-				throw;
+
+				try {
+					start_wesnothd();
+					return;
+				} catch(...)
+				{
+					game_config::wesnothd_name = old_name;
+					throw;
+				}
 			}
 		}
-		else
-#endif
-		{
-			// We should show gui to set wesnothd_name
-		}
+		
+
 		LOG_GENERAL << "Failed to run server start script\n";
 		throw game::mp_server_error("Starting MP server failed!");
 	}
@@ -1805,7 +1836,32 @@ bool game_controller::play_multiplayer()
 	try {
 		if (res == 2)
 		{
-			start_wesnothd();
+			try {
+				start_wesnothd();
+			} catch(game::mp_server_error)
+			{
+				std::string path = preferences::show_wesnothd_server_search(disp());
+
+				if (!path.empty())
+				{
+					std::string old_name = game_config::wesnothd_name;
+					game_config::wesnothd_name = path;
+					try {
+						start_wesnothd();
+					} catch(...)
+					{
+						game_config::wesnothd_name = old_name;
+						throw;
+					}
+					preferences::set_mp_server_program_name();
+				}
+				else
+				{
+					throw game::mp_server_error("No path given for mp server prgoram.");
+				}
+			}
+
+
 		}
 
 		/* do */ {

@@ -95,6 +95,7 @@ else:
 
 if env.get('cxxtool',""):
 	env['CXX'] = env['cxxtool']
+	env['ENV']['HOME'] = os.environ['HOME']
 
 Help("""Arguments may be a mixture of switches and targets an any order.
 Switches apply to the entire build regrdless of where they are in the order.

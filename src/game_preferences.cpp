@@ -367,6 +367,24 @@ void set_mp_server_warning_disabled(int value)
 	preferences::set("mp_server_warning_disabled", lexical_cast<std::string>(value));
 }
 
+void set_mp_server_program_name()
+{
+	if (game_config::wesnothd_name.empty())
+	{
+		preferences::clear("mp_server_program_name");
+	}
+	else
+	{
+		preferences::set("mp_server_program_name", game_config::wesnothd_name);
+	}
+}
+
+void check_mp_server_program_name()
+{
+	if (preferences::get("mp_server_program_name").empty())
+		return;
+	game_config::wesnothd_name = preferences::get("mp_server_program_name");
+}
 
 bool random_start_time()
 {

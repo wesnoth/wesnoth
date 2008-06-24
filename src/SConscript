@@ -179,7 +179,6 @@ wesnoth_sources = Split("""
     game_display.cpp
     game_events.cpp
     game_preferences.cpp
-    game_preferences_display.cpp
     gamestatus.cpp
     generate_report.cpp
     halo.cpp
@@ -221,6 +220,7 @@ wesnoth_sources = Split("""
     widgets/combo.cpp
     widgets/scrollpane.cpp
     """)
+wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = "WESNOTH_PREFIX='\"%s\"'" % env['prefix']))
 
 python_env = env.Clone()
 if env['python']:

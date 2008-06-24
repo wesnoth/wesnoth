@@ -40,6 +40,7 @@ namespace preferences {
 	void set_idle_anim(bool ison);
 	void set_idle_anim_rate(int rate);
 
+	std::string show_wesnothd_server_search(display&);
 	void show_preferences_dialog(display& disp, const config& game_cfg);
 	bool show_video_mode_dialog(display& disp);
 	bool show_theme_dialog(display& disp);

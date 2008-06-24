@@ -216,8 +216,6 @@ namespace game_config
 			sinf.address = (**server)["address"];
 			server_list.push_back(sinf);
 		}
-		if (!v["wesnothd_name"].empty())
-			wesnothd_name = v["wesnothd_name"];
 	}
 
 	void add_color_info(const config& v){

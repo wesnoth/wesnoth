@@ -17,6 +17,8 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
+#include "filesystem.hpp"
+#include "file_chooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
@@ -112,6 +114,7 @@ private:
 			show_lobby_joins_button2_,
 			show_lobby_joins_button3_,
 			sort_list_by_group_button_, iconize_list_button_,
+			mp_server_search_button_,
 			friends_list_button_, friends_back_button_,
 			friends_add_friend_button_, friends_add_ignore_button_,
 			friends_remove_button_, show_floating_labels_button_,
@@ -168,6 +171,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
+	  mp_server_search_button_(disp.video(), _("set path to server")),
 	  friends_list_button_(disp.video(), _("Friends List")),
 	  friends_back_button_(disp.video(), _("Multiplayer Options")),
 	  friends_add_friend_button_(disp.video(), _("Add As Friend")),
@@ -362,6 +366,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button3_.set_check(lobby_joins() == SHOW_ALL);
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
 
+	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host lan games."));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
 	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
@@ -427,6 +432,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&show_lobby_joins_button1_);
 	h.push_back(&show_lobby_joins_button2_);
 	h.push_back(&show_lobby_joins_button3_);
+	h.push_back(&mp_server_search_button_);
 	h.push_back(&friends_list_button_);
 	h.push_back(&friends_back_button_);
 	h.push_back(&friends_add_friend_button_);
@@ -622,6 +628,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline; show_lobby_joins_button3_.set_location(rect.x, ypos);
 
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
+
+	mp_server_search_button_.set_location(rect.x + 10 + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
@@ -859,6 +867,9 @@ void preferences_dialog::process_event()
 		if (friends_list_button_.pressed())
 			set_selection(FRIENDS_TAB);
 
+		if (mp_server_search_button_.pressed())
+			show_wesnothd_server_search(disp_);
+
 		set_chat_lines(chat_lines_slider_.value());
 
 		//display currently select amount of chat lines
@@ -1094,6 +1105,7 @@ void preferences_dialog::set_selection(int index)
 	show_lobby_joins_button2_.hide(hide_multiplayer);
 	show_lobby_joins_button3_.hide(hide_multiplayer);
 	friends_list_button_.hide(hide_multiplayer);
+	mp_server_search_button_.hide(hide_multiplayer);
 
 	const bool hide_friends = tab_ != FRIENDS_TAB;
 	friends_.hide(hide_friends);
@@ -1108,6 +1120,24 @@ void preferences_dialog::set_selection(int index)
 	advanced_button_.hide(hide_advanced);
 }
 
+}
+
+std::string show_wesnothd_server_search(display& disp)
+{
+	// Showing file_chooser so user can search the wesnothd
+#ifndef _WIN32
+	std::string title =  _("Find wesnothd server binary");
+	std::string path = WESNOTH_PREFIX + std::string("/bin");
+	if (!is_directory(path))
+		path = get_cwd();
+
+#else
+	std::string title =  _("Find wesnothd.exe server binary");
+	std::string path = get_cwd();
+#endif
+
+	int res = dialogs::show_file_chooser_dialog(disp, path, title);
+	return path;
 }
 
 void show_preferences_dialog(display& disp, const config& game_cfg)

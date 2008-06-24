@@ -39,7 +39,8 @@ namespace preferences {
 	void write_preferences();
 
 	// Low-level, should be seen only by preferences_display ?
-	void set(const std::string key, std::string value);
+	void set(const std::string& key, std::string value);
+	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
 	config* get_child(const std::string& key);
 	const std::string get(const std::string key);

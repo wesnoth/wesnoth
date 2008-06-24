@@ -76,8 +76,13 @@ void write_preferences()
 
 }
 
-void set(const std::string key, std::string value) {
+void set(const std::string& key, std::string value) {
 	prefs[key] = value;
+}
+
+void clear(const std::string& key)
+{
+	prefs.recursive_clear_value(key);
 }
 
 void set_child(const std::string& key, const config& val) {
