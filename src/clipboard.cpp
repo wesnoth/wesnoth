@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file clipboard.cpp 
-//!
+/** @file clipboard.cpp */
 
 #include "global.hpp"
 
@@ -276,9 +275,10 @@ void copy_to_clipboard(const std::string& text, const bool mouse)
 	}
 }
 
-
-//! Tries to grab a given target. 
-//! Returns true if successful, false otherwise.
+/**
+ * Tries to grab a given target. 
+ * Returns true if successful, false otherwise.
+ */
 static bool try_grab_target(Atom source, Atom target, std::string& ret)
 {
 	UseX x11;
