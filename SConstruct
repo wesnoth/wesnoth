@@ -263,9 +263,6 @@ installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir pyt
 for d in installdirs:
     env[d] = os.path.join(env["prefix"], env[d])
 
-for d in installdirs:
-    env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
-
 test_env = env.Clone()
 if boost_test_dyn_link:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
@@ -345,6 +342,8 @@ if env["dummy_locales"]:
 # and doc files.
 #
 
+for d in installdirs:
+    env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
 bindir = env['bindir']
 pythonlib = env['python_site_packages_dir']
 datadir = env['datadir']
