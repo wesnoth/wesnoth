@@ -31,6 +31,7 @@ public:
 	ttoggle_button() : 
 		tcontrol(COUNT),
 		state_(ENABLED),
+		retval_(0),
 		callback_mouse_left_click_(0),
 		icon_name_()
 	{
@@ -46,6 +47,9 @@ public:
 
 	/** Inherted from tevent_executor. */
 	void mouse_left_button_click(tevent_handler&);
+
+	/** Inherted from tevent_executor. */
+	void mouse_left_button_double_click(tevent_handler&);
 
 	/** 
 	 * Inherited from tcontrol.
@@ -75,6 +79,8 @@ public:
 	void set_selected(const bool selected = true);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_retval(const int retval);
 
 	void set_callback_mouse_left_click(void (*callback) (twidget*)) 
 		{ callback_mouse_left_click_ = callback; }
@@ -107,6 +113,14 @@ private:
 	 */
 	tstate state_;
  
+ 	/**
+	 * The return value of the button.
+	 *
+	 * If this value is not 0 and the button is double clicked it sets the
+	 * retval of the window and the window closes itself.
+	 */
+	int retval_;
+
  	/** This callback is used when the control gets a left click. */
 	void (*callback_mouse_left_click_) (twidget*);
 

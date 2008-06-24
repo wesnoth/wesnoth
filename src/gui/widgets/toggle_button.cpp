@@ -16,6 +16,7 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/canvas.hpp"
+#include "gui/widgets/window.hpp"
 
 #include "log.hpp"
 
@@ -90,6 +91,18 @@ void ttoggle_button::mouse_left_button_click(tevent_handler&)
 	}
 }
 
+void ttoggle_button::mouse_left_button_double_click(tevent_handler&)
+{
+	DBG_G_E << "Toggle button: left mouse button double click.\n"; 
+
+	assert(retval_ != 0);
+
+	twindow* window = get_window();
+	assert(window);
+
+	window->set_retval(retval_);
+}
+
 void ttoggle_button::set_active(const bool active)
 {
 	if(active) {
@@ -129,6 +142,16 @@ void ttoggle_button::set_selected(const bool selected)
 	} else {
 		set_state(static_cast<tstate>(state_ - ENABLED_SELECTED));
 	}
+}
+
+void ttoggle_button::set_retval(const int retval)
+{
+	if(retval == retval_) {
+		return;
+	}
+
+	retval_ = retval;
+	set_wants_mouse_left_double_click(retval_ != 0);
 }
 
 void ttoggle_button::set_state(tstate state)

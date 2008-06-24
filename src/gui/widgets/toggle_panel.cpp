@@ -15,6 +15,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 
 #include "foreach.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -89,6 +90,18 @@ void ttoggle_panel::mouse_left_button_click(tevent_handler&)
 	}
 }
 
+void ttoggle_panel::mouse_left_button_double_click(tevent_handler&)
+{
+	DBG_G_E << "Toggle panel: left mouse button double click.\n"; 
+
+	assert(retval_ != 0);
+
+	twindow* window = get_window();
+	assert(window);
+
+	window->set_retval(retval_);
+}
+
 void ttoggle_panel::set_active(const bool active)
 {
 	if(active) {
@@ -142,6 +155,16 @@ void ttoggle_panel::set_selected(const bool selected)
 	} else {
 		set_state(static_cast<tstate>(state_ - ENABLED_SELECTED));
 	}
+}
+
+void ttoggle_panel::set_retval(const int retval)
+{
+	if(retval == retval_) {
+		return;
+	}
+
+	retval_ = retval;
+	set_wants_mouse_left_double_click(retval_ != 0);
 }
 
 void ttoggle_panel::set_state(tstate state)

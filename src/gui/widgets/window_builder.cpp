@@ -226,17 +226,21 @@ public:
  *
  * @start_table = config
  *     icon (f_string = "")            The name of the icon file to show.
+ *     return_value (int = 0)          The return value, see
+ *                                     [[GUIToolkitWML#Button]] for more info.
  * @end_table
  */
 	tbuilder_toggle_button(const config& cfg) :
 		tbuilder_control(cfg),
-		icon_name_(cfg["icon"])
+		icon_name_(cfg["icon"]),
+		retval_(lexical_cast_default<int>(cfg["return_value"]))
 	{}
 
 	twidget* build () const;
 
 private:	
 	std::string icon_name_;
+	int retval_;
 };
 
 struct tbuilder_toggle_panel : public tbuilder_control
@@ -250,6 +254,9 @@ public:
 	twidget* build () const;
 
 	tbuilder_grid* grid;
+
+private:
+	int retval_;
 };
 
 struct tbuilder_vertical_scrollbar : public tbuilder_control
@@ -1013,6 +1020,7 @@ twidget* tbuilder_toggle_button::build() const
 	init_control(toggle_button);
 
 	toggle_button->set_icon_name(icon_name_);
+	toggle_button->set_retval(retval_);
 
 	DBG_G << "Window builder: placed toggle button '" << id << "' with defintion '" 
 		<< definition << "'.\n";
@@ -1022,7 +1030,8 @@ twidget* tbuilder_toggle_button::build() const
 
 tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
 	tbuilder_control(cfg),
-	grid(0)
+	grid(0),
+	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -1037,6 +1046,8 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
  * @start_table = config
  *     grid (section)                  Defines the grid with the widgets to
  *                                     place on the panel.
+ *     return_value (int = 0)          The return value, see
+ *                                     [[GUIToolkitWML#Button]] for more info.
  * @end_table                                   
  *
  */
@@ -1050,6 +1061,8 @@ twidget* tbuilder_toggle_panel::build() const
 	ttoggle_panel* toggle_panel = new ttoggle_panel();
 
 	init_control(toggle_panel);
+
+	toggle_panel->set_retval(retval_);
 
 	DBG_G << "Window builder: placed toggle panel '" << id << "' with defintion '" 
 		<< definition << "'.\n";
