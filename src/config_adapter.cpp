@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file config_adapter.cpp
-//! Construct objects like 'team' or 'unit' out of WML-based config-infos.
+/**
+ * @file config_adapter.cpp
+ * Construct objects like 'team' or 'unit' out of WML-based config-infos.
+ */
 
 #include "global.hpp"
 
@@ -230,7 +232,6 @@ int get_first_human_team(const config::child_list::const_iterator& cfg, const co
 	return result;
 }
 
-//! Return NULL if theme is not found.
 const config* get_theme(const config& game_config, std::string theme_name){
 	const config* theme_cfg = NULL;
 	if(theme_name != "") {
