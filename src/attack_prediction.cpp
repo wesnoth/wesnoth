@@ -115,11 +115,11 @@ private:
 					unsigned damage, double prob, bool drain);
 
 	/** @todo FIXME: rename using _ at end. */
-	unsigned int rows, cols;
-	double *plane[4];
+	unsigned int rows_, cols_;
+	double *plane_[4];
 
 	// For optimization, we keep track of the lower row/col we need to consider
-	unsigned int min_row[4], min_col[4];
+	unsigned int min_row_[4], min_col_[4];
 };
 
 prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
@@ -127,7 +127,7 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 						 unsigned int a_hp, unsigned int b_hp,
 						 const std::vector<double> a_summary[2],
 						 const std::vector<double> b_summary[2])
-	: rows(a_max_hp+1), cols(b_max_hp+1)
+	: rows_(a_max_hp+1), cols_(b_max_hp+1)
 {
 	if (!a_summary[0].empty()) {
 		// A has fought before.  Do we need a slow plane for it?
@@ -142,31 +142,31 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 			a_slows = true;
 	}
 
-	plane[NEITHER_SLOWED] = new_arr(rows*cols);
+	plane_[NEITHER_SLOWED] = new_arr(rows_*cols_);
 	if (b_slows)
-		plane[A_SLOWED] = new_arr(rows*cols);
+		plane_[A_SLOWED] = new_arr(rows_*cols_);
 	else
-		plane[A_SLOWED] = NULL;
+		plane_[A_SLOWED] = NULL;
 	if (a_slows)
-		plane[B_SLOWED] = new_arr(rows*cols);
+		plane_[B_SLOWED] = new_arr(rows_*cols_);
 	else
-		plane[B_SLOWED] = NULL;
+		plane_[B_SLOWED] = NULL;
 	if (a_slows && b_slows)
-		plane[BOTH_SLOWED] = new_arr(rows*cols);
+		plane_[BOTH_SLOWED] = new_arr(rows_*cols_);
 	else
-		plane[BOTH_SLOWED] = NULL;
+		plane_[BOTH_SLOWED] = NULL;
 
-	min_row[NEITHER_SLOWED] = a_hp - 1;
-	min_col[NEITHER_SLOWED] = b_hp - 1;
-	min_row[A_SLOWED] = min_row[B_SLOWED] = min_row[BOTH_SLOWED] = rows;
-	min_col[A_SLOWED] = min_col[B_SLOWED] = min_col[BOTH_SLOWED] = cols;
+	min_row_[NEITHER_SLOWED] = a_hp - 1;
+	min_col_[NEITHER_SLOWED] = b_hp - 1;
+	min_row_[A_SLOWED] = min_row_[B_SLOWED] = min_row_[BOTH_SLOWED] = rows_;
+	min_col_[A_SLOWED] = min_col_[B_SLOWED] = min_col_[BOTH_SLOWED] = cols_;
 
 	// Transfer HP distribution from A?
 	if (!a_summary[0].empty()) {
 		// @todo FIXME: Can optimize here.
-		min_row[NEITHER_SLOWED] = 0;
-		min_row[A_SLOWED] = 0;
-		min_col[A_SLOWED] = b_hp - 1;
+		min_row_[NEITHER_SLOWED] = 0;
+		min_row_[A_SLOWED] = 0;
+		min_col_[A_SLOWED] = b_hp - 1;
 		for (unsigned int row = 0; row < a_summary[0].size(); row++)
 			val(NEITHER_SLOWED, row, b_hp) = a_summary[0][row];
 		if (!a_summary[1].empty()) {
@@ -176,9 +176,9 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		debug(("A has fought before\n"));
 		dump();
 	} else if (!b_summary[0].empty()) {
-		min_col[NEITHER_SLOWED] = 0;
-		min_col[B_SLOWED] = 0;
-		min_row[B_SLOWED] = a_hp - 1;
+		min_col_[NEITHER_SLOWED] = 0;
+		min_col_[B_SLOWED] = 0;
+		min_row_[B_SLOWED] = a_hp - 1;
 		for (unsigned int col = 0; col < b_summary[0].size(); col++)
 			val(NEITHER_SLOWED, a_hp, col) = b_summary[0][col];
 		if (!b_summary[1].empty()) {
@@ -190,18 +190,18 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	} else {
 		// If a unit has drain it might end with more HP than before.
 		// Make sure we don't access the matrix in invalid positions.
-		a_hp = minimum<unsigned int>(a_hp, rows - 1);
-		b_hp = minimum<unsigned int>(b_hp, cols - 1);
+		a_hp = minimum<unsigned int>(a_hp, rows_ - 1);
+		b_hp = minimum<unsigned int>(b_hp, cols_ - 1);
 		val(NEITHER_SLOWED, a_hp, b_hp) = 1.0;
 	}
 }
 
 prob_matrix::~prob_matrix()
 {
-	delete[] plane[NEITHER_SLOWED];
-	delete[] plane[A_SLOWED];
-	delete[] plane[B_SLOWED];
-	delete[] plane[BOTH_SLOWED];
+	delete[] plane_[NEITHER_SLOWED];
+	delete[] plane_[A_SLOWED];
+	delete[] plane_[B_SLOWED];
+	delete[] plane_[BOTH_SLOWED];
 }
 
 // Allocate a new probability array, initialized to 0.
@@ -214,16 +214,16 @@ double *prob_matrix::new_arr(unsigned int size)
 
 double &prob_matrix::val(unsigned p, unsigned row, unsigned col)
 {
-	assert(row < rows);
-	assert(col < cols);
-	return plane[p][row * cols + col];
+	assert(row < rows_);
+	assert(col < cols_);
+	return plane_[p][row * cols_ + col];
 }
 
 const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
 {
-	assert(row < rows);
-	assert(col < cols);
-	return plane[p][row * cols + col];
+	assert(row < rows_);
+	assert(col < cols_);
+	return plane_[p][row * cols_ + col];
 }
 
 #ifdef CHECK
@@ -234,12 +234,12 @@ void prob_matrix::dump() const
 		= { "NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED" };
 
 	for (m = 0; m < 4; m++) {
-		if (!plane[m])
+		if (!plane_[m])
 			continue;
 		debug(("%s:\n", names[m]));
-		for (row = 0; row < rows; row++) {
+		for (row = 0; row < rows_; row++) {
 			debug(("  "));
-			for (col = 0; col < cols; col++)
+			for (col = 0; col < cols_; col++)
 				debug(("%4.3g ", val(m, row, col)*100));
 			debug(("\n"));
 		}
@@ -263,10 +263,10 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 		src -= diff;
 
 		// This is here for drain.
-		if (col_dst >= cols)
-			col_dst = cols - 1;
-		if (row_dst >= rows)
-			row_dst = rows - 1;
+		if (col_dst >= cols_)
+			col_dst = cols_ - 1;
+		if (row_dst >= rows_)
+			row_dst = rows_ - 1;
 
 		val(dst_plane, row_dst, col_dst) += diff;
 
@@ -290,15 +290,15 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src,
 	unsigned int row, col;
 	unsigned int shift = drain ? 1 : 31; // Avoids a branch.
 
-	if (damage >= cols)
-		damage = cols - 1;
+	if (damage >= cols_)
+		damage = cols_ - 1;
 
 	// Loop backwards so we write drain behind us, for when src == dst.
-	for (row = rows - 1; row > min_row[src]; row--) {
+	for (row = rows_ - 1; row > min_row_[src]; row--) {
 		// These are all going to die (move to col 0).
 		for (col = 1; col <= damage; col++)
 			xfer(dst, src, row+(col>>shift), 0, row, col, prob);
-		for (col = damage+1; col < cols; col++)
+		for (col = damage+1; col < cols_; col++)
 			xfer(dst, src, row+(damage>>shift), col - damage, row, col, prob);
 	}
 }
@@ -309,15 +309,15 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 	unsigned int row, col;
 	unsigned int shift = drain ? 1 : 31; // Avoids a branch.
 
-	if (damage >= rows)
-		damage = rows - 1;
+	if (damage >= rows_)
+		damage = rows_ - 1;
 
 	// Loop downwards so if we drain, we write behind us.
-	for (col = cols - 1; col > min_col[src]; col--) {
+	for (col = cols_ - 1; col > min_col_[src]; col--) {
 		// These are all going to die (move to row 0).
 		for (row = 1; row <= damage; row++)
 			xfer(dst, src, 0, col+(row>>shift), row, col, prob);
-		for (row = damage+1; row < rows; row++)
+		for (row = damage+1; row < rows_; row++)
 			xfer(dst, src, row - damage, col+(damage>>shift), row, col, prob);
 	}
 }
@@ -333,7 +333,7 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 	for (src = 3; src >=0; src--) {
 		unsigned int actual_damage;
 
-		if (!plane[src])
+		if (!plane_[src])
 			continue;
 
 		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
@@ -349,12 +349,12 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 			actual_damage = damage;
 
 		shift_cols(dst, src, actual_damage, hit_chance, a_drains);
-		if (min_col[src] < damage)
-			min_col[dst] = 0;
-		else if (min_col[src] - damage < min_col[dst])
-			min_col[dst] = min_col[src] - damage;
-		if (min_row[src] < min_row[dst])
-			min_row[dst] = min_row[src];
+		if (min_col_[src] < damage)
+			min_col_[dst] = 0;
+		else if (min_col_[src] - damage < min_col_[dst])
+			min_col_[dst] = min_col_[src] - damage;
+		if (min_row_[src] < min_row_[dst])
+			min_row_[dst] = min_row_[src];
 	}
 }
 
@@ -363,17 +363,17 @@ void prob_matrix::remove_stone_distortion_a(unsigned damage, unsigned slow_damag
 											unsigned b_hp)
 {
 	for (int p = 0; p < 4; p++) {
-		if (!plane[p])
+		if (!plane_[p])
 			continue;
 
 		// A is slow in planes 1 and 3.
 		if (p & 1) {
 			if (b_hp > slow_damage)
-				for (unsigned int row = 0; row < rows; row++)
+				for (unsigned int row = 0; row < rows_; row++)
 					xfer(p, p, row, b_hp - slow_damage, row, 0, 1.0);
 		} else {
 			if (b_hp > damage)
-				for (unsigned int row = 0; row < rows; row++)
+				for (unsigned int row = 0; row < rows_; row++)
 					xfer(p, p, row, b_hp - damage, row, 0, 1.0);
 		}
 	}
@@ -383,17 +383,17 @@ void prob_matrix::remove_stone_distortion_b(unsigned damage, unsigned slow_damag
 											unsigned a_hp)
 {
 	for (int p = 0; p < 4; p++) {
-		if (!plane[p])
+		if (!plane_[p])
 			continue;
 
 		// B is slow in planes 2 and 3.
 		if (p & 2) {
 			if (a_hp > slow_damage)
-				for (unsigned int col = 0; col < cols; col++)
+				for (unsigned int col = 0; col < cols_; col++)
 					xfer(p, p, a_hp - slow_damage, col, 0, col, 1.0);
 		} else {
 			if (a_hp > damage)
-				for (unsigned int col = 0; col < cols; col++)
+				for (unsigned int col = 0; col < cols_; col++)
 					xfer(p, p, a_hp - damage, col, 0, col, 1.0);
 		}
 	}
@@ -404,25 +404,25 @@ void prob_matrix::extract_results(std::vector<double> summary_a[2],
 {
 	unsigned int p, row, col;
 
-	summary_a[0] = std::vector<double>(rows);
-	summary_b[0] = std::vector<double>(cols);
+	summary_a[0] = std::vector<double>(rows_);
+	summary_b[0] = std::vector<double>(cols_);
 
-	if (plane[A_SLOWED])
-		summary_a[1] = std::vector<double>(rows);
-	if (plane[B_SLOWED])
-		summary_b[1] = std::vector<double>(cols);
+	if (plane_[A_SLOWED])
+		summary_a[1] = std::vector<double>(rows_);
+	if (plane_[B_SLOWED])
+		summary_b[1] = std::vector<double>(cols_);
 
 	for (p = 0; p < 4; p++) {
 		int dst_a, dst_b;
-		if (!plane[p])
+		if (!plane_[p])
 			continue;
 
 		// A is slow in planes 1 and 3.
 		dst_a = (p & 1);
 		// B is slow in planes 2 and 3.
 		dst_b = !!(p & 2);
-		for (row = 0; row < rows; row++) {
-			for (col = 0; col < cols; col++) {
+		for (row = 0; row < rows_; row++) {
+			for (col = 0; col < cols_; col++) {
 				summary_a[dst_a][row] += val(p, row, col);
 				summary_b[dst_b][col] += val(p, row, col);
 			}
@@ -437,12 +437,12 @@ double prob_matrix::dead_prob() const
 	double prob = 0.0;
 
 	for (p = 0; p < 4; p++) {
-		if (!plane[p])
+		if (!plane_[p])
 			continue;
 		// We might count 0,0 twice, but that is always 0 anyway.
-		for (row = min_row[p]; row < rows; row++)
+		for (row = min_row_[p]; row < rows_; row++)
 			prob += val(p, row, 0);
-		for (col = min_col[p]; col < cols; col++)
+		for (col = min_col_[p]; col < cols_; col++)
 			prob += val(p, 0, col);
 	}
 	return prob;
@@ -459,7 +459,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 	for (src = 3; src >=0; src--) {
 		unsigned actual_damage;
 
-		if (!plane[src])
+		if (!plane_[src])
 			continue;
 
 		// If B slows us, we go from 0=>1, 1=>1, 2=>3 3=>3.
@@ -475,12 +475,12 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 			actual_damage = damage;
 
 		shift_rows(dst, src, actual_damage, hit_chance, b_drains);
-		if (min_row[src] < damage)
-			min_row[dst] = 0;
-		else if (min_row[src] - damage < min_row[dst])
-			min_row[dst] = min_row[src] - damage;
-		if (min_col[src] < min_col[dst])
-			min_col[dst] = min_col[src];
+		if (min_row_[src] < damage)
+			min_row_[dst] = 0;
+		else if (min_row_[src] - damage < min_row_[dst])
+			min_row_[dst] = min_row_[src] - damage;
+		if (min_col_[src] < min_col_[dst])
+			min_col_[dst] = min_col_[src];
 	}
 }
 
