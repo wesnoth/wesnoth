@@ -22,6 +22,8 @@
 #include "dialogs.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"
+#include "gui/widgets/window.hpp"
+#include "gui/widgets/window_builder.hpp"
 #include "image.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -1873,6 +1875,23 @@ namespace {
 		// Note: no need to translate the string, since only used for deprecated things.
 		const std::string message = cfg["message"];
 		lg::wml_error << message << '\n';
+	}
+
+	// Test function to show the new message dialog.
+	// NOTE this event is undocumented since it's only added as test hack and will
+	// be removed without further notice.
+	WML_HANDLER_FUNCTION(message_test,/*handler*/,/*event_info*/,cfg)
+	{
+		const std::string message = cfg["message"];
+		gui2::init();
+		gui2::twindow window = gui2::build(screen->video(), "message_test");
+
+		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
+		assert(label);
+		label->set_label(message);
+
+		window.recalculate_size();
+		window.show();
 	}
 
 	WML_HANDLER_FUNCTION(debug_message,/*handler*/,/*event_info*/,cfg)
