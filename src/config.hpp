@@ -12,8 +12,18 @@
    See the COPYING file for more details.
 */
 
-//! @file config.hpp
-//! Definitions for the interface to Wesnoth Markup Language (WML).
+/**
+ * @file config.hpp
+ * Definitions for the interface to Wesnoth Markup Language (WML).
+ *
+ * This module defines the interface to Wesnoth Markup Language (WML).  WML is
+ * a simple hierarchical text-based file format.  The format is defined in
+ * Wiki, under BuildingScenariosWML
+ *
+ * All configuration files are stored in this format, and data is sent across
+ * the network in this format.  It is thus used extensively throughout the
+ * game.
+ */
 
 #ifndef CONFIG_HPP_INCLUDED
 #define CONFIG_HPP_INCLUDED
@@ -29,17 +39,9 @@
 #include "serialization/string_utils.hpp"
 
 
-// This module defines the interface to Wesnoth Markup Language (WML).
-// WML is a simple hierarchical text-based file format.
-// The format is defined in Wiki, under BuildingScenariosWML
-//
-// All configuration files are stored in this format,
-// and data is sent across the network in this format.
-// It is thus used extensively throughout the game.
-
 typedef std::map<std::string,t_string> string_map;
 
-//! A config object defines a single node in a WML file, with access to child nodes.
+/** A config object defines a single node in a WML file, with access to child nodes. */
 class config
 {
 public:
@@ -145,54 +147,64 @@ public:
 		Itor i_;
 	};
 
-	//! In-order iteration over all children.
+	/** In-order iteration over all children. */
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
 	all_children_iterator erase(const all_children_iterator& i);
 
-	//! A function to get the differences between this object,
-	//! and 'c', as another config object.
-	//! I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2))
-	//! will make cfg1 identical to cfg2.
+	/**
+	 * A function to get the differences between this object,
+	 * and 'c', as another config object.
+	 * I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2))
+	 * will make cfg1 identical to cfg2.
+	 */
 	config get_diff(const config& c) const;
 	void get_diff(const config& c, config& res) const;
 
 	void apply_diff(const config& diff); //throw error
 
-	//! Merge config 'c' into this config.
-	//! Overwrites this config's values.
+	/**
+	 * Merge config 'c' into this config.
+	 * Overwrites this config's values.
+	 */
 	void merge_with(const config& c);
 
-	//! Merge config 'c' into this config.
-	//! Keeps this config's values and does not add existing elements.
-	//! NOTICE: other nonstandard behavior includes no merge recursion into child
-	//! and has limited merging for child lists of differing lengths
+	/**
+	 * Merge config 'c' into this config.
+	 * Keeps this config's values and does not add existing elements.
+	 * NOTICE: other nonstandard behavior includes no merge recursion into child
+	 * and has limited merging for child lists of differing lengths
+	 */
     void merge_and_keep(const config& c);
 
 	bool matches(const config &filter) const;
 
-	//! Removes keys with empty values.
+	/** Removes keys with empty values. */
 	void prune();
 
-	//! Append data from another config object to this one.
-	//! Attributes in the latter config object will clobber attributes in this one.
+	/**
+	 * Append data from another config object to this one.
+	 * Attributes in the latter config object will clobber attributes in this one.
+	 */
 	void append(const config& cfg);
 
-	//! All children with the given key will be merged
-	//! into the first element with that key.
+	/**
+	 * All children with the given key will be merged
+	 * into the first element with that key.
+	 */
 	void merge_children(const std::string& key);
 
-	//! Resets the translated values of all strings contained in this object
+	/** Resets the translated values of all strings contained in this object */
 	void reset_translation() const;
 
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
 
-	//! All the attributes of this node.
+	/** All the attributes of this node. */
 	string_map values;
 
 private:
-	//! A list of all children of this node.
+	/** A list of all children of this node. */
 	child_map children;
 
 	std::vector<child_pos> ordered_children;

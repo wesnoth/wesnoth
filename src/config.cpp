@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file config.cpp
-//! Routines related to configuration-files / WML.
+/**
+ * @file config.cpp
+ * Routines related to configuration-files / WML.
+ */
 
 #include "global.hpp"
 
