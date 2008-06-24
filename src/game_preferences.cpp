@@ -18,6 +18,7 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
@@ -91,14 +92,28 @@ manager::manager()
 
 	config* history = preferences::get_child("history");
 	if (history) {
-		const string_map& history_strings = history->values;
-		for (string_map::const_iterator iter = history_strings.begin(); iter != history_strings.end(); ++iter) {
-			std::vector<std::string> current_history = utils::paranthetical_split(iter->second.value(), ',', "(", ")");
-			std::vector<std::string>* history_ptr = get_history(iter->first);
-			for (std::vector<std::string>::iterator i = current_history.begin(); i != current_history.end(); ++i) {
-				// remove the enclosing parens
-				history_ptr->push_back(i->substr(1, i->size() - 2));
+/* Structure of the history
+	[history]
+		[history_id]
+			[line]
+				message = foobar
+			[/line] 
+*/
+		const config::child_map& history_id_list = history->all_children();
+		typedef std::pair<std::string, config::child_list> hack;
+		foreach(const hack& history_id, history_id_list) {
+
+			std::vector<std::string> current_history;
+			foreach(const config* history_id_child, history_id.second) {
+
+				const config::child_list& line = history_id_child->get_children("line");
+				foreach(const config* line_data, line) {
+
+					current_history.push_back((*line_data)["message"]);
+				}
 			}
+
+			history_map[history_id.first] = current_history;
 		}
 	}
 
@@ -115,20 +130,27 @@ manager::~manager()
 			  std::back_inserter(terrain));
 	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
 
+/* Structure of the history
+	[history]
+		[history_id]
+			[line]
+				message = foobar
+			[/line] 
+*/
 	config history;
-	std::map<std::string, std::vector<std::string> >::iterator iter;
-	for (iter = history_map.begin(); iter != history_map.end(); ++iter) {
-		std::stringstream history_stream;
-		std::vector<std::string>::iterator i;
-		for (i = iter->second.size() < max_history_saved ? iter->second.begin(): iter->second.end() - max_history_saved; i != iter->second.end(); ++i) {
-			history_stream << "(" << *i << ")";
-			if (i + 1 != iter->second.end()) {
-				history_stream << ",";
-			}
-		}
-		history[iter->first] = history_stream.str();
-	}
+	typedef std::pair<std::string, std::vector<std::string> > hack;
+	foreach(const hack& history_id, history_map) {
+		
+		config history_id_cfg; // [history_id]
+		foreach(const std::string& line, history_id.second) {
+			config cfg; // [line]
 
+			cfg["message"] = line;
+			history_id_cfg.add_child("line", cfg);
+		}
+
+		history.add_child(history_id.first, history_id_cfg);
+	}
 	preferences::set_child("history", history);
 
 	history_map.clear();
