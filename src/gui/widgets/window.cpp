@@ -55,7 +55,8 @@ twindow::twindow(CVideo& video,
 		const int x, const int y, const int w, const int h,
 		const bool automatic_placement, 
 		const unsigned horizontal_placement,
-		const unsigned vertical_placement) :
+		const unsigned vertical_placement,
+		const std::string& definition) :
 	tpanel(),
 	tevent_handler(),
 	video_(video),
@@ -70,6 +71,7 @@ twindow::twindow(CVideo& video,
 	vertical_placement_(vertical_placement)
 {
 	// We load the config in here as exception.
+	set_definition(definition);
 	load_config();
 
 	set_size(::create_rect(x, y, w, h));

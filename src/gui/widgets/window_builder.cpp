@@ -300,7 +300,8 @@ twindow build(CVideo& video, const std::string& type)
 	twindow window(video, 
 		definition->x, definition->y, definition->width, definition->height, 
 		definition->automatic_placement, 
-		definition->horizontal_placement, definition->vertical_placement);
+		definition->horizontal_placement, definition->vertical_placement,
+		definition->definition);
 
 	log_scope2(gui, "Window builder: building grid for window");
 

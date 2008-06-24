@@ -59,7 +59,8 @@ public:
 		const int x, const int y, const int w, const int h,
 		const bool automatic_placement, 
 		const unsigned horizontal_placement,
-		const unsigned vertical_placement);
+		const unsigned vertical_placement,
+		const std::string& definition);
 
 	// show the window
 	// The flip function is the disp_.flip() if ommitted the video_flip() is used
