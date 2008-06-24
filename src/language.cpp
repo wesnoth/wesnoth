@@ -40,6 +40,7 @@
 #ifdef _WIN32
 //#include "locale.h"
 #include <windows.h>
+extern "C" int _putenv(const char*);
 #endif
 
 #define DBG_FS LOG_STREAM(debug, filesystem)
