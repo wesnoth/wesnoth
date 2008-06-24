@@ -420,6 +420,7 @@ std::string get_user_data_dir()
 		_mkdir("userdata/data/multiplayer");
 		_mkdir("userdata/data/maps");
 		_mkdir("userdata/data/maps/multiplayer");
+		_mkdir("userdata/data/units");
 		_mkdir("userdata/saves");
 		inited_dirs = true;
 	}
@@ -483,6 +484,7 @@ std::string get_user_data_dir()
 		mkdir((dir_path + "/data/multiplayer").c_str(),AccessMode);
 		mkdir((dir_path + "/data/maps").c_str(),AccessMode);
 		mkdir((dir_path + "/data/maps/multiplayer").c_str(),AccessMode);
+		mkdir((dir_path + "/data/units").c_str(),AccessMode);
 		mkdir((dir_path + "/saves").c_str(),AccessMode);
 		if(res == 0) {
 			dir = opendir(dir_path.c_str());
