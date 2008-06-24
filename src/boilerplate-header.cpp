@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file  boilerplate-header.cpp
-//! Template for new cpp-files.
+/**
+ * @file  boilerplate-header.cpp
+ * Template for new cpp-files.
+ */
 
 // After adding the file don't forget to set the properties
 // svn propset svn:keywords 'Author Date Id Revision' file
