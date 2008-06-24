@@ -1,4 +1,6 @@
 # vi: syntax=python:et:ts=4
+from glob import glob
+from os.path import join
 
 def backup_env(env, vars):
     backup = dict()
@@ -9,3 +11,7 @@ def backup_env(env, vars):
 def restore_env(env, backup):
     for var in backup.keys():
         env[var] = backup[var]
+
+def find_include(prefixes, include_file, include_subdir):
+    prefixes.extend(["/usr", "/usr/local"])
+    return [(prefix, include) for prefix in prefixes for include in glob(join(prefix, "include", include_subdir, include_file))]

@@ -26,6 +26,10 @@ if os.path.exists('.scons-option-cache'):
 
 opts = Options('.scons-option-cache')
 
+def OptionalPath(key, val, env):
+    if val:
+        PathOption.PathIsDir(key, val, env)
+
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
@@ -67,13 +71,13 @@ opts.AddOptions(
     BoolOption('static', 'Set to enable static building of Wesnoth', False),
     BoolOption('strict', 'Set to strict compilation', False),
     BoolOption('verbose', 'Emit progress messages during data installation.', False),
-    PathOption('sdldir', 'Directory of SDL installation.', "", PathOption.PathAccept),
-    PathOption('boostdir', 'Directory of boost installation.', '/usr/include'),
-    PathOption('boostlibdir', 'Directory where boost libraries are installed.', '/usr/lib'),
+    PathOption('sdldir', 'Directory of SDL installation.', "", OptionalPath),
+    PathOption('boostdir', 'Directory of boost installation.', "", OptionalPath),
+    PathOption('boostlibdir', 'Directory where boost libraries are installed.', "", OptionalPath),
     ('boost_suffix', 'Suffix of boost libraries.'),
-    PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", PathOption.PathAccept), 
+    PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath), 
     ('host', 'Cross-compile host.', ''),
-	('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
+    ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolOption("fast", "Make scons faster at cost of less precise dependency tracking.", False)
     )
 
