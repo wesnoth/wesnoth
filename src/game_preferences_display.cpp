@@ -1144,7 +1144,7 @@ std::string show_wesnothd_server_search(display& disp)
 	std::string path = get_cwd();
 #endif
 
-	int res = dialogs::show_file_chooser_dialog(disp, path, title);
+	/*int res =*/ dialogs::show_file_chooser_dialog(disp, path, title);
 	return path;
 }
 
