@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file dialogs.cpp
-//! Various dialogs: advance_unit, show_objectives, save+load game, network::connection.
+/**
+ * @file dialogs.cpp
+ * Various dialogs: advance_unit, show_objectives, save+load game, network::connection.
+ */
 
 #include "global.hpp"
 
@@ -306,9 +308,9 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 	return res;
 }
 
-//! Class to handle deleting a saved game.
 namespace {
 
+/** Class to handle deleting a saved game. */
 class delete_save : public gui::dialog_button_action
 {
 public:
@@ -706,8 +708,6 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 namespace {
 	static const int unit_preview_border = 10;
 }
-
-//! Show unit-stats in a side-pane to unit-list, recall-list, etc.
 
 unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side)

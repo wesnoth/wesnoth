@@ -32,16 +32,20 @@ class unit_type;
 
 namespace dialogs {
 
-//function to handle an advancing unit. If there is only one choice to advance
-//to, the unit will be automatically advanced. If there is a choice, and 'random_choice'
-//is true, then a unit will be selected at random. Otherwise, a dialog will be displayed
-//asking the user what to advance to.
-//
-//note that 'loc' is not a reference, because deleting an item from the units map
-//(when replacing the unit that is being advanced) will possibly invalidate the reference
-//
-// the game only expects an advancement to be triggered by a fight, it the cause for
-// advancement is different (eg unstore_unit) the add_replay_event should be set
+/**
+ * Function to handle an advancing unit. If there is only one choice to advance
+ * to, the unit will be automatically advanced. If there is a choice, and
+ * 'random_choice' is true, then a unit will be selected at random. Otherwise,
+ * a dialog will be displayed asking the user what to advance to.
+ *
+ * Note that 'loc' is not a reference, because deleting an item from the units
+ * map (when replacing the unit that is being advanced) will possibly
+ * invalidate the reference.
+ *
+ * The game only expects an advancement to be triggered by a fight, it the
+ * cause for advancement is different (eg unstore_unit) the add_replay_event
+ * should be set.
+ */
 void advance_unit(const gamemap& map,unit_map& units, gamemap::location loc,
 				  game_display& gui, bool random_choice=false, const bool add_replay_event=false);
 
@@ -49,22 +53,27 @@ bool animate_unit_advancement(unit_map& units, gamemap::location loc, game_displ
 
 void show_objectives(game_display& disp, const config& level, const std::string& objectives);
 
-// check if a character is valid for a filename
+/** check if a character is valid for a filename. */
 bool is_illegal_file_char(char c);
 
-// Ask user if I should really save the game and what name I should use
-// returns 0 if user wants to save the game
+/**
+ * Ask user if I should really save the game and what name I should use returns
+ * 0 if user wants to save the game.
+ */
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
 				  std::string* fname, gui::DIALOG_TYPE dialog_type=gui::YES_NO,
 				  const std::string& title="", const bool has_exit_button=false,
 				  const bool ask_for_filename=true);
 
-//allow user to select the game they want to load. Returns the name
-//of the save they want to load. Stores whether the user wants to show
-//a replay of the game in show_replay. If show_replay is NULL, then
-//the user will not be asked if they want to show a replay.
+/**
+ * Allow user to select the game they want to load. Returns the name of the
+ * save they want to load. Stores whether the user wants to show a replay of
+ * the game in show_replay. If show_replay is NULL, then the user will not be
+ * asked if they want to show a replay.
+ */
 std::string load_game_dialog(display& disp, const config& terrain_config, bool* show_replay, bool* cancel_orders);
 
+/** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane
 {
 public:
