@@ -220,7 +220,7 @@ wesnoth_sources = Split("""
     widgets/combo.cpp
     widgets/scrollpane.cpp
     """)
-wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = "WESNOTH_PREFIX='\"%s\"'" % env['prefix']))
+wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"%s\"'" % env['prefix'] or None))
 
 python_env = env.Clone()
 if env['python']:
