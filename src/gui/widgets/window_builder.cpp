@@ -166,15 +166,26 @@ public:
  *
  * == Spacer ==
  *
- * A spacer has no special fields.
+ * A spacer is a dummy item to either fill in a widget since no empty items are
+ * allowed or to reserve a fixed space. If either the width or the height is not
+ * zero the spacer functions as a fixed size spacer.
  *
+ * @start_table = config
+ *     width (unsigned = 0)            The width of the spacer.
+ *     height (unsigned = 0)           The height of the spacer.
+ * @end_table
  */
 	tbuilder_spacer(const config& cfg) :
-		tbuilder_control(cfg)
+		tbuilder_control(cfg),
+		width_(lexical_cast_default<unsigned>(cfg["width"])),
+		height_(lexical_cast_default<unsigned>(cfg["height"]))
 	{}
 
 	twidget* build () const;
 
+private:
+	unsigned width_;
+	unsigned height_;
 };
 
 struct tbuilder_text_box : public tbuilder_control
@@ -221,8 +232,6 @@ public:
  * @order = 3_widget_toggle_button
  *
  * == Toggle button ==
- *
- * A toggle button has no special fields.
  *
  * @start_table = config
  *     icon (f_string = "")            The name of the icon file to show.
@@ -1006,6 +1015,10 @@ twidget* tbuilder_spacer::build() const
 	tspacer* spacer = new tspacer();
 
 	init_control(spacer);
+
+	if(width_ || height_) {
+		spacer->set_best_size(tpoint(width_, height_));
+	}
 
 	DBG_G << "Window builder: placed spacer '" << id << "' with defintion '" 
 		<< definition << "'.\n";
