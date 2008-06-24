@@ -20,6 +20,7 @@
 #include "config.hpp"
 #include "cursor.hpp"
 #include "font.hpp"
+#include "gui/widgets/button.hpp" // due to the return values
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
@@ -183,6 +184,18 @@ void twindow::flip()
 	cursor::draw(frameBuffer);
 	video_.flip();
 	cursor::undraw(frameBuffer);
+}
+
+void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
+		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
+{
+	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
+		set_retval(tbutton::OK);
+		handled = true;
+	} else if(key == SDLK_ESCAPE) {
+		set_retval(tbutton::CANCEL);
+		handled = true;
+	}
 }
 
 void twindow::window_resize(tevent_handler&, 

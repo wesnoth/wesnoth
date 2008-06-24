@@ -75,6 +75,10 @@ public:
 	void set_retval(const int retval, const bool close_window = true)
 		{ retval_ = retval; if(close_window) close(); }
 
+	/** Inherited from tevent_executor. */
+	void key_press(tevent_handler& event_handler, bool& handled, 
+		SDLKey key, SDLMod modifier, Uint16 unicode);
+
 	//! Inherited from tevent_handler.
 	twindow& get_window() { return *this; }
 	const twindow& get_window() const { return *this; }
