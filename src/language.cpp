@@ -198,8 +198,17 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 #ifdef _WIN32
-	const std::string env = "LANG=" + slocale;
+	std::string env = "LANG=" + slocale;
 	_putenv(env.c_str());
+	env = "LC_ALL=" + slocale;
+	_putenv(env.c_str());
+	std::string win_locale = locale;
+	win_locale = win_locale.substr(0,2);
+	#include "language_win32.ii"
+	SetEnvironmentVariable("LANG", win_locale.c_str());
+	SetEnvironmentVariable("LC_ALL", win_locale.c_str());
+	if(category == LC_MESSAGES)
+	    category = LC_ALL;
 #endif
 
 #ifdef USE_DUMMYLOCALES
@@ -226,31 +235,23 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 	char *res = NULL;
-	char const *try_loc = locale;
+	#ifdef _WIN32
+	    char const *try_loc = win_locale.c_str();
+	#else
+		char const *try_loc = locale;
+	#endif
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 	while (true) {
-//        #ifndef _WIN32  
 		res = std::setlocale(category, try_loc);
-//		#else
-//		res = ::setlocale(category, try_loc);
-//		#endif
 		if (res) break;
 
 		std::string utf8 = std::string(try_loc) + std::string(".utf-8");
-//		#ifndef _WIN32
 		res = std::setlocale(category, utf8.c_str());
-//		#else
-//		res = ::setlocale(category, try_loc);
-//		#endif
 		if (res) break;
 
 		utf8 = std::string(try_loc) + std::string(".UTF-8");
-//		#ifndef _WIN32
 		res = std::setlocale(category, utf8.c_str());
-///		#else
-//		res = ::setlocale(category, utf8.c_str());
-//		#endif
 		if (res) break;
 
 		if (!alternates) break;
@@ -332,6 +333,11 @@ const language_def& get_locale()
 
 #if 0
 	const char* const locale = getenv("LANG");
+	#ifdef _WIN32
+	    std::string win_locale = locale
+		#include "language_win32.ii"
+		return win_locale;
+	#endif
 	if(locale != NULL && strlen(locale) >= 2) {
 		//we can't pass pointers into the string to the std::string
 		//constructor because some STL implementations don't support
