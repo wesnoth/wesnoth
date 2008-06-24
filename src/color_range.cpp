@@ -12,9 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file color_range.cpp
-//! Generate ranges of colors, and color palettes.
-//! Used e.g. to color HP, XP.
+/**
+ * @file color_range.cpp
+ * Generate ranges of colors, and color palettes.
+ * Used e.g. to color HP, XP.
+ */
 
 #include "game_config.hpp"
 #include "global.hpp"
@@ -89,7 +91,6 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	return map_rgb;
 }
 
-//! Convert comma separated string into rgb values.
 std::vector<Uint32> string2rgb(std::string s){
 	std::vector<Uint32> out;
 	std::vector<std::string> rgb_vec = utils::split(s);

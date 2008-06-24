@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file color_range.hpp
-//!
+/** @file color_range.hpp */
 
 #ifndef COLOR_RANGE_H_INCLUDED
 #define COLOR_RANGE_H_INCLUDED
@@ -31,7 +30,7 @@
 
 #include "SDL_types.h"
 
-//- Convert comma separated string into rgb values
+/** Convert comma separated string into rgb values. */
 std::vector<Uint32> string2rgb(std::string s);
 
 class color_range
