@@ -161,7 +161,8 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button down' event for button " 
 						<< static_cast<Uint32>(event.button.button) << ".\n";
-					assert(false);
+					// The scrollwheel also behaves like a button, so ignore it.
+//					assert(false);
 					break;
 			}
 			break;
@@ -191,7 +192,8 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button up' event for button " 
 						<< static_cast<Uint32>(event.button.button) << ".\n";
-					assert(false);
+					// The scrollwheel also behaves like a button, so ignore it.
+//					assert(false);
 					break;
 			}
 			break;
