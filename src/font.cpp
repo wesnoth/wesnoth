@@ -775,7 +775,7 @@ public:
 	floating_label(const std::string& text, int font_size, const SDL_Color& colour, const SDL_Color& bgcolour,
 			double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect,
 			font::ALIGN align, int border_size, bool scroll_with_map)
-		: surf_(NULL), buf_(NULL), foreground_(NULL), text_(text), font_size_(font_size), colour_(colour),
+		: surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour),
 		bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
 		xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
 		alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size), scroll_(scroll_with_map)
@@ -799,7 +799,7 @@ private:
 
 	int xpos(size_t width) const;
 
-	surface surf_, buf_, foreground_;
+	surface surf_, buf_;
 	std::string text_;
 	int font_size_;
 	SDL_Color colour_, bgcolour_;
@@ -841,30 +841,54 @@ int floating_label::xpos(size_t width) const
 surface floating_label::create_surface()
 {
 	if (surf_.null()) {
-		foreground_ = font::render_text(text_, font_size_, colour_, 0);
+		surface foreground = font::render_text(text_, font_size_, colour_, 0);
 
-		if(foreground_ == NULL) {
+		if(foreground == NULL) {
+			ERR_FT << "could not create floating label's text";
 			return NULL;
 		}
 
-		//if the surface has to be created onto some kind of background, then do that here
+		// combine foreground text with its background
 		if(bgalpha_ != 0) {
-			surface tmp(create_compatible_surface(foreground_,foreground_->w+border_*2,foreground_->h+border_*2));
-			if(tmp == NULL) {
-				return NULL;
+			// background is a dark tootlip box
+			surface background = create_neutral_surface(foreground->w + border_*2, foreground->h + border_*2);
+
+			if (background == NULL) {
+				ERR_FT << "could not create tooltip box";
+				surf_ = create_optimized_surface(foreground);
+				return surf_;
 			}
 
-			SDL_FillRect(tmp,NULL,SDL_MapRGBA(tmp->format,bgcolour_.r,bgcolour_.g,bgcolour_.b, bgalpha_));
+			Uint32 color = SDL_MapRGBA(foreground->format, bgcolour_.r,bgcolour_.g, bgcolour_.b, bgalpha_);
+			SDL_FillRect(background,NULL, color);
 
-			surf_.assign(tmp);
-		} else {
-			surface background = font::render_text(text_, font_size_, font::BLACK_COLOUR, 0);
-			background = blur_alpha_surface(background,2,false);
-			background = adjust_surface_alpha(background, ftofxp(4.0));
+			// we make the text less transparent, because the blitting on the dark background
+			// will darken the aliased part. This also make it more readable
+			foreground = adjust_surface_alpha(foreground, ftofxp(2.0), false);
 
-			surf_.assign(background);
+			SDL_Rect r = { border_, border_, 0, 0 };
+			blit_surface(foreground, NULL, background, &r);
+			surf_ = create_optimized_surface(background);
+			// RLE compression seems less efficient for big semi-transparent area
+			// so, remove it for this case, but keep the optimized display format
+			SDL_SetAlpha(surf_,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 		}
+		else {
+			// background is blurred shadow of the text
+			surface background = font::render_text(text_, font_size_, font::BLACK_COLOUR, 0);
+			//TODO add a little extra space for the blur of letters with a lower part
+			background = blur_alpha_surface(background, 2, false);
+			background = adjust_surface_alpha(background, ftofxp(4.0), false);
+			
+			if (background == NULL) {
+				ERR_FT << "could not create floating label's shadow";
+				surf_ = create_optimized_surface(foreground);
+				return surf_;
+			}
 
+			blit_surface(foreground, NULL, background, NULL);
+			surf_ = create_optimized_surface(background);
+		}
 	}
 
 	return surf_;
@@ -898,11 +922,6 @@ void floating_label::draw(surface screen)
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
 
-	if(foreground_ != NULL) {
-		SDL_Rect rect = {xpos(surf_->w)+border_,int(ypos_)+border_,foreground_->w,foreground_->h};
-		SDL_BlitSurface(foreground_,NULL,screen,&rect);
-	}
-
 	update_rect(rect);
 }
 
@@ -921,14 +940,10 @@ void floating_label::undraw(surface screen)
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {
 		--lifetime_;
-		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0)) {
-			// we don't compress these surfaces since they will always change
-			if (!surf_.null()) {
-				surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_,false));
-			}
-			if (!foreground_.null()) {
-				foreground_.assign(adjust_surface_alpha_add(foreground_,alpha_change_,false));
-			}
+		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != NULL) {
+			// fade out moving floating labels
+			// note that we don't optimize these surfaces since they will always change
+			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_,false));
 		}
 	}
 }
