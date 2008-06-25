@@ -852,6 +852,7 @@ surface floating_label::create_surface()
 			foreground = adjust_surface_alpha(foreground, ftofxp(2.0), false);
 
 			SDL_Rect r = { border_, border_, 0, 0 };
+			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 			blit_surface(foreground, NULL, background, &r);
 			surf_ = create_optimized_surface(background);
 			// RLE compression seems less efficient for big semi-transparent area
@@ -870,7 +871,7 @@ surface floating_label::create_surface()
 				surf_ = create_optimized_surface(foreground);
 				return surf_;
 			}
-
+			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 			blit_surface(foreground, NULL, background, NULL);
 			surf_ = create_optimized_surface(background);
 		}
