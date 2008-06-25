@@ -48,6 +48,8 @@
 #include <set>
 #include <string>
 
+#include <boost/scoped_ptr.hpp>
+
 #define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
@@ -328,6 +330,40 @@ bool conditional_passed(const unit_map* units,
 namespace {
 
 std::set<std::string> used_items;
+
+	typedef std::map<gamemap::location, int> recursion_counter;
+	
+	class recursion_preventer {
+		static recursion_counter counter_;
+		static const int max_recursion = 10;
+		gamemap::location loc_;
+		bool too_many_recursions_;
+
+		public:
+		recursion_preventer(gamemap::location& loc) : loc_(loc)
+		{
+			const int nill = 0;
+			recursion_counter::iterator inserted = counter_.insert(std::make_pair(loc_, nill)).first;
+			++inserted->second;
+			too_many_recursions_ = inserted->second >= max_recursion;
+		}
+		~recursion_preventer()
+		{
+			recursion_counter::iterator itor = counter_.find(loc_);
+			if (--itor->second == 0)
+			{
+				counter_.erase(itor);
+			}
+		}
+		bool too_many_recursions() const
+		{
+			return too_many_recursions_;
+		}
+	};
+
+	recursion_counter recursion_preventer::counter_ = recursion_counter();
+
+	typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
 } // end anonymous namespace (2)
 
@@ -1974,11 +2010,29 @@ void event_handler::handle_event_command(const queued_event& event_info,
 					}
 					if(utils::string_bool(cfg["fire_event"])) {
 						game_events::entity_location death_loc(un);
-						game_events::fire("die", death_loc, death_loc);
-						un = units->find(death_loc);
-						if(un != units->end() && death_loc.matches_unit(un->second)) {
-							units->erase(un);
-							unit_mutations++;
+						bool fire_event = true;
+						recursion_preventer_ptr recursion_prevent;
+						
+ 						if (event_info.loc1 == death_loc && event_info.name == "die" && !first_time_only())
+ 						{
+							recursion_prevent.reset(new recursion_preventer(death_loc));
+
+							if(recursion_prevent->too_many_recursions())
+							{
+								fire_event = false;
+
+								ERR_NG << "tried to fire 'die' event on primary_unit inside its own 'die' event with 'first_time_only' set to false!\n";
+							}
+ 						}
+						if (fire_event)
+						{
+
+							game_events::fire("die", death_loc, death_loc);
+							un = units->find(death_loc);
+							if(un != units->end() && death_loc.matches_unit(un->second)) {
+								units->erase(un);
+								unit_mutations++;
+							}
 						}
 					} else {
 						units->erase(un);
