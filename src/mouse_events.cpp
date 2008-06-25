@@ -451,7 +451,7 @@ namespace{
 										   const std::string& label, int label_width,
 										   surface& hp_distrib, int hp_distrib_width)
 	{
-		CVideo& screen = disp_.video();
+		surface screen = disp_.get_screen_surface();
 		int i;
 
 		// NOTE. A preview pane is not made to be used alone and it is not
@@ -469,18 +469,18 @@ namespace{
 		int y_off = 15;
 
 		// Draw unit label.
-		font::draw_text_line(&screen, clip_rect, font::SIZE_15, font::NORMAL_COLOUR, label,
+		font::draw_text_line(screen, clip_rect, font::SIZE_15, font::NORMAL_COLOUR, label,
 							 clip_rect.x + x_off + (units_width_ - label_width) / 2, clip_rect.y + y_off, 0, TTF_STYLE_BOLD);
 
 		y_off += 24;
 
 		// Draw unit left and right strings except the last two (total damage and unscathed probability).
 		for(i = 0; i < static_cast<int>(left_strings.size()) - 2; i++) {
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_strings[i],
+			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_strings[i],
 								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
 								 0, TTF_STYLE_NORMAL);
 
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_strings[i],
+			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_strings[i],
 								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
 								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 		}
@@ -493,11 +493,11 @@ namespace{
 			const std::string& left_string = left_strings[left_strings.size() - 2 + i];
 			const std::string& right_string = right_strings[right_strings.size() - 2 + i];
 
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_string,
+			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_string,
 								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
 								 0, TTF_STYLE_NORMAL);
 
-			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_string,
+			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_string,
 								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
 								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 		}
@@ -505,7 +505,7 @@ namespace{
 		y_off += 2 * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
 		// Draw hitpoints distribution string.
-		font::draw_text(&screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, hp_distrib_string_,
+		font::draw_text(screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, hp_distrib_string_,
 						clip_rect.x + x_off + (units_width_ - hp_distrib_string_width_) / 2, clip_rect.y + y_off);
 
 		y_off += 19;

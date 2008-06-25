@@ -685,21 +685,6 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	return dest;
 }
 
-SDL_Rect draw_text_line(CVideo* gui, const SDL_Rect& area, int size,
-                        const SDL_Color& colour, const std::string& text,
-                        int x, int y, bool use_tooltips, int style)
-{
-	surface surface;
-
-	if(gui == NULL) {
-		surface = NULL;
-	} else {
-		surface = gui->getSurface();
-	}
-
-	return draw_text_line(surface, area, size, colour, text, x, y, use_tooltips, style);
-}
-
 int get_max_height(int size)
 {
 	// Only returns the maximal size of the first font

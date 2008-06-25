@@ -189,10 +189,11 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 //! The above special characters can be quoted using a C-style backslash.
 //!
 //! A bounding rectangle of the text is returned. 
-//! If gui is NULL, then the text will not be drawn, 
+//! If dst is NULL, then the text will not be drawn,
 //! and only a bounding rectangle will be returned.
-//! 
-SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
+//!
+
+SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
@@ -221,7 +222,7 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 
 			utils::unescape(new_string);
 
-			const SDL_Rect rect = draw_text_line(gui, area, sz, col, new_string, x, y, use_tooltips, text_style);
+			const SDL_Rect rect = draw_text_line(dst, area, sz, col, new_string, x, y, use_tooltips, text_style);
 			if(rect.w > res.w) {
 				res.w = rect.w;
 			}
@@ -239,6 +240,13 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 	}
 
 	return res;
+}
+
+SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
+                   const SDL_Color& colour, const std::string& txt,
+                   int x, int y, bool use_tooltips, int style)
+{
+	return draw_text(gui != NULL ? gui->getSurface() : NULL, area, size, colour, txt, x, y, use_tooltips, style);
 }
 
 //! Determine if char is one of the special chars used as markup.

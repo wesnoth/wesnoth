@@ -30,7 +30,7 @@ extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, B
                   GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, YELLOW_TEXT, IMAGE;
 
 
-//Function to draw text on the screen. The text will be clipped to area.
+//Function to draw text on a surface. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed
 //at the end of it.
 //If use_tooltips is true, then text with an ellipsis will have a tooltip
@@ -45,9 +45,14 @@ extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, B
 //
 //The above special characters can be quoted using a C-style backslash.
 //
-//A bounding rectangle of the text is returned. If gui is NULL, then the
+//A bounding rectangle of the text is returned. If dst is NULL, then the
 //text will not be drawn, and a bounding rectangle only will be returned.
 
+SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
+                   const SDL_Color& colour, const std::string& text,
+                   int x, int y, bool use_tooltips = false, int style = 0);
+
+// wrapper of the previous function, gui can also be NULL
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);

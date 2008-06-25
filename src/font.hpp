@@ -79,10 +79,6 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 						const SDL_Color& colour, const std::string& text,
 						int x, int y, bool use_tooltips, int style);
 
-SDL_Rect draw_text_line(CVideo* gui, const SDL_Rect& area, int size,
-                        const SDL_Color& colour, const std::string& text,
-                        int x, int y, bool use_tooltips, int style);
-
 // Returns the maximum height of a font, in pixels
 int get_max_height(int size);
 
