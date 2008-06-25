@@ -58,7 +58,7 @@ Version 1.5.1:
    * Implemented a function which detects if a location is on the map border.
    * Implemented a function which gives the game's gold parameters.
    * Extended safe.py environment to expand AI's language capabilities; including:
-	collections, Queue, sets, time, and the upcoming wail module.
+	collections, functools, Queue, sets, time, and the upcoming wail module.
 	Use of chr, hash, lambda, ord, and super (new style classes) are now allowed
 	Control of safe_exec can now be toggled from the wesnoth binary.
    * Added new advanced option, "Only Run Safe Python AIs". When disabled, the safe_exec
