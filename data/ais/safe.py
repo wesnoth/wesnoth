@@ -33,16 +33,23 @@ _NODE_CLASS_OK = [
     'Assert', 'Assign','AugAssign', 'Bitand', 'Bitor', 'Bitxor', 'Break',
     'CallFunc', 'Class', 'Compare', 'Const', 'Continue',
     'Dict', 'Discard', 'Div', 'Ellipsis', 'Expression', 'FloorDiv',
-    'For', 'Function', 'Getattr', 'If', 'Keyword', 'Lambda',
+    'For', 'From', 'Function', 'Getattr', 'If', 'Keyword', 'Lambda',
     'LeftShift', 'List', 'ListComp', 'ListCompFor', 'ListCompIf', 'Mod',
     'Module', 'Mul', 'Name', 'Node', 'Not', 'Or', 'Pass', 'Power',
-    'Print', 'Printnl', 'Return', 'RightShift', 'Slice', 'Sliceobj',
+    'Print', 'Printnl', 'Raise', 'Return', 'RightShift', 'Slice', 'Sliceobj',
     'Stmt', 'Sub', 'Subscript', 'TryExcept', 'Tuple', 'UnaryAdd',
     'UnarySub', 'While',
     ]
 _NODE_ATTR_OK = []
-_STR_OK = ['__init__']
-_STR_NOT_CONTAIN = ['__']
+
+# Expanded to allow repr, str, call, and doc. These are commonly overloaded
+# to provided fundamental functionality. Without __call__ support, most
+# categories of decorators are simply impossible.
+_STR_OK = [ '__call__', '__doc__', '__init__', '__name__', '__repr__', '__str__' ]
+
+# If we put '__' in _STR_NOT_CONTAIN, then we can't have defacto private data
+_STR_NOT_CONTAIN = []
+_STR_NOT_END = [ '__' ]
 _STR_NOT_BEGIN = ['im_','func_','tb_','f_','co_',]
 
 ## conservative settings
@@ -61,6 +68,8 @@ def _check_node(node):
             if s in v: raise CheckStrException(node.lineno,k,v)
         for s in _STR_NOT_BEGIN:
             if v[:len(s)] == s: raise CheckStrException(node.lineno,k,v)
+        for s in _STR_NOT_END:
+            if v.endswith( s ): raise CheckStrException( node.lineno, k, v )
     for child in node.getChildNodes():
         _check_node(child)
 
@@ -77,7 +86,8 @@ _BUILTIN_OK = [
     'list', 'long', 'map', 'max', 'min', 'object', 'oct', 'ord', 'pow', 'range',
     'repr', 'round', 'set', 'slice', 'str', 'sum', 'super', 'tuple',  'xrange', 'zip',
     'ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'StopIteration',
-    'IndexError', 'KeyError', 'KeyboardInterrupt', 'RuntimeError', 'RuntimeWarning'
+    'IndexError', 'KeyError', 'NameError', 'RuntimeError', 'RuntimeWarning',
+    'ZeroDivisionError'
     ]
 
 _BUILTIN_STR = [
