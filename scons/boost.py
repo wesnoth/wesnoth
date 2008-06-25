@@ -1,10 +1,12 @@
 # vi: syntax=python:et:ts=4
 from config_check_utils import *
-from os.path import join
+from os.path import join, dirname, basename
 from glob import glob
+import re
 
 def find_boost(env):
-    include = find_include([env["prefix"]], "boost/config.hpp", "")
+    prefixes = [env["prefix"]]
+    include = find_include(prefixes, "boost/config.hpp", "")
     if include:
         prefix, includefile = include[0]
         env["boostdir"] = join(prefix, "include")
@@ -15,6 +17,29 @@ def find_boost(env):
             else:
                 env["boost_suffix"] = ""
         return
+    includes = find_include(prefixes, "boost/config.hpp", "boost-*")
+    if includes:
+        versions = []
+        for prefix, includefile in includes:
+            try:
+                versions.append(map(int, re.findall(r"^boost-(\d*)_(\d*)$", basename(dirname(dirname(includefile))))[0]))
+            except IndexError:
+                versions.append((0,0))
+        version_nums = map(lambda (major, minor): 100000 * major + 100 * minor, versions)
+        include_index = version_nums.index(max(version_nums))
+        prefix, includefile = includes[include_index]
+        version = versions[include_index]
+        env["boostdir"] = join(prefix, "include-" + str(version[0]) + "_" + str(version[1]))
+        env["boostlibdir"] = join(prefix, "lib")
+        if not env.get("boost_suffix"):
+            libs = glob(join(prefix, "lib", "libboost_*"))
+            print libs
+            for lib in libs:
+                try:
+                    env["boost_suffix"] = re.findall(r"libboost_\w*(-.*%d_%d)" % tuple(version), lib)[0]
+                    break
+                except:
+                    pass
 
 def CheckBoost(context, boost_lib, require_version = None):
     env = context.env
