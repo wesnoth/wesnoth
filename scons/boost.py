@@ -9,7 +9,7 @@ def find_boost(env):
         prefix, includefile = include[0]
         env["boostdir"] = join(prefix, "include")
         env["boostlibdir"] = join(prefix, "lib")
-        if not env["boost_suffix"]:
+        if not env.get("boost_suffix"):
             if glob(join(prefix, "lib", "libboost_*-mt.*")):
                 env["boost_suffix"] = "-mt"
             else:
