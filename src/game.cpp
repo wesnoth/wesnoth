@@ -1725,7 +1725,7 @@ void game_controller::start_wesnothd()
 		{
 			game_config::wesnothd_name = game_config::wesnothd_name.substr(0, found + needle.size());
 #ifdef _WIN32
-			game_config::Wesnothd_name += ".exe";
+			game_config::wesnothd_name += ".exe";
 #endif
 			if (old_name != game_config::wesnothd_name)
 			{
