@@ -1187,4 +1187,47 @@ bool show_theme_dialog(display& disp)
 	return(0);
 }
 
+std::string show_wesnothd_server_search(display& disp)
+{
+	// Showing file_chooser so user can search the wesnothd
+	std::string old_path = preferences::get_mp_server_program_name();
+	size_t offset = old_path.rfind("/");
+	if (offset != std::string::npos)
+	{
+		old_path = old_path.substr(0, offset);
+	}
+	else
+	{
+		old_path = "";
+	}
+#ifndef _WIN32
+
+#ifndef WESNOTH_PREFIX
+#define WESNOTH_PREFIX = "/usr"
+#endif		
+	const std::string filename = "wesnothd";
+	std::string path = WESNOTH_PREFIX + std::string("/bin");
+	if (!is_directory(path))
+		path = get_cwd();
+
+#else
+	const std::string filename = "wesnothd.exe";
+	std::string path = get_cwd();
+#endif
+	if (!old_path.empty()
+			&& is_directory(old_path))
+	{
+		path = old_path;
+	}
+
+	const std::string title =  _("Find ") + filename + (" server binary to host networked game");
+	
+	int res = dialogs::show_file_chooser_dialog(disp, path, title, false, filename);
+	if (res == 0)
+		return path;
+	else
+		return "";
+}
+
+
 }
