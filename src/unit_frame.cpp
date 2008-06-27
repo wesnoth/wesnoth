@@ -498,7 +498,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 
 	/** engine provides a string for "stoned" and "team color" modifications */
 	result.image_mod = current_val.image_mod +animation_val.image_mod;
-	if(primary)result.image_mod += engine_val.image_mod;
+	result.image_mod += engine_val.image_mod;
 
 	assert(engine_val.halo.empty());
 	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;
