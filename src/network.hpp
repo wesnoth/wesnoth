@@ -17,10 +17,6 @@
 
 #ifndef NETWORK_HPP_INCLUDED
 #define NETWORK_HPP_INCLUDED
-/**
- * Enable bandwidth stats
- **/
-//#define BANDWIDTH_MONITOR
 
 class config;
 
