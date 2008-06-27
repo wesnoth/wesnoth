@@ -92,8 +92,8 @@ public:
 	//! Send data to all players in this game except 'exclude'.
 	void send_and_record_server_message(const char* message,
 			const network::connection exclude=0);
-	void send_data(simple_wml::document& data, const network::connection exclude=0) const;
-	void send_to_one(simple_wml::document& data, const network::connection sock) const;
+	void send_data(simple_wml::document& data, const network::connection exclude=0, const std::string& packet_type = "unkown") const;
+	void send_to_one(simple_wml::document& data, const network::connection sock, const std::string& packet_type = "unkown") const;
 
 	void record_data(simple_wml::document* data);
 
@@ -139,8 +139,8 @@ private:
 			const bool player_left=true);
 	void transfer_ai_sides();
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
-			const network::connection exclude=0) const;
-	void send_data_observers(simple_wml::document& data, const network::connection exclude=0) const;
+			const network::connection exclude=0, const std::string& packet_type = "unkown") const;
+	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, const std::string& packet_type = "unkown") const;
 	//! Send [observer] tags of all the observers in the game to the user or
 	//! everyone if none given.
 	void send_observerjoins(const network::connection sock=0) const;

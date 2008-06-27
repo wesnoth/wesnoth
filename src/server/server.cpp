@@ -631,7 +631,7 @@ void server::run() {
 				simple_wml::document diff;
 				if(make_delete_diff(games_and_users_list_.root(), NULL, "user",
 				                    pl_it->second.config_address(), diff)) {
-					lobby_.send_data(diff, e.socket);
+					lobby_.send_data(diff, e.socket, "lobby_disc");
 				}
 
 				games_and_users_list_.root().remove_child("user",index);
@@ -669,6 +669,9 @@ void server::run() {
 			DBG_SERVER << "done closing socket...\n";
 		}
 	}
+#ifdef BANDWIDTH_MONITOR
+	LOG_SERVER << network::get_bandwidth_stats_all();
+#endif
 }
 
 void server::process_data(const network::connection sock,
@@ -826,7 +829,7 @@ void server::process_login(const network::connection sock,
 	// Send other players in the lobby the update that the player has joined
 	simple_wml::document diff;
 	make_add_diff(games_and_users_list_.root(), NULL, "user", diff);
-	lobby_.send_data(diff, sock);
+	lobby_.send_data(diff, sock, "lobby_login");
 
 	LOG_SERVER << network::ip_address(sock) << "\t" << username
 		<< "\thas logged on. (socket: " << sock << ")\n";
@@ -1188,7 +1191,7 @@ void server::process_data_lobby(const network::connection sock,
 		simple_wml::document diff;
 		if(make_change_diff(games_and_users_list_.root(), NULL,
 		                    "user", pl->second.config_address(), diff)) {
-			lobby_.send_data(diff);
+			lobby_.send_data(diff, 0, "lobby_create_g");
 		}
 		return;
 	}
@@ -1257,7 +1260,7 @@ void server::process_data_lobby(const network::connection sock,
 		bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
 					      "user", pl->second.config_address(), diff);
 		if (diff1 || diff2) {
-			lobby_.send_data(diff);
+			lobby_.send_data(diff, 0,"lobby_join_g" );
 		}
 	}
 
@@ -1395,7 +1398,7 @@ void server::process_data_game(const network::connection sock,
 		// Send the update of the game description to the lobby.
 		simple_wml::document diff;
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
-		lobby_.send_data(diff);
+		lobby_.send_data(diff,0,"lobby_start_g");
 
 		//! @todo FIXME: Why not save the level data in the history_?
 		return;
@@ -1492,7 +1495,7 @@ void server::process_data_game(const network::connection sock,
 		// Send notification of the game starting immediately.
 		// g->start_game() will send data that assumes
 		// the [start_game] message has been sent
-		g->send_data(data, sock);
+		g->send_data(data, sock,"game_start");
 		g->start_game(pl);
 
 		//update the game having changed in the lobby
@@ -1524,7 +1527,7 @@ void server::process_data_game(const network::connection sock,
 			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
 						      "user", pl->second.config_address(), diff);
 			if (diff1 || diff2) {
-				lobby_.send_data(diff, sock);
+				lobby_.send_data(diff, sock,"lobby_leave_g");
 			}
 
 			// Send the player who has quit the gamelist.
@@ -1542,11 +1545,11 @@ void server::process_data_game(const network::connection sock,
 		if (g->describe_slots()) {
 			update_game_in_lobby(g);
 		}
-		g->send_data(data, sock);
+		g->send_data(data, sock,"game_start");
 		return;
 	// If a player changes his faction.
 	} else if (data.child("change_faction")) {
-		g->send_data(data, sock);
+		g->send_data(data, sock, "game_start");
 		return;
 	// If the owner of a side is changing the controller.
 	} else if (data.child("change_controller")) {
@@ -1608,7 +1611,7 @@ void server::process_data_game(const network::connection sock,
 	// Data to store and broadcast.
 	} else if (data.child("stop_updates")) {
 //		if (g->started()) g->record_data(data);
-		g->send_data(data, sock);
+		g->send_data(data, sock,"game_start");
 		return;
 	// Data to ignore.
 	} else if (data.child("error")
@@ -1667,16 +1670,16 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 		}
 	}
 	if (send_diff) {
-		lobby_.send_data(diff);
+		lobby_.send_data(diff,0,"lobby_delete_g");
 	}
 
 	//send users in the game a notification to leave the game since it has ended
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	(*game_it)->send_data(leave_game_doc);
+	(*game_it)->send_data(leave_game_doc,0,"game_end");
 	// Put the remaining users back in the lobby.
 	lobby_.add_players(**game_it, true);
 
-	(*game_it)->send_data(games_and_users_list_);
+	(*game_it)->send_data(games_and_users_list_,0,"game_end");
 
 	delete *game_it;
 	games_.erase(game_it);
@@ -1686,7 +1689,7 @@ void server::update_game_in_lobby(const game* g, network::connection exclude)
 {
 	simple_wml::document diff;
 	if(make_change_diff(*games_and_users_list_.root().child("gamelist"), "gamelist", "game", g->description(), diff)) {
-		lobby_.send_data(diff, exclude);
+		lobby_.send_data(diff, exclude, "lobby_update_g");
 	}
 }
 
