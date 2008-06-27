@@ -562,6 +562,10 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 
 				unit_map::iterator up = info_.units.find(u_it->first);
 				unit_display::move_unit(steps,up->second,info_.teams);
+			} else {
+				unit_map::iterator up = info_.units.find(u_it->first);
+				up->second.set_facing(steps[steps.size()-2].get_relative_dir(steps[steps.size()-1]));
+
 			}
 		}
 	}
