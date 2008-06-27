@@ -42,7 +42,23 @@ public:
 
 	inline double heuristic(const gamemap::location& src, const gamemap::location& dst)
 	{
-		return distance_between(src, dst);
+		// We will mainly use the distances in hexes
+		// but we substract a tiny bonus for shorter Euclidean distance
+		// based on how the path looks on the screen.
+		// We must substract (and not add) to keep the heuristic 'admissible'.
+
+		// 0.75 comes frome the horizontal hex imbrication
+		double xdiff = (src.x - dst.x) * 0.75;
+		// we must add 0.5 to the y coordinate when x is odd
+		double ydiff = (src.y - dst.y) + ((src.x & 1) - (dst.x & 1)) * 0.5;
+
+		// 0.0001 is to avoid interfering with the defense cost (see shortest_path_calculator::cost)
+		return distance_between(src, dst)-(
+		0.0001 / sqrt( xdiff*xdiff + ydiff*ydiff)
+		);
+		// TODO: move the heuristic function into the cost_calculator
+		// so we can use case-specific heuristic
+		// and clean the definition of 0.0001
 	}
 };
 
