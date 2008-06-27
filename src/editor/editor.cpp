@@ -156,7 +156,9 @@ t_translation::t_terrain map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
 
 map_editor::map_editor(editor_display &gui, editormap &map, config &theme, config &game_config)
-	: gui_(gui), map_(map), abort_(DONT_ABORT),
+	: gui_(gui), map_(map), 
+	  filename_(""), original_filename_(""), 
+	  abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false),  auto_update_(true), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map, game_config), brush_(gui, size_specs_),
 	  l_button_held_func_(NONE), tooltip_manager_(gui_.video()), floating_label_manager_(),
@@ -622,6 +624,7 @@ void map_editor::edit_new_map() {
 }
 
 void map_editor::edit_load_map() {
+
 	std::string fn = filename_.empty() ?
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps") : filename_;
 	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Load"));

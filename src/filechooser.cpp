@@ -30,17 +30,21 @@ namespace dialogs
 {
 
 int show_file_chooser_dialog(display &disp, std::string &filename,
-                             std::string const &title, int xloc, int yloc) {
+                             std::string const &title, bool show_directory_buttons,
+							 const std::string& type_a_head,
+							 int xloc, int yloc) {
 
-	file_dialog d(disp, filename, title);
+	file_dialog d(disp, filename, title, show_directory_buttons);
+	if (!type_a_head.empty())
+		d.select_file(type_a_head);
 	if(d.show(xloc, yloc) >= 0) {
 		filename = d.get_choice();
 	}
 	return d.result();
 }
 
-file_dialog::file_dialog(display &disp, const std::string& file_path, const std::string& title)
-: gui::dialog(disp, title, file_path, gui::OK_CANCEL), files_list_(NULL), last_selection_(0)
+file_dialog::file_dialog(display &disp, const std::string& file_path, const std::string& title, bool show_directory_buttons)
+: gui::dialog(disp, title, file_path, gui::OK_CANCEL), show_directory_buttons_(show_directory_buttons), files_list_(NULL), last_selection_(0)
 {
 	files_list_ = new gui::file_menu(disp.video(), file_path);
 	const unsigned file_list_height = (disp.h() / 2);
@@ -50,10 +54,13 @@ file_dialog::file_dialog(display &disp, const std::string& file_path, const std:
 	set_menu(files_list_);
 	get_message().set_text(format_dirname(files_list_->get_directory()));
 	set_textbox(_("File: "), format_filename(file_path), 100);
-	add_button( new gui::dialog_button(disp.video(), _("Delete File"),
-		gui::button::TYPE_PRESS, gui::DELETE_ITEM), dialog::BUTTON_EXTRA);
-	add_button( new gui::dialog_button(disp.video(), _("New Folder"),
-		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_EXTRA_LEFT);
+	if (show_directory_buttons_)
+	{
+		add_button( new gui::dialog_button(disp.video(), _("Delete File"),
+					gui::button::TYPE_PRESS, gui::DELETE_ITEM), dialog::BUTTON_EXTRA);
+		add_button( new gui::dialog_button(disp.video(), _("New Folder"),
+					gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_EXTRA_LEFT);
+	}
 }
 
 gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
@@ -66,13 +73,16 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 	dim.menu_y -= y_shift;
 
 	//shift the extra buttons up
-	std::map<gui::dialog_button *const, std::pair<int,int> >::iterator i;
-	for(i = dim.buttons.begin(); i != dim.buttons.end(); ++i)
+	if (show_directory_buttons_)
 	{
-		const int btn_h = i->first->height();
-		int& btn_y = i->second.second;
-		y_max = maximum<int>(y_max, btn_y + btn_h);
-		btn_y -= y_shift;
+		std::map<gui::dialog_button *const, std::pair<int,int> >::iterator i;
+		for(i = dim.buttons.begin(); i != dim.buttons.end(); ++i)
+		{
+			const int btn_h = i->first->height();
+			int& btn_y = i->second.second;
+			y_max = maximum<int>(y_max, btn_y + btn_h);
+			btn_y -= y_shift;
+		}
 	}
 
 	//shift the textbox down
@@ -103,6 +113,13 @@ const std::string file_dialog::format_filename(const std::string& filename) cons
 	return filename;
 }
 
+void file_dialog::select_file(const std::string& file)
+{
+	chosen_file_ = file;
+	get_textbox().set_text(format_filename(chosen_file_));
+	files_list_->select_file(file);
+}
+
 const std::string file_dialog::format_dirname(const std::string& dirname) const
 {
 	int menu_font_size = font::SIZE_NORMAL;
@@ -120,7 +137,7 @@ const std::string file_dialog::format_dirname(const std::string& dirname) const
 	static const int filler_width = font::line_width("...", menu_font_size);
 
 	// Find the first part of the dir
-	std::string dir_prefix = "";
+	std::string dir_prefix = "/";
 	std::string::size_type pos_first = 0;
 	if((pos_first = tmp.find_first_of("\\/", 1)) != std::string::npos)
 	{
@@ -183,18 +200,26 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	}
 
 	//update the chosen file
-	if(dp_info.selection != last_selection_
+	if((dp_info.selection != last_selection_
 		|| dp_info.first_time
 		|| dp_info.double_clicked)
+			&& (!files_list_->type_a_head()
+				|| dp_info.new_left_button))
 	{
+		files_list_->reset_type_a_head();
+
 		chosen_file_ = files_list_->get_choice();
 		get_textbox().set_text(format_filename(chosen_file_));
 		last_selection_ = (dp_info.double_clicked) ? -1 : dp_info.selection;
+		last_textbox_text_ = textbox_text();
 	}
 	else if(textbox_text() != last_textbox_text_)
 	{
 		chosen_file_ = unformat_filename(textbox_text());
 		last_textbox_text_ = textbox_text();
+		
+		// Do type-a-head search in listbox
+		files_list_->select_file(textbox_text());
 	}
 
 	if(result() >=0) {

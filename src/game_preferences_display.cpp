@@ -17,8 +17,6 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
-#include "filesystem.hpp"
-#include "file_chooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
@@ -171,7 +169,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
-	  mp_server_search_button_(disp.video(), _("set path to server")),
+	  mp_server_search_button_(disp.video(), _("Set path to wesnothd")),
 	  friends_list_button_(disp.video(), _("Friends List")),
 	  friends_back_button_(disp.video(), _("Multiplayer Options")),
 	  friends_add_friend_button_(disp.video(), _("Add As Friend")),
@@ -629,7 +627,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
-	mp_server_search_button_.set_location(rect.x + 10 + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
+	mp_server_search_button_.set_location(rect.x + horizontal_padding + friends_list_button_.width(), bottom_row_y - mp_server_search_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
@@ -868,7 +866,14 @@ void preferences_dialog::process_event()
 			set_selection(FRIENDS_TAB);
 
 		if (mp_server_search_button_.pressed())
-			show_wesnothd_server_search(disp_);
+		{
+			std::string path = show_wesnothd_server_search(disp_);
+			if (!path.empty())
+			{
+				preferences::set_mp_server_program_name(path);
+			}
+			parent->clear_buttons();
+		}
 
 		set_chat_lines(chat_lines_slider_.value());
 
@@ -1120,32 +1125,6 @@ void preferences_dialog::set_selection(int index)
 	advanced_button_.hide(hide_advanced);
 }
 
-}
-
-std::string show_wesnothd_server_search(display& disp)
-{
-	// Showing file_chooser so user can search the wesnothd
-#ifndef _WIN32
-
-// HACK to avoid build problems with autotools which doesn't define 
-// WESNOTH_PREFIX yet.
-
-	std::string title =  _("Find wesnothd server binary");
-#ifdef WESNOTH_PREFIX
-	std::string path = WESNOTH_PREFIX + std::string("/bin");
-	if (!is_directory(path))
-#else
-	std::string
-#endif		
-		path = get_cwd();
-
-#else
-	std::string title =  _("Find wesnothd.exe server binary");
-	std::string path = get_cwd();
-#endif
-
-	/*int res =*/ dialogs::show_file_chooser_dialog(disp, path, title);
-	return path;
 }
 
 void show_preferences_dialog(display& disp, const config& game_cfg)

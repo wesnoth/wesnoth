@@ -96,6 +96,7 @@
 #define DBG_CONFIG LOG_STREAM(debug, config)
 #define LOG_CONFIG LOG_STREAM(info, config)
 #define LOG_GENERAL LOG_STREAM(info, general)
+#define WRN_GENERAL LOG_STREAM(warn, general)
 #define DBG_GENERAL LOG_STREAM(debug, general)
 #define ERR_NET LOG_STREAM(err, network)
 #define LOG_NET LOG_STREAM(info, network)
@@ -1691,12 +1692,30 @@ void game_controller::remove_addon(const std::string& addon)
 
 void game_controller::start_wesnothd()
 {
-	// Make sure that we have laoded name from preferences
-	preferences::check_mp_server_program_name();
+	typedef std::vector<std::string> path_store;
+	// add all paths to try to list
+	path_store paths_to_try;
+	
+	if (!preferences::get_mp_server_program_name().empty())
+		paths_to_try.push_back(preferences::get_mp_server_program_name());
 
-	if(game_config::wesnothd_name.empty()) {
-		throw game::mp_server_error("No server name given the server binary.");
+	std::string wesnothd_quess = game_config::wesnothd_name;
 
+	paths_to_try.push_back(wesnothd_quess);
+
+	
+	std::string needle = "wesnothd";
+	size_t found = wesnothd_quess.rfind(needle);
+	if (found != std::string::npos)
+	{
+		wesnothd_quess = wesnothd_quess.substr(0, found + needle.size());
+#ifdef _WIN32
+		wesnothd_quess += ".exe";
+#endif
+		if (wesnothd_quess != game_config::wesnothd_name)
+		{
+			paths_to_try.push_back(wesnothd_quess);
+		}
 	}
 
 	std::string config = get_user_data_dir() + "/lan_server.cfg";
@@ -1705,48 +1724,27 @@ void game_controller::start_wesnothd()
 		// copy file if it isn't created yet
 		write_file(config, read_file("data/lan_server.cfg"));
 	}
-#ifndef _WIN32
-	config = "\"" + game_config::wesnothd_name +"\" -c " + config + " -d -t 2 -T 5 ";
-	LOG_GENERAL << "Starting wesnothd: "<< config << "\n";
-	if (std::system(config.c_str()) != 0)
-#else
-	LOG_GENERAL << "Starting wesnothd\n";
-	// Wesnothd_start.bat has to be included in windows as windows don't know how to start
-	// background job
-	if (std::system(("cmd /C start \"wesnoth server\" /B \"" + game_config::wesnothd_name + "\" -c " + config + " -t 2 -T 5 ").c_str()) != 0)
-#endif
+	for (path_store::iterator iname = paths_to_try.begin();
+			iname != paths_to_try.end(); ++iname)
 	{
-		// try to locate wesnothd
-		std::string old_name = game_config::wesnothd_name;
-		std::string needle = "wesnothd";
-		size_t found = game_config::wesnothd_name.rfind(needle);
-		if (found != std::string::npos
-				&& found  + needle.size() < game_config::wesnothd_name.size())
-		{
-			game_config::wesnothd_name = game_config::wesnothd_name.substr(0, found + needle.size());
-#ifdef _WIN32
-			game_config::wesnothd_name += ".exe";
+#ifndef _WIN32
+		std::string command = "\"" + *iname +"\" -c " + config + " -d -t 2 -T 5 ";
+#else
+		// start wesnoth as background job
+		std::string command = "cmd /C start \"wesnoth server\" /B \"" + *iname + "\" -c " + config + " -t 2 -T 5 ";
 #endif
-			if (old_name != game_config::wesnothd_name)
-			{
-
-				try {
-					start_wesnothd();
-					return;
-				} catch(...)
-				{
-					game_config::wesnothd_name = old_name;
-					throw;
-				}
-			}
+		LOG_GENERAL << "Starting wesnothd: "<< command << "\n";
+		if (std::system(command.c_str()) == 0)
+		{
+			// Give server a moment to start up
+			SDL_Delay(50);
+			return;
 		}
-		
-
-		LOG_GENERAL << "Failed to run server start script\n";
-		throw game::mp_server_error("Starting MP server failed!");
+		preferences::set_mp_server_program_name("");
 	}
-	// Give server a moment to start up
-	SDL_Delay(100);
+	// Couldn't start server so throw error
+	WRN_GENERAL << "Failed to run server start script\n";
+	throw game::mp_server_error("Starting MP server failed!");
 }
 
 bool game_controller::play_multiplayer()
@@ -1844,16 +1842,8 @@ bool game_controller::play_multiplayer()
 
 				if (!path.empty())
 				{
-					std::string old_name = game_config::wesnothd_name;
-					game_config::wesnothd_name = path;
-					try {
-						start_wesnothd();
-					} catch(...)
-					{
-						game_config::wesnothd_name = old_name;
-						throw;
-					}
-					preferences::set_mp_server_program_name();
+					preferences::set_mp_server_program_name(path);
+					start_wesnothd();
 				}
 				else
 				{

@@ -39,7 +39,7 @@ EXIT_STATUS start(config& game_conf, CVideo& video)
 		theme_cfg = &dummy_theme;
 	}
 	const config dummy_cfg;
-	std::string filename = "new map";
+	std::string filename = "";
 	bool from_scenario = true;
 		
 	for(;;) {

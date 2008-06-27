@@ -51,6 +51,14 @@ public:
 	void change_directory(const std::string path);
 	bool make_directory(const std::string& subdir_name);
 
+	/**
+	 * Selects file (type-a-head search)
+	 **/
+	void select_file(const std::string& begin_of_filename);
+
+	bool type_a_head() const;
+	void reset_type_a_head();
+
 protected:
 	void handle_event(const SDL_Event& event);
 
@@ -85,6 +93,7 @@ private:
 	std::string chosen_file_;
 	std::vector<std::string> files_in_current_dir_, dirs_in_current_dir_;
 	int last_selection_;
+	int type_a_head_;
 };
 
 } //end namespace gui

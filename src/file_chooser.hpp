@@ -29,12 +29,14 @@ namespace dialogs
 
 class file_dialog : public gui::dialog {
 public:
-	file_dialog(display &disp, const std::string& file_path, const std::string& title);
+	file_dialog(display &disp, const std::string& file_path, const std::string& title, bool show_directory_buttons);
 
 	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1);
 
 	/// Return the chosen file.
 	std::string get_choice() const { return chosen_file_; }
+
+	void select_file(const std::string& file);
 
 protected:
 	void action(gui::dialog_process_info &dp_info);
@@ -43,6 +45,7 @@ protected:
 	const std::string format_dirname(const std::string& dirname) const;
 
 private:
+	bool show_directory_buttons_;
 	gui::file_menu *files_list_;
 	int last_selection_;
 	std::string last_textbox_text_;
@@ -55,7 +58,9 @@ private:
 /// index of the button pressed, or -1 if the dialog was canceled
 /// through keypress.
 int show_file_chooser_dialog(display &displ, std::string &filename,
-                             std::string const &title, int xloc = -1, int yloc = -1);
+                             std::string const &title, bool show_directory_buttons = true, 
+							 const std::string& filename = "",
+							 int xloc = -1, int yloc = -1);
 
 } // end of dialogs namespace
 

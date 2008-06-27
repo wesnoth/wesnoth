@@ -87,8 +87,8 @@ namespace preferences {
 	int mp_server_warning_disabled();
 	void set_mp_server_warning_disabled(int value);
 
-	void set_mp_server_program_name();
-	void check_mp_server_program_name();
+	void set_mp_server_program_name(const std::string&);
+	std::string get_mp_server_program_name();
 
 	bool random_start_time();
 	void set_random_start_time(bool value);

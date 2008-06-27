@@ -42,7 +42,8 @@ const char file_menu::path_delim('/');
 file_menu::file_menu(CVideo &disp, std::string start_file)
 	: menu(disp, empty_string_vector, false),
 	  current_dir_(get_path(start_file)),
-	  chosen_file_(start_file), last_selection_(-1)
+	  chosen_file_(start_file), last_selection_(-1),
+	  type_a_head_(-1)
 {
 	// If the start file is not a file or directory, use the root.
 	if((!file_exists(chosen_file_) && !::is_directory(chosen_file_))
@@ -116,7 +117,10 @@ bool file_menu::make_directory(const std::string& subdir_name) {
 
 void file_menu::handle_event(const SDL_Event& event) {
 	menu::handle_event(event);
-	if(selection() != last_selection_) {
+
+	if(selection() != last_selection_
+			&& !type_a_head()) {
+		type_a_head_ = -1;
 		entry_selected(selection());
 		last_selection_ = selection();
 	}
@@ -253,6 +257,56 @@ std::string file_menu::add_path(const std::string path, const std::string to_add
 		}
 	}
 	return joined_path;
+}
+
+struct match_begin {
+	match_begin(const std::string& begin) : begin_(begin)
+	{}
+
+	bool operator()(const std::string& o) const
+	{
+		return o.compare(0, begin_.size(), begin_) == 0;
+	}
+
+	private:
+	const std::string& begin_;
+};
+
+bool file_menu::type_a_head() const
+{
+	return selection() == type_a_head_;
+}
+
+void file_menu::reset_type_a_head()
+{
+	if (type_a_head_ >= 0)
+	{
+		entry_selected(type_a_head_);
+		last_selection_ = type_a_head_;
+	}
+	type_a_head_ = -1;
+}
+
+void file_menu::select_file(const std::string& begin_of_filename)
+{
+	size_t additional_index = is_root(current_dir_) ? 0 : 1;
+	std::vector<std::string>::iterator it;
+	it = std::find_if(dirs_in_current_dir_.begin(), dirs_in_current_dir_.end(), match_begin(begin_of_filename));
+	if (it != dirs_in_current_dir_.end())
+	{
+		type_a_head_ = additional_index + it - dirs_in_current_dir_.begin(); 
+		move_selection(type_a_head_);
+		return;
+	}
+	additional_index += dirs_in_current_dir_.size();
+	
+	it = std::find_if(files_in_current_dir_.begin(), files_in_current_dir_.end(), match_begin(begin_of_filename));
+	if (it != files_in_current_dir_.end())
+	{
+		type_a_head_ = additional_index + it - files_in_current_dir_.begin(); 
+		move_selection(type_a_head_);
+		return;
+	}
 }
 
 void file_menu::update_file_lists() {

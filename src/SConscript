@@ -74,7 +74,6 @@ libwesnoth_sources = Split("""
     minimap.cpp
     pathutils.cpp
     preferences.cpp
-    preferences_display.cpp
     race.cpp
     random.cpp
     reports.cpp
@@ -129,7 +128,8 @@ libwesnoth_sources = Split("""
     """)
 libwesnoth_sources.extend([
     env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
-    env.Object("language.cpp", EXTRA_DEFINE = env['dummy_locales'] and "USE_DUMMYLOCALES" or None)
+    env.Object("language.cpp", EXTRA_DEFINE = env['dummy_locales'] and "USE_DUMMYLOCALES" or None),
+    env.Object("preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None)
     ])
 
 libwesnoth = env.Library("wesnoth", libwesnoth_sources)
@@ -179,6 +179,7 @@ wesnoth_sources = Split("""
     game_display.cpp
     game_events.cpp
     game_preferences.cpp
+    game_preferences_display.cpp
     gamestatus.cpp
     generate_report.cpp
     halo.cpp
@@ -220,7 +221,6 @@ wesnoth_sources = Split("""
     widgets/combo.cpp
     widgets/scrollpane.cpp
     """)
-wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 python_env = env.Clone()
 if env['python']:
