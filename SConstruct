@@ -77,6 +77,8 @@ opts.AddOptions(
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath), 
     ('host', 'Cross-compile host.', ''),
+    BoolOption('distcc', "Use distcc", False),
+    BoolOption('ccache', "Use ccache", False),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolOption("fast", "Make scons faster at cost of less precise dependency tracking.", False)
     )
@@ -100,6 +102,10 @@ else:
 if env.get('cxxtool',""):
 	env['CXX'] = env['cxxtool']
 	env['ENV']['HOME'] = os.environ['HOME']
+
+if env['distcc']: env.Tool('distcc')
+if env['ccache']: env.Tool('ccache')
+
 
 Help("""Arguments may be a mixture of switches and targets an any order.
 Switches apply to the entire build regrdless of where they are in the order.
@@ -150,7 +156,7 @@ If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
 """ + opts.GenerateHelpText(env))
 
-if env["cachedir"]:
+if env["cachedir"] and not env['ccache']:
     CacheDir(env["cachedir"])
 
 if env["fast"]:
