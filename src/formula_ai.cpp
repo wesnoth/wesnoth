@@ -944,15 +944,13 @@ formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false), function_table
 		const t_string& name = (**i)["name"];
 		const t_string& inputs = (**i)["inputs"];
 		std::vector<std::string> args = utils::split(inputs);
-		const formula_ptr action_formula = 
-			  game_logic::formula::create_optional_formula((**i)["action"], 
-												           &function_table);
-		const formula_ptr eval_formula =
-			  game_logic::formula::create_optional_formula((**i)["evaluation"], 
-					  									   &function_table);
+		game_logic::const_formula_ptr action_formula(
+				new game_logic::formula((**i)["action"], &function_table));
+		game_logic::const_formula_ptr eval_formula(
+				new game_logic::formula((**i)["evaluation"], &function_table));
 		const formula_ptr precondition_formula = 
-			  game_logic::formula::create_optional_formula((**i)["precondition"],
-					                                       &function_table);
+				game_logic::formula::create_optional_formula((**i)["precondition"], 
+						&function_table);
 		function_table.register_candidate_move(name, action_formula, eval_formula, 
 								precondition_formula, args);
 	}
@@ -1008,17 +1006,6 @@ void formula_ai::play_turn()
 
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
-	ai_function_symbol_table function_table(*this);
-	const config& ai_param = current_team().ai_parameters();
-	config::const_child_itors functions = ai_param.child_range("function");
-	for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
-		const t_string& name = (**i)["name"];
-		const t_string& inputs = (**i)["inputs"];
-		const t_string& formula_str = (**i)["formula"];
-		std::vector<std::string> args = utils::split(inputs);
-		function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), game_logic::formula::create_optional_formula((**i)["precondition"], &function_table), args);
-	}
-
 	game_logic::formula f(formula_str, &function_table);
 
 	game_logic::map_formula_callable callable(this);
