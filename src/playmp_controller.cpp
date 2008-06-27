@@ -85,9 +85,6 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 		if(current_team().is_human()) {
 			LOG_NG << "is human...\n";
 
-			// reset default state
-			beep_warning_time_ = 0;
-
 			try{
 				before_human_turn(save);
 				play_human_turn();
@@ -147,6 +144,13 @@ void playmp_controller::process(events::pump_info &info) {
 			playmp_controller::think_about_countdown(info.ticks());
 		}
 	}
+}
+
+void playmp_controller::reset_countdown()
+{
+	if (beep_warning_time_ < 0)
+		sound::stop_bell();
+	beep_warning_time_ = 0;
 }
 
 //check if it is time to start playing the timer warning
@@ -278,10 +282,7 @@ void playmp_controller::linger(upload_log& log)
 	}
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
-		sound::stop_bell();
-	}
-	beep_warning_time_=-1;
+	reset_countdown();
 
 	set_end_scenario_button();
 
@@ -415,9 +416,7 @@ void playmp_controller::finish_side_turn(){
 	turn_data_ = NULL;
 
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
-		sound::stop_bell();
-	}
+	reset_countdown();
 }
 
 void playmp_controller::play_network_turn(){
