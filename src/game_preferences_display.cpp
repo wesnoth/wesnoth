@@ -17,6 +17,8 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
+#include "filesystem.hpp"
+#include "file_chooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
