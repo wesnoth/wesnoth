@@ -39,6 +39,7 @@ public:
 	static void set_replay_last_turn(unsigned int turn);
 
 	bool counting_down();
+	void reset_countdown();
 	void think_about_countdown(int ticks);
 	void process(events::pump_info &info);
 	void linger(upload_log& log);
