@@ -483,6 +483,16 @@ void server::run() {
 			if ((loop%100) == 0 && last_ping_ + 10 <= now) {
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) dump_stats(now);
+#ifdef BANDWIDTH_MONITOR
+				// Send network stats every hour
+				static size_t prev_hour = localtime(&now)->tm_hour;
+				if (prev_hour != localtime(&now)->tm_hour)
+				{
+					prev_hour = localtime(&now)->tm_hour;
+					LOG_SERVER << network::get_bandwidth_stats();
+
+				}
+#endif
 				// send a 'ping' to all players to detect ghosts
 				config ping;
 				ping["ping"] = lexical_cast<std::string>(now);
@@ -849,7 +859,7 @@ void server::process_query(const network::connection sock,
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name());
 	} else if (command == "status " + pl->second.name() || command == "metrics"
-	|| command == "motd" || command == "wml" || command == "netstats" || command == "netstats all") {
+	|| command == "motd" || command == "wml" || command == "netstats") {
 		response << process_command(command.to_string());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "

@@ -894,14 +894,15 @@ static bandwidth_map::iterator add_bandwidth_entry(const std::string packet_type
 	int day = timeinfo->tm_mday;
 	assert(hour < 24 && hour >= 0);
 	std::pair<bandwidth_map::iterator,bool> insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
+	bandwidth_map::iterator& inserted = insertion.first;
 	if (!insertion.second && day != inserted->second.day)
 	{
 		// clear previuos day stats
-		hour[hour].clear();
+		hour_stats[hour].clear();
 		//insert again to cleared map
 		insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
+		inserted = insertion.first;
 	}
-	bandwidth_map::iterator inserted = insertion.first;
 	inserted->second.day = day;
 	return inserted;
 }
