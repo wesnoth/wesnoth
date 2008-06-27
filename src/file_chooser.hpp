@@ -59,7 +59,7 @@ private:
 /// through keypress.
 int show_file_chooser_dialog(display &displ, std::string &filename,
                              std::string const &title, bool show_directory_buttons = true, 
-							 const std::string& filename = "",
+							 const std::string& file_to_search = "",
 							 int xloc = -1, int yloc = -1);
 
 } // end of dialogs namespace
