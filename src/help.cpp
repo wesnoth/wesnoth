@@ -1317,9 +1317,8 @@ public:
 			}
 			ss << "\n";
 		}
+		ss << "\n";
 
-		if (!next_units.empty() || !type_.ability_tooltips().empty())
-			ss << "\n";
 		// Print some basic information such as HP and movement points.
 		ss << _("HP: ") << type_.hitpoints() << jump(30)
 		   << _("Moves: ") << type_.movement() << jump(30)
