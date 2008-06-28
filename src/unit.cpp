@@ -1297,7 +1297,16 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//remove ai_vars from private cfg
 	cfg_.clear_children("ai_vars");
 
+	//dont use the unit_type's attacks if this config has its own defined
+	config::const_child_itors attack_cfg_range = cfg.child_range("attack");
+	if(attack_cfg_range.first != attack_cfg_range.second) {
+		attacks_.clear();
+		do {
+			attacks_.push_back(attack_type(**attack_cfg_range.first));
+		} while(++attack_cfg_range.first != attack_cfg_range.second);
+	}
 	cfg_.clear_children("attack");
+
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
 		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
@@ -1619,7 +1628,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		set_standing(loc);
 	}
 	anim_->update_last_draw_time();
-	frame_parameters params; 
+	frame_parameters params;
 	const t_translation::t_terrain terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
 	// do not set to 0 so we can distinguih the flying from the "not on submerge terrain"
@@ -1761,7 +1770,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	// FIXME: Use the hack to draw ellipses in the unit layer
 	// but with a different drawing_order, so it's rendered behind/above unit
-	
+
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, drawing_order-10,
@@ -1877,7 +1886,7 @@ bool unit::invalidate(const gamemap::location &loc)
 
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
-		frame_parameters params; 
+		frame_parameters params;
 		game_display * disp =  game_display::get_singleton();
 		const gamemap & map = disp->get_map();
 		const t_translation::t_terrain terrain = map.get_terrain(loc);
@@ -2365,11 +2374,9 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if(apply_to == "new_attack") {
 					attacks_.push_back(attack_type(**i.first));
 				} else if(apply_to == "remove_attacks") {
-					int num_attacks= attacks_.size();
 					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
 						if (a->matches_filter(**i.first,false)) {
 							attacks_.erase(a--);
-							num_attacks--;
 						}
 					}
 				} else if(apply_to == "attack") {
@@ -2800,7 +2807,7 @@ bool unit::invisible(const gamemap::location& loc,
 void unit::set_underlying_id() {
 	if(underlying_id_.empty()){
 		std::stringstream id;
-				
+
 		if(!name_.empty()){
 			id << type()->id() << "-" << get_random() << get_random() << "-" <<  name_;
 		} else {
