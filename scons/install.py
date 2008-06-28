@@ -67,8 +67,7 @@ def hard_link(dest, src, symlink = False):
         copy2(src, dest)
 
 HardLink = ActionFactory(hard_link,
-                         lambda dest, src: 'Hardlinking %s to %s' % (src, dest),
-                         convert=str)
+                         lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
 def generate(env):
     #env.AddMethod(InstallWithSuffix)
