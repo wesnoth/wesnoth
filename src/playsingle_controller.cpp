@@ -411,7 +411,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 						player->gold_add = end_level.carryover_add;
 
 						// Only show the report for ourselves.
-						if (!i->is_persistent())
+						if (!i->is_local())
 							continue;
 
 						if(gamestate_.players.size()>1) {

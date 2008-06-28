@@ -66,7 +66,8 @@ void get_player_info(const config& cfg, game_state& gamestate,
 
 	if(cfg["controller"] == "human" ||
 	   cfg["controller"] == "network" ||
-	   cfg["persistent"] == "1") {
+	   cfg["controller"] == "network_ai" ||
+	   cfg["controller"] == "human_ai") {
 		player = gamestate.get_player(save_id);
 
 		if(player == NULL && !save_id.empty()) {

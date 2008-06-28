@@ -41,6 +41,10 @@ public:
 		std::string name;
 		mp::controller controller;
 		network::connection connection;
+		operator std::string() const
+		{
+			return name;
+		}
 	};
 
 	typedef std::vector<connected_user> connected_user_list;
@@ -65,7 +69,7 @@ public:
 
 		//! Returns true if this side is waiting for a network player
 		//! and players allowed
-		bool available() const;
+		bool available(const std::string& name = "") const;
 
 		//! Return true if players are allowed to take this side
 		bool allow_player() const;
@@ -78,7 +82,10 @@ public:
 		void update_user_list();
 
 		//! Returns the username of this side
+		const std::string& get_current_player() const
+		{ return current_player_; }
 		const std::string& get_id() const;
+		bool is_owned_by(const std::string& name) const;
 		//! Sets the username of this side
 		void set_id(const std::string& id);
 
@@ -112,6 +119,7 @@ public:
 		int index_;
 		std::string id_;
 		std::string save_id_;
+		std::string current_player_;
 		mp::controller controller_;
 		int faction_;
 		int team_;
@@ -155,6 +163,7 @@ public:
 
 	virtual void process_event();
 
+	void take_reserved_side(connect::side& side, const config& data);
 	/** Returns the game state, which contains all information
 	 * about the current scenario.
 	 */

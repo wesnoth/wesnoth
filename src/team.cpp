@@ -55,7 +55,7 @@ teams_manager::~teams_manager()
 bool teams_manager::is_observer()
 {
 	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
-		if(i->is_human() || i->is_persistent()) {
+		if(i->is_local()) {
 			return false;
 		}
 	}
@@ -95,7 +95,6 @@ team::team_info::team_info(const config& cfg) :
 		objectives(cfg["objectives"]),
 		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
 		controller(),
-		persistent(),
 		ai_algorithm(cfg["ai_algorithm"]),
 		ai_params(),
 		ai_memory_(),
@@ -175,8 +174,12 @@ team::team_info::team_info(const config& cfg) :
 	std::string control = cfg["controller"];
 	if (control == "human")
 		controller = HUMAN;
+	else if (control == "human_ai")
+		controller = HUMAN_AI;
 	else if (control == "network")
 		controller = NETWORK;
+	else if (control == "network_ai")
+		controller = NETWORK_AI;
 	else if (control == "null")
 	{
 		disallow_observers = utils::string_bool(cfg["disallow_observers"],true);
@@ -184,10 +187,6 @@ team::team_info::team_info(const config& cfg) :
 	}
 	else
 		controller = AI;
-
-	std::string persist = cfg["persistent"];
-	if (persist.empty()) persistent = controller == HUMAN;
-	else persistent = persist == "1";
 
 	if(ai_algorithm.empty()) {
 		ai_algorithm = global_ai_params["ai_algorithm"];
@@ -310,12 +309,13 @@ void team::team_info::write(config& cfg) const
 	switch(controller) {
 	case AI: cfg["controller"] = "ai"; break;
 	case HUMAN: cfg["controller"] = "human"; break;
+	case HUMAN_AI: cfg["controller"] = "human_ai"; break;
 	case NETWORK: cfg["controller"] = "network"; break;
+	case NETWORK_AI: cfg["controller"] = "network_ai"; break;
 	case EMPTY: cfg["controller"] = "null"; break;
 	default: assert(false); return;
 	}
 
-	cfg["persistent"] = persistent ? "1" : "0";
 	cfg["villages_per_scout"] = str_cast(villages_per_scout);
 	cfg["leader_value"] = str_cast(leader_value);
 	cfg["village_value"] = str_cast(village_value);
@@ -513,8 +513,12 @@ void team::change_controller(const std::string& controller)
 	team::team_info::CONTROLLER cid;
 	if (controller == "human")
 		cid = team::team_info::HUMAN;
+	else if (controller == "human_ai")
+		cid = team::team_info::HUMAN_AI;
 	else if (controller == "network")
 		cid = team::team_info::NETWORK;
+	else if (controller == "network_ai")
+		cid = team::team_info::NETWORK_AI;
 	else if (controller == "null")
 		cid = team::team_info::EMPTY;
 	else

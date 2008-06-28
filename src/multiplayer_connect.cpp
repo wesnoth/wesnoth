@@ -31,6 +31,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
+#include <boost/bind.hpp>
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -43,7 +44,8 @@ namespace {
 		"network",
 		"human",
 		"ai",
-		"null"
+		"null",
+		"reserved"
 	};
 }
 
@@ -55,6 +57,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	index_(index),
 	id_(""), // Id is reset, and not imported from loading savegames
 	save_id_(cfg_.get_attribute("save_id")),
+	current_player_(cfg_.get_attribute("current_player")),
 	controller_(),
 	faction_(lexical_cast_default<int>(cfg_.get_attribute("faction"), 0)),
 	team_(0),
@@ -67,7 +70,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
-	orig_controller_(parent.video(), cfg.get_attribute("id"), font::SIZE_SMALL),
+	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
@@ -94,6 +97,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		}
 		else
 		{
+			if (!save_id_.empty())
+			{
+				cfg_["controller"] = "reserved";
+
+			}
 			for(; i != CNTR_LAST; ++i) {
 				if(cfg_["controller"] == controller_names[i]) {
 					controller_ = static_cast<mp::controller>(i);
@@ -316,6 +324,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 connect::side::side(const side& a) :
 	parent_(a.parent_), cfg_(a.cfg_),
 	index_(a.index_), id_(a.id_),  save_id_(a.save_id_),
+	current_player_(a.current_player_),
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
 	gold_(a.gold_), income_(a.income_), leader_(a.leader_), /* taken_(a.taken_), */
@@ -356,12 +365,19 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
 }
 
+bool connect::side::is_owned_by(const std::string& name) const
+{
+	return name == id_;
+}
+
 void connect::side::process_event()
 {
 	if(combo_controller_.changed() && combo_controller_.selected() >= 0) {
-		if (combo_controller_.selected() == CNTR_LAST) {
+		const int cntr_last = (save_id_.empty()?CNTR_LAST - 1 :CNTR_LAST);
+		if (combo_controller_.selected() == cntr_last
+				|| combo_controller_.selected() == cntr_last + parent_->users_.size() + 1) {
 			update_controller_ui();
-		} else if (combo_controller_.selected() < CNTR_LAST) {
+		} else if (combo_controller_.selected() < cntr_last) {
 			// If the current side corresponds to an existing user,
 			// we must kick it!
 
@@ -370,21 +386,26 @@ void connect::side::process_event()
 
 			// Don't kick an empty player or the game creator
 			if(!id_.empty()) {
-				if (id_ != preferences::login()) {
+				if (id_ != preferences::login()
+						&& std::count_if(parent_->sides_.begin(), parent_->sides_.end(), boost::bind(&connect::side::is_owned_by, _1, boost::ref(id_))) == 1) {
 					parent_->kick_player(id_);
 				}
-				id_ = "";
+				if (combo_controller_.selected() == CNTR_LOCAL)
+					id_ = preferences::login();
+				else
+					id_ = "";
 			}
 			changed_ = true;
-		} else {
-			size_t user = combo_controller_.selected() - CNTR_LAST - 1;
+		} else if (combo_controller_.selected() <=  cntr_last + parent_->users_.size()) {
+			// move user
+			size_t user = combo_controller_.selected() - cntr_last - 1;
 
 			// If the selected user already was attributed to
 			// another side, find its side, and switch users.
-			//! todo Let one player get several sides like it is
-			//! already possible once the game started.
 			const std::string new_id = parent_->users_[user].name;
-			if (new_id != id_) {
+			// If user has multiple sides remove all others.
+			if (new_id != id_
+					|| std::count_if(parent_->sides_.begin(), parent_->sides_.end(), boost::bind(&connect::side::is_owned_by, _1, boost::ref(id_))) > 1) {
 				int old_side = parent_->find_player_side(new_id);
 				if (old_side != -1) {
 					if (id_.empty()) {
@@ -393,6 +414,25 @@ void connect::side::process_event()
 						parent_->sides_[old_side].set_id(id_);
 					}
 				}
+				// remove extra slots from this player
+				while (-1 != (old_side = parent_->find_player_side(new_id)))
+				{
+					parent_->sides_[old_side].set_controller(parent_->default_controller_);
+				}
+				id_ = new_id;
+				controller_ = parent_->users_[user].controller;
+				changed_ = true;
+			}
+		} else {
+			// give user second side
+			size_t user = combo_controller_.selected() - cntr_last - 1 - parent_->users_.size() - 1;
+
+			assert(user < parent_->users_.size());
+
+			// If the selected user already was attributed to
+			// another side, find its side, and switch users.
+			const std::string new_id = parent_->users_[user].name;
+			if (new_id != id_) {
 				id_ = new_id;
 				controller_ = parent_->users_[user].controller;
 				changed_ = true;
@@ -458,9 +498,17 @@ bool connect::side::changed()
 	return res;
 }
 
-bool connect::side::available() const
+bool connect::side::available(const std::string& name) const
 {
-	return allow_player_ && controller_ == CNTR_NETWORK && id_.empty();
+	if (name.empty())
+	{
+		return allow_player_ 
+			&& ((controller_ == CNTR_NETWORK && id_.empty()) 
+					|| controller_ == CNTR_RESERVED);
+	}
+	return allow_player_ 
+		&& ((controller_ == CNTR_NETWORK && id_.empty())
+			|| (controller_ == CNTR_RESERVED && current_player_ == name));
 }
 
 bool connect::side::allow_player() const
@@ -476,7 +524,8 @@ void connect::side::update_controller_ui()
 		connected_user_list::iterator player = parent_->find_player(id_);
 
 		if (player != parent_->users_.end()) {
-			combo_controller_.set_selected(CNTR_LAST + 1 + (player - parent_->users_.begin()));
+			const int no_reserve = save_id_.empty()?-1:0;
+			combo_controller_.set_selected(CNTR_LAST + no_reserve + 1 + (player - parent_->users_.begin()));
 		} else {
 			combo_controller_.set_selected(CNTR_NETWORK);
 		}
@@ -563,7 +612,7 @@ config connect::side::get_config() const
 	}
 	res["controller"] = controller_names[controller_];
 	res["id"] = id_;
-	res["current_player"] = id_;
+	res["current_player"] = id_.empty() ? current_player_ : id_;
 
 	if (id_.empty()) {
 		char const *description;
@@ -573,7 +622,7 @@ config connect::side::get_config() const
 			break;
 		case CNTR_LOCAL:
 			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
-				res["save_id"] = "local" + res["side"].str();
+				res["save_id"] = id_ + res["side"].str();
 			}
 			description = N_("Anonymous local player");
 			break;
@@ -602,6 +651,14 @@ config connect::side::get_config() const
 			description = N_("(Empty slot)");
 			res["no_leader"] = "yes";
 			break;
+		case CNTR_RESERVED:
+			{
+				utils::string_map symbols;
+				symbols["playername"] = current_player_;
+				description = vgettext("(Reserved for $playername)",symbols).c_str();
+			}
+			break;
+		case CNTR_LAST:
 		default:
 			assert(false);
 			break;
@@ -609,7 +666,7 @@ config connect::side::get_config() const
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
 		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
-			res["save_id"] = id_;
+			res["save_id"] = id_ + res["side"].str();
 		}
 
 		res["user_description"] = id_;
@@ -723,8 +780,12 @@ void connect::side::update_user_list()
 {
 	bool name_present = false;
 
-	std::vector<std::string> list = parent_->player_types_;
-	list.push_back("----");
+	typedef std::vector<std::string> name_list;
+
+	name_list list = parent_->player_types_;
+	if (!save_id_.empty())
+		list.push_back(_("Reserved"));
+	list.push_back(_("--move--"));
 
 	connected_user_list::const_iterator itor;
 	for (itor = parent_->users_.begin(); itor != parent_->users_.end();
@@ -733,6 +794,10 @@ void connect::side::update_user_list()
 		if (itor->name == id_)
 			name_present = true;
 	}
+
+	list.push_back(_("--give--"));
+
+	std::for_each(parent_->users_.begin(), parent_->users_.end(), boost::bind(&name_list::push_back,boost::ref(list),_1));
 
 	if (name_present == false) {
 		id_ = "";
@@ -974,14 +1039,15 @@ connect::connect(game_display& disp, const config& game_config,
 		if (s->allow_player()) {
 			if (side_choice == -1)
 				side_choice = s - sides_.begin();
-			if(s->get_save_id() == preferences::login()) {
-				side_choice = s - sides_.begin();
-				break;
+			if(s->get_current_player() == preferences::login()) {
+				sides_[s - sides_.begin()].set_id(preferences::login());
+				side_choice = gamemap::MAX_PLAYERS;
 			}
 		}
 	}
 
-	if (side_choice != -1)
+	if (side_choice != -1
+			&& side_choice != gamemap::MAX_PLAYERS)
 	{
 		sides_[side_choice].set_id(preferences::login());
 	}
@@ -1139,7 +1205,7 @@ void connect::process_network_data(const config& data, const network::connection
 
 		// Assigns this user to a side
 		if(side_taken >= 0 && side_taken < int(sides_.size())) {
-			if(!sides_[side_taken].available()) {
+			if(!sides_[side_taken].available(name)) {
 				// This side is already taken.
 				// Try to reassing the player to a different position.
 				side_list::const_iterator itor;
@@ -1174,6 +1240,10 @@ void connect::process_network_data(const config& data, const network::connection
 
 			// sides_[side_taken].set_connection(sock);
 			sides_[side_taken].import_network_user(data);
+
+			// Go thought and check if more sides are reserved
+			// For this player
+			std::for_each(sides_.begin(), sides_.end(), boost::bind(&connect::take_reserved_side, this,_1, data));
 			update_playerlist_state(false);
 			update_and_send_diff();
 
@@ -1220,6 +1290,15 @@ void connect::process_network_data(const config& data, const network::connection
 				update_and_send_diff();
 			}
 		}
+	}
+}
+
+void connect::take_reserved_side(connect::side& side, const config& data)
+{
+	if (side.available(data["name"])
+			&& side.get_current_player() == data["name"])
+	{
+		side.import_network_user(data);
 	}
 }
 

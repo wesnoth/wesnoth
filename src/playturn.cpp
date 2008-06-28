@@ -155,10 +155,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const std::string& player = (*change)["player"];
 
 		if(index < teams_.size()) {
-			teams_[index].set_current_player(player);
+			if (!player.empty())
+				teams_[index].set_current_player(player);
 			const unit_map::iterator leader = find_leader(units_, side);
 			bool restart = gui_.get_playing_team() == index;
-			if(leader != units_.end())
+			if(!player.empty() && leader != units_.end())
 				leader->second.rename(player);
 
 
@@ -168,8 +169,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					gui_.set_team(index);
 				}
 				teams_[index].make_human();
-			} else if ( (controller == "network") && (!teams_[index].is_network()) ){
+			} else if ( (controller == "human_ai" ) && (!teams_[index].is_human_ai() )) {
+				teams_[index].make_human_ai();
+			} else if ( (controller == "network") && (!teams_[index].is_network_human()) ){
 				teams_[index].make_network();
+			} else if ( (controller == "network_ai") && (!teams_[index].is_network_ai()) ){
+				teams_[index].make_network_ai();
 			} else if ( (controller == "ai") && (!teams_[index].is_ai()) ) {
 				teams_[index].make_ai();
 			}
@@ -256,10 +261,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//an AI.
 		switch(action) {
 			case 0:
-				teams_[side_index].make_ai();
+				teams_[side_index].make_human_ai();
 				teams_[side_index].set_current_player("ai"+side_str);
 				if(have_leader)
 					leader->second.rename("ai"+side_str);
+				change_controller(side_str, "human_ai");
 
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -285,9 +291,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_str, allies[i]->save_id(), false /*not our own side*/);
 					} else {
-						teams_[side_index].make_ai();
+						teams_[side_index].make_human_ai();
 						teams_[side_index].set_current_player("ai"+side_str);
 						leader->second.rename("ai"+side_str);
+						change_controller(side_str, "human_ai");
 					}
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				}
@@ -315,6 +322,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
 }
+
+void turn_info::change_controller(const std::string& side, const std::string& controller)
+{
+	config cfg;
+	config& change = cfg.add_child("change_controller");
+	change["side"] = side;
+	change["controller"] = controller;
+
+	network::send_data(cfg, 0, true);
+}
+
 
 void turn_info::change_side_controller(const std::string& side, const std::string& player, bool own_side)
 {

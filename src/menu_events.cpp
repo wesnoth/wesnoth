@@ -2744,8 +2744,8 @@ private:
 			return;
 		} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
 			//this is our side, so give it to AI
-			menu_handler_.teams_[side - 1].make_ai();
-			menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+			menu_handler_.teams_[side - 1].make_human_ai();
+			menu_handler_.change_controller(lexical_cast<std::string>(side),"human_ai");
 			if(team_num_ == side) {
 				//if it is our turn at the moment, we have to indicate to the
 				//play_controller, that we are no longer in control
@@ -2753,7 +2753,9 @@ private:
 			}
 		} else if (menu_handler_.teams_[side - 1].is_ai() && action != " on") {
 			menu_handler_.teams_[side - 1].make_human();
+			menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
 		}
+		menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 	}
 	void console_handler::do_theme() {
 		preferences::show_theme_dialog(*menu_handler_.gui_);
@@ -2785,16 +2787,16 @@ private:
 			return;
 		}
 		//if this is our side we are always allowed to change the controller
-		if(menu_handler_.teams_[side_num - 1].is_human()){
+		if(menu_handler_.teams_[side_num - 1].is_local()){
 			if (player == preferences::login())
 				return;
 			menu_handler_.change_side_controller(side,player,true);
-			menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
 		} else {
 			//it is not our side, the server will decide if we can change the
 			//controller (that is if we are host of the game)
 			menu_handler_.change_side_controller(side,player);
 		}
+		menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
 	}
 	void console_handler::do_clear() {
 		menu_handler_.gui_->clear_chat_messages();
@@ -3038,6 +3040,14 @@ private:
 		sound::play_sound("select.wav");
 	}
 #endif
+	void menu_handler::change_controller(const std::string& side, const std::string& controller)
+	{
+		config cfg;
+		config& change = cfg.add_child("change_controller");
+		change["side"] = side;
+		change["controller"] = controller;
+		network::send_data(cfg, 0, true);
+	}
 
 	void menu_handler::change_side_controller(const std::string& side, const std::string& player, bool own_side)
 	{

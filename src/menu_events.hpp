@@ -171,6 +171,7 @@ private:
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);
+	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 	void scenario_settings_table(int selected=0);
 

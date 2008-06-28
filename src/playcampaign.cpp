@@ -312,10 +312,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					side != sides_list.end(); ++side) {
 				if((**side)["current_player"] == preferences::login()) {
 					(**side)["controller"] = preferences::client_type();
-					(**side)["persistent"] = "1";
 				} else if((**side)["controller"] != "null") {
+					// @todo: Fix logic to use network_ai controller
+					// if it is networked ai
 					(**side)["controller"] = "network";
-					(**side)["persistent"] = "0";
 				}
 			}
 		}

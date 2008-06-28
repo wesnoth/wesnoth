@@ -1222,7 +1222,11 @@ std::string show_wesnothd_server_search(display& disp)
 		path = old_path;
 	}
 
-	const std::string title =  _("Find ") + filename + (" server binary to host networked game");
+	utils::string_map symbols;
+
+	symbols["filename"] = filename;
+
+	const std::string title =  vgettext("Find $filename server binary to host networked games", symbols);
 	
 	int res = dialogs::show_file_chooser_dialog(disp, path, title, false, filename);
 	if (res == 0)

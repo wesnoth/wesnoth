@@ -12,6 +12,9 @@ Version 1.5.1+svn:
      development, no compatibility layer has been added.
    * Added gui to choose where server binary is
    * Added type-a-head search to file chooser dialog
+   * Removed persistent from team configuration (bug: #10916)
+   * Added support for multiple sides per client in MP start
+   * Added support for reserving slots when reloading game
    * Fixed timer end warning not to play in opponents turn (bug: #11517)
    * Added recursion preventarion to [kill] fire_event=yes [/kill]
 

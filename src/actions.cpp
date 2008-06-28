@@ -1785,7 +1785,7 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 			}
 		}
 
-		if (teams[side].is_human() || teams[side].is_persistent()) {
+		if (teams[side].is_local()) {
 			found_player = true;
 		}
 	}

@@ -31,7 +31,7 @@ class game_state;
 
 namespace mp {
 
-enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_LAST };
+enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_RESERVED, CNTR_LAST };
 
 void check_response(network::connection res, const config& data);
 

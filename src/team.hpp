@@ -96,9 +96,8 @@ public:
 		 * displayed to the user. */
 		bool objectives_changed;
 
-		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
+		enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
 		CONTROLLER controller;
-		bool persistent;
 		std::string ai_algorithm;
 
 		std::vector<config> ai_params;
@@ -201,14 +200,19 @@ public:
 
 	team_info::CONTROLLER controller() const { return info_.controller; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
-	bool is_network() const { return info_.controller == team_info::NETWORK; }
-	bool is_ai() const { return info_.controller == team_info::AI; }
+	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
+	bool is_network_human() const { return info_.controller == team_info::NETWORK; }
+	bool is_network_ai() const { return info_.controller == team_info::NETWORK_AI; }
+	bool is_ai() const { return info_.controller == team_info::AI || is_human_ai(); }
 	bool is_empty() const { return info_.controller == team_info::EMPTY; }
 
-	bool is_persistent() const { return info_.persistent; }
+	bool is_local() const { return is_human() || is_human_ai(); }
+	bool is_network() const { return is_network_human() || is_network_ai(); }
 
 	void make_human() { info_.controller = team_info::HUMAN; }
+	void make_human_ai() { info_.controller = team_info::HUMAN_AI; }
 	void make_network() { info_.controller = team_info::NETWORK; }
+	void make_network_ai() { info_.controller = team_info::NETWORK_AI; }
 	void make_ai() { info_.controller = team_info::AI; }
 	// Should make the above make_*() functions obsolete, as it accepts controller
 	// by lexical or numerical id
