@@ -1259,7 +1259,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	variation_ = cfg["variation"];
 
 	if(cfg["max_attacks"] != "") {
-		max_attacks_ = minimum<int>(1,lexical_cast_default<int>(cfg["max_attacks"]));
+		max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"],1);
 	}
 	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"], max_attacks_);
 
