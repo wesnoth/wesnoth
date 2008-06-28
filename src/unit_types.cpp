@@ -733,7 +733,6 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	undead_variation_ = cfg_["undead_variation"];
 	image_ = cfg_["image"];
     image_profile_ = cfg_["profile"];
-    num_traits_ = lexical_cast_default<int>(cfg["num_traits"], 1);
 
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
@@ -742,6 +741,9 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 		static const unit_race dummy_race;
 		race_ = &dummy_race;
 	}
+
+	// if num_traits is not defined, we use the num_traits from race 
+	num_traits_ = lexical_cast_default<unsigned int>(cfg["num_traits"], race_->num_traits());
 
 	const std::vector<std::string> genders = utils::split(cfg["gender"]);
 	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {

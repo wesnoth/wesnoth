@@ -179,7 +179,7 @@ public:
 	/** Info on the type of unit that the unit reanimates as. */
 	const std::string& undead_variation() const { return undead_variation_; }
 
-	unsigned int num_traits() const { return (num_traits_ ? num_traits_ : race_->num_traits()); }
+	unsigned int num_traits() const { return num_traits_; }
 
 	/** The name of the unit in the current language setting. */
 	const t_string& type_name() const { return type_name_; }
