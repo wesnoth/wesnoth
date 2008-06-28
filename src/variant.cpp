@@ -67,16 +67,16 @@ type_error::type_error(const std::string& str) : message(str) {
 	std::cerr << "ERROR: " << message << "\n" << get_call_stack();
 }
 
-variant_iterator::variant_iterator() : type_(TYPE_NULL), list_iterator_(NULL), map_iterator_(NULL) 
+variant_iterator::variant_iterator() : type_(TYPE_NULL)
 {}
 
 variant_iterator::variant_iterator(const variant_iterator& iter) : type_(iter.type_), list_iterator_(iter.list_iterator_), map_iterator_(iter.map_iterator_) 
 {}
 
-variant_iterator::variant_iterator(const std::vector<variant>::iterator& iter) : type_(TYPE_LIST), list_iterator_(iter), map_iterator_(NULL) 
+variant_iterator::variant_iterator(const std::vector<variant>::iterator& iter) : type_(TYPE_LIST), list_iterator_(iter)
 {}
 
-variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter) : type_(TYPE_MAP), list_iterator_(NULL), map_iterator_(iter) 
+variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter) : type_(TYPE_MAP), map_iterator_(iter) 
 {}
 
 variant variant_iterator::operator*() const
