@@ -458,8 +458,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
 	help_tip_button.set_help_string( sgettext(button_labels[b] ));
 
-	/** @todo FIXME: Translatable string is here because we WILL put text in before 1.2! */
-	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
+	gui::button beg_button(screen.video(),_("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
 
 	next_tip_of_day(tips_of_day);
@@ -478,7 +477,6 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 
 	CKey key;
 
-	bool last_escape = key[SDLK_ESCAPE] != 0;
 
 	update_whole_screen();
 	background_is_dirty_ = false;
@@ -486,6 +484,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	LOG_DP << "entering interactive loop...\n";
 
 	for(;;) {
+		events::pump();
 		for(size_t b = 0; b != buttons.size(); ++b) {
 			if(buttons[b].pressed()) {
 				return TITLE_RESULT(b);
@@ -515,12 +514,13 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 
 		screen.flip();
 
-		if(!last_escape && key[SDLK_ESCAPE])
+		if(key[SDLK_ESCAPE])
 			return QUIT_GAME;
+		if(key[SDLK_F5])
+			return RELOAD_GAME_DATA;
 
-		last_escape = key[SDLK_ESCAPE] != 0;
 
-		events::pump();
+
 
 		// If the resolution has changed due to the user resizing the screen,
 		// or from changing between windowed and fullscreen:

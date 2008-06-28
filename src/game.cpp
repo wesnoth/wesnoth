@@ -2754,6 +2754,10 @@ static int play_game(int argc, char** argv)
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
 			continue;
+		} else if(res == gui::RELOAD_GAME_DATA) {
+			loadscreen::global_loadscreen_manager loadscreen(game.disp().video());
+			game.reload_changed_game_config();
+			continue;
 #ifdef USE_EDITOR2
 		} else if(res == gui::START_MAP_EDITOR) {
 			//@todo editor can ask the game to quit completely
