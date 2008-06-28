@@ -515,7 +515,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	unit_value_ = t->cost();
 	flying_ = t->movement_type().is_flying();
 
-	max_attacks_ = lexical_cast_default<int>(t->cfg_["attacks"],1);
+	max_attacks_ = t->max_attacks();
 
 	animations_ = t->animations();
 

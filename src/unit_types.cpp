@@ -727,6 +727,7 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	hitpoints_ = atoi(cfg_["hitpoints"].c_str());
 	level_ = atoi(cfg_["level"].c_str());
 	movement_ = atoi(cfg_["movement"].c_str());
+	max_attacks_ = lexical_cast_default<int>(cfg["attacks"], 1);
 	cost_ = atoi(cfg_["cost"].c_str());
 	usage_ = cfg_["usage"];
 	undead_variation_ = cfg_["undead_variation"];

@@ -189,6 +189,7 @@ public:
 	int hitpoints() const { return hitpoints_; }
 	int level() const { return level_; }
 	int movement() const { return movement_; }
+	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
@@ -256,6 +257,7 @@ private:
     int hitpoints_;
     int level_;
     int movement_;
+    int max_attacks_;
     int cost_;
     std::string usage_;
     std::string undead_variation_;
