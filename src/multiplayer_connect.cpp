@@ -390,10 +390,7 @@ void connect::side::process_event()
 						&& std::count_if(parent_->sides_.begin(), parent_->sides_.end(), boost::bind(&connect::side::is_owned_by, _1, boost::ref(id_))) == 1) {
 					parent_->kick_player(id_);
 				}
-				if (combo_controller_.selected() == CNTR_LOCAL)
-					id_ = preferences::login();
-				else
-					id_ = "";
+				id_ = "";
 			}
 			changed_ = true;
 		} else if (combo_controller_.selected() <=  cntr_last + parent_->users_.size()) {
@@ -622,8 +619,10 @@ config connect::side::get_config() const
 			break;
 		case CNTR_LOCAL:
 			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
-				res["save_id"] = id_ + res["side"].str();
+				res["save_id"] = preferences::login() + res["side"].str();
 			}
+			res["id"] = preferences::login();
+			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
