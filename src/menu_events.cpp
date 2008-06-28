@@ -1637,7 +1637,7 @@ private:
 		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
 			std::stringstream row;
 
-            unit_type_data::types().find(i->first, unit_type::WITHOUT_ANIMATIONS);
+            unit_type_data::types().find(i->first, unit_type::HELP_INDEX);
 
 			std::string race;
 			const race_map::const_iterator race_it = unit_type_data::types().races().find(i->second.race());
