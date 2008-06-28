@@ -1664,32 +1664,6 @@ void game_controller::remove_addon(const std::string& addon)
 	remove_local_addon(addon);
 }
 
-	class file_preview_pane : public gui::preview_pane {
-
-	};
-
-
-	class filebrowser : public gui::dialog {
-		std::string directory_;
-		std::string regex_match_;
-		bool show_dirs_;
-		public:
-		filebrowser(display &disp, const std::string& title="", const std::string& message="");
-		int show();
-	};
-
-	filebrowser::filebrowser(display &disp, const std::string& title, const std::string& message) :
-		gui::dialog(disp, title, message,gui::OK_CANCEL),
-		directory_(), regex_match_(), show_dirs_(false)
-	{
-		
-	}
-
-	int filebrowser::show()
-	{
-		return gui::dialog::show();
-	}
-
 void game_controller::start_wesnothd()
 {
 	typedef std::vector<std::string> path_store;
