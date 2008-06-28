@@ -724,16 +724,16 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 	id_ = cfg_["id"];
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
-	hitpoints_ = atoi(cfg_["hitpoints"].c_str());
-	level_ = atoi(cfg_["level"].c_str());
-	movement_ = atoi(cfg_["movement"].c_str());
+	hitpoints_ = lexical_cast_default<int>(cfg["hitpoints"], 1);
+	level_ = lexical_cast_default<int>(cfg["level"], 0);
+	movement_ = lexical_cast_default<int>(cfg["movement"], 1);
 	max_attacks_ = lexical_cast_default<int>(cfg["attacks"], 1);
-	cost_ = atoi(cfg_["cost"].c_str());
+	cost_ = lexical_cast_default<int>(cfg["cost"], 1);
 	usage_ = cfg_["usage"];
 	undead_variation_ = cfg_["undead_variation"];
 	image_ = cfg_["image"];
     image_profile_ = cfg_["profile"];
-    num_traits_ = atoi(cfg_["num_traits"].c_str());
+    num_traits_ = lexical_cast_default<int>(cfg["num_traits"], 1);
 
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
