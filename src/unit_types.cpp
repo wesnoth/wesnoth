@@ -677,15 +677,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 		possibleTraits_.add_child("trait", **i);
 	}
 
-	if(cfg["zoc"] == "") {
-		zoc_ = lexical_cast_default<int>(cfg["level"]) > 0;
-	} else {
-		zoc_ = false;
-		if(utils::string_bool(cfg["zoc"])) {
-			zoc_ = true;
-		}
-	}
-
+	zoc_ = utils::string_bool(cfg["zoc"], level_ > 0);
 
 	const std::string& alpha_blend = cfg["alpha"];
 	if(alpha_blend.empty() == false) {

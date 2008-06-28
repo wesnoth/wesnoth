@@ -510,7 +510,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	hit_points_ = t->hitpoints();
 	max_hit_points_ = t->hitpoints();
 	max_movement_ = t->movement();
-	emit_zoc_ = t->level();
+	emit_zoc_ = t->has_zoc();
 	attacks_ = t->attacks();
 	unit_value_ = t->cost();
 	flying_ = t->movement_type().is_flying();
@@ -1264,7 +1264,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"], max_attacks_);
 
 	if(cfg["zoc"] != "") {
-		emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
+		emit_zoc_ = utils::string_bool(cfg["zoc"]);
 	}
 	if(cfg["flying"] != "") {
 		flying_ = utils::string_bool(cfg["flying"]);
@@ -1512,7 +1512,7 @@ void unit::write(config& cfg) const
 	cfg["recruits"] = utils::join(recruits_);
 	cfg["attacks_left"] = lexical_cast_default<std::string>(attacks_left_);
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
-	cfg["zoc"] = lexical_cast_default<std::string>(emit_zoc_);
+	cfg["zoc"] = emit_zoc_ ? "yes" : "no";
 	cfg.clear_children("attack");
 	for(std::vector<attack_type>::const_iterator i = attacks_b_.begin(); i != attacks_b_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());
@@ -2540,7 +2540,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if (apply_to == "zoc") {
 					const std::string& zoc_value = (**i.first)["value"];
 					if(!zoc_value.empty()) {
-						emit_zoc_ = lexical_cast_default<int>(zoc_value);
+						emit_zoc_ = utils::string_bool(zoc_value);
 					}
 				} else if (apply_to == "new_ability") {
 					config *ab_effect;
