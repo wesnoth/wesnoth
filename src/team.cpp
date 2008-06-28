@@ -663,7 +663,7 @@ bool is_observer()
 	}
 
 	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
-		if(i->is_human()) {
+		if(i->is_local()) {
 			return false;
 		}
 	}
