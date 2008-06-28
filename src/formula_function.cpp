@@ -39,6 +39,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		variant var = args()[0]->evaluate(variables);
 		const formula_callable* callable = var.as_callable();
+		callable->add_ref();
 		std::vector<formula_input> inputs = callable->inputs();
 		std::vector<variant> res;
 		for(size_t i=0; i<inputs.size(); ++i) {
