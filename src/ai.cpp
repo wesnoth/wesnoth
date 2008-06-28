@@ -256,7 +256,7 @@ ai::ai(ai_interface::info& info) :
 	attack_depth_(0)
 {}
 
-void ai::new_turn() 
+void ai::new_turn()
 {
 	defensive_position_cache_.clear();
 	threats_found_ = false;
@@ -557,15 +557,16 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 			if(show_move && unit_display::unit_visible_on_path(steps,
 						u_it->second, info_.units,info_.teams)) {
 
-				
+
 				info_.disp.display_unit_hex(from);
 
 				unit_map::iterator up = info_.units.find(u_it->first);
 				unit_display::move_unit(steps,up->second,info_.teams);
-			} else {
+			} else if(steps.size()>1) {
 				unit_map::iterator up = info_.units.find(u_it->first);
-				up->second.set_facing(steps[steps.size()-2].get_relative_dir(steps[steps.size()-1]));
-
+				std::vector<gamemap::location>::const_reverse_iterator last_step = steps.rbegin();
+				std::vector<gamemap::location>::const_reverse_iterator before_last = last_step +1;
+				up->second.set_facing(before_last->get_relative_dir(*last_step));
 			}
 		}
 	}
