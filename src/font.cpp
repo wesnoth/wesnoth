@@ -829,7 +829,7 @@ surface floating_label::create_surface()
 		surface foreground = font::render_text(text_, font_size_, colour_, 0);
 
 		if(foreground == NULL) {
-			ERR_FT << "could not create floating label's text";
+			ERR_FT << "could not create floating label's text" << std::endl;
 			return NULL;
 		}
 
@@ -839,7 +839,7 @@ surface floating_label::create_surface()
 			surface background = create_neutral_surface(foreground->w + border_*2, foreground->h + border_*2);
 
 			if (background == NULL) {
-				ERR_FT << "could not create tooltip box";
+				ERR_FT << "could not create tooltip box" << std::endl;
 				surf_ = create_optimized_surface(foreground);
 				return surf_;
 			}
@@ -867,7 +867,7 @@ surface floating_label::create_surface()
 			background = adjust_surface_alpha(background, ftofxp(4.0), false);
 			
 			if (background == NULL) {
-				ERR_FT << "could not create floating label's shadow";
+				ERR_FT << "could not create floating label's shadow" << std::endl;
 				surf_ = create_optimized_surface(foreground);
 				return surf_;
 			}
