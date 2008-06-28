@@ -312,7 +312,8 @@ Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
-map(lambda bin, node: Alias(bin, node, node and Copy("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
+from install import HardLink
+map(lambda bin, node: Alias(bin, node, node and HardLink("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
 binaries.remove("test")
 env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))

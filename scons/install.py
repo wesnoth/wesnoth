@@ -49,6 +49,27 @@ def InstallWithSuffix(env, target, source):
         return source
     return env.InstallAs(os.path.join(target, source[0].name + env["program_suffix"]), source)
 
+from SCons.Action import ActionFactory
+from shutil import copy2
+def hard_link(dest, src, symlink = False):
+    try:
+        if symlink:
+            os.symlink(src, dest)
+        else:
+            os.link(src, dest)
+    except OSError, e:
+        if e.errno == 18:
+            hard_link(dest, src, True)
+        else:
+            os.remove(dest)
+            os.link(src, dest)
+    except AttributeError:
+        copy2(src, dest)
+
+HardLink = ActionFactory(hard_link,
+                         lambda dest, src: 'Hardlinking %s to %s' % (src, dest),
+                         convert=str)
+
 def generate(env):
     #env.AddMethod(InstallWithSuffix)
     from SCons.Script.SConscript import SConsEnvironment
