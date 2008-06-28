@@ -68,6 +68,17 @@ private:
 	args_list args_;
 };
 
+class key_value_pair : public formula_callable {
+	variant key_;
+	variant value_;
+
+	variant get_value(const std::string& key) const;
+	
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;	
+public:	
+	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}  
+};
+
 class formula_function_expression : public function_expression {
 public:
 	explicit formula_function_expression(const std::string& name, const args_list& args, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& arg_names);

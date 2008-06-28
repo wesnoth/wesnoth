@@ -1,5 +1,9 @@
 Version 1.5.1+svn:
  * campaigns:
+ * formula AI:
+   * Added variant_iterator to iterate over variant elements
+   * Modified choose, filter, find and map functions to use variant_iterator, 
+     so they work correctly with a variant_map type
  * language and i18n:
    * updated translations: Finnish, German, Greek, Lithuanian, Serbian
  * miscellaneous and bug fixes:

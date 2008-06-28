@@ -27,11 +27,13 @@ struct call_stack_manager {
 struct variant_list;
 struct variant_string;
 struct variant_map;
+class variant_iterator;
 
 struct type_error {
 	explicit type_error(const std::string& str);
 	std::string message;
 };
+
 
 class variant {
 public:
@@ -103,9 +105,12 @@ public:
 	bool operator<=(const variant&) const;
 	bool operator>=(const variant&) const;
 
-	std::map<variant, variant> get_map() const;
 	variant get_keys() const;
 	variant get_values() const;
+
+	variant_iterator get_iterator() const;
+	variant_iterator begin() const;
+	variant_iterator end() const;
 
 	void serialize_to_string(std::string& str) const;
 	void serialize_from_string(const std::string& str);
@@ -132,6 +137,27 @@ private:
 	void release();
 };
 
+class variant_iterator {
+public:
+	variant_iterator();
+	variant_iterator(const variant_iterator&);
+	variant_iterator(const std::vector<variant>::iterator& );
+	variant_iterator(const std::map<variant, variant>::iterator& );
+	
+	variant operator*() const;
+	variant_iterator operator++();
+	variant_iterator operator++(int);
+	variant_iterator& operator=(const variant_iterator& that);
+	bool operator==(const variant_iterator& that) const;
+	bool operator!=(const variant_iterator& that) const;
+
+	enum TYPE { TYPE_NULL, TYPE_LIST, TYPE_MAP };
+private:
+	TYPE type_;
+	std::vector<variant>::iterator list_iterator_;
+	std::map<variant,variant>::iterator map_iterator_;
+};
+
 template<typename T>
 T* convert_variant(const variant& v) {
 	T* res = dynamic_cast<T*>(v.mutable_callable());
@@ -141,6 +167,7 @@ T* convert_variant(const variant& v) {
 
 	return res;
 }
+
 
 template<typename T>
 T* try_convert_variant(const variant& v) {

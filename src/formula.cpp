@@ -34,7 +34,7 @@ void formula_callable::set_value(const std::string& key, const variant& /*value*
 }
 
 map_formula_callable::map_formula_callable(
-    const formula_callable* fallback) : fallback_(fallback)
+    const formula_callable* fallback) : formula_callable(false), fallback_(fallback)
 {}
 
 map_formula_callable& map_formula_callable::add(const std::string& key,

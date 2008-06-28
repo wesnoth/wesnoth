@@ -11,6 +11,7 @@
 #include "formatter.hpp"
 #include "formula.hpp"
 #include "formula_callable.hpp"
+#include "formula_function.hpp"
 #include "variant.hpp"
 
 namespace {
@@ -64,6 +65,105 @@ std::string get_call_stack()
 
 type_error::type_error(const std::string& str) : message(str) {
 	std::cerr << "ERROR: " << message << "\n" << get_call_stack();
+}
+
+variant_iterator::variant_iterator() : type_(TYPE_NULL), list_iterator_(NULL), map_iterator_(NULL) 
+{}
+
+variant_iterator::variant_iterator(const variant_iterator& iter) : type_(iter.type_), list_iterator_(iter.list_iterator_), map_iterator_(iter.map_iterator_) 
+{}
+
+variant_iterator::variant_iterator(const std::vector<variant>::iterator& iter) : type_(TYPE_LIST), list_iterator_(iter), map_iterator_(NULL) 
+{}
+
+variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter) : type_(TYPE_MAP), list_iterator_(NULL), map_iterator_(iter) 
+{}
+
+variant variant_iterator::operator*() const
+{
+	if (type_ == TYPE_LIST)
+	{
+		return variant( *list_iterator_);
+	} else if (type_ == TYPE_MAP)
+	{
+		game_logic::key_value_pair* p = new game_logic::key_value_pair( map_iterator_->first, map_iterator_->second );
+		variant  res( p );
+		return res;
+	} else
+		return variant();
+}
+
+variant_iterator variant_iterator::operator++()
+{
+	if (type_ == TYPE_LIST)
+	{
+		++list_iterator_;
+	} else if (type_ == TYPE_MAP)
+	{
+		++map_iterator_;
+	} 
+
+	return *this;
+}
+
+variant_iterator variant_iterator::operator++(int)
+{
+	variant_iterator iter(*this);
+	if (type_ == TYPE_LIST)
+	{
+		++list_iterator_;
+	} else if (type_ == TYPE_MAP)
+	{
+		++map_iterator_;
+	} 
+
+	return iter;
+}
+
+variant_iterator& variant_iterator::operator=(const variant_iterator& that)
+{
+	if (this == &that)
+		return *this;
+	type_ = that.type_;
+	list_iterator_ = that.list_iterator_;
+	map_iterator_ = that.map_iterator_;
+	return *this;
+}
+
+bool variant_iterator::operator==(const variant_iterator& that) const
+{
+	if (type_ == TYPE_LIST)
+	{
+		if (that.type_ != TYPE_LIST)
+			return false;
+		return list_iterator_ == that.list_iterator_;
+	} else if (type_ == TYPE_MAP)
+	{
+		if (that.type_ != TYPE_MAP)
+			return false;
+		return map_iterator_ == that.map_iterator_;
+	} else if (type_ == TYPE_NULL &&  that.type_ == TYPE_NULL )
+		return true;
+	else
+		return false;
+}
+
+bool variant_iterator::operator!=(const variant_iterator& that) const
+{
+	if (type_ == TYPE_LIST)
+	{
+		if (that.type_ != TYPE_LIST)
+			return true;
+		return list_iterator_ != that.list_iterator_;
+	} else if (type_ == TYPE_MAP)
+	{
+		if (that.type_ != TYPE_MAP)
+			return true;
+		return map_iterator_ != that.map_iterator_;
+	} else if (type_ == TYPE_NULL &&  that.type_ == TYPE_NULL )
+		return false;
+	else
+		return true;
 }
 
 struct variant_list {
@@ -241,12 +341,6 @@ const variant& variant::operator[](const variant v) const
 	}	
 }
 
-std::map<variant, variant> variant::get_map() const 
-{  
-	must_be(TYPE_MAP); 
-	return map_->elements; 
-}
-
 variant variant::get_keys() const
 {
 	must_be(TYPE_MAP);
@@ -267,6 +361,43 @@ variant variant::get_values() const
 			tmp.push_back(i->second);
 	}
 	return variant(&tmp);
+}
+
+variant_iterator variant::get_iterator() const
+{
+	if(type_ == TYPE_LIST)
+	{
+		std::vector<variant>::iterator i;
+		return variant_iterator( i );
+	}
+	if(type_ == TYPE_MAP)
+	{
+		std::map<variant,variant>::iterator i; 
+		return variant_iterator( i );
+	}
+	
+	return variant_iterator();
+}
+
+variant_iterator variant::begin() const
+{
+	if(type_ == TYPE_LIST)
+		return variant_iterator( list_->elements.begin() );
+
+	if(type_ == TYPE_MAP)
+		return variant_iterator( map_->elements.begin() );
+	
+	return variant_iterator();
+}
+variant_iterator variant::end() const
+{
+	if(type_ == TYPE_LIST)
+		return variant_iterator( list_->elements.end() );
+
+	if(type_ == TYPE_MAP)
+		return variant_iterator( map_->elements.end() );
+	
+	return variant_iterator();
 }
 
 size_t variant::num_elements() const

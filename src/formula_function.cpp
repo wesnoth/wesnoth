@@ -285,29 +285,68 @@ private:
 	}
 };
 
+class tolist_function : public function_expression {
+public:
+	explicit tolist_function(const args_list& args)
+	     : function_expression("values", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant var = args()[0]->evaluate(variables);
+
+		std::vector<variant> tmp;
+
+		variant_iterator it = var.get_iterator();
+		for(it = var.begin(); it != var.end(); ++it) {
+			tmp.push_back( *it );
+		}
+
+		return variant( &tmp );
+	}
+};
+
+
+
 class choose_function : public function_expression {
 public:
 	explicit choose_function(const args_list& args)
-	     : function_expression("choose", args, 2, 2)
+	     : function_expression("choose", args, 2, 3)
 	{}
 
 private:
 	variant execute(const formula_callable& variables) const {
 		const variant items = args()[0]->evaluate(variables);
-		int max_index = -1;
 		variant max_value;
-		for(size_t n = 0; n != items.num_elements(); ++n) {
-			const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
-			if(max_index == -1 || val > max_value) {
-				max_index = n;
-				max_value = val;
+		variant_iterator it = items.get_iterator();
+		variant_iterator max = variant_iterator();
+
+		if(args().size() == 2) {
+			for(it = items.begin(); it != items.end(); ++it) {
+				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables));
+				if(max == variant_iterator() || val > max_value) {
+					max = it;
+					max_value = val;
+				}
+			}
+		} else {
+			map_formula_callable self_callable;
+			self_callable.add_ref();
+			const std::string self = args()[1]->evaluate(variables).as_string();
+			for(it = items.begin(); it != items.end(); ++it) {
+				self_callable.add(self, *it);
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
+				if(max == variant_iterator() || val > max_value) {
+					max = it;
+					max_value = val;
+				}
 			}
 		}
 
-		if(max_index == -1) {
+		if(max == variant_iterator() ) {
 			return variant();
 		} else {
-			return items[max_index];
+			return *max;
 		}
 	}
 };
@@ -388,28 +427,41 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		std::vector<variant> vars;
+		std::vector<variant> list_vars;
+		std::map<variant,variant> map_vars;
+
 		const variant items = args()[0]->evaluate(variables);
+
+		variant_iterator it = items.get_iterator();
+
 		if(args().size() == 2) {
-			for(size_t n = 0; n != items.num_elements(); ++n) {
-				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
+			for(it = items.begin(); it != items.end(); ++it)  {
+				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables));
 				if(val.as_bool()) {
-					vars.push_back(items[n]);
+					if (items.is_map() )
+						map_vars[ (*it).get_member("key") ] = (*it).get_member("value");
+					else
+						list_vars.push_back(*it);
 				}
 			}
 		} else {
 			map_formula_callable self_callable;
+			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables).as_string();
-			for(size_t n = 0; n != items.num_elements(); ++n) {
-				self_callable.add(self, items[n]);
-				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
+			for(it = items.begin(); it != items.end(); ++it) {
+				self_callable.add(self, *it);
+				const variant val = args()[2]->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
 				if(val.as_bool()) {
-					vars.push_back(items[n]);
+					if (items.is_map() )
+						map_vars[ (*it).get_member("key") ] = (*it).get_member("value");
+					else
+						list_vars.push_back(*it);
 				}
 			}
 		}
-
-		return variant(&vars);
+		if (items.is_map() )
+			return variant(&map_vars);
+		return variant(&list_vars);
 	}
 };
 
@@ -423,21 +475,23 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const variant items = args()[0]->evaluate(variables);
 
+		variant_iterator it = items.get_iterator();
 		if(args().size() == 2) {
-			for(size_t n = 0; n != items.num_elements(); ++n) {
-				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(items[n], variables));
+			for(it = items.begin(); it != items.end(); ++it) {
+				const variant val = args()[1]->evaluate(formula_variant_callable_with_backup(*it, variables));
 				if(val.as_bool()) {
-					return items[n];
+					return *it;
 				}
 			}
 		} else {
 			map_formula_callable self_callable;
+			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables).as_string();
-			for(size_t n = 0; n != items.num_elements(); ++n) {
-				self_callable.add(self, items[n]);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
+			for(it = items.begin(); it != items.end(); ++it){
+				self_callable.add(self, *it);
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
 				if(val.as_bool()) {
-					return items[n];
+					return *it;
 				}
 			}
 		}
@@ -453,25 +507,35 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		std::vector<variant> vars;
+		std::vector<variant> list_vars;
+		std::map<variant,variant> map_vars;
 		const variant items = args()[0]->evaluate(variables);
 
+		variant_iterator it = items.get_iterator();
 		if(args().size() == 2) {
-			for(size_t n = 0; n != items.num_elements(); ++n) {
-				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(items[n], variables));
-				vars.push_back(val);
+			for(it = items.begin(); it != items.end(); ++it) {
+				const variant val = args().back()->evaluate(formula_variant_callable_with_backup(*it, variables));
+				if (items.is_map() )
+					map_vars[ (*it).get_member("key") ] = val;
+				else
+					list_vars.push_back(val);
 			}
 		} else {
 			map_formula_callable self_callable;
+			self_callable.add_ref();
 			const std::string self = args()[1]->evaluate(variables).as_string();
-			for(size_t n = 0; n != items.num_elements(); ++n) {
-				self_callable.add(self, items[n]);
-				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(items[n], variables)));
-				vars.push_back(val);
+			for(it = items.begin(); it != items.end(); ++it) {
+				self_callable.add(self, *it);
+				const variant val = args().back()->evaluate(formula_callable_with_backup(self_callable, formula_variant_callable_with_backup(*it, variables)));
+				if (items.is_map() )
+					map_vars[ (*it).get_member("key") ] = val;
+				else
+					list_vars.push_back(val);
 			}
 		}
-
-		return variant(&vars);
+		if (items.is_map() )
+			return variant(&map_vars);
+		return variant(&list_vars);
 	}
 };
 
@@ -503,7 +567,9 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		const variant items = args()[0]->evaluate(variables);
-		return items[0];
+		variant_iterator it = items.get_iterator();
+		it = items.begin();
+		return *it;
 	}
 };
 
@@ -552,6 +618,24 @@ private:
 	}
 };
 
+}
+
+variant key_value_pair::get_value(const std::string& key) const 
+{ 
+	if(key == "key") 
+	{ 
+		return key_; 
+	} else 
+		if(key == "value") 
+		{ 
+			return value_; 
+		} else
+			return variant(); 
+}
+
+void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("key", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("value", game_logic::FORMULA_READ_ONLY));
 }
 
 formula_function_expression::formula_function_expression(const std::string& name, const args_list& args, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& arg_names)
@@ -676,6 +760,7 @@ functions_map& get_functions_map() {
 		FUNCTION(loc);
 		FUNCTION(keys);
 		FUNCTION(values);
+		FUNCTION(tolist);
 #undef FUNCTION
 	}
 
