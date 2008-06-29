@@ -9,7 +9,6 @@ Version 1.5.1+svn:
  * WML engine:
    * When examining stored units, now the attacks, max_hitpoints, max_moves,
      and max_experience are the "real" values and can also be modified.
-   * Enhanced recursion prevention for [kill] fire_event=yes [/kill]
  * GUI improvements:
    * Rewrote the textbox history saving of the new widget library. This rewrite
      is incompatible with the old version, but since the library is still in
@@ -22,6 +21,7 @@ Version 1.5.1+svn:
    * Fixed timer end warning not to play in opponents turn (bug: #11517)
  * miscellaneous and bug fixes:
    * Fixed droiding not to make wesnoth think player is observer (bug: #9675)
+   * Fixed statitics not add turn data from previus scenarios (bug: #11719)
    * Removed persistance from team configuration (bug: #10916)
 
 Version 1.5.1:

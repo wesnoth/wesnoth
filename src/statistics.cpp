@@ -26,6 +26,7 @@
 #include "unit.hpp"
 
 #define ERR_NG lg::err(lg::engine)
+#define DBG_NG LOG_STREAM(debug, engine)
 
 namespace {
 
@@ -189,6 +190,7 @@ static void merge_battle_result_maps(stats::battle_result_map& a, const stats::b
 
 static void merge_stats(stats& a, const stats& b)
 {
+	DBG_NG << "Merging statistics\n";
 	merge_str_int_map(a.recruits,b.recruits);
 	merge_str_int_map(a.recalls,b.recalls);
 	merge_str_int_map(a.advanced_to,b.advanced_to);
@@ -205,15 +207,17 @@ static void merge_stats(stats& a, const stats& b)
 	a.damage_taken += b.damage_taken;
 	a.expected_damage_inflicted += b.expected_damage_inflicted;
 	a.expected_damage_taken += b.expected_damage_taken;
-	a.turn_damage_inflicted += b.turn_damage_inflicted;
-	a.turn_damage_taken += b.turn_damage_taken;
-	a.turn_expected_damage_inflicted += b.turn_expected_damage_inflicted;
-	a.turn_expected_damage_taken += b.turn_expected_damage_taken;
+	// Only take the last value for this turn
+	a.turn_damage_inflicted = b.turn_damage_inflicted;
+	a.turn_damage_taken = b.turn_damage_taken;
+	a.turn_expected_damage_inflicted = b.turn_expected_damage_inflicted;
+	a.turn_expected_damage_taken = b.turn_expected_damage_taken;
 	
 	a.new_expected_damage_inflicted += b.new_expected_damage_inflicted;
 	a.new_expected_damage_taken += b.new_expected_damage_taken;
-	a.new_turn_expected_damage_inflicted += b.new_turn_expected_damage_inflicted;
-	a.new_turn_expected_damage_taken += b.new_turn_expected_damage_taken;
+	// Only take the last value for this turn
+	a.new_turn_expected_damage_inflicted = b.new_turn_expected_damage_inflicted;
+	a.new_turn_expected_damage_taken = b.new_turn_expected_damage_taken;
 }
 
 namespace statistics
@@ -613,9 +617,11 @@ void reset_turn_stats(int side)
 
 stats calculate_stats(int category, int side)
 {
+	DBG_NG << "calculate_stats, category: " << category << " side: " << side << " master_stats.size: " << master_stats.size() << "\n";
 	if(category == 0) {
 		stats res;
-		for(int i = 1; i <= int(master_stats.size()); ++i) {
+		// We are going from last to first to include corect turn stats in result
+		for(int i = int(master_stats.size()); i > 0 ; --i) {
 			merge_stats(res,calculate_stats(i,side));
 		}
 
