@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-18 20:02+0200\n"
+"POT-Creation-Date: 2008-06-29 12:24+0200\n"
 "PO-Revision-Date: 2008-02-26 20:17+0100\n"
 "Last-Translator: Joeri Melis <joeri_melis@hotmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -364,21 +364,21 @@ msgstr "Kaart maken mislukt."
 msgid "Close Window"
 msgstr "Venster sluiten"
 
-#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:61
+#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:63
 #: src/hotkeys.cpp:86
 msgid "Preferences"
 msgstr "Instellingen"
 
-#: src/editor/editor_dialogs.cpp:257 src/game_preferences_display.cpp:202
+#: src/editor/editor_dialogs.cpp:257 src/game_preferences_display.cpp:206
 msgid "Scroll Speed:"
 msgstr "Schuifsnelheid:"
 
-#: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:160
+#: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:163
 #: src/hotkeys.cpp:65
 msgid "Toggle Full Screen"
 msgstr "Volledig scherm"
 
-#: src/editor/editor_dialogs.cpp:291 src/game_preferences_display.cpp:163
+#: src/editor/editor_dialogs.cpp:291 src/game_preferences_display.cpp:166
 msgid "Show Grid"
 msgstr "Raster"
 
@@ -386,7 +386,7 @@ msgstr "Raster"
 msgid "Video Mode"
 msgstr "Videomode"
 
-#: src/editor/editor_dialogs.cpp:301 src/game_preferences_display.cpp:184
+#: src/editor/editor_dialogs.cpp:301 src/game_preferences_display.cpp:188
 msgid "Hotkeys"
 msgstr "Sneltoetsen"
 
@@ -435,445 +435,457 @@ msgstr "Y-as"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Kaart omdraaien (kan een verandering van dimensies tot gevolg hebben):"
 
-#: src/filechooser.cpp:52
+#: src/filechooser.cpp:56
 msgid "File: "
 msgstr "Bestand:"
 
-#: src/filechooser.cpp:53
+#: src/filechooser.cpp:59
 msgid "Delete File"
 msgstr "Bestand verwijderen"
 
-#: src/filechooser.cpp:55 src/filechooser.cpp:169
+#: src/filechooser.cpp:61 src/filechooser.cpp:186
 msgid "New Folder"
 msgstr "Nieuwe map"
 
-#: src/filechooser.cpp:157
+#: src/filechooser.cpp:174
 msgid "Deletion of the file failed."
 msgstr "Bestand verwijderen mislukt."
 
-#: src/filechooser.cpp:170
+#: src/filechooser.cpp:187
 msgid "Name: "
 msgstr "Naam:"
 
-#: src/filechooser.cpp:175
+#: src/filechooser.cpp:192
 msgid "Creation of the directory failed."
 msgstr "Map aanmaken mislukt."
 
-#: src/game_preferences.cpp:249
+#: src/game_preferences.cpp:271
 msgid "No server has been defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/game_preferences.cpp:313
+#: src/game_preferences.cpp:335
 msgid "player"
 msgstr "speler"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:164
 msgid "Accelerated Speed"
 msgstr "Versnelde zetten"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:165
 msgid "Skip AI Moves"
 msgstr "Computerzetten overslaan"
 
-#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:167 src/game_preferences_display.cpp:349
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Sla een herhaling op bij SP/MP winst en bij MP verlies."
 
-#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:352
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Verwijder autosaves bij SP/MP winst of MP verlies."
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:169
 msgid "Do Not Show Lobby Joins"
 msgstr "Toon geen lobby binnenkomsten"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:170
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Toon enkel lobby binnenkomsten van vrienden"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:171
 msgid "Show All Lobby Joins"
 msgstr "Toon alle lobby binnenkomsten"
 
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:172
 msgid "Sort Lobby List"
 msgstr "Sorteer lobbylijst"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:173
 msgid "Iconize Lobby List"
 msgstr "Iconiseer lobbylijst"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:174
+msgid "Set path to wesnothd"
+msgstr ""
+
+#: src/game_preferences_display.cpp:175
 msgid "Friends List"
 msgstr "Vriendenlijst"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:176
 msgid "Multiplayer Options"
 msgstr "Multiplayer opties"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:177
 msgid "Add As Friend"
 msgstr "Voeg toe als vriend"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:178
 msgid "Add As Ignore"
 msgstr "Voeg toe als negerend"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:179
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:180
 msgid "Show Floating Labels"
 msgstr "Zwevende labels"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:181
 msgid "Turn Dialog"
 msgstr "Beurtmelding"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:182
 msgid "Turn Bell"
 msgstr "Beurtbel"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:183
 msgid "Show Team Colors"
 msgstr "Teamkleuren"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:184
 msgid "Show Color Cursors"
 msgstr "Kleurencursors"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:185
 msgid "Show Haloing Effects"
 msgstr "Aura-effecten"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:186
 msgid "Change Resolution"
 msgstr "Verander resolutie"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:187
 msgid "Theme"
 msgstr "Thema"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:189
 msgid "Adjust Gamma"
 msgstr "Gamma instellen"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:190
 msgid "Reverse Time Graphics"
 msgstr "Tijdplaatjes omdraaien"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:192
 msgid "Sound effects"
 msgstr "Geluidseffecten"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:193
 msgid "Music"
 msgstr "Muziek"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:194
 msgid "Chat Timestamping"
 msgstr "Chat tijdmerken"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:195
 msgid "sound^Advanced Options"
 msgstr "Geavanceerde opties"
 
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:196
 msgid "sound^Standard Options"
 msgstr "Standaard opties"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:197
 msgid "User Interface Sounds"
 msgstr "Gebruikersinterface geluiden"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:200
 msgid "Custom"
 msgstr "Aangepast"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:201
 msgid "Apply"
 msgstr "Toepassen"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:202
 msgid "Show Unit Idle Animations"
 msgstr "Toon animatie inactieve eenheden"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:204
 msgid "Music Volume:"
 msgstr "Muziekvolume"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:204
 msgid "SFX Volume:"
 msgstr "SFX Volume:"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:205
 msgid "UI Sound Volume:"
 msgstr "UI geluid volume:"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:206
 msgid "Bell Volume:"
 msgstr "Bel volume:"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:207
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:209
 msgid "Sample Rate (Hz):"
 msgstr "Bemonsteringsfrequentie (Hz):"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:210
 msgid "Frequency:"
 msgstr "Frequentie:"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:234
 msgid "Sound effects on/off"
 msgstr "Geluidseffecten aan/uit"
 
-#: src/game_preferences_display.cpp:234
+#: src/game_preferences_display.cpp:238
 msgid "Change the sound effects volume"
 msgstr "Het volume van de geluidseffecten"
 
-#: src/game_preferences_display.cpp:237
+#: src/game_preferences_display.cpp:241
 msgid "Music on/off"
 msgstr "Muziek aan/uit"
 
-#: src/game_preferences_display.cpp:241
+#: src/game_preferences_display.cpp:245
 msgid "Change the music volume"
 msgstr "Het volume van de muziek"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:251
 msgid "Change the bell volume"
 msgstr "Verander het volume van de bel"
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:254
 msgid "Turn menu and button sounds on/off"
 msgstr "Zet menu en knop geluiden aan/uit"
 
-#: src/game_preferences_display.cpp:254
+#: src/game_preferences_display.cpp:258
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Verander het volume voor knopklikken enz."
 
-#: src/game_preferences_display.cpp:256
+#: src/game_preferences_display.cpp:260
 msgid "Change the sample rate"
 msgstr "De bemonsteringsfrequentie veranderen"
 
-#: src/game_preferences_display.cpp:265
+#: src/game_preferences_display.cpp:269
 msgid "User defined sample rate"
 msgstr "Ingestelde bemonsteringsfrequentie"
 
-#: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:278
+#: src/game_preferences_display.cpp:278 src/game_preferences_display.cpp:282
 msgid "Change the buffer size"
 msgstr "De buffergrootte veranderen"
 
-#: src/game_preferences_display.cpp:276 src/game_preferences_display.cpp:826
+#: src/game_preferences_display.cpp:280 src/game_preferences_display.cpp:834
 msgid "Buffer Size: "
 msgstr "Buffergrootte:"
 
-#: src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:287
 msgid "Change the speed of scrolling around the map"
 msgstr "De snelheid waarmee de kaart verschuift"
 
-#: src/game_preferences_display.cpp:288 src/game_preferences_display.cpp:290
+#: src/game_preferences_display.cpp:292 src/game_preferences_display.cpp:294
 msgid "Set the amount of chat lines shown"
 msgstr "Het aantal chatregels instellen"
 
-#: src/game_preferences_display.cpp:293
+#: src/game_preferences_display.cpp:297
 msgid "Add a timestamp to chat messages"
 msgstr "Een tijdsmarkering bij chatberichten weergeven"
 
-#: src/game_preferences_display.cpp:296 src/game_preferences_display.cpp:301
+#: src/game_preferences_display.cpp:300 src/game_preferences_display.cpp:305
 msgid "Change the brightness of the display"
 msgstr "De helderheid van het beeld"
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:308
 msgid "Choose whether the game should run full screen or in a window"
 msgstr ""
 "Instellen of het spel het volledige scherm gebruikt of in een venster draait"
 
-#: src/game_preferences_display.cpp:307
+#: src/game_preferences_display.cpp:311
 msgid "Make units move and fight faster"
 msgstr "Eenheden vechten en bewegen sneller"
 
-#: src/game_preferences_display.cpp:324
+#: src/game_preferences_display.cpp:328
 msgid "Units move and fight speed"
 msgstr "Vecht- en beweegsnelheid eenheden"
 
-#: src/game_preferences_display.cpp:327
+#: src/game_preferences_display.cpp:331
 msgid "Show unit idle animations"
 msgstr "Toon animatie inactieve eenheden"
 
-#: src/game_preferences_display.cpp:333
+#: src/game_preferences_display.cpp:337
 msgid "Set the frequency of unit idle animations"
 msgstr "Zet de frequentie van inactieve eenheidanimaties"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:342
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Zet het maximale aantal automatisch bewaarde spelbeurten"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:346
 msgid "Do not animate AI units moving"
 msgstr "Zetten van computerspelers niet animeren"
 
-#: src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:354
 msgid "Overlay a grid onto the map"
 msgstr "Een raster op de kaart weergeven"
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:357
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Sorteer de spelerslijst in de lobby per spelergroepen"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:360
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Toon iconen voor de spelersnamen in de lobby."
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:363
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Toon geen berichten over spelers die de multiplayer lobby binnenkomen"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:365
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Toon berichten over je vrienden die de multiplayer lobby binnenkomen"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:367
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Toon berichten over alle spelers die de multiplayer lobby binnenkomen"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:369
+msgid "Find and set path to MP server to host lan games."
+msgstr ""
+
+#: src/game_preferences_display.cpp:370
 msgid "View and edit your friends and ignores list"
 msgstr "Bekijk en bewerk je vrienden- en negeerlijst"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:371
 msgid "Back to the multiplayer options"
 msgstr "Terug naar de multiplayer opties"
 
-#: src/game_preferences_display.cpp:367
+#: src/game_preferences_display.cpp:372
 msgid "Add this username to your friends list"
 msgstr "Voeg deze gebruikersnaam toe aan je vriendenlijst"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:373
 msgid "Add this username to your ignores list"
 msgstr "Voeg deze gebruikersnaam toe aan je negeerlijst"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:374
 msgid "Remove this username from your list"
 msgstr "Verwijder deze gebruikersnaam van je lijst"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:377
 msgid "Insert a username"
 msgstr "Voer een gebruikersnaam in"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:380
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "De toegebrachte schade als tekst boven een eenheid tonen wanneer die geraakt "
 "wordt"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:382
 msgid "Change the resolution the game runs at"
 msgstr "De resolutie instellen"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:383
 msgid "Change the theme the game runs with"
 msgstr "Het thema instellen"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:386
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Een melding aan het begin van jouw beurt"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:389
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Een belletje aan het begin van jouw beurt"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:392
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Een gekleurde cirkel onder elke eenheid geeft aan tot welk team hij behoort"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:395
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "De zon beweegt van links naar rechts, in plaats van andersom"
 
-#: src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:398
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Gekleurde cursors gebruiken (kan trager zijn)"
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:401
 msgid "Use graphical special effects (may be slower)"
 msgstr "Grafische special effects gebruiken (kan trager zijn)"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:403
 msgid "View and configure keyboard shortcuts"
 msgstr "De sneltoetsen bekijken en instellen"
 
-#: src/game_preferences_display.cpp:689
+#: src/game_preferences_display.cpp:697
 msgid "Speed: "
 msgstr "Snelheid:"
 
-#: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
+#: src/game_preferences_display.cpp:702 src/game_preferences_display.cpp:704
 msgid "Maximum Auto-Saves: "
 msgstr "Maximum autosaves:"
 
-#: src/game_preferences_display.cpp:694
+#: src/game_preferences_display.cpp:702
 msgid "infinite"
 msgstr "oneindig"
 
-#: src/game_preferences_display.cpp:866
+#: src/game_preferences_display.cpp:884
 msgid "Chat Lines: "
 msgstr "Chatregels: "
 
-#: src/game_preferences_display.cpp:888 src/game_preferences_display.cpp:896
+#: src/game_preferences_display.cpp:906 src/game_preferences_display.cpp:914
 msgid "Invalid username"
 msgstr "Ongeldige gebruikersnaam"
 
-#: src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:986
 msgid "yes"
 msgstr "Ja"
 
-#: src/game_preferences_display.cpp:970
+#: src/game_preferences_display.cpp:988
 msgid "no"
 msgstr "nee"
 
-#: src/game_preferences_display.cpp:1001
+#: src/game_preferences_display.cpp:1019
 msgid "(empty list)"
 msgstr "(lege lijst)"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1138
 msgid "Prefs section^General"
 msgstr "Algemeen"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1139
 msgid "Prefs section^Display"
 msgstr "Beeld"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1140
 msgid "Prefs section^Sound"
 msgstr "Geluid"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1141
 msgid "Prefs section^Multiplayer"
 msgstr "Multiplayer"
 
-#: src/game_preferences_display.cpp:1123
+#: src/game_preferences_display.cpp:1142
 msgid "Advanced section^Advanced"
 msgstr "Geavanceerd"
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1177
 msgid "Saved Theme Preference: "
 msgstr "Bewaarde thema-instelling: "
 
-#: src/game_preferences_display.cpp:1164
+#: src/game_preferences_display.cpp:1183
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Het nieuwe thema wordt gebruikt zodra je een nieuw spel begint."
 
-#: src/game_preferences_display.cpp:1168
+#: src/game_preferences_display.cpp:1187
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Geen bestaande thema's. Probeer het thema vanuit een bestaand spel te "
 "veranderen."
+
+#: src/game_preferences_display.cpp:1229
+msgid "Find $filename server binary to host networked games"
+msgstr ""
 
 #: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
@@ -897,54 +909,55 @@ msgstr "Er is geen server gedefiniëerd."
 msgid "No default gui defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/gui/widgets/settings.cpp:236
+#: src/gui/widgets/settings.cpp:239
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:295
+#: src/gui/widgets/settings.cpp:298
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:407 src/gui/widgets/window_builder.cpp:329
+#: src/gui/widgets/settings.cpp:410 src/gui/widgets/window_builder.cpp:361
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/gui/widgets/settings.cpp:439
+#: src/gui/widgets/settings.cpp:442
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/gui/widgets/settings.cpp:591
+#: src/gui/widgets/settings.cpp:594
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/gui/widgets/window_builder.cpp:391
-#: src/gui/widgets/window_builder.cpp:942
+#: src/gui/widgets/window_builder.cpp:423
+#: src/gui/widgets/window_builder.cpp:976
+#: src/gui/widgets/window_builder.cpp:1068
 #, fuzzy
 msgid "No grid defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/gui/widgets/window_builder.cpp:606
+#: src/gui/widgets/window_builder.cpp:640
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:607
+#: src/gui/widgets/window_builder.cpp:641
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:806
+#: src/gui/widgets/window_builder.cpp:840
 #, fuzzy
 msgid "No list defined."
 msgstr "Er is geen server gedefiniëerd."
 
-#: src/gui/widgets/window_builder.cpp:809
+#: src/gui/widgets/window_builder.cpp:843
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:828
+#: src/gui/widgets/window_builder.cpp:862
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -1354,7 +1367,7 @@ msgstr "Vaste land"
 msgid "Island"
 msgstr "Eiland"
 
-#: src/marked-up_text.cpp:357
+#: src/marked-up_text.cpp:365
 msgid "The maximum text width is less than 1."
 msgstr "De maximale tekstbreedte is minder dan 1. "
 
