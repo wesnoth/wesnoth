@@ -1300,10 +1300,11 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//dont use the unit_type's attacks if this config has its own defined
 	config::const_child_itors attack_cfg_range = cfg.child_range("attack");
 	if(attack_cfg_range.first != attack_cfg_range.second) {
-		attacks_.clear();
+		attacks_b_.clear();
 		do {
-			attacks_.push_back(attack_type(**attack_cfg_range.first));
+			attacks_b_.push_back(attack_type(**attack_cfg_range.first));
 		} while(++attack_cfg_range.first != attack_cfg_range.second);
+		apply_modifications();
 	}
 	cfg_.clear_children("attack");
 
