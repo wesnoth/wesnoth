@@ -1272,14 +1272,56 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	cfg_.clear_children("ai_vars");
 
 	//dont use the unit_type's attacks if this config has its own defined
-	config::const_child_itors attack_cfg_range = cfg.child_range("attack");
-	if(attack_cfg_range.first != attack_cfg_range.second) {
+	config::const_child_itors cfg_range = cfg.child_range("attack");
+	if(cfg_range.first != cfg_range.second) {
 		attacks_.clear();
 		do {
-			attacks_.push_back(attack_type(**attack_cfg_range.first));
-		} while(++attack_cfg_range.first != attack_cfg_range.second);
+			attacks_.push_back(attack_type(**cfg_range.first));
+		} while(++cfg_range.first != cfg_range.second);
 	}
 	cfg_.clear_children("attack");
+
+	//dont use the unit_type's abilities if this config has its own defined
+	cfg_range = cfg.child_range("abilities");
+	if(cfg_range.first != cfg_range.second) {
+		cfg_.clear_children("abilities");
+		config &target = cfg_.add_child("abilities");
+		do {
+			target.append(**cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//dont use the unit_type's defense if this config has its own defined
+	cfg_range = cfg.child_range("defense");
+	if(cfg_range.first != cfg_range.second) {
+		cfg_.clear_children("defense");
+		defense_mods_.clear();
+		config &target = cfg_.add_child("defense");
+		do {
+			target.append(**cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//dont use the unit_type's movement costs if this config has its own defined
+	cfg_range = cfg.child_range("movement_costs");
+	if(cfg_range.first != cfg_range.second) {
+		cfg_.clear_children("movement_costs");
+		movement_costs_.clear();
+		config &target = cfg_.add_child("movement_costs");
+		do {
+			target.append(**cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
+	//dont use the unit_type's resistance if this config has its own defined
+	cfg_range = cfg.child_range("resistance");
+	if(cfg_range.first != cfg_range.second) {
+		cfg_.clear_children("resistance");
+		config &target = cfg_.add_child("resistance");
+		do {
+			target.append(**cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
 
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
