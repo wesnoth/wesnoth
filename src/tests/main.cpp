@@ -11,15 +11,9 @@
 
    See the COPYING file for more details.
 */
-#ifdef WESNOTH_BOOST_AUTO_TEST_MAIN
-	#define BOOST_AUTO_TEST_MAIN
-	#include <boost/test/auto_unit_test.hpp>
-#else
-	#define BOOST_TEST_MAIN
-	#include <boost/test/unit_test.hpp>
-#endif
+#define BOOST_TEST_MAIN
+#include <boost/test/unit_test.hpp>
 
-#if WESNOTH_BOOST_TEST_MAIN
 
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
@@ -34,7 +28,6 @@ struct wesnoth_global_fixture {
 
 BOOST_GLOBAL_FIXTURE( wesnoth_global_fixture );
 
-#endif
 
 /*
  * This is a main compilation unit for the test program.

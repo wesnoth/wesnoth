@@ -25,7 +25,7 @@
 
 const int TEST_PORT = 15010;
 const int MIN_THREADS = 1;
-const int MAX_THREADS = 0;
+const int MAX_THREADS = 1;
 const std::string LOCALHOST = "localhost"; 
 
 network::manager* manager;
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE( test_connect )
 	BOOST_WARN_MESSAGE(connections == 0, "There is open "<< connections <<" connections before test!");
 	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
 
-	::server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 	BOOST_REQUIRE_MESSAGE(server->is_running(), "Can't start server!");
 
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
@@ -97,8 +97,35 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 }
 
-BOOST_AUTO_TEST_CASE( test_send_server )
+BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 {
+	delete server;
+	delete ::manager;
+
+#if 0
+	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	client_client1 = network::connect(LOCALHOST, TEST_PORT);
+	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
+	delete ::manager;
+	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	client_client1 = network::connect(LOCALHOST, TEST_PORT);
+	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
+	delete ::manager;
+
+	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	client_client1 = network::connect(LOCALHOST, TEST_PORT);
+	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
+	delete ::server;
+	delete ::manager;
+
+	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	client_client1 = network::connect(LOCALHOST, TEST_PORT);
+	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
+	delete ::manager;
+#endif
+	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 }
 
 BOOST_AUTO_TEST_CASE( test_multiple_connections )

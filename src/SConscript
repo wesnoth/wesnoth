@@ -317,8 +317,9 @@ env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, l
 test_sources = Split("""
     tests/main.cpp
     tests/test_util.cpp
+    tests/test_network_worker.cpp
     """)
-test = test_env.Program("test", test_sources + [libwesnoth_core, libwesnoth])
+test = test_env.Program("test", test_sources +  [libwesnoth_core, libwesnothd])
 Export("test")
 
 if env["svnrev"] != "" and env["svnrev"] != "exported":

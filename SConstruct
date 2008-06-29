@@ -220,9 +220,9 @@ else:
 
 env.Append(CPPPATH = ["#/src", "#/"])
 
-boost_test_dyn_link = boost_auto_test = False
+boost_test_dyn_link = False
 if 'test' in COMMAND_LINE_TARGETS:
-    boost_test_dyn_link = boost_auto_test = conf.CheckBoost('unit_test_framework')
+    boost_test_dyn_link =  conf.CheckBoost('unit_test_framework', require_version = "1.34.0")
 
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
@@ -273,15 +273,6 @@ installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir pyt
 for d in installdirs:
     env[d] = os.path.join(env["prefix"], env[d])
 
-test_env = env.Clone()
-if boost_test_dyn_link:
-    test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
-    if boost_auto_test:
-        test_env.Append(CPPDEFINES = "WESNOTH_BOOST_AUTO_TEST_MAIN")
-    else:
-        test_env.Append(CPPDEFINES = "WESNOTH_BOOST_TEST_MAIN")
-Export("test_env")
-
 if env["PLATFORM"] == 'win32':
     env.Append(LIBS = ["wsock32", "intl"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
 if env["PLATFORM"] == 'darwin':			# Mac OS X
@@ -307,6 +298,12 @@ env.AppendUnique(**builds[build])
 env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get('LDFLAGS', []))
 env.MergeFlags(env["extra_flags_" + build])
 
+test_env = env.Clone()
+if boost_test_dyn_link:
+    test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
+Export("test_env")
+
+
 SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = "env")
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
@@ -318,6 +315,7 @@ binaries.remove("test")
 env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))
 all = env.Alias("all")
+
 
 #
 # Utility productions (Unix-like systems only)
