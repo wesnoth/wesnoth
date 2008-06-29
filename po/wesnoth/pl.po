@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-20 12:42+0200\n"
+"POT-Creation-Date: 2008-06-29 12:18+0200\n"
 "PO-Revision-Date: 2008-06-05 20:40+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -7044,11 +7044,11 @@ msgstr "Ładowanie ekranu tytułowego."
 msgid "Invalid color range: "
 msgstr "Niepoprawny zakres kolorów:"
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:966
 msgid "Victory:"
 msgstr "Zwycięstwo:"
 
-#: src/game_events.cpp:933
+#: src/game_events.cpp:969
 msgid "Defeat:"
 msgstr "Porażka:"
 
@@ -8370,15 +8370,15 @@ msgstr "Brak stron do gry wieloosobowej"
 msgid "Choose your side:"
 msgstr "Wybierz stronę:"
 
-#: src/network.cpp:107
+#: src/network.cpp:110
 msgid "invalid network handle"
 msgstr "błędny uchwyt sieciowy"
 
-#: src/network.cpp:140
+#: src/network.cpp:143
 msgid "Client disconnected"
 msgstr "Klient rozłączył się"
 
-#: src/network.cpp:169
+#: src/network.cpp:172
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
@@ -8388,11 +8388,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Brak kontaktu z serwerem od $timeout sekund. Przekroczono czas połączenia."
 
-#: src/network.cpp:551
+#: src/network.cpp:554
 msgid "Could not add socket to socket set"
 msgstr "Nie udało się dodać gniazda do zestawu"
 
-#: src/network.cpp:564
+#: src/network.cpp:567
 msgid "Could not send initial handshake"
 msgstr "Nie udało się rozpocząć negocjacji połączenia"
 
@@ -8460,15 +8460,15 @@ msgstr "Nazwa:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nieznany scenariusz: '$scenario|'"
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:253
 msgid "End scenario"
 msgstr "Kończ scenariusz"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:358
 msgid "Waiting for next scenario..."
 msgstr "Oczekiwanie na następny scenariusz..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:482
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

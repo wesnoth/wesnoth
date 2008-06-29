@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-20 12:42+0200\n"
+"POT-Creation-Date: 2008-06-29 12:18+0200\n"
 "PO-Revision-Date: 2008-06-03 14:49+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -7127,11 +7127,11 @@ msgstr "Cargando pantalla inicial."
 msgid "Invalid color range: "
 msgstr "Rango de color inválido: "
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:966
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:933
+#: src/game_events.cpp:969
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -8454,15 +8454,15 @@ msgstr "No se han encontrado bandos multijugador"
 msgid "Choose your side:"
 msgstr "Escoja su bando:"
 
-#: src/network.cpp:107
+#: src/network.cpp:110
 msgid "invalid network handle"
 msgstr "manipulador de red inválido"
 
-#: src/network.cpp:140
+#: src/network.cpp:143
 msgid "Client disconnected"
 msgstr "Cliente desconectado"
 
-#: src/network.cpp:169
+#: src/network.cpp:172
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
@@ -8472,11 +8472,11 @@ msgstr[1] ""
 "No hay respuesta del servidor desde hace $timeout segundos. Se ha agotado el "
 "tiempo de espera"
 
-#: src/network.cpp:551
+#: src/network.cpp:554
 msgid "Could not add socket to socket set"
 msgstr "No se ha podido añadir una conexión al conjunto de conexiones"
 
-#: src/network.cpp:564
+#: src/network.cpp:567
 msgid "Could not send initial handshake"
 msgstr "No se pudo enviar el saludo inicial"
 
@@ -8544,15 +8544,15 @@ msgstr "Nombre:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario desconocido: '$scenario|'"
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:253
 msgid "End scenario"
 msgstr "Finalizar escenario"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:358
 msgid "Waiting for next scenario..."
 msgstr "Esperando a que empiece el siguiente escenario..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:482
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

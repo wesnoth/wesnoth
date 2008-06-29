@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-main\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-20 12:42+0200\n"
+"POT-Creation-Date: 2008-06-29 12:18+0200\n"
 "PO-Revision-Date: 2008-06-02 23:34+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian\n"
@@ -7066,11 +7066,11 @@ msgstr "Kezdőképernyő betöltése"
 msgid "Invalid color range: "
 msgstr "Érvénytelen szín: "
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:966
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
-#: src/game_events.cpp:933
+#: src/game_events.cpp:969
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
@@ -8391,15 +8391,15 @@ msgstr "Nem találtam többjátékos oldalt"
 msgid "Choose your side:"
 msgstr "Válassz oldalt:"
 
-#: src/network.cpp:107
+#: src/network.cpp:110
 msgid "invalid network handle"
 msgstr "érvénytelen hálózati fogantyú"
 
-#: src/network.cpp:140
+#: src/network.cpp:143
 msgid "Client disconnected"
 msgstr "A kliens lekapcsolódott"
 
-#: src/network.cpp:169
+#: src/network.cpp:172
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
@@ -8409,11 +8409,11 @@ msgstr[1] ""
 "$timeout másodpercig nem érkezett válasz a kiszolgálótól. A kapcsolat "
 "időtúllépés miatt megszakadt."
 
-#: src/network.cpp:551
+#: src/network.cpp:554
 msgid "Could not add socket to socket set"
 msgstr "Nem sikerült a foglalatot a foglalatcsoporthoz adni"
 
-#: src/network.cpp:564
+#: src/network.cpp:567
 msgid "Could not send initial handshake"
 msgstr "Nem sikerült a kézfogás kezdeményezése"
 
@@ -8482,15 +8482,15 @@ msgstr "Név:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ismeretlen küldetés: '$scenario|'"
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:253
 msgid "End scenario"
 msgstr "Küldetés vége"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:358
 msgid "Waiting for next scenario..."
 msgstr "Várakozás a következő küldetésre..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:482
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

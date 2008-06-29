@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-20 12:42+0200\n"
+"POT-Creation-Date: 2008-06-29 12:18+0200\n"
 "PO-Revision-Date: 2008-06-07 00:37+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -6984,11 +6984,11 @@ msgstr "Загрузка заглавного изображения"
 msgid "Invalid color range: "
 msgstr "Неверный цвет:"
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:966
 msgid "Victory:"
 msgstr "Победа:"
 
-#: src/game_events.cpp:933
+#: src/game_events.cpp:969
 msgid "Defeat:"
 msgstr "Поражение:"
 
@@ -8315,26 +8315,26 @@ msgstr "Нет сетевых игроков"
 msgid "Choose your side:"
 msgstr "Выберите сторону:"
 
-#: src/network.cpp:107
+#: src/network.cpp:110
 msgid "invalid network handle"
 msgstr "неверный сетевой оператор"
 
-#: src/network.cpp:140
+#: src/network.cpp:143
 msgid "Client disconnected"
 msgstr "Клиент отключен"
 
-#: src/network.cpp:169
+#: src/network.cpp:172
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] "Сервер не пингуется уже $timeout секунду. Превышено время ожидания."
 msgstr[1] "Сервер не пингуется уже $timeout секунды. Превышено время ожидания."
 msgstr[2] "Сервер не пингуется уже $timeout секунд. Превышено время ожидания."
 
-#: src/network.cpp:551
+#: src/network.cpp:554
 msgid "Could not add socket to socket set"
 msgstr "Не могу добавить сокет к набору сокетов"
 
-#: src/network.cpp:564
+#: src/network.cpp:567
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
@@ -8402,15 +8402,15 @@ msgstr "Название:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Неизвестный сценарий:  '$scenario|'"
 
-#: src/playmp_controller.cpp:249
+#: src/playmp_controller.cpp:253
 msgid "End scenario"
 msgstr "Завершить сценарий"
 
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:358
 msgid "Waiting for next scenario..."
 msgstr "Ждем следующего сценария..."
 
-#: src/playmp_controller.cpp:483
+#: src/playmp_controller.cpp:482
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
