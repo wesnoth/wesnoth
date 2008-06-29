@@ -239,6 +239,7 @@ class CrossRefLister(CrossRef):
         doclist.sort(lambda x, y: cmp(self.xref[x][0], self.xref[y][0]))
         outstr = ""
         filename = None
+        filenamelist = []
         counted = 0
         for name in doclist:
             entry = self.xref[name][0]
@@ -251,7 +252,9 @@ class CrossRefLister(CrossRef):
                     displayname = filename[len(pref):]
                 else:
                     displayname = filename
-                outstr += "<h1 class='file_header'>From file: " + displayname + "</h1>\n"
+                outstr += "<p class='toplink'>(<a href='#global'>top</a>)</p>\n"
+                outstr += "<h1 id='file:" + displayname + "' class='file_header'>From file: " + displayname + "</h1>\n"
+                filenamelist.append(displayname)
                 hdr = []
                 dfp = open(filename)
                 for line in dfp:
@@ -273,7 +276,7 @@ class CrossRefLister(CrossRef):
                     lines.pop()
                 if not lines:	# Ignore definitions without a docstring
                     continue
-                outstr += "\n<dt>\n"
+                outstr += "\n<dt id='" + header[0] + "'>\n"
                 outstr += "<em class='macro_name'>" + header[0] + "</em>"
                 if header[1:]:
                     outstr += " <em class='macro_formals'>"+" ".join(header[1:])+"</em>"
@@ -282,6 +285,13 @@ class CrossRefLister(CrossRef):
                 outstr += interpret(lines, "macro_explanation")
                 outstr += "</dd>\n"
         outstr += "</dl>\n"
+        outstr += "<p class='toplink'>(<a href='#global'>top</a>)</p>\n"
+        linkheaderstr = "<p class='filelist'>Covered macro files:"
+        for filename in filenamelist:
+            linkheaderstr += " <a href='#file:" + filename + "'>"
+            linkheaderstr += filename + "</a>"
+        linkheaderstr += "</p>\n"
+        fp.write(linkheaderstr)
         fp.write(outstr)
 
 if __name__ == "__main__":

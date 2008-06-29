@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 <title>Utility macro reference</title>
-<meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
 <link rel="shortcut icon" type="image/png" href="/mw/skins/glamdrol/ico.png" />
-<style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
-<style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/home.css');</style>
 <style type="text/css">
 /*<![CDATA[*/
-.file_header:      {font-style:normal; font-weight:bold;}
+@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');
+@import url('http://www.wesnoth.org/mw/skins/glamdrol/home.css');
+
+.toplink           {float:right; font-size: small;}
+.file_header       {font-style:normal; font-weight:bold;}
 .file_explanation  {font-style:normal; font-weight:bold;}
 .macro_name        {font-style:normal; font-weight:bold;}
 .macro_formals     {font-style:italic; font-weight:normal;}
@@ -29,12 +31,25 @@
     <a href="home"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
   </div>
 </div>
+<div id="nav">
+  <ul>
+    <li><a href="http://www.wesnoth.org/">Home</a></li>
+    <li><a href="http://www.wesnoth.org/wiki/Play">Play</a></li>
+    <li><a href="http://www.wesnoth.org/wiki/Create">Create</a></li>
+    <li><a href="http://www.wesnoth.org/forum/">Forums</a></li>
+    <li><a href="http://www.wesnoth.org/wiki/Support">Support</a></li>
+    <li><a href="http://www.wesnoth.org/wiki/Project">Project</a></li>
+    <li><a href="http://www.wesnoth.org/wiki/Credits">Credits</a></li>
+  </ul>
+</div>
+
+
 
 <div id="main">
 
 <p>This page is an automatically-generated reference for all the 
 utility macros with documentation strings in the Wesnoth source
-distribution.</p>
+distribution. It can be generated with <code>make macro-reference.xhtml</code> in the data/tools-directory.</p>
 
 <p>The organization of these macros may change in future releases,
 and some may be moved out of the default load path.  If in doubt,
