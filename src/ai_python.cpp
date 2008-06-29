@@ -1664,35 +1664,42 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 {
-	char const *variable;
-	PyObject *value;
-	if (!PyArg_ParseTuple(args, CC("sO"), &variable, &value))
-		return NULL;
-	config const &old_memory = running_instance->current_team().ai_memory();
-	config new_memory(old_memory);
-	PyObject *so = PyMarshal_WriteObjectToString(value, Py_MARSHAL_VERSION);
-	if (so)
+  char const *variable;
+  PyObject *value;
+  if (!PyArg_ParseTuple(args, CC("sO"), &variable, &value))
+    return NULL;
+  config const &old_memory = running_instance->current_team().ai_memory();
+  config new_memory(old_memory);
+  PyObject *so = PyMarshal_WriteObjectToString(value, Py_MARSHAL_VERSION);
+  if (so)
+    {
+      char *cs;
+      Py_ssize_t len;
+      PyString_AsStringAndSize(so, &cs, &len);
+      std::string s;
+      char const *digits[] = {
+	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+	"a", "b", "c", "d", "e", "f"};
+      int i;
+      for (i = 0; i < len; i++)
 	{
-	    char *cs;
-        Py_ssize_t len;
-	    PyString_AsStringAndSize(so, &cs, &len);
-	    std::string s;
-	    char const *digits[] = {
-	        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-	        "a", "b", "c", "d", "e", "f"};
-	    int i;
-	    for (i = 0; i < len; i++)
-	    {
-	        unsigned char x = cs[i];
-	        s += std::string(digits[x >> 4]) + std::string(digits[x & 15]);
-	    }
-	    new_memory[variable] = s;
-	    running_instance->current_team().set_ai_memory(new_memory);
+	  unsigned char x = cs[i];
+	  s += std::string(digits[x >> 4]) + std::string(digits[x & 15]);
+	}
+      new_memory[variable] = s;
+      running_instance->current_team().set_ai_memory(new_memory);
 
-	    Py_DECREF(so);
+      Py_DECREF(so);
+    } else {
+    // If the marshal request generated an exception, we need to
+    // return NULL and not None or the exception stack gets hosed!
+    if( PyErr_Occurred() ) {
+      return NULL ;
     }
-	Py_INCREF(Py_None);
-	return Py_None;
+  }
+
+  Py_INCREF(Py_None) ;
+  return Py_None ;
 }
 
 PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
@@ -2002,7 +2009,7 @@ void python_ai::play_turn()
 		"\t\tsys.stderr = file(\"pyerr.txt\", \"wb\")\n"
 		"\texcept IOError:\n"
 		"\t\tsys.stderr.write(\"Python: Could not create pyerr.txt in current directory.\\n\")\n"
-		"\tbackup = sys.path[:]\n"
+	  	"\tbackup = sys.path[:]\n"
 		"\tsys.path.append(\"" + path + "/data/ais\")\n"
 		"\tsys.path.append(\"data/ais\")\n"
 		"\ttry:\n"
@@ -2014,7 +2021,8 @@ void python_ai::play_turn()
 		"\t\terr = str(traceback.format_exc())\n"
 		"\t\traise\n"
 		"finally:\n"
-		"\tsys.path = backup\n";
+		"\tsys.path = backup\n" ;
+
 	PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input,
 		globals, globals);
 
