@@ -734,7 +734,7 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 		race_ = &dummy_race;
 	}
 
-	// if num_traits is not defined, we use the num_traits from race 
+	// if num_traits is not defined, we use the num_traits from race
 	num_traits_ = lexical_cast_default<unsigned int>(cfg["num_traits"], race_->num_traits());
 
 	const std::vector<std::string> genders = utils::split(cfg["gender"]);
@@ -776,7 +776,8 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
 	const size_t i = gender;
-	if(i < sizeof(gender_types_)/sizeof(*gender_types_) && gender_types_[i] != NULL) {
+	if(i < sizeof(gender_types_)/sizeof(*gender_types_)
+	&& gender_types_[i] != NULL) {
 		return *gender_types_[i];
 	}
 

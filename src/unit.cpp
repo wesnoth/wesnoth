@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
@@ -89,11 +90,6 @@ void sort_units(std::vector< unit > &units)
 // Copy constructor
 unit::unit(const unit& o):
            cfg_(o.cfg_),
-           movement_b_(o.movement_b_),
-           defense_b_(o.defense_b_),
-           resistance_b_(o.resistance_b_),
-           abilities_b_(o.abilities_b_),
-
            advances_to_(o.advances_to_),
            type_(o.type_),
            race_(o.race_),
@@ -106,10 +102,8 @@ unit::unit(const unit& o):
 
            hit_points_(o.hit_points_),
            max_hit_points_(o.max_hit_points_),
-           max_hit_points_b_(o.max_hit_points_b_),
            experience_(o.experience_),
            max_experience_(o.max_experience_),
-           max_experience_b_(o.max_experience_b_),
            level_(o.level_),
            alignment_(o.alignment_),
            flag_rgb_(o.flag_rgb_),
@@ -128,7 +122,6 @@ unit::unit(const unit& o):
 
            movement_(o.movement_),
            max_movement_(o.max_movement_),
-           max_movement_b_(o.max_movement_b_),
            movement_costs_(o.movement_costs_),
            defense_mods_(o.defense_mods_),
            hold_position_(o.hold_position_),
@@ -147,7 +140,6 @@ unit::unit(const unit& o):
            role_(o.role_),
            ai_special_(o.ai_special_),
            attacks_(o.attacks_),
-           attacks_b_(o.attacks_b_),
            facing_(o.facing_),
 
            traits_description_(o.traits_description_),
@@ -265,7 +257,7 @@ unit::unit(unit_map* unitmap, const gamemap* map,
 	attacks_left_ = 0;
 	experience_ = 0;
 	cfg_["upkeep"]="full";
-	advance_to(&t->get_gender_unit_type(gender_));
+	advance_to(t);
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		// Units that don't have traits generated are just
@@ -274,6 +266,7 @@ unit::unit(unit_map* unitmap, const gamemap* map,
 		name_ = generate_name();
 	}
 	generate_traits(!use_traits);
+	reset_modifications();
 	apply_modifications();
 	set_underlying_id();
 
@@ -298,7 +291,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	attacks_left_ = 0;
 	experience_ = 0;
 	cfg_["upkeep"]="full";
-	advance_to(&t->get_gender_unit_type(gender_));
+	advance_to(t);
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		// Units that don't have traits generated are just
@@ -307,6 +300,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		name_ = generate_name();
 	}
 	generate_traits(!use_traits);
+	reset_modifications();
 	apply_modifications();
 	set_underlying_id();
 
@@ -357,13 +351,6 @@ void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamesta
 
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.get_children("event"),type_);
-}
-
-
-void unit::add_trait(std::string /*trait*/)
-{
-	//modifications_.add_child("trait", cfg);
-	apply_modifications();
 }
 
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
@@ -468,14 +455,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
+
 	// Remove old animations
 	cfg_.clear_children("animation");
-
-	cfg_.clear_children("attack");
-	cfg_.clear_children("abilities");
-	// Clear cache of movement costs and defense mods
-	movement_costs_.clear();
-	defense_mods_.clear();
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -484,8 +466,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	std::string specific_profile;
 	if (type() != NULL)	{
 		const std::string profile = cfg_["profile"];
-		if (!profile.empty() &&
-				profile != type()->get_gender_unit_type(gender_).get_variation(variation_).cfg_["profile"]){
+		if (!profile.empty() && profile != type()->cfg_["profile"]){
 			specific_profile = profile;
 		}
 	}
@@ -521,7 +502,6 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	flag_rgb_ = t->flag_rgb();
 
-	backup_state();
 
 	bool do_heal = false; // Track whether unit should get fully healed.
 
@@ -570,12 +550,16 @@ const unit_type* unit::type() const
 {
 	std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find(type_id());
 	if(i != unit_type_data::types().end()) {
-		return &i->second;
+		return &i->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	if (!type_id().empty()) {
-		LOG_STREAM(err, engine) << "type not found for nonempty unit " << type_id() << ", returning NULL!\n";
+		std::string error_message = _("Unknown unit type '$type|'");
+		utils::string_map symbols;
+		symbols["type"] = type_id();
+		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+		LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
+		throw game::game_error(error_message);
 	}
-
 	return NULL;
 }
 
@@ -700,6 +684,7 @@ void unit::new_level()
 	remove_temporary_modifications();
 
 	// Re-apply all permanent modifications
+	reset_modifications();
 	apply_modifications();
 
 	heal_all();
@@ -1149,15 +1134,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["type"].empty()) {
 		throw game::load_game_failed("Attempt to de-serialize a unit with no 'type' field (probably empty)");
 	}
-	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find(cfg["type"]);
-	if(uti == unit_type_data::types().end()) {
-		std::string error_message = _("Unknown unit type '$type|'");
-		utils::string_map symbols;
-		symbols["type"] = cfg["type"];
-		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-		LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
-		throw game::game_error(error_message);
-	}
 	type_ = cfg["type"];
 
 	cfg_ = cfg;
@@ -1171,13 +1147,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	// Prevent un-initialized variables
 	hit_points_=1;
 
-	// Collect these early so they can be modified by traits.
-	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], 1);
-	max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
-	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
-
 	if(cfg["gender"].empty()) {
-		gender_ = generate_gender(uti->second, utils::string_bool(cfg_["random_gender"], false), state);
+		gender_ = generate_gender(*type(), utils::string_bool(cfg_["random_gender"], false), state);
 	} else {
 		gender_ = string_gender(cfg["gender"]);
 	}
@@ -1246,7 +1217,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_.remove_child("modifications",0);
 	}
 
-	advance_to(&uti->second.get_gender_unit_type(gender_), use_traits, state);
+	advance_to(type(), use_traits, state);
 	if(cfg["race"] != "") {
 		const race_map::const_iterator race_it = unit_type_data::types().races().find(cfg["race"]);
 		if(race_it != unit_type_data::types().races().end()) {
@@ -1276,6 +1247,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["profile"] != "") {
 		cfg_["profile"] = cfg["profile"];
 	}
+	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_);
+	max_movement_ = lexical_cast_default<int>(cfg["max_moves"], max_movement_);
+	max_experience_ = lexical_cast_default<int>(cfg["max_experience"], max_experience_);
 
 	//support for unit formulas and unit-specyfic variables in [ai_vars]
 	unit_formula_ = cfg["formula"];
@@ -1300,11 +1274,10 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//dont use the unit_type's attacks if this config has its own defined
 	config::const_child_itors attack_cfg_range = cfg.child_range("attack");
 	if(attack_cfg_range.first != attack_cfg_range.second) {
-		attacks_b_.clear();
+		attacks_.clear();
 		do {
-			attacks_b_.push_back(attack_type(**attack_cfg_range.first));
+			attacks_.push_back(attack_type(**attack_cfg_range.first));
 		} while(++attack_cfg_range.first != attack_cfg_range.second);
-		apply_modifications();
 	}
 	cfg_.clear_children("attack");
 
@@ -1388,14 +1361,6 @@ void unit::write(config& cfg) const
 	std::string x = cfg["x"];
 	std::string y = cfg["y"];
 	cfg.append(cfg_);
-	cfg.clear_children("movement_costs");
-	cfg.clear_children("defense");
-	cfg.clear_children("resistance");
-	cfg.clear_children("abilities");
-	cfg.add_child("movement_costs",movement_b_);
-	cfg.add_child("defense",defense_b_);
-	cfg.add_child("resistance",resistance_b_);
-	cfg.add_child("abilities",abilities_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
 	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find(type_id());
@@ -1411,14 +1376,14 @@ void unit::write(config& cfg) const
 	hp << hit_points_;
 	cfg["hitpoints"] = hp.str();
 	std::stringstream hpm;
-	hpm << max_hit_points_b_;
+	hpm << max_hit_points_;
 	cfg["max_hitpoints"] = hpm.str();
 
 	std::stringstream xp;
 	xp << experience_;
 	cfg["experience"] = xp.str();
 	std::stringstream xpm;
-	xpm << max_experience_b_;
+	xpm << max_experience_;
 	cfg["max_experience"] = xpm.str();
 
 	std::stringstream sd;
@@ -1482,7 +1447,7 @@ void unit::write(config& cfg) const
 	cfg["goto_y"] = lexical_cast_default<std::string>(goto_.y+1);
 
 	cfg["moves"] = lexical_cast_default<std::string>(movement_);
-	cfg["max_moves"] = lexical_cast_default<std::string>(max_movement_b_);
+	cfg["max_moves"] = lexical_cast_default<std::string>(max_movement_);
 
 	cfg["resting"] = resting_ ? "yes" : "no";
 
@@ -1515,7 +1480,7 @@ void unit::write(config& cfg) const
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
 	cfg["zoc"] = emit_zoc_ ? "yes" : "no";
 	cfg.clear_children("attack");
-	for(std::vector<attack_type>::const_iterator i = attacks_b_.begin(); i != attacks_b_.end(); ++i) {
+	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());
 	}
 	cfg["value"] = lexical_cast_default<std::string>(unit_value_);
@@ -2211,46 +2176,44 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 
 void unit::reset_modifications()
 {
-	max_hit_points_ = max_hit_points_b_;
-	max_experience_ = max_experience_b_;
-	max_movement_ = max_movement_b_;
-	attacks_ = attacks_b_;
-	cfg_.clear_children("movement_costs");
-	cfg_.clear_children("defense");
-	cfg_.clear_children("resistance");
-	cfg_.clear_children("abilities");
-	cfg_.add_child("movement_costs",movement_b_);
-	cfg_.add_child("defense",defense_b_);
-	cfg_.add_child("resistance",resistance_b_);
-	cfg_.add_child("abilities",abilities_b_);
-}
-void unit::backup_state()
-{
-	max_hit_points_b_ = max_hit_points_;
-	max_experience_b_ = max_experience_;
-	max_movement_b_ = max_movement_;
-	attacks_b_ = attacks_;
-	if(cfg_.child("movement_costs")) {
-		movement_b_ = *cfg_.child("movement_costs");
-	} else {
-		movement_b_ = config();
-	}
-	if(cfg_.child("defense")) {
-		defense_b_ = *cfg_.child("defense");
-	} else {
-		defense_b_ = config();
-	}
-	if(cfg_.child("resistance")) {
-		resistance_b_ = *cfg_.child("resistance");
-	} else {
-		resistance_b_ = config();
-	}
-	if(cfg_.child("abilities")) {
-		abilities_b_ = *cfg_.child("abilities");
-	} else {
-		abilities_b_ = config();
+	const std::string mod_childs[] = {"attacks","movement_costs","defense","resistance","abilities"};
+	const unit_type *t = type();
+	if(t == NULL) {
+		return;
 	}
 
+	// Reset the scalar values first
+	traits_description_ = "";
+	is_fearless_ = false;
+	is_healthy_ = false;
+	max_hit_points_ = t->hitpoints();
+	max_experience_ = t->experience_needed();
+	max_movement_ = t->movement();
+	attacks_ = t->attacks();
+
+	// Clear modification-related caches
+	modification_descriptions_.clear();
+	movement_costs_.clear();
+	defense_mods_.clear();
+
+	// Clear modified configs
+	foreach(const std::string& tag, mod_childs) {
+		cfg_.clear_children(tag);
+	}
+
+	// Restore unmodified configs
+	if(t->movement_type().get_parent()) {
+		//before merging the base movementtype, first get the parent movetype
+		//(...this doesn't look right but it was copied from advance_to()...)
+		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
+	}
+	config to_merge;
+	foreach(const std::string& tag, mod_childs) {
+		foreach(config* child, t->cfg_.get_children(tag)) {
+			to_merge.add_child(tag, *child);
+		}
+	}
+	cfg_.merge_with(to_merge);
 }
 
 config::child_list unit::get_modification_advances() const
@@ -2356,16 +2319,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				// for the first time.
 				if(apply_to == "variation" && no_add == false) {
 					variation_ = (**i.first)["name"];
-					const unit_type_data::unit_type_map::const_iterator var = unit_type_data::types().find(type_id());
-										if(var == unit_type_data::types().end()) {
-						std::string error_message = _("Unknown unit type '$type|'");
-						utils::string_map symbols;
-						symbols["type"] = type_id();
-						error_message = utils::interpolate_variables_into_string(error_message, &symbols);
-						LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
-						throw game::game_error(error_message);
-										}
-					advance_to(&var->second.get_variation(variation_));
+					advance_to(this->type());
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
 					const std::string& description = (**i.first)["description"];
@@ -2711,14 +2665,7 @@ const unit_animation* unit::choose_animation(const game_display& disp, const gam
 void unit::apply_modifications()
 {
 	log_scope("apply mods");
-	reset_modifications();
-	modification_descriptions_.clear();
-
-	traits_description_ = "";
-
 	std::vector< t_string > traits;
-	is_fearless_ = false;
-	is_healthy_ = false;
 	config::child_list const &mods = modifications_.get_children("trait");
 	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
 		is_fearless_ = is_fearless_ || (**j)["id"] == "fearless";

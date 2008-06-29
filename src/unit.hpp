@@ -168,8 +168,8 @@ public:
 	void remove_overlay(const std::string& overlay) { overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end()); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
-	/** 
-	 * Initialize this unit from a cfg object. 
+	/**
+	 * Initialize this unit from a cfg object.
 	 *
 	 * @param cfg                 Configuration object from which to read the unit.
 	 * @param use_traits          ??
@@ -188,7 +188,7 @@ public:
 
 	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
 	const surface still_image(bool scaled = false) const;
-	/** 
+	/**
 	 * draw a unit, fake is used for temporary unit not in unit_map (so we can
 	 * skip functions assuming that)
 	 */
@@ -251,7 +251,7 @@ public:
 	void set_interrupted_move(const gamemap::location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
 	/** States for animation. */
-	enum STATE { 
+	enum STATE {
 		STATE_STANDING,   /** anim must fit in a hex */
 		STATE_FORGET,     /** animation will be automaticaly replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
@@ -285,7 +285,6 @@ public:
 	void backup_state();
 	void apply_modifications();
 	void remove_temporary_modifications();
-	void add_trait(std::string /*trait*/);
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
 	std::string generate_name( simple_rng* rng = 0) const
@@ -319,10 +318,6 @@ private:
 	void set_underlying_id();
 
 	config cfg_;
-	config movement_b_;
-	config defense_b_;
-	config resistance_b_;
-		config abilities_b_;
 
 	std::vector<std::string> advances_to_;
 	std::string type_;
@@ -335,9 +330,9 @@ private:
 	std::string variation_;
 
 	int hit_points_;
-	int max_hit_points_, max_hit_points_b_;
+	int max_hit_points_;
 	int experience_;
-	int max_experience_, max_experience_b_;
+	int max_experience_;
 	int level_;
 	unit_type::ALIGNMENT alignment_;
 	std::string flag_rgb_;
@@ -355,7 +350,7 @@ private:
 	std::vector<std::string> recruits_;
 
 	int movement_;
-	int max_movement_, max_movement_b_;
+	int max_movement_;
 	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
 	mutable std::map<t_translation::t_terrain, int> defense_mods_; // defense modifiers cache
 	bool hold_position_;
@@ -373,7 +368,7 @@ private:
 
 	std::string role_;
 	std::string ai_special_;
-	std::vector<attack_type> attacks_, attacks_b_;
+	std::vector<attack_type> attacks_;
 	gamemap::location::DIRECTION facing_;
 
 	t_string traits_description_;
@@ -484,11 +479,11 @@ private:
  * In MP games the descriptions are locally generated and might differ, so it
  * should be possible to discard them.  Not sure whether replays suffer the
  * same problem.
- * 
+ *
  *  @param u                    the unit
- * 
+ *
  *  @returns                    the checksum for a unit
- */ 
+ */
 std::string get_checksum(const unit& u);
 
 #endif

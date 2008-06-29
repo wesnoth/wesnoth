@@ -216,26 +216,26 @@ team_num_(team), unit_count_(5,0)
 		    << COLUMN_SEPARATOR << _("This Turn");
 		items.push_back(str.str());
 	}
-	
-	statistics_dialog::make_damage_line(items, _("Inflicted"), 
-			stats_.damage_inflicted, 
+
+	statistics_dialog::make_damage_line(items, _("Inflicted"),
+			stats_.damage_inflicted,
 			stats_.expected_damage_inflicted,
 			stats_.turn_damage_inflicted,
 			stats_.turn_expected_damage_inflicted);
-	statistics_dialog::make_damage_line(items, _("Taken"), 
-			stats_.damage_taken, 
+	statistics_dialog::make_damage_line(items, _("Taken"),
+			stats_.damage_taken,
 			stats_.expected_damage_taken,
 			stats_.turn_damage_taken,
 			stats_.turn_expected_damage_taken);
 	items.push_back("New stats:");
-	
-	statistics_dialog::make_damage_line(items, _("Inflicted"), 
-			stats_.damage_inflicted, 
+
+	statistics_dialog::make_damage_line(items, _("Inflicted"),
+			stats_.damage_inflicted,
 			stats_.new_expected_damage_inflicted,
 			stats_.turn_damage_inflicted,
 			stats_.new_turn_expected_damage_inflicted);
-	statistics_dialog::make_damage_line(items, _("Taken"), 
-			stats_.damage_taken, 
+	statistics_dialog::make_damage_line(items, _("Taken"),
+			stats_.damage_taken,
 			stats_.new_expected_damage_taken,
 			stats_.turn_damage_taken,
 			stats_.new_turn_expected_damage_taken);
@@ -246,11 +246,11 @@ statistics_dialog::~statistics_dialog()
 {
 }
 
-void statistics_dialog::make_damage_line(std::vector<std::string>& items, 
+void statistics_dialog::make_damage_line(std::vector<std::string>& items,
 					 const std::string& header,
-					 const long long& damage, 
+					 const long long& damage,
 					 const long long& expected,
-					 const long long& turn_damage, 
+					 const long long& turn_damage,
 					 const long long& turn_expected)
 {
 	const int dsa = statistics::stats::desimal_shift * damage
@@ -2137,7 +2137,7 @@ private:
 			static void set_show_unavailable(bool value)
 			{
 				show_unavailable_ = value;
-			}			
+			}
 			//this is display-only
 			static void set_cmd_prefix(std::string value)
 			{
@@ -2924,7 +2924,7 @@ private:
 	void console_handler::do_buff() {
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if(i != menu_handler_.units_.end()) {
-			i->second.add_trait(get_data());
+			//i->second.add_trait(get_data());
 			menu_handler_.gui_->invalidate(i->first);
 			menu_handler_.gui_->invalidate_unit();
 		} else {

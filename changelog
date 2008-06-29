@@ -6,18 +6,23 @@ Version 1.5.1+svn:
      so they work correctly with a variant_map type
  * language and i18n:
    * updated translations: Finnish, German, Greek, Lithuanian, Serbian
- * miscellaneous and bug fixes:
-   * rewrote the textbox history saving of the new widget library. This rewrite
+ * WML engine:
+   * When examining stored units, now the attacks, max_hitpoints, max_moves,
+     and max_experience are the "real" values and can also be modified.
+   * Enhanced recursion prevention for [kill] fire_event=yes [/kill]
+ * GUI improvements:
+   * Rewrote the textbox history saving of the new widget library. This rewrite
      is incompatible with the old version, but since the library is still in
      development, no compatibility layer has been added.
    * Added gui to choose where server binary is
    * Added type-a-head search to file chooser dialog
-   * Fixed droiding not to make wesnoth think player is observer (bug: #9675)
-   * Removed persistent from team configuration (bug: #10916)
+ * multiplayer:
    * Added support for multiple sides per client in MP start
    * Added support for reserving slots when reloading game
    * Fixed timer end warning not to play in opponents turn (bug: #11517)
-   * Added recursion preventarion to [kill] fire_event=yes [/kill]
+ * miscellaneous and bug fixes:
+   * Fixed droiding not to make wesnoth think player is observer (bug: #9675)
+   * Removed persistance from team configuration (bug: #10916)
 
 Version 1.5.1:
  * campaigns:
