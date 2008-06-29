@@ -77,7 +77,7 @@ public:
 		std::vector<std::string> recruitment_pattern;
 		std::vector<int> enemies;
 		std::string team_name;
-		std::string user_team_name;
+		t_string user_team_name;
 		std::string save_id;
 		// 'id' of the current player (not necessarily unique)
 		std::string current_player;

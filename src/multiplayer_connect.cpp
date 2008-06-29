@@ -1438,7 +1438,7 @@ void connect::lists_init()
 															team_names_.end(), team_name);
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
-				user_team_names_.push_back(user_team_name);
+				user_team_names_.push_back(user_team_name.to_serialized());
 				player_teams_.push_back(user_team_name.str());
 			}
 		}

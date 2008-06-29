@@ -110,6 +110,8 @@ team::team_info::team_info(const config& cfg) :
 		music(cfg["music"]),
 		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"])
 {
+	if (!user_team_name.translatable())
+		user_team_name = user_team_name.from_serialized(user_team_name);
 	config global_ai_params;
 	const config::child_list& ai_parameters = cfg.get_children("ai");
 	for(config::child_list::const_iterator aiparam = ai_parameters.begin(); aiparam != ai_parameters.end(); ++aiparam) {

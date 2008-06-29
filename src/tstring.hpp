@@ -81,7 +81,7 @@ public:
 	operator const std::string&() const              { return str(); }
 	const std::string& str() const;
 	const char* c_str() const                        { return str().c_str(); }
-
+	bool translatable() const						 { return translatable_; }
 	// Warning: value() may contain platform dependant prefix bytes !
 	// Consider base_str() for a more reliable untranslated string
 	const std::string& value() const                 { return value_; }
