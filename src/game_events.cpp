@@ -1689,6 +1689,11 @@ namespace {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			const bool show = screen != NULL && !screen->fogged(loc);
 			const bool animate = show && utils::string_bool(cfg["animate"], false);
+		
+			//	If new unit is leader set current player/visible side name
+			//	to units name
+			if (new_unit.can_recruit())
+				(*teams)[new_unit.side() - 1].set_current_player(new_unit.name());
 
 			units->erase(loc);
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
