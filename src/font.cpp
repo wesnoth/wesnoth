@@ -562,23 +562,23 @@ text_surface &text_cache::find(text_surface const &t)
 
 static surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style)
 {
-	const std::vector<std::string> lines = utils::split(text, '\n', utils::REMOVE_EMPTY);
+	// we keep blank lines and spaces (may be wanted for indentation)
+	const std::vector<std::string> lines = utils::split(text, '\n', 0);
 	std::vector<std::vector<surface> > surfaces;
 	surfaces.reserve(lines.size());
 	size_t width = 0, height = 0;
 	text_surface txt_surf(fontsize, colour, style);
 
 	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
-		if (!ln->empty()) {
-			txt_surf.set_text(*ln);
-			const text_surface& cached_surf = text_cache::find(txt_surf);
-			const std::vector<surface>&res = cached_surf.get_surfaces();
+		// we replace empty line by a space (to have a line height)
+		txt_surf.set_text(ln->empty() ? " " : *ln);
+		const text_surface& cached_surf = text_cache::find(txt_surf);
+		const std::vector<surface>&res = cached_surf.get_surfaces();
 
-			if (!res.empty()) {
-				surfaces.push_back(res);
-				width = maximum<size_t>(cached_surf.width(), width);
-				height += cached_surf.height();
-			}
+		if (!res.empty()) {
+			surfaces.push_back(res);
+			width = maximum<size_t>(cached_surf.width(), width);
+			height += cached_surf.height();
 		}
 	}
 
