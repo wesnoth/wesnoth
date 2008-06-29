@@ -119,7 +119,7 @@ bool fullscreen()
 
 void _set_fullscreen(bool ison)
 {
-	prefs["fullscreen"] = (ison ? "true" : "false");
+	prefs["fullscreen"] = (ison ? "yes" : "no");
 }
 
 int min_allowed_width()
@@ -171,7 +171,7 @@ bool turbo()
 
 void _set_turbo(bool ison)
 {
-	prefs["turbo"] = (ison ? "true" : "false");
+	prefs["turbo"] = (ison ? "yes" : "no");
 }
 
 double turbo_speed()
@@ -247,7 +247,7 @@ bool grid()
 
 void _set_grid(bool ison)
 {
-	preferences::set("grid",  (ison ? "true" : "false"));
+	preferences::set("grid",  (ison ? "yes" : "no"));
 }
 
 size_t sound_buffer_size()

@@ -640,7 +640,7 @@ stats calculate_stats(int category, int side)
 config write_stats()
 {
 	config res;
-	res["mid_scenario"] = (mid_scenario ? "true" : "false");
+	res["mid_scenario"] = (mid_scenario ? "yes" : "no");
 
 	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
 		res.add_child("scenario",i->write());
@@ -651,7 +651,7 @@ config write_stats()
 
 void write_stats(config_writer &out)
 {
-	out.write_key_val("mid_scenario", mid_scenario ? "true" : "false");
+	out.write_key_val("mid_scenario", mid_scenario ? "yes" : "no");
 
 	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
 		out.open_child("scenario");

@@ -481,7 +481,7 @@ static void write_player(const player_info& player, config& cfg)
 
 	cfg["gold"] = buf;
 
-	cfg["gold_add"] = player.gold_add ? "true" : "false";
+	cfg["gold_add"] = player.gold_add ? "yes" : "no";
 
 	for(std::vector<unit>::const_iterator i = player.available_units.begin();
 	    i != player.available_units.end(); ++i) {
