@@ -102,11 +102,11 @@ BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 	delete server;
 	delete ::manager;
 
-#if 0
 	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
 	delete ::manager;
+#if 0
 	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
