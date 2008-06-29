@@ -2256,7 +2256,7 @@ variant ai_interface::get_value(const std::string& key) const
 			vars.push_back(variant(new unit_callable(*i)));
 		}
 		return variant(&vars);
-	} else if(key == "units_by_team") {
+	} else if(key == "units_of_team") {
 		std::vector<variant> vars;
 		std::vector< std::vector< variant> > tmp;
 		for( int i = 0; i<info_.teams.size(); ++i)
@@ -2311,7 +2311,7 @@ void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) co
 	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("units_by_team", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("units_of_team", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
