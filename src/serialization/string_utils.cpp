@@ -395,15 +395,14 @@ std::string &unescape(std::string &str)
 
 bool string_bool(const std::string& str, bool def) {
 	if (str.empty()) return def;
-	if (str == "yes" || str == "on" || str == "true"
-	|| lexical_cast_default<int>(str, 0)) {
-		return true;
-	}
-	if (str == "no" || str == "off" || str == "false"
-	|| !lexical_cast_default<int>(str, 1)) {
+
+	// yes/no is the standard, test it first
+	if (str == "yes") return true;
+	if (str == "no"|| str == "false" || str == "off" || str == "0" || str == "0.0")
 		return false;
-	}
-	return def;
+
+	// all other non-empty string are considered as true
+	return true;
 }
 
 static bool is_username_char(char c) {

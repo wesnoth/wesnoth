@@ -67,6 +67,7 @@ std::string &unescape(std::string &str);
 std::string &strip(std::string &str);
 //! Removes character 'c' from the first and last position of the string 'str'.
 std::string& strip_char(std::string &str, const char c);
+//! Convert no, false, off, 0, 0.0 to false, empty to def, and others to true
 bool string_bool(const std::string& str,bool def=false);
 
 //! Try to complete the last word of 'text' with the 'wordlist'.
