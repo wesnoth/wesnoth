@@ -531,10 +531,6 @@ static std::vector<std::string> parse_text(const std::string &text);
 /// [element_name]...[/element_name]. Return the resulting WML.
 static std::string convert_to_wml(const std::string &element_name, const std::string &contents);
 
-/// Return true if s is a representation of a truth value
-/// (yes/true/...), otherwise false.
-static bool get_bool(const std::string &s);
-
 /// Return the color the string represents. Return font::NORMAL_COLOUR if
 /// the string is empty or can't be matched against any other color.
 static SDL_Color string_to_color(const std::string &s);
@@ -2080,7 +2076,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 {
 	const std::string dst = cfg["dst"];
 	const std::string text = cfg["text"];
-	const bool force = get_bool(cfg["force"]);
+	const bool force = utils::string_bool(cfg["force"], false);
 	bool show_ref = true;
 	if (find_topic(toplevel_, dst) == NULL && !force) {
 		show_ref = false;
@@ -2125,9 +2121,9 @@ void help_text_area::handle_img_cfg(const config &cfg)
 {
 	const std::string src = cfg["src"];
 	const std::string align = cfg["align"];
-	const bool floating = get_bool(cfg["float"]);
+	const bool floating = utils::string_bool(cfg["float"], false);
 	bool box = true;
-	if (cfg["box"] != "" && !get_bool(cfg["box"])) {
+	if (cfg["box"] != "" && !utils::string_bool(cfg["box"], false)) {
 		box = false;
 	}
 	if (src == "") {
@@ -2207,8 +2203,8 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	if (text == "") {
 		throw parse_error("Format markup must have text attribute.");
 	}
-	const bool bold = get_bool(cfg["bold"]);
-	const bool italic = get_bool(cfg["italic"]);
+	const bool bold = utils::string_bool(cfg["bold"], false);
+	const bool italic = utils::string_bool(cfg["italic"], false);
 	int font_size = normal_font_size;
 	if (cfg["font_size"] != "") {
 		try {
@@ -2841,15 +2837,6 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	}
 	ss << "[/" << element_name << "]\n";
 	return ss.str();
-}
-
-bool get_bool(const std::string &s)
-{
-	const std::string cmp_str = to_lower(s);
-	if (cmp_str == "yes" || cmp_str == "true" || cmp_str == "1" || cmp_str == "on") {
-		return true;
-	}
-	return false;
 }
 
 SDL_Color string_to_color(const std::string &s)
