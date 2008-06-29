@@ -1,7 +1,7 @@
 # vi: syntax=python:et:ts=4
 
 def setup_cross_compile(env):
-    if env["host"] == "mingw32":
+    if "mingw" in env["host"]:
         env["PLATFORM"] = "win32"
         env["PROGSUFFIX"] = ".exe"
         env.Tool("mingw")

@@ -6,7 +6,7 @@ import re
 
 def find_boost(env):
     prefixes = [env["prefix"]]
-    include = find_include(prefixes, "boost/config.hpp", "")
+    include = find_include(prefixes, "boost/config.hpp", "", not env["host"])
     if include:
         prefix, includefile = include[0]
         env["boostdir"] = join(prefix, "include")
@@ -33,7 +33,6 @@ def find_boost(env):
         env["boostlibdir"] = join(prefix, "lib")
         if not env.get("boost_suffix"):
             libs = glob(join(prefix, "lib", "libboost_*"))
-            print libs
             for lib in libs:
                 try:
                     env["boost_suffix"] = re.findall(r"libboost_\w*(-.*%d_%d)" % tuple(version), lib)[0]
