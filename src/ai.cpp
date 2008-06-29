@@ -2236,11 +2236,39 @@ variant ai_interface::get_value(const std::string& key) const
 {
 	if(key == "turn") {
 		return variant(get_info().state.turn());
+	} else if(key == "allies") {
+		std::vector<variant> vars;
+		for( int i = 0; i < info_.teams.size(); ++i) {
+			if ( !info_.teams[info_.team_num-1].is_enemy( i+1 ) )
+				vars.push_back(variant( i ));
+		}
+		return variant(&vars);
+	} else if(key == "enemies") {
+		std::vector<variant> vars;
+		for( int i = 0; i < info_.teams.size(); ++i) {
+			if ( info_.teams[info_.team_num-1].is_enemy( i+1 ) )
+				vars.push_back(variant( i ));
+		}
+		return variant(&vars);
 	} else if(key == "units") {
 		std::vector<variant> vars;
 		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
 			vars.push_back(variant(new unit_callable(*i)));
 		}
+		return variant(&vars);
+	} else if(key == "units_by_team") {
+		std::vector<variant> vars;
+		std::vector< std::vector< variant> > tmp;
+		for( int i = 0; i<info_.teams.size(); ++i)
+		{
+			std::vector<variant> v;
+			tmp.push_back( v );
+		}
+		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
+			tmp[ i->second.side()-1 ].push_back( variant(new unit_callable(*i)) );
+		}
+		for( int i = 0; i<tmp.size(); ++i)
+			vars.push_back( variant( &tmp[i] ));
 		return variant(&vars);
 	} else if(key == "my_units") {
 		std::vector<variant> vars;
@@ -2280,7 +2308,10 @@ void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) co
 {
 	using game_logic::FORMULA_READ_ONLY;
 	inputs->push_back(game_logic::formula_input("turn", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("units_by_team", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
