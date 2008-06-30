@@ -529,16 +529,18 @@ static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 	return PyBool_FromLong( utils::string_bool( unit->unit_->get_state("stoned") ) ) ;
 }
 
+// @todo: Make Py_RETURN_TRUE and Py_RETURN_FALSE work properly with
+// gcc 4.3.x series compilers. Latest compilers are much more strict. This
+// will likely require a change from the python folks. Until then, use the
+// version below which does not actually return a boolean value.
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
-  if( running_instance->is_unit_valid(unit->unit_) )
-    {
-      Py_INCREF( Py_True ) ;
-      return Py_True ;
-    }
+//   if( running_instance->is_unit_valid(unit->unit_) )
+//     Py_RETURN_TRUE ;
 
-  Py_INCREF( Py_False ) ;
-  return Py_False ;
+//   Py_RETURN_FALSE ;
+
+  return Py_BuildValue(INTVALUE, running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
 }
 
 static PyGetSetDef unit_getseters[] = {
