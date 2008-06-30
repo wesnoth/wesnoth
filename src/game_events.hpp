@@ -53,8 +53,8 @@ namespace game_events
 	struct manager {
 		// Note that references will be maintained,
 		// and must remain valid for the life of the object.
-		manager(const config& scenario_cfg, game_display& disp, gamemap& map,
-				soundsource::manager& sndsources, unit_map& units, std::vector<team>& teams,
+		manager(const config& scenario_cfg, game_display** disp, gamemap& map,
+				soundsource::manager** sndsources, unit_map& units, std::vector<team>& teams,
 				game_state& state_of_game, gamestatus& status);
 		~manager();
 

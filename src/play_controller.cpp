@@ -78,6 +78,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 		loadscreen_manager = scoped_loadscreen_manager.get();
 	}
 
+	loadscreen::global_loadscreen->set_progress(50, _("Loading level"));
 	// If the recorder has no event, adds an "game start" event
 	// to the recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
@@ -95,14 +96,38 @@ void play_controller::init(CVideo& video, bool is_replay){
 		place_sides_in_preferred_locations(map_,unit_cfg);
 	}
 
-	loadscreen::global_loadscreen->set_progress(70, _("Initializing display"));
 
+
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
+	loadscreen::global_loadscreen->set_progress(60, _("Initializing teams"));
+	
+
+	// This *needs* to be created before the show_intro and show_map_scene
+	// as that functions use the manager state_of_game
+	// Has to be done before registering any events!
+	events_manager_ = new game_events::manager(level_,&gui_,map_, &soundsources_manager_,
+                                                   units_,teams_, gamestate_,status_);
+
+	std::set<std::string> seen_save_ids;
+
+	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
+		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
+		seen_save_ids.insert(save_id);
+		if (first_human_team_ == -1){
+			first_human_team_ = get_first_human_team(ui, unit_cfg);
+		}
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot, is_replay );
+	}
+
+	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
+	loadscreen::global_loadscreen->set_progress(70, _("Loading units"));
 	preferences::encounter_recruitable_units(teams_);
 	preferences::encounter_start_units(units_);
 	preferences::encounter_recallable_units(gamestate_);
 	preferences::encounter_map_terrain(map_);
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
+
+	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
@@ -110,14 +135,12 @@ void play_controller::init(CVideo& video, bool is_replay){
 		gui_ = new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	else
 		gui_ = new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_);
-	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
+	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
 	mouse_handler_.set_gui(gui_);
 	menu_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
-
-	loadscreen::global_loadscreen->set_progress(90, _("Initializing teams"));
 
 	if(first_human_team_ != -1) {
 		gui_->set_team(first_human_team_);
@@ -138,27 +161,13 @@ void play_controller::init(CVideo& video, bool is_replay){
 	}
 
 	init_managers();
-	
-
 	// add era events for MP game
 	const config* era_cfg = level_.child("era");
 	if (era_cfg != NULL) {
 		game_events::add_events(era_cfg->get_children("event"),"era_events");
 	}
 
-	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
-	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
 
-	std::set<std::string> seen_save_ids;
-
-	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
-		seen_save_ids.insert(save_id);
-		if (first_human_team_ == -1){
-			first_human_team_ = get_first_human_team(ui, unit_cfg);
-		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot, is_replay );
-	}
 
 	loadscreen::global_loadscreen->set_progress(100, _("Starting game"));
 	loadscreen_manager->reset();
@@ -169,11 +178,6 @@ void play_controller::init_managers(){
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
 	tooltips_manager_ = new tooltips::manager(gui_->video());
 	soundsources_manager_ = new soundsource::manager(*gui_);
-
-	// This *needs* to be created before the show_intro and show_map_scene
-	// as that functions use the manager state_of_game
-	events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
-                                                   units_,teams_, gamestate_,status_);
 
 	halo_manager_ = new halo::manager(*gui_);
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
