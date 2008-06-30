@@ -31,7 +31,8 @@ Version 1.5.1+svn:
 	 (patch: #1076)
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
-	key is not found, the default value is returned.
+	key is not found, the default value is returned. This is fully backward
+	compatible.
    * set_variable exception handling has been fixed to return an exception in
 	the current call frame.
    * Many wesnoth module functions now release the python GIL when it is both
@@ -48,6 +49,14 @@ Version 1.5.1+svn:
 	include; '__call__', '__copy__', '__deepcopy__', '__doc__', '__name__',
 	'__repr__' and '__str__', in addition to the old __init__ method.
    * ValueError can now be caught.
+   * Added a new AI, bruteforce_unsafe.py, which uses both function caching
+	(memoize pattern) and psyco to speed execution. It uses the new UNSAFE_WPY
+	tag and is not selectable unless "Only Run Safe Python AIs" is disabled.
+	This version of bruteforce runs 2x-14x FASTER than the stock python AI.
+   * Per the python API documentation, many functions now return boolean values rather
+	than ints. Minor modernization effort to use new C-API macros provided via
+	python 2.4+. This change is fully backward compatible for scripts which properly
+	treat the return value as a boolean.
 	
 	
 Version 1.5.1:

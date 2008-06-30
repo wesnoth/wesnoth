@@ -81,8 +81,6 @@ bool python_ai::init_ = false;
     {CC(x), reinterpret_cast<getter>(func), NULL,\
     CC(doc), NULL },
 
-#define return_none do {Py_INCREF(Py_None); return Py_None;} while(false)
-
 #define wrap(code) \
 	try { code } \
 	catch(end_level_exception& e) { \
@@ -422,7 +420,7 @@ static PyObject* wrap_attacktype(const attack_type& type)
 	return reinterpret_cast<PyObject*>(attack);
 }
 
-#define u_check if (!running_instance->is_unit_valid(unit->unit_)) return_none
+#define u_check if (!running_instance->is_unit_valid(unit->unit_)) Py_RETURN_NONE
 
 bool python_ai::is_unit_valid(const unit* unit)
 {
@@ -446,15 +444,18 @@ static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(INTVALUE,
-	    running_instance->current_team().is_enemy(
-	    unit->unit_->side()) == true ? 1 : 0);
+	bool enemy ;
+	Py_BEGIN_ALLOW_THREADS
+	  enemy = running_instance->current_team().is_enemy( unit->unit_->side() ) ;
+	Py_END_ALLOW_THREADS
+
+	return PyBool_FromLong( enemy ) ;
 }
 
 static PyObject* unit_can_recruit(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(INTVALUE, unit->unit_->can_recruit() == true ? 1 : 0);
+        return PyBool_FromLong( unit->unit_->can_recruit() ) ;
 }
 
 static PyObject* unit_side(wesnoth_unit* unit, void* /*closure*/)
@@ -478,7 +479,12 @@ static PyObject* unit_max_movement(wesnoth_unit* unit, void* /*closure*/)
 static PyObject* unit_can_attack(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(INTVALUE, unit->unit_->attacks_left());
+	bool bValue ;
+	Py_BEGIN_ALLOW_THREADS
+	  bValue = unit->unit_->attacks_left() ;
+	Py_END_ALLOW_THREADS
+
+	return PyBool_FromLong( bValue ) ;
 }
 
 static PyObject* unit_hitpoints(wesnoth_unit* unit, void* /*closure*/)
@@ -514,18 +520,21 @@ static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 static PyObject* unit_slowed(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(INTVALUE, utils::string_bool(unit->unit_->get_state("slowed")));
+	return PyBool_FromLong( utils::string_bool( unit->unit_->get_state("poisoned") ) ) ;
 }
 
 static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 {
 	u_check;
-	return Py_BuildValue(INTVALUE, utils::string_bool(unit->unit_->get_state("stoned")));
+	return PyBool_FromLong( utils::string_bool( unit->unit_->get_state("stoned") ) ) ;
 }
 
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
-	return Py_BuildValue(INTVALUE, running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
+  if( running_instance->is_unit_valid(unit->unit_) )
+    Py_RETURN_TRUE ;
+  	
+  Py_RETURN_FALSE ;
 }
 
 static PyGetSetDef unit_getseters[] = {
@@ -1381,8 +1390,8 @@ PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
 	int x, y;
 	if (!PyArg_ParseTuple( args, CC("ii"), &x, &y ))
 		return NULL;
-	if (x < 0 || x >= running_instance->get_info().map.w()) return_none;
-	if (y < 0 || y >= running_instance->get_info().map.h()) return_none;
+	if (x < 0 || x >= running_instance->get_info().map.w()) Py_RETURN_NONE;
+	if (y < 0 || y >= running_instance->get_info().map.h()) Py_RETURN_NONE;
 
 	gamemap::location loc(x,y);
 	return wrap_location(loc);
@@ -1461,8 +1470,8 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 				break;
 		}
 	}
-	if (!valid) return_none;
-	if (pos == running_instance->src_dst_.end()) return_none;
+	if (!valid) Py_RETURN_NONE;
+	if (pos == running_instance->src_dst_.end()) Py_RETURN_NONE;
 
 	location location;
 	wrap(
@@ -1492,7 +1501,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	 * and then the code below will horribly fail).
 	 */
 	if (!tiles_adjacent(*from->location_, *to->location_))
-		return_none;
+		Py_RETURN_NONE;
 
 	// check if units actually exist
 	bool fromexists = false;
@@ -1506,7 +1515,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		}
 	}
 
-	if (!fromexists or !toexists) return_none;
+	if (!fromexists or !toexists) Py_RETURN_NONE;
 
 	info& inf = running_instance->get_info();
 
@@ -1617,9 +1626,9 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 		&wesnoth_location_type, &to, &weapon))
 		return NULL;
 	if (!running_instance->is_unit_valid(self->unit_))
-		return_none;
+		Py_RETURN_NONE;
 	if (weapon < -1 || weapon >= static_cast<int>(self->unit_->attacks().size())){
-		return_none;
+		Py_RETURN_NONE;
 	}
 
 	info& inf = running_instance->get_info();
@@ -1679,6 +1688,8 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
       char *cs;
       Py_ssize_t len;
       PyString_AsStringAndSize(so, &cs, &len);
+
+      Py_BEGIN_ALLOW_THREADS
       std::string s;
       char const *digits[] = {
 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
@@ -1691,6 +1702,7 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 	}
       new_memory[variable] = s;
       running_instance->current_team().set_ai_memory(new_memory);
+      Py_END_ALLOW_THREADS
 
       Py_DECREF(so);
     } else {
@@ -1722,6 +1734,7 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	    int i;
 	    int len = strlen(s);
 	    char *data = new char[len / 2];
+	    Py_BEGIN_ALLOW_THREADS
 	    for (i = 0; i < len; i += 2)
 	    {
 	        int v1 = s[i] - '0';
@@ -1731,6 +1744,9 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	        char c = v1 * 16 + v2;
 	        data[i / 2] = c;
 	    }
+	    Py_END_ALLOW_THREADS
+
+	Py_DECREF( default_value ) ;
         PyObject *ret = PyMarshal_ReadObjectFromString(data, len / 2);
         delete[] data;
         return ret ;
@@ -1739,6 +1755,7 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	  return default_value ;
 	}
 
+    Py_DECREF( default_value ) ;
     Py_INCREF(Py_None);
     return Py_None;
 }
@@ -1792,7 +1809,7 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	info& inf = running_instance->get_info();
 
 	unit_map::iterator u_it = inf.units.find(*from->location_);
-	if (u_it == inf.units.end()) return_none;
+	if (u_it == inf.units.end()) Py_RETURN_NONE;
 
 	// Temporarily move our unit to the specified location, storing any
 	// unit that might happen to be there already.
