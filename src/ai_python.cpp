@@ -532,9 +532,13 @@ static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
   if( running_instance->is_unit_valid(unit->unit_) )
-    Py_RETURN_TRUE ;
-  	
-  Py_RETURN_FALSE ;
+    {
+      Py_INCREF( Py_True ) ;
+      return Py_True ;
+    }
+
+  Py_INCREF( Py_False ) ;
+  return Py_False ;
 }
 
 static PyGetSetDef unit_getseters[] = {
