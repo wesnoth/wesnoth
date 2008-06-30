@@ -1205,7 +1205,7 @@ std::string show_wesnothd_server_search(display& disp)
 #ifndef _WIN32
 
 #ifndef WESNOTH_PREFIX
-#define WESNOTH_PREFIX = "/usr"
+#define WESNOTH_PREFIX "/usr"
 #endif		
 	const std::string filename = "wesnothd";
 	std::string path = WESNOTH_PREFIX + std::string("/bin");
