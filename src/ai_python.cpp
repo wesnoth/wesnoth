@@ -1775,14 +1775,12 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 
 	PyThreadState *_save ;
 	Py_UNBLOCK_THREADS
+
 	config const &memory = running_instance->current_team().ai_memory();
 	char const *s = memory[variable].c_str();
-	Py_BLOCK_THREADS
 
 	if (s && s[0])
 	{
-	  Py_UNBLOCK_THREADS ;
-
 	  int i;
 	  int len = strlen(s);
 	  char *data = new char[len / 2];
@@ -1803,9 +1801,11 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
         return ret ;
 	} else if( default_value ) {
 	  // Value did not exist - do return default value
+	  Py_BLOCK_THREADS ;
 	  return default_value ;
 	}
 
+    Py_BLOCK_THREADS ;
     Py_DECREF( default_value ) ;
     Py_INCREF(Py_None);
     return Py_None;
