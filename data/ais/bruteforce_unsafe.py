@@ -363,13 +363,12 @@ class AI:
             for y in range(m.y):
                 loc = wesnoth.get_location(x,y)
                 speed += 1.0 / recruit.movement_cost(loc)
-                rdm = recruit.defense_modifier(loc)
+                rdm = recruit.defense_modifier(loc) - 1
                 if rdm:
-                    defense += 100.0 / rdm - 1
+                    defense += 100.0 / rdm
 
                 else:
                     defense += 1.00
-
         # speed is more important on larger maps
         speed *= self.mapsize * recruit.movement / n
 

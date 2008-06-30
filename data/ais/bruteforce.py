@@ -1,5 +1,6 @@
 #!WPY
 
+import time
 import wesnoth, random
 
 ##    Copyright 2006 by Michael Schmahl
@@ -302,9 +303,9 @@ class AI:
             for y in range(m.y):
                 loc = wesnoth.get_location(x,y)
                 speed += 1.0 / recruit.movement_cost(loc)
-                rdm = recruit.defense_modifier(loc)
-                if rdm and rdm != 1:
-                    defense += 100.0 / rdm - 1
+                rdm = recruit.defense_modifier(loc) - 1
+                if rdm:
+                    defense += 100.0 / rdm
 
                 else:
                     defense += 1.00
@@ -527,10 +528,16 @@ class AI:
 
         return score
 
+
+st = time.time()
 ai = AI()
 ai.recruit()
-while 1:
+while True:
     if not ai.do_one_move():
         break
 ai.recruit()
 ai.report_stats()
+
+print "======================="
+print "bruteforce ran for %0.4f-seconds." % (time.time() - st)
+print "======================="
