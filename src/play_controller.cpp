@@ -95,23 +95,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 		place_sides_in_preferred_locations(map_,unit_cfg);
 	}
 
-	loadscreen::global_loadscreen->set_progress(70, _("Initializing teams"));
-
-	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
-	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
-
-	std::set<std::string> seen_save_ids;
-
-	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
-		seen_save_ids.insert(save_id);
-		if (first_human_team_ == -1){
-			first_human_team_ = get_first_human_team(ui, unit_cfg);
-		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot, is_replay );
-	}
-
-	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
+	loadscreen::global_loadscreen->set_progress(70, _("Initializing display"));
 
 	preferences::encounter_recruitable_units(teams_);
 	preferences::encounter_start_units(units_);
@@ -126,12 +110,14 @@ void play_controller::init(CVideo& video, bool is_replay){
 		gui_ = new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	else
 		gui_ = new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_);
-	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
+	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
 	mouse_handler_.set_gui(gui_);
 	menu_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
+
+	loadscreen::global_loadscreen->set_progress(90, _("Initializing teams"));
 
 	if(first_human_team_ != -1) {
 		gui_->set_team(first_human_team_);
@@ -152,6 +138,22 @@ void play_controller::init(CVideo& video, bool is_replay){
 	}
 
 	init_managers();
+	
+
+	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
+	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
+
+	std::set<std::string> seen_save_ids;
+
+	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
+		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
+		seen_save_ids.insert(save_id);
+		if (first_human_team_ == -1){
+			first_human_team_ = get_first_human_team(ui, unit_cfg);
+		}
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot, is_replay );
+	}
+
 	loadscreen::global_loadscreen->set_progress(100, _("Starting game"));
 	loadscreen_manager->reset();
 }

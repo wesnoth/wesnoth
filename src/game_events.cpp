@@ -66,6 +66,7 @@
 
 namespace {
 
+	bool manager_running = false;
 	game_display* screen = NULL;
 	soundsource::manager* soundsources = NULL;
 	gamemap* game_map = NULL;
@@ -3293,6 +3294,7 @@ namespace {
 				game_state& state_of_game_, gamestatus& status) :
 			variable_manager(&state_of_game_)
 		{
+			assert(!manager_running);
 			const config::child_list& events_list = cfg.get_children("event");
 			for(config::child_list::const_iterator i = events_list.begin();
 					i != events_list.end(); ++i) {
@@ -3306,6 +3308,7 @@ namespace {
 			}
 			std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
 			for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
+				std::cerr << *id_it << "\n";
 				unit_wml_ids.insert(*id_it);
 			}
 
@@ -3316,6 +3319,7 @@ namespace {
 			units = &units_;
 			state_of_game = &state_of_game_;
 			status_ptr = &status;
+			manager_running = true;
 
 			used_items.clear();
 
@@ -3348,6 +3352,7 @@ namespace {
 
 		void write_events(config& cfg)
 		{
+			assert(manager_running);
 			for(std::multimap<std::string,game_events::event_handler>::const_iterator i = events_map.begin(); i != events_map.end(); ++i) {
 				if(!i->second.disabled() && !i->second.is_menu_item()) {
 					i->second.write(cfg.add_child("event"));
@@ -3379,6 +3384,8 @@ namespace {
 		}
 
 		manager::~manager() {
+			assert(manager_running);
+			manager_running = false;
 			events_queue.clear();
 			events_map.clear();
 			screen = NULL;
@@ -3398,6 +3405,7 @@ namespace {
 				const entity_location& loc2,
 				const config& data)
 		{
+			assert(manager_running);
 			if(!events_init())
 				return;
 
@@ -3409,13 +3417,16 @@ namespace {
 				const entity_location& loc2,
 				const config& data)
 		{
+			assert(manager_running);
 			raise(event,loc1,loc2,data);
 			return pump();
 		}
 
 		void add_events(const config::child_list& cfgs,const std::string& id)
 		{
+			assert(manager_running);
 			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
+				std::cerr << id << "\n";
 				unit_wml_ids.insert(id);
 				for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
 					unit_wml_configs.push_back(new config(**new_ev));
@@ -3432,6 +3443,7 @@ namespace {
 
 		bool pump()
 		{
+			assert(manager_running);
 			if(!events_init())
 				return false;
 
