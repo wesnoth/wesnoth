@@ -588,6 +588,10 @@ bool disconnect(connection s, bool force)
 
 	const connection_map::iterator info = connections.find(s);
 	if(info != connections.end()) {
+		if (info->second.sock == server_socket)
+		{
+			return true;
+		}
 		if (!network_worker_pool::close_socket(info->second.sock, force)) {
 			return false;
 		}
