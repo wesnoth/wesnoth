@@ -167,7 +167,6 @@ assert not restricted, "Can only be run outside of restricted environment!"
 try:
     import psyco
     psyco.full()
-    print "psyco used =", psyco.__file__
 
 except ImportError:
     print "Psyco is not available - no point in continuing..."
