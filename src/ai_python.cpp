@@ -2066,6 +2066,8 @@ void python_ai::play_turn()
 
 // Finds all python AI scripts available in the current binary path.
 // They have to end with .py, and have #!WPY as first line.
+// If preferences allow for unsafe python AIs, then also look for
+// the #!UNSAFE_WPY tag.
 std::vector<std::string> python_ai::get_available_scripts()
 {
 	int allow_unsafe = !preferences::run_safe_python() ;
