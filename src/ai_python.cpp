@@ -424,15 +424,20 @@ static PyObject* wrap_attacktype(const attack_type& type)
 
 bool python_ai::is_unit_valid(const unit* unit)
 {
-	if (!unit)
-	{
-		return false;
-	}
-	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
-		if (unit == &i->second)
-			return true;
-	}
-	return false;
+  bool ret = false ;
+  if (unit) {
+    Py_BEGIN_ALLOW_THREADS
+    for(unit_map::const_iterator i = running_instance->get_info().units.begin(); \
+	i != running_instance->get_info().units.end(); ++i) {
+      if (unit == &i->second) {
+	ret = true ;
+	break ;
+      }
+    }
+    Py_END_ALLOW_THREADS
+  }
+
+  return ret ;
 }
 
 static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
@@ -535,6 +540,7 @@ static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 // version below which does not actually return a boolean value.
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
+  u_check ;
 //   if( running_instance->is_unit_valid(unit->unit_) )
 //     Py_RETURN_TRUE ;
 
@@ -841,6 +847,7 @@ static PyObject *wrap_location(const gamemap::location& loc)
 
 void recalculate_movemaps()
 {
+  Py_BEGIN_ALLOW_THREADS
     python_ai *ai = running_instance;
     ai->src_dst_.clear();
     ai->dst_src_.clear();
@@ -853,6 +860,7 @@ void recalculate_movemaps()
     ai->enemy_possible_moves_.clear();
     ai->calculate_possible_moves(ai->enemy_possible_moves_,
         ai->enemy_src_dst_, ai->enemy_dst_src_, true);
+  Py_END_ALLOW_THREADS
 }
 
 static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args )
@@ -923,8 +931,11 @@ static PyObject* wrapper_getmap_is_border( wesnoth_gamemap* map, PyObject* args 
 	bool on_board, on_board_without_borders;
 	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_location_type, &location ) )
 		return NULL;
+	Py_BEGIN_ALLOW_THREADS
 	on_board = map->map_->on_board_with_border(*location->location_);
 	on_board_without_borders = map->map_->on_board(*location->location_);
+	Py_END_ALLOW_THREADS
+
 	return Py_BuildValue(INTVALUE, on_board && !on_board_without_borders ? 1 : 0);
 }
 
@@ -1038,12 +1049,15 @@ static PyObject* wrapper_team_is_enemy(wesnoth_team* team, void* /*closure*/)
 static PyObject* wrapper_team_side(wesnoth_team* team, void* /*closure*/)
 {
 	int side = 0;
+	Py_BEGIN_ALLOW_THREADS
 	for (size_t t = 0; t < running_instance->get_teams().size(); t++) {
 		if (team->team_ == &running_instance->get_teams()[t]) {
 			side = 1 + t;
 			break;
 		}
 	}
+	Py_END_ALLOW_THREADS
+
 	return Py_BuildValue(INTVALUE, side);
 }
 
@@ -1188,6 +1202,7 @@ PyObject* python_ai::wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* a
 	wesnoth_location* loc;
 	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_location_type, &loc ) )
 		return NULL;
+	u_check ;
 	return Py_BuildValue(INTVALUE,unit->unit_->movement_cost(map.get_terrain(*loc->location_)));
 }
 
@@ -1197,6 +1212,7 @@ PyObject* python_ai::wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject
 	wesnoth_location* loc;
 	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_location_type, &loc ) )
 		return NULL;
+	u_check ;
 	return Py_BuildValue(INTVALUE,unit->unit_->defense_modifier(map.get_terrain(*loc->location_)));
 }
 
@@ -1348,7 +1364,9 @@ PyObject* python_ai::wrapper_log_message(PyObject* /*self*/, PyObject* args)
 	const char* msg;
 	if ( !PyArg_ParseTuple( args, STRINGVALUE, &msg ) )
 		return NULL;
+	Py_BEGIN_ALLOW_THREADS
 	running_instance->log_message(msg);
+	Py_END_ALLOW_THREADS
 	Py_INCREF(Py_None);
 	return Py_None;
 }
@@ -1358,8 +1376,10 @@ PyObject* python_ai::wrapper_log(PyObject* /*self*/, PyObject* args)
 	const char *msg;
 	if (!PyArg_ParseTuple( args, STRINGVALUE, &msg))
 		return NULL;
+	Py_BEGIN_ALLOW_THREADS
 	LOG_AI << msg;
 	Py_INCREF(Py_None);
+	Py_END_ALLOW_THREADS
 	return Py_None;
 }
 
@@ -1467,6 +1487,7 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 
 	bool valid = false;
 	ai_interface::move_map::const_iterator pos;
+	Py_BEGIN_ALLOW_THREADS
 	for (pos = running_instance->src_dst_.begin(); pos != running_instance->src_dst_.end(); pos++)
 	{
 		if ( pos->first == ( *from->location_ ) )
@@ -1476,14 +1497,17 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 				break;
 		}
 	}
+	Py_END_ALLOW_THREADS
 	if (!valid) Py_RETURN_NONE;
 	if (pos == running_instance->src_dst_.end()) Py_RETURN_NONE;
 
 	location location;
+	Py_BEGIN_ALLOW_THREADS
 	wrap(
 		location = running_instance->move_unit_partial(
 			*from->location_, *to->location_, running_instance->possible_moves_);
 	)
+	Py_END_ALLOW_THREADS
 
 	PyObject* loc = wrap_location(location);
 
@@ -1598,12 +1622,16 @@ PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
+	if( !running_instance->is_unit_valid(self->unit_) )
+	  Py_RETURN_NONE ;
 	double max_cost = self->unit_->movement_left();
 	if ( !PyArg_ParseTuple( args, CC("O!O!|d"), &wesnoth_location_type, &from,
 		&wesnoth_location_type, &to, &max_cost ) )
 		return NULL;
-	if (!running_instance->is_unit_valid(self->unit_))
-		return NULL;
+
+	// Save thread state and release GIL
+	PyThreadState *_save;
+	Py_UNBLOCK_THREADS
 
 	info& inf = running_instance->get_info();
 
@@ -1618,6 +1646,9 @@ PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 	PyObject* steps = PyList_New(route.steps.size());
 	for (size_t step = 0; step < route.steps.size(); step++)
 		PyList_SetItem(steps,step,wrap_location(route.steps[step]));
+
+	// Lock the GIL again
+	Py_BLOCK_THREADS
 
 	return steps;
 }
@@ -1641,6 +1672,8 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 	// We need to temporarily move our unit to where the attack calculation
 	// is supposed to take place.
+	PyThreadState *_save;
+	Py_UNBLOCK_THREADS
 	std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
 	std::pair<gamemap::location,unit> *backup = temp;
 	std::pair<gamemap::location,unit> replace(*from->location_,*self->unit_);
@@ -1657,6 +1690,8 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 	unsigned int i;
 	std::vector<double>attacker = bc.get_attacker_combatant().hp_dist;
+	Py_BLOCK_THREADS
+
 	PyObject* adict = PyDict_New();
 	for (i = 0; i < attacker.size(); i++) {
 		if (attacker[i] > 0)
@@ -1671,13 +1706,13 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 	}
 
 	// Restore old position again
+	Py_UNBLOCK_THREADS
 	temp = inf.units.extract(*from->location_);
 	if (backup)
 		inf.units.add(backup);
+	Py_BLOCK_THREADS
 
-	PyObject *ret = Py_BuildValue(CC("(OO)"), adict, ddict);
-
-	return ret;
+	return Py_BuildValue(CC("(OO)"), adict, ddict);
 }
 
 PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
@@ -1686,8 +1721,13 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
   PyObject *value;
   if (!PyArg_ParseTuple(args, CC("sO"), &variable, &value))
     return NULL;
+
+  PyThreadState *_save ;
+  Py_UNBLOCK_THREADS ;
   config const &old_memory = running_instance->current_team().ai_memory();
   config new_memory(old_memory);
+  Py_BLOCK_THREADS ;
+
   PyObject *so = PyMarshal_WriteObjectToString(value, Py_MARSHAL_VERSION);
   if (so)
     {
@@ -1695,7 +1735,7 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
       Py_ssize_t len;
       PyString_AsStringAndSize(so, &cs, &len);
 
-      Py_BEGIN_ALLOW_THREADS
+      Py_UNBLOCK_THREADS ;
       std::string s;
       char const *digits[] = {
 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
@@ -1708,7 +1748,7 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 	}
       new_memory[variable] = s;
       running_instance->current_team().set_ai_memory(new_memory);
-      Py_END_ALLOW_THREADS
+      Py_BLOCK_THREADS ;
 
       Py_DECREF(so);
     } else {
@@ -1733,24 +1773,29 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	if (!PyArg_ParseTuple(args, CC("s|O"), &variable, &default_value))
 		return NULL;
 
+	PyThreadState *_save ;
+	Py_UNBLOCK_THREADS
 	config const &memory = running_instance->current_team().ai_memory();
 	char const *s = memory[variable].c_str();
+	Py_BLOCK_THREADS
+
 	if (s && s[0])
 	{
-	    int i;
-	    int len = strlen(s);
-	    char *data = new char[len / 2];
-	    Py_BEGIN_ALLOW_THREADS
-	    for (i = 0; i < len; i += 2)
+	  Py_UNBLOCK_THREADS ;
+
+	  int i;
+	  int len = strlen(s);
+	  char *data = new char[len / 2];
+	  for (i = 0; i < len; i += 2)
 	    {
-	        int v1 = s[i] - '0';
-	        int v2 = s[i + 1] - '0';
-	        if (v1 > 9) v1 += 10 + '0' - 'a';
-	        if (v2 > 9) v2 += 10 + '0' - 'a';
-	        char c = v1 * 16 + v2;
-	        data[i / 2] = c;
+	      int v1 = s[i] - '0';
+	      int v2 = s[i + 1] - '0';
+	      if (v1 > 9) v1 += 10 + '0' - 'a';
+	      if (v2 > 9) v2 += 10 + '0' - 'a';
+	      char c = v1 * 16 + v2;
+	      data[i / 2] = c;
 	    }
-	    Py_END_ALLOW_THREADS
+	  Py_BLOCK_THREADS ;
 
 	Py_DECREF( default_value ) ;
         PyObject *ret = PyMarshal_ReadObjectFromString(data, len / 2);
@@ -1812,6 +1857,8 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 		return ret;
 	}
 
+	PyThreadState *_save ;
+	Py_UNBLOCK_THREADS ;
 	info& inf = running_instance->get_info();
 
 	unit_map::iterator u_it = inf.units.find(*from->location_);
@@ -1836,6 +1883,7 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	inf.units.add(original);
 	if (backup)
 		inf.units.add(backup);
+	Py_BLOCK_THREADS ;
 
 	PyObject* srcdst = wrap_move_map(test_src_dst);
 	PyObject* dstsrc = wrap_move_map(test_dst_src);
@@ -1852,7 +1900,7 @@ static PyMethodDef wesnoth_python_methods[] = {
     MDEF("log_message", python_ai::wrapper_log_message,
 		"Parameters: string\n"
 		"Logs a message, displayed as a chat message, if debug is enabled." )
-	MDEF("log", python_ai::wrapper_log,
+    MDEF("log", python_ai::wrapper_log,
 		"Parameters: string\n"
 		"Writes a debug message to the AI log. This should be used instead of "
 		"print to not clutter stdout if AI logging is disabled.")

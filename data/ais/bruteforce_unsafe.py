@@ -220,7 +220,8 @@ class memoized( object ):
     def stats( self ):
         return float(self.__cacheHits) / self.__calls
 
-
+# If AI is playing on a map where can pysically change during the AI's turn,
+# this redefinition must be commented out.
 wesnoth.get_location = memoized( wesnoth.get_location )
 
 
