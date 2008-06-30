@@ -273,11 +273,12 @@ void set_raw_data_only()
 	network_worker_pool::set_raw_data_only();
 }
 
-server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false)
+server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
 {
 	if(create_server != NO_SERVER && !server_socket) {
 		try {
-			server_socket = get_socket(connect("",port));
+			connection_ = connect("",port);
+			server_socket = get_socket(connection_);
 		} catch(network::error& e) {
 			if(create_server == MUST_CREATE_SERVER) {
 				throw e;
@@ -300,6 +301,7 @@ void server_manager::stop()
 {
 	if(free_) {
 		SDLNet_TCP_Close(server_socket);
+		remove_connection(connection_);
 		server_socket = 0;
 		free_ = false;
 	}

@@ -65,6 +65,9 @@ private:
 
 void set_raw_data_only();
 
+typedef int connection;
+connection const null_connection = 0;
+
 //! A server manager causes listening on a given port
 //! to occur for the duration of its lifetime.
 struct server_manager {
@@ -83,11 +86,9 @@ struct server_manager {
 
 private:
 	bool free_;
+	connection connection_;
 };
 
-typedef int connection;
-
-connection const null_connection = 0;
 
 //! The number of peers we are connected to.
 size_t nconnections();
