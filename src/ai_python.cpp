@@ -537,7 +537,7 @@ static PyObject* unit_stoned(wesnoth_unit* unit, void* /*closure*/)
 // @todo: Make Py_RETURN_TRUE and Py_RETURN_FALSE work properly with
 // gcc 4.3.x series compilers. Latest compilers are much more strict. This
 // will likely require a change from the python folks. Until then, use the
-// version below which does not actually return a boolean value.
+// version below.
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
   u_check ;
@@ -1043,7 +1043,7 @@ static PyObject* wrapper_team_is_enemy(wesnoth_team* team, void* /*closure*/)
 	result = running_instance->current_team().is_enemy(side) == true ? 1 : 0;
 	Py_END_ALLOW_THREADS
 
-	return Py_BuildValue(INTVALUE, result);
+	return PyBool_FromLong( result ) ;
 }
 
 static PyObject* wrapper_team_side(wesnoth_team* team, void* /*closure*/)
@@ -1071,7 +1071,7 @@ static PyObject* wrapper_team_owns_village( wesnoth_team* team, PyObject* args )
 	wesnoth_location* location;
 	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_location_type, &location ) )
 		return NULL;
-	return Py_BuildValue(INTVALUE, team->team_->owns_village(*location->location_) ? 1 : 0);
+	return PyBool_FromLong( team->team_->owns_village(*location->location_) ? 1 : 0) ;
 }
 
 PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
@@ -1378,8 +1378,8 @@ PyObject* python_ai::wrapper_log(PyObject* /*self*/, PyObject* args)
 		return NULL;
 	Py_BEGIN_ALLOW_THREADS
 	LOG_AI << msg;
-	Py_INCREF(Py_None);
 	Py_END_ALLOW_THREADS
+	Py_INCREF(Py_None);
 	return Py_None;
 }
 
@@ -1485,9 +1485,10 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 		&wesnoth_location_type, &to ) )
 		return NULL;
 
+	PyThreadState *_save ;
+	Py_UNBLOCK_THREADS ;
 	bool valid = false;
 	ai_interface::move_map::const_iterator pos;
-	Py_BEGIN_ALLOW_THREADS
 	for (pos = running_instance->src_dst_.begin(); pos != running_instance->src_dst_.end(); pos++)
 	{
 		if ( pos->first == ( *from->location_ ) )
@@ -1497,18 +1498,19 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 				break;
 		}
 	}
-	Py_END_ALLOW_THREADS
-	if (!valid) Py_RETURN_NONE;
-	if (pos == running_instance->src_dst_.end()) Py_RETURN_NONE;
+	if (!valid || pos == running_instance->src_dst_.end() )
+	  {
+	    Py_BLOCK_THREADS ;
+	    Py_RETURN_NONE ;
+	  }
 
 	location location;
-	Py_BEGIN_ALLOW_THREADS
 	wrap(
 		location = running_instance->move_unit_partial(
 			*from->location_, *to->location_, running_instance->possible_moves_);
 	)
-	Py_END_ALLOW_THREADS
 
+	  Py_BLOCK_THREADS ;
 	PyObject* loc = wrap_location(location);
 
     recalculate_movemaps();
@@ -1525,13 +1527,19 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		&wesnoth_location_type, &to, &weapon ) )
 		return NULL;
 
+	PyThreadState *_save ;
+	Py_UNBLOCK_THREADS ;
+
 	/**
 	 * @todo FIXME: Remove this check and let the C++ code do the check if the
 	 * attack is valid at all (there may be ranged attacks or similar later,
 	 * and then the code below will horribly fail).
 	 */
 	if (!tiles_adjacent(*from->location_, *to->location_))
-		Py_RETURN_NONE;
+	  {
+	    Py_BLOCK_THREADS ;
+	    Py_RETURN_NONE;
+	  }
 
 	// check if units actually exist
 	bool fromexists = false;
@@ -1545,7 +1553,11 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		}
 	}
 
-	if (!fromexists or !toexists) Py_RETURN_NONE;
+	if (!fromexists or !toexists)
+	  {
+	    Py_BLOCK_THREADS ;
+	    Py_RETURN_NONE;
+	  }
 
 	info& inf = running_instance->get_info();
 
@@ -1564,8 +1576,8 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 			bc.get_defender_stats().attack_num);
 	)
 
-
-    recalculate_movemaps();
+	Py_BLOCK_THREADS ;
+	recalculate_movemaps();
 
 	Py_INCREF(Py_None);
 	return Py_None;
@@ -1599,10 +1611,12 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* /*self*/, PyObject* args)
 		return NULL;
 
     int r;
+    Py_BEGIN_ALLOW_THREADS ;
     wrap(
         r = running_instance->recruit(name,*where->location_) == true ? 1 : 0;
     )
 
+    Py_END_ALLOW_THREADS ;
     recalculate_movemaps();
 
     return Py_BuildValue(INTVALUE, r);
@@ -1643,12 +1657,13 @@ PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 	const paths::route& route = a_star_search(*from->location_, *to->location_,
 		max_cost, &calc, inf.map.w(), inf.map.h());
 
+	// Lock the GIL again
+	Py_BLOCK_THREADS
+
 	PyObject* steps = PyList_New(route.steps.size());
 	for (size_t step = 0; step < route.steps.size(); step++)
 		PyList_SetItem(steps,step,wrap_location(route.steps[step]));
 
-	// Lock the GIL again
-	Py_BLOCK_THREADS
 
 	return steps;
 }
@@ -1722,12 +1737,6 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
   if (!PyArg_ParseTuple(args, CC("sO"), &variable, &value))
     return NULL;
 
-  PyThreadState *_save ;
-  Py_UNBLOCK_THREADS ;
-  config const &old_memory = running_instance->current_team().ai_memory();
-  config new_memory(old_memory);
-  Py_BLOCK_THREADS ;
-
   PyObject *so = PyMarshal_WriteObjectToString(value, Py_MARSHAL_VERSION);
   if (so)
     {
@@ -1735,8 +1744,13 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
       Py_ssize_t len;
       PyString_AsStringAndSize(so, &cs, &len);
 
+      PyThreadState *_save ;
       Py_UNBLOCK_THREADS ;
+
       std::string s;
+      config const &old_memory = running_instance->current_team().ai_memory();
+      config new_memory(old_memory);
+
       char const *digits[] = {
 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 	"a", "b", "c", "d", "e", "f"};
@@ -1823,10 +1837,12 @@ PyObject* python_ai::wrapper_raise_user_interact(PyObject* /*self*/, PyObject* a
 	if (!PyArg_ParseTuple(args, NOVALUE))
 		return NULL;
 
+	PyThreadState *_save ;
+	Py_UNBLOCK_THREADS ;
 	wrap(
-		running_instance->raise_user_interact();
-	)
-
+	     running_instance->raise_user_interact();
+	     )
+	Py_BLOCK_THREADS ;
 	Py_INCREF(Py_None);
 	return Py_None;
 }
