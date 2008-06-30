@@ -248,7 +248,7 @@ if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
 
 if env['strict']:
-    env.AppendUnique(CXXFLAGS = Split("-Werror -Wno-unused -Wno-sign-compare"))
+    env.AppendUnique(CXXFLAGS = Split("-W -Wall -Werror -Wno-unused -Wno-sign-compare"))
 
 if env['gui'] == 'tiny':
     env.Append(CPPDEFINES = "USE_TINY_GUI")
