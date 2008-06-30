@@ -479,6 +479,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	cfg_.clear_children("female");
 
 	advances_to_ = t->advances_to();
+	cfg_.values.erase("advanceto");
 
 	race_ = t->race_;
 	type_name_ = t->type_name();
@@ -1189,18 +1190,12 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		variables_.clear();
 	}
 
-	advances_to_ = utils::split(cfg["advances_to"]);
-	if(advances_to_.size() == 1 && advances_to_.front() == "") {
-		advances_to_.clear();
-	}
-
 	type_name_ = cfg["language_name"];
 	undead_variation_ = cfg["undead_variation"];
 
 	flag_rgb_ = cfg["flag_rgb"];
 	alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 
-	level_ = lexical_cast_default<int>(cfg["level"]);
 	unit_value_ = lexical_cast_default<int>(cfg["value"]);
 
 	facing_ = gamemap::location::parse_direction(cfg["facing"]);
@@ -1228,6 +1223,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		}
 	}
 	variation_ = cfg["variation"];
+	level_ = lexical_cast_default<int>(cfg["level"], level_);
 
 	if(cfg["max_attacks"] != "") {
 		max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"],1);
@@ -1250,6 +1246,13 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_);
 	max_movement_ = lexical_cast_default<int>(cfg["max_moves"], max_movement_);
 	max_experience_ = lexical_cast_default<int>(cfg["max_experience"], max_experience_);
+
+	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
+	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
+		advances_to_.clear();
+	}else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
+		advances_to_ = temp_advances;
+	}
 
 	//support for unit formulas and unit-specyfic variables in [ai_vars]
 	unit_formula_ = cfg["formula"];
