@@ -766,7 +766,6 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 manager::~manager()
 {
 	if(active_) {
-		
 		managed = false;
 
 		for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
@@ -775,22 +774,28 @@ manager::~manager()
 				socket_errors[shard] = 0;
 			}
 
-			cond[shard]->notify_all();
+ 			cond[shard]->notify_all();
 
 			for(std::map<Uint32,threading::thread*>::const_iterator i = threads[shard].begin(); i != threads[shard].end(); ++i) {
 				DBG_NW << "waiting for thread " << i->first << " to exit...\n";
+				(*i->second).join() ;
 				delete i->second;
 				DBG_NW << "thread exited...\n";
 			}
 
-			threads[shard].clear();
+			// Condition variables must be deleted first as
+			// they make reference to mutexs. If the mutexs
+			// are destroyed first, the condition variables
+			// will access memory already freed by way of
+			// stale mutex. Bad things will follow. ;)
+ 			threads[shard].clear();
+ 			delete cond[shard];
+ 			cond[shard] = NULL;
 			delete shard_mutexes[shard];
-			shard_mutexes[shard] = NULL;
-			delete cond[shard];
-			cond[shard] = NULL;
-		}
+ 			shard_mutexes[shard] = NULL;
+ 		}
 
-		delete  stats_mutex;
+		delete stats_mutex;
 		delete schemas_mutex;
 		delete received_mutex;
 		stats_mutex = 0;
