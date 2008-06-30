@@ -44,6 +44,9 @@ playmp_controller::playmp_controller(const config& level,
 	{
 		skip_replay_ = false;
 	}
+
+
+
 }
 
 playmp_controller::~playmp_controller() {

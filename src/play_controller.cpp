@@ -140,6 +140,12 @@ void play_controller::init(CVideo& video, bool is_replay){
 	init_managers();
 	
 
+	// add era events for MP game
+	const config* era_cfg = level_.child("era");
+	if (era_cfg != NULL) {
+		game_events::add_events(era_cfg->get_children("event"),"era_events");
+	}
+
 	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
 	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
 
