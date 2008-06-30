@@ -45,7 +45,8 @@ _NODE_ATTR_OK = []
 # Expanded to allow repr, str, call, and doc. These are commonly overloaded
 # to provided fundamental functionality. Without __call__ support, most
 # categories of decorators are simply impossible.
-_STR_OK = [ '__call__', '__doc__', '__init__', '__name__', '__repr__', '__str__' ]
+_STR_OK = [ '__call__', '__copy__', '__deepcopy__', '__doc__',
+            '__init__', '__name__', '__repr__', '__str__' ]
 
 # If we put '__' in _STR_NOT_CONTAIN, then we can't have defacto private data
 _STR_NOT_CONTAIN = []
@@ -79,15 +80,15 @@ def _check_ast(code):
 
 _BUILTIN_OK = [
     '__debug__','quit','exit',
-    'Warning',
+    'Warning', 'restricted',
     'None','True','False',
     'abs', 'bool', 'callable', 'chr', 'cmp', 'complex', 'dict', 'divmod', 'filter',
     'float', 'frozenset', 'hash', 'hex', 'int', 'isinstance', 'issubclass', 'len',
     'list', 'long', 'map', 'max', 'min', 'object', 'oct', 'ord', 'pow', 'range',
     'repr', 'round', 'set', 'slice', 'str', 'sum', 'super', 'tuple',  'xrange', 'zip',
-    'ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'StopIteration',
-    'IndexError', 'KeyError', 'NameError', 'RuntimeError', 'RuntimeWarning',
-    'ZeroDivisionError'
+    'ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Exception',
+    'IndexError', 'KeyError', 'NameError', 'RuntimeError', 'RuntimeWarning', 'StopIteration',
+    'ValueError', 'ZeroDivisionError'
     ]
 
 _BUILTIN_STR = [
@@ -100,6 +101,7 @@ def _builtin_fnc(k):
     return fnc
 _builtin_globals = None
 _builtin_globals_r = None
+
 def _builtin_init():
     global _builtin_globals, _builtin_globals_r
     if _builtin_globals != None: return
@@ -107,14 +109,22 @@ def _builtin_init():
     r = _builtin_globals = {}
     for k in __builtin__.__dict__.keys():
         v = None
-        if k in _BUILTIN_OK: v = __builtin__.__dict__[k]
-        elif k in _BUILTIN_STR: v = ''
-        else: v = _builtin_fnc(k)
+        if k in _BUILTIN_OK:
+            v = __builtin__.__dict__[k]
+
+        elif k in _BUILTIN_STR:
+            v = ''
+
+        else:
+            v = _builtin_fnc(k)
+
         r[k] = v
+
 def _builtin_destroy():
     _builtin_init()
     for k,v in _builtin_globals.items():
         __builtin__.__dict__[k] = v
+
 def _builtin_restore():
     for k,v in _builtin_globals_r.items():
         __builtin__.__dict__[k] = v
@@ -147,8 +157,8 @@ def safe_exec_op( code, context=None ):
 # Wrapper allowing safe_exec to be dynamically controlled
 # from wesnoth binary.
 def safe_exec( code, context=None, runSafe=True ):
-    # Allow the AI to know if it is restricted or not
-    context["restricted"] = runSafe
+    context[ 'restricted' ] = runSafe
+
     if runSafe:
         safe_exec_op( code, context )
 

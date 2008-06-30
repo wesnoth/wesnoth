@@ -1006,6 +1006,7 @@ static PyObject* wrapper_team_is_enemy(wesnoth_team* team, void* /*closure*/)
 
 	// Find side number of team
 	int side = 0;
+	Py_BEGIN_ALLOW_THREADS
 	for (size_t t = 0; t < running_instance->get_teams().size(); t++) {
 		if (team->team_ == &running_instance->get_teams()[t]) {
 			side = 1 + t;
@@ -1014,6 +1015,8 @@ static PyObject* wrapper_team_is_enemy(wesnoth_team* team, void* /*closure*/)
 	}
 
 	result = running_instance->current_team().is_enemy(side) == true ? 1 : 0;
+	Py_END_ALLOW_THREADS
+
 	return Py_BuildValue(INTVALUE, result);
 }
 
@@ -1705,8 +1708,13 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 {
 	char const *variable;
-	if (!PyArg_ParseTuple(args, STRINGVALUE, &variable))
+	PyObject *default_value = Py_BuildValue( STRINGVALUE, "" ) ;
+
+	// If a default value was not provided, see if we were called with
+	// just the value to find.
+	if (!PyArg_ParseTuple(args, CC("s|O"), &variable, &default_value))
 		return NULL;
+
 	config const &memory = running_instance->current_team().ai_memory();
 	char const *s = memory[variable].c_str();
 	if (s && s[0])
@@ -1725,10 +1733,14 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	    }
         PyObject *ret = PyMarshal_ReadObjectFromString(data, len / 2);
         delete[] data;
-        return ret;
-    }
+        return ret ;
+	} else if( default_value ) {
+	  // Value did not exist - do return default value
+	  return default_value ;
+	}
+
     Py_INCREF(Py_None);
-	return Py_None;
+    return Py_None;
 }
 
 PyObject* python_ai::wrapper_get_version(PyObject* /*self*/, PyObject* args)
@@ -1882,10 +1894,12 @@ static PyMethodDef wesnoth_python_methods[] = {
 		"used to make the AI save strings (and other python values which can "
 		"be marshalled) over multiple turns.")
     MDEF("get_variable", python_ai::wrapper_get_variable,
-		"Parameters: variable\n"
-		"Returns: value\n"
+		"Parameters: variable, default value\n"
+		"Returns: value or default value\n"
 		"Retrieves a persistent variable 'variable' from the AI, which has "
-		"previously been set with set_variable - or None if it can't be found.")
+		"previously been set with set_variable - or None if it can't be found and\n"
+	        "default value has not been set. If a default value is set and the value"
+	        "can not be found, the default value is returned.")
     MDEF("get_version", python_ai::wrapper_get_version,
 		"Returns a string containing current Wesnoth version")
     MDEF("raise_user_interact", python_ai::wrapper_raise_user_interact,
@@ -2054,6 +2068,7 @@ void python_ai::play_turn()
 // They have to end with .py, and have #!WPY as first line.
 std::vector<std::string> python_ai::get_available_scripts()
 {
+	int allow_unsafe = !preferences::run_safe_python() ;
 	std::vector<std::string> scripts;
 	const std::vector<std::string>& paths = get_binary_paths("data");
 	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
@@ -2068,6 +2083,9 @@ std::vector<std::string> python_ai::get_available_scripts()
 				if (mark == "#!WPY" &&
 					std::find(scripts.begin(), scripts.end(), name) == scripts.end())
 					scripts.push_back(name);
+				else if (allow_unsafe && mark == "#!UNSAFE_WPY" &&
+					 std::find(scripts.begin(), scripts.end(), name) == scripts.end())
+				  scripts.push_back(name);
 			}
 		}
 	}

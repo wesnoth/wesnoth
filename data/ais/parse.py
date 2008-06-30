@@ -23,7 +23,7 @@ def include(matchob):
             except IOError:
                 pass
         else:
-            raise safe.SafeException("Could not include %s." % name)
+            raise safe.SafeException("Could not import '%s'." % name)
 
         r += code
 

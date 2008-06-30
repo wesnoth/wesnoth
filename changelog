@@ -29,7 +29,27 @@ Version 1.5.1+svn:
    * Removed persistance from team configuration (bug: #10916)
    * Made automaticaly generated macro reference easier to naviagate and link to
 	 (patch: #1076)
-
+ * Python AI
+   * get_variable now allows a default value to be passed to the call. If the
+	key is not found, the default value is returned.
+   * set_variable exception handling has been fixed to return an exception in
+	the current call frame.
+   * Many wesnoth module functions now release the python GIL when it is both
+	safe to do so and the function call takes long enough where it also
+	makes sense. More changes coming.
+   * A new global boolean variable, 'restricted' is now set before the user AI
+	script is invoked. This variable indicates if it is running inside of
+	a restricted python environment or not.
+   * A new class of unrestricted scripts are now listed. Previously only scripts which have
+	#!WPY at the top are allowed. If only allow safe python scripts is disabled,
+	scripts which start with #!UNSAFE_WPY are also shown to users. This allows
+	AI authors to specifically target either a restricted or unrestricted environment.
+   * New "system" class attributes are exposed in the restricted environment. These
+	include; '__call__', '__copy__', '__deepcopy__', '__doc__', '__name__',
+	'__repr__' and '__str__', in addition to the old __init__ method.
+   * ValueError can now be caught.
+	
+	
 Version 1.5.1:
  * campaigns:
    * Descent into Darkness:
@@ -88,7 +108,7 @@ Version 1.5.1:
    * Try/Except clauses are now allowed. A subset of builtin exceptions are available.
 	ArithmeticError, AssertionError, AttributeError, BaseException,
 	StopIteration, IndexError, KeyError, NameError, RuntimeError,
-	RuntimeWarning, ZeroDivisionError
+	RuntimeWarning, and ZeroDivisionError
    * Exceptions can now be raised by user code.
  * terrains:
    * Fixed city village not being alias of the village terrain type; this was
