@@ -28,8 +28,8 @@ const int MIN_THREADS = 1;
 const int MAX_THREADS = 1;
 const std::string LOCALHOST = "localhost"; 
 
-network::manager* manager;
-network::server_manager* server;
+network::manager* wes_manager;
+network::server_manager* wes_server;
 
 network::connection client_client1;
 network::connection client_client2;
@@ -45,10 +45,10 @@ BOOST_AUTO_TEST_CASE( test_connect )
 	int connections = network::nconnections();
 
 	BOOST_WARN_MESSAGE(connections == 0, "There is open "<< connections <<" connections before test!");
-	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 
-	server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
-	BOOST_REQUIRE_MESSAGE(server->is_running(), "Can't start server!");
+	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	BOOST_REQUIRE_MESSAGE(wes_server->is_running(), "Can't start server!");
 
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 
@@ -99,35 +99,39 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 {
-	delete server;
-	delete ::manager;
+	delete wes_server;
+	wes_server = 0;
+	delete wes_manager;
+	wes_manager = 0;
+	BOOST_CHECK_MESSAGE(wes_manager == 0, "network::manager nono zero after delete");
 
-	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
-	delete ::manager;
+	delete wes_manager;
+	wes_manager = 0;
 #if 0
-	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
-	delete ::manager;
+	delete wes_manager;
 
-	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
-	server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
-	delete ::server;
-	delete ::manager;
+	delete wes_server;
+	delete wes_manager;
 
-	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
-	delete ::manager;
+	delete wes_manager;
 #endif
-	::manager = new network::manager(MIN_THREADS,MAX_THREADS);
-	server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 }
-
+#if 0
 BOOST_AUTO_TEST_CASE( test_multiple_connections )
 {
 }
@@ -157,11 +161,12 @@ BOOST_AUTO_TEST_CASE( test_disconnect )
 	network::disconnect(client_client1);
 	network::disconnect(server_client1);
 }
-
+#endif
 BOOST_AUTO_TEST_CASE( test_shutdown )
 {
-	delete server;
-	delete ::manager;
+	delete wes_server;
+	BOOST_CHECK_MESSAGE(true,"Not true");
+	delete wes_manager;
 }
 
 BOOST_AUTO_TEST_SUITE_END();
