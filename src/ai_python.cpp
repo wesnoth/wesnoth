@@ -541,7 +541,7 @@ static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 //   Py_RETURN_FALSE ;
 
 //  return Py_BuildValue(INTVALUE, running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
-  return Py_Bool_FromLong( running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0 ) ;
+  return PyBool_FromLong( running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0 ) ;
 }
 
 static PyGetSetDef unit_getseters[] = {
