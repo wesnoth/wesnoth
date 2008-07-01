@@ -28,37 +28,36 @@ Version 1.5.1+svn:
    * Fixed manager to initialize before gamestate in playcontroller (bug: 11935)
    * Removed persistance from team configuration (bug: #10916)
    * Made automaticaly generated macro reference easier to naviagate and link to
-	 (patch: #1076)
+     (patch: #1076)
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
-	key is not found, the default value is returned. This is fully backward
-	compatible.
+     key is not found, the default value is returned. This is fully backward
+     compatible.
    * set_variable exception handling has been fixed to return an exception in
-	the current call frame.
+     the current call frame.
    * Many wesnoth module functions now release the python GIL when it is both
-	safe to do so and the function call takes long enough where it also
-	makes sense. More changes coming.
+     safe to do so and the function call takes long enough where it also
+     makes sense. More changes coming.
    * A new global boolean variable, 'restricted' is now set before the user AI
-	script is invoked. This variable indicates if it is running inside of
-	a restricted python environment or not.
+     script is invoked. This variable indicates if it is running inside of
+     a restricted python environment or not.
    * A new class of unrestricted scripts are now listed. Previously only scripts which have
-	#!WPY at the top are allowed. If only allow safe python scripts is disabled,
-	scripts which start with #!UNSAFE_WPY are also shown to users. This allows
-	AI authors to specifically target either a restricted or unrestricted environment.
+     #!WPY at the top are allowed. If only allow safe python scripts is disabled,
+     scripts which start with #!UNSAFE_WPY are also shown to users. This allows
+     AI authors to specifically target either a restricted or unrestricted environment.
    * New "system" class attributes are exposed in the restricted environment. These
-	include; '__call__', '__copy__', '__deepcopy__', '__doc__', '__name__',
-	'__repr__' and '__str__', in addition to the old __init__ method.
+     include; '__call__', '__copy__', '__deepcopy__', '__doc__', '__name__',
+     '__repr__' and '__str__', in addition to the old __init__ method.
    * ValueError can now be caught.
    * Added a new AI, bruteforce_unsafe.py, which uses both function caching
-	(memoize pattern) and psyco to speed execution. It uses the new UNSAFE_WPY
-	tag and is not selectable unless "Only Run Safe Python AIs" is disabled.
-	This version of bruteforce runs 2x-14x FASTER than the stock python AI.
+     (memoize pattern) and psyco to speed execution. It uses the new UNSAFE_WPY
+     tag and is not selectable unless "Only Run Safe Python AIs" is disabled.
+     This version of bruteforce runs 2x-14x FASTER than the stock python AI.
    * Per the python API documentation, many functions now return boolean values rather
-	than ints. Minor modernization effort to use new C-API macros provided via
-	python 2.4+. This change is fully backward compatible for scripts which properly
-	treat the return value as a boolean.
-	
-	
+     than ints. Minor modernization effort to use new C-API macros provided via
+     python 2.4+. This change is fully backward compatible for scripts which properly
+     treat the return value as a boolean.
+
 Version 1.5.1:
  * campaigns:
    * Descent into Darkness:
@@ -109,15 +108,15 @@ Version 1.5.1:
    * Implemented a function which detects if a location is on the map border.
    * Implemented a function which gives the game's gold parameters.
    * Extended safe.py environment to expand AI's language capabilities; including:
-	collections, functools, Queue, sets, time, and the upcoming wail module.
-	Use of chr, hash, lambda, ord, and super (new style classes) are now allowed
-	Control of safe_exec can now be toggled from the wesnoth binary.
+     collections, functools, Queue, sets, time, and the upcoming wail module.
+     Use of chr, hash, lambda, ord, and super (new style classes) are now allowed
+     Control of safe_exec can now be toggled from the wesnoth binary.
    * Added new advanced option, "Only Run Safe Python AIs". When disabled, the safe_exec
-	environment is disabled for all running AIs. Use caution when disabling this option!
+     environment is disabled for all running AIs. Use caution when disabling this option!
    * Try/Except clauses are now allowed. A subset of builtin exceptions are available.
-	ArithmeticError, AssertionError, AttributeError, BaseException,
-	StopIteration, IndexError, KeyError, NameError, RuntimeError,
-	RuntimeWarning, and ZeroDivisionError
+     ArithmeticError, AssertionError, AttributeError, BaseException,
+     StopIteration, IndexError, KeyError, NameError, RuntimeError,
+     RuntimeWarning, and ZeroDivisionError
    * Exceptions can now be raised by user code.
  * terrains:
    * Fixed city village not being alias of the village terrain type; this was
@@ -172,8 +171,8 @@ Version 1.5.1:
    * add a warning about future end of support for implicit prefix "units/" in
      images url.
    * add a switch (delayed_variable_substitution, defaults to 'yes') allowing to 
-	 choose wether variables in [event] spawned inside an [event] are substituted at
-	 spawn or execution time. Fixes bug #11843 introduced by a change in this behavior.
+     choose wether variables in [event] spawned inside an [event] are substituted at
+     spawn or execution time. Fixes bug #11843 introduced by a change in this behavior.
  * wesnothd
    * added selective ping support - saves server bandwidth
    * updated pings to use new simple_wml
@@ -240,10 +239,10 @@ Version 1.5.1:
    * fix false move-cursor around enemies after some dialog events.
    * fix some unit decapitation when placed on a keep
    * wesnoth_addon_client now uses gzip compression and can receive (untested)
-	zlib compressed data. Tons of various additional changes required to
-	make this work. Tons of additional core wml parsing bugs have been
-	fixed by various others and my self. -oracle
-	Ran pylint against code - some results applied to code.
+     zlib compressed data. Tons of various additional changes required to
+     make this work. Tons of additional core wml parsing bugs have been
+     fixed by various others and my self. -oracle
+     Ran pylint against code - some results applied to code.
    * made the image cache LRU, with a high limit of 600 images per cache
 
 Version 1.5.0:
