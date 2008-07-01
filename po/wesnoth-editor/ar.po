@@ -1,4 +1,4 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# #-#-#-#-#  wesnoth-lib.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Arabic translations for Battle for Wesnoth package.
 # Copyright (C) 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-05-31 16:55-0000\n"
+"PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -18,97 +18,110 @@ msgstr ""
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:11
+#, fuzzy
 msgid "all"
-msgstr "الكل"
+msgstr "استدعاء"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:17
+#, fuzzy
 msgid "water"
-msgstr "ماء"
+msgstr "حفرة"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:29
 msgid "flat"
-msgstr "مسطح"
+msgstr ""
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:35
+#, fuzzy
 msgid "desert"
 msgstr "صحراء"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:41
+#, fuzzy
 msgid "forest"
 msgstr "غابة"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
-msgstr "مجمد"
+msgstr ""
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:53
 msgid "rough"
-msgstr "وعر"
+msgstr ""
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:59
+#, fuzzy
 msgid "cave"
 msgstr "كهف"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:65
+#, fuzzy
 msgid "village"
 msgstr "قرية"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:71
+#, fuzzy
 msgid "castle"
 msgstr "قصر"
 
 #. [menu]
 #: data/themes/editor.cfg:462
+#, fuzzy
 msgid "File"
-msgstr "ملف"
+msgstr "الملف:"
 
 #. [menu]
 #: data/themes/editor.cfg:472
 msgid "Edit"
-msgstr "تغيير"
+msgstr ""
 
 #. [menu]
 #: data/themes/editor.cfg:481
+#, fuzzy
 msgid "Settings"
-msgstr "اعدادات"
+msgstr "تفضيلتات مفتاح الاختصار"
 
 #. [label]
 #: data/themes/editor.cfg:500
+#, fuzzy
 msgid "villages"
-msgstr "قرى"
+msgstr "القرى"
 
 #: src/editor/editor.cpp:236
 msgid "Draw tiles"
-msgstr "رسم الخانات"
+msgstr ""
 
 #: src/editor/editor.cpp:238
+#, fuzzy
 msgid "Fill"
-msgstr "ملء"
+msgstr "تلال"
 
 #: src/editor/editor.cpp:240
 msgid "Set player's starting position"
-msgstr "تحديد نقطة انطلاق اللاعب"
+msgstr ""
 
 #: src/editor/editor.cpp:242
+#, fuzzy
 msgid "Zoom in"
 msgstr "تكبير"
 
 #: src/editor/editor.cpp:244
+#, fuzzy
 msgid "Zoom out"
 msgstr "تصغير"
 
 #: src/editor/editor.cpp:246
 msgid "Undo"
-msgstr "إلغاء"
+msgstr "تراجع"
 
 #: src/editor/editor.cpp:248
 msgid "Redo"
@@ -116,17 +129,20 @@ msgstr "إعادة"
 
 #: src/editor/editor.cpp:250
 msgid "Zoom to default view"
-msgstr "الرجوع إلى المقياس العادي"
+msgstr ""
 
 #: src/editor/editor.cpp:252
+#, fuzzy
 msgid "Toggle grid"
 msgstr "شبكة"
 
 #: src/editor/editor.cpp:254
+#, fuzzy
 msgid "Resize the map"
 msgstr "إعادة تحجيم الخريطة"
 
 #: src/editor/editor.cpp:256
+#, fuzzy
 msgid "Flip map"
 msgstr "قلب الخريطة"
 
@@ -140,89 +156,923 @@ msgstr "تأخير تجديد الانتقال بين الخانات"
 
 #: src/editor/editor.cpp:470
 msgid "Language"
-msgstr "اللغة"
+msgstr ""
 
 #: src/editor/editor.cpp:471
 msgid "Choose your preferred language:"
-msgstr "اختر لغتك المفضلة"
+msgstr ""
 
 #: src/editor/editor.cpp:488 src/editor/editor_main.cpp:305
 msgid "Battle for Wesnoth Map Editor"
-msgstr "محرر الخرائط لBattle for Wesnoth"
+msgstr ""
 
 #: src/editor/editor.cpp:516
+#, fuzzy
 msgid "Save the Map As"
-msgstr "حفظ الخريطة تحت إسم..."
+msgstr "حفظ الخريطة"
 
 #: src/editor/editor.cpp:527
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "توجد خريطة ذات إسم مشابه.أتريد إبدالها بهذه؟"
+msgstr ""
 
 #: src/editor/editor.cpp:550
 msgid "None"
 msgstr "لا شيء"
 
 #: src/editor/editor.cpp:555 src/editor/editor.cpp:1442
+#, fuzzy
 msgid "Player"
-msgstr "لاعب"
+msgstr "اللاعبون:"
 
 #: src/editor/editor.cpp:559
 msgid "Which Player?"
-msgstr "أي لاعب ؟"
+msgstr ""
 
 #: src/editor/editor.cpp:560
 msgid "Which player should start here?"
-msgstr "أي لاعب سيبتدئ هنا؟"
+msgstr ""
 
 #: src/editor/editor.cpp:621
 msgid "Choose a Map to Load"
-msgstr "اختر خريطة للتحميل"
+msgstr ""
 
 #: src/editor/editor.cpp:625
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
-msgstr "تحذير:وجدت محارف غير مسموح بها في إسم الخريطة.المرجو إعادة تسميتها."
+msgstr ""
 
 #: src/editor/editor.cpp:638 src/editor/editor.cpp:719
 msgid "The file does not contain a valid map."
-msgstr "لا يحتوي الملف على أي خريطة صالحة"
+msgstr ""
 
 #: src/editor/editor.cpp:1321
 msgid "Quit Editor"
-msgstr "مغادرة المحرر"
+msgstr "مغادرة المحرّر"
 
 #: src/editor/editor.cpp:1325
 msgid "Do you want to save the map before quitting?"
-msgstr "هل تريد حفظ الخريطة قبل الخروج؟"
+msgstr ""
 
 #: src/editor/editor.cpp:1373
 msgid "Map saved."
-msgstr "الخريطة محفوظة."
+msgstr ""
 
 #: src/editor/editor.cpp:1381
 msgid "Could not save the map: $msg"
-msgstr "تعذر حفظ الخريطة:msg$"
+msgstr ""
 
 #: src/editor/editor.cpp:1396
 msgid "Error: Illegal character in filename."
-msgstr "خطأ:محارف غير مسموح بها"
+msgstr ""
 
 #: src/editor/editor_palettes.cpp:433
 msgid "FG"
-msgstr "الأمامية"
+msgstr ""
 
 #: src/editor/editor_palettes.cpp:435
 msgid "BG"
-msgstr "الخلفية"
+msgstr ""
 
 #: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
 #: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr "تعذر إعادة تحجيم الخريطة لأن الحجم المطلوب يفوق الحد الأق"
+msgstr ""
 
 #: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
 #: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
 msgid " maximum="
-msgstr "الحد الاقص"
+msgstr ""
+
+#~ msgid "Shroud"
+#~ msgstr "حجاب"
+
+#~ msgid "Fog"
+#~ msgstr "ضباب"
+
+#~ msgid "Ice"
+#~ msgstr "جليد"
+
+#~ msgid "Snow"
+#~ msgstr "ثلج"
+
+#~ msgid "Bridge"
+#~ msgstr "جسر"
+
+#~ msgid "Encampment"
+#~ msgstr "مخيّم"
+
+#~ msgid "Ruin"
+#~ msgstr "خَرابُ"
+
+#~ msgid "Sunken Ruin"
+#~ msgstr "خراب مغمور"
+
+#~ msgid "Swamp Ruin"
+#~ msgstr "خراب مستنقع"
+
+#~ msgid "Keep"
+#~ msgstr "حصن"
+
+#~ msgid "Rubble"
+#~ msgstr "أنقاض"
+
+#~ msgid "Sand"
+#~ msgstr "رمال"
+
+#~ msgid "Oasis"
+#~ msgstr "واحة"
+
+#~ msgid "Snow Forest"
+#~ msgstr "غابة مكسوة بالثلج"
+
+#~ msgid "Great Tree"
+#~ msgstr "شجرة شامخة"
+
+#~ msgid "Tropical Forest"
+#~ msgstr "غابة مدارية"
+
+#~ msgid "Grassland"
+#~ msgstr "مَرْج"
+
+#~ msgid "Savanna"
+#~ msgstr "سافانا"
+
+#~ msgid "Snow Hills"
+#~ msgstr "تلال مكسوة بالثلج"
+
+#~ msgid "Dunes"
+#~ msgstr "كثبان"
+
+#~ msgid "Mountains"
+#~ msgstr "جبال"
+
+#~ msgid "Chasm"
+#~ msgstr "هاوِيَة"
+
+#~ msgid "Lava chasm"
+#~ msgstr "هاوية لافا"
+
+#~ msgid "Lava"
+#~ msgstr "لافا"
+
+#~ msgid "Road"
+#~ msgstr "طريق"
+
+#~ msgid "Dirt"
+#~ msgstr "تُرَاب"
+
+#~ msgid "Farmland"
+#~ msgstr "مزرعة"
+
+#~ msgid "Swamp"
+#~ msgstr "مستنقع"
+
+#~ msgid "Cave Lit"
+#~ msgstr "كهف مضاء"
+
+#~ msgid "Mushroom Grove"
+#~ msgstr "بُسْتان الفُطر"
+
+#~ msgid "Mushroom Grove Lit"
+#~ msgstr "بُسْتان الفُطر منوَّر"
+
+#~ msgid "Rockbound Cave"
+#~ msgstr "كهف صخري"
+
+#~ msgid "Rockbound Cave Lit"
+#~ msgstr "كهف صخري منوّر"
+
+#~ msgid "Deep Water"
+#~ msgstr "مياه عميقة"
+
+#~ msgid "Shallow Water"
+#~ msgstr "مياه ضحلة"
+
+#~ msgid "River Ford"
+#~ msgstr "مَخَاضَة "
+
+#~ msgid "Impassable Mountains"
+#~ msgstr "جبال منيعة"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "جبال صحراوية منيعة"
+
+#~ msgid "Cave Wall"
+#~ msgstr "حائط كهف"
+
+#~ msgid "Void"
+#~ msgstr "فراغ"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Yes"
+#~ msgstr "نعم"
+
+#~ msgid "No"
+#~ msgstr "لا"
+
+#~ msgid "Cancel"
+#~ msgstr "إلغاء"
+
+#~ msgid "Close"
+#~ msgstr "غلق"
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "أتريد القيام بذلك رغم أن التغييرات المحدثة على الخريطة ستفقد؟"
+
+#~ msgid "Create New Map"
+#~ msgstr "إنشاء خريطة جديدة"
+
+#~ msgid "Width:"
+#~ msgstr "العرض:"
+
+#~ msgid "Height:"
+#~ msgstr "الطول:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "إنشاء خريطة جديدة"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "توليد خريطة عشوائية"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "تعديلات مُوَلِّد الخرئط العشوائية"
+
+#~ msgid "Map creation failed."
+#~ msgstr "فشل إعداد الخرطة"
+
+#~ msgid "Close Window"
+#~ msgstr "غلق النافدة"
+
+#~ msgid "Preferences"
+#~ msgstr "تفضيلات"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "سرعة اللف:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "ملء الشاشة"
+
+#~ msgid "Show Grid"
+#~ msgstr "إظهار الشبكة"
+
+#~ msgid "Video Mode"
+#~ msgstr "نمط فيديو"
+
+#~ msgid "Hotkeys"
+#~ msgstr "مفتاح الاختصار"
+
+#~ msgid "X offset:"
+#~ msgstr "زَيَحان X:"
+
+#~ msgid "Y offset:"
+#~ msgstr "زَيَحان Y:"
+
+#~ msgid "Smart expand"
+#~ msgstr "توسيع ذكي"
+
+#~ msgid "X-Axis"
+#~ msgstr "محور x"
+
+#~ msgid "Y-Axis"
+#~ msgstr "محور y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "قلب(يُحْتَمَل تغيير أبعاد الخريطة)"
+
+#~ msgid "Delete File"
+#~ msgstr "حذف الملف"
+
+#~ msgid "New Folder"
+#~ msgstr "مجلّد جديد"
+
+#~ msgid "Deletion of the file failed."
+#~ msgstr "فشل حذف الملف"
+
+#~ msgid "Name: "
+#~ msgstr "الإسم:"
+
+#~ msgid "Creation of the directory failed."
+#~ msgstr "فشل حذف المجلد"
+
+#~ msgid "No server has been defined."
+#~ msgstr "لم يُحدَد أيّ خادم"
+
+#~ msgid "player"
+#~ msgstr "لاعب"
+
+#~ msgid "Accelerated Speed"
+#~ msgstr "حركة متسارعة"
+
+#~ msgid "Skip AI Moves"
+#~ msgstr "تخطي حركات الذكاء الإصطناعي"
+
+#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
+#~ msgstr "حذف الإعادة في حالة انتصار في ل.و/ع.ل أو هزيمة في ع.ل"
+
+#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
+#~ msgstr "احذف المحفوظات التلقائية في حالة انتصار في ل.و/ع.ل أو هزيمة في ع.ل"
+
+#~ msgid "Do Not Show Lobby Joins"
+#~ msgstr "عدم الإعلان باللاعبين الداخلين"
+
+#~ msgid "Show Lobby Joins Of Friends Only"
+#~ msgstr "الإعلان بالداخلين من الأصدقاء فقط"
+
+#~ msgid "Show All Lobby Joins"
+#~ msgstr "الإعلان بجميع الداخلين"
+
+#~ msgid "Sort Lobby List"
+#~ msgstr "فرز قائمة الداخلين"
+
+#~ msgid "Iconize Lobby List"
+#~ msgstr "جعل قائمة المدخل على شكل إيقونات"
+
+#~ msgid "Friends List"
+#~ msgstr "قائمة الأصدقاء"
+
+#~ msgid "Multiplayer Options"
+#~ msgstr "خيارات اللعب العديد اللاعبين"
+
+#~ msgid "Add As Friend"
+#~ msgstr "إضافته كصديق"
+
+#~ msgid "Add As Ignore"
+#~ msgstr "إضافته كمُهمَل"
+
+#~ msgid "Remove"
+#~ msgstr "حذف"
+
+#~ msgid "Show Floating Labels"
+#~ msgstr "إظهار اللصائق الطافية"
+
+#~ msgid "Turn Dialog"
+#~ msgstr "الرسالة في بداية الدور"
+
+#~ msgid "Turn Bell"
+#~ msgstr "جرس الإعلان بالدور"
+
+#~ msgid "Show Team Colors"
+#~ msgstr "إظهار ألوان الفرق"
+
+#~ msgid "Show Color Cursors"
+#~ msgstr "استعمال مؤشر ملوّن"
+
+#~ msgid "Show Haloing Effects"
+#~ msgstr "إظهار تأثيرات الهالو"
+
+#~ msgid "Change Resolution"
+#~ msgstr "تغيير الإستبانة"
+
+#~ msgid "Theme"
+#~ msgstr "السمة"
+
+#~ msgid "Adjust Gamma"
+#~ msgstr "تسوية الجاما"
+
+#~ msgid "Reverse Time Graphics"
+#~ msgstr "قلب مبيان الزمن"
+
+#~ msgid "Sound effects"
+#~ msgstr "المؤثرات الصوتية"
+
+#~ msgid "Music"
+#~ msgstr "الموسيقى"
+
+#~ msgid "Chat Timestamping"
+#~ msgstr "إظهار زمن الحديث"
+
+#~ msgid "sound^Advanced Options"
+#~ msgstr "تفضيلات متقدمة للصوت"
+
+#~ msgid "sound^Standard Options"
+#~ msgstr "تفضيلات عادية للصوت"
+
+#~ msgid "User Interface Sounds"
+#~ msgstr "أصوات واجهة المُستخدِم"
+
+#~ msgid "Custom"
+#~ msgstr "مخصص"
+
+#~ msgid "Apply"
+#~ msgstr "تطبيق"
+
+#~ msgid "Show Unit Idle Animations"
+#~ msgstr "إظهار تحريكات الوحدات الساكنة"
+
+#~ msgid "Music Volume:"
+#~ msgstr "مستوى صوت الموسيقى:"
+
+#~ msgid "SFX Volume:"
+#~ msgstr "مستوى صوت التأثيرات الخاصة:"
+
+#~ msgid "UI Sound Volume:"
+#~ msgstr "مستوى صوت أصوات الواجهة:"
+
+#~ msgid "Bell Volume:"
+#~ msgstr "مستوى صوت الجرس:"
+
+#~ msgid "Gamma:"
+#~ msgstr "جاما:"
+
+#~ msgid "Sample Rate (Hz):"
+#~ msgstr "معدًل الإعتيان (Hz):"
+
+#~ msgid "Frequency:"
+#~ msgstr "التردد:"
+
+#~ msgid "Sound effects on/off"
+#~ msgstr "التأثيرات الصوتية مفتوح/مغلق"
+
+#~ msgid "Change the sound effects volume"
+#~ msgstr "تغيير مستوى صوت التأثيرات الصوتية"
+
+#~ msgid "Music on/off"
+#~ msgstr "الموسيقى مفتوح/مغلق"
+
+#~ msgid "Change the music volume"
+#~ msgstr "تغيير مستوى صوت الموسيقى"
+
+#~ msgid "Change the bell volume"
+#~ msgstr "تغيير مستوى صوت الجرس"
+
+#~ msgid "Turn menu and button sounds on/off"
+#~ msgstr "فتح/غلق صوت الأزرار و القائم"
+
+#~ msgid "Change the sound volume for button clicks, etc."
+#~ msgstr "تغيير مستوى صوت الضغط على الأزرار إلخ.."
+
+#~ msgid "Change the sample rate"
+#~ msgstr "تغيير معدل الإعتيان"
+
+#~ msgid "User defined sample rate"
+#~ msgstr "تحديد المُستخدِم لمعدل الإعتيان"
+
+#~ msgid "Change the buffer size"
+#~ msgstr "تغيير حجم الصوان"
+
+#~ msgid "Buffer Size: "
+#~ msgstr "حجم الصوان:"
+
+#~ msgid "Change the speed of scrolling around the map"
+#~ msgstr "تغيير سرعة لفّ الخريطة"
+
+#~ msgid "Set the amount of chat lines shown"
+#~ msgstr "تحديد عدد أسطر الحديث المُظهَرَة"
+
+#~ msgid "Add a timestamp to chat messages"
+#~ msgstr "إظافة الزمن إلى رسائل الحديث"
+
+#~ msgid "Change the brightness of the display"
+#~ msgstr "تغيير سطوع الشاشة"
+
+#~ msgid "Choose whether the game should run full screen or in a window"
+#~ msgstr "الإختيار بين نمط الشاشة المليءة و النافذة"
+
+#~ msgid "Make units move and fight faster"
+#~ msgstr "تسريع تنقل و تقاتل الوحدات"
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "سرعة حركة و تقاتل الوحدات"
+
+#~ msgid "Show unit idle animations"
+#~ msgstr "إظهار تحريكات الوحدات الساكنة"
+
+#~ msgid "Set the frequency of unit idle animations"
+#~ msgstr "تحديد تردد تحريكات الوحدات الساكنة"
+
+#~ msgid "Set maximum number of automatic saves to be retained"
+#~ msgstr "تحديد العدد الأقصى للمحفوظات التلقائية المحتفظ به"
+
+#~ msgid "Do not animate AI units moving"
+#~ msgstr "عدم تحريك وحدات الذكاء الإصطناعي في تنقلاته"
+
+#~ msgid "Overlay a grid onto the map"
+#~ msgstr "وضع شبكة على الخريطة"
+
+#~ msgid "Sort the player list in the lobby by player groups"
+#~ msgstr "فرز اللاعبين الموجودين في المدخل على شكل أفواج"
+
+#~ msgid "Show icons in front of the player names in the lobby."
+#~ msgstr "إظهار إيقونات أمام أسماء اللاعبين في المدخل"
+
+#~ msgid "Do not show messages about players joining the multiplayer lobby"
+#~ msgstr "عدم الإعلان بوصول اللاعبين إلى المدخل"
+
+#~ msgid "Show messages about your friends joining the multiplayer lobby"
+#~ msgstr "الإعلان بدخول أصدقائك بواسطة رسائل"
+
+#~ msgid "Show messages about all players joining the multiplayer lobby"
+#~ msgstr "الإعلان بدخول جميع اللاعبين بواسطة رسائل"
+
+#~ msgid "View and edit your friends and ignores list"
+#~ msgstr "رؤية و ضبط قائمة الأصدقاء و المهمولين"
+
+#~ msgid "Back to the multiplayer options"
+#~ msgstr "الرجوع إلى تعديلات النمط العديد اللاعبين"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "إضافة هذا الإسم إلى قائمة الأصدقاء"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "إضافة إسم هذا اللاعب إلى قائمة المهمولين"
+
+#~ msgid "Remove this username from your list"
+#~ msgstr "حذف إسم هذا اللاعب من قائمتك"
+
+#~ msgid "Insert a username"
+#~ msgstr "أدخل اسم المُستخدِم"
+
+#~ msgid "Show text above a unit when it is hit to display damage inflicted"
+#~ msgstr "إظهار قيم الأضرار التي تصيب الوحدات بواسطة أعداد فوقها"
+
+#~ msgid "Change the resolution the game runs at"
+#~ msgstr "تغيير استبانة اللعبة"
+
+#~ msgid "Change the theme the game runs with"
+#~ msgstr "تغيير سمة اللعبة"
+
+#~ msgid "Display a dialog at the beginning of your turn"
+#~ msgstr "إظهار رسالة في بداية دورك"
+
+#~ msgid "Play a bell sound at the beginning of your turn"
+#~ msgstr "سمع صوت الجرس عند بداية دورك"
+
+#~ msgid ""
+#~ "Show a colored circle around the base of each unit to show which side it "
+#~ "is on"
+#~ msgstr "إظهار دوائر ملونة تحت كل وحدة تشير إلى طرفها"
+
+#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
+#~ msgstr "إختيار منحى حركة الشمس(من اليسار إلى اليمين أو العكس)"
+
+#~ msgid "Use colored mouse cursors (may be slower)"
+#~ msgstr "استعمال مؤشرات الفأرة ملونة(قد تكون أبظأ)"
+
+#~ msgid "Use graphical special effects (may be slower)"
+#~ msgstr "استعمال مؤثرات رسومية(قد تكون اللعبة أبطأ)"
+
+#~ msgid "View and configure keyboard shortcuts"
+#~ msgstr "رؤية و ضبط مفاتيح الاختصا"
+
+#~ msgid "Speed: "
+#~ msgstr "السرعة:"
+
+#~ msgid "Maximum Auto-Saves: "
+#~ msgstr "أقصى عدد للمحفوظات الآلية"
+
+#~ msgid "infinite"
+#~ msgstr "غَيْرُ مُتَناهٍ"
+
+#~ msgid "Chat Lines: "
+#~ msgstr "أسطر الحديث:"
+
+#~ msgid "Invalid username"
+#~ msgstr "اسم غير صالح"
+
+#~ msgid "yes"
+#~ msgstr "نعم"
+
+#~ msgid "no"
+#~ msgstr "لا"
+
+#~ msgid "(empty list)"
+#~ msgstr "(قائمة فارغة)"
+
+#~ msgid "Prefs section^General"
+#~ msgstr "عامّ"
+
+#~ msgid "Prefs section^Display"
+#~ msgstr "فيديو"
+
+#~ msgid "Prefs section^Sound"
+#~ msgstr "صوت"
+
+#~ msgid "Prefs section^Multiplayer"
+#~ msgstr "عديد اللاعبين"
+
+#~ msgid "Advanced section^Advanced"
+#~ msgstr "تفضيلات متقدمة"
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "السمة المفضلة المحفوظة:"
+
+#~ msgid "New theme will take effect on next new or loaded game."
+#~ msgstr "سيتم العمل بهذه السمة عند التحميل أو اللعبة الجديدة اللاحقة"
+
+#~ msgid "No known themes. Try changing from within an existing game."
+#~ msgstr "ليست هناك أية سمة معروفة.حاول تبديلها انطلاقا من لعبة جارية."
+
+#~ msgid "Next Unit"
+#~ msgstr "الوحدة التالية"
+
+#~ msgid "Previous Unit"
+#~ msgstr "الوحدة السابقة"
+
+#~ msgid "Hold Position"
+#~ msgstr "البقاء على ذلك الوضع"
+
+#~ msgid "End Unit Turn"
+#~ msgstr "إنهاء دور الوحدة"
+
+#~ msgid "Leader"
+#~ msgstr "القائد"
+
+#~ msgid "Default Zoom"
+#~ msgstr "التكبير الأصلي"
+
+#~ msgid "Screenshot"
+#~ msgstr "لقطة شاشة"
+
+#~ msgid "Accelerated"
+#~ msgstr "سريع"
+
+#~ msgid "Unit Description"
+#~ msgstr "وصف الوحدة"
+
+#~ msgid "Rename Unit"
+#~ msgstr "إعادة تسمية الوحدة"
+
+#~ msgid "Save Game"
+#~ msgstr "حفظ اللعبة"
+
+#~ msgid "Save Replay"
+#~ msgstr "حفظ الإعادة"
+
+#~ msgid "Load Game"
+#~ msgstr "تحميل لعبة"
+
+#~ msgid "Recruit"
+#~ msgstr "تجنيد"
+
+#~ msgid "Repeat Recruit"
+#~ msgstr "إعادة التجنيد"
+
+#~ msgid "End Turn"
+#~ msgstr "إنهاء الدور"
+
+#~ msgid "Mouse Scrolling"
+#~ msgstr "لفّ الفأرة"
+
+#~ msgid "Status Table"
+#~ msgstr "جدول الحالات"
+
+#~ msgid "Mute"
+#~ msgstr "اكتم"
+
+#~ msgid "Speak"
+#~ msgstr "تكلم"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "خلق وحدة (تنقيح!)"
+
+#~ msgid "Change Unit Side (Debug!)"
+#~ msgstr "تغيير طرف الوحدة (تنقيح!)"
+
+#~ msgid "Scenario Objectives"
+#~ msgstr "أهداف السِيناريُو"
+
+#~ msgid "Unit List"
+#~ msgstr "قائمة الوحدات"
+
+#~ msgid "Statistics"
+#~ msgstr "إحصائيات"
+
+#~ msgid "Quit Game"
+#~ msgstr "مغادرة اللعبة"
+
+#~ msgid "Set Team Label"
+#~ msgstr "وضع لصيقة مرئية من طرف الفريق فقط"
+
+#~ msgid "Set Label"
+#~ msgstr "وضع لصيقة"
+
+#~ msgid "Clear Labels"
+#~ msgstr "محو اللصائق"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "إظهار تنقلات العدو"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "أفضل تنقل ممكن للعدوّ"
+
+#~ msgid "Play"
+#~ msgstr "إلعب"
+
+#~ msgid "Reset"
+#~ msgstr "إعادة التنضيد"
+
+#~ msgid "Stop"
+#~ msgstr "وقوف"
+
+#~ msgid "Next Turn"
+#~ msgstr "الدور التالي"
+
+#~ msgid "Next Side"
+#~ msgstr "الطرف التالي"
+
+#~ msgid "Full map"
+#~ msgstr "خريطة كاملة"
+
+#~ msgid "Each team"
+#~ msgstr "كل فريق"
+
+#~ msgid "Team 1"
+#~ msgstr "الفريق 1"
+
+#~ msgid "Skip animation"
+#~ msgstr "تخطّي التحريكة"
+
+#~ msgid "Set Terrain"
+#~ msgstr "تحديد نوع المنطقة"
+
+#~ msgid "New Map"
+#~ msgstr "خريطة جديدة"
+
+#~ msgid "Load Map"
+#~ msgstr "تحميل خريطة"
+
+#~ msgid "Save Map"
+#~ msgstr "حفظ الخريطة"
+
+#~ msgid "Save As"
+#~ msgstr "حفظ باسم.."
+
+#~ msgid "Set Player's keep"
+#~ msgstr "تحديد حصن اللاعب"
+
+#~ msgid "Flood Fill"
+#~ msgstr "ملء"
+
+#~ msgid "Fill Selection"
+#~ msgstr "ملء المنتقى"
+
+#~ msgid "Rotate Selection"
+#~ msgstr "إدارة المنتقى"
+
+#~ msgid "Cut"
+#~ msgstr "قصّ"
+
+#~ msgid "Copy"
+#~ msgstr "نسخ"
+
+#~ msgid "Paste"
+#~ msgstr "إلصاق"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "الرجوع إلى الإصدار المتوفر في القرص"
+
+#~ msgid "Select All"
+#~ msgstr "انتقاء الكل"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "رسم الأرضية"
+
+#~ msgid "Refresh Image Cache"
+#~ msgstr "تحديث مخبإ الصورة"
+
+#~ msgid "Delay Shroud Updates"
+#~ msgstr "تأخير تجديد الحُجُب"
+
+#~ msgid "Update Shroud Now"
+#~ msgstr "تحديث الحجب الآن"
+
+#~ msgid "Continue Move"
+#~ msgstr "متابعة الحركة"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "العثور على لصيقة أو وحدة"
+
+#~ msgid "Speak to Ally"
+#~ msgstr "تكليم الحليف"
+
+#~ msgid "Speak to All"
+#~ msgstr "تكليم الجميع"
+
+#~ msgid "Help"
+#~ msgstr "مساعدة"
+
+#~ msgid "View Chat Log"
+#~ msgstr "إظهار تاريخ الحديث"
+
+#~ msgid "Change the language"
+#~ msgstr "تغيير اللغة"
+
+#~ msgid "Enter user command"
+#~ msgstr "إدخال أمر المُستَخدِم"
+
+#~ msgid "Clear messages"
+#~ msgstr "محو الرسائل"
+
+#~ msgid "User-Command#2"
+#~ msgstr "أمر المُستخدِم #2"
+
+#~ msgid "User-Command#3"
+#~ msgstr "أمر المُستخدِم #3"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "أتريد فعلاً المغادرة؟"
+
+#~ msgid "Quit"
+#~ msgstr "مغادرة"
+
+#~ msgid "Map Generator"
+#~ msgstr "مُوَلِّد الخرائط"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "عدد التلال"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "الحجم الأقصى للتلال"
+
+#~ msgid "Castle Size:"
+#~ msgstr "حجم القصر"
+
+#~ msgid "Landform:"
+#~ msgstr "نوع الخريطة"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "الطرق العابرة بين القصور"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "1000/ خانة"
+
+#~ msgid "Coastal"
+#~ msgstr "ساحلي"
+
+#~ msgid "Inland"
+#~ msgstr "داخِلِيّ"
+
+#~ msgid "Island"
+#~ msgstr "جزيرة"
+
+#~ msgid "The maximum text width is less than 1."
+#~ msgstr "العرض الأقصى للنص أقل من 1"
+
+#~ msgid "Could not get image for terrain: $terrain."
+#~ msgstr "تعذر الحصول على صورة للأرضية:terrain$"
+
+#~ msgid "Error creating or aquiring an image."
+#~ msgstr "خطأ عند خلق أو اكتساب صورة"
+
+#~ msgid ""
+#~ "The video mode could not be changed. Your window manager must be set to "
+#~ "16 bits per pixel to run the game in windowed mode. Your display must "
+#~ "support 1024x768x16 to run the game full screen."
+#~ msgstr ""
+#~ "تعذر تبدييل نمط الفيديو.يجب ضبط منظّم النوافذ في (16 bits per pixel) للعب "
+#~ "داخل نافذة.على شاشتك أن تتحمل 1024x768x16  للعب بنمط الشاشة المليئة."
+
+#~ msgid "Press desired Hotkey"
+#~ msgstr "اضغط على المفتاح المُراد"
+
+#~ msgid "Action"
+#~ msgstr "إجراء"
+
+#~ msgid "Binding"
+#~ msgstr "ربط أزرار"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "تغيير مفتاح الاختصار"
+
+#~ msgid "This Hotkey is already in use."
+#~ msgstr "هذا المفتاح مُستعمَلٌ"
+
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "ليس هناك نمط فيديو آخر."
+
+#~ msgid "Choose Resolution"
+#~ msgstr "تغيير الاستبانة"
+
+#~ msgid "Error"
+#~ msgstr "خطأ"
+
+#~ msgid ""
+#~ "A terrain with a string with more than 4 characters has been found, the "
+#~ "affected terrain is :"
+#~ msgstr ""
+#~ "عُثِرَ على أرضية ممثلة بواسطة مقطع مكون من  أكثر من 4 محارف.الأرضية هي:"
+
+#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
+#~ msgstr "وُجِدت أرضية غير صالحة.ربما هذا راجع إلى هيئة 1.2 .الأرضية:"
+
+#~ msgid ""
+#~ "An error due to possible invalid WML occured\n"
+#~ "The error message is :"
+#~ msgstr "خطأ راجع إلى WML غير صالح(غالبا).نص الخطأ:"
+
+#~ msgid "When reporting the bug please include the following error message :"
+#~ msgstr "عند تقرير الخلل ، المرجو تضمين ما يلي:"
+
+#~ msgid ""
+#~ "In section '[$section|]' where '$primary_key| = $primary_value' the "
+#~ "mandatory key '$key|' isn't set."
+#~ msgstr ""
+#~ "لم يحدد المفتاح الإجباري '$key|' في الفقرة '[$section|]' حيث "
+#~ "'$primary_key| = $primary_value'"
+
+#~ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
+#~ msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة '[$section|]'"
