@@ -45,9 +45,10 @@ BOOST_AUTO_TEST_CASE( test_connect )
 	int connections = network::nconnections();
 
 	BOOST_WARN_MESSAGE(connections == 0, "There is open "<< connections <<" connections before test!");
-	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
+	BOOST_CHECK_MESSAGE(wes_manager = new network::manager(MIN_THREADS,MAX_THREADS), "network::manager failed to initialize");
 
-	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	BOOST_CHECK_MESSAGE(wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER),
+			"network::server_manager failed to initialize");
 	BOOST_REQUIRE_MESSAGE(wes_server->is_running(), "Can't start server!");
 
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
@@ -105,24 +106,24 @@ BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 	wes_manager = 0;
 	BOOST_CHECK_MESSAGE(wes_manager == 0, "network::manager nono zero after delete");
 
-	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
-	client_client1 = network::connect(LOCALHOST, TEST_PORT);
+	BOOST_CHECK_MESSAGE(wes_manager = new network::manager(MIN_THREADS,MAX_THREADS), "network::manager failed to initialize");
+	BOOST_CHECK_THROW(client_client1 = network::connect(LOCALHOST, TEST_PORT), network::error);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
 	delete wes_manager;
 	wes_manager = 0;
-#if 0
-	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
-	client_client1 = network::connect(LOCALHOST, TEST_PORT);
+	BOOST_CHECK_MESSAGE(wes_manager = new network::manager(MIN_THREADS,MAX_THREADS), "network::manager failed to initialize");
+	client_client1 = network::connect("server.wesnoth.org", 15000);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
 	delete wes_manager;
 
-	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
-	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
+	BOOST_CHECK_MESSAGE(wes_manager = new network::manager(MIN_THREADS,MAX_THREADS), "network::manager failed to initialize");
+	BOOST_CHECK_MESSAGE(wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER), "");
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
 	delete wes_server;
 	delete wes_manager;
 
+#if 0
 	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
