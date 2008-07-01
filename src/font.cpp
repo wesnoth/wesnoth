@@ -643,18 +643,18 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
+	if (gui_surface.null()) {
+		text_surface const &u = text_cache::find(text_surface(text, size, colour, style));
+		SDL_Rect res = {0, 0, u.width(), u.height()};
+		return res;
+	}
+
 	if(area.w == 0) {  // no place to draw
 		SDL_Rect res = {0,0,0,0};  
 		return res;
 	}
 
 	const std::string etext = make_text_ellipsis(text, size, area.w);
-
-	if (gui_surface.null()) {
-		text_surface const &u = text_cache::find(text_surface(text, size, colour, style));
-		SDL_Rect res = {0, 0, u.width(), u.height()};
-		return res;
-	}
 
 	// for the main current use, we already parsed markup
 	surface surface(render_text(etext,size,colour,style,false));
