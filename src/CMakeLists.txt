@@ -445,6 +445,7 @@ ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
 SET(test_SRC
     tests/main.cpp
     tests/test_util.cpp
+	tests/test_network_worker.cpp
     ${wesnoth-main_SRC}
 )
 
