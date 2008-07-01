@@ -643,6 +643,11 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
+	if(area.w == 0) {  // no place to draw
+		SDL_Rect res = {0,0,0,0};  
+		return res;
+	}
+
 	const std::string etext = make_text_ellipsis(text, size, area.w);
 
 	if (gui_surface.null()) {
