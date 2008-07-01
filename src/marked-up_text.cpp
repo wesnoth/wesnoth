@@ -36,7 +36,7 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
            COLOR_TEXT='<', IMAGE='&';
 
 //! Parses the markup-tags at the front of a string.
-static std::string::const_iterator parse_markup(std::string::const_iterator i1,
+std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
 												SDL_Color* colour, int* style)

@@ -560,18 +560,35 @@ text_surface &text_cache::find(text_surface const &t)
 
 }
 
-static surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style)
+static surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style, bool use_markup)
 {
 	// we keep blank lines and spaces (may be wanted for indentation)
 	const std::vector<std::string> lines = utils::split(text, '\n', 0);
 	std::vector<std::vector<surface> > surfaces;
 	surfaces.reserve(lines.size());
 	size_t width = 0, height = 0;
-	text_surface txt_surf(fontsize, colour, style);
 
 	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
-		// we replace empty line by a space (to have a line height)
-		txt_surf.set_text(ln->empty() ? " " : *ln);
+		
+		SDL_Color col = colour;
+		int sz = fontsize;
+		int text_style = style;
+
+		std::string::const_iterator after_markup = use_markup ?
+			parse_markup(ln->begin(),ln->end(),&sz,&col,&text_style) : ln->begin();
+		text_surface txt_surf(sz, col, text_style);
+
+		if (after_markup == ln->end()) {
+			// we replace empty line by a space (to have a line height)
+			txt_surf.set_text(" ");
+		} else if (after_markup == ln->begin()) {
+		 	// simple case, no markup to skip
+			txt_surf.set_text(*ln);
+		} else  {
+			const std::string line(after_markup,ln->end());
+			txt_surf.set_text(line);
+		}
+
 		const text_surface& cached_surf = text_cache::find(txt_surf);
 		const std::vector<surface>&res = cached_surf.get_surfaces();
 
@@ -618,7 +635,8 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 
 surface get_rendered_text(const std::string& str, int size, const SDL_Color& colour, int style)
 {
-	return render_text(str, size, colour, style);
+	// TODO maybe later also to parse markup here, but a lot to check
+	return render_text(str, size, colour, style, false);
 }
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
@@ -633,7 +651,8 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		return res;
 	}
 
-	surface surface(render_text(etext,size,colour,style));
+	// for the main current use, we already parsed markup
+	surface surface(render_text(etext,size,colour,style,false));
 	if(surface == NULL) {
 		SDL_Rect res = {0,0,0,0};
 		return res;
@@ -826,7 +845,7 @@ int floating_label::xpos(size_t width) const
 surface floating_label::create_surface()
 {
 	if (surf_.null()) {
-		surface foreground = font::render_text(text_, font_size_, colour_, 0);
+		surface foreground = font::render_text(text_, font_size_, colour_, 0, true);
 
 		if(foreground == NULL) {
 			ERR_FT << "could not create floating label's text" << std::endl;
@@ -861,7 +880,9 @@ surface floating_label::create_surface()
 		}
 		else {
 			// background is blurred shadow of the text
-			surface background = font::render_text(text_, font_size_, font::BLACK_COLOUR, 0);
+			// we don't parse markup here to guarantee a black shadow
+			// FIXME: using color mark-up will cause colored shadow
+			surface background = font::render_text(text_, font_size_, font::BLACK_COLOUR, 0, true);
 			//TODO add a little extra space for the blur of letters with a lower part
 			background = blur_alpha_surface(background, 2, false);
 			background = adjust_surface_alpha(background, ftofxp(4.0), false);

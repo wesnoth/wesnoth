@@ -29,6 +29,12 @@ namespace font {
 extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT,
                   GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, YELLOW_TEXT, IMAGE;
 
+//! Parses the markup-tags at the front of a string.
+std::string::const_iterator parse_markup(std::string::const_iterator i1,
+												std::string::const_iterator i2,
+												int* font_size,
+												SDL_Color* colour, int* style);
+
 
 //Function to draw text on a surface. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed
