@@ -81,14 +81,6 @@ bool python_ai::init_ = false;
     {CC(x), reinterpret_cast<getter>(func), NULL,\
     CC(doc), NULL },
 
-#define wrap(code) \
-	try { code } \
-	catch(end_level_exception& e) { \
-		running_instance->exception = e; \
-		PyErr_SetString(PyExc_RuntimeError, "C++ exception!"); \
-		return NULL; \
-	}
-
 static PyObject* wrap_unittype(const unit_type& type);
 static PyObject* wrap_attacktype(const attack_type& type);
 static PyObject* wrapper_unittype_resistance_against(wesnoth_unittype* type, PyObject* args);
@@ -847,7 +839,6 @@ static PyObject *wrap_location(const gamemap::location& loc)
 
 void recalculate_movemaps()
 {
-  Py_BEGIN_ALLOW_THREADS
     python_ai *ai = running_instance;
     ai->src_dst_.clear();
     ai->dst_src_.clear();
@@ -860,7 +851,6 @@ void recalculate_movemaps()
     ai->enemy_possible_moves_.clear();
     ai->calculate_possible_moves(ai->enemy_possible_moves_,
         ai->enemy_src_dst_, ai->enemy_dst_src_, true);
-  Py_END_ALLOW_THREADS
 }
 
 static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args )
@@ -1487,6 +1477,7 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 
 	PyThreadState *_save ;
 	Py_UNBLOCK_THREADS ;
+
 	bool valid = false;
 	ai_interface::move_map::const_iterator pos;
 	for (pos = running_instance->src_dst_.begin(); pos != running_instance->src_dst_.end(); pos++)
@@ -1505,15 +1496,23 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 	  }
 
 	location location;
-	wrap(
-		location = running_instance->move_unit_partial(
-			*from->location_, *to->location_, running_instance->possible_moves_);
-	)
-
-	  Py_BLOCK_THREADS ;
-	PyObject* loc = wrap_location(location);
+	try
+	  {
+	    location = running_instance->move_unit_partial( *from->location_,
+							    *to->location_,
+							    running_instance->possible_moves_ ) ;
+	  }
+	catch( end_level_exception& e )
+	  {
+	    running_instance->exception = e ;
+	    Py_BLOCK_THREADS ;
+	    PyErr_SetString( PyExc_RuntimeError, "C++ exception!" ) ;
+	    return NULL ;
+	  }
 
     recalculate_movemaps();
+    Py_BLOCK_THREADS ;
+    PyObject* loc = wrap_location(location);
 
     return loc;
 }
@@ -1527,8 +1526,8 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		&wesnoth_location_type, &to, &weapon ) )
 		return NULL;
 
-	PyThreadState *_save ;
-	Py_UNBLOCK_THREADS ;
+ 	PyThreadState *_save ;
+  	Py_UNBLOCK_THREADS ;
 
 	/**
 	 * @todo FIXME: Remove this check and let the C++ code do the check if the
@@ -1537,25 +1536,28 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	 */
 	if (!tiles_adjacent(*from->location_, *to->location_))
 	  {
-	    Py_BLOCK_THREADS ;
+  	    Py_BLOCK_THREADS ;
 	    Py_RETURN_NONE;
 	  }
 
 	// check if units actually exist
 	bool fromexists = false;
 	bool toexists  = false;
-	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
+	for(unit_map::const_iterator i = running_instance->get_info().units.begin();
+	    i != running_instance->get_info().units.end(); ++i) {
 		if (i->first == *from->location_) {
 			fromexists = true;
 		}
 		else if (i->first == *to->location_) {
 			toexists = true;
 		}
+		if( fromexists && toexists )
+		  break ;
 	}
 
 	if (!fromexists or !toexists)
 	  {
-	    Py_BLOCK_THREADS ;
+  	    Py_BLOCK_THREADS ;
 	    Py_RETURN_NONE;
 	  }
 
@@ -1570,14 +1572,23 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		*to->location_,
 		weapon);
 
-	wrap(
-		running_instance->attack_enemy(*from->location_,*to->location_,
-			bc.get_attacker_stats().attack_num,
-			bc.get_defender_stats().attack_num);
-	)
+	try
+	  {
+	    running_instance->attack_enemy( *from->location_,
+					    *to->location_,
+					    bc.get_attacker_stats().attack_num,
+					    bc.get_defender_stats().attack_num ) ;
+	  }
+	catch( end_level_exception& e  )
+	  {
+	    running_instance->exception = e ;
+	    Py_BLOCK_THREADS ;
+	    PyErr_SetString( PyExc_RuntimeError, "C++ exception!" ) ;
+	    return NULL ;
+	  }
 
-	Py_BLOCK_THREADS ;
 	recalculate_movemaps();
+  	Py_BLOCK_THREADS ;
 
 	Py_INCREF(Py_None);
 	return Py_None;
@@ -1610,14 +1621,24 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* /*self*/, PyObject* args)
 	if (!PyArg_ParseTuple( args, CC("sO!"), &name, &wesnoth_location_type, &where))
 		return NULL;
 
-    int r;
-    Py_BEGIN_ALLOW_THREADS ;
-    wrap(
-        r = running_instance->recruit(name,*where->location_) == true ? 1 : 0;
-    )
+    int r ;
+    PyThreadState *_save ;
+    Py_UNBLOCK_THREADS ;
 
-    Py_END_ALLOW_THREADS ;
+    try
+      {
+        r = running_instance->recruit(name,*where->location_) == true ? 1 : 0 ;
+      }
+    catch( end_level_exception& e  )
+      {
+	running_instance->exception = e ;
+	Py_BLOCK_THREADS ;
+	PyErr_SetString( PyExc_RuntimeError, "C++ exception!" ) ;
+	return NULL ;
+      }
+
     recalculate_movemaps();
+    Py_BLOCK_THREADS ;
 
     return Py_BuildValue(INTVALUE, r);
 }
@@ -1645,7 +1666,7 @@ PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 
 	// Save thread state and release GIL
 	PyThreadState *_save;
-	Py_UNBLOCK_THREADS
+ 	Py_UNBLOCK_THREADS
 
 	info& inf = running_instance->get_info();
 
@@ -1658,7 +1679,7 @@ PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 		max_cost, &calc, inf.map.w(), inf.map.h());
 
 	// Lock the GIL again
-	Py_BLOCK_THREADS
+ 	Py_BLOCK_THREADS
 
 	PyObject* steps = PyList_New(route.steps.size());
 	for (size_t step = 0; step < route.steps.size(); step++)
@@ -1683,12 +1704,13 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 		Py_RETURN_NONE;
 	}
 
+	PyThreadState *_save;
+ 	Py_UNBLOCK_THREADS
+
 	info& inf = running_instance->get_info();
 
 	// We need to temporarily move our unit to where the attack calculation
 	// is supposed to take place.
-	PyThreadState *_save;
-	Py_UNBLOCK_THREADS
 	std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
 	std::pair<gamemap::location,unit> *backup = temp;
 	std::pair<gamemap::location,unit> replace(*from->location_,*self->unit_);
@@ -1705,7 +1727,7 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 	unsigned int i;
 	std::vector<double>attacker = bc.get_attacker_combatant().hp_dist;
-	Py_BLOCK_THREADS
+ 	Py_BLOCK_THREADS
 
 	PyObject* adict = PyDict_New();
 	for (i = 0; i < attacker.size(); i++) {
@@ -1721,11 +1743,11 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 	}
 
 	// Restore old position again
-	Py_UNBLOCK_THREADS
+ 	Py_UNBLOCK_THREADS
 	temp = inf.units.extract(*from->location_);
 	if (backup)
 		inf.units.add(backup);
-	Py_BLOCK_THREADS
+ 	Py_BLOCK_THREADS
 
 	return Py_BuildValue(CC("(OO)"), adict, ddict);
 }
@@ -1745,12 +1767,9 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
       PyString_AsStringAndSize(so, &cs, &len);
 
       PyThreadState *_save ;
-      Py_UNBLOCK_THREADS ;
+       Py_UNBLOCK_THREADS ;
 
       std::string s;
-      config const &old_memory = running_instance->current_team().ai_memory();
-      config new_memory(old_memory);
-
       char const *digits[] = {
 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 	"a", "b", "c", "d", "e", "f"};
@@ -1760,6 +1779,9 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 	  unsigned char x = cs[i];
 	  s += std::string(digits[x >> 4]) + std::string(digits[x & 15]);
 	}
+
+      config const &old_memory = running_instance->current_team().ai_memory();
+      config new_memory(old_memory);
       new_memory[variable] = s;
       running_instance->current_team().set_ai_memory(new_memory);
       Py_BLOCK_THREADS ;
@@ -1788,7 +1810,7 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 		return NULL;
 
 	PyThreadState *_save ;
-	Py_UNBLOCK_THREADS
+ 	Py_UNBLOCK_THREADS
 
 	config const &memory = running_instance->current_team().ai_memory();
 	char const *s = memory[variable].c_str();
@@ -1807,7 +1829,7 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	      char c = v1 * 16 + v2;
 	      data[i / 2] = c;
 	    }
-	  Py_BLOCK_THREADS ;
+ 	  Py_BLOCK_THREADS ;
 
 	Py_DECREF( default_value ) ;
         PyObject *ret = PyMarshal_ReadObjectFromString(data, len / 2);
@@ -1815,7 +1837,7 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
         return ret ;
 	} else if( default_value ) {
 	  // Value did not exist - do return default value
-	  Py_BLOCK_THREADS ;
+ 	  Py_BLOCK_THREADS ;
 	  return default_value ;
 	}
 
@@ -1837,12 +1859,22 @@ PyObject* python_ai::wrapper_raise_user_interact(PyObject* /*self*/, PyObject* a
 	if (!PyArg_ParseTuple(args, NOVALUE))
 		return NULL;
 
-	PyThreadState *_save ;
-	Py_UNBLOCK_THREADS ;
-	wrap(
-	     running_instance->raise_user_interact();
-	     )
-	Py_BLOCK_THREADS ;
+ 	PyThreadState *_save ;
+ 	Py_UNBLOCK_THREADS ;
+
+	try
+	  {
+	    running_instance->raise_user_interact() ;
+	  }
+	catch( end_level_exception& e  )
+	  {
+	    running_instance->exception = e ;
+	    Py_BLOCK_THREADS ;
+	    PyErr_SetString( PyExc_RuntimeError, "C++ exception!" ) ;
+	    return NULL ;
+	  }
+
+ 	Py_BLOCK_THREADS ;
 	Py_INCREF(Py_None);
 	return Py_None;
 }
@@ -1874,11 +1906,16 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	}
 
 	PyThreadState *_save ;
-	Py_UNBLOCK_THREADS ;
+ 	Py_UNBLOCK_THREADS ;
+
 	info& inf = running_instance->get_info();
 
 	unit_map::iterator u_it = inf.units.find(*from->location_);
-	if (u_it == inf.units.end()) Py_RETURN_NONE;
+	if (u_it == inf.units.end())
+	  {
+ 	    Py_BLOCK_THREADS ;
+	    Py_RETURN_NONE;
+	  }
 
 	// Temporarily move our unit to the specified location, storing any
 	// unit that might happen to be there already.
@@ -1899,7 +1936,7 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	inf.units.add(original);
 	if (backup)
 		inf.units.add(backup);
-	Py_BLOCK_THREADS ;
+ 	Py_BLOCK_THREADS ;
 
 	PyObject* srcdst = wrap_move_map(test_src_dst);
 	PyObject* dstsrc = wrap_move_map(test_dst_src);
