@@ -23,24 +23,16 @@
 
 #define ERR_G LOG_STREAM(err, general)
 
+
 static int run_async_operation(void* data)
 {
 	threading::async_operation* const op = reinterpret_cast<threading::async_operation*>(data);
 	op->run();
 
-	bool should_delete = false;
 	{
 		const threading::lock l(op->get_mutex());
 		op->notify_finished(); //in case the operation didn't notify of finishing
-		if(op->is_aborted()) {
-			should_delete = true;
-		}
 	}
-
-	if(should_delete) {
-		delete op;
-	}
-
 
 	return 0;
 }
