@@ -14,7 +14,11 @@
 
 #include <boost/test/auto_unit_test.hpp>
 #include <string>
+#include <SDL.h>
+#include <iostream>
+
 #include "network.hpp"
+#include "thread.hpp"
 #include "config.hpp"
 
 //! Test networking to prevent bugs there.
@@ -98,6 +102,29 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 }
 
+
+class connect_aborter : public threading::waiter
+{
+public:
+	connect_aborter() : start_(SDL_GetTicks())
+	{}
+	ACTION process();
+
+private:
+	size_t start_;
+};
+
+connect_aborter::ACTION connect_aborter::process()
+{
+	// Abort connection after 5 ms
+	if(SDL_GetTicks() - start_ >= 5) {
+		return ABORT;
+	} else {
+		return WAIT;
+	}
+}
+
+
 BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 {
 	delete wes_server;
@@ -112,23 +139,21 @@ BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 	delete wes_manager;
 	wes_manager = 0;
 	BOOST_CHECK_MESSAGE(wes_manager = new network::manager(MIN_THREADS,MAX_THREADS), "network::manager failed to initialize");
-	client_client1 = network::connect("server.wesnoth.org", 15000);
-	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
+
+	connect_aborter aborter;
+	BOOST_CHECK_MESSAGE((client_client1 = network::connect("server.wesnoth.org", 15000, aborter)) == 0, "Connection create but not shoul");
 	delete wes_manager;
 
 	BOOST_CHECK_MESSAGE(wes_manager = new network::manager(MIN_THREADS,MAX_THREADS), "network::manager failed to initialize");
 	BOOST_CHECK_MESSAGE(wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER), "");
+	BOOST_CHECK_MESSAGE((client_client1 = network::connect(LOCALHOST, TEST_PORT, aborter)) == 0, "Connection create but not shoul");
+	delete wes_manager;
+
+	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	client_client1 = network::connect(LOCALHOST, TEST_PORT);
 	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
 	delete wes_server;
 	delete wes_manager;
-
-#if 0
-	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
-	client_client1 = network::connect(LOCALHOST, TEST_PORT);
-	BOOST_CHECK_MESSAGE(client_client1 > 0, "Can't connect to server");
-	delete wes_manager;
-#endif
 	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 }
