@@ -252,9 +252,10 @@ cutter_DEPENDENCIES=libwesnoth-core.a
 #    Unit tests                                                             #
 #############################################################################
 
-test_SOURCES = \
+test_SOURCES =  \
 	tests/main.cpp \
 	tests/test_util.cpp \
+    tests/test_network_worker.cpp \
 	$(wesnoth_source)
 
 test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)
@@ -397,12 +398,6 @@ if BOOST_TEST_DYN_LINK
     CXXFLAGS += -DBOOST_TEST_DYN_LINK
 endif
 
-if BOOST_AUTO_TEST
-    CXXFLAGS += -DWESNOTH_BOOST_AUTO_TEST_MAIN
-else
-    CXXFLAGS += -DWESNOTH_BOOST_TEST_MAIN
-endif
-
 CXXLD = $(LDPREFIX) $(CXX)
 CXXFLAGS += $(BOOST_CPPFLAGS)
 
@@ -412,6 +407,7 @@ LDFLAGS += -all-static
 endif
 
 LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)  $(BOOST_REGEX_LDFLAGS)
+
 
 #if STATIC
 #LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \

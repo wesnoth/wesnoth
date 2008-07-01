@@ -892,7 +892,7 @@ BOOST_IOSTREAMS
 BOOST_REGEX
 
 if test "x$tests" = "xyes"; then
-		
+	BOOST_REQUIRE([1.34])
 	BOOST_TEST
 	# workaround for broken 1.33.1 debian packet
 	if test x"$BOOST_UNIT_TEST_FRAMEWORK_LIBS" = x; then
@@ -924,21 +924,6 @@ if test "x$tests" = "xyes"; then
 	[AC_MSG_RESULT(no)]
 	[boost_test_dyn_link=no])
 
-	AC_MSG_CHECKING([for boost auto test not in core])
-
-	m4_pattern_allow([^BOOST_AUTO_TEST_CASE$])
-
-	AC_LINK_IFELSE([AC_LANG_SOURCE([
-	#define BOOST_AUTO_TEST_MAIN
-        #include <boost/test/auto_unit_test.hpp>
-
-	])],
-	[AC_MSG_RESULT(yes)]
-	[boost_auto_test=yes],
-	[AC_MSG_RESULT(no)]
-	[boost_auto_test=no])
-
-
         CPPFLAGS=$OLD_CPPFLAGS
         CFLAGS=$OLD_CFLAGS
         LIBS=$OLD_LIBS
@@ -946,10 +931,8 @@ if test "x$tests" = "xyes"; then
 fi
 
 m4_pattern_allow([^BOOST_TEST_DYN_LINK$])
-m4_pattern_allow([^BOOST_AUTO_TEST$])
 	
 AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
-AM_CONDITIONAL([BOOST_AUTO_TEST], [test x"$boost_auto_test" = xyes])
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #

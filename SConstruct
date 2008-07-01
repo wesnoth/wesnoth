@@ -32,7 +32,7 @@ def OptionalPath(key, val, env):
 
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder")),
+        "wesnoth,wesnothd,test", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder test")),
     EnumOption('build', 'Build variant: debug, release or profile', "release", ["release", "debug", "profile"]),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
@@ -70,6 +70,7 @@ opts.AddOptions(
     EnumOption('gui', 'Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs)', "normal", ["normal", "small", "tiny"]),
     BoolOption('static', 'Set to enable static building of Wesnoth', False),
     BoolOption('strict', 'Set to strict compilation', False),
+    BoolOption('static_test', 'Staticaly build against boost test (Not supported yet)', False),
     BoolOption('verbose', 'Emit progress messages during data installation.', False),
     PathOption('sdldir', 'Directory of SDL installation.', "", OptionalPath),
     PathOption('boostdir', 'Directory of boost installation.', "", OptionalPath),
@@ -211,18 +212,18 @@ if env["prereqs"]:
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
+    have_test_prereqs =  conf.CheckBoost('unit_test_framework', require_version = "1.34.0") or Warning("Boost test not found. Disabling unit tests.")
+
     if env["python"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
 else:
     have_client_prereqs = True
     have_X = True
     have_server_prereqs = True
+    have_test_prereqs = True
 
 env.Append(CPPPATH = ["#/src", "#/"])
 
-boost_test_dyn_link = False
-if 'test' in COMMAND_LINE_TARGETS:
-    boost_test_dyn_link =  conf.CheckBoost('unit_test_framework', require_version = "1.34.0")
 
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
@@ -283,7 +284,7 @@ try:
 except:
     env["svnrev"] = ""
 
-Export(Split("env have_client_prereqs have_server_prereqs"))
+Export(Split("env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
@@ -299,7 +300,7 @@ env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get
 env.MergeFlags(env["extra_flags_" + build])
 
 test_env = env.Clone()
-if boost_test_dyn_link:
+if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 Export("test_env")
 
