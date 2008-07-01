@@ -777,6 +777,7 @@ manager::~manager()
  			cond[shard]->notify_all();
 
 			for(std::map<Uint32,threading::thread*>::const_iterator i = threads[shard].begin(); i != threads[shard].end(); ++i) {
+
 				DBG_NW << "waiting for thread " << i->first << " to exit...\n";
 				delete i->second;
 				DBG_NW << "thread exited...\n";
@@ -788,6 +789,8 @@ manager::~manager()
 			// will access memory already freed by way of
 			// stale mutex. Bad things will follow. ;)
  			threads[shard].clear();
+			// Have to clean up to_clear so no bogus clearing of threads
+			to_clear[shard].clear();
  			delete cond[shard];
  			cond[shard] = NULL;
 			delete shard_mutexes[shard];
