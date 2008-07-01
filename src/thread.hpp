@@ -242,9 +242,7 @@ public:
 	~async_operation_holder() {
 		//it's okay to call is_aborted() without the mutex here,
 		//because we are in the calling thread, not the worker thread
-		if(op_->is_aborted() == false) {
-			delete op_;
-		}
+		delete op_;
 	}
 
 	T& operation() const { return *op_; }
