@@ -191,9 +191,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 }
 
 // This function use the screen as reference
-const gamemap::location display::hex_clicked_on(int xclick, int yclick,
-		gamemap::location::DIRECTION* nearest_hex,
-		gamemap::location::DIRECTION* second_nearest_hex) const
+const gamemap::location display::hex_clicked_on(int xclick, int yclick) const
 {
 	const SDL_Rect& rect = map_area();
 	if(point_in_rect(xclick,yclick,rect) == false) {
@@ -203,14 +201,12 @@ const gamemap::location display::hex_clicked_on(int xclick, int yclick,
 	xclick -= rect.x;
 	yclick -= rect.y;
 
-	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex, second_nearest_hex);
+	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick);
 }
 
 
 // This function use the rect of map_area as reference
-const gamemap::location display::pixel_position_to_hex(int x, int y,
-		gamemap::location::DIRECTION* nearest_hex,
-		gamemap::location::DIRECTION* second_nearest_hex) const
+const gamemap::location display::pixel_position_to_hex(int x, int y) const
 {
 	// adjust for the border
 	x -= static_cast<int>(theme_.border().size * hex_width());
@@ -259,8 +255,13 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 		}
 	}
 
-	const gamemap::location res(x_base + x_modifier - offset, y_base + y_modifier - offset);
+	return gamemap::location(x_base + x_modifier - offset, y_base + y_modifier - offset);
 
+	
+	// NOTE: This code to get nearest_hex and second_nearest_hex
+	// is not used anymore. However, it can be usefull later.
+	// So, keep it here for the moment.
+	/*
 	if(nearest_hex != NULL) {
 		// Our x and y use the map_area as reference.
 		// The coordinates given by get_location use the screen as reference,
@@ -329,8 +330,7 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 			}
 		}
 	}
-
-	return res;
+	*/
 }
 
 void display::rect_of_hexes::iterator::operator++()
