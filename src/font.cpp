@@ -880,12 +880,8 @@ surface floating_label::create_surface()
 		}
 		else {
 			// background is blurred shadow of the text
-			// we don't parse markup here to guarantee a black shadow
-			// FIXME: using color mark-up will cause colored shadow
-			surface background = font::render_text(text_, font_size_, font::BLACK_COLOUR, 0, true);
 			//TODO add a little extra space for the blur of letters with a lower part
-			background = blur_alpha_surface(background, 2, false);
-			background = adjust_surface_alpha(background, ftofxp(4.0), false);
+			surface background = shadow_image(foreground, false);
 			
 			if (background == NULL) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;

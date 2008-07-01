@@ -635,6 +635,44 @@ surface darken_image(surface const &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+surface shadow_image(surface const &surf, bool optimize)
+{
+	if(surf == NULL)
+		return NULL;
+
+	// we blur it, and reuse the neutral surface created by the blur function (optimized = false)
+	surface nsurf (blur_alpha_surface(surf, 2, false));
+
+	if(nsurf == NULL) {
+		std::cerr << "failed to blur the shadow surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				// increase alpha and color in black (RGB=0)
+				// with some stupid optimization for handling maximum values
+				if (alpha < 255/4)
+					*beg = (alpha*4) << 24;
+				else
+					*beg = 0xFF000000; // we hit the maximum
+			}
+
+			++beg;
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
+
+
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize){
 	if(map_rgb.size()){
 		if(surf == NULL)
