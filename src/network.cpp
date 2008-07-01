@@ -403,12 +403,14 @@ void connect_operation::run()
 #endif
 	if(fcntl((reinterpret_cast<_TCPsocket*>(sock))->channel, F_SETFL, flags) == -1) {
 		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
+		SDLNet_TCP_Close(sock);
 		return;
 	}
 #else
 	int on = 1;
 	if(setsockopt(((_TCPsocket*)sock)->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
 		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
+		SDLNet_TCP_Close(sock);
 		return;
 	}
 #endif

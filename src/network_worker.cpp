@@ -778,7 +778,6 @@ manager::~manager()
 
 			for(std::map<Uint32,threading::thread*>::const_iterator i = threads[shard].begin(); i != threads[shard].end(); ++i) {
 				DBG_NW << "waiting for thread " << i->first << " to exit...\n";
-				(*i->second).join() ;
 				delete i->second;
 				DBG_NW << "thread exited...\n";
 			}

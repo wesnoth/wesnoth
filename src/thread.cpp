@@ -29,10 +29,8 @@ static int run_async_operation(void* data)
 	threading::async_operation* const op = reinterpret_cast<threading::async_operation*>(data);
 	op->run();
 
-	{
-		const threading::lock l(op->get_mutex());
-		op->notify_finished(); //in case the operation didn't notify of finishing
-	}
+	const threading::lock l(op->get_mutex());
+	op->notify_finished(); //in case the operation didn't notify of finishing
 
 	return 0;
 }
@@ -180,11 +178,16 @@ async_operation::RESULT async_operation::execute(waiter& wait)
 
 		if(!completed) {
 			aborted_ = true;
-			t->detach();
+			finished_.wait(get_mutex());
+			SDL_Delay(1);
+			const threading::lock l(get_mutex());
+//			t->detach();
 			return ABORTED;
 		}
 	}
 
+	SDL_Delay(1);
+	const threading::lock l(get_mutex());
 	return COMPLETED;
 }
 
