@@ -19,14 +19,12 @@
 #define EDITOR2_ACTION_HPP
 
 #include "action_base.hpp"
+#include "editor_map.hpp"
 #include "../map.hpp"
 #include "../terrain.hpp"
 
+
 namespace editor2 {
-	
-class editor_map : public gamemap
-{
-};
 
 class brush
 {
