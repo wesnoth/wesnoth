@@ -111,7 +111,6 @@ private:
 	//computed with enemies_visible()
 	bool enemies_visible_;
 	bool undo_;
-	bool show_menu_;
 	bool over_route_;
 	bool attackmove_;
 	bool reachmap_invalid_;
