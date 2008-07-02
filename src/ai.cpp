@@ -36,6 +36,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
+#include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"

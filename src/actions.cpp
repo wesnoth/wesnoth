@@ -29,7 +29,7 @@
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
-#include "mouse_events.hpp"
+#include "mouse_handler_base.hpp"
 #include "pathfind.hpp"
 #include "random.hpp"
 #include "replay.hpp"

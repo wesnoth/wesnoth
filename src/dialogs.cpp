@@ -29,6 +29,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
+#include "mouse_handler_base.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
 #include "thread.hpp"

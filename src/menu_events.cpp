@@ -32,6 +32,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
+#include "mouse_events.hpp"
 #include "playturn.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"

@@ -17,16 +17,19 @@
 #define MENU_EVENTS_H_INCLUDED
 
 #include "global.hpp"
-
+#include "actions.hpp"
 #include "show_dialog.hpp"
 #include "display.hpp"
 #include "floating_textbox.hpp"
-#include "mouse_events.hpp"
 #include "statistics.hpp"
 #include "widgets/textbox.hpp"
 
 class game_state;
 class gamestatus;
+
+namespace events {
+	class mouse_handler;
+}
 
 enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE, OBSERVER_END, SKIP_TO_LINGER };
 
