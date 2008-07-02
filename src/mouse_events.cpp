@@ -16,6 +16,7 @@
 #include "mouse_events.hpp"
 
 #include "attack_prediction.hpp"
+#include "attack_prediction_display.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
 #include "game_events.hpp"
@@ -37,658 +38,15 @@
 
 namespace events{
 
-int commands_disabled = 0;
-
-command_disabler::command_disabler()
-{
-	++commands_disabled;
-}
-
-command_disabler::~command_disabler()
-{
-	--commands_disabled;
-}
-
-static bool command_active()
-{
-#ifdef __APPLE__
-	return (SDL_GetModState()&KMOD_META) != 0;
-#else
-	return false;
-#endif
-}
-
-// Conversion routine for both unscatched and damage change percentage.
-static void format_prob(char str_buf[10], const float prob)
-{
-
-	if(prob > 0.9995) {
-		snprintf(str_buf, 10, "100 %%");
-	} else if(prob >= 0.1) { 
-		snprintf(str_buf, 10, "%4.1f %%", 
-			static_cast<float>(100.0 * (prob + 0.0005)));
-	} else { 
-		snprintf(str_buf, 10, " %3.1f %%", 
-			static_cast<float>(100.0 * (prob + 0.0005)));
-	}
-
-	str_buf[9] = '\0';  //prevents _snprintf error
-}
 
 namespace{
 	//minimum dragging distance to fire the drag&drop
 	const double drag_threshold = 14.0;
-
-	// This preview pane is shown in the "Damage Calculations" dialog.
-	class battle_prediction_pane : public gui::preview_pane
-	{
-	public:
-
-		// Lengthy constructor.
-		battle_prediction_pane(game_display &disp, const battle_context& bc, const gamemap& map,
-							   const std::vector<team>& teams, const unit_map& units,
-							   const gamestatus& status,
-							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
-
-		// This method is called to draw the dialog contents.
-		void draw_contents();
-
-		// Hack: pretend the preview pane goes to the left.
-		bool left_side() const { return 1; }
-
-		// Unused.
-		void set_selection(int) {}
-
-	private:
-		game_display &disp_;
-		const battle_context& bc_;
-		const gamemap& map_;
-		const std::vector<team>& teams_;
-		const unit_map& units_;
-		const gamestatus& status_;
-		const gamemap::location& attacker_loc_;
-		const gamemap::location& defender_loc_;
-		const unit& attacker_;
-		const unit& defender_;
-
-		// Layout constants.
-		static const int inter_line_gap_;
-		static const int inter_column_gap_;
-		static const int inter_units_gap_;
-		static const int max_hp_distrib_rows_;
-
-		// Layout computations.
-		std::string attacker_label_, defender_label_;
-		int attacker_label_width_, defender_label_width_;
-
-		std::vector<std::string> attacker_left_strings_, attacker_right_strings_;
-		std::vector<std::string> defender_left_strings_, defender_right_strings_;
-		int attacker_strings_width_, attacker_left_strings_width_, attacker_right_strings_width_;
-		int defender_strings_width_, defender_left_strings_width_, defender_right_strings_width_;
-		int units_strings_height_;
-
-		std::string hp_distrib_string_;
-		surface attacker_hp_distrib_, defender_hp_distrib_;
-		int hp_distrib_string_width_;
-		int attacker_hp_distrib_width_, defender_hp_distrib_width_;
-		int attacker_hp_distrib_height_, defender_hp_distrib_height_, hp_distribs_height_;
-
-		int attacker_width_, defender_width_, units_width_;
-		int dialog_width_, dialog_height_;
-
-		// This method builds the strings describing the unit damage modifiers.
-		// Read the code to understand the arguments.
-		void get_unit_strings(const battle_context::unit_stats& stats,
-						  const unit& u, const gamemap::location& u_loc, float u_unscathed,
-						  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
-						  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
-					      int& left_strings_width, int& right_strings_width, int& strings_width);
-
-		// Utility method that returns the length of the longest string in a vector of strings.
-		int get_strings_max_length(const std::vector<std::string>& strings);
-
-		// This method builds the vector containing the <HP, probability> pairs
-		// that are required to draw the image of the hitpoints distribution of
-		// a combatant after a fight. The method takes as input the probability
-		// distribution of the hitpoints of the combatant after the fight.
-		void get_hp_prob_vector(const std::vector<double>& hp_dist,
-								std::vector<std::pair<int, double> >& hp_prob_vector);
-
-		// This method draws a unit in the dialog pane. Read the code to understand
-		// the arguments.
-		void draw_unit(int x_off, int damage_line_skip, int left_strings_width,
-					   const std::vector<std::string>& left_strings,
-					   const std::vector<std::string>& right_strings,
-					   const std::string& label, int label_width,
-					   surface& hp_distrib, int hp_distrib_width);
-
-		// This method draws the image of the hitpoints distribution of a
-		// combatant after a fight. The method takes as input the
-		// "hp_prob_vector" computed above and the stats of the combatants.
-		// It draws the image in the surface 'surf' and set the width and
-		// height of the image in the fields specified.
-		void get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
-								const battle_context::unit_stats& stats,
-									const battle_context::unit_stats& opp_stats,
-									surface& surf, int& width, int& height);
-
-		// This method blends a RGB color. The method takes as input a surface,
-		// the RGB color to blend and a value specifying how much blending to
-		// apply. The blended color is returned. Caution: if you use a
-		// transparent color, make sure the resulting color is not equal to the
-		// transparent color.
-		Uint32 blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop);
-	};
-
-	const int battle_prediction_pane::inter_line_gap_ = 3;
-	const int battle_prediction_pane::inter_column_gap_ = 30;
-	const int battle_prediction_pane::inter_units_gap_ = 30;
-	const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
-
-	battle_prediction_pane::battle_prediction_pane(game_display &disp, const battle_context& bc, const gamemap& map,
-												   const std::vector<team>& teams, const unit_map& units,
-												   const gamestatus& status,
-												   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
-				: gui::preview_pane(disp.video()), disp_(disp), bc_(bc), map_(map), teams_(teams), units_(units), status_(status),
-				  attacker_loc_(attacker_loc), defender_loc_(defender_loc),
-				  attacker_(units.find(attacker_loc)->second), defender_(units.find(defender_loc)->second)
-	{
-		// Predict the battle outcome.
-		combatant attacker_combatant(bc.get_attacker_stats());
-		combatant defender_combatant(bc.get_defender_stats());
-		attacker_combatant.fight(defender_combatant);
-
-		const battle_context::unit_stats& attacker_stats = bc.get_attacker_stats();
-		const battle_context::unit_stats& defender_stats = bc.get_defender_stats();
-
-		// Create the hitpoints distribution graphics.
-		std::vector<std::pair<int, double> > hp_prob_vector;
-		get_hp_prob_vector(attacker_combatant.hp_dist, hp_prob_vector);
-		get_hp_distrib_surface(hp_prob_vector, attacker_stats, defender_stats, attacker_hp_distrib_,
-							   attacker_hp_distrib_width_, attacker_hp_distrib_height_);
-		get_hp_prob_vector(defender_combatant.hp_dist, hp_prob_vector);
-		get_hp_distrib_surface(hp_prob_vector, defender_stats, attacker_stats, defender_hp_distrib_,
-						   defender_hp_distrib_width_, defender_hp_distrib_height_);
-		hp_distribs_height_ = maximum<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_);
-
-		// Build the strings and compute the layout.
-		std::stringstream str;
-
-		attacker_label_ = _("Attacker");
-		defender_label_ = _("Defender");
-		attacker_label_width_ = font::line_width(attacker_label_, font::SIZE_PLUS, TTF_STYLE_BOLD);
-		defender_label_width_ = font::line_width(defender_label_, font::SIZE_PLUS, TTF_STYLE_BOLD);
-
-		// Get the units strings.
-		get_unit_strings(attacker_stats, attacker_, attacker_loc_, attacker_combatant.untouched,
-						 defender_, defender_loc_, defender_stats.weapon,
-						 attacker_left_strings_, attacker_right_strings_,
-						 attacker_left_strings_width_, attacker_right_strings_width_, attacker_strings_width_);
-
-		get_unit_strings(defender_stats, defender_, defender_loc_, defender_combatant.untouched,
-						 attacker_, attacker_loc_, attacker_stats.weapon,
-						 defender_left_strings_, defender_right_strings_,
-						 defender_left_strings_width_, defender_right_strings_width_, defender_strings_width_);
-
-		units_strings_height_ = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size())
-							    * (font::SIZE_NORMAL + inter_line_gap_) + 14;
-
-		hp_distrib_string_ = _("Expected Battle Result (HP)");
-		hp_distrib_string_width_ = font::line_width(hp_distrib_string_, font::SIZE_SMALL);
-
-		attacker_width_ = maximum<int>(attacker_label_width_, attacker_strings_width_);
-		attacker_width_ = maximum<int>(attacker_width_, hp_distrib_string_width_);
-		attacker_width_ = maximum<int>(attacker_width_, attacker_hp_distrib_width_);
-		defender_width_ = maximum<int>(defender_label_width_, defender_strings_width_);
-		defender_width_ = maximum<int>(defender_width_, hp_distrib_string_width_);
-		defender_width_ = maximum<int>(defender_width_, defender_hp_distrib_width_);
-		units_width_ = maximum<int>(attacker_width_, defender_width_);
-
-		dialog_width_ = 2 * units_width_ + inter_units_gap_;
-		dialog_height_ = 15 + 24 + units_strings_height_ + 14 + 19 + hp_distribs_height_ + 18;
-
-		// Set the dialog size.
-		set_measurements(dialog_width_, dialog_height_);
-	}
-
-	void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& stats,
-											  const unit& u, const gamemap::location& u_loc, float u_unscathed,
-											  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
-												  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
-										      int& left_strings_width, int& right_strings_width, int& strings_width)
-	{
-		std::stringstream str;
-		char str_buf[10];
-
-		// With a weapon.
-		if(stats.weapon != NULL) {
-
-			// Set specials context (for safety, it should not have changed normally).
-			const attack_type *weapon = stats.weapon;
-			weapon->set_specials_context(u_loc, opp_loc, &units_, &map_, &status_, &teams_, stats.is_attacker, opp_weapon);
-
-			// Get damage modifiers.
-			unit_ability_list dmg_specials = weapon->get_specials("damage");
-			unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), stats.backstab_pos);
-
-			// Get the SET damage modifier, if any.
-			const unit_abilities::individual_effect *set_dmg_effect = NULL;
-			unit_abilities::effect_list::const_iterator i;
-			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
-				if(i->type == unit_abilities::SET) {
-					set_dmg_effect = &*i;
-					break;
-				}
-			}
-
-			// Either user the SET modifier or the base weapon damage.
-			if(set_dmg_effect == NULL) {
-				left_strings.push_back(weapon->name());
-				str.str("");
-				str << weapon->damage();
-				right_strings.push_back(str.str());
-			} else {
-				left_strings.push_back((*set_dmg_effect->ability)["name"]);
-				str.str("");
-				str << set_dmg_effect->value;
-				right_strings.push_back(str.str());
-			}
-
-			// Process the ADD damage modifiers.
-			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
-				if(i->type == unit_abilities::ADD) {
-					left_strings.push_back((*i->ability)["name"]);
-					str.str("");
-					if(i->value >= 0) str << "+" << i->value;
-					else str << i->value;
-					right_strings.push_back(str.str());
-				}
-			}
-
-			// Process the MUL damage modifiers.
-			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
-				if(i->type == unit_abilities::MUL) {
-					left_strings.push_back((*i->ability)["name"]);
-					str.str("");
-					str << "* " << (i->value / 100);
-					if(i->value % 100) {
-						str << "." << ((i->value % 100) / 10);
-						if(i->value % 10) str << (i->value % 10);
-					}
-					right_strings.push_back(str.str());
-				}
-			}
-
-			// Resistance modifier.
-			int resistance_modifier = opp.damage_from(*weapon, !stats.is_attacker, opp_loc);
-			if(resistance_modifier != 100) {
-				str.str("");
-				if(stats.is_attacker) str << _("Defender");
-				else str << _("Attacker");
-				if(resistance_modifier < 100) str << _(" resistance vs ");
-				else str << _(" vulnerability vs ");
-				str << gettext(weapon->type().c_str());
-				left_strings.push_back(str.str());
-				str.str("");
-				str << "* " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);
-				right_strings.push_back(str.str());
-			}
-
-			// Slowed penalty.
-			if(stats.is_slowed) {
-				left_strings.push_back(_("Slowed"));
-				right_strings.push_back("* 0.5");
-			}
-
-			// Time of day modifier.
-			int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), u.is_fearless(), map_);
-			if(tod_modifier != 0) {
-				left_strings.push_back(_("Time of day"));
-				str.str("");
-				str << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
-				right_strings.push_back(str.str());
-			}
-
-	// Leadership bonus.
-	int leadership_bonus = 0;
-	under_leadership(units_, u_loc, &leadership_bonus);
-			if(leadership_bonus != 0) {
-				left_strings.push_back(_("Leadership"));
-				str.str("");
-				str << "+" << leadership_bonus << "%";
-				right_strings.push_back(str.str());
-			}
-
-			// Total damage.
-			left_strings.push_back(_("Total damage"));
-			str.str("");
-			str << stats.damage << "-" << stats.num_blows << " (" << stats.chance_to_hit << "%)";
-			right_strings.push_back(str.str());
-
-		// Without a weapon.
-		} else {
-			left_strings.push_back(_("No usable weapon"));
-			right_strings.push_back("");
-		}
-
-		// Unscathed probability.
-		left_strings.push_back(_("Chance of being unscathed"));
-		format_prob(str_buf, u_unscathed);
-		right_strings.push_back(str_buf);
-
-#if 0 // might not be en English!
-		// Fix capitalisation of left strings.
-		for(int i = 0; i < (int) left_strings.size(); i++)
-			if(left_strings[i].size() > 0) left_strings[i][0] = toupper(left_strings[i][0]);
-#endif
-
-		// Compute the width of the strings.
-		left_strings_width = get_strings_max_length(left_strings);
-		right_strings_width = get_strings_max_length(right_strings);
-		strings_width = left_strings_width + inter_column_gap_ + right_strings_width;
-	}
-
-	int battle_prediction_pane::get_strings_max_length(const std::vector<std::string>& strings)
-	{
-		int max_len = 0;
-
-		for(int i = 0; i < static_cast<int>(strings.size()); i++)
-			max_len = maximum<int>(font::line_width(strings[i], font::SIZE_NORMAL), max_len);
-
-		return max_len;
-	}
-
-	void battle_prediction_pane::get_hp_prob_vector(const std::vector<double>& hp_dist,
-													std::vector<std::pair<int, double> >& hp_prob_vector)
-	{
-		hp_prob_vector.clear();
-
-		// First, we sort the probabilities in ascending order.
-		std::vector<std::pair<double, int> > prob_hp_vector;
-		int i;
-
-		for(i = 0; i < static_cast<int>(hp_dist.size()); i++) {
-			double prob = hp_dist[i];
-
-			// We keep only values above 0.1%.
-			if(prob > 0.001)
-				prob_hp_vector.push_back(std::pair<double, int>(prob, i));
-		}
-
-		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
-
-		// We store a few of the highest probability hitpoint values.
-		int nb_elem = minimum<int>(max_hp_distrib_rows_, prob_hp_vector.size());
-
-		for(i = prob_hp_vector.size() - nb_elem;
-				i < static_cast<int>(prob_hp_vector.size()); i++) {
-
-			hp_prob_vector.push_back(std::pair<int, double>
-				(prob_hp_vector[i].second, prob_hp_vector[i].first));
-			}
-
-		// Then, we sort the hitpoint values in ascending order.
-		std::sort(hp_prob_vector.begin(), hp_prob_vector.end());
-	}
-
-	void battle_prediction_pane::draw_contents()
-	{
-		// We must align both damage lines.
-		int damage_line_skip = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size()) - 2;
-
-		draw_unit(0, damage_line_skip,
-				  attacker_left_strings_width_, attacker_left_strings_, attacker_right_strings_,
-				  attacker_label_, attacker_label_width_, attacker_hp_distrib_, attacker_hp_distrib_width_);
-
-		draw_unit(units_width_ + inter_units_gap_, damage_line_skip,
-				  defender_left_strings_width_, defender_left_strings_, defender_right_strings_,
-				  defender_label_, defender_label_width_, defender_hp_distrib_, defender_hp_distrib_width_);
-	}
-
-	void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left_strings_width,
-										   const std::vector<std::string>& left_strings,
-										   const std::vector<std::string>& right_strings,
-										   const std::string& label, int label_width,
-										   surface& hp_distrib, int hp_distrib_width)
-	{
-		surface screen = disp_.get_screen_surface();
-		int i;
-
-		// NOTE. A preview pane is not made to be used alone and it is not
-		// centered in the middle of the dialog. We "fix" this problem by moving
-		// the clip rectangle 10 pixels to the right. This is a kludge and it
-		// should be removed by 1) writing a custom dialog handler, or
-		// 2) modify preview_pane so that it accepts {left, middle, right} as
-		// layout possibilities.
-
-		// Get clip rectangle and center it
-		SDL_Rect clip_rect = location();
-		clip_rect.x += 10;
-
-		// Current vertical offset. We draw the dialog line-by-line, starting at the top.
-		int y_off = 15;
-
-		// Draw unit label.
-		font::draw_text_line(screen, clip_rect, font::SIZE_15, font::NORMAL_COLOUR, label,
-							 clip_rect.x + x_off + (units_width_ - label_width) / 2, clip_rect.y + y_off, 0, TTF_STYLE_BOLD);
-
-		y_off += 24;
-
-		// Draw unit left and right strings except the last two (total damage and unscathed probability).
-		for(i = 0; i < static_cast<int>(left_strings.size()) - 2; i++) {
-			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_strings[i],
-								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
-								 0, TTF_STYLE_NORMAL);
-
-			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_strings[i],
-								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
-								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
-		}
-
-		// Ensure both damage lines are aligned.
-		y_off += damage_line_skip * (font::SIZE_NORMAL + inter_line_gap_) + 14;
-
-		// Draw total damage and unscathed probability.
-		for(i = 0; i < 2; i++) {
-			const std::string& left_string = left_strings[left_strings.size() - 2 + i];
-			const std::string& right_string = right_strings[right_strings.size() - 2 + i];
-
-			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_string,
-								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
-								 0, TTF_STYLE_NORMAL);
-
-			font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_string,
-								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
-								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
-		}
-
-		y_off += 2 * (font::SIZE_NORMAL + inter_line_gap_) + 14;
-
-		// Draw hitpoints distribution string.
-		font::draw_text(screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, hp_distrib_string_,
-						clip_rect.x + x_off + (units_width_ - hp_distrib_string_width_) / 2, clip_rect.y + y_off);
-
-		y_off += 19;
-
-		// Draw hitpoints distributions.
-		video().blit_surface(clip_rect.x + x_off + (units_width_ - hp_distrib_width) / 2, clip_rect.y + y_off, hp_distrib);
-	}
-
-	void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
-														const battle_context::unit_stats& stats,
-														const battle_context::unit_stats& opp_stats,
-														surface& surf, int& width, int& height)
-	{
-		// Font size. If you change this, you must update the separator space.
-		int fs = font::SIZE_SMALL;
-
-		// Space before HP separator.
-		int hp_sep = 24 + 6;
-
-		// Bar space between both separators.
-		int bar_space = 150;
-
-		// Space after percentage separator.
-		int percent_sep = 43 + 6;
-
-		// Surface width and height.
-		width = 30 + 2 + bar_space + 2 + percent_sep;
-		height = 5 + (fs + 2) * hp_prob_vector.size();
-
-		// Create the surface.
-		surf = create_neutral_surface(width, height);
-		// following SDL code will use color key,
-		// so we need to remove the alpha channel to make it work
-		// FIXME: use standard alpha and blit_surface instead
-		SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
-
-		SDL_Rect clip_rect = {0, 0, width, height};
-		Uint32 grey_color = SDL_MapRGB(surf->format, 0xb7, 0xc1, 0xc1);
-		Uint32 transparent_color = SDL_MapRGB(surf->format, 1, 1, 1);
-
-		// Enable transparency.
-		SDL_SetColorKey(surf, SDL_SRCCOLORKEY, transparent_color);
-		SDL_FillRect(surf, &clip_rect, transparent_color);
-
-		// Draw the surrounding borders and separators.
-		SDL_Rect top_border_rect = {0, 0, width, 2};
-		SDL_FillRect(surf, &top_border_rect, grey_color);
-
-		SDL_Rect bottom_border_rect = {0, height - 2, width, 2};
-		SDL_FillRect(surf, &bottom_border_rect, grey_color);
-
-		SDL_Rect left_border_rect = {0, 0, 2, height};
-		SDL_FillRect(surf, &left_border_rect, grey_color);
-
-		SDL_Rect right_border_rect = {width - 2, 0, 2, height};
-		SDL_FillRect(surf, &right_border_rect, grey_color);
-
-		SDL_Rect hp_sep_rect = {hp_sep, 0, 2, height};
-		SDL_FillRect(surf, &hp_sep_rect, grey_color);
-
-		SDL_Rect percent_sep_rect = {width - percent_sep - 2, 0, 2, height};
-		SDL_FillRect(surf, &percent_sep_rect, grey_color);
-
-		// Draw the rows (lower HP values are at the bottom).
-		for(int i = 0; i < static_cast<int>(hp_prob_vector.size()); i++) {
-			char str_buf[10];
-
-			// Get the HP and probability.
-			int hp = hp_prob_vector[hp_prob_vector.size() - i - 1].first;
-			double prob = hp_prob_vector[hp_prob_vector.size() - i - 1].second;
-
-			SDL_Color row_color;
-
-			// Death line is red.
-			if(hp == 0) {
-				SDL_Color color = {0xe5, 0, 0, 0};
-				row_color = color;
-			}
-
-			// Below current hitpoints value is orange.
-			else if(hp < static_cast<int>(stats.hp)) {
-				// Stone is grey.
-				if(opp_stats.stones) {
-					SDL_Color color = {0x9a, 0x9a, 0x9a, 0};
-					row_color = color;
-				} else {
-					SDL_Color color = {0xf4, 0xc9, 0, 0};
-					row_color = color;
-				}
-			}
-
-			// Current hitpoints value and above is green.
-			else {
-				SDL_Color color = {0x08, 0xca, 0, 0};
-				row_color = color;
-			}
-
-			// Print HP, aligned right.
-			snprintf(str_buf, 10, "%d", hp);
-			str_buf[9] = '\0';  //prevents _snprintf error
-			int hp_width = font::line_width(str_buf, fs);
-
-			// Draw bars.
-			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
-								 hp_sep - hp_width - 2, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
-
-			int bar_len = maximum<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
-
-			SDL_Rect bar_rect_1 = {hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8};
-			SDL_FillRect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));
-
-			SDL_Rect bar_rect_2 = {hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6};
-			SDL_FillRect(surf, &bar_rect_2, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 66));
-
-			SDL_Rect bar_rect_3 = {hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4};
-			SDL_FillRect(surf, &bar_rect_3, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 33));
-
-			SDL_Rect bar_rect_4 = {hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2};
-			SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
-
-			// Draw probability percentage, aligned right.
-			format_prob(str_buf, prob);
-			int prob_width = font::line_width(str_buf, fs);
-			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
-							 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
-		}
-	}
-
-	Uint32 battle_prediction_pane::blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop)
-	{
-		// We simply decrement each component.
-		if(r < drop) r = 0; else r -= drop;
-		if(g < drop) g = 0; else g -= drop;
-		if(b < drop) b = 0; else b -= drop;
-
-		return SDL_MapRGB(surf->format, r, g, b);
-	}
-
-	// This class is used when the user clicks on the button
-	// to show the "Damage Calculations" dialog.
-	class attack_prediction_displayer : public gui::dialog_button_action
-	{
-	public:
-		attack_prediction_displayer(game_display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
-								    const std::vector<team>& teams, const unit_map& units,
-								    const gamestatus& status,
-									const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
-				: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status),
-				  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
-
-		// This method is called when the button is pressed.
-		RESULT button_pressed(int selection)
-		{
-			// Get the selected weapon, if any.
-			const size_t index = size_t(selection);
-
-			if(index < bc_vector_.size()) {
-				battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, status_,
-												   attacker_loc_, defender_loc_);
-				std::vector<gui::preview_pane*> preview_panes;
-				preview_panes.push_back(&battle_pane);
-
-				gui::show_dialog(disp_, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
-			}
-
-			return gui::CONTINUE_DIALOG;
-		}
-
-	private:
-		game_display &disp_;
-		const std::vector<battle_context>& bc_vector_;
-		const gamemap& map_;
-	const std::vector<team>& teams_;
-		const unit_map& units_;
-		const gamestatus& status_;
-		const gamemap::location& attacker_loc_;
-		const gamemap::location& defender_loc_;
-	};
-} //end anonymous namespace
+}
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
 				gamestatus& status, undo_list& undo_stack, undo_list& redo_stack):
-gui_(gui), teams_(teams), units_(units), map_(map), status_(status),
+mouse_handler_base(gui, map), teams_(teams), units_(units), status_(status),
 undo_stack_(undo_stack), redo_stack_(redo_stack)
 {
 	singleton_ = this;
@@ -717,69 +75,27 @@ void mouse_handler::set_team(const int team_number)
 	team_num_ = team_number;
 }
 
-void mouse_handler::mouse_motion(const SDL_MouseMotionEvent& event, const bool browse)
-{
-	mouse_motion(event.x,event.y, browse);
-}
-
-void mouse_handler::mouse_update(const bool browse)
-{
-	int x, y;
-	SDL_GetMouseState(&x,&y);
-	mouse_motion(x, y, browse, true);
-}
-
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
-	if(attackmove_) return;
-
-	if(minimap_scrolling_) {
-		//if the game is run in a window, we could miss a LMB/MMB up event
-		// if it occurs outside our window.
-		// thus, we need to check if the LMB/MMB is still down
-		minimap_scrolling_ = ((SDL_GetMouseState(NULL,NULL) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
-		if(minimap_scrolling_) {
-			const gamemap::location& loc = (*gui_).minimap_location_on(x,y);
-			if(loc.valid()) {
-				if(loc != last_hex_) {
-					last_hex_ = loc;
-					(*gui_).scroll_to_tile(loc,game_display::WARP,false);
-				}
-			} else {
-				// clicking outside of the minimap will end minimap scrolling
-				minimap_scrolling_ = false;
-			}
-		}
-		if(minimap_scrolling_) return;
-	}
-
-	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y);
-
-	// Fire the drag & drop only after minimal drag distance
-	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
-	if (dragging_ && !dragging_started_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_LEFT) != 0) {
-		const double drag_distance = std::pow((double) (drag_from_x_- mx), 2) + std::pow((double) (drag_from_y_- my), 2);
-		if (drag_distance > drag_threshold*drag_threshold) {
-			dragging_started_ = true;
-			cursor::set_dragging(true);
-		}
-	}
-
+	if (attackmove_) return;
+	
+	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
+	
+	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
+	
 	if(new_hex != last_hex_) {
 		update = true;
-
 		if (last_hex_.valid()) {
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
 			if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
-					previous_free_hex_ = last_hex_;
+				previous_free_hex_ = last_hex_;
 			}
 		}
 		last_hex_ = new_hex;
 	}
+	
 
 	if (reachmap_invalid_) update = true;
 
@@ -800,20 +116,20 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		// we do it before cursor selection, because it uses current_paths_
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
-			(*gui_).set_route(NULL);
+			gui().set_route(NULL);
 		}
 
 		if(enemy_paths_) {
 			enemy_paths_ = false;
 			current_paths_ = paths();
-			gui_->unhighlight_reach();
+			gui().unhighlight_reach();
 		} else if(over_route_) {
 			over_route_ = false;
 			current_route_.steps.clear();
-			(*gui_).set_route(NULL);
+			gui().set_route(NULL);
 		}
 
-		(*gui_).highlight_hex(new_hex);
+		gui().highlight_hex(new_hex);
 
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
@@ -844,9 +160,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		// show (or cancel) the attack direction indicator
 		if (attack_from.valid() && !browse) {
-			gui_->set_attack_indicator(attack_from, new_hex);
+			gui().set_attack_indicator(attack_from, new_hex);
 		} else {
-			gui_->clear_attack_indicator();
+			gui().clear_attack_indicator();
 		}
 
 		// the destination is the pointed hex or the adjacent hex
@@ -863,7 +179,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		if(dest == selected_hex_ || dest_un != units_.end()) {
 			current_route_.steps.clear();
-			(*gui_).set_route(NULL);
+			gui().set_route(NULL);
 		} else if(!current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
@@ -873,14 +189,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 						selected_unit->second.side() != team_num_);
 				current_route_ = get_route(selected_unit, dest, viewing_team());
 				if(!browse) {
-					(*gui_).set_route(&current_route_);
+					gui().set_route(&current_route_);
 				}
 			}
 		}
 
 		unit_map::iterator un = mouseover_unit;
 
-		if(un != units_.end() && current_paths_.routes.empty() && !(*gui_).fogged(un->first)) {
+		if(un != units_.end() && current_paths_.routes.empty() && !gui().fogged(un->first)) {
 			if (un->second.side() != team_num_) {
 				//unit under cursor is not on our team, highlight reach
 				unit_movement_resetter move_reset(un->second);
@@ -888,14 +204,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				const bool teleport = un->second.get_ability_bool("teleport",un->first);
 				current_paths_ = paths(map_,units_,new_hex,teams_,
 									false,teleport,viewing_team(),path_turns_);
-				gui_->highlight_reach(current_paths_);
+				gui().highlight_reach(current_paths_);
 				enemy_paths_ = true;
 			} else {
 				//unit is on our team, show path if the unit has one
 				const gamemap::location go_to = un->second.get_goto();
 				if(map_.on_board(go_to)) {
 					paths::route route = get_route(un, go_to, current_team());
-					gui_->set_route(&route);
+					gui().set_route(&route);
 				}
 				over_route_ = true;
 			}
@@ -997,125 +313,34 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 			allowed_teleports.insert(*i);
 		}
 	}
-
 	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
-
 	route_turns_to_complete(un->second, route, viewing_team(), units_,teams_,map_);
-
 	return route;
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
-	if(attackmove_) return;
-	show_menu_ = false;
-	mouse_update(browse);
-	int scrollx = 0;
-	int scrolly = 0;
+	if (attackmove_) return;
+	mouse_handler_base::mouse_press(event, browse);
+}
 
-	if(is_left_click(event) && event.state == SDL_RELEASED) {
-		minimap_scrolling_ = false;
-		dragging_ = false;
-		cursor::set_dragging(false);
-		if (dragging_started_ && !browse && !commands_disabled) {
-			left_click(event, browse);
-		}
-		dragging_started_= false;
-	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
-		minimap_scrolling_ = false;
-	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
-		left_click(event, browse);
-		if (!browse && !commands_disabled) {
-			dragging_ = true;
-			dragging_started_ = false;
-			SDL_GetMouseState(&drag_from_x_, &drag_from_y_);
-		}
-	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
-		// The first right-click cancel the selection if any,
-		// the second open the context menu
-		dragging_ = false;
-		dragging_started_ = false;
-		cursor::set_dragging(false);
-		if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
-			select_hex(gamemap::location(), browse);
-		} else {
-			gui_->draw(); // redraw highlight (and maybe some more)
-			const theme::menu* const m = gui_->get_theme().context_menu();
-			if (m != NULL)
-				show_menu_ = true;
-			else
-				LOG_STREAM(warn, display) << "no context menu found...\n";
-		}
-	} else if(is_middle_click(event) && event.state == SDL_PRESSED) {
-		// clicked on a hex on the minimap? then initiate minimap scrolling
-		const gamemap::location& loc = gui_->minimap_location_on(event.x,event.y);
-		minimap_scrolling_ = false;
-		if(loc.valid()) {
-			minimap_scrolling_ = true;
-			last_hex_ = loc;
-			gui_->scroll_to_tile(loc,game_display::WARP,false);
-		}
-	} else if (event.button == SDL_BUTTON_WHEELUP) {
-		scrolly = - preferences::scroll_speed();
-	} else if (event.button == SDL_BUTTON_WHEELDOWN) {
-		scrolly = preferences::scroll_speed();
-	} else if (event.button == SDL_BUTTON_WHEELLEFT) {
-		scrollx = - preferences::scroll_speed();
-	} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
-		scrollx = preferences::scroll_speed();
+bool mouse_handler::right_click_before_menu(const SDL_MouseButtonEvent& /* event */, const bool browse) 
+{
+	if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
+		select_hex(gamemap::location(), browse);
+		return false;
+	} else {
+		return true;
 	}
-
-	if (scrollx != 0 || scrolly != 0) {
-		CKey pressed;
-		// Alt + mousewheel do an 90° rotation on the scroll direction
-		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
-			gui_->scroll(scrolly,scrollx);
-		else
-			gui_->scroll(scrollx,scrolly);
-	}
-
-	if (!dragging_ && dragging_started_) {
-		dragging_started_ = false;
-		cursor::set_dragging(false);
-	}
-
-	mouse_update(browse);
-
 }
 
-bool mouse_handler::is_left_click(const SDL_MouseButtonEvent& event)
+bool mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool browse)
 {
-	return event.button == SDL_BUTTON_LEFT && !command_active();
-}
-
-bool mouse_handler::is_middle_click(const SDL_MouseButtonEvent& event)
-{
-	return event.button == SDL_BUTTON_MIDDLE;
-}
-
-bool mouse_handler::is_right_click(const SDL_MouseButtonEvent& event)
-{
-	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
-}
-
-void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool browse)
-{
-	dragging_ = false;
-	dragging_started_ = false;
-	cursor::set_dragging(false);
 	undo_ = false;
+	if (mouse_handler_base::left_click(event, browse)) return true;
+	
 	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
-
-	// clicked on a hex on the minimap? then initiate minimap scrolling
-	const gamemap::location& loc = gui_->minimap_location_on(event.x,event.y);
-	minimap_scrolling_ = false;
-	if(loc.valid()) {
-		minimap_scrolling_ = true;
-		last_hex_ = loc;
-		gui_->scroll_to_tile(loc,game_display::WARP,false);
-		return;
-	}
-
+	
 	//we use the last registered highlighted hex
 	//since it's what update our global state
 	gamemap::location hex = last_hex_;
@@ -1138,7 +363,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (attack_from == selected_hex_) { //no move needed
 			if (attack_enemy(u, clicked_u) == false) {
-				return;
+				return true;
 			}
 		}
 		else if (move_unit_along_current_route(false, true)) {//move the unit without updating shroud
@@ -1161,25 +386,25 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				}
 
 				// reselect the unit to make the attacker's stats appear during the attack dialog
-				gui_->select_hex(attack_from);
+				gui().select_hex(attack_from);
 
 				if(!commands_disabled && attack_enemy(u,enemy) == false) {
 					undo_ = true;
 					selected_hex_ = src;
-					gui_->select_hex(src);
+					gui().select_hex(src);
 					current_paths_ = orig_paths;
-					gui_->highlight_reach(current_paths_);
-					return;
+					gui().highlight_reach(current_paths_);
+					return true;
 				}
 				else //attack == true
 				{
 					if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
 						//check if some new part of map discovered or is active delay shroud updates, which need special care
-						if (clear_shroud(*gui_, map_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
+						if (clear_shroud(gui(), map_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
 							clear_undo_stack();
-							gui_->invalidate_all();
-							gui_->recalculate_minimap();
-							gui_->draw();
+							gui().invalidate_all();
+							gui().recalculate_minimap();
+							gui().draw();
 							//some new part of map discovered
 							for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 								if(teams_[team_num_-1].fogged(u->first) == false) {
@@ -1191,20 +416,20 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 								 }
 							}
 							game_events::pump();
-							return;
+							return true;
 						}
 					}
 				}
 			}
 		}
 
-		if(check_shroud && clear_shroud(*gui_, map_, units_, teams_, team_num_ - 1)) {
+		if(check_shroud && clear_shroud(gui(), map_, units_, teams_, team_num_ - 1)) {
 			clear_undo_stack();
-			gui_->invalidate_all();
-			gui_->draw();
+			gui().invalidate_all();
+			gui().draw();
 		}
 
-		return;
+		return true;
 	}
 
 	//otherwise we're trying to move to a hex
@@ -1213,19 +438,20 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
-		gui_->unhighlight_reach();
+		gui().unhighlight_reach();
 		move_unit_along_current_route(check_shroud);
 	} else {
 		// we select a (maybe empty) hex
 		select_hex(hex, browse);
 	}
+	return false;
 }
 
 void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) {
 	selected_hex_ = hex;
-	gui_->select_hex(hex);
-	gui_->clear_attack_indicator();
-	gui_->set_route(NULL);
+	gui().select_hex(hex);
+	gui().clear_attack_indicator();
+	gui().set_route(NULL);
 	show_partial_move_ = false;
 
 	unit_map::iterator u = find_unit(hex);
@@ -1238,22 +464,22 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 		current_paths_ = paths(map_,units_,hex,teams_,
 						   false,teleport,viewing_team(),path_turns_);
 		show_attack_options(u);
-		gui_->highlight_reach(current_paths_);
+		gui().highlight_reach(current_paths_);
 		// the highlight now comes from selection
 		// and not from the mouseover on an enemy
 		enemy_paths_ = false;
-		gui_->set_route(NULL);
+		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
-		if (!browse && !commands_disabled && u->second.side() == gui_->viewing_team()+1) {
+		if (!browse && !commands_disabled && u->second.side() == gui().viewing_team()+1) {
 			sound::play_UI_sound("select-unit.wav");
-			u->second.set_selecting(*gui_, u->first);
+			u->second.set_selecting(gui(), u->first);
 
 			game_events::fire("select", hex);
 		}
 
 	} else {
-		gui_->unhighlight_reach();
+		gui().unhighlight_reach();
 		current_paths_ = paths();
 		current_route_.steps.clear();
 	}
@@ -1266,7 +492,7 @@ void mouse_handler::deselect_hex() {
 void mouse_handler::clear_undo_stack()
 {
 	if(teams_[team_num_ - 1].auto_shroud_updates() == false)
-		apply_shroud_changes(undo_stack_,gui_,map_,units_,teams_,team_num_-1);
+		apply_shroud_changes(undo_stack_,&gui(),map_,units_,teams_,team_num_-1);
 	undo_stack_.clear();
 }
 
@@ -1278,24 +504,24 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	}
 
 	// do not show footsteps during movement
-	gui_->set_route(NULL);
+	gui().set_route(NULL);
 
 	// do not keep the hex highlighted that we started from
 	selected_hex_ = gamemap::location();
-	gui_->select_hex(gamemap::location());
+	gui().select_hex(gamemap::location());
 
 	// will be invalid after the move
 	current_paths_ = paths();
 	current_route_.steps.clear();
 
 	attackmove_ = attackmove;
-	const size_t moves = ::move_unit(gui_,map_,units_,teams_,
+	const size_t moves = ::move_unit(&gui(),map_,units_,teams_,
 	                   steps,&recorder,&undo_stack_,&next_unit_,false,check_shroud);
 	attackmove_ = false;
 
 	cursor::set(cursor::NORMAL);
 
-	gui_->invalidate_game_status();
+	gui().invalidate_game_status();
 
 	if(moves == 0)
 		return false;
@@ -1315,7 +541,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 				select_hex(dst, false);
 				// the new discovery is more important than the new movement range
 				show_partial_move_ = true;
-				gui_->unhighlight_reach();
+				gui().unhighlight_reach();
 			}
 		}
 	}
@@ -1398,23 +624,23 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	//make it so that when we attack an enemy, the attacking unit
 	//is again shown in the status bar, so that we can easily
 	//compare between the attacking and defending unit
-	gui_->highlight_hex(gamemap::location());
-	gui_->draw(true,true);
+	gui().highlight_hex(gamemap::location());
+	gui().draw(true,true);
 
-	attack_prediction_displayer ap_displayer(*gui_, bc_vector, map_, teams_, units_, status_, attacker_loc, defender_loc);
+	attack_prediction_displayer ap_displayer(gui(), bc_vector, map_, teams_, units_, status_, attacker_loc, defender_loc);
 	std::vector<gui::dialog_button_info> buttons;
 	buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 
 	int res = 0;
 
 	{
-		dialogs::units_list_preview_pane attacker_preview(*gui_,&map_,attacker->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
-		dialogs::units_list_preview_pane defender_preview(*gui_,&map_,defender->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
+		dialogs::units_list_preview_pane attacker_preview(gui(),&map_,attacker->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
+		dialogs::units_list_preview_pane defender_preview(gui(),&map_,defender->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);
 
-		res = gui::show_dialog(*gui_,NULL,_("Attack Enemy"),
+		res = gui::show_dialog(gui(),NULL,_("Attack Enemy"),
 				_("Choose weapon:")+std::string("\n"),
 				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
 				NULL,&buttons);
@@ -1430,10 +656,10 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		redo_stack_.clear();
 
 		current_paths_ = paths();
-		gui_->clear_attack_indicator();
-		gui_->unhighlight_reach();
+		gui().clear_attack_indicator();
+		gui().unhighlight_reach();
 
-		gui_->draw();
+		gui().draw();
 
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
 
@@ -1443,21 +669,21 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
-			attack(*gui_,map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_);
+			attack(gui(),map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance
-			dialogs::advance_unit(map_,units_,attacker_loc,*gui_);
-			dialogs::advance_unit(map_,units_,defender_loc,*gui_,!defender_human);
+			dialogs::advance_unit(map_,units_,attacker_loc,gui());
+			dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
 			throw;
 		}
 
-		dialogs::advance_unit(map_,units_,attacker_loc,*gui_);
-		dialogs::advance_unit(map_,units_,defender_loc,*gui_,!defender_human);
+		dialogs::advance_unit(map_,units_,attacker_loc,gui());
+		dialogs::advance_unit(map_,units_,defender_loc,gui(),!defender_human);
 
-		check_victory(units_, teams_, *gui_);
+		check_victory(units_, teams_, gui());
 
-		gui_->draw();
+		gui().draw();
 
 		return true;
 	} else {
@@ -1486,10 +712,10 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if(it->second.side() != team_num_ || it->second.user_end_turn()
-			|| gui_->fogged(it->first) || !unit_can_move(it->first,units_,map_,teams_))
+			|| gui().fogged(it->first) || !unit_can_move(it->first,units_,map_,teams_))
 		return false;
 
-	if (current_team().is_enemy(int(gui_->viewing_team()+1)) &&
+	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&
 			it->second.invisible(it->first,units_,teams_))
 		return false;
 
@@ -1522,17 +748,17 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 	} while (it != itx && !unit_in_cycle(it));
 
 	if (unit_in_cycle(it)) {
-		gui_->scroll_to_tile(it->first,game_display::WARP);
+		gui().scroll_to_tile(it->first,game_display::WARP);
 		select_hex(it->first, browse);
 		mouse_update(browse);
 	}
 }
 
 void mouse_handler::set_current_paths(paths new_paths) {
-	gui_->unhighlight_reach();
+	gui().unhighlight_reach();
 	current_paths_ = new_paths;
 	current_route_.steps.clear();
-	gui_->set_route(NULL);
+	gui().set_route(NULL);
 }
 
 mouse_handler *mouse_handler::singleton_ = NULL;

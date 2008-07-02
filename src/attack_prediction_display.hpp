@@ -1,0 +1,152 @@
+/* $Id$ */
+/*
+   Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
+   or at your option any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#ifndef ATTACK_PREDICTION_DISPLAY_H_INCLUDED
+#define ATTACK_PREDICTION_DISPLAY_H_INCLUDED
+
+#include "global.hpp"
+
+#include "actions.hpp"
+#include "display.hpp"
+#include "pathfind.hpp"
+#include "show_dialog.hpp"
+#include "unit_map.hpp"
+// This preview pane is shown in the "Damage Calculations" dialog.
+class battle_prediction_pane : public gui::preview_pane
+{
+public:
+
+	// Lengthy constructor.
+	battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
+						   const std::vector<team>& teams, const unit_map& units,
+						   const gamestatus& status,
+						   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
+
+	// This method is called to draw the dialog contents.
+	void draw_contents();
+
+	// Hack: pretend the preview pane goes to the left.
+	bool left_side() const { return 1; }
+
+	// Unused.
+	void set_selection(int) {}
+
+private:
+	display &disp_;
+	const battle_context& bc_;
+	const gamemap& map_;
+	const std::vector<team>& teams_;
+	const unit_map& units_;
+	const gamestatus& status_;
+	const gamemap::location& attacker_loc_;
+	const gamemap::location& defender_loc_;
+	const unit& attacker_;
+	const unit& defender_;
+
+	// Layout constants.
+	static const int inter_line_gap_;
+	static const int inter_column_gap_;
+	static const int inter_units_gap_;
+	static const int max_hp_distrib_rows_;
+
+	// Layout computations.
+	std::string attacker_label_, defender_label_;
+	int attacker_label_width_, defender_label_width_;
+
+	std::vector<std::string> attacker_left_strings_, attacker_right_strings_;
+	std::vector<std::string> defender_left_strings_, defender_right_strings_;
+	int attacker_strings_width_, attacker_left_strings_width_, attacker_right_strings_width_;
+	int defender_strings_width_, defender_left_strings_width_, defender_right_strings_width_;
+	int units_strings_height_;
+
+	std::string hp_distrib_string_;
+	surface attacker_hp_distrib_, defender_hp_distrib_;
+	int hp_distrib_string_width_;
+	int attacker_hp_distrib_width_, defender_hp_distrib_width_;
+	int attacker_hp_distrib_height_, defender_hp_distrib_height_, hp_distribs_height_;
+
+	int attacker_width_, defender_width_, units_width_;
+	int dialog_width_, dialog_height_;
+
+	// This method builds the strings describing the unit damage modifiers.
+	// Read the code to understand the arguments.
+	void get_unit_strings(const battle_context::unit_stats& stats,
+					  const unit& u, const gamemap::location& u_loc, float u_unscathed,
+					  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
+					  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
+				      int& left_strings_width, int& right_strings_width, int& strings_width);
+
+	// Utility method that returns the length of the longest string in a vector of strings.
+	int get_strings_max_length(const std::vector<std::string>& strings);
+
+	// This method builds the vector containing the <HP, probability> pairs
+	// that are required to draw the image of the hitpoints distribution of
+	// a combatant after a fight. The method takes as input the probability
+	// distribution of the hitpoints of the combatant after the fight.
+	void get_hp_prob_vector(const std::vector<double>& hp_dist,
+							std::vector<std::pair<int, double> >& hp_prob_vector);
+
+	// This method draws a unit in the dialog pane. Read the code to understand
+	// the arguments.
+	void draw_unit(int x_off, int damage_line_skip, int left_strings_width,
+				   const std::vector<std::string>& left_strings,
+				   const std::vector<std::string>& right_strings,
+				   const std::string& label, int label_width,
+				   surface& hp_distrib, int hp_distrib_width);
+
+	// This method draws the image of the hitpoints distribution of a
+	// combatant after a fight. The method takes as input the
+	// "hp_prob_vector" computed above and the stats of the combatants.
+	// It draws the image in the surface 'surf' and set the width and
+	// height of the image in the fields specified.
+	void get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
+							const battle_context::unit_stats& stats,
+								const battle_context::unit_stats& opp_stats,
+								surface& surf, int& width, int& height);
+
+	// This method blends a RGB color. The method takes as input a surface,
+	// the RGB color to blend and a value specifying how much blending to
+	// apply. The blended color is returned. Caution: if you use a
+	// transparent color, make sure the resulting color is not equal to the
+	// transparent color.
+	Uint32 blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop);
+};
+
+// This class is used when the user clicks on the button
+// to show the "Damage Calculations" dialog.
+class attack_prediction_displayer : public gui::dialog_button_action
+{
+public:
+	attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
+							    const std::vector<team>& teams, const unit_map& units,
+							    const gamestatus& status,
+								const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
+			: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status),
+			  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
+	// This method is called when the button is pressed.
+	RESULT button_pressed(int selection);
+
+private:
+	display &disp_;
+	const std::vector<battle_context>& bc_vector_;
+	const gamemap& map_;
+	const std::vector<team>& teams_;
+	const unit_map& units_;
+	const gamestatus& status_;
+	const gamemap::location& attacker_loc_;
+	const gamemap::location& defender_loc_;
+};
+
+#endif

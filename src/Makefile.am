@@ -54,6 +54,7 @@ wesnoth_source = \
 	ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
+	attack_prediction_display.cpp \
 	callable_objects.cpp \
 	config_adapter.cpp \
 	dialogs.cpp \
@@ -102,6 +103,7 @@ wesnoth_source = \
 	leader_list.cpp \
 	menu_events.cpp \
 	mouse_events.cpp \
+	mouse_handler_base.cpp \
 	multiplayer.cpp \
 	multiplayer_ui.cpp \
 	multiplayer_wait.cpp \

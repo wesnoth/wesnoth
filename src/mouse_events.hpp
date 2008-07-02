@@ -22,29 +22,20 @@
 #include "game_display.hpp"
 #include "pathfind.hpp"
 #include "unit_map.hpp"
-
+#include "mouse_handler_base.hpp"
 class gamestatus;
 
 #include "SDL.h"
 
 namespace events{
 
-struct command_disabler
-{
-	command_disabler();
-	~command_disabler();
-};
-
-class mouse_handler{
+class mouse_handler : public mouse_handler_base {
 public:
 	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
 		gamestatus& status, undo_list& undo_stack, undo_list& redo_stack);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_team(const int team_number);
-	void mouse_motion(const SDL_MouseMotionEvent& event, const bool browse);
-	// update the mouse with a fake mouse motion
-	void mouse_update(const bool browse);
 	void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	void cycle_units(const bool browse, const bool reverse = false);
 	void cycle_back_units(const bool browse) { cycle_units(browse, true); }
@@ -67,16 +58,24 @@ public:
 	unit_map::iterator selected_unit();
 	paths::route get_route(unit_map::const_iterator un, gamemap::location go_to, team &team);
 private:
-	team& viewing_team() { return teams_[(*gui_).viewing_team()]; }
-	const team& viewing_team() const { return teams_[(*gui_).viewing_team()]; }
+	/** 
+	 * Due to the way this class is constructed we can assume that the
+	 * display* gui_ member actually points to a game_display (derived class)
+	 */
+	game_display& gui() { return static_cast<game_display&>(*gui_); }
+	/** Const version */
+	const game_display& gui() const { return static_cast<game_display&>(*gui_); }
+	
+	team& viewing_team() { return teams_[gui().viewing_team()]; }
+	const team& viewing_team() const { return teams_[gui().viewing_team()]; }
 	team& current_team() { return teams_[team_num_-1]; }
 
-	// use update to force an update of the mouse state
+	/** 
+	 * Use update to force an update of the mouse state.
+	 */
 	void mouse_motion(int x, int y, const bool browse, bool update=false);
-	bool is_left_click(const SDL_MouseButtonEvent& event);
-	bool is_middle_click(const SDL_MouseButtonEvent& event);
-	bool is_right_click(const SDL_MouseButtonEvent& event);
-	void left_click(const SDL_MouseButtonEvent& event, const bool browse);
+	bool right_click_before_menu(const SDL_MouseButtonEvent& event, const bool browse);	
+	bool left_click(const SDL_MouseButtonEvent& event, const bool browse);
 	void select_hex(const gamemap::location& hex, const bool browse);
 	void clear_undo_stack();
 	bool move_unit_along_current_route(bool check_shroud, bool attackmove=false);
@@ -90,22 +89,12 @@ private:
 	unit_map::iterator find_unit(const gamemap::location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
 
-	game_display* gui_;
 	std::vector<team>& teams_;
 	unit_map& units_;
-	gamemap& map_;
 	gamestatus& status_;
 	undo_list& undo_stack_;
 	undo_list& redo_stack_;
 
-	bool minimap_scrolling_;
-	bool dragging_;
-	bool dragging_started_;
-	int drag_from_x_;
-	int drag_from_y_;
-
-	// last highlighted hex
-	gamemap::location last_hex_;
 	// previous highlighted hexes
 	// the hex of the selected unit and empty hex are "free"
 	gamemap::location previous_hex_;
@@ -131,7 +120,6 @@ private:
 	static mouse_handler * singleton_;
 };
 
-extern int commands_disabled;
 }
 
 #endif
