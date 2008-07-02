@@ -26,6 +26,7 @@ $langs['ja'] = 'Japanese';
 $langs['ko'] = 'Korean';
 $langs['la'] = 'Latin';
 $langs['lt'] = 'Lithuanian';
+$langs['lv'] = 'Latvian';
 $langs['mk'] = 'Macedonian';
 $langs['nl'] = 'Dutch';
 $langs['nb_NO'] = 'Norwegian';
