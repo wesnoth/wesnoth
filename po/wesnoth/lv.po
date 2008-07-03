@@ -6,86 +6,75 @@
 #
 msgid ""
 msgstr ""
-"#-#-#-#-#  wesnoth.cpp1.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: Battle for Wesnoth 1.5.1+svn\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-29 13:54+0200\n"
-"PO-Revision-Date: 2008-06-29 13:54+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2008-07-03 15:45+0300\n"
+"Last-Translator: Artis Rozentāls <artis.rozentals@gmail.com>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"#-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-29 13:54+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:56
 msgid "Compressed Saves"
-msgstr ""
+msgstr "Saspiesti saglabāšanas faili"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "Ritināt ar peli"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Animate Map"
-msgstr ""
+msgstr "Kustība kartē"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
 msgid "Show Titlescreen Animation"
-msgstr ""
+msgstr "Kustīgs titulekrāns"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:84
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "Kustība stāvošās vienībās"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:91
 msgid "Show Combat"
-msgstr ""
+msgstr "Rādīt kaujas"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:106
 msgid "Only Run Safe Python AIs"
-msgstr ""
+msgstr "Izmantot tikai drošus Python mākslīgos intelektus"
 
 #. [server]
 #: data/_main.cfg:113
 msgid "Official Wesnoth Server"
-msgstr ""
+msgstr "Oficiālais Vesnotas serveris"
 
 #. [server]
 #: data/_main.cfg:117 data/_main.cfg:121
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Alternatīvs Vesnotas serveris"
 
 #. [time]
 #. [illuminated_time]
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:497
 #: data/core/macros/schedules.cfg:85 data/core/macros/schedules.cfg:93
 msgid "Underground"
-msgstr ""
+msgstr "Pazeme"
 
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:531
 msgid "berserk"
-msgstr ""
+msgstr "cīņasspars"
 
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
@@ -95,12 +84,15 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Cīņasspars:\n"
+"Vienalga vai šis uzbrukums tiek lietots ofensīvā vai aizsardzībā, cīņa "
+"turpināsies līdz viena no vienībām uzvarēs vai tiks veikti 30 uzbrukumi."
 
 #. [chance_to_hit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
 #: data/core/macros/abilities.cfg:617
 msgid "magical"
-msgstr ""
+msgstr "maģija"
 
 #. [chance_to_hit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
@@ -110,12 +102,15 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"Maģisks:\n"
+"Šim uzbrukumam vienmēr ir 70% iespēja trāpīt neatkarīgi no aizsargājošās "
+"vienības aizsardzības spējas."
 
 #. [firststrike]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:666
 msgid "firststrike"
-msgstr ""
+msgstr "pirmais uzbrukums"
 
 #. [firststrike]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
@@ -124,318 +119,320 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Pirmais sitiens:\n"
+"Šī vienība vienmēr uzbrūk pirmā, pat ja tā aizstāvas."
 
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
-msgstr ""
+msgstr "Programmēšana"
 
 #. [about]
 #: data/core/about.cfg:150
 msgid "General Purpose Administration and Coordination"
-msgstr ""
+msgstr "Vispārēja pārvalde un saskaņošana"
 
 #. [about]
 #: data/core/about.cfg:168
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "Ilustrācijas un grafiskie elementi"
 
 #. [about]
 #: data/core/about.cfg:443
 msgid "Music"
-msgstr ""
+msgstr "Mūzika"
 
 #. [about]
 #: data/core/about.cfg:470
 msgid "Sound Effects"
-msgstr ""
+msgstr "Skaņas efekti"
 
 #. [about]
 #: data/core/about.cfg:486
 msgid "Campaign Design"
-msgstr ""
+msgstr "Kampaņu izveide"
 
 #. [about]
 #: data/core/about.cfg:549
 msgid "Multiplayer Maps and Balancing"
-msgstr ""
+msgstr "Vairāku spēlētāju kartes un līdzsvars"
 
 #. [about]
 #: data/core/about.cfg:595
 msgid "Packagers"
-msgstr ""
+msgstr "Pakotāji"
 
 #. [about]
 #: data/core/about.cfg:648
 msgid "Miscellaneous contributors"
-msgstr ""
+msgstr "Citi palīgi"
 
 #. [about]
 #: data/core/about.cfg:807
 msgid "Internationalization Managers"
-msgstr ""
+msgstr "Internacionalizācijas vadītāji"
 
 #. [about]
 #: data/core/about.cfg:832
 msgid "English strings edition"
-msgstr ""
+msgstr "Tulkojums angļu valodā (GB)"
 
 #. [about]
 #: data/core/about.cfg:839
 msgid "Afrikaans Translation"
-msgstr ""
+msgstr "Tulkojums afrikandu valodā"
 
 #. [about]
 #: data/core/about.cfg:855
 msgid "Arabic Translation"
-msgstr ""
+msgstr "Tulkojums arābu valodā"
 
 #. [about]
 #: data/core/about.cfg:862
 msgid "Basque Translation"
-msgstr ""
+msgstr "Tulkojums basku valodā "
 
 #. [about]
 #: data/core/about.cfg:875
 msgid "Bulgarian Translation"
-msgstr ""
+msgstr "Tulkojums bulgāru valodā"
 
 #. [about]
 #: data/core/about.cfg:894
 msgid "Catalan Translation"
-msgstr ""
+msgstr "Tulkojums katalāņu valodā"
 
 #. [about]
 #: data/core/about.cfg:929
 msgid "Chinese Translation"
-msgstr ""
+msgstr "Tulkojums ķīniešu valodā"
 
 #. [about]
 #: data/core/about.cfg:963
 msgid "Chinese (Taiwan) Translation"
-msgstr ""
+msgstr "Tulkojums ķīniešu valodā (Taivānas) "
 
 #. [about]
 #: data/core/about.cfg:970
 msgid "Czech Translation"
-msgstr ""
+msgstr "Tulkojums čehu valodā"
 
 #. [about]
 #: data/core/about.cfg:1027
 msgid "Danish Translation"
-msgstr ""
+msgstr "Dāņu valodas tulkojums"
 
 #. [about]
 #: data/core/about.cfg:1058
 msgid "Dutch Translation"
-msgstr ""
+msgstr "Nīderlandiešu valodas tulkojums"
 
 #. [about]
 #: data/core/about.cfg:1111
 msgid "English (GB) Translation"
-msgstr ""
+msgstr "Tulkojums angļu valodā (GB)"
 
 #. [about]
 #: data/core/about.cfg:1121
 msgid "Esperanto Translation"
-msgstr ""
+msgstr "Tulkojums esperanto"
 
 #. [about]
 #: data/core/about.cfg:1140
 msgid "Estonian Translation"
-msgstr ""
+msgstr "Tulkojums igauņu valodā"
 
 #. [about]
 #: data/core/about.cfg:1150
 msgid "Filipino Translation"
-msgstr ""
+msgstr "Tulkojums filipīniešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1160
 msgid "Finnish Translation"
-msgstr ""
+msgstr "Tulkojums somu valodā"
 
 #. [about]
 #: data/core/about.cfg:1197
 msgid "French Translation"
-msgstr ""
+msgstr "Tulkojums franču valodā"
 
 #. [about]
 #: data/core/about.cfg:1319
 msgid "Galician Translation"
-msgstr ""
+msgstr "Tulkojums galisiešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1331
 msgid "German Translation"
-msgstr ""
+msgstr "Tulkojums vācu valodā"
 
 #. [about]
 #: data/core/about.cfg:1379
 msgid "Greek Translation"
-msgstr ""
+msgstr "Tulkojums grieķu valodā"
 
 #. [about]
 #: data/core/about.cfg:1410
 msgid "Hebrew Translation"
-msgstr ""
+msgstr "Tulkojums irvitā"
 
 #. [about]
 #: data/core/about.cfg:1420
 msgid "Hungarian Translation"
-msgstr ""
+msgstr "Tulkojums ungāru valodā"
 
 #. [about]
 #: data/core/about.cfg:1490
 msgid "Indonesian Translation"
-msgstr ""
+msgstr "Tulkojums indonēziešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1497
 msgid "Italian Translation"
-msgstr ""
+msgstr "Tulkojums itāļu valodā"
 
 #. [about]
 #: data/core/about.cfg:1532
 msgid "Japanese Translation"
-msgstr ""
+msgstr "Tulkojums japāņu valodā"
 
 #. [about]
 #: data/core/about.cfg:1558
 msgid "Korean Translation"
-msgstr ""
+msgstr "Tulkojums korejiešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1565
 msgid "Latin Translation"
-msgstr ""
+msgstr "Tulkojums latīņu valodā"
 
 #. [about]
 #: data/core/about.cfg:1572
 msgid "Lithuanian Translation"
-msgstr ""
+msgstr "Tulkojums lietuviešu valodā"
 
 #. [about]
 #: data/core/about.cfg:1579
 msgid "Norwegian Translation"
-msgstr ""
+msgstr "Tulkojums norvēģu valodā"
 
 #. [about]
 #: data/core/about.cfg:1601
 msgid "Polish Translation"
-msgstr ""
+msgstr "Tulkojums poļu valodā"
 
 #. [about]
 #: data/core/about.cfg:1650
 msgid "Portuguese Translation"
-msgstr ""
+msgstr "Tulkojums portugāļu valodā"
 
 #. [about]
 #: data/core/about.cfg:1657
 msgid "Portuguese (Brazil) Translation"
-msgstr ""
+msgstr "Tulkojums portugāļu valodā (Brazīlijas)"
 
 #. [about]
 #: data/core/about.cfg:1692
 msgid "Russian Translation"
-msgstr ""
+msgstr "Tulkojums krievu valodā"
 
 #. [about]
 #: data/core/about.cfg:1728
 msgid "Serbian Translation"
-msgstr ""
+msgstr "Tulkojums serbu valodā"
 
 #. [about]
 #: data/core/about.cfg:1743
 msgid "Slovak Translation"
-msgstr ""
+msgstr "Tulkojums slovāku valodā"
 
 #. [about]
 #: data/core/about.cfg:1763
 msgid "Slovenian Translation"
-msgstr ""
+msgstr "Tulkojums slovēņu valodā"
 
 #. [about]
 #: data/core/about.cfg:1773
 msgid "Spanish Translation"
-msgstr ""
+msgstr "Tulkojums spāņu valodā"
 
 #. [about]
 #: data/core/about.cfg:1821
 msgid "Swedish Translation"
-msgstr ""
+msgstr "Tulkojums zviedru valodā"
 
 #. [about]
 #: data/core/about.cfg:1850
 msgid "Turkish Translation"
-msgstr ""
+msgstr "Tulkojums turku valodā"
 
 #. [about]
 #: data/core/about.cfg:1872
 msgid "Valencian (southern Catalan) Translation"
-msgstr ""
+msgstr "Tulkojums valensiešu valodā (Katalānas dienvidu)"
 
 #. [about]
 #: data/core/about.cfg:1888
 msgid "Bots"
-msgstr ""
+msgstr "Roboti"
 
 #. [fonts]
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr ""
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
-msgstr ""
+msgstr "Ievads"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:27 data/core/help.cfg:126
 msgid "Gameplay"
-msgstr ""
+msgstr "Spēles gaita"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:33 data/core/help.cfg:323
 msgid "Traits"
-msgstr ""
+msgstr "Iezīmes"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
-msgstr ""
+msgstr "Vienības"
 
 #. [section]
 #: data/core/help.cfg:51
 msgid "Abilities"
-msgstr ""
+msgstr "Spējas"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Ieroču īpašības"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:67 data/core/help.cfg:414
 msgid "Terrains"
-msgstr ""
+msgstr "Apgabali"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:74 data/core/help.cfg:669
 msgid "Commands"
-msgstr ""
+msgstr "Darbības"
 
 #. [topic]
 #: data/core/help.cfg:92
 msgid "Abilites"
-msgstr ""
+msgstr "Spējas"
 
 #. [topic]
 #: data/core/help.cfg:95
@@ -445,6 +442,10 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
+"Zināmām vienībām piemīt spējas, kuras vai nu tieši ietekmē citas vienības "
+"vai arī ietekmē vienību savstarpējo iedarbību. Šīs spējas tiks aprakstītas "
+"šeit, kad Jūs ar tām saskarsieties.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:104
@@ -453,11 +454,13 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Dažiem ieročiem ir īpašības kas palielina to efektivitāti.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
-msgstr ""
+msgstr "Nezināma vienība"
 
 #. [topic]
 #: data/core/help.cfg:113
@@ -467,11 +470,15 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Par šo vienību pašlaik nav informācijas. Tās apraksts būs pieejams, kad "
+"būsiet to sastapuši spēlē."
 
 #. [topic]
 #: data/core/help.cfg:118
 msgid "Overview"
-msgstr ""
+msgstr "Pārskats"
 
 #. [topic]
 #: data/core/help.cfg:121
@@ -484,11 +491,18 @@ msgid ""
 "make the game simple, however - from these simple rules arise a wealth of "
 "strategy, making the game easy to learn but a challenge to master."
 msgstr ""
+"\n"
+"\n"
+"\"Cīņa par Vesnotu\" ir fantāzijas spēle, kurā darbība norisinās gājienu pēc "
+"gājiena. Lai gan citas spēles tiecas uz sarežģītību, \"Cīņa par Vesnotu\" "
+"cenšas saglabāt vienkāršību gan noteikumos, gan spēles gaitā. Tas nenozīmē "
+"ka spēle ir viegla - vienkāršie noteikumi piedāvā bagātīgu stratēģiju "
+"klāstu. Spēle ir viegli apgūstama, taču sasniegt meistarību ir izaicinājums."
 
 #. [topic]
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Spēles gaitas pamati"
 
 #. [topic]
 #: data/core/help.cfg:133
@@ -499,6 +513,10 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
+"Šīs lappuses satur visu, ko nepieciešams zināt lai spēlētu \"Kauju par "
+"Vesnotu\". Spēlējot tās tiks papildinātas ar jaunu informāciju, kad jūs "
+"saskarsieties ar jauniem spēles elementiem. Detalizētāku īpašu situāciju un "
+"izņēmumu apraksti pieejami sekojot iekļautajām saitēm."
 
 #. [topic]
 #: data/core/help.cfg:135
@@ -512,6 +530,14 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Vislabāk spēles pamatus iespējams apgūt izmantojot <italic>text=Pamācību</"
+"italic>, kas pieejama no  galvenās izvēlnes. Pēc tam ieteicams spēlēt "
+"kampaņu \"Troņa mantinieks\" - galvenajā izvēlnē izvēlieties "
+"<italic>text=Kampaņa</italic> pēc tam <italic>text=\"Troņa mantinieks\"</"
+"italic>. Tā kā \"Cīņa par Vesnotu\" var būt grūta vēlams sākt "
+"<italic>text=Viegli</italic>."
 
 #. [topic]
 #: data/core/help.cfg:138
@@ -525,7 +551,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:143
 msgid "About the Game"
-msgstr ""
+msgstr "Par spēli"
 
 #. [topic]
 #: data/core/help.cfg:144
@@ -553,7 +579,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:151
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Uzvara un sakāve"
 
 #. [topic]
 #: data/core/help.cfg:152
@@ -580,7 +606,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Iesaukšana un atskaukšana"
 
 #. [topic]
 #: data/core/help.cfg:160
@@ -639,7 +665,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:173
 msgid "Orbs"
-msgstr ""
+msgstr "Lodes"
 
 #. [topic]
 #: data/core/help.cfg:174
@@ -676,7 +702,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:184
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Veselība un pieredze"
 
 #. [topic]
 #: data/core/help.cfg:185
@@ -707,7 +733,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:195
 msgid "Movement"
-msgstr ""
+msgstr "Kustība"
 
 #. [topic]
 #: data/core/help.cfg:196
@@ -768,7 +794,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:207
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Pārklājs un kara migla"
 
 #. [topic]
 #: data/core/help.cfg:210
@@ -796,7 +822,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:215
 msgid "Combat"
-msgstr ""
+msgstr "Cīņa"
 
 #. [topic]
 #: data/core/help.cfg:216
@@ -904,7 +930,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:237
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Bojājumu un pretestību veidi"
 
 #. [topic]
 #: data/core/help.cfg:238
@@ -951,7 +977,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:249
 msgid "Time of Day"
-msgstr ""
+msgstr "Dienas daļas"
 
 #. [topic]
 #: data/core/help.cfg:253
@@ -976,37 +1002,37 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
 msgid "Dawn"
-msgstr ""
+msgstr "Saullēkts"
 
 #. [time]
 #. [topic]
 #: data/core/help.cfg:257 data/core/macros/schedules.cfg:21
 msgid "Morning"
-msgstr ""
+msgstr "Rīts"
 
 #. [time]
 #. [topic]
 #: data/core/help.cfg:258 data/core/macros/schedules.cfg:32
 msgid "Afternoon"
-msgstr ""
+msgstr "Pēcpusdiena"
 
 #. [time]
 #. [topic]
 #: data/core/help.cfg:259 data/core/macros/schedules.cfg:43
 msgid "Dusk"
-msgstr ""
+msgstr "Saulriets"
 
 #. [time]
 #. [topic]
 #: data/core/help.cfg:260 data/core/macros/schedules.cfg:57
 msgid "First Watch"
-msgstr ""
+msgstr "Pirmā sardze"
 
 #. [time]
 #. [topic]
 #: data/core/help.cfg:261 data/core/macros/schedules.cfg:71
 msgid "Second Watch"
-msgstr ""
+msgstr "Otrā sardze"
 
 #. [topic]
 #: data/core/help.cfg:263
@@ -1018,7 +1044,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:268
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Pieredze un attīstība"
 
 #. [topic]
 #: data/core/help.cfg:269
@@ -1060,7 +1086,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:278
 msgid "Healing"
-msgstr ""
+msgstr "Atveseļošanās"
 
 #. [topic]
 #: data/core/help.cfg:279
@@ -1127,7 +1153,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:292
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Ienākumi un uzturēšana"
 
 #. [topic]
 #: data/core/help.cfg:293
@@ -1187,7 +1213,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:305
 msgid "Wrap Up"
-msgstr ""
+msgstr "Kopsavilkums"
 
 #. [topic]
 #: data/core/help.cfg:306
@@ -1202,12 +1228,12 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Autori un palīgi"
 
 #. [topic]
 #: data/core/help.cfg:317
 msgid "License"
-msgstr ""
+msgstr "Licence"
 
 #. [topic]
 #: data/core/help.cfg:325
@@ -1243,7 +1269,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:336
 msgid "Intelligent"
-msgstr ""
+msgstr "Inteliģence"
 
 #. [topic]
 #: data/core/help.cfg:337
@@ -1265,7 +1291,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:344
 msgid "Quick"
-msgstr ""
+msgstr "Ātrums"
 
 #. [topic]
 #: data/core/help.cfg:345
@@ -1288,7 +1314,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:352
 msgid "Resilient"
-msgstr ""
+msgstr "Izturība"
 
 #. [topic]
 #: data/core/help.cfg:353
@@ -1310,7 +1336,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:360
 msgid "Strong"
-msgstr ""
+msgstr "Spēks"
 
 #. [topic]
 #: data/core/help.cfg:361
@@ -1333,7 +1359,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:368
 msgid "Fearless"
-msgstr ""
+msgstr "Bezbailība"
 
 #. [topic]
 #: data/core/help.cfg:369
@@ -1343,7 +1369,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:374
 msgid "Loyal"
-msgstr ""
+msgstr "Lojalitāte"
 
 #. [topic]
 #: data/core/help.cfg:375
@@ -1369,7 +1395,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:382
 msgid "trait^Undead"
-msgstr ""
+msgstr "Nedzīvība"
 
 #. [topic]
 #: data/core/help.cfg:383
@@ -1392,7 +1418,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:390
 msgid "trait^Mechanical"
-msgstr ""
+msgstr "Mehānika"
 
 #. [topic]
 #: data/core/help.cfg:391
@@ -1414,7 +1440,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:398
 msgid "Dextrous"
-msgstr ""
+msgstr "Veiklība"
 
 #. [topic]
 #: data/core/help.cfg:399
@@ -1436,7 +1462,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:406
 msgid "Healthy"
-msgstr ""
+msgstr "Veselība"
 
 #. [topic]
 #: data/core/help.cfg:407
@@ -1465,7 +1491,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:423
 msgid "Grassland"
-msgstr ""
+msgstr "Lauks"
 
 #. [topic]
 #: data/core/help.cfg:428
@@ -1482,7 +1508,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:433
 msgid "Road"
-msgstr ""
+msgstr "Ceļš"
 
 #. [topic]
 #: data/core/help.cfg:436
@@ -1495,7 +1521,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:441
 msgid "Forest"
-msgstr ""
+msgstr "Mežš"
 
 #. [topic]
 #: data/core/help.cfg:448
@@ -1519,7 +1545,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:453
 msgid "Hills"
-msgstr ""
+msgstr "Pauguri"
 
 #. [topic]
 #: data/core/help.cfg:458
@@ -1538,7 +1564,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:463
 msgid "Mountains"
-msgstr ""
+msgstr "Kalni"
 
 #. [topic]
 #: data/core/help.cfg:468
@@ -1557,7 +1583,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:473
 msgid "Swamp"
-msgstr ""
+msgstr "Purvi"
 
 #. [topic]
 #: data/core/help.cfg:478
@@ -1575,7 +1601,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:483
 msgid "Shallow Water"
-msgstr ""
+msgstr "Seklumi"
 
 #. [topic]
 #: data/core/help.cfg:488
@@ -1594,7 +1620,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:493
 msgid "Deep Water"
-msgstr ""
+msgstr "Dziļi ūdeņi"
 
 #. [topic]
 #: data/core/help.cfg:498
@@ -1609,7 +1635,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:503
 msgid "Snow"
-msgstr ""
+msgstr "Sniegs"
 
 #. [topic]
 #: data/core/help.cfg:508
@@ -1624,7 +1650,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:513
 msgid "Ice"
-msgstr ""
+msgstr "Ledus"
 
 #. [topic]
 #: data/core/help.cfg:516
@@ -1637,7 +1663,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:521
 msgid "Castle"
-msgstr ""
+msgstr "Pils"
 
 #. [topic]
 #: data/core/help.cfg:528
@@ -1656,7 +1682,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:533
 msgid "Sand"
-msgstr ""
+msgstr "Smiltis"
 
 #. [topic]
 #: data/core/help.cfg:538
@@ -1671,7 +1697,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:543
 msgid "Desert"
-msgstr ""
+msgstr "Tuksnesis"
 
 #. [topic]
 #: data/core/help.cfg:546
@@ -1684,7 +1710,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:551
 msgid "Cave"
-msgstr ""
+msgstr "Ala"
 
 #. [topic]
 #: data/core/help.cfg:556
@@ -1703,7 +1729,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:561
 msgid "Rockbound Cave"
-msgstr ""
+msgstr "Klinšu ala"
 
 #. [topic]
 #: data/core/help.cfg:566
@@ -1723,7 +1749,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:571
 msgid "Illuminated Cave"
-msgstr ""
+msgstr "Apgaismota ala"
 
 #. [topic]
 #: data/core/help.cfg:574
@@ -1737,7 +1763,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:579
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Sēņu mežš"
 
 #. [topic]
 #: data/core/help.cfg:584
@@ -1756,7 +1782,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:589
 msgid "Savanna"
-msgstr ""
+msgstr "Savanna"
 
 #. [topic]
 #: data/core/help.cfg:592
@@ -1770,7 +1796,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:597 src/terrain.cpp:146
 msgid "Village"
-msgstr ""
+msgstr "Ciems"
 
 #. [topic]
 #: data/core/help.cfg:604
@@ -1790,7 +1816,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:609
 msgid "Submerged Village"
-msgstr ""
+msgstr "Zemūdens ciems"
 
 #. [topic]
 #: data/core/help.cfg:614
@@ -1809,7 +1835,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:619
 msgid "Chasm"
-msgstr ""
+msgstr "Plaisa"
 
 #. [topic]
 #: data/core/help.cfg:622
@@ -1823,7 +1849,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:627
 msgid "Lava"
-msgstr ""
+msgstr "Lava"
 
 #. [topic]
 #: data/core/help.cfg:630
@@ -1838,7 +1864,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:635
 msgid "River Ford"
-msgstr ""
+msgstr "Brasls"
 
 #. [topic]
 #: data/core/help.cfg:638
@@ -1854,7 +1880,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:643
 msgid "Bridge"
-msgstr ""
+msgstr "Tilts"
 
 #. [topic]
 #: data/core/help.cfg:648
@@ -1875,7 +1901,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:653
 msgid "Cave Wall"
-msgstr ""
+msgstr "Alas siena"
 
 #. [topic]
 #: data/core/help.cfg:656
@@ -1887,7 +1913,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:661
 msgid "Impassable Mountain"
-msgstr ""
+msgstr "Nepārvarams kalns"
 
 #. [topic]
 #: data/core/help.cfg:664
@@ -1900,7 +1926,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:675
 msgid "General commands"
-msgstr ""
+msgstr "Vispārējas darbības"
 
 #. [topic]
 #: data/core/help.cfg:680
@@ -1990,7 +2016,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:712
 msgid "Multiplayer commands"
-msgstr ""
+msgstr "Daudzpersonu spēļu darbības"
 
 #. [topic]
 #: data/core/help.cfg:716
@@ -2041,7 +2067,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:731
 msgid "Debug mode commands"
-msgstr ""
+msgstr "Atkļūdošanas darbības"
 
 #. [topic]
 #: data/core/help.cfg:735
@@ -2102,7 +2128,7 @@ msgstr ""
 #. [heals]
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr ""
+msgstr "dziedē +4"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:15
@@ -2120,7 +2146,7 @@ msgstr ""
 #. [heals]
 #: data/core/macros/abilities.cfg:29
 msgid "heals +8"
-msgstr ""
+msgstr "dziedē"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:34
@@ -2138,7 +2164,7 @@ msgstr ""
 #. [heals]
 #: data/core/macros/abilities.cfg:49
 msgid "cures"
-msgstr ""
+msgstr "ārstē"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -2151,7 +2177,7 @@ msgstr ""
 #. [regenerate]
 #: data/core/macros/abilities.cfg:73
 msgid "regenerates"
-msgstr ""
+msgstr "atjaunojas"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:75
@@ -2164,7 +2190,7 @@ msgstr ""
 #. [resistance]
 #: data/core/macros/abilities.cfg:93
 msgid "steadfast"
-msgstr ""
+msgstr "nelokas"
 
 #. [resistance]
 #: data/core/macros/abilities.cfg:95
@@ -2179,7 +2205,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:164 data/core/macros/abilities.cfg:210
 #: data/core/macros/abilities.cfg:268
 msgid "leadership"
-msgstr ""
+msgstr "vada"
 
 #. [leadership]
 #: data/core/macros/abilities.cfg:112 data/core/macros/abilities.cfg:134
@@ -2199,7 +2225,7 @@ msgstr ""
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:336
 msgid "skirmisher"
-msgstr ""
+msgstr "lavās"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:338
@@ -2212,7 +2238,7 @@ msgstr ""
 #. [illuminates]
 #: data/core/macros/abilities.cfg:351
 msgid "illuminates"
-msgstr ""
+msgstr "apgaismo"
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:355
@@ -2228,7 +2254,7 @@ msgstr ""
 #. [teleport]
 #: data/core/macros/abilities.cfg:365
 msgid "teleport"
-msgstr ""
+msgstr "teleportējas"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:367
@@ -2241,7 +2267,7 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:376 data/core/macros/abilities.cfg:377
 msgid "ambush"
-msgstr ""
+msgstr "slēpjas mežā"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:381 data/core/macros/abilities.cfg:385
@@ -2257,7 +2283,7 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:400 data/core/macros/abilities.cfg:405
 msgid "nightstalk"
-msgstr ""
+msgstr "slēpjas tumsā"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:404 data/core/macros/abilities.cfg:409
@@ -2273,7 +2299,7 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:424 data/core/macros/abilities.cfg:429
 msgid "concealment"
-msgstr ""
+msgstr "slēpjas ciemos"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:428 data/core/macros/abilities.cfg:433
@@ -2290,7 +2316,7 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:448 data/core/macros/abilities.cfg:453
 msgid "submerge"
-msgstr ""
+msgstr "nirst"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:452 data/core/macros/abilities.cfg:457
@@ -2306,7 +2332,7 @@ msgstr ""
 #. [dummy]
 #: data/core/macros/abilities.cfg:475
 msgid "feeding"
-msgstr ""
+msgstr "barošanās"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:477
@@ -2322,7 +2348,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:543
 msgid "backstab"
-msgstr ""
+msgstr "dūriens mugurā"
 
 #: data/core/macros/abilities.cfg:545
 msgid ""
@@ -2334,7 +2360,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:557 data/core/macros/abilities.cfg:569
 msgid "plague"
-msgstr ""
+msgstr "inficēšana"
 
 #: data/core/macros/abilities.cfg:559
 msgid ""
@@ -2354,7 +2380,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:581
 msgid "slows"
-msgstr ""
+msgstr "sapīšana"
 
 #: data/core/macros/abilities.cfg:583
 msgid ""
@@ -2367,7 +2393,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:592
 msgid "stones"
-msgstr ""
+msgstr "pārakmeņošana"
 
 #: data/core/macros/abilities.cfg:594
 msgid ""
@@ -2378,7 +2404,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:603
 msgid "marksman"
-msgstr ""
+msgstr "precizitāte"
 
 #: data/core/macros/abilities.cfg:605
 msgid ""
@@ -2388,7 +2414,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:630
 msgid "swarm"
-msgstr ""
+msgstr "spietošana"
 
 #: data/core/macros/abilities.cfg:632
 msgid ""
@@ -2401,7 +2427,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:641
 msgid "charge"
-msgstr ""
+msgstr "triecienuzbrukums"
 
 #: data/core/macros/abilities.cfg:643
 msgid ""
@@ -2412,7 +2438,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:655
 msgid "drains"
-msgstr ""
+msgstr "izsūkšana"
 
 #: data/core/macros/abilities.cfg:657
 msgid ""
@@ -2423,7 +2449,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:677
 msgid "poison"
-msgstr ""
+msgstr "inde"
 
 #: data/core/macros/abilities.cfg:679
 msgid ""
@@ -2629,6 +2655,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 msgstr ""
+"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashöl,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Goyst,Grada,Græt Ihn,Grashen,Gravlan,Gray,"
+"Grelnit,Grenn ohn,Gretz,Gribbel,Gridda,Grish,Gron ih,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kasp,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Mal,Margian,"
+"Marhildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
+"Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -2636,6 +2671,9 @@ msgid ""
 "Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 msgstr ""
+"Alen Ka,Alinash Mal,Ashijt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshyi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orriday,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:8
 msgid ""
@@ -2683,6 +2721,49 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
+"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
+"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
+"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
+"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
+"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
+"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
+"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
+"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
+"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
+"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
+"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
+"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
+"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
+"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
+"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
+"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
+"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
+"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
+"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
+"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
+"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
+"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
+"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
+"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
+"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
+"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
+"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
+"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
+"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
+"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
+"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
+"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
+"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
+"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
+"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
+"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
+"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
+"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
+"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
+"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
+"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
+"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:12
 msgid ""
@@ -2744,6 +2825,63 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:13
 msgid ""
@@ -2812,14 +2950,78 @@ msgid ""
 "Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
 "Vówien"
 msgstr ""
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
+"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
+"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
+"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
+"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
+"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
+"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
+"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
+"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
+"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
+"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
+"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
+"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
+"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
+"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
+"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
+"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
+"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
+"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
+"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
+"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
+"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
+"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
+"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
+"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
+"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
+"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
+"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
+"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
+"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
+"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
+"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
+"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
+"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
+"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
+"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
+"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
+"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
+"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
+"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
+"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
+"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
+"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
+"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
+"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
+"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
+"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
+"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
+"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
+"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
+"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
+"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
+"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
+"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
+"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
+"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
+"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
+"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
+"Vówien"
 
 #: data/core/macros/names.cfg:18
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:19
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr ""
+msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -2871,6 +3073,53 @@ msgid ""
 "Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
 "Yryrcyn"
 msgstr ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
+"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
+"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
+"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
+"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
+"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
+"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
+"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
+"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
+"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
+"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
+"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
+"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
+"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
+"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
+"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
+"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
+"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
+"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
+"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
+"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
+"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
+"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
+"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
+"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
+"Yryrcyn"
 
 #: data/core/macros/names.cfg:24
 msgid ""
@@ -2920,6 +3169,51 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
+"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
+"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
+"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
+"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
+"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
+"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
+"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
+"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
+"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
+"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
+"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
+"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
+"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
+"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
+"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
+"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
+"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
+"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
+"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
+"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
+"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
+"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
+"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
+"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
+"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
+"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
+"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
+"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
+"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
+"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
+"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
+"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
+"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
+"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
+"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
+"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
+"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
+"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
+"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
+"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
+"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #: data/core/macros/names.cfg:28
 msgid ""
@@ -2934,6 +3228,16 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:32
 msgid ""
@@ -2945,6 +3249,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:33
 msgid ""
@@ -2953,6 +3264,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:37
 msgid ""
@@ -2963,6 +3278,12 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:38
 msgid ""
@@ -2974,6 +3295,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:42
 msgid ""
@@ -2984,6 +3312,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:46
 msgid ""
@@ -3020,6 +3354,38 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:50
 msgid ""
@@ -3028,6 +3394,10 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -3044,12 +3414,26 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
+"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
+"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:142
@@ -3234,197 +3618,197 @@ msgstr ""
 #. [trait]
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
-msgstr ""
+msgstr "lojāls"
 
 #. [trait]
 #: data/core/macros/traits.cfg:9
 msgid "female^loyal"
-msgstr ""
+msgstr "lojāla"
 
 #. [trait]
 #: data/core/macros/traits.cfg:10
 msgid "Zero upkeep"
-msgstr ""
+msgstr "Nav jāuztur"
 
 #. [trait]
 #: data/core/macros/traits.cfg:22
 msgid "undead"
-msgstr ""
+msgstr "nedzīvs"
 
 #. [trait]
 #: data/core/macros/traits.cfg:23
 msgid "female^undead"
-msgstr ""
+msgstr "nedzīva"
 
 #. [trait]
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
-msgstr ""
+msgstr "Neitekmē izsūkšana, inde vai inficēšāna"
 
 #. [trait]
 #: data/core/macros/traits.cfg:37
 msgid "mechanical"
-msgstr ""
+msgstr "mehānisks"
 
 #. [trait]
 #: data/core/macros/traits.cfg:38
 msgid "female^mechanical"
-msgstr ""
+msgstr "mehāniska"
 
 #. [trait]
 #: data/core/macros/traits.cfg:51
 msgid "strong"
-msgstr ""
+msgstr "spēcīgs"
 
 #. [trait]
 #: data/core/macros/traits.cfg:52
 msgid "female^strong"
-msgstr ""
+msgstr "spēcīga"
 
 #. [trait]
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
-msgstr ""
+msgstr "veikls"
 
 #. [trait]
 #: data/core/macros/traits.cfg:70
 msgid "female^dextrous"
-msgstr ""
+msgstr "veikla"
 
 #. [trait]
 #: data/core/macros/traits.cfg:83
 msgid "quick"
-msgstr ""
+msgstr "ātrs"
 
 #. [trait]
 #: data/core/macros/traits.cfg:84
 msgid "female^quick"
-msgstr ""
+msgstr "ātra"
 
 #. [trait]
 #: data/core/macros/traits.cfg:100
 msgid "intelligent"
-msgstr ""
+msgstr "inteliģents"
 
 #. [trait]
 #: data/core/macros/traits.cfg:101
 msgid "female^intelligent"
-msgstr ""
+msgstr "inteliģenta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
-msgstr ""
+msgstr "izturīgs"
 
 #. [trait]
 #: data/core/macros/traits.cfg:114
 msgid "female^resilient"
-msgstr ""
+msgstr "izturīga"
 
 #. [trait]
 #: data/core/macros/traits.cfg:131
 msgid "healthy"
-msgstr ""
+msgstr "veselīgs"
 
 #. [trait]
 #: data/core/macros/traits.cfg:132
 msgid "female^healthy"
-msgstr ""
+msgstr "veselīga"
 
 #. [trait]
 #: data/core/macros/traits.cfg:133
 msgid "Can rest while moving"
-msgstr ""
+msgstr "Var atpūsties kustoties"
 
 #. [trait]
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
 msgid "fearless"
-msgstr ""
+msgstr "bezbailīgs"
 
 #. [trait]
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
 msgid "female^fearless"
-msgstr ""
+msgstr "bezbailīga"
 
 #. [trait]
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Bez grūtībām cīnās arī nelabvēlīgā dienas vai nakts periodā"
 
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
-msgstr ""
+msgstr "Sarkana"
 
 #. [color_range]
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
-msgstr ""
+msgstr "Zila"
 
 #. [color_range]
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
-msgstr ""
+msgstr "Zaļa"
 
 #. [color_range]
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
-msgstr ""
+msgstr "Purpura"
 
 #. [color_range]
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
-msgstr ""
+msgstr "Oranža"
 
 #. [color_range]
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 msgid "Black"
-msgstr ""
+msgstr "Melna"
 
 #. [color_range]
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
-msgstr ""
+msgstr "Balta"
 
 #. [color_range]
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
-msgstr ""
+msgstr "Brūna"
 
 #. [color_range]
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
-msgstr ""
+msgstr "Zilgan-zaļa"
 
 #. [race]: description=
 #: data/core/units.cfg:43
 msgid "race^Bat"
-msgstr ""
+msgstr "Sikspārnis"
 
 #. [race]: description=
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
-msgstr ""
+msgstr "Sikspārne"
 
 #. [race]: description=
 #: data/core/units.cfg:45
 msgid "race^Bats"
-msgstr ""
+msgstr "Sikspārņi"
 
 #. [race]
 #: data/core/units.cfg:52
 msgid "race^Drake"
-msgstr ""
+msgstr "Pūķis"
 
 #. [race]
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr ""
+msgstr "Pūķe"
 
 #. [race]
 #: data/core/units.cfg:54
 msgid "race^Drakes"
-msgstr ""
+msgstr "Pūķi"
 
 #. [race]
 #: data/core/units.cfg:67
@@ -3496,17 +3880,17 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:74
 msgid "race^Dwarf"
-msgstr ""
+msgstr "Rūķis"
 
 #. [race]
 #: data/core/units.cfg:75
 msgid "race+female^Dwarf"
-msgstr ""
+msgstr "Rūķe"
 
 #. [race]
 #: data/core/units.cfg:76
 msgid "race^Dwarves"
-msgstr ""
+msgstr "Rūķi"
 
 #. [race]
 #: data/core/units.cfg:81
@@ -3563,17 +3947,17 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:89
 msgid "race^Elf"
-msgstr ""
+msgstr "Elfs"
 
 #. [race]
 #: data/core/units.cfg:90
 msgid "race+female^Elf"
-msgstr ""
+msgstr "Elfa"
 
 #. [race]
 #: data/core/units.cfg:91
 msgid "race^Elves"
-msgstr ""
+msgstr "Elfi"
 
 #. [race]
 #: data/core/units.cfg:94
@@ -3609,47 +3993,47 @@ msgstr ""
 #. [race]: description=
 #: data/core/units.cfg:103
 msgid "race^Goblin"
-msgstr ""
+msgstr "Goblins"
 
 #. [race]: description=
 #: data/core/units.cfg:104
 msgid "race+female^Goblin"
-msgstr ""
+msgstr "Gobline"
 
 #. [race]: description=
 #: data/core/units.cfg:105
 msgid "race^Goblins"
-msgstr ""
+msgstr "Goblini"
 
 #. [race]: description=
 #: data/core/units.cfg:113
 msgid "race^Gryphon"
-msgstr ""
+msgstr "Grifs"
 
 #. [race]: description=
 #: data/core/units.cfg:114
 msgid "race+female^Gryphon"
-msgstr ""
+msgstr "Grifene"
 
 #. [race]: description=
 #: data/core/units.cfg:115
 msgid "race^Gryphons"
-msgstr ""
+msgstr "Grifi"
 
 #. [race]
 #: data/core/units.cfg:123
 msgid "race^Human"
-msgstr ""
+msgstr "Cilvēks"
 
 #. [race]
 #: data/core/units.cfg:124
 msgid "race+female^Human"
-msgstr ""
+msgstr "Cilvēks"
 
 #. [race]
 #: data/core/units.cfg:125
 msgid "race^Humans"
-msgstr ""
+msgstr "Cilvēki"
 
 #. [race]
 #: data/core/units.cfg:132
@@ -3696,97 +4080,97 @@ msgstr ""
 #. [race]: description=
 #: data/core/units.cfg:139
 msgid "race^Saurian"
-msgstr ""
+msgstr "Rāpulis"
 
 #. [race]: description=
 #: data/core/units.cfg:140
 msgid "race+female^Saurian"
-msgstr ""
+msgstr "Rāpule"
 
 #. [race]: description=
 #: data/core/units.cfg:141
 msgid "race^Saurians"
-msgstr ""
+msgstr "Rāpuļi"
 
 #. [race]: description=
 #: data/core/units.cfg:150
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Mehānims"
 
 #. [race]: description=
 #: data/core/units.cfg:151
 msgid "race+plural^Mechanical"
-msgstr ""
+msgstr "Mehānismi"
 
 #. [race]: description=
 #: data/core/units.cfg:161
 msgid "race^Merman"
-msgstr ""
+msgstr "Ūdensvīrs"
 
 #. [race]: description=
 #: data/core/units.cfg:162
 msgid "race^Mermaid"
-msgstr ""
+msgstr "Nāra"
 
 #. [race]: description=
 #: data/core/units.cfg:163
 msgid "race^Mermen"
-msgstr ""
+msgstr "Nāras"
 
 #. [race]: description=
 #: data/core/units.cfg:171
 msgid "race^Monster"
-msgstr ""
+msgstr "Briesmonis"
 
 #. [race]: description=
 #: data/core/units.cfg:172
 msgid "race^Monsters"
-msgstr ""
+msgstr "Briesmoņi"
 
 #. [race]: description=
 #: data/core/units.cfg:179
 msgid "race^Naga"
-msgstr ""
+msgstr "Nāga"
 
 #. [race]: description=
 #: data/core/units.cfg:180
 msgid "race^Nagani"
-msgstr ""
+msgstr "Nāga"
 
 #. [race]: description=
 #: data/core/units.cfg:181
 msgid "race^Nagas"
-msgstr ""
+msgstr "Nāgas"
 
 #. [race]: description=
 #: data/core/units.cfg:189
 msgid "race^Ogre"
-msgstr ""
+msgstr "Cilvēkēdājs"
 
 #. [race]: description=
 #: data/core/units.cfg:190
 msgid "race+female^Ogre"
-msgstr ""
+msgstr "Cilvēkēdāja"
 
 #. [race]: description=
 #: data/core/units.cfg:191
 msgid "race^Ogres"
-msgstr ""
+msgstr "Cilvēkēdāji"
 
 #. [race]
 #: data/core/units.cfg:199
 msgid "race^Orc"
-msgstr ""
+msgstr "Orks"
 
 #. [race]
 #: data/core/units.cfg:200
 msgid "race+female^Orc"
-msgstr ""
+msgstr "Orka"
 
 #. [race]
 #: data/core/units.cfg:201
 msgid "race^Orcs"
-msgstr ""
+msgstr "Orki"
 
 #. [race]
 #: data/core/units.cfg:211
@@ -3851,17 +4235,17 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:218
 msgid "race^Troll"
-msgstr ""
+msgstr "Trollis"
 
 #. [race]
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
-msgstr ""
+msgstr "Trolle"
 
 #. [race]
 #: data/core/units.cfg:220
 msgid "race^Trolls"
-msgstr ""
+msgstr "Troļļi"
 
 #. [race]
 #: data/core/units.cfg:226
@@ -3905,17 +4289,17 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:238
 msgid "race^Undead"
-msgstr ""
+msgstr "Nedzīvais"
 
 #. [race]
 #: data/core/units.cfg:239
 msgid "race+female^Undead"
-msgstr ""
+msgstr "Nedzīvā"
 
 #. [race]
 #: data/core/units.cfg:240
 msgid "race+plural^Undead"
-msgstr ""
+msgstr "Nedzīvie"
 
 #. [race]
 #: data/core/units.cfg:246
@@ -3949,27 +4333,27 @@ msgstr ""
 #. [race]: description=
 #: data/core/units.cfg:254
 msgid "race^Wose"
-msgstr ""
+msgstr "Voss"
 
 #. [race]: description=
 #: data/core/units.cfg:255
 msgid "race^Woses"
-msgstr ""
+msgstr "Vosi"
 
 #. [language]
 #: data/hardwired/english.cfg:3
 msgid "Easy"
-msgstr ""
+msgstr "Viegla"
 
 #. [language]
 #: data/hardwired/english.cfg:4
 msgid "Medium"
-msgstr ""
+msgstr "Vidēja"
 
 #. [language]
 #: data/hardwired/english.cfg:5
 msgid "Hard"
-msgstr ""
+msgstr "Grūta"
 
 #. [language]
 #: data/hardwired/english.cfg:10
@@ -4065,42 +4449,42 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "melee"
-msgstr ""
+msgstr "tuvcīņa"
 
 #. [language]
 #: data/hardwired/english.cfg:34
 msgid "ranged"
-msgstr ""
+msgstr "lādiņš"
 
 #. [language]
 #: data/hardwired/english.cfg:37
 msgid "blade"
-msgstr ""
+msgstr "griež"
 
 #. [language]
 #: data/hardwired/english.cfg:38
 msgid "pierce"
-msgstr ""
+msgstr "caurdur"
 
 #. [language]
 #: data/hardwired/english.cfg:39
 msgid "impact"
-msgstr ""
+msgstr "sit"
 
 #. [language]
 #: data/hardwired/english.cfg:40
 msgid "fire"
-msgstr ""
+msgstr "dedzina"
 
 #. [language]
 #: data/hardwired/english.cfg:41
 msgid "cold"
-msgstr ""
+msgstr "saldē"
 
 #. [language]
 #: data/hardwired/english.cfg:42
 msgid "arcane"
-msgstr ""
+msgstr "mistisks"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -4589,27 +4973,27 @@ msgstr ""
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
-msgstr ""
+msgstr "Izvēlne"
 
 #. [menu]
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
-msgstr ""
+msgstr "Pavēles"
 
 #. [menu]
 #. [change]
 #: data/themes/default.cfg:153 data/themes/default.cfg:778
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
-msgstr ""
+msgstr "Beigt gājienu"
 
 #. [menu]
 #. [change]
 #: data/themes/default.cfg:154 data/themes/default.cfg:779
 #: data/themes/default.cfg:1033 data/themes/dfool.cfg:161
 msgid "End Scenario"
-msgstr ""
+msgstr "Beigt scenāriju"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4617,7 +5001,7 @@ msgstr ""
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:395 src/unit.cpp:2394
 #: src/unit.cpp:2568
 msgid "HP"
-msgstr ""
+msgstr "Veselība"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4625,59 +5009,59 @@ msgstr ""
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:396
 #: src/menu_events.cpp:1164
 msgid "XP"
-msgstr ""
+msgstr "Pieredze"
 
 #. [label]
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
-msgstr ""
+msgstr "zelts"
 
 #. [label]
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
-msgstr ""
+msgstr "ciemi"
 
 #. [label]
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
-msgstr ""
+msgstr "vienības"
 
 #. [label]
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
-msgstr ""
+msgstr "uzturēšana"
 
 #. [label]
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
-msgstr ""
+msgstr "ienākumi"
 
 #. [unit_level]
 #: data/themes/default.cfg:428 data/themes/dfool.cfg:467
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
-msgstr ""
+msgstr "pakāpe"
 
 #. [unit_moves]
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "kustības"
 
 #. [change]
 #: data/themes/default.cfg:1004
 msgid "Act."
-msgstr ""
+msgstr "Darb."
 
 #. [remove]
 #. [menu]
 #: data/themes/default.cfg:1024 data/themes/default.cfg:1032
 msgid "short end-turn^E."
-msgstr ""
+msgstr "B."
 
 #. [label]
 #: data/themes/dfool.cfg:252
@@ -4785,19 +5169,19 @@ msgstr ""
 
 #: src/actions.cpp:1013 src/actions.cpp:1273
 msgid "poisoned"
-msgstr ""
+msgstr "saindēts/-a"
 
 #: src/actions.cpp:1017 src/actions.cpp:1277
 msgid "slowed"
-msgstr ""
+msgstr "sapīts/-a"
 
 #: src/actions.cpp:1023 src/actions.cpp:1283
 msgid "stone"
-msgstr ""
+msgstr "akmens"
 
 #: src/actions.cpp:2295
 msgid "Ambushed!"
-msgstr ""
+msgstr "Slēpnis!"
 
 #: src/actions.cpp:2302
 msgid "Failed teleport! Exit not empty"
@@ -4936,7 +5320,7 @@ msgstr ""
 
 #: src/dialogs.cpp:549 src/menu_events.cpp:750
 msgid "Turn"
-msgstr ""
+msgstr "Gājiens"
 
 #: src/dialogs.cpp:551
 msgid "Scenario Start"
@@ -5030,15 +5414,15 @@ msgstr ""
 
 #: src/dialogs.cpp:824 src/help.cpp:1323
 msgid "HP: "
-msgstr ""
+msgstr "Veselība:"
 
 #: src/dialogs.cpp:827
 msgid "XP: "
-msgstr ""
+msgstr "Pieredze:"
 
 #: src/dialogs.cpp:831 src/help.cpp:1324
 msgid "Moves: "
-msgstr ""
+msgstr "Kustības:"
 
 #: src/dialogs.cpp:1168 src/game.cpp:1081
 msgid "KB"
@@ -5046,7 +5430,7 @@ msgstr ""
 
 #: src/game.cpp:523 src/game.cpp:1911 src/game.cpp:1942
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "Kauja par Vesnotu"
 
 #: src/game.cpp:803
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
@@ -5367,7 +5751,7 @@ msgstr ""
 
 #: src/game.cpp:1932
 msgid "Language"
-msgstr ""
+msgstr "Valoda"
 
 #: src/game.cpp:1933
 msgid "Choose your preferred language:"
@@ -5903,11 +6287,11 @@ msgstr ""
 
 #: src/menu_events.cpp:716 src/menu_events.cpp:717
 msgid "no"
-msgstr ""
+msgstr "nē"
 
 #: src/menu_events.cpp:716 src/menu_events.cpp:717
 msgid "yes"
-msgstr ""
+msgstr "jā"
 
 #: src/menu_events.cpp:724
 msgid "Scenario Settings"
@@ -7271,7 +7655,7 @@ msgstr ""
 
 #: src/unit.cpp:2351 src/unit.cpp:2556 src/unit.cpp:2612
 msgid " and "
-msgstr ""
+msgstr " un "
 
 #: src/unit.cpp:2362
 msgid "$attack_list|: $effect_description"
@@ -7307,8 +7691,8 @@ msgstr[2] ""
 #: src/unit_types.cpp:206 src/unit_types.cpp:262
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "uzbrukums"
+msgstr[1] "uzbrukumi"
 msgstr[2] ""
 
 #: src/unit_types.cpp:214
@@ -7323,15 +7707,15 @@ msgstr ""
 
 #: src/unit_types.cpp:868
 msgid "chaotic"
-msgstr ""
+msgstr "haotisks/-a"
 
 #: src/unit_types.cpp:868
 msgid "lawful"
-msgstr ""
+msgstr "likumpaklausīgs/-a"
 
 #: src/unit_types.cpp:868
 msgid "neutral"
-msgstr ""
+msgstr "neitrāls/-a"
 
 #: src/upload_log.cpp:317
 msgid ""
@@ -7343,16 +7727,16 @@ msgstr ""
 
 #: src/upload_log.cpp:318
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Kopsavilkumi glabājas šeit:"
 
 #: src/upload_log.cpp:320
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Jūs varat redzēt rezultātus šeit:"
 
 #: src/upload_log.cpp:322
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Palīdziet mums izveidot jums labāku Vesnotu!"
 
 #: src/upload_log.cpp:324
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Atļaut kopsavilkumu augšupielādi"
