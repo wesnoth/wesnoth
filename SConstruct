@@ -275,7 +275,7 @@ for d in installdirs:
     env[d] = os.path.join(env["prefix"], env[d])
 
 if env["PLATFORM"] == 'win32':
-    env.Append(LIBS = ["wsock32", "intl"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
+    env.Append(LIBS = ["wsock32", "intl", "z"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
 if env["PLATFORM"] == 'darwin':			# Mac OS X
     env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
 
