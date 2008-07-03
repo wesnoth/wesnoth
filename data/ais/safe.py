@@ -45,7 +45,7 @@ _NODE_ATTR_OK = []
 # Expanded to allow repr, str, call, and doc. These are commonly overloaded
 # to provided fundamental functionality. Without __call__ support, most
 # categories of decorators are simply impossible.
-_STR_OK = [ '__call__', '__copy__', '__deepcopy__', '__doc__',
+_STR_OK = [ '__call__', '__copy__', '__deepcopy__',
             '__init__', '__name__', '__repr__', '__str__' ]
 
 # If we put '__' in _STR_NOT_CONTAIN, then we can't have defacto private data
