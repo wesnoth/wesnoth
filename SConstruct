@@ -290,7 +290,7 @@ SConscript(dirs = Split("po doc packaging/windows"))
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
 builds = {
     "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")),
-    "release" : dict(CXXFLAGS = Split("-O2 -ansi")),
+    "release" : dict(CXXFLAGS = Split("-O2 -ansi -Wall")),
     "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
     }
 build = env["build"]
