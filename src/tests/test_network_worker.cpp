@@ -27,7 +27,7 @@
 //! It is like that this will need some threading also :(
 
 
-BOOST_AUTO_TEST_SUITE( network )
+BOOST_AUTO_TEST_SUITE( test_network )
 
 const int TEST_PORT = 15010;
 const int MIN_THREADS = 1;

@@ -248,6 +248,7 @@ wesnoth_editor2_sources = Split("""
 if env['editor2']:
     wesnoth_sources += wesnoth_editor2_sources
 
+libwesnoth_extras = env.Library("wesnoth_extras", wesnoth_sources)
 #
 # Target declarations
 #
@@ -265,7 +266,7 @@ SConsEnvironment.WesnothProgram = WesnothProgram
 
 game_cpp = python_env.Object("game.cpp");
 
-env.WesnothProgram("wesnoth", [game_cpp] + wesnoth_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd] + wesnoth_res, have_client_prereqs)
+env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd] + wesnoth_res, have_client_prereqs)
 
 wesnoth_editor_sources = Split("""
     editor/editor.cpp
@@ -322,7 +323,7 @@ test_sources = Split("""
     tests/test_network_worker.cpp
 	tests/test_endlevel.cpp
     """)
-test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_core, libwesnothd], have_test_prereqs)
+test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth], have_test_prereqs)
 #Export("test")
 
 if env["svnrev"] != "" and env["svnrev"] != "exported":

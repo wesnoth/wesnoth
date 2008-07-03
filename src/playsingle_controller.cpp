@@ -343,6 +343,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
+				ERR_NG << "[endlevel] used in victory even handler\n";
 			}
 			if (first_human_team_ != -1)
 				log.victory(status_.turn(), teams_[first_human_team_].gold());
