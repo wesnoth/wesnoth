@@ -11,12 +11,14 @@
 
    See the COPYING file for more details.
 */
-#define BOOST_TEST_MAIN
+#define BOOST_TEST_MODULE wesnoth unit tests master suite
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
-#include <game_errors.hpp>
-#include <network.hpp>
-#include <config.hpp>
+#include <boost/test/detail/unit_test_parameters.hpp>
+
+#include "game_errors.hpp"
+#include "network.hpp"
+#include "config.hpp"
 
 /**
  * @todo: add all others exception handlers too
@@ -40,7 +42,8 @@ void exception_translator_game(const game::error& e)
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
-		boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
+		if (boost::unit_test::runtime_config::log_level() < boost::unit_test::log_messages)
+			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
 		BOOST_MESSAGE("Initializing test!");
 		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);

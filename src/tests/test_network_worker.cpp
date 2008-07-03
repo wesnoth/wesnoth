@@ -27,10 +27,13 @@
 //! It is like that this will need some threading also :(
 
 
+BOOST_AUTO_TEST_SUITE( network )
+
 const int TEST_PORT = 15010;
 const int MIN_THREADS = 1;
 const int MAX_THREADS = 1;
 const std::string LOCALHOST = "localhost"; 
+
 
 network::manager* wes_manager;
 network::server_manager* wes_server;
@@ -41,7 +44,6 @@ network::connection client_client2;
 network::connection server_client1;
 network::connection server_client2;
 
-BOOST_AUTO_TEST_SUITE( network );
 
 BOOST_AUTO_TEST_CASE( test_connect )
 {
@@ -195,6 +197,6 @@ BOOST_AUTO_TEST_CASE( test_shutdown )
 	delete wes_manager;
 }
 
-BOOST_AUTO_TEST_SUITE_END();
+BOOST_AUTO_TEST_SUITE_END()
 /* vim: set ts=4 sw=4: */
 

@@ -178,16 +178,10 @@ async_operation::RESULT async_operation::execute(waiter& wait)
 
 		if(!completed) {
 			aborted_ = true;
-			finished_.wait(get_mutex());
-			SDL_Delay(1);
-			const threading::lock l(get_mutex());
-//			t->detach();
 			return ABORTED;
 		}
 	}
 
-	SDL_Delay(1);
-	const threading::lock l(get_mutex());
 	return COMPLETED;
 }
 

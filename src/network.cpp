@@ -503,11 +503,17 @@ connection accept_connection()
 		DBG_NW << "received connection. Pending handshake...\n";
 		pending_sockets.push_back(sock);
 		if(pending_socket_set == 0) {
-			pending_socket_set = SDLNet_AllocSocketSet(512);
+			pending_socket_set = SDLNet_AllocSocketSet(32);
 		}
 
 		if(pending_socket_set != 0) {
-			SDLNet_TCP_AddSocket(pending_socket_set,sock);
+			int res = SDLNet_TCP_AddSocket(pending_socket_set,sock);
+
+			if (res == -1)
+			{
+				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
+				SDLNet_TCP_Close(sock);
+			}
 		}
 	}
 
@@ -726,7 +732,13 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped)
 		return 0;
 	}
 
-	SDLNet_TCP_AddSocket(socket_set,sock);
+	int set_res = SDLNet_TCP_AddSocket(socket_set,sock);
+	if (set_res == -1)
+	{
+		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection\n";
+		SDLNet_TCP_Close(sock);
+		return 0;
+	}
 
 	connection result = 0;
 	for(connection_map::const_iterator j = connections.begin(); j != connections.end(); ++j) {
@@ -812,8 +824,14 @@ connection receive_data(std::vector<char>& buf)
 		return 0;
 	}
 
-	SDLNet_TCP_AddSocket(socket_set,sock);
+	int set_res = SDLNet_TCP_AddSocket(socket_set,sock);
 
+	if (set_res == -1)
+	{
+		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection\n";
+		SDLNet_TCP_Close(sock);
+		return 0;
+	}
 	connection result = 0;
 	for(connection_map::const_iterator j = connections.begin(); j != connections.end(); ++j) {
 		if(j->second.sock == sock) {

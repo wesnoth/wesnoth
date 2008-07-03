@@ -258,6 +258,7 @@ test_SOURCES =  \
 	tests/main.cpp \
 	tests/test_util.cpp \
     tests/test_network_worker.cpp \
+	tests/test_endlevel.cpp \
 	$(wesnoth_source)
 
 test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)

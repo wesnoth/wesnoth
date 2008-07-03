@@ -448,6 +448,7 @@ SET(test_SRC
     tests/main.cpp
     tests/test_util.cpp
 	tests/test_network_worker.cpp
+	tests/test_endlevel.cpp
     ${wesnoth-main_SRC}
 )
 

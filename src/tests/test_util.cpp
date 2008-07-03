@@ -15,6 +15,8 @@
 #include <string>
 #include "util.hpp"
 
+BOOST_AUTO_TEST_SUITE( util )
+
 BOOST_AUTO_TEST_CASE( test_lexical_cast )
 {
 	BOOST_MESSAGE( "Starting utils test!" );
@@ -72,3 +74,4 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
 
 /* vim: set ts=4 sw=4: */
 
+BOOST_AUTO_TEST_SUITE_END()
