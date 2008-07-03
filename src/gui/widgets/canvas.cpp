@@ -536,7 +536,21 @@ timage::timage(const config& cfg) :
  *
  * @end_table
  * Variables:
- * See [[#general_variables|Line]].
+ * @start_table = formula
+ *     image_width unsigned             The width of the image, either the
+ *                                      requested width or the natrual width of
+ *                                      the image. This value can be used to set
+ *                                      the x (or y) value of the image. (This
+ *                                      means x and y are evaluated after the
+ *                                      width and height.)
+ *     image_height unsigned            The height of the image, either the
+ *                                      requested height or the natrual height of
+ *                                      the image. This value can be used to set
+ *                                      the y (or x) value of the image. (This
+ *                                      means x and y are evaluated after the
+ *                                      width and height.)
+ * @end_table
+ * Also the general variables are available, see [[#general_variables|Line]].
  *
  */
 	if(!image_name_.has_formula()) {
@@ -593,10 +607,14 @@ void timage::draw(surface& canvas,
 		// so leave silently.
 		return;
 	}
-	const unsigned x = x_(variables);
-	const unsigned y = y_(variables);
 	unsigned w = w_(variables);
 	unsigned h = h_(variables);
+
+	game_logic::map_formula_callable local_variables(variables);
+	local_variables.add("image_width", variant(w ? w : image_->w));
+	local_variables.add("image_height", variant(h ? h : image_->h));
+	const unsigned x = x_(local_variables);
+	const unsigned y = y_(local_variables);
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
