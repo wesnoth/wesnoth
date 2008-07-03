@@ -47,13 +47,14 @@ Version 1.5.1+svn:
      scripts which start with #!UNSAFE_WPY are also shown to users. This allows
      AI authors to specifically target either a restricted or unrestricted environment.
    * New "system" class attributes are exposed in the restricted environment. These
-     include; '__call__', '__copy__', '__deepcopy__', '__doc__', '__name__',
+     include; '__call__', '__copy__', '__deepcopy__', '__name__',
      '__repr__' and '__str__', in addition to the old __init__ method.
    * ValueError can now be caught.
    * Added a new AI, bruteforce_unsafe.py, which uses both function caching
      (memoize pattern) and psyco to speed execution. It uses the new UNSAFE_WPY
      tag and is not selectable unless "Only Run Safe Python AIs" is disabled.
-     This version of bruteforce runs 2x-14x FASTER than the stock python AI.
+     This version of bruteforce runs 1x-14x FASTER than the stock python AI;
+	*heavily* dependent on the map and number of units involved.
    * Per the python API documentation, many functions now return boolean values rather
      than ints. Minor modernization effort to use new C-API macros provided via
      python 2.4+. This change is fully backward compatible for scripts which properly
