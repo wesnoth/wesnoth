@@ -1889,11 +1889,25 @@ namespace {
 	// Test function to show the new message dialog.
 	// NOTE this event is undocumented since it's only added as test hack and will
 	// be removed without further notice.
-	WML_HANDLER_FUNCTION(message_test,/*handler*/,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(message_test_left,/*handler*/,/*event_info*/,cfg)
 	{
 		const std::string message = cfg["message"];
 		gui2::init();
-		gui2::twindow window = gui2::build((*screen)->video(), "message_test");
+		gui2::twindow window = gui2::build((*screen)->video(), "message_test_left");
+
+		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
+		assert(label);
+		label->set_label(message);
+
+		window.recalculate_size();
+		window.show();
+	}
+
+	WML_HANDLER_FUNCTION(message_test_right,/*handler*/,/*event_info*/,cfg)
+	{
+		const std::string message = cfg["message"];
+		gui2::init();
+		gui2::twindow window = gui2::build((*screen)->video(), "message_test_right");
 
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);
