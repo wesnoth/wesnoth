@@ -13,6 +13,9 @@ Version 1.5.1+svn:
  * WML engine:
    * When examining stored units, now the attacks, max_hitpoints, max_moves,
      and max_experience are the "real" values and can also be modified.
+   * max_attacks in [unit] now also works for values bigger than 1
+   * the "zoc" key works for [unit_type] too, and for [unit] accepts other
+     boolean values than 1 and 0 (bug #11889).
  * GUI improvements:
    * Rewrote the textbox history saving of the new widget library. This rewrite
      is incompatible with the old version, but since the library is still in
@@ -31,6 +34,12 @@ Version 1.5.1+svn:
    * Removed persistance from team configuration (bug: #10916)
    * Made automaticaly generated macro reference easier to naviagate and link to
      (patch: #1076)
+   * Allow [unit_type] num_traits=0 to override race's num_traits.
+   * Small optimization of scrolling and things out of their hexes.
+   * Added a command-line parameters "--smallgui" to allow lower resolutions.
+   * Missing images are now replaced by a "men-at-work" sign (in debug-mode)
+   * Better pathfinding: now always prefer straight path and is also more
+     stable between little mouse's moves.
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
      key is not found, the default value is returned. This is fully backward
