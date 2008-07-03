@@ -13,6 +13,7 @@
 
 #include "editor_controller.hpp"
 #include "editor_display.hpp"
+#include "editor_map.hpp"
 #include "../preferences.hpp"
 
 #include "SDL.h"
@@ -22,14 +23,16 @@ namespace editor2 {
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : game_config_(game_config), gui_(NULL)
 {
+	map_ = editor_map::new_map(44, 33, t_translation::GRASS_LAND);
+	init(video);
 	gui_.invalidate_game_status();
 	gui_.invalidate_all();
 	gui_.draw();
 	events::raise_draw_event();
-//	redraw_everything();
+	redraw_everything();
 }
 
-editor_controller::init_gui(CVideo& video)
+editor_controller::init(CVideo& video)
 {
 	const config* theme_cfg = get_theme(game_config_, "editor2");
 	const config theme = theme_cfg ? theme_cfg : config();

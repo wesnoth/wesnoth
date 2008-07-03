@@ -35,6 +35,8 @@ class editor_controller : public events::handler, public hotkey::command_executo
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int) const {}
 		void handle_event(const SDL_Event&){}
 	private:    
+		/** init the display object and general set-up */ 
+		void init(CVideo& video);
 		/** cref to the main game config */
 		const config& game_config_;
 		/** The current map object */

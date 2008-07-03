@@ -20,6 +20,13 @@ editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 : gamemap(terrain_cfg, data)
 {
 }
+
+editor_map editor_map::create_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
+{
+	const t_translation::t_list column(height, filler);
+	const t_translation::t_map map(width, column);
+	return editor_map(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(map));
+}
 	
 
 

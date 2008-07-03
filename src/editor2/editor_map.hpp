@@ -26,6 +26,7 @@ namespace editor2 {
 class editor_map : public gamemap 
 {
 	editor_map(const config& terrain_cfg, const std::string& data);
+	static editor_map new_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 };
 
 
