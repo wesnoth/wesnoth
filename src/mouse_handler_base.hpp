@@ -32,6 +32,7 @@ extern int commands_disabled;
 class mouse_handler_base {
 public:
 	mouse_handler_base(display* disp, gamemap& map);
+	virtual ~mouse_handler_base() {}
 
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 	/** update the mouse with a fake mouse motion */
