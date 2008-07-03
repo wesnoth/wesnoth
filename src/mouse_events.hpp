@@ -57,7 +57,7 @@ public:
 
 	unit_map::iterator selected_unit();
 	paths::route get_route(unit_map::const_iterator un, gamemap::location go_to, team &team);
-private:
+protected:
 	/** 
 	 * Due to the way this class is constructed we can assume that the
 	 * display* gui_ member actually points to a game_display (derived class)
