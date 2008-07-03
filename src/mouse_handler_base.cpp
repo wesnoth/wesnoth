@@ -62,7 +62,7 @@ void mouse_handler_base::mouse_update(const bool browse)
 	mouse_motion(x, y, browse, true);
 }
 
-bool mouse_handler_base::mouse_motion_default(int x, int y, bool &update) 
+bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/) 
 {
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
@@ -185,12 +185,12 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event)
 	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
 }
 
-bool mouse_handler_base::right_click_before_menu(const SDL_MouseButtonEvent& event, const bool browse)
+bool mouse_handler_base::right_click_before_menu(const SDL_MouseButtonEvent& /*event*/, const bool /*browse*/)
 {
 	return true;
 }
 
-bool mouse_handler_base::left_click(const SDL_MouseButtonEvent& event, const bool browse)
+bool mouse_handler_base::left_click(const SDL_MouseButtonEvent& event, const bool /*browse*/)
 {
 	dragging_ = false;
 	dragging_started_ = false;
@@ -208,7 +208,7 @@ bool mouse_handler_base::left_click(const SDL_MouseButtonEvent& event, const boo
 	return false;
 }
 
-bool mouse_handler_base::right_click(const SDL_MouseButtonEvent& event, const bool browse)
+bool mouse_handler_base::right_click(const SDL_MouseButtonEvent& /*event*/, const bool /*browse*/)
 {
 	return false;
 }
