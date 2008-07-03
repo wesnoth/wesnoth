@@ -188,6 +188,38 @@ private:
 	const formula_ai& ai_;
 };
 
+class find_shroud_function : public function_expression {
+public:
+	find_shroud_function(const args_list& args, const formula_ai& ai)
+		: function_expression("find_shroud", args, 0, 1), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		std::vector<variant> vars;
+		int w,h;
+
+		if(args().size()==1) {
+			const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap();
+			w = m.w();
+			h = m.h();
+		} else {
+			w = ai_.get_info().map.w();
+			h = ai_.get_info().map.h();
+		}
+
+		for(int i = 0; i < w; ++i)
+			for(int j = 0; j < h; ++j) {
+				if(ai_.current_team().shrouded(gamemap::location(i,j)))
+					vars.push_back(variant(new location_callable(i,j)));
+			}
+
+		return variant(&vars);
+	}
+
+	const formula_ai& ai_;
+};
+
 class close_enemies_function : public function_expression {
 public:
 	close_enemies_function(const args_list& args, const formula_ai& ai)
@@ -738,6 +770,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new nearest_keep_function(args, ai_));
 	} else if(fn == "nearest_loc") {
 		return expression_ptr(new nearest_loc_function(args, ai_));
+	} else if(fn == "find_shroud") {
+		return expression_ptr(new find_shroud_function(args, ai_));
 	} else if(fn == "close_enemies") {
 		return expression_ptr(new close_enemies_function(args, ai_));
 	} else if(fn == "calculate_outcome") {

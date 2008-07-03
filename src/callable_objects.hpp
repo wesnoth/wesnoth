@@ -91,6 +91,8 @@ class location_callable : public game_logic::formula_callable {
 public:
 	explicit location_callable(const gamemap::location& loc) : loc_(loc)
 	{}
+	explicit location_callable(int x, int y) : loc_(gamemap::location(x,y))
+	{}
 
 	const gamemap::location& loc() const { return loc_; }
 
