@@ -160,7 +160,7 @@ wesnothd_SOURCES = \
 
 wesnothd_compilerflags = $(AM_CXXFLAGS)
 if BANDWIDTH_MONITOR
-wesnothd_compilerflags = $(wesnothd_compilerflags) -DBANDWIDTH_MONITOR
+wesnothd_compilerflags += -DBANDWIDTH_MONITOR
 endif
 
 wesnothd_CXXFLAGS =  $(wesnothd_compilerflags)
