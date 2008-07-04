@@ -519,6 +519,8 @@ void playsingle_controller::play_turn(bool save)
 
 void playsingle_controller::play_side(const unsigned int team_index, bool save)
 {
+	//flag used when we fallback from ai and give temporarily control to human
+	bool temporary_human = false;
 	do {
 		// Although this flag is used only in this method,
 		// it has to be a class member since derived classes
@@ -526,9 +528,10 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 		player_type_changed_ = false;
 		end_turn_ = false;
 
+
 		statistics::reset_turn_stats(player_number_);
 
-		if(current_team().is_human()) {
+		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
 			try{
 				before_human_turn(save);
@@ -556,7 +559,13 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 
 			LOG_NG << "human finished turn...\n";
 		} else if(current_team().is_ai()) {
-			play_ai_turn();
+			try {
+				play_ai_turn();
+			} catch(fallback_ai_to_human_exception& e) {
+				//give control to human for the rest of this turn
+				player_type_changed_ = true;
+				temporary_human = true;
+			}
 		}
 	} while (player_type_changed_);
 	// Keep looping if the type of a team (human/ai/networked)

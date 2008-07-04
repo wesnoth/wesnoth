@@ -70,6 +70,8 @@ struct end_turn_exception {
 	unsigned int redo;
 };
 
+struct fallback_ai_to_human_exception {};
+
 namespace events{
 
 class chat_handler {
