@@ -1,0 +1,49 @@
+		#===== Evaluation how good unit is on a map ===== #
+
+# ==1==  evaluate average defense #
+#gives map where key is id of terrain, and value is number of hexes of that terrain on a gamemap#
+def locations_map(ai*) 
+	tomap( map( map.terrain, id ) );
+
+#filters terrain map, min_percent it minimal % of map that terrain has to occupy to be considered in later evaluations# 
+def filtered_locations_map(ai*, min_percent)
+	filter( locations_map(ai) , value > (map.w * map.h)/(100/min_percent) );
+
+#returns average defense of the unit #
+def unit_average_defense(ai*, unit, terrain_min_percent )
+	sum( values( map(filtered_locations_map(ai,terrain_min_percent), defense_on(unit, find(map.terrain,id=key).loc)*value) ) ) / sum(values(filtered_locations_map(ai,terrain_min_percent)));
+
+#returns map of units from units_list and their average defense (more -> better) #
+def map_units_average_defense(ai*, units_list, terrain_min_percent) 
+	tomap(map( units_list, id ), map( units_list, 'unit', unit_average_defense(ai, unit, terrain_min_percent ) ) );
+
+# ==2== TODO: evaluate unit effectivness based on movement points and movement cost#
+
+
+		#===== Evaluation of game state - how good is ai doing ===== #
+
+# ==1== based on unit cost and current amount of gold #
+# returns number between 0 and 100 where: 0 we are losing, 100 we are winning #
+def units_cost_gold_eval(ai*)
+	min([((sum(map(allies, 'team', sum(map(units_of_side[team], cost)) + teams[team].gold )) * 100) / sum(map(enemies, 'team', sum(map(units_of_side[team], cost)) + max([teams[team].gold, 0]) )))/2, 100]);
+
+# ==2== based on village possession #
+
+def count_allied_villages(ai*)
+	sum(map(allies, 'side', size(villages_of_side[side]) ));
+
+def count_enemy_villages(ai*)
+	sum(map(enemies, 'side', size(villages_of_side[side]) ));
+
+# multipled by 1000 to increase precision #
+def village_evaluation(ai*)
+	(50000 + (count_allied_villages(ai) - count_enemy_villages(ai)) * (50000/size(villages)))/1000;
+
+# ==3== combined 2 of the above #
+
+def eval(ai*)
+	( units_cost_gold_eval(ai) + village_evaluation(ai) ) / 2;
+
+		# ==========	Main formula section 	========== #
+
+[ village_evaluation(self), units_cost_gold_eval(self), eval(self), fallback('') ]
