@@ -21,7 +21,6 @@
 #include "show_dialog.hpp"
 #include "display.hpp"
 #include "floating_textbox.hpp"
-#include "statistics.hpp"
 #include "widgets/textbox.hpp"
 
 class game_state;

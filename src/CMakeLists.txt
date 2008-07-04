@@ -271,6 +271,7 @@ SET(wesnoth-main_SRC
     sha1.cpp
     settings.cpp
     statistics.cpp
+    statistics_dialog.cpp
     team.cpp
     terrain_filter.cpp
     time_of_day.cpp
