@@ -105,8 +105,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "movement_left") {
 		return variant(u_.movement_left());
 	} else if(key == "side") {
-		return variant(u_.side());
-	} else if(key == "value") {
+		return variant(u_.side()-1);
+	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else if(key == "vars") {
 		if(u_.formula_vars()) {
@@ -127,6 +127,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("leader", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("hitpoints", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("max_hitpoints", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("experience", FORMULA_READ_ONLY));
@@ -135,6 +136,44 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("movement_left", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
+}
+
+variant unit_type_callable::get_value(const std::string& key) const
+{
+	if(key == "id") {
+		return variant(u_.id());
+	} else if(key == "type") {
+		return variant(u_.type_name());
+	} else if(key == "alignment") {
+		return variant(u_.alignment_id(u_.alignment()));
+	} else if(key == "hitpoints") {
+		return variant(u_.hitpoints());
+	} else if(key == "experience") {
+		return variant(u_.experience_needed(true));
+	} else if(key == "level") {
+		return variant(u_.level());
+	} else if(key == "total_movement") {
+		return variant(u_.movement());
+	} else if(key == "cost") {
+		return variant(u_.cost());
+	} else {
+		return variant();
+	}
+}
+
+void unit_type_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("alignment", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("hitpoints", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("experience", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("level", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
 }
 
 variant terrain_callable::get_value(const std::string& key) const

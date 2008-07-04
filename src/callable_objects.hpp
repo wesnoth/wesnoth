@@ -154,6 +154,19 @@ private:
 	const unit& u_;
 };
 
+class unit_type_callable : public game_logic::formula_callable {
+public:
+	unit_type_callable(const unit_type& u)
+	  : u_(u)
+	{}
+
+	const unit_type& get_unit_type() const { return u_; }
+	variant get_value(const std::string& key) const;
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+private:
+	const unit_type& u_;
+};
+
 CALLABLE_WRAPPER_START(team)
 CALLABLE_WRAPPER_INPUT(gold)
 CALLABLE_WRAPPER_INPUT(start_gold)
