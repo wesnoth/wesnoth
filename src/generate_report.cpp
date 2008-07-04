@@ -268,11 +268,13 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			const int accuracy = at_it->accuracy();
 			if(accuracy) {
+				// xgettext:no-c-format
 				tooltip << " " << (accuracy > 0 ? "+" : "") << accuracy << _("tooltip^% accuracy");
 			}
 
 			const int parry = at_it->parry();
 			if(parry) {
+				// xgettext:no-c-format
 				tooltip << " " << (parry > 0 ? "+" : "") << parry << _("tooltip^% parry");
 			}
 
