@@ -165,6 +165,7 @@ handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joi
 {
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 	if(auto_join) {
+		assert(!event_contexts.empty());
 		event_contexts.back().add_handler(this);
 		has_joined_ = true;
 	}

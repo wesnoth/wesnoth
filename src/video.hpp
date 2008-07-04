@@ -79,6 +79,7 @@ class CVideo {
 	int getBpp();
 
 	void make_fake();
+	void make_test_fake();
 	bool faked() const { return fake_screen_; }
 
 	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears

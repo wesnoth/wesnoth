@@ -15,6 +15,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
 #include <boost/test/detail/unit_test_parameters.hpp>
+#include "SDL.h"
 
 #include "game_errors.hpp"
 #include "network.hpp"
@@ -42,6 +43,7 @@ void exception_translator_game(const game::error& e)
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
+		SDL_Init(SDL_INIT_TIMER);
 		if (boost::unit_test::runtime_config::log_level() < boost::unit_test::log_messages)
 			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
 		BOOST_MESSAGE("Initializing test!");

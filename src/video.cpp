@@ -283,6 +283,15 @@ void CVideo::make_fake()
 	image::set_pixel_format(frameBuffer->format);
 }
 
+void CVideo::make_test_fake()
+{
+	// Create fake screen that is 1024x768 24bpp
+	// We can then use this in tests to draw
+	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,1024,768,24,0xFF0000,0xFF00,0xFF,0);
+	image::set_pixel_format(frameBuffer->format);
+
+}
+
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 {
 	return SDL_VideoModeOK( x, y, bits_per_pixel, get_flags(flags) );
