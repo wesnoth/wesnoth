@@ -18,8 +18,9 @@
 #ifndef MARKED_UP_TEXT_HPP_INCLUDED
 #define MARKED_UP_TEXT_HPP_INCLUDED
 
-class CVideo;
 
+#include "sdl_utils.hpp"
+class CVideo;
 #include <SDL_video.h>
 #include <string>
 
