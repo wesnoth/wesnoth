@@ -16,6 +16,7 @@
 
 #include "actions.hpp"
 #include "callable_objects.hpp"
+#include "menu_events.hpp"
 #include "formula.hpp"
 #include "formula_ai.hpp"
 #include "formula_callable.hpp"
@@ -664,13 +665,33 @@ private:
 			return variant();
 		}
 
-		const unit& un = convert_variant<unit_callable>(u)->get_unit();
+		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
+		const unit_type_callable* u_type = try_convert_variant<unit_type_callable>(u);
 		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
-		if(!ai_.get_info().map.on_board(loc)) {
-			return variant();
+
+		if (u_call)
+		{
+			const unit& un = u_call->get_unit();
+
+			if(!ai_.get_info().map.on_board(loc)) {
+				return variant();
+			}
+	
+			return variant(100 - un.defense_modifier(ai_.get_info().map[loc]));
 		}
 
-		return variant(100 - un.defense_modifier(ai_.get_info().map[loc]));
+		if (u_type)
+		{
+			const unit_type& un = u_type->get_unit_type();
+
+			if(!ai_.get_info().map.on_board(loc)) {
+				return variant();
+			}
+	
+			return variant(100 - un.movement_type().defense_modifier(ai_.get_info().map, ai_.get_info().map[loc]));
+		}
+
+		return variant();
 	}
 
 	const formula_ai& ai_;
@@ -689,13 +710,78 @@ private:
 			return variant();
 		}
 
-		const unit& un = convert_variant<unit_callable>(u)->get_unit();
+		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
+		const unit_type_callable* u_type = try_convert_variant<unit_type_callable>(u);
 		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
-		if(!ai_.get_info().map.on_board(loc)) {
-			return variant();
+
+		if (u_call)
+		{
+			const unit& un = u_call->get_unit();
+
+			if(!ai_.get_info().map.on_board(loc)) {
+				return variant();
+			}
+	
+			return variant(un.defense_modifier(ai_.get_info().map[loc]));
 		}
 
-		return variant(un.defense_modifier(ai_.get_info().map[loc]));
+		if (u_type)
+		{
+			const unit_type& un = u_type->get_unit_type();
+
+			if(!ai_.get_info().map.on_board(loc)) {
+				return variant();
+			}
+	
+			return variant(un.movement_type().defense_modifier(ai_.get_info().map, ai_.get_info().map[loc]));
+		}
+
+		return variant();
+	}
+
+	const formula_ai& ai_;
+};
+
+class movement_cost_function : public function_expression {
+public:
+	movement_cost_function(const args_list& args, const formula_ai& ai_object)
+	  : function_expression("movement_cost", args, 2, 2), ai_(ai_object)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		variant u = args()[0]->evaluate(variables);
+		variant loc_var = args()[1]->evaluate(variables);
+		if(u.is_null() || loc_var.is_null()) {
+			return variant();
+		}
+		//we can pass to this function either unit_callable or unit_type callable
+		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
+		const unit_type_callable* u_type = try_convert_variant<unit_type_callable>(u);
+		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
+
+		if (u_call)
+		{
+			const unit& un = u_call->get_unit();
+
+			if(!ai_.get_info().map.on_board(loc)) {
+				return variant();
+			}
+	
+			return variant(un.movement_cost(ai_.get_info().map[loc]));
+		}
+
+		if (u_type)
+		{
+			const unit_type& un = u_type->get_unit_type();
+
+			if(!ai_.get_info().map.on_board(loc)) {
+				return variant();
+			}
+	
+			return variant(un.movement_type().movement_cost(ai_.get_info().map, ai_.get_info().map[loc]));
+		}
+
+		return variant();
 	}
 
 	const formula_ai& ai_;
@@ -713,20 +799,42 @@ private:
 		if(u1.is_null() || u2.is_null()) {
 			return variant();
 		}
+		std::vector<attack_type> attacks_tmp;
+		std::vector<attack_type>& attacks = attacks_tmp;
 
-		const unit& attacker = convert_variant<unit_callable>(u1)->get_unit();
-		const unit& defender = convert_variant<unit_callable>(u2)->get_unit();
-		const std::vector<attack_type>& attacks = attacker.attacks();
-
-		int best = 0;
-		for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-			const int dmg = ((defender.damage_from(*i, false, gamemap::location()) * i->damage())/100) * i->num_attacks();
-			if(dmg > best) {
-				best = dmg;
-			}
+		//we have to make sure that this fuction works with any combination of unit_callable/unit_type_callable passed to it
+		const unit_callable* u_attacker = try_convert_variant<unit_callable>(u1);
+		if (u_attacker)
+		{
+			attacks = u_attacker->get_unit().attacks();
+		} else
+		{
+			const unit_type_callable* u_t_attacker = convert_variant<unit_type_callable>(u1);
+			attacks_tmp = u_t_attacker->get_unit_type().attacks();
 		}
 
-		return variant(best);
+		const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
+		if (u_defender)
+		{
+			const unit& defender = u_defender->get_unit();
+			int best = 0;
+			for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
+				const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+				if(dmg > best)
+					best = dmg;
+			}
+			return variant(best);
+		} else
+		{
+			const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
+			int best = 0;
+			for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
+				const int dmg = round_damage(i->damage(), defender.movement_type().resistance_against(*i), 100) * i->num_attacks();
+				if(dmg > best)
+					best = dmg;
+			}
+			return variant(best);
+		}
 	}
 
 	const formula_ai& ai_;
@@ -762,6 +870,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new defense_on_function(args, ai_));
 	} else if(fn == "chance_to_hit") {
 		return expression_ptr(new chance_to_hit_function(args, ai_));
+	} else if(fn == "movement_cost") {
+		return expression_ptr(new movement_cost_function(args, ai_));
 	} else if(fn == "max_possible_damage") {
 		return expression_ptr(new max_possible_damage_function(args, ai_));
 	} else if(fn == "distance_to_nearest_unowned_village") {
@@ -1044,9 +1154,16 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(i->is_string() && i->as_string() == "end_turn") {
 			return false;
 		} else if(fallback_command) {
-			ai_interface* fallback = create_ai(fallback_command->key(), get_info());
-			if(fallback) {
-				fallback->play_turn();
+			if(fallback_command->key() == "human")
+			{
+				//we want give control of the side to human for the rest of this turn
+				throw fallback_ai_to_human_exception();
+			} else
+			{
+				ai_interface* fallback = create_ai(fallback_command->key(), get_info());
+				if(fallback) {
+					fallback->play_turn();
+				}
 			}
 			return false;
 		} else {
@@ -1089,9 +1206,26 @@ void formula_ai::do_recruitment()
 	do_recruitment();
 }
 
+namespace {
+template<typename Container>
+variant villages_from_set(const Container& villages,
+				          const std::set<gamemap::location>* exclude=NULL) {
+	std::vector<variant> vars;
+	foreach(const gamemap::location& loc, villages) {
+		if(exclude && exclude->count(loc)) {
+			continue;
+		}
+		vars.push_back(variant(new location_callable(loc)));
+	}
+
+	return variant(&vars);
+}
+}
+
 variant formula_ai::get_value(const std::string& key) const
 {
-	if(key == "attacks") {
+	if(key == "attacks")
+	{
 		prepare_move();
 		if(attacks_cache_.is_null() == false) {
 			return attacks_cache_;
@@ -1105,23 +1239,186 @@ variant formula_ai::get_value(const std::string& key) const
 
 		attacks_cache_ = variant(&vars);
 		return attacks_cache_;
-	} else if(key == "my_moves") {
+
+	} else if(key == "turn")
+	{
+		return variant(get_info().state.turn());
+
+	} else if(key == "time_of_day")
+	{
+		return variant(get_info().state.get_time_of_day().id);
+
+	} else if(key == "my_side")
+	{
+		return variant(get_info().team_num-1);
+
+	} else if(key == "teams")
+	{
+		std::vector<variant> vars;
+		for(std::vector<team>::const_iterator i = get_info().state.teams->begin(); i != get_info().state.teams->end(); ++i) {
+			vars.push_back(variant(new team_callable(*i)));
+		}
+		return variant(&vars);
+
+	} else if(key == "allies")
+	{
+		std::vector<variant> vars;
+		for( size_t i = 0; i < get_info().teams.size(); ++i) {
+			if ( !current_team().is_enemy( i+1 ) )
+				vars.push_back(variant( i ));
+		}
+		return variant(&vars);
+
+	} else if(key == "enemies")
+	{
+		std::vector<variant> vars;
+		for( size_t i = 0; i < get_info().teams.size(); ++i) {
+			if ( current_team().is_enemy( i+1 ) )
+				vars.push_back(variant( i ));
+		}
+		return variant(&vars);
+
+	} else if(key == "my_recruits")
+	{
+		std::vector<variant> vars;
+
+		unit_type_data::types().build_all(unit_type::FULL);
+
+		const std::set<std::string>& recruits = current_team().recruits();
+		if(recruits.size()==0)
+			return variant( &vars );
+		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
+		{
+			std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find(*i);
+			if (unit_it != unit_type_data::types().end() )
+			{
+				vars.push_back(variant(new unit_type_callable(unit_it->second) ));
+			}
+		}
+		return variant( &vars );
+
+	} else if(key == "recruits_of_side")
+	{
+		std::vector<variant> vars;
+		std::vector< std::vector< variant> > tmp;
+
+		unit_type_data::types().build_all(unit_type::FULL);
+
+		for( size_t i = 0; i<get_info().teams.size(); ++i)
+		{
+			std::vector<variant> v;
+			tmp.push_back( v );
+
+			const std::set<std::string>& recruits = get_info().teams[i].recruits();
+			if(recruits.size()==0)
+				continue;
+			for(std::set<std::string>::const_iterator str_it = recruits.begin(); str_it != recruits.end(); ++str_it)
+			{
+				std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find(*str_it);
+				if (unit_it != unit_type_data::types().end() )
+				{
+					tmp[i].push_back(variant(new unit_type_callable(unit_it->second) ));
+				}
+			}
+		}
+
+		for( size_t i = 0; i<tmp.size(); ++i)
+			vars.push_back( variant( &tmp[i] ));
+		return variant(&vars);
+
+	} else if(key == "units")
+	{
+		std::vector<variant> vars;
+		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+			vars.push_back(variant(new unit_callable(*i)));
+		}
+		return variant(&vars);
+
+	} else if(key == "units_of_side")
+	{
+		std::vector<variant> vars;
+		std::vector< std::vector< variant> > tmp;
+		for( size_t i = 0; i<get_info().teams.size(); ++i)
+		{
+			std::vector<variant> v;
+			tmp.push_back( v );
+		}
+		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+			tmp[ i->second.side()-1 ].push_back( variant(new unit_callable(*i)) );
+		}
+		for( size_t i = 0; i<tmp.size(); ++i)
+			vars.push_back( variant( &tmp[i] ));
+		return variant(&vars);
+
+	} else if(key == "my_units")
+	{
+		std::vector<variant> vars;
+		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+			if(i->second.side() == get_info().team_num) {
+				vars.push_back(variant(new unit_callable(*i)));
+			}
+		}
+		return variant(&vars);
+
+	} else if(key == "enemy_units")
+	{
+		std::vector<variant> vars;
+		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+			if(current_team().is_enemy(i->second.side())) {
+				vars.push_back(variant(new unit_callable(*i)));
+			}
+		}
+		return variant(&vars);
+
+	} else if(key == "my_moves")
+	{
 		prepare_move();
 		return variant(new move_map_callable(srcdst_, dstsrc_));
-	} else if(key == "enemy_moves") {
+
+	} else if(key == "enemy_moves")
+	{
 		prepare_move();
 		return variant(new move_map_callable(enemy_srcdst_, enemy_dstsrc_));
-	} else if(key == "my_leader") {
+
+	} else if(key == "my_leader")
+	{
 		unit_map::const_iterator i = team_leader(get_info().team_num, get_info().units);
 		if(i == get_info().units.end()) {
 			return variant();
 		}
-
 		return variant(new unit_callable(*i));
-	} else if(key == "vars") {
+
+	} else if(key == "vars")
+	{
 		return variant(&vars_);
-	} else if(key == "keeps") {
+	} else if(key == "keeps")
+	{
 		return get_keeps();
+
+	} else if(key == "villages")
+	{
+		return villages_from_set(get_info().map.villages());
+
+	} else if(key == "villages_of_side")
+	{
+		std::vector<variant> vars;
+		for(size_t i = 0; i<get_info().teams.size(); ++i)
+		{
+			vars.push_back( variant() );
+		}
+		for(size_t i = 0; i<vars.size(); ++i)
+		{
+			vars[i] = villages_from_set(get_info().teams[i].villages());
+		}
+		return variant(&vars);
+
+	} else if(key == "my_villages")
+	{
+		return villages_from_set(current_team().villages());
+
+	} else if(key == "enemy_and_unowned_villages")
+	{
+		return villages_from_set(get_info().map.villages(), &current_team().villages());
 	}
 
 	return ai_interface::get_value(key);
@@ -1131,11 +1428,27 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 {
 	using game_logic::FORMULA_READ_ONLY;
 	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_side", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("teams", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("turn", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("time_of_day", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("keeps", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_moves", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_moves", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_leader", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("keeps", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_recruits", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("recruits_of_side", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("units_of_side", FORMULA_READ_ONLY));	
+	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("villages_of_side", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
 
 	ai_interface::get_inputs(inputs);
 }

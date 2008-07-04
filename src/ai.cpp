@@ -2217,90 +2217,10 @@ int ai::attack_depth()
 	return attack_depth_;
 }
 
-namespace {
-template<typename Container>
-variant villages_from_set(const Container& villages,
-				          const std::set<gamemap::location>* exclude=NULL) {
-	std::vector<variant> vars;
-	foreach(const gamemap::location& loc, villages) {
-		if(exclude && exclude->count(loc)) {
-			continue;
-		}
-		vars.push_back(variant(new location_callable(loc)));
-	}
-
-	return variant(&vars);
-}
-}
-
 variant ai_interface::get_value(const std::string& key) const
 {
-	if(key == "turn") {
-		return variant(get_info().state.turn());
-	} else if(key == "allies") {
-		std::vector<variant> vars;
-		for( size_t i = 0; i < info_.teams.size(); ++i) {
-			if ( !info_.teams[info_.team_num-1].is_enemy( i+1 ) )
-				vars.push_back(variant( i ));
-		}
-		return variant(&vars);
-	} else if(key == "enemies") {
-		std::vector<variant> vars;
-		for( size_t i = 0; i < info_.teams.size(); ++i) {
-			if ( info_.teams[info_.team_num-1].is_enemy( i+1 ) )
-				vars.push_back(variant( i ));
-		}
-		return variant(&vars);
-	} else if(key == "units") {
-		std::vector<variant> vars;
-		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
-			vars.push_back(variant(new unit_callable(*i)));
-		}
-		return variant(&vars);
-	} else if(key == "units_of_team") {
-		std::vector<variant> vars;
-		std::vector< std::vector< variant> > tmp;
-		for( size_t i = 0; i<info_.teams.size(); ++i)
-		{
-			std::vector<variant> v;
-			tmp.push_back( v );
-		}
-		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
-			tmp[ i->second.side()-1 ].push_back( variant(new unit_callable(*i)) );
-		}
-		for( size_t i = 0; i<tmp.size(); ++i)
-			vars.push_back( variant( &tmp[i] ));
-		return variant(&vars);
-	} else if(key == "my_units") {
-		std::vector<variant> vars;
-		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
-			if(i->second.side() == info_.team_num) {
-				vars.push_back(variant(new unit_callable(*i)));
-			}
-		}
-		return variant(&vars);
-	} else if(key == "enemy_units") {
-		std::vector<variant> vars;
-		for(unit_map::const_iterator i = info_.units.begin(); i != info_.units.end(); ++i) {
-			if(info_.teams[info_.team_num-1].is_enemy(i->second.side())) {
-				vars.push_back(variant(new unit_callable(*i)));
-			}
-		}
-		return variant(&vars);
-	} else if(key == "villages") {
-		return villages_from_set(info_.map.villages());
-	} else if(key == "my_villages") {
-		return villages_from_set(current_team().villages());
-	} else if(key == "enemy_and_unowned_villages") {
-		return villages_from_set(info_.map.villages(), &current_team().villages());
-	} else if(key == "map") {
+	if(key == "map") {
 		return variant(new gamemap_callable(info_.map));
-	} else if(key == "teams") {
-		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = info_.state.teams->begin(); i != info_.state.teams->end(); ++i) {
-			vars.push_back(variant(new team_callable(*i)));
-		}
-		return variant(&vars);
 	}
 	return variant();
 }
@@ -2308,18 +2228,7 @@ variant ai_interface::get_value(const std::string& key) const
 void ai_interface::get_inputs(std::vector<game_logic::formula_input>* inputs) const
 {
 	using game_logic::FORMULA_READ_ONLY;
-	inputs->push_back(game_logic::formula_input("turn", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("allies", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemies", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("units_of_team", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("my_villages", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("enemy_and_unowned_villages", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("map", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("teams", FORMULA_READ_ONLY));
 }
 
 variant ai::attack_analysis::get_value(const std::string& key) const
