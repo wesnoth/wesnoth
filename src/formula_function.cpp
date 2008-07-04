@@ -307,6 +307,40 @@ private:
 	}
 };
 
+class tomap_function : public function_expression {
+public:
+	explicit tomap_function(const args_list& args)
+	     : function_expression("values", args, 1, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant var_1 = args()[0]->evaluate(variables);
+
+		std::map<variant, variant> tmp;
+
+		if (args().size() == 2)
+		{
+			const variant var_2 = args()[1]->evaluate(variables);
+			if ( var_1.num_elements() != var_2.num_elements() )
+				return variant();
+			for(size_t i = 0; i < var_1.num_elements(); i++ )
+				tmp[ var_1[i] ] = var_2[i];
+		} else
+		{
+			variant_iterator it = var_1.get_iterator();
+			for(it = var_1.begin(); it != var_1.end(); ++it) {
+				std::map<variant, variant>::iterator map_it = tmp.find( *it );
+				if (map_it == tmp.end())
+					tmp[ *it ] = variant( 1 );
+				else
+					map_it->second = variant(map_it->second.as_int() + 1);
+			}
+		}
+
+		return variant( &tmp );
+	}
+};
 
 
 class choose_function : public function_expression {
@@ -549,9 +583,34 @@ private:
 	variant execute(const formula_callable& variables) const {
 		variant res(0);
 		const variant items = args()[0]->evaluate(variables);
-		if(args().size() >= 2) {
-			res = args()[1]->evaluate(variables);
+		if (items.num_elements() > 0)
+		{
+			if (items[0].is_list() )
+			{
+				std::vector<variant> tmp;
+				res = variant(&tmp);
+				if(args().size() >= 2) {
+					res = args()[1]->evaluate(variables);
+					if(!res.is_list())
+						return variant();
+				}
+			} else if( items[0].is_map() )
+			{
+				std::map<variant,variant> tmp;
+				res = variant(&tmp);
+				if(args().size() >= 2) {
+					res = args()[1]->evaluate(variables);
+					if(!res.is_map())
+						return variant();
+				}
+			} else
+			{
+				if(args().size() >= 2) {
+					res = args()[1]->evaluate(variables);
+				}
+			}
 		}
+
 		for(size_t n = 0; n != items.num_elements(); ++n) {
 			res = res + items[n];
 		}
@@ -762,6 +821,7 @@ functions_map& get_functions_map() {
 		FUNCTION(keys);
 		FUNCTION(values);
 		FUNCTION(tolist);
+		FUNCTION(tomap);
 #undef FUNCTION
 	}
 
