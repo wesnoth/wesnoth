@@ -865,10 +865,12 @@ int unit_type::experience_needed(bool with_acceleration) const
 
 
 
-const char* unit_type::alignment_description(unit_type::ALIGNMENT align)
+const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
 	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
-	return (gettext(aligns[align]));
+	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic") };
+	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
+	return (gettext(tlist[align]));
 }
 
 const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
