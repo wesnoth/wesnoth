@@ -2365,6 +2365,15 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				if(apply_to == "variation" && no_add == false) {
 					variation_ = (**i.first)["name"];
 					advance_to(this->type());
+				} else if(apply_to == "type" && no_add == false) {
+					type_ = (**i.first)["name"];
+					int hit_points = hit_points_;
+					int experience = experience_;
+					int movement = movement_;
+					advance_to(this->type());
+					hit_points_ = hit_points;
+					experience_ = experience;
+					movement_ = movement;
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
 					const std::string& description = (**i.first)["description"];
