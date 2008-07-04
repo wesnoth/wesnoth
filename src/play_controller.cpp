@@ -105,7 +105,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	events_manager_ = new game_events::manager(level_,&gui_,map_, &soundsources_manager_,
+	events_manager_ = new game_events::manager(level_,map_,
                                                    units_,teams_, gamestate_,status_);
 
 	std::set<std::string> seen_save_ids;
@@ -138,6 +138,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
 	mouse_handler_.set_gui(gui_);
 	menu_handler_.set_gui(gui_);
+	events_manager_->set_gui(*gui_);
 	theme::set_known_themes(&game_config_);
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
@@ -178,6 +179,8 @@ void play_controller::init_managers(){
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
 	tooltips_manager_ = new tooltips::manager(gui_->video());
 	soundsources_manager_ = new soundsource::manager(*gui_);
+
+	events_manager_->set_soundsource(*soundsources_manager_);
 
 	halo_manager_ = new halo::manager(*gui_);
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";

@@ -178,8 +178,10 @@ void replay_controller::reset_replay(){
 	statistics::fresh_stats();
 	if (events_manager_ != NULL){
 		delete events_manager_;
-		events_manager_ = new game_events::manager(level_,&gui_,map_, &soundsources_manager_,
+		events_manager_ = new game_events::manager(level_,map_,
 								units_,teams_, gamestate_,status_);
+		events_manager_->set_gui(*gui_);
+		events_manager_->set_soundsource(*soundsources_manager_);
 	}
 
 	gui_->new_turn();

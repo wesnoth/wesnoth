@@ -67,8 +67,8 @@
 namespace {
 
 	bool manager_running = false;
-	game_display** screen = NULL;
-	soundsource::manager** soundsources = NULL;
+	game_display* screen = NULL;
+	soundsource::manager* soundsources = NULL;
 	gamemap* game_map = NULL;
 	unit_map* units = NULL;
 	std::vector<team>* teams = NULL;
@@ -154,7 +154,7 @@ static void show_wml_errors()
 			msg << " (" << itor->second << ")";
 		}
 
-		(*screen)->add_chat_message(time(NULL), caption, 0, msg.str(),
+		(screen)->add_chat_message(time(NULL), caption, 0, msg.str(),
 				game_display::MESSAGE_PUBLIC, false);
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
@@ -385,7 +385,7 @@ namespace {
 
 } // end anonymous namespace (2)
 
-static bool events_init() { return *screen != NULL; }
+static bool events_init() { return screen != NULL; }
 
 namespace {
 
@@ -430,8 +430,8 @@ namespace {
 			}
 		}
 
-		(*screen)->labels().recalculate_shroud();
-		(*screen)->invalidate_all();
+		(screen)->labels().recalculate_shroud();
+		(screen)->invalidate_all();
 	}
 
 
@@ -467,21 +467,21 @@ namespace {
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
 
-					(*screen)->invalidate(u->first);
+					(screen)->invalidate(u->first);
 					std::pair<gamemap::location,unit> *up = units->extract(u->first);
 					up->first = vacant_dst;
 					units->add(up);
 					unit_mutations++;
 					if(game_map->is_village(vacant_dst)) {
-						get_village(vacant_dst, **screen,*teams,side-1,*units);
+						get_village(vacant_dst, *screen,*teams,side-1,*units);
 					}
 
 					if(utils::string_bool(cfg["clear_shroud"],true)) {
-						clear_shroud(**screen,*game_map,*units,*teams,side-1);
+						clear_shroud(*screen,*game_map,*units,*teams,side-1);
 					}
 
-					(*screen)->invalidate(dst);
-					(*screen)->draw();
+					(screen)->invalidate(dst);
+					(screen)->draw();
 				}
 			}
 		}
@@ -504,7 +504,7 @@ namespace {
 
 		for (size_t side = 0; side != teams->size(); side++) {
 			if (clear_fog_side[side] && (*teams)[side].auto_shroud_updates()) {
-				clear_shroud(**screen,*game_map,*units,*teams,side);
+				clear_shroud(*screen,*game_map,*units,*teams,side);
 			}
 		}
 	}
@@ -601,9 +601,9 @@ namespace {
 		const int r = atoi(red.c_str());
 		const int g = atoi(green.c_str());
 		const int b = atoi(blue.c_str());
-		(*screen)->adjust_colours(r,g,b);
-		(*screen)->invalidate_all();
-		(*screen)->draw(true,true);
+		(screen)->adjust_colours(r,g,b);
+		(screen)->invalidate_all();
+		(screen)->draw(true,true);
 	}
 
 	WML_HANDLER_FUNCTION(delay,/*handler*/,/*event_info*/,cfg)
@@ -611,7 +611,7 @@ namespace {
 		std::string delay_string = cfg["time"];
 		assert(state_of_game != NULL);
 		const int delay_time = atoi(delay_string.c_str());
-		(*screen)->delay(delay_time);
+		(screen)->delay(delay_time);
 	}
 
 	WML_HANDLER_FUNCTION(scroll,/*handler*/,/*event_info*/,cfg)
@@ -621,8 +621,8 @@ namespace {
 		assert(state_of_game != NULL);
 		const int xoff = atoi(x.c_str());
 		const int yoff = atoi(y.c_str());
-		(*screen)->scroll(xoff,yoff);
-		(*screen)->draw(true,true);
+		(screen)->scroll(xoff,yoff);
+		(screen)->draw(true,true);
 	}
 
 	WML_HANDLER_FUNCTION(scroll_to,/*handler*/,/*event_info*/,cfg)
@@ -630,7 +630,7 @@ namespace {
 		assert(state_of_game != NULL);
 		const gamemap::location loc = cfg_to_loc(cfg);
 		std::string check_fogged = cfg["check_fogged"];
-		(*screen)->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
+		(screen)->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
 
 	WML_HANDLER_FUNCTION(scroll_to_unit,/*handler*/,/*event_info*/,cfg)
@@ -642,7 +642,7 @@ namespace {
 		}
 		std::string check_fogged = cfg["check_fogged"];
 		if(u != units->end()) {
-			(*screen)->scroll_to_tile(u->first,game_display::SCROLL,utils::string_bool(check_fogged,false));
+			(screen)->scroll_to_tile(u->first,game_display::SCROLL,utils::string_bool(check_fogged,false));
 		}
 	}
 
@@ -1478,10 +1478,10 @@ namespace {
 		}
 
 		if(!img.empty()) { //If image key is set remove that one item
-			(*screen)->remove_single_overlay(loc, img);
+			(screen)->remove_single_overlay(loc, img);
 		}
 		else { //Else remove the overlay completely
-			(*screen)->remove_overlay(loc);
+			(screen)->remove_overlay(loc);
 		}
 	}
 
@@ -1516,8 +1516,8 @@ namespace {
 		unit_map::iterator u = units->find(loc);
 		if(u != units->end()) {
 			u->second.set_hidden(true);
-			(*screen)->invalidate(loc);
-			(*screen)->draw();
+			(screen)->invalidate(loc);
+			(screen)->draw();
 		}
 	}
 
@@ -1528,8 +1528,8 @@ namespace {
 		// Unhide all for backward compatibility
 		for(u =  units->begin(); u != units->end() ; u++) {
 			u->second.set_hidden(false);
-			(*screen)->invalidate(loc);
-			(*screen)->draw();
+			(screen)->invalidate(loc);
+			(screen)->draw();
 		}
 	}
 
@@ -1541,9 +1541,9 @@ namespace {
 		std::string halo = cfg["halo"];
 		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
-			(*screen)->add_overlay(loc,img,halo);
-			(*screen)->invalidate(loc);
-			(*screen)->draw();
+			(screen)->add_overlay(loc,img,halo);
+			(screen)->invalidate(loc);
+			(screen)->draw();
 		}
 	}
 
@@ -1594,13 +1594,13 @@ namespace {
 				spec.location(loc);
 			}
 
-			(*soundsources)->add(spec);
+			(soundsources)->add(spec);
 		}
 	}
 
 	WML_HANDLER_FUNCTION(remove_sound_source,/*handler*/,/*event_info*/,cfg)
 	{
-		(*soundsources)->remove(cfg["id"]);
+		(soundsources)->remove(cfg["id"]);
 	}
 
 	// Changing the terrain
@@ -1667,7 +1667,7 @@ namespace {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 			return;
 		} catch(twml_exception& e) {
-			e.show(**screen);
+			e.show(*screen);
 			return;
 		}
 
@@ -1688,7 +1688,7 @@ namespace {
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
-			const bool show = *screen != NULL && !(*screen)->fogged(loc);
+			const bool show = screen != NULL && !(screen)->fogged(loc);
 			const bool animate = show && utils::string_bool(cfg["animate"], false);
 		
 			//	If new unit is leader set current player/visible side name
@@ -1700,10 +1700,10 @@ namespace {
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
 			unit_mutations++;
 			if(game_map->is_village(loc)) {
-				get_village(loc,**screen,*teams,new_unit.side()-1,*units);
+				get_village(loc,*screen,*teams,new_unit.side()-1,*units);
 			}
 
-			(*screen)->invalidate(loc);
+			(screen)->invalidate(loc);
 
 			unit_map::iterator un = units->find(loc);
 
@@ -1711,7 +1711,7 @@ namespace {
 				unit_display::unit_recruited(loc);
 			}
 			else if(show) {
-				(*screen)->draw();
+				(screen)->draw();
 			}
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
@@ -1804,8 +1804,8 @@ namespace {
 
 			u->second.add_modification("object", cfg.get_parsed_config());
 
-			(*screen)->select_hex(event_info.loc1);
-			(*screen)->invalidate_unit();
+			(screen)->select_hex(event_info.loc1);
+			(screen)->invalidate_unit();
 
 			// Mark this item as used up.
 			used_items.insert(id);
@@ -1822,14 +1822,14 @@ namespace {
 			}
 
 			// Redraw the unit, with its new stats
-			(*screen)->draw();
+			(screen)->draw();
 
 			try {
 				const std::string duration_str = cfg["duration"];
 				const unsigned int lifetime = average_frame_time
 					* lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 
-				wml_event_dialog to_show(**screen,((surface.null())? caption : ""),text);
+				wml_event_dialog to_show(*screen,((surface.null())? caption : ""),text);
 				if(!surface.null()) {
 					to_show.set_image(surface, caption);
 				}
@@ -1850,7 +1850,7 @@ namespace {
 	}
 	WML_HANDLER_FUNCTION(print,/*handler*/,/*event_info*/,cfg)
 	{
-		// Display a message on-*screen
+		// Display a message on-screen
 		std::string text = cfg["text"];
 		std::string size_str = cfg["size"];
 		std::string duration_str = cfg["duration"];
@@ -1873,7 +1873,7 @@ namespace {
 
 		const std::string& msg = text;
 		if(msg != "") {
-			const SDL_Rect rect = (*screen)->map_outside_area();
+			const SDL_Rect rect = (screen)->map_outside_area();
 			floating_label = font::add_floating_label(msg,size,colour,
 					rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
 		}
@@ -1893,7 +1893,7 @@ namespace {
 	{
 		const std::string message = cfg["message"];
 		gui2::init();
-		gui2::twindow window = gui2::build((*screen)->video(), "message_test_left");
+		gui2::twindow window = gui2::build((screen)->video(), "message_test_left");
 
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);
@@ -1907,7 +1907,7 @@ namespace {
 	{
 		const std::string message = cfg["message"];
 		gui2::init();
-		gui2::twindow window = gui2::build((*screen)->video(), "message_test_right");
+		gui2::twindow window = gui2::build((screen)->video(), "message_test_right");
 
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);
@@ -1972,7 +1972,7 @@ namespace {
 				unit_map::iterator un = units->find(loc);
 				if(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
 					if(utils::string_bool(cfg["animate"])) {
-						(*screen)->scroll_to_tile(loc);
+						(screen)->scroll_to_tile(loc);
 						unit_display::unit_die(loc, un->second);
 					}
 					if(utils::string_bool(cfg["fire_event"])) {
@@ -2206,7 +2206,7 @@ namespace {
 					const int green = lexical_cast_default<int>(green_str,0);
 					const int blue = lexical_cast_default<int>(blue_str,0);
 					{
-						(*screen)->float_label(loc,text,red,green,blue);
+						(screen)->float_label(loc,text,red,green,blue);
 					}
 				}
 
@@ -2222,7 +2222,7 @@ namespace {
 							&& (*teams)[side-1].is_human());
 
 					// The code in dialogs::advance_unit tests whether the unit can advance
-					dialogs::advance_unit(*game_map, *units, loc, **screen, !sel, true);
+					dialogs::advance_unit(*game_map, *units, loc, *screen, !sel, true);
 				}
 
 			} else {
@@ -2410,7 +2410,7 @@ namespace {
 
 		for(std::vector<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 			if(game_map->is_village(*i)) {
-				get_village(*i,**screen,*teams,team_num,*units);
+				get_village(*i,*screen,*teams,team_num,*units);
 			}
 		}
 	}
@@ -2473,16 +2473,16 @@ namespace {
 		assert(state_of_game != NULL);
 		if(side != "") {
 			const int side_num = lexical_cast_default<int>(side);
-			clear_shroud(**screen,*game_map,*units,*teams,side_num-1);
-			(*screen)->recalculate_minimap();
+			clear_shroud(*screen,*game_map,*units,*teams,side_num-1);
+			(screen)->recalculate_minimap();
 		}
 		if(handler.rebuild_screen()) {
 			handler.rebuild_screen() = false;
-			(*screen)->recalculate_minimap();
-			(*screen)->rebuild_all();
+			(screen)->recalculate_minimap();
+			(screen)->rebuild_all();
 		}
-		(*screen)->invalidate_all();
-		(*screen)->draw(true,true);
+		(screen)->invalidate_all();
+		(screen)->draw(true,true);
 	}
 
 	WML_HANDLER_FUNCTION(animate_unit,/*handler*/,event_info,cfg)
@@ -2501,7 +2501,7 @@ namespace {
 		}
 
 		// We have found a unit that matches the filter
-		if(u != units->end() && ! (*screen)->fogged(u->first)) {
+		if(u != units->end() && ! (screen)->fogged(u->first)) {
 			attack_type *primary = NULL;
 			attack_type *secondary = NULL;
 			Uint32 text_color = 0;
@@ -2540,26 +2540,26 @@ namespace {
 			}
 			std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
 			if(tmp_string_vect.size() ==3) text_color = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
-			(*screen)->scroll_to_tile(u->first);
+			(screen)->scroll_to_tile(u->first);
 			unit_animator animator;
 			animator.add_animation(&u->second,cfg["flag"],u->first,lexical_cast_default<int>(cfg["value"]),utils::string_bool(cfg["with_bars"]),
 					false,cfg["text"],text_color, hits,primary,secondary,0);
 			animator.start_animations();
 			animator.wait_for_end();
 			u->second.set_standing(u->first);
-			(*screen)->invalidate(u->first);
-			(*screen)->draw();
+			(screen)->invalidate(u->first);
+			(screen)->draw();
 			events::pump();
 		}
 	}
 	WML_HANDLER_FUNCTION(label,/*handler*/,/*event_info*/,cfg)
 	{
 
-		terrain_label label((*screen)->labels(),
+		terrain_label label((screen)->labels(),
 				cfg.get_config(),
 				game_events::get_state_of_game());
 
-		(*screen)->labels().set_label(label.location(),
+		(screen)->labels().set_label(label.location(),
 				label.text(),
 				label.team_name(),
 				label.colour());
@@ -2783,10 +2783,10 @@ namespace {
 
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
-			(*screen)->highlight_hex(speaker->first);
+			(screen)->highlight_hex(speaker->first);
 			const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
-			(*screen)->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
-			(*screen)->highlight_hex(speaker->first);
+			(screen)->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
+			(screen)->highlight_hex(speaker->first);
 
 			if(image.empty()) {
 				image = speaker->second.profile();
@@ -2811,9 +2811,9 @@ namespace {
 			}
 			LOG_DP << "done scrolling to speaker...\n";
 		} else {
-			(*screen)->highlight_hex(gamemap::location::null_location);
+			(screen)->highlight_hex(gamemap::location::null_location);
 		}
-		(*screen)->draw(false);
+		(screen)->draw(false);
 
 		std::vector<std::string> options;
 		std::vector<vconfig::child_list> option_events;
@@ -2854,10 +2854,10 @@ namespace {
 				const t_string msg = cfg["message"];
 				const std::string duration_str = cfg["duration"];
 				const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-				const SDL_Rect& map_area = (*screen)->map_outside_area();
+				const SDL_Rect& map_area = (screen)->map_outside_area();
 
 				try {
-					wml_event_dialog to_show(**screen, ((surface.null())? caption : ""),
+					wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
 							msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
 					if(!surface.null()) {
 						to_show.set_image(surface, caption);
@@ -2912,7 +2912,7 @@ namespace {
 
 
 			if(!options.empty()) {
-				do_replay_handle(**screen,*game_map,*units,*teams,
+				do_replay_handle(*screen,*game_map,*units,*teams,
 						side ,*status_ptr,*state_of_game,std::string("choose"));
 				const config* action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("choose").empty()) {
@@ -2922,7 +2922,7 @@ namespace {
 				option_chosen = atol(val.c_str());
 			}
 			if(has_text_input) {
-				do_replay_handle(**screen,*game_map,*units,*teams,
+				do_replay_handle(*screen,*game_map,*units,*teams,
 						side ,*status_ptr,*state_of_game,std::string("input"));
 				const config* action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("input").empty()) {
@@ -3184,9 +3184,9 @@ namespace {
 
 		if(handler.rebuild_screen()) {
 			handler.rebuild_screen() = false;
-			(*screen)->recalculate_minimap();
-			(*screen)->invalidate_all();
-			(*screen)->rebuild_all();
+			(screen)->recalculate_minimap();
+			(screen)->invalidate_all();
+			(screen)->rebuild_all();
 		}
 
 
@@ -3301,8 +3301,7 @@ namespace {
 		static std::set<std::string> unit_wml_ids;
 
 
-		manager::manager(const config& cfg, game_display** gui_, gamemap& map_,
-				soundsource::manager** sndsources_,
+		manager::manager(const config& cfg, gamemap& map_,
 				unit_map& units_,
 				std::vector<team>& teams_,
 				game_state& state_of_game_, gamestatus& status) :
@@ -3327,8 +3326,6 @@ namespace {
 			}
 
 			teams = &teams_;
-			screen = gui_;
-			soundsources = sndsources_;
 			game_map = &map_;
 			units = &units_;
 			state_of_game = &state_of_game_;
@@ -3363,6 +3360,14 @@ namespace {
 				LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
 			}
 		}
+		void manager::set_gui(game_display& gui_)
+		{
+			screen = &gui_;
+		}
+		void manager::set_soundsource(soundsource::manager& sndsources_)
+		{
+			soundsources = &sndsources_;
+		}
 
 		void write_events(config& cfg)
 		{
@@ -3393,8 +3398,8 @@ namespace {
 
 			cfg["unit_wml_ids"] = ids.str();
 
-			if(*screen != NULL)
-				(*screen)->write_overlays(cfg);
+			if(screen != NULL)
+				(screen)->write_overlays(cfg);
 		}
 
 		manager::~manager() {
@@ -3402,7 +3407,7 @@ namespace {
 			manager_running = false;
 			events_queue.clear();
 			events_map.clear();
-			*screen = NULL;
+			screen = NULL;
 			game_map = NULL;
 			units = NULL;
 			state_of_game = NULL;
@@ -3502,7 +3507,7 @@ namespace {
 				commit_new_handlers();
 
 				// Dialogs can only be shown if the display is not locked
-				if(! (*screen)->video().update_locked()) {
+				if(! (screen)->video().update_locked()) {
 					show_wml_errors();
 				}
 			}
