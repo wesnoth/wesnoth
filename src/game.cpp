@@ -1317,6 +1317,9 @@ void game_controller::download_addons(std::string host)
 		heading << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
 				<< _("Author") << sep << _("Type") << sep << _("Downloads") << sep << _("Size");
 
+		options.push_back(heading.str());
+		options_to_filter.push_back(heading.str());
+
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
 
 		const std::vector< std::string >& publish_options = available_addons();
@@ -1400,8 +1403,6 @@ void game_controller::download_addons(std::string host)
 			options_to_filter.push_back(text_columns);
 		}
 
-		options.push_back(heading.str());
-
 		std::string pub_option_text, del_option_text;
 
 		for(std::vector< std::string >::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
@@ -1434,7 +1435,7 @@ void game_controller::download_addons(std::string host)
 		addon_dialog.set_menu(addon_menu);
 
 		gui::filter_textbox* filter = new gui::filter_textbox(disp().video(),
-			_("Filter: "), options, options_to_filter, 0, addon_dialog, 300);
+			_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
 		addon_dialog.set_textbox(filter);
 
 		int index = addon_dialog.show();
