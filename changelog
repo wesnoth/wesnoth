@@ -33,6 +33,8 @@ Version 1.5.1+svn:
    * Fixed statitics not add turn data from previus scenarios (bug: #11719)
    * Fixed manager to initialize before gamestate in playcontroller (bug: 11935)
    * Removed persistance from team configuration (bug: #10916)
+   * Fixed text parser again strip cr from configs. Added CR and 254 to be
+     escaped in campaign upload. All UMC has to be reuploaded to server
    * Made automaticaly generated macro reference easier to naviagate and link to
      (patch: #1076)
    * Allow [unit_type] num_traits=0 to override race's num_traits.

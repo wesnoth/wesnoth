@@ -71,26 +71,6 @@ protected:
 	int current_;
 	size_t lineno_;
 
-	inline void next_char_no_strip()
-	{
-		if (UNLIKELY(current_ == '\n'))
-			lineno_++;
-		this->next_char_fast_no_strip();
-	}
-
-	inline void next_char_fast_no_strip()
-	{
-		if (LIKELY(in_.good()))
-		{
-			current_ = in_.get();
-		}
-		else
-		{
-			current_ = EOF;
-			return;
-		}
-	}
-
 	inline void next_char()
 	{
 		if (UNLIKELY(current_ == '\n'))

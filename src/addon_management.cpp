@@ -105,7 +105,7 @@ namespace {
 	const char escape_char = 1;
 }
 
-static bool needs_escaping(char c) { return c == 0 || c == escape_char; }
+static bool needs_escaping(char c) { return c == 0 || c == escape_char || c == 13 || c == 254; }
 
 static bool IsCR(const char& c)
 {
