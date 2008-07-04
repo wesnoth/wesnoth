@@ -1437,7 +1437,9 @@ void game_controller::download_addons(std::string host)
 			_("Filter: "), options, options_to_filter, 0, addon_dialog, 300);
 		addon_dialog.set_textbox(filter);
 
-		const int index = addon_dialog.show();
+		int index = addon_dialog.show();
+		index = filter->get_index(index);
+
 		if(index < 0) {
 			return;
 		}
