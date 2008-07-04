@@ -60,9 +60,9 @@ namespace test_utils {
 		static int num_keys = 300;
 		Uint8* key_list = SDL_GetKeyState( &num_keys );
 		if (event_.type == SDL_KEYDOWN)
-			key_list[SDLK_ESCAPE] = 5;
+			key_list[event_.key.keysym.sym] = 1;
 		else
-			key_list[SDLK_ESCAPE] = 0;
+			key_list[event_.key.keysym.sym] = 0;
 	}
 
 	fake_event_source::fake_event_source() : start_time_(SDL_GetTicks())

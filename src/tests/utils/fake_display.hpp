@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+   Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,23 +12,15 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-#include "key.hpp"
+#ifndef TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
+#define TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
 
-CKey::CKey() : 
-	key_list(0),
-	is_enabled(true)
-{
-	static int num_keys = 300;
-	key_list = SDL_GetKeyState( &num_keys );
-}
+class game_display;
 
-int CKey::operator[]( int code ) const
-{
-	return int(key_list[code]);
-}
+namespace test_utils {
 
-void CKey::SetEnabled( bool enable )
-{
-	is_enabled = enable;
+	game_display& get_fake_display();
+
+
 }
+#endif

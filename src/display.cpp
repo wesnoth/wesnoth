@@ -122,7 +122,9 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	idle_anim_rate_(1.0),
 	map_screenshot_surf_(NULL)
 {
-	if(non_interactive()) {
+	if(non_interactive()
+		&& (get_video_surface() != NULL
+		&& video.faked())) {
 		screen_.lock_updates(true);
 	}
 

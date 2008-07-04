@@ -320,6 +320,7 @@ env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, l
 
 test_utils_sources = Split("""
 	tests/utils/fake_event_source.cpp
+	tests/utils/fake_display.cpp
 	""")
 
 libtest_utils = env.Library("test_utils", test_utils_sources)

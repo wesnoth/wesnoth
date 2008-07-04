@@ -20,7 +20,9 @@
 #include "game_errors.hpp"
 #include "network.hpp"
 #include "config.hpp"
+#include "log.hpp"
 
+#include "tests/utils/fake_display.hpp"
 /**
  * @todo: add all others exception handlers too
  **/
@@ -44,6 +46,10 @@ struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
 		SDL_Init(SDL_INIT_TIMER);
+		test_utils::get_fake_display();
+
+//		lg::set_log_domain_severity("all",3);
+
 		if (boost::unit_test::runtime_config::log_level() < boost::unit_test::log_messages)
 			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
 		BOOST_MESSAGE("Initializing test!");

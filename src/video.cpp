@@ -230,13 +230,24 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo() : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
+CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
 		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
 		throw CVideo::error();
+	}
+	switch(type)
+	{
+		case NO_FAKE:
+			break;
+		case FAKE:
+			make_fake();
+			break;
+		case FAKE_TEST:
+			make_test_fake();
+			break;
 	}
 }
 

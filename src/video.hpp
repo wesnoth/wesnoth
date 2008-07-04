@@ -36,7 +36,12 @@ void update_whole_screen();
 
 class CVideo {
      public:
-	CVideo();
+		 enum FAKE_TYPES {
+			 NO_FAKE,
+			 FAKE,
+			 FAKE_TEST
+		 };
+	CVideo(FAKE_TYPES type = NO_FAKE);
 	CVideo(int x, int y, int bits_per_pixel, int flags);
 	~CVideo();
 
