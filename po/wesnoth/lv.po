@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-07-03 22:14+0200\n"
-"PO-Revision-Date: 2008-07-03 15:45+0300\n"
+"PO-Revision-Date: 2008-07-04 12:28+0300\n"
 "Last-Translator: Artis Rozentāls <artis.rozentals@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -551,8 +551,8 @@ msgstr ""
 "italic>, kas pieejama no  galvenās izvēlnes. Pēc tam ieteicams spēlēt "
 "kampaņu \"Troņa mantinieks\" - galvenajā izvēlnē izvēlieties "
 "<italic>text=Kampaņa</italic> pēc tam <italic>text=\"Troņa mantinieks\"</"
-"italic>. Tā kā \"Cīņa par Vesnotu\" var būt grūta vēlams sākt "
-"<italic>text=Viegli</italic>."
+"italic>. Tā kā \"Cīņa par Vesnotu\" var būt grūta - vēlams sākt ar "
+"<italic>text=Vieglo</italic> grūtības pakāpi."
 
 #. [topic]
 #: data/core/help.cfg:138
@@ -809,7 +809,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:207
 msgid "Shroud and Fog of War"
-msgstr "Pārklājs un kara migla"
+msgstr "Plīvurs un kara migla"
 
 #. [topic]
 #: data/core/help.cfg:210
@@ -1243,7 +1243,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:311
 msgid "ingame_help_item^Contributors"
-msgstr "Autori un palīgi"
+msgstr "Veidotāji"
 
 #. [topic]
 #: data/core/help.cfg:317
@@ -1506,7 +1506,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:423
 msgid "Grassland"
-msgstr "Lauks"
+msgstr "Līdzenums"
 
 #. [topic]
 #: data/core/help.cfg:428
@@ -1635,7 +1635,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:493
 msgid "Deep Water"
-msgstr "Dziļi ūdeņi"
+msgstr "Dzelme"
 
 #. [topic]
 #: data/core/help.cfg:498
@@ -1778,7 +1778,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:579
 msgid "Mushroom Grove"
-msgstr "Sēņu mežš"
+msgstr "Sēņu biežņa"
 
 #. [topic]
 #: data/core/help.cfg:584
@@ -5320,7 +5320,7 @@ msgstr ""
 
 #: src/dialogs.cpp:576
 msgid "Tutorial"
-msgstr ""
+msgstr "Pamācība"
 
 #: src/dialogs.cpp:584 src/menu_events.cpp:737
 msgid "replay"
@@ -5544,7 +5544,7 @@ msgstr ""
 
 #: src/game.cpp:1184 src/titlescreen.cpp:329
 msgid "Version"
-msgstr ""
+msgstr "Versija"
 
 #: src/game.cpp:1185
 msgid "Author"
@@ -5844,7 +5844,7 @@ msgstr ""
 
 #: src/help.cpp:59
 msgid "Help"
-msgstr ""
+msgstr "Palīdzība"
 
 #: src/help.cpp:1111
 msgid "<header>text='Units having this special attack'</header>"
@@ -6543,146 +6543,149 @@ msgstr ""
 
 #: src/multiplayer.cpp:100
 msgid "View List"
-msgstr ""
+msgstr "Skatīt sarakstu"
 
 #: src/multiplayer.cpp:106
 msgid "List of Servers"
-msgstr ""
+msgstr "Serveru saraksts"
 
 #: src/multiplayer.cpp:107
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Izvēlēties serveri no saraksta"
 
 #: src/multiplayer.cpp:110
 msgid "Address"
-msgstr ""
+msgstr "Adrese"
 
 #: src/multiplayer.cpp:137
 msgid "Connect to Host"
-msgstr ""
+msgstr "Pievienoties saimniekam"
 
 #: src/multiplayer.cpp:138
 msgid "Choose host to connect to: "
-msgstr ""
+msgstr "Izvēlēties saimnieku pie kura pievienoties:"
 
 #: src/multiplayer.cpp:178
 msgid "Reading from Server..."
-msgstr ""
+msgstr "Saņem datus no servera..."
 
 #: src/multiplayer.cpp:188
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Serverim nepieciešama versija '$version1', jūs lietojat versiju '$version2'"
 
 #: src/multiplayer.cpp:200
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Servera puses pārvirzīšanas cilpa"
 
 #: src/multiplayer.cpp:232
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Ir nepieciešams pieteikties šim serverim"
 
 #: src/multiplayer_connect.cpp:80 src/multiplayer_connect.cpp:442
 #: src/multiplayer_connect.cpp:539
 msgid "Normal"
-msgstr ""
+msgstr "Normāls"
 
 #: src/multiplayer_connect.cpp:438 src/multiplayer_connect.cpp:535
 #: src/multiplayer_wait.cpp:511 src/multiplayer_wait.cpp:519
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_connect.cpp:438 src/multiplayer_connect.cpp:535
 #: src/multiplayer_wait.cpp:511 src/multiplayer_wait.cpp:522
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_connect.cpp:513
 msgid "Default AI"
-msgstr ""
+msgstr "Noklusētais mākslīgais intelekts"
 
 #: src/multiplayer_connect.cpp:567
 msgid "(Vacant slot)"
-msgstr ""
+msgstr "(Brīva vieta)"
 
 #: src/multiplayer_connect.cpp:573
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Anonīms vietējais spēlētājs"
 
 #: src/multiplayer_connect.cpp:594
 msgid "Computer player"
-msgstr ""
+msgstr "Dators"
 
 #: src/multiplayer_connect.cpp:597
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Tukša vieta)"
 
 #: src/multiplayer_connect.cpp:844
 msgid "Only random sides in the current era."
-msgstr ""
+msgstr "Šajā ērā ir tikai nejauši izvēlētas puses"
 
 #: src/multiplayer_connect.cpp:868
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Nav atrasts līdera tips frakcijai $faction"
 
 #: src/multiplayer_connect.cpp:905
 msgid "Game Lobby: "
-msgstr ""
+msgstr "Spēles priekštelpa:"
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
-msgstr ""
+msgstr "Spēlētājs/Tips"
 
 #: src/multiplayer_connect.cpp:926
 msgid "Faction"
-msgstr ""
+msgstr "Frakcija"
 
 #: src/multiplayer_connect.cpp:927
 msgid "Team/Gender"
-msgstr ""
+msgstr "Komanda/Dzimums"
 
 #: src/multiplayer_connect.cpp:928
 msgid "Color"
-msgstr ""
+msgstr "Krāsa"
 
 #: src/multiplayer_connect.cpp:932
 msgid "I'm Ready"
-msgstr ""
+msgstr "Esmu gatavs"
 
 #: src/multiplayer_connect.cpp:942
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Scenārijs ir nederīgs jo tajā nav neviena puse."
 
 #: src/multiplayer_connect.cpp:1322
 msgid "Network Player"
-msgstr ""
+msgstr "Tīkla spēlētājs"
 
 #: src/multiplayer_connect.cpp:1323
 msgid "Local Player"
-msgstr ""
+msgstr "Vietējais spēlētājs"
 
 #: src/multiplayer_connect.cpp:1324
 msgid "Computer Player"
-msgstr ""
+msgstr "Dators"
 
 #: src/multiplayer_connect.cpp:1325
 msgid "Empty"
-msgstr ""
+msgstr "Tukšs"
 
 #: src/multiplayer_connect.cpp:1439
 msgid "This is not a multiplayer save"
-msgstr ""
+msgstr "Šī nav daudzpersonu spēle"
 
 #: src/multiplayer_connect.cpp:1555
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Nav atrasta ēra"
 
 #: src/multiplayer_connect.cpp:1576
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
+"Uzvara:\n"
+"@Sakaut pretinieku līderi/-us"
 
 #: src/multiplayer_connect.cpp:1636
 msgid "Waiting for players to join..."
@@ -7058,7 +7061,7 @@ msgstr ""
 
 #: src/play_controller.cpp:829
 msgid "Back to start"
-msgstr ""
+msgstr "Atsākt scenāriju"
 
 #: src/play_controller.cpp:831
 msgid "Back to turn "
@@ -7312,109 +7315,111 @@ msgstr ""
 
 #: src/titlescreen.cpp:349
 msgid "TitleScreen button^Tutorial"
-msgstr ""
+msgstr "Pamācība"
 
 #: src/titlescreen.cpp:350
 msgid "TitleScreen button^Campaign"
-msgstr ""
+msgstr "Kampaņa"
 
 #: src/titlescreen.cpp:351
 msgid "TitleScreen button^Multiplayer"
-msgstr ""
+msgstr "Daudzspēlētāju"
 
 #: src/titlescreen.cpp:352
 msgid "TitleScreen button^Load"
-msgstr ""
+msgstr "Ielādēt"
 
 #: src/titlescreen.cpp:353
 msgid "TitleScreen button^Add-ons"
-msgstr ""
+msgstr "Papildinājumi"
 
 #: src/titlescreen.cpp:354
 msgid "TitleScreen button^Language"
-msgstr ""
+msgstr "Valoda"
 
 #: src/titlescreen.cpp:355
 msgid "TitleScreen button^Preferences"
-msgstr ""
+msgstr "Iestatījumi"
 
 #: src/titlescreen.cpp:356
 msgid "TitleScreen button^Credits"
-msgstr ""
+msgstr "Veidotāji"
 
 #: src/titlescreen.cpp:357
 msgid "TitleScreen button^Quit"
-msgstr ""
+msgstr "Pamest"
 
 #: src/titlescreen.cpp:360
 msgid "TitleScreen button^Previous"
-msgstr ""
+msgstr "Ipriekšējais"
 
 #: src/titlescreen.cpp:361
 msgid "TitleScreen button^Next"
-msgstr ""
+msgstr "Nākamais"
 
 #: src/titlescreen.cpp:362
 msgid "TitleScreen button^Help"
-msgstr ""
+msgstr "Palīdzība"
 
 #: src/titlescreen.cpp:364
 msgid "TitleScreen button^Help Wesnoth"
-msgstr ""
+msgstr "Vesnotas palīdzība"
 
 #: src/titlescreen.cpp:366
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Izmantojiet pamācību, lai iepazītos ar spēli"
 
 #: src/titlescreen.cpp:367
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Sākt jaunu viena spēlētāja kampaņu"
 
 #: src/titlescreen.cpp:368
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Spēlēt daudzspēlētāju (karstā krēsla, lokālā tīkla vai interneta) spēli vai "
+"vienu scenāriju pret datoru"
 
 #: src/titlescreen.cpp:369
 msgid "Load a saved game"
-msgstr ""
+msgstr "Ielādēt saglabātu spēli"
 
 #: src/titlescreen.cpp:370
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Lejupielādēt lietotāju veidotas kampaņas, ēras vai karšu komplektus"
 
 #: src/titlescreen.cpp:371
 msgid "Change the language"
-msgstr ""
+msgstr "Mainīt valodu"
 
 #: src/titlescreen.cpp:372
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Mainīt spēles iestatījumus"
 
 #: src/titlescreen.cpp:373
 msgid "View the credits"
-msgstr ""
+msgstr "Skatīt veidotāju sarakstu"
 
 #: src/titlescreen.cpp:374
 msgid "Quit the game"
-msgstr ""
+msgstr "Pamest spēli"
 
 #: src/titlescreen.cpp:375
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Parādīt nākošo dienas padomu"
 
 #: src/titlescreen.cpp:376
 msgid "Show Battle for Wesnoth help"
-msgstr ""
+msgstr "Parādīt \"Cīņas par Vesnotu\" palīdzību"
 
 #: src/titlescreen.cpp:377
 msgid "Upload statistics"
-msgstr ""
+msgstr "Augšupielādēt statistiku"
 
 #: src/titlescreen.cpp:433
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Palīdzēt Vesnotai sūtot informāciju"
 
 #: src/unit.cpp:403 src/unit.cpp:1264 src/unit.cpp:2385
 msgid "Unknown unit type '$type|'"
@@ -7506,3 +7511,24 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 
 #~ msgid "English strings edition"
 #~ msgstr "Tulkojums angļu valodā (GB)"
+
+#~ msgid "(Reserved for $playername)"
+#~ msgstr "(Rezervēts priekš $playername)"
+
+#~ msgid "Reserved"
+#~ msgstr "Rezervēts"
+
+#~ msgid "--move--"
+#~ msgstr "--pārvietot--"
+
+#~ msgid "--give--"
+#~ msgstr "--dot--"
+
+#~ msgid "TitleScreen button^Editor"
+#~ msgstr "Redaktors"
+
+#~ msgid "Start the map editor"
+#~ msgstr "Palaist karšu redaktoru"
+
+#~ msgid "Help Wesnoth"
+#~ msgstr "Palīdzēt Vesnotai"
