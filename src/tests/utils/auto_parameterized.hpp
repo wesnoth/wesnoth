@@ -20,6 +20,10 @@
 
 namespace test_utils {
 
+#ifndef BOOST_AUTO_TU_REGISTRAR
+#define BOOST_AUTO_TU_REGISTRAR BOOST_AUTO_TC_REGISTRAR
+#endif
+
 #define WESNOTH_PARAMETERIZED_TEST_CASE( test_name, type_name, values, param_name )   \
 struct test_name : public BOOST_AUTO_TEST_CASE_FIXTURE                  \
 { void test_method(const type_name&); };                                \
