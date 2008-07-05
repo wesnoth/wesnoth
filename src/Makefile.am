@@ -35,7 +35,7 @@ noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 
 pkgdatadir=$(datadir)/@DATADIR@
 
-INTERNALLIBS = -Wl,--start-group -lwesnoth-core -lwesnoth -Wl,--end-group
+INTERNALLIBS = -lwesnoth-core -lwesnoth
 
 THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBINTL) \
@@ -261,7 +261,7 @@ test_SOURCES =  \
 	tests/test_save_dialog.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)
+test_LDADD = -Wl,--start-group $(INTERNALLIBS) -Wl,--end-group $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
