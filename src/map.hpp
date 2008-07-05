@@ -56,7 +56,6 @@ public:
 	 */
 	std::string get_terrain_string(const t_translation::t_terrain& terrain) const;
 
-
 	//! Throws exception if the map file is not in the correct format.
 	struct incorrect_format_exception {
 		incorrect_format_exception(const char* msg) : msg_(msg) {}
@@ -124,7 +123,8 @@ public:
 		{ return underlying_def_terrain(get_terrain(loc)); }
 	const t_translation::t_list& underlying_union_terrain(const location& loc) const
 		{ return underlying_union_terrain(get_terrain(loc)); }
-
+	std::string get_terrain_string(const location& loc) const
+		{ return get_terrain_string(get_terrain(loc)); }
 	bool is_village(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_village(); }
 	int gives_healing(t_translation::t_terrain terrain) const
