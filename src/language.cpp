@@ -153,13 +153,13 @@ bool load_language_list()
 
 	known_languages.clear();
 	known_languages.push_back(
-		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr"));
+		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
 
 	config::const_child_itors langs = cfg.child_range("locale");
 	for(;langs.first != langs.second; ++langs.first) {
 		known_languages.push_back(
 			language_def((**langs.first)["locale"], (**langs.first)["name"], (**langs.first)["dir"],
-				(**langs.first)["alternates"]));
+				(**langs.first)["alternates"], (**langs.first)["sort_name"]));
 	}
 
 	return true;
@@ -167,6 +167,9 @@ bool load_language_list()
 
 std::vector<language_def> get_languages()
 {
+	// We sort every time, the local might have changed which can modify the
+	// sort order.
+	std::sort(known_languages.begin(), known_languages.end());
 	return known_languages;
 }
 

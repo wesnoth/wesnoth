@@ -33,23 +33,28 @@ struct language_def
 		localename(),
 		alternates(),
 		language(),
+		sort_name(),
 		rtl(false)
 		{}
 
 	language_def(const std::string& name, const t_string& lang, const std::string& dir,
-	    const std::string &salternates = "") :
+		    const std::string &salternates = "", const std::string& sort_name = "") :
 		localename(name), 
-		alternates(),
+		alternates(utils::split(salternates)),
 		language(lang), 
+		sort_name(sort_name.empty() ? std::string(lang) : sort_name),
 		rtl(dir == "rtl")
 	{
-            alternates = utils::split(salternates);
-        }
+    }
+
 	std::string localename;
 	std::vector<std::string> alternates;
 	t_string language;
+	std::string sort_name;
 	bool rtl;		// A right to left language? (e.g: Hebrew)
 	bool operator== (const language_def&) const;
+	bool operator< (const language_def& a) const
+		{ return sort_name < a.sort_name; }
 	
 	/**
 	 * Is the locale available on the system?
