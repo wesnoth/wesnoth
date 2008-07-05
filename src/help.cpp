@@ -388,6 +388,7 @@ private:
 	/// reference points to. If font_size is below zero, the default
 	/// will be used.
 	void add_text_item(const std::string text, const std::string ref_dst="",
+					   bool broken_link = false,
 					   int font_size=-1, bool bold=false, bool italic=false,
 					   SDL_Color color=font::NORMAL_COLOUR);
 
@@ -2077,9 +2078,23 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 	const std::string dst = cfg["dst"];
 	const std::string text = cfg["text"];
 	const bool force = utils::string_bool(cfg["force"], false);
-	bool show_ref = true;
+
+	if (dst == "") {
+		std::stringstream msg;
+		msg << "Ref markup must have dst attribute. Please submit a bug"
+		       " report if you have not modified the game files yourself. Erroneous config: ";
+		write(msg, cfg);
+		throw parse_error(msg.str());
+	}
+
 	if (find_topic(toplevel_, dst) == NULL && !force) {
-		show_ref = false;
+		if (game_config::debug)
+			add_text_item(text, dst, true);
+		else
+			// quietly silence the hyperlink for normal user
+			add_text_item(text);
+			
+
 		// FIXME: workaround: if different campaigns define different
 		// terrains, some terrains available in one campaign will
 		// appear in the list of seen terrains, and be displayed in the
@@ -2101,19 +2116,6 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 			throw parse_error(msg.str());
 		}
 #endif
-	}
-	if (dst == "") {
-		std::stringstream msg;
-		msg << "Ref markup must have dst attribute. Please submit a bug"
-		       " report if you have not modified the game files yourself. Erroneous config: ";
-		write(msg, cfg);
-		throw parse_error(msg.str());
-	}
-	if (show_ref) {
-		add_text_item(text, dst);
-	}
-	else {
-		add_text_item(text);
 	}
 }
 
@@ -2138,7 +2140,7 @@ void help_text_area::handle_bold_cfg(const config &cfg)
 	if (text == "") {
 		throw parse_error("Bold markup must have text attribute.");
 	}
-	add_text_item(text, "", -1, true);
+	add_text_item(text, "", false, -1, true);
 }
 
 void help_text_area::handle_italic_cfg(const config &cfg)
@@ -2147,7 +2149,7 @@ void help_text_area::handle_italic_cfg(const config &cfg)
 	if (text == "") {
 		throw parse_error("Italic markup must have text attribute.");
 	}
-	add_text_item(text, "", -1, false, true);
+	add_text_item(text, "", false, -1, false, true);
 }
 
 void help_text_area::handle_header_cfg(const config &cfg)
@@ -2156,7 +2158,7 @@ void help_text_area::handle_header_cfg(const config &cfg)
 	if (text == "") {
 		throw parse_error("Header markup must have text attribute.");
 	}
-	add_text_item(text, "", title2_size, true);
+	add_text_item(text, "", false, title2_size, true);
 }
 
 void help_text_area::handle_jump_cfg(const config &cfg)
@@ -2214,12 +2216,13 @@ void help_text_area::handle_format_cfg(const config &cfg)
 		}
 	}
 	SDL_Color color = string_to_color(cfg["color"]);
-	add_text_item(text, "", font_size, bold, italic, color);
+	add_text_item(text, "", false, font_size, bold, italic, color);
 }
 
 void help_text_area::add_text_item(const std::string text, const std::string ref_dst,
-								   int _font_size, bool bold, bool italic,
-								   SDL_Color text_color)
+								   bool broken_link, int _font_size, bool bold, bool italic,
+								   SDL_Color text_color
+)
 {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
 	if (text.empty())
@@ -2233,7 +2236,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		down_one_line();
 		std::string rest_text = text;
 		rest_text.erase(0, first_word_start + 1);
-		add_text_item(rest_text, ref_dst, _font_size, bold, italic, text_color);
+		add_text_item(rest_text, ref_dst, broken_link, _font_size, bold, italic, text_color);
 		return;
 	}
 	const std::string first_word = get_first_word(text);
@@ -2245,13 +2248,20 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
-		add_text_item(text, ref_dst, _font_size, bold, italic, text_color);
+		add_text_item(text, ref_dst, broken_link, _font_size, bold, italic, text_color);
 	}
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
 		std::string first_part = parts.front();
 		// Always override the color if we have a cross reference.
-		const SDL_Color color = ref_dst == "" ? text_color : font::YELLOW_COLOUR;
+		SDL_Color color;
+		if(ref_dst.empty())
+			color = text_color;
+		else if(broken_link)
+			color = font::BAD_COLOUR;
+		else
+			color = font::YELLOW_COLOUR;
+
 		surface surf(font::get_rendered_text(first_part, font_size, color, state));
 		if (!surf.null())
 			add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
@@ -2274,7 +2284,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
-			add_text_item(s, ref_dst, _font_size, bold, italic, text_color);
+			add_text_item(s, ref_dst, broken_link, _font_size, bold, italic, text_color);
 
 		}
 	}
