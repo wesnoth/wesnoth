@@ -141,9 +141,10 @@ wesnoth_sources = Split("""
     ai_village.cpp
     animated_game.cpp
     attack_prediction.cpp
-	attack_prediction_display.cpp
+    attack_prediction_display.cpp
     callable_objects.cpp
     config_adapter.cpp
+    controller_base.cpp
     dialogs.cpp
     floating_textbox.cpp
     formula.cpp
@@ -161,7 +162,7 @@ wesnoth_sources = Split("""
     leader_list.cpp
     menu_events.cpp
     mouse_events.cpp
-	mouse_handler_base.cpp
+    mouse_handler_base.cpp
     multiplayer.cpp
     multiplayer_ui.cpp
     multiplayer_wait.cpp
@@ -178,7 +179,7 @@ wesnoth_sources = Split("""
     sha1.cpp
     settings.cpp
     statistics.cpp
-	statistics_dialog.cpp
+    statistics_dialog.cpp
     team.cpp
     terrain_filter.cpp
     time_of_day.cpp

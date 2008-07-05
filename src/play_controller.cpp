@@ -38,21 +38,22 @@
 play_controller::play_controller(const config& level,
 	game_state& state_of_game, int ticks, int num_turns, const config& game_config,
 	CVideo& video, bool skip_replay, bool is_replay) :
+	controller_base(ticks, game_config, video),	
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
 	help_manager_(&game_config, &map_), mouse_handler_(gui_, teams_,
 		units_, map_, status_, undo_stack_, redo_stack_),
 	menu_handler_(gui_, units_, teams_, level, map_, game_config,
 		status_, state_of_game, undo_stack_, redo_stack_),
 	generator_setter(&recorder), statistics_context_(level["name"]),
-	level_(level), game_config_(game_config),
+	level_(level),
 	gamestate_(state_of_game), status_(level, num_turns, &state_of_game),
-	map_(game_config, level["map_data"]), ticks_(ticks),
+	map_(game_config, level["map_data"]),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1), player_number_(1),
 	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
 	start_turn_(status_.turn()), is_host_(true), skip_replay_(skip_replay),
-	browse_(false), linger_(false), scrolling_(false)
+	linger_(false)
 {
 	status_.teams = &teams_;
 	game_config::add_color_info(level);
@@ -330,9 +331,6 @@ void play_controller::search(){
 	menu_handler_.search();
 }
 
-int play_controller::get_ticks(){
-	return ticks_;
-}
 
 void play_controller::fire_prestart(bool execute){
 	// pre-start events must be executed before any GUI operation,
@@ -668,165 +666,70 @@ int play_controller::find_human_team_before(const size_t team_num) const
 	return human_side+1;
 }
 
-void play_controller::handle_event(const SDL_Event& event)
-{
-	if(gui::in_dialog()) {
-		return;
-	}
-
-	switch(event.type) {
-	case SDL_KEYDOWN:
-//%%
-		// Detect key press events, unless there is a textbox present on-screen,
-		// in which case the key press events should go only to it.
-		if(menu_handler_.get_textbox().active() == false) {
-			hotkey::key_event(*gui_,event.key,this);
-		} else {
-			if(event.key.keysym.sym == SDLK_ESCAPE) {
-				menu_handler_.get_textbox().close(*gui_);
-			} else if(event.key.keysym.sym == SDLK_TAB) {
-				menu_handler_.get_textbox().tab(teams_, units_, *gui_);
-			} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
-				enter_textbox();
-			}
-			break;
-		}
-
-		// intentionally fall-through
-	case SDL_KEYUP:
-
-		// If the user has pressed 1 through 9, we want to show
-		// how far the unit can move in that many turns
-		if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
-			const int new_path_turns = (event.type == SDL_KEYDOWN) ?
-			                           event.key.keysym.sym - '1' : 0;
-
-			if(new_path_turns != mouse_handler_.get_path_turns()) {
-				mouse_handler_.set_path_turns(new_path_turns);
-
-				const unit_map::iterator u = mouse_handler_.selected_unit();
-
-				if(u != units_.end()) {
-					const bool teleport = u->second.get_ability_bool("teleport",u->first);
-					mouse_handler_.set_current_paths(paths(map_,units_,u->first,
-					                       teams_,false,teleport, teams_[gui_->viewing_team()],
-					                       mouse_handler_.get_path_turns()));
-					gui_->highlight_reach(mouse_handler_.get_current_paths());
-				}
-			}
-		}
-//%%
-//		std::cerr << "@play_controller.cpp::handle_event : Key pressed: " << event.key.keysym.sym
-//				<< std::endl;
-
-		break;
-	case SDL_MOUSEMOTION:
-		// Ignore old mouse motion events in the event queue
-		SDL_Event new_event;
-
-		if(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
-					SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {
-			while(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
-						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {};
-			mouse_handler_.mouse_motion_event(new_event.motion, browse_);
-		} else {
-			mouse_handler_.mouse_motion_event(event.motion, browse_);
-		}
-		break;
-	case SDL_MOUSEBUTTONDOWN:
-	case SDL_MOUSEBUTTONUP:
-		mouse_handler_.mouse_press(event.button, browse_);
-		if (mouse_handler_.get_undo()){
-			mouse_handler_.set_undo(false);
-			menu_handler_.undo(player_number_);
-		}
-		if (mouse_handler_.get_show_menu()){
-			show_menu(gui_->get_theme().context_menu()->items(),event.button.x,event.button.y,true);
-		}
-		break;
-	default:
-		break;
-	}
+void play_controller::slice_before_scroll() {
+	soundsources_manager_->update();	
 }
 
-void play_controller::play_slice()
-{
-	CKey key;
-
-	events::pump();
-	events::raise_process_event();
-
-	events::raise_draw_event();
-	soundsources_manager_->update();
-
-	const theme::menu* const m = gui_->menu_pressed();
-	if(m != NULL) {
-		const SDL_Rect& menu_loc = m->location(gui_->screen_area());
-		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
-		return;
-	}
-
-	int mousex, mousey;
-	bool middle_pressed = (SDL_GetMouseState(&mousex,&mousey)& SDL_BUTTON(2)) != 0;
-	tooltips::process(mousex, mousey);
-
-	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
-	bool was_scrolling = scrolling_;
-	scrolling_ = false;
-
-	if((key[SDLK_UP] && !menu_handler_.get_textbox().active()) || mousey < scroll_threshold) {
-		gui_->scroll(0,-preferences::scroll_speed());
-		scrolling_ = true;
-	}
-
-	if((key[SDLK_DOWN] && !menu_handler_.get_textbox().active()) || mousey > gui_->h()-scroll_threshold) {
-		gui_->scroll(0,preferences::scroll_speed());
-		scrolling_ = true;
-	}
-
-	if((key[SDLK_LEFT] && !menu_handler_.get_textbox().active()) || mousex < scroll_threshold) {
-		gui_->scroll(-preferences::scroll_speed(),0);
-		scrolling_ = true;
-	}
-
-	if((key[SDLK_RIGHT] && !menu_handler_.get_textbox().active()) || mousex > gui_->w()-scroll_threshold) {
-		gui_->scroll(preferences::scroll_speed(),0);
-		scrolling_ = true;
-	}
-
-	if (middle_pressed) {
-		const SDL_Rect& rect = gui_->map_outside_area();
-		if (point_in_rect(mousex, mousey,rect)) {
-			// relative distance from the center to the border
-			// NOTE: the view is a rectangle, so can be more sensible in one direction
-			// but seems intuitive to use and it's useful since you must
-			// more often scroll in the direction where the view is shorter
-			const double xdisp = ((1.0*mousex / rect.w) - 0.5);
-			const double ydisp = ((1.0*mousey / rect.h) - 0.5);
-
-			// 4.0 give twice the normal speed when mouse is at border (xdisp=0.5)
-			const double scroll_speed = 4.0 * preferences::scroll_speed();
-
-			const int xspeed = round_double(xdisp * scroll_speed);
-			const int yspeed = round_double(ydisp * scroll_speed);
-
-			gui_->scroll(xspeed,yspeed);
-			scrolling_ = true;
-		}
-	}
-
-	gui_->draw();
-	if (!scrolling_) {
-		if (was_scrolling) {
-			// scrolling ended, update the cursor and the brightened hex
-			mouse_handler_.mouse_update(browse_);
-		}
-		gui_->delay(20);
-	}
-
+void play_controller::slice_end() {
 	if(!browse_ && current_team().objectives_changed()) {
 		dialogs::show_objectives(*gui_, level_, current_team().objectives());
 		current_team().reset_objectives_changed();
+	}
+}	
+
+events::mouse_handler_base& play_controller::get_mouse_handler_base() {
+	return mouse_handler_;
+}
+
+display& play_controller::get_display() {
+	return *gui_;
+}
+
+bool play_controller::have_keyboard_focus()
+{
+	return !menu_handler_.get_textbox().active();
+}
+
+void play_controller::process_keydown_event(const SDL_Event& event) {
+	if(event.key.keysym.sym == SDLK_ESCAPE) {
+		menu_handler_.get_textbox().close(*gui_);
+	} else if(event.key.keysym.sym == SDLK_TAB) {
+		menu_handler_.get_textbox().tab(teams_, units_, *gui_);
+	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
+		enter_textbox();
+	}
+}
+
+void play_controller::process_keyup_event(const SDL_Event& event) {
+	// If the user has pressed 1 through 9, we want to show
+	// how far the unit can move in that many turns
+	if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
+		const int new_path_turns = (event.type == SDL_KEYDOWN) ?
+		                           event.key.keysym.sym - '1' : 0;
+
+		if(new_path_turns != mouse_handler_.get_path_turns()) {
+			mouse_handler_.set_path_turns(new_path_turns);
+
+			const unit_map::iterator u = mouse_handler_.selected_unit();
+
+			if(u != units_.end()) {
+				const bool teleport = u->second.get_ability_bool("teleport",u->first);
+				mouse_handler_.set_current_paths(paths(map_,units_,u->first,
+				                       teams_,false,teleport, teams_[gui_->viewing_team()],
+				                       mouse_handler_.get_path_turns()));
+				gui_->highlight_reach(mouse_handler_.get_current_paths());
+			}
+		}
+	}
+}
+
+void play_controller::post_mouse_press(const SDL_Event& event) {
+	if (mouse_handler_.get_undo()){
+		mouse_handler_.set_undo(false);
+		menu_handler_.undo(player_number_);
+	}
+	if (mouse_handler_.get_show_menu()){
+		show_menu(gui_->get_theme().context_menu()->items(),event.button.x,event.button.y,true);
 	}
 }
 

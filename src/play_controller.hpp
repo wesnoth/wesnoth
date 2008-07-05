@@ -17,7 +17,7 @@
 #define PLAY_CONTROLLER_H_INCLUDED
 
 #include "global.hpp"
-
+#include "controller_base.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "generic_event.hpp"
@@ -37,14 +37,12 @@
 class game_display;
 class team;
 
-class play_controller : public hotkey::command_executor, public events::handler, public events::observer
+class play_controller : public controller_base, public events::observer
 {
 public:
 	play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay, bool is_replay);
 	~play_controller();
-
-	virtual void play_slice();
 
 	//event handler, overriden from observer
 	//there is nothing to handle in this class actually but that might change in the future
@@ -74,11 +72,17 @@ public:
 
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
-	int get_ticks();
-
 protected:
-	/** Process mouse- and keypress-events from SDL. */
-	void handle_event(const SDL_Event& event);
+	void slice_before_scroll();
+	void slice_end();
+		
+	events::mouse_handler_base& get_mouse_handler_base();
+	display& get_display();
+	bool have_keyboard_focus();
+	void process_keydown_event(const SDL_Event& event);
+	void process_keyup_event(const SDL_Event& event);	
+	void post_mouse_press(const SDL_Event& event);	
+		
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 	/** Check if a command can be executed. */
@@ -129,7 +133,6 @@ protected:
 	const set_random_generator generator_setter;
 	const statistics::scenario_context statistics_context_;
 	const config& level_;
-	const config& game_config_;
 	std::vector<team> teams_;
 	game_state& gamestate_;
 	gamestatus status_;
@@ -138,22 +141,18 @@ protected:
 	undo_list undo_stack_;
 	undo_list redo_stack_;
 
-	const int ticks_;
 	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one
 	const bool loading_game_;
 
-	CKey key_;
 	int first_human_team_;
 	unsigned int player_number_;
 	unsigned int first_player_;
 	unsigned int start_turn_;
 	bool is_host_;
 	bool skip_replay_;
-	bool browse_;
 	bool linger_;
-	bool scrolling_;
 	bool first_turn_;
 
 private:
@@ -163,7 +162,7 @@ private:
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<wml_menu_item *> wml_commands_;
-	static const int MAX_WML_COMMANDS = 7;
+	static const size_t MAX_WML_COMMANDS = 7;
 
 };
 
