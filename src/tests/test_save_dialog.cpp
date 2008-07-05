@@ -12,7 +12,9 @@
    See the COPYING file for more details.
 */
 
-#include <boost/test/auto_unit_test.hpp>
+#include <boost/test/unit_test_suite.hpp>
+#include <boost/test/unit_test.hpp>
+
 
 #include "dialogs.hpp"
 #include "key.hpp"
@@ -21,8 +23,11 @@
 #include "unit_types.hpp"
 //
 
+#include "SDL.h"
+
 #include "tests/utils/fake_event_source.hpp"
 #include "tests/utils/fake_display.hpp"
+#include "tests/utils/auto_parameterized.hpp"
 
 
 // Linker workarounds start here
@@ -55,18 +60,31 @@ WML_HANDLER_FUNCTION(test_sources, , , )
 namespace test {
 
 	struct save_dialog_fixture {
+		save_dialog_fixture()
+		{
+			if (!started_)
+			{
+				BOOST_MESSAGE("Starting save dialog test!");
+				started_ = true;
+			}
+		}
 		test_utils::fake_event_source source;
+
+		private:
+		static bool started_;
 	};
+
+	bool save_dialog_fixture::started_ = false;
+
 
 	BOOST_FIXTURE_TEST_SUITE( save_dialog , save_dialog_fixture)
 
-		BOOST_AUTO_TEST_CASE( test_fake_input )
+		SDLKey fake_input_keys[] =  {SDLK_KP_ENTER, SDLK_RETURN, SDLK_ESCAPE, SDLK_a};
+		
+		WESNOTH_PARAMETERIZED_TEST_CASE( test_fake_input, SDLKey,fake_input_keys, keyid)
 		{
-
-			BOOST_MESSAGE("Starting endlevel test!");
-
-			test_utils::event_node_ptr new_keypress = source.press_key(2, SDLK_RETURN);
-			test_utils::event_node_ptr new_keyrelease = source.release_key(4, SDLK_RETURN);
+			test_utils::event_node_ptr new_keypress = source.press_key(2, keyid);
+			test_utils::event_node_ptr new_keyrelease = source.release_key(4,keyid);
 
 			CKey key;
 			source.start();
@@ -75,30 +93,32 @@ namespace test {
 			{
 				events::pump();
 
-				BOOST_CHECK_EQUAL(key[SDLK_RETURN], new_keypress->is_fired());
-				if (key[SDLK_RETURN])
+				BOOST_CHECK_EQUAL(key[keyid], new_keypress->is_fired());
+				if (key[keyid])
 					break;
 			}	
 			while(true)
 			{	
 				events::pump();
-				BOOST_CHECK_EQUAL(key[SDLK_RETURN], !new_keyrelease->is_fired());
-				if (!key[SDLK_RETURN])
+				BOOST_CHECK_EQUAL(key[keyid], !new_keyrelease->is_fired());
+				if (!key[keyid])
 					break;
 			}
 		}
+		
+		SDLKey dialog_get_save_name_enter_pressed[] =  {SDLK_KP_ENTER, SDLK_RETURN};
 
-		BOOST_AUTO_TEST_CASE( test_dialog_get_save_name_enter_pressed )
+		WESNOTH_PARAMETERIZED_TEST_CASE( test_dialog_get_save_name_enter_pressed, SDLKey, dialog_get_save_name_enter_pressed, keyid )
 		{
 			// fill in events to be used in test
-			test_utils::event_node_ptr press_return_before = source.press_key(0, SDLK_RETURN);
-			test_utils::event_node_ptr release_return_before = source.release_key(200, SDLK_RETURN);
-			test_utils::event_node_ptr press_return_after = source.press_key(240, SDLK_RETURN);
-			test_utils::event_node_ptr release_return_after = source.release_key(1000, SDLK_RETURN);
+			test_utils::event_node_ptr press_return_before = source.press_key(0, keyid);
+			test_utils::event_node_ptr release_return_before = source.release_key(200, keyid);
+			test_utils::event_node_ptr press_return_after = source.press_key(240, keyid);
+			test_utils::event_node_ptr release_return_after = source.release_key(1000, keyid);
 
 			// Just to make sure no forever loops happening
-			source.press_key(1100, SDLK_RETURN);
-			source.release_key(1200, SDLK_RETURN);
+			source.press_key(1100, keyid);
+			source.release_key(1200, keyid);
 		
 			std::string fname("press_enter");
 			write_file(get_saves_dir() + "/" + fname +".gz", "böö");
