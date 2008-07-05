@@ -31,7 +31,7 @@
 
 
 // Linker workarounds start here
-#define LD_WA
+//#define LD_WA
 
 #ifdef LD_WA
 #include "config.hpp"
@@ -86,6 +86,8 @@ namespace test {
 			test_utils::event_node_ptr new_keypress = source.press_key(2, keyid);
 			test_utils::event_node_ptr new_keyrelease = source.release_key(4,keyid);
 
+			source.press_key(100, keyid);
+			source.release_key(150,keyid);
 			CKey key;
 			source.start();
 
@@ -117,8 +119,8 @@ namespace test {
 			test_utils::event_node_ptr release_return_after = source.release_key(1000, keyid);
 
 			// Just to make sure no forever loops happening
-			source.press_key(1100, keyid);
-			source.release_key(1200, keyid);
+			source.press_key(1500, keyid);
+			source.release_key(2000, keyid);
 		
 			std::string fname("press_enter");
 			write_file(get_saves_dir() + "/" + fname +".gz", "böö");
