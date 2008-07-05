@@ -268,6 +268,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			const int accuracy = at_it->accuracy();
 			if(accuracy) {
+				// Help xgettext with a directive to recognise the string as a non C printf-like string
 				// xgettext:no-c-format
 				tooltip << " " << (accuracy > 0 ? "+" : "") << accuracy << _("tooltip^% accuracy");
 			}

@@ -211,6 +211,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
 
 		if(description != NULL) {
+			// Help xgettext with a directive to recognise the string as a non C printf-like string
 			// xgettext:no-c-format
 			desc << (increase_accuracy[0] == '-' ? "" : "+") << increase_accuracy << _("% accuracy");
 		}
