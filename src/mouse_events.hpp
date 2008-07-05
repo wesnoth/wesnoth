@@ -88,7 +88,7 @@ protected:
 	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
 	unit_map::iterator find_unit(const gamemap::location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
-
+private:
 	std::vector<team>& teams_;
 	unit_map& units_;
 	gamestatus& status_;
