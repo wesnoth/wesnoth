@@ -99,33 +99,6 @@ libwesnoth_sources = Split("""
     widgets/textbox.cpp
     widgets/widget.cpp
     wml_exception.cpp
-    gui/dialogs/addon_connect.cpp
-    gui/dialogs/dialog.cpp
-    gui/dialogs/language_selection.cpp
-    gui/dialogs/mp_connect.cpp
-    gui/dialogs/mp_method_selection.cpp
-    gui/widgets/button.cpp
-    gui/widgets/canvas.cpp
-    gui/widgets/control.cpp
-    gui/widgets/container.cpp
-    gui/widgets/event_handler.cpp
-    gui/widgets/grid.cpp
-    gui/widgets/helper.cpp
-    gui/widgets/label.cpp
-    gui/widgets/listbox.cpp
-    gui/widgets/panel.cpp
-    gui/widgets/settings.cpp
-    gui/widgets/scrollbar.cpp
-    gui/widgets/spacer.cpp
-    gui/widgets/text.cpp
-    gui/widgets/text_box.cpp
-    gui/widgets/toggle_button.cpp 
-    gui/widgets/toggle_panel.cpp 
-    gui/widgets/tooltip.cpp
-    gui/widgets/vertical_scrollbar.cpp
-    gui/widgets/widget.cpp
-    gui/widgets/window.cpp
-    gui/widgets/window_builder.cpp
     """)
 libwesnoth_sources.extend([
     env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
@@ -222,6 +195,33 @@ wesnoth_sources = Split("""
     variant.cpp
     widgets/combo.cpp
     widgets/scrollpane.cpp
+    gui/dialogs/addon_connect.cpp
+    gui/dialogs/dialog.cpp
+    gui/dialogs/language_selection.cpp
+    gui/dialogs/mp_connect.cpp
+    gui/dialogs/mp_method_selection.cpp
+    gui/widgets/button.cpp
+    gui/widgets/canvas.cpp
+    gui/widgets/control.cpp
+    gui/widgets/container.cpp
+    gui/widgets/event_handler.cpp
+    gui/widgets/grid.cpp
+    gui/widgets/helper.cpp
+    gui/widgets/label.cpp
+    gui/widgets/listbox.cpp
+    gui/widgets/panel.cpp
+    gui/widgets/settings.cpp
+    gui/widgets/scrollbar.cpp
+    gui/widgets/spacer.cpp
+    gui/widgets/text.cpp
+    gui/widgets/text_box.cpp
+    gui/widgets/toggle_button.cpp 
+    gui/widgets/toggle_panel.cpp 
+    gui/widgets/tooltip.cpp
+    gui/widgets/vertical_scrollbar.cpp
+    gui/widgets/widget.cpp
+    gui/widgets/window.cpp
+    gui/widgets/window_builder.cpp
     """)
 
 wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
