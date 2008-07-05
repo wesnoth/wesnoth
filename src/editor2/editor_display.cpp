@@ -48,8 +48,8 @@ void editor_display::draw_sidebar()
 {
 	// Fill in the terrain report
 	if(map_.on_board_with_border(mouseoverHex_)) {
-		refresh_report(reports::TERRAIN, reports::report(map_.get_terrain_string(mouseoverHex_);
-		refresh_report(reports::POSITION, reports::report(lexical_cast<std::string>(mouseoverHex_);
+		refresh_report(reports::TERRAIN, reports::report(map_.get_terrain_string(mouseoverHex_)));
+		refresh_report(reports::POSITION, reports::report(lexical_cast<std::string>(mouseoverHex_)));
 	}
 	refresh_report(reports::VILLAGES, reports::report(lexical_cast<std::string>(map_.villages().size())));
 }

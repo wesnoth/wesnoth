@@ -335,9 +335,7 @@ private:
 	// cycles.
 	bool mouse_moved_;
 	bool highlighted_locs_cleared_;
-#ifndef USE_EDITOR2
 	const hotkey::manager hotkey_manager_;
-#endif
 	const preferences::display_manager prefs_disp_manager_;
 	static config prefs_;
 	static config hotkeys_;

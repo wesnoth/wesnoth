@@ -15,6 +15,8 @@
 #define EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 
 #include "editor_common.hpp"
+#include "editor_map.hpp"
+#include "editor_display.hpp"
 
 #include <boost/utility.hpp>
 
@@ -22,6 +24,7 @@
 #include "../config.hpp"
 #include "../events.hpp"
 #include "../hotkeys.hpp"
+#include "../sdl_utils.hpp"
 
 namespace editor2 {
 
@@ -32,7 +35,7 @@ class editor_controller : public events::handler, public hotkey::command_executo
 		editor_controller(const config &game_config, CVideo& video);
 		~editor_controller();
 		void main_loop();
-		bool can_execute_command(hotkey::HOTKEY_COMMAND, int) const {}
+		bool can_execute_command(hotkey::HOTKEY_COMMAND, int) const;
 		void handle_event(const SDL_Event&){}
 	private:    
 		/** init the display object and general set-up */ 

@@ -296,13 +296,10 @@ IF(ENABLE_EDITOR2)
 
 SET(wesnoth-editor2_SRC
     editor2/editor_main.cpp
-    editor/editor.cpp
-    editor/editor_layout.cpp
-    editor/map_manip.cpp
-    editor/editor_display.cpp
-    editor/editor_palettes.cpp
-    editor/editor_dialogs.cpp
-    editor/editor_undo.cpp
+    editor2/editor_controller.cpp
+    editor2/editor_display.cpp
+    editor2/editor_map.cpp
+    editor2/editor_display.cpp
 )
 
 SET(wesnoth_SRC
