@@ -36,9 +36,9 @@ namespace test_utils {
 	/**
 	 * @return true if this should stop firing events
 	 **/
-	bool event_node::test_if_should_fire(const size_t start_time, const size_t time_now) const
+	bool event_node::test_if_should_fire(const size_t frame_count) const
 	{
-		return time_now - start_time >= time_;
+		return frame_count >= time_;
 	}
 
 	bool event_node::is_fired() const
@@ -65,7 +65,7 @@ namespace test_utils {
 			key_list[event_.key.keysym.sym] = 0;
 	}
 
-	fake_event_source::fake_event_source() : start_time_(SDL_GetTicks())
+	fake_event_source::fake_event_source() : frame_count_(0)
 	{
 	}
 
@@ -95,7 +95,7 @@ namespace test_utils {
 
 	void fake_event_source::start()
 	{
-		start_time_ = SDL_GetTicks();
+		frame_count_ = 0;
 	}	 
 
 	SDL_Event fake_event_source::make_key_event(Uint8 type, const SDLKey key, const SDLMod mod)
@@ -131,11 +131,11 @@ namespace test_utils {
 
 	void fake_event_source::process(events::pump_info& /*info*/)
 	{
+		++frame_count_;
 		if (queue_.empty())
 			return;
-		size_t now = SDL_GetTicks();
 		while (!queue_.empty() 
-				&& queue_.top()->test_if_should_fire(start_time_, now))
+				&& queue_.top()->test_if_should_fire(frame_count_))
 		{
 			queue_.top()->fire_event();
 			queue_.pop();

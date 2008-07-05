@@ -52,7 +52,7 @@ namespace test_utils {
 		/**
 		 * @return true if this should stop firing events
 		 **/
-		bool test_if_should_fire(const size_t start_time, const size_t time_now) const;
+		bool test_if_should_fire(const size_t frame_count ) const;
 
 		bool is_fired() const;
 
@@ -73,17 +73,20 @@ namespace test_utils {
 	/**
 	 * fake_event_source is used to generate new events in
 	 * events::pump()
+	 * Timing used in function is loop counter incremented
+	 * everytime events::pump() is called.
 	 **/
 
 	class fake_event_source 
 		: public events::pump_monitor,
 		public boost::noncopyable
 	{
-			size_t start_time_;
+			size_t frame_count_;
 			typedef std::priority_queue<event_node_ptr,std::vector<event_node_ptr>,less_ptr<event_node_ptr> > event_queue;
 
 			event_queue queue_;
 
+			SDL_Event make_key_event(Uint8 type, const SDLKey key, const SDLMod mod);
 		public:
 			fake_event_source();
 			~fake_event_source();
@@ -91,7 +94,6 @@ namespace test_utils {
 			void add_event(event_node_ptr new_node);
 			void start();
 
-			SDL_Event make_key_event(Uint8 type, const SDLKey key, const SDLMod mod);
 			event_node_ptr press_key(const size_t time, const SDLKey key, const SDLMod mod = KMOD_NONE);
 			event_node_ptr release_key(const size_t time, const SDLKey key, const SDLMod mod =KMOD_NONE);
 

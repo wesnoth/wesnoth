@@ -302,6 +302,7 @@ env.MergeFlags(env["extra_flags_" + build])
 test_env = env.Clone()
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
+test_env['LINKCOM'] = '$LINK -o $TARGET $LINKFLAGS -Wl,--start-group $SOURCES -Wl,--end-group $_LIBDIRFLAGS $_LIBFLAGS'
 Export("test_env")
 
 

@@ -30,31 +30,6 @@
 #include "tests/utils/auto_parameterized.hpp"
 
 
-// Linker workarounds start here
-//#define LD_WA
-
-#ifdef LD_WA
-#include "config.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
-#include "sdl_utils.hpp"
-#include "game_events.hpp"
-#include "network.hpp"
-// to load libwesnoth_extras
-WML_HANDLER_FUNCTION(test_sources, , , )
-{
-	// To load libwesnoth_core
-	network::get_pending_stats();
-	// To load libwesnoth_sdl
-	SDL_Color color = int_to_color(255);
-	std::cerr << "Fooled you\n";
-	{
-		config cfg;
-		scoped_istream stream = preprocess_file("data/hardwired/language.cfg");
-		read(cfg, *stream);
-	}
-}
-#endif
 // Linker workarounds end here
 
 namespace test {
@@ -86,10 +61,10 @@ namespace test {
 			test_utils::event_node_ptr new_keypress = source.press_key(2, keyid);
 			test_utils::event_node_ptr new_keyrelease = source.release_key(4,keyid);
 
-			source.press_key(100, keyid);
-			source.release_key(150,keyid);
+			// Protection against forever loop
+			source.press_key(6, keyid);
+			source.release_key(8,keyid);
 			CKey key;
-			source.start();
 
 			while(true)
 			{
@@ -114,18 +89,18 @@ namespace test {
 		{
 			// fill in events to be used in test
 			test_utils::event_node_ptr press_return_before = source.press_key(0, keyid);
-			test_utils::event_node_ptr release_return_before = source.release_key(200, keyid);
-			test_utils::event_node_ptr press_return_after = source.press_key(240, keyid);
-			test_utils::event_node_ptr release_return_after = source.release_key(1000, keyid);
+			test_utils::event_node_ptr release_return_before = source.release_key(3, keyid);
+			test_utils::event_node_ptr press_return_after = source.press_key(5, keyid);
+			test_utils::event_node_ptr release_return_after = source.release_key(7, keyid);
 
-			// Just to make sure no forever loops happening
-			source.press_key(1500, keyid);
-			source.release_key(2000, keyid);
+			// Protection agains for ever loop
+			source.press_key(10, keyid);
+			source.release_key(13, keyid);
 		
 			std::string fname("press_enter");
 			write_file(get_saves_dir() + "/" + fname +".gz", "böö");
 			// Start test (set ticks start time)
-			source.start();
+			
 			// Activated enter press
 			events::pump();
 

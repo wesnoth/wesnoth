@@ -35,7 +35,7 @@ noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 
 pkgdatadir=$(datadir)/@DATADIR@
 
-INTERNALLIBS = -lwesnoth-core -lwesnoth
+INTERNALLIBS = -Wl,--start-group -lwesnoth-core -lwesnoth -Wl,--end-group
 
 THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBINTL) \
