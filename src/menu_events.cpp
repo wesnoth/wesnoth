@@ -84,17 +84,18 @@ namespace events{
 	class delete_recall_unit : public gui::dialog_button_action
 	{
 	public:
-		delete_recall_unit(game_display& disp, std::vector<unit>& units) : disp_(disp), units_(units) {}
+		delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units) : disp_(disp), filter_(filter), units_(units) {}
 	private:
 		gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 		game_display& disp_;
+		gui::filter_textbox& filter_;
 		std::vector<unit>& units_;
 	};
 
 	gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 	{
-		const size_t index = size_t(menu_selection);
+		const size_t index = size_t(filter_.get_index(menu_selection));
 		if(index < units_.size()) {
 			const unit& u = units_[index];
 
@@ -119,6 +120,8 @@ namespace events{
 					return gui::CONTINUE_DIALOG;
 				}
 			}
+			// Remove the item from filter_textbox memory
+			filter_.delete_item(menu_selection);
 
 			units_.erase(units_.begin() + index);
 			recorder.add_disband(index);
@@ -953,7 +956,7 @@ private:
 		} else if(recall_list.empty()) {
 			gui::message_dialog(*gui_,"",_("There are no troops available to recall\n(You must have veteran survivors from a previous scenario)")).show();
 		} else {
-			std::vector<std::string> options;
+			std::vector<std::string> options, options_to_filter;
 
 			std::ostringstream heading;
 			heading << HEADING_PREFIX << COLUMN_SEPARATOR << _("Type")
@@ -965,9 +968,10 @@ private:
 			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_numeric_sort(4);
 
 			options.push_back(heading.str());
+			options_to_filter.push_back(options.back());
 
 			for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
-				std::stringstream option;
+				std::stringstream option, option_to_filter;
 				const std::string& name = u->name().empty() ? "-" : u->name();
 
 				option << IMAGE_PREFIX << u->absolute_image();
@@ -986,25 +990,37 @@ private:
 					option << u->max_experience();
 				}
 
+				option_to_filter << u->type_name() << " " << name << " " << u->level();
+
 				options.push_back(option.str());
+				options_to_filter.push_back(option_to_filter.str());
 			}
 
-			delete_recall_unit recall_deleter(*gui_,recall_list);
-			gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 			int res = 0;
 
 			{
-				dialogs::units_list_preview_pane unit_preview(*gui_,&map_,recall_list);
 				gui::dialog rmenu(*gui_,_("Recall") + get_title_suffix(team_num),
 						  _("Select unit:") + std::string("\n"),
 						  gui::OK_CANCEL,
 						  gui::dialog::default_style);
+				rmenu.set_menu(options, &sorter);
+
+				gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
+				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
+				rmenu.set_textbox(filter);
+
+				delete_recall_unit recall_deleter(*gui_, *filter, recall_list);
+				gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
+				rmenu.add_button(delete_button);
+
 				rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
 					gui::dialog::BUTTON_HELP);
-				rmenu.set_menu(options, &sorter);
+
+				dialogs::units_list_preview_pane unit_preview(*gui_,&map_,recall_list, filter);
 				rmenu.add_pane(&unit_preview);
-				rmenu.add_button(delete_button);
+
 				res = rmenu.show();
+				res = filter->get_index(res);
 			}
 
 			if(res >= 0) {
