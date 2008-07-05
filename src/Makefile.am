@@ -261,7 +261,7 @@ test_SOURCES =  \
 	tests/test_save_dialog.cpp \
 	$(wesnoth_source)
 
-test_LDADD = -Wl,--start-group $(INTERNALLIBS) -Wl,--end-group $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)
+test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
