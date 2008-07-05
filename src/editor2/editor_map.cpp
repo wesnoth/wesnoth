@@ -28,6 +28,31 @@ editor_map editor_map::new_map(const config& terrain_cfg, size_t width, size_t h
 	return editor_map(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(map));
 }
 	
-
+std::vector<gamemap::location> editor_map::get_tiles_in_radius(const gamemap::location& center, const unsigned int radius) {
+	const unsigned int distance = radius - 1;
+	std::vector<gamemap::location> res;
+	res.push_back(center);
+	for (unsigned int d = 1; d <= distance; d++) {
+		gamemap::location loc = center;
+		unsigned int i;
+		// Get the starting point.
+		for (i = 1; i <= d; i++) {
+			loc = loc.get_direction(gamemap::location::NORTH, 1);
+		}
+		// Get all the tiles clockwise with distance d.
+		const gamemap::location::DIRECTION direction[6] =
+			{gamemap::location::SOUTH_EAST, gamemap::location::SOUTH, gamemap::location::SOUTH_WEST,
+			 gamemap::location::NORTH_WEST, gamemap::location::NORTH, gamemap::location::NORTH_EAST};
+		for (i = 0; i < 6; i++) {
+			for (unsigned int j = 1; j <= d; j++) {
+				loc = loc.get_direction(direction[i], 1);
+				if (on_board_with_border(loc)) {
+					res.push_back(loc);
+				}
+			}
+		}
+	}
+	return res;
+}
 
 } //end namespace editor2
