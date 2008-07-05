@@ -163,7 +163,7 @@ private:
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<wml_menu_item *> wml_commands_;
-#define MAX_WML_COMMANDS 7
+	static const int MAX_WML_COMMANDS = 7;
 
 };
 
