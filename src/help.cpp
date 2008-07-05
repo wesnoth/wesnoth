@@ -2088,12 +2088,8 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 	}
 
 	if (find_topic(toplevel_, dst) == NULL && !force) {
-		if (game_config::debug)
-			add_text_item(text, dst, true);
-		else
-			// quietly silence the hyperlink for normal user
-			add_text_item(text);
-			
+		// detect the broken link but quietly silence the hyperlink for normal user
+		add_text_item(text, game_config::debug ? dst : "", true);
 
 		// FIXME: workaround: if different campaigns define different
 		// terrains, some terrains available in one campaign will
@@ -2116,7 +2112,9 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 			throw parse_error(msg.str());
 		}
 #endif
-	}
+	} else {
+		add_text_item(text, dst);
+	}	
 }
 
 void help_text_area::handle_img_cfg(const config &cfg)
