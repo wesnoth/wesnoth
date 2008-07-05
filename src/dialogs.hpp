@@ -85,7 +85,7 @@ public:
 	  	std::string name, type_name;
 		int level;
 		std::string alignment, traits;
-		std::vector<std::string> abilities;
+		std::vector<t_string> abilities;
 		int hitpoints, max_hitpoints;
 		int experience, max_experience;
 		std::string hp_color, xp_color;

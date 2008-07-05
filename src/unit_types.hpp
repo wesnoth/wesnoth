@@ -223,7 +223,7 @@ public:
 
 	fixed_t alpha() const { return alpha_; }
 
-	const std::vector<std::string>& abilities() const { return abilities_; }
+	const std::vector<t_string>& abilities() const { return abilities_; }
 	const std::vector<std::string>& ability_tooltips() const { return ability_tooltips_; }
 
 	bool can_advance() const { return !advances_to_.empty(); }
@@ -277,7 +277,7 @@ private:
 
 	fixed_t alpha_;
 
-	std::vector<std::string> abilities_;
+	std::vector<t_string> abilities_;
 	std::vector<std::string> ability_tooltips_;
 
 	bool zoc_, hide_help_;

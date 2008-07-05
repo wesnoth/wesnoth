@@ -1119,7 +1119,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
-	std::map<std::string, std::string> ability_description;
+	std::map<t_string, std::string> ability_description;
 	std::map<std::string, std::set<std::string> > ability_units;
 	// Look through all the unit types, check if a unit of this type
 	// should have a full description, if so, add this units abilities
@@ -1131,15 +1131,13 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		if (description_type(type) == FULL_DESCRIPTION) {
 			std::vector<std::string> descriptions = type.ability_tooltips();
 			std::vector<std::string>::const_iterator desc_it = descriptions.begin();
-			for (std::vector<std::string>::const_iterator it = type.abilities().begin();
+			for (std::vector<t_string>::const_iterator it = type.abilities().begin();
 				 it != type.abilities().end(); ++it, ++desc_it) {
 				if (ability_description.find(*it) == ability_description.end()) {
 					//new ability, generate a description
 					std::string description;
 					if(desc_it != descriptions.end()) {
 						description = *desc_it;
-					} else {
-						description = string_table[*it + "_description"];
 					}
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
@@ -1162,9 +1160,10 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		}
 	}
 
-	for (std::map<std::string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); a++) {
+	for (std::map<t_string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); a++) {
 		std::string name = utils::capitalize(gettext(a->first.c_str()));
-		std::string id = "ability_" + a->first;
+		// we generate topic's id using the untranslated version of the ability's name
+		std::string id = "ability_" + a->first.base_str();
 		std::stringstream text;
 		text << a->second;  //description
 		text << "\n\n" << _("<header>text='Units having this ability'</header>") << "\n";
@@ -1302,10 +1301,10 @@ public:
 		// to their respective topics.
 		if (!type_.abilities().empty()) {
 			ss << _("Abilities: ");
-			for(std::vector<std::string>::const_iterator ability_it = type_.abilities().begin(),
+			for(std::vector<t_string>::const_iterator ability_it = type_.abilities().begin(),
 				 ability_end = type_.abilities().end();
 				 ability_it != ability_end; ++ability_it) {
-				const std::string ref_id = std::string("ability_") + *ability_it;
+				const std::string ref_id = "ability_" + ability_it->base_str();
 				std::string lang_ability = gettext(ability_it->c_str());
 				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
 				   << "'</ref>";
