@@ -36,7 +36,7 @@ void get_addon_info(const std::string& addon_name, config& cfg)
 {
 	const std::string parentd = get_addon_campaigns_dir();
 
-	// Cope with old-style or new-style file organization 
+	// Cope with old-style or new-style file organization
 	std::string exterior = parentd + "/" + addon_name + ".pbl";
 	std::string interior = parentd + "/" + addon_name + "/_server.pbl";
 	const std::string pbl_file = (file_exists(exterior)? exterior : interior);
@@ -102,14 +102,24 @@ std::vector<std::string> installed_addons()
 }
 
 namespace {
-	const char escape_char = 1;
+	const char escape_char = '\x01';
 }
 
-static bool needs_escaping(char c) { return c == 0 || c == escape_char || c == 13 || c == static_cast<char>(254); }
+static bool needs_escaping(char c) {
+	switch(c) {
+		case '\x00':
+		case escape_char:
+		case '\x0D': //Windows -- carriage return
+		case '\xFE': //Parser code -- textdomain or linenumber&filename
+			return true;
+		default:
+			return false;
+	}
+}
 
 static bool IsCR(const char& c)
 {
-	return c == 13;
+	return c == '\x0D';
 }
 
 static std::string strip_cr(std::string str, bool strip)
@@ -175,7 +185,7 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 		patterns.first.push_back("*-bak");
 		patterns.first.push_back("*.pbl");
 		patterns.first.push_back("*.ign");
-		/* 
+		/*
 		 * Prevent certain potential security compromises.
 		 * The idea is to stop bad guys from uploading things
 		 * that could become trojans if an unsuspecting user
