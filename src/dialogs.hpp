@@ -79,26 +79,7 @@ class unit_preview_pane : public gui::preview_pane
 public:
 	enum TYPE { SHOW_ALL, SHOW_BASIC };
 	struct details {
-		
-		details() :
-			image(),
-			name(),
-			type_name(),
-			level(0),
-			alignment(),
-			traits(),
-			abilities(),
-			hitpoints(0),
-			max_hitpoints(0),
-			experience(0),
-			max_experience(0),
-			hp_color(),
-			xp_color(),
-			movement_left(0),
-			total_movement(0),
-			attacks()
-		{
-		}
+		details();
 
 		surface image;
 	  	std::string name, type_name;

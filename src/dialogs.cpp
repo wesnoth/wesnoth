@@ -710,6 +710,26 @@ namespace {
 	static const int unit_preview_border = 10;
 }
 
+unit_preview_pane::details::details() :
+	image(),
+	name(),
+	type_name(),
+	level(0),
+	alignment(),
+	traits(),
+	abilities(),
+	hitpoints(0),
+	max_hitpoints(0),
+	experience(0),
+	max_experience(0),
+	hp_color(),
+	xp_color(),
+	movement_left(0),
+	total_movement(0),
+	attacks()
+{
+}
+
 unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side)
 				    : gui::preview_pane(disp.video()), disp_(disp), map_(map), index_(0),
