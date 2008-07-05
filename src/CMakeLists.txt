@@ -444,9 +444,11 @@ ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK)
 
 SET(test_SRC
     tests/main.cpp
+	tests/utils/fake_display.cpp 
+	tests/utils/fake_event_source.cpp 
     tests/test_util.cpp
 	tests/test_network_worker.cpp
-	tests/test_endlevel.cpp
+	tests/test_save_dialog.cpp
     ${wesnoth-main_SRC}
 )
 

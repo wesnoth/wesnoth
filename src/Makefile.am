@@ -254,9 +254,11 @@ cutter_DEPENDENCIES=libwesnoth-core.a
 
 test_SOURCES =  \
 	tests/main.cpp \
+	tests/utils/fake_display.cpp \
+	tests/utils/fake_event_source.cpp \
 	tests/test_util.cpp \
     tests/test_network_worker.cpp \
-	tests/test_endlevel.cpp \
+	tests/test_save_dialog.cpp \
 	$(wesnoth_source)
 
 test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS)
