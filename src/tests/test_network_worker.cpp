@@ -68,7 +68,7 @@ BOOST_AUTO_TEST_CASE( test_connect )
 
 }
 
-network::connection receive(config& cfg, int max_tries = 100)
+static network::connection receive(config& cfg, int max_tries = 100)
 {
 	network::connection receive_con;
 	while ((receive_con = network::receive_data(cfg)) == network::null_connection)

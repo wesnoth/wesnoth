@@ -27,17 +27,17 @@
  * @todo: add all others exception handlers too
  **/
 
-void exception_translator_config(const config::error& e)
+static void exception_translator_config(const config::error& e)
 {
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "config:error: " + e.message);
 }
 
-void exception_translator_network(const network::error& e)
+static void exception_translator_network(const network::error& e)
 {
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "network::error: " + e.message);
 }
 
-void exception_translator_game(const game::error& e)
+static void exception_translator_game(const game::error& e)
 {
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "game::error: " + e.message);
 }
