@@ -677,11 +677,11 @@ void play_controller::slice_end() {
 	}
 }	
 
-events::mouse_handler_base& play_controller::get_mouse_handler_base() {
+events::mouse_handler& play_controller::get_mouse_handler_base() {
 	return mouse_handler_;
 }
 
-display& play_controller::get_display() {
+game_display& play_controller::get_display() {
 	return *gui_;
 }
 
