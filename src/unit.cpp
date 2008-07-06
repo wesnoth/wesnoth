@@ -676,7 +676,6 @@ void unit::end_turn()
 }
 void unit::new_level()
 {
-	role_ = "";
 	ai_special_ = "";
 
 	// Set the goto-command to be going to no-where
@@ -1190,14 +1189,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		variables_.clear();
 	}
 
-	type_name_ = cfg["language_name"];
-	undead_variation_ = cfg["undead_variation"];
-
-	flag_rgb_ = cfg["flag_rgb"];
-	alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
-
-	unit_value_ = lexical_cast_default<int>(cfg["value"]);
-
 	facing_ = gamemap::location::parse_direction(cfg["facing"]);
 	if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::SOUTH_EAST;
 
@@ -1222,14 +1213,18 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 			race_ = &dummy_race;
 		}
 	}
-	variation_ = cfg["variation"];
 	level_ = lexical_cast_default<int>(cfg["level"], level_);
-
+	if(cfg["undead_variation"] != "") {
+		undead_variation_ = cfg["undead_variation"];
+	}
 	if(cfg["max_attacks"] != "") {
 		max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"],1);
 	}
 	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"], max_attacks_);
 
+	if(cfg["alpha"] != "") {
+		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
+	}
 	if(cfg["zoc"] != "") {
 		emit_zoc_ = utils::string_bool(cfg["zoc"]);
 	}
@@ -1238,6 +1233,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	if(custom_unit_desc != "") {
 		cfg_["description"] = custom_unit_desc;
+	}
+	if(cfg["cost"] != "") {
+		unit_value_ = lexical_cast_default<int>(cfg["cost"]);
 	}
 
 	if(cfg["profile"] != "") {
@@ -1528,7 +1526,6 @@ void unit::write(config& cfg) const
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());
 	}
-	cfg["value"] = lexical_cast_default<std::string>(unit_value_);
 	cfg["cost"] = lexical_cast_default<std::string>(unit_value_);
 	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
@@ -2983,7 +2980,7 @@ std::string get_checksum(const unit& u) {
 	config wcfg;
 	u.write(unit_config);
 	const std::string main_keys[] =
-		{ "advanceto",
+		{ "advances_to",
 		"alignment",
 		"cost",
 		"experience",
@@ -3003,7 +3000,6 @@ std::string get_checksum(const unit& u) {
 		"resting",
 		"undead_variation",
 		"upkeep",
-		"value",
 		"zoc",
 		""};
 

@@ -19,6 +19,8 @@ Version 1.5.1+svn:
    * the "zoc" key works for [unit_type] too, and for [unit] accepts other
      boolean values than 1 and 0 (bug #11889).
    * new effect apply_to=type to transform the unit to a different type
+   * remove redundant unit.value (use unit.cost instead)
+   * preserve unit.role in next scenario (bugs #3697, #4124, and #11329)
  * GUI improvements:
    * Rewrote the textbox history saving of the new widget library. This rewrite
      is incompatible with the old version, but since the library is still in
