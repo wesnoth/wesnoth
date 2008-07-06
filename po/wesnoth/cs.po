@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-07-04 21:46+0200\n"
-"PO-Revision-Date: 2008-06-11 18:14+0100\n"
+"PO-Revision-Date: 2008-07-04 13:41+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -43,9 +43,8 @@ msgstr "Animovat mapu"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "Tažení"
+msgstr "Zobrazovat animaci úvodní obrazovky"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:84
@@ -59,8 +58,9 @@ msgstr "Ukazovat boj"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:106
+#, fuzzy
 msgid "Only Run Safe Python AIs"
-msgstr ""
+msgstr "Spouštět pouze bezpečné umělé inteligence Pythonu"
 
 #. [server]
 #: data/_main.cfg:113
@@ -184,9 +184,8 @@ msgstr "Správa internacionalizace"
 
 #. [about]
 #: data/core/about.cfg:836
-#, fuzzy
 msgid "English strings edition"
-msgstr "Anglický překlad (VB)"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:843
@@ -225,9 +224,8 @@ msgstr "Překlad do Taiwanské čínštiny"
 
 #. [about]
 #: data/core/about.cfg:974
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Katalánský překlad"
+msgstr "Chorvatský překlad"
 
 #. [about]
 #: data/core/about.cfg:981
@@ -276,9 +274,8 @@ msgstr "Francouzský překlad"
 
 #. [about]
 #: data/core/about.cfg:1331
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Filipínský překlad"
+msgstr "Překlad do Furlanštiny"
 
 #. [about]
 #: data/core/about.cfg:1338
@@ -332,9 +329,8 @@ msgstr "Latinský překlad"
 
 #. [about]
 #: data/core/about.cfg:1591
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Latinský překlad"
+msgstr "Litevský překlad"
 
 #. [about]
 #: data/core/about.cfg:1598
@@ -343,9 +339,8 @@ msgstr "Litevský překlad"
 
 #. [about]
 #: data/core/about.cfg:1606
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Estonský překlad"
+msgstr "Makedonský překlad"
 
 #. [about]
 #: data/core/about.cfg:1613
@@ -369,9 +364,8 @@ msgstr "Portugalský (brazilský) překlad"
 
 #. [about]
 #: data/core/about.cfg:1726
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Estonský překlad"
+msgstr "Rumunský překlad"
 
 #. [about]
 #: data/core/about.cfg:1734
@@ -1902,7 +1896,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1911,8 +1904,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Zdravé jednotky mají o 2 HP více než obvykle a uzdravují se o 2 HP po každém "
-"kole, v němž nebojovaly."
+"Zdravé jednotky mají o 1 HP paušálně a 1 HP na úroveň více než obvykle a "
+"uzdravují se o 2 HP po každém kole, v němž nebojovaly."
 
 #. [topic]
 #: data/core/help.cfg:417
@@ -3438,7 +3431,6 @@ msgstr "Jen vodní lidé mohou používat tento předmět!"
 msgid "storm trident"
 msgstr "trojzubec bouře"
 
-# pův.: "Vyzvednout"
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:540
 msgid "Pick it up"
@@ -4401,12 +4393,12 @@ msgstr ""
 
 # pův.: "procitnou "
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Nepřátele, kteří padnou na následky nákazy, znova povstanou jako nemrtví."
+" Nepřátelé, kteří padnou na následky nákazy, znova povstanou jako nemrtví - "
+"pokud ovšem nestojí na vesnici."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -6782,7 +6774,6 @@ msgid "MB"
 msgstr "MB"
 
 #: src/game.cpp:1167
-#, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Nejsou nainstalována žádná rozšíření."
 
@@ -6791,7 +6782,6 @@ msgid "Choose the add-on to remove."
 msgstr "Vyber rozšíření k odebrání."
 
 #: src/game.cpp:1180
-#, fuzzy
 msgid "Remove add-ons"
 msgstr "Odstranit rozšíření"
 
@@ -6828,9 +6818,8 @@ msgid "Server: "
 msgstr "Server: "
 
 #: src/game.cpp:1250
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Odesílání rozšíření"
+msgstr "Odinstalovat rozšíření"
 
 #: src/game.cpp:1282 src/multiplayer.cpp:182 src/multiplayer.cpp:220
 msgid "Connecting to Server..."
@@ -6871,40 +6860,40 @@ msgstr "Typ"
 
 #: src/game.cpp:1367
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "Tažení"
 
 #: src/game.cpp:1370
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Scénář"
 
 #: src/game.cpp:1373
 msgid "addon_type^MP Era"
-msgstr ""
+msgstr "Éra hry více hráčů"
 
 #: src/game.cpp:1376
 msgid "addon_type^MP Faction"
-msgstr ""
+msgstr "Frakce hry více hráčů"
 
 #: src/game.cpp:1379
 msgid "addon_type^MP Map-pack"
-msgstr ""
+msgstr "Soubor map pro hru více hráčů"
 
 #: src/game.cpp:1382
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Vzdálený scénář"
+msgstr "Scénář hry pro více hráčů"
 
 #: src/game.cpp:1385
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "Tažení pro více hráčů"
 
 #: src/game.cpp:1388
+#, fuzzy
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "Zdroje"
 
 #: src/game.cpp:1391
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(neznámý)"
 
 #: src/game.cpp:1409
 msgid "Publish add-on: "
@@ -6956,16 +6945,21 @@ msgid "Dependencies"
 msgstr "Závislosti"
 
 #: src/game.cpp:1560
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Toto rozšíření je závislé na následujících rozšířeních:"
-msgstr[1] "Toto rozšíření je závislé na následujících rozšířeních:"
-msgstr[2] "Toto rozšíření je závislé na následujících rozšířeních:"
+msgstr[0] ""
+"Toto rozšíření je závislé na následujícím rozšíření, které není "
+"nainstalované:"
+msgstr[1] ""
+"Toto rozšíření je závislé na následujících rozšířeních, která nejsou "
+"nainstalována:"
+msgstr[2] ""
+"Toto rozšíření je závislé na následujících rozšířeních, která nejsou "
+"nainstalována:"
 
 #: src/game.cpp:1567
 msgid "Do you still want to download it?"
@@ -7009,9 +7003,8 @@ msgid "Join a different server"
 msgstr "Připoj se na jiný server"
 
 #: src/game.cpp:1764
-#, fuzzy
 msgid "Host Networked Game"
-msgstr "O hře"
+msgstr "Hostuj síťovou hru"
 
 #: src/game.cpp:1765
 msgid "Host a game using dedicated server 'wesnothd'"
@@ -7030,24 +7023,23 @@ msgid "Login: "
 msgstr "Přihlášení: "
 
 #: src/game.cpp:1790
-#, fuzzy
 msgid "Do you realy want to start the server?"
-msgstr "Určitě se jí chceš zbavit?"
+msgstr "Opravdu chcete spustit server?"
 
 #: src/game.cpp:1790
 msgid ""
 "Server will run in background process untill all users have disconnected."
 msgstr ""
+"Server poběží jako samostatný program v pozadí, dokud se neodpojí poslední "
+"uživatel."
 
 #: src/game.cpp:1793
-#, fuzzy
 msgid "Don't show again"
 msgstr "Už se mě nikdy neptej!"
 
 #: src/game.cpp:1868
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "Během hraní hry se vyskytla chyba: "
+msgstr "Při spouštění serveru se vyskytla chyba: "
 
 #: src/game.cpp:1870 src/playcampaign.cpp:103 src/playcampaign.cpp:389
 msgid "The game could not be loaded: "
@@ -7215,15 +7207,14 @@ msgstr[1] "útoky"
 msgstr[2] "útoků"
 
 #: src/generate_report.cpp:272
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "útok"
+msgstr "přesnost"
 
-# pův.: "celkové poškození"
 #: src/generate_report.cpp:278
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "poškození"
+msgstr "vykrývání"
 
 #: src/generate_report.cpp:289
 msgid "weapon range: "
@@ -8377,9 +8368,8 @@ msgid "--no games open--"
 msgstr "--žádné volné hry--"
 
 #: src/multiplayer_lobby.cpp:144
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Neznámý věk"
+msgstr " (Neznámý věk)"
 
 #: src/multiplayer_lobby.cpp:413
 msgid "Unknown era: $era_id"
@@ -8752,7 +8742,7 @@ msgstr "Nahraď místním hráčem"
 
 #: src/playturn.cpp:230
 msgid "Abort game"
-msgstr "Ukončí hru"
+msgstr "Ukonči hru"
 
 #: src/playturn.cpp:235 src/playturn.cpp:247
 msgid "Replace with $player"
@@ -9008,16 +8998,17 @@ msgstr[0] "úder"
 msgstr[1] "údery"
 msgstr[2] "úderů"
 
+# Hodnota, které se odečítá od obrany dané terénem; vypadá v praxi jako "+-10% TEXT"
 #: src/unit_types.cpp:215
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% přesnosti"
 
-# Nepřekládal bych až tak moc. Navrhuji "Parování"
+# Hodnota, které se přičítá k obraně dané terénem; vypadá v praxi jako "+-10% TEXT"
 #: src/unit_types.cpp:224
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% parry"
-msgstr "parování"
+msgstr "% vykrývání"
 
 #: src/unit_types.cpp:870
 msgid "chaotic"
