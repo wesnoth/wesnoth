@@ -1406,13 +1406,17 @@ void game_controller::download_addons(std::string host)
 		std::string pub_option_text, del_option_text;
 
 		for(std::vector< std::string >::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
-			options.push_back(sep + _("Publish add-on: ") + *j);
-			options_to_filter.push_back(options.back());
+			static const std::string publish_icon = "icons/icon-addon-publish.png";
+			const std::string text = _("Publish add-on: ") + *j;
+			options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
+			options_to_filter.push_back(text);
 		}
 
 		for(std::vector< std::string >::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
-			options.push_back(sep + _("Delete add-on: ") + *d);
-			options_to_filter.push_back(options.back());
+			static const std::string delete_icon = "icons/icon-addon-delete.png";
+			const std::string text = _("Delete add-on: ") + *d;
+			options.push_back(IMAGE_PREFIX + delete_icon + COLUMN_SEPARATOR + font::BAD_TEXT + text);
+			options_to_filter.push_back(text);
 		}
 
 		if(campaigns.empty() && publish_options.empty()) {
