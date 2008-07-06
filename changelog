@@ -47,7 +47,8 @@ Version 1.5.1+svn:
    * Missing images are now replaced by a "men-at-work" sign (in debug-mode)
    * Better pathfinding: now always prefer straight path and is also more
      stable between little mouse's moves.
-   * added the pango dependency
+   * Added the pango dependency
+   * Various code cleanups
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
      key is not found, the default value is returned. This is fully backward
