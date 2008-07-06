@@ -12,8 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file editor_common.hpp
-//! Main (common) editor header
+/** 
+ * @file editor_common.hpp
+ * Main (common) editor header. Contains forward declarations for most classes, 
+ * logging macro definitions and base exception declarations
+ */
 
 #ifndef EDITOR2_EDITOR_COMMON_HPP_INCLUDED
 #define EDITOR2_EDITOR_COMMON_HPP_INCLUDED
@@ -34,8 +37,12 @@ struct editor_exception
 
 
 // forward declarations
-class editor_map;
 class brush;
+class editor_action;
+class editor_controller;
+class editor_display;
+class editor_map;
+class editor_mouse_handler;
 
 } //end namespace editor2
 
