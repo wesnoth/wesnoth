@@ -27,13 +27,13 @@ public:
 	bool in_editor() const { return true; }
 
 protected:
-    void pre_draw();
-        /**
-         * The editor uses different rules for terrain highligting (e.g. selections)
-         */
-    image::TYPE get_image_type(const gamemap::location& loc);
-    const SDL_Rect& get_clip_rect();
-    void draw_sidebar();
+	void pre_draw();
+	/**
+	* The editor uses different rules for terrain highligting (e.g. selections)
+	*/
+	image::TYPE get_image_type(const gamemap::location& loc);
+	const SDL_Rect& get_clip_rect();
+	void draw_sidebar();
 };
 
 } //end namespace editor2
