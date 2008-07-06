@@ -366,7 +366,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button3_.set_check(lobby_joins() == SHOW_ALL);
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
 
-	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host lan games."));
+	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games."));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
 	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
