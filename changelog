@@ -3,9 +3,17 @@ Version 1.5.1+svn:
    * Tutorial
      * Fixed players side name to same as leaders name (bug: #10114)
  * formula AI:
-   * Added variant_iterator to iterate over variant elements
-   * Modified choose, filter, find and map functions to use variant_iterator, 
+   * added variant_iterator to iterate over variant elements
+   * modified choose, filter, find and map functions to use variant_iterator, 
      so they work correctly with a variant_map type
+   * new formula AI functions: find_shroud, movement_cost, tolist, tomap
+   * added possibility to fallback to human player
+   * new ai object members: side, my_recruits, recruits_of_side, time_of_day, 
+     units_of_side, villages_of_side
+   * moved most of formula AI releated code from ai.cpp to formula_ai.cpp
+   * new unit_type_callable class
+   * various fixes and improvements to formula functions
+   * added new formula test scenario
  * language and i18n:
    * new translation: Latvian
    * updated translations: Arabic, Chinese (Traditional), Czech, Finnish,
