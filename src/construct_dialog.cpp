@@ -814,12 +814,14 @@ void dialog::action(dialog_process_info& info)
 		if(selection >= 0) {
 			menu_ref.erase_item(selection);
 		}
-		if(menu_ref.nitems() == 0) {
-			set_result(CLOSE_DIALOG);
-		} else {
-			set_result(CONTINUE_DIALOG);
-			info.first_time = true;
-		}
+		// was used before to auto close empty menu
+		//if(menu_ref.nitems() == 0) {
+		//	set_result(CLOSE_DIALOG);
+		//} else {
+
+		set_result(CONTINUE_DIALOG);
+				info.first_time = true;
+		
 	}
 }
 
