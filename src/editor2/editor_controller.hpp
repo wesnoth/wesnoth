@@ -15,39 +15,41 @@
 #define EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 
 #include "editor_common.hpp"
-#include "editor_map.hpp"
 #include "editor_display.hpp"
+#include "editor_map.hpp"
+#include "editor_mouse_handler.hpp"
+
+#include "../config.hpp"
+#include "../controller_base.hpp"
+#include "../events.hpp"
+#include "../hotkeys.hpp"
+#include "../key.hpp"
+#include "../sdl_utils.hpp"
 
 #include <boost/utility.hpp>
 
-#include "../key.hpp"
-#include "../config.hpp"
-#include "../events.hpp"
-#include "../hotkeys.hpp"
-#include "../sdl_utils.hpp"
-
 namespace editor2 {
 
-class editor_controller : public events::handler, public hotkey::command_executor,
+class editor_controller : public controller_base,
 		private boost::noncopyable
 {
 	public:
 		editor_controller(const config &game_config, CVideo& video);
 		~editor_controller();
 		void main_loop();
-		bool can_execute_command(hotkey::HOTKEY_COMMAND, int) const;
-		void handle_event(const SDL_Event&){}
+		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
+	protected:
+		editor_mouse_handler& get_mouse_handler_base();
+		editor_display& get_display();	
 	private:    
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
-		/** cref to the main game config */
-		const config& game_config_;
 		/** The current map object */
 		editor_map map_;
 		/** The display object used and owned by the editor. Possibly recreated when a new map is created */
 		editor_display* gui_;
+		editor_mouse_handler mouse_handler_;
 		
-		CKey key_;
         bool map_dirty_;
 };
 
