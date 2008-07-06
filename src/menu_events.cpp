@@ -192,7 +192,7 @@ namespace events{
 		const std::string heading = std::string(1,HEADING_PREFIX) +
 									_("Type")          + COLUMN_SEPARATOR +
 									_("Name")          + COLUMN_SEPARATOR +
-									_("Level^Lv.")     + COLUMN_SEPARATOR +
+									_("Level^Lvl.")    + COLUMN_SEPARATOR +
 									_("HP")            + COLUMN_SEPARATOR +
 									_("XP")            + COLUMN_SEPARATOR +
 									_("unit list^Traits") + COLUMN_SEPARATOR +
@@ -961,7 +961,7 @@ private:
 			std::ostringstream heading;
 			heading << HEADING_PREFIX << COLUMN_SEPARATOR << _("Type")
 					<< COLUMN_SEPARATOR << _("Name")
-					<< COLUMN_SEPARATOR << _("Level")
+					<< COLUMN_SEPARATOR << _("Level^Lvl.")
 					<< COLUMN_SEPARATOR << _("XP");
 #ifndef USE_TINY_GUI
 			heading << COLUMN_SEPARATOR << _("Traits");
