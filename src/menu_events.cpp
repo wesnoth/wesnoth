@@ -963,9 +963,12 @@ private:
 					<< COLUMN_SEPARATOR << _("Name")
 					<< COLUMN_SEPARATOR << _("Level")
 					<< COLUMN_SEPARATOR << _("XP");
+#ifndef USE_TINY_GUI
+			heading << COLUMN_SEPARATOR << _("Traits");
+#endif 
 
 			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_numeric_sort(4);
+			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_numeric_sort(4).set_alpha_sort(5);
 
 			options.push_back(heading.str());
 			options_to_filter.push_back(options.back());
@@ -983,14 +986,18 @@ private:
 					<< name << COLUMN_SEPARATOR
 					<< u->level() << COLUMN_SEPARATOR
 					<< u->experience() << "/";
-
-				if(u->can_advance() == false) {
-					option << "-";
-				} else {
+				if (u->can_advance())
 					option << u->max_experience();
-				}
+				else
+					option <<  "-";
+				
 
 				option_to_filter << u->type_name() << " " << name << " " << u->level();
+
+#ifndef USE_TINY_GUI
+				option << COLUMN_SEPARATOR << u->traits_description();
+				option_to_filter << " " << u->traits_description();
+#endif
 
 				options.push_back(option.str());
 				options_to_filter.push_back(option_to_filter.str());
