@@ -17,7 +17,7 @@
 #include "dialogs.hpp"
 #include "mouse_handler_base.hpp"
 
-controller_base::controller_base(int ticks, const config& game_config, CVideo& video)
+controller_base::controller_base(int ticks, const config& game_config, CVideo& /*video*/)
 : game_config_(game_config), ticks_(ticks), browse_(false), scrolling_(false)
 {	
 }
@@ -30,7 +30,9 @@ int controller_base::get_ticks() {
 	return ticks_;
 }
 
-bool controller_base::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const {
+bool controller_base::can_execute_command(
+		hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const 
+{
 	return false;
 }
 
@@ -76,19 +78,21 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 }
 
-bool controller_base::have_keyboard_focus() {
+bool controller_base::have_keyboard_focus() 
+{
 	return true;
 }
 
-void controller_base::process_keydown_event(const SDL_Event& event) {
+void controller_base::process_keydown_event(const SDL_Event& /*event*/) 
+{
 	//no action by default
 }
 
-void controller_base::process_keyup_event(const SDL_Event& event) {
+void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
 	//no action by default
 }
 
-void controller_base::post_mouse_press(const SDL_Event& event) {
+void controller_base::post_mouse_press(const SDL_Event& /*event*/) {
 	//no action by default
 }
 
@@ -97,19 +101,19 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	bool scrolling = false;
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
 
-	if (key[SDLK_UP] && have_keyboard_focus() || mousey < scroll_threshold) {
+	if ((key[SDLK_UP] && have_keyboard_focus()) || mousey < scroll_threshold) {
 		get_display().scroll(0,-preferences::scroll_speed());
 		scrolling = true;
 	}
-	if (key[SDLK_DOWN] && have_keyboard_focus() || mousey > get_display().h() - scroll_threshold) {
+	if ((key[SDLK_DOWN] && have_keyboard_focus()) || mousey > get_display().h() - scroll_threshold) {
 		get_display().scroll(0,preferences::scroll_speed());
 		scrolling = true;
 	}
-	if (key[SDLK_LEFT] && have_keyboard_focus() || mousex < scroll_threshold) {
+	if ((key[SDLK_LEFT] && have_keyboard_focus()) || mousex < scroll_threshold) {
 		get_display().scroll(-preferences::scroll_speed(),0);
 		scrolling = true;
 	}
-	if (key[SDLK_RIGHT] && have_keyboard_focus() || mousex > get_display().w() - scroll_threshold) {
+	if ((key[SDLK_RIGHT] && have_keyboard_focus()) || mousex > get_display().w() - scroll_threshold) {
 		get_display().scroll(preferences::scroll_speed(),0);
 		scrolling = true;
 	}
