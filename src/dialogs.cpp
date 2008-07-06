@@ -762,14 +762,14 @@ bool unit_preview_pane::left_side() const
 
 void unit_preview_pane::set_selection(int index)
 {
-	index = minimum<int>(int(size()-1),index);
+	index = minimum<int>(static_cast<int>(size())-1,index);
 	if (filter_) {
 		index = filter_->get_index(index);
 	}
-	if(index != index_ && index >= 0) {
+	if(index != index_) {
 		index_ = index;
 		set_dirty();
-		if(map_ != NULL) {
+		if(map_ != NULL && index >= 0) {
 			details_button_.set_dirty();
 		}
 	}
