@@ -55,7 +55,7 @@ protected:
 	 * Inherited from command_executor, still declared pure virtual but might
 	 * provide some defaults
 	 */
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const = 0;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const = 0;
 	/**
 	 * Get a reference to a mouse handler member a derived class uses
 	 */
@@ -106,7 +106,9 @@ protected:
 	 */
 	virtual void post_mouse_press(const SDL_Event& event);
 	
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu) = 0;
+	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+	
+	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	const config& game_config_;
 	const int ticks_;

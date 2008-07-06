@@ -179,3 +179,25 @@ void controller_base::slice_end()
 	//no action by default
 }
 
+void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
+{
+	std::vector<std::string> items = items_arg;
+	hotkey::HOTKEY_COMMAND command;
+	std::vector<std::string>::iterator i = items.begin();
+	while(i != items.end()) {
+		if(!can_execute_command(command)
+		|| (context_menu && !in_context_menu(command))) {
+			i = items.erase(i);
+			continue;
+		}
+		++i;
+	}
+	if(items.empty())
+		return;
+	command_executor::show_menu(items, xloc, yloc, context_menu, get_display());
+}
+
+bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
+{
+	return true;
+}
