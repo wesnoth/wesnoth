@@ -45,7 +45,7 @@ struct token
 		PLUS = '+',
 		SLASH = '/',
 		OPEN_BRACKET = '[',
-		CLOSE_BRACKED = ']',
+		CLOSE_BRACKET = ']',
 		UNDERSCORE = '_',
 		END
 	} type;
