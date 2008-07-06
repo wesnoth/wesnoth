@@ -935,6 +935,18 @@ m4_pattern_allow([^BOOST_TEST_DYN_LINK$])
 AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
 
 #######################################################################
+# Pango support                                                       #
+#######################################################################
+
+if test "x$game" = "xyes"; then
+
+	PKG_CHECK_MODULES(PANGO, pango >= 1.14.8)
+
+	CPPFLAGS="$CPPFLAGS $PANGO_CFLAGS"
+
+fi
+
+#######################################################################
 # Tune gettext stuff for our needs                                    #
 #######################################################################
 

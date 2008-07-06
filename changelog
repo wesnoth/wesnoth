@@ -47,6 +47,7 @@ Version 1.5.1+svn:
    * Missing images are now replaced by a "men-at-work" sign (in debug-mode)
    * Better pathfinding: now always prefer straight path and is also more
      stable between little mouse's moves.
+   * added the pango dependency
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
      key is not found, the default value is returned. This is fully backward
@@ -71,14 +72,14 @@ Version 1.5.1+svn:
      (memoize pattern) and psyco to speed execution. It uses the new UNSAFE_WPY
      tag and is not selectable unless "Only Run Safe Python AIs" is disabled.
      This version of bruteforce runs 1x-14x FASTER than the stock python AI;
-	*heavily* dependent on the map and number of units involved.
+     *heavily* dependent on the map and number of units involved.
    * Per the python API documentation, many functions now return boolean values rather
      than ints. Minor modernization effort to use new C-API macros provided via
      python 2.4+. This change is fully backward compatible for scripts which properly
      treat the return value as a boolean.
    * Initial wail directory checkin. It's only a teaser at this point. ;)
-        * bruteforce_wail.py has been added - showing how easy it is to move a
-	well writen bot from the wesnoth module to the wail module.
+   * bruteforce_wail.py has been added - showing how easy it is to move a
+     well writen bot from the wesnoth module to the wail module.
 
 Version 1.5.1:
  * campaigns:

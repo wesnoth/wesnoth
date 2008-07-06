@@ -164,7 +164,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
 	
-wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS)
+wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS) $(PANGO_LIBS)
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################

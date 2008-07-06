@@ -10,14 +10,15 @@ Contents:
 
 You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
 
+ boost_iostreams >= 1.33.0
+ boost_regex >= 1.33.0
+ libpango >= 1.14.8
  libsdl >= 1.2.7
  libsdl-image >= 1.2 (with png support)
  libsdl-mixer >= 1.2 (with Vorbis support)
  libsdl-net
  libsdl-ttf >= 2.0.8
  libz
- boost_iostreams >= 1.33.0
- boost_regex >= 1.33.0
 
 There are currently three ways to build wesnoth:
  * The old autotools system
