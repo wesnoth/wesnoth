@@ -30,6 +30,8 @@ editor_mouse_handler::editor_mouse_handler(editor_display* disp, editor_map& map
 void editor_mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
+	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
+	gui().highlight_hex(new_hex);
 }
 
 void editor_mouse_handler::set_gui(editor_display* gui)
