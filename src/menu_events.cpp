@@ -995,8 +995,13 @@ private:
 				option_to_filter << u->type_name() << " " << name << " " << u->level();
 
 #ifndef USE_TINY_GUI
-				option << COLUMN_SEPARATOR << u->traits_description();
-				option_to_filter << " " << u->traits_description();
+				option << COLUMN_SEPARATOR;
+				const std::vector<std::string> traits =
+						 utils::split(std::string(u->traits_description()), ',');
+				foreach(const std::string& trait, traits) {
+					option << trait << '\n';
+					option_to_filter << " " << trait;
+				}
 #endif
 
 				options.push_back(option.str());
