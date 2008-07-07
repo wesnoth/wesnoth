@@ -43,27 +43,45 @@ namespace image {
 
 	template<typename T>
 	struct cache_item {
-		cache_item() : loaded(false), item() {}
-		cache_item(T item) : loaded(true), item(item) {}
+		cache_item() : 
+			loaded(false), 
+			item() ,
+			position()
+		{
+		}
+
+		cache_item(T item) : 
+			loaded(true), 
+			item(item),
+			position()
+		{
+		}
 
 		bool loaded;
 		T item;
-	       	std::list<int>::iterator position;
+       	std::list<int>::iterator position;
 	};
 
 	template<typename T>
 	class cache_type 
 	{
-		public:
-		cache_type():cache_size(0),cache_max_size(2000){}
+	public:
+		cache_type() :
+			cache_size(0),
+			cache_max_size(2000),
+			lru_list(),
+			content()
+		{
+		}
+
 		cache_item<T>& get_element(int index);
 		void on_load(int index);
 		void flush();
-		private:
+	private:
 		int cache_size ;
 		int cache_max_size ;
-	       	std::list<int> lru_list;
-	       	std::vector<cache_item<T> > content;
+       	std::list<int> lru_list;
+       	std::vector<cache_item<T> > content;
 	};
 
 	//a generic image locator. Abstracts the location of an image.
