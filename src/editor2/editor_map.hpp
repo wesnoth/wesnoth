@@ -20,7 +20,7 @@
 namespace editor2 {
 
 /**
- * This class adds extra editor-specific functionality to a normal gamemap
+ * This class adds extra editor-specific functionality to a normal gamemap.
  */
 	
 class editor_map : public gamemap 
@@ -30,14 +30,47 @@ public:
 	std::vector<gamemap::location> get_tiles_in_radius(const gamemap::location& center, const unsigned int radius);
 	static editor_map new_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
+	/**
+	 * @return true when the location is part of the selection, false otherwise
+	 */
 	bool in_selection(const gamemap::location& loc) const;
+	
+	/**
+	 * Add a location to the selection. The location should be valid (i.e. on the map)
+	 * @return true if the selected hexes set was modified
+	 */
 	bool add_to_selection(const gamemap::location& loc);
+	
+	/**
+	 * Remove a location to the selection. The location does not actually have to be selected
+	 * @return true if the selected hexes set was modified
+	 */
 	bool remove_from_selection(const gamemap::location& loc);
+	
+	/**
+	 * Return the selection set.
+	 */
 	const std::set<gamemap::location> selection() const { return selection_; }
+	
+	/**
+	 * Clear the selection
+	 */
 	void clear_selection();
+	
+	/**
+	 * Invert the selection, i.e. select all the map hexes that were not selected.
+	 */
 	void invert_selection();
+	
+	/**
+	 * Select all map hexes
+	 */
 	void select_all();
+	
 protected:
+	/**
+	 * The selected hexes
+	 */
 	std::set<gamemap::location> selection_;
 };
 

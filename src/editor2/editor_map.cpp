@@ -59,22 +59,35 @@ bool editor_map::in_selection(const gamemap::location& loc) const
 {
 	return selection_.find(loc) != selection_.end();
 }
+
 bool editor_map::add_to_selection(const gamemap::location& loc)
 {
 	return selection_.insert(loc).second;
 }
+
 bool editor_map::remove_from_selection(const gamemap::location& loc)
 {
 	return selection_.erase(loc);
 }
+
 void editor_map::clear_selection()
 {
 	selection_.clear();
 }
+
 void editor_map::invert_selection()
 {
-	
+	std::set<gamemap::location> new_selection;
+	for (int x = 0; x < w(); ++x) {
+		for (int y = 0; y < h(); ++y) {
+			if (selection_.find(gamemap::location(x, y)) == selection_.end()) {
+				new_selection.insert(gamemap::location(x, y));
+			}
+		}
+	}
+	selection_.swap(new_selection);
 }
+
 void editor_map::select_all()
 {
 	clear_selection();

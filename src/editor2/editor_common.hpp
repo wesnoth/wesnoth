@@ -22,6 +22,8 @@
 #define EDITOR2_EDITOR_COMMON_HPP_INCLUDED
 
 #include "../log.hpp"
+#include <stdexcept>
+
 #define DBG_ED LOG_STREAM_INDENT(debug, editor)
 #define LOG_ED LOG_STREAM_INDENT(info, editor)
 #define WRN_ED LOG_STREAM_INDENT(warn, editor)
@@ -31,7 +33,7 @@
 
 namespace editor2 {
 
-struct editor_exception
+struct editor_exception : public std::exception
 {
 };
 
