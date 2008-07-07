@@ -239,10 +239,10 @@ AC_ARG_ENABLE([editor],
 	      [editor=$enableval],
 	      [editor=no])
 
-AC_ARG_WITH([editor2],
-            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game (EXPERIMENTAL, do not use along --with-editor)]),
-	      [editor2=$withval],
-	      [editor2=""])
+AC_ARG_ENABLE([editor2],
+            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game (EXPERIMENTAL, do not use along --enable-editor)]),
+	      [editor2=$enableval],
+	      [editor2=no])
 
 AC_ARG_ENABLE([tools],
               AS_HELP_STRING([--enable-tools], [enable building and installation of tools for artists and WML maintainers]),
@@ -305,10 +305,10 @@ AM_CONDITIONAL([EDITOR2], [test x$editor2 = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
-AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
+AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes || x$editor2 = xyes])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 
-if test "x$editor2" = "xyes"
+if test x$editor2 = xyes
 then
 	CXXFLAGS="$CXXFLAGS -DUSE_EDITOR2"
 fi
