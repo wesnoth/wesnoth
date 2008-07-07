@@ -494,10 +494,8 @@ unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const comb
 	}
 
 	// If this unit drains, HP can increase, so alloc full array.
-	if (u.drains) {
-		return u.max_hp + 1;
-	}
-	return u.hp+1;
+	// Do this anyway in case we level up.
+	return u.max_hp + 1;
 }
 
 combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
@@ -587,7 +585,7 @@ void combatant::no_death_fight(combatant &opp)
 {
 	if (summary[0].empty()) {
 		// Starts with a known HP, so Pascal's triangle.
-		summary[0] = std::vector<double>(u_.hp+1);
+		summary[0] = std::vector<double>(u_.max_hp+1);
 		summary[0][u_.hp] = 1.0;
 		for (unsigned int i = 0; i < opp.hit_chances_.size(); i++) {
 			for (int j = i; j >= 0; j--) {
@@ -609,7 +607,7 @@ void combatant::no_death_fight(combatant &opp)
 
 	if (opp.summary[0].empty()) {
 		// Starts with a known HP, so Pascal's triangle.
-		opp.summary[0] = std::vector<double>(opp.u_.hp+1);
+		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		opp.summary[0][opp.u_.hp] = 1.0;
 		for (unsigned int i = 0; i < hit_chances_.size(); i++) {
 			for (int j = i; j >= 0; j--) {
@@ -634,7 +632,7 @@ void combatant::no_death_fight(combatant &opp)
 void combatant::one_strike_fight(combatant &opp)
 {
 	if (opp.summary[0].empty()) {
-		opp.summary[0] = std::vector<double>(opp.u_.hp+1);
+		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		if (hit_chances_.size() == 1) {
 			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
 			opp.summary[0][maximum<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
@@ -655,7 +653,7 @@ void combatant::one_strike_fight(combatant &opp)
 	// If we killed opponent, it won't attack us.
 	double opp_alive_prob = 1.0 - opp.summary[0][0];
 	if (summary[0].empty()) {
-		summary[0] = std::vector<double>(u_.hp+1);
+		summary[0] = std::vector<double>(u_.max_hp+1);
 		if (opp.hit_chances_.size() == 1) {
 			summary[0][u_.hp] = 1.0 - opp.hit_chances_[0] * opp_alive_prob;
 			summary[0][maximum<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
@@ -721,6 +719,48 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 
 	// We extract results separately, then combine.
 	m.extract_results(summary, opp.summary);
+}
+
+void combatant::consider_levelup(combatant &opp) {
+	// adjust the probabilities to take into consideration the
+	// probability of us levelling up, and hence healing.
+	// We do not currently estimate how many HP we will have.
+
+	if (u_.experience + opp.u_.level >= u_.max_experience) {
+		// if we survive the combat, we will level up. So the probability
+		// of death is unchanged, but all other cases get merged into
+		// the fully healed case.
+		std::vector<double>::iterator i;
+		i = hp_dist.begin();
+		i++; // skip to the second value
+		for ( ; i != hp_dist.end(); i++) {
+			*i = 0;
+		}
+		// fully healed unless dead
+		hp_dist.back() = 1 - hp_dist.front();
+		
+		
+
+	} else if (u_.experience + ((opp.u_.level == 0) ? 4 : opp.u_.level * 8) 
+						 >= u_.max_experience) {
+		// if we kill, we will level up. So then the damage we had
+		// becomes less probable since it's now conditional on us not
+		// levelling up.  This doesn't apply to the probability of us
+		// dying, of course.
+		float scalefactor = 
+			(1 - hp_dist.front() - opp.hp_dist.front()) / (1 - hp_dist.front());
+		std::vector<double>::iterator i;
+		i = hp_dist.begin();
+		i++; // skip to the second value
+		for( ; i != hp_dist.end(); i++) {
+			*i *= scalefactor;
+		}
+
+		// if we level up, we get fully healed. (FIXME: actually more so; we
+		// need to calculate how many HP we will gain)
+		hp_dist.back() += opp.hp_dist.front();
+	}
+
 }
 
 // Two man enter.  One man leave!
@@ -803,6 +843,9 @@ void combatant::fight(combatant &opp)
 		for (unsigned int i = 0; i < opp.hp_dist.size(); i++)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
+
+	consider_levelup(opp);
+	opp.consider_levelup(*this);
 
 	// Make sure we don't try to access the vectors out of bounds,
 	// drain increases HPs so we determine the number of HP here

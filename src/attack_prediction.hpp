@@ -35,6 +35,9 @@ struct combatant
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent);
 
+	/** takes into account level up when calculating resulting HP after a fight */
+	void consider_levelup(combatant &opponent);
+
 	/** Resulting probability distribution (may NOT be as large as max_hp) */
 	std::vector<double> hp_dist;
 

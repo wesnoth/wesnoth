@@ -88,6 +88,8 @@ public:
 								 */
 		bool swarm;				/**< Attack has swarm special. */
 		bool firststrike;		/**< Attack has firststrike special. */
+		unsigned int experience, max_experience;
+		unsigned int level;
 
 		unsigned int rounds;	/**< Berserk special can force us to fight more than one round. */
 		unsigned int hp;		/**< Hitpoints of the unit at the beginning of the battle. */

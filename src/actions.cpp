@@ -625,6 +625,11 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		dloc = &u_loc;
 	}
 
+	// these can matter, even if we can't hit back!
+	experience = u.experience();
+	max_experience = u.max_experience();
+	level = u.level();
+
 	// Get the weapon characteristics, if any.
 	if (weapon) {
 		weapon->set_specials_context(*aloc, *dloc, &units, &map, &status, &teams, attacking, opp_weapon);
