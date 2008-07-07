@@ -69,10 +69,12 @@ void a_star_world::poss_a_star_node::addPage()
 	capacity_ += nbElemByPage_;
 }
 
-a_star_world::poss_a_star_node::poss_a_star_node()
-	: capacity_(0), curIndex_(0)
+a_star_world::poss_a_star_node::poss_a_star_node() :
+		vectPageAStarNode_(),
+		nbElemByPage_(size_t((4096 - 24) / sizeof(a_star_node))),
+		capacity_(0), 
+		curIndex_(0)
 {
-	nbElemByPage_ = size_t((4096 - 24) / sizeof(a_star_node));
 	assert(nbElemByPage_ > 0);
 	addPage();
 }
@@ -114,8 +116,11 @@ void a_star_world::poss_a_star_node::clear()
 	//---------------------------------------------------
 }
 
-a_star_world::a_star_world()
-	: pool_(new poss_a_star_node), width_(0), nbNode_(0)
+a_star_world::a_star_world() :
+		pool_(new poss_a_star_node), 
+		vectAStarNode_(),
+		width_(0), 
+		nbNode_(0)
 {
 }
 
