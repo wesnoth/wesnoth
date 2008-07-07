@@ -2,8 +2,10 @@
 
 # Sample implementation - converting to the wail library rather than
 # wesnoth directly. This show how easily bot writers can convert old
-# bots, which maintained namespace, to wail.
-# Wail requires Python 2.5+.
+# bots, which maintained namespace, to the wail.
+# Wail requires Python 2.5+. If the following statement fails, you likely
+# are not running Python 2.5.x or later.
+from __future__ import with_statement
 
 import time
 import wail, random
