@@ -50,74 +50,74 @@ void editor_action_chain::perform_without_undo(editor_map& m) const
 	}
 }
 
-editor_action_paste* editor_action_paste::perform(editor_map& map) const
+editor_action_paste* editor_action_paste::perform(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
-void editor_action_paste::perform_without_undo(editor_map& map) const
-{
-	throw editor_action_not_implemented();
-}
-
-editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& m) const
-{
-	throw editor_action_not_implemented();
-}
-void editor_action_paint_hex::perform_without_undo(editor_map& map) const
+void editor_action_paste::perform_without_undo(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
 
-editor_action_paste* editor_action_paint_brush::perform(editor_map& m) const
+editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
-void editor_action_paint_brush::perform_without_undo(editor_map& map) const
-{
-	throw editor_action_not_implemented();
-}
-
-editor_action_fill* editor_action_fill::perform(editor_map& map) const
-{
-	throw editor_action_not_implemented();
-}
-void editor_action_fill::perform_without_undo(editor_map& map) const
+void editor_action_paint_hex::perform_without_undo(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
 
-editor_action_whole_map* editor_action_resize_map::perform(editor_map& map) const
+editor_action_paste* editor_action_paint_brush::perform(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
-void editor_action_resize_map::perform_without_undo(editor_map& map) const
-{
-	throw editor_action_not_implemented();
-}
-
-editor_action_rotate_map* editor_action_rotate_map::perform(editor_map& map) const
-{
-	throw editor_action_not_implemented();
-}
-void editor_action_rotate_map::perform_without_undo(editor_map& map) const
+void editor_action_paint_brush::perform_without_undo(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
 
-editor_action_mirror_map* editor_action_mirror_map::perform(editor_map& map) const
+editor_action_fill* editor_action_fill::perform(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
-void editor_action_mirror_map::perform_without_undo(editor_map& map) const
+void editor_action_fill::perform_without_undo(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
 
-editor_action_paste* editor_action_plot_route::perform(editor_map& map) const
+editor_action_whole_map* editor_action_resize_map::perform(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
-void editor_action_plot_route::perform_without_undo(editor_map& map) const
+void editor_action_resize_map::perform_without_undo(editor_map& /*map*/) const
+{
+	throw editor_action_not_implemented();
+}
+
+editor_action_rotate_map* editor_action_rotate_map::perform(editor_map& /*map*/) const
+{
+	throw editor_action_not_implemented();
+}
+void editor_action_rotate_map::perform_without_undo(editor_map& /*map*/) const
+{
+	throw editor_action_not_implemented();
+}
+
+editor_action_mirror_map* editor_action_mirror_map::perform(editor_map& /*map*/) const
+{
+	throw editor_action_not_implemented();
+}
+void editor_action_mirror_map::perform_without_undo(editor_map& /*map*/) const
+{
+	throw editor_action_not_implemented();
+}
+
+editor_action_paste* editor_action_plot_route::perform(editor_map& /*map*/) const
+{
+	throw editor_action_not_implemented();
+}
+void editor_action_plot_route::perform_without_undo(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
