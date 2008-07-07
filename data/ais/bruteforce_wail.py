@@ -1,4 +1,4 @@
-#!WPY
+#!UNSAFE_WPY
 
 # Sample implementation - converting to the wail library rather than
 # wesnoth directly. This show how easily bot writers can convert old
