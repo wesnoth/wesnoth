@@ -32,6 +32,7 @@ class tcontainer_ : public tcontrol
 public:
 	tcontainer_(const unsigned canvas_count) :
 		tcontrol(canvas_count),
+		grid_(),
 		background_changed_(true)
 	{
 		grid_.set_parent(this);
