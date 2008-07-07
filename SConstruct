@@ -248,8 +248,9 @@ env.Replace(CPPDEFINES = ["HAVE_CONFIG_H"])
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
 
+env.AppendUnique(CXXFLAGS = Split("-W -Wall -Wno-unused -Wno-sign-compare -ansi"))
 if env['strict']:
-    env.AppendUnique(CXXFLAGS = Split("-W -Wall -Werror -Wno-unused -Wno-sign-compare"))
+    env.AppendUnique(CXXFLAGS = "-Werror")
 
 if env['gui'] == 'tiny':
     env.Append(CPPDEFINES = "USE_TINY_GUI")
@@ -289,8 +290,8 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
 builds = {
-    "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3 -W -Wall -ansi")),
-    "release" : dict(CXXFLAGS = Split("-O2 -ansi -Wall")),
+    "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3")),
+    "release" : dict(CXXFLAGS = "-O2"),
     "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
     }
 build = env["build"]
