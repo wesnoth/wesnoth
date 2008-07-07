@@ -14,6 +14,7 @@
 #ifndef EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 #define EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 
+#include "action_base.hpp"
 #include "editor_common.hpp"
 #include "editor_display.hpp"
 #include "editor_map.hpp"
@@ -26,6 +27,7 @@
 #include "../key.hpp"
 #include "../sdl_utils.hpp"
 
+#include <deque>
 #include <boost/utility.hpp>
 
 namespace editor2 {
@@ -42,15 +44,85 @@ class editor_controller : public controller_base,
 		editor_mouse_handler& get_mouse_handler_base();
 		editor_display& get_display();	
 	private:    
+		/**
+		 * Container type used to store actions in the undo and redo stacks
+		 */
+		typedef std::deque<editor_action*> action_stack;
+		
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
+		
+		/**
+		 * Performs an action (thus modyfying the map). An appropriate undo action is added to
+		 * the undo stack. The redo stack is cleared.
+		 */
+		void perform_action(const editor_action& action);
+
+		/**
+		 * Checks if an action stack reached its capacity and removes the front element if so.
+		 */
+		void trim_stack(action_stack& stack);
+
+		/**
+		 * Clears an action stack and deletes all its contents. Helper function used when the undo
+		 * or redo stack needs to be cleared
+		 */
+		void clear_stack(action_stack& stack);
+
+		/**
+		 * @return true when undo can be performed, false otherwise
+		 */
+		bool can_undo() const;
+
+		/**
+		 * @return true when redo can be performed, false otherwise
+		 */
+		bool can_redo() const;
+
+		/**
+		 * Un-does an action, and puts it in the redo stack for a possible redo
+		 */
+		void undo();
+
+		/**
+		 * Re-does a previousle undid action, and puts it back in the undo stack.
+		 */
+		void redo();
+
+		/**
+		 * Perform an action at the back of one stack, and then move it to the back of the other stack.
+		 * This is the implementation of both undo and redo which only differ in the direction.
+		 */
+		void perform_action_between_stacks(action_stack& from, action_stack& to);
+		
 		/** The current map object */
 		editor_map map_;
+		
 		/** The display object used and owned by the editor. Possibly recreated when a new map is created */
 		editor_display* gui_;
+		
 		editor_mouse_handler mouse_handler_;
 		
-        bool map_dirty_;
+		/**
+		 * The undo stack. A double-ended queues due to the need to add items to one end,
+		 * and remove from both when performing the undo or when trimming the size. This container owns
+		 * all contents, i.e. no action in the stack shall be deleted, and unless otherwise noted the contents 
+		 * could be deleted at an time during normal operation of the stack. To work on an action, either
+		 * remove it from the container or make a copy. Actions are inserted at the back of the container
+		 * and disappear from the front when the capacity is exceeded.
+		 * @todo Use boost's pointer-owning container?
+		 */
+		action_stack undo_stack_;
+		
+		/**
+		 * The redo stack. @see undo_stack_
+		 */
+		action_stack redo_stack_;
+		
+		/**
+		 * Action stack (i.e. undo and redo) maximum size
+		 */
+		static const int max_action_stack_size_;
 };
 
 } //end namespace editor2

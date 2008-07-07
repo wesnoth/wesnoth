@@ -39,8 +39,8 @@ class editor_action
         virtual ~editor_action()
         {
         }        
-        virtual editor_action* perform(editor_map&) = 0;
-        virtual void perform_without_undo(editor_map&) = 0;
+        virtual editor_action* perform(editor_map&) const = 0;
+        virtual void perform_without_undo(editor_map&) const = 0;
 };
 
 

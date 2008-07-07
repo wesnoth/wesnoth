@@ -30,8 +30,10 @@ class brush
 {
 };
 	
-//Replace contents of the entire map action
-//useful as a fallback undo method when something else would be impractical
+/**
+ * Replace contents of the entire map,
+ * Useful as a fallback undo method when something else would be impractical
+ */
 class editor_action_whole_map : public editor_action
 {
     public:
@@ -39,13 +41,15 @@ class editor_action_whole_map : public editor_action
         : m_(m)
         {
         }
-        editor_action_whole_map* perform(editor_map& m);
-        void perform_without_undo(editor_map& m);
+        editor_action_whole_map* perform(editor_map& m) const;
+        void perform_without_undo(editor_map& m) const;
     protected:
         editor_map m_;
 };
 
-//container wrapping several actions as one
+/**
+ * Container action wrapping several actions into one
+ */
 class editor_action_chain : public editor_action
 {
 	public:
@@ -54,8 +58,8 @@ class editor_action_chain : public editor_action
 		{
 		}
 		~editor_action_chain();
-		editor_action_chain* perform(editor_map& m);
-	    void perform_without_undo(editor_map& m);
+		editor_action_chain* perform(editor_map& m) const;
+	    void perform_without_undo(editor_map& m) const;
     protected:
         std::vector<editor_action*> actions_;
 };
@@ -127,8 +131,8 @@ class editor_action_paste : public editor_action_location
         : editor_action_location(loc), paste_(paste)
         {
         }
-        editor_action_paste* perform(editor_map& map);
-        void perform_without_undo(editor_map& map);
+        editor_action_paste* perform(editor_map& map) const;
+        void perform_without_undo(editor_map& map) const;
     protected:
         gamemap paste_;
 };
@@ -142,8 +146,8 @@ class editor_action_paint_hex : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t)
         {
         }
-        editor_action_paint_hex* perform(editor_map& m);            
-        void perform_without_undo(editor_map& map);
+        editor_action_paint_hex* perform(editor_map& m) const;            
+        void perform_without_undo(editor_map& map) const;
 };
 
 //paint a terrain on the map with a brush. The brush is a special mask type
@@ -156,8 +160,8 @@ class editor_action_paint_brush : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t), b_(b)
         {
         }
-        editor_action_paste* perform(editor_map& map);
-        void perform_without_undo(editor_map& map);
+        editor_action_paste* perform(editor_map& map) const;
+        void perform_without_undo(editor_map& map) const;
     protected:
         brush b_;
 };
@@ -171,8 +175,8 @@ class editor_action_fill : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t), b_(b)
         {
         }
-        editor_action_fill* perform(editor_map& map);
-        void perform_without_undo(editor_map& map);
+        editor_action_fill* perform(editor_map& map) const;
+        void perform_without_undo(editor_map& map) const;
     protected:
 		brush b_;
 };
@@ -185,8 +189,8 @@ class editor_action_resize_map : public editor_action
 		: to_x_size_(to_x_size), to_y_size_(to_y_size)
 		{
 		}
-		editor_action_whole_map* perform(editor_map& map);
-		void perform_without_undo(editor_map& map);
+		editor_action_whole_map* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
 	protected:
 		int to_x_size_;
 		int to_y_size_;
@@ -200,8 +204,8 @@ class editor_action_rotate_map : public editor_action
 		: angle_(angle)
 		{
 		}
-		editor_action_rotate_map* perform(editor_map& map);
-		void perform_without_undo(editor_map& map);
+		editor_action_rotate_map* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
 	protected:
 		int angle_;
 };
@@ -215,8 +219,8 @@ class editor_action_mirror_map : public editor_action
 		: angle_(angle)
 		{
 		}
-		editor_action_mirror_map* perform(editor_map& map);
-		void perform_without_undo(editor_map& map);
+		editor_action_mirror_map* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
 	protected:
 		int angle_;
 };
@@ -231,8 +235,8 @@ class editor_action_plot_route : public editor_action_location_terrain
 		, loc2_(l2)
 		{
 		}
-		editor_action_paste* perform(editor_map& map);
-		void perform_without_undo(editor_map& map);
+		editor_action_paste* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
 	protected:
 		gamemap::location loc2_;
 };

@@ -296,6 +296,7 @@ SET(wesnoth-main_SRC
 IF(ENABLE_EDITOR2)
 
 SET(wesnoth-editor2_SRC
+    editor2/action.cpp
     editor2/editor_main.cpp
     editor2/editor_controller.cpp
     editor2/editor_display.cpp

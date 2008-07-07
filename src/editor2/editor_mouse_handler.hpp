@@ -28,6 +28,9 @@ public:
 	void mouse_motion(int x, int y, const bool browse, bool update);
 	void set_gui(editor_display* gui);
 	editor_display& gui() { return static_cast<editor_display&>(*gui_); }
+
+private:
+	editor_action* current_action_;
 };
 
 } //end namespace editor2

@@ -23,7 +23,7 @@
 namespace editor2 {
 
 editor_mouse_handler::editor_mouse_handler(editor_display* disp, editor_map& map)
-: mouse_handler_base(disp, map)
+: mouse_handler_base(disp, map), current_action_(NULL)
 {
 }
 
