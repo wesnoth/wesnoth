@@ -2095,7 +2095,15 @@ void python_ai::invoke(std::string name)
 	Py_DECREF(globals);
 }
 
-python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(QUIT)
+python_ai::python_ai(ai_interface::info& info) : 
+		ai_interface(info), 
+		exception(QUIT),
+		src_dst_(),
+		dst_src_(),
+		possible_moves_(),
+		enemy_src_dst_(),
+		enemy_dst_src_(),
+		enemy_possible_moves_()
 {
 	LOG_AI << "Running Python instance.\n";
 	running_instance = this;
