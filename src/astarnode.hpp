@@ -52,13 +52,15 @@ public:
 		// we must add 0.5 to the y coordinate when x is odd
 		double ydiff = (src.y - dst.y) + ((src.x & 1) - (dst.x & 1)) * 0.5;
 
-		// 0.0001 is to avoid interfering with the defense cost (see shortest_path_calculator::cost)
-		return distance_between(src, dst)-(
-		0.0001 / sqrt( xdiff*xdiff + ydiff*ydiff)
-		);
+		// we assume a map with a maximum diagonal of 300 (bigger than a 200x200)
+		// and we divide by 300 * 10000 to avoid interfering with the defense subcost
+		// (see shortest_path_calculator::cost)
+		return distance_between(src, dst) -
+				(300.0 - sqrt( xdiff*xdiff + ydiff*ydiff)) / 3000000.0;
+		
 		// TODO: move the heuristic function into the cost_calculator
 		// so we can use case-specific heuristic
-		// and clean the definition of 0.0001
+		// and clean the definition of these numbers
 	}
 };
 
