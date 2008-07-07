@@ -254,6 +254,9 @@ struct tgui_definition
 	tgui_definition() : 
 		id(),
 		description(),
+		control_definition(),
+		windows(),
+		window_types(),
 		popup_show_delay_(0),
 		popup_show_time_(0),
 		help_show_time_(0),
