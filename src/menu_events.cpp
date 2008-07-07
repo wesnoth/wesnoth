@@ -497,7 +497,7 @@ private:
 					str << IMAGE_PREFIX << leader->second.absolute_image();
 					leader_bools.push_back(true);
 				} else {
-					str << IMAGE_PREFIX << std::string("unknown-unit.png");
+					str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
 					leader_bools.push_back(false);
 				}
 #ifndef LOW_MEM
