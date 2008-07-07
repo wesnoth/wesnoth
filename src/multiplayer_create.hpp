@@ -35,6 +35,7 @@ public:
 		parameters() :
 			name(),
 			era(),
+			password(),
 			num_turns(0),
 			village_gold(0),
 			xp_modifier(0),
