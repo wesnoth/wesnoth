@@ -580,6 +580,37 @@ private:
 	}
 };
 
+class is_unowned_village_function : public function_expression {
+public:                                                                            
+	explicit is_unowned_village_function(const args_list& args, const formula_ai& ai)
+		: function_expression("is_unowned_village", args, 2, 3),
+		  ai_(ai)
+	{}
+private:    
+	variant execute(const formula_callable& variables) const {
+
+		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap(); 
+		const std::set<gamemap::location>& my_villages = ai_.current_team().villages();
+
+		gamemap::location loc;
+		if(args().size() == 2) {
+			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		} else {
+			loc = gamemap::location( args()[1]->evaluate(variables).as_int() - 1,  
+					args()[2]->evaluate(variables).as_int() - 1 ); 
+		} 
+
+		if(m.is_village(loc) && (my_villages.count(loc)==0) ) {
+			return variant(true);
+		} else {
+			return variant(false);
+		}
+	}                                     
+
+	const formula_ai& ai_;
+};
+
+
 class unit_at_function : public function_expression {
 public:
 	unit_at_function(const args_list& args, const formula_ai& ai_object)
@@ -856,6 +887,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new recruit_function(args));
 	} else if(fn == "is_village") {
 		return expression_ptr(new is_village_function(args));
+	} else if(fn == "is_unowned_village") {
+		return expression_ptr(new is_unowned_village_function(args, ai_));
 	} else if(fn == "unit_at") {
 		return expression_ptr(new unit_at_function(args, ai_));
 	} else if(fn == "unit_moves") {
