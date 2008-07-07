@@ -1059,33 +1059,41 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				replay::throw_error(errbuf.str());
 			}
 
-			const bool teleport = u->second.get_ability_bool("teleport",u->first);
+			// search path assuming current_team as viewing team
+			const shortest_path_calculator calc(u->second, current_team, units, teams, map);
+			std::set<gamemap::location> allowed_teleports;
+			if(u->second.get_ability_bool("teleport",src)) {
+				// search all known empty friendly villages
+				for(std::set<gamemap::location>::const_iterator i = current_team.villages().begin();
+					i != current_team.villages().end(); ++i) {
+					if (current_team.is_enemy(u->second.side()) && current_team.fogged(*i))
+						continue;
 
-			paths paths_list(map,units,src,teams,false,teleport,current_team);
+					unit_map::const_iterator occupant = find_visible_unit(units, *i, map,teams, current_team);
+					if (occupant != units.end() && occupant != u)
+						continue;
 
-			std::map<gamemap::location,paths::route>::iterator rt = paths_list.routes.find(dst);
-			if(rt == paths_list.routes.end()) {
-
-				std::stringstream errbuf;
-				for(rt = paths_list.routes.begin(); rt != paths_list.routes.end(); ++rt) {
-					errbuf << "can get to: " << rt->first << '\n';
+					allowed_teleports.insert(*i);
 				}
+			}
 
-				errbuf << "src cannot get to dst: " << u->second.movement_left() << ' '
-				       << paths_list.routes.size() << ' ' << src << " -> " << dst << '\n';
+			paths::route route = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
+
+			if(route.steps.empty()) {
+				std::stringstream errbuf;
+				errbuf << "src cannot get to dst: " << src << " -> " << dst
+				       << " with " << u->second.movement_left() << " MP left\n";
 				replay::throw_error(errbuf.str());
 			}
 
-			rt->second.steps.push_back(dst);
-
 			if(!get_replay_source().is_skipping()) {
-				unit_display::move_unit(rt->second.steps,u->second,teams);
+				unit_display::move_unit(route.steps,u->second,teams);
 			}
 			else{
 				//unit location needs to be updated
-				u->second.set_goto(*(rt->second.steps.end() - 1));
+				u->second.set_goto(*(route.steps.end() - 1));
 			}
-			u->second.set_movement(rt->second.move_left);
+			u->second.set_movement(route.move_left);
 
 			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 			up->first = dst;
