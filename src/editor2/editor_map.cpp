@@ -55,4 +55,30 @@ std::vector<gamemap::location> editor_map::get_tiles_in_radius(const gamemap::lo
 	return res;
 }
 
+bool editor_map::in_selection(const gamemap::location& loc) const
+{
+	return selection_.find(loc) != selection_.end();
+}
+bool editor_map::add_to_selection(const gamemap::location& loc)
+{
+	return selection_.insert(loc).second;
+}
+bool editor_map::remove_from_selection(const gamemap::location& loc)
+{
+	return selection_.erase(loc);
+}
+void editor_map::clear_selection()
+{
+	selection_.clear();
+}
+void editor_map::invert_selection()
+{
+	
+}
+void editor_map::select_all()
+{
+	clear_selection();
+	invert_selection();
+}
+
 } //end namespace editor2

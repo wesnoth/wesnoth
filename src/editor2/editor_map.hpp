@@ -29,6 +29,16 @@ public:
 	editor_map(const config& terrain_cfg, const std::string& data);
 	std::vector<gamemap::location> get_tiles_in_radius(const gamemap::location& center, const unsigned int radius);
 	static editor_map new_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
+	
+	bool in_selection(const gamemap::location& loc) const;
+	bool add_to_selection(const gamemap::location& loc);
+	bool remove_from_selection(const gamemap::location& loc);
+	const std::set<gamemap::location> selection() const { return selection_; }
+	void clear_selection();
+	void invert_selection();
+	void select_all();
+protected:
+	std::set<gamemap::location> selection_;
 };
 
 

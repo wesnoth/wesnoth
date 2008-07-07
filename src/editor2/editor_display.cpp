@@ -17,7 +17,7 @@
 
 namespace editor2 {
 	
-editor_display::editor_display(CVideo& video, const gamemap& map,
+editor_display::editor_display(CVideo& video, const editor_map& map,
 		const config& theme_cfg, const config& cfg,
 		const config& level) :
 	display(video, map, theme_cfg, cfg, level)
@@ -35,7 +35,9 @@ image::TYPE editor_display::get_image_type(const gamemap::location& loc)
         return image::BRIGHTENED;
     } else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
         return image::SEMI_BRIGHTENED;
-    }
+    } else if (map().in_selection(loc)) {
+		return image::SEMI_BRIGHTENED;
+	}
     return image::SCALED_TO_HEX;
 }
 

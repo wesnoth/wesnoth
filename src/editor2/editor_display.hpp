@@ -14,6 +14,7 @@
 #ifndef EDITOR2_EDITOR_DISPLAY_HPP_INCLUDED
 #define EDITOR2_EDITOR_DISPLAY_HPP_INCLUDED
 
+#include "editor_map.hpp"
 #include "../display.hpp"
 
 namespace editor2 {
@@ -21,12 +22,13 @@ namespace editor2 {
 class editor_display : public display
 {
 public:
-	editor_display(CVideo& video, const gamemap& map, const config& theme_cfg,
+	editor_display(CVideo& video, const editor_map& map, const config& theme_cfg,
 			const config& cfg, const config& level);
 
 	bool in_editor() const { return true; }
 
 protected:
+	const editor_map& map() { return static_cast<const editor_map&>(map_); }
 	void pre_draw();
 	/**
 	* The editor uses different rules for terrain highligting (e.g. selections)
