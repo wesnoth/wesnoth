@@ -1309,7 +1309,7 @@ void game_controller::download_addons(std::string host)
 			return;
 		}
 
-		std::vector<std::string> campaigns, versions, uploads, types, options, options_to_filter;
+		std::vector<std::string> campaigns, titles, versions, uploads, types, options, options_to_filter;
 
 		std::string sep(1, COLUMN_SEPARATOR);
 
@@ -1344,6 +1344,7 @@ void game_controller::download_addons(std::string host)
 				title = name;
 				std::replace(title.begin(),title.end(),'_',' ');
 			}
+			titles.push_back(title);
 
 			std::string version   = (**i)["version"],
 			            author    = (**i)["author"];
@@ -1528,8 +1529,12 @@ void game_controller::download_addons(std::string host)
 			}
 		}
 
+		std::string message = _("The add-on '$addon|' has been installed.");
+		utils::string_map symbols;
+		symbols["addon"] = titles[index];
+		message = utils::interpolate_variables_into_string(message, &symbols);
 		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::message_dialog dlg(disp(),_("Add-on Installed"),_("The add-on has been installed."));
+		gui::message_dialog dlg(disp(),_("Add-on Installed"),message);
 		dlg.show();
 	} catch(config::error&) {
 		gui::show_error_message(disp(), _("Network communication error."));
