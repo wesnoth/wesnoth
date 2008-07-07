@@ -73,8 +73,8 @@ namespace image {
 template<typename T>
 void cache_type<T>::flush()
 {
-	typename std::vector<cache_item<T> >::iterator beg = content.begin();
-	typename std::vector<cache_item<T> >::iterator end = content.end();
+	typename std::vector<cache_item<T> >::iterator beg = content_.begin();
+	typename std::vector<cache_item<T> >::iterator end = content_.end();
 
 	for(; beg != end; ++beg) {
 		beg->loaded = false;
@@ -799,32 +799,32 @@ void precache_file_existence(const std::string& subdir)
 template<typename T>
 cache_item<T>& cache_type<T>::get_element(int index){
 	assert (index != -1);
-	while(index >= content.size()) {
-		content.push_back(cache_item<T>());
+	while(index >= content_.size()) {
+		content_.push_back(cache_item<T>());
 	}
-	cache_item<T>& elt = content[index];
+	cache_item<T>& elt = content_[index];
 	if(elt.loaded) {
 		assert(*elt.position == index);
-		lru_list.erase(elt.position);
-		lru_list.push_front(index);
-		elt.position = lru_list.begin();
+		lru_list_.erase(elt.position);
+		lru_list_.push_front(index);
+		elt.position = lru_list_.begin();
 	}
 	return elt;
 }
 template<typename T>
 void cache_type<T>::on_load(int index){
 	if(index == -1) return ;
-	cache_item<T>& elt = content[index];
+	cache_item<T>& elt = content_[index];
 	if(!elt.loaded) return ;
-	lru_list.push_front(index);
-	cache_size++;
-	elt.position = lru_list.begin();
-	while(cache_size > cache_max_size-100) {
-		cache_item<T>& elt = content[lru_list.back()];
+	lru_list_.push_front(index);
+	cache_size_++;
+	elt.position = lru_list_.begin();
+	while(cache_size_ > cache_max_size_-100) {
+		cache_item<T>& elt = content_[lru_list_.back()];
 		elt.loaded=false;
 		elt.item = T();
-		lru_list.pop_back();
-		cache_size--;
+		lru_list_.pop_back();
+		cache_size_--;
 	}
 }
 

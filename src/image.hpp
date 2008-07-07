@@ -67,10 +67,10 @@ namespace image {
 	{
 	public:
 		cache_type() :
-			cache_size(0),
-			cache_max_size(2000),
-			lru_list(),
-			content()
+			cache_size_(0),
+			cache_max_size_(2000),
+			lru_list_(),
+			content_()
 		{
 		}
 
@@ -78,10 +78,10 @@ namespace image {
 		void on_load(int index);
 		void flush();
 	private:
-		int cache_size ;
-		int cache_max_size ;
-       	std::list<int> lru_list;
-       	std::vector<cache_item<T> > content;
+		int cache_size_;
+		int cache_max_size_;
+       	std::list<int> lru_list_;
+       	std::vector<cache_item<T> > content_;
 	};
 
 	//a generic image locator. Abstracts the location of an image.
