@@ -502,6 +502,9 @@ unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const comb
 
 combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
 	: hp_dist(hp_dist_size(u, prev)),
+	  untouched(0.0),
+	  poisoned(0.0),
+	  slowed(0.0),
 	  u_(u),
 	  hit_chances_(u.num_blows, u.chance_to_hit / 100.0)
 {
