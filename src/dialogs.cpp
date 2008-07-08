@@ -926,7 +926,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.name = u.name();
 	det.type_name = u.type_name();
 	det.level = u.level();
-	det.alignment = unit_type::alignment_description(u.alignment());
+	det.alignment = unit_type::alignment_description(u.alignment(), u.gender());
 	det.traits = u.traits_description();
 
 	//we filter to remove the tooltips (increment by 2)
@@ -987,7 +987,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.name = "";
 	det.type_name = t->type_name();
 	det.level = t->level();
-	det.alignment = unit_type::alignment_description(t->alignment());
+	det.alignment = unit_type::alignment_description(t->alignment(), t->genders().front());
 
 	//FIXME: This probably must be move into a unit_type function
 	const std::vector<config*> traits = t->possible_traits();

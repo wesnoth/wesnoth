@@ -871,6 +871,7 @@ const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_ra
 	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
 	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic") };
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
+
 	return (gettext(tlist[align]));
 }
 

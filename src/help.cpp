@@ -1321,7 +1321,7 @@ public:
 		   << _("Cost: ") << type_.cost() << jump(30)
 		   << _("Alignment: ")
 		   << "<ref>dst='time_of_day' text='"
-		   << type_.alignment_description(type_.alignment())
+		   << type_.alignment_description(type_.alignment(), type_.genders().front())
 		   << "'</ref>"
 		   << jump(30);
 		if (type_.can_advance())

@@ -123,7 +123,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return res;
 	}
 	case UNIT_ALIGNMENT: {
-		const std::string& align = unit_type::alignment_description(u->second.alignment());
+		const std::string& align = unit_type::alignment_description(u->second.alignment(), u->second.gender());
 		const std::string& align_id = unit_type::alignment_id(u->second.alignment());
 		return report(align, "", string_table[align_id + "_description"]);
 	}
