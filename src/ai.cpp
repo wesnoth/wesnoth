@@ -2330,17 +2330,15 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 }
 
 
+// Request each AI to clean up. The number of AIs which performed some type of
+// clean up is returned. For now, only the python_ai should return a non-zero value.
 int ai_manager::reap_ais()
 {
   int counter = 0 ;
   for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ++itor )
     {
-      //  std::cout << "Should reap ai:" << itor->first << ", " << itor->second->manager_reap_ai() << std::endl ;
       if( itor->second->manager_reap_ai() )
-	{
-	  //	  std::cout << "reaping ai: " << itor->first << std::endl ;
-	  ++counter ;
-	}
+	++counter ;
     }
 
   return counter ;
