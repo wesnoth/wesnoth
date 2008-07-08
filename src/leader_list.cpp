@@ -143,23 +143,14 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 			utg = &(ut->get_gender_unit_type(*i));
 
 			// Make the internationalized titles for each gender, along with the WML ids
-			if (*i == unit_race::FEMALE)
-			{
+			if (*i == unit_race::FEMALE) {
 				gender_ids_.push_back("female");
-#ifdef LOW_MEM
-				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Female ♀"));
-#else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_string(utg->flag_rgb()) + COLUMN_SEPARATOR + _("Female ♀"));
-#endif
-			}
-			else
-			{
+				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_suffix(utg->flag_rgb()) +
+						COLUMN_SEPARATOR + _("Female ♀"));
+			} else {
 				gender_ids_.push_back("male");
-#ifdef LOW_MEM
-				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Male ♂"));
-#else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_string(utg->flag_rgb()) + COLUMN_SEPARATOR + _("Male ♂"));
-#endif
+				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_suffix(utg->flag_rgb()) +
+						COLUMN_SEPARATOR + _("Male ♂"));
 			}
 		}
 		if (gender_combo_ != NULL) {
@@ -198,12 +189,8 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 			}
 			const std::string name =  ut->type_name();
 			const std::string image = ut->image();
+			leader_strings.push_back(IMAGE_PREFIX + image + get_RC_suffix(ut->flag_rgb()) + COLUMN_SEPARATOR + name);
 
-#ifdef LOW_MEM
-			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
-#else
-			leader_strings.push_back(IMAGE_PREFIX + image + get_RC_string(ut->flag_rgb()) + COLUMN_SEPARATOR + name);
-#endif
 		} else {
 			if(*itor == "random") {
 				leader_strings.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("Random"));
@@ -272,6 +259,10 @@ std::string leader_list_manager::get_gender() const
 	return gender_ids_[gender_combo_->selected()];
 }
 
-std::string leader_list_manager::get_RC_string(const std::string& unit_colour) const {
+std::string leader_list_manager::get_RC_suffix(const std::string& unit_colour) const {
+#ifdef LOW_MEM
+	return ""
+#else
  	return "~RC("+unit_colour+">"+lexical_cast<std::string>(colour_+1) +")";
+#endif
 }

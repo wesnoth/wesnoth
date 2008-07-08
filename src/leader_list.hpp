@@ -41,7 +41,7 @@ public:
 	void set_leader(const std::string& leader);
 	void set_gender(const std::string& gender);
 	void set_colour(int colour) {colour_ = colour;};
-	std::string get_RC_string(const std::string& unit_colour) const;
+	std::string get_RC_suffix(const std::string& unit_colour) const;
 
 private:
 	void populate_leader_combo(int selected_index);
