@@ -29,11 +29,24 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation::CAVE_WALL),
-	clear_(t_translation::CAVE), village_(t_translation::UNDERGROUND_VILLAGE),
-    castle_(t_translation::DWARVEN_CASTLE), keep_(t_translation::DWARVEN_KEEP),
-	cfg_(cfg), width_(50), height_(50),
-	village_density_(0), flipx_(false), flipy_(false)
+cave_map_generator::cave_map_generator(const config* cfg) : 
+	wall_(t_translation::CAVE_WALL),
+	clear_(t_translation::CAVE), 
+	village_(t_translation::UNDERGROUND_VILLAGE),
+	castle_(t_translation::DWARVEN_CASTLE), 
+	keep_(t_translation::DWARVEN_KEEP),
+	map_(),
+	starting_positions_(),
+	chamber_ids_(),
+	chambers_(),
+	passages_(),
+	res_(),
+	cfg_(cfg), 
+	width_(50), 
+	height_(50),
+	village_density_(0), 
+	flipx_(false), 
+	flipy_(false)
 {
 	if(cfg_ == NULL) {
 		static const config default_cfg;
