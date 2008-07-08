@@ -234,26 +234,26 @@ void wait::join_game(bool observe)
 	if (!observe) {
 		const config::child_list& sides_list = level_.get_children("side");
 
-		if(sides_list.empty()) {
-			set_result(QUIT);
-			throw config::error(_("No multiplayer sides available in this game"));
-			return;
-		}
-
 		//search for an appropriate vacant slot. If a description is set
 		//(i.e. we're loading from a saved game), then prefer to get the side
 		//with the same description as our login. Otherwise just choose the first
 		//available side.
-		int side_choice = 0;
+		int side_choice = -1;
 		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
 			if((**s)["controller"] == "network" && (**s)["id"].empty()) {
+				side_choice = s - sides_list.begin();
 				if((**s)["save_id"] == preferences::login() || (**s)["current_player"] == preferences::login()) {
-					side_choice = s - sides_list.begin();
+					break;  // found the prefered one
 				}
 			}
 		}
+		if (side_choice < 0 || side_choice >= sides_list.size()) {
+			set_result(QUIT);
+			throw config::error(_("No multiplayer sides available in this game"));
+			return;
+		}
+		
 		const bool allow_changes = (*sides_list[side_choice])["allow_changes"] != "no";
-
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
