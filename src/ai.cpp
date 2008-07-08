@@ -22,6 +22,7 @@
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
 #ifdef HAVE_PYTHON
+//#include "python_ai.hpp"
 #include "ai_python.hpp"
 #endif
 #include "actions.hpp"
@@ -222,6 +223,8 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	else if(name == "python_ai")
 #ifdef HAVE_PYTHON
 	  return new python_ai(info);
+// 	else if(name == "newpy_ai")
+// 	  return new pythonai::PythonAI( info ) ;
 #else
     {
 		LOG_STREAM(err, ai) << "No Python AI support available in this Wesnoth build!\n";
@@ -2351,14 +2354,21 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 
 
 // Request each AI to clean up. The number of AIs which performed some type of
-// clean up is returned. For now, only the python_ai should return a non-zero value.
+// clean up is returned.
 int ai_manager::reap_ais()
 {
   int counter = 0 ;
   for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ++itor )
     {
+      // Request the AI clean up after it self. If it does not which to
+      // be purged, it must return false. If it returns true, the AI
+      // is deleted from the AI map.
       if( itor->second->manager_reap_ai() )
-	++counter ;
+	{
+	  // Delete the AI from the managed map
+	  ais.erase( itor ) ;
+	  ++counter ;
+	}
     }
 
   return counter ;
