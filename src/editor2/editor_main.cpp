@@ -14,8 +14,6 @@
 
 #include "editor_main.hpp"
 #include "editor_common.hpp"
-
-#include "../editor/editor.hpp"
 #include "editor_controller.hpp"
 
 #include "config.hpp"
