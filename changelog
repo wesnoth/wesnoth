@@ -23,7 +23,7 @@ Version 1.5.1+svn:
  * WML engine:
    * When examining stored units, now the attacks, max_hitpoints, max_moves,
      and max_experience are the "real" values and can also be modified.
-   * new attribute count= for the [have_unit] conditional
+   * new attribute count= for [have_unit] and [have_location] conditionals
    * max_attacks in [unit] now also works for values bigger than 1
    * the "zoc" key works for [unit_type] too, and for [unit] accepts other
      boolean values than 1 and 0 (bug #11889).

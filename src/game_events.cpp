@@ -219,6 +219,7 @@ namespace game_events {
 	static bool internal_conditional_passed(const unit_map* units,
 			const vconfig cond, bool& backwards_compat)
 	{
+		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
 		// If the if statement requires we have a certain unit,
 		// then check for that.
@@ -229,7 +230,6 @@ namespace game_events {
 			if(units == NULL)
 				return false;
 
-			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-999");
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
@@ -264,7 +264,17 @@ namespace game_events {
 			std::set<gamemap::location> res;
 			assert(game_map != NULL && units != NULL && status_ptr != NULL);
 			terrain_filter(*v, *game_map, *status_ptr, *units).get_locations(res);
-			if(res.empty()) {
+
+			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
+				? utils::parse_ranges((*v)["count"]) : default_counts;
+			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
+			bool count_matches = false;
+			for (count = counts.begin(); count != count_end && !count_matches; ++count) {
+				if(count->first <= res.size() && res.size() <= count->second) {
+					count_matches = true;
+				}
+			}
+			if(!count_matches) {
 				return false;
 			}
 		}
