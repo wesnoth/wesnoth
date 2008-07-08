@@ -46,9 +46,10 @@ const int leader_pane_border = 10;
 namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
-		const config::child_list& side_list) :
+		const config::child_list& side_list, const std::string& color) :
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
+	color_(color),
 	leader_combo_(disp, std::vector<std::string>()),
 	gender_combo_(disp, std::vector<std::string>()),
 	leaders_(side_list, &leader_combo_, &gender_combo_),
@@ -116,7 +117,7 @@ void wait::leader_preview_pane::draw_contents()
 #ifdef LOW_MEM
 			image = utg->image();
 #else
-			image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">1)");
+			image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">" + color_ + ")");
 #endif
 		}
 
@@ -253,7 +254,7 @@ void wait::join_game(bool observe)
 			throw config::error(_("No multiplayer sides available in this game"));
 			return;
 		}
-		
+
 		const bool allow_changes = (*sides_list[side_choice])["allow_changes"] != "no";
 
 		//if the client is allowed to choose their team, instead of having
@@ -283,12 +284,16 @@ void wait::join_game(bool observe)
 				choices.push_back((**side)["name"]);
 			}
 
+			std::string color = (*sides_list[side_choice])["colour"];
+			if (color.empty())
+				color = lexical_cast<std::string>(side_choice+1);
+
 			std::vector<gui::preview_pane* > preview_panes;
 			leader_preview_pane leader_selector(disp(),
-					possible_sides);
+					possible_sides, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int res = gui::show_dialog(disp(), NULL, "", _("Choose your side:"),
+			const int res = gui::show_dialog(disp(), NULL, _("Choose your faction:"), _("Starting position: ") + lexical_cast<std::string>(side_choice+1),
 						gui::OK_CANCEL, &choices, &preview_panes);
 			if(res < 0) {
 				set_result(QUIT);
