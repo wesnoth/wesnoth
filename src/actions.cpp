@@ -589,6 +589,9 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 	backstab_pos(false),
 	swarm(false),
 	firststrike(false),
+	experience(u.experience()),
+	max_experience(u.max_experience()),
+	level(u.level()),
 	rounds(1),
 	hp(0),
 	max_hp(max_hp = u.max_hitpoints()),
@@ -624,11 +627,6 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		aloc = &opp_loc;
 		dloc = &u_loc;
 	}
-
-	// these can matter, even if we can't hit back!
-	experience = u.experience();
-	max_experience = u.max_experience();
-	level = u.level();
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
