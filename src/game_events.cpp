@@ -229,14 +229,29 @@ namespace game_events {
 			if(units == NULL)
 				return false;
 
+			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-999");
+			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
+				? utils::parse_ranges((*u)["count"]) : default_counts;
+			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
+
+			int match_count = 0;
+			bool count_matches = false;
 			unit_map::const_iterator itor;
-			for(itor = units->begin(); itor != units->end(); ++itor) {
+			for(itor = units->begin(); itor != units->end() && !count_matches; ++itor) {
 				if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, *u)) {
-					break;
+					++match_count;
+					if(counts == default_counts) {
+						// by default a single match is enough, so avoid extra work
+						count_matches = true;
+					}
 				}
 			}
-
-			if(itor == units->end()) {
+			for (count = counts.begin(); count != count_end && !count_matches; ++count) {
+				if(count->first <= match_count && match_count <= count->second) {
+					count_matches = true;
+				}
+			}
+			if(!count_matches) {
 				return false;
 			}
 		}
@@ -780,12 +795,12 @@ namespace {
 	}
 
 	WML_HANDLER_FUNCTION(store_gold,/*handler*/,/*event_info*/,cfg)
-	{	
+	{
 		store_gold_side(false, cfg);
 	}
 
 	WML_HANDLER_FUNCTION(modify_turns,/*handler*/,/*event_info*/,cfg)
-	{	
+	{
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
 		assert(state_of_game != NULL);
@@ -799,7 +814,7 @@ namespace {
 	}
 
 	WML_HANDLER_FUNCTION(store_turns,/*handler*/,/*event_info*/,cfg)
-	{	
+	{
 		std::string var_name = cfg["variable"];
 		if(var_name.empty()) {
 			var_name = "turns";
@@ -813,7 +828,7 @@ namespace {
 	// Moving a 'unit' - i.e. a dummy unit
 	// that is just moving for the visual effect
 	WML_HANDLER_FUNCTION(move_unit_fake,/*handler*/,/*event_info*/,cfg)
-	{	
+	{
 		std::string type = cfg["type"];
 		std::string side = cfg["side"];
 		std::string x = cfg["x"];
@@ -877,7 +892,7 @@ namespace {
 		}
 	}
 
-	/** 
+	/**
 	 * Provide a means of specifying win/loss conditions:
 	 * [event]
 	 * name=prestart
@@ -912,7 +927,7 @@ namespace {
 	 * and only when it's this player's turn.
 	 **/
 	WML_HANDLER_FUNCTION(objectives,/*handler*/,/*event_info*/,cfg)
-	{	
+	{
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
 
@@ -984,7 +999,7 @@ namespace {
 	}
 
 	WML_HANDLER_FUNCTION(set_variable,/*handler*/,/*event_info*/,cfg)
-	{	
+	{
 		assert(state_of_game != NULL);
 
 		const std::string name = cfg["name"];
@@ -1690,7 +1705,7 @@ namespace {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			const bool show = screen != NULL && !(screen)->fogged(loc);
 			const bool animate = show && utils::string_bool(cfg["animate"], false);
-		
+
 			//	If new unit is leader set current player/visible side name
 			//	to units name
 			if (new_unit.can_recruit())
@@ -1931,7 +1946,7 @@ namespace {
 
 
 	typedef std::map<gamemap::location, int> recursion_counter;
-	
+
 	class recursion_preventer {
 		static recursion_counter counter_;
 		static const int max_recursion = 10;
@@ -1980,7 +1995,7 @@ namespace {
 						// Prevent infinite recursion of 'die' events
 						bool fire_event = true;
 						recursion_preventer_ptr recursion_prevent;
-						
+
 						if (event_info.loc1 == death_loc && event_info.name == "die" && !handler.first_time_only())
 						{
 							recursion_prevent.reset(new recursion_preventer(death_loc));
@@ -2654,7 +2669,7 @@ namespace {
 			}
 		}
 	}
-		
+
 	WML_HANDLER_FUNCTION(if,handler,event_info,cfg)
 	{
 		log_scope("if");
@@ -3225,7 +3240,7 @@ namespace {
 
 		if (!command_handlers::get().call_handler(cmd, *this, event_info, cfg))
 		{
-			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";  
+			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
 		}
 
 		DBG_NG << "done handling command...\n";
