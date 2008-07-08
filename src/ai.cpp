@@ -2308,17 +2308,40 @@ void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inp
 	inputs->push_back(formula_input("is_surrounded", FORMULA_READ_ONLY));
 }
 
-ai_manager::ai_map ai_manager::ais = ai_manager::ai_map();
+ai_manager::AINameMap ai_manager::ais = ai_manager::AINameMap();
 
-boost::intrusive_ptr<ai_interface> ai_manager::get_ai(ai_interface::info& ai_info, std::string ai_key, std::string ai_algo) {
-	ai_map::const_iterator itor = ais.find(ai_key);
+boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
+						       ai_interface::info& ai_info )
+{
+        int ai_key = ai_info.team_num - 1 ;
+	AINameMap::const_iterator itor = ais.find(ai_key);
+
+	//	std::cout << "Looking at AI: " << ai_key << std::endl ;
 	if(itor == ais.end()) {
+	  //	  std::cout << "ai_manager was not able to locate this ai - saving..." << ai_key << std::endl ;
 		boost::intrusive_ptr<ai_interface> new_ai(create_ai(ai_algo, ai_info));
-		ai_map::value_type new_ai_pair(ai_key, new_ai);
+		AINameMap::value_type new_ai_pair(ai_key, new_ai);
 		itor = ais.insert(new_ai_pair).first;
 	} else {
-		itor->second->new_turn();
+	  //	  std::cout << "ai_manager located existing AI. Calling ai's new_turn method." << std::endl ;
+	  //		itor->second->new_turn();
 	}
 	return itor->second;
 }
 
+
+int ai_manager::reap_ais()
+{
+  int counter = 0 ;
+  for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ++itor )
+    {
+      //  std::cout << "Should reap ai:" << itor->first << ", " << itor->second->manager_reap_ai() << std::endl ;
+      if( itor->second->manager_reap_ai() )
+	{
+	  //	  std::cout << "reaping ai: " << itor->first << std::endl ;
+	  ++counter ;
+	}
+    }
+
+  return counter ;
+}

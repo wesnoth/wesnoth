@@ -53,6 +53,13 @@ playsingle_controller::playsingle_controller(const config& level, game_state& st
 	}
 }
 
+
+playsingle_controller::~playsingle_controller()
+{
+  ai_manager::reap_ais() ;
+}
+
+
 void playsingle_controller::init_gui(){
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
@@ -721,9 +728,9 @@ void playsingle_controller::play_ai_turn(){
 	boost::intrusive_ptr<ai_interface> ai_obj;
 
 	if(ai_algorithm == "formula_ai") {
-		ai_obj = ai_manager::get_ai(ai_info,current_team().name(), ai_algorithm);
+		ai_obj = ai_manager::get_ai( ai_algorithm, ai_info ) ;
 	} else {
-		ai_obj = create_ai(ai_algorithm, ai_info);
+		ai_obj = create_ai( ai_algorithm, ai_info ) ;
 	}
 
 	ai_obj->user_interact().attach_handler(this);

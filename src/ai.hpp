@@ -376,14 +376,15 @@ private:
 };
 
 class ai_manager {
+public: 
+  static boost::intrusive_ptr<ai_interface> get_ai( std::string, ai_interface::info& );
+  static int reap_ais() ;
 
-	typedef std::map<std::string, boost::intrusive_ptr<ai_interface> > ai_map;
+private:
+  typedef std::map< int, boost::intrusive_ptr<ai_interface> > AINameMap ;
 
-	public: 
-		static boost::intrusive_ptr<ai_interface> get_ai(ai_interface::info&, std::string, std::string);
-
-	private:
-		static ai_map ais;
+  static AINameMap ais ;
 };
+
 
 #endif

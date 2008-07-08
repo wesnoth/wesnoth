@@ -55,6 +55,7 @@ private:
 class formula_ai : public ai {
 public:
 	explicit formula_ai(info& i);
+        virtual ~formula_ai() {} ;
 	virtual void play_turn();
 	virtual void new_turn();
 
@@ -83,6 +84,9 @@ public:
 		move_map srcdst, dstsrc, full_srcdst, full_dstsrc, enemy_srcdst, enemy_dstsrc;
 		variant attacks_cache;
 	};
+
+        // If the AI manager should manager the AI once constructed.
+        virtual const bool manager_manage_ai() const { return true ; } ;
 
 	void swap_move_map(move_map_backup& backup);
 
