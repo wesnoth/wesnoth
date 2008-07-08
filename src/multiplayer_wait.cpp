@@ -46,7 +46,7 @@ const int leader_pane_border = 10;
 namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
-		const config::child_list& side_list, const std::string& color) :
+		const config::child_list& side_list, int color) :
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
 	color_(color),
@@ -55,6 +55,7 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 	leaders_(side_list, &leader_combo_, &gender_combo_),
 	selection_(0)
 {
+	leaders_.set_colour(color_);
 	set_location(leader_pane_position);
 }
 
@@ -114,11 +115,7 @@ void wait::leader_preview_pane::draw_contents()
 				utg = ut;
 
 			leader_name = utg->type_name();
-#ifdef LOW_MEM
-			image = utg->image();
-#else
-			image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">" + color_ + ")");
-#endif
+			image = utg->image() + leaders_.get_RC_suffix(utg->flag_rgb());
 		}
 
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
@@ -284,9 +281,10 @@ void wait::join_game(bool observe)
 				choices.push_back((**side)["name"]);
 			}
 
-			std::string color = (*sides_list[side_choice])["colour"];
-			if (color.empty())
-				color = lexical_cast<std::string>(side_choice+1);
+			int color = side_choice;
+			const std::string color_str = (*sides_list[side_choice])["colour"];
+			if (!color_str.empty())
+				color = game_config::color_info(color_str).index() - 1;
 
 			std::vector<gui::preview_pane* > preview_panes;
 			leader_preview_pane leader_selector(disp(),
