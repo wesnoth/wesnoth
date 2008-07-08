@@ -33,7 +33,8 @@ leader_list_manager::leader_list_manager(const config::child_list& side_list,
 	gender_ids_(),
 	side_list_(side_list),
 	leader_combo_(leader_combo),
-	gender_combo_(gender_combo)
+	gender_combo_(gender_combo),
+	colour_(0)
 {
 }
 
@@ -148,7 +149,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #ifdef LOW_MEM
 				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Female ♀"));
 #else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Female ♀"));
+				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_string(utg->flag_rgb()) + COLUMN_SEPARATOR + _("Female ♀"));
 #endif
 			}
 			else
@@ -157,7 +158,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #ifdef LOW_MEM
 				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Male ♂"));
 #else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Male ♂"));
+				genders_.push_back(IMAGE_PREFIX + utg->image() + get_RC_string(utg->flag_rgb()) + COLUMN_SEPARATOR + _("Male ♂"));
 #endif
 			}
 		}
@@ -201,7 +202,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 #ifdef LOW_MEM
 			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
 #else
-			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~RC(" + ut->flag_rgb() + ">1)") + COLUMN_SEPARATOR + name);
+			leader_strings.push_back(IMAGE_PREFIX + image + get_RC_string(ut->flag_rgb()) + COLUMN_SEPARATOR + name);
 #endif
 		} else {
 			if(*itor == "random") {
@@ -269,4 +270,8 @@ std::string leader_list_manager::get_gender() const
 	if(gender_combo_ == NULL || genders_.empty() || size_t(gender_combo_->selected()) >= genders_.size())
 		return "null";
 	return gender_ids_[gender_combo_->selected()];
+}
+
+std::string leader_list_manager::get_RC_string(const std::string& unit_colour) const {
+ 	return "~RC("+unit_colour+">"+lexical_cast<std::string>(colour_+1) +")";
 }

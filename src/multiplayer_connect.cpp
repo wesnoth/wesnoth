@@ -145,6 +145,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	if(!cfg_.get_attribute("colour").empty()) {
 		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
 	}
+	llm_.set_colour(colour_);
+
 	config *ai = cfg_.child("ai");
 	if (ai)
 		ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
@@ -340,6 +342,7 @@ connect::side::side(const side& a) :
 	allow_player_(a.allow_player_), enabled_(a.enabled_),
 	changed_(a.changed_), llm_(a.llm_)
 {
+	llm_.set_colour(colour_);
 	llm_.set_leader_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
 	llm_.set_gender_combo((enabled_ && leader_.empty()) ? &combo_gender_ : NULL);
 	// FIXME: this is an ugly hack to force updating the gender list when the side
@@ -441,6 +444,13 @@ void connect::side::process_event()
 	if(!enabled_)
 		return;
 
+	if (combo_colour_.changed() && combo_colour_.selected() >= 0) {
+		colour_ = combo_colour_.selected();
+		llm_.set_colour(colour_);
+		llm_.set_leader_combo(&combo_leader_);
+		llm_.set_gender_combo(&combo_gender_);
+		changed_ = true;
+	}
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
 		faction_ = combo_faction_.selected();
 		llm_.update_leader_list(faction_);
@@ -461,10 +471,6 @@ void connect::side::process_event()
 	}
 	if (combo_team_.changed() && combo_team_.selected() >= 0) {
 		team_ = combo_team_.selected();
-		changed_ = true;
-	}
-	if (combo_colour_.changed() && combo_colour_.selected() >= 0) {
-		colour_ = combo_colour_.selected();
 		changed_ = true;
 	}
 	if (slider_gold_.value() != gold_) {

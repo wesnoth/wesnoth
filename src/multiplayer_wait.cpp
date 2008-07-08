@@ -480,7 +480,10 @@ void wait::generate_menu()
 #ifdef LOW_MEM
 			leader_image = utg->image();
 #else
-			leader_image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">" + sd["side"] + ")");
+			std::string RCcolor = sd["colour"];
+			if (RCcolor.empty())
+				RCcolor = sd["side"];
+			leader_image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">" + RCcolor + ")");
 #endif
 		} else {
 			leader_image = leader_list_manager::random_enemy_picture;
