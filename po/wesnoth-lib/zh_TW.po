@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-07-03 22:29+0200\n"
-"PO-Revision-Date: 2008-03-02 01:26+0800\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2008-07-08 10:32+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,14 +74,13 @@ msgstr "沉没的遺迹"
 msgid "Swamp Ruin"
 msgstr "沼澤遺迹"
 
-# i'd like to translate it as城堡主樓
 #. [terrain]
 #: data/core/terrain.cfg:248 data/core/terrain.cfg:260
 #: data/core/terrain.cfg:272 data/core/terrain.cfg:284
 #: data/core/terrain.cfg:296 data/core/terrain.cfg:308
 #: data/core/terrain.cfg:320
 msgid "Keep"
-msgstr "領地"
+msgstr "軍情處"
 
 #. [terrain]
 #: data/core/terrain.cfg:346
@@ -198,7 +197,7 @@ msgstr "沼澤"
 #. [terrain]
 #: data/core/terrain.cfg:634
 msgid "Lit"
-msgstr ""
+msgstr "光亮"
 
 #. [terrain]
 #: data/core/terrain.cfg:644
@@ -207,9 +206,8 @@ msgstr "洞穴"
 
 #. [terrain]
 #: data/core/terrain.cfg:662
-#, fuzzy
 msgid "Cave path"
-msgstr "明亮的洞穴"
+msgstr "洞穴走道"
 
 #. [terrain]
 #: data/core/terrain.cfg:671
@@ -219,7 +217,7 @@ msgstr "蘑菇林"
 #. [terrain]
 #: data/core/terrain.cfg:680
 msgid "Mushroom Grove Lit"
-msgstr "蘑菇林層"
+msgstr "蘑菇林（亮）"
 
 #. [terrain]
 #: data/core/terrain.cfg:691
@@ -262,7 +260,7 @@ msgstr "高不可攀的大山"
 #. [terrain]
 #: data/core/terrain.cfg:963
 msgid "Impassable Desert Mountains"
-msgstr "高不可攀的沙漠山脉"
+msgstr "高不可攀的山脉"
 
 #. [terrain]
 #: data/core/terrain.cfg:973
@@ -271,35 +269,33 @@ msgstr "洞穴墻壁"
 
 #. [terrain]
 #: data/core/terrain.cfg:983
-#, fuzzy
 msgid "Wall"
-msgstr "洞穴墻壁"
+msgstr "牆壁"
 
 #. [terrain]
 #: data/core/terrain.cfg:993
 msgid "Void"
-msgstr "無效力的"
+msgstr "無"
 
 #. [terrain]
 #: data/core/terrain.cfg:1006
 msgid "Flat"
-msgstr ""
+msgstr "平坦"
 
 #. [terrain]
 #: data/core/terrain.cfg:1012
 msgid "Frozen"
-msgstr ""
+msgstr "寒冰"
 
 #. [terrain]
 #: data/core/terrain.cfg:1018
-#, fuzzy
 msgid "Impassable"
 msgstr "高不可攀的大山"
 
 #. [terrain]
 #: data/core/terrain.cfg:1024
 msgid "Unwalkable"
-msgstr ""
+msgstr "無法步行"
 
 #: src/construct_dialog.cpp:143 src/construct_dialog.cpp:150
 #: src/editor/editor_dialogs.cpp:552
@@ -343,15 +339,15 @@ msgstr "高度："
 
 #: src/editor/editor_dialogs.cpp:101
 msgid "Generate New Map"
-msgstr "生成新地圖"
+msgstr "新地圖"
 
 #: src/editor/editor_dialogs.cpp:102
 msgid "Generate Random Map"
-msgstr "生成隨機地圖"
+msgstr "隨機地圖"
 
 #: src/editor/editor_dialogs.cpp:103
 msgid "Random Generator Settings"
-msgstr "隨機地圖生成器設定"
+msgstr "隨機地圖設定"
 
 #: src/editor/editor_dialogs.cpp:181
 msgid "Map creation failed."
@@ -378,7 +374,7 @@ msgstr "全螢幕顯示"
 
 #: src/editor/editor_dialogs.cpp:291 src/game_preferences_display.cpp:166
 msgid "Show Grid"
-msgstr "顯示網格"
+msgstr "顯示地圖網格"
 
 #: src/editor/editor_dialogs.cpp:298
 msgid "Video Mode"
@@ -390,19 +386,19 @@ msgstr "設定快捷鍵"
 
 #: src/editor/editor_dialogs.cpp:306
 msgid "Lighting levels (time of day):"
-msgstr ""
+msgstr "亮度:"
 
 #: src/editor/editor_dialogs.cpp:313
 msgid "light_level^Red:"
-msgstr ""
+msgstr "亮度-紅:"
 
 #: src/editor/editor_dialogs.cpp:314
 msgid "light_level^Green:"
-msgstr ""
+msgstr "亮度-綠:"
 
 #: src/editor/editor_dialogs.cpp:315
 msgid "light_level^Blue:"
-msgstr ""
+msgstr "亮度-藍:"
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
 #: src/hotkeys.cpp:123
@@ -503,7 +499,7 @@ msgstr "以圖標形式顯示玩家列表"
 
 #: src/game_preferences_display.cpp:174
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "設置韋諾之戰路徑"
 
 #: src/game_preferences_display.cpp:175
 msgid "Friends List"
@@ -743,7 +739,7 @@ msgstr "顯示所有玩家進入多人遊戲大廳的信息"
 
 #: src/game_preferences_display.cpp:369
 msgid "Find and set path to MP server to host lan games."
-msgstr ""
+msgstr "搜尋在多人連線伺服器"
 
 #: src/game_preferences_display.cpp:370
 msgid "View and edit your friends and ignores list"
@@ -877,82 +873,75 @@ msgstr "當前無已知主題。請嘗試在遊戲時切换主題。"
 
 #: src/game_preferences_display.cpp:1229
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "在網路伺服器上搜尋 $filename 伺服器"
 
 #: src/gui/widgets/canvas.cpp:276
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "線條無法置於畫面上"
 
 #: src/gui/widgets/canvas.cpp:411
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "矩形無法置於畫面上"
 
 #: src/gui/widgets/canvas.cpp:793
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "畫面沒有文字。"
 
 #: src/gui/widgets/helper.cpp:183
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "没有已定義的伺服器"
+msgstr "元件'$id'沒有被設定"
 
 #: src/gui/widgets/settings.cpp:130
-#, fuzzy
 msgid "No default gui defined."
-msgstr "没有已定義的伺服器"
+msgstr "沒有設定預設網格"
 
 #: src/gui/widgets/settings.cpp:239
 msgid "Window not defined."
-msgstr ""
+msgstr "視窗沒有設定"
 
 #: src/gui/widgets/settings.cpp:298
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "元件設定 '$definition' 沒有設定 '$id'."
 
 #: src/gui/widgets/settings.cpp:410 src/gui/widgets/window_builder.cpp:361
-#, fuzzy
 msgid "No resolution defined."
-msgstr "没有已定義的伺服器"
+msgstr "没有設定解決方法"
 
 #: src/gui/widgets/settings.cpp:442
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "没有已定義的伺服器"
+msgstr "没有設定狀態或界線"
 
 #: src/gui/widgets/settings.cpp:594
-#, fuzzy
 msgid "No scrollbar defined."
-msgstr "没有已定義的伺服器"
+msgstr "没有設定滾輪捲軸"
 
 #: src/gui/widgets/window_builder.cpp:423
 #: src/gui/widgets/window_builder.cpp:976
 #: src/gui/widgets/window_builder.cpp:1068
-#, fuzzy
 msgid "No grid defined."
-msgstr "没有已定義的伺服器"
+msgstr "沒有設定網格"
 
 #: src/gui/widgets/window_builder.cpp:640
 msgid "A row must have a column."
-msgstr ""
+msgstr "行必須要有列"
 
 #: src/gui/widgets/window_builder.cpp:641
 msgid "Number of columns differ."
-msgstr ""
+msgstr "列數不同。"
 
 #: src/gui/widgets/window_builder.cpp:840
-#, fuzzy
 msgid "No list defined."
-msgstr "没有已定義的伺服器"
+msgstr "没有設定列表"
 
 #: src/gui/widgets/window_builder.cpp:843
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "'list_definition' 應該最少要有一行。"
 
 #: src/gui/widgets/window_builder.cpp:862
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
+msgstr "'list_data' 的數值必須跟 'list_definition'有相同的數列。"
 
 #: src/hotkeys.cpp:55
 msgid "Next Unit"
@@ -999,9 +988,8 @@ msgid "Screenshot"
 msgstr "螢幕截圖"
 
 #: src/hotkeys.cpp:67
-#, fuzzy
 msgid "Map Screenshot"
-msgstr "螢幕截圖"
+msgstr "截圖"
 
 #: src/hotkeys.cpp:68
 msgid "Accelerated"
@@ -1231,7 +1219,6 @@ msgstr "刷新戰争迷霧"
 msgid "Delay Shroud Updates"
 msgstr "暫緩刷新戰争迷霧"
 
-# personally i like the original translation陰影區域, gonna discuss about this
 #: src/hotkeys.cpp:132
 msgid "Update Shroud Now"
 msgstr "立即刷新戰争迷霧"
@@ -1269,13 +1256,12 @@ msgid "Enter user command"
 msgstr "輸入使用者命令"
 
 #: src/hotkeys.cpp:142
-#, fuzzy
 msgid "Custom command"
 msgstr "輸入使用者命令"
 
 #: src/hotkeys.cpp:143
 msgid "Run AI formula"
-msgstr ""
+msgstr "執行AI設定"
 
 #: src/hotkeys.cpp:144
 msgid "Clear messages"
@@ -1298,19 +1284,16 @@ msgid "Quit"
 msgstr "退出"
 
 #: src/hotkeys.cpp:828
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "螢幕截圖"
+msgstr "截圖"
 
 #: src/hotkeys.cpp:835
-#, fuzzy
 msgid "Screenshot done"
-msgstr "螢幕截圖"
+msgstr "截圖中"
 
 #: src/hotkeys.cpp:837
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "螢幕截圖"
+msgstr "截圖失敗"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Map Generator"
@@ -1362,7 +1345,7 @@ msgstr "島嶼"
 
 #: src/marked-up_text.cpp:365
 msgid "The maximum text width is less than 1."
-msgstr "最大文字寬度小于1"
+msgstr "最大文字寬度小於1"
 
 #: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
@@ -1386,9 +1369,8 @@ msgid "Hotkey Settings"
 msgstr "快捷鍵設定"
 
 #: src/preferences_display.cpp:239 src/preferences_display.cpp:307
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "請鍵入您要設定的快捷鍵"
+msgstr "請輸入您要設定的快捷鍵（按Esc取消）"
 
 #: src/preferences_display.cpp:258
 msgid "Action"
@@ -1403,7 +1385,6 @@ msgid "Change Hotkey"
 msgstr "更改快捷鍵"
 
 #: src/preferences_display.cpp:273
-#, fuzzy
 msgid "Clear Hotkey"
 msgstr "更改快捷鍵"
 
@@ -1414,7 +1395,7 @@ msgstr "此快捷鍵已經被使用"
 #: src/preferences_display.cpp:352
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
-msgstr ""
+msgstr "警告:截圖快捷鍵不可以是Control、Alt和Meta keys。"
 
 #: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
