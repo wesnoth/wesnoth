@@ -2313,20 +2313,40 @@ ai_manager::AINameMap ai_manager::ais = ai_manager::AINameMap();
 boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 						       ai_interface::info& ai_info )
 {
-        int ai_key = ai_info.team_num - 1 ;
-	AINameMap::const_iterator itor = ais.find(ai_key);
+  int ai_key = ai_info.team_num - 1 ;
+  boost::intrusive_ptr<ai_interface> ai_obj;
 
-	//	std::cout << "Looking at AI: " << ai_key << std::endl ;
-	if(itor == ais.end()) {
-	  //	  std::cout << "ai_manager was not able to locate this ai - saving..." << ai_key << std::endl ;
-		boost::intrusive_ptr<ai_interface> new_ai(create_ai(ai_algo, ai_info));
-		AINameMap::value_type new_ai_pair(ai_key, new_ai);
-		itor = ais.insert(new_ai_pair).first;
-	} else {
-	  //	  std::cout << "ai_manager located existing AI. Calling ai's new_turn method." << std::endl ;
-	  //		itor->second->new_turn();
+  // If we are dealing with an AI - try to find it
+  if( ai_algo.size() )
+    {
+      AINameMap::const_iterator itor = ais.find(ai_key);
+      std::cout << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
+      if(itor == ais.end())
+	{
+	  std::cout << "manager did not find AI - creating..." << std::endl ;
+	  ai_obj = create_ai(ai_algo, ai_info) ;
+	  std::cout << "Asking newly created AI if it wants to be managed." << std::endl ;
+	  if( ai_obj->manager_manage_ai() )
+	    {
+	      std::cout << "AI has requested itself be managed: " << ai_algo << std::endl ;
+	      AINameMap::value_type new_ai_pair( ai_key, ai_obj ) ;
+	      itor = ais.insert(new_ai_pair).first ;
+	    }
 	}
-	return itor->second;
+      else
+	{
+	  // AI was found - so return it
+	  std::cout << "Reusing managed AI" << std::endl ;
+	  ai_obj = itor->second ;
+	}
+    }
+  else
+    {
+      // No AI algorithm - simply create the instance
+      ai_obj = create_ai(ai_algo, ai_info) ;
+    }
+
+  return ai_obj ;
 }
 
 
