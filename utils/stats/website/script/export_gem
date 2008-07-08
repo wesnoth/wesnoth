@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+system "export GEM_HOME=$HOME/.gems"
+system "export GEM_PATH=/usr/local/lib/ruby/gems/1.8:$GEM_HOME"
+

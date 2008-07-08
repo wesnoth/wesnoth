@@ -1,0 +1,15 @@
+Campaign:
+= campaign.name
+
+Number of games:
+= campaign.game_count
+
+/Link:
+/= link_to "campaign_link", {:controller => "campaign", :action => "about", :name => campaign.name, :diff => }
+%p
+
+= render :partial => 'campaign_difficulty', :collection => campaign.difficulties, :locals => { :campaign_name => campaign.name, :version_name => version_name}
+
+%img{ :src => campaign.create_difficulty_chart }/
+
+%p

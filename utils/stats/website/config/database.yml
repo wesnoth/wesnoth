@@ -1,0 +1,27 @@
+
+development:
+  adapter: mysql
+  database: wesnoth
+  host: <my_host_name>
+  port: 3306
+  username: <my_user_name>
+  password: <my_pswd>
+  timeout: 5000
+
+test:
+  adapter: mysql
+  database: wesnoth
+  host: <my_host_name>
+  port: 3306  
+  username: <my_user_name>
+  password: <my_pswd>
+  timeout: 5000
+
+production:
+  adapter: mysql
+  database: wesnoth
+  host: <my_host_name>
+  port: 3306  
+  username: <my_user_name>
+  password: <my_pswd>
+  timeout: 5000

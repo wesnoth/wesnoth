@@ -1,0 +1,10 @@
+Difficulty:
+= campaign_difficulty.name
+
+Number of games:
+= campaign_difficulty.game_count
+
+Link:
+= link_to "campaign_link", {:controller => "campaign", :action => "about", :name => campaign_name, :diff => campaign_difficulty.name, :ver => version_name}
+
+%p

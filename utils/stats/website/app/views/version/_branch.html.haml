@@ -1,0 +1,13 @@
+Branch:
+= branch.name
+
+Number of games:
+= branch.game_count
+
+%p 
+
+= render :partial => 'branch_version', :collection => branch.versions
+
+%img{ :src => branch.create_branch_chart }/
+
+%p

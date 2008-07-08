@@ -1,0 +1,42 @@
+%center
+
+  Campaign:
+  = @obj_campaign.name
+
+  Difficulty:
+  = @obj_campaign.difficulty
+
+  Version:
+  = @obj_campaign.version
+
+  %p
+
+  Gold at start of game:
+  %p
+  %p
+  = render :partial => 'gold_start_game', :collection => @obj_campaign.create_charts_gold_start_game
+  
+  Wins, Losses, Quits percentage:
+  %p
+  %p
+  = render :partial => 'wins_losses_quits', :collection => @obj_campaign.create_charts_wins_losses_quits
+  
+  Percent turns used on victory:
+  %p
+  %p
+  = render :partial => 'victory_percent_turns', :collection => @obj_campaign.create_charts_victory_percent_turns
+  
+  Count of level 1 units:
+  %p
+  %p
+  = render :partial => 'count_units_level_1', :collection => @obj_campaign.create_charts_unit_count(1)
+  
+  Count of level 2 units:
+  %p
+  %p
+  = render :partial => 'count_units_level_2', :collection => @obj_campaign.create_charts_unit_count(2)
+  
+  Count of level 3 units:
+  %p
+  %p
+  = render :partial => 'count_units_level_3', :collection => @obj_campaign.create_charts_unit_count(3)
