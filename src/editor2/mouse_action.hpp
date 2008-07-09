@@ -36,6 +36,8 @@ public:
 	: mode_(mode)
 	{
 	}
+
+	virtual ~mouse_action() {}
 	
 	/**
 	 * A click, possibly the beginning of a drag
