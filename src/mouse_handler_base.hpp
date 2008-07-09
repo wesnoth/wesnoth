@@ -48,6 +48,8 @@ public:
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 	/** update the mouse with a fake mouse motion */
 	void mouse_update(const bool browse);
+	
+	bool is_dragging() { return dragging_; }
 
 	/**
 	 * This handles minimap scrolling and click-drag.
