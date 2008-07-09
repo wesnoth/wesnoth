@@ -23,6 +23,12 @@
 
 namespace editor2 {
 
+
+/**
+ * A mouse action receives events from the controller, and responds to them by creating 
+ * an appropriate editor_action object. Mouse actions may store some temporary data
+ * such as the last clicked hex for better handling of click-drag.
+ */
 class mouse_action
 {
 public:
@@ -30,12 +36,22 @@ public:
 	: mode_(mode)
 	{
 	}
+	
+	/**
+	 * A click, possibly the beginning of a drag
+	 */
 	virtual editor_action* click(editor_display& disp, int x, int y) = 0;
+	
+	/**
+	 * Drag operation. A click should have occured earlier.
+	 */
 	virtual editor_action* drag(editor_display& disp, int x, int y);
+	
+	/**
+	 * The end of dragging.
+	 */
 	virtual editor_action* drag_end(editor_display& disp, int x, int y);
-//	virtual void drag_start();
-//	virtual void drag_through();
-//	virtual void drag_end();
+
 protected:
 	editor_mode& mode_;
 };

@@ -88,6 +88,7 @@ void editor_controller::perform_action(const editor_action& action)
 	undo_stack_.push_back(undo);
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
+	//TODO rebuild and ivalidate only what's really needed
 	gui().rebuild_all();
 	gui().invalidate_all();
 }
