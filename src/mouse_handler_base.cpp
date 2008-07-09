@@ -46,7 +46,8 @@ static bool command_active()
 }
 
 mouse_handler_base::mouse_handler_base(gamemap& map)
-: map_(map)
+: minimap_scrolling_(false), dragging_(false), dragging_started_(false),
+last_hex_(-999,-999), show_menu_(false), map_(map)
 {
 }
 
