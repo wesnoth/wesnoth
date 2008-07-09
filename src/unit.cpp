@@ -1084,14 +1084,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
 			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count")
 				? utils::parse_ranges((*i)["count"]) : default_counts;
-			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
-			bool count_matches = false;
-			for (count = counts.begin(); count != count_end && !count_matches; ++count) {
-				if(count->first <= match_count && match_count <= count->second) {
-					count_matches = true;
-				}
-			}
-			if(!count_matches) {
+			if(!in_ranges(match_count, counts)) {
 				return false;
 			}
 		}

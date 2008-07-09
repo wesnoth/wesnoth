@@ -22,6 +22,7 @@
 
 #include "global.hpp"
 #include <cmath>
+#include <vector>
 #include <map>
 #include <sstream>
 
@@ -135,6 +136,18 @@ To lexical_cast_in_range(From a, To def, To min, To max)
 		}
 		return res;
 	}
+}
+
+template<typename Cmp>
+bool in_ranges(Cmp c, std::vector<std::pair<Cmp, Cmp> >&ranges) {
+	typename std::vector<std::pair<Cmp,Cmp> >::const_iterator range,
+		range_end = ranges.end();
+	for (range = ranges.begin(); range != range_end; ++range) {
+		if(range->first <= c && c <= range->second) {
+			return true;
+		}
+	}
+	return false;
 }
 
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }

@@ -226,32 +226,22 @@ namespace game_events {
 		const vconfig::child_list& have_unit = cond.get_children("have_unit");
 		backwards_compat = backwards_compat && have_unit.empty();
 		for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
-
 			if(units == NULL)
 				return false;
-
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
-			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
-
 			int match_count = 0;
-			bool count_matches = false;
 			unit_map::const_iterator itor;
-			for(itor = units->begin(); itor != units->end() && !count_matches; ++itor) {
+			for(itor = units->begin(); itor != units->end(); ++itor) {
 				if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, *u)) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
-						count_matches = true;
+						break;
 					}
 				}
 			}
-			for (count = counts.begin(); count != count_end && !count_matches; ++count) {
-				if(count->first <= match_count && match_count <= count->second) {
-					count_matches = true;
-				}
-			}
-			if(!count_matches) {
+			if(!in_ranges(match_count, counts)) {
 				return false;
 			}
 		}
@@ -267,14 +257,7 @@ namespace game_events {
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;
-			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
-			bool count_matches = false;
-			for (count = counts.begin(); count != count_end && !count_matches; ++count) {
-				if(count->first <= res.size() && res.size() <= count->second) {
-					count_matches = true;
-				}
-			}
-			if(!count_matches) {
+			if(!in_ranges<int>(res.size(), counts)) {
 				return false;
 			}
 		}
