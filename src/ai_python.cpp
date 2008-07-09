@@ -2196,34 +2196,4 @@ void python_ai::play_turn()
 	Py_DECREF(globals);
 }
 
-// Finds all python AI scripts available in the current binary path.
-// They have to end with .py, and have #!WPY as first line.
-// If preferences allow for unsafe python AIs, then also look for
-// the #!UNSAFE_WPY tag.
-std::vector<std::string> python_ai::get_available_scripts()
-{
-	int allow_unsafe = !preferences::run_safe_python() ;
-	std::vector<std::string> scripts;
-	const std::vector<std::string>& paths = get_binary_paths("data");
-	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
-		std::vector<std::string> files;
-		get_files_in_dir(*i + "ais", &files, NULL, ENTIRE_FILE_PATH);
-		for(std::vector<std::string>::const_iterator j = files.begin(); j != files.end(); ++j) {
-			// file ends with .py
-			if (j->substr(j->length() - 3) == ".py") {
-				std::string name(j->substr(j->rfind("/") + 1)); // extract name
-				// read first line
-				std::ifstream s(j->c_str()); std::string mark; s >> mark; s.close();
-				if (mark == "#!WPY" &&
-					std::find(scripts.begin(), scripts.end(), name) == scripts.end())
-					scripts.push_back(name);
-				else if (allow_unsafe && mark == "#!UNSAFE_WPY" &&
-					 std::find(scripts.begin(), scripts.end(), name) == scripts.end())
-				  scripts.push_back(name);
-			}
-		}
-	}
-	return scripts;
-}
-
 #endif // HAVE_PYTHON

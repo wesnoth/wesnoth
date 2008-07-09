@@ -80,7 +80,6 @@ public:
 
 	static bool is_unit_valid(const unit* unit);
 	std::vector<team>& get_teams() { return get_info().teams; }
-    static std::vector<std::string> get_available_scripts();
     static void initialize_python();
     static void invoke(std::string name);
 
