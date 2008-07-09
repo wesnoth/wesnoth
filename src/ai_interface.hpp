@@ -124,11 +124,11 @@ public:
 	events::generic_event& enemy_attacked() { return enemy_attacked_; }
 
         // If the AI manager should manage the AI once constructed.
-        virtual const bool manager_manage_ai() const { return false ; } ;
+        virtual bool manager_manage_ai() const { return false ; } ;
 
         // If an AI manager should reap the AI at end of game
         // Older AIs should use the default - false.
-        virtual const bool manager_reap_ai() { return false ; } ;
+        virtual bool manager_reap_ai() { return false ; } ;
 
 protected:
 	/**

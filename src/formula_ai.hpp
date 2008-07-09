@@ -86,7 +86,7 @@ public:
 	};
 
         // If the AI manager should manager the AI once constructed.
-        virtual const bool manager_manage_ai() const { return true ; } ;
+        virtual bool manager_manage_ai() const { return true ; } ;
 
 	void swap_move_map(move_map_backup& backup);
 
