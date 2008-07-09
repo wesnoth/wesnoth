@@ -20,6 +20,14 @@
 #include "../foreach.hpp"
 
 namespace editor2 {
+
+int editor_action::next_id_ = 1;
+int editor_action::instance_count_ = 0;
+
+std::string editor_action::get_description()
+{
+	return "Unknown action";
+}
 	
 editor_action_whole_map* editor_action_whole_map::perform(editor_map& m) const {
 	editor_action_whole_map* undo = new editor_action_whole_map(m);
@@ -71,7 +79,6 @@ editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& map) const
 }
 void editor_action_paint_hex::perform_without_undo(editor_map& map) const
 {
-	SCOPE_ED;
 	map.set_terrain(loc_, t_);
 }
 

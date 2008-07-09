@@ -65,16 +65,18 @@ public:
 	/**
 	 * @returns true when the (child) caller should not process the event further
 	 */
-	virtual bool left_click(const SDL_MouseButtonEvent& event, const bool browse);
+	virtual bool left_click(int x, int y, const bool browse);
 	
-	virtual bool right_click(const SDL_MouseButtonEvent& event, const bool browse);
+	virtual void left_drag_end(int x, int y, const bool browse);
+	
+	virtual bool right_click(int x, int y, const bool browse);
 	
 	/**
 	 * Called in right_click when the context menu is about to be shown, can be 
 	 * used for preprocessing and preventing the menu from being displayed.
 	 * @returns true when the menu should be displayed and false otherwise
 	 */
-	virtual bool right_click_before_menu(const SDL_MouseButtonEvent& event, const bool browse);
+	virtual bool right_click_before_menu(int x, int y, const bool browse);
 
 protected:
 	bool minimap_scrolling_;

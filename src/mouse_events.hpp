@@ -74,8 +74,8 @@ protected:
 	 * Use update to force an update of the mouse state.
 	 */
 	void mouse_motion(int x, int y, const bool browse, bool update=false);
-	bool right_click_before_menu(const SDL_MouseButtonEvent& event, const bool browse);	
-	bool left_click(const SDL_MouseButtonEvent& event, const bool browse);
+	bool right_click_before_menu(int x, int y, const bool browse);	
+	bool left_click(int x, int y, const bool browse);
 	void select_hex(const gamemap::location& hex, const bool browse);
 	void clear_undo_stack();
 	bool move_unit_along_current_route(bool check_shroud, bool attackmove=false);

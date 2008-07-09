@@ -30,7 +30,9 @@ public:
 	: mode_(mode)
 	{
 	}
-	virtual editor_action* click(editor_display& disp, int mousex, int mousey) const = 0;
+	virtual editor_action* click(editor_display& disp, int x, int y) = 0;
+	virtual editor_action* drag(editor_display& disp, int x, int y);
+	virtual editor_action* drag_end(editor_display& disp, int x, int y);
 //	virtual void drag_start();
 //	virtual void drag_through();
 //	virtual void drag_end();
@@ -45,7 +47,11 @@ public:
 	: mouse_action(mode)
 	{
 	}
-	editor_action* click(editor_display& disp, int mousex, int mousey) const;
+	editor_action* click(editor_display& disp, int x, int y);
+	editor_action* drag(editor_display& disp, int x, int y);
+	editor_action* drag_end(editor_display& disp, int x, int y);	
+protected:
+	gamemap::location previous_hex_;
 };
 
 

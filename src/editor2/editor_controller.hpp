@@ -48,7 +48,9 @@ class editor_controller : public controller_base,
 		void mouse_motion(int x, int y, const bool browse, bool update);
 		editor_display& gui() { return *gui_; }
 		const editor_display& gui() const { return *gui_; }
-		bool left_click(const SDL_MouseButtonEvent& event, const bool browse);		
+		bool left_click(int x, int y, const bool browse);
+		void left_drag_end(int x, int y, const bool browse);
+		
 	protected:
 		mouse_handler_base& get_mouse_handler_base();
 		editor_display& get_display();	

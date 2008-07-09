@@ -324,7 +324,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	mouse_handler_base::mouse_press(event, browse);
 }
 
-bool mouse_handler::right_click_before_menu(const SDL_MouseButtonEvent& /* event */, const bool browse) 
+bool mouse_handler::right_click_before_menu(int /*x*/, int /*y*/, const bool browse) 
 {
 	if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
 		select_hex(gamemap::location(), browse);
@@ -334,10 +334,10 @@ bool mouse_handler::right_click_before_menu(const SDL_MouseButtonEvent& /* event
 	}
 }
 
-bool mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool browse)
+bool mouse_handler::left_click(int x, int y, const bool browse)
 {
 	undo_ = false;
-	if (mouse_handler_base::left_click(event, browse)) return true;
+	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	
 	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
 	

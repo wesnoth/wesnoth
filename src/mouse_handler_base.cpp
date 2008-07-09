@@ -110,13 +110,13 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		dragging_ = false;
 		cursor::set_dragging(false);
 		if (dragging_started_ && !browse && !commands_disabled) {
-			left_click(event, browse);
+			left_drag_end(event.x, event.y, browse);
 		}
 		dragging_started_= false;
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
-		left_click(event, browse);
+		left_click(event.x, event.y, browse);
 		if (!browse && !commands_disabled) {
 			dragging_ = true;
 			dragging_started_ = false;
@@ -128,7 +128,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		dragging_ = false;
 		dragging_started_ = false;
 		cursor::set_dragging(false);
-		if (right_click_before_menu(event, browse)) {
+		if (right_click_before_menu(event.x, event.y, browse)) {
 			gui().draw(); // redraw highlight (and maybe some more)
 			const theme::menu* const m = gui().get_theme().context_menu();
 			if (m != NULL)
@@ -185,19 +185,19 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event)
 	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
 }
 
-bool mouse_handler_base::right_click_before_menu(const SDL_MouseButtonEvent& /*event*/, const bool /*browse*/)
+bool mouse_handler_base::right_click_before_menu(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 	return true;
 }
 
-bool mouse_handler_base::left_click(const SDL_MouseButtonEvent& event, const bool /*browse*/)
+bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 {
 	dragging_ = false;
 	dragging_started_ = false;
 	cursor::set_dragging(false);
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
-	const gamemap::location& loc = gui().minimap_location_on(event.x,event.y);
+	const gamemap::location& loc = gui().minimap_location_on(x, y);
 	minimap_scrolling_ = false;
 	if(loc.valid()) {
 		minimap_scrolling_ = true;
@@ -208,7 +208,13 @@ bool mouse_handler_base::left_click(const SDL_MouseButtonEvent& event, const boo
 	return false;
 }
 
-bool mouse_handler_base::right_click(const SDL_MouseButtonEvent& /*event*/, const bool /*browse*/)
+void mouse_handler_base::left_drag_end(int x, int y, const bool browse)
+{
+	left_click(x, y, browse);
+}
+
+
+bool mouse_handler_base::right_click(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 	return false;
 }

@@ -26,6 +26,7 @@
 #define EDITOR2_ACTION_BASE_HPP_INCLUDED
 
 #include "editor_common.hpp"
+#include <string>
 
 namespace editor2 {
 
@@ -34,13 +35,48 @@ class editor_action
 {
     public:
         editor_action()
+		: id_(next_id_++)
         {
+			instance_count_++;
         }
+		
         virtual ~editor_action()
         {
-        }        
-        virtual editor_action* perform(editor_map&) const = 0;
-        virtual void perform_without_undo(editor_map&) const = 0;
+			instance_count_--;
+        }
+		
+		/**
+		 * Perform the action, returning an undo action that, when performed, will reverse any effects of this action.
+		 * The undo action object is owned by the caller.
+		 */
+		virtual editor_action* perform(editor_map&) const = 0;
+		
+		/**
+		 * Perform the action without creating an undo action.
+		 */
+		virtual void perform_without_undo(editor_map&) const = 0;
+		
+		/**
+		 * A textual description of the action. For use e.g. in the undo menu, to have
+		 * a "Undo: Fill with Grassland" item rather than just "Undo". Should be overriden
+		 * by derived Actions, defaults to a debug message.
+		 */
+		virtual std::string get_description();
+		
+		/**
+		 * Debugging aid. Return an unique identifier of this Action.
+		 */
+		int get_id() const { return id_; }
+		
+		/**
+		 * Debugging aid. Return number of existing instances of Actions.
+		 */
+		static int get_instance_count() { return instance_count_; }
+		
+	private:
+		static int next_id_;
+		static int instance_count_;
+		const int id_;
 };
 
 

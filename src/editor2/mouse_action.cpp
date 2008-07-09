@@ -22,15 +22,38 @@
 
 namespace editor2 {
 
-editor_action* mouse_action_paint::click(editor_display& disp, int mousex, int mousey) const
+editor_action* mouse_action::drag(editor_display& disp, int x, int y)
 {
-	gamemap::location hex = disp.hex_clicked_on(mousex, mousey);
+	return NULL;
+}
+
+editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
+{
+	return NULL;
+}
+
+editor_action* mouse_action_paint::click(editor_display& disp, int x, int y)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
 	t_translation::t_terrain terrain = mode_.get_foreground_terrain();
-	LOG_ED << disp.get_map().get_terrain_string(terrain) << "\n";
-	LOG_ED << disp.get_map().get_terrain_string(t_translation::MOUNTAIN) << "\n";
-	LOG_ED << disp.get_map().get_terrain_string(t_translation::DEEP_WATER) << "\n";
 	editor_action_paint_hex* a = new editor_action_paint_hex(hex, terrain);
+	previous_hex_ = hex;
 	return a;
 }
+
+editor_action* mouse_action_paint::drag(editor_display& disp, int x, int y)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	if (hex != previous_hex_) {
+		return click(disp, x, y);
+	} else {
+		return NULL;
+	}
+}
 	
+editor_action* mouse_action_paint::drag_end(editor_display& disp, int x, int y)
+{
+	return drag(disp, x, y);
+}
+
 } //end namespace editor2

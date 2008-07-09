@@ -84,6 +84,7 @@ void editor_controller::perform_action(const editor_action& action)
 {
 	SCOPE_ED;
 	editor_action* undo = action.perform(map_);
+	LOG_ED << "Performing action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
 	undo_stack_.push_back(undo);
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
@@ -137,26 +138,52 @@ void editor_controller::perform_action_between_stacks(action_stack& from, action
 	trim_stack(to);
 }
 
-void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update)
+void editor_controller::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
+	if (dragging_) {
+		if (get_mouse_action() != NULL) {
+			editor_action* a = get_mouse_action()->drag(*gui_, x, y);
+			if (a != NULL) {
+				perform_action(*a);
+				delete a;
+			}
+		} else {
+			LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
+		}		
+	}
 	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
 	gui().highlight_hex(new_hex);
 }
 
-bool editor_controller::left_click(const SDL_MouseButtonEvent& event, const bool browse)
+bool editor_controller::left_click(int x, int y, const bool browse)
 {
-	if (mouse_handler_base::left_click(event, browse)) return true;
+	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	LOG_ED << "Left click, after generic handling\n";
 	if (get_mouse_action() != NULL) {
-		editor_action* a = get_mouse_action()->click(*gui_, event.x, event.y);
-		perform_action(*a);
-		delete a;
+		editor_action* a = get_mouse_action()->click(*gui_, x, y);
+		if (a != NULL) {
+			perform_action(*a);
+			delete a;
+		}
 		return true;
 	} else {
-		LOG_ED << "There is no mouse action active!\n";
+		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
 		return false;
 	}
+}
+
+void editor_controller::left_drag_end(int x, int y, const bool browse)
+{
+	if (get_mouse_action() != NULL) {
+		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
+		if (a != NULL) {
+			perform_action(*a);
+			delete a;
+		}
+	} else {
+		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
+	}	
 }
 
 
