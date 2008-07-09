@@ -1293,37 +1293,45 @@ namespace {
 	{
 		assert(state_of_game != NULL);
 
-		const std::string name = cfg["name"];
+		const t_string& name = cfg["name"];
+		variable_info dest(name, true, variable_info::TYPE_CONTAINER);
 
-		std::string mode = cfg["mode"]; //should be one of replace, extend, merge
-		if(mode!="append"&&mode!="merge")
-		{
-			mode="replace";
+		std::string mode = cfg["mode"]; // replace, append, merge, or insert
+		if(mode == "extend") {
+			mode = "append";
+		} else if(mode != "append" && mode != "merge" && mode != "insert") {
+			mode = "replace";
 		}
 
-		const t_string to_variable = cfg["to_variable"];
 		const vconfig::child_list values = cfg.get_children("value");
 		const vconfig::child_list literals = cfg.get_children("literal");
 		const vconfig::child_list split_elements = cfg.get_children("split");
 
-		std::vector<config> data;
+		config data;
 
-		if(!to_variable.empty())
+		if(cfg.has_attribute("to_variable"))
 		{
-			variable_info::array_range range = state_of_game->get_variable_cfgs(to_variable);
-			for( ; range.first != range.second; ++range.first)
-			{
-				data.push_back(**range.first);
+			variable_info tovar(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
+			if(tovar.is_valid) {
+				if(tovar.explicit_index) {
+					data.add_child(dest.key, tovar.as_container());
+				} else {
+					variable_info::array_range range = tovar.as_array();
+					while(range.first != range.second)
+					{
+						data.add_child(dest.key, **range.first++);
+					}
+				}
 			}
 		} else if(!values.empty()) {
 			for(vconfig::child_list::const_iterator i=values.begin(); i!=values.end(); ++i)
 			{
-				data.push_back((*i).get_parsed_config());
+				data.add_child(dest.key, (*i).get_parsed_config());
 			}
 		} else if(!literals.empty()) {
 			for(vconfig::child_list::const_iterator i=literals.begin(); i!=literals.end(); ++i)
 			{
-				data.push_back(i->get_config());
+				data.add_child(dest.key, i->get_config());
 			}
 		} else if(!split_elements.empty()) {
 			const vconfig split_element=split_elements.front();
@@ -1354,44 +1362,39 @@ namespace {
 				split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
 			}
 
-			state_of_game->clear_variable_cfg(name);
 			for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 			{
-				config item = config();
-				item[key_name]=*i;
-				data.push_back(item);
+				data.add_child(dest.key)[key_name]=*i;
 			}
 		}
-
+		if(mode == "replace")
+		{
+			if(dest.explicit_index) {
+				dest.vars->remove_child(dest.key, dest.index);
+			} else {
+				dest.vars->clear_children(dest.key);
+			}
+		}
 		if(!data.empty())
 		{
-			if(mode == "replace")
-			{
-				state_of_game->clear_variable_cfg(name);
-			}
 			if(mode == "merge")
 			{
-				variable_info::array_range target = state_of_game->get_variable_cfgs(name);
-				std::vector<config>::iterator i=data.begin();
-				config::child_list::iterator j=target.first;
-				while(i!=data.end())
-				{
-					if(j!=target.second)
-					{
-						(*j)->merge_with(*i);
-						++j;
-					} else {
-						state_of_game->add_variable_cfg(name, *i);
-					}
-					++i;
+				if(dest.explicit_index) {
+					// merging multiple children into a single explicit index
+					// requires that they first be merged with each other
+					data.merge_children(dest.key);
+					dest.as_container().merge_with(*data.child(dest.key));
+				} else {
+					dest.vars->merge_with(data);
+				}
+			} else if(mode == "insert" || dest.explicit_index) {
+				config::child_itors chitors = data.child_range(dest.key);
+				while(chitors.first != chitors.second) {
+					dest.vars->add_child_at(dest.key, **chitors.first++, dest.index++);
 				}
 			} else {
-				for(std::vector<config>::iterator i=data.begin(); i!=data.end(); ++i)
-				{
-					state_of_game->add_variable_cfg(name, *i);
-				}
+				dest.vars->append(data);
 			}
-			return;
 		}
 	}
 

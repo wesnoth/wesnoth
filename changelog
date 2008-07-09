@@ -26,12 +26,14 @@ Version 1.5.1+svn:
    * When examining stored units, now the attacks, max_hitpoints, max_moves,
      and max_experience are the "real" values and can also be modified.
    * new attribute count= for [have_unit] and [have_location] conditionals
+   * new mode "insert" for [set_variables]
    * max_attacks in [unit] now also works for values bigger than 1
    * the "zoc" key works for [unit_type] too, and for [unit] accepts other
      boolean values than 1 and 0 (bug #11889).
    * new effect apply_to=type to transform the unit to a different type
    * remove redundant unit.value (use unit.cost instead)
    * preserve unit.role in next scenario (bugs #3697, #4124, and #11329)
+   * fix various problems with [set_variables] (bugs #11980 and #11981)
  * GUI improvements:
    * Rewrote the textbox history saving of the new widget library. This rewrite
      is incompatible with the old version, but since the library is still in
