@@ -150,8 +150,10 @@ wesnoth_editor2_SOURCES = \
 	editor2/editor_controller.cpp \
 	editor2/editor_display.cpp \
 	editor2/editor_map.cpp \
-	editor2/editor_mouse_handler.cpp
-    
+	editor2/editor_mode.cpp \
+	editor2/editor_mouse_handler.cpp \
+	editor2/mouse_action.cpp
+
 if EDITOR2
 wesnoth_source += $(wesnoth_editor2_SOURCES)
 endif

@@ -45,8 +45,8 @@ static bool command_active()
 #endif
 }
 
-mouse_handler_base::mouse_handler_base(display* disp, gamemap& map)
-: gui_(disp), map_(map)
+mouse_handler_base::mouse_handler_base(gamemap& map)
+: map_(map)
 {
 }
 
@@ -70,11 +70,11 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 		// thus, we need to check if the LMB/MMB is still down
 		minimap_scrolling_ = ((SDL_GetMouseState(NULL,NULL) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
 		if(minimap_scrolling_) {
-			const gamemap::location& loc = gui_->minimap_location_on(x,y);
+			const gamemap::location& loc = gui().minimap_location_on(x,y);
 			if(loc.valid()) {
 				if(loc != last_hex_) {
 					last_hex_ = loc;
-					gui_->scroll_to_tile(loc,display::WARP,false);
+					gui().scroll_to_tile(loc,display::WARP,false);
 				}
 			} else {
 				// clicking outside of the minimap will end minimap scrolling
@@ -129,8 +129,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		dragging_started_ = false;
 		cursor::set_dragging(false);
 		if (right_click_before_menu(event, browse)) {
-			gui_->draw(); // redraw highlight (and maybe some more)
-			const theme::menu* const m = gui_->get_theme().context_menu();
+			gui().draw(); // redraw highlight (and maybe some more)
+			const theme::menu* const m = gui().get_theme().context_menu();
 			if (m != NULL)
 				show_menu_ = true;
 			else
@@ -138,12 +138,12 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		}
 	} else if(is_middle_click(event) && event.state == SDL_PRESSED) {
 		// clicked on a hex on the minimap? then initiate minimap scrolling
-		const gamemap::location& loc = gui_->minimap_location_on(event.x,event.y);
+		const gamemap::location& loc = gui().minimap_location_on(event.x,event.y);
 		minimap_scrolling_ = false;
 		if(loc.valid()) {
 			minimap_scrolling_ = true;
 			last_hex_ = loc;
-			gui_->scroll_to_tile(loc,display::WARP,false);
+			gui().scroll_to_tile(loc,display::WARP,false);
 		}
 	} else if (event.button == SDL_BUTTON_WHEELUP) {
 		scrolly = - preferences::scroll_speed();
@@ -159,9 +159,9 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if (pressed[SDLK_LALT] || pressed[SDLK_RALT])
-			gui_->scroll(scrolly,scrollx);
+			gui().scroll(scrolly,scrollx);
 		else
-			gui_->scroll(scrollx,scrolly);
+			gui().scroll(scrollx,scrolly);
 	}
 	if (!dragging_ && dragging_started_) {
 		dragging_started_ = false;
@@ -197,12 +197,12 @@ bool mouse_handler_base::left_click(const SDL_MouseButtonEvent& event, const boo
 	cursor::set_dragging(false);
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
-	const gamemap::location& loc = gui_->minimap_location_on(event.x,event.y);
+	const gamemap::location& loc = gui().minimap_location_on(event.x,event.y);
 	minimap_scrolling_ = false;
 	if(loc.valid()) {
 		minimap_scrolling_ = true;
 		last_hex_ = loc;
-		gui_->scroll_to_tile(loc,display::WARP,false);
+		gui().scroll_to_tile(loc,display::WARP,false);
 		return true;
 	}
 	return false;

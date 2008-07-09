@@ -15,22 +15,25 @@
 #ifndef EDITOR2_EDITOR_MOUSE_HANDLER_HPP
 #define EDITOR2_EDITOR_MOUSE_HANDLER_HPP
 
-#include "../mouse_handler_base.hpp"
-
 #include "editor_common.hpp"
+
+#include "../mouse_handler_base.hpp"
 
 namespace editor2 {
 
 class editor_mouse_handler : public events::mouse_handler_base
 {
 public:
-	editor_mouse_handler(editor_display* disp, editor_map& map);
+	editor_mouse_handler(editor_display* gui, editor_map& map, editor_mode& mode);
 	void mouse_motion(int x, int y, const bool browse, bool update);
 	void set_gui(editor_display* gui);
-	editor_display& gui() { return static_cast<editor_display&>(*gui_); }
-
+	editor_display& gui() { return *gui_; }
+	const editor_display& gui() const { return *gui_; }
+	bool left_click(const SDL_MouseButtonEvent& event, const bool /*browse*/);
+	
 private:
-	editor_action* current_action_;
+	editor_display* gui_;
+	editor_mode& mode_;
 };
 
 } //end namespace editor2

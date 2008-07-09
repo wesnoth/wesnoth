@@ -14,6 +14,7 @@
 #include "editor_controller.hpp"
 #include "editor_display.hpp"
 #include "editor_map.hpp"
+#include "mouse_action.hpp"
 #include "../config_adapter.hpp"
 #include "../foreach.hpp"
 #include "../preferences.hpp"
@@ -27,11 +28,12 @@ const int editor_controller::max_action_stack_size_ = 100;
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
+, mouse_handler_base(map_)
 , map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL)
-, mouse_handler_(gui_, map_)
 {
 	init(video);
+	set_mouse_action(new mouse_action_paint(*this));
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	gui_->draw();
@@ -45,7 +47,6 @@ void editor_controller::init(CVideo& video)
 	const config* theme_cfg = get_theme(game_config_, "editor2");
 	theme_cfg = theme_cfg ? theme_cfg : &dummy;
 	gui_ = new editor_display(video, map_, *theme_cfg, game_config_, config());
-	mouse_handler_.set_gui(gui_);
 }
 
 editor_controller::~editor_controller()
@@ -67,9 +68,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND, int /*index*
 	return false;
 }
 
-editor_mouse_handler& editor_controller::get_mouse_handler_base()
+events::mouse_handler_base& editor_controller::get_mouse_handler_base()
 {
-	return mouse_handler_;
+	return *this;
 }
 
 editor_display& editor_controller::get_display()
@@ -81,10 +82,13 @@ editor_display& editor_controller::get_display()
 
 void editor_controller::perform_action(const editor_action& action)
 {
+	SCOPE_ED;
 	editor_action* undo = action.perform(map_);
 	undo_stack_.push_back(undo);
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
+	gui().rebuild_all();
+	gui().invalidate_all();
 }
 
 void editor_controller::trim_stack(action_stack& stack)
@@ -131,6 +135,28 @@ void editor_controller::perform_action_between_stacks(action_stack& from, action
 	editor_action* reverse_action = action->perform(map_);
 	to.push_back(reverse_action);
 	trim_stack(to);
+}
+
+void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update)
+{
+	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
+	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
+	gui().highlight_hex(new_hex);
+}
+
+bool editor_controller::left_click(const SDL_MouseButtonEvent& event, const bool browse)
+{
+	if (mouse_handler_base::left_click(event, browse)) return true;
+	LOG_ED << "Left click, after generic handling\n";
+	if (get_mouse_action() != NULL) {
+		editor_action* a = get_mouse_action()->click(*gui_, event.x, event.y);
+		perform_action(*a);
+		delete a;
+		return true;
+	} else {
+		LOG_ED << "There is no mouse action active!\n";
+		return false;
+	}
 }
 
 

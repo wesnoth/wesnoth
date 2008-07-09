@@ -150,6 +150,18 @@ class editor_action_paint_hex : public editor_action_location_terrain
         void perform_without_undo(editor_map& map) const;
 };
 
+class editor_action_paint_many : public editor_action
+{
+	public:
+		editor_action_paint_many(std::set<gamemap::location> locs, t_translation::t_terrain t)
+		: locs_(locs), t_(t)
+		{
+		}
+	protected:
+		std::set<gamemap::location> locs_;
+		t_translation::t_terrain t_;
+};
+
 //paint a terrain on the map with a brush. The brush is a special mask type
 //note that undo in this case is a paste not a brush paint.
 class editor_action_paint_brush : public editor_action_location_terrain

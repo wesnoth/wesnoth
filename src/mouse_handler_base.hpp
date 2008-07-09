@@ -31,9 +31,20 @@ extern int commands_disabled;
 	
 class mouse_handler_base {
 public:
-	mouse_handler_base(display* disp, gamemap& map);
+	mouse_handler_base(gamemap& map);
 	virtual ~mouse_handler_base() {}
 
+	/**
+	 * Reference to the used display objects. Derived classes should ensure 
+	 * this is always valid. Note the constructor of this class cannot use this.
+	 */
+	virtual display& gui() = 0;
+
+	/**
+	 * Const version. 
+	 */
+	virtual const display& gui() const = 0;
+	
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 	/** update the mouse with a fake mouse motion */
 	void mouse_update(const bool browse);
@@ -66,8 +77,6 @@ public:
 	virtual bool right_click_before_menu(const SDL_MouseButtonEvent& event, const bool browse);
 
 protected:
-	display* gui_;
-	
 	bool minimap_scrolling_;
 	bool dragging_;
 	bool dragging_started_;

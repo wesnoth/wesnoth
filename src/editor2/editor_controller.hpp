@@ -19,12 +19,14 @@
 #include "editor_display.hpp"
 #include "editor_map.hpp"
 #include "editor_mouse_handler.hpp"
+#include "editor_mode.hpp"
 
 #include "../config.hpp"
 #include "../controller_base.hpp"
 #include "../events.hpp"
 #include "../hotkeys.hpp"
 #include "../key.hpp"
+#include "../mouse_handler_base.hpp"
 #include "../sdl_utils.hpp"
 
 #include <deque>
@@ -32,16 +34,23 @@
 
 namespace editor2 {
 
-class editor_controller : public controller_base,
-		private boost::noncopyable
+class editor_controller : public controller_base, 
+	public editor_mode, public events::mouse_handler_base,
+	private boost::noncopyable
 {
 	public:
 		editor_controller(const config &game_config, CVideo& video);
 		~editor_controller();
 		void main_loop();
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
+		
+		/* mouse_handler_base */
+		void mouse_motion(int x, int y, const bool browse, bool update);
+		editor_display& gui() { return *gui_; }
+		const editor_display& gui() const { return *gui_; }
+		bool left_click(const SDL_MouseButtonEvent& event, const bool browse);		
 	protected:
-		editor_mouse_handler& get_mouse_handler_base();
+		mouse_handler_base& get_mouse_handler_base();
 		editor_display& get_display();	
 	private:    
 		/**
@@ -100,8 +109,6 @@ class editor_controller : public controller_base,
 		
 		/** The display object used and owned by the editor. Possibly recreated when a new map is created */
 		editor_display* gui_;
-		
-		editor_mouse_handler mouse_handler_;
 		
 		/**
 		 * The undo stack. A double-ended queues due to the need to add items to one end,

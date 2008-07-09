@@ -62,9 +62,9 @@ protected:
 	 * Due to the way this class is constructed we can assume that the
 	 * display* gui_ member actually points to a game_display (derived class)
 	 */
-	game_display& gui() { return static_cast<game_display&>(*gui_); }
+	game_display& gui() { return *gui_; }
 	/** Const version */
-	const game_display& gui() const { return static_cast<game_display&>(*gui_); }
+	const game_display& gui() const { return *gui_; }
 	
 	team& viewing_team() { return teams_[gui().viewing_team()]; }
 	const team& viewing_team() const { return teams_[gui().viewing_team()]; }
@@ -89,6 +89,7 @@ protected:
 	unit_map::iterator find_unit(const gamemap::location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
+	game_display* gui_;
 	std::vector<team>& teams_;
 	unit_map& units_;
 	gamestatus& status_;
