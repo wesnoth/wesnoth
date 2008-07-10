@@ -194,7 +194,7 @@ protected:
 // They have to end with .py, and have #!WPY as first line.
 // If preferences allow for unsafe python AIs, then also look for
 // the #!UNSAFE_WPY tag.
-std::vector<std::string> get_available_py_scripts()
+static std::vector<std::string> get_available_py_scripts()
 {
   int allow_unsafe = !preferences::run_safe_python() ;
   std::vector<std::string> scripts;
