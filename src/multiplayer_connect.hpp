@@ -104,6 +104,8 @@ public:
 	private:
 		void init_ai_algorithm_combo();
 		void update_ai_algorithm_combo() {hide_ai_algorithm_combo(parent_->hidden());}
+		//! Fill or refresh the faction combo using the proper team color
+		void update_faction_combo();
 		void update_controller_ui();
 		void update_ui();
 

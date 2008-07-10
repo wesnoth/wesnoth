@@ -273,18 +273,26 @@ void wait::join_game(bool observe)
 				throw config::error(_("No multiplayer sides found"));
 				return;
 			}
-
-			std::vector<std::string> choices;
-			for(config::child_list::const_iterator side =
-					possible_sides.begin(); side !=
-					possible_sides.end(); ++side) {
-				choices.push_back((**side)["name"]);
-			}
-
+			
 			int color = side_choice;
 			const std::string color_str = (*sides_list[side_choice])["colour"];
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
+
+			std::vector<std::string> choices;
+			for(config::child_list::const_iterator side =
+					possible_sides.begin(); side !=
+					possible_sides.end(); ++side)
+			{
+				const std::string& name = (**side)["name"];
+				const std::string& icon = (**side)["image"];
+				if (!icon.empty()) {
+					choices.push_back(IMAGE_PREFIX + icon + "~RC(magenta>" +
+						lexical_cast<std::string>(color+1) + ")" + COLUMN_SEPARATOR + name);
+				} else {
+					choices.push_back(name);
+				}
+			}
 
 			std::vector<gui::preview_pane* > preview_panes;
 			leader_preview_pane leader_selector(disp(),
@@ -501,6 +509,10 @@ void wait::generate_menu()
 				if(p != std::string::npos && p < side_name.size()) {
 					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str().substr(p+1);
 				}
+			} else {
+				// no image prefix, just add the leader image
+				// (assuming that there is also no COLUMN_SEPARATOR)
+				side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str();
 			}
 		}
 

@@ -29,6 +29,7 @@
 #include "statistics.hpp"
 #include "show_dialog.hpp"
 #include "serialization/string_utils.hpp"
+#include "wml_separators.hpp"
 
 #include <cassert>
 #include <boost/bind.hpp>
@@ -72,7 +73,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_controller_(parent.disp(), parent.player_types_),
 	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
-	combo_faction_(parent.disp(), parent.player_factions_),
+	combo_faction_(parent.disp(), std::vector<std::string>()),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_gender_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), parent.player_teams_),
@@ -146,6 +147,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
 	}
 	llm_.set_colour(colour_);
+
+	update_faction_combo();
 
 	config *ai = cfg_.child("ai");
 	if (ai)
@@ -447,6 +450,7 @@ void connect::side::process_event()
 	if (combo_colour_.changed() && combo_colour_.selected() >= 0) {
 		colour_ = combo_colour_.selected();
 		llm_.set_colour(colour_);
+		update_faction_combo();
 		llm_.set_leader_combo(&combo_leader_);
 		llm_.set_gender_combo(&combo_gender_);
 		changed_ = true;
@@ -572,6 +576,23 @@ void connect::side::init_ai_algorithm_combo()
 	}
 	combo_ai_algorithm_.set_items(ais);
 	combo_ai_algorithm_.set_selected(sel);
+}
+
+void connect::side::update_faction_combo()
+{
+	std::vector<std::string> factions;
+	for(std::vector<config*>::const_iterator faction = parent_->era_sides_.begin();
+		   faction != parent_->era_sides_.end(); ++faction) {
+		const std::string& name = (**faction)["name"];
+		const std::string& icon = (**faction)["image"];
+		if (!icon.empty()) {
+			factions.push_back(IMAGE_PREFIX + icon + "~RC(magenta>" + lexical_cast<std::string>(colour_+1) + ")" + COLUMN_SEPARATOR + name);
+		} else {
+			factions.push_back(name);
+		}
+	}
+	combo_faction_.set_items(factions);
+	combo_faction_.set_selected(faction_);
 }
 
 void connect::side::update_ui()
