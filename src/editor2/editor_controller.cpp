@@ -17,6 +17,7 @@
 #include "mouse_action.hpp"
 #include "../config_adapter.hpp"
 #include "../foreach.hpp"
+#include "../hotkeys.hpp"
 #include "../preferences.hpp"
 
 
@@ -32,6 +33,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 , map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL)
 {
+	hotkey::deactivate_all_scopes();
+	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+	hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 	init(video);
 	set_mouse_action(new mouse_action_paint(*this));
 	gui_->invalidate_game_status();

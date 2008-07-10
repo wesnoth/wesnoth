@@ -25,6 +25,7 @@
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
 #include "preferences_display.hpp"
@@ -51,122 +52,149 @@ const struct {
 	const char* command;
 	const char* description;
 	bool hidden;
+	hotkey::scope scope;
 } hotkey_list_[] = {
-	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false },
-	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false },
-	{ hotkey::HOTKEY_UNIT_HOLD_POSITION, "holdposition", N_("Hold Position"), false},
-	{ hotkey::HOTKEY_END_UNIT_TURN, "endunitturn", N_("End Unit Turn"), false },
-	{ hotkey::HOTKEY_LEADER, "leader", N_("Leader"), false },
-	{ hotkey::HOTKEY_UNDO, "undo", N_("Undo"), false },
-	{ hotkey::HOTKEY_REDO, "redo", N_("Redo"), false },
-	{ hotkey::HOTKEY_ZOOM_IN, "zoomin", N_("Zoom In"), false },
-	{ hotkey::HOTKEY_ZOOM_OUT, "zoomout", N_("Zoom Out"), false },
-	{ hotkey::HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false },
-	{ hotkey::HOTKEY_FULLSCREEN, "fullscreen", N_("Toggle Full Screen"), false },
-	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false },
-	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false },
-	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false },
-	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false },
-	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false },
-	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false },
-	{ hotkey::HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false },
-	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save The Map"), false },
-	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false },
-	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false },
-	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false },
-	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false },
-	{ hotkey::HOTKEY_ENDTURN, "endturn", N_("End Turn"), false },
-	{ hotkey::HOTKEY_TOGGLE_GRID, "togglegrid", N_("Toggle Grid"), false },
-	{ hotkey::HOTKEY_MOUSE_SCROLL, "mousescroll", N_("Mouse Scrolling"), false },
-	{ hotkey::HOTKEY_STATUS_TABLE, "statustable", N_("Status Table"), false },
-	{ hotkey::HOTKEY_MUTE, "mute", N_("Mute"), false },
-	{ hotkey::HOTKEY_SPEAK, "speak", N_("Speak"), false },
-	{ hotkey::HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false },
-	{ hotkey::HOTKEY_CHANGE_UNIT_SIDE, "changeside", N_("Change Unit Side (Debug!)"), false },
-	{ hotkey::HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false },
-	{ hotkey::HOTKEY_OBJECTIVES, "objectives", N_("Scenario Objectives"), false },
-	{ hotkey::HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false },
-	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false },
-	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit Game"), false },
-	{ hotkey::HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false },
-	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false },
-	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false },
-	{ hotkey::HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", N_("Show Enemy Moves"), false },
-	{ hotkey::HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", N_("Best Possible Enemy Moves"), false },
-	{ hotkey::HOTKEY_PLAY_REPLAY, "playreplay", N_("Play"), false },
-	{ hotkey::HOTKEY_RESET_REPLAY, "resetreplay", N_("Reset"), false },
-	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop"), false },
-	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false },
-	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false },
+	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_UNIT_HOLD_POSITION, "holdposition", N_("Hold Position"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_END_UNIT_TURN, "endunitturn", N_("End Unit Turn"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_LEADER, "leader", N_("Leader"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_UNDO, "undo", N_("Undo"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_REDO, "redo", N_("Redo"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_ZOOM_IN, "zoomin", N_("Zoom In"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_ZOOM_OUT, "zoomout", N_("Zoom Out"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_FULLSCREEN, "fullscreen", N_("Toggle Full Screen"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SAVE_REPLAY, "savereplay", N_("Save Replay"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SAVE_MAP, "savemap", N_("Save The Map"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_ENDTURN, "endturn", N_("End Turn"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_TOGGLE_GRID, "togglegrid", N_("Toggle Grid"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_MOUSE_SCROLL, "mousescroll", N_("Mouse Scrolling"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_STATUS_TABLE, "statustable", N_("Status Table"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_MUTE, "mute", N_("Mute"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_SPEAK, "speak", N_("Speak"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CHANGE_UNIT_SIDE, "changeside", N_("Change Unit Side (Debug!)"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_OBJECTIVES, "objectives", N_("Scenario Objectives"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit Game"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", N_("Show Enemy Moves"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", N_("Best Possible Enemy Moves"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_PLAY_REPLAY, "playreplay", N_("Play"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_RESET_REPLAY, "resetreplay", N_("Reset"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything",
-	  N_("Full map"), false },
+	  N_("Full map"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach",
-	  N_("Each team"), false },
+	  N_("Each team"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1",
-	  N_("Team 1"), false },
-	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false },
+	  N_("Team 1"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false, hotkey::SCOPE_GAME },
 
-	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true },
-	{ hotkey::HOTKEY_EDIT_QUIT, "editquit", N_("Quit Editor"),true },
-	{ hotkey::HOTKEY_EDIT_NEW_MAP, "editnewmap", N_("New Map"),true },
-	{ hotkey::HOTKEY_EDIT_LOAD_MAP, "editloadmap", N_("Load Map"),true },
-	{ hotkey::HOTKEY_EDIT_SAVE_MAP, "editsavemap", N_("Save Map"),true },
-	{ hotkey::HOTKEY_EDIT_SAVE_AS, "editsaveas", N_("Save As"),true },
-	{ hotkey::HOTKEY_EDIT_SET_START_POS, "editsetstartpos", N_("Set Player's keep"),true },
-	{ hotkey::HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", N_("Flood Fill"),true },
-	{ hotkey::HOTKEY_EDIT_FILL_SELECTION, "editfillselection", N_("Fill Selection"),true },
-	{ hotkey::HOTKEY_EDIT_ROTATE_SELECTION, "editrotateselection", N_("Rotate Selection"),true },
-	{ hotkey::HOTKEY_EDIT_CUT, "editcut", N_("Cut"),true },
-	{ hotkey::HOTKEY_EDIT_COPY, "editcopy", N_("Copy"),true },
-	{ hotkey::HOTKEY_EDIT_PASTE, "editpaste", N_("Paste"),true },
-	{ hotkey::HOTKEY_EDIT_REVERT, "editrevert", N_("Revert from Disk"),true },
-	{ hotkey::HOTKEY_EDIT_RESIZE, "editresize", N_("Resize Map"),true },
-	{ hotkey::HOTKEY_EDIT_FLIP, "editflip", N_("Flip Map"),true },
-	{ hotkey::HOTKEY_EDIT_SELECT_ALL, "editselectall", N_("Select All"),true },
-	{ hotkey::HOTKEY_EDIT_DRAW, "editdraw", N_("Draw Terrain"),true },
-	{ hotkey::HOTKEY_EDIT_REFRESH, "editrefresh", N_("Refresh Image Cache"), true },
-	{ hotkey::HOTKEY_EDIT_AUTO_UPDATE, "editautoupdate", N_("Delay transition updates"), true },
-	{ hotkey::HOTKEY_EDIT_UPDATE, "editupdate", N_("Update transitions"), true },
+	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_QUIT, "editquit", N_("Quit Editor"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_NEW_MAP, "editnewmap", N_("New Map"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_LOAD_MAP, "editloadmap", N_("Load Map"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_SAVE_MAP, "editsavemap", N_("Save Map"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_SAVE_AS, "editsaveas", N_("Save As"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_SET_START_POS, "editsetstartpos", N_("Set Player's keep"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", N_("Flood Fill"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_FILL_SELECTION, "editfillselection", N_("Fill Selection"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_ROTATE_SELECTION, "editrotateselection", N_("Rotate Selection"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_CUT, "editcut", N_("Cut"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_COPY, "editcopy", N_("Copy"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_PASTE, "editpaste", N_("Paste"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_REVERT, "editrevert", N_("Revert from Disk"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_RESIZE, "editresize", N_("Resize Map"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_FLIP, "editflip", N_("Flip Map"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_SELECT_ALL, "editselectall", N_("Select All"),true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_DRAW, "editdraw", N_("Draw Terrain"), true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_REFRESH, "editrefresh", N_("Refresh Image Cache"), true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_AUTO_UPDATE, "editautoupdate", N_("Delay transition updates"), true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_EDIT_UPDATE, "editupdate", N_("Update transitions"), true, hotkey::SCOPE_GENERAL },
 
-	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false },
-	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false },
-	{ hotkey::HOTKEY_CONTINUE_MOVE, "continue", N_("Continue Move"), false },
-	{ hotkey::HOTKEY_SEARCH, "search", N_("Find Label or Unit"), false },
-	{ hotkey::HOTKEY_SPEAK_ALLY, "speaktoally", N_("Speak to Ally"), false },
-	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false },
-	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false },
-	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false },
-	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
+	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CONTINUE_MOVE, "continue", N_("Continue Move"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SEARCH, "search", N_("Find Label or Unit"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SPEAK_ALLY, "speaktoally", N_("Speak to Ally"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true, hotkey::SCOPE_GENERAL },
 
-	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
-	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false },
-	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false },
-	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false },
+	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false, hotkey::SCOPE_GAME },
 #ifdef USRCMD2
-	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false },
-	{ hotkey::HOTKEY_USER_CMD_3, "usercommand#3", N_("User-Command#3"), false },
+	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_USER_CMD_3, "usercommand#3", N_("User-Command#3"), false, hotkey::SCOPE_GAME },
 #endif
-	{ hotkey::HOTKEY_NULL, NULL, NULL, true }
+	{ hotkey::HOTKEY_NULL, NULL, NULL, true, hotkey::SCOPE_GENERAL }
 };
 
 std::vector<hotkey::hotkey_item> hotkeys_;
 hotkey::hotkey_item null_hotkey_;
 
+const std::string scope_strings_[] = {"general", "game", "editor"};
+bool scope_active_[hotkey::SCOPE_COUNT] = {true, false};
 }
 
 namespace hotkey {
 	
-const std::string hotkey_item::scope_strings_[] = {"general", "game", "editor"};
+
+void deactivate_all_scopes()
+{
+	foreach (bool& b, scope_active_) {
+		b = false;
+	}
+}
+
+void set_scope_active(scope s, bool set)
+{
+	scope_active_[s] = set;
+}
+
+bool is_scope_active(scope s)
+{
+	ERR_G << "is_scope_active(" << s << ") -- " << scope_active_[s] << "\n";
+	return scope_active_[s];
+}
+
+const std::string& get_scope_string(scope s)
+{
+	return scope_strings_[s];
+}
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
 const std::string CLEARED_TEXT = "__none__";
 
 hotkey_item::hotkey_item(HOTKEY_COMMAND id, 
-		const std::string& command, const std::string& description, bool hidden) :
+		const std::string& command, const std::string& description, bool hidden,
+		scope s) :
 	id_(id), 
 	command_(command), 
 	description_(description), 
+	scope_(s),
 	type_(UNBOUND),
 	character_(0),
 	ctrl_(false), 
@@ -196,13 +224,6 @@ void hotkey_item::load_from_config(const config& cfg)
 
 	const std::string& scope_string = cfg["scope"];
 	int i = 0;
-	while (i < SCOPE_COUNT && scope_string != scope_strings_[i]) ++i;
-	if (i == SCOPE_COUNT) {
-		ERR_CONFIG << "No valid scope (" << scope_string << ") in hotkey " << key << "\n";
-		scope_ = SCOPE_GENERAL;
-	} else {
-		scope_ = static_cast<scope>(i);
-	}
 	
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume
@@ -326,7 +347,7 @@ manager::manager()
 {
 	for (int i = 0; hotkey_list_[i].command; ++i) {
 		hotkeys_.push_back(hotkey_item(hotkey_list_[i].id, hotkey_list_[i].command,
-				"", hotkey_list_[i].hidden));
+				"", hotkey_list_[i].hidden, hotkey_list_[i].scope));
 	}
 }
 
@@ -367,7 +388,6 @@ void save_hotkeys(config& cfg)
 
 		config& item = cfg.add_child("hotkey");
 		item["command"] = i->get_command();
-		item["scope"] = i->get_scope_string();
 		if (i->get_type() == hotkey_item::CLEARED)
 		{
 			item["key"] = CLEARED_TEXT;
@@ -417,7 +437,7 @@ hotkey_item& get_hotkey(const std::string& command)
 }
 
 hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, 
-	bool alt, bool cmd, hotkey_item::scope scope)
+	bool alt, bool cmd)
 {
 	std::vector<hotkey_item>::iterator itor;
 
@@ -448,11 +468,11 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 				if (ctrl == itor->get_ctrl()
 						&& alt == itor->get_alt()
 						&& cmd == itor->get_cmd()) {
-					if (scope >= hotkey_item::SCOPE_COUNT || scope == itor->get_scope()) {
+					if (itor->is_in_active_scope()) {
 						DBG_G << "Could match by character..." << "yes\n";
 						break;
 					} else {
-						DBG_G << "Could match by character..." << "yes, but wrong scope\n";
+						DBG_G << "Could match by character..." << "yes, but scope is inactive\n";
 					}
 				}
 				DBG_G << "Could match by character..." << "but modifiers different\n";
@@ -463,11 +483,11 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 						&& ctrl == itor->get_ctrl()
 						&& alt == itor->get_alt()
 						&& cmd == itor->get_cmd()) {
-					if (scope >= hotkey_item::SCOPE_COUNT || scope == itor->get_scope()) {
+					if (itor->is_in_active_scope()) {
 						DBG_G << "Could match by keycode..." << "yes\n";
 						break;
 					} else {
-						DBG_G << "Could match by keycode..." << "yes, but wrong scope\n";
+						DBG_G << "Could match by keycode..." << "yes, but scope is inactive\n";
 					}
 				}
 				DBG_G << "Could match by keycode..." << "but modifiers different\n";
@@ -481,7 +501,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	return *itor;
 }
 
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, hotkey_item::scope scope)
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
 	return get_hotkey(event.keysym.unicode, event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
@@ -491,7 +511,6 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, hotkey_item::scope scope
 #ifdef __APPLE__
 			|| (event.keysym.mod & KMOD_RMETA) != 0
 #endif
-			, scope
 			);
 }
 
@@ -499,7 +518,7 @@ static void _get_visible_hotkey_itor(int index, std::vector<hotkey_item>::iterat
 {
 	int counter = 0;
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->hidden())
+		if (itor->hidden() || !itor->is_in_active_scope())
 			continue;
 
 		if (index == counter)
@@ -560,13 +579,6 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
-	if (hk->null()) {
-		if (disp.in_game()) {
-			hk = &get_hotkey(event, hotkey_item::SCOPE_GAME);
-		} else if (disp.in_editor()) {
-			hk = &get_hotkey(event, hotkey_item::SCOPE_EDITOR);
-		}
-	}
 
 #if 0
 	// This is not generally possible without knowing keyboard layout.

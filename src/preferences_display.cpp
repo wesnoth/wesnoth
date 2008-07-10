@@ -243,7 +243,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
 	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
-		if(i->hidden())
+		if(i->hidden() || !i->is_in_active_scope())
 			continue;
 		std::stringstream str,name;
 		name << i->get_description();

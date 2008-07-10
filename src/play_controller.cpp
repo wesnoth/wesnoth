@@ -57,7 +57,9 @@ play_controller::play_controller(const config& level,
 {
 	status_.teams = &teams_;
 	game_config::add_color_info(level);
-
+	hotkey::deactivate_all_scopes();
+	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+//	hotkey::set_scope_active(hotkey::hotkey_item::SCOPE_GAME);
 	init(video, is_replay);
 }
 

@@ -1969,6 +1969,9 @@ bool game_controller::change_language()
 
 void game_controller::show_preferences()
 {
+	hotkey::deactivate_all_scopes();
+	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	const preferences::display_manager disp_manager(&disp());
 	preferences::show_preferences_dialog(disp(),game_config_);
 
