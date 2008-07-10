@@ -88,7 +88,7 @@ opts.AddOptions(
 # Setup
 #
 
-sys.path.append("./scons")
+sys.path.insert(0, "./scons")
 env = Environment(tools=["tar", "gettext", "install"], options = opts, toolpath = ["scons"])
 
 opts.Save('.scons-option-cache', env)
@@ -179,7 +179,7 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost"]), config_h = "config.h")
+conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango"]), config_h = "config.h")
 
 if env["prereqs"]:
     if env["gettextdir"]:
@@ -191,6 +191,7 @@ if env["prereqs"]:
     conf.CheckCHeader("libintl.h", "<>") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
+#        conf.CheckPango("cairo") and \
     have_client_prereqs = \
         conf.CheckBoost("regex") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
