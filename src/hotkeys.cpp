@@ -222,9 +222,6 @@ void hotkey_item::load_from_config(const config& cfg)
 	ctrl_ = utils::string_bool(cfg["ctrl"]);
 	shift_ = utils::string_bool(cfg["shift"]);
 
-	const std::string& scope_string = cfg["scope"];
-	int i = 0;
-	
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume
 		// that any single character keyname is a character.
