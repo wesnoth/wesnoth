@@ -155,6 +155,8 @@ hotkey::hotkey_item null_hotkey_;
 }
 
 namespace hotkey {
+	
+const std::string hotkey_item::scope_strings_[] = {"general", "game", "editor"};
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
@@ -192,6 +194,16 @@ void hotkey_item::load_from_config(const config& cfg)
 	ctrl_ = utils::string_bool(cfg["ctrl"]);
 	shift_ = utils::string_bool(cfg["shift"]);
 
+	const std::string& scope_string = cfg["scope"];
+	int i = 0;
+	while (i < SCOPE_COUNT && scope_string != scope_strings_[i]) ++i;
+	if (i == SCOPE_COUNT) {
+		ERR_CONFIG << "No valid scope (" << scope_string << ") in hotkey " << key << "\n";
+		scope_ = SCOPE_GENERAL;
+	} else {
+		scope_ = static_cast<scope>(i);
+	}
+	
 	if (!key.empty()) {
 		// They may really want a specific key on the keyboard: we assume
 		// that any single character keyname is a character.
@@ -339,7 +351,6 @@ void load_hotkeys(const config& cfg)
 	const config::child_list& children = cfg.get_children("hotkey");
 	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
 		hotkey_item& h = get_hotkey((**i)["command"]);
-
 		if(h.get_id() != HOTKEY_NULL) {
 			h.load_from_config(**i);
 		}
@@ -356,7 +367,7 @@ void save_hotkeys(config& cfg)
 
 		config& item = cfg.add_child("hotkey");
 		item["command"] = i->get_command();
-		
+		item["scope"] = i->get_scope_string();
 		if (i->get_type() == hotkey_item::CLEARED)
 		{
 			item["key"] = CLEARED_TEXT;
@@ -405,7 +416,8 @@ hotkey_item& get_hotkey(const std::string& command)
 	return *itor;
 }
 
-hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
+hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, 
+	bool alt, bool cmd, hotkey_item::scope scope)
 {
 	std::vector<hotkey_item>::iterator itor;
 
@@ -434,21 +446,29 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
 			if (character == itor->get_character()) {
 				if (ctrl == itor->get_ctrl()
-					&& alt == itor->get_alt()
-					&& cmd == itor->get_cmd()) {
-					DBG_G << "Could match by character..." << "yes\n";
-					break;
+						&& alt == itor->get_alt()
+						&& cmd == itor->get_cmd()) {
+					if (scope >= hotkey_item::SCOPE_COUNT || scope == itor->get_scope()) {
+						DBG_G << "Could match by character..." << "yes\n";
+						break;
+					} else {
+						DBG_G << "Could match by character..." << "yes, but wrong scope\n";
+					}
 				}
 				DBG_G << "Could match by character..." << "but modifiers different\n";
 			}
 		} else if (itor->get_type() == hotkey_item::BY_KEYCODE) {
 			if (keycode == itor->get_keycode()) {
 				if (shift == itor->get_shift()
-					&& ctrl == itor->get_ctrl()
-					&& alt == itor->get_alt()
-					&& cmd == itor->get_cmd()) {
-					DBG_G << "Could match by keycode..." << "yes\n";
-					break;
+						&& ctrl == itor->get_ctrl()
+						&& alt == itor->get_alt()
+						&& cmd == itor->get_cmd()) {
+					if (scope >= hotkey_item::SCOPE_COUNT || scope == itor->get_scope()) {
+						DBG_G << "Could match by keycode..." << "yes\n";
+						break;
+					} else {
+						DBG_G << "Could match by keycode..." << "yes, but wrong scope\n";
+					}
 				}
 				DBG_G << "Could match by keycode..." << "but modifiers different\n";
 			}
@@ -461,7 +481,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 	return *itor;
 }
 
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, hotkey_item::scope scope)
 {
 	return get_hotkey(event.keysym.unicode, event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
@@ -471,6 +491,7 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 #ifdef __APPLE__
 			|| (event.keysym.mod & KMOD_RMETA) != 0
 #endif
+			, scope
 			);
 }
 
@@ -539,6 +560,13 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
 	const hotkey_item* hk = &get_hotkey(event);
+	if (hk->null()) {
+		if (disp.in_game()) {
+			hk = &get_hotkey(event, hotkey_item::SCOPE_GAME);
+		} else if (disp.in_editor()) {
+			hk = &get_hotkey(event, hotkey_item::SCOPE_EDITOR);
+		}
+	}
 
 #if 0
 	// This is not generally possible without knowing keyboard layout.

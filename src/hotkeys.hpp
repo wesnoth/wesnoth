@@ -77,6 +77,7 @@ public:
 		id_(HOTKEY_NULL),
 		command_(),
 		description_(),
+		scope_(SCOPE_GENERAL),
 		type_(UNBOUND),
 		character_(0),
 		ctrl_(false),
@@ -105,9 +106,28 @@ public:
 		BY_CHARACTER,
 		CLEARED
 	};
-
+	
 	enum type get_type() const { return type_; }
-
+	
+	/** Available hotkey scopes. The scope is used to allow command from 
+	 * non-overlapping areas of the game share the same key
+	 */
+	enum scope {
+		SCOPE_GENERAL,
+		SCOPE_GAME,
+		SCOPE_EDITOR,
+		SCOPE_COUNT
+	};
+	
+	/** Array C-string equivalents of the enum values. Must be in sync */
+	static const std::string scope_strings_[SCOPE_COUNT];
+	
+	/** @return the scope of this hotkey */
+	scope get_scope() const { return scope_; }
+	
+	/** @return the string equivalent of this hotkey's scope */
+	const std::string& get_scope_string() const { return scope_strings_[get_scope()]; }
+	
 	// Returns unicode value of keypress.
 	int get_character() const { return character_; }
 	bool get_alt() const { return alt_; }
@@ -127,6 +147,7 @@ private:
 	HOTKEY_COMMAND id_;
 	std::string command_;
 	std::string description_;
+	scope scope_;
 
 	// UNBOUND means unset, CHARACTER means see character_, KEY means keycode_.
 	enum type type_;
@@ -143,6 +164,7 @@ private:
 	bool shift_;
 
 	bool hidden_;
+
 };
 
 class manager {
@@ -159,8 +181,10 @@ void save_hotkeys(config& cfg);
 hotkey_item& get_hotkey(HOTKEY_COMMAND id);
 hotkey_item& get_hotkey(const std::string& command);
 
-hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
+hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
+	bool alt, bool cmd, hotkey_item::scope scope = hotkey_item::SCOPE_COUNT);
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event,
+	hotkey_item::scope scope = hotkey_item::SCOPE_COUNT);
 
 hotkey_item& get_visible_hotkey(int index);
 
