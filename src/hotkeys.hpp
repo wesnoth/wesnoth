@@ -131,7 +131,7 @@ public:
 	/** @return the scope of this hotkey */
 	scope get_scope() const { return scope_; }
 	
-	const bool is_in_active_scope() const { return is_scope_active(get_scope()); }
+	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
 	
 	// Returns unicode value of keypress.
 	int get_character() const { return character_; }
