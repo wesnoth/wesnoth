@@ -67,9 +67,31 @@ void editor_controller::main_loop()
 	}
 }
 
-bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND, int /*index*/) const
+bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
-	return false;
+	switch(command) {
+		case hotkey::HOTKEY_ZOOM_IN:
+		case hotkey::HOTKEY_ZOOM_OUT:
+		case hotkey::HOTKEY_ZOOM_DEFAULT:
+		case hotkey::HOTKEY_FULLSCREEN:
+		case hotkey::HOTKEY_SCREENSHOT:
+		case hotkey::HOTKEY_MAP_SCREENSHOT:
+		case hotkey::HOTKEY_TOGGLE_GRID:
+		case hotkey::HOTKEY_MOUSE_SCROLL:
+		case hotkey::HOTKEY_MUTE:
+		case hotkey::HOTKEY_PREFERENCES:
+		case hotkey::HOTKEY_QUIT_GAME:
+		case hotkey::HOTKEY_HELP:
+			return true;
+		default:
+			return false;
+	}
+}
+
+void editor_controller::preferences()
+{
+	preferences::show_preferences_dialog(*gui_, game_config_);
+	gui_->redraw_everything();
 }
 
 events::mouse_handler_base& editor_controller::get_mouse_handler_base()
