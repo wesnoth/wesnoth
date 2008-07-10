@@ -940,18 +940,8 @@ AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
 
 if test "x$game" = "xyes"; then
 
-	PKG_CHECK_MODULES(PANGO, pangoft2 >= 1.14.8)
+	PKG_CHECK_MODULES(PANGO, pangocairo >= 1.14.8)
 	CPPFLAGS="$CPPFLAGS $PANGO_CFLAGS"
-fi
-
-#######################################################################
-# Freetype 2 support                                                  #
-#######################################################################
-
-if test "x$game" = "xyes"; then
-
-	PKG_CHECK_MODULES(FREETYPE2, freetype2)
-	CPPFLAGS="$CPPFLAGS $FREETYPE2_CFLAGS"
 fi
 
 #######################################################################
