@@ -79,16 +79,18 @@ void controller_base::handle_event(const SDL_Event& event)
 				//simulate mouse button up when the app has lost mouse focus
 				//this should be a general fix for the issue when the mouse 
 				//is dragged out of the game window and then the button is released
-				SDL_Event e;
-				e.type = SDL_MOUSEBUTTONUP;
-				e.button.state = SDL_RELEASED;
-				e.button.button = SDL_BUTTON_LEFT;
 				int x, y;
-				SDL_GetMouseState(&x, &y);
-				e.button.x = x;
-				e.button.y = y;
-				get_mouse_handler_base().mouse_press(event.button, browse_);
-				post_mouse_press(event);		
+				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
+				if ((mouse_flags & SDL_BUTTON_LEFT) == 0) {
+					SDL_Event e;
+					e.type = SDL_MOUSEBUTTONUP;
+					e.button.state = SDL_RELEASED;
+					e.button.button = SDL_BUTTON_LEFT;
+					e.button.x = x;
+					e.button.y = y;
+					get_mouse_handler_base().mouse_press(event.button, browse_);
+					post_mouse_press(event);		
+				}
 			}
 		}
 		break;
