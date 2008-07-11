@@ -1905,6 +1905,13 @@ namespace {
 		const std::string message = cfg["message"];
 		gui2::init();
 		gui2::twindow window = gui2::build((screen)->video(), "message_test_left");
+		/** 
+		 * @todo FIXME these fixed sizes should depend on the map size and maybe 
+		 * let wml determine the height.
+		 */
+		window.set_size(::create_rect(0, 
+			gui2::settings::screen_height - 400, 
+			gui2::settings::screen_width - 140, 400));
 
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);
