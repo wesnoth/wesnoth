@@ -455,6 +455,40 @@ private:
 	}
 };
 
+class contains_string_function : public function_expression {
+public:
+	explicit contains_string_function(const args_list& args)
+	     : function_expression("contains_string", args, 2, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		std::string str = args()[0]->evaluate(variables).as_string();
+		std::string key = args()[1]->evaluate(variables).as_string();
+
+		if (key.size() > str.size())
+			return variant(0);
+
+		std::string::iterator str_it, key_it, tmp_it;
+
+		for(str_it = str.begin(); str_it != str.end() - (key.size()-1); ++str_it)
+		{
+			key_it = key.begin();
+			tmp_it = str_it;
+
+			while( *tmp_it == *key_it)
+			{
+				if( ++key_it == key.end())
+					return variant(1);
+				if( ++tmp_it == str.end())
+					return variant(0);
+			}
+		}
+
+		return variant(0);
+	}
+};
+
 class filter_function : public function_expression {
 public:
 	explicit filter_function(const args_list& args)
@@ -806,6 +840,7 @@ functions_map& get_functions_map() {
 		FUNCTION(choose);
 		FUNCTION(wave);
 		FUNCTION(sort);
+		FUNCTION(contains_string);
 		FUNCTION(filter);
 		FUNCTION(find);
 		FUNCTION(map);
