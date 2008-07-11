@@ -425,8 +425,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	grid = new tbuilder_grid(*(cfg.child("grid")));
 
 	if(!automatic_placement) {
-		VALIDATE(width, missing_mandatory_wml_key("resulution", "width"));
-		VALIDATE(height, missing_mandatory_wml_key("resulution", "height"));
+		VALIDATE(width, missing_mandatory_wml_key("resolution", "width"));
+		VALIDATE(height, missing_mandatory_wml_key("resolution", "height"));
 	}
 
 	DBG_G_P << "Window builder: parsing resolution " 
