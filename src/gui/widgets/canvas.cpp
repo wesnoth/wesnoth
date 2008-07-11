@@ -20,13 +20,13 @@
 #include "gui/widgets/canvas.hpp"
 
 #include "config.hpp"
-#include "font.hpp"
 #include "image.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "../../text.hpp"
 #include "variant.hpp"
 #include "wml_exception.hpp"
 
@@ -766,18 +766,21 @@ void ttext::draw(surface& canvas,
 		return;
 	}
 
-	SDL_Color col = { (colour_ >> 24), (colour_ >> 16), (colour_ >> 8), colour_ };
-	surface surf(font::get_rendered_text(text, font_size_, col, font_style_));
-	assert(surf);
+	static font::ttext text_renderer;
+
+	text_renderer.set_text(text, false).
+		set_font_size(font_size_).
+		set_foreground_colour(colour_);
+	surface surf = text_renderer.render();
 
 	game_logic::map_formula_callable local_variables(variables);
 	local_variables.add("text_width", variant(surf->w));
 	local_variables.add("text_height", variant(surf->h));
 
-
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
+	
 	const unsigned x = x_(local_variables);
 	const unsigned y = y_(local_variables);
 	const unsigned w = w_(local_variables);

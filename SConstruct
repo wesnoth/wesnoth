@@ -191,8 +191,8 @@ if env["prereqs"]:
     conf.CheckCHeader("libintl.h", "<>") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
-#        conf.CheckPango("cairo") and \
     have_client_prereqs = \
+        conf.CheckPango("cairo") and \
         conf.CheckBoost("regex") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \

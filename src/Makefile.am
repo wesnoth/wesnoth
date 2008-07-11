@@ -127,6 +127,7 @@ wesnoth_source = \
 	statistics_dialog.cpp \
 	team.cpp \
 	terrain_filter.cpp \
+	text.cpp \
 	time_of_day.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \

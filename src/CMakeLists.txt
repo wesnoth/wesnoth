@@ -164,6 +164,7 @@ SET(libwesnoth-game_STAT_SRC
     soundsource.cpp
     terrain.cpp
     terrain_translation.cpp
+    text.cpp
     time_of_day.cpp
     video.cpp
     theme.cpp
