@@ -7,6 +7,19 @@ Version 1.5.1+svn:
    * new translation: Latvian.
    * updated translations: Arabic, Chinese (Traditional), Czech, Finnish,
      French, German, Greek, Italian, Lithuanian, Russian, Serbian.
+ * User interface
+   * In multiplayer lobby, all unit's images are now team colored.
+   * Add a column traits in the recall dialog.
+   * Add a filter textbox in the recall dialog.
+   * The pathfinding now always prefer straight path and is also more
+     stable between little mouse's moves.
+   * Add-on publish/delete options have now special icons and colors.
+ * Miscellaneous and bug fixes:
+   * In debug-mode, Missing images are now replaced by a "men-at-work" sign and
+     in help broken hyperlinks are shown in red.
+   * Fix an old pathfinding bug causing a inconsistency between the path used
+     and the one showed to others players. Also valid in replay.
+   * Fix missing last publish/remove add-on option
 
 Version 1.5.1:
  * Campaigns
