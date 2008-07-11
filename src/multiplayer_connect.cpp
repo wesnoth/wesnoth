@@ -586,7 +586,11 @@ void connect::side::update_faction_combo()
 		const std::string& name = (**faction)["name"];
 		const std::string& icon = (**faction)["image"];
 		if (!icon.empty()) {
-			factions.push_back(IMAGE_PREFIX + icon + "~RC(magenta>" + lexical_cast<std::string>(colour_+1) + ")" + COLUMN_SEPARATOR + name);
+			std::string rgb = (**faction)["flag_rgb"];
+			if (rgb.empty())
+				rgb = "magenta";
+
+			factions.push_back(IMAGE_PREFIX + icon + "~RC(" + rgb + ">" + lexical_cast<std::string>(colour_+1) + ")" + COLUMN_SEPARATOR + name);
 		} else {
 			factions.push_back(name);
 		}

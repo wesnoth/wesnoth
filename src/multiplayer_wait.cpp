@@ -286,8 +286,13 @@ void wait::join_game(bool observe)
 			{
 				const std::string& name = (**side)["name"];
 				const std::string& icon = (**side)["image"];
+				
 				if (!icon.empty()) {
-					choices.push_back(IMAGE_PREFIX + icon + "~RC(magenta>" +
+					std::string rgb = (**side)["flag_rgb"];
+					if (rgb.empty())
+						rgb = "magenta";
+
+					choices.push_back(IMAGE_PREFIX + icon + "~RC(" + rgb + ">" +
 						lexical_cast<std::string>(color+1) + ")" + COLUMN_SEPARATOR + name);
 				} else {
 					choices.push_back(name);
