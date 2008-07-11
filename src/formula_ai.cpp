@@ -833,7 +833,7 @@ private:
 		std::vector<attack_type> attacks_tmp;
 		std::vector<attack_type>& attacks = attacks_tmp;
 
-		//we have to make sure that this fuction works with any combination of unit_callable/unit_type_callable passed to it
+		//we have to make sure that this function works with any combination of unit_callable/unit_type_callable passed to it
 		const unit_callable* u_attacker = try_convert_variant<unit_callable>(u1);
 		if (u_attacker)
 		{
@@ -870,7 +870,177 @@ private:
 
 	const formula_ai& ai_;
 };
+ 
+
+class max_possible_damage_with_retaliation_function : public function_expression {
+public:
+	max_possible_damage_with_retaliation_function(const args_list& args, const formula_ai& ai_object)
+	  : function_expression("max_possible_damage_with_retaliation", args, 2, 2), ai_(ai_object)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		variant u1 = args()[0]->evaluate(variables);
+		variant u2 = args()[1]->evaluate(variables);
+		if(u1.is_null() || u2.is_null()) {
+			return variant();
+		}
+		std::vector<variant> vars;
+
+		//store best damage and best attack causing it
+		int best = 0;
+		std::vector<attack_type>::const_iterator best_attack;
+
+		//vectors with attacks for attacker and defender
+		std::vector<attack_type> att_attacks_tmp;
+		std::vector<attack_type>& att_attacks = att_attacks_tmp;
+
+		std::vector<attack_type> def_attacks_tmp;
+		std::vector<attack_type>& def_attacks = def_attacks_tmp;
+
+		//we have to make sure that this fuction works with any combination of unit_callable/unit_type_callable passed to it
+		const unit_callable* u_attacker = try_convert_variant<unit_callable>(u1);
+		if (u_attacker)
+		{
+			const unit& attacker = u_attacker->get_unit();
+			att_attacks = attacker.attacks();
+
+			const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
+			if (u_defender)
+			{
+				const unit& defender = u_defender->get_unit();
+
+				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
+					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					if(dmg > best)
+					{
+						best = dmg;
+						best_attack = i;
+					}
+				}
+				
+				//we have max damage inflicted by attacker, now we need to search for max possible damage of defender (search only for attack with the same range)
+				vars.push_back(variant(best));
+
+				best = 0;
+				def_attacks = defender.attacks();
+
+				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
+					if(i->range() != best_attack->range())
+						continue;
+
+					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					if(dmg > best)
+						best = dmg;
+				}
+
+				vars.push_back(variant(best));
+				return variant(&vars);
+			
+			} else
+			{
+				const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
+
+				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
+					const int dmg = round_damage(i->damage(), defender.movement_type().resistance_against(*i), 100) * i->num_attacks();
+					if(dmg > best)
+					{
+						best = dmg;
+						best_attack = i;
+					}
+				}
+
+				vars.push_back(variant(best));
+
+				best = 0;
+				def_attacks_tmp = defender.attacks();
+
+				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
+					if(i->range() != best_attack->range())
+						continue;
+
+					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					if(dmg > best)
+						best = dmg;
+				}
+
+				vars.push_back(variant(best));
+				return variant(&vars);
+			}
+
+		} else
+		{
+			const unit_type& attacker = convert_variant<unit_type_callable>(u1)->get_unit_type();
+			att_attacks = attacker.attacks();	
+
+			const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
+			if (u_defender)
+			{
+				const unit& defender = u_defender->get_unit();
+
+				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
+					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					if(dmg > best)
+					{
+						best = dmg;
+						best_attack = i;
+					}
+				}
+				
+				//we have max damage inflicted by attacker, now we need to search for max possible damage of defender (search only for attack with the same range)
+				vars.push_back(variant(best));
+
+				best = 0;
+				def_attacks = defender.attacks();
+
+				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
+					if(i->range() != best_attack->range())
+						continue;
+
+					const int dmg = round_damage(i->damage(), attacker.movement_type().resistance_against(*i), 100) * i->num_attacks();
+					if(dmg > best)
+						best = dmg;
+				}
+
+				vars.push_back(variant(best));
+				return variant(&vars);
+			
+			} else
+			{
+				const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
+
+				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
+					const int dmg = round_damage(i->damage(), defender.movement_type().resistance_against(*i), 100) * i->num_attacks();
+					if(dmg > best)
+					{
+						best = dmg;
+						best_attack = i;
+					}
+				}
+
+				vars.push_back(variant(best));
+
+				best = 0;
+				def_attacks_tmp = defender.attacks();
+
+				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
+					if(i->range() != best_attack->range())
+						continue;
+
+					const int dmg = round_damage(i->damage(), attacker.movement_type().resistance_against(*i), 100) * i->num_attacks();
+					if(dmg > best)
+						best = dmg;
+				}
+
+				vars.push_back(variant(best));
+				return variant(&vars);	
+			}
+		}
+	}
+
+	const formula_ai& ai_;
+};
 } 
+
 
 namespace game_logic { 
 expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
@@ -907,6 +1077,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new movement_cost_function(args, ai_));
 	} else if(fn == "max_possible_damage") {
 		return expression_ptr(new max_possible_damage_function(args, ai_));
+	} else if(fn == "max_possible_damage_with_retaliation") {
+		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
 	} else if(fn == "distance_to_nearest_unowned_village") {
 		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 	} else if(fn == "nearest_keep") {
