@@ -597,7 +597,9 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 	}
 
 	const tpoint maximum_size = widget()->get_maximum_size();
-	if(flags_ & (HORIZONTAL_GROW_SEND_TO_CLIENT | HORIZONTAL_GROW_SEND_TO_CLIENT)) {
+	if((flags_ & (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT))
+			== (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT)) {
+
 		if(maximum_size == tpoint(0,0) || size <= maximum_size) {
 	
 			DBG_G << "Grid cell: in maximum size range setting widget to " 
