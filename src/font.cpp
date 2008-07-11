@@ -1134,6 +1134,10 @@ static bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_
 
 namespace font {
 
+namespace {
+	t_string font_order;
+} // namespace
+
 bool load_font_config()
 {
 	//read font config separately, so we do not have to re-read the whole
@@ -1158,6 +1162,7 @@ bool load_font_config()
 		known_fonts.insert((**child)["name"]);
 	}
 
+	font_order = (*fonts_config)["order"];
 	const std::vector<std::string> font_order = utils::split((*fonts_config)["order"]);
 	std::vector<font::subset_descriptor> fontlist;
 	std::vector<std::string>::const_iterator font;
@@ -1175,6 +1180,11 @@ bool load_font_config()
 
 	font::set_font_list(fontlist);
 	return true;
+}
+
+const t_string& get_fonts()
+{
+	return font_order;
 }
 
 void cache_mode(CACHE mode)

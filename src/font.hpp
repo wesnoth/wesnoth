@@ -18,6 +18,7 @@
 #include "SDL_ttf.h"
 
 class CVideo;
+class t_string;
 #include "sdl_utils.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -147,6 +148,9 @@ void draw_floating_labels(surface screen);
 void undraw_floating_labels(surface screen);
 
 bool load_font_config();
+
+/** Returns the currently defined fonts. */
+const t_string& get_fonts();
 
 enum CACHE { CACHE_LOBBY, CACHE_GAME };
 void cache_mode(CACHE mode);
