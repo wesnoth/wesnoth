@@ -50,7 +50,7 @@ Version 1.5.1+svn:
    * Tooltip texts now support blank lines and special markup characters
    * Add-on publish/delete options have now special icons and colors.
    * Display the name of the add-on in the "Add-on installed" dialog
-   * The unknown unit icon used in status table game is now team colored
+   * The unknown unit icon used in status table is now team colored
    * In multiplayer lobby, all unit's images are now team colored.
    * In help, with debug mode, broken hyperlinks are now visible in red and
      when clicked open a error message showing the bad topic reference.
@@ -64,7 +64,7 @@ Version 1.5.1+svn:
      sometimes caused to see a enemy pass through your invisible units (or in
      their ZoC). Now all players see the same real path. Also valid for replay.
    * When joining a game, display your assigned starting position and the new
-     team coloring also show your assigned color.
+     team coloring also shows your assigned color.
  * miscellaneous and bug fixes:
    * Fixed droiding not to make wesnoth think player is observer (bug: #9675)
    * Fixed statitics not add turn data from previus scenarios (bug: #11719)
@@ -83,7 +83,7 @@ Version 1.5.1+svn:
    * Added the pango cairo dependency
    * Various code cleanups
    * Fix incorrect downloaded add-on when using filter
-   * Fix missing last publish/remove add-on option
+   * Fix missing last publish/delete add-on option
    * Fix few broken hyperlinks in help (and some were working in english only)
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
