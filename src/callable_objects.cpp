@@ -76,6 +76,56 @@ void move_map_callable::get_inputs(std::vector<game_logic::formula_input>* input
 	inputs->push_back(game_logic::formula_input("moves", FORMULA_READ_ONLY));
 }
 
+variant attack_type_callable::get_value(const std::string& key) const
+{
+
+	if(key == "id") {
+		return variant(att_.id());
+	} else if(key == "type") {
+		return variant(att_.type());
+	} else if(key == "range") {
+		return variant(att_.range());
+	} else if(key == "damage") {
+		return variant(att_.damage());
+	} else if(key == "number_of_attacks") {
+		return variant(att_.num_attacks());
+	} else if(key == "specials") {
+		std::string specials = att_.weapon_specials(true);
+		//specials are comma-separated, now it is time to put them into vector
+		std::vector<variant> res;
+
+		if(specials == "")
+			return variant( &res );
+
+		std::string::iterator tmp_it = specials.begin()-1;
+		for( std::string::iterator it = specials.begin(); it != specials.end(); ++it)
+		{
+			if (*it == ',')
+			{	
+				res.push_back( variant( std::string(tmp_it+1, it) ));
+				tmp_it = it;
+			}
+		}
+		if(tmp_it != specials.end())
+			res.push_back( variant( std::string(tmp_it+1, specials.end() )));
+
+		return variant( &res );
+	}
+
+	return variant();
+}
+
+void attack_type_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
+{
+	using game_logic::FORMULA_READ_ONLY;
+	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("range", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("damage", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("number_of_attacks", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("specials", FORMULA_READ_ONLY));
+}
+
 variant unit_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
@@ -90,6 +140,48 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.type_id());
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
+	} else if(key == "undead") {
+		//undead is a trait, so we need to look if this unit has it
+		std::string traits = u_.traits_description();
+
+		if(traits == "")
+			return variant(0);
+
+		std::string::iterator tmp_it = traits.begin()-1;
+		for( std::string::iterator it = traits.begin(); it != traits.end(); ++it)
+		{
+			if (*it == ',')
+			{	
+				if( std::string(tmp_it+1, it) == "undead" )
+					return variant(1);
+				tmp_it = it;
+			}
+		}
+		if(tmp_it != traits.end())
+			if( std::string(tmp_it+1, traits.end()) == "undead" )
+				return variant(1);
+
+		return variant( 0 );
+	} else if(key == "attacks") {
+		const std::vector<attack_type>& att = u_.attacks();
+		std::vector<variant> res;
+
+		for( std::vector<attack_type>::const_iterator i = att.begin(); i != att.end(); ++i)
+			res.push_back(variant(new attack_type_callable(*i)));
+		return variant(&res);
+	} else if(key == "abilities") {
+		// for now use unit_ability_tooltips() to get simply list of abilities
+		// but it is definiately good idea to find another way of obtaining this list
+		std::vector<std::string> abilities = u_.unit_ability_tooltips();
+		std::vector<variant> res;
+
+		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); it+=2)
+		{
+			if(it+1 == abilities.end())
+				return variant( &res );
+			res.push_back( variant(*it) );
+		}
+		return variant( &res );
 	} else if(key == "hitpoints") {
 		return variant(u_.hitpoints());
 	} else if(key == "max_hitpoints") {
@@ -104,6 +196,27 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.total_movement());
 	} else if(key == "movement_left") {
 		return variant(u_.movement_left());
+	} else if(key == "traits") {
+		std::string traits = u_.traits_description();
+		//traits are comma-separated, now it is time to put them into vector
+		std::vector<variant> res;
+
+		if(traits == "")
+			return variant( &res );
+
+		std::string::iterator tmp_it = traits.begin()-1;
+		for( std::string::iterator it = traits.begin(); it != traits.end(); ++it)
+		{
+			if (*it == ',')
+			{	
+				res.push_back( variant( std::string(tmp_it+1, it) ));
+				tmp_it = it;
+			}
+		}
+		if(tmp_it != traits.end())
+			res.push_back( variant( std::string(tmp_it+1, traits.end() )));
+
+		return variant( &res );
 	} else if(key == "side") {
 		return variant(u_.side()-1);
 	} else if(key == "cost") {
@@ -126,8 +239,12 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("y", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("leader", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("leader", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("undead", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("traits", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("abilities", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("hitpoints", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("max_hitpoints", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("experience", FORMULA_READ_ONLY));
@@ -148,6 +265,25 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.type_name());
 	} else if(key == "alignment") {
 		return variant(u_.alignment_id(u_.alignment()));
+	} else if(key == "abilities") {
+		const std::vector<t_string>& abilities = u_.abilities();
+		std::vector<variant> res;
+
+		if (abilities.empty())
+			return variant( &res );
+
+		for(std::vector<t_string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i)
+		{
+			res.push_back( variant( i->str() ));
+		}
+		return variant( &res );
+	} else if(key == "attacks") {
+		std::vector<attack_type> att = u_.attacks();
+		std::vector<variant> res;
+
+		for( std::vector<attack_type>::iterator i = att.begin(); i != att.end(); ++i)
+			res.push_back(variant(new attack_type_callable(*i)));
+		return variant(&res);
 	} else if(key == "hitpoints") {
 		return variant(u_.hitpoints());
 	} else if(key == "experience") {
@@ -156,6 +292,8 @@ variant unit_type_callable::get_value(const std::string& key) const
 		return variant(u_.level());
 	} else if(key == "total_movement") {
 		return variant(u_.movement());
+	} else if(key == "undead") {
+		return variant(u_.not_living());
 	} else if(key == "cost") {
 		return variant(u_.cost());
 	} else {
@@ -169,10 +307,13 @@ void unit_type_callable::get_inputs(std::vector<game_logic::formula_input>* inpu
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("alignment", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("abilities", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("attacks", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("hitpoints", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("experience", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("level", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("undead", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
 }
 

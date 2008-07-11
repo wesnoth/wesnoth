@@ -139,6 +139,20 @@ public:
 	const move_map& dstsrc() const { return dstsrc_; }
 };
 
+class attack_type_callable : public game_logic::formula_callable {
+public:
+	typedef gamemap::location location;
+	attack_type_callable(const attack_type attack)
+	  : att_(attack)
+	{}
+
+	const attack_type& get_attack_type() const { return att_; }
+	variant get_value(const std::string& key) const;
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+private:
+	const attack_type att_;
+};
+
 class unit_callable : public game_logic::formula_callable {
 public:
 	typedef gamemap::location location;
