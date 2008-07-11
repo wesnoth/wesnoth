@@ -1913,6 +1913,8 @@ namespace {
 			gui2::settings::screen_height - 400, 
 			gui2::settings::screen_width - 140, 400));
 
+		window.canvas(1).set_variable("portrait_image", variant("shyde200.png"));
+
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);
 		label->set_label(message);
