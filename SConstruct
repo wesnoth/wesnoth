@@ -219,7 +219,9 @@ if env["prereqs"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
 else:
     have_client_prereqs = True
-    have_X = True
+    have_X = False
+    if env["PLATFORM"] != "win32":
+        have_X = True
     have_server_prereqs = True
     have_test_prereqs = True
 
