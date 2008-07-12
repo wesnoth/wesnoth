@@ -499,6 +499,9 @@ private:
 	 * - stretch, which used the first row/column and copies those pixels.
 	 */
 	bool stretch_;
+
+	/** Mirror the image over the vertical axis. */
+	tformula<bool> vertical_mirror_;
 };
 
 timage::timage(const config& cfg) :
@@ -509,7 +512,8 @@ timage::timage(const config& cfg) :
 	src_clip_(),
 	image_(),
 	image_name_(cfg["name"]),
-	stretch_(utils::string_bool(cfg["stretch"]))
+	stretch_(utils::string_bool(cfg["stretch"])),
+	vertical_mirror_(cfg["vertical_mirror"])
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -530,6 +534,8 @@ timage::timage(const config& cfg) :
  *                                     that's the case use stretch. It only works
  *                                     if only the heigth or the width is not zero.
  *                                     It will copy the first pixel the the others.
+ *     vertical_mirror (f_bool = false)
+ *                                     Mirror the image over the vertical axis.                                
  *     name (f_string = "")            The name of the image.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
@@ -658,6 +664,10 @@ void timage::draw(surface& canvas,
 		src_clip.h = h;
 	} else {
 		surf = image_;
+	}
+
+	if(vertical_mirror_(local_variables)) {
+		surf = flip_surface(surf, false);
 	}
 
 	blit_surface(surf, &src_clip, canvas, &dst_clip);
