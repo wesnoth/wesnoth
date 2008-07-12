@@ -17,8 +17,13 @@
 #include "dialogs.hpp"
 #include "mouse_handler_base.hpp"
 
-controller_base::controller_base(int ticks, const config& game_config, CVideo& /*video*/)
-: game_config_(game_config), ticks_(ticks), browse_(false), scrolling_(false)
+controller_base::controller_base(
+		int ticks, const config& game_config, CVideo& /*video*/) :
+	game_config_(game_config), 
+	ticks_(ticks), 
+	key_(),
+	browse_(false),
+	scrolling_(false)
 {	
 }
 
