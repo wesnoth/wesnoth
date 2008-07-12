@@ -1047,12 +1047,10 @@ const std::vector<std::string>& topic_text::parsed_text() const
 
 std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 {
-
 	std::vector<topic> topics;
 
-	std::map<std::string, std::string> special_name;
-	std::map<std::string, std::string> special_description;
-	std::map<std::string, std::set<std::string> > special_units;
+	std::map<t_string, std::string> special_description;
+	std::map<t_string, std::set<std::string> > special_units;
 
 	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
 	    i != unit_type_data::types().end(); i++) {
@@ -1070,21 +1068,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			for (std::vector<t_string>::iterator sp_it = specials.begin();
 					sp_it != specials.end() && sp_it+1 != specials.end(); ++++sp_it)
 			{
-				// use untranslated name to have universal topic id
-				const std::string special = sp_it->base_str();
-
-				if (special.empty())
-					continue;
-
-				if (special_description.find(special) == special_description.end()) {
-					special_name[special] = *(sp_it);
+				if (special_description.find(*sp_it) == special_description.end()) {
 					std::string description = *(sp_it+1);
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
 						// Remove the first colon and the following newline.
 						description.erase(0, colon_pos + 2);
 					}
-					special_description[special] = description;
+					special_description[*sp_it] = description;
 				}
 
 				if (!type.hide_help()) {
@@ -1094,17 +1085,18 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
-					special_units[special].insert(link);
+					special_units[*sp_it].insert(link);
 				}
 			}
 		}
 	}
 
-	for (std::map<std::string, std::string>::iterator s = special_name.begin();
-			s != special_name.end(); s++) {
-		std::string id = "weaponspecial_" + s->first;
+	for (std::map<t_string, std::string>::iterator s = special_description.begin();
+			s != special_description.end(); s++) {
+		// use untranslated name to have universal topic id
+		std::string id = "weaponspecial_" + s->first.base_str();
 		std::stringstream text;
-		text << special_description[s->first];
+		text << s->second;
 		text << "\n\n" << _("<header>text='Units having this special attack'</header>") << "\n";
 		std::set<std::string>& units = special_units[s->first];
 		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
@@ -1123,7 +1115,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 	std::map<t_string, std::string> ability_description;
-	std::map<std::string, std::set<std::string> > ability_units;
+	std::map<t_string, std::set<std::string> > ability_units;
 	// Look through all the unit types, check if a unit of this type
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
