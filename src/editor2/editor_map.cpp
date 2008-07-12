@@ -46,9 +46,6 @@ std::vector<gamemap::location> editor_map::get_tiles_in_radius(const gamemap::lo
 		for (i = 0; i < 6; i++) {
 			for (unsigned int j = 1; j <= d; j++) {
 				loc = loc.get_direction(direction[i], 1);
-				if (on_board_with_border(loc)) {
-					res.push_back(loc);
-				}
 			}
 		}
 	}
