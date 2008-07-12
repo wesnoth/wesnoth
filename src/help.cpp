@@ -1156,7 +1156,6 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	}
 
 	for (std::map<t_string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); a++) {
-		std::string name = utils::capitalize(gettext(a->first.c_str()));
 		// we generate topic's id using the untranslated version of the ability's name
 		std::string id = "ability_" + a->first.base_str();
 		std::stringstream text;
@@ -1167,7 +1166,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			text << (*u) << "\n";
 		}
 
-		topics.push_back( topic(name, id, text.str()) );
+		topics.push_back( topic(a->first, id, text.str()) );
 	}
 
 	if (sort_generated)
