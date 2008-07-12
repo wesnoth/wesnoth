@@ -5,6 +5,7 @@ from os.path import join
 def CheckPango(context, backend):
     context.Message("Checking for Pango with " + backend + " backend... ")
     env = context.env
+    env["ENV"]["PKG_CONFIG_PATH"] = os.environ.get("PKG_CONFIG_PATH", "")
     gtkdir = os.environ.get("GTK_BASEPATH")
     if gtkdir:
         env.AppendENVPath("PATH", join(gtkdir, "bin"))
