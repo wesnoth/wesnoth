@@ -976,9 +976,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 	if (generator == "abilities") {
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
-		int t = SDL_GetTicks();
 		res = generate_weapon_special_topics(sort_generated);
-		std::cout << SDL_GetTicks() - t << " SPEC\n";
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
