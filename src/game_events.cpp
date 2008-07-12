@@ -20,8 +20,12 @@
 #include "construct_dialog.hpp"
 #include "game_display.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"
+#include "game_preferences.hpp"
+#include "gettext.hpp"
+#include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "image.hpp"
@@ -29,18 +33,17 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "menu_events.hpp"
-#include "game_preferences.hpp"
+#include "portrait.hpp"
 #include "replay.hpp"
-#include "SDL_timer.h"
+#include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "gettext.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
-#include "foreach.hpp"
+
+#include "SDL_timer.h"
 
 #include <cassert>
 #include <cstdlib>
@@ -1900,20 +1903,39 @@ namespace {
 	// Test function to show the new message dialog.
 	// NOTE this event is undocumented since it's only added as test hack and will
 	// be removed without further notice.
-	WML_HANDLER_FUNCTION(message_test_left,/*handler*/,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(message_test_left,/*handler*/,event_info, cfg)
 	{
+
 		const std::string message = cfg["message"];
 		gui2::init();
 		gui2::twindow window = gui2::build((screen)->video(), "message_test_left");
+
+		// Use an ugly hack, if the spacer has the wanted best_size we use the
+		// bigger image otherwise the smaller one.
+		gui2::tspacer* spacer = 
+			dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
+		unsigned image_size = 200;
+		unsigned window_height = 400;
+		if(spacer && spacer->get_best_size().x == 500) {
+				image_size = 400;
+				window_height = 600;
+		}
+
+		const unit_map::iterator speaker = units->find(event_info.loc1);
+		assert(speaker != units->end());
+
+		const tportrait* portrait = speaker->second.portrait(image_size);
+		const std::string image = portrait ? portrait->image : "";
+
 		/** 
 		 * @todo FIXME these fixed sizes should depend on the map size and maybe 
 		 * let wml determine the height.
 		 */
 		window.set_size(::create_rect(0, 
-			gui2::settings::screen_height - 400, 
-			gui2::settings::screen_width - 140, 400));
+			gui2::settings::screen_height - window_height, 
+			gui2::settings::screen_width - 140, window_height));
 
-		window.canvas(1).set_variable("portrait_image", variant("shyde200.png"));
+		window.canvas(1).set_variable("portrait_image", variant(image));
 
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);

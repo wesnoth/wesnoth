@@ -29,6 +29,7 @@ class game_display;
 class gamestatus;
 class game_state;
 class config_writer;
+class tportrait;
 
 #include <set>
 #include <string>
@@ -296,6 +297,14 @@ public:
 
 	unit_race::GENDER generate_gender(const unit_type& type, bool gen, game_state* state = 0);
 	std::string image_mods() const;
+
+	/**
+	 * Gets the portrait for a unit.
+	 *
+	 * @returns                   The portrait with the wanted size.
+	 * @retval NULL               The wanted portrait doesn't exist.
+	 */
+	const tportrait* portrait(const unsigned size) const;
 
 private:
 

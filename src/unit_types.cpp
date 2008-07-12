@@ -528,7 +528,8 @@ bool unit_movement_type::is_flying() const
 	return utils::string_bool(flies);
 }
 
-unit_type::unit_type()
+unit_type::unit_type() :
+	portraits_()
 {
     DBG_UT << "unit_type default constructor\n";
     build_status_ = NOT_BUILT;
@@ -546,7 +547,7 @@ unit_type::unit_type(const unit_type& o)
       hide_help_(o.hide_help_), advances_to_(o.advances_to_), advances_from_(o.advances_from_),
       experience_needed_(o.experience_needed_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
-      genders_(o.genders_), animations_(o.animations_)
+      genders_(o.genders_), animations_(o.animations_), portraits_(o.portraits_)
 {
     DBG_UT << "unit_type copy-constructor\n";
     build_status_ = o.build_status_;
@@ -560,7 +561,8 @@ unit_type::unit_type(const unit_type& o)
 
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
-                     const race_map& races, const std::vector<config*>& traits)
+                     const race_map& races, const std::vector<config*>& traits) :
+	portraits_()
 {
     DBG_UT << "unit_type constructor cfg, mv_types, races, traits\n";
     build_status_ = NOT_BUILT;
@@ -707,6 +709,13 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
+
+
+	for(config::const_child_itors range = cfg_.child_range("portrait");
+	    range.first != range.second; ++range.first) {
+		portraits_.push_back(tportrait(**range.first));
+	}
+
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
 	build_status_ = FULL;

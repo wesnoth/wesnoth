@@ -2924,7 +2924,16 @@ std::string unit::image_mods() const{
 	return modifier.str();
 }
 
+const tportrait* unit::portrait(const unsigned size) const
+{
+	foreach(const tportrait& portrait, (type()->portraits())) {
+		if(portrait.size == size) {
+			return &portrait;
+		}
+	}
 
+	return NULL;
+}
 
 void unit::set_hidden(bool state) {
 	hidden_ = state;

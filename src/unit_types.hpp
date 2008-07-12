@@ -17,6 +17,7 @@
 #include "unit_animation.hpp"
 #include "config.hpp"
 #include "map.hpp"
+#include "portrait.hpp"
 #include "race.hpp"
 #include "util.hpp"
 
@@ -246,6 +247,8 @@ public:
     enum BUILD_STATUS {NOT_BUILT, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
 
     BUILD_STATUS build_status() const { return build_status_; }
+
+	const std::vector<tportrait>& portraits() const { return portraits_; }
 private:
 	void operator=(const unit_type& o);
 
@@ -299,6 +302,9 @@ private:
 	mutable std::vector<unit_animation> animations_;
 
 	BUILD_STATUS build_status_;
+
+	/** List with the portraits available for the unit. */
+	std::vector<tportrait> portraits_;
 };
 
 class unit_type_data
