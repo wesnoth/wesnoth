@@ -611,7 +611,9 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 		}
 	}
 
-	tpoint widget_size = best_size;
+	tpoint widget_size = tpoint(
+		std::min(size.x, best_size.x), 
+		std::min(size.y, best_size.y));
 	tpoint widget_orig = orig;
 
 	if(flags_ & VERTICAL_GROW_SEND_TO_CLIENT) {
