@@ -1193,6 +1193,9 @@ class unit_topic_generator: public topic_generator
 public:
 	unit_topic_generator(const unit_type &t): type_(t) {}
 	virtual std::string operator()() const {
+		// this will force the lazy loading to build this unit
+		unit_type_data::types().find(type_.id(), unit_type::WITHOUT_ANIMATIONS);
+		
 		std::stringstream ss;
 		std::string clear_stringstream;
 		const std::string detailed_description = type_.unit_description();
@@ -1574,7 +1577,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		const std::string type_name = type.type_name();
 		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
 		topic unit_topic(type_name, ref_id, "");
-		//unit_topic.text = new unit_topic_generator(type);
+		unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
 
 		if (!type.hide_help()) {
@@ -2709,15 +2712,6 @@ void help_browser::show_topic(const topic &t, bool save_in_history)
 			back_topics_.push_back(shown_topic_);
 		}
 	}
-
-    //if this is a unit help, check if all needed information is available
-    if (t.text.parsed_text().size() == 0){
-        if (t.id.find(unit_prefix) == 0){
-            std::string unit_id = t.id.substr(unit_prefix.length(), t.id.length() - unit_prefix.length());
-            const unit_type& type = unit_type_data::types().find(unit_id, unit_type::WITHOUT_ANIMATIONS)->second;
-            t.text = new unit_topic_generator(type);
-        }
-    }
 
 	shown_topic_ = &t;
 	text_area_.show_topic(t);
