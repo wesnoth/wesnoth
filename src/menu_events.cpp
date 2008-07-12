@@ -2234,7 +2234,7 @@ private:
 				register_command("nosaves", &console_handler::do_nosaves,
 					_("Disable autosaves."));
 				register_command("next_level", &console_handler::do_next_level,
-					_("Advance to the next scenario."), "", "D");
+					_("Advance to the next scenario, or scenario identified by 'id'"), "<id>", "D");
 				register_alias("next_level", "n");
 				register_command("debug", &console_handler::do_debug,
 					_("Turn debug mode on."));

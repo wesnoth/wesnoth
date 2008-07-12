@@ -54,6 +54,8 @@ Version 1.5.1+svn:
    * In multiplayer lobby, all unit's images are now team colored.
    * In help, with debug mode, broken hyperlinks are now visible in red and
      when clicked open a error message showing the bad topic reference.
+   * new debug command feature, ":next_level Some_Id" to directly go to
+     scenario having id=Some_Id. Also allow to go backwards in campaign. 
  * multiplayer:
    * Added support for multiple sides per client in MP start
    * Added support for reserving slots when reloading game
@@ -85,6 +87,7 @@ Version 1.5.1+svn:
    * Fix incorrect downloaded add-on when using filter
    * Fix missing last publish/delete add-on option
    * Fix few broken hyperlinks in help (and some were working in english only)
+   * Fix a regression about not working 'unit description' with hide_help=yes
  * Python AI
    * get_variable now allows a default value to be passed to the call. If the
      key is not found, the default value is returned. This is fully backward
