@@ -19,7 +19,7 @@
 
 #include <cassert>
 
-#include <cairo/cairo.h>
+#include <cairo.h>
 
 namespace font {
 
