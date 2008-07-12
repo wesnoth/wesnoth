@@ -2654,6 +2654,8 @@ private:
 		game_config::disable_autosave = (get_data() != "off") ? true : false;
 	}
 	void console_handler::do_next_level() {
+		if (!get_data().empty())
+			menu_handler_.gamestate_.next_scenario = get_data();
 		throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 	}
 	void console_handler::do_debug() {
