@@ -976,7 +976,9 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 	if (generator == "abilities") {
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
+		int t = SDL_GetTicks();
 		res = generate_weapon_special_topics(sort_generated);
+		std::cout << SDL_GetTicks() - t << " SPEC\n";
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
@@ -1049,66 +1051,73 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 {
 
 	std::vector<topic> topics;
+
+	std::map<std::string, std::string> special_name;
 	std::map<std::string, std::string> special_description;
 	std::map<std::string, std::set<std::string> > special_units;
+
 	for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin();
 	    i != unit_type_data::types().end(); i++) {
 		const unit_type &type = (*i).second;
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
-		if (description_type(type) == FULL_DESCRIPTION) {
-			std::vector<attack_type> attacks = type.attacks();
-			for (std::vector<attack_type>::const_iterator it = attacks.begin();
-				 it != attacks.end(); it++) {
+		if (description_type(type) != FULL_DESCRIPTION)
+		 	continue;
 
-				std::vector<std::string> specials = (*it).special_tooltips(true);
-				std::vector<std::string>::iterator sp_it;
-				for (sp_it = specials.begin(); sp_it != specials.end(); ++sp_it)
-				{
-					std::string special = *sp_it;
-					++sp_it;
+		std::vector<attack_type> attacks = type.attacks();
+		for (std::vector<attack_type>::const_iterator it = attacks.begin();
+					it != attacks.end(); it++) {
 
-					//some abilities like plague can be in the form ability(argument)
-					//make sure we cut off the argument
-					special.erase(std::find(special.begin(),special.end(),'('),special.end());
-					if (special != "") {
-						if (special_description.find(special) == special_description.end()) {
-							std::string description = *sp_it;
-							const size_t colon_pos = description.find(':');
-							if (colon_pos != std::string::npos) {
-								// Remove the first colon and the following newline.
-								description.erase(0, colon_pos + 2);
-							}
-							special_description[special] = description;
-						}
+			std::vector<t_string> specials = (*it).special_tooltips(true);
+			for (std::vector<t_string>::iterator sp_it = specials.begin();
+					sp_it != specials.end() && sp_it+1 != specials.end(); ++++sp_it)
+			{
+				// use untranslated name to have universal topic id
+				const std::string special = sp_it->base_str();
 
-						if (!type.hide_help()) {
-							//add a link in the list of units having this special
-							std::string type_name = type.type_name();
-							std::string ref_id = unit_prefix + type.id();
-							//we put the translated name at the beginning of the hyperlink,
-							//so the automatic alphabetic sorting of std::set can use it
-							std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
-							special_units[special].insert(link);
-						}
+				//some abilities like plague can be in the form ability(argument)
+				//make sure we cut off the argument
+				//NOTE: really? Seems to be used in id not name
+				// special.erase(std::find(special.begin(),special.end(),'('),special.end());
+				if (special.empty())
+					continue;
+
+				if (special_description.find(special) == special_description.end()) {
+					special_name[special] = *(sp_it);
+					std::string description = *(sp_it+1);
+					const size_t colon_pos = description.find(':');
+					if (colon_pos != std::string::npos) {
+						// Remove the first colon and the following newline.
+						description.erase(0, colon_pos + 2);
 					}
+					special_description[special] = description;
+				}
+
+				if (!type.hide_help()) {
+					//add a link in the list of units having this special
+					std::string type_name = type.type_name();
+					std::string ref_id = unit_prefix + type.id();
+					//we put the translated name at the beginning of the hyperlink,
+					//so the automatic alphabetic sorting of std::set can use it
+					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
+					special_units[special].insert(link);
 				}
 			}
 		}
 	}
 
-	for (std::map<std::string, std::string>::iterator s = special_description.begin(); s != special_description.end(); s++) {
-		std::string name = utils::capitalize(gettext(s->first.c_str()));
+	for (std::map<std::string, std::string>::iterator s = special_name.begin();
+			s != special_name.end(); s++) {
 		std::string id = "weaponspecial_" + s->first;
 		std::stringstream text;
-		text << s->second;  //description
+		text << special_description[s->first];
 		text << "\n\n" << _("<header>text='Units having this special attack'</header>") << "\n";
 		std::set<std::string>& units = special_units[s->first];
 		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
 			text << (*u) << "\n";
 		}
 
-		topics.push_back( topic(name, id, text.str()) );
+		topics.push_back( topic(s->second, id, text.str()) );
 	}
 
 	if (sort_generated)
@@ -1368,15 +1377,15 @@ public:
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
-				std::vector<std::string> specials = attack_it->special_tooltips(true);
+				std::vector<t_string> specials = attack_it->special_tooltips(true);
 				if(!specials.empty())
 				{
 					std::string lang_special = "";
-					std::vector<std::string>::iterator sp_it;
+					std::vector<t_string>::iterator sp_it;
 					for (sp_it = specials.begin(); sp_it != specials.end(); sp_it++) {
 						const std::string ref_id = std::string("weaponspecial_")
-							+ (*sp_it);
-						lang_special = gettext(sp_it->c_str());
+							+ sp_it->base_str();
+						lang_special = (*sp_it);
 						attack_ss << "<ref>dst='" << escape(ref_id)
 								  << "' text='" << escape(lang_special) << "'</ref>";
 						if((sp_it + 1) != specials.end() && (sp_it + 2) != specials.end())

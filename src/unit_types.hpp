@@ -54,7 +54,7 @@ public:
 
 	bool get_special_bool(const std::string& special,bool force=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
-	std::vector<std::string> special_tooltips(bool force=false) const;
+	std::vector<t_string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
                               const unit_map* unitmap,

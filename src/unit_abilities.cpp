@@ -563,10 +563,10 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	}
 	return res;
 }
-std::vector<std::string> attack_type::special_tooltips(bool force) const
+std::vector<t_string> attack_type::special_tooltips(bool force) const
 {
 //	log_scope("special_tooltips");
-	std::vector<std::string> res;
+	std::vector<t_string> res;
 	const config* specials = cfg_.child("specials");
 	if (!specials) return res;
 
@@ -576,13 +576,13 @@ std::vector<std::string> attack_type::special_tooltips(bool force) const
 		for (config::child_list::const_iterator j = i->second.begin(),
 		     j_end = i->second.end(); j != j_end; ++j) {
 			if (force || special_active(**j, true)) {
-				std::string const &name = (**j)["name"];
+				t_string const &name = (**j)["name"];
 				if (!name.empty()) {
 					res.push_back(name);
 					res.push_back((**j)["description"]);
 				}
 			} else {
-				std::string const &name = (**j)["name_inactive"];
+				t_string const &name = (**j)["name_inactive"];
 				if (!name.empty()) {
 					res.push_back(name);
 					res.push_back((**j)["description_inactive"]);
