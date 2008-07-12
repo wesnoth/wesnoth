@@ -38,16 +38,14 @@ public:
 
 	/***** ***** ***** ***** LAYOUT FLAGS ***** ***** ***** *****/
 	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << 0;
-
-	static const unsigned VERTICAL_ALIGN_TOP             = 3 << 1;   
-	static const unsigned VERTICAL_ALIGN_CENTER          = 2 << 1;   
-	static const unsigned VERTICAL_ALIGN_BOTTOM          = 1 << 1;   
+	static const unsigned VERTICAL_ALIGN_TOP             = 2 << 0;   
+	static const unsigned VERTICAL_ALIGN_CENTER          = 3 << 0;   
+	static const unsigned VERTICAL_ALIGN_BOTTOM          = 4 << 0;   
 
 	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1 << 3;
-
-	static const unsigned HORIZONTAL_ALIGN_LEFT          = 3 << 4;   
-	static const unsigned HORIZONTAL_ALIGN_CENTER        = 2 << 4;   
-	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 1 << 4;   
+	static const unsigned HORIZONTAL_ALIGN_LEFT          = 2 << 3;   
+	static const unsigned HORIZONTAL_ALIGN_CENTER        = 3 << 3;   
+	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 4 << 3;   
 
 	static const unsigned BORDER_TOP                     = 1 << 6;
 	static const unsigned BORDER_BOTTOM                  = 1 << 7;
