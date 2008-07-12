@@ -216,7 +216,6 @@ void set_scope_active(scope s, bool set)
 
 bool is_scope_active(scope s)
 {
-	ERR_G << "is_scope_active(" << s << ") -- " << scope_active_[s] << "\n";
 	return scope_active_[s];
 }
 
