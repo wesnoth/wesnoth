@@ -36,9 +36,10 @@
 class XHelper
 {
 private:
-	XHelper()
+	XHelper() :
+		wmInf_(),
+		acquireCount_(0)
 	{
-		acquireCount_ = 0;
 		acquire();
 
 		// Intern some atoms;
