@@ -1073,10 +1073,6 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				// use untranslated name to have universal topic id
 				const std::string special = sp_it->base_str();
 
-				//some abilities like plague can be in the form ability(argument)
-				//make sure we cut off the argument
-				//NOTE: really? Seems to be used in id not name
-				// special.erase(std::find(special.begin(),special.end(),'('),special.end());
 				if (special.empty())
 					continue;
 
