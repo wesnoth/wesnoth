@@ -938,7 +938,7 @@ AM_CONDITIONAL([BOOST_TEST_DYN_LINK], [test x"$boost_test_dyn_link" = xyes])
 # Pango support                                                       #
 #######################################################################
 
-if test "x$game" = "xyes"; then
+if test "x$game" = "xyes" || test "x$tests" = "xyes"; then
 
 	PKG_CHECK_MODULES(PANGO, pangocairo >= 1.14.8)
 	CPPFLAGS="$CPPFLAGS $PANGO_CFLAGS"
