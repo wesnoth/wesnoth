@@ -1,96 +1,102 @@
+# Copyright (C) 2005 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2005.
+# 楊綮銘 <steven2880@gmail.com>, 2008
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
+"Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-24 21:05+0200\n"
-"PO-Revision-Date: 2008-02-26 16:37+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2008-07-12 12:42+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
 
 #. [generic_multiplayer]
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
-msgstr ""
+msgstr "玩家地圖"
 
 #. [multiplayer_side]
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
-msgstr ""
+msgstr "隨機"
 
 #. [era]
 #: data/multiplayer/eras.cfg:12
 msgid "Default"
-msgstr ""
+msgstr "預設"
 
 #. [era]
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
-msgstr ""
+msgstr "英雄時代"
 
 #. [era]
 #: data/multiplayer/eras.cfg:38
 msgid "Great War"
-msgstr ""
+msgstr "偉大戰争"
 
 #. [multiplayer_side]: type=Dark Sorcerer
 #: data/multiplayer/factions/alliance_of_darkness.cfg:4
 msgid "Alliance of Darkness"
-msgstr ""
+msgstr "黑暗聯盟"
 
 #. [multiplayer_side]: type=White Mage
 #: data/multiplayer/factions/alliance_of_light.cfg:4
 msgid "Alliance of Light"
-msgstr ""
+msgstr "光明聯盟"
 
 #. [multiplayer_side]: type=Drake Flare
 #. [multiplayer_side]: type=Drake Flameheart
 #: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
-msgstr ""
+msgstr "龍族"
 
 #. [multiplayer_side]: type=Dwarvish Steelclad
 #. [multiplayer_side]: type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 msgid "Knalgan Alliance"
-msgstr ""
+msgstr "柯內革聯盟"
 
 #. [multiplayer_side]: type=Lieutenant
 #. [multiplayer_side]: type=General
 #: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
-msgstr ""
+msgstr "保皇派"
 
 #. [multiplayer_side]: type=Orcish Warlord
 #. [multiplayer_side]: type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
-msgstr ""
+msgstr "北方民族"
 
 #. [multiplayer_side]: type=Elvish Marshal
 #. [multiplayer_side]: type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
-msgstr ""
+msgstr "反抗者"
 
 #. [multiplayer_side]: type=Dark Sorcerer
 #. [multiplayer_side]: type=Lich
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
-msgstr ""
+msgstr "不死族"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid "2p - Caves of the Basilisk"
-msgstr ""
+msgstr "2p - Caves of the Basilisk"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
@@ -100,6 +106,8 @@ msgid ""
 "the stark wilderness surrounding them are filled with the petrified forms of "
 "some of Wesnoth's greatest heroes."
 msgstr ""
+"玩家要控制自己的部隊通過這片支離破碎的地域。這裏自古以來就令人生畏，傳説中是"
+"遠古蛇怪的巢穴。在通往勝利的道路上時不時會碰到化為石頭的韋諾英雄。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
@@ -129,7 +137,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:42
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:54
 msgid "teamname^North"
-msgstr ""
+msgstr "北部"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:31
@@ -153,7 +161,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:53
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:65
 msgid "teamname^South"
-msgstr ""
+msgstr "南部"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -179,14 +187,35 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"The winds of the dark sky blew so cold,\n"
+"The moon was high, the night was old,\n"
+"Brave was the drake that dared forsake\n"
+"His home to steal the Basilisk's gold.\n"
+"\n"
+"On that dark night, the skies so churned,\n"
+"He disregarded what he had learned,\n"
+"Foolish but brave, to the Basilisk's cave,\n"
+"He flew, and the fire within him burned.\n"
+"\n"
+"Alas, that fire burns no more,\n"
+"For the Basilisk, with one mighty roar,\n"
+"Chilled him to the bone, and he turned to stone,\n"
+"And so he stays forevermore.\n"
+"\n"
+"The winds of the sky blow so cold,\n"
+"The years pass by, the days are old,\n"
+"Here stands that drake, who dared forsake\n"
+"His home to steal the Basilisk's gold.\n"
+"(inscribed by Flametrooper)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:97
 msgid "Xikkrisx"
-msgstr ""
+msgstr "Xikkrisx"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:100
+#, fuzzy
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
 "the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-In-"
@@ -208,11 +237,22 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
+"Syrsszk的Xikkrisx曾是一個强大的蜥蜴人戰士, 被Rysssrylosszkk 宗族長者送來這裏"
+"(這個宗族名可翻譯為: ''The Hunts-Foes-In-Boiling-Rivers Clan''). 長老們准備在"
+"人類前哨發動戰争, 所以需要Oxsrrsk强大的魔力, 那是一個最後面對Ruaskkolin湖的蜥"
+"蜴人法師. Xikkrisx 發現了Oxsrrsk失去活力的軀體, 以及旁邊的縫隙裏仔細包好的禁"
+"制卷軸. 他打開了卷軸粗略地讀到中間的一段:\" 他被上層世界约束并抛弃. Chak'kso "
+"被激怒的靈魂突發的釋放, 能够對真實世界釋放破壞性的影響, 這一切將通過 ''石像通"
+"道'' ('pathways of stone)進行，那憤怒的情緒觸動了偉大蜥蜴們的蛋, 塑造了它們的"
+"身軀和靈魂并附帶了Chak'kso的憎惡.''疑惑中, Xikkrisx把注意力集中在手中的任務"
+"上. 想到長者們或許可以找到保存Oxsrrsk的方法, 他開始了漫長振奮的任務---把"
+"Oxsrrsk這座雕像拖回Rysssrylosszkk部落， 可是没經過湖泊，Xikkrisx和雕像就掉入"
+"了一個細小的岩洞中，失去知覺。他是被滲入骨髓的寒冷唤醒的。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:103
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "Oxsrrsk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:106
@@ -237,6 +277,19 @@ msgid ""
 "convinced of his ability to locate and bind this powerful creature into his "
 "service, Oxsrrsk set out on his journey..."
 msgstr ""
+"Oxsrrsk曾經是一個強大的蜥蜴人占卜師，在襲撃勁敵Xraxss家族時，得到了最強大的卷"
+"軸（從已故的占卜師Hesx - Rzzak手上）。長卷的標題是'石化的注視' Ney'yks， ''宣"
+"告了某種被稱為'Chak'kso ney'yks' 的生物，在古老的蜥蜴人語裏，意味着''Eldest "
+"Child of Chak'kso “。 Chak'kso被認為是有一個强有力的地下半神，在精靈的歷史裏"
+"被形容為”great demon of the earth“。根據這些歷史記録， Chak'kso曾試圖變换上星"
+"球上所有生命成為石頭，他對有血和肉的生命竟有如此之大的仇恨。但他最終被强大的"
+"魔法撃敗并束縛，然而在數百年後，雖然他的流放（到一個遠遠低于地表世界的地方）"
+"一種新的生物開始出現在歷史上，擁有能力以任何代價使血肉變成石頭。曾有一段時"
+"期，這些 Basilisks （他們後來的稱謂）肆虐世間生活，創造使成千上萬石頭。其它生"
+"物一個接一個，并付出巨大代價，最終 Basilisks被打敗。所有的，看來，但除了其中"
+"之一;，在現代語中 Basilisk被稱為''The Ney'yks ， ''The Eldest Child”。他信服"
+"自己的能力：找到并束縛這個强大的生命，為他的服務， 于是Oxsrrsk開始了他的旅"
+"程..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:118
@@ -250,14 +303,23 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Slim of Stature, dexterous Hands\n"
+"- - Seven Stones and Eleven\n"
+"Left his Foes so slim a Chance\n"
+"- - Seven Stones and Eleven\n"
+"Marksman known as Dragonbane\n"
+"'mongst the Statues here was slain\n"
+"- - Seven Stones - and the Elven\n"
+"(inscribed by Gauteamus)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:121
 msgid "Blum Duk"
-msgstr ""
+msgstr "Blum Duk"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:126
+#, fuzzy
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -274,11 +336,25 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
+"Wolves of the mountains, and he had the courage to match. His leadership and "
+"skills alone were what kept the area's goblins alive despite human and "
+"elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
+"Elves.\n"
+"Thus, when he heard of the awful monster that was inhabiting the area, it "
+"was only natural that he ride out alone to face it. All the other goblins "
+"expected him to slay the creature easily and drag back its carcass to feast "
+"on.\n"
+"He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
+"cowered in fright. He tried to wheel his wolf around to run away, but it "
+"wouldn't move. As the creature stalked towards him, he screamed his last "
+"words: Good Gog, dog, are yer legs made of stone?!?\n"
+"(inscribed by Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
 msgid "Rah Ihn Mar"
-msgstr ""
+msgstr "Rah Ihn Mar"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:131
@@ -293,9 +369,16 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
+"Rah Ihn Mar, 來自Burning Hills的鬥士闖入Ruaskkolin Lake追隨精靈英雄"
+"Terowydlithrol，這位傳説中的精靈英雄在''The Dragonbane''殺死了一隻威脅村莊的"
+"火龍，並針對了37個居住在附近山谷的龍族進行屠殺，他們在精靈英雄眼中是和那條龍"
+"一夥的，那是針對龍族的殺戮。Rah Ihn Mar來這裡為無辜的龍族報仇並且打倒"
+"Terowydlithrol，那個傢伙早已進入了這個地帶。帶著復仇的火焰，Rah Ihn Mar 開始"
+"了狩獵....."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
+#, fuzzy
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -305,6 +388,13 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"He had lived there for ages upon ages, in the depths of the water, preying "
+"upon the various fish and frogs and merfolk that entered his domain. It was "
+"his lake, no other's, and though it was not large, he was its master. Then, "
+"the Basilisk came, and looked into the Serpent's eyes. And the Serpent had "
+"not died, but it was no longer alive. Thus the new lord of the lake had "
+"arrived.\n"
+"(inscribed by Turin)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:145
@@ -317,14 +407,20 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"在韋諾的黄金時代，一位勇敢的韋諾英雄來到了這不幸的地方, 作為偉大的騎士和領"
+"袖，對抗獸人。可是對邪惡力量的低估，使他的夥伴們倒下了， 他仍然勇敢的戰鬥，以"
+"寡敵衆。 咳！ 在撃倒最後一個獸人之後，他被可惡的Basilisk變成了石頭。現在，他"
+"的事蹟及力量只能留在人們心中回憶了。\n"
+"（Fynmiir 著）"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
 msgid "Bramwythl"
-msgstr ""
+msgstr "Bramwythl"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:153
+#, fuzzy
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -342,11 +438,26 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
+"other Woses. More than any other Wose, he enjoyed simply standing alone in "
+"the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
+"confided in a fellow that his greatest wish was to be able to bask forever "
+"in the sun's glory.\n"
+"However, not long after, the local wose community heard of the approach of a "
+"horrible monster, powerful enough to easily destroy the few woses that lived "
+"in the area. They quickly moved off (quickly for Woses, anyway), but "
+"Bramwythl was left behind - in their haste, no one had remembered to find "
+"him and tell him of the danger.\n"
+"He was taken quite unawares by the Basilisk, and turned to stone before he "
+"even recognized the beast. His petrified form still stands there today, "
+"warmed by the sun's rays, under an open sky. His greatest wish has been "
+"granted.\n"
+"(inscribed by Elvish Pillager)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid "Talael Ryndoc"
-msgstr ""
+msgstr "Talael Ryndoc"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
@@ -354,11 +465,13 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Talael Ryndoc將軍到這裏來與精靈元帥Aethec Corryn决鬥，但是他們倆一直没有找到"
+"對方。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
 msgid "Aethec Corryn"
-msgstr ""
+msgstr "Aethec Corryn"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:167
@@ -370,11 +483,16 @@ msgid ""
 "\n"
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
+"精靈元帥Aethec Corryn的遺言是：“Talael Ryndoc! 我在找你！我應該回到 "
+"Haldric's Hall，告訴他們你的膽小並且還逃跑了！這様你將比被我殺死來的更難受更"
+"加羞耻！\"\n"
+"\n"
+"也許他不該叫得這麼大聲..."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
 msgid "Rilhon"
-msgstr ""
+msgstr "Rilhon"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
@@ -391,6 +509,17 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"在納迦，有個勇敢的戰士叫 Rilhon, heard tell of a fabulous treasure that had "
+"been lost in these watery caves- a spear whose head was said to have been "
+"fashioned from the tooth of Chak'kso Ney'yks, an Elder Basilisk slain long "
+"ago by the Elvish hero, Eloralduil. According to the legend, the weapon "
+"rested somewhere on the bottom of this very lake (Ruaskkolin Lake, named for "
+"a well-known Sea Serpent who made it his home). Having prepared himself for "
+"battle with the Serpent, Rilhon met with two rather large surprises. The "
+"first was the petrified form of Ruaskkolin the Serpent. The second was the "
+"very-much-alive Chak'kso Ney'yks, who was, oddly enough, in possession of "
+"all of his teeth.\n"
+"(inscribed by Paterson)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:193
@@ -411,28 +540,43 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Through waves and rocky channels\n"
+"blue and white\n"
+"she pulled and pushed the tides\n"
+"and taught the fishes how to speak to planets\n"
+"silver green\n"
+"with magic\n"
+"running from her spirit into skins of kelp and shells of snails\n"
+"a twisting of her tail and hands\n"
+"she sent her songs to run on pin-tipped legs about the sands\n"
+"and now\n"
+"and now the strangest pause\n"
+"for years and years\n"
+"she hasn't moved her eyes\n"
+"\n"
+"(inscribed by MJQ)"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2p - Cynsaun Battlefield"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid " Recommended settings of 150 gold and 2 gold per village."
-msgstr ""
+msgstr " 建議設定起始資源為150個金幣，每座村莊每回合提供2個金幣。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
-msgstr ""
+msgstr "在廣大的戰場上您可以自由探索。專為喜愛大型史詩般2v2對戰的玩家設計。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
-msgstr ""
+msgstr "2p - Dark Forecast (Survival)"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
@@ -442,6 +586,8 @@ msgid ""
 "enemy waves.  During the course of gameplay, the terrain will change based "
 "on random weather effects."
 msgstr ""
+"Dark Forecast 是生存遊戲。供自殘或雙人組隊娱樂，對抗隨機出現的AI。 勝利條件"
+"是：戰勝對手然後活下來。這個過程中，整個區域會隨機出現季節效果。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:472
@@ -450,6 +596,8 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"尖叫和懇求聲都消失了，浴血的劍刃已劃過最後的叛亂者，這裏已經不再抵抗，您的統"
+"治都穩固下來。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:833
@@ -457,61 +605,62 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"最後也是最强大的戰士站在我們這邊。獲得勝利是絕對的，我想可以馬上解决他們。"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1010
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "大雪"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1024
 msgid "Snowfall"
-msgstr ""
+msgstr "降雪"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1044
 msgid "Heavy Rains"
-msgstr ""
+msgstr "大雨"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1058
 msgid "Drought"
-msgstr ""
+msgstr "乾旱"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1066
 msgid "Clear Weather"
-msgstr ""
+msgstr "晴天"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1418
 msgid "Single player mode - uses the reduced strength spawns."
-msgstr ""
+msgstr "單人模式 - 較簡單"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1421
 msgid "Two player mode - uses the full strength spawns."
-msgstr ""
+msgstr "雙人模式 - 較難"
 
 #. [objectives]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1441
 msgid "Survive and defeat the waves of opposition."
-msgstr ""
+msgstr "擊敗對方並且活下來。"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1443
 msgid "Defeat all waves"
-msgstr ""
+msgstr "擊敗所有敵人"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1447
 msgid "Lose all your team's leaders"
-msgstr ""
+msgstr "所有主角死亡"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
 msgid "Dark Forecast - a random survival scenario"
-msgstr ""
+msgstr "Dark Forecast - a random survival scenario"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1480
@@ -540,11 +689,31 @@ msgid ""
 "@Rhuvaen\n"
 "- WML implementation"
 msgstr ""
+"您的目標是打敗如潮水般湧來的敵人，並且活下來。\n"
+"     \n"
+"敵人是隨機生成的，所以每次進攻都是不一樣的...\n"
+"\n"
+"\n"
+"他們出現在北方，南方，西方地圖的邊緣-他們最可能出現在西邊。兩波之間有一定間"
+"隔。\n"
+"\n"
+"\n"
+"整個區域會隨機出現季節效果，影響地圖位置劃分.\n"
+"\n"
+"\n"
+"\n"
+"#Dark Forecast作者是:\n"
+"\n"
+"@jb\n"
+"- 地圖設計，團隊和地圖設計\n"
+"\n"
+"@Rhuvaen\n"
+"- WML 執行 (WML implementation)"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
 msgid "So this is the accursed valley - a land ours for the taking."
-msgstr ""
+msgstr "所以這是被詛咒的山谷-我們要征服的土地。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1489
@@ -553,20 +722,22 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"居民都傳説這是一個奇怪的聯盟，人與野獸，而我們的要求是不會被自動實現的。我們"
+"必須為這片土地上一切不可知的東西作好準備。 "
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1493
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
-msgstr ""
+msgstr "看看他們説的謊言和下場──讓我們教訓這些不聽話的傢伙."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1530
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
-msgstr ""
+msgstr "哦呃！怎麽會這様？竟然失敗了，輸給野蠻人！神哪，你拋棄了我..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1544
@@ -574,6 +745,8 @@ msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
+"歡呼，來自你的敵人，這都是過去的事了，因為你已經聽不到，因為你陷入死亡長流…您"
+"只剩下憤恨，其他的都是他們的喜悦。"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1566
@@ -582,11 +755,13 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"敵人的歡呼聲，像一片黑暗的薄霧從土地升起，並向你蔓延。模樣怪異的幽靈在吸取你"
+"的希望，而你知道的，自己在這片土地上已經結束。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
-msgstr ""
+msgstr "2p - Den of Onis"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
@@ -594,6 +769,8 @@ msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where players must find the balance between force and subterfuge."
 msgstr ""
+"這是一個2v2的地圖，危險隱藏在地下戰場的每個角落，你必須在武力與詭計中找到平衡"
+"點。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
@@ -618,19 +795,19 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
+msgstr " 建議設定每座村莊提供2個金幣。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p - Fallenstar Lake"
-msgstr ""
+msgstr "2p - Fallenstar Lake"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
-msgstr ""
+msgstr "很久以前，一顆來自天堂的星辰墜落下來，在這片針葉林中留下了印記。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:20
@@ -649,7 +826,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
 msgid "teamname^West"
-msgstr ""
+msgstr "西部"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:31
@@ -667,12 +844,12 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 msgid "teamname^East"
-msgstr ""
+msgstr "東部"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
-msgstr ""
+msgstr "2p - Hamlets"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
@@ -680,19 +857,19 @@ msgstr ""
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
-msgstr ""
+msgstr "戰爭把普通的農場和寧靜的村莊化作為精密的戰場。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
-msgstr ""
+msgstr "2p - Hornshark Island"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
-msgstr ""
+msgstr "這座島嶼麻雀小但五臟俱全，玩家必須熟悉這小島上豐富的地形。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -709,53 +886,53 @@ msgstr ""
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "2p - Sablestone Delta"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
-msgstr ""
+msgstr "兩支軍隊在這個佈滿隱藏洞穴和鋸齒狀的海灘旁相遇。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2p - Silverhead Crossing"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
-msgstr ""
+msgstr "在這個戰線衆多的地圖上，玩家必須穿越各種地形來取得勝利。"
 
 #. [trait]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
 msgid "statue"
-msgstr ""
+msgstr "雕像"
 
 #. [trait]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:22
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "這是一座石像。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:37
 msgid "2p - Sullas Ruins"
-msgstr ""
+msgstr "2p - Sullas Ruins"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:38
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
-msgstr ""
+msgstr "經過洪水和嚴冬的洗禮，這個曾經强大的王國裡只剩下廢墟，水還有冰。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Sulla之像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:80
@@ -764,101 +941,104 @@ msgid ""
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
+"這是蘇拉大帝的石像。她也被稱為正義的蘇拉，暴君蘇拉，沉没之塔的女皇，颶風的後"
+"裔，冰川上的夫人，灼熱浪潮的守護者，火焰女王，焚焼者蘇拉，高傲的蘇拉以及公正"
+"的蘇拉。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Lhun-dup的石像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:84
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Sulla的侍從Lhun-dup的石像。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Ri-nzen的石像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:88
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Sulla的侍從Ri-nzen的石像。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Ten-zin的石像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:92
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Sulla的侍從Ten-zin的石像。"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Lo-bsang的石像"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:96
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Sulla的侍從Lo-bsang的石像。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 msgid "2p - The Freelands"
-msgstr ""
+msgstr "2p - The Freelands"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "2v2對戰地圖，適合速戰速决。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p - Weldyn Channel"
-msgstr ""
+msgstr "2p - Weldyn Channel"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
-msgstr ""
+msgstr "3p - Alirok Marsh"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr ""
+msgstr "3位玩家在這個被水面分割的戰場上對峙。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
-msgstr ""
+msgstr "3p - Island of the Horatii"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
-msgstr ""
+msgstr "在這幅21x21的3人自由對戰地圖上，掌控中央的島嶼是獲得勝利的關鍵。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3p - Morituri"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
-msgstr ""
+msgstr "只有一個團隊能夠在這個緊湊的3人對戰地圖中取勝。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4p - Blue Water Province"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
@@ -868,6 +1048,8 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
+"歷史上這個水都曾被摧毁並又重建了20多次。現在，軍隊再一次結集在這個有著亂石河"
+"流和白雪山脉的城市裡，村民們似乎不在呼這樣的現象。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:20
@@ -880,7 +1062,7 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:66
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "隊伍1"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:31
@@ -893,37 +1075,37 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:54
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:78
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "隊伍2"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
-msgstr ""
+msgstr "4p - Castle Hopping Isle"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
+msgstr "從一座城堡趕往另一座城堡，為中央的島嶼而戰。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
-msgstr ""
+msgstr "4p - Clash"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "適合2v2對戰的小型地圖。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p - Hamlets"
-msgstr ""
+msgstr "4p - Hamlets"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4p - Isar's Cross"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
@@ -933,6 +1115,9 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
+"這是一張非常小的2v2對戰地圖。在近距離對戰中，如何支援前線、計劃您的行動將顯得"
+"非常重要。隊伍設定是1號和4號對2號和3號（東北對西南）。起始資源建議75個金幣，"
+"地圖上有20個村莊。"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:29
@@ -946,7 +1131,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:62
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:110
 msgid "teamname^South-West"
-msgstr ""
+msgstr "西南"
 
 #. [side]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:18
@@ -958,12 +1143,12 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:44
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:53
 msgid "teamname^North-East"
-msgstr ""
+msgstr "東北"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
-msgstr ""
+msgstr "4p - King of the Hill"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
@@ -971,12 +1156,14 @@ msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
+"在這個36x36的4人自由對戰地圖上，控制中央的要塞有很大好處。也很適合2v2對戰。圖"
+"上有36座村莊。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr ""
+msgstr "建議起始資源設定為150個金幣，每座村莊提供2個金幣。"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:37
@@ -988,7 +1175,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:86
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:98
 msgid "teamname^South-East"
-msgstr ""
+msgstr "東南"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:26
@@ -996,29 +1183,29 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 msgid "teamname^North-West"
-msgstr ""
+msgstr "西北"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
-msgstr ""
+msgstr "4p - Lagoon"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
+msgstr "建議設定每座村莊提供1個金幣。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
+msgstr "4個派別為爭奪這片水域的活動權而戰。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
-msgstr ""
+msgstr "4p - Loris River"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
@@ -1026,26 +1213,28 @@ msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
+"這是一個25x25的2v2地圖，中間是河流，雙方的要塞處在對角綫上。適合玩家1和玩家4"
+"對陣玩家2和玩家3。地圖上有28座村莊。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
-msgstr ""
+msgstr "4p - Morituri"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
+msgstr "誰能從這片危險叢林的戰場中勝出呢？"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "4p - Paths of Daggers"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
+msgstr "地圖上有28座村莊。建議設置每座村莊提供2個金幣。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
@@ -1053,11 +1242,13 @@ msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
+"這是一個35x27的2v2地圖，有五條交戰路線。建議玩家組隊為東部對陣西部（即玩家1、"
+"4對玩家2、3），但是其他組隊方式或自由對戰（FFA）也没有問題。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
-msgstr ""
+msgstr "4p - Siege Castles"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
@@ -1065,35 +1256,37 @@ msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
+"這是一個40x30的地圖，四座城堡對立於兩條河流交匯之處。適合2v2或自由組隊"
+"（FFA）。地圖上大約有45座村莊。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:26
 msgid "4p - The Wilderlands"
-msgstr ""
+msgstr "4p - The Wilderlands"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
-msgstr ""
+msgstr "一大片佈滿野生動物、森林、洞穴、河流和古老關隘遺迹的區域。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
-msgstr ""
+msgstr "4p - Xanthe Chaos"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
-msgstr ""
+msgstr "這是一個24X28的2v2地圖, 地圖中央有城堡輔助和激烈的戰鬥."
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
-msgstr ""
+msgstr "5p - Auction-X"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
@@ -1103,46 +1296,50 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"這個地圖上，四個玩家分佈在城堡四周，可以以生存模式、自由對抗或者4v1的模式進行"
+"游戲。在自由組隊（FFA）模式或者4v1模式中，中央的玩家需要更多的金幣，决定這個"
+"額外金幣數值的最好方法是拍賣，最低出價者獲得中央位置。地圖不大，所以其他4個玩"
+"家的推薦初始資金為75金幣。"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
 msgid "teamname^Northeast"
-msgstr ""
+msgstr "東北"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 msgid "teamname^Southeast"
-msgstr ""
+msgstr "東南"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
 msgid "teamname^Southwest"
-msgstr ""
+msgstr "西南"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
-msgstr ""
+msgstr "西北"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
 msgid "teamname^Center"
-msgstr ""
+msgstr "中部"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
-msgstr ""
+msgstr "5p - Forest of Fear"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "在這混合地圖上，五支部隊為爭奪王位而戰鬥。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6p - Crusaders' Field"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
@@ -1151,79 +1348,81 @@ msgid ""
 "of war, where the ghosts of thousands of brave warriors float invisibly "
 "through the mountains, trees and rivers."
 msgstr ""
+"在這片戰場上，戰鬥的呐喊聲再次響起。數以千計戰士的陰魂飄蕩在山嶺、樹林與河流"
+"之間。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
-msgstr ""
+msgstr "6p - Hexcake"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "2v2或3v3團隊對戰。"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:200
 msgid "Turn 2: Loyalists"
-msgstr ""
+msgstr "2: 保皇派"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:201
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "5: 柯內革聯盟"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
 msgid "Turn 8: Rebels"
-msgstr ""
+msgstr "8: 反抗者"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:203
 msgid "Turn 11: Northerners"
-msgstr ""
+msgstr "11: 北方民族"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:204
 msgid "Turn 14: Drakes"
-msgstr ""
+msgstr "14: 龍族"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:205
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "17: 不死族"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:206
 msgid "Tower of Doom"
-msgstr ""
+msgstr "末日之塔"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6p - Team Survival"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
-msgstr ""
+msgstr "任務目標是盡可能存活更長時間。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "生存32回合."
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-msgstr ""
+msgstr "提示:觀察敵人刷新點和種類會有很大幫助."
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "撐過所有攻撃."
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "主角死亡."
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid "Faery"
-msgstr ""
+msgstr "仙境"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
@@ -1232,23 +1431,26 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"恭喜您在這個戰場中生存下來，盡管這被許多人認為是個不可能達成的任務。坦白的"
+"説，我無法想像您是怎麽做到的。所以請把錄影寄給 roze@roze.mine.nu。 非常感謝"
+"您！"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid "Death"
-msgstr ""
+msgstr "死亡"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
-msgstr ""
+msgstr "您輸了，不過別氣餒。你隨時可以再試一次，再一次，再一次...（笑）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Attacker"
-msgstr ""
+msgstr "進攻者"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:384
@@ -1258,12 +1460,12 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:389
 msgid "Defender"
-msgstr ""
+msgstr "防禦者"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6p - The Manzivan Traps"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
@@ -1273,11 +1475,14 @@ msgid ""
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
+"這是一幅40x20的3v3對戰地圖。Manzivan Traps以讓人迷惑的困難地形著稱，在這種地"
+"形上很容易因失去據點或過分擴張而失敗。玩家1、4、5組隊對陣玩家2、3、6（東部對"
+"陣西部）。適合100金幣的起始資源。地圖上有33座村莊。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6p - Waterloo Sunset"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
@@ -1287,11 +1492,14 @@ msgid ""
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
+"這是一個40x30的3v3地圖。盡量與隊友搭配進攻防守，否則就有被圍攻的危險。玩家1、"
+"4、5組隊對陣玩家2、3、6（北部對陣南部），但是由玩家1、4、6或1、3、6組隊也很有"
+"意思。適合150金幣的起始資源。地圖上有44座村莊。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p - Mokena Prairie"
-msgstr ""
+msgstr "8p - Mokena Prairie"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
@@ -1299,6 +1507,7 @@ msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
+"這個8人地圖創造了一個史詩戰争的場景,需要兩個團隊分別加入進攻方和防守方."
 
 #. [side]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:18
@@ -1306,7 +1515,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:62
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:95
 msgid "teamname^east"
-msgstr ""
+msgstr "東部"
 
 #. [side]
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:29
@@ -1314,12 +1523,12 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:73
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:84
 msgid "teamname^west"
-msgstr ""
+msgstr "西部"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
-msgstr ""
+msgstr "8p - Morituri"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
@@ -1327,11 +1536,12 @@ msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish."
 msgstr ""
+"這裡跟其他的戰場不一樣，八支軍隊將對抗到底，團隊合作與戰術技巧才是制勝關鍵。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9p - Merkwuerdigliebe"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
@@ -1341,13 +1551,16 @@ msgid ""
 "vs. southeast vs. southwest). There are very few villages per player, so 3 "
 "gold per villages is recommended."
 msgstr ""
+"這是一幅非常小的3v3v3對戰地圖。因為玩家數量多，建議時限設定為60秒。玩家1、5、"
+"9一隊，2、6、7一隊，3、4、8一隊（北部對東南對西南）。村莊數/玩家的比率很小，"
+"所以建議設定每座村莊提供3個金幣。"
 
 #. [scenario]
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
-msgstr ""
+msgstr "隨機地圖"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
@@ -1355,13 +1568,15 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"隨機生成地圖。注意：隨機地圖通常不太穩定，但是如果您有足夠的時間，能試出一個"
+"很穩定的地圖。"
 
 #. [scenario]
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
-msgstr ""
+msgstr "隨機地圖（沙漠）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
@@ -1370,13 +1585,15 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"一個以沙漠作為主要地形的隨機地圖。注意：隨機地圖通常不太穩定，但是如果您有足"
+"夠的時間，能試出一個很穩定的地圖。"
 
 #. [scenario]
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
-msgstr ""
+msgstr "隨機地圖（沼澤）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
@@ -1385,13 +1602,15 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"一個以沼澤為主要地形的隨機地圖。注意：隨機地圖通常不太穩定，但是如果您有足夠"
+"的時間，能試出一個很穩定的地圖。"
 
 #. [scenario]
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
-msgstr ""
+msgstr "隨機地圖（冬天）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
@@ -1400,39 +1619,107 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"一個以雪地為主要地形的隨機地圖。注意：隨機地圖通常不太穩定，但是如果您有足夠"
+"的時間，能試出一個很穩定的地圖。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "韋諾之戰標準圖：AI（測試用）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
-msgstr ""
+msgstr "韋諾之戰標準圖。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "韋諾之戰標準圖：滚動（測試用）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
-msgstr ""
+msgstr "韋諾之戰標準圖。"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "韋諾之戰標準圖：穿越迷霧（測試用）"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-msgstr ""
+msgstr "韋諾之戰標準圖。"
+
+#~ msgid "2p - Wesbowl"
+#~ msgstr "2p - Wesbowl"
+
+#~ msgid ""
+#~ "In Wesbowl, a player has to get any of the balls to the other player's "
+#~ "end zone as often as possible. However, the other player can attack your "
+#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
+#~ "when units are killed, they return to that player's end zone with an "
+#~ "injury."
+#~ msgstr ""
+#~ "在這場遊戲中，一個玩家必須把任意一個球放入別對玩家的終點區域裡。次數越多越"
+#~ "好。不過，別隊玩家可以攻撃您的士兵。本游戲中使用的都是鈍武器，團隊裡都有治"
+#~ "療師的支援，所以當單位被殺死後，會以受傷的懲罸形式回到玩家自己的終點區域"
+#~ "中。"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move either ball to your opponent's end zone more times than they move a "
+#~ "ball to yours.\n"
+#~ "Defeat:\n"
+#~ "#Opponent moves the balls to your end zone more times than you move them "
+#~ "to the opponent's end zone"
+#~ msgstr ""
+#~ "\n"
+#~ "勝利：\n"
+#~ "@移動球到對手的終點區域内的次數多於對手移動過來的次數。\n"
+#~ "失敗：\n"
+#~ "#對手移動球到您的終點區域内的次數多於您移動過去的次數。"
+
+#~ msgid "Red scores! Current score is $redscore-$bluescore"
+#~ msgstr "紅隊得分！當前分數是$redscore-$bluescore"
+
+#~ msgid "Blue scores! Current score is $redscore-$bluescore"
+#~ msgstr "藍隊得分！當前分數是$redscore-$bluescore"
+
+#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+#~ msgstr "我該把球傳到$passto$passto.type ($xloc,$yloc)裡嗎？"
+
+#~ msgid "Yes!"
+#~ msgstr "是！"
+
+#~ msgid "No"
+#~ msgstr "不"
+
+#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
+#~ msgstr "藍隊獲勝！最終比數是：$redscore-$bluescore"
+
+#~ msgid "Red team wins! Final score: $redscore-$bluescore"
+#~ msgstr "紅隊獲勝！最終比數是：$redscore-$bluescore"
+
+#~ msgid "Draw! Final score: $redscore-$bluescore"
+#~ msgstr "平手！最終比數是：$redscore-$bluescore"
+
+#~ msgid "Monsters"
+#~ msgstr "怪物"
+
+#~ msgid "6p - Amohsad Caldera"
+#~ msgstr "6p - Amohsad Caldera"
+
+#~ msgid ""
+#~ "Only a true tactician will survive in this deadly and confining "
+#~ "battlefield, where six boxed-in armies come to a head."
+#~ msgstr ""
+#~ "六支軍隊爭鋒相向，只有真正的勇士才能在這個充滿死亡和限制的戰場上存活。"
