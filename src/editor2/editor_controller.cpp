@@ -69,19 +69,50 @@ void editor_controller::main_loop()
 
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
+	using namespace hotkey; //reduce hotkey:: clutter
 	switch(command) {
-		case hotkey::HOTKEY_ZOOM_IN:
-		case hotkey::HOTKEY_ZOOM_OUT:
-		case hotkey::HOTKEY_ZOOM_DEFAULT:
-		case hotkey::HOTKEY_FULLSCREEN:
-		case hotkey::HOTKEY_SCREENSHOT:
-		case hotkey::HOTKEY_MAP_SCREENSHOT:
-		case hotkey::HOTKEY_TOGGLE_GRID:
-		case hotkey::HOTKEY_MOUSE_SCROLL:
-		case hotkey::HOTKEY_MUTE:
-		case hotkey::HOTKEY_PREFERENCES:
-		case hotkey::HOTKEY_QUIT_GAME:
-		case hotkey::HOTKEY_HELP:
+		case HOTKEY_ZOOM_IN:
+		case HOTKEY_ZOOM_OUT:
+		case HOTKEY_ZOOM_DEFAULT:
+		case HOTKEY_FULLSCREEN:
+		case HOTKEY_SCREENSHOT:
+		case HOTKEY_MAP_SCREENSHOT:
+		case HOTKEY_TOGGLE_GRID:
+		case HOTKEY_MOUSE_SCROLL:
+		case HOTKEY_MUTE:
+		case HOTKEY_PREFERENCES:
+		case HOTKEY_HELP:
+			return true; //general hotkeys we can always do
+		case HOTKEY_EDITOR_QUIT:
+		case HOTKEY_EDITOR_MAP_NEW:
+		case HOTKEY_EDITOR_MAP_LOAD:
+		case HOTKEY_EDITOR_MAP_SAVE_AS:
+			return true; //editor hotkeys we can always do
+		case HOTKEY_EDITOR_MAP_SAVE:
+		case HOTKEY_EDITOR_MAP_REVERT:
+			return true; //TODO only when the map was modified
+		case HOTKEY_EDITOR_TOOL_PAINT:
+		case HOTKEY_EDITOR_TOOL_FILL:
+		case HOTKEY_EDITOR_TOOL_SELECT:
+		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+			return true; //tool selection always possible
+		case HOTKEY_EDITOR_CUT:
+		case HOTKEY_EDITOR_COPY:
+		case HOTKEY_EDITOR_SELECTION_ROTATE:
+		case HOTKEY_EDITOR_SELECTION_FLIP:
+		case HOTKEY_EDITOR_SELECTION_GENERATE:
+		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
+			return true; //TODO require nonempty selection
+		case HOTKEY_EDITOR_PASTE:
+			return true; //TODO requre nonempty clipboard
+		case HOTKEY_EDITOR_SELECT_ALL:		
+		case HOTKEY_EDITOR_MAP_RESIZE:
+		case HOTKEY_EDITOR_MAP_ROTATE:
+		case HOTKEY_EDITOR_MAP_FLIP:
+		case HOTKEY_EDITOR_MAP_GENERATE:
+		case HOTKEY_EDITOR_REFRESH:
+		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
+		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 			return true;
 		default:
 			return false;
@@ -117,6 +148,7 @@ void editor_controller::perform_action(const editor_action& action)
 	//TODO rebuild and ivalidate only what's really needed
 	gui().rebuild_all();
 	gui().invalidate_all();
+	gui().recalculate_minimap();
 }
 
 void editor_controller::trim_stack(action_stack& stack)
