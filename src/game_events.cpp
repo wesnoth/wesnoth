@@ -1917,15 +1917,16 @@ namespace {
 		unsigned image_size = 200;
 		unsigned window_height = 400;
 		if(spacer && spacer->get_best_size().x == 500) {
-				image_size = 400;
-				window_height = 600;
+			image_size = 400;
+			window_height = 600;
 		}
 
 		const unit_map::iterator speaker = units->find(event_info.loc1);
 		assert(speaker != units->end());
 
-		const tportrait* portrait = speaker->second.portrait(image_size);
+		const tportrait* portrait = speaker->second.portrait(image_size, tportrait::LEFT);
 		const std::string image = portrait ? portrait->image : "";
+		const bool mirror = portrait ? portrait->mirror : false;
 
 		/** 
 		 * @todo FIXME these fixed sizes should depend on the map size and maybe 
@@ -1936,6 +1937,7 @@ namespace {
 			gui2::settings::screen_width - 140, window_height));
 
 		window.canvas(1).set_variable("portrait_image", variant(image));
+		window.canvas(1).set_variable("portrait_mirror", variant(mirror));
 
 		gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
 		assert(label);

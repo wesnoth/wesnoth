@@ -18,18 +18,18 @@
 #define UNIT_H_INCLUDED
 
 #include "config.hpp"
+#include "formula_callable.hpp"
 #include "map.hpp"
+#include "portrait.hpp"
 #include "race.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
-#include "formula_callable.hpp"
 
 class game_display;
 class gamestatus;
 class game_state;
 class config_writer;
-class tportrait;
 
 #include <set>
 #include <string>
@@ -301,10 +301,14 @@ public:
 	/**
 	 * Gets the portrait for a unit.
 	 *
+	 * @param size                The size of the portrait.
+	 * @param side                The side the portrait is shown on.
+	 *
 	 * @returns                   The portrait with the wanted size.
 	 * @retval NULL               The wanted portrait doesn't exist.
 	 */
-	const tportrait* portrait(const unsigned size) const;
+	const tportrait* portrait(
+		const unsigned size, const tportrait::tside side) const;
 
 private:
 

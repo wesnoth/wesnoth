@@ -35,6 +35,7 @@ struct tportrait {
 	std::string image;
 	tside side;
 	unsigned size;
+	bool mirror;
 };
 
 #endif
