@@ -14,6 +14,7 @@
 #ifndef EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 #define EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 
+#include "brush.hpp"
 #include "action_base.hpp"
 #include "editor_common.hpp"
 #include "editor_display.hpp"
@@ -133,6 +134,8 @@ class editor_controller : public controller_base,
 		 * Action stack (i.e. undo and redo) maximum size
 		 */
 		static const int max_action_stack_size_;
+		
+		std::vector<brush> brushes_;
 };
 
 } //end namespace editor2

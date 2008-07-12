@@ -13,6 +13,7 @@
 */
 
 #include "action.hpp"
+#include "brush.hpp"
 #include "editor_common.hpp"
 #include "editor_display.hpp"
 #include "editor_mode.hpp"
@@ -22,6 +23,10 @@
 
 namespace editor2 {
 
+void mouse_action::move(editor_display& disp, int x, int y)
+{
+}
+
 editor_action* mouse_action::drag(editor_display& disp, int x, int y)
 {
 	return NULL;
@@ -30,6 +35,16 @@ editor_action* mouse_action::drag(editor_display& disp, int x, int y)
 editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
 {
 	return NULL;
+}
+
+void mouse_action_paint::move(editor_display& disp, int x, int y)
+{
+	disp.clear_highlighted_locs();
+	if (mode_.get_brush() != NULL) {
+		foreach (gamemap::location loc, mode_.get_brush()->project(disp.hex_clicked_on(x,y))) {
+			disp.add_highlighted_loc(loc);
+		}
+	}
 }
 
 editor_action* mouse_action_paint::click(editor_display& disp, int x, int y)

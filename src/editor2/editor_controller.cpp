@@ -20,7 +20,6 @@
 #include "../hotkeys.hpp"
 #include "../preferences.hpp"
 
-
 #include "SDL.h"
 
 namespace editor2 {
@@ -42,6 +41,11 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	gui_->invalidate_all();
 	gui_->draw();
 	events::raise_draw_event();
+	brushes_.push_back(brush());
+	brushes_[0].add_relative_location(0,0);
+	brushes_[0].add_relative_location(1,0);
+	brushes_[0].add_relative_location(-1,0);
+	set_brush(&brushes_[0]);
 	//redraw_everything();
 }
 
@@ -210,6 +214,10 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 		} else {
 			LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
 		}		
+	} else {
+		if (get_mouse_action() != NULL) {
+			get_mouse_action()->move(*gui_, x, y);
+		}
 	}
 	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
 	gui().highlight_hex(new_hex);

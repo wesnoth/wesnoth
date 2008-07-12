@@ -26,10 +26,6 @@
 
 namespace editor2 {
 
-class brush
-{
-};
-	
 /**
  * Replace contents of the entire map,
  * Useful as a fallback undo method when something else would be impractical
@@ -168,14 +164,14 @@ class editor_action_paint_brush : public editor_action_location_terrain
 {
     public:
         editor_action_paint_brush(gamemap::location loc, 
-			t_translation::t_terrain t, brush b)
+			t_translation::t_terrain t, const brush& b)
         : editor_action_location_terrain(loc, t), b_(b)
         {
         }
         editor_action_paste* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
     protected:
-        brush b_;
+        const brush& b_;
 };
 
 //flood fill
@@ -183,14 +179,12 @@ class editor_action_fill : public editor_action_location_terrain
 {
     public:
         editor_action_fill(gamemap::location loc, 
-			t_translation::t_terrain t, brush b)
-        : editor_action_location_terrain(loc, t), b_(b)
+			t_translation::t_terrain t)
+        : editor_action_location_terrain(loc, t)
         {
         }
         editor_action_fill* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
-    protected:
-		brush b_;
 };
 
 //resize map (streching / clipping behaviour?)
