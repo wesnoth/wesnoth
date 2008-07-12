@@ -907,7 +907,8 @@ twidget* tbuilder_listbox::build() const
 			 * We need sort indicators, which are tristat_buttons;
 			 * none, acending, decending. Once we have them we can write them in.
 			 */
-			grid->set_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+			grid->set_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
+				| tgrid::VERTICAL_ALIGN_TOP, 0);
 		}
 
 		// Create and add the footer.
@@ -916,13 +917,14 @@ twidget* tbuilder_listbox::build() const
 			assert(widget);
 
 			grid->set_child(widget, header && footer ? 2 : 1, 0, 
-				tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0);
+				tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				| tgrid::VERTICAL_ALIGN_BOTTOM, 0);
 		}
 
 		// Add the list itself.
 		grid->set_child(list_area, header ? 1 : 0, 0, 
 			tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
-			| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+			| tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 			, 0);
 
 		// Now make the list_area the grid so the code with and without a header
@@ -934,13 +936,10 @@ twidget* tbuilder_listbox::build() const
 	listbox->grid().set_child(list_area, 0, 0, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
 		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
-		| tgrid::VERTICAL_ALIGN_CENTER
-		| tgrid::HORIZONTAL_ALIGN_CENTER
 		, 0);
 	listbox->grid().set_col_grow_factor(0, 1);
 	listbox->grid().set_child(scrollbar, 0, 1, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-		| tgrid::VERTICAL_ALIGN_CENTER
 		| tgrid::HORIZONTAL_ALIGN_CENTER
 		, 0);
 

@@ -614,16 +614,6 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 	tpoint widget_size = best_size;
 	tpoint widget_orig = orig;
 
-	if(flags_ & HORIZONTAL_GROW_SEND_TO_CLIENT) {
-		if(maximum_size.x) {
-			widget_size.x = std::min(size.x, maximum_size.x);
-		} else {
-			widget_size.x = size.x;
-		}
-		DBG_G << "Grid cell: horizontal growing from " 
-			<< best_size.x << " to " << widget_size.x << ".\n";
-	}
-
 	if(flags_ & VERTICAL_GROW_SEND_TO_CLIENT) {
 		if(maximum_size.y) {
 			widget_size.y = std::min(size.y, maximum_size.y);
@@ -632,9 +622,8 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 		}
 		DBG_G << "Grid cell: vertical growing from " 
 			<< best_size.y << " to " << widget_size.y << ".\n";
-	}
 
-	if((flags_ & VERTICAL_ALIGN_TOP) == VERTICAL_ALIGN_TOP) {
+	} else if((flags_ & VERTICAL_ALIGN_TOP) == VERTICAL_ALIGN_TOP) {
 		// Do nothing.
 		
 		DBG_G << "Grid cell: vertically aligned at the top.\n";
@@ -650,10 +639,20 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 		DBG_G << "Grid cell: vertically aligned at the bottom.\n";
 
 	} else {
+		ERR_G << "Grid cell: No vertical alignment specified.\n";
 		assert(false);
 	}
 	
-	if((flags_ & HORIZONTAL_ALIGN_LEFT) == HORIZONTAL_ALIGN_LEFT) {
+	if(flags_ & HORIZONTAL_GROW_SEND_TO_CLIENT) {
+		if(maximum_size.x) {
+			widget_size.x = std::min(size.x, maximum_size.x);
+		} else {
+			widget_size.x = size.x;
+		}
+		DBG_G << "Grid cell: horizontal growing from " 
+			<< best_size.x << " to " << widget_size.x << ".\n";
+
+	} else if((flags_ & HORIZONTAL_ALIGN_LEFT) == HORIZONTAL_ALIGN_LEFT) {
 		// Do nothing.
 		DBG_G << "Grid cell: horizontally aligned at the left.\n";
 
@@ -668,6 +667,7 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 		DBG_G << "Grid cell: horizontally aligned at the right.\n";
 
 	} else {
+		ERR_G << "Grid cell: No horizontal alignment specified.\n";
 		assert(false);
 	}
 
