@@ -6,12 +6,14 @@ Version 1.5.1+svn:
    * added variant_iterator to iterate over variant elements
    * modified choose, filter, find and map functions to use variant_iterator, 
      so they work correctly with a variant_map type
-   * new formula AI functions: find_shroud, movement_cost, tolist, tomap
+   * new formula AI functions: contains_string, find_shroud, movement_cost, 
+     tolist, tomap, is_unowned_village, max_possible_damage_with_retaliation
    * added possibility to fallback to human player
    * new ai object members: side, my_recruits, recruits_of_side, time_of_day, 
      units_of_side, villages_of_side
    * moved most of formula AI releated code from ai.cpp to formula_ai.cpp
-   * new unit_type_callable class
+   * new unit_type_callable and attack_type_callable classes
+   * new unit_callable members: undead, attacks, abilities, traits
    * various fixes and improvements to formula functions
    * added new formula test scenario
  * language and i18n:
