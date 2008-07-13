@@ -1,15 +1,23 @@
 Version 1.5.1+svn:
  * campaigns:
+   * Son of the Black Eye
+     * new set of portrait art
+     * in 'Black Flag', there's now several galleons transporting enemies to the
+       beach, and no watch towers
+     * in 'Saving Inarix', you can now more precisely control when you destroy
+       the bridge
+     * many assorted small tweaks to most scenarios
+     * when leading the Great Horde, all units now require 1 less upkeep
    * Tutorial
      * Fixed players side name to same as leaders name (bug: #10114)
  * formula AI:
    * added variant_iterator to iterate over variant elements
-   * modified choose, filter, find and map functions to use variant_iterator, 
+   * modified choose, filter, find and map functions to use variant_iterator,
      so they work correctly with a variant_map type
-   * new formula AI functions: contains_string, find_shroud, movement_cost, 
+   * new formula AI functions: contains_string, find_shroud, movement_cost,
      tolist, tomap, is_unowned_village, max_possible_damage_with_retaliation
    * added possibility to fallback to human player
-   * new ai object members: side, my_recruits, recruits_of_side, time_of_day, 
+   * new ai object members: side, my_recruits, recruits_of_side, time_of_day,
      units_of_side, villages_of_side
    * moved most of formula AI releated code from ai.cpp to formula_ai.cpp
    * new unit_type_callable and attack_type_callable classes
@@ -237,7 +245,7 @@ Version 1.5.1:
      [damage] special
    * add a warning about future end of support for implicit prefix "units/" in
      images url.
-   * add a switch (delayed_variable_substitution, defaults to 'yes') allowing to 
+   * add a switch (delayed_variable_substitution, defaults to 'yes') allowing to
      choose wether variables in [event] spawned inside an [event] are substituted at
      spawn or execution time. Fixes bug #11843 introduced by a change in this behavior.
  * wesnothd
