@@ -44,9 +44,9 @@ Version 1.5.2:
    * remove redundant unit.value (use unit.cost instead)
    * preserve unit.role in next scenario (bugs #3697, #4124, and #11329)
    * fix various problems with [set_variables] (bugs #11980 and #11981)
-   * Add a new key "image" in [faction], used as icon in faction selection.
-     The old hack consisting to add the image's url in the faction's name is
-     still supported but doesn't have the new team coloring.
+   * Add a new key "image" in [multiplayer_side], used as icon in faction
+     selection. The old hack consisting to add the image's url in the faction's
+     name is still supported but doesn't have the new team coloring.
  * User interface:
    * Rewrote the textbox history saving of the new widget library. This rewrite
      is incompatible with the old version, but since the library is still in
