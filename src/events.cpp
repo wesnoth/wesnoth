@@ -44,7 +44,12 @@ namespace {
 
 struct context
 {
-	context() : focused_handler(-1) {}
+	context() : 
+		handlers(),
+		focused_handler(-1) 
+	{
+	}
+
 	void add_handler(handler* ptr);
 	bool remove_handler(handler* ptr);
 	int cycle_focus();
