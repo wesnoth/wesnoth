@@ -135,6 +135,9 @@ public:
 	bool new_campaign();
 	bool goto_campaign();
 	bool goto_multiplayer();
+#ifdef USE_EDITOR2
+	bool goto_editor();
+#endif
 	bool play_multiplayer();
 	void manage_addons();
 	void remove_addons();
@@ -208,6 +211,9 @@ private:
 
 	std::string multiplayer_server_;
 	bool jump_to_campaign_, jump_to_multiplayer_;
+#ifdef USE_EDITOR2
+	bool jump_to_editor_;
+#endif	
 };
 
 game_controller::game_controller(int argc, char** argv)
@@ -217,6 +223,9 @@ game_controller::game_controller(int argc, char** argv)
      force_bpp_(-1), disp_(NULL), loaded_game_show_replay_(false),
      loaded_game_cancel_orders_(false),
      jump_to_campaign_(false), jump_to_multiplayer_(false)
+#ifdef USE_EDITOR2
+	 ,jump_to_editor_(false)
+#endif
 {
 	bool no_sound = false;
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
@@ -322,6 +331,10 @@ game_controller::game_controller(int argc, char** argv)
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
+#ifdef USE_EDITOR2
+		} else if(val == "-e" || val == "--editor") {
+			jump_to_editor_ = true;
+#endif			
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1068,6 +1081,21 @@ bool game_controller::goto_multiplayer()
 	}
 	return true;
 }
+
+#ifdef USE_EDITOR2
+bool game_controller::goto_editor()
+{
+	if(jump_to_editor_){
+		jump_to_editor_ = false;
+		if (start_editor() != editor2::EXIT_QUIT_TO_DESKTOP){
+			;
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
+#endif
 
 static std::string format_file_size(const std::string& size_str)
 {
@@ -2415,6 +2443,9 @@ static int play_game(int argc, char** argv)
 			<< "                               additional command mode options in-game.\n"
 			<< "  --decompress INFILE OUTFILE  decompresses a savefile (INFILE) that is in binary\n"
 			<< "                               WML format into text WML format (OUTFILE).\n"
+#ifdef USE_EDITOR2
+			<< " -e, --editor                  starts editor2 not showing title screen.\n"
+#endif
 			<< "  -f, --fullscreen             runs the game in full screen mode.\n"
 			<< "  --fps                        displays the number of frames per second the game\n"
 			<< "                               is currently running at, in a corner of the screen.\n"
@@ -2704,6 +2735,11 @@ static int play_game(int argc, char** argv)
 		if(game.goto_multiplayer() == false){
 			continue; //Go to main menu
 		}
+#ifdef USE_EDITOR2
+		if (game.goto_editor() == false) {
+			return 0;
+		}
+#endif
 		loadscreen_manager.reset();
 
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;

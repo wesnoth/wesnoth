@@ -16,6 +16,7 @@
 #include "editor_map.hpp"
 #include "mouse_action.hpp"
 #include "../config_adapter.hpp"
+#include "../cursor.hpp"
 #include "../foreach.hpp"
 #include "../hotkeys.hpp"
 #include "../preferences.hpp"
@@ -37,6 +38,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 	init(video);
 	set_mouse_action(new mouse_action_paint(*this));
+	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	gui_->draw();
@@ -47,6 +49,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	brushes_[0].add_relative_location(-1,0);
 	set_brush(&brushes_[0]);
 	//redraw_everything();
+	
 }
 
 void editor_controller::init(CVideo& video)
@@ -55,6 +58,7 @@ void editor_controller::init(CVideo& video)
 	const config* theme_cfg = get_theme(game_config_, "editor2");
 	theme_cfg = theme_cfg ? theme_cfg : &dummy;
 	gui_ = new editor_display(video, map_, *theme_cfg, game_config_, config());
+	gui_->set_grid(preferences::grid());
 }
 
 editor_controller::~editor_controller()
