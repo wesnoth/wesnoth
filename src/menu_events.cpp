@@ -2164,6 +2164,7 @@ private:
 			void do_ignore_replay_errors();
 			void do_nosaves();
 			void do_next_level();
+			void do_choose_level();
 			void do_debug();
 			void do_nodebug();
 			void do_custom();
@@ -2236,6 +2237,9 @@ private:
 				register_command("next_level", &console_handler::do_next_level,
 					_("Advance to the next scenario, or scenario identified by 'id'"), "<id>", "D");
 				register_alias("next_level", "n");
+				register_command("choose_level", &console_handler::do_choose_level,
+					_("Choose next scenario"), "", "D");
+				register_alias("choose_level", "cn");
 				register_command("debug", &console_handler::do_debug,
 					_("Turn debug mode on."));
 				register_command("nodebug", &console_handler::do_nodebug,
@@ -2657,6 +2661,31 @@ private:
 		if (!get_data().empty())
 			menu_handler_.gamestate_.next_scenario = get_data();
 		throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
+	}
+	void console_handler::do_choose_level() {
+		std::vector<std::string> options;
+		int next = 0;
+		const config::child_list& scenarios =
+			menu_handler_.game_config_.get_children("scenario");
+		for (config::child_list::const_iterator i = scenarios.begin(),
+		     	i_end = scenarios.end(); i != i_end; ++i) {
+		    const std::string id = (**i)["id"];
+		    options.push_back(id);
+			if (id == menu_handler_.gamestate_.next_scenario)
+		    	next = i - scenarios.begin();
+		}
+		int choice = 0;
+		{
+			gui::dialog menu(*menu_handler_.gui_, _("Choose Scenario (Debug!)"), "", gui::OK_CANCEL);
+			menu.set_menu(options);
+			menu.get_menu().move_selection(next);
+			choice = menu.show();
+		}
+
+		if (size_t(choice) < options.size()) {
+			menu_handler_.gamestate_.next_scenario = options[choice];
+			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
+		}
 	}
 	void console_handler::do_debug() {
 		if (network::nconnections() == 0) {
