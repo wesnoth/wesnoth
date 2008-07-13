@@ -1,6 +1,7 @@
 ## some includes ##
 include_directories( ${Boost_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
+include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
@@ -36,6 +37,7 @@ set( game-external-libs
     ${SDLMIXER_LIBRARY}
     ${SDLNET_LIBRARY}
     ${SDLTTF_LIBRARY}
+    ${PANGOCAIRO_LDFLAGS}
 )
 
 set( server-external-libs

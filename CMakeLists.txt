@@ -24,14 +24,18 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-# find all deps needed
+# find all deps needed, pkgconfig is needed to find pangocairo
 find_package( SDL 1.2.7 REQUIRED )
 find_package( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
+find_package( PkgConfig REQUIRED )
 find_package( Gettext )
 find_package( FriBiDi )
 find_package( PythonInterp 2.4 )
 find_package( PythonCustom )
 find_package( X11 )
+
+#use pkg-config to find pangocairo:
+pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 
 #
 # Options
