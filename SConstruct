@@ -77,6 +77,7 @@ opts.AddOptions(
     PathOption('boostlibdir', 'Directory where boost libraries are installed.', "", OptionalPath),
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath), 
+    PathOption('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
     BoolOption('distcc', "Use distcc", False),
     BoolOption('ccache', "Use ccache", False),
