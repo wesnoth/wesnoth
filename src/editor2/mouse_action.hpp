@@ -58,6 +58,7 @@ public:
 
 protected:
 	editor_mode& mode_;
+	gamemap::location previous_hex_;
 };
 
 class mouse_action_paint : public mouse_action
@@ -71,10 +72,18 @@ public:
 	editor_action* click(editor_display& disp, int x, int y);
 	editor_action* drag(editor_display& disp, int x, int y);
 	editor_action* drag_end(editor_display& disp, int x, int y);	
-protected:
-	gamemap::location previous_hex_;
 };
 
+class mouse_action_fill : public mouse_action
+{
+public:
+	mouse_action_fill(editor_mode& mode)
+	: mouse_action(mode)
+	{
+	}
+	void move(editor_display& disp, int x, int y);
+	editor_action* click(editor_display& disp, int x, int y);
+};
 
 } //end namespace editor2
 

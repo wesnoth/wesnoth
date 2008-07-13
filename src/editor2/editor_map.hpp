@@ -27,8 +27,14 @@ class editor_map : public gamemap
 {
 public:
 	editor_map(const config& terrain_cfg, const std::string& data);
-	static std::vector<gamemap::location> get_tiles_in_radius(const gamemap::location& center, const unsigned int radius);
 	static editor_map new_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
+	
+	/**
+	 * Get a contigious set of tiles having the same terrain as the starting location.
+	 * Useful for flood fill or magic wand selection
+	 * @return a contigious set of locations that will always contain at least the starting element
+	 */
+	std::set<gamemap::location> get_contigious_terrain_tiles(const gamemap::location& start) const;
 	
 	/**
 	 * @return true when the location is part of the selection, false otherwise

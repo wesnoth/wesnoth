@@ -71,4 +71,24 @@ editor_action* mouse_action_paint::drag_end(editor_display& disp, int x, int y)
 	return drag(disp, x, y);
 }
 
+void mouse_action_fill::move(editor_display& disp, int x, int y)
+{
+	disp.clear_highlighted_locs();
+	std::set<gamemap::location> affected = 
+		dynamic_cast<const editor_map&>(disp.get_map()).
+		get_contigious_terrain_tiles(disp.hex_clicked_on(x, y));
+	foreach (gamemap::location loc, affected) {
+		disp.add_highlighted_loc(loc);
+	}
+}
+
+editor_action* mouse_action_fill::click(editor_display& disp, int x, int y)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	t_translation::t_terrain terrain = mode_.get_foreground_terrain();
+	editor_action_fill* a = new editor_action_fill(hex, terrain);
+	previous_hex_ = hex;
+	return a;
+}
+
 } //end namespace editor2

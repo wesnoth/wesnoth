@@ -44,6 +44,7 @@ class editor_controller : public controller_base,
 		~editor_controller();
 		void main_loop();
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
+		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
 		void preferences();
 		void toggle_grid();
 		
@@ -137,6 +138,7 @@ class editor_controller : public controller_base,
 		static const int max_action_stack_size_;
 		
 		std::vector<brush> brushes_;
+		std::vector<mouse_action*> mouse_actions_;
 };
 
 } //end namespace editor2

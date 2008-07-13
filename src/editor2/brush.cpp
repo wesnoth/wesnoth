@@ -16,6 +16,7 @@
 #include "editor_map.hpp"
 
 #include "../foreach.hpp"
+#include "../pathutils.hpp"
 
 #include <vector>
 
@@ -29,8 +30,8 @@ brush::brush(const config& cfg)
 {
 	int radius = lexical_cast_default<int>(cfg["radius"], 0);
 	if (radius > 0) {
-		std::vector<gamemap::location> in_radius = 
-			editor_map::get_tiles_in_radius(gamemap::location(0, 0), radius);
+		std::vector<gamemap::location> in_radius;
+		get_tiles_in_radius(gamemap::location(0, 0), radius, in_radius);
 		foreach (gamemap::location& loc, in_radius) {
 			add_relative_location(loc.x, loc.y);
 		}

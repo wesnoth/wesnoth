@@ -14,6 +14,11 @@
 
 #include "editor_map.hpp"
 
+#include "../pathutils.hpp"
+
+#include <deque>
+
+
 namespace editor2 {
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
@@ -27,29 +32,28 @@ editor_map editor_map::new_map(const config& terrain_cfg, size_t width, size_t h
 	const t_translation::t_map map(width, column);
 	return editor_map(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(map));
 }
-	
-std::vector<gamemap::location> editor_map::get_tiles_in_radius(const gamemap::location& center, const unsigned int radius) {
-	const unsigned int distance = radius - 1;
-	std::vector<gamemap::location> res;
-	res.push_back(center);
-	for (unsigned int d = 1; d <= distance; d++) {
-		gamemap::location loc = center;
-		unsigned int i;
-		// Get the starting point.
-		for (i = 1; i <= d; i++) {
-			loc = loc.get_direction(gamemap::location::NORTH, 1);
-		}
-		// Get all the tiles clockwise with distance d.
-		const gamemap::location::DIRECTION direction[6] =
-			{gamemap::location::SOUTH_EAST, gamemap::location::SOUTH, gamemap::location::SOUTH_WEST,
-			 gamemap::location::NORTH_WEST, gamemap::location::NORTH, gamemap::location::NORTH_EAST};
-		for (i = 0; i < 6; i++) {
-			for (unsigned int j = 1; j <= d; j++) {
-				loc = loc.get_direction(direction[i], 1);
+
+std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamemap::location& start) const
+{
+	t_translation::t_terrain terrain = get_terrain(start);
+	std::set<gamemap::location> result;
+	std::deque<gamemap::location> queue;
+	result.insert(start);
+	queue.push_back(start);
+	//this is basically a breadth-first search along adjacent hexes
+	do {
+		gamemap::location adj[6];
+		get_adjacent_tiles(queue.front(), adj);
+		for (int i = 0; i < 6; ++i) {
+			if (on_board_with_border(adj[i]) && get_terrain(adj[i]) == terrain
+			&& result.find(adj[i]) == result.end()) {
+				result.insert(adj[i]);
+				queue.push_back(adj[i]);
 			}
 		}
-	}
-	return res;
+		queue.pop_front();
+	} while (!queue.empty());
+	return result;
 }
 
 bool editor_map::in_selection(const gamemap::location& loc) const

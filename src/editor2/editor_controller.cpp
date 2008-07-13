@@ -37,7 +37,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 	init(video);
-	set_mouse_action(new mouse_action_paint(*this));
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
@@ -47,8 +46,11 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	brushes_[0].add_relative_location(0,0);
 	brushes_[0].add_relative_location(1,0);
 	brushes_[0].add_relative_location(-1,0);
+	brushes_[0].add_relative_location(-2,0);
 	set_brush(&brushes_[0]);
-	//redraw_everything();
+	mouse_actions_.push_back(new mouse_action_paint(*this));
+	mouse_actions_.push_back(new mouse_action_fill(*this));
+	set_mouse_action(mouse_actions_[0]);
 	
 }
 
@@ -66,6 +68,9 @@ editor_controller::~editor_controller()
     delete gui_;
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
+	foreach (mouse_action* a, mouse_actions_) {
+		delete a;
+	}
 }
 
 void editor_controller::main_loop()
@@ -78,7 +83,7 @@ void editor_controller::main_loop()
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
-	switch(command) {
+	switch (command) {
 		case HOTKEY_ZOOM_IN:
 		case HOTKEY_ZOOM_OUT:
 		case HOTKEY_ZOOM_DEFAULT:
@@ -124,6 +129,21 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		default:
 			return false;
+	}
+}
+
+bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
+{
+	using namespace hotkey;
+	switch (command) {
+		case HOTKEY_EDITOR_TOOL_PAINT:
+			set_mouse_action(mouse_actions_[0]);
+			return true;
+		case HOTKEY_EDITOR_TOOL_FILL:
+			set_mouse_action(mouse_actions_[1]);
+			return true;
+		default:
+			return controller_base::execute_command(command, index);
 	}
 }
 
