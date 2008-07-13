@@ -148,6 +148,7 @@ wesnoth_source = \
 # used with editor2 option in the wesnoth target
 wesnoth_editor2_SOURCES = \
 	editor2/action.cpp \
+	editor2/brush.cpp \
 	editor2/editor_main.cpp \
 	editor2/editor_controller.cpp \
 	editor2/editor_display.cpp \
