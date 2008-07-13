@@ -211,12 +211,15 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 	hotkey::HOTKEY_COMMAND command;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
+		std::cerr << hotkey::get_hotkey(*i).get_command();
 		command = hotkey::get_hotkey(*i).get_id();
 		if(!can_execute_command(command)
 		|| (context_menu && !in_context_menu(command))) {
+			std::cerr << " - erasing\n";
 			i = items.erase(i);
 			continue;
 		}
+		std::cerr << "\n";
 		++i;
 	}
 	if(items.empty())

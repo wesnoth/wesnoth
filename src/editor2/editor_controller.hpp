@@ -72,6 +72,8 @@ class editor_controller : public controller_base,
 		 * the undo stack. The redo stack is cleared.
 		 */
 		void perform_action(const editor_action& action);
+		
+		void refresh_after_action(const editor_action& action);
 
 		/**
 		 * Checks if an action stack reached its capacity and removes the front element if so.

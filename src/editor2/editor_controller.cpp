@@ -96,6 +96,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_PREFERENCES:
 		case HOTKEY_HELP:
 			return true; //general hotkeys we can always do
+		case HOTKEY_UNDO:
+			return can_undo();
+		case HOTKEY_REDO:
+			return can_redo();
 		case HOTKEY_EDITOR_QUIT:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
@@ -180,6 +184,11 @@ void editor_controller::perform_action(const editor_action& action)
 	undo_stack_.push_back(undo);
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
+	refresh_after_action(action);
+}
+	
+void editor_controller::refresh_after_action(const editor_action& /*action*/)
+{
 	//TODO rebuild and ivalidate only what's really needed
 	gui().rebuild_all();
 	gui().invalidate_all();
@@ -204,22 +213,28 @@ void editor_controller::clear_stack(action_stack& stack)
 
 bool editor_controller::can_undo() const
 {
+	std::cerr << "\ncan_undo" << undo_stack_.size() << "\n";
 	return !undo_stack_.empty();
 }
 
 bool editor_controller::can_redo() const
 {
+	std::cerr << "\ncan_redo" << redo_stack_.size() << "\n";
 	return !redo_stack_.empty();
 }
 
 void editor_controller::undo()
 {
+	std::cerr << "\npreundo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 	perform_action_between_stacks(undo_stack_, redo_stack_);
+	std::cerr << "\nupostndo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 }
 
 void editor_controller::redo()
 {
+	std::cerr << "\npreredo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 	perform_action_between_stacks(redo_stack_, undo_stack_);
+	std::cerr << "\npostredo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 }
 
 void editor_controller::perform_action_between_stacks(action_stack& from, action_stack& to)
@@ -230,6 +245,7 @@ void editor_controller::perform_action_between_stacks(action_stack& from, action
 	editor_action* reverse_action = action->perform(map_);
 	to.push_back(reverse_action);
 	trim_stack(to);
+	refresh_after_action(*action);
 }
 
 void editor_controller::mouse_motion(int x, int y, const bool browse, bool update)
@@ -258,7 +274,10 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 {
 	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	LOG_ED << "Left click, after generic handling\n";
+	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
+	if (!map_.on_board_with_border(hex_clicked)) return true;
 	if (get_mouse_action() != NULL) {
+		LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 		editor_action* a = get_mouse_action()->click(*gui_, x, y);
 		if (a != NULL) {
 			perform_action(*a);
