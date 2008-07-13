@@ -1103,7 +1103,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			text << (*u) << "\n";
 		}
 
-		topics.push_back( topic(s->second, id, text.str()) );
+		topics.push_back( topic(s->first, id, text.str()) );
 	}
 
 	if (sort_generated)
