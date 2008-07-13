@@ -34,7 +34,10 @@ void formula_callable::set_value(const std::string& key, const variant& /*value*
 }
 
 map_formula_callable::map_formula_callable(
-    const formula_callable* fallback) : formula_callable(false), fallback_(fallback)
+    	const formula_callable* fallback) : 
+	formula_callable(false),
+	values_(),
+	fallback_(fallback)
 {}
 
 map_formula_callable& map_formula_callable::add(const std::string& key,
@@ -131,8 +134,9 @@ private:
 
 class unary_operator_expression : public formula_expression {
 public:
-	unary_operator_expression(const std::string& op, expression_ptr arg)
-	  : operand_(arg)
+	unary_operator_expression(const std::string& op, expression_ptr arg) :
+		op_(),
+		operand_(arg)
 	{
 		if(op == "not") {
 			op_ = NOT;
@@ -390,7 +394,9 @@ private:
 
 class string_expression : public formula_expression {
 public:
-	explicit string_expression(std::string str)
+	explicit string_expression(std::string str) :
+		str_(),
+		subs_()
 	{
 		std::string::iterator i;
 		while((i = std::find(str.begin(), str.end(), '{')) != str.end()) {
@@ -430,6 +436,13 @@ private:
 	}
 
 	struct substitution {
+
+		substitution() :
+			pos(0),
+			calculation()
+		{
+		}
+
 		int pos;
 		const_formula_ptr calculation;
 	};
@@ -794,7 +807,9 @@ formula_ptr formula::create_optional_formula(const std::string& str, function_sy
 	}
 }
 
-formula::formula(const std::string& str, function_symbol_table* symbols) : str_(str)
+formula::formula(const std::string& str, function_symbol_table* symbols) : 
+	expr_(),
+	str_(str)
 {
 	using namespace formula_tokenizer;
 
