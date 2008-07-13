@@ -85,7 +85,8 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		reach_map_old_(),
 		reach_map_changed_(true),
 		game_mode_(RUNNING),
-		flags_()
+		flags_(),
+		previous_invalidated_()
 {
 	singleton_ = this;
 
