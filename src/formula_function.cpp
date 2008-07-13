@@ -419,7 +419,11 @@ class variant_comparator : public formula_callable {
 		fallback_->get_inputs(inputs);
 	}
 public:
-	variant_comparator(const expression_ptr& expr, const formula_callable& fallback) : expr_(expr), fallback_(&fallback)
+	variant_comparator(const expression_ptr& expr, const formula_callable& fallback) : 
+		expr_(expr), 
+		fallback_(&fallback),
+		a_(),
+		b_()
 	{}
 
 	bool operator()(const variant& a, const variant& b) const {
