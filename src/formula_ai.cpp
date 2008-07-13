@@ -47,7 +47,9 @@ class position_callable : public formula_callable {
 		inputs->push_back(game_logic::formula_input("chance", game_logic::FORMULA_READ_ONLY));
 	}
 public:
-	position_callable(unit_map* units, int chance) : chance_(chance)
+	position_callable(unit_map* units, int chance) :
+		units_(),
+		chance_(chance)
 	{
 		units->swap(units_);
 	}
@@ -66,8 +68,12 @@ public:
 			a.swap(b);
 			ai.swap_move_map(backup);
 		}
-		swapper(formula_ai& ai, position_callable& pos)
-		  : ai(ai), a(ai.get_info().units), b(pos.units_) {
+		swapper(formula_ai& ai, position_callable& pos) :
+			ai(ai), 
+			a(ai.get_info().units), 
+			b(pos.units_),
+			backup()
+		{
 		  swap();
 		}
 
@@ -1112,7 +1118,22 @@ void ai_function_symbol_table::register_candidate_move(const std::string name,
 
 }
 
-formula_ai::formula_ai(info& i) : ai(i), move_maps_valid_(false), function_table(*this)
+formula_ai::formula_ai(info& i) : 
+	ai(i),
+	recruit_formula_(),
+	move_formula_(),
+	possible_moves_(),
+	move_maps_valid_(false), 
+	srcdst_(),
+	dstsrc_(),
+	full_srcdst_(),
+	full_dstsrc_(),
+	enemy_srcdst_(),
+	enemy_dstsrc_(),
+	attacks_cache_(),
+	keeps_cache_(),
+	vars_(),
+	function_table(*this)
 {
 	//make sure we don't run out of refcount
 	vars_.add_ref();
