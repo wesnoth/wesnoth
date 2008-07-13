@@ -325,6 +325,10 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 	read(data);
 }
 
+gamemap::~gamemap()
+{
+}
+
 //! Reads a map 
 //!
 //! @param data			the mapdata to load
