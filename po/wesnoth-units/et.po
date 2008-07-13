@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-07-04 21:46+0200\n"
+"POT-Creation-Date: 2008-07-13 17:49+0200\n"
 "PO-Revision-Date: 2008-05-26 23:50+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -1029,7 +1029,7 @@ msgstr ""
 "haldjatargad kõrgelt hinnatud."
 
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:28
+#: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:52
 #: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28
 #: data/core/units/saurians/Soothsayer.cfg:66
 #: data/core/units/saurians/Augur.cfg:66
@@ -1037,7 +1037,7 @@ msgstr ""
 #: data/core/units/merfolk/Priestess.cfg:62
 #: data/core/units/merfolk/Enchantress.cfg:24
 #: data/core/units/merfolk/Initiate.cfg:28
-#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:53
+#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:54
 #: data/core/units/humans/Mage_White.cfg:121
 #: data/core/units/humans/Mage_Great.cfg:29
 #: data/core/units/humans/Mage_Silver.cfg:36
@@ -1048,12 +1048,12 @@ msgid "staff"
 msgstr "sau"
 
 #. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:37 data/core/units/elves/Shyde.cfg:41
+#: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:65
 msgid "ensnare"
 msgstr "sidumine"
 
 #. [attack]: type=pierce
-#: data/core/units/elves/Druid.cfg:49 data/core/units/elves/Shyde.cfg:53
+#: data/core/units/elves/Druid.cfg:73 data/core/units/elves/Shyde.cfg:77
 msgid "thorns"
 msgstr "okkad"
 
@@ -1389,7 +1389,7 @@ msgstr ""
 "hoidjad on selle rahva graatsia ja salapära võrdkujuks."
 
 #. [attack]: type=impact
-#: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:27
+#: data/core/units/elves/Shyde.cfg:52 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
 msgstr "haldjapuudutus"
 
@@ -2349,7 +2349,7 @@ msgid "Mage"
 msgstr "Võlur"
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Mage.cfg:23
+#: data/core/units/humans/Mage.cfg:24
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2387,13 +2387,13 @@ msgstr ""
 "võlurid siiski mitmeid sõjas kasulikke kunste,"
 
 #. [attack]: type=fire
-#: data/core/units/humans/Mage.cfg:62
+#: data/core/units/humans/Mage.cfg:63
 #: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
 msgstr "tulenool"
 
 #. [female]
-#: data/core/units/humans/Mage.cfg:166
+#: data/core/units/humans/Mage.cfg:167
 msgid "female^Mage"
 msgstr "Võlur"
 
@@ -4313,7 +4313,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
-#: data/core/units/undead/Necro_Lich.cfg:35
+#: data/core/units/undead/Necro_Lich.cfg:59
 #: data/core/units/undead/Corpse_Soulless.cfg:26
 msgid "touch"
 msgstr "puudutus"
@@ -4350,14 +4350,14 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
-#: data/core/units/undead/Necro_Lich.cfg:47
+#: data/core/units/undead/Necro_Lich.cfg:71
 msgid "chill tempest"
 msgstr "pakane"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
-#: data/core/units/undead/Necro_Lich.cfg:59
+#: data/core/units/undead/Necro_Lich.cfg:83
 #: data/core/units/undead/Necromancer.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:46
 msgid "shadow wave"
@@ -4470,7 +4470,7 @@ msgid "Dark Sorceress"
 msgstr "Must nõid"
 
 #. [female]
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:182
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:183
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "

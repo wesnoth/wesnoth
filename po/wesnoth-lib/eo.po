@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-07-03 22:29+0200\n"
+"POT-Creation-Date: 2008-07-13 17:49+0200\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -232,72 +232,78 @@ msgstr "Ŝtona kaverno"
 #: data/core/terrain.cfg:766 data/core/terrain.cfg:777
 #: data/core/terrain.cfg:787 data/core/terrain.cfg:798
 #: data/core/terrain.cfg:809 data/core/terrain.cfg:820
-#: data/core/terrain.cfg:831 data/core/terrain.cfg:844
-#: data/core/terrain.cfg:855 data/core/terrain.cfg:866
-#: data/core/terrain.cfg:878 data/core/terrain.cfg:893
-#: data/core/terrain.cfg:904
+#: data/core/terrain.cfg:831 data/core/terrain.cfg:842
+#: data/core/terrain.cfg:856 data/core/terrain.cfg:867
+#: data/core/terrain.cfg:878 data/core/terrain.cfg:891
+#: data/core/terrain.cfg:906 data/core/terrain.cfg:917
 msgid "Village"
 msgstr "Vilaĝo"
 
 #. [terrain]
-#: data/core/terrain.cfg:919
+#: data/core/terrain.cfg:932
 msgid "Deep Water"
 msgstr "Profunda Akvo"
 
 #. [terrain]
-#: data/core/terrain.cfg:929
+#: data/core/terrain.cfg:942
 msgid "Shallow Water"
 msgstr "Malprofunda akvo"
 
 #. [terrain]
-#: data/core/terrain.cfg:939
+#: data/core/terrain.cfg:952
 msgid "River Ford"
 msgstr "Travadejo"
 
 #. [terrain]
-#: data/core/terrain.cfg:954
+#: data/core/terrain.cfg:963
+#, fuzzy
+msgid "Coastal Reef"
+msgstr "Bordregiono"
+
+#. [terrain]
+#: data/core/terrain.cfg:977
 msgid "Impassable Mountains"
 msgstr "Netrapaseblaj Montoj"
 
 #. [terrain]
-#: data/core/terrain.cfg:963
+#: data/core/terrain.cfg:986
 msgid "Impassable Desert Mountains"
 msgstr "Netrapaseblaj Dezertaj Montoj"
 
 #. [terrain]
-#: data/core/terrain.cfg:973
+#: data/core/terrain.cfg:996
 msgid "Cave Wall"
 msgstr "Muro de Kaverno"
 
 #. [terrain]
-#: data/core/terrain.cfg:983
+#: data/core/terrain.cfg:1006
 #, fuzzy
 msgid "Wall"
 msgstr "Muro de Kaverno"
 
 #. [terrain]
-#: data/core/terrain.cfg:993
+#: data/core/terrain.cfg:1016
 msgid "Void"
 msgstr "Vaka"
 
 #. [terrain]
-#: data/core/terrain.cfg:1006
+#: data/core/terrain.cfg:1029
 msgid "Flat"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1012
+#: data/core/terrain.cfg:1035
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1018
+#: data/core/terrain.cfg:1041
 #, fuzzy
 msgid "Impassable"
 msgstr "Netrapaseblaj Montoj"
 
 #. [terrain]
-#: data/core/terrain.cfg:1024
+#: data/core/terrain.cfg:1047
 msgid "Unwalkable"
 msgstr ""
 
@@ -363,7 +369,7 @@ msgid "Close Window"
 msgstr "Fermu fenestron"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:88
 msgid "Preferences"
 msgstr "Preferoj"
 
@@ -372,7 +378,7 @@ msgid "Scroll Speed:"
 msgstr "Rapideco de la rulumo:"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:163
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:67
 msgid "Toggle Full Screen"
 msgstr "Tuta ekrano"
 
@@ -405,7 +411,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125 src/hotkeys.cpp:159
 msgid "Resize Map"
 msgstr "Ŝanĝi grandecon de mapo"
 
@@ -433,27 +439,27 @@ msgstr "Y-akso"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Renversi mapon (tio povas ŝanĝi dimensiojn de la mapo):"
 
-#: src/filechooser.cpp:56
+#: src/filechooser.cpp:62
 msgid "File: "
 msgstr "Dosiero:"
 
-#: src/filechooser.cpp:59
+#: src/filechooser.cpp:65
 msgid "Delete File"
 msgstr "Forigi Dosieron"
 
-#: src/filechooser.cpp:61 src/filechooser.cpp:186
+#: src/filechooser.cpp:67 src/filechooser.cpp:192
 msgid "New Folder"
 msgstr "Nova Dosierujo"
 
-#: src/filechooser.cpp:174
+#: src/filechooser.cpp:180
 msgid "Deletion of the file failed."
 msgstr "Forigo de la dosiero malsukcesis."
 
-#: src/filechooser.cpp:187
+#: src/filechooser.cpp:193
 msgid "Name: "
 msgstr "Nomo:"
 
-#: src/filechooser.cpp:192
+#: src/filechooser.cpp:198
 msgid "Creation of the directory failed."
 msgstr "Kreo de la dosierujo malsukcesis."
 
@@ -744,7 +750,7 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Montri mesaĝon pri ĉiuj ludantoj aliĝintaj al la grupluda kompanio"
 
 #: src/game_preferences_display.cpp:369
-msgid "Find and set path to MP server to host lan games."
+msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
 #: src/game_preferences_display.cpp:370
@@ -893,7 +899,7 @@ msgstr ""
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:806
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -932,8 +938,8 @@ msgid "No scrollbar defined."
 msgstr "Neniu servilo estis difinita."
 
 #: src/gui/widgets/window_builder.cpp:423
-#: src/gui/widgets/window_builder.cpp:976
-#: src/gui/widgets/window_builder.cpp:1068
+#: src/gui/widgets/window_builder.cpp:975
+#: src/gui/widgets/window_builder.cpp:1067
 #, fuzzy
 msgid "No grid defined."
 msgstr "Neniu servilo estis difinita."
@@ -960,359 +966,424 @@ msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:57
 msgid "Next Unit"
 msgstr "Plua Unuo"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:58
 msgid "Previous Unit"
 msgstr "Antaŭa Unuo"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:59
 msgid "Hold Position"
 msgstr "Tenu la pozicion"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:60
 msgid "End Unit Turn"
 msgstr "Fini movon de la unuo"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:61
 msgid "Leader"
 msgstr "Gvidanto"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:62
 msgid "Undo"
 msgstr "Reveni"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:63
 msgid "Redo"
 msgstr "Ripeti"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:64
 msgid "Zoom In"
 msgstr "Zomi"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:65
 msgid "Zoom Out"
 msgstr "Malzomi"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:66
 msgid "Default Zoom"
 msgstr "Defaŭlta zomo"
 
-#: src/hotkeys.cpp:66 src/hotkeys.cpp:828
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:905
 msgid "Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:69
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:70
 msgid "Accelerated"
 msgstr "Rapidigitaj movoj"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:71
 msgid "Unit Description"
 msgstr "Priskribo de milit-unuo"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:72
 msgid "Rename Unit"
 msgstr "Renomu milit-unuon"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:73
 msgid "Save Game"
 msgstr "Konservi la ludon"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:74
 msgid "Save Replay"
 msgstr "Konservi ripeton"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:75
 msgid "Save The Map"
 msgstr "Konservi la mapon"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:76
 msgid "Load Game"
 msgstr "Legi ludon"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:77
 msgid "Recruit"
 msgstr "Varbu"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:78
 msgid "Repeat Recruit"
 msgstr "Varbu denove"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:79
 msgid "Recall"
 msgstr "Alvoku"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:80
 msgid "End Turn"
 msgstr "Fini la movon"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:81
 msgid "Toggle Grid"
 msgstr "Traŝaltu kradeton"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:82
 msgid "Mouse Scrolling"
 msgstr "Rulumo per Muso"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:83
 msgid "Status Table"
 msgstr "Tabelo de stato"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:84
 msgid "Mute"
 msgstr "Mute"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:85
 msgid "Speak"
 msgstr "Parole"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:86
 msgid "Create Unit (Debug!)"
 msgstr "Krei milit-unuon (ĝustigado!)"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:87
 msgid "Change Unit Side (Debug!)"
 msgstr "Aparten-ŝanĝi milit-unuon (ĝustigado!)"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:89
 msgid "Scenario Objectives"
 msgstr "Celoj de la scenaro"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:90
 msgid "Unit List"
 msgstr "Listo de milit-unuoj"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:91
 msgid "Statistics"
 msgstr "Statistiko"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:92
 msgid "Quit Game"
 msgstr "Fini la ludon"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:93
 msgid "Set Team Label"
 msgstr "Fari markon de teamo"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:94
 msgid "Set Label"
 msgstr "Fari markon"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:95
 msgid "Clear Labels"
 msgstr "Purigi markojn"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:96
 msgid "Show Enemy Moves"
 msgstr "Montri malamikaj movoj"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:97
 msgid "Best Possible Enemy Moves"
 msgstr "Amplekso de malamika movebleco"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:98
 msgid "Play"
 msgstr "Ludi"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:99
 msgid "Reset"
 msgstr "Reŝargi"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:100
 msgid "Stop"
 msgstr "Halti"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:101
 msgid "Next Turn"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:102
 msgid "Next Side"
 msgstr "Plua flanko"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:104
 msgid "Full map"
 msgstr "La tuta mapon"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:106
 msgid "Each team"
 msgstr "Ĉiu teamo"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:108
 msgid "Team 1"
 msgstr "Teamo 1"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:109
 msgid "Skip animation"
 msgstr "Ne bildigi figurmovojn"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 msgid "Set Terrain"
 msgstr "Agordi terenon"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112 src/hotkeys.cpp:134
 msgid "Quit Editor"
 msgstr "Forlasi la redaktilon"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:113 src/hotkeys.cpp:135
 msgid "New Map"
 msgstr "Nova mapo"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114 src/hotkeys.cpp:136
 msgid "Load Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:115 src/hotkeys.cpp:137
 msgid "Save Map"
 msgstr "Konservi mapon"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:116
 msgid "Save As"
 msgstr "Konservi kiel"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:117
 msgid "Set Player's keep"
 msgstr "Fiksi defendejon de Ludanto"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 msgid "Flood Fill"
 msgstr "Plenigu"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Fill Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120 src/hotkeys.cpp:151
 msgid "Rotate Selection"
 msgstr "Turni markitan"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121 src/hotkeys.cpp:145
 msgid "Cut"
 msgstr "Eltondi"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122 src/hotkeys.cpp:146
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123 src/hotkeys.cpp:147
 msgid "Paste"
 msgstr "Enmeti"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Revert from Disk"
 msgstr "Relegi el la disko"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126 src/hotkeys.cpp:163
 msgid "Flip Map"
 msgstr "Renversi la mapon"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:127 src/hotkeys.cpp:149
 msgid "Select All"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Draw Terrain"
 msgstr "Bildigi terenon"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:129
 msgid "Refresh Image Cache"
 msgstr "Refreŝigi Memorkaŝon de Bildoj"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 msgid "Delay transition updates"
 msgstr "Haltigi aktualigon de la vualo"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:131
 msgid "Update transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:138
+#, fuzzy
+msgid "Save Map As"
+msgstr "Konservi mapon"
+
+#: src/hotkeys.cpp:139
+msgid "Revert All Changes"
+msgstr ""
+
+#: src/hotkeys.cpp:140
+msgid "Paint Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:141
+msgid "Fill Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:142
+#, fuzzy
+msgid "Selection Tool"
+msgstr "Elekti ĉiiujn"
+
+#: src/hotkeys.cpp:144
+msgid "Set Starting Positions Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:153
+#, fuzzy
+msgid "Flip Selection"
+msgstr "Plenigi markitan"
+
+#: src/hotkeys.cpp:155
+#, fuzzy
+msgid "Generate Tiles In Selection"
+msgstr "Turni markitan"
+
+#: src/hotkeys.cpp:157
+msgid "Randomize Tiles In Selection"
+msgstr ""
+
+#: src/hotkeys.cpp:161
+#, fuzzy
+msgid "Rotate Map"
+msgstr "Legi mapon"
+
+#: src/hotkeys.cpp:165
+#, fuzzy
+msgid "Generate Map"
+msgstr "Generi Novan Mapon"
+
+#: src/hotkeys.cpp:167
+#, fuzzy
+msgid "Refresh Display"
+msgstr "Ekrano"
+
+#: src/hotkeys.cpp:169
+#, fuzzy
+msgid "Update Terrain Tranistions"
+msgstr "Ĝisdatigi trapasojn"
+
+#: src/hotkeys.cpp:171
+#, fuzzy
+msgid "Auto-update Terrain Transitions"
+msgstr "Ĝisdatigi trapasojn"
+
+#: src/hotkeys.cpp:174
 msgid "Delay Shroud Updates"
 msgstr "Haltigi Aktualigon de Vualo"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:175
 msgid "Update Shroud Now"
 msgstr "Aktualigi Vualon Nun"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:176
 msgid "Continue Move"
 msgstr "Daŭri movon"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:177
 msgid "Find Label or Unit"
 msgstr "Trovi markon aŭ batalunuon "
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:178
 msgid "Speak to Ally"
 msgstr "Diri al la aliancano"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:179
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:180
 msgid "Help"
 msgstr "Helpo"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:181
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:182
 msgid "Change the language"
 msgstr "Ŝanghi lingvon"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:184
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:185
 #, fuzzy
 msgid "Custom command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:186
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:187
 msgid "Clear messages"
 msgstr "Forigi mesaĝojn"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:189
 msgid "User-Command#2"
 msgstr "Uzant-Komando#2"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:190
 msgid "User-Command#3"
 msgstr "Uzant-Komando#3"
 
-#: src/hotkeys.cpp:528 src/hotkeys.cpp:873
+#: src/hotkeys.cpp:605 src/hotkeys.cpp:950
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:528 src/hotkeys.cpp:873
+#: src/hotkeys.cpp:605 src/hotkeys.cpp:950
 msgid "Quit"
 msgstr "Finu ludon"
 
-#: src/hotkeys.cpp:828
+#: src/hotkeys.cpp:905
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:835
+#: src/hotkeys.cpp:912
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:837
+#: src/hotkeys.cpp:914
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Ekrankopio"

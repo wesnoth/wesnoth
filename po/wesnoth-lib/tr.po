@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-07-03 22:29+0200\n"
+"POT-Creation-Date: 2008-07-13 17:49+0200\n"
 "PO-Revision-Date: 2008-01-25 09:50+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -234,72 +234,78 @@ msgstr "Taşlık Mağara"
 #: data/core/terrain.cfg:766 data/core/terrain.cfg:777
 #: data/core/terrain.cfg:787 data/core/terrain.cfg:798
 #: data/core/terrain.cfg:809 data/core/terrain.cfg:820
-#: data/core/terrain.cfg:831 data/core/terrain.cfg:844
-#: data/core/terrain.cfg:855 data/core/terrain.cfg:866
-#: data/core/terrain.cfg:878 data/core/terrain.cfg:893
-#: data/core/terrain.cfg:904
+#: data/core/terrain.cfg:831 data/core/terrain.cfg:842
+#: data/core/terrain.cfg:856 data/core/terrain.cfg:867
+#: data/core/terrain.cfg:878 data/core/terrain.cfg:891
+#: data/core/terrain.cfg:906 data/core/terrain.cfg:917
 msgid "Village"
 msgstr "Köy"
 
 #. [terrain]
-#: data/core/terrain.cfg:919
+#: data/core/terrain.cfg:932
 msgid "Deep Water"
 msgstr "Derin Su"
 
 #. [terrain]
-#: data/core/terrain.cfg:929
+#: data/core/terrain.cfg:942
 msgid "Shallow Water"
 msgstr "Sığ Su"
 
 #. [terrain]
-#: data/core/terrain.cfg:939
+#: data/core/terrain.cfg:952
 msgid "River Ford"
 msgstr "Sığ Geçit"
 
 #. [terrain]
-#: data/core/terrain.cfg:954
+#: data/core/terrain.cfg:963
+#, fuzzy
+msgid "Coastal Reef"
+msgstr "Sahil"
+
+#. [terrain]
+#: data/core/terrain.cfg:977
 msgid "Impassable Mountains"
 msgstr "Aşılmaz Dağlar"
 
 #. [terrain]
-#: data/core/terrain.cfg:963
+#: data/core/terrain.cfg:986
 msgid "Impassable Desert Mountains"
 msgstr "Aşılmaz Çöl Dağları"
 
 #. [terrain]
-#: data/core/terrain.cfg:973
+#: data/core/terrain.cfg:996
 msgid "Cave Wall"
 msgstr "Mağara Duvarı"
 
 #. [terrain]
-#: data/core/terrain.cfg:983
+#: data/core/terrain.cfg:1006
 #, fuzzy
 msgid "Wall"
 msgstr "Mağara Duvarı"
 
 #. [terrain]
-#: data/core/terrain.cfg:993
+#: data/core/terrain.cfg:1016
 msgid "Void"
 msgstr "Boş"
 
 #. [terrain]
-#: data/core/terrain.cfg:1006
+#: data/core/terrain.cfg:1029
 msgid "Flat"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1012
+#: data/core/terrain.cfg:1035
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1018
+#: data/core/terrain.cfg:1041
 #, fuzzy
 msgid "Impassable"
 msgstr "Aşılmaz Dağlar"
 
 #. [terrain]
-#: data/core/terrain.cfg:1024
+#: data/core/terrain.cfg:1047
 msgid "Unwalkable"
 msgstr ""
 
@@ -365,7 +371,7 @@ msgid "Close Window"
 msgstr "Pencereyi Kapat"
 
 #: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:88
 msgid "Preferences"
 msgstr "Tercihler"
 
@@ -374,7 +380,7 @@ msgid "Scroll Speed:"
 msgstr "Kaydırma Hızı:"
 
 #: src/editor/editor_dialogs.cpp:284 src/game_preferences_display.cpp:163
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:67
 msgid "Toggle Full Screen"
 msgstr "Tam Ekran Aç-Kapa"
 
@@ -407,7 +413,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125 src/hotkeys.cpp:159
 msgid "Resize Map"
 msgstr "Haritayı Boyutlandır"
 
@@ -435,27 +441,27 @@ msgstr "Y-Ekseni"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Döndür (bu işlem harita boyutlarının değişmesine sebep olabilir):"
 
-#: src/filechooser.cpp:56
+#: src/filechooser.cpp:62
 msgid "File: "
 msgstr "Dosya:"
 
-#: src/filechooser.cpp:59
+#: src/filechooser.cpp:65
 msgid "Delete File"
 msgstr "Dosyayı Sil"
 
-#: src/filechooser.cpp:61 src/filechooser.cpp:186
+#: src/filechooser.cpp:67 src/filechooser.cpp:192
 msgid "New Folder"
 msgstr "Yeni Dizin"
 
-#: src/filechooser.cpp:174
+#: src/filechooser.cpp:180
 msgid "Deletion of the file failed."
 msgstr "Dosyanın silinmesi başarısız oldu."
 
-#: src/filechooser.cpp:187
+#: src/filechooser.cpp:193
 msgid "Name: "
 msgstr "Ad: "
 
-#: src/filechooser.cpp:192
+#: src/filechooser.cpp:198
 msgid "Creation of the directory failed."
 msgstr "Dizin oluşturma başarısız oldu."
 
@@ -746,7 +752,7 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "ÇO salonuna giren tüm oyuncularla ilgili iletiler gösterilir."
 
 #: src/game_preferences_display.cpp:369
-msgid "Find and set path to MP server to host lan games."
+msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
 #: src/game_preferences_display.cpp:370
@@ -897,7 +903,7 @@ msgstr ""
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:806
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -936,8 +942,8 @@ msgid "No scrollbar defined."
 msgstr "Tanımlı sunucu yok."
 
 #: src/gui/widgets/window_builder.cpp:423
-#: src/gui/widgets/window_builder.cpp:976
-#: src/gui/widgets/window_builder.cpp:1068
+#: src/gui/widgets/window_builder.cpp:975
+#: src/gui/widgets/window_builder.cpp:1067
 #, fuzzy
 msgid "No grid defined."
 msgstr "Tanımlı sunucu yok."
@@ -964,359 +970,424 @@ msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:57
 msgid "Next Unit"
 msgstr "Sonraki Birim"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:58
 msgid "Previous Unit"
 msgstr "Önceki Birim"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:59
 msgid "Hold Position"
 msgstr "Konumu Tut"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:60
 msgid "End Unit Turn"
 msgstr "Birim Elini Bitir"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:61
 msgid "Leader"
 msgstr "Lider"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:62
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:63
 msgid "Redo"
 msgstr "Tekrarla"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:64
 msgid "Zoom In"
 msgstr "Yaklaş"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:65
 msgid "Zoom Out"
 msgstr "Uzaklaş"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:66
 msgid "Default Zoom"
 msgstr "Normal Yakınlık"
 
-#: src/hotkeys.cpp:66 src/hotkeys.cpp:828
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:905
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:69
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Ekran görüntüsü"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:70
 msgid "Accelerated"
 msgstr "Hızlandırılmış"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:71
 msgid "Unit Description"
 msgstr "Birim Tanımı"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:72
 msgid "Rename Unit"
 msgstr "Birim ismini değiştir"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:73
 msgid "Save Game"
 msgstr "Oyunu Kaydet"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:74
 msgid "Save Replay"
 msgstr "Oyun Tekrarını Kaydet"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:75
 msgid "Save The Map"
 msgstr "Haritayı Kaydet"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:76
 msgid "Load Game"
 msgstr "Oyun Yükle"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:77
 msgid "Recruit"
 msgstr "Asker al"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:78
 msgid "Repeat Recruit"
 msgstr "Aynısından Askere Al"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:79
 msgid "Recall"
 msgstr "Çağır"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:80
 msgid "End Turn"
 msgstr "Eli Bitir"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:81
 msgid "Toggle Grid"
 msgstr "Izgarayı Aç-Kapa"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:82
 msgid "Mouse Scrolling"
 msgstr "Fare ile Kaydırma"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:83
 msgid "Status Table"
 msgstr "Durum Tablosu"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:84
 msgid "Mute"
 msgstr "Sesi Kapat"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:85
 msgid "Speak"
 msgstr "Konuş"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:86
 msgid "Create Unit (Debug!)"
 msgstr "Birim Oluştur (Hata Ayıklama!)"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:87
 msgid "Change Unit Side (Debug!)"
 msgstr "Birim Tarafını Değiştir (Hata Ayıklama!)"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:89
 msgid "Scenario Objectives"
 msgstr "Senaryo Amaçları"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:90
 msgid "Unit List"
 msgstr "Birim Listesi"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:91
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:92
 msgid "Quit Game"
 msgstr "Oyundan Çık"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:93
 msgid "Set Team Label"
 msgstr "Ekip Etiketi Koy"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:94
 msgid "Set Label"
 msgstr "Etiket Koy"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:95
 msgid "Clear Labels"
 msgstr "Etiketleri Temizle"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:96
 msgid "Show Enemy Moves"
 msgstr "Düşman Hareketlerini Göster"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:97
 msgid "Best Possible Enemy Moves"
 msgstr "En Olası Düşman Hareketleri"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:98
 msgid "Play"
 msgstr "Oyun"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:99
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:100
 msgid "Stop"
 msgstr "Dur"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:101
 msgid "Next Turn"
 msgstr "Sonraki Sıra"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:102
 msgid "Next Side"
 msgstr "Sonraki Taraf"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:104
 msgid "Full map"
 msgstr "Tam harita"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:106
 msgid "Each team"
 msgstr "Her takım"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:108
 msgid "Team 1"
 msgstr "1. Takım"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:109
 msgid "Skip animation"
 msgstr "Animasyonu Atla"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 msgid "Set Terrain"
 msgstr "Zemini Belirle"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112 src/hotkeys.cpp:134
 msgid "Quit Editor"
 msgstr "Düzenleyiciden Çık"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:113 src/hotkeys.cpp:135
 msgid "New Map"
 msgstr "Yeni Harita"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114 src/hotkeys.cpp:136
 msgid "Load Map"
 msgstr "Harita Yükle"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:115 src/hotkeys.cpp:137
 msgid "Save Map"
 msgstr "Haritayı Kaydet"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:116
 msgid "Save As"
 msgstr "Farklı Kaydet"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:117
 msgid "Set Player's keep"
 msgstr "Oyuncunun iç kalesini Belirle"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 msgid "Flood Fill"
 msgstr "Akıcı Doldurma"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Fill Selection"
 msgstr "Seçimi Doldur"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120 src/hotkeys.cpp:151
 msgid "Rotate Selection"
 msgstr "Seçimi Döndür"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121 src/hotkeys.cpp:145
 msgid "Cut"
 msgstr "Kes"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122 src/hotkeys.cpp:146
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123 src/hotkeys.cpp:147
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Revert from Disk"
 msgstr "Diskten eski haline getir"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126 src/hotkeys.cpp:163
 msgid "Flip Map"
 msgstr "Haritayı yansıla"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:127 src/hotkeys.cpp:149
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Draw Terrain"
 msgstr "Zemini Çiz"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:129
 msgid "Refresh Image Cache"
 msgstr "Resim Belleğini Tazele"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 msgid "Delay transition updates"
 msgstr "Geçiş güncellemelerini geciktir"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:131
 msgid "Update transitions"
 msgstr "Geçişleri güncelle"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:138
+#, fuzzy
+msgid "Save Map As"
+msgstr "Haritayı Kaydet"
+
+#: src/hotkeys.cpp:139
+msgid "Revert All Changes"
+msgstr ""
+
+#: src/hotkeys.cpp:140
+msgid "Paint Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:141
+msgid "Fill Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:142
+#, fuzzy
+msgid "Selection Tool"
+msgstr "Tümünü Seç"
+
+#: src/hotkeys.cpp:144
+msgid "Set Starting Positions Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:153
+#, fuzzy
+msgid "Flip Selection"
+msgstr "Seçimi Doldur"
+
+#: src/hotkeys.cpp:155
+#, fuzzy
+msgid "Generate Tiles In Selection"
+msgstr "Seçimi Döndür"
+
+#: src/hotkeys.cpp:157
+msgid "Randomize Tiles In Selection"
+msgstr ""
+
+#: src/hotkeys.cpp:161
+#, fuzzy
+msgid "Rotate Map"
+msgstr "Harita Yükle"
+
+#: src/hotkeys.cpp:165
+#, fuzzy
+msgid "Generate Map"
+msgstr "Yeni Harita Üret"
+
+#: src/hotkeys.cpp:167
+#, fuzzy
+msgid "Refresh Display"
+msgstr "Görüntü"
+
+#: src/hotkeys.cpp:169
+#, fuzzy
+msgid "Update Terrain Tranistions"
+msgstr "Geçişleri güncelle"
+
+#: src/hotkeys.cpp:171
+#, fuzzy
+msgid "Auto-update Terrain Transitions"
+msgstr "Geçişleri güncelle"
+
+#: src/hotkeys.cpp:174
 msgid "Delay Shroud Updates"
 msgstr "Örtü Güncellemeleri Geciktir"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:175
 msgid "Update Shroud Now"
 msgstr "Örtüyü Şimdi Güncelle"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:176
 msgid "Continue Move"
 msgstr "Harekete Devam Et"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:177
 msgid "Find Label or Unit"
 msgstr "Etiket veya Birim Bul"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:178
 msgid "Speak to Ally"
 msgstr "Müttefikle Konuş"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:179
 msgid "Speak to All"
 msgstr "Herkesle konuş"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:180
 msgid "Help"
 msgstr "Yardım"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:181
 msgid "View Chat Log"
 msgstr "Sohbet Kaydını Göster"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:182
 msgid "Change the language"
 msgstr "Dili değiştir"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:184
 msgid "Enter user command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:185
 #, fuzzy
 msgid "Custom command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:186
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:187
 msgid "Clear messages"
 msgstr "İletileri Temizle"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:189
 msgid "User-Command#2"
 msgstr "2. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:190
 msgid "User-Command#3"
 msgstr "3. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:528 src/hotkeys.cpp:873
+#: src/hotkeys.cpp:605 src/hotkeys.cpp:950
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/hotkeys.cpp:528 src/hotkeys.cpp:873
+#: src/hotkeys.cpp:605 src/hotkeys.cpp:950
 msgid "Quit"
 msgstr "Çık"
 
-#: src/hotkeys.cpp:828
+#: src/hotkeys.cpp:905
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekran görüntüsü"
 
-#: src/hotkeys.cpp:835
+#: src/hotkeys.cpp:912
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekran görüntüsü"
 
-#: src/hotkeys.cpp:837
+#: src/hotkeys.cpp:914
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Ekran görüntüsü"
