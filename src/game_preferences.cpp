@@ -68,7 +68,8 @@ void remove_relation(const std::string nick, const std::string relation) {
 
 namespace preferences {
 
-manager::manager()
+manager::manager() :
+	base()
 {
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
