@@ -232,7 +232,7 @@ void tscrollbar_::recalculate()
 		// We can show them all.
 		available_length += minimum_positioner_length();
 
-		pixels_per_step_ = available_length / steps;
+		pixels_per_step_ = available_length / static_cast<float>(steps);
 
 		positioner_length_ = static_cast<unsigned>(pixels_per_step_ * visible_items_) + available_length % steps;
 
@@ -242,8 +242,14 @@ void tscrollbar_::recalculate()
 		WRN_G << "The scrollbar is too small for the"
 			" number of items, movement might seem jerky.\n";
 		
-		pixels_per_step_ = available_length / steps;
-		positioner_length_ = minimum_positioner_length();
+		pixels_per_step_ = available_length / static_cast<float>(steps);
+
+		// When a listbox is in 'pixel mode' (not fixed row height) the
+		// positioner might still be rather big so scale it proportional but
+		// respect the minimum.
+		positioner_length_ = std::max(
+			available_length * visible_items_ / item_count_, 
+			minimum_positioner_length());
 	}
 
 	set_item_position(item_position_);
