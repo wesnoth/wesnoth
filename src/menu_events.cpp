@@ -1454,6 +1454,7 @@ private:
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
 		std::vector<std::string> options;
+		static int last_selection = -1;
 		std::vector<const unit_type*> unit_choices;
 		const std::string heading = std::string(1,HEADING_PREFIX) +
 									_("Race")      + COLUMN_SEPARATOR +
@@ -1492,7 +1493,10 @@ private:
 			//sort by race then by type name
 			umenu.get_menu().sort_by(1);
 			umenu.get_menu().sort_by(0);
-			umenu.get_menu().reset_selection();
+			if (last_selection >= 0)
+				umenu.get_menu().move_selection(last_selection);
+			else 
+				umenu.get_menu().reset_selection();
 
 			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_, unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
 			umenu.add_pane(&unit_preview);
@@ -1503,6 +1507,7 @@ private:
 		}
 
 		if (size_t(choice) < unit_choices.size()) {
+			last_selection = choice;
 			units_.erase(mousehandler.get_last_hex());
 
 			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false);
