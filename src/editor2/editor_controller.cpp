@@ -123,6 +123,13 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 	}
 }
 
+void editor_controller::toggle_grid()
+{
+	preferences::set_grid(!preferences::grid());
+	gui_->set_grid(preferences::grid());
+	gui_->invalidate_all();
+}
+
 void editor_controller::preferences()
 {
 	preferences::show_preferences_dialog(*gui_, game_config_);

@@ -45,6 +45,7 @@ class editor_controller : public controller_base,
 		void main_loop();
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
 		void preferences();
+		void toggle_grid();
 		
 		/* mouse_handler_base */
 		void mouse_motion(int x, int y, const bool browse, bool update);
