@@ -2422,8 +2422,7 @@ static void gzip_decode(const std::string & input_file, const std::string & outp
 
 
 //! Process commandline-arguments
-static int play_game(int argc, char** argv)
-{
+static int process_command_args(int argc, char** argv) {
 	//parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
@@ -2616,19 +2615,19 @@ static int play_game(int argc, char** argv)
 			std::cout << lg::list_logdomains() << "\n";
 			return 0;
 		}
-
 	}
+	
+	// Not the most intuitive solution, but I wanted to leave current semantics for now
+	return -1;
+}
 
-	srand(time(NULL));
-
-	game_controller game(argc,argv);
-	const int start_ticks = SDL_GetTicks();
-
-	// I would prefer to setup locale first so that early error
-	// messages can get localized, but we need the game_controller
-	// initialized to have get_intl_dir() to work.  Note: this
-	// setlocale() but this does not take GUI language setting
-	// into account.
+/**
+ * I would prefer to setup locale first so that early error
+ * messages can get localized, but we need the game_controller
+ * initialized to have get_intl_dir() to work.  Note: setlocale() 
+ * does not take GUI language setting into account.
+ */
+static void init_locale() {
 	#ifdef _WIN32	
 	    std::setlocale(LC_ALL, "English");
 	#else
@@ -2641,6 +2640,22 @@ static int play_game(int argc, char** argv)
 	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
 	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
 	textdomain (PACKAGE);
+}
+
+//! Setups the game environment
+static int play_game(int argc, char** argv)
+{
+	int finished = process_command_args(argc, argv);
+	if(finished != -1) {
+		return finished;
+	}
+
+	srand(time(NULL));
+
+	game_controller game(argc,argv);
+	const int start_ticks = SDL_GetTicks();
+
+	init_locale();
 
 	bool res;
 
