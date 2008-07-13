@@ -2177,7 +2177,7 @@ private:
 			void do_set_var();
 			void do_show_var();
 			void do_unit();
-			void do_buff();
+//			void do_buff();
 			void do_unbuff();
 			void do_create();
 			void do_fog();
@@ -2259,8 +2259,8 @@ private:
 					_("Show a scenario variable."), "<var>", "D");
 				register_command("unit", &console_handler::do_unit,
 					_("Modify a unit variable. (Only top level keys are supported.)"), "", "D");
-				register_command("buff", &console_handler::do_buff,
-					_("Add a trait to a unit."), "", "D");
+/*				register_command("buff", &console_handler::do_buff,
+					_("Add a trait to a unit."), "", "D");*/
 				register_command("unbuff", &console_handler::do_unbuff,
 					_("Remove a trait from a unit. (Does not work yet.)"), "", "D");
 				register_command("create", &console_handler::do_create,
@@ -2783,7 +2783,8 @@ private:
 		menu_handler_.gui_->invalidate(i->first);
 		menu_handler_.gui_->invalidate_unit();
 	}
-	void console_handler::do_buff() {
+	/*void console_handler::do_buff() {
+		print(get_cmd(), _("Debug mode activated!"));
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if(i != menu_handler_.units_.end()) {
 			//i->second.add_trait(get_data());
@@ -2792,7 +2793,7 @@ private:
 		} else {
 			command_failed("No unit selected");
 		}
-	}
+	}*/
 	void console_handler::do_unbuff() {
 		const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
 		if(i != menu_handler_.units_.end()) {
