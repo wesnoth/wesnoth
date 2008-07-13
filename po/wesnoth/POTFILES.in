@@ -13,6 +13,7 @@ src/animated_game.cpp
 src/astarnode.cpp
 src/astarsearch.cpp
 src/attack_prediction.cpp
+src/attack_prediction_display.cpp
 src/boilerplate-header.cpp
 src/builder.cpp
 src/callable_objects.cpp
@@ -22,6 +23,7 @@ src/clipboard.cpp
 src/color_range.cpp
 src/config_adapter.cpp
 src/config.cpp
+src/controller_base.cpp
 src/cursor.cpp
 src/dialogs.cpp
 src/display.cpp
@@ -55,6 +57,7 @@ src/mapgen.cpp
 src/map_label.cpp
 src/menu_events.cpp
 src/mouse_events.cpp
+src/mouse_handler_base.cpp
 src/multiplayer_connect.cpp
 src/multiplayer.cpp
 src/multiplayer_create.cpp
@@ -72,10 +75,10 @@ src/play_controller.cpp
 src/playmp_controller.cpp
 src/playsingle_controller.cpp
 src/playturn.cpp
+src/portrait.cpp
 src/race.cpp
 src/random.cpp
 src/replay_controller.cpp
-src/portrait.cpp
 src/replay.cpp
 src/reports.cpp
 src/sdl_utils.cpp
@@ -100,11 +103,15 @@ src/sha1.cpp
 src/sound.cpp
 src/soundsource.cpp
 src/statistics.cpp
+src/statistics_dialog.cpp
 src/team.cpp
 src/terrain.cpp
 src/tests/main.cpp
 src/tests/test_network_worker.cpp
+src/tests/test_save_dialog.cpp
 src/tests/test_util.cpp
+src/tests/utils/fake_display.cpp
+src/tests/utils/fake_event_source.cpp
 src/theme.cpp
 src/thread.cpp
 src/time.cpp
