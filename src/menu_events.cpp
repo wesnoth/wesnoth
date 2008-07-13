@@ -2244,7 +2244,7 @@ private:
 				register_alias("next_level", "n");
 				register_command("choose_level", &console_handler::do_choose_level,
 					_("Choose next scenario"), "", "D");
-				register_alias("choose_level", "cn");
+				register_alias("choose_level", "cl");
 				register_command("debug", &console_handler::do_debug,
 					_("Turn debug mode on."));
 				register_command("nodebug", &console_handler::do_nodebug,

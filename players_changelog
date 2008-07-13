@@ -10,13 +10,12 @@ Version 1.5.1+svn:
 
  * User interface
    * In multiplayer lobby, all unit's images are now team colored.
-   * Add a column traits in the recall dialog.
+   * Add a column for traits in the recall dialog.
    * Add a filter textbox in the recall dialog.
    * The pathfinding now always prefer straight path and is also more
      stable between little mouse's moves.
    * Add-on publish/delete options have now special icons and colors.
-   * new debug command feature, ":next_level Some_Id" to directly go to
-     scenario having id=Some_Id. Also allow to go backwards in campaign. 
+   * new debug command ":choose_level" or ":cl" to directly go to a scenario.
 
  * Miscellaneous and bug fixes
    * In debug-mode, Missing images are now replaced by a "men-at-work" sign and
