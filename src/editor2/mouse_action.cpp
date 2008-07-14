@@ -53,7 +53,12 @@ editor_action* mouse_action_paint::click(editor_display& disp, int x, int y)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	t_translation::t_terrain terrain = mode_.get_foreground_terrain();
-	editor_action_paint_hex* a = new editor_action_paint_hex(hex, terrain);
+	editor_action* a;
+	if (mode_.get_brush() != NULL) {
+		a = new editor_action_paint_area(mode_.get_brush()->project(hex), terrain);
+	} else {
+		a = new editor_action_paint_hex(hex, terrain);
+	}
 	previous_hex_ = hex;
 	return a;
 }
