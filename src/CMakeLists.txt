@@ -2,6 +2,7 @@
 include_directories( ${Boost_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
+include_directories( ${GETTEXT_INCLUDE_DIR} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
