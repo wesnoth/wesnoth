@@ -90,7 +90,7 @@ opts.AddOptions(
 #
 
 sys.path.insert(0, "./scons")
-env = Environment(tools=["tar", "gettext", "install"], options = opts, toolpath = ["scons"])
+env = Environment(tools=["tar", "gettext", "install", "python_devel"], options = opts, toolpath = ["scons"])
 
 opts.Save('.scons-option-cache', env)
 

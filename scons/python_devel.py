@@ -1,12 +1,22 @@
 # vi: syntax=python:et:ts=4
 import sys, os
 from config_check_utils import *
+import distutils.sysconfig
+
+def exists():
+    return True
+
+def PythonExtension(env, target, source, **kv):
+    return env.SharedLibrary(target, source, SHLIBPREFIX='', SHLIBSUFFIX=distutils.sysconfig.get_config_var("SO"), **kv)
+
+def generate(env):
+    from SCons.Script.SConscript import SConsEnvironment
+    SConsEnvironment.PythonExtension = PythonExtension
 
 def CheckPython(context):
     env = context.env
     backup = backup_env(env, ["CPPPATH", "LIBPATH", "LIBS"])
     context.Message("Checking for Python... ")
-    import distutils.sysconfig
     env.AppendUnique(CPPPATH = distutils.sysconfig.get_python_inc())
     version = distutils.sysconfig.get_config_var("VERSION")
     if not version:
