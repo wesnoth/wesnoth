@@ -87,7 +87,7 @@ if(SVNVERSION_EXECUTABLE)
     add_custom_target(revision-stamp ALL
                       COMMAND ${CMAKE_COMMAND}
                       -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
-                      -P "${CMAKE_SOURCE_DIR}/cmake/revision.cmake"
+                      -P "${CMAKE_MODULE_PATH}/revision.cmake"
                       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                       COMMENT "Updating revision")
 

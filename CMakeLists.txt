@@ -218,7 +218,7 @@ if(GUI STREQUAL "tiny")
 
   add_custom_target(shrink-images ALL 
                     COMMAND ${CMAKE_COMMAND}
-                    ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_SOURCE_DIR}/cmake/ShrinkImages.cmake"
+                    ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_MODULE_PATH}/ShrinkImages.cmake"
                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
                     COMMENT "Creating resized images for tinygui.")
 
@@ -255,7 +255,7 @@ endif()
 #
 
 configure_file(
-  "${CMAKE_SOURCE_DIR}/cmake/uninstall.cmake.in"
+  "${CMAKE_MODULE_PATH}/uninstall.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake"
   IMMEDIATE @ONLY)
 
