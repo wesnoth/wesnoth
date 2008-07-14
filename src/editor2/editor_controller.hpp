@@ -140,7 +140,7 @@ class editor_controller : public controller_base,
 		static const int max_action_stack_size_;
 		
 		std::vector<brush> brushes_;
-		std::vector<mouse_action*> mouse_actions_;
+		std::map<std::string, mouse_action*> mouse_actions_;
 };
 
 } //end namespace editor2

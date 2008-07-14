@@ -20,6 +20,7 @@
 #include "mouse_action.hpp"
 
 #include "../foreach.hpp"
+#include "../pathutils.hpp"
 
 namespace editor2 {
 
@@ -39,6 +40,7 @@ editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
 
 void mouse_action_paint::move(editor_display& disp, int x, int y)
 {
+	SCOPE_ED;
 	disp.clear_highlighted_locs();
 	if (mode_.get_brush() != NULL) {
 		foreach (gamemap::location loc, mode_.get_brush()->project(disp.hex_clicked_on(x,y))) {
@@ -58,6 +60,7 @@ editor_action* mouse_action_paint::click(editor_display& disp, int x, int y)
 
 editor_action* mouse_action_paint::drag(editor_display& disp, int x, int y)
 {
+	move(disp, x, y);
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	if (hex != previous_hex_) {
 		return click(disp, x, y);

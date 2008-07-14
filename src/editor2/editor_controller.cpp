@@ -42,15 +42,19 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	gui_->invalidate_all();
 	gui_->draw();
 	events::raise_draw_event();
+	
 	brushes_.push_back(brush());
-	brushes_[0].add_relative_location(0,0);
-	brushes_[0].add_relative_location(1,0);
-	brushes_[0].add_relative_location(-1,0);
-	brushes_[0].add_relative_location(-2,0);
+	const config::child_list& children = game_config.get_children("brush");
+	foreach (const config* i, game_config.get_children("brush")) {
+		brushes_.push_back(brush(*i));
+	}
+	if (brushes_.size() == 1) {
+		WRN_ED << "No brushes defined!";
+	}
 	set_brush(&brushes_[0]);
-	mouse_actions_.push_back(new mouse_action_paint(*this));
-	mouse_actions_.push_back(new mouse_action_fill(*this));
-	set_mouse_action(mouse_actions_[0]);
+	mouse_actions_.insert(std::make_pair("paint", new mouse_action_paint(*this)));
+	mouse_actions_.insert(std::make_pair("fill", new mouse_action_fill(*this)));
+	set_mouse_action(mouse_actions_["paint"]);
 	
 }
 
@@ -68,8 +72,9 @@ editor_controller::~editor_controller()
     delete gui_;
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
-	foreach (mouse_action* a, mouse_actions_) {
-		delete a;
+	typedef std::pair<std::string, mouse_action*> apr;
+	foreach (apr a, mouse_actions_) {
+		delete a.second;
 	}
 }
 
@@ -104,6 +109,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
+		case HOTKEY_EDITOR_BRUSH_NEXT:
+		case HOTKEY_EDITOR_TOOL_NEXT:
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
 		case HOTKEY_EDITOR_MAP_REVERT:
@@ -138,13 +145,25 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 
 bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 {
+	SCOPE_ED;
 	using namespace hotkey;
 	switch (command) {
 		case HOTKEY_EDITOR_TOOL_PAINT:
-			set_mouse_action(mouse_actions_[0]);
+			set_mouse_action(mouse_actions_["paint"]);
 			return true;
 		case HOTKEY_EDITOR_TOOL_FILL:
-			set_mouse_action(mouse_actions_[1]);
+			set_mouse_action(mouse_actions_["fill"]);
+			return true;
+		case HOTKEY_EDITOR_BRUSH_NEXT:
+			{
+				brush* next = get_brush();
+				next++;
+				if (next > &brushes_.back()) {
+					next = &brushes_[0];
+				}
+				set_brush(next);
+				gui().invalidate_all();
+			}
 			return true;
 		default:
 			return controller_base::execute_command(command, index);
@@ -213,28 +232,22 @@ void editor_controller::clear_stack(action_stack& stack)
 
 bool editor_controller::can_undo() const
 {
-	std::cerr << "\ncan_undo" << undo_stack_.size() << "\n";
 	return !undo_stack_.empty();
 }
 
 bool editor_controller::can_redo() const
 {
-	std::cerr << "\ncan_redo" << redo_stack_.size() << "\n";
 	return !redo_stack_.empty();
 }
 
 void editor_controller::undo()
 {
-	std::cerr << "\npreundo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 	perform_action_between_stacks(undo_stack_, redo_stack_);
-	std::cerr << "\nupostndo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 }
 
 void editor_controller::redo()
 {
-	std::cerr << "\npreredo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 	perform_action_between_stacks(redo_stack_, undo_stack_);
-	std::cerr << "\npostredo : " << undo_stack_.size() << redo_stack_.size() << "\n";
 }
 
 void editor_controller::perform_action_between_stacks(action_stack& from, action_stack& to)

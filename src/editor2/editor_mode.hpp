@@ -38,7 +38,7 @@ public:
 	}
 	const t_translation::t_terrain& get_foreground_terrain() const { return foreground_terrain_; }
 	const t_translation::t_terrain& get_background_terrain() const { return background_terrain_; }
-	const brush* get_brush() const { return brush_; }
+	brush* get_brush() { return brush_; }
 	mouse_action* get_mouse_action() { return mouse_action_; }
 protected:
 	void set_foreground_terrain(t_translation::t_terrain t) { foreground_terrain_ = t; }
