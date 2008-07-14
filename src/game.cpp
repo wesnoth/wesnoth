@@ -169,6 +169,7 @@ private:
 	void delete_addon(const std::string& addon, network::connection sock);
 	void remove_addon(const std::string& addon);
 	bool addon_dependencies_met(const std::vector<std::string>& deplist);
+	bool detect_video_settings(); // FIXME
 
 	const int argc_;
 	int arg_;
@@ -202,6 +203,10 @@ private:
 	util::scoped_ptr<game_display> disp_;
 
 	game_state state_;
+
+	std::pair<int,int> resolution; // FIXME
+	int bpp; // FIXME
+	int video_flags; // FIXME
 
 	std::string loaded_game_;
 	bool loaded_game_show_replay_;
@@ -392,23 +397,10 @@ game_display& game_controller::disp()
 	return *disp_.get();
 }
 
-bool game_controller::init_video()
+bool game_controller::detect_video_settings() 
 {
-	if(no_gui_) {
-		if(!multiplayer_mode_) {
-			std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
-			return false;
-		}
-		video_.make_fake();
-		game_config::no_delay = true;
-		return true;
-	}
-
-	image::set_wm_icon();
-
-	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
-
-	std::pair<int,int> resolution = preferences::resolution();
+	video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
+	resolution  = preferences::resolution();
 
 	int DefaultBPP = 24;
 	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
@@ -418,7 +410,7 @@ bool game_controller::init_video()
 
 	std::cerr << "Checking video mode: " << resolution.first
 		  << "x" << resolution.second << "x" << DefaultBPP << "...\n";
-	int bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
+	bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 
 	if(bpp == 0) {
 		//Video mode not supported, maybe from bad prefs.
@@ -492,6 +484,28 @@ bool game_controller::init_video()
 
 	if(force_bpp_ > 0) {
 		bpp = force_bpp_;
+	}
+
+	return true;
+}
+
+bool game_controller::init_video()
+{
+	if(no_gui_) {
+		if(!multiplayer_mode_) {
+			std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
+			return false;
+		}
+		video_.make_fake();
+		game_config::no_delay = true;
+		return true;
+	}
+
+	image::set_wm_icon();
+
+	bool found_matching = detect_video_settings();
+	if(!found_matching) {
+		return false;
 	}
 
 	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
