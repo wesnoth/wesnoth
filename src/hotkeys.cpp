@@ -218,7 +218,7 @@ void set_scope_active(scope s, bool set)
 
 bool is_scope_active(scope s)
 {
-	return scope_active_[s];
+	return true; //scope_active_[s];
 }
 
 const std::string& get_scope_string(scope s)
