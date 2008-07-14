@@ -59,13 +59,16 @@ void editor_action_chain::perform_without_undo(editor_map& m) const
 	}
 }
 
-editor_action_paste* editor_action_paste::perform(editor_map& /*map*/) const
+editor_action_paste* editor_action_paste::perform(editor_map& map) const
 {
-	throw editor_action_not_implemented();
+	map_fragment mf(map, paste_.get_area());
+	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
+	perform_without_undo(map);
+	return undo;
 }
-void editor_action_paste::perform_without_undo(editor_map& /*map*/) const
+void editor_action_paste::perform_without_undo(editor_map& map) const
 {
-	throw editor_action_not_implemented();
+	paste_.paste_into(map, loc_);
 }
 
 editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& map) const
@@ -79,27 +82,39 @@ void editor_action_paint_hex::perform_without_undo(editor_map& map) const
 	map.set_terrain(loc_, t_);
 }
 
-editor_action_paste* editor_action_paint_brush::perform(editor_map& /*map*/) const
+editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
 {
-	throw editor_action_not_implemented();
-}
-void editor_action_paint_brush::perform_without_undo(editor_map& /*map*/) const
+	map_fragment mf(map, area_);
+	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
+	perform_without_undo(map);
+	return undo;
+}	
+
+void editor_action_paint_area::perform_without_undo(editor_map& map) const
 {
-	throw editor_action_not_implemented();
+	foreach (gamemap::location loc, area_) {
+		map.set_terrain(loc, t_);
+	}
 }
 
-editor_action_fill* editor_action_fill::perform(editor_map& map) const
+editor_action_paint_area* editor_action_fill::perform(editor_map& map) const
 {
-	editor_action_fill* undo = new editor_action_fill(loc_, map.get_terrain(loc_));
-	perform_without_undo(map);
-	return undo;	
+	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
+	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, map.get_terrain(loc_));
+	perform_actual(map, to_fill);
+	return undo;
 }
 void editor_action_fill::perform_without_undo(editor_map& map) const
 {
 	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
+	perform_actual(map, to_fill);
+}
+
+void editor_action_fill::perform_actual(editor_map& map, const std::set<gamemap::location>& to_fill) const
+{
 	foreach (gamemap::location l, to_fill) {
 		map.set_terrain(l, t_);
-	}
+	}	
 }
 
 editor_action_whole_map* editor_action_resize_map::perform(editor_map& /*map*/) const

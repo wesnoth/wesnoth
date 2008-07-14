@@ -20,6 +20,7 @@
 
 #include "action_base.hpp"
 #include "editor_map.hpp"
+#include "map_fragment.hpp"
 #include "../map.hpp"
 #include "../terrain.hpp"
 
@@ -119,18 +120,17 @@ class editor_action_location_terrain : public editor_action_location
 };
 
 //paste a region into the map.
-//The paste data will most likely be a gamemap with some sort of mask
 class editor_action_paste : public editor_action_location
 {
     public:
-        editor_action_paste(gamemap::location loc, gamemap paste)
+        editor_action_paste(const gamemap::location& loc, const map_fragment& paste)
         : editor_action_location(loc), paste_(paste)
         {
         }
         editor_action_paste* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
     protected:
-        gamemap paste_;
+        map_fragment paste_;
 };
 
 //replace a hex at a given location with a given terrain
@@ -146,32 +146,19 @@ class editor_action_paint_hex : public editor_action_location_terrain
         void perform_without_undo(editor_map& map) const;
 };
 
-class editor_action_paint_many : public editor_action
-{
-	public:
-		editor_action_paint_many(std::set<gamemap::location> locs, t_translation::t_terrain t)
-		: locs_(locs), t_(t)
-		{
-		}
-	protected:
-		std::set<gamemap::location> locs_;
-		t_translation::t_terrain t_;
-};
-
-//paint a terrain on the map with a brush. The brush is a special mask type
-//note that undo in this case is a paste not a brush paint.
-class editor_action_paint_brush : public editor_action_location_terrain
+class editor_action_paint_area : public editor_action
 {
     public:
-        editor_action_paint_brush(gamemap::location loc, 
-			t_translation::t_terrain t, const brush& b)
-        : editor_action_location_terrain(loc, t), b_(b)
+        editor_action_paint_area(std::set<gamemap::location> area, 
+			t_translation::t_terrain t)
+        : area_(area), t_(t)
         {
         }
         editor_action_paste* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
     protected:
-        const brush& b_;
+		std::set<gamemap::location> area_;
+		t_translation::t_terrain t_;
 };
 
 //flood fill
@@ -183,8 +170,9 @@ class editor_action_fill : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t)
         {
         }
-        editor_action_fill* perform(editor_map& map) const;
+        editor_action_paint_area* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
+		void perform_actual(editor_map& map, const std::set<gamemap::location>& to_fill) const;
 };
 
 //resize map (streching / clipping behaviour?)

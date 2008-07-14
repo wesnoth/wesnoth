@@ -310,6 +310,7 @@ SET(wesnoth-editor2_SRC
     editor2/editor_map.cpp
     editor2/editor_mode.cpp
     editor2/editor_mouse_handler.cpp
+    editor2/map_fragment.cpp
     editor2/mouse_action.cpp
 )
 
