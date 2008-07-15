@@ -1206,10 +1206,7 @@ void display::add_highlighted_loc(const gamemap::location &hex)
 
 void display::clear_highlighted_locs()
 {
-	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
-		 it != highlighted_locations_.end(); it++) {
-		invalidate(*it);
-	}
+	invalidate(highlighted_locations_);
 	highlighted_locations_.clear();
 }
 
@@ -2130,6 +2127,17 @@ bool display::invalidate(const gamemap::location& loc)
 		return false;
 	
 	return invalidated_.insert(loc).second;
+}
+
+bool display::invalidate(const std::set<gamemap::location>& locs)
+{
+	if(invalidateAll_)
+		return false;
+	bool ret = false;
+	foreach (const gamemap::location& loc, locs) {
+		ret = invalidated_.insert(loc).second || ret;
+	}
+	return ret;
 }
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)

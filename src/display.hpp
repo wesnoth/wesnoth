@@ -239,6 +239,8 @@ public:
 	/** Function to invalidate a specific tile for redrawing. */
 	bool invalidate(const gamemap::location& loc);
 	
+	bool invalidate(const std::set<gamemap::location>& locs);
+	
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
 
