@@ -125,6 +125,8 @@ class editor_controller : public controller_base,
 		/** The display object used and owned by the editor. Possibly recreated when a new map is created */
 		editor_display* gui_;
 		
+		preferences::display_manager* prefs_disp_manager_;
+		
 		/**
 		 * The undo stack. A double-ended queues due to the need to add items to one end,
 		 * and remove from both when performing the undo or when trimming the size. This container owns

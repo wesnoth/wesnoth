@@ -72,6 +72,7 @@ void editor_controller::init(CVideo& video)
 	theme_cfg = theme_cfg ? theme_cfg : &dummy;
 	gui_ = new editor_display(video, map_, *theme_cfg, game_config_, config());
 	gui_->set_grid(preferences::grid());
+	prefs_disp_manager_ = new preferences::display_manager(gui_);
 }
 
 editor_controller::~editor_controller()
@@ -83,6 +84,7 @@ editor_controller::~editor_controller()
 	foreach (apr a, mouse_actions_) {
 		delete a.second;
 	}
+	delete prefs_disp_manager_;
 }
 
 void editor_controller::main_loop()
@@ -221,7 +223,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 void editor_controller::toggle_grid()
 {
 	preferences::set_grid(!preferences::grid());
-	gui_->set_grid(preferences::grid());
 	gui_->invalidate_all();
 }
 
