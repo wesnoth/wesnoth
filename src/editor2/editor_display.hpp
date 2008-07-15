@@ -27,6 +27,11 @@ public:
 
 	bool in_editor() const { return true; }
 
+	void add_brush_loc(const gamemap::location& hex);
+	void set_brush_locs(const std::set<gamemap::location>& hexes); 
+	void clear_brush_locs();
+	void remove_brush_loc(const gamemap::location& hex);
+
 protected:
 	const editor_map& map() { return static_cast<const editor_map&>(map_); }
 	void pre_draw();
@@ -36,6 +41,8 @@ protected:
 	image::TYPE get_image_type(const gamemap::location& loc);
 	const SDL_Rect& get_clip_rect();
 	void draw_sidebar();
+	
+	std::set<gamemap::location> brush_locations_;
 };
 
 } //end namespace editor2

@@ -13,6 +13,9 @@
 
 #include "editor_display.hpp"
 #include "editor_common.hpp"
+
+#include "../foreach.hpp"
+
 #include <cassert>
 
 namespace editor2 {
@@ -25,6 +28,32 @@ editor_display::editor_display(CVideo& video, const editor_map& map,
     clear_screen();
 }
 
+void editor_display::add_brush_loc(const gamemap::location& hex)
+{
+	brush_locations_.insert(hex);
+	invalidate(hex);
+}
+
+void editor_display::set_brush_locs(const std::set<gamemap::location>& hexes)
+{
+	invalidate(brush_locations_);
+	brush_locations_ = hexes;
+	invalidate(brush_locations_);
+}
+
+void editor_display::clear_brush_locs()
+{
+	invalidate(brush_locations_);
+	brush_locations_.clear();
+}
+
+void editor_display::remove_brush_loc(const gamemap::location& hex)
+{
+	brush_locations_.erase(hex);
+	invalidate(hex);
+}
+
+
 void editor_display::pre_draw()
 {
 }
@@ -32,6 +61,8 @@ void editor_display::pre_draw()
 image::TYPE editor_display::get_image_type(const gamemap::location& loc)
 {
     if(loc == mouseoverHex_ && map_.on_board_with_border(mouseoverHex_)) {
+        return image::BRIGHTENED;
+	} else if (brush_locations_.find(loc) != brush_locations_.end()) {
         return image::BRIGHTENED;
     } else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
         return image::SEMI_BRIGHTENED;
