@@ -216,7 +216,7 @@ void set_scope_active(scope s, bool set)
 	scope_active_[s] = set;
 }
 
-bool is_scope_active(scope s)
+bool is_scope_active(scope /*s*/)
 {
 	return true; //scope_active_[s];
 }
