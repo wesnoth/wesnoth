@@ -71,7 +71,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDIT_REFRESH, HOTKEY_EDIT_UPDATE, HOTKEY_EDIT_AUTO_UPDATE,
 	
 #ifdef USE_EDITOR2
-	HOTKEY_EDITOR_QUIT,
+	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
 	HOTKEY_EDITOR_MAP_NEW, HOTKEY_EDITOR_MAP_LOAD, HOTKEY_EDITOR_MAP_SAVE,
 	HOTKEY_EDITOR_MAP_SAVE_AS, HOTKEY_EDITOR_MAP_REVERT,
 	HOTKEY_EDITOR_TOOL_NEXT, HOTKEY_EDITOR_TOOL_PAINT, HOTKEY_EDITOR_TOOL_FILL,
@@ -103,6 +103,7 @@ void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
 bool is_scope_active(scope s);
 const std::string& get_scope_string(scope s);
+const std::string& get_scope_label(scope s);
 
 class hotkey_item {
 public:

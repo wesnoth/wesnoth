@@ -19,6 +19,7 @@
 #include "editor_common.hpp"
 #include "editor_display.hpp"
 #include "editor_map.hpp"
+#include "editor_main.hpp"
 #include "editor_mouse_handler.hpp"
 #include "editor_mode.hpp"
 
@@ -42,7 +43,9 @@ class editor_controller : public controller_base,
 	public:
 		editor_controller(const config &game_config, CVideo& video);
 		~editor_controller();
-		void main_loop();
+		EXIT_STATUS main_loop();
+		void hotkey_quit();
+		void quit_confirm(EXIT_STATUS status);
 		void load_map_dialog();
 		void load_map(const std::string& filename);
 		void set_map(const editor_map& map);
@@ -147,6 +150,11 @@ class editor_controller : public controller_base,
 		 * Action stack (i.e. undo and redo) maximum size
 		 */
 		static const int max_action_stack_size_;
+		
+		int actions_since_save_;
+		
+		bool do_quit_;
+		EXIT_STATUS quit_mode_;
 		
 		std::vector<brush> brushes_;
 		std::map<std::string, mouse_action*> mouse_actions_;

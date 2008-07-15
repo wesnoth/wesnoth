@@ -16,22 +16,12 @@
 #include "editor_common.hpp"
 #include "editor_controller.hpp"
 
-#include "config.hpp"
-#include "filesystem.hpp"
-#include "game_preferences.hpp"
-#include "gamestatus.hpp"
-#include "log.hpp"
-#include "wml_exception.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
 namespace editor2 {
 
 EXIT_STATUS start(config& game_conf, CVideo& video)
 {
 	editor_controller editor(game_conf, video);
-	editor.main_loop();
-	return EXIT_ERROR;
+	return editor.main_loop();
 }
 
 } //end namespace editor2

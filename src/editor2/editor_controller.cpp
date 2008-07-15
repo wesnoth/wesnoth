@@ -37,7 +37,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
 , mouse_handler_base(map_)
 , map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
-, gui_(NULL)
+, gui_(NULL), actions_since_save_(0), do_quit_(false), quit_mode_(EXIT_ERROR)
 {
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
@@ -87,10 +87,25 @@ editor_controller::~editor_controller()
 	delete prefs_disp_manager_;
 }
 
-void editor_controller::main_loop()
+EXIT_STATUS editor_controller::main_loop()
 {
-	for(;;) {
+	while (!do_quit_) {
 		play_slice();
+	}
+	return quit_mode_;
+}
+
+void editor_controller::quit_confirm(EXIT_STATUS mode)
+{
+	std::string message = _("Do you really want to quit?");
+	if (actions_since_save_ != 0) {
+		message += " ";
+		message += _("There are unsaved changes in the map.");
+	}
+	int res = gui::dialog(gui(),_("Quit"),message,gui::YES_NO).show();
+	if (res == 0) {
+		do_quit_ = true;
+		quit_mode_ = mode;
 	}
 }
 
@@ -128,6 +143,7 @@ void editor_controller::set_map(const editor_map& map)
 	map_ = map;
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
+	actions_since_save_ = 0;
 	refresh_all();
 }
 
@@ -146,12 +162,13 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_MUTE:
 		case HOTKEY_PREFERENCES:
 		case HOTKEY_HELP:
+		case HOTKEY_QUIT_GAME:
 			return true; //general hotkeys we can always do
 		case HOTKEY_UNDO:
 			return can_undo();
 		case HOTKEY_REDO:
 			return can_redo();
-		case HOTKEY_EDITOR_QUIT:
+		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
@@ -194,6 +211,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 	SCOPE_ED;
 	using namespace hotkey;
 	switch (command) {
+		case HOTKEY_QUIT_GAME:
+			quit_confirm(EXIT_NORMAL);
+			return true;
+		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
+			quit_confirm(EXIT_QUIT_TO_DESKTOP);
+			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 			set_mouse_action(mouse_actions_["paint"]);
 			return true;
@@ -247,6 +270,13 @@ void editor_controller::perform_action(const editor_action& action)
 	SCOPE_ED;
 	LOG_ED << "Performing action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
 	editor_action* undo = action.perform(map_);
+	if (actions_since_save_ < 0) {
+		//set to a value that will make it impossible to get to zero, as at this point
+		//it is no longer possible to get back the original map state using undo/redo
+		actions_since_save_ = undo_stack_.size() + 1;
+	} else {
+		++actions_since_save_;
+	}
 	undo_stack_.push_back(undo);
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
@@ -303,12 +333,22 @@ bool editor_controller::can_redo() const
 
 void editor_controller::undo()
 {
-	perform_action_between_stacks(undo_stack_, redo_stack_);
+	if (can_undo()) {
+		perform_action_between_stacks(undo_stack_, redo_stack_);
+		--actions_since_save_;
+	} else {
+		ERR_ED << "undo() called with an empty undo stack";
+	}
 }
 
 void editor_controller::redo()
 {
-	perform_action_between_stacks(redo_stack_, undo_stack_);
+	if (can_redo()) {
+		perform_action_between_stacks(redo_stack_, undo_stack_);
+		++actions_since_save_;
+	} else {
+		ERR_ED << "redo() called with an empty redo stack";
+	}
 }
 
 void editor_controller::perform_action_between_stacks(action_stack& from, action_stack& to)

@@ -131,7 +131,7 @@ const struct {
 	{ hotkey::HOTKEY_EDIT_UPDATE, "editupdate", N_("Update transitions"), true, hotkey::SCOPE_GENERAL },
 
 #ifdef USE_EDITOR2
-	{ hotkey::HOTKEY_EDITOR_QUIT, "editor-quit", N_("Quit Editor"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save Map"), false, hotkey::SCOPE_EDITOR },
@@ -198,6 +198,7 @@ std::vector<hotkey::hotkey_item> hotkeys_;
 hotkey::hotkey_item null_hotkey_;
 
 const std::string scope_strings_[] = {"general", "game", "editor"};
+const std::string scope_labels_[] = {"Common", "Game", "Editor"};
 bool scope_active_[hotkey::SCOPE_COUNT] = {true, false};
 }
 
@@ -224,6 +225,11 @@ bool is_scope_active(scope /*s*/)
 const std::string& get_scope_string(scope s)
 {
 	return scope_strings_[s];
+}
+
+const std::string& get_scope_label(scope s)
+{
+	return scope_labels_[s];
 }
 
 static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
