@@ -28,7 +28,7 @@ void mouse_action::move(editor_display& disp, int x, int y)
 {
 }
 
-editor_action* mouse_action::drag(editor_display& disp, int x, int y)
+editor_action* mouse_action::drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
 {
 	return NULL;
 }
@@ -40,12 +40,8 @@ editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
 
 void mouse_action_paint::move(editor_display& disp, int x, int y)
 {
-	SCOPE_ED;
-	disp.clear_highlighted_locs();
 	if (mode_.get_brush() != NULL) {
-		foreach (gamemap::location loc, mode_.get_brush()->project(disp.hex_clicked_on(x,y))) {
-			disp.add_highlighted_loc(loc);
-		}
+		disp.set_brush_locs(mode_.get_brush()->project(disp.hex_clicked_on(x,y)));
 	}
 }
 
@@ -63,7 +59,7 @@ editor_action* mouse_action_paint::click(editor_display& disp, int x, int y)
 	return a;
 }
 
-editor_action* mouse_action_paint::drag(editor_display& disp, int x, int y)
+editor_action* mouse_action_paint::drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
 {
 	move(disp, x, y);
 	gamemap::location hex = disp.hex_clicked_on(x, y);
@@ -76,18 +72,15 @@ editor_action* mouse_action_paint::drag(editor_display& disp, int x, int y)
 	
 editor_action* mouse_action_paint::drag_end(editor_display& disp, int x, int y)
 {
-	return drag(disp, x, y);
+	return NULL;
 }
 
 void mouse_action_fill::move(editor_display& disp, int x, int y)
 {
-	disp.clear_highlighted_locs();
 	std::set<gamemap::location> affected = 
 		dynamic_cast<const editor_map&>(disp.get_map()).
 		get_contigious_terrain_tiles(disp.hex_clicked_on(x, y));
-	foreach (gamemap::location loc, affected) {
-		disp.add_highlighted_loc(loc);
-	}
+	disp.set_brush_locs(affected);
 }
 
 editor_action* mouse_action_fill::click(editor_display& disp, int x, int y)

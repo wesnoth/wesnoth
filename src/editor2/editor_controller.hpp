@@ -73,6 +73,8 @@ class editor_controller : public controller_base,
 		 */
 		void perform_action(const editor_action& action);
 		
+		void perform_partial_action(const editor_action& action);
+
 		void refresh_after_action(const editor_action& action);
 
 		/**

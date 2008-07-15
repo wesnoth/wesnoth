@@ -198,14 +198,23 @@ editor_display& editor_controller::get_display()
 void editor_controller::perform_action(const editor_action& action)
 {
 	SCOPE_ED;
-	editor_action* undo = action.perform(map_);
 	LOG_ED << "Performing action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
+	editor_action* undo = action.perform(map_);
 	undo_stack_.push_back(undo);
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
 	refresh_after_action(action);
 }
 	
+void editor_controller::perform_partial_action(const editor_action& action)
+{
+	SCOPE_ED;
+	LOG_ED << "Performing (partial) action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
+	action.perform_without_undo(map_);
+	clear_stack(redo_stack_);
+	refresh_after_action(action);
+}
+
 void editor_controller::refresh_after_action(const editor_action& /*action*/)
 {
 	//TODO rebuild and ivalidate only what's really needed
@@ -266,13 +275,27 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	if (dragging_) {
 		if (get_mouse_action() != NULL) {
-			editor_action* a = get_mouse_action()->drag(*gui_, x, y);
+			editor_action* last_undo ;
+			if (undo_stack_.empty()) {
+				LOG_ED << __FUNCTION__ << ": Empty undo stack in drag\n";
+				last_undo = NULL;
+			} else {
+				last_undo = undo_stack_.back();
+			}
+			bool partial = false;
+			editor_action* a = get_mouse_action()->drag(*gui_, x, y, partial, last_undo);
+			//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
+			//anything to the undo stack (hence a diferent perform_ call
 			if (a != NULL) {
-				perform_action(*a);
+				if (partial) {
+					perform_partial_action(*a);
+				} else {
+					perform_action(*a);
+				}
 				delete a;
 			}
 		} else {
-			LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
+			WRN_ED << __FUNCTION__ << ": There is no mouse action active!\n";
 		}		
 	} else {
 		if (get_mouse_action() != NULL) {

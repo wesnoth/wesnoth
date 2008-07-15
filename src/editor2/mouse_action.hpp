@@ -49,7 +49,7 @@ public:
 	/**
 	 * Drag operation. A click should have occured earlier.
 	 */
-	virtual editor_action* drag(editor_display& disp, int x, int y);
+	virtual editor_action* drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 	
 	/**
 	 * The end of dragging.
@@ -70,7 +70,7 @@ public:
 	}
 	void move(editor_display& disp, int x, int y);
 	editor_action* click(editor_display& disp, int x, int y);
-	editor_action* drag(editor_display& disp, int x, int y);
+	editor_action* drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 	editor_action* drag_end(editor_display& disp, int x, int y);	
 };
 

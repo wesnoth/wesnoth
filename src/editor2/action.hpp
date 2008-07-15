@@ -61,35 +61,6 @@ class editor_action_chain : public editor_action
         std::vector<editor_action*> actions_;
 };
 
-//class editor_action_chain_whole_map : public editor_action_chain
-//{
-//	public:
-//		explicit editor_action_chain_whole_map(std::vector<editor_action*> actions)
-//		: editor_action_chain(actions)
-//		{
-//		}
-//		editor_action_whole_map* perform(editor_map& m)
-//		{
-//			editor_action_whole_map* undo = new editor_action_whole_map(m);
-//			perform_without_undo(m);
-//			return undo;
-//		}
-//	
-//};
-
-//class editor_action_undo_wrapper : public editor_action
-//{
-//	public:
-//		editor_action_undo_wrapper(editor_action* undo, editor_action* redo)
-//		: undo_(undo)
-//		, redo_(redo)
-//		{
-//		}
-//		~editor_action_undo_wrapper();
-//	protected:
-//		
-//};
-
 //common base classes for actions with common behaviour
 
 //actions which act on a specified location (and possibly on other locations 
@@ -138,7 +109,7 @@ class editor_action_paste : public editor_action_location
 class editor_action_paint_hex : public editor_action_location_terrain
 {
     public:
-        editor_action_paint_hex(gamemap::location loc, t_translation::t_terrain t)
+        editor_action_paint_hex(const gamemap::location& loc, t_translation::t_terrain t)
         : editor_action_location_terrain(loc, t)
         {
         }
@@ -149,13 +120,14 @@ class editor_action_paint_hex : public editor_action_location_terrain
 class editor_action_paint_area : public editor_action
 {
     public:
-        editor_action_paint_area(std::set<gamemap::location> area, 
+        editor_action_paint_area(const std::set<gamemap::location>& area, 
 			t_translation::t_terrain t)
         : area_(area), t_(t)
         {
         }
         editor_action_paste* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
+		void add_location(const gamemap::location& loc);
     protected:
 		std::set<gamemap::location> area_;
 		t_translation::t_terrain t_;
