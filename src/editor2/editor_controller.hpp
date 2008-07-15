@@ -43,6 +43,9 @@ class editor_controller : public controller_base,
 		editor_controller(const config &game_config, CVideo& video);
 		~editor_controller();
 		void main_loop();
+		void load_map_dialog();
+		void load_map(const std::string& filename);
+		void set_map(const editor_map& map);
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
 		void preferences();
@@ -76,6 +79,8 @@ class editor_controller : public controller_base,
 		void perform_partial_action(const editor_action& action);
 
 		void refresh_after_action(const editor_action& action);
+		
+		void refresh_all();
 
 		/**
 		 * Checks if an action stack reached its capacity and removes the front element if so.

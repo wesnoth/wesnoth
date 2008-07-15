@@ -15,11 +15,17 @@
 #include "editor_display.hpp"
 #include "editor_map.hpp"
 #include "mouse_action.hpp"
+
 #include "../config_adapter.hpp"
+#include "../construct_dialog.hpp"
 #include "../cursor.hpp"
+#include "../file_chooser.hpp"
+#include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../gettext.hpp"
 #include "../hotkeys.hpp"
 #include "../preferences.hpp"
+#include "../wml_exception.hpp"
 
 #include "SDL.h"
 
@@ -44,6 +50,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	events::raise_draw_event();
 	
 	brushes_.push_back(brush());
+	brushes_[0].add_relative_location(0, 0);
 	const config::child_list& children = game_config.get_children("brush");
 	foreach (const config* i, game_config.get_children("brush")) {
 		brushes_.push_back(brush(*i));
@@ -83,6 +90,43 @@ void editor_controller::main_loop()
 	for(;;) {
 		play_slice();
 	}
+}
+
+void editor_controller::load_map_dialog()
+{
+	std::string filename_;
+	std::string fn = filename_.empty() ? get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps") : filename_;
+	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
+	if (res == 0) {
+		load_map(fn);
+	}
+}
+
+void editor_controller::load_map(const std::string& filename)
+{
+	std::string map_string = read_file(filename);
+	try {
+		editor_map new_map(game_config_, map_string);
+		set_map(new_map);
+	} catch (gamemap::incorrect_format_exception& e) {
+		std::string message = "There was an error while loading the map: \n";
+		message += e.msg_;
+		gui::message_dialog(gui(), "Error loading map", message).show();
+		return;
+	} catch (twml_exception& e) {
+		std::string message = "There was an error while loading the map: \n";
+		message += e.user_message;
+		gui::message_dialog(gui(), "Error loading map", message).show();
+		return;
+	}
+}
+
+void editor_controller::set_map(const editor_map& map)
+{
+	map_ = map;
+	clear_stack(undo_stack_);
+	clear_stack(redo_stack_);
+	refresh_all();
 }
 
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int /*index*/) const
@@ -162,8 +206,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 					next = &brushes_[0];
 				}
 				set_brush(next);
-				gui().invalidate_all();
+				refresh_all();
+				gui().draw();
 			}
+			return true;
+		case HOTKEY_EDITOR_MAP_LOAD:
+			load_map_dialog();
 			return true;
 		default:
 			return controller_base::execute_command(command, index);
@@ -193,8 +241,6 @@ editor_display& editor_controller::get_display()
 	return *gui_;
 }
 
-
-
 void editor_controller::perform_action(const editor_action& action)
 {
 	SCOPE_ED;
@@ -218,6 +264,11 @@ void editor_controller::perform_partial_action(const editor_action& action)
 void editor_controller::refresh_after_action(const editor_action& /*action*/)
 {
 	//TODO rebuild and ivalidate only what's really needed
+	refresh_all();
+}
+
+void editor_controller::refresh_all()
+{
 	gui().rebuild_all();
 	gui().invalidate_all();
 	gui().recalculate_minimap();
