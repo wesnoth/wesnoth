@@ -103,7 +103,7 @@ private:
 		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED, 
 		COUNT};
 
-	void set_state(tstate state);
+	void set_state(const tstate state);
 
 	/** 
 	 * Current state of the widget.

@@ -245,7 +245,7 @@ void ttext_::set_text(const std::string& text)
 	} 
 }
 
-void ttext_::set_state(tstate state)
+void ttext_::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;

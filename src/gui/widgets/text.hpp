@@ -103,7 +103,7 @@ private:
 	//! Note the order of the states must be the same as defined in settings.hpp.
 	enum tstate { ENABLED, DISABLED, FOCUSSED, COUNT };
 
-	void set_state(tstate state);
+	void set_state(const tstate state);
 	tstate state_;
 
 

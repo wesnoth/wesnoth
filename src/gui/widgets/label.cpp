@@ -39,7 +39,7 @@
 
 namespace gui2 {
 
-void tlabel::set_state(tstate state)
+void tlabel::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;

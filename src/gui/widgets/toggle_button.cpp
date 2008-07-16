@@ -154,7 +154,7 @@ void ttoggle_button::set_retval(const int retval)
 	set_wants_mouse_left_double_click(retval_ != 0);
 }
 
-void ttoggle_button::set_state(tstate state)
+void ttoggle_button::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;

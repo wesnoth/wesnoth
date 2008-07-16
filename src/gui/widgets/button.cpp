@@ -109,7 +109,7 @@ void tbutton::mouse_left_button_click(tevent_handler&)
 	}
 }
 
-void tbutton::set_state(tstate state)
+void tbutton::set_state(const tstate state)
 {
 	if(state != state_) {
 		state_ = state;

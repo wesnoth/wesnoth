@@ -49,7 +49,7 @@ private:
 	 */
 	enum tstate { ENABLED, DISABLED, COUNT };
 
-	void set_state(tstate state);
+	void set_state(const tstate state);
 
 	/** 
 	 * Current state of the widget.
