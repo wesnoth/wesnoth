@@ -16,7 +16,7 @@
 #define EDITOR2_EDITOR_MODE_HPP
 
 #include "editor_common.hpp"
-#include "../map.hpp"
+
 #include "../terrain.hpp"
 
 namespace editor2 {
@@ -29,22 +29,20 @@ namespace editor2 {
  */
 class editor_mode {
 public:
-	editor_mode() 
-	: foreground_terrain_(t_translation::MOUNTAIN)
-	, background_terrain_(t_translation::DEEP_WATER)
-	, brush_(NULL)
-	, mouse_action_(NULL)
-	{
-	}
+	editor_mode();
 	const t_translation::t_terrain& get_foreground_terrain() const { return foreground_terrain_; }
 	const t_translation::t_terrain& get_background_terrain() const { return background_terrain_; }
+	const brush* get_brush() const { return brush_; }
+	const mouse_action* get_mouse_action() const { return mouse_action_; }
 	brush* get_brush() { return brush_; }
 	mouse_action* get_mouse_action() { return mouse_action_; }
+
 protected:
 	void set_foreground_terrain(t_translation::t_terrain t) { foreground_terrain_ = t; }
 	void set_background_terrain(t_translation::t_terrain t) { background_terrain_ = t; }
-	void set_brush(brush* b) { brush_ = b; }
-	void set_mouse_action(mouse_action* a) { mouse_action_ = a; }
+	void set_brush(brush* brush) { brush_ = brush; }
+	void set_mouse_action(mouse_action* action) { mouse_action_ = action; }
+	
 private:
 	t_translation::t_terrain foreground_terrain_;
 	t_translation::t_terrain background_terrain_;

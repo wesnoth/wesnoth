@@ -14,13 +14,12 @@
 #ifndef EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 #define EDITOR2_EDITOR_CONTROLLER_HPP_INCLUDED
 
-#include "brush.hpp"
 #include "action_base.hpp"
+#include "brush.hpp"
 #include "editor_common.hpp"
 #include "editor_display.hpp"
 #include "editor_map.hpp"
 #include "editor_main.hpp"
-#include "editor_mouse_handler.hpp"
 #include "editor_mode.hpp"
 
 #include "../config.hpp"
@@ -50,9 +49,16 @@ class editor_controller : public controller_base,
 		void load_map(const std::string& filename);
 		void set_map(const editor_map& map);
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
+		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
+		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+		void cycle_brush();
 		void preferences();
 		void toggle_grid();
+		
+		void hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command);
+		bool is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const;
+
 		
 		/* mouse_handler_base */
 		void mouse_motion(int x, int y, const bool browse, bool update);
@@ -125,6 +131,8 @@ class editor_controller : public controller_base,
 		/** The current map object */
 		editor_map map_;
 		
+		std::string filename_;
+		
 		/** The display object used and owned by the editor. Possibly recreated when a new map is created */
 		editor_display* gui_;
 		
@@ -157,7 +165,9 @@ class editor_controller : public controller_base,
 		EXIT_STATUS quit_mode_;
 		
 		std::vector<brush> brushes_;
-		std::map<std::string, mouse_action*> mouse_actions_;
+		int current_brush_index_;
+		std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_actions_;
+		
 };
 
 } //end namespace editor2

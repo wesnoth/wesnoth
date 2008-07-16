@@ -35,19 +35,17 @@ const int editor_controller::max_action_stack_size_ = 100;
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
+, editor_mode()
 , mouse_handler_base(map_)
 , map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL), actions_since_save_(0), do_quit_(false), quit_mode_(EXIT_ERROR)
+, current_brush_index_(0)
 {
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 	init(video);
 	cursor::set(cursor::NORMAL);
-	gui_->invalidate_game_status();
-	gui_->invalidate_all();
-	gui_->draw();
-	events::raise_draw_event();
 	
 	brushes_.push_back(brush());
 	brushes_[0].add_relative_location(0, 0);
@@ -59,10 +57,15 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		WRN_ED << "No brushes defined!";
 	}
 	set_brush(&brushes_[0]);
-	mouse_actions_.insert(std::make_pair("paint", new mouse_action_paint(*this)));
-	mouse_actions_.insert(std::make_pair("fill", new mouse_action_fill(*this)));
-	set_mouse_action(mouse_actions_["paint"]);
 	
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, new mouse_action_paint(*this)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, new mouse_action_fill(*this)));
+	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
+	
+	gui_->invalidate_game_status();
+	gui_->invalidate_all();
+	gui_->draw();
+	events::raise_draw_event();	
 }
 
 void editor_controller::init(CVideo& video)
@@ -80,10 +83,10 @@ editor_controller::~editor_controller()
     delete gui_;
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
-	typedef std::pair<std::string, mouse_action*> apr;
+	typedef std::pair<hotkey::HOTKEY_COMMAND, mouse_action*> apr;
 	foreach (apr a, mouse_actions_) {
 		delete a.second;
-	}
+	}	
 	delete prefs_disp_manager_;
 }
 
@@ -125,15 +128,17 @@ void editor_controller::load_map(const std::string& filename)
 	try {
 		editor_map new_map(game_config_, map_string);
 		set_map(new_map);
+		//TODO when this fails see if it's a scenario with a mapdata= key and give
+		//the user an option of loading that map instead of just failing
 	} catch (gamemap::incorrect_format_exception& e) {
 		std::string message = "There was an error while loading the map: \n";
 		message += e.msg_;
-		gui::message_dialog(gui(), "Error loading map", message).show();
+		gui::message_dialog(gui(), "Error loading map (format)", message).show();
 		return;
 	} catch (twml_exception& e) {
 		std::string message = "There was an error while loading the map: \n";
 		message += e.user_message;
-		gui::message_dialog(gui(), "Error loading map", message).show();
+		gui::message_dialog(gui(), "Error loading map (wml)", message).show();
 		return;
 	}
 }
@@ -165,9 +170,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_QUIT_GAME:
 			return true; //general hotkeys we can always do
 		case HOTKEY_UNDO:
-			return can_undo();
+			return true;
 		case HOTKEY_REDO:
-			return can_redo();
+			return true;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
@@ -206,6 +211,21 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 	}
 }
 
+hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND command) const {
+	using namespace hotkey;
+	switch (command) {
+		case HOTKEY_EDITOR_TOOL_PAINT:
+		case HOTKEY_EDITOR_TOOL_FILL:
+			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_TOOL_SELECT:
+			//return get_mouse_action() == mouse_actions_["select"] ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+			//return get_mouse_action() == mouse_actions_["startingposition"] ? ACTION_ON : ACTION_OFF;
+		default:
+			return command_executor::get_action_state(command);
+	}
+}
+
 bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 {
 	SCOPE_ED;
@@ -218,22 +238,11 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
 			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
-			set_mouse_action(mouse_actions_["paint"]);
-			return true;
 		case HOTKEY_EDITOR_TOOL_FILL:
-			set_mouse_action(mouse_actions_["fill"]);
+			hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
-			{
-				brush* next = get_brush();
-				next++;
-				if (next > &brushes_.back()) {
-					next = &brushes_[0];
-				}
-				set_brush(next);
-				refresh_all();
-				gui().draw();
-			}
+			cycle_brush();
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();
@@ -243,10 +252,43 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 	}
 }
 
-void editor_controller::toggle_grid()
+void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
-	preferences::set_grid(!preferences::grid());
-	gui_->invalidate_all();
+	std::vector<std::string> items = items_arg;
+	hotkey::HOTKEY_COMMAND command;
+	std::vector<std::string>::iterator i = items.begin();
+	while(i != items.end()) {
+		command = hotkey::get_hotkey(*i).get_id();
+		if (command == hotkey::HOTKEY_UNDO) {
+			if (can_undo()) {
+				hotkey::get_hotkey(*i).set_description(_("Undo"));
+			} else {
+				hotkey::get_hotkey(*i).set_description(_("Can't Undo"));
+			}
+		} else if (command == hotkey::HOTKEY_REDO) {
+			if (can_redo()) {
+				hotkey::get_hotkey(*i).set_description(_("Redo"));
+			} else {
+				hotkey::get_hotkey(*i).set_description(_("Can't Redo"));
+			}
+		}
+		++i;
+	}
+	controller_base::show_menu(items, xloc, yloc, context_menu);
+}
+
+void editor_controller::cycle_brush()
+{
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	gamemap::location hex_clicked = gui().hex_clicked_on(x,y);
+	gui().invalidate(get_brush()->project(hex_clicked));
+	current_brush_index_++;
+	current_brush_index_ %= brushes_.size();
+	set_brush(&brushes_[current_brush_index_]);
+	std::set<gamemap::location> new_brush_locs = get_brush()->project(hex_clicked);
+	gui().set_brush_locs(new_brush_locs);
+	gui().invalidate(new_brush_locs);
 }
 
 void editor_controller::preferences()
@@ -254,6 +296,29 @@ void editor_controller::preferences()
 	preferences::show_preferences_dialog(*gui_, game_config_);
 	gui_->redraw_everything();
 }
+
+void editor_controller::toggle_grid()
+{
+	preferences::set_grid(!preferences::grid());
+	gui_->invalidate_all();
+}
+
+void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
+{
+	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
+	if (i != mouse_actions_.end()) {
+		set_mouse_action(i->second);
+	} else {
+		ERR_ED << "Invalid hotkey command (" << (int)command << ") passed to set_mouse_action\n";
+	}
+}
+
+bool editor_controller::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
+{
+	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::const_iterator i = mouse_actions_.find(command);
+	return (i != mouse_actions_.end()) && (i->second == get_mouse_action());
+}
+
 
 events::mouse_handler_base& editor_controller::get_mouse_handler_base()
 {
@@ -267,7 +332,6 @@ editor_display& editor_controller::get_display()
 
 void editor_controller::perform_action(const editor_action& action)
 {
-	SCOPE_ED;
 	LOG_ED << "Performing action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
 	editor_action* undo = action.perform(map_);
 	if (actions_since_save_ < 0) {
@@ -285,7 +349,6 @@ void editor_controller::perform_action(const editor_action& action)
 	
 void editor_controller::perform_partial_action(const editor_action& action)
 {
-	SCOPE_ED;
 	LOG_ED << "Performing (partial) action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
 	action.perform_without_undo(map_);
 	clear_stack(redo_stack_);
@@ -333,22 +396,26 @@ bool editor_controller::can_redo() const
 
 void editor_controller::undo()
 {
+	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
 	if (can_undo()) {
 		perform_action_between_stacks(undo_stack_, redo_stack_);
 		--actions_since_save_;
 	} else {
-		ERR_ED << "undo() called with an empty undo stack";
+		WRN_ED << "undo() called with an empty undo stack\n";
 	}
+	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
 }
 
 void editor_controller::redo()
 {
+	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
 	if (can_redo()) {
 		perform_action_between_stacks(redo_stack_, undo_stack_);
 		++actions_since_save_;
 	} else {
-		ERR_ED << "redo() called with an empty redo stack";
+		WRN_ED << "redo() called with an empty redo stack\n";
 	}
+	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
 }
 
 void editor_controller::perform_action_between_stacks(action_stack& from, action_stack& to)
@@ -365,11 +432,14 @@ void editor_controller::perform_action_between_stacks(action_stack& from, action
 void editor_controller::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
+	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
 	if (dragging_) {
+		if (!map_.on_board_with_border(hex_clicked)) return;
 		if (get_mouse_action() != NULL) {
+			LOG_ED << "Mouse drag\n";
 			editor_action* last_undo ;
 			if (undo_stack_.empty()) {
-				LOG_ED << __FUNCTION__ << ": Empty undo stack in drag\n";
+				WRN_ED << __FUNCTION__ << "Empty undo stack in drag\n";
 				last_undo = NULL;
 			} else {
 				last_undo = undo_stack_.back();
@@ -400,6 +470,7 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 
 bool editor_controller::left_click(int x, int y, const bool browse)
 {
+	LOG_ED << "Left click\n";
 	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	LOG_ED << "Left click, after generic handling\n";
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);

@@ -12,12 +12,17 @@
    See the COPYING file for more details.
 */
 
-//! @file action.cpp
-//! Editor action classes
-
 #include "editor_mode.hpp"
 
 namespace editor2 {
-	
+
+editor_mode::editor_mode() 
+: foreground_terrain_(t_translation::MOUNTAIN)
+, background_terrain_(t_translation::DEEP_WATER)
+, brush_(NULL)
+, mouse_action_(NULL)
+{
+}
+
 
 } //end namespace editor2
