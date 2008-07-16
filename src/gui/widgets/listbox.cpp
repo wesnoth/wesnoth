@@ -214,31 +214,6 @@ void tlistbox::scrollbar_click(twidget* caller)
 	set_scrollbar_button_status();
 }
 
-void tlistbox::finalize_setup()
-{
-	scrollbar()->set_callback_positioner_move(callback_scrollbar);
-
-	static std::vector<std::string> button_names;
-	if(button_names.empty()) {
-		button_names.push_back("_begin");
-		button_names.push_back("_line_up");
-		button_names.push_back("_half_page_up");
-		button_names.push_back("_page_up");
-
-		button_names.push_back("_end");
-		button_names.push_back("_line_down");
-		button_names.push_back("_half_page_down");
-		button_names.push_back("_page_down");
-	}
-
-	foreach(const std::string& name, button_names) {
-		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
-		if(button) {
-			button->set_callback_mouse_left_click(callback_scrollbar_button);
-		}
-	}
-}
-
 void tlistbox::set_scrollbar_button_status()
 {
 	// Set scroll up button status
@@ -743,6 +718,30 @@ size_t tlistbox::row_at_offset(int offset, int& offset_in_widget) const
 	}
 }
 
-} // namespace gui2
+void tlistbox::finalize_setup()
+{
+	scrollbar()->set_callback_positioner_move(callback_scrollbar);
 
+	static std::vector<std::string> button_names;
+	if(button_names.empty()) {
+		button_names.push_back("_begin");
+		button_names.push_back("_line_up");
+		button_names.push_back("_half_page_up");
+		button_names.push_back("_page_up");
+
+		button_names.push_back("_end");
+		button_names.push_back("_line_down");
+		button_names.push_back("_half_page_down");
+		button_names.push_back("_page_down");
+	}
+
+	foreach(const std::string& name, button_names) {
+		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
+		if(button) {
+			button->set_callback_mouse_left_click(callback_scrollbar_button);
+		}
+	}
+}
+
+} // namespace gui2
 

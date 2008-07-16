@@ -89,9 +89,6 @@ public:
 	 */
 	void scrollbar_click(twidget* caller);
 
-	/** The builder needs to call us so we can write in the proper callbacks. */
-	void finalize_setup();
-
 	void set_list_builder(tbuilder_grid* list_builder) 
 		{ list_builder_ = list_builder; }
 
@@ -339,10 +336,13 @@ private:
 	 * @retval -1                 If the offset wasn't found.
 	 */
 	size_t row_at_offset(int offset, int& offset_in_widget) const; 
+
+	/** The builder needs to call us so we can write in the proper callbacks. */
+	void finalize_setup();
+
 };
 
 } // namespace gui2
 
 #endif
-
 
