@@ -20,8 +20,13 @@ namespace editor2 {
 
 EXIT_STATUS start(config& game_conf, CVideo& video)
 {
+	hotkey::scope_changer h_(game_conf, "hotkey_editor");
+	hotkey::deactivate_all_scopes();
+	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+	hotkey::set_scope_active(hotkey::SCOPE_EDITOR);	
 	editor_controller editor(game_conf, video);
-	return editor.main_loop();
+	EXIT_STATUS e = editor.main_loop();
+	return e;
 }
 
 } //end namespace editor2

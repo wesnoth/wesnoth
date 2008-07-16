@@ -195,11 +195,24 @@ private:
 class manager {
 public:
 	manager();
+	static void init();
+	static void wipe();
 	~manager();
+};
+
+class scope_changer {
+public:
+	scope_changer(const config& cfg, const std::string& hotkey_tag);
+	~scope_changer();
+private:
+	const config& cfg_;
+	std::string prev_tag_name_;
+	std::vector<bool> prev_scope_active_;
 };
 
 void load_descriptions();
 
+void set_hotkey_tag_name(const std::string& name);
 void load_hotkeys(const config& cfg);
 void save_hotkeys(config& cfg);
 

@@ -41,9 +41,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 , gui_(NULL), actions_since_save_(0), do_quit_(false), quit_mode_(EXIT_ERROR)
 , current_brush_index_(0)
 {
-	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
-	hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 	init(video);
 	cursor::set(cursor::NORMAL);
 	

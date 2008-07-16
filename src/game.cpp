@@ -529,6 +529,9 @@ bool game_controller::init_config()
 	refresh_game_cfg();
 
 	game_config::load_config(game_config_.child("game_config"));
+	hotkey::deactivate_all_scopes();
+	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 	hotkey::load_hotkeys(game_config_);
 	paths_manager_.set_paths(game_config_);
@@ -2003,9 +2006,6 @@ bool game_controller::change_language()
 
 void game_controller::show_preferences()
 {
-	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
-	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	const preferences::display_manager disp_manager(&disp());
 	preferences::show_preferences_dialog(disp(),game_config_);
 
@@ -2380,7 +2380,6 @@ editor2::EXIT_STATUS game_controller::start_editor()
     reset_game_cfg();
     defines_map_["EDITOR2"] = preproc_define();
     refresh_game_cfg();
-	hotkey::load_hotkeys(game_config_);    
 	return editor2::start(game_config_, video_);
 }
 #endif

@@ -197,9 +197,11 @@ const struct {
 std::vector<hotkey::hotkey_item> hotkeys_;
 hotkey::hotkey_item null_hotkey_;
 
+std::string hotkey_tag_name = "hotkey";
+
 const std::string scope_strings_[] = {"general", "game", "editor"};
 const std::string scope_labels_[] = {"Common", "Game", "Editor"};
-bool scope_active_[hotkey::SCOPE_COUNT] = {true, false};
+std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
 }
 
 namespace hotkey {
@@ -207,8 +209,8 @@ namespace hotkey {
 
 void deactivate_all_scopes()
 {
-	foreach (bool& b, scope_active_) {
-		b = false;
+	for (int i = 0; i < hotkey::SCOPE_COUNT; ++i) {
+		scope_active_[i] = false;
 	}
 }
 
@@ -217,9 +219,9 @@ void set_scope_active(scope s, bool set)
 	scope_active_[s] = set;
 }
 
-bool is_scope_active(scope /*s*/)
+bool is_scope_active(scope s)
 {
-	return true; //scope_active_[s];
+	return scope_active_[s];
 }
 
 const std::string& get_scope_string(scope s)
@@ -390,16 +392,47 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 
 manager::manager()
 {
+	init();
+}
+
+void manager::init()
+{
 	for (int i = 0; hotkey_list_[i].command; ++i) {
 		hotkeys_.push_back(hotkey_item(hotkey_list_[i].id, hotkey_list_[i].command,
 				"", hotkey_list_[i].hidden, hotkey_list_[i].scope));
 	}
 }
 
+void manager::wipe()
+{
+	hotkeys_.clear();
+}
 
 manager::~manager()
 {
-	hotkeys_.clear();
+	wipe();
+}
+
+scope_changer::scope_changer(const config& cfg, const std::string& hotkey_tag)
+: cfg_(cfg)
+, prev_tag_name_(hotkey_tag_name)
+, prev_scope_active_(scope_active_)
+{
+	manager::wipe();
+	manager::init();
+	hotkey::load_descriptions();
+	load_hotkeys(cfg_);
+	set_hotkey_tag_name(hotkey_tag);
+}
+
+scope_changer::~scope_changer()
+{
+	scope_active_.swap(prev_scope_active_);
+	manager::wipe();
+	manager::init();
+	hotkey::load_descriptions();
+	set_hotkey_tag_name(prev_tag_name_);
+	load_hotkeys(cfg_);
 }
 
 void load_descriptions()
@@ -412,9 +445,15 @@ void load_descriptions()
 	}
 }
 
+void set_hotkey_tag_name(const std::string& name)
+{
+	hotkey_tag_name = name;	
+}
+
 void load_hotkeys(const config& cfg)
 {
-	const config::child_list& children = cfg.get_children("hotkey");
+	std::cerr << "load_hotkeys " << hotkey_tag_name << "\n";
+	const config::child_list& children = cfg.get_children(hotkey_tag_name);
 	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
 		hotkey_item& h = get_hotkey((**i)["command"]);
 		if(h.get_id() != HOTKEY_NULL) {
@@ -425,13 +464,14 @@ void load_hotkeys(const config& cfg)
 
 void save_hotkeys(config& cfg)
 {
-	cfg.clear_children("hotkey");
+	std::cerr << "save_hotkeys " << hotkey_tag_name << "\n";
+	cfg.clear_children(hotkey_tag_name);
 
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
-		if (i->hidden() || i->get_type() == hotkey_item::UNBOUND)
+		if (i->hidden() || i->get_type() == hotkey_item::UNBOUND || !i->is_in_active_scope())
 			continue;
 
-		config& item = cfg.add_child("hotkey");
+		config& item = cfg.add_child(hotkey_tag_name);
 		item["command"] = i->get_command();
 		if (i->get_type() == hotkey_item::CLEARED)
 		{
