@@ -146,6 +146,22 @@ void tscrollbar_::mouse_left_button_down(tevent_handler& event)
 		event.mouse_capture();
 		set_state(PRESSED);
 	}
+
+	const int bar = on_bar(mouse);
+
+	if(bar == -1) {
+		scroll(HALF_JUMP_BACKWARDS);
+		if(callback_positioner_move_) {
+			callback_positioner_move_(this);
+		}
+	} else if(bar == 1) {
+		scroll(HALF_JUMP_FORWARD);
+		if(callback_positioner_move_) {
+			callback_positioner_move_(this);
+		}
+	} else {
+		assert(bar == 0);
+	}
 }
 
 void tscrollbar_::mouse_left_button_up(tevent_handler& event)

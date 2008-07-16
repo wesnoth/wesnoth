@@ -69,10 +69,28 @@ unsigned tvertical_scrollbar::offset_after() const
 bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
 {
 	// Note we assume the positioner is over the entire width of the widget.
-  return coordinate.y >= static_cast<int>(get_positioner_offset())
-    && coordinate.y < static_cast<int>(get_positioner_offset() + get_positioner_length())
-    && coordinate.x > 0
-    && coordinate.x < static_cast<int>(get_width());
+	return coordinate.y >= static_cast<int>(get_positioner_offset())
+		&& coordinate.y < static_cast<int>(get_positioner_offset() + get_positioner_length())
+		&& coordinate.x > 0
+		&& coordinate.x < static_cast<int>(get_width());
+}
+
+int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
+{
+	// Not on the widget, leave.
+	if(coordinate.x < 0 || coordinate.x > get_width() 
+			|| coordinate.y < 0 || coordinate.y > get_height()) {
+		return 0;
+	}
+
+	// we also assume the bar is over the entire width of the widget.
+	if(coordinate.y < get_positioner_offset()) {
+		return -1;
+	} else if(coordinate.y >get_positioner_offset() + get_positioner_length()) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 } // namespace gui2

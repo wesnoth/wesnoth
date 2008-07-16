@@ -47,6 +47,9 @@ private:
 	bool on_positioner(const tpoint& coordinate) const;
 
 	/** Inherited from tscrollbar. */
+	int on_bar(const tpoint& coordinate) const;
+
+	/** Inherited from tscrollbar. */
 	int get_length_difference(const tpoint& original, const tpoint& current) const
 		{ return current.y - original.y; }
 

@@ -256,6 +256,19 @@ private:
 	virtual bool on_positioner(const tpoint& coordinate) const = 0;
 
 	/**
+	 * Is the coordinate on the bar?
+	 *
+	 * @param coordinate          Coordinate to test whether it's on the
+	 *                            bar.
+	 *
+	 * @returns                   Whether the location on the bar is.
+	 * @retval -1                 Coordinate is on the bar before positioner.
+	 * @retval 0                  Coordinate is not on the bar.
+	 * @retval 1                  Coordinate is on the bar after the positioner.
+	 */
+	virtual int on_bar(const tpoint& coordinate) const = 0;
+
+	/**
 	 * Gets the relevent difference in between the two positions.
 	 *
 	 * This function is used to determine how much the positioner needs to  be
