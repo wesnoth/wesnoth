@@ -59,6 +59,24 @@ public:
 	 */
 	void list_item_selected(twidget* caller);
 
+private:
+
+	/**
+	 * Helper for list_item_selected().
+	 *
+	 * Tries to sets the selected state for the row, but only if it contains the
+	 * wanted widget.
+	 *
+	 * @param row                    The row to test.
+	 * @param caller                 The widget to look for.
+	 *
+	 * @returns                      True if widget was found false otherwise.
+	 *                               NOTE this doesn't mean the row select status
+	 *                               has been changed.
+	 */
+	bool list_row_selected(const size_t row, twidget* caller) ;
+public:
+
 	/**
 	 * Callback when the scrollbar moves.
 	 */
@@ -86,7 +104,24 @@ public:
 	/** Inherited from tcontainer. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
+private:
+	/** 
+	 * Draws the list area if assume_fixed_row_size_ is true. 
+	 *
+	 * The parameters are the same as draw().
+	 */
+	void draw_list_area_fixed_row_height(surface& surface, const bool force,
+		const bool invalidate_background);
 
+	/** 
+	 * Draws the list area if assume_fixed_row_size_ is false.
+	 *
+	 * The parameters are the same as draw().
+	 */
+	void draw_list_area_variable_row_height(surface& surface, const bool force,
+		const bool invalidate_background);
+
+public:
 	/** Inherited from tcontainer. */
 	void set_size(const SDL_Rect& rect);
 
@@ -218,6 +253,13 @@ private:
 	/** Returns the spacer widget which is used to reserve space of the real list. */
 	const tspacer* list() const;
 
+	/**
+	 * Does every row in the listbox have the same height?
+	 *
+	 * Normally every row does have the same size but it's no requirement so we
+	 * can have a listbox with rows with different height. If all the same
+	 * height the units for the scrollbar are rows, otherwise they are pixels.
+	 */
 	bool assume_fixed_row_size_;
 
 	//! Inherited from tcontrol.
@@ -286,6 +328,17 @@ private:
 	};
 
 	std::vector<trow> rows_;
+
+	/**
+	 * Returns the row at the wanted vertical offset.
+	 *
+	 * @param offset              The offset to look at, the offset in pixels currently on the screen, it will adjust for the scrollbar itself.
+	 * @param offset_in_widget    Returns the vertical offset the offset is in the found widget.
+	 *
+	 * @return                    The row number in which the widget was found.
+	 * @retval -1                 If the offset wasn't found.
+	 */
+	size_t row_at_offset(int offset, int& offset_in_widget) const; 
 };
 
 } // namespace gui2

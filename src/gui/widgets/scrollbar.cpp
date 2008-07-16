@@ -242,6 +242,8 @@ void tscrollbar_::recalculate()
 		WRN_G << "The scrollbar is too small for the"
 			" number of items, movement might seem jerky.\n";
 		
+		available_length += minimum_positioner_length();
+
 		pixels_per_step_ = available_length / static_cast<float>(steps);
 
 		// When a listbox is in 'pixel mode' (not fixed row height) the
