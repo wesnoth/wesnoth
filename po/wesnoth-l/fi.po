@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-03 12:50+0200\n"
-"PO-Revision-Date: 2005-04-25 21:43+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2008-07-14 18:28+0200\n"
+"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,22 +14,22 @@ msgstr ""
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
-msgstr ""
+msgstr "Vapaus"
 
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
-msgstr ""
+msgstr "Lainsuojaton"
 
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
-msgstr ""
+msgstr "(Helppo)"
 
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
-msgstr ""
+msgstr "(Vaativa)"
 
 #. [unit]
 #. [campaign]
@@ -41,12 +41,12 @@ msgstr "Talonpoika"
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
-msgstr ""
+msgstr "(Normaali)"
 
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
-msgstr ""
+msgstr "Karkuri"
 
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:24
@@ -58,41 +58,48 @@ msgid ""
 "\n"
 "(Intermediate level, 9 scenarios)"
 msgstr ""
+"Sisällissodan varjon levittäytyessä Wesnothin ylle joukko sitkeitä "
+"rajaseutulaisia kapinoi kuningatar Ashevieren tyranniaa vastaan. "
+"Voittaakseen tiensä vapauteen heidän ei kuitenkaan riitä kukistaa pelkät "
+"Wesnothin koulutetut miekat, sillä liikkeellä on myös pimeämpiä vihollisia, "
+"kuten örkkejä ja epäkuolleita.\n"
+"\n"
+"(Keskitaso, 9 skenaariota) (33% suomennettu)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "Campaign Design"
-msgstr ""
+msgstr "Kampanjasuunnittelu"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:33
 msgid "Prose-doctoring and preparation for mainline"
-msgstr ""
+msgstr "Tarinansäätö pääjuonta varten"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:39
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Kampanjan ylläpito"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:50
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Taidetyö ja graafinen suunnittelu"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:67
 msgid "Translators"
-msgstr ""
+msgstr "Kääntäjät"
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:5
 msgid "The Raid"
-msgstr ""
+msgstr "Ryöstöretki"
 
 #. [label]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:16
 msgid "Dallben"
-msgstr ""
+msgstr "Dallben"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:21
@@ -102,6 +109,10 @@ msgid ""
 "dissatisfied with the King's rule. Being preoccupied with the great wars, "
 "the King was unable to send adequate forces to protect the frontier."
 msgstr ""
+"Turmoilin aikakaudella, kun vallassa oli kuningas Garard II, Delwynin ja "
+"Dallbenin rajakylät Annuvinin maakunnassa olivat yhä tyytymättömämpiä "
+"kuninkaan hallitsemiseen. Ollessaan syventynyt suuriin sotiin kuninkaan ei "
+"ollut mahdollista lähettää riittäviä joukkoja suojelemaan rajaseutuja."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:26
@@ -110,14 +121,22 @@ msgid ""
 "against the raiding orc hordes and savage saurians. They established their "
 "own trading routes and pacts of mutual defense."
 msgstr ""
+"Näiden rämeiden sitkeät asukit oppivat elämään itsenäisinä ja he "
+"harjoittivat selviytymistaitojaan örkkien ryöstöretkiä ja sivistymättömiä "
+"sauriaaneja vastaan. He perustivat omia kauppareittejään ja sopivat "
+"yhteisestä puolustuksesta."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:30
+#, fuzzy
 msgid ""
 "Although not permitted to train with proper military weapons, these woodsmen "
 "were at home in the forests and swamps of the Western Marches, and became "
 "very effective with their simple slings and clubs."
 msgstr ""
+"Vaikka näillä metsäläisillä ei ollut lupaa harjoitella oikeiden aseiden "
+"käyttöä, he olivat _______ metsissä ja soilla kuin kotonaan, ja heistä tuli "
+"hyvin tehokkaita yksinkertaisten linkojen ja nuijien kanssa."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:34
@@ -126,6 +145,10 @@ msgid ""
 "sought to consolidate her ill-gotten power. She sent her armies across "
 "Wesnoth to intimidate the provincial rulers and secure her continued reign."
 msgstr ""
+"Kuningatar Ashevieren petettyä kuninkaan, Wesnothin uusi sijaishallitsija "
+"koetti lujittaa epäoikeudenmukaisesti saamaansa valtaa. Hän lähetti "
+"armeijansa ympäri Wesnothia pitämään maaherrat pelossa ja turvatakseen "
+"valtakautensa."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:38
@@ -133,27 +156,29 @@ msgid ""
 "The people of Annuvin were unwilling to relinquish their hard-earned self-"
 "rule, especially not to this pretender..."
 msgstr ""
+"Annuvinin kansa ei ollut halukas luovuttamaan kovalla työllä saavuttamaansa "
+"itsehallintoa, varsinkaan tälle kruununtavoittelijalle..."
 
 #. [side]: type=Bandit_Peasant, description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:34
 msgid "Baldras"
-msgstr ""
+msgstr "Baldras"
 
 #. [side]: type=Goblin Pillager, description=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 msgid "Fal Khag"
-msgstr ""
+msgstr "Fal Khag"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:102
 msgid "Defeat all of the Goblin marauders"
-msgstr ""
+msgstr "Kukista jokainen hiisiryöväri"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:106
 msgid "Goblins reach the village of Dallben"
-msgstr ""
+msgstr "Hiidet saavuttavat Dallbenin kylän"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:282
@@ -165,7 +190,7 @@ msgstr ""
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:82
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:96
 msgid "Death of Baldras"
-msgstr ""
+msgstr "Baldrasin kuolema"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:129
@@ -176,7 +201,7 @@ msgstr ""
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:86
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:100
 msgid "Death of Harper"
-msgstr ""
+msgstr "Harperin kuolema"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:286
@@ -193,26 +218,26 @@ msgstr "Vuorot loppuvat"
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:151
 msgid "Gatrakh"
-msgstr ""
+msgstr "Gatrakh"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:152
 msgid "Thurg"
-msgstr ""
+msgstr "Thurg"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:155
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:160
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:165
 msgid "Krung"
-msgstr ""
+msgstr "Krung"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:156
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:161
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:166
 msgid "Gorokh"
-msgstr ""
+msgstr "Gorokh"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:190
@@ -232,47 +257,47 @@ msgstr ""
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:203
 msgid "Jalak"
-msgstr ""
+msgstr "Jalak"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:204
 msgid "Delurin"
-msgstr ""
+msgstr "Delurin"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:205
 msgid "Red"
-msgstr ""
+msgstr "Red"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:206
 msgid "Ordo"
-msgstr ""
+msgstr "Ordo"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:207
 msgid "Novus"
-msgstr ""
+msgstr "Novus"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:208
 msgid "Teneor"
-msgstr ""
+msgstr "Teneor"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:209
 msgid "Kembe"
-msgstr ""
+msgstr "Kembe"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:210
 msgid "Treagh"
-msgstr ""
+msgstr "Treagh"
 
 #. [unit]: type=Footpad_Peasant, description=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 msgid "Harper"
-msgstr ""
+msgstr "Harper"
 
 #. [message]: description=Red
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:231
@@ -361,38 +386,41 @@ msgstr ""
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:325
 msgid "Remald"
-msgstr ""
+msgstr "Remald"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:326
 msgid "Wolmas"
-msgstr ""
+msgstr "Wolmas"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:331
 msgid "Jasken"
-msgstr ""
+msgstr "Jasken"
 
 #. [message]: description=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:338
 msgid ""
 "What's happening here? Why are you running like mad, $unit.user_description|?"
 msgstr ""
+"Mitä täällä tapahtuu? Miksi juokset kuin hullu, $unit.user_description|?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid "Goblin riders on the hunt. We must not let any of them to the village!"
 msgstr ""
+"Hiisiratsastajat jahtaavat. Meidän ei tule päästää heistä yhtäkään kylään!"
 
 #. [message]: description=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:349
 msgid "Look! Goblin riders are on the hunt - and heading right for Dallben!"
 msgstr ""
+"Katso! Hiisiratsastajat ovat ajojahdissa – ja suuntaavat suoraan Dallbeniin!"
 
 #. [message]: description=Remald
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:353
 msgid "Halt!"
-msgstr ""
+msgstr "Seis!"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:371
@@ -400,6 +428,8 @@ msgid ""
 "The goblins reached the village! There will surely be nothing left when they "
 "are done pillaging it."
 msgstr ""
+"Hiidet ovat saavuttaneet kylän! Siellä ei varmasti ole pian enää mitään "
+"jäljellä."
 
 #. [scenario]
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:5
@@ -409,7 +439,7 @@ msgstr ""
 #. [side]: type=Cavalier, description=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:49
 msgid "Tarwen"
-msgstr ""
+msgstr "Tarwen"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
@@ -522,29 +552,28 @@ msgstr ""
 
 #. [side]: type=Highwayman_Peasant, description=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:42
-#, fuzzy
 msgid "Relnan"
-msgstr "Palannut"
+msgstr "Relnan"
 
 #. [side]: type=Orcish Warrior, description=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:67
 msgid "Urk Delek"
-msgstr ""
+msgstr "Urk Delek"
 
 #. [side]: type=Saurian Oracle, description=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
-msgstr ""
+msgstr "Thhsthss"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:123
 msgid "Defeat both enemy leaders"
-msgstr ""
+msgstr "Kukista molemmat vihollisjohtajat"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:135
 msgid "Death of Relnan"
-msgstr ""
+msgstr "Relnanin kuolema"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:163
@@ -678,22 +707,22 @@ msgstr ""
 #. [label]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:16
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [label]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:21
 msgid "Port of Elensefar"
-msgstr ""
+msgstr "Elensefarin satamat"
 
 #. [side]: type=General, description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:52
 msgid "Lord Maddock"
-msgstr ""
+msgstr "Lordi Maddock"
 
 #. [side]: type=General, description=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:72
 msgid "Kestrel"
-msgstr ""
+msgstr "Kestrel"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:99
@@ -708,7 +737,7 @@ msgstr ""
 #. [unit]: type=Lieutenant, description=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 msgid "Rothel"
-msgstr ""
+msgstr "Rothel"
 
 #. [message]: description=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:184
@@ -870,17 +899,17 @@ msgstr ""
 #. [time]
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:29
 msgid "Midnight"
-msgstr ""
+msgstr "Keskiyö"
 
 #. [side]: type=Master Bowman, description=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:54
 msgid "Quentin"
-msgstr ""
+msgstr "Quentin"
 
 #. [side]: type=Rogue, description=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:88
 msgid "Hans"
-msgstr ""
+msgstr "Hans"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:121
@@ -1027,32 +1056,32 @@ msgstr ""
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:184
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:65
 msgid "Helicrom"
-msgstr ""
+msgstr "Helicrom"
 
 #. [side]: type=Necromancer, description=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:99
 msgid "Mal-Jarrof"
-msgstr ""
+msgstr "Mal-Jarrof"
 
 #. [side]: type=Necromancer, description=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:113
 msgid "Mal-Jerod"
-msgstr ""
+msgstr "Mal-Jerod"
 
 #. [side]: type=Lich, description=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 msgid "Sel-Mana"
-msgstr ""
+msgstr "Sel-Mana"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:149
 msgid "Defeat the lich and its minions"
-msgstr ""
+msgstr "Kukista kuolonherra kätyreineen"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:226
 msgid "The leader, I presume."
-msgstr ""
+msgstr "Johtaja, oletan."
 
 #. [message]: description=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:230
@@ -1275,9 +1304,8 @@ msgstr ""
 
 #. [side]: type=Royal Guard, description=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:58
-#, fuzzy
 msgid "Archarel"
-msgstr "rynnäkkö"
+msgstr "Archarel"
 
 #. [side]: type=Iron Mauler, description=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:74
@@ -1927,7 +1955,7 @@ msgstr ""
 #. [unit]: race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
-msgstr ""
+msgstr "Luuritari"
 
 #. [unit]: race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
@@ -1936,6 +1964,9 @@ msgid ""
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Nämä luisilla ratsuilla ratsastajat olivat kerran tasankojen suuria "
+"sotureita. Ne on nostatettu maaperästä epäpyhällä taikuudella levittämään "
+"pelkoa ja tuhoa."
 
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
@@ -1946,12 +1977,12 @@ msgstr "kirves"
 #. [attack]: type=impact
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:79
 msgid "trample"
-msgstr ""
+msgstr "tallominen"
 
 #. [unit]: race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:5
 msgid "Death Squire"
-msgstr ""
+msgstr "Kuoleman aseenkantaja"
 
 #. [unit]: race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:27
@@ -1962,6 +1993,11 @@ msgid ""
 "pick up a good deal of the Knight's power, including the ability to command "
 "underlings."
 msgstr ""
+"Joskus mahtavimmat vihalla ja tuskalla kirotut soturit ja kenraalit tulevat "
+"takaisin maailmaan kuolonritareina. Kuoleman aseenkantajat palvelevat heitä "
+"samalla kun keräävät tarpeeksi epäpyhää voimaa tullakseen itse "
+"kuolonritareiksi. Prosessin aikana he oppivat käyttämään osaa ritarin "
+"voimista, kuten kykyä komentaa alamaisia."
 
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Death_Squire.cfg:32
@@ -1971,7 +2007,7 @@ msgstr "miekka"
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
-msgstr ""
+msgstr "Hiipparimaagi"
 
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
@@ -1982,6 +2018,12 @@ msgid ""
 "skilled as mages with more formal training, their magic can be quite lethal, "
 "while their banditry has resulted in moderate skill with the short sword."
 msgstr ""
+"Jotkut maageista saavat kenkää maagien veljeskunnasta yritettyään harjoittaa "
+"kiellettyjä taitoja. Kokonaan lain ulkopuolella nämä hiipparimaagit tekevät "
+"mitä tahansa mitä tarvitaan heidän mustan magian opintojensa tukemisaan. "
+"Vaikka he eivät olekaan yhtä taitavia kuin normaalin koulutuksen saaneet "
+"maagit, heidän taikuutensa voi olla melkoisen kuolettavaa, kun ryöstelyn "
+"takia heidän taitonsa lyhytmiekankin käsittelyssä on kehittynyt."
 
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
@@ -1991,14 +2033,13 @@ msgstr "lyhytmiekka"
 
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
-#, fuzzy
 msgid "magic missile"
-msgstr "tulipallo"
+msgstr "taikaraketti"
 
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
-msgstr ""
+msgstr "Varjolordi"
 
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
@@ -2009,26 +2050,31 @@ msgid ""
 "needing physical weapons, they are fearsome to both their enemies and those "
 "they lord over."
 msgstr ""
+"Muutamat ihmiset pystyvät käsittämään valon ja pimeän taikuuden salaisuudet "
+"ja silti säilyä järjissään. Ne, jotka voivat pitää sen tasapainossa tulevat "
+"varjolordeiksi, jotka eivät ole kokonaan valon eivätkä pimeyden maailmassa. "
+"He eivät enää tarvitse fyysisiä aseita ja ovat silti pelättyjä sekä "
+"vihollistensa että alamaistensa keskuudessa."
 
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:74
 msgid "astral blade"
-msgstr ""
+msgstr "tähtimiekka"
 
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:85
 msgid "shadow bolt"
-msgstr ""
+msgstr "varjopamaus"
 
 #. [attack]: type=impact
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:97
 msgid "shadow blast"
-msgstr ""
+msgstr "varjovasama"
 
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
-msgstr ""
+msgstr "Varjomaagi"
 
 #. [unit]: race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
@@ -2041,11 +2087,18 @@ msgid ""
 "attacks. Despite their offensive power, the corruption in their souls has "
 "begun to adversely affect their health."
 msgstr ""
+"Väkivallan ja raakuuden vuodet vietettynä kiellettyjen taikuuksien "
+"opiskelujen parissa ovat muuttaneet varjomaagit pelätyiksi taistelijoiksi. "
+"Kokonaan lumoutuneina voimiinsa heidän tiedetään komentavan pieniä joukkoja "
+"kätyreitä. Suoraa taikuutta vaativissa taisteluissa he eivät pärjää "
+"taikuutta käyttävilleen ikätovereilleen, mutta sen sijaan he käyttävät "
+"energiaansa lähitaisteluhyökkäyksiin. Huolimatta hyökkäävästä voimastaan "
+"heidän sielujensa korruptio on alkanut käydä haitaksi heidän terveydelleen."
 
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:38
 msgid "ice blast"
-msgstr ""
+msgstr "jäävasama"
 
 #. [unit]: race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
@@ -2059,6 +2112,9 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"Nämä luisilla ratsuilla ratsastajat olivat kerran tasankojen suuria "
+"sotureita. Ne on nostatettu haudoistaan epäpyhällä taikuudella levittämään "
+"pelkoa ja tuhoa."
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:18
@@ -2066,6 +2122,8 @@ msgid ""
 "Peasants live in the small hamlets and villages scattered across the Wesnoth "
 "countryside."
 msgstr ""
+"Talonpojat elävät pienissä taloryhmissä ja kylissä ympäri Wesnothin "
+"maaseutuja."
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:26
@@ -2096,9 +2154,8 @@ msgstr ""
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:52
-#, fuzzy
 msgid "Peasant Youth"
-msgstr "Talonpoika"
+msgstr "Nuorimies"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:57
@@ -2106,16 +2163,19 @@ msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
 "elsewhere in Wesnoth: reckless, cocky, and eager to explore."
 msgstr ""
+"Nuoret nuhruhiuksiset talonpojat ovat kovin samankaltaisia kuin nuoret "
+"ihmiset muuallakin Wesnothissa: ajattelemattomia, tärkeileviä ja innokkaita "
+"tutkimaan."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:63
 msgid "female^Peasant Youth"
-msgstr ""
+msgstr "Neitokainen"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:72
 msgid "Watchman"
-msgstr ""
+msgstr "Vahtimies"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:77
@@ -2123,16 +2183,18 @@ msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
 "human and otherwise, that prowl the Wesnoth countryside at night."
 msgstr ""
+"Vahtimiehet ovat miehiä ja naisia, jotka suojelevat kylää Wesnothin "
+"maaseuduilla öisin kuljeskelevilta ihmis- ja muilta ryöstelijöiltä."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:79
 msgid "female^Watchwoman"
-msgstr ""
+msgstr "Vahtinainen"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:88
 msgid "Borderer"
-msgstr ""
+msgstr "Rajavartija"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:92
@@ -2141,17 +2203,19 @@ msgid ""
 "orc raids. Some of these join the Wesnoth army, while others join the core "
 "of the village's patrol."
 msgstr ""
+"Jokaisella kylällä on ryhmä hyvin taitavia taistelijoita, jotka ovat "
+"omistautuneet örkkien ryöstöretkien torjumiseen. Jotkut heistä liittyvät "
+"Wesnothin armeijaan, kun taas toiset ovat kylän partion ydin."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:94
 msgid "female^Borderer"
-msgstr ""
+msgstr "Rajavartijatar"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:108
-#, fuzzy
 msgid "Peasant Hunter"
-msgstr "Talonpoika"
+msgstr "Metsäläinen"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:111
@@ -2160,12 +2224,15 @@ msgid ""
 "bring in much of their food supply. Their stealth and intimate knowledge of "
 "local terrain can be valuable assets in combat."
 msgstr ""
+"Kylät, erityisesti villimmillä seuduilla lähellä rajoja, luottavat "
+"ruokavarastonsa lähes kokonaan metsäläisten käsiin. Metsäläisten "
+"hiiviskelytaito ja paikallisen maaston tuntemus voivat olla arvokkaita etuja "
+"taisteluissa."
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:119
-#, fuzzy
 msgid "Peasant Trapper"
-msgstr "Talonpoika"
+msgstr "Ansantekijä"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:124
@@ -2174,12 +2241,14 @@ msgid ""
 "Their hunting experience makes them most valuable at night and in forests "
 "and swamps."
 msgstr ""
+"Ansantekijät ovat taitavia metsästämään, ja heiltä useat kyläläiset "
+"saavatkin muonavaroja ja turkiksia. Heidän metsästyskokemuksensa tekee "
+"heistä kaikkein arvokkaimpia yöaikaan metsissä ja soilla."
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:132
-#, fuzzy
 msgid "Peasant Huntsman"
-msgstr "Talonpoika"
+msgstr "Metsäinmies"
 
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:136
@@ -2188,11 +2257,14 @@ msgid ""
 "wilderness homes. They can bullseye wamprats and track anything that moves "
 "in their territory."
 msgstr ""
+"Metsäinmiehet ovat viettäneet elämänsä villien kotiseutujensa rämeiköissä ja "
+"soilla. He voivat yllättää typeryksiä ja jäljittää mitä tahansa, mikä "
+"liikkuu heidän alueellaan."
 
 #. [object]
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid "Holy Ankh"
-msgstr ""
+msgstr "Pyhä Ankh"
 
 #. [object]
 #: data/campaigns/Liberty/utils/utils.cfg:65
@@ -2200,37 +2272,39 @@ msgid ""
 "You find a hefty pendant on a strange and ominous looking altar. It glows "
 "brightly when you pick it up!"
 msgstr ""
+"Löydät raskaan riipuksen oudolta pahaenteiseltä näyttävältä alttarilta. Se "
+"hohtaa kirkkaasti kun nostat sen!"
 
 #. [object]
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."
-msgstr ""
+msgstr "Täällä on outo alttari ja riipus sen päällä. En halua koskea sitä."
 
 #. [effect]: type=arcane
 #: data/campaigns/Liberty/utils/utils.cfg:79
 msgid "holy ankh"
-msgstr ""
+msgstr "pyhä ankh"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/utils/utils.cfg:147
 msgid "Tell my wife... that I loved her!"
-msgstr ""
+msgstr "Kerro vaimolleni... että rakastin häntä!"
 
 #. [message]: description=Harper
 #: data/campaigns/Liberty/utils/utils.cfg:161
 msgid "Unngh... Now our people may never be free..."
-msgstr ""
+msgstr "Unngh... Nyt kansamme ei ikinä saa olla vapaa..."
 
 #. [message]: description=Relnan
 #: data/campaigns/Liberty/utils/utils.cfg:175
 msgid "I am finished... will we ever be free?"
-msgstr ""
+msgstr "Minut on lyöty... Vapaudummeko koskaan?"
 
 #. [message]: description=Lord Maddock
 #: data/campaigns/Liberty/utils/utils.cfg:189
 msgid "How can this be? We have lost."
-msgstr ""
+msgstr "Kuinka tässä nyt näin kävi? Olemme hävinneet."
 
 #, fuzzy
 #~ msgid "Amman"

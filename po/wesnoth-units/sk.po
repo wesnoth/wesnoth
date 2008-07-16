@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-26 18:39+0200\n"
-"PO-Revision-Date: 2007-10-01 20:03+0100\n"
-"Last-Translator: Viliam Búr <viliam@bur.sk>\n"
+"PO-Revision-Date: 2008-07-15 20:23+0100\n"
+"Last-Translator: Martin Dzbor <mdzbor@yahoo.co.uk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,6 +31,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"Krvavé netopiere dostali meno podľa svojho červenkastého zafarbenia, ktoré "
+"mnohí pripisujú ich výberu stravy. Netopiere sú rýchle stvorenia, ktoré "
+"svojimi útokmi dokážu vysať krv a tým pádom obnoviť svoje zdravie na úkor "
+"ich nepriateľa."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -52,22 +56,19 @@ msgstr "Netopier upír"
 
 #. [unit]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Nemŕtve lietajúce zviera útočí tak, že uhryzne svoju obeť. Hoci tesáky "
-"netopiera upíra nie sú silné, vyciciava nimi krv a zdravie obete pre seba.\n"
-"\n"
-"Poznámka:"
+"Netopiere upíri sú lietajúce zvieratá kŕmiace sa krvou iných tvorov. Hoci "
+"ich hryzáky nie sú zvlášť silné, upír nimi vyciciava krv, a tým aj časť "
+"života obete pre seba."
 
 #. [unit]: race=mechanical
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "Roboti"
+msgstr "Čln"
 
 #. [unit]: race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -75,6 +76,9 @@ msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"Člny sú zvyčajne poháňané veslami alebo malými plachtami a ako také sa "
+"používajú na plavbu na krátke vzdialenosti a v plytčinách, kde väčšie lode "
+"nemôžu navigovať."
 
 #. [unit]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -85,6 +89,7 @@ msgstr "Galeóna"
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
+"Galeóny sú lode stavané pre trans-oceánsky obchod a všeobecnú prepravu."
 
 #. [unit]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
@@ -93,13 +98,12 @@ msgstr "Pirátska loď"
 
 #. [unit]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "onboard are more than happy to help relieve other ships of their weighty "
 "cargo."
 msgstr ""
-"Pirátske galeóny sú medzi loďami ako vlky medzi ovcami. Lode plné tovaru by "
+"Pirátske galeóny sú medzi loďami ako vlci medzi ovcami. Lode plné tovaru by "
 "sa nemali sami vzďaľovať od pobrežia, inak im niekto pomôže od prebytočnej "
 "záťaže..."
 
@@ -121,13 +125,12 @@ msgid ""
 "shore, they can deposit the troops to attack."
 msgstr ""
 "Obchodná loď je ozbrojená a preváža vojenské jednotky. Ak pristane na "
-"pobreží, jednotky sa môžu vyložiť a zaútočiť."
+"pobreží, jednotky sa môžu vylodiť a zaútočiť."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "Ohnivý jašter"
+msgstr "Jašter - dych pekla"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:26
@@ -137,6 +140,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Keby nemali na sebe brnenie, niektorí jašteri by boli na nerozoznanie od "
+"pravých drakov, teda aspoň pre bežného smrteľníka. Stvorenia známe pod menom "
+"\"Dych Pekla\" sú nesmierne mohutné, na miesto krvi im v žilách koluje "
+"pekelný oheň a sú voči ohňovému útoku aj úplne imúnne. "
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
@@ -174,7 +181,6 @@ msgstr "Jašter šermiar"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
-#, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of their initiation is the black-and-white warpaint they display in "
@@ -227,16 +233,15 @@ msgstr "Jašter opekač"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Burner.cfg:19
-#, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
-"Jašteri opekači sú tí hrdí jedinci, ktorí zdelili po vzdialených predkoch "
-"schopnosť vydychovať oheň. V kombinácii s ich veľkosťou a silou to z nich "
-"robí nebezpečných súperov v boji."
+"Jašteri opekači sú hrdí jedinci, ktorí asi najviac zdedili po vzdialených "
+"dračích predkoch schopnosť chŕliť oheň. V kombinácii s ich veľkosťou a silou "
+"ich pazúrov to z nich robí nebezpečných súperov v akomkoľvek boji."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Clasher.cfg:4
@@ -245,7 +250,6 @@ msgstr "Jašter úderník"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Clasher.cfg:21
-#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -262,15 +266,17 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
-"Jašter úderník nedokáže lietať ani dýchať oheň, a na ich zručnosť v boji "
-"zbraňami sa zvyčajne hľadí ako na 'z núdze cnosť'. Tí, čo to tvrdia, však "
-"podceňujú ich šikovnosť a účinnosť v boji.\n"
+"Jašter úderník nedokáže lietať ani chŕliť oheň a na ich zručnosť v boji "
+"zbraňami sa zvyčajne hľadí ako na 'z núdze cnosť' - určitý druh postihnutia. "
+"Je síce možné, že títo jedinci majú určité medzery v oblasti lietania či "
+"ohňa, no tí, čo to tvrdia, veľmi podceňujú ich šikovnosť a účinnosť v boji.\n"
 "\n"
 "V hierarchii jašterov reprezentujú súdnu moc, a hoci sú ich brnenia do "
-"značnej miery obradné, sú stále dosť použiteľné. Pri kontakte s menšími "
-"rasami zisťujú, že ich prirodzená veľkosť a sila sú mocnými zbraňami, a v "
-"spojení s brnením sa z nich stávajú mocní bojovníci, odolní voči typickým "
-"slabinám svojho druhu, ako je zraniteľnosť šípmi a oštepmi."
+"značnej miery obradné, sú stále veľmi efektívne. Pri kontakte s nižšími "
+"rasami títo jedinci zistili, že ich prirodzená veľkosť a sila sú mocnými "
+"zbraňami, a v spojení s brnením sa z nich stávajú mocní bojovníci, odolní "
+"voči typickým slabinám svojho druhu, ako je zraniteľnosť šípmi a bodnými "
+"zbraňami."
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:121
@@ -311,7 +317,6 @@ msgstr "Jašter dozorca"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
-#, fuzzy
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
 "hours at the forge have equipped them with a bristling array of weaponry, "
@@ -340,21 +345,20 @@ msgstr "Jašter vojak"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
 "of their ancestors. They can also fly, which is troubling to any foe. Their "
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
-"Jašteri vojaci nosia zakrivené scimitary, s ktorými zručne zaobchádzajú. Od "
+"Jašterí vojaci nosia zakrivené šable, s ktorými zručne zaobchádzajú. Od "
 "predkov zdedili schopnosť vydychovať oheň. Najzručnejší jašterí vojaci "
 "vstupujú do elitných radov jašterov bojovníkov."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
-msgstr "scimitar"
+msgstr "zakrivená šabľa"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Fire.cfg:4
@@ -363,15 +367,14 @@ msgstr "Ohnivý jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Fire.cfg:18
-#, fuzzy
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
 "Veľkí ohniví draci majstrovsky ovládajú svoj vnútorný oheň. Oblečení v "
-"žiarivom brnení chŕlia na svojich súperov plamene. Sú symbolom sily a "
-"majestátnosti svojho druhu."
+"žiarivom brnení chŕlia plamene na svojich súperov a na všetkých, čo sa "
+"odvážia im oponovať. Sú symbolom sily a majestátnosti svojho druhu."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -380,7 +383,6 @@ msgstr "Plamenný jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves - have veins which course with fire rather than blood. "
@@ -388,11 +390,9 @@ msgid ""
 "for some reason, no one has tried cutting one open to find out."
 msgstr ""
 "Tvrdí sa, že v žilách najstarších jašterích rodov - priamych potomkov "
-"samotných drakov - namiesto krvi prúdi oheň. Tí, ktorí vedia dýchať oheň, "
-"túto predstavu podporujú; zatiaľ nikto nenašiel odvahu ich rozrezať, aby to "
-"preskúmal dôkladnejšie.\n"
-"\n"
-"Poznámka:"
+"samotných drakov - prúdi namiesto krvi oheň. Tí, ktorí vedia chŕliť oheň, "
+"túto predstavu podporujú; zatiaľ však nikto nenašiel odvahu ich pitvať, aby "
+"to preskúmal dôkladnejšie."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Flare.cfg:4
@@ -401,16 +401,14 @@ msgstr "Žiarivý jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Flare.cfg:25
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 msgstr ""
-"Jašteri sú stará rasa, a má svojich prirodzených vodcov. Tí, ktorí majú "
-"ambície viesť svoj národ vo vojne i mieri, sú nazývaní žiariví jašteri.\n"
-"\n"
-"Poznámka:"
+"Jašteri sú prastará rasa, ktorá je dostatočne múdra na to, by si vážila "
+"svojich prirodzených vodcov. Tí, ktorí majú ambície viesť svoj národ vo "
+"vojne i mieri, sú nazývaní žiariví jašteri."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
@@ -419,7 +417,6 @@ msgstr "Jašter gladiátor"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
-#, fuzzy
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
 "Rather than emphasize training, they have chosen to focus on the craft of "
@@ -429,11 +426,12 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
-"Gladiátor sa poberá celkom inou cestou ako sekač. Namiesto fyzického výcviku "
-"sa sústredí na šikovnosť v používaní zbraní. Gladiátori sú v jašterej "
-"spoločnosti kováčmi, a najlepšie zbrane si vyrábajú pre seba - najostrejšie "
-"meče, kopije a palcáty sú súčasťou ich pôsobivej výzbroje. Toto výlučné "
-"zameranie na zbrane trochu znižuje ich obranné schopnosti."
+"Gladiátor sa poberá celkom inou cestou ako jašter sekač. Namiesto fyzického "
+"výcviku sa sústredí na šikovnosť v používaní zbraní. Gladiátori sú v "
+"jašterej spoločnosti kováčmi, a najlepšie zbrane si vyrábajú pre seba - "
+"najostrejšie meče, kopije a palcáty sú súčasťou ich pôsobivej výzbroje. Toto "
+"výlučné zameranie na zbrane vedie k zdôraznenie útočnej sily, na úkor ich "
+"obranných schopností."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -442,7 +440,6 @@ msgstr "Plachtiaci jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Glider.cfg:20
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little encumberment as possible, freeing themselves to "
 "fly to their full ability. These Drakes are competent fighters, possessing "
@@ -451,21 +448,18 @@ msgid ""
 "vantage point, these drakes can see past most defensive cover. Their skill "
 "at flying allows them the precision to target enemies under such cover."
 msgstr ""
-"Plachtiaci jašteri nosia čo najmenej brnenia, aby mohli po opustení svojch "
-"jaskýň rýchlo uniknúť nepriateľom. Títo jašteri sú šikovní bojovníci, a "
-"podobne ako mnohí z ich druhu, majú vnútorný oheň. Plachtiaci jašteri dokážu "
-"uštvať nepriateľa svojou rýchlosťou. Najlepší plachtiaci jašteri sa môžu "
-"tešiť na prijatie do radov lietajúcich jašterov. Vďaka pohľadu z výšky "
-"dokážu títo jašteri prekuknúť za obranné línie. Ich letecké schopnosti im "
-"umožňujú presne zamieriť aj na ukrytých nepriateľov.\n"
-"\n"
-"Poznámka:"
+"Plachtiaci jašteri nosia čo najmenej brnenia, aby sa mohli pohybovať vo "
+"vzduchu s úplnou ľahkosťou. Títo jašteri sú šikovní bojovníci, a podobne ako "
+"mnohí z ich druhu, majú vnútorný oheň. Plachtiaci jašteri dokážu doslova "
+"uštvať a udupať nepriateľa svojou rýchlosťou. Vďaka pohľadu z výšky dokážu "
+"títo jašteri prekuknúť za obranné línie. Ich letecké schopnosti im umožňujú "
+"presne zamieriť aj na ukrytých nepriateľov."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:75
 #: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
-msgstr "úder"
+msgstr "náraz"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -474,7 +468,6 @@ msgstr "Búrkový jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
 "drakes which are gifted with flight. Soaring high in the air, they can see "
@@ -482,9 +475,7 @@ msgid ""
 msgstr ""
 "Búrkoví jašteri sú pánmi vzdušného živlu, sú to jašteri s najväčším nadaním "
 "na lietanie. Vznášajú sa vysoko vo vzduchu, lietajú ponad obranné línie, a "
-"beztrestne na svojich súperov pľujú oheň.\n"
-"\n"
-"Poznámka:"
+"beztrestne na svojich súperov chŕlia oheň."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -493,7 +484,6 @@ msgstr "Pekelný jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Inferno.cfg:19
-#, fuzzy
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
 "fire they breathe, and rival their predecessors the Dragons in their ability "
@@ -501,10 +491,10 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
-"Lietajúce jednotky zvané pekelní draci sú majstrami vo vydychovaní ohňa, "
+"Lietajúce jednotky zvané pekelní draci sú majstrami v chrlení ohňa, "
 "porovnateľní s dávnymi dračími predkami. Táto prirodzená schopnosť ich "
-"zároveň robí takmer nezraniteľnými ohňom. Ich žiarivé brnenie je symbolom "
-"mocnej a pyšnej kasty; ideálu, ktorí sa ostatní snažia dosiahnuť."
+"zároveň robí takmer nezraniteľnými ohňovými útokmi. Ich žiarivé brnenie je "
+"symbolom mocnej a pyšnej kasty; ideálu, ktorí sa ostatní snažia dosiahnuť."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Sky.cfg:4
@@ -513,7 +503,6 @@ msgstr "Lietajúci jašter"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Sky.cfg:28
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and and their fire breath combine into a terrible weapon. By "
@@ -521,13 +510,11 @@ msgid ""
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
 msgstr ""
-"Lietajúci jašteri sú kráľmi oblohy. Ich pohyblivosť a útok ohnivým dychom sa "
-"mnohým stali osudnými. Dokážu rýchlo obkolesiť svoje obete, a než sa ich "
-"niekto pokúsi zastaviť, sú zvyčajne už dávno preč. Pri útoku zhora dokážu "
-"pľuť oheň s veľkou presnosťou aj na miesta, ktoré by inak ich súperom "
-"poskytovali veľkú výhodu pri obrane.\n"
-"\n"
-"Poznámka:"
+"Lietajúci jašteri sú kráľmi oblohy. Ich pohyblivosť, rýchlosť a útok ohnivým "
+"dychom sa mnohým stali osudnými. Dokážu rýchlo obkolesiť svoje obete, a než "
+"sa ich niekto pokúsi zastaviť, sú zvyčajne už dávno preč. Pri útoku zhora "
+"dokážu chrliť oheň s veľkou presnosťou aj na miesta, ktoré by inak ich "
+"súperom poskytovali veľkú výhodu pri obrane."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Slasher.cfg:4
@@ -536,7 +523,6 @@ msgstr "Jašter sekač"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Slasher.cfg:19
-#, fuzzy
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -544,12 +530,11 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
-"Sekáči sú úderníci, ktorí sa rozhodli ovládnuť boj halapartňou namiesto meča "
-"a kopije. Ich veľkosť im umožňuje narábať zručne touto zbraňou, dokážu ňou "
-"skoliť koňa rovnako ako by človek skolil jeleňa. Tréning zvýšil ich výdrž a "
-"obranyschopnosť, čo je ich veľká výhoda oproti gladiátorom.\n"
-"\n"
-"Poznámka:"
+"Sekáči sú úderníci, ktorí sa rozhodli špecializovať sa na boj halapartňou "
+"namiesto meča a kopije. Ich veľkosť im umožňuje narábať zručne touto "
+"relatívne masívnou zbraňou - dokážu ňou prebodnúť koňa rovnako ako by človek "
+"skolil diviaka. Tréning zvýšil ich výdrž a obranyschopnosť, čo je ich veľká "
+"výhoda oproti gladiátorom."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -567,18 +552,16 @@ msgstr "Jašter strážca"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Warden.cfg:20
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
-"Strážčovia sú vrcholom úderníckej kasty, vybraní spomedzi najlepších "
+"Strážcovia sú vrcholom úderníckej kasty, vybraní spomedzi najlepších "
 "sekáčov. Ich moc je taká, že len máloktorý bojovník na tejto zemi sa im "
-"odváži čeliť. Zbraňou strážcov je halapartňa, a majstrovsky ju používajú.\n"
-"\n"
-"Poznámka:"
+"odváži čeliť. Vyvolenou zbraňou strážcov je halapartňa, ktorú dokážu "
+"používať naozaj majstrovsky a nesmierne účinne."
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Warrior.cfg:4
@@ -587,20 +570,19 @@ msgstr "Jašter bojovník"
 
 #. [unit]: race=drake
 #: data/core/units/drakes/Warrior.cfg:18
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike devastating blows, and to withstand punishment in equal measure."
 msgstr ""
-"Jašteri bojovníci sú šikovní v boji s mečom, a majú schopnosť dýchať oheň. "
-"Ich veľká sila im umožňuje rozdávať drvivé údery, a zniesť údery rovnakej "
-"sily."
+"Jašteri bojovníci sú zruční v boji s mečom a tiež majú schopnosť chrliť "
+"oheň. Ich veľká prirodzená sila im umožňuje rozdávať drvivé údery, ako aj "
+"znášať údery rovnakej sily."
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr "Trpaslík berserker"
+msgstr "Trpaslík zúrivec"
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
@@ -609,6 +591,10 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"Zúrivci sú zvláštnym poddruhom trpaslíkov, ktorí bojujú tak, že sa pred "
+"bitkou vybičujú do nesmiernej zúrivosti. V tomto stave sa potom vzdávajú "
+"myšlienok na obranu a jediné, na čo sa dokážu sústrediť, je séria "
+"neutíchajúcich úderov dopadajúcich na nepriateľa. "
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
@@ -637,7 +623,7 @@ msgstr ""
 "Niektorí sa domnievajú, že je to vďaka zbrani, ktorá chŕli oheň a smrť. Iní "
 "si myslia, že takáto zbraň by im umožnila bojovať aj proti drakom, keby "
 "takéto stvorenia skutočne existovali. Tak či onak, vďaka týmto zbraniam sú "
-"strážčovia ceľkých trpasličích pevnosti známi a obávaní; takéto zbrane už "
+"strážcovia veľkých trpasličích pevnosti známi a obávaní; takéto zbrane už "
 "jediným zásahom zabili aj najmocnejších z bojovníkov."
 
 #. [attack]: type=blade
@@ -710,6 +696,12 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"Trpaslíčia rasa sa vždy vyznačovala svojou robustnosťou a odolnosťou a mnohí "
+"bojovníci s aj do boja berú výstroj, ktorá tieto charakteristiky ešte "
+"zdôrazňuje. Trpasličí strážcovia kráčajú do bitiek so svojimi pavézami a "
+"kopijami a ich úlohou zvyčajne býva udržiavať líniu proti tým, čo sa ju "
+"pokúsia narušiť. Ako sa línia pomaly posúva vpred, ďalšou úlohou týchto "
+"bojovníkov je zabezpečiť ťažko vybojované teritórium."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Stalwart.cfg:43
@@ -717,9 +709,8 @@ msgstr ""
 #: data/core/units/dwarves/Sentinel.cfg:48
 #: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
-#, fuzzy
 msgid "javelin"
-msgstr "Oštepár"
+msgstr "oštep"
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
@@ -734,7 +725,7 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
-"Trpaslíci oblečení v žiarivom brnení vyzerajú ako králi hôr. Majstrovski "
+"Trpaslíci oblečení v žiarivom brnení vyzerajú ako králi hôr. Majstrovsky "
 "nosia sekeru a kladivo, a dokážu svoj cieľ na niekoľko siah trafiť vrhacou "
 "sekerkou. Pri chôdzi sú pomalí, ale inak sú dôkazom zručnosti svojho druhu."
 
@@ -757,7 +748,6 @@ msgstr "Trpaslík učenec"
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:19
-#, fuzzy
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
 "surface of an object, which by their mere presence somehow imbue it with "
@@ -765,8 +755,9 @@ msgid ""
 "terrifying use."
 msgstr ""
 "Trpaslíčia mágia - aspoň nakoľko je známa - sa zvyčajne prejavuje vo forme "
-"rún napísaných na objekte, ktoré tým zvyšujú jeho moc. Tieto runy sa v boji "
-"objavujú zriedkavo, ale ich majstri ich dokážu účinne využiť."
+"rún napísaných na objekte, čím vlastne zvyšujú moc daného objektu. Tieto "
+"runy sa v boji objavujú zriedkavo, ale ich majstri ich dokážu veľmi účinne "
+"využiť."
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -792,6 +783,12 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+"Trpaslíci ochrancovia sú skutočnými hrdinami medzi spolubojovníkmi a "
+"zvyčajne tvoria jadro bojovej línie. Ak by sa niekto pokúsil o priamy útok "
+"na líniu, ktorú bránia práve ochrancovia, rýchlo by sa presvedčil o márnosti "
+"tohto činu - nie je to ani tak hlúpy a neefektívny čin ako skôr "
+"samovražedný. Títo trpasličí bojovníci sú majstrami na boj zblízka a svoje "
+"územie dokážu brániť s vytrvalosťou stromu."
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
@@ -806,6 +803,11 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"Dlhé roky výcviku a skúsenosti robia zo strážcov cenných vojakov. Tieto "
+"veteránske jednotky sú vybavené výstrojom, ktorý vhodne dopĺňa ich zručnosti "
+"a schopnosti - dokážu udržať pozície prakticky voči akémukoľvek zbesilému "
+"útoku. Ak nepriateľ spraví čo len najmenšiu chybičku zoči-voči týmto "
+"jednotkám, môže sa mu to ľahko stať osudným, bez možnosti reparátu."
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
@@ -828,7 +830,6 @@ msgstr "Trpaslík hromobijca"
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -836,12 +837,12 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made moreso by the secrecy which dwarves hold about their workings."
 msgstr ""
-"Keď ľudia z Wesnothu prvýkrát natrafili na trpaslíkov, boli ohromení silou "
-"trpasličích hromobijcov, ktorí dokázali zdiaľky spôsobovať smrť svojimi "
-"čudnými... 'palicami', ktoré si nosili do bitky. Potom, ako sa pri Ka'liane "
-"nastolil mier, Haldrikov ľud si uvedomil, že bez znalosti týchto zbraní, a "
-"bez šance vyrobiť si vlastné, by nebolo rozumné ešte niekedy bojovať proti "
-"trpaslíkom; a tak sa zaprisahali, že to nikdy neurobia."
+"Keď ľudia z Wesnotu prvýkrát natrafili na trpaslíkov, boli ohromení silou "
+"trpasličích hromobijcov, ktorí dokázali z diaľky spôsobovať hrozné zranenia "
+"svojimi čudnými zariadeniami pripomínajúcimi 'kúzelné tyčky', ktoré si "
+"nosili do bitiek. Ohlušujúci rachot týchto \"hromových palíc\" je dostatočne "
+"odstrašujúci, k čomu samotní trpaslíci radi prispievajú svojim "
+"tajnostkárstvom ohľadom toho, ako tieto zariadenia vlastne fungujú."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
@@ -885,23 +886,21 @@ msgstr "Trpaslík zurvalec"
 
 #. [unit]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
-"Trpaslíci sú prastará rasa mocných bojovníkov. Zurvalci sú v boji "
-"najzúrivejšími: bez ohľadu na zranenia útočia na nepriateľa bez prestávky, "
-"dokiaľ jeden z nich nepadne mŕtvy.\n"
-"\n"
-"Poznámka:"
+"Trpaslíci sú prastará rasa mocných bojovníkov. Zurvalci sú v boji tými "
+"najzúrivejšími: bez ohľadu na zranenia útočia na nepriateľa bez prestávky. "
+"Vďaka stavu svojej zúrivosti necítia ani strach ani bolesť a zvyčajne si ani "
+"len nevšimnú zranenia, ktoré sami v boji utrpia."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr "Elf strelec"
+msgstr "Elfský lukostrelec"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Archer.cfg:21
@@ -947,16 +946,15 @@ msgstr "luk"
 #. [female]
 #: data/core/units/elves/Archer.cfg:171
 msgid "female^Elvish Archer"
-msgstr "Elfka strelkyňa"
+msgstr "Elfská lukostrelkyňa"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr "Elf pomstiteľ"
+msgstr "Elfský pomstiteľ"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Avenger.cfg:23
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -968,30 +966,28 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
-"Zvláštny názov elfov 'pomstiteľov' vychádza z častej taktiky týchto "
-"majstrovských strelcov. Nepriateľovi sa umožní preraziť chabú obranu, a keď "
-"sa začnú presúvať aj zraniteľnejšie jednotky, ukrytí lukostrelci sa vynoria "
-"z úkrytov a začnú útočiť, čím obľúčia nepriateľa a prerušia zásobovanie.\n"
+"Zvláštny titul elfov 'pomstiteľov' vychádza z častej taktiky týchto majstrov "
+"zálesákov. Nepriateľovi umožnia preraziť naoko chabú obranu a keď sa začnú "
+"presúvať aj zraniteľnejšie jednotky, ukrytí lukostrelci sa vynoria z úkrytov "
+"a zaútočia, čím vlastne obkľúčia nepriateľa a odrežú ho od zásobovania "
+"jediným majstrovským ťahom.\n"
 "\n"
 "Takéto správanie sa často interpretovalo ako pomsta za padlých "
 "spolubojovníkov. Nie je to síce celkom presné označenie, ale zároveň má čosi "
-"do seba.\n"
-"\n"
-"Poznámka:"
+"do seba."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:180
 msgid "female^Elvish Avenger"
-msgstr "Elfka pomstiteľka"
+msgstr "Elfská pomstiteľka"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr "Elf kapitán"
+msgstr "Elfský kapitán"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Captain.cfg:26
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -1003,19 +999,16 @@ msgstr ""
 "Na rozdiel od mnohých iných rás, elfovia rýchlo spoznajú a uznajú bojové "
 "skúsenosti svojich blížnych. To je pomerne zvláštne z hľadiska ľudí, u "
 "ktorých pri velení zvyčajne rozhoduje zmes nátlaku a zastrašovania. "
-"Schopnosť oceniť múdrosť svojich veliteľov a výber správnych veliteľov, je "
-"jednou z veľkých predností elfov.\n"
-"\n"
-"Poznámka:"
+"Schopnosť oceniť múdrosť svojich veliteľov a výber správnych veliteľov je "
+"jednou z veľkých predností elfov."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr "Elf šampión"
+msgstr "Elfský šampión"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -1023,20 +1016,20 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
-"Tých pár elfov, ktorí sa dobrovoľne rozhodli cvičiť v boji so zbraňami, "
-"zlepšuje povesť celého svojho druhu. Ich odhodlanie a zručnosť sa premieta "
-"do čistého umenia, ktorého výsledkom je jedinečné šermiarstvo. Hoci sa "
-"lukostreľbe venujú len druhotne, stále sú v nej natoľko šikovní, že vo "
-"väčšine ľudí vzbudzujú úžas."
+"Tých pár elfov, ktorí sa dobrovoľne rozhodli zlepšovať sa v boji so "
+"zbraňami, sa rýchlo stáva protikladom k ináč vcelku mierumilovnej povesti "
+"celého svojho druhu. Ich odhodlanie a zručnosť sa premieta do čistého "
+"umenia, ktorého výsledkom je jedinečné šermiarstvo. Hoci sa lukostreľbe "
+"venujú len druhotne, stále sú v nej natoľko zruční, že vo väčšine ľudí "
+"vzbudzujú úžas."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr "Elfka druidka"
+msgstr "Elfská druidka"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Druid.cfg:21
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -1045,13 +1038,12 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people."
 msgstr ""
-"Mágia lesných elfov sa do boj veľmi nehodí, ale predsa sa dá použiť. Les, v "
-"ktorom žijú, môže na príkaz ožiť, a udrieť na toho, kto narušil jeho pokoj.\n"
+"Mágia lesných elfov sa do boja veľmi nehodí, ale predsa sa dá efektívne "
+"použiť. Les, v ktorom žijú, môže na príkaz ožiť, a zaútočiť na toho, kto "
+"narušil jeho pokoj.\n"
 "\n"
-"Ich hlavnou zručnosťou je však liečenie, a vďaka tejto schopnosti sú druidi "
-"medzi elfmi veľmi vážení.\n"
-"\n"
-"Poznámka:"
+"Ich hlavnou zručnosťou je však uzdravovanie a vďaka tejto schopnosti sú "
+"druidi medzi elfmi veľmi vážení."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:28
@@ -1085,11 +1077,10 @@ msgstr "tŕne"
 #. [unit]: race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr "Elfka zaklínačka"
+msgstr "Elfská zaklínačka"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -1097,12 +1088,11 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
-"Mágia elfov je celkom odlišná od ľudskej, takže jej ľudia viacmenej nedokážu "
-"porozumieť a už vôbec nie ju používať. Podobne záhadní sú aj jej majstri; dá "
-"sa o nich povedať, že sú medzi svojím ľudom uctievaní, ale o ich konkrétnom "
-"postavení a funkcii v spoločnosti už nevieme nič dodať.\n"
-"\n"
-"Poznámka:"
+"Mágia elfov je celkom odlišná od ľudskej, a to až do takej miery, že jej "
+"ľudia viac-menej nedokážu porozumieť a už vôbec ju nedokážu využiť. Podobne "
+"záhadní sú aj majstri tejto mágie; aj keď sa o nich dá povedať, že sú medzi "
+"svojím ľudom uctievaní, iba málo by sme vedeli dodať o ich konkrétnom "
+"postavení a funkcii v elfskej spoločnosti."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36
@@ -1115,12 +1105,12 @@ msgstr "zamotanie"
 #: data/core/units/elves/High_Lord.cfg:70
 #: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:52
 msgid "faerie fire"
-msgstr "oheň víly"
+msgstr "magický oheň"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr "Elf vojak"
+msgstr "Elfský vojak"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Fighter.cfg:20
@@ -1138,11 +1128,10 @@ msgstr ""
 #. [unit]: race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr "Elf hrdina"
+msgstr "Elfský hrdina"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Hero.cfg:19
-#, fuzzy
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
 "fighter into a master of combat. Those who are honored as heroes are strong "
@@ -1150,12 +1139,13 @@ msgid ""
 "lack of practice."
 msgstr ""
 "Pomerne malé množstvo skúsenosti urobí z elfa bojovníka bojového majstra. "
-"Uznávaní hrdinovia bojujú s mečom i lukom, a ich schopnosti nikdy nevyblednú."
+"Uznávaní hrdinovia bojujú s mečom i lukom a ak raz získajú zručnosť, ich "
+"schopnosti nevyblednú ani pri nedostatku ďalšieho tréningu."
 
 #. [unit]: race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr "Elf veľmož"
+msgstr "Elfský veľmož"
 
 #. [unit]: race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -1172,7 +1162,7 @@ msgstr ""
 #. [unit]: race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
-msgstr "Elfka šľachtičná"
+msgstr "Elfská šľachtičná"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Lady.cfg:21
@@ -1189,7 +1179,7 @@ msgstr ""
 #. [unit]: race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
-msgstr "Elf šľachtic"
+msgstr "Elfský šľachtic"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -1205,11 +1195,10 @@ msgstr ""
 #. [unit]: race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr "Elf ostrostrelec"
+msgstr "Elfský ostrostrelec"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Marksman.cfg:22
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -1219,14 +1208,14 @@ msgid ""
 "Realizing this prodigious skill does come with one cost, that being a lack "
 "of practice with the sword."
 msgstr ""
-"Jedným z prirodzených predpokladov šikovnosti s lukom je nezvyčajne ostrý "
-"elfí pohľad. Skúsený elfí strelec dokáže zasiahnuť terč, na ktorý by človek "
-"ani nedovidel, a to aj v noci; navyše dokáže vystreliť duhý šíp ešte kým "
+"Jedným z prirodzených predpokladov zručností v narábaní s lukom je "
+"nezvyčajne ostrý zrak, ktorým sa elfovia vyznačujú. Skúsený elfský strelec "
+"dokáže zasiahnuť terč, na ktorý by bežný človek ani nedovidel, a to aj v "
+"noci; k tomu všetkému dokáže elfský strelec aj založiť druhý šíp ešte pokiaľ "
 "prvý letí vo vzduchu.\n"
 "\n"
-"Táto úžasná schopnosť má svoju cenu, a to je nedostatok tréningu s mečom.\n"
-"\n"
-"Poznámka:"
+"Táto úžasná schopnosť má svoju cenu, a to je nedostatok výcviku v narábaní s "
+"mečom a v boji zblízka."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:62
@@ -1237,16 +1226,15 @@ msgstr "dlhý luk"
 #. [female]
 #: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
-msgstr "Elfka ostrostrelkyňa"
+msgstr "Elfská ostrostrelkyňa"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr "Elf maršal"
+msgstr "Elfský maršal"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for such things. "
@@ -1259,18 +1247,15 @@ msgstr ""
 "vojenské záležitosti, hoci podobné veci sú vo všeobecnosti proti ich vôli. "
 "Elfovia si pamätajú minulosť lepšie ako ľudia, a často im intuícia pomôže "
 "nahradiť výcvik. Ak sa elf niekedy rozhodne ísť do vojny, zvyčajne je "
-"majstrovským stratégom.\n"
-"\n"
-"Poznámka:"
+"majstrovským stratégom."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "Elf prieskumník"
+msgstr "Elfský prieskumník"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Outrider.cfg:23
-#, fuzzy
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
 "Despite the peaceful nature of their people, their experience makes them "
@@ -1282,11 +1267,12 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
-"Elfí prieskumníci sú cvičení ako kráľovskí poštári medzi elfími "
-"kráľovstvami. Napriek mierumilovnej povahe tohoto ľudu, z nich skúsenosti "
-"robia nebezpečných bojovníkov. Žiaden človek ešte nedosiahol takúto "
-"schopnosť streľby z konského chrbta - presnejšie, mal by problém sa jej "
-"vyrovnať aj zo zeme.\n"
+"Elfskí prieskumníci sú cvičení ako kráľovskí kuriéri medzi elfskými "
+"kráľovstvami. Napriek mierumilovnej povahe elfského národa z nich práve "
+"takéto skúsenosti robia nebezpečných bojovníkov. Žiaden človek sa ešte ani "
+"len nepriblížil ich schopnosti strieľať za jazdy z konského chrbta - "
+"presnejšie povedané, človek by mal problém sa tejto schopnosti vyrovnať aj "
+"keby stál pevne na zemi.\n"
 "\n"
 "Rýchlosť týchto bojovníkov umožňuje elfom zaútočiť v čase a na mieste, ktoré "
 "si sami vyberú, čo je výhoda, ktorá mnohým z nich zachránila život."
@@ -1294,11 +1280,10 @@ msgstr ""
 #. [unit]: race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr "Elf hraničiar"
+msgstr "Elfský hraničiar"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Ranger.cfg:20
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -1306,27 +1291,24 @@ msgid ""
 "fitting master of them. This, combined with a considerable skill at archery "
 "and swordsmanship, is very useful in warfare."
 msgstr ""
-"Nech by človke strávil koľkokoľvek rokov v lese, nikdy sa nezbaví pocitu, že "
-"je len hosťom na mieste, na ktoré v skutočnosti nepatrí. U elfov je to zase "
-"naopak. Elf, ktorý študuje lesy, sa s nimi časom naučí splývať; keď k tomu "
-"pridáme zručnosť v streľbe a boji s mečom, výsledkom je mocný vojnový "
-"nástroj.\n"
-"\n"
-"Poznámka:"
+"Nech by človek strávil mnoho rokov v lesoch, nikdy sa nezbaví pocitu, že je "
+"len hosťom na miestach, na ktoré v skutočnosti nepatrí. U elfov je to "
+"naopak. Elf, ktorý študuje  tajomstvá lesov, sa s nimi časom naučí splývať. "
+"Ak k tomu pridáme zručnosť v streľbe a boji s mečom, výsledkom je priestor s "
+"výrazným vojnovým využitím."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:177
 msgid "female^Elvish Ranger"
-msgstr "Elfka hraničiarka"
+msgstr "Elfská hraničiarka"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr "Elf jazdec"
+msgstr "Elfský jazdec"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Rider.cfg:24
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal for any human. Awe of the rider is quite justified - "
@@ -1336,21 +1318,21 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"Jazdeckí majstri medzi elfami sú schopní cválať lesom rýchlosťou, ktorá by "
+"Jazdeckí majstri medzi elfmi sú schopní cválať lesom rýchlosťou, ktorá by "
 "pre človeka bola samovraždou. Toto určite vypovedá o úžasných schopnostiach "
-"jazdcov, hoci schopnosti samotných koní sú tiež veľmi nezvyčajné.\n"
+"jazdcov, hoci schopnosti samotných koní sú tiež veľmi nezvyčajné a mnohí ich "
+"označujú za nadprirodzené.\n"
 "\n"
-"Kombinácia neuveriteľnej pohyblivosti, a dobrá bojová sila, je pre elfov "
-"veľkou výhodou v boji."
+"Kombinácia neuveriteľnej pohyblivosti a dobrej bojovej sily je pre elfov "
+"jednou z najväčších výhod v boji."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr "Elf zved"
+msgstr "Elfský zved"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Scout.cfg:23
-#, fuzzy
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
 "true skill lies in their horsemanship. Even other elves are impressed by "
@@ -1358,19 +1340,18 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
-"Elfí jazdci sú zruční s lukom a mečom, ale ich hlavná schopnosť spočíva v "
-"jazde. Aj iní elfovia sú ohromení ich rýchlosťou a schopnosťou preniknúť cez "
-"najhustejší les bez škrabnutia. Sú asi jedinou jazdou na svete, ktorá je v "
-"lese úspešnejšia ako na otvorenom priestore."
+"Elfskí jazdci sú zruční s lukom a mečom, ale ich hlavná schopnosť spočíva v "
+"jazde. Dokonca aj iní elfovia sú často  ohromení ich rýchlosťou a "
+"schopnosťou preniknúť cez najhustejší les bez škrabnutia. Sú asi jedinou "
+"jazdou na svete, ktorá je v lese úspešnejšia ako na otvorenom priestore."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr "Elfka šamanka"
+msgstr "Elfská šamanka"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -1381,48 +1362,45 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
-"Elfovia majú prirodzený talent na mágiu. Sú spojení s prírodou, a môžu si ju "
-"v  boji privolať na pomoc. Nepriatelia, ktorí vstúpia do ich lesa, môžu "
-"náhle zistiť, že sú zamotaní v koreňoch, na ktorých stáli, a ich možnosti sú "
-"obmedzené.\n"
+"Elfovia majú prirodzený talent na mágiu - snáď to má do činenia s ich "
+"čiastočným pôvodom v svete mágie. Sú spojení s prírodou a dokážu si ju v  "
+"boji privolať na pomoc. Nepriatelia, ktorí vstúpia do ich lesov, môžu náhle "
+"zistiť, že sú zamotaní v koreňoch, na ktorých stáli a ich možnosti "
+"manévrovať sa výrazne obmedzia.\n"
 "\n"
-"Dôležité sú aj liečivé schopnosti, ktoré sa v boji výrazne využijú.\n"
-"\n"
-"Poznámka:"
+"Dôležité sú aj uzdravujúce schopnosti elfov, ktoré sa v boji veľmi často a "
+"účelne využijú."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr "Elf ostreľovač"
+msgstr "Elfský ostreľovač"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
-#, fuzzy
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
 "air with one of his own. It is a testament to the skill of the elves that "
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
-"Hovorí sa o elfovi, ktorý dokázal vystreliť šíp do vzduchu, a pri páde ho "
-"zasiahnuť ďalším šípom. Je dôkazom schopností elfov, že sa takéto príbehy "
-"berú vážne. Elfí ostreľovači sú jednoducho majstrami lukostreľby.\n"
-"\n"
-"Poznámka:"
+"Existuje legenda hovoriaca o elfovi, ktorý dokázal vystreliť šíp do vzduchu, "
+"a pri páde ho zasiahnuť ďalším šípom. Je iba dôkazom skutočných schopností "
+"elfov, že sa takéto príbehy berú vážne. Elfskí ostreľovači sú jednoducho "
+"majstrami lukostreľby.Bodka."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:157
 msgid "female^Elvish Sharpshooter"
-msgstr "Elfka ostreľovačka"
+msgstr "Elfská ostreľovačka"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr "Elfka víla"
+msgstr "Elfská víla"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Shyde.cfg:21
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -1430,10 +1408,9 @@ msgid ""
 "mystery of their people."
 msgstr ""
 "Sústredenie sa na svoju magickú stránku spôsobí, že sa mladá elfka postupne "
-"premení. Tieto záhadné a prekrásne stvorenia sú symbolom krásy a tajomnosti "
-"elfieho ľudu.\n"
-"\n"
-"Poznámka:"
+"premení. Vedené samotnou podstatou prírody, o ktorej má bežný smrteľník len "
+"málo potuchy, sa tieto záhadné a prekrásne stvorenia stávajú symbolom krásy "
+"a tajomnosti elfieho národa."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:27
@@ -1443,7 +1420,7 @@ msgstr "dotyk víly"
 #. [unit]: race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr "Elfka čarodejnica"
+msgstr "Elfská čarodejnica"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Sorceress.cfg:21
@@ -1456,11 +1433,20 @@ msgid ""
 "Those able to do so are roughly titled as 'sorceresses' by other races; and "
 "certainly are capable of acting the part."
 msgstr ""
+"Svet víl je omnoho mocnejší než náš, fyzický svet. Stačí len malý kúsok "
+"schopností z iného sveta a môže to mať nesmierne ničivé následky na náš, "
+"fyzický svet. Elfovia to už dávno pochopili, aj keď málokedy v skutočnosti "
+"využili. Samotný akt preklenutia svetov nie je jednoduchý a využitie tejto "
+"sily so zlým úmyslom je považované za zneužitie moci.\n"
+"\n"
+"Bytosti, ktoré tento akt zvládajú, bývajú inými rasami označované za "
+"čarodejnice, čo je možno prehnané meno, ale zato dobre vystihujúce ich "
+"možnosti a schopnosti."
 
 #. [unit]: race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr "Elfka sylfa"
+msgstr "Elfská sylfa"
 
 #. [unit]: race=elf
 #: data/core/units/elves/Sylph.cfg:20
@@ -1470,6 +1456,11 @@ msgid ""
 "powers. Legends concerning these have given other races a healthy fear of "
 "the elves."
 msgstr ""
+"Málokto videl sylfy na vlastné oči - sylfy vynikajú svojim umením spojiť "
+"svoju fyzickú podstatu so svojou nadprirodzenou podstatou. Tieto bytosti "
+"disponujú magickými, často hrôzostrašnými, silami. Sú to práve legendy, v "
+"ktorých vystupujú sylfy, čo dali vznik zdravému strachu a rešpektu ostatných "
+"rás voči elfom."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:40
@@ -1483,7 +1474,6 @@ msgstr "Vlčí pán"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1496,16 +1486,15 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
-"'Jazdecký vlk' sa od bežného lesného odlišuje veľkosťou a farbou. Zvyčajne "
-"sú v kohútiku vysoké ako kone, a majú veľký hlad. Iba šialenec by sa s nimi "
-"pokúšal bližšie zoznámiť. Goblini sa ich s veľkými obeťami naučili osedlať a "
-"skrotiť, ak sa to tak dá nazvať.\n"
+"'Jazdecký vlk' sa od bežného lesného vlka odlišuje hlavne  veľkosťou a "
+"farbou. Zvyčajne je v kohútiku vysoký ako kôň, s tomu zodpovedajúcim "
+"apetítom. Iba šialenec by sa s nimi pokúšal bližšie zoznámiť. Goblini sa ich "
+"s veľkými obeťami naučili osedlávať a krotiť, aspoň do istej miery.\n"
 "\n"
 "U bežného vlka sa pazúry nepovažujú za najnebezpečnejšiu časť tela, ale u "
-"týchto veľkých beštií sú hrubšie a dlhšie ako klince. Jazdci ich často "
-"natierajú jedom, čím zvyšujú šancu, že zásah takýmto pazúrom bude smrteľný.\n"
-"\n"
-"Poznámka:"
+"týchto veľkých beštií sú pazúry hrubšie a dlhšie než klince. Jazdci ich "
+"často natierajú jedom, čím zvyšujú šancu, že zásah takýmto pazúrom bude mať "
+"čo možno najsmrteľnejšie následky."
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -1514,18 +1503,16 @@ msgstr "Goblin napichovač"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
 "line. Those who manage to survive their first few battles equip themselves "
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminuitive frames."
 msgstr ""
-"Orkovia používajú goblinov ako obete v prvých líniách. Tí, čo to nejako "
-"prežijú, sa najbližšie primerane vyzbroja. Malú výšku dokáže kompenzovať "
-"dlhá kopija, a pri krehkom tele pomôže lepšie brnenie.\n"
-"\n"
-"Poznámka:"
+"Orkovia používajú goblinov ako obete do prvých línií. Tí goblini, čo túto "
+"fázu boja nejako prežijú, sa pri najbližšej príležitosti snažia primerane "
+"vyzbrojiť. Svoju malú výšku dokážu kompenzovať dlhou kopijou a pri svojom "
+"relatívne krehkom tele im pomôže i lepšie brnenie."
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Knight.cfg:4
@@ -1534,7 +1521,6 @@ msgstr "Goblin rytier"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1544,13 +1530,14 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"Goblinskí rytieri majú málo spoločné s ľudskými nositeľmi rovnakého titulu; "
-"samotné toto označenie existuje len v reči ich nepriateľov. Podobnosť "
-"spočíva len v tom, že sú elitou vlčích jazdcov. Svoje postavenie často "
-"získali po úspešnom nájazde, alebo niečom podobnom.\n"
+"Goblinskí \"rytieri\" majú iba málo spoločné s nositeľmi rovnakého titulu u "
+"ľudí; samotné toto označenie existuje viac-menej na uťahovanie si z "
+"nepriateľa. Podobnosť spočíva len v tom, že táto skupina goblinov sú elitou "
+"medzi vlčími jazdcami, ktorá svoje postavenie často získala po úspešnom "
+"nájazde, alebo niečom podobnom.\n"
 "\n"
-"Ich vlci sú šľachtení pre väčšiu rýchlosť a silu, čo ich robí v boji "
-"nebezpečnými."
+"Ich vlci sú šľachtení pre väčšiu rýchlosť a silu, čo ich robí v boji ešte o "
+"čosi nebezpečnejšími."
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:4
@@ -1559,7 +1546,6 @@ msgstr "Goblin rabovač"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -1567,11 +1553,9 @@ msgid ""
 "rally for defense or reprisal."
 msgstr ""
 "Niektorí goblini odučia svojich vlkov báť sa ohňa. Pri nájazdoch majú takíto "
-"goblini pomocnú úlohu - fakľami zapaľujú domy a stohy nepriateľov, a "
-"rozhadzovaním sietí vyvolávajú chaos medzi tými, čo sa snažia zorganizovať "
-"obranu.\n"
-"\n"
-"Poznámka:"
+"goblini viac-menej podpornú rolu - fakľami podpaľujú domy a stohy "
+"nepriateľov, čím ich demoralizujú. Taktiež rozhadzovaním sietí vyvolávajú "
+"chaos medzi tými, čo sa snažia zorganizovať obranu alebo protiútok."
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:34
@@ -1592,7 +1576,6 @@ msgstr "Goblin provokatér"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1602,10 +1585,9 @@ msgid ""
 msgstr ""
 "Vlajkonosiči sú medzi goblinmi vzácnosťou. Len zriedkavo prežije goblin "
 "toľko bitiek, aby sa mohol považovať za veterána, a ešte zriedkavejšie si "
-"tým získa úctu u ostatných goblinov. Jeho bojová udatnosť však povbudzuje "
-"mladších bojovníkov, aby pred smrťou bojovali tvrdšie a dlhšie.\n"
-"\n"
-"Poznámka:"
+"tým získa úctu u ostatných goblinov. Každopádne bojová udatnosť goblinov "
+"provokatérov povzbudzuje mladších bojovníkov, aby pred takmer istou smrťou "
+"bojovali o čosi tvrdšie a dlhšie."
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
@@ -1614,7 +1596,6 @@ msgstr "Goblin kopijník"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
-#, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -1627,13 +1608,16 @@ msgid ""
 "to state anything conclusive."
 msgstr ""
 "V každom kmeni orkov sa niekoľko jedincov narodí menších a slabších ako "
-"ostatní. Títo sa nazývajú 'goblini', a pre zvyšok kmeňa sú terčom pohŕdania. "
-"V boji dostanú to najúbohejšie vybavenie, a používajú sa ako živé štíty, "
-"dokiaľ vojvodovia nezorganizujú skutočný útok.\n"
+"ostatní. Bežné pomenovanie pre tento druh je 'goblin'. Toto označenie "
+"dotyčnému jedincovi zaručuje snáď iba to, že sa pre zvyšok kmeňa stane "
+"terčom pohŕdania. V boji dostanú goblini to najúbohejšie vybavenie a ostatní "
+"orkovia ich často používajú sa ako živé štíty na zachytenie prvej vlny útoku "
+"nepriateľa, aspoň dokiaľ orkskí vojvodovia nezorganizujú skutočný "
+"protiútok.\n"
 "\n"
-"Niektorí sa domnievajú, že existencia týchto potvor naznačuje úpadok orčieho "
-"rodu, ale nikto nevie dosť o ich histórii, aby mohol dôjsť k jednoznačnému "
-"záveru."
+"Niektorí sa domnievajú, že už len existencia týchto potvor naznačuje úpadok "
+"orčieho rodu, ale nikto nevie dosť o ich histórii a vývoji, aby mohol dôjsť "
+"k jednoznačnému záveru."
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:4
@@ -1642,7 +1626,6 @@ msgstr "Vlčí jazdec"
 
 #. [unit]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1656,13 +1639,15 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-"Nikto nevie, ako presne vznikol zvyk krotiť a sedlať vlky. Goblini sú menší "
-"a slabší ako väčšina orkov. Ak sa niektorému z nich podarí bojovať v sedle, "
-"má pri boji väčšie bezpečie a, ak to tak možno povedať, aj zábavu.\n"
+"Nikto nevie, ako presne vznikol zvyk krotiť a sedlať vlky, ale goblinom dáva "
+"tento divný zvyk isté výhody. Goblini sú menší a slabší ako väčšina orkov a "
+"v boji sa im zvyčajne ujdú tie najmenej žiadúce úlohy a pozície. Ak sa "
+"niektorému z nich podarí bojovať v sedle, má pri boji zaručené nielen väčšiu "
+"bezpečnosť ale aj, ak to tak možno nazvať, zábavu.\n"
 "\n"
-"Vlci by asi neuniesli váhu človeka v brnení, ale goblin v koženom brnení je "
-"dosť ľahkým bremenom. Na rozdiel od koňov sa vlky ľahko pohybujú v horách, "
-"hoci voda a lesy ich spomaľujú."
+"Vlk by asi nikdy neuniesol váhu bežného človeka v brnení, ale goblin v "
+"koženom brnení je dosť ľahkým bremenom. Na rozdiel od koní sa vlky ľahko "
+"pohybujú v horách, zato voda a lesy ich stále spomaľujú."
 
 #. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -1686,15 +1671,15 @@ msgstr "Pán gryfov"
 
 #. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty flyers may strike from anywhere."
 msgstr ""
-"Páni gryfov majú mnoho skúsenosti s lietaním na gryfoch, ktorí akoby sa "
-"stali súčasťou ich tela. Takýto zvláštny vzťah napĺňa zemeplazov strachom, "
-"pretože táto dvojica dokáže zaútočiť odkiaľkoľvek."
+"Páni gryfov majú mnoho skúsenosti s lietaním na gryfoch - zvieratá sa "
+"doslova stávajú akoby súčasťou ich tela. Takýto zvláštny vzťah medzi jazdcom "
+"a gryfom napĺňa zemeplazov strachom, pretože táto dvojica dokáže zaútočiť "
+"prakticky odkiaľkoľvek."
 
 #. [unit]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
@@ -1745,7 +1730,6 @@ msgstr "Rytier"
 
 #. [unit]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -1755,12 +1739,15 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
-"Najšikovnejší a najdisciplinovanejší jazdci sú povýšení na rytierov. Sú to "
-"veteráni boja, často videli nebezpečné následky výpadov, a naučili sa "
-"bojovať s mierou. Rytieri si vo svojom vybavení nosia aj meče, a trénujú "
-"štýl boja, ktorý si vyžaduje viac trpezlivosti, ale je bezpečnejší ako "
-"výpad. Ich kopije sú však stále pripravené, a získané skúsenosti ich "
-"možnosti len zvyšujú."
+"Najšikovnejší a najdisciplinovanejší jazdci sú povýšení na rytierov. Rytieri "
+"sú veteránmi nejednej bitky, v ktorej mali nejednu príležitosť vidieť a "
+"cítiť často tragické následky bezhlavého výpadu na nepriateľa. Ich bojovou "
+"lekciou bolo to, že sa naučili bojovať viac s mierou a svoju vášeň viac "
+"kontrolovať. Rytieri vo svojej výzbroji používajú aj meče a trénujú štýl "
+"boja, ktorý si vyžaduje viac trpezlivosti, ale zato je o čosi bezpečnejší "
+"než bezhlavý výpad. Svoje kopije však majú stále v pohotovosti a ako sa ich "
+"skúsenosti s obomi zbraňami hromadia, rytier má čoraz smrteľnejší dopad na "
+"nepriateľa."
 
 #. [unit]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
@@ -1769,7 +1756,6 @@ msgstr "Útočník"
 
 #. [unit]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -1778,12 +1764,13 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"Útočníci sú najodvážnejší a najobávanejší jazdci Wesnothu. Majú len "
-"minimálne brnenie, a tak dokážu jazdiť rýchlejšie ako ostatní. Ich odvážna "
-"taktika zahŕňa použitie dvojsečného meča, čo prináša buď slávu alebo rýchlu "
-"smrť. Útočníci sú dobrí v prenasledovaní pešiakov, ktorí sa omylom vzdialili "
-"od bojovej zostavy, a v prerážaní obranných línií. Ich možnosti pri obrane "
-"sú nižšie."
+"Útočníci sú najodvážnejší a najobávanejší jazdci Wesnotu. Tento druh jazdcov "
+"sa vyznačuje tým, že má len minimálne brnenie, a tak dokážu jazdiť "
+"rýchlejšie než ostatní rytieri. Ich odvážna taktika má však charakter "
+"dvojsečného meča - buď im prináša rýchlu slávu alebo rýchlu smrť. Útočníci "
+"sú dobrí v prenasledovaní pešiakov, ktorí sa omylom vzdialili od bojovej "
+"zostavy, a tiež majú výhody pri prerážaní obranných línií. Ich možnosti pri "
+"obrane sú však výrazne obmedzené."
 
 #. [unit]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
@@ -1810,6 +1797,23 @@ msgid ""
 "curious abilities; a paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"Najvznešenejší z rytierov, palatíni sa zaprisahali slúžiť nie jednému "
+"vladárovi či krajine ale samotným ideálom - ideálom rytierstva a ochrany "
+"všetkého, čo je dobré. Slúžia síce v armádach po celom svete, ale ich "
+"skutočná lojalita patrí komunitám, ktoré sami zakladajú - tajným, kláštorným "
+"rádom, ktoré prekračujú hranice jednej kultúry či krajiny. Vládcovia sa ich "
+"často obávajú, pretože lojalita palatínov ich osobám je priamo úmerná ich "
+"morálnej čistote. Tento strach viedol v minulosti k temným snahám buď to rád "
+"zdehonestovať a rozbiť jeho komunity, alebo menej často k vymysleniu "
+"najrôznorodejších úskokov, len aby boli títo rytieri udržaní v službách "
+"armády.\n"
+"\n"
+"Palatíni v plnej zbroji nie sú vo všeobecnosti až takým mohutným zjavom ako "
+"starší rytieri nachádzajúci sa vo väčšine armád, ale celkom určite sú "
+"prvotriednymi bojovníkmi. Na dôvažok, múdrosť a pokora dávajú týmto "
+"bojovnými mníchom niekoľko zaujímavých schopností. Palatín je obzvlášť "
+"vhodne vybavený na boj s magickými a nadprirodzenými nepriateľmi a väčšina z "
+"nich má aj lekárske a uzdravovateľské zručnosti."
 
 #. [unit]: race=human
 #: data/core/units/humans/Horseman.cfg:4
@@ -1818,7 +1822,6 @@ msgstr "Jazdec"
 
 #. [unit]: race=human
 #: data/core/units/humans/Horseman.cfg:20
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -1828,21 +1831,21 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
-"Jazdci často pochádzajú z okrajových oblastí Wesnothu. Od detstva sa učia "
-"jazdiť na koni a dodržiavať kódex cti. Jazdcov výpad je mocný hoci "
-"nebezpečný útok, na bojisku sa už mnohokrát osvedčil. Jazdci sú vynikajúci "
-"proti pešiakom, najmä tým, ktorí sa vzdialili od jadra armády, ale musia si "
-"dávať pozor na kopijníkov a lukostrelcov, pretože ich ťažkopádnosť a veľká "
-"plocha z nich robia vhodné terče."
+"Jazdci často pochádzajú z okrajových, divokejších oblastí Wesnotu. Ich "
+"výchova spočíva v tom, že už od detstva sa učia jazdiť na koni a dodržiavať "
+"prísny kódex cti. Jazdecké výpady využívajúce kopije predstavujú mocný no "
+"značne nebezpečný typ útoku, ktorý sa na bojisku už mnohokrát osvedčil. "
+"Jazdci sú vynikajúci proti pešiakom, najmä tým, ktorí sa vzdialili od jadra "
+"armády, ale musia si dávať pozor na kopijníkov a lukostrelcov, kvôli tomu, "
+"že ich veľkosť z nich robia vhodné terče na streľbu z diaľky."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
-msgstr "Strelec"
+msgstr "Lukostrelec"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -1850,10 +1853,10 @@ msgid ""
 "woodsmen, bowmen are competent with both a bow and a short sword, and are "
 "very common on the battlefield."
 msgstr ""
-"Od vynálezu lukostreľby bolo jasné, že nezostane iba pri streľbe do lovnej "
-"zveri, a lukostrelci sa dávno stali neodmysliteľnou súčasťou armády. Často "
-"sú skromného pôvodu, roľníci alebo tesári, sú šikovní pri boji lukom i "
-"krátkym mečom, a často sa vyskytujú na bojisku."
+"Už asi od čias vynálezu lukostreľby bolo jasné, že nezostane iba pri streľbe "
+"do lovnej zveri. Lukostrelci sa dávno stali neodmysliteľnou súčasťou armád a "
+"bitiek. Často sú skromného pôvodu, roľníci alebo tesári, sú šikovní pri boji "
+"lukom i krátkym mečom a  na bojiskách sa vyskytujú pomerne bežne."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
@@ -1868,17 +1871,17 @@ msgstr "Jazdec expert"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility; such might, and the daring deeds it fosters, are the subject "
 "of many a tale and song."
 msgstr ""
-"Elitní jazdci, majstri meča, kuše a jazdy na koni, sú znakom víťazstva na "
-"bojovom poli. Ich schopnosť streľby na diaľku im umožňuje zaútočiť "
-"beztrestne na mnohých súperov, a ich útok často zvrátil výsledok najväčších "
-"bitiek v histórii."
+"Elitní jazdci, majstri meča, kuše a jazdy na koni, sú často neklamným znakom "
+"blížiaceho sa víťazstva na bojovom poli. Táto kombinácia výzbroje v "
+"kombinácii s rýchlosťou a manévrovacími schopnosťami koní, ako aj udatné "
+"činy, ktorých sú títo jazdci schopní, sa stali predmetom nejedného príbehu "
+"či piesne."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1904,7 +1907,6 @@ msgstr "Jazdec kavalérie"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1916,11 +1918,14 @@ msgid ""
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
 "Jazdci kavalérie sa od obyčajných jazdcov líšia taktikou a vybavením. Jazdec "
-"kavalérie má brnenie, meč a štít, nie kopiju. Ich taktika nespočíva vo "
-"výpadoch, ale v manévrovaní, sekaní a uhýbaní.\n"
+"kavalérie má o čosi ťažšie brnenie, meč a štít - namiesto kopije. Taktika "
+"kavalérie nespočíva ani tak v náhlych výpadoch, ale skôr v manévrovaní okolo "
+"nepriateľa, sekaní a uhýbaní sa. Jazdec kavalérie sa spolu so svojim koňom "
+"stal veľmi účinným nástrojom na boj zblízka.\n"
 "\n"
-"Jazdci kavalérie sú užitoční na dobýjanie a chránenie území na otvorenom "
-"priestore, na chránenie spojencov a prieskum."
+"Jazdci kavalérie sú užitoční na dobýjanie a ochranu dobytých území v "
+"otvorenom priestore. Často ich úlohy zahŕňajú ochranu spojencov ale aj "
+"prieskum terénu."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
@@ -1936,8 +1941,8 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
-"Najnadanejší jazdci kavalérie v armáde Wesnothu sú cvičení v používaní kuše "
-"a vybavení močnejšími tátošmi. Títo vojaci, skvele obrnení a zdatní v "
+"Najnadanejší jazdci kavalérie v armáde Wesnotu sú cvičení v používaní kuše a "
+"vybavení mocnejšími tátošmi. Títo vojaci, skvele obrnení a zdatní v "
 "používaní meča, môžu smelo útočiť a brániť dobytú zem. Ich veľkou výhodou na "
 "bojisku je pohyblivosť a odolnosť."
 
@@ -1948,7 +1953,6 @@ msgstr "Duelista"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -1962,17 +1966,17 @@ msgid ""
 "fact very useful, and those of their ranks who live long enough to be "
 "veterans typically do so by making such concessions to utility and survival."
 msgstr ""
-"Wesnothská šľachta má obyčaj prihlásiť svojich synov do armády, kde sa učia "
-"jazdu a šerm. Duelisti sú nazývaní podľa mladých aristokratov, ktorí majú "
-"nešťastný zvyk riešiť každú urážku súbojom.\n"
+"Wesnotská šľachta má zvláštnu obyčaj prihlasovať svojich synov do jedného z "
+"dvoch typov bojových umení, buď to sa učia jazdu na koni alebo umenie šermu. "
+"Duelisti svoje meno získali najmä vďaka mladým aristokratom, ktorí často "
+"trpia nešťastným zvykom riešiť každú urážku súbojom.\n"
 "\n"
-"Skúsení šermiari, ktorí sa buď narodili ako šľachtici, alebo sa nimi stali, "
-"si nosia so sebou malé kuše, ktoré ľahko ukryjú pod plášť. Pomaly sa "
-"nabíjajú a okrem toho sa považujú za nečestné zbrane, ale tí, čo žili dosť "
-"dlho, aby sa mohli nazvať veteránmi, zvyčajne dávajú dôraz na užitočnosť a "
-"schopnosť prežiť.\n"
-"\n"
-"Poznámka:"
+"Skúsení šermiari, často si zakladajúci na svojom výzore a správaní (aj keď "
+"nie vždy šľachtického pôvodu), nosia na sebe aj malé kuše, ktoré ľahko "
+"ukryjú pod plášť. Kuše sa síce pomaly nabíjajú a okrem toho sa považujú za "
+"nečestné zbrane, ale tí, čo žili dosť dlho na to, aby sa mohli nazvať "
+"veteránmi, zvyčajne dávajú dôraz na užitočnosť a schopnosť týchto zbraní "
+"pomôcť v prežití."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:69
@@ -1988,7 +1992,6 @@ msgstr "Šermiar"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2002,16 +2005,16 @@ msgid ""
 "infantry, mocking the weight of their full armor."
 msgstr ""
 "Šermiari patria do bojovej školy, ktorá tvrdí, že pre väčšinu bojovníkov je "
-"najväčším nepriateľom ich vlastné brnenie. Brnenie može úder zadržať, ale "
-"omnoho účinnejšie je úderu sa celkom vyhnúť. Úspešné uhýbanie je však "
-"výsadou len tých najzdatnejších a aj vtedy je výsledkom dlhého výcviku.\n"
+"najväčším nepriateľom ich vlastné brnenie. Brnenie môže síce úder zadržať či "
+"stlmiť, ale omnoho účinnejšie je úderu sa celkom vyhnúť. Úspešné uhýbanie je "
+"však výsadou len tých najzdatnejších a aj vtedy je skôr výsledkom dlhého "
+"výcviku než talentu.\n"
 "\n"
-"Šermiari sú vyzbrojení iba rapírom a dýkou, majú ľahké nohy a sú užitoční v "
-"mnohých situáciách, kde by brnenie bolo nevýhodou. Často doslova tancujú "
-"okolo obrnených jednotiek, aby sa im vysmievali za cenu, ktorú platia za "
-"svoju ochranu.\n"
-"\n"
-"Poznámka:"
+"Šermiari sú vyzbrojení iba šabľou a dýkou, dokážu sa pri boji pohybovať tak "
+"rýchlo a ladne, že vyzerá, ako by tancovali. Vo všeobecnosti, sú to užitočné "
+"jednotky najmä v situáciách, kde by brnenie bolo nevýhodou. Často doslova "
+"tancujú okolo obrnených jednotiek, aby sa im vysmievali za cenu a váhu, "
+"ktorou platia za svoju ochranu."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
@@ -2020,16 +2023,13 @@ msgstr "Generál"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
 msgstr ""
-"Generáli sú najvyššími hodnosťami v ľudských armádach. Sú zodpovední za "
-"obranu rozsiahlych a dôležitých území v ľudských kráľovstvách. Na túto úlohu "
-"majú zostatočný výcvik a skúsenosti.\n"
-"\n"
-"Poznámka:"
+"Generál je najvyššou hodnosťou v ľudských armádach. Generáli sú bežne "
+"zodpovední za obranu rozsiahlych a dôležitých území v kráľovstve - často ako "
+"protislužba za léno, ktoré im bolo prepožičané."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -2038,7 +2038,6 @@ msgstr "Vrchný veliteľ"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have survived many trials by fire, "
@@ -2047,9 +2046,7 @@ msgid ""
 msgstr ""
 "Hodnosť vrchného maršala je jedna z najváženejších v ľudských armádach. "
 "Nositelia tejto hodnosti prekonali mnohé skúšky ohňom a preukázali "
-"pozoruhodné schopnosti v bitke i taktizovaní.\n"
-"\n"
-"Poznámka:"
+"pozoruhodné schopnosti v samotnom boji ale tiež v taktike a stratégii."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
@@ -2058,7 +2055,6 @@ msgstr "Halapartník"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -2073,18 +2069,19 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
-"Halapartňa je náročná a ťažká zbraň, ale v rukách odborníka je mocná. Je "
-"všestrannejšia ako kopija - každý halapartník vám povie, že má aspoň 4 "
-"základné útočné body, o 2 viac ako kopija či píka: hrot, ostrie, hrot na "
-"opačnom konci, a zahrotený spodný bod ostria, ktorý možno použiť pri pohybe "
-"smerom k sebe. To z nej robí veľmi silnú bojovú zbraň, najmä proti jazde.\n"
+"Halapartňa je náročná a ťažká zbraň, ale v rukách odborníka má veľkú silu. "
+"Je o čosi všestrannejšia než kopija, z ktorej tento typ zbrane pochádza. "
+"Každý halapartník vám povie, že má k dispozícii 4 základné útočné body, to "
+"jest o dva viac než kopija či píka: môže útočiť vrchným hrotom, ostrím "
+"čepele, hrotom na spodnom konci a ešte aj zahroteným spodným koncom čepele, "
+"ktorý je možno použiť napríklad na pritiahnutie či stiahnutie jazdca z koňa. "
+"Toto všetko robí z bežnej halapartne veľmi zaujímavú bojovú zbraň, najmä  "
+"proti jazdeckým jednotkám.\n"
 "\n"
-"Taká halapartňa je však aj výrazne drahšia a náročnejšia na konštrukciu ako "
-"kopija, a v rukách nováčika je ešte menej užitočná. V armádach Wesnothu sa "
-"tieto zbrane zvyčajne dávajú len skúseným kopijníkom, ktorí dokázali, že "
-"majú potrebné bojové schopnosti.\n"
-"\n"
-"Poznámka:"
+"Taká halapartňa je však aj výrazne drahšia a náročnejšia na konštrukciu než "
+"kopija a v rukách nováčika sa jej výhody rýchlo strácajú. V armádach Wesnotu "
+"sa tieto zbrane zvyčajne dávajú len skúseným kopijníkom, ktorí dokázali, že "
+"majú potrebné bojové schopnosti."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -2117,7 +2114,6 @@ msgstr "Miesiželezo"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
-#, fuzzy
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -2130,14 +2126,17 @@ msgid ""
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
-"Miesiželezá sú pomenované zo zrejmých dôvodov. Títo muži navlečení v "
-"kovových brneniach sú silou porovnateľní s ohyzdmi, a sú vyberaní z "
-"najlepších hradných stráží. Je ich však nákladné udržiavať, a nemožno ich "
-"posielať do vzdialených bitiek bez skupiny služobníkov.\n"
+"Miesiželezo - toto pomenovanie obrnenej jednotky má svoje zrejmé dôvody. "
+"Títo muži navlečení v kovových brneniach sú silou porovnateľní s ohyzdmi a "
+"sú často vyberaní spomedzi najlepších vojakov do hradných stráží. Je však "
+"relatívne nákladné takúto jednotky vydržiavať a do vzdialených bitiek sa "
+"títo obrnenci bez skupiny služobníkov prakticky nemajú šanci dostať.\n"
 "\n"
-"Hoci sú v boji na blízko vynikajúci, majú aj svoje nevýhody - ľahko sa "
-"unavia, a nemôžu sa na bojisku rýchlo pohybovať. Často sa im stane, že "
-"nestihnú prijsť napadnutému spojencovi na pomoc."
+"Hoci sú v boji na blízko vynikajúci, ich ťažké brnenia majú aj svoje "
+"nevýhody - títo obrnenci sa ľahko unavia a nemôžu sa na bojisku rýchlo "
+"pohybovať. Často sa im stane, že napriek tomu, že sú svedkami, ako nepriateľ "
+"napadol vzdialenejšie krídla, bývajú bezmocní, keďže sa jednoducho nedokážu "
+"na miesto presunúť dostatočne rýchlo."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
@@ -2146,7 +2145,6 @@ msgstr "Oštepár"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -2156,14 +2154,13 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee."
 msgstr ""
-"Oštepníci sú vždy vyzbrojení sadou oštepov, ktoré môžu z diaľky vrhať na "
-"nepriateľa. Niektorí zistili, že na to majú prirodzený talent. Oštepári sú "
-"dôležitou súčasťou armády, pretože svoje schopnosti bojovať nablízko "
-"dopĺňajú schopnosťou útočiť na vzdialených nepriateľov. Do nepriateľských "
+"Oštepníci sú vždy vyzbrojení sadou vrhacích oštepov, ktoré môžu z diaľky "
+"hádzať na nepriateľa. Niektorým sa ale oštep natoľko zapáčil, prípadne našli "
+"v sebe skrytý, prirodzený talent na ďalší výcvik s touto zbraňou. Oštepári "
+"sú dôležitou súčasťou armády, pretože svoje schopnosti bojovať nablízko "
+"dopĺňajú schopnosťou útočiť na vzdialenejších nepriateľov. Do nepriateľských "
 "radov hádžu oštepy z diaľky, často beztrestne, a pritom udržiavajú pozíciu "
-"pri súboji zblízka.\n"
-"\n"
-"Poznámka:"
+"pri súboji zblízka."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -2172,24 +2169,20 @@ msgstr "Poručík"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
 msgstr ""
-"Poručíci bojujú mečom i kušou, vedú skupinky ľudských vojakov a koordinujú "
-"ich útoky.\n"
-"\n"
-"Poznámka:"
+"Poručíci absolvovali výcvik v boji s mečom i kušou a ich úlohou v armáde je "
+"viesť menšie skupinky ľudských vojakov a koordinovať ich útoky."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
-msgstr "Lukostrelec"
+msgstr "Strelec z dlhého luku"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
-#, fuzzy
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
 "wield. It takes great strength to draw one, and the added range and power it "
@@ -2197,10 +2190,11 @@ msgid ""
 "carry their weapons as a badge of pride, and most bowmen look forward to the "
 "day they can begin using one."
 msgstr ""
-"Začiatočníci lukostrelci nemôžu nosiť dlhé luky z technických príčin. Ich "
-"natiahnutie si vyžaduje veľkú silu, a bez dobrého mierenia je zvýšený dosah "
-"a sila nanič. Skúsení lukostrelci nosia svoje zbrane hrdo, a väčšina "
-"začiatočníkov sa teší na deň, ked aj oni dostanú svoj dlhý luk."
+"Dlhý luk je veľmi účinná zbraň. Začiatočníci lukostrelci však nemôžu nosiť "
+"dlhé luky z technických príčin. Natiahnutie a streľba z dlhého luku si "
+"vyžaduje podstatnú silu a bez dobrej a presnej mušky je zvýšený dostrel a "
+"prieraznosť luku nanič. Skúsení lukostrelci nosia svoje zbrane hrdo a "
+"väčšina začiatočníkov sa teší na deň, keď aj oni dostanú svoj prvý dlhý luk."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
@@ -2209,7 +2203,6 @@ msgstr "Majster lukostrelec"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -2221,12 +2214,13 @@ msgid ""
 "by dint of age."
 msgstr ""
 "Majstri lukostrelci dosiahli vrchol svojho umenia, v rámci ľudských "
-"možností. Sú vyzbrojení mečmi a dlhými lukmi, sú pýchou strelectva, a presne "
-"mierenými strelami likvidujú nepriateľov. Ich schopnosti s mečmi tiež stoja "
-"za zmienku; darí sa im rovnako dobre ako hociktorému začiatočníkovi v šerme. "
-"Spomedzi rôznych rás ich v streľbe prekonajú jedine elfovia; a niektorí "
-"ľudia tvrdia - i keď možno len zo žiarlivosti - že aj to len vďaka dlhšiemu "
-"veku."
+"možností. Sú vyzbrojení mečmi a dlhými lukmi a bývajú pýchou streleckých "
+"oddielov. Svojimi presne mierenými strelami dokážu nepriateľom spôsobovať "
+"značné a rýchle straty. Ich zručnosť s mečom však tiež stojí za zmienku; "
+"darí sa im rovnako dobre ako hociktorému začiatočníkovi v šerme. Spomedzi "
+"rôznych rás ich v lukostreľbe prekonajú jedine elfovia; a niektorí ľudia "
+"tvrdia - i keď možno len zo žiarlivosti - že aj to len vďaka dlhšiemu veku a "
+"tým aj dlhšiemu výcviku..."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
@@ -2235,7 +2229,6 @@ msgstr "Majster zbraní"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2250,15 +2243,14 @@ msgid ""
 "perhaps even useful."
 msgstr ""
 "Majstrovskí šermiari majú závideniahodný život. Žijú síce nebezpečným "
-"životom, ale teraz nadišiel čas zbierať jeho ovocie. Ich schopnosti sú "
-"preslávené, a ich správanie je typicky aristokratické, takže sa po nich "
-"obzerajú aj mnohé vznešené dámy.\n"
+"životom, ale dosiahli ten bod vo svojom živote, keď nadišiel čas žať úrodu "
+"dlhoročného výcviku. Ich schopnosti sú preslávené a ich správanie je typicky "
+"aristokratické, takže sa po nich obzerajú aj mnohé vznešené dámy.\n"
 "\n"
-"Zvyčajne si môžu pri práci veľa vyberať a veľa cestujú. Často sa stávajú "
-"kapitánmi hradných stráží, majstrami vojenských akadémií, čo sú miesta, na "
-"ktorý je ich výbušná povaha prijateľná, ba možno aj užitočná.\n"
-"\n"
-"Poznámka:"
+"Zvyčajne si môžu pracovné zadania vyberať a veľa sa pri tom nacestujú. Často "
+"ich môže človek stretnúť ako velia  hradnej stráži, prípadne vedú vojenské "
+"akadémie a podobne, čo sú všetko miesta, v ktorých je ich výbušná a rozšafná "
+"povaha nielen prijateľná ale možno aj užitočná."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
@@ -2267,7 +2259,6 @@ msgstr "Kopijník"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -2276,12 +2267,11 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
-"Schopní oštepníci sú v armáde Wesnothu často povýšení na kopijníkov, a "
-"dostanú aj lepšie brnenie. Píka je omnoho dlhšia zbraň ako oštep, a vyžaduje "
-"si odlišnú bojovú taktiku. Hradba kopijníkov je postrachom jazdy, a pri "
-"vhodnej disciplíne dokážu kopijníci odraziť aj väčšinu pešiakov.\n"
-"\n"
-"Poznámka:"
+"Schopní oštepníci sú v armáde Wesnotu často povýšení na kopijníkov, čo "
+"zvyčajne zahŕňa aj omnoho lepšie brnenie, než to čo má bežný regrút. Píka je "
+"omnoho dlhšia zbraň než oštep, no vďaka tomu umožňuje odlišnú bojovú "
+"taktiku. Hradba kopijníkov je postrachom pre jazdu a pri vhodnej disciplíne "
+"a taktike dokážu kopijníci odraziť aj útok pechoty."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
@@ -2305,9 +2295,9 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
-"Kráľovská garda je zostavovaná z najlepších šermiarov Wesnothu. Slúžia "
-"vyššej šľachte, zvyčajne ako telesní strážcovia. Špeciálny oddiel kráľovskej "
-"gardy sídli v hlavnom meste, kde stráži palác a kráľovskú rodinu. Keďže sú "
+"Kráľovská garda je zostavovaná z najlepších šermiarov Wesnotu. Slúžia vyššej "
+"šľachte, zvyčajne ako telesní strážcovia. Špeciálny oddiel kráľovskej gardy "
+"sídli v hlavnom meste, kde stráži palác a kráľovskú rodinu. Keďže sú "
 "dôveryhodní, zvyknú byť posielaní na dôležité misie namiesto žoldnierov. Ich "
 "spoľahlivosť a majstrovstvo v boji na blízko sú výhody, ktoré ich preslávili."
 
@@ -2318,14 +2308,14 @@ msgstr "Čatár"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
-#, fuzzy
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
-"Čatár je úradník v službe kráľovskej armády. Má vzdelanie, ale potrebuje "
-"skúsenosti na bojisku, kým sa jeho vedenie stane všeobecne uznávaným."
+"Čatár je nižší veliteľ v službách kráľovskej armády. Zvyčajne je to "
+"absolvent vojenskej akadémie, ale potrebuje teóriu doplniť skúsenosťami na "
+"bojisku, kým sa jeho veliteľské schopnosti dostanú všeobecného uznania."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -2334,7 +2324,6 @@ msgstr "Špeciálny pešiak"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2345,18 +2334,19 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
-"Špeciálna pechota je elitou ťažkej pechoty, a polovica ich účinku v boji "
-"spočíva v strachu, ktorý vyvolávajú. Do ich radov môžu vstúpiť iba telesne "
-"najzdatnejší muži, ktorí keď sa oblečú do čierneho ostnatého brnenia, sú "
-"strašní na pohľad. Pohľad na špeciálnu pechotu drviacu nepriateľa palcátmi "
-"dokáže rozbiť morálku súpera, ktorí netuší, či sú to ešte ľudia alebo "
-"netvory. Nevýhodou ťažkého brnenia je pomalosť pri pohybe v boji."
+"Špeciálna pechota je elitou ťažkoodencov a podstatná časť ich dopadu na "
+"nepriateľa spočíva v strachu, ktorý vyvolávajú. Do ich radov môžu vstúpiť "
+"iba telesne najzdatnejší muži, ktorí keď sa oblečú do čierneho ostnatého "
+"brnenia, sú už na pohľad odstrašujúci. Pohľad na špeciálnu pechotu drviacu "
+"nepriateľa palcátmi dokáže rozbiť morálku súpera, ktorému odpustíme, keď ho "
+"napadne, či sa pod tým čiernym brnením skrývajú ešte ľudia alebo už nejaké "
+"netvory. Nevýhodou ťažkého brnenia je však pomalosť pri pohybe v boji."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
 msgid "morning star"
-msgstr "palcát"
+msgstr "bojový cep"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2365,7 +2355,6 @@ msgstr "Oštepník"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -2374,12 +2363,10 @@ msgid ""
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
 "Meče sú pre mnohých luxusom, aký si bežný roľník nemôže dovoliť. Oštepy sa "
-"ľahšie vyrábajú a fungujú aj bez hrotu, hoci väčšina si nejaký môže dovoliť. "
-"V koženom brnení, často so štítom a pár oštepmi, sú oštepníci súčasťou "
-"mnohých armád. V boji ich často iba so základným výcvikom vrhnú do prvej "
-"línie.\n"
-"\n"
-"Poznámka:"
+"omnoho ľahšie vyrábajú a fungujú aj bez hrotu, hoci väčšina si nejaký ten "
+"nástavec môže dovoliť. V koženom brnení, často aj so štítom a zopár oštepmi, "
+"sú oštepníci jadrom mnohých armád. V boji ich často iba so základným "
+"výcvikom zaraďujú do prvej línie."
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -2388,7 +2375,6 @@ msgstr "Bojovník"
 
 #. [unit]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himself with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -2397,10 +2383,11 @@ msgid ""
 "behind. A sword is not without its own drawbacks, but is more versatile than "
 "a spear, and much better in close quarters."
 msgstr ""
-"Skúsenejší vojak si často našetrí na krúžkové brnenie a široký meč. Vymeniť "
-"oštep za meč je náročná zmena, ale mnohí oštepníci si dobre uvedomujú "
-"nevýhody svojej zbrane. Meč má tiež svoje chybičky, ale ľahšie sa s ním "
-"manévruje, a viac sa hodí na boj zblízka."
+"Skúsenejší vojak si často našetrí na seriózne oceľové brnenie a poriadny "
+"široký meč. Vymeniť oštep za meč je náročná zmena, ale mnohí oštepníci si až "
+"príliš dobre uvedomujú nevýhody oštepu, a tak sa radi podujmú na ďalší "
+"výcvik v boj s  mečom. Meč má tiež svoje chybičky, ale ľahšie sa s ním "
+"manévruje, je flexibilnejší a viac sa hodí na boj zblízka."
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage.cfg:4
@@ -2409,7 +2396,6 @@ msgstr "Mág"
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage.cfg:23
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2432,22 +2418,20 @@ msgid ""
 msgstr ""
 "Ľudia sa často snažili odhaliť zákonitosti sveta, v ktorom žijú. Niektorí sa "
 "namiesto planých špekulácií rozhodli zasvätiť tomuto skúmaniu celý život. "
-"Mágovia trávia niekoľko rokov štúdiom a zhromaždia pritom vedomosti, ktoré "
-"ich robia výnimočnými. Vo svete, kde len pár ľudí dokáže čítať a písať, sú "
-"títo muži a ženy naplno zasvätení poznaniu. Do ich radov prichádzajú deti zo "
+"Mágovia trávia mnoho rokov štúdiom a zhromaždia pritom vedomosti, ktoré ich "
+"robia výnimočnými. Vo svete, kde len pár ľudí dokáže čítať a písať, sú títo "
+"muži a ženy naplno zasvätení poznaniu. Do ich radov prichádzajú deti zo "
 "šľachtických rodín, alebo tí, ktorí v manuálnej práci nenašli intelektuálne "
 "naplnenie.\n"
 "\n"
-"Je iróniou, že s ich vedomosťami, na ktoré majú prakticky monopol, by "
-"mágovia ľahko dokázali ovládnuť spoločnosť, keby sa o to pokúsili. Ich "
-"pravou túžbou však nie sú peniaze ani moc; a kto sa naopak snaží študovať "
-"mágiu kvôli prízemným cieľom, často zisťuje, že takýto plytký prístup "
-"nestačí na jej dôkladné ovládnutie.\n"
+"Je teda iróniou, že so svojimi vedomosťami, na ktoré majú prakticky monopol, "
+"by mágovia ľahko dokázali ovládnuť celú wesnotskú spoločnosť - to jest, keby "
+"sa o to čo len pokúsili. Ich pravou túžbou však nie sú peniaze ani moc; kto "
+"sa naopak snaží študovať mágiu kvôli prízemným cieľom, často zisťuje, že "
+"takýto plytký prístup nestačí na jej dôkladné ovládnutie.\n"
 "\n"
-"Mágovia sú fyzicky slabí a neskúsení v boji; niektoré ich schopnosti sú však "
-"v boji užitočné.\n"
-"\n"
-"Poznámka:"
+"Mágovia sú fyzicky slabí a zväčša neskúsení v boji; niektoré ich schopnosti "
+"sú však v boji veľmi užitočné."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:62
@@ -2467,7 +2451,6 @@ msgstr "Archmág"
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -2484,22 +2467,20 @@ msgid ""
 msgstr ""
 "Titul archmága možno získať len po celoživotnom štúdiu a výnimočných "
 "úspechoch. Archmágovia sú zvyčajne na pozíciách učiteľov alebo poradcov "
-"tých, ktorí sú dosť rozumní, aby ocenili plody ich múdrosti. Mnohí majú "
+"tých, ktorí sú dosť chytrí na to, aby ocenili plody ich múdrosti. Mnohí majú "
 "bohatých patrónov, čo je výhodné pre obe strany, pretože okrem občasnej rady "
 "či pomoci sa mág môže nerušene sústrediť na svoj výskum. Z toho pochádza "
-"veľká časť ľudského poznania; veda, filozofia, krásne umenia.\n"
+"veľká časť ľudského poznania; veda, filozofia, či krásne umenia.\n"
 "\n"
-"Archmág nie je trénovaný v boji, ale keď treba, dokáže prejaviť plnú silu "
-"svojho umenia, čo nie je žiadna sranda.\n"
-"\n"
-"Poznámka:"
+"Archmág nemá žiaden výcvik v boji, ale keď treba, dokáže prejaviť plnú silu "
+"svojho umenia, čo má zvyčajne na nepriateľa fatálne účinky."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:37
 #: data/core/units/humans/Mage_Red.cfg:62
 msgid "fireball"
-msgstr "ohnivá guľa"
+msgstr "ohnivá strela"
 
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:118
@@ -2513,7 +2494,6 @@ msgstr "Veľký mág"
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -2527,16 +2507,14 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
-"Každý človek, ktorý bol niekedy označený titulom veľký mág je legendou "
-"svojej doby. O tomto titule rozhoduje rada najvyšších mágov, a prideľuje sa "
-"väčšinovým hlasovaním. Samotná nominácia na titul veľkého mága znamená, že "
-"sa jedná o majstra magického umenia, ktorý prekonal väčšinu svojich "
-"rovesníkov.\n"
+"Každý človek, ktorý bol niekedy označený titulom veľký mág, sa stáva "
+"legendou svojej doby. O tomto titule rozhoduje rada najvyšších mágov a "
+"prideľuje sa väčšinovým hlasovaním. Samotná nominácia na titul veľkého mága "
+"znamená, že sa jedná o majstra magického umenia, ktorý prekonal väčšinu "
+"svojich rovesníkov.\n"
 "\n"
-"Hoci to nie je bojovník, dokáže svoje umenie využiť v boji tak, že väčšina "
-"vojakov nablízko zostane s úžasom pozerať.\n"
-"\n"
-"Poznámka:"
+"Hoci to nie je bojovník, dokáže mág svoje umenie využiť v boji tak, že "
+"väčšina vojakov poblíž môže iba s úžasom pozerať."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:119
@@ -2550,7 +2528,6 @@ msgstr "Červený mág"
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2565,17 +2542,15 @@ msgid ""
 "number of tricks up their sleeves, including the gouts of fire which may "
 "have cemented their colloquial name."
 msgstr ""
-"Po úspešnom zavŕšení učňovských rokov dostane mág namiesto modrej "
-"začiatočníckej róby červenú majstrovskú. Prostí ľudia tejto symbolike "
-"nerozumejú, a tak majstrov mágov nazývajú jednoducho 'červení mágovia'. "
-"Domnievajú sa, že farba má naznačiť mágovu schopnosť vyčarovať ohnivú guľu z "
-"ničoho; tento trik má síce svoje praktické uplatnenie, ale je to len zlomok "
-"zo skutočných získaných vedomostí.\n"
+"Po úspešnom zavŕšení učňovských rokov dostane mág namiesto hnedej učňovskej "
+"róby červený, majstrovský plášť. Prostí ľudia tejto symbolike nerozumejú, a "
+"tak majstrov mágov nazývajú jednoducho 'červení mágovia'. Domnievajú sa, že "
+"farba má naznačiť mágovu schopnosť z ničoho vyčarovať ohnivé strely. Tento "
+"trik má síce svoje praktické uplatnenie, ale je to len zlomok zo skutočných "
+"získaných vedomostí.\n"
 "\n"
-"Hoci sú fyzicky slabí a neskúsení v boji, 'červení mágovia' majú pár trikov "
-"v rukáve, vrátane ohnivých striel, ktoré im dali meno.\n"
-"\n"
-"Poznámka:"
+"Hoci sú mágovia fyzicky slabí a neskúsení v boji, 'červení mágovia' majú pár "
+"trikov v rukáve, vrátane ohnivých striel, ktoré im dali meno."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:144
@@ -2593,10 +2568,11 @@ msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
+"Strieborní mágovia sú tesne prispôsobený životu s mágiou, čo ich robí "
+"obzvlášť odolnými voči nefyzickým útokom."
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2621,20 +2597,18 @@ msgstr ""
 "tajomstvá, ktoré presahujú predstavivosť väčšiny ľudí. Strieborní mágovia "
 "často vystupujú ako mudrci a potulní mystici, a ich konanie je často "
 "nepochopiteľné aj pre ich kolegov. Hoci sú užitoční v boji, zostávajú "
-"samotármi.\n"
+"podivínmi a samotármi.\n"
 "\n"
-"V skutočnosti je to akýsi rád vo vnútri mágov, ktorý chráni vlastné "
-"tajomstvá aj pred kolegami. Jedným z nich je schopnosť prekonávať veľké "
-"vzdialenosti rýchlejšie ako je to pešo možné. Členovia rádu strieborných "
-"mágov o týchto záležitostiach odmietajú diskutovať aj s ostatnými mágmi, a "
-"keď sa ich niekomu podarilo pristihnúť pri práci, nechcel sa o tom nikdy ani "
-"rozprávať.\n"
+"V skutočnosti predstavujú strieborní mágovia akýsi rád v rámci magického "
+"cechu, ktorý chráni vlastné tajomstvá aj pred kolegami. Jedným z týchto "
+"tajomstiev je schopnosť prekonávať veľké vzdialenosti rýchlejšie, ako je to "
+"možné bežnou chôdzou či behom. Členovia rádu strieborných mágov o týchto "
+"záležitostiach odmietajú diskutovať aj s ostatnými mágmi a keď sa náhodu "
+"niekomu podarilo  takéhoto mága pristihnúť pri práci, tak sa zvyčajne k "
+"tejto skúsenosti nechcel vracať.\n"
 "\n"
 "Strieborní mágovia sú telesne zdatnejší ako väčšina mágov a ich schopnosti "
-"sú v boji neoceniteľné, ak ich prejavia.\n"
-"\n"
-"Poznámka: Strieborní mágovia sú vysoko odolní voči mnohým nefyzickým "
-"zraneniam."
+"sú v boji neoceniteľné, ak sa rozhodnú ich použiť v akcii."
 
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:150
@@ -2648,7 +2622,6 @@ msgstr "Biely mág"
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage_White.cfg:20
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -2662,14 +2635,12 @@ msgid ""
 msgstr ""
 "Niektorí mágovia sa pri svojom štúdiu okolitého sveta dozvedia veľa o "
 "utrpení a biede, v ktorých ľudstvo zvyčajne žije, a rozhodnú sa, že samotné "
-"štúdium nestačí. Títo muži a ženy sa vzdajú života mágov a vstupujú do "
-"mníšskych rádov, aby svoje sily venovali dobru všetkých. Podľa nariadení "
-"potom chodia po svete, liečia choroby a zranenia.\n"
+"štúdium nestačí. Títo muži a ženy sa vzdajú života ako mágovia a vstupujú do "
+"mníšskych rádov, aby svoje sily venovali pre dobro všetkých. Po svojom "
+"zasvätení potom cestujú po svete liečiac choroby a zranenia.\n"
 "\n"
 "Hoci nie sú cvičení v boji, proti jednému druhu nepriateľa sú pripravení. Ak "
-"treba, dokážu privolať sily svetla na zahnanie netvorov z tohoto sveta.\n"
-"\n"
-"Poznámka:"
+"treba, dokážu privolať sily svetla na zahnanie nadprirodzených netvorov."
 
 #. [attack]: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
@@ -2691,7 +2662,6 @@ msgstr "Mág svetla"
 
 #. [unit]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:22
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -2701,12 +2671,10 @@ msgid ""
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
 "Po rokoch praxe sú najoddanejší z bielych mágov obdarení duchovnými silami. "
-"Ich pridŕžanie sa cesty svetla im dáva schopnosť odohnať tmu.\n"
+"Ich pridŕžanie sa cesty svetla im dáva schopnosť zahnať temno.\n"
 "\n"
 "Títo muži a ženy pracujú neúnavne v súlade s prísnym kódexom pokory a cti, "
-"aby priniesli život a poriadok do sveta, v ktorom žijú.\n"
-"\n"
-"Poznámka:"
+"aby priniesli život a poriadok do sveta, v ktorom žijú."
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:232
@@ -2716,7 +2684,7 @@ msgstr "Mágyňa svetla"
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
-msgstr "Zbojník"
+msgstr "Štvanec"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw.cfg:18
@@ -2746,11 +2714,10 @@ msgstr "prak"
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:105
 msgid "female^Outlaw"
-msgstr "Zbojníčka"
+msgstr "Štvankyňa"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:108
-#, fuzzy
 msgid ""
 "female^After some years of service, former 'footpads' rise up in the ranks "
 "of their fellow outlaws. Having proven themselves in combat, they are given "
@@ -2760,11 +2727,12 @@ msgid ""
 "Outlaws are somewhat ill at ease fighting during the day, preferring the "
 "cover of nightfall."
 msgstr ""
-"Po pár rokoch služby si 'poskok' získa postavenie medzi ostatnými zbojníkmi. "
-"Osvedčil sa v boji, takže dostáva ťažšie úlohy a väčší podiel na koristi. "
-"Mnohí súperi sa vysmievajú ich zbraniam, ale zbojníci si uvedomujú ich "
-"smrtiaci potenciál, a dostupnosť nábojov. Zbojníkom sa nepohodlne bojuje cez "
-"deň, dávajú prednosť noci."
+"Po pár rokoch služby si 'poskočka' získa postavenie medzi ostatnými "
+"zbojníkmi. Po tom, čo sa osvedčila v boji, dostávajú bývalé poskočky ťažšie "
+"úlohy ale aj väčší podiel na koristi. Mnohí súperi sa vysmievajú ich "
+"zbraniam, ale zbojníčky si dobre uvedomujú ich smrtiaci potenciál, a "
+"dostupnosť nábojov. Zbojníčkam sa nepohodlne bojuje cez deň, dávajú prednosť "
+"noci."
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
@@ -2773,7 +2741,6 @@ msgstr "Zabijak"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2782,12 +2749,10 @@ msgid ""
 "back. Deadly at night, assassins are less able fighting under the open sun."
 msgstr ""
 "Najúspešnejší zlodeji dostanú občas za úlohu vziať čosi viac ako majetok "
-"obete. Títo majstri boja s nožom použijú vhodné prostriedky na umlčanie "
+"obete. Títo majstri boja s nožom použijú akékoľvek prostriedky na umlčanie "
 "svojej obete, či už otráveným nožom z diaľky alebo dýkou do chrbta. V noci "
 "sú zabijaci smrteľne nebezpeční, cez deň sa vo svetle slnka cítia pri boji "
-"nepríjemne.\n"
-"\n"
-"Poznámka:"
+"nepríjemne."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
@@ -2826,7 +2791,6 @@ msgstr "Poskok"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
-#, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2836,10 +2800,9 @@ msgid ""
 "especially under cover of darkness."
 msgstr ""
 "Drobných kriminálnikov zvyčajne starší kolegovia nazývajú poskokmi a dávajú "
-"im úlohy, ktoré vyžadujú veľa pobiehania, ako napríklad prieskum či "
-"doručovanie správ. Kondička a rýchlosť im často dobre poslúži v boji, keď "
-"napriek úbohej výzbroji dokážu narobiť nepriateľom problémy, najmä pod "
-"rúškom tmy."
+"im úlohy, ktoré vyžadujú veľa behania, ako napríklad prieskum či doručovanie "
+"správ. Kondička a rýchlosť im často dobre poslúži v boji, keď aj napriek "
+"úbohej výzbroji dokážu narobiť nepriateľom problémy, najmä pod rúškom tmy."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
@@ -2856,7 +2819,6 @@ msgstr "Poskočka"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:168
-#, fuzzy
 msgid ""
 "female^These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2865,16 +2827,15 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
-"Drobných kriminálnikov zvyčajne starší kolegovia nazývajú poskokmi a dávajú "
-"im úlohy, ktoré vyžadujú veľa pobiehania, ako napríklad prieskum či "
-"doručovanie správ. Kondička a rýchlosť im často dobre poslúži v boji, keď "
-"napriek úbohej výzbroji dokážu narobiť nepriateľom problémy, najmä pod "
-"rúškom tmy."
+"Drobné kriminálničky zvyčajne starší kolegovia nazývajú poskočkami a dávajú "
+"im úlohy, ktoré vyžadujú veľa behania, ako napríklad prieskum či doručovanie "
+"správ. Kondička a rýchlosť im často dobre poslúži v boji, keď aj napriek "
+"úbohej výzbroji dokážu narobiť nepriateľom problémy, najmä pod rúškom tmy."
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "Utečenec"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
@@ -2884,12 +2845,16 @@ msgid ""
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
+"Dlhoroční kriminálnici sa stali priam symbolom nemilosrdnosti a preslávili "
+"sa tým, že ich je takmer nemožné pochytať. Dokážu byť nesmierne nebezpeční a "
+"priam hrôzunaháňajúci, ak sú vo svojom prirodzenom prostredí. Tak či onak, "
+"nedokážu však konkurovať množstvu vojakov, ktorými ich vedia napadnúť bežné "
+"armády."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "Vojačka"
+msgstr "Utečenkyňa"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
@@ -2899,11 +2864,16 @@ msgid ""
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
+"Dlhoročné kriminálničky sa stali priam symbolom nemilosrdnosti a preslávili "
+"sa tým, že ich je takmer nemožné pochytať. Dokážu byť nesmierne nebezpečné a "
+"priam hrôzunaháňajúce, ak sú vo svojom prirodzenom prostredí. Tak či onak, "
+"nedokážu však konkurovať množstvu vojakov, ktorými ich vedia napadnúť bežné "
+"armády."
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "Zbojník"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
@@ -2911,6 +2881,8 @@ msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
 msgstr ""
+"Zbojníka vyzbrojeného ťažkým palcátom by v noci na opustenej ceste chcelo "
+"stretnúť asi len málo ľudí."
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -2919,7 +2891,6 @@ msgstr "Lupič"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -2928,13 +2899,11 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark."
 msgstr ""
-"Vodcovia každej zlodejskej skupiny si svoj post získavajú šikovnosťou. "
-"Lupiči strávili veľa nepríjemných chvíľ útekmi v dave a uhýbaním sa pred "
-"tými, ktorí ich chceli zabiť, čo sú schopnosti pomerne užitočné v boji. Títo "
-"majstri práce s nožom ich dokážu pomerne spoľahlivo hádzať, a sú zvyknutí "
-"pracovať v noci.\n"
-"\n"
-"Poznámka:"
+"Vodcovia každej zlodejskej skupiny si svoj post získavajú šikovnosťou. Ako "
+"lupiči strávili títo vodcovia veľa nepríjemných chvíľ útekmi v dave a "
+"uhýbaním sa pred tými, ktorí ich chceli zabiť, čo sú schopnosti pomerne "
+"užitočné v boji. Títo majstri práce s nožom ich dokážu pomerne spoľahlivo "
+"hádzať, a sú zvyknutí pracovať v noci."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
@@ -2943,9 +2912,8 @@ msgstr "Lupička"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
-#, fuzzy
 msgid "Ruffian"
-msgstr "Ruina"
+msgstr "Burič"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
@@ -2955,6 +2923,12 @@ msgid ""
 "stick, are known as 'Ruffians'. With enough luck and experience, they "
 "sometimes manage to avoid the stockade that awaits most of their colleagues."
 msgstr ""
+"Ľudia bez nejakých zvláštnych schopností či zručností často nedokážu (alebo "
+"nechcú) žiť čestným životom. Tým, čo sa rozhodnú prebíjať životom s mocou "
+"ostrého konca noža či palice, sa zvykne hovoriť \"buriči\". Ak majú títo "
+"ľudia trochu šťastia, prípadne skúseností aj sa im podarí vyhýbať sa "
+"šibeniciam, čo sa ale nedá povedať vo všeobecnejšej rovine o tomto druhu "
+"obživy."
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
@@ -2963,7 +2937,6 @@ msgstr "Zlodej"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -2973,13 +2946,12 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
-"Od nepamäti sa v každom veľkom meste objavili rozličné 'gildy', ktoré majú "
-"podivný zvyk farbiť si vlasy na modro. Je to prejav odvahy, pretože ich "
-"povolanie je často za hranicou zákona. Zlodeji majú veľa schopností, najmä "
-"rýchly beh a boj s nožom. Sú ochotní pristúpiť na menej čestné taktiky, "
-"pretože cieľ je dôležitejší ako 'čestný boj'.\n"
-"\n"
-"Poznámka:"
+"Od nepamäti sa v každom veľkom meste objavovali rozličné 'cechy' potkaniarov "
+"so svojimi podivnými zvykmi odfarbovať si vlasy, až kým nezískajú zvláštny "
+"odtieň svetlej modrej. Je to prejav odvahy, pretože ich povolanie je často "
+"za hranicou zákona. Zlodeji majú veľa schopností, medzi ich prednosti patrí "
+"najmä rýchly beh a boj s nožom. Sú ochotní pristúpiť na menej čestné "
+"taktiky, pretože dosiahnutie cieľa je pre nich dôležitejšie ako 'čestný boj'."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:365
@@ -2993,7 +2965,6 @@ msgstr "Hrdlorez"
 
 #. [unit]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:19
-#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -3002,9 +2973,9 @@ msgid ""
 "victims with large clubs."
 msgstr ""
 "Hrdlorezi pochádzajú z rôznych zdrojov - niektorí sa tak narodia, niektorí "
-"sú bývalý vojaci neschopní ďalšej služby, a niektorí sú roľníci vyhnaní zo "
-"svojej zeme. Stanú sa hrdlorezmi, aby si zarobili na prežitie. Svoje obete "
-"zvyčajne ubíjajú kyjakmi."
+"sú bývalí vojaci neschopní ďalšej služby a niektorí sú roľníci vyhnaní zo "
+"svojej zeme. Títo vyhnanci sa stávajú hrdlorezmi, aby si zarobili na "
+"prežitie. Svoje obete zvyčajne ubíjajú kyjakmi."
 
 #. [unit]: race=human
 #: data/core/units/humans/Peasant.cfg:4
@@ -3013,17 +2984,16 @@ msgstr "Sedliak"
 
 #. [unit]: race=human
 #: data/core/units/humans/Peasant.cfg:20
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
-"Sedliaci sú jadrom vidieckej ekonomiky, a v krajnej núdzi aj vojakmi. Nie sú "
+"Sedliaci sú jadrom vidieckej ekonomiky a v krajnej núdzi aj vojakmi. Nie sú "
 "bojazliví a budú brániť svoje domovy zo všetkých síl. Ak ale niekto posiela "
-"sedliakov proti nepriateľským vojskám, znamená to, že jeho armáda nestojí za "
-"reč."
+"sedliakov proti nepriateľským vojskám, znamená to, že jeho bežná armáda má "
+"asi zjavné problémy."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:34
@@ -3032,9 +3002,8 @@ msgstr "vidly"
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman.cfg:4
-#, fuzzy
 msgid "Woodsman"
-msgstr "Bojovník"
+msgstr "Horal"
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman.cfg:19
@@ -3043,12 +3012,14 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"Horali sú rôzni poľovníci, drevorubači, uhliari a vôbec tí ľudia, ktorí žijú "
+"svoje životy na hraniciach medzi civilizáciou a divočinou. A kde im nedokážu "
+"pomôcť bežné zbrane, často pomáha chytrosť a poznanie prírody."
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
-#, fuzzy
 msgid "Huntsman"
-msgstr "Ľudia"
+msgstr "Lovec"
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
@@ -3068,6 +3039,20 @@ msgid ""
 "save lives, ease travel, provide food, and their skill with a bow is "
 "capitally useful in a fight."
 msgstr ""
+"Lov je populárny najmä medzi šľachtou, ale býva aj zdrojom obživy pre "
+"bežných osadníkov. Ako ktorékoľvek iné umenie, lov si vyžaduje majstrovské "
+"ovládanie určitých zručností. Stopári dobre poznajú tajomstvá svojho "
+"remesla, sú zruční v navigovaní po divočine, v stopovaní a v použití luku. "
+"Majú presnú mušku na pohyblivé ciele, ako aj na ciele pokúšajúce sa ukryť v "
+"kroví. Práve táto schopnosť patrí k veľmi ceneným a je jednou zo zručností, "
+"ktorá zvykne chýbať strelcom z bežných posádok.\n"
+"\n"
+"Majstri lovci sú často najatí komunitami žijúcimi alebo prechádzajúcimi "
+"divokými krajmi, či už sú to komunity zákonné alebo protizákonné. Príroda "
+"môže totiž skrývať mnoho nebezpečí a veliteľ, ktorý si nenajme skúseného "
+"stopára, môže ľahko prísť o mužov, ktorým velí. Dobrí horali dokážu "
+"zachraňovať životy, uľahčovať cestovanie, zabezpečovať stravu a vďaka "
+"zručnosti s lukom sú i veľmi užitočnými bojovníkmi."
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
@@ -3085,12 +3070,18 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Aj keď lovci nemajú bojoví výcvik, ich schopnosti (najmä tie týkajúce sa "
+"lukostreľby) sú v bitkách nesmierne užitočné. Akákoľvek skupinka či už "
+"vojakov alebo banditov potrebuje mať so sebou v divočine zopár pytliakov - "
+"nielen pre účely lovu ale aj na pomoc v serióznom boji.\n"
+"\n"
+"Vďaka svojim skúsenostiam sú títo lovci nezvyčajne spôsobilí najmä za tmy, v "
+"lesoch a v močariskách."
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
-#, fuzzy
 msgid "Ranger"
-msgstr "Z diaľky"
+msgstr "Zálesák"
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
@@ -3107,11 +3098,25 @@ msgid ""
 "even hear of it at all.  Rangers can be hired, but they are just as likely "
 "to be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
+"Zálesáci sú kočovníci a polodivosi, čo sa rozhodli pohrdnúť spoločnosťou "
+"iných ľudí, z najrôznejších dôvodov. Väčšiu časť svojho života strávili "
+"uprostred prírody a poznajú jej nejedno tajomstvo. Zvyčajne to sú vynikajúci "
+"stopári a prieskumníci, dokážu nájsť stravu a príbytok aj tam, kde iní vidia "
+"iba kopy skália či lístia.\n"
+"\n"
+"Už len samotná existencia týchto ľudí je zdrojom na obavy pre nejedného "
+"totalitného vládcu, keďže v krajine predstavujú tú časť obyvateľstva, ktorú "
+"nie je možné držať nakrátko použitím armády či rytierstva. Zálesáci sú ľudia "
+"s mnohokrát pochybnými motívmi a sú medzi prvými, čo sa postavia na odpor "
+"voči nejednému kráľovskému dekrétu či zákonu - ak sa vôbec namáhajú takým "
+"niečím zaoberať. Zálesakov je možné najať, ale v princípe je rovnako "
+"pravdepodobné, že ich najmä skupina banditov, ako to, že svoje služby "
+"ponúknu kráľovským zástupcom."
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
-msgstr "Lovec"
+msgstr "Stopár"
 
 #. [unit]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
@@ -3124,6 +3129,14 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"Majstri stopári sú užitočným spojencom nejednej armády a sú prakticky "
+"nenahraditeľní pre akúkoľvek skupinku ľudí žijúcu v divočine. Dokážu "
+"stopovať tak ľudí ako aj zvery, všimnú si veci, ktoré mnohí iní prehliadnu a "
+"často sú jedinými, čo dokážu nájsť obživu, či už v podobe mäsa alebo "
+"zeleniny.\n"
+"\n"
+"Ich lovecké zručnosti sú rovnako vítanými v boji, hlavne preto, že sú "
+"obzvlášť spôsobilý bojovať za tmy, v lesoch a močariskách."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -3140,6 +3153,12 @@ msgid ""
 "man at the banks of the Alavynne, but who rode again the next day, in full "
 "number, and wrought the downfall of the crimson duke."
 msgstr ""
+"Roky odriekania a štúdia obdarili kňažky veľkou múdrosťou a vedomosťami o "
+"chode sveta. Rovnako ich obdarili mocou svetla. Moc daná týmto morským "
+"stvoreniam je častou témou nejedného príbehu či piesne. Medzi inými sú známe "
+"tie o Rytieroch Striebornej Veže, ktorých nepriateľ obkľúčil a do jedného "
+"pobil na brehoch rieky Alavynne, Na druhý deň však títo muži ako jeden znovu "
+"vyšli do bitky, v plnom počte a takto sa zaslúžili o pád Purpurového Vojvodu."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
@@ -3148,7 +3167,6 @@ msgstr "Morská zaklínačka"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -3158,12 +3176,11 @@ msgid ""
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
 "Morské panny majú podobne ako elfovia prirodzené magické schopnosti, aj keď "
-"iného druhu. Tí, ktorí v týchto schopnostiach vynikajú, sú veľmi vážení, a "
-"ich schopnosti sa používajú v umení, o ktorom ľudia ani nesnívali. Pri boji "
-"majú zakázané využívať ich proti vlastnému druhu - táto moc je časťou toho, "
-"čo ich národ bráni pred príšerami z hlbín.\n"
-"\n"
-"Poznámka:"
+"iného druhu ako elfovia. Tie príslušníčky, ktoré v týchto schopnostiach "
+"vynikajú, sú veľmi vážené a svoje schopnosti používajú spôsobom, o ktorom "
+"ľudia ani nesnívali. Zjavné použitie násilia proti vlastnému druhu je "
+"nezákonným aktom - v skutočnosti je táto magická moc súčasťou toho, čo  "
+"bráni celý morský národ pred príšerami z hlbín."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:40
@@ -3179,19 +3196,16 @@ msgstr "Morský zamotávač"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
 "weapon helps to cement the utter superiority of a merman in his own element, "
 "and makes their race a threat even to enemies who merely approach the water."
 msgstr ""
-"Ťažké siete používané morskými mužmi sú náročnou zbraňou; tí, ktorí ju "
-"ovládnu, sú medzi svojimi druhmi vážení. Táto zbraň utvrdzuje prevahu "
-"morských mužov vo svojom živle, a je nebezpečná pre všetkých nepriateľov, "
-"ktorí sa k vode čo len priblížia.\n"
-"\n"
-"Poznámka:"
+"Lovné siete vybavené závažiami používané morskými mužmi v boji sú náročnou "
+"zbraňou; tí, ktorí ju ovládnu, sú medzi svojimi druhmi veľmi vážení. Táto "
+"zbraň utvrdzuje prevahu morských mužov vo svojom živle, a je nebezpečná pre "
+"všetkých nepriateľov, ktorí sa k vode čo len priblížia."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3200,13 +3214,12 @@ msgstr "Morský vojak"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
-"Morský muž je mocným obyvateľom morí, je síce obojživelník, ale na zemi má "
-"ťažkosti."
+"Morský muž je mocným obyvateľom morí, je prispôsobený životu vo vode a hoci "
+"je teoreticky obojživelník, na zemi má s pohybom výrazné ťažkosti."
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -3224,19 +3237,16 @@ msgstr "Morský ťažký pešiak"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
 "steadfast line in the maelstrom of battle. In times of desperation, they can "
 "even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
-"Morskí ťažkí pešiaci s vysokými štítmi sú elitnými strážcami vodnej ríše. "
-"Ich mocné brnenie a tuhá disciplína im umožňuje udržať líniu proti náporu "
-"boja. V najvyššej núdzi to dokážu aj na suchej zemi, aj keď sa nemôžu rovnať "
-"bytostiam s nohami.\n"
-"\n"
-"Poznámka:"
+"Morskí ťažkí pešiaci so svojimi pavézami tvoria elitný zbor strážcov vodnej "
+"ríše. Ich mohutné brnenie a pevná disciplína im umožňuje udržať líniu proti "
+"akémukoľvek náporu boja. V najvyššej núdzi to dokážu aj na suchej zemi, aj "
+"keď sa nemôžu rovnať bytostiam s nohami."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -3262,7 +3272,6 @@ msgstr "Morská novicka"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -3271,13 +3280,13 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
-"Mladé morské panny sú často zasvätené do vodnej mágie. To im dáva úžasné "
-"schopnosti.\n"
+"Mladé morské panny sú často zasvätené do vodnej mágie, ktorá je tomuto "
+"národu vlastná. Tento dar im dáva úžasné schopnosti, ktoré iné rasy nedokážu "
+"napodobniť - je to istým spôsobom dôkaz o spojení týchto tvorom s "
+"nadprirodzeným svetom.\n"
 "\n"
-"Napriek svojej krehkosti sú pomerne dobré v boji, pretože si dokážu privolať "
-"vodu na pomoc proti nepriateľom.\n"
-"\n"
-"Poznámka:"
+"Napriek svojej krehkosti sú morské panny pomerne dobré v boji, pretože si "
+"dokážu privolať na pomoc proti nepriateľom samotnú vodu, čo ich obklopuje."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
@@ -3304,7 +3313,6 @@ msgstr "Morský vrhač sietí"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -3316,13 +3324,11 @@ msgid ""
 "a great advantage."
 msgstr ""
 "Rybolov, povolanie mnohých morských mužov, je otázkou naháňania kŕdľov rýb "
-"do sietí. Tie sami o sebe nespôsobujú veľké zranenia, ale dokážu byť účinne "
-"použité proti jednotkám, ktoré chcú prebrodiť vodu. Menšie zaťažené siete "
-"možno hádzať vo vzduchu - tieto nie sú určené na mierové časy, ale sú účinné "
-"vo vojne. Morskí muži takto dokážu znehybniť súperove jednotky vo vode, a "
-"dokonca vyrovnať svoje nevýhody na súši.\n"
-"\n"
-"Poznámka:"
+"do sietí. Siete samy o sebe nespôsobujú veľké zranenia, ale dokážu byť "
+"účinne použité proti jednotkám, ktoré chcú prebrodiť vodu. Menšie zaťažené "
+"siete možno hádzať - tento typ sietí je špeciálne navrhnutý pre boj, nemá "
+"veľké využitie v mierových časoch. Morskí muži takto dokážu znehybniť "
+"súperove jednotky vo vode, a dokonca vyrovnať svoje nevýhody na súši."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -3331,7 +3337,6 @@ msgstr "Morská kňažka"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3339,13 +3344,12 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
-"Morský národ má podobné ideály ako ľudia, ale z kultúrnych dôvodov je ich "
-"napĺňanie otázkou morských panien, ktoré majú väčšie intelektové schopnosti. "
-"Sú zasvätené ideálu mieru na celom svete, a študujú ako poraziť choroby a "
-"zranenia, ktoré ich trápia rovnako ako ľudí. Ich usilovnosť a pokora im "
-"dávajú duchovné schopnosti, ktoré im umožňujú brániť svoj ľud.\n"
-"\n"
-"Poznámka:"
+"Morský národ má podobné mystické ideály ako ľudia, ale z kultúrnych dôvodov "
+"je ich napĺňanie otázkou morských žien skôr než mužov. Sú to práve morské "
+"panny, ktoré majú väčšie intelektové schopnosti. Sú zasvätené ideálu mieru "
+"na celom svete, a študujú ako poraziť choroby a zranenia. Ich usilovnosť a "
+"pokora im dávajú duchovné schopnosti, ktoré im umožňujú brániť svoj ľud voči "
+"votrelcom."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
@@ -3354,7 +3358,6 @@ msgstr "Siréna"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
-#, fuzzy
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to naia often causes them to be mistaken for naiads themselves. "
@@ -3366,13 +3369,15 @@ msgid ""
 "The myriad applications of this rarely occur to land dwellers, who simply "
 "regard it with wonder."
 msgstr ""
-"Magická povaha morských panien je najsilnejšia v sirénach. Siréna dokáže "
-"ovládať vodu okolo seba, akoby to bola účasť jej tela.\n"
+"Magická povaha morských panien je najviac viditeľná v takzvaných sirénach, "
+"dokonca vďaka svojej podobnosti si ich mnohí mýlia s najádami, morskými "
+"vílami. Toto je ale nedorozumenie, keďže skutočné najády nestretávajú ani "
+"samotní morskí ľudia. Každopádne sú magické schopnosti týchto bytostí "
+"podobné: siréna dokáže ovládať vodu okolo seba, akoby to bola účasť jej "
+"tela.\n"
 "\n"
 "Takéto čosi má mnoho praktických použití, ale suchozemci to jednoducho "
-"vnímajú ako zázrak.\n"
-"\n"
-"Poznámka: Útoky sirén sú magické a majú veľkú šancu zasiahnuť súpera."
+"vnímajú ako zázrak."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
@@ -3386,7 +3391,6 @@ msgstr "Morský oštepník"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -3396,9 +3400,11 @@ msgid ""
 "something that certainly cannot be said of arrows."
 msgstr ""
 "Medzi morskými mužmi nie je rozšírená lukostreľba, pretože rovnakú rolu tu "
-"zohrávajú kopije. Hádzanie kopijí pod vodou nie je účinné, ale pri hode nad "
-"hladinou si kopija udržiava značnú časť sily aj po dopade. Sú použiteľné aj "
-"v boji nablízko pod vodou, čo by sa o šípoch nedalo povedať."
+"zohrávajú oštepy. Hádzanie oštepov pod vodou nie je veľmi účinné, ale už na "
+"hladine značná hmotnosť oštepu umožňuje jeho nositeľovi ho vraziť pár stôp "
+"pod hladinu a v tejto povrchovej vrstve má oštep ešte stále značnú "
+"prieraznosť. Na rozdiel od šípov a lukov sú oštepy použiteľné aj v boji "
+"nablízko, či už pod vodou ale hlavne na  hladine."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -3407,15 +3413,14 @@ msgstr "Triton"
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
-"Tritoni sú pánmi morí. Tritoni tručne používajú trojzubec a ľahko porazia "
-"každého nepriateľa, ktorý je dosť hlúpy, aby sa zatúlal do ich životného "
-"prostredia."
+"Tritoni sú elitnými bojovníkmi morí. Tritoni zručne používajú trojzubec a "
+"ľahko porazia každého nepriateľa, ktorý je dosť hlúpy na to, aby sa zatúlal "
+"do ich životného prostredia."
 
 #. [unit]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
@@ -3434,21 +3439,19 @@ msgstr ""
 #. [unit]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
-msgstr "Veľký pavúk"
+msgstr "Obrí pavúk"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
 "can also fling webs through the air, to trap their prey."
 msgstr ""
-"V hlbinách Knalgy sa údajne potulujú veľké pavúky a požierajú svoje obete. "
-"Zblízka dokážu svoju obeť uhryznúť a otráviť, z diaľky útočia pavučinou a "
-"spomaľujú tak svojich súperov.\n"
-"\n"
-"Poznámka:"
+"V hlbinách Knalgy sa údajne potulujú obrie pavúky a požierajú svoje obete. "
+"Pavúky dokážu svoju obeť nepríjemne uhryznúť, uhryznutie je o to horšie, že "
+"je sprevádzané vstreknutím jedu, z diaľky útočia pavučinou a tak spomaľujú "
+"svojich súperov."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:46
@@ -3462,7 +3465,6 @@ msgstr "Sépia"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -3470,10 +3472,8 @@ msgid ""
 "remain ashore."
 msgstr ""
 "Sépia je obrovský morský netvor. Svojich súperov dokáže omotať mocnými "
-"chápadlami alebo na nich z diaľky pľuť jedovatý čierny atrament. Ak chcete "
-"prežiť stretnutie s takýmto netvorom, najlepšie je zostať na brehu.\n"
-"\n"
-"Poznámka:"
+"chápadlami alebo na nich z diaľky pľuť jedovatý atrament. Ak chcete prežiť "
+"stretnutie s takýmto netvorom, najlepšie je zostať na brehu."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Tentacle.cfg:62
@@ -3505,6 +3505,15 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Drak je legendárnym tvorom, s ktorým sa normálne stretneme iba vo "
+"fantastických príbehoch. Draci sú veľmi zriedkaví a ak by neexistovali "
+"historicky podložené záznamy o takmer úplnej skaze niekoľkých miest, možno "
+"by sa draci dali považovať za mýtus. Legendy sú ale veľmi presné, čo sa týka "
+"dračieho besnenia, zvlášť zdôrazňujú ich obrovskú silu, rýchlosť, úskočnosť "
+"a nadovšetko spaľujúci oheň kolujúci v ich žilách.\n"
+"\n"
+"Boj s drakom je vrcholným nebezpečím, na ktoré sa podujme iba hlupák alebo "
+"tí najstatočnejší z rytierov."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
@@ -3514,7 +3523,7 @@ msgstr "uhryznutie"
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:37
 msgid "tail"
-msgstr "chvost"
+msgstr "úder chvostom"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -3523,7 +3532,6 @@ msgstr "Veľký blatovec"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -3539,7 +3547,7 @@ msgstr ""
 #: data/core/units/trolls/Whelp.cfg:26
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
-msgstr "päsť"
+msgstr "úder päsťou"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Mudcrawler.cfg:46
@@ -3550,19 +3558,16 @@ msgstr "hruda bahna"
 #. [unit]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
-msgstr "Veľký škorpión"
+msgstr "Obrí škorpión"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
-"Obyčajný škorpión je dosť nebezpečný - o škorpiónovi veľkosti človeka "
-"netreba veľa vysvetľovať.\n"
-"\n"
-"Poznámka:"
+"Obyčajný škorpión je dosť nebezpečný sám o sebe - o škorpiónovi veľkosti "
+"človeka asi netreba veľa dodávať."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
@@ -3631,19 +3636,17 @@ msgstr "Chápadlo z hlbín"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
 msgstr ""
-"Chápadlá sú končatinami akejsi veľkej príšery, ktorá žije v hlbinách vody.\n"
-"\n"
-"Poznámka:"
+"Hlbinné chápadlá sú vlastne iba končatinami akejsi obrej morskej príšery, "
+"ktorá žije niekde v hlbinách."
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "Vlk"
 
 #. [unit]: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3693,7 +3696,6 @@ msgstr "Hadí majster"
 
 #. [unit]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
-#, fuzzy
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -3701,11 +3703,11 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
-"Najšikovnejší z hadích bojovníkov sú zasvätení do kasty majstrov boja s "
-"dvomi čepeľami. Útočia rovnako rýchlo ako hady, na ktoré sa podobajú, a "
-"rovnako elegantne sa uhýbajú súperovym útokom. Nielenže sú mocnými "
-"bojovníkmi na každom otvorenom priestranstve, ale ich schopnosť plávať im "
-"dodáva smrtiacu pohyblivosť."
+"Najšikovnejší z hadích bojovníkov sú zasvätení do kasty mrymidonov, majstrov "
+"boja s dvomi čepeľami. Títo bojovníci útočia rovnako rýchlo ako hady, na "
+"ktoré sa podobajú a rovnako elegantne sa aj uhýbajú súperovym útokom. "
+"Nielenže sú mocnými bojovníkmi na otvorenom priestranstve, ale ich schopnosť "
+"plávať im dodáva smrtiacu pohyblivosť aj vo vodnom živle."
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:67
@@ -3721,11 +3723,11 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
-"Najšikovnejšie z hadích bojovníčiek sú zasvätené do kasty majsteriek boja s "
-"dvomi čepeľami. Útočia rovnako rýchlo ako hady, na ktoré sa podobajú, a "
-"rovnako elegantne sa uhýbajú súperovym útokom. Nielenže sú mocnými "
-"bojovníkmi na každom otvorenom priestranstve, ale ich schopnosť plávať im "
-"dodáva smrtiacu pohyblivosť."
+"Najšikovnejšie z hadích bojovníčok sú zasvätené do kasty myrmidonov, "
+"majsteriek boja s dvomi čepeľami. Útočia rovnako rýchlo ako hady, na ktoré "
+"sa podobajú, a rovnako elegantne sa uhýbajú súperovym útokom. Nielenže sú "
+"mocnými bojovníkmi na každom otvorenom priestranstve, ale ich schopnosť "
+"plávať im dodáva smrtiacu pohyblivosť."
 
 #. [unit]: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -3734,7 +3736,6 @@ msgstr "Hadí bojovník"
 
 #. [unit]: race=naga
 #: data/core/units/nagas/Warrior.cfg:19
-#, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -3745,9 +3746,9 @@ msgid ""
 msgstr ""
 "Mnohí mladí hadí bojovníci snívajú o dni, keď si zaslúžia svoju druhú čepeľ. "
 "Ich bojové umenie s dvomi čepeľami sa vonkoncom nepodobá na boj orkov a "
-"iných rás, pretože sa naučili využívať svoje hadie telá pre najlepší účinok. "
-"Krútia sa a otáčajú, aby sa vyhli cudzím úderom. Na zemi sú nebezpeční, ale "
-"trenie vo vode ich trochu obmedzuje."
+"iných rás, pretože nagovia a naučili využívať svoje hadie telá pre najlepší "
+"účinok. Krútia a vrtia sa, aby sa vyhli nepriateľským úderom. Na zemi sú "
+"nebezpeční, ale trenie vo vode ich trochu obmedzuje."
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:66
@@ -3756,7 +3757,6 @@ msgstr "Hadia bojovníčka"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:69
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3765,11 +3765,11 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"Mnohí mladí hadí bojovníci snívajú o dni, keď si zaslúžia svoju druhú čepeľ. "
-"Ich bojové umenie s dvomi čepeľami sa vonkoncom nepodobá na boj orkov a "
-"iných rás, pretože sa naučili využívať svoje hadie telá pre najlepší účinok. "
-"Krútia sa a otáčajú, aby sa vyhli cudzím úderom. Na zemi sú nebezpeční, ale "
-"trenie vo vode ich trochu obmedzuje."
+"Mnohé mladé hadie bojovníčky snívajú o dni, keď si zaslúžia svoju druhú "
+"čepeľ. Ich bojové umenie s dvomi čepeľami sa vonkoncom nepodobá na boj orkov "
+"a iných rás, pretože sa naučili využívať svoje hadie telá pre čo najlepší "
+"účinok. Krútia a vrtia sa, aby sa čo najúčinnejšie vyhli nepriateľským "
+"úderom. Na zemi sú nebezpečné, ale trenie vo vode ich trochu obmedzuje."
 
 #. [unit]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -3800,14 +3800,14 @@ msgstr "Mladý ohyzd"
 
 #. [unit]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:21
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
 "Ohyzdi sa ešte v mladom veku chytajú a berú na vojenský výcvik. Nie sú dosť "
-"šikovní na zvládnutie zbraní, ale popri ich sile to nie je ani potrebné."
+"šikovní na zvládnutie zbraní, ale pri ich sile nie je ani potrebné im "
+"voľajakú zbraň dávať."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Archer.cfg:4
@@ -3823,6 +3823,12 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"Medzi orkami sú luky považované za zbraň zbabelcov, ale aj orkovia, najmä tí "
+"mladší a tí menej s menej robustnou postavou, sú dostatočne pragmatickí na "
+"to, aby luk a šípy použili v boji aj napriek nevhodnému imidžu. Orkovia sú "
+"ako strelci veľmi biedne vyzbrojení a nemajú ani ten najzákladnejší výcvik. "
+"Napriek tomu, že sú luky v ich rukách biednou zbraňou, sú to stále smrtiace "
+"zbrane, najmä preto, že ich nositelia sa často pohybujú vo veľkých tlupách..."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Assassin.cfg:4
@@ -3831,7 +3837,6 @@ msgstr "Ork vrah"
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Assassin.cfg:22
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -3840,11 +3845,10 @@ msgid ""
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
 "Niektorí orkovia považujú jed za zbraň zbabelcov, ale najmä tí fyzicky "
-"slabší ho radi používajú. Orkovia vrahovia, krehkí ale vrtkí, ho používajú "
-"na vrhacie nože. Ich zásah zvyčajne nie je smrteľný, ale takáto taktika "
-"výrazne pomáha pri boji ich väčším a brutálnejším súkmeňovcom.\n"
-"\n"
-"Poznámka:"
+"slabší ho radi používajú. Orkovia vrahovia, slabej konštitúcie ale o to "
+"vrtkejší, ho používajú na natieranie svojich vrhacích nožov. Ich zásah "
+"zvyčajne nie je smrteľný, ale takáto taktika výrazne pomáha pri boji ich "
+"väčším a brutálnejším súkmeňovcom."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:80 data/core/units/orcs/Slayer.cfg:36
@@ -3864,6 +3868,11 @@ msgid ""
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
+"Kuše vyrobené orkami sú hrubou napodobeninou majstrovských kúskov či už "
+"ľudských alebo trpasličích. Ale kuša, nech je už jej pôvod akýkoľvek, je "
+"stále relatívne silná zbraň. Orkovia, ktorým sa dostane toho uznania, aby "
+"mali vo svojej výzbroji kušu, sú zvyčajne schopnými bojovníkmi a čo im chýba "
+"v šikovnosti, jednoducho nahradia svojimi počtom."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Grunt.cfg:4
@@ -3894,6 +3903,10 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
+"Neobyčajne prefíkaní orkovia sa často stávajú vodcami bojových oddielov. "
+"Nosia síce luk, ale ich vyvolenou zbraňou je meč. Nielen že sú títo orkovia "
+"mocní ako bojovníci, ale majú aj určitý rešpekt u súkmeňovcov, najmä u "
+"goblinov, ktorých dokážu inšpirovať k väčšej odvahe a sile."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -3909,6 +3922,11 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
+"Ak ork dokáže udržať väčší kmeň mimo rozbrojov a vnútorných roztržiek, je to "
+"zvyčajne inteligentný a mocný jedinec. Títo jedinci sú zruční tak v použití "
+"meča ako aj luku, ale ich skutočný talent je v zriedkavej schopnosti "
+"povzbudzovať a viesť do boja ostatné jednotky orkskej armády. Ich rozkazy "
+"nie sú vykonané zo strachu ale z čistej lojality a rešpektu."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:33
@@ -3923,7 +3941,6 @@ msgstr "Ork zabijak"
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Slayer.cfg:22
-#, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
 "enemies. Slayers are fast on their feet, and quite nimble in combat, "
@@ -3932,11 +3949,9 @@ msgid ""
 "the real cause of orcish supremacy."
 msgstr ""
 "Väčší a často aj šikovnejší orčí vrahovia sú súpermi nazývaní 'zabijaci', aj "
-"keď ten rozdiel je pomerne nejasný. Zabijaci sú rýchli, vrtkí v boji, vďaka "
-"tomu, že nemajú brnenie. Ich obľúbenou zbraňou je jed, a jeho hojné "
-"používanie na bojisku je často skutočným dôvodom prevahy orkov.\n"
-"\n"
-"Poznámka:"
+"keď ten rozdiel je pomerne nejasný. Zabijaci sú rýchli a vrtkí v boji vďaka "
+"tomu, že nemajú brnenie. Ich obľúbenou zbraňou je jed a jeho hojné "
+"používanie na bojisku je často skutočným dôvodom prevahy orkov."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -3956,6 +3971,16 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Založené na základnom princípe kuše, balisty sú omnoho komplikovanejšími "
+"zariadeniami. Sú vybavené navijakmi, ktorými sa zbraň nabíja a často sú "
+"robené s vrstveným \"lukom\", prípadne lukovou časťou vyrobenou z dreva či "
+"kosti. Tieto zariadenia sú jednoduchšie na obsluhu než klasické ručné kuše a "
+"sú aj omnoho prieraznejšie. Ako také sú tieto zbrane nad schopnosti bežných "
+"orkov.\n"
+"\n"
+"Orkovia si tento druh zbraní zvlášť vážia a ak sa im podarí nejakú ulúpiť, "
+"takmer bez pochýb skončí v rukách tých najsilnejších a najprefíkanejších "
+"strelcov."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
@@ -3972,6 +3997,12 @@ msgid ""
 "surest way to disperse such a host is to slay this rare orc who can hold it "
 "together."
 msgstr ""
+"Čas od času sa objaví ork s prirodzenou charizmou a rešpektom medzi "
+"súkmeňovcami. Ak je tento jedinec aj dostatočne silný a prefíkaný, určite sa "
+"skôr či neskôr dostane na čelo hordy bojovníkov. A takmer zaručene spôsobí "
+"tento jedinec hlavybolenie nejednej armáde civilizovaného sveta. Snáď "
+"jedinou obranou voči takýmto hordám orkov je iba likvidácia tohto "
+"jedinečného veliteľa, ktorý drží celú hordu pokope."
 
 #. [unit]: race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -4019,6 +4050,13 @@ msgid ""
 "smallest gap in an enemy line, and have the prowess to make the enemy regret "
 "tactical mistakes."
 msgstr ""
+"Saurovia sú rýchlonohí a schopní sa pohybovať aj v teréne, ktorý zaskočí "
+"väčšinu ich nepriateľov. Ak túto schopnosť spojíme so skúsenosťami, silou a "
+"správnou výzbrojou, ktorýkoľvek z ich bojovníkov sa stáva viditeľnou hrozbou "
+"v boji. Hlavne z dôvodu, že takýchto bojovníkov je omnoho ťažšie udržať než "
+"iných nepriateľov. Saurovia totiž aj v plnej zbroji sa dokážu prešmyknúť aj "
+"cez tie najmenšie medzery v nepriateľských líniách. Keď sa raz dostanú za "
+"chrbát, nepriateľ môže rýchlo oľutovať túto taktickú chybu."
 
 #. [unit]: race=lizard
 #: data/core/units/saurians/Augur.cfg:4
@@ -4032,6 +4070,10 @@ msgid ""
 "it reeks of augury and black magic. It is little understood, but rightly "
 "regarded with fear by those against whom it is used."
 msgstr ""
+"Saurovia ovládajú znalosti, ktorým mnohí ľudia hovoria čary, ale v "
+"skutočnosti, to čo praktizujú, má bližšie k vešteniu a čiernej mágii. Vieme "
+"o tom iba veľmi málo, ale tí voči ktorým boli takéto praktiky použité, majú "
+"pred nimi náležitý rešpekt."
 
 #. [attack]: type=cold
 #: data/core/units/saurians/Soothsayer.cfg:75
@@ -4054,6 +4096,11 @@ msgid ""
 "very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures."
 msgstr ""
+"Saurovia sú ako bojovníci o čosi pomenší a slabší než ich elfské či ľudské "
+"náprotivky. To je však veľmi relatívny dojem, pretože stále disponujú "
+"relatívne veľkou silou, ku ktorej je treba prirátať ich prirodzenú "
+"pohyblivosť. Práve tá je v boji nesmierne nebezpečná, lebo môže ľahko viesť "
+"k obkľúčeniu nedbanlivého nepriateľa."
 
 #. [unit]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
@@ -4070,6 +4117,12 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
+"Niektorí saurovia sa obliekajú do zvláštnych, magických uniforiem, pokrytých "
+"od hlavy až po päty strašidelnými symbolmi, ezoterickými tvarmi a značkami "
+"či už maľovanými alebo vytetovanými. Niektorí ľudia si mysli, že sú to "
+"nejakí vizionári alebo veštci. Ale nech už majú akúkoľvek spoločenskú rolu, "
+"ich sila spočíva v ovládaní zvláštnej mágie. Jeden sa musí mať pred nimi "
+"napozore, ak ich čo len z diaľky zbadá."
 
 #. [unit]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
@@ -4087,6 +4140,15 @@ msgid ""
 "Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
+"Saurovia sú nižšieho vzrastu a útlej postavy, no napriek týmto možno jemným "
+"črtám sú veľmi pohybliví. V boji im ich veľkosť umožňuje prebehnúť cez "
+"obranné línie, ktoré by za iných okolností udržali nejedného silnejšieho "
+"nepriateľa v bezpečnej vzdialenosti. Práve táto schopnosť z nich robí veľmi "
+"nepríjemného nepriateľa.\n"
+"\n"
+"Ich vyvolenou zbraňou sú rôzne oštepy - asi hlavne vďaka tomu, že silou "
+"svojich nôh sa dokážu do oštepu poriadne oprieť a tým spôsobiť podstatné "
+"zranenia. Nebezpeční sú tak v boji zblízka ako i v hode oštepom."
 
 #. [unit]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
@@ -4101,15 +4163,17 @@ msgid ""
 "skilled at a sort of medicine, which is of great benefit whenever battle is "
 "brought against them."
 msgstr ""
+"O sauroch je známe, že ovládajú rôzne divné zručnosti, umenia na hranici "
+"medzi magickým a mystickým. Je zrejmé, že niektorí jedinci sú zvlášť nadaní "
+"v určitom druhu liečiteľstva, čo je samozrejme v boji k nezaplateniu."
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr "Veľký troll"
+msgstr "Veľký trol"
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -4117,40 +4181,34 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
-"Keď sa nezvyčajná sila trolla spojí s vysokým vekom a múdrosťou, výsledkom "
-"je čosi výnimočné, tvor, ktorého si pamätajú ďalšie generácie. Ich sila a "
-"prefíkanosť sú zdrojom rozprávok o trolloch, a vidieť tieto rozprávkové "
-"tvory naživo im na zázračnosti nič neuberá.\n"
-"\n"
-"Poznámka:"
+"Keď sa nezvyčajná sila trola spojí s vysokým vekom a múdrosťou, výsledkom je "
+"čosi výnimočné - tvor, ktorého si pamätajú mnohé nasledujúce generácie. Ich "
+"sila a prefíkanosť sú zdrojom rozprávok o troloch, a vidieť tieto "
+"rozprávkové tvory naživo im na zázračnosti nič neuberá. Práve naopak."
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr "Troll hrdina"
+msgstr "Trol hrdina"
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
 "of their ilk revere them as heroes."
 msgstr ""
-"Niektorí trollovia sa narodili s obrovskou dávkou sily a vitality typickej "
-"pre ich druh. V spoločnosti, kde platí len právo silnejšieho, ich ostatní "
-"uctievajú ako hrdinov.\n"
-"\n"
-"Poznámka:"
+"Niektorí trolovia sa narodili s obrovskou dávkou sily a vitality typickej "
+"pre ich druh. V spoločnosti, kde platí len právo silnejšieho, neprekvapí, že "
+"ich ostatní uctievajú ako hrdinov."
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr "Troll vrhač"
+msgstr "Trol vrhač"
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -4158,22 +4216,18 @@ msgid ""
 "in sacks slung over their shoulders. The same leather out of which the sack "
 "is formed is easily adapted to a crude sling."
 msgstr ""
-"Myšlienka hádzať balvany napadla asi už mnohým trollom, ale iba niektorí ich "
-"používajú ako obľúbenú zbraň. Nie je vždy ľahké nájsť vhodnú skalu, a tak "
-"ich trollovia vrhači nosia vo vreciach na chrbte. Toto vrece sa ľahko zmení "
-"na improvizovaný prak.\n"
-"\n"
-"Poznámka: Hodený kameň je síce neohrabaný, ale ak zasiahne, je omnoho "
-"nebezpečnejší."
+"Myšlienka hádzať balvany napadla už mnohým trolom, ale iba niektorí "
+"používajú skaly ako obľúbenú zbraň. Nie je vždy ľahké nájsť vhodnú skalu, a "
+"tak ich trolovia vrhači nosia vo vreciach na chrbte. Toto vrece sa ľahko "
+"zmení na improvizovaný prak."
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
-msgstr "Troll"
+msgstr "Trol"
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -4182,21 +4236,18 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
-"Trollovia sú pre ľudí i trpaslíkov záhadou, čo s týka ich pôvodu, a najmä "
-"toho, čo spôsobuje ich neprirodzenú životaschopnosť a silu. Dospelý troll sa "
-"týči nad človekom, a aj neozbrojený je veľkou hrozbou. Ich obľúbené kyjaky "
-"sú akoby predĺžením ich rúk.\n"
-"\n"
-"Poznámka:"
+"Trolovia sú pre ľudí i trpaslíkov záhadou, čo s týka ich pôvodu a najmä "
+"toho, čo spôsobuje ich neprirodzenú životaschopnosť a silu. Dospelý trol sa "
+"týči o pár hláv nad človekom a aj neozbrojený predstavuje veľkú hrozbu. Ich "
+"obľúbené kyjaky sú akoby predĺžením ich rúk."
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr "Troll bojovník"
+msgstr "Trol bojovník"
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -4207,24 +4258,21 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
-"Trollovia zvyčajne v boji nepotrebujú vhodné zbrane, pretože veľké palice a "
-"kamene im rovnako dobre poslúžia. Niektorých trollov však už videli v brnení "
-"a s kovovými kladivami. Predpokladá sa, že táto výstroj pochádza od "
-"spojencov, orkov, pretože prieskumy opustených trollích jaskýň neodhalili "
-"takmer žiadne používanie nástrojov, tobôž spracovania kovu. Ak uvážime, aký "
-"nebezpečný je v boji troll, predstava trolla v brnení je dosť "
-"znepokojujúca.\n"
-"\n"
-"Poznámka:"
+"Trolovia zvyčajne v boji nepotrebujú špeciálne zbrane, pretože veľké palice, "
+"kyjaky a kamene im poslúžia rovnako dobre. Niektorých trolov však už videli "
+"v brnení a s oceľovými kladivami. Predpokladá sa, že táto výstroj pochádza "
+"od spojencov, asi od orkov, pretože prieskumy opustených trolích jaskýň "
+"neodhalili takmer žiadne používanie nástrojov, tobôž spracovanie kovu. Ak "
+"uvážime, aký nebezpečný je v boji bežný trol, predstava trola v brnení a s "
+"obrím kladivom je zvlášť znepokojujúca."
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr "Troll mláďa"
+msgstr "Trol mláďa"
 
 #. [unit]: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -4232,12 +4280,10 @@ msgid ""
 "all fours, but any difficulty this causes them is more than made up for by "
 "the raw strength of their race."
 msgstr ""
-"Opísať trolla ako mláďa je zavádzajúce, pretože jeho telo je väčšie ako telo "
-"dospelého človeka. Je neohrabaný a ešte nevie vzpriamene kráčať, takže chodí "
-"po štyroch, ale napriek týmto nevýhodám má stále veľkú silu typickú pre jeho "
-"druh.\n"
-"\n"
-"Poznámka:"
+"Opísať trola ako mláďa je zavádzajúce, pretože aj telo mladého trola je "
+"väčšie než telo dospelého človeka. Trol ako mláďa je neohrabaný a nevie ani "
+"vzpriamene kráčať, takže chodí po štyroch, ale napriek týmto nevýhodám má "
+"stále veľkú silu typickú pre jeho druh"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -4246,7 +4292,6 @@ msgstr "Ghúl"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
-#, fuzzy
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -4260,12 +4305,11 @@ msgstr ""
 "Len zasvätenci v černokňažníckych kruhoch vedia, čo treba urobiť, aby sa z "
 "človeka stal ghúl; a iste toto tajomstvo neprezradia. Nech už je to "
 "akýkoľvek nevysloviteľný rituál, výsledkom je netvor, ktorý si nepamätá nič "
-"zo svojich ľudských čias; príšera, ktorá sa nahá potuluje okolo a živí sa "
+"zo svojich ľudských čias; príšera, ktorá sa nahá potuluje po svete a živí sa "
 "mäsom mŕtvych.\n"
 "\n"
-"Práve takéto veci spôsobujú takmer inštinktívny odpor voči černokňažníctvu.\n"
-"\n"
-"Poznámka:"
+"Práve takéto praktiky a činy spôsobujú inštinktívny odpor voči "
+"černokňažníctvu vo väčšine civilizovaných končín."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
@@ -4283,6 +4327,13 @@ msgid ""
 "from living men - a process about which almost nothing is known, but which "
 "can be nothing but nightmarish."
 msgstr ""
+"Mrchožrút lebo \"požierač mŕtvol\" je monštruózny, tlstý zjav, ktorý sa iba "
+"v hrubých rysoch podobá na čosi ľudské. Na pohľad vyzerá tento tvor v "
+"rozklade, hoci je schopný i pohybu. Rozkladajúce sa telesné zvyšky sú "
+"semeniskom chorôb a rôznych iných otráv, ktoré sú dostatočne \"dopĺňané\" "
+"odporným pachom šíriacim sa z ich tiel. Snáď najhoršie na týchto tvoroch je "
+"to, že pochádzajú z pôvodne živých ľudí. O procese ich stvorenia sa nevie "
+"takmer nič, ale jedno je zrejmé - ako nočné mory sa hodia perfektne."
 
 #. [variation]: race=undead
 #. [unit]: race=undead
@@ -4301,6 +4352,11 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"Techniky na oživenie mŕtveho tela sú, nanešťastie, relatívne známe v oblasti "
+"temných umení. Praktici čiernej mágie zvyknú používať tieto metódy na "
+"vytváranie služobníkov a armád z nie vždy ochotných mŕtvol. Zombie sú "
+"relatívne slabé, ale zato sa vyskytujú vo veľkých počtoch. Čo len náznak "
+"boja ich prebúdza a robí z nich hrozivejšieho nepriateľa."
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -4325,7 +4381,6 @@ msgstr "Chodiaca mŕtvola"
 #. [unit]: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:21
 #: data/core/units/undead/Corpse_Walking.cfg:213
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -4333,9 +4388,8 @@ msgid ""
 msgstr ""
 "Chodiace mŕtvoly sú telá mŕtvych oživené temnou mágiou. Hoci sú slabé v "
 "boji, šíria svoje prekliatie aj na tých, ktorých zabili, čím rozširujú "
-"armádu nemŕtvych.\n"
-"\n"
-"Poznámka:"
+"armádu nemŕtvych. Bezpochyby, uzrieť medzi zástupom chodiacich mŕtvol svojho "
+"padlého spolubojovníka je obzvlášť demoralizujúce."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
@@ -4344,22 +4398,18 @@ msgstr "Prastarý kostej"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
-#, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
 "Bytosť takéhoto rádu je poslom dávnej minulosti. Každého, kto stretne "
-"prastarého kosteja, očakávajú omnoho väčšie nebezpečenstvá než samotná "
-"smrť.\n"
-"\n"
-"Poznámka:"
+"prastarého kosteja, očakávajú omnoho väčšie nebezpečenstvá než samotná smrť."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:46
 msgid "chill tempest"
-msgstr "studený víchor"
+msgstr "mrazivý víchor"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:42
@@ -4377,7 +4427,6 @@ msgstr "Temný učeň"
 
 #. [unit]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:25
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -4392,22 +4441,19 @@ msgid ""
 msgstr ""
 "Čierna mágia nepochybne ponúka svojim učňom veľké odmeny, ak uvážime, že "
 "každý prichytený pri jej praktikovaní je v civilizovanom svete odsúdený na "
-"trest smrti. A predsa sa nájdu tí, ktorí sa v tomto umení zdokonaľujú, "
+"trest smrti. A predsa sa nájdu takí, ktorí sa v tomto umení zdokonaľujú, "
 "pretože odmenou nie je nič menšie ako nesmrteľnosť. Fanatici sa ukrývajú v "
-"tajných kultoch a temných podzemných rádoch, ich tréning vedie až do úplného "
-"vyčerpania.\n"
+"tajných kultoch a temných podzemných rádoch, ich tréning často dovádza až do "
+"úplného vyčerpania.\n"
 "\n"
-"V takýchto podmienkach je ich jedinou zbraňou samotné umenie, ktoré "
-"študujú.\n"
-"\n"
-"Poznámka:"
+"V takýchto podmienkach je ich jedinou zbraňou samotné umenie, ktoré študujú."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:30
 #: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
 msgid "chill wave"
-msgstr "vlna mrazu"
+msgstr "mrazivá vlna"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:199
@@ -4416,7 +4462,6 @@ msgstr "Temná učnica"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:203
-#, fuzzy
 msgid ""
 "female^To attract any practitioners, the lure of black magic must be a great "
 "prize indeed, for anyone caught practicing the art in the civilized world is "
@@ -4429,17 +4474,14 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
-"Čierna mágia nepochybne ponúka svojim učňom veľké odmeny, ak uvážime, že "
-"každý prichytený pri jej praktikovaní je v civilizovanom svete odsúdený na "
-"trest smrti. A predsa sa nájdu tí, ktorí sa v tomto umení zdokonaľujú, "
-"pretože odmenou nie je nič menšie ako nesmrteľnosť. Fanatici sa ukrývajú v "
-"tajných kultoch a temných podzemných rádoch, ich tréning vedie až do úplného "
-"vyčerpania.\n"
+"Čierna mágia nepochybne ponúka svojim učniciam veľké odmeny, ak uvážime, že "
+"každá prichytená pri jej praktikovaní je v civilizovanom svete odsúdená na "
+"trest smrti. A predsa sa nájdu také, ktorí sa v tomto umení zdokonaľujú, "
+"pretože odmenou nie je nič menšie ako nesmrteľnosť. Fanatičky sa ukrývajú v "
+"tajných kultoch a temných podzemných rádoch, ich tréning často dovádza až do "
+"úplného vyčerpania.\n"
 "\n"
-"V takýchto podmienkach je ich jedinou zbraňou samotné umenie, ktoré "
-"študujú.\n"
-"\n"
-"Poznámka:"
+"V takýchto podmienkach je ich jedinou zbraňou samotné umenie, ktoré študujú."
 
 #. [unit]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
@@ -4465,12 +4507,25 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Strach z čiernej mágie pochádza do značnej miery z toho, ako málo bežný "
+"človek o tomto umení vie. Černokňažníci sú tí, čo pootvorili tajomstvá "
+"života a smrti - hlavne to druhé je relatívne jednoducho zariadiť. Ich snahy "
+"dávajú nahliadnuť do spojení medzi dušou a vnútornou hmotou, z čoho vznikajú "
+"prvé úspešné experimenty s manipuláciou tohto spojenia. Takéto metódy dávajú "
+"nahliadnuť do toho strašného neznáma, ktoré je po smrti človeka.\n"
+"\n"
+"Napriek všetkým snahám použiť mágiu na vybojovanie si vlastnej "
+"nesmrteľnosti, prvé výsledky ich pokusov vedú k okamžitým, no o to "
+"nepríjemnejším využitiam. Vdýchnutie života do mŕtvej hmoty, tela im dokáže "
+"zabezpečiť služobníkov, ktorí dokážu nielen pracovať ale aj zabíjať. Títo "
+"služobníci sa nikdy nepostavia proti svojmu pánovi. Sú to stvorenia s takou "
+"lojalitou, ktorú by im závidel nejeden absolutistický vládca, a tak nečudo, "
+"že praktiky čiernej mágie sú veľmi lákavé pre všetkých, čo túžia po moci. "
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
-#, fuzzy
 msgid "Dark Sorceress"
-msgstr "Temný čarodejník"
+msgstr "Temná čarodejnica"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:182
@@ -4491,6 +4546,20 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"Strach z čiernej mágie pochádza do značnej miery z toho, ako málo bežný "
+"človek o tomto umení vie. Černokňažníčky sú tie, čo pootvorili tajomstvá "
+"života a smrti - hlavne to druhé je relatívne jednoducho zariadiť. Ich snahy "
+"dávajú nahliadnuť do spojení medzi dušou a vnútornou hmotou, z čoho vznikajú "
+"prvé úspešné experimenty s manipuláciou tohto spojenia. Takéto metódy dávajú "
+"nahliadnuť do toho strašného neznáma, ktoré je po smrti človeka.\n"
+"\n"
+"Napriek všetkým snahám použiť mágiu na vybojovanie si vlastnej "
+"nesmrteľnosti, prvé výsledky ich pokusov vedú k okamžitým, no o to "
+"nepríjemnejším využitiam. Vdýchnutie života do mŕtvej hmoty, tela im dokáže "
+"zabezpečiť služobníkov, ktorí dokážu nielen pracovať ale aj zabíjať. Títo "
+"služobníci sa nikdy nepostavia proti svojej pani. Sú to stvorenia s takou "
+"lojalitou, ktorú by im závidel nejeden absolutistický vládca, a tak nečudo, "
+"že praktiky čiernej mágie sú veľmi lákavé pre všetkých, čo túžia po moci. "
 
 #. [unit]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
@@ -4499,7 +4568,6 @@ msgstr "Kostej"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:23
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4513,14 +4581,14 @@ msgid ""
 "order has achieved."
 msgstr ""
 "Kostej je stelesnením prvoradého cieľa čiernej mágie - snahy dosiahnuť "
-"nesmrteľnosť. Znovuzrodenie je síce veľkou obeťou, ale ten kto sa stane "
-"kostejom, vyhne sa najdesivejšej časti smrti. Jeho myseľ zostáva, a duch "
-"naďalej vládne telu, hoci telo sa rozpadá.\n"
+"nesmrteľnosť. Aj keď je potrebné veľa zo svojej ľudskej podstaty obetovať "
+"pre účely \"znovuzrodenia\",  ten kto sa stane kostejom, vyrve z pazúrov "
+"smrti to najdesivejšie. Jeho myseľ zostáva, a duch naďalej vládne telu, hoci "
+"telo sa časom rozpadá.\n"
 "\n"
 "Nikto, okrem najväčších zasvätencov čierneho umenia, nevie, či je takýto "
-"život večný alebo iba výrazne predĺžený. Tak či onak je to veľkým úspechom.\n"
-"\n"
-"Poznámka:"
+"život večný alebo iba výrazne predĺžený. Tak či onak je veľkým úspechom "
+"černokňažníckych rádov, že sa o takýchto témach vôbec diskutuje."
 
 #. [unit]: race=human
 #: data/core/units/undead/Necromancer.cfg:4
@@ -4529,7 +4597,6 @@ msgstr "Černokňažník"
 
 #. [unit]: race=human
 #: data/core/units/undead/Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -4539,18 +4606,14 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
-"Jedným z najväčších kruhov tradičnej 'čiernej mágie' je černokňažníctvo, "
-"hrozná schopnosť prebudiť mŕtvych a dať im falošný život. Bol to objav, "
+"Jedným z vrcholov tradičnej 'čiernej mágie' je černokňažníctvo, hrozná "
+"schopnosť prebudiť mŕtvych a dať im falošný život. Bol to práve tento objav, "
 "ktorý vyvolal veľké znepokojenie a viedol k všeobecnému odsúdeniu čiernej "
 "mágie, pretože otvoril novú dimenziu hrôzy.\n"
 "\n"
 "Táto schopnosť je ako taká prvým krokom ku konečnému cieľu porazenia smrti. "
 "Je to najvyšší stupeň moci, ktorý môže dosiahnuť temný mág bez toho, aby "
-"statil vlastnú ľudskosť, hoci je to nič proti moci, ktorou vládnu kosteji.  "
-"Telá smrteľníkov sa vďaka mágii stávajú pevnejšími, na rozdiel od krehkých "
-"rozpadávajúcich sa telesných schránok kostejov.\n"
-"\n"
-"Poznámka:"
+"stratil vlastnú ľudskosť."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:26
@@ -4559,19 +4622,16 @@ msgstr "morová palica"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:181
-#, fuzzy
 msgid "female^Necromancer"
-msgstr "Černokňažník"
+msgstr "Černokňažníčka"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:4
-#, fuzzy
 msgid "Banebow"
-msgstr "luk"
+msgstr "Prekliaty luk"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4581,11 +4641,9 @@ msgid ""
 msgstr ""
 "Najsilnejšími z nemŕtvych lukostrelcov sa zvyčajne stávajú tí, ktorí boli "
 "sami v minulom živote lukostrelcami. Potulujú sa po bojiskách, riadia sa "
-"matnými spomienkami na niekdajšie schopnosti, a ani nevedia, ani sa "
+"matnými spomienkami na svoje niekdajšie schopnosti a  nevedia, ani sa "
 "nestarajú o to, čo je ich alebo súperovým cieľom. Poháňa ich iba nenávisť "
-"zrodená zo zúfalstva ich prázdnej a nezmyselnej existencie.\n"
-"\n"
-"Poznámka:"
+"zrodená zo zúfalstva ich prázdnej a nezmyselnej existencie."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -4594,7 +4652,6 @@ msgstr "Kostlivec ostreľovač"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -4603,13 +4660,11 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
-"Z černokňažníkových výtvorov sa niektorým v nepravom živote darí lepšie. Tí "
-"s lepším potenciálom dostanú primeranú výzbroj; lukostrelci obzvlášť ohavnú. "
-"Ich tulce sú naplnené šípmi vyrobenými nie z dreva, ale z kostí ich obetí. "
-"Ich nepriatelia ich nazývajú jednoducho 'kostliví ostreľovači'. Vzbudzujú "
-"hrôzu u všetkého živého.\n"
-"\n"
-"Poznámka:"
+"Z černokňažníkových výtvorov sa niektorým v nepravom živote darí lepšie ako "
+"iným. Tí s lepším potenciálom dostanú primeranú výzbroj; lukostrelci "
+"obzvlášť ohavnú. Ich tulce sú naplnené šípmi vyrobenými nie z dreva, ale z "
+"kostí ich predošlých obetí. Ich nepriatelia ich nazývajú jednoducho "
+"'kostliví ostreľovači'. Vzbudzujú hrôzu u všetkého živého."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
@@ -4634,18 +4689,15 @@ msgstr "Rytier smrti"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
-"Niekedy sa vraj najmocnejší vojaci a generáli premožení nenávosťou a pocitom "
-"zrady vracajú na tento svet ako rytieri smrti. Bojujú rovnakými zbraňami ako "
-"zaživa, a vedú nemŕtvych na ceste za odplatou.\n"
-"\n"
-"Poznámka:"
+"Niekedy sa vraj najmocnejší vojaci a generáli premožení nenávisťou a pocitom "
+"zrady vracajú na tento svet ako Rytieri Smrti. Bojujú rovnakými zbraňami ako "
+"zaživa, no tentoraz vedú zástupy nemŕtvych na ceste za odplatou."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -4654,7 +4706,6 @@ msgstr "Kostlivý šermiar"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "
@@ -4662,12 +4713,10 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"Príšery zvané 'smrtky' boli za svojho života majstrami boja, zruční a "
-"nebezpeční vojaci. Ich noví páni si to všimli a pokúsili sa využiť ich "
-"niekdajšie zručnosti. Tieto netvory sú krehké, ale omnoho rýchlejšie ako iné "
-"im podobné, čo sa týka pohybu i sekania.\n"
-"\n"
-"Poznámka:"
+"Príšery zvané 'smrtky' boli za svojho života majstrami boja, zručnými a "
+"nebezpečnými vojakmi. Ich noví páni si to všimli a pokúsili sa využiť ich "
+"niekdajšie zručnosti. Tieto netvory majú relatívne slabú konštitúciu, ale sú "
+"omnoho rýchlejšie než čokoľvek iné nemŕtve, čo sa týka pohybu i sekania."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
@@ -4676,7 +4725,6 @@ msgstr "Kostlivý hrdina"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -4688,10 +4736,7 @@ msgstr ""
 "srdciach tých, ktorí sa proti nim postavia. Nepoháňa ich zloba, ale sú "
 "naveky ponorení v sne smrti, blúdia v najväčších bitkách svojej pamäte a "
 "zúfalo bojujú za slobodu, za pokoj, ktorý im prinesie len sila zbraní. "
-"Spomienky na ich nepriateľov a na príčinu boja už dávno upadli do "
-"zabudnutia.\n"
-"\n"
-"Poznámka:"
+"Spomienky na ich nepriateľov a na príčinu boja už dávno upadli do zabudnutia."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
@@ -4700,7 +4745,6 @@ msgstr "Umrlec"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -4712,9 +4756,7 @@ msgstr ""
 "spomienky na tie časy dávno preč. Ani čarodejníci, ktorí ich vyvolali, o tom "
 "často nič presnejšie nevedia. Bez ohľadu na to je umrlec mocnou zbraňou v "
 "boji: bojovník bez strachu, ktorý necíti bolesť, a bude bojovať naplno až do "
-"úplného konca.\n"
-"\n"
-"Poznámka:"
+"úplného konca."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skeleton.cfg:4
@@ -4723,7 +4765,6 @@ msgstr "Kostlivec"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skeleton.cfg:18
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -4732,10 +4773,8 @@ msgid ""
 msgstr ""
 "Kostlivec je bojovník, ktorý padol v boji a oživili ho temní mágovia. Je "
 "takmer bez myšlienok, ide priamo za svojím cieľom, nebojí sa bolesti ani "
-"smrti, a samotná jedno prítomnosť vydesí každého, kto by sa chcel vzpierať "
-"jeho pánovi.\n"
-"\n"
-"Poznámka:"
+"smrti a samotná jeho prítomnosť vydesí každého, kto by sa chcel vzpierať "
+"jeho pánovi."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
@@ -4744,7 +4783,6 @@ msgstr "Kostlivec lukostrelec"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -4755,9 +4793,7 @@ msgstr ""
 "Kostlivý lukostrelec je rovnaký kostlivec ako ostatní - hriech proti "
 "prírode, mŕtvy bojovník opäť oživený a postavený do boja. V rukách svojho "
 "pána urobí takýto bojovník všetko, aby splnil stanovenú úlohu, pretože pre "
-"toho, kto už raz zomrel, neexistuje žiaden strach.\n"
-"\n"
-"Poznámka:"
+"toho, kto už raz zomrel, neexistuje žiaden strach."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -4766,7 +4802,6 @@ msgstr "Duch"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -4781,9 +4816,7 @@ msgstr ""
 "\n"
 "Duch môže byť uväznený v temnom kúzle, podobne ako vietor v plachtách lode. "
 "Výsledkom takéhoto väznenia je oddaný služobník, ktorého môže jeho pán "
-"poveriť ľubovoľnou úlohou.\n"
-"\n"
-"Poznámka:"
+"poveriť ľubovoľnou úlohou."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:31
@@ -4799,7 +4832,6 @@ msgstr "Nočný des"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -4807,10 +4839,8 @@ msgid ""
 "foe."
 msgstr ""
 "Účel masiek, ktoré tieto bytosti nosia, je neznámy, rovnako ako to, čo sa "
-"nachádza pod nimi. Málokto živý videl tieto tvary, a tí, čo prežili, nemali "
-"čas ich podrobne skúmať.\n"
-"\n"
-"Poznámka:"
+"nachádza pod nimi. Málokto živý videl tieto zjavy a tí, čo prežili, nemali "
+"čas ich podrobne skúmať."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
@@ -4819,7 +4849,6 @@ msgstr "Tieň"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -4827,13 +4856,11 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
-"Keď prišlo svetlo na svet a dalo tvar neznámym veciam, strach sa musel "
-"utiahnuť do temnoty. Od tých čias tiene vyvolávajú strach, hoci nikto nevie "
-"prečo.\n"
+"Keď prišlo na svet svetlo a dalo tvar neznámym objektom, strach sa musel "
+"utiahnuť do temnoty. Od tých čias tiene vyvolávajú medzi ľuďmi strach, hoci "
+"nikto nevie presne prečo.\n"
 "\n"
-"Na túto otázku dokáže jednoducho odpovedať každý černokňažník.\n"
-"\n"
-"Poznámka:"
+"Na túto otázku dokáže jednoducho odpovedať každý černokňažník."
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
@@ -4842,7 +4869,6 @@ msgstr "Prízrak"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -4853,10 +4879,12 @@ msgid ""
 "will follow in its wake."
 msgstr ""
 "Prízraky, zvané aj 'priesvitní ľudia' sú pravou rukou svojho pána. Tieto "
-"zvrátenosti sú postrachom pre všetko živé, a bez spánkus strážia územia "
+"zvrátenosti sú postrachom pre všetko živé, a bez spánku strážia územia "
 "svojho pána.\n"
 "\n"
-"Poznámka:"
+"Stvoriť čosi takto odporného nie je jednoduché, no skutočným významom týchto "
+"stvorení je to, že sú vlastne iba akýmsi predvojom omnoho smrteľnejšej "
+"armády, ktorá ich nasleduje."
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:20
@@ -4871,7 +4899,6 @@ msgstr "Mátoha"
 
 #. [unit]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:16
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -4879,15 +4906,10 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
-"Tieto zúbožené tvary niekdajších bojovníkov sú jedny z najhroznejších vecí, "
-"aké dokáže černokňažník vytvoriť, pretože meč cez ne prejde ako cez vzduch. "
-"Predstava, že sú tieto tvory nezraniteľné, budí hrôzu, hoci to v skutočnosti "
-"nie je pravda.\n"
-"\n"
-"Kúzla ovládajúce tieto tvory majú prostriedky, pomocou ktorých sa dokážu "
-"uzdravovať energiou svojich súperov.\n"
-"\n"
-"Poznámka:"
+"Tieto zúbožené tiene niekdajších bojovníkov sú jedny z najhroznejších vecí, "
+"aké dokáže černokňažník vytvoriť, pretože meč cez ne prejde bez toho, aby "
+"spôsobil ranu. Predstava, že sú tieto tvory nezraniteľné, budí hrôzu, hoci "
+"to v skutočnosti nie je pravda."
 
 #. [unit]: race=wose
 #: data/core/units/wose/Ancient.cfg:4
@@ -4896,7 +4918,6 @@ msgstr "Prastarý lesný muž"
 
 #. [unit]: race=wose
 #: data/core/units/wose/Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -4908,15 +4929,13 @@ msgid ""
 "ancient of woses."
 msgstr ""
 "Koluje zaujímavý príbeh o farmárovi, ktorý mal na svojom poli veľký dub; "
-"strom, ktorý tam stál už v časoch, keď jeho otec začal obrábať tamojšiu "
-"pôdu, a ktorý bol pre jeho rodinu dôležitým symbolom. Jedného rána šokovaný "
-"zistil, že strom akosi zmizol, a zanechal po sebe len kus holej zeme na "
-"mieste, kde predtým stál. Farmára tento zážitok nadobro zmenil.\n"
+"strom, ktorý tam stál už v časoch, keď jeho otec začal obrábať tamojšiu pôdu "
+"a ktorý bol pre jeho rodinu dôležitým symbolom. Jedného rána šokovaný "
+"zistil, že strom akosi zmizol a zanechal po sebe len kus holej zeme na "
+"mieste, kde predtým stál. \n"
 "\n"
-"Podobné príbehy sú všetko, čo sa vie o pravdepobnom pôvode najstarších "
-"lesných mužov.\n"
-"\n"
-"Poznámka:"
+"Podobné príbehy sú všetko, čo sa vie o pravdepodobnom pôvode najstarších "
+"lesných mužov."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
@@ -4931,7 +4950,6 @@ msgstr "Starý lesný muž"
 
 #. [unit]: race=wose
 #: data/core/units/wose/Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -4945,17 +4963,16 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
-"Lesní muži majú údajne rozličné tvary podobné stromom, a ako starnú, stále "
-"rastú. Hovorí sa o lesných mužoch, ktorí boli skutočne vysokí ako stromy a "
-"týčili sa nad ostatnými tvormi. Toto je dôvod, prečo ich je tak málo vidieť "
-"- ak stoja nehybne ako zvyčajne, možno si ich pomýliť so zvláštne tvarovaným "
-"stromom. Nehybne stojaci lesný muž často pomýli aj nepozorného elfa.\n"
+"Lesní muži majú údajne rozličné tvary podobné stromom a ako starnú, stále "
+"rastú. Hovoria sa príbehy o lesných mužoch, ktorí boli skutočne vysokí ako "
+"stromy a týčili sa nad ostatnými tvormi. Toto je dôvod, prečo ich je tak "
+"málo vidieť - ak stoja nehybne ako obyčajne, možno si ich pomýliť so "
+"zvláštne tvarovaným stromom. Nehybne stojaci lesný muž často pomýli aj "
+"nepozorného elfa.\n"
 "\n"
 "Lesní muži nie sú bojovníkmi v bežnom zmysle slova, ale ich sila je očividne "
 "vhodná aj na násilie, pokiaľ by sa ich niekomu podarilo dostatočne "
-"vyprovokovať.\n"
-"\n"
-"Poznámka:"
+"vyprovokovať."
 
 #. [unit]: race=wose
 #: data/core/units/wose/Wose.cfg:4
@@ -4964,7 +4981,6 @@ msgstr "Lesný muž"
 
 #. [unit]: race=wose
 #: data/core/units/wose/Wose.cfg:20
-#, fuzzy
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -4979,11 +4995,8 @@ msgid ""
 msgstr ""
 "Lesný muž je zriedkavý tvor a ani elfovia o nich veľa nevedia. Väčšina "
 "informácií o nich pochádza od elfov; vie sa, že tieto tvory nepochádzajú zo "
-"stromov, hoci majú podobný tvar, a že patria do sveta mágie podobne ako "
+"stromov, hoci majú podobný tvar a že patria do sveta mágie podobne ako "
 "elfovia, ale iným spôsobom. Ich motívy a činy sú neznáme, ale väčšina sa "
-"prikláňa k najzrejmejšiemu názoru, že sú ochrancami prírody.\n"
+"prikláňa k najzrejmejšiemu názoru, že sú ochrancami prírody ako takej.\n"
 "\n"
-"Lesní muži sú mierumilovní, ale majú ohromnú silu. Nie sú však príliš "
-"rýchli.\n"
-"\n"
-"Poznámka:"
+"Lesní muži sú mierumilovní, ale majú ohromnú silu. Nie sú však príliš rýchli."
