@@ -238,6 +238,7 @@ struct tvertical_scrollbar_definition : public tcontrol_definition
 		tresolution(const config& cfg);
 
 		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
 
 		unsigned top_offset;
 		unsigned bottom_offset;

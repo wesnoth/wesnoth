@@ -229,6 +229,9 @@ private:
 	/** The minimum length of the positioner. */
 	virtual unsigned minimum_positioner_length() const = 0;
 
+	/** The maximum length of the positioner. */
+	virtual unsigned maximum_positioner_length() const = 0;
+
 	/**
 	 * The number of pixels we can't use since they're used for borders.
 	 *
@@ -287,6 +290,13 @@ private:
 	 * otherwise we can't calulate a thing.
 	 */
 	void recalculate();
+
+	/**
+	 * Updates the positioner.
+	 *
+	 * This is a helper for recalculate().
+	 */
+	void recalculate_positioner();
 
 	/** After a recalculation the canvasses also need to be updated. */
 	void update_canvas();

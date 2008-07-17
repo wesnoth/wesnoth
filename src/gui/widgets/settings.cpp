@@ -857,6 +857,8 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg),
 	minimum_positioner_length(
 		lexical_cast_default<unsigned>(cfg["minimum_positioner_length"])),
+	maximum_positioner_length(
+		lexical_cast_default<unsigned>(cfg["maximum_positioner_length"])),
 	top_offset(lexical_cast_default<unsigned>(cfg["top_offset"])),
 	bottom_offset(lexical_cast_default<unsigned>(cfg["bottom_offset"]))
 {
@@ -875,11 +877,13 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  *                                     The minumum size the positioner is
  *                                     allowed to be. The engine needs to know
  *                                     this in order to calculate the best size
- *                                     for the positioner. There is no maximum
- *                                     size for the positioner it should be
- *                                     scaleable for the entire size. (Of course
- *                                     it is possible to file a FR if this is
- *                                     really wanted.)
+ *                                     for the positioner.  
+ *     maximum_positioner_length (unsigned = 0)
+ *                                     The maximum size the positioner is
+ *                                     allowed to be. If minimum and maximum are
+ *                                     the same value the positioner is fixed
+ *                                     size. If the maximum is 0 (and the
+ *                                     minimum not) there's no maximum.
  *     top_offset (unsigned = 0)       The number of pixels at the top which
  *                                     can't be used by the positioner.
  *     bottom_offset (unsigned = 0)    The number of pixels at the bottom which

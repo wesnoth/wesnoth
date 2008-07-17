@@ -50,6 +50,14 @@ unsigned tvertical_scrollbar::minimum_positioner_length() const
 	return conf->minimum_positioner_length; 
 }
 
+unsigned tvertical_scrollbar::maximum_positioner_length() const
+{ 
+	const tvertical_scrollbar_definition::tresolution* conf = 
+		dynamic_cast<const tvertical_scrollbar_definition::tresolution*>(config());
+	assert(conf); 
+	return conf->maximum_positioner_length; 
+}
+
 unsigned tvertical_scrollbar::offset_before() const
 { 
 	const tvertical_scrollbar_definition::tresolution* conf = 

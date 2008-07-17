@@ -38,6 +38,9 @@ private:
 	unsigned minimum_positioner_length() const;
 
 	/** Inherited from tscrollbar. */
+	unsigned maximum_positioner_length() const;
+
+	/** Inherited from tscrollbar. */
 	unsigned offset_before() const;
 
 	/** Inherited from tscrollbar. */
