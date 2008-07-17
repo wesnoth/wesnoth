@@ -165,6 +165,22 @@ struct tpanel_definition : public tcontrol_definition
 	};
 };
 
+struct tslider_definition : public tcontrol_definition
+{
+	tslider_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
+
+		unsigned left_offset;
+		unsigned right_offset;
+	};
+};
+
 struct tspacer_definition : public tcontrol_definition
 {
 

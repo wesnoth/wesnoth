@@ -20,6 +20,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/slider.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -152,6 +153,42 @@ public:
 	twidget* build () const;
 
 	tbuilder_grid* grid;
+};
+
+struct tbuilder_slider : public tbuilder_control
+{
+
+private:
+	tbuilder_slider();
+public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_slider
+ *
+ * == Slider ==
+ *
+ * @start_table = config
+ *     minimum_value (unsigned = 0)   The width of the slider.
+ *     maximum_value (unsigned = 0)   The height of the slider.
+ *     step_size (unsigned = 0)       The height of the slider.
+ *     value (unsigned = 0)           The height of the slider.
+ * @end_table
+ */
+	tbuilder_slider(const config& cfg) :
+		tbuilder_control(cfg),
+		minimum_value_(lexical_cast_default<unsigned>(cfg["minimum_value"])),
+		maximum_value_(lexical_cast_default<unsigned>(cfg["maximum_value"])),
+		step_size_(lexical_cast_default<unsigned>(cfg["step_size"])),
+		value_(lexical_cast_default<unsigned>(cfg["value"]))
+	{}
+
+	twidget* build () const;
+
+private:
+	int minimum_value_;
+	int maximum_value_;
+	int step_size_;
+	int value_;
 };
 
 struct tbuilder_spacer : public tbuilder_control
@@ -578,6 +615,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * * label a label.
  * * listbox a listbox.
  * * panel a panel (a grid which can be drawn on).
+ * * slider a slider.
  * * spacer a filler item. 
  * * text_box a text box.
  * * vertical_scrollbar a vertical scrollbar.
@@ -613,6 +651,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_listbox(*((**col_itor).child("listbox"))));
 			} else if((**col_itor).child("panel")) {
 				widgets.push_back(new tbuilder_panel(*((**col_itor).child("panel"))));
+			} else if((**col_itor).child("slider")) {
+				widgets.push_back(new tbuilder_slider(*((**col_itor).child("slider"))));
 			} else if((**col_itor).child("spacer")) {
 				widgets.push_back(new tbuilder_spacer(*((**col_itor).child("spacer"))));
 			} else if((**col_itor).child("text_box")) {
@@ -1008,6 +1048,23 @@ twidget* tbuilder_panel::build() const
 	}
 
 	return panel;
+}
+
+twidget* tbuilder_slider::build() const
+{
+	tslider* slider = new tslider();
+
+	init_control(slider);
+
+	slider->set_maximum_value(maximum_value_);
+	slider->set_minimum_value(minimum_value_);
+	slider->set_step_size(step_size_);
+	slider->set_value(value_);
+
+	DBG_G << "Window builder: placed slider '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return slider;
 }
 
 twidget* tbuilder_spacer::build() const

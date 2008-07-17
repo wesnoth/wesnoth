@@ -153,6 +153,9 @@ protected:
 
 	unsigned get_positioner_length() const { return positioner_length_; }
 
+	/** After a recalculation the canvasses also need to be updated. */
+	virtual void update_canvas();
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -297,9 +300,6 @@ private:
 	 * This is a helper for recalculate().
 	 */
 	void recalculate_positioner();
-
-	/** After a recalculation the canvasses also need to be updated. */
-	void update_canvas();
 
 	/**
 	 * Moves the positioner.

@@ -88,6 +88,7 @@ wesnoth_source = \
 	gui/widgets/panel.cpp \
 	gui/widgets/settings.cpp \
 	gui/widgets/scrollbar.cpp \
+	gui/widgets/slider.cpp \
 	gui/widgets/spacer.cpp \
 	gui/widgets/text.cpp \
 	gui/widgets/text_box.cpp \

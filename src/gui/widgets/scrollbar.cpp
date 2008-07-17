@@ -207,6 +207,15 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 	update_canvas();
 }
 
+void tscrollbar_::update_canvas() {
+
+	foreach(tcanvas& tmp, canvas()) {
+		tmp.set_variable("positioner_offset", variant(positioner_offset_));
+		tmp.set_variable("positioner_length", variant(positioner_length_));
+	}
+	set_dirty();
+}
+
 void tscrollbar_::set_state(const tstate state)
 {
 	if(state != state_) {
@@ -284,15 +293,6 @@ void tscrollbar_::recalculate_positioner()
 	} else if(positioner_length_ < minimum) {
 		positioner_length_ = minimum;
 	}
-}
-
-void tscrollbar_::update_canvas() {
-
-	foreach(tcanvas& tmp, canvas()) {
-		tmp.set_variable("positioner_offset", variant(positioner_offset_));
-		tmp.set_variable("positioner_length", variant(positioner_length_));
-	}
-	set_dirty();
 }
 
 void tscrollbar_::move_positioner(const int distance)
