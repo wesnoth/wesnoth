@@ -18,6 +18,7 @@
 #include "language.hpp"
 
 #include <cassert>
+#include <cstring>
 
 #include <cairo.h>
 
