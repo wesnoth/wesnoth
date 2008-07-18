@@ -360,12 +360,17 @@ namespace {
 //! For use in the a_star_search algorithm.
 struct road_path_calculator : cost_calculator
 {
-	road_path_calculator(const terrain_map& terrain, const config& cfg)
-		        : calls(0), map_(terrain), cfg_(cfg),
+	road_path_calculator(const terrain_map& terrain, const config& cfg) :
+    	calls(0), 
+		map_(terrain), 
+		cfg_(cfg),
+		// Find out how windy roads should be.
+		windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))),
+		seed_(rand()),
+		cache_()
+	{
+	}
 
-				  // Find out how windy roads should be.
-				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))),
-				  seed_(rand()) {}
 	virtual double cost(const location& src, const location& loc, const double so_far) const;
 
 	mutable int calls;
