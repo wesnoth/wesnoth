@@ -98,6 +98,9 @@ public:
 		set_client_size(get_client_rect());
 	}
 
+	/** Inherited from tcontrol. */
+	void set_active(const bool active);
+
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
 	tgrid::iterator begin() { return grid_.begin(); }
@@ -146,6 +149,15 @@ private:
 
 	/** Returns the space used by the border. */
 	virtual tpoint border_space() const { return tpoint(0, 0); }
+
+	/**
+	 * Helper for set_active.
+	 *
+	 * This function should set the control itself active. It's called by
+	 * set_active if the state needs to change. The widget is set to dirty() by
+	 * set_active so we only need to change the state.
+	 */
+	virtual void set_self_active(const bool active) = 0;
 
 	/** 
 	 * If the background has been changed the next draw cycle needs to do a full

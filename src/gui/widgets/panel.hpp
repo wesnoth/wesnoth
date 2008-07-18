@@ -51,9 +51,6 @@ public:
 	virtual SDL_Rect get_client_rect() const;
 
 	/** Inherited from tcontrol. */
-	void set_active(const bool /*active*/) {}
-
-	/** Inherited from tcontrol. */
 	bool get_active() const { return true; }
 
 	/** Inherited from tcontrol. */
@@ -74,6 +71,9 @@ private:
 
 	/** Inherited from tcontainer_. */
 	tpoint border_space() const;
+
+	/** Inherited from tcontainer_. */
+	void set_self_active(const bool /*active*/) {}
 
 }; 
 

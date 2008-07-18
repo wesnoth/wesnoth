@@ -83,5 +83,20 @@ void tcontainer_::draw(surface& surface, const bool force,
 	grid_.draw(surface, force, redraw_background);
 }
 
+void tcontainer_::set_active(const bool active)
+{
+	// Not all our children might have the proper state so let them run
+	// unconditionally.
+	grid_.set_active(active);
+
+	if(active == get_active()) {
+		return;
+	}
+
+	set_dirty();
+
+	set_self_active(active);
+}
+
 } // namespace gui2
 

@@ -37,8 +37,6 @@ public:
 	
 	tlistbox();
 
-	// FIXME this might not the right thing to do.
-	void set_active(const bool active) { set_state(active ? ENABLED : DISABLED); };
 	bool get_active() const { return state_ != DISABLED; }
 	unsigned get_state() const { return state_; }
 
@@ -262,6 +260,10 @@ private:
 	//! Inherited from tcontrol.
 	const std::string& get_control_type() const 
 		{ static const std::string type = "listbox"; return type; }
+
+	/** Inherited from tcontainer_. */
+	void set_self_active(const bool active) 
+		{ state_ = active ? ENABLED : DISABLED; }
 
 	/** The (lastly) selected row */
 	unsigned selected_row_;

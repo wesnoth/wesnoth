@@ -117,8 +117,7 @@ public:
 	void window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height);
 
-	//! A window is always active atm so ignore the request.
-	void set_active(const bool /*active*/) {}
+	//! At the moment a window is always active.
 	bool get_active() const { return true; }
 	unsigned get_state() const { return 0; }
 	bool needs_full_redraw() const { return false; /* FIXME IMPLEMENT */ }

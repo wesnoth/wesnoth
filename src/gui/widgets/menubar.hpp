@@ -49,9 +49,6 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */
-	void set_active(const bool active) {} ; // FIXME implement
-
-	/** Inherited from tcontrol. */
 	bool get_active() const { return state_ != DISABLED; }
 
 	/** Inherited from tcontrol. */
@@ -113,6 +110,10 @@ private:
 
 	/** The builder needs to call us so we can wire in the proper callbacks. */
 	void finalize_setup();
+
+	/** Inherited from tcontainer_. */
+	void set_self_active(const bool active) 
+		{ state_ = active ? ENABLED : DISABLED; }
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
