@@ -85,6 +85,7 @@ wesnoth_source = \
 	gui/widgets/helper.cpp \
 	gui/widgets/label.cpp \
 	gui/widgets/listbox.cpp \
+	gui/widgets/menubar.cpp \
 	gui/widgets/panel.cpp \
 	gui/widgets/settings.cpp \
 	gui/widgets/scrollbar.cpp \

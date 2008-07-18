@@ -238,6 +238,7 @@ SET(wesnoth-main_SRC
     gui/widgets/helper.cpp
     gui/widgets/label.cpp
     gui/widgets/listbox.cpp
+    gui/widgets/menubar.cpp
     gui/widgets/panel.cpp
     gui/widgets/settings.cpp
     gui/widgets/slider.cpp 

@@ -121,6 +121,17 @@ struct tbutton_definition : public tcontrol_definition
 
 };
 
+struct tmenubar_definition : public tcontrol_definition
+{
+
+	tmenubar_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+	};
+};
+
 struct tlabel_definition : public tcontrol_definition
 {
 

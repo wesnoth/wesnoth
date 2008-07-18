@@ -20,6 +20,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/menubar.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -91,6 +92,45 @@ public:
 
 private:
 	int retval_;
+};
+
+/**
+ * A temporary helper class.
+ *
+ * @todo refactore with the grid builder.
+ */
+struct tbuilder_gridcell : public tbuilder_widget
+{
+	tbuilder_gridcell(const config& cfg);
+
+	//! The flags for the cell.
+	unsigned flags;
+
+	//! The bordersize for the cell.
+	unsigned border_size;
+
+	//! The widgets for the cell.
+	tbuilder_widget_ptr widget;
+
+	// We're a dummy the building is done on construction.
+	twidget* build () const { return NULL; }
+};
+
+struct tbuilder_menubar : public tbuilder_control
+{
+	tbuilder_menubar(const config& cfg);
+
+	twidget* build () const;
+
+private:
+	bool must_have_one_item_selected_;
+
+	tmenubar::tdirection direction_;
+
+	int selected_item_;
+
+	std::vector<tbuilder_gridcell> cells_;
+
 };
 
 struct tbuilder_label : public tbuilder_control
@@ -631,6 +671,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 
 			if((**col_itor).child("button")) {
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
+			} else if((**col_itor).child("menubar")) {
+				widgets.push_back(new tbuilder_menubar(*((**col_itor).child("menubar"))));
 			} else if((**col_itor).child("label")) {
 				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
 			} else if((**col_itor).child("listbox")) {
@@ -653,6 +695,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 			} else if((**col_itor).child("grid")) {
 				widgets.push_back(new tbuilder_grid(*((**col_itor).child("grid"))));
 			} else {
+				std::cerr << (**col_itor);
 				assert(false);
 			}
 
@@ -791,6 +834,129 @@ twidget* tbuilder_button::build() const
 	return button;
 }
 
+
+tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
+	tbuilder_widget(cfg),
+	flags(read_flags(cfg)),
+	border_size(lexical_cast_default<unsigned>((cfg)["border_size"])),
+	widget(NULL)
+{
+	if((cfg).child("button")) {
+		widget=new tbuilder_button(*((cfg).child("button")));
+	} else if((cfg).child("menubar")) {
+		widget=new tbuilder_menubar(*((cfg).child("menubar")));
+	} else if((cfg).child("label")) {
+		widget=new tbuilder_label(*((cfg).child("label")));
+	} else if((cfg).child("listbox")) {
+		widget=new tbuilder_listbox(*((cfg).child("listbox")));
+	} else if((cfg).child("panel")) {
+		widget=new tbuilder_panel(*((cfg).child("panel")));
+	} else if((cfg).child("slider")) {
+		widget=new tbuilder_slider(*((cfg).child("slider")));
+	} else if((cfg).child("spacer")) {
+		widget=new tbuilder_spacer(*((cfg).child("spacer")));
+	} else if((cfg).child("text_box")) {
+		widget=new tbuilder_text_box(*((cfg).child("text_box")));
+	} else if((cfg).child("toggle_button")) {
+		widget=new tbuilder_toggle_button(*((cfg).child("toggle_button")));
+	} else if((cfg).child("toggle_panel")) {
+		widget=new tbuilder_toggle_panel(*((cfg).child("toggle_panel")));
+	} else if((cfg).child("vertical_scrollbar")) {
+		widget=
+			new tbuilder_vertical_scrollbar(*((cfg).child("vertical_scrollbar")));
+	} else if((cfg).child("grid")) {
+		widget=new tbuilder_grid(*((cfg).child("grid")));
+	} else {
+		std::cerr << cfg;
+		assert(false);
+	}
+}
+
+static tmenubar::tdirection read_direction(const std::string& direction)
+{
+	if(direction == "vertical") {
+		return tmenubar::VERTICAL;
+	} else if(direction == "horizontal") {
+		return tmenubar::HORIZONTAL;
+	} else {
+		ERR_G_E << "Invalid direction " 
+				<< direction << "' falling back to 'horizontal'.\n";
+		return tmenubar::HORIZONTAL;
+	}
+}
+
+tbuilder_menubar::tbuilder_menubar(const config& cfg) :
+	tbuilder_control(cfg),
+	must_have_one_item_selected_(utils::string_bool(cfg["must_have_one_item_selected"])),
+	direction_(read_direction(cfg["direction"])),
+	selected_item_(lexical_cast_default<int>(
+		cfg["selected_item"], must_have_one_item_selected_ ? 0 : -1)),
+	cells_()
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_menubar
+ *
+ * == Menubar ==
+ *
+ * A menu bar used for menus and tab controls.
+ *
+ * List with the listbox specific variables:
+ * @start_table = config
+ *     must_have_one_item_selected (bool = false)
+ *                                     Does the menu always have one item
+ *                                     selected. This makes sense for tabsheets
+ *                                     but not for menus.
+ *     direction (direction = "")      The direction of the menubar.
+ *     selected_item(int = -1)         The item to select upon creation, when
+ *                                     'must_have_one_item_selected' is true the
+ *                                     default value is 0 instead of -1. -1
+ *                                     means no item selected.
+ * @end_table
+ */
+	const config* data = cfg.child("data");
+
+	if(data) {
+		foreach(const config* cell, data->get_children("cell")) {
+			cells_.push_back(tbuilder_gridcell(*cell));
+		}
+	}
+}
+
+twidget* tbuilder_menubar::build() const
+{
+	tmenubar* menubar = new tmenubar(direction_);
+
+	init_control(menubar);
+
+
+	DBG_G << "Window builder: placed menubar '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	if(direction_ == tmenubar::HORIZONTAL) {
+		menubar->set_rows_cols(1, cells_.size());
+
+		for(size_t i = 0; i < cells_.size(); ++i) {
+			menubar->set_child(cells_[i].widget->build(), 
+				0, i, cells_[i].flags, cells_[i].border_size);
+		}
+	} else {
+		// vertical growth
+		menubar->set_rows_cols(cells_.size(), 1);
+
+		for(size_t i = 0; i < cells_.size(); ++i) {
+			menubar->set_child(cells_[i].widget->build(), 
+				i, 0, cells_[i].flags, cells_[i].border_size);
+		}
+	}
+
+	menubar->set_selected_item(selected_item_);
+	menubar->set_must_select(must_have_one_item_selected_);
+	menubar->finalize_setup();
+
+	return menubar;
+}
+
 twidget* tbuilder_label::build() const
 {
 	tlabel* tmp_label = new tlabel();
@@ -860,6 +1026,7 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  * * grid (to nest)
  * * selectable widgets which are
  * ** toggle_button 
+ * ** toggle_panel 
  *
  */
 
