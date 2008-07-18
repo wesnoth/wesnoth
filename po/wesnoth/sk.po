@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-07-03 22:14+0200\n"
-"PO-Revision-Date: 2008-07-15 20:33+0100\n"
+"PO-Revision-Date: 2008-07-17 21:41+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -589,7 +589,7 @@ msgstr ""
 "Hra sa skladá zo série bitiek nazývaných scény. Každá scéna postaví tvoje "
 "bojové jednotky proti bojovým jednotkám jedného alebo viacerých súperov. "
 "Môžeš hrať sám proti počítaču, alebo sa striedať s priateľmi pri sedení za "
-"počítačom (tzv. horúce kreslo). Ak máš počítač pripevnený k miestnej "
+"počítačom (tzv. horúce kreslo). Ak máš počítač pripojený k miestnej "
 "počítačovej sieti, môžeš hrať aj proti ostatným užívateľom tejto siete. Ak "
 "máš počítač pripojený na internet, môžeš hrať proti ostatným ľuďom na "
 "internete."
@@ -719,7 +719,7 @@ msgstr ""
 "\n"
 "\n"
 "V ďalších scénach si môžete privolávať tých, čo prežili v predchádzajúcej "
-"bitke. Privolávanie stojí 20 zlatých a zobrazí zoznam jednotiek, ktoré "
+"bitke. Privolávanie stojí 20 zlatiek a zobrazí zoznam jednotiek, ktoré "
 "prežili z predchádzajúcej hry."
 
 #. [topic]
@@ -754,7 +754,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:175
 msgid "green if it hasn't moved this turn,"
-msgstr "zelená - v tomto ťahu sa ešte nehýbala;"
+msgstr "zelená - v tomto kole sa ešte nehýbala;"
 
 #. [topic]
 #: data/core/help.cfg:176
@@ -764,7 +764,7 @@ msgstr "žltá - v tomto ťahu sa už hýbala, ale ešte sa môže hýbať alebo
 #. [topic]
 #: data/core/help.cfg:177
 msgid "red if it has used all its movement this turn."
-msgstr "červená - v tomto ťahu už svoj pohyb vyčerpala."
+msgstr "červená - v tomto kole už svoj pohyb vyčerpala."
 
 #. [topic]
 #: data/core/help.cfg:178
@@ -1323,7 +1323,7 @@ msgstr ""
 "\"vylepšovanie po najvyššej úrovni\". Pri \"vylepšovaní po najvyššej úrovni"
 "\" sa jednotka, ktorá dosiahla stanovený počet skúseností upraví, ale "
 "zostane na rovnakej úrovni. Zvyčajne sa zvýši jej maximálny počet životov o "
-"3 plne sa uzdraví. Prvýkrát treba  dosiahnuť asi 150 skúseností (120 pre "
+"3 plne sa uzdraví. Prvýkrát treba dosiahnuť asi 150 skúseností (120 pre "
 "inteligentné jednotky). Neskôr však na rovnaký efekt treba stále viac "
 "skúseností, takže sa zvyčajne oplatí povyšovať jednotky na nižších úrovniach."
 
@@ -1341,7 +1341,7 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"Vaše jednotky v súbojoch nevyhnutne utrpia zranenie. Keď je jednotka  "
+"Vaše jednotky v súbojoch nevyhnutne utrpia zranenie. Keď je jednotka "
 "<ref>dst=experience_and_advancement text='povýšená'</ref>, plne sa vylieči. "
 "To sa môže stať pri boji so súperom, či už počas vášho alebo súperovho ťahu. "
 "Wesnoth umožňuje liečiť jednotky niekoľkými ďalšími spôsobmi. Tieto sa "
@@ -1358,7 +1358,7 @@ msgstr ""
 "\n"
 "\n"
 "Oddych: Jednotka, ktorá sa nehýbala, neútočila, ani nikto naútočil na ňu, sa "
-"v ďalšom ťahu uzdraví o 2 body."
+"v ďalšom kole uzdraví o 2 body."
 
 #. [topic]
 #: data/core/help.cfg:282
@@ -1367,7 +1367,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Dedina: Jednotka, ktorá je na začiatku ťahu v dedine, sa uzdraví o 8 bodov."
+"Dedina: Jednotka, ktorá je na začiatku kola v dedine, sa uzdraví o 8 bodov."
 
 #. [topic]
 #: data/core/help.cfg:283
@@ -1391,8 +1391,8 @@ msgstr ""
 "\n"
 "Uzdravujúce jednotky: Jednotky so schopnosťou <ref>dst=ability_heals "
 "text='uzdravovať'</ref> vyliečia spojenecké jednotky na vedľajších poliach, "
-"zvyčajne o 4 alebo 8 bodov zdravia za ťah; alebo zabránia jedu spôsobiť "
-"jednotke v danom ťahu zranenie."
+"zvyčajne o 4 alebo 8 bodov zdravia za kolo; alebo zabránia jedu spôsobiť "
+"jednotke v danom kole zranenie."
 
 #. [topic]
 #: data/core/help.cfg:285
@@ -1689,7 +1689,7 @@ msgid ""
 "and have 1 more HP."
 msgstr ""
 "Silné jednotky spôsobujú pri boji nablízko o 1 väčšie zranenie pri každom "
-"úspešnom zásahu, a majú o 1 väčšie zdravie."
+"úspešnom zásahu, a majú o 1 život viac."
 
 #. [topic]
 #: data/core/help.cfg:363
@@ -2406,7 +2406,7 @@ msgstr ""
 "Ak je rieka veľmi plytká, pozemné jednotky cez ňu jednoducho prejdú. "
 "Plávajúce jednotky sa tu takisto pohybujú rovnako ľahko ako v iných častiach "
 "rieky. Z hľadiska hry sa teda riečny brod počíta buď ako rovina alebo ako "
-"plytká voda,  podľa toho, čo danej jednotke z hľadiska obrany a pohybu viac "
+"plytká voda, podľa toho, čo danej jednotke z hľadiska obrany a pohybu viac "
 "vyhovuje."
 
 #. [topic]
@@ -2769,8 +2769,8 @@ msgstr ""
 "Jednotka dokáže uzdravovať spriatelené jednotky na vedľajších políčkach "
 "začiatkom ťahu.\n"
 "\n"
-"Jednotka v opatere tohoto uzdravovateľa sa môže za jeden ťah uzdraviť až o 4 "
-"životy, alebo jej tento ťah nebude jed uberať životy.\n"
+"Jednotka v opatere tohoto uzdravovateľa sa môže za jedno kolo uzdraviť až o "
+"4 životy, alebo jej v tomto kole nebude jed uberať životy.\n"
 "Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
 "vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
@@ -2795,8 +2795,8 @@ msgstr ""
 "Jednotka kombinuje rastlinné liečivá s mágiou, aby uzdravovala rýchlejšie, "
 "ako je bežne možné na bojisku.\n"
 "\n"
-"Jednotka v opatere tohoto uzdravovateľa sa môže za jeden ťah uzdraviť až o 8 "
-"životov, alebo jej tento ťah nebude jed uberať životy.\n"
+"Jednotka v opatere tohoto uzdravovateľa sa môže za jedno kolo uzdraviť až o "
+"8 životov, alebo jej v tomto kole nebude jed uberať životy.\n"
 "Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
 "vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
@@ -3039,7 +3039,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
-msgstr "+1 max. životy"
+msgstr "+1 max. životov"
 
 #: data/core/macros/abilities.cfg:542
 msgid "backstab"
@@ -3143,8 +3143,8 @@ msgid ""
 msgstr ""
 "Húf:\n"
 "Počet útokov tejto jednotky klesá, keď je zranená. Počet útokov je priamo "
-"úmerný zdraviu jednotky. Napríklad ak má jednotka 3/4 maximálneho zdravia, "
-"bude mať 3/4 počtu útokov."
+"úmerný zdraviu jednotky. Napríklad ak má jednotka 3/4 maximálneho počtu "
+"životov, bude mať 3/4 počtu útokov."
 
 #: data/core/macros/abilities.cfg:640
 msgid "charge"
@@ -3193,17 +3193,17 @@ msgstr ""
 #. [advancement]
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Bonus k maximálnemu zdraviu +3, k maximálnej skúsenosti +20%"
+msgstr "Bonus k maximálnemu počtu životov +3, k maximálnej skúsenosti +20%"
 
 #. [advancement]
 #: data/core/macros/amla.cfg:30
 msgid ", MAX XP +25%"
-msgstr ", MAX SKÚS +25%"
+msgstr ", MAX SKÚS. +25%"
 
 #. [advancement]
 #: data/core/macros/amla.cfg:30
 msgid "Max HP bonus +"
-msgstr "Bonus k maximálnemu zdraviu +"
+msgstr "Bonus k maximálnemu počtu životov +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:41
@@ -5012,7 +5012,7 @@ msgstr ""
 "plání a nízkych kopcov. Tieto oblasti sú domovom jazdeckých klanov, ktoré sú "
 "formálne nezávislé, no sú spojencom Wesnotu. Niektorí historici toto územie "
 "považujú za protektorát, ktorý prispieva stravou a vojakmi wesnotskej korune "
-"za odplatu poskytnutia bezpečnosti a ochrany. Iní tvrdia, že sú  útvarom "
+"za odplatu poskytnutia bezpečnosti a ochrany. Iní tvrdia, že sú útvarom "
 "rovnocenným západnému Wesnotu. Každopádne, východné provincie nemajú povinnú "
 "vojenskú službu v tej podobe, ako ju poznajú v západnom Wesnote. Bojový "
 "tréning je bežnou súčasťou životného štýlu klanov - rodičia učia deti "
@@ -5221,7 +5221,7 @@ msgstr ""
 "neutrálnych. Pôvod tohto zvyku nie je jasný, keďže šamani v ničom priamo "
 "neprispievajú do spoločnosti a slúžia iba ako poradcovia - čo nie je čosi, "
 "čo by sa tolerovalo medzi orkami. Šamani sú v mnohom úplným protikladom "
-"typického orka -  sú fyzicky slabí a chýbajú im bojové zručnosti. Napriek "
+"typického orka - sú fyzicky slabí a chýbajú im bojové zručnosti. Napriek "
 "spoliehaniu sa na hrubú silu, nie každému orkovi je sila daná. Mnoho orkov "
 "sa narodí s menším a slabším vzrastom, čo im vynáša pocit podradenosti "
 "svojim silnejším kamarátom. Silnejší si zvyčajne uchmatne viac potravy a tak "
@@ -5508,6 +5508,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Nepodceňuj získavanie skúseností pre svojho veliteľa! Musíš ho síce chrániť, "
+"ale ak ho budeš príliš šetriť, môže zostať na príliš nízkej úrovni a "
+"neprežije budúce bitky."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
@@ -5522,6 +5525,10 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"V menu 'Akcie' môžeš použiť voľbu 'Ukáž možný nepriateľov pohyb' na "
+"zobrazenie všetkých políčok, na ktoré sa môže súper skutočne pohnúť (za "
+"predpokladu, že tvoje jednotky zostanú na mieste). Môžeš sa tak ubezpečiť, "
+"že v jeho ďalšom ťahu nemôže dosiahnuť na tvoje slabé alebo ranené."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
@@ -5538,7 +5545,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
 #: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- Taktický sprievodca Wesnotu"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5547,6 +5554,9 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Jednotky s vlastnosťou \"inteligentný\" potrebujú menej bodov skúsenosti na "
+"povýšenie. Na začiatku výpravy je vhodné prenechať im smrtiace údery, aby si "
+"skôr získal jednotky vyšších úrovní."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
@@ -5560,11 +5570,14 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"Taktika obkľúčenia je veľmi účinná najmä voči rýchlym nepriateľom. Dve "
+"jednotky umiestnené na protiľahlé strany nepriateľa ho obmedzia svojim "
+"zónami kontroly na pohyb len o jedno pole v každom smere."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- Pamäti Gweddryho, 627YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -5573,6 +5586,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Príkazy \"Verbuj\" a \"Privolaj\" sú dostupné po kliknutí pravým tlačidlom "
+"myši na políčko s hradom. To umožňuje vybrať si pole, na ktorom sa objaví "
+"nová jednotka. Múdre umiestnenie jednotiek ti niekedy umožní dosiahnuť "
+"dedinu o kolo skôr."
 
 #. [tip]
 #: data/hardwired/tips.cfg:23
@@ -5581,6 +5598,8 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"V hlavnom menu je niekoľko užitočných prehľadových tabuliek: napríklad "
+"tabuľka \"Stav\" ti umožní vidieť, ako si na tom v porovnaní s nepriateľmi."
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5589,11 +5608,14 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Jednotky s vlastnosťou \"rýchly\" sa môžu pohnúť o jedno políčko viac v "
+"každom kole. To môže byť veľmi dôležité pri pohybe cez ťažký terén ako voda "
+"alebo jaskyne. Môže to umožniť pohyb o 2 polia namiesto o 1."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Lord Kalenz, 470YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -5601,6 +5623,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Keď si už odohral niekoľko scén, prečítaj si pozorne sekciu \"Hra\" v "
+"návode. Detaily začnú byť dôležité, keď prídu ťažšie scény."
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -5609,6 +5633,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Obyčajne je lepšie začať scénu vo výprave s jednotkami nižších úrovní, ktoré "
+"sú tesne pred povýšením, ako s takými istými jednotkami na vyšších úrovniach."
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5616,6 +5642,8 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Na www.wesnoth.org môžeš nájsť strategické návody, technickú pomoc, históriu "
+"Wesnotu a mnoho ďalšieho."
 
 #. [tip]
 #: data/hardwired/tips.cfg:40
@@ -5634,7 +5662,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Kráľovská zbierka vojnového názvoslovia - Zväzok II., 212YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
@@ -5646,7 +5674,7 @@ msgstr "I rozumný plán môže zlyhať ak zaútočíš v nesprávnu dennú dobu
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- Príručka taktickej analýzy, Zväzok I. - Haldric II., 42YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
@@ -5656,6 +5684,10 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Ak hráš so zapnutou \"hmlou\" alebo \"odkrývaním mapy\", nevidíš, čo na teba "
+"čaká. V takom prípade sú jednotky s dlhým dosahom hodné svojej ceny. Vyber "
+"si prieskumné jednotky, ktoré sa môžu ľahko pohybovať po okolitom teréne, "
+"pretože jednotky vidia až tam, kam sa môžu pohnúť v jednom kole."
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -5691,6 +5723,11 @@ msgid ""
 "not be removed unless the unit regenerates, or spends a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Otrávené jednotky strácajú v každom kole osem životov až kým im neostane len "
+"jeden. Zostanú na pokraji smrti až kým jed nie je odstránený. Uzdravovatelia "
+"môžu uchrániť jednotku od straty ďalších životov, ale jed nebude odstránený "
+"ak jednotka neregeneruje, alebo nezostane jedno kolo v dedine, či vedľa "
+"jednotky so schopnosťou \"liečiť\""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
@@ -5734,7 +5771,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Príručka taktickej analýzy, Zväzok II. - Haldric II., 43YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
@@ -5753,7 +5790,7 @@ msgid ""
 "its next turn."
 msgstr ""
 "Nehýb zranenými jednotkam ak to nie je nutné - nechaj ich odpočívať. "
-"Jednotky, ktoré sa počas kola nepohli ani neútočili,  získajú 2 životy na "
+"Jednotky, ktoré sa počas kola nepohli ani neútočili, získajú 2 životy na "
 "začiatku ich nasledujúceho kola."
 
 #. [tip]
@@ -5944,7 +5981,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- Zvitok Chantal, 516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -5963,7 +6000,7 @@ msgstr "Sväté útoky sú zvlášť účinné proti nemŕtvym."
 #. [tip]
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- veľký mudrc Dacyn, 626YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
@@ -6038,6 +6075,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Zoskup jednotky na nízkych úrovniach s veteránom, aby získali rýchlejšie "
+"povýšenie. Použi veterána na spôsobenie ťažkých zranení spoločnému cieľu a "
+"potom neskúsená jednotka zasadí smrtiaci úder."
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -6051,6 +6091,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Nemôžeš vrátiť späť pohyb jednotky, ktorý odkryje mapu alebo hmlu. Ak si "
+"chceš zachovať možnosť vrátiť pohyb späť, zapni voľbu \"Pozastav odkrývanie "
+"mapy\" ešte pred ťahaním jednotkami."
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -6058,6 +6101,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Ak má nepriateľská jednotka väčšiu výhodu na nejakom zriedkavom teréne, "
+"obsadením tohto terénu ju pripravíš o túto výhodu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:199
@@ -6066,6 +6111,9 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Len málo jednotiek má dobrú obranu vo vode; línia útočníkov na brehu rieky "
+"im môže spôsobiť veľké straty. Elfovia môžu podobným spôsobom využiť okraj "
+"lesa, trpaslíci zase hory."
 
 #. [effect]: type=fire
 #: data/scenario-test.cfg:697
@@ -6112,7 +6160,7 @@ msgstr "Životy"
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
 #: src/menu_events.cpp:1152
 msgid "XP"
-msgstr "Skúsenosti"
+msgstr "Skúsenosť"
 
 #. [label]
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
@@ -6165,7 +6213,7 @@ msgstr "Akc."
 #. [menu]
 #: data/themes/default.cfg:1015 data/themes/default.cfg:1023
 msgid "short end-turn^E."
-msgstr ""
+msgstr "K."
 
 #. [label]
 #: data/themes/dfool.cfg:252
@@ -6230,7 +6278,7 @@ msgstr "prehraj ťah strany"
 #. [menu]
 #: data/themes/macros.cfg:163
 msgid "Point of view"
-msgstr ""
+msgstr "Pohľad"
 
 #. [menu]: type=checkbox
 #: data/themes/macros.cfg:179
@@ -6268,10 +6316,11 @@ msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 #: src/actions.cpp:250 src/actions.cpp:273 src/actions.cpp:278
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
+"Bola zvolená neplatná zbraň, pravdepodobne v Pythonom riadenom hráčovi."
 
 #: src/actions.cpp:257
 msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
+msgstr "Bola odoslaná zbraň, pravdepodobne kvôli Pythonom riadenom hráčovi."
 
 #: src/actions.cpp:977 src/actions.cpp:1234
 msgid "poisoned"
@@ -6335,11 +6384,11 @@ msgstr "Neznámy typ jednotky : "
 
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr ""
+msgstr "Cena pohybu je 0, pravdepodobne terén s cenou pohybu 0."
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Našla sa duplicitná definícia strany '$side|'."
 
 #: src/dialogs.cpp:112
 msgid "Advance Unit"
@@ -6389,7 +6438,7 @@ msgstr "Uložená hra s týmto názvom už existuje. Chceš ju prepísať?"
 
 #: src/dialogs.cpp:293 src/menu_events.cpp:751 src/playcampaign.cpp:423
 msgid "Name: "
-msgstr "Názov:"
+msgstr "Názov: "
 
 #: src/dialogs.cpp:294
 msgid "Overwrite?"
@@ -6397,7 +6446,7 @@ msgstr "Prepísať?"
 
 #: src/dialogs.cpp:313
 msgid "Filter: "
-msgstr "Filter:"
+msgstr "Filter: "
 
 #: src/dialogs.cpp:380
 msgid "Do you really want to delete this game?"
@@ -6441,11 +6490,11 @@ msgstr "Spusti mapu"
 
 #: src/dialogs.cpp:591
 msgid "Difficulty: "
-msgstr "Zložitosť:"
+msgstr "Zložitosť: "
 
 #: src/dialogs.cpp:593
 msgid "Version: "
-msgstr "Verzia:"
+msgstr "Verzia: "
 
 #: src/dialogs.cpp:617 src/dialogs.cpp:633
 msgid "%b %d %y"
@@ -6522,15 +6571,15 @@ msgstr "Úroveň"
 
 #: src/dialogs.cpp:854 src/help.cpp:1330
 msgid "HP: "
-msgstr "Zdravie:"
+msgstr "Životy: "
 
 #: src/dialogs.cpp:857
 msgid "XP: "
-msgstr "Skúsenosti:"
+msgstr "Skúsenosti: "
 
 #: src/dialogs.cpp:861 src/help.cpp:1331
 msgid "Moves: "
-msgstr "Kroky:"
+msgstr "Kroky: "
 
 #: src/dialogs.cpp:1187 src/game.cpp:975
 msgid "KB"
@@ -6601,7 +6650,7 @@ msgstr "Teraz sa pripojíš na server, aby si si stiahol doplnky."
 
 #: src/game.cpp:1011
 msgid "Server: "
-msgstr "Server:"
+msgstr "Server: "
 
 #: src/game.cpp:1012 src/game.cpp:1079
 msgid "Remove Add-ons"
@@ -6617,7 +6666,7 @@ msgstr "Vyber si doplnok, ktorý chceš odstrániť."
 
 #: src/game.cpp:1090
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "Naozaj odstrániť doplnok '$addon|'?"
 
 #: src/game.cpp:1094
 msgid "Confirm"
@@ -6625,7 +6674,7 @@ msgstr "Potvrdiť"
 
 #: src/game.cpp:1117
 msgid "Add-on '$addon|' deleted."
-msgstr ""
+msgstr "Doplnok '$addon|' vymazaný."
 
 #: src/game.cpp:1122
 msgid "Add-on deleted"
@@ -6633,7 +6682,7 @@ msgstr "Doplnok odstránený"
 
 #: src/game.cpp:1128
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr ""
+msgstr "Doplnok nemohol byť vymazaný -- súbor sa nenašiel."
 
 #: src/game.cpp:1149 src/multiplayer.cpp:168 src/multiplayer.cpp:206
 msgid "Connecting to Server..."
@@ -6717,7 +6766,7 @@ msgstr "Chyba pri komunikácii na sieti."
 
 #: src/game.cpp:1372
 msgid "Remote host disconnected."
-msgstr "Server sa odpojil"
+msgstr "Server sa odpojil."
 
 #: src/game.cpp:1374
 msgid ""
@@ -6771,7 +6820,7 @@ msgstr "Hraj zápas proti AI alebo ľuďom na jednom počítači"
 
 #: src/game.cpp:1505 src/multiplayer.cpp:233
 msgid "Login: "
-msgstr "Prihlasovacie meno:"
+msgstr "Prihlasovacie meno: "
 
 #: src/game.cpp:1542 src/playcampaign.cpp:101 src/playcampaign.cpp:388
 msgid "The game could not be loaded: "
@@ -6838,7 +6887,7 @@ msgstr "Načítava sa úvodná obrazovka."
 
 #: src/game_config.cpp:270
 msgid "Invalid color range: "
-msgstr "Neplatný farebný rozsah:"
+msgstr "Neplatný farebný rozsah: "
 
 #: src/game_events.cpp:966
 msgid "Victory:"
@@ -6910,11 +6959,11 @@ msgstr "skamenený: "
 
 #: src/generate_report.cpp:159
 msgid "Resistances: "
-msgstr "Odolnosti:"
+msgstr "Odolnosti: "
 
 #: src/generate_report.cpp:176 src/multiplayer_create.cpp:399
 msgid "Experience Modifier: "
-msgstr "Modifikátor skúseností:"
+msgstr "Modifikátor skúseností: "
 
 #: src/generate_report.cpp:247
 msgid "tooltip^damage"
@@ -6936,7 +6985,7 @@ msgstr "dosah zbrane: "
 
 #: src/generate_report.cpp:259
 msgid "damage type: "
-msgstr "typ zranenia:"
+msgstr "typ zranenia: "
 
 #: src/generate_report.cpp:280
 msgid "vs"
@@ -6972,11 +7021,11 @@ msgstr "<header>text='Jednotky s touto schopnosťou'</header>"
 
 #: src/help.cpp:1244
 msgid "Advances from: "
-msgstr "Povýšený z:"
+msgstr "Povýšený z: "
 
 #: src/help.cpp:1273
 msgid "Advances to: "
-msgstr "Povýši sa na:"
+msgstr "Povýši sa na: "
 
 #: src/help.cpp:1304 src/help.cpp:1557 src/help.cpp:1612
 msgid "race^Miscellaneous"
@@ -6984,11 +7033,11 @@ msgstr "Rôzne"
 
 #: src/help.cpp:1306
 msgid "Race: "
-msgstr "Rasa:"
+msgstr "Rasa: "
 
 #: src/help.cpp:1313
 msgid "Abilities: "
-msgstr "Schopnosti:"
+msgstr "Schopnosti: "
 
 #: src/help.cpp:1332
 msgid "Cost: "
@@ -6996,11 +7045,11 @@ msgstr "Cena: "
 
 #: src/help.cpp:1333
 msgid "Alignment: "
-msgstr "Príslušnosť:"
+msgstr "Príslušnosť: "
 
 #: src/help.cpp:1339
 msgid "Required XP: "
-msgstr "Potrebné skúsenosti:"
+msgstr "Potrebné skúsenosti: "
 
 #: src/help.cpp:1348
 msgid "unit help^Attacks"
@@ -7073,7 +7122,7 @@ msgstr "Odkaz na neexistujúcu záložku: "
 
 #: src/help.cpp:2887
 msgid "corrupted original file"
-msgstr ""
+msgstr "poškodený originálny súbor"
 
 #: src/help.cpp:2987
 msgid "The Battle for Wesnoth Help"
@@ -7140,11 +7189,11 @@ msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť."
 
 #: src/map.cpp:342
 msgid "A map without a header is not supported"
-msgstr ""
+msgstr "Mapa bez hlavičky nie je podporovaná"
 
 #: src/mapgen.cpp:711
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "Náhodné mapy s nepárnou šírkou nie sú podporované."
 
 #: src/menu_events.cpp:55 src/menu_events.cpp:892 src/menu_events.cpp:894
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
@@ -7359,7 +7408,7 @@ msgstr "Mapa bola uložená."
 
 #: src/menu_events.cpp:799
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Nepodarilo sa uložiť mapu: $msg"
 
 #: src/menu_events.cpp:899
 msgid "Could not auto save the game. Please save the game manually."
@@ -7431,7 +7480,7 @@ msgstr "Privolaj"
 #: src/menu_events.cpp:1205
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Musíš mať aspoň $cost zlatých, aby si privolal jednotku"
+msgstr[0] "Musíš mať aspoň $cost zlatiek, aby si privolal jednotku"
 msgstr[1] "Musíš mať aspoň $cost zlatku, aby si privolal jednotku"
 msgstr[2] "Musíš mať aspoň $cost zlatky, aby si privolal jednotku"
 
@@ -7454,7 +7503,7 @@ msgstr "Rasa"
 
 #: src/menu_events.cpp:1646
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Vytvoriť jednotku (ladenie!)"
 
 #: src/menu_events.cpp:1690
 msgid "Place Label"
@@ -7474,7 +7523,7 @@ msgstr "Hľadaj"
 
 #: src/menu_events.cpp:1841
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Neznáma ladiaca úroveň: '$level'."
 
 #: src/menu_events.cpp:1843 src/menu_events.cpp:1852 src/menu_events.cpp:2158
 #: src/menu_events.cpp:2164 src/menu_events.cpp:2198 src/menu_events.cpp:2210
@@ -7484,11 +7533,11 @@ msgstr "chyba"
 
 #: src/menu_events.cpp:1850
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Neznáma ladiaca doména: '$domain'."
 
 #: src/menu_events.cpp:1859
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "Doména: '$domain' prepnutá na úroveň: '$level'."
 
 #: src/menu_events.cpp:1914
 msgid ""
@@ -7586,11 +7635,11 @@ msgstr "Neviem nájsť značku ani jednotku, ktorá má v názve '$search'."
 
 #: src/menu_events.cpp:2159
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Nie je možné zmeniť neplatnú stranu '$side' na riadenie počítačom."
 
 #: src/menu_events.cpp:2165
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Nie je možné zmeniť sieťovú stranu '$side' na riadenie počítačom."
 
 #: src/menu_events.cpp:2199
 msgid "Usage: control <side> <nick>"
@@ -7598,11 +7647,11 @@ msgstr "Použitie: control [strana] [meno]"
 
 #: src/menu_events.cpp:2211
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Nie je možné nastaviť kontrolu neplatnej strany: '$side'."
 
 #: src/menu_events.cpp:2218
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "Nie je možné nastaviť kontrolu strany mimo rozsahu: '$side'."
 
 #: src/menu_events.cpp:2256
 msgid "Debug mode activated!"
@@ -7630,7 +7679,7 @@ msgstr "Obranca"
 
 #: src/mouse_events.cpp:233
 msgid "Expected Battle Result (HP)"
-msgstr "Predpokladaný výsledok bitky (živ)"
+msgstr "Predpokladaný výsledok bitky (živ.)"
 
 #: src/mouse_events.cpp:325
 msgid " resistance vs "
@@ -7698,7 +7747,7 @@ msgstr "Pripoj sa na server"
 
 #: src/multiplayer.cpp:138
 msgid "Choose host to connect to: "
-msgstr "Vyber si herný server, na ktorý sa pripojíš:"
+msgstr "Vyber si herný server, na ktorý sa pripojíš: "
 
 #: src/multiplayer.cpp:178
 msgid "Reading from Server..."
@@ -7764,7 +7813,7 @@ msgstr "Neviem nájsť veliteľa pre frakciu $faction"
 
 #: src/multiplayer_connect.cpp:905
 msgid "Game Lobby: "
-msgstr "Čakáreň:"
+msgstr "Čakáreň: "
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -7982,11 +8031,11 @@ msgstr "Urči heslo, ktoré budú musieť zadať hráči vstupujúci do tejto hr
 
 #: src/multiplayer_create.cpp:338
 msgid "Turns: "
-msgstr "Kolá:"
+msgstr "Kolá: "
 
 #: src/multiplayer_create.cpp:340
 msgid "Unlimited Turns"
-msgstr "Neobmedzené ťahy"
+msgstr "Neobmedzené kolá"
 
 #: src/multiplayer_create.cpp:368
 msgid "Init. Limit: "
@@ -7994,7 +8043,7 @@ msgstr "Štart. limit: "
 
 #: src/multiplayer_create.cpp:373
 msgid "Turn Bonus: "
-msgstr "Bonus za ťahy: "
+msgstr "Bonus za kolá: "
 
 #: src/multiplayer_create.cpp:377
 msgid "Reservoir: "
@@ -8006,15 +8055,15 @@ msgstr "Bonus za akcie: "
 
 #: src/multiplayer_create.cpp:389
 msgid "Village Gold: "
-msgstr "Zlato za dedinu:"
+msgstr "Zlato za dedinu: "
 
 #: src/multiplayer_create.cpp:397
 msgid "Exp. Mod.: "
-msgstr ""
+msgstr "Modif. Skús.: "
 
 #: src/multiplayer_create.cpp:530
 msgid "Players: "
-msgstr "Hráči:"
+msgstr "Hráči: "
 
 #: src/multiplayer_create.cpp:531
 msgid "Size: "
@@ -8121,15 +8170,15 @@ msgstr "Správa: "
 
 #: src/multiplayer_wait.cpp:145
 msgid "Leader: "
-msgstr "Veliteľ:"
+msgstr "Veliteľ: "
 
 #: src/multiplayer_wait.cpp:147
 msgid "Gender: "
-msgstr "Pohlavie:"
+msgstr "Pohlavie: "
 
 #: src/multiplayer_wait.cpp:149
 msgid "Recruits: "
-msgstr "Naverbovaných:"
+msgstr "Naverbovaných: "
 
 #: src/multiplayer_wait.cpp:196
 msgid "Waiting for game to start..."
@@ -8167,8 +8216,11 @@ msgstr "Klient sa odpojil"
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
+"Žiadna odozva zo servera počas $timeout sekúnd. Čas spojenia vypršal."
 msgstr[1] ""
+"Žiadna odozva zo servera počas $timeout sekundy. Čas spojenia vypršal."
 msgstr[2] ""
+"Žiadna odozva zo servera počas $timeout sekúnd. Čas spojenia vypršal."
 
 #: src/network.cpp:554
 msgid "Could not add socket to socket set"
@@ -8180,7 +8232,7 @@ msgstr "Neviem poslať úvodnú správu"
 
 #: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Našiel sa terén s cenou pohybu menšou ako 1."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
@@ -8259,14 +8311,20 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"Hra nie je synchronizovaná a nemôže pokračovať. Je viacero dôvodov, prečo sa "
+"to mohlo stať. Napríklad ak ty alebo iný hráč zmenil nastavenia hry. To môže "
+"znamenať, že jeden z hráčov sa snažil podvádzať. Môže to byť aj kvôli chybe "
+"v programe, ale to je menej pravdepodobné.\n"
+"\n"
+"Chceš uložiť chybový záznam tejto hry?"
 
 #: src/playsingle_controller.cpp:155
 msgid "Remaining gold: "
-msgstr "Zostávajúce zlato:"
+msgstr "Zostávajúce zlato: "
 
 #: src/playsingle_controller.cpp:158
 msgid "Early finish bonus: "
-msgstr "Bonus za rýchly koniec:"
+msgstr "Bonus za rýchly koniec: "
 
 #: src/playsingle_controller.cpp:160
 msgid "per turn"
@@ -8274,15 +8332,15 @@ msgstr "za ťah"
 
 #: src/playsingle_controller.cpp:161
 msgid "Turns finished early: "
-msgstr "Ušetrené ťahy:"
+msgstr "Ušetrené kolá: "
 
 #: src/playsingle_controller.cpp:163
 msgid "Bonus: "
-msgstr "Bonus:"
+msgstr "Bonus: "
 
 #: src/playsingle_controller.cpp:165
 msgid "Gold: "
-msgstr "Zlato:"
+msgstr "Zlato: "
 
 #: src/playsingle_controller.cpp:168
 msgid "Carry over percentage: "
@@ -8290,11 +8348,11 @@ msgstr "Percentá prenosu zlata: "
 
 #: src/playsingle_controller.cpp:170
 msgid "Bonus Gold: "
-msgstr "Bonusové zlato:"
+msgstr "Bonusové zlato: "
 
 #: src/playsingle_controller.cpp:172
 msgid "Retained Gold: "
-msgstr "Ušetrené zlato:"
+msgstr "Ušetrené zlato: "
 
 #: src/playsingle_controller.cpp:182
 msgid ""
@@ -8459,7 +8517,7 @@ msgstr "Naša dedina"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size musí byť medzi 0.0 a 0.5."
 
 #: src/titlescreen.cpp:349
 msgid "TitleScreen button^Tutorial"
