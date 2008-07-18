@@ -130,9 +130,23 @@ class topic_text
 	mutable topic_generator *generator_;
 public:
 	~topic_text();
-	topic_text(): generator_(NULL) {}
-	topic_text(std::string const &t): generator_(new text_topic_generator(t)) {}
-	explicit topic_text(topic_generator *g): generator_(g) {}
+	topic_text(): 
+		parsed_text_(),
+		generator_(NULL) 
+	{
+	}
+
+	topic_text(std::string const &t): 
+		parsed_text_(),
+		generator_(new text_topic_generator(t)) 
+	{
+	}
+
+	explicit topic_text(topic_generator *g): 
+		parsed_text_(),
+		generator_(g) 
+	{
+	}
 	topic_text &operator=(topic_generator *g);
 	topic_text(topic_text const &t);
 
@@ -142,9 +156,20 @@ public:
 /// A topic contains a title, an id and some text.
 struct topic
 {
-	topic() {}
-	topic(const std::string &_title, const std::string &_id)
-		: title(_title), id(_id) {}
+	topic() :
+		title(), 
+		id(),
+		text()
+	{
+	}
+
+	topic(const std::string &_title, const std::string &_id) :
+		title(_title), 
+		id(_id),
+		text()
+	{
+	}
+
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
 		: title(_title), id(_id), text(_text) {}
 	topic(const std::string &_title, const std::string &_id, topic_generator *g)
@@ -162,7 +187,15 @@ typedef std::list<topic> topic_list;
 
 /// A section contains topics and sections along with title and ID.
 struct section {
-	section() : title(""), id("") {}
+	section() : 
+		title(""), 
+		id(""),
+		topics(),
+		sections(),
+		level()
+	{
+	}
+
 	section(const section&);
 	section& operator=(const section&);
 	~section();
@@ -1707,8 +1740,12 @@ section::~section()
 	std::for_each(sections.begin(), sections.end(), delete_section());
 }
 
-section::section(const section &sec)
-	: title(sec.title), id(sec.id), topics(sec.topics), level(sec.level)
+section::section(const section &sec) :
+	title(sec.title), 
+	id(sec.id), 
+	topics(sec.topics),
+	sections(),
+	level(sec.level)
 {
 	std::transform(sec.sections.begin(), sec.sections.end(),
 				   std::back_inserter(sections), create_section());
@@ -1748,9 +1785,15 @@ void section::clear()
 	sections.clear();
 }
 
-help_menu::help_menu(CVideo &video, section const &toplevel, int max_height)
-: gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::bluebg_style),
-	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "")
+help_menu::help_menu(CVideo &video, section const &toplevel, int max_height) :
+	gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::bluebg_style),
+	visible_items_(),
+	toplevel_(toplevel), 
+	expanded_(),
+	restorer_(),
+	rect_(),
+	chosen_topic_(NULL), 
+	selected_item_(&toplevel, "")
 {
 	silent_ = true; //silence the default menu sounds
 	update_visible_items(toplevel_);
@@ -1949,11 +1992,17 @@ bool help_menu::visible_item::operator==(const visible_item &vis_item) const
 	return t == vis_item.t && sec == vis_item.sec;
 }
 
-help_text_area::help_text_area(CVideo &video, const section &toplevel)
-	: gui::scrollarea(video), toplevel_(toplevel), shown_topic_(NULL),
-	  title_spacing_(16), curr_loc_(0, 0),
-	  min_row_height_(font::get_max_height(normal_font_size)), curr_row_height_(min_row_height_),
-	  contents_height_(0)
+help_text_area::help_text_area(CVideo &video, const section &toplevel) :
+	gui::scrollarea(video),
+	items_(),
+	last_row_(),
+	toplevel_(toplevel),
+	shown_topic_(NULL),
+	title_spacing_(16),
+	curr_loc_(0, 0),
+	min_row_height_(font::get_max_height(normal_font_size)),
+	curr_row_height_(min_row_height_),
+	contents_height_(0)
 {
 	set_scroll_rate(40);
 }
@@ -1975,9 +2024,13 @@ void help_text_area::show_topic(const topic &t)
 
 help_text_area::item::item(surface surface, int x, int y, const std::string _text,
 						   const std::string reference_to, bool _floating,
-						   bool _box, ALIGNMENT alignment)
-	: surf(surface), text(_text), ref_to(reference_to), floating(_floating), box(_box),
-	  align(alignment)
+						   bool _box, ALIGNMENT alignment) :
+	rect(),
+	surf(surface),
+	text(_text),
+	ref_to(reference_to),
+	floating(_floating), box(_box),
+	align(alignment)
 {
 	rect.x = x;
 	rect.y = y;
@@ -1986,8 +2039,13 @@ help_text_area::item::item(surface surface, int x, int y, const std::string _tex
 }
 
 help_text_area::item::item(surface surface, int x, int y, bool _floating,
-						   bool _box, ALIGNMENT alignment)
-	: surf(surface), text(""), ref_to(""), floating(_floating), box(_box), align(alignment)
+						   bool _box, ALIGNMENT alignment) :
+	rect(),
+	surf(surface), 
+	text(""), 
+	ref_to(""), 
+	floating(_floating), 
+	box(_box), align(alignment)
 {
 	rect.x = x;
 	rect.y = y;
@@ -2495,12 +2553,18 @@ std::string help_text_area::ref_at(const int x, const int y)
 
 
 
-help_browser::help_browser(display &disp, const section &toplevel)
-	: gui::widget(disp.video()), disp_(disp), menu_(disp.video(), toplevel),
-	  text_area_(disp.video(), toplevel), toplevel_(toplevel), ref_cursor_(false),
-	  back_button_(disp.video(), _(" < Back"), gui::button::TYPE_PRESS),
-	  forward_button_(disp.video(), _("Forward >"), gui::button::TYPE_PRESS),
-	  shown_topic_(NULL)
+help_browser::help_browser(display &disp, const section &toplevel) :
+	gui::widget(disp.video()),
+	disp_(disp),
+	menu_(disp.video(),
+	toplevel),
+	text_area_(disp.video(), toplevel), toplevel_(toplevel), 
+	ref_cursor_(false),
+	back_topics_(),
+	forward_topics_(),
+	back_button_(disp.video(), _(" < Back"), gui::button::TYPE_PRESS),
+	forward_button_(disp.video(), _("Forward >"), gui::button::TYPE_PRESS),
+	shown_topic_(NULL)
 {
 	// Hide the buttons at first since we do not have any forward or
 	// back topics at this point. They will be unhidden when history
