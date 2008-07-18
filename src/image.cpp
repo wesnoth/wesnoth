@@ -132,12 +132,14 @@ void locator::parse_arguments()
 }
 
 locator::locator() :
-	index_(-1)
+	index_(-1),
+	val_()
 {
 }
 
 locator::locator(const locator &a, const std::string& mods):
-	 val_(a.val_)
+	index_(-1),
+	val_(a.val_)
 {
 	if(mods.size()){
 			val_.modifications_ += mods;
@@ -148,6 +150,7 @@ locator::locator(const locator &a, const std::string& mods):
 }
 
 locator::locator(const char *filename) :
+	index_(-1),
 	val_(filename)
 {
 	parse_arguments();
@@ -155,6 +158,7 @@ locator::locator(const char *filename) :
 }
 
 locator::locator(const std::string &filename) :
+	index_(-1),
 	val_(filename)
 {
 	parse_arguments();
@@ -162,25 +166,31 @@ locator::locator(const std::string &filename) :
 }
 
 locator::locator(const char *filename, const std::string& modifications) :
+	index_(-1),
 	val_(filename, modifications)
 {
 	init_index();
 }
 
 locator::locator(const std::string &filename, const std::string& modifications) :
+	index_(-1),
 	val_(filename, modifications)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, const gamemap::location &loc, const std::string& modifications) :
+locator::locator(const std::string &filename, 
+		const gamemap::location &loc, const std::string& modifications) :
+	index_(-1),
 	val_(filename, loc, modifications)
 {
 	init_index();
 }
 
-    locator::locator(const std::string &filename, const gamemap::location &loc, int center_x, int center_y, const std::string& modifications) :
-        val_(filename, loc, center_x, center_y, modifications)
+locator::locator(const std::string &filename, const gamemap::location &loc, 
+		int center_x, int center_y, const std::string& modifications) :
+	index_(-1),
+	val_(filename, loc, center_x, center_y, modifications)
 {
 	init_index();
 }
