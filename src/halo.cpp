@@ -97,9 +97,16 @@ std::set<int> deleted_haloes;
 std::set<int> changing_haloes;
 
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
-	const gamemap::location& loc, ORIENTATION orientation, bool infinite) :
-		images_(img), orientation_(orientation), x_(xpos), y_(ypos),
-		surf_(NULL), buffer_(NULL), rect_(empty_rect), loc_(loc)
+		const gamemap::location& loc, ORIENTATION orientation, bool infinite) :
+	images_(img), 
+	orientation_(orientation), 
+	x_(xpos), 
+	y_(ypos),
+	surf_(NULL), 
+	buffer_(NULL), 
+	rect_(empty_rect), 
+	loc_(loc),
+	overlayed_hexes_()
 {
 	assert(disp != NULL);
 
