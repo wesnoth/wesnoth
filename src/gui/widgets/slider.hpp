@@ -48,7 +48,9 @@ public:
 	void set_maximum_value(const int maximum_value);
 
 	/** Inherited from tinteger_selector_. */
-	int get_maximum_value() const { return minimum_value_ + get_item_count(); }
+	int get_maximum_value() const 
+		// The number of items needs to include the begin and end so count - 1.
+		{ return minimum_value_ + get_item_count() - 1; }
 
 private:
 
