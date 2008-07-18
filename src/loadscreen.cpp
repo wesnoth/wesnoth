@@ -69,6 +69,8 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 	setconfig_counter(0),
 	parser_counter(0),
 	screen_(screen),
+	textarea_(),
+	logo_surface_(NULL),
 	logo_drawn_(false),
 	pby_offset_(0),
 	prcnt_(percent)
