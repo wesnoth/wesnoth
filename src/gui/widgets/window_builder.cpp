@@ -161,26 +161,7 @@ struct tbuilder_slider : public tbuilder_control
 private:
 	tbuilder_slider();
 public:
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_slider
- *
- * == Slider ==
- *
- * @start_table = config
- *     minimum_value (unsigned = 0)   The width of the slider.
- *     maximum_value (unsigned = 0)   The height of the slider.
- *     step_size (unsigned = 0)       The height of the slider.
- *     value (unsigned = 0)           The height of the slider.
- * @end_table
- */
-	tbuilder_slider(const config& cfg) :
-		tbuilder_control(cfg),
-		minimum_value_(lexical_cast_default<unsigned>(cfg["minimum_value"])),
-		maximum_value_(lexical_cast_default<unsigned>(cfg["maximum_value"])),
-		step_size_(lexical_cast_default<unsigned>(cfg["step_size"])),
-		value_(lexical_cast_default<unsigned>(cfg["value"]))
-	{}
+	tbuilder_slider(const config& cfg);
 
 	twidget* build () const;
 
@@ -189,6 +170,11 @@ private:
 	int maximum_value_;
 	int step_size_;
 	int value_;
+
+	t_string minimum_value_label_;
+	t_string maximum_value_label_;
+
+	std::vector<t_string> value_labels_;
 };
 
 struct tbuilder_spacer : public tbuilder_control
@@ -1050,6 +1036,61 @@ twidget* tbuilder_panel::build() const
 	return panel;
 }
 
+tbuilder_slider::tbuilder_slider(const config& cfg) :
+	tbuilder_control(cfg),
+	minimum_value_(lexical_cast_default<unsigned>(cfg["minimum_value"])),
+	maximum_value_(lexical_cast_default<unsigned>(cfg["maximum_value"])),
+	step_size_(lexical_cast_default<unsigned>(cfg["step_size"])),
+	value_(lexical_cast_default<unsigned>(cfg["value"])),
+	minimum_value_label_(cfg["minimum_value_label"]),
+	maximum_value_label_(cfg["maximum_value_label"]),
+	value_labels_()
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_slider
+ *
+ * == Slider ==
+ *
+ * @start_table = config
+ *     minimum_value (unsigned = 0)   The width of the slider.
+ *     maximum_value (unsigned = 0)   The height of the slider.
+ *
+ *     step_size (unsigned = 0)       The height of the slider.
+ *     value (unsigned = 0)           The height of the slider.
+ *
+ *     minimum_value_label (t_string = "")
+ *                                    If the minimum value is choosen there
+ *                                    might be the need for a special value (eg
+ *                                    off). When this key has a value that value
+ *                                    will be shown if the minimum is selected.
+ *     maximum_value_label (t_string = "")
+ *                                    If the maximum value is choosen there
+ *                                    might be the need for a special value (eg
+ *                                    unlimited)). When this key has a value
+ *                                    that value will be shown if the maximum is
+ *                                    selected.
+ *     value_labels ([])              It might be the labels need to be shown
+ *                                    are not a lineair number sequence eg (0.5,
+ *                                    1, 2, 4) in that case for all items this
+ *                                    section can be filled with the values,
+ *                                    which should be the same number of items
+ *                                    as the items in the slider. NOTE if this
+ *                                    option is used, 'minimum_value_label' and
+ *                                    'maximum_value_label' are ignored.
+ * @end_table
+ */
+	const config* labels = cfg.child("value_labels");
+	if(labels) {
+
+		const config::child_list& value = labels->get_children("value");
+		foreach(const config* label, value) {
+
+			value_labels_.push_back((*label)["label"]);
+		}
+	}
+}
+
 twidget* tbuilder_slider::build() const
 {
 	tslider* slider = new tslider();
@@ -1060,6 +1101,17 @@ twidget* tbuilder_slider::build() const
 	slider->set_minimum_value(minimum_value_);
 	slider->set_step_size(step_size_);
 	slider->set_value(value_);
+
+	if(!value_labels_.empty()) {
+		VALIDATE(value_labels_.size() == slider->get_item_count(),
+			_("The number of value_labels and values don't match."));
+
+		slider->set_value_labels(value_labels_);
+
+	} else {
+		slider->set_minimum_value_label(minimum_value_label_);
+		slider->set_maximum_value_label(maximum_value_label_);
+	}
 
 	DBG_G << "Window builder: placed slider '" << id << "' with defintion '" 
 		<< definition << "'.\n";

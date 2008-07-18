@@ -52,6 +52,26 @@ public:
 		// The number of items needs to include the begin and end so count - 1.
 		{ return minimum_value_ + get_item_count() - 1; }
 
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_minimum_value_label(const t_string& minimum_value_label)
+		{ minimum_value_label_ = minimum_value_label; }
+
+	void set_maximum_value_label(const t_string& maximum_value_label)
+		{ maximum_value_label_ = maximum_value_label; }
+
+	void set_value_labels(const std::vector<t_string>& value_labels)
+		{ value_labels_ = value_labels; }
+
+	/**
+	 * Returns the label shown for the current value. 
+	 *
+	 * @returns                   The label for the current value, if no label
+	 *                            for the current label is defined, it returns
+	 *                            the result of get_value().
+	 */
+	t_string get_value_label() const;
+
 private:
 
 	/**
@@ -89,6 +109,11 @@ private:
 
 	/** Inherited from tscrollbar. */
 	void update_canvas();
+
+	t_string minimum_value_label_;
+	t_string maximum_value_label_;
+
+	std::vector<t_string> value_labels_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 

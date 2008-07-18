@@ -114,6 +114,22 @@ void tslider::set_maximum_value(const int maximum_value)
 	}
 }
 
+t_string tslider::get_value_label() const
+{
+	if(!value_labels_.empty()) {
+		assert(value_labels_.size() == get_item_count());
+		return value_labels_[get_item_position()];
+	} else if(!minimum_value_label_.empty() 
+			&& get_value() == get_minimum_value()) {
+		return minimum_value_label_;
+	} else if(!maximum_value_label_.empty() 
+			&& get_value() == get_maximum_value()) {
+		return maximum_value_label_;
+	} else {
+		return t_string((formatter() << get_value()).str());
+	}
+}
+
 unsigned tslider::minimum_positioner_length() const
 { 
 	const tslider_definition::tresolution* conf = 
@@ -180,7 +196,7 @@ void tslider::update_canvas()
 	tscrollbar_::update_canvas();
 
 	foreach(tcanvas& tmp, canvas()) {
-		tmp.set_variable("text", variant((formatter() << get_value()).str()));
+		tmp.set_variable("text", variant(get_value_label()));
 	}
 }
 
