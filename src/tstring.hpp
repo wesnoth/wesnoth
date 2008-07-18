@@ -17,6 +17,12 @@
 
 #include <string>
 
+/**
+ * Helper class for translatable strings.
+ *
+ * NOTE don't use static t_string objects since they don't change when the
+ * language changes.
+ */
 class t_string
 {
 public:
