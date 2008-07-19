@@ -112,10 +112,20 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 	}
 }
 
+bool editor_controller::confirm_discard()
+{
+	if (actions_since_save_ != 0) {
+		return !gui::dialog(gui(), _("There are unsaved changes in the map"),
+			_("Do you want to discard all changes you made te the map?"), gui::YES_NO).show();
+	} else {
+		return true;
+	}
+}
+
 void editor_controller::load_map_dialog()
 {
-	std::string filename_;
-	std::string fn = filename_.empty() ? get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps") : filename_;
+	if (!confirm_discard()) return;
+	std::string fn = map_.get_filename().empty() ? get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps") : filename_;
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
 	if (res == 0) {
 		load_map(fn);
@@ -124,9 +134,10 @@ void editor_controller::load_map_dialog()
 
 void editor_controller::new_map_dialog()
 {
+	if (!confirm_discard()) return;
 	gui2::teditor_new_map dialog;;
-	dialog.set_map_width(map_.w());
-	dialog.set_map_height(map_.h());
+	dialog.set_map_width(map_.total_width());
+	dialog.set_map_height(map_.total_height());
 	
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
@@ -140,25 +151,68 @@ void editor_controller::new_map_dialog()
 
 void editor_controller::save_map_as_dialog()
 {
+	const std::string default_dir =	get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+	std::string input_name = map_.get_filename().empty() ? default_dir : map_.get_filename();
+	const std::string old_input_name = input_name;
 
+	int res = 0;
+	int overwrite_res = 1;
+	do {
+		input_name = old_input_name;
+		res = dialogs::show_file_chooser_dialog(gui(), input_name, _("Save the Map As"));
+		if (res == 0) {
+			if (file_exists(input_name)) {
+				overwrite_res = gui::dialog(gui(), "",
+					_("The map already exists. Do you want to overwrite it?"),
+					gui::YES_NO).show();
+			} else {
+				overwrite_res = 0;
+			}
+		} else {
+			return; //cancel pressed
+		}
+	} while (overwrite_res != 0);
+
+	save_map_as(input_name);
 }
 
-void editor_controller::save_map()
+bool editor_controller::save_map_as(const std::string& filename)
 {
-
+	std::string old_filename = map_.get_filename();
+	map_.set_filename(filename);
+	if (!save_map(true)) {
+		map_.set_filename(old_filename);
+		return false;
+	} else {
+		return true;
+	}
 }
 
-void editor_controller::save_map_as(const std::string& filename)
+bool editor_controller::save_map(bool display_confirmation)
 {
-
+	std::string data = map_.write();
+	try {
+		write_file(map_.get_filename(), data);
+		actions_since_save_ = 0;
+		if (display_confirmation) {
+			gui::message_dialog(gui(), "", _("Map saved.")).show();
+		}
+	} catch (io_exception& e) {
+		utils::string_map symbols;
+		symbols["msg"] = e.what();
+		const std::string msg = vgettext("Could not save the map: $msg", symbols);
+		gui::message_dialog(gui(), "", msg).show();
+		return false;
+	}
+	return true;
 }
-
 
 void editor_controller::load_map(const std::string& filename)
 {
 	std::string map_string = read_file(filename);
 	try {
 		editor_map new_map(game_config_, map_string);
+		new_map.set_filename(filename);
 		set_map(new_map);
 		//TODO when this fails see if it's a scenario with a mapdata= key and give
 		//the user an option of loading that map instead of just failing
@@ -186,6 +240,7 @@ void editor_controller::set_map(const editor_map& map)
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
 	actions_since_save_ = 0;
+	gui().reload_map();
 	refresh_all();
 }
 
@@ -276,6 +331,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
+//		case HOTKEY_EDITOR_TOOL_SELECT:
+//		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -286,6 +343,16 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_NEW:
 			new_map_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_SAVE:
+			if (map_.get_filename().empty()) {
+				save_map_as_dialog();
+			} else {
+				save_map();
+			}
+			return true;
+		case HOTKEY_EDITOR_MAP_SAVE_AS:
+			save_map_as_dialog();
 			return true;
 		default:
 			return controller_base::execute_command(command, index);

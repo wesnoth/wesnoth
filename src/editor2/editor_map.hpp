@@ -73,11 +73,20 @@ public:
 	 */
 	void select_all();
 	
+	const std::string& get_filename() const { return filename_; }
+	void set_filename(const std::string& fn) { filename_ = fn; }
+	
+	
 protected:
 	/**
 	 * The selected hexes
 	 */
 	std::set<gamemap::location> selection_;
+	
+	/**
+	 * The actual filename of this map. An empty string indicates a new map.
+	 */
+	std::string filename_;
 };
 
 

@@ -45,11 +45,12 @@ class editor_controller : public controller_base,
 		EXIT_STATUS main_loop();
 		void hotkey_quit();
 		void quit_confirm(EXIT_STATUS status);
+		bool confirm_discard();
 		void load_map_dialog();
 		void new_map_dialog();
 		void save_map_as_dialog();
-		void save_map();
-		void save_map_as(const std::string& filename);
+		bool save_map(bool display_confirmation = false);
+		bool save_map_as(const std::string& filename);
 		void new_map(int width, int height, t_translation::t_terrain fill);
 		void load_map(const std::string& filename);
 		void set_map(const editor_map& map);

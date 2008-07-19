@@ -22,7 +22,7 @@
 namespace editor2 {
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-: gamemap(terrain_cfg, data)
+: gamemap(terrain_cfg, data), filename_()
 {
 }
 
