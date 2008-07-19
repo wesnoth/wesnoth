@@ -87,6 +87,9 @@ static void fill_window_types()
 	window_type_list[MP_CONNECT] = "mp_connect";
 	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
 	window_type_list[MP_SERVER_LIST] = "mp_server_list";
+#ifdef USE_EDITOR2	
+	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
+#endif
 }
 
 const std::string& get_id(const twindow_type window_type)

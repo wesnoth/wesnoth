@@ -16,6 +16,9 @@
 #include "editor_map.hpp"
 #include "mouse_action.hpp"
 
+#include "gui/dialogs/editor_new_map.hpp"
+#include "gui/widgets/button.hpp"
+
 #include "../config_adapter.hpp"
 #include "../construct_dialog.hpp"
 #include "../cursor.hpp"
@@ -119,6 +122,38 @@ void editor_controller::load_map_dialog()
 	}
 }
 
+void editor_controller::new_map_dialog()
+{
+	gui2::teditor_new_map dialog;;
+	dialog.set_map_width(map_.w());
+	dialog.set_map_height(map_.h());
+	
+	dialog.show(gui().video());
+	int res = dialog.get_retval();
+	if(res == gui2::tbutton::OK) {
+		int w = dialog.map_width();
+		int h = dialog.map_height();
+		t_translation::t_terrain fill = t_translation::GRASS_LAND;
+		new_map(w, h, fill);
+	}
+}
+
+void editor_controller::save_map_as_dialog()
+{
+
+}
+
+void editor_controller::save_map()
+{
+
+}
+
+void editor_controller::save_map_as(const std::string& filename)
+{
+
+}
+
+
 void editor_controller::load_map(const std::string& filename)
 {
 	std::string map_string = read_file(filename);
@@ -138,6 +173,11 @@ void editor_controller::load_map(const std::string& filename)
 		gui::message_dialog(gui(), "Error loading map (wml)", message).show();
 		return;
 	}
+}
+
+void editor_controller::new_map(int width, int height, t_translation::t_terrain fill)
+{
+	set_map(editor_map::new_map(game_config_, width, height, fill));
 }
 
 void editor_controller::set_map(const editor_map& map)
@@ -243,6 +283,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_NEW:
+			new_map_dialog();
 			return true;
 		default:
 			return controller_base::execute_command(command, index);

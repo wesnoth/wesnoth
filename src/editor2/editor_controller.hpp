@@ -46,6 +46,11 @@ class editor_controller : public controller_base,
 		void hotkey_quit();
 		void quit_confirm(EXIT_STATUS status);
 		void load_map_dialog();
+		void new_map_dialog();
+		void save_map_as_dialog();
+		void save_map();
+		void save_map_as(const std::string& filename);
+		void new_map(int width, int height, t_translation::t_terrain fill);
 		void load_map(const std::string& filename);
 		void set_map(const editor_map& map);
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
