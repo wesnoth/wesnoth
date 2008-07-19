@@ -39,9 +39,9 @@ namespace gui2 {
  * This shows the dialog for managing addons and connecting to the addon server.
  * 
  * @start_table = container
- *     [] button (2)                   This button closes the dialog and starts
+ *     [] (button) (2)                 This button closes the dialog and starts
  *                                     the addon manager.
- *     host_name text_box              This text contains the name of the server
+ *     host_name (text_box)            This text contains the name of the server
  *                                     to connect to.
  * @end_table
  */

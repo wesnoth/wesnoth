@@ -731,6 +731,8 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
 /*WIKI
  * @page = GUILayout
  * 
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
  * = Abstract =
  *
  * In the widget library the placement and sizes of elements is determined by
@@ -928,6 +930,7 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
  *  	[/grid]
  *
  *
- * [[Category:WML Reference]]
- * [[Category:Generated]]
+ * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
+ * [[Category: Generated]]
  */

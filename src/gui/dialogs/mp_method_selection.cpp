@@ -43,9 +43,9 @@ namespace gui2 {
  * This shows the dialog to select the kind of MP game the user wants to play.
  * 
  * @start_table = container
- *     user_name text_box              This text contains the name the user on 
+ *     user_name (text_box)            This text contains the name the user on 
  *                                     the MP server.
- *     method_list listbox             The list with possible game methods.
+ *     method_list (listbox)           The list with possible game methods.
  * @end_table
  */
 twindow tmp_method_selection::build_window(CVideo& video)

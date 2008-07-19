@@ -1446,6 +1446,7 @@ twidget* tbuilder_grid::build() const
  * @order = ZZZZZZ_footer
  *
  * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
  * [[Category: Generated]]
  *
  */

@@ -42,7 +42,7 @@ namespace gui2 {
  * This shows the dialog to select the language to use.
  * 
  * @start_table = container
- *     language_list listbox           This text contains the list with 
+ *     language_list (listbox)         This text contains the list with 
  *                                     available languages.
  * @end_table
  */
@@ -63,7 +63,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 		item.insert(std::make_pair("label", lang.language));
 		item.insert(std::make_pair("tooltip", lang.language));
 
-		list->add_row(item);		
+		list->add_row(item);
 		if(lang == current_language) {
 			list->select_row(list->get_item_count() - 1);
 		}

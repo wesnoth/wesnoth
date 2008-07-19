@@ -57,6 +57,18 @@ namespace gui2 {
 
 namespace {
 
+
+/*WIKI
+ * @page = GUICanvasWML
+ *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
+ * = Canvas =
+ *
+ * A canvas is a blank drawing area on which the user can add various items.
+ *
+ */
+
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
 /** Definition of a line shape. */
@@ -142,7 +154,7 @@ tline::tline(const config& cfg) :
  *
  */
 
-/*WIKI
+/*WIKI - unclassified
  * This code can be used by a parser to generate the wiki page
  * structure
  * [tag name]
@@ -171,6 +183,8 @@ tline::tline(const config& cfg) :
 
 /*WIKI
  * @page = GUIVariable
+ *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
  *
  * = Variables =
  *
@@ -982,4 +996,22 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 }
 
 } // namespace gui2
+/*WIKI
+ * @page = GUICanvasWML
+ * @order = ZZZZZZ_footer
+ *
+ * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
+ * [[Category: Generated]]
+ *
+ */
 
+/*WIKI
+ * @page = GUIVariable
+ * @order = ZZZZZZ_footer
+ *
+ * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
+ * [[Category: Generated]]
+ *
+ */

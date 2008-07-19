@@ -46,7 +46,7 @@ namespace {
  *
  * This shows the dialog with a list of predefined multiplayer servers.
  * 
- * @start_table = container
+ * @start_table = container--SPECIAL
  *     server_list listbox             Listbox with the predefined servers to
  *                                     connect to.
  *     # [name] -                      Widgets which shows the name of the
@@ -144,8 +144,8 @@ void callback_view_list_button(twidget* caller)
  * This shows the dialog to the MP server to connect to.
  * 
  * @start_table = container
- *     host_name text_box              The name of the server to connect to.
- *     [list] button                   Shows a dialog with a list of predefined
+ *     host_name (text_box)            The name of the server to connect to.
+ *     [list] (button)                 Shows a dialog with a list of predefined
  *                                     servers to connect to.
  * @end_table
  */

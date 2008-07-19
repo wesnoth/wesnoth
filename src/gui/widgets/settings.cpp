@@ -148,6 +148,8 @@ const std::string& tgui_definition::read(const config& cfg)
  * @page = GUIToolkitWML
  * @order = 1
  *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
  * = GUI =
  *
  * The gui class contains the definitions of all widgets and windows used in
@@ -271,6 +273,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                     widget.
  *     double_click_time (unsigned)    The time between two clicks to still be a
  *                                     double click.
+ * @end_table
  */
 	const config& settings = *cfg.child("settings");
 
@@ -520,7 +523,7 @@ tmenubar_definition::tresolution::tresolution(const config& cfg) :
  * @page = GUIToolkitWML
  * @order = 1_widget_menubar
  *
- * == Horizontal menubar ==
+ * == Menubar ==
  *
  * The definition of a normal menubar.
  *
@@ -597,29 +600,28 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  * @end_table
  *
  * @start_table = container
- *     [_begin] button                 Moves the position to the beginning of
+ *     [_begin] (button)               Moves the position to the beginning of
  *                                     the list.
- *     [_line_up] button               Move the position one item up. (NOTE if
+ *     [_line_up] (button)             Move the position one item up. (NOTE if
  *                                     too many items to move per item it might
  *                                     be more items.)
- *     [_half_page_up] button          Move the position half the number of the 
+ *     [_half_page_up] (button)        Move the position half the number of the 
  *                                     visible items up. (See note at _line_up.)
- *     [_page_up] button               Move the position the number of visible
+ *     [_page_up] (button)             Move the position the number of visible
  *                                     items up. (See note at _line_up.)
  *
  *
- *     [_end] button                   Moves the position to the end of the
+ *     [_end] (button)                 Moves the position to the end of the
  *                                     list.
- *     [_line_down] button             Move the position one item down.(See note
+ *     [_line_down] (button)           Move the position one item down.(See note
  *                                     at _line_up.) 
- *     [_half_page_down] button        Move the position half the number of the 
+ *     [_half_page_down] (button)      Move the position half the number of the 
  *                                     visible items down. (See note at _line_up.)
- *     [_page_down] button             Move the position the number of visible
+ *     [_page_down] (button)            Move the position the number of visible
  *                                     items down. (See note at _line_up.)
  *
- *     (_scrollbar) vertical_scrollbar This is the scrollbar so the user can
+ *     _scrollbar (vertical_scrollbar) This is the scrollbar so the user can
  *                                     scroll through the list.
- *
  * @end_table
  *
  * The following states exist:
@@ -714,7 +716,7 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
  *                                     allowed to be. The engine needs to know
  *                                     this in order to calculate the best size
  *                                     for the positioner.  
- *     maximum_positioner_length (unsigned = 0)
+ *     maximum_positioner_length (unsigned = 0) 
  *                                     The maximum size the positioner is
  *                                     allowed to be. If minimum and maximum are
  *                                     the same value the positioner is fixed
@@ -829,7 +831,7 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
  * @page = GUIToolkitWML
  * @order = 1_widget_toggle_button
  *
- * == Toogle button ==
+ * == Toggle button ==
  *
  * The definition of a toggle button.
  *
@@ -874,7 +876,7 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
  * @page = GUIToolkitWML
  * @order = 1_widget_toggle_panel
  *
- * == Toogle panel ==
+ * == Toggle panel ==
  *
  * The definition of a toggle panel. A toggle panel is like a toggle button, but
  * instead of being a button it's a panel. This means it can hold multiple child
