@@ -200,15 +200,15 @@ if __name__ == "__main__":
 
         type = table.group(1)
         if(type == "config"):
-            return create_config_table(table.group(2))
+            return create_config_table(table.group(2) + "\n")
         elif(type == "formula"):
-            return create_formula_table(table.group(2))
+            return create_formula_table(table.group(2) + "\n")
         elif(type == "variable_types"):
-            return create_variable_types_table(table.group(2))
+            return create_variable_types_table(table.group(2) + "\n")
         elif(type == "widget_definition"):
-            return create_widget_definition_table(table.group(2))
+            return create_widget_definition_table(table.group(2) + "\n")
         elif(type == "window_definition"):
-            return create_window_definition_table(table.group(2))
+            return create_window_definition_table(table.group(2) + "\n")
         else:
             sys.stderr.write("Unknown table definition '" + type + "'.\n")
             return "Unknown table definition '" + type + "'."
