@@ -64,6 +64,12 @@ public:
 	display(CVideo& video, const gamemap& map, const config& theme_cfg,
 			const config& cfg, const config& level);
 	virtual ~display();
+	
+	/** 
+	 * Updates internals that cache map size. This should be called when the map 
+	 * size has changed.
+	 */
+	void reload_map();
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }

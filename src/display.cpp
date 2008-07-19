@@ -79,8 +79,7 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	viewpoint_(NULL), 
 	xpos_(0), 
 	ypos_(0),
-	theme_(theme_cfg,
-	screen_area()),
+	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom), 
 	last_zoom_(SmallZoom),
 	builder_(cfg, level, map, theme_.border().tile_image),
@@ -137,6 +136,15 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 
 display::~display()
 {
+}
+
+void display::reload_map()
+{
+	builder_.reload_map();
+	SDL_Rect m = map_area();
+	if (!hex_clicked_on(m.x + m.w, m.y + m.h).valid()) {
+		scroll_to_tile(gamemap::location(0, 0), WARP);
+	}
 }
 
 const SDL_Rect& display::max_map_area() const

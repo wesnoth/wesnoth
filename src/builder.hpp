@@ -76,6 +76,12 @@ public:
 	 */
 	terrain_builder(const config& cfg, const config &level,
 		const gamemap& map, const std::string& offmap_image);
+		
+	/** 
+	 * Updates internals that cache map size. This should be called when the map 
+	 * size has changed.
+	 */
+	void reload_map();
 
 	/** Returns a vector of strings representing the images to load & blit
 	 * together to get the built content for this tile.
@@ -387,6 +393,11 @@ private:
 		 * Resets the whole tile map
 		 */
 		void reset();
+		
+		/**
+		 * Rebuilds the map to a new set of dimensions
+		 */
+		void reload(int x, int y);
 	private:
 		/** The map */
 		std::vector<tile> map_;

@@ -119,6 +119,13 @@ void terrain_builder::tilemap::reset()
 		it->clear();
 }
 
+void terrain_builder::tilemap::reload(int x, int y)
+{
+	x_ = x;
+	y_ = y;
+	map_.resize((x + 4) * (y + 4));
+}
+
 bool terrain_builder::tilemap::on_map(const gamemap::location &loc) const
 {
 	if(loc.x < -2 || loc.y < -2 || loc.x > (x_ + 1) || loc.y > (y_ + 1)) {
@@ -159,6 +166,13 @@ terrain_builder::terrain_builder(const config& cfg, const config& level,
 	parse_config(level);
 	add_off_map_rule(offmap_image);
 
+	build_terrains();
+}
+
+void terrain_builder::reload_map()
+{
+	tile_map_.reload(map_.w(), map_.h());
+	terrain_by_type_.clear();
 	build_terrains();
 }
 
