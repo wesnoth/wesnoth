@@ -14,7 +14,7 @@
    See the COPYING file for more details.
 """   
 
-import operator, os, re
+import operator, os, re, sys
 
 if __name__ == "__main__":
     # contains all output generated:
@@ -91,6 +91,7 @@ if __name__ == "__main__":
 
         # empty table
         if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
             return "Empty table."
 
         result = '{| border="1"'
@@ -123,6 +124,7 @@ if __name__ == "__main__":
 
         # empty table
         if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
             return "Empty table."
 
         result = '{| border="1"'
@@ -147,6 +149,7 @@ if __name__ == "__main__":
 
         # empty table
         if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
             return "Empty table."
 
         result = '{| border="1"'
@@ -170,6 +173,7 @@ if __name__ == "__main__":
 
         # empty table
         if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
             return "Empty table."
 
         result = '{| border="1"'
@@ -206,7 +210,8 @@ if __name__ == "__main__":
         elif(type == "window_definition"):
             return create_window_definition_table(table.group(2))
         else:
-            return "unknown table definition '" + type + "'."
+            sys.stderr.write("Unknown table definition '" + type + "'.\n")
+            return "Unknown table definition '" + type + "'."
 
     def process_body(data):
         """Process the body.
