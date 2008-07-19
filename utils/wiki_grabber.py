@@ -86,7 +86,7 @@ if __name__ == "__main__":
         # x1 (f_unsigned = 0)             The x coordinate of the startpoint.
         # x1 (f_unsigned)                 The x coordinate of the startpoint.
         variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
-        regex = re.compile(" *(" + variable +  ") \((" + variable + ") *(?:(?:= *(.*))|)\) +(.*)\n")
+        regex = re.compile(" *(" + variable +  ") \((" + variable + ") *(?:(?:= *(.*?))|)\) +(.*)\n")
         res = regex.findall(data)
 
         # empty table
