@@ -51,7 +51,13 @@
 
 namespace gui2 {
 
+// editor2 uses the new widgets so they always need to be available there.
+// Since there's no off switch, changing the default will do.
+#ifdef USE_EDITOR2	
+bool new_widgets = true;
+#else
 bool new_widgets = false;
+#endif
 
 namespace settings {
 	unsigned screen_width = 0;
