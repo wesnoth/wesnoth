@@ -76,6 +76,17 @@ if __name__ == "__main__":
 
         return [page, order]
 
+    def debug_dump(data, res):
+        """Show the data the regex retrieved from a match.
+        
+        data is the raw data the regex tried to match.
+        res is the result of the regex.findall.
+        """
+        sys.stderr.write("data : " + data)
+        for i in range(len(res)):
+            for j in range(len(res[i])):
+                 sys.stderr.write("Line " + str(i) + " match " + str(j) + " : " + res[i][j] + "\n")
+
     def create_config_table(data):
         """Creates a table for data in a config table.
 
@@ -195,6 +206,67 @@ if __name__ == "__main__":
         # atm we look the same as the widget table
         return create_widget_definition_table(data)
 
+
+    def create_container_table(data):
+        """Creates a table for a container."""
+
+        #matches a line like
+        # name [widget_list] ret_val description
+        # or
+        # name (widget_list) ret_val description
+        # The square bracket version is an optional widget, the round version is a mandatory widget.
+        # The retval is optional.
+
+
+        # A widget_list looks like:
+        # widget ([ widget)*
+
+        # A widget looks like
+        # widget_name | {widget_class}
+
+        # the widgets links to the widget instance location.
+        # the {widget_class} links to the list with know widget classes.
+
+        # FIXME not everything is implemented yet.
+
+        # NOTE unlike other variables are these allowed to start with an underscore.
+        variable = "(?:[a-z]|[A-Z]|[0-9]|_)+|"
+        widget_type = " \((.*?)\)"
+        retval = " ?(?:\((.*)\)|)"
+        
+        regex = re.compile(" *(\[)?(" +variable + ")(?(1)])" + widget_type + retval +" *(.*)\n")
+        res = regex.findall(data)
+
+        # empty table
+        if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
+            return "Empty table."
+
+        result = '{| border="1"'
+        result += "\n!mandatory\n!id\n!type\n!return value\n!description\n"
+        for i in range(len(res)):
+            result += "|-\n"
+            if(res[i][0] == ""):
+                result += "|no\n"
+            else:
+                result += "|yes\n"
+
+            if(res[i][1] == ""):
+                result += "|not used\n"
+            else:
+                result += "|" + res[i][1] + "\n"
+
+            result += "|" + res[i][2] + "\n"
+
+            if(res[i][3] == ""):
+                result += "|none\n"
+            else:
+                result += "|" + res[i][3] + "\n"
+            result += "|" + re.sub(r'@\*', "\n*", res[i][4]) + "\n"
+        result += "|}"
+
+        return result
+
     def create_table(table) :
         """Wrapper for creating tables."""
 
@@ -209,6 +281,8 @@ if __name__ == "__main__":
             return create_widget_definition_table(table.group(2) + "\n")
         elif(type == "window_definition"):
             return create_window_definition_table(table.group(2) + "\n")
+        elif(type == "container"):
+            return create_container_table(table.group(2) + "\n")
         else:
             sys.stderr.write("Unknown table definition '" + type + "'.\n")
             return "Unknown table definition '" + type + "'."
