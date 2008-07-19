@@ -357,6 +357,7 @@ if env["dummy_locales"]:
 # and doc files.
 #
 
+env = env.Clone()
 for d in installdirs:
     env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
 bindir = env['bindir']
