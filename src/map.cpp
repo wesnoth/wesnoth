@@ -204,10 +204,8 @@ void gamemap::location::write(config& cfg) const
 
 gamemap::location gamemap::location::operator-() const
 {
-	location ret;
-	ret.x = -x;
-	ret.y = -y;
-
+	location ret(-x, -y);
+	ret.y -= x & 1; //subtract one if we're on an odd x coordinate
 	return ret;
 }
 
@@ -220,16 +218,9 @@ gamemap::location gamemap::location::operator+(const gamemap::location& a) const
 
 gamemap::location& gamemap::location::operator+=(const gamemap::location &a)
 {
-	bool parity = (x & 1) != 0;
-
+	y += (x & 1) * (a.x & 1); //add one if both x coords are odd
 	x += a.x;
 	y += a.y;
-
-	if((a.x > 0) && (a.x % 2) && parity)
-		y++;
-	if((a.x < 0) && (a.x % 2) && !parity)
-		y--;
-
 	return *this;
 }
 
