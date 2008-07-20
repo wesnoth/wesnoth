@@ -164,7 +164,7 @@ void gamestatus::remove_time_area(const std::string& area_id)
 		std::vector<area_time_of_day>::iterator i = areas_.begin();
 		while(i != areas_.end()) {
 			if((*i).id == area_id)
-				areas_.erase(i);
+				i = areas_.erase(i);
 			else ++i;
 		}
 	}
