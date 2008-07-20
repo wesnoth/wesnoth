@@ -8,6 +8,10 @@ Version 1.5.2+svn:
      alignment description when using the "C" locale or any translation that
      is missing that string.
    * Add some gcc-4.3.0 compilation fixes (patch #1083) 
+ * WML engine:
+   * It is now possible to use [time_area] to add or remove new local ToD
+     areas and their schedules during scenario events. Removal requires to
+     associate an id. to [time_area]s, or it won't work.
 
 Version 1.5.2:
  * campaigns:
