@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-07-04 12:32+0300\n"
+"PO-Revision-Date: 2008-07-05 15:18+0300\n"
 "Last-Translator: Artis Rozentāls <artis.rozentals@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -207,9 +207,8 @@ msgstr "Ala"
 
 #. [terrain]
 #: data/core/terrain.cfg:689
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Alas taka"
+msgstr "Apgaismota ala"
 
 #. [terrain]
 #: data/core/terrain.cfg:699 data/core/terrain.cfg:707
@@ -228,9 +227,8 @@ msgstr "Klinšu ala"
 
 #. [terrain]
 #: data/core/terrain.cfg:736
-#, fuzzy
 msgid "Rockbound Cave Lit"
-msgstr "Klinšu ala"
+msgstr "Apgaismota klinšu ala"
 
 #. [terrain]
 #: data/core/terrain.cfg:753 data/core/terrain.cfg:764
@@ -347,24 +345,24 @@ msgstr "Iestatījumi"
 
 #: src/editor/editor_dialogs.cpp:254 src/game_preferences_display.cpp:202
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "Ritināšanas ātrums:"
 
 #: src/editor/editor_dialogs.cpp:281 src/game_preferences_display.cpp:160
 #: src/hotkeys.cpp:64
 msgid "Toggle Full Screen"
-msgstr ""
+msgstr "Visa ekrāna režīms"
 
 #: src/editor/editor_dialogs.cpp:288 src/game_preferences_display.cpp:163
 msgid "Show Grid"
-msgstr ""
+msgstr "Rādīt režģi"
 
 #: src/editor/editor_dialogs.cpp:295
 msgid "Video Mode"
-msgstr ""
+msgstr "Video režīms"
 
 #: src/editor/editor_dialogs.cpp:298 src/game_preferences_display.cpp:184
 msgid "Hotkeys"
-msgstr ""
+msgstr "Karstie taustiņi"
 
 #: src/editor/editor_dialogs.cpp:384 src/editor/editor_dialogs.cpp:496
 #: src/hotkeys.cpp:121
@@ -429,19 +427,19 @@ msgstr "spēlētājs"
 
 #: src/game_preferences_display.cpp:161
 msgid "Accelerated Speed"
-msgstr ""
+msgstr "Paātrinājums"
 
 #: src/game_preferences_display.cpp:162
 msgid "Skip AI Moves"
-msgstr ""
+msgstr "Izlaist datora gājienus"
 
 #: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Saglabāt atkārtojumu VS/DS uzvaras un DS zaudes gadījumos"
 
 #: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Izdzēst automātiski saglabātās spēles minētajos gadījumos"
 
 #: src/game_preferences_display.cpp:166
 msgid "Do Not Show Lobby Joins"
@@ -485,51 +483,51 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:176
 msgid "Show Floating Labels"
-msgstr ""
+msgstr "Rādīt peldošas atzīmes"
 
 #: src/game_preferences_display.cpp:177
 msgid "Turn Dialog"
-msgstr ""
+msgstr "Gājiena sākuma dialogs"
 
 #: src/game_preferences_display.cpp:178
 msgid "Turn Bell"
-msgstr ""
+msgstr "Gājiena sākuma signāls"
 
 #: src/game_preferences_display.cpp:179
 msgid "Show Team Colors"
-msgstr ""
+msgstr "Rādīt komandu krāsas"
 
 #: src/game_preferences_display.cpp:180
 msgid "Show Color Cursors"
-msgstr ""
+msgstr "Izmantot krāsainus kursorus"
 
 #: src/game_preferences_display.cpp:181
 msgid "Show Haloing Effects"
-msgstr ""
+msgstr "Izmantot grafiskos efektus"
 
 #: src/game_preferences_display.cpp:182
 msgid "Change Resolution"
-msgstr ""
+msgstr "Mainīt izšķirtspēju"
 
 #: src/game_preferences_display.cpp:183
 msgid "Theme"
-msgstr ""
+msgstr "Tēma"
 
 #: src/game_preferences_display.cpp:185
 msgid "Adjust Gamma"
-msgstr ""
+msgstr "Regulēt gammu"
 
 #: src/game_preferences_display.cpp:186
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Apgrieztas dienas daļas ilustrācijas"
 
 #: src/game_preferences_display.cpp:188
 msgid "Sound effects"
-msgstr ""
+msgstr "Skaņas efekti"
 
 #: src/game_preferences_display.cpp:189
 msgid "Music"
-msgstr ""
+msgstr "Mūzika"
 
 #: src/game_preferences_display.cpp:190
 msgid "Chat Timestamping"
@@ -537,103 +535,103 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Paplašināti iestatījumi"
 
 #: src/game_preferences_display.cpp:192
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Pamatiestatījumi"
 
 #: src/game_preferences_display.cpp:193
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Lietotāja saskarnes skaņas"
 
 #: src/game_preferences_display.cpp:196
 msgid "Custom"
-msgstr ""
+msgstr "Pielāgots"
 
 #: src/game_preferences_display.cpp:197
 msgid "Apply"
-msgstr ""
+msgstr "Pielietot"
 
 #: src/game_preferences_display.cpp:198
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Radīt stāvošu vienību kustību"
 
 #: src/game_preferences_display.cpp:200
 msgid "Music Volume:"
-msgstr ""
+msgstr "Mūzikas skaļums:"
 
 #: src/game_preferences_display.cpp:200
 msgid "SFX Volume:"
-msgstr ""
+msgstr "Efektu skaļums:"
 
 #: src/game_preferences_display.cpp:201
 msgid "UI Sound Volume:"
-msgstr ""
+msgstr "Saskarnes skaņu skaļums:"
 
 #: src/game_preferences_display.cpp:202
 msgid "Bell Volume:"
-msgstr ""
+msgstr "Gājiena signāla skaļums:"
 
 #: src/game_preferences_display.cpp:203
 msgid "Gamma:"
-msgstr ""
+msgstr "Gamma:"
 
 #: src/game_preferences_display.cpp:205
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Diskretizācijas soļi (Hz):"
 
 #: src/game_preferences_display.cpp:206
 msgid "Frequency:"
-msgstr ""
+msgstr "Biežums:"
 
 #: src/game_preferences_display.cpp:230
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Skaņas efekti ieslēgti/izslēgti"
 
 #: src/game_preferences_display.cpp:234
 msgid "Change the sound effects volume"
-msgstr ""
+msgstr "Mainīt skaņas efektu skaļumu"
 
 #: src/game_preferences_display.cpp:237
 msgid "Music on/off"
-msgstr ""
+msgstr "Mūzika ieslēgta/izslēgta"
 
 #: src/game_preferences_display.cpp:241
 msgid "Change the music volume"
-msgstr ""
+msgstr "Mainīt mūzikas skaļumu"
 
 #: src/game_preferences_display.cpp:247
 msgid "Change the bell volume"
-msgstr ""
+msgstr "Mainīt gājiena sākuma signāla skaļumu"
 
 #: src/game_preferences_display.cpp:250
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Izvēļņu un pogu skaņas ieslēgtas/izslēgtas"
 
 #: src/game_preferences_display.cpp:254
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Mainīt pogu klikšķu, u.c. elementu skaļumu"
 
 #: src/game_preferences_display.cpp:256
 msgid "Change the sample rate"
-msgstr ""
+msgstr "Mainīt "
 
 #: src/game_preferences_display.cpp:265
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Diskretizācijas soli"
 
 #: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:278
 msgid "Change the buffer size"
-msgstr ""
+msgstr "Mainīt bufera izmēru"
 
 #: src/game_preferences_display.cpp:276 src/game_preferences_display.cpp:826
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Bufera izmērs: "
 
 #: src/game_preferences_display.cpp:283
 msgid "Change the speed of scrolling around the map"
-msgstr ""
+msgstr "Mainīt kartes ritināšanas ātrumu"
 
 #: src/game_preferences_display.cpp:288 src/game_preferences_display.cpp:290
 msgid "Set the amount of chat lines shown"
@@ -645,39 +643,39 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:296 src/game_preferences_display.cpp:301
 msgid "Change the brightness of the display"
-msgstr ""
+msgstr "Mainīt ekrāna gaišumu"
 
 #: src/game_preferences_display.cpp:304
 msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
+msgstr "Izvēlēties vai spēle izmantos visu ekrānu vai tikai logu"
 
 #: src/game_preferences_display.cpp:307
 msgid "Make units move and fight faster"
-msgstr ""
+msgstr "Likt vienībām kustēties un cīnīties ātrāk"
 
 #: src/game_preferences_display.cpp:324
 msgid "Units move and fight speed"
-msgstr ""
+msgstr "Vienību kustības un cīņas ātrums"
 
 #: src/game_preferences_display.cpp:327
 msgid "Show unit idle animations"
-msgstr ""
+msgstr "Radīt stāvošu vienību kustību"
 
 #: src/game_preferences_display.cpp:333
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Izvēlēties cik bieži radīt stāvošu vienību kustību"
 
 #: src/game_preferences_display.cpp:338
 msgid "Set maximum number of automatic saves to be retained"
-msgstr ""
+msgstr "Norādīt maksimālo automātiski saglabāto spēļu daudzumu"
 
 #: src/game_preferences_display.cpp:342
 msgid "Do not animate AI units moving"
-msgstr ""
+msgstr "Nerādīt datora vienību kustību"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
-msgstr ""
+msgstr "Pārklāt karti ar režģi"
 
 #: src/game_preferences_display.cpp:353
 msgid "Sort the player list in the lobby by player groups"
@@ -726,52 +724,53 @@ msgstr ""
 #: src/game_preferences_display.cpp:375
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
+"Rādīt tekstu virs vienības, kad tai trāpa lai parādītu radītos bojājumus"
 
 #: src/game_preferences_display.cpp:377
 msgid "Change the resolution the game runs at"
-msgstr ""
+msgstr "Mainīt spēles izšķirštspēju"
 
 #: src/game_preferences_display.cpp:378
 msgid "Change the theme the game runs with"
-msgstr ""
+msgstr "Mainīt spēles tēmu"
 
 #: src/game_preferences_display.cpp:381
 msgid "Display a dialog at the beginning of your turn"
-msgstr ""
+msgstr "Parādīt dialogu Jūsu gājiena sākumā"
 
 #: src/game_preferences_display.cpp:384
 msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
+msgstr "Atskaņot skaņas signālu Jūsu gājiena sākumā"
 
 #: src/game_preferences_display.cpp:387
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr ""
+msgstr "Rādīt krāsainu apli zem katras vienības lai parādītu to piederību"
 
 #: src/game_preferences_display.cpp:390
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Izvēlēties saules kustības virzienu"
 
 #: src/game_preferences_display.cpp:393
 msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
+msgstr "Izmantot krāsainus peles kursorus (var palēnināt spēli)"
 
 #: src/game_preferences_display.cpp:396
 msgid "Use graphical special effects (may be slower)"
-msgstr ""
+msgstr "Izmantot grafiskos efektus (var palēnināt spēli)"
 
 #: src/game_preferences_display.cpp:398
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Apskatīt un mainīt karstos taustiņus"
 
 #: src/game_preferences_display.cpp:689
 msgid "Speed: "
-msgstr ""
+msgstr "Ātrums: "
 
 #: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Maksimālais automātiski saglabāto spēļu daudzums: "
 
 #: src/game_preferences_display.cpp:694
 msgid "infinite"
@@ -787,11 +786,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:968
 msgid "yes"
-msgstr ""
+msgstr "jā"
 
 #: src/game_preferences_display.cpp:970
 msgid "no"
-msgstr ""
+msgstr "nē"
 
 #: src/game_preferences_display.cpp:1001
 msgid "(empty list)"
@@ -799,23 +798,23 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1119
 msgid "Prefs section^General"
-msgstr ""
+msgstr "Vispārējie"
 
 #: src/game_preferences_display.cpp:1120
 msgid "Prefs section^Display"
-msgstr ""
+msgstr "Ekrāna"
 
 #: src/game_preferences_display.cpp:1121
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "Skaņas"
 
 #: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Multiplayer"
-msgstr ""
+msgstr "Daudzspēlētāju"
 
 #: src/game_preferences_display.cpp:1123
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Paplašinātie"
 
 #: src/game_preferences_display.cpp:1158
 msgid "Saved Theme Preference: "
@@ -827,7 +826,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1168
 msgid "No known themes. Try changing from within an existing game."
-msgstr ""
+msgstr "Nav zināmu tēmu. Mēģiniet nomainīt tēmu pēc spēles palaišanas."
 
 #: src/hotkeys.cpp:54
 msgid "Next Unit"
@@ -1151,7 +1150,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:525 src/hotkeys.cpp:848
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Vai tiešām pamest?"
 
 #: src/hotkeys.cpp:525 src/hotkeys.cpp:848
 msgid "Quit"
@@ -1226,27 +1225,27 @@ msgstr ""
 
 #: src/preferences_display.cpp:231
 msgid "Hotkey Settings"
-msgstr ""
+msgstr "Karsto taustiņu iestatījumi"
 
 #: src/preferences_display.cpp:237 src/preferences_display.cpp:310
 msgid "Press desired Hotkey"
-msgstr ""
+msgstr "Nospiediet izvēlēto karsto taustiņu/-iņus"
 
 #: src/preferences_display.cpp:256
 msgid "Action"
-msgstr ""
+msgstr "Darbība"
 
 #: src/preferences_display.cpp:256
 msgid "Binding"
-msgstr ""
+msgstr "Piesaiste"
 
 #: src/preferences_display.cpp:268
 msgid "Change Hotkey"
-msgstr ""
+msgstr "Mainīt karsto taustiņu"
 
 #: src/preferences_display.cpp:349
 msgid "This Hotkey is already in use."
-msgstr ""
+msgstr "Šis karstais taustiņš jau tiek lietots."
 
 #: src/preferences_display.cpp:428
 msgid "There are no alternative video modes available"
@@ -1254,11 +1253,11 @@ msgstr ""
 
 #: src/preferences_display.cpp:457
 msgid "Choose Resolution"
-msgstr ""
+msgstr "Izvēlieties izšķirtspēju"
 
 #: src/show_dialog.cpp:369
 msgid "Error"
-msgstr ""
+msgstr "Kļūda"
 
 #: src/terrain_translation.cpp:681
 msgid ""
