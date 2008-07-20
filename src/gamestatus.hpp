@@ -200,6 +200,18 @@ public:
 	bool next_turn();
 
 	static bool is_start_ToD(const std::string&);
+	
+	//! Adds a new local time area from config, making it follow its own
+	//! time-of-day sequence.
+	//! @param cfg Config object containing x,y range/list of locations,
+	//!            and desired [time]/[illuminated_time] information.
+	void add_time_area(const config& cfg);
+	
+	//! Removes a time area from config, making it follow the scenario's
+	//! normal time-of-day sequence.
+	//! @param id Identifier of time_area to remove. Supply an empty one
+	//!           to remove all local time areas.
+	void remove_time_area(const std::string& id);
 
 	//! @todo FIXME: since gamestatus may be constructed with NULL game_state* (by default),
 	//! you should not rely on this function to return the current game_state.
@@ -218,11 +230,13 @@ private:
 		area_time_of_day() :
 			xsrc(),
 			ysrc(),
+			id(),
 			times(),
 			hexes()
 			{}
 
 		std::string xsrc, ysrc;
+		std::string id;
 		std::vector<time_of_day> times;
 		std::set<gamemap::location> hexes;
 	};

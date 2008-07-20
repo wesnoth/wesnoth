@@ -3030,6 +3030,18 @@ namespace {
 		}
 	}
 
+	// Adding/removing new time_areas dinamically
+	WML_HANDLER_FUNCTION(time_area,/*handler*/,/*event_info*/,cfg)
+	{
+		assert(state_of_game != NULL);
+		assert(status_ptr != NULL);
+		const bool remove = utils::string_bool(cfg["remove"],false);
+		if(remove)
+			status_ptr->remove_time_area(cfg["id"]);
+		else
+			status_ptr->add_time_area(cfg.get_parsed_config());
+	}
+
 		// Adding of new events
 	WML_HANDLER_FUNCTION(event,/*handler*/,/*event_info*/,cfg)
 	{
@@ -3116,6 +3128,7 @@ namespace {
 		function_call_map.insert(std::make_pair("while", &wml_func_while));
 		function_call_map.insert(std::make_pair("switch", &wml_func_switch));
 		function_call_map.insert(std::make_pair("message", &wml_func_message));
+		function_call_map.insert(std::make_pair("time_area", &wml_func_time_area));
 		function_call_map.insert(std::make_pair("event", &wml_func_event));
 	}
 #endif

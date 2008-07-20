@@ -143,6 +143,33 @@ std::string generate_game_uuid()
 }
 #endif
 
+void gamestatus::add_time_area(const config& cfg)
+{
+	const std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
+	area_time_of_day area;
+	area.xsrc = cfg["x"];
+	area.ysrc = cfg["y"];
+	area.id   = cfg["id"];
+	std::copy(locs.begin(),locs.end(),std::inserter(area.hexes,area.hexes.end()));
+	time_of_day::parse_times(cfg,area.times);
+	areas_.push_back(area);
+}
+
+void gamestatus::remove_time_area(const std::string& area_id)
+{
+	if(area_id.empty()) {
+		areas_.clear();
+	} else {
+		// search for all time areas that match the id.
+		std::vector<area_time_of_day>::iterator i = areas_.begin();
+		while(i != areas_.end()) {
+			if((*i).id == area_id)
+				areas_.erase(i);
+			else ++i;
+		}
+	}
+}
+
 //! Reads turns and time information from parameters.
 //! It sets random starting ToD and current_tod to config.
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
@@ -173,15 +200,8 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 	set_start_ToD(const_cast<config&>(time_cfg),s_o_g);
 
 	const config::child_list& times_range = time_cfg.get_children("time_area");
-	for(config::child_list::const_iterator t = times_range.begin(); t != times_range.end(); ++t) {
-		const std::vector<gamemap::location> locs = parse_location_range((**t)["x"],(**t)["y"]);
-		area_time_of_day area;
-		area.xsrc = (**t)["x"];
-		area.ysrc = (**t)["y"];
-		std::copy(locs.begin(),locs.end(),std::inserter(area.hexes,area.hexes.end()));
-		time_of_day::parse_times(**t,area.times);
-		areas_.push_back(area);
-	}
+	for(config::child_list::const_iterator t = times_range.begin(); t != times_range.end(); ++t)
+		this->add_time_area(**t);
 }
 
 void gamestatus::write(config& cfg) const
