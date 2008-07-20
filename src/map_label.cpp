@@ -40,7 +40,9 @@ map_labels::map_labels(const display& disp,
 					   const team* team) :
 		disp_(disp),
 		team_(team),
-		map_(map)
+		map_(map),
+		labels_(),
+		label_cache_()
 {
 }
 
@@ -51,7 +53,9 @@ map_labels::map_labels(const display& disp,
 		       const variable_set *variables) :
 		disp_(disp),
 		team_(team),
-		map_(map)
+		map_(map),
+		labels_(),
+		label_cache_()
 {
 	read(cfg, variables);
 }
@@ -332,7 +336,11 @@ terrain_label::terrain_label(const map_labels& parent,
 			     const config& cfg,
 			     const variable_set *variables) :
 		handle_(0),
-		parent_(&parent)
+		text_(),
+		team_name_(),
+		colour_(),
+		parent_(&parent),
+		loc_()
 {
 	read(cfg, variables);
 	check_text_length();
