@@ -96,8 +96,11 @@ namespace game_events
 				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
 				disabled_(false),mutated_(true),
 				skip_messages_(false),rebuild_screen_(false),
-				cfg_(cfg)
-		{}
+				cfg_(cfg),
+				id_(cfg.get_config().hash())
+			{}
+	  
+			const std::string get_id() const {return id_;}
 
 			void write(config& cfg) const
 			{
@@ -163,6 +166,7 @@ namespace game_events
 			bool skip_messages_;
 			bool rebuild_screen_;
 			vconfig cfg_;
+			std::string id_;
 	};
 
 	typedef void (*wml_handler_function)(event_handler& eh,

@@ -3457,9 +3457,14 @@ namespace {
 		void write_events(config& cfg)
 		{
 			assert(manager_running);
+			std::set<std::string> id_handlers;
+			std::string id;
 			for(std::multimap<std::string,game_events::event_handler>::const_iterator i = events_map.begin(); i != events_map.end(); ++i) {
-				if(!i->second.disabled() && !i->second.is_menu_item()) {
+				id = i->second.get_id();
+				if(!i->second.disabled() && !i->second.is_menu_item() && 
+				   id_handlers.find(id)==id_handlers.end()) {
 					i->second.write(cfg.add_child("event"));
+					id_handlers.insert(i->second.get_id());
 				}
 			}
 
