@@ -240,7 +240,7 @@ AC_ARG_ENABLE([editor],
 	      [editor=no])
 
 AC_ARG_ENABLE([editor2],
-            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game (EXPERIMENTAL, do not use along --enable-editor)]),
+            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game (EXPERIMENTAL)]),
 	      [editor2=$enableval],
 	      [editor2=no])
 

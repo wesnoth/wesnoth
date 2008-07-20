@@ -287,7 +287,7 @@ wesnoth_editor_sources = Split("""
     editor/editor_undo.cpp
     animated_editor.cpp
     """)
-env.WesnothProgram("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res, have_client_prereqs and not env["editor2"])
+env.WesnothProgram("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res, have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp
