@@ -14,11 +14,10 @@
 #ifndef MINIMAP_HPP_INCLUDED
 #define MINIMAP_HPP_INCLUDED
 
-#include "map.hpp"
 #include "sdl_utils.hpp"
 
-
-class team;
+class gamemap;
+class viewpoint;
 
 namespace image {
 	///function to create the minimap for a given map
