@@ -145,14 +145,14 @@ std::string generate_game_uuid()
 
 void gamestatus::add_time_area(const config& cfg)
 {
-	const std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
-	area_time_of_day area;
+	areas_.push_back(area_time_of_day());
+	area_time_of_day &area = areas_.back();
+	area.id   = cfg["id"];
 	area.xsrc = cfg["x"];
 	area.ysrc = cfg["y"];
-	area.id   = cfg["id"];
-	std::copy(locs.begin(),locs.end(),std::inserter(area.hexes,area.hexes.end()));
-	time_of_day::parse_times(cfg,area.times);
-	areas_.push_back(area);
+	std::vector<gamemap::location> const& locs = parse_location_range(area.xsrc, area.ysrc);
+	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
+	time_of_day::parse_times(cfg, area.times);
 }
 
 void gamestatus::remove_time_area(const std::string& area_id)
