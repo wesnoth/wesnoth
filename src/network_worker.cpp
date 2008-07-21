@@ -118,7 +118,9 @@ struct buffer {
 		sock(sock),
 		config_buf(),
 		config_error(""),
-		gzipped(false)
+		stream(),
+		gzipped(false),
+		raw_buffer()
 		{}
 
 	TCPsocket sock;
@@ -147,6 +149,12 @@ buffer_set outgoing_bufs[NUM_SHARDS];
 
 struct schema_pair
 {
+	schema_pair() :
+		incoming(),
+		outgoing()
+	{
+	}
+
 	compression_schema incoming, outgoing;
 };
 
