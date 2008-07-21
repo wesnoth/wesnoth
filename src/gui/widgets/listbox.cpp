@@ -461,7 +461,11 @@ twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_acti
 		int offset = 0;
 		const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
 
-		assert(row != -1);
+		if(row == -1) {
+			return NULL;
+		}
+
+		assert(row < rows_.size());
 		assert(rows_[row].grid());
 		return rows_[row].grid()->find_widget(
 			tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
@@ -478,13 +482,17 @@ const twidget* tlistbox::find_widget(
 
 	// if on the panel we need to do special things.
 	if(result && result->id() == "_list") {
-			int offset = 0;
-			const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
+		int offset = 0;
+		const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
 
-			assert(row != -1);
-			assert(rows_[row].grid());
-			return rows_[row].grid()->find_widget(
-				tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
+		if(row == -1) {
+			return NULL;
+		}
+
+		assert(row < rows_.size());
+		assert(rows_[row].grid());
+		return rows_[row].grid()->find_widget(
+			tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
 	}
 
 	return result;
@@ -704,8 +712,10 @@ size_t tlistbox::row_at_offset(int offset, int& offset_in_widget) const
 			// The position of the scrollbar is the offset of rows,
 			// so add to the result.
 			offset_in_widget = offset % rows_[0].get_height();
-			return 
+			const size_t result = 
 				(offset / rows_[0].get_height()) + scrollbar()->get_item_position();
+
+			return result < rows_.size() ? result : -1;
 		}
 	} else {
 		// The position of the scrollbar is the number of pixels scrolled, 
