@@ -163,9 +163,11 @@ void gamestatus::remove_time_area(const std::string& area_id)
 		// search for all time areas that match the id.
 		std::vector<area_time_of_day>::iterator i = areas_.begin();
 		while(i != areas_.end()) {
-			if((*i).id == area_id)
+			if((*i).id == area_id) {
 				i = areas_.erase(i);
-			else ++i;
+			} else { 
+				++i;
+			}
 		}
 	}
 }
