@@ -183,7 +183,12 @@ sockets_list sockets;
 
 
 struct partial_buffer {
-	partial_buffer() : upto(0) {}
+	partial_buffer() : 
+		buf(),
+		upto(0) 
+	{
+	}
+
 	std::vector<char> buf;
 	size_t upto;
 };
