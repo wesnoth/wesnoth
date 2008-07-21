@@ -315,7 +315,13 @@ void tlistbox::draw_list_area_fixed_row_height(surface& surface,
 {
 	unsigned offset = list_rect_.y;
 	for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
-		trow& row = rows_[i + scrollbar()->get_item_position()];
+
+		// make sure we stay inside the valid range.
+		const unsigned index = i + scrollbar()->get_item_position();
+		if(index >= rows_.size()) {
+			return;
+		}
+		trow& row = rows_[index];
 
 		assert(row.grid());
 		row.grid()->draw(row.canvas(), force, invalidate_background);
