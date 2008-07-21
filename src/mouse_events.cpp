@@ -44,27 +44,42 @@ namespace{
 	const double drag_threshold = 14.0;
 }
 
-mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
-				gamestatus& status, undo_list& undo_stack, undo_list& redo_stack):
-mouse_handler_base(map), gui_(gui), teams_(teams), units_(units), status_(status),
-undo_stack_(undo_stack), redo_stack_(redo_stack)
+mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, 
+		unit_map& units, gamemap& map, gamestatus& status, 
+		undo_list& undo_stack, undo_list& redo_stack) :
+	mouse_handler_base(map), 
+	gui_(gui), 
+	teams_(teams), 
+	units_(units), 
+	status_(status),
+	undo_stack_(undo_stack), 
+	redo_stack_(redo_stack),
+	previous_hex_(),
+	previous_free_hex_(),
+	selected_hex_(),
+	next_unit_(),
+	current_route_(),
+	current_paths_(),
+	enemy_paths_(false),
+	path_turns_(0),
+	team_num_(1),
+	enemies_visible_(false),
+	undo_(false),
+	over_route_(false),
+	attackmove_(false),
+	reachmap_invalid_(false),
+	show_partial_move_(false)
 {
 	singleton_ = this;
+
 	minimap_scrolling_ = false;
 	dragging_ = false;
 	dragging_started_ = false;
 	drag_from_x_ = 0;
 	drag_from_y_ = 0;
-	enemy_paths_ = false;
-	path_turns_ = 0;
-	undo_ = false;
 	show_menu_ = false;
-	over_route_ = false;
-	team_num_ = 1;
-	attackmove_ = false;
-	reachmap_invalid_ = false;
-	show_partial_move_ = false;
 }
+
 mouse_handler::~mouse_handler()
 {
 	singleton_ = NULL;
