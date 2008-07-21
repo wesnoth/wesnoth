@@ -96,11 +96,8 @@ namespace game_events
 				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
 				disabled_(false),mutated_(true),
 				skip_messages_(false),rebuild_screen_(false),
-				cfg_(cfg),
-				id_(cfg.get_config().hash())
+				cfg_(cfg)
 			{}
-	  
-			const std::string get_id() const {return id_;}
 
 			void write(config& cfg) const
 			{
@@ -117,7 +114,7 @@ namespace game_events
 			void disable() { disabled_ = true; }
 			bool disabled() const { return disabled_; }
 
-			bool is_menu_item() const; 
+			bool is_menu_item() const;
 			const vconfig::child_list first_arg_filters()
 			{
 				return cfg_.get_children("filter");
@@ -166,7 +163,6 @@ namespace game_events
 			bool skip_messages_;
 			bool rebuild_screen_;
 			vconfig cfg_;
-			std::string id_;
 	};
 
 	typedef void (*wml_handler_function)(event_handler& eh,
@@ -219,7 +215,7 @@ namespace game_events
 	void wml_func_ ## pname \
 	(game_events::event_handler& peh, \
 	const game_events::queued_event& pei,\
-	const vconfig& pcfg) 
+	const vconfig& pcfg)
 
 	/**
 	 * Stores wml tag handler functions
@@ -243,7 +239,7 @@ namespace game_events
 
 		static command_handlers* manager_;
 
-		// It might be good optimization to use hash instead 
+		// It might be good optimization to use hash instead
 		// of string as key for map
 		//	static size_t make_hash_key(const std::string&);
 		public:

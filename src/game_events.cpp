@@ -1911,7 +1911,7 @@ namespace {
 
 		// Use an ugly hack, if the spacer has the wanted best_size we use the
 		// bigger image otherwise the smaller one.
-		gui2::tspacer* spacer = 
+		gui2::tspacer* spacer =
 			dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
 		unsigned image_size = 200;
 		unsigned window_height = 400;
@@ -1927,12 +1927,12 @@ namespace {
 		const std::string image = portrait ? portrait->image : "";
 		const bool mirror = portrait ? portrait->mirror : false;
 
-		/** 
-		 * @todo FIXME these fixed sizes should depend on the map size and maybe 
+		/**
+		 * @todo FIXME these fixed sizes should depend on the map size and maybe
 		 * let wml determine the height.
 		 */
-		window.set_size(::create_rect(0, 
-			gui2::settings::screen_height - window_height, 
+		window.set_size(::create_rect(0,
+			gui2::settings::screen_height - window_height,
 			gui2::settings::screen_width - 142, window_height));
 
 		window.canvas(1).set_variable("portrait_image", variant(image));
@@ -1954,7 +1954,7 @@ namespace {
 
 		// Use an ugly hack, if the spacer has the wanted best_size we use the
 		// bigger image otherwise the smaller one.
-		gui2::tspacer* spacer = 
+		gui2::tspacer* spacer =
 			dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
 		unsigned image_size = 200;
 		unsigned window_height = 400;
@@ -1970,12 +1970,12 @@ namespace {
 		const std::string image = portrait ? portrait->image : "";
 		const bool mirror = portrait ? portrait->mirror : false;
 
-		/** 
-		 * @todo FIXME these fixed sizes should depend on the map size and maybe 
+		/**
+		 * @todo FIXME these fixed sizes should depend on the map size and maybe
 		 * let wml determine the height.
 		 */
-		window.set_size(::create_rect(0, 
-			gui2::settings::screen_height - window_height, 
+		window.set_size(::create_rect(0,
+			gui2::settings::screen_height - window_height,
 			gui2::settings::screen_width - 142, window_height));
 
 		window.canvas(1).set_variable("portrait_image", variant(image));
@@ -3457,14 +3457,9 @@ namespace {
 		void write_events(config& cfg)
 		{
 			assert(manager_running);
-			std::set<std::string> id_handlers;
-			std::string id;
 			for(std::multimap<std::string,game_events::event_handler>::const_iterator i = events_map.begin(); i != events_map.end(); ++i) {
-				id = i->second.get_id();
-				if(!i->second.disabled() && !i->second.is_menu_item() && 
-				   id_handlers.find(id)==id_handlers.end()) {
+				if(!i->second.disabled() && !i->second.is_menu_item()) {
 					i->second.write(cfg.add_child("event"));
-					id_handlers.insert(i->second.get_id());
 				}
 			}
 
