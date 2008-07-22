@@ -36,15 +36,19 @@
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
-playsingle_controller::playsingle_controller(const config& level, game_state& state_of_game,
-											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
-											 bool skip_replay)
-	: play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay, false),
-	cursor_setter(cursor::NORMAL), replay_sender_(recorder) , turn_over_(false)
+playsingle_controller::playsingle_controller(const config& level, 
+		game_state& state_of_game, const int ticks, const int num_turns, 
+		const config& game_config, CVideo& video, bool skip_replay) :
+	play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay, false),
+	cursor_setter(cursor::NORMAL),
+	data_backlog_(),
+	textbox_info_(),
+	replay_sender_(recorder),
+	end_turn_(false),
+	player_type_changed_(false),
+	replaying_(false),
+	turn_over_(false)
 {
-	end_turn_ = false;
-	replaying_ = false;
-
 	// game may need to start in linger mode
 	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
 	{
