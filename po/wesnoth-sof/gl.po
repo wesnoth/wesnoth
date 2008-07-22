@@ -1,14 +1,21 @@
+# Galician translation of wesnoth-sof
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+#
+# Proxecto Trasno <http://trasno.net>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-06-13 13:28+0200\n"
-"PO-Revision-Date: 2008-02-19 21:20+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2008-06-19 18:19+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:10
@@ -74,7 +81,7 @@ msgstr "Deseño da Campaña"
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:38
 #, fuzzy
 msgid "WML Assistance"
-msgstr "Código e Axudas para a Tradución"
+msgstr "Documento WML"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:53
@@ -85,7 +92,7 @@ msgstr "Traballo Artístico e Deseño Gráfico"
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:3
 #, fuzzy
 msgid "A Bargain is Struck"
-msgstr "Hai escuridade..."
+msgstr "O campo %field é necesario."
 
 #. [side]: type=Dwarvish Fighter
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:18
@@ -343,8 +350,9 @@ msgstr "Dez mil."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:258
+#, fuzzy
 msgid "Nothing below fifteen!"
-msgstr ""
+msgstr "Amosar debaixo dos comentarios"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:262
@@ -524,7 +532,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
 #, fuzzy
 msgid "Closing the Gates"
-msgstr "Etiqueta de peche non esperada"
+msgstr "Etiqueta de peche non terminada"
 
 #. [side]: type=Elvish Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:33
@@ -764,7 +772,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:605
 #, fuzzy
 msgid "My glyph is on."
-msgstr "Que? Que está ocorrendo?"
+msgstr "Oh meu deus? Marchou o meu aprendiz?"
 
 #. [scenario]
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:3
@@ -988,7 +996,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:3
 #, fuzzy
 msgid "Searching for the Runecrafter"
-msgstr "Adaptación á versión oficial"
+msgstr "Buscando escáners..."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:35
@@ -1384,7 +1392,7 @@ msgstr "Agora, necesitarei certos materiais para facer este cetro."
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:206
 #, fuzzy
 msgid "Oh, what?"
-msgstr "Mensaxeiro, que mensaxeiro?"
+msgstr "Que hai deles?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:210
@@ -1799,7 +1807,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:290
 #, fuzzy
 msgid "Yes sir... *sigh*"
-msgstr "Morte de Sir Kaylan"
+msgstr "Morte de Sir Gerrick"
 
 #. [scenario]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
@@ -1918,7 +1926,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:243
 #, fuzzy
 msgid "That's none of your concern!"
-msgstr "Iso é problema teu."
+msgstr "O driver que xestiona o seu SAI"
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:247
@@ -1985,7 +1993,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:291
 #, fuzzy
 msgid "Are you mad?!?"
-msgstr "Quen eres ti? Que eres ti?"
+msgstr "Quen eres ti?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:295
@@ -2162,7 +2170,7 @@ msgstr "Gaanngh..."
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:3
 #, fuzzy
 msgid "Towards the Caves"
-msgstr "2p - As Covas do Basilisco"
+msgstr "2 xog - As Covas do Basilisco"
 
 #. [side]: type=Elvish Marshal
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:32
@@ -2693,7 +2701,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:287
 #, fuzzy
 msgid "Move Thursagan to the forge"
-msgstr "Move a Gweddry á trapela"
+msgstr "Ir á unidade líder"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:291
@@ -3197,8 +3205,9 @@ msgstr ""
 
 #. [unit_type]: race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4
+#, fuzzy
 msgid "Caravan"
-msgstr ""
+msgstr "Captura (morte) dunha caravana"
 
 #. [unit_type]: race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
@@ -3252,7 +3261,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:4
 #, fuzzy
 msgid "Dwarvish Runemaster"
-msgstr "Anano Loitador"
+msgstr "Anano Cicelador"
 
 #. [unit_type]: race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:22

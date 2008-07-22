@@ -1,25 +1,24 @@
-# translation of gl_ES.po to galician
-# Galician translations for Battle for Wesnoth package.
+# Galician translations of wesnoth-lib.
 # Copyright (C) 2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2006.
 #
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
+#
 # Proxecto Trasno <http://trasno.net>
-#
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-07-13 17:49+0200\n"
-"PO-Revision-Date: 2008-02-22 15:39+0100\n"
-"Last-Translator: \n"
-"Language-Team: galician <en@li.org>\n"
+"PO-Revision-Date: 2008-07-03 20:37+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [terrain]
 #: data/core/terrain.cfg:13
@@ -68,7 +67,7 @@ msgstr "Castelo"
 #. [terrain]
 #: data/core/terrain.cfg:200
 msgid "Ruin"
-msgstr "Ruina"
+msgstr "Ruína"
 
 #. [terrain]
 #: data/core/terrain.cfg:211
@@ -336,7 +335,7 @@ msgstr "Pechar"
 
 #: src/editor/editor_dialogs.cpp:52
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Perderanse as modificacións do mapa. Desexa continuar?"
+msgstr "Vanse perder as modificacións do mapa. Desexa continuar?"
 
 #: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
@@ -441,6 +440,7 @@ msgid "Y-Axis"
 msgstr "Eixe Y"
 
 #: src/editor/editor_dialogs.cpp:688
+#, fuzzy
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Dar a volta (isto pode cambiar as dimensións do mapa):"
 
@@ -485,24 +485,26 @@ msgid "Skip AI Moves"
 msgstr "Saltar os Movementos da IA"
 
 #: src/game_preferences_display.cpp:167 src/game_preferences_display.cpp:349
+#, fuzzy
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
-"Gardar Repetición en Victorias de un xogador/multixogador ou Derrotas "
-"multixogador."
+"Gardar Repetición en Victorias de Un Xogador/Multixogador ou Derrotas "
+"Multixogador."
 
 #: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:352
+#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
-"Eliminar as partidas gardadas en Victorias de un xogador/multixogador ou "
-"Derrotas multixogador."
+"Eliminar as partidas gardadas automáticamente en Victorias de Un Xogador/"
+"Multixogador ou Derrotas Multixogador."
 
 #: src/game_preferences_display.cpp:169
 msgid "Do Not Show Lobby Joins"
-msgstr "Non mostrar incorporacións á sala de xogo"
+msgstr "Non Mostrar Incorporacións á Sala de Xogo"
 
 #: src/game_preferences_display.cpp:170
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Mostrar só as incorporacións de amigos á sala de xogo"
+msgstr "Mostrar só as incorporacións de amigos á Sala de Xogo"
 
 #: src/game_preferences_display.cpp:171
 msgid "Show All Lobby Joins"
@@ -510,11 +512,11 @@ msgstr "Mostrar tódalas incorporacións á sala de xogo"
 
 #: src/game_preferences_display.cpp:172
 msgid "Sort Lobby List"
-msgstr "Ordenar lista de xogadores da sala de xogo"
+msgstr "Ordenar lista de salas de xogo"
 
 #: src/game_preferences_display.cpp:173
 msgid "Iconize Lobby List"
-msgstr "Minimizar a lista de partidas da sala de xogo"
+msgstr "Minimizar a lista de Salas de Xogo"
 
 #: src/game_preferences_display.cpp:174
 msgid "Set path to wesnothd"
@@ -541,6 +543,7 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: src/game_preferences_display.cpp:180
+#, fuzzy
 msgid "Show Floating Labels"
 msgstr "Mostrar etiquetas flotantes"
 
@@ -561,8 +564,9 @@ msgid "Show Color Cursors"
 msgstr "Amosar Cursores Coloreados"
 
 #: src/game_preferences_display.cpp:185
+#, fuzzy
 msgid "Show Haloing Effects"
-msgstr "Mostrar halos"
+msgstr "Mostrar Efectos Halo"
 
 #: src/game_preferences_display.cpp:186
 msgid "Change Resolution"
@@ -577,6 +581,7 @@ msgid "Adjust Gamma"
 msgstr "Axustar Gamma"
 
 #: src/game_preferences_display.cpp:190
+#, fuzzy
 msgid "Reverse Time Graphics"
 msgstr "Inverter os Gráficos de Hora"
 
@@ -614,19 +619,20 @@ msgstr "Aplicar"
 
 #: src/game_preferences_display.cpp:202
 msgid "Show Unit Idle Animations"
-msgstr "Amosar as Animacións das Unidades Paradas"
+msgstr "Amosar as Animacións das Unidades Inactivas"
 
 #: src/game_preferences_display.cpp:204
 msgid "Music Volume:"
-msgstr "Volume da Música"
+msgstr "Volume da Música: "
 
 #: src/game_preferences_display.cpp:204
+#, fuzzy
 msgid "SFX Volume:"
 msgstr "Volume SFX:"
 
 #: src/game_preferences_display.cpp:205
 msgid "UI Sound Volume:"
-msgstr "Volume do Son da IU:"
+msgstr "Volume do Son da Interface:"
 
 #: src/game_preferences_display.cpp:206
 msgid "Bell Volume:"
@@ -637,6 +643,7 @@ msgid "Gamma:"
 msgstr "Gamma:"
 
 #: src/game_preferences_display.cpp:209
+#, fuzzy
 msgid "Sample Rate (Hz):"
 msgstr "Frecuencia de Mostraxe (Hz):"
 
@@ -673,18 +680,22 @@ msgid "Change the sound volume for button clicks, etc."
 msgstr "Cambiar o volume do son de premer nos botóns, etc."
 
 #: src/game_preferences_display.cpp:260
+#, fuzzy
 msgid "Change the sample rate"
 msgstr "Cambiar a frecuencia de mostraxe"
 
 #: src/game_preferences_display.cpp:269
+#, fuzzy
 msgid "User defined sample rate"
 msgstr "Frecuencia de mostraxe definida polo usuario"
 
 #: src/game_preferences_display.cpp:278 src/game_preferences_display.cpp:282
+#, fuzzy
 msgid "Change the buffer size"
-msgstr "Cambiar o tamaño do buffer"
+msgstr "Cambiar o tamaño do búfer"
 
 #: src/game_preferences_display.cpp:280 src/game_preferences_display.cpp:834
+#, fuzzy
 msgid "Buffer Size: "
 msgstr "Tamaño do Buffer: "
 
@@ -694,7 +705,7 @@ msgstr "Cambia a velocidade do desprazamento do mapa"
 
 #: src/game_preferences_display.cpp:292 src/game_preferences_display.cpp:294
 msgid "Set the amount of chat lines shown"
-msgstr "Establecer o número de liñas de conversa que se mostran"
+msgstr "Definir o número de liñas de conversa que se mostran"
 
 #: src/game_preferences_display.cpp:297
 msgid "Add a timestamp to chat messages"
@@ -714,19 +725,21 @@ msgstr "Fai que as unidades se movan e loiten máis rápido"
 
 #: src/game_preferences_display.cpp:328
 msgid "Units move and fight speed"
-msgstr "As unidades móvense e loiten máis rápido"
+msgstr "As unidades móvense e loitan máis rápido"
 
 #: src/game_preferences_display.cpp:331
 msgid "Show unit idle animations"
-msgstr "Amosar as animacións das unidades paradas"
+msgstr "Amosar as animacións das unidades inactivas"
 
 #: src/game_preferences_display.cpp:337
 msgid "Set the frequency of unit idle animations"
-msgstr "Establecer a frecuencia das animacións das unidades paradas"
+msgstr "Definir a frecuencia das animacións das unidades inactivas"
 
 #: src/game_preferences_display.cpp:342
 msgid "Set maximum number of automatic saves to be retained"
-msgstr "Configurar o número máximo de gardados automáticos que debe conservar"
+msgstr ""
+"Configurar o número máximo de partidas gardadas automáticamente que se deben "
+"conservar"
 
 #: src/game_preferences_display.cpp:346
 msgid "Do not animate AI units moving"
@@ -738,27 +751,30 @@ msgstr "Superpoñer unha reixa sobre o mapa"
 
 #: src/game_preferences_display.cpp:357
 msgid "Sort the player list in the lobby by player groups"
-msgstr "Ordenar a lista de xogardores na lista da sala de xogo"
+msgstr "Ordenar a lista de xogadores por grupos de xogadores na sala de xogo"
 
 #: src/game_preferences_display.cpp:360
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Mosta os iconos diante dos nomes dos xogadores na sala de xogo."
+msgstr "Mosta iconas diante dos nomes dos xogadores na sala de xogo."
 
 #: src/game_preferences_display.cpp:363
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
-"Non mostrar as mensaxes sobre a unión de novos xogadores á sala de xogo"
+"Non mostrar mensaxes sobre a incorporación de novos xogadores á sala de xogo "
+"multixogador"
 
 #: src/game_preferences_display.cpp:365
+#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
-"Mostrar mensaxes só dos teus amigos que se unen á sala de xogo multixogador"
+"Mostrar mensaxes só dos teus amigos que se incorporan á sala de xogo "
+"multixogador"
 
 #: src/game_preferences_display.cpp:367
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
-"Mostrar as mensaxes de tódolos xogadores que se unen á sala de xogo "
-"multixogador."
+"Mostrar as mensaxes de tódolos xogadores que se incorporan á sala de xogo "
+"multixogador"
 
 #: src/game_preferences_display.cpp:369
 msgid "Find and set path to MP server to host LAN games."
@@ -774,7 +790,7 @@ msgstr "Volver ás opcións de multixogador"
 
 #: src/game_preferences_display.cpp:372
 msgid "Add this username to your friends list"
-msgstr "Engadir este nome de usuario á súa lista de amigos"
+msgstr "Engadir este nome de usuario á túa lista de amigos"
 
 #: src/game_preferences_display.cpp:373
 msgid "Add this username to your ignores list"
@@ -782,7 +798,7 @@ msgstr "Engadir este nome de usuario á túa lista de ignorados"
 
 #: src/game_preferences_display.cpp:374
 msgid "Remove this username from your list"
-msgstr "Eliminar este nome de usuario da súa lista"
+msgstr "Eliminar este nome de usuario da túa lista"
 
 #: src/game_preferences_display.cpp:377
 msgid "Insert a username"
@@ -791,7 +807,7 @@ msgstr "Inserir un nome de usuario"
 #: src/game_preferences_display.cpp:380
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
-"Mostrar un texto enriba dunha unidade cando lle acadan para amosar o dano "
+"Mostrar un texto enriba dunha unidade cando lle acadan para mostrar o dano "
 "inflixido"
 
 #: src/game_preferences_display.cpp:382
@@ -815,8 +831,8 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Mostrar un circulo coloreado arredor da base de cada unidade para amosar en "
-"que bando está"
+"Mostrar un circulo coloreado arredor da base de cada unidade para amosar de "
+"que bando é"
 
 #: src/game_preferences_display.cpp:395
 msgid "Choose whether the sun moves left-to-right or right-to-left"
@@ -839,8 +855,9 @@ msgid "Speed: "
 msgstr "Velocidade:"
 
 #: src/game_preferences_display.cpp:702 src/game_preferences_display.cpp:704
+#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr "Número máximo de autogardados:"
+msgstr "Detección automática da impresora"
 
 #: src/game_preferences_display.cpp:702
 msgid "infinite"
@@ -852,7 +869,7 @@ msgstr "Liñas de Conversa:"
 
 #: src/game_preferences_display.cpp:906 src/game_preferences_display.cpp:914
 msgid "Invalid username"
-msgstr "nome de usuario incorrecto"
+msgstr "Nome de usuario incorrecto"
 
 #: src/game_preferences_display.cpp:986
 msgid "yes"
@@ -887,8 +904,9 @@ msgid "Advanced section^Advanced"
 msgstr "Avanzado"
 
 #: src/game_preferences_display.cpp:1177
+#, fuzzy
 msgid "Saved Theme Preference: "
-msgstr "Preferencia do Tema Gardada:"
+msgstr "Preferencia do Tema Gardado:"
 
 #: src/game_preferences_display.cpp:1183
 msgid "New theme will take effect on next new or loaded game."
@@ -896,7 +914,7 @@ msgstr "O novo tema terá efecto na próxima partida cargada ou nova."
 
 #: src/game_preferences_display.cpp:1187
 msgid "No known themes. Try changing from within an existing game."
-msgstr "Non hay temas coñecidos. Tenta cambialos dende un xogo existente."
+msgstr "Non hai temas coñecidos. Tenta cambialos dende un xogo xa existente."
 
 #: src/game_preferences_display.cpp:1229
 msgid "Find $filename server binary to host networked games"
@@ -1036,13 +1054,14 @@ msgstr "Descrición da Unidade"
 
 #: src/hotkeys.cpp:72
 msgid "Rename Unit"
-msgstr "Renomear Unidade"
+msgstr "Renomear a Unidade"
 
 #: src/hotkeys.cpp:73
 msgid "Save Game"
 msgstr "Gardar a Partida"
 
 #: src/hotkeys.cpp:74
+#, fuzzy
 msgid "Save Replay"
 msgstr "Gardar Reprodución"
 
@@ -1063,12 +1082,13 @@ msgid "Repeat Recruit"
 msgstr "Repetir Recrutamento"
 
 #: src/hotkeys.cpp:79
+#, fuzzy
 msgid "Recall"
 msgstr "Volver Chamar"
 
 #: src/hotkeys.cpp:80
 msgid "End Turn"
-msgstr "Remata o Turno"
+msgstr "Remata o turno"
 
 #: src/hotkeys.cpp:81
 msgid "Toggle Grid"
@@ -1112,7 +1132,7 @@ msgstr "Estatísticas"
 
 #: src/hotkeys.cpp:92
 msgid "Quit Game"
-msgstr "Saír da partida"
+msgstr "Saír da Partida"
 
 #: src/hotkeys.cpp:93
 msgid "Set Team Label"
@@ -1199,12 +1219,13 @@ msgid "Set Player's keep"
 msgstr "Establecer a torre do Xogador"
 
 #: src/hotkeys.cpp:118
+#, fuzzy
 msgid "Flood Fill"
-msgstr "Anegar"
+msgstr "Encher a selección"
 
 #: src/hotkeys.cpp:119
 msgid "Fill Selection"
-msgstr "Rechear selección"
+msgstr "Encher a selección"
 
 #: src/hotkeys.cpp:120 src/hotkeys.cpp:151
 msgid "Rotate Selection"
@@ -1224,7 +1245,7 @@ msgstr "Pegar"
 
 #: src/hotkeys.cpp:124
 msgid "Revert from Disk"
-msgstr "Recuperar do Disco"
+msgstr "Recuperar dende o Disco"
 
 #: src/hotkeys.cpp:126 src/hotkeys.cpp:163
 msgid "Flip Map"
@@ -1243,8 +1264,9 @@ msgid "Refresh Image Cache"
 msgstr "Actualizar a Caché de Imaxes"
 
 #: src/hotkeys.cpp:130
+#, fuzzy
 msgid "Delay transition updates"
-msgstr "Retrasar as actualizacións de transición"
+msgstr "Retardar as actualizacións de transición"
 
 #: src/hotkeys.cpp:131
 msgid "Update transitions"
@@ -1279,7 +1301,7 @@ msgstr ""
 #: src/hotkeys.cpp:153
 #, fuzzy
 msgid "Flip Selection"
-msgstr "Rechear selección"
+msgstr "Encher a selección"
 
 #: src/hotkeys.cpp:155
 #, fuzzy
@@ -1316,12 +1338,13 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar as transicións"
 
 #: src/hotkeys.cpp:174
+#, fuzzy
 msgid "Delay Shroud Updates"
-msgstr "Retardar actualización de zonas oscuras"
+msgstr "Retardar as actualizacións do manto do descoñecido"
 
 #: src/hotkeys.cpp:175
 msgid "Update Shroud Now"
-msgstr "Actualizar zonas oscuras"
+msgstr "Actualizar o Manto do Descoñecido"
 
 #: src/hotkeys.cpp:176
 msgid "Continue Move"
@@ -1423,7 +1446,9 @@ msgstr "Vilas:"
 msgid "Castle Size:"
 msgstr "Tamaño do Castelo:"
 
+# terraformar
 #: src/mapgen_dialog.cpp:120
+#, fuzzy
 msgid "Landform:"
 msgstr "Perfil de:"
 
@@ -1453,13 +1478,14 @@ msgstr "O ancho máximo do texto é menor a 1."
 
 #: src/minimap.cpp:81
 msgid "Could not get image for terrain: $terrain."
-msgstr "Non se puido obter a imaxe para o terreo: $terrain."
+msgstr "Non se puido obter a imaxe do terreo: $terrain."
 
 #: src/minimap.cpp:105 src/minimap.cpp:117
 msgid "Error creating or aquiring an image."
 msgstr "Erro ó crear ou adquirir unha imaxe."
 
 #: src/preferences_display.cpp:85 src/preferences_display.cpp:118
+#, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1476,7 +1502,7 @@ msgstr "Preferencias de Atallos de Teclado"
 #: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Prema as Teclas desexadas"
+msgstr "Prema a tecla desexada"
 
 #: src/preferences_display.cpp:258
 msgid "Action"
@@ -1484,7 +1510,7 @@ msgstr "Acción"
 
 #: src/preferences_display.cpp:258
 msgid "Binding"
-msgstr "Combinación"
+msgstr "Asociación"
 
 #: src/preferences_display.cpp:270
 msgid "Change Hotkey"
@@ -1506,7 +1532,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
-msgstr "Non hai dispoñibles modos de video alternativos"
+msgstr "Non hai dispoñibles modos de vídeo alternativos"
 
 #: src/preferences_display.cpp:460
 msgid "Choose Resolution"
@@ -1524,6 +1550,7 @@ msgstr ""
 "Atopouse un terreo cunha cadea de máis de 4 caracteres, o terreo afectado é:"
 
 #: src/wml_exception.cpp:52
+#, fuzzy
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1532,6 +1559,7 @@ msgstr ""
 "A mensaxe de erro é: "
 
 #: src/wml_exception.cpp:54
+#, fuzzy
 msgid "When reporting the bug please include the following error message :"
 msgstr "Ó comunicar o erro, por favor inclúa a seguinte mensaxe de erro: "
 
@@ -1541,15 +1569,12 @@ msgid ""
 "mandatory key '$key|' isn't set."
 msgstr ""
 "Na sección '[$section|]' onde '$primary_key| = $primary_value' a clave "
-"obrigatoria '$key|' non está establecida."
+"obrigatoria '$key|' non está definida."
 
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
-"Na sección '[$section|]' a clave obrigatoria '$key|' non está establecida."
-
-#~ msgid "Cave Lit"
-#~ msgstr "Cova Iluminada"
+"Na sección '[$section|]' a clave obrigatoria '$key|' non está definida."
 
 #~ msgid "Rockbound Cave Lit"
 #~ msgstr "Cova Rochosa Iluminada"
@@ -1558,30 +1583,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Atopouse un terreo incorrecto, probablemente un formato de terreo 1.2, "
 #~ "terreo = "
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "Non se definiu un servidor."
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "Non se definiu un servidor."
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Non se definiu un servidor."
-
-#, fuzzy
-#~ msgid "No default label defined."
-#~ msgstr "Non se definiu un servidor."
-
-#~ msgid "Save replays on SP victory or SP/MP defeat."
-#~ msgstr ""
-#~ "Gardar repeticións en victorias dun xogador ou derrotas dun xogador/"
-#~ "multijugador"
-
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr ""
-#~ "Eliminar automáticamente as partidas gardadas automáticamente en "
-#~ "victorias dun xogador/multixogador ou en derrotas de un xogador/"
-#~ "multixogador"

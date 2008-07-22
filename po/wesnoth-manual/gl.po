@@ -1,19 +1,23 @@
-# Galician translations for Battle for Wesnoth package
+# Galician translations of wesnoth-manual
 # Copyright (C) 2007 Wesnoth Development Team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2007.
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
+#
+# Proxecto Trasno <http://trasno.net>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-06-13 13:31+0200\n"
-"PO-Revision-Date: 2008-02-27 21:47+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
+"PO-Revision-Date: 2008-06-29 12:20+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Galician\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # type: Attribute 'lang' of: <book>
 #: ../../doc/manual/manual.en.xml:4
@@ -39,6 +43,7 @@ msgstr "Battle for Wesnoth é un xogo de rol de estratexia cun tema fantástico.
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:14
+#, fuzzy
 msgid ""
 "<emphasis>Build up a great army</emphasis>, gradually turning raw recruits "
 "into hardened veterans. In later games, recall your toughest warriors and "
@@ -48,10 +53,10 @@ msgid ""
 msgstr ""
 "<emphasis>Xunta un gran exército</emphasis>, convertendo gradualmente "
 "recrutas rasos en veteranos endurecidos. En partidas posteriores, volve "
-"chamar os teus guerreiros máis fortes e forma unha hoste letal contra a que "
-"ninguén se poida opoñer! Elixe unidades dun gran conxunto de especialistas, "
-"selecciona con coidado unhas forzas coas fortalezas axeitadas para loitar "
-"ben en diferentes terreos contra todo tipo de oposición."
+"chamar ós teus guerreiros máis fortes e forma unha hoste letal contra a que "
+"ninguén se poida opoñer! Elixe unidades entre un gran conxunto de "
+"especialistas, selecciona con coidado unhas forzas cas fortalezas axeitadas "
+"para loitar ben en diferentes terreos contra todo tipo de oposición."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:20
@@ -223,6 +228,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:98 ../../doc/manual/manual.en.xml:320
@@ -235,7 +242,7 @@ msgstr ""
 #: ../../doc/manual/manual.en.xml:2002 ../../doc/manual/manual.en.xml:2018
 #: ../../doc/manual/manual.en.xml:2034 ../../doc/manual/manual.en.xml:2050
 msgid "</inlinemediaobject>"
-msgstr ""
+msgstr "</inlinemediaobject>"
 
 #: ../../doc/manual/manual.en.xml:103
 msgid "Tutorial"
@@ -294,7 +301,6 @@ msgstr "Multixogador"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:144
-#, fuzzy
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -302,11 +308,11 @@ msgid ""
 "appear and allow you to choose how you want to play the scenario. To learn "
 "more, see <link linkend=\"scenarios\">scenarios</link>."
 msgstr ""
-"Preme neste botón para xogar escenarios únicos contra un ou máis opoñentes. "
+"Preme neste botón para xogar un só escenario contra un ou máis opoñentes. "
 "Podes xogar partidas por internet ou no teu ordenador, contra opoñentes "
 "humanos ou por ordenador. Cando selecciones este botón aparecerá un diálogo "
 "que che permitirá escoller como queres xogar o escenario. Para aprender "
-"máis, consulta <xref linkend=\"scenarios\"/>."
+"máis, consulta <link linkend=\"scenarios\">escenarios</link>."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:154
@@ -524,7 +530,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:301
-#, fuzzy
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -538,13 +543,13 @@ msgid ""
 "within the scenario."
 msgstr ""
 "Normalmente as partidas multixogador xóganse contra outros xogadores a "
-"través de internet (tamén poderás xogalas na túa LAN se tes unha). Estas "
-"partidas coordínanse a través do servidor multixogador de Wesnoth. As "
+"través da Internet (tamén poderás xogalas na túa LAN se tes unha). Todas "
+"estas partidas coordínanse a través do servidor multixogador de Wesnoth. As "
 "partidas multixogador poden levar de 1 hora a 10 horas, dependendo de cantos "
 "xogadores haxa (e do tamaño do mapa). O tempo medio está entre 3 e 7 horas. "
-"As partidas poden gardarse e cargarse tantas veces como queiras. Así que, é "
-"posible que algunhas partidas duren 1 ou 2 semanas, ainda que o tempo de "
-"xogo sexa de só unhas poucas horas. Non podes conservar unidades de "
+"As partidas poden gardarse e cargarse tantas veces como se queira. Así que, "
+"é posible que algunhas partidas duren 1 ou 2 semanas, ainda que o tempo de "
+"xogo sexa de só unhas poucas horas. Non se poden conservar unidades de "
 "multixogador dun escenario para o seguinte, así que o teu exército só "
 "servirá para ese escenario."
 
@@ -562,6 +567,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:323
@@ -588,7 +595,6 @@ msgstr "Conectar a Máquina/Servidor"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:331
-#, fuzzy
 msgid ""
 "This option opens a dialog box allowing you to enter the address of the "
 "machine to join. In this dialog there also is the button \"View List\" that "
@@ -596,10 +602,9 @@ msgid ""
 "server is currently not available."
 msgstr ""
 "Esta opción abre un diálogo que che permite introducir o enderezo da máquina "
-"á que se vai conectar. Esta pode ser outro cliente que aloxa unha partida en "
-"rede sen usar un servidor, ou un servidor diferente. Neste diálogo tamén "
-"está o botón \"Ver Lista\" que amosa unha lista dos servidores oficiais que "
-"se poden usar se o servidor principal non está dispoñible."
+"á que se conectar. Neste diálogo tamén está o botón \"Ver Lista\" que amosa "
+"unha lista dos servidores oficiais que se poden usar se o servidor principal "
+"non está dispoñible."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:336
@@ -614,7 +619,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:339
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -628,14 +632,17 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
-"Podes aloxar partidas multixogador co teu cliente sen necesidade de usar un "
-"servidor dedicado. Se aloxas unha partida co teu cliente, os outros "
-"xogadores teñen que conectarse ó teu porto 15000 usando TCP. Se estás detrás "
-"dun cortalumes, probablemente terás que cambiar a configuración do teu "
-"cortalumes para permitir conexións entrantes ó porto 15000, e dicirlle ó teu "
-"cortalumes que redirixa dito tráfico á máquina que aloxa a partida. Non "
-"terás que facer cambios no cortalumes para unirte a partidas aloxadas nun "
-"servidor público ou por algún outro."
+"Para poder comezar unha partida multixogador sen usar un servidor "
+"multixogador externo, terás que iniciar ti mesmo o servidor, que normalmente "
+"se chama <emphasis>wesnothd</emphasis>. Despois terás que conectarte á túa "
+"propia máquina no diálogo <emphasis>Conectar a Máquina/Servidor</emphasis> "
+"introducindo o enderezo 127.0.0.1. Os outros xogadores precisarán poder "
+"conectarse ó teu porto 15000 usando TCP para xogar contigo no teu servidor. "
+"Se estás detrás dun cortalumes, probablemente terás que cambiar a "
+"configuración do cortalumes para permitir as conexións entrantes ó porto "
+"15000, e dicirlle ó cortalumes que redirixa dito tráfico á máquina que aloxa "
+"a partida. Non terás que facer cambios no cortalumes para unirte a partidas "
+"aloxadas nun servidor público ou doutra persoa."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -681,6 +688,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:376
@@ -703,6 +712,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:389
@@ -772,6 +783,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:455
@@ -805,7 +818,6 @@ msgstr "Recrutar e Volver chamar"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:482
-#, fuzzy
 msgid ""
 "When you first start a scenario or campaign you will only have a few units "
 "on the map. One of these will be your commander (identified by a little "
@@ -818,14 +830,14 @@ msgid ""
 msgstr ""
 "Cando comezas un escenario ou unha campaña por primeira vez só terás unhas "
 "poucas unidades no mapa. Unha delas será o teu comandante (identificado por "
-"unha pequena icona con forma de coroa). O teu comandante está situado "
-"normalmente nun castelo ou nun hexágono especial chamado torre. Cando o teu "
-"comandante estea nunha torre (non só na túa, senon tamén na torre de "
-"calquera dos castelos inimigos que captures) e teñas ouro dabondo, poderás "
-"recrutar unidades para o teu exército. En escenarios posteriores poderás "
-"volver chamar unidades con experiencia que sobreviviran ós escenarios "
-"anteriores. Así poderás comezar a construir o teu exército para conquistar ó "
-"inimigo."
+"unha pequena icona con forma de coroa dourada). O teu comandante está "
+"situado normalmente dentro dun castelo nun hexágono especial chamado torre. "
+"Cando o teu comandante estea nunha torre (non só na túa, senón tamén na "
+"torre de calquera dos castelos inimigos que captures) e teñas ouro dabondo, "
+"poderás recrutar unidades para o teu exército. En escenarios posteriores "
+"poderás volver chamar unidades con experiencia que sobreviviron ós "
+"escenarios anteriores. Así poderás comezar a construir o teu exército para "
+"conquistar ó inimigo."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:491
@@ -942,7 +954,6 @@ msgstr "Ouro"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:540
-#, fuzzy
 msgid ""
 "Your army does not fight for free. It costs you gold to recruit units and "
 "gold to maintain them. You start each scenario with gold carried over from "
@@ -956,12 +967,12 @@ msgid ""
 "current gold and current income at the top of the screen as described in the "
 "section on the <link linkend=\"game_screen\">game screen</link>."
 msgstr ""
-"O teu exército non loita a cambio de nada. Cústache cartos recrutar unidades "
-"e cartos mantelas. Comezas cada escenario con cartos acumulados de "
-"escenarios anteriores (ainda que cada escenario asegura que polo menos tes "
-"unha cantidade mínima de ouro para comezar se non acumulaches ouro dabondo "
-"de escenarios anteriores) e podes obter máis cumprindo os obxectivos do "
-"escenario rápido e, durante un escenario, controlando as vilas. Cada vila "
+"O teu exército non loita de balde. Cústache cartos recrutar unidades e "
+"cústache cartos mantelas. Comezas cada escenario con cartos acumulados de "
+"escenarios anteriores (ainda que cada escenario se asegura de que polo menos "
+"tes unha cantidade de ouro mínima para comezar se non acumulaches ouro "
+"dabondo de escenarios anteriores) e podes obter máis cumprindo os obxectivos "
+"do escenario rápido e, durante un escenario, controlando as vilas. Cada vila "
 "que controles proporcionarache uns ingresos de dúas pezas de ouro por turno. "
 "Cando comezas un escenario por primeira vez normalmente é aconsellable "
 "conseguir o control de tantas vilas como poidas para asegurarte de que teñas "
@@ -1241,7 +1252,7 @@ msgstr "Ctrl-v"
 #: ../../doc/manual/manual.en.xml:754
 msgid "Show enemy moves (where the enemy can move next turn)"
 msgstr ""
-"Mostra os movementos do inimigo (a onde se pode mover o inimigo no seguinte "
+"Amosar os movementos do inimigo (a onde se pode mover o inimigo no seguinte "
 "turno)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1538,6 +1549,8 @@ msgstr ":"
 msgid ""
 "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</ulink>"
 msgstr ""
+"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Modo de comandos</"
+"ulink>"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1003
@@ -1565,6 +1578,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1018
@@ -1658,7 +1673,6 @@ msgstr "Unidades"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1065
-#, fuzzy
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -1668,10 +1682,10 @@ msgid ""
 msgstr ""
 "Battle for Wesnoth ten centos de tipos de unidades que se caracterizan por "
 "un rico conxunto de estatísticas. Ademais, as unidades individuais poden ter "
-"<xref linkend=\"trazos\"/> específicos que as fan lixeiramente diferentes "
-"das outras unidades do mesmo tipo. Por último, os deseñadores das campañas "
-"poden engadir unidades únicas ás súas campañas para ampliar as opcións "
-"dispoñibles para os xogadores."
+"<link linkend=\"traits\">trazos</link> específicos que as fan lixeiramente "
+"diferentes das outras unidades do mesmo tipo. Por último, os deseñadores das "
+"campañas poden engadir unidades únicas ás súas campañas para ampliar ainda "
+"máis as opcións dispoñibles para os xogadores."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1071
@@ -1766,6 +1780,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
 "jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
+"jpg\"/> </imageobject>"
 
 #: ../../doc/manual/manual.en.xml:1135
 msgid "Dawn"
@@ -1789,6 +1805,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "morning.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"morning.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1157
@@ -1821,6 +1839,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "afternoon.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"afternoon.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1179
@@ -1839,6 +1859,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
 "jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
+"jpg\"/> </imageobject>"
 
 #: ../../doc/manual/manual.en.xml:1201
 msgid "Dusk"
@@ -1856,6 +1878,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "firstwatch.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"firstwatch.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1223
@@ -1874,6 +1898,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "secondwatch.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"secondwatch.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1245
@@ -1891,6 +1917,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "underground.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"underground.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1267
@@ -2191,14 +2219,14 @@ msgstr "Puñalada por atrás"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1470
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (e.g. turned to stone)."
 msgstr ""
-"Este ataque inflixe o dobre de dano se hai un inimigo do obxectivo no lado "
-"oposto do obxectivo, e esa unidade non está incapacitada (p.ex petrificada)."
+"Cando se usa de forma ofensiva, este ataque inflixe o dobre de dano se hai "
+"un inimigo do obxectivo no lado oposto do obxectivo, e esa unidade non está "
+"incapacitada (p.ex petrificada)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1478
@@ -2221,13 +2249,13 @@ msgstr "Carga"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1494
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
-"Este ataque produce o dobre de dano no obxectivo. Isto tamén fai que a "
-"unidade reciba o dobre de dano no contraataque do obxectivo."
+"Cando se usa de forma ofensiva, este ataque inflixe o dobre de dano no "
+"obxectivo. Isto tamén fai que a unidade reciba o dobre de dano no "
+"contraataque do obxectivo."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1501
@@ -2704,7 +2732,6 @@ msgstr "Movemento"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1905
-#, fuzzy
 msgid ""
 "Clicking on a unit identifies all the places it can move on its current turn "
 "by dimming unreachable hexes (pressing the number keys 2-7 will identify the "
@@ -2726,15 +2753,15 @@ msgstr ""
 "adicionais ós que se poderia chegar nese número de turnos). Mentres se está "
 "neste modo, se se move o cursor sobre un hexágono hase identificar o camiño "
 "que a túa unidade tomaría cara ese hexágono ademais de información adicional "
-"sobre o plus de defensa da túa unidade nese hexágono e, se lle levaría máis "
-"dun turno chegar, o número de turnos que lle levaría chegar. Se non desexas "
-"mover á unidade este modo pode cancelarse seleccionando unha unidade "
+"sobre o plus de defensa da túa unidade nese hexágono e, se lle leva máis dun "
+"turno chegar, o número de turnos que lle levaría chegar. Se non desexas "
+"mover á unidade, este modo pode cancelarse seleccionando unha unidade "
 "diferente (premendo na nova unidade ou usando as teclas <literal>n</literal> "
 "ou <literal>N</literal>) ou premendo co botón dereito (Clic de comando nun "
-"Mac) en calquera parte do mapa. As <xref linkend=\"esferas\"/> da cima da "
-"barra de enerxía dunha unidade proporcionan unha forma rápida para ver cales "
-"das túas unidades xa se moveron ou cales poden moverse máis ainda no turno "
-"actual."
+"Mac) en calquera parte do mapa. As <link linkend=\"orbs\">esferas</link> da "
+"cima da barra de enerxía dunha unidade proporcionan unha forma rápida para "
+"ver cales das túas unidades xa se moveron ou cales poden moverse máis ainda "
+"no turno actual."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1919
@@ -2833,12 +2860,14 @@ msgstr ""
 msgid "Green"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1981
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1989
@@ -2854,12 +2883,14 @@ msgstr ""
 msgid "Yellow"
 msgstr "Ralentiza"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1997
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2005
@@ -2876,12 +2907,14 @@ msgstr ""
 msgid "Red"
 msgstr ""
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2013
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2021
@@ -2897,12 +2930,14 @@ msgstr ""
 msgid "Blue"
 msgstr "Praga"
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2029
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2037
@@ -2911,12 +2946,14 @@ msgid "If the unit is an ally you do not control"
 msgstr ""
 "</inlinemediaobject> azul se a unidade é un aliado que non podes controlar."
 
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2045
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2053
@@ -2957,7 +2994,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2071
-#, fuzzy
 msgid ""
 "Some campaigns use a star-shaped base to indicate leaders and heroes (units "
 "which are somehow special and for example not allowed to die in the course "
@@ -2965,11 +3001,12 @@ msgid ""
 "mark heroes. Still others have no specific hero indicator at all. Which (if "
 "any) is used is a stylistic choice left to campaign designers."
 msgstr ""
-"Algunhas campañas usan unha base en forma de estrela para indicar os "
-"líderes; outras usan unha icona de heroe con forma de escudo preto da "
-"esquina superior dereita da unidade. Ainda que outras non teñen un indicador "
-"específico do heroe. O que se usa (se se usa algo) é unha elección de estilo "
-"que se deixa ós deseñadores das campañas."
+"Algunhas campañas usan unha base en forma de estrela para indicar os líderes "
+"e mailos heroes (unidades que son especiais por algunha razón e que por "
+"exemplo non poden morrer durante un escenario); outras usan unha coroa "
+"prateada enriba da barra de enerxía para marcar ós heroes. Ainda que outras "
+"non teñen un indicador específico para os heroes. O que se usa (se se usa "
+"algo) é unha elección de estilo que se deixa ós deseñadores das campañas."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2081
@@ -3151,6 +3188,12 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
+"Exemplos: as escamas dos Dragóns protéxenos da maior parte dos tipos de "
+"ataque agás de armas de perforación e de frío. As unidades de Cabalería "
+"Humana xeralmente están ben protexidas menos contra os ataques de "
+"perforación os cales son o seu punto débil. Os Non Mortos son moi "
+"resistentes ás armas de folla e de perforación pero moi vulnerables ós "
+"ataques de impacto e arcanos."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2172
@@ -3260,11 +3303,15 @@ msgstr "A unha unidade pode levarlle varios turnos sandar de todo."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2231
+#, fuzzy
 msgid ""
 "Healers (Elvish Shaman, Elvish Druid, Elvish Shyde, White Mage, Mage of "
 "Light, Paladin) heal all wounded units around them, so you can keep units "
 "close to the battle without losing them."
 msgstr ""
+"Os sandadores (Elfo Xamán, Elfo Druida, Elfa               , Mago Branco, "
+"Mago de Luz, Paladín) sandan a tódalas unidades feridas arredor deles, así "
+"que podes manter ás túas unidades preto da batalla sen perdelas."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2238
@@ -3615,17 +3662,16 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2397
-#, fuzzy
 msgid ""
 "For example, Horsemen can hold up the line against Orcish Grunts and Troll "
 "Whelps very well because they have some resistances against blade and "
 "impact. But your Horseman may quite quickly fall to Orcish Archers and "
 "Goblin Spearmen."
 msgstr ""
-"Por exemplo, os Homes a Cabalo poden manter a liña contra os Orcos Roñóns e "
-"os Trolls              moi ben porque teñen algunhas resistencias contra os "
-"ataques de folla e de impacto. Pero os teus Homes a Cabalo poden caer "
-"rapidamente frontre ós Orcos Arqueiros e os Trasnos Lanceiros."
+"Por exemplo, os Homes a Cabalo poden manter unha liña fronte ós Orcos Roñóns "
+"e os Trolls Cachorros moi ben porque teñen algunhas resistencias contra os "
+"ataques de folla e de impacto. Pero os teus Homes a Cabalo poden caer rápido "
+"fronte ós Orcos Arqueiros e ós Trasnos Lanceiros."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2402
@@ -3637,6 +3683,13 @@ msgid ""
 "often wise to attack at the range that allows the enemy to do least damage "
 "to you, rather than choosing the maximum expected damage to the enemy."
 msgstr ""
+"Normalmente sae a conta se podes matar definitivamente (ou case matar) á "
+"unidade á que te enfrontas. Se non estás seguro de acabar co inimigo nun "
+"turno, asegúrate de que a túa unidade pode soportar os contraataques ou "
+"decide que estás preparado para perder esa unidade. Para resistir os golpes "
+"do inimigo no seguinte turno, a miúdo é intelixente atacar da forma que lle "
+"permite ó inimigo inflixirche menos dano, en troques de escoller o máximo "
+"dano agardado para o inimigo."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2410
@@ -4043,92 +4096,3 @@ msgstr "Glosario"
 #: ../../doc/manual/manual.en.xml:2668
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Zona De Control</link>."
-
-# type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Main Menu</phrase>"
-#~ msgstr "<phrase>Menú Principal</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Multiplayer dialog</phrase>"
-#~ msgstr "<phrase>Diálogo Multixogador</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Game Screen</phrase>"
-#~ msgstr "<phrase>Pantalla de Xogo</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Top Panel</phrase>"
-#~ msgstr "<phrase>Panel Superior</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Right Panel</phrase>"
-#~ msgstr "<phrase>Panel Dereito</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#~ msgid "<phrase>Recruit dialog</phrase>"
-#~ msgstr "<phrase>Diálogo de recrutamento</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-dawn.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-dawn.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-morning.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-morning.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-afternoon.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-afternoon.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-dusk.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-dusk.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-firstwatch.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-firstwatch.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-secondwatch.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-secondwatch.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject>
-#~ msgid "<phrase>images/schedule-underground.jpg</phrase>"
-#~ msgstr "<phrase>images/schedule-underground.jpg</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Green orb</phrase>"
-#~ msgstr "<phrase>esfera verde</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Yellow orb</phrase>"
-#~ msgstr "<phrase>esfera amarela</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Red orb</phrase>"
-#~ msgstr "<phrase>esfera vermella</phrase>"
-
-# type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>Blue orb</phrase>"
-#~ msgstr "<phrase>esfera azul</phrase>"
-
-# type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject>
-#, fuzzy
-#~ msgid "<phrase>No orb</phrase>"
-#~ msgstr "<phrase>sen esfera</phrase>"
-
-# type: Content of: <book><glossary><glossentry>
-#~ msgid "<glossterm> ZOC </glossterm>"
-#~ msgstr "<glossterm> ZDC </glossterm>"
-
-# type: Content of: <book><chapter><section><section><section><title>
-#~ msgid "Host Networked Game"
-#~ msgstr "Aloxar Partida en Rede"
-
-# type: Content of: <book><chapter><section><section><title>
-#~ msgid "Money"
-#~ msgstr "Cartos"

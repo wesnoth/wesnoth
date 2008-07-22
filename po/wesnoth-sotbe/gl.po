@@ -1,14 +1,21 @@
+# Galician translation of wesnoth-sotbe
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+#
+# Proxecto Trasno <http://trasno.net>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-07-13 17:51+0200\n"
-"PO-Revision-Date: 2008-02-19 21:22+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2008-06-19 18:19+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -73,7 +80,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:26
 #, fuzzy
 msgid "Conception and Original Design"
-msgstr "Concepción e Deseño Orixinal"
+msgstr "Traballo Artístico e Deseño Gráfico"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:32
@@ -84,7 +91,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:38
 #, fuzzy
 msgid "Completion and Maintenance"
-msgstr "Agocharse e Buscar"
+msgstr "Tarefas de mantemento de Cron"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:44
@@ -317,19 +324,18 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:173
 #, fuzzy
 msgid "Hurrah! Victory!"
-msgstr "Cara a victoria!"
+msgstr "Unha victoria rápida"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:178
 #, fuzzy
 msgid "Die, human-worm."
-msgstr "Morre, escoura de Wesfolk!"
+msgstr "Humanos"
 
 #. [unit]: type=Wolf Rider
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:197
-#, fuzzy
 msgid "Vrag"
-msgstr "Braga"
+msgstr "Vrag"
 
 #. [message]: speaker=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:207
@@ -351,9 +357,8 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:222
-#, fuzzy
 msgid "Uh oh! What should we do, Chief?"
-msgstr "Pero que ten iso que ver comigo?"
+msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:227
@@ -494,7 +499,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:126
 #, fuzzy
 msgid "I told you so!"
-msgstr "Así que que propós?"
+msgstr "Así que, como debo chamarte?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:131
@@ -937,8 +942,9 @@ msgstr ""
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:284
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:360
+#, fuzzy
 msgid "Gork"
-msgstr ""
+msgstr "Gork"
 
 #. [event]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:285
@@ -1045,7 +1051,7 @@ msgstr "MATÁDEO!!!"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:456
 #, fuzzy
 msgid "Hahahahaha! If you can!"
-msgstr "Se podo, axudareiche!"
+msgstr "non pode enviar comentarios"
 
 #. [message]: speaker=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:486
@@ -1082,7 +1088,7 @@ msgstr "Gústame este plano, Xefe!"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:511
 #, fuzzy
 msgid "Which plan?"
-msgstr "Cal?"
+msgstr "Que xogador?"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:516
@@ -1230,7 +1236,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:4
 #, fuzzy
 msgid "To the Harbour of Tirigaz"
-msgstr "Ás armas, homes!"
+msgstr "Responder ó comentario"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:19
@@ -1362,12 +1368,13 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:366
 #, fuzzy
 msgid "It is written H.O.L.Y W.A.T.E.R"
-msgstr "Acabouse. Estou condenado..."
+msgstr "Quen é?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:370
+#, fuzzy
 msgid "I'm thirsty ... *gulp* *gulp*"
-msgstr ""
+msgstr "Formato de Ficheiro de Saída GULP"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:374
@@ -1395,7 +1402,7 @@ msgstr "Ben, supoño..."
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:26
 #, fuzzy
 msgid "Black Flag"
-msgstr "Fillo de Ollo Negro"
+msgstr "Captura a Bandeira"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:42
@@ -1457,9 +1464,8 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:277
-#, fuzzy
 msgid "Greetings from Kapou'e, Son of the Black-Eye Karun."
-msgstr "Son eu, Kapou'e, fillo de Karun Ollo Negro. Que queres, anano?"
+msgstr ""
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:282
@@ -1565,7 +1571,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:4
 #, fuzzy
 msgid "The Desert of Death"
-msgstr "Morte de Erlornas"
+msgstr "Morte de Deoran"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:19
@@ -1779,8 +1785,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:326
+#, fuzzy
 msgid "I don't care, get lost!"
-msgstr ""
+msgstr "(NOTA: Perderanse os traballos!)"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:331
@@ -1828,7 +1835,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:4
 #, fuzzy
 msgid "Silent Forest"
-msgstr "Defende o Bosque"
+msgstr "Bosque Nevado"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:20
@@ -1984,7 +1991,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:269
 #, fuzzy
 msgid "Yes, that is correct."
-msgstr "Aah! Que é iso?!?"
+msgstr "Verificar que %s é a ruta correcta"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:274
@@ -2472,13 +2479,15 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:742
+#, fuzzy
 msgid "Curse you, foul orc!"
-msgstr ""
+msgstr "Orco parvo! Morre agora!"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:4
+#, fuzzy
 msgid "Clash of Armies"
-msgstr ""
+msgstr "4 xog - Choque"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:25
@@ -2919,7 +2928,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:4
 #, fuzzy
 msgid "Back Home"
-msgstr "Fogar do Elfos do Norte"
+msgstr "Cartafol persoal"
 
 #. [side]: type=General
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:82
@@ -2937,7 +2946,7 @@ msgstr "Xeneral Fredrick"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:128
 #, fuzzy
 msgid "Georgy"
-msgstr "Xeneral Georgy"
+msgstr "Gork"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:142
@@ -3099,7 +3108,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:518
 #, fuzzy
 msgid "Sounds simple enough."
-msgstr "Sons da Interface de Usuario"
+msgstr "Xestión sinxela de CJK"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:563
@@ -3223,7 +3232,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:4
 #, fuzzy
 msgid "Civil War"
-msgstr "As Mareas da Guerra"
+msgstr "Simulación da guerra civil estadounidense"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:27
@@ -3342,7 +3351,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:27
 #, fuzzy
 msgid "Clear out the Traitors"
-msgstr "Os turnos se esgoten"
+msgstr "Esgotar os turnos"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:65
@@ -3840,7 +3849,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:838
 #, fuzzy
 msgid "YEAH!"
-msgstr "Hahaha! Sí!"
+msgstr "Sí!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:865
@@ -3989,7 +3998,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:4
 #, fuzzy
 msgid "Watch Tower"
-msgstr "Primeira Garda"
+msgstr "Torre da fatalidade"
 
 #. [unit_type]: race=mechanical
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:33
@@ -4037,12 +4046,23 @@ msgid ""
 "their help."
 msgstr ""
 
+#, fuzzy
+#~ msgid "Transport Galleon"
+#~ msgstr "Galeón de Transporte"
+
+#~ msgid "Transport"
+#~ msgstr "Transporte"
+
+#, fuzzy
+#~ msgid "Landing Galleon"
+#~ msgstr "Galeón Pirata"
+
 #~ msgid "Ah...."
 #~ msgstr "Ah...."
 
 #, fuzzy
 #~ msgid "Just wait a sec."
-#~ msgstr "Agarda - oín algo..."
+#~ msgstr "Agarde, buscando..."
 
 #, fuzzy
 #~ msgid "I hurry up!"
@@ -4054,22 +4074,8 @@ msgstr ""
 #~ msgid "Lieutenant Hank"
 #~ msgstr "Tenente Hank"
 
-#, fuzzy
-#~ msgid "Landing Galleon"
-#~ msgstr "Galeón Pirata"
+#~ msgid "General Georgy"
+#~ msgstr "Xeneral Georgy"
 
 #~ msgid "Pirate Galleon"
 #~ msgstr "Galeón Pirata"
-
-#, fuzzy
-#~ msgid "Transport Galleon"
-#~ msgstr "Galeón de Transporte"
-
-#~ msgid "Transport"
-#~ msgstr "Transporte"
-
-#~ msgid "Mkel"
-#~ msgstr "Mkel"
-
-#~ msgid "Oumph"
-#~ msgstr "Oumph"

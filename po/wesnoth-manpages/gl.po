@@ -1,21 +1,21 @@
-# translation of gl_ES.po to Galician
+# translation of wesnoth-manpages to Galician
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 #
 # Proxecto Trasno <http://trasno.net>
 #
-#
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007.
-# Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: gl_ES\n"
 "POT-Creation-Date: 2008-05-26 18:41+0200\n"
-"PO-Revision-Date: 2008-02-22 12:39+0100\n"
-"Last-Translator: Fran Diéguez <fran dot dieguez at glug dot es>\n"
-"Language-Team: Galician <en@li.org>\n"
+"PO-Revision-Date: 2008-07-03 11:58+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -95,11 +95,12 @@ msgstr ""
 "tendo en conta a xestión dos teus recursos de ouro e vilas. Tódalas unidades "
 "teñen as súas propias fortalezas e debilidades; para gañar, desprega as túas "
 "forzas para que teñan as máximas vantaxes mentres lle impides ós teus "
-"inimigos face-lo mesmo. A medida que as unidades consiguen experiencia, "
+"inimigos face-lo mesmo. A medida que as unidades conseguen experiencia, "
 "adquiren novas habilidades e fanse máis poderosas. Xoga na túa propia lingua "
 "e proba as túas habilidades contra un opoñente por ordenador intelixente, ou "
 "únete á gran comunidade de xogadores en liña de Wesnoth. Crea as túas "
-"propias unidades, escenarios ou campañas, e comparteos cos demais."
+"propias unidades personalizadas, escenarios ou campañas, e comparteos cos "
+"demais."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
@@ -134,7 +135,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:52
 #, no-wrap
 msgid "B<--compress>I<\\ infile\\ outfile>"
-msgstr "B<--compress>I<\\ ficheiroentrada\\ ficheirosaida>"
+msgstr "B<--compress>I<\\ ficheiroentrada\\ ficheirosaída>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:58
@@ -143,7 +144,7 @@ msgid ""
 "WML format (I<outfile>)."
 msgstr ""
 "comprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está en "
-"formato WML de texto a formato WML binario (I<ficheirosaida>)."
+"formato WML de texto a formato WML binario (I<ficheirosaída>)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:58
@@ -166,7 +167,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:63
 #, no-wrap
 msgid "B<--decompress>I<\\ infile\\ outfile>"
-msgstr "B<--decompress>I<\\ ficheiroentrada\\ ficheirosaida>"
+msgstr "B<--decompress>I<\\ ficheiroentrada\\ ficheirosaída>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:69
@@ -175,7 +176,7 @@ msgid ""
 "WML format (I<outfile>)."
 msgstr ""
 "descomprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está en "
-"formato WML binario a formato WML de texto (I<ficheirosaida>)."
+"formato WML binario a formato WML de texto (I<ficheirosaída>)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:69
@@ -216,7 +217,7 @@ msgid ""
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
 "descomprime un ficheiro que debería estar en formato gzip e gárdao co "
-"sufixo .gz. O I<ficheiroentrada.gz> eliminárase."
+"sufixo .gz. O I<ficheiroentrada.gz> eliminarase."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:82
@@ -256,8 +257,8 @@ msgstr "B<--load>I<\\ partidagardada>"
 #: ../../doc/man/wesnoth.6:94
 msgid "loads the file savegame from the standard save game directory."
 msgstr ""
-"carga o ficheiro de partida gardada dende o directorio de partidas gardadas "
-"estándar."
+"carga o ficheiro de partida gardada dende o directorio estándar de partidas "
+"gardadas."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:94
@@ -337,7 +338,7 @@ msgstr "B<--nocache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:123
 msgid "disables caching of game data."
-msgstr "desabilita a cache das partidas gardadas."
+msgstr "deshabilita a caché de datos de xogo."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:123
@@ -473,9 +474,9 @@ msgid ""
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
-"finaliza unha vez se completóu o escenario, sen mostrar un diálogo de "
-"victoria ou derrota que require que o usuario pulse en Aceptar. Isto "
-"emprégase tamén para probas de rendemento automatizadas."
+"sae unha vez se rematou o escenario, sen mostrar un diálogo de victoria ou "
+"derrota que require que o usuario prema Aceptar. Isto tamén se emprega para "
+"probas de rendemento automatizadas mediante scripts."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:162
@@ -490,9 +491,9 @@ msgid ""
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
-"As opcións específicas dun bando márcanse con I<número>.  I<número> tense "
-"que substituir por un número de bando. Normalmente é 1 ou 2 pero depende do "
-"número de xogadores posible do escenario escollido."
+"As opcións multixogador específicas dun bando márcanse con I<número>.  "
+"I<número> tense que substituír por un número de bando. Normalmente é 1 ou 2 "
+"pero depende do número de xogadores posible do escenario escollido."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:169
@@ -536,8 +537,8 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "use esta opción para xogar na era seleccionada en vez de na era B<Default>. "
-"A era elíxese polo id. As eras descríbense no ficheiro B<data/multiplayer/"
-"eras.cfg>."
+"A era elíxese mediante un id. As eras descríbense no ficheiro B<data/"
+"multiplayer/eras.cfg>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:189
@@ -553,7 +554,7 @@ msgid ""
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
 "establece parámetros adicionais para este bando. Este parámetro depende das "
-"opcións usadas con B<--controller> e B<--algorithm>.  Debería ter únicamente "
+"opcións usadas con B<--controller> e B<--algorithm>. Debería ter únicamente "
 "utilidade para a xente que está deseñando a súa propia IA. (ainda non "
 "documentado de forma completa)"
 
@@ -569,7 +570,7 @@ msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
-"selecciona o escenario multixogador polo id. O id do escenario "
+"selecciona un escenario multixogador polo id. O id do escenario "
 "predeterminado é B<multiplayer_The_Freelands>."
 
 # type: TP
@@ -585,7 +586,7 @@ msgid ""
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
 "selecciona unha facción da era actual para este bando. A facción elíxese "
-"polo id. As faccións descríbense no ficheiro data/multiplayer.cfg."
+"mediante un id. As faccións descríbense no ficheiro data/multiplayer.cfg."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:207
@@ -612,7 +613,7 @@ msgid ""
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
 msgstr ""
 "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
+"algorithm2=python_ai --parm2=python_script:py/a_miña_propia_ia.py>"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:74
@@ -674,8 +675,8 @@ msgid ""
 msgstr ""
 "Isto é Software Libre; este software está licenciado baixo a GPL versión 2, "
 "tal e como foi publicada pola Free Software Foundation.  Non existe NINGUNHA "
-"garantía; nin sequera para  o SEU USO COMERCIAL ou ADECUACIÓN A UN PROPÓSITO "
-"PARTICULAR."
+"garantía; nin sequera para o SEU USO COMERCIAL ou ADECUACIÓN PARA UN "
+"PROPÓSITO PARTICULAR."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnoth_editor.6:91
@@ -909,8 +910,8 @@ msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
 msgstr ""
-"asocia o servidor ó porto especificado. Se non se especifica un porto, "
-"usarase o porto B<15000>."
+"asocia o servidor ó porto especificado. Se non se especifica un porto, hase "
+"usar o porto B<15000>."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:77
@@ -924,8 +925,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"establece o número máximo de fios efectivos en espera para a entrada e saída "
-"de rede a n (por defecto: B<5>, max: B<30>)."
+"define o número máximo de fíos efectivos en espera para a entrada/saída de "
+"rede a n (por defecto: B<5>,\\ max:\\ B<30>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:81
@@ -939,8 +940,8 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
-"establece o número máximo de fios efectivos que serán creados. Se o "
-"establece a B<0> non terá limite (por defecto: B<0>)."
+"define o número máximo de fíos efectivos que se van crear. Se o define a "
+"B<0> non terá limite (por defecto: B<0>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:88
@@ -1031,7 +1032,7 @@ msgid ""
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Nomes/apodos que non acepta o servidor. Sopórtanse `*' e `?' coma comodíns "
+"Nomes/alcumes que non acepta o servidor. Sopórtanse `*' e `?' coma comodíns "
 "para patróns. Consulte B<glob>(7) para obter máis detalles. Os valores "
 "predeterminados (que se usan se non se especifica ningún outro) son: "
 "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
@@ -1062,8 +1063,8 @@ msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr ""
-"O tiempo (en segundos) empregado para detectar unha innundación de mensaxes. "
-"(por defecto: B<10> segundos)"
+"O periodo de tempo (en segundos) que se usa para detectar unha inundación de "
+"mensaxes. (por defecto: B<10> segundos)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:126
@@ -1124,7 +1125,7 @@ msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr ""
-"B<[redirect]> Unha etiqueta para especificar un servidor ó que redirixir a "
+"B<[redirect]> Unha etiqueta para especificar un servidor ó que redirixir "
 "certas versións do cliente."
 
 # type: TP
@@ -1172,7 +1173,7 @@ msgid ""
 "as B<[redirect]>."
 msgstr ""
 "B<[proxy]> Unha etiqueta para dicirlle ó servidor que actúe coma un proxy e "
-"redirixa as solicitudes dos clientes conectados ó servidor especificado.  "
+"redirixa as solicitudes dos clientes conectados ó servidor especificado. "
 "Acepta as mesmas claves ca B<[redirect]>."
 
 # type: Plain text
@@ -1185,7 +1186,7 @@ msgid ""
 msgstr ""
 "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>.  Editado por Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> e "
-"Soliton E<lt>soliton.de@gmail.comE<gt>.  Esta páxina de manual escribiuna "
+"Soliton E<lt>soliton.de@gmail.comE<gt>. Esta páxina de manual escribiuna "
 "orixinalmente Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text

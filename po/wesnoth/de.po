@@ -5871,7 +5871,7 @@ msgstr ""
 "Ihr könnt »Gegn. Bewegungen zeigen« aus dem »Aktionen« Menü auswählen, um die "
 "Zugmöglichkeiten Eures Gegners herauszufinden (Es wird von den aktuellen "
 "Positionen Eurer Einheiten ausgegangen). Benutzt diese Möglichkeit, um "
-"sicherzustellen, dass der Gegner eure schwachen und verwundeten Einheiten in "
+"sicherzustellen, dass der Gegner Eure schwachen und verwundeten Einheiten in "
 "seinem nächsten Zug nicht angreifen kann."
 
 #. [tip]
@@ -5918,7 +5918,7 @@ msgid ""
 msgstr ""
 "Eine gegnerische Einheit mit zwei eigenen Einheiten einzukreisen, ist sehr "
 "wirkungsvoll. Vor allem Einheiten, die sich sehr schnell bewegen können, "
-"werden hierdurch an einer Flucht gehindert. Stehen eure Einheiten sogar "
+"werden hierdurch an einer Flucht gehindert. Stehen Eure Einheiten sogar "
 "gegenüber, so kann sich die eingekreiste Einheit nur ein Feld in ihrem "
 "nächsten Zug bewegen."
 
@@ -5948,7 +5948,7 @@ msgid ""
 msgstr ""
 "Es gibt einige nützliche Zusammenfassungen, die Ihr über das »Menü« im Spiel "
 "erreichen könnt: die »Spielübersicht« zum Beispiel zeigt Euch, wie es um Eure "
-"Gegner steht und wie es euch im Verhältnis ergeht."
+"Gegner steht und wie es Euch im Verhältnis ergeht."
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5960,7 +5960,7 @@ msgstr ""
 "Einheiten mit dem Charakteristikum »schnell« können sich ein Feld "
 "weiterbewegen. Dies kann für die Durchquerung von schwierigem Gelände, wie "
 "Wasser oder Höhlen, sehr wichtig sein. Es kann den Unterschied machen, ob "
-"man sich ein oder zwei Felder weit bewegen kann."
+"Eure Einheit sich ein oder zwei Felder weit bewegen kann."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
@@ -6282,9 +6282,9 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Skelette sind resistenter gegen Angriffe mit Klingen- und Stichwaffen. Dafür "
-"gehen sie unter den Schlägen von Hieb- oder arkanen Waffen sowie durch Feuer "
-"schnell zu Grunde."
+"Skelette sind resistenter gegen Angriffe mit Klingen- und Stichwaffen sowie "
+"Kälteangriffen. Dafür gehen sie unter den Schlägen von Wuchtwaffen sowie "
+"durch arkane oder Feuerangriffe schnell zu Grunde."
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
@@ -8180,9 +8180,8 @@ msgid "Disable autosaves."
 msgstr ""
 
 #: src/menu_events.cpp:2243
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Warte auf das nächste Szenario..."
+msgstr ""
 
 #: src/menu_events.cpp:2246
 #, fuzzy
@@ -9474,14 +9473,14 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 msgid "Enable summary uploads"
 msgstr "Die Übertragung von Zusammenfassungen erlauben"
 
-#~ msgid "Level"
-#~ msgstr "Stufe"
-
 #~ msgid "ruby of fire"
 #~ msgstr "Rubin des Feuers"
 
 #~ msgid "Screenshot"
 #~ msgstr "Screenshot"
+
+#~ msgid "Level"
+#~ msgstr "Stufe"
 
 #~ msgid ""
 #~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
