@@ -1,14 +1,21 @@
+# Galician translation of wesnoth-tutorial
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
+#
+# Proxecto Trasno <http://trasno.net>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-02-19 10:56+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
+"PO-Revision-Date: 2008-07-02 16:48+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [tutorial]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
@@ -70,7 +77,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:139
 msgid "Destroy a fierce enemy"
-msgstr "Destruir a un inimigo forte"
+msgstr "Destruír a un inimigo forte"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:143
@@ -105,7 +112,7 @@ msgid ""
 "For this tutorial, you are playing Konrad. "
 msgstr ""
 "\n"
-"Neste titorial, estás xogando coma Konrad. "
+"Neste titorial estás xogando coma Konrad. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
@@ -132,7 +139,7 @@ msgid ""
 "For this tutorial, you are playing Li'sar. "
 msgstr ""
 "\n"
-"Neste titorial, estás xogando coma Li'sar. "
+"Neste titorial estás xogando coma Li'sar. "
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
@@ -155,7 +162,7 @@ msgid ""
 "The places he could move to are highlighted."
 msgstr ""
 "*Seleccionaches a Konrad.\n"
-"Os sitios ós que el pode moverse están resaltados."
+"Os sitios ós que el se pode mover están resaltados."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:237
@@ -178,7 +185,7 @@ msgid ""
 "The places she could move to are highlighted."
 msgstr ""
 "*Seleccionaches a Li'sar.\n"
-"Os sitios ós que ela pode moverse están resaltados."
+"Os sitios ós que ela se pode mover están resaltados."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:246
@@ -209,14 +216,14 @@ msgid ""
 "*Left click or any key to continue..."
 msgstr ""
 "*Ups!\n"
-"Movécheste un sitio que non era! Despois desta mensaxe, podes premer 'u' "
+"Movécheste a un sitio que non era! Despois desta mensaxe, podes premer 'u' "
 "para Desfacer, despois intentao de novo.\n"
 "*Clic co botón esquerdo ou preme calquera tecla para continuar..."
 
 #. [message]: description=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Good morning Delfador! Is it time to attack things?"
-msgstr "Boa mañá Delfador! É hora de atacar cousas?"
+msgstr "Bos días Delfador! É hora de atacar cousas?"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:323
@@ -231,7 +238,7 @@ msgstr "Atopaches un orco para que loite con el, huh? Un troll?"
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:333
 msgid "Quiet! I will summon an enemy for you..."
-msgstr "Para! Convocarei un inimigo para ti..."
+msgstr "Acouga! Convocarei un inimigo para ti..."
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:372
@@ -314,7 +321,7 @@ msgid ""
 "killed."
 msgstr ""
 "Nota: a pequena coroa prateada preto de Delfador indica que perderás a "
-"partida se o matan. Tamén perderás a partida se matan ó teu líder (Li'sar)."
+"partida se o matan. Tamén perderás a partida se matan á túa líder (Li'sar)."
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
@@ -342,20 +349,20 @@ msgid ""
 msgstr ""
 "Si: é un estafermo máxico.\n"
 "Ves o 3-5 na súa descrición? O primeiro número diche que inflixe tres puntos "
-"de dano cando golpea. O segundo número diche que pode golpear cinco veces en "
+"de dano cando acada. O segundo número diche que pode golpear cinco veces en "
 "cada ronda do combate.\n"
-"Se che acada cada vez, baixarás de $student_hp a $future_hp puntos de vida. "
-"Prepárate!"
+"Se che acada en cada golpe, baixarás de $student_hp a $future_hp puntos de "
+"vida. Prepárate!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
 msgid "Click on the End Turn button on the bottom right"
-msgstr "Preme no botón Rematar o Turno no fondo á dereita"
+msgstr "Preme no botón Rematar o turno no fondo á dereita"
 
 #. [message]: description=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Ouch! I need to heal! Only $student_hp hp left!"
-msgstr "Ouch! Preciso curarme! Só me quedan $student_hp hp!"
+msgstr "Aih! Preciso curarme! Só me quedan $student_hp hp!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:450
@@ -370,8 +377,8 @@ msgid ""
 "good idea, and standing in one will heal you at the start of your next turn: "
 "you should retreat to there."
 msgstr ""
-"Hai unha vila na outra beira do río. Visitar as vilas é unha boa idea, "
-"rematar o teu turno nunha curarate: debes retirarte a alí."
+"Hai unha vila na outra beira do río. Visitar as vilas é unha boa idea, se "
+"estás nunha sandarás ó comezo do teu seguinte turno: debes retirarte a alí."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:520
@@ -406,7 +413,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:794
 msgid "Click on the End Turn button"
-msgstr "Preme no botón Rematar o Turno"
+msgstr "Preme no botón Rematar o turno"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
@@ -434,8 +441,8 @@ msgid ""
 "A splendid idea. If you return to your keep, you can recruit two units. You "
 "have plenty of gold for that."
 msgstr ""
-"Éche unha boa idea. Se volves á túa torre, poderás recrutar dúas unidades. "
-"Tes moito ouro para elo."
+"Éche unha moi boa idea. Se volves á túa torre, poderás recrutar dúas "
+"unidades. Tes moito ouro para elo."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:590
@@ -478,7 +485,7 @@ msgstr ""
 "Estas unidades que acabas de recrutar non poden facer nada neste turno: "
 "controlaralas no seguinte turno.\n"
 "Nota: despois deste diálogo, podes mover o rato por riba dunha unidade para "
-"ver unha descrición na dereita da pantalla.\n"
+"ver unha descrición na parte dereita da pantalla.\n"
 "*Clic co botón esquerdo ou preme calquera tecla para continuar..."
 
 #. [else]
@@ -493,7 +500,7 @@ msgstr ""
 msgid ""
 "Hey, the quintain just healed by two hitpoints! I'd better attack it at once!"
 msgstr ""
-"Hei, o estafermo curouse dous puntos de vida! Será mellor que o ataque dunha "
+"Hei, o estafermo sandou dous puntos de vida! Será mellor que o ataque dunha "
 "vez!"
 
 #. [message]: description=Delfador
@@ -503,8 +510,8 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Si, se unha unidade non fai nada durante un turno, curarase lentamente.\n"
-"Pero antes de que envíes os teus loitadores contra o estafermo debes saber "
+"Si, se unha unidade non fai nada durante un turno, sandará lentamente.\n"
+"Pero antes de que envíes ós teus loitadores contra o estafermo debes saber "
 "que teñen dous tipos de ataque..."
 
 #. [message]: description=student
@@ -517,13 +524,12 @@ msgstr "Direilles que usen o que faga máis dano!"
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I guess you'll "
 "find out..."
-msgstr ""
-"E cal será? A espada (5-4) ou o arco (3-3)? Supoño que o descubrirás..."
+msgstr "E cal é? A espada (5-4) ou o arco (3-3)? Supoño que o descubrirás..."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Left click on an Elvish Fighter"
-msgstr "Preme co botón esquerdo nun Loitador Elfo"
+msgstr "Preme co botón esquerdo nun Elfo Loitador"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
@@ -542,9 +548,9 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5). The ranged "
 "attack was safer."
 msgstr ""
-"O teu elfo usou unha espada (5-4, ou 5 de dano, 4 ataques), que é un ataque "
-"corpo a corpo, así que o estafermo defendeuse co seu ataque corpo a corpo (3-"
-"5). O ataque a distancia é máis seguro."
+"O teu elfo usou unha espada (5-4, ou sexa 5 de dano, 4 ataques), que é un "
+"ataque corpo a corpo, así que o estafermo defendeuse co seu ataque corpo a "
+"corpo (3-5). O ataque a distancia é máis seguro."
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
@@ -554,9 +560,9 @@ msgid ""
 "attack was safer.\n"
 "End your turn, then attack again."
 msgstr ""
-"O teu elfo usou unha espada (5-4, ou 5 de dano, 4 ataques), que é un ataque "
-"corpo a corpo, así que o estafermo defendeuse co seu ataque corpo a corpo (3-"
-"5). O ataque a distancia é máis seguro.\n"
+"O teu elfo usou unha espada (5-4, ou sexa 5 de dano, 4 ataques), que é un "
+"ataque corpo a corpo, así que o estafermo defendeuse co seu ataque corpo a "
+"corpo (3-5). O ataque a distancia é máis seguro.\n"
 "Remata o teu turno, despois volve atacar."
 
 #. [message]: description=Delfador
@@ -566,9 +572,9 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"O teu elfo usou unha espada (5-4, ou 5 de dano, 4 ataques), que é un ataque "
-"corpo a corpo, así que o estafermo defendeuse co seu ataque corpo a corpo (3-"
-"5).\n"
+"O teu elfo usou unha espada (5-4, ou sexa 5 de dano, 4 ataques), que é un "
+"ataque corpo a corpo, así que o estafermo defendeuse co seu ataque corpo a "
+"corpo (3-5).\n"
 "Deberíaslle dicir ó outro Elfo que use o arco."
 
 #. [else]
@@ -585,9 +591,9 @@ msgid ""
 "The quintain has no ranged attack, only a melee attack, so it could not "
 "defend itself."
 msgstr ""
-"O teu elfo usou un arco, que é un ataque a distancia (3-3, ou 3 de dano, 3 "
-"ataques). O estafermo non ten ataque a distancia, só ataque corpo a corpo, "
-"así que non se pode defender."
+"O teu elfo usou un arco, que é un ataque a distancia (3-3, ou sexa 3 de "
+"dano, 3 ataques). O estafermo non ten ataque a distancia, só ataque corpo a "
+"corpo, así que non se pode defender."
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
@@ -597,15 +603,15 @@ msgid ""
 "defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
-"O teu elfo usou un arco, que é un ataque a distancia (3-3, ou 3 de dano, 3 "
-"ataques). O estafermo non ten ataque a distancia, só ataque corpo a corpo, "
-"así que non se pode defender.\n"
+"O teu elfo usou un arco, que é un ataque a distancia (3-3, ou sexa 3 de "
+"dano, 3 ataques). O estafermo non ten ataque a distancia, só ataque corpo a "
+"corpo, así que non se pode defender.\n"
 "Remata o teu turno, e despois volve atacar."
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:818
 msgid "Keep attacking, with both elves, until the quintain is finished!"
-msgstr "Continúa atacando, con ambos elfos, ata que rematen co estafermo!"
+msgstr "Continúa atacando, cos dous elfos, ata que rematen co estafermo!"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:826
@@ -653,7 +659,7 @@ msgid ""
 "unit costs you one gold per turn."
 msgstr ""
 "Nota:\n"
-"Cada vila que posuas pode manter unha única unidade de balde. Despois diso, "
+"Cada vila que posúas pode manter unha única unidade de balde. Despois diso, "
 "cada unidade custarache un de ouro por turno."
 
 #. [message]: speaker=narrator
@@ -666,8 +672,8 @@ msgid ""
 "twice as much to support as level 1 units."
 msgstr ""
 "Nota:\n"
-"Cando unha unidade consigue suficiente experiencia (a barra de experiencia é "
-"a barra pequena da dereita), subirá de nivel. Os Loitadores Elfos teñen dúas "
+"Cando unha unidade consegue suficiente experiencia (a barra de experiencia é "
+"a barra pequena da dereita), subirá de nivel. Os Elfos Loitadores teñen dúas "
 "opcións, e terás que escoller cal queres. Ten en conta que o mantemento das "
 "unidades de nivel 2 custa o dobre có das de nivel 1."
 
@@ -700,7 +706,7 @@ msgid ""
 "opponent: gain enough experience and you become more powerful. "
 msgstr ""
 "Si, conséguese máis experiencia loitando, especialmente ó matar a un "
-"opoñente: consigue suficiente experiencia e serás máis poderoso,"
+"opoñente: consegue suficiente experiencia e serás máis poderoso,"
 
 #. [message]: description=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
@@ -743,9 +749,9 @@ msgid ""
 "the state of your troops before clicking 'End Scenario' to continue to the "
 "next scenario."
 msgstr ""
-"Despois do aviso da túa victoria, o mapa escurecerase para indicar que se "
+"Despois do aviso da túa victoria, o mapa hase escurecer para indicar que "
 "rematou o escenario, pero poderás examinar as posicións finais e o estado "
-"das túas tropas antes de premer en 'Rematar Escenario' para continuar co "
+"das túas tropas antes de premer en 'Rematar escenario' para continuar co "
 "seguinte escenario."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
@@ -754,7 +760,7 @@ msgid ""
 "You can press 'u' to undo most things: useful to correct mistakes."
 msgstr ""
 "*Lembra:\n"
-"Podes premer 'u' para desfacer moitas cousas: útil para corrixir erros."
+"Podes premer 'u' para desfacer moitas cousas: é útil para corrixir erros."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
@@ -780,13 +786,14 @@ msgid ""
 " has two traits: quick and resilient. Quick means a unit can move one tile "
 "further each turn, and resilient means it has more hitpoints."
 msgstr ""
-" ten dou trazos: rápido e resistente.  Rápido significa que se pode mover un "
-"hexágono máis cada turno, e resistente significa que ten máis puntos de vida."
+" ten dous trazos: rápido e resistente.  Rápido significa que se pode mover "
+"un hexágono máis cada turno, e resistente significa que ten máis puntos de "
+"vida."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
 msgid "Patch of forest"
-msgstr "Bosque pequeno"
+msgstr "Anaco de bosque"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
@@ -795,7 +802,7 @@ msgid ""
 "the south-east of the island: a nice, defensible spot."
 msgstr ""
 "Agora sitúa a unha unidade con ataque corpo a corpo, preferiblemente un "
-"loitador, nese bosque pequeno no sueste da illa: un sitio agradable, e "
+"loitador, nese anaco de bosque no sueste da illa: un sitio agradable, e "
 "defendible."
 
 #. [then]
@@ -810,14 +817,14 @@ msgid ""
 "it will heal it by 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack: it is fairly weak itself."
 msgstr ""
-"Cun pouco de axuda, si. Se moves ó teu Xamán cerca da unidade de defensa, "
-"curaraa en 4 puntos de vida por turno. Ten coidado en non expoñer ó Xamán ó "
+"Cun pouco de axuda, si. Se moves ó teu Xamán preto da unidade de defensa, "
+"sandaraa 4 puntos de vida por turno. Ten coidado en non expoñer ó Xamán ó "
 "ataque: e moi débil."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
 msgid "Move a unit (fighter if possible) to the patch of forest"
-msgstr "Move unha unidade (un loitador se é posible) ó bosque pequeno"
+msgstr "Move unha unidade (un loitador se é posible) ó anaco de bosque"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
@@ -825,7 +832,7 @@ msgid ""
 "Advance other units onto the island or to capture villages, then End Turn"
 msgstr ""
 "Avanza as outra unidades cara a illa ou para capturar vilas, despois Remata "
-"o Turno"
+"o turno"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:174
@@ -833,13 +840,13 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
-"Esta unidade só está unha morte (8 puntos de experiencia) de conseguir un "
+"Esta unidade só está a unha morte (8 puntos de experiencia) de conseguir un "
 "nivel máis! Non deixes que morra!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:226
 msgid "I hope I get to retreat after this!"
-msgstr "Espero que teña que retirarme despois disto!"
+msgstr "Agardo que teña que retirarme despois disto!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
@@ -849,7 +856,7 @@ msgstr "Un ataque con éxito dun Orco Roñón e estou rematado!"
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:248
 msgid "Ouch! I could use some healing in a village."
-msgstr "Ouch! Podería curarme nunha vila."
+msgstr "Ouch! Podería sandar nunha vila."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
@@ -923,7 +930,7 @@ msgstr ""
 "Os Orcos acamparon do outro lado do río. Este é o país dos elfos: os Elfos "
 "somos rápidos e dificiles de acadar nos bosques. Eses parvos non deberían "
 "entrar aquí. Debemos derrotar ó seu líder, para que nunca máis nos molesten. "
-"Eu heite aconsellar!"
+"Heite aconsellar!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:420
@@ -978,10 +985,11 @@ msgid ""
 "the east, but we would stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"Mira esa auga azul escuro: é demasiado profunda para cruzala. Poden vadear "
-"lentamente a través dese estreito de augas superficiais azul claro do leste, "
-"pero estaremos na beira e forzarémolos a que loiten dende a auga, onde estan "
-"expostos e teremos a protección do bosque."
+"Mira esa auga azul escura: é demasiado profunda para que ningún dos bandos "
+"poida cruzala. Poden vadear lentamente a través dese estreito de augas "
+"superficiais azul claro do leste, pero estaremos na beira e forzarémolos a "
+"que loiten dende a auga, onde están expostos e teremos a protección do "
+"bosque."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:451
@@ -990,9 +998,9 @@ msgid ""
 "the key: it has a village, for healing injured units, and forest in which we "
 "fight so well."
 msgstr ""
-"O ataque máis probable, entón, é pola ponte. Esa illa do medio é a clave: "
-"ten unha vila, para sanar ás unidades danadas, e bosque no cal loitaremos "
-"ben."
+"O ataque máis probable, polo tanto, é pola ponte. Esa illa do medio é a "
+"clave: ten unha vila, para sandar ás unidades danadas, e bosque no cal "
+"loitaremos ben."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:457
@@ -1003,9 +1011,9 @@ msgid ""
 "One Elvish Shaman"
 msgstr ""
 "Para comezar, precisaremos algunhas unidades:\n"
-"Dous Loitadores Elfos\n"
-"Dous Arqueiros Elfos\n"
-"Un Xamán Elfo"
+"Dous Elfos Loitadores\n"
+"Dous Elfos Arqueiros\n"
+"Un Elfo Xamán"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:525
@@ -1037,11 +1045,10 @@ msgstr "VOLVE CHAMAR A $recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
-#, fuzzy
 msgid "Right click on the tile north-east of you and recall $recall_name1"
 msgstr ""
-"Preme co botón dereito no hexágono do teu sueste e volve chamar a "
-"$recall_name2"
+"Preme co botón dereito no hexágono do teu nordeste e volve chamar a "
+"$recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
@@ -1050,9 +1057,9 @@ msgid ""
 "them: as they don't, it's cheaper to recruit new ones. So recruit an Elvish "
 "Fighter."
 msgstr ""
-"Se algún dos Loitadores Elfos da túa última batalla tivera experiencia, "
+"Se algún dos Elfos Loitadores da túa última batalla tivera experiencia, "
 "deberiámolos volver chamar: xa que non a teñen, é máis barato recrutar novas "
-"unidades. Así que recruta un Loitador Elfo."
+"unidades. Así que recruta un Elfo Loitador."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:545
@@ -1061,26 +1068,26 @@ msgid ""
 "them, instead we must recruit a new Elvish Fighter."
 msgstr ""
 "Se tes algunha unidade con experiencia viva da túa última batalla pode "
-"volvela chamar, en troques de recrutar un novo Loitador Elfo."
+"volvela chamar, en vez de recrutar un novo Elfo Loitador."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:847
 msgid "Elvish Fighter"
-msgstr "Loitador Elfo"
+msgstr "Elfo Loitador"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:549
-#, fuzzy
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Preme co botón dereito no hexágono do teu sueste e recruta a un Loitador Elfo"
+"Preme co botón dereito no hexágono do teu nordeste e recruta a un Elfo "
+"Loitador"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:589
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
-msgstr "Non! Dixen recruta un XAMÁN Elfo! Proba outra vez..."
+msgstr "Non! Dixen recruta un Elfo XAMÁN! Proba outra vez..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:598
@@ -1089,7 +1096,7 @@ msgid ""
 "it. It also has a special attack which slows enemies, halving the damage "
 "they do!"
 msgstr ""
-"O Xamán é unha unidade claramente débil, pero ten a habilidade de curar ás "
+"O Xamán é unha unidade claramente débil, pero ten a habilidade de sandar ás "
 "unidades arredor del. Ten un ataque especial que ralentiza ós inimigos, "
 "limitando á metade o dano que poden facer!"
 
@@ -1123,7 +1130,7 @@ msgstr "Move a Li'sar para capturar unha vila"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:621
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:660
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
-msgstr "Non! Díxenche recruta un ARQUEIRO Elfo! Proba outra vez..."
+msgstr "Non! Díxenche recruta un Elfo ARQUEIRO! Proba outra vez..."
 
 #. [unit]: description=Eowynial, type=Elvish Archer
 #. [else]
@@ -1140,7 +1147,7 @@ msgstr "Xamán"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:644
 msgid "Recruit an Elvish Shaman to your north"
-msgstr "Recruta un Xamán Elfo ó teu norte"
+msgstr "Recruta un Elfo Xamán ó teu norte"
 
 #. [unit]: description=Elriend, type=Elvish Archer
 #. [else]
@@ -1170,12 +1177,12 @@ msgstr "Arqueiro #2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:712
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:749
 msgid "Recruit two Elvish Archers in tiles to your west"
-msgstr "Recruta dous Arqueiros Elfos nos hexágonos do teu oeste"
+msgstr "Recruta dous Elfos Arqueiros nos hexágonos do teu oeste"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:725
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
-msgstr "Non! Díxenche recruta a un LOITADOR Elfo! Proba outra vez..."
+msgstr "Non! Díxenche recruta a un Elfo LOITADOR! Proba outra vez..."
 
 #. [unit]: description=Golir, type=Elvish Fighter
 #. [else]
@@ -1202,10 +1209,9 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
-#, fuzzy
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
-"Preme co botón dereito no hexágono do teu sueste e volve chamar a "
+"Preme co botón dereito no hexágono do teu leste e volve chamar a "
 "$recall_name2"
 
 #. [then]
@@ -1216,10 +1222,9 @@ msgstr "VOLVE CHAMAR A $recall_name2"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:848
-#, fuzzy
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr ""
-"Preme co botón dereito no hexágono ó teu sur e recruta a un Loitador Elfo"
+"Preme co botón dereito no hexágono ó teu leste e recruta a un Elfo Loitador"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:828
@@ -1227,7 +1232,7 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.type|? Díxenche RECRUTA un novo LOITADOR ELFO. Intentao outra vez..."
+"$recruit.type|? Díxenche RECRUTA un novo ELFO LOITADOR. Proba outra vez..."
 
 #. [unit]: description=Elindel, type=Elvish Fighter
 #. [else]
@@ -1313,7 +1318,7 @@ msgid ""
 "of hitting an Elven Archer when it's in forest."
 msgstr ""
 "Excelente. Os elfos están ben protexidos no bosque: só hai unha posibilidade "
-"do 30% de acadarlle a un Arqueiro Elfo cando está no bosque."
+"do 30% de acadarlle a un Elfo Arqueiro cando está no bosque."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:927
@@ -1392,7 +1397,7 @@ msgstr "Non teño máis cartos para recrutar!"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:994
 msgid "This is often a problem, which is why owning villages is important."
 msgstr ""
-"Isto a miúdo é un problema, por iso é polo que posuir vilas é importante."
+"Isto a miúdo é un problema, por iso é polo que posuír vilas é importante."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:995
@@ -1411,12 +1416,12 @@ msgid ""
 "riders reach it."
 msgstr ""
 "O Orco está bloqueando a ponte! Debemos ocupar esa illa antes de que os "
-"lobos montados cheguen a ela."
+"xinetes de lobo cheguen a ela."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1022
 msgid "Can't our units just move around him?"
-msgstr "E non poden as nosas unidades rodealo?"
+msgstr "E logo non poden rodealo as nosas unidades?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1025
@@ -1451,7 +1456,7 @@ msgstr "Ataca ó Orco cun Arqueiro"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1060
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1073
 msgid "Advance other units and capture villages, then End Turn"
-msgstr "Avanza outras unidades e captura vilas, despois Remata o Turno"
+msgstr "Avanza outras unidades e captura vilas, despois Remata o turno"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1065
@@ -1461,7 +1466,7 @@ msgid ""
 "turn."
 msgstr ""
 "Ningunha outra unidade pode chegar onda o Orco: Agardo que o meu arqueiro "
-"sobreviva o seu contraataque! Será mellor conseguir máis vilas, e mover a "
+"sobreviva ó seu contraataque! Será mellor conseguir máis vilas, e mover a "
 "todos máis preto para o seguinte turno."
 
 #. [else]
@@ -1470,7 +1475,7 @@ msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
 "it at the beginning of next turn, too."
 msgstr ""
-"Si. Se o teu Xamán permanece xusto detrás da unidade da ponte, sanaráa ó "
+"Si. Se o teu Xamán permanece xusto detrás da unidade da ponte, sandaraa ó "
 "comezo do seguinte turno."
 
 #. [else]
@@ -1495,7 +1500,8 @@ msgid ""
 "attack you!"
 msgstr ""
 "É moi perigoso estar na auga cando hai inimigos preto! A túa unidade ten "
-"unha posibilidade do 80% de que te acaden! Cancela, agarda a que te ataquen!"
+"unha posibilidade do 80% de que lle acaden! Cancela, e agarda a que te "
+"ataquen!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1136
@@ -1503,8 +1509,8 @@ msgid ""
 "Don't forget about your fighter in the east: you can move him south to that "
 "last village near the channel."
 msgstr ""
-"Non te esquezas do teu loitador no leste: podes movelo ó sur a aquela vila "
-"preto da canle."
+"Non esquezas o teu loitador no leste: podes movelo ó sur a aquela vila preto "
+"do estreito."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1142
@@ -1513,8 +1519,8 @@ msgid ""
 "turn! Move your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
 "Necesitamos tomar esa vila, doutro xeito eles tomarana no próximo turno! "
-"Move a túa unidade con ataque a distancia para tomala de forma que poida "
-"curarse, despois mata ese Orco!"
+"Move á túa unidade con ataque a distancia para tomala de forma que poida "
+"sandar, despois mata ese Orco!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1154
@@ -1543,8 +1549,8 @@ msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, villages can heal 8 (the maximum for any unit)."
 msgstr ""
-"Lembra retirar as túas unidades con ataque a distancia ás vilas. Os "
-"sanadores só poden curar 4 puntos de vida dunha vez, as vilas poden curar 8 "
+"Lembra retirar ás túas unidades con ataque a distancia ás vilas. Os "
+"sandadores só poden curar 4 puntos de vida dunha vez, as vilas poden curar 8 "
 "(o máximo para calquera unidade)."
 
 #. [event]
@@ -1569,7 +1575,7 @@ msgid ""
 "When 'n' no longer selects a new unit, you can end your turn."
 msgstr ""
 "Podes asegurarte de que usaches tódalas túas unidades neste turno: preme 'n' "
-"para a seguinte unidade, ESPACIO para indicar que remataches con ela.\n"
+"para a seguinte unidade, ESPAZO para indicar que remataches con ela.\n"
 "Cando 'n' non selecciona ningunha unidade nova, podes rematar o teu turno."
 
 #. [event]
@@ -1585,7 +1591,7 @@ msgid ""
 "effective against Grunts, Wolf Riders and their leader."
 msgstr ""
 "Lembra recrutar máis tropas a medida que as precises: os Arqueiros son "
-"particularmente efectivos contra Orcos Roncos, Xinetes de Lobo e mailo seu "
+"particularmente efectivos contra Orcos Roñóns, Xinetes de Lobo e mailo seu "
 "líder."
 
 #. [then]
@@ -1595,7 +1601,7 @@ msgid ""
 "doubt the Orc leader will let you use his!"
 msgstr ""
 "Permanece preto da torre: precisas estar nunha torre para recrutar máis "
-"unidades, a dubido que o líder Orco che deixe usar a súa!"
+"unidades, e dubido que o líder Orco che deixe usar a súa!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1219
@@ -1603,7 +1609,7 @@ msgid ""
 "Their leader has moved into that village! He's not as stupid as I thought: "
 "it heals him each turn and provides good defense."
 msgstr ""
-"O seu líder moveuse a esa vila! Non é tan parvo como pensaba: curase cada "
+"O seu líder moveuse a esa vila! Non é tan parvo como pensaba: sandarao cada "
 "turno e proporciónalle boa defensa."
 
 #. [event]
@@ -1612,7 +1618,7 @@ msgid ""
 "That unit has captured our village! You'd better get him out: it heals him "
 "each turn and provides good defense."
 msgstr ""
-"Esa unidade capturou a nosa vila! Será mellor que o expulses dela: curase "
+"Esa unidade capturou a nosa vila! Será mellor que o expulses dela: sandarao "
 "cada turno e proporciona unha boa defensa."
 
 #. [message]: speaker=unit
@@ -1622,7 +1628,7 @@ msgid ""
 "but I hope you have a plan if I miss!"
 msgstr ""
 "Usarme para atacar é perigoso! Podo ralentizar ó opoñente co meu ataque a "
-"distancia, pero agardo que teñas un plan se perdo!"
+"distancia, pero agardo que teñas un bo plan se perdo!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1278
@@ -1658,7 +1664,7 @@ msgstr ""
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy's reach!"
 msgstr ""
-"Perder un sanador fire a tódalas unidades! Manteno fóra do alcance do "
+"Perder un sandador fire a tódalas unidades! Manteno fóra do alcance do "
 "inimigo!"
 
 #. [then]
@@ -1697,7 +1703,7 @@ msgid ""
 "I always have a 60% chance of hitting with my bow, and 9 hitpoints damage on "
 "each of the four attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
-"Avanzar un nivel sanoume totalmente!\n"
+"Avanzar un nivel sandoume totalmente!\n"
 "Sempre teño unha probabilidade do 60% de acadar co meu arco, e inflixo un "
 "dano de 9 puntos de vida en cada un dos catro ataques. Úsame para ocuparme "
 "de unidades difíciles de acadar."
@@ -1710,7 +1716,7 @@ msgid ""
 "can hide in forests, and enemies can only see me if they are right next to "
 "me."
 msgstr ""
-"Avanzar un nivel curoume de todo!\n"
+"Avanzar un nivel sandoume de todo!\n"
 "Son bo co arco e máis ca espada, pero teño unha habilidade especial: a "
 "emboscada. Podo agocharme nos bosques, e os inimigos só me poderán ver se "
 "están moi preto de min."
@@ -1722,10 +1728,10 @@ msgid ""
 "I am good with both bow and sword, but I have a special ability: leadership. "
 "Level 1 units around me do 25% more damage, so position me carefully."
 msgstr ""
-"Avanzar un nivel curoume de todo!\n"
+"Avanzar un nivel sandoume de todo!\n"
 "Son bo co arco e máis ca espada, pero teño unha habilidade especial: o "
 "liderado. As unidades de nivel 1 que estean preto de min inflixen un 25% "
-"máis de dano, así que situame con coidado."
+"máis de dano, así que sitúame con coidado."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1425
@@ -1733,7 +1739,7 @@ msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword: four attacks doing 8 damage each."
 msgstr ""
-"Avanzar un nivel curoume de todo!\n"
+"Avanzar un nivel sandoume de todo!\n"
 "Son especialmente bo ca espada: catro ataques que danan 8 cada un."
 
 #. [event]
@@ -1769,7 +1775,7 @@ msgid ""
 msgstr ""
 "Unha vez grandes, os Magos Anciáns viron diminuir o seu poder durante "
 "esquecidos anos de batallas. Ainda así seguen sendo temidos no campo de "
-"batalla polos seus poderosos lóstregos."
+"batalla debido ós seus poderosos raios."
 
 #. [attack]: type=impact
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:26
@@ -1779,7 +1785,7 @@ msgstr "bastón"
 #. [attack]: type=fire
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:35
 msgid "lightning"
-msgstr "lóstrego"
+msgstr "raio"
 
 #. [unit]: race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -1794,7 +1800,7 @@ msgid ""
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
-"Xoves e descarados, os Loitadores loitan cunha espada, e son vulnerables ós "
+"Xoves e apaixonados, os Loitadores loitan cunha espada, e son vulnerables ós "
 "ataques dos inimigos. Sen embargo teñen potencial para chegar a ser grandes "
 "guerreiros algún día."
 
@@ -1826,12 +1832,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mallo"
-
-#, fuzzy
-#~ msgid "Recruit two Elvish Archers in tiles to your east"
-#~ msgstr "Recruta dous Arqueiros Elfos nos hexágonos do teu oeste"
-
-#~ msgid "Right click on the tile south of you and recall $recall_name1"
-#~ msgstr ""
-#~ "Preme co botón dereito no hexágono ó teu sur e volve chamar a "
-#~ "$recall_name1"

@@ -1,27 +1,32 @@
-# translation of gl_ES.po to Galician
+# translation of wesnoth-nr to Galician
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
+#
+# Proxecto Trasno <http://trasno.net>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-21 18:11+0200\n"
-"PO-Revision-Date: 2008-02-27 18:12+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
-"Language-Team: Galician <en@li.org>\n"
+"PO-Revision-Date: 2008-06-19 18:19+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
 msgid "Northern Rebirth"
-msgstr ""
+msgstr "Renacemento do Norte"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:10
 msgid "NR"
-msgstr ""
+msgstr "RdN"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
@@ -31,16 +36,15 @@ msgstr "(Normal)"
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
 msgid "Peasant"
-msgstr ""
+msgstr "Labrego"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
 msgid "Spearman"
-msgstr ""
+msgstr "Lanceiro"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
-#, fuzzy
 msgid "(Challenging)"
 msgstr "(Esixente)"
 
@@ -52,12 +56,12 @@ msgstr "(Difícil)"
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
 msgid "Swordsman"
-msgstr ""
+msgstr "Espadachín"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:18
 msgid "Royal Guard"
-msgstr ""
+msgstr "Garda Real"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:18
@@ -104,12 +108,12 @@ msgstr "Tradutores"
 #. [about]
 #: data/campaigns/Northern_Rebirth/_main.cfg:82
 msgid "Code and Translation Assistance"
-msgstr ""
+msgstr "Código e Asistencia á Tradución"
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:5
 msgid "Breaking the Chains"
-msgstr ""
+msgstr "Rompendo as Cadeas"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:11
@@ -492,8 +496,9 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:382
+#, fuzzy
 msgid "Mission? What mission?"
-msgstr ""
+msgstr "Que hai deles?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:398
@@ -511,8 +516,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:4
+#, fuzzy
 msgid "Infested Caves"
-msgstr ""
+msgstr "2 xog - As Covas do Basilisco"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:10
@@ -613,8 +619,9 @@ msgstr "Thung"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:198
+#, fuzzy
 msgid "So here we are..."
-msgstr ""
+msgstr "Os resumos almacénanse aquí:"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:202
@@ -647,13 +654,15 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:241
+#, fuzzy
 msgid "Find the Dwarves"
-msgstr ""
+msgstr "Atopa ós ananos"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:245
+#, fuzzy
 msgid "Clear the Caves"
-msgstr ""
+msgstr "Limpar índice"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:788
@@ -711,8 +720,9 @@ msgstr ""
 #. [message]: role=Admirer
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:338
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:517
+#, fuzzy
 msgid "Uh, not really..."
-msgstr ""
+msgstr "Non amosar"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:343
@@ -807,8 +817,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:421
+#, fuzzy
 msgid "Clear the Caves (Bonus)"
-msgstr ""
+msgstr "Máxima bonificación en HP +"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:792
@@ -832,8 +843,9 @@ msgstr ""
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:459
+#, fuzzy
 msgid "Whew, we did it!"
-msgstr ""
+msgstr "Fixémolo! Gañamos!"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:464
@@ -855,8 +867,9 @@ msgstr ""
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:578
+#, fuzzy
 msgid "PREPARE TO DIE, YOU FOUL ORC!"
-msgstr ""
+msgstr "Atopámoste, saco de carne! Prepárate para morrer!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:582
@@ -884,8 +897,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:598
+#, fuzzy
 msgid "...uh ok!"
-msgstr ""
+msgstr "Moi ben, Xefe."
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:602
@@ -908,8 +922,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:614
+#, fuzzy
 msgid "Err... ok...."
-msgstr ""
+msgstr "Moi ben, Xefe."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:619
@@ -924,12 +939,13 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:641
 msgid "Ahhh! Fire!"
-msgstr ""
+msgstr "Ahhh! Lume!"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:653
+#, fuzzy
 msgid "YEAH! DIE, SCUM, DIE!"
-msgstr ""
+msgstr "Morre, escoura de Wesfolk!"
 
 #. [message]: role=Messenger
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:677
@@ -966,7 +982,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:732
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:775
 msgid "Skeletons!"
-msgstr ""
+msgstr "Esqueletes!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:738
@@ -1031,8 +1047,9 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:899
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:1007
+#, fuzzy
 msgid "...right..."
-msgstr ""
+msgstr "Dereita"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:903
@@ -1041,13 +1058,15 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:1065
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1162
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1187
+#, fuzzy
 msgid " *SMASH*"
-msgstr ""
+msgstr "aplastar"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:953
+#, fuzzy
 msgid "....right."
-msgstr ""
+msgstr "Dereita"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:991
@@ -1061,7 +1080,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:1061
 #, fuzzy
 msgid "....right..."
-msgstr ".........."
+msgstr "Dereita"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:1099
@@ -1113,8 +1132,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:4
+#, fuzzy
 msgid "To the Mines"
-msgstr ""
+msgstr "A Elensefar"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:10
@@ -1293,8 +1313,9 @@ msgstr ""
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:171
+#, fuzzy
 msgid "I don't think so, buddy."
-msgstr ""
+msgstr "Eu... Eu penso que non poderei facelo nunca máis."
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:177
@@ -1336,8 +1357,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:4
+#, fuzzy
 msgid "Clearing the Mines"
-msgstr ""
+msgstr "Limpando a táboa actual de IPVS:"
 
 #. [side]: type=Ancient Lich, description=Malifor
 #. [unit]: type=Ancient Lich, description=Malifor
@@ -1405,7 +1427,7 @@ msgstr ""
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:128
 msgid "Tallin, are you OK?!"
-msgstr ""
+msgstr "Tallin, estás BEN?!"
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:133
@@ -1444,12 +1466,13 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:175
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2140
 msgid "HAHAHAHAHAHAHA!"
-msgstr ""
+msgstr "HAHAHAHAHAHAHA!"
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:211
+#, fuzzy
 msgid "What the! Where did he go?"
-msgstr ""
+msgstr "A onde fuches?! E de onde vés?"
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:216
@@ -1476,8 +1499,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:261
+#, fuzzy
 msgid "Yeah, right, buddy."
-msgstr ""
+msgstr "<phrase>Panel Dereito</phrase>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:671
@@ -1486,8 +1510,9 @@ msgstr ""
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:677
+#, fuzzy
 msgid "Behold! The Dwarven Mines."
-msgstr ""
+msgstr "Na Cidade dos Ananos"
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:682
@@ -1521,8 +1546,9 @@ msgstr ""
 
 #. [message]: description=Thorin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:704
+#, fuzzy
 msgid "WHO GOES THERE?"
-msgstr ""
+msgstr "Quen está aí?"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:710
@@ -1590,8 +1616,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:779
+#, fuzzy
 msgid "Clear the Mines"
-msgstr ""
+msgstr "Limpar índice"
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:806
@@ -1637,8 +1664,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:849
+#, fuzzy
 msgid "So it shall be."
-msgstr ""
+msgstr "Non. Non pode ser!"
 
 #. [message]: role=follower
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:859
@@ -1655,8 +1683,9 @@ msgstr ""
 
 #. [message]: role=follower
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:869
+#, fuzzy
 msgid "Thank you, Lord Hamel."
-msgstr ""
+msgstr "Moi ben, meu señor Hamel."
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:896
@@ -1724,7 +1753,7 @@ msgstr "Trevor"
 #. [side]: type=Death Knight, description=Author
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:197
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #. [side]: type=Death Knight, description=Sam
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:224
@@ -1762,13 +1791,15 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:469
+#, fuzzy
 msgid "Get past the revenants."
-msgstr ""
+msgstr "Conseguir Extensións"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:492
+#, fuzzy
 msgid "Uh... Which way?"
-msgstr ""
+msgstr "Pero cal camiño, Kalenz?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:497
@@ -1801,8 +1832,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:523
+#, fuzzy
 msgid "Find Malifor and Destroy Him"
-msgstr ""
+msgstr "Atopa a orixe dos non mortos e destrúea"
 
 #. [object]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:554
@@ -1825,8 +1857,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:564
+#, fuzzy
 msgid "What do you have there, Abhai?"
-msgstr ""
+msgstr "Así que que propós?"
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:569
@@ -1896,8 +1929,9 @@ msgstr ""
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:724
+#, fuzzy
 msgid "That's.... that's the Rod of Justice!"
-msgstr ""
+msgstr "Que é iso?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:729
@@ -1946,8 +1980,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:789
+#, fuzzy
 msgid "Hey, an underground lake."
-msgstr ""
+msgstr "2 xog - Lago de Fallenstar"
 
 #. [event]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:793
@@ -2040,8 +2075,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:867
+#, fuzzy
 msgid "Hmm, what is this thing?"
-msgstr ""
+msgstr "Que é isto? Elfos portando espadas de aceiro."
 
 #. [unit]: type=Wraith, description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:880
@@ -2061,24 +2097,26 @@ msgstr "AHHHHHHHHH!"
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:897
+#, fuzzy
 msgid "... wait a second, who are you?"
-msgstr ""
+msgstr "Quen... quen eres ti? Un amigo ou un inimigo?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:902
+#, fuzzy
 msgid "I.... I am one of Tallin's men..."
-msgstr ""
+msgstr "Eu son o que decide."
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:907
 msgid "Who is this Tallin?"
-msgstr ""
+msgstr "Quen é Tallin?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:912
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:28
 msgid "I am."
-msgstr ""
+msgstr "Son eu."
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:917
@@ -2112,8 +2150,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:942
+#, fuzzy
 msgid "The what!?"
-msgstr ""
+msgstr "Que?"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:947
@@ -2142,8 +2181,9 @@ msgstr "?????"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:972
+#, fuzzy
 msgid "Different calendars, folks."
-msgstr ""
+msgstr "seleccionar un tema diferente"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:977
@@ -2182,8 +2222,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1007
+#, fuzzy
 msgid "Let me guess. Malifor?"
-msgstr ""
+msgstr "Déixeme escoller un driver calquera"
 
 #. [message]: description=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1012
@@ -2215,8 +2256,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1032
+#, fuzzy
 msgid "Great! Forward, men!"
-msgstr ""
+msgstr "Rápido, homes! Adiante!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1045
@@ -2227,13 +2269,15 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1058
+#, fuzzy
 msgid "Ssssh! I hear something."
-msgstr ""
+msgstr "Silencio. Escoitade, creo que oio algo."
 
 #. [event]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1061
+#, fuzzy
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Serpe Mariña"
 
 #. [message]: description=Sea Serpent
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1066
@@ -2252,8 +2296,9 @@ msgstr ""
 
 #. [message]: description=Naga Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1128
+#, fuzzy
 msgid " *sniff* I smell humans."
-msgstr ""
+msgstr "Derrotados, por humanos?"
 
 #. [message]: description=Naga Sidekick
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1133
@@ -2328,8 +2373,9 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1318
+#, fuzzy
 msgid "Malifor the Great's Study."
-msgstr ""
+msgstr "Verbos do Castelán"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1324
@@ -2358,8 +2404,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1423
+#, fuzzy
 msgid "500 gold! Not bad!"
-msgstr ""
+msgstr "Collerei o ouro. Que che parece 500?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1444
@@ -2464,14 +2511,16 @@ msgstr "Theta!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1562
+#, fuzzy
 msgid "Please folks, not now."
-msgstr ""
+msgstr "Non se vai iniciar Scannerdrake agora."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1567
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1695
+#, fuzzy
 msgid "Oh, sorry."
-msgstr ""
+msgstr "Non, síntoo."
 
 #. [unit]: type=White Mage, description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1604
@@ -2540,8 +2589,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1690
+#, fuzzy
 msgid "Please, folks, not now."
-msgstr ""
+msgstr "Non se vai iniciar Scannerdrake agora."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1723
@@ -2553,8 +2603,9 @@ msgstr ""
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1728
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:245
+#, fuzzy
 msgid " *giggle*"
-msgstr ""
+msgstr "Giggle"
 
 #. [unit]: type=Elvish Druid, description=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1750
@@ -2583,14 +2634,16 @@ msgstr ""
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1800
+#, fuzzy
 msgid "Here, this will help her."
-msgstr ""
+msgstr "  --help         - amosa esta mensaxe de axuda.\n"
 
 #. [message]: description=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1809
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1883
+#, fuzzy
 msgid "Uh....... where..... am..... I...?"
-msgstr ""
+msgstr "Argh! Estou acabado!"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1814
@@ -2602,8 +2655,9 @@ msgstr ""
 #. [message]: description=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1819
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1893
+#, fuzzy
 msgid "....thanks."
-msgstr ""
+msgstr "Grazas."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1824
@@ -2651,8 +2705,9 @@ msgstr ""
 #. [message]: description=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1859
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1937
+#, fuzzy
 msgid "You're telling me."
-msgstr ""
+msgstr "Falláchesme, home de Wesnoth..."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1873
@@ -2749,8 +2804,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2016
+#, fuzzy
 msgid "Hey, it talks!"
-msgstr ""
+msgstr "Hei mirade! É un $ally_race"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2021
@@ -2815,8 +2871,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2145
+#, fuzzy
 msgid "What the...!"
-msgstr ""
+msgstr "Que?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2150
@@ -2875,8 +2932,9 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2397
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2498
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:592
+#, fuzzy
 msgid " *giggle* Sorry."
-msgstr ""
+msgstr "Non, síntoo."
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2202
@@ -2885,8 +2943,9 @@ msgstr ""
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2226
+#, fuzzy
 msgid "COME AND GET ME!"
-msgstr ""
+msgstr "Ven e cólleo!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2231
@@ -2930,8 +2989,9 @@ msgstr ""
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2414
+#, fuzzy
 msgid "HAHAHAHAHAHA, I AM IMMORTAL!"
-msgstr ""
+msgstr "Argh! Estou acabado!"
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2458
@@ -3031,14 +3091,16 @@ msgstr ""
 #. [message]: description=Treasury Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2627
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3043
+#, fuzzy
 msgid "Intruders! Get them!"
-msgstr ""
+msgstr "Intrusos! Matádeos!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2632
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3048
+#, fuzzy
 msgid "Bring it on!"
-msgstr ""
+msgstr "atopouse %s en %s, ¿desexa configuralo automáticamente?"
 
 #. [message]: description=Study Guard
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2700
@@ -3053,18 +3115,21 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2769
+#, fuzzy
 msgid "Ugh, a dead body!"
-msgstr ""
+msgstr "Corpo do correo-e de benvida."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2786
+#, fuzzy
 msgid "Here's another body."
-msgstr ""
+msgstr "Corpo do correo-e de benvida."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2803
+#, fuzzy
 msgid "And another..."
-msgstr ""
+msgstr "outra copia de %s"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2820
@@ -3075,8 +3140,9 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2837
+#, fuzzy
 msgid "The Great Chamber"
-msgstr ""
+msgstr "Cámara de Tortura"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2843
@@ -3104,8 +3170,9 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2983
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3266
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3432
+#, fuzzy
 msgid " *CRASH*"
-msgstr ""
+msgstr "Dados do Fallo dun Programa"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2887
@@ -3119,8 +3186,9 @@ msgstr "Hsssssssss"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3000
+#, fuzzy
 msgid "This doesn't look good."
-msgstr ""
+msgstr "Isto son boas novas!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3006
@@ -3129,8 +3197,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3026
+#, fuzzy
 msgid "Here we go."
-msgstr ""
+msgstr "Iremos a través das Terras Centrais..."
 
 #. [unit]: type=Dwarvish Steelclad, description=Dulcatas
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3126
@@ -3149,8 +3218,9 @@ msgstr "Varem"
 
 #. [message]: description=Dulcatas
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3164
+#, fuzzy
 msgid "Halt! Who goes there? Friend or foe?"
-msgstr ""
+msgstr "Alto! Quen vai aí, amigo ou inimigo?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3169
@@ -3203,8 +3273,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3209
+#, fuzzy
 msgid "Awesome, let's go!"
-msgstr ""
+msgstr "Déixame ir!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3224
@@ -3220,8 +3291,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3254
+#, fuzzy
 msgid "Anything you can't handle?"
-msgstr ""
+msgstr "non pode enviar comentarios"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3259
@@ -3231,8 +3303,9 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3262
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3601
+#, fuzzy
 msgid "Go for it!"
-msgstr ""
+msgstr "Taboleiro de Go para GNOME"
 
 #. [message]: speaker=unit
 #. [message]: description=Sister Theta
@@ -3240,8 +3313,9 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3447
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3662
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:641
+#, fuzzy
 msgid "There we go."
-msgstr ""
+msgstr "Case estamos alí!"
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3305
@@ -3254,8 +3328,9 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3395
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3557
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3776
+#, fuzzy
 msgid "Just wait a sec."
-msgstr ""
+msgstr "Agarde, buscando..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3425
@@ -3281,13 +3356,15 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3598
+#, fuzzy
 msgid "Should I throw it?"
-msgstr ""
+msgstr "Quen é?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3606
+#, fuzzy
 msgid "Ok, here we go!"
-msgstr ""
+msgstr "Iremos a través das Terras Centrais..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3611
@@ -3306,8 +3383,9 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3626
+#, fuzzy
 msgid "Ok."
-msgstr ""
+msgstr "Vale."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3631
@@ -3316,18 +3394,21 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3636
+#, fuzzy
 msgid "Anybody home?"
-msgstr ""
+msgstr "Cartafol persoal"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3641
+#, fuzzy
 msgid " *BOOM*"
-msgstr ""
+msgstr " *BOOM!*"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3646
+#, fuzzy
 msgid " *CRASH!!!*"
-msgstr ""
+msgstr "Dados do Fallo dun Programa"
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:4
@@ -3387,13 +3468,15 @@ msgstr "Mata ós Líderes dos Trolls"
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:242
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:333
+#, fuzzy
 msgid "Argh! I have failed my master."
-msgstr ""
+msgstr "Falleille ó meu reino e ó meu deber..."
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:24
+#, fuzzy
 msgid "Old Friend"
-msgstr ""
+msgstr "Noraboa, amigo."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:31
@@ -3543,8 +3626,9 @@ msgstr "Grazas, Hamel."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:127
+#, fuzzy
 msgid "Pahhh, thank YOU!"
-msgstr ""
+msgstr "Grazas, Tallin."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:132
@@ -3630,8 +3714,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:359
+#, fuzzy
 msgid "Who are you, what do you want?"
-msgstr ""
+msgstr "...ben, que queredes saber?"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:364
@@ -3674,8 +3759,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:389
+#, fuzzy
 msgid "Yeah?"
-msgstr ""
+msgstr "Sí!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:394
@@ -3691,8 +3777,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:405
+#, fuzzy
 msgid "Defeat Rakshas... if you can..."
-msgstr ""
+msgstr "Ben! Se os derroto, convertereime nun liche!"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:409
@@ -3711,8 +3798,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:437
+#, fuzzy
 msgid "Stop him!"
-msgstr ""
+msgstr "MATÁDEO!!!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:442
@@ -3778,8 +3866,9 @@ msgstr ""
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:565
+#, fuzzy
 msgid "CHARGE!!!"
-msgstr ""
+msgstr "carga"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:570
@@ -3794,8 +3883,9 @@ msgstr ""
 
 #. [message]: description=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:580
+#, fuzzy
 msgid "Oh yeah!"
-msgstr ""
+msgstr "Hahaha! Sí!"
 
 #. [message]: description=Poul
 #. [message]: description=Malifor
@@ -3811,18 +3901,21 @@ msgstr ""
 
 #. [message]: description=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:595
+#, fuzzy
 msgid "Oooooooh! Time to start the fun!"
-msgstr ""
+msgstr "Prema seguinte para comezar a verificación dos servidores de tempo."
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:621
+#, fuzzy
 msgid "This doesn't look good..."
-msgstr ""
+msgstr "Isto son boas novas!"
 
 #. [message]: description=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:633
+#, fuzzy
 msgid "Argh! I have been slain!"
-msgstr ""
+msgstr "Gardáronse as categorías."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:638
@@ -3867,8 +3960,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:4
+#, fuzzy
 msgid "Slave of the Undead"
-msgstr ""
+msgstr "Esmaga ós non mortos"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:8
@@ -3901,8 +3995,9 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:27
+#, fuzzy
 msgid "...as you command ...Master."
-msgstr ""
+msgstr "Como desexes, princesa."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:32
@@ -3925,13 +4020,14 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:56
+#, fuzzy
 msgid "Destroy the Invaders"
-msgstr ""
+msgstr "Destruídeos!"
 
 #. [side]: type=Swordsman, description=Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:84
 msgid "Friend"
-msgstr ""
+msgstr "Amigo"
 
 #. [unit]: type=Dark Adept, description=James
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:264
@@ -3970,13 +4066,15 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:309
+#, fuzzy
 msgid "... KILL THE RABBLE!"
-msgstr ""
+msgstr "plus de morte"
 
 #. [message]: description=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:314
+#, fuzzy
 msgid "No, Tallin! Stop!"
-msgstr ""
+msgstr "Non parvo! Detente!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:319
@@ -3985,8 +4083,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:346
+#, fuzzy
 msgid "What have I done..."
-msgstr ""
+msgstr "Feito."
 
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:372
@@ -4033,8 +4132,9 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:26
+#, fuzzy
 msgid "How did ye fare?"
-msgstr ""
+msgstr "Como sabias...?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:31
@@ -4201,13 +4301,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:145
+#, fuzzy
 msgid "Those filthy elves! I'll...."
-msgstr ""
+msgstr "Recrutarei algúns elfos!"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:150
+#, fuzzy
 msgid "See!"
-msgstr ""
+msgstr "HUMANOS... Vexo humanos!"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:155
@@ -4218,15 +4320,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:160
+#, fuzzy
 msgid " *giggle* Something like that."
-msgstr ""
+msgstr "Creo que esquezo algo. Ouh, o libro!"
 
 #. [message]: description=Tallin
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:205
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:165
+#, fuzzy
 msgid " *rolls eyes*"
-msgstr ""
+msgstr "Electric Eyes"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:170
@@ -4474,8 +4578,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:628
+#, fuzzy
 msgid " *aside* Oh....!"
-msgstr ""
+msgstr "Uh-oh!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:643
@@ -4531,13 +4636,15 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:693
+#, fuzzy
 msgid "Alright, alright, hang on!"
-msgstr ""
+msgstr "Enviado por !a en @b."
 
 #. [message]: description=Ro'Sothian1
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:751
+#, fuzzy
 msgid "BROTHER! HELP ME!"
-msgstr ""
+msgstr "Déixame ir!"
 
 #. [message]: description=Ro'Arthian1
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:756
@@ -4610,8 +4717,9 @@ msgstr ""
 
 #. [message]: description=Ro'Sothian2
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:892
+#, fuzzy
 msgid "Ahhhh! Not again!"
-msgstr ""
+msgstr "_Non preguntar de novo"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:897
@@ -4641,8 +4749,9 @@ msgstr ""
 
 #. [message]: description=Ro'Arthian1
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:942
+#, fuzzy
 msgid "Fine, you trespassers. What do you want?"
-msgstr ""
+msgstr "...ben, que queredes saber?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:947
@@ -4837,8 +4946,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:4
+#, fuzzy
 msgid "Protecting the Master"
-msgstr ""
+msgstr "Mestre Arqueiro"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:18
@@ -4868,8 +4978,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:38
+#, fuzzy
 msgid "Resist Till the End of Turns"
-msgstr ""
+msgstr "Resiste ata que se esgoten os turnos"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:342
@@ -4891,8 +5002,9 @@ msgstr ""
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:513
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:366
+#, fuzzy
 msgid "At last, I am free..."
-msgstr ""
+msgstr "Por fin a cidadela está asegurada."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:379
@@ -4903,8 +5015,9 @@ msgstr " *BOOM!*"
 #. [message]: description=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:425
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:634
+#, fuzzy
 msgid "What the.... NO!!!"
-msgstr ""
+msgstr "(Sen asunto)"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:430
@@ -5005,8 +5118,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:4
+#, fuzzy
 msgid "Elvish Princess"
-msgstr ""
+msgstr "A princesa de Wesnoth"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:10
@@ -5093,8 +5207,9 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:59
+#, fuzzy
 msgid "Do you want to die, dwarf?"
-msgstr ""
+msgstr "Desexa saír?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:64
@@ -5333,8 +5448,9 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:453
+#, fuzzy
 msgid "Lead; I will follow."
-msgstr ""
+msgstr "Ensínanos o camiño..."
 
 #. [message]: role=smartorc
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:471
@@ -5350,8 +5466,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:4
+#, fuzzy
 msgid "Ray of Hope"
-msgstr ""
+msgstr "Unha Estratexia Esperanzadora"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:12
@@ -5488,8 +5605,9 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:80
+#, fuzzy
 msgid "How is that?"
-msgstr ""
+msgstr "Que é iso?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:85
@@ -5584,8 +5702,9 @@ msgstr "Kishmish"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:321
+#, fuzzy
 msgid "Find the Rod of Justice"
-msgstr ""
+msgstr "Non se puido atopar a era $era"
 
 #. [objective]: condition=lose
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:329
@@ -5757,8 +5876,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:803
+#, fuzzy
 msgid "What facts?"
-msgstr ""
+msgstr "Que hai deles?"
 
 #. [message]: description=Haffel
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:808
@@ -5810,8 +5930,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:841
+#, fuzzy
 msgid "You leave us with no choice."
-msgstr ""
+msgstr "Non nos deixas ningunha opción agás matarte."
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:860
@@ -5995,8 +6116,9 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:185
+#, fuzzy
 msgid "You mean Malifor?"
-msgstr ""
+msgstr "Que queres dicir?"
 
 #. [message]: description=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:190
@@ -6059,8 +6181,9 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:240
+#, fuzzy
 msgid "And a modest one too!"
-msgstr ""
+msgstr "e unha impresora descoñecida"
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:250
@@ -6163,8 +6286,9 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:324
+#, fuzzy
 msgid "So what does this have to do with me?"
-msgstr ""
+msgstr "Pero que ten iso que ver comigo?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:329
@@ -6261,8 +6385,9 @@ msgstr ""
 
 #. [message]: description=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:416
+#, fuzzy
 msgid "See, I told you so!"
-msgstr ""
+msgstr "Así que, como debo chamarte?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:421
@@ -6278,8 +6403,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:434
+#, fuzzy
 msgid "Move Tallin to the Signpost in the north"
-msgstr ""
+msgstr "Move a Konrad ó indicador do noroeste"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:469
@@ -6288,8 +6414,9 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:518
+#, fuzzy
 msgid "Hey look, it's a troll!"
-msgstr ""
+msgstr "Hei mirade! É un $ally_race"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:522
@@ -6347,8 +6474,9 @@ msgstr ""
 
 #. [message]: description=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:138
+#, fuzzy
 msgid "Yes Tallin - it is I."
-msgstr ""
+msgstr "¿Que hora é?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:143
@@ -6391,8 +6519,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:173
+#, fuzzy
 msgid "Matter, so you mean..."
-msgstr ""
+msgstr "Que queres dicir?"
 
 #. [message]: description=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:178
@@ -6525,8 +6654,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:91
+#, fuzzy
 msgid "Stolen Gold"
-msgstr ""
+msgstr "Moreas de ouro"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:98
@@ -6564,8 +6694,9 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:121
+#, fuzzy
 msgid "What do you mean?"
-msgstr ""
+msgstr "Que queres dicir?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:126
@@ -6949,8 +7080,9 @@ msgstr ""
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:699
+#, fuzzy
 msgid "Oh no, we are surrounded!"
-msgstr ""
+msgstr "Ouh, non, agarda, alí os están."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:704
@@ -6959,13 +7091,15 @@ msgstr ""
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:709
+#, fuzzy
 msgid "Yeeeahhhh! I like it!"
-msgstr ""
+msgstr "Quen é?"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:715
+#, fuzzy
 msgid "Defeat the enemy leaders or"
-msgstr ""
+msgstr "Derrota a tódolos líderes inimigos"
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:719
@@ -7027,8 +7161,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:807
+#, fuzzy
 msgid "Right. Onward men!"
-msgstr ""
+msgstr "Rápido, homes! Adiante!"
 
 #. [unit]: type=Elvish Avenger, description=Sisal
 #. [side]: type=Elvish Avenger, description=Sisal
@@ -7136,8 +7271,9 @@ msgstr ""
 
 #. [message]: role=supporter
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1054
+#, fuzzy
 msgid "Hey! Where is he going?"
-msgstr ""
+msgstr "Agora onde está Delfador? Espero que estea a salvo!"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1059
@@ -7176,8 +7312,9 @@ msgstr "Halk"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1148
+#, fuzzy
 msgid "Hey! Look who's back!"
-msgstr ""
+msgstr "Hei! Este estafermo deféndese!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1155
@@ -7213,18 +7350,21 @@ msgstr ""
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1185
+#, fuzzy
 msgid "Awww, what a darling!"
-msgstr ""
+msgstr "Que é iso?"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1190
+#, fuzzy
 msgid "Tell that to the trolls."
-msgstr ""
+msgstr "Dille á miña muller... que a amo!"
 
 #. [message]: description=Oof
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1195
+#, fuzzy
 msgid "What! Drakes! Fire! Ahhhhhh!"
-msgstr ""
+msgstr "O Cetro de Lume? Que é iso?"
 
 #. [message]: description=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1200
@@ -7238,8 +7378,9 @@ msgstr ""
 
 #. [message]: description=Hidel
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1333
+#, fuzzy
 msgid "Princess! We have finally found you!"
-msgstr ""
+msgstr "Atopámoste, saco de carne! Prepárate para morrer!"
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1338
@@ -7292,8 +7433,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1390
+#, fuzzy
 msgid "Help Tallin defeat the enemy leaders"
-msgstr ""
+msgstr "Derrota a tódolos líderes inimigos (Plus)"
 
 #. [option]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1416
@@ -7320,13 +7462,15 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:972
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:997
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1465
+#, fuzzy
 msgid "Defeat the enemy leaders"
-msgstr ""
+msgstr "Derrota ós líderes inimigos"
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:4
+#, fuzzy
 msgid "The Eastern Flank"
-msgstr ""
+msgstr "A Invasión do Leste"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:9
@@ -7397,18 +7541,21 @@ msgstr ""
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:278
+#, fuzzy
 msgid "Where is my gold!"
-msgstr ""
+msgstr "Ben, pero onde está Grüü?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:283
+#, fuzzy
 msgid "It's Rakshas!"
-msgstr ""
+msgstr "á bitácora"
 
 #. [message]: description=Gore
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:288
+#, fuzzy
 msgid "Right here, Master."
-msgstr ""
+msgstr "Xusto aquí, xefe."
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:293
@@ -7427,8 +7574,9 @@ msgstr ""
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:303
+#, fuzzy
 msgid "Hahahaha! Very g..."
-msgstr ""
+msgstr "Moi ben."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:308
@@ -7517,8 +7665,9 @@ msgstr ""
 
 #. [message]: description=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:432
+#, fuzzy
 msgid "It's done."
-msgstr ""
+msgstr "Feito."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:437
@@ -7563,8 +7712,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:4
+#, fuzzy
 msgid "Get the Gold"
-msgstr ""
+msgstr "Moreas de ouro"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:10
@@ -7675,8 +7825,9 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:73
+#, fuzzy
 msgid "At your service, sir."
-msgstr ""
+msgstr "Amosar un diálogo ó comezo do seu turno"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:78
@@ -7834,8 +7985,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:742
+#, fuzzy
 msgid "So you have the gold?"
-msgstr ""
+msgstr "Recibiches 300 pezas de ouro!"
 
 #. [message]: description=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:747
@@ -7914,8 +8066,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:4
+#, fuzzy
 msgid "Showdown"
-msgstr ""
+msgstr "Enfrontamento"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:10
@@ -8061,8 +8214,9 @@ msgstr ""
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:890
+#, fuzzy
 msgid "Will they, now?"
-msgstr ""
+msgstr "Desactivar agora"
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:895
@@ -8077,8 +8231,9 @@ msgstr ""
 
 #. [message]: description=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:905
+#, fuzzy
 msgid "But... but... how can this be?"
-msgstr ""
+msgstr "Como pode ser isto? Perdemos."
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:910
@@ -8087,8 +8242,9 @@ msgstr ""
 
 #. [message]: description=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:915
+#, fuzzy
 msgid "FOR FRIENDSHIP!!!"
-msgstr ""
+msgstr "Membro de"
 
 #. [message]: description=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:920
@@ -8097,8 +8253,9 @@ msgstr "POLA PAZ!!!"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:925
+#, fuzzy
 msgid "FOR FUN!"
-msgstr ""
+msgstr "só por diversión..."
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:930
@@ -8107,8 +8264,9 @@ msgstr "POR HIDEL!!!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:936
+#, fuzzy
 msgid "FOR DWARVEN DOORS!!!"
-msgstr ""
+msgstr "Na Cidade dos Ananos"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:941
@@ -8212,8 +8370,9 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:4
+#, fuzzy
 msgid "Epilogue"
-msgstr ""
+msgstr "Epílogo"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:8
@@ -8233,8 +8392,9 @@ msgstr ""
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:235
+#, fuzzy
 msgid "How is that, Tallin?"
-msgstr ""
+msgstr "Quen é Tallin?"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:240
@@ -8262,8 +8422,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:271
+#, fuzzy
 msgid "Exactly."
-msgstr ""
+msgstr "Exactamente."
 
 #. [message]: description=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:276
@@ -8282,8 +8443,9 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:286
+#, fuzzy
 msgid "I do have a suggestion."
-msgstr ""
+msgstr "¡Faino!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:291
@@ -8347,18 +8509,21 @@ msgstr ""
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:333
+#, fuzzy
 msgid "Great!"
-msgstr ""
+msgstr "As Grandes Portas"
 
 #. [message]: description=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:338
+#, fuzzy
 msgid "Smart!"
-msgstr ""
+msgstr "Expansión intelixente"
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:343
+#, fuzzy
 msgid "Sounds like fun."
-msgstr ""
+msgstr "Parece alguén agradable..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:348
@@ -8423,8 +8588,9 @@ msgstr ""
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:401
+#, fuzzy
 msgid " 'Lord' Oh no!"
-msgstr ""
+msgstr "Ouh non, derrotáronme."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:406
@@ -8632,8 +8798,9 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:618
+#, fuzzy
 msgid "Well spoken!"
-msgstr ""
+msgstr "Ben, supoño..."
 
 #. [message]: description=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:623
@@ -8713,8 +8880,9 @@ msgstr ""
 
 #. [message]: description=Krash
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:22
+#, fuzzy
 msgid " *roars in pain*"
-msgstr ""
+msgstr "Só nas categorías"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:27
@@ -8781,8 +8949,9 @@ msgstr ""
 
 #. [message]: role=Shinsplitter
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:144
+#, fuzzy
 msgid "DIE, YOU FOUL SCUM!!!"
-msgstr ""
+msgstr "Ti humano! Chamáchesnos noxentos, fixéchelo?!?!"
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:161
@@ -8871,8 +9040,9 @@ msgstr ""
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:349
+#, fuzzy
 msgid " *giggle* Thank you honey."
-msgstr ""
+msgstr "Grazas ó ceo! Estades vivos!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:354
@@ -8963,8 +9133,9 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:542
+#, fuzzy
 msgid " *rolls eyes* Women!"
-msgstr ""
+msgstr "Visor de imaxes Electric Eyes"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:556
@@ -8982,8 +9153,9 @@ msgstr ""
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:582
+#, fuzzy
 msgid "That's darned right!"
-msgstr ""
+msgstr "<phrase>Panel Dereito</phrase>"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:587
@@ -8994,8 +9166,9 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:615
+#, fuzzy
 msgid "Alas! So.... close."
-msgstr ""
+msgstr "Gardar e pechar"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:620
@@ -9045,8 +9218,9 @@ msgstr ""
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:770
+#, fuzzy
 msgid "I heard that, Theta."
-msgstr ""
+msgstr "Que é iso?"
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:774
@@ -9072,18 +9246,21 @@ msgstr ""
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:849
+#, fuzzy
 msgid "See?"
-msgstr ""
+msgstr "HUMANOS... Vexo humanos!"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:853
+#, fuzzy
 msgid "Now where did he go!?"
-msgstr ""
+msgstr "A onde fuches?! E de onde vés?"
 
 #. [message]: description=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:867
+#, fuzzy
 msgid "Ack! I have been brained!"
-msgstr ""
+msgstr "Gardáronse as categorías."
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:872
@@ -9109,8 +9286,9 @@ msgstr ""
 
 #. [message]: description=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:908
+#, fuzzy
 msgid " *giggle* Sorry!"
-msgstr ""
+msgstr "Non, síntoo."
 
 #. [message]: description=Elenia
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:932
@@ -9129,8 +9307,9 @@ msgstr ""
 
 #. [message]: description=Camerin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:959
+#, fuzzy
 msgid " Wha... how can this happen?"
-msgstr ""
+msgstr "Como pode ser isto? Perdemos."
 
 #. [message]: description=Tallin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:964

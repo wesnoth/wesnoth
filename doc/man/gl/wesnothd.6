@@ -57,16 +57,16 @@ para referirse a calquera dominio de log. Niveis dispoñibles: \fBerror\fP,\ \fBw
 nivel \fBinfo\fP para o dominio \fBserver\fP.
 .TP 
 \fB\-p\ \fP\fIporto\fP\fB,\ \-\-port\fP\fI\ porto\fP
-asocia o servidor ó porto especificado. Se non se especifica un porto,
-usarase o porto \fB15000\fP.
+asocia o servidor ó porto especificado. Se non se especifica un porto, hase
+usar o porto \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
-establece o número máximo de fios efectivos en espera para a entrada e saída
-de rede a n (por defecto: \fB5\fP, max: \fB30\fP).
+define o número máximo de fíos efectivos en espera para a entrada/saída de
+rede a n (por defecto: \fB5\fP,\ max:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
-establece o número máximo de fios efectivos que serán creados. Se o
-establece a \fB0\fP non terá limite (por defecto: \fB0\fP).
+define o número máximo de fíos efectivos que se van crear. Se o define a
+\fB0\fP non terá limite (por defecto: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
 amosa o número de versión e sae.
@@ -95,7 +95,7 @@ O número de conexións permitidas dende o mesmo IP. \fB0\fP significa
 infinitas. (por defecto: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Nomes/apodos que non acepta o servidor. Sopórtanse `*' e `?' coma comodíns
+Nomes/alcumes que non acepta o servidor. Sopórtanse `*' e `?' coma comodíns
 para patróns. Consulte \fBglob\fP(7) para obter máis detalles. Os valores
 predeterminados (que se usan se non se especifica ningún outro) son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
@@ -105,7 +105,7 @@ O número de mensaxes permitidas en \fBmessages_time_period\fP. (por defecto:
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-O tiempo (en segundos) empregado para detectar unha innundación de
+O periodo de tempo (en segundos) que se usa para detectar unha inundación de
 mensaxes. (por defecto: \fB10\fP segundos)
 .TP 
 \fBmotd\fP
@@ -125,7 +125,7 @@ Exemplo: \fBversions_accepted="*"\fP acepta calquera cadea de versión.
 .SS "Etiquetas globais:"
 .
 .P
-\fB[redirect]\fP Unha etiqueta para especificar un servidor ó que redirixir a
+\fB[redirect]\fP Unha etiqueta para especificar un servidor ó que redirixir
 certas versións do cliente.
 .RS
 .TP 
@@ -141,14 +141,14 @@ xeito ca \fBversions_accepted\fP no referente ós comodíns de patróns.
 .RE
 .P
 \fB[proxy]\fP Unha etiqueta para dicirlle ó servidor que actúe coma un proxy e
-redirixa as solicitudes dos clientes conectados ó servidor especificado. 
-Acepta as mesmas claves ca \fB[redirect]\fP.
+redirixa as solicitudes dos clientes conectados ó servidor
+especificado. Acepta as mesmas claves ca \fB[redirect]\fP.
 .
 .SH AUTOR
 .
 Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
-Soliton <soliton.de@gmail.com>.  Esta páxina de manual escribiuna
+Soliton <soliton.de@gmail.com>. Esta páxina de manual escribiuna
 orixinalmente Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visite o sitio oficial: http://www.wesnoth.org/
@@ -159,8 +159,8 @@ Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
 Isto é Software Libre; este software está licenciado baixo a GPL versión 2,
 tal e como foi publicada pola Free Software Foundation.  Non existe NINGUNHA
-garantía; nin sequera para  o SEU USO COMERCIAL ou ADECUACIÓN A UN PROPÓSITO
-PARTICULAR.
+garantía; nin sequera para o SEU USO COMERCIAL ou ADECUACIÓN PARA UN
+PROPÓSITO PARTICULAR.
 .
 .SH "CONSULTE TAMÉN"
 .
