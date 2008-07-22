@@ -34,14 +34,12 @@
 
 namespace editor2 {
 
-const int editor_controller::max_action_stack_size_ = 100;
-
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
 , editor_mode()
 , mouse_handler_base(map_)
 , map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
-, gui_(NULL), actions_since_save_(0), do_quit_(false), quit_mode_(EXIT_ERROR)
+, gui_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
 , current_brush_index_(0)
 {
 	init(video);
@@ -81,8 +79,6 @@ void editor_controller::init(CVideo& video)
 editor_controller::~editor_controller()
 {
     delete gui_;
-	clear_stack(undo_stack_);
-	clear_stack(redo_stack_);
 	typedef std::pair<hotkey::HOTKEY_COMMAND, mouse_action*> apr;
 	foreach (apr a, mouse_actions_) {
 		delete a.second;
@@ -101,7 +97,7 @@ EXIT_STATUS editor_controller::main_loop()
 void editor_controller::quit_confirm(EXIT_STATUS mode)
 {
 	std::string message = _("Do you really want to quit?");
-	if (actions_since_save_ != 0) {
+	if (map_.modified()) {
 		message += " ";
 		message += _("There are unsaved changes in the map.");
 	}
@@ -114,7 +110,7 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 
 bool editor_controller::confirm_discard()
 {
-	if (actions_since_save_ != 0) {
+	if (map_.modified()) {
 		return !gui::dialog(gui(), _("There are unsaved changes in the map"),
 			_("Do you want to discard all changes you made te the map?"), gui::YES_NO).show();
 	} else {
@@ -190,10 +186,8 @@ bool editor_controller::save_map_as(const std::string& filename)
 
 bool editor_controller::save_map(bool display_confirmation)
 {
-	std::string data = map_.write();
 	try {
-		write_file(map_.get_filename(), data);
-		actions_since_save_ = 0;
+		map_.save();
 		if (display_confirmation) {
 			gui::message_dialog(gui(), "", _("Map saved.")).show();
 		}
@@ -237,9 +231,6 @@ void editor_controller::new_map(int width, int height, t_translation::t_terrain 
 void editor_controller::set_map(const editor_map& map)
 {
 	map_ = map;
-	clear_stack(undo_stack_);
-	clear_stack(redo_stack_);
-	actions_since_save_ = 0;
 	gui().reload_map();
 	refresh_all();
 }
@@ -367,13 +358,13 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	while(i != items.end()) {
 		command = hotkey::get_hotkey(*i).get_id();
 		if (command == hotkey::HOTKEY_UNDO) {
-			if (can_undo()) {
+			if (map_.can_undo()) {
 				hotkey::get_hotkey(*i).set_description(_("Undo"));
 			} else {
 				hotkey::get_hotkey(*i).set_description(_("Can't Undo"));
 			}
 		} else if (command == hotkey::HOTKEY_REDO) {
-			if (can_redo()) {
+			if (map_.can_redo()) {
 				hotkey::get_hotkey(*i).set_description(_("Redo"));
 			} else {
 				hotkey::get_hotkey(*i).set_description(_("Can't Redo"));
@@ -437,31 +428,6 @@ editor_display& editor_controller::get_display()
 	return *gui_;
 }
 
-void editor_controller::perform_action(const editor_action& action)
-{
-	LOG_ED << "Performing action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
-	editor_action* undo = action.perform(map_);
-	if (actions_since_save_ < 0) {
-		//set to a value that will make it impossible to get to zero, as at this point
-		//it is no longer possible to get back the original map state using undo/redo
-		actions_since_save_ = undo_stack_.size() + 1;
-	} else {
-		++actions_since_save_;
-	}
-	undo_stack_.push_back(undo);
-	trim_stack(undo_stack_);
-	clear_stack(redo_stack_);
-	refresh_after_action(action);
-}
-	
-void editor_controller::perform_partial_action(const editor_action& action)
-{
-	LOG_ED << "Performing (partial) action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
-	action.perform_without_undo(map_);
-	clear_stack(redo_stack_);
-	refresh_after_action(action);
-}
-
 void editor_controller::refresh_after_action(const editor_action& /*action*/)
 {
 	//TODO rebuild and ivalidate only what's really needed
@@ -475,65 +441,16 @@ void editor_controller::refresh_all()
 	gui().recalculate_minimap();
 }
 
-void editor_controller::trim_stack(action_stack& stack)
-{
-	if (stack.size() > max_action_stack_size_) {
-		delete stack.front();
-		stack.pop_front();
-	}
-}
-
-void editor_controller::clear_stack(action_stack& stack)
-{
-	foreach (editor_action* a, stack) {
-		delete a;
-	}
-	stack.clear();
-}
-
-bool editor_controller::can_undo() const
-{
-	return !undo_stack_.empty();
-}
-
-bool editor_controller::can_redo() const
-{
-	return !redo_stack_.empty();
-}
-
 void editor_controller::undo()
 {
-	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-	if (can_undo()) {
-		perform_action_between_stacks(undo_stack_, redo_stack_);
-		--actions_since_save_;
-	} else {
-		WRN_ED << "undo() called with an empty undo stack\n";
-	}
-	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
+	map_.undo();
+	refresh_all();
 }
 
 void editor_controller::redo()
 {
-	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-	if (can_redo()) {
-		perform_action_between_stacks(redo_stack_, undo_stack_);
-		++actions_since_save_;
-	} else {
-		WRN_ED << "redo() called with an empty redo stack\n";
-	}
-	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-}
-
-void editor_controller::perform_action_between_stacks(action_stack& from, action_stack& to)
-{
-	assert(!from.empty());
-	editor_action* action = from.back();
-	from.pop_back();
-	editor_action* reverse_action = action->perform(map_);
-	to.push_back(reverse_action);
-	trim_stack(to);
-	refresh_after_action(*action);
+	map_.redo();
+	refresh_all();
 }
 
 void editor_controller::mouse_motion(int x, int y, const bool browse, bool update)
@@ -544,23 +461,18 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 		if (!map_.on_board_with_border(hex_clicked)) return;
 		if (get_mouse_action() != NULL) {
 			LOG_ED << "Mouse drag\n";
-			editor_action* last_undo ;
-			if (undo_stack_.empty()) {
-				WRN_ED << __FUNCTION__ << "Empty undo stack in drag\n";
-				last_undo = NULL;
-			} else {
-				last_undo = undo_stack_.back();
-			}
+			editor_action* last_undo = map_.last_undo_action();
 			bool partial = false;
 			editor_action* a = get_mouse_action()->drag(*gui_, x, y, partial, last_undo);
 			//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
 			//anything to the undo stack (hence a diferent perform_ call
 			if (a != NULL) {
 				if (partial) {
-					perform_partial_action(*a);
+					map_.perform_partial_action(*a);
 				} else {
-					perform_action(*a);
+					map_.perform_action(*a);
 				}
+				refresh_after_action(*a);
 				delete a;
 			}
 		} else {
@@ -586,7 +498,8 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 		editor_action* a = get_mouse_action()->click(*gui_, x, y);
 		if (a != NULL) {
-			perform_action(*a);
+			map_.perform_action(*a);
+			refresh_after_action(*a);
 			delete a;
 		}
 		return true;
@@ -601,7 +514,8 @@ void editor_controller::left_drag_end(int x, int y, const bool browse)
 	if (get_mouse_action() != NULL) {
 		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
 		if (a != NULL) {
-			perform_action(*a);
+			map_.perform_action(*a);
+			refresh_after_action(*a);
 			delete a;
 		}
 	} else {
