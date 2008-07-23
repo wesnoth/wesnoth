@@ -130,7 +130,7 @@ private:
 	void draw();
 	bool visible() const;
 	void check_text_length();
-	const std::string cfg_colour() const;
+	std::string cfg_colour() const;
 
 	int handle_;
 

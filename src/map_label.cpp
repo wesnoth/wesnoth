@@ -414,7 +414,7 @@ const SDL_Colour& terrain_label::colour() const
 	return colour_;
 }
 
-const std::string terrain_label::cfg_colour() const
+std::string terrain_label::cfg_colour() const
 {
 	std::stringstream buf;
 	const unsigned int red = static_cast<unsigned int>(colour_.r);
