@@ -152,10 +152,22 @@ verification_manager::~verification_manager()
 // references to it from this very file and move it out of here.
 replay recorder;
 
-replay::replay() : pos_(0), current_(NULL), skip_(0)
+replay::replay() :
+	cfg_(),
+	pos_(0), 
+	current_(NULL), 
+	saveInfo_(),
+	skip_(false),
+	message_locations()
 {}
 
-replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), skip_(0)
+replay::replay(const config& cfg) : 
+	cfg_(cfg), 
+	pos_(0), 
+	current_(NULL), 
+	saveInfo_(),
+	skip_(false),
+	message_locations()
 {}
 
 void replay::throw_error(const std::string& msg)
