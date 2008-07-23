@@ -352,18 +352,13 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std:
 	directory_(directory),
 	strings_(),
 	tokens_(),
+	is_macro(symbol != NULL),
 	slowpath_(0), 
 	skipping_(0), 
 	linenum_(linenum)
 {
-    if(symbol!=NULL)
-    {
-        is_macro=true;
+    if(is_macro) {
         called_macros_->push_back(*symbol);
-    }
-    else
-    {
-        is_macro=false;
     }
     
 	std::ostringstream s;
