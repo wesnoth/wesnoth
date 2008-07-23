@@ -51,7 +51,7 @@ class help_button : public gui::dialog_button, public hotkey::command_executor {
 public:
 	help_button(display& disp, const std::string &help_topic);
 	int action(gui::dialog_process_info &info);
-	const std::string topic() const { return topic_; }
+	std::string topic() const { return topic_; }
 	void join();
 	void leave();
 private:
