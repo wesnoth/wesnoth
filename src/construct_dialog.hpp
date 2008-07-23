@@ -274,7 +274,7 @@ public:
 	int result() const { return result_; }
 	menu &get_menu();
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
-	const std::string textbox_text() const { return text_widget_->text();}
+	std::string textbox_text() const { return text_widget_->text();}
 	dialog_textbox& get_textbox() const { return *text_widget_; }
 	bool option_checked(unsigned int option_index=0);
 	display& get_display() { return disp_; }
