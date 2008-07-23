@@ -163,7 +163,7 @@ public:
 	void set_attack_indicator(const gamemap::location& src, const gamemap::location& dst);
 	void clear_attack_indicator();
 	//! Function to get attack direction suffix
-	const std::string attack_indicator_direction() const { 
+	std::string attack_indicator_direction() const { 
 		return gamemap::location::write_direction(
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
@@ -208,7 +208,7 @@ public:
 	size_t playing_team() const { return activeTeam_; }
 
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
-	const std::string current_team_name() const;
+	std::string current_team_name() const;
 
 	void add_observer(const std::string& name) { observers_.insert(name); }
 	void remove_observer(const std::string& name) { observers_.erase(name); }

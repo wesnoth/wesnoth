@@ -1014,7 +1014,7 @@ void game_display::write_overlays(config& cfg) const
 	}
 }
 
-const std::string game_display::current_team_name() const
+std::string game_display::current_team_name() const
 {
 	if (team_valid())
 	{
