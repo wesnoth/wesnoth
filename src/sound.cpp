@@ -167,17 +167,11 @@ music_track::music_track(const std::string &tname)
 music_track::music_track(const std::string &tname,
 						 const std::string &ms_before_str,
 						 const std::string &ms_after_str)
-	: name(tname), once(false)
+	: name(tname), 
+	ms_before(lexical_cast_default<int>(ms_before_str)),
+	ms_after(lexical_cast_default<int>(ms_after_str)),
+	once(false)
 {
-	if (ms_before_str.empty())
-		ms_before = 0;
-	else
-		ms_before = lexical_cast<int,std::string>(ms_before_str);
-
-	if (ms_after_str.empty())
-		ms_after = 0;
-	else
-		ms_after = lexical_cast<int,std::string>(ms_after_str);
 }
 
 void music_track::write(config &snapshot, bool append)
