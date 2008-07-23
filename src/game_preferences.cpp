@@ -51,14 +51,14 @@ std::map<std::string, std::vector<std::string> > history_map;
 const unsigned max_history_saved = 50;
 
 //! Add a nick to the specified relation setting.
-void add_relation(const std::string nick, const std::string relation) {
+void add_relation(const std::string& nick, const std::string& relation) {
 	std::vector<std::string> r = utils::split(preferences::get(relation));
 	r.push_back(nick);
 	preferences::set(relation, utils::join(r));
 }
 
 //! Remove a nick from the specified relation setting.
-void remove_relation(const std::string nick, const std::string relation) {
+void remove_relation(const std::string& nick, const std::string& relation) {
 	std::vector<std::string> r = utils::split(preferences::get(relation));
 	r.erase(std::remove(r.begin(), r.end(), nick), r.end());
 	preferences::set(relation, utils::join(r));
@@ -168,23 +168,23 @@ std::string get_ignores() {
 	return preferences::get("ignores");
 }
 
-bool add_friend(const std::string nick) {
+bool add_friend(const std::string& nick) {
 	if (!utils::isvalid_username(nick)) return false;
 	add_relation(nick, "friends");
 	return true;
 }
 
-bool add_ignore(const std::string nick) {
+bool add_ignore(const std::string& nick) {
 	if (!utils::isvalid_username(nick)) return false;
 	add_relation(nick, "ignores");
 	return true;
 }
 
-void remove_friend(const std::string nick) {
+void remove_friend(const std::string& nick) {
 	remove_relation(nick, "friends");
 }
 
-void remove_ignore(const std::string nick) {
+void remove_ignore(const std::string& nick) {
 	remove_relation(nick, "ignores");
 }
 
@@ -196,12 +196,12 @@ void clear_ignores() {
 	preferences::set("ignores", "");
 }
 
-bool is_friend(const std::string nick) {
+bool is_friend(const std::string& nick) {
 	const std::vector<std::string>& friends = utils::split(get_friends());
 	return (std::find(friends.begin(), friends.end(), nick) != friends.end());
 }
 
-bool is_ignored(const std::string nick) {
+bool is_ignored(const std::string& nick) {
 	const std::vector<std::string>& ignores = utils::split(get_ignores());
 	return (std::find(ignores.begin(), ignores.end(), nick) != ignores.end());
 }
@@ -283,7 +283,7 @@ const std::vector<game_config::server_info>& server_list()
 	return pref_servers;
 }
 
-const std::string network_host()
+std::string network_host()
 {
 	const std::string res = preferences::get("host");
 	if(res.empty()) {
@@ -309,7 +309,7 @@ void set_ping_timeout(unsigned int timeout)
 	preferences::set("ping_timeout", lexical_cast<std::string>(timeout));
 }
 
-const std::string campaign_server()
+std::string campaign_server()
 {
 	if(!preferences::get("campaign_server").empty()) {
 		return preferences::get("campaign_server");
@@ -323,7 +323,7 @@ void set_campaign_server(const std::string& host)
 	preferences::set("campaign_server", host);
 }
 
-const std::string login()
+std::string login()
 {
 	const std::string res = preferences::get("login");
 	if(res.empty()) {
@@ -625,7 +625,7 @@ std::string clock_format()
 	return "%H:%M";
 }
 
-const std::string theme()
+std::string theme()
 {
 	if(non_interactive()) {
 		static const std::string null_theme = "null";
@@ -703,7 +703,7 @@ void set_upload_log(bool value)
 	preferences::set("upload_log", value ? "yes" : "no");
 }
 
-const std::string upload_id()
+std::string upload_id()
 {
 	// We create a unique id for each person, *when asked for* to increase
 	// randomness.

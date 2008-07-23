@@ -44,14 +44,14 @@ namespace preferences {
 
 	std::string get_friends();
 	std::string get_ignores();
-	bool add_friend(const std::string nick);
-	bool add_ignore(const std::string nick);
-	void remove_friend(const std::string nick);
-	void remove_ignore(const std::string nick);
+	bool add_friend(const std::string& nick);
+	bool add_ignore(const std::string& nick);
+	void remove_friend(const std::string& nick);
+	void remove_ignore(const std::string& nick);
 	void clear_friends();
 	void clear_ignores();
-	bool is_friend(const std::string nick);
-	bool is_ignored(const std::string nick);
+	bool is_friend(const std::string& nick);
+	bool is_ignored(const std::string& nick);
 	
 	bool sort_list();
 	void _set_sort_list(bool show);
@@ -61,16 +61,16 @@ namespace preferences {
 
 	const std::vector<game_config::server_info>& server_list();
 
-	const std::string network_host();
+	std::string network_host();
 	void set_network_host(const std::string& host);
 	
 	unsigned int get_ping_timeout();
 	void set_ping_timeout(unsigned int timeout);
 
-	const std::string campaign_server();
+	std::string campaign_server();
 	void set_campaign_server(const std::string& host);
 
-	const std::string login();
+	std::string login();
 	void set_login(const std::string& username);
 
 	bool turn_dialog();
@@ -165,7 +165,7 @@ namespace preferences {
 
 	bool upload_log();
 	void set_upload_log(bool value);
-	const std::string upload_id();
+	std::string upload_id();
 
 	// Multiplayer functions
 	std::string get_chat_timestamp(const time_t& t);
@@ -194,7 +194,7 @@ namespace preferences {
 	std::string clock_format();
 
 	void set_theme(const std::string& theme);
-	const std::string theme();
+	std::string theme();
 
 	bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs);
 
