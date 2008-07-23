@@ -66,17 +66,20 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 	return LEVEL_CONTINUE;
 }
 
-replay_controller::replay_controller(const config& level, game_state& state_of_game,
-						   const int ticks, const int num_turns, const config& game_config,
-						   CVideo& video)
-	: play_controller(level, state_of_game, ticks, num_turns, game_config, video, false, true),
-	  gamestate_start_(state_of_game), status_start_(level, num_turns, &state_of_game)
+replay_controller::replay_controller(const config& level, 
+		game_state& state_of_game, const int ticks, const int num_turns, 
+		const config& game_config, CVideo& video) :
+	play_controller(level, state_of_game, ticks, num_turns, game_config, video, false, true),
+	teams_start_(),
+	gamestate_start_(state_of_game), 
+	status_start_(level, num_turns, &state_of_game),
+	units_start_(),
+	current_turn_(1),
+	delay_(0),
+	is_playing_(false),
+	show_everything_(false),
+	show_team_(1)
 {
-	current_turn_ = 1;
-	delay_ = 0;
-	is_playing_ = false;
-	show_everything_ = false;
-	show_team_ = 1;
 	init();
 	gamestate_start_ = gamestate_;
 }
