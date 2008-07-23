@@ -40,9 +40,9 @@ public:
 
 protected:
 	void action(gui::dialog_process_info &dp_info);
-	const std::string unformat_filename(const std::string& filename) const;
-	const std::string format_filename(const std::string& filename) const;
-	const std::string format_dirname(const std::string& dirname) const;
+	std::string unformat_filename(const std::string& filename) const;
+	std::string format_filename(const std::string& filename) const;
+	std::string format_dirname(const std::string& dirname) const;
 
 private:
 	bool show_directory_buttons_;

@@ -102,12 +102,12 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 	return dim;
 }
 
-const std::string file_dialog::unformat_filename(const std::string& filename) const
+std::string file_dialog::unformat_filename(const std::string& filename) const
 {
 	return files_list_->add_path(files_list_->get_directory(), filename);
 }
 
-const std::string file_dialog::format_filename(const std::string& filename) const
+std::string file_dialog::format_filename(const std::string& filename) const
 {
 	if(files_list_->is_directory(filename)) {
 		return "";
@@ -126,7 +126,7 @@ void file_dialog::select_file(const std::string& file)
 	files_list_->select_file(file);
 }
 
-const std::string file_dialog::format_dirname(const std::string& dirname) const
+std::string file_dialog::format_dirname(const std::string& dirname) const
 {
 	int menu_font_size = font::SIZE_NORMAL;
 	std::string tmp = files_list_->strip_last_delim(dirname);
