@@ -17,6 +17,8 @@
 
 #include "ai.hpp"
 #include "ai_interface.hpp"
+#include "callable_objects.hpp"
+#include "formula.hpp"
 #include "formula_fwd.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
@@ -26,7 +28,52 @@ class formula_ai;
 
 namespace game_logic {
 
-typedef	std::map<const std::string, const_formula_ptr> candidate_move_map;
+class candidate_move {
+public:
+	candidate_move(std::string name, const_formula_ptr eval) :
+		name_(name),
+		eval_(eval),
+		score_(-1),
+		action_unit_()
+	{};
+
+	void evaluate_move(const formula_callable* ai, unit_map& units, int team_num) {
+
+		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
+		{
+			if(i->second.side() == team_num) {
+				game_logic::map_formula_callable callable(ai);
+				callable.add_ref();
+				callable.add("me", variant(new unit_callable(*i)));
+				int res = (formula::evaluate(eval_, callable)).as_int();
+				if(res > score_) {
+					score_ = res;
+					action_unit_.reset(&i->second);
+				}
+			}
+		}
+
+	}
+
+	int get_score() const {return score_;}
+
+	struct move_compare {
+		bool operator() (const candidate_move& lmove,
+				const candidate_move& rmove) const 
+		{
+			return lmove.get_score() < rmove.get_score();
+		}
+	};
+
+private:
+	std::string name_;
+	const_formula_ptr eval_;
+	int score_;
+	boost::shared_ptr<unit> action_unit_;
+};
+
+
+typedef boost::shared_ptr<candidate_move> candidate_move_ptr; 	
 
 class ai_function_symbol_table : public function_symbol_table {
 
@@ -34,18 +81,21 @@ public:
 	explicit ai_function_symbol_table(formula_ai& ai) : 
 		ai_(ai),
 		move_functions(),
-		candidate_move_evals()
-	{
-	}
+		candidate_moves()
+	{}
 
 	void register_candidate_move(const std::string name, 
 			const_formula_ptr formula, const_formula_ptr eval, 
 			const_formula_ptr precondition, const std::vector<std::string>& args);
 
+	std::vector<candidate_move_ptr>::iterator get_candidate_move_itor() {
+		return candidate_moves.begin(); 
+	}	
+
 private:
 	formula_ai& ai_;
 	std::set<std::string> move_functions;
-	candidate_move_map candidate_move_evals;
+	std::vector<candidate_move_ptr> candidate_moves;
 	expression_ptr create_function(const std::string& fn,
 	                               const std::vector<expression_ptr>& args) const; 
 };
@@ -55,7 +105,7 @@ private:
 class formula_ai : public ai {
 public:
 	explicit formula_ai(info& i);
-        virtual ~formula_ai() {} ;
+	virtual ~formula_ai() {};
 	virtual void play_turn();
 	virtual void new_turn();
 
@@ -113,7 +163,8 @@ private:
 
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table;
+
+	std::set<game_logic::candidate_move, game_logic::candidate_move::move_compare> candidate_moves;
 };
 
 #endif
-

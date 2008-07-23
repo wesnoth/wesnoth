@@ -15,12 +15,8 @@
 #include <boost/regex.hpp>
 
 #include "actions.hpp"
-#include "callable_objects.hpp"
 #include "menu_events.hpp"
-#include "formula.hpp"
 #include "formula_ai.hpp"
-#include "formula_callable.hpp"
-#include "formula_function.hpp"
 #include "pathutils.hpp"
 #include "log.hpp"
 #include "attack_prediction.hpp"
@@ -1108,9 +1104,8 @@ void ai_function_symbol_table::register_candidate_move(const std::string name,
 		const_formula_ptr formula, const_formula_ptr eval, 
 		const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	candidate_move_evals.insert(std::pair<const std::string, 
-			game_logic::const_formula_ptr>
-			(name, eval));
+	candidate_move_ptr new_move(new candidate_move(name,eval));
+	candidate_moves.push_back(new_move);
 	function_symbol_table::add_formula_function(name, formula, 
 			precondition, args);
 }
