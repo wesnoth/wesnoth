@@ -220,7 +220,7 @@ t_string t_string::from_serialized(const std::string& string)
 	return res;
 }
 
-const std::string t_string::base_str() const
+std::string t_string::base_str() const
 {
 	std::string res;
 	for(walker w(*this); !w.eos(); w.next()) {

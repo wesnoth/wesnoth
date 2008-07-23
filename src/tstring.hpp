@@ -91,7 +91,7 @@ public:
 	// Warning: value() may contain platform dependant prefix bytes !
 	// Consider base_str() for a more reliable untranslated string
 	const std::string& value() const                 { return value_; }
-	const std::string base_str() const;
+	std::string base_str() const;
 
 	void reset_translation() const                   { translated_value_ = ""; }
 
