@@ -378,7 +378,7 @@ vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator
 	return pointer(new std::pair<const std::string, const vconfig>(get_key(), get_child()));
 }
 
-const std::string vconfig::all_children_iterator::get_key() const
+std::string vconfig::all_children_iterator::get_key() const
 {
 	const std::string& key = i_.get_key();
 	if(key == "insert_tag") {

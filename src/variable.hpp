@@ -72,7 +72,7 @@ public:
 		value_type operator*() const;
 		pointer operator->() const;
 
-		const std::string get_key() const;
+		std::string get_key() const;
 		size_t get_index() const;
 		const vconfig get_child() const;
 
