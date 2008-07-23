@@ -157,7 +157,7 @@ public:
 	bool resting() const { return resting_; }
 	void set_resting(bool rest) { resting_ = rest; }
 
-	const std::string get_state(const std::string& state) const;
+	std::string get_state(const std::string& state) const;
 	void set_state(const std::string& state, const std::string& value);
 
 	bool has_moved() const { return movement_left() != total_movement(); }
