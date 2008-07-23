@@ -44,7 +44,7 @@ public:
 		return *this;
 	}
 
-	const std::string str() {
+	std::string str() {
 		return stream_.str();
 	}
 
