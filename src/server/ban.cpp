@@ -32,7 +32,11 @@ namespace wesnothd {
 	{
 	}
 
-	banned::banned(const config& cfg)
+	banned::banned(const config& cfg) :
+		ip_(),
+		end_time_(0),
+		reason_(),
+		deleted_(false)
 	{
 		read(cfg);
 	}
