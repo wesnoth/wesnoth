@@ -95,11 +95,11 @@ config* get_child(const std::string& key)
 	return prefs.child(key);
 }
 
-void erase(const std::string key) {
+void erase(const std::string& key) {
 	prefs.values.erase(key);
 }
 
-const std::string get(const std::string key) {
+std::string get(const std::string& key) {
 	return prefs[key];
 }
 
