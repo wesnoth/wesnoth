@@ -28,7 +28,7 @@ class unit_type;
 
 #include "widgets/button.hpp"
 
-#include "file_chooser.hpp"
+#include "filechooser.hpp"
 
 namespace dialogs {
 

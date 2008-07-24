@@ -22,7 +22,7 @@
 #include "../config_adapter.hpp"
 #include "../construct_dialog.hpp"
 #include "../cursor.hpp"
-#include "../file_chooser.hpp"
+#include "../filechooser.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
 #include "../gettext.hpp"

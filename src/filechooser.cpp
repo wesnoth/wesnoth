@@ -18,7 +18,7 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
-#include "file_chooser.hpp"
+#include "filechooser.hpp"
 #include "video.hpp"
 #include "widgets/file_menu.hpp"
 #include "filesystem.hpp"

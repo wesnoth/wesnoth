@@ -22,7 +22,7 @@
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
-#include "file_chooser.hpp"
+#include "filechooser.hpp"
 #include "game_display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"

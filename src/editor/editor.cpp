@@ -21,7 +21,7 @@
 #include "../config.hpp"
 #include "../construct_dialog.hpp"
 #include "../cursor.hpp"
-#include "../file_chooser.hpp"
+#include "../filechooser.hpp"
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../game_config.hpp"
