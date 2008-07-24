@@ -27,7 +27,9 @@ namespace soundsource {
 
 unsigned int positional_source::last_id = 0;
 
-manager::manager(const display &disp) : _disp(disp) 
+manager::manager(const display &disp) : 
+	_sources(),
+	_disp(disp) 
 {
 	_disp.scroll_event().attach_handler(this);
 	update_positions();
