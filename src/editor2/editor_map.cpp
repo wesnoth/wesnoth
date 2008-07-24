@@ -73,6 +73,8 @@ bool editor_map::save()
 	std::string data = write();
 	write_file(get_filename(), data);
 	actions_since_save_ = 0;
+
+	return true;
 }
 
 bool editor_map::in_selection(const gamemap::location& loc) const
