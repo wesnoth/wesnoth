@@ -85,7 +85,7 @@ _BUILTIN_OK = [
     'abs', 'bool', 'callable', 'chr', 'cmp', 'complex', 'dict', 'divmod', 'filter',
     'float', 'frozenset', 'hash', 'hex', 'int', 'isinstance', 'issubclass', 'len',
     'list', 'long', 'map', 'max', 'min', 'object', 'oct', 'ord', 'pow', 'range',
-    'repr', 'round', 'set', 'slice', 'str', 'sum', 'super', 'tuple',  'xrange', 'zip',
+    'repr', 'reversed', 'round', 'set', 'slice', 'str', 'sum', 'super', 'tuple',  'xrange', 'zip',
     'ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Exception',
     'IndexError', 'KeyError', 'NameError', 'RuntimeError', 'RuntimeWarning', 'StopIteration',
     'ValueError', 'ZeroDivisionError'

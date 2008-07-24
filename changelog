@@ -15,6 +15,9 @@ Version 1.5.2+svn:
    * It is now possible to use [time_area] to add or remove new local ToD
      areas and their schedules during scenario events. Removal requires to
      associate an id. to [time_area]s, or it won't work.
+ * Python AI
+   * reversed builtin is now allowed. This allows for random.shuffle to be
+	called.
 
 Version 1.5.2:
  * campaigns:
