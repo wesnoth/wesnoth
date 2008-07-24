@@ -56,7 +56,7 @@ void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 	ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
 	VALIDATE(host_widget, missing_widget("host_name"));
 
-	host_widget->set_text(host_name_);
+	host_widget->set_value(host_name_);
 	window.keyboard_capture(host_widget);
 }
 
@@ -67,7 +67,7 @@ void taddon_connect::post_show(twindow& window)
 		assert(host_widget);
 
 		host_widget->save_to_history();
-		host_name_= host_widget->get_text();
+		host_name_= host_widget->get_value();
 	}
 }
 

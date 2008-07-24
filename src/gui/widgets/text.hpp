@@ -54,8 +54,9 @@ public:
 	void key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
 
-	void set_text(const std::string& text); 
-	std::string get_text() const { return text_; }
+	void set_value(const std::string& text); 
+	std::string get_value() const { return text_; }
+
 	const std::string& text() const { return text_; }
 
 protected:

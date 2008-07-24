@@ -165,7 +165,7 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 		dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
 	VALIDATE(host_name_widget_, missing_widget("host_name"));
 
-	host_name_widget_->set_text(preferences::network_host());
+	host_name_widget_->set_value(preferences::network_host());
 	window.keyboard_capture(host_name_widget_);
 
 	// Set view list callback button.
@@ -180,7 +180,7 @@ void tmp_connect::post_show(twindow& /*window*/)
 {
 	if(get_retval() == tbutton::OK) {
 		host_name_widget_->save_to_history();
-		host_name_= host_name_widget_->get_text();
+		host_name_= host_name_widget_->get_value();
 		preferences::set_network_host(host_name_);
 	}
 
@@ -197,7 +197,7 @@ void tmp_connect::show_server_list()
 	dlg.show(*video_);
 
 	if(dlg.get_retval() == tbutton::OK) {
-		host_name_widget_->set_text(dlg.host_name());
+		host_name_widget_->set_value(dlg.host_name());
 	}
 }
 

@@ -59,7 +59,7 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 	ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
 	VALIDATE(user_widget, missing_widget("user_name"));
 
-	user_widget->set_text(user_name_);
+	user_widget->set_value(user_name_);
 	window.keyboard_capture(user_widget);
 
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
@@ -83,7 +83,7 @@ void tmp_method_selection::post_show(twindow& window)
 
 		choice_ = list->get_selected_row();
 		user_widget->save_to_history();
-		user_name_= user_widget->get_text();
+		user_name_= user_widget->get_value();
 		preferences::set_login(user_name_);
 	}
 }

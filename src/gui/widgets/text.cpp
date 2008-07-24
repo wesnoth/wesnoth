@@ -231,7 +231,7 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 
 }
 
-void ttext_::set_text(const std::string& text)
+void ttext_::set_value(const std::string& text)
 { 
 	if(text != text_) { 
 		text_ = text; 

@@ -124,7 +124,7 @@ void ttext_box::delete_selection()
 	wide_string tmp = utils::string_to_wstring(text());
 	tmp.erase(tmp.begin() + start, tmp.begin() + start + len);
 	const std::string& text = utils::wstring_to_string(tmp);
-	set_text(text);
+	set_value(text);
 	set_cursor(start, false);
 }
 
@@ -278,7 +278,7 @@ void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
 {
 	handled = true;
 
-	set_text("");
+	set_value("");
 }
 
 void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
@@ -286,7 +286,7 @@ void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 	if (history_.get_enabled()) {
 		std::string s = history_.up(text());
 		if (!s.empty()) {
-			set_text(s);
+			set_value(s);
 		}
 				
 		handled = true;
@@ -297,7 +297,7 @@ void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 void ttext_box::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 {
 	if (history_.get_enabled()) {
-		set_text(history_.down(text()));
+		set_value(history_.down(text()));
 		handled = true;
 	}
 }
