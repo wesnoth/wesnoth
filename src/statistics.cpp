@@ -40,7 +40,9 @@ int stats_disabled = 0;
 
 struct scenario_stats
 {
-	explicit scenario_stats(const std::string& name) : scenario_name(name)
+	explicit scenario_stats(const std::string& name) : 
+		team_stats(),
+		scenario_name(name)
 	{}
 
 	explicit scenario_stats(const config& cfg);
@@ -52,9 +54,10 @@ struct scenario_stats
 	std::string scenario_name;
 };
 
-scenario_stats::scenario_stats(const config& cfg)
+scenario_stats::scenario_stats(const config& cfg) :
+	team_stats(),
+	scenario_name(cfg["scenario"])
 {
-	scenario_name = cfg["scenario"];
 	const config::child_list& teams = cfg.get_children("team");
 	for(config::child_list::const_iterator i = teams.begin(); i != teams.end(); ++i) {
 		team_stats.push_back(stats(**i));
@@ -223,16 +226,52 @@ static void merge_stats(stats& a, const stats& b)
 namespace statistics
 {
 
-stats::stats() : recruit_cost(0), recall_cost(0),
-                 damage_inflicted(0), damage_taken(0),
-                 turn_damage_inflicted(0), turn_damage_taken(0),
-                 expected_damage_inflicted(0), expected_damage_taken(0),
-                 turn_expected_damage_inflicted(0), turn_expected_damage_taken(0),
-                 new_expected_damage_inflicted(0), new_expected_damage_taken(0),
-                 new_turn_expected_damage_inflicted(0), new_turn_expected_damage_taken(0)
+stats::stats() : 
+	recruits(),
+	recalls(),
+	advanced_to(),
+	deaths(),
+	killed(),
+	recruit_cost(0), 
+	recall_cost(0), 
+	attacks(),
+	defends(),
+	damage_inflicted(0),
+	damage_taken(0), 
+	turn_damage_inflicted(0), 
+	turn_damage_taken(0), 
+	expected_damage_inflicted(0), 
+	expected_damage_taken(0), 
+	turn_expected_damage_inflicted(0), 
+	turn_expected_damage_taken(0), 
+	new_expected_damage_inflicted(0), 
+	new_expected_damage_taken(0), 
+	new_turn_expected_damage_inflicted(0), 
+	new_turn_expected_damage_taken(0)
 {}
 
-stats::stats(const config& cfg)
+stats::stats(const config& cfg) :
+	recruits(),
+	recalls(),
+	advanced_to(),
+	deaths(),
+	killed(),
+	recruit_cost(0), 
+	recall_cost(0), 
+	attacks(),
+	defends(),
+	damage_inflicted(0), 
+	damage_taken(0), 
+	turn_damage_inflicted(0), 
+	turn_damage_taken(0), 
+	expected_damage_inflicted(0), 
+	expected_damage_taken(0), 
+	turn_expected_damage_inflicted(0), 
+	turn_expected_damage_taken(0), 
+	new_expected_damage_inflicted(0), 
+	new_expected_damage_taken(0), 
+	new_turn_expected_damage_inflicted(0), 
+	new_turn_expected_damage_taken(0)
 {
 	read(cfg);
 }
@@ -432,10 +471,16 @@ scenario_context::~scenario_context()
 	mid_scenario = false;
 }
 
-attack_context::attack_context(const unit& a, const unit& d, int a_cth, int d_cth)
-   : attacker_type(a.type_id()), defender_type(d.type_id()),
-     attacker_side(a.side()), defender_side(d.side()),
-     chance_to_hit_defender(a_cth), chance_to_hit_attacker(d_cth)
+attack_context::attack_context(const unit& a, 
+		const unit& d, int a_cth, int d_cth) :
+	attacker_type(a.type_id()), 
+	defender_type(d.type_id()), 
+	attacker_side(a.side()), 
+	defender_side(d.side()), 
+	chance_to_hit_defender(a_cth), 
+	chance_to_hit_attacker(d_cth),
+	attacker_res(),
+	defender_res()
 {
 }
 
