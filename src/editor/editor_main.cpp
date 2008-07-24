@@ -58,8 +58,8 @@ int main(int argc, char** argv)
 	std::cerr << "Started on " << ctime(&t) << "\n";
 
 	game_config::editor = true;
-	rng generator;
-	const set_random_generator generator_setter(&generator);
+	rand_rng::rng generator;
+	const rand_rng::set_random_generator generator_setter(&generator);
 
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
