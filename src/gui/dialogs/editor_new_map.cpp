@@ -48,11 +48,11 @@ void teditor_new_map::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box* width_widget = dynamic_cast<ttext_box*>(window.find_widget("width", false));
 	VALIDATE(width_widget, missing_widget("width"));
-	width_widget->set_text(lexical_cast<std::string>(map_width_));
+	width_widget->set_value(lexical_cast<std::string>(map_width_));
 
 	ttext_box* height_widget = dynamic_cast<ttext_box*>(window.find_widget("height", false));
 	VALIDATE(height_widget, missing_widget("height"));
-	height_widget->set_text(lexical_cast<std::string>(map_height_));
+	height_widget->set_value(lexical_cast<std::string>(map_height_));
 }
 
 void teditor_new_map::post_show(twindow& window)
@@ -62,8 +62,8 @@ void teditor_new_map::post_show(twindow& window)
 		ttext_box* height_widget = dynamic_cast<ttext_box*>(window.find_widget("height", false));
 		assert(width_widget);
 		assert(height_widget);
-		map_width_ = lexical_cast_default<int>(width_widget->get_text(), 0);
-		map_height_ = lexical_cast_default<int>(height_widget->get_text(), 0);
+		map_width_ = lexical_cast_default<int>(width_widget->get_value(), 0);
+		map_height_ = lexical_cast_default<int>(height_widget->get_value(), 0);
 	}
 }
 
