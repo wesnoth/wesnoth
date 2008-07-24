@@ -784,7 +784,7 @@ bool do_replay(game_display& disp, const gamemap& map,
 		disp.recalculate_minimap();
 	}
 
-	const set_random_generator generator_setter(&get_replay_source());
+	const rand_rng::set_random_generator generator_setter(&get_replay_source());
 
 	update_locker lock_update(disp.video(),get_replay_source().is_skipping());
 	return do_replay_handle(disp, map, units, teams, team_num, state, state_of_game,

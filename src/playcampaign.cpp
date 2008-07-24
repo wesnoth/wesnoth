@@ -325,7 +325,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		bool save_game_after_scenario = true;
 
-		const set_random_generator generator_setter(&recorder);
+		const rand_rng::set_random_generator generator_setter(&recorder);
 		LEVEL_RESULT res = LEVEL_CONTINUE;
 
 		try {

@@ -487,7 +487,7 @@ namespace mp {
 void start_server(game_display& disp, const config& game_config,
 		mp::controller default_controller, bool is_server)
 {
-	const set_random_generator generator_setter(&recorder);
+        const rand_rng::set_random_generator generator_setter(&recorder);
 	mp::chat chat;
 	config gamelist;
 	playmp_controller::set_replay_last_turn(0);
@@ -498,7 +498,7 @@ void start_server(game_display& disp, const config& game_config,
 void start_client(game_display& disp, const config& game_config,
 		const std::string host)
 {
-	const set_random_generator generator_setter(&recorder);
+	const rand_rng::set_random_generator generator_setter(&recorder);
 	const network::manager net_manager(1,1);
 
 	mp::chat chat;

@@ -47,6 +47,36 @@
 #include <cstdio>
 #include <sstream>
 
+namespace {
+  rand_rng::rng *random_generator = NULL ;
+}
+
+
+int get_random()
+{
+  assert(random_generator!=NULL);
+  int r = random_generator->get_random(); 
+  return r ;
+}
+
+
+const config* get_random_results()
+{
+  assert(random_generator!=NULL);
+  return random_generator->get_random_results();
+}
+
+
+void set_random_results(const config& cfg)
+{
+  assert(random_generator!=NULL);
+  random_generator->set_random_results(cfg);
+}
+
+
+namespace rand_rng
+{
+
 rng::rng() : random_(NULL), random_child_(0)
 {}
 
@@ -97,9 +127,6 @@ void rng::set_random(config* random)
 	return;
 }
 
-namespace {
-rng* random_generator = NULL;
-}
 
 set_random_generator::set_random_generator(rng* r) : old_(random_generator)
 {
@@ -111,29 +138,11 @@ set_random_generator::~set_random_generator()
 	random_generator = old_;
 }
 
-int get_random()
-{
-	assert(random_generator!=NULL);
-	return random_generator->get_random();
-}
-
-const config* get_random_results()
-{
-	assert(random_generator!=NULL);
-	return random_generator->get_random_results();
-}
-
-void set_random_results(const config& cfg)
-{
-	assert(random_generator!=NULL);
-	random_generator->set_random_results(cfg);
-}
-
 simple_rng::simple_rng() :
     random_seed_(rand()),
     random_pool_(random_seed_),
     random_calls_(0)
-{}
+{ }
 
 simple_rng::simple_rng(const config& cfg) :
     /**
@@ -179,4 +188,7 @@ void simple_rng::random_next()
 	// quickly go the the wanted index in the random list.
 	random_pool_ = random_pool_ * 1103515245 + 12345;
 }
+
+
+} // ends rand_rng namespace
 

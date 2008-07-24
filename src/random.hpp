@@ -15,8 +15,8 @@
 
 /** @file random.hpp */
 
-#ifndef RANDOM_H_INCLUDED
-#define RANDOM_H_INCLUDED
+#ifndef RANDOM_HPP_INCLUDED
+#define RANDOM_HPP_INCLUDED
 
 #include "SDL_types.h"
 
@@ -25,6 +25,9 @@ class config;
 int get_random();
 const config* get_random_results();
 void set_random_results(const config& cfg);
+
+namespace rand_rng
+{
 
 class rng
 {
@@ -107,5 +110,7 @@ private:
 	/** Sets the next random number in the pool. */
 	void random_next();
 };
+
+} // ends rand_rng namespace
 
 #endif

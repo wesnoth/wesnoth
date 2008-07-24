@@ -21,8 +21,7 @@
 
 #include "serialization/string_utils.hpp"
 #include "config.hpp"
-
-class simple_rng;
+#include "random.hpp"
 
 typedef std::map<wide_string, std::vector<wchar_t> > markov_prefix_map;
 
@@ -39,7 +38,7 @@ public:
 	const t_string& plural_name() const { return plural_name_; };
 	const t_string& description() const { return description_; };
 
-	std::string generate_name(GENDER gender, simple_rng* rng = 0) const;
+	std::string generate_name(GENDER gender, rand_rng::simple_rng* rng = 0) const;
 
 	bool uses_global_traits() const;
 

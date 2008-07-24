@@ -144,8 +144,8 @@ public:
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children
 
-    const simple_rng& rng() const { return rng_; }
-    simple_rng& rng() { return rng_; }
+        const rand_rng::simple_rng& rng() const { return rng_; }
+        rand_rng::simple_rng& rng() { return rng_; }
 
 	std::string difficulty; //!< The difficulty level the game is being played on.
 
@@ -167,7 +167,7 @@ public:
 	gamemap::location last_selected;
 
 private:
-    simple_rng rng_;
+  rand_rng::simple_rng rng_ ;
 	config variables;
 	mutable config temporaries; // lengths of arrays, etc.
 	friend struct variable_info;

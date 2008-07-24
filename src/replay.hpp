@@ -36,7 +36,7 @@ struct verification_manager
 	~verification_manager();
 };
 
-class replay: public rng
+class replay: public rand_rng::rng
 {
 public:
 	replay();

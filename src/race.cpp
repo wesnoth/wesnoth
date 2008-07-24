@@ -53,7 +53,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 }
 
 static wide_string markov_generate_name(const markov_prefix_map& prefixes,
-	size_t chain_size, size_t max_len, simple_rng* rng)
+	size_t chain_size, size_t max_len, rand_rng::simple_rng* rng)
 {
 	if(chain_size == 0)
 		return wide_string();
@@ -187,7 +187,7 @@ unit_race::unit_race(const config& cfg) :
 }
 
 std::string unit_race::generate_name(
-		unit_race::GENDER gender, simple_rng* rng) const
+		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
 {
 	return utils::wstring_to_string(
 		markov_generate_name(next_[gender], chain_size_, 12, rng));
