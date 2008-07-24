@@ -16,6 +16,9 @@ Version 1.5.2+svn:
      areas and their schedules during scenario events. Removal requires to
      associate an id. to [time_area]s, or it won't work.
  * Python AI
+   * Added ai_init.py and ai_launcher.py to make it easier to customize
+	AI environment and startup. Both are used by the new embedded python
+	implementation.
    * reversed builtin is now allowed. This allows for random.shuffle to be
 	called.
 
