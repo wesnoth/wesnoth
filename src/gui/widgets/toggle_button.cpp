@@ -58,7 +58,7 @@ void ttoggle_button::mouse_enter(tevent_handler&)
 { 
 	DBG_G_E << "Toggle button: mouse enter.\n"; 
 
-	if(is_selected()) {
+	if(get_value()) {
 		set_state(FOCUSSED_SELECTED);
 	} else {
 		set_state(FOCUSSED);
@@ -69,7 +69,7 @@ void ttoggle_button::mouse_leave(tevent_handler&)
 { 
 	DBG_G_E << "Toggle button: mouse leave.\n"; 
 
-	if(is_selected()) {
+	if(get_value()) {
 		set_state(ENABLED_SELECTED);
 	} else {
 		set_state(ENABLED);
@@ -80,7 +80,7 @@ void ttoggle_button::mouse_left_button_click(tevent_handler&)
 { 
 	DBG_G_E << "Toggle button: left mouse button click.\n"; 
 
-	if(is_selected()) {
+	if(get_value()) {
 		set_state(ENABLED);
 	} else {
 		set_state(ENABLED_SELECTED);
@@ -106,13 +106,13 @@ void ttoggle_button::mouse_left_button_double_click(tevent_handler&)
 void ttoggle_button::set_active(const bool active)
 {
 	if(active) {
-		if(is_selected()) {
+		if(get_value()) {
 			set_state(ENABLED_SELECTED);
 		} else {
 			set_state(ENABLED);
 		}
 	} else {
-		if(is_selected()) {
+		if(get_value()) {
 			set_state(DISABLED_SELECTED);
 		} else {
 			set_state(DISABLED);
@@ -131,9 +131,9 @@ void ttoggle_button::set_canvas_text()
 	}
 }
 
-void ttoggle_button::set_selected(const bool selected)
+void ttoggle_button::set_value(const bool selected)
 {
-	if(selected == is_selected()) {
+	if(selected == get_value()) {
 		return;
 	}
 

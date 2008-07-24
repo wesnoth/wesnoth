@@ -122,10 +122,10 @@ public:
 	tpoint border_space() const;
 
 	/** Inherited from tselectable_ */
-	bool is_selected() const { return state_ >= ENABLED_SELECTED; }
+	bool get_value() const { return state_ >= ENABLED_SELECTED; }
 
 	/** Inherited from tselectable_ */
-	void set_selected(const bool selected = true);
+	void set_value(const bool selected);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

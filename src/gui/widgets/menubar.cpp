@@ -83,12 +83,12 @@ void tmenubar::set_selected_item(const int item)
 	}
 
 	if(selected_item_ != -1) {
-		(*(*this)[selected_item_]).set_selected(false);
+		(*(*this)[selected_item_]).set_value(false);
 	}
 
 	selected_item_ = item;
 	if(selected_item_ != -1) {
-		(*(*this)[selected_item_]).set_selected(true);
+		(*(*this)[selected_item_]).set_value(true);
 	}
 }
 
@@ -118,10 +118,10 @@ void tmenubar::item_selected(twidget* widget)
 	assert(index < get_item_count());
 
 	// Set the selection.
-	if(!item->is_selected()) {
+	if(!item->get_value()) {
 		// Deselected an item, allowed?
 		if(must_select_) {
-			item->set_selected();	
+			item->set_value(true);	
 		} else {
 			selected_item_ = -1;
 		}

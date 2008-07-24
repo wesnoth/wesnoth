@@ -57,7 +57,7 @@ void ttoggle_panel::mouse_enter(tevent_handler&)
 { 
 	DBG_G_E << "Toggle panel: mouse enter.\n"; 
 
-	if(is_selected()) {
+	if(get_value()) {
 		set_state(FOCUSSED_SELECTED);
 	} else {
 		set_state(FOCUSSED);
@@ -68,7 +68,7 @@ void ttoggle_panel::mouse_leave(tevent_handler&)
 { 
 	DBG_G_E << "Toggle panel: mouse leave.\n"; 
 
-	if(is_selected()) {
+	if(get_value()) {
 		set_state(ENABLED_SELECTED);
 	} else {
 		set_state(ENABLED);
@@ -79,7 +79,7 @@ void ttoggle_panel::mouse_left_button_click(tevent_handler&)
 { 
 	DBG_G_E << "Toggle panel: left mouse button click.\n"; 
 
-	if(is_selected()) {
+	if(get_value()) {
 		set_state(ENABLED);
 	} else {
 		set_state(ENABLED_SELECTED);
@@ -105,13 +105,13 @@ void ttoggle_panel::mouse_left_button_double_click(tevent_handler&)
 void ttoggle_panel::set_active(const bool active)
 {
 	if(active) {
-		if(is_selected()) {
+		if(get_value()) {
 			set_state(ENABLED_SELECTED);
 		} else {
 			set_state(ENABLED);
 		}
 	} else {
-		if(is_selected()) {
+		if(get_value()) {
 			set_state(DISABLED_SELECTED);
 		} else {
 			set_state(DISABLED);
@@ -144,9 +144,9 @@ tpoint ttoggle_panel::border_space() const
 		conf->top_border + conf->bottom_border);
 }
 
-void ttoggle_panel::set_selected(const bool selected)
+void ttoggle_panel::set_value(const bool selected)
 {
-	if(selected == is_selected()) {
+	if(selected == get_value()) {
 		return;
 	}
 

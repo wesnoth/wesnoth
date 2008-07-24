@@ -545,10 +545,10 @@ public:
 	virtual ~tselectable_() {}
 
 	/** Is the control selected? */
-	virtual bool is_selected() const = 0;
+	virtual bool get_value() const = 0;
 
 	/** Select the control. */
-	virtual void set_selected(const bool = true) = 0;
+	virtual void set_value(const bool) = 0;
 };
 
 /**

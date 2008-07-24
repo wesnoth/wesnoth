@@ -177,7 +177,7 @@ bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 			// if not allowed to deselect reselect.
 			tselectable_* selectable = dynamic_cast<tselectable_*>(caller);
 			assert(selectable);
-			selectable->set_selected();	
+			selectable->set_value(true);	
 		}
 
 		return true;
@@ -692,7 +692,7 @@ void tlistbox::trow::select_in_grid(tgrid* grid, const bool sel)
 			tselectable_* selectable = dynamic_cast<tselectable_*>(widget);
 
 			if(selectable) {
-				selectable->set_selected(sel);
+				selectable->set_value(sel);
 			} else if(grid) {
 				select_in_grid(child_grid, sel);
 			} else {
