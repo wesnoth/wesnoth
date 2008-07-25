@@ -423,7 +423,22 @@ public:
 	const std::string& type() const { return type_; }
 };
 
+class get_unit_type_function : public function_expression {
+public:
+	explicit get_unit_type_function(const args_list& args)
+	  : function_expression("get_unit_type", args, 1, 1)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const std::string type = args()[0]->evaluate(variables).as_string();
 
+		std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find( type );
+		if (unit_it != unit_type_data::types().end() )
+				return  variant( new unit_type_callable( unit_it->second ) );
+
+		return variant();
+	}
+};
 
 class recruit_function : public function_expression {
 public:
@@ -1057,6 +1072,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new attack_function(args, ai_));
 	} else if(fn == "recruit") {
 		return expression_ptr(new recruit_function(args));
+	} else if(fn == "get_unit_type") {
+		return expression_ptr(new get_unit_type_function(args));
 	} else if(fn == "is_village") {
 		return expression_ptr(new is_village_function(args));
 	} else if(fn == "is_unowned_village") {
