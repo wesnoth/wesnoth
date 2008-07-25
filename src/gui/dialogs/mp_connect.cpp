@@ -18,6 +18,7 @@
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/dialog.hpp"
+#include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/widget.hpp"
@@ -54,7 +55,6 @@ namespace {
  *     # address -                     The address/host_name of the server.
  * @end_table
  */
-
 class tmp_server_list : public tdialog
 {
 public:
@@ -129,8 +129,10 @@ void callback_view_list_button(twidget* caller)
 
 	tmp_connect* mp_connect = dynamic_cast<tmp_connect*>(caller->dialog());
 	assert(mp_connect);
+	twindow* window = dynamic_cast<twindow*>(caller->get_window());
+	assert(window);
 
-	mp_connect->show_server_list();
+	mp_connect->show_server_list(*window);
 }
 
 } // namespace 
@@ -149,6 +151,13 @@ void callback_view_list_button(twidget* caller)
  *                                     servers to connect to.
  * @end_table
  */
+tmp_connect::tmp_connect() : 
+	video_(0),
+	host_name_(register_text("host_name", false, 
+		preferences::network_host, 
+		preferences::set_network_host))
+{
+}
 
 twindow tmp_connect::build_window(CVideo& video)
 {
@@ -158,15 +167,10 @@ twindow tmp_connect::build_window(CVideo& video)
 void tmp_connect::pre_show(CVideo& video, twindow& window)
 {
 	assert(!video_);
-	assert(!host_name_widget_);
+	assert(host_name_);
 	video_ = &video;
 
-	host_name_widget_ = 
-		dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
-	VALIDATE(host_name_widget_, missing_widget("host_name"));
-
-	host_name_widget_->set_value(preferences::network_host());
-	window.keyboard_capture(host_name_widget_);
+	window.keyboard_capture(host_name_->widget(window));
 
 	// Set view list callback button.
 	tbutton *view_list = 
@@ -178,26 +182,19 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 
 void tmp_connect::post_show(twindow& /*window*/)
 {
-	if(get_retval() == tbutton::OK) {
-		host_name_widget_->save_to_history();
-		host_name_= host_name_widget_->get_value();
-		preferences::set_network_host(host_name_);
-	}
-
 	video_ = 0;
-	host_name_widget_ = 0;
 }
 
-void tmp_connect::show_server_list()
+void tmp_connect::show_server_list(twindow& window)
 {
 	assert(video_);
-	assert(host_name_widget_);
+	assert(host_name_);
 
 	tmp_server_list dlg;
 	dlg.show(*video_);
 
 	if(dlg.get_retval() == tbutton::OK) {
-		host_name_widget_->set_value(dlg.host_name());
+		host_name_->set_value(window, dlg.host_name());
 	}
 }
 

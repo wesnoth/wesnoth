@@ -15,13 +15,14 @@
 #ifndef GUI_DIALOGS_DIALOG_HPP_INCLUDED
 #define GUI_DIALOGS_DIALOG_HPP_INCLUDED
 
+#include "gui/dialogs/field-fwd.hpp"
+
 #include <string>
+#include <vector>
 
 class CVideo;
 
 namespace gui2 {
-
-class twindow;
 
 /**
  * Abstract base class for all dialogs.
@@ -35,19 +36,75 @@ class tdialog
 {
 public:
 	tdialog() : 
-		retval_(0)
+		retval_(0),
+		fields_()
 	{}
 
-	virtual ~tdialog() {}
+	virtual ~tdialog();
 
 	/** Shows the window */
 	void show(CVideo& video);
 
 	int get_retval() const { return retval_; }
 
+protected:
+
+	/**
+	 * Creates a new boolean field.
+	 *
+	 * The field created is owned by tdialog, the returned pointer can be used
+	 * in the child classes as access to a field.
+	 *
+	 * @param id                  Id of the widget, same value as in WML.
+	 * @param optional            Is the widget mandatory or optional.
+	 * @param callback_load_value The callback function to set the initial value
+	 *                            of the widget.
+	 * @param callback_save_value The callback function to write the resulting
+	 *                            value of the widget. Saving will only happen
+	 *                            if the widget is enabled and the window closed
+	 *                            with ok.
+	 * @param callback_change     When the value of the widget changes this
+	 *                            callback is called.
+	 *
+	 * @returns                   Pointer to the created widget.
+	 */
+	tfield_bool* register_bool(const std::string& id, 
+		const bool optional = false,
+		bool (*callback_load_value) () = NULL,
+		void (*callback_save_value) (const bool value) = NULL,
+		void (*callback_change) (twidget* widget) = NULL);
+
+	/**
+	 * Creates a new integer field.
+	 *
+	 * See register_bool for more info.
+	 */
+	tfield_integer* register_integer(const std::string& id, 
+		const bool optional = false,
+		int (*callback_load_value) () = NULL,
+		void (*callback_save_value) (const int value) = NULL);
+
+	/**
+	 * Creates a new text field.
+	 *
+	 * See register_bool for more info.
+	 */
+	tfield_text* register_text(const std::string& id, 
+		const bool optional = false,
+		std::string (*callback_load_value) () = NULL,
+		void (*callback_save_value) (const std::string& value) = NULL);
 private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
+
+	/** 
+	 * Contains the automatically managed fields.
+	 *
+	 * Since the fields are automatically managed and there are no search
+	 * functions defined we don't offer access to the vector. If access is
+	 * needed the creator should store a copy of the pointer.
+	 */
+	std::vector<tfield_*> fields_;
 
 	/**
 	 * Builds the window.
@@ -74,6 +131,22 @@ private:
 	 * @param window              The window which has been shown.
 	 */
 	virtual void post_show(twindow& /*window*/) {}
+
+	/**
+	 * Initializes all fields in the dialog.
+	 *
+	 * @param window              The window which has been shown.
+	 */
+	virtual void init_fields(twindow& window);
+
+	/**
+	 * When the dialog is closed with the OK status saves all fields.
+	 *
+	 * Saving only happens if a callback handler is installed.
+	 *
+	 * @param window              The window which has been shown.
+	 */
+	virtual void finalize_fields(twindow& window);
 };
 
 } // namespace gui2

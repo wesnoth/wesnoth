@@ -141,7 +141,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 			dlg.show(disp.video());
 			if(dlg.get_retval() == gui2::tbutton::OK) {
-				h = dlg.host_name();
+				h = preferences::network_host();
 			} else {
 				return ABORT_SERVER;
 			}

@@ -19,29 +19,16 @@
 
 namespace gui2 {
 
-class twidget;
-class ttext_box;
-
 class tmp_connect : public tdialog
 {
 public:
-	tmp_connect() : 
-		host_name_(),
-		video_(0),
-		host_name_widget_(0)
-	{}
-
-	const std::string& host_name() const { return host_name_; }
+	tmp_connect();
 
 private:
-	std::string host_name_;
 
 	/** Used in show in order to show list. */
 	CVideo* video_;
 	
-	/** Widget for the host name. */
-	ttext_box* host_name_widget_;
-
 	/** Inherited from tdialog. */
 	twindow build_window(CVideo& video);
 
@@ -51,7 +38,10 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 public:
-	void show_server_list();
+	void show_server_list(twindow& window);
+
+private:
+	tfield_text* host_name_;
 };
 
 } // namespace gui2
