@@ -650,7 +650,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 			ttoggle_panel* panel = dynamic_cast<ttoggle_panel*>(widget);
 
 			if(btn) {
-				btn->set_callback_mouse_left_click(callback_select_list_item);
+				btn->set_callback_state_change(callback_select_list_item);
 				std::map<std::string /* widget id */, std::map<
 					std::string /* member id */, t_string /* member value */> >
 					::const_iterator itor = data.find(btn->id());
@@ -662,7 +662,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 					btn->set_members(itor->second);
 				}
 			} else if(panel) {
-				panel->set_callback_mouse_left_click(callback_select_list_item);
+				panel->set_callback_state_change(callback_select_list_item);
 				panel->set_members(data);
 			} else if(child_grid) {
 				init_in_grid(child_grid, data);

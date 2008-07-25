@@ -169,13 +169,10 @@ void tmenubar::finalize_setup()
 			twidget* widget = grid().widget(row, col);
 			assert(widget);
 
-			ttoggle_button* btn = dynamic_cast<ttoggle_button*>(widget);
-			ttoggle_panel* panel = dynamic_cast<ttoggle_panel*>(widget);
+			tselectable_* btn = dynamic_cast<tselectable_*>(widget);
 
 			if(btn) {
-				btn->set_callback_mouse_left_click(callback_select_item);
-			} else if(panel) {
-				panel->set_callback_mouse_left_click(callback_select_item);
+				btn->set_callback_state_change(callback_select_item);
 			} else {
 				std::cerr << "Widget type " << typeid(*widget).name() << ".\n";
 				assert(false);

@@ -85,8 +85,8 @@ void ttoggle_panel::mouse_left_button_click(tevent_handler&)
 		set_state(ENABLED_SELECTED);
 	}
 
-	if(callback_mouse_left_click_) {
-		callback_mouse_left_click_(this);
+	if(callback_state_change_) {
+		callback_state_change_(this);
 	}
 }
 

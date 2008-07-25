@@ -549,6 +549,12 @@ public:
 
 	/** Select the control. */
 	virtual void set_value(const bool) = 0;
+
+	/**
+	 * When the user does something to change the widget state this event is
+	 * fired. Most of the time it will be a left click on the widget.
+	 */
+	virtual void set_callback_state_change(void (*callback) (twidget*)) = 0;
 };
 
 /**

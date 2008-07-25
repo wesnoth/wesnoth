@@ -32,7 +32,7 @@ public:
 		tcontrol(COUNT),
 		state_(ENABLED),
 		retval_(0),
-		callback_mouse_left_click_(0),
+		callback_state_change_(0),
 		icon_name_()
 	{
 	}
@@ -82,8 +82,9 @@ public:
 
 	void set_retval(const int retval);
 
-	void set_callback_mouse_left_click(void (*callback) (twidget*)) 
-		{ callback_mouse_left_click_ = callback; }
+	/** Inherited from tselectable_. */
+	void set_callback_state_change(void (*callback) (twidget*)) 
+		{ callback_state_change_ = callback; }
 
 	void set_icon_name(const std::string& icon_name) 
 		{ icon_name_ = icon_name; set_canvas_text(); }
@@ -113,7 +114,7 @@ private:
 	 */
 	tstate state_;
  
- 	/**
+	/**
 	 * The return value of the button.
 	 *
 	 * If this value is not 0 and the button is double clicked it sets the
@@ -121,8 +122,8 @@ private:
 	 */
 	int retval_;
 
- 	/** This callback is used when the control gets a left click. */
-	void (*callback_mouse_left_click_) (twidget*);
+	/** See tselectable_::set_callback_state_change. */
+	void (*callback_state_change_) (twidget*);
 
 	/** 
 	 * The toggle button can contain an icon next to the text.

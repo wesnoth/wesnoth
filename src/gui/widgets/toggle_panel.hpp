@@ -33,7 +33,7 @@ public:
 		tpanel(COUNT),
 		state_(ENABLED),
 		retval_(0),
-		callback_mouse_left_click_(0)
+		callback_state_change_(0)
 	{
 	}
 
@@ -131,8 +131,9 @@ public:
 
 	void set_retval(const int retval);
 
-	void set_callback_mouse_left_click(void (*callback) (twidget*)) 
-		{ callback_mouse_left_click_ = callback; }
+	/** Inherited from tselectable_. */
+	void set_callback_state_change(void (*callback) (twidget*)) 
+		{ callback_state_change_ = callback; }
 
 private:
 
@@ -167,8 +168,8 @@ private:
 	 */
 	int retval_;
 
- 	/** This callback is used when the control gets a left click. */
-	void (*callback_mouse_left_click_) (twidget*);
+ 	/** See tselectable_::set_callback_state_change. */
+	void (*callback_state_change_) (twidget*);
 
 	/** Inherited from tpanel. */
 	const std::string& get_control_type() const 
