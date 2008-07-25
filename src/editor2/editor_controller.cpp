@@ -13,7 +13,9 @@
 
 #include "editor_controller.hpp"
 #include "editor_display.hpp"
+#include "editor_layout.hpp"
 #include "editor_map.hpp"
+#include "editor_palettes.hpp"
 #include "mouse_action.hpp"
 
 #include "gui/dialogs/editor_new_map.hpp"
@@ -43,7 +45,11 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 , current_brush_index_(0)
 {
 	init(video);
-	cursor::set(cursor::NORMAL);
+	size_specs_ = new size_specs();
+	adjust_sizes(gui(), *size_specs_);
+	palette_ = new terrain_palette(gui(), *size_specs_, map_, game_config);
+//		foreground_terrain(), background_terrain());
+	//brush_bar_ = new brush_bar(gui(), *size_specs_);
 	
 	brushes_.push_back(brush());
 	brushes_[0].add_relative_location(0, 0);
@@ -60,8 +66,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, new mouse_action_fill(*this)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	
+	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
-	gui_->invalidate_all();
+	refresh_all();
 	gui_->draw();
 	events::raise_draw_event();	
 }
@@ -436,6 +443,11 @@ void editor_controller::refresh_after_action(const editor_action& /*action*/)
 
 void editor_controller::refresh_all()
 {
+	adjust_sizes(gui(), *size_specs_);
+	palette_->adjust_size();
+	//brush_bar_->adjust_size();
+	palette_->draw(true);
+	//brush_bar_->draw(true);
 	gui().rebuild_all();
 	gui().invalidate_all();
 	gui().recalculate_minimap();

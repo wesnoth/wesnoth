@@ -22,7 +22,6 @@
 #include "editor_main.hpp"
 #include "editor_mode.hpp"
 
-#include "../config.hpp"
 #include "../controller_base.hpp"
 #include "../events.hpp"
 #include "../hotkeys.hpp"
@@ -33,7 +32,13 @@
 #include <deque>
 #include <boost/utility.hpp>
 
+class config;
+
 namespace editor2 {
+
+class brush_bar;
+class size_specs;
+class terrain_palette;
 
 class editor_controller : public controller_base, 
 	public editor_mode, public events::mouse_handler_base,
@@ -99,8 +104,12 @@ class editor_controller : public controller_base,
 		
 		std::string filename_;
 		
-		/** The display object used and owned by the editor. Possibly recreated when a new map is created */
+		/** The display object used and owned by the editor. */
 		editor_display* gui_;
+		
+		size_specs* size_specs_;
+		terrain_palette* palette_;
+		brush_bar* brush_bar_;
 		
 		preferences::display_manager* prefs_disp_manager_;
 		

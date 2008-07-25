@@ -40,6 +40,8 @@ public:
 protected:
 	void set_foreground_terrain(t_translation::t_terrain t) { foreground_terrain_ = t; }
 	void set_background_terrain(t_translation::t_terrain t) { background_terrain_ = t; }
+	t_translation::t_terrain& foreground_terrain() { return foreground_terrain_; }
+	t_translation::t_terrain& background_terrain() { return background_terrain_; }
 	void set_brush(brush* brush) { brush_ = brush; }
 	void set_mouse_action(mouse_action* action) { mouse_action_ = action; }
 	
