@@ -24,23 +24,21 @@ class teditor_new_map : public tdialog
 public:
 	teditor_new_map();
 	
-	void set_map_width(int value) { map_width_ = value; }
-	int map_width() const { return map_width_; }
-	void set_map_height(int value) { map_height_ = value; }
-	int map_height() const { return map_height_; }
+	void set_map_width(int value);
+	int map_width() const;
+	void set_map_height(int value);
+	int map_height() const;
 
 private:
-	int map_width_;
-	int map_height_;
+	/**
+	 * NOTE the map sizes are stored in a text variable since there is no
+	 * integer edit widget yet.
+	 */
+	tfield_text* map_width_;
+	tfield_text* map_height_;
 
 	/** Inherited from tdialog. */
 	twindow build_window(CVideo& video);
-
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 };
 
 } // namespace gui2

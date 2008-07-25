@@ -15,6 +15,7 @@
 #include "gui/dialogs/editor_new_map.hpp"
 
 #include "foreach.hpp"
+#include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
@@ -34,37 +35,35 @@
 
 namespace gui2 {
 
-teditor_new_map::teditor_new_map()
-: map_width_(0), map_height_(0)
+teditor_new_map::teditor_new_map() :
+	map_width_(register_text("width", false)),
+	map_height_(register_text("height", false))
 {
+}
+
+void teditor_new_map::set_map_width(int value) 
+{ 
+	map_width_->set_value(lexical_cast<std::string>(value));
+}
+
+int teditor_new_map::map_width() const
+{
+	return lexical_cast_default<int>(map_width_->get_value());
+}
+
+void teditor_new_map::set_map_height(int value)
+{ 
+	map_height_->set_value(lexical_cast<std::string>(value));
+}
+
+int teditor_new_map::map_height() const
+{
+	return lexical_cast_default<int>(map_height_->get_value());
 }
 
 twindow teditor_new_map::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_NEW_MAP));
-}
-
-void teditor_new_map::pre_show(CVideo& /*video*/, twindow& window)
-{
-	ttext_box* width_widget = dynamic_cast<ttext_box*>(window.find_widget("width", false));
-	VALIDATE(width_widget, missing_widget("width"));
-	width_widget->set_value(lexical_cast<std::string>(map_width_));
-
-	ttext_box* height_widget = dynamic_cast<ttext_box*>(window.find_widget("height", false));
-	VALIDATE(height_widget, missing_widget("height"));
-	height_widget->set_value(lexical_cast<std::string>(map_height_));
-}
-
-void teditor_new_map::post_show(twindow& window)
-{
-	if(get_retval() == tbutton::OK) {
-		ttext_box* width_widget = dynamic_cast<ttext_box*>(window.find_widget("width", false));
-		ttext_box* height_widget = dynamic_cast<ttext_box*>(window.find_widget("height", false));
-		assert(width_widget);
-		assert(height_widget);
-		map_width_ = lexical_cast_default<int>(width_widget->get_value(), 0);
-		map_height_ = lexical_cast_default<int>(height_widget->get_value(), 0);
-	}
 }
 
 } // namespace gui2
