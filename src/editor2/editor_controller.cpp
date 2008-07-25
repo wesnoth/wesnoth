@@ -47,8 +47,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	init(video);
 	size_specs_ = new size_specs();
 	adjust_sizes(gui(), *size_specs_);
-	palette_ = new terrain_palette(gui(), *size_specs_, map_, game_config);
-//		foreground_terrain(), background_terrain());
+	palette_ = new terrain_palette(gui(), *size_specs_, map_, game_config,
+		foreground_terrain(), background_terrain());
 	//brush_bar_ = new brush_bar(gui(), *size_specs_);
 	
 	brushes_.push_back(brush());
@@ -68,6 +68,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
+	palette_->adjust_size();
 	refresh_all();
 	gui_->draw();
 	events::raise_draw_event();	
@@ -85,6 +86,8 @@ void editor_controller::init(CVideo& video)
 
 editor_controller::~editor_controller()
 {
+	delete palette_;
+	delete size_specs_;
     delete gui_;
 	typedef std::pair<hotkey::HOTKEY_COMMAND, mouse_action*> apr;
 	foreach (apr a, mouse_actions_) {
@@ -444,7 +447,6 @@ void editor_controller::refresh_after_action(const editor_action& /*action*/)
 void editor_controller::refresh_all()
 {
 	adjust_sizes(gui(), *size_specs_);
-	palette_->adjust_size();
 	//brush_bar_->adjust_size();
 	palette_->draw(true);
 	//brush_bar_->draw(true);

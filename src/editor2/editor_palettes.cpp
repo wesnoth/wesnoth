@@ -23,6 +23,7 @@
 #include "../config.hpp"
 #include "../sdl_utils.hpp"
 #include "../serialization/string_utils.hpp"
+#include "../foreach.hpp"
 #include "../image.hpp"
 #include "../reports.hpp"
 #include "../gettext.hpp"
@@ -45,11 +46,14 @@ terrain_group::terrain_group(const config& cfg, display& gui):
 }
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
-								 const gamemap &map, const config& cfg)
+								 const gamemap &map, const config& cfg,
+								 t_translation::t_terrain& fore,
+								 t_translation::t_terrain& back)
 	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0),
 	  checked_group_btn_(0), map_(map),
 	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
+	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button"),
+	  selected_fg_terrain_(fore), selected_bg_terrain_(back)
 {
 
 	// Get the available terrains temporary in terrains_
@@ -84,6 +88,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		// add the terrain to the requested groups
 		const std::vector<std::string>& key = 
 			utils::split(t_info.editor_group());
+		std::cerr << t_info.editor_group() << "\n";
 		
 		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
 				k_itor != key.end(); ++k_itor)
@@ -93,6 +98,10 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 
 		// Add the terrain to the default group
 		terrain_map_["all"].push_back(*t_itor);
+	}
+	typedef std::pair<std::string, t_translation::t_list> map_pair;
+	foreach (map_pair mp, terrain_map_) {
+		std::cerr << mp.first << mp.second.size() << "\n";
 	}
 
 	// Set the default group
@@ -344,25 +353,29 @@ void terrain_palette::handle_event(const SDL_Event& event) {
 }
 
 void terrain_palette::draw(bool force) {
-
 	if (top_button_.pressed()) {
 		scroll_up();
 	}
 	if (bot_button_.pressed()) {
 		scroll_down();
 	}
-	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
-		if(terrain_groups_[i].button.pressed()) {
-			if(&terrain_groups_[i].button == checked_group_btn_) {
-				checked_group_btn_->set_check(true);
-			} else {
-				checked_group_btn_->set_check(false);
-				checked_group_btn_ = &terrain_groups_[i].button;
-				set_group(terrain_groups_[i].id);
-			}
+	
+	foreach (terrain_group& g, terrain_groups_) {
+		if (g.button.pressed()) {
+			checked_group_btn_ = &g.button;
+			set_group(g.id);
 			break;
 		}
 	}
+	
+	foreach (terrain_group& g, terrain_groups_) {
+		if (&g.button == checked_group_btn_) {
+			g.button.set_check(true);
+		} else {
+			g.button.set_check(false);
+		}
+	}
+	
 	if (!dirty() && !force) {
 		return;
 	}
