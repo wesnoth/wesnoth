@@ -87,6 +87,7 @@ tlistbox::tlistbox() :
 	list_rect_(),
 	list_background_(),
 	best_spacer_size_(0, 0),
+	callback_value_change_(NULL),
 	rows_()
 {
 }
@@ -173,7 +174,11 @@ bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 	assert(rows_[row].grid());
 	if(rows_[row].grid()->has_widget(caller)) {
 
-		if(!select_row(row, !rows_[row].get_selected())) {
+		if(select_row(row, !rows_[row].get_selected())) {
+			if(callback_value_change_) {
+				callback_value_change_(this);
+			}
+		} else {
 			// if not allowed to deselect reselect.
 			tselectable_* selectable = dynamic_cast<tselectable_*>(caller);
 			assert(selectable);

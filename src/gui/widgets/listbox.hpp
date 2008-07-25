@@ -57,13 +57,19 @@ public:
 	 */
 	void list_item_selected(twidget* caller);
 
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_callback_value_change(void (*callback) (twidget* caller))
+		{ callback_value_change_ = callback; }
+
 private:
 
 	/**
 	 * Helper for list_item_selected().
 	 *
 	 * Tries to sets the selected state for the row, but only if it contains the
-	 * wanted widget.
+	 * wanted widget. NOTE this function assumes the event was triggered by the
+	 * user and calls the callback handler.
 	 *
 	 * @param row                    The row to test.
 	 * @param caller                 The widget to look for.
@@ -288,6 +294,13 @@ private:
 
 	/** The best size for the spacer, if not set it's calculated. */
 	tpoint best_spacer_size_;
+
+	/**
+	 * This callback is used when the selection is chnaged due to a user event.
+	 * The name is not fully appropriate for the event but it's choosen to be
+	 * generic.
+	 */
+	void (*callback_value_change_) (twidget* caller);
 
 	class trow {
 
