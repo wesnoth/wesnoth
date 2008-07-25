@@ -3406,7 +3406,6 @@ namespace {
 			}
 			std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
 			for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
-				std::cerr << *id_it << "\n";
 				unit_wml_ids.insert(*id_it);
 			}
 
