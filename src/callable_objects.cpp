@@ -103,25 +103,36 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_.damage());
 	} else if(key == "number_of_attacks") {
 		return variant(att_.num_attacks());
-	} else if(key == "specials") {
+	} else if(key == "special") {
 		std::string specials = att_.weapon_specials(true);
-		//specials are comma-separated, now it is time to put them into vector
+		std::cerr << specials << std::endl;
 		std::vector<variant> res;
 
 		if(specials == "")
 			return variant( &res );
 
-		std::string::iterator tmp_it = specials.begin()-1;
-		for( std::string::iterator it = specials.begin(); it != specials.end(); ++it)
-		{
-			if (*it == ',')
-			{	
-				res.push_back( variant( std::string(tmp_it+1, it) ));
-				tmp_it = it;
-			}
-		}
-		if(tmp_it != specials.end())
-			res.push_back( variant( std::string(tmp_it+1, specials.end() )));
+		if (att_.has_special_by_id("stones"))
+			return variant( "stones" );
+		if (att_.has_special_by_id("magical"))
+			return variant( "magical" );
+		if (att_.has_special_by_id("marksman"))
+			return variant( "marksman" );
+		if (att_.has_special_by_id("drains"))
+			return variant( "drains" );
+		if (att_.has_special_by_id("charge"))
+			return variant( "charge" );
+		if (att_.has_special_by_id("poison"))
+			return variant( "poison" );
+		if (att_.has_special_by_id("berserk"))
+			return variant( "berserk" );
+		if (att_.has_special_by_id("backstab"))
+			return variant( "backstab" );
+		if (att_.has_special_by_id("slow"))
+			return variant( "slow" );
+		if (att_.has_special_by_id("plague"))
+			return variant( "plague" );
+		if (att_.has_special_by_id("firststrike"))
+			return variant( "firststrike" );
 
 		return variant( &res );
 	}
@@ -137,7 +148,7 @@ void attack_type_callable::get_inputs(std::vector<game_logic::formula_input>* in
 	inputs->push_back(game_logic::formula_input("range", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("damage", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("number_of_attacks", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("specials", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("special", FORMULA_READ_ONLY));
 }
 
 variant unit_callable::get_value(const std::string& key) const
