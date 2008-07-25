@@ -94,9 +94,10 @@ env = Environment(tools=["tar", "gettext", "install", "python_devel"], options =
 
 opts.Save('.scons-option-cache', env)
 
+# Make sure the user's environment is always available
+env['ENV']['PATH'] = os.environ["PATH"]
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
-    env['ENV']['PATH'] = os.environ["PATH"]
 else:
     from cross_compile import *
     setup_cross_compile(env)
