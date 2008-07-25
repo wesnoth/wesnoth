@@ -88,7 +88,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		// add the terrain to the requested groups
 		const std::vector<std::string>& key = 
 			utils::split(t_info.editor_group());
-		std::cerr << t_info.editor_group() << "\n";
 		
 		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
 				k_itor != key.end(); ++k_itor)
@@ -100,9 +99,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		terrain_map_["all"].push_back(*t_itor);
 	}
 	typedef std::pair<std::string, t_translation::t_list> map_pair;
-	foreach (map_pair mp, terrain_map_) {
-		std::cerr << mp.first << mp.second.size() << "\n";
-	}
 
 	// Set the default group
 	terrains_ = terrain_map_["all"];
