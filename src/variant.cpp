@@ -683,7 +683,7 @@ void variant::serialize_to_string(std::string& str) const
 		break;
 	}
 	case TYPE_MAP: {
-		str += "{";
+		str += "[";
 		bool first_time = true;
 		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
 			if(!first_time) {
@@ -694,7 +694,7 @@ void variant::serialize_to_string(std::string& str) const
 			str += "->";
 			i->second.serialize_to_string(str);
 		}
-		str += "}";
+		str += "]";
 		break;
 	}
 	case TYPE_STRING:
@@ -833,7 +833,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		break;
 	}
 	case TYPE_MAP: {
-		s << "{";
+		s << "[";
 		bool first_time = true;
 		for(std::map<variant,variant>::const_iterator i=map_->elements.begin(); i != map_->elements.end(); ++i) {
 			if(!first_time) {
@@ -844,7 +844,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 			s << "->";
 			s << i->second.to_debug_string(seen);
 		}
-		s << "}";
+		s << "]";
 		break;
 	}
 	case TYPE_STRING: {

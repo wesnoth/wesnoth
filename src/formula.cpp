@@ -221,7 +221,7 @@ private:
 	expression_ptr left_, right_;
 };
 
-class square_bracket_expression : public formula_expression { //TODO
+class square_bracket_expression : public formula_expression {
 public:
 	square_bracket_expression(expression_ptr left, expression_ptr key)
 	   : left_(left), key_(key)
@@ -520,7 +520,7 @@ void parse_function_args(const token* &i1, const token* i2,
 void parse_args(const token* i1, const token* i2,
                 std::vector<expression_ptr>* res,
 				function_symbol_table* symbols)
-{
+{		
 	int parens = 0;
 	const token* beg = i1;
 	while(i1 != i2) {
@@ -531,8 +531,10 @@ void parse_args(const token* i1, const token* i2,
 		} else if(i1->type == TOKEN_COMMA && !parens) {
 			res->push_back(parse_expression(beg,i1, symbols));
 			beg = i1+1;
+		} else if(i1->type == TOKEN_POINTER) {
+				std::cerr << "Unexpected '->' operator found\n";
+				throw formula_error();
 		}
-
 		++i1;
 	}
 
@@ -563,7 +565,12 @@ void parse_set_args(const token* i1, const token* i2,
 				throw formula_error();
 			}
 		} else if( i1->type == TOKEN_COMMA && !parens ) {
-			check_pointer = false;
+			if (check_pointer)
+				check_pointer = false;
+			else {
+				std::cerr << "Expected comma, but '->' found\n";
+				throw formula_error();
+		}
 			res->push_back(parse_expression(beg,i1, symbols));
 			beg = i1+1;
 		}
@@ -686,7 +693,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 	if(op == NULL) {
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list definition, or a operator 
+		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator 
 				const token* tok = i2-2;
 				int square_parens = 0;
 				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
@@ -699,10 +706,15 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				}	
 				if (tok->type == TOKEN_LSQUARE) {
 					if (tok == i1) {
-						//create a list
+						//create a list or a map
 						std::vector<expression_ptr> args;
-						parse_args(i1+1,i2-1,&args,symbols);
-						return expression_ptr(new list_expression(args));
+						if ( (i1+2)->type == TOKEN_POINTER ) {
+							parse_set_args(i1+1, i2-1, &args, symbols);
+							return expression_ptr(new map_expression(args));
+						} else {
+							parse_args(i1+1,i2-1,&args,symbols);
+							return expression_ptr(new list_expression(args));
+						}
 					} else {
 						//execute operator [ ]
 						return expression_ptr(new square_bracket_expression(
@@ -710,12 +722,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 								 				parse_expression(tok+1,i2-1,symbols)));
 					}
 				}
-		} else if(i1->type == TOKEN_LBRACKET && (i2-1)->type == TOKEN_RBRACKET) {
-				//create a map TODO: add support for a set
-				std::vector<expression_ptr> args;
-				parse_set_args(i1+1,i2-1,&args,symbols);
-				return expression_ptr(new map_expression(args));
-		} else if(i2 - i1 == 1) {
+	} else if(i2 - i1 == 1) {
 			if(i1->type == TOKEN_KEYWORD) {
 				if(std::string(i1->begin,i1->end) == "functions") {
 					return expression_ptr(new function_list_expression(symbols));
