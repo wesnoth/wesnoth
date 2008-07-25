@@ -51,8 +51,12 @@ public:
 	vconfig child(const std::string& key) const;
 	bool has_child(const std::string& key) const;
 
-	const t_string expand(const std::string&) const; /** < Synonym for operator[] */
+	/* Note: vconfig::operator[] returns const, and this should not be changed
+	   because vconfig is often used as a drop-in replacement for config, and
+	   this const will properly warn you if you try to assign vcfg["key"]=val;
+	*/
 	const t_string operator[](const std::string& key) const { return expand(key); }
+	const t_string expand(const std::string&) const; /** < Synonym for operator[] */
 	const t_string& get_attribute(const std::string& key) const { return (*cfg_)[key]; }
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
