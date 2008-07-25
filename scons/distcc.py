@@ -8,8 +8,10 @@ def exists():
     return True
 
 def generate(env):
-        env['CC'] = 'distcc %s' % env['CC']
-        env['CXX'] = 'distcc %s' % env['CXX']
+        print env["ENV"]["PATH"]
+        env['DISTCC'] = env.WhereIs("distcc")
+        env['CC'] = '$DISTCC %s' % env['CC']
+        env['CXX'] = '$DISTCC %s' % env['CXX']
         for i in ['HOME',
                   'DISTCC_HOSTS',
                   'DISTCC_VERBOSE',
