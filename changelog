@@ -1,26 +1,28 @@
 Version 1.5.2+svn:
- * language and i18n:
+ * Language and i18n:
    * updated translations: Chinese (Traditional), Finnish, Galician, German,
      Latvian, Polish, Slovak
- * multiplayer:
+ * Multiplayer:
    * removed the "Great War" MP era
- * user interface:
-   * Make the load and recruit hotkey use the ctrl instead of cmd key on non
-     Mac systems
+ * Python AI
+   * Added ai_init.py and ai_launcher.py to make it easier to customize
+     AI environment and startup. Both are used by the new embedded python
+     implementation.
+   * reversed builtin is now allowed. This allows for random.shuffle to be
+     called.
+ * User interface:
    * Fixed a broken translation which gave all females the prefix female^ on
      alignment description when using the "C" locale or any translation that
      is missing that string.
-   * Add some gcc-4.3.0 compilation fixes (patch #1083)
+   * Make the load and recruit hotkey use the ctrl instead of cmd key on non
+     Mac systems
  * WML engine:
    * It is now possible to use [time_area] to add or remove new local ToD
      areas and their schedules during scenario events. Removal requires to
      associate an id. to [time_area]s, or it won't work.
- * Python AI
-   * Added ai_init.py and ai_launcher.py to make it easier to customize
-	AI environment and startup. Both are used by the new embedded python
-	implementation.
-   * reversed builtin is now allowed. This allows for random.shuffle to be
-	called.
+ * Miscellaneous and bug fixes:
+   * Add some gcc-4.3.0 compilation fixes (patch #1083)
+
 
 Version 1.5.2:
  * campaigns:
