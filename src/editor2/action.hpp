@@ -144,7 +144,6 @@ class editor_action_fill : public editor_action_location_terrain
         }
         editor_action_paint_area* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
-		void perform_actual(editor_map& map, const std::set<gamemap::location>& to_fill) const;
 };
 
 //resize map (streching / clipping behaviour?)

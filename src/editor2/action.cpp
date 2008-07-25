@@ -28,6 +28,44 @@ std::string editor_action::get_description()
 {
 	return "Unknown action";
 }
+
+void draw_terrain(editor_map& map, t_translation::t_terrain terrain, 
+	const gamemap::location& loc, const bool one_layer_only = false)
+{
+    if (!one_layer_only) {
+        terrain = map.get_terrain_info(terrain).terrain_with_default_base();
+    }
+	t_translation::t_terrain old_terrain = map.get_terrain(loc);
+	if (terrain != old_terrain) {
+		if (terrain.base == t_translation::NO_LAYER) {
+			map.set_terrain(loc, terrain, gamemap::OVERLAY);
+		} else if (one_layer_only) {
+			map.set_terrain(loc, terrain, gamemap::BASE);
+		} else {
+			map.set_terrain(loc, terrain);
+		}
+	}
+}
+
+void draw_terrain(editor_map& map, t_translation::t_terrain terrain, 
+	const std::set<gamemap::location>& locs, const bool one_layer_only = false)
+{
+    if (!one_layer_only) {
+        terrain = map.get_terrain_info(terrain).terrain_with_default_base();
+    }
+	foreach (const gamemap::location& loc, locs) {
+		t_translation::t_terrain old_terrain = map.get_terrain(loc);
+		if (terrain != old_terrain) {
+			if (terrain.base == t_translation::NO_LAYER) {
+				map.set_terrain(loc, terrain, gamemap::OVERLAY);
+			} else if (one_layer_only) {
+				map.set_terrain(loc, terrain, gamemap::BASE);
+			} else {
+				map.set_terrain(loc, terrain);
+			}
+		}
+	}
+}
 	
 editor_action_whole_map* editor_action_whole_map::perform(editor_map& m) const {
 	editor_action_whole_map* undo = new editor_action_whole_map(m);
@@ -79,7 +117,7 @@ editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& map) const
 }
 void editor_action_paint_hex::perform_without_undo(editor_map& map) const
 {
-	map.set_terrain(loc_, t_);
+	draw_terrain(map, t_, loc_);
 }
 
 editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
@@ -92,29 +130,20 @@ editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
 
 void editor_action_paint_area::perform_without_undo(editor_map& map) const
 {
-	foreach (gamemap::location loc, area_) {
-		map.set_terrain(loc, t_);
-	}
+	draw_terrain(map, t_, area_);
 }
 
 editor_action_paint_area* editor_action_fill::perform(editor_map& map) const
 {
 	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
 	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, map.get_terrain(loc_));
-	perform_actual(map, to_fill);
+	draw_terrain(map, t_, to_fill);
 	return undo;
 }
 void editor_action_fill::perform_without_undo(editor_map& map) const
 {
 	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
-	perform_actual(map, to_fill);
-}
-
-void editor_action_fill::perform_actual(editor_map& map, const std::set<gamemap::location>& to_fill) const
-{
-	foreach (gamemap::location l, to_fill) {
-		map.set_terrain(l, t_);
-	}	
+	draw_terrain(map, t_, to_fill);
 }
 
 editor_action_whole_map* editor_action_resize_map::perform(editor_map& /*map*/) const
