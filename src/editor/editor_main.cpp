@@ -177,6 +177,7 @@ int main(int argc, char** argv)
 			if (s == "error") severity = 0;
 			else if (s == "warning") severity = 1;
 			else if (s == "info") severity = 2;
+			else if (s == "debug") severity = 3;
 			else {
 				std::cerr << "unknown debug level: " << s << '\n';
 				return 0;
