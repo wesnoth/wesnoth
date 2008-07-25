@@ -28,7 +28,7 @@ namespace editor2 {
 const int editor_map::max_action_stack_size_ = 100;
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-: gamemap(terrain_cfg, data), filename_()
+: gamemap(terrain_cfg, data), filename_(), actions_since_save_(0)
 {
 }
 
