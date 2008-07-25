@@ -274,10 +274,9 @@ private:
 		
 		if(callback_load_value_) {
 			value_ = callback_load_value_();
-		 	restore(window);
-		} else {
-			save(window, false);
 		}
+
+		restore(window);
 	}
 
 	/** Inherited from tfield_. */
