@@ -35,11 +35,14 @@ time_of_day::time_of_day(const config& cfg)
 time_of_day::time_of_day()
 : lawful_bonus(0)
 , bonus_modified(0)
+, image()
 , name("NULL_TOD")
 , id("nulltod")
+, image_mask()
 , red(0)
 , green(0)
 , blue(0)
+, sounds()
 {
 }
 
