@@ -97,11 +97,14 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 }
 
 statistics_dialog::statistics_dialog(game_display &disp, const std::string& title,
-	const unsigned int team, const std::string& player)
-: dialog(disp, title, "", gui::NULL_DIALOG), player_name_(player),
-team_num_(team), unit_count_(5,0)
+		const unsigned int team, const std::string& player) :
+	dialog(disp, title, "", gui::NULL_DIALOG), 
+	detail_btn_(new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false)),
+	player_name_(player),
+	stats_(),
+	team_num_(team), 
+	unit_count_(5,0)
 {
-	detail_btn_ = new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false);
 	add_button(detail_btn_, gui::dialog::BUTTON_EXTRA);
 	add_button(new gui::standard_dialog_button(disp.video(), _("Close"), 1, true),
 				gui::dialog::BUTTON_STANDARD);
