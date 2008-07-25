@@ -228,11 +228,22 @@ public:
 	 * Sets the value of the widget.
 	 *
 	 * @param window              The window containing the widget.
+	 * @param value               The new value.
 	 */
-	void set_value(twindow& window, const T value) 
+	void set_value(twindow& window, CT value) 
 	{
 		value_ = value;
 		restore(window);
+	}
+
+	/** 
+	 * Sets the value of the widget.
+	 *
+	 * @param value               The new value.
+	 */
+	void set_value(CT value) 
+	{
+		value_ = value;
 	}
 
 	/** Inherited from tfield_. */
@@ -249,6 +260,14 @@ public:
 	T get_value(twindow& window) 
 	{
 		save(window, false);
+		return value_;
+	}
+
+	/** 
+	 * Gets the value of the widget.
+	 */
+	T get_value() 
+	{
 		return value_;
 	}
 
@@ -287,7 +306,6 @@ private:
 		if(callback_save_value_) {
 			callback_save_value_(value_);
 		}
-
 	}
 
 	/**
