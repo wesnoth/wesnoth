@@ -8,8 +8,9 @@ def exists():
     return True
 
 def generate(env):
-        env['CC'] = 'ccache %s' % env['CC']
-        env['CXX'] = 'ccache %s' % env['CXX']
+        env['CCACHE'] = env.WhereIs("ccache")
+        env['CC'] = '$CCACHE %s' % env['CC']
+        env['CXX'] = '$CCACHE %s' % env['CXX']
         for i in ['HOME',
                   'CCACHE_DIR',
                   'CCACHE_TEMPDIR',
@@ -30,3 +31,4 @@ def generate(env):
                   'CCACHE_EXTENSION']:
             if os.environ.has_key(i) and not env.has_key(i):
                 env['ENV'][i] = os.environ[i]
+
