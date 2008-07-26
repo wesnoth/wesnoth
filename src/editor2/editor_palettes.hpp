@@ -74,6 +74,8 @@ public:
 	t_translation::t_terrain selected_fg_terrain() const;
 	//! Return the currently selected background terrain.
 	t_translation::t_terrain selected_bg_terrain() const;
+	
+	void swap();
 
 	//! Select a foreground terrain.
 	void select_fg_terrain(t_translation::t_terrain);

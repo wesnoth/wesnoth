@@ -86,6 +86,7 @@ protected:
 	bool dragging_started_;
 	int drag_from_x_;
 	int drag_from_y_;
+	gamemap::location drag_from_hex_;
 
 	// last highlighted hex
 	gamemap::location last_hex_;

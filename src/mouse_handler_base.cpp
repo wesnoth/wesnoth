@@ -128,6 +128,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			dragging_ = true;
 			dragging_started_ = false;
 			SDL_GetMouseState(&drag_from_x_, &drag_from_y_);
+			drag_from_hex_ = gui().hex_clicked_on(drag_from_x_, drag_from_y_);
 		}
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
 		// The first right-click cancel the selection if any,

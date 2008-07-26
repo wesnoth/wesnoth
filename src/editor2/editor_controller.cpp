@@ -272,6 +272,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 		case HOTKEY_EDITOR_TOOL_NEXT:
+		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
 		case HOTKEY_EDITOR_MAP_REVERT:
@@ -329,6 +330,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
+			return true;
+		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
+			palette_->swap();
 			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
@@ -471,7 +475,8 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
-	if (dragging_) {
+	if (dragging_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON_LEFT) != 0
+	&& map_.on_board_with_border(drag_from_hex_)) {
 		if (!map_.on_board_with_border(hex_clicked)) return;
 		if (get_mouse_action() != NULL) {
 			LOG_ED << "Mouse drag\n";

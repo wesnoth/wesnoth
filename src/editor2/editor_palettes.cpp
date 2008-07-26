@@ -254,6 +254,13 @@ void terrain_palette::select_bg_terrain(t_translation::t_terrain terrain)
 	}
 }
 
+void terrain_palette::swap()
+{
+	std::swap(selected_fg_terrain_, selected_bg_terrain_);
+	set_dirty();
+	update_report();
+}
+
 
 //! After the language is changed, the selected terrains needs an update.
 void terrain_palette::update_selected_terrains(void)

@@ -97,6 +97,11 @@ void editor_action_chain::perform_without_undo(editor_map& m) const
 	}
 }
 
+bool editor_action_area::add_location(const gamemap::location& loc)
+{
+	return area_.insert(loc).second;
+}
+
 editor_action_paste* editor_action_paste::perform(editor_map& map) const
 {
 	map_fragment mf(map, paste_.get_area());
@@ -127,7 +132,6 @@ editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
 	perform_without_undo(map);
 	return undo;
 }	
-
 void editor_action_paint_area::perform_without_undo(editor_map& map) const
 {
 	draw_terrain(map, t_, area_);
@@ -144,6 +148,58 @@ void editor_action_fill::perform_without_undo(editor_map& map) const
 {
 	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
 	draw_terrain(map, t_, to_fill);
+}
+
+editor_action_select_xor* editor_action_select_xor::perform(editor_map& map) const
+{
+	perform_without_undo(map);
+	return new editor_action_select_xor(area_);
+}
+void editor_action_select_xor::perform_without_undo(editor_map& map) const
+{
+	foreach (const gamemap::location& loc, area_) {
+		if (map.in_selection(loc)) {
+			map.remove_from_selection(loc);
+		} else {
+			map.add_to_selection(loc);
+		}
+	}
+}
+
+editor_action_select_xor* editor_action_select::perform(editor_map& map) const
+{
+	std::set<gamemap::location> undo_locs;
+	foreach (const gamemap::location& loc, area_) {
+		if (!map.in_selection(loc)) {
+			undo_locs.insert(loc);
+		}
+	}
+	perform_without_undo(map);
+	return new editor_action_select_xor(undo_locs);
+}
+void editor_action_select::perform_without_undo(editor_map& map) const
+{
+	foreach (const gamemap::location& loc, area_) {
+		map.add_to_selection(loc);
+	}
+}
+
+editor_action_select_xor* editor_action_deselect::perform(editor_map& map) const
+{
+	std::set<gamemap::location> undo_locs;
+	foreach (const gamemap::location& loc, area_) {
+		if (map.in_selection(loc)) {
+			undo_locs.insert(loc);
+		}
+	}
+	perform_without_undo(map);
+	return new editor_action_select_xor(undo_locs);
+}
+void editor_action_deselect::perform_without_undo(editor_map& map) const
+{
+	foreach (const gamemap::location& loc, area_) {
+		map.remove_from_selection(loc);
+	}
 }
 
 editor_action_whole_map* editor_action_resize_map::perform(editor_map& /*map*/) const

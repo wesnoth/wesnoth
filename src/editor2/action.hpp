@@ -90,6 +90,18 @@ class editor_action_location_terrain : public editor_action_location
         t_translation::t_terrain t_;
 };
 
+class editor_action_area : public editor_action
+{
+    public:
+        editor_action_area(const std::set<gamemap::location>& area)
+        : area_(area)
+        {
+        }
+		bool add_location(const gamemap::location& loc);
+    protected:
+		std::set<gamemap::location> area_;
+};
+
 //paste a region into the map.
 class editor_action_paste : public editor_action_location
 {
@@ -117,19 +129,17 @@ class editor_action_paint_hex : public editor_action_location_terrain
         void perform_without_undo(editor_map& map) const;
 };
 
-class editor_action_paint_area : public editor_action
+class editor_action_paint_area : public editor_action_area
 {
     public:
         editor_action_paint_area(const std::set<gamemap::location>& area, 
 			t_translation::t_terrain t)
-        : area_(area), t_(t)
+        : editor_action_area(area), t_(t)
         {
         }
         editor_action_paste* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
-		void add_location(const gamemap::location& loc);
     protected:
-		std::set<gamemap::location> area_;
 		t_translation::t_terrain t_;
 };
 
@@ -144,6 +154,39 @@ class editor_action_fill : public editor_action_location_terrain
         }
         editor_action_paint_area* perform(editor_map& map) const;
         void perform_without_undo(editor_map& map) const;
+};
+
+class editor_action_select_xor : public editor_action_area
+{
+	public:
+		editor_action_select_xor(const std::set<gamemap::location>& area)
+		: editor_action_area(area)
+		{
+		}
+		editor_action_select_xor* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
+};
+
+class editor_action_select : public editor_action_area
+{
+	public:
+		editor_action_select(const std::set<gamemap::location>& area)
+		: editor_action_area(area)
+		{
+		}
+		editor_action_select_xor* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
+};
+
+class editor_action_deselect : public editor_action_area
+{
+	public:
+		editor_action_deselect(const std::set<gamemap::location>& area)
+		: editor_action_area(area)
+		{
+		}
+		editor_action_select_xor* perform(editor_map& map) const;
+		void perform_without_undo(editor_map& map) const;
 };
 
 //resize map (streching / clipping behaviour?)
