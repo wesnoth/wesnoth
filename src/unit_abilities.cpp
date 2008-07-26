@@ -841,10 +841,15 @@ namespace unit_abilities
 {
 
 
-individual_effect::individual_effect(value_modifier t,int val,config* abil,const gamemap::location& l)
+individual_effect::individual_effect(value_modifier t,int val,config* abil,const gamemap::location& l) :
+	type(),
+	value(0),
+	ability(NULL),
+	loc()
 {
 	set(t,val,abil,l);
 }
+
 void individual_effect::set(value_modifier t,int val,config* abil,const gamemap::location& l)
 {
 	type=t;
@@ -853,12 +858,13 @@ void individual_effect::set(value_modifier t,int val,config* abil,const gamemap:
 	loc=l;
 }
 
-
-
-effect::effect(const unit_ability_list& list, int def, bool backstab)
+effect::effect(const unit_ability_list& list, int def, bool backstab) :
+	effect_list_(),
+	composite_value_(0)
 {
 
-	int value_set = def; bool value_is_set = false;
+	int value_set = def; 
+	bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
 
