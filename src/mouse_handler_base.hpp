@@ -51,6 +51,8 @@ public:
 	
 	bool is_dragging() { return dragging_; }
 
+	bool get_show_menu() const { return show_menu_; }
+
 	/**
 	 * This handles minimap scrolling and click-drag.
 	 * @returns true when the caller should not process the mouse motion 

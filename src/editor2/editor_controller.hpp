@@ -62,6 +62,7 @@ class editor_controller : public controller_base,
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
 		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
+		void expand_starting_position_menu(std::vector<std::string>& items);
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 		void cycle_brush();
 		void preferences();

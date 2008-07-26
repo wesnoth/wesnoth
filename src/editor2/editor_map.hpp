@@ -44,6 +44,10 @@ public:
 	 */
 	std::set<gamemap::location> get_contigious_terrain_tiles(const gamemap::location& start) const;
 	
+	void clear_starting_position_labels(display& disp) const;
+	
+	void set_starting_position_labels(display& disp) const;
+	
 	/**
 	 * @return true when the location is part of the selection, false otherwise
 	 */

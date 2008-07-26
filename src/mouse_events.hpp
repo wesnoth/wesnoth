@@ -45,7 +45,6 @@ public:
 	const gamemap::location& get_last_hex() const { return last_hex_; }
 	gamemap::location get_selected_hex() const { return selected_hex_; }
 	bool get_undo() const { return undo_; }
-	bool get_show_menu() const { return show_menu_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
 	void set_current_paths(paths new_paths);
 	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }

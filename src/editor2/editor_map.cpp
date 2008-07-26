@@ -15,8 +15,10 @@
 #include "action_base.hpp"
 #include "editor_map.hpp"
 
+#include "../display.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../gettext.hpp"
 #include "../pathutils.hpp"
 
 #include <cassert>
@@ -66,6 +68,26 @@ std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamem
 		queue.pop_front();
 	} while (!queue.empty());
 	return result;
+}
+
+void editor_map::clear_starting_position_labels(display& disp) const
+{
+	foreach (const gamemap::location& loc, startingPositions_) {
+		if (loc.valid()) {
+			disp.labels().set_label(loc, "");
+		}
+	}
+}
+	
+void editor_map::set_starting_position_labels(display& disp) const
+{
+	std::string label = _("Player");
+	label += " ";
+	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
+		if (startingPositions_[i].valid()) {
+			disp.labels().set_label(startingPositions_[i], label + lexical_cast<std::string>(i));
+		}
+	}
 }
 
 bool editor_map::save()

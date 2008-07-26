@@ -30,6 +30,8 @@
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 #define SCOPE_ED log_scope2(editor, __FUNCTION__)
 
+class display;
+class gamemap;
 
 namespace editor2 {
 

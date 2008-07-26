@@ -77,6 +77,9 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, browse_);
 		post_mouse_press(event);
+		if (get_mouse_handler_base().get_show_menu()){
+			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true);
+		}		
 		break;
 	case SDL_ACTIVEEVENT:
 		if (event.active.type == SDL_APPMOUSEFOCUS && event.active.gain == 0) {

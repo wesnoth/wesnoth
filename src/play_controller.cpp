@@ -730,9 +730,6 @@ void play_controller::post_mouse_press(const SDL_Event& event) {
 		mouse_handler_.set_undo(false);
 		menu_handler_.undo(player_number_);
 	}
-	if (mouse_handler_.get_show_menu()){
-		show_menu(gui_->get_theme().context_menu()->items(),event.button.x,event.button.y,true);
-	}
 }
 
 static void trim_items(std::vector<std::string>& newitems) {

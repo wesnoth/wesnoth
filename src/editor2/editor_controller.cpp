@@ -67,6 +67,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, new mouse_action_select(*this)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	
+	map_.set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
 	palette_->adjust_size();
@@ -241,8 +242,10 @@ void editor_controller::new_map(int width, int height, t_translation::t_terrain 
 
 void editor_controller::set_map(const editor_map& map)
 {
+	map_.clear_starting_position_labels(gui());
 	map_ = map;
 	gui().reload_map();
+	map_.set_starting_position_labels(gui());
 	refresh_all();
 }
 
@@ -363,6 +366,25 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 	}
 }
 
+void editor_controller::expand_starting_position_menu(std::vector<std::string>& items)
+{
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-STARTING-POSITION") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> newitems;
+			std::vector<std::string> newsaves;
+			for (int player_i = 0; player_i < gamemap::MAX_PLAYERS; ++player_i) {
+				//TODO gettext format
+				std::string name = "Set starting position for player " + lexical_cast<std::string>(player_i);
+				newitems.push_back(name);
+			}
+
+			items.insert(items.begin()+i, newitems.begin(), newitems.end());
+			break;
+		}
+	}
+}
+
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	std::vector<std::string> items = items_arg;
@@ -385,6 +407,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		}
 		++i;
 	}
+	expand_starting_position_menu(items);
 	controller_base::show_menu(items, xloc, yloc, context_menu);
 }
 
@@ -540,7 +563,5 @@ void editor_controller::left_drag_end(int x, int y, const bool browse)
 		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
 	}	
 }
-
-
 
 } //end namespace editor2
