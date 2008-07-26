@@ -96,11 +96,25 @@ public:
 		bool operator!=(const location& a) const { return !operator==(a); }
 
 		// Adds an absolute location to a "delta" location
-		location operator-() const;
-		location operator+(const location &a) const;
-		location &operator+=(const location &a);
-		location operator-(const location &a) const;
-		location &operator-=(const location &a);
+		// This is not the mathematically correct bahviur, it is neither
+		// commutative nor associative. Negative coordinates may give strange
+		// results. It is retained because terain builder code relies in this
+		// broken behaviour. Best avoid.
+		location legacy_negation() const;
+		location legacy_sum(const location &a) const;
+		location& legacy_sum_assign(const location &a);
+		location legacy_difference(const location &a) const;
+		location &legacy_difference_assign(const location &a);
+
+		// Location arithmetic operations treating the locations as vectors in
+		// a hex-based space. These operations form an abelian group, i.e. 
+		// everything works as you would expect addition and substraction to 
+		// work, with associativity and commutativity.
+		location vector_negation() const;
+		location vector_sum(const location &a) const;
+		location& vector_sum_assign(const location &a);
+		location vector_difference(const location &a) const;
+		location &vector_difference_assign(const location &a);
 
 		// Do n step in the direction d 
 		location get_direction(DIRECTION d, int n = 1) const;

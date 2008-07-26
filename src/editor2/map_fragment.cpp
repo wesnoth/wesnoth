@@ -48,7 +48,7 @@ std::set<gamemap::location> map_fragment::get_area() const
 void map_fragment::paste_into(gamemap& map, const gamemap::location& loc) const
 {
 	foreach (const tile_info& i, items_) {
-		map.set_terrain(i.offset + loc, i.terrain);
+		map.set_terrain(i.offset.vector_sum(loc), i.terrain);
 	}
 }
 

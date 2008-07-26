@@ -55,7 +55,7 @@ std::set<gamemap::location> brush::project(const gamemap::location& hotspot) con
 {
 	std::set<gamemap::location> result;
 	foreach (const gamemap::location& relative, relative_tiles_) {
-		result.insert(relative + hotspot);
+		result.insert(relative.vector_sum(hotspot));
 	}
 	return result;
 }

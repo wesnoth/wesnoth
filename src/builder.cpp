@@ -517,7 +517,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 
 	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {
 		// Adjusts positions
-		cons2->second.loc += gamemap::location(-minx, -((miny-1)/2));
+		cons2->second.loc.legacy_sum_assign(gamemap::location(-minx, -((miny-1)/2)));
 		ret.constraints[cons2->second.loc] = cons2->second;
 	}
 
@@ -868,7 +868,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 			cons != rule.constraints.end(); ++cons) {
 
 		// Translated location
-		const gamemap::location tloc = loc + cons->second.loc;
+		const gamemap::location tloc = loc.legacy_sum(cons->second.loc);
 
 		if(!tile_map_.on_map(tloc)) {
 			return false;
@@ -910,7 +910,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 			constraint != rule.constraints.end(); ++constraint) {
 
 		rule_imagelist::const_iterator img;
-		const gamemap::location tloc = loc + constraint->second.loc;
+		const gamemap::location tloc = loc.legacy_sum(constraint->second.loc);
 		if(!tile_map_.on_map(tloc)) {
 			return;
 		}
@@ -1003,7 +1003,7 @@ void terrain_builder::build_terrains()
 
 			for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
 					itor != locations->end(); ++itor) {
-				const gamemap::location loc = *itor - min_constraint->second.loc;
+				const gamemap::location loc = itor->legacy_difference(min_constraint->second.loc);
 
 				if(rule_matches(rule, loc, rule_index, min_constraint)) {
 					apply_rule(rule, loc);

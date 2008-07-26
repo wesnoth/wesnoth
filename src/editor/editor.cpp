@@ -687,7 +687,7 @@ void map_editor::edit_rotate_selection()
 		center = gamemap::location(0,0);
 		std::set<gamemap::location>::const_iterator it;
 		for(it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-			center = center + *it;
+			center.legacy_sum_assign(*it);
 		}
 		center.x = center.x / selected_hexes_.size();
 		center.y = center.y / selected_hexes_.size();
@@ -822,7 +822,7 @@ void map_editor::copy_buffer(map_buffer& buffer, const std::set<gamemap::locatio
 	std::set<gamemap::location>::const_iterator it;
 	for (it = locs.begin(); it != locs.end(); it++) {
 		t_translation::t_terrain terrain = map_.get_terrain(*it);
-		buffer.push_back(buffer_item(*it-origin, terrain, starting_side_at(map_, *it)));
+		buffer.push_back(buffer_item(it->legacy_difference(origin), terrain, starting_side_at(map_, *it)));
 	}
 }
 
@@ -832,7 +832,7 @@ void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location 
 	std::vector<buffer_item>::const_iterator it;
 	for (it = buffer.begin(); it != buffer.end(); it++) {
 		//the addition of locations is not commutative !
-		gamemap::location target = it->offset + loc;
+		gamemap::location target = it->offset.legacy_sum(loc);
 
 		if (map_.on_board_with_border(target)) {
 			undo_action.add_terrain(map_.get_terrain(target), it->terrain, target);
@@ -1204,7 +1204,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 		gui_.clear_highlighted_locs();
 		std::set<gamemap::location>::const_iterator it;
 		for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-			const gamemap::location hl_loc = (*it-selection_move_start_) + hex;
+			const gamemap::location hl_loc = it->legacy_difference(selection_move_start_).legacy_sum(hex);
 			if (map_.on_board_with_border(hl_loc)) {
 				gui_.add_highlighted_loc(hl_loc);
 			}

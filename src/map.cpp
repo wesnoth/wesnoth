@@ -202,21 +202,50 @@ void gamemap::location::write(config& cfg) const
 	cfg["y"] = buf;
 }
 
-gamemap::location gamemap::location::operator-() const
+gamemap::location gamemap::location::legacy_negation() const
 {
-	location ret(-x, -y);
-	ret.y -= x & 1; //subtract one if we're on an odd x coordinate
-	return ret;
+	return location(-x, -y);
 }
 
-gamemap::location gamemap::location::operator+(const gamemap::location& a) const
+gamemap::location gamemap::location::legacy_sum(const gamemap::location& a) const
 {
-	gamemap::location ret = *this;
-	ret += a;
-	return ret;
+	return location(*this).legacy_sum_assign(a);
 }
 
-gamemap::location& gamemap::location::operator+=(const gamemap::location &a)
+gamemap::location& gamemap::location::legacy_sum_assign(const gamemap::location &a)
+{
+	bool parity = (x & 1) != 0;
+	x += a.x;
+	y += a.y;
+	if((a.x > 0) && (a.x % 2) && parity)
+		y++;
+	if((a.x < 0) && (a.x % 2) && !parity)
+		y--;
+
+	return *this;
+}
+
+gamemap::location gamemap::location::legacy_difference(const gamemap::location &a) const
+{
+	return legacy_sum(a.legacy_negation());
+}
+
+gamemap::location& gamemap::location::legacy_difference_assign(const gamemap::location &a)
+{
+	return legacy_sum_assign(a.legacy_negation());
+}
+
+gamemap::location gamemap::location::vector_negation() const
+{
+	return location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate
+}
+
+gamemap::location gamemap::location::vector_sum(const gamemap::location& a) const
+{
+	return location(*this).vector_sum_assign(a);
+}
+
+gamemap::location& gamemap::location::vector_sum_assign(const gamemap::location &a)
 {
 	y += (x & 1) * (a.x & 1); //add one if both x coords are odd
 	x += a.x;
@@ -224,14 +253,14 @@ gamemap::location& gamemap::location::operator+=(const gamemap::location &a)
 	return *this;
 }
 
-gamemap::location gamemap::location::operator-(const gamemap::location &a) const
+gamemap::location gamemap::location::vector_difference(const gamemap::location &a) const
 {
-	return operator+(-a);
+	return vector_sum(a.vector_negation());
 }
 
-gamemap::location& gamemap::location::operator-=(const gamemap::location &a)
+gamemap::location& gamemap::location::vector_difference_assign(const gamemap::location &a)
 {
-	return operator+=(-a);
+	return vector_sum_assign(a.vector_negation());
 }
 
 gamemap::location gamemap::location::get_direction(
@@ -255,7 +284,7 @@ gamemap::location gamemap::location::get_direction(
 }
 
 gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::location loc) const {
-	location diff = loc -*this;
+	location diff = loc.legacy_difference(*this);
 	if(diff == location(0,0)) return NDIRECTIONS;
 	if( diff.y < 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return NORTH_EAST;
 	if( diff.y < 0 && diff.x <  0 && abs(diff.x) >= abs(diff.y)) return NORTH_WEST;
