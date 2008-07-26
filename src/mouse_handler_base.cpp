@@ -137,7 +137,6 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		dragging_started_ = false;
 		cursor::set_dragging(false);
 		if (right_click_before_menu(event.x, event.y, browse)) {
-			LOG_STREAM(warn, display) << "RMB context menu...\n";
 			gui().draw(); // redraw highlight (and maybe some more)
 			const theme::menu* const m = gui().get_theme().context_menu();
 			if (m != NULL)
