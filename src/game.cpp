@@ -23,6 +23,7 @@
 #include "cursor.hpp"
 #include "dialogs.hpp"
 #include "filechooser.hpp"
+#include "foreach.hpp"
 #include "game_display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
@@ -2040,6 +2041,15 @@ void game_controller::read_configs(std::string& error_log)
 	}
 
 	read(game_config_, *stream, &error_log);
+	// clone and put the gfx rules aside so that we can prepend the add-on
+	// rules to them.
+	config core_terrain_rules;
+	// FIXME: there should be a canned algorithm for cloning child_list objects,
+	// along with the memory their elements point to... little implementation detail.
+	foreach(config const* p_cfg, game_config_.get_children("terrain_graphics")) {
+		core_terrain_rules.add_child("terrain_graphics", *p_cfg);
+	}
+	game_config_.clear_children("terrain_graphics");
 
 	// load usermade add-ons
 	const std::string user_campaign_dir = get_addon_campaigns_dir();
@@ -2104,6 +2114,7 @@ void game_controller::read_configs(std::string& error_log)
 	}
 
 	game_config_.merge_children("units");
+	game_config_.append(core_terrain_rules);
 
 	config& hashes = game_config_.add_child("multiplayer_hashes");
 	for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {

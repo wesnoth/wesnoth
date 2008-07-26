@@ -10,6 +10,9 @@ Version 1.5.2+svn:
      implementation.
    * reversed builtin is now allowed. This allows for random.shuffle to be
      called.
+ * Terrains:
+   * Made user-made content graphic rules be parsed before core ones, so
+     custom tiles look the same in-game as they do in the editor.
  * User interface:
    * Fixed a broken translation which gave all females the prefix female^ on
      alignment description when using the "C" locale or any translation that
