@@ -35,6 +35,8 @@ public:
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
 	const std::string& id() const { return id_; }
+	
+	bool hide_in_editor() const { return hide_in_editor_; }
 
 	//the character representing this terrain
 	t_translation::t_terrain number() const { return number_; }
@@ -110,6 +112,7 @@ private:
 
 	bool overlay_, combined_;
 	t_translation::t_terrain editor_default_base_;
+	bool hide_in_editor_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

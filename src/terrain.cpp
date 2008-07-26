@@ -52,7 +52,8 @@ terrain_type::terrain_type() :
 		keep_(false),
 		overlay_(false), 
 		combined_(false),
-		editor_default_base_(t_translation::VOID_TERRAIN)
+		editor_default_base_(t_translation::VOID_TERRAIN),
+		hide_in_editor_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg) :
@@ -79,7 +80,8 @@ terrain_type::terrain_type(const config& cfg) :
 		keep_(utils::string_bool(cfg["recruit_from"])),
 		overlay_(number_.base == t_translation::NO_LAYER),
 		combined_(false),
-		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"]))
+		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"])),
+		hide_in_editor_(utils::string_bool(cfg["hidden"], false))
 {
 /**
  *  @todo reenable these validations. The problem is that all MP 
@@ -186,7 +188,8 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	keep_(base.keep_ || overlay.keep_),
 	overlay_(false), 
 	combined_(true),
-	editor_default_base_()
+	editor_default_base_(),
+	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
 
 	merge_alias_lists(mvt_type_, base.mvt_type_); 
