@@ -151,6 +151,7 @@ void tcontrol::draw(surface& surface, const bool force,
 	if(!is_dirty() && !force && !invalidate_background) {
 		return;
 	}
+
 	if(invalidate_background) {
 		restorer_ = 0;
 	}

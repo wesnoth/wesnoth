@@ -82,23 +82,6 @@ struct tbuilder_gridcell : public tbuilder_widget
 	twidget* build () const { return NULL; }
 };
 
-struct tbuilder_menubar : public tbuilder_control
-{
-	tbuilder_menubar(const config& cfg);
-
-	twidget* build () const;
-
-private:
-	bool must_have_one_item_selected_;
-
-	tmenubar::tdirection direction_;
-
-	int selected_item_;
-
-	std::vector<tbuilder_gridcell> cells_;
-
-};
-
 struct tbuilder_label : public tbuilder_control
 {
 
@@ -146,6 +129,41 @@ public:
 	std::vector<std::map<std::string /*key*/, t_string/*value*/> >list_data;
 
 	const bool assume_fixed_row_size;
+};
+
+struct tbuilder_menubar : public tbuilder_control
+{
+	tbuilder_menubar(const config& cfg);
+
+	twidget* build () const;
+
+private:
+	bool must_have_one_item_selected_;
+
+	tmenubar::tdirection direction_;
+
+	int selected_item_;
+
+	std::vector<tbuilder_gridcell> cells_;
+
+};
+
+struct tbuilder_minimap : public tbuilder_control
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_minimap
+ *
+ * == Minimap ==
+ *
+ * A minimap has no extra fields.
+ */
+	tbuilder_minimap(const config& cfg) :
+		tbuilder_control(cfg)
+	{
+	}
+
+	twidget* build () const;
 };
 
 struct tbuilder_panel : public tbuilder_control
