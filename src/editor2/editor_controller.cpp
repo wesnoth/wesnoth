@@ -26,6 +26,7 @@
 #include "../cursor.hpp"
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
+#include "../font.hpp"
 #include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../hotkeys.hpp"
@@ -45,6 +46,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 , current_brush_index_(0)
 {
 	init(video);
+	floating_label_manager_ = new font::floating_label_context();
 	size_specs_ = new size_specs();
 	adjust_sizes(gui(), *size_specs_);
 	palette_ = new terrain_palette(gui(), *size_specs_, map_, game_config,
@@ -90,6 +92,7 @@ editor_controller::~editor_controller()
 {
 	delete palette_;
 	delete size_specs_;
+	delete floating_label_manager_;
     delete gui_;
 	typedef std::pair<hotkey::HOTKEY_COMMAND, mouse_action*> apr;
 	foreach (apr a, mouse_actions_) {

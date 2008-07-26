@@ -34,6 +34,14 @@
 
 class config;
 
+namespace tooltips {
+class manager;
+}
+
+namespace font {
+class floating_label_context;
+}
+
 namespace editor2 {
 
 class brush_bar;
@@ -113,6 +121,8 @@ class editor_controller : public controller_base,
 		brush_bar* brush_bar_;
 		
 		preferences::display_manager* prefs_disp_manager_;
+		tooltips::manager* tooltip_manager_;
+		font::floating_label_context* floating_label_manager_;
 		
 		bool do_quit_;
 		EXIT_STATUS quit_mode_;
