@@ -223,6 +223,24 @@ std::vector<std::string> unit::unit_ability_tooltips() const
 	return res;
 }
 
+std::vector<std::string> unit::get_ability_list() const
+{
+	std::vector<std::string> res;
+
+	const config* abilities = cfg_.child("abilities");
+	if (!abilities) return res;
+	const config::child_map& list_map = abilities->all_children();
+	for (config::child_map::const_iterator i = list_map.begin(), i_end = list_map.end(); i != i_end; ++i) {
+		for (config::child_list::const_iterator j = i->second.begin(), j_end = i->second.end(); j != j_end; ++j) {
+			std::string const &id = (**j)["id"];
+
+			if (!id.empty())
+				res.push_back(id);
+		}
+	}
+	return res;
+}
+
 std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) const
 {
 	std::vector<std::string> res;

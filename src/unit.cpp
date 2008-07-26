@@ -451,6 +451,20 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	}
 }
 
+std::vector<std::string> unit::get_traits_list() const 
+{
+	std::vector<std::string> res;
+
+	config::child_list const &mods = modifications_.get_children("trait");
+	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) 
+	{
+			std::string const &id = (**j)["id"];
+			if (!id.empty())
+				res.push_back(id);
+	}
+	return res;
+}
+
 void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);

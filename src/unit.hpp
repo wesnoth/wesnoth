@@ -208,6 +208,7 @@ public:
 
 	bool invalidate(const gamemap::location &loc);
 	const t_string& traits_description() const { return traits_description_; }
+	std::vector<std::string> get_traits_list() const;
 
 	int cost () const { return unit_value_; }
 
@@ -275,6 +276,7 @@ public:
 	unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
 	std::vector<std::string> ability_tooltips(const gamemap::location& loc) const;
 	std::vector<std::string> unit_ability_tooltips() const;
+	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 	bool abilities_affects_adjacent() const;
 
