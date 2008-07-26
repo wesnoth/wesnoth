@@ -105,7 +105,6 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_.num_attacks());
 	} else if(key == "special") {
 		std::string specials = att_.weapon_specials(true);
-		std::cerr << specials << std::endl;
 		std::vector<variant> res;
 
 		if(specials == "")
@@ -166,25 +165,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
-		//undead is a trait, so we need to look if this unit has it
-		std::string traits = u_.traits_description();
-
-		if(traits == "")
-			return variant(0);
-
-		std::string::iterator tmp_it = traits.begin()-1;
-		for( std::string::iterator it = traits.begin(); it != traits.end(); ++it)
-		{
-			if (*it == ',')
-			{	
-				if( std::string(tmp_it+1, it) == "undead" )
-					return variant(1);
-				tmp_it = it;
-			}
-		}
-		if(tmp_it != traits.end())
-			if( std::string(tmp_it+1, traits.end()) == "undead" )
-				return variant(1);
+		if ( u_.get_state("not_living") == "yes" )
+					return variant( 1 );
 
 		return variant( 0 );
 	} else if(key == "attacks") {
@@ -195,15 +177,14 @@ variant unit_callable::get_value(const std::string& key) const
 			res.push_back(variant(new attack_type_callable(*i)));
 		return variant(&res);
 	} else if(key == "abilities") {
-		// for now use unit_ability_tooltips() to get simply list of abilities
-		// but it is definiately good idea to find another way of obtaining this list
-		std::vector<std::string> abilities = u_.unit_ability_tooltips();
+		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;
 
-		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); it+=2)
+		if (abilities.empty())
+			return variant( &res );
+
+		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
 		{
-			if(it+1 == abilities.end())
-				return variant( &res );
 			res.push_back( variant(*it) );
 		}
 		return variant( &res );
@@ -222,25 +203,16 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "movement_left") {
 		return variant(u_.movement_left());
 	} else if(key == "traits") {
-		std::string traits = u_.traits_description();
-		//traits are comma-separated, now it is time to put them into vector
+		const std::vector<std::string> traits = u_.get_traits_list();
 		std::vector<variant> res;
 
-		if(traits == "")
+		if(traits.empty())
 			return variant( &res );
 
-		std::string::iterator tmp_it = traits.begin()-1;
-		for( std::string::iterator it = traits.begin(); it != traits.end(); ++it)
+		for (std::vector<std::string>::const_iterator it = traits.begin(); it != traits.end(); ++it)
 		{
-			if (*it == ',')
-			{	
-				res.push_back( variant( std::string(tmp_it+1, it) ));
-				tmp_it = it;
-			}
+			res.push_back( variant(*it) );
 		}
-		if(tmp_it != traits.end())
-			res.push_back( variant( std::string(tmp_it+1, traits.end() )));
-
 		return variant( &res );
 	} else if(key == "side") {
 		return variant(u_.side()-1);
@@ -291,15 +263,15 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "alignment") {
 		return variant(u_.alignment_id(u_.alignment()));
 	} else if(key == "abilities") {
-		const std::vector<t_string>& abilities = u_.abilities();
+		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;
 
 		if (abilities.empty())
 			return variant( &res );
 
-		for(std::vector<t_string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i)
+		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
 		{
-			res.push_back( variant( i->str() ));
+			res.push_back( variant(*it) );
 		}
 		return variant( &res );
 	} else if(key == "attacks") {
