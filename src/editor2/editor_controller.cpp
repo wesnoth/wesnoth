@@ -64,6 +64,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, new mouse_action_paint(*this)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, new mouse_action_fill(*this)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, new mouse_action_select(*this)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	
 	cursor::set(cursor::NORMAL);
@@ -310,11 +311,9 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	switch (command) {
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
-			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_TOOL_SELECT:
-			//return get_mouse_action() == mouse_actions_["select"] ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
-			//return get_mouse_action() == mouse_actions_["startingposition"] ? ACTION_ON : ACTION_OFF;
+//		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		default:
 			return command_executor::get_action_state(command);
 	}
@@ -336,7 +335,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
-//		case HOTKEY_EDITOR_TOOL_SELECT:
+		case HOTKEY_EDITOR_TOOL_SELECT:
 //		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			hotkey_set_mouse_action(command);
 			return true;

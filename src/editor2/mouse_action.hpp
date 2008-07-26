@@ -61,17 +61,41 @@ protected:
 	gamemap::location previous_hex_;
 };
 
-class mouse_action_paint : public mouse_action
+class brush_drag_mouse_action : public mouse_action
 {
 public:
-	mouse_action_paint(editor_mode& mode)
+	brush_drag_mouse_action(editor_mode& mode)
 	: mouse_action(mode)
 	{
 	}
 	void move(editor_display& disp, int x, int y);
 	editor_action* click(editor_display& disp, int x, int y);
+	virtual editor_action* click_perform(editor_display& disp, const gamemap::location& hex) = 0;
 	editor_action* drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 	editor_action* drag_end(editor_display& disp, int x, int y);	
+};
+
+class mouse_action_paint : public brush_drag_mouse_action
+{
+public:
+	mouse_action_paint(editor_mode& mode)
+	: brush_drag_mouse_action(mode)
+	{
+	}
+	editor_action* click_perform(editor_display& disp, const gamemap::location& hex);
+};
+
+class mouse_action_select : public brush_drag_mouse_action
+{
+public:
+	mouse_action_select(editor_mode& mode)
+	: brush_drag_mouse_action(mode), selecting_(true)
+	{
+	}
+	editor_action* click(editor_display& disp, int x, int y);
+	editor_action* click_perform(editor_display& disp, const gamemap::location& hex);
+protected:
+	bool selecting_;
 };
 
 class mouse_action_fill : public mouse_action

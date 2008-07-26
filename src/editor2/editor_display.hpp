@@ -31,9 +31,9 @@ public:
 	void set_brush_locs(const std::set<gamemap::location>& hexes); 
 	void clear_brush_locs();
 	void remove_brush_loc(const gamemap::location& hex);
+	const editor_map& map() const { return static_cast<const editor_map&>(map_); }
 
 protected:
-	const editor_map& map() { return static_cast<const editor_map&>(map_); }
 	void pre_draw();
 	/**
 	* The editor uses different rules for terrain highligting (e.g. selections)
