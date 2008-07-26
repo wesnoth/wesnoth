@@ -162,6 +162,8 @@ terrain_builder::terrain_builder(const config& cfg, const config& level,
 	//image::flush_cache();
 
 	image::precache_file_existence("terrain/");
+	// some terrain rules also use scenery images
+	image::precache_file_existence("scenery/");
 	parse_config(cfg);
 	parse_config(level);
 	add_off_map_rule(offmap_image);
