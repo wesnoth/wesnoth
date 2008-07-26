@@ -913,6 +913,25 @@ bool unit_type::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
+std::vector<std::string> unit_type::get_ability_list() const
+{
+	std::vector<std::string> res;
+
+	const config* abilities = cfg_.child("abilities");
+	if (!abilities) return res;
+
+	for(config::child_map::const_iterator i = abilities->all_children().begin(); i != abilities->all_children().end(); ++i) {
+		for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+			std::string const &id = (**j)["id"];
+
+			if (!id.empty())
+				res.push_back(id);
+		}
+	}
+
+	return res;
+}
+
 
 const std::string& unit_type::race() const
 {

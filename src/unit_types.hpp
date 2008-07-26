@@ -235,6 +235,7 @@ public:
 
 	bool has_ability(const std::string& ability) const;
 	bool has_ability_by_id(const std::string& ability) const;
+	std::vector<std::string> get_ability_list() const;
 
 	const std::vector<config*> possible_traits() const { return possibleTraits_.get_children("trait"); }
 	bool has_random_traits() const { return (num_traits() > 0 && possible_traits().size() > 1); }
