@@ -84,6 +84,9 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
         // don't display terrains that were automatically created from base+overlay
 		if (t_info.is_combined())
 			continue;
+		// nor display terrains that have hide_in_editor=true
+		if (t_info.hide_in_editor())
+			continue;
 
 		// add the terrain to the requested groups
 		const std::vector<std::string>& key = 
