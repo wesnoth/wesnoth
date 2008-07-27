@@ -404,6 +404,7 @@ install_data = env.InstallFiltered(Dir(env.subst(datadir)),
 
 install_manual = env.InstallFiltered(Dir(env.subst(docdir)),
                                      Dir("doc/manual"))
+env.AlwaysBuild(install_data, install_manual)
 
 # The game and associated resources
 env.Alias("install-wesnoth", [
