@@ -725,7 +725,8 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 	}
 }
 
-void play_controller::post_mouse_press(const SDL_Event& event) {
+void play_controller::post_mouse_press(const SDL_Event& /*event*/) 
+{
 	if (mouse_handler_.get_undo()){
 		mouse_handler_.set_undo(false);
 		menu_handler_.undo(player_number_);
