@@ -185,6 +185,79 @@ tpoint tgrid::get_best_size() const
 		best_row_height_, &tchild::get_best_size);
 }
 
+tpoint tgrid::get_best_size(const tpoint& maximum_size) const
+{
+	log_scope2(gui, "Grid: Get best size");	
+	
+	const tpoint size = get_size("best with maximum", best_col_width_, 
+		best_row_height_, NULL, &tchild::get_best_size, maximum_size);
+
+	// If we honoured the size or can't resize return the result.
+	if(size.y <= maximum_size.y || !has_vertical_scrollbar()) {
+		DBG_G << "Grid : maximum size " 
+			<< maximum_size << " returning " << size << ".\n";
+		return size;
+	}
+
+	// Try to resize.
+	
+	// If in a row the resizable element isn't the highest element we can shrink it
+	// until the size of the next hightest non resizable element.
+	//
+	// We can do that for more rows if needed.
+	
+
+	/**
+	 * @todo the current implementation only resizes one row and doesn't
+	 * consider the height of the other elements in the row.
+	 */
+	std::vector<const twidget*> resizable(rows_, NULL);
+	std::vector<unsigned> minimum_height(rows_, 0);
+
+	for(size_t y = 0; y < rows_; ++y) {
+		for(size_t x = 0; x < cols_; ++x) {
+
+			const twidget* w = widget(y, x);
+			assert(w);
+			
+			if(w->has_vertical_scrollbar()) {
+				resizable[y] = w;
+			} else {
+				const unsigned best_height = w->get_best_size().y;
+				if(minimum_height[y] == 0 || best_height > minimum_height[y]) {
+					minimum_height[y] = best_height;
+				}
+			}
+		}
+		if(resizable[y]) {
+			// Determine the wanted height for this row.		
+			const unsigned wanted_height = 
+				maximum_size.y + best_row_height_[y] - size.y;
+			const tpoint new_size = 
+				resizable[y]->get_best_size(tpoint(maximum_size.x, wanted_height));
+
+			// Ignore the minimum.
+			const int delta = new_size.y - wanted_height;
+			if(delta <= 0) {
+				best_row_height_[y] = new_size.y;
+				DBG_G << "Grid : maximum size " << maximum_size << " returning " 
+					<< tpoint(size.x, maximum_size.y + delta) << ".\n";
+				return tpoint(size.x, maximum_size.y + delta);
+			}
+		}
+	}
+
+	/**
+	 * @todo we should test whether we managed to shave off a bit of the size
+	 * and return the better solution.
+	 */
+	
+	// We seem to have failed in our resize attempts return our size.
+	DBG_G << "Grid : maximum size " << maximum_size 
+		<< " resizing failed returning " << size << ".\n";
+	return size;
+}
+
 bool tgrid::has_vertical_scrollbar() const 
 {
 	for(std::vector<tchild>::const_iterator itor = children_.begin();
@@ -486,6 +559,27 @@ tpoint tgrid::tchild::get_best_size() const
 	return best_size_;
 }
 
+tpoint tgrid::tchild::get_best_size(const tpoint& maximum) const
+{
+	log_scope2(gui, "Grid child: Get best size");	
+	
+	if(!widget_) {
+		DBG_G << "Grid child : maximum size " 
+			<< maximum << " returning " << border_space() << ".\n";
+		return border_space();
+	}
+
+	//@todo Add the full set of operators to point.
+	tpoint max = maximum;
+	max.x -= border_space().x;
+	max.y -= border_space().y;
+	best_size_ =  widget_->get_best_size(max) + border_space();
+
+	DBG_G << "Grid child : maximum size " 
+		<< maximum << " returning " << best_size_ << ".\n";
+	return best_size_;
+}
+
 tpoint tgrid::tchild::get_minimum_size() const
 {
 	if(!widget_) {
@@ -681,9 +775,12 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 }
 
 tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width, 
-		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const) const
+		std::vector<unsigned>& height, 
+		tpoint (tchild::*size_proc)() const,
+		tpoint (tchild::*size_proc_max)(const tpoint&) const,
+		const tpoint& maximum_size) const
 {
-	if(height.empty() || width.empty()) {
+	if(height.empty() || width.empty() || maximum_size != tpoint(0, 0)) {
 
 		DBG_G << "Grid: calculate " << id << " size.\n";
 
@@ -694,7 +791,11 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
 		for(unsigned row = 0; row < rows_; ++row) {
 			for(unsigned col = 0; col < cols_; ++col) {
 
-				const tpoint size = (child(row, col).*size_proc)();
+				assert(size_proc || size_proc_max);
+
+				const tpoint size = size_proc
+					? (child(row, col).*size_proc)()
+					: (child(row, col).*size_proc_max)(maximum_size);
 
 				if(size.x > static_cast<int>(width[col])) {
 					width[col] = size.x;

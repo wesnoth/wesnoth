@@ -102,6 +102,9 @@ public:
 	/** Inherited from tcontainer. */
 	tpoint get_best_size() const;
 
+	/** Inherited from twidget. */
+	tpoint get_best_size(const tpoint& maximum_size) const;
+
 	/** Inherited from tcontainer. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);

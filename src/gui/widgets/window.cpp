@@ -210,7 +210,8 @@ void twindow::window_resize(tevent_handler&,
 
 SDL_Rect twindow::get_client_rect() const
 {
-	const twindow_definition::tresolution* conf = dynamic_cast<const twindow_definition::tresolution*>(config());
+	const twindow_definition::tresolution* conf = 
+		dynamic_cast<const twindow_definition::tresolution*>(config());
 	assert(conf);
 
 	SDL_Rect result = get_rect();
@@ -229,9 +230,28 @@ void twindow::recalculate_size()
 {
 	if(automatic_placement_) {
 		
-		tpoint size = get_best_size();
-		size.x = size.x < static_cast<int>(settings::screen_width) ? size.x : static_cast<int>(settings::screen_width);
-		size.y = size.y < static_cast<int>(settings::screen_height) ? size.y : static_cast<int>(settings::screen_height);
+		log_scope2(gui, "Window: Recalculate size");	
+
+		tpoint size = get_best_size(); 
+		DBG_G << "Window best size : " << size << " screen size " 
+			<< settings::screen_width << ',' << settings::screen_height << ".\n";
+
+		// If too big try it gracefully.
+		if(size.x > settings::screen_width 
+				|| size.y > settings::screen_height) {
+
+			size = get_best_size(
+				tpoint(settings::screen_width, settings::screen_height));
+			DBG_G << "Window best size : After resize request : " << size << ".\n";
+		}
+		// If still to big, just resize.
+		size.x = size.x < static_cast<int>(settings::screen_width) 
+			? size.x : static_cast<int>(settings::screen_width);
+
+		size.y = size.y < static_cast<int>(settings::screen_height) 
+			? size.y : static_cast<int>(settings::screen_height);
+
+		DBG_G << "Window final size " << size << ".\n";
 
 		tpoint position(0, 0);
 		switch(horizontal_placement_) {

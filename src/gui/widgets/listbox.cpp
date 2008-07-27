@@ -231,7 +231,9 @@ void tlistbox::set_scrollbar_button_status()
 	}
 
 	foreach(const std::string& name, button_up_names) {
-		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
+		tbutton* button = 
+			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
+
 		if(button) {
 			button->set_active(!scrollbar()->at_begin());
 		}
@@ -247,7 +249,9 @@ void tlistbox::set_scrollbar_button_status()
 	}
 
 	foreach(const std::string& name, button_down_names) {
-		tbutton* button = dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
+		tbutton* button = 
+			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
+
 		if(button) {
 			button->set_active(!scrollbar()->at_end());
 		}
@@ -287,6 +291,44 @@ tpoint tlistbox::get_best_size() const
 
 	// Now the container will return the wanted result.
 	return tcontainer_::get_best_size();
+}
+
+tpoint tlistbox::get_best_size(const tpoint& maximum_size) const
+{
+	log_scope2(gui, "Listbox: Get best size");	
+
+	tpoint best_size = get_best_size();
+
+	// We can only reduce our height so we ignore the x value.
+	// NOTE we might later be able to reduce our width as well, but that's
+	// something for later, also we don't ask our children for a better value.
+	if(best_size.y <= maximum_size.y) {
+		return best_size;
+	}
+
+	/**
+	 * @todo At this point we should check whether maximum_size is larger as
+	 * the minimum size for the widget (the scrollbar) and adjust accordingly.
+	 */
+	tpoint max = maximum_size;
+
+	if(assume_fixed_row_size_) {
+		// Only adjust the sizes if we have some rows
+		if(rows_.size() > 0) {
+			// The row might not have a size, since it might never been set
+			// so ask the best size.
+			const unsigned row_height = (*rows_[0].grid()).get_best_size().y;
+			best_size.y = (max.y / row_height) * row_height;
+		}
+
+	} else {
+		best_size.y = max.y;
+	}
+
+	DBG_G << "Grid : maximum size " 
+			<< maximum_size << " returning " << best_size << ".\n";
+
+	return best_size;
 }
 
 void tlistbox::draw(surface& surface, const bool force, 

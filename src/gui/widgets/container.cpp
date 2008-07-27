@@ -58,8 +58,10 @@ tpoint tcontainer_::get_minimum_size() const
 tpoint tcontainer_::get_best_size() const
 {
 	tpoint size = grid_.get_best_size();
-	tpoint border_size = border_space();
+	const tpoint border_size = border_space();
 
+	// If the best size has a value of 0 it's means no limit so don't add the
+	// border_size might set a very small best size.
 	if(size.x) {
 		size.x += border_size.x;
 	}
@@ -67,6 +69,41 @@ tpoint tcontainer_::get_best_size() const
 	if(size.y) {
 		size.y += border_size.y;
 	}
+
+	return size;
+}
+
+tpoint tcontainer_::get_best_size(const tpoint& maximum_size) const
+{
+	log_scope2(gui, "Container: Get best size");	
+	
+	// We need a copy and adjust if for the borders, no use to ask the grid for
+	// the best size if it won't fit in the end due to our borders.
+	const tpoint border_size = border_space();
+	tpoint max = maximum_size;
+	if(max.x) {
+		max.x -= border_size.x;
+	}
+
+	if(max.y) {
+		max.y -= border_size.y;
+	}
+
+	// Calculate the best size
+	tpoint size = grid_.get_best_size(max);
+
+	// If the best size has a value of 0 it's means no limit so don't add the
+	// border_size might set a very small best size.
+	if(size.x) {
+		size.x += border_size.x;
+	}
+
+	if(size.y) {
+		size.y += border_size.y;
+	}
+	
+	DBG_G << "Container : maximum size " 
+		<< maximum_size << " returning " << size << ".\n";
 
 	return size;
 }

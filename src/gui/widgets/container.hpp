@@ -64,6 +64,9 @@ public:
 	/** Inherited from tcontrol. */
 	tpoint get_best_size() const;
 
+	/** Inherited from twidget. */
+	tpoint get_best_size(const tpoint& maximum_size) const;
+
 	/** Inherited from tcontrol. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);

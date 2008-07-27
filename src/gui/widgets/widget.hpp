@@ -299,6 +299,33 @@ public:
 	 */
 	virtual tpoint get_best_size() const = 0;	
 
+
+	/**
+	 * Gets the best size for a widget within certain bounds.
+	 *
+	 * This function now returns the same as get_best_size for items without
+	 * scrollbars. This behaviour might and should change in the future. When
+	 * things get too small we can ask for the minimum and test who benefites
+	 * most from the extra space that might be available. Eg a label that shows
+	 * it's abbriviation might get more space, but if it's not enough to show
+	 * the whole text it wouldn't benefit from it.
+	 *
+	 * @todo implement this function for all widgets.
+	 *
+	 * @param maximum_size        The maximum size the widget is allowed to
+	 *                            return. If one of the values is 0 there's no
+	 *                            restriction in that direction, if both are 0
+	 *                            the result is the same a get_best_size().
+	 *                            NOTE if the widget can't be shown within the
+	 *                            maximum it's return can be larger as
+	 *                            maximum_size.
+	 *
+	 * @returns                   The best size for the widget.
+	 * @retval 0,0                The best size is 0,0.
+	 */
+	virtual tpoint get_best_size(const tpoint& /*maximum_size*/) const
+		{ return get_best_size(); }
+
 	/**
 	 * Gets the maximum size for the widget.
 	 *
