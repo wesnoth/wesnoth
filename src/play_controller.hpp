@@ -154,6 +154,12 @@ protected:
 	bool skip_replay_;
 	bool linger_;
 	bool first_turn_;
+	
+	const std::string& select_victory_music() const;
+	const std::string& select_defeat_music()  const;
+	
+	void set_victory_music_list(const std::string& list);
+	void set_defeat_music_list(const std::string& list);
 
 private:
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
@@ -164,6 +170,8 @@ private:
 	std::vector<wml_menu_item *> wml_commands_;
 	static const size_t MAX_WML_COMMANDS = 7;
 
+	std::vector<std::string> victory_music_;
+	std::vector<std::string> defeat_music_;
 };
 
 

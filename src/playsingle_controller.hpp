@@ -88,6 +88,9 @@ private:
 		    int player_gold,
 		    int remaining_gold, int finishing_bonus_per_turn,
 		    int turns_left, int finishing_bonus);
+
+	std::vector<std::string> victory_music_;
+	std::vector<std::string> defeat_music_;
 };
 
 

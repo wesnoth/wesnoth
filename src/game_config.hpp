@@ -64,7 +64,7 @@ namespace game_config
 		terrain_mask_image, grid_image, unreachable_image, linger_image,
 		observer_image, tod_bright_image,
 		checked_menu_image, unchecked_menu_image, wml_menu_image, level_image,
-		ellipsis_image;
+		ellipsis_image, default_victory_music, default_defeat_music;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
 

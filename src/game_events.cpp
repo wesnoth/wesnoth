@@ -2520,6 +2520,8 @@ namespace {
 		}
 
 		const std::string result = cfg["result"].base_str(); //do not translate
+		const std::string endlevel_music = cfg["music"];
+
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
 			const int carry_over = lexical_cast_default<int>
@@ -2528,14 +2530,14 @@ namespace {
 			const bool gold_add = utils::string_bool(cfg["carryover_add"],
 					game_config::gold_carryover_add);
 
-			throw end_level_exception(VICTORY, carry_over, gold_add, bonus);
+			throw end_level_exception(VICTORY, endlevel_music, carry_over, gold_add, bonus);
 		} else if(result == "continue") {
-			throw end_level_exception(LEVEL_CONTINUE);
+			throw end_level_exception(LEVEL_CONTINUE, endlevel_music);
 		} else if(result == "continue_no_save") {
 			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 		} else {
 			LOG_NG << "throwing event defeat...\n";
-			throw end_level_exception(DEFEAT);
+			throw end_level_exception(DEFEAT, endlevel_music);
 		}
 	}
 

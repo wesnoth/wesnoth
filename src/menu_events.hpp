@@ -51,18 +51,23 @@ enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAV
 	}
 
 struct end_level_exception {
-	end_level_exception(LEVEL_RESULT res, const int percentage = -1,
-			const bool add = false, const bool bonus=true) :
+	end_level_exception(LEVEL_RESULT res,
+	                    const std::string& endlevel_music_list="",
+	                    const int percentage = -1,
+	                    const bool add = false, const bool bonus=true
+			           ):
    		result(res),
 		gold_bonus(bonus),
 		carryover_percentage(percentage),
-		carryover_add(add)
+		carryover_add(add),
+		custom_endlevel_music(endlevel_music_list)
 	{}
 
 	LEVEL_RESULT result;
 	bool gold_bonus;
 	int carryover_percentage;
 	bool carryover_add;
+	std::string custom_endlevel_music;
 };
 
 struct end_turn_exception {

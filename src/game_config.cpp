@@ -90,6 +90,9 @@ namespace game_config
 
 	std::string level_image;
 	std::string ellipsis_image;
+	
+	std::string default_victory_music;
+	std::string default_defeat_music;
 
 	std::map<std::string, color_range > team_rgb_range;
 	std::map<std::string, t_string > team_rgb_name;
@@ -195,6 +198,8 @@ namespace game_config
 
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
+		default_victory_music = v["default_victory_music"];
+		default_defeat_music = v["default_defeat_music"];
 
 		add_color_info(v);
 

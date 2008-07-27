@@ -304,6 +304,16 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		log.quit(status_.turn());
 		throw;
 	} catch(end_level_exception& end_level) {
+		if(!end_level.custom_endlevel_music.empty()) {
+			switch(end_level.result) {
+			case DEFEAT:
+				set_defeat_music_list(end_level.custom_endlevel_music);
+				break;
+			default:
+				set_victory_music_list(end_level.custom_endlevel_music);
+			}
+		}
+	
 		bool obs = team_manager_.is_observer();
 		if (game_config::exit_at_end) {
 			exit(0);
@@ -338,10 +348,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			} catch(end_level_exception&) {
 			}
 
-			if (!obs)
+			if (!obs) {
+				const std::string& defeat_music = select_defeat_music();
+				if(defeat_music.empty() != true)
+					sound::play_music_once(defeat_music);
+
 				return DEFEAT;
-			else
+			} else {
 				return QUIT;
+			}
 		} else if (end_level.result == VICTORY
 		|| end_level.result == LEVEL_CONTINUE
 		|| end_level.result == LEVEL_CONTINUE_NO_SAVE) {
@@ -349,6 +364,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				gamestate_.completion = "running";
 			} else {
 				gamestate_.completion = "victory";
+				const std::string& victory_music = select_victory_music();
+				if(victory_music.empty() != true)
+					sound::play_music_once(victory_music);
 			}
 			recorder.set_save_info_completion(gamestate_.completion);
 			try {

@@ -55,6 +55,10 @@ play_controller::play_controller(const config& level,
 	start_turn_(status_.turn()), is_host_(true), skip_replay_(skip_replay),
 	linger_(false)
 {
+	// Setup victory and defeat music
+	set_victory_music_list(level_["victory_music"]);
+	set_defeat_music_list(level_["defeat_music"]);
+
 	status_.teams = &teams_;
 	game_config::add_color_info(level);
 	hotkey::deactivate_all_scopes();
@@ -906,5 +910,44 @@ hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND co
 	default:
 		return hotkey::ACTION_STATELESS;
 	}
+}
+
+namespace {
+	static const std::string empty_str = "";
+}
+
+const std::string& play_controller::select_victory_music() const
+{
+	if(victory_music_.empty())
+		return empty_str;
+
+	const size_t p = gamestate_.rng().get_random() % victory_music_.size();
+	assert(p < victory_music_.size());
+	return victory_music_[p];
+}
+
+const std::string& play_controller::select_defeat_music() const
+{
+	if(defeat_music_.empty())
+		return empty_str;
+
+	const size_t p = gamestate_.rng().get_random() % defeat_music_.size();
+	assert(p < defeat_music_.size());
+	return defeat_music_[p];
+}
+
+
+void play_controller::set_victory_music_list(const std::string& list)
+{
+	victory_music_ = utils::split(list);
+	if(victory_music_.empty())
+		victory_music_ = utils::split(game_config::default_victory_music);
+}
+
+void play_controller::set_defeat_music_list(const std::string& list)
+{
+	defeat_music_  = utils::split(list);
+	if(defeat_music_.empty())
+		defeat_music_ = utils::split(game_config::default_defeat_music);
 }
 

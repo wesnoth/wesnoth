@@ -1816,7 +1816,7 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 
 		LOG_NG << "throwing end level exception...\n";
 
-		throw end_level_exception(found_player ? VICTORY : DEFEAT,
+		throw end_level_exception(found_player ? VICTORY : DEFEAT, "",
 				victory_conditions::get_carryover_percentage(),
 				victory_conditions::get_carryover_add());
 	}
