@@ -162,8 +162,7 @@ terrain_builder::terrain_builder(const config& cfg, const config& level,
 	//image::flush_cache();
 
 	image::precache_file_existence("terrain/");
-	// some terrain rules also use scenery images
-	image::precache_file_existence("scenery/");
+
 	parse_config(cfg);
 	parse_config(level);
 	add_off_map_rule(offmap_image);
@@ -287,7 +286,8 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 				s = s.substr(0, s.find_first_of(",:"));
 
 				// we already precached file existence in the constructor
-				if(!image::exists("terrain/" + s + ".png", true))
+				// but only for filenames not using ".."
+				if(!image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos))
 					return false;
 			}
 		}
