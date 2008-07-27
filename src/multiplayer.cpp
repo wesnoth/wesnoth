@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/mp_connect.hpp"
+#include "gui/dialogs/mp_create_game.hpp"
 #include "gui/widgets/button.hpp"
 #include "log.hpp"
 #include "multiplayer.hpp"
@@ -400,25 +401,35 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
 {
-	mp::ui::result res;
-	mp::create::parameters params;
+	if(gui2::new_widgets) {
 
-	{
-		mp::create ui(disp, game_config, chat, gamelist);
-		run_lobby_loop(disp, ui);
-		res = ui.get_result();
-		params = ui.get_parameters();
-	}
+		gui2::tmp_create_game dlg(game_config);
 
-	switch (res) {
-	case mp::ui::CREATE:
-		enter_connect_mode(disp, game_config, chat, gamelist, params, default_controller, is_server);
-		break;
-	case mp::ui::QUIT:
-	default:
-		//update lobby content
+		dlg.show(disp.video());
+
 		network::send_data(config("refresh_lobby"), 0, true);
-		break;
+	} else {
+
+		mp::ui::result res;
+		mp::create::parameters params;
+
+		{
+			mp::create ui(disp, game_config, chat, gamelist);
+			run_lobby_loop(disp, ui);
+			res = ui.get_result();
+			params = ui.get_parameters();
+		}
+
+		switch (res) {
+		case mp::ui::CREATE:
+			enter_connect_mode(disp, game_config, chat, gamelist, params, default_controller, is_server);
+			break;
+		case mp::ui::QUIT:
+		default:
+			//update lobby content
+			network::send_data(config("refresh_lobby"), 0, true);
+			break;
+		}
 	}
 }
 

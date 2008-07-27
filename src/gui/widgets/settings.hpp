@@ -40,6 +40,7 @@ enum twindow_type {
 	MP_METHOD_SELECTION,     //<! The dialog which allows you to choose the kind
 	                         //!  mp game the user wants to play.
 	MP_SERVER_LIST,          //<! The mp server list dialog.
+	MP_CREATE_GAME,          /**< The mp creation dialog. */
 #ifdef USE_EDITOR2
 	EDITOR_NEW_MAP,          //<! New map dialog
 #endif
