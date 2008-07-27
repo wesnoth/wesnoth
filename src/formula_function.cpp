@@ -21,9 +21,12 @@
 #include "callable_objects.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
+#include "log.hpp"
 #include "map.hpp"
 
 #include "SDL.h"
+
+#define DBG_NG LOG_STREAM(debug, engine)
 
 namespace game_logic {
 
@@ -753,7 +756,7 @@ variant formula_function_expression::execute(const formula_callable& variables) 
 {
 	static std::string indent;
 	indent += "  ";
-	std::cerr << indent << "executing '" << formula_->str() << "'\n";
+	DBG_NG << indent << "executing '" << formula_->str() << "'\n";
 	const int begin_time = SDL_GetTicks();
 	map_formula_callable callable;
 	for(size_t n = 0; n != arg_names_.size(); ++n) {
@@ -766,16 +769,16 @@ variant formula_function_expression::execute(const formula_callable& variables) 
 
 	if(precondition_) {
 		if(!precondition_->execute(callable).as_bool()) {
-			std::cerr << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
+			DBG_NG << "FAILED function precondition for function '" << formula_->str() << "' with arguments: ";
 			for(size_t n = 0; n != arg_names_.size(); ++n) {
-				std::cerr << "  arg " << (n+1) << ": " << args()[n]->evaluate(variables).to_debug_string() << "\n";
+				DBG_NG << "  arg " << (n+1) << ": " << args()[n]->evaluate(variables).to_debug_string() << "\n";
 			}
 		}
 	}
 
 	variant res = formula_->execute(callable);
 	const int taken = SDL_GetTicks() - begin_time;
-	std::cerr << indent << "returning: " << taken << "\n";
+	DBG_NG << indent << "returning: " << taken << "\n";
 	indent.resize(indent.size() - 2);
 
 	return res;
@@ -880,11 +883,11 @@ expression_ptr create_function(const std::string& fn,
 		}
 	}
 
-	std::cerr << "FN: '" << fn << "' " << fn.size() << "\n";
+	DBG_NG << "FN: '" << fn << "' " << fn.size() << "\n";
 
 	functions_map::const_iterator i = get_functions_map().find(fn);
 	if(i == get_functions_map().end()) {
-		std::cerr << "no function '" << fn << "'\n";
+		DBG_NG << "no function '" << fn << "'\n";
 		throw formula_error();
 	}
 
