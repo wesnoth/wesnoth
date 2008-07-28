@@ -32,8 +32,7 @@ namespace editor2 {
 class mouse_action
 {
 public:
-	mouse_action(editor_mode& mode)
-	: mode_(mode)
+	mouse_action()
 	{
 	}
 
@@ -57,15 +56,14 @@ public:
 	virtual editor_action* drag_end(editor_display& disp, int x, int y);
 
 protected:
-	editor_mode& mode_;
 	gamemap::location previous_hex_;
 };
 
 class brush_drag_mouse_action : public mouse_action
 {
 public:
-	brush_drag_mouse_action(editor_mode& mode)
-	: mouse_action(mode)
+	brush_drag_mouse_action(const brush* const * const brush)
+	: mouse_action(), brush_(brush)
 	{
 	}
 	void move(editor_display& disp, int x, int y);
@@ -73,23 +71,29 @@ public:
 	virtual editor_action* click_perform(editor_display& disp, const gamemap::location& hex) = 0;
 	editor_action* drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 	editor_action* drag_end(editor_display& disp, int x, int y);	
+protected:
+	const brush& get_brush();
+private:
+	const brush* const * const brush_;
 };
 
 class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
-	mouse_action_paint(editor_mode& mode)
-	: brush_drag_mouse_action(mode)
+	mouse_action_paint(const t_translation::t_terrain& terrain, const brush* const * const brush)
+	: brush_drag_mouse_action(brush), terrain_(terrain)
 	{
 	}
 	editor_action* click_perform(editor_display& disp, const gamemap::location& hex);
+protected:
+	const t_translation::t_terrain& terrain_;
 };
 
 class mouse_action_select : public brush_drag_mouse_action
 {
 public:
-	mouse_action_select(editor_mode& mode)
-	: brush_drag_mouse_action(mode), selecting_(true)
+	mouse_action_select(const brush* const * const brush)
+	: brush_drag_mouse_action(brush), selecting_(true)
 	{
 	}
 	editor_action* click(editor_display& disp, int x, int y);
@@ -98,15 +102,30 @@ protected:
 	bool selecting_;
 };
 
-class mouse_action_fill : public mouse_action
+class mouse_action_paste : public mouse_action
 {
 public:
-	mouse_action_fill(editor_mode& mode)
-	: mouse_action(mode)
+	mouse_action_paste(const map_fragment& paste)
+	: mouse_action(), paste_(paste)
 	{
 	}
 	void move(editor_display& disp, int x, int y);
 	editor_action* click(editor_display& disp, int x, int y);
+protected:
+	const map_fragment& paste_;
+};
+
+class mouse_action_fill : public mouse_action
+{
+public:
+	mouse_action_fill(const t_translation::t_terrain& terrain)
+	: mouse_action(), terrain_(terrain)
+	{
+	}
+	void move(editor_display& disp, int x, int y);
+	editor_action* click(editor_display& disp, int x, int y);
+protected:
+	const t_translation::t_terrain& terrain_;
 };
 
 } //end namespace editor2

@@ -34,13 +34,13 @@ public:
 	/**
 	 * Construct a brush object from config
 	 */
-	brush(const config& cfg);
+	explicit brush(const config& cfg);
 	
 	/**
 	 * Add a location to the brush. If it already exists nothing will change.
 	 */
 	void add_relative_location(int relative_x, int relative_y);
-	
+
 	/**
 	 * Get a set of locations affected (i.e. under the brush) when the center (hotspot)
 	 * is in given location

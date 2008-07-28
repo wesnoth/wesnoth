@@ -20,7 +20,7 @@
 #include "editor_display.hpp"
 #include "editor_map.hpp"
 #include "editor_main.hpp"
-#include "editor_mode.hpp"
+#include "map_fragment.hpp"
 
 #include "../controller_base.hpp"
 #include "../events.hpp"
@@ -49,7 +49,7 @@ class size_specs;
 class terrain_palette;
 
 class editor_controller : public controller_base, 
-	public editor_mode, public events::mouse_handler_base,
+	public events::mouse_handler_base,
 	private boost::noncopyable
 {
 	public:
@@ -59,6 +59,7 @@ class editor_controller : public controller_base,
 		void hotkey_quit();
 		void quit_confirm(EXIT_STATUS status);
 		bool confirm_discard();
+		
 		void load_map_dialog();
 		void new_map_dialog();
 		void save_map_as_dialog();
@@ -67,6 +68,7 @@ class editor_controller : public controller_base,
 		void new_map(int width, int height, t_translation::t_terrain fill);
 		void load_map(const std::string& filename);
 		void set_map(const editor_map& map);
+				
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
 		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
@@ -75,10 +77,12 @@ class editor_controller : public controller_base,
 		void cycle_brush();
 		void preferences();
 		void toggle_grid();
+		void copy_selection();
+		void cut_selection();
 		
 		void hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command);
 		bool is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const;
-
+	
 		
 		/* mouse_handler_base */
 		void mouse_motion(int x, int y, const bool browse, bool update);
@@ -90,6 +94,9 @@ class editor_controller : public controller_base,
 	protected:
 		mouse_handler_base& get_mouse_handler_base();
 		editor_display& get_display();	
+		brush* get_brush();
+		mouse_action* get_mouse_action();
+		
 	private:    		
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
@@ -128,9 +135,13 @@ class editor_controller : public controller_base,
 		EXIT_STATUS quit_mode_;
 		
 		std::vector<brush> brushes_;
-		int current_brush_index_;
+		brush* brush_;
 		std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_actions_;
+		mouse_action* mouse_action_;
 		
+		t_translation::t_terrain foreground_terrain_;
+		t_translation::t_terrain background_terrain_;		
+		map_fragment clipboard_;
 };
 
 } //end namespace editor2

@@ -104,7 +104,7 @@ bool editor_action_area::add_location(const gamemap::location& loc)
 
 editor_action_paste* editor_action_paste::perform(editor_map& map) const
 {
-	map_fragment mf(map, paste_.get_area());
+	map_fragment mf(map, paste_.get_offset_area(loc_));
 	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
 	perform_without_undo(map);
 	return undo;

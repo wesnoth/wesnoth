@@ -16,7 +16,6 @@
 #include "brush.hpp"
 #include "editor_common.hpp"
 #include "editor_display.hpp"
-#include "editor_mode.hpp"
 #include "mouse_action.hpp"
 
 #include "../foreach.hpp"
@@ -41,9 +40,7 @@ editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
 
 void brush_drag_mouse_action::move(editor_display& disp, int x, int y)
 {
-	if (mode_.get_brush() != NULL) {
-		disp.set_brush_locs(mode_.get_brush()->project(disp.hex_clicked_on(x,y)));
-	}
+	disp.set_brush_locs(get_brush().project(disp.hex_clicked_on(x,y)));
 }
 
 editor_action* brush_drag_mouse_action::click(editor_display& disp, int x, int y)
@@ -69,14 +66,17 @@ editor_action* brush_drag_mouse_action::drag_end(editor_display& disp, int x, in
 	return NULL;
 }
 
+const brush& brush_drag_mouse_action::get_brush()
+{
+	assert(brush_);
+	assert(*brush_);
+	return **brush_;
+}
+
+
 editor_action* mouse_action_paint::click_perform(editor_display& disp, const gamemap::location& hex)
 {
-	t_translation::t_terrain terrain = mode_.get_foreground_terrain();
-	if (mode_.get_brush() != NULL) {
-		return new editor_action_paint_area(mode_.get_brush()->project(hex), terrain);
-	} else {
-		return new editor_action_paint_hex(hex, terrain);
-	}
+	return new editor_action_paint_area(get_brush().project(hex), terrain_);
 }
 
 editor_action* mouse_action_select::click(editor_display& disp, int x, int y)
@@ -89,13 +89,26 @@ editor_action* mouse_action_select::click(editor_display& disp, int x, int y)
 editor_action* mouse_action_select::click_perform(editor_display& disp, const gamemap::location& hex)
 {
 	editor_action* a(NULL);
-	if (mode_.get_brush() != NULL) {
-		if (selecting_) {
-			a = new editor_action_select(mode_.get_brush()->project(hex));
-		} else {
-			a = new editor_action_deselect(mode_.get_brush()->project(hex));
-		}
+	if (selecting_) {
+		a = new editor_action_select(get_brush().project(hex));
+	} else {
+		a = new editor_action_deselect(get_brush().project(hex));
 	}
+	return a;
+}
+
+
+void mouse_action_paste::move(editor_display& disp, int x, int y)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	std::set<gamemap::location> affected = paste_.get_offset_area(hex);
+	disp.set_brush_locs(affected);
+}
+
+editor_action* mouse_action_paste::click(editor_display& disp, int x, int y)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	editor_action_paste* a = new editor_action_paste(hex, paste_);
 	return a;
 }
 
@@ -103,17 +116,14 @@ editor_action* mouse_action_select::click_perform(editor_display& disp, const ga
 void mouse_action_fill::move(editor_display& disp, int x, int y)
 {
 	std::set<gamemap::location> affected = 
-		dynamic_cast<const editor_map&>(disp.get_map()).
-		get_contigious_terrain_tiles(disp.hex_clicked_on(x, y));
+		disp.map().get_contigious_terrain_tiles(disp.hex_clicked_on(x, y));
 	disp.set_brush_locs(affected);
 }
 
 editor_action* mouse_action_fill::click(editor_display& disp, int x, int y)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
-	t_translation::t_terrain terrain = mode_.get_foreground_terrain();
-	editor_action_fill* a = new editor_action_fill(hex, terrain);
-	previous_hex_ = hex;
+	editor_action_fill* a = new editor_action_fill(hex, terrain_);
 	return a;
 }
 

@@ -41,8 +41,11 @@ class map_fragment
 		void add_tile(const gamemap& map, const gamemap::location& loc);
 		const std::vector<tile_info>& get_items() const { return items_; }
 		std::set<gamemap::location> get_area() const;
+		std::set<gamemap::location> get_offset_area(const gamemap::location& loc) const;
 		void paste_into(gamemap& map, const gamemap::location& loc) const;
-	private:
+		void center();
+		bool empty() const;
+	protected:
 		std::vector<tile_info> items_;
 };
 

@@ -47,7 +47,7 @@ class editor_controller;
 class editor_display;
 class editor_map;
 class editor_mouse_handler;
-class editor_mode;
+class map_fragment;
 class mouse_action;
 
 } //end namespace editor2

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "action.hpp"
 #include "editor_controller.hpp"
 #include "editor_display.hpp"
 #include "editor_layout.hpp"
@@ -39,18 +40,16 @@ namespace editor2 {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
-, editor_mode()
 , mouse_handler_base(map_)
 , map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
-, current_brush_index_(0)
 {
 	init(video);
 	floating_label_manager_ = new font::floating_label_context();
 	size_specs_ = new size_specs();
 	adjust_sizes(gui(), *size_specs_);
 	palette_ = new terrain_palette(gui(), *size_specs_, map_, game_config,
-		foreground_terrain(), background_terrain());
+		foreground_terrain_, background_terrain_);
 	//brush_bar_ = new brush_bar(gui(), *size_specs_);
 	
 	brushes_.push_back(brush());
@@ -62,13 +61,16 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	if (brushes_.size() == 1) {
 		WRN_ED << "No brushes defined!";
 	}
-	set_brush(&brushes_[0]);
-	
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, new mouse_action_paint(*this)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, new mouse_action_fill(*this)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, new mouse_action_select(*this)));
+	brush_ = &brushes_[0];
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
+		new mouse_action_paint(foreground_terrain_, &brush_)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
+		new mouse_action_fill(foreground_terrain_)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, 
+		new mouse_action_select(&brush_)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
+		new mouse_action_paste(clipboard_)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
-	
 	map_.set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
@@ -297,7 +299,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return true; //TODO require nonempty selection
 		case HOTKEY_EDITOR_PASTE:
-			return true; //TODO requre nonempty clipboard
+			return !clipboard_.empty();
 		case HOTKEY_EDITOR_SELECT_ALL:		
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_ROTATE:
@@ -342,11 +344,18 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
+		case HOTKEY_EDITOR_PASTE:
 //		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 			cycle_brush();
+			return true;
+		case HOTKEY_EDITOR_COPY:
+			copy_selection();
+			return true;
+		case HOTKEY_EDITOR_CUT:
+			cut_selection();
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();
@@ -390,6 +399,12 @@ void editor_controller::expand_starting_position_menu(std::vector<std::string>& 
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
+	if (context_menu) {
+		if (!map_.on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
+			return;
+		}
+	}
+	
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
 	std::vector<std::string>::iterator i = items.begin();
@@ -420,9 +435,11 @@ void editor_controller::cycle_brush()
 	SDL_GetMouseState(&x, &y);
 	gamemap::location hex_clicked = gui().hex_clicked_on(x,y);
 	gui().invalidate(get_brush()->project(hex_clicked));
-	current_brush_index_++;
-	current_brush_index_ %= brushes_.size();
-	set_brush(&brushes_[current_brush_index_]);
+	if (brush_ == &brushes_.back()) {
+		brush_ = &brushes_.front();
+	} else {
+		++brush_;
+	}
 	std::set<gamemap::location> new_brush_locs = get_brush()->project(hex_clicked);
 	gui().set_brush_locs(new_brush_locs);
 	gui().invalidate(new_brush_locs);
@@ -440,11 +457,27 @@ void editor_controller::toggle_grid()
 	gui_->invalidate_all();
 }
 
+void editor_controller::copy_selection()
+{
+	if (!map_.selection().empty()) {
+		clipboard_ = map_fragment(map_, map_.selection());
+		clipboard_.center();
+	}
+}
+
+void editor_controller::cut_selection()
+{
+	copy_selection();
+	editor_action_paint_area a(map_.selection(), background_terrain_);
+	map_.perform_action(a);
+	refresh_after_action(a);
+}
+
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
-		set_mouse_action(i->second);
+		mouse_action_ = i->second;
 	} else {
 		ERR_ED << "Invalid hotkey command (" << (int)command << ") passed to set_mouse_action\n";
 	}
@@ -453,7 +486,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 bool editor_controller::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::const_iterator i = mouse_actions_.find(command);
-	return (i != mouse_actions_.end()) && (i->second == get_mouse_action());
+	return (i != mouse_actions_.end()) && (i->second == mouse_action_);
 }
 
 
@@ -466,6 +499,17 @@ editor_display& editor_controller::get_display()
 {
 	return *gui_;
 }
+
+brush* editor_controller::get_brush()
+{
+	return brush_;
+}
+
+mouse_action* editor_controller::get_mouse_action()
+{
+	return mouse_action_;
+}
+
 
 void editor_controller::refresh_after_action(const editor_action& /*action*/)
 {
@@ -527,8 +571,6 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 			get_mouse_action()->move(*gui_, x, y);
 		}
 	}
-	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
-	gui().highlight_hex(new_hex);
 }
 
 bool editor_controller::left_click(int x, int y, const bool browse)
