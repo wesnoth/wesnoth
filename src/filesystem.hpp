@@ -76,7 +76,7 @@ std::vector< std::string > get_addon_dirs();
 //! maximum 1000 files then start always giving 999
 std::string get_next_filename(const std::string& name, const std::string& extension);
 std::string get_upload_dir();
-std::string get_user_data_dir();
+const std::string& get_user_data_dir();
 
 std::string get_cwd();
 
@@ -93,6 +93,12 @@ std::ostream *ostream_file(std::string const &fname);
 void write_file(const std::string& fname, const std::string& data);
 
 std::string read_map(const std::string& name);
+
+//! Creates a directory if it does not exist already.
+//! @param dirname Path to directory. All parents should exist.
+//! @return True if the directory exists or could be successfully
+//!         created; false otherwise.
+bool create_directory_if_missing(const std::string& dirname);
 
 //! Returns true if the given file is a directory.
 bool is_directory(const std::string& fname);

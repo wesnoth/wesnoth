@@ -63,6 +63,7 @@ BPath be_path;
 
 #define DBG_FS LOG_STREAM(debug, filesystem)
 #define LOG_FS LOG_STREAM(info, filesystem)
+#define WRN_FS LOG_STREAM(warn, filesystem)
 #define ERR_FS LOG_STREAM(err, filesystem)
 
 namespace {
@@ -404,26 +405,37 @@ std::string get_cwd()
 	}
 }
 
-std::string get_user_data_dir()
+bool create_directory_if_missing(const std::string& dirname)
+{
+	if(is_directory(dirname)) {
+		DBG_FS << "directory " << dirname << " exists, not creating\n";
+		return true;
+	} else if(file_exists(dirname)) {
+		ERR_FS << "cannot create directory " << dirname << "; file exists\n";
+		return false;
+	}
+	DBG_FS << "creating missing directory " << dirname << '\n';
+	return make_directory(dirname);
+}
+
+#ifndef PREFERENCES_DIR
+#define PREFERENCES_DIR ".wesnoth"
+#endif
+
+std::string setup_user_data_dir()
 {
 #ifdef _WIN32
-
-	static bool inited_dirs = false;
-
-	if(!inited_dirs) {
-		_mkdir("userdata");
-		_mkdir("userdata/editor");
-		_mkdir("userdata/editor/maps");
-		_mkdir("userdata/data");
-		_mkdir("userdata/data/ais");
-		_mkdir("userdata/data/campaigns");
-		_mkdir("userdata/data/multiplayer");
-		_mkdir("userdata/data/maps");
-		_mkdir("userdata/data/maps/multiplayer");
-		_mkdir("userdata/data/units");
-		_mkdir("userdata/saves");
-		inited_dirs = true;
-	}
+	_mkdir("userdata");
+	_mkdir("userdata/editor");
+	_mkdir("userdata/editor/maps");
+	_mkdir("userdata/data");
+	_mkdir("userdata/data/ais");
+	_mkdir("userdata/data/campaigns");
+	_mkdir("userdata/data/multiplayer");
+	_mkdir("userdata/data/maps");
+	_mkdir("userdata/data/maps/multiplayer");
+	_mkdir("userdata/data/units");
+	_mkdir("userdata/saves");
 
 	char buf[256];
 	const char* const res = getcwd(buf,sizeof(buf));
@@ -443,9 +455,22 @@ std::string get_user_data_dir()
 		} else {
 			be_path.SetTo("/boot/home/config/settings/wesnoth");
 		}
-		tpath = be_path;
-		tpath.Append("editor/maps");
-		create_directory(tpath.Path(), 0775);
+	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
+			tpath = be_path;                       \
+			tpath.Append(subdir);                  \
+			create_directory(tpath.Path(), 0775);
+
+		BEOS_CREATE_PREFERENCES_SUBDIR("editor");
+		BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/ais");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/campaigns");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/multiplayer");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/maps");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/maps/multiplayer");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/units");
+		BEOS_CREATE_PREFERENCES_SUBDIR("saves");
+	#undef BEOS_CREATE_PREFERENCES_SUBDIR
 	}
 	return be_path.Path();
 #else
@@ -462,44 +487,44 @@ std::string get_user_data_dir()
 
 	const std::string home(home_str);
 
-#ifndef PREFERENCES_DIR
-#define PREFERENCES_DIR ".wesnoth"
-#endif
-
 #ifndef __AMIGAOS4__
 	const std::string dir_path = home + std::string("/") + PREFERENCES_DIR;
 #else
 	const std::string dir_path = home + PREFERENCES_DIR;
 #endif
-	DIR* dir = opendir(dir_path.c_str());
+
+	const bool res = create_directory_if_missing(dir_path);
+	// probe read permissions (if we could make the directory)
+	DIR* const dir = res ? opendir(dir_path.c_str()) : NULL;
 	if(dir == NULL) {
-		const int res = mkdir(dir_path.c_str(),AccessMode);
-
-		// Also create the maps directory
-		mkdir((dir_path + "/editor").c_str(),AccessMode);
-		mkdir((dir_path + "/editor/maps").c_str(),AccessMode);
-		mkdir((dir_path + "/data").c_str(),AccessMode);
-		mkdir((dir_path + "/data/ais").c_str(),AccessMode);
-		mkdir((dir_path + "/data/campaigns").c_str(),AccessMode);
-		mkdir((dir_path + "/data/multiplayer").c_str(),AccessMode);
-		mkdir((dir_path + "/data/maps").c_str(),AccessMode);
-		mkdir((dir_path + "/data/maps/multiplayer").c_str(),AccessMode);
-		mkdir((dir_path + "/data/units").c_str(),AccessMode);
-		mkdir((dir_path + "/saves").c_str(),AccessMode);
-		if(res == 0) {
-			dir = opendir(dir_path.c_str());
-		} else {
-			ERR_FS << "could not open or create directory: " << dir_path << '\n';
-		}
-	}
-
-	if(dir == NULL)
+		ERR_FS << "could not open or create preferences directory at " << dir_path << '\n';
 		return "";
-
+	}
 	closedir(dir);
+
+	// Create user data and add-on directories
+	create_directory_if_missing(dir_path + "/editor");
+	create_directory_if_missing(dir_path + "/editor/maps");
+	create_directory_if_missing(dir_path + "/data");
+	create_directory_if_missing(dir_path + "/data/ais");
+	create_directory_if_missing(dir_path + "/data/campaigns");
+	create_directory_if_missing(dir_path + "/data/multiplayer");
+	create_directory_if_missing(dir_path + "/data/maps");
+	create_directory_if_missing(dir_path + "/data/maps/multiplayer");
+	create_directory_if_missing(dir_path + "/data/units");
+	create_directory_if_missing(dir_path + "/saves");
 
 	return dir_path;
 #endif
+}
+
+const std::string& get_user_data_dir()
+{
+	// ensure setup gets called only once per session
+	// FIXME: this is okay and optimized, but how should we react
+	// if the user deletes a dir while we are running?
+	static std::string const user_data_dir = setup_user_data_dir();
+	return user_data_dir;
 }
 
 static std::string read_stream(std::istream& s)
