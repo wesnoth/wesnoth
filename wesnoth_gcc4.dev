@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth_gcc4.dev
 Name=wesnoth
-UnitCount=160
+UnitCount=170
 Type=0
 Ver=1
 ObjFiles=
@@ -12,7 +12,7 @@ ResourceIncludes=
 MakeIncludes=
 Compiler=_@@_
 CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
-Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@__@@_
+Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpangocairo_@@_-lcairo_@@_-lgobject_@@_-lpango_@@_
 IsCpp=1
 Icon=
 ExeOutput=
@@ -620,7 +620,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit162]
-FileName=src\server\proxy.cpp
+FileName=src\controller_base.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -630,9 +630,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit165]
-FileName=src\upload_log.cpp
+FileName=src\attack_prediction_display.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -640,19 +640,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit169]
-FileName=src\variable.cpp
+FileName=src\gui\dialogs\mp_create_game.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit170]
-FileName=src\variable.hpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -1138,9 +1128,9 @@ ProductVersion=
 AutoIncBuildNr=0
 
 [Unit166]
-FileName=src\upload_log.hpp
+FileName=src\gui\widgets\slider.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -1148,9 +1138,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit167]
-FileName=src\util.cpp
+FileName=src\gui\widgets\menubar.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -1658,7 +1648,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit161]
-FileName=src\server\player.cpp
+FileName=src\text.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2519,6 +2509,46 @@ BuildCmd=
 
 [Unit157]
 FileName=src\gui\dialogs\dialog.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit163]
+FileName=src\portrait.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit164]
+FileName=src\mouse_handler_base.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit168]
+FileName=src\statistics_dialog.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit170]
+FileName=src\gui\widgets\minimap.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
