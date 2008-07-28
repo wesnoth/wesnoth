@@ -455,7 +455,6 @@ void set_hotkey_tag_name(const std::string& name)
 
 void load_hotkeys(const config& cfg)
 {
-	std::cerr << "load_hotkeys " << hotkey_tag_name << "\n";
 	const config::child_list& children = cfg.get_children(hotkey_tag_name);
 	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
 		hotkey_item& h = get_hotkey((**i)["command"]);
@@ -467,7 +466,6 @@ void load_hotkeys(const config& cfg)
 
 void save_hotkeys(config& cfg)
 {
-	std::cerr << "save_hotkeys " << hotkey_tag_name << "\n";
 	cfg.clear_children(hotkey_tag_name);
 
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
