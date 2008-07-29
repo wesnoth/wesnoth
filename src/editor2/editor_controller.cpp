@@ -41,7 +41,7 @@ namespace editor2 {
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
 , mouse_handler_base(map_)
-, map_(editor_map::new_map(game_config, 44, 33, t_translation::GRASS_LAND))
+, map_(game_config, 44, 33, t_translation::GRASS_LAND)
 , gui_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
 {
 	init(video);
@@ -242,7 +242,7 @@ void editor_controller::load_map(const std::string& filename)
 
 void editor_controller::new_map(int width, int height, t_translation::t_terrain fill)
 {
-	set_map(editor_map::new_map(game_config_, width, height, fill));
+	set_map(editor_map(game_config_, width, height, fill));
 }
 
 void editor_controller::set_map(const editor_map& map)

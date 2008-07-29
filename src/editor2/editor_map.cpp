@@ -34,17 +34,17 @@ editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 {
 }
 
+editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
+: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
+	t_translation::t_map(width, t_translation::t_list(height, filler))))
+, filename_(), actions_since_save_(0)
+{
+}
+
 editor_map::~editor_map()
 {
 	clear_stack(undo_stack_);
 	clear_stack(redo_stack_);
-}
-
-editor_map editor_map::new_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
-{
-	const t_translation::t_list column(height, filler);
-	const t_translation::t_map map(width, column);
-	return editor_map(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(map));
 }
 
 std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamemap::location& start) const
@@ -232,15 +232,12 @@ void editor_map::perform_action_between_stacks(action_stack& from, action_stack&
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
-	bool do_expand, t_translation::t_terrain filler)
+	t_translation::t_terrain filler)
 {
 	int old_w = w();
 	int old_h = h();
 	if (old_w == width && old_h == height && x_offset == 0 && y_offset == 0) {
 		return;
-	}
-	if (do_expand) {
-		filler = t_translation::NONE_TERRAIN;
 	}
 
 	// Determine the amount of resizing is required

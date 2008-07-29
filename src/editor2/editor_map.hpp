@@ -33,12 +33,12 @@ struct editor_map_operation_exception : public editor_exception
 class editor_map : public gamemap 
 {
 public:
+
 	editor_map(const config& terrain_cfg, const std::string& data);
+	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
 	~editor_map();
 	
-
-	static editor_map new_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
 	/**
 	 * Get a contigious set of tiles having the same terrain as the starting location.
@@ -119,8 +119,12 @@ public:
 	/** Re-does a previousle undid action, and puts it back in the undo stack. */
 	void redo();
 	
+	/** 
+	 * Resize the map. If the filler is NONE, the border terrain will be copied
+	 * when expanding, otherwise the fill er terrain will be inserted there
+	 */
 	void resize(int width, int height, int x_offset, int y_offset,
-		bool do_expand, t_translation::t_terrain filler);
+		t_translation::t_terrain filler = t_translation::NONE_TERRAIN);
 
 	void flip_x();
 	void flip_y();
