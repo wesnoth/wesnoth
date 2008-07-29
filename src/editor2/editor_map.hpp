@@ -23,10 +23,13 @@
 
 namespace editor2 {
 
+struct editor_map_operation_exception : public editor_exception
+{
+};
+
 /**
  * This class adds extra editor-specific functionality to a normal gamemap.
- */
-	
+ */	
 class editor_map : public gamemap 
 {
 public:
@@ -116,7 +119,25 @@ public:
 	/** Re-does a previousle undid action, and puts it back in the undo stack. */
 	void redo();
 	
+	void resize(int width, int height, int x_offset, int y_offset,
+		bool do_expand, t_translation::t_terrain filler);
+
+	void flip_x();
+	void flip_y();
+
 protected:
+	void set_starting_position(int pos, const location& loc);
+	void swap_starting_position(int x1, int y1, int x2, int y2);
+	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
+	void expand_right(int count, t_translation::t_terrain filler);
+	void expand_left(int count, t_translation::t_terrain filler);
+	void expand_top(int count, t_translation::t_terrain filler);
+	void expand_bottom(int count, t_translation::t_terrain filler);
+	void shrink_right(int count);
+	void shrink_left(int count);
+	void shrink_top(int count);
+	void shrink_bottom(int count);
+
 	/**
 	 * Container type used to store actions in the undo and redo stacks
 	 */
