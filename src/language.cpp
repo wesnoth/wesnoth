@@ -44,6 +44,9 @@ extern "C" int _putenv(const char*);
 #endif
 
 #define DBG_FS LOG_STREAM(debug, filesystem)
+#define DBG_GENERAL LOG_STREAM(debug, general)
+#define WRN_GENERAL LOG_STREAM(debug, general)
+
 
 /** Tests one locale to be available. */
 static bool has_locale(const char* s) {
@@ -265,10 +268,10 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	}
 
 	if (res == NULL)
-		std::cerr << "WARNING: setlocale() failed for '"
+		WRN_GENERAL << "WARNING: setlocale() failed for '"
 			  << locale << "'.\n";
 	else
-		std::cerr << "set locale to '" << try_loc << "'\n";
+		DBG_GENERAL << "set locale to '" << try_loc << "'\n";
 }
 
 bool set_language(const language_def& locale)
