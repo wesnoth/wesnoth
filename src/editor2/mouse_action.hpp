@@ -56,7 +56,7 @@ public:
 	virtual editor_action* drag_end(editor_display& disp, int x, int y);
 
 protected:
-	gamemap::location previous_hex_;
+	gamemap::location previous_move_hex_;
 };
 
 class brush_drag_mouse_action : public mouse_action
@@ -73,6 +73,7 @@ public:
 	editor_action* drag_end(editor_display& disp, int x, int y);	
 protected:
 	const brush& get_brush();
+	gamemap::location previous_drag_hex_;
 private:
 	const brush* const * const brush_;
 };

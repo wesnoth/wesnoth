@@ -234,6 +234,7 @@ class editor_action_flip_y : public editor_action
 		{
 		}
 		void perform_without_undo(editor_map& map) const;
+		bool require_map_reload() { return true; }
 };
 
 //plot a route between two points

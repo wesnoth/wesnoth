@@ -138,7 +138,10 @@ bool editor_controller::confirm_discard()
 void editor_controller::load_map_dialog()
 {
 	if (!confirm_discard()) return;
-	std::string fn = map_.get_filename().empty() ? get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps") : filename_;
+	std::string fn = map_.get_filename();
+	if (fn.empty()) {
+		fn = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
 	if (res == 0) {
 		load_map(fn);
@@ -254,6 +257,15 @@ void editor_controller::set_map(const editor_map& map)
 	refresh_all();
 }
 
+void editor_controller::reload_map()
+{
+	map_.clear_starting_position_labels(gui());
+	gui().reload_map();
+	map_.set_starting_position_labels(gui());
+	refresh_all();
+}
+
+
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
@@ -303,7 +315,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SELECT_ALL:		
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_ROTATE:
-		case HOTKEY_EDITOR_MAP_FLIP:
+		case HOTKEY_EDITOR_MAP_FLIP_X:
+		case HOTKEY_EDITOR_MAP_FLIP_Y:
 		case HOTKEY_EDITOR_MAP_GENERATE:
 		case HOTKEY_EDITOR_REFRESH:
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
@@ -357,6 +370,19 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_CUT:
 			cut_selection();
 			return true;
+		case HOTKEY_EDITOR_MAP_FLIP_X: {
+			editor_action_flip_x fx;
+			map_.perform_action(fx);
+			refresh_after_action();
+			return true;
+			}
+		case HOTKEY_EDITOR_MAP_FLIP_Y: {
+			LOG_ED << "FlipYhk\n";
+			editor_action_flip_y fy;
+			map_.perform_action(fy);
+			refresh_after_action();
+			return true;
+			}
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();
 			return true;
@@ -470,7 +496,7 @@ void editor_controller::cut_selection()
 	copy_selection();
 	editor_action_paint_area a(map_.selection(), background_terrain_);
 	map_.perform_action(a);
-	refresh_after_action(a);
+	refresh_after_action();
 }
 
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
@@ -511,10 +537,24 @@ mouse_action* editor_controller::get_mouse_action()
 }
 
 
-void editor_controller::refresh_after_action(const editor_action& /*action*/)
+void editor_controller::refresh_after_action()
 {
 	//TODO rebuild and ivalidate only what's really needed
-	refresh_all();
+	if (map_.needs_reload()) {
+		reload_map();
+		map_.set_needs_reload(false);
+		map_.set_needs_terrain_rebuild(false);
+		map_.clear_changed_locations();
+	} else if (map_.needs_terrain_rebuild()) {
+		gui().rebuild_all();
+		gui().invalidate_all();	
+		map_.set_needs_terrain_rebuild(false);
+		map_.clear_changed_locations();
+	} else {
+		gui().invalidate(map_.changed_locations());
+		map_.clear_changed_locations();
+	}
+	gui().recalculate_minimap();
 }
 
 void editor_controller::refresh_all()
@@ -526,18 +566,20 @@ void editor_controller::refresh_all()
 	gui().rebuild_all();
 	gui().invalidate_all();
 	gui().recalculate_minimap();
+	map_.set_needs_terrain_rebuild(false);
+	map_.clear_changed_locations();
 }
 
 void editor_controller::undo()
 {
 	map_.undo();
-	refresh_all();
+	refresh_after_action();
 }
 
 void editor_controller::redo()
 {
 	map_.redo();
-	refresh_all();
+	refresh_after_action();
 }
 
 void editor_controller::mouse_motion(int x, int y, const bool browse, bool update)
@@ -560,7 +602,7 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 				} else {
 					map_.perform_action(*a);
 				}
-				refresh_after_action(*a);
+				refresh_after_action();
 				delete a;
 			}
 		} else {
@@ -585,7 +627,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		editor_action* a = get_mouse_action()->click(*gui_, x, y);
 		if (a != NULL) {
 			map_.perform_action(*a);
-			refresh_after_action(*a);
+			refresh_after_action();
 			delete a;
 		}
 		return true;
@@ -601,7 +643,7 @@ void editor_controller::left_drag_end(int x, int y, const bool browse)
 		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
 		if (a != NULL) {
 			map_.perform_action(*a);
-			refresh_after_action(*a);
+			refresh_after_action();
 			delete a;
 		}
 	} else {

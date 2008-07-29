@@ -30,14 +30,15 @@ namespace editor2 {
 const int editor_map::max_action_stack_size_ = 100;
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-: gamemap(terrain_cfg, data), filename_(), actions_since_save_(0)
+: gamemap(terrain_cfg, data), filename_(), actions_since_save_(0),
+needs_reload_(false), needs_terrain_rebuild_(false)
 {
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
 : gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
 	t_translation::t_map(width, t_translation::t_list(height, filler))))
-, filename_(), actions_since_save_(0)
+, filename_(), actions_since_save_(0), needs_reload_(false), needs_terrain_rebuild_(false)
 {
 }
 
@@ -70,22 +71,29 @@ std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamem
 	return result;
 }
 
-void editor_map::clear_starting_position_labels(display& disp) const
+void editor_map::add_changed_location(const std::set<gamemap::location>& locs)
 {
-	foreach (const gamemap::location& loc, startingPositions_) {
-		if (loc.valid()) {
-			disp.labels().set_label(loc, "");
-		}
+	foreach (const gamemap::location& loc, locs) {
+		changed_locations_.insert(loc);
 	}
 }
+
+void editor_map::clear_starting_position_labels(display& disp)
+{
+	foreach (const gamemap::location& loc, starting_position_label_locs_) {
+		disp.labels().set_label(loc, "");
+	}
+	starting_position_label_locs_.clear();
+}
 	
-void editor_map::set_starting_position_labels(display& disp) const
+void editor_map::set_starting_position_labels(display& disp)
 {
 	std::string label = _("Player");
 	label += " ";
 	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
 		if (startingPositions_[i].valid()) {
 			disp.labels().set_label(startingPositions_[i], label + lexical_cast<std::string>(i));
+			starting_position_label_locs_.insert(startingPositions_[i]);
 		}
 	}
 }
@@ -95,7 +103,6 @@ bool editor_map::save()
 	std::string data = write();
 	write_file(get_filename(), data);
 	actions_since_save_ = 0;
-
 	return true;
 }
 
@@ -280,6 +287,7 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 
 void editor_map::flip_x()
 {
+	LOG_ED << "FlipX\n";
 	// Due to the hexes we need some mirror tricks when mirroring over the
 	// X axis. We resize the map and fill it. The odd columns will be extended
 	// with the data in row 0 the even columns are extended with the data in
@@ -301,13 +309,13 @@ void editor_map::flip_x()
 				swap_starting_position(x, y1, x, y2);
 				std::swap(tiles_[x][y1], tiles_[x][y2]);
 			}
-
 		}
 	}
 }
 
 void editor_map::flip_y()
 {
+	LOG_ED << "FlipY\n";
 	// Flipping on the Y axis requires no resize,
 	// so the code is much simpler.
 	const size_t middle = (tiles_.size() / 2);

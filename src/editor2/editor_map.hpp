@@ -35,10 +35,10 @@ class editor_map : public gamemap
 public:
 
 	editor_map(const config& terrain_cfg, const std::string& data);
+	
 	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
 	~editor_map();
-	
 	
 	/**
 	 * Get a contigious set of tiles having the same terrain as the starting location.
@@ -47,9 +47,20 @@ public:
 	 */
 	std::set<gamemap::location> get_contigious_terrain_tiles(const gamemap::location& start) const;
 	
-	void clear_starting_position_labels(display& disp) const;
+	bool needs_reload() const { return needs_reload_; }
+	void set_needs_reload(bool value=true) { needs_reload_ = value; }
 	
-	void set_starting_position_labels(display& disp) const;
+	bool needs_terrain_rebuild() const { return needs_terrain_rebuild_; }
+	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
+	
+	const std::set<gamemap::location> changed_locations() const { return changed_locations_; }
+	void clear_changed_locations() { changed_locations_.clear(); }
+	void add_changed_location(const gamemap::location& loc) { changed_locations_.insert(loc); }
+	void add_changed_location(const std::set<gamemap::location>& locs);
+	
+	void clear_starting_position_labels(display& disp);
+	
+	void set_starting_position_labels(display& disp);
 	
 	/**
 	 * @return true when the location is part of the selection, false otherwise
@@ -199,10 +210,15 @@ protected:
 	 * Number of actions performed since the map was saved. Zero means the map was not modified.
 	 */
 	int actions_since_save_;	
+	
+	std::set<gamemap::location> starting_position_label_locs_;
+	
+	bool needs_reload_;
+	bool needs_terrain_rebuild_;
+	std::set<gamemap::location> changed_locations_;
 };
 
 
 } //end namespace editor2
 
 #endif
-

@@ -16,6 +16,8 @@
 #include "editor_common.hpp"
 #include "editor_controller.hpp"
 
+#include "../hotkeys.hpp"
+
 namespace editor2 {
 
 EXIT_STATUS start(config& game_conf, CVideo& video)

@@ -15,11 +15,8 @@
 #ifndef EDITOR2_EDITOR_MAIN_H_INCLUDED
 #define EDITOR2_EDITOR_MAIN_H_INCLUDED
 
-#include "display.hpp"
-#include "config.hpp"
-#include "filesystem.hpp"
-#include "game_preferences.hpp"
-#include "gamestatus.hpp"
+class config;
+class CVideo;
 
 namespace editor2 {
 	

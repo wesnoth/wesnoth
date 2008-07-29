@@ -26,7 +26,9 @@
 #define EDITOR2_ACTION_BASE_HPP_INCLUDED
 
 #include "editor_common.hpp"
+
 #include <string>
+
 
 namespace editor2 {
 

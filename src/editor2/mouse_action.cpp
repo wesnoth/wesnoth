@@ -40,13 +40,17 @@ editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
 
 void brush_drag_mouse_action::move(editor_display& disp, int x, int y)
 {
-	disp.set_brush_locs(get_brush().project(disp.hex_clicked_on(x,y)));
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	if (hex != previous_move_hex_) {
+		disp.set_brush_locs(get_brush().project(disp.hex_clicked_on(x,y)));
+		previous_move_hex_ = hex;
+	}
 }
 
 editor_action* brush_drag_mouse_action::click(editor_display& disp, int x, int y)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
-	previous_hex_ = hex;
+	previous_drag_hex_ = hex;
 	return click_perform(disp, hex);
 }
 
@@ -54,8 +58,10 @@ editor_action* brush_drag_mouse_action::drag(editor_display& disp, int x, int y,
 {
 	move(disp, x, y);
 	gamemap::location hex = disp.hex_clicked_on(x, y);
-	if (hex != previous_hex_) {
-		return click_perform(disp, hex);
+	if (hex != previous_drag_hex_) {
+		editor_action* a = click_perform(disp, hex);
+		previous_drag_hex_ = hex;
+		return a;
 	} else {
 		return NULL;
 	}

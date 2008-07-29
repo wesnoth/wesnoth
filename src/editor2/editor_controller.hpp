@@ -68,6 +68,7 @@ class editor_controller : public controller_base,
 		void new_map(int width, int height, t_translation::t_terrain fill);
 		void load_map(const std::string& filename);
 		void set_map(const editor_map& map);
+		void reload_map();
 				
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
 		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
@@ -101,7 +102,7 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
 		
-		void refresh_after_action(const editor_action& action);
+		void refresh_after_action();
 		
 		void refresh_all();
 		
@@ -117,8 +118,6 @@ class editor_controller : public controller_base,
 		
 		/** The current map object */
 		editor_map map_;
-		
-		std::string filename_;
 		
 		/** The display object used and owned by the editor. */
 		editor_display* gui_;

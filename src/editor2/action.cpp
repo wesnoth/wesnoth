@@ -70,12 +70,14 @@ void draw_terrain(editor_map& map, t_translation::t_terrain terrain,
 			} else {
 				map.set_terrain(loc, terrain);
 			}
+			map.add_changed_location(loc);
 		}
 	}
 }
 	
-void editor_action_whole_map::perform_without_undo(editor_map& m) const {
-	m = m_;
+void editor_action_whole_map::perform_without_undo(editor_map& map) const {
+	map = m_;
+	map.set_needs_reload();
 }
 
 editor_action_chain::~editor_action_chain()
@@ -84,18 +86,18 @@ editor_action_chain::~editor_action_chain()
 		delete a;
 	}
 }
-editor_action_chain* editor_action_chain::perform(editor_map& m) const {
+editor_action_chain* editor_action_chain::perform(editor_map& map) const {
 	std::vector<editor_action*> undo;
 	foreach (editor_action* a, actions_) {
-		undo.push_back(a->perform(m));
+		undo.push_back(a->perform(map));
 	}
 	std::reverse(undo.begin(), undo.end());
 	return new editor_action_chain(undo);
 }
-void editor_action_chain::perform_without_undo(editor_map& m) const
+void editor_action_chain::perform_without_undo(editor_map& map) const
 {
     foreach (editor_action* a, actions_) {
-		a->perform_without_undo(m);
+		a->perform_without_undo(map);
 	}
 }
 
@@ -114,6 +116,8 @@ editor_action_paste* editor_action_paste::perform(editor_map& map) const
 void editor_action_paste::perform_without_undo(editor_map& map) const
 {
 	paste_.paste_into(map, loc_);
+	map.add_changed_location(paste_.get_offset_area(loc_));
+	map.set_needs_terrain_rebuild();
 }
 
 editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& map) const
@@ -125,6 +129,7 @@ editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& map) const
 void editor_action_paint_hex::perform_without_undo(editor_map& map) const
 {
 	draw_terrain(map, t_, loc_);
+	map.set_needs_terrain_rebuild();
 }
 
 editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
@@ -137,6 +142,8 @@ editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
 void editor_action_paint_area::perform_without_undo(editor_map& map) const
 {
 	draw_terrain(map, t_, area_);
+	map.add_changed_location(area_);
+	map.set_needs_terrain_rebuild();
 }
 
 editor_action_paint_area* editor_action_fill::perform(editor_map& map) const
@@ -144,12 +151,14 @@ editor_action_paint_area* editor_action_fill::perform(editor_map& map) const
 	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
 	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, map.get_terrain(loc_));
 	draw_terrain(map, t_, to_fill);
+	map.set_needs_terrain_rebuild();
 	return undo;
 }
 void editor_action_fill::perform_without_undo(editor_map& map) const
 {
 	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
 	draw_terrain(map, t_, to_fill);
+	map.set_needs_terrain_rebuild();
 }
 
 editor_action_select_xor* editor_action_select_xor::perform(editor_map& map) const
@@ -157,6 +166,7 @@ editor_action_select_xor* editor_action_select_xor::perform(editor_map& map) con
 	perform_without_undo(map);
 	return new editor_action_select_xor(area_);
 }
+
 void editor_action_select_xor::perform_without_undo(editor_map& map) const
 {
 	foreach (const gamemap::location& loc, area_) {
@@ -165,6 +175,7 @@ void editor_action_select_xor::perform_without_undo(editor_map& map) const
 		} else {
 			map.add_to_selection(loc);
 		}
+		map.add_changed_location(loc);
 	}
 }
 
@@ -174,6 +185,7 @@ editor_action_select_xor* editor_action_select::perform(editor_map& map) const
 	foreach (const gamemap::location& loc, area_) {
 		if (!map.in_selection(loc)) {
 			undo_locs.insert(loc);
+			map.add_changed_location(loc);
 		}
 	}
 	perform_without_undo(map);
@@ -183,6 +195,7 @@ void editor_action_select::perform_without_undo(editor_map& map) const
 {
 	foreach (const gamemap::location& loc, area_) {
 		map.add_to_selection(loc);
+		map.add_changed_location(loc);
 	}
 }
 
@@ -192,6 +205,7 @@ editor_action_select_xor* editor_action_deselect::perform(editor_map& map) const
 	foreach (const gamemap::location& loc, area_) {
 		if (map.in_selection(loc)) {
 			undo_locs.insert(loc);
+			map.add_changed_location(loc);
 		}
 	}
 	perform_without_undo(map);
@@ -201,12 +215,14 @@ void editor_action_deselect::perform_without_undo(editor_map& map) const
 {
 	foreach (const gamemap::location& loc, area_) {
 		map.remove_from_selection(loc);
+		map.add_changed_location(loc);
 	}
 }
 
 void editor_action_resize_map::perform_without_undo(editor_map& map) const
 {
 	map.resize(x_size_, y_size_, x_offset_, y_offset_);
+	map.set_needs_reload();
 }
 
 void editor_action_rotate_map::perform_without_undo(editor_map& /*map*/) const
@@ -217,10 +233,13 @@ void editor_action_rotate_map::perform_without_undo(editor_map& /*map*/) const
 void editor_action_flip_x::perform_without_undo(editor_map& map) const
 {
 	map.flip_x();
+	map.set_needs_reload();
 }
+
 void editor_action_flip_y::perform_without_undo(editor_map& map) const
 {
 	map.flip_y();
+	map.set_needs_reload();
 }
 
 editor_action_paste* editor_action_plot_route::perform(editor_map& /*map*/) const
