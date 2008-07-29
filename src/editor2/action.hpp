@@ -38,7 +38,6 @@ class editor_action_whole_map : public editor_action
         : m_(m)
         {
         }
-        editor_action_whole_map* perform(editor_map& m) const;
         void perform_without_undo(editor_map& m) const;
     protected:
         editor_map m_;
@@ -193,18 +192,19 @@ class editor_action_deselect : public editor_action_area
 class editor_action_resize_map : public editor_action
 {
 	public:
-		editor_action_resize_map(int to_x_size, int to_y_size)
-		: to_x_size_(to_x_size), to_y_size_(to_y_size)
+		editor_action_resize_map(int x_size, int y_size, int x_offset, int y_offset)
+		: x_size_(x_size), y_size_(y_size), x_offset_(x_offset), y_offset_(y_offset)
 		{
 		}
-		editor_action_whole_map* perform(editor_map& map) const;
 		void perform_without_undo(editor_map& map) const;
 	protected:
-		int to_x_size_;
-		int to_y_size_;
+		int x_size_;
+		int y_size_;
+		int x_offset_;
+		int y_offset_;
 };
 
-//basic rotations. angle is multiplied by 60 degrees so 3 does a 180 turn
+//basic rotations. angle is multiplied by 90 degrees so 2 does a 180 turn
 class editor_action_rotate_map : public editor_action
 {
 	public:
@@ -218,19 +218,22 @@ class editor_action_rotate_map : public editor_action
 		int angle_;
 };
 
-//mirror. angle is multiplied by 30 degrees
-//e.g. 0 is mirror by x axis, 3 is by y axis.
-class editor_action_mirror_map : public editor_action
+class editor_action_flip_x : public editor_action
 {
 	public:
-		editor_action_mirror_map(int angle)
-		: angle_(angle)
+		editor_action_flip_x()
 		{
 		}
-		editor_action_mirror_map* perform(editor_map& map) const;
 		void perform_without_undo(editor_map& map) const;
-	protected:
-		int angle_;
+};
+
+class editor_action_flip_y : public editor_action
+{
+	public:
+		editor_action_flip_y()
+		{
+		}
+		void perform_without_undo(editor_map& map) const;
 };
 
 //plot a route between two points

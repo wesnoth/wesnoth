@@ -29,6 +29,13 @@ std::string editor_action::get_description()
 	return "Unknown action";
 }
 
+editor_action* editor_action::perform(editor_map& map) const
+{
+	editor_action* undo = new editor_action_whole_map(map);
+	perform_without_undo(map);
+	return undo;
+}
+
 void draw_terrain(editor_map& map, t_translation::t_terrain terrain, 
 	const gamemap::location& loc, const bool one_layer_only = false)
 {
@@ -67,11 +74,6 @@ void draw_terrain(editor_map& map, t_translation::t_terrain terrain,
 	}
 }
 	
-editor_action_whole_map* editor_action_whole_map::perform(editor_map& m) const {
-	editor_action_whole_map* undo = new editor_action_whole_map(m);
-	perform_without_undo(m);
-	return undo;
-}
 void editor_action_whole_map::perform_without_undo(editor_map& m) const {
 	m = m_;
 }
@@ -202,31 +204,23 @@ void editor_action_deselect::perform_without_undo(editor_map& map) const
 	}
 }
 
-editor_action_whole_map* editor_action_resize_map::perform(editor_map& /*map*/) const
+void editor_action_resize_map::perform_without_undo(editor_map& map) const
 {
-	throw editor_action_not_implemented();
-}
-void editor_action_resize_map::perform_without_undo(editor_map& /*map*/) const
-{
-	throw editor_action_not_implemented();
+	map.resize(x_size_, y_size_, x_offset_, y_offset_);
 }
 
-editor_action_rotate_map* editor_action_rotate_map::perform(editor_map& /*map*/) const
-{
-	throw editor_action_not_implemented();
-}
 void editor_action_rotate_map::perform_without_undo(editor_map& /*map*/) const
 {
 	throw editor_action_not_implemented();
 }
 
-editor_action_mirror_map* editor_action_mirror_map::perform(editor_map& /*map*/) const
+void editor_action_flip_x::perform_without_undo(editor_map& map) const
 {
-	throw editor_action_not_implemented();
+	map.flip_x();
 }
-void editor_action_mirror_map::perform_without_undo(editor_map& /*map*/) const
+void editor_action_flip_y::perform_without_undo(editor_map& map) const
 {
-	throw editor_action_not_implemented();
+	map.flip_y();
 }
 
 editor_action_paste* editor_action_plot_route::perform(editor_map& /*map*/) const
