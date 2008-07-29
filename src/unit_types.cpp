@@ -145,14 +145,17 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(set_name.empty() == false) {
 		id_ = set_name;
+		cfg_["name"] = id_;
 	}
 
 	if(set_desc.empty() == false) {
 		description_ = set_desc;
+		cfg_["description"] = description_;
 	}
 
 	if(set_type.empty() == false) {
 		type_ = set_type;
+		cfg_["type"] = type_;
 	}
 
 	if(del_specials.empty() == false) {
@@ -191,6 +194,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_damage.empty() == false) {
 		damage_ = utils::apply_modifier(damage_, increase_damage, 1);
+		cfg_["damage"] = lexical_cast_default<std::string>(damage_);
 
 		if(description != NULL) {
 			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage
@@ -200,6 +204,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_attacks.empty() == false) {
 		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
+		cfg_["number"] = lexical_cast_default<std::string>(num_attacks_);
 
 		if(description != NULL) {
 			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks
@@ -209,6 +214,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_accuracy.empty() == false) {
 		accuracy_ = utils::apply_modifier(accuracy_, increase_accuracy, 1);
+		cfg_["accuracy"] = lexical_cast_default<std::string>(accuracy_);
 
 		if(description != NULL) {
 			// Help xgettext with a directive to recognise the string as a non C printf-like string
@@ -219,6 +225,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(increase_parry.empty() == false) {
 		parry_ = utils::apply_modifier(parry_, increase_parry, 1);
+		cfg_["parry"] = lexical_cast_default<std::string>(parry_);
 
 		if(description != NULL) {
 			// xgettext:no-c-format
@@ -228,10 +235,12 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	if(set_attack_weight.empty() == false) {
 		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
+		cfg_["attack_weight"] = lexical_cast_default<std::string>(attack_weight_);
 	}
 
 	if(set_defense_weight.empty() == false) {
 		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
+		cfg_["defense_weight"] = lexical_cast_default<std::string>(defense_weight_);
 	}
 
 	if(description != NULL) {
