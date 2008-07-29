@@ -931,7 +931,7 @@ attack::attack(game_display& gui, const gamemap& map,
 		attacker.fight(defender);
 		const double attacker_inflict = static_cast<double>(d_->second.hitpoints()) - defender.average_hp();
 		const double defender_inflict = static_cast<double>(a_->second.hitpoints()) - attacker.average_hp();
-	
+
 		attack_stats.attack_excepted_damage(attacker_inflict,defender_inflict);
 	}
 
@@ -950,7 +950,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	static const std::string poison_string("poison");
 
 	LOG_NG << "Fight: (" << attacker << ") vs (" << defender << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
-	
+
 	game_state* game_state = game_events::get_state_of_game();
 
 	while(n_attacks_ > 0 || n_defends_ > 0) {
@@ -1032,9 +1032,9 @@ attack::attack(game_display& gui, const gamemap& map,
 						*a_stats_->weapon,d_stats_->weapon,
 						abs_n_attack_,float_text,a_stats_->drains,"");
 			}
-			
+
 			// Used for stat calcualtion
-			const int drains_damage = a_stats_->drains ? 
+			const int drains_damage = a_stats_->drains ?
 				minimum<int>(damage_defender_takes / 2,a_->second.max_hitpoints() - a_->second.hitpoints()) : 0;
 			const int damage_done = minimum<int>(d_->second.hitpoints(), attacker_damage_);
 			bool dies = d_->second.take_hit(damage_defender_takes);
@@ -1115,10 +1115,6 @@ attack::attack(game_display& gui, const gamemap& map,
 				}
 				bool attacker_invalid = false;
 				if(a_ == units_.end() || !attacker_loc.matches_unit(a_->second)) {
-					if(d_->second.hitpoints() <= 0) {
-						units_.erase(d_);
-						d_ = units_.end();
-					}
 					// WML has invalidated the killing unit
 					attacker_invalid = true;
 				}
@@ -1223,7 +1219,7 @@ attack::attack(game_display& gui, const gamemap& map,
 			int damage_attacker_takes;
 			if(hits) {
 				damage_attacker_takes = defender_damage_;
-				
+
 				game_state->set_variable("damage_inflicted",
 							 str_cast<int>(damage_attacker_takes));
 			} else {
@@ -1297,9 +1293,6 @@ attack::attack(game_display& gui, const gamemap& map,
 			const int damage_done   = minimum<int>(a_->second.hitpoints(), defender_damage_);
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
-			if(dies) {
-				unit_display::unit_die(attacker_,a_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
-			}
 			if(ran_results == NULL) {
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
@@ -1361,6 +1354,28 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
+
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, defender_loc));
+
+				d_ = units_.find(defender_loc);
+				a_ = units_.find(death_loc);
+				if(a_ == units_.end() || !death_loc.matches_unit(a_->second)
+						|| a_->second.hitpoints() > 0) {
+					// WML has invalidated the dying unit, abort
+					break;
+				}
+				bool defender_invalid = false;
+				if(d_ == units_.end() || !defender_loc.matches_unit(d_->second)) {
+					// WML has invalidated the killing unit
+					defender_invalid = true;
+				}
+				refresh_bc();
+				if(defender_invalid) {
+					unit_display::unit_die(attacker_, a_->second,a_stats_->weapon, NULL, NULL);
+				} else {
+					unit_display::unit_die(attacker_, a_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
+				}
+
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
 
 				// Don't try to call refresh_bc() here the attacker or defender might have
