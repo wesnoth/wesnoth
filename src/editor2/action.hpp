@@ -189,6 +189,26 @@ class editor_action_deselect : public editor_action_area
 		void perform_without_undo(map_context& mc) const;
 };
 
+class editor_action_select_all : public editor_action
+{
+	public:
+		editor_action_select_all()
+		{
+		}
+		editor_action_select_xor* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
+};
+
+class editor_action_select_inverse : public editor_action
+{
+	public:
+		editor_action_select_inverse()
+		{
+		}
+		editor_action_select_inverse* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
+};
+
 //resize map (streching / clipping behaviour?)
 class editor_action_resize_map : public editor_action
 {

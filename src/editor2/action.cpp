@@ -21,6 +21,8 @@
 
 #include "../foreach.hpp"
 
+#include <algorithm>
+
 namespace editor2 {
 
 int editor_action::next_id_ = 1;
@@ -179,6 +181,36 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 		mc.get_map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}
+}
+
+editor_action_select_xor* editor_action_select_all::perform(map_context& mc) const
+{
+	
+	std::set<gamemap::location> current = mc.get_map().selection();
+	mc.get_map().select_all();
+	std::set<gamemap::location> all = mc.get_map().selection();
+	std::set<gamemap::location> undo_locs;
+	std::set_difference(all.begin(), all.end(), 
+		current.begin(), current.end(), 
+		std::inserter(undo_locs, undo_locs.begin()));
+	mc.set_everything_changed();
+	return new editor_action_select_xor(undo_locs);
+}
+void editor_action_select_all::perform_without_undo(map_context& mc) const
+{
+	mc.get_map().select_all();
+	mc.set_everything_changed();
+}
+
+editor_action_select_inverse* editor_action_select_inverse::perform(map_context& mc) const
+{
+	perform_without_undo(mc);
+	return new editor_action_select_inverse();
+}
+void editor_action_select_inverse::perform_without_undo(map_context& mc) const
+{
+	mc.get_map().invert_selection();
+	mc.set_everything_changed();
 }
 
 void editor_action_resize_map::perform_without_undo(map_context& mc) const

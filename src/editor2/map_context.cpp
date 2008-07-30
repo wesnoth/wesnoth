@@ -32,7 +32,7 @@ const int map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map)
 : map_(map), filename_(), actions_since_save_(0),
-needs_reload_(false), needs_terrain_rebuild_(false)
+needs_reload_(false), needs_terrain_rebuild_(false), everything_changed_(false)
 {
 }
 
@@ -82,11 +82,34 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
 	}
 }
 
-void map_context::add_changed_location(const std::set<gamemap::location>& locs)
+void map_context::clear_changed_locations()
 {
-	foreach (const gamemap::location& loc, locs) {
+	everything_changed_ = false;
+	changed_locations_.clear();
+}
+
+void map_context::add_changed_location(const gamemap::location& loc)
+{
+	if (!everything_changed()) {
 		changed_locations_.insert(loc);
 	}
+}
+
+void map_context::add_changed_location(const std::set<gamemap::location>& locs)
+{
+	if (!everything_changed()) {
+		changed_locations_.insert(locs.begin(), locs.end());
+	}
+}
+
+void map_context::set_everything_changed()
+{
+	everything_changed_ = true;
+}
+
+bool map_context::everything_changed() const
+{
+	return everything_changed_;
 }
 
 void map_context::clear_starting_position_labels(display& disp)

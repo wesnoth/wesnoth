@@ -152,6 +152,8 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all",
 		 N_("Select All"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse",
+		 N_("Invert Selection"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECTION_ROTATE, "editor-selection-rotate", 
 		N_("Rotate Selection"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECTION_FLIP, "editor-selection-flip", 

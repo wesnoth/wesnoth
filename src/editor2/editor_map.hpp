@@ -85,6 +85,8 @@ public:
 	 * Select all map hexes
 	 */
 	void select_all();
+	
+	bool everything_selected() const;
 		
 	/** 
 	 * Resize the map. If the filler is NONE, the border terrain will be copied

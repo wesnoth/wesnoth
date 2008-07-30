@@ -49,9 +49,11 @@ public:
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 	
 	const std::set<gamemap::location> changed_locations() const { return changed_locations_; }
-	void clear_changed_locations() { changed_locations_.clear(); }
-	void add_changed_location(const gamemap::location& loc) { changed_locations_.insert(loc); }
+	void clear_changed_locations();
+	void add_changed_location(const gamemap::location& loc);
 	void add_changed_location(const std::set<gamemap::location>& locs);
+	void set_everything_changed();
+	bool everything_changed() const;
 	
 	void clear_starting_position_labels(display& disp);
 	
@@ -152,6 +154,7 @@ protected:
 	bool needs_reload_;
 	bool needs_terrain_rebuild_;
 	std::set<gamemap::location> changed_locations_;
+	bool everything_changed_;
 };
 
 

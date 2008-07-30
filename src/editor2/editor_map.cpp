@@ -102,8 +102,8 @@ void editor_map::clear_selection()
 void editor_map::invert_selection()
 {
 	std::set<gamemap::location> new_selection;
-	for (int x = 0; x < w(); ++x) {
-		for (int y = 0; y < h(); ++y) {
+	for (int x = -1; x < w() + 1; ++x) {
+		for (int y = -1; y < h() + 1; ++y) {
 			if (selection_.find(gamemap::location(x, y)) == selection_.end()) {
 				new_selection.insert(gamemap::location(x, y));
 			}
@@ -116,6 +116,12 @@ void editor_map::select_all()
 {
 	clear_selection();
 	invert_selection();
+}
+
+bool editor_map::everything_selected() const
+{
+	LOG_ED << selection_.size() << " " << total_width() * total_height() << "\n";
+	return selection_.size() == total_width() * total_height();
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,

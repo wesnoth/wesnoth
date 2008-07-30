@@ -248,6 +248,7 @@ void editor_controller::load_map(const std::string& filename)
 
 void editor_controller::revert_map()
 {
+	if (!confirm_discard()) return;
 	const std::string& filename = get_map_context().get_filename();
 	if (filename.empty()) {
 		ERR_ED << "Empty filename in map revert\n";
@@ -384,6 +385,16 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_CUT:
 			cut_selection();
+			return true;
+		case HOTKEY_EDITOR_SELECT_ALL:
+			if (!get_map_context().get_map().everything_selected()) {
+				get_map_context().perform_action(editor_action_select_all());
+				refresh_after_action();
+				return true;
+			} //else intentionally fall through
+		case HOTKEY_EDITOR_SELECT_INVERSE:
+			get_map_context().perform_action(editor_action_select_inverse());
+			refresh_after_action();
 			return true;
 		case HOTKEY_EDITOR_MAP_FLIP_X: {
 			editor_action_flip_x fx;
@@ -569,7 +580,11 @@ void editor_controller::refresh_after_action()
 		get_map_context().set_needs_terrain_rebuild(false);
 		get_map_context().clear_changed_locations();
 	} else {
-		gui().invalidate(get_map_context().changed_locations());
+		if (get_map_context().everything_changed()) {
+			gui().invalidate_all();
+		} else {
+			gui().invalidate(get_map_context().changed_locations());
+		}
 		get_map_context().clear_changed_locations();
 	}
 	gui().recalculate_minimap();
