@@ -210,7 +210,12 @@ def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 					[
 						max_possible_damage_with_retaliation( unit, enemy_unit )
 					],
-					self[0] - self[1]
+					max(
+						[
+							self[0] - self[2],
+							self[1] - self[3]
+						]
+					)
 				) 
 			)
 		)
@@ -225,7 +230,12 @@ def evaluate_defender_against_opponents(ai*, unit, enemy_units)
 					[
 						max_possible_damage_with_retaliation( enemy_unit, unit )
 					],
-					self[1] - self[0]
+					max(
+						[
+							self[2] - self[0],
+							self[3] - self[1]
+						]
+					)
 				)
 			)
 		)
@@ -467,9 +477,9 @@ def unit_chooser(ai*,unit_map)
 
 if(my_leader.loc = loc(11,23),
 	if( teams[my_side].gold>20,
-		recruit(unit_chooser(self,recruitment_list_builder(eval(self),apply_abilities_weights(apply_weapon_specials_weights(evaluate_attackers(self))),apply_abilities_weights(apply_weapon_specials_weights(evaluate_defenders(self)))))),
-		fallback('') ), 
+		recruit(unit_chooser(self,recruitment_list_builder(eval(self),apply_abilities_weights(apply_weapon_specials_weights(debug_print(evaluate_attackers(self)))),apply_abilities_weights(apply_weapon_specials_weights(evaluate_defenders(self)))))),
+		fallback('human') ), 
 	if(vars.check = turn, 
-		[set_var('check', 0), fallback('')], 
+		[set_var('check', 0), fallback('human')], 
 		[set_var('check', turn), move(my_leader.loc, nearest_keep(my_leader.loc))])
 )

@@ -263,6 +263,25 @@ private:
 	}
 };
 
+class debug_print_function : public function_expression {
+public:
+	explicit debug_print_function(const args_list& args)
+	     : function_expression("debug_print", args, 1, 1)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant var = args()[0]->evaluate(variables);
+
+		std::string str;
+
+		var.serialize_to_string(str);
+		std::cerr<< str << std::endl;
+
+		return var;
+	}
+};
+
 class keys_function : public function_expression {
 public:
 	explicit keys_function(const args_list& args)
@@ -845,6 +864,7 @@ functions_map& get_functions_map() {
 		FUNCTION(min);
 		FUNCTION(max);
 		FUNCTION(choose);
+		FUNCTION(debug_print);
 		FUNCTION(wave);
 		FUNCTION(sort);
 		FUNCTION(contains_string);
