@@ -1121,7 +1121,7 @@ void ai_function_symbol_table::register_candidate_move(const std::string name,
 		const_formula_ptr formula, const_formula_ptr eval, 
 		const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	candidate_move_ptr new_move(new candidate_move(name,eval));
+	candidate_move_ptr new_move(new candidate_move(name,eval,formula));
 	candidate_moves.push_back(new_move);
 	function_symbol_table::add_formula_function(name, formula, 
 			precondition, args);
@@ -1145,11 +1145,18 @@ formula_ai::formula_ai(info& i) :
 	attacks_cache_(),
 	keeps_cache_(),
 	vars_(),
-	function_table(*this)
+	function_table(*this),
+	candidate_moves_(),
+	use_eval_lists_(false)
 {
 	//make sure we don't run out of refcount
 	vars_.add_ref();
 	const config& ai_param = current_team().ai_parameters();
+
+	// Check to see if we want to use eval_lists
+	if(ai_param.get_attribute("eval_list") == "yes") {
+		use_eval_lists_ = true;
+	}
 
 	// Register candidate moves in function symbol table
 	config::const_child_itors rc_moves = 
@@ -1214,9 +1221,57 @@ void formula_ai::play_turn()
 		}
 	}
 
-	game_logic::map_formula_callable callable(this);
-	callable.add_ref();
-	while(make_move(move_formula_,callable)) {
+	if(use_eval_lists_) {
+		make_candidate_moves();
+	} else {
+		game_logic::map_formula_callable callable(this);
+		callable.add_ref();
+		while(make_move(move_formula_,callable)) {
+		}
+	}
+}
+
+void formula_ai::make_candidate_moves() {
+
+	build_move_list();
+	candidate_move_set::iterator best_move = candidate_moves_.begin();
+
+	while( best_move != candidate_moves_.end() ) {
+		int best_score = (*best_move)->get_score();
+		std::cout << "size of set is " << candidate_moves_.size() << std::endl;
+		std::cout << "best score is " << best_score << std::endl;
+		// If no evals > 0, fallback
+		if(best_score < 0) {
+			ai_interface* fallback = create_ai("", get_info());
+			fallback->play_turn();
+			return;
+		}
+		// Otherwise, make the best scoring move
+		game_logic::map_formula_callable callable(this);
+		callable.add_ref();
+		variant action_unit_callable(new unit_callable(*(*best_move)->get_action_unit()));
+		callable.add("me", action_unit_callable);
+		const_formula_ptr move_formula((*best_move)->get_move());
+		make_move(move_formula, callable);
+		// And re-evaluate candidate moves
+		build_move_list();
+		best_move = candidate_moves_.begin();
+	}
+
+	// After all candidate moves have been exhausted, fallback
+	ai_interface* fallback = create_ai("", get_info());
+	fallback->play_turn();
+
+}
+
+
+void formula_ai::build_move_list() {
+	std::cout << "BUILDING MOVE LIST" << std::endl;
+	candidate_moves_.clear();
+	std::vector<candidate_move_ptr>::iterator itor = function_table.candidate_move_begin();
+	for( ; itor != function_table.candidate_move_end(); ++itor) {
+		(*itor)->evaluate_move(this, units_, get_info().team_num);
+		candidate_moves_.insert(*itor);
 	}
 }
 
@@ -1277,6 +1332,7 @@ void formula_ai::prepare_move() const
 
 bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
+	std::cout << "Makin move yo" << std::endl;
 	if(!formula_) {
 		ai_interface* fallback = create_ai("", get_info());
 		fallback->play_turn();

@@ -30,50 +30,56 @@ namespace game_logic {
 
 class candidate_move {
 public:
-	candidate_move(std::string name, const_formula_ptr eval) :
+	candidate_move(std::string name, const_formula_ptr eval, const_formula_ptr move) :
 		name_(name),
 		eval_(eval),
+		move_(move),
 		score_(-1),
 		action_unit_()
 	{};
 
 	void evaluate_move(const formula_callable* ai, unit_map& units, int team_num) {
-
+		score_ = -1000;
 		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 		{
-			if(i->second.side() == team_num) {
+			if( (i->second.side() == team_num) && 
+				(i->second.has_moved() == false) ) {
 				game_logic::map_formula_callable callable(ai);
 				callable.add_ref();
 				callable.add("me", variant(new unit_callable(*i)));
 				int res = (formula::evaluate(eval_, callable)).as_int();
 				if(res > score_) {
 					score_ = res;
-					action_unit_.reset(&i->second);
+					action_unit_ = i;
 				}
 			}
 		}
-
 	}
 
 	int get_score() const {return score_;}
+	unit_map::unit_iterator get_action_unit() {return action_unit_;}
+	const_formula_ptr get_move() {return move_;}
 
 	struct move_compare {
-		bool operator() (const candidate_move& lmove,
-				const candidate_move& rmove) const 
+		bool operator() (const boost::shared_ptr<candidate_move> lmove,
+				const boost::shared_ptr<candidate_move> rmove) const 
 		{
-			return lmove.get_score() < rmove.get_score();
+			return lmove->get_score() < rmove->get_score();
 		}
 	};
 
 private:
+
 	std::string name_;
 	const_formula_ptr eval_;
+	const_formula_ptr move_;
 	int score_;
-	boost::shared_ptr<unit> action_unit_;
+	unit_map::unit_iterator action_unit_;
 };
 
 
 typedef boost::shared_ptr<candidate_move> candidate_move_ptr; 	
+typedef std::set<game_logic::candidate_move_ptr, game_logic::candidate_move::move_compare> candidate_move_set;
 
 class ai_function_symbol_table : public function_symbol_table {
 
@@ -88,8 +94,12 @@ public:
 			const_formula_ptr formula, const_formula_ptr eval, 
 			const_formula_ptr precondition, const std::vector<std::string>& args);
 
-	std::vector<candidate_move_ptr>::iterator get_candidate_move_itor() {
+	std::vector<candidate_move_ptr>::iterator candidate_move_begin() {
 		return candidate_moves.begin(); 
+	}	
+
+	std::vector<candidate_move_ptr>::iterator candidate_move_end() {
+		return candidate_moves.end(); 
 	}	
 
 private:
@@ -156,6 +166,8 @@ private:
 	mutable std::map<location,paths> possible_moves_;
 
 	void prepare_move() const;
+	void build_move_list();
+	void make_candidate_moves();
 	mutable bool move_maps_valid_;
 	mutable move_map srcdst_, dstsrc_, full_srcdst_, full_dstsrc_, enemy_srcdst_, enemy_dstsrc_;
 	mutable variant attacks_cache_;
@@ -164,7 +176,8 @@ private:
 	game_logic::map_formula_callable vars_;
 	game_logic::ai_function_symbol_table function_table;
 
-	std::set<game_logic::candidate_move, game_logic::candidate_move::move_compare> candidate_moves;
+	game_logic::candidate_move_set candidate_moves_;
+	bool use_eval_lists_;
 };
 
 #endif
