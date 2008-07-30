@@ -53,7 +53,7 @@ log_domain general("general"), ai("ai"), config("config"), display("display"),
 	engine("engine"), network("network"), mp_server("server"),
 	filesystem("filesystem"), audio("audio"), notifs("notifs"),
 	replay("replay"), help("help"), gui("gui"), gui_parse("gui_parse"),
-	gui_draw("gui_draw"), gui_event("gui_event"), editor("editor");
+	gui_draw("gui_draw"), gui_event("gui_event"), editor("editor"), wml("wml");
 
 log_domain::log_domain(char const *name) : domain_(log_domains.size())
 {
@@ -118,7 +118,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 		}
 		if (show_names) {
 			std::cerr << name_ << ' ' << d.name_ << ": ";
-		}			
+		}
 		return std::cerr;
 	}
 }
@@ -130,7 +130,7 @@ void scope_logger::do_log_entry(log_domain const &domain, const char* str)
 	ticks_ = SDL_GetTicks();
 	(*output_) << "BEGIN: " << str_ << "\n";
 	++indent;
-}	
+}
 
 void scope_logger::do_log_exit()
 {
@@ -139,7 +139,7 @@ void scope_logger::do_log_exit()
 	do_indent();
 	if (timestamp) (*output_) << get_timestamp(time(NULL));
 	(*output_) << "END: " << str_ << " (took " << ticks << "ms)\n";
-}	
+}
 
 void scope_logger::do_indent() const
 {

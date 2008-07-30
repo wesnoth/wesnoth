@@ -250,6 +250,8 @@ public:
     BUILD_STATUS build_status() const { return build_status_; }
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
+
+	void set_config(config& cfg) { cfg_ = cfg; }
 private:
 	void operator=(const unit_type& o);
 
@@ -340,7 +342,7 @@ public:
 				types_(),
 				dummy_unit_map_(),
 				movement_types_(),
-				races_(), 
+				races_(),
 				unit_traits_(),
 				unit_cfg_(0)
 			{}

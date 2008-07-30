@@ -51,14 +51,14 @@ class logger {
 	int severity_;
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
-	std::ostream &operator()(log_domain const &domain, 
+	std::ostream &operator()(log_domain const &domain,
 		bool show_names = true, bool do_indent = false) const;
 
 	bool dont_log(log_domain const &domain) const
 	{
 		logd const &d = log_domains[domain.domain_];
 		return severity_ > d.severity_;
-	}	
+	}
 };
 
 void timestamps(bool);
@@ -66,8 +66,8 @@ std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %T 
 
 extern logger err, warn, info, debug;
 extern log_domain general, ai, config, display, engine, network, mp_server,
-	filesystem, audio, notifs, replay, help, gui, gui_parse, gui_draw, 
-	gui_event, editor;
+	filesystem, audio, notifs, replay, help, gui, gui_parse, gui_draw,
+	gui_event, editor, wml;
 
 class scope_logger
 {

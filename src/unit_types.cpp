@@ -1056,6 +1056,8 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
             insert(std::pair<const std::string,unit_type>(id,unit_type()));
+        unit_type_map::iterator itor = types_.find(id);
+        itor->second.set_config(**i.first);
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
         lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
@@ -1082,11 +1084,14 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
             insert(std::pair<const std::string,unit_type>(id,unit_type()));
+
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
         lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 		std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
 	}
+
+	build_all(unit_type::NOT_BUILT);
 }
 
 unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find(const std::string& key, unit_type::BUILD_STATUS status) const
@@ -1145,9 +1150,14 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     if (key == "dummy_unit")
         return ut->second;
 
+    DBG_UT << "Building unit type " << ut->first << ", level " << status << "\n";
+
     const config& unit_cfg = find_config(key);
 
     switch (status){
+        case unit_type::NOT_BUILT:
+            add_advancement(unit_cfg, ut->second);
+            break;
         case unit_type::HELP_INDEX:
             //build the stuff that is needed to feed the help index
             if (ut->second.build_status() == unit_type::NOT_BUILT)
@@ -1207,6 +1217,8 @@ void unit_type_data::unit_type_map_wrapper::add_advancement(const config& cfg, u
 
         // Fix up advance_from references
         from_unit->second.add_advancement(to_unit, xp);
+
+        DBG_UT << "Added advancement ([advancefrom]) from " << from << " to " << to_unit.id() << "\n";
 
         // Store what unit this type advances from
 		to_unit.add_advancesfrom(from);
