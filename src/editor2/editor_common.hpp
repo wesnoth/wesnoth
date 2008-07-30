@@ -47,6 +47,7 @@ class editor_controller;
 class editor_display;
 class editor_map;
 class editor_mouse_handler;
+class map_context;
 class map_fragment;
 class mouse_action;
 

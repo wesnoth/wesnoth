@@ -40,15 +40,15 @@ namespace editor2 {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
-, mouse_handler_base(map_)
-, map_(game_config, 44, 33, t_translation::GRASS_LAND)
+, mouse_handler_base(get_map())
+, map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
 {
 	init(video);
 	floating_label_manager_ = new font::floating_label_context();
 	size_specs_ = new size_specs();
 	adjust_sizes(gui(), *size_specs_);
-	palette_ = new terrain_palette(gui(), *size_specs_, map_, game_config,
+	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
 		foreground_terrain_, background_terrain_);
 	//brush_bar_ = new brush_bar(gui(), *size_specs_);
 	
@@ -71,7 +71,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
-	map_.set_starting_position_labels(gui());
+	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
 	palette_->adjust_size();
@@ -85,7 +85,7 @@ void editor_controller::init(CVideo& video)
 	config dummy;
 	const config* theme_cfg = get_theme(game_config_, "editor2");
 	theme_cfg = theme_cfg ? theme_cfg : &dummy;
-	gui_ = new editor_display(video, map_, *theme_cfg, game_config_, config());
+	gui_ = new editor_display(video, get_map(), *theme_cfg, game_config_, config());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
 }
@@ -114,7 +114,7 @@ EXIT_STATUS editor_controller::main_loop()
 void editor_controller::quit_confirm(EXIT_STATUS mode)
 {
 	std::string message = _("Do you really want to quit?");
-	if (map_.modified()) {
+	if (get_map_context().modified()) {
 		message += " ";
 		message += _("There are unsaved changes in the map.");
 	}
@@ -127,7 +127,7 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 
 bool editor_controller::confirm_discard()
 {
-	if (map_.modified()) {
+	if (get_map_context().modified()) {
 		return !gui::dialog(gui(), _("There are unsaved changes in the map"),
 			_("Do you want to discard all changes you made te the map?"), gui::YES_NO).show();
 	} else {
@@ -138,7 +138,7 @@ bool editor_controller::confirm_discard()
 void editor_controller::load_map_dialog()
 {
 	if (!confirm_discard()) return;
-	std::string fn = map_.get_filename();
+	std::string fn = get_map_context().get_filename();
 	if (fn.empty()) {
 		fn = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	}
@@ -152,8 +152,8 @@ void editor_controller::new_map_dialog()
 {
 	if (!confirm_discard()) return;
 	gui2::teditor_new_map dialog;;
-	dialog.set_map_width(map_.total_width());
-	dialog.set_map_height(map_.total_height());
+	dialog.set_map_width(get_map().total_width());
+	dialog.set_map_height(get_map().total_height());
 	
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
@@ -168,7 +168,10 @@ void editor_controller::new_map_dialog()
 void editor_controller::save_map_as_dialog()
 {
 	const std::string default_dir =	get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
-	std::string input_name = map_.get_filename().empty() ? default_dir : map_.get_filename();
+	std::string input_name = get_map_context().get_filename();
+	if (input_name.empty()) {
+		input_name = default_dir;
+	}
 	const std::string old_input_name = input_name;
 
 	int res = 0;
@@ -194,10 +197,10 @@ void editor_controller::save_map_as_dialog()
 
 bool editor_controller::save_map_as(const std::string& filename)
 {
-	std::string old_filename = map_.get_filename();
-	map_.set_filename(filename);
+	std::string old_filename = get_map_context().get_filename();
+	get_map_context().set_filename(filename);
 	if (!save_map(true)) {
-		map_.set_filename(old_filename);
+		get_map_context().set_filename(old_filename);
 		return false;
 	} else {
 		return true;
@@ -207,7 +210,7 @@ bool editor_controller::save_map_as(const std::string& filename)
 bool editor_controller::save_map(bool display_confirmation)
 {
 	try {
-		map_.save();
+		get_map_context().save();
 		if (display_confirmation) {
 			gui::message_dialog(gui(), "", _("Map saved.")).show();
 		}
@@ -226,7 +229,7 @@ void editor_controller::load_map(const std::string& filename)
 	std::string map_string = read_file(filename);
 	try {
 		editor_map new_map(game_config_, map_string);
-		new_map.set_filename(filename);
+		get_map_context().set_filename(filename);
 		set_map(new_map);
 		//TODO when this fails see if it's a scenario with a mapdata= key and give
 		//the user an option of loading that map instead of just failing
@@ -250,18 +253,18 @@ void editor_controller::new_map(int width, int height, t_translation::t_terrain 
 
 void editor_controller::set_map(const editor_map& map)
 {
-	map_.clear_starting_position_labels(gui());
-	map_ = map;
+	get_map_context().clear_starting_position_labels(gui());
+	get_map() = map;
 	gui().reload_map();
-	map_.set_starting_position_labels(gui());
+	get_map_context().set_starting_position_labels(gui());
 	refresh_all();
 }
 
 void editor_controller::reload_map()
 {
-	map_.clear_starting_position_labels(gui());
+	get_map_context().clear_starting_position_labels(gui());
 	gui().reload_map();
-	map_.set_starting_position_labels(gui());
+	get_map_context().set_starting_position_labels(gui());
 	refresh_all();
 }
 
@@ -372,14 +375,14 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_FLIP_X: {
 			editor_action_flip_x fx;
-			map_.perform_action(fx);
+			get_map_context().perform_action(fx);
 			refresh_after_action();
 			return true;
 			}
 		case HOTKEY_EDITOR_MAP_FLIP_Y: {
 			LOG_ED << "FlipYhk\n";
 			editor_action_flip_y fy;
-			map_.perform_action(fy);
+			get_map_context().perform_action(fy);
 			refresh_after_action();
 			return true;
 			}
@@ -390,7 +393,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
-			if (map_.get_filename().empty()) {
+			if (get_map_context().get_filename().empty()) {
 				save_map_as_dialog();
 			} else {
 				save_map();
@@ -426,7 +429,7 @@ void editor_controller::expand_starting_position_menu(std::vector<std::string>& 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	if (context_menu) {
-		if (!map_.on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
+		if (!get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
 			return;
 		}
 	}
@@ -437,13 +440,13 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	while(i != items.end()) {
 		command = hotkey::get_hotkey(*i).get_id();
 		if (command == hotkey::HOTKEY_UNDO) {
-			if (map_.can_undo()) {
+			if (get_map_context().can_undo()) {
 				hotkey::get_hotkey(*i).set_description(_("Undo"));
 			} else {
 				hotkey::get_hotkey(*i).set_description(_("Can't Undo"));
 			}
 		} else if (command == hotkey::HOTKEY_REDO) {
-			if (map_.can_redo()) {
+			if (get_map_context().can_redo()) {
 				hotkey::get_hotkey(*i).set_description(_("Redo"));
 			} else {
 				hotkey::get_hotkey(*i).set_description(_("Can't Redo"));
@@ -485,8 +488,8 @@ void editor_controller::toggle_grid()
 
 void editor_controller::copy_selection()
 {
-	if (!map_.selection().empty()) {
-		clipboard_ = map_fragment(map_, map_.selection());
+	if (!get_map().selection().empty()) {
+		clipboard_ = map_fragment(get_map(), get_map().selection());
 		clipboard_.center();
 	}
 }
@@ -494,8 +497,8 @@ void editor_controller::copy_selection()
 void editor_controller::cut_selection()
 {
 	copy_selection();
-	editor_action_paint_area a(map_.selection(), background_terrain_);
-	map_.perform_action(a);
+	editor_action_paint_area a(get_map().selection(), background_terrain_);
+	get_map_context().perform_action(a);
 	refresh_after_action();
 }
 
@@ -540,19 +543,19 @@ mouse_action* editor_controller::get_mouse_action()
 void editor_controller::refresh_after_action()
 {
 	//TODO rebuild and ivalidate only what's really needed
-	if (map_.needs_reload()) {
+	if (get_map_context().needs_reload()) {
 		reload_map();
-		map_.set_needs_reload(false);
-		map_.set_needs_terrain_rebuild(false);
-		map_.clear_changed_locations();
-	} else if (map_.needs_terrain_rebuild()) {
+		get_map_context().set_needs_reload(false);
+		get_map_context().set_needs_terrain_rebuild(false);
+		get_map_context().clear_changed_locations();
+	} else if (get_map_context().needs_terrain_rebuild()) {
 		gui().rebuild_all();
 		gui().invalidate_all();	
-		map_.set_needs_terrain_rebuild(false);
-		map_.clear_changed_locations();
+		get_map_context().set_needs_terrain_rebuild(false);
+		get_map_context().clear_changed_locations();
 	} else {
-		gui().invalidate(map_.changed_locations());
-		map_.clear_changed_locations();
+		gui().invalidate(get_map_context().changed_locations());
+		get_map_context().clear_changed_locations();
 	}
 	gui().recalculate_minimap();
 }
@@ -566,19 +569,19 @@ void editor_controller::refresh_all()
 	gui().rebuild_all();
 	gui().invalidate_all();
 	gui().recalculate_minimap();
-	map_.set_needs_terrain_rebuild(false);
-	map_.clear_changed_locations();
+	get_map_context().set_needs_terrain_rebuild(false);
+	get_map_context().clear_changed_locations();
 }
 
 void editor_controller::undo()
 {
-	map_.undo();
+	get_map_context().undo();
 	refresh_after_action();
 }
 
 void editor_controller::redo()
 {
-	map_.redo();
+	get_map_context().redo();
 	refresh_after_action();
 }
 
@@ -587,20 +590,20 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
 	if (dragging_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON_LEFT) != 0
-	&& map_.on_board_with_border(drag_from_hex_)) {
-		if (!map_.on_board_with_border(hex_clicked)) return;
+	&& get_map().on_board_with_border(drag_from_hex_)) {
+		if (!get_map().on_board_with_border(hex_clicked)) return;
 		if (get_mouse_action() != NULL) {
 			LOG_ED << "Mouse drag\n";
-			editor_action* last_undo = map_.last_undo_action();
+			editor_action* last_undo = get_map_context().last_undo_action();
 			bool partial = false;
 			editor_action* a = get_mouse_action()->drag(*gui_, x, y, partial, last_undo);
 			//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
 			//anything to the undo stack (hence a diferent perform_ call
 			if (a != NULL) {
 				if (partial) {
-					map_.perform_partial_action(*a);
+					get_map_context().perform_partial_action(*a);
 				} else {
-					map_.perform_action(*a);
+					get_map_context().perform_action(*a);
 				}
 				refresh_after_action();
 				delete a;
@@ -621,12 +624,12 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	LOG_ED << "Left click, after generic handling\n";
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
-	if (!map_.on_board_with_border(hex_clicked)) return true;
+	if (!get_map().on_board_with_border(hex_clicked)) return true;
 	if (get_mouse_action() != NULL) {
 		LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 		editor_action* a = get_mouse_action()->click(*gui_, x, y);
 		if (a != NULL) {
-			map_.perform_action(*a);
+			get_map_context().perform_action(*a);
 			refresh_after_action();
 			delete a;
 		}
@@ -642,7 +645,7 @@ void editor_controller::left_drag_end(int x, int y, const bool browse)
 	if (get_mouse_action() != NULL) {
 		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
 		if (a != NULL) {
-			map_.perform_action(*a);
+			get_map_context().perform_action(*a);
 			refresh_after_action();
 			delete a;
 		}

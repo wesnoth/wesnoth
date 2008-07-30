@@ -52,12 +52,12 @@ class editor_action
 		 * The undo action object is owned by the caller. Default behaviour is to create a whole-map undo, call
 		 * the perform_without_undo function and return the undo object.
 		 */
-		virtual editor_action* perform(editor_map&) const;
+		virtual editor_action* perform(map_context&) const;
 		
 		/**
 		 * Perform the action without creating an undo action.
 		 */
-		virtual void perform_without_undo(editor_map&) const = 0;
+		virtual void perform_without_undo(map_context&) const = 0;
 		
 		/**
 		 * A textual description of the action. For use e.g. in the undo menu, to have

@@ -18,8 +18,8 @@
 #include "brush.hpp"
 #include "editor_common.hpp"
 #include "editor_display.hpp"
-#include "editor_map.hpp"
 #include "editor_main.hpp"
+#include "map_context.hpp"
 #include "map_fragment.hpp"
 
 #include "../controller_base.hpp"
@@ -59,6 +59,12 @@ class editor_controller : public controller_base,
 		void hotkey_quit();
 		void quit_confirm(EXIT_STATUS status);
 		bool confirm_discard();
+		
+		map_context& get_map_context() { return map_context_; }
+		const map_context& get_map_context() const { return map_context_; }
+
+		editor_map& get_map() { return get_map_context().get_map(); }
+		const editor_map& get_map() const { return get_map_context().get_map(); }
 		
 		void load_map_dialog();
 		void new_map_dialog();
@@ -117,7 +123,7 @@ class editor_controller : public controller_base,
 		void redo();
 		
 		/** The current map object */
-		editor_map map_;
+		map_context map_context_;
 		
 		/** The display object used and owned by the editor. */
 		editor_display* gui_;

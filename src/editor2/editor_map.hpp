@@ -47,20 +47,7 @@ public:
 	 */
 	std::set<gamemap::location> get_contigious_terrain_tiles(const gamemap::location& start) const;
 	
-	bool needs_reload() const { return needs_reload_; }
-	void set_needs_reload(bool value=true) { needs_reload_ = value; }
-	
-	bool needs_terrain_rebuild() const { return needs_terrain_rebuild_; }
-	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
-	
-	const std::set<gamemap::location> changed_locations() const { return changed_locations_; }
-	void clear_changed_locations() { changed_locations_.clear(); }
-	void add_changed_location(const gamemap::location& loc) { changed_locations_.insert(loc); }
-	void add_changed_location(const std::set<gamemap::location>& locs);
-	
-	void clear_starting_position_labels(display& disp);
-	
-	void set_starting_position_labels(display& disp);
+	std::set<gamemap::location> set_starting_position_labels(display& disp);
 	
 	/**
 	 * @return true when the location is part of the selection, false otherwise
@@ -98,38 +85,7 @@ public:
 	 * Select all map hexes
 	 */
 	void select_all();
-	
-	const std::string& get_filename() const { return filename_; }
-	
-	void set_filename(const std::string& fn) { filename_ = fn; }
-	
-	bool save();
-	
-	/**
-	 * Performs an action (thus modyfying the map). An appropriate undo action is added to
-	 * the undo stack. The redo stack is cleared.
-	 */
-	void perform_action(const editor_action& action);
-	
-	void perform_partial_action(const editor_action& action);
-	
-	/** @return whether the map was modified since the last save */
-	bool modified() const;
-
-	/** @return true when undo can be performed, false otherwise */
-	bool can_undo() const;
-	
-	editor_action* last_undo_action();
-
-	/** @return true when redo can be performed, false otherwise */
-	bool can_redo() const;
-
-	/** Un-does an action, and puts it in the redo stack for a possible redo */
-	void undo();
-
-	/** Re-does a previousle undid action, and puts it back in the undo stack. */
-	void redo();
-	
+		
 	/** 
 	 * Resize the map. If the filler is NONE, the border terrain will be copied
 	 * when expanding, otherwise the fill er terrain will be inserted there
@@ -137,7 +93,14 @@ public:
 	void resize(int width, int height, int x_offset, int y_offset,
 		t_translation::t_terrain filler = t_translation::NONE_TERRAIN);
 
+	/** 
+	 * Flip the map along the X axis. Seems somewhat broken, was so in the old editor.
+	 */
 	void flip_x();
+
+	/** 
+	 * Flip the map along the Y axis. Seems somewhat broken, was so in the old editor.
+	 */
 	void flip_y();
 
 protected:
@@ -154,68 +117,9 @@ protected:
 	void shrink_bottom(int count);
 
 	/**
-	 * Container type used to store actions in the undo and redo stacks
-	 */
-	typedef std::deque<editor_action*> action_stack;
-
-	/**
-	 * Checks if an action stack reached its capacity and removes the front element if so.
-	 */
-	void trim_stack(action_stack& stack);
-
-	/**
-	 * Clears an action stack and deletes all its contents. Helper function used when the undo
-	 * or redo stack needs to be cleared
-	 */
-	void clear_stack(action_stack& stack);
-
-	/**
-	 * Perform an action at the back of one stack, and then move it to the back of the other stack.
-	 * This is the implementation of both undo and redo which only differ in the direction.
-	 */
-	void perform_action_between_stacks(action_stack& from, action_stack& to);
-
-	/**
 	 * The selected hexes
 	 */
 	std::set<gamemap::location> selection_;
-	
-	/**
-	 * The actual filename of this map. An empty string indicates a new map.
-	 */
-	std::string filename_;
-	
-	/**
-	 * The undo stack. A double-ended queues due to the need to add items to one end,
-	 * and remove from both when performing the undo or when trimming the size. This container owns
-	 * all contents, i.e. no action in the stack shall be deleted, and unless otherwise noted the contents 
-	 * could be deleted at an time during normal operation of the stack. To work on an action, either
-	 * remove it from the container or make a copy. Actions are inserted at the back of the container
-	 * and disappear from the front when the capacity is exceeded.
-	 * @todo Use boost's pointer-owning container?
-	 */
-	action_stack undo_stack_;
-	
-	/**
-	 * The redo stack. @see undo_stack_
-	 */
-	action_stack redo_stack_;
-	
-	/**
-	 * Action stack (i.e. undo and redo) maximum size
-	 */
-	static const int max_action_stack_size_;
-	
-	/**
-	 * Number of actions performed since the map was saved. Zero means the map was not modified.
-	 */
-	int actions_since_save_;	
-	
-	std::set<gamemap::location> starting_position_label_locs_;
-	
-	bool needs_reload_;
-	bool needs_terrain_rebuild_;
-	std::set<gamemap::location> changed_locations_;
 };
 
 

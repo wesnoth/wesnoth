@@ -27,25 +27,19 @@
 
 namespace editor2 {
 
-const int editor_map::max_action_stack_size_ = 100;
-
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-: gamemap(terrain_cfg, data), filename_(), actions_since_save_(0),
-needs_reload_(false), needs_terrain_rebuild_(false)
+: gamemap(terrain_cfg, data)
 {
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
 : gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
 	t_translation::t_map(width, t_translation::t_list(height, filler))))
-, filename_(), actions_since_save_(0), needs_reload_(false), needs_terrain_rebuild_(false)
 {
 }
 
 editor_map::~editor_map()
 {
-	clear_stack(undo_stack_);
-	clear_stack(redo_stack_);
 }
 
 std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamemap::location& start) const
@@ -70,40 +64,19 @@ std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamem
 	} while (!queue.empty());
 	return result;
 }
-
-void editor_map::add_changed_location(const std::set<gamemap::location>& locs)
-{
-	foreach (const gamemap::location& loc, locs) {
-		changed_locations_.insert(loc);
-	}
-}
-
-void editor_map::clear_starting_position_labels(display& disp)
-{
-	foreach (const gamemap::location& loc, starting_position_label_locs_) {
-		disp.labels().set_label(loc, "");
-	}
-	starting_position_label_locs_.clear();
-}
 	
-void editor_map::set_starting_position_labels(display& disp)
+std::set<gamemap::location> editor_map::set_starting_position_labels(display& disp)
 {
+	std::set<gamemap::location> label_locs;
 	std::string label = _("Player");
 	label += " ";
 	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
 		if (startingPositions_[i].valid()) {
 			disp.labels().set_label(startingPositions_[i], label + lexical_cast<std::string>(i));
-			starting_position_label_locs_.insert(startingPositions_[i]);
+			label_locs.insert(startingPositions_[i]);
 		}
 	}
-}
-
-bool editor_map::save()
-{
-	std::string data = write();
-	write_file(get_filename(), data);
-	actions_since_save_ = 0;
-	return true;
+	return label_locs;
 }
 
 bool editor_map::in_selection(const gamemap::location& loc) const
@@ -143,99 +116,6 @@ void editor_map::select_all()
 {
 	clear_selection();
 	invert_selection();
-}
-
-void editor_map::perform_action(const editor_action& action)
-{
-	LOG_ED << "Performing action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
-	editor_action* undo = action.perform(*this);
-	if (actions_since_save_ < 0) {
-		//set to a value that will make it impossible to get to zero, as at this point
-		//it is no longer possible to get back the original map state using undo/redo
-		actions_since_save_ = undo_stack_.size() + 1;
-	} else {
-		++actions_since_save_;
-	}
-	undo_stack_.push_back(undo);
-	trim_stack(undo_stack_);
-	clear_stack(redo_stack_);
-}
-	
-void editor_map::perform_partial_action(const editor_action& action)
-{
-	LOG_ED << "Performing (partial) action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";
-	action.perform_without_undo(*this);
-	clear_stack(redo_stack_);
-}
-
-bool editor_map::modified() const
-{
-	return actions_since_save_ != 0;
-}
-
-bool editor_map::can_undo() const
-{
-	return !undo_stack_.empty();
-}
-
-editor_action* editor_map::last_undo_action()
-{
-	return undo_stack_.empty() ? NULL : undo_stack_.back();
-}
-
-bool editor_map::can_redo() const
-{
-	return !redo_stack_.empty();
-}
-
-void editor_map::undo()
-{
-	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-	if (can_undo()) {
-		perform_action_between_stacks(undo_stack_, redo_stack_);
-		--actions_since_save_;
-	} else {
-		WRN_ED << "undo() called with an empty undo stack\n";
-	}
-	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-}
-
-void editor_map::redo()
-{
-	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-	if (can_redo()) {
-		perform_action_between_stacks(redo_stack_, undo_stack_);
-		++actions_since_save_;
-	} else {
-		WRN_ED << "redo() called with an empty redo stack\n";
-	}
-	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
-}
-
-void editor_map::trim_stack(action_stack& stack)
-{
-	if (stack.size() > max_action_stack_size_) {
-		delete stack.front();
-		stack.pop_front();
-	}
-}
-
-void editor_map::clear_stack(action_stack& stack)
-{
-	foreach (editor_action* a, stack) {
-		delete a;
-	}
-	stack.clear();
-}
-
-void editor_map::perform_action_between_stacks(action_stack& from, action_stack& to)
-{
-	assert(!from.empty());
-	editor_action* action = from.back();
-	from.pop_back();
-	editor_action* reverse_action = action->perform(*this);
-	to.push_back(reverse_action);
-	trim_stack(to);
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,

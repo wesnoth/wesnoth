@@ -17,6 +17,8 @@
 
 #include "action.hpp"
 #include "editor_common.hpp"
+#include "map_context.hpp"
+
 #include "../foreach.hpp"
 
 namespace editor2 {
@@ -29,55 +31,16 @@ std::string editor_action::get_description()
 	return "Unknown action";
 }
 
-editor_action* editor_action::perform(editor_map& map) const
+editor_action* editor_action::perform(map_context& mc) const
 {
-	editor_action* undo = new editor_action_whole_map(map);
-	perform_without_undo(map);
+	editor_action* undo = new editor_action_whole_map(mc.get_map());
+	perform_without_undo(mc);
 	return undo;
 }
 
-void draw_terrain(editor_map& map, t_translation::t_terrain terrain, 
-	const gamemap::location& loc, const bool one_layer_only = false)
-{
-    if (!one_layer_only) {
-        terrain = map.get_terrain_info(terrain).terrain_with_default_base();
-    }
-	t_translation::t_terrain old_terrain = map.get_terrain(loc);
-	if (terrain != old_terrain) {
-		if (terrain.base == t_translation::NO_LAYER) {
-			map.set_terrain(loc, terrain, gamemap::OVERLAY);
-		} else if (one_layer_only) {
-			map.set_terrain(loc, terrain, gamemap::BASE);
-		} else {
-			map.set_terrain(loc, terrain);
-		}
-	}
-}
-
-void draw_terrain(editor_map& map, t_translation::t_terrain terrain, 
-	const std::set<gamemap::location>& locs, const bool one_layer_only = false)
-{
-    if (!one_layer_only) {
-        terrain = map.get_terrain_info(terrain).terrain_with_default_base();
-    }
-	foreach (const gamemap::location& loc, locs) {
-		t_translation::t_terrain old_terrain = map.get_terrain(loc);
-		if (terrain != old_terrain) {
-			if (terrain.base == t_translation::NO_LAYER) {
-				map.set_terrain(loc, terrain, gamemap::OVERLAY);
-			} else if (one_layer_only) {
-				map.set_terrain(loc, terrain, gamemap::BASE);
-			} else {
-				map.set_terrain(loc, terrain);
-			}
-			map.add_changed_location(loc);
-		}
-	}
-}
-	
-void editor_action_whole_map::perform_without_undo(editor_map& map) const {
-	map = m_;
-	map.set_needs_reload();
+void editor_action_whole_map::perform_without_undo(map_context& mc) const {
+	mc.get_map() = m_;
+	mc.set_needs_reload();
 }
 
 editor_action_chain::~editor_action_chain()
@@ -86,18 +49,18 @@ editor_action_chain::~editor_action_chain()
 		delete a;
 	}
 }
-editor_action_chain* editor_action_chain::perform(editor_map& map) const {
+editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	std::vector<editor_action*> undo;
 	foreach (editor_action* a, actions_) {
-		undo.push_back(a->perform(map));
+		undo.push_back(a->perform(mc));
 	}
 	std::reverse(undo.begin(), undo.end());
 	return new editor_action_chain(undo);
 }
-void editor_action_chain::perform_without_undo(editor_map& map) const
+void editor_action_chain::perform_without_undo(map_context& mc) const
 {
     foreach (editor_action* a, actions_) {
-		a->perform_without_undo(map);
+		a->perform_without_undo(mc);
 	}
 }
 
@@ -106,147 +69,146 @@ bool editor_action_area::add_location(const gamemap::location& loc)
 	return area_.insert(loc).second;
 }
 
-editor_action_paste* editor_action_paste::perform(editor_map& map) const
+editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
-	map_fragment mf(map, paste_.get_offset_area(loc_));
+	map_fragment mf(mc.get_map(), paste_.get_offset_area(loc_));
 	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
-	perform_without_undo(map);
+	perform_without_undo(mc);
 	return undo;
 }
-void editor_action_paste::perform_without_undo(editor_map& map) const
+void editor_action_paste::perform_without_undo(map_context& mc) const
 {
-	paste_.paste_into(map, loc_);
-	map.add_changed_location(paste_.get_offset_area(loc_));
-	map.set_needs_terrain_rebuild();
+	paste_.paste_into(mc.get_map(), loc_);
+	mc.add_changed_location(paste_.get_offset_area(loc_));
+	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_paint_hex* editor_action_paint_hex::perform(editor_map& map) const
+editor_action_paint_hex* editor_action_paint_hex::perform(map_context& mc) const
 {
-	editor_action_paint_hex* undo = new editor_action_paint_hex(loc_, map.get_terrain(loc_));
-	perform_without_undo(map);
+	editor_action_paint_hex* undo = new editor_action_paint_hex(loc_, mc.get_map().get_terrain(loc_));
+	perform_without_undo(mc);
 	return undo;
 }
-void editor_action_paint_hex::perform_without_undo(editor_map& map) const
+void editor_action_paint_hex::perform_without_undo(map_context& mc) const
 {
-	draw_terrain(map, t_, loc_);
-	map.set_needs_terrain_rebuild();
+	mc.draw_terrain(t_, loc_);
+	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_paste* editor_action_paint_area::perform(editor_map& map) const
+editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
-	map_fragment mf(map, area_);
+	map_fragment mf(mc.get_map(), area_);
 	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
-	perform_without_undo(map);
+	perform_without_undo(mc);
 	return undo;
 }	
-void editor_action_paint_area::perform_without_undo(editor_map& map) const
+void editor_action_paint_area::perform_without_undo(map_context& mc) const
 {
-	draw_terrain(map, t_, area_);
-	map.add_changed_location(area_);
-	map.set_needs_terrain_rebuild();
+	mc.draw_terrain(t_, area_);
+	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_paint_area* editor_action_fill::perform(editor_map& map) const
+editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
-	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
-	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, map.get_terrain(loc_));
-	draw_terrain(map, t_, to_fill);
-	map.set_needs_terrain_rebuild();
+	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
+	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_));
+	mc.draw_terrain(t_, to_fill);
+	mc.set_needs_terrain_rebuild();
 	return undo;
 }
-void editor_action_fill::perform_without_undo(editor_map& map) const
+void editor_action_fill::perform_without_undo(map_context& mc) const
 {
-	std::set<gamemap::location> to_fill = map.get_contigious_terrain_tiles(loc_);
-	draw_terrain(map, t_, to_fill);
-	map.set_needs_terrain_rebuild();
+	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
+	mc.draw_terrain(t_, to_fill);
+	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_select_xor* editor_action_select_xor::perform(editor_map& map) const
+editor_action_select_xor* editor_action_select_xor::perform(map_context& mc) const
 {
-	perform_without_undo(map);
+	perform_without_undo(mc);
 	return new editor_action_select_xor(area_);
 }
 
-void editor_action_select_xor::perform_without_undo(editor_map& map) const
+void editor_action_select_xor::perform_without_undo(map_context& mc) const
 {
 	foreach (const gamemap::location& loc, area_) {
-		if (map.in_selection(loc)) {
-			map.remove_from_selection(loc);
+		if (mc.get_map().in_selection(loc)) {
+			mc.get_map().remove_from_selection(loc);
 		} else {
-			map.add_to_selection(loc);
+			mc.get_map().add_to_selection(loc);
 		}
-		map.add_changed_location(loc);
+		mc.add_changed_location(loc);
 	}
 }
 
-editor_action_select_xor* editor_action_select::perform(editor_map& map) const
+editor_action_select_xor* editor_action_select::perform(map_context& mc) const
 {
 	std::set<gamemap::location> undo_locs;
 	foreach (const gamemap::location& loc, area_) {
-		if (!map.in_selection(loc)) {
+		if (!mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
-			map.add_changed_location(loc);
+			mc.add_changed_location(loc);
 		}
 	}
-	perform_without_undo(map);
+	perform_without_undo(mc);
 	return new editor_action_select_xor(undo_locs);
 }
-void editor_action_select::perform_without_undo(editor_map& map) const
+void editor_action_select::perform_without_undo(map_context& mc) const
 {
 	foreach (const gamemap::location& loc, area_) {
-		map.add_to_selection(loc);
-		map.add_changed_location(loc);
+		mc.get_map().add_to_selection(loc);
+		mc.add_changed_location(loc);
 	}
 }
 
-editor_action_select_xor* editor_action_deselect::perform(editor_map& map) const
+editor_action_select_xor* editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<gamemap::location> undo_locs;
 	foreach (const gamemap::location& loc, area_) {
-		if (map.in_selection(loc)) {
+		if (mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
-			map.add_changed_location(loc);
+			mc.add_changed_location(loc);
 		}
 	}
-	perform_without_undo(map);
+	perform_without_undo(mc);
 	return new editor_action_select_xor(undo_locs);
 }
-void editor_action_deselect::perform_without_undo(editor_map& map) const
+void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
 	foreach (const gamemap::location& loc, area_) {
-		map.remove_from_selection(loc);
-		map.add_changed_location(loc);
+		mc.get_map().remove_from_selection(loc);
+		mc.add_changed_location(loc);
 	}
 }
 
-void editor_action_resize_map::perform_without_undo(editor_map& map) const
+void editor_action_resize_map::perform_without_undo(map_context& mc) const
 {
-	map.resize(x_size_, y_size_, x_offset_, y_offset_);
-	map.set_needs_reload();
+	mc.get_map().resize(x_size_, y_size_, x_offset_, y_offset_);
+	mc.set_needs_reload();
 }
 
-void editor_action_rotate_map::perform_without_undo(editor_map& /*map*/) const
+void editor_action_rotate_map::perform_without_undo(map_context& /*mc*/) const
 {
 	throw editor_action_not_implemented();
 }
 
-void editor_action_flip_x::perform_without_undo(editor_map& map) const
+void editor_action_flip_x::perform_without_undo(map_context& mc) const
 {
-	map.flip_x();
-	map.set_needs_reload();
+	mc.get_map().flip_x();
+	mc.set_needs_reload();
 }
 
-void editor_action_flip_y::perform_without_undo(editor_map& map) const
+void editor_action_flip_y::perform_without_undo(map_context& mc) const
 {
-	map.flip_y();
-	map.set_needs_reload();
+	mc.get_map().flip_y();
+	mc.set_needs_reload();
 }
 
-editor_action_paste* editor_action_plot_route::perform(editor_map& /*map*/) const
+editor_action_paste* editor_action_plot_route::perform(map_context& /*mc*/) const
 {
 	throw editor_action_not_implemented();
 }
-void editor_action_plot_route::perform_without_undo(editor_map& /*map*/) const
+void editor_action_plot_route::perform_without_undo(map_context& /*mc*/) const
 {
 	throw editor_action_not_implemented();
 }

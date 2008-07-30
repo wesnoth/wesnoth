@@ -21,6 +21,7 @@
 #include "action_base.hpp"
 #include "editor_map.hpp"
 #include "map_fragment.hpp"
+
 #include "../map.hpp"
 #include "../terrain.hpp"
 
@@ -34,11 +35,11 @@ namespace editor2 {
 class editor_action_whole_map : public editor_action
 {
     public:
-        editor_action_whole_map(editor_map& m)
+        editor_action_whole_map(const editor_map& m)
         : m_(m)
         {
         }
-        void perform_without_undo(editor_map& m) const;
+        void perform_without_undo(map_context& m) const;
     protected:
         editor_map m_;
 };
@@ -54,8 +55,8 @@ class editor_action_chain : public editor_action
 		{
 		}
 		~editor_action_chain();
-		editor_action_chain* perform(editor_map& m) const;
-	    void perform_without_undo(editor_map& m) const;
+		editor_action_chain* perform(map_context& m) const;
+	    void perform_without_undo(map_context& m) const;
     protected:
         std::vector<editor_action*> actions_;
 };
@@ -109,8 +110,8 @@ class editor_action_paste : public editor_action_location
         : editor_action_location(loc), paste_(paste)
         {
         }
-        editor_action_paste* perform(editor_map& map) const;
-        void perform_without_undo(editor_map& map) const;
+        editor_action_paste* perform(map_context& mc) const;
+        void perform_without_undo(map_context& mc) const;
     protected:
         map_fragment paste_;
 };
@@ -124,8 +125,8 @@ class editor_action_paint_hex : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t)
         {
         }
-        editor_action_paint_hex* perform(editor_map& m) const;            
-        void perform_without_undo(editor_map& map) const;
+        editor_action_paint_hex* perform(map_context& mc) const;            
+        void perform_without_undo(map_context& mc) const;
 };
 
 class editor_action_paint_area : public editor_action_area
@@ -136,8 +137,8 @@ class editor_action_paint_area : public editor_action_area
         : editor_action_area(area), t_(t)
         {
         }
-        editor_action_paste* perform(editor_map& map) const;
-        void perform_without_undo(editor_map& map) const;
+        editor_action_paste* perform(map_context& mc) const;
+        void perform_without_undo(map_context& mc) const;
     protected:
 		t_translation::t_terrain t_;
 };
@@ -151,8 +152,8 @@ class editor_action_fill : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t)
         {
         }
-        editor_action_paint_area* perform(editor_map& map) const;
-        void perform_without_undo(editor_map& map) const;
+        editor_action_paint_area* perform(map_context& mc) const;
+        void perform_without_undo(map_context& mc) const;
 };
 
 class editor_action_select_xor : public editor_action_area
@@ -162,8 +163,8 @@ class editor_action_select_xor : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
-		editor_action_select_xor* perform(editor_map& map) const;
-		void perform_without_undo(editor_map& map) const;
+		editor_action_select_xor* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 };
 
 class editor_action_select : public editor_action_area
@@ -173,8 +174,8 @@ class editor_action_select : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
-		editor_action_select_xor* perform(editor_map& map) const;
-		void perform_without_undo(editor_map& map) const;
+		editor_action_select_xor* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 };
 
 class editor_action_deselect : public editor_action_area
@@ -184,8 +185,8 @@ class editor_action_deselect : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
-		editor_action_select_xor* perform(editor_map& map) const;
-		void perform_without_undo(editor_map& map) const;
+		editor_action_select_xor* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 };
 
 //resize map (streching / clipping behaviour?)
@@ -196,7 +197,7 @@ class editor_action_resize_map : public editor_action
 		: x_size_(x_size), y_size_(y_size), x_offset_(x_offset), y_offset_(y_offset)
 		{
 		}
-		void perform_without_undo(editor_map& map) const;
+		void perform_without_undo(map_context& mc) const;
 	protected:
 		int x_size_;
 		int y_size_;
@@ -212,8 +213,8 @@ class editor_action_rotate_map : public editor_action
 		: angle_(angle)
 		{
 		}
-		editor_action_rotate_map* perform(editor_map& map) const;
-		void perform_without_undo(editor_map& map) const;
+		editor_action_rotate_map* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 	protected:
 		int angle_;
 };
@@ -224,7 +225,7 @@ class editor_action_flip_x : public editor_action
 		editor_action_flip_x()
 		{
 		}
-		void perform_without_undo(editor_map& map) const;
+		void perform_without_undo(map_context& mc) const;
 };
 
 class editor_action_flip_y : public editor_action
@@ -233,7 +234,7 @@ class editor_action_flip_y : public editor_action
 		editor_action_flip_y()
 		{
 		}
-		void perform_without_undo(editor_map& map) const;
+		void perform_without_undo(map_context& mc) const;
 		bool require_map_reload() { return true; }
 };
 
@@ -247,8 +248,8 @@ class editor_action_plot_route : public editor_action_location_terrain
 		, loc2_(l2)
 		{
 		}
-		editor_action_paste* perform(editor_map& map) const;
-		void perform_without_undo(editor_map& map) const;
+		editor_action_paste* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 	protected:
 		gamemap::location loc2_;
 };
