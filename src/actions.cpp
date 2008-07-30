@@ -801,8 +801,7 @@ void attack::fire_event(const std::string& n)
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
-	a_ = units_.find(attacker_);
-	d_ = units_.find(defender_);
+	refresh_bc();
 	/**
 	 * @todo FIXME: If the event removes this attack, we should stop attacking.
 	 * The previous code checked if 'attack_with' and 'defend_with'
@@ -895,6 +894,11 @@ attack::attack(game_display& gui, const gamemap& map,
 	const events::command_disabler disable_commands;
 
 	if(a_ == units_.end() || d_ == units_.end()) {
+		// Fix pointers to weapons
+		if (a_ != units_.end())
+			const_cast<battle_context::unit_stats*>(a_stats_)->weapon = &a_->second.attacks()[attack_with_];	
+		if (d_ != units_.end())
+			const_cast<battle_context::unit_stats*>(d_stats_)->weapon = &d_->second.attacks()[defend_with_];	
 		return;
 	}
 
