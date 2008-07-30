@@ -973,6 +973,12 @@ std::string addon_version_info::str(void)
 //
 // error: class ‘addon_version_info’ does not have any field named ‘gnu_dev_major
 // error: class ‘addon_version_info’ does not have any field named ‘gnu_dev_minor
+//
+// This is because "major" and "minor" are defined as compatibility macros in
+// sys/sysmacros.h. I guess it is safe to just use this workaround instead of
+// renaming these fields, since the only ambiguous case seems to be in initializer
+// lists.
+//
 #ifdef major
 	#undef major
 #endif
