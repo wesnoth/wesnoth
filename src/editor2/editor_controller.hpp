@@ -73,6 +73,7 @@ class editor_controller : public controller_base,
 		bool save_map_as(const std::string& filename);
 		void new_map(int width, int height, t_translation::t_terrain fill);
 		void load_map(const std::string& filename);
+		void revert_map();
 		void set_map(const editor_map& map);
 		void reload_map();
 				

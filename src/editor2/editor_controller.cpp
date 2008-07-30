@@ -246,6 +246,16 @@ void editor_controller::load_map(const std::string& filename)
 	}
 }
 
+void editor_controller::revert_map()
+{
+	const std::string& filename = get_map_context().get_filename();
+	if (filename.empty()) {
+		ERR_ED << "Empty filename in map revert\n";
+		return;
+	}
+	load_map(filename);
+}
+
 void editor_controller::new_map(int width, int height, t_translation::t_terrain fill)
 {
 	set_map(editor_map(game_config_, width, height, fill));
@@ -299,8 +309,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
+			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
-			return true; //TODO only when the map was modified
+			return !get_map_context().get_filename().empty();
+			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
@@ -312,7 +324,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SELECTION_FLIP:
 		case HOTKEY_EDITOR_SELECTION_GENERATE:
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-			return true; //TODO require nonempty selection
+			return !get_map().selection().empty();
 		case HOTKEY_EDITOR_PASTE:
 			return !clipboard_.empty();
 		case HOTKEY_EDITOR_SELECT_ALL:		
@@ -388,6 +400,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			}
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_REVERT:
+			revert_map();
 			return true;
 		case HOTKEY_EDITOR_MAP_NEW:
 			new_map_dialog();
