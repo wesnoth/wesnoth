@@ -828,6 +828,12 @@ void attack::refresh_bc()
 	a_ = units_.find(attacker_);
 	d_ = units_.find(defender_);
 	if(a_ == units_.end() || d_ == units_.end()) {
+		// Fix pointers to weapons
+		if (a_ != units_.end())
+			const_cast<battle_context::unit_stats*>(a_stats_)->weapon = &a_->second.attacks()[attack_with_];
+		
+		if (d_ != units_.end())
+			const_cast<battle_context::unit_stats*>(d_stats_)->weapon = &d_->second.attacks()[defend_with_];
 		return;
 	}
 	*bc_ =	battle_context(map_, teams_, units_, state_, attacker_, defender_, attack_with_, defend_with_);
