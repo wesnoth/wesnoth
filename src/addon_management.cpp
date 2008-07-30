@@ -924,14 +924,12 @@ void manage_addons(game_display& disp)
 	}
 }
 
-#if 1
-
 bool operator>(const addon_version_info& l, const addon_version_info& r)
 {
 	if((!r.sane) || (!l.sane))
 		throw addon_version_info_not_sane_exception();
 
-	return (l.major > r.major || (l.major == r.major && (l.minor > r.minor || (l.minor == r.minor && l.revision > r.revision))));
+	return (l.vmajor > r.vmajor || (l.vmajor == r.vmajor && (l.vminor > r.vminor || (l.vminor == r.vminor && l.revision > r.revision))));
 }
 
 bool operator<(const addon_version_info& l, const addon_version_info& r)
@@ -939,7 +937,7 @@ bool operator<(const addon_version_info& l, const addon_version_info& r)
 	if((!r.sane) || (!l.sane))
 		throw addon_version_info_not_sane_exception();
 
-	return (l.major < r.major || (l.major == r.major && (l.minor < r.minor || (l.minor == r.minor && l.revision < r.revision))));
+	return (l.vmajor < r.vmajor || (l.vmajor == r.vmajor && (l.vminor < r.vminor || (l.vminor == r.vminor && l.revision < r.revision))));
 }
 
 bool operator>=(const addon_version_info& l, const addon_version_info& r)
@@ -964,33 +962,15 @@ std::string addon_version_info::str(void)
 		throw addon_version_info_not_sane_exception();
 
 	std::ostringstream out;
-	out << major << '.' << minor << '.' << revision;
+	out << vmajor << '.' << vminor << '.' << revision;
 	return out.str();
 }
-
-// FIXME: required to remove following compile-time errors regarding
-//        the addon_version_info constructors in GCC 4.2.1:
-//
-// error: class ‘addon_version_info’ does not have any field named ‘gnu_dev_major
-// error: class ‘addon_version_info’ does not have any field named ‘gnu_dev_minor
-//
-// This is because "major" and "minor" are defined as compatibility macros in
-// sys/sysmacros.h. I guess it is safe to just use this workaround instead of
-// renaming these fields, since the only ambiguous case seems to be in initializer
-// lists.
-//
-#ifdef major
-	#undef major
-#endif
-#ifdef minor
-	#undef minor
-#endif
 
 addon_version_info& addon_version_info::operator=(const addon_version_info& o)
 {
 	if(this != &o) {
-		this->major = o.major;
-		this->minor = o.minor;
+		this->vmajor = o.vmajor;
+		this->vminor = o.vminor;
 		this->revision = o.revision;
 		// copy o's insanity too
 		this->sane = o.sane;
@@ -999,7 +979,7 @@ addon_version_info& addon_version_info::operator=(const addon_version_info& o)
 }
 
 addon_version_info::addon_version_info()
-	: major(0), minor(0), revision(0), sane(true)
+	: vmajor(0), vminor(0), revision(0), sane(true)
 {
 }
 
@@ -1008,31 +988,27 @@ addon_version_info::addon_version_info(const std::string& src_str)
 	if(src_str.empty() != true) {
 		const std::vector<std::string> components = utils::split(src_str, '.');
 		if(components.size() != 3) {
-			major = minor = revision = 0;
+			vmajor = vminor = revision = 0;
 			sane = false;
 		} else {
 			try {
-				major    = lexical_cast<unsigned>(components[0]);
-				minor    = lexical_cast<unsigned>(components[1]);
+				vmajor    = lexical_cast<unsigned>(components[0]);
+				vminor    = lexical_cast<unsigned>(components[1]);
 				revision = lexical_cast<unsigned>(components[2]);
 				sane     = true;
 			} catch(bad_lexical_cast const&)  {
-				major = minor = revision = 0;
+				vmajor = vminor = revision = 0;
 				sane = false;
 			}
 		}
 	} else {
-		major = minor = revision = 0;
+		vmajor = vminor = revision = 0;
 		sane = false;
 	}
 }
 
 addon_version_info::addon_version_info(const addon_version_info& src_struct)
-	: major(src_struct.major), minor(src_struct.minor),
+	: vmajor(src_struct.vmajor), vminor(src_struct.vminor),
 	  revision(src_struct.revision), sane(src_struct.sane)
 {
 }
-
-#endif
-
-

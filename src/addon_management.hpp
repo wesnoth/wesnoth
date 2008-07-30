@@ -83,15 +83,15 @@ struct addon_version_info
 	//! constructing the object.
 	operator bool() { return this->sane; }
 	
-	unsigned major;		//!< Major (leading) version number.
-	unsigned minor;		//!< Minor (middle) version number.
-	unsigned revision;	//!< Revision (trailing) version number.
-	bool sane;			//!< Sanity flag.
+	unsigned vmajor;		//!< Major (leading) version number.
+	unsigned vminor;		//!< Minor (middle) version number.
+	unsigned revision;		//!< Revision (trailing) version number.
+	bool sane;				//!< Sanity flag.
 };
 
 //! Equality operator for addon_version_info.
 inline bool operator==(const addon_version_info& l, const addon_version_info& r) {
-	return(l.sane && r.sane && l.major == r.major && l.minor == r.minor &&
+	return(l.sane && r.sane && l.vmajor == r.vmajor && l.vminor == r.vminor &&
 	       l.revision == r.revision);
 }
 //! Inequality operator for addon_version_info.
