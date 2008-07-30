@@ -59,6 +59,7 @@ struct wesnoth_global_fixture {
 	}
 	~wesnoth_global_fixture() 
 	{
+		SDL_Quit();
 	}
 };
 

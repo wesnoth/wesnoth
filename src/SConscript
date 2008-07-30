@@ -341,6 +341,7 @@ test_sources = Split("""
     tests/test_util.cpp
     tests/test_network_worker.cpp
 	tests/test_save_dialog.cpp
+    tests/test_team.cpp
     """)
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth,libtest_utils], have_test_prereqs)
 #Export("test")
