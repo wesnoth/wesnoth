@@ -640,7 +640,7 @@ namespace {
 				//add negative sizes to reverse the sort order
 				sizes.push_back(-atoi(size.c_str()));
 				
-				std::string icon;
+				std::string icon = c["icon"];
 				if(icon.find("units/") != std::string::npos &&
 				   icon.find_first_of('~') == std::string::npos) {
 					//a hack to prevent magenta icons, because they look awful
