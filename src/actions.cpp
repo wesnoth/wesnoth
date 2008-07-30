@@ -769,12 +769,7 @@ void attack::fire_event(const std::string& n)
 			config *tempcfg = dat.child("second");
 			t_string d_weap = "none";
 			if(d_stats_->weapon != NULL) {
-				if(a_ != units_.end()) {
-					d_weap = d_stats_->weapon->id();
-				} else {
-					// The weapon choice will be invalid since the attacker was removed
-					d_weap = "invalid";
-				}
+				d_weap = d_stats_->weapon->id();
 			}
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
@@ -894,11 +889,6 @@ attack::attack(game_display& gui, const gamemap& map,
 	const events::command_disabler disable_commands;
 
 	if(a_ == units_.end() || d_ == units_.end()) {
-		// Fix pointers to weapons
-		if (a_ != units_.end())
-			const_cast<battle_context::unit_stats*>(a_stats_)->weapon = &a_->second.attacks()[attack_with_];	
-		if (d_ != units_.end())
-			const_cast<battle_context::unit_stats*>(d_stats_)->weapon = &d_->second.attacks()[defend_with_];	
 		return;
 	}
 
