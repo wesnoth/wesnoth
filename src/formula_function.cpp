@@ -266,19 +266,27 @@ private:
 class debug_print_function : public function_expression {
 public:
 	explicit debug_print_function(const args_list& args)
-	     : function_expression("debug_print", args, 1, 1)
+	     : function_expression("debug_print", args, 1, 2)
 	{}
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const variant var = args()[0]->evaluate(variables);
+		const variant var1 = args()[0]->evaluate(variables);
 
-		std::string str;
+		std::string str1,str2;
 
-		var.serialize_to_string(str);
-		std::cerr<< str << std::endl;
-
-		return var;
+		if( args().size() == 1)
+		{
+			var1.serialize_to_string(str1);
+			std::cout<< str1 << std::endl;
+			return var1;
+		} else {
+			str1 = var1.string_cast();
+			const variant var2 = args()[1]->evaluate(variables);
+			var2.serialize_to_string(str2);
+			std::cout<< str1 << str2 << std::endl;
+			return var2;
+		}
 	}
 };
 
