@@ -1577,6 +1577,10 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_side")
 	{
+		return variant(new team_callable((*get_info().state.teams)[get_info().team_num-1]));
+	
+	} else if(key == "my_side_number")
+	{
 		return variant(get_info().team_num-1);
 
 	} else if(key == "teams")
