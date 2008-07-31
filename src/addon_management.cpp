@@ -697,7 +697,8 @@ namespace {
 		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
 		if(!scripts.empty()) {
 			WRN_CFG << "downloaded addon '" << addon_title << "' has unchecked scripts\n";
-			warning += "\nUnchecked script files found:";
+			warning += "\n";
+			warning += _("Unchecked script files found:");
 			foreach(const config* i, scripts)
 				warning += "\n" + (*i)["name"];
 		}
