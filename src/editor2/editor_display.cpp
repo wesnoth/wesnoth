@@ -64,7 +64,7 @@ void editor_display::pre_draw()
 
 image::TYPE editor_display::get_image_type(const gamemap::location& loc)
 {
-    if(loc == mouseoverHex_ && map_.on_board_with_border(mouseoverHex_)) {
+    if(brush_locations_.empty() && loc == mouseoverHex_ && map_.on_board_with_border(mouseoverHex_)) {
         return image::BRIGHTENED;
 	} else if (brush_locations_.find(loc) != brush_locations_.end()) {
         return image::BRIGHTENED;

@@ -585,16 +585,13 @@ mouse_action* editor_controller::get_mouse_action()
 
 void editor_controller::refresh_after_action(bool drag_part)
 {
-	std::cerr<<__FUNCTION__<<get_map_context().changed_locations().size()<<"\n";
 	if (get_map_context().needs_reload()) {
-		std::cerr<<"reload\n";
 		reload_map();
 		get_map_context().set_needs_reload(false);
 		get_map_context().set_needs_terrain_rebuild(false);
 		get_map_context().clear_changed_locations();
 	} else if (get_map_context().needs_terrain_rebuild()) {
 		if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
-			std::cerr<<"rebuild all\n";
 			gui().rebuild_all();
 			gui().invalidate_all();	
 			get_map_context().set_needs_terrain_rebuild(false);
@@ -605,7 +602,6 @@ void editor_controller::refresh_after_action(bool drag_part)
 			gui().invalidate(get_map_context().changed_locations());
 		}
 	} else {
-		std::cerr<<"invalidate\n";
 		if (get_map_context().everything_changed()) {
 			gui().invalidate_all();
 		} else {
@@ -672,6 +668,7 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 			get_mouse_action()->move(*gui_, x, y);
 		}
 	}
+	gui().highlight_hex(hex_clicked);
 }
 
 bool editor_controller::left_click(int x, int y, const bool browse)
