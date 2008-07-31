@@ -100,6 +100,22 @@ def map_units_average_defense(ai*, units_list, terrain_min_percent)
 		) 
 	);
 
+def units_average_defense(ai*, units_list, terrain_min_percent)
+	sum(
+		map( 
+			units_list, 'unit', 
+			unit_average_defense(
+				ai, 
+				unit, 
+				terrain_min_percent 
+			) 
+		) 
+	) /
+	size(
+		units_list
+	);
+
+
 # ==2== TODO: evaluate unit effectivness based on movement points and movement cost#
 
 
@@ -222,7 +238,7 @@ def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 	);
 
 def evaluate_defender_against_opponents(ai*, unit, enemy_units)
-	sum( 
+	-sum( 
 		map( 
 			enemy_units, 'enemy_unit', 
 			sum(
@@ -232,8 +248,8 @@ def evaluate_defender_against_opponents(ai*, unit, enemy_units)
 					],
 					max(
 						[
-							self[2] - self[0],
-							self[3] - self[1]
+							self[0] - self[2],
+							self[1] - self[3]
 						]
 					)
 				)
@@ -287,13 +303,6 @@ def evaluate_my_recruits_as_attackers(ai*)
 		)
 	);
 
-def evaluate_attackers(ai*)
-	change_numbers_to_percents( 
-		make_positive_only(
-			evaluate_my_recruits_as_attackers( ai )
-		)
-	);
-
 def evaluate_my_recruits_as_defenders(ai*)
 	tomap(
 		map(
@@ -318,29 +327,6 @@ def evaluate_my_recruits_as_defenders(ai*)
 		)
 	);
 
-def evaluate_defenders(ai*)
-	map(
-		map(
-			change_numbers_to_percents(
-				make_positive_only(
-					evaluate_my_recruits_as_defenders(ai)
-				)
-			),
-			(
-				value * 2
-			) / 3
-		), 
-		value +
-		map(
-			change_numbers_to_percents(
-				units_hp_map(
-					ai,
-					my_recruits
-				)
-			),
-		value / 3
-		)[key]
-	);
 
 # === 2 ===  now consider abilities and weapon specials  #
 
@@ -348,7 +334,7 @@ def abilities_weights()
 	['skirmisher' -> 15, 'ambush' -> 10, 'nightstalk' -> 20, 'regenerates' -> 20, 'healing' -> 15, 'curing' -> 10, 'leadership' -> 20, 'illumination' -> 15, 'teleport' -> 10, 'steadfast' -> 15 ];
 
 def weapon_specials_weights()
-	[ 'backstab' -> 20 ,'slow' -> 10 ,'berserk' -> 20 ,'stones' -> 60 ,'plague' -> 10 ,'marksman' -> 30 ,'magical' -> 50 ,'charge' -> 30 ,'drains' -> 30,  'firststrike' -> 10, 'poison' -> 25 ];
+	[ 'backstab' -> 20 ,'slow' -> 10 ,'berserk' -> 20 ,'stones' -> 60 ,'plague' -> 10 ,'marksman' -> 30 ,'magical' -> 40 ,'charge' -> 30 ,'drains' -> 30,  'firststrike' -> 10, 'poison' -> 25 ];
 
 def apply_abilities_weights( units_map )
 	map( 
@@ -374,7 +360,7 @@ def apply_weapon_specials_weights( units_map )
 			max(
 				map(
 					get_unit_type( key ).attacks, 'attack',
-					weapon_specials_weights()[attack.special]
+					vars.weapon_specials[attack.special]
 				)
 			)
 		) / 100
@@ -392,19 +378,64 @@ def undead_malus( units_map )
 		)
 	);
 
+# === 3 ===  pit 1 and 2 together  #
+
+def evaluate_attackers(ai*)
+	change_numbers_to_percents(
+		apply_abilities_weights(
+			apply_weapon_specials_weights(
+				undead_malus( 
+					make_positive_only(
+						evaluate_my_recruits_as_attackers( ai )	
+					)
+				)
+			)
+		)
+	);
+
+def evaluate_defenders(ai*)
+	map(
+		map(
+			change_numbers_to_percents(
+				apply_abilities_weights(
+					apply_weapon_specials_weights(
+						undead_malus( 
+							make_positive_only(
+								evaluate_my_recruits_as_defenders( ai )	
+							)
+						)
+					)
+				)
+			),
+			(
+				value * 2
+			) / 3
+		), 
+		value +
+		map(
+			change_numbers_to_percents(
+				units_hp_map(
+					ai,
+					my_recruits
+				)
+			),
+		value / 3
+		)[key]
+	);
+
 	#=========== we have evaluation of game state and units, time to combine them: ==========#
 		#=========	recruitment_list_builder	=========#
 
-def rlb_apply_eval(eval, attackers_map, defenders_map)
+def rlb_apply_eval(eval, attackers_map, defenders_map, offset)
 	map(
 		sumarize_maps_values(
 			map(
 				attackers_map, 
-				value * eval
+				value * (eval+offset)
 			),
 			map(
 				defenders_map,
-				value * ( 100 - eval )
+				value * ( (100 - eval) - offset )
 			)
 		),
 		value / 100
@@ -421,12 +452,13 @@ def rlb_remove_lowest( input_map, percent)
 		)
 	);
 
-def rlb_first_step(eval, attackers_map, defenders_map)
+def rlb_first_step(eval, attackers_map, defenders_map, offset)
 	rlb_remove_lowest(
 		rlb_apply_eval(
 			eval,
 			attackers_map,
-			defenders_map
+			defenders_map,
+			offset
 		),
 		10
 	);
@@ -436,7 +468,8 @@ def recruitment_list_builder(eval, attackers_map, defenders_map)
 		rlb_first_step(
 			eval,
 			attackers_map,
-			defenders_map
+			defenders_map,
+			40
 		),
 		(
 			(
@@ -446,7 +479,8 @@ def recruitment_list_builder(eval, attackers_map, defenders_map)
 				rlb_first_step(
 					eval,
 					attackers_map,
-					defenders_map
+					defenders_map,
+					40
 				)
 			)
 		)
@@ -464,7 +498,7 @@ def unit_chooser(ai*,unit_map)
 				size(
 					filter(
 						my_units, 
-						type = unit_type
+						id = unit_type
 					)
 				)
 			) / 
@@ -474,12 +508,45 @@ def unit_chooser(ai*,unit_map)
 
 		# ==========	Main formula section 	========== #
 
+def initialize_weapon_specials_map(ai*)
+	if(vars.weapon_specials_init != turn,
+		[
+			set_var('weapon_specials_init', turn),
+			set_var('weapon_specials',
+				map(
+					weapon_specials_weights(),
+					if( key = 'magical',
+						units_average_defense(ai, enemy_units, 10),
+						if( key = 'marksman',
+							units_average_defense(ai, enemy_units, 10) - 10,
+							value
+						)
+					)
+				)
+			)
+		],
+		[]
+	);
+
 
 if(my_leader.loc = loc(11,23),
 	if( teams[my_side].gold>20,
-		recruit(unit_chooser(self,recruitment_list_builder(eval(self),apply_abilities_weights(apply_weapon_specials_weights(debug_print(evaluate_attackers(self)))),apply_abilities_weights(apply_weapon_specials_weights(evaluate_defenders(self)))))),
-		fallback('human') ), 
+		initialize_weapon_specials_map(self) +
+		[
+			recruit(
+				unit_chooser(
+					self,
+					recruitment_list_builder(
+						eval(self),
+						evaluate_attackers(self),
+						evaluate_defenders(self)
+					)
+				)
+			)
+		],
+		fallback('ai') 
+	),
 	if(vars.check = turn, 
-		[set_var('check', 0), fallback('human')], 
+		[set_var('check', 0), fallback('ai')], 
 		[set_var('check', turn), move(my_leader.loc, nearest_keep(my_leader.loc))])
 )
