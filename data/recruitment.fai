@@ -506,6 +506,11 @@ def unit_chooser(ai*,unit_map)
 		)
 	);
 
+def unit_map_cost_filter(ai*, unit_map)
+	filter( unit_map,
+		get_unit_type(key).cost < my_side.gold
+	);
+
 		# ==========	Main formula section 	========== #
 
 def initialize_weapon_specials_map(ai*)
@@ -545,15 +550,21 @@ def create_recruits_map(ai*)
 
 if(vars.turn_initialized = turn,
 	if(my_leader.loc = loc(11,23),
-		if( debug_print('Najtanszy rekrut: ', choose(
-				vars.recruits_map,
-				-key.cost
-			)).key.cost <
+		if( 
+			get_unit_type(
+				choose(
+					vars.recruits_map,
+					-get_unit_type(key).cost
+				).key
+			).cost <
 			my_side.gold,
 			recruit(
 				unit_chooser(
 					self,
-					vars.recruits_map
+					unit_map_cost_filter(
+						self,
+						vars.recruits_map
+					)
 				)
 			),
 			fallback('') 
