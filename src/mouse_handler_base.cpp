@@ -120,6 +120,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			left_drag_end(event.x, event.y, browse);
 		}
 		dragging_started_= false;
+		left_mouse_up(event.x, event.y, browse);
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
@@ -219,6 +220,10 @@ bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 void mouse_handler_base::left_drag_end(int x, int y, const bool browse)
 {
 	left_click(x, y, browse);
+}
+
+void mouse_handler_base::left_mouse_up(int x, int y, const bool browse)
+{
 }
 
 

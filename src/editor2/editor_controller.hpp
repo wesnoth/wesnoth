@@ -82,6 +82,7 @@ class editor_controller : public controller_base,
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
 		void expand_starting_position_menu(std::vector<std::string>& items);
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
+		
 		void cycle_brush();
 		void preferences();
 		void toggle_grid();
@@ -98,6 +99,7 @@ class editor_controller : public controller_base,
 		const editor_display& gui() const { return *gui_; }
 		bool left_click(int x, int y, const bool browse);
 		void left_drag_end(int x, int y, const bool browse);
+		void left_mouse_up(int x, int y, const bool browse);
 		
 	protected:
 		mouse_handler_base& get_mouse_handler_base();
@@ -109,7 +111,7 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
 		
-		void refresh_after_action();
+		void refresh_after_action(bool drag_part = false);
 		
 		void refresh_all();
 		
@@ -148,6 +150,8 @@ class editor_controller : public controller_base,
 		t_translation::t_terrain foreground_terrain_;
 		t_translation::t_terrain background_terrain_;		
 		map_fragment clipboard_;
+		
+		bool auto_update_transitions_;
 };
 
 } //end namespace editor2

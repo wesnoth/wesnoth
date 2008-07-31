@@ -73,6 +73,8 @@ public:
 	
 	virtual void left_drag_end(int x, int y, const bool browse);
 	
+	virtual void left_mouse_up(int x, int y, const bool browse);
+	
 	virtual bool right_click(int x, int y, const bool browse);
 	
 	/**

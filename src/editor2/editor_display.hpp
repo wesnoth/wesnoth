@@ -32,7 +32,7 @@ public:
 	void clear_brush_locs();
 	void remove_brush_loc(const gamemap::location& hex);
 	const editor_map& map() const { return static_cast<const editor_map&>(map_); }
-
+	void rebuild_terrain(const gamemap::location &loc);
 protected:
 	void pre_draw();
 	/**

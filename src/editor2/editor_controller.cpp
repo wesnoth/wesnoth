@@ -43,6 +43,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 , mouse_handler_base(get_map())
 , map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
+, auto_update_transitions_(true)
 {
 	init(video);
 	floating_label_manager_ = new font::floating_label_context();
@@ -350,8 +351,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
-//		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+			return auto_update_transitions_ ? ACTION_ON : ACTION_OFF;
 		default:
 			return command_executor::get_action_state(command);
 	}
@@ -429,6 +432,19 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			save_map_as_dialog();
 			return true;
+		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+			auto_update_transitions_ = !auto_update_transitions_;
+			if (!auto_update_transitions_) {
+				return true;
+			} // else intentionally fall through
+		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
+			refresh_all();
+			return true;
+			break;
+		case HOTKEY_EDITOR_REFRESH:
+			reload_map();
+			return true;
+			break;
 		default:
 			return controller_base::execute_command(command, index);
 	}
@@ -567,27 +583,36 @@ mouse_action* editor_controller::get_mouse_action()
 }
 
 
-void editor_controller::refresh_after_action()
+void editor_controller::refresh_after_action(bool drag_part)
 {
-	//TODO rebuild and ivalidate only what's really needed
+	std::cerr<<__FUNCTION__<<get_map_context().changed_locations().size()<<"\n";
 	if (get_map_context().needs_reload()) {
+		std::cerr<<"reload\n";
 		reload_map();
 		get_map_context().set_needs_reload(false);
 		get_map_context().set_needs_terrain_rebuild(false);
 		get_map_context().clear_changed_locations();
 	} else if (get_map_context().needs_terrain_rebuild()) {
-		gui().rebuild_all();
-		gui().invalidate_all();	
-		get_map_context().set_needs_terrain_rebuild(false);
-		get_map_context().clear_changed_locations();
+		if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
+			std::cerr<<"rebuild all\n";
+			gui().rebuild_all();
+			gui().invalidate_all();	
+			get_map_context().set_needs_terrain_rebuild(false);
+		} else {
+			foreach (const gamemap::location& loc, get_map_context().changed_locations()) {
+				gui().rebuild_terrain(loc);
+			}
+			gui().invalidate(get_map_context().changed_locations());
+		}
 	} else {
+		std::cerr<<"invalidate\n";
 		if (get_map_context().everything_changed()) {
 			gui().invalidate_all();
 		} else {
 			gui().invalidate(get_map_context().changed_locations());
 		}
-		get_map_context().clear_changed_locations();
 	}
+	get_map_context().clear_changed_locations();
 	gui().recalculate_minimap();
 }
 
@@ -636,7 +661,7 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 				} else {
 					get_map_context().perform_action(*a);
 				}
-				refresh_after_action();
+				refresh_after_action(true);
 				delete a;
 			}
 		} else {
@@ -661,7 +686,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		editor_action* a = get_mouse_action()->click(*gui_, x, y);
 		if (a != NULL) {
 			get_map_context().perform_action(*a);
-			refresh_after_action();
+			refresh_after_action(true);
 			delete a;
 		}
 		return true;
@@ -677,9 +702,18 @@ void editor_controller::left_drag_end(int x, int y, const bool browse)
 		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
 		if (a != NULL) {
 			get_map_context().perform_action(*a);
-			refresh_after_action();
 			delete a;
 		}
+		refresh_after_action();
+	} else {
+		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
+	}	
+}
+
+void editor_controller::left_mouse_up(int x, int y, const bool browse)
+{
+	if (get_mouse_action() != NULL) {
+		refresh_after_action();
 	} else {
 		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
 	}	
