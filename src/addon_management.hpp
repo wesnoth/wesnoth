@@ -59,6 +59,9 @@ void archive_addon(const std::string& addon_name, class config& cfg);
 /** Unarchives an add-on from campaignd's retrieved config object. */
 void unarchive_addon(const class config& cfg);
 
+/** Shows the game add-ons manager dialog.
+ *  @param disp game_display instance to draw on.
+ */
 void manage_addons(class game_display& disp);
 
 class addon_version_info_not_sane_exception {};
@@ -67,8 +70,16 @@ class addon_version_info_not_sane_exception {};
 struct addon_version_info
 {
 	addon_version_info(); //!< Default constructor.
-	addon_version_info(const std::string&); //!< String conversion constructor.
+	//! String conversion constructor.
+	//! @param src_str A version string to initialize numbers from. It must
+	//!                be in the format "X.Y.Z", where X is the major version
+	//!                number, Y the minor and Z the revision level. If the
+	//!                string does not match this format, the object's sanity
+	//!                flag will be set to false.
+	addon_version_info(const std::string& src_str);
 	addon_version_info(const addon_version_info&); //!< Copy constructor.
+	//! List constructor.
+	addon_version_info(unsigned major, unsigned minor, unsigned rev, bool sane_flag);
 
 	//! Assignment operator.
 	addon_version_info& operator=(const addon_version_info&);
@@ -107,12 +118,10 @@ bool operator>=(const addon_version_info&, const addon_version_info&);
 //! Less-than-or-equal operator for addon_version_info.
 bool operator<=(const addon_version_info&, const addon_version_info&);
 
-#if 0
 //! Refreshes the per-session cache of add-on's version
 //! information structs.
 void refresh_addon_version_info_cache();
 //! Returns a particular installed add-on's version information.
 const addon_version_info& get_addon_version_info(const std::string& addon);
-#endif
 
 #endif /* !ADDON_MANAGEMENT_HPP_INCLUDED */

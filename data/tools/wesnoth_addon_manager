@@ -60,7 +60,7 @@ if __name__ == "__main__":
         "directory.")
     optionparser.add_option("-f", "--update",
         help = "Update all installed add-ons in the given directory. " +
-        "This works by comparing the info.cfg file in each addon directory " +
+        "This works by comparing the _info.cfg file in each addon directory " +
         "with the version on the server.")
     optionparser.add_option("-v", "--validate",
         help = "validate python scripts in an add-on " +
@@ -113,7 +113,7 @@ if __name__ == "__main__":
             print "Unpacking %s..." % name
             cs.unpackdir(mythread.data, cdir,  verbose = options.verbose)
             d = os.path.join(cdir, name)
-            info = os.path.join(d, "info.cfg")
+            info = os.path.join(d, "_info.cfg")
             try:
                 f = file(info, "w")
                 f.write("[info]\nversion=\"%s\"\nuploads=\"%s\"\n[/info]\n" %
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     def get_info(name):
         """
         Get info for a locally installed add-on. It expects a direct path
-        to the info.cfg file.
+        to the _info.cfg file.
         """
         if not os.path.exists(name):
             return None, None
@@ -193,7 +193,7 @@ if __name__ == "__main__":
                         fetchlist.append((name, version, uploads))
 
         for name, version, uploads in fetchlist:
-            info = os.path.join(options.campaigns_dir, name, "info.cfg")
+            info = os.path.join(options.campaigns_dir, name, "_info.cfg")
             local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
                 # The uploads > local_uploads likely means a server reset
@@ -274,7 +274,7 @@ if __name__ == "__main__":
         for d in dirs:
             dirname = os.path.basename(d)
             if dirname in campaigns:
-                info = os.path.join(d, "info.cfg")
+                info = os.path.join(d, "_info.cfg")
                 sversion = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
                 if os.path.exists(info):

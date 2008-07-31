@@ -1108,43 +1108,13 @@ bool game_controller::goto_editor()
 }
 #endif
 
-static std::string format_file_size(const std::string& size_str)
-{
-	double size = lexical_cast_default<double>(size_str,0.0);
-
-	const double k = 1024;
-	if(size > 0.0) {
-		std::string size_postfix = _("B");
-		if(size > k) {
-			size /= k;
-			size_postfix = _("KB");
-			if(size > k) {
-				size /= k;
-				size_postfix = _("MB");
-			}
-		}
-
-		std::ostringstream stream;
-#ifdef _MSC_VER
-		// Visual C++ makes 'precision' set the number of decimal places.
-		// Other platforms make it set the number of significant figures
-		stream.precision(1);
-		stream << std::fixed << size << size_postfix;
-#else
-		if (size < 100) stream.precision(3);
-		else size = static_cast<int>(size);
-		stream << size << size_postfix;
-#endif
-		return stream.str();
-	} else {
-		return "";
-	}
-}
-
 namespace
 {
 	void game_controller::reload_changed_game_config()
 	{
+		// rebuild addon version info cache
+		refresh_addon_version_info_cache();
+
 		//force a reload of configuration information
 		old_defines_map_.clear();
 		reset_game_cfg();
