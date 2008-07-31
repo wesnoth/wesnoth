@@ -328,7 +328,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return !get_map().selection().empty();
 		case HOTKEY_EDITOR_PASTE:
 			return !clipboard_.empty();
-		case HOTKEY_EDITOR_SELECT_ALL:		
+		case HOTKEY_EDITOR_SELECT_ALL:
+		case HOTKEY_EDITOR_SELECT_INVERSE:
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_ROTATE:
 		case HOTKEY_EDITOR_MAP_FLIP_X:
