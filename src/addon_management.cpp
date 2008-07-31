@@ -44,8 +44,11 @@
 
 #define DEFAULT_CAMPAIGND_PORT				15003
 
+#define ERR_CFG LOG_STREAM(err , config)
 #define LOG_CFG LOG_STREAM(info, config)
 #define WRN_CFG LOG_STREAM(warn, config)
+#define ERR_FS  LOG_STREAM(err , filesystem)
+#define ERR_NET LOG_STREAM(err , network)
 #define LOG_NET LOG_STREAM(info, network)
 
 namespace {
@@ -553,8 +556,163 @@ namespace {
 			dlg.show();
 		}
 	}
+	
+	void addons_update_dlg(game_display& disp, config& cfg, const config::child_list& remote_addons_list,
+	                       const network::manager& net_manager, const network::connection& sock,
+	                       bool* do_refresh)
+	{
+		std::vector< config* > matches_cfgs;
+		std::vector< std::string > safe_matches;
+		std::vector< std::string > unsafe_matches;
+		std::ostringstream unsafe_list;
+		const std::vector< std::string >& all_local = installed_addons();
+		// Add-ons that can be published and are outdated will not be offered for update,
+		// but a message will be displayed warning about them to the user.
+		const std::vector< std::string >& all_publish = available_addons();
+		std::vector<addon_version_info> safe_local_versions;
+		std::vector<addon_version_info> unsafe_local_versions;
+		std::map<std::string, addon_version_info> remote_version_map;
+		foreach(const config* remote_addon, remote_addons_list) {
+			if(remote_addon == NULL) continue; // shouldn't happen...
+			const std::string& name = (*remote_addon)["name"];
+			const std::string& version = (*remote_addon)["version"];
+			remote_version_map.insert(std::make_pair(name, addon_version_info(version)));
+			std::vector<std::string>::const_iterator local_match =
+				std::find(all_local.begin(), all_local.end(), name);
+			if(local_match != all_local.end()) {
+				const addon_version_info& local_version = get_addon_version_info(name);
+				if(remote_version_map[name] > local_version) {
+					if(std::find(all_publish.begin(), all_publish.end(), name) != all_publish.end()) {
+						unsafe_matches.push_back(name);
+						unsafe_local_versions.push_back(local_version);
+						unsafe_list << '\n';
+						unsafe_list << name << " (local: " << local_version << ", remote: " << version << ")";
+					} else {
+						safe_matches.push_back(name);
+						safe_local_versions.push_back(local_version);
+					}
+				}
+			}
+		}
+		if(!unsafe_matches.empty()) {
+			const std::string warn_title = _("Outdated add-ons");
+			const std::string warn_entrytxt = _n(
+				"An outdated local add-on has publishing information attached. It will not be offered for updating.",
+				"Some outdated local add-ons have publishing information attached. They will not be offered for updating.",
+				unsafe_matches.size());
+			gui::dialog(disp, warn_title, warn_entrytxt + unsafe_list.str(), gui::MESSAGE).show();
+		}
+		
+		// column contents
+		std::vector<std::string> addons, titles, oldversions, newversions, options;
+		std::vector<int> sizes;
+		
+		std::string sep(1, COLUMN_SEPARATOR);
+		std::ostringstream heading;
+		heading << HEADING_PREFIX << sep << _("Name") << sep << _("Old version") << sep << _("New version") << sep
+				<< _("Author") << sep << _("Size");
+		options.push_back(heading.str());
 
-	void download_addons(game_display& disp, std::string remote_host, bool* do_refresh)
+		gui::dialog upd_dialog(disp,
+			_("Update Add-ons"),
+			_("Select an add-on to update:"), gui::OK_CANCEL);
+		upd_dialog.add_button(new gui::dialog_button(disp.video(), _("Update all"),
+		                      gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
+	}
+
+	void install_addon(game_display& disp, config& cfg, const config* const addons_tree,
+	                   const std::string& addon_id, const std::string& addon_title,
+	                   const std::string& addon_type_str, const std::string& addon_uploads_str,
+	                   const std::string& addon_version_str,
+	                   const network::manager& /*net_manager*/,
+	                   const network::connection& sock, bool* do_refresh)
+	{
+		// Get all dependencies of the addon/campaign selected for download.
+		const config * const selected_campaign = addons_tree->find_child("campaign", "name", addon_id);
+		assert(selected_campaign != NULL);
+		// Get all dependencies which are not already installed.
+		// TODO: Somehow determine if the version is outdated.
+		std::vector<std::string> dependencies = utils::split((*selected_campaign)["dependencies"]);
+		if (!addon_dependencies_met(disp,dependencies)) return;
+		// Proceed to download and install
+		config request;
+		request.add_child("request_campaign")["name"] = addon_id;
+		network::send_data(request, sock, true);
+
+		utils::string_map syms;
+		syms["addon_title"] = addon_title;
+		const std::string& download_dlg_title =
+			utils::interpolate_variables_into_string(_("Downloading add-on: $addon_title|..."), &syms);
+
+		network::connection res = dialogs::network_receive_dialog(disp, download_dlg_title, cfg, sock);
+		if(!res) {
+			return;
+		}
+
+		config const * const dlerror = cfg.child("error");
+		if(dlerror != NULL) {
+			gui::show_error_message(disp, (*dlerror)["message"]);
+			return;
+		}
+
+		if(!check_names_legal(cfg)) {
+			gui::show_error_message(disp, _("The add-on has an invalid file or directory name and can not be installed."));
+			return;
+		}
+		
+		// remove any existing versions of the just downloaded add-on,
+		// assuming it consists of a dir and a cfg file
+		remove_local_addon(addon_id);
+
+		// add revision info to the addon archive
+		config* maindir = cfg.find_child("dir", "name", addon_id);
+		if(maindir == NULL) {
+			LOG_CFG << "downloaded addon '" << addon_id << "' is missing its own directory, creating...\n";
+			maindir = &cfg.add_child("dir");
+			(*maindir)["name"] = addon_id;
+		}
+
+		LOG_CFG << "generating version info for addon '" << addon_id << "'\n";
+		config f;
+		f["name"] = "_info.cfg";
+		std::string s;
+		s += "#\n"
+				"# Automatically generated by Wesnoth to keep track\n"
+				"# of version information on installed add-ons.\n"
+				"#\n";
+		s += "[info]\n";
+		if(!addon_type_str.empty()) {
+		s += "    type=\"" + addon_type_str + "\"\n";
+		}
+		s += "    uploads=\"" + addon_uploads_str + "\"\n";
+		s += "    version=\"" + addon_version_str + "\"\n";
+		s += "[/info]\n";
+		f["contents"] = s;
+		maindir->add_child("file", f);
+		LOG_CFG << "generated version info, unpacking...\n";
+		unarchive_addon(cfg);
+		LOG_CFG << "addon unpacked successfully\n";
+
+		std::string warning = "";
+		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
+		if(!scripts.empty()) {
+			WRN_CFG << "downloaded addon '" << addon_title << "' has unchecked scripts\n";
+			warning += "\nUnchecked script files found:";
+			foreach(const config* i, scripts)
+				warning += "\n" + (*i)["name"];
+		}
+
+		const std::string& message =
+			utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::message_dialog dlg(disp, _("Add-on Installed"), message);
+		dlg.show();
+
+		if(do_refresh != NULL)
+			*do_refresh = true;
+	}
+
+	void download_addons(game_display& disp, std::string remote_host, bool update_mode, bool* do_refresh)
 	{
 		const std::vector<std::string> address_components =
 			utils::split(remote_host, ':');
@@ -599,6 +757,12 @@ namespace {
 				return;
 			}
 			
+			const config::child_list& addon_cfgs = addons_tree->get_children("campaign");
+			if(update_mode) {
+				addons_update_dlg(disp, cfg, addon_cfgs, net_manager, sock, do_refresh);
+				return;
+			}
+			
 			// column contents
 			std::vector<std::string> addons, titles, versions, uploads, types, options, options_to_filter;
 			std::vector<int> sizes;
@@ -611,8 +775,8 @@ namespace {
 			options.push_back(heading.str());
 			options_to_filter.push_back(heading.str());
 
-			const config::child_list& addon_cfgs = addons_tree->get_children("campaign");
 			const std::vector< std::string >& publish_options = available_addons();
+
 			std::vector< std::string > delete_options;
 			
 			foreach(const config* i, addon_cfgs) {
@@ -622,7 +786,7 @@ namespace {
 				const std::string& downloads = c["downloads"].str();
 				const std::string& size = c["size"];
 				const std::string& sizef = format_file_size(size);
-				const std::string& type_str = c["type"]; // FIXME?: it was "types" in game.cpp...
+				const std::string& type_str = c["type"];
 				const ADDON_TYPE type = get_addon_type(type_str);
 				const std::string& type_label_str = get_translatable_addon_type(type);
 
@@ -730,96 +894,18 @@ namespace {
 				return;
 			}
 			
-			// Get all dependencies of the addon/campaign selected for download.
-			const config * const selected_campaign = addons_tree->find_child("campaign", "name", addons[index]);
-			assert(selected_campaign != NULL);
-			// Get all dependencies which are not already installed.
-			// TODO: Somehow determine if the version is outdated.
-			std::vector<std::string> dependencies = utils::split((*selected_campaign)["dependencies"]);
-			if (!addon_dependencies_met(disp,dependencies)) return;
-			
-			// Proceed to download and install
-			config request;
-			request.add_child("request_campaign")["name"] = addons[index];
-			network::send_data(request, sock, true);
+			// Handle download
+			install_addon(disp, cfg, addons_tree, addons[index], titles[index], types[index],
+			              uploads[index], versions[index], net_manager, sock, do_refresh);
 
-			utils::string_map syms;
-			syms["addon_title"] = titles[index];
-			const std::string& download_dlg_title =
-				utils::interpolate_variables_into_string(_("Downloading add-on: $addon_title|..."), &syms);
-
-			res = dialogs::network_receive_dialog(disp, download_dlg_title, cfg, sock);
-			if(!res) {
-				return;
-			}
-
-			config const * const dlerror = cfg.child("error");
-			if(dlerror != NULL) {
-				gui::show_error_message(disp, (*dlerror)["message"]);
-				return;
-			}
-
-			if(!check_names_legal(cfg)) {
-				gui::show_error_message(disp, "The add-on has an invalid file or directory name and can not be installed.");
-				return;
-			}
-			
-			// remove any existing versions of the just downloaded campaign,
-			// assuming it consists of a dir and a cfg file
-			remove_local_addon(addons[index]);
-			
-			// add revision info to the addon archive
-			config* maindir = cfg.find_child("dir", "name", addons[index]);
-			if(maindir == NULL) {
-				LOG_CFG << "downloaded addon '" << addons[index] << "' is missing its own directory, creating...\n";
-				maindir = &cfg.add_child("dir");
-				(*maindir)["name"] = addons[index];
-			}
-
-			LOG_CFG << "generating version info for addon '" << addons[index] << "'\n";
-			config f;
-			f["name"] = "_info.cfg";
-			std::string s;
-			s += "#\n"
-			     "# Automatically generated by Wesnoth to keep track\n"
-			     "# of version information on installed add-ons.\n"
-			     "#\n";
-			s += "[info]\n";
-			if(!types[index].empty()) {
-			s += "    type=\"" + types[index] + "\"\n";
-			}
-			s += "    uploads=\"" + uploads[index] + "\"\n";
-			s += "    version=\"" + versions[index] + "\"\n";
-			s += "[/info]\n";
-			f["contents"] = s;
-			maindir->add_child("file", f);
-			LOG_CFG << "generated version info, unpacking...\n";
-			unarchive_addon(cfg);
-			LOG_CFG << "addon unpacked successfully\n";
-			
-			std::string warning = "";
-			std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
-			if(!scripts.empty()) {
-				WRN_CFG << "downloaded addon '" << addons[index] << "' has unchecked scripts\n";
-				warning += "\nUnchecked script files found:";
-				foreach(const config* i, scripts)
-					warning += "\n" + (*i)["name"];
-			}
-	
-			const std::string& message =
-				utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
-			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::message_dialog dlg(disp, _("Add-on Installed"), message);
-			dlg.show();
-
-			if(do_refresh != NULL)
-				*do_refresh = true;
-
-		} catch(config::error&) {
+		} catch(config::error& e) {
+			ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
 			gui::show_error_message(disp, _("Network communication error."));
-		} catch(network::error&) {
+		} catch(network::error& e) {
+			ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
 			gui::show_error_message(disp, _("Remote host disconnected."));
-		} catch(io_exception&) {
+		} catch(io_exception& e) {
+			ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"\n";
 			gui::show_error_message(disp, _("A problem occurred when trying to create the files necessary to install this add-on."));
 		} catch(twml_exception& e) {
 			e.show(disp);
@@ -895,7 +981,6 @@ namespace {
 			dlg2.show();
 		}
 	}
-	
 } // end unnamed namespace 3
 
 void manage_addons(game_display& disp)
@@ -921,6 +1006,10 @@ void manage_addons(game_display& disp)
 		                       _("Type the address of a server to download add-ons from."),
 		                       gui::OK_CANCEL);
 		svr_dialog.set_textbox(_("Server: "), default_host);
+#if 0
+		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Update add-ons"),
+		                      gui::button::TYPE_PRESS, 3), gui::dialog::BUTTON_EXTRA_LEFT);
+#endif
 		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Uninstall add-ons"),
 		                      gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
 		res = svr_dialog.show();
@@ -928,11 +1017,16 @@ void manage_addons(game_display& disp)
 		bool do_refresh = false;
 		switch(res) {
 			case 0:
-				download_addons(disp, remote_host, &do_refresh);
-				return;
+				download_addons(disp, remote_host, false, &do_refresh);
+				break;
 			case 2:
 				uninstall_local_addons(disp, &do_refresh);
 				break;
+#if 0
+			case 3:
+				download_addons(disp, remote_host, true, &do_refresh);
+				break;
+#endif
 			default:
 				return;
 		}
@@ -975,7 +1069,7 @@ bool operator<=(const addon_version_info& l, const addon_version_info& r)
 	return !(l > r);
 }
 
-std::string addon_version_info::str(void)
+std::string addon_version_info::str(void) const
 {
 	if(!sane)
 		throw addon_version_info_not_sane_exception();
@@ -1006,8 +1100,8 @@ addon_version_info::addon_version_info(const std::string& src_str)
 			sane = false;
 		} else {
 			try {
-				vmajor    = lexical_cast<unsigned>(components[0]);
-				vminor    = lexical_cast<unsigned>(components[1]);
+				vmajor   = lexical_cast<unsigned>(components[0]);
+				vminor   = lexical_cast<unsigned>(components[1]);
 				revision = lexical_cast<unsigned>(components[2]);
 				sane     = true;
 			} catch(bad_lexical_cast const&)  {
@@ -1072,6 +1166,7 @@ void refresh_addon_version_info_cache(void)
 			continue;
 		}
 		std::string const& version = (*info_cfg)["version"];
+		LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
 		version_info_cache.insert(std::make_pair(addon, addon_version_info(version)));
 		
 		++i;

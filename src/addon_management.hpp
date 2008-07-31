@@ -87,12 +87,12 @@ struct addon_version_info
 	//! Returns a string of the form "major.minor.revision".
 	//! Throws addon_version_info_not_sane_exception if the information given
 	//! when constructing the object was not correctly formatted.
-	std::string str(void);
+	std::string str(void) const;
 	//! Shortcut to str().
-	operator std::string() { return this->str(); }
+	operator std::string() const { return this->str(); }
 	//! Returns the sanity state of the information given when
 	//! constructing the object.
-	operator bool() { return this->sane; }
+	operator bool() const { return this->sane; }
 	
 	unsigned vmajor;		//!< Major (leading) version number.
 	unsigned vminor;		//!< Minor (middle) version number.
