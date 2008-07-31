@@ -1275,8 +1275,6 @@ void formula_ai::make_candidate_moves() {
 
 	while( best_move != candidate_moves_.end() ) {
 		int best_score = (*best_move)->get_score();
-		std::cout << "size of set is " << candidate_moves_.size() << std::endl;
-		std::cout << "best score is " << best_score << std::endl;
 		// If no evals > 0, fallback
 		if(best_score < 0) {
 			ai_interface* fallback = create_ai("", get_info());
@@ -1303,7 +1301,6 @@ void formula_ai::make_candidate_moves() {
 
 
 void formula_ai::build_move_list() {
-	std::cout << "BUILDING MOVE LIST" << std::endl;
 	candidate_moves_.clear();
 	std::vector<candidate_move_ptr>::iterator itor = function_table.candidate_move_begin();
 	for( ; itor != function_table.candidate_move_end(); ++itor) {
@@ -1369,7 +1366,6 @@ void formula_ai::prepare_move() const
 
 bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-	std::cout << "Makin move yo" << std::endl;
 	if(!formula_) {
 		ai_interface* fallback = create_ai("", get_info());
 		fallback->play_turn();
