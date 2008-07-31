@@ -530,7 +530,7 @@ def initialize_weapon_specials_map(ai*)
 
 
 if(my_leader.loc = loc(11,23),
-	if( teams[my_side].gold>20,
+	if( my_side.gold>20,
 		initialize_weapon_specials_map(self) +
 		[
 			recruit(
@@ -544,9 +544,9 @@ if(my_leader.loc = loc(11,23),
 				)
 			)
 		],
-		fallback('ai') 
+		fallback('') 
 	),
 	if(vars.check = turn, 
-		[set_var('check', 0), fallback('ai')], 
+		[set_var('check', 0), fallback('')], 
 		[set_var('check', turn), move(my_leader.loc, nearest_keep(my_leader.loc))])
 )
