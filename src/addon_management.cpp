@@ -1174,10 +1174,10 @@ void refresh_addon_version_info_cache(void)
 	}
 }
 
-const addon_version_info& get_addon_version_info(const std::String& addon)
+const addon_version_info& get_addon_version_info(const std::string& addon)
 {
 	static const addon_version_info nil(0,0,0,false);
-	std::map< std::String, addon_version_info >::iterator ret = version_info_cache.find(addon);
+	std::map< std::string, addon_version_info >::iterator ret = version_info_cache.find(addon);
 
 	if (ret != version_info_cache.end())
 		return ret->second;
