@@ -35,12 +35,17 @@ public:
 
 protected:
 	virtual void process_event();
-
+	
+	void make_drop_down_menu();
 private:
 	void set_selected_internal(int val);
 	std::vector<std::string> items_;
 	int selected_, oldSelected_;
 	display* disp_;
+	static const std::string empty_combo_label;
+	static const int font_size;
+	static const int horizontal_padding;
+	static const int vertical_padding;
 }; //end class combo
 
 }

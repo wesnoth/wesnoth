@@ -70,7 +70,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	ai_algorithm_(),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
-	combo_controller_(parent.disp(), parent.player_types_),
+	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
 	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), std::vector<std::string>()),
@@ -356,8 +356,8 @@ connect::side::side(const side& a) :
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 {
 	pane.add_widget(&player_number_,     0, 5 + pos);
-	pane.add_widget(&combo_controller_, 20, 5 + pos);
-	pane.add_widget(&orig_controller_,  20 + (combo_controller_.width() - orig_controller_.width()) / 2,
+	pane.add_widget(combo_controller_.get(), 20, 5 + pos);
+	pane.add_widget(&orig_controller_,  20 + (combo_controller_->width() - orig_controller_.width()) / 2,
 									    35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
 	pane.add_widget(&combo_ai_algorithm_, 20, 35 + pos);
 	pane.add_widget(&combo_faction_, 135, 5 + pos);
@@ -378,17 +378,45 @@ bool connect::side::is_owned_by(const std::string& name) const
 
 void connect::side::process_event()
 {
-	if(combo_controller_.changed() && combo_controller_.selected() >= 0) {
+	int drop_target;
+	if ( ( drop_target = combo_controller_->get_drag_target() )> -1)
+	{
+		const std::string target_id = parent_->sides_[drop_target].get_id();
+		const mp::controller target_controller = parent_->sides_[drop_target].get_controller();
+		const std::string target_ai = parent_->sides_[drop_target].ai_algorithm_;
+
+		parent_->sides_[drop_target].ai_algorithm_ = ai_algorithm_;
+		if (id_.empty())
+		{
+			parent_->sides_[drop_target].set_controller(controller_);
+		} else {
+			parent_->sides_[drop_target].set_id(id_);
+		}
+
+		ai_algorithm_ = target_ai;
+		if (target_id.empty())
+		{
+			set_controller(target_controller);
+		} else {
+			set_id(target_id);
+		}
+		changed_ = true;
+		parent_->sides_[drop_target].changed_ = true;
+		init_ai_algorithm_combo();
+		update_ui();
+		parent_->sides_[drop_target].init_ai_algorithm_combo();
+		parent_->sides_[drop_target].update_ui();
+	}
+	else if(combo_controller_->changed() && combo_controller_->selected() >= 0) {
 		const int cntr_last = (save_id_.empty()?CNTR_LAST - 1 :CNTR_LAST);
-		if (combo_controller_.selected() == cntr_last
-				|| combo_controller_.selected() == cntr_last + parent_->users_.size() + 1) {
+		if (combo_controller_->selected() == cntr_last) {
 			update_controller_ui();
-		} else if (combo_controller_.selected() < cntr_last) {
+		} else if (combo_controller_->selected() < cntr_last) {
 			// If the current side corresponds to an existing user,
 			// we must kick it!
 
 			// Update controller first, or else kick will reset it.
-			controller_ = mp::controller(combo_controller_.selected());
+			controller_ = mp::controller(combo_controller_->selected());
 
 			// Don't kick an empty player or the game creator
 			if(!id_.empty()) {
@@ -399,41 +427,10 @@ void connect::side::process_event()
 				id_ = "";
 			}
 			changed_ = true;
-		} else if (combo_controller_.selected() <=  cntr_last + parent_->users_.size()) {
-			// move user
-			size_t user = combo_controller_.selected() - cntr_last - 1;
-
-			// If the selected user already was attributed to
-			// another side, find its side, and switch users.
-			const std::string new_id = parent_->users_[user].name;
-			// If user has multiple sides remove all others.
-			if (new_id != id_
-					|| std::count_if(parent_->sides_.begin(), parent_->sides_.end(), boost::bind(&connect::side::is_owned_by, _1, boost::ref(id_))) > 1) {
-				int old_side = parent_->find_player_side(new_id);
-				if (old_side != -1) {
-					if (id_.empty()) {
-						parent_->sides_[old_side].set_controller(parent_->default_controller_);
-					} else {
-						parent_->sides_[old_side].set_id(id_);
-					}
-				}
-				// remove extra slots from this player
-				while (-1 != (old_side = parent_->find_player_side(new_id)))
-				{
-					parent_->sides_[old_side].set_controller(parent_->default_controller_);
-				}
-				id_ = new_id;
-				controller_ = parent_->users_[user].controller;
-				changed_ = true;
-			}
 		} else {
 			// give user second side
-			size_t user = combo_controller_.selected() - cntr_last - 1 - parent_->users_.size() - 1;
+			size_t user = combo_controller_->selected() - cntr_last - 1;
 
-			assert(user < parent_->users_.size());
-
-			// If the selected user already was attributed to
-			// another side, find its side, and switch users.
 			const std::string new_id = parent_->users_[user].name;
 			if (new_id != id_) {
 				id_ = new_id;
@@ -526,15 +523,15 @@ bool connect::side::allow_player() const
 void connect::side::update_controller_ui()
 {
 	if (id_.empty()) {
-		combo_controller_.set_selected(controller_);
+		combo_controller_->set_selected(controller_);
 	} else {
 		connected_user_list::iterator player = parent_->find_player(id_);
 
 		if (player != parent_->users_.end()) {
 			const int no_reserve = save_id_.empty()?-1:0;
-			combo_controller_.set_selected(CNTR_LAST + no_reserve + 1 + (player - parent_->users_.begin()));
+			combo_controller_->set_selected(CNTR_LAST + no_reserve + 1 + (player - parent_->users_.begin()));
 		} else {
-			combo_controller_.set_selected(CNTR_NETWORK);
+			combo_controller_->set_selected(CNTR_NETWORK);
 		}
 	}
 
@@ -815,7 +812,7 @@ void connect::side::update_user_list()
 	name_list list = parent_->player_types_;
 	if (!save_id_.empty())
 		list.push_back(_("Reserved"));
-	list.push_back(_("--move--"));
+	list.push_back(_("--give--"));
 
 	connected_user_list::const_iterator itor;
 	for (itor = parent_->users_.begin(); itor != parent_->users_.end();
@@ -825,15 +822,11 @@ void connect::side::update_user_list()
 			name_present = true;
 	}
 
-	list.push_back(_("--give--"));
-
-	std::for_each(parent_->users_.begin(), parent_->users_.end(), boost::bind(&name_list::push_back,boost::ref(list),_1));
-
 	if (name_present == false) {
 		id_ = "";
 	}
 
-	combo_controller_.set_items(list);
+	combo_controller_->set_items(list);
 	update_controller_ui();
 }
 
@@ -1029,7 +1022,8 @@ connect::connect(game_display& disp, const config& game_config,
 	income_title_label_(video(), _("Income"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 
 	launch_(video(), _("I'm Ready")),
-	cancel_(video(), _("Cancel"))
+	cancel_(video(), _("Cancel")),
+	combo_control_group_(gui::drop_target::create_group())
 {
 	load_game();
 

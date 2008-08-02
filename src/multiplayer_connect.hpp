@@ -25,6 +25,7 @@
 #include "multiplayer_create.hpp"
 #include "network.hpp"
 #include "widgets/scrollpane.hpp"
+#include "widgets/combo_drag.hpp"
 
 #include <string>
 
@@ -135,7 +136,7 @@ public:
 
 		// Widgets for this side
 		gui::label player_number_;
-		gui::combo combo_controller_;
+		gui::combo_drag_ptr combo_controller_;
 		gui::label orig_controller_;
 		gui::combo combo_ai_algorithm_;
 		gui::combo combo_faction_;
@@ -263,6 +264,8 @@ private:
 
 	gui::button launch_;
 	gui::button cancel_;
+
+	gui::drop_target_group combo_control_group_;
 
 }; // end class connect
 

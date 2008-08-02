@@ -19,21 +19,19 @@
 #include "show_dialog.hpp"
 #include "video.hpp"
 
-namespace {
-
-#ifdef USE_TINY_GUI
-	const std::string empty_combo_label = "           ";
-#else
-	const std::string empty_combo_label = "";
-#endif
-
-}
 
 namespace gui {
 
-const int font_size = font::SIZE_SMALL;
-const int horizontal_padding = 10;
-const int vertical_padding = 10;
+#ifdef USE_TINY_GUI
+	const std::string combo::empty_combo_label = "           ";
+#else
+	const std::string combo::empty_combo_label = "";
+#endif
+
+
+const int combo::font_size = font::SIZE_SMALL;
+const int combo::horizontal_padding = 10;
+const int combo::vertical_padding = 10;
 
 combo::combo(display& disp, const std::vector<std::string>& items)
 	: button(disp.video(), items.empty() ? empty_combo_label : items[0]),
@@ -82,13 +80,18 @@ void combo::set_selected(int val)
 	oldSelected_ = selected_;
 }
 
+void combo::make_drop_down_menu()
+{
+	SDL_Rect const &loc = location();
+	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
+	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h));
+}
+
 void combo::process_event()
 {
 	if (!pressed())
 		return;
-	SDL_Rect const &loc = location();
-	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
-	                                       NULL, "", NULL, -1, NULL, loc.x, loc.y + loc.h));
+	make_drop_down_menu();
 }
 
 }

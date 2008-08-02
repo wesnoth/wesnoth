@@ -147,6 +147,8 @@ wesnoth_source = \
 	variable.cpp \
 	variant.cpp \
 	widgets/combo.cpp \
+	widgets/combo_drag.cpp \
+	widgets/drop_target.cpp \
 	widgets/scrollpane.cpp
     
 # used with editor2 option in the wesnoth target
