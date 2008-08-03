@@ -24,7 +24,7 @@
 
 namespace gui {
 
-	const int combo_drag::MIN_DRAG_DISTANCE = 30;
+	const float combo_drag::MIN_DRAG_DISTANCE = 10.0;
 	const float combo_drag::RETURN_SPEED = 25.0;
 
 	combo_drag::combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group)
@@ -34,7 +34,7 @@ namespace gui {
 	{
 	}
 
-	int combo_drag::get_drag_target()
+	int combo_drag::get_drop_target()
 	{
 		old_drag_target_ = drag_target_;
 		drag_target_ = -1;

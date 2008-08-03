@@ -29,6 +29,12 @@ namespace gui {
 	typedef int drop_target_group;
 	class drop_group_manager;
 	typedef boost::shared_ptr<drop_group_manager> drop_group_manager_ptr;
+
+	/**
+	 * Handles droping for drag able ui items.
+	 * Widget class just has to inherit from drop_target,
+	 * call constructor and handle_drop.
+	 **/
 	class drop_target : public boost::noncopyable {
 		typedef std::multimap<drop_target_group, drop_target*> drop_groups;
 		typedef std::map<drop_target_group, int> target_id;
@@ -43,6 +49,10 @@ namespace gui {
 		const SDL_Rect& loc_;
 		const int id_;
 		drop_group_manager_ptr group_;
+		
+		static drop_target_group create_group();
+		static void delete_group(const drop_target_group id);
+		
 		// We allow access for unit test to call handle_drop
 #ifdef BOOST_TEST_DYN_LINK
 		public:	
@@ -53,17 +63,39 @@ namespace gui {
 #else
 		protected:
 #endif
+		/**
+		 * Called by widget object when droping happens.
+		 *
+		 * Droping over multiple widget objects in same group
+		 * is undefined.
+		 *
+		 * @return: id which widget was hit when droping
+		 **/
 		int handle_drop();
 
 		public:
+		/**
+		 * Registers drop target and saves reference to location.
+		 **/
 		drop_target(const drop_group_manager_ptr group, const SDL_Rect& loc);
 		~drop_target();
+
 		int get_id() const;
+		/**
+		 * Checks if id matches id for this object.
+		 * Used by for_each/boost:bind
+		 **/
 		bool is_this_id(const int id) const;
-		static drop_target_group create_group();
-		static void delete_group(const drop_target_group id);
+
+		friend class drop_group_manager;
+
 	};
 
+	/**
+	 * Used to create and destroy drop groups.
+	 * To create drop_target widgets one has to have
+	 * drop_group_manager stored in drop_group_manager_ptr.
+	 **/
 	class drop_group_manager : public boost::noncopyable {
 		const drop_target_group group_id_;
 		public:

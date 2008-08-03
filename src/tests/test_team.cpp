@@ -18,7 +18,6 @@ BOOST_AUTO_TEST_SUITE( team )
 
 BOOST_AUTO_TEST_CASE( test_user_team_name )
 {
-	BOOST_MESSAGE( "Starting team test!" );
 }
 
 /* vim: set ts=4 sw=4: */

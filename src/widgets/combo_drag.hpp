@@ -34,7 +34,14 @@ namespace gui {
 		public:
 			combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group);
 
-			int get_drag_target();
+			/**
+			 * used to query if this object was droped to a target
+			 * @return: -1 if not droped and other the id of target object
+			 **/
+			int get_drop_target();
+			/**
+			 * Implements return after drop
+			 **/
 			virtual void process(events::pump_info& /*info*/);
 		protected:
 			virtual void process_event();
@@ -42,6 +49,7 @@ namespace gui {
 			virtual void mouse_down(const SDL_MouseButtonEvent& event);
 			virtual void mouse_up(const SDL_MouseButtonEvent& event);
 		private:
+
 			void handle_move(const SDL_MouseMotionEvent& event);
 			void handle_drop();
 			int drag_target_, old_drag_target_;

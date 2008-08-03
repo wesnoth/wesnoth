@@ -25,7 +25,6 @@ BOOST_AUTO_TEST_SUITE( test_drop_target )
 
 BOOST_AUTO_TEST_CASE( test_create_group )
 {
-	BOOST_MESSAGE( "Starting drop target test!" );
 
 	gui::drop_group_manager group0;
 	gui::drop_group_manager* group1 = new gui::drop_group_manager();

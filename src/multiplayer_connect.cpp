@@ -379,7 +379,7 @@ bool connect::side::is_owned_by(const std::string& name) const
 void connect::side::process_event()
 {
 	int drop_target;
-	if ( ( drop_target = combo_controller_->get_drag_target() )> -1)
+	if ( ( drop_target = combo_controller_->get_drop_target() )> -1)
 	{
 		const std::string target_id = parent_->sides_[drop_target].get_id();
 		const mp::controller target_controller = parent_->sides_[drop_target].get_controller();

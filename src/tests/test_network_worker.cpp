@@ -47,7 +47,6 @@ network::connection server_client2;
 
 BOOST_AUTO_TEST_CASE( test_connect )
 {
-	BOOST_MESSAGE(  "Starting network test!" );
 	int connections = network::nconnections();
 
 	BOOST_WARN_MESSAGE(connections == 0, "There is open "<< connections <<" connections before test!");

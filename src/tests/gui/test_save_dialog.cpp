@@ -37,19 +37,10 @@ namespace test {
 	struct save_dialog_fixture {
 		save_dialog_fixture()
 		{
-			if (!started_)
-			{
-				BOOST_MESSAGE("Starting save dialog test!");
-				started_ = true;
-			}
 		}
 		test_utils::fake_event_source source;
-
-		private:
-		static bool started_;
 	};
 
-	bool save_dialog_fixture::started_ = false;
 
 
 	BOOST_FIXTURE_TEST_SUITE( save_dialog , save_dialog_fixture)
