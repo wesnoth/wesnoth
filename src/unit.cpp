@@ -451,12 +451,12 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	}
 }
 
-std::vector<std::string> unit::get_traits_list() const 
+std::vector<std::string> unit::get_traits_list() const
 {
 	std::vector<std::string> res;
 
 	config::child_list const &mods = modifications_.get_children("trait");
-	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) 
+	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j)
 	{
 			std::string const &id = (**j)["id"];
 			if (!id.empty())
@@ -472,6 +472,19 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	// Remove old animations
 	cfg_.clear_children("animation");
+	cfg_.clear_children("defend");
+	cfg_.clear_children("teleport_anim");
+	cfg_.clear_children("extra_anim");
+	cfg_.clear_children("death");
+	cfg_.clear_children("movement_anim");
+	cfg_.clear_children("standing_anim");
+	cfg_.clear_children("healing_anim");
+	cfg_.clear_children("victory_anim");
+	cfg_.clear_children("idle_anim");
+	cfg_.clear_children("levelin_anim");
+	cfg_.clear_children("levelout_anim");
+	cfg_.clear_children("healed_anim");
+	cfg_.clear_children("poison_anim");
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
