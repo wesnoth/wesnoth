@@ -265,7 +265,7 @@ private:
 	gui::button launch_;
 	gui::button cancel_;
 
-	gui::drop_target_group combo_control_group_;
+	gui::drop_group_manager_ptr combo_control_group_;
 
 }; // end class connect
 

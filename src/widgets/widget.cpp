@@ -17,30 +17,56 @@
 #include "widgets/widget.hpp"
 #include "video.hpp"
 
+#include <cassert>
+
 namespace {
 	const SDL_Rect EmptyRect = {-1234,-1234,0,0};
 }
 
 namespace gui {
 
+bool widget::mouse_lock_ = false;
+
 widget::widget(const widget &o)
 	: events::handler(), focus_(o.focus_), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
 	   needs_restore_(o.needs_restore_), state_(o.state_), hidden_override_(o.hidden_override_),
 	  enabled_(o.enabled_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
-	  help_text_(o.help_text_), help_string_(o.help_string_), id_(o.id_)
+	  help_text_(o.help_text_), help_string_(o.help_string_), id_(o.id_), mouse_lock_local_(o.mouse_lock_local_)
 {
 }
 
 widget::widget(CVideo& video, const bool auto_join)
 	: handler(auto_join), focus_(true), video_(&video), rect_(EmptyRect), needs_restore_(false),
 	  state_(UNINIT), hidden_override_(false), enabled_(true), clip_(false),
-	  clip_rect_(EmptyRect), volatile_(false), help_string_(0)
+	  clip_rect_(EmptyRect), volatile_(false), help_string_(0), mouse_lock_local_(false)
 {
 }
 
 widget::~widget()
 {
 	bg_cancel();
+	free_mouse_lock();
+}
+
+void widget::aquire_mouse_lock()
+{
+	assert(!mouse_lock_);
+	mouse_lock_ = true;
+	mouse_lock_local_ = true;
+}
+
+void widget::free_mouse_lock()
+{
+	if (mouse_lock_local_)
+	{
+		mouse_lock_local_ = false;
+		mouse_lock_ = false;
+	}
+}
+
+bool widget::mouse_locked() const
+{
+	return mouse_lock_ && !mouse_lock_local_;
 }
 
 void widget::bg_cancel()

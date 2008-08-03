@@ -1,4 +1,4 @@
-/* $Id:$ */
+/* $Id$ */
 /*
    Copyright (C) 2008 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -16,6 +16,7 @@
 
 #include "SDL.h"
 
+#include "events.hpp"
 #include "widgets/combo.hpp"
 #include "widgets/drop_target.hpp"
 
@@ -28,33 +29,35 @@ namespace gui {
 	class combo_drag; 
 	typedef boost::shared_ptr<combo_drag> combo_drag_ptr;
 
-	class combo_drag : public combo, public drop_target
+	class combo_drag : public combo, public drop_target, public events::pump_monitor
 	{
 		public:
-			combo_drag(display& disp, const std::vector<std::string>& items, const drop_target_group& group);
+			combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group);
 
 			int get_drag_target();
+			virtual void process(events::pump_info& /*info*/);
 		protected:
 			virtual void process_event();
 			virtual void mouse_motion(const SDL_MouseMotionEvent& event);
 			virtual void mouse_down(const SDL_MouseButtonEvent& event);
 			virtual void mouse_up(const SDL_MouseButtonEvent& event);
-
 		private:
 			void handle_move(const SDL_MouseMotionEvent& event);
 			void handle_drop();
 			int drag_target_, old_drag_target_;
 			SDL_Rect old_location_;
-			int mouse_x, mouse_y;
+			int mouse_x_, mouse_y_;
 			enum drag_state {
 				NONE,
 				PRESSED,
 				PRESSED_MOVE,
 				MOVED,
+				RETURN,
 				DROP_DOWN
 			};
 			drag_state drag_;
 			static const int MIN_DRAG_DISTANCE;
+			static const float RETURN_SPEED;
 	}; //end class combo
 
 }

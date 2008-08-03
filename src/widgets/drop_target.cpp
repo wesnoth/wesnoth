@@ -1,4 +1,4 @@
-/* $Id:$ */
+/* $Id$ */
 /*
    Copyright (C) 2008 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -28,9 +28,9 @@ namespace gui {
 		return group_id->second++;
 	}
 
-	drop_target::drop_target(const drop_target_group& group, const SDL_Rect& loc) : loc_(loc), id_(next_free_id(group)), group_(group)
+	drop_target::drop_target(const drop_group_manager_ptr group, const SDL_Rect& loc) : loc_(loc), id_(next_free_id(group->get_group_id())), group_(group)
 	{
-		groups_.insert(std::make_pair(group_, this));
+		groups_.insert(std::make_pair(group_->get_group_id(), this));
 	}
 
 	bool drop_target::is_this_id(const int id) const
@@ -40,8 +40,8 @@ namespace gui {
 
 	drop_target::drop_groups::iterator drop_target::find_this() const
 	{
-		return std::find_if(groups_.lower_bound(group_),
-				groups_.upper_bound(group_),
+		return std::find_if(groups_.lower_bound(group_->get_group_id()),
+				groups_.upper_bound(group_->get_group_id()),
 				boost::bind(&drop_target::is_this_id,boost::bind(&drop_target::drop_groups::value_type::second,_1),id_));
 	}
 
@@ -58,8 +58,8 @@ namespace gui {
 	int drop_target::handle_drop()
 	{
 		drop_target::drop_groups::iterator itor
-			= std::find_if(groups_.lower_bound(group_), 
-					groups_.upper_bound(group_),
+			= std::find_if(groups_.lower_bound(group_->get_group_id()), 
+					groups_.upper_bound(group_->get_group_id()),
 					boost::bind(&drop_target::hit_rect,
 						boost::bind(&drop_target::drop_groups::value_type::second,_1)
 						,loc_, id_));
@@ -67,6 +67,12 @@ namespace gui {
 		if (itor == groups_.end())
 			return -1;
 		return itor->second->get_id();
+	}
+
+	void drop_target::delete_group(const drop_target_group id)
+	{
+		next_id_.erase(id);
+		groups_.erase(id);
 	}
 
 	drop_target_group drop_target::create_group()
@@ -93,5 +99,18 @@ namespace gui {
 
 	}
 
+	drop_group_manager::drop_group_manager() : group_id_(drop_target::create_group())
+	{
+	}
+
+	drop_group_manager::~drop_group_manager()
+	{
+		drop_target::delete_group(group_id_);
+	}
+
+	const drop_target_group drop_group_manager::get_group_id() const
+	{
+		return group_id_;
+	}
 }
 

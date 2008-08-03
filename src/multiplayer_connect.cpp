@@ -441,6 +441,8 @@ void connect::side::process_event()
 		update_ai_algorithm_combo();
 	}
 
+	if (combo_controller_->hidden())
+		combo_controller_->hide(false);
 	if(!enabled_)
 		return;
 
@@ -1023,7 +1025,7 @@ connect::connect(game_display& disp, const config& game_config,
 
 	launch_(video(), _("I'm Ready")),
 	cancel_(video(), _("Cancel")),
-	combo_control_group_(gui::drop_target::create_group())
+	combo_control_group_(new gui::drop_group_manager())
 {
 	load_game();
 

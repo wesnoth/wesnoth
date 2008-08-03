@@ -150,7 +150,7 @@ unsigned scrollarea::scrollbar_width() const
 
 void scrollarea::handle_event(const SDL_Event& event)
 {
-	if (hidden() || event.type != SDL_MOUSEBUTTONDOWN)
+	if (mouse_locked() || hidden() || event.type != SDL_MOUSEBUTTONDOWN)
 		return;
 
 	SDL_MouseButtonEvent const &e = event.button;

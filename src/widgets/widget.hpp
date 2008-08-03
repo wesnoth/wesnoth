@@ -95,6 +95,10 @@ protected:
 	virtual void handle_event(SDL_Event const &/*event*/) {}
 	bool focus_;		// Should user input be ignored?
 
+	bool mouse_locked() const;
+
+	void aquire_mouse_lock();
+	void free_mouse_lock();
 private:
 	void volatile_draw();
 	void volatile_undraw();
@@ -117,6 +121,9 @@ private:
 	std::string help_text_;
 	int help_string_;
 	std::string id_;
+
+	bool mouse_lock_local_;
+	static bool mouse_lock_;
 
 	friend class scrollpane;
 	friend class dialog;

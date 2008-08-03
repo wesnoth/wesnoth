@@ -244,13 +244,16 @@ void slider::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
-		state_ = NORMAL;
+		if (!mouse_locked())
+			state_ = NORMAL;
 		break;
 	case SDL_MOUSEBUTTONDOWN:
-		mouse_down(event.button);
+		if (!mouse_locked())
+			mouse_down(event.button);
 		break;
 	case SDL_MOUSEMOTION:
-		mouse_motion(event.motion);
+		if (!mouse_locked())
+			mouse_motion(event.motion);
 		break;
 	case SDL_KEYDOWN:
 		if(focus(&event)) {

@@ -274,7 +274,8 @@ test_SOURCES =  \
 	tests/utils/fake_event_source.cpp \
 	tests/test_util.cpp \
     tests/test_network_worker.cpp \
-	tests/test_save_dialog.cpp \
+	tests/gui/test_save_dialog.cpp \
+	tests/gui/test_drop_target.cpp \
 	tests/test_team.cpp \
 	$(wesnoth_source)
 

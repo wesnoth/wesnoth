@@ -603,9 +603,9 @@ void menu::handle_event(const SDL_Event& event)
 		// Only pass key events if we have the focus
 		if (focus(&event))
 			key_press(event.key.keysym.sym);
-	} else if((event.type == SDL_MOUSEBUTTONDOWN &&
+	} else if(!mouse_locked() && ((event.type == SDL_MOUSEBUTTONDOWN &&
 	         (event.button.button == SDL_BUTTON_LEFT || event.button.button == SDL_BUTTON_RIGHT)) ||
-	         event.type == DOUBLE_CLICK_EVENT) {
+	         event.type == DOUBLE_CLICK_EVENT)) {
 
 		int x = 0;
 		int y = 0;
@@ -657,7 +657,7 @@ void menu::handle_event(const SDL_Event& event)
 				sort_by(heading);
 			}
 		}
-	} else if(event.type == SDL_MOUSEMOTION) {
+	} else if(!mouse_locked() && event.type == SDL_MOUSEMOTION) {
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
 			const bool out = (item == -1);

@@ -425,13 +425,13 @@ void textbox::handle_event(const SDL_Event& event)
 	}
 
 	SDL_Rect const &loc = inner_location();
-	bool clicked_inside = (event.type == SDL_MOUSEBUTTONDOWN
+	bool clicked_inside = !mouse_locked() && (event.type == SDL_MOUSEBUTTONDOWN
 					   && (mousebuttons & SDL_BUTTON(1))
 					   && point_in_rect(mousex, mousey, loc));
 	if(clicked_inside) {
 		set_focus(true);
 	}
-	if ((grabmouse_ && (event.type == SDL_MOUSEMOTION)) || clicked_inside) {
+	if ((grabmouse_ && (!mouse_locked() && event.type == SDL_MOUSEMOTION)) || clicked_inside) {
 		const int x = mousex - loc.x + text_pos_;
 		const int y = mousey - loc.y;
 		int pos = 0;
@@ -474,7 +474,7 @@ void textbox::handle_event(const SDL_Event& event)
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
 	if(focus(&event) == false) {
-		if (event.type == SDL_MOUSEMOTION && point_in_rect(mousex, mousey, loc))
+		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && point_in_rect(mousex, mousey, loc))
 			events::focus_handler(this);
 
 		return;

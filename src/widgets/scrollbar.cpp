@@ -284,12 +284,13 @@ void scrollbar::draw_contents()
 
 void scrollbar::handle_event(const SDL_Event& event)
 {
-	if (hidden())
+	if (mouse_locked() || hidden())
 		return;
 
 	STATE new_state = state_;
 	SDL_Rect const &grip = grip_area();
 	SDL_Rect const &groove = groove_area();
+
 
 	switch (event.type) {
 	case SDL_MOUSEBUTTONUP:

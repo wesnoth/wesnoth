@@ -77,9 +77,9 @@ static void run_lobby_loop(display& disp, mp::ui& ui)
 			first = false;
 		}
 
+		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-		events::pump();
 
 		ui.process_network();
 

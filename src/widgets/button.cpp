@@ -318,18 +318,21 @@ void button::handle_event(const SDL_Event& event)
 
 	STATE start_state = state_;
 
-	switch(event.type) {
-	case SDL_MOUSEBUTTONDOWN:
-		mouse_down(event.button);
-		break;
-	case SDL_MOUSEBUTTONUP:
-		mouse_up(event.button);
-		break;
-	case SDL_MOUSEMOTION:
-		mouse_motion(event.motion);
-		break;
-	default:
-		return;
+	if (!mouse_locked())
+	{
+		switch(event.type) {
+			case SDL_MOUSEBUTTONDOWN:
+				mouse_down(event.button);
+				break;
+			case SDL_MOUSEBUTTONUP:
+				mouse_up(event.button);
+				break;
+			case SDL_MOUSEMOTION:
+				mouse_motion(event.motion);
+				break;
+			default:
+				return;
+		}
 	}
 
 	if (start_state != state_)
