@@ -1,4 +1,4 @@
-/* $Id: test_team.cpp 28266 2008-07-30 14:10:36Z suokko $ */
+/* $Id$ */
 /*
    Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
