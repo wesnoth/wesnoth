@@ -64,7 +64,7 @@ namespace gui {
 				DROP_DOWN
 			};
 			drag_state drag_;
-			static const int MIN_DRAG_DISTANCE;
+			static const float MIN_DRAG_DISTANCE;
 			static const float RETURN_SPEED;
 	}; //end class combo
 

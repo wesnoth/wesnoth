@@ -65,7 +65,13 @@ namespace test_utils {
 	class event_node_keyboard : public event_node {
 		public:
 			event_node_keyboard(size_t time, SDL_Event& event);
-			void fire_event();
+			virtual void fire_event();
+	};
+
+	class event_node_mouse_motion : public event_node {
+		public:
+			event_node_mouse_motion(size_t time, SDL_Event& event);
+			virtual void fire_event();
 	};
 
 	typedef boost::shared_ptr<event_node> event_node_ptr;
@@ -96,6 +102,10 @@ namespace test_utils {
 
 			event_node_ptr press_key(const size_t time, const SDLKey key, const SDLMod mod = KMOD_NONE);
 			event_node_ptr release_key(const size_t time, const SDLKey key, const SDLMod mod =KMOD_NONE);
+
+			event_node_ptr move_mouse(const size_t time, const int x, const int y);
+			event_node_ptr mouse_press(const size_t time, const Uint8 button);
+			event_node_ptr mouse_release(const size_t time, const Uint8 button);
 
 			void process(events::pump_info& /*info*/);
 	};

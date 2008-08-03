@@ -65,6 +65,13 @@ namespace test_utils {
 			key_list[event_.key.keysym.sym] = 0;
 	}
 
+	event_node_mouse_motion::event_node_mouse_motion(size_t time, SDL_Event& event) : event_node(time,event)
+	{}
+	void event_node_mouse_motion::fire_event()
+	{
+		SDL_WarpMouse(event_.motion.x,event_.motion.y);
+	}
+
 	fake_event_source::fake_event_source() : frame_count_(0)
 	{
 	}
@@ -111,6 +118,17 @@ namespace test_utils {
 		event.key.keysym.mod = mod;
 		event.key.keysym.unicode = 0; // Unicode disabled
 		return event;
+	}
+
+	event_node_ptr fake_event_source::move_mouse(const size_t time, const int x, const int y)
+	{
+		SDL_Event event;
+		event.type = SDL_MOUSEMOTION;
+		event.motion.x = x;
+		event.motion.y = y;
+		event_node_ptr new_move(new event_node_mouse_motion(time, event));
+		add_event(new_move);
+		return new_move;
 	}
 
 	event_node_ptr fake_event_source::press_key(const size_t time, const SDLKey key, const SDLMod mod)

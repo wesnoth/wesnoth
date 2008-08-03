@@ -16,6 +16,8 @@
 
 #include <boost/bind.hpp>
 #include <algorithm>
+
+#include <iostream>
 namespace gui {
 
 	drop_target::drop_groups drop_target::groups_;
@@ -57,15 +59,17 @@ namespace gui {
 
 	int drop_target::handle_drop()
 	{
+		drop_groups::iterator end = groups_.upper_bound(group_->get_group_id());
 		drop_target::drop_groups::iterator itor
 			= std::find_if(groups_.lower_bound(group_->get_group_id()), 
-					groups_.upper_bound(group_->get_group_id()),
+					end,
 					boost::bind(&drop_target::hit_rect,
 						boost::bind(&drop_target::drop_groups::value_type::second,_1)
 						,loc_, id_));
 	
-		if (itor == groups_.end())
+		if (itor == end)
 			return -1;
+
 		return itor->second->get_id();
 	}
 

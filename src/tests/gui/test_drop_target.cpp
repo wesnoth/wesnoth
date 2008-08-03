@@ -92,5 +92,62 @@ BOOST_AUTO_TEST_CASE( check_memory_leaks )
 	BOOST_CHECK(gui::drop_target::empty());
 }
 
+BOOST_AUTO_TEST_CASE( test_multiple_drop_groups )
+{
+	gui::drop_group_manager_ptr group(new gui::drop_group_manager());
+	gui::drop_group_manager_ptr group2(new gui::drop_group_manager());
+	BOOST_CHECK(group->get_group_id() > 0);
+	BOOST_CHECK(group2->get_group_id() > 0);
+
+	typedef std::vector<SDL_Rect> location_store;
+	location_store locations;
+	location_store locations2;
+
+	// Create rectangles for drop targets
+	locations.push_back(create_rect(50,50,20,20));
+	locations.push_back(create_rect(50,100,20,20));
+	locations.push_back(create_rect(50,150,20,20));
+	locations.push_back(create_rect(50,200,20,20));
+	locations.push_back(create_rect(50,250,20,20));
+	locations.push_back(create_rect(50,300,20,20));
+
+	locations2.push_back(create_rect(50,50,20,20));
+	locations2.push_back(create_rect(100,50,20,20));
+	locations2.push_back(create_rect(150,50,20,20));
+	locations2.push_back(create_rect(200,50,20,20));
+	locations2.push_back(create_rect(250,50,20,20));
+	locations2.push_back(create_rect(300,50,20,20));
+
+
+	target_store targets;
+	target_store targets2;
+
+	int id_counter = 0;
+
+	std::for_each(locations.begin(), locations.end(),
+			boost::bind(create_drop_targets,_1, group, boost::ref(targets), boost::ref(id_counter)));
+	id_counter = 0;
+	std::for_each(locations2.begin(), locations2.end(),
+			boost::bind(create_drop_targets,_1, group2, boost::ref(targets2), boost::ref(id_counter)));
+
+	BOOST_CHECK_EQUAL(targets.size(), locations.size());
+	BOOST_CHECK_EQUAL(targets2.size(), locations2.size());
+
+	// Modify 3rd rectangle to overlap with 4th
+	locations[2].y = 190;
+
+	// Check for correct drop results
+	BOOST_CHECK_EQUAL(targets[2]->handle_drop(), 3);
+	BOOST_CHECK_EQUAL(targets[3]->handle_drop(), 2);
+	BOOST_CHECK_EQUAL(targets[1]->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(targets[4]->handle_drop(), -1);
+
+	locations2[2].y = 180;
+	locations2[2].x = 50;
+
+	BOOST_CHECK_EQUAL(targets2[2]->handle_drop(), -1);
+
+}
+
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
