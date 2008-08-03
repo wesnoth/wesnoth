@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-07-13 17:49+0200\n"
+"POT-Creation-Date: 2008-08-03 10:55+0200\n"
 "PO-Revision-Date: 2007-01-04 19:24+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -295,18 +295,18 @@ msgid "Flat"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1035
+#: data/core/terrain.cfg:1036
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1041
+#: data/core/terrain.cfg:1043
 #, fuzzy
 msgid "Impassable"
 msgstr "Impassable Mountains"
 
 #. [terrain]
-#: data/core/terrain.cfg:1047
+#: data/core/terrain.cfg:1050
 msgid "Unwalkable"
 msgstr ""
 
@@ -414,7 +414,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:159
+#: src/hotkeys.cpp:125 src/hotkeys.cpp:166
 msgid "Resize Map"
 msgstr "Resize Map"
 
@@ -467,11 +467,11 @@ msgstr ""
 msgid "Creation of the directory failed."
 msgstr "Deletion of the file failed."
 
-#: src/game_preferences.cpp:271
+#: src/game_preferences.cpp:272
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:335
+#: src/game_preferences.cpp:336
 msgid "player"
 msgstr "player"
 
@@ -910,15 +910,24 @@ msgstr "No known themes. Try changing from within an existing game."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:276
+#: src/gui/dialogs/mp_create_game.cpp:111 src/hotkeys.cpp:76
+msgid "Load Game"
+msgstr "Load Game"
+
+#: src/gui/dialogs/mp_create_game.cpp:112
+#, fuzzy
+msgid "Load Game..."
+msgstr "Load Game"
+
+#: src/gui/widgets/canvas.cpp:290
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:411
+#: src/gui/widgets/canvas.cpp:425
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:806
+#: src/gui/widgets/canvas.cpp:820
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -926,59 +935,63 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:130
+#: src/gui/widgets/settings.cpp:134
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:239
+#: src/gui/widgets/settings.cpp:256
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:298
+#: src/gui/widgets/settings.cpp:316
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:410 src/gui/widgets/window_builder.cpp:361
+#: src/gui/widgets/settings.cpp:428 src/gui/widgets/window_builder.cpp:132
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Map creation failed."
 
-#: src/gui/widgets/settings.cpp:442
+#: src/gui/widgets/settings.cpp:460
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:594
+#: src/gui/widgets/settings.cpp:611
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Map creation failed."
 
-#: src/gui/widgets/window_builder.cpp:423
-#: src/gui/widgets/window_builder.cpp:975
+#: src/gui/widgets/window_builder.cpp:194
+#: src/gui/widgets/window_builder.cpp:892
 #: src/gui/widgets/window_builder.cpp:1067
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:640
+#: src/gui/widgets/window_builder.cpp:419
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:641
+#: src/gui/widgets/window_builder.cpp:420
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:840
+#: src/gui/widgets/window_builder.cpp:660
 #, fuzzy
 msgid "No list defined."
 msgstr "Map creation failed."
 
-#: src/gui/widgets/window_builder.cpp:843
+#: src/gui/widgets/window_builder.cpp:663
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:862
+#: src/gui/widgets/window_builder.cpp:682
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
+msgstr ""
+
+#: src/gui/widgets/window_builder.cpp:998
+msgid "The number of value_labels and values don't match."
 msgstr ""
 
 #: src/hotkeys.cpp:57
@@ -1021,7 +1034,7 @@ msgstr "Zoom Out"
 msgid "Default Zoom"
 msgstr "Default Zoom"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:905
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:958
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -1055,10 +1068,6 @@ msgstr "Save Hotkeys"
 #, fuzzy
 msgid "Save The Map"
 msgstr "Save Map"
-
-#: src/hotkeys.cpp:76
-msgid "Load Game"
-msgstr "Load Game"
 
 #: src/hotkeys.cpp:77
 msgid "Recruit"
@@ -1182,7 +1191,7 @@ msgstr "Skip animation"
 msgid "Set Terrain"
 msgstr "Set Terrain"
 
-#: src/hotkeys.cpp:112 src/hotkeys.cpp:134
+#: src/hotkeys.cpp:112
 msgid "Quit Editor"
 msgstr "Quit Editor"
 
@@ -1214,20 +1223,20 @@ msgstr "Flood Fill"
 msgid "Fill Selection"
 msgstr "Fill Selection"
 
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:151
+#: src/hotkeys.cpp:120 src/hotkeys.cpp:158
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Fill Selection"
 
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:145
+#: src/hotkeys.cpp:121 src/hotkeys.cpp:150
 msgid "Cut"
 msgstr "Cut"
 
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:146
+#: src/hotkeys.cpp:122 src/hotkeys.cpp:151
 msgid "Copy"
 msgstr "Copy"
 
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:147
+#: src/hotkeys.cpp:123 src/hotkeys.cpp:152
 msgid "Paste"
 msgstr "Paste"
 
@@ -1235,11 +1244,11 @@ msgstr "Paste"
 msgid "Revert from Disk"
 msgstr "Revert from Disk"
 
-#: src/hotkeys.cpp:126 src/hotkeys.cpp:163
+#: src/hotkeys.cpp:126
 msgid "Flip Map"
 msgstr "Flip Map"
 
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:149
+#: src/hotkeys.cpp:127 src/hotkeys.cpp:154
 msgid "Select All"
 msgstr "Select All"
 
@@ -1260,6 +1269,10 @@ msgstr "Delay Shroud Updates"
 msgid "Update transitions"
 msgstr ""
 
+#: src/hotkeys.cpp:134
+msgid "Quit to Desktop"
+msgstr ""
+
 #: src/hotkeys.cpp:138
 #, fuzzy
 msgid "Save Map As"
@@ -1269,141 +1282,173 @@ msgstr "Save Map"
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:140
-msgid "Paint Tool"
-msgstr ""
-
 #: src/hotkeys.cpp:141
-msgid "Fill Tool"
+msgid "Swap fore- and background terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:142
 #, fuzzy
+msgid "Next Tool"
+msgstr "Next Turn"
+
+#: src/hotkeys.cpp:143
+msgid "Paint Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:144
+msgid "Fill Tool"
+msgstr ""
+
+#: src/hotkeys.cpp:145
+#, fuzzy
 msgid "Selection Tool"
 msgstr "Select All"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:147
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:148
+#, fuzzy
+msgid "Next Brush"
+msgstr "Next Turn"
+
+#: src/hotkeys.cpp:149
+#, fuzzy
+msgid "Default Brush"
+msgstr "Default Zoom"
+
+#: src/hotkeys.cpp:156
+#, fuzzy
+msgid "Invert Selection"
+msgstr "Fill Selection"
+
+#: src/hotkeys.cpp:160
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Fill Selection"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:162
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Fill Selection"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:164
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:168
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Load Map"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:170
+msgid "Flip Map along X axis"
+msgstr ""
+
+#: src/hotkeys.cpp:172
+msgid "Flip Map along Y axis"
+msgstr ""
+
+#: src/hotkeys.cpp:174
 #, fuzzy
 msgid "Generate Map"
 msgstr "Generate New Map"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:176
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Display"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:178
 msgid "Update Terrain Tranistions"
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:180
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:183
 msgid "Delay Shroud Updates"
 msgstr "Delay Shroud Updates"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:184
 msgid "Update Shroud Now"
 msgstr "Update Shroud Now"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:185
 msgid "Continue Move"
 msgstr "Continue Move"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:186
 msgid "Find Label or Unit"
 msgstr "Find Label or Unit"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:187
 msgid "Speak to Ally"
 msgstr "Speak to Ally"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:188
 msgid "Speak to All"
 msgstr "Speak to All"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:189
 msgid "Help"
 msgstr "Help"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:190
 msgid "View Chat Log"
 msgstr "View Chat Log"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:191
 msgid "Change the language"
 msgstr "Change the language"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:193
 msgid "Enter user command"
 msgstr "Enter user command"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:194
 #, fuzzy
 msgid "Custom command"
 msgstr "Enter user command"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:195
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:196
 #, fuzzy
 msgid "Clear messages"
 msgstr "Clear Labels"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:198
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:199
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:605 src/hotkeys.cpp:950
+#: src/hotkeys.cpp:658 src/hotkeys.cpp:1003
 msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
-#: src/hotkeys.cpp:605 src/hotkeys.cpp:950
+#: src/hotkeys.cpp:658 src/hotkeys.cpp:1003
 msgid "Quit"
 msgstr "Quit"
 
-#: src/hotkeys.cpp:905
+#: src/hotkeys.cpp:958
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Screenshot"
 
-#: src/hotkeys.cpp:912
+#: src/hotkeys.cpp:965
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Screenshot"
 
-#: src/hotkeys.cpp:914
+#: src/hotkeys.cpp:967
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Screenshot"
@@ -1461,11 +1506,11 @@ msgstr "Island"
 msgid "The maximum text width is less than 1."
 msgstr ""
 
-#: src/minimap.cpp:81
+#: src/minimap.cpp:82
 msgid "Could not get image for terrain: $terrain."
 msgstr ""
 
-#: src/minimap.cpp:105 src/minimap.cpp:117
+#: src/minimap.cpp:106 src/minimap.cpp:118
 msgid "Error creating or aquiring an image."
 msgstr ""
 

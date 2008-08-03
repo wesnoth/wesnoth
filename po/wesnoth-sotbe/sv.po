@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-07-13 17:51+0200\n"
+"POT-Creation-Date: 2008-08-03 10:57+0200\n"
 "PO-Revision-Date: 2007-11-27 21:12+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -76,21 +76,21 @@ msgstr ""
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:26
-msgid "Conception and Original Design"
+msgid "Campaign Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:32
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:37
+msgid "Campaign Maintenance"
+msgstr ""
+
+#. [about]
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:47
 msgid "Prose, Grammatical and WML Assistance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:38
-msgid "Completion and Maintenance"
-msgstr ""
-
-#. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:44
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:53
 msgid "Artwork and Graphics"
 msgstr ""
 
@@ -108,6 +108,7 @@ msgstr "Besegra Albert och hans trupper"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:23
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:27
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:618
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:24
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:23
@@ -135,6 +136,7 @@ msgstr "Kapou'e dör"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:43
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:39
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:630
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:239
@@ -846,6 +848,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:38
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:31
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:622
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:28
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:37
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:27
@@ -1003,6 +1006,7 @@ msgstr "Häv Barag Górs belägring"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:35
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:626
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:32
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:354
@@ -1239,15 +1243,15 @@ msgstr ""
 #. [unit]: type=Orcish Assassin
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:548
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:677
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:693
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:713
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:701
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:717
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:737
 msgid "Jetto"
 msgstr "Jetto"
 
 #. [message]: speaker=Jetto
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:566
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:730
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:754
 msgid ""
 "Freedom! Many thanks, Son of the Black-Eye. I'm Jetto, master of assassins, "
 "now you can count on the assassins' guild to help you in your quest!"
@@ -1284,13 +1288,23 @@ msgid ""
 msgstr ""
 "Det stämmer! Låt oss nu driva bort de där trädkramarna till deras skogar!"
 
+#. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:19
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:614
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:18
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:534
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:18
+msgid "Defeat all enemy leaders"
+msgstr "Besegra alla fiendeledare"
+
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:616
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:640
 msgid "At last! The siege has been broken."
 msgstr "Äntligen! Belägringen är bruten."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:621
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:645
 msgid ""
 "Thank you, Son of the Black-Eye. If you hadn't arrived when you did, I don't "
 "know what would be our fate."
@@ -1299,29 +1313,29 @@ msgstr ""
 "kunde ha hänt."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:626
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:650
 msgid "No problem! It was fun, wasn't it, Grüü?"
 msgstr "Inga problem! Det var bara roligt, eller hur, Grüü?"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:631
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:655
 msgid "Hahaha! Yeah!"
 msgstr "Hahaha! Ja!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:636
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:660
 msgid ""
 "But, actually, we have come all the way from our lands to seek your help."
 msgstr ""
 "Men, vi har faktiskt kommit hit från våra länder för att be om er hjälp."
 
 #. [message]: speaker=Vraurk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:641
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:665
 msgid "Why? What's wrong?"
 msgstr "Varför då? Vad är det som har hänt?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:646
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:670
 msgid ""
 "Those insolent humans have massed a huge army and attacked us. We defeated "
 "their vanguard but in the end we were forced to retreat."
@@ -1330,7 +1344,7 @@ msgstr ""
 "Vi besegrade deras förtrupp, men vi blev till slut tvungna att retirera."
 
 #. [message]: speaker=Pirk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:651
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:675
 msgid ""
 "Hmmmm, this situation is very serious. As you know by now, they have also "
 "hired these elves to attack us here."
@@ -1339,31 +1353,31 @@ msgstr ""
 "de här alverna för att anfalla oss här."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:656
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:680
 msgid "Yes. It seems to me that the humans are declaring all-out war on us."
 msgstr "Ja, det verkar som att människorna förklarar krig mot oss alla."
 
 #. [message]: speaker=Gork
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:661
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:685
 msgid ""
 "We must give this matter careful consideration. Come inside the city, and "
 "we'll discuss it."
 msgstr "Vi måste noga överväga detta. Kom in i staden, så diskuterar vi saken."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:679
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:703
 msgid ""
 "Son of the Black-Eye! Could I ask for my release from this blighted cage?"
 msgstr ""
 "Svartögats son! Får jag be om att släppas ut från denna förbannade bur?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:684
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:708
 msgid "How did you get captured by the likes of these?"
 msgstr "Hur togs du tillfånga av sådana som dessa?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:695
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:719
 msgid ""
 "The Barag Gór council sent me to assassinate the elvish leaders. "
 "Unfortunately, I was captured."
@@ -1372,7 +1386,7 @@ msgstr ""
 "oturen att bli tillfångatagen."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:700
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:724
 msgid "Fine, someone go release him."
 msgstr "Visst, gå och släpp honom fri, någon."
 
@@ -1381,15 +1395,6 @@ msgstr "Visst, gå och släpp honom fri, någon."
 #, fuzzy
 msgid "To the Harbour of Tirigaz"
 msgstr "Till Tirigaz hamn"
-
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:18
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:534
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:18
-msgid "Defeat all enemy leaders"
-msgstr "Besegra alla fiendeledare"
 
 #. [side]: type=Lich
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:157
