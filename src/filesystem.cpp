@@ -422,7 +422,7 @@ bool create_directory_if_missing(const std::string& dirname)
 #define PREFERENCES_DIR ".wesnoth"
 #endif
 
-std::string setup_user_data_dir()
+static std::string setup_user_data_dir()
 {
 #ifdef _WIN32
 	_mkdir("userdata");
