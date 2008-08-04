@@ -22,8 +22,12 @@
 #  define LOCALEDIR "translations"
 # endif
 #endif
+#ifndef VERSION
 #define VERSION "1.5.2+svn"
+#endif
+#ifndef PACKAGE
 #define PACKAGE "wesnoth"
+#endif
 
 /**
  * Some older savegames of Wesnoth cannot be loaded anymore,

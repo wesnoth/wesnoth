@@ -72,6 +72,20 @@ namespace test_utils {
 		SDL_WarpMouse(event_.motion.x,event_.motion.y);
 	}
 
+	event_node_mouse_click::event_node_mouse_click(size_t time, SDL_Event& event) : event_node(time,event)
+	{}
+	void event_node_mouse_click::fire_event()
+	{
+		// We have to use temporaries because of difference
+		// in types for mouse position.
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		event_.button.x = x;
+		event_.button.y = y;
+		event_node::fire_event();
+	}
+
+
 	fake_event_source::fake_event_source() : frame_count_(0)
 	{
 	}
@@ -129,6 +143,34 @@ namespace test_utils {
 		event_node_ptr new_move(new event_node_mouse_motion(time, event));
 		add_event(new_move);
 		return new_move;
+	}
+
+	SDL_Event fake_event_source::make_mouse_click_event(const Uint8 type, const Uint8 button)
+	{
+		SDL_Event event;
+		event.type = type;
+		if (type == SDL_MOUSEBUTTONDOWN)
+			event.button.state = SDL_PRESSED;
+		else
+			event.button.state = SDL_RELEASED;
+		event.button.button = button;
+		return event;
+	}
+
+	event_node_ptr fake_event_source::mouse_press(const size_t time, const Uint8 button)
+	{
+		SDL_Event event = make_mouse_click_event(SDL_MOUSEBUTTONDOWN, button);
+		event_node_ptr new_click(new event_node_mouse_click(time, event));
+		add_event(new_click);
+		return new_click;
+	}
+
+	event_node_ptr fake_event_source::mouse_release(const size_t time, const Uint8 button)
+	{
+		SDL_Event event = make_mouse_click_event(SDL_MOUSEBUTTONDOWN, button);
+		event_node_ptr new_click(new event_node_mouse_click(time, event));
+		add_event(new_click);
+		return new_click;
 	}
 
 	event_node_ptr fake_event_source::press_key(const size_t time, const SDLKey key, const SDLMod mod)

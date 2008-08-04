@@ -48,12 +48,19 @@ namespace test_utils {
 		event_node(const size_t time, const SDL_Event& event);
 		virtual ~event_node();
 
+		/**
+		 * Used to fire sdl event stored in this object.
+		 * Child class may extend or override functionality
+		 **/
 		virtual void fire_event();
 		/**
-		 * @return true if this should stop firing events
+		 * Test if this event should fire now
 		 **/
 		bool test_if_should_fire(const size_t frame_count ) const;
 
+		/**
+		 * @return true if this event has fired
+		 **/
 		bool is_fired() const;
 
 		/**
@@ -62,15 +69,33 @@ namespace test_utils {
 		bool operator<(const event_node& o) const;
 	};
 
+	/**
+	 * modifies SDL_GetKeyState table to have 
+	 * correct state.
+	 **/
 	class event_node_keyboard : public event_node {
 		public:
 			event_node_keyboard(size_t time, SDL_Event& event);
 			virtual void fire_event();
 	};
 
+	/**
+	 * Uses special SDL_WarpMouse function to
+	 * generate mouse move events
+	 **/
 	class event_node_mouse_motion : public event_node {
 		public:
 			event_node_mouse_motion(size_t time, SDL_Event& event);
+			virtual void fire_event();
+	};
+
+	/**
+	 * Used to create SDL_MOUSEBUTTONDOWN/UP events
+	 * with correct x,y values
+	 **/
+	class event_node_mouse_click : public event_node {
+		public:
+			event_node_mouse_click(size_t time, SDL_Event& event);
 			virtual void fire_event();
 	};
 
@@ -93,20 +118,50 @@ namespace test_utils {
 			event_queue queue_;
 
 			SDL_Event make_key_event(Uint8 type, const SDLKey key, const SDLMod mod);
+			SDL_Event make_mouse_click_event(const Uint8 type, const Uint8 button);
 		public:
 			fake_event_source();
 			~fake_event_source();
+
+			/**
+			 * adds a generic event to queue
+			 **/
 			void add_event(const size_t time, const SDL_Event& event);
+			/**
+			 * adds any type of event to queue
+			 **/
 			void add_event(event_node_ptr new_node);
+
+			/**
+			 * Sets event time source back to zero
+			 **/
 			void start();
 
+			/**
+			 * adds keyboard press event to queue
+			 **/
 			event_node_ptr press_key(const size_t time, const SDLKey key, const SDLMod mod = KMOD_NONE);
+			/**
+			 * adds keyboard release event to queue
+			 **/
 			event_node_ptr release_key(const size_t time, const SDLKey key, const SDLMod mod =KMOD_NONE);
 
+			/**
+			 * Adds mouse motion event to queue
+			 **/
 			event_node_ptr move_mouse(const size_t time, const int x, const int y);
+			/**
+			 * adds mouse button click event to queue
+			 **/
 			event_node_ptr mouse_press(const size_t time, const Uint8 button);
+			/**
+			 * adds mouse button realease event to queue
+			 **/
 			event_node_ptr mouse_release(const size_t time, const Uint8 button);
 
+			/**
+			 * Called by events::pump() to fire events
+			 **/
 			void process(events::pump_info& /*info*/);
 	};
 }
