@@ -212,7 +212,7 @@ private:
 	bool jump_to_campaign_, jump_to_multiplayer_;
 #ifdef USE_EDITOR2
 	bool jump_to_editor_;
-#endif	
+#endif
 };
 
 game_controller::game_controller(int argc, char** argv)
@@ -333,7 +333,7 @@ game_controller::game_controller(int argc, char** argv)
 #ifdef USE_EDITOR2
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
-#endif			
+#endif
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -391,7 +391,7 @@ game_display& game_controller::disp()
 	return *disp_.get();
 }
 
-bool game_controller::detect_video_settings() 
+bool game_controller::detect_video_settings()
 {
 	video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 	resolution  = preferences::resolution();
@@ -1130,7 +1130,7 @@ void game_controller::start_wesnothd()
 	typedef std::vector<std::string> path_store;
 	// add all paths to try to list
 	path_store paths_to_try;
-	
+
 	if (!preferences::get_mp_server_program_name().empty())
 		paths_to_try.push_back(preferences::get_mp_server_program_name());
 
@@ -1138,7 +1138,7 @@ void game_controller::start_wesnothd()
 
 	paths_to_try.push_back(wesnothd_quess);
 
-	
+
 	std::string needle = "wesnothd";
 	size_t found = wesnothd_quess.rfind(needle);
 	if (found != std::string::npos)
@@ -2045,7 +2045,7 @@ static int process_command_args(int argc, char** argv) {
 			return 0;
 		}
 	}
-	
+
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
 	return -1;
 }
@@ -2053,11 +2053,11 @@ static int process_command_args(int argc, char** argv) {
 /**
  * I would prefer to setup locale first so that early error
  * messages can get localized, but we need the game_controller
- * initialized to have get_intl_dir() to work.  Note: setlocale() 
+ * initialized to have get_intl_dir() to work.  Note: setlocale()
  * does not take GUI language setting into account.
  */
 static void init_locale() {
-	#ifdef _WIN32	
+	#ifdef _WIN32
 	    std::setlocale(LC_ALL, "English");
 	#else
 		std::setlocale(LC_ALL, "C");
@@ -2276,6 +2276,9 @@ int main(int argc, char** argv)
 #endif
 
 	try {
+		//trigger any one-time static initializations
+		unit_animation::init_tag_names();
+
 		/**
 		 * @todo We try to guess the name of the server from the name of the
 		 * binary started. This is very fragile it breaks in at least the

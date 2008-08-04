@@ -27,12 +27,14 @@ class game_display;
 class attack_type;
 
 class unit_animation
-{		
+{
 		/** Shouldn't be used so only declared. */
 		unit_animation();
 	public:
 		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1} variation_type;
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
+		static std::vector<std::string> all_tag_names;
+		static void init_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
@@ -115,7 +117,7 @@ class unit_animation
 		particule unit_anim_;
 };
 
-class unit_animator 
+class unit_animator
 {
 	public:
 		unit_animator() :
@@ -123,8 +125,8 @@ class unit_animator
 			start_time_(INT_MIN)
 		{
 		}
-			
-			
+
+
 		void add_animation(unit* animated_unit,const std::string& event,
 				const gamemap::location &src = gamemap::location::null_location,
 				const int value=0,bool with_bars = false,bool cycles = false,
@@ -153,7 +155,7 @@ class unit_animator
 		void wait_until( int animation_time) const;
 	private:
 		 struct anim_elem {
-			
+
 			anim_elem() :
 				my_unit(0),
 				animation(0),

@@ -471,20 +471,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	reset_modifications();
 
 	// Remove old animations
-	cfg_.clear_children("animation");
-	cfg_.clear_children("defend");
-	cfg_.clear_children("teleport_anim");
-	cfg_.clear_children("extra_anim");
-	cfg_.clear_children("death");
-	cfg_.clear_children("movement_anim");
-	cfg_.clear_children("standing_anim");
-	cfg_.clear_children("healing_anim");
-	cfg_.clear_children("victory_anim");
-	cfg_.clear_children("idle_anim");
-	cfg_.clear_children("levelin_anim");
-	cfg_.clear_children("levelout_anim");
-	cfg_.clear_children("healed_anim");
-	cfg_.clear_children("poison_anim");
+	foreach(const std::string& tag_name, unit_animation::all_tag_names) {
+		cfg_.clear_children(tag_name);
+	}
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -1363,20 +1352,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	// Attach animations for this unit to the in-core object
 	unit_animation::fill_initial_animations(animations_,cfg_);
 	// Remove animations from private cfg, they're not needed there now
-	cfg_.clear_children("animation");
-	cfg_.clear_children("defend");
-	cfg_.clear_children("teleport_anim");
-	cfg_.clear_children("extra_anim");
-	cfg_.clear_children("death");
-	cfg_.clear_children("movement_anim");
-	cfg_.clear_children("standing_anim");
-	cfg_.clear_children("healing_anim");
-	cfg_.clear_children("victory_anim");
-	cfg_.clear_children("idle_anim");
-	cfg_.clear_children("levelin_anim");
-	cfg_.clear_children("levelout_anim");
-	cfg_.clear_children("healed_anim");
-	cfg_.clear_children("poison_anim");
+	foreach(const std::string& tag_name, unit_animation::all_tag_names) {
+		cfg_.clear_children(tag_name);
+	}
 
 	if(cfg["hitpoints"] != "") {
 		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
@@ -3116,21 +3094,10 @@ std::string get_checksum(const unit& u) {
 	unit_config["name"] = "";
 	unit_config["overlays"] = "";
 	// Non-critical tags to ignore.
-	unit_config.clear_children("animation");
-	unit_config.clear_children("attack_anim");
 	unit_config.clear_children("comment");
-	unit_config.clear_children("defend");
-	unit_config.clear_children("death");
-	unit_config.clear_children("extra_anim");
-	unit_config.clear_children("idle_anim");
-	unit_config.clear_children("healed_anim");
-	unit_config.clear_children("healing_anim");
-	unit_config.clear_children("level_in");
-	unit_config.clear_children("level_out");
-	unit_config.clear_children("movement_anim");
-	unit_config.clear_children("poison_anim");
-	unit_config.clear_children("standing_anim");
-	unit_config.clear_children("victory_anim");
+	foreach(const std::string& tag_name, unit_animation::all_tag_names) {
+		unit_config.clear_children(tag_name);
+	}
 
 	return unit_config.hash();
 }

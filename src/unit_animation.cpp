@@ -34,6 +34,29 @@
 #include <cstdlib>
 #include <iostream>
 
+//static initialization
+std::vector<std::string> unit_animation::all_tag_names;
+void unit_animation::init_tag_names() {
+	unit_animation::all_tag_names.clear();
+	unit_animation::all_tag_names.push_back("animation");
+	unit_animation::all_tag_names.push_back("attack_anim");
+	unit_animation::all_tag_names.push_back("death");
+	unit_animation::all_tag_names.push_back("defend");
+	unit_animation::all_tag_names.push_back("extra_anim");
+	unit_animation::all_tag_names.push_back("healed_anim");
+	unit_animation::all_tag_names.push_back("healing_anim");
+	unit_animation::all_tag_names.push_back("idle_anim");
+	unit_animation::all_tag_names.push_back("leading_anim");
+	unit_animation::all_tag_names.push_back("levelin_anim");
+	unit_animation::all_tag_names.push_back("levelout_anim");
+	unit_animation::all_tag_names.push_back("movement_anim");
+	unit_animation::all_tag_names.push_back("poison_anim");
+	unit_animation::all_tag_names.push_back("recruit_anim");
+	unit_animation::all_tag_names.push_back("standing_anim");
+	unit_animation::all_tag_names.push_back("teleport_anim");
+	unit_animation::all_tag_names.push_back("victory_anim");
+}
+
 config unit_animation::prepare_animation(const config &cfg,const std::string animation_tag)
 {
 	config expanded_animations;
@@ -103,7 +126,7 @@ unit_animation::unit_animation(int start_time,
 		secondary_unit_filter_(),
 		directions_(),
 		frequency_(0),
-		base_score_(variation), 
+		base_score_(variation),
 		event_(utils::split(event)),
 		value_(),
 		primary_attack_filter_(),
@@ -587,13 +610,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 }
 
-void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset) 
+void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset)
 {
 	set_begin_time(start_time);
 	if(!highlight.empty()) parameters_.highlight(highlight);
 	if(!offset.empty()) parameters_.offset(offset);
 	if(!blend_ratio.empty()) parameters_.blend(blend_ratio,blend_color);
-	
+
 
 }
 
@@ -666,7 +689,7 @@ bool unit_animation::animation_finished_potential() const
 	return true;
 }
 
-void unit_animation::update_last_draw_time() 
+void unit_animation::update_last_draw_time()
 {
 	double acceleration = unit_anim_.accelerate ? game_display::get_singleton()->turbo_speed() : 1.0;
 	unit_anim_.update_last_draw_time(acceleration);
@@ -785,7 +808,7 @@ unit_animation::particule::~particule()
 }
 
 void unit_animation::particule::start_animation(int start_time,
-	const gamemap::location &src, const gamemap::location &dst, 
+	const gamemap::location &src, const gamemap::location &dst,
 	bool cycles)
 {
 	halo::remove(halo_id_);
@@ -841,7 +864,7 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::strin
 	if(!animated_unit) return;
 	game_display*disp = game_display::get_singleton();
 	if(animated_unit->get_animation() &&
-			!animated_unit->get_animation()->animation_finished_potential() && 
+			!animated_unit->get_animation()->animation_finished_potential() &&
 			animated_unit->get_animation()->matches(*disp,src,animated_unit,event,value,hit_type,attack,second_attack,swing_num) >unit_animation::MATCH_FAIL) {
 		anim_elem tmp;
 		tmp.my_unit = animated_unit;
@@ -876,7 +899,7 @@ void unit_animator::start_animations()
 		} else {
 			anim->my_unit->get_animation()->update_parameters(anim->src,anim->src.get_direction(anim->my_unit->facing()));
 		}
-		
+
 	}
 }
 
@@ -898,7 +921,7 @@ void unit_animator::wait_until(int animation_time) const
                 end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 		events::pump();
 		disp->delay(maximum<int>(0,
-			minimum<int>(10, 
+			minimum<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 	}
 	disp->delay(maximum<int>(0,end_tick - SDL_GetTicks() +5));
@@ -920,11 +943,11 @@ void unit_animator::wait_for_end() const
 	}
 }
 int unit_animator::get_animation_time() const{
-	return animated_units_[0].my_unit->get_animation()->get_animation_time() ; 
+	return animated_units_[0].my_unit->get_animation()->get_animation_time() ;
 }
 
 int unit_animator::get_animation_time_potential() const{
-	return animated_units_[0].my_unit->get_animation()->get_animation_time_potential() ; 
+	return animated_units_[0].my_unit->get_animation()->get_animation_time_potential() ;
 }
 
 int unit_animator::get_end_time() const
