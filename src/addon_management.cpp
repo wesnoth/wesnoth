@@ -557,9 +557,9 @@ namespace {
 		}
 	}
 	
-	void addons_update_dlg(game_display& disp, config& cfg, const config::child_list& remote_addons_list,
-	                       const network::manager& net_manager, const network::connection& sock,
-	                       bool* do_refresh)
+	void addons_update_dlg(game_display& disp, config& /*cfg*/, const config::child_list& remote_addons_list,
+	                       const network::manager& /*net_manager*/, const network::connection& /*sock*/,
+	                       bool* /*do_refresh*/)
 	{
 		std::vector< config* > matches_cfgs;
 		std::vector< std::string > safe_matches;
