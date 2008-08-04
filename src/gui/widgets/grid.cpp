@@ -569,11 +569,7 @@ tpoint tgrid::tchild::get_best_size(const tpoint& maximum) const
 		return border_space();
 	}
 
-	//@todo Add the full set of operators to point.
-	tpoint max = maximum;
-	max.x -= border_space().x;
-	max.y -= border_space().y;
-	best_size_ =  widget_->get_best_size(max) + border_space();
+	best_size_ =  widget_->get_best_size(maximum - border_space()) + border_space();
 
 	DBG_G << "Grid child : maximum size " 
 		<< maximum << " returning " << best_size_ << ".\n";

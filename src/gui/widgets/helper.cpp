@@ -73,6 +73,13 @@ tpoint& tpoint::operator+=(const tpoint& point)
 	return *this;
 }
 
+tpoint& tpoint::operator-=(const tpoint& point)
+{ 
+	x -= point.x; 
+	y -= point.y;
+	return *this;
+}
+
 std::ostream &operator<<(std::ostream &stream, const tpoint& point)
 {
 	stream << point.x << ',' << point.y;

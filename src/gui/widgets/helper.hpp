@@ -59,6 +59,10 @@ struct tpoint
 
 	tpoint& operator+=(const tpoint& point);
 
+	tpoint operator-(const tpoint& point) const 
+		{ return tpoint(x - point.x, y - point.y); }
+
+	tpoint& operator-=(const tpoint& point);
 };
 
 std::ostream &operator<<(std::ostream &stream, const tpoint& point);
