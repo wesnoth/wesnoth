@@ -299,6 +299,8 @@ SET(wesnoth-main_SRC
     variable.cpp
     variant.cpp
     widgets/combo.cpp
+	widgets/combo_drag.cpp
+	widgets/drop_target.cpp
     widgets/scrollpane.cpp
 )
 
@@ -466,7 +468,9 @@ SET(test_SRC
 	tests/utils/fake_event_source.cpp 
     tests/test_util.cpp
 	tests/test_network_worker.cpp
-	tests/test_save_dialog.cpp
+	tests/test_team.cpp
+	tests/gui/test_save_dialog.cpp
+	tests/gui/test_drop_target.cpp
     ${wesnoth-main_SRC}
 )
 
