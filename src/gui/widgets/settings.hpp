@@ -43,6 +43,7 @@ enum twindow_type {
 	MP_CREATE_GAME,          /**< The mp creation dialog. */
 #ifdef USE_EDITOR2
 	EDITOR_NEW_MAP,          //<! New map dialog
+	EDITOR_GENERATE_MAP,     /** Editor random map genarator dialog */
 #endif
 	DUMMY                    //<! Dummy always the last one.
 };

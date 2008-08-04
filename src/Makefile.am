@@ -153,6 +153,7 @@ wesnoth_source = \
     
 # used with editor2 option in the wesnoth target
 wesnoth_editor2_SOURCES = \
+	gui/dialogs/editor_generate_map.cpp \
 	gui/dialogs/editor_new_map.cpp \
 	editor2/action.cpp \
 	editor2/brush.cpp \

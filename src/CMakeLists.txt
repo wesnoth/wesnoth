@@ -308,6 +308,7 @@ SET(wesnoth-main_SRC
 IF(ENABLE_EDITOR2)
 
 SET(wesnoth-editor2_SRC
+    gui/dialogs/editor_generate_map.cpp
     gui/dialogs/editor_new_map.cpp
     editor2/action.cpp
     editor2/brush.cpp

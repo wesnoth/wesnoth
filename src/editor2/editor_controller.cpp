@@ -20,6 +20,7 @@
 #include "mouse_action.hpp"
 
 #include "gui/dialogs/editor_new_map.hpp"
+#include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/widgets/button.hpp"
 
 #include "../config_adapter.hpp"
@@ -31,6 +32,8 @@
 #include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../hotkeys.hpp"
+#include "../map_create.hpp"
+#include "../mapgen.hpp"
 #include "../preferences.hpp"
 #include "../wml_exception.hpp"
 
@@ -42,7 +45,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
 , mouse_handler_base(get_map())
 , map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
-, gui_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
+, gui_(NULL), map_generator_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
 , auto_update_transitions_(true)
 {
 	init(video);
@@ -78,6 +81,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	palette_->adjust_size();
 	refresh_all();
 	gui_->draw();
+	palette_->draw(true);
 	events::raise_draw_event();	
 }
 
@@ -96,6 +100,7 @@ editor_controller::~editor_controller()
 	delete palette_;
 	delete size_specs_;
 	delete floating_label_manager_;
+	delete map_generator_;
     delete gui_;
 	typedef std::pair<hotkey::HOTKEY_COMMAND, mouse_action*> apr;
 	foreach (apr a, mouse_actions_) {
@@ -152,7 +157,7 @@ void editor_controller::load_map_dialog()
 void editor_controller::new_map_dialog()
 {
 	if (!confirm_discard()) return;
-	gui2::teditor_new_map dialog;;
+	gui2::teditor_new_map dialog;
 	dialog.set_map_width(get_map().total_width());
 	dialog.set_map_height(get_map().total_height());
 	
@@ -194,6 +199,30 @@ void editor_controller::save_map_as_dialog()
 	} while (overwrite_res != 0);
 
 	save_map_as(input_name);
+}
+
+
+void editor_controller::generate_map_dialog()
+{
+	if (map_generator_ == NULL) {
+		// Initialize the map generator if it has not been used before
+		const config* const toplevel_cfg = game_config_.find_child("multiplayer","id","multiplayer_Random_Map");
+		const config* const cfg = toplevel_cfg == NULL ? NULL : toplevel_cfg->child("generator");
+		if (cfg == NULL) {
+			WRN_ED << "No random map generator\n";
+			return;
+		}
+		else {
+			map_generator_ = create_map_generator("", cfg);
+		}
+	}
+	if (!confirm_discard()) return;
+	if (!confirm_discard()) return;
+	gui2::teditor_generate_map dialog;
+	dialog.show(gui().video());
+	if (map_generator_->allow_user_config()) {
+		map_generator_->user_config(gui());
+	}
 }
 
 bool editor_controller::save_map_as(const std::string& filename)
@@ -339,6 +368,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_REFRESH:
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
+		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
 			return true;
 		default:
 			return false;
@@ -432,6 +462,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			save_map_as_dialog();
 			return true;
+		case HOTKEY_EDITOR_MAP_GENERATE:
+			generate_map_dialog();
+			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 			auto_update_transitions_ = !auto_update_transitions_;
 			if (!auto_update_transitions_) {
@@ -445,6 +478,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			reload_map();
 			return true;
 			break;
+		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
+			refresh_image_cache();
+			return true;
 		default:
 			return controller_base::execute_command(command, index);
 	}
@@ -582,6 +618,10 @@ mouse_action* editor_controller::get_mouse_action()
 	return mouse_action_;
 }
 
+void editor_controller::refresh_image_cache() {
+	image::flush_cache();
+	refresh_all();
+}
 
 void editor_controller::refresh_after_action(bool drag_part)
 {

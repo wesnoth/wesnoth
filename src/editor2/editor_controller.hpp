@@ -33,6 +33,7 @@
 #include <boost/utility.hpp>
 
 class config;
+class map_generator;
 
 namespace tooltips {
 class manager;
@@ -69,6 +70,7 @@ class editor_controller : public controller_base,
 		void load_map_dialog();
 		void new_map_dialog();
 		void save_map_as_dialog();
+		void generate_map_dialog();
 		bool save_map(bool display_confirmation = false);
 		bool save_map_as(const std::string& filename);
 		void new_map(int width, int height, t_translation::t_terrain fill);
@@ -111,6 +113,8 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
 		
+		void refresh_image_cache();
+		
 		void refresh_after_action(bool drag_part = false);
 		
 		void refresh_all();
@@ -130,6 +134,8 @@ class editor_controller : public controller_base,
 		
 		/** The display object used and owned by the editor. */
 		editor_display* gui_;
+		
+		map_generator* map_generator_;
 		
 		size_specs* size_specs_;
 		terrain_palette* palette_;

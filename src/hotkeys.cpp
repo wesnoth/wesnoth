@@ -178,6 +178,9 @@ const struct {
 		N_("Update Terrain Tranistions"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", 
 		N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },	
+	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", 
+		N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR },	
+	
 #endif
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false, hotkey::SCOPE_GAME },
