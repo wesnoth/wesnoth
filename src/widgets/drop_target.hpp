@@ -53,16 +53,12 @@ namespace gui {
 		static drop_target_group create_group();
 		static void delete_group(const drop_target_group id);
 		
-		// We allow access for unit test to call handle_drop
-#ifdef BOOST_TEST_DYN_LINK
-		public:	
-		static bool empty()
-		{
-			return groups_.empty() && next_id_.empty();
-		}
-#else
 		protected:
-#endif
+		/**
+		 * Used to check if static storages are empty.
+		 * Only for testing.
+		 **/
+		static bool empty()	{ return groups_.empty() && next_id_.empty(); }
 		/**
 		 * Called by widget object when droping happens.
 		 *
@@ -102,7 +98,7 @@ namespace gui {
 		drop_group_manager();
 		~drop_group_manager();
 
-		const drop_target_group get_group_id() const;
+		drop_target_group get_group_id() const;
 	};
 
 }

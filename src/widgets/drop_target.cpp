@@ -112,7 +112,7 @@ namespace gui {
 		drop_target::delete_group(group_id_);
 	}
 
-	const drop_target_group drop_group_manager::get_group_id() const
+	drop_target_group drop_group_manager::get_group_id() const
 	{
 		return group_id_;
 	}

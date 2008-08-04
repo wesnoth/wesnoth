@@ -23,6 +23,24 @@
 
 BOOST_AUTO_TEST_SUITE( test_drop_target )
 
+	/**
+	 * Specialized testing class so unit test
+	 * can call protected member functions to
+	 * simulate drop operation
+	 **/
+	class test_drop_target : public gui::drop_target {
+		public:
+		test_drop_target(gui::drop_group_manager_ptr group, const SDL_Rect& loc) : gui::drop_target(group, loc)
+		{}
+
+		int handle_drop() {
+			return gui::drop_target::handle_drop();
+		}
+		static bool empty() {
+			return gui::drop_target::empty();
+		};
+	};
+
 BOOST_AUTO_TEST_CASE( test_create_group )
 {
 
@@ -44,11 +62,11 @@ typedef std::vector<gui::drop_target_ptr> target_store;
 
 void create_drop_targets(const SDL_Rect& loc, gui::drop_group_manager_ptr group, target_store& targets, int& id_counter)
 {
-	gui::drop_target_ptr new_target(new gui::drop_target(group, loc));
+	gui::drop_target_ptr new_target(new test_drop_target(group, loc));
 	BOOST_CHECK_EQUAL(id_counter++, new_target->get_id());
 	// Test that drop gives -1 correctly for non overlapping
 	// targets
-	BOOST_CHECK_EQUAL(new_target->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(new_target.get())->handle_drop(), -1);
 	targets.push_back(new_target);
 }
 
@@ -81,15 +99,15 @@ BOOST_AUTO_TEST_CASE( test_create_drop_targets )
 	locations[2].y = 190;
 
 	// Check for correct drop results
-	BOOST_CHECK_EQUAL(targets[2]->handle_drop(), 3);
-	BOOST_CHECK_EQUAL(targets[3]->handle_drop(), 2);
-	BOOST_CHECK_EQUAL(targets[1]->handle_drop(), -1);
-	BOOST_CHECK_EQUAL(targets[4]->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[2].get())->handle_drop(), 3);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[3].get())->handle_drop(), 2);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[1].get())->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[4].get())->handle_drop(), -1);
 }
 
 BOOST_AUTO_TEST_CASE( check_memory_leaks )
 {
-	BOOST_CHECK(gui::drop_target::empty());
+	BOOST_CHECK(test_drop_target::empty());
 }
 
 BOOST_AUTO_TEST_CASE( test_multiple_drop_groups )
@@ -137,15 +155,15 @@ BOOST_AUTO_TEST_CASE( test_multiple_drop_groups )
 	locations[2].y = 190;
 
 	// Check for correct drop results
-	BOOST_CHECK_EQUAL(targets[2]->handle_drop(), 3);
-	BOOST_CHECK_EQUAL(targets[3]->handle_drop(), 2);
-	BOOST_CHECK_EQUAL(targets[1]->handle_drop(), -1);
-	BOOST_CHECK_EQUAL(targets[4]->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[2].get())->handle_drop(), 3);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[3].get())->handle_drop(), 2);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[1].get())->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets[4].get())->handle_drop(), -1);
 
 	locations2[2].y = 180;
 	locations2[2].x = 50;
 
-	BOOST_CHECK_EQUAL(targets2[2]->handle_drop(), -1);
+	BOOST_CHECK_EQUAL(static_cast<test_drop_target*>(targets2[2].get())->handle_drop(), -1);
 
 }
 
