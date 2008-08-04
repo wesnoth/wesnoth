@@ -14,7 +14,7 @@
 #include <boost/test/auto_unit_test.hpp>
 #include "team.hpp"
 
-BOOST_AUTO_TEST_SUITE( team )
+BOOST_AUTO_TEST_SUITE( teams )
 
 BOOST_AUTO_TEST_CASE( test_user_team_name )
 {
