@@ -676,6 +676,7 @@ tlistbox::trow::trow(const tbuilder_grid& list_builder_,
 		std::string /* member id */, t_string /* member value */> >& data) :
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
+	canvas_(),
 	selected_(false)
 {
 	assert(grid_);
