@@ -157,7 +157,7 @@ values can be listed with 'scons -h'.
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
-""" + opts.GenerateHelpText(env))
+""" + opts.GenerateHelpText(env, sort=cmp))
 
 if env["cachedir"] and not env['ccache']:
     CacheDir(env["cachedir"])
