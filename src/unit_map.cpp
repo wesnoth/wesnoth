@@ -29,10 +29,10 @@
 typedef std::pair<std::string, std::pair<bool, std::pair<gamemap::location, unit>*> > umap_pair;
 
 unit_map::unit_map(const gamemap::location &loc, const unit &u) : 
-	num_iters_(0), 
-	num_invalid_(0),
 	map_(),
-	lmap_()
+	lmap_(),
+	num_iters_(0), 
+	num_invalid_(0)
 {
 	add(new std::pair<gamemap::location,unit>(loc, u));
 }
