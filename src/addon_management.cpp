@@ -21,6 +21,7 @@
 #include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
+#include "formatter.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -561,7 +562,7 @@ namespace {
 	                       const network::manager& /*net_manager*/, const network::connection& /*sock*/,
 	                       bool* /*do_refresh*/)
 	{
-		std::vector< config* > matches_cfgs;
+		std::vector< config* > remote_matches_cfgs;
 		std::vector< std::string > safe_matches;
 		std::vector< std::string > unsafe_matches;
 		std::ostringstream unsafe_list;
@@ -572,26 +573,37 @@ namespace {
 		std::vector<addon_version_info> safe_local_versions;
 		std::vector<addon_version_info> unsafe_local_versions;
 		std::map<std::string, addon_version_info> remote_version_map;
-		foreach(const config* remote_addon, remote_addons_list) {
+		foreach(config* const remote_addon, remote_addons_list) {
 			if(remote_addon == NULL) continue; // shouldn't happen...
 			const std::string& name = (*remote_addon)["name"];
 			const std::string& version = (*remote_addon)["version"];
-			remote_version_map.insert(std::make_pair(name, addon_version_info(version)));
+			try {
+				remote_version_map.insert(std::make_pair(name, addon_version_info(version)));
+			} catch(addon_version_info_not_sane_exception const&) {
+				ERR_CFG << "remote add-on '" << name << "' has invalid version string '" << version << "', skipping from updates check...\n";
+				continue;
+			}
 			std::vector<std::string>::const_iterator local_match =
-				std::find(all_local.begin(), all_local.end(), name);
-			if(local_match != all_local.end()) {
-				const addon_version_info& local_version = get_addon_version_info(name);
-				if(remote_version_map[name] > local_version) {
-					if(std::find(all_publish.begin(), all_publish.end(), name) != all_publish.end()) {
-						unsafe_matches.push_back(name);
-						unsafe_local_versions.push_back(local_version);
-						unsafe_list << '\n';
-						unsafe_list << name << " (local: " << local_version << ", remote: " << version << ")";
-					} else {
-						safe_matches.push_back(name);
-						safe_local_versions.push_back(local_version);
+					std::find(all_local.begin(), all_local.end(), name);
+			try {
+				if(local_match != all_local.end()) {
+					const addon_version_info& local_version = get_addon_version_info(name);
+					if(remote_version_map[name] > local_version) {
+						if(std::find(all_publish.begin(), all_publish.end(), name) != all_publish.end()) {
+							unsafe_matches.push_back(name);
+							unsafe_local_versions.push_back(local_version);
+							unsafe_list << '\n';
+							unsafe_list << name << " (local: " << local_version << ", remote: " << version << ")";
+						} else {
+							safe_matches.push_back(name);
+							safe_local_versions.push_back(local_version);
+							remote_matches_cfgs.push_back(remote_addon);
+						}
 					}
 				}
+			} catch(addon_version_info_not_sane_exception const&) {
+				ERR_CFG << "local add-on '" << name << "' has invalid version string '" << version << "', skipping from updates check...\n";
+				continue;
 			}
 		}
 		if(!unsafe_matches.empty()) {
@@ -604,20 +616,104 @@ namespace {
 		}
 		
 		// column contents
-		std::vector<std::string> addons, titles, oldversions, newversions, options;
+		std::vector<std::string> addons, titles, oldversions, newversions, options, filtered_opts;
 		std::vector<int> sizes;
 		
 		std::string sep(1, COLUMN_SEPARATOR);
-		std::ostringstream heading;
-		heading << HEADING_PREFIX << sep << _("Name") << sep << _("Old version") << sep << _("New version") << sep
-				<< _("Author") << sep << _("Size");
-		options.push_back(heading.str());
+		const std::string& heading =
+			(formatter() << HEADING_PREFIX << sep << _("Name") << sep << _("Old version") << sep << _("New version") << sep
+			             << _("Author") << sep << _("Size")).str();
+		options.push_back(heading);
+		filtered_opts.push_back(heading);
 
+		assert(safe_matches.size() == safe_local_versions.size());
+		assert(safe_matches.size() == remote_matches_cfgs.size());
+		for(size_t i = 0; i < safe_matches.size(); ++i) {
+			const config& c = *(remote_matches_cfgs[i]);
+			const std::string& name = c["name"];
+			const std::string& size = c["size"];
+			const std::string& sizef = format_file_size(size);
+			const std::string& oldver = safe_local_versions[i];
+			const std::string& newver = remote_version_map[name];
+			
+			std::string author = c["author"];
+			std::string title = c["title"];
+			if(title.empty()) {
+				title = name;
+				std::replace(title.begin(), title.end(), '_', ' ');
+			}
+
+			utils::truncate_as_wstring(title, 20);
+			utils::truncate_as_wstring(author, 16);
+			
+			//add negative sizes to reverse the sort order
+			sizes.push_back(-atoi(size.c_str()));
+
+			addons.push_back(name);
+			titles.push_back(title);
+			oldversions.push_back(oldver);
+			newversions.push_back(newver);
+
+			std::string icon = c["icon"];
+			if(icon.find("units/") != std::string::npos &&
+				icon.find_first_of('~') == std::string::npos) {
+				icon.append("~RC(magenta>red)");
+			}
+
+			const std::string text_columns =
+				title + COLUMN_SEPARATOR +
+				oldver + COLUMN_SEPARATOR +
+				newver + COLUMN_SEPARATOR +
+				author + COLUMN_SEPARATOR +
+				sizef + COLUMN_SEPARATOR;
+			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
+			filtered_opts.push_back(text_columns);
+		}
+
+		// Create dialog
 		gui::dialog upd_dialog(disp,
 			_("Update Add-ons"),
 			_("Select an add-on to update:"), gui::OK_CANCEL);
-		upd_dialog.add_button(new gui::dialog_button(disp.video(), _("Update all"),
-		                      gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
+
+		// Create widgets
+		gui::menu::basic_sorter sorter;
+		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_position_sort(5,sizes);
+
+		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
+		addon_style.scale_images(font::relative_size(72), font::relative_size(72));
+
+		gui::menu* addon_menu =
+			new gui::menu(disp.video(), options, false, -1,
+			              gui::dialog::max_menu_width, &sorter,
+			              &addon_style, false);
+		gui::dialog_button* update_all_button =
+			new gui::dialog_button(disp.video(), _("Update all"),
+			                       gui::button::TYPE_PRESS, -255);
+// FIXME: dunno if it was because I was testing with 0 elements (besides
+// the header) or I'm doing it wrong, but this causes SIGSEGV. Better let
+// someone with the patience and knowledge required to deal with filter_textbox
+// do it instead
+//
+// 		gui::filter_textbox* filter =
+// 			new gui::filter_textbox(disp.video(),
+// 			                        _("Filter: "), options, filtered_opts, 1, upd_dialog, 300);
+
+		// Add widgets
+		upd_dialog.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
+		upd_dialog.set_menu(addon_menu);
+// 		upd_dialog.set_textbox(filter);
+
+		// Activate
+		int index = upd_dialog.show();
+		const bool upd_all = index == -255;
+// 		index = filter->get_index(index);
+		// FIXME: until it is possible to integrate this functionality and download_addons()
+		// in a single dialog, we'll resort to a magic result to detect the "all" choice.
+		if(index < 0 && !upd_all)
+			return;
+
+		if(upd_all) {
+		}
 	}
 
 	void install_addon(game_display& disp, config& cfg, const config* const addons_tree,
@@ -769,12 +865,11 @@ namespace {
 			std::vector<int> sizes;
 
 			std::string sep(1, COLUMN_SEPARATOR);
-			std::stringstream heading;
-			heading << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
-			        << _("Author") << sep << _("Type") << sep << _("Downloads") << sep << _("Size");
-
-			options.push_back(heading.str());
-			options_to_filter.push_back(heading.str());
+			const std::string& heading =
+				(formatter() << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
+				             << _("Author") << sep << _("Type") << sep << _("Downloads") << sep << _("Size")).str();
+			options.push_back(heading);
+			options_to_filter.push_back(heading);
 
 			const std::vector< std::string >& publish_options = available_addons();
 
@@ -984,6 +1079,10 @@ namespace {
 	}
 } // end unnamed namespace 3
 
+#define ADDONS_OPT_DOWNLOAD		0
+#define ADDONS_OPT_UNINSTALL	2
+#define ADDONS_OPT_UPDATE		3
+
 void manage_addons(game_display& disp)
 {
 	int res;
@@ -1008,26 +1107,25 @@ void manage_addons(game_display& disp)
 		                       gui::OK_CANCEL);
 		svr_dialog.set_textbox(_("Server: "), default_host);
 #if 0
+		// not ready for production yet
 		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Update add-ons"),
-		                      gui::button::TYPE_PRESS, 3), gui::dialog::BUTTON_EXTRA_LEFT);
+		                      gui::button::TYPE_PRESS, ADDONS_OPT_UPDATE),
+		                      gui::dialog::BUTTON_EXTRA_LEFT);
 #endif
 		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Uninstall add-ons"),
-		                      gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
+		                      gui::button::TYPE_PRESS, ADDONS_OPT_UNINSTALL),
+		                      gui::dialog::BUTTON_EXTRA);
 		res = svr_dialog.show();
 		remote_host = svr_dialog.textbox_text();
 		bool do_refresh = false;
 		switch(res) {
-			case 0:
-				download_addons(disp, remote_host, false, &do_refresh);
+			case ADDONS_OPT_UPDATE:
+			case ADDONS_OPT_DOWNLOAD:
+				download_addons(disp, remote_host, res==ADDONS_OPT_UPDATE, &do_refresh);
 				break;
-			case 2:
+			case ADDONS_OPT_UNINSTALL:
 				uninstall_local_addons(disp, &do_refresh);
 				break;
-#if 0
-			case 3:
-				download_addons(disp, remote_host, true, &do_refresh);
-				break;
-#endif
 			default:
 				return;
 		}
@@ -1092,27 +1190,24 @@ addon_version_info& addon_version_info::operator=(const addon_version_info& o)
 	return *this;
 }
 
+void addon_version_info::reset()
+{
+	vmajor = vminor = revision = 0;
+	sane = false;
+}
+
 addon_version_info::addon_version_info(const std::string& src_str)
 {
-	if(src_str.empty() != true) {
-		const std::vector<std::string> components = utils::split(src_str, '.');
-		if(components.size() != 3) {
-			vmajor = vminor = revision = 0;
-			sane = false;
-		} else {
-			try {
-				vmajor   = lexical_cast<unsigned>(components[0]);
-				vminor   = lexical_cast<unsigned>(components[1]);
-				revision = lexical_cast<unsigned>(components[2]);
-				sane     = true;
-			} catch(bad_lexical_cast const&)  {
-				vmajor = vminor = revision = 0;
-				sane = false;
-			}
-		}
-	} else {
-		vmajor = vminor = revision = 0;
-		sane = false;
+	const std::vector<std::string> components = utils::split(src_str, '.');
+	try {
+		vmajor   = lexical_cast<unsigned>(components.at(0));
+		vminor   = lexical_cast<unsigned>(components.at(1));
+		revision = components.size() >= 3 ? lexical_cast<unsigned>(components[2]) : 0;
+		sane     = true;
+	} catch(std::out_of_range const&) {
+		reset();
+	} catch(bad_lexical_cast const&)  {
+		reset();
 	}
 }
 

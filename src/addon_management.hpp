@@ -98,6 +98,9 @@ struct addon_version_info
 	unsigned vminor;		//!< Minor (middle) version number.
 	unsigned revision;		//!< Revision (trailing) version number.
 	bool sane;				//!< Sanity flag.
+
+private:
+	void reset();
 };
 
 //! Equality operator for addon_version_info.
