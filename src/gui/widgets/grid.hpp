@@ -426,7 +426,19 @@ private:
 		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const,
 		tpoint (tchild::*size_proc_max)(const tpoint&) const = NULL,
 		const tpoint& maximum_size = tpoint(0, 0)) const;
+
+	/**
+	 * Gets the best height for a row.
+	 *
+	 * @param row                 The row to get the best height for.
+	 * @param maximum_height      The wanted maximum height.
+	 *
+	 * @returns                   The best height for a row, if possible
+	 *                            smaller as the maximum.
+	 */
+	unsigned get_best_row_height(const unsigned row, const unsigned maximum_height) const;
 };
+
 
 } // namespace gui2
 

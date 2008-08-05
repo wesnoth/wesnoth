@@ -189,7 +189,7 @@ tpoint tgrid::get_best_size(const tpoint& maximum_size) const
 {
 	log_scope2(gui, "Grid: Get best size");	
 	
-	const tpoint size = get_size("best with maximum", best_col_width_, 
+	tpoint size = get_size("best with maximum", best_col_width_, 
 		best_row_height_, NULL, &tchild::get_best_size, maximum_size);
 
 	// If we honoured the size or can't resize return the result.
@@ -201,61 +201,51 @@ tpoint tgrid::get_best_size(const tpoint& maximum_size) const
 
 	// Try to resize.
 	
-	// If in a row the resizable element isn't the highest element we can shrink it
-	// until the size of the next hightest non resizable element.
-	//
-	// We can do that for more rows if needed.
-	
-
-	/**
-	 * @todo the current implementation only resizes one row and doesn't
-	 * consider the height of the other elements in the row.
-	 */
-	std::vector<const twidget*> resizable(rows_, NULL);
-	std::vector<unsigned> minimum_height(rows_, 0);
-
+	// The amount we're too high.
+	const unsigned too_high = size.y - maximum_size.y;
+	// The amount we reduced
+	unsigned reduced = 0;
 	for(size_t y = 0; y < rows_; ++y) {
-		for(size_t x = 0; x < cols_; ++x) {
 
-			const twidget* w = widget(y, x);
-			assert(w);
-			
-			if(w->has_vertical_scrollbar()) {
-				resizable[y] = w;
-			} else {
-				const unsigned best_height = w->get_best_size().y;
-				if(minimum_height[y] == 0 || best_height > minimum_height[y]) {
-					minimum_height[y] = best_height;
-				}
-			}
+		const unsigned wanted_height = (too_high - reduced) >= best_row_height_[y] 
+			? 1 : best_row_height_[y] - (too_high - reduced);
+
+		const unsigned height = get_best_row_height(y, wanted_height);
+
+		if(height < best_row_height_[y]) {
+			DBG_G << "Grid : reduced " << best_row_height_[y] - height 
+				<< " pixels for row " << y << ".\n";
+
+			reduced += best_row_height_[y] - height;
+			best_row_height_[y] = height;
 		}
-		if(resizable[y]) {
-			// Determine the wanted height for this row.		
-			const unsigned wanted_height = 
-				maximum_size.y + best_row_height_[y] - size.y;
-			const tpoint new_size = 
-				resizable[y]->get_best_size(tpoint(maximum_size.x, wanted_height));
-
-			// Ignore the minimum.
-			const int delta = new_size.y - wanted_height;
-			if(delta <= 0) {
-				best_row_height_[y] = new_size.y;
-				DBG_G << "Grid : maximum size " << maximum_size << " returning " 
-					<< tpoint(size.x, maximum_size.y + delta) << ".\n";
-				return tpoint(size.x, maximum_size.y + delta);
-			}
+		
+		if(reduced >= too_high) {
+			break;
 		}
 	}
 
-	/**
-	 * @todo we should test whether we managed to shave off a bit of the size
-	 * and return the better solution.
-	 */
-	
-	// We seem to have failed in our resize attempts return our size.
-	DBG_G << "Grid : maximum size " << maximum_size 
-		<< " resizing failed returning " << size << ".\n";
-	return size;
+	/** @todo vertical resizing isn't implemented yet. */
+
+	size.y -= reduced;
+	if(reduced >= too_high) {
+		DBG_G << "Grid : maximum size " << maximum_size
+			<< " need to reduce " << too_high 
+			<< " reduced " << reduced 
+			<< " resizing succeeded returning " << size.y << ".\n";
+	} else if(reduced == 0) {
+		DBG_G << "Grid : maximum size " << maximum_size
+			<< " need to reduce " << too_high 
+			<< " reduced " << reduced 
+			<< " resizing completely failed returning " << size.y << ".\n";
+	} else {
+		DBG_G << "Grid : maximum size " << maximum_size
+			<< " need to reduce " << too_high 
+			<< " reduced " << reduced 
+			<< " resizing partly failed returning " << size.y << ".\n";
+	}
+
+	return tpoint(size.x, size.y);
 }
 
 bool tgrid::has_vertical_scrollbar() const 
@@ -388,6 +378,8 @@ void tgrid::set_size(const SDL_Rect& rect)
 {
 	log_scope2(gui, "Grid: set size");
 
+	/***** INIT *****/
+
 	twidget::set_size(rect);
 
 	if(!rows_ || !cols_) {
@@ -407,6 +399,8 @@ void tgrid::set_size(const SDL_Rect& rect)
 	assert(col_grow_factor_.size() == cols_);
 	DBG_G << "Grid: best size " << best_size << " available size " << size << ".\n";
 
+	/***** BEST_SIZE *****/
+
 	if(best_size == size) {
 		row_height_ = best_row_height_;
 		col_width_ = best_col_width_;
@@ -414,6 +408,8 @@ void tgrid::set_size(const SDL_Rect& rect)
 		layout(orig);
 		return;
 	}
+
+	/***** GROW *****/
 
 	if(best_size < size) {
 		row_height_ = best_row_height_;
@@ -473,6 +469,8 @@ void tgrid::set_size(const SDL_Rect& rect)
 		return;
 
 	}
+
+	/***** SHRINK SCROLLBAR *****/
 
 	if((best_size.x <= size.x /*|| has_horizontal_scrollbar()*/) 
 			&& (best_size.y <= size.y || has_vertical_scrollbar())) {
@@ -820,6 +818,27 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
 	return tpoint(
 		std::accumulate(width.begin(), width.end(), 0),
 		std::accumulate(height.begin(), height.end(), 0));
+}
+
+unsigned tgrid::get_best_row_height(const unsigned row, const unsigned maximum_height) const
+{
+	// The minimum height required.
+	unsigned required_height = 0;
+
+	for(size_t x = 0; x < cols_; ++x) {
+
+		const tchild& cell = child(row, x);
+
+		const tpoint size = cell.get_best_size(tpoint(0, maximum_height));
+		if(required_height == 0 || size.y > required_height) {
+			required_height = size.y;
+		}
+	}
+
+	DBG_G << "Grid : maximum row height " << maximum_height << " returning " 
+		<< required_height << ".\n";
+
+	return required_height;
 }
 
 } // namespace gui2
