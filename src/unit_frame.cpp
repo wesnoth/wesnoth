@@ -25,10 +25,11 @@
 #include "unit_frame.hpp"
 
 
-progressive_string::progressive_string(const std::string & data,int duration)
+progressive_string::progressive_string(const std::string & data,int duration) :
+	data_(),
+	input_(data)
 {
 		const std::vector<std::string> first_pass = utils::split(data);
-		input_ = data;
 		const int time_chunk = maximum<int>(duration / (first_pass.size()?first_pass.size():1),1);
 
 		std::vector<std::string>::const_iterator tmp;
@@ -68,9 +69,10 @@ const std::string& progressive_string::get_current_element(int current_time)cons
 }
 
 template <class T>
-progressive_<T>::progressive_(const std::string &data, int duration)
+progressive_<T>::progressive_(const std::string &data, int duration) :
+	data_(),
+	input_(data)
 {
-	input_ = data;
 	const std::vector<std::string> first_split = utils::split(data);
 	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
 
@@ -155,7 +157,24 @@ template class progressive_<double>;
 
 
 
-frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
+frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
+	image_(image::locator()),
+	image_diagonal_(image::locator()),
+	image_mod_(""),
+	halo_(""),
+	halo_x_(""),
+	halo_y_(""),
+	sound_(""),
+	text_(""),
+	text_color_(0),
+	duration_(1),
+	blend_with_(0),
+	blend_ratio_(""),
+	highlight_ratio_(""),
+	offset_(""),
+	submerge_(""),
+	x_(""),
+	y_("")
 {
 	image(image::locator(cfg[frame_string+"image"]),cfg[frame_string+"image_mod"]);
 	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]),cfg[frame_string+"image_mod"]);
