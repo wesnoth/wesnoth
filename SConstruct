@@ -110,12 +110,12 @@ if env['distcc']: env.Tool('distcc')
 if env['ccache']: env.Tool('ccache')
 
 
-Help("""Arguments may be a mixture of switches and targets an any order.
-Switches apply to the entire build regrdless of where they are in the order.
+Help("""Arguments may be a mixture of switches and targets in any order.
+Switches apply to the entire build regardless of where they are in the order.
 Important switches include:
 
     prefix=/usr     probably what you want for production tools
-    build=release   build release build variant with appropriante flags
+    build=release   build the release build variant with appropriante flags
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant, binaries will be copied with -debug suffix
@@ -149,10 +149,10 @@ You can make the following special build targets:
     sanity-check = run a pre-release sanity check on the distribution.
     manual = regenerate English-language manual and, possibly, localized manuals if appropriate xmls exist.
 
-Files made by targets marked '(*)' are cleaned by cleaned by 'scons -c all'
+Files made by targets marked with '(*)' are cleaned by 'scons -c all'
 
 Options are cached in a file named .scons-option-cache and persist to later
-invocations.  The file is editable. Delete it to start fresh.  Current option
+invocations.  The file is editable.  Delete it to start fresh.  Current option
 values can be listed with 'scons -h'.
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
