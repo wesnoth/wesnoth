@@ -314,7 +314,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 		}
 	
-		bool obs = team_manager_.is_observer();
+		const bool obs = team_manager_.is_observer();
 		if (game_config::exit_at_end) {
 			exit(0);
 		}
@@ -346,6 +346,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			try {
 				game_events::fire("defeat");
 			} catch(end_level_exception&) {
+				ERR_NG << "[endlevel] used in 'defeat' event handler\n";
 			}
 
 			if (!obs) {
@@ -360,19 +361,27 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		} else if (end_level.result == VICTORY
 		|| end_level.result == LEVEL_CONTINUE
 		|| end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-			if(end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-				gamestate_.completion = "running";
-			} else {
-				gamestate_.completion = "victory";
-				const std::string& victory_music = select_victory_music();
-				if(victory_music.empty() != true)
-					sound::play_music_once(victory_music);
-			}
+			gamestate_.completion = (end_level.result == LEVEL_CONTINUE_NO_SAVE ?
+			                         "running" : "victory");
 			recorder.set_save_info_completion(gamestate_.completion);
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
-				ERR_NG << "[endlevel] used in victory even handler\n";
+				ERR_NG << "[endlevel] used in 'victory' event handler\n";
+			}
+			//
+			// Play victory music once all victory events
+			// are finished, if we aren't observers.
+			//
+			// Some scenario authors may use 'continue'
+			// result for something that is not story-wise
+			// a victory, so let them use [music] tags
+			// instead should they want special music.
+			//
+			if(end_level.result == VICTORY && !obs) {
+				const std::string& victory_music = select_victory_music();
+				if(victory_music.empty() != true)
+					sound::play_music_once(victory_music);
 			}
 			if (first_human_team_ != -1)
 				log.victory(status_.turn(), teams_[first_human_team_].gold());
