@@ -384,7 +384,7 @@ namespace {
 						} else {
 							if (gzipped)
 							{
-								std::cerr << " size: " << (file_size((*campaign)["filename"])/1024) << "\n";
+								std::cerr << " size: " << (file_size((*campaign)["filename"])/1024) << "kb\n";
 								network::send_file((*campaign)["filename"], sock);
 							} else {
 								scoped_istream stream = istream_file((*campaign)["filename"]);
@@ -392,7 +392,7 @@ namespace {
 								read_gz(cfg, *stream);
 								std::cerr << " size: " <<
 									network::send_data(cfg, sock, false)
-									<< "\n";
+									<< "kb\n";
 							}
 
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
