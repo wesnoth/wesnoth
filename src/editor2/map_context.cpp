@@ -32,7 +32,8 @@ const int map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map)
 : map_(map), filename_(), actions_since_save_(0),
-needs_reload_(false), needs_terrain_rebuild_(false), everything_changed_(false)
+needs_reload_(false), needs_terrain_rebuild_(false), 
+needs_labels_reset_(false), everything_changed_(false)
 {
 }
 

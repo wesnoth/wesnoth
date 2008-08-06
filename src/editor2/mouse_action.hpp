@@ -129,6 +129,17 @@ protected:
 	const t_translation::t_terrain& terrain_;
 };
 
+class mouse_action_starting_position : public mouse_action
+{
+public:
+	mouse_action_starting_position()
+	: mouse_action()
+	{
+	}
+	void move(editor_display& disp, int x, int y);
+	editor_action* click(editor_display& disp, int x, int y);
+};
+
 } //end namespace editor2
 
 #endif

@@ -106,7 +106,6 @@ public:
 	void flip_y();
 
 protected:
-	void set_starting_position(int pos, const location& loc);
 	void swap_starting_position(int x1, int y1, int x2, int y2);
 	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
 	void expand_right(int count, t_translation::t_terrain filler);

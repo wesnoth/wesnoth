@@ -214,11 +214,6 @@ void editor_map::flip_y()
 	}
 }
 
-void editor_map::set_starting_position(int pos, const location& loc)
-{
-	startingPositions_[pos] = loc;
-}
-
 void editor_map::swap_starting_position(int x1, int y1, int x2, int y2)
 {
 	int pos1 = is_starting_position(location(x1, y1));

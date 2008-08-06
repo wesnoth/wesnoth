@@ -72,6 +72,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		new mouse_action_fill(foreground_terrain_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, 
 		new mouse_action_select(&brush_)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
+		new mouse_action_starting_position()));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
@@ -407,8 +409,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
-		case HOTKEY_EDITOR_PASTE:
-//		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+			hotkey_set_mouse_action(command);
+			return true;
+		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -629,23 +633,30 @@ void editor_controller::refresh_after_action(bool drag_part)
 		reload_map();
 		get_map_context().set_needs_reload(false);
 		get_map_context().set_needs_terrain_rebuild(false);
-		get_map_context().clear_changed_locations();
-	} else if (get_map_context().needs_terrain_rebuild()) {
-		if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
-			gui().rebuild_all();
-			gui().invalidate_all();	
-			get_map_context().set_needs_terrain_rebuild(false);
-		} else {
-			foreach (const gamemap::location& loc, get_map_context().changed_locations()) {
-				gui().rebuild_terrain(loc);
-			}
-			gui().invalidate(get_map_context().changed_locations());
-		}
+		get_map_context().set_needs_labels_reset(false);
 	} else {
-		if (get_map_context().everything_changed()) {
-			gui().invalidate_all();
+		if (get_map_context().needs_terrain_rebuild()) {
+			if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
+				gui().rebuild_all();
+				gui().invalidate_all();	
+				get_map_context().set_needs_terrain_rebuild(false);
+			} else {
+				foreach (const gamemap::location& loc, get_map_context().changed_locations()) {
+					gui().rebuild_terrain(loc);
+				}
+				gui().invalidate(get_map_context().changed_locations());
+			}
 		} else {
-			gui().invalidate(get_map_context().changed_locations());
+			if (get_map_context().everything_changed()) {
+				gui().invalidate_all();
+			} else {
+				gui().invalidate(get_map_context().changed_locations());
+			}
+		}
+		if (get_map_context().needs_labels_reset()) {
+			get_map_context().clear_starting_position_labels(gui());
+			get_map_context().set_starting_position_labels(gui());
+			get_map_context().set_needs_labels_reset(false);
 		}
 	}
 	get_map_context().clear_changed_locations();

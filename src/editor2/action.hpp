@@ -50,11 +50,15 @@ class editor_action_whole_map : public editor_action
 class editor_action_chain : public editor_action
 {
 	public:
+		editor_action_chain()
+		{
+		}
 		explicit editor_action_chain(std::vector<editor_action*> actions)
 		: actions_(actions)
 		{
 		}
 		~editor_action_chain();
+		void append_action(editor_action* a);
 		editor_action_chain* perform(map_context& m) const;
 	    void perform_without_undo(map_context& m) const;
     protected:
@@ -154,6 +158,19 @@ class editor_action_fill : public editor_action_location_terrain
         }
         editor_action_paint_area* perform(map_context& mc) const;
         void perform_without_undo(map_context& mc) const;
+};
+
+class editor_action_starting_position : public editor_action_location
+{
+    public:
+        editor_action_starting_position(gamemap::location loc, int player)
+        : editor_action_location(loc), player_(player)
+        {
+        }
+        editor_action* perform(map_context& mc) const;
+        void perform_without_undo(map_context& mc) const;
+	protected:
+		int player_;
 };
 
 class editor_action_select_xor : public editor_action_area

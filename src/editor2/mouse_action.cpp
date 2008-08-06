@@ -18,7 +18,9 @@
 #include "editor_display.hpp"
 #include "mouse_action.hpp"
 
+#include "../construct_dialog.hpp"
 #include "../foreach.hpp"
+#include "../gettext.hpp"
 #include "../pathutils.hpp"
 
 namespace editor2 {
@@ -130,6 +132,39 @@ editor_action* mouse_action_fill::click(editor_display& disp, int x, int y)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	editor_action_fill* a = new editor_action_fill(hex, terrain_);
+	return a;
+}
+
+
+void mouse_action_starting_position::move(editor_display& disp, int x, int y)
+{
+	disp.clear_brush_locs();
+	disp.add_brush_loc(disp.hex_clicked_on(x, y));
+}
+
+editor_action* mouse_action_starting_position::click(editor_display& disp, int x, int y)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
+	std::vector<std::string> players;
+	players.push_back("None");
+	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
+		std::stringstream str;
+		str << _("Player") << " " << i;
+		players.push_back(str.str());
+	}
+	gui::dialog pmenu = gui::dialog(disp,
+				       _("Which Player?"),
+				       _("Which player should start here?"),
+				       gui::OK_CANCEL);
+	pmenu.set_menu(players);
+	int res = pmenu.show();
+	editor_action* a = NULL;
+	if (res == 0 && player_starting_at_hex != -1) {
+		a = new editor_action_starting_position(gamemap::location(), player_starting_at_hex);
+	} else if (res > 0) {
+		a = new editor_action_starting_position(hex, res);
+	}
 	return a;
 }
 
