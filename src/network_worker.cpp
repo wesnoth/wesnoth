@@ -500,6 +500,8 @@ static SOCKET_STATE send_file(buffer* buf)
 	// default sendfile implementation 
 	// if no system implementation is enabled
 	int send_size = 0;
+	// reserve 1024*8 bytes buffer
+	buf->raw_buffer.resize(minimum<size_t>(1024*8, filesize));
 	SDLNet_Write32(filesize,&buf->raw_buffer[0]);
 	scoped_istream file_stream = istream_file(buf->config_error);
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);
@@ -938,23 +940,20 @@ void queue_file(TCPsocket sock, const std::string& filename)
 {
  	buffer* queued_buf = new buffer(sock);
  	queued_buf->config_error = filename;
-#ifndef USE_SENDFILE
-	// We reserve buffer in main thread
- 	// this helps in memory problems with threads
- 	// We use 8KB buffer
- 	queued_buf->raw_buffer.resize(1024*8);
-#endif
  	queue_buffer(sock, queued_buf);
 }
  
-void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
+size_t queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 {
 	DBG_NW << "queuing data...\n";
 
 	buffer* queued_buf = new buffer(sock);
 	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
+	const size_t size = queued_buf->stream.str().size();
+
 	queue_buffer(sock, queued_buf);
+	return size;
 }
 
 namespace

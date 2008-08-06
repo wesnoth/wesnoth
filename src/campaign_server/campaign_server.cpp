@@ -376,20 +376,23 @@ namespace {
 						response.add_child("campaigns",campaign_list);
 						network::send_data(response, sock, gzipped);
 					} else if(const config* req = data.child("request_campaign")) {
-						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock)  << (gzipped?" using gzip":"") << "\n";
+						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock)  << (gzipped?" using gzip":"");
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
 							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock, gzipped);
 						} else {
  							if (gzipped)
  							{
+								std::cerr << " size: " << (file_size((*campaign)["filename"])/1024) << "kb\n";
  								network::send_file((*campaign)["filename"], sock);
  							} else {
  								scoped_istream stream = istream_file((*campaign)["filename"]);
  								config cfg;
  								read_gz(cfg, *stream);
- 								network::send_data(cfg, sock, false);
- 							}
+								std::cerr << " size: " << 
+									(network::send_data(cfg, sock, false)/1024)
+									<< "kb\n";
+							}
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
 							(*campaign)["downloads"] = lexical_cast<std::string>(downloads);
 						}
