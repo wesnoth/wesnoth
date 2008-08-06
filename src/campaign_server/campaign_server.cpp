@@ -391,7 +391,7 @@ namespace {
 								config cfg;
 								read_gz(cfg, *stream);
 								std::cerr << " size: " <<
-									network::send_data(cfg, sock, false)
+									(network::send_data(cfg, sock, false)/1024)
 									<< "kb\n";
 							}
 
