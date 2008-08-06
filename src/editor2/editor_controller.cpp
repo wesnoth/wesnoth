@@ -22,6 +22,7 @@
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/window.hpp"
 
 #include "../config_adapter.hpp"
 #include "../construct_dialog.hpp"
@@ -165,7 +166,7 @@ void editor_controller::new_map_dialog()
 	
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
-	if(res == gui2::tbutton::OK) {
+	if(res == gui2::twindow::OK) {
 		int w = dialog.map_width();
 		int h = dialog.map_height();
 		t_translation::t_terrain fill = t_translation::GRASS_LAND;
