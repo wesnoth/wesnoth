@@ -44,7 +44,7 @@ map_context::~map_context()
 }
 
 void map_context::draw_terrain(t_translation::t_terrain terrain, 
-	const gamemap::location& loc, const bool one_layer_only)
+	const gamemap::location& loc, bool one_layer_only)
 {
     if (!one_layer_only) {
         terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
@@ -63,7 +63,7 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
 }
 
 void map_context::draw_terrain(t_translation::t_terrain terrain, 
-	const std::set<gamemap::location>& locs, const bool one_layer_only)
+	const std::set<gamemap::location>& locs, bool one_layer_only)
 {
     if (!one_layer_only) {
         terrain = map_.get_terrain_info(terrain).terrain_with_default_base();

@@ -84,7 +84,8 @@ const brush& brush_drag_mouse_action::get_brush()
 
 editor_action* mouse_action_paint::click_perform(editor_display& disp, const gamemap::location& hex)
 {
-	return new editor_action_paint_area(get_brush().project(hex), terrain_);
+	bool one_layer = (key_[SDLK_RALT] || key_[SDLK_LALT]);
+	return new editor_action_paint_area(get_brush().project(hex), terrain_, one_layer);
 }
 
 editor_action* mouse_action_select::click(editor_display& disp, int x, int y)
@@ -130,8 +131,10 @@ void mouse_action_fill::move(editor_display& disp, int x, int y)
 
 editor_action* mouse_action_fill::click(editor_display& disp, int x, int y)
 {
+	bool one_layer = (key_[SDLK_RALT] || key_[SDLK_LALT]);
 	gamemap::location hex = disp.hex_clicked_on(x, y);
-	editor_action_fill* a = new editor_action_fill(hex, terrain_);
+	//TODO only take the base terrain into account when searching for contigious terrain when painting base only
+	editor_action_fill* a = new editor_action_fill(hex, terrain_, one_layer);
 	return a;
 }
 

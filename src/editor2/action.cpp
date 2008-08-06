@@ -109,7 +109,7 @@ editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 }	
 void editor_action_paint_area::perform_without_undo(map_context& mc) const
 {
-	mc.draw_terrain(t_, area_);
+	mc.draw_terrain(t_, area_, one_layer_);
 	mc.set_needs_terrain_rebuild();
 }
 
@@ -117,14 +117,14 @@ editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
 	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
 	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_));
-	mc.draw_terrain(t_, to_fill);
+	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 	return undo;
 }
 void editor_action_fill::perform_without_undo(map_context& mc) const
 {
 	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
-	mc.draw_terrain(t_, to_fill);
+	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 }
 

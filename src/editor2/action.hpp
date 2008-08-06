@@ -137,14 +137,15 @@ class editor_action_paint_area : public editor_action_area
 {
     public:
         editor_action_paint_area(const std::set<gamemap::location>& area, 
-			t_translation::t_terrain t)
-        : editor_action_area(area), t_(t)
+			t_translation::t_terrain t, bool one_layer=false)
+        : editor_action_area(area), t_(t), one_layer_(one_layer)
         {
         }
         editor_action_paste* perform(map_context& mc) const;
         void perform_without_undo(map_context& mc) const;
     protected:
 		t_translation::t_terrain t_;
+		bool one_layer_;
 };
 
 //flood fill
@@ -152,12 +153,14 @@ class editor_action_fill : public editor_action_location_terrain
 {
     public:
         editor_action_fill(gamemap::location loc, 
-			t_translation::t_terrain t)
-        : editor_action_location_terrain(loc, t)
+			t_translation::t_terrain t, bool one_layer=false)
+        : editor_action_location_terrain(loc, t), one_layer_(one_layer)
         {
         }
         editor_action_paint_area* perform(map_context& mc) const;
         void perform_without_undo(map_context& mc) const;
+	protected:
+		bool one_layer_;
 };
 
 class editor_action_starting_position : public editor_action_location

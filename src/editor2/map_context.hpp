@@ -37,10 +37,10 @@ public:
 	const editor_map& get_map() const { return map_; }
 	
 	void draw_terrain(t_translation::t_terrain terrain, const gamemap::location& loc, 
-		const bool one_layer_only = false);
+		bool one_layer_only = false);
 	
 	void draw_terrain(t_translation::t_terrain terrain, const std::set<gamemap::location>& locs, 
-		const bool one_layer_only = false);
+		bool one_layer_only = false);
 
 	bool needs_reload() const { return needs_reload_; }
 	void set_needs_reload(bool value=true) { needs_reload_ = value; }

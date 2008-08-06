@@ -68,9 +68,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	}
 	brush_ = &brushes_[0];
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
-		new mouse_action_paint(foreground_terrain_, &brush_)));
+		new mouse_action_paint(foreground_terrain_, &brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
-		new mouse_action_fill(foreground_terrain_)));
+		new mouse_action_fill(foreground_terrain_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, 
 		new mouse_action_select(&brush_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,

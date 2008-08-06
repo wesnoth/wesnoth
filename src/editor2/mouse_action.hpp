@@ -20,6 +20,7 @@
 #include "../map.hpp"
 #include "../terrain.hpp"
 
+class CKey;
 
 namespace editor2 {
 
@@ -81,13 +82,14 @@ private:
 class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
-	mouse_action_paint(const t_translation::t_terrain& terrain, const brush* const * const brush)
-	: brush_drag_mouse_action(brush), terrain_(terrain)
+	mouse_action_paint(const t_translation::t_terrain& terrain, const brush* const * const brush, const CKey& key)
+	: brush_drag_mouse_action(brush), terrain_(terrain), key_(key)
 	{
 	}
 	editor_action* click_perform(editor_display& disp, const gamemap::location& hex);
 protected:
 	const t_translation::t_terrain& terrain_;
+	const CKey& key_;
 };
 
 class mouse_action_select : public brush_drag_mouse_action
@@ -119,14 +121,15 @@ protected:
 class mouse_action_fill : public mouse_action
 {
 public:
-	mouse_action_fill(const t_translation::t_terrain& terrain)
-	: mouse_action(), terrain_(terrain)
+	mouse_action_fill(const t_translation::t_terrain& terrain, const CKey& key)
+	: mouse_action(), terrain_(terrain), key_(key)
 	{
 	}
 	void move(editor_display& disp, int x, int y);
 	editor_action* click(editor_display& disp, int x, int y);
 protected:
 	const t_translation::t_terrain& terrain_;
+	const CKey& key_;
 };
 
 class mouse_action_starting_position : public mouse_action
