@@ -209,6 +209,7 @@ SET(wesnoth-main_SRC
     attack_prediction.cpp
     attack_prediction_display.cpp
     callable_objects.cpp
+	config_cache.cpp
     config_adapter.cpp
     controller_base.cpp
     dialogs.cpp
@@ -467,6 +468,7 @@ SET(test_SRC
     tests/main.cpp
 	tests/utils/fake_display.cpp 
 	tests/utils/fake_event_source.cpp 
+	tests/test_config_cache.cpp
     tests/test_util.cpp
 	tests/test_network_worker.cpp
 	tests/test_team.cpp

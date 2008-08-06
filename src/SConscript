@@ -35,13 +35,13 @@ libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = e
 game_config_env = env.Clone()
 filesystem_env = env.Clone()
 if env["PLATFORM"] != "win32":
-	game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
+    game_config_env.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
     if env['localedirname']:
-	    filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
-	    if not os.path.isabs(env['localedirname']):
-		    filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
+        filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
+        if not os.path.isabs(env['localedirname']):
+            filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
     if env['prefsdir']:
-	    filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
+        filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
 
 libwesnoth_core_sources.extend([
     game_config_env.Object("game_config.cpp"),
@@ -145,6 +145,7 @@ wesnoth_sources = Split("""
     attack_prediction_display.cpp
     callable_objects.cpp
     config_adapter.cpp
+    config_cache.cpp
     controller_base.cpp
     dialogs.cpp
     floating_textbox.cpp
@@ -306,14 +307,14 @@ campaignd_sources.extend(env.Object("campaign_server/campaign_server.cpp", EXTRA
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core, libwesnothd, libcampaignd], have_server_prereqs)
 
 wesnothd_sources = Split("""
-	server/ban.cpp
+    server/ban.cpp
     server/game.cpp
     server/input_stream.cpp
     server/metrics.cpp
     server/player.cpp
     server/proxy.cpp
     server/simple_wml.cpp
-	time.cpp
+    time.cpp
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 
@@ -333,19 +334,20 @@ env.WesnothProgram("exploder", exploder_sources + [libcutter, libwesnoth_core, l
     LIBS = env["LIBS"] + ["png"])
 
 test_utils_sources = Split("""
-	tests/utils/fake_event_source.cpp
-	tests/utils/fake_display.cpp
-	""")
+    tests/utils/fake_event_source.cpp
+    tests/utils/fake_display.cpp
+    """)
 
 libtest_utils = env.Library("test_utils", test_utils_sources)
 
 test_sources = Split("""
     tests/main.cpp
-    tests/test_util.cpp
+    tests/test_config_cache.cpp
     tests/test_network_worker.cpp
-	tests/gui/test_save_dialog.cpp
-    tests/gui/test_drop_target.cpp
     tests/test_team.cpp
+    tests/test_util.cpp
+    tests/gui/test_drop_target.cpp
+    tests/gui/test_save_dialog.cpp
     """)
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth,libtest_utils], have_test_prereqs)
 #Export("test")

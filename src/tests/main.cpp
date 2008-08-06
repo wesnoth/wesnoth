@@ -15,6 +15,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
 #include <boost/test/detail/unit_test_parameters.hpp>
+#include <boost/test/results_reporter.hpp>
+
 #include "SDL.h"
 
 #include "game_errors.hpp"
@@ -52,8 +54,12 @@ struct wesnoth_global_fixture {
 
 //		lg::set_log_domain_severity("all",3);
 
+		// Set more report as default
 		if (boost::unit_test::runtime_config::log_level() == boost::unit_test::invalid_log_level)
 			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
+		if (boost::unit_test::runtime_config::report_level() == boost::unit_test::INV_REPORT_LEVEL)
+			boost::unit_test::results_reporter::set_level(boost::unit_test::SHORT_REPORT);
+
 		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);

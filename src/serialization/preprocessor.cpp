@@ -40,6 +40,12 @@ bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
 
+
+std::ostream& operator<<(std::ostream& stream, const preproc_define& def)
+{
+	return stream << "value: " << def.value << " arguments: " << def.location;
+}
+
 class preprocessor;
 class preprocessor_file;
 class preprocessor_data;

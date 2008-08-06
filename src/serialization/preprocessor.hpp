@@ -39,6 +39,8 @@ struct preproc_define
 	bool operator!=(preproc_define const &v) const { return !operator==(v); }
 };
 
+std::ostream& operator<<(std::ostream& stream, const preproc_define& def);
+
 struct preproc_config {
 	struct error {
 		error(const std::string& msg) : message(msg) {}
