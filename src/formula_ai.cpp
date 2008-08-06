@@ -1155,10 +1155,10 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 }
 
 void ai_function_symbol_table::register_candidate_move(const std::string name, 
-		const_formula_ptr formula, const_formula_ptr eval, 
+		const std::string type, const_formula_ptr formula, const_formula_ptr eval, 
 		const_formula_ptr precondition, const std::vector<std::string>& args)
 {
-	candidate_move_ptr new_move(new candidate_move(name,eval,formula));
+	candidate_move_ptr new_move(new candidate_move(name,type,eval,formula));
 	candidate_moves.push_back(new_move);
 	function_symbol_table::add_formula_function(name, formula, 
 			precondition, args);
@@ -1211,7 +1211,8 @@ formula_ai::formula_ai(info& i) :
 		const formula_ptr precondition_formula = 
 				game_logic::formula::create_optional_formula((**i)["precondition"], 
 						&function_table);
-		function_table.register_candidate_move(name, action_formula, eval_formula, 
+		function_table.register_candidate_move(name, (**i)["type"],
+								action_formula, eval_formula, 
 								precondition_formula, args);
 	}
 

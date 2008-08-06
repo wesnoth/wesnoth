@@ -30,8 +30,9 @@ namespace game_logic {
 
 class candidate_move {
 public:
-	candidate_move(std::string name, const_formula_ptr eval, const_formula_ptr move) :
+	candidate_move(std::string name, std::string type, const_formula_ptr eval, const_formula_ptr move) :
 		name_(name),
+		type_(type),
 		eval_(eval),
 		move_(move),
 		score_(-1),
@@ -57,6 +58,7 @@ public:
 	}
 
 	int get_score() const {return score_;}
+	std::string get_type() const {return type_;}
 	unit_map::unit_iterator get_action_unit() {return action_unit_;}
 	const_formula_ptr get_move() {return move_;}
 
@@ -71,6 +73,7 @@ public:
 private:
 
 	std::string name_;
+	std::string type_;
 	const_formula_ptr eval_;
 	const_formula_ptr move_;
 	int score_;
@@ -90,7 +93,7 @@ public:
 		candidate_moves()
 	{}
 
-	void register_candidate_move(const std::string name, 
+	void register_candidate_move(const std::string name, const std::string type,
 			const_formula_ptr formula, const_formula_ptr eval, 
 			const_formula_ptr precondition, const std::vector<std::string>& args);
 
