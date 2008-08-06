@@ -15,7 +15,6 @@
 #include "gui/dialogs/language_selection.hpp"
 
 #include "foreach.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -76,7 +75,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 void tlanguage_selection::post_show(twindow& window)
 {
-	if(get_retval() == tbutton::OK) {
+	if(get_retval() == twindow::OK) {
 		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
 		assert(list);
 

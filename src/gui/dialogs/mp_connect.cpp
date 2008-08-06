@@ -106,7 +106,7 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmp_server_list::post_show(twindow& window)
 {
-	if(get_retval() == tbutton::OK) {
+	if(get_retval() == twindow::OK) {
 
 		const tlistbox* list = 
 			dynamic_cast<tlistbox*>(window.find_widget("server_list", false));
@@ -193,7 +193,7 @@ void tmp_connect::show_server_list(twindow& window)
 	tmp_server_list dlg;
 	dlg.show(*video_);
 
-	if(dlg.get_retval() == tbutton::OK) {
+	if(dlg.get_retval() == twindow::OK) {
 		host_name_->set_value(window, dlg.host_name());
 	}
 }

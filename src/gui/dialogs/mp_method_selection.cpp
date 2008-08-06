@@ -15,7 +15,6 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 
 #include "game_preferences.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/widget.hpp"
@@ -73,7 +72,7 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmp_method_selection::post_show(twindow& window)
 {
-	if(get_retval() == tbutton::OK) {
+	if(get_retval() == twindow::OK) {
 
 		ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
 		assert(user_widget);

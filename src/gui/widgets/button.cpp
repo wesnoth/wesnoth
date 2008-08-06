@@ -39,28 +39,6 @@
 
 namespace gui2 {
 
-tbutton::RETVAL tbutton::get_retval_by_id(const std::string& id)
-{
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_button_2
- *
- * List if the id's that have generate a return value:
- * * ok confirms the dialog.
- * * cancel cancels the dialog.
- *
- */
-	// Note it might change to a map later depending on the number
-	// of items.
-	if(id == "ok") {
-		return OK;
-	} else if(id == "cancel") {
-		return CANCEL;
-	} else {
-		return NONE;
-	}
-}
-
 void tbutton::mouse_enter(tevent_handler&) 
 { 
 	DBG_G_E << "Button: mouse enter.\n"; 

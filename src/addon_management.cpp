@@ -28,7 +28,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/widgets/button.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "network.hpp"
@@ -1096,7 +1096,7 @@ void manage_addons(game_display& disp)
 		addon_dlg.show(disp.video());
 
 		res = addon_dlg.get_retval();
-		if(res == gui2::tbutton::OK) {
+		if(res == gui2::twindow::OK) {
 			res = 0;
 			remote_host = addon_dlg.host_name();
 		}

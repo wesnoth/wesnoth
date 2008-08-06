@@ -14,7 +14,6 @@
 
 #include "gui/dialogs/addon_connect.hpp"
 
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/window_builder.hpp"
@@ -62,7 +61,7 @@ void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 
 void taddon_connect::post_show(twindow& window)
 {
-	if(get_retval() == tbutton::OK) {
+	if(get_retval() == twindow::OK) {
 		ttext_box* host_widget = dynamic_cast<ttext_box*>(window.find_widget("host_name", false));
 		assert(host_widget);
 

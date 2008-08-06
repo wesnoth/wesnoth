@@ -20,7 +20,6 @@
 #include "config.hpp"
 #include "cursor.hpp"
 #include "font.hpp"
-#include "gui/widgets/button.hpp" // due to the return values
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "variable.hpp"
@@ -81,6 +80,28 @@ twindow::twindow(CVideo& video,
 
 	help_popup_.set_definition("default");
 	help_popup_.set_visible(false);
+}
+
+twindow::RETVAL twindow::get_retval_by_id(const std::string& id)
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_window_2
+ *
+ * List if the id's that have generate a return value:
+ * * ok confirms the dialog.
+ * * cancel cancels the dialog.
+ *
+ */
+	// Note it might change to a map later depending on the number
+	// of items.
+	if(id == "ok") {
+		return OK;
+	} else if(id == "cancel") {
+		return CANCEL;
+	} else {
+		return NONE;
+	}
 }
 
 int twindow::show(const bool restore, void* /*flip_function*/)
@@ -192,10 +213,10 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
 {
 	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
-		set_retval(tbutton::OK);
+		set_retval(OK);
 		handled = true;
 	} else if(key == SDLK_ESCAPE) {
-		set_retval(tbutton::CANCEL);
+		set_retval(CANCEL);
 		handled = true;
 	}
 }

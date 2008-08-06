@@ -62,6 +62,35 @@ public:
 		const unsigned vertical_placement,
 		const std::string& definition);
 
+	/***** ***** ***** ***** Return value handling ***** ***** ***** *****/ 
+
+	/**
+	 * Default return values.
+	 *
+	 * These values are named return values and most are assigned to a widget
+	 * automatically when using a certain id for that widget. The automatic
+	 * return values are always a negative number.
+	 *
+	 * Note this might be moved somewhere else since it will force people to
+	 * include the button, while it should be and implementation detail for most
+	 * callers.
+	 */
+	enum RETVAL {
+		NONE = 0,                      /**< 
+										* Dialog is closed with no return
+										* value, should be rare but eg a
+										* message popup can do it.
+										*/
+		OK = -1,                       /**< Dialog is closed with ok button. */
+		CANCEL = -2                    /**< 
+										* Dialog is closed with the cancel
+										* button.
+										*/
+		};
+
+	/** Gets the retval for the default buttons. */
+	static RETVAL get_retval_by_id(const std::string& id);
+
 	// show the window
 	// The flip function is the disp_.flip() if ommitted the video_flip() is used
 	int show(const bool restore = true, void* flip_function = 0);

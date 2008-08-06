@@ -20,7 +20,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
-#include "gui/widgets/button.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
@@ -141,7 +141,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			gui2::tmp_connect dlg;
 
 			dlg.show(disp.video());
-			if(dlg.get_retval() == gui2::tbutton::OK) {
+			if(dlg.get_retval() == gui2::twindow::OK) {
 				h = preferences::network_host();
 			} else {
 				return ABORT_SERVER;

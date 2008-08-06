@@ -34,7 +34,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/widgets/button.hpp"
+#include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
@@ -1198,7 +1198,7 @@ bool game_controller::play_multiplayer()
 
 			dlg.show(disp().video());
 
-			if(dlg.get_retval() == gui2::tbutton::OK) {
+			if(dlg.get_retval() == gui2::twindow::OK) {
 				res = dlg.get_choice();
 			} else {
 				return false;
@@ -1359,7 +1359,7 @@ bool game_controller::change_language()
 
 			dlg.show(disp().video());
 
-			if(dlg.get_retval() == gui2::tbutton::OK) {
+			if(dlg.get_retval() == gui2::twindow::OK) {
 				if(!no_gui_) {
 					std::string wm_title_string = _("The Battle for Wesnoth");
 					wm_title_string += " - " + game_config::revision;

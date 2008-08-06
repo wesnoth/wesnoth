@@ -535,7 +535,7 @@ twidget* tbuilder_button::build() const
 	if(retval_) {
 		button->set_retval(retval_);
 	} else {
-		button->set_retval(tbutton::get_retval_by_id(id));
+		button->set_retval(twindow::get_retval_by_id(id));
 	}
 
 	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 

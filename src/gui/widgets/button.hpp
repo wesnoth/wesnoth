@@ -33,34 +33,6 @@ public:
 	{
 	}
 
-	/***** ***** ***** ***** Return value handling ***** ***** ***** *****/ 
-
-	/**
-	 * Default button values.
-	 *
-	 * These values are named return values and most are assigned to a widget
-	 * automatically when using a certain id for that widget.
-	 *
-	 * Note this might be moved somewhere else since it will force people to
-	 * include the button, while it should be and implementation detail for most
-	 * callers.
-	 */
-	enum RETVAL {
-		NONE = 0,                      /**< 
-										* Dialog is closed with no return
-										* value, should be rare but eg a
-										* message popup can do it.
-										*/
-		OK = -1,                       /**< Dialog is closed with ok button. */
-		CANCEL = -2                    /**< 
-										* Dialog is closed with the cancel
-										* button.
-										*/
-		};
-
-	/** Gets the retval for the default buttons. */
-	static RETVAL get_retval_by_id(const std::string& id);
-
 	void set_callback_mouse_left_click(void (*callback) (twidget*))
 		{ callback_mouse_left_click_ = callback; }
 

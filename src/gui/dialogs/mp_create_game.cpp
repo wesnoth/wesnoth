@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/dialogs/field.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/widget.hpp"
@@ -148,7 +147,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmp_create_game::post_show(twindow& window)
 {
-	if(get_retval() == tbutton::OK) {
+	if(get_retval() == twindow::OK) {
 		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("map_list", false));
 		assert(list);
 

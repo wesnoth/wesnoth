@@ -16,7 +16,6 @@
 
 #include "foreach.hpp"
 #include "gui/dialogs/field.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/text.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -48,7 +47,7 @@ void tdialog::show(CVideo& video)
 
 	retval_ = window.show(true);
 
-	if(retval_ ==  tbutton::OK) {
+	if(retval_ ==  twindow::OK) {
 		finalize_fields(window);
 	}
 
