@@ -475,24 +475,11 @@ void tgrid::set_size(const SDL_Rect& rect)
 	if((best_size.x <= size.x /*|| has_horizontal_scrollbar()*/) 
 			&& (best_size.y <= size.y || has_vertical_scrollbar())) {
 
-		// FIXME we only do the height atm, the width will be added when needed.
-		const unsigned over_shoot = best_size.y - size.y;
+		tpoint new_size = get_best_size(size);
+		assert(new_size <= size);
 
-		bool set = false;
 		row_height_ = best_row_height_;
 		col_width_ = best_col_width_;
-		// FIXME we assume 1 item per row.
-		for(unsigned i = 0; i < rows_; ++i) {
-			twidget* row = widget(i, 0);
-			if(row && row->has_vertical_scrollbar()) {
-				row_height_[i] -= over_shoot; // Assume this row can be resized enough
-				set = true;
-				break;
-			}
-			
-		}
-
-		assert(set);
 		layout(orig);
 		return;
 	}

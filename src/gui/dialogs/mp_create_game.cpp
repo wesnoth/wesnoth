@@ -134,10 +134,9 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 			item.insert(std::make_pair("tooltip", (*map)["name"]));
 			list->add_row(item);
 
-			// This hack is needed since the resize code can't handle this
-			// window properly, it has 3 columns which seems to fail in the
-			// resize code.
-			if(++i == 10) {
+			// This hack is needed since the next item is too wide to fit.
+			// and the scrollbar can't truncate text yet.
+			if(++i == 46) {
 				break;
 			}
 		}
