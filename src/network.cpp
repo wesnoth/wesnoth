@@ -1032,7 +1032,7 @@ size_t send_data(const config& cfg, connection connection_num, const bool gzippe
 //	log_scope2(network, "sending data");
 	if(!connection_num) {
 		DBG_NW << "sockets: " << sockets.size() << "\n";
-		size_t size;
+		size_t size = 0; 
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
 			DBG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
