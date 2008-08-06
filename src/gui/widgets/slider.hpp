@@ -36,7 +36,8 @@ public:
 	void set_value(const int value);
 
 	/** Inherited from tinteger_selector_. */
-	int get_value() const { return minimum_value_ + get_item_position(); }
+	int get_value() const 
+		{ return minimum_value_ + get_item_position() * get_step_size(); }
 
 	/** Inherited from tinteger_selector_. */
 	void set_minimum_value(const int minimum_value);
