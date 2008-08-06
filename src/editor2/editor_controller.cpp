@@ -478,17 +478,16 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 			refresh_all();
 			return true;
-			break;
 		case HOTKEY_EDITOR_REFRESH:
 			reload_map();
 			return true;
-			break;
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
 			refresh_image_cache();
 			return true;
 		default:
 			return controller_base::execute_command(command, index);
 	}
+	return false;
 }
 
 void editor_controller::expand_starting_position_menu(std::vector<std::string>& items)
