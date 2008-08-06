@@ -91,8 +91,8 @@ namespace gui {
 
 			if (length > RETURN_SPEED)
 			{
-				loc.x -= x_diff*(RETURN_SPEED/length);
-				loc.y -= y_diff*(RETURN_SPEED/length);
+				loc.x -= static_cast<Sint16>(x_diff*(RETURN_SPEED/length));
+				loc.y -= static_cast<Sint16>(y_diff*(RETURN_SPEED/length));
 				set_location(loc);
 			}
 			else
