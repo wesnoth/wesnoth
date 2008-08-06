@@ -59,7 +59,7 @@ TCPsocket get_received_data(std::vector<char>& buf);
 void queue_file(TCPsocket sock, const std::string&);
 
 void queue_raw_data(TCPsocket sock, const char* buf, int len);
-void queue_data(TCPsocket sock, const config& buf, const bool gzipped);
+size_t queue_data(TCPsocket sock, const config& buf, const bool gzipped);
 bool is_locked(const TCPsocket sock);
 bool close_socket(TCPsocket sock, bool force=false);
 TCPsocket detect_error();

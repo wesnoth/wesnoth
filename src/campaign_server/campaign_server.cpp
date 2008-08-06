@@ -319,7 +319,7 @@ namespace {
 				config data;
 				while((sock = network::receive_data(data, 0, &gzipped)) != network::null_connection) {
 					if(const config* req = data.child("request_campaign_list")) {
-						LOG_CS << "sending campaign list to " << network::ip_address(sock) << (gzipped?" using gzip":"") << "\n";
+						LOG_CS << "sending campaign list to " << network::ip_address(sock) << (gzipped?" using gzip":"");
 						time_t epoch = time(NULL);
 						config campaign_list;
 						(campaign_list)["timestamp"] = lexical_cast<std::string>(epoch);
@@ -374,7 +374,7 @@ namespace {
 
 						config response;
 						response.add_child("campaigns",campaign_list);
-						network::send_data(response, sock, gzipped);
+						std::cerr << " size: " << (network::send_data(response, sock, gzipped)/1024) << "kb\n";
 					} else if(const config* req = data.child("request_campaign")) {
 						LOG_CS << "sending campaign '" << (*req)["name"] << "' to " << network::ip_address(sock)  << (gzipped?" using gzip":"");
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
