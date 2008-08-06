@@ -181,7 +181,7 @@ void send_file(const std::string&, connection, const std::string packet_type = "
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
 //! Throws error.
-void send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped, const std::string packet_type = "unknown");
+size_t send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped, const std::string packet_type = "unknown");
 
 void send_raw_data(const char* buf, int len, connection connection_num, const std::string packet_type = "unknown");
 

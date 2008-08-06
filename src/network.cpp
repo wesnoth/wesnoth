@@ -1016,43 +1016,44 @@ void send_file(const std::string& filename, connection connection_num, const std
 //! @todo Note the gzipped parameter should be removed later, we want to send
 //! all data gzipped. This can be done once the campaign server is also updated
 //! to work with gzipped data.
-void send_data(const config& cfg, connection connection_num, const bool gzipped, const std::string packet_type
+size_t send_data(const config& cfg, connection connection_num, const bool gzipped, const std::string packet_type
 		)
 {
 	DBG_NW << "in send_data()...\n";
 	
 	if(cfg.empty()) {
-		return;
+		return 0;
 	}
 
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
-		return;
+		return 0;
 	}
 
 //	log_scope2(network, "sending data");
 	if(!connection_num) {
 		DBG_NW << "sockets: " << sockets.size() << "\n";
+		size_t size;
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
 			DBG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
-			send_data(cfg,*i, gzipped
+			size = send_data(cfg,*i, gzipped
 #ifdef BANDWIDTH_MONITOR
 					, packet_type
 #endif
 					);
 		}
-		return;
+		return size;
 	}
 
 	const connection_map::iterator info = connections.find(connection_num);
 	if (info == connections.end()) {
 		ERR_NW << "Error: socket: " << connection_num
 			<< "\tnot found in connection_map. Not sending...\n";
-		return;
+		return 0;
 	}
 
 	LOG_NW << "SENDING to: " << connection_num << ": " << cfg;
-	network_worker_pool::queue_data(info->second.sock, cfg, gzipped
+	return network_worker_pool::queue_data(info->second.sock, cfg, gzipped
 #ifdef BANDWIDTH_MONITOR
 			, packet_type
 #endif 

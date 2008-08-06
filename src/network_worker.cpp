@@ -897,7 +897,7 @@ void queue_raw_data(TCPsocket sock, const char* buf, int len)
 	queue_buffer(sock, queued_buf);
 }
 
-void queue_data(TCPsocket sock,const config& buf, const bool gzipped
+size_t queue_data(TCPsocket sock,const config& buf, const bool gzipped
 #ifdef BANDWIDTH_MONITOR
 		, const std::string& packet_type
 #endif
@@ -908,10 +908,12 @@ void queue_data(TCPsocket sock,const config& buf, const bool gzipped
 	buffer* queued_buf = new buffer(sock);
 	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
+	size_t size = queued_buf->stream.str().size();
 #ifdef BANDWIDTH_MONITOR
-	network::add_bandwidth_out(packet_type, queued_buf->stream.str().size());
+	network::add_bandwidth_out(packet_type, size);
 #endif
 	queue_buffer(sock, queued_buf);
+	return size;
 }
 
 namespace
