@@ -45,6 +45,7 @@ public:
 	int get_score() const {return score_;}
 	std::string get_type() const {return type_;}
 	unit_map::unit_iterator get_action_unit() {return action_unit_;}
+	unit_map::unit_iterator get_enemy_unit() {return enemy_unit_;}
 	const_formula_ptr get_move() {return move_;}
 
 	struct move_compare {

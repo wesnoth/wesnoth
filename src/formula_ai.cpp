@@ -1287,6 +1287,10 @@ void formula_ai::make_candidate_moves() {
 		callable.add_ref();
 		variant action_unit_callable(new unit_callable(*(*best_move)->get_action_unit()));
 		callable.add("me", action_unit_callable);
+		if((*best_move)->get_type() == "attack") {
+			variant enemy_unit_callable(new unit_callable(*(*best_move)->get_enemy_unit()));
+			callable.add("target", enemy_unit_callable);
+		}
 		const_formula_ptr move_formula((*best_move)->get_move());
 		make_move(move_formula, callable);
 		// And re-evaluate candidate moves
