@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-03 10:54+0200\n"
-"PO-Revision-Date: 2008-07-06 22:39+0800\n"
+"PO-Revision-Date: 2008-08-07 13:53+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "壓縮存檔"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:43
 msgid "Mouse Scrolling"
-msgstr "滑鼠滾輪"
+msgstr "畫面捲動速度"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:50
@@ -36,12 +36,12 @@ msgstr "地圖動畫"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr "角色動畫"
+msgstr "單位動畫"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:64
 msgid "Show Combat"
-msgstr "顯示戰鬥"
+msgstr "戰鬥動畫"
 
 #. [server]
 #: data/_main.cfg:79
@@ -51,7 +51,7 @@ msgstr "官方伺服器"
 #. [server]
 #: data/_main.cfg:83 data/_main.cfg:87
 msgid "Alternate Wesnoth Server"
-msgstr "更換伺服器"
+msgstr "非官方伺服器"
 
 #. [time]
 #. [illuminated_time]
@@ -63,7 +63,7 @@ msgstr "地下"
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:46 data/core/about.cfg:147
 msgid "Artwork and Graphics"
-msgstr "藝術與圖像設計"
+msgstr "藝術團隊"
 
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
@@ -80,7 +80,7 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "狂暴：\n"
-"不管是進攻還是防守，它將會持續戰鬥至其中一方死亡或是戰鬥了30個回合。"
+"不論選擇進攻或者防守，狂暴的效力都將持續到三十次交戰之後或者一方倒下為止。"
 
 #. [chance_to_hit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
@@ -97,13 +97,13 @@ msgid ""
 "ability of the unit being attacked."
 msgstr ""
 "魔法：\n"
-"攻擊有70%的機率無視於防禦力。"
+"無論目標防禦能力為何，此攻擊永遠有百分之七十的機會對敵人造成傷害。"
 
 #. [firststrike]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:665
 msgid "firststrike"
-msgstr "優先攻擊"
+msgstr "先發制人"
 
 #. [firststrike]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
@@ -112,18 +112,18 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"優先攻擊：\n"
-"即使是在守備狀態，依然優先攻擊。"
+"先發制人：\n"
+"即使在守勢之中，該單位永遠先攻擊敵人。"
 
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
-msgstr "劇本編排"
+msgstr "程式設計"
 
 #. [about]
 #: data/core/about.cfg:129
 msgid "General Purpose Administration and Coordination"
-msgstr "整體規劃和協調"
+msgstr "企劃總監"
 
 #. [about]
 #: data/core/about.cfg:417
@@ -138,264 +138,258 @@ msgstr "音效"
 #. [about]
 #: data/core/about.cfg:460
 msgid "Campaign Design"
-msgstr "戰役編輯"
+msgstr "戰役設計"
 
 #. [about]
 #: data/core/about.cfg:523
 msgid "Multiplayer Maps and Balancing"
-msgstr "多人地圖和平衡性"
+msgstr "多人地圖設計與遊戲平衡"
 
 #. [about]
 #: data/core/about.cfg:569
 msgid "Packagers"
-msgstr "製作人員"
+msgstr "封包優化"
 
 #. [about]
 #: data/core/about.cfg:618
 msgid "Miscellaneous contributors"
-msgstr "貢獻者"
+msgstr "其他貢獻者"
 
 #. [about]
 #: data/core/about.cfg:748
 msgid "Internationalization Managers"
-msgstr "國際化管理員"
+msgstr "國際化管理團隊"
 
 #. [about]
 #: data/core/about.cfg:773
 msgid "Afrikaans Translation"
-msgstr "南非荷蘭語"
+msgstr "南非荷蘭語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:789
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "塞爾維亞語"
+msgstr "阿拉伯語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:796
 msgid "Basque Translation"
-msgstr "巴斯克語"
+msgstr "巴斯克語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:809
 msgid "Bulgarian Translation"
-msgstr "保加利亞文"
+msgstr "保加利亞文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:828
 msgid "Catalan Translation"
-msgstr "加泰羅尼亞語"
+msgstr "加泰羅尼亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:866
 msgid "Chinese Translation"
-msgstr "簡體中文"
+msgstr "簡體中文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:900
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "簡體中文"
+msgstr "繁體中文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:907
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "加泰羅尼亞語"
+msgstr "克羅地亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:914
 msgid "Czech Translation"
-msgstr "捷克文"
+msgstr "捷克文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:971
 msgid "Danish Translation"
-msgstr "丹麥文"
+msgstr "丹麥文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1002
 msgid "Dutch Translation"
-msgstr "荷蘭文"
+msgstr "荷蘭文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1055
 msgid "English (GB) Translation"
-msgstr "英文(英國)"
+msgstr "英文(英國)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1065
 msgid "Esperanto Translation"
-msgstr "世界語"
+msgstr "世界語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1084
 msgid "Estonian Translation"
-msgstr "愛沙尼亞語"
+msgstr "愛沙尼亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1094
 msgid "Filipino Translation"
-msgstr "菲律賓文"
+msgstr "菲律賓文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1104
 msgid "Finnish Translation"
-msgstr "芬蘭文"
+msgstr "芬蘭文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1141
 msgid "French Translation"
-msgstr "法文"
+msgstr "法文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1264
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "菲律賓文"
+msgstr "弗留利語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1271
 msgid "Galician Translation"
-msgstr "巴倫西亞語"
+msgstr "巴倫西亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1306
 msgid "German Translation"
-msgstr "德文"
+msgstr "德文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1354
 msgid "Greek Translation"
-msgstr "希臘文"
+msgstr "希臘文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1385
 msgid "Hebrew Translation"
-msgstr "希伯來語"
+msgstr "希伯來文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1395
 msgid "Hungarian Translation"
-msgstr "匈牙利文"
+msgstr "匈牙利文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1465
 msgid "Indonesian Translation"
-msgstr "印度尼西亞語"
+msgstr "印度尼西亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1472
 msgid "Italian Translation"
-msgstr "義大利文"
+msgstr "義大利文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1507
 msgid "Japanese Translation"
-msgstr "日文"
+msgstr "日文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1533
 msgid "Korean Translation"
-msgstr "韓文"
+msgstr "韓文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1540
 msgid "Latin Translation"
-msgstr "拉丁文"
+msgstr "拉丁文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1547
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "拉丁文"
+msgstr "拉脫維亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1554
 msgid "Lithuanian Translation"
-msgstr "立陶宛語"
+msgstr "立陶宛語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1562
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "印度尼西亞語"
+msgstr "馬其頓語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1569
 msgid "Norwegian Translation"
-msgstr "挪威文"
+msgstr "挪威文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1591
 msgid "Polish Translation"
-msgstr "波蘭文"
+msgstr "波蘭文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1640
 msgid "Portuguese Translation"
-msgstr "葡萄牙文"
+msgstr "葡萄牙文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1647
 msgid "Portuguese (Brazil) Translation"
-msgstr "葡萄牙文(巴西)"
+msgstr "葡萄牙文(巴西)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1682
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "愛沙尼亞語"
+msgstr "羅馬尼亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1690
 msgid "Russian Translation"
-msgstr "俄羅斯文"
+msgstr "俄羅斯文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1726
 msgid "Serbian Translation"
-msgstr "塞爾維亞語"
+msgstr "塞爾維亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1741
 msgid "Slovak Translation"
-msgstr "斯洛伐克語"
+msgstr "斯洛伐克語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1767
 msgid "Slovenian Translation"
-msgstr "斯洛文尼亞語"
+msgstr "斯洛文尼亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1777
 msgid "Spanish Translation"
-msgstr "西班牙文"
+msgstr "西班牙文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1825
 msgid "Swedish Translation"
-msgstr "瑞典語"
+msgstr "瑞典語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1854
 msgid "Turkish Translation"
-msgstr "土耳其文"
+msgstr "土耳其文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1876
 msgid "Valencian (southern Catalan) Translation"
-msgstr " (西班牙)南加泰羅尼亞語"
+msgstr "南加泰羅尼亞語(西班牙)翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:1892
+#, fuzzy
 msgid "Bots"
 msgstr "電腦"
 
 #. [fonts]
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
-msgstr "wqy-zenhei-gb2312.ttf,DejaVuSans.ttf,sazanami-gothic.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
 #. [section]
 #. [topic]
@@ -413,13 +407,13 @@ msgstr "遊戲教學"
 #. [topic]
 #: data/core/help.cfg:33 data/core/help.cfg:323
 msgid "Traits"
-msgstr "特性"
+msgstr "特質"
 
 #. [section]
 #. [topic]
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
-msgstr "兵種"
+msgstr "部隊"
 
 #. [section]
 #: data/core/help.cfg:51
@@ -430,7 +424,7 @@ msgstr "技能"
 #. [topic]
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
-msgstr "武器特性"
+msgstr "專長"
 
 #. [section]
 #. [topic]
@@ -467,13 +461,13 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
-"有些武器攻擊時會有攻擊力加成的特性。\n"
+"有些武器攻擊時會有攻擊力加成。\n"
 "\n"
 
 #. [topic]
 #: data/core/help.cfg:110
 msgid "Unknown Unit"
-msgstr "未知的士兵"
+msgstr "未知的單位"
 
 #. [topic]
 #: data/core/help.cfg:113
@@ -505,14 +499,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"“韋諾之戰”是一個回合制策略游戲，與許多現代的策略游戲不盡相同。其他游戲有著復"
+"“韋諾之戰”是一個回合制戰略遊戲，與許多現代的策略遊戲不盡相同。其他遊戲有著復"
 "雜的規則與玩法，“韋諾之戰”卻講究簡單的條理與玩法—雖然簡易卻能産生豐富的策略，"
-"是一個易學卻不易專的游戲。"
+"是一個易學卻不易專的遊戲。"
 
 #. [topic]
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
-msgstr "游戲基本教學"
+msgstr "遊戲基本教學"
 
 #. [topic]
 #: data/core/help.cfg:133
@@ -523,7 +517,7 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"這篇文章描述了玩“韋諾之戰”所必需的知識，包括教學與基本游戲規則。當你在游戲中"
+"這篇文章描述了玩“韋諾之戰”所必需的知識，包括教學與基本遊戲規則。當你在遊戲中"
 "遇到新的資訊時，發現的新資訊也會添加到這裡。需要了解詳情或是特殊情况與例外，"
 "請繼續閱讀以下的連結。"
 
@@ -554,7 +548,7 @@ msgid ""
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"在游戲中請記住：將滑鼠指標指向游戲中一些項目時，狀態欄上會出現一些資訊，並附"
+"在遊戲中請記住：將滑鼠指標指向遊戲中一些項目時，狀態欄上會出現一些資訊，並附"
 "上簡單的描述。這個功能在您第一次看到新<ref>dst=abilities text=能力</ref>時非"
 "常有用。"
 
@@ -574,10 +568,10 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"韋諾之戰是由一系列的戰役組合而成的，每次戰鬥稱作一個戰役。每個戰役會讓你的部"
-"隊和一個或更多的對手作戰。你可以選擇和電腦或朋友在同一台電腦上對戰（單機模"
-"式）。如果你的電腦有在區域網路上，你也可以和其他區域網路上的人對戰。如果你的"
-"電腦能上網，則可以和其他能上網的人對戰。"
+"韋諾之戰是由一系列的劇情組合而成的，每個劇情稱作一個戰役。戰役會讓你的部隊和"
+"一個或更多的對手作戰。你可以選擇和電腦或朋友在同一台電腦上對戰（單機模式）。"
+"如果你的電腦有在區域網路上，你也可以和其他區域網路上的人對戰。如果你的電腦能"
+"上網，則可以和其他能上網的人對戰。"
 
 #. [topic]
 #: data/core/help.cfg:146
@@ -591,7 +585,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"戰役講述着一個故事，是由一系列環環相扣的任務組成的。遊戲中，你必須更小心謹"
+"戰役講述著一個故事，是由一系列環環相扣的任務組成的。遊戲中，你必須更小心謹"
 "慎，以確保最精良的部隊存活下來，才能夠在戰役中的下一個任務裡繼續戰鬥。"
 
 #. [topic]
@@ -610,7 +604,7 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 "請注意每個任務開始前出現的勝敗條件。通常你殺死敵人首領後會取得勝利，自己首領"
-"陣亡時游戲失敗。但是有些任務可能有其他目標－讓你的首領到達指定地點，或者救"
+"陣亡時遊戲失敗。但是有些任務可能有其他目標－讓你的首領到達指定地點，或者救"
 "人，或者解决一個迷題，或者與敵人對抗並堅守一定回合數。"
 
 #. [topic]
@@ -625,13 +619,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"場景勝利後,地圖顯示為灰色，'回合結束' 按鈕會變成 '結束場景'。這時你可以改變游"
-"戲存檔選項，也可以（在多人游戲中）和其他玩家交談。然後才按下那個按鈕繼續。"
+"勝利後,地圖顯示為灰色，'回合結束' 按鈕會變成 '結束任務'。這時你可以改變遊戲存"
+"檔選項，也可以（在多人遊戲中）和其他玩家交談。然後才按下那個按鈕繼續。"
 
 #. [topic]
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
-msgstr "招募與召回"
+msgstr "招募與徵召"
 
 #. [topic]
 #: data/core/help.cfg:160
@@ -646,10 +640,10 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"游戲開始時，每一方的指揮官都在城堡的軍情處上。戰鬥開始之前或戰鬥過程中，你可"
-"能需要為你的部隊招募<ref>dst=units text=士兵</ref>。要想招募士兵，指揮官（例"
-"如“繼位者”戰役中的康拉德）必須位於<ref>dst=terrain_castle text=城堡</ref>的軍"
-"情處上。在主選單中選擇招募或右鍵點選城堡的一個空位選擇<italic>text=招募</"
+"遊戲開始時，每一方的指揮官都在城堡的主堡上。戰鬥開始之前或戰鬥過程中，你可能"
+"需要為你的部隊招募<ref>dst=units text=士兵</ref>。要想招募士兵，指揮官（例"
+"如“繼位者”戰役中的康拉德）必須位於<ref>dst=terrain_castle text=城堡</ref>的主"
+"堡上。在主選單中選擇招募或右鍵點選城堡的一個空位選擇<italic>text=招募</"
 "italic>。會彈出招募選單，裡面列出了所有可以招募的士兵和所需的金錢。點選一個士"
 "兵可以查看他的資訊，然後點招募按鈕就可招募。"
 
@@ -671,7 +665,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -680,7 +673,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"新兵有兩個隨機的<ref>dst=traits text=特質</ref>，對其士兵稍有影響。"
+"招募新兵會有兩個隨機的<ref>dst=traits text=特質</ref>，對該士兵稍有影響。"
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -693,8 +686,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"在以後的任務中，你可召回早些任務裡的生還者。召回命令將為你列出一張所有上個場"
-"景中生還者的清單。召回一律花費20金幣。"
+"在往後的任務中，您可徵召早些任務裡的士兵。徵召將為你列出一張所有上個任務中士"
+"兵的清單。徵召一律花費20金幣。"
 
 #. [topic]
 #: data/core/help.cfg:168
@@ -707,7 +700,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"士兵不僅僅需要花費金幣去招募或召回，還需要支出。參見"
+"士兵不僅僅需要花費金幣去招募或徵召，還需要支出。參見"
 "<ref>dst=income_and_upkeep text='收入與支出'</ref>"
 
 #. [topic]
@@ -878,6 +871,7 @@ msgstr "未探索區域和戰爭迷霧"
 
 #. [topic]
 #: data/core/help.cfg:210
+#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -902,7 +896,8 @@ msgstr ""
 "會隱藏這個區域的地形和任何單位。但是，一旦被偵測，你時時刻刻都能看見這個區"
 "域。戰争迷霧只會隱藏（不是你的或盟友的）單位和村莊的歸屬。在附近有你的單位時"
 "迷霧會消失，當他們離去後會再次籠罩。每個單位都能清除本回合移動所經過區域和區"
-"域附近的戰場黑幕和迷霧（忽略敵人部隊和敵人控制區域）。"
+"域附近的戰場黑幕和迷霧（忽略敵人部隊和敵人控制區域）。\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:215
@@ -1052,9 +1047,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"少數單位擁有特彆的<ref>dst=abilities text=能力</ref>，會影響在戰鬥中的傷害輸"
-"出。通常擁有<ref>dst=weaponspecial_charge text=衝鋒</ref>能力的單位會使戰鬥中"
-"的進攻方和防守方都輸出雙倍的傷害。"
+"少數單位擁有特別的<ref>dst=abilities text=能力</ref>，會影響在戰鬥中的傷害。"
+"通常擁有<ref>dst=weaponspecial_charge text=衝鋒</ref>能力的單位會使戰鬥中的進"
+"攻方和防守方都輸出雙倍的傷害。"
 
 #. [topic]
 #: data/core/help.cfg:237
@@ -1242,7 +1237,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"大多數兵種有三個級彆，但也有例外。有些單位（例如<ref>dst=unit_Mage text=法師"
+"大多數兵種有三個級別，但也有例外。有些單位（例如<ref>dst=unit_Mage text=法師"
 "</ref>）能升到四級。單位升到最高級以後，有可能會得到滿級奬勵（AMLA）。AMLA會"
 "在單位達到升級所需經驗值後修改單位屬性，但等級不變。典型的AMLA作用是增加3點最"
 "大生命值并補滿血。通常情况下，單位會在獲得100點經驗值（聰慧單位是80點）後獲得"
@@ -1335,13 +1330,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"休息能和其它治療方式叠加，但是村莊，恢復，治療和治愈效果則不能互相叠加。游戲"
+"休息能和其它治療方式叠加，但是村莊，恢復，治療和治愈效果則不能互相叠加。遊戲"
 "會自動選擇最優治療方式。最後，單位能在過場時完全恢復生命值。"
 
 #. [topic]
 #: data/core/help.cfg:292
 msgid "Income and Upkeep"
-msgstr "收入和維護費用"
+msgstr "收入和支出"
 
 #. [topic]
 #: data/core/help.cfg:293
@@ -1352,7 +1347,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "韋諾中，僅僅征兵并戰鬥是不够的。你得注意你的金幣，特彆是在戰役中，你能將多餘"
-"的金幣携帶到下一幕。影響金幣的主要是兩個方面：收入和維護費用。"
+"的金幣携帶到下一幕。影響金幣的主要是兩個方面：收入和支出。"
 
 #. [topic]
 #: data/core/help.cfg:295
@@ -1368,7 +1363,7 @@ msgstr ""
 "\n"
 "收入這個概念很簡單。每回合你都會得到2金幣的基本收入。你所占領的每個村莊每回合"
 "也會給你1個金幣的額外收入。因此如果你占領了十個村莊，每回合就會有12個金幣的收"
-"入。維護費用由你的收入來支付。以下是詳細信息。"
+"入。支出由你的收入來支付。以下是詳細信息。"
 
 #. [topic]
 #: data/core/help.cfg:297
@@ -1384,10 +1379,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"維護費也相當簡單。每單位每等級都有一定的維護費。只要有足够多的村莊就能支持多"
-"等級<italic>text=級數總合</italic>的單位，而不需要維護費用。然而，單位等級之"
-"和每超過你所擁有的村莊數1級，你就得每回合支付1金幣的維護費。例如，如果你有十"
-"二個一級的單位和十個村莊，你就得支付每回合2個金幣的維護費用。"
+"支出也相當簡單。每單位每等級都有一定的支出。只要有夠多的村莊就能支持多等級"
+"<italic>text=級數總合</italic>的單位，而不需要支出。然而，單位等級之和每超過"
+"你所擁有的村莊數1級，你就得每回合支付1金幣的費用。例如，如果你有十二個一級的"
+"單位和十個村莊，你就得支付每回合2個金幣的費用。"
 
 #. [topic]
 #: data/core/help.cfg:299
@@ -1400,8 +1395,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"維護費用由你的收入來支付，所以在有等級總合為12的單位和十個村莊的情况下，最後"
-"你的收入將會是每回合10個金幣。"
+"支出由你的收入來支付，所以在有等級總合為12的單位和十個村莊的情况下，最後你的"
+"收入將會是每回合10個金幣。"
 
 #. [topic]
 #: data/core/help.cfg:300
@@ -1415,9 +1410,9 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"維護費用的支付規則中有一個重要的例外：即具有忠誠特質的單位不需支付維護費用。"
-"每一幕開始時你擁有的單位（比如Konrad或Delfador），或在場景中加入己方的單位"
-"（如在“繼位者”第二幕中加入的騎兵）通常都具有忠誠特質。"
+"費用的支付規則中有一個重要的例外：即具有忠誠特質的單位不需支付費用。每一幕開"
+"始時你擁有的單位（比如Konrad或Delfador），或在場景中加入己方的單位（如在“繼位"
+"者”第二幕中加入的騎兵）通常都具有忠誠特質。"
 
 #. [topic]
 #: data/core/help.cfg:305
@@ -1433,9 +1428,9 @@ msgid ""
 "everything you need to know to play the Heir to the Throne campaign. Have "
 "fun, and good luck!"
 msgstr ""
-"韋諾之戰的基本規則就此結束。你可能需要閲讀基本的游戲策略，或再熟悉一下"
+"韋諾之戰的基本規則就此結束。你可能需要閲讀基本的遊戲策略，或再熟悉一下"
 "<ref>dst=traits text=特質</ref>和<ref>dst=abilities text=能力</ref>。現在你已"
-"經有足够的經驗去玩《繼位者之戰》這個戰役了。祝你好運，玩得開心！"
+"經有足夠的能力去玩《繼位者》這個戰役了。祝你好運，玩得開心！"
 
 #. [topic]
 #: data/core/help.cfg:311
@@ -1456,7 +1451,7 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "大多數單位有兩種特質。然而，不死族只有一種特質，即“不死”。’和樹人則没有任何特"
-"質。特質會細微的修正單位的屬性。通常征募的單位會獲得隨機的特質。"
+"質。特質會細微的修正單位的屬性。通常招募的單位會獲得隨機的特質。"
 
 #. [topic]
 #: data/core/help.cfg:327
@@ -1516,7 +1511,7 @@ msgstr ""
 "\n"
 "擁有聰慧特質的單位在一個戰役的開始非常有用，因為他們能很快的升到高等級。在戰"
 "役的後期擁有聰慧特質的單位并不是很有用，因為滿級奬勵（AMLA）與升級低等級單位"
-"相比效果并不顯著。如果你有很多達到“滿級”的單位，你也許希望召回那些有有用特質"
+"相比效果并不顯著。如果你有很多達到“滿級”的單位，你也許希望徵召那些有有用特質"
 "的單位。"
 
 #. [topic]
@@ -1577,7 +1572,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:360
 msgid "Strong"
-msgstr "强壯"
+msgstr "強壯"
 
 #. [topic]
 #: data/core/help.cfg:361
@@ -1643,7 +1638,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"在戰役中，一些單位會自己選擇加入玩家陣營。這些單位都有忠誠特質，即使召回他們"
+"在戰役中，一些單位會自己選擇加入玩家陣營。這些單位都有忠誠特質，即使徵召他們"
 "需要付費，但却不需要維護費用。在漫長的戰役中，金幣短缺，這種特質真是不可多"
 "得。新招募的單位永遠都不會有這種特質，所以應避免解雇忠誠單位，或讓他們去送"
 "死。"
@@ -1760,7 +1755,7 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
-"游戲地圖中包括許多不同的地形，這些地形既能影響單位的移動，也能影響單位在戰鬥"
+"遊戲地圖中包括許多不同的地形，這些地形既能影響單位的移動，也能影響單位在戰鬥"
 "中的防守能力。\n"
 "\n"
 
@@ -1979,7 +1974,7 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
-"冰面指的是上凍的水域。在游戲中，它等同于<ref>dst=terrain_tundra text=雪地</"
+"冰面指的是上凍的水域。在遊戲中，它等同于<ref>dst=terrain_tundra text=雪地</"
 "ref>。注意，那些能游泳的單位，即使能在水下呼吸，也不能在冰面下呼吸。"
 
 #. [topic]
@@ -2038,7 +2033,7 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
-"沙漠不同于小型沙地或沙灘，然而在游戲中，它們是一様的。參見"
+"沙漠不同于小型沙地或沙灘，然而在遊戲中，它們是一様的。參見"
 "<ref>dst=terrain_sand text=沙地</ref>。"
 
 #. [topic]
@@ -2148,7 +2143,7 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"熱帶草原上的草叢高大，分布在世界上比較熱的地帶。在游戲中，它等同于"
+"熱帶草原上的草叢高大，分布在世界上比較熱的地帶。在遊戲中，它等同于"
 "<ref>dst=terrain_grassland text=草原</ref>"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
@@ -2216,7 +2211,7 @@ msgid ""
 "terrain."
 msgstr ""
 "深淵是平地上的凹陷，深不可測。深淵有着陡峭的山壁以至于要花費許多天才能通過。"
-"在游戲中，只有那些能飛過峽榖的單位可以通過這種地形。"
+"在遊戲中，只有那些能飛過峽榖的單位可以通過這種地形。"
 
 #. [topic]
 #: data/core/help.cfg:627
@@ -2252,7 +2247,7 @@ msgid ""
 "the unit on it."
 msgstr ""
 "有時一些河流正好特彆淺，陸軍可以很容易的通過。而任何最適應于游泳的生物在這裏"
-"也能自由移動。就游戲而言，河灘相當于草原或淺水，游戲會自動選擇對單位防守和移"
+"也能自由移動。就遊戲而言，河灘相當于草原或淺水，遊戲會自動選擇對單位防守和移"
 "動最有利的一種。"
 
 #. [topic]
@@ -2278,8 +2273,8 @@ msgstr ""
 "對于能造橋的人來説，橋的存在意味着把自己從變化多端的水路中解放了出來。但這并"
 "不能保證脚的乾燥舒適——在寒冷的季節這可不是件小事。\n"
 "\n"
-"無論是適應陸路還是適應水路的人，橋都是理想的地形。在游戲中，橋相當于草原或淺"
-"水，游戲會自動選擇對單位防守和移動最有利的一種。注意，游泳單位和陸地單位不能"
+"無論是適應陸路還是適應水路的人，橋都是理想的地形。在遊戲中，橋相當于草原或淺"
+"水，遊戲會自動選擇對單位防守和移動最有利的一種。注意，游泳單位和陸地單位不能"
 "同時占領同一座橋。"
 
 #. [topic]
@@ -2297,7 +2292,7 @@ msgstr "洞穴墻壁是有堅固的石頭構成的。最堅定的旅行者對此
 #. [topic]
 #: data/core/help.cfg:661
 msgid "Impassable Mountain"
-msgstr "高不可攀的大山"
+msgstr "無法通過的山嶺"
 
 #. [topic]
 #: data/core/help.cfg:664
@@ -2311,7 +2306,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:675
 msgid "General commands"
-msgstr "常規指令"
+msgstr "指令"
 
 #. [topic]
 #: data/core/help.cfg:679
@@ -2321,7 +2316,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"清除聊天信息.\n"
+"清除聊天記錄。\n"
 "\n"
 
 #. [topic]
@@ -2336,10 +2331,9 @@ msgstr ""
 "\n"
 "開啓調試模式（在多人對戰中無效）。查看<ref>dst=debug_commands text='調試模式"
 "可用命令'</ref>。\n"
-"要關閉調試模式可以使用 :nodebug 或者退出游戲。\n"
+"要關閉調試模式可以使用 :nodebug 或者退出遊戲。\n"
 "\n"
 
-# can someone explain this to me in other words? i have not seen this in real multiplayer yet
 #. [topic]
 #: data/core/help.cfg:686
 #, fuzzy
@@ -2367,7 +2361,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"顯示游戲的FPS-每秒顯示幀數(frames per second).\n"
+"顯示遊戲的FPS-每秒顯示幀數(frames per second).\n"
 "\n"
 
 #. [topic]
@@ -2389,7 +2383,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"重繪屏幕畫面。\n"
+"重置螢幕畫面。\n"
 "\n"
 
 #. [topic]
@@ -2400,7 +2394,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"彈出主題選擇菜單。\n"
+"展開主選單。\n"
 "\n"
 
 #. [topic]
@@ -2411,7 +2405,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"離開場景（無提示窗口）。\n"
+"離開任務（無提示窗口）。\n"
 "\n"
 
 #. [topic]
@@ -2422,7 +2416,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"保存游戲（無提示窗口）。\n"
+"儲存遊戲（無提示窗口）。\n"
 "\n"
 
 #. [topic]
@@ -2432,7 +2426,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"保存游戲并退出當前場景（無提示窗口）。"
+"儲存遊戲並退出任務（無提示窗口）。"
 
 #. [topic]
 #: data/core/help.cfg:710
@@ -2448,7 +2442,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"在多人游戲中，把某個玩家踢出游戲并且封禁他所使用的IP地址(所謂的Ban IP)\n"
+"在多人遊戲中，把某個玩家踢出遊戲并且封禁他所使用的IP地址(所謂的Ban IP)\n"
 "\n"
 
 #. [topic]
@@ -2550,7 +2544,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"手動設置游戲變量的值.\n"
+"手動設置遊戲變量的值.\n"
 "\n"
 
 #. [topic]
@@ -2561,7 +2555,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"顯示游戲變量.\n"
+"顯示遊戲變量.\n"
 "\n"
 
 #. [topic]
@@ -2712,7 +2706,7 @@ msgstr ""
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:335
 msgid "skirmisher"
-msgstr "游撃"
+msgstr "游撃ㄧ"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:337
@@ -2751,14 +2745,13 @@ msgstr "傳送"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:366
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "傳送：\n"
-"本單位能花費一個移動點數在任意兩個友好村莊間移動。"
+"該士兵只要花費一個移動數就可以在任意兩個友好村莊間移動。"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:375 data/core/macros/abilities.cfg:376
@@ -2869,7 +2862,6 @@ msgid "backstab"
 msgstr "背刺"
 
 #: data/core/macros/abilities.cfg:544
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -2877,8 +2869,8 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "背刺：\n"
-"當被攻撃者的對面有其敵對單位，且該敵對單位具有戰鬥力（例如，没有被石化）時，"
-"本攻撃造成雙倍傷害。"
+"當該士兵站在敵人背後時，背刺能產生雙倍攻擊力。但有些情況並不適用，例如敵人被"
+"石化。"
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
@@ -2937,14 +2929,14 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:602
 msgid "marksman"
-msgstr "精准"
+msgstr "精準"
 
 #: data/core/macros/abilities.cfg:604
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"精准：\n"
+"精準：\n"
 "進攻時，本攻撃至少有60%的命中率。"
 
 #: data/core/macros/abilities.cfg:629
@@ -2968,14 +2960,13 @@ msgid "charge"
 msgstr "衝鋒"
 
 #: data/core/macros/abilities.cfg:642
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "衝鋒：\n"
-"本攻撃對目標造成雙倍傷害，攻撃目標的反撃也會使本單位受到雙倍的傷害。"
+"這種攻擊使得目標的傷害增加1倍。但同時如果對方反擊擊中，自己也承受雙倍傷害。"
 
 #: data/core/macros/abilities.cfg:654
 msgid "drains"
@@ -2988,7 +2979,7 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "吸血：\n"
-"通過吸食生物單位的生命來治療自己，能治療造成傷害一半的生命值(向下舍入)。"
+"通過吸食生物單位的生命來治療自己，能治療造成傷害一半的生命值。"
 
 #: data/core/macros/abilities.cfg:676
 msgid "poison"
@@ -3063,7 +3054,7 @@ msgstr "唯一值得許願的是讓和平遍及這片土地。"
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
-msgstr "彆許願。"
+msgstr "別許願。"
 
 #. [object]
 #: data/core/macros/items.cfg:121
@@ -3078,7 +3069,7 @@ msgstr "飲用者心裏充滿幸福。"
 #. [object]
 #: data/core/macros/items.cfg:125
 msgid "You are not worthy of healing."
-msgstr "你不值得治療。"
+msgstr "您不需要治療。"
 
 #. [object]
 #: data/core/macros/items.cfg:159
@@ -3105,7 +3096,7 @@ msgstr "這瓶水將讓單位的近戰武器類型變為'奥術'直到下一幕�
 #. [object]
 #: data/core/macros/items.cfg:201
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr "我不適合用這件物品！讓彆人去用吧。"
+msgstr "我不適合用這件物品！讓別人去用吧。"
 
 #. [object]
 #: data/core/macros/items.cfg:236
@@ -3125,7 +3116,7 @@ msgstr "衰退藥劑"
 #. [object]
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
-msgstr "這個可憐的家夥喝了一些不好的東西。"
+msgstr "這個可憐的傢伙喝了一些不好的東西。"
 
 #. [object]
 #: data/core/macros/items.cfg:318
@@ -3988,7 +3979,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"特彆提示:"
+"特別提示:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -4000,10 +3991,9 @@ msgstr "亡靈對很多傷害都有不凡抗性，但在開闊水面上移動很
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
-msgstr "本單位的奥術攻撃對不死族造成巨大的傷害，對活着的生物也能造成傷害。"
+msgstr "本單位的神聖術攻撃對不死族造成巨大的傷害，對活着的生物也能造成傷害。"
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
 msgstr "本單位可以治療周圍的單位，并治愈中毒效果。"
 
@@ -4032,14 +4022,13 @@ msgid ""
 msgstr "本單位的堅忍不拔使得某些攻撃的傷害下降，但這支在本單位防守時有效。"
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of below the leadership "
 "level."
 msgstr ""
-"本單位的領導能力使得相鄰的友好單位獲得更多的攻撃輸出，但只對等級較低的單位有"
-"效。"
+"這個士兵的領導能力能使在他周圍的友軍更具戰鬥力。周圍比他等級低的友軍在戰鬥中"
+"會給對方造成更大的傷害。"
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4052,13 +4041,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr "'照明'能力增加相鄰區域的亮度。"
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
 "傳送：\n"
-"本單位能花費一個移動點數在任意兩個友好村莊間移動。"
+"這個士兵可以在兩個友軍村莊之间傳送，僅耗費1的移動力。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4187,7 +4175,7 @@ msgstr "忠誠"
 #. [trait]
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
-msgstr "無維護費用"
+msgstr "無支出"
 
 #. [trait]
 #: data/core/macros/traits.cfg:23
@@ -4749,17 +4737,17 @@ msgstr "怪物"
 #. [race]: description=
 #: data/core/units.cfg:179
 msgid "race^Naga"
-msgstr "娜迦"
+msgstr "納迦"
 
 #. [race]: description=
 #: data/core/units.cfg:180
 msgid "race^Nagani"
-msgstr "娜迦"
+msgstr "納迦"
 
 #. [race]: description=
 #: data/core/units.cfg:181
 msgid "race^Nagas"
-msgstr "娜迦"
+msgstr "納迦"
 
 #. [race]: description=
 #: data/core/units.cfg:189
@@ -4948,8 +4936,8 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
-"不死族并非單一種族，盡管被當成那様。大多不死是被足够强大的巫師從死亡世界召"
-"回。它們無意識，是反抗自然的存在。只知道聽從召唤者的命令。"
+"不死族并非單一種族，盡管被當成那様。大多不死是被强大的巫師從死亡世界裡徵召回"
+"來的。它們無意識，是反抗自然的存在。只知道聽從召喚者的命令。"
 
 #. [race]: description=
 #: data/core/units.cfg:254
@@ -5111,11 +5099,10 @@ msgstr "火焰"
 msgid "cold"
 msgstr "寒冷"
 
-# 我覺得翻"奧義"不錯
 #. [language]
 #: data/hardwired/english.cfg:42
 msgid "arcane"
-msgstr "奧術"
+msgstr "秘法"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -5197,7 +5184,7 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
-"你可以通過鼠標右鍵使用'征募'和'召回'命令, 只要在城堡單元格裏點一下. 就可以選"
+"你可以通過鼠標右鍵使用'征募'和'徵召'命令, 只要在城堡單元格裏點一下. 就可以選"
 "擇在哪個空位召唤，靈活使用會讓你盡早或更多地占領村落。"
 
 #. [tip]
@@ -5207,7 +5194,7 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"主菜單有些很有用的統計：例如，“狀態列表”可以讓你知道你和對手分彆做的怎麽様。"
+"主選單有些很有用的統計：例如，“狀態列表”可以讓您知道您和對手的戰鬥數據。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5230,7 +5217,7 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
-"玩過幾個場景後,請認真閲讀幫助中的'游戲玩法'部分.那些技巧在更難的場景中會很有"
+"玩過幾個場景後,請認真閲讀幫助中的'遊戲玩法'部分.那些技巧在更難的場景中會很有"
 "用的!"
 
 #. [tip]
@@ -5290,7 +5277,7 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
-"如果游戲時開啓戰争迷霧，你不會知道你將要面對什麽。這種情况下，遠距離偵察單位"
+"如果遊戲時開啓戰争迷霧，你不會知道你將要面對什麽。這種情况下，遠距離偵察單位"
 "會體現出他們的價值。嘗試去選擇一些可以很容易穿過周圍地形的偵察單位，因為單位"
 "視野與他們的移動力直接相關。"
 
@@ -5302,8 +5289,8 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"有六種攻撃類型：穿刺，劍刃，衝撃，火焰，寒冷和奥術。不同的單位對不同的攻撃有"
-"不同的反應。右撃單位，再選擇“單位描述”，然後查看一個單位對不同攻撃的抵抗能"
+"有六種攻撃類型：穿刺，劍刃，衝撃，火焰，寒冷和神聖術。不同的單位對不同的攻撃"
+"有不同的反應。右撃單位，再選擇“單位描述”，然後查看一個單位對不同攻撃的抵抗能"
 "力。"
 
 #. [tip]
@@ -5337,7 +5324,7 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"你可以通過游戲菜單中的“召回”選項來調用上個場景中的單位。通過不斷召回同一組單"
+"你可以通過遊戲菜單中的“徵召”選項來調用上個場景中的單位。通過不斷徵召同一組單"
 "位，你可以建立一支强力而經驗值豐富的軍隊。"
 
 #. [tip]
@@ -5483,7 +5470,7 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"你的領袖可以從城堡的要塞中征募或召回單位——不僅僅是場景開始時的要塞——你可以征"
+"你的領袖可以從城堡的要塞中征募或徵召單位——不僅僅是場景開始時的要塞——你可以征"
 "服敵人的要塞，并從那裏征募單位。有些盟友願意在他們的要塞裏騰出讓你征募單位的"
 "空間。"
 
@@ -5568,7 +5555,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:159
 msgid "Arcane attacks are very powerful against undead."
-msgstr "奥術攻撃會對不死亡靈造成强力傷害。"
+msgstr "神聖術攻撃會對不死亡靈造成强力傷害。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -5618,7 +5605,7 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
-"韋諾之戰的游戲屏幕中幾乎所有的圖標和文字都有工具提示。把鼠標指向圖標或文字就"
+"韋諾之戰的遊戲屏幕中幾乎所有的圖標和文字都有工具提示。把鼠標指向圖標或文字就"
 "能够顯示解釋或描述信息。"
 
 #. [tip]
@@ -5629,8 +5616,8 @@ msgid ""
 "right-hand corner of the game main screen). This information is vital so we "
 "can adjust campaign difficulty."
 msgstr ""
-"你可以通過“幫助韋諾之戰”按鈕（位于主屏幕右下角的信封圖標）發送匿名的匯總進度"
-"信息給韋諾項目組。這些信息對我們調整戰役難度有重大意義。"
+"您可以透過“幫助韋諾之戰”按鈕（在主螢幕右下角的信封圖示）發送匿名的匯總進度信"
+"息給韋諾項目組。這些信息對我們調整戰役難度有重大意義。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
@@ -5675,13 +5662,13 @@ msgstr ""
 #. [effect]: type=fire
 #: data/scenario-test.cfg:697
 msgid "ruby of fire"
-msgstr "火之紅寶石(ruby of fire)"
+msgstr "火之寶石"
 
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
-msgstr "選單"
+msgstr "主選單"
 
 #. [menu]
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
@@ -5701,7 +5688,7 @@ msgstr "結束回合"
 #: data/themes/default.cfg:154 data/themes/default.cfg:769
 #: data/themes/default.cfg:1024 data/themes/dfool.cfg:161
 msgid "End Scenario"
-msgstr "結束場景"
+msgstr "結束任務"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5741,7 +5728,7 @@ msgstr "單位"
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
-msgstr "維護費用"
+msgstr "支出"
 
 #. [label]
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
@@ -5760,7 +5747,6 @@ msgstr "等級"
 msgid "statuspanel^movement"
 msgstr "移動點數"
 
-# havn't seen this in action
 #. [change]
 #: data/themes/default.cfg:995
 msgid "Act."
@@ -5780,22 +5766,22 @@ msgstr "移動點數"
 #. [label]
 #: data/themes/macros.cfg:59
 msgid "Replay"
-msgstr "游戲録像"
+msgstr "遊戲錄影"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
-msgstr "開始回放"
+msgstr "開始播放"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:75
 msgid "continous replay"
-msgstr "連續回放"
+msgstr "連續播放"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
-msgstr "停止回放"
+msgstr "停止播放"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:93
@@ -5810,7 +5796,7 @@ msgstr "重置"
 #. [menu]: type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
-msgstr "重置到開局"
+msgstr "重置到最初"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:128
@@ -5862,7 +5848,7 @@ msgstr "你没有領袖，無法征兵。"
 
 #: src/actions.cpp:151
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr "你的領袖必須在要塞裏才能征募或召回單位。"
+msgstr "你的領袖必須在主堡裏才能征募或徵召單位。"
 
 #: src/actions.cpp:170
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -5956,11 +5942,11 @@ msgstr "無有效目標"
 
 #: src/dialogs.cpp:239
 msgid "Save Game"
-msgstr "保存游戲"
+msgstr "保存遊戲"
 
 #: src/dialogs.cpp:249
 msgid "Quit Game"
-msgstr "退出游戲"
+msgstr "退出遊戲"
 
 #: src/dialogs.cpp:254
 msgid "Ignore All"
@@ -5999,7 +5985,7 @@ msgstr "過濾： "
 
 #: src/dialogs.cpp:380
 msgid "Do you really want to delete this game?"
-msgstr "你真的想删除這個游戲嗎？"
+msgstr "你真的想删除這個遊戲嗎？"
 
 #: src/dialogs.cpp:382
 msgid "Don't ask me again!"
@@ -6027,7 +6013,7 @@ msgstr "教程"
 
 #: src/dialogs.cpp:584 src/menu_events.cpp:737
 msgid "replay"
-msgstr "游戲録像"
+msgstr "遊戲録像"
 
 #: src/dialogs.cpp:586 src/menu_events.cpp:739
 msgid "Turn"
@@ -6085,15 +6071,15 @@ msgstr "名稱"
 
 #: src/dialogs.cpp:693 src/multiplayer_create.cpp:105
 msgid "Load Game"
-msgstr "載入游戲"
+msgstr "載入遊戲"
 
 #: src/dialogs.cpp:694
 msgid "Choose the game to load"
-msgstr "選擇要載入的游戲"
+msgstr "選擇要載入的遊戲"
 
 #: src/dialogs.cpp:703 src/dialogs.cpp:705
 msgid "Show replay"
-msgstr "顯示游戲録像"
+msgstr "顯示遊戲録像"
 
 #: src/dialogs.cpp:708 src/multiplayer_create.cpp:87
 msgid "OK"
@@ -6135,7 +6121,7 @@ msgstr "KB"
 
 #: src/display.cpp:407
 msgid "Screenshot"
-msgstr "屏幕截圖"
+msgstr "螢幕截圖"
 
 #: src/game.cpp:457 src/game.cpp:1600
 msgid "The Battle for Wesnoth"
@@ -6147,13 +6133,13 @@ msgstr "警告：你試圖載入的文件已損壞。繼續嘗試載入。\n"
 
 #: src/game.cpp:779 src/multiplayer_connect.cpp:1453
 msgid "This save is from a version too old to be loaded."
-msgstr "這個存檔是由一個太早期的游戲版本保存的，現在的版本無法載入。"
+msgstr "這個存檔是由一個太早期的遊戲版本保存的，現在的版本無法載入。"
 
 #: src/game.cpp:785 src/multiplayer_connect.cpp:1460
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
-msgstr "這個存檔來自于不同版本的游戲。你仍然想載入嗎？"
+msgstr "這個存檔來自于不同版本的遊戲。你仍然想載入嗎？"
 
 #: src/game.cpp:805 src/game.cpp:808 src/multiplayer_connect.cpp:1431
 msgid "The file you have tried to load is corrupt: '"
@@ -6161,7 +6147,7 @@ msgstr "你試圖載入的文件已損壞： '"
 
 #: src/game.cpp:811
 msgid "File I/O Error while reading the game"
-msgstr "當讀取游戲時發生文件I/O錯誤。"
+msgstr "當讀取遊戲時發生文件I/O錯誤。"
 
 #: src/game.cpp:901
 #, fuzzy
@@ -6190,31 +6176,31 @@ msgstr "MB"
 
 #: src/game.cpp:1008 src/game.cpp:1493
 msgid "Connect to Server"
-msgstr "連接到服務器"
+msgstr "連接到伺服器"
 
 #: src/game.cpp:1009
 msgid "You will now connect to a server to download add-ons."
-msgstr "你將連接至服務器以下載插件。"
+msgstr "你將連接至伺服器以下載模組。"
 
 #: src/game.cpp:1011
 msgid "Server: "
-msgstr "服務器： "
+msgstr "伺服器： "
 
 #: src/game.cpp:1012 src/game.cpp:1079
 msgid "Remove Add-ons"
-msgstr "删除插件"
+msgstr "移除模組"
 
 #: src/game.cpp:1066
 msgid "You have no Add-ons installed."
-msgstr "没有安裝插件"
+msgstr "您没有安裝任何模組。"
 
 #: src/game.cpp:1079
 msgid "Choose the add-on to remove."
-msgstr "選擇要删除的插件。"
+msgstr "選擇要移除的模組。"
 
 #: src/game.cpp:1090
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr "你確定你要删除插件 '$addon|'?"
+msgstr "您確定要移除模組 '$addon|' ?"
 
 #: src/game.cpp:1094
 msgid "Confirm"
@@ -6222,19 +6208,19 @@ msgstr "確認"
 
 #: src/game.cpp:1117
 msgid "Add-on '$addon|' deleted."
-msgstr "插件'$addon|'已删除"
+msgstr "模組'$addon|'已移除"
 
 #: src/game.cpp:1122
 msgid "Add-on deleted"
-msgstr "插件已删除"
+msgstr "模組已移除"
 
 #: src/game.cpp:1128
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr "無法删除插件——没有找到某個文件。"
+msgstr "無法移除模組 -- 有個檔案遺失。"
 
 #: src/game.cpp:1149 src/multiplayer.cpp:168 src/multiplayer.cpp:206
 msgid "Connecting to Server..."
-msgstr "正在連接到服務器..."
+msgstr "正在連接到伺服器..."
 
 #: src/game.cpp:1152
 msgid "Could not connect to host."
@@ -6242,11 +6228,11 @@ msgstr "無法連接到主機。"
 
 #: src/game.cpp:1162
 msgid "Asking for list of add-ons"
-msgstr "請求插件列表"
+msgstr "搜尋模組列表"
 
 #: src/game.cpp:1175
 msgid "Error communicating with the server."
-msgstr "與服務器通訊錯誤。"
+msgstr "與伺服器通訊錯誤。"
 
 #: src/game.cpp:1184 src/titlescreen.cpp:329
 msgid "Version"
@@ -6266,47 +6252,47 @@ msgstr "大小"
 
 #: src/game.cpp:1237
 msgid "Publish add-on: "
-msgstr "發布插件： "
+msgstr "發布模組： "
 
 #: src/game.cpp:1241
 msgid "Delete add-on: "
-msgstr "删除插件： "
+msgstr "移除模組： "
 
 #: src/game.cpp:1245
 msgid "There are no add-ons available for download from this server."
-msgstr "這個服務器上無可供下載的插件。"
+msgstr "這個伺服器上無可供下載的模組。"
 
 #: src/game.cpp:1252
 msgid "Get Add-ons"
-msgstr "獲取插件"
+msgstr "取得模組"
 
 #: src/game.cpp:1253
 msgid "Choose the add-on to download."
-msgstr "選擇要下載的插件。"
+msgstr "選擇要下載的模組。"
 
 #: src/game.cpp:1296
 msgid "Dependencies"
-msgstr "依賴"
+msgstr "需求"
 
 #: src/game.cpp:1297
 msgid "This add-on requires the following additional dependencies:"
-msgstr "這個插件要求以下額外的依賴:"
+msgstr "這個模組需要以下額外的需求:"
 
 #: src/game.cpp:1299
 msgid "Do you still want to download it?"
-msgstr "你真的想下載這個游戲？"
+msgstr "您確定要下載這個檔案？"
 
 #: src/game.cpp:1309
 msgid "Downloading add-on..."
-msgstr "正在下載插件……"
+msgstr "正在下載模組..."
 
 #: src/game.cpp:1367
 msgid "Add-on Installed"
-msgstr "插件已安裝"
+msgstr "模組已安裝完成"
 
 #: src/game.cpp:1367
 msgid "The add-on has been installed."
-msgstr "這個插件已經安裝。"
+msgstr "這個模組已經安裝。"
 
 #: src/game.cpp:1370
 msgid "Network communication error."
@@ -6328,7 +6314,7 @@ msgstr "連接超時"
 
 #: src/game.cpp:1392
 msgid "The server responded with an error: \"$error|\""
-msgstr "服務器返回一個錯誤： \""
+msgstr "伺服器返回一個錯誤： \""
 
 #: src/game.cpp:1399
 msgid "Terms"
@@ -6336,11 +6322,11 @@ msgstr "條件"
 
 #: src/game.cpp:1430
 msgid "Sending add-on"
-msgstr "發送插件"
+msgstr "發送模組"
 
 #: src/game.cpp:1434 src/game.cpp:1462
 msgid "The server responded with an error: \""
-msgstr "服務器響應錯誤： \""
+msgstr "伺服器回應錯誤： \""
 
 #: src/game.cpp:1438 src/game.cpp:1466 src/multiplayer_wait.cpp:401
 msgid "Response"
@@ -6348,20 +6334,19 @@ msgstr "回應"
 
 #: src/game.cpp:1490
 msgid "Join Official Server"
-msgstr "連接到官方服務器"
+msgstr "連接到官方伺服器"
 
 #: src/game.cpp:1491
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "登録韋諾官方多人對戰服務器"
+msgstr "登録韋諾官方多人對戰伺服器"
 
 #: src/game.cpp:1494
-#, fuzzy
 msgid "Join a different server"
-msgstr "連接到官方服務器"
+msgstr "連接到官方伺服器"
 
 #: src/game.cpp:1496
 msgid "Local Game"
-msgstr "本機游戲"
+msgstr "單機遊戲"
 
 #: src/game.cpp:1497
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
@@ -6373,15 +6358,15 @@ msgstr "登録名： "
 
 #: src/game.cpp:1542 src/playcampaign.cpp:101 src/playcampaign.cpp:388
 msgid "The game could not be loaded: "
-msgstr "無法加載游戲： "
+msgstr "無法加載遊戲： "
 
 #: src/game.cpp:1544 src/playcampaign.cpp:103 src/playcampaign.cpp:391
 msgid "Error while playing the game: "
-msgstr "游戲執行出錯： "
+msgstr "遊戲執行出錯： "
 
 #: src/game.cpp:1564 src/playcampaign.cpp:105 src/playcampaign.cpp:394
 msgid "The game map could not be loaded: "
-msgstr "無法加載游戲地圖： "
+msgstr "無法加載遊戲地圖： "
 
 #: src/game.cpp:1590
 msgid "Language"
@@ -6389,7 +6374,7 @@ msgstr "語言"
 
 #: src/game.cpp:1591
 msgid "Choose your preferred language:"
-msgstr "選擇你的語言偏好："
+msgstr "選擇您偏好的語言："
 
 #: src/game.cpp:1758
 #, fuzzy
@@ -6404,15 +6389,15 @@ msgstr "錯誤細節："
 
 #: src/game.cpp:1779
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "警告：載入游戲配置文件時出錯： '"
+msgstr "警告：載入遊戲配置文件時出錯： '"
 
 #: src/game.cpp:1831 src/game.cpp:1836
 msgid "Error loading game configuration files: '"
-msgstr "載入游戲配置文件時出錯： '"
+msgstr "載入遊戲配置文件時出錯： '"
 
 #: src/game.cpp:1832 src/game.cpp:1837
 msgid "' (The game will now exit)"
-msgstr "' （現在將退出游戲）"
+msgstr "' （現在將退出遊戲）"
 
 #: src/game.cpp:1883
 msgid "Loading data files"
@@ -6424,15 +6409,15 @@ msgstr "韋諾之戰"
 
 #: src/game.cpp:2224
 msgid "Loading game configuration."
-msgstr "載入游戲配置。"
+msgstr "載入遊戲配置。"
 
 #: src/game.cpp:2230
 msgid "Re-initialize fonts for the current language."
-msgstr "為當前語言重繪字體。"
+msgstr "為當前語言重置字體。"
 
 #: src/game.cpp:2244
 msgid "Loading title screen."
-msgstr "載入主屏幕。"
+msgstr "讀取主畫面。"
 
 #: src/game_config.cpp:270
 msgid "Invalid color range: "
@@ -6453,7 +6438,7 @@ msgstr "没有定制時間."
 
 #: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
 msgid " replay"
-msgstr " 游戲録像"
+msgstr "遊戲錄影"
 
 #: src/gamestatus.cpp:840
 msgid "Could not write to file"
@@ -6670,7 +6655,7 @@ msgstr "原始文件出錯"
 
 #: src/help.cpp:2987
 msgid "The Battle for Wesnoth Help"
-msgstr "韋諾之戰幫助"
+msgstr "韋諾之戰說明"
 
 #: src/help.cpp:3039
 msgid "Parse error when parsing help text: "
@@ -6690,7 +6675,7 @@ msgstr "結束"
 
 #: src/language.cpp:96
 msgid "System default language"
-msgstr "系統默認語言"
+msgstr "系統預設語言"
 
 #: src/leader_list.cpp:139 src/multiplayer_connect.cpp:199
 #: src/multiplayer_connect.cpp:251
@@ -6746,11 +6731,11 @@ msgstr "自動存檔"
 
 #: src/menu_events.cpp:127 src/menu_events.cpp:176
 msgid "Recruits"
-msgstr "征兵"
+msgstr "招募"
 
 #: src/menu_events.cpp:131 src/menu_events.cpp:183
 msgid "Recalls"
-msgstr "召回"
+msgstr "徵召"
 
 #: src/menu_events.cpp:135 src/menu_events.cpp:190
 msgid "Advancements"
@@ -6794,7 +6779,7 @@ msgstr "你真的想解散他嗎？"
 
 #: src/menu_events.cpp:296
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "主人，這是個富有經驗的高等級單位！"
+msgstr "陛下，這是個富有經驗的高等級單位！"
 
 #: src/menu_events.cpp:297 src/menu_events.cpp:301
 msgid "Do you really want to dismiss her?"
@@ -6802,7 +6787,7 @@ msgstr "你確信想解散她？"
 
 #: src/menu_events.cpp:300
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "主人，這個單位就快升級了！"
+msgstr "陛下，這個單位就快升級了！"
 
 #: src/menu_events.cpp:373
 msgid "Statistics"
@@ -6838,7 +6823,7 @@ msgstr "滚動到"
 
 #: src/menu_events.cpp:550
 msgid "Leader"
-msgstr "領袖"
+msgstr "英雄"
 
 #: src/menu_events.cpp:551 src/multiplayer_connect.cpp:918
 msgid "Team"
@@ -6859,7 +6844,7 @@ msgstr "單位"
 
 #: src/menu_events.cpp:555
 msgid "Upkeep"
-msgstr "維護費用"
+msgstr "支出"
 
 #: src/menu_events.cpp:556 src/multiplayer_connect.cpp:930
 #: src/multiplayer_wait.cpp:519
@@ -6932,11 +6917,11 @@ msgstr "已保存"
 
 #: src/menu_events.cpp:760
 msgid "The game has been saved"
-msgstr "游戲已保存"
+msgstr "遊戲已保存"
 
 #: src/menu_events.cpp:763 src/playcampaign.cpp:569
 msgid "The game could not be saved"
-msgstr "無法保存游戲"
+msgstr "無法保存遊戲"
 
 #: src/menu_events.cpp:778
 msgid "Save the Map As"
@@ -6956,7 +6941,7 @@ msgstr "無法保存地圖: $msg"
 
 #: src/menu_events.cpp:899
 msgid "Could not auto save the game. Please save the game manually."
-msgstr "不能自動存儲當前游戲，請手動存檔。"
+msgstr "不能自動存儲當前遊戲，請手動存檔。"
 
 #: src/menu_events.cpp:927
 msgid "Chat Log"
@@ -6964,7 +6949,7 @@ msgstr "聊天記録"
 
 #: src/menu_events.cpp:937
 msgid "Message:"
-msgstr "信息："
+msgstr "訊息："
 
 #: src/menu_events.cpp:938
 msgid "Send to allies only"
@@ -6982,11 +6967,11 @@ msgstr[1] "金幣"
 
 #: src/menu_events.cpp:1025
 msgid "You have no units available to recruit."
-msgstr "没有可供征募的單位。"
+msgstr "没有可供招募的單位。"
 
 #: src/menu_events.cpp:1037
 msgid "Recruit"
-msgstr "征募"
+msgstr "招募"
 
 #: src/menu_events.cpp:1038 src/menu_events.cpp:1189
 msgid "Select unit:"
@@ -6994,19 +6979,19 @@ msgstr "選擇單位："
 
 #: src/menu_events.cpp:1083
 msgid "You don't have enough gold to recruit that unit"
-msgstr "你没有足够的金幣去征募該單位"
+msgstr "您没有足夠的金幣招募該單位"
 
 #: src/menu_events.cpp:1142
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "你與你的士兵已分離，因此不能召回他們。"
+msgstr "你與你的士兵已分離，因此不能徵召他們。"
 
 #: src/menu_events.cpp:1144
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"没有可供召回的單位\n"
-"（只能召回上一幕存活下來的單位）"
+"没有可供徵召的單位\n"
+"（只能徵召上一幕存活下來的單位）"
 
 #: src/menu_events.cpp:1151
 msgid "Level"
@@ -7018,13 +7003,13 @@ msgstr "解散單位"
 
 #: src/menu_events.cpp:1188
 msgid "Recall"
-msgstr "召回"
+msgstr "徵召"
 
 #: src/menu_events.cpp:1205
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "要召回一個單位，你至少需要有1個金幣"
-msgstr[1] "要召回一個單位，你至少需要有$cost個金幣"
+msgstr[0] "要徵召一個單位，你至少需要有1個金幣"
+msgstr[1] "要徵召一個單位，你至少需要有$cost個金幣"
 
 #: src/menu_events.cpp:1536
 msgid ""
@@ -7037,7 +7022,7 @@ msgstr "有些單位還可以移動。你真的要結束本回合嗎？"
 
 #: src/menu_events.cpp:1584
 msgid "Rename Unit"
-msgstr "重命名單位"
+msgstr "重新命名單位"
 
 #: src/menu_events.cpp:1621
 msgid "Race"
@@ -7045,7 +7030,7 @@ msgstr "種族"
 
 #: src/menu_events.cpp:1646
 msgid "Create Unit (Debug!)"
-msgstr "創建單位(調試!)"
+msgstr "創建單位(測試!)"
 
 #: src/menu_events.cpp:1690
 msgid "Place Label"
@@ -7094,7 +7079,7 @@ msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
 msgstr ""
-"發送私人消息。你不能發送消息給正在控制游戲中任何一方的玩家。用法：/msg <玩家"
+"發送私人消息。你不能發送消息給正在控制遊戲中任何一方的玩家。用法：/msg <玩家"
 "id> <消息>"
 
 #: src/menu_events.cpp:1951
@@ -7268,11 +7253,11 @@ msgstr "查看列表"
 
 #: src/multiplayer.cpp:106
 msgid "List of Servers"
-msgstr "服務器列表"
+msgstr "伺服器列表"
 
 #: src/multiplayer.cpp:107
 msgid "Choose a known server from the list"
-msgstr "從列表裏選擇服務器"
+msgstr "從列表裏選擇伺服器"
 
 #: src/multiplayer.cpp:110
 msgid "Address"
@@ -7288,21 +7273,21 @@ msgstr "選擇要連接的主機： "
 
 #: src/multiplayer.cpp:178
 msgid "Reading from Server..."
-msgstr "從服務器讀取數據……"
+msgstr "從伺服器讀取數據……"
 
 #: src/multiplayer.cpp:188
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
-msgstr "本服務器須要版本“$version1”，而你的版本是“$version2”。"
+msgstr "本伺服器須要版本“$version1”，而你的版本是“$version2”。"
 
 #: src/multiplayer.cpp:200
 msgid "Server-side redirect loop"
-msgstr "服務器重定向循環"
+msgstr "伺服器重定向循環"
 
 #: src/multiplayer.cpp:232
 msgid "You must log in to this server"
-msgstr "你必須登録這個服務器"
+msgstr "你必須登録這個伺服器"
 
 #: src/multiplayer_connect.cpp:80 src/multiplayer_connect.cpp:442
 #: src/multiplayer_connect.cpp:539
@@ -7321,7 +7306,7 @@ msgstr "）"
 
 #: src/multiplayer_connect.cpp:513
 msgid "Default AI"
-msgstr "默認AI"
+msgstr "預設AI"
 
 #: src/multiplayer_connect.cpp:567
 msgid "(Vacant slot)"
@@ -7329,7 +7314,7 @@ msgstr "（空位）"
 
 #: src/multiplayer_connect.cpp:573
 msgid "Anonymous local player"
-msgstr "本地匿名玩家"
+msgstr "單機匿名玩家"
 
 #: src/multiplayer_connect.cpp:594
 msgid "Computer player"
@@ -7337,7 +7322,7 @@ msgstr "電腦玩家"
 
 #: src/multiplayer_connect.cpp:597
 msgid "(Empty slot)"
-msgstr "（空槽）"
+msgstr "（空位）"
 
 #: src/multiplayer_connect.cpp:844
 msgid "Only random sides in the current era."
@@ -7349,7 +7334,7 @@ msgstr "找不到$faction集團的領袖類型"
 
 #: src/multiplayer_connect.cpp:905
 msgid "Game Lobby: "
-msgstr "游戲大廳："
+msgstr "遊戲大廳："
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -7357,23 +7342,23 @@ msgstr "玩家/類型"
 
 #: src/multiplayer_connect.cpp:926
 msgid "Faction"
-msgstr "集團"
+msgstr "部隊"
 
 #: src/multiplayer_connect.cpp:927
 msgid "Team/Gender"
-msgstr "隊伍/性彆"
+msgstr "隊伍/性別"
 
 #: src/multiplayer_connect.cpp:928
 msgid "Color"
-msgstr "顔色"
+msgstr "顏色"
 
 #: src/multiplayer_connect.cpp:932
 msgid "I'm Ready"
-msgstr "准備就緒"
+msgstr "準備就緒"
 
 #: src/multiplayer_connect.cpp:942
 msgid "The scenario is invalid because it has no sides."
-msgstr "由于没有陣營，本場景無法使用。"
+msgstr "由於没有選擇陣營，本地圖無法使用。"
 
 #: src/multiplayer_connect.cpp:1322
 msgid "Network Player"
@@ -7381,7 +7366,7 @@ msgstr "網絡玩家"
 
 #: src/multiplayer_connect.cpp:1323
 msgid "Local Player"
-msgstr "本地玩家"
+msgstr "單機玩家"
 
 #: src/multiplayer_connect.cpp:1324
 msgid "Computer Player"
@@ -7393,7 +7378,7 @@ msgstr "空位"
 
 #: src/multiplayer_connect.cpp:1439
 msgid "This is not a multiplayer save"
-msgstr "這不是多人對戰存檔"
+msgstr "這不是多人對戰的存檔"
 
 #: src/multiplayer_connect.cpp:1555
 msgid "Cannot find era $era"
@@ -7413,7 +7398,7 @@ msgstr "等待玩家加入..."
 
 #: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:643
 msgid "Create Game"
-msgstr "創建游戲"
+msgstr "創造遊戲"
 
 #: src/multiplayer_create.cpp:63
 msgid "Time limit"
@@ -7421,7 +7406,7 @@ msgstr "時限"
 
 #: src/multiplayer_create.cpp:76
 msgid "Name of game:"
-msgstr "游戲名："
+msgstr "遊戲名："
 
 #: src/multiplayer_create.cpp:79
 msgid "Era:"
@@ -7429,7 +7414,7 @@ msgstr "時期："
 
 #: src/multiplayer_create.cpp:80
 msgid "Map to play:"
-msgstr "選擇游戲地圖："
+msgstr "選擇遊戲地圖："
 
 #: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:258
 msgid "Use map settings"
@@ -7441,7 +7426,7 @@ msgstr "隨機開始時間"
 
 #: src/multiplayer_create.cpp:83
 msgid "Fog Of War"
-msgstr "戰争迷霧"
+msgstr "戰爭迷霧"
 
 #: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:519
 #: src/multiplayer_lobby.cpp:525
@@ -7466,11 +7451,11 @@ msgstr "設定密碼..."
 
 #: src/multiplayer_create.cpp:106
 msgid "Load Game..."
-msgstr "載入游戲..."
+msgstr "載入遊戲..."
 
 #: src/multiplayer_create.cpp:142
 msgid "The maximum number of turns the game can last"
-msgstr "游戲允許的最大回合數"
+msgstr "遊戲允許的最大回合數"
 
 #: src/multiplayer_create.cpp:145
 msgid "Enables user time limit"
@@ -7518,7 +7503,7 @@ msgstr "在你探索地圖之前，地圖不可見"
 
 #: src/multiplayer_create.cpp:195
 msgid "Allow users who are not playing to watch the game"
-msgstr "允許非玩家用户觀看游戲"
+msgstr "允許非玩家用户觀看遊戲"
 
 #: src/multiplayer_create.cpp:199
 msgid "Share View"
@@ -7542,7 +7527,7 @@ msgstr "没有找到這個時代"
 
 #: src/multiplayer_create.cpp:226
 msgid "$login's game"
-msgstr "$login的游戲"
+msgstr "$login的遊戲"
 
 #: src/multiplayer_create.cpp:285
 msgid "Invalid era selected"
@@ -7573,12 +7558,10 @@ msgstr "回合數： "
 msgid "Unlimited Turns"
 msgstr "無限回合"
 
-# i don't actually know what this is
 #: src/multiplayer_create.cpp:368
 msgid "Init. Limit: "
-msgstr "起始時間限制："
+msgstr "時間限制："
 
-# anyone explain this to me too
 #: src/multiplayer_create.cpp:373
 msgid "Turn Bonus: "
 msgstr "回合奬勵： "
@@ -7609,7 +7592,7 @@ msgstr "大小"
 
 #: src/multiplayer_lobby.cpp:109
 msgid "--no games open--"
-msgstr "—當前没有已建立的游戲—"
+msgstr "—當前没有已建立的遊戲—"
 
 #: src/multiplayer_lobby.cpp:403
 msgid "Unknown era: $era_id"
@@ -7633,7 +7616,7 @@ msgstr "未知場景"
 
 #: src/multiplayer_lobby.cpp:484
 msgid "Reloaded game"
-msgstr "已載入的游戲"
+msgstr "已載入的遊戲"
 
 #: src/multiplayer_lobby.cpp:500
 msgid "Turn "
@@ -7642,7 +7625,7 @@ msgstr "回合"
 #: src/multiplayer_lobby.cpp:504
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "空槽："
+msgstr[0] "空位："
 msgstr[1] "空位："
 
 #: src/multiplayer_lobby.cpp:507 src/multiplayer_lobby.cpp:757
@@ -7659,23 +7642,23 @@ msgstr "無"
 
 #: src/multiplayer_lobby.cpp:639 src/multiplayer_wait.cpp:194
 msgid "Game Lobby"
-msgstr "游戲大廳"
+msgstr "遊戲大廳"
 
 #: src/multiplayer_lobby.cpp:641
 msgid "Observe Game"
-msgstr "觀察游戲"
+msgstr "觀察遊戲"
 
 #: src/multiplayer_lobby.cpp:642
 msgid "Join Game"
-msgstr "加入游戲"
+msgstr "加入遊戲"
 
 #: src/multiplayer_lobby.cpp:644
 msgid "Quick Replays"
-msgstr "快速回放"
+msgstr "快速播放"
 
 #: src/multiplayer_lobby.cpp:646
 msgid "Preferences"
-msgstr "設置"
+msgstr "偏好設定"
 
 #: src/multiplayer_lobby.cpp:648
 msgid "Quit"
@@ -7683,11 +7666,11 @@ msgstr "退出"
 
 #: src/multiplayer_lobby.cpp:653
 msgid "Skip quickly to the active turn when observing"
-msgstr "觀察游戲時快速跳至當前進行中的回合"
+msgstr "觀察遊戲時快速跳至當前進行中的回合"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Joining this game requires a password."
-msgstr "加入此游戲需要密碼."
+msgstr "加入此遊戲需要密碼."
 
 #: src/multiplayer_ui.cpp:171
 msgid "Invalid Color"
@@ -7703,31 +7686,31 @@ msgstr "悄悄話"
 
 #: src/multiplayer_ui.cpp:381
 msgid "Message: "
-msgstr "信息："
+msgstr "訊息："
 
 #: src/multiplayer_wait.cpp:145
 msgid "Leader: "
-msgstr "領袖： "
+msgstr "英雄： "
 
 #: src/multiplayer_wait.cpp:147
 msgid "Gender: "
-msgstr "性彆:"
+msgstr "性別:"
 
 #: src/multiplayer_wait.cpp:149
 msgid "Recruits: "
-msgstr "征兵： "
+msgstr "招募： "
 
 #: src/multiplayer_wait.cpp:196
 msgid "Waiting for game to start..."
-msgstr "等待游戲開始..."
+msgstr "等待遊戲開始..."
 
 #: src/multiplayer_wait.cpp:215
 msgid "Getting game data..."
-msgstr "讀取游戲數據..."
+msgstr "讀取遊戲數據..."
 
 #: src/multiplayer_wait.cpp:240
 msgid "No multiplayer sides available in this game"
-msgstr "當前游戲無可用的對戰陣營"
+msgstr "當前遊戲無可用的對戰陣營"
 
 #: src/multiplayer_wait.cpp:270
 msgid "No era information found."
@@ -7743,7 +7726,7 @@ msgstr "選擇陣營："
 
 #: src/network.cpp:110
 msgid "invalid network handle"
-msgstr "無效網絡句柄"
+msgstr "無效網絡連結"
 
 #: src/network.cpp:143
 msgid "Client disconnected"
@@ -7752,12 +7735,12 @@ msgstr "客户端斷開連接"
 #: src/network.cpp:172
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
-msgstr[0] "至少$timeout 秒都没能與服務器取得聯系。連接超時。"
+msgstr[0] "至少$timeout 秒都没能與伺服器取得聯繫。連接超時。"
 msgstr[1] "至少$timeout秒都没能與服務器取得聯系。連接超時。"
 
 #: src/network.cpp:554
 msgid "Could not add socket to socket set"
-msgstr "無法向套接字(socket)集合中添加游戲要用的套接字"
+msgstr "無法向套接字(socket)集合中添加遊戲要用的套接字"
 
 #: src/network.cpp:567
 msgid "Could not send initial handshake"
@@ -7765,7 +7748,7 @@ msgstr "不能發送初始化連接信息"
 
 #: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr "遇到耗費移動力小于1的地形"
+msgstr "遇到耗費移動力小於1的地形"
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
@@ -7777,7 +7760,7 @@ msgstr "初始化顯示"
 
 #: src/play_controller.cpp:147
 msgid "Starting game"
-msgstr "開始游戲"
+msgstr "開始遊戲"
 
 #: src/play_controller.cpp:829
 msgid "Back to start"
@@ -7797,19 +7780,19 @@ msgstr "你被打敗了！"
 
 #: src/playcampaign.cpp:398
 msgid "Error while reading the WML: "
-msgstr "讀取 WML 文件時出錯： "
+msgstr "讀取 WML 檔案時出錯： "
 
 #: src/playcampaign.cpp:424
 msgid "Save Replay"
-msgstr "保存游戲録像"
+msgstr "儲存遊戲錄影"
 
 #: src/playcampaign.cpp:429
 msgid "The replay could not be saved"
-msgstr "無法保存游戲録像"
+msgstr "無法儲存遊戲錄影"
 
 #: src/playcampaign.cpp:446
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr "這一幕結束了. 你想繼續這個戰役嗎?"
+msgstr "這一幕結束了。您想繼續這個任務嗎?"
 
 #: src/playcampaign.cpp:467
 msgid "Downloading next scenario..."
@@ -7817,7 +7800,7 @@ msgstr "正在下載下一幕……"
 
 #: src/playcampaign.cpp:560
 msgid "Do you want to save your game?"
-msgstr "你想保存游戲嗎？"
+msgstr "你想儲存遊戲嗎？"
 
 #: src/playcampaign.cpp:561
 msgid "Name:"
@@ -7825,15 +7808,15 @@ msgstr "名稱："
 
 #: src/playcampaign.cpp:585
 msgid "Unknown scenario: '$scenario|'"
-msgstr "未知場景： '"
+msgstr "未知任務： '"
 
 #: src/playmp_controller.cpp:253
 msgid "End scenario"
-msgstr "結束本場景"
+msgstr "結束本任務"
 
 #: src/playmp_controller.cpp:358
 msgid "Waiting for next scenario..."
-msgstr "等待下一幕游戲開始..."
+msgstr "等待下一幕遊戲開始..."
 
 #: src/playmp_controller.cpp:482
 msgid ""
@@ -7844,10 +7827,10 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
-"這次游戲没有同步, 故不能繼續. 有可能是因為: 你或另一個游戲者改動了游戲設置. "
-"意味着有一人可能想做弊^.^ 也許是bug, 雖然不太可能.\n"
+"這次遊戲没有同步，所以不能夠繼續。有可能是因為:你或另一個玩家更動了遊戲設定。"
+"這意味著可能有人想做弊，也許是個bug，雖然這不太可能。\n"
 "\n"
-"你想保存錯誤日志嗎?"
+"您想要儲存錯誤訊息嗎?"
 
 #: src/playsingle_controller.cpp:155
 msgid "Remaining gold: "
@@ -7892,8 +7875,8 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] "你將以 $gold 金子開始下一幕。不會考慮游戲預定的最小起始資金。"
-msgstr[1] "你將以 $gold 金子開始下一幕。不會考慮游戲預定的最小起始資金。"
+msgstr[0] "你將以 $gold 金子開始下一幕。不會考慮遊戲預定的最小起始資金。"
+msgstr[1] "你將以 $gold 金子開始下一幕。不會考慮遊戲預定的最小起始資金。"
 
 #: src/playsingle_controller.cpp:190
 msgid ""
@@ -7911,11 +7894,11 @@ msgstr "遊戲結束"
 
 #: src/playsingle_controller.cpp:302
 msgid "The game is over."
-msgstr "本游戲結束。"
+msgstr "本遊戲結束。"
 
 #: src/playsingle_controller.cpp:377
 msgid "Scenario Report"
-msgstr "場景報告"
+msgstr "任務報告"
 
 #: src/playsingle_controller.cpp:379
 msgid "Victory"
@@ -7933,7 +7916,7 @@ msgstr "你想載入的文件已損壞"
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
-msgstr "網絡連接已斷開，游戲無法繼續進行。你想保存游戲嗎？"
+msgstr "網絡連接已斷開，遊戲無法繼續進行。你想儲存遊戲嗎？"
 
 #: src/playsingle_controller.cpp:575
 msgid "It is now $name|'s turn"
@@ -7941,27 +7924,27 @@ msgstr "輪到$name|了"
 
 #: src/playturn.cpp:223
 msgid "Replace with AI"
-msgstr "用AI替换"
+msgstr "用AI替換"
 
 #: src/playturn.cpp:224
 msgid "Replace with local player"
-msgstr "用本地玩家替换"
+msgstr "用單機玩家替換"
 
 #: src/playturn.cpp:225
 msgid "Abort game"
-msgstr "終止游戲"
+msgstr "終止遊戲"
 
 #: src/playturn.cpp:230 src/playturn.cpp:242
 msgid "Replace with $player"
-msgstr " $player 替换上陣"
+msgstr " $player 替換上陣"
 
 #: src/playturn.cpp:248
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player 已經離開游戲，你想做什麽？"
+msgstr "$player 已經離開遊戲，你想做什麽？"
 
 #: src/replay_controller.cpp:92
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "你想載入的文件已損壞. 繼續玩嗎?"
+msgstr "你想讀取的文件已損壞。要繼續玩嗎?"
 
 #: src/serialization/parser.cpp:124
 msgid "Unexpected characters at line start"
@@ -8005,15 +7988,15 @@ msgstr "空變量名"
 
 #: src/serialization/parser.cpp:237
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr "可變的姓名後出現無法識彆的字符(expected , or =)"
+msgstr "可變的姓名後出現無法識別的字符(expected , or =)"
 
 #: src/serialization/parser.cpp:272 src/serialization/parser.cpp:296
 msgid "Unterminated quoted string"
-msgstr "未終止的引用字符竄"
+msgstr "未終止的引用字串"
 
 #: src/serialization/parser.cpp:319
 msgid " included from "
-msgstr " 包含 "
+msgstr "包含 "
 
 #: src/serialization/parser.cpp:340
 msgid "$error at $pos"
@@ -8089,41 +8072,41 @@ msgstr "幫助韋諾之戰團隊"
 
 #: src/titlescreen.cpp:366
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "通過教程來熟悉游戲"
+msgstr "通過教學模式來熟悉遊戲"
 
 #: src/titlescreen.cpp:367
 msgid "Start a new single player campaign"
-msgstr "開始一個新的單人游戲戰役"
+msgstr "開始一個新的單人遊戲戰役"
 
 #: src/titlescreen.cpp:368
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr "進行多人對戰（熱座，局域網或Internet）， 或與電腦進行單人場景對戰"
+msgstr "進行多人對戰（伺服器，區網或網際網路）， 或與電腦進行單人對戰"
 
 #: src/titlescreen.cpp:369
 msgid "Load a saved game"
-msgstr "載入游戲存檔"
+msgstr "載入遊戲存檔"
 
 #: src/titlescreen.cpp:370
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "下載用户自定的戰役、時代或地圖集"
+msgstr "下載玩家自定的戰役、時代或地圖集"
 
 #: src/titlescreen.cpp:371
 msgid "Change the language"
-msgstr "切换語言"
+msgstr "切換語言"
 
 #: src/titlescreen.cpp:372
 msgid "Configure the game's settings"
-msgstr "更改游戲設置"
+msgstr "更改遊戲設定"
 
 #: src/titlescreen.cpp:373
 msgid "View the credits"
-msgstr "查看協作者名單"
+msgstr "瀏覽製作團隊"
 
 #: src/titlescreen.cpp:374
 msgid "Quit the game"
-msgstr "退出游戲"
+msgstr "退出遊戲"
 
 #: src/titlescreen.cpp:375
 msgid "Show next tip of the day"
@@ -8131,7 +8114,7 @@ msgstr "顯示下一個每日提示"
 
 #: src/titlescreen.cpp:376
 msgid "Show Battle for Wesnoth help"
-msgstr "顯示韋諾之戰的幫助"
+msgstr "顯示韋諾之戰的遊戲說明"
 
 #: src/titlescreen.cpp:377
 msgid "Upload statistics"
@@ -8139,11 +8122,11 @@ msgstr "上傳統計資料"
 
 #: src/titlescreen.cpp:433
 msgid "Help Wesnoth by sending us information"
-msgstr "發送信息，幫助韋諾"
+msgstr "回報資訊，幫助韋諾"
 
 #: src/unit.cpp:403 src/unit.cpp:1264 src/unit.cpp:2385
 msgid "Unknown unit type '$type|'"
-msgstr "未知單位種類 '$type|'"
+msgstr "未知單位 '$type|'"
 
 #: src/unit.cpp:2423 src/unit.cpp:2627 src/unit.cpp:2683
 msgid " and "
@@ -8187,7 +8170,7 @@ msgstr[1] "打撃"
 
 #: src/unit_types.cpp:791
 msgid "chaotic"
-msgstr "混亂"
+msgstr "混沌"
 
 #: src/unit_types.cpp:791
 msgid "lawful"
@@ -8204,25 +8187,24 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
-"韋諾依賴向你一様的志願者給我們提供反饋信息，特彆是來自新手的回饋。韋諾之戰保"
-"存了你游戲的摘要信息，如果你允許（匿名）發送這些摘要給wesnoth.org，你將幫助我"
-"們改進游戲。\n"
+"韋諾藉著跟您一樣的玩家給我們提供回報訊息，特別是來自新手。韋諾之戰保存了您的"
+"回報資訊，如果您允許（匿名）發送這些摘要給wesnoth.org，將幫助我們改進遊戲。\n"
 
 #: src/upload_log.cpp:296
 msgid "Summaries are stored here:"
-msgstr "摘要存儲在這裏："
+msgstr "回報儲存在這裏："
 
 #: src/upload_log.cpp:298
 msgid "You can view the results at:"
-msgstr "你可以在這裏察看結果："
+msgstr "您可以在這裡檢視記錄："
 
 #: src/upload_log.cpp:300
 msgid "Help us make Wesnoth better for you!"
-msgstr "幫助我們改進韋諾，提升你的游戲體驗！"
+msgstr "幫助我們改進偉諾，提升你的遊戲體驗！"
 
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
-msgstr "開啓摘要上傳模式"
+msgstr "開啟訊息回報"
 
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
@@ -8240,13 +8222,13 @@ msgstr "開啓摘要上傳模式"
 #~ msgstr "連接到服務器"
 
 #~ msgid "Join a server or hosted game"
-#~ msgstr "加入服務器或已建游戲"
+#~ msgstr "加入服務器或已建遊戲"
 
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "gkai00mp.ttf,DejaVuSans.ttf,sazanami-gothic.ttf"
 
 #~ msgid "Host Networked Game"
-#~ msgstr "建立局域網游戲"
+#~ msgstr "建立局域網遊戲"
 
 #~ msgid ""
 #~ "Host a game using the built-in server. Not well maintained, better use "
