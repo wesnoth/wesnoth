@@ -1810,7 +1810,8 @@ variant formula_ai::get_keeps() const
 	return keeps_cache_;
 }
 
-bool formula_ai::can_attack(const gamemap::location unit_loc, const gamemap::location enemy_loc) {
+bool formula_ai::can_attack(const gamemap::location unit_loc, 
+		const gamemap::location enemy_loc) const {
 	move_map::iterator i;
 	std::pair<move_map::iterator, 
 			  move_map::iterator> unit_moves;
@@ -1822,4 +1823,48 @@ bool formula_ai::can_attack(const gamemap::location unit_loc, const gamemap::loc
 		}
 	}
 	return false;
+}
+
+
+void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units, 
+		int team_num) {
+	score_ = -1000;
+	if(type_ == "attack") {
+		for(unit_map::unit_iterator me = units.begin() ; me != units.end() ; ++me)
+		{
+			if( (me->second.side() == team_num) && 
+					(me->second.has_moved() == false) ) {
+				for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
+					if( (target->second.side() != team_num) &&
+							(ai->can_attack(me->first, target->first)) ) {
+						game_logic::map_formula_callable callable((formula_callable*) ai);
+						callable.add_ref();
+						callable.add("me", variant(new unit_callable(*me)));
+						callable.add("target", variant(new unit_callable(*target)));
+						int res = (formula::evaluate(eval_, callable)).as_int();
+						if(res > score_) {
+							score_ = res;
+							action_unit_ = me;
+							enemy_unit_ = target;
+						}
+					}
+				}
+			}
+		}
+	} else {
+		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
+		{
+			if( (i->second.side() == team_num) && 
+					(i->second.has_moved() == false) ) {
+				game_logic::map_formula_callable callable((formula_callable*) ai);
+				callable.add_ref();
+				callable.add("me", variant(new unit_callable(*i)));
+				int res = (formula::evaluate(eval_, callable)).as_int();
+				if(res > score_) {
+					score_ = res;
+					action_unit_ = i;
+				}
+			}
+		}
+	}
 }
