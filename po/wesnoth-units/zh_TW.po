@@ -1,19 +1,29 @@
+# Copyright (C) 2005 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2005.
+# jan2xue <75jan@163.com>, 2005
+# Huang huan <unicon221@gmail.com>, 2005.
+# Dionysus <huang.wei.bhu@gmail.com>, 2007.  (unicon)
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
+"Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-03 10:56+0200\n"
-"PO-Revision-Date: 2008-02-26 16:37+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2008-08-07 20:49+0800\n"
+"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"Language-Team: Chinese/Simplified <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Poedit-Country: TAIWAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
-msgstr ""
+msgstr "血蝙蝠"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
@@ -23,6 +33,8 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"血蝙蝠，一如其名，有著血紅色的外皮，某種程度上也表達出其喜好的食物。這些生物"
+"移動迅速，同時吸食其受害者的鮮血，補充自己損失的能量。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -35,12 +47,12 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:35
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
 msgid "fangs"
-msgstr ""
+msgstr "尖牙"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr ""
+msgstr "吸血蝙蝠"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
@@ -49,11 +61,13 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"吸血蝙蝠是以鮮血為食的生物。雖然牠們牙齒的撕咬並不能造成很大傷害，但吸血蝙蝠"
+"在攻擊時可以吸取對方的血來治療自己。"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
-msgstr ""
+msgstr "小船"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Boat.cfg:18
@@ -61,21 +75,22 @@ msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"一般以漿或者小型帆做為動力，小艇常用於短程旅行或者在大船無法航行的淺水航行。"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
-msgstr ""
+msgstr "大帆船"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "大帆船是為商業和運輸製造的海船。"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "海盜船"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
@@ -84,17 +99,19 @@ msgid ""
 "onboard are more than happy to help relieve other ships of their weighty "
 "cargo."
 msgstr ""
+"如果說運輸船是羊，那麼海盜船就是狼。船上的海盜們很樂意幫那些滿載貨物獨自遠離"
+"海岸航行的船支卸下貨物，他們常說那些船超載了..."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
 msgid "ballista"
-msgstr ""
+msgstr "巨弩"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
-msgstr ""
+msgstr "運輸船"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
@@ -102,11 +119,13 @@ msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"運輸船大多都有防御設備，平常用來運送部隊。到達海岸後，即能放下所搭載的部隊去"
+"戰鬥。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
-msgstr ""
+msgstr "末日巨龍"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Armageddon.cfg:26
@@ -116,6 +135,9 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"如果不是他們身穿盔甲的話, 有些龍戰士很難與真正的巨龍區別開來, 至少對一般人來"
+"說是如此。傳說這些被稱為'末日龍戰士'的生物高聳入雲，他們不但對火焰完全免疫，"
+"而且擁有可怕的火焰噴射。 "
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
@@ -131,7 +153,7 @@ msgstr ""
 #: data/core/units/undead/Spirit_Shadow.cfg:122
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 msgid "claws"
-msgstr ""
+msgstr "爪擊"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Dragon.cfg:46
@@ -144,12 +166,12 @@ msgstr ""
 #: data/core/units/drakes/Blademaster.cfg:77
 #: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
 msgid "fire breath"
-msgstr ""
+msgstr "火焰吐息"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "龍族劍聖"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
@@ -158,6 +180,7 @@ msgid ""
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
+"精通劍術的龍戰士才有資格稱作劍聖。在戰鬥中牠們會塗上黑白相間的花紋以示區別。"
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -194,12 +217,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:39
 msgid "sword"
-msgstr ""
+msgstr "劍刃"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "噴火龍戰士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Burner.cfg:19
@@ -209,11 +232,14 @@ msgid ""
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
+"噴火龍戰士引以為傲的是他們繼承了遠古祖先純正的血統和力量，賦予了他們強大的能"
+"力-火焰噴射。結合他們高大的身材和可怕的龍爪，讓噴火龍戰士在戰場上成為了恐怖的"
+"對手。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "龍族巨劍兵"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Clasher.cfg:21
@@ -233,6 +259,13 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
+"衝鋒龍戰士不擅長飛行也不會火焰噴射，大多人認為他們使用近戰是由于他們的殘疾——"
+"只是盡量的變廢為寶而已。他們可能是稍微缺乏某些技能，但持這種理論的人往往忽視"
+"了他們在同族內戰中的作用。\n"
+"\n"
+"他們實際上是龍族社會階層中的執法者。他們的武器基本上只是做儀式用的，但不管怎"
+"么說還是有點用處。在與弱小種族的遭遇中，他們發現自己天生的大個頭和力量就是強"
+"有力的武器，同時他們身上的盔甲，使他們避免了其他族人害怕矛和箭的弱點。"
 
 #. [attack]: type=pierce
 #: data/core/units/saurians/Skirmisher.cfg:121
@@ -264,12 +297,12 @@ msgstr ""
 #: data/core/units/goblins/Impaler.cfg:40
 #: data/core/units/undead/Skele_Chocobone.cfg:25
 msgid "spear"
-msgstr ""
+msgstr "矛刺"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "龍族督軍"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
@@ -278,6 +311,8 @@ msgid ""
 "hours at the forge have equipped them with a bristling array of weaponry, "
 "and they are clad them head to toe in shining armor of proof."
 msgstr ""
+"偉岸的龍族執行者代表了龍族的力量。他們長時間在鍛造車間工作，為自己制造了很多"
+"鋒利的武器，而且從頭到腳都披着閃亮的鎧甲。"
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:76
@@ -289,12 +324,12 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
-msgstr ""
+msgstr "釘鎚"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr ""
+msgstr "龍族戰士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Fighter.cfg:19
@@ -304,16 +339,18 @@ msgid ""
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
+"龍族戰士使用彎刀的技巧足以令人致命，還有強大的火焰呼吸。他們的飛翔能力讓任何"
+"敵人頭疼。而且擁有巨大的力量和堅硬的盔甲能讓任何種族的軍隊感到恐懼和害怕。"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
-msgstr ""
+msgstr "彎刀"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr ""
+msgstr "焰火龍"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Fire.cfg:18
@@ -322,11 +359,13 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"火龍戰士是擅長用火焰戰鬥的戰士。他們穿著閃耀的鎧甲，用強大的火焰攻擊敵人，簡"
+"直就是龍族力量與威嚴的象征。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "火焰熾心領主"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
@@ -336,11 +375,14 @@ msgid ""
 "That they can breathe fire as they do lends credence to this belief, though, "
 "for some reason, no one has tried cutting one open to find out."
 msgstr ""
+"傳說牠們是古代巨龍的直系後裔，在牠們的體內流動的不是鮮血而是火焰。他們能夠隨"
+"意吐火的事實也為這種說法提供了可信的證據，不過由於某種原因，從來沒有人成功的"
+"去向火焰之心驗證這一點。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "火龍爵士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Flare.cfg:25
@@ -349,11 +391,13 @@ msgid ""
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace."
 msgstr ""
+"龍族擁有著古老的歷史，牠們聰明而且聽從他們認定的領袖。不管在戰爭或和平時期，"
+"牠們都渴望成為領袖，牠們的敵人稱牠們為“閃光龍戰士”。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "龍族角鬥士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
@@ -366,11 +410,14 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
+"龍族角鬥士與龍族劈裂者截然不同。牠們更講究武器的製造精細而不是在乎訓練。牠們"
+"是龍族社會的鐵匠。據說牠們能夠製造最優質的武器—鋒利的劍和矛，還有令人驚呼的戰"
+"錘。牠們對武器過度執著，以犧牲防御力的代價獲得了強大的攻擊力。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "滑翔龍戰士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Glider.cfg:20
@@ -382,17 +429,20 @@ msgid ""
 "vantage point, these drakes can see past most defensive cover. Their skill "
 "at flying allows them the precision to target enemies under such cover."
 msgstr ""
+"滑翔龍戰士幾乎不穿鎧甲的，這樣牠們才能夠在空中徹底發揮自己的能力。牠們是戰場"
+"上的大將，能操縱龍族普遍擁有的火焰呼吸。牠們也能有效的利用速度制服敵人。從高"
+"空上也可以看穿大多數防御掩護，借助飛行能力牠們能精確的襲擊這些敵人。"
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:75
 #: data/core/units/drakes/Hurricane.cfg:92 data/core/units/drakes/Sky.cfg:91
 msgid "slam"
-msgstr ""
+msgstr "猛擊"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "颶風龍戰士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
@@ -401,11 +451,13 @@ msgid ""
 "drakes which are gifted with flight. Soaring high in the air, they can see "
 "past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"天空中的霸王，颶風龍戰士是龍族裡擅長飛行的精英。在廣闊的天空之中，牠們能看穿"
+"大部分防御掩護，在自己毫髮無損的情況下襲擊敵人。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "煉獄火龍"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Inferno.cfg:19
@@ -416,11 +468,14 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"地獄龍戰士是操縱火焰放射的高手，更他們的祖先巨龍不相上下。這種天賦使他們几乎"
+"對火焰免疫。他們身上火紅閃亮的盔甲代表着他們高傲而強大的階層，令同族們崇拜與"
+"向往。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr ""
+msgstr "天空龍"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Sky.cfg:28
@@ -431,11 +486,13 @@ msgid ""
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
 msgstr ""
+"天空龍戰士是真正的天空之王。他們從高空俯沖的可怕沖擊力配合火焰吐息成為了可怕"
+"的武器。從空中他們能用火焰對本來防御極佳的敵人進行精確地打擊。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "龍族撕裂者"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Slasher.cfg:19
@@ -446,6 +503,9 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
+"龍族劈裂者是一群選擇用戟來代替劍和矛作為主要武器的斗士。由于他們身形偉岸，使"
+"用的武器也很大，刺穿一匹馬就像人類串燒一只乳豬一樣。他們接受的訓練提高了他們"
+"的耐力和防御能力，這是他們同龍族角斗士相比最大的優勢。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -454,12 +514,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Halberdier.cfg:29
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 msgid "halberd"
-msgstr ""
+msgstr "戰戟"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "龍族劊子手"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Warden.cfg:20
@@ -469,11 +529,14 @@ msgid ""
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
+"龍族看守者是從最優秀的龍族劈裂者中選拔出來的，代表了龍族斗士的頂尖水平。他們"
+"擁有強大的力量，世上很少有勇士敢挑戰他們。龍族守衛的武器是戟，這種他們非常善"
+"于運用的武器。"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "龍族重劍士"
 
 #. [unit_type]: race=drake
 #: data/core/units/drakes/Warrior.cfg:18
@@ -482,11 +545,13 @@ msgid ""
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike devastating blows, and to withstand punishment in equal measure."
 msgstr ""
+"龍族勇士的劍朮很高，并從祖先那里繼承了火焰吐息。龍族強大的力量讓他們能夠進行"
+"摧毀性的打擊，并能承受同樣巨大的傷害。"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "矮人狂戰士"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
@@ -495,17 +560,19 @@ msgid ""
 "rage before combat. These warriors forget all notion of defense, thinking "
 "only of the unrelenting assaults they are legendary for performing."
 msgstr ""
+"狂戰士是矮人中稀少的一個群體, 他們在戰斗面前會變得異常狂暴. 這些戰士無意防"
+"御, 他們的傳奇中充滿着永不停息的攻擊. "
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
 #: data/core/units/dwarves/Ulfserker.cfg:31
 msgid "berserker frenzy"
-msgstr ""
+msgstr "狂戰士旋風"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "矮人龍護衛"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:19
@@ -519,6 +586,10 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"龍衛士并不十分清楚為什么他們的矮人伙計會給他們起這個名字。一些矮人認為是由于"
+"他們的武器，那些奇怪的裝置射出的是火焰與死亡。另一些人認為這種武器能對真正的"
+"龍也能搆成威脅。無論如何，這些武器為這些矮人守衛者獲得了敬畏；它能將一個強力"
+"的勇士一擊必殺。"
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:71
@@ -536,17 +607,17 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:30
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
-msgstr ""
+msgstr "匕首"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Dragonguard.cfg:34
 msgid "dragonstaff"
-msgstr ""
+msgstr "火龍槍"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "矮人士兵"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
@@ -556,6 +627,8 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"矮人戰士使用戰斧和大錘，讓敵人在近戰中感到懼怕。他們適合在山嶺和地下世界作"
+"戰。他們的力量和耐力彌補了速度上的緩慢。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
@@ -564,19 +637,19 @@ msgstr ""
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
-msgstr ""
+msgstr "戰斧"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Steelclad.cfg:38
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
-msgstr ""
+msgstr "戰鎚"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "矮人守衛"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
@@ -587,6 +660,9 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"矮人一族總是以他們制造工藝而出名, 而他們的許多戰士的裝備也從中獲益匪淺。矮人"
+"衛兵帶着塔盾和長矛在戰斗中長驅直入。大部分時候他們的任務是維持戰線, 并且對嘗"
+"試突破的人造成巨大傷害。 隨着戰線的推進, 他們保護着戰場上來之不易的優勢。"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Stalwart.cfg:43
@@ -595,12 +671,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:39
 #: data/core/units/humans/Loyalist_Spearman.cfg:74
 msgid "javelin"
-msgstr ""
+msgstr "鏢槍"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "矮人王"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
@@ -610,23 +686,26 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"這些矮人穿着光亮的鎧甲，看上去象來自于山嶺中的國王。他們是使用斧和吹錘的大"
+"師，并能在一定距離內向目標投擲手斧。雖然移動速度很慢，這些矮人還是代表了矮人"
+"族的力量。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Steelclad.cfg:29
 #: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
-msgstr ""
+msgstr "雙面斧"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:47
 msgid "hatchet"
-msgstr ""
+msgstr "擲斧"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "矮人符石法師"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:19
@@ -636,21 +715,23 @@ msgid ""
 "power. Though rarely seen in combat, a master of these runes can put them to "
 "terrifying use."
 msgstr ""
+"據說矮人的魔法，通常表現在物體表面雕琢的符文上，這些物品因此被附上了魔力。使"
+"用符文的大師在戰斗中很少見，但是他們使用起符文來十分可怕。"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid "runic hammer"
-msgstr ""
+msgstr "符石錘"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:34
 msgid "Lightning bolt"
-msgstr ""
+msgstr "雷擊"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "矮人巡守"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
@@ -661,11 +742,14 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the singleminded tenacity of an oak."
 msgstr ""
+"矮人哨衛是矮人部隊中的佼佼者, 他們組成的戰線就是一座堡壘. 正面攻擊由他們維持"
+"的防線是愚蠢的,不但收效甚微, 簡直就是自殺. 這些矮人是白刃戰的精英, 他們可以像"
+"橡樹一樣牢牢地釘在土地上."
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "矮人鐵衛"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
@@ -675,23 +759,26 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"對詭計的經驗和訓練讓矮人衛兵變成杰出的士兵. 矮人堅守者部隊的裝備與他們的技藝"
+"相稱, 即使面對最可怕的攻擊他們也能堅守陣地. 在這樣的部隊面前失去陣地是一件非"
+"常危險的事情, 因為你很可能再也無法奪回它。"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "矮人重步兵"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:19
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
-msgstr ""
+msgstr "許多老練的矮人鐵甲兵穿着厚重的鏈甲和板甲，他們以此而著稱。"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "矮人火槍兵"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
@@ -702,17 +789,20 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made moreso by the secrecy which dwarves hold about their workings."
 msgstr ""
+"當韋諾大陸的人類第一次碰到矮人時，他們被矮人雷霆戰士的力量所迷惑。這些戰士能"
+"從遠處用奇怪的“棒子”來進行致命的打擊。那“雷棒”震耳欲聾的聲音就使人畏懼，也使"
+"矮人們繼續保守這秘密。"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
 msgid "thunderstick"
-msgstr ""
+msgstr "火槍射擊"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "矮人槍衛士"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:20
@@ -728,11 +818,18 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"矮人雷霆守衛以他們古怪的武器著稱于世，當他們發怒時這由木頭和鐵片組成的棒子會"
+"發出雷鳴般的聲響。這武器的搆成是個迷，使用這些武器的納爾迦矮人們最后寧願把秘"
+"密帶入墳墓；有人認為這些武器就是矮人制造的。世人所知的是，矮人把一些黑色粉末"
+"放入他們武器的入口，有人認為那是來喂養里面的野獸用的。\n"
+"\n"
+"雖然用“雷霆之槍”攻擊一次需要准備好几分鐘，不過矮人們認為武器的效果絕對值得等"
+"待。"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "矮人狼戰士"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:19
@@ -742,11 +839,13 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
+"古老的矮人族是一個屬于戰士的種族。雙手斧戰士是最狂暴的戰士：他們持續攻擊直到"
+"殺死敵人，或自己死亡，從不在意自己受到多少傷害。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr ""
+msgstr "精靈弓箭手"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Archer.cfg:21
@@ -758,6 +857,9 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"精靈總是以善于箭朮而聞名，這像是與生俱來的技能。即使是以脆弱之軀手握弓箭也能"
+"變得非常致命。在戰爭中，許多精靈都會拿起弓箭。雖然他/她們沒什么戰斗經驗，在戰"
+"斗中有些脆弱，但天性優雅的他/她們絕對能夠擊敗人類的新兵。"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -782,17 +884,17 @@ msgstr ""
 #: data/core/units/undead/Skele_Banebow.cfg:39
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 msgid "bow"
-msgstr ""
+msgstr "弓箭"
 
 #. [female]
 #: data/core/units/elves/Archer.cfg:171
 msgid "female^Elvish Archer"
-msgstr ""
+msgstr "精靈弓箭手"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr ""
+msgstr "精靈復仇者"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Avenger.cfg:23
@@ -807,16 +909,22 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
+"精靈‘復仇者’的奇怪名號來自這些游俠常常使用的一種戰朮。敵人通過虛設的防線，當"
+"戰線后方脆弱的單位跟進時，這些弓箭手就從偽裝中跳出來并展開攻擊，切斷補給線，"
+"給予敵人致命的打擊。\n"
+"\n"
+"這種戰朮常常被理解成這些弓箭手為先前在戰斗中失去生命的弟兄復仇所釆取的行為。"
+"其實戰朮的設計并非如此低級，准確度也一點都不低。"
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:180
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "精靈復仇者"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr ""
+msgstr "精靈軍官"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Captain.cfg:26
@@ -828,11 +936,14 @@ msgid ""
 "their leaders, and the tendency to choose leaders of merit is one of the "
 "quiet strengths of the elves."
 msgstr ""
+"不像其他種族，精靈十分願意承認并跟隨那些有戰斗經驗的同伴。這與人類截然不同，"
+"從不靠威逼利誘來建立權威。他/她們了與選擇智者與能力出眾的人作領袖。這是精靈種"
+"種低調的力量之一。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr ""
+msgstr "精靈戰神"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Champion.cfg:20
@@ -843,11 +954,14 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
+"少數刻意磨練戰斗技巧的精靈與整個精靈族平和的性格有所不符。他/她們的專著精純的"
+"精神和技藝，使他/她們的劍朮無可匹敵。即使是作為次要技能的射朮，他/她們研習的"
+"也可謂爐火純青，以至于人類只能對之嘆為觀止。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr ""
+msgstr "精靈德魯伊"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Druid.cfg:21
@@ -859,6 +973,10 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people."
 msgstr ""
+"森林精靈所掌握的魔法不太適合戰斗，但也有一定的用處。她們的一句命令就能激發她"
+"們所居住的森林，打擊那些破壞和平的人。\n"
+"\n"
+"她們的主要能力是治療，精靈德魯伊正是由于這種能力被精靈們所敬重。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:52
@@ -877,22 +995,22 @@ msgstr ""
 #: data/core/units/humans/Mage_Red.cfg:54
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
 msgid "staff"
-msgstr ""
+msgstr "法杖"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:65
 msgid "ensnare"
-msgstr ""
+msgstr "誘捕"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Druid.cfg:73 data/core/units/elves/Shyde.cfg:77
 msgid "thorns"
-msgstr ""
+msgstr "刺藤"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "精靈附魔師"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -903,24 +1021,27 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
+"精靈的魔法與人類的完全不同，以至于人類完全無法理解精靈的魔法，更別提使用了。"
+"善用精靈魔法的大師與她們使用的魔法一樣神秘。雖然可以肯定她們的族人很敬重她"
+"們，但她們在自己的社會里扮演什么樣的角色卻鮮為人知。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36
 #: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:38
 msgid "entangle"
-msgstr ""
+msgstr "纏繞"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:47 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/High_Lord.cfg:70
 #: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:52
 msgid "faerie fire"
-msgstr ""
+msgstr "妖精之火"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr ""
+msgstr "精靈戰士"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Fighter.cfg:20
@@ -930,11 +1051,14 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"精靈并非天生好戰，但在緊迫關頭，他/她們的優雅機敏的天性和高超的本領都能派上用"
+"場。精靈能在短時間內掌握基本的劍朮和射朮，并有效運用于戰斗，這實在是讓人稱"
+"奇。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr ""
+msgstr "精靈英雄"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Hero.cfg:19
@@ -944,11 +1068,13 @@ msgid ""
 "with both sword and bow, and their skill once acquired does not fade for "
 "lack of practice."
 msgstr ""
+"精靈只需很少的經驗就能由戰士成長為戰斗大師。這些英雄有着強大的劍朮和射朮，且"
+"不會隨着時間流逝而荒廢。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "精靈至高領主"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -958,11 +1084,14 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"精靈的領袖并不隨着歲月的流失而變得衰老脆弱. 相反, 他/她們在這個過程中逐漸發揮"
+"出他/她們全部的潛力. 盡管高階精靈王在和平時代總是沉浸在平靜和沉思之中, 但是"
+"他/她們滿腔怒火時的樣子可以令任何人感到恐懼."
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "精靈仕女"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Lady.cfg:21
@@ -972,11 +1101,14 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"精靈以智慧和力量來選擇來選擇他/她們的領袖; 在混亂的年代里, 預見未來的能力一次"
+"又一次地保護過精靈族. 精靈們以無言的忠誠來回報他/她們公正的統治, 顯然這是任何"
+"統治者所能要求的最高禮物."
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
-msgstr ""
+msgstr "精靈領主"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -985,11 +1117,13 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"這些精靈高貴的血統與他/她們的社會地位相稱. 精靈王是最智慧而強大的精靈, 并且對"
+"魔法有着可怕的控制力."
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "精靈神射手"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Marksman.cfg:22
@@ -1002,22 +1136,26 @@ msgid ""
 "Realizing this prodigious skill does come with one cost, that being a lack "
 "of practice with the sword."
 msgstr ""
+"精靈銳利的目光是他/她們善于射朮的原因之一。有經驗的精靈能射中人類看都看不到的"
+"目標，即使在晚上也不含糊，而且能接二連三的發射。\n"
+"\n"
+"這驚人的技能的代價是他/她們不擅長劍朮。"
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:62
 #: data/core/units/elves/Sharpshooter.cfg:59
 msgid "longbow"
-msgstr ""
+msgstr "長弓"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:172
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "精靈神射手"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "精靈元帥"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Marshal.cfg:27
@@ -1029,11 +1167,14 @@ msgid ""
 "when an elf sets his mind to war, the strategy that results is the work of a "
 "master."
 msgstr ""
+"長壽和天生的聰穎讓精靈對軍事技能非常敏銳，甚至可以抵消他/她們對戰爭的普遍厭"
+"惡。精靈比人類記事更清楚，并能領悟到別人需要訓練才能掌握的技能。所以，在少數"
+"情況下某個精靈開始思考關于戰爭的問題，則制定的戰略必然是杰作。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "精靈遊騎兵"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Outrider.cfg:23
@@ -1048,11 +1189,17 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
+"精靈騎衛兵是精靈王國的皇家信使。盡管精靈天性愛好和平，他/她們的經驗卻讓他/她"
+"們能征善戰。他/她們在馬背上使用弓箭的技朮無人可比——事實上，大多數人就是站在平"
+"地上也很難比過他/她們。\n"
+"\n"
+"這些士兵速度很快，在自己的家園中可以隨時隨地自由選擇攻守，這種技能保全了他/她"
+"們中許多人的生命。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "精靈遊俠"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Ranger.cfg:20
@@ -1063,16 +1210,19 @@ msgid ""
 "fitting master of them. This, combined with a considerable skill at archery "
 "and swordsmanship, is very useful in warfare."
 msgstr ""
+"一個人即使在森林里逗留很多年，也會一直認為他是這里的過客，永遠也不屬于這里。"
+"對精靈來說這恰恰相反。研習森林秘密的精靈很快就能成為這些秘密合適主人。結合優"
+"秀的射朮和劍朮，他/她們就能成為有力的戰爭工具。"
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:177
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "精靈遊俠"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr ""
+msgstr "精靈騎兵"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Rider.cfg:24
@@ -1085,11 +1235,16 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
+"馬背上的精靈騎朮大師能夠在森林里高速移動，人類如果這樣則無異于自殺。雖然這的"
+"確讓人們對騎手肅然起敬，人們也懷疑他/她們的馬的血統特殊，因為它們的表現實在是"
+"超凡脫俗。\n"
+"\n"
+"難以置信的移動速度和強大的戰斗力的結合是精靈族在戰爭中最寶貴的財富之一。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr ""
+msgstr "精靈斥侯"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Scout.cfg:23
@@ -1100,11 +1255,14 @@ msgid ""
 "thick of the forest with nary a scratch. They may be the only cavalry in "
 "existence that fares better in the woods than on open ground."
 msgstr ""
+"這些馬背上的森林精靈能夠熟練使用弓和劍，但他/她們真正的長項是騎朮。有時其他精"
+"靈也詫異于他/她們在森林里詭異的速度，急速行走于密林之間也不會被擦傷。他/她們"
+"也許是唯一一個在森林中比在平原上更善戰的兵種。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "精靈巫醫"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Shaman.cfg:23
@@ -1118,11 +1276,16 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle."
 msgstr ""
+"精靈生在這仙境一般的世界里，有着與生俱來的魔法能力。她們與大自然非常親近，能"
+"運用自然力量來戰斗。敵人在森林里很快會發覺自己被腳下的樹根纏繞住，其威脅自然"
+"也就大減了。\n"
+"\n"
+"精靈的治療技能也很出色，在戰斗中的用處很大。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr ""
+msgstr "精靈狙擊手"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
@@ -1132,16 +1295,18 @@ msgid ""
 "such a story could be taken seriously. The sharpshooters of the elves have, "
 "quite simply, mastered the art of archery."
 msgstr ""
+"傳奇故事中曾有一個精靈用自己射出的箭擊落了已射出的另一支箭。人們對這故事深信"
+"不疑，這充分證明了那精靈出色的射朮。很顯然，精靈狙擊手已精通了射箭之朮。"
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:169
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "精靈狙擊手"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "風之精靈"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Shyde.cfg:21
@@ -1151,16 +1316,18 @@ msgid ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people."
 msgstr ""
+"對仙境的專著使這些精靈少女成為穿梭于仙境與凡間的生靈。她們受到深奧的精神的指"
+"引，是精靈森林的守護者，是精靈族之優雅與神秘的化身。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:52 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
-msgstr ""
+msgstr "妖精之觸"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "精靈女術士"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sorceress.cfg:21
@@ -1173,11 +1340,17 @@ msgid ""
 "Those able to do so are roughly titled as 'sorceresses' by other races; and "
 "certainly are capable of acting the part."
 msgstr ""
+"仙境的力量比凡間的強大很多。凡人簡單地借助仙境的一些力量會導致極端的后果。精"
+"靈們深刻理解這種力量，很少懷着惡意使用它們。要這么做并非易事，而且這還被看作"
+"是不正當的運用精靈的力量。\n"
+"\n"
+"能夠如此運用仙境力量的人通常被其他種族稱為“女巫”，她們的能力確實配得上這個稱"
+"號。"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr ""
+msgstr "風之女神"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sylph.cfg:20
@@ -1187,11 +1360,13 @@ msgid ""
 "powers. Legends concerning these have given other races a healthy fear of "
 "the elves."
 msgstr ""
+"很少有人能見到空氣精靈。這些賢明的精靈是掌握自身仙力與凡力的大師。她們執迷于"
+"奇妙，甚至令人驚恐的力量。關于這些力量的傳說使得其他種族對精靈心懷敬畏之情。"
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:40
 msgid "gossamer"
-msgstr ""
+msgstr "銀索"
 
 #. [unit_type]: race=monster, description=
 #: data/core/units/fake/Fog_Clearer.cfg:7
@@ -1201,7 +1376,7 @@ msgstr ""
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr ""
+msgstr "懼狼騎兵"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
@@ -1217,11 +1392,18 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke."
 msgstr ""
+"“恐怖巨狼”和普通品種的區別僅僅在于大小和顏色。他們站起來時肩膀比馬還高，胃口"
+"也和身材一樣大。只有瘋子才願意和他們遭遇；地精付出了很大代價才馴服了它們（如"
+"果可以叫馴服的話）。\n"
+"\n"
+"通常狼爪并不被認為是很危險的，但這些巨獸的爪子又厚又長，比鋼釘有過之而無不"
+"及。騎手在它們的前爪上塗毒，跟獸人刺客用的一樣，所以這些強有力的爪會造成致命"
+"的攻擊。"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "地精刺槍兵"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
@@ -1231,11 +1413,13 @@ msgid ""
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminuitive frames."
 msgstr ""
+"地精常常被獸人用作前線的炮灰。那些存活下來的地精為了繼續生存，無一例外的將自"
+"己武裝了起來。一根超長的矛彌補了他們的短處，精良的鎧甲保護着他們瘦小的身軀。"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr ""
+msgstr "地精騎士"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Knight.cfg:20
@@ -1248,11 +1432,15 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
+"地精“騎士”這名字有點名不副實，通常是他們的敵人對他們的稱呼。他們與“騎士”的相"
+"似之處僅僅在于他們是狼騎兵中的精英，因其魯莽無畏的掠奪受到提拔。\n"
+"\n"
+"他們的狼速度快，力量大，這使他們在戰斗中十分顯得危險。"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "地精燒掠者"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Pillager.cfg:19
@@ -1262,23 +1450,25 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
+"一些地精訓練他們的狼適應火焰。這些地精在突襲中扮演的是支援大部隊的角色：他們"
+"會燒毀對手的家園和作物，并用網來迫害那些試圖防御或復仇的人。"
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:34
 msgid "torch"
-msgstr ""
+msgstr "火炬"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
 #: data/core/units/goblins/Pillager.cfg:43
 msgid "net"
-msgstr ""
+msgstr "刺網"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr ""
+msgstr "地精掌旗手"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
@@ -1289,11 +1479,14 @@ msgid ""
 "Nonetheless, a rouser's frenzied goading effectively steels the younger at "
 "arms to fight harder and longer before they die."
 msgstr ""
+"循規蹈矩并非地精的風格。經曆多次戰斗而生還的地精老兵非常少見，讓別的地精承認"
+"并尊重他們的老兵身份就更是難上加難。不過，無論如何，煽動者近乎瘋狂的慫恿還是"
+"讓年輕士兵在戰死前更賣力更持久地戰斗。"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "地精矛兵"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
@@ -1308,11 +1501,16 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
+"每一窩獸人中總有几個天生瘦小虛弱的。這些家伙被稱為“地精”，受到族人的歧視。在"
+"戰斗中，他們分配到的都是最差的裝備，擔當擋箭牌的角色，給軍閥們足夠的時間去准"
+"備真正的戰斗。\n"
+"\n"
+"有些人認為，這些家伙的出現說明獸族的血統在衰落，但沒人知道詳細的曆史。"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
-msgstr ""
+msgstr "狼騎兵"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Wolf_Rider.cfg:36
@@ -1329,11 +1527,16 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
+"沒人能確定什么時候將狼訓練為坐騎的行為是什么時候開始的。地精比獸人矮小脆弱，"
+"又承擔危險任務。能獲得一頭坐騎的地精在戰斗中更安全，戰斗也更有意思。\n"
+"\n"
+"狼永遠不能承受一個人的重量，但是搭載穿着皮甲的地精則毫無問題。不像馬那樣，狼"
+"能在山嶺中迅速穿行，盡管水和森林會減慢他們的速度。"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
-msgstr ""
+msgstr "獅鷲"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:18
@@ -1342,11 +1545,13 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
+"這些威嚴強悍的生物是天空的主宰。獅鷲很危險，對其他智慧生物很敏感，所以無事切"
+"勿擾之。"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
-msgstr ""
+msgstr "菁英獅鷲騎兵"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
@@ -1355,11 +1560,13 @@ msgid ""
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty flyers may strike from anywhere."
 msgstr ""
+"獅鷲大師很善于利用獅鷲飛行，獅鷲就是他們身體的一部分。這種特殊的關系讓陸戰部"
+"隊的內心感到振顫，因為這對強大的搭檔可以從任何方位展開進攻。"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "獅鷲騎兵"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:19
@@ -1368,11 +1575,13 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
+"只有少數人能和獅鷲建立緊密地聯系，這些人有可能成為獅鷲騎士，并和獅鷲一起去探"
+"索天空的世界。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
-msgstr ""
+msgstr "高階騎士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
@@ -1383,6 +1592,9 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
+"高階騎士達到了劍朮和長矛技能的頂峰。他們全身披着板甲，身下坐騎的傾向于以力量"
+"代替速度。這些勇士是騎兵部隊的核心力量。帶頭沖鋒的大騎士讓所有步兵畏懼，往往"
+"能一次沖破防線。"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
@@ -1390,12 +1602,12 @@ msgstr ""
 #: data/core/units/humans/Horse_Paladin.cfg:49
 #: data/core/units/humans/Horse_Lancer.cfg:24
 msgid "lance"
-msgstr ""
+msgstr "長槍"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
-msgstr ""
+msgstr "騎士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
@@ -1408,11 +1620,14 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
+"技藝精湛、紀律嚴明的騎手將晉升為騎士。他們戰斗經驗丰富，了解沖刺失敗的危險，"
+"運用沖刺技能時也更為謹慎。因此騎士還隨身攜帶佩劍，用心練習比沖刺更加安全的戰"
+"朮。他們的長槍也時刻准備就緒，常年使用長槍的經驗仍然是他們的優勢。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr ""
+msgstr "槍騎兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
@@ -1424,11 +1639,15 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
+"長槍輕騎兵是韋諾世界里最勇敢和最令人畏懼的騎兵。他們身着輕甲，移動迅速，比其"
+"他騎士都快。他們大膽的戰朮是一把雙刃劍，要么為他們帶來榮譽，要么則帶來迅速的"
+"滅亡。長槍輕騎兵擅長于追擊那些松散的步兵以及撕裂防御陣線。然而，他們在防御戰"
+"中作用有限。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr ""
+msgstr "聖騎士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
@@ -1450,11 +1669,20 @@ msgid ""
 "curious abilities; a paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"騎士之中，聖騎士享有最高禮遇，他們的強壯非源于忠心,而在于虔誠的目標; 他們服務"
+"的目標以騎士精神為托。他們服務于軍隊,但是履行他們自己的忠誠; 那神秘的規則逾越"
+"了政治和習慣的障礙。統治者有時對他們很警覺,因為這些騎士的忠心不過于自身的信"
+"念。這讓心懷叵測的人們中傷這個團體,  而更少見的是, 依托精心制定的詭計最終得到"
+"聖騎士的絕對忠心。\n"
+"    \n"
+"聖騎士不像“高階騎士”那般令人畏懼，但他們也是最前線的戰士。他們的智慧和虔誠賦"
+"予這些“戰斗僧侶” 奇特的力量; 聖騎士非常善于同魔法支撐的或非自然的事物戰斗，而"
+"且他們通常有精湛的醫療能力。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr ""
+msgstr "輕騎兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horseman.cfg:20
@@ -1467,11 +1695,15 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
+"騎手常常來自韋諾大陸上偏遠蠻荒的地帶，從小就受訓騎朮并遵守極其嚴格的法典。騎"
+"手的沖鋒強大但卻魯莽，而其價值在戰斗中一次次被證實。騎手善于攻擊步兵，特別是"
+"那些游離于隊形之外的步兵，但是要小心矛戰士和弓箭手，因為他們速度快，身材高"
+"大，很容易成為這些人的靶子。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
-msgstr ""
+msgstr "弓手"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
@@ -1482,17 +1714,20 @@ msgid ""
 "woodsmen, bowmen are competent with both a bow and a short sword, and are "
 "very common on the battlefield."
 msgstr ""
+"自古以來，弓箭的目標都不僅僅是動物，而弓箭手一直是戰斗中不可或缺的兵種。他們"
+"出身低下，多數是農民和山野村夫，但是善于使用弓箭和短劍。戰場上到隨處可見他們"
+"的身影。"
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
 #: data/core/units/humans/Loyalist_Bowman.cfg:25
 msgid "short sword"
-msgstr ""
+msgstr "短劍"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr ""
+msgstr "禁衛騎兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
@@ -1502,6 +1737,8 @@ msgid ""
 "their mobility; such might, and the daring deeds it fosters, are the subject "
 "of many a tale and song."
 msgstr ""
+"近衛騎兵是馬背上的劍朮和弩弓高手，在戰場上看到他們就看到了勝利。結合他們移動"
+"迅速的特點，他們成為了令人生畏的兵種。這種戰斗精神也為許多傳說和歌曲所傳頌。"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1518,12 +1755,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:48
 #: data/core/units/undead/Skele_Death_Knight.cfg:55
 msgid "crossbow"
-msgstr ""
+msgstr "十字弓"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
-msgstr ""
+msgstr "騎衛隊"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
@@ -1537,11 +1774,16 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
+"騎兵與騎手的不同在于其戰朮和裝備。騎兵身着更厚實的鎧甲，并攜帶劍和盾，而不是"
+"長槍。他們不使用沖鋒的戰朮，而是在靈巧的移動中用劍砍殺，馬與馬背上的騎兵都是"
+"近戰利器。\n"
+"\n"
+"騎兵適合于奪取并駐守寬闊地帶、保護友軍士兵以及巡邏任務。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
-msgstr ""
+msgstr "龍騎士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
@@ -1552,11 +1794,14 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"在韋諾的軍隊中，才華出眾的騎兵會接受使用弩的訓練，并配以更強力的戰馬。這些騎"
+"兵裝甲結實，善于用劍，能迅速占領并守住戰略要地。他們機動性高，堅韌不拔，在戰"
+"場中具有極大的價值。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
-msgstr ""
+msgstr "鬥劍士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
@@ -1573,18 +1818,26 @@ msgid ""
 "fact very useful, and those of their ranks who live long enough to be "
 "veterans typically do so by making such concessions to utility and survival."
 msgstr ""
+"韋諾貴族們追逐奇特的風尚，常常讓自己的兒子加入兩個武士團中的一個，訓練他們掌"
+"握馬朮或劍朮。青年貴族常常因為被侮辱而奮起還擊，訴諸劍斗，而決斗者這個稱號就"
+"是根據這種陋習而起的。\n"
+"\n"
+"這些老練的劍朮家，如果不是貴族出生，看上去也很像貴族。他們隨身攜帶弩弓，能夠"
+"方便地藏在外套或斗篷下面。雖然裝載緩慢，用于戰斗時又讓人覺得勝之不武，弓弩實"
+"際上還是很有用的。凡是活得足夠長的老劍客，總是會向實用主義和求生本能妥協，而"
+"舍棄自己的高貴氣質的。"
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:72
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
 msgid "sabre"
-msgstr ""
+msgstr "軍刀"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
-msgstr ""
+msgstr "劍士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
@@ -1600,23 +1853,30 @@ msgid ""
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the weight of their full armor."
 msgstr ""
+"劍客一脈認為戰場上士兵穿戴的鎧甲是士兵自己最大的敵人。鎧甲只能降低傷害，躲閃"
+"才能讓防守者毫發無損。躲避攻擊是擁有合格體質的人才能幻想的奢侈，要想能真正做"
+"到這點，還需要經受嚴格的訓練。\n"
+"\n"
+"劍客僅僅配備了一柄匕首和一把雙刃長劍，步伐輕便，在某些情形下，身着鎧甲的戰士"
+"處于弱勢，而他們依然可以大有作為。他們喜好在象重甲步兵這樣的部隊周圍跳舞，嘲"
+"弄他們為全身披甲而付出的代價。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
-msgstr ""
+msgstr "將軍"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
-msgstr ""
+msgstr "作為軍隊的領袖，將軍有責任保護他所效忠的的王國內廣大或重要的區域。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
-msgstr ""
+msgstr "總元帥"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
@@ -1626,11 +1886,13 @@ msgid ""
 "proving both their tactical wit and their considerable mettle at personal "
 "combat."
 msgstr ""
+"大元帥是人類部隊里最受尊敬的一類人，這真金不怕火煉的頭銜是他們戰朮素養和丰富"
+"的個人戰斗經驗換來的。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
-msgstr ""
+msgstr "戟槍兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
@@ -1648,11 +1910,19 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war."
 msgstr ""
+"戟是非常笨重的武器，但在行家手里確是強力的。它比它的原形——矛用法更靈活。戟兵"
+"可以自豪的對你說，戟擁有4個主要打擊點，比矛或長矛多2個：尖刺和刀刃，杆柄的長"
+"釘和刀片內部的尖刺，能夠用來向后拉扯。這使戟在戰爭中的用法變化多端，對付騎兵"
+"特別有效。\n"
+"\n"
+"然而，制戟比制矛貴很多，而且在新手手中，作用非常有限。在韋諾的軍隊中，通常只"
+"把戟賦予那些久經沙場的老長槍兵，因為他們的經驗證明他們可以正確的在戰場上使用"
+"這種武器。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "重裝步兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
@@ -1666,11 +1936,15 @@ msgid ""
 "in the weight of the metal, and the great care that must be taken of it, but "
 "in certain situations, these troops are well worth the trade-offs."
 msgstr ""
+"重甲步兵是非同尋常的裝甲部隊。在戰爭中很難把他們送到前線去，通常只能用來防守"
+"其駐扎的城市與城堡。他們全身裝甲，手揮大錘，他們的近戰能力首屈一指。戰線中有"
+"一兩個中加步兵就能大大加強戰線的強度。他們的缺點也十分明顯，因為裝甲太重，卸"
+"下后也需要精心護理，但在特定情況下，這些部隊還是值得征召的。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
-msgstr ""
+msgstr "鋼鎚武士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
@@ -1686,11 +1960,17 @@ msgid ""
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
+"鐵槌人名字的由來非常明顯。配置這些裝甲的人有着與食人魔匹敵的力量，是他們所效"
+"忠的城堡中守衛部隊里的佼佼者。然而，他們需要昂貴的維護費用，而且需要完整的后"
+"援支持才能送他們上前線。\n"
+"\n"
+"雖然近戰能力驚人，他們這身打扮也有不少弱點：鐵槌人容易疲勞，不能在戰場上奔"
+"跑。他們常常目擊遠處的盟友落難，卻無法及時趕上去施以援手。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
-msgstr ""
+msgstr "擲槍兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
@@ -1703,23 +1983,26 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee."
 msgstr ""
+"矛兵通常裝備着數竿標槍，即使殺不死敵人，也能進行騷擾。有些矛兵卻擁有使用標槍"
+"的天賦。標槍兵在軍隊中是一個很有價值的兵種，因為他們在近戰中仍能攻擊遠處的敵"
+"人。他們能將標槍擲向遠處的敵人，通常不會被還擊，并仍然占據近戰中的位置。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
-msgstr ""
+msgstr "士官"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
-msgstr ""
+msgstr "中尉受過使用劍朮和弩弓的訓練，能領導一小股部隊，協調他們的進攻。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
-msgstr ""
+msgstr "長弓手"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
@@ -1730,11 +2013,14 @@ msgid ""
 "carry their weapons as a badge of pride, and most bowmen look forward to the "
 "day they can begin using one."
 msgstr ""
+"新弓箭手受體能的限制，根本無法使用長弓。長弓要用很大的力氣才能拉動，而且如果"
+"瞄不准的話，增加的射程和威力也是白費。新手通常都不具備這種准心。長弓手把他們"
+"的武器看成是讓人自豪的勛章，大多數弓箭手也都渴望有朝一日能使用長弓。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
-msgstr ""
+msgstr "菁英長弓手"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
@@ -1748,11 +2034,15 @@ msgid ""
 "their human counterparts have speculated, perhaps in envy, that this is only "
 "by dint of age."
 msgstr ""
+"大師弓箭手技藝高超，無人能及。他們裝備劍和杉木大弓，在戰場上他們是弓箭手陣營"
+"中的王者，射擊精准，殺敵無數。他們劍朮也絲毫不含糊：他們隨隨便便就能把劍使的"
+"和初出茅廬的劍士一樣好。這個世界上的許多種族中，只有精靈有着凌駕于人類之上的"
+"箭朮，人類弓箭手或許是由于嫉妒，猜測說這是由于年齡的原因。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr ""
+msgstr "俠劍客"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
@@ -1769,11 +2059,18 @@ msgid ""
 "positions in which their flamboyant nature is not only accepted, but is "
 "perhaps even useful."
 msgstr ""
+"劍朮大師有着令人羨慕的人生。雖然這是刺激和危險的一生，但是他們已經走到了收獲"
+"的季節。這些紳士以高超的技能和瀟灑的風度而聞名，有着天生貴族般的氣質，吸引着"
+"諸多貴婦人的目光。\n"
+"\n"
+"劍朮大師擁有自由選擇任務的權利，只要他們願意，就可以四處任意遨游。他們常常擔"
+"任城堡的守衛的首領，或軍事學院的大師——在這些地方他們張揚的個性不僅得到了承"
+"認，而且說不定還很有用處。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr ""
+msgstr "長槍兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
@@ -1785,16 +2082,19 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
+"有前途的矛兵通常會晉升為長矛兵，身上披掛的護甲也比他們還是新兵時的雜牌皮甲要"
+"好得多。因為矛比普通的那些要長，因此可以用于更多的戰朮中。長矛兵組成的人牆是"
+"騎兵的噩夢；同時，紀律嚴明戰朮清晰的長矛兵也能對抗大多數步兵單位。"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:53
 msgid "pike"
-msgstr ""
+msgstr "長槍"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr ""
+msgstr "皇家武士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
@@ -1808,11 +2108,15 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
+"皇家衛兵是從韋諾中最好的劍士里選出來的。他們服務于貴族，擔任保鏢，并在一定程"
+"度上成為皇族的象征。皇家衛兵組成的特別部隊駐扎在國會大廈，負責保護皇宮和皇室"
+"成員。他們得到了皇族的信任，因此不像佣兵那樣，他們常常被賦予至關重要的使命。"
+"他們的近戰技藝高超，值得信賴，這是他們最大的資本，也是他們的名聲所在。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
-msgstr ""
+msgstr "中士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
@@ -1821,11 +2125,13 @@ msgid ""
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
+"軍士是皇家衛隊中的低階軍官。他們雖然受過正規教育，卻還欠缺戰斗經驗，因而他們"
+"的領導能力還不穩定，也得不到認可。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
-msgstr ""
+msgstr "閃擊步兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
@@ -1839,17 +2145,21 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
+"震懾步兵是重甲步兵中的精英，他們在站上的作用有一半是威懾。能夠加入震懾步兵的"
+"都是身材出眾的人，他們穿着黑色釘刺板甲，那種威嚴的氣勢是很恐怖的。震懾步兵摧"
+"毀敵人的情景，對任何對手的士氣都造成感同身受的打擊。敵人有時甚至懷疑裝甲下裹"
+"着的是怪物而不是人。穿着重甲的缺點是需要較長時間才能參與或退出戰斗。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:98
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
 msgid "morning star"
-msgstr ""
+msgstr "流星鎚"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
-msgstr ""
+msgstr "矛兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:19
@@ -1860,11 +2170,14 @@ msgid ""
 "armed with a shield and a few javelins, spearmen are the staple of most "
 "armies, often thrown into the front lines with only the most basic training."
 msgstr ""
+"劍對許多人來說是奢侈的武器，那些農夫是買不起的。制造矛則很容易，大多數人也都"
+"有足夠的財力給它配備一個矛尖，而且就算沒有尖的矛也一樣好用。矛兵身披皮甲，并"
+"常常裝備盾牌和少量的標槍，是許多軍隊的主要組成部分，常常稍作操練就投入前線。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
-msgstr ""
+msgstr "劍士"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
@@ -1876,11 +2189,14 @@ msgid ""
 "behind. A sword is not without its own drawbacks, but is more versatile than "
 "a spear, and much better in close quarters."
 msgstr ""
+"經驗豐富的戰士通常能省下一筆錢拿來購置鱗甲或鎖甲以及堅硬的闊劍。雖然從矛到劍"
+"的轉變有些不自然，大部分矛兵還是義無反顧，因為他們太了解矛的缺陷了。劍當然也"
+"有缺點，但卻比矛更機動，在狹窄的空間裡也更好用。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
-msgstr ""
+msgstr "見習法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage.cfg:24
@@ -1904,22 +2220,33 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
+"人類常常思索他們棲身的世界的運作方式。一些人的努力超越了無聊的遐想，他們把這"
+"種探索當成一生主要的追求。任何配得上法師稱號的人都至少刻苦鑽研了十年之久，積"
+"累了許多知識，遠遠高于其他人。他(她)們一生都在追求知識，這與世上只有少許人能"
+"讀能寫的情形形成了鮮明的對比。他們中間很多是充滿希望的貴族子弟，還有試圖逃避"
+"由體力勞動造成的精神空虛的人。\n"
+"\n"
+"諷刺的是，以他們的知識和對知識的壟斷，法師團體本可以統治社會。然而他們的真愛"
+"既非金錢，也非權利，而那些想通過學習魔法來統治社會的人往往又缺乏成為大法師的"
+"堅定信念。\n"
+"\n"
+"法師身體虛弱，不善近身戰斗，但他們的魔法能力在戰爭中仍然十分有用。"
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:63
 #: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
-msgstr ""
+msgstr "魔法箭"
 
 #. [female]
 #: data/core/units/humans/Mage.cfg:167
 msgid "female^Mage"
-msgstr ""
+msgstr "見習法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
-msgstr ""
+msgstr "法師長"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:21
@@ -1937,23 +2264,29 @@ msgid ""
 "unleash the full power of their art, something which is not to be taken "
 "lightly."
 msgstr ""
+"傳統上大法師的名號只授予花費一生時間來鑽研并取得偉大成就的人。大法師通常受雇"
+"于教學，或作為顧問幫助那些想在智慧上尋求更多進步的人。許多大法師尋求富人的贊"
+"助，這對雙方都有好處，因為除了偶爾教教法書、給些建議之外，他們可以不受干擾地"
+"做研究。大部分人類的知識由此而來：科學、哲學和藝朮，無不為外部世界增色。\n"
+"\n"
+"雖然沒受過戰斗訓練，在需要時大法師就能釋放他們全部的能量——這可不是兒戲啊。"
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Great.cfg:38
 #: data/core/units/humans/Mage_Arch.cfg:38
 #: data/core/units/humans/Mage_Red.cfg:63
 msgid "fireball"
-msgstr ""
+msgstr "火球"
 
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:119
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "法師長"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr ""
+msgstr "高階法師長"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Great.cfg:21
@@ -1970,16 +2303,22 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
+"凡是有可能獲得高階大法師稱號的人都几乎是其所處時代的傳奇。沿街傳告政令的人最"
+"早得知授予稱號的決定。名號由法師協會的長老小心謹慎的授予，并且要得到大多投票"
+"才能通過。無論如何，任何被提名授予高階大法師的稱號的人都是毋庸置疑的法朮高"
+"手，在技藝上超越了絕大多數同僚。\n"
+"\n"
+"雖然他們不是武士，但他們的魔法攻擊仍然讓許多戰士畏懼。"
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:119
 msgid "female^Great Mage"
-msgstr ""
+msgstr "高階法師長"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
-msgstr ""
+msgstr "紅袍法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Red.cfg:21
@@ -1997,23 +2336,30 @@ msgid ""
 "number of tricks up their sleeves, including the gouts of fire which may "
 "have cemented their colloquial name."
 msgstr ""
+"隨着新手生涯的終結，法師學徒脫掉棕色長袍，披上了紅色的法師袍。農民不了解這種"
+"轉變的意義，誤稱這些法朮大師為“紅袍法師”。法師長袍顏色的變化也讓人誤以為是代"
+"表了這些法師無中生有的召喚火焰的能力——盡管有用，在法師們看來卻只是對知識的誤"
+"用。\n"
+"\n"
+"雖然身體單薄，沒有受過戰士的訓練，“紅袍法師”卻掌握了不少法朮，包括操縱火的能"
+"力，這也正是口語中他們名號的來源。"
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:145
 msgid "female^Red Mage"
-msgstr ""
+msgstr "紅袍法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
-msgstr ""
+msgstr "銀袍法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
-msgstr ""
+msgstr "銀袍法師深入魔法的本質，非物理攻擊難以傷害他們。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
@@ -2036,16 +2382,28 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to induce "
 "the mage to apply them."
 msgstr ""
+"法師鑽研的不同方向帶給他們截然不同的結果。銀袍法師致力于學習將現實世界整合到"
+"一起的種種力量，在某種程度上成功的揭開了超出世人想象的世界的謎團。銀袍法師常"
+"被看成是聖人，或是彷徨的神秘主義者；他們的工作甚至不為同僚所理解。雖然受雇佣"
+"教廷，常常奔波于戰場之上，但他們卻有几分超然于世。\n"
+"\n"
+"事實上，銀袍法師在法師中有着他們自己的階級，保守着一些不為其他法師所知的秘"
+"密。其中之一便是能在極短的時間內，比最快步兵到達更遠的地方。銀袍法師們非常忌"
+"諱跟別的法師討論他們這種本領的原理，以前偶然有人介入，他們更是干脆地放棄工"
+"作，永遠不再談起。\n"
+"\n"
+"銀袍法師的體能通常比其他法師強，如果有人能強制他們運用他們的本領的話，他們在"
+"戰場上的能力將是不容置疑的。"
 
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:150
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "銀袍法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr ""
+msgstr "白袍法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_White.cfg:21
@@ -2060,6 +2418,13 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
+"有些法師，逐漸了解到周圍的世界與痛苦的真諦，還有人類生命中的貧苦，覺得自己無"
+"法在象牙塔中閉門造車。他（她）們放棄了法師的生涯，加入了神職人員的行列，將他"
+"們的畢生所學奉獻給公益事業。在接受任命后，他們常常環游世界，治療他人的疾病和"
+"傷痛。\n"
+"\n"
+"雖然不善于作戰，他們在對陣一種特定的敵人時卻很強大：如有需要，他們能召喚光明"
+"的力量來驅散一切不屬于人世間的不死亡靈。"
 
 #. [attack]: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
@@ -2067,17 +2432,17 @@ msgstr ""
 #: data/core/units/humans/Mage_of_Light.cfg:107
 #: data/core/units/humans/Mage_White.cfg:130
 msgid "lightbeam"
-msgstr ""
+msgstr "光束"
 
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:265
 msgid "female^White Mage"
-msgstr ""
+msgstr "白袍法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr ""
+msgstr "聖光法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_of_Light.cfg:22
@@ -2089,16 +2454,20 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
+"最虔誠的白袍法師積累了多年的經驗，獲得了巨大的精神力量。他們心向光明，憑借光"
+"明的力量驅散夜之陰影。\n"
+"\n"
+"他（她）們恪守虔誠與榮譽之信條，不知疲倦的為亂世帶來活力與秩序。"
 
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:232
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "聖光法師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
-msgstr ""
+msgstr "匪徒"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw.cfg:18
@@ -2111,6 +2480,10 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"為團伙效力多年后，“走卒”在同伙中的地位有所提升。他們已經證明了自己在戰斗中的"
+"價值，所以被委以更加危險的任務，并能分到更大比例的贓物。雖然許多對手嘲笑他們"
+"的武器，他們自己卻很清楚它們的致命威力，武器補給也來源廣泛。游寇不善于白天作"
+"戰，而是喜歡在夜幕掩護之下行動。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
@@ -2118,12 +2491,12 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
-msgstr ""
+msgstr "投石索"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:105
 msgid "female^Outlaw"
-msgstr ""
+msgstr "匪徒"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:108
@@ -2136,11 +2509,15 @@ msgid ""
 "Outlaws are somewhat ill at ease fighting during the day, preferring the "
 "cover of nightfall."
 msgstr ""
+"效力多年后，以前的“走卒”在同伙中的地位有所提升。他們已經證明了自己在戰斗中的"
+"價值，所以被委以更加危險的任務，并能分到更大比例的贓物。雖然許多對手嘲笑他們"
+"的武器，他們自己卻很清楚它們的致命威力，武器補給也來源廣泛。游寇不善于白天作"
+"戰，而是喜歡在夜幕掩護之下行動。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
-msgstr ""
+msgstr "刺客"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
@@ -2151,22 +2528,26 @@ msgid ""
 "victims, be it poisoned knives thrown from afar, or a dagger planted in the "
 "back. Deadly at night, assassins are less able fighting under the open sun."
 msgstr ""
+"最厲害的賊的所作所為有時不止是從受害者身上盜取錢財這么簡單。這些危險的人物是"
+"短兵器的高手，他們的腳步移動令人不可思議的輕巧。他們會不擇手段的對付對手，時"
+"而使用上了毒的飛刀，時而從別人背后捅刀子。刺客在晚上是致命的，但在白天則不太"
+"善于戰斗。"
 
 #. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
 msgid "knife"
-msgstr ""
+msgstr "匕首"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:167
 msgid "female^Assassin"
-msgstr ""
+msgstr "刺客"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
-msgstr ""
+msgstr "土匪"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
@@ -2177,11 +2558,14 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"強盜團伙的組成復雜，但大多都有可疑的背景。他們是犯罪團伙的得力武器，雖然可能"
+"手段簡單，智力低下，他們確實很擅長揍人，逼人屈服。像其他罪犯一樣，他們不太善"
+"于在白天行動，而是喜歡在晚上戰斗。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr ""
+msgstr "混混"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
@@ -2193,6 +2577,9 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
+"匪徒們常常戲稱那些小偷小摸的人為“走卒”。他們的職責往往需要他們四處奔波，如信"
+"使或偵察兵。由此而來的腳力在戰斗中對他們的幫助很大。他們盡管武器很爛，卻善于"
+"騷擾敵人，特別是在夜幕的掩護之下。"
 
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
@@ -2200,12 +2587,12 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
 msgid "club"
-msgstr ""
+msgstr "棍棒"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
-msgstr ""
+msgstr "混混"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:168
@@ -2217,11 +2604,14 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
+"匪徒們常常戲稱那些小偷小摸的人為“走卒”。他們的職責往往需要他們四處奔波，如信"
+"使或偵察兵。由此而來的腳力在戰斗中對他們的幫助很大。他們盡管武器很爛，卻善于"
+"騷擾敵人，特別是在夜幕的掩護之下。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "亡命之徒 "
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
@@ -2231,11 +2621,13 @@ msgid ""
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
+"因為他們的殘忍和逃避追捕的能力，這些老練的犯罪分子惡名昭彰。他們可能認為危險"
+"和恐懼是某種樂趣，但是這顯然無法平衡以多欺少的執法軍人帶來的危險。"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid "female^Fugitive"
-msgstr ""
+msgstr "亡命之徒 "
 
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
@@ -2245,23 +2637,25 @@ msgid ""
 "element, but are no match for the sheer numbers that law-abiding soldiery "
 "can throw at them."
 msgstr ""
+"因為他們的殘忍和逃避追捕的能力，這些老練的犯罪分子惡名昭彰。她們可能認為危險"
+"和恐懼是某種樂趣，但是這顯然無法平衡以多欺少的執法軍人帶來的危險。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "劫掠者"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
-msgstr ""
+msgstr "揮舞着沉重戰錘的攔路強盜肯定是你在荒郊野外最不想見到的人。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr ""
+msgstr "流氓"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
@@ -2273,16 +2667,19 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark."
 msgstr ""
+"盜賊團伙的頭目都是用自己的技藝獲得地位的。這些壞蛋經曆過很多突出重圍、躲避仇"
+"家的驚險場面，從而練就了戰斗中的各種使用技巧。他們是使用刀具的高手，飛刀也擲"
+"得很准。由于長時間在夜晚潛行，他們更適合在黑暗中戰斗。"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:141
 msgid "female^Rogue"
-msgstr ""
+msgstr "流氓"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
-msgstr ""
+msgstr "惡棍"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
@@ -2292,11 +2689,14 @@ msgid ""
 "stick, are known as 'Ruffians'. With enough luck and experience, they "
 "sometimes manage to avoid the stockade that awaits most of their colleagues."
 msgstr ""
+"有些人沒有任何特別的技能, 因而無法通過誠實勞動維持生計. 那些試圖以敲詐勒索為"
+"生的人們被稱作'地痞'. 如果有足夠的運氣和經驗的話, 有時他們也能躲過那些為他們"
+"准備的牢房."
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
-msgstr ""
+msgstr "盜賊"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
@@ -2309,16 +2709,20 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a 'fair fight'."
 msgstr ""
+"很久以前，許多大都市都出現了各種各樣的捕鼠者“行會”，其成員都有怪異的癖好，就"
+"是喜歡用石灰把頭發漂成淡淡的藍色。對于這些常常從事非法勾當的人來說，這可是一"
+"個大膽的舉動。盜賊有許多技能，處于生存的必要，他們的腳步輕快，善于使用匕首。"
+"他們樂于使用陰險的戰朮，不屑于“公平的戰斗”。"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:365
 msgid "female^Thief"
-msgstr ""
+msgstr "盜賊"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr ""
+msgstr "暴徒"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:19
@@ -2329,11 +2733,14 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
+"暴徒來源于多種人群：有些是天生的暴徒，更多則是不適合戰斗的士兵和失去土地的農"
+"民。很快，他們為了活命而成為了暴徒。無論他們背景如何，他們都善于用大木棒進行"
+"攻擊。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr ""
+msgstr "民兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Peasant.cfg:20
@@ -2343,16 +2750,18 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"農民是農村的經濟命脈，是士兵的最后來源。雖然并非天生強力，他們仍然能堅定的保"
+"護他們的家園。然而，如果您用農民海戰朮對付敵人，您肯定占不到便宜。"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:34
 msgid "pitchfork"
-msgstr ""
+msgstr "耙子"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
-msgstr ""
+msgstr "樵夫"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:19
@@ -2361,11 +2770,13 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"山民是獵人,伐木工,燒炭工,和其他在人類社會邊緣的荒野中艱難度日的人們. 智慧和關"
+"于森林的知識經常在武器無法幫助他們的時候給與他們支持."
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
-msgstr ""
+msgstr "山民"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
@@ -2385,11 +2796,19 @@ msgid ""
 "save lives, ease travel, provide food, and their skill with a bow is "
 "capitally useful in a fight."
 msgstr ""
+"打獵是貴族的運動, 也是普通人生存的手段. 如同其它的技巧的鍛煉, 叢林獵手也是在"
+"實踐中鍛煉. 叢林獵手了解在交易中運用陷阱的各種技巧, 并且更有用的是在野外的運"
+"用跟蹤和弓箭的技巧. 他們熟練的射擊移動并躲藏的目標的能力源于常年實踐的射擊游"
+"戲, 使之超越那些駐守要塞的弓箭手.\n"
+"\n"
+"狩獵高手常受雇于穿越野地的人們, 甚至他們的本能就能發揮致命威力, 沒有雇佣這樣"
+"的向導, 指揮官們往往會損失領地和士兵. 能力優秀的他們為旅行提供保障, 且隨時可"
+"以提弓作戰."
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
-msgstr ""
+msgstr "盜獵者"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
@@ -2402,11 +2821,16 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"雖然沒有經過戰士的正規訓練，獵人的技藝（尤其是射箭的技巧）在戰斗中很有用處。"
+"士兵和強盜常雇佣這些偷獵者，不僅為的是他們的狩獵技巧，還需要他們在認真的戰斗"
+"中援手。\n"
+"\n"
+"這些獵人經驗丰富，適于夜間在森林和沼澤中作戰。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
-msgstr ""
+msgstr "游俠"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
@@ -2423,11 +2847,18 @@ msgid ""
 "even hear of it at all.  Rangers can be hired, but they are just as likely "
 "to be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
+"游蕩者天生屬于荒野，他們是森林和丘陵的控制者。他們是卓越的追蹤者、偵察兵和射"
+"手，可以在夜色的掩護下自由地出沒于鄉間。大多數統治者如此懼怕游蕩者，以至他們"
+"寧願犧牲游蕩者們杰出能力所能為軍隊帶來的好處，也要將他們關入地牢。\n"
+"\n"
+"現實中獨裁者懼怕這些人帶來的麻煩：他們有不同于騎士和其它陸軍的特點，難以控"
+"制。而且動機難以理解，他們常常嘲笑皇室的決斷──如果他們還聽得進去。游蕩者可以"
+"雇佣，但是在為皇家服務時也可能受雇于強盜。"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
-msgstr ""
+msgstr "陷阱師"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
@@ -2440,11 +2871,17 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"狩獵高手是人人都想要的盟友，對任何規模旅居野外的團體更是不可或缺。他們能夠跟"
+"蹤人或野獸，觀察到大多數人容易忽視的線索，也常常是唯一能找到食物（不論葷素）"
+"的人。\n"
+"\n"
+"他們狩獵的技巧在戰場上非常有用，在夜間，以及在森林和沼澤中的能力超乎一般的強"
+"大。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "人魚女神官"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:24
@@ -2456,11 +2893,14 @@ msgid ""
 "man at the banks of the Alavynne, but who rode again the next day, in full "
 "number, and wrought the downfall of the crimson duke."
 msgstr ""
+"經久的燻陶賦予祭司們智慧和光明. 這些優雅的水中女子經常是傳說歌曲的主題; 例如"
+"銀甲騎士們在包圍下戰死在Alavynne岸邊, 但是第二天又全部起身上馬-- 這就是紅甲騎"
+"士衰落的過程."
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "人魚附魔師"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
@@ -2472,18 +2912,22 @@ msgid ""
 "is forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss."
 msgstr ""
+"人魚像精靈一樣，天生就有掌控魔法的強大天賦，當然，她們的天賦與精靈的還是大不"
+"相同。熟練掌握魔法的人魚很受他人尊重；她們的能力用處多多，有些是人類永遠不會"
+"想到的。戰爭中這些力量嚴禁對自己族人使用——它們几乎就是保護族人免受深淵海怪之"
+"災的全部武器。"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:37
 msgid "water spray"
-msgstr ""
+msgstr "水柱"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr ""
+msgstr "人魚陷阱師"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
@@ -2493,11 +2937,13 @@ msgid ""
 "weapon helps to cement the utter superiority of a merman in his own element, "
 "and makes their race a threat even to enemies who merely approach the water."
 msgstr ""
+"人魚的重網在作戰時很難自如運用；能夠熟練使用這些武器的人魚備受族人的重視與尊"
+"敬。這鞏固了人魚在水中的統治地位，威脅所有試圖靠近水邊的敵人。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr ""
+msgstr "人魚戰士"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Fighter.cfg:19
@@ -2505,6 +2951,7 @@ msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
+"人魚是大海中的生物，在任何水域中都是快速和強大的，但登陸之后卻困難重重。"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -2513,12 +2960,12 @@ msgstr ""
 #: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:35
 msgid "trident"
-msgstr ""
+msgstr "三叉戟"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "人魚方陣兵"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
@@ -2528,11 +2975,14 @@ msgid ""
 "steadfast line in the maelstrom of battle. In times of desperation, they can "
 "even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"人魚重甲兵裝備着高聳的盾牌，是水世界里的精英衛兵。強力的鎧甲和嚴明的軍紀使得"
+"他們在狂暴的戰爭中能組織堅韌的戰線。在絕境中，他們在陸地上也能組成這樣的防"
+"線，當然了，效果就不能和長了腿的生物相比了。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr ""
+msgstr "人魚獵戶"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:19
@@ -2542,11 +2992,13 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"人魚用矛捕魚的技能很容易運用到戰爭中來，特別是用來對付那些不適水戰的敵人。在"
+"戰局需要時，很多從事捕魚的人魚都會志願加入軍隊。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "人魚女學徒"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
@@ -2558,11 +3010,15 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
+"水之魔法對人魚來說是天生的，年輕的美人魚的魔法啟蒙常常從這里開始。這種奇妙的"
+"能力顯示出人魚具有的仙力，這是獨一無二，別的種族都無法模仿的能力。\n"
+"\n"
+"盡管她們很脆弱，卻能召喚身邊的水來打擊敵人，因此她們在戰斗中也是很可怕的。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "人魚擲槍兵"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
@@ -2572,11 +3028,14 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"掌握了擲標槍朮的人魚就像弓箭手一樣——雖然他們武器沉重，影響了射程，但造成的傷"
+"害也大得多。在水中，人魚的機動性完全彌補了這種不足，特別是在對付不會游泳的敵"
+"人的時候。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "人魚佈網師"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
@@ -2590,11 +3049,15 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage."
 msgstr ""
+"對人魚來說，捕魚就是把魚群趕緊早就部好的網中。這本身并沒有什么威力可言，但對"
+"阻止試圖渡河的軍隊卻很有效。同樣的，重網可以從水面之上撒出——這可不是和平時期"
+"該用的東西——在戰爭中重網非常有效。人魚用網來限制水中的敵人，更為重要的是，網"
+"可以使他們在陸地上也與優勢敵人平起平坐。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "人魚女祭司"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
@@ -2605,11 +3068,15 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
+"人魚遵守的信條跟人類的差不多，雖然由于文化的原因，堅持信仰的重任都落在女性人"
+"魚肩上；相比之下，她們也更有頭腦。她們一生致力于為世界帶來和平與生機；與人類"
+"一樣，人魚也有傷病苦痛，所以她們也研究戰勝病痛的方法。她們的勤奮和虔誠帶給她"
+"們神聖的力量，保護她們的族人免受不死亡靈的侵擾。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
-msgstr ""
+msgstr "人魚魅魔"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
@@ -2624,16 +3091,22 @@ msgid ""
 "The myriad applications of this rarely occur to land dwellers, who simply "
 "regard it with wonder."
 msgstr ""
+"人魚之仙力的杰出體現就是人魚女妖，她們與水仙女關系緊密，常常被誤認為是水仙"
+"女。這雖然遠非真相，但卻可以理解，因為連人魚也很少目擊水仙女。她們的魔法都有"
+"相似的表現形式；女妖能用意念操縱身邊的水，水仿佛變成了她們身體的一部分。\n"
+"\n"
+"人魚女妖很少對陸地上的人施展各種各樣的魔法，而他們只是對此嘆為觀止。特別提"
+"示：女妖的攻擊是魔法攻擊，總是有很高的命中率。"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
-msgstr ""
+msgstr "水妖之觸"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr ""
+msgstr "人魚矛兵"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
@@ -2645,11 +3118,14 @@ msgid ""
 "damage. They are also useful in melee, even deep under the surface, which is "
 "something that certainly cannot be said of arrows."
 msgstr ""
+"人魚不太愛使用箭朮，因為投擲標槍跟射箭功能相同。雖然投擲標槍在水下用的很少，"
+"在水面以上卻非常有效，因為標槍沉重，可以射入水中數尺而保持殺傷力。矛在近戰中"
+"也很有用，特別是在深水中，因為那里根本無法射箭。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
-msgstr ""
+msgstr "人魚三叉戟武士"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Triton.cfg:19
@@ -2658,11 +3134,13 @@ msgid ""
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
+"他們是海洋中的戰斗大師，擅長于使用三叉戟。他們可以輕易擊潰任何擅自闖入水中的"
+"敵人。"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
-msgstr ""
+msgstr "人魚勇士"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Warrior.cfg:18
@@ -2670,11 +3148,13 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
+"人魚勇士是人魚軍隊的中堅力量。他們手持強力的三叉戟，是那些膽敢挑戰水下世界者"
+"的噩夢。"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
-msgstr ""
+msgstr "巨魔蛛"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
@@ -2683,16 +3163,18 @@ msgid ""
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
 "can also fling webs through the air, to trap their prey."
 msgstr ""
+"據說，巨型蜘蛛生活在納爾迦的深處，吞食了很多可憐的受害者。它們能用毒素在近戰"
+"中打擊對手，也能從遠程用蛛網來減慢對手的速度。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cave_Spider.cfg:46
 msgid "web"
-msgstr ""
+msgstr "蛛網"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "大海怪"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
@@ -2702,22 +3184,24 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
+"烏賊是海洋中的巨型生物。他們能用巨大的觸須抓住對手，或從遠距離射出有毒的墨"
+"汁。要想從這些生物手里逃生，最好的辦法就是呆在岸上。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Tentacle.cfg:62
 #: data/core/units/monsters/Cuttle_Fish.cfg:35
 msgid "tentacle"
-msgstr ""
+msgstr "觸手"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:46
 msgid "ink"
-msgstr ""
+msgstr "噴墨"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
-msgstr ""
+msgstr "火燄巨龍"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
@@ -2733,21 +3217,28 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"巨龍是傳說中的生物, 一般來世只會在幻想小說中出現. 他們非常稀少. 或許是因為巨"
+"龍獨力摧毀整個城鎮的記載, 巨龍僅僅被做為一個神話. 民間傳奇關于巨龍的破壞力的"
+"描述非常詳細; 展現了他們的力量, 速度, 超自然的狡詐和最重要的——他們體內燃燒的"
+"恐怖火焰.\n"
+"\n"
+"與巨龍作戰被認為是世界上最危險的事情, 只有那些蠢貨, 或者最勇敢的騎士們才會挑"
+"戰巨龍的威嚴."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:28
 msgid "bite"
-msgstr ""
+msgstr "咬擊"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:37
 msgid "tail"
-msgstr ""
+msgstr "尾擊"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "巨型泥遁魔"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
@@ -2756,6 +3247,8 @@ msgid ""
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by striking them with their fists."
 msgstr ""
+"巨型黏土怪是體型巨大的黏土怪，是通過魔法混合泥土和水分的產物。他們用吐出的泥"
+"塊或拳頭進行攻擊。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Yeti.cfg:36
@@ -2765,63 +3258,63 @@ msgstr ""
 #: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
-msgstr ""
+msgstr "拳擊"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Mudcrawler.cfg:46
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
-msgstr ""
+msgstr "拋擲泥塊"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "巨蠍"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation."
-msgstr ""
+msgstr "一個普通的蠍子就夠危險了——而如人一般巨大的蠍子就更不用說了。"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
 msgid "sting"
-msgstr ""
+msgstr "毒針"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Scorpion.cfg:36
 msgid "pincers"
-msgstr ""
+msgstr "鉗擊"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
-msgstr ""
+msgstr "泥遁魔"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:19
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
-msgstr ""
+msgstr "黏土怪是通過魔法混合泥土和水分的產物。他們用吐出的泥塊進行攻擊。"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
-msgstr ""
+msgstr "大海蛇"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
+msgstr "巨型海蛇是巨大的怪獸，有着顛覆船只的能力。"
 
 #. [unit_type]: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "骷髏龍"
 
 #. [unit_type]: race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
@@ -2832,33 +3325,36 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"令人恐懼的龍曾是最強大的生物之一，現在卻只剩下骨頭和暗淡肌肉。他們死了很久之"
+"后，被死靈法師的黑暗力量召喚出來，并服務于他們。骨龍看起來就是一堆骨頭，不過"
+"這么想的人通常都沒有機會改變想法了。"
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
-msgstr ""
+msgstr "咬擊"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "深淵觸手"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
-msgstr ""
+msgstr "深淵觸手是屬于那些隱藏在海浪下的巨型怪物的附肢。"
 
 #. [unit_type]: race=monster, description=Wolves are aggressive animals that hunt in packs. Although weak individually, a wolf pack can kill even the strongest man in minutes.
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "野狼"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
-msgstr ""
+msgstr "大雪怪"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:18
@@ -2867,11 +3363,13 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
+"關于雪人人們知之甚少，據說這些類人猿生活在偏僻的雪山中。很少有人聲稱見到過雪"
+"人，很多人則質疑它的存在。"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
-msgstr ""
+msgstr "納迦戰士"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Fighter.cfg:20
@@ -2882,16 +3380,19 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"蛇型的娜迦是少數在水中能夠行動自如的種族之一，這為他們打開了一個陸地生物無法"
+"進入的世界。然而，他們并非真正的海洋生物，無法在水中呼吸，所以對深淵心懷恐"
+"懼。他們小巧，而且有點脆弱，但常常比敵人更靈活。"
 
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:63
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "納迦戰士"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "納迦武士"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
@@ -2902,11 +3403,14 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
+"技藝最精湛的娜迦劍士成為忠勇武士的成員，他們能熟練使用自己的雙刀。他們不僅長"
+"得像蛇，攻速也和蛇一樣快，并能以優雅的舞步躲開攻擊。他們在任何開闊的地形上都"
+"是強大的敵手，善于游泳的天性更是賦予他們致命的機動性。"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:67
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "納迦武士"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:70
@@ -2917,11 +3421,14 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"技藝最精湛的娜迦劍士成為忠勇武士的成員，她們能熟練使用自己的雙刀。她們不僅長"
+"得像蛇，攻速也和蛇一樣快，并能以優雅的舞步躲開攻擊。她們在任何開闊的地形上都"
+"是強大的敵手，善于游泳的天性更是賦予她們致命的機動性。"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
-msgstr ""
+msgstr "納迦勇士"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Warrior.cfg:19
@@ -2933,11 +3440,14 @@ msgid ""
 "from blows. This makes them potent on land, but the friction of water "
 "greatly impedes the technique."
 msgstr ""
+"大多年輕的娜迦勇士都渴望有朝一日能獲得配得上第二把刀的榮譽。他們在戰場上使用"
+"雙刀，這完全不同于獸人或其他種族；他們開始學習利用自己蛇形的身體，通過閃轉騰"
+"挪來躲避攻擊。這使他們在陸地上很強大，但水的阻力卻影響了他們的閃躲動作。"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:66
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "娜迦勇士"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:69
@@ -2949,11 +3459,14 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"年輕的娜迦勇士們都渴望有朝一日能獲得配得上第二把刀的榮譽。他們在戰場上使用雙"
+"刀的方式不同于獸人或其他種族；他們開始學習利用自己蛇形的身體，通過閃轉騰挪來"
+"躲避攻擊。這使他們在陸地上很強大，但水的阻力卻影響了他們的閃躲動作。"
 
 #. [unit_type]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
-msgstr ""
+msgstr "食人魔"
 
 #. [unit_type]: race=ogre
 #: data/core/units/ogres/Ogre.cfg:21
@@ -2963,16 +3476,18 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"食人魔是單獨生活在野外的巨型生物，雖然巨大丑陋，但外形還是非常像人類。雖然可"
+"以輕易在速度或智慧上超過他們，他們的力量還是不容小視。"
 
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
 msgid "cleaver"
-msgstr ""
+msgstr "切割"
 
 #. [unit_type]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr ""
+msgstr "小食人魔"
 
 #. [unit_type]: race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:21
@@ -2981,11 +3496,13 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
+"有時人們捕到幼年的食人魔，會將他們投入軍中進行訓練。他們無法熟練的使用武器，"
+"不過這也沒關系，因為他們力量強大。"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
-msgstr ""
+msgstr "半獸人弓箭手"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Archer.cfg:19
@@ -2996,11 +3513,14 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"在獸人中, 弓箭被認為是怯懦者使用的武器; 但是即使是獸人, 特別是年輕的和體型瘦"
+"小的, 也會向現實主義投降. 獸人弓箭手裝備參差不齊, 并且沒有受過像樣的訓練. 即"
+"使如此, 他們的武器仍然可以致命, 更何況他們很少獨自行動."
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr ""
+msgstr "半獸人刺客"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Assassin.cfg:22
@@ -3011,16 +3531,20 @@ msgid ""
 "nimble. Though rarely the ones who deal the killing blow, their tactics are "
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
+"有些人認為使用毒藥是懦夫的行為，但獸人卻很喜歡——特別是那些體格弱小的獸人。獸"
+"人刺客就是這種弱小的獸人，不過身手驚人的敏捷；他們喜歡在飛刀上塗上毒藥。雖然"
+"他們很少能給與敵人致命的一擊，他們使用的戰朮對體格更健壯、性格更殘暴的同族卻"
+"是有用的支援。"
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:80 data/core/units/orcs/Slayer.cfg:36
 msgid "throwing knives"
-msgstr ""
+msgstr "毒鏢"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "半獸人十字弓手"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
@@ -3030,11 +3554,14 @@ msgid ""
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
+"獸人的十字弩是人類和矮人制品的粗糙紡織品; 盡管如此, 無論用以什么做成, 十字弩"
+"總是一個威力相當強大的武器. 有權使用這種武器的獸人都是有力的戰士, 而他們管用"
+"數量來彌補他們技巧的不足."
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "半獸人蠻兵"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Grunt.cfg:19
@@ -3043,11 +3570,13 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"獸人步兵是獸人的中堅力量。雖然速度比人類或精靈戰士慢，卻能造成巨大的傷害，抗"
+"打擊能力也強。"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr ""
+msgstr "半獸人小隊長"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Leader.cfg:25
@@ -3058,11 +3587,14 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
+"獸人領袖是他們部族的首領。他們作出重大決議并帶領族人戰斗。出于需要，他們會攜"
+"帶弓箭，但他們的劍朮卻強大得多；總而言之，他們是強力的戰士。他們天生的領導能"
+"力在戰斗中難能可貴：如果領袖死了，戰斗也就會失敗。"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "半獸人統帥"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Ruler.cfg:24
@@ -3073,17 +3605,20 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
+"任何可以保持一個龐大部落不陷入不和和內戰的獸人都往往是非常智慧和和有威信的, "
+"當然也是非常強壯的. 他們對劍和弓同樣擅長, 不過他們真正的才干在于他們領導其他"
+"獸人,發出命令,讓獸人們忠誠而無畏的跟隨自己的稀有能力."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:34
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:33
 msgid "greatsword"
-msgstr ""
+msgstr "巨劍"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "半獸人獵殺者"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Slayer.cfg:22
@@ -3094,11 +3629,14 @@ msgid ""
 "poison, is a vicious tool, and its common use on the battlefield is often "
 "the real cause of orcish supremacy."
 msgstr ""
+"體格更強、技藝更高的獸人刺客被敵人稱作“獸人殺手”，雖然其實區別并不明顯。殺手"
+"能快速移動，在戰斗中很靈活，不過這是以舍棄盔甲作為代價的。他們選擇的武器是毒"
+"藥，有點殘忍，但正是毒藥的頻繁使用才鑄就了獸人在戰場上的至高優勢。"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
-msgstr ""
+msgstr "半獸人重裝十字弓手"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:21
@@ -3113,11 +3651,17 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"最基礎的十字弩設計逐漸發展成了勁弩或重弩; 一種更加復雜的弩機, 金屬絞弦器完善"
+"了這種武器, 同時它一般還配備了復合弓弦, 并以復合板或者骨頭制成弩體. 這種弩機"
+"易于操作, 并且威力比簡易的十字弩強大得多; 當然, 它遠遠不是獸人的工藝所能制造"
+"的.\n"
+"\n"
+"獸人珍視這些他們設法搶劫來的武器, 最終他們都會落到最強壯和狡詐的弓手手里. "
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "半獸人暴君"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Sovereign.cfg:25
@@ -3129,11 +3673,15 @@ msgid ""
 "surest way to disperse such a host is to slay this rare orc who can hold it "
 "together."
 msgstr ""
+"有些時候, 會出現一個對其部族有着超凡魅力和控制力的獸人. 如果他又足夠強壯和狡"
+"詐, 那么他不可避免地會領導出一個擁有眾多勇士的強大部落, 同樣, 他也會不可避免"
+"地對世界上的其他文明種族造成大量的麻煩和威脅. 對付這樣軍隊，最可靠的辦法就是"
+"殺死那個可以將獸人們凝聚在一起的稀有品種."
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "半獸人督軍"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Warlord.cfg:19
@@ -3142,11 +3690,13 @@ msgid ""
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
+"只有足夠狡詐并且力量非凡的獸人才能成為軍閥。他們劍朮高超，亦能射箭，對獸族同"
+"胞實行着鐵腕統治。"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "半獸人蠻將"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Warrior.cfg:18
@@ -3155,11 +3705,13 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
+"獸人勇士精通雙手劍技朮，獸族族人對他們尊敬有加，敵人對他們則懼怕不已。他們唯"
+"一的弱點在于不會使用弓箭。"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "蜥蜴人伏擊兵"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
@@ -3172,11 +3724,15 @@ msgid ""
 "smallest gap in an enemy line, and have the prowess to make the enemy regret "
 "tactical mistakes."
 msgstr ""
+"蜥蜴人腿腳輕便，偵測那些叫敵人為難的地形易如反掌。將這種本領與經驗、力量、武"
+"器結合起來的蜥蜴人勇士在戰場上具有很大的威脅性，因為他們比其他對手更難控制。"
+"即使身穿盔甲，小巧的蜥蜴人戰士也能穿過敵人防線的漏洞，并以非凡的勇氣攻擊他"
+"們，讓他們后悔安排戰線時犯下的錯誤。"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
-msgstr ""
+msgstr "蜥蜴人秘術師"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Augur.cfg:21
@@ -3185,18 +3741,20 @@ msgid ""
 "it reeks of augury and black magic. It is little understood, but rightly "
 "regarded with fear by those against whom it is used."
 msgstr ""
+"蜥蜴人擁有某種被人類成為魔法的能力，其實卻是令人不爽的占卜與巫朮。雖然很少有"
+"人了解這些能力，但所有敵人對這種能力都很敬畏。"
 
 #. [attack]: type=cold
 #: data/core/units/saurians/Soothsayer.cfg:75
 #: data/core/units/saurians/Augur.cfg:75
 #: data/core/units/saurians/Oracle.cfg:75
 msgid "curse"
-msgstr ""
+msgstr "詛咒"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "蜥蜴人突擊兵"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
@@ -3207,11 +3765,14 @@ msgid ""
 "very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures."
 msgstr ""
+"一般來說，蜥蜴人戰士比精靈戰士或人類戰士的體格要弱小。這當然是相對的，而且蜥"
+"蜴人戰士在保持其高機動性的前提下仍然可以成為相當強大的斗士。這在戰場上令人生"
+"畏；粗心的敵人很快就會發現，他們的支援部隊被這些東西包圍了。"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr ""
+msgstr "蜥蜴人祭司"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
@@ -3223,11 +3784,14 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
+"人們見過一些穿着華麗的蜥蜴人，從頭到腳布滿恐怖而神秘的花紋，有些是畫上去的，"
+"有些則是紋身。有人懷疑他們是蜥蜴人中的先知。不過，不論他們在其“社會”中的作用"
+"如何，他們擁有的詭異魔法十分強大，這是不容否認的。遇到他們是也務必提高警惕。"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr ""
+msgstr "蜥蜴人游擊兵"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
@@ -3240,11 +3804,17 @@ msgid ""
 "Spears are their preferred weapon, as their powerful hind legs can drive a "
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
+"蜥蜴人的身材小巧，雖然因此稍顯脆弱，卻及其靈敏。在戰斗中，他們小巧的身材允許"
+"他們越過敵人的防線，即使該防線平常可以擋住任何成年人。他們也因此成為相當麻煩"
+"的對手。\n"
+"\n"
+"他們習慣使矛，因為他們強有力的后腿可以用足力氣，刺出或擲出矛，對敵人造成客觀"
+"的傷害。"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "蜥蜴人秘醫"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
@@ -3254,11 +3824,13 @@ msgid ""
 "skilled at a sort of medicine, which is of great benefit whenever battle is "
 "brought against them."
 msgstr ""
+"蜥蜴人以擁有詭異能力著稱，那是一些既有魔力又很神秘的能力。很明顯，他們中有些"
+"人熟練掌握了某些醫藥技朮，這在戰斗中好處多多。"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr ""
+msgstr "狂巨魔"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Great.cfg:19
@@ -3269,11 +3841,14 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
+"一個擁有天賦異稟的強大力量，并有相當的年紀和智慧的巨魔是非凡的，其聲名世代相"
+"傳。他們的力量和狡詐是大多數有關巨魔傳說的來源。那些血腥的故事一點不影響他們"
+"的名氣。"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr ""
+msgstr "巨魔英豪"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Hero.cfg:18
@@ -3282,11 +3857,13 @@ msgid ""
 "that characterizes their race. In a society where might makes right, those "
 "of their ilk revere them as heroes."
 msgstr ""
+"一些巨魔天生神力，生命力極其強大，遠遠超過族人。在那種力量稱霸一切的社會里，"
+"他們的同族稱他們為英雄。"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "巨魔投石兵"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
@@ -3297,11 +3874,14 @@ msgid ""
 "in sacks slung over their shoulders. The same leather out of which the sack "
 "is formed is easily adapted to a crude sling."
 msgstr ""
+"許多巨魔肯定都想過要在戰斗中投擲巨石來進攻，有些干脆就把巨石作為自己的武器。"
+"因為這些石頭不是很好找，巨魔投石手把它們裝到大袋里扛在身上。用來裝石頭的皮袋"
+"也可以當成原始的投石器來用。"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
-msgstr ""
+msgstr "巨魔"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll.cfg:18
@@ -3313,11 +3893,16 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
+"人類和矮人總是為巨魔所困惑，完全搞不清這些生物的起源，更重要的是，搞不清他們"
+"那不自然的活力與力量背后的秘密。完全長成的巨魔身材比人類高大，即使沒有武裝，"
+"在戰斗中也是一個不小的威脅。為了擴大攻擊范圍，他們常使用大木棒進行攻擊，總之"
+"就是痛擊對手，使其臣服。"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
+#, fuzzy
 msgid "Troll Shaman"
-msgstr ""
+msgstr "亞巨魔"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -3335,7 +3920,7 @@ msgstr ""
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr ""
+msgstr "巨魔勇士"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
@@ -3349,11 +3934,16 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
+"巨魔在戰斗中根本不需要也不喜歡使用任何正規的武器，巨大的“木棒和石頭”已經完全"
+"夠用了。不過，在很多場合下，人們也見到過身着粗糙盔甲、攜帶金屬大錘的巨魔。給"
+"他們提供這些裝備的可能他們的獸人盟友，因為人們曾數次深入巨魔洞穴進行探險，都"
+"沒有發現他們使用工具的任何痕跡。有巨魔參與的戰斗是危險的，更不用說全副武裝的"
+"巨魔了。"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr ""
+msgstr "亞巨魔"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
@@ -3364,11 +3954,14 @@ msgid ""
 "all fours, but any difficulty this causes them is more than made up for by "
 "the raw strength of their race."
 msgstr ""
+"用幼崽來形容幼年巨魔似乎是自相矛盾的，因為巨魔幼崽的體格已經比成年人還強壯"
+"了。他們很笨拙，步履蹣跚，只能用四肢來爬行，但其種族天生的力量彌補了這些缺"
+"陷。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
-msgstr ""
+msgstr "食屍鬼"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
@@ -3382,11 +3975,16 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
+"只有死靈法師才知道怎樣讓人變為食尸鬼，這是他們不可告人的秘密。無論任何，在那"
+"些無法啟齒的儀式之后，一些完全忘卻了生前人類記憶的野獸就產生了。這些裸露軀干"
+"的生物以尸體身上的肉為食。\n"
+"\n"
+"這是死靈法朮被世人所憎惡的主要原因。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr ""
+msgstr "腐屍王"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
@@ -3399,11 +3997,17 @@ msgid ""
 "from living men - a process about which almost nothing is known, but which "
 "can be nothing but nightmarish."
 msgstr ""
+"死靈食尸鬼，這些“貪婪的死尸”是肥胖怪物樣貌的一團東西，和人的形狀還有點相似。"
+"他們拖着腐朽而帶有惡臭的身軀移動，血液里充斥着致命的毒素。它們看來是，也確實"
+"是從曾活着的人變化而來，這几乎眾所周知，至于如何而來卻沒人知道。只是，它的出"
+"現就如同夢魘。\n"
+"\n"
+"如果這頭怪物在戰斗中獲得足夠的經驗，它本身將愈合一切損傷。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
-msgstr ""
+msgstr "喪魂屍"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
@@ -3413,6 +4017,9 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"不幸的是操控尸體的方法在黑暗世界中廣為流傳; 死靈巫師們經常使用這種方法從毫無"
+"意志的尸體中獲得仆人和士兵. 這些蹣跚而行的家伙們經常數量龐大, 但是脆弱易碎; "
+"戰斗的到來會喚醒他們, 盡管他們遠遠稱不上可怕。"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -3422,12 +4029,12 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:59
 #: data/core/units/undead/Corpse_Soulless.cfg:26
 msgid "touch"
-msgstr ""
+msgstr "碰觸"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
-msgstr ""
+msgstr "活死人"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:19
@@ -3436,11 +4043,13 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one's "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
+"僵尸是被黑暗魔法召回來的死人軀殼。雖然對受過訓練的士兵而言不算很大威脅，但看"
+"到原來的同伴變成對方的一分子確是置身的恐怖。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr ""
+msgstr "遠古巫妖"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
@@ -3448,12 +4057,14 @@ msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
+"遠古巫妖是來自古代的黑暗使者，碰到遠古巫妖的人承受的恐懼遠遠不止死亡那么簡"
+"單。"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:71
 msgid "chill tempest"
-msgstr ""
+msgstr "冰風暴"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
@@ -3462,12 +4073,12 @@ msgstr ""
 #: data/core/units/undead/Necromancer.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:46
 msgid "shadow wave"
-msgstr ""
+msgstr "暗影波"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "暗影學徒"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:26
@@ -3483,18 +4094,23 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"黑暗魔法的誘惑一定很大，才能引誘人們去研習，因為在文明社會，誰學習黑暗魔法被"
+"發現了，是可以處以死刑的。但總還是有人去學，因為學成以后就可以永生不死。瘋狂"
+"的學徒們隱身于密教，藏匿于地下的黑暗教會，承受着使自身虛弱枯竭的訓練。\n"
+"\n"
+"在這種身體條件下，他們只能使用自己的法朮作為武器。"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:31
 #: data/core/units/undead/Necromancer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:34
 msgid "chill wave"
-msgstr ""
+msgstr "寒冰旋風"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:200
 msgid "female^Dark Adept"
-msgstr ""
+msgstr "暗影學徒"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:205
@@ -3510,11 +4126,16 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"黑暗魔法的誘惑一定很大，才能引誘人們去研習，因為在文明社會，誰學習黑暗魔法被"
+"發現了，是可以處以死刑的。但總還是有人去學，因為學成以后就可以永生不死。瘋狂"
+"的學徒們隱身于密教，藏匿于地下的黑暗教會，承受着使自身虛弱枯竭的訓練。\n"
+"\n"
+"在這種身體條件下，她們只能使用自己的法朮當做武器。"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "暗影術士"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:20
@@ -3535,11 +4156,21 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"普通人對黑魔法的恐懼主要來自于對此類魔法的無知. 黑暗巫師早已開始探索生命與死"
+"亡的秘密, 而相比之下后者實在太容易實現. 這項工作首先給揭密靈魂和物質的聯系帶"
+"來了一線曙光,并且帶來了成功結合這兩者的實驗. 隱藏在死亡背后的可怕奧秘的驚鴻一"
+"現, 并且終將不可避免地被徹底揭開.\n"
+"\n"
+"除去黑暗巫師各種可能的企圖,比如將自己的生命從自然的掌握中奪走之外, 他們研究的"
+"第一項結果立刻就有了一項惡心的應用. 他們注入死尸的生命可以為他們創造仆人, 這"
+"些仆人可以工作, 可以殺人, 對他們主人的命令從不猶豫. 這些'造物'有着任何暴君都"
+"會夢寐以求的忠誠, 同時, 這對那些哪怕對力量有着一點點渴望的人, 都有着無與倫比"
+"的吸引力。"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:177
 msgid "Dark Sorceress"
-msgstr ""
+msgstr "暗影術士"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:183
@@ -3560,11 +4191,21 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"普通人對黑魔法的恐懼主要來自于對此類魔法的無知。 黑暗巫師早已開始探索生命與死"
+"亡的秘密, 而相比之下后者實在太容易實現. 這項工作首先給揭密靈魂和物質的聯系帶"
+"來了一線曙光,并且帶來了成功結合這兩者的實驗. 隱藏在死亡背后的可怕奧秘的驚鴻一"
+"現, 并且終將不可避免地被徹底揭開。\n"
+"\n"
+"除去黑暗巫師各種可能的企圖,比如將自己的生命從自然的掌握中奪走之外, 他們研究的"
+"第一項結果立刻就有了一項惡心的應用. 他們注入死尸的生命可以為他們創造仆人, 這"
+"些仆人可以工作, 可以殺人, 對他們主人的命令從不猶豫. 這些'造物'有着任何暴君都"
+"會夢寐以求的忠誠, 同時, 這對那些哪怕對力量有着一點點渴望的人, 都有着無與倫比"
+"的吸引力。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
-msgstr ""
+msgstr "巫妖"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:24
@@ -3580,11 +4221,17 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
+"巫妖是黑暗魔法初級目標——永生不朽——的化身。雖然他們為獲得重生付出了巨大的犧"
+"牲，但成為巫妖后就可以欺騙死神，讓死亡不再可怕。因為對他們來說，只有思想和精"
+"神還存在着，肉體的腐壞早已不再重要。\n"
+"\n"
+"也許除了死靈法師自己的圈子，別人都不知道巫妖的生命是永久的還是僅僅獲得延長而"
+"已。但是對這種問題的疑問就足以證明黑暗魔法的成就了。"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
-msgstr ""
+msgstr "死靈法師"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necromancer.cfg:21
@@ -3597,21 +4244,28 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
+"死靈朮是公認的強力“黑暗魔法”中的一種，是以虛搆的生命喚醒死尸的恐怖法朮。這項"
+"發現為制造恐怖的人提供了全新的武器庫，導致了各種可怕的后果，因此遭到人類的譴"
+"責與唾棄。\n"
+"\n"
+"這個能力邁出了欺騙死亡的第一步。這是死靈法師在不失掉其人性的同時能掌握的最高"
+"力量，但在巫妖的致命法朮面前還是顯得十分蒼白。與巫妖脆弱腐朽的身形不同，死靈"
+"法師的魔法使他們的肉身變得更加強壯。"
 
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:26
 msgid "plague staff"
-msgstr ""
+msgstr "瘟疫魔杖"
 
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:181
 msgid "female^Necromancer"
-msgstr ""
+msgstr "死靈法師"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:4
 msgid "Banebow"
-msgstr ""
+msgstr "末日弓手"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
@@ -3622,11 +4276,14 @@ msgid ""
 "nor caring what their purpose, or foes be. They are driven only by a malice "
 "borne of their empty and tortured existence."
 msgstr ""
+"不死族最強大的弓箭手總是那些生前就是弓箭大師的死靈們。他們在戰場上徘徊，帶着"
+"過去技藝在身體中留下的痕跡，全然不知自己的目的與敵人，對此也毫不在乎。空虛而"
+"不連貫的生命帶給他們的痛苦驅使他們戰斗。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
-msgstr ""
+msgstr "骸骨弓手"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
@@ -3638,11 +4295,15 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
+"黑暗巫師創造的生物中有些更偏愛他們得到的虛假的生命，他們也得到了與此相配的武"
+"器。特別是弓箭手，通常裝備着非常邪惡的武器。他們的箭袋中的箭不是木制的，而是"
+"由這些受害者的骨頭所制成。那些倒霉的敵人稱他們為“枯骨射手”。任何生靈都懼怕這"
+"些令人憎惡的東西。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr ""
+msgstr "骷髏騎士"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
@@ -3651,11 +4312,13 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"骷髏騎士的坐騎是駝鳥一般大的鳥的骨架，是某個失落文明的產物。骷髏騎士比普通騎"
+"兵移動速度要快。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
-msgstr ""
+msgstr "死亡騎士"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
@@ -3665,11 +4328,13 @@ msgid ""
 "Wielding the same weapons as in life, they command the Undead in their quest "
 "for revenge."
 msgstr ""
+"傳說一些強大的將軍和戰士，受仇恨和背叛的詛咒，死后作為死亡騎士重新來到這個世"
+"界。他們揮舞着生前使用的武器，指揮不死亡靈進行復仇。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
-msgstr ""
+msgstr "死亡劍客"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
@@ -3680,11 +4345,14 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
+"那些叫做“死亡劍士”的怪物生前都是戰斗高手，是敏捷而致命的士兵。他們的新主人意"
+"識到了這一點，給他們足夠的裝備來配合他們從前曾有的戰斗技巧。這些怪物雖然脆"
+"弱，卻比同類移動和攻擊的速度要快很多。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr ""
+msgstr "不死戰將"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
@@ -3695,11 +4363,15 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
+"骷髏之靈傲視一切成為不死亡靈的傳奇勇士，讓對手在內心深處感到深深的恐懼。他們"
+"的動機并不是仇恨，而是對邪惡不死的永恆幻想。他們彷徨于記憶中偉大的戰場之間，"
+"為了得到釋放——得到只有用武力才能換取的和平——而拼命戰斗。他們早就忘卻了曾經的"
+"敵人與戰斗的意義。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr ""
+msgstr "怨恨武士"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
@@ -3710,11 +4382,14 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
+"這些被稱為亡魂的生物以前是偉大的戰士，忘卻了生前的記憶，接受了虛假的生命，再"
+"次來到戰場作戰。召喚他們出來的巫師也只能猜測他們的過去。無需多言，亡魂是強力"
+"的戰斗工具：他們是不畏恐懼的戰士，感受不到疼痛，一直戰斗直到最后。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
-msgstr ""
+msgstr "骷髏兵"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton.cfg:18
@@ -3724,11 +4399,13 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
+"骷髏戰士是倒在戰場上的戰士，死后被黑暗魔法召回來再次作戰。他們基本沒有心智，"
+"卻有着堅定的目標，不怕痛苦或死亡，他們的存在嚇退了那些想挑戰他們主人的敵人。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "骷髏弓箭手"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
@@ -3739,11 +4416,14 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
+"骷髏弓箭手和他們的同伴“骷髏戰士”并無二致——把他們從死亡召回來作戰是對大自然犯"
+"下的罪過。這些戰士完全掌握在他們主人的手中，為了達到目的不擇手段，因為死亡對"
+"于已經死去的人來說一點都不可怕。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
-msgstr ""
+msgstr "幽魂"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
@@ -3756,18 +4436,23 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
+"造物主的仁慈讓人類的靈魂永存，無法毀壞。但是，死靈法師對靈魂的所作所為令人發"
+"指。\n"
+"\n"
+"陷入邪惡妖法的靈魂，就如同吹入船帆的風。在着禁錮之下，唯命是從的仆人產生了，"
+"主人說什么他們就做什么。"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:31
 #: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:56
 msgid "wail"
-msgstr ""
+msgstr "哭嚎"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr ""
+msgstr "夜影魔"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:17
@@ -3777,11 +4462,13 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe."
 msgstr ""
+"沒有人知道這些生物帶的面具有什么用，也沒有人見過他們面具下的面容。活人很少能"
+"見到這種生物，遭遇后生還的人也不願再回想這些敵人。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
-msgstr ""
+msgstr "鬼影"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:19
@@ -3792,11 +4479,15 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer."
 msgstr ""
+"當光明降于人世并給予未事物以形態，恐懼被迫退至陰影里。至那之后世界的陰影就成"
+"為人類恐懼的源泉，盡管原因不明。\n"
+"\n"
+"這是個讓死靈法師很容易回答的問題。"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
-msgstr ""
+msgstr "死靈侍"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
@@ -3809,17 +4500,22 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake."
 msgstr ""
+"幽鬼有時被叫做“透明人”，他們是主人的左右臂。這些令人厭惡的生物在生者眼中是可"
+"怕的，并在他們主人的領地上不眠不休的監視着。\n"
+"\n"
+"把這些生物創造出來就已經很厲害了；遭遇他們的真正危險在于他們只是先行官，隨后"
+"將有更恐怖的事物出現。"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Wraith.cfg:20
 #: data/core/units/undead/Spirit_Spectre.cfg:45
 msgid "baneblade"
-msgstr ""
+msgstr "噬魂刃"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr ""
+msgstr "怨魂"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:16
@@ -3830,11 +4526,15 @@ msgid ""
 "are invincible which is so frightening, a notion that is fortunately far "
 "from the truth."
 msgstr ""
+"這些曾經的勇士、受折磨的生命，是死靈法師召喚出來的最可怕的東西。一劍就能刺穿"
+"他們，就好像空氣一樣。可怕的是人們認為他們是隱身的，雖然事實并非如此。\n"
+"\n"
+"召喚他們出來的妖朮能通過敵人恢復自己的生命值。"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr ""
+msgstr "遠古樹人"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Ancient.cfg:20
@@ -3848,17 +4548,22 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
+"有一個離奇的故事，講的是一個農夫的門前的草地上有一棵高大的橡樹，這棵樹在農夫"
+"的父親初次開墾這片土地時就有了，農夫一家人也有許多關于這棵樹的回憶。一天早晨"
+"農夫醒來時發現這棵樹神秘的失蹤了，原來樹生根的地方只留下一些土而已。\n"
+"\n"
+"故事描述的大概就是已知的最古老的樹人。"
 
 #. [attack]: type=impact
 #: data/core/units/wose/Wose.cfg:30 data/core/units/wose/Ancient.cfg:92
 #: data/core/units/wose/Elder.cfg:91
 msgid "crush"
-msgstr ""
+msgstr "壓碎攻擊"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr ""
+msgstr "樹人長老"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Elder.cfg:19
@@ -3875,11 +4580,17 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
+"據說樹人的形狀千奇百怪，但他們都長得像樹。他們的身材也會隨着年齡而增長。傳說"
+"中樹人與樹的相似之處還在于他們總是高高俯視腳下經過的生靈。身材高大的他們經常"
+"站着打瞌睡，看上去就像是一棵奇怪的樹，難怪很少有人說見過他們。精靈們一不小心"
+"也會被騙過。\n"
+"\n"
+"樹人絕對不是什么勇士，但如果有人惹他們的話，他們強大的力量還是破壞力十足。"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr ""
+msgstr "樹人"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Wose.cfg:20
@@ -3895,3 +4606,34 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
+"樹人是一類世人知之甚少的生靈，即使精靈們也很少見到他們。精靈是大部分關于樹人"
+"的認知的源頭：他們知道，這些生靈盡管有着樹的外形，卻不是由樹而生的，并且他們"
+"知道樹人比精靈更接近仙境，雖然具體方式不同。盡管大多數意見認為他們很顯然是自"
+"然界的保護者，樹人的動機和行動方式現在仍亦未可知。\n"
+"\n"
+"他們完全不好戰，但擁有強大的力量。然而他們不善于迅速的移動。"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "特別提示："
+
+#~ msgid ""
+#~ "Knights of the highest virtue, Paladins have sworn themselves to semi-"
+#~ "monastic vows, pledging their might to the cause of righteousness. Though "
+#~ "not as imposing on the battlefield as a Grand Knight, a Paladin is a "
+#~ "powerful force in combat, and their piety grants them other gifts. A "
+#~ "Paladin is a bane to the unworldly, and has trained in ministering to the "
+#~ "wounds of his comrades.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "聖騎士擁有最高的美德，他們起誓為教廷服務，全力為正義事業而奮斗。雖然沒有大"
+#~ "騎士在戰場上那樣威風，聖騎士作戰時也很勇猛，虔誠的他們還有其他天賦。聖騎士"
+#~ "是不死亡靈的克星，并經受了治療同伴的訓練。\n"
+#~ "\n"
+#~ "特別提示："
