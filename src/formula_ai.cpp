@@ -1809,3 +1809,17 @@ variant formula_ai::get_keeps() const
 
 	return keeps_cache_;
 }
+
+bool formula_ai::can_attack(const gamemap::location unit_loc, const gamemap::location enemy_loc) {
+	move_map::iterator i;
+	std::pair<move_map::iterator, 
+			  move_map::iterator> unit_moves;
+	unit_moves = srcdst_.equal_range(unit_loc);
+	for(i = unit_moves.first; i != unit_moves.second; ++i) {
+		gamemap::location diff(((*i).second).vector_difference(enemy_loc));
+		if((abs(diff.x) <= 1) && (abs(diff.y) <= 1)) {
+			return true;
+		}
+	}
+	return false;
+}

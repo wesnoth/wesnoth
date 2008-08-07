@@ -41,17 +41,40 @@ public:
 
 	void evaluate_move(const formula_callable* ai, unit_map& units, int team_num) {
 		score_ = -1000;
-		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
-		{
-			if( (i->second.side() == team_num) && 
-				(i->second.has_moved() == false) ) {
-				game_logic::map_formula_callable callable(ai);
-				callable.add_ref();
-				callable.add("me", variant(new unit_callable(*i)));
-				int res = (formula::evaluate(eval_, callable)).as_int();
-				if(res > score_) {
-					score_ = res;
-					action_unit_ = i;
+		if(type_ == "attack") {
+			for(unit_map::unit_iterator me = units.begin() ; me != units.end() ; ++me)
+			{
+				if( (me->second.side() == team_num) && 
+						(me->second.has_moved() == false) ) {
+					for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
+						if(target->second.side() != team_num) {
+							game_logic::map_formula_callable callable(ai);
+							callable.add_ref();
+							callable.add("me", variant(new unit_callable(*me)));
+							callable.add("target", variant(new unit_callable(*target)));
+							int res = (formula::evaluate(eval_, callable)).as_int();
+							if(res > score_) {
+								score_ = res;
+								action_unit_ = me;
+					//			enemy_unit_ = target;
+							}
+						}
+					}
+				}
+			}
+		} else {
+			for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
+			{
+				if( (i->second.side() == team_num) && 
+						(i->second.has_moved() == false) ) {
+					game_logic::map_formula_callable callable(ai);
+					callable.add_ref();
+					callable.add("me", variant(new unit_callable(*i)));
+					int res = (formula::evaluate(eval_, callable)).as_int();
+					if(res > score_) {
+						score_ = res;
+						action_unit_ = i;
+					}
 				}
 			}
 		}
@@ -156,6 +179,9 @@ public:
 	variant get_keeps() const;
 
 	const variant& get_keeps_cache() const { return keeps_cache_; }
+
+	// Check if given unit loc can reach attack range of enemy loc 
+	bool can_attack (const gamemap::location, const gamemap::location);
 
 private:
 	void do_recruitment();
