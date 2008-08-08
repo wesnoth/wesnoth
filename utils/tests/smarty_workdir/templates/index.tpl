@@ -5,6 +5,7 @@
 <th>r{$build_svn_rev}</th>
 <th>{$build_result}</th>
 <th>{$result_passed}/{$result_passed+$result_failed}</th>
+</tr>
 </table>
 <br/>
 <br/>
@@ -15,7 +16,7 @@
 <th>Last rev</th>
 <th>File</th>
 <th>Line</th>
-<th width="300">Message</th>
+<th style="width:300">Message</th>
 </tr>
 {foreach from=$errors item=err}
 <tr>

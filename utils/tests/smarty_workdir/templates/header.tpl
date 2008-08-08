@@ -13,6 +13,9 @@
   <style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
   <style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/home.css');</style>
 
+  <link rel="stylesheet" type="text/css" href="styles/unit_test.css" />
+
+
   <link rel="alternate" type="application/rss+xml" title="news" href="http://feed43.com/wesnoth.xml" />
   <title>Battle for Wesnoth {$extra_title}</title>
 </head>
@@ -42,4 +45,10 @@
 </div>
 
 <div id="main">
-
+<div id="menu" class="menu">
+<table class="menu">
+<tr><td><a href="index.php">Status</a></td></tr>
+<tr><td><a href="index.php">Build history</a></td></tr>
+<tr><td><a href="index.php">Test Graphs</a></td></tr>
+</table>
+</div>
