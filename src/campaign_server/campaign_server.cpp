@@ -143,8 +143,15 @@ namespace {
 		return lexical_cast_default<int>(cfg_["port"], 15003);
 	}
 
-	campaign_server::campaign_server(const std::string& cfgfile,size_t min_thread,size_t max_thread)
-		: file_(cfgfile), net_manager_(min_thread,max_thread), server_manager_(load_config()), input_(0)
+	campaign_server::campaign_server(const std::string& cfgfile, 
+			size_t min_thread, size_t max_thread) :
+		cfg_(),
+		file_(cfgfile), 
+		net_manager_(min_thread,max_thread),
+		server_manager_(load_config()),
+		hooks_(),
+		input_(0),
+		compress_level_(0)
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
