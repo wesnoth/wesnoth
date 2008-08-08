@@ -94,5 +94,9 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 	}
 }
 
+BOOST_AUTO_TEST_CASE( test_load_config )
+{
+}
+
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
