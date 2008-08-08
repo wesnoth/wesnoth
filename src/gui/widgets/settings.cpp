@@ -91,6 +91,7 @@ static void fill_window_types()
 #ifdef USE_EDITOR2	
 	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
 	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
+	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
 #endif
 }
 

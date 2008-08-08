@@ -21,6 +21,7 @@
 
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
+#include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -204,7 +205,6 @@ void editor_controller::save_map_as_dialog()
 	save_map_as(input_name);
 }
 
-
 void editor_controller::generate_map_dialog()
 {
 	if (map_generator_ == NULL) {
@@ -225,6 +225,24 @@ void editor_controller::generate_map_dialog()
 	dialog.show(gui().video());
 	if (map_generator_->allow_user_config()) {
 		map_generator_->user_config(gui());
+	}
+}
+
+void editor_controller::resize_map_dialog()
+{
+	gui2::teditor_resize_map dialog;
+	dialog.set_map_width(get_map().total_width());
+	dialog.set_map_height(get_map().total_height());
+	
+	dialog.show(gui().video());
+	int res = dialog.get_retval();
+	if(res == gui2::twindow::OK) {
+		int w = dialog.map_width();
+		int h = dialog.map_height();
+		t_translation::t_terrain fill = t_translation::GRASS_LAND;
+		editor_action_resize_map a(w, h, 0, 0);
+		get_map_context().perform_action(a);
+		refresh_after_action();
 	}
 }
 
@@ -469,6 +487,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_GENERATE:
 			generate_map_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_RESIZE:
+			std::cerr << "A";
+			resize_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 			auto_update_transitions_ = !auto_update_transitions_;

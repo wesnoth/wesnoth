@@ -71,6 +71,7 @@ class editor_controller : public controller_base,
 		void new_map_dialog();
 		void save_map_as_dialog();
 		void generate_map_dialog();
+		void resize_map_dialog();
 		bool save_map(bool display_confirmation = false);
 		bool save_map_as(const std::string& filename);
 		void new_map(int width, int height, t_translation::t_terrain fill);

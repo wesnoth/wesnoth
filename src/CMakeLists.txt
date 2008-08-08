@@ -209,7 +209,7 @@ SET(wesnoth-main_SRC
     attack_prediction.cpp
     attack_prediction_display.cpp
     callable_objects.cpp
-	config_cache.cpp
+    config_cache.cpp
     config_adapter.cpp
     controller_base.cpp
     dialogs.cpp
@@ -300,8 +300,8 @@ SET(wesnoth-main_SRC
     variable.cpp
     variant.cpp
     widgets/combo.cpp
-	widgets/combo_drag.cpp
-	widgets/drop_target.cpp
+    widgets/combo_drag.cpp
+    widgets/drop_target.cpp
     widgets/scrollpane.cpp
 )
 
@@ -310,6 +310,7 @@ IF(ENABLE_EDITOR2)
 
 SET(wesnoth-editor2_SRC
     gui/dialogs/editor_generate_map.cpp
+    gui/dialogs/editor_resize_map.cpp
     gui/dialogs/editor_new_map.cpp
     editor2/action.cpp
     editor2/brush.cpp

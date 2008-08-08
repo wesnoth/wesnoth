@@ -30,16 +30,42 @@ namespace editor2 {
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 : gamemap(terrain_cfg, data)
 {
+	sanity_check();
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
 : gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
 	t_translation::t_map(width, t_translation::t_list(height, filler))))
 {
+	sanity_check();
 }
 
 editor_map::~editor_map()
 {
+}
+
+void editor_map::sanity_check()
+{
+	int errors = 0;
+	if (total_width() != tiles_.size()) {
+		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.size() << "\n";
+		++errors;
+	}
+	if (total_height() != tiles_[0].size()) {
+		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.size() << "\n";
+		++errors;
+	}
+	if (w() + 2 * border_size() != total_width()) {
+		ERR_ED << "h is " << h_ << " and border_size is " << border_size() << " but total_width is " << total_width() << "\n";
+		++errors;
+	}
+	if (h() + 2 * border_size() != total_height()) {
+		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << "\n";
+		++errors;
+	}
+	if (errors) {
+		throw editor_map_integrity_error();
+	}
 }
 
 std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamemap::location& start) const
@@ -246,6 +272,8 @@ void editor_map::expand_right(int count, t_translation::t_terrain filler)
 	for (int x = 0; x < count; ++x) {
 		tiles_.push_back(clone_column(w, filler));
 	}
+	w_ += count;
+	total_width_ += count;
 }
 
 void editor_map::expand_left(int count, t_translation::t_terrain filler)
@@ -254,6 +282,8 @@ void editor_map::expand_left(int count, t_translation::t_terrain filler)
 		tiles_.insert(tiles_.begin(), 1, clone_column(0, filler));
 		clear_border_cache();
 	}
+	w_ += count;
+	total_width_ += count;
 }
 
 void editor_map::expand_top(int count, t_translation::t_terrain filler)
@@ -269,6 +299,8 @@ void editor_map::expand_top(int count, t_translation::t_terrain filler)
 			clear_border_cache();
 		}
 	}
+	h_ += count;
+	total_height_ += count;
 }
 
 void editor_map::expand_bottom(int count, t_translation::t_terrain filler)
@@ -284,6 +316,8 @@ void editor_map::expand_bottom(int count, t_translation::t_terrain filler)
 			tiles_[x].push_back(terrain);
 		}
 	}
+	h_ += count;
+	total_height_ += count;
 }
 
 void editor_map::shrink_right(int count)
@@ -292,6 +326,8 @@ void editor_map::shrink_right(int count)
 		throw editor_map_operation_exception();
 	}
 	tiles_.resize(tiles_.size() - count);
+	w_ -= count;
+	total_width_ -= count;	
 }
 
 void editor_map::shrink_left(int count)
@@ -300,6 +336,8 @@ void editor_map::shrink_left(int count)
 		throw editor_map_operation_exception();
 	}
 	tiles_.erase(tiles_.begin(), tiles_.begin() + count);
+	w_ -= count;
+	total_width_ -= count;	
 }
 
 void editor_map::shrink_top(int count)
@@ -310,6 +348,8 @@ void editor_map::shrink_top(int count)
 	for (size_t x = 0; x < tiles_.size(); ++x) {
 		tiles_[x].erase(tiles_[x].begin(), tiles_[x].begin() + count);
 	}
+	h_ -= count;
+	total_height_ -= count;
 }
 
 void editor_map::shrink_bottom(int count)
@@ -320,6 +360,8 @@ void editor_map::shrink_bottom(int count)
 	for (size_t x = 0; x < tiles_.size(); ++x) {
 		tiles_[x].erase(tiles_[x].end() - count, tiles_[x].end());
 	}
+	h_ -= count;
+	total_height_ -= count;
 }
 
 

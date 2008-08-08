@@ -27,6 +27,10 @@ struct editor_map_operation_exception : public editor_exception
 {
 };
 
+struct editor_map_integrity_error : public editor_exception
+{
+};
+
 /**
  * This class adds extra editor-specific functionality to a normal gamemap.
  */	
@@ -39,6 +43,11 @@ public:
 	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
 	~editor_map();
+	
+	/** 
+	 * Debugging aid. Check if the widths and heights correspond to the actual map data sizes.
+	 */
+	void sanity_check();
 	
 	/**
 	 * Get a contigious set of tiles having the same terrain as the starting location.

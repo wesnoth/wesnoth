@@ -281,7 +281,7 @@ public:
     //! (using the default base if new terrain is an overlay terrain)
     //! Will return the resulting terrain or NONE_TERRAIN if merging failed
     t_translation::t_terrain merge_terrains(const t_translation::t_terrain old_t, const t_translation::t_terrain new_t, const tmerge_mode mode, bool replace_if_failed = false);
-
+	
 protected:
 	t_translation::t_map tiles_;
 	//! The size of the starting positions array is MAX_PLAYERS + 1, 
@@ -312,6 +312,7 @@ private:
 	mutable std::map<location, t_translation::t_terrain> borderCache_;
 	mutable std::map<t_translation::t_terrain, size_t> terrainFrequencyCache_;
 
+protected:
 	//! Sizes of the map area.
 	int w_;
 	int h_;
@@ -319,7 +320,8 @@ private:
 	//! Sizes of the map including the borders.
 	int total_width_;
 	int total_height_;
-
+	
+private:
 	//! The size of the border around the map.
 	int border_size_;
 	//! The kind of map is being loaded.
