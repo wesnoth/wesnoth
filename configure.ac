@@ -82,7 +82,7 @@ AC_ARG_ENABLE([strict-compilation],
 
 if test "x$debug" = "xyes"
 then
-	CXXFLAGS="$CXXFLAGS -O0 -DDEBUG -ggdb3 -W -Wall -ansi"
+	CXXFLAGS="-O0 -DDEBUG -ggdb3 -W -Wall -ansi $CXXFLAGS"
 else
 	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS"
 fi
