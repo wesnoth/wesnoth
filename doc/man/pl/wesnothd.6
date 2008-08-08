@@ -24,69 +24,70 @@
 .
 wesnothd \- demon sieciowy gier wieloosobowych Bitwy o \fBWesnoth\fP
 .
-.SH SK£ADNIA
+.SH SK≈ÅADNIA
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fI∂cieøka\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fI≈õcie≈ºka\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fIliczba\fP\|] [\|\fB\-T\fP \fIliczba\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
 .SH OPIS
 .
-Zarz±dza grami wieloosobowymi Bitwy o Wesnoth. WiÍcej informacji o
-poleceniach akceptowanych przez serwer za po∂rednictwem klienta wesnoth lub
-gniazda moøna znaleºÊ pod adresem
+ZarzƒÖdza grami wieloosobowymi Bitwy o Wesnoth. Wiƒôcej informacji o
+poleceniach akceptowanych przez serwer za po≈õrednictwem klienta wesnoth lub
+gniazda mo≈ºna znale≈∫ƒá pod adresem
 http://www.wesnoth.org/wiki/ServerAdministration.
 .
 .SH OPCJE
 .
 .TP 
-\fB\-c\ \fP\fI∂cieøka\fP\fB,\ \-\-config\fP\fI\ ∂cieøka\fP
+\fB\-c\ \fP\fI≈õcie≈ºka\fP\fB,\ \-\-config\fP\fI\ ≈õcie≈ºka\fP
 informuje demona wesnothd o lokalizacji pliku konfiguracyjnego. Zobacz
-rozdzia≥ \fBKONFIGURACJA SERWERA\fP poniøej, aby uzyskaÊ informacje o
-sk≥adni. KonfiguracjÍ moøna prze≥adowaÊ wysy≥aj±c procesowi serwera proces
+rozdzia≈Ç \fBKONFIGURACJA SERWERA\fP poni≈ºej, aby uzyskaƒá informacje o
+sk≈Çadni. Konfiguracjƒô mo≈ºna prze≈Çadowaƒá wysy≈ÇajƒÖc procesowi serwera proces
 SIGHUP.
 .TP 
 \fB\-d, \-\-daemon\fP
 uruchamia wesnothd w trybie demona.
 .TP 
 \fB\-h, \-\-help\fP
-wy∂wietla informacje o opcjach wiersza poleceÒ.
+wy≈õwietla informacje o opcjach wiersza polece≈Ñ.
 .TP 
 \fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
-okre∂la poziom istotno∂ci domen debugowania. \fBall\fP oznacza dopasowanie
-wszystkich domen debugowania. DostÍpne poziomy: \fBerror\fP (b≥Ídy),\ \fBwarning\fP (ostrzeøenia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
-(debugowanie). Poziom domy∂lny to \fBerror\fP lub \fBinfo\fP (w przypadku domeny
+okre≈õla poziom istotno≈õci domen debugowania. \fBall\fP oznacza dopasowanie
+wszystkich domen debugowania. Dostƒôpne poziomy: \fBerror\fP (b≈Çƒôdy),\
+\fBwarning\fP (ostrze≈ºenia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
+(debugowanie). Poziom domy≈õlny to \fBerror\fP lub \fBinfo\fP (w przypadku domeny
 \fBserver\fP).
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-przypisuje serwer do okre∂lonego portu. Je∂li nie podano øadnego portu,
-uøywany bÍdzie port \fB15000\fP.
+przypisuje serwer do okre≈õlonego portu. Je≈õli nie podano ≈ºadnego portu,
+u≈ºywany bƒôdzie port \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fIliczba\fP\fB,\ \-\-threads\fP\fI\ liczba\fP
-ustawia maksymaln± liczbÍ oczekuj±cych w±tkÛw roboczych dla wej∂cia/wyj∂cia
-sieci na warto∂Ê n (domy∂lnie: \fB5\fP,\ maksymalnie:\ \fB30\fP).
+ustawia maksymalnƒÖ liczbƒô oczekujƒÖcych wƒÖtk√≥w roboczych dla wej≈õcia/wyj≈õcia
+sieci na warto≈õƒá n (domy≈õlnie: \fB5\fP,\ maksymalnie:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fIliczba\fP\fB,\ \-\-max\-threads\fP\fI\ liczba\fP
-ustawia maksymaln± ilo∂Ê w±tkÛw roboczych, ktÛre zostan± utworzone. Warto∂Ê
-\fB0\fP (domy∂lna) oznacza brak limitu.
+ustawia maksymalnƒÖ ilo≈õƒá wƒÖtk√≥w roboczych, kt√≥re zostanƒÖ utworzone. Warto≈õƒá
+\fB0\fP (domy≈õlna) oznacza brak limitu.
 .TP 
 \fB\-V, \-\-version\fP
-wy∂wietla numer wersji i koÒczy dzia≥anie programu.
+wy≈õwietla numer wersji i ko≈Ñczy dzia≈Çanie programu.
 .TP 
 \fB\-v, \-\-verbose\fP
-w≥±cza zapis dziennikÛw debugowania.
+w≈ÇƒÖcza zapis dziennik√≥w debugowania.
 .
 .SH "KONFIGURACJA SERWERA"
 .
-.SS "OgÛlna sk≥adnia jest nastÍpuj±ca:"
+.SS "Og√≥lna sk≈Çadnia jest nastƒôpujƒÖca:"
 .
 .P
 [\fItag\fP]
 .IP
-key="\fIwarto∂Ê\fP"
+key="\fIwarto≈õƒá\fP"
 .IP
-key="\fIwarto∂Ê\fP,\fIwarto∂Ê\fP,..."
+key="\fIwarto≈õƒá\fP,\fIwarto≈õƒá\fP,..."
 .P
 [/\fItag\fP]
 .
@@ -94,59 +95,59 @@ key="\fIwarto∂Ê\fP,\fIwarto∂Ê\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-Dozwolona liczba po≥±czeÒ z tego samego adresu IP. \fB0\fP oznacza brak
-ograniczeÒ. (domy∂lnie: \fB5\fP)
+Dozwolona liczba po≈ÇƒÖcze≈Ñ z tego samego adresu IP. \fB0\fP oznacza brak
+ogranicze≈Ñ. (domy≈õlnie: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Nazwy/ksywki, ktÛre nie s± akceptowane przez serwer. '*' oraz '?' z wzorcÛw
-wieloznacznych s± obs≥ugiwane. Zobacz stronÍ \fBglob\fP(7), aby uzyskaÊ
-szczegÛ≥owe informacje. Warto∂ci domy∂lne (uøywane, gdy øadne inne warto∂ci
-nie zostan± podane):
+Nazwy/ksywki, kt√≥re nie sƒÖ akceptowane przez serwer. '*' oraz '?' z wzorc√≥w
+wieloznacznych sƒÖ obs≈Çugiwane. Zobacz stronƒô \fBglob\fP(7), aby uzyskaƒá
+szczeg√≥≈Çowe informacje. Warto≈õci domy≈õlne (u≈ºywane, gdy ≈ºadne inne warto≈õci
+nie zostanƒÖ podane):
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Liczba wiadomo∂ci dopuszczanych w przedziale czasowym
-\fBmessages_time_period\fP (domy∂lnie: \fB4\fP).
+Liczba wiadomo≈õci dopuszczanych w przedziale czasowym
+\fBmessages_time_period\fP (domy≈õlnie: \fB4\fP).
 .TP 
 \fBmessages_time_period\fP
-Przedzia≥ czasowy (w sekundach), na przestrzeni ktÛrego wykrywane jest
-zalewanie komunikatami (domy∂lnie: \fB10\fP sekund).
+Przedzia≈Ç czasowy (w sekundach), na przestrzeni kt√≥rego wykrywane jest
+zalewanie komunikatami (domy≈õlnie: \fB10\fP sekund).
 .TP 
 \fBmotd\fP
-Wiadomo∂Ê dnia.
+Wiadomo≈õƒá dnia.
 .TP 
 \fBpasswd\fP
-Has≥o s≥uø±ce do uzyskania uprawnieÒ administratora. Zazwyczaj zaczyna siÍ
+Has≈Ço s≈Çu≈ºƒÖce do uzyskania uprawnie≈Ñ administratora. Zazwyczaj zaczyna siƒô
 od "admin ".
 .TP 
 \fBversions_accepted\fP
 Oddzielana przecinkami lista wersji akceptowanych przez serwer. `*' i `?' z
-wzorcÛw wieloznacznych s± akceptowane. (Domy∂lnie: dla odpowiedniej wersji
+wzorc√≥w wieloznacznych sƒÖ akceptowane. (Domy≈õlnie: dla odpowiedniej wersji
 wesnoth).
 .br
-Przyk≥ad: \fBversions_accepted="*"\fP odpowiada akceptowaniu dowolnego numeru
+Przyk≈Çad: \fBversions_accepted="*"\fP odpowiada akceptowaniu dowolnego numeru
 wersji.
 .
 .SS "Globalne etykiety:"
 .
 .P
-\fB[redirect]\fP Etykieta okre∂laj±ca serwer, na ktÛry przekierowywane s±
-okreslone wersje klientÛw.
+\fB[redirect]\fP Etykieta okre≈õlajƒÖca serwer, na kt√≥ry przekierowywane sƒÖ
+okreslone wersje klient√≥w.
 .RS
 .TP 
 \fBhost\fP
-Adres serwera, na ktÛry ma nast±piÊ przekierownie.
+Adres serwera, na kt√≥ry ma nastƒÖpiƒá przekierownie.
 .TP 
 \fBport\fP
-Numer portu, z ktÛrym ma nast±piÊ po≥±czenie.
+Numer portu, z kt√≥rym ma nastƒÖpiƒá po≈ÇƒÖczenie.
 .TP 
 \fBversion\fP
-Oddzielana przecinkami lista wersji, ktÛre maj± zostaÊ przekierowane. Dzia≥a
-tak, jak \fBversions_accepted\fP w przypadku wzorcÛw wieloznacznych.
+Oddzielana przecinkami lista wersji, kt√≥re majƒÖ zostaƒá przekierowane. Dzia≈Ça
+tak, jak \fBversions_accepted\fP w przypadku wzorc√≥w wieloznacznych.
 .RE
 .P
-\fB[proxy]\fP Etykieta instruuj±ca serwer, by dzia≥a≥ jak serwer proxy i
-przekierowywa≥ ø±danie klienta do okre∂lonego serwera. Akceptuje takie same
+\fB[proxy]\fP Etykieta instruujƒÖca serwer, by dzia≈Ça≈Ç jak serwer proxy i
+przekierowywa≈Ç ≈ºƒÖdanie klienta do okre≈õlonego serwera. Akceptuje takie same
 klucze, jak [redirect].
 .
 .SH AUTOR
@@ -156,17 +157,17 @@ Autor: David White <davidnwhite@verizon.net>. Redakcja: Nils Kneuper
 <soliton.de@gmail.com>. Autorem pierwotnej wersji tej strony manuala
 jest Cyril Bouthors <cyril@bouthors.org>.
 .br
-Odwiedº oficjaln± stronÍ WWW: http://www.wesnoth.org/
+Odwied≈∫ oficjalnƒÖ stronƒô WWW: http://www.wesnoth.org/
 .
 .SH "PRAWA AUTORSKIE"
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
 Oprogramowanie typu Free Software. Oprogramowanie oparte na licencji GPL
-wersja 2 opublikowanej przez Free Software Foundation. Nie udziela siÍ
-ØADNEJ gwarancji, ≥±cznie z R KOJMI° oraz GWARANCJ° PRZYDATNO¶CI DO
-OKRE¶LONEGO CELU.
+wersja 2 opublikowanej przez Free Software Foundation. Nie udziela siƒô
+≈ªADNEJ gwarancji, ≈ÇƒÖcznie z RƒòKOJMIƒÑ oraz GWARANCJƒÑ PRZYDATNO≈öCI DO
+OKRE≈öLONEGO CELU.
 .
-.SH "ZOBACZ TAKØE"
+.SH "ZOBACZ TAK≈ªE"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

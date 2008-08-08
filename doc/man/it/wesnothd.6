@@ -44,7 +44,7 @@ sono accettati dal server attraverso il client di wesnoth o il socket.
 .TP 
 \fB\-c\ \fP\fIpercorso\fP\fB,\ \-\-config\fP\fI\ percorso\fP
 indica a wesnothd dove trovare il file di configurazione da usare. Vedi la
-sezione \fBSERVER CONFIG\fP più avanti per la sintassi. Puoi ricaricare la
+sezione \fBSERVER CONFIG\fP piÃ¹ avanti per la sintassi. Puoi ricaricare la
 configurazione inviando un segnale SIGHUP al processo del server.
 .TP 
 \fB\-d, \-\-daemon\fP
@@ -54,32 +54,32 @@ carica wesnothd come demone.
 spiega che cosa fanno le opzioni da linea di comando.
 .TP 
 \fB\-\-log\-\fP\fIlivello\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-imposta il livello di severità dei domini di debug. Puoi usare \fBall\fP per
+imposta il livello di severitÃ  dei domini di debug. Puoi usare \fBall\fP per
 qualsiasi dominio di debug. Livelli disponibili: \fBerror\fP,\ \fBwarning\fP,\
-\fBinfo\fP,\ \fBdebug\fP. Normalmente è usato il livello \fBerror\fP ed il livello
-\fBinfo\fP è usato per il dominio del \fBserver\fP.
+\fBinfo\fP,\ \fBdebug\fP. Normalmente Ã¨ usato il livello \fBerror\fP ed il livello
+\fBinfo\fP Ã¨ usato per il dominio del \fBserver\fP.
 .TP 
 \fB\-p\ \fP\fIporta\fP\fB,\ \-\-port\fP\fI\ porta\fP
 lega il server ad una porta specifica. Se non viene specificata una porta,
-sarà usata la porta \fB15000\fP.
+sarÃ  usata la porta \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fInumero\fP\fB,\ \-\-threads\fP\fI\ numero\fP
 imposta il numero massimo di thread da usare per l'I/O (valore predefinito:
 \fB5\fP,\ massimo:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fInumero\fP\fB,\ \-\-max\-threads\fP\fI\ numero\fP
-imposta il numero massimo di thread da creare. Se vale \fB0\fP non c'è limite
+imposta il numero massimo di thread da creare. Se vale \fB0\fP non c'Ã¨ limite
 (valore predefinito: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
 visualizza il numero di versione ed esce.
 .TP 
 \fB\-v, \-\-verbose\fP
-rende più prolisso il log.
+rende piÃ¹ prolisso il log.
 .
 .SH "SERVER CONFIG"
 .
-.SS "La sintassi generale è:"
+.SS "La sintassi generale Ã¨:"
 .
 .P
 [\fItag\fP]
@@ -99,7 +99,7 @@ connessioni (valore predefinito: \fB5\fP).
 .TP 
 \fBdisallow_names\fP
 I nomi o nick che non sono accettati dal server. Si possono usare i
-caratteri jolly «*» e «?». Vedi \fBglob\fP(7) per maggiori dettagli. I valori
+caratteri jolly Â«*Â» e Â«?Â». Vedi \fBglob\fP(7) per maggiori dettagli. I valori
 predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
@@ -116,11 +116,11 @@ Il messaggio del giorno.
 .TP 
 \fBpasswd\fP
 La password da usare per dare i privilegi di amministratore. Di solito
-inizia con «admin ».
+inizia con Â«admin Â».
 .TP 
 \fBversions_accepted\fP
 Un elenco separato da virgole delle stringhe di versione che il server deve
-accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito è
+accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito Ã¨
 lo stesso della versione di wesnoth corrispondente).
 .br
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
@@ -151,7 +151,7 @@ parole chiave di \fB[redirect]\fP.
 .
 Scritto David White <davidnwhite@verizon.net>.  Modificato da Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
-Soliton <soliton.de@gmail.com>.  Questo manuale è stato scritto in
+Soliton <soliton.de@gmail.com>.  Questo manuale Ã¨ stato scritto in
 origine da Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visita la pagina home ufficiale: http://www.wesnoth.org/
@@ -160,9 +160,9 @@ Visita la pagina home ufficiale: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
+Questo gioco Ã¨ rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software
-Foundation. Non è fornita nessuna garanzia, né per la COMMERCIALIZZAZIONE né
+Foundation. Non Ã¨ fornita nessuna garanzia, nÃ© per la COMMERCIALIZZAZIONE nÃ©
 per l'ADEGUATEZZA AD UNO SCOPO PARTICOLARE.
 .
 .SH "SEE ALSO"

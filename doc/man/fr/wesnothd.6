@@ -22,7 +22,7 @@
 .
 .SH NOM
 .
-wesnothd \- Serveur pour jeu multijoueur en réseau de Bataille pour
+wesnothd \- Serveur pour jeu multijoueur en rÃ©seau de Bataille pour
 \fBWesnoth\fP
 .
 .SH SYNOPSIS
@@ -34,7 +34,7 @@ wesnothd \- Serveur pour jeu multijoueur en réseau de Bataille pour
 .
 .SH DESCRIPTION
 .
-Gère les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que
+GÃ¨re les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que
 que le serveur accepte par socket ou via le client wesnoth sur
 http://www.wesnoth.org/wiki/ServerAdministration.
 .
@@ -42,84 +42,85 @@ http://www.wesnoth.org/wiki/ServerAdministration.
 .
 .TP 
 \fB\-c\ \fP\fIchemin\fP\fB,\ \-\-config\fP\fI\ chemin\fP
-Indique le fichier de configuration à utiliser par wesnothd. Voir la syntaxe
+Indique le fichier de configuration Ã  utiliser par wesnothd. Voir la syntaxe
 ci\-dessous dans la section \fBCONFIGURATION DU SERVEUR\fP. Vous pouvez
 recharger la configuration en envoyant un signal SIGHUP au processus du
 serveur.
 .TP 
 \fB\-d, \-\-daemon\fP
-Exécute wesnothd en tant que démon.
+ExÃ©cute wesnothd en tant que dÃ©mon.
 .TP 
 \fB\-h, \-\-help\fP
 Aide sur les options de la ligne de commande.
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
-Définit le niveau d'alerte du débogueur. \fBall\fP permet de suivre tous les
-niveaux de déboguage. Niveaux disponibles : \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Le niveau par utilisé par défaut est \fBerror\fP et \fBinfo\fP
-est utilisé par le \fBserveur\fP.
+DÃ©finit le niveau d'alerte du dÃ©bogueur. \fBall\fP permet de suivre tous les
+niveaux de dÃ©boguage. Niveaux disponibles : \fBerror\fP,\ \fBwarning\fP,\
+\fBinfo\fP,\ \fBdebug\fP. Le niveau par utilisÃ© par dÃ©faut est \fBerror\fP et \fBinfo\fP
+est utilisÃ© par le \fBserveur\fP.
 .TP 
 \fB\-p,\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-Assigne au le serveur au port spécifié. Valeur par défaut\ : \fB15000\fP.
+Assigne au le serveur au port spÃ©cifiÃ©. Valeur par dÃ©faut\ : \fB15000\fP.
 .TP 
 \fB\-t,\ \fP\fInombre\fP\fB,\ \-\-threads\fP\fI\ nombre\fP
-Définit le nombre maximal de threads pour les entrées/sorties réseau à la
+DÃ©finit le nombre maximal de threads pour les entrÃ©es/sorties rÃ©seau Ã  la
 valeur n (defaut\ : \fB5\fP,\ max\ :\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fInombre\fP\fB,\ \-\-max\-threads\fP\fI\ nombre\fP
-Définit le nombre maximal de threads qui seront créés. Si ce nombre est nul,
+DÃ©finit le nombre maximal de threads qui seront crÃ©Ã©s. Si ce nombre est nul,
 il n'y a pas de limite (defaut\ : \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-Affiche le numéro de version et quitte le programme.
+Affiche le numÃ©ro de version et quitte le programme.
 .TP 
 \fB\-v, \-\-verbose\fP
 Active une journalisation maximale.
 .
 .SH "CONFIGURATION DU SERVEUR"
 .
-.SS "La syntaxe générale est\ : "
+.SS "La syntaxe gÃ©nÃ©rale est\ : "
 .
 .P
 [\fItag\fP]
 .IP
-clé="\fIvaleur\fP"
+clÃ©="\fIvaleur\fP"
 .IP
-clé="\fIvaleur\fP,\fIvaleur\fP,..."
+clÃ©="\fIvaleur\fP,\fIvaleur\fP,..."
 .P
 [/\fItag\fP]
 .
-.SS "Clés globales\ : "
+.SS "ClÃ©s globales\ : "
 .
 .TP 
 \fBconnections_allowed\fP
-Nombre maximum de connexions ayant la même adresse IP. \fB0\fP pour
-infini. (par défaut : \fB5\fP)
+Nombre maximum de connexions ayant la mÃªme adresse IP. \fB0\fP pour
+infini. (par dÃ©faut : \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Noms/surnoms non acceptés par le serveur. Les caractères génériques « * » et
-« ? » sont acceptés. Voir \fBglob\fP(7) pour plus d'informations. Les valeurs
-par défaut (utilisées si rien n'est précisé) sont\ :
+Noms/surnoms non acceptÃ©s par le serveur. Les caractÃ¨res gÃ©nÃ©riques Â« * Â» et
+Â« ? Â» sont acceptÃ©s. Voir \fBglob\fP(7) pour plus d'informations. Les valeurs
+par dÃ©faut (utilisÃ©es si rien n'est prÃ©cisÃ©) sont\ :
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Nombre maximum de messages permis en \fBmessages_time_period\fP. (par défaut :
+Nombre maximum de messages permis en \fBmessages_time_period\fP. (par dÃ©faut :
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-Période, en secondes, après laquelle un surnombre de messages est
-détecté. (par défaut : \fB10\fP secondes)
+PÃ©riode, en secondes, aprÃ¨s laquelle un surnombre de messages est
+dÃ©tectÃ©. (par dÃ©faut : \fB10\fP secondes)
 .TP 
 \fBmotd\fP
 Le message du jour.
 .TP 
 \fBpasswd\fP
 Mot de passe des habilitations de l'administrateur. Commence souvent par
-«\ admin\ ».
+Â«\ admin\ Â».
 .TP 
 \fBversions_accepted\fP
-Liste des versions acceptées par le serveur, séparées par des virgules. Les
-caractères génériques « * » et « ? » sont acceptés. (par défaut : version
-correspondant au à celle du serveur)
+Liste des versions acceptÃ©es par le serveur, sÃ©parÃ©es par des virgules. Les
+caractÃ¨res gÃ©nÃ©riques Â« * Â» et Â« ? Â» sont acceptÃ©s. (par dÃ©faut : version
+correspondant au Ã  celle du serveur)
 .br
 Exemple\ : \fBversions_accepted="*"\fP autorise tout type de version.
 .
@@ -137,19 +138,19 @@ Adresse du serveur de redirection.
 Port de connexion.
 .TP 
 \fBversion\fP
-Liste des versions redirigées, séparées par des virgules. Même syntaxe que
-pour \fBversions_accepted\fP pour les caractères génériques.
+Liste des versions redirigÃ©es, sÃ©parÃ©es par des virgules. MÃªme syntaxe que
+pour \fBversions_accepted\fP pour les caractÃ¨res gÃ©nÃ©riques.
 .RE
 .P
 \fB[proxy]\fP Balise pour demander au serveur de se comporter comme un proxy et
-de rediriger les requêtes des clients vers le serveur spécifié. Accepte les
-mêmes clés que \fB[redirect]\fP.
+de rediriger les requÃªtes des clients vers le serveur spÃ©cifiÃ©. Accepte les
+mÃªmes clÃ©s que \fB[redirect]\fP.
 .
 .SH AUTEUR
 .
-Écrit par David White <davidnwhite@verizon.net>. Édité par Nils
+Ã‰crit par David White <davidnwhite@verizon.net>. Ã‰ditÃ© par Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> et
-Soliton <soliton.de@gmail.com>. Ce manuel a été à l'origine écrit
+Soliton <soliton.de@gmail.com>. Ce manuel a Ã©tÃ© Ã  l'origine Ã©crit
 par Cyril Bouthors <cyril@bouthors.org>.
 .br
 Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
@@ -159,9 +160,9 @@ Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
-comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y
-compris\ en ce qui concerne la COMMERCIABILITÉ et la CONFORMITÉ À UNE
-UTILISATION PARTICULIÈRE.
+comme dÃ©finie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y
+compris\ en ce qui concerne la COMMERCIABILITÃ‰ et la CONFORMITÃ‰ Ã€ UNE
+UTILISATION PARTICULIÃˆRE.
 .
 .SH "VOIR AUSSI"
 .

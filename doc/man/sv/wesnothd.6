@@ -18,71 +18,72 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Kampen om Wesnoths nätverksdaemon"
+.TH WESNOTHD 6 2007 wesnothd "Kampen om Wesnoths nÃ¤tverksdaemon"
 .
 .SH NAMN
 .
-wesnothd \- Kampen om \fBWesnoth\fPs nätverksdaemon
+wesnothd \- Kampen om \fBWesnoth\fPs nÃ¤tverksdaemon
 .
 .SH SYNOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIsökväg\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIsÃ¶kvÃ¤g\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fIantal\fP\|] [\|\fB\-T\fP \fIantal\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
 .SH BESKRIVNING
 .
-Kampen om Wesnoths nätverksdaemon för gruppspel. Se
-http://www.wesnoth.org/wiki/ServerAdministration för information om vilka
+Kampen om Wesnoths nÃ¤tverksdaemon fÃ¶r gruppspel. Se
+http://www.wesnoth.org/wiki/ServerAdministration fÃ¶r information om vilka
 kommandon servern accepterar via wesnoth\-klienten eller sockeln.
 .
 .SH FLAGGOR
 .
 .TP 
-\fB\-c\ \fP\fIsökväg\fP\fB,\ \-\-config\fP\fI\ sökväg\fP
+\fB\-c\ \fP\fIsÃ¶kvÃ¤g\fP\fB,\ \-\-config\fP\fI\ sÃ¶kvÃ¤g\fP
 anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om
-\fBSERVERKONFIGURATION\fP nedan för syntaxen. Konfigurationen laddas om när
+\fBSERVERKONFIGURATION\fP nedan fÃ¶r syntaxen. Konfigurationen laddas om nÃ¤r
 signalen SIGHUP skickas till serverprocessen.
 .TP 
 \fB\-d, \-\-daemon\fP
-kör wesnothd som en daemon.
+kÃ¶r wesnothd som en daemon.
 .TP 
 \fB\-h, \-\-help\fP
-visar en sammanfattning av möjliga kommandoradsflaggor.
+visar en sammanfattning av mÃ¶jliga kommandoradsflaggor.
 .TP 
-\fB\-\-log\-\fP\fInivå\fP\fB=\fP\fIdomän1\fP\fB,\fP\fIdomän2\fP\fB,\fP\fI...\fP
-anger allvarlighetsgraden för loggdomänerna. För att se allt kan \fBall\fP
-användas. Möjliga nivåer: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardnivå är \fBerror\fP och \fBinfo\fP för \fBserver\fP\-domänen.
+\fB\-\-log\-\fP\fInivÃ¥\fP\fB=\fP\fIdomÃ¤n1\fP\fB,\fP\fIdomÃ¤n2\fP\fB,\fP\fI...\fP
+anger allvarlighetsgraden fÃ¶r loggdomÃ¤nerna. FÃ¶r att se allt kan \fBall\fP
+anvÃ¤ndas. MÃ¶jliga nivÃ¥er: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. StandardnivÃ¥ Ã¤r \fBerror\fP och \fBinfo\fP fÃ¶r \fBserver\fP\-domÃ¤nen.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-knyter servern till den specificerade porten. Om ingen port anges så används
+knyter servern till den specificerade porten. Om ingen port anges sÃ¥ anvÃ¤nds
 port \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fIantal\fP\fB,\ \-\-threads\fP\fI\ antal\fP
-anger maximalt antal väntande trådar för nätverkstrafik (standardvärde:
+anger maximalt antal vÃ¤ntande trÃ¥dar fÃ¶r nÃ¤tverkstrafik (standardvÃ¤rde:
 \fB5\fP,\ max:\ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fIantal\fP\fB,\ \-\-max\-threads\fP\fI\ antal\fP
-anger maximalt antal trådar som skapas för nätverkstrafik. Om \fB0\fP anges
-sätts ingen övre gräns (standardvärde: \fB0\fP).
+anger maximalt antal trÃ¥dar som skapas fÃ¶r nÃ¤tverkstrafik. Om \fB0\fP anges
+sÃ¤tts ingen Ã¶vre grÃ¤ns (standardvÃ¤rde: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
 visar versionen.
 .TP 
 \fB\-v, \-\-verbose\fP
-ger mer utförlig information.
+ger mer utfÃ¶rlig information.
 .
 .SH SERVERKONFIGURATION
 .
-.SS "Den allmänna syntaxen är:"
+.SS "Den allmÃ¤nna syntaxen Ã¤r:"
 .
 .P
 [\fItag\fP]
 .IP
-parameter="\fIvärde\fP"
+parameter="\fIvÃ¤rde\fP"
 .IP
-parameter="\fIvärde\fP,\fIvärde\fP,..."
+parameter="\fIvÃ¤rde\fP,\fIvÃ¤rde\fP,..."
 .P
 [/\fItag\fP]
 .
@@ -94,31 +95,31 @@ The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Spelarnamn som ej accepteras av servern. '*' och '?' är tillåtna för att
-matcha flera tecken. Se \fBglob\fP(7) för detaljer. Standardvärden (som används
-om inget anges) är
+Spelarnamn som ej accepteras av servern. '*' och '?' Ã¤r tillÃ¥tna fÃ¶r att
+matcha flera tecken. Se \fBglob\fP(7) fÃ¶r detaljer. StandardvÃ¤rden (som anvÃ¤nds
+om inget anges) Ã¤r
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Antal tillåtna meddelanden inom \fBmessages_time_period\fP (standardvärde:
+Antal tillÃ¥tna meddelanden inom \fBmessages_time_period\fP (standardvÃ¤rde:
 \fB4\fP).
 .TP 
 \fBmessages_time_period\fP
-Tidsperioden (i sekunder) under vilken meddelandeöversvämning detekteras
-(standardvärde: \fB10\fP sekunder).
+Tidsperioden (i sekunder) under vilken meddelandeÃ¶versvÃ¤mning detekteras
+(standardvÃ¤rde: \fB10\fP sekunder).
 .TP 
 \fBmotd\fP
-Meddelandet för dagen.
+Meddelandet fÃ¶r dagen.
 .TP 
 \fBpasswd\fP
-Lösenordet för administrationsrättigheter. Börjar ofta med `admin '.
+LÃ¶senordet fÃ¶r administrationsrÃ¤ttigheter. BÃ¶rjar ofta med `admin '.
 .TP 
 \fBversions_accepted\fP
-En komma\-separerad lista med versionssträngar som accepteras av servern. '*'
-och '?' är tillåtna för att matcha flera tecken. (Standardvärdet är aktuell
+En komma\-separerad lista med versionsstrÃ¤ngar som accepteras av servern. '*'
+och '?' Ã¤r tillÃ¥tna fÃ¶r att matcha flera tecken. (StandardvÃ¤rdet Ã¤r aktuell
 version av Wesnoth.)
 .br
-Exempel: \fBversions_accepted="*"\fP accepterar alla versionssträngar.
+Exempel: \fBversions_accepted="*"\fP accepterar alla versionsstrÃ¤ngar.
 .
 .SS "Globala taggar:"
 .
@@ -128,37 +129,37 @@ klientversioner.
 .RS
 .TP 
 \fBhost\fP
-Värdadressen att omdirigera till.
+VÃ¤rdadressen att omdirigera till.
 .TP 
 \fBport\fP
 Porten att ansluta till.
 .TP 
 \fBversion\fP
-En komma\-separerad lista av versioner att omdirigera. Fungerar på samma sätt
-som \fBversions_accepted\fP vad gäller strängmatchning.
+En komma\-separerad lista av versioner att omdirigera. Fungerar pÃ¥ samma sÃ¤tt
+som \fBversions_accepted\fP vad gÃ¤ller strÃ¤ngmatchning.
 .RE
 .P
 \fB[proxy]\fP En tag som anger att servern skall agera som proxy och
-vidarebefordra klientförfrågningar till den angiva servern. Accepterar samma
+vidarebefordra klientfÃ¶rfrÃ¥gningar till den angiva servern. Accepterar samma
 parametrar som \fB[redirect]\fP.
 .
-.SH FÖRFATTARE
+.SH FÃ–RFATTARE
 .
 Skriven av David White <davidnwhite@verizon.net>. Redigerad av Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> och
 Soliton <soliton.de@gmail.com>. Denna manualsida skrevs
 ursprungligen av Cyril Bouthors <cyril@bouthors.org>.
 .br
-Besök den officiella hemsidan: http://www.wesnoth.org/
+BesÃ¶k den officiella hemsidan: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Detta är fri mjukvara; denna mjukvara är licensierad under GPL version 2,
-såsom publicerad av Free Software Foundation. INGEN garanti ges; inte ens
-för SÄLJBARHET eller LÄMPLIGHET FÖR ETT VISST SYFTE.
+Detta Ã¤r fri mjukvara; denna mjukvara Ã¤r licensierad under GPL version 2,
+sÃ¥som publicerad av Free Software Foundation. INGEN garanti ges; inte ens
+fÃ¶r SÃ„LJBARHET eller LÃ„MPLIGHET FÃ–R ETT VISST SYFTE.
 .
-.SH "SE ÄVEN"
+.SH "SE Ã„VEN"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

@@ -27,56 +27,57 @@ wesnothd \- Daemon de rede multixogador de Battle for \fBWesnoth\fP
 .SH SINOPSE
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIporto\fP\|] [\|\fB\-t\fP
-\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+\fInÃºmero\fP\|] [\|\fB\-T\fP \fInÃºmero\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH DESCRICIÓN
+.SH DESCRICIÃ“N
 .
 Administra partidas multixogador de Battle for Wesnoth. Consulte
 http://www.wesnoth.org/wiki/ServerAdministration para ver os comandos que
-acepta o servidor a través do cliente wesnoth ou do socket.
+acepta o servidor a travÃ©s do cliente wesnoth ou do socket.
 .
-.SH OPCIÓNS
+.SH OPCIÃ“NS
 .
 .TP 
 \fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
-dille a wesnothd onde atopar o ficheiro de configuración a usar. Consulte
-embaixo a sección \fBCONFIGURACIÓN DO SERVIDOR\fP para ver a sintaxe. Pódese
-recargar a configuración enviando SIGHUP ó proceso do servidor.
+dille a wesnothd onde atopar o ficheiro de configuraciÃ³n a usar. Consulte
+embaixo a secciÃ³n \fBCONFIGURACIÃ“N DO SERVIDOR\fP para ver a sintaxe. PÃ³dese
+recargar a configuraciÃ³n enviando SIGHUP Ã³ proceso do servidor.
 .TP 
 \fB\-d, \-\-daemon\fP
 executa wesnothd coma un daemon.
 .TP 
 \fB\-h, \-\-help\fP
-diche que fan as opcións de liña de comandos.
+diche que fan as opciÃ³ns de liÃ±a de comandos.
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
 establece o nivel de severidade dos dominios de log.  Pode usarse \fBall\fP
-para referirse a calquera dominio de log. Niveis dispoñibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto úsase o nivel \fBerror\fP e o
+para referirse a calquera dominio de log. Niveis dispoÃ±ibles: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto Ãºsase o nivel \fBerror\fP e o
 nivel \fBinfo\fP para o dominio \fBserver\fP.
 .TP 
 \fB\-p\ \fP\fIporto\fP\fB,\ \-\-port\fP\fI\ porto\fP
-asocia o servidor ó porto especificado. Se non se especifica un porto, hase
+asocia o servidor Ã³ porto especificado. Se non se especifica un porto, hase
 usar o porto \fB15000\fP.
 .TP 
-\fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
-define o número máximo de fíos efectivos en espera para a entrada/saída de
+\fB\-t\ \fP\fInÃºmero\fP\fB,\ \-\-threads\fP\fI\ nÃºmero\fP
+define o nÃºmero mÃ¡ximo de fÃ­os efectivos en espera para a entrada/saÃ­da de
 rede a n (por defecto: \fB5\fP,\ max:\ \fB30\fP).
 .TP 
-\fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
-define o número máximo de fíos efectivos que se van crear. Se o define a
-\fB0\fP non terá limite (por defecto: \fB0\fP).
+\fB\-T\ \fP\fInÃºmero\fP\fB,\ \-\-max\-threads\fP\fI\ nÃºmero\fP
+define o nÃºmero mÃ¡ximo de fÃ­os efectivos que se van crear. Se o define a
+\fB0\fP non terÃ¡ limite (por defecto: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-amosa o número de versión e sae.
+amosa o nÃºmero de versiÃ³n e sae.
 .TP 
 \fB\-v, \-\-verbose\fP
-activa o rexistro da depuración.
+activa o rexistro da depuraciÃ³n.
 .
-.SH "CONFIGURACIÓN DO SERVIDOR"
+.SH "CONFIGURACIÃ“N DO SERVIDOR"
 .
-.SS "A sintaxe xeral é:"
+.SS "A sintaxe xeral Ã©:"
 .
 .P
 [\fIetiqueta\fP]
@@ -91,64 +92,64 @@ clave="\fIvalor\fP,\fIvalor\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-O número de conexións permitidas dende o mesmo IP. \fB0\fP significa
+O nÃºmero de conexiÃ³ns permitidas dende o mesmo IP. \fB0\fP significa
 infinitas. (por defecto: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Nomes/alcumes que non acepta o servidor. Sopórtanse `*' e `?' coma comodíns
-para patróns. Consulte \fBglob\fP(7) para obter máis detalles. Os valores
-predeterminados (que se usan se non se especifica ningún outro) son:
+Nomes/alcumes que non acepta o servidor. SopÃ³rtanse `*' e `?' coma comodÃ­ns
+para patrÃ³ns. Consulte \fBglob\fP(7) para obter mÃ¡is detalles. Os valores
+predeterminados (que se usan se non se especifica ningÃºn outro) son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-O número de mensaxes permitidas en \fBmessages_time_period\fP. (por defecto:
+O nÃºmero de mensaxes permitidas en \fBmessages_time_period\fP. (por defecto:
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-O periodo de tempo (en segundos) que se usa para detectar unha inundación de
+O periodo de tempo (en segundos) que se usa para detectar unha inundaciÃ³n de
 mensaxes. (por defecto: \fB10\fP segundos)
 .TP 
 \fBmotd\fP
-A mensaxe do día.
+A mensaxe do dÃ­a.
 .TP 
 \fBpasswd\fP
 O contrasinal que se usa para obter privilexios de
 administrador. Normalmente comeza por `admin '.
 .TP 
 \fBversions_accepted\fP
-Unha lista separada por comas de cadeas de versión aceptadas polo
-servidor. Sopórtanse os comodíns de patróns `*' e `?'.  (por defecto é a
-versión de wesnoth correspondente)
+Unha lista separada por comas de cadeas de versiÃ³n aceptadas polo
+servidor. SopÃ³rtanse os comodÃ­ns de patrÃ³ns `*' e `?'.  (por defecto Ã© a
+versiÃ³n de wesnoth correspondente)
 .br
-Exemplo: \fBversions_accepted="*"\fP acepta calquera cadea de versión.
+Exemplo: \fBversions_accepted="*"\fP acepta calquera cadea de versiÃ³n.
 .
 .SS "Etiquetas globais:"
 .
 .P
-\fB[redirect]\fP Unha etiqueta para especificar un servidor ó que redirixir
-certas versións do cliente.
+\fB[redirect]\fP Unha etiqueta para especificar un servidor Ã³ que redirixir
+certas versiÃ³ns do cliente.
 .RS
 .TP 
 \fBhost\fP
-O enderezo do servidor ó que se redirixe.
+O enderezo do servidor Ã³ que se redirixe.
 .TP 
 \fBport\fP
-O porto ó que se conectar.
+O porto Ã³ que se conectar.
 .TP 
 \fBversion\fP
-Unha lista separada por comas de versións a redirixir. Compórtase do mesmo
-xeito ca \fBversions_accepted\fP no referente ós comodíns de patróns.
+Unha lista separada por comas de versiÃ³ns a redirixir. CompÃ³rtase do mesmo
+xeito ca \fBversions_accepted\fP no referente Ã³s comodÃ­ns de patrÃ³ns.
 .RE
 .P
-\fB[proxy]\fP Unha etiqueta para dicirlle ó servidor que actúe coma un proxy e
-redirixa as solicitudes dos clientes conectados ó servidor
+\fB[proxy]\fP Unha etiqueta para dicirlle Ã³ servidor que actÃºe coma un proxy e
+redirixa as solicitudes dos clientes conectados Ã³ servidor
 especificado. Acepta as mesmas claves ca \fB[redirect]\fP.
 .
 .SH AUTOR
 .
 Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
-Soliton <soliton.de@gmail.com>. Esta páxina de manual escribiuna
+Soliton <soliton.de@gmail.com>. Esta pÃ¡xina de manual escribiuna
 orixinalmente Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visite o sitio oficial: http://www.wesnoth.org/
@@ -157,11 +158,11 @@ Visite o sitio oficial: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Isto é Software Libre; este software está licenciado baixo a GPL versión 2,
+Isto Ã© Software Libre; este software estÃ¡ licenciado baixo a GPL versiÃ³n 2,
 tal e como foi publicada pola Free Software Foundation.  Non existe NINGUNHA
-garantía; nin sequera para o SEU USO COMERCIAL ou ADECUACIÓN PARA UN
-PROPÓSITO PARTICULAR.
+garantÃ­a; nin sequera para o SEU USO COMERCIAL ou ADECUACIÃ“N PARA UN
+PROPÃ“SITO PARTICULAR.
 .
-.SH "CONSULTE TAMÉN"
+.SH "CONSULTE TAMÃ‰N"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

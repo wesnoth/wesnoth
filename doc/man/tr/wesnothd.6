@@ -18,72 +18,73 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH wesnothd 6 2008 wesnothd "Wesnoth Savaşı çok oyunculu ağ sunucusu"
+.TH wesnothd 6 2008 wesnothd "Wesnoth SavaÅŸÄ± Ã§ok oyunculu aÄŸ sunucusu"
 .
-.SH İSİM
+.SH Ä°SÄ°M
 .
-wesnothd \- \fBWesnoth\fPSavaşı çok oyunculu ağ sunucusu
+wesnothd \- \fBWesnoth\fPSavaÅŸÄ± Ã§ok oyunculu aÄŸ sunucusu
 .
 .SH KULLANIM
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIdosya\-yolu\fP\|] [\|\fB\-p\fP \fIport\fP\|]
-[\|\fB\-t\fP \fIsayı\fP\|] [\|\fB\-T\fP \fIsayı\fP\|]
+[\|\fB\-t\fP \fIsayÄ±\fP\|] [\|\fB\-T\fP \fIsayÄ±\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH AÇIKLAMA
+.SH AÃ‡IKLAMA
 .
-Wesnoth Savaşı çok oyunculu oyunlarını yönetir. Wesnoth istemcisinden veya
-soket üzerinden hangi komutların kabul edildiğini öğrenmek için
-http://www.wesnoth.org/wiki/ServerAdministration adresine bakınız.
+Wesnoth SavaÅŸÄ± Ã§ok oyunculu oyunlarÄ±nÄ± yÃ¶netir. Wesnoth istemcisinden veya
+soket Ã¼zerinden hangi komutlarÄ±n kabul edildiÄŸini Ã¶ÄŸrenmek iÃ§in
+http://www.wesnoth.org/wiki/ServerAdministration adresine bakÄ±nÄ±z.
 .
-.SH SEÇENEKLER
+.SH SEÃ‡ENEKLER
 .
 .TP 
 \fB\-c\ \fP\fIdosya\-yolu\fP\fB,\ \-\-config\fP\fI\ dosya\-yolu\fP
-wesnothd'ye yapılandırma dosyasını bulacağı yeri söyler. Sözdizimi için
-aşağıdaki \fBSUNUCU YAPILANDIRMASI\fP bölümüne bakınız. Artalan sürecine SIGHUP
-sinyali göndererek yapılandırmayı yeniden yükleyebilirsiniz.
+wesnothd'ye yapÄ±landÄ±rma dosyasÄ±nÄ± bulacaÄŸÄ± yeri sÃ¶yler. SÃ¶zdizimi iÃ§in
+aÅŸaÄŸÄ±daki \fBSUNUCU YAPILANDIRMASI\fP bÃ¶lÃ¼mÃ¼ne bakÄ±nÄ±z. Artalan sÃ¼recine SIGHUP
+sinyali gÃ¶ndererek yapÄ±landÄ±rmayÄ± yeniden yÃ¼kleyebilirsiniz.
 .TP 
 \fB\-d, \-\-daemon\fP
- wesnothd'yi bir artalan süreci olarak çalıştırır.
+ wesnothd'yi bir artalan sÃ¼reci olarak Ã§alÄ±ÅŸtÄ±rÄ±r.
 .TP 
 \fB\-h, \-\-help\fP
-Komut satırı seçeneklerini basar ve çıkar.
+Komut satÄ±rÄ± seÃ§eneklerini basar ve Ã§Ä±kar.
 .TP 
 \fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
-Günlük alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını
-kapsamak üzere \fBall\fP belirtilebilir. Olası önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi öntanımlıdır ve \fBserver\fP
-alanı için \fBinfo\fP seviyesi kullanılır.
+GÃ¼nlÃ¼k alanlarÄ±nÄ±n Ã¶nem seviyelerini ayarlar. BÃ¼tÃ¼n gÃ¼nlÃ¼k alanlarÄ±nÄ±
+kapsamak Ã¼zere \fBall\fP belirtilebilir. OlasÄ± Ã¶nem seviyeleri: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi Ã¶ntanÄ±mlÄ±dÄ±r ve \fBserver\fP
+alanÄ± iÃ§in \fBinfo\fP seviyesi kullanÄ±lÄ±r.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-Sunucunun belirtilen portu dinlemesini sağlar. Bir port belirtilmezse
-\fB15000\fP öntanımlıdır.
+Sunucunun belirtilen portu dinlemesini saÄŸlar. Bir port belirtilmezse
+\fB15000\fP Ã¶ntanÄ±mlÄ±dÄ±r.
 .TP 
-\fB\-t\ \fP\fIsayı\fP\fB,\ \-\-threads\fP\fI\ sayı\fP
-Ağ G/Ç için bekleyen iş evrelerinin azami sayısını belirler. (\fB5\fP
-öntanımlıdır. En çok \fB30\fP belirtilebilir.)
+\fB\-t\ \fP\fIsayÄ±\fP\fB,\ \-\-threads\fP\fI\ sayÄ±\fP
+AÄŸ G/Ã‡ iÃ§in bekleyen iÅŸ evrelerinin azami sayÄ±sÄ±nÄ± belirler. (\fB5\fP
+Ã¶ntanÄ±mlÄ±dÄ±r. En Ã§ok \fB30\fP belirtilebilir.)
 .TP 
-\fB\-T\ \fP\fIsayı\fP\fB,\ \-\-max\-threads\fP\fI\ sayı\fP
-Oluşturulacak iş evrelerinin azami sayısını belirler. \fB0\fP bir sınır
-olmadığını belirtir ve öntanımlıdır.
+\fB\-T\ \fP\fIsayÄ±\fP\fB,\ \-\-max\-threads\fP\fI\ sayÄ±\fP
+OluÅŸturulacak iÅŸ evrelerinin azami sayÄ±sÄ±nÄ± belirler. \fB0\fP bir sÄ±nÄ±r
+olmadÄ±ÄŸÄ±nÄ± belirtir ve Ã¶ntanÄ±mlÄ±dÄ±r.
 .TP 
 \fB\-V, \-\-version\fP
-Sürüm numarasını gösterir ve çıkar.
+SÃ¼rÃ¼m numarasÄ±nÄ± gÃ¶sterir ve Ã§Ä±kar.
 .TP 
 \fB\-v, \-\-verbose\fP
-Hata ayıklama günlüğünü açar.
+Hata ayÄ±klama gÃ¼nlÃ¼ÄŸÃ¼nÃ¼ aÃ§ar.
 .
 .SH "SUNUCU YAPILANDIRMASI"
 .
-.SS "Genel sözdizimi şöyledir:"
+.SS "Genel sÃ¶zdizimi ÅŸÃ¶yledir:"
 .
 .P
 [\fIetiket\fP]
 .IP
-key="\fIdeğer\fP"
+key="\fIdeÄŸer\fP"
 .IP
-key="\fIdeğer\fP,\fIdeğer\fP,..."
+key="\fIdeÄŸer\fP,\fIdeÄŸer\fP,..."
 .P
 [/\fIetiket\fP]
 .
@@ -91,79 +92,79 @@ key="\fIdeğer\fP,\fIdeğer\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
-gelir. \fB5\fP öntanımlıdır.
+AynÄ± IP adresinden izin verilen baÄŸlantÄ± sayÄ±sÄ±. \fB0\fP sonsuz anlamÄ±na
+gelir. \fB5\fP Ã¶ntanÄ±mlÄ±dÄ±r.
 .TP 
 \fBdisallow_names\fP
-Sunucu tarafından kabul edilmeyen isimler/rumuzlar. Dosya ismi kalıp
-karakterlerinden `*' ve `?' desteklenir. Daha ayrıntılı bilgi için
-\fBglob\fP(7) sayfasına bakınız. Öntanımlı (bir şey belirtilmezse kullanılacak)
-değerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP
+Sunucu tarafÄ±ndan kabul edilmeyen isimler/rumuzlar. Dosya ismi kalÄ±p
+karakterlerinden `*' ve `?' desteklenir. Daha ayrÄ±ntÄ±lÄ± bilgi iÃ§in
+\fBglob\fP(7) sayfasÄ±na bakÄ±nÄ±z. Ã–ntanÄ±mlÄ± (bir ÅŸey belirtilmezse kullanÄ±lacak)
+deÄŸerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP
 .TP 
 \fBmax_messages\fP
- \fBmessages_time_period\fP süresince izin verilen ileti sayısı. \fB4\fP
-öntanımlıdır.
+ \fBmessages_time_period\fP sÃ¼resince izin verilen ileti sayÄ±sÄ±. \fB4\fP
+Ã¶ntanÄ±mlÄ±dÄ±r.
 .TP 
 \fBmessages_time_period\fP
-Saldırı olarak algılanmayacak ileti sayısının geçebileceği süre (saniye
-cinsinden). \fB10\fP saniye öntanımlıdır.
+SaldÄ±rÄ± olarak algÄ±lanmayacak ileti sayÄ±sÄ±nÄ±n geÃ§ebileceÄŸi sÃ¼re (saniye
+cinsinden). \fB10\fP saniye Ã¶ntanÄ±mlÄ±dÄ±r.
 .TP 
 \fBmotd\fP
-Günün sözü.
+GÃ¼nÃ¼n sÃ¶zÃ¼.
 .TP 
 \fBpasswd\fP
-Yönetici yetkilerini kazanmak için kullanılacak parola. Genellikle `admin '
-ile başlar.
+YÃ¶netici yetkilerini kazanmak iÃ§in kullanÄ±lacak parola. Genellikle `admin '
+ile baÅŸlar.
 .TP 
 \fBversions_accepted\fP
-Sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
-listesi. Dosya ismi kalıp karakterlerinden `*' ve `?'
-desteklenir. (Dağıtıldığı wesnoth sürümü öntanımlıdır.)
+Sunucu tarafÄ±ndan kabul edilen sÃ¼rÃ¼m dizgelerinin virgÃ¼l ayraÃ§lÄ±
+listesi. Dosya ismi kalÄ±p karakterlerinden `*' ve `?'
+desteklenir. (DaÄŸÄ±tÄ±ldÄ±ÄŸÄ± wesnoth sÃ¼rÃ¼mÃ¼ Ã¶ntanÄ±mlÄ±dÄ±r.)
 .br
-Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir..
+Ã–rnek: \fBversions_accepted="*"\fP her sÃ¼rÃ¼m dizgesi kabul edilir..
 .
 .SS "Genel etiket isimleri:"
 .
 .P
-\fB[redirect]\fP Belli istemci sürümlerinin yönlendirileceği sunucuların
-belirtildiği etiket.
+\fB[redirect]\fP Belli istemci sÃ¼rÃ¼mlerinin yÃ¶nlendirileceÄŸi sunucularÄ±n
+belirtildiÄŸi etiket.
 .RS
 .TP 
 \fBhost\fP
-Yönlendirilecek sunucunun adresi.
+YÃ¶nlendirilecek sunucunun adresi.
 .TP 
 \fBport\fP
-Bağlanılacak port.
+BaÄŸlanÄ±lacak port.
 .TP 
 \fBversion\fP
-Yönlendirilecek sürümlerin virgül ayraçlı listesi. Dosya kalıbı karakterleri
-bakımından \fBversions_accepted\fP ile aynı yöntem kullanılır.
+YÃ¶nlendirilecek sÃ¼rÃ¼mlerin virgÃ¼l ayraÃ§lÄ± listesi. Dosya kalÄ±bÄ± karakterleri
+bakÄ±mÄ±ndan \fBversions_accepted\fP ile aynÄ± yÃ¶ntem kullanÄ±lÄ±r.
 .RE
 .P
-\fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalışacağını ve bağlanan
-istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
-etiket. \fB[redirect]\fP için kullanılan anahtarlar kullanılır.
+\fB[proxy]\fP Sunucuya bir vekil sunucu gibi Ã§alÄ±ÅŸacaÄŸÄ±nÄ± ve baÄŸlanan
+istemcilerin isteklerini belirtilen sunucuya yÃ¶nelteceÄŸini sÃ¶yleyen
+etiket. \fB[redirect]\fP iÃ§in kullanÄ±lan anahtarlar kullanÄ±lÄ±r.
 .
 .SH YAZAN
 .
-Program David White <davidnwhite@verizon.net> tarafından yazılmış,
+Program David White <davidnwhite@verizon.net> tarafÄ±ndan yazÄ±lmÄ±ÅŸ,
 Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ve
-Soliton <soliton.de@gmail.com> tarafından düzenlenmiştir. Bu kılavuz
-sayfası ilk defa Cyril Bouthors <cyril@bouthors.org> tarafından
-yazılmış Nilgün Belma Bugüner <nilgun@belgeler.org> tarafından
-Türkçe'ye çevrilmiştir.
+Soliton <soliton.de@gmail.com> tarafÄ±ndan dÃ¼zenlenmiÅŸtir. Bu kÄ±lavuz
+sayfasÄ± ilk defa Cyril Bouthors <cyril@bouthors.org> tarafÄ±ndan
+yazÄ±lmÄ±ÅŸ NilgÃ¼n Belma BugÃ¼ner <nilgun@belgeler.org> tarafÄ±ndan
+TÃ¼rkÃ§e'ye Ã§evrilmiÅŸtir.
 .br
-Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
+Oyunun ana sayfasÄ±nÄ± ziyaret etmeyi unutmayÄ±n: http://www.wesnoth.org/
 .
-.SH "TELİF HAKKI"
+.SH "TELÄ°F HAKKI"
 .
-Copyright © 2003\-2007 David White <davidnwhite@verizon.net>
+Copyright Â© 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2 koşullarına bağlı
-kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların izin verdiği ölçüde
-hiçbir garantisi yoktur; hatta SATILABİLİRLİĞİ veya ŞAHSİ KULLANIMINIZA
-UYGUNLUĞU için bile garanti verilmez.
+Bu bir Ã¶zgÃ¼r yazÄ±lÄ±mdÄ±r; GNU Genel Kamu LisansÄ±nÄ±n 2 koÅŸullarÄ±na baÄŸlÄ±
+kalarak kopyalarÄ±nÄ± yeniden daÄŸÄ±tabilirsiniz. YasalarÄ±n izin verdiÄŸi Ã¶lÃ§Ã¼de
+hiÃ§bir garantisi yoktur; hatta SATILABÄ°LÄ°RLÄ°ÄÄ° veya ÅAHSÄ° KULLANIMINIZA
+UYGUNLUÄU iÃ§in bile garanti verilmez.
 .
-.SH "İLGİLİ BELGELER"
+.SH "Ä°LGÄ°LÄ° BELGELER"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

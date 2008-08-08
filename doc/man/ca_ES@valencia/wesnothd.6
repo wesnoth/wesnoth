@@ -27,54 +27,55 @@ wesnothd \- Dimoni per a joc en ret multijugador de la batalla per \fBWesnoth\fP
 .SH SINOPSIS
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+\fInÃºmero\fP\|] [\|\fB\-T\fP \fInÃºmero\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH DESCRIPCIÓ
+.SH DESCRIPCIÃ“
 .
 Administra jocs multijugador de la batalla per Wesnoth. Veja
-http://www.wesnoth.org/wiki/ServerAdministration per a saber que órdens
+http://www.wesnoth.org/wiki/ServerAdministration per a saber que Ã³rdens
 acepta el servidor per mig del client de wesnoth o del socket.
 .
 .SH OPCIONS
 .
 .TP 
 \fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
-indica a wesnothd on trobar l'archiu de configuració que deu usar. Veja la
-secció \fBSERVER CONFIG\fP més avall per a coneixer la sintaxis. Pots
-recarregar la configuració enviant SIGHUP al proces del servidor.
+indica a wesnothd on trobar l'archiu de configuraciÃ³ que deu usar. Veja la
+secciÃ³ \fBSERVER CONFIG\fP mÃ©s avall per a coneixer la sintaxis. Pots
+recarregar la configuraciÃ³ enviant SIGHUP al proces del servidor.
 .TP 
 \fB\-d, \-\-daemon\fP
 eixecuta wesnothd com dimoni.
 .TP 
 \fB\-h, \-\-help\fP
-mostra les opcions de llínea d'órdens.
+mostra les opcions de llÃ­nea d'Ã³rdens.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-estableix el nivell de gravetat dels dominis de depuració. \fBall\fP pot
-usar\-se per a seleccionar tots els dominis. Nivells disponibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Per defecte el nivell \fBerror\fP es usat i
+estableix el nivell de gravetat dels dominis de depuraciÃ³. \fBall\fP pot
+usar\-se per a seleccionar tots els dominis. Nivells disponibles: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Per defecte el nivell \fBerror\fP es usat i
 el nivell \fBinfo\fP per al domini \fBserver\fP.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-conecta al servidor al port especificat. Si no s'especifica ningún port,
-s'usarà el port \fB15000\fP.
+conecta al servidor al port especificat. Si no s'especifica ningÃºn port,
+s'usarÃ  el port \fB15000\fP.
 .TP 
-\fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
-estableix el número màxim de fils efectius en espera per a la entrada i
-eixida de ret a n (per defecte: \fB5\fP, màxim: \fB30\fP).
+\fB\-t\ \fP\fInÃºmero\fP\fB,\ \-\-threads\fP\fI\ nÃºmero\fP
+estableix el nÃºmero mÃ xim de fils efectius en espera per a la entrada i
+eixida de ret a n (per defecte: \fB5\fP, mÃ xim: \fB30\fP).
 .TP 
-\fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
-estableix el número máxim de fils efectius que es crearàn, si s'estableix a
-\fB0\fP no haurá ningún llímit (per defecte:  \fB0\fP).
+\fB\-T\ \fP\fInÃºmero\fP\fB,\ \-\-max\-threads\fP\fI\ nÃºmero\fP
+estableix el nÃºmero mÃ¡xim de fils efectius que es crearÃ n, si s'estableix a
+\fB0\fP no haurÃ¡ ningÃºn llÃ­mit (per defecte:  \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-mostra el número de versió i finalisa.
+mostra el nÃºmero de versiÃ³ i finalisa.
 .TP 
 \fB\-v, \-\-verbose\fP
-activa el registre de depuració
+activa el registre de depuraciÃ³
 .
-.SH "CONFIGURACIÓ DEL SERVIDOR"
+.SH "CONFIGURACIÃ“ DEL SERVIDOR"
 .
 .SS "La sintaxis general es:"
 .
@@ -91,21 +92,21 @@ clau="\fIvalor\fP,\fIvalor\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-El número màxim de conexions permesses des de la mateixa IP. \fB0\fP significa
+El nÃºmero mÃ xim de conexions permesses des de la mateixa IP. \fB0\fP significa
 infinit. (per defecte: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
 Noms o renoms que no esten permessos pel servidor. `*' i `?' poden usar\-se
-com comodí. Veja \fBglob\fP(7)  per a més detalles.  Els valors per defecte
+com comodÃ­. Veja \fBglob\fP(7)  per a mÃ©s detalles.  Els valors per defecte
 (usats si no s'especifica res) son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-El número de mensages permessos en un periode de temps definit per
+El nÃºmero de mensages permessos en un periode de temps definit per
 \fBmessages_time_period\fP. (per defecte: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-El periode de temps (en segons) usat per a detectar una inundació de
+El periode de temps (en segons) usat per a detectar una inundaciÃ³ de
 mensages. (per defecte: \fB10\fP segons)
 .TP 
 \fBmotd\fP
@@ -113,55 +114,55 @@ El mensage del dia.
 .TP 
 \fBpasswd\fP
 La contrasenya utilisada per a obtindre privilegis
-d'administrador. Habitualment comença per `admin '.
+d'administrador. Habitualment comenÃ§a per `admin '.
 .TP 
 \fBversions_accepted\fP
-Una llista separada per comes de cadenas de versió que seràn admitides pel
-servidor. `*' i `?' poden usar\-se com comodí. (per defecte es la versió de
+Una llista separada per comes de cadenas de versiÃ³ que serÃ n admitides pel
+servidor. `*' i `?' poden usar\-se com comodÃ­. (per defecte es la versiÃ³ de
 wesnoth correspondent)
 .br
-Eixemple:  \fBversions_accepted="*"\fP acepta qualsevol cadena de versió.
+Eixemple:  \fBversions_accepted="*"\fP acepta qualsevol cadena de versiÃ³.
 .
 .SS "Etiquetes globals:"
 .
 .P
 \fB[redirect]\fP Una etiqueta per a especificar un servidor al que es
-redirigiràn certes versions de clients.
+redirigirÃ n certes versions de clients.
 .RS
 .TP 
 \fBhost\fP
-La direcció del servidor cap al que es farà la redirecció.
+La direcciÃ³ del servidor cap al que es farÃ  la redirecciÃ³.
 .TP 
 \fBport\fP
-El port al que es fará la conexió.
+El port al que es farÃ¡ la conexiÃ³.
 .TP 
 \fBversion\fP
 Una llista separada per comas de les versions a redirigir. S'usa la mateixa
 sintaxis que per a \fBversions_accepted\fP respecte als comodins.
 .RE
 .P
-\fB[proxy]\fP Una etiqueta per a indicar al servidor que actúe de proxy i
-reenvíe les peticions dels clients conectats al servidor especificat. 
+\fB[proxy]\fP Una etiqueta per a indicar al servidor que actÃºe de proxy i
+reenvÃ­e les peticions dels clients conectats al servidor especificat.
 Acepta les mateixes claus que \fB[redirect]\fP.
 .
 .SH AUTOR
 .
 Escrit per David White <davidnwhite@verizon.net>.  Editat per Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> i
-Soliton <soliton.de@gmail.com>.  Esta página de manual va ser
+Soliton <soliton.de@gmail.com>.  Esta pÃ¡gina de manual va ser
 escrita inicialment per Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visite la pàgina web oficial: http://www.wesnoth.org/
+Visite la pÃ gina web oficial: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Açò és Software Lliure; este software está llicenciat baix la GPL versió 2,
+AÃ§Ã² Ã©s Software Lliure; este software estÃ¡ llicenciat baix la GPL versiÃ³ 2,
 segon ha segut publicada per la Free Software Foundation.  No existix CAP
-garantía; ni inclús per al SEU ÚS COMERCIAL o ADECUACIÓ A UN PROPÓSIT
+garantÃ­a; ni inclÃºs per al SEU ÃšS COMERCIAL o ADECUACIÃ“ A UN PROPÃ“SIT
 PARTICULAR.
 .
-.SH "VEJA'S TAMBÉ"
+.SH "VEJA'S TAMBÃ‰"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

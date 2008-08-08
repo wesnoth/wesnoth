@@ -34,40 +34,41 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .SH BESCHREIBUNG
 .
 Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe auf
-http://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
-Server von Wesnoth oder über den Socket entgegen nimmt.
+http://www.wesnoth.org/wiki/ServerAdministration fÃ¼r die Befehle, die der
+Server von Wesnoth oder Ã¼ber den Socket entgegen nimmt.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
 .TP 
 \fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
 sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im
-Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax. Sie
-können die Konfigurationsdatei durch senden eines SIGHUP an den
+Abschnitt \fBSERVER KONFIGURATION\fP unterhalb fÃ¼r den genauen Syntax. Sie
+kÃ¶nnen die Konfigurationsdatei durch senden eines SIGHUP an den
 Serverprozess neuladen.
 .TP 
 \fB\-d, \-\-daemon\fP
-startet wesnothd als Dämon.
+startet wesnothd als DÃ¤mon.
 .TP 
 \fB\-h, \-\-help\fP
-Gibt die möglichen Kommandozeilenoptionen aus.
+Gibt die mÃ¶glichen Kommandozeilenoptionen aus.
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
-Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
-zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig werden die Stufe \fBerror\fP für die Domäne des Spieles
-und die Stufe \fBinfo\fP für die Domäne des Servers verwendet.
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomÃ¤ne1\fP\fB,\fP\fIDomÃ¤ne2\fP\fB,\fP\fI...\fP
+Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sÃ¤mtliche DomÃ¤nen
+zu verwenden. VerfÃ¼gbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. StandardmÃ¤ÃŸig werden die Stufe \fBerror\fP fÃ¼r die DomÃ¤ne des Spieles
+und die Stufe \fBinfo\fP fÃ¼r die DomÃ¤ne des Servers verwendet.
 .TP 
 \fB\-p\ \fP\fIPort\fP\fB,\ \-\-port\fP\fI\ Port\fP
 bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port \fB15000\fP genommen.
 .TP 
 \fB\-t\ \fP\fINummer\fP\fB,\ \-\-threads\fP\fI\ Nummer\fP
-Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
+Legt die maximale Anzahl an Arbeiterprozessen fÃ¼r Netzwerk I/O
 fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
 .TP 
 \fB\-t,\ \-\-max\-threads\fP\fI\ Wert\fP
 Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
-Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
+Wert von \fB0\fP gibt es keine BeschrÃ¤nkung. (Standard: \fB0\fP)
 .TP 
 \fB\-V, \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
@@ -82,22 +83,22 @@ aktiviert mehr Details in der Logausgabe.
 .P
 [\fIElement\fP]
 .IP
-Schlüssel="\fIWert\fP"
+SchlÃ¼ssel="\fIWert\fP"
 .IP
-Schlüssel="\fIWert\fP,\fIWert\fP,..."
+SchlÃ¼ssel="\fIWert\fP,\fIWert\fP,..."
 .P
 [/\fIElement\fP]
 .
-.SS "Globale Schlüssel:"
+.SS "Globale SchlÃ¼ssel:"
 .
 .TP 
 \fBconnections_allowed\fP
-Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
+Die Anzahl zulÃ¤ssiger Verbindungen von der gleichen IP Adresse. \fB0\fP heiÃŸt
 unendlich. (Standard: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
 Namen/Spitznamen die der Server nicht akzeptiert. `*' und `?' sind als
-Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
+Platzhalter unterstÃ¼tzt. Siehe \fBglob\fP(7) fÃ¼r mehr Details. Standardwerte
 (wenn sonst nichts angegeben wurde) sind:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
@@ -118,7 +119,7 @@ per Konvention mit `admin '.
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
-zulässt. `*' und `?' sind erlaubt. (Standard: Die aktuell installierte
+zulÃ¤sst. `*' und `?' sind erlaubt. (Standard: Die aktuell installierte
 Wesnoth Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
@@ -138,21 +139,21 @@ Der dabei zu verwendende Port.
 .TP 
 \fBversion\fP
 Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden
-sollen. Verhält sich in Bezug auf Wildcards genauso wie
+sollen. VerhÃ¤lt sich in Bezug auf Wildcards genauso wie
 \fBversions_accepted\fP.
 .RE
 .P
 \fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein
 Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
-den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
+den angegebenen Server weiterzuleiten. Es werden die gleichen SchlÃ¼ssel wie
 bei \fB[redirect]\fP akzeptiert.
 .
 .SH AUTOR
 .
 Geschrieben von David White <davidnwhite@verizon.net>.  Bearbeitet
 von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
-<ott@gaon.net>und Soliton  <soliton.de@gmail.com>. 
-Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de>, Nils
+<ott@gaon.net>und Soliton  <soliton.de@gmail.com>.
+Ãœbersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de>, Nils
 Kneuper <crazy\-ivanovic@gmx.net>und Soliton
 <soliton.de@gmail.com>.  Diese Beschreibung stammt im Original von
 Cyril Bouthors <cyril@bouthors.org>.
@@ -163,13 +164,13 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
 GNU General Public License, wie von der Free Software Foundation
-veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
-der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die
-Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
+verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 2
+der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.  Die
+VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
 Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
-Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN BESTIMMTEN
 ZWECK. Details finden Sie in der GNU General Public License.  Sie sollten
 eine Kopie der GNU General Public License zusammen mit diesem Programm
 erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,

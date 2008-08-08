@@ -18,165 +18,166 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2007 wesnoth Τŵ֮ս
+.TH WESNOTH 6 2007 wesnoth 韦诺之战
 .
-.SH ����
-wesnoth \- Τŵ֮ս��һ���ǳ��õĻغ��Ʋ�����Ϸ
+.SH 命名
+wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
 .
-.SH ժҪ
+.SH 摘要
 .
 \fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
 .
-.SH ����
+.SH 描述
 .
-Τŵ֮ս(\fBWesnoth\fP)��һ���ǳ��õĻغ��Ʋ�����Ϸ��
+韦诺之战(\fBWesnoth\fP)是一个非常好的回合制策略游戏。
 
-�þ�����ѡ�Ĳ��Ӵ�����еĵ������졣�����������Դ�ʹ�ׯ�� ���е�λ�����Լ��ĳ����Ͷ̴���Ҫȡ��ʤ�������뷢�ӳ���Ĳ��ӵ����ƣ�
-ͬʱ��ֹ��Ķ�����ô���� ���ŵ�λ��þ��飬���ǻ�ѧ���µļ��ܣ���ø�ǿ��
-��Ϸ���ԣ�ʹ�ñ������Խ�����Ϸ��ͨ�������AI���жԿ�����Լ��ļ��ܣ���ȻҲ���Խ���Wesnoth���϶�ս�Ĵ��ͥ���㻹���Դ����Լ��ĵ�λ���ؿ���ս�ۣ���������wesnoth��ҷ�����
+用精心挑选的部队打败所有的敌人首领。管理好你的资源和村庄。 所有单位都有自己的长处和短处；要取得胜利，必须发挥出你的部队的优势，
+同时阻止你的对手这么做。 随着单位获得经验，他们会学会新的技能，变得更强大。
+游戏特性：使用本地语言进行游戏。通过与电脑AI进行对抗提高自己的技能，当然也可以进入Wesnoth网上对战的大家庭。你还可以创建自己的单位，关卡和战役，并与所有wesnoth玩家分享。
 .
-.SH ѡ��
+.SH 选项
 .
 .TP 
 \fB\-\-bpp\fP\fI\ number\fP
-����ÿ����ռ����λ(BitsPerPixel)�����磺\fB\-\-bpp 32\fP
+设置每象素占多少位(BitsPerPixel)。例如：\fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
 skip menu, show directly the campaign menu.
 .TP 
 \fB\-\-compress\fP\fI\ infile\ outfile\fP
-���ı���ʽ��WML�浵�ļ�(\fIinfile\fP)ѹ��Ϊ�����Ƹ�ʽ��WML�浵�ļ�(\fIoutfile\fP)��
+将文本格式的WML存档文件(\fIinfile\fP)压缩为二进制格式的WML存档文件(\fIoutfile\fP)。
 .TP 
 \fB\-d, \-\-debug\fP
-��ʾ����ĵ�����Ϣ��ʹһЩ���ӵ�����ģʽѡ����á���������ģʽ(Command Mode)���Բο�wiki:
+显示额外的调试信息，使一些附加的命令模式选项可用。关于命令模式(Command Mode)可以参考wiki:
 http://www.wesnoth.org/wiki/CommandMode
 .TP 
 \fB\-\-decompress\fP\fI\ infile\ outfile\fP
-�������Ƹ�ʽ��WML�浵�ļ�(\fIinfile\fP)ѹ��Ϊ�ı���ʽ��WML�浵�ļ�(\fIoutfile\fP)
+将二进制格式的WML存档文件(\fIinfile\fP)压缩为文本格式的WML存档文件(\fIoutfile\fP)
 .TP 
 \fB\-f, \-\-fullscreen\fP
-ʹ��ȫ��ģʽ������Ϸ
+使用全屏模式进入游戏
 .TP 
 \fB\-\-fps\fP
-����Ļһ����ʾ��Ϸfps(frames per second)
+在屏幕一角显示游戏fps(frames per second)
 .TP 
 \fB\-\-gunzip\fP\fI\ infile.gz\fP
-��ѹ����ӦΪgzip��ʽ���ļ���������Ϊȥ�� .gz ��׺��ͬ���ļ����ļ�\fIinfile.gz\fP����ɾ����
+解压缩本应为gzip格式的文件，并保存为去掉 .gz 后缀的同名文件。文件\fIinfile.gz\fP将被删除。
 .TP 
 \fB\-\-gzip\fP\fI\ infile\fP
-��gzip��ʽѹ���ļ����ļ���Ϊ\fIinfile\fP.gz����ɾ��\fIinfile\fP��
+用gzip格式压缩文件，文件名为\fIinfile\fP.gz，并删除\fIinfile\fP。
 .TP 
 \fB\-h, \-\-help\fP
-��ʾ�����п���ѡ�Ȼ���˳���
+显示命令行可用选项，然后退出。
 .TP 
 \fB\-\-load\fP\fI\ savegame\fP
-�ӱ�׼�浵Ŀ¼��ȡ�浵�ļ�
+从标准存档目录读取存档文件
 .TP 
 \fB\-\-with\-replay\fP
 replays the game loaded with \-\-load option.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-����debug�ļ���.\fBall\fP����ƥ������bebug���𡣿�ѡ�ļ����У�\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Ĭ�ϵļ�����\fBerror\fP��
+设置debug的级别.\fBall\fP用来匹配任意bebug级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. 默认的级别是\fBerror\fP。
 .TP 
 \fB\-\-logdomains\fP
-����������־�嵥���˳�
+导出所有日志清单并退出
 .TP 
 \fB\-\-max\-fps\fP
-��Ϸÿ������ʾ��֡����������Ϊ1��1000������Ĭ��Ϊ\fB50\fP��
+游戏每秒能显示的帧数，可以设为1－1000的数，默认为\fB50\fP。
 .TP 
 \fB\-m, \-\-multiplayer\fP
-����һ��������Ϸ�����ڶ�����Ϸ�����и���ѡ�������\fB\-\-multiplayer\fPһ��ʹ�á�
+启动一个多人游戏。关于多人游戏下面有更多选项可以与\fB\-\-multiplayer\fP一起使用。
 .TP 
 \fB\-\-nocache\fP
-��ֹ������Ϸ���ݵĻ���
+禁止建立游戏数据的缓存
 .TP 
 \fB\-\-nosound\fP
-�������ֺ���Ч�ķ�ʽ������Ϸ
+以无音乐和音效的方式启动游戏
 .TP 
 \fB\-\-path\fP
-��ʾ��Ϸ����Ŀ¼(data directory)���˳�
+显示游戏数据目录(data directory)并退出
 .TP 
 \fB\-\-config\-path\fP
 prints the name of the user configuration directory and exits.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-������Ļ�ֱ��ʡ����磺 \fB\-r 800x600\fP
+设置屏幕分辨率。例如： \fB\-r 800x600\fP
 .TP 
 \fB\-s,\ \-\-server\ [host]\fP
 skip menu, connect to specified host if any, otherwise connect to the first
 server in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
-ʹ��һ��С�Ĳ��Գ���������Ϸ
+使用一个小的测试场景启动游戏
 .TP 
 \fB\-v, \-\-version\fP
-��ʾ�汾�Ų��˳�
+显示版本号并退出
 .TP 
 \fB\-w, \-\-windowed\fP
-ʹ�ô���ģʽ������Ϸ
+使用窗口模式进入游戏
 .TP 
 \fB\-\-no\-delay\fP
-���ȴ�ͼ�λ�׼���ԣ�ֱ��������Ϸ��ʹ�� \fB\-\-nogui\fP ѡ��ʱ���Զ����ñ�ѡ�
+不等待图形基准测试，直接启动游戏。使用 \fB\-\-nogui\fP 选项时会自动启用本选项。
 .TP 
 \fB\-\-nogui\fP
-������Ϸ����������ͼ���û�����(GUI)����ѡ�������\fB\-\-multiplayer\fP֮ǰʹ�ò���Ч��
+启动游戏，但不启用图形用户界面(GUI)。此选项必须在\fB\-\-multiplayer\fP之前使用才有效。
 .TP 
 \fB\-\-exit\-at\-end\fP
-����������ʱֱ���˳�������ʾʤ��/ʧ�ܶԻ������ѡ��Ҳ�����������нű���׼���ԡ�
+当场景结束时直接退出而不显示胜利/失败对话框。这个选项也可以用来进行脚本基准测试。
 .
-.SH \-\-multiplayer�Ķ���ѡ��
+.SH \-\-multiplayer的额外选项
 .
-������Ϸ����ѡ��һ����Ӫ������ʹ�ñ��\fInumber\fP�� \fInumber\fP Ҫ�ô���ĳ����Ӫ�������滻��һ����1
-����2��������ͬ�ĳ�����ѡ����Ӫ�����в�ͬ�������ȡ����������ĳ�����
+多人游戏里面选择一个阵营，可以使用标记\fInumber\fP。 \fInumber\fP 要用代表某个阵营的数字替换。一般是1
+或者2。不过不同的场景可选的阵营数会有不同。具体的取决于你所玩的场景。
 .TP 
 \fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
-Ϊ��һ��Ӫѡ��һ���Ǳ�׼��AI�㷨����ѡֵ�У�\fBidle_ai\fP �� \fBsample_ai\fP.
+为这一阵营选择一个非标准的AI算法。可选值有：\fBidle_ai\fP 和 \fBsample_ai\fP.
 .TP  
 \fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
-ѡ����һ��Ӫ�Ŀ����ߡ���ѡֵ�У�\fBhuman\fP��\fBai\fP��
+选择这一阵营的控制者。可选值有：\fBhuman\fP和\fBai\fP。
 .TP  
 \fB\-\-era=\fP\fIvalue\fP
-ʹ�����ѡ��ѡ��һ��ģʽ������\fBĬ��\fPģʽ����ѡģʽ��id������ģʽ��\fBdata/multiplayer/eras.cfg\fP�ļ���������
+使用这个选项选择一个模式来代替\fB默认\fP模式。所选模式由id决定。模式在\fBdata/multiplayer/eras.cfg\fP文件中描述。
 .TP 
 \fB\-\-parm\fP\fInumber\fP\fB=\fP\fIname\fP\fB:\fP\fIvalue\fP
-Ϊ�����Ӫ���ø���ѡ������������������\fB\-\-controller\fP��\fB\-\-algorithm\fP��ѡ����ѡ��ֻ�����AI���˱Ƚ����á�(Ŀǰ��û����Ӧ���ĵ�)
+为这个阵营设置附加选项。这个参数依赖于用于\fB\-\-controller\fP和\fB\-\-algorithm\fP的选项。这个选项只对设计AI的人比较有用。(目前还没有相应的文档)
 .TP 
 \fB\-\-scenario=\fP\fIvalue\fP
-ͨ��idѡ�������Ϸ��ͼ��Ĭ�ϵ�ͼ��\fBmultiplayer_The_Freelands\fP��
+通过id选择多人游戏地图。默认地图是\fBmultiplayer_The_Freelands\fP。
 .TP 
 \fB\-\-side\fP\fInumber\fP\fB=\fP\fIvalue\fP
-Ϊ��ǰ��Ӫѡ��ģʽ�е�һ���ɱ���ѡ�ɱ���id�������ɱ����ļ�data/multiplayer.cfg�ļ���������
+为当前阵营选择模式中的一个派别。所选派别由id决定。派别在文件data/multiplayer.cfg文件中描述。
 .TP 
 \fB\-\-turns=\fP\fIvalue\fP
-������ѡ�����Ļغ������ơ�Ĭ��ֵΪ\fB50\fP��
+设置所选场景的回合数限制。默认值为\fB50\fP。
 .TP 
-�����������Լ�д��AI��Ĭ��AI�����ӣ�������ͼ�ν���(GUI)��
+用来测试你自己写的AI和默认AI的例子，不开启图形界面(GUI)。
 \fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
 \-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py\fPwesnoth
 \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
 \-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
-.SH ����
+.SH 作者
 .
-��David White <davidnwhite@verizon.net>��д
+由David White <davidnwhite@verizon.net>编写
 .br
-��Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>
-and Soliton <soliton.de@gmail.com>�Ķ���
+经Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>
+and Soliton <soliton.de@gmail.com>改动。
 .br
-�������ҳ������ Cyril Bouthors ׫д<cyril@bouthors.org>.
+这个帮助页最早由 Cyril Bouthors 撰写<cyril@bouthors.org>.
 .br
-���ʹٷ���վ: http://www.wesnoth.org/
+访问官方网站: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-����һ������������ʹ����FSF������GPL v2Э����Ȩ��ԭ�����£�This is Free Software; this software is
+这是一个自由软件；使用由FSF发布的GPL v2协议授权。原文如下：This is Free Software; this software is
 licensed under the GPL version 2, as published by the Free Software
 Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
 or FITNESS FOR A PARTICULAR PURPOSE.
 .
-.SH �μ�
+.SH 参见
 .
 \fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

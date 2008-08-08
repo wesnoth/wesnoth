@@ -18,148 +18,149 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Démon na sie»ovú hru Bitky o Wesnoth"
+.TH WESNOTHD 6 2007 wesnothd "DÃ©mon na sieÅ¥ovÃº hru Bitky o Wesnoth"
 .
-.SH NÁZOV
+.SH NÃZOV
 .
-wesnothd \- Démon na sie»ovú hru Bitky o \fBWesnoth\fP
+wesnothd \- DÃ©mon na sieÅ¥ovÃº hru Bitky o \fBWesnoth\fP
 .
 .SH ZHRNUTIE
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIèíslo\fP\|] [\|\fB\-T\fP \fIèíslo\fP\|]
+\fIÄÃ­slo\fP\|] [\|\fB\-T\fP \fIÄÃ­slo\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
 .SH POPIS
 .
-Riadi sie»ové hry Bitky o Wesnoth. Na stránke
-http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, ktoré
-server príjíma cez klienta alebo socket.
+Riadi sieÅ¥ovÃ© hry Bitky o Wesnoth. Na strÃ¡nke
+http://www.wesnoth.org/wiki/ServerAdministration sÃº uvedenÃ© prÃ­kazy, ktorÃ©
+server prÃ­jÃ­ma cez klienta alebo socket.
 .
-.SH MO®NOSTI
+.SH MOÅ½NOSTI
 .
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ cesta\fP
-povie wesnothd, kde má hµada» konfiguraènı súbor. Syntax, viï sekciu 
-\fBKONFIGURÁCIA SERVERA\fP ni¾¹ie. Konfiguráciu mô¾ete znovunaèíta» poslaním
-SIGHUP serverovému procesu.
+povie wesnothd, kde mÃ¡ hÄ¾adaÅ¥ konfiguraÄnÃ½ sÃºbor. Syntax, viÄ sekciu
+\fBKONFIGURÃCIA SERVERA\fP niÅ¾Å¡ie. KonfigurÃ¡ciu mÃ´Å¾ete znovunaÄÃ­taÅ¥ poslanÃ­m
+SIGHUP serverovÃ©mu procesu.
 .TP 
 \fB\-d, \-\-daemon\fP
-spustí wesnothd ako démona.
+spustÃ­ wesnothd ako dÃ©mona.
 .TP 
 \fB\-h, \-\-help\fP
-povie, èo robia jednotlivé mo¾nosti príkazového riadku.
+povie, Äo robia jednotlivÃ© moÅ¾nosti prÃ­kazovÃ©ho riadku.
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
-nastaví úroveò záva¾nosti zapisovacích domén. \fBall\fP znamená v¹etky
-zapisovacie domény. Mo¾né úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. ©tandardne sa pou¾íva úroveò \fBerror\fP a \fBinfo\fP pre doménu
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomÃ©na1\fP\fB,\fP\fIdomÃ©na2\fP\fB,\fP\fI...\fP
+nastavÃ­ ÃºroveÅˆ zÃ¡vaÅ¾nosti zapisovacÃ­ch domÃ©n. \fBall\fP znamenÃ¡ vÅ¡etky
+zapisovacie domÃ©ny. MoÅ¾nÃ© Ãºrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. Å tandardne sa pouÅ¾Ã­va ÃºroveÅˆ \fBerror\fP a \fBinfo\fP pre domÃ©nu
 \fBserver\fP.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-zavesí server na danı port. Ak nie je danı port, pou¾ije sa port \fB15000\fP.
+zavesÃ­ server na danÃ½ port. Ak nie je danÃ½ port, pouÅ¾ije sa port \fB15000\fP.
 .TP 
-\fB\-t\ \fP\fIèíslo\fP\fB,\ \-\-threads\fP\fI\ èíslo\fP
-nastaví maximálny poèet èakajúcich pracovnıch vlákien pre sie»ové I/O
-(¹tandardne: \fB5\fP,\ maximum:\ \fB30\fP).
+\fB\-t\ \fP\fIÄÃ­slo\fP\fB,\ \-\-threads\fP\fI\ ÄÃ­slo\fP
+nastavÃ­ maximÃ¡lny poÄet ÄakajÃºcich pracovnÃ½ch vlÃ¡kien pre sieÅ¥ovÃ© I/O
+(Å¡tandardne: \fB5\fP,\ maximum:\ \fB30\fP).
 .TP 
-\fB\-T\ \fP\fIèíslo\fP\fB,\ \-\-max\-threads\fP\fI\ èíslo\fP
-nastaví maximálny poèet vytvorenıch pracovnıch vlákien. Hodnota \fB0\fP znamená
-bez obmedzenia (¹tandardne: \fB0\fP).
+\fB\-T\ \fP\fIÄÃ­slo\fP\fB,\ \-\-max\-threads\fP\fI\ ÄÃ­slo\fP
+nastavÃ­ maximÃ¡lny poÄet vytvorenÃ½ch pracovnÃ½ch vlÃ¡kien. Hodnota \fB0\fP znamenÃ¡
+bez obmedzenia (Å¡tandardne: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-vypí¹e èíslo verzie a skonèí.
+vypÃ­Å¡e ÄÃ­slo verzie a skonÄÃ­.
 .TP 
 \fB\-v, \-\-verbose\fP
-zapne zaznamenávanie ladiacich informácií.
+zapne zaznamenÃ¡vanie ladiacich informÃ¡ciÃ­.
 .
-.SH "KONFIGURÁCIA SERVERA"
+.SH "KONFIGURÃCIA SERVERA"
 .
-.SS "V¹eobecná syntax je:"
+.SS "VÅ¡eobecnÃ¡ syntax je:"
 .
 .P
-[\fIznaèka\fP]
+[\fIznaÄka\fP]
 .IP
-kµúè="\fIhodnota\fP"
+kÄ¾ÃºÄ="\fIhodnota\fP"
 .IP
-kµúè="\fIhodnota\fP,\fIhodnota\fP,..."
+kÄ¾ÃºÄ="\fIhodnota\fP,\fIhodnota\fP,..."
 .P
-[/\fIznaèka\fP]
+[/\fIznaÄka\fP]
 .
-.SS "Globálne kµúèe:"
+.SS "GlobÃ¡lne kÄ¾ÃºÄe:"
 .
 .TP 
 \fBconnections_allowed\fP
-Poèet povolenıch spojení z rovnakej IP adresy. \fB0\fP znamená
-nekoneèno. (¹tandardne: \fB5\fP)
+PoÄet povolenÃ½ch spojenÃ­ z rovnakej IP adresy. \fB0\fP znamenÃ¡
+nekoneÄno. (Å¡tandardne: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Mená/prezıvky, ktoré server neprijíma. Podporujú sa ¾olíkové znaky`*' and
-`?'. Ïal¹ie podrobnosti viï \fBglob\fP(7). ©tandardné hodnoty (ak sa niè
-nezadá) sú:
+MenÃ¡/prezÃ½vky, ktorÃ© server neprijÃ­ma. PodporujÃº sa Å¾olÃ­kovÃ© znaky`*' and
+`?'. ÄalÅ¡ie podrobnosti viÄ \fBglob\fP(7). Å tandardnÃ© hodnoty (ak sa niÄ
+nezadÃ¡) sÃº:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Poèet povolenıch správ poèas \fBmessages_time_period\fP. (¹tandardne: \fB4\fP)
+PoÄet povolenÃ½ch sprÃ¡v poÄas \fBmessages_time_period\fP. (Å¡tandardne: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-Èasové obdobie (v sekundách), v ktorom sa meria zasypávanie
-správami. (¹tandardne: \fB10\fP sekúnd)
+ÄŒasovÃ© obdobie (v sekundÃ¡ch), v ktorom sa meria zasypÃ¡vanie
+sprÃ¡vami. (Å¡tandardne: \fB10\fP sekÃºnd)
 .TP 
 \fBmotd\fP
-Správa dòa.
+SprÃ¡va dÅˆa.
 .TP 
 \fBpasswd\fP
-Heslo pou¾ívané na získanie administrátorskıch práv. Zvyèajne zaèína na
+Heslo pouÅ¾Ã­vanÃ© na zÃ­skanie administrÃ¡torskÃ½ch prÃ¡v. ZvyÄajne zaÄÃ­na na
 `admin '.
 .TP 
 \fBversions_accepted\fP
-Èiarkami oddelenı zoznam verzií, ktoré má server prijíma». Podporujú sa
-¾olíkové znaky `*' and `?'. (¹tandardne je to zodpovedajúca verzia wesnoth)
+ÄŒiarkami oddelenÃ½ zoznam verziÃ­, ktorÃ© mÃ¡ server prijÃ­maÅ¥. PodporujÃº sa
+Å¾olÃ­kovÃ© znaky `*' and `?'. (Å¡tandardne je to zodpovedajÃºca verzia wesnoth)
 .br
-Napríklad: \fBversions_accepted="*"\fP prijme hocijakú verziu.
+NaprÃ­klad: \fBversions_accepted="*"\fP prijme hocijakÃº verziu.
 .
-.SS "Globálne znaèky:"
+.SS "GlobÃ¡lne znaÄky:"
 .
 .P
-\fB[redirect]\fP Znaèka urèujúca server, na ktorı sa presmerujú niektoré vezie
+\fB[redirect]\fP ZnaÄka urÄujÃºca server, na ktorÃ½ sa presmerujÃº niektorÃ© vezie
 klientov.
 .RS
 .TP 
 \fBhost\fP
-Adresa servera, kam sa presmerujú.
+Adresa servera, kam sa presmerujÃº.
 .TP 
 \fBport\fP
-Port, na ktorı sa majú pripoji».
+Port, na ktorÃ½ sa majÃº pripojiÅ¥.
 .TP 
 \fBversion\fP
-Èiarkami oddelenı zoznam verzií, ktoré sa majú presmerova». Podporuje
-¾olíkové znaky rovnako ako  \fBversions_accepted\fP.
+ÄŒiarkami oddelenÃ½ zoznam verziÃ­, ktorÃ© sa majÃº presmerovaÅ¥. Podporuje
+Å¾olÃ­kovÃ© znaky rovnako ako  \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Znaèka, ktorá povie serveru, aby sa správal ako proxy a
-preposielal po¾iadavky pripojenıch klientov na danı server. Podporuje
-rovnaké kµúèe ako \fB[redirect]\fP.
+\fB[proxy]\fP ZnaÄka, ktorÃ¡ povie serveru, aby sa sprÃ¡val ako proxy a
+preposielal poÅ¾iadavky pripojenÃ½ch klientov na danÃ½ server. Podporuje
+rovnakÃ© kÄ¾ÃºÄe ako \fB[redirect]\fP.
 .
 .SH AUTOR
 .
-Napísal David White <davidnwhite@verizon.net>. Editovali Nils
+NapÃ­sal David White <davidnwhite@verizon.net>. Editovali Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a
-Soliton <soliton@gmail.com>. Prelo¾il Viliam Búr
-<viliam@bur.sk>.  Túto manuálovú stránku pôvodne napísal Cyril
+Soliton <soliton@gmail.com>. PreloÅ¾il Viliam BÃºr
+<viliam@bur.sk>.  TÃºto manuÃ¡lovÃº strÃ¡nku pÃ´vodne napÃ­sal Cyril
 Bouthors <cyril@bouthors.org>.
 .br
-Nav¹tívte oficiálnu stránku: http://www.wesnoth.org/
+NavÅ¡tÃ­vte oficiÃ¡lnu strÃ¡nku: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Toto je slobodnı softvér; tento softvér je zverejnená pod V¹eobecnou
-verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného
-softvéru (Free Software Foundation). Nie je naò ®IADNA záruka; dokonca ani
-PREDATE¥NOSTI èi VHODNOSTI NA DANİ ÚÈEL.
+Toto je slobodnÃ½ softvÃ©r; tento softvÃ©r je zverejnenÃ¡ pod VÅ¡eobecnou
+verejnou licenciou (GPL) verzia 2, ako ju zverejnila NadÃ¡cia slobodnÃ©ho
+softvÃ©ru (Free Software Foundation). Nie je naÅˆ Å½IADNA zÃ¡ruka; dokonca ani
+PREDATEÄ½NOSTI Äi VHODNOSTI NA DANÃ ÃšÄŒEL.
 .
-.SH "VIÏ AJ"
+.SH "VIÄ AJ"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

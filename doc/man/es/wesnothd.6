@@ -28,55 +28,56 @@ wesnothd \- Demonio para juego en red multijugador de la batalla por
 .SH SINOPSIS
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIpuerto\fP\|] [\|\fB\-t\fP
-\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+\fInÃºmero\fP\|] [\|\fB\-T\fP \fInÃºmero\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH DESCRIPCIÓN
+.SH DESCRIPCIÃ“N
 .
 Administra juegos multijugador de la batalla por Wesnoth. Vea
-http://www.wesnoth.org/wiki/ServerAdministration para saber que órdenes
-acepta el servidor a través del cliente de wesnoth o del socket.
+http://www.wesnoth.org/wiki/ServerAdministration para saber que Ã³rdenes
+acepta el servidor a travÃ©s del cliente de wesnoth o del socket.
 .
 .SH OPCIONES
 .
 .TP 
 \fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
-indica a wesnothd donde encontrar el fichero de configuración que debe
-usar. Vea la sección \fBSERVER CONFIG\fP más abajo para conocer la
-sintaxis. PUedes recargar la configuración enviando SIGHUP al proceso del
+indica a wesnothd donde encontrar el fichero de configuraciÃ³n que debe
+usar. Vea la secciÃ³n \fBSERVER CONFIG\fP mÃ¡s abajo para conocer la
+sintaxis. PUedes recargar la configuraciÃ³n enviando SIGHUP al proceso del
 servidor.
 .TP 
 \fB\-d, \-\-daemon\fP
 ejecuta wesnothd como demonio.
 .TP 
 \fB\-h, \-\-help\fP
-muestra las opciones de línea de órdenes.
+muestra las opciones de lÃ­nea de Ã³rdenes.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-establece el nivel de gravedad de los dominios de depuración. \fBall\fP puede
-usarse para seleccionar todos los dominios. Niveles disponibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto el nivel \fBerror\fP es usado y
+establece el nivel de gravedad de los dominios de depuraciÃ³n. \fBall\fP puede
+usarse para seleccionar todos los dominios. Niveles disponibles: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto el nivel \fBerror\fP es usado y
 el nivel \fBinfo\fP para el dominio \fBserver\fP.
 .TP 
 \fB\-p\ \fP\fIpuerto\fP\fB,\ \-\-port\fP\fI\ puerto\fP
-conecta al servidor al puerto especificado. Si no se especifica ningún
-puerto, se usará el puerto \fB15000\fP.
+conecta al servidor al puerto especificado. Si no se especifica ningÃºn
+puerto, se usarÃ¡ el puerto \fB15000\fP.
 .TP 
-\fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
-establece el número máximo de hilos efectivos en espera para la entrada y
-salida de red a n (por defecto: \fB5\fP, máximo: \fB30\fP).
+\fB\-t\ \fP\fInÃºmero\fP\fB,\ \-\-threads\fP\fI\ nÃºmero\fP
+establece el nÃºmero mÃ¡ximo de hilos efectivos en espera para la entrada y
+salida de red a n (por defecto: \fB5\fP, mÃ¡ximo: \fB30\fP).
 .TP 
-\fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
-establece el número máximo de hilos efectivos que se crearán, si se
-establece a \fB0\fP no habrá ningún límite (por defecto:  \fB0\fP).
+\fB\-T\ \fP\fInÃºmero\fP\fB,\ \-\-max\-threads\fP\fI\ nÃºmero\fP
+establece el nÃºmero mÃ¡ximo de hilos efectivos que se crearÃ¡n, si se
+establece a \fB0\fP no habrÃ¡ ningÃºn lÃ­mite (por defecto:  \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-muestra el número de versión y finaliza.
+muestra el nÃºmero de versiÃ³n y finaliza.
 .TP 
 \fB\-v, \-\-verbose\fP
-activa el registro de depuración
+activa el registro de depuraciÃ³n
 .
-.SH "CONFIGURACIÓN DEL SERVIDOR"
+.SH "CONFIGURACIÃ“N DEL SERVIDOR"
 .
 .SS "La sintaxis general es:"
 .
@@ -93,77 +94,77 @@ clave="\fIvalor\fP,\fIvalor\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-El número máximo de conexiones permitidas desde la misma IP. \fB0\fP significa
+El nÃºmero mÃ¡ximo de conexiones permitidas desde la misma IP. \fB0\fP significa
 infinito. (por defecto: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Nombres o apodos que no están permitidos por el servidor. `*' y `?' pueden
-usarse como comodín. Vea \fBglob\fP(7)  para más detalles.  Los valores por
+Nombres o apodos que no estÃ¡n permitidos por el servidor. `*' y `?' pueden
+usarse como comodÃ­n. Vea \fBglob\fP(7)  para mÃ¡s detalles.  Los valores por
 defecto (usados si no se especifica nada) son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-El número de mensajes permitidos en un lapso de tiempo definido por
+El nÃºmero de mensajes permitidos en un lapso de tiempo definido por
 \fBmessages_time_period\fP. (por defecto: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-El lapso de tiempo (en segundos) usado para detectar una inundación de
+El lapso de tiempo (en segundos) usado para detectar una inundaciÃ³n de
 mensajes. (por defecto: \fB10\fP segundos)
 .TP 
 \fBmotd\fP
-El mensaje del día.
+El mensaje del dÃ­a.
 .TP 
 \fBpasswd\fP
-La contraseña utilizada para obtener privilegios de
+La contraseÃ±a utilizada para obtener privilegios de
 administrador. Habitualmente empieza por `admin '.
 .TP 
 \fBversions_accepted\fP
-Una lista separada por comas de cadenas de versión que serán admitidas por
-el servidor. `*' y `?' pueden usarse como comodín. (por defecto es la
-versión de wesnoth correspondiente)
+Una lista separada por comas de cadenas de versiÃ³n que serÃ¡n admitidas por
+el servidor. `*' y `?' pueden usarse como comodÃ­n. (por defecto es la
+versiÃ³n de wesnoth correspondiente)
 .br
-Ejemplo:  \fBversions_accepted="*"\fP acepta cualquier cadena de versión.
+Ejemplo:  \fBversions_accepted="*"\fP acepta cualquier cadena de versiÃ³n.
 .
 .SS "Etiquetas globales:"
 .
 .P
 \fB[redirect]\fP Una etiqueta para especificar un servidor al que se
-redirigirán ciertas versiones de clientes.
+redirigirÃ¡n ciertas versiones de clientes.
 .RS
 .TP 
 \fBhost\fP
-La dirección del servidor hacia el que se hará la redirección.
+La direcciÃ³n del servidor hacia el que se harÃ¡ la redirecciÃ³n.
 .TP 
 \fBport\fP
-El puerto al que se hará la conexión.
+El puerto al que se harÃ¡ la conexiÃ³n.
 .TP 
 \fBversion\fP
 Una lista separada por comas de las versiones a redirigir. Se usa la misma
 sintaxis que para \fBversions_accepted\fP en lo relativo a comodines.
 .RE
 .P
-\fB[proxy]\fP Una etiqueta para indicar al servidor que actúe de proxy y
-reenvíe las peticiones de los clientes conectados al servidor especificad. 
+\fB[proxy]\fP Una etiqueta para indicar al servidor que actÃºe de proxy y
+reenvÃ­e las peticiones de los clientes conectados al servidor especificad.
 Acepta las mismas claves que \fB[redirect]\fP.
 .
 .SH AUTOR
 .
 Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> y
-Soliton <soliton.de@gmail.com>.  Esta página de manual fue escrita
+Soliton <soliton.de@gmail.com>.  Esta pÃ¡gina de manual fue escrita
 inicialmente por Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visite la página web oficial: http://www.wesnoth.org/
+Visite la pÃ¡gina web oficial: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Esto es Software Libre; este software está licenciado bajo la GPL versión 2,
+Esto es Software Libre; este software estÃ¡ licenciado bajo la GPL versiÃ³n 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe
-NINGUNA garantía; ni siquiera para SU USO COMERCIAL o ADECUACIÓN A UN
-PROPÓSITO PARTICULAR.
+NINGUNA garantÃ­a; ni siquiera para SU USO COMERCIAL o ADECUACIÃ“N A UN
+PROPÃ“SITO PARTICULAR.
 .
-.SH "VÉASE TAMBIÉN"
+.SH "VÃ‰ASE TAMBIÃ‰N"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

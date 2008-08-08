@@ -32,9 +32,9 @@ wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
 Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem
 Fantasy\-Szenario.
 
-Schlüpfen Sie in die Rolle eines Heerführers und führen Sie Ihre Armee zum
-Sieg.  Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen
-Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner.
+SchlÃ¼pfen Sie in die Rolle eines HeerfÃ¼hrers und fÃ¼hren Sie Ihre Armee zum
+Sieg.  WÃ¤hlen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen
+Fertigkeiten, Waffen und SprÃ¼chen aus und zerschmettern Sie Ihre Gegner.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -48,16 +48,16 @@ skip menu, show directly the campaign menu.
 .TP 
 \fB\-\-compress\fP\fI\ entpackte_datei\ komprimierte_datei\fP
 Wandelt eine normale WML\-Textdatei (\fIentpackte_datei\fP) in einen als
-WML\-Binärdatei komprimierten Spielstand (\fIkomprimierte_datei\fP) um.
+WML\-BinÃ¤rdatei komprimierten Spielstand (\fIkomprimierte_datei\fP) um.
 .TP 
 \fB\-d, \-\-debug\fP
-Zeigt Entwicklerinformationen im Spiel an und erlaubt zusätzliche Kommandos
+Zeigt Entwicklerinformationen im Spiel an und erlaubt zusÃ¤tzliche Kommandos
 in der spieleigenen Befehlszeile (auf der Internet\-Seite
 http://www.wesnoth.org/wiki/CommandMode sind weitere Informationen hierzu
-verfügbar).
+verfÃ¼gbar).
 .TP 
 \fB\-\-decompress\fP\fI\ komprimierte_datei\ entpackte_datei\fP
-Wandelt einen als WML\-Binärdatei komprimierten Spielstand
+Wandelt einen als WML\-BinÃ¤rdatei komprimierten Spielstand
 (\fIkomprimierte_datei\fP)  in eine normale WML\-Textdatei (\fIentpackte_datei\fP)
 um.
 .TP 
@@ -78,18 +78,19 @@ als gzip komprimierten Spielstand \fIdateiname\fP.gz um und entfernt die alte
 Datei \fIdateiname\fP.
 .TP 
 \fB\-h, \-\-help\fP
-Gibt die möglichen Kommandozeilenoptionen aus.
+Gibt die mÃ¶glichen Kommandozeilenoptionen aus.
 .TP 
 \fB\-\-load\fP\fI\ Spielstand\fP
-Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte
+LÃ¤dt die Datei `Spielstand' aus dem Standardverzeichnis fÃ¼r gespeicherte
 Spiele.
 .TP 
 \fB\-\-with\-replay\fP
 replays the game loaded with \-\-load option.
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
-Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
-zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP verwendet.
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomÃ¤ne1\fP\fB,\fP\fIDomÃ¤ne2\fP\fB,\fP\fI...\fP
+Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sÃ¤mtliche DomÃ¤nen
+zu verwenden. VerfÃ¼gbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. StandardmÃ¤ÃŸig wird die Stufe \fBerror\fP verwendet.
 .TP 
 \fB\-\-logdomains\fP
 Gibt eine Liste der Protokollbereiche aus und beendet das Programm.
@@ -100,9 +101,9 @@ angezeigt werden. Der Wert sollte zwischen 1 und 1000 liegen. Der Standard
 ist \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-Startet das Spiel im Mehrspieler\-Modus. Es gibt noch zusätzliche Optionen
-die zusammen mit \fB\-\-multiplayer\fP verwendet werden können. Diese werden
-weiter unten näher erklärt.
+Startet das Spiel im Mehrspieler\-Modus. Es gibt noch zusÃ¤tzliche Optionen
+die zusammen mit \fB\-\-multiplayer\fP verwendet werden kÃ¶nnen. Diese werden
+weiter unten nÃ¤her erklÃ¤rt.
 .TP 
 \fB\-\-nocache\fP
 Veranlasst das Programm, keine Daten zwischenzuspeichern.
@@ -117,7 +118,7 @@ Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
 prints the name of the user configuration directory and exits.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet
+ErmÃ¶glicht es, die AuflÃ¶sung zu bestimmen, in der das Spiel gestartet
 wird. Beispiel: \fB\-r 800x600\fP
 .TP 
 \fB\-s,\ \-\-server\ [host]\fP
@@ -134,60 +135,60 @@ Zeigt die Versionsnummer an und beendet das Programm.
 Startet das Programm im Fenstermodus.
 .TP 
 \fB\-\-no\-delay\fP
-Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum Ausführen grafischer
-Leistungsvergleiche verwendet. Diese Option ist standardmäßig aktiviert,
+Das Spiel wird ohne VerzÃ¶gerungen ausgefÃ¼hrt. Wird zum AusfÃ¼hren grafischer
+Leistungsvergleiche verwendet. Diese Option ist standardmÃ¤ÃŸig aktiviert,
 wenn die Option \fB\-\-nogui\fP gesetzt ist.
 .TP 
 \fB\-\-nogui\fP
-Das Spiel startet ohne grafische Oberfläche. Muss vor \fB\-\-multiplayer\fP in
+Das Spiel startet ohne grafische OberflÃ¤che. Muss vor \fB\-\-multiplayer\fP in
 der Befehlszeile angegeben werden.
 .TP 
 \fB\-\-exit\-at\-end\fP
-Beendet das Spiel am Ende eines Szenarios ohne die Sieg/Niederlage Übersicht
-anzuzeigen, da der Benutzer hier »Ok« auswählen müsste, damit das Spiel
+Beendet das Spiel am Ende eines Szenarios ohne die Sieg/Niederlage Ãœbersicht
+anzuzeigen, da der Benutzer hier Â»OkÂ« auswÃ¤hlen mÃ¼sste, damit das Spiel
 fortgesetzt wird. Dies wird ebenfalls bei geskripteten Leistungsvergleichen
 verwendet.
 .
-.SH "Zusätzliche Optionen für \-\-multiplayer"
+.SH "ZusÃ¤tzliche Optionen fÃ¼r \-\-multiplayer"
 .
 Die seitenspezifischen Einstellungen sind mit \fINummer\fP markiert. \fINummer\fP
 muss dabei durch die Nummer der jeweiligen Seite ersetzt werden. Meistens
-ist diese Nummer 1 oder 2, doch hängt es letztendlich von der Anzahl der
-möglichen Spieler in dem gewählten Szenario ab.
+ist diese Nummer 1 oder 2, doch hÃ¤ngt es letztendlich von der Anzahl der
+mÃ¶glichen Spieler in dem gewÃ¤hlten Szenario ab.
 .TP 
 \fB\-\-algorithm\fP\fINummer\fP\fB=\fP\fIWert\fP
-Legt einen anderen als den Standardalgorithmus für die KI der gewählten
-Seite fest. Mögliche Werte sind \fBidle_ai\fP oder \fBsample_ai\fP.
+Legt einen anderen als den Standardalgorithmus fÃ¼r die KI der gewÃ¤hlten
+Seite fest. MÃ¶gliche Werte sind \fBidle_ai\fP oder \fBsample_ai\fP.
 .TP  
 \fB\-\-controller\fP\fINummer\fP\fB=\fP\fIWert\fP
-Bestimmt, wer die gewählte Seite kontrolliert. Mögliche Werte sind \fBhuman\fP
-für einen Menschen oder \fBai\fP für einen KI\-Spieler.
+Bestimmt, wer die gewÃ¤hlte Seite kontrolliert. MÃ¶gliche Werte sind \fBhuman\fP
+fÃ¼r einen Menschen oder \fBai\fP fÃ¼r einen KI\-Spieler.
 .TP  
 \fB\-\-era=\fP\fIWert\fP
-Bestimmt, welche Ära für diese Partie anstelle der \fBStandard\fP Ära genutzt
-werden soll. Die Ära wird anhand ihrer ID bestimmt. Eine genaue Beschreibung
+Bestimmt, welche Ã„ra fÃ¼r diese Partie anstelle der \fBStandard\fP Ã„ra genutzt
+werden soll. Die Ã„ra wird anhand ihrer ID bestimmt. Eine genaue Beschreibung
 der Rassen und Epochen ist in der Datei \fBdata/multiplayer.cfg\fP zu finden.
 .TP 
 \fB\-\-parm\fP\fINummer\fP\fB=\fP\fIName\fP\fB:\fP\fIWert\fP
-Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter
-hängen davon ab, welche Optionen für \fB\-\-controller\fP und \fB\-\-algorithm\fP
+Gibt zusÃ¤tzliche Parameter fÃ¼r diese Seite an. Die mÃ¶glichen Parameter
+hÃ¤ngen davon ab, welche Optionen fÃ¼r \fB\-\-controller\fP und \fB\-\-algorithm\fP
 verwendet werden. Diese Einstellung ist nur interessant, wenn Sie Ihre
-eigene KI entwickeln wollen. (bisher ist noch keine vollständige
-Dokumentation verfügbar)
+eigene KI entwickeln wollen. (bisher ist noch keine vollstÃ¤ndige
+Dokumentation verfÃ¼gbar)
 .TP 
 \fB\-\-scenario=\fP\fIWert\fP
 Bestimmt das Szenario, das geladen werden soll. Standard ist
 \fBmultiplayer_The_Freelands\fP.
 .TP 
 \fB\-\-side\fP\fINummer\fP\fB=\fP\fIWert\fP
-Bestimmt die Rasse für die festgelegte Seite in Abhängigkeit von der
-gewählten Ära. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung
+Bestimmt die Rasse fÃ¼r die festgelegte Seite in AbhÃ¤ngigkeit von der
+gewÃ¤hlten Ã„ra. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung
 der Rassen und Epochen ist in der Datei data/multiplayer.cfg zu finden.
 .TP 
 \fB\-\-turns=\fP\fIWert\fP
 Bestimmt die Anzahl der Runden. Standard ist \fB50\fP.
 .TP 
-Beispiel zum Test einer eigenen KI gegen die Standard KI ohne die Spieloberfläche zu starten:
+Beispiel zum Test einer eigenen KI gegen die Standard KI ohne die SpieloberflÃ¤che zu starten:
 \fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
 \-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py\fP
 .
@@ -196,8 +197,8 @@ Beispiel zum Test einer eigenen KI gegen die Standard KI ohne die Spieloberfläch
 Geschrieben von David White <davidnwhite@verizon.net>.
 .br
 Bearbeitet von Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
-<ott@gaon.net> und Soliton <soliton.de@gmail.com>. 
-Übersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de> und Nils
+<ott@gaon.net> und Soliton <soliton.de@gmail.com>.
+Ãœbersetzt von Jan\-Heiner Laberenz <Jan\-Heiner@arcor.de> und Nils
 Kneuper <crazy\-ivanovic@gmx.net>.
 .br
 Diese Beschreibung stammt im Original von Cyril Bouthors
@@ -209,13 +210,13 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
+Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der
 GNU General Public License, wie von der Free Software Foundation
-veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
-der Lizenz oder (nach Ihrer Option) jeder späteren Version.  Die
-Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
+verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 2
+der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.  Die
+VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
 Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
-Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN BESTIMMTEN
 ZWECK. Details finden Sie in der GNU General Public License.  Sie sollten
 eine Kopie der GNU General Public License zusammen mit diesem Programm
 erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,

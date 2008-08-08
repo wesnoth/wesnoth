@@ -18,54 +18,55 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd Τŵ֮ս������Ϸ������
+.TH WESNOTHD 6 2007 wesnothd 韦诺之战多人游戏服务器
 .
-.SH ����
+.SH 命名
 .
-wesnothd \- Τŵ֮ս \fBWesnoth\fP ������Ϸ������
+wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
 .
-.SH ժҪ
+.SH 摘要
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
 \fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH ����
+.SH 描述
 .
-����Τŵ֮ս������Ϸ��
-�鿴�ٷ�wiki�ϵ�ServerAdministrationҳ��ȡ�������ͨ��wesnoth�ͻ��˻���socket�ڷ����������е������Ӧwiki:
+管理韦诺之战多人游戏。
+查看官方wiki上的ServerAdministration页获取更多可以通过wesnoth客户端或者socket在服务器上运行的命令。对应wiki:
 http://www.wesnoth.org/wiki/ServerAdministration
 .
-.SH ѡ��
+.SH 选项
 .
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
-ָ��wesnothd���������ļ���Ŀ¼���鿴�����\fBSERVER CONFIG\fPͨ������SIGHUP�źŸ�������̿�������װ�������ļ���
+指定wesnothd查找配置文件的目录。查看下面的\fBSERVER CONFIG\fP通过发送SIGHUP信号给服务进程可以重新装载配置文件。
 .TP 
 \fB\-d, \-\-daemon\fP
-���ػ����̷�ʽ(daemon)����wesnothd
+以守护进程方式(daemon)运行wesnothd
 .TP 
 \fB\-h, \-\-help\fP
-��ʾ������ѡ�������
+显示命令行选项的作用
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-������־��¼�ļ���.\fBall\fP����ƥ��������־��(log domain)���𡣿�ѡ�ļ����У�\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP��Ĭ�ϵļ�����\fBerror\fP����\fB������\fP��Ĭ�ϼ�����\fBinfo\fP��
+设置日志记录的级别.\fBall\fP用来匹配任意日志域(log domain)级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\
+\fBinfo\fP,\ \fBdebug\fP。默认的级别是\fBerror\fP，对\fB服务器\fP域默认级别是\fBinfo\fP。
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-�󶨷���ָ���Ķ˿ڡ������ָ���˿ڽ�ʹ��\fB15000\fP�˿ڡ�
+绑定服务到指定的端口。如果不指定端口将使用\fB15000\fP端口。
 .TP 
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-��������I/O���������߳���(waiting worker threads)Ϊn (Ĭ��ֵΪ\fB5\fP��\ ���Ϊ\ \fB30\fP)��
+设置网络I/O的最大挂起线程数(waiting worker threads)为n (默认值为\fB5\fP，\ 最大为\ \fB30\fP)。
 .TP 
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-����������������������߳���(worker threads)���������Ϊ\fB0\fP�������߳�����Ĭ��ֵ��\fB0\fP��
+设置允许创建的最大正常线程数(worker threads)。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
 .TP 
 \fB\-V, \-\-version\fP
-��ʾ�汾�Ų��˳�
+显示版本号并退出
 .TP 
 \fB\-v, \-\-verbose\fP
-����������־��¼
+开启调试日志记录
 .
 .SH "SERVER CONFIG"
 .
@@ -88,63 +89,63 @@ The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-������������ʹ�õ��û���/�ǳơ�����ʹ��`*'��`?'ͨ��������塣������Ϣ��鿴 \fBglob\fP(7) ��Ĭ��ֵ(����û�û��ָ�����Զ�ʹ��)�ǣ�
+服务器不允许使用的用户名/昵称。可以使用`*'和`?'通配符来定义。更多信息请查看 \fBglob\fP(7) 。默认值(如果用户没有指定则自动使用)是：
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-\fBmessages_time_period\fP���������ڵ���Ϣ���� (Ĭ��ֵ: \fB4\fP)
+\fBmessages_time_period\fP中允许存在的消息数。 (默认值: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-��Ϣ����(message flooding)���ʱ����(��)�� (Ĭ��ֵ: \fB10\fP ��)
+消息泛滥(message flooding)检测时间间隔(秒)。 (默认值: \fB10\fP 秒)
 .TP 
 \fBmotd\fP
-��������
+当日新闻
 .TP 
 \fBpasswd\fP
-��ȡ����ԱȨ�޵����롣ͨ����`admin '��ͷ��
+获取管理员权限的密码。通常以`admin '开头。
 .TP 
 \fBversions_accepted\fP
-�ö��ŷָ��ķ��������ܵİ汾���б���֧��`*'��`?'ͨ�������Ĭ��Ϊ(�������)һ�µ�wesnoth�汾��
+用逗号分隔的服务器接受的版本号列表。支持`*'和`?'通配符。（默认为(与服务器)一致的wesnoth版本）
 .br
-����: \fBversions_accepted="*"\fP �������а汾���ӡ�
+例如: \fBversions_accepted="*"\fP 允许所有版本连接。
 .
 .SS "Global tags:"
 .
 .P
-\fB[redirect]\fP �����������ض����ض��ͻ��˰汾�ı�ǩ��
+\fB[redirect]\fP 服务器用来重定向特定客户端版本的标签。
 .RS
 .TP 
 \fBhost\fP
-�ض��򵽵ķ�������ַ
+重定向到的服务器地址
 .TP 
 \fBport\fP
-���Ӷ˿�
+连接端口
 .TP 
 \fBversion\fP
-�ö��ŷָ�����Ҫ�ض���İ汾���б���ͬ������ʹ��`*'��`?'ͨ�����
+用逗号分隔的需要重定向的版本号列表。同样可以使用`*'和`?'通配符。
 .RE
 .P
-\fB[proxy]\fP �����ǩ���߷��������ݴ�����������ɫ�����û������ض�����һ̨����������\fB[redirect]\fP����һ���Ĳ�����
+\fB[proxy]\fP 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务器。与\fB[redirect]\fP接受一样的参数。
 .
-.SH ����
+.SH 作者
 .
-�� David White <davidnwhite@verizon.net>��д���� Nils Kneuper
-<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> �� Soliton
-<soliton.de@gmail.com>�޸ġ��������ҳ������Cyril Bouthors
-<cyril@bouthors.org>��д��
+由 David White <davidnwhite@verizon.net>编写。经 Nils Kneuper
+<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> 和 Soliton
+<soliton.de@gmail.com>修改。这个帮助页最早由Cyril Bouthors
+<cyril@bouthors.org>编写。
 .br
-���ʹٷ���վ: http://www.wesnoth.org/
+访问官方网站: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-����һ������������ʹ����FSF������GPL v2Э����Ȩ��ԭ�����£�This is Free Software; this software is
+这是一个自由软件；使用由FSF发布的GPL v2协议授权。原文如下：This is Free Software; this software is
 licensed under the GPL version 2, as published by the Free Software
 Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
 FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
 or FITNESS FOR A PARTICULAR PURPOSE.
 .
-.SH �μ�
+.SH 参见
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

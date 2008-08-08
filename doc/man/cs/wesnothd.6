@@ -18,149 +18,150 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Bitva o Wesnoth \- sí»ovı server pro hru více hráèù"
+.TH WESNOTHD 6 2007 wesnothd "Bitva o Wesnoth \- sÃ­Å¥ovÃ½ server pro hru vÃ­ce hrÃ¡ÄÅ¯"
 .
-.SH NÁZEV
+.SH NÃZEV
 .
-Bitva o \fBWesnoth\fP \- sí»ovı server pro hru více hráèù
+Bitva o \fBWesnoth\fP \- sÃ­Å¥ovÃ½ server pro hru vÃ­ce hrÃ¡ÄÅ¯
 .
-.SH POU®ITÍ
+.SH POUÅ½ITÃ
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIpoèet_vláken\fP\|] [\|\fB\-T\fP \fIpoèet_vláken\fP\|]
+\fIpoÄet_vlÃ¡ken\fP\|] [\|\fB\-T\fP \fIpoÄet_vlÃ¡ken\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
 .SH POPIS
 .
-Souèást Bitvy o Wesnoth spravující hry více hráèù. Na
-http://www.wesnoth.org/wiki/ServerAdministration lze nalézt pøíkazy, které
-server akceptuje, a to jak pøes soket, tak pøímo od klienta wesnoth.
+SouÄÃ¡st Bitvy o Wesnoth spravujÃ­cÃ­ hry vÃ­ce hrÃ¡ÄÅ¯. Na
+http://www.wesnoth.org/wiki/ServerAdministration lze nalÃ©zt pÅ™Ã­kazy, kterÃ©
+server akceptuje, a to jak pÅ™es soket, tak pÅ™Ã­mo od klienta wesnoth.
 .
 .SH VOLBY
 .
 .TP 
 \fB\-c\ \fP\fIcesta\fP\fB,\ \-\-config\fP\fI\ cesta\fP
-specifikuje cestu, kde má wesnothd hledat konfiguraèní soubor. Syntaxe
-souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP ní¾e. Konfiguraci je mo¾no
-znovu naèíst posláním SIGHUP procesu serveru.
+specifikuje cestu, kde mÃ¡ wesnothd hledat konfiguraÄnÃ­ soubor. Syntaxe
+souboru je popsÃ¡na v sekci \fBKONFIGURACE SERVERU\fP nÃ­Å¾e. Konfiguraci je moÅ¾no
+znovu naÄÃ­st poslÃ¡nÃ­m SIGHUP procesu serveru.
 .TP 
 \fB\-d, \-\-daemon\fP
-spou¹tí wesnothd jako démona.
+spouÅ¡tÃ­ wesnothd jako dÃ©mona.
 .TP 
 \fB\-h, \-\-help\fP
-zobrazuje nápovìdu k parametrùm pøíkazové øádky.
+zobrazuje nÃ¡povÄ›du k parametrÅ¯m pÅ™Ã­kazovÃ© Å™Ã¡dky.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
-nastavuje úroveò záva¾nosti pro jednotlivé kategorie. \fBall\fP znamená, ¾e
-budou vypisovány v¹echny kategorie. Dostupné kategorie: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.\ Implicitnì je aktivována kategorie
-\fBerror\fP a pro kategorii \fBserver\fP také \fBinfo\fP.
+nastavuje ÃºroveÅˆ zÃ¡vaÅ¾nosti pro jednotlivÃ© kategorie. \fBall\fP znamenÃ¡, Å¾e
+budou vypisovÃ¡ny vÅ¡echny kategorie. DostupnÃ© kategorie: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.\ ImplicitnÄ› je aktivovÃ¡na kategorie
+\fBerror\fP a pro kategorii \fBserver\fP takÃ© \fBinfo\fP.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-urèuje, kterı port má server pou¾ívat. Implicitní hodnota je \fB15000\fP.
+urÄuje, kterÃ½ port mÃ¡ server pouÅ¾Ã­vat. ImplicitnÃ­ hodnota je \fB15000\fP.
 .TP 
-\fB\-t,\ \fP\fIpoèet\fP\fB,\ \-\-threads\fP\fI\ poèet\fP
-nastavuje limit pro poèet neèinnıch vláken èekajících na sí»ová spojení
-(implicitnì: \fB5\fP,\ max:\ \fB30\fP).
+\fB\-t,\ \fP\fIpoÄet\fP\fB,\ \-\-threads\fP\fI\ poÄet\fP
+nastavuje limit pro poÄet neÄinnÃ½ch vlÃ¡ken ÄekajÃ­cÃ­ch na sÃ­Å¥ovÃ¡ spojenÃ­
+(implicitnÄ›: \fB5\fP,\ max:\ \fB30\fP).
 .TP 
-\fB\-T,\ \fP\fIpoèet\fP\fB,\ \-\-max\-threads\fP\fI\ poèet\fP
-nastavuje nejvy¹¹í poèet vláken, které wesnothd vytvoøí; \fB0\fP znamená bez
-omezení (implicitnì: \fB0\fP).
+\fB\-T,\ \fP\fIpoÄet\fP\fB,\ \-\-max\-threads\fP\fI\ poÄet\fP
+nastavuje nejvyÅ¡Å¡Ã­ poÄet vlÃ¡ken, kterÃ© wesnothd vytvoÅ™Ã­; \fB0\fP znamenÃ¡ bez
+omezenÃ­ (implicitnÄ›: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-zobrazí verzi wesnothd a skonèí.
+zobrazÃ­ verzi wesnothd a skonÄÃ­.
 .TP 
 \fB\-v, \-\-verbose\fP
-zapíná vıpis roz¹íøenıch logovacích informací.
+zapÃ­nÃ¡ vÃ½pis rozÅ¡Ã­Å™enÃ½ch logovacÃ­ch informacÃ­.
 .
 .SH "KONFIGURACE SERVERU"
 .
-.SS "Obecná syntaxe je:"
+.SS "ObecnÃ¡ syntaxe je:"
 .
 .P
-[\fIznaèka\fP]
+[\fIznaÄka\fP]
 .IP
-klíè="\fIhodnota\fP"
+klÃ­Ä="\fIhodnota\fP"
 .IP
-klíè="\fIhodnota\fP,\fIhodnota\fP"
+klÃ­Ä="\fIhodnota\fP,\fIhodnota\fP"
 .P
-[/\fIznaèka\fP]
+[/\fIznaÄka\fP]
 .
-.SS "Globální klíèe:"
+.SS "GlobÃ¡lnÃ­ klÃ­Äe:"
 .
 .TP 
 \fBconnections_allowed\fP
-Poèet povolenıch spojení z jedné IP adresy. \fB0\fP znamená
-nekoneèno. (implicitnì \fB5\fP)
+PoÄet povolenÃ½ch spojenÃ­ z jednÃ© IP adresy. \fB0\fP znamenÃ¡
+nekoneÄno. (implicitnÄ› \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Jména/pøezdívky, které nejsou serverem akceptována. Je mo¾no pou¾ít
-metaznaky `*' a `?'. Více viz. \fBglob\fP(7). Implicitní hodnota je:
+JmÃ©na/pÅ™ezdÃ­vky, kterÃ© nejsou serverem akceptovÃ¡na. Je moÅ¾no pouÅ¾Ã­t
+metaznaky `*' a `?'. VÃ­ce viz. \fBglob\fP(7). ImplicitnÃ­ hodnota je:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Maximální poèet zpráv, které jsou pøijaty bìhem
-\fBmessages_time_period\fP. (implicitnì \fB4\fP)
+MaximÃ¡lnÃ­ poÄet zprÃ¡v, kterÃ© jsou pÅ™ijaty bÄ›hem
+\fBmessages_time_period\fP. (implicitnÄ› \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-Èasová perioda (ve vteøinách), po které se nuluje poèítadlo pøjatıch
-zpráv. (implicitnì \fB10\fP sekund)
+ÄŒasovÃ¡ perioda (ve vteÅ™inÃ¡ch), po kterÃ© se nuluje poÄÃ­tadlo pÅ™jatÃ½ch
+zprÃ¡v. (implicitnÄ› \fB10\fP sekund)
 .TP 
 \fBmotd\fP
-Zpráva dne.
+ZprÃ¡va dne.
 .TP 
 \fBpasswd\fP
-Heslo pro získání administrátorskıch práv. Obvykle zaèíná na ?admin?.
+Heslo pro zÃ­skÃ¡nÃ­ administrÃ¡torskÃ½ch prÃ¡v. Obvykle zaÄÃ­nÃ¡ na â€adminâ€œ.
 .TP 
 \fBversions_accepted\fP
-Seznam èárkou oddìlenıch øetìzcù verzí Wesnothu, které jsou serverem
-akceptovány. Je mo¾no pou¾ít zástupné znaky `*' a `?'. Implicitní hodnota
-odpovídá pøíslu¹né verzi wesnothu.
+Seznam ÄÃ¡rkou oddÄ›lenÃ½ch Å™etÄ›zcÅ¯ verzÃ­ Wesnothu, kterÃ© jsou serverem
+akceptovÃ¡ny. Je moÅ¾no pouÅ¾Ã­t zÃ¡stupnÃ© znaky `*' a `?'. ImplicitnÃ­ hodnota
+odpovÃ­dÃ¡ pÅ™Ã­sluÅ¡nÃ© verzi wesnothu.
 .br
-Pøíklad: \fBversions_accepted="*"\fP akceptuje v¹echny verze.
+PÅ™Ã­klad: \fBversions_accepted="*"\fP akceptuje vÅ¡echny verze.
 .
-.SS "Globální znaèky:"
+.SS "GlobÃ¡lnÃ­ znaÄky:"
 .
 .P
-\fB[redirect]\fP Znaèka udávající server, na kterı bude pøesmìrován po¾adavek
-pro konkrétní verzi klienta.
+\fB[redirect]\fP ZnaÄka udÃ¡vajÃ­cÃ­ server, na kterÃ½ bude pÅ™esmÄ›rovÃ¡n poÅ¾adavek
+pro konkrÃ©tnÃ­ verzi klienta.
 .RS
 .TP 
 \fBhost\fP
-Adresa serveru pro pøesmìrování.
+Adresa serveru pro pÅ™esmÄ›rovÃ¡nÃ­.
 .TP 
 \fBport\fP
-Port, na kterém poslouchá vzdálenı wesnothd.
+Port, na kterÃ©m poslouchÃ¡ vzdÃ¡lenÃ½ wesnothd.
 .TP 
 \fBversion\fP
-Seznam èárkou oddìlenıch øetìzcù verzí Wesnothu, pro které jsou po¾adavky
-pøesmìrovány na tento vzdálenı server. Obdobnı zápis jako u
+Seznam ÄÃ¡rkou oddÄ›lenÃ½ch Å™etÄ›zcÅ¯ verzÃ­ Wesnothu, pro kterÃ© jsou poÅ¾adavky
+pÅ™esmÄ›rovÃ¡ny na tento vzdÃ¡lenÃ½ server. ObdobnÃ½ zÃ¡pis jako u
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Znaèka øíkající, kterı server se chová jako proxy a pøesmìrovává
-na urèenı server své po¾adavky. Akceptuje stejné klíèe jako \fB[redirect]\fP.
+\fB[proxy]\fP ZnaÄka Å™Ã­kajÃ­cÃ­, kterÃ½ server se chovÃ¡ jako proxy a pÅ™esmÄ›rovÃ¡vÃ¡
+na urÄenÃ½ server svÃ© poÅ¾adavky. Akceptuje stejnÃ© klÃ­Äe jako \fB[redirect]\fP.
 .
-.SH AUTOØI
+.SH AUTOÅ˜I
 .
-Vytvoøil David White <davidnwhite@verizon.net>. Upravili Nils
+VytvoÅ™il David White <davidnwhite@verizon.net>. Upravili Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a
-Soliton <soliton@sonnenkinder.org>. Tuto manovou stránku pùvodnì
-vytvoøil Cyril Bouthors <cyril@bouthors.org>. Pøeklad Oto 'tapik'
-Buchta <tapik@buchtovi.cz> a Vladimír Slávik
+Soliton <soliton@sonnenkinder.org>. Tuto manovou strÃ¡nku pÅ¯vodnÄ›
+vytvoÅ™il Cyril Bouthors <cyril@bouthors.org>. PÅ™eklad Oto 'tapik'
+Buchta <tapik@buchtovi.cz> a VladimÃ­r SlÃ¡vik
 <slavik.vladimir@seznam.czi>.
 .br
-Nav¹tivte oficiální stránky: http://www.wesnoth.org/ a oficiální èeské
-stránky http://www.wesnoth.wz.cz/
+NavÅ¡tivte oficiÃ¡lnÃ­ strÃ¡nky: http://www.wesnoth.org/ a oficiÃ¡lnÃ­ ÄeskÃ©
+strÃ¡nky http://www.wesnoth.wz.cz/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Toto je Svobodnı Software; je licencován pod licencí GPL verze 2, tak jak je
-publikována nadací Free Software Foundation. Tento program je bez záruky, a
-to i co se tıká obchodovatelnosti a pou¾itelnosti.
+Toto je SvobodnÃ½ Software; je licencovÃ¡n pod licencÃ­ GPL verze 2, tak jak je
+publikovÃ¡na nadacÃ­ Free Software Foundation. Tento program je bez zÃ¡ruky, a
+to i co se tÃ½kÃ¡ obchodovatelnosti a pouÅ¾itelnosti.
 .
-.SH "VIZ TAKÉ"
+.SH "VIZ TAKÃ‰"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

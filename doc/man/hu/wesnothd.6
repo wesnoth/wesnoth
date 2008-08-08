@@ -18,160 +18,161 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Harc Wesnothért többjátékos hálózati démon"
+.TH WESNOTHD 6 2007 wesnothd "Harc WesnothÃ©rt tÃ¶bbjÃ¡tÃ©kos hÃ¡lÃ³zati dÃ©mon"
 .
-.SH NÉV
+.SH NÃ‰V
 .
-wesnothd \- Harc \fBWesnoth\fPért többjátékos hálózati démon
+wesnothd \- Harc \fBWesnoth\fPÃ©rt tÃ¶bbjÃ¡tÃ©kos hÃ¡lÃ³zati dÃ©mon
 .
-.SH ÁTTEKINTÉS
+.SH ÃTTEKINTÃ‰S
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIútvonal\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIszám\fP\|] [\|\fB\-T\fP \fIszám\fP\|]
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIÃºtvonal\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIszÃ¡m\fP\|] [\|\fB\-T\fP \fIszÃ¡m\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH LEÍRÁS
+.SH LEÃRÃS
 .
-A Harc Wesnothért többjátékos mérkõzéseit kezeli. A klienstõl, vagy
-máshonnan érkezõ, a kiszolgáló által elfogadott parancsokról itt
-tájékozódhatsz: http://www.wesnoth.org/wiki/ServerAdministration
+A Harc WesnothÃ©rt tÃ¶bbjÃ¡tÃ©kos mÃ©rkÅ‘zÃ©seit kezeli. A klienstÅ‘l, vagy
+mÃ¡shonnan Ã©rkezÅ‘, a kiszolgÃ¡lÃ³ Ã¡ltal elfogadott parancsokrÃ³l itt
+tÃ¡jÃ©kozÃ³dhatsz: http://www.wesnoth.org/wiki/ServerAdministration
 .
-.SH BEÁLLÍTÁSOK
+.SH BEÃLLÃTÃSOK
 .
 .TP 
-\fB\-c\ \fP\fIútvonal\fP\fB,\ \-\-config\fP\fI\ útvonal\fP
-megadja a wesnothd programnak, hogy hol keresse a konfigurációs fájlt. A
-szintaxisról lásd alább a \fBKISZOLGÁLÓ BEÁLLÍTÁSA\fP részt.
+\fB\-c\ \fP\fIÃºtvonal\fP\fB,\ \-\-config\fP\fI\ Ãºtvonal\fP
+megadja a wesnothd programnak, hogy hol keresse a konfigurÃ¡ciÃ³s fÃ¡jlt. A
+szintaxisrÃ³l lÃ¡sd alÃ¡bb a \fBKISZOLGÃLÃ“ BEÃLLÃTÃSA\fP rÃ©szt.
 .TP 
 \fB\-d, \-\-daemon\fP
-démon szolgáltatásként futtatja a wesnothd programot.
+dÃ©mon szolgÃ¡ltatÃ¡skÃ©nt futtatja a wesnothd programot.
 .TP 
 \fB\-h, \-\-help\fP
-kiírja, hogy mire jók az egyes parancssori opciók.
+kiÃ­rja, hogy mire jÃ³k az egyes parancssori opciÃ³k.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-beállítja a naplózási tartomány szintjét. Az \fBall\fP minden naplózási
-tartományra illeszkedik. Beállítható szintek: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Alapértelmezettként az \fBerror\fP szint van beállítva, míg
-a \fBserver\fP tartományhoz az \fBinfo\fP szint tartozik.
+beÃ¡llÃ­tja a naplÃ³zÃ¡si tartomÃ¡ny szintjÃ©t. Az \fBall\fP minden naplÃ³zÃ¡si
+tartomÃ¡nyra illeszkedik. BeÃ¡llÃ­thatÃ³ szintek: \fBerror\fP,\ \fBwarning\fP,\
+\fBinfo\fP,\ \fBdebug\fP. AlapÃ©rtelmezettkÃ©nt az \fBerror\fP szint van beÃ¡llÃ­tva, mÃ­g
+a \fBserver\fP tartomÃ¡nyhoz az \fBinfo\fP szint tartozik.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-a megadott portra köti a kiszolgálót. Ha nincs más meghatározva, akkor a
-\fB15000\fP\-es port lesz használatban.
+a megadott portra kÃ¶ti a kiszolgÃ¡lÃ³t. Ha nincs mÃ¡s meghatÃ¡rozva, akkor a
+\fB15000\fP\-es port lesz hasznÃ¡latban.
 .TP 
-\fB\-t\ \fP\fIszám\fP\fB,\ \-\-threads\fP\fI\ szám\fP
-beállítja a teljesítésre váró hálózati I/O folyamatok maximális számát n\-re
-(alapértelmezett: \fB5\fP, legfeljebb: \fB30\fP)
+\fB\-t\ \fP\fIszÃ¡m\fP\fB,\ \-\-threads\fP\fI\ szÃ¡m\fP
+beÃ¡llÃ­tja a teljesÃ­tÃ©sre vÃ¡rÃ³ hÃ¡lÃ³zati I/O folyamatok maximÃ¡lis szÃ¡mÃ¡t n\-re
+(alapÃ©rtelmezett: \fB5\fP, legfeljebb: \fB30\fP)
 .TP 
-\fB\-T\ \fP\fIszám\fP\fB,\ \-\-max\-threads\fP\fI\ szám\fP
-meghatározza a teljesítésre váró folyamatok maximális számát, mely 0 esetén
-korlátlan (alapértelmezett: \fB0\fP)
+\fB\-T\ \fP\fIszÃ¡m\fP\fB,\ \-\-max\-threads\fP\fI\ szÃ¡m\fP
+meghatÃ¡rozza a teljesÃ­tÃ©sre vÃ¡rÃ³ folyamatok maximÃ¡lis szÃ¡mÃ¡t, mely 0 esetÃ©n
+korlÃ¡tlan (alapÃ©rtelmezett: \fB0\fP)
 .TP 
 \fB\-V, \-\-version\fP
-kiírja a verziószámot, majd kilép.
+kiÃ­rja a verziÃ³szÃ¡mot, majd kilÃ©p.
 .TP 
 \fB\-v, \-\-verbose\fP
-bekapcsolja a részletesebb parancssori naplózást.
+bekapcsolja a rÃ©szletesebb parancssori naplÃ³zÃ¡st.
 .
-.SH "KISZOLGÁLÓ BEÁLLÍTÁSA"
+.SH "KISZOLGÃLÃ“ BEÃLLÃTÃSA"
 .
-.SS "Az általános szintaxis a következõ:"
+.SS "Az Ã¡ltalÃ¡nos szintaxis a kÃ¶vetkezÅ‘:"
 .
 .P
-[\fInyitó tag\fP]
+[\fInyitÃ³ tag\fP]
 .IP
-key="\fIérték\fP"
+key="\fIÃ©rtÃ©k\fP"
 .IP
-key="\fIérték\fP,\fIérték\fP,..."
+key="\fIÃ©rtÃ©k\fP,\fIÃ©rtÃ©k\fP,..."
 .P
-[/\fIzáró tag\fP]
+[/\fIzÃ¡rÃ³ tag\fP]
 .
-.SS "Globális kapcsolók:"
+.SS "GlobÃ¡lis kapcsolÃ³k:"
 .
 .TP 
 \fBconnections_allowed\fP
-Az azonos IP címrõl engedélyezett párhuzamos kapcsolatok száma. \fB0\fP esetén
-korlátlan.(alapértelmezett: \fB5\fP)
+Az azonos IP cÃ­mrÅ‘l engedÃ©lyezett pÃ¡rhuzamos kapcsolatok szÃ¡ma. \fB0\fP esetÃ©n
+korlÃ¡tlan.(alapÃ©rtelmezett: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A `*' és `?'
-jelzések is használhatóak. Lásd a \fBglob\fP(7) részt a
-részletekért. Alapértelmezett értékek (ha más nincsen megadva):
+Azok a nevek/becenevek, melyeket a kiszolgÃ¡lÃ³ visszautasÃ­t. A `*' Ã©s `?'
+jelzÃ©sek is hasznÃ¡lhatÃ³ak. LÃ¡sd a \fBglob\fP(7) rÃ©szt a
+rÃ©szletekÃ©rt. AlapÃ©rtelmezett Ã©rtÃ©kek (ha mÃ¡s nincsen megadva):
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-A megadott idõtartam (\fBmessages_time_period\fP) alatt küldhetõ üzenetek
-száma. (alapértelmezett: \fB4\fP)
+A megadott idÅ‘tartam (\fBmessages_time_period\fP) alatt kÃ¼ldhetÅ‘ Ã¼zenetek
+szÃ¡ma. (alapÃ©rtelmezett: \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-Az az idõtartam (másodpercekben), mely fölött az ismételten megjelenõ
-üzenetek 'elárasztó üzenet'\-ként lesznek azonosítva. (alapértelmezett: \fB10\fP
-másodperc)
+Az az idÅ‘tartam (mÃ¡sodpercekben), mely fÃ¶lÃ¶tt az ismÃ©telten megjelenÅ‘
+Ã¼zenetek 'elÃ¡rasztÃ³ Ã¼zenet'\-kÃ©nt lesznek azonosÃ­tva. (alapÃ©rtelmezett: \fB10\fP
+mÃ¡sodperc)
 .TP 
 \fBmotd\fP
-Az aznapra szánt üzenet.
+Az aznapra szÃ¡nt Ã¼zenet.
 .TP 
 \fBpasswd\fP
-A jelszó, amivel adminisztrátori jogok nyerhetõek. Általában az 'admin'
-szóval kezdõdik.
+A jelszÃ³, amivel adminisztrÃ¡tori jogok nyerhetÅ‘ek. ÃltalÃ¡ban az 'admin'
+szÃ³val kezdÅ‘dik.
 .TP 
 \fBversions_accepted\fP
-Egy vesszõkkel elválasztott lista azokról a verziószámokról, amelyeket a
-kiszolgáló elfogad. A `*' és `?' jelzések is
-használhatóak. (alapértelmezetten csak az adott verzióval megegyezõ
+Egy vesszÅ‘kkel elvÃ¡lasztott lista azokrÃ³l a verziÃ³szÃ¡mokrÃ³l, amelyeket a
+kiszolgÃ¡lÃ³ elfogad. A `*' Ã©s `?' jelzÃ©sek is
+hasznÃ¡lhatÃ³ak. (alapÃ©rtelmezetten csak az adott verziÃ³val megegyezÅ‘
 elfogadott)
 .br
-Példa: \fBversions_accepted="*"\fP bármilyen verziót elfogad.
+PÃ©lda: \fBversions_accepted="*"\fP bÃ¡rmilyen verziÃ³t elfogad.
 .
-.SS "Globális tag\-ek:"
+.SS "GlobÃ¡lis tag\-ek:"
 .
 .P
-\fB[redirect]\fP Bizonyos kliens verziók átirányítása egy másik, megadott
-kiszolgálóra.
+\fB[redirect]\fP Bizonyos kliens verziÃ³k Ã¡tirÃ¡nyÃ­tÃ¡sa egy mÃ¡sik, megadott
+kiszolgÃ¡lÃ³ra.
 .RS
 .TP 
 \fBhost\fP
-A kiszolgáló címe, ahova az átirányítás mutat.
+A kiszolgÃ¡lÃ³ cÃ­me, ahova az Ã¡tirÃ¡nyÃ­tÃ¡s mutat.
 .TP 
 \fBport\fP
-A port, amelyen csatlakozni lehet hozzá.
+A port, amelyen csatlakozni lehet hozzÃ¡.
 .TP 
 \fBversion\fP
-Egy vesszõkkel elválasztott lista azokról a verziószámokról, amelyeket a
-kiszolgáló átirányít. A különleges jelzések ( '*' és '?') a
-\fBversions_accepted\fP\-hez hasonlóan használhatóak.
+Egy vesszÅ‘kkel elvÃ¡lasztott lista azokrÃ³l a verziÃ³szÃ¡mokrÃ³l, amelyeket a
+kiszolgÃ¡lÃ³ Ã¡tirÃ¡nyÃ­t. A kÃ¼lÃ¶nleges jelzÃ©sek ( '*' Ã©s '?') a
+\fBversions_accepted\fP\-hez hasonlÃ³an hasznÃ¡lhatÃ³ak.
 .RE
 .P
-\fB[proxy]\fP Proxy\-ként való viselkedés, azaz a bejövõ kliens kapcsolatok
-továbbítása a megadott kiszolgáló felé. Ugyanazokat az értékeket fogadja el,
+\fB[proxy]\fP Proxy\-kÃ©nt valÃ³ viselkedÃ©s, azaz a bejÃ¶vÅ‘ kliens kapcsolatok
+tovÃ¡bbÃ­tÃ¡sa a megadott kiszolgÃ¡lÃ³ felÃ©. Ugyanazokat az Ã©rtÃ©keket fogadja el,
 mint a \fB[redirect]\fP.
 .
-.SH SZERZÕ
+.SH SZERZÅ
 .
-Írta: David White <davidnwhite@verizon.net>.  Szerkesztették: Nils
-Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> és
+Ãrta: David White <davidnwhite@verizon.net>.  SzerkesztettÃ©k: Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> Ã©s
 Soliton <soliton.de@gmail.com>.
-Ennek a dokumentumnak az eredetijét Cyril Bouthors
-<cyril@bouthors.org> írta.
-Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
-<tomi@digiflex.hu>, Pintér Csaba és Kádár\-Németh Krisztián
+Ennek a dokumentumnak az eredetijÃ©t Cyril Bouthors
+<cyril@bouthors.org> Ã­rta.
+Magyarra fordÃ­tottÃ¡k: Gilluin <gilluin@citromail.hu>, SzÃ©ll TamÃ¡s
+<tomi@digiflex.hu>, PintÃ©r Csaba Ã©s KÃ¡dÃ¡r\-NÃ©meth KrisztiÃ¡n
 <krisztian.7@vizslamail.hu>.
 .br
-Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
-közösségi portált: http://wesnoth.fw.hu/
+LÃ¡togasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
+kÃ¶zÃ¶ssÃ©gi portÃ¡lt: http://wesnoth.fw.hu/
 .
-.SH "SZERZÕI JOGOK"
+.SH "SZERZÅI JOGOK"
 .
-A szerzõi jogok \(co 2003\-2007 David White\-ot
+A szerzÅ‘i jogok \(co 2003\-2007 David White\-ot
 <davidnwhite@verizon.net> illetik meg
 .br
-Ez egy szabad szoftver; terjeszthetõ illetve módosítható a GNU Általános
-Közreadási Feltételek dokumentumában \- 2. vagy késõbbi verzió \- leírtak
-szerint , melyet a Szabad Szoftver Alapítvány ad ki. Ez a program abban a
-reményben kerül közreadásra, hogy hasznos lesz, de minden egyéb GARANCIA
-NÉLKÜL, az eladhatóságra, vagy valamely célra való alkalmazhatóságra való
-származtatott garanciát is beleértve.
+Ez egy szabad szoftver; terjeszthetÅ‘ illetve mÃ³dosÃ­thatÃ³ a GNU ÃltalÃ¡nos
+KÃ¶zreadÃ¡si FeltÃ©telek dokumentumÃ¡ban \- 2. vagy kÃ©sÅ‘bbi verziÃ³ \- leÃ­rtak
+szerint , melyet a Szabad Szoftver AlapÃ­tvÃ¡ny ad ki. Ez a program abban a
+remÃ©nyben kerÃ¼l kÃ¶zreadÃ¡sra, hogy hasznos lesz, de minden egyÃ©b GARANCIA
+NÃ‰LKÃœL, az eladhatÃ³sÃ¡gra, vagy valamely cÃ©lra valÃ³ alkalmazhatÃ³sÃ¡gra valÃ³
+szÃ¡rmaztatott garanciÃ¡t is beleÃ©rtve.
 .
-.SH "LÁSD MÉG"
+.SH "LÃSD MÃ‰G"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

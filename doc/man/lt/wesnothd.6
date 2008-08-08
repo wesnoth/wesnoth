@@ -18,20 +18,20 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2007 wesnothd "Mûğio dël Wesnoth daugelio şaidëjø şaidimo tinklo demonas"
+.TH WESNOTHD 6 2007 wesnothd "MÅ«Å¡io dÄ—l Wesnoth daugelio Å¾aidÄ—jÅ³ Å¾aidimo tinklo demonas"
 .
 .SH PAVADINIMAS
 .
-wesnothd \- Mûğio dël \fBWesnoth\fP daugelio şaidëjø şaidimo tinklo demonas
+wesnothd \- MÅ«Å¡io dÄ—l \fBWesnoth\fP daugelio Å¾aidÄ—jÅ³ Å¾aidimo tinklo demonas
 .
-.SH REZIUMË
+.SH REZIUMÄ–
 .
 \fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIkelias\fP\|] [\|\fB\-p\fP \fIprievadas\fP\|]
-[\|\fB\-t\fP \fIskaièius\fP\|] [\|\fB\-T\fP \fIskaièius\fP\|]
+[\|\fB\-t\fP \fIskaiÄius\fP\|] [\|\fB\-T\fP \fIskaiÄius\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
-.SH APRAĞYMAS
+.SH APRAÅ YMAS
 .
 Manages Battle for Wesnoth multiplayer games. See
 http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
@@ -46,53 +46,53 @@ tells wesnothd where to find the config file to use. See the section
 sending SIGHUP to the server process.
 .TP 
 \fB\-d, \-\-daemon\fP
-paleidşia wesnothd kaip demonà.
+paleidÅ¾ia wesnothd kaip demonÄ….
 .TP 
 \fB\-h, \-\-help\fP
-pasako Jums, kà daro komandinës eilutës parametrai.
+pasako Jums, kÄ… daro komandinÄ—s eilutÄ—s parametrai.
 .TP 
 \fB\-\-log\-\fP\fIlygis\fP\fB=\fP\fIdomenas1\fP\fB,\fP\fIdomenas2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
-log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. 
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
 By default the \fBerror\fP level is used and the \fBinfo\fP level for the
 \fBserver\fP domain.
 .TP 
 \fB\-p\ \fP\fIprievadas\fP\fB,\ \-\-port\fP\fI\ prievadas\fP
-susieja serverá su nurodytu prievadu. Jeigu prievadas nenurodytas, tai bus
+susieja serverÄ¯ su nurodytu prievadu. Jeigu prievadas nenurodytas, tai bus
 naudojamas \fB15000\fP prievadas.
 .TP 
-\fB\-t\ \fP\fIskaièius\fP\fB,\ \-\-threads\fP\fI\ skaièius\fP
+\fB\-t\ \fP\fIskaiÄius\fP\fB,\ \-\-threads\fP\fI\ skaiÄius\fP
 sets the maximum number of waiting worker threads for network I/O to n
 (default: \fB5\fP,\ max:\ \fB30\fP).
 .TP 
-\fB\-T\ \fP\fIskaièius\fP\fB,\ \-\-max\-threads\fP\fI\ skaièius\fP
+\fB\-T\ \fP\fIskaiÄius\fP\fB,\ \-\-max\-threads\fP\fI\ skaiÄius\fP
 sets the maximum number of worker threads that will be created.  If set to
 \fB0\fP there will be no limit (default: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-parodo versijos numerá ir iğsijungia.
+parodo versijos numerÄ¯ ir iÅ¡sijungia.
 .TP 
 \fB\-v, \-\-verbose\fP
 turns debug logging on.
 .
-.SH "SERVERIO KONFIGÛRACIJA"
+.SH "SERVERIO KONFIGÅªRACIJA"
 .
-.SS "Bandra sintaksë yra:"
+.SS "Bandra sintaksÄ— yra:"
 .
 .P
 [\fIelementas\fP]
 .IP
-raktas="\fIvertë\fP"
+raktas="\fIvertÄ—\fP"
 .IP
-raktas=¥\fIvertë\fP,\fIvertë\fP,...´
+raktas=â€\fIvertÄ—\fP,\fIvertÄ—\fP,...â€œ
 .P
 [/\fIelementas\fP]
 .
-.SS "Globalûs raktai:"
+.SS "GlobalÅ«s raktai:"
 .
 .TP 
 \fBconnections_allowed\fP
-Leidişamø prisijungimø skaièius iğ to paties IP. \fB0\fP reiğkia begalybë. 
+LeidiÅ¾amÅ³ prisijungimÅ³ skaiÄius iÅ¡ to paties IP. \fB0\fP reiÅ¡kia begalybÄ—.
 (numatyta: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
@@ -102,7 +102,7 @@ patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBmax_messages\fP
-Leidşiamø praneğimø skaièius esanèiø \fBmessages_time_period\fP. (numatyta:
+LeidÅ¾iamÅ³ praneÅ¡imÅ³ skaiÄius esanÄiÅ³ \fBmessages_time_period\fP. (numatyta:
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
@@ -110,28 +110,28 @@ The time period (in seconds) message flooding is detected in. (default:
 \fB10\fP seconds)
 .TP 
 \fBmotd\fP
-Dienos praneğimas.
+Dienos praneÅ¡imas.
 .TP 
 \fBpasswd\fP
-Slaptaşodis naudojamas gauti administratoriaus teises. Paparstai jis
-prasideda ¥admin ´.
+SlaptaÅ¾odis naudojamas gauti administratoriaus teises. Paparstai jis
+prasideda â€admin â€œ.
 .TP 
 \fBversions_accepted\fP
 A comma separated list of version strings to be accepted by the server. `*'
 and `?' from wildcard patterns are supported.  (defaults to the
 corresponding wesnoth version)
 .br
-Pavyzdys: \fBversions_accepted="*"\fP priima bet kokià versijà.
+Pavyzdys: \fBversions_accepted="*"\fP priima bet kokiÄ… versijÄ….
 .
-.SS "Globalûs elementai:"
+.SS "GlobalÅ«s elementai:"
 .
 .P
 \fB[redirect]\fP Elementas, nurodantis serveriui kur peradresuoti tam tikras
-klientø versijas.
+klientÅ³ versijas.
 .RS
 .TP 
 \fBhost\fP
-Serverio, á kurá peradresuoti, adresas.
+Serverio, Ä¯ kurÄ¯ peradresuoti, adresas.
 .TP 
 \fBport\fP
 Prievadas, prie kurio jungtis.
@@ -141,27 +141,27 @@ A comma separated list of versions to redirect. Behaves the same way as
 \fBversions_accepted\fP in regard to wildcard patterns.
 .RE
 .P
-\fB[proxy]\fP Elementas nurodantis serveriui elgtis kaip proksi ir persiøsti
-visus prisijungusius klientus á nurodytà serverá.  Priima tuos paèius raktus
+\fB[proxy]\fP Elementas nurodantis serveriui elgtis kaip proksi ir persiÅ³sti
+visus prisijungusius klientus Ä¯ nurodytÄ… serverÄ¯.  Priima tuos paÄius raktus
 kaip ir \fB[redirect]\fP.
 .
 .SH AUTORIUS
 .
-Parağë David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
+ParaÅ¡Ä— David White <davidnwhite@verizon.net>.  Redagavo Nils Kneuper
 <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ir Soliton
-<soliton.de@gmail.com>.  Ğá dokumentacijos puslapá iğ pradşiø parağë
+<soliton.de@gmail.com>.  Å Ä¯ dokumentacijos puslapÄ¯ iÅ¡ pradÅ¾iÅ³ paraÅ¡Ä—
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Aplankykite oficialø puslapá: http://www.wesnoth.org/
+Aplankykite oficialÅ³ puslapÄ¯: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
 .br
-Tai yra laisva programa; ği programa licencijuota Free Software Foundation
-(Laisvos programinës árangos fondo) paskelbta GPL 2 versija.  Nëra JOKIOS
+Tai yra laisva programa; Å¡i programa licencijuota Free Software Foundation
+(Laisvos programinÄ—s Ä¯rangos fondo) paskelbta GPL 2 versija.  NÄ—ra JOKIOS
 garantijos; netgi PERKAMUMO ar TINKAMUMO KONKRETIEMS TIKSLAMS.
 .
-.SH "TAIP PAT ŞIÛRËKITE"
+.SH "TAIP PAT Å½IÅªRÄ–KITE"
 .
 \fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
