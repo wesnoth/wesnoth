@@ -1,7 +1,7 @@
 <?php
 $root_dir = './';
 
-require_once('include/config.php');
+require_once($root_dir . '../include/config.php');
 
 $header = new Header('index');
 

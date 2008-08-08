@@ -10,7 +10,7 @@ error_reporting(E_ALL | E_STRICT);
 function __autoload($class)
 {
 	global $root_dir;
-	require_once($root_dir . 'include/'.$class .'.php');
+	require_once($root_dir . '../include/'.$class .'.php');
 }
 
 // initialize database connection
