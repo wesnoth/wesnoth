@@ -6,7 +6,7 @@ if ($argc != 2)
 }
 $root_dir = $argv[1];
 
-require_once $root_dir . 'include/config.php';
+require_once $root_dir . '../include/config.php';
 
 // used to show all queries to db when debuging;
 //$db->debug = true;
