@@ -220,7 +220,6 @@ void editor_controller::generate_map_dialog()
 		}
 	}
 	if (!confirm_discard()) return;
-	if (!confirm_discard()) return;
 	gui2::teditor_generate_map dialog;
 	dialog.show(gui().video());
 	if (map_generator_->allow_user_config()) {
@@ -233,6 +232,8 @@ void editor_controller::resize_map_dialog()
 	gui2::teditor_resize_map dialog;
 	dialog.set_map_width(get_map().total_width());
 	dialog.set_map_height(get_map().total_height());
+	dialog.set_old_map_width(get_map().total_width());
+	dialog.set_old_map_height(get_map().total_height());
 	
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
@@ -489,7 +490,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			generate_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_MAP_RESIZE:
-			std::cerr << "A";
 			resize_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:

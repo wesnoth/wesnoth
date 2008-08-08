@@ -153,8 +153,8 @@ bool editor_map::everything_selected() const
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	t_translation::t_terrain filler)
 {
-	int old_w = w();
-	int old_h = h();
+	int old_w = total_width();
+	int old_h = total_height();
 	if (old_w == width && old_h == height && x_offset == 0 && y_offset == 0) {
 		return;
 	}

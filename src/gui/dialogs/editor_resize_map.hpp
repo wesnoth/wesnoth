@@ -28,7 +28,10 @@ public:
 	int map_width() const;
 	void set_map_height(int value);
 	int map_height() const;
-
+	void set_old_map_width(int value);
+	int old_map_width() const;
+	void set_old_map_height(int value);
+	int old_map_height() const;
 	enum EXPAND_DIRECTION {
 		EXPAND_BOTTOM_RIGHT,
 		EXPAND_BOTTOM,
@@ -50,9 +53,14 @@ private:
 	 */
 	tfield_integer* map_width_;
 	tfield_integer* map_height_;
+	
+	int old_width_;
+	int old_height_;
 
 	/** Inherited from tdialog. */
 	twindow build_window(CVideo& video);
+	
+	void pre_show(CVideo& video, twindow& window);
 };
 
 } // namespace gui2

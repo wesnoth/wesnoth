@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -62,9 +63,29 @@ int teditor_resize_map::map_height() const
 	return map_height_->get_value();
 }
 
+void teditor_resize_map::set_old_map_width(int value) 
+{ 
+	old_width_ = value;
+}
+
+void teditor_resize_map::set_old_map_height(int value)
+{ 
+	old_height_ = value;
+}
+
 twindow teditor_resize_map::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_RESIZE_MAP));
+}
+
+void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
+{
+	tlabel* old_width = dynamic_cast<tlabel*>(window.find_widget("old_width", false));
+	VALIDATE(old_width, missing_widget("old_width"));
+	tlabel* old_height = dynamic_cast<tlabel*>(window.find_widget("old_height", false));
+	VALIDATE(old_height, missing_widget("old_height"));
+	old_width->set_label(lexical_cast<std::string>(old_width_));
+	old_height->set_label(lexical_cast<std::string>(old_height_));
 }
 
 } // namespace gui2
