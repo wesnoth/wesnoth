@@ -63,6 +63,12 @@ void editor_map::sanity_check()
 		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << "\n";
 		++errors;
 	}
+	for (size_t i = 1; i < tiles_.size(); ++i) {
+		if (tiles_[i].size() != tiles_[0].size()) {
+			ERR_ED << "tiles_[ " << i << "] has size() " << tiles_[i].size() << " but tiles[0] has size() " << tiles_[0].size() << "\n";
+			++errors;
+		}
+	}
 	if (errors) {
 		throw editor_map_integrity_error();
 	}
@@ -195,6 +201,7 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 			}
 		}
 	}
+	sanity_check();
 }
 
 void editor_map::flip_x()
@@ -223,6 +230,7 @@ void editor_map::flip_x()
 			}
 		}
 	}
+	sanity_check();
 }
 
 void editor_map::flip_y()
@@ -270,7 +278,7 @@ void editor_map::expand_right(int count, t_translation::t_terrain filler)
 {
 	int w = tiles_.size();
 	for (int x = 0; x < count; ++x) {
-		tiles_.push_back(clone_column(w, filler));
+		tiles_.push_back(clone_column(w - 1	, filler));
 	}
 	w_ += count;
 	total_width_ += count;
@@ -311,7 +319,7 @@ void editor_map::expand_bottom(int count, t_translation::t_terrain filler)
 			t_translation::t_terrain terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
-				tiles_[x][h];
+				tiles_[x][h - 1];
 			assert(terrain != t_translation::NONE_TERRAIN);
 			tiles_[x].push_back(terrain);
 		}
