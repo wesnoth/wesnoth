@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-SVNDIR="/home/coren/wesnoth/trunk/"
-WEBDIR="/home/coren/wesnoth/trunk/utils/tests/htdocs/"
-AUTOTESTDIR="/home/coren/wesnoth/trunk/utils/tests/autotester/"
+source path_settup.sh
+
 cd $SVNDIR
-nice php -f $AUTOTESTDIR/run_unit_tests.php $WEBDIR
+nice php -f ${AUTOTESTDIR}/run_unit_tests.php $WEBDIR
