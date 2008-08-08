@@ -1,7 +1,7 @@
 <?php
 
 global $smarty_dir;
-require(/*$smarty_dir .*/ 'smarty/libs/Smarty.class.php');
+require($smarty_dir . 'libs/Smarty.class.php');
 
 class WesnothSmarty extends Smarty {
 	function __construct($work_dir)

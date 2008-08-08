@@ -15,7 +15,7 @@ function __autoload($class)
 
 // initialize database connection
 
-$adodb_dir = $root_dir . 'include/adodb_lite/';
+$adodb_dir = $root_dir . '../adodb_lite/';
 
 
 include($adodb_dir . "adodb-exceptions.inc.php"); 
