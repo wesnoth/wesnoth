@@ -86,6 +86,7 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(old_height, missing_widget("old_height"));
 	old_width->set_label(lexical_cast<std::string>(old_width_));
 	old_height->set_label(lexical_cast<std::string>(old_height_));
+	window.recalculate_size();
 }
 
 } // namespace gui2
