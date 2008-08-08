@@ -34,8 +34,8 @@ private:
 	 * NOTE the map sizes are stored in a text variable since there is no
 	 * integer edit widget yet.
 	 */
-	tfield_text* map_width_;
-	tfield_text* map_height_;
+	tfield_integer* map_width_;
+	tfield_integer* map_height_;
 
 	/** Inherited from tdialog. */
 	twindow build_window(CVideo& video);

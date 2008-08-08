@@ -20,6 +20,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/slider.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/window_builder.hpp"
 #include "language.hpp"
@@ -36,29 +37,29 @@
 namespace gui2 {
 
 teditor_new_map::teditor_new_map() :
-	map_width_(register_text("width", false)),
-	map_height_(register_text("height", false))
+	map_width_(register_integer("width", false)),
+	map_height_(register_integer("height", false))
 {
 }
 
 void teditor_new_map::set_map_width(int value) 
 { 
-	map_width_->set_value(lexical_cast<std::string>(value));
+	map_width_->set_value(value);
 }
 
 int teditor_new_map::map_width() const
 {
-	return lexical_cast_default<int>(map_width_->get_value());
+	return map_width_->get_value();
 }
 
 void teditor_new_map::set_map_height(int value)
 { 
-	map_height_->set_value(lexical_cast<std::string>(value));
+	map_height_->set_value(value);
 }
 
 int teditor_new_map::map_height() const
 {
-	return lexical_cast_default<int>(map_height_->get_value());
+	return map_height_->get_value();
 }
 
 twindow teditor_new_map::build_window(CVideo& video)
