@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite About Me</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style2 {color: #008000}
+.style3 {color: #0000FF}
+.style4 {color: #000080}
+.style5 {color: #008081}
+.style6 {color: #000000}
+.style9 {color: #FF0000; font-weight: bold; }
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<div align="center"><img src="images/m_top.gif" width="572" height="8" alt="" border="0"></div>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+<tr>
+	<td>
+<table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+<tr>
+	<td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+	<td><p class="bar01" style="color: #4AC250; font-size: 18px;"> Modules&nbsp;</p></td>
+</tr>
+</table>
+	</td>
+</tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+<tr>
+	<td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>How to create an ADOdb Lite Database Specific Module</b></p>
+<p class="left">You will find a file called <span class="style1">example_module.inc</span> in the documentation directory. You should use this file as a base for creating your own module. The content of the file is displayed below.<br> 
+	</p>
+<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="left style1"> <span class="style1">&lt;?</span><br>
+			    <span class="style2">/**<br>
+* ADOdb Lite Mysql Example Module<br>
+* <br>
+* This example module can be used to create your own extention to ADOdb Lite.<br>
+* <br>
+* The module prefix name and class prefix name should all be the same and lowercase.<br>
+* If the new module name is 'blob' then rename this file to 'blob_module.inc'. Rename<br>
+* the following class designators.<br>
+* <br>
+* mysql_example_EXTENDER renamed to mysql_blob_EXTENDER<br>
+* mysql_example_ADOConnection renamed to mysql_blob_ADOConnection<br>
+* mysql_example_resultset_EXTENDER renamed to mysql_blob_resultset_EXTENDER<br>
+* mysql_example_ResultSet renamed to mysql_blob_ResultSet<br>
+* <br>
+* Functions that interact with the database should be placed inside the<br>
+* blob_ADOConnection class. These are functions accessed using<br>
+* $db-&gt;function().<br>
+* <br>
+* Functions that interact with the resetset created by a query should<br>
+* be placed inside the blob_ResultSet class. These are functions accessed using<br>
+* $result-&gt;function().<br>
+* <br>
+* Example:<br>
+* $result = $db-&gt;Execute($sql);<br>
+* echo $result-&gt;function();<br>
+* <br>
+* Place the file into the approriate database driver directory. You should create one<br>
+* for each database you would like to support.<br>
+* <br>
+* To use your blob module start ADOdb Lite using.<br>
+* <br>
+* $db = ADONewConnection($databasetype, 'blob');<br>
+* <br>
+*/</span></p>
+			<p class="left style1"><span class="style4">eval</span><span class="style6">(</span><span class="style5">'class mysql_example_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ADOConnection { }'</span><span class="style6">);</span></p>
+			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_example_ADOConnection</span> <span class="style3">extends</span> <span class="style6">mysql_example_EXTENDER</span><br>
+				<span class="style6">{<br>
+				}</span></p>
+			<p class="left style1"><span class="style4">eval</span><span class="style6">(</span><span class="style5">'class mysql_example_resultset_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ResultSet { }'</span><span class="style6">);</span></p>
+			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_example_ResultSet</span> <span class="style3">extends</span> <span class="style6">mysql_</span><span class="style6">example_resultset_EXTENDER</span><br>
+				<span class="style6">{<br>
+				}</span><br>
+				?&gt;</p></td>
+	</tr>
+</table><p class="left"><br>
+	Creating a new module for ADOdb Lite is really quite simple and easy.  The hardest thing is deciding what you are going to call your module.</p>
+<p class="left">Let's create a module called<span class="style3"> test</span>. Load the <span class="style1">mysql_example_module.inc</span> into your favorite editor and change all of the <span class="style2">example</span> words to <span class="style3">test</span>. <br>
+	<br>
+	Example:
+</p>
+<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="left style1"> <span class="style1">&lt;?</span><br>
+        				<span class="style4">eval</span><span class="style6">(</span><span class="style5">'class mysql_</span><span class="style3">test</span><span class="style5">_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ADOConnection { }'</span><span class="style6">);</span></p>
+    			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_</span><span class="style6"><span class="style3">test</span>_ADOConnection</span> <span class="style3">extends</span> <span class="style6">mysql_</span><span class="style6"><span class="style3">test</span>_EXTENDER</span><br>
+        				<span class="style6">{<br>
+				}</span></p>
+    			<p class="left style1"><span class="style4">eval</span><span class="style6">(</span><span class="style5">'class mysql_<span class="style3">test</span>_resultset_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ResultSet { }'</span><span class="style6">);</span></p>
+    			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_</span><span class="style6"><span class="style3">test</span>_ResultSet</span> <span class="style3">extends</span> <span class="style6">mysql_</span><span class="style6"><span class="style3">test</span>_resultset_EXTENDER</span><br>
+        				<span class="style6">{<br>
+				}</span><br>
+				?&gt;</p></td>
+	</tr>
+</table><p class="left"><br>
+	With these changes your new module will be easily added to the ADOConnection class when called. </p>
+<p class="left">Now let's add a new function to <span class="style2">ADOConnection</span> class to get the current server date. <br>
+</p>
+<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="left style1"> <span class="style1">&lt;?</span><br>
+        				<span class="style4">eval</span><span class="style6">(</span><span class="style5">'class </span><span class="style5">mysql_test</span><span class="style5">_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ADOConnection { }'</span><span class="style6">);</span></p>
+    			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_</span><span class="style6"><span class="style6">test</span>_ADOConnection</span> <span class="style3">extends</span> <span class="style6">mysql_</span><span class="style6"><span class="style6">test</span>_EXTENDER</span><br>
+        				<span class="style6">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style3">function</span><span class="style6"> ADOdb_Date()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style4">return</span> <span class="style3">date</span><span class="style6">(</span><span class="style5">&quot;F j, Y, g:i a&quot;</span><span class="style6">);  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}</span></p>
+    			<p class="left style1"><span class="style4">eval</span><span class="style6">(</span><span class="style5">'class mysql_<span class="style5">test</span>_resultset_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ResultSet { }'</span><span class="style6">);</span></p>
+    			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_</span><span class="style6"><span class="style3">test</span>_ResultSet</span> <span class="style3">extends</span><span class="style6"> mysql_test_resultset_EXTENDER</span><br>
+        				<span class="style6">{<br>
+				}</span><br>
+				?&gt;</p></td>
+	</tr>
+</table><p class="left"><br>
+	Now lets add a new function to the <span class="style2">Resultset</span> class to get the current row/record number that is being retrieved with the <span class="style3">Fetch</span> function. <br>
+	</p>
+<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="left style1"> <span class="style1">&lt;?</span><br>
+        				<span class="style4">eval</span><span class="style6">(</span><span class="style5">'class </span><span class="style5">mysql_test</span><span class="style5">_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ADOConnection { }'</span><span class="style6">);</span></p>
+    			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_</span><span class="style6">test_ADOConnection</span> <span class="style3">extends</span> <span class="style6">mysql_</span><span class="style6">test_EXTENDER</span><br>
+        				<span class="style6">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style3">function</span><span class="style6"> ADOdb_Date()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style4">return</span> <span class="style3">date</span><span class="style6">(</span><span class="style5">&quot;F j, Y, g:i a&quot;</span><span class="style6">); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+				}</span></p>
+    			<p class="left style1"><span class="style4">eval</span><span class="style6">(</span><span class="style5">'class mysql_test_resultset_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ResultSet { }'</span><span class="style6">);</span></p>
+    			<p class="left style1"><span class="style3">class</span> <span class="style6">mysql_</span><span class="style6"><span class="style3">test</span>_ResultSet</span> <span class="style3">extends</span><span class="style6"> mysql_test_resultset_EXTENDER</span><br>
+        				<span class="style6">{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style3">function</span><span class="style6"> CurrentRow()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style4">return</span><span class="style6"> $this-&gt;_currentRow; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}</span><br>
+				?&gt;</p></td>
+	</tr>
+</table>
+<p class="left"><br>
+	Now save the file as <span class="style1">test_module.inc</span> to the mysql directory so we can test it. Just add 'test' to the ADONewConnection for the module to be loaded. <br>
+</p>
+<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="style1"><b>$db = ADONewConnection(<span class="style6">'mysql'</span>, <span class="style2">'test'</span>);				</b></p>
+			</td>
+	</tr>
+</table><p class="left"><br>
+	You can then use similar commands as the following to access the current row and date.<br>
+</p>
+<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="style1"><span class="style6"><b>$date = $db-&gt;</b></span><b><span class="style4">ADOdbDate</span><span class="style6">();</span></b></p>
+			<p class="style9"><span class="style6">$result = $db-&gt;</span><span class="style4">Execute</span><span class="style6">($sql);<br>
+			</span><span class="style6">$currentrow = $result-&gt;</span><span class="style4">CurrentRow</span><span class="style6">();</span>  </p>
+			</td>
+	</tr>
+</table><p class="left"><br>
+	If you would like your module to be availible for every driver you must copy it to every driver directory.
+	</p>
+<p class="left">&nbsp;</p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>How to create an ADOdb Lite Generic Module</b></p>
+	<p class="left">There is really no difference in creating a  generic module except for the class naming. You do not add the database type to the class name.</p>
+	<p class="left">Example: </p>
+	<table width="95%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="left style1"> <span class="style1">&lt;?</span><br>
+                <span class="style4">eval</span><span class="style6">(</span><span class="style5">'class </span><span class="style3">test</span><span class="style5">_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ADOConnection { }'</span><span class="style6">);</span></p>
+            <p class="left style1"><span class="style3">class</span> <span class="style6"><span class="style3">test</span>_ADOConnection</span> <span class="style3">extends</span> <span class="style6"><span class="style3">test</span>_EXTENDER</span><br>
+                <span class="style6">{<br>
+                  }</span></p>
+          <p class="left style1"><span class="style4">eval</span><span class="style6">(</span><span class="style5">'class <span class="style3">test</span>_resultset_EXTENDER extends '</span><span class="style6">. $last_module . </span><span class="style5">'_ResultSet { }'</span><span class="style6">);</span></p>
+          <p class="left style1"><span class="style3">class</span> <span class="style6"><span class="style3">test</span>_ResultSet</span> <span class="style3">extends</span> <span class="style6"><span class="style3">test</span>_resultset_EXTENDER</span><br>
+                <span class="style6">{<br>
+                  }</span><br>
+            ?&gt;</p></td>
+      </tr>
+    </table>
+	<p class="left"><br>
+	  As you can see it is virtually identical to a database specific module except for the missing database type prepending the class name. The	module is then stored in the generic_modules directory and can be used by any database driver. </p>
+	<p><br>
+            </p>
+	</tr>
+</table>
+<p class="px5">
+	</td>
+	</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

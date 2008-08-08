@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite How to Install</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style3 {
+	color: #0000FF;
+	font-weight: bold;
+}
+-->
+    </style>
+<style type="text/css">
+<!--
+.style5 {color: #FF0000; font-weight: bold; }
+.style6 {color: #000000}
+.style7 {color: #339900}
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+<tr>
+	<td>
+<table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+<tr>
+	<td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+	<td><p class="bar01" style="color: #4AC250; font-size: 18px;">Session Support&nbsp;</p></td>
+</tr>
+</table>
+	</td>
+</tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Installation</b></p>
+<p class="left">ADOdb Lite supports a new session handler that offers support for ADOdb's encryption and compression options. ADOdb Lite's session handler is 1/3 the size of ADOdb's and over 350% faster. </p>
+<p class="left">This package does not support cob sessions and it is unlikely to support them in the future.</p>
+<p class="left">You will need to create a table for your session support. The session table is different from the table used in ADOdb. This is the only real departure from the ADOdb Session system.</p>
+<p class="left">Here is the MySql code to create the database you need.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="style3">CREATE TABLE /*! IF NOT EXISTS */ sessions (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ID INT NOT NULL AUTO_INCREMENT, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;SessionID VARCHAR(64), <br>
+&nbsp;&nbsp;&nbsp;&nbsp;session_data TEXT DEFAULT '', <br>
+&nbsp;&nbsp;&nbsp;&nbsp;expiry INT(11),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;expireref VARCHAR(64) DEFAULT '',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PRIMARY KEY (ID),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;INDEX SessionID (SessionID)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;INDEX expiry (expiry)<br>
+        );</p></td>
+  </tr>
+</table>
+<p class="left">The following variables from ADOdb are supported.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left">$ADODB_SESSION_DRIVER='database'; # mysql, mssql, ect.<br>
+        $ADODB_SESSION_CONNECT='localhost'; # database server address<br>
+        $ADODB_SESSION_USER ='user';<br>
+        $ADODB_SESSION_PWD ='password';<br>
+        $ADODB_SESSION_DB ='database';<br>
+        $ADODB_SESSION_TBL = 'sessions'; # setting this is optional and will normally use the database name of sessions</p></td>
+  </tr>
+</table>
+<p class="left">The following commands are supported.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left">ADODB_Session::filter(<span class="style3">$object</span>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="style3">$object</span> = This is the class object for the filter the session handler will use. </p>
+        <p class="left">ADODB_Session::encryptionKey(<span class="style3">$key</span>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="style3">$key</span> = Specify a unique encryption key for the encryption methods. The <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default key is 'ADOdb Lite'. </p></td>
+  </tr>
+</table>
+<p class="left">Expiration Notify is supported so when a database session expires for a user the specified function will be executed.</p>
+<p class="left">Example:</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style3">require_once</span> 'adodb.inc.php'; <br>
+            <span class="style3">require_once</span> 'session/adodb-session.php'; </p>
+        <p class="left"><span class="style3">function</span> ExpiredSession($expireref, $sesskey)<br>
+        {<br>
+&nbsp;&nbsp;&nbsp;<span class="style3">&nbsp;echo</span> &quot;Session Expired: $expireref&lt;br&gt;&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="style3">echo</span> &quot;Session Key: $sesskey&lt;br&gt;&lt;br&gt;&quot;;<br>
+        }</p>
+        <p class="left">$USERID = 44;</p>
+        <p class="left">$ADODB_SESSION_DRIVER='mysql';<br>
+        $ADODB_SESSION_CONNECT='localhost';<br>
+        $ADODB_SESSION_USER ='pj';<br>
+        $ADODB_SESSION_PWD ='pj';<br>
+        $ADODB_SESSION_DB ='pj';<br>
+        $ADODB_SESSION_EXPIRE_NOTIFY = <span class="style3">array</span>('USERID','ExpiredSession');<br>
+        <span class="style3">session_start</span>();<br>
+        <span class="style1">?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left">When the database session expires for USERID 44 the ExpiredSession function is called. This is called when the PHP session handler performs a scheduled garbage collection or when your program destroys the users session.</p>
+<p class="left">&nbsp;</p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Encrypted Sessions</b></p>
+<p class="left">You can start ADOdb Lite Encrypted Sessions using the following code.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style3">require_once</span> 'adodb.inc.php'; <br>
+            <span class="style3">require_once</span> 'session/adodb-<span class="style1">crypt</span>session.php';<br>
+            <span class="style1">?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left">You will notice the only change is to use adodb-<span class="style1">crypt</span>session.php instead of adodb-session.php.</p>
+<p class="left">I <span class="style1">DO NOT</span> recommend using this method unless you want to use the MD5 encryption.</p>
+<p class="left">I recommend using this method to initialize encrypted sessions.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style3">require_once</span> 'adodb.inc.php'; <br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-session.php'</span>;<span class="style1"><br>
+            <span class="style3">require_once</span> 'session/adodb-encrypt-md5.php'</span>;<span class="style1"><br>
+            </span>ADODB_Session::filter(<span class="style3">new</span><span class="style1"> ADODB_Encrypt_MD5</span>());<span class="style1"><br>
+        ?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left">With this method you can more easily change the encryption and add compression.</p>
+<p class="left">&nbsp;</p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Supported Encrytion Methods</b></p>
+<p class="left">You can start ADOdb Lite Encrypted Sessions using the following code.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-encrypt-md5.php'</span>;<span class="style1">&nbsp;&nbsp; <span class="style7">// MD5 Encryption</span> <br>
+            </span>ADODB_Session::filter(<span class="style3">new</span><span class="style1"> ADODB_Encrypt_MD5</span>());<span class="style1"></span><br>
+            <span class="style1">?&gt;</span></p>
+        <p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-encrypt-mycrypt.php'</span>;<span class="style1">&nbsp;&nbsp; <span class="style7">// Mycrypt Encryption</span> <br>
+            </span>ADODB_Session::filter(<span class="style3">new</span> <span class="style1">ADODB_Encrypt_MCrypt</span>());<br>
+            <span class="style1">?&gt;</span></p>
+        <p class="left"><span class="style1">&lt;?<br>
+              <span class="style3">require_once</span> 'session/adodb-encrypt-ordcrypt.php';&nbsp;&nbsp; <span class="style7">// OrdCrypt Encryption</span> <br>
+          </span>ADODB_Session::filter(<span class="style1"><span class="style3">new</span> ADODB_Encrypt_OrdCrypt</span>());<span class="style1"><br>
+        ?&gt;</span></p>
+        <p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-encrypt-secret.php'</span>;<span class="style1">&nbsp;&nbsp; <span class="style7">// Secret Encryption</span> <br>
+            </span>ADODB_Session::filter(<span class="style3">new</span> <span class="style1">ADODB_Encrypt_Secret</span>());<br>
+            <span class="style1">?&gt;</span></p>
+        <p class="left"><span class="style1">&lt;?</span><br>
+          <span class="style1"><span class="style3">require_once</span> 'session/adodb-encrypt-sha1.php'</span>;<span class="style1">&nbsp;&nbsp; <span class="style7">// SHA1 Encryption</span> <br>
+          </span>ADODB_Session::filter(<span class="style3">new</span> <span class="style1">ADODB_Encrypt_SHA1</span>());<br>
+          <span class="style1">?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left"><br>
+</p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Compressed Sessions</b></p>
+<p class="left">To add compression use the same method as adding encryption.</p>
+<p class="left">Example:</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style3">require_once</span> 'adodb.inc.php'; <br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-session.php'</span>;<span class="style1"><br>
+            </span><span class="style1"> <span class="style3">require_once</span> 'session/adodb-compress-gzip.php'</span>;<br>
+        ADODB_Session::filter(<span class="style1"><span class="style3">new</span> ADODB_Compress_Gzip</span>());<span class="style1"> <br>
+        ?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left">You may even compress the encrypted session data by stacking filters. </p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style3">require_once</span> 'adodb.inc.php'; <br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-session.php'</span>;<span class="style1"><br>
+            <span class="style3">require_once</span> 'session/adodb-encrypt-md5.php'</span>;<span class="style1"><br>
+            </span>ADODB_Session::filter(<span class="style3">new</span><span class="style1"> ADODB_Encrypt_MD5</span>());<span class="style1"><br>
+            <span class="style3">require_once</span> 'session/adodb-compress-gzip.php'</span>;<br>
+        ADODB_Session::filter(<span class="style1"><span class="style3">new</span> ADODB_Compress_Gzip</span>());<span class="style1"> <br>
+        ?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left">&nbsp;</p>
+<p class="left"><br>
+    <img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Supported Compression Methods</b></p>
+<p class="left">You can start ADOdb Lite Compressed Sessions using the following code.</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-compress-bzip2.php'</span>;<span class="style1">&nbsp;&nbsp; <span class="style7">// Bzip2 Compression </span> <br>
+            </span>ADODB_Session::filter(<span class="style3">new</span> <span class="style1">ADODB_Compress_Bzip2</span>());<br>
+            <span class="style1">?&gt;</span></p>
+        <p class="left"><span class="style1">&lt;?</span><br>
+            <span class="style1"><span class="style3">require_once</span> 'session/adodb-compress-gzip.php'</span>;<span class="style1">&nbsp;&nbsp; <span class="style7">// Gzip </span><span class="style7">Compression</span><br>
+            </span>ADODB_Session::filter(<span class="style3">new</span> <span class="style1">ADODB_Compress_Gzip</span>());<br>
+            <span class="style1">?&gt;</span></p></td>
+  </tr>
+</table>
+<p class="left"></p>
+<p class="left"></p>
+<p></p>
+</td>
+	</tr>
+<tr>
+  <td valign="top">&nbsp;</td>
+</tr>
+</table>
+<p class="px5">
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

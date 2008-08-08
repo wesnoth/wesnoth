@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite Commands</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+<!--
+.style3 {	color: #0000FF;
+	font-weight: bold;
+}
+.style4 {
+	color: #336600;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Tahoma, Verdana, Arial;
+}
+.style6 {color: #3366FF}
+.style7 {color: #CC66FF}
+.style8 {color: #0033FF}
+.style9 {color: #339900; font-family: Tahoma, Verdana, Arial; font-weight: bold; font-size: 11px; }
+.style10 {color: #FF0000}
+.style11 {color: #0066FF; }
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<div align="center"><img src="images/m_top.gif" width="572" height="8" alt="" border="0"></div>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+      <tr>
+        <td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+        <td><p class="bar01" style="color: #4AC250; font-size: 18px;">ADOdb Lite Performance Monitor &nbsp;</p></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td valign="top"><p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb Lite Performance Monitor </b></p>
+        <p class="left">The ADOdb Lite Performance Monitor is a very, very early beta and created by <span class="style11">P&aacute;draic Brady</span> AKA Maugrim the Reaper.  We know there are still problems with the performance monitor and P&aacute;draic is working on them.  There are apparently some problems with MySql 4.x but it seems to work just fine with MySql 5.x. Currently the only database drivers supported are <span class="style8">mysql</span>, <span class="style8">mysqli</span> and <span class="style8">mysqlt</span>. <br>
+        </p>
+      <img src="images/px1.gif" width="1" height="1" alt="" border="0">
+        <p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Performance Monitor  Example </b></p>
+      <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+          <tr>
+            <td><p class="left"> include_once('adodb_lite/adodb.inc.php');<br>
+              session_start(); <span class="style9"># session variables required for monitoring</span><br>
+              $conn = ADONewConnection('mysqli://user:passwd@localhost/testdatabase#perfmon'); <span class="style9">// PEAR compat DSN specifying driver, credentials and module</span><br>
+              $perf =&amp; NewPerfMonitor($conn);<span class="style9"> // BC only, $perf is a simple reference to</span> <span class="style9">$conn</span><br>
+              $perf-&gt;UI($pollsecs=5);<br>
+              <br>
+            </p></td>
+          </tr>
+      </table>
+      <p class="left"><br>
+        Key difference: &quot;perfmon&quot; module MUST be specified when loading ADOdb-Lite. The NewPerfMonitor() is for backwards compatibility only, 
+        and is not required. $conn already contains the module methods, $perf is a simple reference to $conn. All other actions such as enabling 
+        SQL logging and setting a logging table are the same as ADOdb.<br>
+          <br>
+        A better method for invoking the Performance Monitor is to edit the adodb.config.php file and add permon to the module list.<br>
+        </p>
+      <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+          <tr>
+            <td><p class="left"> $modules = &quot;perfmon&quot;;<br>
+                    <br>
+            </p></td>
+          </tr>
+        </table>
+      <br>
+        <p class="left"> This will automatically load the performance module. By adding perfmon to the module list you do not need to edit any of your connection data. It will also make it easier to turn on and off the performance module. </p>
+      <p class="left">&nbsp;</p></td>
+  </tr>
+</table>
+<p class="px5">
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

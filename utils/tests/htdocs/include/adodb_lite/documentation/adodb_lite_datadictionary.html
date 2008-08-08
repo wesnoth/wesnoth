@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite Commands</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+<!--
+.style3 {	color: #0000FF;
+	font-weight: bold;
+}
+.style4 {
+	color: #336600;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Tahoma, Verdana, Arial;
+}
+.style6 {color: #3366FF}
+.style7 {color: #CC66FF}
+.style8 {color: #0033FF}
+.style9 {color: #339900; font-family: Tahoma, Verdana, Arial; font-weight: bold; font-size: 11px; }
+.style10 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<div align="center"><img src="images/m_top.gif" width="572" height="8" alt="" border="0"></div>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+<tr>
+	<td>
+<table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+<tr>
+	<td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+	<td><p class="bar01" style="color: #4AC250; font-size: 18px;">ADOdb Lite Data Dictionary &nbsp;</p></td>
+</tr>
+</table>
+	</td>
+</tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb Lite Data Dictionary </b></p>
+<p class="left">The ADOdb Lite Data Dictionary is a modified version of the data dictionary from ADOdb. The data dictionary has been tested on MySql/i/t. I would appreciate feedback on the other supported databases. </p>
+<p class="left"><span class="style10">Important:</span> You must include both the <span class="style6">meta</span> and <span class="style6">pear</span> modules when you create your new ADOdb Connection when using the Data Dictionary. If you do not include these two modules the Data Dictionary will fail to function. <br>
+</p>
+<img src="images/px1.gif" width="1" height="1" alt="" border="0">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Data Dictionary Example </b></p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> include_once('adodb.inc.php');<br>
+            <font color="#006600"># Create a new Connection</font><br>
+        $db-&gt;NewADOConnection('mysql');<br>
+        $db-&gt;Connect(...);<br>
+        <br>
+        <font
+ color="#006600"># Then create a data dictionary object, using this connection</font><br>
+        $dict = <strong>NewDataDictionary</strong>($db);<br>
+        <br>
+        <font
+ color="#006600"># Now create Field Array with all of the database tables field entries </font><br>
+        $flds = array(array('id', 'I', 'AUTO','KEY'),<br>
+        array('name' =&gt; 'firstname', 'type' =&gt; 'varchar','size' =&gt; 30, 'DEFAULT'=&gt;'Joan'),<br>
+        array('lastname','varchar',28, 'DEFAULT'=&gt;'Chen','key'),<br>
+        array('averylonglongfieldname','X',1024, 'NOTNULL','default' =&gt; 'test'),<br>
+        array('price','N','7.2', 'NOTNULL','default' =&gt; '0.00'),<br>
+        array('MYDATE', 'D', 'DEFDATE'),<br>
+        array('TS','T', 'DEFTIMESTAMP')<br>
+        );<br>
+        <br>
+        <font
+ color="#006600"># Alternative non-array method</font><br>
+        $flds = &quot;<br>
+        ID I AUTO KEY,<br>
+        FIRSTNAME VARCHAR(30) DEFAULT 'Joan',<br>
+        LASTNAME VARCHAR(28) DEFAULT 'Chen' key,<br>
+        averylonglongfieldname X(1024) DEFAULT 'test',<br>
+        price N(7.2) DEFAULT '0.00',<br>
+        MYDATE D DEFDATE,<br>
+        BIGFELLOW X NOTNULL,<br>
+        TS T DEFTIMESTAMP&quot;;<br>
+        <br>
+        <font
+ color="#006600"># Create the new table</font><br>
+        $sqlarray = $dict-&gt;<strong>CreateTableSQL</strong>($tabname, $flds, $taboptarray);<br>
+        $dict-&gt;<strong>ExecuteSQLArray</strong>($sqlarray);<br>
+        <br>
+        <font
+ color="#006600"># Create the table indexes</font><br>
+        $idxflds = 'co11, col2';<br>
+        $sqlarray = $dict-&gt;<strong>CreateIndexSQL</strong>($idxname, $tabname, $idxflds);<br>
+        $dict-&gt;<strong>ExecuteSQLArray</strong>($sqlarray);<br>
+    </p></td>
+  </tr>
+</table>
+<p class="left">&nbsp; </p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;<b> Data Dictionary Command Set<br>
+</b></p>
+<p align="center" class="left"><span class="style8">CreateTableSQL</span>($tablename, $fieldarray, $tableoptionarray=false)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> RETURNS: an array of strings, the sql to be executed, or false<br>
+            <br>
+        $tabname: name of table<br>
+        <br>
+        $fldarray: string (or array) containing field info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Field Array Format: "$fieldname $type $colsize $otheroptions"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$fieldname = Field Name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$type = Type Code (valid codes in Cross-Database Type Code List <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$columnsize = size of the field based upon the type <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$otheroptions = Options listed in the Other Field Options <br>
+        <br>
+        $taboptarray: array containing table options listed in Other Table Options <br>
+    </p></td>
+  </tr>
+</table>
+<p align="left" class="left">&nbsp;</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><table width="100%"  border="0" cellspacing="1" cellpadding="0">
+        <tr>
+          <td><div align="center" class="style4 style1">Cross-Database Type Codes </div></td>
+        </tr>
+        <tr>
+          <td><p class="left"><span class="style8">C</span>: Varchar, capped to 255 characters.<br>
+                  <span class="style8">X</span>: Larger varchar, capped to 4000 characters (to be compatible with Oracle). <br>
+                  <span class="style8">XL</span>: For Oracle, returns CLOB, otherwise the largest varchar size.<br>
+                  <br>
+                  <span class="style8">C2</span>: Multibyte varchar<br>
+                  <span class="style8">X2</span>: Multibyte varchar (largest size)<br>
+                  <br>
+                  <span class="style8">B</span>: BLOB (binary large object)<br>
+                  <br>
+                  <span class="style8">D</span>: Date (some databases do not support this, and we return a datetime type)<br>
+                  <span class="style8">T</span>: Datetime or Timestamp<br>
+                  <span class="style8">L</span>: Integer field suitable for storing booleans (0 or 1)<br>
+                  <span class="style8">I</span>: Integer (mapped to I4)<br>
+                  <span class="style8">I1</span>: 1-byte integer<br>
+                  <span class="style8">I2</span>: 2-byte integer<br>
+                  <span class="style8">I4</span>: 4-byte integer<br>
+                  <span class="style8">I8</span>: 8-byte integer<br>
+                  <span class="style8">F</span>: Floating point number<br>
+                  <span class="style8">N</span>: Numeric or decimal number<br>
+          </p></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><table width="100%"  border="0" cellspacing="1" cellpadding="0">
+        <tr>
+          <td><div align="center" class="style4 style1">Other Field Options</div></td>
+        </tr>
+        <tr>
+          <td><p class="left"> <span class="style8">AUTO</span> For autoincrement number. Emulated with triggers if not available. Sets NOTNULL also.<br>
+                  <br>
+                  <span class="style8">AUTOINCREMENT</span> Same as auto.<br>
+                  <br>
+                  <span class="style8">KEY</span> Primary key field. Sets NOTNULL also. Compound keys are supported.<br>
+                  <br>
+                  <span class="style8">PRIMARY</span> Same as KEY.<br>
+                  <br>
+                  <span class="style8">DEF</span> Synonym for DEFAULT for lazy typists.<br>
+                  <br>
+                  <span class="style8">DEFAULT</span> The default value. Character strings are auto-quoted unless the string begins and ends with spaces, eg ' SYSDATE '.<br>
+                  <br>
+                  <span class="style8">NOTNULL</span> If field is not null.<br>
+                  <br>
+                  <span class="style8">DEFDATE</span> Set default value to call function to get today's date.<br>
+                  <br>
+                  <span class="style8">DEFTIMESTAMP</span> Set default to call function to get today's datetime.<br>
+                  <br>
+                  <span class="style8">NOQUOTE</span> Prevents autoquoting of default string values.<br>
+                  <br>
+                  <span class="style8">CONSTRAINTS</span> Additional constraints defined at the end of the field definition.<br>
+          </p></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><table width="100%"  border="0" cellspacing="1" cellpadding="0">
+        <tr>
+          <td><div align="center" class="style4 style1">Other Table Options</div></td>
+        </tr>
+        <tr>
+          <td><p class="left"> <span class="style8">REPLACE</span> Indicates that the previous table definition should be removed (dropped)together with ALL data. See first example below. </p>
+              <p class="left"> <span class="style8"> DROP</span> Drop table. Useful for removing unused tables. </p>
+              <p class="left"> <span class="style8">CONSTRAINTS</span> Define this as the key, with the constraint as the value. Additional constraints defined for the whole table. You will probably need to prefix this with a comma. </p>
+              <p class="left"> <span class="style8"> Example: </span>
+              <p class="left">$tableoptionarray = array('mysql' =&gt; 'TYPE=INNODB, 'oci8' =&gt; 'tablespace users', 'REPLACE');</p>
+              <p class="left">$tableoptionarray = array('constraints' =&gt; ', FOREIGN KEY (col1) REFERENCES reftable (refcol)');</p></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">DropTableSQL</span>($tablename)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query for dropping a table </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">ChangeTableSQL</span>($tablename, $fieldarray)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query for altering the table if the table exists.</p>
+        <p class="left">If the table doesn't exist the table is created using <span class="style8">CreateTableSQL.</span></p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">RenameTableSQL</span>($tablename, $newname)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query Array for renaming a table </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">RenameColumnSQL</span>($tablename, $oldcolumn, $newcolumn, $flds='')</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query Array for renaming a field in the designated table. </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">CreateIndexSQL</span>($indexname, $tablename, $flds, $indexoptionarray=false)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query Array for creating indexes on the designated table </p>
+        <p class="left"> $indexname: name of index<br>
+        $tablename: name of table<br>
+        $flds: list of fields as a comma delimited string or an array of strings<br>
+        $indexoptionarray: array of index creation options<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="style8">CLUSTERED</span> Create clustered index (only mssql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style8">BITMAP</span> Create bitmap index (only oci8)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style8">UNIQUE</span> Make unique index<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style8">FULLTEXT</span> Make fulltext index (only mysql)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style8">HASH</span> Create hash index (only postgres)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style8">DROP</span> Drop legacy index<br>
+      </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">DropIndexSQL</span>($indexname, $tablename = NULL)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query for dropping designated index </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">AddColumnSQL</span>($tablename, $flds)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query for adding a column to designated table </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">AlterColumnSQL</span>($tablename, $flds)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query for altering columns in designated table </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">DropColumnSQL</span>($tablename, $flds)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: SQL Query for dropping a column in designated table </p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">SetSchema</span>($schemaname)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left">Sets the database name.</p></td>
+  </tr>
+</table>
+<hr>
+<p align="center" class="left"><span class="style8">ExecuteSQLArray</span>($sqlarray, $contOnError = true)</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">RETURNS</span>: 0 if failed, 1 if executed all but with errors, 2 if executed successfully </p>
+        <p class="left"> $sqlarray: an array of strings with sql code (no semicolon at the end of string)<br>
+        $contOnError: if true, then continue executing even if error occurs<br>
+      </p></td>
+  </tr>
+</table>
+<p></p>
+<p>&nbsp; </p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb XML Schema (AXMLS) </b></p>
+<p class="left">You can use an XML Schema file to easily create your database and import tables. For more information you should download the <a href="http://sourceforge.net/project/showfiles.php?group_id=81768&package_id=111225">AXMLS Documentation</a>. </p>
+<p class="left">&nbsp;</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style10">&lt;?</span><br>
+            <span class="style9">/* Load Adodb Lite first and then load XML Schema<br>
+        */<br>
+            </span><span class="style8">require</span>( "path_to_adodb/adodb.inc.php");<br>
+            <span class="style8">require</span>( "path_to_adodb/adodb-xmlschema.inc.php" );<br>
+            <br>
+            <span class="style9"></span>$schemaFile = 'example.xml';<br>
+        $platform = 'mysql';<br>
+        $dbHost = 'localhost';<br>
+        $dbName = 'database';<br>
+        $dbUser = 'username';<br>
+        $dbPassword = 'password';<br>
+        <br>
+        <span class="style9">/* You MUST include the Pear Module in the connection either<br>
+        * in the </span><span class="style8">ADONewConnection</span><span class="style9"> or the </span><span class="style8">adodb.config.php</span><span class="style9"> file.<br>
+        */<br>
+        </span>$db = <span class="style8">ADONewConnection</span>( $platform, <span class="style9">&quot;pear&quot;</span>);<br>
+        $db-&gt;<span class="style8">Connect</span>( $dbHost, $dbUser, $dbPassword, $dbName );<br>
+        <br>
+        <span class="style9">/* Use the database connection to create a new adoSchema object.<br>
+        */<br>
+        </span>$schema = <span class="style8">new</span> adoSchema( $db );<br>
+        <br>
+        <span class="style9">/* Call ParseSchema() to build SQL from the XML schema file.<br>
+        * Then call ExecuteSchema() to apply the resulting SQL to <br>
+        * the database.<br>
+        */<br>
+        </span>$sql = $schema-&gt;<span class="style8">ParseSchema</span>( $schemaFile );<br>
+        $result = $schema-&gt;<span class="style8">ExecuteSchema</span>();<br>
+        <span class="style10">?&gt;<br>
+        </span><br>
+    </p></td>
+  </tr>
+</table></td>
+	</tr>
+</table>
+<p class="px5">
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

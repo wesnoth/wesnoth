@@ -1,0 +1,6 @@
+# nobody is user and group for apache
+chown nobody:nobody templates_c
+chown nobody:nobody cache
+chmod 775 templates_c
+chmod 775 cache
+

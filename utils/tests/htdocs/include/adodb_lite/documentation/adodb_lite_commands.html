@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite Commands</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+<!--
+.style3 {	color: #0000FF;
+	font-weight: bold;
+}
+.style4 {
+	color: #336600;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Tahoma, Verdana, Arial;
+}
+.style5 {	color: #FF6600;
+	font-weight: bold;
+}
+.style6 {color: #000000}
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<div align="center"><img src="images/m_top.gif" width="572" height="8" alt="" border="0"></div>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+<tr>
+	<td>
+<table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+<tr>
+	<td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+	<td><p class="bar01" style="color: #4AC250; font-size: 18px;">ADOdb Lite Commands&nbsp;</p></td>
+</tr>
+</table>
+	</td>
+</tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb Lite </b></p>
+<p class="left">If you are familier with the ADODB command set then you should be familier with the commands listed below. We are only supporting a very small subset of the commands available in ADODB. These commands are the basic commands needed to access your database information while maintaining very low memory overhead and maximum execution speed. <br>
+</p>
+<img src="images/px1.gif" width="1" height="1" alt="" border="0">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Supported Database Commands </b></p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> $db-&gt;debug = <span class="style3">false</span> - Disable Debug Feature<br>
+        $db-&gt;debug = <span class="style3">true</span> - Enable Debug Feature</p></td>
+  </tr>
+</table>
+<p class="left">If the debug flag is set to true then every query with corresponding error result will be echoed. The debug feature does not support echoing of resultset functions.<br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> $db-&gt;Affected_Rows()<br>
+        $db-&gt;Close()<br>
+        $db-&gt;Concat($string, $string)<br>
+        $db-&gt;ErrorMsg()<br>
+        $db-&gt;ErrorNo()<br>
+        $db-&gt;Execute($sql, [$inputarray])<br>
+        $db-&gt;GetAll($sql)<br>
+        $db-&gt;GetArray($sql)<br>
+        $db-&gt;IfNull($field, $ifNull)$db-&gt;Insert_ID()<br>
+        $db-&gt;Insert_ID()<br>
+        $db-&gt;IsConnected()<br>
+        $db-&gt;qstr($string, [$magic_quotes])<br>
+        $db-&gt;Qmagic($string)<br>
+        $db-&gt;SelectDB($dbname)<br>
+        $db-&gt;SelectLimit( $sql, [nrows], [offset], [$inputarray] ) - Currently MySql/MySqli/MySqlt/SqLite/PostGres7/MsSql/MsSqlpo/Sybase supported<br>
+        $db-&gt;Version()<br>
+    </p></td>
+  </tr>
+</table>
+<p class="left"><br>
+</p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Supported Result Set Commands <br>
+</b></p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left">$ADODB_FETCH_MODE = 'ADODB_FETCH_DEFAULT' | 'ADODB_FETCH_NUM' | 'ADODB_FETCH_ASSOC' | 'ADODB_FETCH_BOTH'<br>
+      </p>
+        <p class="left">$result-&gt;Close()<br>
+        $result-&gt;EOF()<br>
+        $result-&gt;EOF<br>
+        $result-&gt;FetchField($fieldOffset)<br>
+        $result-&gt;FieldCount()<br>
+        $result-&gt;Fields([column])<br>
+        $result-&gt;Fields<br>
+        $result-&gt;GetAll([nRows])<br>
+        $result-&gt;GetArray([nRows])<br>
+        $result-&gt;GetRows([nRows])<br>
+        $result-&gt;Move([row])<br>
+        $result-&gt;MoveFirst()<br>
+        $result-&gt;MoveLast()<br>
+        $result-&gt;MoveNext()<br>
+        $result-&gt;RecordCount() </p></td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Additional ADOdb Lite Commands </b></p>
+<p class="left">You can easily expand the functions supported by ADOdb Lite by installing some of the various modules that are availible. Be sure to check the <a href="modules.php">Modules</a> page for the currently offered ADOdb Lite Modules. </p>
+<p class="left">&nbsp; </p>
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="none" border="0" align="absmiddle">&nbsp;&nbsp;<b>Unsupported ADOdb Functions </b></p>
+<p class="left">ADOdb Lite doesn't support every ADOdb function at this time and the following is a list of functions currently unsupported with the latest release of ADOdb Lite.</p>
+<p class="left">I have a number of planned modules that will add support for these functions. Beside each function you will see the module that will support those functions. </p>
+<p class="left"><font><b><span class="style3">Unsupported ADOConnect Functions</span><font><span class="style5"><br>
+  </span></font><br>
+  CacheExecute</b></font> - Cache Module <br>
+  <font><b><font><b>CacheSelectLimit</b></font><span class="style6"> - Cache Module </span><br>
+    CacheFlush<span class="style6"> - Cache Module </span><br>
+    CachePageExecute</b><span class="style6"> - Cache Module </span><br>
+  <b>CacheGetAssoc</b><span class="style6"> - Cache Module </span><br>
+  <b>CacheGetOne</b><span class="style6"> - Cache Module </span><br>
+  <br>
+  <b><font><b>UpdateBlob<span class="style6"> - Blob Module </span></b></font><br>
+  <font><b>UpdateClob</b></font><font><b><span class="style6"> - Blob Module</span></b></font><br>
+  <font><b>UpdateBlobFile</b></font><font><b><span class="style6"> - Blob Module</span></b></font><br>
+  <font><b>BlobEncode</b></font><font><b><span class="style6"> - Blob Module</span></b></font><br>
+  <span class="style5"><font>BlobDecode<b><font><b><span class="style6"> - Blob Module</span></b></font></b><br>
+  </font></span><br>
+    ExecuteCursor</b></font> - Oracle ONLY function <br>
+  <font><b>Bind</b><span class="style6"> - Oracle ONLY function </span><br>
+  <b><br>
+  </b></font><span class="style5"><font><b> Replace<span class="style6"> - Query Module </span></b><br>
+  <b>AutoExecute<span class="style6"> - Query Module</span></b><br>
+  <b>GetUpdateSQL<span class="style6"> - Query Module</span></b><br>
+  <b>GetInsertSQL<span class="style6"> - Query Module</span></b><br>
+  <b>Prepare<span class="style6"> - Query Module</span></b><br>
+  <b>Param<span class="style6"> - Query Module</span></b><br>
+  <b>PrepareSP<span class="style6"> - Query Module</span></b><br>
+  <b>InParameter<span class="style6"> - Query Module</span></b><br>
+  <b>OutParameter<span class="style6"> - Query Module</span></b><br>
+  <b>Parameter<span class="style6"> - Query Module</span></b><br>
+  <b><br>
+    PageExecute<span class="style6"> - Page Module</span></b><br>
+  <br>
+  <b>LogSQL</b><span class="style6"> - Performance Monitor </span><br>
+  <b><br>
+    ServerInfo</b><br>
+  <br>
+  </font></span><span class="style3">Unsupported ADORecordSet Functions</span><font><span class="style5"><br>
+  <br>
+  </span></font><font><span class="style5"><b>AbsolutePage</b></span><b><span class="style6"> - Page Module</span></b><span class="style5"><br>
+  <b>AtFirstPage</b></span><b><span class="style6"> - Page Module</span></b><span class="style5"><br>
+  <b>AtLastPage</b></span><b><span class="style6"> - Page Module</span></b><span class="style5"><br>
+  <b><br>
+  </b></span><span class="style5"> GetRowAssoc<br>
+  <br>
+</span></font></p>
+<p class="left"></p></td>
+	</tr>
+</table>
+<p class="px5">
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

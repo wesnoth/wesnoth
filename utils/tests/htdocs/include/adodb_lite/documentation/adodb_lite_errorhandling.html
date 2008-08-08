@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite How to Install</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style3 {
+	color: #0000FF;
+	font-weight: bold;
+}
+-->
+    </style>
+<style type="text/css">
+<!--
+.style5 {color: #FF0000; font-weight: bold; }
+.style6 {color: #000000}
+.style7 {color: #339900}
+.style8 {	color: #FF6600;
+	font-weight: bold;
+}
+.style9 {	color: #000000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+<tr>
+	<td>
+<table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+<tr>
+	<td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+	<td><p class="bar01" style="color: #4AC250; font-size: 18px;">Error Handling&nbsp;</p></td>
+</tr>
+</table>
+	</td>
+</tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<span class="style8">PHP 5 Exception Handling using</span> <span class="style3">adodb-exceptions.inc.php</span><span class="style8">.</span> <br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <b>include("../adodb-exceptions.inc.php");</b> <br>
+      include("../adodb.inc.php"); <br>
+      <br>
+      try <br>
+      { <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;$db = NewADOConnection("mysql://test:password@mine/"); <br>
+      } <br>
+      <br>
+      catch (exception $e) <br>
+      { <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;var_dump($e); <br>
+      } </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<span class="style8">Standard Error  Handling using</span> <span class="style3">adodb-<b>errorhandler</b>.inc.php</span><span class="style8">.</span>
+<p class="left">This uses 
+  the standard PHP  error_reporting 
+  to control the error messages  display or store through the PHP trigger_error 
+  function. </a></span></p>
+<p class="left"> The error handler will be triggered when a Connect(), PConnect(), Execute() or SelectLimit() 
+  fails or causes an error.</p>
+<p class="left">The adodb-errorhandler.inc.php 
+  should be included before you create any ADOConnection objects. </a></p>
+<p class="left"> If you define error_reporting(0), no errors will be passed to the error handler. 
+  If you set error_reporting(E_ALL), all errors will be passed to the error handler. 
+  You still need to use <b>ini_set("display_errors", "0" or "1")</b> to control 
+  the display of errors.</p>
+<p class="left">You can  log your error messages by defining the following 
+  optional constants ADODB_ERROR_LOG_TYPE and ADODB_ERROR_LOG_DEST. <br>
+    <br>
+  ADODB_ERROR_LOG_TYPE 
+  is the error log message type (see error_log 
+  in the PHP manual). </p>
+<p class="left"> ADODB_ERROR_LOG_DEST is the directory path and filename of the location and file you would like the error messages stored.. </a></a><br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span class="style9">error_reporting(E_ALL);  //Enable reporting of all errors by PHP </span><b><br>
+      include("../adodb-errorhandler.inc.php");</b> <br>
+      include("../adodb.inc.php"); <br>
+      <b><br>
+        <span class="style9">define('ADODB_ERROR_LOG_TYPE', 3);<br>
+          define('ADODB_ERROR_LOG_DEST', 'adodb_errors.log');</span></b><br>
+      <br>
+      $db = NewADOConnection('mysql');<br>
+      $db-&gt;Connect('localhost', 'root', '', 'test');<br>
+      $resultset = $db-&gt;Execute('select * from test_table'); // Table named test_table is missing </p></td>
+  </tr>
+</table>
+<p class="left"><br>
+  The following will be stored in the <b><span class="style9">adodb_</span></b>errors.log file: </p>
+<pre class="left">(2006-3-31 03:32:51) mysql error: [1146: Table 'test.test_table' doesn't exist] in<br> EXECUTE("select * from test_table")
+
+</pre>
+<p><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<span class="style8">Pear Style Error  Handling using</span> <span class="style3">adodb-<b>errorpear</b>.inc.php</span><span class="style8">.</span> <br>
+    <br>
+    <span class="style9">This will create a 
+      PEAR_Error object whenever an error occurs. The last PEAR_Error object 
+      created can be retrieved using ADODB_Pear_Error(). </a></span></p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="style9">error_reporting(E_ALL);  //Enable reporting of all errors by PHP </span><b><br>
+      include("../adodb-errorpear.inc.php");</b> <br>
+      include("../adodb.inc.php"); <br>
+      <b><br>
+        </b> $db = NewADOConnection('mysql');<br>
+      $db-&gt;Connect('localhost', 'root', '', 'test');<br>
+      $resultset = $db-&gt;Execute('select * from test_table'); // Table named test_table is missing <br>
+      if(!$resultset)<br>
+      {<br>
+      <b>&nbsp;&nbsp;&nbsp;&nbsp;<span class="style9">$error_object = ADODB_Pear_Error();<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;echo '&lt;b&gt;' . $error_object-&gt;message . '&lt;/b&gt;';</span></b> <br>
+      }</p></td>
+  </tr>
+</table></td>
+	</tr>
+<tr>
+  <td valign="top">&nbsp;</td>
+</tr>
+</table>
+<p class="px5">
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite Commands</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+<!--
+.style2 {color: #0066FF}
+-->
+    </style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<div align="center"><img src="images/m_top.gif" width="572" height="8" alt="" border="0"></div>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+      <tr>
+        <td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+        <td><p class="bar01" style="color: #4AC250; font-size: 18px;">ADOdb Lite Debug Console &nbsp;</p></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb Lite Debug Console </b></p>
+<p class="left">I decided to add a simple debug console to ADOdb Lite similar to the one used in <a href="http://templatelite.sourceforge.net">Template Lite</a>. This debug console can keep track of every query that has been made since the database object has been created for a particular page. It will also keep track of the execution times for each query along with any error messages.<br>
+</p>
+<img src="images/px1.gif" width="1" height="1" alt="" border="0">
+<p class="left">The console is enabled using...<br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+	<tr>
+		<td><p class="left"><span style="color: #000000;"><span style="color: #000000;">&nbsp;$db</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">debug_console</span><span style="color: #0000CC;">&nbsp;</span><span style="color: #006600;">=&nbsp;</span><span style="color: #0000CC;">true</span><span style="color: #006600;">;&nbsp;<br />
+		</span></span>
+		    </p>
+		  </td></tr></table>
+<p class="left"><br>
+and should be placed right after</p>
+<p class="left">&nbsp;</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> $db&nbsp;</span><span style="color: #006600;">=&nbsp;</span><span style="color: #0000CC;">ADONewConnection</span><span style="color: #006600;">&#40;</span><span style="color: #0000CC;"> $db_type</span><span style="color: #006600;">&#41;;&nbsp;<br>
+      <br>
+    </p></td>
+  </tr>
+</table>
+<br>
+<p class="left">  ADOdb Lite will start recording all of the queries made from the point the debug console was enabled. You can then retrieve three different arrays that contain all of the query information.</p>
+<p class="left">&nbsp;</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span style="color: #0000CC;"><span style="color: #000000;">$db<span style="color: #006600;">-&gt;</span>query_list&nbsp;&nbsp;<span style="color: #FF9900;">//&nbsp;List&nbsp;of&nbsp;all&nbsp;executed&nbsp;queries<br />
+      <br />
+      </span>$db<span style="color: #006600;">-&gt;</span>query_list_time&nbsp;&nbsp;<span style="color: #FF9900;">//&nbsp;List&nbsp;of&nbsp;all&nbsp;executed&nbsp;queries&nbsp;execution&nbsp;times<br />
+      <br />
+      </span>$db<span style="color: #006600;">-&gt;</span>query_list_errors&nbsp;&nbsp;<span style="color: #FF9900;">//&nbsp;List&nbsp;of&nbsp;all&nbsp;executed&nbsp;queries&nbsp;errors&nbsp;<br />
+      </span></span></span><br>
+    </p></td>
+  </tr>
+</table>
+<br>
+<p class="left">These arrays are all numerically indexed starting from 0.</p>
+<p class="left">You can  use the provided PHP INCLUDE file to display the Query Debug Console in a seperate window.<br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"> <span style="color: #006600;">include&nbsp;&#40;</span><span style="color: #CC0000;">"adodb_lite/query_debug_console/query_debug_console.php"</span><span style="color: #006600;">&#41;;<br>
+      display_query_console($db);&nbsp;<br />
+    </span>
+    </p></td>
+  </tr>
+</table>
+<br>
+<p class="left">Place the above line at the bottom of your PHP code.&nbsp;&nbsp;It must be placed BEFORE the ending <span style="color: green">&lt;/body&gt;&lt;/html&gt;</span> tags.&nbsp;&nbsp;If it is placed after the ending <span style="color: green">&lt;/html&gt;</span> tag has been sent then the console may not be displayed.  You must pass the ADOdb Lite database object to the <span class="style2">display_query_console</span> function. </p>
+<p class="left">Your browser must have Javascript enabled. </p>
+<p class="left">  When the debug console is enabled the page will open another window displaying all of the query information.<br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p align="center" class="left"><a href="images/query_de.gif" target="_blank"><img src="images/query_de.gif" alt="debug console" width="366" height="300"></a></p>
+      <p align="center" class="left">Click Image to see full size. <br>
+        <br>
+        </p></td>
+  </tr>
+</table>
+<br>
+<p class="left">Each query is listed along with the number of seconds it took to execute the query.&nbsp;&nbsp;If there was an error with the query it would be displayed in <span style="color: red">RED</span> below the query.</p>
+<p class="left">If you are using <a href="http://templatelite.sourceforge.net">Template Lite</a> or Smarty you can add the following to your PHP program just before the display method.<br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span style="color: #000000;"><span style="color: #0000CC;">$template_object</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">assign</span><span style="color: #006600;">&#40;</span><span style="color: #CC0000;">"debug_console"</span><span style="color: #006600;">,&nbsp;</span><span style="color: #0000CC;">$db</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">debug_console</span><span style="color: #006600;">&#41;;<br />
+      </span><span style="color: #0000CC;">$template_object</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">assign</span><span style="color: #006600;">&#40;</span><span style="color: #CC0000;">"query_list"</span><span style="color: #006600;">,&nbsp;</span><span style="color: #0000CC;">$db</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">query_list</span><span style="color: #006600;">&#41;;<br />
+      </span><span style="color: #0000CC;">$template_object</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">assign</span><span style="color: #006600;">&#40;</span><span style="color: #CC0000;">"query_list_time"</span><span style="color: #006600;">,&nbsp;</span><span style="color: #0000CC;">$db</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">query_list_time</span><span style="color: #006600;">&#41;;<br />
+      </span><span style="color: #0000CC;">$template_object</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">assign</span><span style="color: #006600;">&#40;</span><span style="color: #CC0000;">"query_list_errors"</span><span style="color: #006600;">,&nbsp;</span><span style="color: #0000CC;">$db</span><span style="color: #006600;">-&gt;</span><span style="color: #0000CC;">query_list_errors</span><span style="color: #006600;">&#41;;&nbsp;<br />
+      </span></span><br>
+    </p></td>
+  </tr>
+</table>
+<br>
+<p class="left">At the end of your template file add the following code.<br>
+</p>
+<table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+  <tr>
+    <td><p class="left"><span class="code">{if $debug_console == true }<br />
+&lt;SCRIPT language=javascript&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console = window.open("","Query Debug","width=750,height=600,resizable,scrollbars=yes");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;HTML&gt;&lt;TITLE&gt;Query Debug Console&lt;/TITLE&gt;&lt;BODY onload='self.focus();' bgcolor=#ffffff&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;table border=0 width=100%&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;tr bgcolor=#cccccc&gt; &lt;th colspan=2&gt;Query Debug Console&lt;/th&gt;&lt;/tr&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;tr bgcolor=#cccccc&gt;&lt;td colspan=2&gt;&lt;b&gt;Included page queries (load time in seconds):&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;{foreach key=key value=sql from=$query_list}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;tr bgcolor={if $key % 2}#eeeeee{else}#fafafa{/if}&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write('&lt;td width="75%"&gt;{$query_list[$key]|strip|addslashes }&lt;hr&gt;&lt;font color=\"red\"&gt;&lt;b&gt;{$query_list_errors[$key]|strip|addslashes}&lt;/b&gt;&lt;/font&gt; &lt;/td&gt;');<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;td width=\"25%\"&gt;&lt;font color=\"red\"&gt;&lt;b&gt;&lt;i&gt;({$query_list_time[$key]|string_format:"%.5f"} seconds)&lt;/i&gt;&lt;/b&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;{/foreach}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;/table&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.write("&lt;/BODY&gt;&lt;/HTML&gt;");<br />
+&nbsp;&nbsp;&nbsp;&nbsp;_query_debug_console.document.close();<br />
+&lt;/SCRIPT&gt;<br />
+{/if}</span><br>
+            <br>
+    </p></td>
+  </tr>
+</table>
+<br>
+<p class="left">This is not as comprehensive as the Performance Monitor but it is just as useful with only about 10 lines of code added to each of the drivers in ADOdb Lite. For such a small addition it is very useful in tracking down slow queries in any database. </p>
+<p class="left">&nbsp;</p></td>
+</tr>
+</table>
+<p class="px5">
+	</td>
+	<td bgcolor="#979797"><img src="images/px1.gif" width="1" height="1" alt="" border="0"></td>
+</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

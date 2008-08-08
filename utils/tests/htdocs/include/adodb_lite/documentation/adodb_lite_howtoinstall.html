@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta NAME="description" CONTENT="ADOdb Lite, a fast and small ADODB replacement">
+<meta NAME="keywords" CONTENT="ADODB, ADOdb Lite, Database, Abstraction, Library, mysql, mssql, postgres">
+<meta name="revisit-after" content="4days">
+<meta name="robots" content="index,follow">
+	<title>ADOdb Lite How to Install</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style3 {
+	color: #0000FF;
+	font-weight: bold;
+}
+-->
+    </style>
+<style type="text/css">
+<!--
+.style5 {color: #FF0000; font-weight: bold; }
+.style6 {color: #000000}
+.style8 {color: #000000; font-weight: bold; }
+.style11 {color: #339966; font-weight: bold; }
+-->
+</style>
+</head>
+
+<body leftmargin=0 topmargin=0 marginheight="0" marginwidth="0" bgcolor="#E6E6E6">
+
+<table border="1" cellpadding="0" cellspacing="0" align="center">
+<tr valign="top">
+	<td bgcolor="#FFFFFF" width="572">
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center" height="25" background="images/fon_bar01.gif">
+<tr>
+	<td>
+<table border="0" cellpadding="0" cellspacing="0" background="" bgcolor="#FFFFFF">
+<tr>
+	<td><img src="images/e05.gif" width="21" height="21" alt="" border="0"></td>
+	<td><p class="bar01" style="color: #4AC250; font-size: 18px;">How to Install &amp; Connect &nbsp;</p></td>
+</tr>
+</table>
+	</td>
+</tr>
+</table>
+<p class="px5">
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td valign="top">
+<p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Installation</b></p>
+<p class="left">Un-tar the adodb_lite??.tar.gz file into the directory that contains your website. If you are replacing ADOdb you will need to change the ADOdb path to reflect the new install.</p>
+<p class="left">If this is a new install you will need to add an include/require statement to the PHP files for your website.</p>
+<p class="left">Example:<br>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>  <p class="left style1"> require_once '/home/www/yourdirectory/adodb_lite/adodb.inc.php';</b></p> 
+		</td></tr></table><br> 
+  </p>
+ 
+<img src="images/px1.gif" width="1" height="1" alt="" border="0">
+    <p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Connecting to your database </b></p>    
+    <p class="left">You will need to designate the type of database server you will be using. </p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="left style1">$db = ADONewConnection(<span class="style6">'databasetype'</span>);</p>
+		</td><tr></table>
+    <p class="left">The following databases are supported:<br>
+    </p>
+    <table width="90%"  border="1" align="center" cellpadding="0" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><span class="left style1">Databasetype Designator </span></td>
+        <td><span class="left style1">Database Name </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">fbsq</span></td>
+        <td><span class="left">Frontbase</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">maxdb</span></td>
+        <td><span class="left">Max DB</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">msql</span></td>
+        <td><span class="left">Mini SQL</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">mssql</span></td>
+        <td><span class="left">Microsoft SQL</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">mysql</span></td>
+        <td><span class="left">MySql</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">mysqli</span></td>
+        <td><span class="left">MySql Improved</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">mysqlt</span></td>
+        <td><span class="left">MySql w/transactions</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">postgres</span></td>
+        <td><span class="left">PostGres</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">postgres64</span></td>
+        <td><span class="left">PostGres 6.4</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">postgres7</span></td>
+        <td><span class="left">PostGres 7</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">postgres8</span></td>
+        <td><span class="left">Postgres 8</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">sqlite</span></td>
+        <td><span class="left">SqLite</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">sqlitepo</span></td>
+        <td><span class="left">SqLite Pro </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">sybase</span></td>
+        <td><span class="left">Sybase</span></td>
+      </tr>
+      <tr>
+        <td><span class="left">sybase_ase</span></td>
+        <td><span class="left">SyBase ASE </span></td>
+      </tr>
+    </table>    
+    <p class="left"><br>
+      If the database does not exist and you would like ADOdb Lite to automatically create the database then set the createdatabase switch to true.</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="left style1">$db-&gt;createdatabase = <span class="style3">true</span> ;</p>
+		</td></tr></table>
+    <p class="left">If you would like for every query along with the error result echoed set the debug flag to <span class="style3">true</span>. The default setting is <span class="style3">false</span>. </p>    
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="left style1">$db-&gt;debug = <span class="style3">true</span> ;</p>
+		</td></tr></table>
+    <p class="left"></p>
+    <p class="left">New Connection</p>
+     <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>   <p class="left style1">        $result = $db-&gt;Connect(&quot;$dbhost&quot;, &quot;$dbuname&quot;, &quot;$dbpass&quot;, &quot;$dbname&quot;);</p>
+		</td></tr></table>
+    <p class="left">or persistent connection</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="left"><span class="style1">$result = $db-&gt;PConnect(&quot;$dbhost&quot;, &quot;$dbuname&quot;, &quot;$dbpass&quot;, &quot;$dbname&quot;);</span></p>
+		</td></tr></table>
+    <p class="left">      or force a new connection</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="left"><span class="style1">$result = $db-&gt;NConnect(&quot;$dbhost&quot;, &quot;$dbuname&quot;, &quot;$dbpass&quot;, &quot;$dbname&quot;);</span></p>
+    <p class="left"> <span class="style1"></span><span class="style1">$dbhost</span> = localhost or url/ip address IE: http://0.0.0.0 or http://www.dbserver.com<br>
+        <span class="style1">$</span><span class="style1">dbuname</span> = The Username needed to access the database<br>
+        <span class="style1">$</span><span class="style1">dbpass</span> = Optional password for accessing the database<br>
+        <span class="style1">$dbname</span> = The name of the database you will be accessing</p>
+		</td></tr></table>
+    <p class="left">&nbsp;</p>
+    <p class="left">Example:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="style1"><b>&nbsp;require_once '/home/www/yourdirectory/adodb_lite/adodb.inc.php';<br>
+        	$db = ADONewConnection(<span class="style6">'databasetype'</span>);<br>
+            $db-&gt;createdatabase = <span class="style3">true</span> ;<br>
+            $result = $db-&gt;Connect(&quot;$dbhost&quot;, &quot;$dbuname&quot;, &quot;$dbpass&quot;, &quot;$dbname&quot;);<br>
+</b></p>
+        	</td>
+      </tr></table>
+    <p class="left"><br>
+        			<img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Optional Connection Flags </b></p>
+    <p class="left">Mysql/Mysqli/Mysqlt:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="style1"><b>$db-&gt;port = </b><span class="style8">Port number to connect through.</span> </p>
+            <p class="style1"><b>$db-&gt;clientflags = <span class="style8">The client_flags parameter can be a combination of the following constants: MYSQL_CLIENT_COMPRESS, MYSQL_CLIENT_IGNORE_SPACE or MYSQL_CLIENT_INTERACTIVE.</span> (PHP 4.3.0 or higher) <br>
+          </b></p></td>
+      </tr>
+    </table>
+    <p class="left">&nbsp;</p>
+    <p class="left">Mysqli:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="style1"><span class="style5">$db-&gt;socket</span><b> = <span class="style8">specifies the socket or named pipe that should be used</span><br>
+        </b></p></td>
+      </tr>
+    </table>
+    <p class="left">&nbsp;</p>
+    <p class="left">Postgres(all):</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="style1"><b>$db-&gt;port = </b><span class="style8">Port number to connect through.</span> </p></td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    <p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>DSN (Data Source Name) Connection Method</b></p>
+    <p class="left">You can perform your driver selection and connection all at the same time if you use a DSN connection string instead of the databasetype.  The DSN entry has been expanded to use the anchor symbol for the inclusion of modules. </p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="style8">$driver://$username:$password@$hostname/$database?options[=value]#$modules</p>
+            <p class="style8"><span class="style1"><b>$driver </b></span><b>=</b> Databasetype Designator listed in the table at the start of this page. <br>
+                <span class="style1"><b>$username </b></span><b>=</b> The Username needed to access the database<br>
+                <span class="style1"><b>$password </b></span><b>=</b> Optional password for accessing the database <br>
+                <span class="style1"><b>$hostname </b></span><b>=</b> localhost or url/ip address IE: http://0.0.0.0 or http://www.dbserver.com<br>
+                <span class="style1"><b>$database </b></span><b>=</b> The name of the database you will be accessing<br>
+                <span class="style1"><b>$options </b></span><b>=</b> All Drivers - 'persist', 'persistent', 'debug', 'fetchmode'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mysql (all) - 'port', 'clientflags'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mysqli - 'socket'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Postgress (all) - 'port'<br>
+<span class="style1"><b>$modules </b></span><b>=</b> The modules that should be loaded. IE: pear, cache, extend, ect.            </p></td>
+      </tr>
+    </table>
+    <br>
+    <p class="left">The following <span class="style11">modules</span> are supported:<br></p>
+    <table width="97%"  border="1" align="center" cellpadding="0" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><span class="left style1">Module Designator </span></td>
+        <td><span class="left style1">Module Function </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">pear</span></td>
+        <td><span class="left">Adds generic Pear Database Functions </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">transaction</span></td>
+        <td><span class="left">Adds transaction support for databases that support it </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">extend</span></td>
+        <td><span class="left">Adds little used but important ADOdb functions </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">date</span></td>
+        <td><span class="left">Adds all ADOdb Database Date Functions </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">object</span></td>
+        <td><span class="left">Adds all ADOdb Database Object Functions </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">menu</span></td>
+        <td><span class="left">Adds all ADOdb Database Menu Functions </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">adodblite</span></td>
+        <td><span class="left">Adds functions designed specifically for ADOdb Lite </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">meta</span></td>
+        <td><span class="left">Adds all ADOdb Database Meta Functions </span></td>
+      </tr>
+      <tr>
+        <td><span class="left">perfmon</span></td>
+        <td><span class="left">Adds support for the Performance Monitor</span></td>
+      </tr>
+    </table>
+    <p class="left">You can use only a single command to select your driver and connect to the database instead of two command strings.</p>
+    <p class="left">&nbsp;</p>
+    <table width="97%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="style1"><b class="style3">require_once </b><span class="style11">'/home/www/yourdirectory/adodb_lite/adodb.inc.php'</span><span class="style8"><b>;</b></span><b><br>
+                  <span class="style8">$flags</span> = MYSQL_CLIENT_COMPRESS<span class="style8">;</span> <br>
+                  <span class="style8">$dsn_string</span> = 'mysql://user:junk@localhost/mydb?persist&amp;clientflags=$flags<b>#pear:extend</b>'<span class="style8">;</span> </b><b><br>
+                  <span class="style8">$db</span> = ADONewConnection(<span class="style6">$<b>dsn_string</b></span>)<span class="style8">;</span><br>
+              </b></p></td>
+      </tr>
+    </table>
+    <p class="left">The above example would create a <span class="style11">persistent</span> connection to a Mysql database using the <span class="style3">mysql</span> driver. The User name is <span class="style3">user</span>, password of <span class="style3">junk</span>, host address is <span class="style3">localhos</span><span class="style3">t</span>, with <span class="style3">Mysql Compression</span> enabled, the <span class="style3">pear</span> and <span class="style3">extend</span> modules are loaded. </p>
+    <p class="left">&nbsp;</p>
+    <p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb Lite Configuration File </b></p>
+    <p class="left">ADOdb Lite uses a configuration file (<span class="style3">adodb.config.php</span>) to offer better compatability with ADOdb applications. You can designate the modules you need loaded when connecting to the database through the configuration file. </p>
+    <p class="left">Example:</p>
+    <table width="97%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td><p class="style1">&lt;?<br>
+                <span class="style11">/**<br>
+        * ADOdb Lite Configuration File<br>
+        */</span></p>
+            <p class="style11">/**<br>
+        * Set the $dbtype variable to the database designator.<br>
+        * If this variable is enabled it will override the database designator<br>
+        * entered in the ADONewConnection( $dbtype ) function. The database<br>
+        * designator in a DSN string will be overridden but the rest of the DSN<br>
+        * string will be used.<br>
+        *<br>
+        * You can place a DSN entry in the $dbtype variable if you would like to<br>
+                * auto connect to your database.<br>
+                * <br>
+                * Example: <br>
+                * <br>
+                * $dbtype = &quot;driver://username:password@hostname/database?options[=value]#modules&quot;;<br>
+                * <br>
+                * driver = Databasetype Designator listed in the table at the start of this page. <br>
+                * username = The Username needed to access the database<br>
+                * password = Optional password for accessing the database <br>
+                * hostname = localhost or url/ip address IE: http://0.0.0.0 or <br>
+                 
+                http://www.dbserver.com<br>
+                * database = The name of the database you will be accessing<br>
+                * options = All Drivers - 'persist', 'persistent', 'debug', 'fetchmode'<br>
+                * Mysql (all) - 'port', 'clientflags'<br>
+                * Mysqli - 'socket'<br>
+                * Postgress (all) - 'port'<br>
+                * modules = The modules that should be loaded. IE: pear, cache, extend, ect. <br>
+                * <br>
+                */</p>
+            <p class="style11"> // $dbtype = &quot;mysql&quot;;</p>
+            <p class="style11">/**<br>
+        * If you want to maintain compatability with the ADOdb ADONewConnection( $dbtype )<br>
+        * function you should designate the modules you need loaded below. If you designate<br>
+        * the modules below you do not need to designate them in<br>
+        * ADONewConnection( $dbtype, $modules ).<br>
+        * <br>
+        * If you would like more than one module loaded at the same time concatinate the <br>
+        * module names using a colon (:).<br>
+        * <br>
+        * Example:<br>
+        * $modules = &quot;pear:transaction:extend&quot;;<br>
+        * <br>
+        * The above example would load the Pear, Transaction and Extend modules<br>
+        * automatically.<br>
+        */</p>
+            <p><span class="style8">$modules = &quot;pear:extend&quot;;</span><br>
+                <span class="style5">?&gt;</span></p></td>
+      </tr>
+    </table>
+    <p class="left"><br>
+  In the above example the Pear and Extend modules will automatically be loaded when... </p>
+    <p class="left">$db = <span class="style3"> ADONewConnection</span>( $dbtype );</p>
+    <p class="left">is executed. With the above change to the config file you would not need to change the <span class="style3">ADONewConnection</span> to... </p>
+    <p class="left">$db = <span class="style3"> ADONewConnection</span>( $dbtype,<span class="style11"> 'pear:extend'</span>);</p>
+    <p class="left">This maintains 100% compatability for applications currently using ADOdb and makes it easier for them to change to ADOdb Lite.</p>
+    <p class="left">I recommend using this configuration file for telling ADOdb Lite what modules should be used instead of using the DSN anchor tag or adding the modules to the ADONewCOnnection function. This will allow you to use ADOdb Lite with existing applications. </p>
+    <p class="left"></p>
+    <p class="left"></p>
+    <p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>ADOdb Modules</b></p>
+    <p class="left">The one departure I am going to make from 100% compatibility 
+    	with ADOdb is with modules. I have added a module system 
+    	to the package that will allow you to select the modules you 
+    	would like to have loaded. We will be offering two modules with 
+    	this release for Transaction and Pear.</p>
+    <p class="left">There is a second command you can use when setting up your ADOdb 
+    	Lite.</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="style5">$db = ADONewConnection(<span class="style6">$databasetype</span>, <span class="style3">$module</span>);</p>
+		</td></tr></table>
+    <p class="left">The $module variable is optional.</p>
+    <p class="left">Example:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="style5">$db = ADONewConnection(<span class="style6">'postgres7'</span>, <span class="style3">'transaction'</span>);</p>
+		</td>
+      </tr></table>
+    <p class="left">The above would load the Transaction Module for the Postgres 7 
+    	database.</p>
+    <p class="left">The next module will be for database Caching.</p>
+    <p class="left">Example:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="style5"><strong>$db = ADONewConnection(<span class="style6">'postgres7'</span>, <span class="style3">'cache'</span>);</strong></p>
+		</td>
+      </tr></table>
+    <p class="left">If you need both modules:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+      <tr>
+        <td>    <p class="style5"><strong>$db = ADONewConnection(<span class="style6">'postgres7'</span>, <span class="style3">'transaction : cache'</span>);</strong></p>
+		</td>
+      </tr></table>
+    <p class="left">I do not have a firm date for when database caching will be coming 
+    	out because I do not have a firm roadmap on how I will impliment 
+    	the code for database caching. I have a number of ideas that I 
+    	need to try out first.</p>
+    <p class="left">Example:</p>
+    <table width="90%"  border="1" align="center" cellpadding="10" cellspacing="1" bordercolor="#C3D2EB" bgcolor="#E9E9E9">
+    	<tr>
+    		<td><p class="style1"><b>&nbsp;require_once '/home/www/yourdirectory/adodb_lite/adodb.inc.php';<br>
+				$db = ADONewConnection(<span class="style6">'databasetype', </span><span class="style3">'pear : transaction : cache'</span> );<br>
+				$db-&gt;createdatabase = <span class="style3">true</span> ;<br>
+				$result = $db-&gt;Connect(&quot;$dbhost&quot;, &quot;$dbuname&quot;, &quot;$dbpass&quot;, &quot;$dbname&quot;);<br>
+    				</b></p></td>
+    		</tr>
+    	</table>    
+    <p class="left">The above example would load the Pear, Transaction and Cache modules. This would allow you to use the commands/functions associated with those modules. There isn't a limit to how many modules that may be loaded. </p>
+    <p class="left">&nbsp;</p>
+    <p class="left"><img src="images/dot_b.gif" width="5" height="5" alt="" border="0" align="absmiddle">&nbsp;&nbsp;<b>Finally...</b></p>
+    <p class="left">If you are familier with ADODB you will notice ADOdb Lite is started using the same parameters and commands. This makes it very easy for many sites to transfer over to ADOdb Lite. </p>
+    <p class="left style1"></p>
+    <p></p>
+</td>
+	</tr>
+<tr>
+  <td valign="top">&nbsp;</td>
+</tr>
+</table>
+<p class="px5">
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	<td><p align="right" >Copyright &copy;2005, 2006 Mark Dickenson </p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

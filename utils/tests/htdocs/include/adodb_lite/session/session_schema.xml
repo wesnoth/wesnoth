@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<schema version="0.2">
+  <table name="sessions">
+    <desc>table for ADOdb session-management</desc>
+
+    <field name="SessionID" type="C" size="64">
+      <descr>session key</descr>
+      <NOTNULL/>
+    </field>
+ 
+    <field name="expiry" type="I" size="11">
+      <descr></descr>
+      <NOTNULL/>
+    </field>
+
+    <field name="expireref" type="C" size="64">
+      <descr></descr>
+    </field>
+
+    <field name="session_data" type="XL">
+      <descr></descr>
+      <NOTNULL/>
+    </field>
+
+    <index name="SessionID">
+      <col>SessionID</col>
+      <UNIQUE/>
+    </index>
+
+    <index name="expiry">
+      <col>expiry</col>
+      <UNIQUE/>
+    </index>
+  </table>
+</schema>

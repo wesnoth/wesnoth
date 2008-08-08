@@ -1,0 +1,138 @@
+<?php
+
+
+class TestError {
+	private $db;
+	private $id;
+	private $before_id;
+	private $last_id;
+	private $error_type;
+	private $file;
+	private $line;
+	private $error_msg;
+
+	private $start_version;
+	private $end_version;
+
+	function __construct($name = null, $data = null, Build $build = null)
+	{
+		global $db;
+		$this->db = $db;
+		$this->start_version = -1;
+		$this->end_version = -1;
+		if (!is_null($name))
+		{
+			$this->error_type = $name;
+			$this->file = (string)$data->attributes()->file;
+			$this->line = (string)$data->attributes()->line;
+			$this->error_msg = (string)$data[0];
+			$result = $this->db->Execute('SELECT id, before_id, last_id FROM test_errors
+					WHERE error_type=? 
+					AND file=?
+					AND line=?
+					AND error_msg=?
+					AND last_id=?
+					LIMIT 1',
+					array($this->error_type,
+						  $this->file,
+						  $this->line,
+						  $this->error_msg,
+						  $build->getPreviousId()
+						));
+			if (!$result->EOF())
+			{
+				$this->id = $result->fields['id'];
+				$this->before_id = $result->fields['before_id'];
+				$this->last_id = $result->fields['last_id'];
+			}
+		}
+	}
+
+	private function fetch($where, $params =array(), $fields = '*')
+	{
+		$result = $this->db->Execute("SELECT $fields FROM test_errors $where LIMIT 1",$params);
+		if (!$result->EOF())
+		{
+			$this->init($result->fields);
+		}
+	}
+
+	private function init($values)
+	{
+		$this->start_version = -1;
+		$this->end_version = -1;
+		foreach($values as $key => $value)
+		{
+			$this->$key = $value;
+		}
+	}
+
+	public static function getErrorsForBuild($id)
+	{
+		global $db;
+		$ret = array();
+		$result = $db->Execute('SELECT * FROM test_errors
+			WHERE before_id<? AND last_id >=?',
+			array($id,$id));
+		while(!$result->EOF())
+		{
+			$error = new TestError();
+			$error->init($result->fields);
+			$ret[] = $error;
+			$result->moveNext();
+		}
+		return $ret;
+	}
+
+	public function updateDB(Build $build)
+	{
+		if (is_null($this->id))
+		{
+			$this->before_id = $build->getPreviousId();
+			$this->last_id = $build->getId();
+			$this->insert();
+		} else {
+			$this->db->Execute('UPDATE test_errors SET last_id=? WHERE id=?', array($build->getid(), $this->id));
+		}
+	}
+
+	private function insert()
+	{
+		$this->db->Execute('INSERT INTO test_errors (before_id, last_id, error_type, file, line, error_msg)
+			VALUES (?, ?, ?, ?, ?, ?)',
+				array($this->before_id,$this->last_id,$this->error_type,$this->file,$this->line,$this->error_msg));
+		$this->id = $this->db->Insert_ID();
+	}
+
+	public function getStatistics()
+	{
+		return array('error_type' 		=> $this->error_type,
+					 'start_version'	=> $this->getStartVersion(),
+					 'end_version'		=> $this->getEndVersion(),
+					 'file'				=> $this->file,
+					 'line'				=> $this->line,
+					 'error_msg'		=> $this->error_msg);
+	}
+
+	public function getStartVersion()
+	{
+		if ($this->start_version == -1)
+		{
+			$result = $this->db->Execute('SELECT svn_version as start_version FROM builds WHERE id=?',array($this->before_id));
+			$this->start_version = $result->fields['start_version'];
+		}
+		return $this->start_version;
+	}
+
+	public function getEndVersion()
+	{
+		if ($this->end_version == -1)
+		{
+			$result = $this->db->Execute('SELECT svn_version as end_version FROM builds WHERE id=?',array($this->last_id));
+			$this->end_version = $result->fields['end_version'];
+		}
+		return $this->end_version;
+	}
+
+}
+?>

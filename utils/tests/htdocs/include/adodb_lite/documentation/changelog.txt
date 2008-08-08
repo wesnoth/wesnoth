@@ -1,0 +1,666 @@
+January 11, 2007 - ADOdb Lite Version 1.42
+
+Added:
+ Display Console for Query Tracking that can be used as an include file.
+
+Added:
+ Query tracking for performance testing.  There are two new darabase array variables $db->query_list and $db->query_list_time.  These variables will contain every processed query and the time it took to process the query for the current instance of the database object.  This will allow easy tracking of every query on any page and the amount of time it took to execute each query.  This is independent of the performance monitor and allow query speed testing on any database.
+
+Fixed:
+ In all drivers -  return variable by reference error when returning an empty record set.
+
+
+December 17, 2006 - ADOdb Lite Version 1.40
+
+Added:
+ Gladius Database Driver provided by Daniele (legolas558@users.sourceforge.net).
+
+Added:
+ Meta Module for all drivers.
+ 
+Added:
+ adodb-error.inc.php file fo use with meta module error reporting.
+
+Changed:
+ fbsql, maxdb, msql, mssql, mssqlpo, mysql, mysqli, mysqlt, sybase and sybase ase drivers to destroy the connection object if a database name is used in the Connect function and the database cannot be found.  This will match how ADOdb returns the connect.
+
+Changed:
+ How ErrorMsg and ErrorNo functions work in ODBC, Mysql, Mysqli, Mysqlt drivers.  Thanks to Allard avs68@users.sourceforge.net and Daniele legolas558@users.sourceforge.net for pointing out the change.
+
+Changed:
+ Data Dictionary was rewritten to use the Meta Module instead of including meta functions inside the data dictionary code.  You MUST include both the pear and meta modules in your connection object for the new Data Dictionary to function properly.
+
+Fixed:
+ Added var _logsql = false; to the adodb.inc.php to remove property error in PHP 5.
+
+Fixed:
+ Changed $rs =& new ADORecordSet_empty(); to $recordset =& new ADORecordSet_empty(); in the postgres8_driver.inc, postgres7_driver.inc and postgres64_driver.inc files.
+
+Fixed:
+ sybase_ase_driver using the wrone result set name after execurint a query.  Thanks to Didier Gasser Morlay didiergm@users.sourceforge.net for finding the problem.
+
+Fixed:
+ swapped argument in mysqli_select_db on line 77 of the mysqli_driver.inc.  Thanks to Pádraic Brady maugrim_t_r@users.sourceforge.net
+ 
+Fixed:
+ Added code to the adodb-session.php session handler to reconnect to the database when the sess_write is executed as PHP 5.0.5 and higher will destroy all objects before executing a session write.
+
+Fixed:
+ dbtype variable for sqlite set to sqlitepo by mistake.  Thanks to Daniele (legolas558@users.sourceforge.net) for finding the error.
+
+Fixed:
+ Removed @sqlite_free_result( $this->resultId ); from the result close function in the sqlite and sqlitepo drivers because the function isn't supported.  Thanks to Daniele (legolas558@users.sourceforge.net) for finding the error.
+
+
+September 1, 2006 - ADOdb Lite Version 1.30
+
+Added:
+ SQLdate function to the date module for the fbsql, maxdb, msql and obdc databases.
+
+Added:
+ loadObjectList function to the object module.  This will build an array list of all objects.
+
+Added:
+ Maugrim the Reapers conversion of the ADOdb Performance Module for the MySql, Mysqli and Mysqlt drivers.
+
+Fixed:
+ Changed if ($resultId === true) in the do_query() function to if (@pg_numfields( $resultId ) <= 0) in all Postgres drivers.  Thanks to Dmitry (thedix) <thedix@users.sourceforge.net> for the fix.
+
+Fixed:
+ Changed if($this->forcenewconnection) in the _makeconnection() function to if(!$this->forcenewconnection) in all Postgres drivers.  Thanks to Dmitry (thedix) <thedix@users.sourceforge.net> for the fix.
+
+Fixed:
+ Removed else in adodb_mktime function in the adodb-time.inc.php program to fix a month calculation error.  Thanks to jgarces <jgarces@users.sourceforge.net> for submitting the fix.
+
+Fixed:
+ Changed var _obj; to var $_obj; and var _names; to var $_names; in the generic object module.
+
+Fixed:
+ Changed user ro username on line 40 in the adodb-exceptions.inc.php.  Thanks to Harry S. Kartono <hskartono@yahoo.co.id> for finding the error and providing the fix.
+
+Fixed:
+ mysql and mysqlt drivers should use the $this->connectionId when executing the mysql_real_escape_stringfunction in the $db->qstr function.
+
+Fixed:
+ mssql date module had a misplaced bracket causing it to fail.
+
+Changed:
+ All drivers - fields result set function will return the entire array if the $fields variable is empty.
+
+
+
+April 2, 2006 - ADOdb Lite Version 1.20
+
+Added:
+ Support for alternative error output reporting through the $ADODB_OUTP or defined ADODB_OUTP function naming.
+
+Added:
+ Error Handling Documentation
+
+Added:
+ CreateSequence and DropSequence to the ADOConnection object for every driver through the extend module.
+
+Added:
+ PO_RecordCount, NextRecordSet, CurrentRow and AbsolutePosition to the ADOResultSet object for every driver through the extend module.
+
+Added:
+ Object Module:  Result set functions included: FetchObj, FetchObject, FetchNextObj and FetchNextObject
+
+Added:
+ Menu Module:  Result set functions included: GetMenu, GetMenu2 and GetMenu3
+
+
+March 25, 2006 - ADOdb Lite Version 1.15
+
+Added:
+ Support for Generic Modules.  These modules are not duplicated in every driver directory.  The modules do not have any code or variables that are specific to any database driver and are located in the generic_modules directory.  The pear module has been removed from all of the database driver directories and is now located in the generic_modules directory.
+ 
+Fixed:
+ SQLite drivers wouldn't close the database when the SelectDB function was executed and caused an error to be thrown.
+ 
+Fixed:
+ Exception would not be thrown if the exception handler was used if query failed when input array used. All drivers updated.
+
+Fixed:
+ Reference error with the GetArray resultset function. All drivers updated.
+
+Fixed:
+ Persistent connection trial code in the mysqli driver wasn't working properly and was removed.  Ther persistent connection flag in the mysqli driver will be ignored as the mysqli protocal doesn't really support persistent connections.
+
+
+February 9, 2006 - ADOdb Lite Version 1.14
+
+Fixed:
+ Move(0) and MoveFirst() would return an EOF if the result set only contained ONE record and a MoveNext() was executed before the Move(0) or MoveFirst() was called.  Fix applied to all drivers.
+
+
+February 8, 2006 - ADOdb Lite Version 1.13
+
+Added:
+ $sep_tables flag to the ExtractSchema function in the adodb-xmlschema.inc.php ExtractSchema($data, $sep_tables)  $sep_tables is set default to FALSE.  If sent to TRUE then each table will be returned in an array.  $table_xml = ExtractSchema(FALSE, TRUE) $table_xml[0] will be the first table in XML format, $table_xml[1] is the second, ect.
+
+Fixed:
+ Wrong connection object was used for the GenID function in the extend module for mysql/mysqli/mysqlt.
+
+Fixed:
+ Date module result set functions UnixDate and UnixTimeStamp referenced the wrong object in all drivers.
+
+Reverted:
+ GetArray function code to previous 1.11 version.
+
+
+December 21, 2005 - ADOdb Lite Version 1.12
+
+Added:
+ Added GenID function to the extend module.
+
+Changed:
+ Added top support for queries using offset and rows with the SelectLimit function.
+
+Changed:
+ Insert_ID function now executes a 'select @@IDENTITY' query to return the insert id of the last inserted record for the mssql and mssqlpo drivers..
+
+Fixed:
+ GetArray function in the resultset class would not return a result array if the last record was selected as the only record to be returned.  All drivers were updated.
+
+Fixed:
+ extend module GetAssoc function used $rs instead of $result.  Drivers fixed fbsql, maxdb, msql, mssql, mssqlpo, mysqli, mysqlt, odbc, postgres, postgres7, postgres8, postgres64, sqlite, sqlitepo, sybase and sybase_ase
+
+Fixed:
+ adodb-datadict.inc.php was using the wrong variable name for the table name and the connection object was not being used for the execute statement.  Thanks to Maugrim the Reaper for the fix and heads up.
+
+Fixed:
+ fixed reference error in obdc driver on php version check for _fetch and MoveNext functions.  Thanks to Maugrim the Reaper for finding the error.
+ 
+
+
+November 22, 2005 - ADOdb Lite Version 1.11
+
+Added:
+ $db->query_count  The query_count variable stores the number of queries executed since the connection to the database was made.  This will allow programmers to count how many queries were executed during that connection.
+ 
+Added:
+ $db->query_time_total  The query_time_total variable stores the seconds as a float variable it takes to execute all queries during the current connection.  This is the time from when the query starts executing to the time it completes returning the first resultset.
+
+Added:
+ Support for the dataFieldName function to change the data file name in the session table used by the session handler.
+
+Added:
+ pg_escape_string function to qstr for better escape string processing to the postgres7 and postgres8 drivers.  pg_escape_string will be executed if PHP 4.2.0 or higher is being used.  Lower versions of PHP will use the default escape method.
+
+Added:
+ pg_escape_enable flag for the postgres7 driver.  The default setting is FALSE for disabled.  If you are running postgres 7.2 or greater change this to TRUE.  IE: $db->pg_escape_enable = true;
+ 
+Changed:
+ mcrypt and Secret encryption for the session handler now convert the binary data to text before storing in the table and converts back to binary when retrieved.  This is what the MD5, SHA1 and ORD encryption has been doing from the start.  This makes all encryption more standard in the output format and nolonger requires a need for a binary check or field in the session table.
+ 
+Changed:
+ gzip and bz2 compression for sessions will be base64 encoded so the session data fields nolonger require binary flags.
+ 
+ 
+November 14, 2005 - ADOdb Lite Version 1.10
+
+Fixed:
+ Added missing SQLDate function to SQLite and SQLite Pro drivers.
+ 
+Fixed:
+ If the $databasename variable is empty then the SQLite/SQLite Pro drivers will use the $host information to create and connect to the database.  Submitted by Kevin T. Ryan
+
+Fixed:
+ The postgres64, postgres7 and postgres8 drivers had the incorrect connection data in the _makeconnection function.  If the host, user or password were missing an error would occure.
+
+Fixed:
+ In adodb-xmlschema.inc.php the ExtractSchema function was declared twice.
+ 
+
+November 6, 2005 - ADOdb Lite Version 1.04
+
+Added:
+ Tests for date functions in the date module to the test_adodb_lite.php program.  The functions in the adodb-time.inc.php program are not tested.
+
+Added:
+ date module that contains support for ADOdb date and time functions.  The ADOdb adodb-time.inc.php is also included.  The adodb-time.inc.php is loaded when the date module is selected.  ADOdb would load this large module every time ADOdb was accessed and it was rarely used.  Users will now have to load the adodb-time.inc.php file manually or select the date module if they wish to use the adodb date functions.
+
+Added:
+ $db->sql variable for storing the last executed query.  Programmers can now pull out the last query that ADOdb Lite tried to execute.  This will allow programmers to more easily report the last executed query in their error reporting functions.
+
+Added:
+ SHA1 encryption for sessions
+
+Added:
+ Dummy transaction functions to all drivers that do not support transactions.  This is to maintain ADOdb compatability and prevent errors from occuring if they have loaded the transaction module and called any of the transaction functions.  These functions will do nothing other than return a true value like ADOdb.
+
+Added:
+ Limited support for the adodb-errorhandler.inc.php program.  Currently only connect and execute errors are processed by the handler.
+
+Added:
+ adodb-errorpear.inc.php and adodb-exceptions.inc.php from ADOdb.
+
+Added:
+ Debug Error message output for transaction functions.
+
+Changed:
+ Changed the include_once in the ADONewConnection function for loading the adodb.config.php to @include to fix an error where loading multiple database drivers would cause the config to only load the first time.
+
+Fixed:
+ All postgres drivers escape quoted boolean true false check in doQuery function.
+
+Fixed:
+ Connection result not being returned on SQLite and SQLite Pro
+
+Fixed:
+ ENOTICE errors being displayed for DSN array values that were empty when being accessed with the _connect function.
+
+
+October 3, 2005 - ADOdb Lite Version 1.03
+
+Changed:
+ Many data dictionary and XML changes suggested by Steen Rabøl 
+
+Fixed:
+ postgres64, postgres7 and postgres8 drivers were missing the query_addslashes function.
+
+Fixed:
+ All postgres drivers used the wrong information for the Affected_Rows function and Insert_ID function.
+
+
+September 20, 2005 - ADOdb Lite Version 1.02
+
+Changed:
+ DSN connection code to use the _connect function instead of the Connect and PConnect functions for speed and code consistancy.
+
+Changed:
+ Moved record count check from _fetch function to do_query function for consistancy and to speed up Move/MoveFirst/MoveLast functions.
+
+Fixed:
+ Added 	global $ADODB_FETCH_MODE; to the ADONewConnection function.
+
+Fixed:
+ Fixed a problem with the pg_numrows and pg_numfields using the wrong resultId variable in the postgres driver.
+
+Fixed:
+ Session handler function sess_read had this line $CurrentTime = time(); in the wrong location causing an insert error.
+
+Fixed:
+ Missing line $binary = $GLOBALS['ADODB_SESSION_DRIVER'] === 'mysql' ? '/*! BINARY */' : ''; in the sess_destroy function causing an undefined variable error.
+
+Fixed:
+ Changed the DSN fetchmode flag to use the constant function for retrieving the proper value.  Thanks to pt2002 for the fix.
+
+Fixed:
+ Persistent flag for $this->_connect() in the Connect and PConnect functions were swapped.
+
+Fixed:
+ Changed ADODB_Session::open to ADODB_Session::sess_open in the adodb_sess_open function in the adodb-sessions.php program.
+
+Fixed:
+ Move/MoveFirst/MoveLast commands were returning EOF = true when there were more records.  Thanks to Altidev for pointing this out.
+
+
+September 14, 2005 - ADOdb Lite Version 1.01
+
+Added:
+ You can now use a DSN entry in the $dbtype variable located in the adodb.config.php.  The DSN entry will override any values entered through ADONewConnection.
+
+Changed:
+ Added Datadictionary change to MSSQL and MSSQLPO drivers from post on ADODB site http://phplens.com/lens/lensforum/msgs.php?id=13679
+
+Fixed:
+ IsConnected was returning a true value if a invalid connection was tried.
+
+Fixed:
+ $module was renamed to $modules in adodb.inc.php
+
+ 
+September 1, 2005 - ADOdb Lite Version 1.00
+
+Added:
+ Support for $db->port in mysql, mysqli, mysqlt and postgres/64/7/8.
+ 
+Added:
+ Support for $db->socket in mysqli.
+
+Added:
+ Support for $db->clientflags in mysql, mysqli and mysqlt.
+
+Added:
+ Support for ADOdb DSN connections.
+
+Added:
+ nameQuote variable support for all drivers.
+
+Added:
+ Extend module with $db->GetAssoc() and $result->GetAssoc() functions.  The Extend module is where large and/or rarely used functions will be located.
+
+Added:
+ Test for GetAssoc functions from the extend module to the test_adodb_lite.php program.
+
+Added:
+ Data Dictionary support.  A modified version of the ADOdb Data Dictionary has been included.  This has not been optimized and may not be in the future as it is not a module that will be used on a consitant and regular basis on most websites.
+
+Added:
+ adodb.config.php file that will allow the automatic loading of modules without the need to designate them through the ADONewConnection() function.  This maintains 100% compatability with the ADOdb ADONewCOnnection function and allows ADOdb Lite to be more of a drop in replacement.
+
+Added:
+ test_datadictionary.php program to test some of the fuctions for the supported databases and test XML Schema.
+
+Added:
+ adodb-xmlschema.php and xmlschema.dtd files for XML Database Creation support.
+ 
+Changed:
+ do_query() function has been moved from the statement class to the ADOConnection class and the statement class deleted from all drivers.  This resulted in 5-6k reduced memory overhead and also increased the pages per second on the benchmark stress test by 5%.
+ 
+Changed:
+ $result->MoveLast() calls $this->Move($this->_numOfRows - 1) reducing the code and decreasing execution time.
+
+Changed:
+ Moved the $db->GetAll() and $db->GetArray() functions from the adodb.inc.php program to each individual driver to maintain programming consistancy.
+
+Changed:
+ Added a prefix to all module names and classes to prevent redefined class errors. pear_module.inc became mysql_pear_module.inc and class pear_ADOConnection extends pear_EXTENDER became class mysql_pear_ADOConnection extends mysql_pear_EXTENDER
+
+Changed:
+ Moved the test programs to their own directory.
+ 
+Fixed:
+ Added version check for the forcenewconnection flag in the mysql and mysqlt drivers.
+
+Fixed:
+ $result->Move($value) If $value was equal to or greater than the number of rows returned by the query the next to the last row was returned instead of the last row.
+
+Fixed:
+ $result->Move($value) If the $value is set to the last record in the result it wouldn't set the EOF to true.  Interestingly this is an error that is also in ADOdb's Move routine.
+
+ 
+August 24, 2005 - ADOdb Lite Version 0.14
+
+Added:
+ Support for Session Encryption and Compression.  Gzip and Bzip2 compression is supported. MD5, Mcrypt, and Secret encryption is supported.
+
+Added:
+ New encryption method for sessions called OrdCrypt.
+
+Added:
+ You can select encryption and compression methods to test using the test_adodb_lite_sessions.php program.
+
+Changed:
+ The Data field in the sessions table has been changed to sessions_data to prevent any reserved word conflicts with some databases.
+ 
+Fixed:
+ mysqli_real_connect used wrong parameters and would fail on a non-persistent connection.
+
+
+August 12, 2005 - ADOdb Lite Version 0.13
+
+Added:
+ Module Loader for loading additional modules to expand ADOdb Lite.  The new module system will allow anyone to extend the ADOConnection Class and the Resultset Class with drop in modules.
+
+Added:
+ Transaction support for the mssql, mssqlpo, mysqli, mysqlt, odbc, postgres, postgres64, postgres7, postgres8, sqlite, sqlitepo, sybase and sybase_ase Drivers added with the transaction module. StartTrans(), BeginTrans(), CompleteTrans(), CommitTrans(), RollbackTrans(), FailTrans(), HasFailedTrans(), RowLock(), CommitLock(), RollbackLock() 
+
+Added:
+ Switch to the test_adodb_lite.php program to enable/disable loading the transaction module.
+
+Added:
+ $db->debug_echo and $db->debug_output variables.  If the debug_echo flag is set to false the debug information will not be echoed.  The debug_output variable will store the debug query information and can be retrieved at any time.
+
+Added:
+ New documentation in the documentation directory to explain how to install/use ADOdb Lite, availible commands, module system and how to create your own modules.
+
+Change:
+ All of the Pear Compatible commands have been moved to a pear_module.inc file.  If you wish to use any Pear Commands you will need to add the "pear" flag when you make a new ADO Connection.
+
+
+August 9, 2005 - ADOdb Lite Version 0.12
+
+Added:
+ test_adodb_lite_sessions.php program to test the Adodb Lite session handler.
+
+Changed:
+ Moved majority of the Connect, PConnect and NConnect code to the _connect function in each driver reducing compiled code size by about 2k.
+
+Changed:
+ Moved the $db->Close function from the main code body to each individual driver reducing compiled code size by about 2k.
+
+Changed:
+ test_adodb_lite.php CONCAT test to use the test tables text and dummy field.
+
+Changed:
+ Removed the setting of the Fetchmode to Numeric in the adodb-session.php in the sess_destroy and sess_gc functions.  This greatly speeds up the session code on most databases.  If ODBC databases are used then this will be slower.
+ 
+Fixed:
+ Mysql, Mysqli and Mysqlt CONCAT function shouldn't quote entries.
+
+Fixed:
+ Serious problems with the new session handling code. expireref field was not being populated with the variable information in the sess_read function when a new session was created.  This would cause a blank variable reference to be sent to the notification function.
+
+Fixed:
+ adodb-sessions.mysql.sql had two primary key settings causing an error if the sql was executed.  Changed the SessionID to an index.
+
+
+August 7, 2005 - ADOdb Lite Version 0.11
+
+Added:
+ $db->Concat(), $db->IfNull() and $result->FetchField() commands
+
+Added: 
+ ODBC (odbc) (experimental), Postgres 8 (postgres8), SQLite Pro (sqlitepo) and Sybase ASE (sybase_ase) drivers
+
+Added:
+ Test for $result->FetchField() command in the test_adodb_lite.php program
+
+Added:
+ Simplified support for the $db->debug flag.  When set the flag will display every query and the error message for that query.  Even arraryed queries will be displayed with the array data inserted into the query.
+
+Added:
+ Test for $db->debug flag to test_adodb_lite.php
+
+Changed:
+ Convert database id name to lowercase to make sure database is correctly selected.
+ 
+Fixed:
+ Used the wrong function in the MySqli driver in the qstr function.  Changed from mysql_real_escape_string to mysqli_real_escape_string.
+
+
+July 21, 2005 - ADOdb Lite Version 0.10
+
+Added:
+ Session support that is compatible with the standard ADOdb Sessions.  This does not support COB or Encrypted Sessions.
+
+Added:
+ Layer definition so the new session support can detect if ADOdb Lite has been loaded.
+
+
+July 18, 2005 - ADOdb Lite Version 0.09
+
+Added:
+ Added the following PEAR Compatible Functions: Quote, ErrorNative, Query, LimitQuery and Disconnect
+ 
+Added:
+ Added the following PEAR Compatible Recordset Functions: Free, NumRows, NumCols, FetchRow and FetchInto
+ 
+Added:
+ Qmagic command.
+
+Changed:
+ Added tests for the new PEAR functions to the test_adodb_lite.php program.
+
+Added:
+ You can now connect to the database server without naming a database to connect with.  This will allow clients to send server commands that do not need a connection to an existing database.
+
+Fixed:
+ PostGres drivers connected twice to the same database.
+
+Fixed:
+ PostGres drivers were not making a persistent connection when selected and the createdatabase flag was set to true and a database had to be created.
+
+Fixed:
+ A couple of reference errors that would only show up in 4.4.0.
+
+ 
+July 15, 2005 - ADOdb Lite Version 0.08
+
+Added:
+ createdatabase variable/switch to the ADOConnection. Example:
+ $db = ADONewConnection('mysql']);
+ $db->createdatabase = true;
+ $result = $db->Connect( 'dbhost', 'dbusername', 'dbpassword', 'databasename' );
+
+ If createdatabase is set to true and the database does not exist ADOdb_Lite will attempt to create the database for you.  The default setting is false and will return an error if the database does not exist.
+ 
+ Create database option is not supported by MiniSQL (msql), SQLite (sqlite) or Sybase (sybase) drivers.
+
+Changed:
+ The test_adodb_lite.php program has been updated to automatically create the database if it doesn't exist using the new $db->createdatabase option.
+
+Fixed:
+ $db->SelectDB($database) will now return false if the database could not be connected to.
+
+Fixed:
+ mysqli_query had the query and connection id variables transposed.
+
+
+June 26, 2005 - ADOdb Lite Version 0.07
+
+Added:
+ SelectLimit functionality added to the following databases: mssql, mssqlpo and sybase
+
+Changed:
+ Implimented the extend class for the ADOConnection properly instead of using the quick cludge.  The sad part is using the extend option properly increased the memory usage by 11k and that was even after reducing the amount of program code.
+
+Changed:
+ Merged the dbOpen.inc and SelectDB.inc files into the main driver include for each database.
+
+Changed:
+ Many small code rewrites to reduce the 11k of extra memory overhead caused by proper use of the class extend.
+
+
+June 23, 2005 - ADOdb Lite Version 0.06
+
+Added:
+ Test for SelectLimit and Execute input array functions to the test_adodb_lite.php program.
+
+Added:
+ Support for single element and multi element arrays inputs for Execute and SelectLimit commands
+ 
+Added:
+ $db->qstr test to the test_adodb_lite.php program.
+
+Added:
+ $db->qstr($string, $magicquotes) function for escape quoting strings.
+ 
+Added:
+ Function check to each dbOpen.inc to check if the database module is installed in PHP.  If it isn't it returns false.
+
+Changed:
+ MySqli driver is now using the appropriate mysqli php commands instead of the standard mysql commands.
+ 
+Changed:
+ Moved the population of the $recordset->_numOfRows from the RecordCount() function to the do_query function.  This speeds up the RecordCount() function many fold.
+ 
+Changed:
+ Moved the population of the $recordset->_numOfFields from the FieldCount() function to the do_query function.  This speeds up the FieldCount() function many fold.
+
+Fixed:
+ mysqli and mysqlt class extend was using mysql_ADOConnection instead of mysqli_ADOConnection and mysqlt_ADOConnection.
+
+ 
+June 20, 2005 - ADOdb Lite Version 0.05
+
+Added:
+ test_adodb_lite.php program to allow the testing of all functions provided by ADOdb Lite.  If any errors are reported please post them to the Bug Report area on Source Forge.
+ 
+Changed:
+ Moved the Insert_ID from a loadable file to the driver include as _insertid.
+ 
+Fixed:
+ GetCol and GetRow were returning false every time because the result was being closed before the data could be returned. Thanks to Emilis Dambauskas [http://sourceforge.net/users/lunaticlt/] for finding the error.
+
+Fixed:
+ IsConnected() always returned true when database was closed.  Changed close function to set connectionId to false.
+
+Fixed:
+ SelectDB() function was using the wrong variable for loading the proper database module.
+
+
+June 18, 2005 - ADOdb Lite Version 0.04
+
+Added:
+ SelectLimit functionality to the following databases: mssql & mssqlpo (partial functionality), sqlite and postgres7
+
+Added:
+ $db->GetOne($sql)
+ 
+Added:
+ $db->GetRow($sql)
+ 
+Added:
+ $db->GetAll($sql)
+ 
+Added:
+ $db->GetArray($sql)
+ 
+Added:
+ $db->GetCol($sql)
+ 
+Changed:
+ Created subclass for database additions as soon as database is opened instead of when function is called..  Saved about 600 bytes.  Not much but every little bit helps.
+
+Changed:
+ Moved most of the code from the Execute function into the SelectLimit function to reduce the about of code.
+
+Changed:
+ Move the offset and limit code from the $db->SelectLimit function into the $result->_do_query() private function in the driver for each database.  This will allow each database to have it's own code for the SelectLimit function without having to load further modules.
+
+Removed:
+ $db->getConnectionId function as this is not used in normal ADOdb
+
+Removed:
+ $db->getSequence function as this is not used in normal ADOdb
+
+Fixed:
+ Moved the Affected_Rows function from inside the result object to the database object to follow ADOdb standards.
+
+Fixed:
+ Missing close bracket at the end of the postgres7_driver.inc.  Thanks to Sumeet Mulani. [IceMan@sumeet.info] and Rajashekar Reddy. [shekar@ritwik.com] for finding the error.
+ 
+
+June 15, 2005 - ADOdb Lite Version 0.03
+
+Added:
+ $result->FieldCount()
+
+Changed:
+ Rewrote ErrorMsg and ErrorNo as a subclass of ADOConnection and loaded with the main driver for the selected database.
+
+Changed:
+ Cleaned up coding and removed unneeded code fragments from previous versions.
+ 
+Fixed:
+ Error escaped all database commands to prevent errors from being reported during execution. ErrorMsg and ErrorNo should be used to check for all errors.
+ 
+
+June 11, 2005 - ADOdb Lite Version 0.02
+
+Added:
+ $db->SelectDB($dbname)
+
+Added:
+ $result = $db->NConnect("$dbhost", "$dbuname", "$dbpass", "$dbname");
+
+Added:
+ Consolocated duplicate code from Connect/Pconnect/NConnect functions into _connect().
+
+Changed:
+ Changed to a modular loading method for SelectDB, ErrorMsg, ErrorNo and dbOpen fuctions.  This method will only load the approriate code module if the command is accessed.  This greatly cuts down on the memory overhead.
+
+Changed:
+ Renamed all database driver files from .php to .inc to maintain file naming consistancy.
+
+Fixed:
+ Wrong databasetype designator used for closing the postgres databases.
+
+
+June 9, 2005 - ADOdb Lite Version 0.01
+
+Initial Release
