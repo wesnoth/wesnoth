@@ -114,6 +114,23 @@ void tslider::set_maximum_value(const int maximum_value)
 	}
 }
 
+tpoint tslider::get_best_size() const
+{
+	// Inherited.
+	tpoint size = tcontrol::get_best_size();
+	if(best_slider_length_ == 0) {
+		return size;
+	}
+
+	// Override length.
+	const tslider_definition::tresolution* conf = 
+		dynamic_cast<const tslider_definition::tresolution*>(config());
+	assert(conf); 
+
+	size.x = conf->left_offset + best_slider_length_ + conf->right_offset;
+	return size;
+}
+
 t_string tslider::get_value_label() const
 {
 	if(!value_labels_.empty()) {

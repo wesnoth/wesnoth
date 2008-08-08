@@ -26,6 +26,7 @@ public:
 	
 	tslider() :
 		tscrollbar_(),
+		best_slider_length_(0),
 		minimum_value_(0)
 	{
 	}
@@ -53,7 +54,13 @@ public:
 		// The number of items needs to include the begin and end so count - 1.
 		{ return minimum_value_ + get_item_count() - 1; }
 
+	/** Inherited from tcontrol. */
+	tpoint get_best_size() const;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_best_slider_length(const unsigned length) 
+		{ best_slider_length_ = length; set_dirty(); }
 
 	void set_minimum_value_label(const t_string& minimum_value_label)
 		{ minimum_value_label_ = minimum_value_label; }
@@ -74,6 +81,9 @@ public:
 	t_string get_value_label() const;
 
 private:
+
+	/** The best size for the slider part itself, if 0 ignored. */
+	unsigned best_slider_length_;
 
 	/**
 	 * The minimum value the slider holds.

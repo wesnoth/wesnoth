@@ -929,6 +929,7 @@ twidget* tbuilder_panel::build() const
 
 tbuilder_slider::tbuilder_slider(const config& cfg) :
 	tbuilder_control(cfg),
+	best_slider_length_(lexical_cast_default<unsigned>(cfg["best_slider_length"])),
 	minimum_value_(lexical_cast_default<unsigned>(cfg["minimum_value"])),
 	maximum_value_(lexical_cast_default<unsigned>(cfg["maximum_value"])),
 	step_size_(lexical_cast_default<unsigned>(cfg["step_size"])),
@@ -944,6 +945,8 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
  * == Slider ==
  *
  * @start_table = config
+ *     best_slider_length (unsigned = 0)
+ *                                    The best length for the sliding part.
  *     minimum_value (unsigned = 0)   The width of the slider.
  *     maximum_value (unsigned = 0)   The height of the slider.
  *
@@ -988,6 +991,7 @@ twidget* tbuilder_slider::build() const
 
 	init_control(slider);
 
+	slider->set_best_slider_length(best_slider_length_);
 	slider->set_maximum_value(maximum_value_);
 	slider->set_minimum_value(minimum_value_);
 	slider->set_step_size(step_size_);

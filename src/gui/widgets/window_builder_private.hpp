@@ -190,6 +190,7 @@ public:
 	twidget* build () const;
 
 private:
+	unsigned best_slider_length_;
 	int minimum_value_;
 	int maximum_value_;
 	int step_size_;
