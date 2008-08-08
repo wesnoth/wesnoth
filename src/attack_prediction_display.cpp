@@ -50,13 +50,51 @@ const int battle_prediction_pane::inter_column_gap_ = 30;
 const int battle_prediction_pane::inter_units_gap_ = 30;
 const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
-battle_prediction_pane::battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
-											   const std::vector<team>& teams, const unit_map& units,
-											   const gamestatus& status,
-											   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
-			: gui::preview_pane(disp.video()), disp_(disp), bc_(bc), map_(map), teams_(teams), units_(units), status_(status),
-			  attacker_loc_(attacker_loc), defender_loc_(defender_loc),
-			  attacker_(units.find(attacker_loc)->second), defender_(units.find(defender_loc)->second)
+battle_prediction_pane::battle_prediction_pane(display &disp, 
+		const battle_context& bc, const gamemap& map, const 
+		std::vector<team>& teams, const unit_map& units, 
+		const gamestatus& status, const gamemap::location& attacker_loc, 
+		const gamemap::location& defender_loc) :
+	gui::preview_pane(disp.video()), 
+	disp_(disp), 
+	bc_(bc), 
+	map_(map), 
+	teams_(teams), 
+	units_(units), 
+	status_(status), 
+	attacker_loc_(attacker_loc), 
+	defender_loc_(defender_loc), 
+	attacker_(units.find(attacker_loc)->second), 
+	defender_(units.find(defender_loc)->second),
+	attacker_label_(),
+	defender_label_(),
+	attacker_label_width_(0),
+	defender_label_width_(0),
+	attacker_left_strings_(),
+	attacker_right_strings_(),
+	defender_left_strings_(),
+	defender_right_strings_(),
+	attacker_strings_width_(0),
+	attacker_left_strings_width_(0),
+	attacker_right_strings_width_(0),
+	defender_strings_width_(0),
+	defender_left_strings_width_(0),
+	defender_right_strings_width_(0),
+	units_strings_height_(0),
+	hp_distrib_string_(),
+	attacker_hp_distrib_(),
+	defender_hp_distrib_(),
+	hp_distrib_string_width_(0),
+	attacker_hp_distrib_width_(0),
+	defender_hp_distrib_width_(0),
+	attacker_hp_distrib_height_(0),
+	defender_hp_distrib_height_(0),
+	hp_distribs_height_(0),
+	attacker_width_(0),
+	defender_width_(0),
+	units_width_(0),
+	dialog_width_(0),
+	dialog_height_(0)
 {
 	// Predict the battle outcome.
 	combatant attacker_combatant(bc.get_attacker_stats());
