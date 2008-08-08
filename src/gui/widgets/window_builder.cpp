@@ -947,11 +947,12 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
  * @start_table = config
  *     best_slider_length (unsigned = 0)
  *                                    The best length for the sliding part.
- *     minimum_value (unsigned = 0)   The width of the slider.
- *     maximum_value (unsigned = 0)   The height of the slider.
+ *     minimum_value (int = 0)        The minimum value the slider can have.
+ *     maximum_value (int = 0)        The maximum value the slider can have.
  *
- *     step_size (unsigned = 0)       The height of the slider.
- *     value (unsigned = 0)           The height of the slider.
+ *     step_size (int = 0)            The number of items the slider's value
+ *                                    increases with one step.
+ *     value (int = 0)                The value of the slider.
  *
  *     minimum_value_label (t_string = "")
  *                                    If the minimum value is choosen there
