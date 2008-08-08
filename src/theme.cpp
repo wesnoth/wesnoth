@@ -152,10 +152,18 @@ static config& find_ref(const std::string& id, config& cfg, bool remove = false)
 	}
 
 #ifdef DEBUG
-	// to be called from gdb
-	config& find_ref(const char* id, config& cfg) {
-		return find_ref(std::string(id),cfg);
-	}
+
+// to be called from gdb
+static config& find_ref(const char* id, config& cfg) {
+	return find_ref(std::string(id),cfg);
+}
+
+namespace {
+	// avoid some compiler warnings in stricter mode.
+	static config cfg;
+	static config& result = find_ref("", cfg);
+} // namespace
+
 #endif
 
 static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
