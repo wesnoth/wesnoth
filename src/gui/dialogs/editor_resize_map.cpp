@@ -21,6 +21,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/window_builder.hpp"
@@ -37,9 +38,20 @@
 
 namespace gui2 {
 
+static void callback_expand_direction_changed(twidget* caller)
+{
+	teditor_resize_map* dialog = dynamic_cast<teditor_resize_map*>(caller->dialog());
+	assert(dialog);
+	twindow* window = dynamic_cast<twindow*>(caller->get_window());
+	assert(window);
+	dialog->update_expand_direction(*window);	
+}
+
 teditor_resize_map::teditor_resize_map() :
 	map_width_(register_integer("width", false)),
-	map_height_(register_integer("height", false))
+	map_height_(register_integer("height", false)),
+	copy_edge_terrain_(register_bool("copy_edge_terrain", false)),
+	expand_direction_(EXPAND_BOTTOM_RIGHT)
 {
 }
 
@@ -73,6 +85,11 @@ void teditor_resize_map::set_old_map_height(int value)
 	old_height_ = value;
 }
 
+bool teditor_resize_map::copy_edge_terrain() const
+{
+	return copy_edge_terrain_->get_value();
+}
+
 twindow teditor_resize_map::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_RESIZE_MAP));
@@ -86,7 +103,34 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(old_height, missing_widget("old_height"));
 	old_width->set_label(lexical_cast<std::string>(old_width_));
 	old_height->set_label(lexical_cast<std::string>(old_height_));
+	
+	std::string name_prefix = "expand";
+	for (int i = 0; i < 9; ++i) {
+		std::string name = name_prefix + lexical_cast<std::string>(i);
+		direction_buttons_[i] = dynamic_cast<ttoggle_button*>(window.find_widget(name, false));
+		VALIDATE(direction_buttons_[i], missing_widget(name));		
+		direction_buttons_[i]->set_callback_state_change(callback_expand_direction_changed);
+	}
+	
 	window.recalculate_size();
+}
+
+void teditor_resize_map::update_expand_direction(twindow& window)
+{
+	std::string name_prefix = "expand";
+	for (int i = 0; i < 9; ++i) {
+		if (direction_buttons_[i]->get_value() && static_cast<int>(expand_direction_) != i) {
+			expand_direction_ = static_cast<EXPAND_DIRECTION>(i);
+			break;
+		}
+	}
+	for (int i = 0; i < static_cast<int>(expand_direction_); ++i) {
+		direction_buttons_[i]->set_value(false);
+	}
+	direction_buttons_[expand_direction_]->set_value(true);
+	for (int i = expand_direction_ + 1; i < 9; ++i) {
+		direction_buttons_[i]->set_value(false);
+	}
 }
 
 } // namespace gui2

@@ -68,6 +68,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		WRN_ED << "No brushes defined!";
 	}
 	brush_ = &brushes_[0];
+	
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
 		new mouse_action_paint(foreground_terrain_, &brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
@@ -79,6 +80,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_)));
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
+	
+	background_terrain_ = t_translation::GRASS_LAND;
+	foreground_terrain_ = t_translation::MOUNTAIN;
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
@@ -162,8 +166,8 @@ void editor_controller::new_map_dialog()
 {
 	if (!confirm_discard()) return;
 	gui2::teditor_new_map dialog;
-	dialog.set_map_width(get_map().total_width());
-	dialog.set_map_height(get_map().total_height());
+	dialog.set_map_width(get_map().w());
+	dialog.set_map_height(get_map().h());
 	
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
@@ -230,20 +234,64 @@ void editor_controller::generate_map_dialog()
 void editor_controller::resize_map_dialog()
 {
 	gui2::teditor_resize_map dialog;
-	dialog.set_map_width(get_map().total_width());
-	dialog.set_map_height(get_map().total_height());
-	dialog.set_old_map_width(get_map().total_width());
-	dialog.set_old_map_height(get_map().total_height());
+	dialog.set_map_width(get_map().w());
+	dialog.set_map_height(get_map().h());
+	dialog.set_old_map_width(get_map().w());
+	dialog.set_old_map_height(get_map().h());
 	
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
 	if(res == gui2::twindow::OK) {
 		int w = dialog.map_width();
 		int h = dialog.map_height();
-		t_translation::t_terrain fill = t_translation::GRASS_LAND;
-		editor_action_resize_map a(w, h, 0, 0);
-		get_map_context().perform_action(a);
-		refresh_after_action();
+		if (w != get_map().w() || h != get_map().h()) {
+			t_translation::t_terrain fill = background_terrain_;
+			if (dialog.copy_edge_terrain()) {
+				fill = t_translation::NONE_TERRAIN;
+			}
+			int x_offset = get_map().w() - w;
+			int y_offset = get_map().h() - h;
+			switch (dialog.expand_direction()) {
+				case gui2::teditor_resize_map::EXPAND_BOTTOM_RIGHT:
+				case gui2::teditor_resize_map::EXPAND_BOTTOM:
+				case gui2::teditor_resize_map::EXPAND_BOTTOM_LEFT:
+					y_offset = 0;
+					break;
+				case gui2::teditor_resize_map::EXPAND_RIGHT:
+				case gui2::teditor_resize_map::EXPAND_CENTER:
+				case gui2::teditor_resize_map::EXPAND_LEFT:
+					y_offset /= 2;
+					break;
+				case gui2::teditor_resize_map::EXPAND_TOP_RIGHT:
+				case gui2::teditor_resize_map::EXPAND_TOP:
+				case gui2::teditor_resize_map::EXPAND_TOP_LEFT:
+					break;
+				default:
+					y_offset = 0;
+					WRN_ED << "Unknown resize expand direction\n";
+			}
+			switch (dialog.expand_direction()) {
+				case gui2::teditor_resize_map::EXPAND_BOTTOM_RIGHT:
+				case gui2::teditor_resize_map::EXPAND_RIGHT:
+				case gui2::teditor_resize_map::EXPAND_TOP_RIGHT:
+					x_offset = 0;
+					break;
+				case gui2::teditor_resize_map::EXPAND_BOTTOM:
+				case gui2::teditor_resize_map::EXPAND_CENTER:
+				case gui2::teditor_resize_map::EXPAND_TOP:
+					x_offset /= 2;
+					break;
+				case gui2::teditor_resize_map::EXPAND_BOTTOM_LEFT:
+				case gui2::teditor_resize_map::EXPAND_LEFT:
+				case gui2::teditor_resize_map::EXPAND_TOP_LEFT:
+					break;
+				default:
+					x_offset = 0;
+			}
+			editor_action_resize_map a(w, h, x_offset, y_offset, fill);
+			get_map_context().perform_action(a);
+			refresh_after_action();
+		}
 	}
 }
 

@@ -35,7 +35,7 @@ editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
 : gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
-	t_translation::t_map(width, t_translation::t_list(height, filler))))
+	t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 {
 	sanity_check();
 }
@@ -159,8 +159,8 @@ bool editor_map::everything_selected() const
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	t_translation::t_terrain filler)
 {
-	int old_w = total_width();
-	int old_h = total_height();
+	int old_w = w();
+	int old_h = h();
 	if (old_w == width && old_h == height && x_offset == 0 && y_offset == 0) {
 		return;
 	}

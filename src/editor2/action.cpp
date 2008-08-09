@@ -248,7 +248,7 @@ void editor_action_select_inverse::perform_without_undo(map_context& mc) const
 
 void editor_action_resize_map::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().resize(x_size_, y_size_, x_offset_, y_offset_);
+	mc.get_map().resize(x_size_, y_size_, x_offset_, y_offset_, fill_);
 	mc.set_needs_reload();
 }
 
