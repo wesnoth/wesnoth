@@ -163,20 +163,39 @@ ttext& ttext::set_word_wrap(const bool wrap)
 	return *this;
 }
 
+namespace {
+
+/** Small helper class to make sure the font object is destroyed properly. */
+class tfont
+{
+	tfont(const tfont&);
+	tfont& operator=(const tfont&);
+public:
+	tfont(const std::string& name, const unsigned size) :
+		font_(pango_font_description_new())
+	{
+		pango_font_description_set_family(font_, name.c_str());
+		pango_font_description_set_size(font_, size * PANGO_SCALE);
+	}
+
+	~tfont() { pango_font_description_free(font_); }
+
+	PangoFontDescription* get() { return font_; }
+
+private:
+	PangoFontDescription *font_;
+};
+
+} // namespace
+
 void ttext::recalculate(const bool force)
 {
 	if(calculation_dirty_ || force) {
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		/**
-		 * @todo FIXME the font needs to be an object.
-		 */
-		PangoFontDescription *font = pango_font_description_new(); 
-		pango_font_description_set_family(font, get_fonts().c_str());
-		pango_font_description_set_size(font, font_size_ * PANGO_SCALE);
-		pango_layout_set_font_description(layout_, font);
-		pango_font_description_free(font);
+		tfont font(get_fonts(), font_size_);
+		pango_layout_set_font_description(layout_, font.get());
 
 		// NOTE for now the setting of the ellipse is undocumented and
 		// implicitly done, this will change later. We'll need it for the
