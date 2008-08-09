@@ -65,8 +65,8 @@ void get_addon_info(const std::string& addon_name, config& cfg)
 	const std::string parentd = get_addon_campaigns_dir();
 
 	// Cope with old-style or new-style file organization
-	std::string exterior = parentd + "/" + addon_name + ".pbl";
-	std::string interior = parentd + "/" + addon_name + "/_server.pbl";
+	const std::string exterior = parentd + "/" + addon_name + ".pbl";
+	const std::string interior = parentd + "/" + addon_name + "/_server.pbl";
 	const std::string pbl_file = (file_exists(exterior)? exterior : interior);
 
 	scoped_istream stream = istream_file(pbl_file);
@@ -130,7 +130,7 @@ std::vector<std::string> installed_addons()
 }
 
 namespace {
-	const char escape_char = '\x01';
+	const char escape_char = '\x01'; //!< Binary escape char.
 } // end unnamed namespace 2
 
 static bool needs_escaping(char c) {
@@ -145,7 +145,7 @@ static bool needs_escaping(char c) {
 	}
 }
 
-static bool IsCR(const char& c)
+static inline bool IsCR(const char& c)
 {
 	return c == '\x0D';
 }
@@ -196,49 +196,60 @@ static std::string unencode_binary(const std::string& str)
 	return res;
 }
 
+namespace {
+	void append_default_ignore_patterns(std::pair<std::vector<std::string>, std::vector<std::string> >& patterns)
+	{
+		std::vector<std::string>& files = patterns.first;
+		std::vector<std::string>& dirs  = patterns.second;
+
+		/* Don't upload dot-files/dirs, which are hidden files in
+		   UNIX platforms */
+		files.push_back(".*");
+		dirs.push_back(".*");
+
+		files.push_back("*~");
+		files.push_back("*-bak");
+		files.push_back("*.pbl");
+		files.push_back("*.ign");
+		files.push_back("_info.cfg");
+		files.push_back("*.exe");
+		files.push_back("*.bat");
+		files.push_back("*.cmd");
+		files.push_back("*.com");
+		files.push_back("*.scr");
+		files.push_back("*.sh");
+		files.push_back("*.js");
+		files.push_back("*.vbs");
+		files.push_back("*.o");
+		/* Remove junk created by certain file manager ;) */
+		files.push_back("Thumbs.db");
+    }
+}
+
 static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& addon_name)
 {
 	const std::string parentd = get_addon_campaigns_dir();
+	const std::string exterior = parentd + "/" + addon_name + ".ign";
+	const std::string interior = parentd + "/" + addon_name + "/_server.ign";
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
-	std::string exterior = parentd + "/" + addon_name + ".ign";
-	std::string interior = parentd + "/" + addon_name + "/_server.ign";
 	std::string ign_file;
+	LOG_CFG << "inserting default ignore patterns...\n";
+	append_default_ignore_patterns(patterns);
+	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
 	if (file_exists(interior)) {
 		ign_file = interior;
 	} else if (file_exists(exterior)) {
 		ign_file = exterior;
-	} else { /* default patterns */
-		patterns.first.push_back("*~");
-		patterns.first.push_back("*-bak");
-		patterns.first.push_back("*.pbl");
-		patterns.first.push_back("*.ign");
-		patterns.first.push_back("_info.cfg");
-		/*
-		 * Prevent certain potential security compromises.
-		 * The idea is to stop bad guys from uploading things
-		 * that could become trojans if an unsuspecting user
-		 * downloads them.
-		 */
-		patterns.first.push_back("*.exe");
-		patterns.first.push_back("*.bat");
-		patterns.first.push_back("*.cmd");
-		patterns.first.push_back("*.com");
-		patterns.first.push_back("*.scr");
-		patterns.first.push_back("*.sh");
-		patterns.first.push_back("*.js");
-		patterns.first.push_back("*.vbs");
-		patterns.first.push_back("*.o");
-		/* Remove junk created by certain file manager ;) */
-		patterns.first.push_back("Thumbs.db");
-		/* Don't upload dot-files/dirs */
-		patterns.first.push_back(".*");
-		return patterns;
+	} else {
+		LOG_CFG << "no .ign file found for '" << addon_name << "'\n";
+		return patterns; // just default patterns
 	}
+	LOG_CFG << "found .ign file: " << ign_file << '\n';
 	std::istream *stream = istream_file(ign_file);
 	std::string line;
 	while (std::getline(*stream, line)) {
-		size_t l = line.size();
+		const size_t l = line.size();
 		if (line[l - 1] == '/') { // directory; we strip the last /
 			patterns.second.push_back(line.substr(0, l - 1));
 		} else { // file
@@ -251,7 +262,7 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 static void archive_file(const std::string& path, const std::string& fname, config& cfg)
 {
 	cfg["name"] = fname;
-	bool is_cfg = (fname.size() > 4 ? (fname.substr(fname.size() - 4) == ".cfg") :false);
+	const bool is_cfg = (fname.size() > 4 ? (fname.substr(fname.size() - 4) == ".cfg") : false);
 	cfg["contents"] = encode_binary(strip_cr(read_file(path + '/' + fname),is_cfg));
 }
 
@@ -295,7 +306,7 @@ void archive_addon(const std::string& addon_name, config& cfg)
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > ignore_patterns;
 	// External .cfg may not exist; newer campaigns have a _main.cfg
-	std::string external_cfg = addon_name + ".cfg";
+	const std::string external_cfg = addon_name + ".cfg";
 	if (file_exists(parentd + "/" + external_cfg)) {
 		archive_file(parentd, external_cfg, cfg.add_child("file"));
 	}
@@ -337,16 +348,18 @@ void unarchive_addon(const config& cfg)
 }
 
 namespace {
-    // Strip the ".cfg" extension and replace "_" with " " for display.
+	//! Strip the ".cfg" extension and replace "_" with " " for display.
+	//! @param files      List of files in the add-ons directory.
+	//! @param dirs       List of subdirectories in the add-ons directory.
+	//! @param parent_dir Path to the add-ons directory.
 	void prepare_addons_list_for_display(std::vector<std::string>& files,
 	                                     std::vector<std::string>& dirs,
 	                                     const std::string& parent_dir)
 	{
-		// Strip the ".cfg" extension and replace "_" with " " for display.
 		std::vector<std::string>::iterator i = files.begin();
 		while(i != files.end())
 		{
-			std::string::size_type pos = i->rfind(".cfg", i->size());
+			const std::string::size_type pos = i->rfind(".cfg", i->size());
 			if(pos == std::string::npos) {
 				i = files.erase(i);
 			} else {
@@ -376,6 +389,10 @@ namespace {
 		}
 	}
 	
+	//! Creates a more human-readable representation of a file size.
+	//! @param size_str File size string, as obtained from a config object.
+	//! @return         Representation of file size in the biggest byte multiply
+	//!                 possible.
 	static std::string format_file_size(const std::string& size_str)
 	{
 		double size = lexical_cast_default<double>(size_str,0.0);
@@ -413,6 +430,9 @@ namespace {
 		}
 	}
 	
+	//! Return a short string describing an add-on's type.
+	//! @param type Numerical add-on type.
+	//! @return     A string, translated to the current locale.
 	std::string get_translatable_addon_type(ADDON_TYPE type)
 	{
 		switch (type) {
@@ -437,6 +457,10 @@ namespace {
 		}
 	}
 	
+	//! Checks if an add-on's dependencies are met.
+	//! @param disp    Object to be used for displaying interactive messages.
+	//! @param deplist List of dependencies (add-on identifiers).
+	//! @return        true if dependencies are met; false otherwise.
 	bool addon_dependencies_met(game_display& disp, const std::vector<std::string>& deplist)
 	{
 		const std::vector<std::string>& installed = installed_addons();
@@ -1077,7 +1101,7 @@ namespace {
 			dlg2.show();
 		}
 	}
-} // end unnamed namespace 3
+} // end unnamed namespace 4
 
 #define ADDONS_OPT_DOWNLOAD		0
 #define ADDONS_OPT_UNINSTALL	2
@@ -1226,7 +1250,7 @@ addon_version_info::addon_version_info()
 
 namespace {
 	std::map< std::string, addon_version_info > version_info_cache;
-} // end unnamed namespace 4
+} // end unnamed namespace 5
 
 void refresh_addon_version_info_cache(void)
 {

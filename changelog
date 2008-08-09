@@ -37,6 +37,8 @@ Version 1.5.2+svn:
  * Miscellaneous and bug fixes:
    * Add-on uploads by default will skip all dot-files (.*), which are hidden
      files in UNIX filesystems.
+   * Add-on uploads will always preprend the default ignore patterns to the
+     contents of user-provided .ign files.
    * Downloaded add-ons' meta information is stored in <add-on dir>/_info.cfg
      rather than <add-on dir>/info.cfg now; both the in-game client and the
      wesnoth_addon_manager Python script have been updated for this.
