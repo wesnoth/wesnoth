@@ -20,7 +20,9 @@ class SVNUpdater {
 		while(!$success && $tries--)
 		{
 			$svnlog = shell_exec('svn up 2>&1');
-			echo $svnlog;
+			global $db;
+			if ($db->debug)
+				echo $svnlog;
 			$success = preg_match('/At revision ([0-9]*)\./m', $svnlog, $m);
 			if (!$success)
 				sleep(5);

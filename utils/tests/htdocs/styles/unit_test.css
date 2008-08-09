@@ -1,6 +1,49 @@
 div.menu {
-	float: left;
+	position:absolute;
+	margin-left: 3em;
 	width: 7em;
 	border: 1px solid #AAAAAA;
-};
+}
 
+.unit_test h3 {
+	text-align:center;
+}
+
+table.build {
+	margin: auto;
+	margin-right: auto;
+}
+
+.build td {
+	text-align: center;
+}
+
+.build .passed {
+	color: #00FF00;
+}
+
+.build .failed {
+	color: #FF0000;
+}
+
+
+div.autohide_over {
+	position: absolute;
+	background:#FFFBF0 none repeat scroll 0 0;
+	border: 1px solid #AAAAAA;
+	padding: 0.5em;
+	max-width: 30em;
+}
+
+table.test_error {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.test_error .Error {
+	color: #FF0000;
+}
+
+.test_error .Warning {
+	color: #FF00FF;
+}

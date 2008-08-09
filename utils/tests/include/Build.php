@@ -202,18 +202,21 @@ class Build {
 		$build_result = '';
 		if ($this->status == self::S_GOOD)
 		{
-			$build_result = $this->result->getResult();
+			$build_result = "Build successed.";
 		} else {
-			$build_result = nl2br("Compilation failed:\n" . $this->error_msg);
+			$build_result = "Build failed:\n" . $this->error_msg;
 		}
+		$build_result = str_replace("\n"," \\n",$build_result);
 
-		return 	array('build_result' 	=> $build_result,
-					  'build_time' 		=> $this->time,
-					  'build_error_msg'	=> $this->error_msg,
-					  'build_svn_rev'	=> $this->svn_version,
-					  'result_passed'	=> $this->result->getAssertionsPassed(),
-					  'result_failed'	=> $this->result->getAssertionsFailed(),
-				  	  'errors'			=> $this->getErrorStatistics());
+		return 	array('build' => array('result' 		=> $build_result,
+									   'time' 			=> $this->time,
+									   'style' 			=> ($this->status == self::S_GOOD?"passed":"failed"),
+									   'result_style'	=> $this->result->getResult(),
+									   'error_msg'	=> $this->error_msg,
+									   'svn_rev'	=> $this->svn_version,
+									   'result_passed'	=> $this->result->getAssertionsPassed(),
+									   'result_failed'	=> $this->result->getAssertionsFailed(),
+				 					   'errors'			=> $this->getErrorStatistics()));
 	}
 }
 ?>

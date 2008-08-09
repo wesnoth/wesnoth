@@ -11,6 +11,7 @@ class WesnothSmarty extends Smarty {
 		$this->compile_dir = $work_dir . '/templates_c';
 		$this->cache_dir = $work_dir . '/cache';
 		$this->config_dir = $work_dir . '/configs';
+		$this->plugins_dir[] = $work_dir . '/plugins';
 	}
 }
 ?>

@@ -10,6 +10,7 @@ class TestRunner {
 		$binary_name = $build->getTestName();
 		if ($binary_name === false)
 		{
+			trigger_error("No executeable name for tests");
 			return;
 		}
 		$test_output = '<UnitTest>'.shell_exec("./$binary_name --log_format=XML --report_format=XML 2>&1").'</UnitTest>';
@@ -30,7 +31,8 @@ class TestRunner {
 			|| !isset($xml->TestLog[0]) )
 		{
 			global $db;
-			echo $test_output;
+			if ($db->debug)
+				echo $test_output;
 			$db->FailTrans();
 			return;
 		}
