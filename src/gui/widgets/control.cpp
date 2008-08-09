@@ -15,12 +15,8 @@
 #include "gui/widgets/control.hpp"
 
 #include "foreach.hpp"
-#include "gui/widgets/helper.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
-#include "util.hpp"
-#include "sdl_utils.hpp"
 #include "../../text.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
@@ -167,14 +163,6 @@ void tcontrol::draw(surface& surface, const bool force,
 		save_background(surface);
 	} else if(needs_full_redraw()) {
 		restore_background(surface);
-	}
-
-	if(multiline_label_) {
-		// Set the text hardcoded in multiline mode.
-		if(wrapped_label_.empty()) {
-			wrapped_label_ = font::word_wrap_text(label_, config_->text_font_size, get_width());
-		}
-		canvas(get_state()).set_variable("text", variant(wrapped_label_));
 	}
 
 	canvas(get_state()).draw(true);
