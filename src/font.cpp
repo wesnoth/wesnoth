@@ -77,10 +77,33 @@ std::vector<std::string> font_names;
 
 struct text_chunk
 {
-	text_chunk(subset_id subset) : subset(subset) {}
-	text_chunk(subset_id subset, std::string const & text) : subset(subset), text(text) {}
-	text_chunk(subset_id subset, ucs2_string const & ucs2_text) : subset(subset), ucs2_text(ucs2_text) {}
-	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) : subset(subset), text(text), ucs2_text(ucs2_text) {}
+	text_chunk(subset_id subset) : 
+		subset(subset),
+		text(),
+		ucs2_text()
+	{
+	}
+
+	text_chunk(subset_id subset, std::string const & text) : 
+		subset(subset), 
+		text(text),
+		ucs2_text()
+	{
+	}
+
+	text_chunk(subset_id subset, ucs2_string const & ucs2_text) : 
+		subset(subset), 
+		text(),
+		ucs2_text(ucs2_text) 
+	{
+	}
+
+	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) : 
+		subset(subset), 
+		text(text), 
+		ucs2_text(ucs2_text) 
+	{
+	}
 
 	bool operator==(text_chunk const & t) const { return subset == t.subset && ucs2_text == t.ucs2_text; }
 	bool operator!=(text_chunk const & t) const { return !operator==(t); }
@@ -276,6 +299,12 @@ manager::~manager()
 //set it covers.
 struct subset_descriptor
 {
+	subset_descriptor() :
+		name(),
+		present_codepoints()
+	{
+	}
+
 	std::string name;
 	std::vector<std::pair<size_t, size_t> > present_codepoints;
 };
@@ -402,9 +431,21 @@ void text_surface::bidi_cvt()
 }
 #endif
 
-text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
-  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), str_(str),
-  initialized_(false)
+text_surface::text_surface(std::string const &str, int size, 
+		SDL_Color color, int style) :
+	hash_(0), 
+	font_size_(size), 
+	color_(color), 
+	style_(style), 
+	w_(-1), 
+	h_(-1), 
+	str_(str),
+	initialized_(false),
+	chunks_(),
+	surfs_()
+#ifdef	HAVE_FRIBIDI
+	,is_rtl_(false)
+#endif
 {
 #ifdef	HAVE_FRIBIDI
 	bidi_cvt();
@@ -412,8 +453,20 @@ text_surface::text_surface(std::string const &str, int size, SDL_Color color, in
 	hash();
 }
 
-text_surface::text_surface(int size, SDL_Color color, int style)
-  : hash_(0), font_size_(size), color_(color), style_(style), w_(-1), h_(-1), initialized_(false)
+text_surface::text_surface(int size, SDL_Color color, int style) :
+	hash_(0), 
+	font_size_(size), 
+	color_(color), 
+	style_(style), 
+	w_(-1), 
+	h_(-1),
+	str_(),
+	initialized_(false),
+	chunks_(),
+	surfs_()
+#ifdef	HAVE_FRIBIDI
+	,is_rtl_(false)
+#endif
 {
 }
 
