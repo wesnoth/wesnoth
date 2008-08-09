@@ -30,7 +30,7 @@ template <class T>
 class tformula
 {
 public:	
-	tformula<T>(const std::string& str);
+	tformula<T>(const std::string& str, const T value = T());
 
 	/**
 	 * Returns the value, can only be used it the data is no formula.
@@ -63,13 +63,12 @@ private:
 
 	/** If no formula it contains the value. */
 	T value_;
-
 };
 
 template<class T>
-tformula<T>::tformula(const std::string& str) :
+tformula<T>::tformula(const std::string& str, const T value) :
 	formula_(),
-	value_()
+	value_(value)
 {
 	if(str.empty()) {
 		return;
