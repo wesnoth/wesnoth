@@ -96,6 +96,8 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 
 BOOST_AUTO_TEST_CASE( test_load_config )
 {
+
+	BOOST_CHECK_EQUAL(2,2);
 }
 
 /* vim: set ts=4 sw=4: */

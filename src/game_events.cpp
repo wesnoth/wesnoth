@@ -208,7 +208,8 @@ namespace game_events {
 			(*itor->second)(eh, event_info, cfg);
 			return true;
 		}
-		return cmd == "filter" || cmd == "filter_second" || cmd == "filter_second_attack" || cmd == "filter_attack";
+		// Return true if we have /^filter.*/ tag
+		return cmd.compare(0, strlen("filter"),"filter");
 	}
 
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc);

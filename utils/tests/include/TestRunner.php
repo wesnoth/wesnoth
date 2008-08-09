@@ -26,6 +26,14 @@ class TestRunner {
 		//test_cases_aborted="0"></TestSuite>
 		//</TestResult></UnitTest>';
 		$xml = simplexml_load_string($test_output);
+		if (!($xml instanceof SimpleXMLElement)
+			|| !isset($xml->TestLog[0]) )
+		{
+			global $db;
+			echo $test_output;
+			$db->FailTrans();
+			return;
+		}
 		foreach($xml->TestLog[0] as $name => $data)
 		{
 			$test_error = new TestError($name, $data, $build);
