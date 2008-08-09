@@ -81,6 +81,7 @@ private:
 	PangoCairoFontMap* font_map_;
 	PangoContext* context_;
 	PangoLayout* layout_;
+	PangoRectangle rect_;
 
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
@@ -108,10 +109,35 @@ private:
 	bool word_wrap_;
 
 	/** 
-	 * When the text is rendered it's cached so we need to know the dirty
-	 * status of the surface.
+	 * The text has two dirty states:
+	 * - The setting of the state and the size calculations.
+	 * - The rendering of the surface.
 	 */
-	bool dirty_;
+
+	/** The dirty state of the calculations. */
+	bool calculation_dirty_;
+
+	/**
+	 * Recalculates the text.
+	 *
+	 * When the text is recalculated the surface is dirtied.
+	 *
+	 * @param force               Recalculate even if not dirty?
+	 */
+	void recalculate(const bool force = false);
+
+	/** The dirty state of the surface. */
+	bool surface_dirty_;
+
+	/**
+	 * Renders the text.
+	 *
+	 * It will do a recalculation first so no need to call both.
+	 *
+	 * @param force               Render even if not dirty? This parameter is
+	 *                            also send to recalculate().
+	 */
+	void rerender(const bool force = false);
 
 	/** 
 	 * Buffer to store the image on.
