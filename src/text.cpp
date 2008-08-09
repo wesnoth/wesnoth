@@ -14,6 +14,7 @@
 
 #include "text.hpp"
 
+#include "gui/widgets/helper.hpp"
 #include "font.hpp"
 #include "language.hpp"
 
@@ -33,6 +34,9 @@ ttext::ttext() :
 	markedup_text_(false),
 	font_size_(14),
 	foreground_colour_(0xFFFFFFFF), // solid white
+	maximum_width_(-1),
+	maximum_height_(-1),
+	word_wrap_(false),
 	dirty_(true),
 	surface_buffer_(NULL)
 {	
@@ -70,6 +74,13 @@ surface ttext::render()
 		pango_font_description_set_size(font, font_size_ * PANGO_SCALE);
 		pango_layout_set_font_description(layout_, font);
 		pango_font_description_free(font);
+
+		// NOTE for now the setting of the ellipse is undocumented and
+		// implicitly done, this will change later. We'll need it for the
+		// textboxes.
+		pango_layout_set_ellipsize(layout_, 
+			maximum_width_ == -1 && maximum_height_ == -1 
+			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END);
 
 		if(markedup_text_) {
 			pango_layout_set_markup(layout_, text_.c_str(), text_.size());
@@ -116,6 +127,29 @@ surface ttext::render()
 	return surface_;
 }
 
+int ttext::get_width() 
+{
+	return get_size().x;
+}
+
+int ttext::get_height() 
+{
+	return get_size().y;
+}
+
+gui2::tpoint ttext::get_size() 
+{
+	if(dirty_) {
+		/**
+		 * @todo We might use two dirty flags one for the layout and one for
+		 * the rendering, but for now only use one.
+		 */
+		render();
+	}
+
+	return gui2::tpoint(surface_->w, surface_->h);
+}
+
 ttext& ttext::set_text(const t_string& text, const bool markedup) 
 {
 	if(markedup != markedup_text_ || text != text_) {
@@ -141,6 +175,40 @@ ttext& ttext::set_foreground_colour(const Uint32 colour)
 {
 	if(colour != foreground_colour_) {
 		foreground_colour_ = colour;
+		dirty_ = true;
+	}
+
+	return *this;
+}
+
+ttext& ttext::set_maximum_width(const int width)
+{
+	if(width != maximum_width_) {
+		pango_layout_set_width(layout_, width);
+		maximum_width_ = width;
+		dirty_ = true;
+	}
+
+	return *this;
+}
+
+ttext& ttext::set_maximum_height(const int height)
+{
+	if(height != maximum_height_) {
+		pango_layout_set_height(layout_, height);
+		maximum_height_ = height;
+		dirty_ = true;
+	}
+
+	return *this;
+}
+
+ttext& ttext::set_word_wrap(const bool wrap)
+{
+	if(wrap != word_wrap_) {
+		pango_layout_set_wrap(layout_, wrap 
+			? PANGO_WRAP_WORD_CHAR : static_cast<PangoWrapMode>(-1));
+		word_wrap_ = wrap;
 		dirty_ = true;
 	}
 

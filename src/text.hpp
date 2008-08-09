@@ -23,6 +23,10 @@
 
 class language_def;
 
+namespace gui2 {
+	class tpoint;
+} // namespace gui2;
+
 namespace font {
 
 // add background colour and also font markup.
@@ -48,6 +52,15 @@ public:
 	 */
 	surface render();
 
+	/** Returns the width needed for the text. */
+	int get_width() ;
+
+	/** Returns the height needed for the text. */
+	int get_height() ;
+
+	/** Returns the size needed for the text. */
+	gui2::tpoint get_size() ;
+
 	/***** ***** ***** ***** Setters ***** ***** ***** *****/
 
 	ttext& set_text(const t_string& text, const bool markedup);
@@ -55,6 +68,12 @@ public:
 	ttext& set_font_size(const unsigned font_size);
 
 	ttext& set_foreground_colour(const Uint32 colour);
+
+	ttext& set_maximum_width(const int width);
+
+	ttext& set_maximum_height(const int height);
+
+	ttext& set_word_wrap(const bool wrap);
 
 private:
 
@@ -77,7 +96,17 @@ private:
 
 	/** The foreground colour. */
 	Uint32 foreground_colour_;
-	
+
+	/** 
+	 * The maximum width of the text, -1 means no maximum. */
+	int maximum_width_;
+
+	/** The maximum height of the text, -1 means no maximum . */
+	int maximum_height_;
+
+	/** Do we enable word wrap for the text, if enable the word char mode is set. */
+	bool word_wrap_;
+
 	/** 
 	 * When the text is rendered it's cached so we need to know the dirty
 	 * status of the surface.
