@@ -141,7 +141,13 @@ ttext& ttext::set_maximum_width(const int width)
 ttext& ttext::set_maximum_height(const int height)
 {
 	if(height != maximum_height_) {
+/**
+ * @todo See whether we can make pango 1.20 mandatory before Wesnoth 1.6 is
+ * released.
+ */
+#if defined(PANGO_VERSION_CHECK) && PANGO_VERSION_CHECK(1,20,0)
 		pango_layout_set_height(layout_, height);
+#endif
 		maximum_height_ = height;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
