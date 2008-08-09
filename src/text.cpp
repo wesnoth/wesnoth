@@ -86,6 +86,13 @@ gui2::tpoint ttext::get_size()
 	return gui2::tpoint(rect_.width, rect_.height);
 }
 
+bool ttext::is_truncated()
+{
+	recalculate();
+
+	return (pango_layout_is_ellipsized(layout_) == TRUE);
+}	
+
 ttext& ttext::set_text(const t_string& text, const bool markedup) 
 {
 	if(markedup != markedup_text_ || text != text_) {

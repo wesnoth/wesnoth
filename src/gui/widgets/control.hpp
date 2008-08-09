@@ -300,21 +300,16 @@ private:
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
-	/** 
-	 * Gets the best size for a single line label. 
+	/**
+	 * Gets the best size for a text.
 	 *
-	 * @param config_size         The wanted size.
+	 * @param minimum_size        The minimum size of the text.
+	 * @param word_wrap           Are we allowed to wrap the lines.
+	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_single_line_best_size(const tpoint& config_size) const;
-
-	/** 
-	 * Gets the best size for a multiline line label. 
-	 *
-	 * @param config_size         The wanted size.
-	 * @returns                   The best size.
-	 */
-	tpoint get_multi_line_best_size(const tpoint& config_size) const;
+	tpoint get_best_text_size(const tpoint& minimum_size, 
+		const bool word_wrap) const;
 };
 
 } // namespace gui2

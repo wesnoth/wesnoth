@@ -14,7 +14,6 @@
 
 #include "gui/widgets/control.hpp"
 
-#include "font.hpp"
 #include "foreach.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/window.hpp"
@@ -22,6 +21,7 @@
 #include "marked-up_text.hpp"
 #include "util.hpp"
 #include "sdl_utils.hpp"
+#include "../../text.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
 #define LOG_G LOG_STREAM_INDENT(info, gui)
@@ -113,11 +113,7 @@ tpoint tcontrol::get_minimum_size() const
 		return min_size;
 	}
 
-	if(!multiline_label_) {
-		return get_single_line_best_size(min_size);
-	} else {
-		return get_multi_line_best_size(min_size);
-	}
+	return get_best_text_size(min_size, multiline_label_);
 }
 
 tpoint tcontrol::get_best_size() const
@@ -130,11 +126,7 @@ tpoint tcontrol::get_best_size() const
 		return default_size;
 	}
 
-	if(!multiline_label_) {
-		return get_single_line_best_size(default_size);
-	} else {
-		return get_multi_line_best_size(default_size);
-	}
+	return get_best_text_size(default_size, multiline_label_);
 }
 
 tpoint tcontrol::get_maximum_size() const
@@ -250,77 +242,40 @@ void tcontrol::restore_background(surface& dst)
 	gui2::restore_background(restorer_, dst, get_rect());
 }
 
-tpoint tcontrol::get_single_line_best_size(const tpoint& config_size) const
+tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const bool word_wrap) const
 {
 	assert(!label_.empty());
 
-	// Get the best size depending on the label.
-	SDL_Rect rect = font::line_size(label_, config_->text_font_size, config_->text_font_style);
-	const tpoint text_size(rect.w + config_->text_extra_width, rect.h + config_->text_extra_height);
+	const tpoint border(config_->text_extra_width, config_->text_extra_height);
+	tpoint size = minimum_size - border;
 
-	// Get the best size if default has a 0 value always use the size of the text.
-	tpoint size(0, 0);
-	if(config_size == size) { // config_size == 0,0
-		size = text_size;
-	} else if(!config_size.x) {
-		size = tpoint(text_size.x, maximum(config_size.y, text_size.y));
-	} else if(!config_size.y) {
-		size = tpoint(maximum(config_size.x, text_size.x), text_size.y);
-	} else {
-		size.x = maximum(config_size.x, text_size.x);
-		size.y = maximum(config_size.y, text_size.y);
+	font::ttext text;
+	text.set_text(label_, false);
+	text.set_font_size(config_->text_font_size);
+	text.set_word_wrap(word_wrap);
+
+	// Try with the minimum wanted size.
+	text.set_maximum_width(size.x);
+	text.set_maximum_height(size.y);
+
+	// If doesn't fit try the maximum.
+	if(text.is_truncated()) {
+		const tpoint maximum_size(config_->max_width, config_->max_height);
+		text.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
+		text.set_maximum_height(maximum_size.y ? maximum_size.y - border.y : -1);
 	}
 
-	// Honour the maximum.
-	const tpoint maximum_size(config_->max_width, config_->max_height);
-	if(maximum_size.x && size.x > maximum_size.x) {
-		size.x = maximum_size.x;
+	size = text.get_size() + border;
+
+	if(size.x < minimum_size.x) {
+		size.x = minimum_size.x;
 	}
-	if(maximum_size.y && size.y > maximum_size.y) {
-		size.y = maximum_size.y;
+
+	if(size.y < minimum_size.y) {
+		size.y = minimum_size.y;
 	}
+
 	return size;
-}
-
-tpoint tcontrol::get_multi_line_best_size(const tpoint& config_size) const
-{
-	assert(!label_.empty());
-
-	// In multiline mode we only expect a fixed width and no
-	// fixed height so we ignore the height ;-)
-	const tpoint maximum_size(config_->max_width, config_->max_height);
-	if(config_size.y || maximum_size.y) {
-		WRN_G << "Control: Multiline items don't respect the wanted height.\n";
-	}
-	unsigned width = 0;
-	if(!config_size.x && !maximum_size.x) {
-		/** @todo FIMXE implement */
-/*		const twindow* window = get_window();
-		if(window) {
-			const SDL_Rect rect = window->get_client_rect();
-			LOG_G << "Control: Multiline items want a width, falling back to window size.\n";
-			width = rect.w;
-		} else {
-*/			ERR_G << "Control: Multiline items want a width, no window setting hardcoded.\n";
-			width = 100;
-//		}
-	} else {
-
-		if(!config_size.x) {
-			width = maximum_size.x;
-		} else if(!maximum_size.x) {
-			width = config_size.x;
-		} else {
-			width = minimum(config_size.x, maximum_size.x);
-		}
-	}
-
-	static const SDL_Color col = {0, 0, 0, 0};
-	const std::string& wrapped_message = font::word_wrap_text(label_, config_->text_font_size, width);
-	surface surf = font::get_rendered_text(wrapped_message, config_->text_font_size, col);
-	assert(surf);
-
-	return tpoint(surf->w + config_->text_extra_width, surf->h + config_->text_extra_height);
 }
 
 } // namespace gui2

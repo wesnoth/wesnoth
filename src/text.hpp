@@ -61,6 +61,9 @@ public:
 	/** Returns the size needed for the text. */
 	gui2::tpoint get_size() ;
 
+	/** Has the text been truncated? */
+	bool is_truncated();
+
 	/***** ***** ***** ***** Setters ***** ***** ***** *****/
 
 	ttext& set_text(const t_string& text, const bool markedup);
