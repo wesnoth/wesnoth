@@ -152,6 +152,7 @@ public:
 //change
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
+	  friends_names_(),
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
 	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
