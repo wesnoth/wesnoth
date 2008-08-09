@@ -177,7 +177,8 @@ namespace game_events {
 		return *manager_;
 	}
 
-	command_handlers::command_handlers()
+	command_handlers::command_handlers() :
+		function_call_map_()
 	{
 	}
 
@@ -2012,7 +2013,9 @@ namespace {
 		bool too_many_recursions_;
 
 		public:
-		recursion_preventer(gamemap::location& loc) : loc_(loc)
+		recursion_preventer(gamemap::location& loc) : 
+			loc_(loc),
+			too_many_recursions_(false)
 		{
 			const int nill = 0;
 			recursion_counter::iterator inserted = counter_.insert(std::make_pair(loc_, nill)).first;
