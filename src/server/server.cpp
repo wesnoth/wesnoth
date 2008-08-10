@@ -260,7 +260,7 @@ private:
 
 	//! std::map<network::connection,player>
 	player_map players_;
-        player_map ghost_players_ ;
+	player_map ghost_players_ ;
 
 	std::vector<game*> games_;
 	game not_logged_in_;
@@ -330,23 +330,41 @@ private:
 	void start_new_server();
 };
 
-server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
-	: net_manager_(min_threads,max_threads), 
-	server_(port), 
+server::server(int port, input_stream& input, const std::string& config_file, 
+		size_t min_threads,size_t max_threads) :
+	net_manager_(min_threads,max_threads), 
+	server_(port),
+	ban_manager_(),
+	players_(),
+	ghost_players_(),
+	games_(),
 	not_logged_in_(players_),
 	lobby_(players_), 
 	input_(input), 
 	config_file_(config_file),
 	cfg_(read_config()), 
+	accepted_versions_(),
+	redirected_versions_(),
+	proxy_versions_(),
+	disallowed_names_(),
+	admin_passwd_(),
+	admins_(),
+	motd_(),
+	default_max_messages_(0),
+	default_time_period_(0),
+	concurrent_connections_(0),
 	graceful_restart(false),
+	lan_server_(time(NULL)),
+	last_user_seen_time_(time(NULL)),
+	restart_command(),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED), 
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
+	metrics_(),
 	last_ping_(time(NULL)), 
 	last_stats_(last_ping_)
 {
-	last_user_seen_time_ = time(0);
 	load_config();
 	signal(SIGHUP, reload_config);
 	signal(SIGINT, exit_sigint);
