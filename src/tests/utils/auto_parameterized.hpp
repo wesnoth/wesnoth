@@ -39,7 +39,8 @@ static void BOOST_AUTO_TC_INVOKER( test_name )(const type_name& param_name ) \
 struct BOOST_AUTO_TC_UNIQUE_ID( test_name ) {};                         \
                                                                         \
 BOOST_AUTO_TU_REGISTRAR( test_name )( \
-		BOOST_PARAM_TEST_CASE(&BOOST_AUTO_TC_INVOKER( test_name ),      \
+		boost::unit_test::make_test_case(&BOOST_AUTO_TC_INVOKER( test_name ),      \
+			BOOST_TEST_STRINGIZE( test_name ),\
 			BOOST_JOIN(test_name, _begin), BOOST_JOIN(test_name, _end)));		\
                                                                        \
 void test_name::test_method(const type_name& param_name)                \

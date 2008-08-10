@@ -426,6 +426,7 @@ static SOCKET_STATE send_file(buffer* buf)
 	size_t filesize = file_size(buf->config_error);
 #ifdef USE_SENDFILE
 	// implements linux sendfile support
+	LOG_NW << "send_file use system sendfile: " << (network_use_system_sendfile?"yes":"no") << "\n";
 	if (network_use_system_sendfile)
 	{
 		std::vector<char> buffer;

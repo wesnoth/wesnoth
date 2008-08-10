@@ -13,12 +13,11 @@
 </tr>
 </table>
 <br/>
-<h3>Errors in unit tests in the latest build</h3>
+<h3>Current list of errors in unit tests</h3>
 <table class="test_error" border="1">
 <tr>
 <th>Type</th>
-<th>First rev</th>
-<th>Last rev</th>
+<th>Broken in version</th>
 <th>File</th>
 <th>Line</th>
 <th>Message</th>
@@ -26,8 +25,7 @@
 {foreach from=$build.errors item=err}
 <tr>
 <td class="{$err.error_type}">{$err.error_type}</td>
-<td class="{$err.error_type}">r{$err.start_version}</td>
-<td class="{$err.error_type}">r{$err.end_version}</td>
+<td class="{$err.error_type}">r{$err.start_version} - r{$err.end_version}</td>
 <td class="{$err.error_type}">{$err.file|autohide:25:false:true}</td>
 <td class="{$err.error_type}">{$err.line}</td>
 <td class="{$err.error_type}">{$err.error_msg|autohide:40:true}</td>

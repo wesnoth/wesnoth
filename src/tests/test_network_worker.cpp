@@ -16,10 +16,18 @@
 #include <string>
 #include <SDL.h>
 #include <iostream>
+#include <algorithm>
+#include <cstdlib>
+
+#include "utils/auto_parameterized.hpp"
 
 #include "network.hpp"
+#include "network_worker.hpp"
 #include "thread.hpp"
 #include "config.hpp"
+#include "filesystem.hpp"
+
+#include "game_config.hpp"
 
 //! Test networking to prevent bugs there.
 //! Try to create all kind of unlikely error conditions
@@ -31,7 +39,7 @@ BOOST_AUTO_TEST_SUITE( test_network )
 
 const int TEST_PORT = 15010;
 const int MIN_THREADS = 1;
-const int MAX_THREADS = 1;
+const int MAX_THREADS = 5;
 const std::string LOCALHOST = "localhost"; 
 
 
@@ -67,13 +75,14 @@ BOOST_AUTO_TEST_CASE( test_connect )
 
 }
 
-static network::connection receive(config& cfg, int max_tries = 100)
+template<class T>
+static network::connection receive(T& cfg, int max_tries = 100)
 {
 	network::connection receive_con;
 	while ((receive_con = network::receive_data(cfg)) == network::null_connection)
 	{
 		// loop untill data is received
-		SDL_Delay(10);
+		SDL_Delay(50);
 		if (--max_tries <= 0)
 		{
 			BOOST_WARN_MESSAGE(max_tries > 0,"receiving data took too long. Preventing for ever loop");
@@ -158,6 +167,95 @@ BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 }
+
+// Use 1kb, 500kb and 10Mb files for testing
+struct sendfile_param {
+	sendfile_param(size_t size, bool system) : size_(size), system_(system) {}
+	size_t size_;
+	bool system_;
+};
+
+std::ostream& operator<<(std::ostream& s, const sendfile_param& p)
+{
+	return s << "size: " << p.size_ << "system: " << (p.system_?"true":"false");
+}
+
+sendfile_param sendfile_sizes[] = {sendfile_param(1*1024,true),
+   								   sendfile_param(500*1024,true),
+								   sendfile_param(10*1024*1024,true),
+//								   sendfile_param(50*1024*1024,true),
+								   sendfile_param(1*1024,false),
+   								   sendfile_param(500*1024,false),
+								   sendfile_param(10*1024*1024,false)//,
+//								   sendfile_param(50*1024*1024,false)
+};
+
+std::string create_random_sendfile(size_t size)
+{
+	char buffer[1024];
+	const int buffer_size = sizeof(buffer)/sizeof(buffer[0]);
+	int *begin = reinterpret_cast<int*>(&buffer[0]);
+	int *end = begin + sizeof(buffer)/sizeof(int);
+	std::string filename = "sendfile.tmp";
+	scoped_ostream file = ostream_file(filename);
+	std::generate(begin,end,std::rand);
+	while( size > 0 
+		&& !file->bad())
+	{
+		file->write(buffer, buffer_size);
+		size -= buffer_size;
+	}
+	return filename;
+}
+
+void delete_random_sendfile(const std::string file)
+{
+	delete_directory(file);
+}
+
+template<class T>
+class auto_resetter {
+	T& value_to_change_;
+	T old_val_;
+	public:
+	auto_resetter(const T& new_value, T& value_to_change) : value_to_change_(value_to_change), old_val_(value_to_change)
+	{
+		value_to_change_ = new_value;
+	}
+	~auto_resetter()
+	{
+		value_to_change_ = old_val_;
+	}
+};
+
+WESNOTH_PARAMETERIZED_TEST_CASE( test_system_sendfile, sendfile_param, sendfile_sizes, size )
+{
+	auto_resetter<std::string> path("", game_config::path);
+	network::set_raw_data_only();
+	std::string file = create_random_sendfile(size.size_);
+	network_worker_pool::set_use_system_sendfile(size.system_);
+
+	network::connection client_client, server_client;
+	
+	BOOST_CHECK_MESSAGE((client_client = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");
+
+	BOOST_CHECK_MESSAGE((server_client = network::accept_connection()) > 0, "Coulnd't accept new connection");
+
+	network::send_file(file, client_client);
+
+	std::vector<char> data;
+
+	BOOST_CHECK_EQUAL(server_client, receive(data,500));
+
+	BOOST_CHECK_EQUAL(data.size(), file_size(file));
+
+	network::disconnect(client_client);
+
+	BOOST_CHECK_THROW(receive(data),network::error);
+
+	delete_random_sendfile(file);
+}
+
 #if 0
 BOOST_AUTO_TEST_CASE( test_multiple_connections )
 {

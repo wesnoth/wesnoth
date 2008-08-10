@@ -128,7 +128,7 @@ class TestError {
 	{
 		if ($this->end_version == -1)
 		{
-			$result = $this->db->Execute('SELECT svn_version as end_version FROM builds WHERE id=?',array($this->last_id));
+			$result = $this->db->Execute('SELECT MIN(svn_version) as end_version FROM builds WHERE id>? AND status=?',array($this->before_id, Build::S_GOOD));
 			$this->end_version = $result->fields['end_version'];
 		}
 		return $this->end_version;
