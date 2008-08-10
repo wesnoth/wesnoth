@@ -35,25 +35,46 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-play_controller::play_controller(const config& level,
-	game_state& state_of_game, int ticks, int num_turns, const config& game_config,
-	CVideo& video, bool skip_replay, bool is_replay) :
+play_controller::play_controller(const config& level, game_state& state_of_game, 
+		int ticks, int num_turns, const config& game_config, CVideo& video, 
+		bool skip_replay, bool is_replay) :
 	controller_base(ticks, game_config, video),	
-	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
-	help_manager_(&game_config, &map_), mouse_handler_(gui_, teams_,
-		units_, map_, status_, undo_stack_, redo_stack_),
-	menu_handler_(gui_, units_, teams_, level, map_, game_config,
-		status_, state_of_game, undo_stack_, redo_stack_),
-	generator_setter(&recorder), statistics_context_(level["name"]),
-	level_(level),
-	gamestate_(state_of_game), status_(level, num_turns, &state_of_game),
+	verify_manager_(units_), 
+	team_manager_(teams_), 
+	prefs_disp_manager_(NULL),
+	tooltips_manager_(NULL),
+	events_manager_(NULL),
+	halo_manager_(NULL),
+	labels_manager_(), 
+	help_manager_(&game_config, &map_), 
+	mouse_handler_(gui_, teams_, units_, map_, status_, undo_stack_, redo_stack_), 
+	menu_handler_(gui_, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_), 
+	soundsources_manager_(NULL),
+	gui_(NULL),
+	generator_setter(&recorder), 
+	statistics_context_(level["name"]), 
+	level_(level), 
+	teams_(),
+	gamestate_(state_of_game), 
+	status_(level, num_turns, &state_of_game), 
 	map_(game_config, level["map_data"]),
-	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
-	loading_game_(level["playing_team"].empty() == false),
-	first_human_team_(-1), player_number_(1),
-	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
-	start_turn_(status_.turn()), is_host_(true), skip_replay_(skip_replay),
-	linger_(false)
+	units_(),
+	undo_stack_(),
+	redo_stack_(),
+	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100), 
+	loading_game_(level["playing_team"].empty() == false), 
+	first_human_team_(-1), 
+	player_number_(1), 
+	first_player_(lexical_cast_default<unsigned int, std::string>(level_["playing_team"], 0) + 1), 
+	start_turn_(status_.turn()), 
+	is_host_(true), 
+	skip_replay_(skip_replay), 
+	linger_(false),
+	first_turn_(true),
+	savenames_(),
+	wml_commands_(),
+	victory_music_(),
+	defeat_music_()
 {
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
@@ -214,6 +235,14 @@ static int placing_score(const config& side, const gamemap& map, const gamemap::
 }
 
 struct placing_info {
+
+	placing_info() :
+		side(0),
+		score(0),
+		pos()
+	{
+	}
+
 	int side, score;
 	gamemap::location pos;
 };
