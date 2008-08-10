@@ -76,8 +76,6 @@ public:
 
 	ttext& set_maximum_height(const int height);
 
-	ttext& set_word_wrap(const bool wrap);
-
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -107,9 +105,6 @@ private:
 
 	/** The maximum height of the text, -1 means no maximum . */
 	int maximum_height_;
-
-	/** Do we enable word wrap for the text, if enable the word char mode is set. */
-	bool word_wrap_;
 
 	/** 
 	 * The text has two dirty states:

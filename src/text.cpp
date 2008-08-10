@@ -37,7 +37,6 @@ ttext::ttext() :
 	foreground_colour_(0xFFFFFFFF), // solid white
 	maximum_width_(-1),
 	maximum_height_(-1),
-	word_wrap_(false),
 	calculation_dirty_(true),
 	surface_dirty_(true),
 	surface_buffer_(NULL)
@@ -154,19 +153,6 @@ ttext& ttext::set_maximum_height(const int height)
 		pango_layout_set_height(layout_, height);
 #endif
 		maximum_height_ = height;
-		calculation_dirty_ = true;
-		surface_dirty_ = true;
-	}
-
-	return *this;
-}
-
-ttext& ttext::set_word_wrap(const bool wrap)
-{
-	if(wrap != word_wrap_) {
-		pango_layout_set_wrap(layout_, wrap 
-			? PANGO_WRAP_WORD_CHAR : static_cast<PangoWrapMode>(-1));
-		word_wrap_ = wrap;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
 	}

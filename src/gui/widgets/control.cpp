@@ -230,7 +230,7 @@ void tcontrol::restore_background(surface& dst)
 	gui2::restore_background(restorer_, dst, get_rect());
 }
 
-tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const bool word_wrap) const
+tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
 {
 	assert(!label_.empty());
 
@@ -240,7 +240,6 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const bool word_
 	font::ttext text;
 	text.set_text(label_, false);
 	text.set_font_size(config_->text_font_size);
-	text.set_word_wrap(word_wrap);
 
 	// Try with the minimum wanted size.
 	text.set_maximum_width(size.x);

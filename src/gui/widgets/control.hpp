@@ -304,12 +304,10 @@ private:
 	 * Gets the best size for a text.
 	 *
 	 * @param minimum_size        The minimum size of the text.
-	 * @param word_wrap           Are we allowed to wrap the lines.
 	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_best_text_size(const tpoint& minimum_size, 
-		const bool word_wrap) const;
+	tpoint get_best_text_size(const tpoint& minimum_size) const;
 };
 
 } // namespace gui2
