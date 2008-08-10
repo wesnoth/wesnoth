@@ -27,7 +27,10 @@
 
 #endif
 
-input_stream::input_stream(const std::string& path) : fd_(-1), path_(path)
+input_stream::input_stream(const std::string& path) : 
+	fd_(-1), 
+	path_(path),
+	data_()
 {
 #ifndef _WIN32
 	if(path == "") {
