@@ -51,6 +51,7 @@ mouse_handler_base::mouse_handler_base(gamemap& map) :
 	dragging_started_(false),
 	drag_from_x_(0),
 	drag_from_y_(0),
+	drag_from_hex_(),
 	last_hex_(), 
 	show_menu_(false), 
 	map_(map)
