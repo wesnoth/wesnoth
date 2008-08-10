@@ -215,7 +215,7 @@ if env["prereqs"]:
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
-    have_test_prereqs =  conf.CheckBoost('unit_test_framework', require_version = "1.34.0") or Warning("Boost test not found. Disabling unit tests.")
+    have_test_prereqs =  have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.34.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
 
     if env["python"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
