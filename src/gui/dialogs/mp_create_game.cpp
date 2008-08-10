@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/dialog.hpp"
 #include "gui/dialogs/field.hpp"
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/widget.hpp"
@@ -40,33 +41,13 @@
 
 namespace gui2 {
 
-static void callback_use_map_settings(twidget* caller)
-{
-	tmp_create_game* dialog = dynamic_cast<tmp_create_game*>(caller->dialog());
-	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller->get_window());
-	assert(window);
-
-	dialog->update_map_settings(*window);
-}
-
-static void callback_select_list_item(twidget* caller)
-{
-	tmp_create_game* dialog = dynamic_cast<tmp_create_game*>(caller->dialog());
-	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller->get_window());
-	assert(window);
-
-	dialog->update_map(*window);
-}
-
 tmp_create_game::tmp_create_game(const config& cfg) :
 	cfg_(cfg),
 	scenario_(NULL),
 	use_map_settings_(register_bool("use_map_settings", false, 
 		preferences::use_map_settings, 
 		preferences::set_use_map_settings,
-		callback_use_map_settings)),
+		dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>)),
 	fog_(register_bool("fog", false, 
 			preferences::fog, 
 			preferences::set_fog)),
@@ -103,7 +84,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("map_list", false));
 	VALIDATE(list, missing_widget("map_list"));
 
-	list->set_callback_value_change(callback_select_list_item);
+	list->set_callback_value_change(dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
 
 	// Load option (might turn it into a button later).
 	std::map<std::string, t_string> item;

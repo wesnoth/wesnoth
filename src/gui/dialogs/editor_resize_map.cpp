@@ -16,6 +16,7 @@
 
 #include "foreach.hpp"
 #include "gui/dialogs/field.hpp"
+#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -109,9 +110,9 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 		std::string name = name_prefix + lexical_cast<std::string>(i);
 		direction_buttons_[i] = dynamic_cast<ttoggle_button*>(window.find_widget(name, false));
 		VALIDATE(direction_buttons_[i], missing_widget(name));		
-		direction_buttons_[i]->set_callback_state_change(callback_expand_direction_changed);
+		direction_buttons_[i]->set_callback_state_change(
+			dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	}
-	
 	window.recalculate_size();
 }
 
