@@ -523,8 +523,9 @@ static SOCKET_STATE send_file(buffer* buf)
 	scoped_istream file_stream = istream_file(buf->config_error);
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);
 
-	if (!file_stream->good())
+	if (!file_stream->good()) {
 		ERR_NW << "send_file: Couldn't open file " << buf->config_error << "\n";
+	}		
 	if (result != SOCKET_READY)
 	{
 		return result;
@@ -549,9 +550,11 @@ static SOCKET_STATE send_file(buffer* buf)
 		}
 
 	}
-	if (upto != filesize 
-			&& !file_stream->good())
-		ERR_NW << "send_file failed because stream not good from file " << buf->config_error << " upto: " << upto << " size: " << filesize << "\n";
+	if (upto != filesize && !file_stream->good()) {
+		ERR_NW << "send_file failed because stream not good from file " 
+			<< buf->config_error << " upto: " << upto 
+			<< " size: " << filesize << "\n";
+	}
 	return result;
 }
 
