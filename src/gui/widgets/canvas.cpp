@@ -262,7 +262,6 @@ tline::tline(const config& cfg) :
 	if(!debug.empty()) {
 		DBG_G_P << "Line: found debug message '" << debug << "'.\n";
 	}
-
 }
 
 void tline::draw(surface& canvas,
@@ -725,6 +724,12 @@ private:
 
 	/** The text to draw. */
 	tformula<t_string> text_;
+
+	/** The maximum width for the text. */
+	tformula<int> maximum_width_;
+
+	/** The maximum height for the text. */
+	tformula<int> maximum_height_;
 };
 
 ttext::ttext(const config& cfg) :
@@ -735,7 +740,9 @@ ttext::ttext(const config& cfg) :
 	font_size_(lexical_cast_default<unsigned>(cfg["font_size"])),
 	font_style_(decode_font_style(cfg["font_style"])),
 	colour_(decode_colour(cfg["colour"])),
-	text_(cfg["text"])
+	text_(cfg["text"]),
+	maximum_width_(cfg["maximum_width"], -1),
+	maximum_height_(cfg["maximum_height"], -1)
 {
 
 /*WIKI
@@ -754,6 +761,8 @@ ttext::ttext(const config& cfg) :
  *     font_style (font_style = "")    The style of the text.
  *     colour (colour = "")            The colour of the text.
  *     text (tstring = "")             The text to draw (translatable).
+ *     maximum_width (f_int = -1)      The maximum width the text is allowed to be.                                
+ *     maximum_height (f_int = -1)     The maximum height the text is allowed to be.                                
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  * @end_table
@@ -794,7 +803,9 @@ void ttext::draw(surface& canvas,
 
 	text_renderer.set_text(text, false).
 		set_font_size(font_size_).
-		set_foreground_colour(colour_);
+		set_foreground_colour(colour_).
+		set_maximum_width(maximum_width_(variables)).
+		set_maximum_height(maximum_height_(variables));
 	surface surf = text_renderer.render();
 
 	game_logic::map_formula_callable local_variables(variables);
