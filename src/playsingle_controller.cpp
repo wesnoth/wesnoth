@@ -47,7 +47,9 @@ playsingle_controller::playsingle_controller(const config& level,
 	end_turn_(false),
 	player_type_changed_(false),
 	replaying_(false),
-	turn_over_(false)
+	turn_over_(false),
+	victory_music_(),
+	defeat_music_()
 {
 	// game may need to start in linger mode
 	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
