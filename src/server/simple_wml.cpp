@@ -123,13 +123,21 @@ std::ostream& operator<<(std::ostream& o, const string_span& s)
 	return o;
 }
 
-node::node(document& doc, node* parent)
-  : doc_(&doc), parent_(parent)
+node::node(document& doc, node* parent) :
+	doc_(&doc), 
+	attr_(),
+	parent_(parent),
+	children_(),
+	output_cache_()
 {
 }
 
-node::node(document& doc, node* parent, const char** str, int depth)
-  : doc_(&doc), parent_(parent)
+node::node(document& doc, node* parent, const char** str, int depth) :
+	doc_(&doc), 
+	attr_(),
+	parent_(parent),
+	children_(),
+	output_cache_()
 {
 	if(depth >= 30) {
 		throw error("elements nested too deep");
@@ -695,13 +703,24 @@ void node::set_dirty()
 	}
 }
 
-document::document() : output_(NULL),
-					   root_(new node(*this, NULL))
+document::document() : 
+	compressed_buf_(),
+	output_(NULL), 
+	buffers_(),
+	root_(new node(*this, NULL)),
+	prev_(NULL),
+	next_(NULL)
 {
 	attach_list();
 }
 
-document::document(char* buf, INIT_BUFFER_CONTROL control) : output_(buf), root_(NULL)
+document::document(char* buf, INIT_BUFFER_CONTROL control) : 
+	compressed_buf_(),
+	output_(buf), 
+	buffers_(),
+	root_(NULL),
+	prev_(NULL),
+	next_(NULL)
 {
 	if(control == INIT_TAKE_OWNERSHIP) {
 		buffers_.push_back(buf);
@@ -712,10 +731,14 @@ document::document(char* buf, INIT_BUFFER_CONTROL control) : output_(buf), root_
 	attach_list();
 }
 
-document::document(const char* buf, INIT_STATE state) : output_(NULL),
-                                                        root_(NULL)
+document::document(const char* buf, INIT_STATE state) : 
+	compressed_buf_(),
+	output_(buf),
+	buffers_(),
+	root_(NULL),
+	prev_(NULL),
+	next_(NULL)
 {
-	output_ = buf;
 	if(state == INIT_COMPRESSED) {
 		output_compressed();
 		output_ = NULL;
@@ -726,10 +749,13 @@ document::document(const char* buf, INIT_STATE state) : output_(NULL),
 	attach_list();
 }
 
-document::document(string_span compressed_buf)
-  : compressed_buf_(compressed_buf),
-    output_(NULL),
-	root_(NULL)
+document::document(string_span compressed_buf) :
+	compressed_buf_(compressed_buf),
+	output_(NULL),
+	buffers_(),
+	root_(NULL),
+	prev_(NULL),
+	next_(NULL)
 {
 	string_span uncompressed_buf;
 	buffers_.push_back(uncompress_buffer(compressed_buf, &uncompressed_buf));
