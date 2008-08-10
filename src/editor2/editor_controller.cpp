@@ -41,6 +41,8 @@
 
 #include "SDL.h"
 
+#include <boost/bind.hpp>
+
 namespace editor2 {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
@@ -48,7 +50,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 , mouse_handler_base(get_map())
 , map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL), map_generator_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
-, auto_update_transitions_(true)
+, toolbar_dirty_(true), auto_update_transitions_(true)
 {
 	init(video);
 	floating_label_manager_ = new font::floating_label_context();
@@ -79,6 +81,14 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		new mouse_action_starting_position()));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_)));
+	foreach (const theme::menu& menu, gui().get_theme().menus()) {
+		if (menu.items().size() == 1) {
+			mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey(menu.items().front()).get_id());
+			if (i != mouse_actions_.end()) {
+				i->second->set_toolbar_button(&menu);
+			}
+		}
+	}			
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	
 	background_terrain_ = t_translation::GRASS_LAND;
@@ -101,6 +111,7 @@ void editor_controller::init(CVideo& video)
 	gui_ = new editor_display(video, get_map(), *theme_cfg, game_config_, config());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
+	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 }
 
 editor_controller::~editor_controller()
@@ -110,8 +121,7 @@ editor_controller::~editor_controller()
 	delete floating_label_manager_;
 	delete map_generator_;
     delete gui_;
-	typedef std::pair<hotkey::HOTKEY_COMMAND, mouse_action*> apr;
-	foreach (apr a, mouse_actions_) {
+	foreach (const mouse_action_map::value_type a, mouse_actions_) {
 		delete a.second;
 	}	
 	delete prefs_disp_manager_;
@@ -660,6 +670,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		mouse_action_ = i->second;
+		redraw_toolbar();
 		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(command).get_description());
 		gui().invalidate_game_status();		
@@ -695,7 +706,29 @@ mouse_action* editor_controller::get_mouse_action()
 	return mouse_action_;
 }
 
-void editor_controller::refresh_image_cache() {
+void editor_controller::redraw_toolbar()
+{
+	foreach (mouse_action_map::value_type a, mouse_actions_) {
+		if (a.second->toolbar_button() != NULL) {
+			SDL_Rect r = a.second->toolbar_button()->location(gui().screen_area());
+			SDL_Rect outline = {r.x - 2, r.y - 2, r.h + 4, r.w + 4};
+			//outline = intersect_rects(r, gui().screen_area());
+			SDL_Surface* const screen = gui().video().getSurface();
+			Uint32 color;
+			if (a.second == mouse_action_) {
+				color = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
+			} else {
+				color = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
+			}
+			draw_rectangle(outline.x, outline.y, outline.w, outline.h, color, gui().video().getSurface());
+			update_rect(outline);
+		}
+	}
+	toolbar_dirty_ = false;
+}
+
+void editor_controller::refresh_image_cache()
+{
 	image::flush_cache();
 	refresh_all();
 }
@@ -738,15 +771,19 @@ void editor_controller::refresh_after_action(bool drag_part)
 
 void editor_controller::refresh_all()
 {
-	adjust_sizes(gui(), *size_specs_);
-	//brush_bar_->adjust_size();
-	palette_->draw(true);
-	//brush_bar_->draw(true);
 	gui().rebuild_all();
-	gui().invalidate_all();
+	gui().redraw_everything();
 	gui().recalculate_minimap();
 	get_map_context().set_needs_terrain_rebuild(false);
 	get_map_context().clear_changed_locations();
+}
+
+void editor_controller::display_redraw_callback(display&)
+{
+	adjust_sizes(gui(), *size_specs_);
+	palette_->adjust_size();
+	palette_->draw(true);
+	gui().invalidate_all();
 }
 
 void editor_controller::undo()

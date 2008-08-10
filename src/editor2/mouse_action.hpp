@@ -34,6 +34,7 @@ class mouse_action
 {
 public:
 	mouse_action()
+	: toolbar_button_(NULL)
 	{
 	}
 
@@ -55,9 +56,15 @@ public:
 	 * The end of dragging.
 	 */
 	virtual editor_action* drag_end(editor_display& disp, int x, int y);
+	
+	void set_toolbar_button(const theme::menu* value) { toolbar_button_ = value; }
+	const theme::menu* toolbar_button() const { return toolbar_button_; }
 
 protected:
 	gamemap::location previous_move_hex_;
+	
+private:
+	const theme::menu* toolbar_button_;
 };
 
 class brush_drag_mouse_action : public mouse_action

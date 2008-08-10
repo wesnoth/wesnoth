@@ -19,7 +19,7 @@
 #include <cassert>
 
 namespace editor2 {
-	
+
 editor_display::editor_display(CVideo& video, const editor_map& map,
 		const config& theme_cfg, const config& cfg,
 		const config& level) :
@@ -57,6 +57,9 @@ void editor_display::rebuild_terrain(const gamemap::location &loc) {
         builder_.rebuild_terrain(loc);
 }
 
+void editor_display::redraw_everything() {
+	
+}
 
 void editor_display::pre_draw()
 {

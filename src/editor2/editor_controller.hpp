@@ -114,11 +114,15 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
 		
+		void redraw_toolbar();
+		
 		void refresh_image_cache();
 		
 		void refresh_after_action(bool drag_part = false);
 		
 		void refresh_all();
+		
+		void display_redraw_callback(display&);
 		
 		/**
 		 * Un-does an action, and puts it in the redo stack for a possible redo
@@ -151,8 +155,11 @@ class editor_controller : public controller_base,
 		
 		std::vector<brush> brushes_;
 		brush* brush_;
-		std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_actions_;
+		typedef std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_action_map;
+		mouse_action_map mouse_actions_;
 		mouse_action* mouse_action_;
+		
+		bool toolbar_dirty_;
 		
 		t_translation::t_terrain foreground_terrain_;
 		t_translation::t_terrain background_terrain_;		
