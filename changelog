@@ -42,6 +42,7 @@ Version 1.5.2+svn:
    * Downloaded add-ons' meta information is stored in <add-on dir>/_info.cfg
      rather than <add-on dir>/info.cfg now; both the in-game client and the
      wesnoth_addon_manager Python script have been updated for this.
+   * Fixed FULL_HEAL WML macro not working properly.
    * Fixed segmentation fault when wml modified and killed attacker and
      defender in a battle
    * Add some gcc-4.3.0 compilation fixes (patch #1083)
