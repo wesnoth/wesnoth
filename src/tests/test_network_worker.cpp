@@ -20,6 +20,7 @@
 #include <cstdlib>
 
 #include "utils/auto_parameterized.hpp"
+#include "utils/predicate.hpp"
 
 #include "network.hpp"
 #include "network_worker.hpp"
@@ -182,13 +183,10 @@ std::ostream& operator<<(std::ostream& s, const sendfile_param& p)
 
 sendfile_param sendfile_sizes[] = {sendfile_param(1*1024,true),
    								   sendfile_param(500*1024,true),
-								   sendfile_param(10*1024*1024,true),
-//								   sendfile_param(50*1024*1024,true),
+								   sendfile_param(30*1024*1024,true),
 								   sendfile_param(1*1024,false),
    								   sendfile_param(500*1024,false),
-								   sendfile_param(10*1024*1024,false)//,
-//								   sendfile_param(50*1024*1024,false)
-};
+								   sendfile_param(30*1024*1024,false)};
 
 std::string create_random_sendfile(size_t size)
 {
@@ -228,29 +226,44 @@ class auto_resetter {
 	}
 };
 
-WESNOTH_PARAMETERIZED_TEST_CASE( test_system_sendfile, sendfile_param, sendfile_sizes, size )
+WESNOTH_PARAMETERIZED_TEST_CASE( test_multi_sendfile, sendfile_param, sendfile_sizes, size )
 {
 	auto_resetter<std::string> path("", game_config::path);
 	network::set_raw_data_only();
 	std::string file = create_random_sendfile(size.size_);
 	network_worker_pool::set_use_system_sendfile(size.system_);
 
-	network::connection client_client, server_client;
+	network::connection cl_client1, se_client1;
+	network::connection cl_client2, se_client2;
+	network::connection cl_client3, se_client3;
 	
-	BOOST_CHECK_MESSAGE((client_client = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");
+	BOOST_CHECK_MESSAGE((cl_client1 = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");
+	BOOST_CHECK_MESSAGE((se_client1 = network::accept_connection()) > 0, "Coulnd't accept new connection");
+	BOOST_CHECK_MESSAGE((cl_client2 = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");
+	BOOST_CHECK_MESSAGE((se_client2 = network::accept_connection()) > 0, "Coulnd't accept new connection");
+	BOOST_CHECK_MESSAGE((cl_client3 = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");
+	BOOST_CHECK_MESSAGE((se_client3 = network::accept_connection()) > 0, "Coulnd't accept new connection");
 
-	BOOST_CHECK_MESSAGE((server_client = network::accept_connection()) > 0, "Coulnd't accept new connection");
-
-	network::send_file(file, client_client);
+	network::send_file(file, cl_client1);
+	network::send_file(file, cl_client2);
+	network::send_file(file, cl_client3);
 
 	std::vector<char> data;
 
-	BOOST_CHECK_EQUAL(server_client, receive(data,500));
+	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
+	BOOST_CHECK_EQUAL(data.size(), file_size(file));
+	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
+	BOOST_CHECK_EQUAL(data.size(), file_size(file));
+	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
 
 	BOOST_CHECK_EQUAL(data.size(), file_size(file));
 
-	network::disconnect(client_client);
+	network::disconnect(cl_client1);
+	network::disconnect(cl_client2);
+	network::disconnect(cl_client3);
 
+	BOOST_CHECK_THROW(receive(data),network::error);
+	BOOST_CHECK_THROW(receive(data),network::error);
 	BOOST_CHECK_THROW(receive(data),network::error);
 
 	delete_random_sendfile(file);

@@ -23,6 +23,7 @@
 
 #include "global.hpp"
 
+#include "scoped_resource.hpp"
 #include "log.hpp"
 #include "network_worker.hpp"
 #include "network.hpp"
@@ -420,6 +421,28 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 	}
 }
 
+struct cork_setter {
+	cork_setter(int socket) : cork_(1), socket_(socket)
+	{
+		setsockopt(socket_, IPPROTO_TCP, TCP_CORK, &cork_, sizeof(cork_));;
+	}
+	~cork_setter()
+	{
+		cork_ = 0;
+		setsockopt(socket_, IPPROTO_TCP, TCP_CORK, &cork_, sizeof(cork_));
+	}
+	private:
+	int cork_;
+	int socket_;
+};
+#ifdef USE_SENDFILE
+#include <unistd.h>
+struct close_fd {
+	    void operator()(int fd) const { close(fd); }
+};
+typedef util::scoped_resource<int, close_fd> scoped_fd;
+#endif
+
 static SOCKET_STATE send_file(buffer* buf)
 {
 	size_t upto = 0;
@@ -433,11 +456,10 @@ static SOCKET_STATE send_file(buffer* buf)
 		buffer.reserve(4);
 		SDLNet_Write32(filesize,&buffer[0]);
 		int socket = reinterpret_cast<_TCPsocket*>(buf->sock)->channel;
-		int in_file = open(buf->config_error.c_str(),O_NOATIME | O_RDONLY);
-		int cock = 1;
+		const scoped_fd in_file(open(buf->config_error.c_str(),O_NOATIME | O_RDONLY));
+		cork_setter set_socket_cork(socket);
 		int poll_res;
 		struct pollfd fd = {socket, POLLOUT, 0 };
-		setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));;
 		do {
 			poll_res = poll(&fd, 1, 600000);
 		} while(poll_res == -1 && errno == EINTR);
@@ -451,9 +473,6 @@ static SOCKET_STATE send_file(buffer* buf)
 
 		if (result != SOCKET_READY)
 		{
-			close(in_file);
-			cock = 0;
-			setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));
 			return result;
 		}
 		result = SOCKET_READY;
@@ -492,9 +511,6 @@ static SOCKET_STATE send_file(buffer* buf)
 			}
 		}
 
-		close(in_file);
-		cock = 0;
-		setsockopt(socket, IPPROTO_TCP, TCP_CORK, &cock, sizeof(cock));
 		return result;
 	}
 #endif
@@ -507,11 +523,13 @@ static SOCKET_STATE send_file(buffer* buf)
 	scoped_istream file_stream = istream_file(buf->config_error);
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);
 
+	if (!file_stream->good())
+		ERR_NW << "send_file: Couldn't open file " << buf->config_error << "\n";
 	if (result != SOCKET_READY)
 	{
 		return result;
 	}
-	while (true)
+	while (file_stream->good())
 	{
 		// read data
 		file_stream->read(&buf->raw_buffer[0], buf->raw_buffer.size());
@@ -531,6 +549,9 @@ static SOCKET_STATE send_file(buffer* buf)
 		}
 
 	}
+	if (upto != filesize 
+			&& !file_stream->good())
+		ERR_NW << "send_file failed because stream not good from file " << buf->config_error << " upto: " << upto << " size: " << filesize << "\n";
 	return result;
 }
 

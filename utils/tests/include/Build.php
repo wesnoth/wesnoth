@@ -24,7 +24,7 @@ class Build {
 		$this->previous_id = -1;
 		$this->result = null;
 		$this->errors = array();
-		if ($revision > 0)
+		if ($revision >= 0)
 			$this->fetch("WHERE svn_version=?", array($revision));
 	}
 
@@ -113,7 +113,8 @@ class Build {
 		{
 			return false;
 		}
-		if (preg_match_all('/^.*(error:|warning:|undefined reference|ld returned \d exit status).*$/mi',$compiler_log, $m,PREG_SET_ORDER))
+		$compiler_log = preg_replace('/^(.*\/)?([^\/]+:[0-9]+:.*)$/m','$2',$compiler_log);
+		if (preg_match_all('/^.*(error:|warning:|note:|undefined reference|ld returned \d exit status).*$/mi',$compiler_log, $m,PREG_SET_ORDER))
 		{
 
 			foreach($m as $match)
