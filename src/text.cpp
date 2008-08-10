@@ -133,7 +133,7 @@ ttext& ttext::set_foreground_colour(const Uint32 colour)
 ttext& ttext::set_maximum_width(const int width)
 {
 	if(width != maximum_width_) {
-		pango_layout_set_width(layout_, width);
+		pango_layout_set_width(layout_, width == -1 ? -1 : width * PANGO_SCALE);
 		maximum_width_ = width;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -150,7 +150,7 @@ ttext& ttext::set_maximum_height(const int height)
  * released.
  */
 #if defined(PANGO_VERSION_CHECK) && PANGO_VERSION_CHECK(1,20,0)
-		pango_layout_set_height(layout_, height);
+		pango_layout_set_height(layout_, height == -1 ? -1 : height * PANGO_SCALE);
 #endif
 		maximum_height_ = height;
 		calculation_dirty_ = true;
