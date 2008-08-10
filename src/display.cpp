@@ -119,7 +119,8 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	fps_handle_(0),
 	idle_anim_(preferences::idle_anim()),
 	idle_anim_rate_(1.0),
-	map_screenshot_surf_(NULL)
+	map_screenshot_surf_(NULL),
+	redraw_observers_()
 {
 	if(non_interactive()
 		&& (get_video_surface() != NULL
@@ -1788,6 +1789,20 @@ void display::redraw_everything()
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	INFO_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
+	
+	foreach (boost::function<void(display&)> f, redraw_observers_) {
+		f(*this);
+	}	
+}
+
+void display::add_redraw_observer(boost::function<void(display&)> f)
+{
+	redraw_observers_.push_back(f);
+}
+
+void display::clear_redraw_observers()
+{
+	redraw_observers_.clear();
 }
 
 void display::draw(bool update,bool force) {

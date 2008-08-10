@@ -57,6 +57,8 @@ class unit_map;
 #include <set>
 #include <string>
 
+#include <boost/function.hpp>
+
 
 class display
 {
@@ -224,8 +226,14 @@ public:
 	/** Save a (map-)screenshot and return the estimated file size */
 	int screenshot(std::string filename, bool map_screenshot = false);
 
-	/** Invalidates entire screen, including all tiles and sidebar. */
+	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
 	void redraw_everything();
+	
+	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
+	void add_redraw_observer(boost::function<void(display&)> f);
+	
+	/** Clear the redraw observers */
+	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
 	gui::button* find_button(const std::string& id);
@@ -761,6 +769,8 @@ private:
 	double idle_anim_rate_;
 
 	surface map_screenshot_surf_;
+	
+	std::vector<boost::function<void(display&)> > redraw_observers_;
 };
 
 #endif
