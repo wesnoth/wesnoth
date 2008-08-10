@@ -51,11 +51,28 @@ static void truncate_message(const simple_wml::string_span& str, simple_wml::nod
 
 int game::id_num = 1;
 
-game::game(player_map& players, const network::connection host, const std::string name)
-	: player_info_(&players), id_(id_num++), name_(name), owner_(host),
-	sides_(gamemap::MAX_PLAYERS), sides_taken_(gamemap::MAX_PLAYERS),
-	side_controllers_(gamemap::MAX_PLAYERS), nsides_(0), started_(false),
-	description_(NULL), end_turn_(0), all_observers_muted_(false)
+game::game(player_map& players, const network::connection host, 
+		const std::string name) :
+	player_info_(&players), 
+	id_(id_num++), 
+	name_(name),
+	password_(),
+	owner_(host), 
+	players_(),
+	observers_(),
+	muted_observers_(),
+	sides_(gamemap::MAX_PLAYERS), 
+	sides_taken_(gamemap::MAX_PLAYERS), 
+	side_controllers_(gamemap::MAX_PLAYERS), 
+	nsides_(0), 
+	started_(false), 
+	level_(),
+	history_(),
+	description_(NULL), 
+	end_turn_(0), 
+	all_observers_muted_(false),
+	bans_(),
+	termination_()
 {
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) return;
@@ -68,7 +85,6 @@ game::game(player_map& players, const network::connection host, const std::strin
 	}
 	// Mark the host as unavailable in the lobby.
 	pl->second.mark_available(id_, name_);
-
 }
 
 game::~game()
