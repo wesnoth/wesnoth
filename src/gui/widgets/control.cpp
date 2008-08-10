@@ -109,7 +109,7 @@ tpoint tcontrol::get_minimum_size() const
 		return min_size;
 	}
 
-	return get_best_text_size(min_size, multiline_label_);
+	return get_best_text_size(min_size);
 }
 
 tpoint tcontrol::get_best_size() const
@@ -122,7 +122,7 @@ tpoint tcontrol::get_best_size() const
 		return default_size;
 	}
 
-	return get_best_text_size(default_size, multiline_label_);
+	return get_best_text_size(default_size);
 }
 
 tpoint tcontrol::get_maximum_size() const
