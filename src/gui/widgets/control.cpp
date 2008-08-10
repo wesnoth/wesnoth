@@ -243,13 +243,17 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
 
 	// Try with the minimum wanted size.
 	text.set_maximum_width(size.x);
-	text.set_maximum_height(size.y);
+	if(multiline_label_) {
+		text.set_maximum_height(size.y);
+	}
 
 	// If doesn't fit try the maximum.
 	if(text.is_truncated()) {
 		const tpoint maximum_size(config_->max_width, config_->max_height);
 		text.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
-		text.set_maximum_height(maximum_size.y ? maximum_size.y - border.y : -1);
+		if(multiline_label_) {
+			text.set_maximum_height(maximum_size.y ? maximum_size.y - border.y : -1);
+		}
 	}
 
 	size = text.get_size() + border;
