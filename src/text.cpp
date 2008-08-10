@@ -96,6 +96,11 @@ bool ttext::is_truncated()
 ttext& ttext::set_text(const t_string& text, const bool markedup) 
 {
 	if(markedup != markedup_text_ || text != text_) {
+		if(markedup) {
+			pango_layout_set_markup(layout_, text.c_str(), text.size());
+		} else {
+			pango_layout_set_text(layout_, text.c_str(), text.size());
+		}
 		text_ = text; 
 		markedup_text_ = markedup;
 		calculation_dirty_ = true;
@@ -209,12 +214,6 @@ void ttext::recalculate(const bool force)
 		pango_layout_set_ellipsize(layout_, 
 			maximum_width_ == -1 && maximum_height_ == -1 
 			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END);
-
-		if(markedup_text_) {
-			pango_layout_set_markup(layout_, text_.c_str(), text_.size());
-		} else {
-			pango_layout_set_text(layout_, text_.c_str(), text_.size());
-		}
 
 		pango_layout_get_pixel_extents(layout_, NULL, &rect_);
 	}
