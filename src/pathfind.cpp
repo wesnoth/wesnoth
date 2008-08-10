@@ -202,13 +202,11 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	}
 }
 
-paths::paths(gamemap const &map,
-             unit_map const &units,
-             gamemap::location const &loc,
-             std::vector<team> const &teams,
-	     bool force_ignore_zoc,
-             bool allow_teleport, const team &viewing_team,
-		   int additional_turns, bool see_all, bool ignore_units)
+paths::paths(gamemap const &map, unit_map const &units, 
+		gamemap::location const &loc, std::vector<team> const &teams, 
+		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team, 
+		int additional_turns, bool see_all, bool ignore_units) :
+	routes()
 {
 	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
