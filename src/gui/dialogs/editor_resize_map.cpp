@@ -113,6 +113,7 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 		direction_buttons_[i]->set_callback_state_change(
 			dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	}
+	direction_buttons_[0]->set_value(true);
 	window.recalculate_size();
 }
 
