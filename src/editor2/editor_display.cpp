@@ -54,11 +54,7 @@ void editor_display::remove_brush_loc(const gamemap::location& hex)
 }
 
 void editor_display::rebuild_terrain(const gamemap::location &loc) {
-        builder_.rebuild_terrain(loc);
-}
-
-void editor_display::redraw_everything() {
-	
+    builder_.rebuild_terrain(loc);
 }
 
 void editor_display::pre_draw()
