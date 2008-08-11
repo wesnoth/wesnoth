@@ -302,26 +302,46 @@ namespace {
  					itor != camps.end(); ++itor)
  			{
  				LOG_CS << "Encoding " << (**itor)["name"] << "\n";
-				std::string data = read_file((**itor)["filename"]);
+				std::string data;
+				data.reserve(file_size((**itor)["filename"])*2);
+				{
+					scoped_istream in_file = istream_file((**itor)["filename"]);
+					boost::iostreams::filtering_stream<boost::iostreams::input> filter;
+					filter.push(boost::iostreams::gzip_decompressor());
+					filter.push(*in_file);
+
+					std::copy(std::istream_iterator<char>(filter),
+							  std::istream_iterator<char>(),
+							  std::back_inserter(data));
+				}
 				std::string copy;
-				copy.reserve(data.size());
+				copy.resize(data.size());
 				int n = 0;
-				for(std::string::iterator ch = data.begin();
+				int already_encoded = 0;
+				for(std::string::const_iterator ch = data.begin();
 						ch != data.end(); ++ch)
 				{
+					if (*ch == escape_char && *(ch+1) == '\x0E')
+						already_encoded++;
+
 					if (*ch == '\x0D')
 					{
+						copy.resize(copy.size()+1);
 						copy[n++] = escape_char;
 						copy[n++] = *ch + 1;
 					}else {
 						copy[n++] = *ch;
 					}
 				}
-				scoped_ostream out_file = ostream_file((**itor)["filename"]);
-				boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
-				filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
-				filter_.push(*out_file);
-				filter_ << copy;
+				LOG_CS << "Encoded " << (copy.size() - data.size()) << " CRs! Found already encoded CRs "<< already_encoded <<"!\n";
+				{
+					scoped_ostream out_file = ostream_file((**itor)["filename"]);
+					boost::iostreams::filtering_stream<boost::iostreams::output> filter;
+					filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
+					filter.push(*out_file);
+					std::copy(copy.begin(),copy.end(), std::ostream_iterator<char>(filter));					
+				}
+
  			}
  
 			cfg_["cr_encoded"] = "yes";
