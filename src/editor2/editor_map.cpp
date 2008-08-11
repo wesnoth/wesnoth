@@ -230,6 +230,8 @@ void editor_map::flip_x()
 			}
 		}
 	}
+	h_++;
+	total_height_++;
 	sanity_check();
 }
 
