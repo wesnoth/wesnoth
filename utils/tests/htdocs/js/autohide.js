@@ -79,20 +79,25 @@ Autohide.prototype.make_hide_text = function()
 	split_text = new Array();
 	for(var index in this.text)
 	{
-		split_text.push(document.createTextNode(this.text[index]));
-		split_text.push(document.createElement('BR'));
+		if (this.text[index].length)
+		{
+			split_text.push(document.createTextNode(this.text[index]));
+			split_text.push(document.createElement('BR'));
+		}
 	}
+	if (split_text.length)
+		split_text.pop();
 	// Create short text element
 	var new_elem = document.createElement('DIV');
 	new_elem.id='autohide_' + this.id;
 	new_elem.className="autohide";
 
 	// create full text element
-	var elem_over = new_elem.cloneNode(true);
+	var elem_over = new_elem.cloneNode(false);
 	elem_over.id='autohide_over_' + this.id;
 	elem_over.onmouseout=autohide_mouseout;
 	elem_over.style.visibility = 'hidden';
-	for(var i = 0; i < split_text.length; ++i)
+	for(var i in split_text)
 	{
 		elem_over.appendChild(split_text[i]);
 	}

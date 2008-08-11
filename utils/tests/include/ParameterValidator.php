@@ -12,21 +12,26 @@
    See the COPYING file for more details.
 */
 
+// posible class to set default values
+//class ParameterLimit {
+//}
 
-function smarty_modifier_autohide($text, $min_length_to_hide, $split_from_space, $take_end = false)
-{
-	if (mb_strlen($text) > $min_length_to_hide)
+class ParameterValidator {
+	private $user_params;
+	function __construct(array $user_params)
 	{
-		$split_from_space = $split_from_space?"true":"false";
-		$take_end = $take_end?"true":"false";
-		return "<script type='text/javascript'>
-			/*<![CDATA[*/
-			autohide_store.push(new Autohide('$text', $min_length_to_hide, $split_from_space, $take_end));
-			/*]]>*/
-			</script>";
-	} else {
-		return $text;
+		$this->user_params = $user_params;
+	}
+
+	function getInt($name, $default)
+	{
+		if (isset($user_params[$name])
+			&& is_numeric($user_params[$name]))
+		{
+			return (int)$user_params[$name];
+		} else {
+			return $default;
+		}
 	}
 }
-
 ?>

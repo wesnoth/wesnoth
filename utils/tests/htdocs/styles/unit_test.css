@@ -30,13 +30,21 @@ td.time {
 	color: #FF0000;
 }
 
+div.autohide {
+	border: 1px solid #225599;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+}
 
 div.autohide_over {
 	position: absolute;
 	background:#FFFBF0 none repeat scroll 0 0;
-	border: 1px solid #AAAAAA;
+	border: 1px solid #225599;
 	padding: 0.5em;
-	max-width: 60em;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+/*	max-width: 60em;*/
+	text-align: left;
 }
 
 table.test_error {

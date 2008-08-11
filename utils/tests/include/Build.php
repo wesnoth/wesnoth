@@ -1,4 +1,30 @@
 <?php
+/*
+   Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
+   or at your option any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+/*
+   Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2
+   or at your option any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 
 class Build {
 	private $db;
@@ -23,7 +49,7 @@ class Build {
 		$this->binary_name = false;
 		$this->previous_id = -1;
 		$this->result = null;
-		$this->errors = array();
+		$this->errors = null;
 		if ($revision >= 0)
 			$this->fetch("WHERE svn_version=?", array($revision));
 	}
@@ -39,9 +65,41 @@ class Build {
 		}
 	}
 
+	private static function multiFetch($where, $params = array())
+	{
+		global $db;
+		$res = array();
+		$id_list = array();
+		$result = $db->Execute('SELECT * FROM builds ' . $where ,$params);
+		if ($result === false)
+			return $res;
+		while (!$result->EOF())
+		{			
+			$build = new Build();
+			$build->init($result->fields);
+			$id_list[] = $build->getId();
+			$res[] = $build;
+			$result->moveNext();
+		} 
+		return $res;
+	}
+
 	public function fetchLast()
 	{
 		$this->fetch('ORDER BY id DESC');
+	}
+
+	private static function fetchVisibleBuilds($page, $builds_per_page)
+	{
+		return self::multiFetch('ORDER BY id DESC LIMIT ?,?', 
+			array(($page-1)*$builds_per_page, $builds_per_page));
+	}
+
+	private static function getNumberOfVisiblePages($builds_per_page)
+	{
+		global $db;
+		$result = $db->Execute('SELECT COUNT(*) as number FROM builds');
+		return ceil($result->fields['number']/$builds_per_page);
 	}
 
 	public function init($values)
@@ -52,7 +110,7 @@ class Build {
 		}
 		$this->time = $this->db->UnixTimeStamp($this->time);
 		$this->result = null;
-		$this->errors = array();
+		$this->errors = null;
 	}
 
 	public function reset()
@@ -113,7 +171,8 @@ class Build {
 		{
 			return false;
 		}
-		$compiler_log = preg_replace('/^(.*\/)?([^\/]+:[0-9]+:.*)$/m','$2',$compiler_log);
+		// build/debug/editor2/
+		$convert_log = FilenameConverter::stripBuildDirs($convert_log);
 		if (preg_match_all('/^.*(error:|warning:|note:|undefined reference|ld returned \d exit status).*$/mi',$compiler_log, $m,PREG_SET_ORDER))
 		{
 
@@ -177,12 +236,11 @@ class Build {
 		}
 	}
 
-	private function checkChilds()
+	private function checkResult()
 	{
 		if (is_null($this->result))
 		{
 			$this->result = new TestResult($this->getLastWorkingId());
-			$this->errors = TestError::getErrorsForBuild($this->getLastWorkingId());
 		}
 	}
 
@@ -196,9 +254,29 @@ class Build {
 		return $ret;
 	}
 
-	public function getStatistics()
+	public static function getVisibleBuilds(ParameterValidator $user_params)
 	{
-		$this->checkChilds();
+		$page = $user_params->getInt('page', 1);
+		$builds_per_page = 10; // TODO: get from config
+		if ($page < 0)
+			$page = 1;
+		$ret = array();
+		$ret['builds'] = array();
+		$builds = self::fetchVisibleBuilds($page, $builds_per_page);
+		foreach($builds as $build)
+		{
+			$ret['builds'][] = $build->getBuildStats();
+		}
+
+		$ret['page'] = $page;
+		$ret['number_of_pages']	= self::getNumberOfVisiblePages($builds_per_page);
+
+		return $ret;
+	}
+
+	private function getBuildStats()
+	{
+		$this->checkResult();
 
 		$build_result = '';
 		if ($this->status == self::S_GOOD)
@@ -210,15 +288,25 @@ class Build {
 		}
 		$build_result = str_replace("\n"," \\n",$build_result);
 
-		return 	array('build' => array('result' 		=> $build_result,
-									   'time' 			=> $this->time,
-									   'style' 			=> ($this->status == self::S_GOOD?"passed":"failed"),
-									   'result_style'	=> $this->result->getResult(),
-									   'error_msg'	=> $this->error_msg,
-									   'svn_rev'	=> $this->svn_version,
-									   'result_passed'	=> $this->result->getAssertionsPassed(),
-									   'result_failed'	=> $this->result->getAssertionsFailed(),
-				 					   'errors'			=> $this->getErrorStatistics()));
+	
+		return array('result' 			=> $build_result,
+					 'time' 			=> $this->time,
+					 'style' 			=> ($this->status == self::S_GOOD?"passed":"failed"),
+					 'id'				=> $this->id,
+					 'result_style'		=> $this->result->getResult(),
+					 'error_msg'		=> $this->error_msg,
+					 'svn_rev'			=> $this->svn_version,
+					 'result_passed'	=> $this->result->getAssertionsPassed(),
+					 'result_failed'	=> $this->result->getAssertionsFailed());
+	}
+
+	public function getStatistics()
+	{
+		if (is_null($this->errors))
+			$this->errors = TestError::getErrorsForBuild($this->getLastWorkingId());
+
+		return 	array('builds' => array($this->getBuildStats()),
+					  'errors'			=> $this->getErrorStatistics());
 	}
 }
 ?>
