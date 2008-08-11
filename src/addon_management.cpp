@@ -234,15 +234,15 @@ static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignor
 
 	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
 	std::string ign_file;
-	LOG_CFG << "inserting default ignore patterns...\n";
-	append_default_ignore_patterns(patterns);
 	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
 	if (file_exists(interior)) {
 		ign_file = interior;
 	} else if (file_exists(exterior)) {
 		ign_file = exterior;
 	} else {
-		LOG_CFG << "no .ign file found for '" << addon_name << "'\n";
+		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
+		        << "inserting default ignore patterns...\n";
+		append_default_ignore_patterns(patterns);
 		return patterns; // just default patterns
 	}
 	LOG_CFG << "found .ign file: " << ign_file << '\n';
