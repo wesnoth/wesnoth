@@ -150,7 +150,7 @@ editor_action* mouse_action_starting_position::click(editor_display& disp, int x
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
 	std::vector<std::string> players;
-	players.push_back("None");
+	players.push_back(_"(Player)^None");
 	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
 		std::stringstream str;
 		str << _("Player") << " " << i;
