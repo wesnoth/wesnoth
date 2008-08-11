@@ -26,7 +26,7 @@ td.time {
 	color: #00FF00;
 }
 
-.build .failed {
+.build .failed, .aborted {
 	color: #FF0000;
 }
 
@@ -49,7 +49,15 @@ table.test_error {
 }
 
 .test_error .Warning {
-	color: #FF00FF;
+	color: #FF4000;
+}
+
+.test_error .Exception {
+	color: #A00000;
+}
+
+.test_error .Message {
+	color: #00FF00;
 }
 
 .test_error td {

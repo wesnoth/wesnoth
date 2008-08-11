@@ -208,8 +208,9 @@ namespace game_events
 	{ \
 		wml_func_register_ ## pname () \
 		{ \
+			const std::string name(# pname); \
 			game_events::command_handlers::get().add_handler( \
-			# pname , &wml_func_ ## pname ); \
+			name , &wml_func_ ## pname ); \
 		}\
 	} wml_func_register_ ## pname ;  \
 	void wml_func_ ## pname \
@@ -237,7 +238,7 @@ namespace game_events
 		//	runtime_handlers runtime_;
 		//	bool in_scenario_;
 
-		static command_handlers* manager_;
+		static command_handlers manager_;
 
 		// It might be good optimization to use hash instead
 		// of string as key for map

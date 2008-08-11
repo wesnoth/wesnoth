@@ -347,7 +347,6 @@ class DBCreator {
 
 	public function checkDB()
 	{
-		$this->db->StartTrans();
 		$this->format->checkDB($this->db);
 
 		$build = new Build();
@@ -355,7 +354,6 @@ class DBCreator {
 
 		$config = new Config();
 		$config->insertDefaults();
-		$this->db->CompleteTrans();
 	}
 }
 

@@ -232,12 +232,7 @@ void update_whole_screen()
 }
 CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
 {
-	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
-
-	if(res < 0) {
-		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
-		throw CVideo::error();
-	}
+	initSDL();
 	switch(type)
 	{
 		case NO_FAKE:
@@ -254,15 +249,21 @@ CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(fa
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 		 : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
 {
-	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
-	if(res < 0) {
-		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
-		throw CVideo::error();
-	}
+	initSDL();
 
 	const int mode_res = setMode( x, y, bits_per_pixel, flags );
 	if (mode_res == 0) {
 		ERR_DP << "Could not set Video Mode\n";
+		throw CVideo::error();
+	}
+}
+
+void CVideo::initSDL()
+{
+	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
+
+	if(res < 0) {
+		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << "\n";
 		throw CVideo::error();
 	}
 }

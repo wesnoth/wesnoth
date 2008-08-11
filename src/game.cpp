@@ -2297,12 +2297,10 @@ static int play_game(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-#ifdef OS2 /* required for SDL_GetTicks to work on OS/2 */
-        if(SDL_Init(SDL_INIT_TIMER) < 0) {
+	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);
 	}
-#endif
 
 	try {
 		//trigger any one-time static initializations

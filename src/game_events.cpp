@@ -166,15 +166,11 @@ static void show_wml_errors()
 namespace game_events {
 
 
-	command_handlers* command_handlers::manager_ = 0;
+	command_handlers command_handlers::manager_;
 
 	command_handlers& command_handlers::get()
 	{
-		if (!manager_)
-		{
-			manager_ = new command_handlers();
-		}
-		return *manager_;
+		return manager_;
 	}
 
 	command_handlers::command_handlers() :
@@ -210,7 +206,7 @@ namespace game_events {
 			return true;
 		}
 		// Return true if we have /^filter.*/ tag
-		return cmd.compare(0, strlen("filter"),"filter");
+		return cmd.compare(0, strlen("filter"),"filter") == 0;
 	}
 
 	static bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc);

@@ -26,18 +26,17 @@ class TestError {
 			$this->file = (string)$data->attributes()->file;
 			$this->line = (string)$data->attributes()->line;
 			$this->error_msg = (string)$data[0];
-			$result = $this->db->Execute('SELECT id, before_id, last_id FROM test_errors
-					WHERE error_type=? 
-					AND file=?
-					AND line=?
-					AND error_msg=?
-					AND last_id=?
+			$result = $this->db->Execute('SELECT t.id as id, before_id, last_id FROM test_errors t, builds b
+					WHERE t.error_type=? 
+					AND t.file=?
+					AND t.error_msg=?
+					AND t.last_id=b.id
+					AND b.time > ?
 					LIMIT 1',
 					array($this->error_type,
 						  $this->file,
-						  $this->line,
 						  $this->error_msg,
-						  $build->getPreviousId()
+						  $this->db->DBTimeStamp(time() - 24*60*60)
 						));
 			if (!$result->EOF())
 			{
@@ -92,7 +91,7 @@ class TestError {
 			$this->last_id = $build->getId();
 			$this->insert();
 		} else {
-			$this->db->Execute('UPDATE test_errors SET last_id=? WHERE id=?', array($build->getid(), $this->id));
+			$this->db->Execute('UPDATE test_errors SET last_id=?, line=? WHERE id=?', array($build->getid(), $this->line, $this->id));
 		}
 	}
 

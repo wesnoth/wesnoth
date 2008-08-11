@@ -45,6 +45,7 @@ class CVideo {
 	CVideo(int x, int y, int bits_per_pixel, int flags);
 	~CVideo();
 
+
 	int modePossible( int x, int y, int bits_per_pixel, int flags );
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
@@ -103,6 +104,8 @@ class CVideo {
 	bool update_locked() const;
 
 private:
+	
+	void initSDL();
 
 	bool mode_changed_;
 

@@ -32,6 +32,8 @@
 #include <map>
 #include <algorithm>	// Required for gcc 4.3.0
 
+#include <boost/iostreams/filter/gzip.hpp>
+
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
 #if !(defined(_WIN32))
@@ -289,6 +291,41 @@ namespace {
  			
  			cfg_["converted_to_gzipped_data"] = "yes";
  		}
+		if (cfg_["cr_encoded"] != "yes")
+		{
+			// Convert all addons to gzip
+ 			config::child_list camps = campaigns().get_children("campaign");
+ 			LOG_CS << "Encoding CR in all stored campaigns. Number of addons: " << camps.size() <<"\n";
+ 
+			const char escape_char = '\x01'; //!< Binary escape char.
+ 			for (config::child_list::iterator itor = camps.begin();
+ 					itor != camps.end(); ++itor)
+ 			{
+ 				LOG_CS << "Encoding " << (**itor)["name"] << "\n";
+				std::string data = read_file((**itor)["filename"]);
+				std::string copy;
+				copy.reserve(data.size());
+				int n = 0;
+				for(std::string::iterator ch = data.begin();
+						ch != data.end(); ++ch)
+				{
+					if (*ch == '\x0D')
+					{
+						copy[n++] = escape_char;
+						copy[n++] = *ch + 1;
+					}else {
+						copy[n++] = *ch;
+					}
+				}
+				scoped_ostream out_file = ostream_file((**itor)["filename"]);
+				boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
+				filter_.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
+				filter_.push(*out_file);
+				filter_ << copy;
+ 			}
+ 
+			cfg_["cr_encoded"] = "yes";
+		}
  	}
 
 	void campaign_server::run()

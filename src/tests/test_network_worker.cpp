@@ -138,6 +138,7 @@ connect_aborter::ACTION connect_aborter::process()
 
 BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 {
+
 	delete wes_server;
 	wes_server = 0;
 	delete wes_manager;
@@ -182,11 +183,9 @@ std::ostream& operator<<(std::ostream& s, const sendfile_param& p)
 }
 
 sendfile_param sendfile_sizes[] = {sendfile_param(1*1024,true),
-   								   sendfile_param(500*1024,true),
-								   sendfile_param(30*1024*1024,true),
+								   sendfile_param(5*1024*1024,true),
 								   sendfile_param(1*1024,false),
-   								   sendfile_param(500*1024,false),
-								   sendfile_param(30*1024*1024,false)};
+								   sendfile_param(5*1024*1024,false)};
 
 std::string create_random_sendfile(size_t size)
 {

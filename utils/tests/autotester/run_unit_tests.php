@@ -24,7 +24,8 @@ if ($svn->getRevision() === false)
 
 $build = new Build($svn->getRevision());
 
-if (!$build->Exists())
+if (!$build->Exists()
+	|| $build->getStatus() != Build::S_GOOD)
 {
 	// Only run tests if build doesn't exists
 	if ($build->compile($svn->getRevision()))
