@@ -18,6 +18,7 @@
 #include "global.hpp"
 
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
@@ -153,6 +154,16 @@ void gamestatus::add_time_area(const config& cfg)
 	std::vector<gamemap::location> const& locs = parse_location_range(area.xsrc, area.ysrc);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
 	time_of_day::parse_times(cfg, area.times);
+}
+
+void gamestatus::add_time_area(const std::string& id, const std::set<gamemap::location>& locs,
+                               const config& time_cfg)
+{
+	areas_.push_back(area_time_of_day());
+	area_time_of_day& area = areas_.back();
+	area.id = id;
+	area.hexes = locs;
+	time_of_day::parse_times(time_cfg, area.times);
 }
 
 void gamestatus::remove_time_area(const std::string& area_id)

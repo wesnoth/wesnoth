@@ -3032,19 +3032,33 @@ namespace {
 		}
 	}
 
-	// Adding/removing new time_areas dinamically
+	// Adding/removing new time_areas dinamically with
+	// Standard Location Filters.
 	WML_HANDLER_FUNCTION(time_area,/*handler*/,/*event_info*/,cfg)
 	{
 		assert(state_of_game != NULL);
 		assert(status_ptr != NULL);
+		assert(game_map != NULL);
+		assert(units != NULL);
+
+		log_scope("time_area");
+
 		const bool remove = utils::string_bool(cfg["remove"],false);
-		if(remove)
-			status_ptr->remove_time_area(cfg["id"]);
-		else
-			status_ptr->add_time_area(cfg.get_parsed_config());
+		const std::string& id = cfg["id"];
+
+		if(remove) {
+			status_ptr->remove_time_area(id);
+		}
+		else {
+			std::set<gamemap::location> locs;
+			terrain_filter filter(cfg, *game_map, *status_ptr, *units);
+			filter.restrict(game_config::max_loop);
+			filter.get_locations(locs);
+			status_ptr->add_time_area(id, locs, cfg.get_parsed_config());
+		}
 	}
 
-		// Adding of new events
+	// Adding of new events
 	WML_HANDLER_FUNCTION(event,/*handler*/,/*event_info*/,cfg)
 	{
         std::string behavior_flag = cfg["delayed_variable_substitution"];

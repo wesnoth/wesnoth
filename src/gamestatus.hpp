@@ -204,9 +204,17 @@ public:
 	//! Adds a new local time area from config, making it follow its own
 	//! time-of-day sequence.
 	//! @param cfg Config object containing x,y range/list of locations,
-	//!            and desired [time]/[illuminated_time] information.
+	//!            and desired [time] information.
 	void add_time_area(const config& cfg);
-	
+
+	//! Adds a new local time area from a set of locations, making those
+	//! follow a different time-of-day sequence.
+	//! @param id          Identifier string to associate this time area with.
+	//! @param locs        Set of locations to be affected.
+	//! @param time_cfg    Config object containing [time] information
+	void add_time_area(const std::string& id, const std::set<gamemap::location>& locs,
+	                   const config& time_cfg);
+
 	//! Removes a time area from config, making it follow the scenario's
 	//! normal time-of-day sequence.
 	//! @param id Identifier of time_area to remove. Supply an empty one
