@@ -34,15 +34,28 @@
 
 
 terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
-	const gamestatus& game_status, const unit_map& units, const bool flat_tod,
-	const size_t max_loop) : cfg_(cfg), map_(map), status_(game_status), units_(units)
+		const gamestatus& game_status, const unit_map& units, 
+		const bool flat_tod, const size_t max_loop) : 
+	cfg_(cfg), 
+	map_(map), 
+	status_(game_status), 
+	units_(units),
+	cache_(),
+	max_loop_(max_loop),
+	flat_(flat_tod)
 {
 	restrict(max_loop);
 	flatten(flat_tod);
 }
 
-terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original)
-	: cfg_(cfg), map_(original.map_), status_(original.status_), units_(original.units_)
+terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
+	cfg_(cfg), 
+	map_(original.map_), 
+	status_(original.status_), 
+	units_(original.units_),
+	cache_(),
+	max_loop_(original.max_loop_),
+	flat_(original.flat_)
 {
 	restrict(original.max_loop_);
 	flatten(original.flat_);
@@ -54,7 +67,10 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 	cfg_(other.cfg_),
 	map_(other.map_),
 	status_(other.status_),
-	units_(other.units_)
+	units_(other.units_),
+	cache_(),
+	max_loop_(other.max_loop_),
+	flat_(other.flat_)
 {
 	restrict(other.max_loop_);
 	flatten(other.flat_);
