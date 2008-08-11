@@ -13,7 +13,11 @@ Version 1.5.2+svn:
      victory_music and/or defeat_music attributes on its code - it can also
      be overriden in a [endlevel] block by providing a music= attribute with
      the desired list (feature request #11203).
- * Python AI
+ * Multiplayer:
+   * Revised maps: Caves of the Basilisk, Fallenstar Lake, Silverhead Crossing,
+     The Freelands, Alirok Marsh, Island of the Horatii, 3p Morituri, Blue Water
+     Province, 4p Hamlets, Lagoon, 4p Morituri, The Wilderlands, Waterloo Sunset
+ * Python AI:
    * Added ai_init.py and ai_launcher.py to make it easier to customize
      AI environment and startup. Both are used by the new embedded python
      implementation.
