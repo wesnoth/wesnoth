@@ -62,6 +62,11 @@ namespace
 
 	class hash_memory_manager {
 	public:
+		hash_memory_manager() :
+			mem_()
+		{
+		}
+
 		const std::string *find(const std::string& str) const {
 			std::set<std::string const*, compare_str_ptr>::const_iterator itor = mem_.lower_bound(&str);
 			if(itor == mem_.end() || **itor != str) {
@@ -443,8 +448,10 @@ namespace variable
 	}
 }
 
-scoped_wml_variable::scoped_wml_variable(const std::string& var_name)
-	: var_name_(var_name), activated_(false)
+scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
+	previous_val_(),
+	var_name_(var_name), 
+	activated_(false)
 {
 	repos->scoped_variables.push_back(this);
 }
@@ -532,8 +539,14 @@ void activate_scope_variable(std::string var_name)
 }
 } // end anonymous namespace
 
-variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type)
-	: vartype(validation_type), is_valid(false), explicit_index(false), index(0), vars(NULL)
+variable_info::variable_info(const std::string& varname, 
+		bool force_valid, TYPE validation_type) :
+	vartype(validation_type), 
+	is_valid(false), 
+	key(),
+	explicit_index(false), 
+	index(0), 
+	vars(NULL)
 {
 	assert(repos != NULL);
 	activate_scope_variable(varname);
