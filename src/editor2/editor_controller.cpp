@@ -350,12 +350,14 @@ void editor_controller::load_map(const std::string& filename)
 		//the user an option of loading that map instead of just failing
 	} catch (gamemap::incorrect_format_exception& e) {
 		std::string message = _("There was an error while loading the map:");
-		message += "\n" + e.msg_;
+		message += "\n";
+		message += e.msg_;
 		gui::message_dialog(gui(), _("Error loading map (format)"), message).show();
 		return;
 	} catch (twml_exception& e) {
 		std::string message = _("There was an error while loading the map:");
-		message += "\n" + e.user_message;
+		message += "\n";
+		message += e.user_message;
 		gui::message_dialog(gui(), _("Error loading map (wml)"), message).show();
 		return;
 	}
