@@ -24,8 +24,12 @@ Version 1.5.2+svn:
    * reversed builtin is now allowed. This allows for random.shuffle to be
      called.
  * Terrains:
+   * Added a new attribute, hidden=<boolean> (default: no), to [terrain],
+     which prevents the map editor from offering the user a particular
+     tile type for drawing.
    * Made user-made content graphic rules be parsed before core ones, so
      custom tiles look the same in-game as they do in the editor.
+   * Set hidden=yes on main terrain archetypes (Gt, Qt, At, Xt).
  * User interface:
    * Fixed a broken translation which gave all females the prefix female^ on
      alignment description when using the "C" locale or any translation that
@@ -38,13 +42,12 @@ Version 1.5.2+svn:
  * WML engine:
    * It is now possible to use [time_area] to add or remove new local ToD
      areas and their schedules during scenario events. Removal requires to
-     associate an id. to [time_area]s, or it won't work.
+     associate an id. to [time_area]s, or it won't work. Uses Standard
+     Location Filter to match locations.
    * Added some convenience macros for units: {TRANSFORM_UNIT}, etc.
  * Miscellaneous and bug fixes:
    * Add-on uploads by default will skip all dot-files (.*), which are hidden
-     files in UNIX filesystems.
-   * Add-on uploads will always preprend the default ignore patterns to the
-     contents of user-provided .ign files.
+     files or directories in UNIX filesystems.
    * Downloaded add-ons' meta information is stored in <add-on dir>/_info.cfg
      rather than <add-on dir>/info.cfg now; both the in-game client and the
      wesnoth_addon_manager Python script have been updated for this.
