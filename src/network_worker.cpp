@@ -421,6 +421,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 	}
 }
 
+#ifdef USE_SENDFILE
 struct cork_setter {
 	cork_setter(int socket) : cork_(1), socket_(socket)
 	{
@@ -435,8 +436,7 @@ struct cork_setter {
 	int cork_;
 	int socket_;
 };
-#ifdef USE_SENDFILE
-#include <unistd.h>
+
 struct close_fd {
 	    void operator()(int fd) const { close(fd); }
 };
