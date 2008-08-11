@@ -37,6 +37,12 @@ namespace editor2 {
 
 struct editor_exception : public std::exception
 {
+	editor_exception(const char* msg)
+	: msg(msg)
+	{
+	}
+	const char* what() const throw() { return msg; }
+	const char* msg;
 };
 
 

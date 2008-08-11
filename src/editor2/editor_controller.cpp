@@ -129,8 +129,13 @@ editor_controller::~editor_controller()
 
 EXIT_STATUS editor_controller::main_loop()
 {
-	while (!do_quit_) {
-		play_slice();
+	try {
+		while (!do_quit_) {
+			play_slice();
+		}
+	} catch (editor_exception& e) {
+		gui::message_dialog(gui(), _("Fatal errror"), e.what()).show();
+		return EXIT_ERROR;
 	}
 	return quit_mode_;
 }

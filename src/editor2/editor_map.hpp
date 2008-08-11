@@ -25,10 +25,18 @@ namespace editor2 {
 
 struct editor_map_operation_exception : public editor_exception
 {
+	editor_map_operation_exception() 
+	: editor_exception("Map operation error. Check debug log for details.")
+	{
+	}
 };
 
 struct editor_map_integrity_error : public editor_exception
 {
+	editor_map_integrity_error() 
+	: editor_exception("Map integrity error. Check debug log for details.")
+	{
+	}
 };
 
 /**
