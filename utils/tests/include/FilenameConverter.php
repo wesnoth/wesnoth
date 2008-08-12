@@ -14,7 +14,7 @@
 
 
 class FilenameConverter {
-	public static function stripBuildDirs(string $text)
+	public static function stripBuildDirs($text)
 	{
 		return preg_replace('/^(build\/[^\/]*\/)?(.*[^\/]+:[0-9]+:.*)$/m','$2',$text);
 	}
