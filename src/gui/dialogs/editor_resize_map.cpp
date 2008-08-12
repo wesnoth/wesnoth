@@ -162,8 +162,8 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		set_direction_icon(i, "none");
 	}
 	
-	int xdiff = map_width_->get_value() - old_width_;
-	int ydiff = map_height_->get_value() - old_height_;
+	int xdiff = map_width_->get_value() - old_width_ ;
+	int ydiff = map_height_->get_value() - old_height_ ;
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
 	ERR_GUI << x << " " << y << " " << xdiff << " " << ydiff << "\n";
@@ -191,6 +191,10 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 			std::swap(nw, se);
 			std::swap(ne, sw);
 		}
+		set_direction_icon(nw, "top-left");
+		set_direction_icon(ne, "top-right");
+		set_direction_icon(sw, "bottom-left");
+		set_direction_icon(se, "bottom-right");
 	}
 }
 
