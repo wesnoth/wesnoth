@@ -27,7 +27,10 @@ public:
 	tslider() :
 		tscrollbar_(),
 		best_slider_length_(0),
-		minimum_value_(0)
+		minimum_value_(0),
+		minimum_value_label_(),
+		maximum_value_label_(),
+		value_labels_()
 	{
 	}
 
@@ -121,9 +124,24 @@ private:
 	/** Inherited from tscrollbar. */
 	void update_canvas();
 
+	/** 
+	 * When the slider shows the minimum value can show a special text.
+	 * If this text is not empty this text is shown else the minimum value.
+	 */
 	t_string minimum_value_label_;
+
+	/** 
+	 * When the slider shows the maximum value can show a special text.
+	 * If this text is not empty this text is shown else the maximum value.
+	 */
 	t_string maximum_value_label_;
 
+	/**
+	 * This allows the slider to show custom texts instead of the values.
+	 * This vector should have the same amount of items as options for the
+	 * sliders. When set these texts are shown instead of the values. It also
+	 * overrides minimum_value_label_ and maximum_value_label_.
+	 */
 	std::vector<t_string> value_labels_;
 
 	/** Inherited from tcontrol. */
