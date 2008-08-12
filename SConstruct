@@ -103,8 +103,8 @@ else:
     setup_cross_compile(env)
 
 if env.get('cxxtool',""):
-	env['CXX'] = env['cxxtool']
-	env['ENV']['HOME'] = os.environ['HOME']
+    env['CXX'] = env['cxxtool']
+    env['ENV']['HOME'] = os.environ['HOME']
 
 if env['distcc']: env.Tool('distcc')
 if env['ccache']: env.Tool('ccache')
@@ -190,6 +190,7 @@ if env["prereqs"]:
                          LIBS = ["intl"])
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
+    conf.CheckBoost("smart_ptr", header_only = True) and \
     conf.CheckCHeader("libintl.h", "<>") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
 
@@ -216,6 +217,13 @@ if env["prereqs"]:
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
     have_test_prereqs =  have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.34.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
+
+#    have_boost_asio = \
+#        conf.CheckBoost("system", require_version = "1.35.0") and \
+#        conf.CheckBoost("asio", require_version = "1.35.0", header_only = True) or \
+#        Warning("Boost 1.35 not found using old networking code.i")
+#    
+#    env["have_boost_asio"] = have_boost_asio;
 
     if env["python"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
@@ -270,7 +278,7 @@ if env['internal_data']:
     env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
 if env['editor2']:
-	env.Append(CPPDEFINES = "USE_EDITOR2")
+    env.Append(CPPDEFINES = "USE_EDITOR2")
 
 if have_X:
     env.Append(CPPDEFINES = "_X11")
@@ -282,8 +290,8 @@ for d in installdirs:
 
 if env["PLATFORM"] == 'win32':
     env.Append(LIBS = ["wsock32", "intl", "z"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
-if env["PLATFORM"] == 'darwin':			# Mac OS X
-    env.Append(FRAMEWORKS = "Carbon")			# Carbon GUI
+if env["PLATFORM"] == 'darwin':            # Mac OS X
+    env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
 
 try:
     env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
@@ -509,7 +517,7 @@ env.Precious(uninstall)
 config_h_re = re.compile(r"^.*#define\s*(\S*)\s*\"(\S*)\".*$", re.MULTILINE)
 build_config = dict( config_h_re.findall(File("config.h.dummy").get_contents()) )
 env["version"] = build_config.get("PACKAGE_VERSION")
-if 'dist' in COMMAND_LINE_TARGETS:	# Speedup, the manifest is expensive
+if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
@@ -580,8 +588,8 @@ env.Precious(sanity_check)
 #
 env.Command("wesnoth-deps.dot", [],
             "graph-includes -verbose --class wesnoth \
-	  -sysI /usr/include/c++/4.0 -sysI /usr/include -sysI /usr/include/SDL \
-	  --prefixstrip src/ -I src src > ${TARGET}")
+            -sysI /usr/include/c++/4.0 -sysI /usr/include -sysI /usr/include/SDL \
+            --prefixstrip src/ -I src src > ${TARGET}")
 env.Command("wesnoth-deps.png", "wesnoth-deps.dot",
             "dot -Tpng -o ${TARGET} ${SOURCE}")
 env.Clean(all, ["wesnoth-deps.dot", "wesnoth-deps.png"])

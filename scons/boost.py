@@ -40,7 +40,7 @@ def find_boost(env):
                 except:
                     pass
 
-def CheckBoost(context, boost_lib, require_version = None):
+def CheckBoost(context, boost_lib, require_version = None, header_only = False):
     env = context.env
     if require_version:
         context.Message("Checking for Boost %s library version >= %s... " % (boost_lib, require_version))
@@ -55,7 +55,9 @@ def CheckBoost(context, boost_lib, require_version = None):
 
     boost_headers = { "regex" : "regex/config.hpp",
                       "iostreams" : "iostreams/constants.hpp",
-                      "unit_test_framework" : "test/unit_test.hpp" }
+                      "unit_test_framework" : "test/unit_test.hpp",
+                      "system" : "system/error_code.hpp"}
+
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
     libname = "boost_" + boost_lib + env.get("boost_suffix", "")
 
@@ -63,7 +65,8 @@ def CheckBoost(context, boost_lib, require_version = None):
         env.AppendUnique(CXXFLAGS = "-I" + boostdir, LIBPATH = [boostlibdir])
     else:
         env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
-    env.AppendUnique(LIBS = [libname])
+    if not header_only:
+        env.AppendUnique(LIBS = [libname])
 
     test_program = """
         #include <boost/%s>
