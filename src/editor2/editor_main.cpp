@@ -36,7 +36,7 @@ EXIT_STATUS start(config& game_conf, CVideo& video)
 		throw;
 	}
 	if (editor_action::get_instance_count() != 0) {
-		WRN_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects\n";
+		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects\n";
 	}
 	return e;
 }

@@ -36,16 +36,8 @@ namespace editor2 {
 class editor_action
 {
     public:
-        editor_action()
-		: id_(next_id_++)
-        {
-			instance_count_++;
-        }
-		
-        virtual ~editor_action()
-        {
-			instance_count_--;
-        }
+        editor_action();
+        virtual ~editor_action();
 		
 		/**
 		 * Perform the action, returning an undo action that, when performed, will reverse any effects of this action.

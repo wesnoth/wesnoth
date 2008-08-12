@@ -221,7 +221,7 @@ void map_context::clear_stack(action_stack& stack)
 void map_context::perform_action_between_stacks(action_stack& from, action_stack& to)
 {
 	assert(!from.empty());
-	editor_action* action = from.back();
+	std::auto_ptr<editor_action> action(from.back());
 	from.pop_back();
 	editor_action* reverse_action = action->perform(*this);
 	to.push_back(reverse_action);

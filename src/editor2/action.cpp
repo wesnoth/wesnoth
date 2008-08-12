@@ -22,11 +22,23 @@
 #include "../foreach.hpp"
 
 #include <algorithm>
+#include <memory>
 
 namespace editor2 {
 
 int editor_action::next_id_ = 1;
 int editor_action::instance_count_ = 0;
+
+editor_action::editor_action()
+: id_(next_id_++)
+{
+	instance_count_++;
+}
+
+editor_action::~editor_action()
+{
+	instance_count_--;
+}
 
 std::string editor_action::get_description()
 {
@@ -35,9 +47,9 @@ std::string editor_action::get_description()
 
 editor_action* editor_action::perform(map_context& mc) const
 {
-	editor_action* undo = new editor_action_whole_map(mc.get_map());
+	std::auto_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
 	perform_without_undo(mc);
-	return undo;
+	return undo.release();
 }
 
 void editor_action_whole_map::perform_without_undo(map_context& mc) const {
@@ -55,12 +67,12 @@ void editor_action_chain::append_action(editor_action* a) {
 	actions_.push_back(a);
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
-	std::vector<editor_action*> undo;
+	std::auto_ptr<editor_action_chain> undo(new editor_action_chain());
 	foreach (editor_action* a, actions_) {
-		undo.push_back(a->perform(mc));
+		undo->append_action(a->perform(mc));
 	}
-	std::reverse(undo.begin(), undo.end());
-	return new editor_action_chain(undo);
+	std::reverse(undo->actions_.begin(), undo->actions_.end());
+	return undo.release();
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
@@ -77,9 +89,9 @@ bool editor_action_area::add_location(const gamemap::location& loc)
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), paste_.get_offset_area(loc_));
-	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
+	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(gamemap::location(0,0), mf));
 	perform_without_undo(mc);
-	return undo;
+	return undo.release();
 }
 void editor_action_paste::perform_without_undo(map_context& mc) const
 {
@@ -90,9 +102,9 @@ void editor_action_paste::perform_without_undo(map_context& mc) const
 
 editor_action_paint_hex* editor_action_paint_hex::perform(map_context& mc) const
 {
-	editor_action_paint_hex* undo = new editor_action_paint_hex(loc_, mc.get_map().get_terrain(loc_));
+	std::auto_ptr<editor_action_paint_hex> undo(new editor_action_paint_hex(loc_, mc.get_map().get_terrain(loc_)));
 	perform_without_undo(mc);
-	return undo;
+	return undo.release();
 }
 void editor_action_paint_hex::perform_without_undo(map_context& mc) const
 {
@@ -103,9 +115,9 @@ void editor_action_paint_hex::perform_without_undo(map_context& mc) const
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	editor_action_paste* undo = new editor_action_paste(gamemap::location(0,0), mf);
+	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(gamemap::location(0,0), mf));
 	perform_without_undo(mc);
-	return undo;
+	return undo.release();
 }	
 void editor_action_paint_area::perform_without_undo(map_context& mc) const
 {
@@ -116,10 +128,10 @@ void editor_action_paint_area::perform_without_undo(map_context& mc) const
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
 	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
-	editor_action_paint_area* undo = new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_));
+	std::auto_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
-	return undo;
+	return undo.release();
 }
 void editor_action_fill::perform_without_undo(map_context& mc) const
 {
@@ -130,7 +142,7 @@ void editor_action_fill::perform_without_undo(map_context& mc) const
 
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
-	editor_action* undo;
+	std::auto_ptr<editor_action> undo;
 	int old_player = mc.get_map().is_starting_position(loc_) + 1;
 	gamemap::location old_loc = mc.get_map().starting_position(player_);
 	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
@@ -138,16 +150,16 @@ editor_action* editor_action_starting_position::perform(map_context& mc) const
 		editor_action_chain* undo_chain = new editor_action_chain();
 		undo_chain->append_action(new editor_action_starting_position(loc_, old_player));
 		undo_chain->append_action(new editor_action_starting_position(old_loc, player_));
-		undo = undo_chain;
+		undo.reset(undo_chain);
 		LOG_ED << "ssp actual: " << old_player << " to " << gamemap::location() << "\n";
 		mc.get_map().set_starting_position(old_player, gamemap::location());
 	} else {
-		undo = new editor_action_starting_position(old_loc, player_);
+		undo.reset(new editor_action_starting_position(old_loc, player_));
 	}
 	LOG_ED << "ssp actual: " << player_ << " to " << loc_ << "\n";
 	mc.get_map().set_starting_position(player_, loc_);
 	mc.set_needs_labels_reset();
-	return undo;
+	return undo.release();
 }
 void editor_action_starting_position::perform_without_undo(map_context& mc) const
 {

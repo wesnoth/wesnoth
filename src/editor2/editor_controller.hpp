@@ -109,6 +109,8 @@ class editor_controller : public controller_base,
 		editor_display& get_display();	
 		brush* get_brush();
 		mouse_action* get_mouse_action();
+		void perform_refresh_delete(editor_action* action);
+		void perform_refresh(const editor_action& action);
 		
 	private:    		
 		/** init the display object and general set-up */ 

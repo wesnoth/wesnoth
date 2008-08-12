@@ -41,6 +41,8 @@
 
 #include "SDL.h"
 
+#include <memory>
+
 #include <boost/bind.hpp>
 
 namespace editor2 {
@@ -304,8 +306,7 @@ void editor_controller::resize_map_dialog()
 					x_offset = 0;
 			}
 			editor_action_resize_map a(w, h, x_offset, y_offset, fill);
-			get_map_context().perform_action(a);
-			refresh_after_action();
+			perform_refresh(a);
 		}
 	}
 }
@@ -510,28 +511,19 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			cut_selection();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
-			if (!get_map_context().get_map().everything_selected()) {
-				get_map_context().perform_action(editor_action_select_all());
-				refresh_after_action();
+			if (!get_map().everything_selected()) {
+				perform_refresh(editor_action_select_all());
 				return true;
 			} //else intentionally fall through
 		case HOTKEY_EDITOR_SELECT_INVERSE:
-			get_map_context().perform_action(editor_action_select_inverse());
-			refresh_after_action();
+			perform_refresh(editor_action_select_inverse());
 			return true;
-		case HOTKEY_EDITOR_MAP_FLIP_X: {
-			editor_action_flip_x fx;
-			get_map_context().perform_action(fx);
-			refresh_after_action();
+		case HOTKEY_EDITOR_MAP_FLIP_X:
+			perform_refresh(editor_action_flip_x());
 			return true;
-			}
-		case HOTKEY_EDITOR_MAP_FLIP_Y: {
-			LOG_ED << "FlipYhk\n";
-			editor_action_flip_y fy;
-			get_map_context().perform_action(fy);
-			refresh_after_action();
+		case HOTKEY_EDITOR_MAP_FLIP_Y:
+			perform_refresh(editor_action_flip_y());
 			return true;
-			}
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();
 			return true;
@@ -668,8 +660,7 @@ void editor_controller::cut_selection()
 {
 	copy_selection();
 	editor_action_paint_area a(get_map().selection(), background_terrain_);
-	get_map_context().perform_action(a);
-	refresh_after_action();
+	perform_refresh(a);
 }
 
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
@@ -712,6 +703,19 @@ mouse_action* editor_controller::get_mouse_action()
 {
 	return mouse_action_;
 }
+
+void editor_controller::perform_refresh_delete(editor_action* action)
+{
+	std::auto_ptr<editor_action> action_auto(action);
+	perform_refresh(*action);
+}
+
+void editor_controller::perform_refresh(const editor_action& action)
+{
+	get_map_context().perform_action(action);
+	refresh_after_action();
+}
+
 
 void editor_controller::redraw_toolbar()
 {
@@ -820,13 +824,13 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 			//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
 			//anything to the undo stack (hence a diferent perform_ call
 			if (a != NULL) {
+				std::auto_ptr<editor_action> aa(a);
 				if (partial) {
 					get_map_context().perform_partial_action(*a);
 				} else {
 					get_map_context().perform_action(*a);
 				}
 				refresh_after_action(true);
-				delete a;
 			}
 		} else {
 			WRN_ED << __FUNCTION__ << ": There is no mouse action active!\n";
@@ -850,9 +854,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 		LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 		editor_action* a = get_mouse_action()->click(*gui_, x, y);
 		if (a != NULL) {
-			get_map_context().perform_action(*a);
-			refresh_after_action(true);
-			delete a;
+			perform_refresh_delete(a);
 		}
 		return true;
 	} else {
@@ -866,10 +868,8 @@ void editor_controller::left_drag_end(int x, int y, const bool browse)
 	if (get_mouse_action() != NULL) {
 		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
 		if (a != NULL) {
-			get_map_context().perform_action(*a);
-			delete a;
+			perform_refresh_delete(a);
 		}
-		refresh_after_action();
 	} else {
 		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
 	}	
