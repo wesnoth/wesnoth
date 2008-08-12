@@ -19,6 +19,7 @@
 #include "config.hpp"
 #include "font.hpp"
 #include "gettext.hpp"
+#include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
@@ -502,9 +503,13 @@ theme::menu::menu(const config& cfg) : object(cfg),
                                        context_(utils::string_bool(cfg["is_context_menu"])),
                                        title_(cfg["title"].str() + cfg["title_literal"].str()),
 									   tooltip_(cfg["tooltip"]),
-						image_(cfg["image"]), type_(cfg["type"]),
-						items_(utils::split(cfg["items"]))
-{}
+									   image_(cfg["image"]), type_(cfg["type"]),
+									   items_(utils::split(cfg["items"]))
+{
+	if (utils::string_bool(cfg["auto_tooltip"]) && tooltip_.empty() && items_.size() == 1) {
+		tooltip_ = hotkey::get_hotkey(items_[0]).get_description();
+	}
+}
 
 theme::theme(const config& cfg, const SDL_Rect& screen) :
 	theme_reset_("theme_reset")
