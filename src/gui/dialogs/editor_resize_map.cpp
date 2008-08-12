@@ -114,6 +114,15 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 			dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	}
 	direction_buttons_[0]->set_value(true);
+	direction_buttons_[0]->set_icon_name("buttons/resize-direction-top-left.png");
+	direction_buttons_[1]->set_icon_name("buttons/resize-direction-top.png");
+	direction_buttons_[2]->set_icon_name("buttons/resize-direction-top-right.png");
+	direction_buttons_[3]->set_icon_name("buttons/resize-direction-left.png");
+	direction_buttons_[4]->set_icon_name("buttons/resize-direction-center.png");
+	direction_buttons_[5]->set_icon_name("buttons/resize-direction-right.png");
+	direction_buttons_[6]->set_icon_name("buttons/resize-direction-bottom-left.png");
+	direction_buttons_[7]->set_icon_name("buttons/resize-direction-bottom.png");
+	direction_buttons_[8]->set_icon_name("buttons/resize-direction-bottom-right.png");
 	window.recalculate_size();
 }
 
