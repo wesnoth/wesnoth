@@ -25,10 +25,10 @@ class ParameterValidator {
 
 	function getInt($name, $default)
 	{
-		if (isset($user_params[$name])
-			&& is_numeric($user_params[$name]))
+		if (isset($this->user_params[$name])
+			&& is_numeric($this->user_params[$name]))
 		{
-			return (int)$user_params[$name];
+			return (int)$this->user_params[$name];
 		} else {
 			return $default;
 		}

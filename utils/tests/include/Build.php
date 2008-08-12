@@ -257,14 +257,38 @@ class Build {
 	public static function getVisibleBuilds(ParameterValidator $user_params)
 	{
 		$ret = array();
+		$builds_per_page = 6; // TODO: get from config
 		$ret['paginate']['number_of_pages']	= self::getNumberOfVisiblePages($builds_per_page);
 
 		$page = $user_params->getInt('page', 1);
-		$builds_per_page = 15; // TODO: get from config
 		if ($page < 0)
 			$page = 1;
-		if ($page > $get['number_of_pages'])
-			$page = $get['number_of_pages'];
+		if ($page > $ret['paginate']['number_of_pages'])
+			$page = $ret['paginate']['number_of_pages'];
+		
+		$ret['paginate']['page'] = $page;
+
+		$ret['paginate']['link'] = 'build_history.php?page=';
+		$visible = 5;
+		$visible_minus = 0;
+		$start = $page - floor(($visible-1)/2);
+		if ($start <= 1)
+		{
+			$start = 1;
+			$visible_minus = 1;
+		}
+		$last = $start + $visible + $visible_minus;
+		if ($last >= $ret['paginate']['number_of_pages'] + 1)
+		{
+			$last = $ret['paginate']['number_of_pages'] + 1;
+			$start = $last - $visible - 1;
+			if ($start < 1)
+				$start = 1;
+		}
+		$ret['paginate']['first_page'] = $start; 
+		$ret['paginate']['last_page'] = $last; 
+		$ret['paginate']['visible'] = $last - $start; 
+		
 
 		$ret['builds'] = array();
 		$builds = self::fetchVisibleBuilds($page, $builds_per_page);
@@ -273,7 +297,8 @@ class Build {
 			$ret['builds'][] = $build->getBuildStats();
 		}
 
-		$ret['paginate']['page'] = $page;
+
+
 
 		return $ret;
 	}

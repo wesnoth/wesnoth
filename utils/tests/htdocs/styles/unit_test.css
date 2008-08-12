@@ -71,3 +71,43 @@ table.test_error {
 .test_error td {
 	text-align: center;
 }
+
+table.build_history {
+	width: auto;
+	max-width:60em;
+	min-width:10em;
+	margin: auto auto auto auto;
+}
+
+div.paginate {
+	color: #225599;
+	font-weight: bold;
+	text-align: right;
+	margin-left: auto;
+	margin-right: 0;
+	font-size: 0.8em;
+}
+
+.paginate a {
+	color: #225599;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.paginate a:hoover {
+	text-decoration: underline;
+	font-weight: bold;
+	color: #225599;
+}
+
+.paginate .active {
+	color: #104060;
+}
+
+.paginate a.hidden {
+	visibility: hidden;
+}
+
+/*.paginate span {
+	color: #225599;
+}*/
