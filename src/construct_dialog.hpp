@@ -121,17 +121,19 @@ class dialog;
 
 class filter_textbox : public gui::dialog_textbox {
 public:
-	filter_textbox(CVideo& video, const std::string& header,
-		const std::vector<std::string>& items, const std::vector<std::string>& items_to_filter,
-		size_t header_row,
-		dialog& dialog, int width = 250)
-		: dialog_textbox(new label(video, header), video, width),
+	filter_textbox(CVideo& video, const std::string& header, 
+			const std::vector<std::string>& items, 
+			const std::vector<std::string>& items_to_filter, size_t header_row, 
+			dialog& dialog, int width = 250) : 
+		dialog_textbox(new label(video, header), video, width),
 		items_(items),
 		items_to_filter_(items_to_filter),
+		filtered_items_(),
+		index_map_(),
+		last_words(1, ""), // dummy word to trigger an update
 		header_row_(header_row),
 		dialog_(dialog)
 	{
-		last_words.push_back(""); // dummy word to trigger an update
 		set_text("");
 	}
 
