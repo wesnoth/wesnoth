@@ -372,8 +372,16 @@ class save_preview_pane : public gui::preview_pane
 {
 public:
 	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
-	                  const std::vector<save_info>& info, const std::vector<config*>& summaries, const gui::filter_textbox& textbox)
-		: gui::preview_pane(video), game_config_(&game_config), map_(map), info_(&info), summaries_(&summaries), index_(0), textbox_(textbox)
+			const std::vector<save_info>& info, 
+			const std::vector<config*>& summaries, 
+			const gui::filter_textbox& textbox) :
+		gui::preview_pane(video), 
+		game_config_(&game_config), 
+		map_(map), info_(&info), 
+		summaries_(&summaries), 
+		index_(0), 
+		map_cache_(),
+		textbox_(textbox)
 	{
 		set_measurements(minimum<int>(200,video.getx()/4),
 				 minimum<int>(400,video.gety() * 4/5));
@@ -897,19 +905,22 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map,
-		const unit& u, TYPE type, bool on_left_side)
-					: unit_preview_pane(disp, map, NULL, type, on_left_side),
-					  units_(&unit_store_)
+units_list_preview_pane::units_list_preview_pane(game_display& disp, 
+		const gamemap* map, const unit& u, TYPE type, bool on_left_side) :
+	unit_preview_pane(disp, map, NULL, type, on_left_side), 
+	units_(&unit_store_),
+	unit_store_(1, u)
 {
-	unit_store_.push_back(u);
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map,
-		std::vector<unit>& units, const gui::filter_textbox* filter, TYPE type, bool on_left_side)
-					: unit_preview_pane(disp, map, filter, type, on_left_side),
-					  units_(&units)
-{}
+units_list_preview_pane::units_list_preview_pane(game_display& disp, 
+		const gamemap* map, std::vector<unit>& units, 
+		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
+	unit_preview_pane(disp, map, filter, type, on_left_side),
+	units_(&units),
+	unit_store_()
+{
+}
 
 size_t units_list_preview_pane::size() const
 {
