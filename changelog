@@ -40,6 +40,8 @@ Version 1.5.2+svn:
  * Campaign server:
    * Made campaign server encode CRs in old content in first startup
  * WML engine:
+   * Extended [modify_turns] to allow scenario designers to change the
+     current-turn number dinamically with current=<number>.
    * It is now possible to use [time_area] to add or remove new local ToD
      areas and their schedules during scenario events. Removal requires to
      associate an id. to [time_area]s, or it won't work. Uses Standard
