@@ -1220,7 +1220,11 @@ void addon_version_info::reset()
 	sane = false;
 }
 
-addon_version_info::addon_version_info(const std::string& src_str)
+addon_version_info::addon_version_info(const std::string& src_str) :
+	vmajor(0),
+	vminor(0),
+	revision(0),
+	sane(true)
 {
 	const std::vector<std::string> components = utils::split(src_str, '.');
 	try {
