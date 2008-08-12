@@ -811,8 +811,9 @@ namespace {
 		if(!current.empty()) {
 			const int new_turn_number = lexical_cast_default<int>(current,1);
 			const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
-			if(new_turn_number < 1 || new_turn_number > status_ptr->number_of_turns()) {
-				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")\n";
+			const unsigned int current_turn_number = status_ptr->turn();
+			if(new_turn_number < current_turn_number || new_turn_number > status_ptr->number_of_turns()) {
+				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 			} else if(new_turn_number_u != status_ptr->turn()) {
 				status_ptr->set_turn(new_turn_number_u);
 				(screen)->new_turn();
