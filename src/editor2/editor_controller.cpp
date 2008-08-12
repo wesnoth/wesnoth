@@ -62,14 +62,14 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		foreground_terrain_, background_terrain_);
 	//brush_bar_ = new brush_bar(gui(), *size_specs_);
 	
-	brushes_.push_back(brush());
-	brushes_[0].add_relative_location(0, 0);
 	const config::child_list& children = game_config.get_children("brush");
 	foreach (const config* i, game_config.get_children("brush")) {
 		brushes_.push_back(brush(*i));
 	}
-	if (brushes_.size() == 1) {
-		WRN_ED << "No brushes defined!";
+	if (brushes_.size() == 0) {
+		ERR_ED << "No brushes defined!";
+		brushes_.push_back(brush());
+		brushes_[0].add_relative_location(0, 0);
 	}
 	brush_ = &brushes_[0];
 	
