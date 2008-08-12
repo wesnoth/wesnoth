@@ -132,12 +132,23 @@ namespace events{
 	}
 
 	menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const gamemap& map,
-		const config& game_config, const gamestatus& status, game_state& gamestate,
-		undo_list& undo_stack, undo_list& redo_stack) :
-	gui_(gui), units_(units), teams_(teams), level_(level), map_(map),
-		game_config_(game_config), status_(status), gamestate_(gamestate), undo_stack_(undo_stack),
-		redo_stack_(redo_stack)
+			const config& level, const gamemap& map,
+			const config& game_config, const gamestatus& status, game_state& gamestate,
+			undo_list& undo_stack, undo_list& redo_stack) :
+		gui_(gui), 
+		units_(units), 
+		teams_(teams), 
+		level_(level), 
+		map_(map),
+		game_config_(game_config), 
+		status_(status), 
+		gamestate_(gamestate), 
+		undo_stack_(undo_stack),
+		redo_stack_(redo_stack),
+		textbox_info_(),
+		last_search_(),
+		last_search_hit_(),
+		last_recruit_()
 	{
 	}
 
@@ -327,10 +338,14 @@ namespace events{
 namespace {
 class leader_scroll_dialog : public gui::dialog {
 public:
-	leader_scroll_dialog(display &disp, const std::string &title, std::vector<bool> &leader_bools, int selected, gui::DIALOG_RESULT extra_result)
-	: dialog(disp, title, "", gui::NULL_DIALOG), leader_bools_(leader_bools), extra_result_(extra_result)
+	leader_scroll_dialog(display &disp, const std::string &title, 
+			std::vector<bool> &leader_bools, int selected, 
+			gui::DIALOG_RESULT extra_result) :
+		dialog(disp, title, "", gui::NULL_DIALOG), 
+		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
+		leader_bools_(leader_bools), 
+		extra_result_(extra_result)
 	{
-		scroll_btn_ = new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false);
 		scroll_btn_->enable(leader_bools[selected]);
 		add_button(scroll_btn_, gui::dialog::BUTTON_STANDARD);
 		add_button(new gui::standard_dialog_button(disp.video(),
@@ -1679,16 +1694,20 @@ private:
 	class cmd_arg_parser
 	{
 		public:
-			cmd_arg_parser()
-			: str_(""), args_end(false)
+			cmd_arg_parser() :
+				str_(""), 
+				args(1, 0),
+				args_end(false)
 			{
-				args.push_back(0);
 			}
-			explicit cmd_arg_parser(const std::string& str)
-			: str_(str), args_end(false)
+
+			explicit cmd_arg_parser(const std::string& str) :
+				str_(str), 
+				args(1, 0),
+				args_end(false)
 			{
-				args.push_back(0);
 			}
+
 			void parse(const std::string& str)
 			{
 				str_ = str;
