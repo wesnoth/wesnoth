@@ -38,12 +38,22 @@ namespace {
 	const size_t max_coastal = 5;
 }
 
-default_map_generator::default_map_generator(const config* cfg)
-: width_(40), height_(40), island_size_(0), iterations_(1000), hill_size_(10), max_lakes_(20),
-  nvillages_(25), castle_size_(9), nplayers_(2), link_castles_(true)
+default_map_generator::default_map_generator(const config* cfg) :
+	default_width_(40),
+	default_height_(40),
+	width_(40), 
+	height_(40), 
+	island_size_(0), 
+	iterations_(1000), 
+	hill_size_(10), 
+	max_lakes_(20), 
+	nvillages_(25), 
+	castle_size_(9), 
+	nplayers_(2), 
+	link_castles_(true),
+	cfg_(cfg ? *cfg : config())
 {
 	if(cfg != NULL) {
-		cfg_ = *cfg;
 
 		const int width = ::atoi((*cfg)["map_width"].c_str());
 		if(width > 0)
