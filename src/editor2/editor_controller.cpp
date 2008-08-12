@@ -448,6 +448,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
+		case HOTKEY_EDITOR_SELECTION_FILL:
 		case HOTKEY_EDITOR_SELECTION_GENERATE:
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return !get_map().selection().empty();
@@ -524,6 +525,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			} //else intentionally fall through
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 			perform_refresh(editor_action_select_inverse());
+			return true;
+		case HOTKEY_EDITOR_SELECTION_FILL:
+			fill_selection();
 			return true;
 		case HOTKEY_EDITOR_MAP_FLIP_X:
 			perform_refresh(editor_action_flip_x());
@@ -669,6 +673,13 @@ void editor_controller::cut_selection()
 	editor_action_paint_area a(get_map().selection(), background_terrain_);
 	perform_refresh(a);
 }
+
+void editor_controller::fill_selection()
+{
+	editor_action_paint_area a(get_map().selection(), foreground_terrain_);
+	perform_refresh(a);
+}
+
 
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {

@@ -92,6 +92,7 @@ class editor_controller : public controller_base,
 		void toggle_grid();
 		void copy_selection();
 		void cut_selection();
+		void fill_selection();
 		
 		void hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command);
 		bool is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const;
