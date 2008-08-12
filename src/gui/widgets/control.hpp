@@ -18,6 +18,7 @@
 #include "gui/widgets/canvas.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
+#include "../../text.hpp"
 #include "tstring.hpp"
 
 #include <cassert>
@@ -308,6 +309,20 @@ private:
 	 * @returns                   The best size.
 	 */
 	tpoint get_best_text_size(const tpoint& minimum_size) const;
+
+
+	/** 
+	 * Contains a helper cache for the rendering.
+	 *
+	 * Creating a ttext object is quite expensive and is done on various
+	 * occasions so it's cached here.
+	 * 
+	 * @todo Maybe if still too slow we might also copy this cache to the
+	 * canvas so it can reuse our results, but for now it seems fast enough.
+	 * Unfortunately that would make the dependency between the classes bigger
+	 * as wanted.
+	 */
+	mutable font::ttext renderer_;
 };
 
 } // namespace gui2

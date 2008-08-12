@@ -17,7 +17,6 @@
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "../../text.hpp"
 
 #define DBG_G LOG_STREAM_INDENT(debug, gui)
 #define LOG_G LOG_STREAM_INDENT(info, gui)
@@ -50,7 +49,8 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 	help_message_(),
 	canvas_(canvas_count),
 	restorer_(),
-	config_(0)
+	config_(0),
+	renderer_()
 {
 }
 
@@ -237,26 +237,25 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
 	tpoint size = minimum_size - border;
 
-	font::ttext text;
-	text.set_text(label_, false);
-	text.set_font_size(config_->text_font_size);
+	renderer_.set_text(label_, false);
+	renderer_.set_font_size(config_->text_font_size);
 
 	// Try with the minimum wanted size.
-	text.set_maximum_width(size.x);
+	renderer_.set_maximum_width(size.x);
 	if(multiline_label_) {
-		text.set_maximum_height(size.y);
+		renderer_.set_maximum_height(size.y);
 	}
 
 	// If doesn't fit try the maximum.
-	if(text.is_truncated()) {
+	if(renderer_.is_truncated()) {
 		const tpoint maximum_size(config_->max_width, config_->max_height);
-		text.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
+		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
 		if(multiline_label_) {
-			text.set_maximum_height(maximum_size.y ? maximum_size.y - border.y : -1);
+			renderer_.set_maximum_height(maximum_size.y ? maximum_size.y - border.y : -1);
 		}
 	}
 
-	size = text.get_size() + border;
+	size = renderer_.get_size() + border;
 
 	if(size.x < minimum_size.x) {
 		size.x = minimum_size.x;
