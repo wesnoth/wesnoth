@@ -155,14 +155,16 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			last_hex_ = loc;
 			gui().scroll_to_tile(loc,display::WARP,false);
 		}
-	} else if (event.button == SDL_BUTTON_WHEELUP) {
-		scrolly = - preferences::scroll_speed();
-	} else if (event.button == SDL_BUTTON_WHEELDOWN) {
-		scrolly = preferences::scroll_speed();
-	} else if (event.button == SDL_BUTTON_WHEELLEFT) {
-		scrollx = - preferences::scroll_speed();
-	} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
-		scrollx = preferences::scroll_speed();
+	} else if (allow_mouse_wheel_scroll(event.x, event.y)) { 
+		if (event.button == SDL_BUTTON_WHEELUP) {
+			scrolly = - preferences::scroll_speed();
+		} else if (event.button == SDL_BUTTON_WHEELDOWN) {
+			scrolly = preferences::scroll_speed();
+		} else if (event.button == SDL_BUTTON_WHEELLEFT) {
+			scrollx = - preferences::scroll_speed();
+		} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
+			scrollx = preferences::scroll_speed();
+		}
 	}
 
 	if (scrollx != 0 || scrolly != 0) {
@@ -193,6 +195,11 @@ bool mouse_handler_base::is_middle_click(const SDL_MouseButtonEvent& event)
 bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event)
 {
 	return event.button == SDL_BUTTON_RIGHT || (event.button == SDL_BUTTON_LEFT && command_active());
+}
+
+bool mouse_handler_base::allow_mouse_wheel_scroll(int /*x*/, int /*y*/)
+{
+	return true;
 }
 
 bool mouse_handler_base::right_click_before_menu(int /*x*/, int /*y*/, const bool /*browse*/)

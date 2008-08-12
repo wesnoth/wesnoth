@@ -66,6 +66,8 @@ public:
 	bool is_middle_click(const SDL_MouseButtonEvent& event);
 	bool is_right_click(const SDL_MouseButtonEvent& event);
 	
+	virtual bool allow_mouse_wheel_scroll(int x, int y);
+	
 	/**
 	 * @returns true when the (child) caller should not process the event further
 	 */

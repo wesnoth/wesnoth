@@ -852,6 +852,11 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 	gui().highlight_hex(hex_clicked);
 }
 
+bool editor_controller::allow_mouse_wheel_scroll(int x, int y)
+{
+	return get_map().on_board_with_border(gui().hex_clicked_on(x,y));
+}
+
 bool editor_controller::left_click(int x, int y, const bool browse)
 {
 	LOG_ED << "Left click\n";
