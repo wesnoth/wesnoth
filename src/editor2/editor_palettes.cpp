@@ -455,6 +455,8 @@ void terrain_palette::draw(bool force) {
 			color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		}
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
+		tooltips::clear_tooltips(dstrect);
+		tooltips::add_tooltip(dstrect, map_.get_terrain_string(terrain));
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
 			y += size_specs_.terrain_space;
 	}
