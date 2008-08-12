@@ -797,13 +797,26 @@ namespace {
 	{
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
+		std::string current = cfg["current"];
 		assert(state_of_game != NULL);
 		assert(status_ptr != NULL);
 		if(add != "") {
 			status_ptr->modify_turns(add);
 		} else {
 			status_ptr->add_turns(-status_ptr->number_of_turns());
+			//!@todo FIXME: why 50 is a good default for this?
 			status_ptr->add_turns(lexical_cast_default<int>(value,50));
+		}
+		// change current turn only after applying mods
+		if(!current.empty()) {
+			const int new_turn_number = lexical_cast_default<int>(current,1);
+			const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
+			if(new_turn_number < 1 || new_turn_number > status_ptr->number_of_turns()) {
+				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")\n";
+			} else if(new_turn_number_u != status_ptr->turn()) {
+				status_ptr->set_turn(new_turn_number_u);
+				(screen)->new_turn();
+			}
 		}
 	}
 

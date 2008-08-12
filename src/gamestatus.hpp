@@ -195,8 +195,11 @@ public:
 	void modify_turns(const std::string& mod);
 	void add_turns(int num);
 
+	//! Dynamically change the current turn number.
+	void set_turn(unsigned int num);
+
 	//! Function to move to the next turn.
-	//! Returns true iff time has expired.
+	//! Returns true if time has not expired.
 	bool next_turn();
 
 	static bool is_start_ToD(const std::string&);

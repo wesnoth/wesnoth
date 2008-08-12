@@ -393,6 +393,22 @@ void gamestatus::add_turns(int num)
 	numTurns_ = maximum<int>(numTurns_ + num,-1);
 }
 
+void gamestatus::set_turn(unsigned int num)
+{
+	VALIDATE(times_.size(), _("No time of day has been defined."));
+	const unsigned int old_num = turn_;
+	// Correct ToD
+	currentTime_ = (num  - 1) % times_.size();
+	if (currentTime_ < 0) {
+		currentTime_ += times_.size();
+	}
+	if(num > numTurns_ && numTurns_ != -1) {
+		this->add_turns(numTurns_ - num);
+	}
+	turn_ = num;
+	
+	LOG_NG << "changed current turn number from " << old_num << " to " << num << '\n';
+}
 
 bool gamestatus::next_turn()
 {
