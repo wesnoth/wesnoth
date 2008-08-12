@@ -38,6 +38,10 @@ class config_writer;
 class unit_ability_list
 {
 public:
+	unit_ability_list() :
+		cfgs()
+	{
+	}
 
 	bool empty() const;
 
@@ -466,6 +470,17 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 
 struct team_data
 {
+	team_data() :
+		units(0),
+		upkeep(0),
+		villages(0),
+		expenses(0),
+		net_income(0),
+		gold(0),
+		teamname()
+	{
+	}
+
 	int units, upkeep, villages, expenses, net_income, gold;
 	std::string teamname;
 };
