@@ -28,6 +28,7 @@
 #include "../key.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../sdl_utils.hpp"
+#include "../tooltips.hpp"
 
 #include <deque>
 #include <boost/utility.hpp>
@@ -116,6 +117,8 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
 		
+		void load_tooltips();
+		
 		void redraw_toolbar();
 		
 		void refresh_image_cache();
@@ -149,8 +152,8 @@ class editor_controller : public controller_base,
 		brush_bar* brush_bar_;
 		
 		preferences::display_manager* prefs_disp_manager_;
-		tooltips::manager* tooltip_manager_;
-		font::floating_label_context* floating_label_manager_;
+		tooltips::manager tooltip_manager_;
+		font::floating_label_context* floating_label_manager_;		
 		
 		bool do_quit_;
 		EXIT_STATUS quit_mode_;

@@ -51,7 +51,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
 , mouse_handler_base(get_map())
 , map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
-, gui_(NULL), map_generator_(NULL), do_quit_(false), quit_mode_(EXIT_ERROR)
+, gui_(NULL), map_generator_(NULL), tooltip_manager_(video), floating_label_manager_(NULL)
+, do_quit_(false), quit_mode_(EXIT_ERROR)
 , toolbar_dirty_(true), auto_update_transitions_(true)
 {
 	init(video);
@@ -61,7 +62,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
 		foreground_terrain_, background_terrain_);
 	//brush_bar_ = new brush_bar(gui(), *size_specs_);
-	
 	const config::child_list& children = game_config.get_children("brush");
 	foreach (const config* i, game_config.get_children("brush")) {
 		brushes_.push_back(brush(*i));
@@ -102,6 +102,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	refresh_all();
 	gui_->draw();
 	palette_->draw(true);
+	load_tooltips();
 	events::raise_draw_event();	
 }
 
@@ -114,6 +115,12 @@ void editor_controller::init(CVideo& video)
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
+}
+
+void editor_controller::load_tooltips()
+{
+	// Tooltips for the groups
+	palette_->load_tooltips();
 }
 
 editor_controller::~editor_controller()
@@ -794,6 +801,8 @@ void editor_controller::display_redraw_callback(display&)
 	adjust_sizes(gui(), *size_specs_);
 	palette_->adjust_size();
 	palette_->draw(true);
+	//display::redraw_everything removes our custom tooltips so reload them
+	load_tooltips();
 	gui().invalidate_all();
 }
 
