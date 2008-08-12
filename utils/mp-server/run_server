@@ -54,7 +54,7 @@ do
 	if [ -f "$SERVERBASE/redirect.cfg" ]; then
 		PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
 	fi
-	BUILDDIR=$(ls -l $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
+	BUILDDIR=$(ls -ld $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
 	REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
 	LOG="wesnothd.$DATE.$REV.log"
 	COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
@@ -62,17 +62,17 @@ do
 	PID=$!
 	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
 	# create some convenient links
-	ln -s $SERVERBASE/logs/$LOG $LOG.$PID
+	ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
 	rm -f $SERVERBASE/old.log
 	mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
-	ln -s logs/$LOG $SERVERBASE/current.log
+	ln -s "logs/$LOG" $SERVERBASE/current.log
 	# wait a bit so the server is likely up and listening
 	sleep 1
 	cat $SERVERBASE/banlist 2> /dev/null | while read -r ip time reason; do $HOME/bin/send_server_command $SERVER ban "$ip $time $reason"; done
 	if [ "$SERVER" = "1.2" ]; then
 		rm -f $SERVERBASE/oldlobby.log
 		mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
-		ln -s $SERVERBASE/logs/lobby.$DATE.$REV.log $SERVERBASE/currentlobby.log
+		ln -s "$SERVERBASE/logs/lobby.$DATE.$REV.log" $SERVERBASE/currentlobby.log
 		cd $SOURCE/utils/
 		./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
 		cd $SERVERBASE/build/
@@ -82,9 +82,9 @@ do
 	EXIT_CODE=$?
 	echo "wesnothd exited with code: $EXIT_CODE"
 	# need to use the recorded path since the build/ symlink might have changed
-	mv $SERVERBASE/$BUILDDIR/gmon.out $SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out > /dev/null 2>&1
-	# check for return code if not zero server should be restarted
-	if [ "$EXIT_CODE" = "0" ]; then
+	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" > /dev/null 2>&1
+	# check for return code if not zero or 98 (port in use) the server should be restarted
+	if [ "$EXIT_CODE" = "0" || "$EXIT_CODE" = "98" ]; then
 		echo "run_server script shutting down."
 		exit 0
 	fi
