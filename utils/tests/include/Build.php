@@ -256,11 +256,16 @@ class Build {
 
 	public static function getVisibleBuilds(ParameterValidator $user_params)
 	{
+		$ret = array();
+		$ret['paginate']['number_of_pages']	= self::getNumberOfVisiblePages($builds_per_page);
+
 		$page = $user_params->getInt('page', 1);
-		$builds_per_page = 10; // TODO: get from config
+		$builds_per_page = 15; // TODO: get from config
 		if ($page < 0)
 			$page = 1;
-		$ret = array();
+		if ($page > $get['number_of_pages'])
+			$page = $get['number_of_pages'];
+
 		$ret['builds'] = array();
 		$builds = self::fetchVisibleBuilds($page, $builds_per_page);
 		foreach($builds as $build)
@@ -268,8 +273,7 @@ class Build {
 			$ret['builds'][] = $build->getBuildStats();
 		}
 
-		$ret['page'] = $page;
-		$ret['number_of_pages']	= self::getNumberOfVisiblePages($builds_per_page);
+		$ret['paginate']['page'] = $page;
 
 		return $ret;
 	}
