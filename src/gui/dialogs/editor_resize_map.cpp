@@ -126,6 +126,23 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	window.recalculate_size();
 }
 
+static int resize_grid_xy_to_idx(int x, int y)
+{
+	if (x < 0 || x > 2 || y < 0 || y > 2) {
+		return 9;
+	} else {
+		ERR_GUI << y * 3 + x;
+		return y * 3 + x;
+	}
+}
+
+void teditor_resize_map::set_direction_icon(int index, std::string icon)
+{
+	if (index < 9) {
+		direction_buttons_[index]->set_icon_name("buttons/resize-direction-" + icon + ".png");
+	}
+}
+
 void teditor_resize_map::update_expand_direction(twindow& window)
 {
 	std::string name_prefix = "expand";
@@ -137,10 +154,43 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 	}
 	for (int i = 0; i < static_cast<int>(expand_direction_); ++i) {
 		direction_buttons_[i]->set_value(false);
+		set_direction_icon(i, "none");
 	}
 	direction_buttons_[expand_direction_]->set_value(true);
 	for (int i = expand_direction_ + 1; i < 9; ++i) {
 		direction_buttons_[i]->set_value(false);
+		set_direction_icon(i, "none");
+	}
+	
+	int xdiff = map_width_->get_value() - old_width_;
+	int ydiff = map_height_->get_value() - old_height_;
+	int x = static_cast<int>(expand_direction_) % 3;
+	int y = static_cast<int>(expand_direction_) / 3;
+	ERR_GUI << x << " " << y << " " << xdiff << " " << ydiff << "\n";
+	set_direction_icon(expand_direction_, "center");
+	if (xdiff != 0) {
+		int left = resize_grid_xy_to_idx(x - 1, y);
+		int right = resize_grid_xy_to_idx(x + 1, y);
+		if (xdiff < 0) std::swap(left, right);
+		set_direction_icon(left, "left");
+		set_direction_icon(right, "right");
+	}
+	if (ydiff != 0) {
+		int top = resize_grid_xy_to_idx(x, y - 1);
+		int bottom = resize_grid_xy_to_idx(x, y + 1);
+		if (ydiff < 0) std::swap(top, bottom);
+		set_direction_icon(top, "top");
+		set_direction_icon(bottom, "bottom");
+	}
+	if (xdiff != 0 || ydiff != 0) {
+		int nw = resize_grid_xy_to_idx(x - 1, y - 1);
+		int ne = resize_grid_xy_to_idx(x + 1, y - 1);
+		int sw = resize_grid_xy_to_idx(x - 1, y + 1);
+		int se = resize_grid_xy_to_idx(x + 1, y + 1);
+		if (xdiff < 0 || ydiff < 0) {
+			std::swap(nw, se);
+			std::swap(ne, sw);
+		}
 	}
 }
 

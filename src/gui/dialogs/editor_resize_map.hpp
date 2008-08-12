@@ -51,6 +51,7 @@ public:
 	void update_expand_direction(twindow& window);
 
 private:
+	void set_direction_icon(int index, std::string icon);
 	/**
 	 * NOTE the map sizes are stored in a text variable since there is no
 	 * integer edit widget yet.
