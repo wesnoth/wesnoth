@@ -172,7 +172,7 @@ class Build {
 			return false;
 		}
 		// build/debug/editor2/
-		$convert_log = FilenameConverter::stripBuildDirs($convert_log);
+		$compiler_log = FilenameConverter::stripBuildDirs($compiler_log);
 		if (preg_match_all('/^.*(error:|warning:|note:|undefined reference|ld returned \d exit status).*$/mi',$compiler_log, $m,PREG_SET_ORDER))
 		{
 
