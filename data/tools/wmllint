@@ -1055,7 +1055,7 @@ def hack_syntax(filename, lines):
             if need_image:
                 # This line presumes the code has been through wmlindent
                 if verbose:
-                    print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
+                    print '"%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
             need_image = in_message = False
     # Remove get_hit_sound fields
