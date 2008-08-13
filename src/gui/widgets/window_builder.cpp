@@ -432,7 +432,9 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 	definition(cfg["definition"]),
 	label(cfg["label"]),
 	tooltip(cfg["tooltip"]),
-	help(cfg["help"])
+	help(cfg["help"]),
+	use_tooltip_on_label_overflow(
+		utils::string_bool("use_tooltip_on_label_overflow", true))
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -476,6 +478,12 @@ tbuilder_control::tbuilder_control(const config& cfg) :
  *                                     but in general (if used) this message
  *                                     should show more help. This defines the
  *                                     text of that message.
+ *
+ *    use_tooltip_on_label_overflow (bool = true)
+ *                                     If the text on the label is truncated and
+ *                                     the tooltip is empty the label can be
+ *                                     used for the tooltip. If this variale is
+ *                                     set to true this will happen.
  * @end_table
  *
  */
@@ -498,6 +506,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_label(label);
 	control->set_tooltip(tooltip);
 	control->set_help_message(help);
+	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
 }
 
 tbuilder_button::tbuilder_button(const config& cfg) :

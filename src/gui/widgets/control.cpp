@@ -44,6 +44,7 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 	visible_(true),
 	label_(),
 	multiline_label_(false),
+	use_tooltip_on_label_overflow_(true),
 	tooltip_(),
 	help_message_(),
 	canvas_(canvas_count),
@@ -182,6 +183,14 @@ void tcontrol::set_size(const SDL_Rect& rect)
 	foreach(tcanvas& canvas, canvas_) {
 		canvas.set_width(rect.w);
 		canvas.set_height(rect.h);
+	}
+
+	// Note we assume that the best size has been queried but otherwise it
+	// should return false.
+	if(renderer_.is_truncated() 
+			&& use_tooltip_on_label_overflow_ && tooltip_.empty()) {
+
+		 set_tooltip(label_);
 	}
 
 	// inherited

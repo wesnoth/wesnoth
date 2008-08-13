@@ -44,6 +44,7 @@ public:
 	t_string label;
 	t_string tooltip;
 	t_string help;
+	bool use_tooltip_on_label_overflow;
 };
 
 struct tbuilder_button : public tbuilder_control
