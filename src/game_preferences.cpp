@@ -259,7 +259,7 @@ const std::string campaign_server()
 	if(!preferences::get("campaign_server").empty()) {
 		return preferences::get("campaign_server");
 	} else {
-		return "campaigns.wesnoth.org";
+		return "add-ons.wesnoth.org";
 	}
 }
 
