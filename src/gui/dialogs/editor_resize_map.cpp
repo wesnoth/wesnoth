@@ -51,6 +51,8 @@ static void callback_expand_direction_changed(twidget* caller)
 teditor_resize_map::teditor_resize_map() :
 	map_width_(register_integer("width", false)),
 	map_height_(register_integer("height", false)),
+	height_(NULL),
+	width_(NULL),
 	copy_edge_terrain_(register_bool("copy_edge_terrain", false)),
 	expand_direction_(EXPAND_BOTTOM_RIGHT)
 {
@@ -67,7 +69,7 @@ int teditor_resize_map::map_width() const
 }
 
 void teditor_resize_map::set_map_height(int value)
-{ 
+{
 	map_height_->set_value(value);
 }
 
@@ -98,10 +100,13 @@ twindow teditor_resize_map::build_window(CVideo& video)
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel* old_width = dynamic_cast<tlabel*>(window.find_widget("old_width", false));
-	VALIDATE(old_width, missing_widget("old_width"));
-	tlabel* old_height = dynamic_cast<tlabel*>(window.find_widget("old_height", false));
-	VALIDATE(old_height, missing_widget("old_height"));
+	tlabel* old_width = window.get_widget<tlabel>("old_width", false);
+	tlabel* old_height = window.get_widget<tlabel>("old_height", false);
+	height_ = window.get_widget<tslider>("height", false);
+	width_ = window.get_widget<tslider>("width", false);
+	
+	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
+	width_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	old_width->set_label(lexical_cast<std::string>(old_width_));
 	old_height->set_label(lexical_cast<std::string>(old_height_));
 	
@@ -114,24 +119,16 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 			dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	}
 	direction_buttons_[0]->set_value(true);
-	direction_buttons_[0]->set_icon_name("buttons/resize-direction-top-left.png");
-	direction_buttons_[1]->set_icon_name("buttons/resize-direction-top.png");
-	direction_buttons_[2]->set_icon_name("buttons/resize-direction-top-right.png");
-	direction_buttons_[3]->set_icon_name("buttons/resize-direction-left.png");
-	direction_buttons_[4]->set_icon_name("buttons/resize-direction-center.png");
-	direction_buttons_[5]->set_icon_name("buttons/resize-direction-right.png");
-	direction_buttons_[6]->set_icon_name("buttons/resize-direction-bottom-left.png");
-	direction_buttons_[7]->set_icon_name("buttons/resize-direction-bottom.png");
-	direction_buttons_[8]->set_icon_name("buttons/resize-direction-bottom-right.png");
+	update_expand_direction(window);
 	window.recalculate_size();
 }
 
+/** Convert a coordinate on a 3  by 3 grid to an index, return 9 for out of bounds */
 static int resize_grid_xy_to_idx(int x, int y)
 {
 	if (x < 0 || x > 2 || y < 0 || y > 2) {
 		return 9;
 	} else {
-		ERR_GUI << y * 3 + x;
 		return y * 3 + x;
 	}
 }
@@ -162,11 +159,10 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		set_direction_icon(i, "none");
 	}
 	
-	int xdiff = map_width_->get_value() - old_width_ ;
-	int ydiff = map_height_->get_value() - old_height_ ;
+	int xdiff = map_width_->get_value(window) - old_width_ ;
+	int ydiff = map_height_->get_value(window) - old_height_ ;
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
-	ERR_GUI << x << " " << y << " " << xdiff << " " << ydiff << "\n";
 	set_direction_icon(expand_direction_, "center");
 	if (xdiff != 0) {
 		int left = resize_grid_xy_to_idx(x - 1, y);
@@ -182,7 +178,7 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		set_direction_icon(top, "top");
 		set_direction_icon(bottom, "bottom");
 	}
-	if (xdiff != 0 || ydiff != 0) {
+	if (xdiff < 0 || ydiff < 0 || (xdiff > 0 && ydiff > 0)) {
 		int nw = resize_grid_xy_to_idx(x - 1, y - 1);
 		int ne = resize_grid_xy_to_idx(x + 1, y - 1);
 		int sw = resize_grid_xy_to_idx(x - 1, y + 1);

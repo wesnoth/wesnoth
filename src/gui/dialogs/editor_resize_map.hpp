@@ -20,6 +20,7 @@
 namespace gui2 {
 
 class ttoggle_button;
+class tslider;
 
 class teditor_resize_map : public tdialog
 {
@@ -58,6 +59,8 @@ private:
 	 */
 	tfield_integer* map_width_;
 	tfield_integer* map_height_;
+	tslider* height_;
+	tslider* width_;
 	tfield_bool* copy_edge_terrain_;
 	ttoggle_button* direction_buttons_[9];
 	int old_width_;
