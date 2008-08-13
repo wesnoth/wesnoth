@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-07-09 11:52+0800\n"
+"PO-Revision-Date: 2008-08-11 01:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -65,17 +65,17 @@ msgstr "城堡"
 #. [terrain]
 #: data/core/terrain.cfg:255
 msgid "Ruin"
-msgstr "遺迹"
+msgstr "遺跡"
 
 #. [terrain]
 #: data/core/terrain.cfg:266
 msgid "Sunken Ruin"
-msgstr "沉没的遺迹"
+msgstr "沉沒的遺跡"
 
 #. [terrain]
 #: data/core/terrain.cfg:278
 msgid "Swamp Ruin"
-msgstr "沼澤遺迹"
+msgstr "沼澤遺跡"
 
 #. [terrain]
 #: data/core/terrain.cfg:303 data/core/terrain.cfg:315
@@ -83,7 +83,7 @@ msgstr "沼澤遺迹"
 #: data/core/terrain.cfg:351 data/core/terrain.cfg:363
 #: data/core/terrain.cfg:375
 msgid "Keep"
-msgstr "軍情處"
+msgstr "主堡"
 
 #. [terrain]
 #: data/core/terrain.cfg:401
@@ -108,7 +108,7 @@ msgstr "沙地"
 #. [terrain]
 #: data/core/terrain.cfg:439
 msgid "Oasis"
-msgstr " 綠洲"
+msgstr "綠洲"
 
 #. [terrain]
 #: data/core/terrain.cfg:454
@@ -532,7 +532,7 @@ msgstr "顯示聊天時間"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Advanced Options"
-msgstr "高級選項"
+msgstr "進階選項"
 
 #: src/game_preferences_display.cpp:192
 msgid "sound^Standard Options"
@@ -794,15 +794,15 @@ msgstr "(列表: 空)"
 
 #: src/game_preferences_display.cpp:1119
 msgid "Prefs section^General"
-msgstr "常規"
+msgstr "基本設定"
 
 #: src/game_preferences_display.cpp:1120
 msgid "Prefs section^Display"
-msgstr "顯示"
+msgstr "顯示設定"
 
 #: src/game_preferences_display.cpp:1121
 msgid "Prefs section^Sound"
-msgstr "聲音"
+msgstr "音效設定"
 
 #: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Multiplayer"
@@ -810,7 +810,7 @@ msgstr "多人對戰"
 
 #: src/game_preferences_display.cpp:1123
 msgid "Advanced section^Advanced"
-msgstr "高級"
+msgstr "進階設定"
 
 #: src/game_preferences_display.cpp:1158
 msgid "Saved Theme Preference: "
@@ -874,7 +874,7 @@ msgstr "加速"
 
 #: src/hotkeys.cpp:67
 msgid "Unit Description"
-msgstr "説明"
+msgstr "詳細資料"
 
 #: src/hotkeys.cpp:68
 msgid "Rename Unit"
@@ -906,7 +906,7 @@ msgstr "重複招募"
 
 #: src/hotkeys.cpp:75
 msgid "Recall"
-msgstr "召回"
+msgstr "徵招"
 
 #: src/hotkeys.cpp:76
 msgid "End Turn"
@@ -1082,23 +1082,23 @@ msgstr "繪制地形"
 
 #: src/hotkeys.cpp:125
 msgid "Refresh Image Cache"
-msgstr "刷新圖像緩存"
+msgstr "圖像刷新暫存"
 
 #: src/hotkeys.cpp:126
 msgid "Delay transition updates"
-msgstr "暫緩刷新戰争迷霧"
+msgstr "暫緩刷新戰爭迷霧"
 
 #: src/hotkeys.cpp:127
 msgid "Update transitions"
-msgstr "刷新戰争迷霧"
+msgstr "刷新戰爭迷霧"
 
 #: src/hotkeys.cpp:129
 msgid "Delay Shroud Updates"
-msgstr "暫緩刷新戰争迷霧"
+msgstr "暫緩刷新戰爭迷霧"
 
 #: src/hotkeys.cpp:130
 msgid "Update Shroud Now"
-msgstr "立即刷新戰争迷霧"
+msgstr "立即刷新戰爭迷霧"
 
 #: src/hotkeys.cpp:131
 msgid "Continue Move"
@@ -1126,7 +1126,7 @@ msgstr "查看聊天紀録"
 
 #: src/hotkeys.cpp:137
 msgid "Change the language"
-msgstr "切换語言"
+msgstr "切換語言"
 
 #: src/hotkeys.cpp:139
 msgid "Enter user command"
@@ -1138,11 +1138,11 @@ msgstr "清除所有信息"
 
 #: src/hotkeys.cpp:142
 msgid "User-Command#2"
-msgstr "玩家命令#2"
+msgstr "玩家指令#2"
 
 #: src/hotkeys.cpp:143
 msgid "User-Command#3"
-msgstr "玩家命令#3"
+msgstr "玩家指令#3"
 
 #: src/hotkeys.cpp:525 src/hotkeys.cpp:848
 msgid "Do you really want to quit?"
