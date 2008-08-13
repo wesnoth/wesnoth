@@ -6,7 +6,7 @@ use CGI qw/:standard -no_xhtml/;
 use Time::gmtime;
 use strict;
 
-my ($host,$port) = ('campaigns.wesnoth.org', 15002);
+my ($host,$port) = ('add-ons.wesnoth.org', 15002);
 
 my $style = 'http://www.wesnoth.org/mw/skins/glamdrol/main.css';
 
