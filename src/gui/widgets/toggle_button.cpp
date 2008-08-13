@@ -129,6 +129,8 @@ void ttoggle_button::set_canvas_text()
 	foreach(tcanvas& canvas, tcontrol::canvas()) {
 		canvas.set_variable("icon", variant(icon_name_));
 	}
+
+	set_dirty();
 }
 
 void ttoggle_button::set_value(const bool selected)
