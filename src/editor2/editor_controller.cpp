@@ -78,11 +78,11 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
 		new mouse_action_fill(foreground_terrain_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, 
-		new mouse_action_select(&brush_)));
+		new mouse_action_select(&brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
-		new mouse_action_starting_position()));
+		new mouse_action_starting_position(key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
-		new mouse_action_paste(clipboard_)));
+		new mouse_action_paste(clipboard_, key_)));
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
 		if (menu.items().size() == 1) {
 			mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey(menu.items().front()).get_id());
@@ -103,6 +103,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	gui_->draw();
 	palette_->draw(true);
 	load_tooltips();
+	redraw_toolbar();
 	events::raise_draw_event();	
 }
 
@@ -724,8 +725,10 @@ mouse_action* editor_controller::get_mouse_action()
 
 void editor_controller::perform_refresh_delete(editor_action* action)
 {
-	std::auto_ptr<editor_action> action_auto(action);
-	perform_refresh(*action);
+	if (action) {
+		std::auto_ptr<editor_action> action_auto(action);
+		perform_refresh(*action);
+	}
 }
 
 void editor_controller::perform_refresh(const editor_action& action)
@@ -836,29 +839,23 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 	if (dragging_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON_LEFT) != 0
 	&& get_map().on_board_with_border(drag_from_hex_)) {
 		if (!get_map().on_board_with_border(hex_clicked)) return;
-		if (get_mouse_action() != NULL) {
-			LOG_ED << "Mouse drag\n";
-			editor_action* last_undo = get_map_context().last_undo_action();
-			bool partial = false;
-			editor_action* a = get_mouse_action()->drag(*gui_, x, y, partial, last_undo);
-			//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
-			//anything to the undo stack (hence a diferent perform_ call
-			if (a != NULL) {
-				std::auto_ptr<editor_action> aa(a);
-				if (partial) {
-					get_map_context().perform_partial_action(*a);
-				} else {
-					get_map_context().perform_action(*a);
-				}
-				refresh_after_action(true);
+		LOG_ED << "Mouse drag\n";
+		editor_action* last_undo = get_map_context().last_undo_action();
+		bool partial = false;
+		editor_action* a = get_mouse_action()->drag(*gui_, x, y, partial, last_undo);
+		//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
+		//anything to the undo stack (hence a diferent perform_ call
+		if (a != NULL) {
+			std::auto_ptr<editor_action> aa(a);
+			if (partial) {
+				get_map_context().perform_partial_action(*a);
+			} else {
+				get_map_context().perform_action(*a);
 			}
-		} else {
-			WRN_ED << __FUNCTION__ << ": There is no mouse action active!\n";
-		}		
-	} else {
-		if (get_mouse_action() != NULL) {
-			get_mouse_action()->move(*gui_, x, y);
+			refresh_after_action(true);
 		}
+	} else {
+		get_mouse_action()->move(*gui_, x, y);
 	}
 	gui().highlight_hex(hex_clicked);
 }
@@ -875,38 +872,29 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click, after generic handling\n";
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_map().on_board_with_border(hex_clicked)) return true;
-	if (get_mouse_action() != NULL) {
-		LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
-		editor_action* a = get_mouse_action()->click(*gui_, x, y);
-		if (a != NULL) {
-			perform_refresh_delete(a);
-		}
-		return true;
-	} else {
-		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
-		return false;
-	}
+	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
+	editor_action* a = get_mouse_action()->click(*gui_, x, y);
+	perform_refresh_delete(a);
+	return true;
 }
 
 void editor_controller::left_drag_end(int x, int y, const bool browse)
 {
-	if (get_mouse_action() != NULL) {
-		editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
-		if (a != NULL) {
-			perform_refresh_delete(a);
-		}
-	} else {
-		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
-	}	
+	editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
+	perform_refresh_delete(a);
 }
 
 void editor_controller::left_mouse_up(int x, int y, const bool browse)
 {
-	if (get_mouse_action() != NULL) {
-		refresh_after_action();
-	} else {
-		LOG_ED << __FUNCTION__ << ": There is no mouse action active!\n";
-	}	
+	refresh_after_action();
 }
+
+void editor_controller::process_keyup_event(const SDL_Event& event)
+{
+	LOG_ED << "keyup\n";
+	editor_action* a = get_mouse_action()->key_event(gui(), event);
+	perform_refresh_delete(a);
+}
+
 
 } //end namespace editor2

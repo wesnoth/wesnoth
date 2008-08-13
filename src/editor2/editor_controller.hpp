@@ -108,6 +108,7 @@ class editor_controller : public controller_base,
 		void left_mouse_up(int x, int y, const bool browse);
 		
 	protected:
+		void process_keyup_event(const SDL_Event& event);
 		mouse_handler_base& get_mouse_handler_base();
 		editor_display& get_display();	
 		brush* get_brush();
