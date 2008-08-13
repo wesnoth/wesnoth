@@ -429,7 +429,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		// Update the client side observer list for everyone except old player.
 		simple_wml::document observer_join;
 		observer_join.root().add_child("observer").set_attr_dup("name", old_player_name.c_str());
-		send_data(observer_join, old_player);
+		send_data(observer_join, old_player, "game_control");
 		// If the old player was the host of the game, choose another player.
 		/*if (old_player == owner_) {
 			host_leave = true;
