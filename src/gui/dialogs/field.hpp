@@ -225,23 +225,29 @@ public:
 	}
 
 	/** 
-	 * Sets the value of the widget.
+	 * Sets the value of the field.
+	 *
+	 * This sets the value in both the internal cache value and in the widget
+	 * itself.
 	 *
 	 * @param window              The window containing the widget.
 	 * @param value               The new value.
 	 */
-	void set_value(twindow& window, CT value) 
+	void set_widget_value(twindow& window, CT value) 
 	{
 		value_ = value;
 		restore(window);
 	}
 
 	/** 
-	 * Sets the value of the widget.
+	 * Sets the value of the field.
+	 *
+	 * This sets the internal cache value but not the widget value, this can
+	 * be used to initialize the field.
 	 *
 	 * @param value               The new value.
 	 */
-	void set_value(CT value) 
+	void set_cache_value(CT value) 
 	{
 		value_ = value;
 	}
@@ -253,20 +259,31 @@ public:
 	}
 
 	/** 
-	 * Gets the value of the widget.
+	 * Gets the value of the field.
+	 *
+	 * This function gets the value of the widget and stores that in the
+	 * internal cache, then that value is returned.
 	 *
 	 * @param window              The window containing the widget.
-	 */
-	T get_value(twindow& window) 
+	 *
+	 * @returns                   The current value of the widget.
+	 */ 
+	T get_widget_value(twindow& window) 
 	{
 		save(window, false);
 		return value_;
 	}
 
 	/** 
-	 * Gets the value of the widget.
-	 */
-	T get_value() 
+	 * Gets the value of the field.
+	 *
+	 * This function returns the value internal cache, this function can be
+	 * used after the widget no longer exists. The cache is normally updated
+	 * when the window is closed with succes.
+	 *
+	 * @returns                   The currently value of the internal cache.
+	 */ 
+	T get_cache_value() 
 	{
 		return value_;
 	}

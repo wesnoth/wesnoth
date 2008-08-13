@@ -44,22 +44,22 @@ teditor_new_map::teditor_new_map() :
 
 void teditor_new_map::set_map_width(int value) 
 { 
-	map_width_->set_value(value);
+	map_width_->set_cache_value(value);
 }
 
 int teditor_new_map::map_width() const
 {
-	return map_width_->get_value();
+	return map_width_->get_cache_value();
 }
 
 void teditor_new_map::set_map_height(int value)
 { 
-	map_height_->set_value(value);
+	map_height_->set_cache_value(value);
 }
 
 int teditor_new_map::map_height() const
 {
-	return map_height_->get_value();
+	return map_height_->get_cache_value();
 }
 
 twindow teditor_new_map::build_window(CVideo& video)

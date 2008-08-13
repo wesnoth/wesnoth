@@ -60,22 +60,22 @@ teditor_resize_map::teditor_resize_map() :
 
 void teditor_resize_map::set_map_width(int value) 
 { 
-	map_width_->set_value(value);
+	map_width_->set_cache_value(value);
 }
 
 int teditor_resize_map::map_width() const
 {
-	return map_width_->get_value();
+	return map_width_->get_cache_value();
 }
 
 void teditor_resize_map::set_map_height(int value)
 {
-	map_height_->set_value(value);
+	map_height_->set_cache_value(value);
 }
 
 int teditor_resize_map::map_height() const
 {
-	return map_height_->get_value();
+	return map_height_->get_cache_value();
 }
 
 void teditor_resize_map::set_old_map_width(int value) 
@@ -90,7 +90,7 @@ void teditor_resize_map::set_old_map_height(int value)
 
 bool teditor_resize_map::copy_edge_terrain() const
 {
-	return copy_edge_terrain_->get_value();
+	return copy_edge_terrain_->get_cache_value();
 }
 
 twindow teditor_resize_map::build_window(CVideo& video)
@@ -159,8 +159,8 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		set_direction_icon(i, "none");
 	}
 	
-	int xdiff = map_width_->get_value(window) - old_width_ ;
-	int ydiff = map_height_->get_value(window) - old_height_ ;
+	int xdiff = map_width_->get_widget_value(window) - old_width_ ;
+	int ydiff = map_height_->get_widget_value(window) - old_height_ ;
 	int x = static_cast<int>(expand_direction_) % 3;
 	int y = static_cast<int>(expand_direction_) / 3;
 	set_direction_icon(expand_direction_, "center");

@@ -158,7 +158,7 @@ void tmp_create_game::update_map(twindow& window)
 
 void tmp_create_game::update_map_settings(twindow& window)
 {
-	const bool use_map_settings = use_map_settings_->get_value(window);
+	const bool use_map_settings = use_map_settings_->get_widget_value(window);
 
 	fog_->widget_set_enabled(window, !use_map_settings, false);
 	shroud_->widget_set_enabled(window, !use_map_settings, false);
@@ -171,26 +171,26 @@ void tmp_create_game::update_map_settings(twindow& window)
 	if(use_map_settings) {
 		if(scenario_) {
 
-			fog_->set_value(window, ::settings::use_fog((*(*scenario_).get_children("side").front())["fog"]));
-			shroud_->set_value(window, ::settings::use_shroud((*(*scenario_).get_children("side").front())["shroud"]));
-			start_time_->set_value(window, ::settings::use_random_start_time((*scenario_)["random_start_time"]));
+			fog_->set_widget_value(window, ::settings::use_fog((*(*scenario_).get_children("side").front())["fog"]));
+			shroud_->set_widget_value(window, ::settings::use_shroud((*(*scenario_).get_children("side").front())["shroud"]));
+			start_time_->set_widget_value(window, ::settings::use_random_start_time((*scenario_)["random_start_time"]));
 
-			turns_->set_value(window, ::settings::get_turns((*scenario_)["turns"]));
-			gold_->set_value(window, ::settings::get_village_gold((*(*scenario_).get_children("side").front())["village_gold"]));
-			experience_->set_value(window, ::settings::get_xp_modifier((*scenario_)["experience_modifier"]));
+			turns_->set_widget_value(window, ::settings::get_turns((*scenario_)["turns"]));
+			gold_->set_widget_value(window, ::settings::get_village_gold((*(*scenario_).get_children("side").front())["village_gold"]));
+			experience_->set_widget_value(window, ::settings::get_xp_modifier((*scenario_)["experience_modifier"]));
 		}
 		// No scenario selected just leave the state unchanged for now.
 
 	} else {
 
 		// Fixme we should store the value and reuse it later...
-		fog_->set_value(window, preferences::fog());
-		shroud_->set_value(window, preferences::shroud());
-		start_time_->set_value(window, preferences::random_start_time());
+		fog_->set_widget_value(window, preferences::fog());
+		shroud_->set_widget_value(window, preferences::shroud());
+		start_time_->set_widget_value(window, preferences::random_start_time());
 
-		turns_->set_value(window, preferences::turns());
-		gold_->set_value(window, preferences::village_gold());
-		experience_->set_value(window, preferences::xp_modifier());
+		turns_->set_widget_value(window, preferences::turns());
+		gold_->set_widget_value(window, preferences::village_gold());
+		experience_->set_widget_value(window, preferences::xp_modifier());
 	}
 }
 

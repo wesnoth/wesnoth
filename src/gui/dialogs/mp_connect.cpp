@@ -194,7 +194,7 @@ void tmp_connect::show_server_list(twindow& window)
 	dlg.show(*video_);
 
 	if(dlg.get_retval() == twindow::OK) {
-		host_name_->set_value(window, dlg.host_name());
+		host_name_->set_widget_value(window, dlg.host_name());
 	}
 }
 
