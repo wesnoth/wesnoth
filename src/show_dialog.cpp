@@ -90,21 +90,28 @@ dialog_manager::~dialog_manager()
 	SDL_PushEvent(&pb_event);
 }
 
-dialog_frame::dialog_frame(CVideo &video, const std::string& title, const style& style,
-	bool auto_restore, std::vector<button*>* buttons, button* help_button)
-	:title_(title), video_(video), dialog_style_(style),
-	 buttons_(buttons), help_button_(help_button), restorer_(NULL), auto_restore_(auto_restore),
-	 top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png")),
-	 bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
-	 left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png")),
-	 right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-right.png")),
-	 top_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topleft.png")),
-	 bot_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botleft.png")),
-	 top_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topright.png")),
-	 bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png")),
-	 bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png"))
+dialog_frame::dialog_frame(CVideo &video, const std::string& title, 
+		const style& style, bool auto_restore, 
+		std::vector<button*>* buttons, button* help_button) :
+	title_(title), 
+	video_(video), 
+	dialog_style_(style), 
+	buttons_(buttons), 
+	help_button_(help_button), 
+	restorer_(NULL), 
+	auto_restore_(auto_restore), 
+	dim_(),
+	top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png")), 
+	bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png")), 
+	left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png")), 
+	right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-right.png")), 
+	top_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topleft.png")), 
+	bot_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botleft.png")), 
+	top_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topright.png")), 
+	bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png")), 
+	bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png")),
+	have_border_(top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL)
 {
-	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 }
 
 dialog_frame::~dialog_frame()
