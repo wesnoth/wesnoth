@@ -41,17 +41,28 @@ std::vector<std::string> empty_string_vector;
 }
 
 namespace mp {
-	gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) :
+gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) :
 	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
 	vision_icon_locator_("misc/invisible.png"),
 	time_limit_icon_locator_("themes/sand-clock.png"),
 	observer_icon_locator_(game_config::observer_image),
-	no_observer_icon_locator_("misc/no_observer.png"), map_hashes_(map_hashes),
-	item_height_(100), margin_(5), minimap_size_(item_height_ - 2*margin_),  h_padding_(5),
-	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
-	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
+	no_observer_icon_locator_("misc/no_observer.png"), 
+	map_hashes_(map_hashes),
+	item_height_(100), 
+	margin_(5), 
+	minimap_size_(item_height_ - 2*margin_),  
+	h_padding_(5),
+	header_height_(20), 
+	selected_(0), 
+	visible_range_(std::pair<size_t,size_t>(0,0)),
+	games_(),
+	redraw_items_(),
+	widths_(),
+	double_clicked_(false), 
+	ignore_next_doubleclick_(false), 
+	last_was_doubleclick_(false)
 {
 	set_numeric_keypress_selection(false);
 }
@@ -365,6 +376,14 @@ void gamebrowser::handle_event(const SDL_Event& event)
 }
 
 struct minimap_cache_item {
+
+	minimap_cache_item() :
+		map_data(),
+		mini_map(),
+		map_info_size()
+	{
+	}
+
 	std::string map_data;
 	surface mini_map;
 	std::string map_info_size;
@@ -648,6 +667,9 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	mp::ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
+	game_vacant_slots_(),
+	game_observers_(),
+
 	observe_game_(disp.video(), _("Observe Game")),
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
@@ -657,7 +679,8 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 #endif
 	quit_game_(disp.video(), _("Quit")),
 	last_selected_game_(-1), sorter_(gamelist),
-	games_menu_(disp.video(),cfg.child("multiplayer_hashes"))
+	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
+	minimaps_()
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
