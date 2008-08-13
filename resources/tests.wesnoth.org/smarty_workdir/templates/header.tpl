@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-
-<!--
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
--->
+{strip}
 
 <head>
   <meta http-equiv="content-type" content="text/xhtml; charset=utf-8" />
@@ -51,7 +47,8 @@
 <table class="menu">
 <tr><td><a href="index.php">Status</a></td></tr>
 <tr><td><a href="build_history.php">Build history</a></td></tr>
-<tr><td><a href="index.php">Test Graphs</a></td></tr>
+<!--<tr><td><a href="index.php">Test Graphs</a></td></tr>-->
 </table>
 </div>
 <div id="main" class="unit_test">
+{/strip}

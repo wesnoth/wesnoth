@@ -72,13 +72,13 @@ class TestResult {
 		$this->id = -1;
 		$this->build_id = -1;
 		$this->name = '';
-		$this->result = '';
-		$this->assertions_passed = -1;
-		$this->assertions_failed = -1;
-		$this->test_cases_passed = -1;
-		$this->test_cases_failed = -1;
-		$this->test_cases_skipped = -1;
-		$this->test_cases_aborted = -1;
+		$this->result = 'notstarted';
+		$this->assertions_passed = 0;
+		$this->assertions_failed = 0;
+		$this->test_cases_passed = 0;
+		$this->test_cases_failed = 0;
+		$this->test_cases_skipped = 0;
+		$this->test_cases_aborted = 0;
 
 	}
 

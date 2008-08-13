@@ -89,6 +89,11 @@ class Build {
 		$this->fetch('ORDER BY id DESC');
 	}
 
+	public function fetchBuildById($id)
+	{
+		$this->fetch('WHERE id=?', array($id));
+	}
+
 	private static function fetchVisibleBuilds($page, $builds_per_page)
 	{
 		return self::multiFetch('ORDER BY id DESC LIMIT ?,?', 
@@ -240,7 +245,7 @@ class Build {
 	{
 		if (is_null($this->result))
 		{
-			$this->result = new TestResult($this->getLastWorkingId());
+			$this->result = new TestResult($this->id);
 		}
 	}
 

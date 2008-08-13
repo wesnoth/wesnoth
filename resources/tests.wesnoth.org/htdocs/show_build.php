@@ -11,25 +11,23 @@
 
    See the COPYING file for more details.
 */
-
 $root_dir = './';
 
 require_once($root_dir . '../include/settup.php');
 
-$header = new Header('index');
+$header = new Header('build_history');
 
-$footer = new Footer('index');
+$footer = new Footer('build_history');
 
 $header->show();
 
-$build = new Build();
-$build->fetchLast();
+$user_params = new ParameterValidator($_GET);
 
+$build = new Build();
+$build->fetchBuildById($user_params->getInt('build', 0));
 $smarty->assign($build->getStatistics());
 
 $smarty->display('show_build.tpl');
 
-
 $footer->show();
-
 ?>

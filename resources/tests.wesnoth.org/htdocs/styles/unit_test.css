@@ -9,6 +9,19 @@ div.menu {
 	text-align:center;
 }
 
+.unit_test a {
+	color: #225599;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.unit_test a:hover {
+	text-decoration: underline;
+	font-weight: bold;
+	color: #225599;
+}
+
+
 table.build {
 	margin: auto;
 	margin-right: auto;
@@ -20,6 +33,7 @@ table.build {
 
 td.time {
 	font-weight: bold;
+	color: #104060;
 }
 
 .build .passed {
@@ -28,6 +42,10 @@ td.time {
 
 .build .failed, .aborted {
 	color: #FF0000;
+}
+
+.build .notstarted {
+	color: #FF7F00;
 }
 
 div.autohide {
@@ -57,7 +75,7 @@ table.test_error {
 }
 
 .test_error .Warning {
-	color: #FF4000;
+	color: #FF7F00;
 }
 
 .test_error .Exception {
@@ -86,18 +104,6 @@ div.paginate {
 	margin-left: auto;
 	margin-right: 0;
 	font-size: 0.8em;
-}
-
-.paginate a {
-	color: #225599;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-.paginate a:hoover {
-	text-decoration: underline;
-	font-weight: bold;
-	color: #225599;
 }
 
 .paginate .active {

@@ -1,5 +1,5 @@
-  <div id="content">
-  </div> <!-- content -->
+{strip}
+  </div> <!-- main -->
 
 <div class="visualClear"></div>
 
@@ -12,8 +12,6 @@
  </div>
 </div>
 
-</div> <!-- main -->
-
 </div> <!-- global -->
 
 <script type="text/javascript">
@@ -25,4 +23,4 @@ urchinTracker();
 
 </body>
 </html>
-
+{/strip}
