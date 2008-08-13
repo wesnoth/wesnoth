@@ -100,15 +100,15 @@ twindow teditor_resize_map::build_window(CVideo& video)
 
 void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel* old_width = window.get_widget<tlabel>("old_width", false);
-	tlabel* old_height = window.get_widget<tlabel>("old_height", false);
-	height_ = window.get_widget<tslider>("height", false);
-	width_ = window.get_widget<tslider>("width", false);
+	tlabel& old_width = window.get_widget<tlabel>("old_width", false);
+	tlabel& old_height = window.get_widget<tlabel>("old_height", false);
+	height_ = &window.get_widget<tslider>("height", false);
+	width_ = &window.get_widget<tslider>("width", false);
 	
 	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	width_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
-	old_width->set_label(lexical_cast<std::string>(old_width_));
-	old_height->set_label(lexical_cast<std::string>(old_height_));
+	old_width.set_label(lexical_cast<std::string>(old_width_));
+	old_height.set_label(lexical_cast<std::string>(old_height_));
 	
 	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
