@@ -193,6 +193,8 @@ wait::wait(game_display& disp, const config& cfg,
 	cancel_button_(disp.video(), _("Cancel")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
+	level_(),
+	state_(),
 	stop_updates_(false)
 {
 	game_menu_.set_numeric_keypress_selection(false);
