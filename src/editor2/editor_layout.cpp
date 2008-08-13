@@ -33,7 +33,7 @@ size_specs::size_specs() {
 	terrain_width = default_palette_width;
 	brush_x = 0;
 	brush_y = 0;
-	brush_padding = 5;
+	brush_padding = 2;
 	palette_x = 0;
 	palette_y = 0;
 	palette_w = 10;
@@ -42,8 +42,8 @@ size_specs::size_specs() {
 
 void adjust_sizes(const display &disp, size_specs &sizes) {
 	//! @todo Hardcoded coordinates for brush selection, make it themeable
-	sizes.brush_x = disp.map_outside_area().w + 22;
-	sizes.brush_y = 165;
+	sizes.brush_x = disp.map_outside_area().w + 8;
+	sizes.brush_y = 245;
 	//! @todo Hardcoded coordinates for terrain palette, make it themeable
 	sizes.palette_x = disp.map_outside_area().w + 16;
 	sizes.palette_y = sizes.brush_y + 132 + 10;

@@ -12,9 +12,6 @@
    See the COPYING file for more details.
 */
 
-//! @file action.hpp
-//! Editor action classes
-
 #ifndef EDITOR2_TERRAIN_GROUP_HPP
 #define EDITOR2_TERRAIN_GROUP_HPP
 

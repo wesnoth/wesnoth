@@ -12,14 +12,15 @@
   See the COPYING file for more details.
 */
 
-//! @file editor/editor_palettes.cpp
-//! Manage the terrain-palette in the editor.
+/**
+ * Manage the terrain-palette in the editor.
+ * Note: this is a near-straight rip from the old editor.
+*/
 
-#include "SDL.h"
-#include "SDL_keysym.h"
-
+#include "editor_common.hpp"
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
+
 #include "../config.hpp"
 #include "../sdl_utils.hpp"
 #include "../serialization/string_utils.hpp"
@@ -30,6 +31,9 @@
 #include "../tooltips.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
+
+#include "SDL.h"
+#include "SDL_keysym.h"
 
 #include <cassert>
 
@@ -107,7 +111,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	terrains_ = terrain_map_["all"];
 
 	if(terrains_.empty()) {
-		std::cerr << "No terrain found.\n";
+		ERR_ED << "No terrain found.\n";
 	}
 	else {
 		selected_fg_terrain_ = terrains_[0];
@@ -224,7 +228,7 @@ void terrain_palette::set_group(const std::string& id)
 {
 	terrains_ = terrain_map_[id];
 	if(terrains_.empty()) {
-		std::cerr << "No terrain found.\n";
+		ERR_ED << "No terrain found.\n";
 	}
 	scroll_top();
 }
@@ -410,7 +414,7 @@ void terrain_palette::draw(bool force) {
 			surface base_image(image::get_image(base_filename));
 
 			if(base_image == NULL) {
-				std::cerr << "image for terrain " << counter << ": '" << base_filename << "' not found\n";
+				ERR_ED << "image for terrain " << counter << ": '" << base_filename << "' not found\n";
 				return;
 			}
 
@@ -427,7 +431,7 @@ void terrain_palette::draw(bool force) {
 		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).editor_image() + ".png";
 		surface image(image::get_image(filename));
 		if(image == NULL) {
-			std::cerr << "image for terrain " << counter << ": '" << filename << "' not found\n";
+			ERR_ED << "image for terrain " << counter << ": '" << filename << "' not found\n";
 			return;
 		}
 
@@ -505,33 +509,36 @@ void terrain_palette::load_tooltips()
 //	restorer_.restore();
 // }
 
-brush_bar::brush_bar(display &gui, const size_specs &sizes)
-	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
-	  size_(30) {
+brush_bar::brush_bar(display &gui, const size_specs &sizes, 
+	std::vector<brush>& brushes, brush** the_brush)
+: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), 
+selected_(0), brushes_(brushes), the_brush_(the_brush),
+size_(30) {
 	adjust_size();
 }
 
 void brush_bar::adjust_size() {// TODO
 	set_location(size_specs_.brush_x, size_specs_.brush_y);
-	set_measurements(size_ * total_brush_ + (total_brush_ - 1) * size_specs_.brush_padding, size_);
+	set_measurements(size_ * brushes_.size() + (brushes_.size() - 1) * size_specs_.brush_padding, size_);
 	set_dirty();
 }
 
 unsigned int brush_bar::selected_brush_size() {
-	return selected_ + 1;
+	return selected_;
 }
 
-void brush_bar::select_brush_size(int new_size) {
-	assert(new_size > 0 && new_size <= total_brush_);
-	selected_ = new_size - 1;
+void brush_bar::select_brush(int index) {
+	assert(index > 0 && index < brushes_.size());
+	selected_ = index;
 }
 
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
-		if (static_cast<unsigned>(index) != selected_) {
+		if (index != selected_) {
 			set_dirty();
 			selected_ = index;
+			*the_brush_ = &brushes_[index];
 		}
 	}
 }
@@ -577,26 +584,20 @@ void brush_bar::draw(bool force) {
 	// Everything will be redrawn even though only one little part may
 	// have changed, but that happens so seldom so we'll settle with this.
 	SDL_Surface* const screen = gui_.video().getSurface();
-	for (int i = 1; i <= total_brush_; i++) {
-		std::stringstream filename;
-		filename << "editor/brush-" << i << ".png";
-		surface image(image::get_image(filename.str()));
+	for (size_t i = 0; i < brushes_.size(); i++) {
+		std::string filename = brushes_[i].image();
+		surface image(image::get_image(filename));
 		if (image == NULL) {
-			std::cerr << "Image " << filename.str() << " not found." << std::endl;
+			ERR_ED << "Image " << filename << " not found." << std::endl;
 			continue;
 		}
-		if (static_cast<unsigned>(image->w) != size_ ||
-				static_cast<unsigned>(image->h) != size_) {
-
+		if (static_cast<unsigned>(image->w) != size_ 
+		|| static_cast<unsigned>(image->h) != size_) {
 			image.assign(scale_surface(image, size_, size_));
 		}
-		SDL_Rect dstrect;
-		dstrect.x = x;
-		dstrect.y = size_specs_.brush_y;
-		dstrect.w = image->w;
-		dstrect.h = image->h;
+		SDL_Rect dstrect = {x, size_specs_.brush_y, image->w, image->h};
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		const Uint32 color = static_cast<unsigned>(i) == selected_brush_size() ?
+		const Uint32 color = i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
@@ -606,23 +607,20 @@ void brush_bar::draw(bool force) {
 	set_dirty(false);
 }
 
-int brush_bar::selected_index(const int x, const int y) const {
+int brush_bar::selected_index(int x, int y) const {
 	const int bar_x = size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
-	if ((x < bar_x || static_cast<unsigned>(x) > bar_x + size_ * total_brush_ +
-			total_brush_ * size_specs_.brush_padding) ||
-		    (y < bar_y || static_cast<unsigned>(y) > bar_y + size_)) {
+	if ((x < bar_x || x > bar_x + size_ * brushes_.size() +
+			 brushes_.size() * size_specs_.brush_padding) ||
+		    (y < bar_y || y > bar_y + size_)) {
 
 		return -1;
 	}
 
-	for(int i = 0; i < total_brush_; i++) {
-		const int px = bar_x + size_ * i + i * size_specs_.brush_padding;
-
-		if(x >= px && static_cast<unsigned>(x) <= px + size_ &&
-				y >= bar_y && static_cast<unsigned>(y) <= bar_y + size_) {
-
+	for(int i = 0; i <  brushes_.size(); i++) {
+		int px = bar_x + size_ * i + i * size_specs_.brush_padding;
+		if (x >= px && x <= px + size_ && y >= bar_y && y <= bar_y + size_) {
 			return i;
 		}
 	}

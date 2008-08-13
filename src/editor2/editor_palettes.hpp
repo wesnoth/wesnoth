@@ -12,8 +12,10 @@
   See the COPYING file for more details.
 */
 
-//! @file editor/editor_palettes.hpp
-//!
+/**
+ * Manage the terrain-palette in the editor.
+ * Note: this is a near-straight rip from the old editor.
+*/
 
 #ifndef EDITOR_PALETTES_H_INCLUDED
 #define EDITOR_PALETTES_H_INCLUDED
@@ -26,6 +28,7 @@
 #include "../display.hpp"
 #include "../map.hpp"
 #include "../widgets/widget.hpp"
+#include "brush.hpp"
 #include "editor_layout.hpp"
 
 #include <vector>
@@ -154,13 +157,13 @@ private:
 //! A bar where the brush is drawn
 class brush_bar : public gui::widget {
 public:
-	brush_bar(display &gui, const size_specs &sizes);
+	brush_bar(display &gui, const size_specs &sizes, std::vector<brush>& brushes, brush** the_brush);
 
 	//! Return the size of currently selected brush.
 	unsigned int selected_brush_size();
 
 	//! Select a brush size.
-	void select_brush_size(int new_size);
+	void select_brush(int index);
 
 	//! Draw the palette. If force is true, everything 
 	//! will be redrawn, even though it is not dirty.
@@ -184,7 +187,8 @@ private:
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int selected_;
-	const int total_brush_;
+	std::vector<brush> brushes_;
+	brush** the_brush_;
 	const size_t size_;
 };
 

@@ -23,11 +23,15 @@
 
 namespace editor2 {
 
+/**
+ * The brush class represents a single brush -- a set of relative locations around a "hotspot",
+ * and related info such as the icon image. It is constructed from WML -- the [brush] tag.
+ */
 class brush
 {
 public:
 	/**
-	 * Construct a default (empty) brush. Note that not even the hotspot is affected by default
+	 * Construct a default (empty) brush. Note that not even the hotspot is affected by default,
 	 */
 	brush();
 	
@@ -47,8 +51,24 @@ public:
 	 */
 	std::set<gamemap::location> project(const gamemap::location& hotspot) const;
 	
+	/**
+	 * @return the name of this brush
+	 */
+	const std::string name() const { return name_; }
+	
+	/**
+	 * @return the image of this brush
+	 */
+	const std::string image() const { return image_; }
+	
 protected:
+	/**
+	 * The relative locations of the brush
+	 */
 	std::set<gamemap::location> relative_tiles_;
+	
+	std::string name_;
+	std::string image_;
 };
 
 

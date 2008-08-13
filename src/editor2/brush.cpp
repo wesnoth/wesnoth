@@ -27,6 +27,7 @@ brush::brush()
 }
 
 brush::brush(const config& cfg)
+: name_(cfg["name"]), image_(cfg["image"])
 {
 	int radius = lexical_cast_default<int>(cfg["radius"], 0);
 	if (radius > 0) {

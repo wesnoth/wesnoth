@@ -61,7 +61,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	adjust_sizes(gui(), *size_specs_);
 	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
 		foreground_terrain_, background_terrain_);
-	//brush_bar_ = new brush_bar(gui(), *size_specs_);
 	const config::child_list& children = game_config.get_children("brush");
 	foreach (const config* i, game_config.get_children("brush")) {
 		brushes_.push_back(brush(*i));
@@ -72,6 +71,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		brushes_[0].add_relative_location(0, 0);
 	}
 	brush_ = &brushes_[0];
+	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
 	
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
 		new mouse_action_paint(foreground_terrain_, &brush_, key_)));
@@ -99,9 +99,11 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
 	palette_->adjust_size();
+	brush_bar_->adjust_size();
 	refresh_all();
 	gui_->draw();
 	palette_->draw(true);
+	brush_bar_->draw(true);
 	load_tooltips();
 	redraw_toolbar();
 	events::raise_draw_event();	
@@ -127,6 +129,7 @@ void editor_controller::load_tooltips()
 editor_controller::~editor_controller()
 {
 	delete palette_;
+	delete brush_bar_;
 	delete size_specs_;
 	delete floating_label_manager_;
 	delete map_generator_;
@@ -814,7 +817,9 @@ void editor_controller::display_redraw_callback(display&)
 {
 	adjust_sizes(gui(), *size_specs_);
 	palette_->adjust_size();
+	brush_bar_->adjust_size();
 	palette_->draw(true);
+	brush_bar_->draw(true);
 	//display::redraw_everything removes our custom tooltips so reload them
 	load_tooltips();
 	gui().invalidate_all();
