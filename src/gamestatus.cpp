@@ -1169,7 +1169,31 @@ static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	gs_wmi.clear();
 }
 
-game_state::game_state(const game_state& state) : variable_set(/*silences gcc warning*/)
+game_state::game_state(const game_state& state) : 
+	/* default construct everything to silence compiler warnings. */
+	variable_set(),
+	label(),
+	version(),
+	campaign_type(),
+	campaign_define(),
+	campaign_xtra_defines(),
+	campaign(),
+	history(),
+	abbrev(),
+	scenario(),
+	next_scenario(),
+	completion(),
+	players(),
+	scoped_variables(),
+	wml_menu_items(),
+	difficulty(),
+	replay_data(),
+	starting_pos(),
+	snapshot(),
+	last_selected(),
+	rng_(),
+	variables(),
+	temporaries()
 {
 	*this = state;
 }
