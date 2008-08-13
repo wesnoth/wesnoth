@@ -1104,7 +1104,15 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc));
+
+				// get weapon info for last_breath and die events
+				config dat;
+				dat.add_child("first");
+				dat.add_child("second");
+				(*(dat.child("first")))["weapon"] = d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
+				(*(dat.child("second")))["weapon"] = a_stats_->weapon != NULL ? a_stats_->weapon->id() : "none";
+				
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc, dat));
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
@@ -1125,7 +1133,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					unit_display::unit_die(d_->first, d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 				}
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,attacker_loc));
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,attacker_loc, dat));
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
@@ -1354,8 +1362,15 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
+				
+				// get weapon info for last_breath and die events
+				config dat;
+				dat.add_child("first");
+				dat.add_child("second");
+				(*(dat.child("first")))["weapon"] = a_stats_->weapon != NULL ? a_stats_->weapon->id() : "none";
+				(*(dat.child("second")))["weapon"] = d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, defender_loc));
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, defender_loc,dat));
 
 				d_ = units_.find(defender_loc);
 				a_ = units_.find(death_loc);
@@ -1376,7 +1391,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					unit_display::unit_die(attacker_, a_->second,a_stats_->weapon,d_stats_->weapon, &(d_->second));
 				}
 
-				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc));
+				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc,dat));
 
 				// Don't try to call refresh_bc() here the attacker or defender might have
 				// been replaced by another unit, which might have a lower number of weapons.
