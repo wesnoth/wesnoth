@@ -53,9 +53,9 @@ void set_use_system_sendfile(bool);
 /** Function to asynchronously received data to the given socket. */
 void receive_data(TCPsocket sock);
 
-TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped= 0
+TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped
 #ifdef BANDWIDTH_MONITOR
-		, network::bandwidth_in_ptr& 
+		, network::bandwidth_in_ptr&
 #endif
 		);
 

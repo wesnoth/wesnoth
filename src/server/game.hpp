@@ -93,8 +93,8 @@ public:
 	//! Send data to all players in this game except 'exclude'.
 	void send_and_record_server_message(const char* message,
 			const network::connection exclude=0);
-	void send_data(simple_wml::document& data, const network::connection exclude=0) const;
-	void send_to_one(simple_wml::document& data, const network::connection sock) const;
+	void send_data(simple_wml::document& data, const network::connection exclude=0, const std::string packet_type = "unknown") const;
+	void send_to_one(simple_wml::document& data, const network::connection sock, const std::string packet_type = "unknown") const;
 
 	void record_data(simple_wml::document* data);
 

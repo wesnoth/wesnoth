@@ -1113,7 +1113,7 @@ void game::load_next_scenario(const player_map::const_iterator user) const {
 	send_observerjoins(user->first);
 }
 
-void game::send_data(simple_wml::document& data, const network::connection exclude) const
+void game::send_data(simple_wml::document& data, const network::connection exclude, const std::string packet_type) const
 {
 	simple_wml::string_span s = data.output_compressed();
 	const user_vector& users = all_game_users();
@@ -1124,7 +1124,7 @@ void game::send_data(simple_wml::document& data, const network::connection exclu
 	}
 }
 
-void game::send_to_one(simple_wml::document& data, const network::connection sock) const
+void game::send_to_one(simple_wml::document& data, const network::connection sock, const std::string packet_type) const
 {
 	simple_wml::string_span s = data.output_compressed();
 	network::send_raw_data(s.begin(), s.size(), sock,"game");
