@@ -223,10 +223,12 @@ wesnothd_SOURCES = \
 	time.cpp \
 	loadscreen_empty.cpp 
 
+wesnothd_compilerflags += $(AM_CXXFLAGS)
 if BANDWIDTH_MONITOR
-wesnothd_CXXFLAGS = $(AM_CXXFLAGS) -DBANDWIDTH_MONITOR
+wesnothd_compilerflags += -DBANDWIDTH_MONITOR
 endif
-
+ 
+wesnothd_CXXFLAGS =  $(wesnothd_compilerflags)
 wesnothd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
 
