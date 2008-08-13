@@ -59,6 +59,8 @@ Version 1.5.2+svn:
      defender in a battle
    * Add some gcc-4.3.0 compilation fixes (patch #1083)
    * Fixed bug #12094: Event "last breath" cannot be triggered for attackers
+   * Fixed [filter_attack] and [filter_second_attack] not being effective
+     in die/last_breath events.
    * Fixed Wesnoth crashing after an attacker/defender_hits/misses event if
    the WML kills one unit and replaces/unstores the other
 
