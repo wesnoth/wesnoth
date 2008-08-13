@@ -289,6 +289,11 @@ AC_ARG_ENABLE([raw-sockets],
 	      [raw_sockets=$enableval],
 	      [raw_sockets=no])
 
+AC_ARG_ENABLE([bandwidth-monitor],
+              AS_HELP_STRING([--enable-bandwidth-monitor], [Enable bandwidth monitoring for server]),
+	      [bandwidth_monitor=$enableval],
+	      [bandwidth_monitor=no])
+
 if test "x$raw_sockets" = "xyes"
 then
 	CPPFLAGS="$CPPFLAGS -DNETWORK_USE_RAW_SOCKETS"
@@ -302,6 +307,7 @@ AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([TESTS], [test x$tests = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([EDITOR2], [test x$editor2 = xyes])
+AM_CONDITIONAL([BANDWIDTH_MONITOR], [test x$bandwidth_monitor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
