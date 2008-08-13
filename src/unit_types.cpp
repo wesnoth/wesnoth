@@ -43,38 +43,39 @@ namespace {
 	std::map< std::string, std::set< std::string > > future_advancefroms;
 }
 
-attack_type::attack_type(const config& cfg)
+attack_type::attack_type(const config& cfg) :
+	aloc_(),
+	dloc_(),
+	attacker_(false),
+	unitmap_(NULL),
+	map_(NULL),
+	game_status_(NULL),
+	teams_(NULL),
+	other_attack_(NULL),
+	cfg_(cfg),
+	animation_(),
+	description_(cfg["description"]),
+	id_(cfg["name"]),
+	type_(cfg["type"]),
+	icon_(cfg["icon"]),
+	range_(cfg["range"].base_str()),
+	damage_(atol(cfg["damage"].c_str())),
+	num_attacks_(atol(cfg["number"].c_str())),
+	attack_weight_(lexical_cast_default<double>(cfg["attack_weight"],1.0)),
+	defense_weight_(lexical_cast_default<double>(cfg["defense_weight"],1.0)),
+	accuracy_(atol(cfg["accuracy"].c_str())),
+	parry_(atol(cfg["parry"].c_str()))
+
 {
-	cfg_ = cfg;
-	id_ = cfg["name"];
-	description_ = cfg["description"];
 	if (description_.empty())
 		description_ = egettext(id_.c_str());
 
-	type_ = cfg["type"];
-	icon_ = cfg["icon"];
 	if(icon_.empty()){
 		if (id_ != "")
 			icon_ = "attacks/" + id_ + ".png";
 		else
 			icon_ = "attacks/blank-attack.png";
 	}
-
-	accuracy_ = atol(cfg["accuracy"].c_str());
-	parry_ = atol(cfg["parry"].c_str());
-	range_ = cfg["range"].base_str();
-	damage_ = atol(cfg["damage"].c_str());
-	num_attacks_ = atol(cfg["number"].c_str());
-
-	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
-	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
-
-	unitmap_=NULL;
-	map_=NULL;
-	game_status_=NULL;
-	teams_=NULL;
-	other_attack_=NULL;
-
 }
 
 std::string attack_type::accuracy_parry_description() const
@@ -296,7 +297,11 @@ bool attack_type::has_special_by_id(const std::string& special) const
 	return false;
 }
 
-unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) : moveCosts_(), defenseMods_(), parent_(parent)
+unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) : 
+	moveCosts_(), 
+	defenseMods_(), 
+	parent_(parent),
+	cfg_()
 {
 	//the unit_type give its whole cfg, we don't need all that.
 	//so we filter to keep only keys related to movement_type
@@ -538,28 +543,80 @@ bool unit_movement_type::is_flying() const
 }
 
 unit_type::unit_type() :
+	cfg_(),
+	id_(),
+	type_name_(),
+	description_(),
+	hitpoints_(0),
+	level_(0),
+	movement_(0),
+	max_attacks_(0),
+	cost_(0),
+	usage_(),
+	undead_variation_(),
+	image_(),
+	image_profile_(),
+	flag_rgb_(),
+	num_traits_(0),
+	gender_types_(),
+	variations_(),
+	race_(NULL),
+	alpha_(),
+	abilities_(),
+	ability_tooltips_(),
+	zoc_(false),
+	hide_help_(false),
+	advances_to_(),
+	advances_from_(),
+	experience_needed_(0),
+	alignment_(),
+	movementType_(),
+	possibleTraits_(),
+	genders_(),
+	animations_(),
+	build_status_(NOT_BUILT),
 	portraits_()
 {
     DBG_UT << "unit_type default constructor\n";
-    build_status_ = NOT_BUILT;
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 }
 
-unit_type::unit_type(const unit_type& o)
-    : cfg_(o.cfg_), id_(o.id_), type_name_(o.type_name_), description_(o.description_),
-      hitpoints_(o.hitpoints_), level_(o.level_), movement_(o.movement_), cost_(o.cost_),
-      usage_(o.usage_), undead_variation_(o.undead_variation_),
-      image_(o.image_), image_profile_(o.image_profile_), flag_rgb_(o.flag_rgb_),
-      num_traits_(o.num_traits_), variations_(o.variations_), race_(o.race_),
-      alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      hide_help_(o.hide_help_), advances_to_(o.advances_to_), advances_from_(o.advances_from_),
-      experience_needed_(o.experience_needed_), alignment_(o.alignment_),
-      movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
-      genders_(o.genders_), animations_(o.animations_), portraits_(o.portraits_)
+unit_type::unit_type(const unit_type& o) :
+	cfg_(o.cfg_), 
+	id_(o.id_), 
+	type_name_(o.type_name_), 
+	description_(o.description_), 
+	hitpoints_(o.hitpoints_), 
+	level_(o.level_), 
+	movement_(o.movement_),
+	max_attacks_(o.max_attacks_),
+	cost_(o.cost_), 
+	usage_(o.usage_), 
+	undead_variation_(o.undead_variation_), 
+	image_(o.image_), 
+	image_profile_(o.image_profile_), 
+	flag_rgb_(o.flag_rgb_), 
+	num_traits_(o.num_traits_), 
+	variations_(o.variations_), 
+	race_(o.race_), 
+	alpha_(o.alpha_), 
+	abilities_(o.abilities_),
+	ability_tooltips_(o.ability_tooltips_), 
+	zoc_(o.zoc_),
+	hide_help_(o.hide_help_), 
+	advances_to_(o.advances_to_), 
+	advances_from_(o.advances_from_), 
+	experience_needed_(o.experience_needed_), 
+	alignment_(o.alignment_), 
+	movementType_(o.movementType_), 
+	possibleTraits_(o.possibleTraits_), 
+	genders_(o.genders_), 
+	animations_(o.animations_), 
+    build_status_(o.build_status_),
+	portraits_(o.portraits_)
 {
     DBG_UT << "unit_type copy-constructor\n";
-    build_status_ = o.build_status_;
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
 
@@ -570,11 +627,42 @@ unit_type::unit_type(const unit_type& o)
 
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
-                     const race_map& races, const std::vector<config*>& traits) :
+		const race_map& races, const std::vector<config*>& traits) :
+	cfg_(),
+	id_(),
+	type_name_(),
+	description_(),
+	hitpoints_(0),
+	level_(0),
+	movement_(0),
+	max_attacks_(0),
+	cost_(0),
+	usage_(),
+	undead_variation_(),
+	image_(),
+	image_profile_(),
+	flag_rgb_(),
+	num_traits_(0),
+	gender_types_(),
+	variations_(),
+	race_(NULL),
+	alpha_(),
+	abilities_(),
+	ability_tooltips_(),
+	zoc_(false),
+	hide_help_(false),
+	advances_to_(),
+	advances_from_(),
+	experience_needed_(0),
+	alignment_(),
+	movementType_(),
+	possibleTraits_(),
+	genders_(),
+	animations_(),
+	build_status_(NOT_BUILT),
 	portraits_()
 {
     DBG_UT << "unit_type constructor cfg, mv_types, races, traits\n";
-    build_status_ = NOT_BUILT;
 	build_full(cfg, mv_types, races, traits);
 }
 
@@ -994,12 +1082,19 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 unit_type_data* unit_type_data::instance_ = NULL;
 
-unit_type_data::unit_type_data()
-{}
-
-unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper()
+unit_type_data::unit_type_data() :
+	unit_types_()
 {
-    unit_cfg_ = NULL;
+}
+
+unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
+	types_(),
+	dummy_unit_map_(),
+	movement_types_(),
+	races_(),
+	unit_traits_(),
+	unit_cfg_(NULL)
+{
     dummy_unit_map_.insert(std::pair<const std::string,unit_type>("dummy_unit", unit_type()));
 }
 
