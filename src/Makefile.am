@@ -223,7 +223,7 @@ wesnothd_SOURCES = \
 	time.cpp \
 	loadscreen_empty.cpp 
 
-wesnothd_compilerflags += $(AM_CXXFLAGS)
+wesnothd_compilerflags = $(AM_CXXFLAGS)
 if BANDWIDTH_MONITOR
 wesnothd_compilerflags += -DBANDWIDTH_MONITOR
 endif
