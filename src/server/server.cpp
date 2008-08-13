@@ -543,6 +543,17 @@ void server::run() {
 				if (last_stats_ + 5*60 <= now) {
 					dump_stats(now);
 				}
+#ifdef BANDWIDTH_MONITOR
+				// Send network stats every hour
+				static size_t prev_hour = localtime(&now)->tm_hour;
+				if (prev_hour != localtime(&now)->tm_hour)
+				{
+					prev_hour = localtime(&now)->tm_hour;
+					LOG_SERVER << network::get_bandwidth_stats();
+
+				}
+#endif
+
 				// send a 'ping' to all players to detect ghosts
 				DBG_SERVER << "Pinging inactive players.\n" ;
  				std::ostringstream strstr ;
