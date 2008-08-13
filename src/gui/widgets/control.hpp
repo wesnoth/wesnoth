@@ -207,15 +207,6 @@ private:
 	bool multiline_label_;
 
 	/**
-	 * Contains the wrapped text for a multiline label.
-	 *
-	 * This is a cache which contains the translated label text with extra line
-	 * endings. The extra line endings are determined in the sizing code and
-	 * which text will be rendered in the end.
-	 */
-	std::string wrapped_label_;
-
-	/**
 	 * Tooltip text.
 	 *
 	 * The hovering event can cause a small tooltip to be shown, this is the

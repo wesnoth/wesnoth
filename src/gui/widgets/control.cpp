@@ -44,7 +44,6 @@ tcontrol::tcontrol(const unsigned canvas_count) :
 	visible_(true),
 	label_(),
 	multiline_label_(false),
-	wrapped_label_(),
 	tooltip_(),
 	help_message_(),
 	canvas_(canvas_count),
@@ -185,9 +184,6 @@ void tcontrol::set_size(const SDL_Rect& rect)
 		canvas.set_height(rect.h);
 	}
 
-	// clear the cache.
-	wrapped_label_.clear();
-	
 	// inherited
 	twidget::set_size(rect);
 }
@@ -199,7 +195,6 @@ void tcontrol::set_label(const t_string& label)
 	}
 
 	label_ = label;
-	wrapped_label_.clear();
 	set_canvas_text();
 	set_dirty();
 }
