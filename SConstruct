@@ -326,7 +326,6 @@ if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
 from install import HardLink
 map(lambda bin, node: Alias(bin, node, node and HardLink("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
-binaries.remove("test")
 env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))
 all = env.Alias("all")
