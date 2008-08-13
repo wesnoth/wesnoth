@@ -134,8 +134,8 @@ std::string get_bandwidth_stats();
 std::string get_bandwidth_stats_all();
 std::string get_bandwidth_stats(int hour);
 
-void add_bandwidth_out(const std::string packet_type, size_t len);
-void add_bandwidth_in(const std::string packet_type, size_t len);
+void add_bandwidth_out(const std::string& packet_type, size_t len);
+void add_bandwidth_in(const std::string& packet_type, size_t len);
 struct bandwidth_in {
 	bandwidth_in(int len) : len_(len), type_("unknown") {}
 	~bandwidth_in();
@@ -181,14 +181,16 @@ connection receive_data(std::vector<char>& buf
 #endif
 		);
 
-void send_file(const std::string&, connection, const std::string packet_type = "unknown");
+void send_file(const std::string&, connection, const std::string& packet_type = "unknown");
 
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
 //! Throws error.
-size_t send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped, const std::string packet_type = "unknown");
+size_t send_data(const config& cfg, connection connection_num /*= 0*/, 
+		const bool gzipped, const std::string& packet_type = "unknown");
 
-void send_raw_data(const char* buf, int len, connection connection_num, const std::string packet_type = "unknown");
+void send_raw_data(const char* buf, int len, connection connection_num, 
+		const std::string& packet_type = "unknown");
 
 //! Function to send any data that is in a connection's send_queue,
 //! up to a maximum of 'max_size' bytes --
@@ -196,8 +198,8 @@ void send_raw_data(const char* buf, int len, connection connection_num, const st
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 //! Function to send data to all peers except 'connection_num'.
-void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped, const std::string packet_type = "unknown"
-		);
+void send_data_all_except(const config& cfg, connection connection_num, 
+		const bool gzipped, const std::string& packet_type = "unknown");
 
 //! Function to get the remote ip address of a socket.
 std::string ip_address(connection connection_num);

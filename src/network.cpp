@@ -917,7 +917,7 @@ hour_stats_vector hour_stats(24);
 
 
 
-static bandwidth_map::iterator add_bandwidth_entry(const std::string packet_type)
+static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_type)
 {
 	time_t now = time(0);
 	struct tm * timeinfo = localtime(&now);
@@ -1002,14 +1002,14 @@ std::string get_bandwidth_stats(int hour)
 	return ss.str();
 }
 
-void add_bandwidth_out(const std::string packet_type, size_t len)
+void add_bandwidth_out(const std::string& packet_type, size_t len)
 {
 	bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
 	itor->second.out_bytes += len;
 	++(itor->second.out_packets);
 }
 
-void add_bandwidth_in(const std::string packet_type, size_t len)
+void add_bandwidth_in(const std::string& packet_type, size_t len)
 {
 	bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
 	itor->second.in_bytes += len;
@@ -1022,8 +1022,13 @@ void add_bandwidth_in(const std::string packet_type, size_t len)
 	}
 
 #endif
-void send_file(const std::string& filename, connection connection_num, const std::string packet_type
-		)
+void send_file(const std::string& filename, connection connection_num, 
+#ifdef BANDWIDTH_MONITOR
+	const std::string& packet_type
+#else	
+	const std::string& 
+#endif
+	)
 {
 	assert(connection_num > 0);
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
@@ -1048,7 +1053,13 @@ void send_file(const std::string& filename, connection connection_num, const std
 //! @todo Note the gzipped parameter should be removed later, we want to send
 //! all data gzipped. This can be done once the campaign server is also updated
 //! to work with gzipped data.
-size_t send_data(const config& cfg, connection connection_num, const bool gzipped, const std::string packet_type)
+size_t send_data(const config& cfg, connection connection_num, const bool gzipped, 
+#ifdef BANDWIDTH_MONITOR
+	const std::string& packet_type
+#else
+	const std::string& 
+#endif
+	)
 {
 	DBG_NW << "in send_data()...\n";
 	
@@ -1091,8 +1102,7 @@ size_t send_data(const config& cfg, connection connection_num, const bool gzippe
 			);
 }
 
-void send_raw_data(const char* buf, int len, connection connection_num, const std::string packet_type
-		)
+void send_raw_data(const char* buf, int len, connection connection_num, const std::string& packet_type)
 {
 	if(len == 0) {
 		return;
@@ -1105,8 +1115,7 @@ void send_raw_data(const char* buf, int len, connection connection_num, const st
 	if(!connection_num) {
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
-			send_raw_data(buf, len, connection_num, packet_type
-					);
+			send_raw_data(buf, len, connection_num, packet_type);
 		}
 		return;
 	}
@@ -1131,8 +1140,13 @@ void process_send_queue(connection, size_t)
 }
 
 //! @todo Note the gzipped parameter should be removed later.
-void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped, const std::string packet_type
-		)
+void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped, 
+#ifdef BANDWIDTH_MONITOR
+	const std::string& packet_type
+#else
+	const std::string& 
+#endif
+	)
 {
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(*i == connection_num) {
