@@ -2004,13 +2004,12 @@ namespace {
 	WML_HANDLER_FUNCTION(debug_message,/*handler*/,/*event_info*/,cfg)
 	{
 		const std::string log_level = cfg["logger"];
-		const std::string log_message = cfg["message"];
 		if (log_level == "err" || log_level == "error")
-			ERR_NO << log_message << "\n";
+			ERR_NO << cfg["message"] << "\n";
 		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
-			WRN_NO << log_message << "\n";
+			WRN_NO << cfg["message"] << "\n";
 		else
-			LOG_NO << log_message << "\n";
+			LOG_NO << cfg["message"] << "\n";
 	}
 
 
