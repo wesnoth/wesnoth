@@ -17,6 +17,10 @@
 
 #ifndef NETWORK_HPP_INCLUDED
 #define NETWORK_HPP_INCLUDED
+/**
+ * Enable bandwidth stats
+ **/
+//#define BANDWIDTH_MONITOR
 
 class config;
 
@@ -24,6 +28,8 @@ class config;
 
 #include <string>
 #include <vector>
+
+#include <boost/shared_ptr.hpp>
 
 namespace threading
 {
@@ -122,6 +128,35 @@ bool disconnect(connection connection_num=0, bool force=false);
 //! on the given connection (and presumably then the handling of the error
 //! will include closing the connection).
 void queue_disconnect(connection connection_num);
+#ifdef BANDWIDTH_MONITOR
+
+std::string get_bandwidth_stats();
+std::string get_bandwidth_stats_all();
+std::string get_bandwidth_stats(int hour);
+
+void add_bandwidth_out(const std::string packet_type, size_t len);
+void add_bandwidth_in(const std::string packet_type, size_t len);
+struct bandwidth_in {
+	bandwidth_in(int len) : len_(len), type_("unknown") {}
+	~bandwidth_in();
+//	{
+//		network::add_bandwidth_in(type_, len_);
+//	}
+
+	void set_type(const std::string& type)
+	{
+		type_ = type;
+	}
+	
+	private:
+	int len_;
+	std::string type_;
+};
+
+typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
+
+#endif
+
 
 //! Function to receive data from either a certain connection,
 //! or all connections if connection_num is 0.
@@ -130,18 +165,30 @@ void queue_disconnect(connection connection_num);
 //! Returns the connection that data was received from,
 //! or 0 if timeout occurred.
 //! Throws error if an error occurred.
-connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0);
-connection receive_data(config& cfg, connection connection_num, unsigned int timeout);
-connection receive_data(std::vector<char>& buf);
+connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0
+#ifdef BANDWIDTH_MONITOR
+		, bandwidth_in_ptr* b = 0
+#endif
+		);
+connection receive_data(config& cfg, connection connection_num, unsigned int timeout
+#ifdef BANDWIDTH_MONITOR
+		, bandwidth_in_ptr* b = 0
+#endif
+		);
+connection receive_data(std::vector<char>& buf
+#ifdef BANDWIDTH_MONITOR
+		, bandwidth_in_ptr* = 0
+#endif
+		);
 
-void send_file(const std::string&, connection);
+void send_file(const std::string&, connection, const std::string packet_type = "unknown");
 
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
 //! Throws error.
-size_t send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped);
+size_t send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped, const std::string packet_type = "unknown");
 
-void send_raw_data(const char* buf, int len, connection connection_num);
+void send_raw_data(const char* buf, int len, connection connection_num, const std::string packet_type = "unknown");
 
 //! Function to send any data that is in a connection's send_queue,
 //! up to a maximum of 'max_size' bytes --
@@ -149,7 +196,8 @@ void send_raw_data(const char* buf, int len, connection connection_num);
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 //! Function to send data to all peers except 'connection_num'.
-void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped);
+void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped, const std::string packet_type = "unknown"
+		);
 
 //! Function to get the remote ip address of a socket.
 std::string ip_address(connection connection_num);
