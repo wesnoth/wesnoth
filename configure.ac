@@ -311,7 +311,7 @@ AM_CONDITIONAL([BANDWIDTH_MONITOR], [test x$bandwidth_monitor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
-AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes || x$editor2 = xyes])
+AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes || test x$editor2 = xyes ]])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 
 if test x$editor2 = xyes
