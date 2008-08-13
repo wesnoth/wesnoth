@@ -17,6 +17,7 @@
 
 #include "gui/widgets/helper.hpp"
 #include "sdl_utils.hpp"
+#include "wml_exception.hpp"
 
 #include "SDL.h"
 
@@ -432,6 +433,33 @@ public:
 	virtual const twidget* find_widget(const std::string& id, 
 			const bool /*must_be_active*/) const
 		{ return id_ == id ? this : 0; }
+		
+	/** 
+	 * The template counterpart of find_widget(id) with automatic dynamic_cast 
+	 * and error checking.
+	 */
+	template <class T>
+	T* get_widget(const std::string& id,
+				   const bool must_be_active)
+	{
+		T* result = dynamic_cast<T*>(find_widget(id, must_be_active));
+		VALIDATE(result, missing_widget(id));
+		return result;
+	}
+
+	/** 
+	 * The template counterpart of find_widget(id) with automatic dynamic_cast 
+	 * and error checking - const version.
+	 */
+	template <class T>
+	T* get_widget(const std::string& id,
+				   const bool must_be_active) const
+	{
+		T* result = dynamic_cast<T*>(find_widget(id, must_be_active));
+		VALIDATE(result, missing_widget(id));
+		return result;
+	}
+	
 	/** 
 	 * Does the widget contain the widget.
 	 *
