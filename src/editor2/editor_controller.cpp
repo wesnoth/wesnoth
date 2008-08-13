@@ -855,7 +855,7 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 			refresh_after_action(true);
 		}
 	} else {
-		get_mouse_action()->move(*gui_, x, y);
+		get_mouse_action()->move(*gui_, hex_clicked);
 	}
 	gui().highlight_hex(hex_clicked);
 }
