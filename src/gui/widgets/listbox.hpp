@@ -93,7 +93,7 @@ public:
 	 */
 	void scrollbar_click(twidget* caller);
 
-	void set_list_builder(tbuilder_grid* list_builder) 
+	void set_list_builder(tbuilder_grid_ptr list_builder) 
 		{ list_builder_ = list_builder; }
 
 	void set_assume_fixed_row_size(bool assume = true) 
@@ -243,7 +243,7 @@ private:
 	tstate state_;
 
 	/** It's possible to let the engine build the contents, we need the builder in that case */
-	tbuilder_grid* list_builder_;
+	tbuilder_grid_ptr list_builder_;
 
 	/** Returns the scrollbar widget */
 	tscrollbar_* scrollbar();

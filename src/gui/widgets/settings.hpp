@@ -158,7 +158,7 @@ struct tlistbox_definition : public tcontrol_definition
 
 		// NOTE maybe we need the borders...
 
-		tbuilder_grid* scrollbar;
+		tbuilder_grid_ptr scrollbar;
 
 	};
 };

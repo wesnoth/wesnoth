@@ -116,10 +116,10 @@ public:
 
 	twidget* build () const;
 
-	tbuilder_grid* header;
-	tbuilder_grid* footer;
+	tbuilder_grid_ptr header;
+	tbuilder_grid_ptr footer;
 
-	tbuilder_grid* list_builder;
+	tbuilder_grid_ptr list_builder;
 
 	/**
 	 * Listbox data.
@@ -177,7 +177,7 @@ public:
 
 	twidget* build () const;
 
-	tbuilder_grid* grid;
+	tbuilder_grid_ptr grid;
 };
 
 struct tbuilder_slider : public tbuilder_control
@@ -311,7 +311,7 @@ public:
 
 	twidget* build () const;
 
-	tbuilder_grid* grid;
+	tbuilder_grid_ptr grid;
 
 private:
 	int retval_;

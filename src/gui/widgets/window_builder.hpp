@@ -80,6 +80,9 @@ private:
 	void read_extra(const config& cfg);
 };
 
+typedef boost::intrusive_ptr<tbuilder_grid> tbuilder_grid_ptr;
+typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
+
 class twindow_builder
 {
 public:
@@ -108,7 +111,7 @@ public:
 		
 		std::string definition;
 	
-		tbuilder_grid* grid;
+		tbuilder_grid_ptr grid;
 	};
 
 	std::vector<tresolution> resolutions;
