@@ -64,6 +64,10 @@ public:
 	 */
 	std::set<gamemap::location> get_contigious_terrain_tiles(const gamemap::location& start) const;
 	
+	/**
+	 * Set labels for staring positions in the given display object.
+	 * @return the locations where the labels were added
+	 */
 	std::set<gamemap::location> set_starting_position_labels(display& disp);
 	
 	/**
@@ -103,6 +107,9 @@ public:
 	 */
 	void select_all();
 	
+	/**
+	 * @return true if the entire map is selected, false otherwise
+	 */
 	bool everything_selected() const;
 		
 	/** 

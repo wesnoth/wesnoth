@@ -45,7 +45,8 @@ class editor_action_whole_map : public editor_action
 };
 
 /**
- * Container action wrapping several actions into one
+ * Container action wrapping several actions into one. 
+ * The actions are performed in the order they are added,.
  */
 class editor_action_chain : public editor_action
 {
@@ -65,10 +66,11 @@ class editor_action_chain : public editor_action
         std::vector<editor_action*> actions_;
 };
 
-//common base classes for actions with common behaviour
 
-//actions which act on a specified location (and possibly on other locations 
-//that can be derived from the staring hex)
+/** 
+ * Base class for actions which act on a specified location (and possibly on other locations 
+ * that can be derived from the staring hex)
+ */
 class editor_action_location : public editor_action
 {
   public:
@@ -80,8 +82,9 @@ class editor_action_location : public editor_action
         gamemap::location loc_;
 };
 
-//actions which in addition to acting on a hex, act with one terrain type.
-//Mostly paint-related actions.
+/** Base class for actions which in addition to acting on a hex, 
+ * act with one terrain type, i.e. paint-related actions.
+ */
 class editor_action_location_terrain : public editor_action_location
 {
     public:
@@ -94,6 +97,9 @@ class editor_action_location_terrain : public editor_action_location
         t_translation::t_terrain t_;
 };
 
+/**
+ * Base class for area-affecting actions
+ */
 class editor_action_area : public editor_action
 {
     public:
@@ -106,7 +112,9 @@ class editor_action_area : public editor_action
 		std::set<gamemap::location> area_;
 };
 
-//paste a region into the map.
+/**
+ * Paste a map fragment into the map. No offset is used.
+ */
 class editor_action_paste : public editor_action_location
 {
     public:
@@ -120,8 +128,11 @@ class editor_action_paste : public editor_action_location
         map_fragment paste_;
 };
 
-//replace a hex at a given location with a given terrain
-//since this is a lot simpler than a brush paint, it is separate at least for now
+/**
+ * Draw -- replace a hex at a given location with a given terrain. Since this is 
+  * a lot simpler than a brush paint, it is separate at least for now
+ * (it is somewhat redundant)
+ */
 class editor_action_paint_hex : public editor_action_location_terrain
 {
     public:
@@ -133,6 +144,9 @@ class editor_action_paint_hex : public editor_action_location_terrain
         void perform_without_undo(map_context& mc) const;
 };
 
+/**
+ * Paint the same terrain on a number of locations on the map.
+ */
 class editor_action_paint_area : public editor_action_area
 {
     public:
@@ -148,7 +162,9 @@ class editor_action_paint_area : public editor_action_area
 		bool one_layer_;
 };
 
-//flood fill
+/**
+ * Flood fill. Somewhat redundand with paint_area.
+ */
 class editor_action_fill : public editor_action_location_terrain
 {
     public:
@@ -163,6 +179,9 @@ class editor_action_fill : public editor_action_location_terrain
 		bool one_layer_;
 };
 
+/**
+ * Set starting position action
+ */
 class editor_action_starting_position : public editor_action_location
 {
     public:
@@ -176,6 +195,9 @@ class editor_action_starting_position : public editor_action_location
 		int player_;
 };
 
+/**
+ * "xor" select action, used as undo in select/deselect
+ */
 class editor_action_select_xor : public editor_action_area
 {
 	public:
@@ -187,6 +209,9 @@ class editor_action_select_xor : public editor_action_area
 		void perform_without_undo(map_context& mc) const;
 };
 
+/**
+ * Select the given locations
+ */
 class editor_action_select : public editor_action_area
 {
 	public:
@@ -198,6 +223,9 @@ class editor_action_select : public editor_action_area
 		void perform_without_undo(map_context& mc) const;
 };
 
+/**
+ * Deselect the given locations
+ */
 class editor_action_deselect : public editor_action_area
 {
 	public:
@@ -209,6 +237,9 @@ class editor_action_deselect : public editor_action_area
 		void perform_without_undo(map_context& mc) const;
 };
 
+/**
+ * Select the entire map
+ */
 class editor_action_select_all : public editor_action
 {
 	public:
@@ -219,6 +250,9 @@ class editor_action_select_all : public editor_action
 		void perform_without_undo(map_context& mc) const;
 };
 
+/**
+ * Invert the selection
+ */
 class editor_action_select_inverse : public editor_action
 {
 	public:
@@ -229,7 +263,10 @@ class editor_action_select_inverse : public editor_action
 		void perform_without_undo(map_context& mc) const;
 };
 
-//resize map (streching / clipping behaviour?)
+/**
+ * Resize the map. The offsets specify, indirectly, the direction of expanding/shrinking,
+ * and fill=NONE enables copying of edge terrain instead of filling.
+ */
 class editor_action_resize_map : public editor_action
 {
 	public:
@@ -247,7 +284,10 @@ class editor_action_resize_map : public editor_action
 		t_translation::t_terrain fill_;
 };
 
-//basic rotations. angle is multiplied by 90 degrees so 2 does a 180 turn
+/**
+ * Basic rotations. angle is multiplied by 90 degrees so 2 does a 180 turn
+ * @todo implement
+ */
 class editor_action_rotate_map : public editor_action
 {
 	public:
@@ -261,6 +301,9 @@ class editor_action_rotate_map : public editor_action
 		int angle_;
 };
 
+/**
+ * Flip the map along the X axis.
+ */
 class editor_action_flip_x : public editor_action
 {
 	public:
@@ -270,6 +313,9 @@ class editor_action_flip_x : public editor_action
 		void perform_without_undo(map_context& mc) const;
 };
 
+/**
+ * Flip the map along the Y axis.
+ */
 class editor_action_flip_y : public editor_action
 {
 	public:

@@ -45,6 +45,10 @@
 
 #include <boost/bind.hpp>
 
+namespace {
+	std::string default_dir = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+}
+
 namespace editor2 {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
@@ -182,7 +186,7 @@ void editor_controller::load_map_dialog()
 	if (!confirm_discard()) return;
 	std::string fn = get_map_context().get_filename();
 	if (fn.empty()) {
-		fn = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+		fn = default_dir;
 	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
 	if (res == 0) {
@@ -209,7 +213,6 @@ void editor_controller::new_map_dialog()
 
 void editor_controller::save_map_as_dialog()
 {
-	const std::string default_dir =	get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
 		input_name = default_dir;

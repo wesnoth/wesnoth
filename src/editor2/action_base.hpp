@@ -32,7 +32,12 @@
 
 namespace editor2 {
 
-//base class (interface) for editor actions.
+/**
+ * Base class for all editor actions. An editor_action object encapsulates the action 
+ * to be performed on a map, in separation from the user interface or display, 
+ * and provodes a way of reversing it's affects by creating an "undo" action.
+ * All the actions can be proccessed via this base class' virtual functions.
+ */
 class editor_action
 {
     public:
@@ -40,7 +45,7 @@ class editor_action
         virtual ~editor_action();
 		
 		/**
-		 * Perform the action, returning an undo action that, when performed, will reverse any effects of this action.
+		 * Perform the action, returning an undo action that, when performed, shall reverse any effects of this action.
 		 * The undo action object is owned by the caller. Default behaviour is to create a whole-map undo, call
 		 * the perform_without_undo function and return the undo object.
 		 */

@@ -147,6 +147,7 @@ editor_action* editor_action_starting_position::perform(map_context& mc) const
 	gamemap::location old_loc = mc.get_map().starting_position(player_);
 	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
 	if (old_player != -1) {
+		// If another player was starting at the location, we actually perform two actions, so the undo is an action_chain.
 		editor_action_chain* undo_chain = new editor_action_chain();
 		undo_chain->append_action(new editor_action_starting_position(loc_, old_player));
 		undo_chain->append_action(new editor_action_starting_position(old_loc, player_));

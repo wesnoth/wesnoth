@@ -25,7 +25,11 @@
 namespace editor2 {
 
 /**
- * This class wraps around a map to provide a conscise interface for the editor to work with
+ * This class wraps around a map to provide a conscise interface for the editor to work with.
+ * The actual map object can change rapidly (be assigned to), the map context persists 
+ * data (like the undo stacks) in this case. The functionality is here, not in editor_controller
+ * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
+ * maps to be open at the same time.
  */	
 class map_context : private boost::noncopyable
 {
@@ -36,9 +40,17 @@ public:
 	editor_map& get_map() { return map_; };
 	const editor_map& get_map() const { return map_; }
 	
+	/**
+	 * Draw a terrain on a single location on the map. 
+	 * Sets the refresh flags accordingly.
+	 */
 	void draw_terrain(t_translation::t_terrain terrain, const gamemap::location& loc, 
 		bool one_layer_only = false);
 	
+	/**
+	 * Draw a terrain on a set of locations on the map. 
+	 * Sets the refresh flags accordingly.
+	 */
 	void draw_terrain(t_translation::t_terrain terrain, const std::set<gamemap::location>& locs, 
 		bool one_layer_only = false);
 
@@ -83,12 +95,13 @@ public:
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;
 	
+	/** @return a pointer to the last undo action or NULL if the undo stack is empty */
 	editor_action* last_undo_action();
 
 	/** @return true when redo can be performed, false otherwise */
 	bool can_redo() const;
 
-	/** Un-does an action, and puts it in the redo stack for a possible redo */
+	/** Un-does the last action, and puts it in the redo stack for a possible redo */
 	void undo();
 
 	/** Re-does a previousle undid action, and puts it back in the undo stack. */
@@ -153,11 +166,26 @@ protected:
 	 */
 	int actions_since_save_;	
 	
+	/**
+	 * Cache of set starting position labels. Necessary for removing them.
+	 */
 	std::set<gamemap::location> starting_position_label_locs_;
 	
+	/**
+	 * Refresh flag indicating the map in this context should be completely reloaded by the display
+	 */
 	bool needs_reload_;
+	
+	/**
+	 * Refresh flag indicating the terrain in the map has changed and requires a rebuild
+	 */
 	bool needs_terrain_rebuild_;
+	
+	/**
+	 * Refresh flag indicating the labels in the map have changed
+	 */
 	bool needs_labels_reset_;
+	
 	std::set<gamemap::location> changed_locations_;
 	bool everything_changed_;
 };
