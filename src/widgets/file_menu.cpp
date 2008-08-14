@@ -215,6 +215,9 @@ std::string file_menu::get_path_up(const std::string path, const unsigned levels
 		// The root was reached, represent this as one delimiter only.
 		curr_path = path_delim;
 	}
+#ifdef _WIN32
+	if (curr_path.size() == 2 && curr_path[1] == ':') curr_path += path_delim;
+#endif
 	return curr_path;
 }
 
