@@ -37,7 +37,12 @@ unit_map::unit_map(const gamemap::location &loc, const unit &u) :
 	add(new std::pair<gamemap::location,unit>(loc, u));
 }
 
-unit_map::unit_map(const unit_map &that)
+unit_map::unit_map(const unit_map &that) :
+	/* Initialize to silence compiler warnings. */
+	map_(),
+	lmap_(),
+	num_iters_(0), 
+	num_invalid_(0)
 {
 	*this = that;
 }
