@@ -13,14 +13,14 @@
 </div>
 
 </div> <!-- global -->
-
+<!--
 <script type="text/javascript">
 _uacct = "UA-1872754-3";
 </script>
 <script type="text/javascript">
 urchinTracker();
 </script>
-
+-->
 </body>
 </html>
 {/strip}

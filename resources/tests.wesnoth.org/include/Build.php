@@ -12,20 +12,6 @@
    See the COPYING file for more details.
 */
 
-/*
-   Copyright (C) 2008 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
-
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License version 2
-   or at your option any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
-
-   See the COPYING file for more details.
-*/
-
-
 class Build {
 	private $db;
 	private $id;
@@ -86,7 +72,7 @@ class Build {
 
 	public function fetchLast()
 	{
-		$this->fetch('ORDER BY id DESC');
+		$this->fetch('WHERE id=(SELECT MAX(id) FROM builds)');
 	}
 
 	public function fetchBuildById($id)
@@ -96,8 +82,11 @@ class Build {
 
 	private static function fetchVisibleBuilds($page, $builds_per_page)
 	{
-		return self::multiFetch('ORDER BY id DESC LIMIT ?,?', 
+		$ret = self::multiFetch('ORDER BY id DESC LIMIT ?,?', 
 			array(($page-1)*$builds_per_page, $builds_per_page));
+
+		TestResult::fetchResultsForBuilds($ret);
+		return $ret;
 	}
 
 	private static function getNumberOfVisiblePages($builds_per_page)
@@ -249,6 +238,11 @@ class Build {
 		}
 	}
 
+	public function setResult(TestResult &$result)
+	{
+		$this->result = $result;
+	}
+
 	private function getErrorStatistics()
 	{
 		$ret = array();
@@ -262,49 +256,21 @@ class Build {
 	public static function getVisibleBuilds(ParameterValidator $user_params)
 	{
 		$ret = array();
-		$builds_per_page = 6; // TODO: get from config
-		$ret['paginate']['number_of_pages']	= self::getNumberOfVisiblePages($builds_per_page);
-
+		$builds_per_page = 18; // TODO: get from config
+		$number_of_vissible_pages = 5;
 		$page = $user_params->getInt('page', 1);
-		if ($page < 0)
-			$page = 1;
-		if ($page > $ret['paginate']['number_of_pages'])
-			$page = $ret['paginate']['number_of_pages'];
-		
-		$ret['paginate']['page'] = $page;
+		$number_of_pages	= self::getNumberOfVisiblePages($builds_per_page);
 
-		$ret['paginate']['link'] = 'build_history.php?page=';
-		$visible = 5;
-		$visible_minus = 0;
-		$start = $page - floor(($visible-1)/2);
-		if ($start <= 1)
-		{
-			$start = 1;
-			$visible_minus = 1;
-		}
-		$last = $start + $visible + $visible_minus;
-		if ($last >= $ret['paginate']['number_of_pages'] + 1)
-		{
-			$last = $ret['paginate']['number_of_pages'] + 1;
-			$start = $last - $visible - 1;
-			if ($start < 1)
-				$start = 1;
-		}
-		$ret['paginate']['first_page'] = $start; 
-		$ret['paginate']['last_page'] = $last; 
-		$ret['paginate']['visible'] = $last - $start; 
-		
+		$pager = new Paginate('build_history.php?page=', $page, $number_of_pages, $number_of_vissible_pages);
+
+		$ret['paginate'] = $pager->make();
 
 		$ret['builds'] = array();
-		$builds = self::fetchVisibleBuilds($page, $builds_per_page);
+		$builds = self::fetchVisibleBuilds($ret['paginate']['page'], $builds_per_page);
 		foreach($builds as $build)
 		{
 			$ret['builds'][] = $build->getBuildStats();
 		}
-
-
-
-
 		return $ret;
 	}
 
@@ -341,6 +307,28 @@ class Build {
 
 		return 	array('builds' => array($this->getBuildStats()),
 					  'errors'			=> $this->getErrorStatistics());
+	}
+
+	public function pruneOldBuilds()
+	{
+		$query = 'SELECT b1.id 
+				  FROM builds b1 LEFT JOIN test_results as r1 ON b1.id=r1.build_id
+								 LEFT JOIN test_errors as e1 ON b1.id=e1.before_id
+		  						 LEFT JOIN test_errors as e2 ON b1.id=e1.last_id,
+					   builds b2 LEFT JOIN test_results as r2 ON b2.id=r2.build_id
+				  WHERE b1.time < ?
+					   AND b1.status = b2.status 
+				  	   AND b1.error_msg = b2.error_msg 
+					   AND (b1.id = b2.id+1)
+					   AND (e1.id IS NULL AND b1.id IS NOT NULL)
+					   AND ((r1.id IS NULL AND r2.id IS NULL) 
+					   		OR (r1.result = r2.result 
+								AND r1.assertions_passed=r2.assertions_passed 
+								AND r1.assertions_failed=r2.assertions_failed))';
+
+		$_2dayes = 2*24*3600;  // TODO: get from Config
+		$result = $this->db->Execute($query, array($this->db->DBTimeStamp(time()-$_2dayes)));
+//		var_dump($result->GetAll());
 	}
 }
 ?>

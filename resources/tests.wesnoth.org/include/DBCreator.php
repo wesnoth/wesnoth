@@ -62,7 +62,7 @@ class DBIndex {
 		$this->field_name = $field_name;
 		$this->type = $type;
 		if (empty($key_name))
-			$key_name = $field_name;
+			$key_name = preg_replace('/^`([^`]*)`.*$/','$1',$field_name);
 		$this->key_name = $key_name;
 	}
 	public function getCreateSQL()
@@ -73,7 +73,7 @@ class DBIndex {
 	public function match_and_alter($db, &$create_sql, $table_name)
 	{
 		$m = array();
-		$needle = "/^.*$this->type (`$this->key_name`)? \\(`$this->field_name`\\).*$/im";
+		$needle = "/^.*$this->type (`$this->key_name`)? \\($this->field_name\\).*$/im";
 		if (!preg_match($needle,$create_sql))
 		{
 //			echo "$needle\n$create_sql\n";
@@ -315,7 +315,7 @@ class DBCreator {
 		$configtable = new DBTable('configs', 'InnoDB');
 		$configtable->addChild(new DBField('name', 'VARCHAR(255) NOT NULL'));
 		$configtable->addChild(new DBField('value', 'VARCHAR(255) NOT NULL'));
-		$configtable->addChild(new DBIndex('name', 'PRIMARY KEY'));
+		$configtable->addChild(new DBIndex('`name`', 'PRIMARY KEY'));
 		$this->format->addChild($configtable);
 
 		$buildstable = new DBTable('builds', 'InnoDB');
@@ -324,8 +324,9 @@ class DBCreator {
 		$buildstable->addChild(new DBField('time', 'TIMESTAMP NOT NULL', 'CURRENT_TIMESTAMP'));
 		$buildstable->addChild(new DBField('status', 'INT NOT NULL'));
 		$buildstable->addChild(new DBField('error_msg', 'BLOB NOT NULL'));
-		$buildstable->addChild(new DBIndex('id', 'PRIMARY KEY'));
-		$buildstable->addChild(new DBIndex('time', 'KEY'));
+		$buildstable->addChild(new DBIndex('`id`', 'PRIMARY KEY'));
+		$buildstable->addChild(new DBIndex('`time`', 'KEY'));
+		$buildstable->addChild(new DBIndex('`svn_version`', 'KEY'));
 		$this->format->addChild($buildstable);
 
 		$errortable = new DBTable('test_errors', 'InnoDB');
@@ -333,10 +334,12 @@ class DBCreator {
 		$errortable->addChild(new DBField('before_id', 'INT NOT NULL'));
 		$errortable->addChild(new DBField('last_id', 'INT NOT NULL'));
 		$errortable->addChild(new DBField('error_type', 'VARCHAR(10) NOT NULL'));
-		$errortable->addChild(new DBField('file', 'VARCHAR(255) NOT NULL'));
+		$errortable->addChild(new DBField('file', 'VARCHAR(64) NOT NULL'));
 		$errortable->addChild(new DBField('line', 'INT NOT NULL'));
 		$errortable->addChild(new DBField('error_msg', 'BLOB NOT NULL'));
-		$errortable->addChild(new DBIndex('id', 'PRIMARY KEY'));
+		$errortable->addChild(new DBIndex('`id`', 'PRIMARY KEY'));
+//		$errortable->addChild(new DBIndex('`error_type`', 'KEY')); // posible key alternative for next one
+		$errortable->addChild(new DBIndex('`error_type`,`file`', 'KEY', 'error_type_and_file'));
 		$errortable->addChild(new DBForeignKey('test_errors_before_id_key','`before_id`', '`builds` (`id`)'));
 		$errortable->addChild(new DBForeignKey('test_errors_last_id_key','`last_id`', '`builds` (`id`)'));
 		$this->format->addChild($errortable);
@@ -351,7 +354,7 @@ class DBCreator {
 		$resulttable->addChild(new DBField('test_cases_failed', 'INT NOT NULL'));
 		$resulttable->addChild(new DBField('test_cases_skipped', 'INT NOT NULL'));
 		$resulttable->addChild(new DBField('test_cases_aborted', 'INT NOT NULL'));
-		$resulttable->addChild(new DBIndex('id', 'PRIMARY KEY'));
+		$resulttable->addChild(new DBIndex('`id`', 'PRIMARY KEY'));
 		$resulttable->addChild(new DBForeignKey('test_results_build_id_key', '`build_id`', '`builds` (`id`)'));
 		$this->format->addChild($resulttable);
 

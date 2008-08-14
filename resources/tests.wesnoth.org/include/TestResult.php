@@ -44,6 +44,8 @@ class TestResult {
 			} else {
 				$this->fetch('WHERE build_id = ?', array($data));
 			}
+		} else {
+			$this->reset();
 		}
 	}
 
@@ -57,6 +59,51 @@ class TestResult {
 		} else {
 			$this->reset();
 		}
+	}
+
+	private static function multiFetch($where, $params = array())
+	{
+		global $db;
+		$result = $db->Execute('SELECT * FROM test_results '
+			. $where, $params);
+		$ret = array();
+		while (!$result->EOF())
+		{
+			$obj = new TestResult();
+			$obj->init($result->fields);
+			$ret[] = $obj;
+			$result->moveNext();
+		} 
+		return $ret;
+	}
+
+
+	public static function fetchResultsForbuilds(&$builds)
+	{
+		$id_finder = array();
+		$id_list = array();
+		foreach($builds as $index => $build)
+		{
+			$id_list[] = $build->getId();
+			$id_finder[$build->getId()] = $index;
+		}
+		$results = self::multiFetch('WHERE build_id IN ('.implode($id_list,',').')');
+
+		foreach($results as $result)
+		{
+			$builds[$id_finder[$result->getBuildId()]]->setResult($result);
+			unset($id_finder[$result->getBuildId()]);
+		}
+		$empty_result = new TestResult();
+		foreach($id_finder as $index)
+		{
+			$builds[$index]->setResult($empty_result);
+		}
+	}
+
+	public function getBuildId()
+	{
+		return $this->build_id;
 	}
 
 	private function init($values)
