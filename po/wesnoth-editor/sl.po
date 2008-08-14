@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ed-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-06-29 12:24+0200\n"
+"POT-Creation-Date: 2008-08-14 20:11+0200\n"
 "PO-Revision-Date: 2004-10-18 18:33+0200\n"
 "Last-Translator: lynx \n"
 "Language-Team:  sl\n"
@@ -72,6 +72,26 @@ msgstr "Vasi:"
 msgid "castle"
 msgstr "Obala"
 
+#. [brush]
+#: data/core/editor2-brushes.cfg:4
+msgid "Single Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:15
+msgid "Radius 1 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:25
+msgid "Radius 2 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:55
+msgid "Hex Line NW-SE"
+msgstr ""
+
 #. [menu]
 #: data/themes/editor.cfg:462
 msgid "File"
@@ -113,11 +133,11 @@ msgstr "Povečaj"
 msgid "Zoom out"
 msgstr "Pomanjšaj"
 
-#: src/editor/editor.cpp:247
+#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:624
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/editor/editor.cpp:249
+#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:630
 msgid "Redo"
 msgstr "Uveljavi"
 
@@ -153,15 +173,15 @@ msgstr "Jezik"
 msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
-#: src/editor/editor.cpp:495 src/editor/editor_main.cpp:303
+#: src/editor/editor.cpp:495 src/editor/editor_main.cpp:304
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Urejevalnik kart za Battle for Wesnoth"
 
-#: src/editor/editor.cpp:520
+#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:226
 msgid "Save the Map As"
 msgstr "Shrani kot"
 
-#: src/editor/editor.cpp:531
+#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:230
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Ta karta že obstaja. Ali jo hočete prepisati?"
 
@@ -170,6 +190,7 @@ msgid "None"
 msgstr ""
 
 #: src/editor/editor.cpp:559 src/editor/editor.cpp:1425
+#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:184
 msgid "Player"
 msgstr "Igralec"
 
@@ -181,7 +202,7 @@ msgstr "Kateri igralec?"
 msgid "Which player should start here?"
 msgstr "Kateri igralec naj začne tukaj?"
 
-#: src/editor/editor.cpp:630
+#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:191
 msgid "Choose a Map to Load"
 msgstr "Izberi karto za nalaganje"
 
@@ -205,11 +226,11 @@ msgstr "Zapusti Urejevalnik"
 msgid "Do you want to save the map before quitting?"
 msgstr "Ali želite pred odhodom karto shraniti?"
 
-#: src/editor/editor.cpp:1356
+#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:345
 msgid "Map saved."
 msgstr "Karta shranjena."
 
-#: src/editor/editor.cpp:1364
+#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:350
 msgid "Could not save the map: $msg"
 msgstr "Karte nisem mogel shraniti: $msg"
 
@@ -217,11 +238,11 @@ msgstr "Karte nisem mogel shraniti: $msg"
 msgid "Error: Illegal character in filename."
 msgstr "Napaka: nedovoljen znak v imenu datoteke."
 
-#: src/editor/editor_palettes.cpp:461
+#: src/editor/editor_palettes.cpp:464 src/editor2/editor_palettes.cpp:486
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:463
+#: src/editor/editor_palettes.cpp:466 src/editor2/editor_palettes.cpp:488
 msgid "BG"
 msgstr "BG"
 
@@ -234,4 +255,63 @@ msgstr ""
 #: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
 #: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
 msgid " maximum="
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:154
+msgid "Fatal errror"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:162
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:165
+msgid "There are unsaved changes in the map."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:167
+msgid "Quit"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:177
+msgid "There are unsaved changes in the map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:178
+msgid "Do you want to discard all changes you made te the map?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:367 src/editor2/editor_controller.cpp:373
+msgid "There was an error while loading the map:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:370
+msgid "Error loading map (format)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:376
+msgid "Error loading map (wml)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:626
+msgid "Can't Undo"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:632
+msgid "Can't Redo"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:181
+#, fuzzy
+msgid "(Player)^None"
+msgstr "Igralec"
+
+#: src/editor2/mouse_action.cpp:188
+msgid "Choose player"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:189
+msgid ""
+"Which player should start here? You can also use the 1-9 and delete keys to "
+"set/clear staring positions."
 msgstr ""
