@@ -308,6 +308,10 @@ void tgui_definition::load_definitions(
 
 		T* def = new T(**itor);
 
+		// We assume all definitions are unique if not we would leak memory.
+		assert(control_definition[definition_type].find(def->id) 
+			== control_definition[definition_type].end());
+
 		control_definition[definition_type].insert(std::make_pair(def->id, def));
 	}
 
@@ -1071,7 +1075,7 @@ tresolution_definition_ptr get_control(
 
 	assert(control_definition != current_gui->second.control_definition.end());
 
-	std::map<std::string, tcontrol_definition*>::const_iterator 
+	std::map<std::string, tcontrol_definition_ptr>::const_iterator 
 		control = control_definition->second.find(definition);
 
 	if(control == control_definition->second.end()) {

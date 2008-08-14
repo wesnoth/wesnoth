@@ -123,6 +123,8 @@ public:
 
 };
 
+typedef boost::intrusive_ptr<tcontrol_definition> tcontrol_definition_ptr;
+
 struct tbutton_definition : public tcontrol_definition
 {
 	tbutton_definition(const config& cfg);
@@ -325,7 +327,7 @@ struct tgui_definition
 	void activate() const;
 	
 	typedef std::map <std::string /*control type*/, 
-		std::map<std::string /*id*/, tcontrol_definition*> > 
+		std::map<std::string /*id*/, tcontrol_definition_ptr> > 
 		tcontrol_definition_map;
 
 	tcontrol_definition_map control_definition;
