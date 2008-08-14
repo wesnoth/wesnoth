@@ -1101,15 +1101,18 @@ namespace {
 			dlg2.show();
 		}
 	}
-} // end unnamed namespace 4
 
-#define ADDONS_OPT_DOWNLOAD		0
-#define ADDONS_OPT_UNINSTALL	2
-#define ADDONS_OPT_UPDATE		3
+
+	const int addon_download  = 0;
+	const int addon_uninstall = 2;  // NOTE this value is also known by WML so don't change it.
+	const int addon_update    = 3;
+
+} // end unnamed namespace 4
 
 void manage_addons(game_display& disp)
 {
 	int res;
+	bool do_refresh = false;
 	std::string remote_host;
 	const std::string default_host = preferences::campaign_server();
 	
@@ -1137,26 +1140,26 @@ void manage_addons(game_display& disp)
 		                      gui::dialog::BUTTON_EXTRA_LEFT);
 #endif
 		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Uninstall add-ons"),
-		                      gui::button::TYPE_PRESS, ADDONS_OPT_UNINSTALL),
+		                      gui::button::TYPE_PRESS, addon_uninstall),
 		                      gui::dialog::BUTTON_EXTRA);
 		res = svr_dialog.show();
 		remote_host = svr_dialog.textbox_text();
-		bool do_refresh = false;
-		switch(res) {
-			case ADDONS_OPT_UPDATE:
-			case ADDONS_OPT_DOWNLOAD:
-				download_addons(disp, remote_host, res==ADDONS_OPT_UPDATE, &do_refresh);
-				break;
-			case ADDONS_OPT_UNINSTALL:
-				uninstall_local_addons(disp, &do_refresh);
-				break;
-			default:
-				return;
-		}
-		// Signal game_controller to reload WML
-		if(do_refresh) {
-			throw config_changed_exception();
-		}
+	}
+
+	switch(res) {
+		case addon_update:
+		case addon_download:
+			download_addons(disp, remote_host, res==addon_update, &do_refresh);
+			break;
+		case addon_uninstall:
+			uninstall_local_addons(disp, &do_refresh);
+			break;
+		default:
+			return;
+	}
+	// Signal game_controller to reload WML
+	if(do_refresh) {
+		throw config_changed_exception();
 	}
 }
 
