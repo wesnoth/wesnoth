@@ -98,7 +98,7 @@ protected:
 //	void paste();
 //	
 	//! Inherited from ttext_.
-	void insert_char(Uint16 unicode);
+	void insert_char(const Uint16 unicode);
 
 	//! Inherited from ttext_.
 	void delete_char(const bool before_cursor);

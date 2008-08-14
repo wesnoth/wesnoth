@@ -54,7 +54,7 @@ static surface render_text(const std::string& text, unsigned font_size)
 
 //! Helper function for text more efficient as set_text.
 //! Inserts a character at the cursor.
-void ttext_box::insert_char(Uint16 unicode)
+void ttext_box::insert_char(const Uint16 unicode)
 {
 	delete_selection();
 

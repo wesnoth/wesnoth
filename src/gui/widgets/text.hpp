@@ -78,7 +78,7 @@ protected:
 	void set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
 
 	//! Inserts a character at the cursor.
-	virtual void insert_char(Uint16 unicode) = 0;
+	virtual void insert_char(const Uint16 unicode) = 0;
 
 	//! Deletes the character.
 	virtual void delete_char(const bool before_cursor) = 0;
