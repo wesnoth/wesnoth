@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth_gcc4.dev
 Name=wesnoth
-UnitCount=170
+UnitCount=174
 Type=0
 Ver=1
 ObjFiles=
@@ -11,7 +11,7 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=_@@_
-CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
+CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-mthreads_@@_-march=athlon_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@_
 Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpangocairo_@@_-lcairo_@@_-lgobject_@@_-lpango_@@_
 IsCpp=1
 Icon=
@@ -650,9 +650,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit171]
-FileName=src\video.cpp
+FileName=src\gui\widgets\spacer.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -660,9 +660,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit172]
-FileName=src\video.hpp
+FileName=src\gui\widgets\tooltip.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -2549,6 +2549,26 @@ BuildCmd=
 
 [Unit170]
 FileName=src\gui\widgets\minimap.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit173]
+FileName=src\widgets\combo_drag.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit174]
+FileName=src\widgets\drop_target.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
