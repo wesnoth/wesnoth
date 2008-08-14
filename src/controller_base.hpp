@@ -101,7 +101,7 @@ protected:
 	virtual void process_keyup_event(const SDL_Event& event);
 	
 	/** 
-	 * Called after processing a muse button up or down event
+	 * Called after processing a mouse button up or down event
 	 * Overriden in derived classes
 	 */
 	virtual void post_mouse_press(const SDL_Event& event);

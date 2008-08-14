@@ -71,13 +71,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	show_partial_move_(false)
 {
 	singleton_ = this;
-
-	minimap_scrolling_ = false;
-	dragging_ = false;
-	dragging_started_ = false;
-	drag_from_x_ = 0;
-	drag_from_y_ = 0;
-	show_menu_ = false;
 }
 
 mouse_handler::~mouse_handler()
@@ -339,8 +332,10 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	mouse_handler_base::mouse_press(event, browse);
 }
 
-bool mouse_handler::right_click_before_menu(int /*x*/, int /*y*/, const bool browse) 
+bool mouse_handler::right_click_show_menu(int /*x*/, int /*y*/, const bool browse) 
 {
+	// The first right-click cancel the selection if any,
+	// the second open the context menu
 	if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
 		select_hex(gamemap::location(), browse);
 		return false;
@@ -352,7 +347,7 @@ bool mouse_handler::right_click_before_menu(int /*x*/, int /*y*/, const bool bro
 bool mouse_handler::left_click(int x, int y, const bool browse)
 {
 	undo_ = false;
-	if (mouse_handler_base::left_click(x, y, browse)) return true;
+	if (mouse_handler_base::left_click(x, y, browse)) return false;
 	
 	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
 	
@@ -378,7 +373,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (attack_from == selected_hex_) { //no move needed
 			if (attack_enemy(u, clicked_u) == false) {
-				return true;
+				return false;
 			}
 		}
 		else if (move_unit_along_current_route(false, true)) {//move the unit without updating shroud
@@ -409,7 +404,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					gui().select_hex(src);
 					current_paths_ = orig_paths;
 					gui().highlight_reach(current_paths_);
-					return true;
+					return false;
 				}
 				else //attack == true
 				{
@@ -431,7 +426,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 								 }
 							}
 							game_events::pump();
-							return true;
+							return false;
 						}
 					}
 				}
@@ -444,7 +439,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			gui().draw();
 		}
 
-		return true;
+		return false;
 	}
 
 	//otherwise we're trying to move to a hex

@@ -45,12 +45,16 @@ public:
 	 */
 	virtual const display& gui() const = 0;
 	
+	/**
+	 * @return true when the class in the "dragging" state.
+	 */
+	bool is_dragging() const;
+
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
+
 	/** update the mouse with a fake mouse motion */
 	void mouse_update(const bool browse);
 	
-	bool is_dragging() { return dragging_; }
-
 	bool get_show_menu() const { return show_menu_; }
 
 	/**
@@ -59,6 +63,11 @@ public:
 	 * further (i.e. should return), false otherwise.
 	 */
 	bool mouse_motion_default(int x, int y, bool& update);
+	
+	/**
+	 * Called when a mouse motion event takes place. Derived classes mustprovide an
+	 * implementation, possibly using mouse_motion_default().
+	 */
 	virtual void mouse_motion(int x, int y, const bool browse, bool update=false) = 0;
 	
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
@@ -66,37 +75,81 @@ public:
 	bool is_middle_click(const SDL_MouseButtonEvent& event);
 	bool is_right_click(const SDL_MouseButtonEvent& event);
 	
+	/**
+	 * Derived classes can overrid this to disable mousewheel scrolling under
+	 * some circumstances, e.g. when the mouse wheel controls something else,
+	 * but the event is also received by this class
+	 */
 	virtual bool allow_mouse_wheel_scroll(int x, int y);
 	
 	/**
-	 * @returns true when the (child) caller should not process the event further
+	 * Overriden in derived classes, called on a right click (mousedown).
+	 * Defaults to process (initiate) minimap scrolling.
+	 * @returns true when the click should not process the event further.
+	 * This means do not treat the call as a start of drag movement.
 	 */
 	virtual bool left_click(int x, int y, const bool browse);
 	
+	/**
+	 * Called whenever the left mouse drag has "ended".
+	 */
 	virtual void left_drag_end(int x, int y, const bool browse);
 	
+	/**
+	 * Called when the left mouse button is up
+	 */
 	virtual void left_mouse_up(int x, int y, const bool browse);
 	
-	virtual bool right_click(int x, int y, const bool browse);
-	
 	/**
-	 * Called in right_click when the context menu is about to be shown, can be 
-	 * used for preprocessing and preventing the menu from being displayed.
+	 * Overriden in derived classes, called on a right click (mousedown).
+	 * Defaults to displaying the menu (by setting the appropriate flag)
+	 * if right_click_show_menu returns true.
+	 * @returns true when the click should not process the event further.
+	 * This means do not treat the call as a start of drag movement.
+	 */
+	virtual bool right_click(int x, int y, const bool browse);
+
+	/**
+	 * Called in the default right_click when the context menu is about to 
+	 * be shown, can be used for preprocessing and preventing the menu from
+	 * being displayed without rewriting the right click function.
 	 * @returns true when the menu should be displayed and false otherwise
 	 */
-	virtual bool right_click_before_menu(int x, int y, const bool browse);
+	virtual bool right_click_show_menu(int x, int y, const bool browse);
+
+	/**
+	 * Called whenever the right mouse drag has "ended".
+	 */
+	virtual void right_drag_end(int x, int y, const bool browse);
+	
+	/**
+	 * Called when the right mouse button is up
+	 */
+	virtual void right_mouse_up(int x, int y, const bool browse);
 
 protected:
+	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
+	void init_dragging(bool& dragging_flag);
+
+	/** minimap scrolling (scroll-drag) state flag */
 	bool minimap_scrolling_;
-	bool dragging_;
+	/** LMB drag init flag */
+	bool dragging_left_;
+	/** Actual drag flag */
 	bool dragging_started_;
+	/** RMB drag init flag */
+	bool dragging_right_;
+	/** Drag start position x */
 	int drag_from_x_;
+	/** Drag start position y */
 	int drag_from_y_;
+	/** Drag start map location */
 	gamemap::location drag_from_hex_;
 
-	// last highlighted hex
+	/** last highlighted hex */
 	gamemap::location last_hex_;
 	
+	/** Show context menu flag */
 	bool show_menu_;
 	
 	gamemap& map_;

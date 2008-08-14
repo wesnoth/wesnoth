@@ -844,7 +844,7 @@ void editor_controller::mouse_motion(int x, int y, const bool browse, bool updat
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
-	if (dragging_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON_LEFT) != 0
+	if (dragging_left_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON_LEFT) != 0
 	&& get_map().on_board_with_border(drag_from_hex_)) {
 		if (!get_map().on_board_with_border(hex_clicked)) return;
 		LOG_ED << "Mouse drag\n";
@@ -883,7 +883,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click(*gui_, x, y);
 	perform_refresh_delete(a);
-	return true;
+	return false;
 }
 
 void editor_controller::left_drag_end(int x, int y, const bool browse)

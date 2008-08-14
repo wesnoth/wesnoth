@@ -73,7 +73,7 @@ protected:
 	 * Use update to force an update of the mouse state.
 	 */
 	void mouse_motion(int x, int y, const bool browse, bool update=false);
-	bool right_click_before_menu(int x, int y, const bool browse);	
+	bool right_click_show_menu(int x, int y, const bool browse);	
 	bool left_click(int x, int y, const bool browse);
 	void select_hex(const gamemap::location& hex, const bool browse);
 	void clear_undo_stack();
