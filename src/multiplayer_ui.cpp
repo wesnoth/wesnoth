@@ -172,7 +172,9 @@ std::string get_colour_string(int id)
 	}
 }
 
-chat::chat()
+chat::chat() :
+	message_history_(),
+	last_update_()
 {
 }
 
@@ -250,6 +252,7 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	chat_textbox_(disp.video(), 100, "", false),
 	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
+	user_list_(),
 	selected_game_(""),
 
 	result_(CONTINUE),
