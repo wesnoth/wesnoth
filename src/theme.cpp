@@ -275,8 +275,14 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		}
 	}
 
-theme::object::object() : location_modified_(false), loc_(empty_rect), relative_loc_(empty_rect),
-                          last_screen_(empty_rect), xanchor_(object::FIXED), yanchor_(object::FIXED)
+theme::object::object() : 
+	location_modified_(false), 
+	id_(),
+	loc_(empty_rect), 
+	relative_loc_(empty_rect), 
+	last_screen_(empty_rect), 
+	xanchor_(object::FIXED), 
+	yanchor_(object::FIXED)
 {
 }
 
@@ -288,7 +294,21 @@ theme::object::object(const config& cfg) :
 }
 
 theme::tborder::tborder() :
-		size(0.0)
+	size(0.0),
+	background_image(),
+	tile_image(),
+	corner_image_top_left(),
+	corner_image_bottom_left(),
+	corner_image_top_right_odd(),
+	corner_image_top_right_even(),
+	corner_image_bottom_right_odd(),
+	corner_image_bottom_right_even(),
+	border_image_left(),
+	border_image_right(),
+	border_image_top_odd(),
+	border_image_top_even(),
+	border_image_bottom_odd(),
+	border_image_bottom_even()
 {
 }
 
@@ -417,18 +437,25 @@ void theme::object::modify_location(std::string rect_str, SDL_Rect ref_rect){
 	modify_location(rect);
 }
 
-theme::label::label()
+theme::label::label() :
+	text_(),
+	icon_(),
+	font_(),
+	font_rgb_set_(false),
+	font_rgb_(DefaultFontRGB)
 {}
 
-theme::label::label(const config& cfg)
-      : object(cfg), text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str()),
-	icon_(cfg["icon"]), font_(atoi(cfg["font_size"].c_str()))
+theme::label::label(const config& cfg) :
+	object(cfg), 
+	text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str()), 
+	icon_(cfg["icon"]), 
+	font_(atoi(cfg["font_size"].c_str())),
+	font_rgb_set_(false),
+	font_rgb_(DefaultFontRGB)
 {
 	if(font_ == 0)
 		font_ = DefaultFontSize;
 
-	font_rgb_ = DefaultFontRGB;
-	font_rgb_set_ = false;
 	if(cfg["font_rgb"].size()){
 	std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
 	  if(3 <= rgb_vec.size()){
@@ -453,11 +480,14 @@ theme::label::label(const config& cfg)
 	}
 }
 
-theme::status_item::status_item(const config& cfg)
-        : object(cfg),
-		  prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str()),
-		  postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str()),
-          font_(atoi(cfg["font_size"].c_str()))
+theme::status_item::status_item(const config& cfg) :
+	object(cfg),
+	prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str()),
+	postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str()),
+	label_(),
+	font_(atoi(cfg["font_size"].c_str())),
+	font_rgb_set_(false),
+	font_rgb_(DefaultFontRGB)
 {
 	if(font_ == 0)
 		font_ = DefaultFontSize;
@@ -467,8 +497,6 @@ theme::status_item::status_item(const config& cfg)
 		label_ = label(*label_child);
 	}
 
-	font_rgb_ = DefaultFontRGB;
-	font_rgb_set_ = false;
 	if(cfg["font_rgb"].size()){
 	  std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
 	  if(3 <= rgb_vec.size()){
@@ -496,7 +524,14 @@ theme::status_item::status_item(const config& cfg)
 theme::panel::panel(const config& cfg) : object(cfg), image_(cfg["image"])
 {}
 
-theme::menu::menu() : context_(false)
+theme::menu::menu() : 
+	object(),
+	context_(false),
+	title_(),
+	tooltip_(),
+	image_(),
+	type_(),
+	items_()
 {}
 
 theme::menu::menu(const config& cfg) : object(cfg),
@@ -512,7 +547,18 @@ theme::menu::menu(const config& cfg) : object(cfg),
 }
 
 theme::theme(const config& cfg, const SDL_Rect& screen) :
-	theme_reset_("theme_reset")
+	theme_reset_("theme_reset"),
+	cur_theme(),
+	cfg_(),
+	panels_(),
+	labels_(),
+	menus_(),
+	context_(),
+	status_(),
+	main_map_(),
+	mini_map_(),
+	unit_image_(),
+	border_()
 {
 	config tmp;
 	expand_partialresolution(tmp, cfg);
