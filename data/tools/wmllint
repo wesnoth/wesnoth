@@ -925,7 +925,7 @@ def sanity_check(filename, lines):
                 if key == "id":
                     if in_person:
                         present.append(value)
-                    elif value in ('narrator', 'unit', 'second_unit') or value[0] in ("$", "{"):
+                    elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
                         continue
                     elif preamble_seen and not ignore_id and not in_object and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
