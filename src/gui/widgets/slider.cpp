@@ -123,8 +123,8 @@ tpoint tslider::get_best_size() const
 	}
 
 	// Override length.
-	const tslider_definition::tresolution* conf = 
-		dynamic_cast<const tslider_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
 	assert(conf); 
 
 	size.x = conf->left_offset + best_slider_length_ + conf->right_offset;
@@ -149,32 +149,32 @@ t_string tslider::get_value_label() const
 
 unsigned tslider::minimum_positioner_length() const
 { 
-	const tslider_definition::tresolution* conf = 
-		dynamic_cast<const tslider_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
 	assert(conf); 
 	return conf->minimum_positioner_length; 
 }
 
 unsigned tslider::maximum_positioner_length() const
 {
-	const tslider_definition::tresolution* conf = 
-		dynamic_cast<const tslider_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
 	assert(conf); 
 	return conf->maximum_positioner_length; 
 }
 
 unsigned tslider::offset_before() const
 { 
-	const tslider_definition::tresolution* conf = 
-		dynamic_cast<const tslider_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
 	assert(conf); 
 	return conf->left_offset; 
 }
 
 unsigned tslider::offset_after() const
 { 
-	const tslider_definition::tresolution* conf = 
-		dynamic_cast<const tslider_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
 	assert(conf); 
 	return conf->right_offset; 
 }

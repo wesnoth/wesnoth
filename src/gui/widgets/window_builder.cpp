@@ -706,7 +706,8 @@ twidget* tbuilder_listbox::build() const
 	DBG_G << "Window builder: placed listbox '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
-	tlistbox_definition::tresolution* conf = static_cast<tlistbox_definition::tresolution*>(listbox->config());
+	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(listbox->config());
 	assert(conf);
 
 	tgrid* scrollbar = dynamic_cast<tgrid*>(conf->scrollbar->build());

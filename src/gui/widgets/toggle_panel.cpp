@@ -121,8 +121,8 @@ void ttoggle_panel::set_active(const bool active)
 
 SDL_Rect ttoggle_panel::get_client_rect() const
 {
-	const ttoggle_panel_definition::tresolution* conf = 
-		dynamic_cast<const ttoggle_panel_definition::tresolution*>(config());
+	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
 	assert(conf);
 
 	SDL_Rect result = get_rect();
@@ -136,8 +136,8 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 
 tpoint ttoggle_panel::border_space() const
 {
-	const ttoggle_panel_definition::tresolution* conf = 
-		dynamic_cast<const ttoggle_panel_definition::tresolution*>(config());
+	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
 	assert(conf);
 
 	return tpoint(conf->left_border + conf->right_border,
@@ -176,8 +176,8 @@ void ttoggle_panel::set_state(const tstate state)
 	state_ = state;
 	set_dirty(true);
 
-	const ttoggle_panel_definition::tresolution* conf = 
-		dynamic_cast<const ttoggle_panel_definition::tresolution*>(config());
+	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
 	assert(conf);
 
 	if(conf->state_change_full_redraw) {

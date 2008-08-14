@@ -231,8 +231,8 @@ void twindow::window_resize(tevent_handler&,
 
 SDL_Rect twindow::get_client_rect() const
 {
-	const twindow_definition::tresolution* conf = 
-		dynamic_cast<const twindow_definition::tresolution*>(config());
+	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
 	assert(conf);
 
 	SDL_Rect result = get_rect();

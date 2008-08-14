@@ -44,32 +44,32 @@ namespace gui2 {
 
 unsigned tvertical_scrollbar::minimum_positioner_length() const
 { 
-	const tvertical_scrollbar_definition::tresolution* conf = 
-		dynamic_cast<const tvertical_scrollbar_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
 	assert(conf); 
 	return conf->minimum_positioner_length; 
 }
 
 unsigned tvertical_scrollbar::maximum_positioner_length() const
 { 
-	const tvertical_scrollbar_definition::tresolution* conf = 
-		dynamic_cast<const tvertical_scrollbar_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
 	assert(conf); 
 	return conf->maximum_positioner_length; 
 }
 
 unsigned tvertical_scrollbar::offset_before() const
 { 
-	const tvertical_scrollbar_definition::tresolution* conf = 
-		dynamic_cast<const tvertical_scrollbar_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
 	assert(conf); 
 	return conf->top_offset; 
 }
 
 unsigned tvertical_scrollbar::offset_after() const
 { 
-	const tvertical_scrollbar_definition::tresolution* conf = 
-		dynamic_cast<const tvertical_scrollbar_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
 	assert(conf); 
 	return conf->bottom_offset; 
 }

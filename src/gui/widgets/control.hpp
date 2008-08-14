@@ -181,10 +181,10 @@ public:
 		{ assert(index < canvas_.size()); return canvas_[index]; }
 
 protected:
-	tresolution_definition_* config() { return config_; }
-	const tresolution_definition_* config() const { return config_; }
+	tresolution_definition_ptr config() { return config_; }
+	tresolution_definition_const_ptr config() const { return config_; }
 
-	void set_config(tresolution_definition_* config) { config_ = config; }
+	void set_config(tresolution_definition_ptr config) { config_ = config; }
 
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
@@ -282,7 +282,7 @@ private:
 	 * on the resolution widgets can look different, use different fonts.
 	 * Windows can use extra scrollbars use abbreviations as text etc.
 	 */
- 	tresolution_definition_* config_;
+ 	tresolution_definition_ptr config_;
 
 	/**
 	 * Load class dependant config settings.

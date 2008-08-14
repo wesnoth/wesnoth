@@ -313,8 +313,8 @@ void ttext_box::update_offsets()
 {
 	assert(config());
 
-	ttext_box_definition::tresolution* conf = 
-		dynamic_cast<ttext_box_definition::tresolution*>(config());
+	boost::intrusive_ptr<const ttext_box_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const ttext_box_definition::tresolution>(config());
 	assert(conf);
 
 	text_height_ = font::get_max_height(conf->text_font_size);

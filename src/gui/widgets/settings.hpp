@@ -97,6 +97,14 @@ public:
 	std::vector<tstate_definition> state;
 };
 
+typedef 
+	boost::intrusive_ptr<tresolution_definition_> 
+	tresolution_definition_ptr;
+
+typedef 
+	boost::intrusive_ptr<const tresolution_definition_> 
+	tresolution_definition_const_ptr;
+
 struct tcontrol_definition : public reference_counted_object
 {
 private:
@@ -111,7 +119,7 @@ public:
 	std::string id;
 	t_string description;
 
-	std::vector<tresolution_definition_*> resolutions;
+	std::vector<tresolution_definition_ptr> resolutions;
 
 };
 
@@ -336,7 +344,7 @@ private:
 	unsigned double_click_time_;
 };
 
-	tresolution_definition_* get_control(
+	tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition);
 
 	std::vector<twindow_builder::tresolution>::const_iterator 

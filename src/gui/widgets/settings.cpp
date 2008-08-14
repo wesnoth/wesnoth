@@ -1063,7 +1063,8 @@ twindow_definition::twindow_definition(const config& cfg) :
 	DBG_G_P << "Parsing window " << id << '\n';
 }
 
-tresolution_definition_* get_control(const std::string& control_type, const std::string& definition)
+tresolution_definition_ptr get_control(
+		const std::string& control_type, const std::string& definition)
 {
 	const tgui_definition::tcontrol_definition_map::const_iterator	
 		control_definition = current_gui->second.control_definition.find(control_type);
@@ -1080,7 +1081,7 @@ tresolution_definition_* get_control(const std::string& control_type, const std:
 		assert(control != control_definition->second.end());
 	}
 
-	for(std::vector<tresolution_definition_*>::const_iterator 
+	for(std::vector<tresolution_definition_ptr>::const_iterator 
 			itor = (*control->second).resolutions.begin(),
 			end = (*control->second).resolutions.end();
 			itor != end;

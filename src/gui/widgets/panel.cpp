@@ -40,8 +40,8 @@ namespace gui2 {
 
 SDL_Rect tpanel::get_client_rect() const
 {
-	const tpanel_definition::tresolution* conf = 
-		dynamic_cast<const tpanel_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tpanel_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tpanel_definition::tresolution>(config());
 	assert(conf);
 
 	SDL_Rect result = get_rect();
@@ -71,8 +71,8 @@ void tpanel::draw(surface& surface, const bool force,
 
 tpoint tpanel::border_space() const
 {
-	const tpanel_definition::tresolution* conf = 
-		dynamic_cast<const tpanel_definition::tresolution*>(config());
+	boost::intrusive_ptr<const tpanel_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tpanel_definition::tresolution>(config());
 	assert(conf);
 
 	return tpoint(conf->left_border + conf->right_border,
