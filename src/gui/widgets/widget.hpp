@@ -75,22 +75,22 @@ public:
 	virtual void mouse_move(tevent_handler& /*event_handler*/) {}
 
 	/**
-	 * The mouse 'leaves' the widget.
+	 * The mouse 'hovers' over a widget.
 	 *
-	 * If the mouse is moves off the widget this event is called. When the leave
-	 * occurs while the mouse is captured the event will be send when still of
-	 * the widget if the capture is released. This event is only triggered when
-	 * wants_mouse_hover_ is set.
+	 * If the mouse remains a while without moving over a widget this event can
+	 * be send. This event can be used to show a tooltip.
 	 *
 	 * @param event_handler       The event handler that send the event.
 	 */
 	virtual void mouse_hover(tevent_handler& /*event_handler*/) {}
 
 	/**
-	 * The mouse 'hovers' over a widget.
+	 * The mouse 'leaves' the widget.
 	 *
-	 * If the mouse remains a while without moving over a widget this event can
-	 * be send. This event can be used to show a tooltip.
+	 * If the mouse is moves off the widget this event is called. When the leave
+	 * occurs while the mouse is captured the event will be send when still of
+	 * the widget if the capture is released. This event is only triggered when
+	 * wants_mouse_hover_ is set.
 	 *
 	 * @param event_handler       The event handler that send the event.
 	 */
