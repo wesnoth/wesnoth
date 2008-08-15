@@ -291,4 +291,29 @@ void editor_action_plot_route::perform_without_undo(map_context& /*mc*/) const
 	throw editor_action_not_implemented();
 }
 
+editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
+{
+	map_fragment mf(mc.get_map(), area_);
+	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(gamemap::location(0,0), mf));
+	perform_without_undo(mc);
+	return undo.release();
+}
+
+void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
+{
+	std::vector<gamemap::location> shuffle;
+	std::copy(area_.begin(), area_.end(), std::inserter(shuffle, shuffle.begin()));
+	std::random_shuffle(shuffle.begin(), shuffle.end());
+	std::vector<gamemap::location>::const_iterator shuffle_it = shuffle.begin();
+	std::set<gamemap::location>::const_iterator orig_it = area_.begin();
+	while (orig_it != area_.end()) {
+		t_translation::t_terrain tmp = mc.get_map().get_terrain(*orig_it);
+		mc.draw_terrain(mc.get_map().get_terrain(*shuffle_it), *orig_it);
+		mc.draw_terrain(tmp, *shuffle_it);
+		orig_it++;
+		shuffle_it++;
+	}
+	mc.set_needs_terrain_rebuild();
+}
+
 } //end namespace editor2

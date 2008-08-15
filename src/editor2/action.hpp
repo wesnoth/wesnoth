@@ -342,6 +342,21 @@ class editor_action_plot_route : public editor_action_location_terrain
 		gamemap::location loc2_;
 };
 
+/**
+ * Randomize terrain in an area
+ */
+class editor_action_shuffle_area : public editor_action_area
+{
+	public:
+		editor_action_shuffle_area(const std::set<gamemap::location>& area)
+		: editor_action_area(area)
+		{
+		}
+		editor_action_paste* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
+};
+
+
 } //end namespace editor2
 
 #endif

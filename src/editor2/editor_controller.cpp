@@ -456,15 +456,15 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
 		case HOTKEY_EDITOR_SELECTION_FILL:
-		case HOTKEY_EDITOR_SELECTION_GENERATE:
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return !get_map().selection().empty();
+		case HOTKEY_EDITOR_SELECTION_GENERATE:			
+			return false; //not implemented
 		case HOTKEY_EDITOR_PASTE:
 			return !clipboard_.empty();
 		case HOTKEY_EDITOR_SELECT_ALL:
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 		case HOTKEY_EDITOR_MAP_RESIZE:
-		case HOTKEY_EDITOR_MAP_ROTATE:
 		case HOTKEY_EDITOR_MAP_FLIP_X:
 		case HOTKEY_EDITOR_MAP_FLIP_Y:
 		case HOTKEY_EDITOR_MAP_GENERATE:
@@ -473,6 +473,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
 			return true;
+		case HOTKEY_EDITOR_MAP_ROTATE:
+			return false; //not implemented
 		default:
 			return false;
 	}
@@ -535,6 +537,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			fill_selection();
+			return true;
+		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
+			perform_refresh(editor_action_shuffle_area(get_map().selection()));
 			return true;
 		case HOTKEY_EDITOR_MAP_FLIP_X:
 			perform_refresh(editor_action_flip_x());
