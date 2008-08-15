@@ -675,6 +675,7 @@ namespace {
 
 		if(do_refresh != NULL)
 			*do_refresh = true;
+		return true;
 	}
 	
 	void addons_update_dlg(game_display& disp, config& cfg, const config::child_list& remote_addons_list,
