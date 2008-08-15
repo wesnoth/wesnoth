@@ -103,8 +103,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
 	int my = drag_from_y_;
 	if (is_dragging() && !dragging_started_) {
-		if (dragging_left_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_LEFT) != 0
-		|| dragging_right_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_RIGHT) != 0) {
+		if ((dragging_left_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_LEFT) != 0)
+		|| (dragging_right_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_RIGHT) != 0)) {
 			const double drag_distance = std::pow((double) (drag_from_x_- mx), 2) + std::pow((double) (drag_from_y_- my), 2);
 			if (drag_distance > drag_threshold_*drag_threshold_) {
 				dragging_started_ = true;
