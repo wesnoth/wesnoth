@@ -18,6 +18,7 @@
 #include <string>
 
 #include "formula_fwd.hpp"
+#include "formula_tokenizer.hpp"
 #include "variant.hpp"
 
 namespace game_logic
@@ -45,6 +46,7 @@ public:
 	static formula_ptr create_string_formula(const std::string& str);
 	static formula_ptr create_optional_formula(const std::string& str, function_symbol_table* symbols=NULL);
 	explicit formula(const std::string& str, function_symbol_table* symbols=NULL);
+	explicit formula(const formula_tokenizer::token* i1, const formula_tokenizer::token* i2, function_symbol_table* symbols=NULL);
 	variant execute(const formula_callable& variables) const;
 	variant execute() const;
 	const std::string& str() const { return str_; }
@@ -58,6 +60,15 @@ private:
 
 struct formula_error
 {
+	formula_error() : type_(), formula_(), filename_(), line_(0) 
+	{}
+	formula_error(const std::string& type, const std::string& formula, const std::string& file, int line) : 
+	type_(type), formula_(formula), filename_(file), line_(line) 
+	{}
+	std::string type_;
+	std::string formula_;
+	std::string filename_;
+	int line_;
 };
 
 }

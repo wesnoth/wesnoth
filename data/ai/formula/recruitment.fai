@@ -1,3 +1,4 @@
+faifile 'recruitment.fai'
 		# ===== Some general functions used later ==== #
 
 def sumarize_values( input_map )
@@ -577,3 +578,4 @@ if(vars.turn_initialized = turn,
 	initialize_weapon_specials_map(self) +
 	create_recruits_map(self)
 )
+faiend

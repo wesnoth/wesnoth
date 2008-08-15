@@ -13,6 +13,7 @@
 */
 
 #include <boost/regex.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include "actions.hpp"
 #include "menu_events.hpp"
@@ -1204,36 +1205,96 @@ formula_ai::formula_ai(info& i) :
 		const t_string& name = (**i)["name"];
 		const t_string& inputs = (**i)["inputs"];
 		std::vector<std::string> args = utils::split(inputs);
-		game_logic::const_formula_ptr action_formula(
-				new game_logic::formula((**i)["action"], &function_table));
-		game_logic::const_formula_ptr eval_formula(
-				new game_logic::formula((**i)["evaluation"], &function_table));
-		const formula_ptr precondition_formula = 
-				game_logic::formula::create_optional_formula((**i)["precondition"], 
-						&function_table);
-		function_table.register_candidate_move(name, (**i)["type"],
-								action_formula, eval_formula, 
-								precondition_formula, args);
+
+		try{
+			game_logic::const_formula_ptr action_formula(
+					new game_logic::formula((**i)["action"], &function_table));
+
+			game_logic::const_formula_ptr eval_formula(
+					new game_logic::formula((**i)["evaluation"], &function_table));
+
+			const formula_ptr precondition_formula = 
+					game_logic::formula::create_optional_formula((**i)["precondition"], 
+							&function_table);
+
+			function_table.register_candidate_move(name, (**i)["type"],
+									action_formula, eval_formula, 
+									precondition_formula, args);
+		}
+		catch(formula_error& e) {
+			handle_exception(e, "Error while registering candidate move '" + name + "'");
+		}
 	}
 
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
 	if(team_formula.first != team_formula.second) {
 		std::string formula_string = (**team_formula.first)["rulebase"];
-		move_formula_ = game_logic::formula::create_optional_formula(formula_string, &function_table);
+		try{
+			move_formula_ = game_logic::formula::create_optional_formula(formula_string, &function_table);
+		}
+		catch(formula_error& e) {
+			handle_exception(e);
+			move_formula_ = game_logic::formula_ptr();
+		}
 	} else {
-	config::const_child_itors functions = ai_param.child_range("function");
-	for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
-		const t_string& name = (**i)["name"];
-		const t_string& inputs = (**i)["inputs"];
-		const t_string& formula_str = (**i)["formula"];
+		config::const_child_itors functions = ai_param.child_range("function");
+		for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
+			const t_string& name = (**i)["name"];
+			const t_string& inputs = (**i)["inputs"];
+			const t_string& formula_str = (**i)["formula"];
 
-		std::vector<std::string> args = utils::split(inputs);
-		function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), game_logic::formula::create_optional_formula((**i)["precondition"], &function_table), args);
+			std::vector<std::string> args = utils::split(inputs);
+
+			try{
+				function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), game_logic::formula::create_optional_formula((**i)["precondition"], &function_table), args);
+			}
+			catch(formula_error& e) {
+				handle_exception(e, "Error while registering function '" + name + "'");
+			}
+		}
+	
+		try{
+			recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
+		}
+		catch(formula_error& e) {
+			handle_exception(e);
+			recruit_formula_ = game_logic::formula_ptr();
+		}
+
+		try{
+			move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
+		}
+		catch(formula_error& e) {
+			handle_exception(e);
+			move_formula_ = game_logic::formula_ptr();
+		}
 	}
 
-	recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
-	move_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["move"], &function_table);
+}
+
+void formula_ai::handle_exception(game_logic::formula_error& e)
+{
+	handle_exception(e, "Error while parsing formula");
+}
+
+void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation)
+{
+	std::cerr << failed_operation << ": " << e.formula_ << std::endl;
+	display_message(failed_operation + ": " + e.formula_);
+	//if line number = 0, don't display info about filename and line number
+	if (e.line_ != 0) {
+		std::cerr << e.type_ << " in " << e.filename_ << ":" << e.line_ << std::endl;
+		display_message(e.type_ + " in " + e.filename_ + ":" + boost::lexical_cast<std::string>(e.line_));
+	} else {
+		std::cerr << e.type_ << std::endl;
+		display_message(e.type_);
 	}
+}
+
+void formula_ai::display_message(const std::string& msg)
+{
+	get_info().disp.add_chat_message(time(NULL), "fai", get_info(). team_num, msg,
+				game_display::MESSAGE_PUBLIC, false);
 
 }
 
@@ -1251,11 +1312,18 @@ void formula_ai::play_turn()
 	{
 		if ( (i->second.side() == get_info().team_num) && i->second.has_formula() )
 		{
-			game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
-			game_logic::map_formula_callable callable(this);
-			callable.add_ref();
-			callable.add("me", variant(new unit_callable(*i)));
-			make_move(formula, callable);
+			try {
+				game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
+				game_logic::map_formula_callable callable(this);
+				callable.add_ref();
+				callable.add("me", variant(new unit_callable(*i)));
+				make_move(formula, callable);
+			}
+			catch(formula_error& e) {
+				if(e.filename_ == "formula")
+					e.line_ = 0;
+				handle_exception( e, "Error while parsing unit formula" );
+			}
 		}
 	}
 
@@ -1316,17 +1384,24 @@ void formula_ai::build_move_list() {
 
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
-	game_logic::formula f(formula_str, &function_table);
+	try{
+		game_logic::formula f(formula_str, &function_table);
 
-	game_logic::map_formula_callable callable(this);
-	callable.add_ref();
+		game_logic::map_formula_callable callable(this);
+		callable.add_ref();
 
-	const variant v = f.execute(callable);
+		const variant v = f.execute(callable);
 
-	if ( execute_variant(v, true ) )
-		return "Made move: " + v.to_debug_string();
+		if ( execute_variant(v, true ) )
+			return "Made move: " + v.to_debug_string();
 
-	return v.to_debug_string();
+		return v.to_debug_string();
+	}
+	catch(formula_error& e) {
+		e.line_ = 0;
+		handle_exception(e);
+		throw;
+	}
 }
 
 void formula_ai::swap_move_map(move_map_backup& backup)

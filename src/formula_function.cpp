@@ -915,8 +915,7 @@ expression_ptr create_function(const std::string& fn,
 
 	functions_map::const_iterator i = get_functions_map().find(fn);
 	if(i == get_functions_map().end()) {
-		DBG_NG << "no function '" << fn << "'\n";
-		throw formula_error();
+		throw formula_error("Unknow function: " + fn, "", "", 0);
 	}
 
 	return i->second->create_function(args);

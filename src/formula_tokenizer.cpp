@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include <sstream>
 #include <iostream>
 
 #include <boost/regex.hpp>
@@ -34,6 +35,8 @@ struct token_type {
 token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|-(?=[^>])|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
 				{ regex("^functions\\b"),  TOKEN_KEYWORD },
 				{ regex("^def\\b"),        TOKEN_KEYWORD },
+				{ regex("^faifile\\b"),        TOKEN_KEYWORD },
+				{ regex("^faiend\\b"),        TOKEN_KEYWORD },
 				{ regex("^'[^']*'"),       TOKEN_STRING_LITERAL },
 				{ regex("^[a-zA-Z_]+"),    TOKEN_IDENTIFIER },
 				{ regex("^\\d+"),          TOKEN_INTEGER },
@@ -46,7 +49,8 @@ token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-
 				{ regex("^#.*?#"),	   TOKEN_COMMENT },
 				{ regex("^,"),             TOKEN_COMMA },
 				{ regex("^;"),             TOKEN_SEMICOLON },
-				{ regex("^\\s+"),          TOKEN_WHITESPACE },
+				{ regex("^\\n"),          TOKEN_EOL },
+				{ regex("^([ ]|\\t|\\r|\\f)"),          TOKEN_WHITESPACE },
 				{ regex("^->"),          TOKEN_POINTER }
 };
 
@@ -65,8 +69,14 @@ token get_token(iterator& i1, iterator i2) {
 		}
 	}
 
-	std::cerr << "Unrecognized token: '" << std::string(i1,i2) << "'\n";
-	throw token_error();
+	std::ostringstream expr;
+	while( (i1 != i2) && (*i1 != '\n') ) {
+		if( (*i1 != '\t') )
+			expr << *i1;
+		++i1;
+	}
+
+	throw token_error("Unrecognized token", expr.str() );
 }
 
 }

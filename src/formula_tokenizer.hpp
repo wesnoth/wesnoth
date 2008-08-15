@@ -26,8 +26,8 @@ enum TOKEN_TYPE { TOKEN_OPERATOR, TOKEN_STRING_LITERAL,
                   TOKEN_LPARENS, TOKEN_RPARENS,
 				  TOKEN_LSQUARE, TOKEN_RSQUARE, 
 				  TOKEN_LBRACKET, TOKEN_RBRACKET,
-				  TOKEN_COMMA, TOKEN_SEMICOLON, 
-				  TOKEN_WHITESPACE, TOKEN_KEYWORD,
+				  TOKEN_COMMA, TOKEN_SEMICOLON,
+				  TOKEN_WHITESPACE, TOKEN_EOL, TOKEN_KEYWORD,
 				  TOKEN_COMMENT, TOKEN_POINTER  };
 
 struct token {
@@ -35,17 +35,27 @@ struct token {
 	token() :
 		type(TOKEN_COMMENT),
 		begin(),
-		end()
+		end(),
+		line_number(1),
+		filename()
 	{
 	}
 
 	TOKEN_TYPE type;
 	iterator begin, end;
+	int line_number;
+	const std::string* filename;
 };
 
 token get_token(iterator& i1, iterator i2);
 
-struct token_error {};
+struct token_error 
+{
+	token_error() : description_(), formula_() {}
+	token_error(const std::string& dsc, const std::string& formula) : description_(dsc), formula_(formula) {}
+	std::string description_;
+	std::string formula_;
+};
 
 }
 

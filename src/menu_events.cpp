@@ -2876,7 +2876,7 @@ private:
 		try {
 			add_chat_message(time(NULL), _("ai"), 0, eval.evaluate(str));
 		} catch(...) {
-			add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
+			//add_chat_message(time(NULL), _("ai"), 0, "ERROR IN FORMULA");
 		}
 	}
 

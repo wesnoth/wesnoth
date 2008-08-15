@@ -51,13 +51,11 @@ public:
 	{
 		set_name(name.c_str());
 		if(min_args >= 0 && args_.size() < static_cast<size_t>(min_args)) {
-			std::cerr << "too few arguments\n";
-			throw formula_error();
+			throw formula_error("Too few arguments", "", "", 0);
 		}
 
 		if(max_args >= 0 && args_.size() > static_cast<size_t>(max_args)) {
-			std::cerr << "too many arguments\n";
-			throw formula_error();
+			throw formula_error("Too many arguments", "", "", 0);
 		}
 	}
 

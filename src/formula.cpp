@@ -16,6 +16,7 @@
 #include <boost/lexical_cast.hpp>
 #include <cmath>
 #include <iostream>
+#include <set>
 #include <vector>
 
 //#include "foreach.hpp"
@@ -143,8 +144,7 @@ public:
 		} else if(op == "-") {
 			op_ = SUB;
 		} else {
-			std::cerr << "illegal unary operator: '" << op << "'\n";
-			throw formula_error();
+			throw formula_error("Illegal unary operator: '" + op + "'" , "", "", 0);
 		}
 	}
 private:
@@ -233,8 +233,7 @@ private:
 		if(left.is_list() || left.is_map()) {
 			return left[ key ];
 		} else {
-			std::cerr << "illegal usage of operator []'\n";
-			throw formula_error();
+			throw formula_error("Illegal usage of operator []", "", "", 0);
 		}
 	}
 
@@ -483,14 +482,27 @@ int operator_precedence(const token& t)
 
 expression_ptr parse_expression(const token* i1, const token* i2, function_symbol_table* symbols);
 
+
+//function used when creating error reports, parses all tokens passed to parse_expression, thus there are no EOL or whitespaces
+std::string tokens_to_string(const token* i1, const token* i2)
+{
+		std::ostringstream expr;
+		while(i1 != i2) {
+			expr << std::string(i1->begin,i1->end) << " ";
+			++i1;
+		}
+		return expr.str();
+}
+
 void parse_function_args(const token* &i1, const token* i2,
 		std::vector<std::string>* res)
 {
+	const token* begin = i1, *end = i2;	//these are used for error reporting
+
 	if(i1->type == TOKEN_LPARENS) {
 		++i1;
 	} else {
-		std::cerr << "Invalid function definition" << std::endl;
-		throw formula_error();
+		throw formula_error("Invalid function definition", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 	}
 
 	while((i1-> type != TOKEN_RPARENS) && (i1 != i2)) {
@@ -504,15 +516,13 @@ void parse_function_args(const token* &i1, const token* i2,
 		} else if (i1->type == TOKEN_COMMA) {
 			//do nothing
 		} else {
-			std::cerr << "Invalid function definition" << std::endl;
-			throw formula_error();
+			throw formula_error("Invalid function definition", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 		}
 		++i1;
 	}
 
 	if(i1->type != TOKEN_RPARENS) {
-		std::cerr << "Invalid function definition" << std::endl;
-		throw formula_error();
+		throw formula_error("Invalid function definition", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 	}
 	++i1;
 }
@@ -523,6 +533,7 @@ void parse_args(const token* i1, const token* i2,
 {		
 	int parens = 0;
 	const token* beg = i1;
+	const token* begin = i1, *end = i2;	//these are used for error reporting
 	while(i1 != i2) {
 		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE || i1->type == TOKEN_LBRACKET ) {
 			++parens;
@@ -532,8 +543,7 @@ void parse_args(const token* i1, const token* i2,
 			res->push_back(parse_expression(beg,i1, symbols));
 			beg = i1+1;
 		} else if(i1->type == TOKEN_POINTER) {
-				std::cerr << "Unexpected '->' operator found\n";
-				throw formula_error();
+				throw formula_error("Unexpected '->' operator found", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 		}
 		++i1;
 	}
@@ -550,6 +560,7 @@ void parse_set_args(const token* i1, const token* i2,
 	int parens = 0;
 	bool check_pointer = false;
 	const token* beg = i1;
+	const token* begin = i1, *end = i2;	//these are used for error reporting
 	while(i1 != i2) {
 		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE) {
 			++parens;
@@ -561,15 +572,13 @@ void parse_set_args(const token* i1, const token* i2,
 				res->push_back(parse_expression(beg,i1, symbols));
 				beg = i1+1;
 			} else {
-				std::cerr << "Too many '->' operators\n";
-				throw formula_error();
+				throw formula_error("Too many '->' operators found", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 			}
 		} else if( i1->type == TOKEN_COMMA && !parens ) {
 			if (check_pointer)
 				check_pointer = false;
 			else {
-				std::cerr << "Expected comma, but '->' found\n";
-				throw formula_error();
+				throw formula_error("Expected comma, but '->' found", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 		}
 			res->push_back(parse_expression(beg,i1, symbols));
 			beg = i1+1;
@@ -588,6 +597,7 @@ void parse_where_clauses(const token* i1, const token * i2,
 	int parens = 0;
 	const token *original_i1_cached = i1;
 	const token *beg = i1;
+	const token* begin = i1, *end = i2;	//these are used for error reporting
 	std::string var_name;
 	while(i1 != i2) {
 		if(i1->type == TOKEN_LPARENS) {
@@ -597,9 +607,7 @@ void parse_where_clauses(const token* i1, const token * i2,
 		} else if(!parens) {
 			if(i1->type == TOKEN_COMMA) {
 				if(var_name.empty()) {
-					std::cerr << "There is 'where <expression>,; "
-						  << "'where name=<expression>,' was needed.\n";
-					throw formula_error();
+					throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 				}
 				(*res)[var_name] = parse_expression(beg,i1, symbols);
 				beg = i1+1;
@@ -609,21 +617,14 @@ void parse_where_clauses(const token* i1, const token * i2,
 				if(op_name == "=") {
 					if(beg->type != TOKEN_IDENTIFIER) {
 						if(i1 == original_i1_cached) {
-							std::cerr<< "There is 'where =<expression'; "
-								 << "'where name=<expression>' was needed.\n";
+							throw formula_error("There is 'where <expression' but 'where name=<expression>' was needed", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 						} else {
-							std::cerr<< "There is 'where <expression>=<expression>'; "
-								 << "'where name=<expression>' was needed.\n";
+							throw formula_error("There is 'where <expression>=<expression>' but 'where name=<expression>' was needed", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 						}
-						throw formula_error();
 					} else if(beg+1 != i1) {
-						std::cerr<<"There is 'where name <expression>=<expression>'; "
-							 << "'where name=<expression>' was needed.\n";
-						throw formula_error();
+						throw formula_error("There is 'where name <expression>=<expression>' but 'where name=<expression>' was needed", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 					} else if(!var_name.empty()) {
-						std::cerr<<"There is 'where name=name=<expression>'; "
-							 <<"'where name=<expression>' was needed.\n";
-						throw formula_error();
+						throw formula_error("There is 'where name=name=<expression>' but 'where name=<expression>' was needed", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 					}
 					var_name.insert(var_name.end(), beg->begin, beg->end);
 					beg = i1+1;
@@ -634,9 +635,7 @@ void parse_where_clauses(const token* i1, const token * i2,
 	}
 	if(beg != i1) {
 		if(var_name.empty()) {
-			std::cerr << "There is 'where <expression>'; "
-				  << "'where name=<expression> was needed.\n";
-			throw formula_error();
+			throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 		}
 		(*res)[var_name] = parse_expression(beg,i1, symbols);
 	}
@@ -645,9 +644,10 @@ void parse_where_clauses(const token* i1, const token * i2,
 expression_ptr parse_expression(const token* i1, const token* i2, function_symbol_table* symbols)
 {
 	if(i1 == i2) {
-		std::cerr << "empty expression\n";
-		throw formula_error();
+		throw formula_error("Empty expression", "", *i1->filename, i1->line_number);
 	}
+
+	const token* begin = i1, *end = i2;	//these are used for error reporting
 
 	if(i1->type == TOKEN_KEYWORD &&
 			(i1+1)->type == TOKEN_IDENTIFIER) {
@@ -660,10 +660,9 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			while((i1 != i2) && (i1->type != TOKEN_SEMICOLON)) {
 				++i1;
 			}
-			const std::string formula_str = std::string(beg->begin, (i1-1)->end);
 			const std::string precond = "";
 			symbols->add_formula_function(formula_name,
-					const_formula_ptr(new formula(formula_str, symbols)),
+					const_formula_ptr(new formula(beg, i1, symbols)),
 					formula::create_optional_formula(precond, symbols),
 					args);
 			if((i1 == i2) || (i1 == (i2-1))) {
@@ -717,12 +716,17 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 						}
 					} else {
 						//execute operator [ ]
-						return expression_ptr(new square_bracket_expression(
+						try{
+							return expression_ptr(new square_bracket_expression(
 											parse_expression(i1,tok,symbols),
 								 				parse_expression(tok+1,i2-1,symbols)));
+						}
+						catch (formula_error& e){
+							throw formula_error( e.type_, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
+						}
 					}
 				}
-	} else if(i2 - i1 == 1) {
+		} else if(i2 - i1 == 1) {
 			if(i1->type == TOKEN_KEYWORD) {
 				if(std::string(i1->begin,i1->end) == "functions") {
 					return expression_ptr(new function_list_expression(symbols));
@@ -739,6 +743,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if(i1->type == TOKEN_IDENTIFIER &&
 		          (i1+1)->type == TOKEN_LPARENS &&
 				  (i2-1)->type == TOKEN_RPARENS) {
+			const token* begin = i1, *end = i2;	//these are used for error reporting
 			int nleft = 0, nright = 0;
 			for(const token* i = i1; i != i2; ++i) {
 				if(i->type == TOKEN_LPARENS) {
@@ -751,24 +756,27 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			if(nleft == nright) {
 				std::vector<expression_ptr> args;
 				parse_args(i1+2,i2-1,&args,symbols);
-				return expression_ptr(
-				  create_function(std::string(i1->begin,i1->end),args,symbols));
+				try{
+					return expression_ptr( create_function(std::string(i1->begin,i1->end),args,symbols) );
+				}
+				catch(formula_error& e) {
+					throw formula_error(e.type_, tokens_to_string(begin,end), *i1->filename, i1->line_number);
+				}
 			}
 		}
 
-		std::ostringstream expr;
-		while(i1 != i2) {
-			expr << std::string(i1->begin,i1->end);
-			++i1;
-		}
-		std::cerr << "could not parse expression: '" << expr.str() << "'\n";
-		throw formula_error();
+		throw formula_error("Could not parse expression", tokens_to_string(i1, i2), *i1->filename, i1->line_number);
 	}
 
 	if(op == i1) {
-		return expression_ptr(new unary_operator_expression(
+		try{
+			return expression_ptr(new unary_operator_expression(
 		                         std::string(op->begin,op->end),
 								 parse_expression(op+1,i2,symbols)));
+		}
+		catch(formula_error& e)	{
+			throw formula_error( e.type_, tokens_to_string(begin,end-1), *op->filename, op->line_number);
+		}
 	}
 
 	const std::string op_name(op->begin,op->end);
@@ -806,12 +814,7 @@ formula_ptr formula::create_optional_formula(const std::string& str, function_sy
 		return formula_ptr();
 	}
 
-	try {
-		return formula_ptr(new formula(str, symbols));
-	} catch(...) {
-		std::cerr << "ERROR parsing optional formula: '" << str << "'\n";
-		return formula_ptr();
-	}
+	return formula_ptr(new formula(str, symbols));
 }
 
 formula::formula(const std::string& str, function_symbol_table* symbols) : 
@@ -822,26 +825,114 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 
 	std::vector<token> tokens;
 	std::string::const_iterator i1 = str.begin(), i2 = str.end();
+
+	//set true when 'faifile' keyword is found
+	bool faifile_keyword = false;
+	//used to locally keep the track of which file we parse actually and in which line we are
+	std::vector< std::pair< std::string, int> > files;
+	//used as a source of strings - we point to these strings from tokens
+	std::set< std::string > filenames;
+	files.push_back( std::make_pair( "formula", 1 ) );
+	filenames.insert( "formula" );
+	std::set< std::string >::iterator filenames_it = filenames.begin();
+	
 	while(i1 != i2) {
 		try {
-			tokens.push_back(get_token(i1,i2));
-			if((tokens.back().type == TOKEN_WHITESPACE) || (tokens.back().type == TOKEN_COMMENT)) {
+
+			tokens.push_back( get_token(i1,i2) );
+
+			TOKEN_TYPE current_type = tokens.back().type;
+
+			if(current_type == TOKEN_WHITESPACE)  {
 				tokens.pop_back();
+			} else
+			if( current_type == TOKEN_COMMENT) {
+				//since we can have multiline comments, let's see how many EOL are within it
+				int counter = 0;
+				std::string comment = std::string(tokens.back().begin,tokens.back().end);
+				for( std::string::iterator str_it = comment.begin(); str_it != comment.end(); ++str_it)
+					if( *str_it == '\n' )
+						counter++;
+
+				files.back().second+=counter;
+				tokens.pop_back();
+			} else
+			if( current_type == TOKEN_EOL) {
+				files.back().second++;
+				tokens.pop_back();
+			} else
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end)  == "faifile") ) {
+				faifile_keyword = true;
+				tokens.pop_back();
+			} else
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end) == "faiend") ) {
+				if (files.size() > 1) {
+					files.pop_back();
+					filenames_it = filenames.find( files.back().first );
+					tokens.pop_back();
+				} else {
+					throw formula_error("Unexpected 'faiend' found", "", "", 0);
+				}
+			} else
+			if (faifile_keyword) {
+				if(current_type == TOKEN_STRING_LITERAL) {
+					std::string str = std::string(tokens.back().begin,tokens.back().end);
+					files.push_back( std::make_pair( str , 1 ) );
+					std::pair < std::set< std::string>::iterator , bool > ret;
+					ret = filenames.insert( str );
+					if(ret.second==true) {
+						filenames_it = ret.first;
+					} else {
+						throw formula_error("Faifile already included", "faifile" + str, "", 0);
+					}
+					tokens.pop_back();
+					faifile_keyword = false;
+				} else {
+					throw formula_error("Expected string after the 'faifile'", "faifile", "", 0);
+				}
+			} else {
+				//in every token not specified above, store line number and name of file it came from
+				tokens.back().filename = &(*filenames_it);
+				tokens.back().line_number = files.back().second;
 			}
-		} catch(token_error& /*e*/) {
-			throw formula_error();
+		} catch(token_error& e) {
+			//when we catch token error, we should write whole line in which error occured, so we merge info from token and everything we had in the line so far
+			std::string str = "";
+			if(!tokens.empty()) {
+				token* tok_it = &tokens[0] + tokens.size()-1;
+				while( ( tok_it != &tokens[0] ) && (tok_it->line_number == tokens.back().line_number) )
+					--tok_it;
+
+				if( tok_it != &tokens[0] && tok_it != &tokens[0] + tokens.size() -1)
+					++tok_it;
+
+				str = tokens_to_string( tok_it, &tokens[0] + tokens.size() );
+			}
+
+			throw formula_error(e.description_, str + e.formula_, *filenames_it, files.back().second);
 		}
 	}
 
-	try {
-		if(tokens.size() != 0) {
-			expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
-		} else {
-			expr_ = expression_ptr(new null_expression());
-		}	
-	} catch(...) {
-		std::cerr << "error parsing formula '" << str << "'\n";
-		throw;
+	if(files.size() > 1) {
+		throw formula_error("Missing 'faiend', make sure each .fai file ends with it", "", "", 0);
+	}
+
+	if(tokens.size() != 0) {
+		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
+	} else {
+		expr_ = expression_ptr(new null_expression());
+	}	
+}
+
+formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) : 
+	expr_(),
+	str_()
+{
+
+	if(i1 != i2) {
+		expr_ = parse_expression(i1,i2, symbols);
+	} else {
+		expr_ = expression_ptr(new null_expression());
 	}
 }
 

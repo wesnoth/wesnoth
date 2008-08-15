@@ -148,6 +148,9 @@ public:
 	bool can_attack (const gamemap::location, const gamemap::location) const;
 
 private:
+	void handle_exception(game_logic::formula_error& e);
+	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation);
+	void display_message(const std::string& msg);
 	void do_recruitment();
 	bool make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
 	bool execute_variant(const variant& var, bool commandline=false);
