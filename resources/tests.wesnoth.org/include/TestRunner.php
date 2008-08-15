@@ -24,7 +24,7 @@ class TestRunner {
 		if ($binary_name === false)
 		{
 			trigger_error("No executeable name for tests");
-			return;
+			return false;
 		}
 		$test_output = '<UnitTest>'.shell_exec("./$binary_name --log_format=XML --report_format=XML 2>&1").'</UnitTest>';
 
@@ -40,15 +40,17 @@ class TestRunner {
 		//test_cases_aborted="0"></TestSuite>
 		//</TestResult></UnitTest>';
 		$xml = simplexml_load_string($test_output);
+		global $db;
 		if (!($xml instanceof SimpleXMLElement)
-			|| !isset($xml->TestLog[0]) )
+			|| !isset($xml->TestResult[0]) )
 		{
-			global $db;
 			if ($db->debug)
 				echo $test_output;
-			$db->FailTrans();
-			return;
+			return false;
 		}
+		$db->StartTrans();
+
+		$build->insert();
 		foreach($xml->TestLog[0] as $name => $data)
 		{
 			$test_error = new TestError($name, $data, $build);
@@ -60,6 +62,8 @@ class TestRunner {
 			$test_report = new TestResult($data, $build);
 			$test_report->updateDB();
 		}
+		$db->CompleteTrans();
+		return true;
 	}
 }
 

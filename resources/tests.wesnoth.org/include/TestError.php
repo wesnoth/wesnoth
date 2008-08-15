@@ -57,6 +57,8 @@ class TestError {
 				$this->before_id = $result->fields['before_id'];
 				$this->last_id = $result->fields['last_id'];
 			}
+		} else {
+			$this->reset();
 		}
 	}
 
@@ -77,6 +79,21 @@ class TestError {
 		{
 			$this->$key = $value;
 		}
+	}
+
+	private function reset()
+	{
+		$this->id = -1;
+		$this->before_id = -1;
+		$this->last_id = -1;
+		$this->error_type = "";
+		$this->file = "";
+		$this->line = 0;
+		$this->error_msg = "";
+
+		$this->start_version -1;
+		$this->end_version -1;
+
 	}
 
 	public static function getErrorsForBuild($id)
@@ -140,6 +157,7 @@ class TestError {
 	{
 		if ($this->end_version == -1)
 		{
+			// might need optimization
 			$result = $this->db->Execute('SELECT MIN(svn_version) as end_version FROM builds WHERE id>? AND status=?',array($this->before_id, Build::S_GOOD));
 			$this->end_version = $result->fields['end_version'];
 		}

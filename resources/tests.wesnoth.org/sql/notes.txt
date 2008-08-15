@@ -1,0 +1,2 @@
+Use following line to generate backup:
+mysqldump --add-drop-database --add-drop-table --complete-insert --create-options --extended-insert --single-transaction -u <username> -p > dump.sql

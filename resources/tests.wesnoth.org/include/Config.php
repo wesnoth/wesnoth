@@ -14,22 +14,50 @@
 
 
 class Config {
-	private $name;
+	protected $name;
+	protected static $configs = array();
+	private static $php_config_loaded = false;
 	function __construct($name = null)
 	{
 		$this->name = $name;
 	}
 
+	// DBConfig will implement this but not yet used
 	public function insertDefaults()
 	{
 	}
-
-	public function set()
+// set isn't supported as configs are stored in php file
+	public function set($value)
 	{
+		trigger_error('Not implemented. Use DBConfig::set()',E_USER_WARNING);
 	}
 
 	public function get()
 	{
+		self::loadConfig();
+
+		return self::getValue($this->name);
+	}
+
+	private static function loadConfig()
+	{
+		if (self::$php_config_loaded)
+			return;
+		global $root_dir;
+		require_once($root_dir . '/../include/configuration.php');
+		self::$configs =  array_merge(self::$configs, $config);
+		self::$php_config_loaded = true;
+	}
+
+	protected static function getValue($name)
+	{
+		if (isset(self::$configs[$name]))
+		{
+			return self::$configs[$name];
+		} else {
+			trigger_error("No $name config option found. Did you forgot to update configuration.php?", E_USER_NOTICE);
+			return "";
+		}
 	}
 
 }

@@ -87,13 +87,20 @@ class TestResult {
 			$id_list[] = $build->getId();
 			$id_finder[$build->getId()] = $index;
 		}
-		$results = self::multiFetch('WHERE build_id IN ('.implode($id_list,',').')');
+		if (empty($id_list))
+			return;
+
+		$results = self::multiFetch('WHERE build_id IN (?'.str_repeat(',?',count($id_list) - 1).')', $id_list);
 
 		foreach($results as $result)
 		{
 			$builds[$id_finder[$result->getBuildId()]]->setResult($result);
 			unset($id_finder[$result->getBuildId()]);
 		}
+		
+		if (empty($id_finder))
+			return;
+
 		$empty_result = new TestResult();
 		foreach($id_finder as $index)
 		{

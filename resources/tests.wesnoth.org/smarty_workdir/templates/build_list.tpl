@@ -1,4 +1,19 @@
 {strip}
+<table class="build_history">
+<tr><td>
+{if $next_id}
+<div class="paginate left">
+<a href="show_build.php?build={$next_id}">Next</a>
+</div>
+{/if}
+{if $previous_id}
+<div class="paginate right">
+<a href="show_build.php?build={$previous_id}">Previous</a>
+</div>
+{/if}
+{if $show_header}
+<h3>Build report</h3>
+{/if}
 <table class="build" border="1">
 <tr>
 <th>Time</th>
@@ -23,4 +38,5 @@
 </tr>
 {/foreach}
 </table>
+</td></tr></table>
 {/strip}

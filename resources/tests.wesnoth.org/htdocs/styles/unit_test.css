@@ -7,6 +7,8 @@ div.menu {
 
 .unit_test h3 {
 	text-align:center;
+	margin-left:6em;
+	margin-right:6em;
 }
 
 .unit_test a {
@@ -104,6 +106,19 @@ div.paginate {
 	margin-left: auto;
 	margin-right: 0;
 	font-size: 0.8em;
+}
+
+div.left {
+	float:left;
+}
+
+div.right {
+	float:right;
+}
+
+div.left, div.right {
+	margin-top:1.4em;
+	margin-bottom:auto;
 }
 
 .paginate .active {

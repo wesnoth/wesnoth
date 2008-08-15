@@ -1,5 +1,4 @@
-<h3>Build report</h3>
-{include file='build_list.tpl' hide_build_link=true}
+{include file='build_list.tpl' hide_build_link=true show_header=true}
 <br/>
 {if count($errors) eq 0}
 <h3>All unit test passed! Congratulations!</h3>

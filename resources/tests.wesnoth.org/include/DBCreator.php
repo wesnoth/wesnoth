@@ -313,8 +313,8 @@ class DBCreator {
 		$this->format = new DBFormat();
 		
 		$configtable = new DBTable('configs', 'InnoDB');
-		$configtable->addChild(new DBField('name', 'VARCHAR(255) NOT NULL'));
-		$configtable->addChild(new DBField('value', 'VARCHAR(255) NOT NULL'));
+		$configtable->addChild(new DBField('name', 'VARCHAR(40) NOT NULL'));
+		$configtable->addChild(new DBField('value', 'VARCHAR(100) NOT NULL'));
 		$configtable->addChild(new DBIndex('`name`', 'PRIMARY KEY'));
 		$this->format->addChild($configtable);
 
@@ -327,6 +327,7 @@ class DBCreator {
 		$buildstable->addChild(new DBIndex('`id`', 'PRIMARY KEY'));
 		$buildstable->addChild(new DBIndex('`time`', 'KEY'));
 		$buildstable->addChild(new DBIndex('`svn_version`', 'KEY'));
+		$buildstable->addChild(new DBIndex('`id`,`status`', 'KEY', 'id_status'));
 		$this->format->addChild($buildstable);
 
 		$errortable = new DBTable('test_errors', 'InnoDB');
@@ -368,8 +369,8 @@ class DBCreator {
 		$build = new Build();
 		$build->insertNull();
 
-		$config = new Config();
-		$config->insertDefaults();
+//		$config = new Config();
+//		$config->insertDefaults();
 	}
 }
 

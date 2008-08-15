@@ -37,8 +37,7 @@ if ($svn->getRevision() === false)
 
 $build = new Build($svn->getRevision());
 
-if (!$build->Exists()
-	|| $build->getStatus() != Build::S_GOOD)
+if (!$build->Exists())
 {
 	// Only run tests if build doesn't exists
 	if ($build->compile($svn->getRevision()))
@@ -46,9 +45,10 @@ if (!$build->Exists()
 		$test_runner = new TestRunner();
 		$test_runner->run($build);
 	}
-	$db->CompleteTrans();
 } 
 
-$config = new Config('last_autotest_run_time');
-$config->set(time());
+$build->pruneOldBuilds();
+
+$config = new DBConfig('last_autotest_run_time');
+$config->set($db->DBTimeStamp(time()));
 ?>

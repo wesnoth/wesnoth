@@ -56,6 +56,9 @@ Edit variables in path_settup.sh to have correct path to directories.
 copy tests/include/settup.php.template to tests/include/settup.php
 Edit database login information in settup.php.
 
+copy tests/include/configuration.php.template to tests/include/configuration.php
+Edit configurations to match your build system and function preferences.
+
 execute tests/autotester/run_unit_test.sh
 
 Check that website is visible.

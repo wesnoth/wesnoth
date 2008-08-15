@@ -89,7 +89,7 @@ class Build {
 		return $ret;
 	}
 
-	private static function getNumberOfVisiblePages($builds_per_page)
+	private static function getNumberOfPages($builds_per_page)
 	{
 		global $db;
 		$result = $db->Execute('SELECT COUNT(*) as number FROM builds');
@@ -141,12 +141,38 @@ class Build {
 				WHERE id<?
 				AND status=?', 
 				array($this->id,
-					  self::S_GOOD));
-			$this->previous_id = $result->fields['previous_id'];
+				self::S_GOOD));
+			if (!$result->EOF())
+				$this->previous_id = $result->fields['previous_id'];
 		}
 		return $this->previous_id;
 	}
-	public function getLastWorkingId()
+
+	private function getNextAndPrevious()
+	{
+		$ret = array();
+		$result = $this->db->Execute('SELECT MAX(id) as previous_id 
+				FROM builds 
+				WHERE id<?', 
+				array($this->id));
+		if (!$result->EOF())
+			$ret['previous_id'] = $result->fields['previous_id'];
+		else
+			$ret['previous_id'] = 0;
+
+		$result = $this->db->Execute('SELECT MIN(id) as next_id 
+				FROM builds 
+				WHERE id>?', 
+				array($this->id));
+		if (!$result->EOF())
+			$ret['next_id'] = $result->fields['next_id'];
+		else
+			$ret['next_id'] = 0;
+
+
+		return $ret;
+	}
+	public function getPreviousWorkingId()
 	{
 		if ($this->status == self::S_GOOD)
 		{
@@ -155,16 +181,21 @@ class Build {
 		return $this->getPreviousId();
 	}
 
+
 	public function compile($revision)
 	{
-		$compiler_log = shell_exec('scons test 2>&1');
+
+		$cc = new Config('compile_command');
+		$compile_command = $cc->get();
+
+		$bn = new Config('binary_name');
+		$this->binary_name = $bn->get();
+
+		$compiler_log = shell_exec($compile_command);
 		$m =array();
 		$this->error_msg = '';
 		$this->status = self::S_GOOD;
-		if (strpos($compiler_log, "`test' is up to date.") !== false)
-		{
-			return false;
-		}
+
 		// build/debug/editor2/
 		$compiler_log = FilenameConverter::stripBuildDirs($compiler_log);
 		if (preg_match_all('/^.*(error:|warning:|note:|undefined reference|ld returned \d exit status).*$/mi',$compiler_log, $m,PREG_SET_ORDER))
@@ -179,17 +210,9 @@ class Build {
 				$this->status = self::S_ERROR;
 		}
 
-		if(preg_match('/test to \.\/([a-zA-Z0-9_-]*)/',$compiler_log, $m))
-		{
-			$this->binary_name = $m[1];
-		}
-
 		$this->time = time();
 		$this->svn_revision = $revision;
 
-		$this->db->StartTrans();
-
-		$this->insert();
 		return $this->status == self::S_GOOD;
 	}
 
@@ -198,7 +221,7 @@ class Build {
 		return $this->binary_name;
 	}
 
-	private function insert()
+	public function insert()
 	{
 		$result = $this->db->Execute('INSERT INTO builds 
 			(svn_version, status, error_msg) 
@@ -256,10 +279,12 @@ class Build {
 	public static function getVisibleBuilds(ParameterValidator $user_params)
 	{
 		$ret = array();
-		$builds_per_page = 18; // TODO: get from config
-		$number_of_vissible_pages = 5;
+		$bpreviousp = new Config('history_builds_per_page');
+		$builds_per_page = $bpreviousp->get(); 
+		$nopip = new Config('history_number_of_pages_in_pagenation');
+		$number_of_vissible_pages = $nopip->get();
 		$page = $user_params->getInt('page', 1);
-		$number_of_pages	= self::getNumberOfVisiblePages($builds_per_page);
+		$number_of_pages	= self::getNumberOfPages($builds_per_page);
 
 		$pager = new Paginate('build_history.php?page=', $page, $number_of_pages, $number_of_vissible_pages);
 
@@ -303,32 +328,88 @@ class Build {
 	public function getStatistics()
 	{
 		if (is_null($this->errors))
-			$this->errors = TestError::getErrorsForBuild($this->getLastWorkingId());
+			$this->errors = TestError::getErrorsForBuild($this->getPreviousWorkingId());
 
-		return 	array('builds' => array($this->getBuildStats()),
-					  'errors'			=> $this->getErrorStatistics());
+		return 	array_merge(array('builds'	=> array($this->getBuildStats()),
+			'errors'	=> $this->getErrorStatistics()),
+			$this->getNextAndPrevious());
 	}
 
 	public function pruneOldBuilds()
 	{
-		$query = 'SELECT b1.id 
-				  FROM builds b1 LEFT JOIN test_results as r1 ON b1.id=r1.build_id
-								 LEFT JOIN test_errors as e1 ON b1.id=e1.before_id
-		  						 LEFT JOIN test_errors as e2 ON b1.id=e1.last_id,
-					   builds b2 LEFT JOIN test_results as r2 ON b2.id=r2.build_id
-				  WHERE b1.time < ?
-					   AND b1.status = b2.status 
-				  	   AND b1.error_msg = b2.error_msg 
-					   AND (b1.id = b2.id+1)
-					   AND (e1.id IS NULL AND b1.id IS NOT NULL)
-					   AND ((r1.id IS NULL AND r2.id IS NULL) 
-					   		OR (r1.result = r2.result 
-								AND r1.assertions_passed=r2.assertions_passed 
-								AND r1.assertions_failed=r2.assertions_failed))';
+		$query = 'SELECT bcurrent.id as id
+				  FROM builds bcurrent LEFT JOIN test_results as rcurrent ON bcurrent.id=rcurrent.build_id
+								 LEFT JOIN test_errors as e1 ON bcurrent.id=e1.before_id
+		  						 LEFT JOIN test_errors as e2 ON bcurrent.id=e2.last_id,
+					   builds bnext LEFT JOIN test_results as rnext ON bnext.id=rnext.build_id,
+					   builds bprevious LEFT JOIN test_results as rprevious ON bprevious.id=rprevious.build_id
+				  WHERE bcurrent.time >= ? 
+					   AND bcurrent.time <= ?
+					   AND bcurrent.status = bnext.status 
+					   AND bcurrent.status = bprevious.status 
+				  	   AND bcurrent.error_msg = bnext.error_msg 
+				  	   AND bcurrent.error_msg = bprevious.error_msg 
+					   AND (bnext.id=(SELECT MIN(id) FROM builds sb WHERE sb.id>bcurrent.id)
+				   			AND bprevious.id=(SELECT MAX(id) FROM builds sb WHERE sb.id<bcurrent.id))
+					   AND (e1.id IS NULL AND e2.id IS NULL AND bcurrent.id IS NOT NULL)
+					   AND ((rcurrent.id IS NULL AND rnext.id IS NULL AND rprevious.id IS NULL) 
+					   		OR (rcurrent.result = rnext.result 
+					   			AND rcurrent.result = rprevious.result 
+								AND rcurrent.assertions_passed=rnext.assertions_passed 
+								AND rcurrent.assertions_failed=rnext.assertions_failed
+								AND rcurrent.assertions_passed=rprevious.assertions_passed 
+								AND rcurrent.assertions_failed=rprevious.assertions_failed))';
 
-		$_2dayes = 2*24*3600;  // TODO: get from Config
-		$result = $this->db->Execute($query, array($this->db->DBTimeStamp(time()-$_2dayes)));
-//		var_dump($result->GetAll());
+		$bpa = new Config('build_prune_age');
+		$max_age = $bpa->get(); 
+		$bppt = new DBConfig('build_previous_prune_time');
+		$start_time = $this->db->UnixTimeStamp($bppt->get());
+		if (empty($tart_time))
+			$start_time = 0;
+		$end_time = time()-$max_age;
+		$result = $this->db->Execute($query, array($this->db->DBTimeStamp($start_time),
+												   $this->db->DBTimeStamp($end_time)));
+
+		if (!$result || $result->EOF())
+			return;
+
+		while(!$result->EOF())
+		{
+			$ids[] = $result->fields['id'];
+			$result->moveNext();
+		}
+
+		$this->db->StartTrans();
+		$query = 'DELETE FROM test_results WHERE build_id IN (?' . str_repeat(',?',count($ids)-1) . ')';
+		$result = $this->db->Execute($query, $ids);
+		if ($result === false)
+			$this->db->FailTrans();
+
+		if(!$this->db->hasFailedTrans())
+		{
+
+			$query = 'DELETE FROM builds WHERE id IN (?' . str_repeat(',?',count($ids)-1) . ')';
+			$result = $this->db->Execute($query, $ids);
+			if ($result === false)
+				$this->db->FailTrans();
+		}
+
+		if(!$this->db->hasFailedTrans())
+			$bppt->set($this->db->DBTimeStamp($end_time));
+
+		$success = $this->db->hasFailedTrans();
+		$this->db->CompleteTrans();
+
+		$optimize = new DBConfig('build_optimize_table_time');
+		// Do DB optimizaion and analyze once in a day
+		if ($success
+			&& time() - 24*3600 > $this->db->UnixTimeStamp($optimize->get()))
+		{
+			// optimize tables
+			$this->db->Execute('OPTIMIZE TABLE builds, test_results');
+			$this->db->Execute('ANALYZE TABLE builds, test_results');
+			$optimize->set($this->db->DBTimeStamp(time()));
+		}
 	}
 }
 ?>
