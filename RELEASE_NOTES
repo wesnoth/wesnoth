@@ -14,3 +14,21 @@ The release team should empty this file after each release.
 Terrain graphic rules for user-made add-ons are now loaded before
 the core ones, making custom tiles look the same in-game as they did
 in the editor in the previous release (1.5.2).
+
+
+Editor2 is the new map editor developed by Ilor as the GSoC project. Editor2 is 
+a replacement of wesnoth_editor, the old_editor. Unlike the old editor, editor2 
+is compiled in the game executable. The old editor remains in its own 
+executable, both can safely coexist.
+
+To build the game with the new editor, use scons with editor2=yes or an 
+equivalent option in the other build systems (--with-editor2). Remember that 
+you need to build the game, not the editor target -- wesnoth_editor is the 
+largely unmodified old editor. If building manually, you must define the 
+USE_EDITOR symbol and add the editor2 sources to the build. The USE_EDITOR2 
+symbol does not affect building of the old editor.
+
+To start the new editor, launch wesnoth.exe and choose "Editor" in the title
+menu, or use the -e or --editor command line option, i.e. "wesnoth -e". If this
+fails and there is no "Editor" button, it means the game was compiled without
+editor2 support. 

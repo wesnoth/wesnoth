@@ -3,6 +3,17 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.2+svn:
+ * Editor2
+   * Editor2 is a replacement for the old editor. It is launched from
+     within the game: "Editor" button in the title screen or command
+     line "-e" or "--editor" option. The interface is largely unchanged.
+   * The game must be compiled with editor2 support for this to work. See
+     RELEASE_NOTES for details.
+   * See http://www.wesnoth.org/wiki/Editor2 for details known issues 
+   * You can continue to use the old editor by launching wesnoth_editor
+     like you did so far. New features, however, are much more likely to
+     appear in editor2.
+	 
  * Language and translations
    * updated translations: Chinese (Traditional), Danish, Finnish, Galician,
      German, Italian, Latvian, Polish, Russian, Slovak.
