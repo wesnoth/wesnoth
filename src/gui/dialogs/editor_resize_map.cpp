@@ -39,15 +39,6 @@
 
 namespace gui2 {
 
-static void callback_expand_direction_changed(twidget* caller)
-{
-	teditor_resize_map* dialog = dynamic_cast<teditor_resize_map*>(caller->dialog());
-	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller->get_window());
-	assert(window);
-	dialog->update_expand_direction(*window);	
-}
-
 teditor_resize_map::teditor_resize_map() :
 	map_width_(register_integer("width", false)),
 	map_height_(register_integer("height", false)),
