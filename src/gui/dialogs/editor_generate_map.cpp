@@ -39,11 +39,11 @@ twindow teditor_generate_map::build_window(CVideo& video)
 	return build(video, get_id(EDITOR_GENERATE_MAP));
 }
 
-void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
+void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& /*window*/)
 {
 }
 
-void teditor_generate_map::post_show(twindow& window)
+void teditor_generate_map::post_show(twindow& /*window*/)
 {
 }
 

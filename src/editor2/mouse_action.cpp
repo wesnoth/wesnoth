@@ -33,30 +33,34 @@ void mouse_action::move(editor_display& disp, const gamemap::location& hex)
 	}
 }
 
-std::set<gamemap::location> mouse_action::affected_hexes(editor_display& disp, const gamemap::location& hex)
+std::set<gamemap::location> mouse_action::affected_hexes(
+		editor_display& /*disp*/, const gamemap::location& hex)
 {
 	std::set<gamemap::location> res;
 	res.insert(hex);
 	return res;
 }
 
-editor_action* mouse_action::drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
+editor_action* mouse_action::drag( editor_display& /*disp*/, 
+		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	return NULL;
 }
 
-editor_action* mouse_action::drag_end(editor_display& disp, int x, int y)
+editor_action* mouse_action::drag_end(
+		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return NULL;
 }
 
-editor_action* mouse_action::key_event(editor_display& disp, const SDL_Event& e)
+editor_action* mouse_action::key_event(
+	editor_display& /*disp*/, const SDL_Event& /*e*/)
 {
 	return NULL;
 }
 
 std::set<gamemap::location> brush_drag_mouse_action::affected_hexes(
-	editor_display& disp, const gamemap::location& hex)
+	editor_display& /*disp*/, const gamemap::location& hex)
 {
 	return get_brush().project(hex);
 }
@@ -68,7 +72,8 @@ editor_action* brush_drag_mouse_action::click(editor_display& disp, int x, int y
 	return click_perform(disp, affected_hexes(disp, hex));
 }
 
-editor_action* brush_drag_mouse_action::drag(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
+editor_action* brush_drag_mouse_action::drag(editor_display& disp, 
+		int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	move(disp, hex);
@@ -81,7 +86,8 @@ editor_action* brush_drag_mouse_action::drag(editor_display& disp, int x, int y,
 	}
 }
 	
-editor_action* brush_drag_mouse_action::drag_end(editor_display& disp, int x, int y)
+editor_action* brush_drag_mouse_action::drag_end(
+		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return NULL;
 }
@@ -94,7 +100,8 @@ const brush& brush_drag_mouse_action::get_brush()
 }
 
 
-editor_action* mouse_action_paint::click_perform(editor_display& disp, const std::set<gamemap::location>& hexes)
+editor_action* mouse_action_paint::click_perform(
+		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
 	bool one_layer = (key_[SDLK_RALT] || key_[SDLK_LALT]);
 	return new editor_action_paint_area(hexes, terrain_, one_layer);
@@ -118,7 +125,8 @@ std::set<gamemap::location> mouse_action_select::affected_hexes(
 	}
 }
 
-editor_action* mouse_action_select::key_event(editor_display& disp, const SDL_Event& e)
+editor_action* mouse_action_select::key_event(
+		editor_display& disp, const SDL_Event& /*e*/)
 {
 	// Force an actual move
 	gamemap::location tmp = previous_move_hex_;
@@ -127,7 +135,8 @@ editor_action* mouse_action_select::key_event(editor_display& disp, const SDL_Ev
 	return NULL;
 }
 
-editor_action* mouse_action_select::click_perform(editor_display& disp, const std::set<gamemap::location>& hexes)
+editor_action* mouse_action_select::click_perform(
+		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
 	editor_action* a(NULL);	
 	if (selecting_) {
@@ -138,9 +147,8 @@ editor_action* mouse_action_select::click_perform(editor_display& disp, const st
 	return a;
 }
 
-
 std::set<gamemap::location> mouse_action_paste::affected_hexes(
-	editor_display& disp, const gamemap::location& hex)
+	editor_display& /*disp*/, const gamemap::location& hex)
 {
 	return paste_.get_offset_area(hex);
 }

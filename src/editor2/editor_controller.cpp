@@ -65,7 +65,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	adjust_sizes(gui(), *size_specs_);
 	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
 		foreground_terrain_, background_terrain_);
-	const config::child_list& children = game_config.get_children("brush");
 	foreach (const config* i, game_config.get_children("brush")) {
 		brushes_.push_back(brush(*i));
 	}
@@ -845,7 +844,7 @@ void editor_controller::redo()
 	refresh_after_action();
 }
 
-void editor_controller::mouse_motion(int x, int y, const bool browse, bool update)
+void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
@@ -891,13 +890,13 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	return false;
 }
 
-void editor_controller::left_drag_end(int x, int y, const bool browse)
+void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
 	perform_refresh_delete(a);
 }
 
-void editor_controller::left_mouse_up(int x, int y, const bool browse)
+void editor_controller::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 	refresh_after_action();
 }
