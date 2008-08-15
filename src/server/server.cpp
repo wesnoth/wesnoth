@@ -1101,6 +1101,12 @@ std::string server::process_command(const std::string& query) {
 			std::string::iterator second_space = std::find(first_space+1, parameters.end(), ' ');
 			const std::string target(parameters.begin(), first_space);
 			const std::string time(first_space+1,second_space);
+			time_t parsed_time = ban_manager_.parse_time(time);
+			if (parsed_time == 0)
+			{
+				second_space = first_space;
+			}
+
 			if (second_space == parameters.end())
 			{
 				--second_space;
@@ -1113,7 +1119,7 @@ std::string server::process_command(const std::string& query) {
 				banned_ = true;
 				out << "Set ban on '" << target << "' with time '" << time << "'  with reason: '" << reason << "'.\n";
 
-				ban_manager_.ban(target, ban_manager_.parse_time(time), reason);
+				ban_manager_.ban(target, parsed_time, reason);
 				
 				if (kick) {
 					for (player_map::const_iterator pl = players_.begin();
@@ -1133,7 +1139,7 @@ std::string server::process_command(const std::string& query) {
 						banned_ = true;
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
-							ban_manager_.ban(ip,ban_manager_.parse_time(time), reason);
+							ban_manager_.ban(ip,parsed_time, reason);
 							out << "Set ban on '" << ip << "' with time '" << time << "' with reason: '"
 								<< reason << "'.\n";
 						}
