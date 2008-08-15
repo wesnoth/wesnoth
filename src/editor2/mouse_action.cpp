@@ -205,7 +205,7 @@ editor_action* mouse_action_starting_position::key_event(editor_display& disp, c
 	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
 		return NULL;
 	}
-	if (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9' || event.key.keysym.sym == SDLK_DELETE) {
+	if ((event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9') || event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
 		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_) + 1;
