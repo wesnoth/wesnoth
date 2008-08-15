@@ -25,7 +25,7 @@ namespace wesnothd {
 
 	bool banned_compare::operator()(const banned_ptr a, const banned_ptr b) const
 	{
-		return (*a) > (*b) || a->get_end_time() == 0;
+		return (*a) > (*b);
 	}
 
 	banned::banned(const std::string& ip, const time_t end_time, const std::string& reason) : ip_(ip), end_time_(end_time), reason_(reason), deleted_(false)
@@ -237,8 +237,7 @@ namespace wesnothd {
 		{
 			banned_ptr ban = time_queue_.top();
 
-			if (ban->get_end_time() == 0
-				|| ban->get_end_time() > time_now)
+			if (ban->get_end_time() > time_now)
 			{
 				// No bans going to expire
 				LOG_SERVER << "ban " << ban->get_ip() << " not removed. time: " << time_now << " end_time " << ban->get_end_time() << "\n";

@@ -18,19 +18,23 @@
 #include <queue>
 #include <ctime>
 
+#include <boost/shared_ptr.hpp>
+
 class config;
 
 namespace wesnothd {
 
 	class banned;
 
+	typedef boost::shared_ptr<banned> banned_ptr;
+
 	//! We want to move the lowest value to the top
 	struct banned_compare {
-		bool operator()(const banned* a, const banned* b) const;
+		bool operator()(const banned_ptr a, const banned_ptr b) const;
 	};
 
-	typedef std::map<std::string, banned*> ban_map;
-	typedef std::priority_queue<banned*,std::vector<banned*>, banned_compare> ban_time_queue;
+	typedef std::map<std::string, banned_ptr> ban_map;
+	typedef std::priority_queue<banned_ptr,std::vector<banned_ptr>, banned_compare> ban_time_queue;
 	typedef std::map<std::string, size_t> default_ban_times;
 
 
