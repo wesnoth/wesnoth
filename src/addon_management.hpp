@@ -64,67 +64,10 @@ void unarchive_addon(const class config& cfg);
  */
 void manage_addons(class game_display& disp);
 
-class addon_version_info_not_sane_exception {};
-
-//! Struct representing an add-on's version information.
-struct addon_version_info
-{
-	addon_version_info(); //!< Default constructor.
-	//! String conversion constructor.
-	//! @param src_str A version string to initialize numbers from. It must
-	//!                be in the format "X.Y.Z", where X is the major version
-	//!                number, Y the minor and Z the revision level. If the
-	//!                string does not match this format, the object's sanity
-	//!                flag will be set to false.
-	addon_version_info(const std::string& src_str);
-	addon_version_info(const addon_version_info&); //!< Copy constructor.
-	//! List constructor.
-	addon_version_info(unsigned major, unsigned minor, unsigned rev, bool sane_flag);
-
-	//! Assignment operator.
-	addon_version_info& operator=(const addon_version_info&);
-	
-	//! Returns a string of the form "major.minor.revision".
-	//! Throws addon_version_info_not_sane_exception if the information given
-	//! when constructing the object was not correctly formatted.
-	std::string str(void) const;
-	//! Shortcut to str().
-	operator std::string() const { return this->str(); }
-	//! Returns the sanity state of the information given when
-	//! constructing the object.
-	operator bool() const { return this->sane; }
-	
-	unsigned vmajor;		//!< Major (leading) version number.
-	unsigned vminor;		//!< Minor (middle) version number.
-	unsigned revision;		//!< Revision (trailing) version number.
-	bool sane;				//!< Sanity flag.
-
-private:
-	void reset();
-};
-
-//! Equality operator for addon_version_info.
-inline bool operator==(const addon_version_info& l, const addon_version_info& r) {
-	return(l.sane && r.sane && l.vmajor == r.vmajor && l.vminor == r.vminor &&
-	       l.revision == r.revision);
-}
-//! Inequality operator for addon_version_info.
-inline bool operator!=(const addon_version_info& l, const addon_version_info& r) {
-	return !operator==(l,r);
-}
-//! Greater-than operator for addon_version_info.
-bool operator>(const addon_version_info&, const addon_version_info&);
-//! Less-than operator for addon_version_info.
-bool operator<(const addon_version_info&, const addon_version_info&);
-//! Greater-than-or-equal operator for addon_version_info.
-bool operator>=(const addon_version_info&, const addon_version_info&);
-//! Less-than-or-equal operator for addon_version_info.
-bool operator<=(const addon_version_info&, const addon_version_info&);
-
 //! Refreshes the per-session cache of add-on's version
 //! information structs.
 void refresh_addon_version_info_cache();
 //! Returns a particular installed add-on's version information.
-const addon_version_info& get_addon_version_info(const std::string& addon);
+const class version_info& get_addon_version_info(const std::string& addon);
 
 #endif /* !ADDON_MANAGEMENT_HPP_INCLUDED */

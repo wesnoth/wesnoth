@@ -34,6 +34,7 @@
 #include "network.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
+#include "version.hpp"
 #include "widgets/menu.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -594,16 +595,16 @@ namespace {
 		// Add-ons that can be published and are outdated will not be offered for update,
 		// but a message will be displayed warning about them to the user.
 		const std::vector< std::string >& all_publish = available_addons();
-		std::vector<addon_version_info> safe_local_versions;
-		std::vector<addon_version_info> unsafe_local_versions;
-		std::map<std::string, addon_version_info> remote_version_map;
+		std::vector<version_info> safe_local_versions;
+		std::vector<version_info> unsafe_local_versions;
+		std::map<std::string, version_info> remote_version_map;
 		foreach(config* const remote_addon, remote_addons_list) {
 			if(remote_addon == NULL) continue; // shouldn't happen...
 			const std::string& name = (*remote_addon)["name"];
 			const std::string& version = (*remote_addon)["version"];
 			try {
-				remote_version_map.insert(std::make_pair(name, addon_version_info(version)));
-			} catch(addon_version_info_not_sane_exception const&) {
+				remote_version_map.insert(std::make_pair(name, version_info(version)));
+			} catch(version_info::not_sane_exception const&) {
 				ERR_CFG << "remote add-on '" << name << "' has invalid version string '" << version << "', skipping from updates check...\n";
 				continue;
 			}
@@ -611,13 +612,13 @@ namespace {
 					std::find(all_local.begin(), all_local.end(), name);
 			try {
 				if(local_match != all_local.end()) {
-					const addon_version_info& local_version = get_addon_version_info(name);
+					const version_info& local_version = get_addon_version_info(name);
 					if(remote_version_map[name] > local_version) {
 						if(std::find(all_publish.begin(), all_publish.end(), name) != all_publish.end()) {
 							unsafe_matches.push_back(name);
 							unsafe_local_versions.push_back(local_version);
 							unsafe_list << '\n';
-							unsafe_list << name << " (local: " << local_version << ", remote: " << version << ")";
+							unsafe_list << name << " (local: " << local_version.str() << ", remote: " << version << ")";
 						} else {
 							safe_matches.push_back(name);
 							safe_local_versions.push_back(local_version);
@@ -625,7 +626,7 @@ namespace {
 						}
 					}
 				}
-			} catch(addon_version_info_not_sane_exception const&) {
+			} catch(version_info::not_sane_exception const&) {
 				ERR_CFG << "local add-on '" << name << "' has invalid version string '" << version << "', skipping from updates check...\n";
 				continue;
 			}
@@ -1163,100 +1164,8 @@ void manage_addons(game_display& disp)
 	}
 }
 
-bool operator>(const addon_version_info& l, const addon_version_info& r)
-{
-	if((!r.sane) || (!l.sane))
-		throw addon_version_info_not_sane_exception();
-
-	return (l.vmajor > r.vmajor || (l.vmajor == r.vmajor && (l.vminor > r.vminor || (l.vminor == r.vminor && l.revision > r.revision))));
-}
-
-bool operator<(const addon_version_info& l, const addon_version_info& r)
-{
-	if((!r.sane) || (!l.sane))
-		throw addon_version_info_not_sane_exception();
-
-	return (l.vmajor < r.vmajor || (l.vmajor == r.vmajor && (l.vminor < r.vminor || (l.vminor == r.vminor && l.revision < r.revision))));
-}
-
-bool operator>=(const addon_version_info& l, const addon_version_info& r)
-{
-	if((!r.sane) || (!l.sane))
-		throw addon_version_info_not_sane_exception();
-
-	return !(l < r);
-}
-
-bool operator<=(const addon_version_info& l, const addon_version_info& r)
-{
-	if((!r.sane) || (!l.sane))
-		throw addon_version_info_not_sane_exception();
-
-	return !(l > r);
-}
-
-std::string addon_version_info::str(void) const
-{
-	if(!sane)
-		throw addon_version_info_not_sane_exception();
-
-	std::ostringstream out;
-	out << vmajor << '.' << vminor << '.' << revision;
-	return out.str();
-}
-
-addon_version_info& addon_version_info::operator=(const addon_version_info& o)
-{
-	if(this != &o) {
-		this->vmajor = o.vmajor;
-		this->vminor = o.vminor;
-		this->revision = o.revision;
-		// copy o's insanity too
-		this->sane = o.sane;
-	}
-	return *this;
-}
-
-void addon_version_info::reset()
-{
-	vmajor = vminor = revision = 0;
-	sane = false;
-}
-
-addon_version_info::addon_version_info(const std::string& src_str) :
-	vmajor(0),
-	vminor(0),
-	revision(0),
-	sane(true)
-{
-	const std::vector<std::string> components = utils::split(src_str, '.');
-	try {
-		vmajor   = lexical_cast<unsigned>(components.at(0));
-		vminor   = lexical_cast<unsigned>(components.at(1));
-		revision = components.size() >= 3 ? lexical_cast<unsigned>(components[2]) : 0;
-		sane     = true;
-	} catch(std::out_of_range const&) {
-		reset();
-	} catch(bad_lexical_cast const&)  {
-		reset();
-	}
-}
-
-addon_version_info::addon_version_info(const addon_version_info& src_struct)
-	: vmajor(src_struct.vmajor), vminor(src_struct.vminor),
-	  revision(src_struct.revision), sane(src_struct.sane)
-{}
-
-addon_version_info::addon_version_info(unsigned major, unsigned minor, unsigned rev, bool sane_flag)
-	: vmajor(major), vminor(minor), revision(rev), sane(sane_flag)
-{}
-
-addon_version_info::addon_version_info()
-	: vmajor(0), vminor(0), revision(0), sane(true)
-{}
-
 namespace {
-	std::map< std::string, addon_version_info > version_info_cache;
+	std::map< std::string, version_info > version_info_cache;
 } // end unnamed namespace 5
 
 void refresh_addon_version_info_cache(void)
@@ -1286,7 +1195,7 @@ void refresh_addon_version_info_cache(void)
 		scoped_istream stream = istream_file(info_file);
 
 		read(cfg, *stream);
-		
+
 		config const* const info_cfg = cfg.child("info");
 		if(info_cfg == NULL) {
 			++i;
@@ -1294,16 +1203,16 @@ void refresh_addon_version_info_cache(void)
 		}
 		std::string const& version = (*info_cfg)["version"];
 		LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
-		version_info_cache.insert(std::make_pair(addon, addon_version_info(version)));
-		
+		version_info_cache.insert(std::make_pair(addon, version_info(version)));
+
 		++i;
 	}
 }
 
-const addon_version_info& get_addon_version_info(const std::string& addon)
+const version_info& get_addon_version_info(const std::string& addon)
 {
-	static const addon_version_info nil(0,0,0,false);
-	std::map< std::string, addon_version_info >::iterator ret = version_info_cache.find(addon);
+	static const version_info nil(0,0,0,false);
+	std::map< std::string, version_info >::iterator ret = version_info_cache.find(addon);
 
 	if (ret != version_info_cache.end())
 		return ret->second;

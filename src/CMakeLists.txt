@@ -299,6 +299,7 @@ SET(wesnoth-main_SRC
     upload_log.cpp
     variable.cpp
     variant.cpp
+    version.cpp
     widgets/combo.cpp
     widgets/combo_drag.cpp
     widgets/drop_target.cpp
