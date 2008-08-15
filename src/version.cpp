@@ -81,6 +81,7 @@ version_info::version_info(const std::string& str)
 				}
 			}
 		}
+		sane_ = true;
 	} catch (bad_lexical_cast const&) {
 		return;
 	} catch (std::out_of_range const&) {
