@@ -47,7 +47,7 @@ opts.AddOptions(
     PathOption('datarootdir', 'sets the root of data directories to a non-default location', "share", PathOption.PathAccept),
     PathOption('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathOption.PathAccept),
     PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathOption.PathAccept),
-    BoolOption('editor2', 'set to build the new map editor in the "wesnoth" target (EXPERIMENTAL)', False),
+    BoolOption('editor2', 'set to build the new map editor in the "wesnoth" target (inside the game)', True),
     PathOption('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathOption.PathAccept),
     BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathOption('localedirname', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),

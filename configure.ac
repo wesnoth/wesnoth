@@ -240,9 +240,9 @@ AC_ARG_ENABLE([editor],
 	      [editor=no])
 
 AC_ARG_ENABLE([editor2],
-            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game (EXPERIMENTAL)]),
+            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game executable]),
 	      [editor2=$enableval],
-	      [editor2=no])
+	      [editor2=yes])
 
 AC_ARG_ENABLE([tools],
               AS_HELP_STRING([--enable-tools], [enable building and installation of tools for artists and WML maintainers]),
