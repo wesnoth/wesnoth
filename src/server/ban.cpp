@@ -23,7 +23,7 @@ namespace wesnothd {
 #define LOG_SERVER LOG_STREAM(info, mp_server)
 #define DBG_SERVER LOG_STREAM(debug, mp_server)
 
-	bool banned_compare::operator()(const banned* a, const banned* b) const
+	bool banned_compare::operator()(const banned_ptr a, const banned_ptr b) const
 	{
 		return (*a) > (*b);
 	}
@@ -61,6 +61,10 @@ namespace wesnothd {
 
 	std::string banned::get_human_end_time() const
 	{
+		if (end_time_)
+		{
+			return "permanent";
+		}
 		char buf[30];
 		struct tm* local;
 		local = localtime(&end_time_);
@@ -79,12 +83,13 @@ namespace wesnothd {
 		for (config::child_list::const_iterator itor = bans.begin();
 				itor != bans.end(); ++itor)
 		{
-			banned* new_ban = new banned(**itor);
+			banned_ptr new_ban(new banned(**itor));
 			if (!new_ban->is_deleted())
 			{
 				bans_[new_ban->get_ip()] = new_ban;
 			}
-			time_queue_.push(new_ban);
+			if (new_ban->get_end_time() != 0)
+				time_queue_.push(new_ban);
 		}
 	}
 
@@ -181,7 +186,8 @@ namespace wesnothd {
 							multipler = 1;
 							break;
 						default:
-							LOG_SERVER << "Wrong time multipler code given: " << *i << "\n";
+							LOG_SERVER << "Wrong time multipler code given: '" << *i << "'. Assuming this is begin of comment.\n";
+							ret = number = multipler = 0;
 							break;
 					}
 					ret += number * multipler;
@@ -205,9 +211,10 @@ namespace wesnothd {
 			ban->second->remove_ban();
 			bans_.erase(ban);
 		}
-		banned *new_ban = new banned(ip, end_time, reason);
+		banned_ptr new_ban(new banned(ip, end_time, reason));
 		bans_.insert(ban_map::value_type(ip,new_ban));
-		time_queue_.push(new_ban);
+		if (end_time != 0)
+			time_queue_.push(new_ban);
 	}
 
 	void ban_manager::unban(std::ostringstream& os, const std::string& ip)
@@ -228,7 +235,7 @@ namespace wesnothd {
 	{
 		while (!time_queue_.empty())
 		{
-			banned* ban = time_queue_.top();
+			banned_ptr ban = time_queue_.top();
 
 			if (ban->get_end_time() > time_now)
 			{
@@ -241,7 +248,6 @@ namespace wesnothd {
 			{
 				// This was allready deleted have to free memory;
 				time_queue_.pop();
-				delete ban;
 				continue;
 			}
 
@@ -250,7 +256,6 @@ namespace wesnothd {
 
 			bans_.erase(bans_.find(ban->get_ip()));
 			time_queue_.pop();
-			delete ban;
 
 		}
 	}
@@ -289,7 +294,7 @@ namespace wesnothd {
 	
 	void ban_manager::init_ban_help()
 	{
-		ban_help_ = "ban <ip|nickname> <time> [<reason>]\nTime is give in formar ‰d[‰s‰d‰s...] (where ‰s is s, m, h, D, M or Y).\nIf no time modifier is given minutes are used.\n";
+		ban_help_ = "ban <ip|nickname> [<time>] [<reason>]\nTime is give in format ‰d[‰s[‰d‰s[...]]] (where ‰s is s, m, h, D, M or Y).\nIf no time modifier is given minutes are used.\n";
 		default_ban_times::iterator itor = ban_times_.begin();
 		if (itor != ban_times_.end())
 		{
@@ -304,7 +309,7 @@ namespace wesnothd {
 		{
 			ban_help_ += " for standard ban times.\n";
 		}
-		ban_help_ += "ban 127.0.0.1 2H20m flooded lobby\nban 127.0.0.2 medium flooded lobby again\n";
+		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\nban 127.0.0.2 medium flooded lobby again\n";
 	}
 
 	void ban_manager::set_default_ban_times(const config& cfg)
@@ -322,13 +327,6 @@ namespace wesnothd {
 
 	ban_manager::~ban_manager()
 	{
-		bans_.clear();
-		while(!time_queue_.empty())
-		{
-			banned* ban = time_queue_.top();
-			delete ban;
-			time_queue_.pop();
-		}
 	}
 	
 	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_()
