@@ -5,6 +5,17 @@
 #
 # This must be run from the Wesnoth root directory.
 #
+# Currently something strange is generated when using utf8, this needs a fix.
+# I tried this solution, but it does not really work either (though the
+# resulting output should be plain utf8 and the webbrowser is able to display
+# things correctly, the wiki does not like it...
+# Change text.encode to utf16 and do this to have the pasteable entry in the
+# terminal (or redirect the output of the iconv line into a file and paste the
+# content of it):
+# ./data/tools/about_cfg_to_wiki > wiki_utf16
+# iconv --from-code=utf16 --to-code=utf8 wiki_utf16
+# rm wiki_utf16
+#
 
 import sys, re, glob
 
