@@ -114,6 +114,7 @@ SET(libwesnoth-core_STAT_SRC
     gettext.cpp
     log.cpp
     map.cpp
+    md5.cpp
     thread.cpp
     tstring.cpp
     util.cpp
@@ -304,7 +305,6 @@ SET(wesnoth-main_SRC
     widgets/combo_drag.cpp
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
-    server/forum_auth/md5.cpp
 )
 
 # used with editor2 option in the wesnoth target
@@ -398,7 +398,6 @@ SET(wesnothd_SRC
     server/jwsmtp/mailer.cpp
     server/jwsmtp/compat.cpp
     server/jwsmtp/base64.cpp
-    server/forum_auth/md5.cpp
 )
 
 add_executable(wesnothd ${wesnothd_SRC})

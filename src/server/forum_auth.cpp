@@ -1,6 +1,6 @@
 #include <string>
 #include <iostream>
-#include "forum_auth/md5.hpp"
+#include "../md5.hpp"
 #include <string.h>
 #include <mysql++/mysql++.h>
 

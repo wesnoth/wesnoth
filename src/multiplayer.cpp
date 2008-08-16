@@ -22,6 +22,7 @@
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "md5.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
 #include "multiplayer_connect.hpp"
@@ -40,8 +41,6 @@
 #include "serialization/string_utils.hpp"
 #include "upload_log.hpp"
 #include "wml_separators.hpp"
-
-#include "server/forum_auth/md5.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 

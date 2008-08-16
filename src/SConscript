@@ -18,6 +18,7 @@ libwesnoth_core_sources = Split("""
     gettext.cpp
     log.cpp
     map.cpp
+    md5.cpp
     network.cpp
     thread.cpp
     tstring.cpp
@@ -233,7 +234,6 @@ wesnoth_sources = Split("""
     gui/widgets/widget.cpp
     gui/widgets/window.cpp
     gui/widgets/window_builder.cpp
-    server/forum_auth/md5.cpp
     """)
 
 wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
@@ -326,7 +326,6 @@ wesnothd_sources = Split("""
     server/jwsmtp/mailer.cpp
     server/jwsmtp/compat.cpp
     server/jwsmtp/base64.cpp
-    server/forum_auth/md5.cpp
     """)
 wesnothd_sources.extend(env.Object("server/server.cpp", EXTRA_DEFINE = env['fifodir'] and "FIFODIR='\"$fifodir\"'" or None))
 

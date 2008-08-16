@@ -129,7 +129,6 @@ wesnoth_source = \
 	replay_controller.cpp \
 	sha1.cpp \
 	settings.cpp \
-	server/forum_auth/md5.cpp \
 	statistics.cpp \
 	statistics_dialog.cpp \
 	team.cpp \
@@ -226,7 +225,6 @@ wesnothd_SOURCES = \
 	server/jwsmtp/mailer.cpp \
 	server/jwsmtp/compat.cpp \
 	server/jwsmtp/base64.cpp \
-	server/forum_auth/md5.cpp \
 	network.cpp \
 	network_worker.cpp \
 	time.cpp \
@@ -326,6 +324,7 @@ libwesnoth_core_a_SOURCES = \
 	gettext.cpp \
 	log.cpp \
 	map.cpp \
+	md5.cpp \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \

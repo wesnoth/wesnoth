@@ -4,7 +4,7 @@
 #include "user_handler.hpp"
 
 #include <mysql++/mysql++.h>
-#include "forum_auth/md5.hpp"
+#include "../md5.hpp"
 
 //! @class A user_handler implementation to link the server
 //! with a phpbb3 forum.
