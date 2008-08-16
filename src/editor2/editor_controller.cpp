@@ -754,7 +754,7 @@ void editor_controller::perform_refresh_delete(editor_action* action, bool drag_
 	}
 }
 
-void editor_controller::perform_refresh(const editor_action& action, bool drag_part /* =false */)
+void editor_controller::perform_refresh(const editor_action& action, bool /* drag_part =false */)
 {
 	get_map_context().perform_action(action);
 	refresh_after_action();
