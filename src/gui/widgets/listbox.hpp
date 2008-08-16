@@ -23,32 +23,22 @@ namespace gui2 {
 class tscrollbar_;
 class tspacer;
 
-//! @todo list
-//! header row + footer row same width as client data
-//! cell or row select
-//! sort at some way
-//
-//maybe create two types 1 fixed size and one with a builder to add new rows
+/**
+ * @todo list
+ * - Header row + footer row same width as client data.
+ * - Cell or row select.
+ * - Sort at some way.
+ *
+ * Maybe create two types 1 fixed size and one with a builder to add new rows.
+ */
 
+/** The listbox class. */
 class tlistbox : public tcontainer_
 {
 	friend class tbuilder_listbox;
 public:
 	
 	tlistbox();
-
-	bool get_active() const { return state_ != DISABLED; }
-	unsigned get_state() const { return state_; }
-
-	/** Inherited from tevent_executor. */
-	void mouse_left_button_down(tevent_handler& event);
-
-	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event, bool& handled, 
-		SDLKey key, SDLMod modifier, Uint16 unicode);
-
-	/** Inherited from twidget. */
-	bool has_vertical_scrollbar() const { return true; }
 
 	/** 
 	 * When an item in the list is selected by the user we need to
@@ -57,33 +47,7 @@ public:
 	 */
 	void list_item_selected(twidget* caller);
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	void set_callback_value_change(void (*callback) (twidget* caller))
-		{ callback_value_change_ = callback; }
-
-private:
-
-	/**
-	 * Helper for list_item_selected().
-	 *
-	 * Tries to sets the selected state for the row, but only if it contains the
-	 * wanted widget. NOTE this function assumes the event was triggered by the
-	 * user and calls the callback handler.
-	 *
-	 * @param row                    The row to test.
-	 * @param caller                 The widget to look for.
-	 *
-	 * @returns                      True if widget was found false otherwise.
-	 *                               NOTE this doesn't mean the row select status
-	 *                               has been changed.
-	 */
-	bool list_row_selected(const size_t row, twidget* caller) ;
-public:
-
-	/**
-	 * Callback when the scrollbar moves.
-	 */
+	/** Callback when the scrollbar moves. */
 	void scrollbar_moved(twidget* /*caller*/)
 		{ set_scrollbar_button_status(); set_dirty(); }
 
@@ -93,55 +57,7 @@ public:
 	 */
 	void scrollbar_click(twidget* caller);
 
-	void set_list_builder(tbuilder_grid_ptr list_builder) 
-		{ list_builder_ = list_builder; }
-
-	void set_assume_fixed_row_size(bool assume = true) 
-		{ assume_fixed_row_size_ = assume; }
-
-	/** Inherited from tcontainer. */
-	tpoint get_best_size() const;
-
-	/** Inherited from twidget. */
-	tpoint get_best_size(const tpoint& maximum_size) const;
-
-	/** Inherited from tcontainer. */
-	void draw(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-private:
-	/** 
-	 * Draws the list area if assume_fixed_row_size_ is true. 
-	 *
-	 * The parameters are the same as draw().
-	 */
-	void draw_list_area_fixed_row_height(surface& surface, const bool force,
-		const bool invalidate_background);
-
-	/** 
-	 * Draws the list area if assume_fixed_row_size_ is false.
-	 *
-	 * The parameters are the same as draw().
-	 */
-	void draw_list_area_variable_row_height(surface& surface, const bool force,
-		const bool invalidate_background);
-
-public:
-	/** Inherited from tcontainer. */
-	void set_size(const SDL_Rect& rect);
-
-	/** Inherited from tcontainer. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from tcontainer. */
-	const twidget* find_widget(const tpoint& coordinate, 
-			const bool must_be_active) const;
-
-	/*
-	 * NOTE twidget* find_widget(const std::string& id, const bool must_be_active);
-	 * and it's const version are inherited from tcontainer_ but gcc isn't too 
-	 * happy with that so we need to call tcontainer_::find_widget() so when
-	 * it's required to override those, check that the tcontainer_:: is dropped.
-	 */
+	/***** ***** ***** row handling ****** *****/
 
 	/**
 	 * Adds a single row to the grid.
@@ -200,8 +116,6 @@ public:
 	 */
 	bool select_row(const unsigned row, const bool select = true);
 
-	unsigned get_selected_row() const { return selected_row_; }
-
 	/** 
 	 * Makes a row active or inactive.
 	 *
@@ -226,6 +140,59 @@ public:
 	 */
 	const tgrid* get_row_grid(const unsigned row) const;
 
+	/***** ***** ***** inherited ****** *****/
+
+	/** Inherited from tevent_executor. */
+	void mouse_left_button_down(tevent_handler& event);
+
+	/** Inherited from tevent_executor. */
+	void key_press(tevent_handler& event, bool& handled, 
+		SDLKey key, SDLMod modifier, Uint16 unicode);
+
+	/** Inherited from twidget. */
+	tpoint get_best_size(const tpoint& maximum_size) const;
+
+	/** Inherited from twidget. */
+	bool has_vertical_scrollbar() const { return true; }
+
+	/** Inherited from tcontainer_. */
+	tpoint get_best_size() const;
+
+	/** Inherited from tcontainer_. */
+	void draw(surface& surface,  const bool force = false,
+	        const bool invalidate_background = false);
+
+	/** Inherited from tcontainer_. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
+
+	/** Inherited from tcontainer_. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const;
+
+	/** Inherited from tcontainer_. */
+	void set_size(const SDL_Rect& rect);
+
+	/** Inherited from tcontainer_. */
+	void set_self_active(const bool active) 
+		{ state_ = active ? ENABLED : DISABLED; }
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	bool get_active() const { return state_ != DISABLED; }
+
+	unsigned get_state() const { return state_; }
+
+	void set_callback_value_change(void (*callback) (twidget* caller))
+		{ callback_value_change_ = callback; }
+
+	void set_list_builder(tbuilder_grid_ptr list_builder) 
+		{ list_builder_ = list_builder; }
+
+	unsigned get_selected_row() const { return selected_row_; }
+
+	void set_assume_fixed_row_size(bool assume = true) 
+		{ assume_fixed_row_size_ = assume; }
+
 private:
 
 	/** 
@@ -236,19 +203,34 @@ private:
 	 */
 	void set_scrollbar_button_status();
 
-	//! Note the order of the states must be the same as defined in settings.hpp.
+	/**
+	 * Possible states of the widget.
+	 *
+	 * Note the order of the states must be the same as defined in settings.hpp.
+	 */
 	enum tstate { ENABLED, DISABLED, COUNT };
 
-	void set_state(const tstate /*state*/) {} // FIXME implement
+//  It's not needed for now so keep it disabled, no definition exists yet.
+//	void set_state(const tstate state);
+
+	/** 
+	 * Current state of the widget.
+	 *
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
+	 */
 	tstate state_;
 
-	/** It's possible to let the engine build the contents, we need the builder in that case */
+	/**
+	 * It's possible to let the engine build the contents, we need the builder
+	 * in that case 
+	 */
 	tbuilder_grid_ptr list_builder_;
 
-	/** Returns the scrollbar widget */
+	/** Returns the scrollbar widget. */
 	tscrollbar_* scrollbar();
 
-	/** Returns the scrollbar widget */
+	/** Returns the scrollbar widget. */
 	const tscrollbar_* scrollbar() const;
 
 	/** Returns the spacer widget which is used to reserve space of the real list. */
@@ -266,27 +248,35 @@ private:
 	 */
 	bool assume_fixed_row_size_;
 
-	//! Inherited from tcontrol.
-	const std::string& get_control_type() const 
-		{ static const std::string type = "listbox"; return type; }
+	/**
+	 * Helper for list_item_selected().
+	 *
+	 * Tries to sets the selected state for the row, but only if it contains the
+	 * wanted widget. NOTE this function assumes the event was triggered by the
+	 * user and calls the callback handler.
+	 *
+	 * @param row                    The row to test.
+	 * @param caller                 The widget to look for.
+	 *
+	 * @returns                      True if widget was found false otherwise.
+	 *                               NOTE this doesn't mean the row select status
+	 *                               has been changed.
+	 */
+	bool list_row_selected(const size_t row, twidget* caller) ;
 
-	/** Inherited from tcontainer_. */
-	void set_self_active(const bool active) 
-		{ state_ = active ? ENABLED : DISABLED; }
-
-	/** The (lastly) selected row */
+	/** The (lastly) selected row. */
 	unsigned selected_row_;
 
-	/** Number of items selected */
+	/** Number of items selected. */
 	unsigned selection_count_;
 
-	/** Select per cell or an entire row */
+	/** Select per cell or an entire row. */
 	bool row_select_;
 
-	/** At least 1 item must be selected */
+	/** At least 1 item must be selected. */
 	bool must_select_;
 
-	/** Multiple items can be selected */
+	/** Multiple items can be selected. */
 	bool multi_select_; 
 	
 	/** The sizes of the spacer. */
@@ -305,6 +295,40 @@ private:
 	 */
 	void (*callback_value_change_) (twidget* caller);
 
+	/** 
+	 * Draws the list area if assume_fixed_row_size_ is true. 
+	 *
+	 * The parameters are the same as draw().
+	 */
+	void draw_list_area_fixed_row_height(surface& surface, const bool force,
+		const bool invalidate_background);
+
+	/** 
+	 * Draws the list area if assume_fixed_row_size_ is false.
+	 *
+	 * The parameters are the same as draw().
+	 */
+	void draw_list_area_variable_row_height(surface& surface, const bool force,
+		const bool invalidate_background);
+
+	/**
+	 * Returns the row at the wanted vertical offset.
+	 *
+	 * @param offset              The offset to look at, the offset in pixels
+	 *                            currently on the screen, it will adjust for
+	 *                            the scrollbar itself.
+	 * @param offset_in_widget    Returns the vertical offset the offset is in
+	 *                            the found widget.
+	 *
+	 * @returns                   The row number in which the widget was found.
+	 * @retval -1                 If the offset wasn't found.
+	 */
+	size_t row_at_offset(int offset, int& offset_in_widget) const; 
+
+	/** The builder needs to call us so we can write in the proper callbacks. */
+	void finalize_setup();
+
+	/** Contains the info for a row in the listbox. */
 	class trow {
 
 	public:
@@ -313,8 +337,8 @@ private:
 			const std::map<std::string /* widget id */, std::map<
 			std::string /* member id */, t_string /* member value */> >& data);
 
-		void select(const bool sel = true);
-	
+		/***** ***** ***** setters / getters for members ***** ****** *****/
+
 		tgrid* grid() { return grid_; }
 		const tgrid* grid() const { return grid_; }
 
@@ -324,40 +348,42 @@ private:
 		const surface& canvas() const { return canvas_; }
 		surface& canvas() { return canvas_; }
 
+		void set_selected(const bool selected = true);
 		bool get_selected() const { return selected_; }
 	private:
 
+		/** The grid containing the widgets in the row. */
 		tgrid* grid_;
 
+		/** The height of the row. */
 		unsigned height_;
 
+		/** Canvas to draw a row in the widget on. */
 		surface canvas_;
 
+		/** Is the row currently selected or not. */
 		bool selected_;
 
+		/** Initializes all widgets in the grid. */
 		void init_in_grid(tgrid* grid, 
 			const std::map<std::string /* widget id */, std::map<
 			std::string /* member id */, t_string /* member value */> >& data);
 
-		void select_in_grid(tgrid* grid, const bool sel);
+		/** 
+		 * Selects all widgets in the grid.
+		 *
+		 * Some widgets are tselectable_ and thus can be selected for those
+		 * widgets the selected value is modified.
+		 */
+		void select_in_grid(tgrid* grid, const bool selected);
 	};
 
+	/** The rows in the listbox. */
 	std::vector<trow> rows_;
 
-	/**
-	 * Returns the row at the wanted vertical offset.
-	 *
-	 * @param offset              The offset to look at, the offset in pixels currently on the screen, it will adjust for the scrollbar itself.
-	 * @param offset_in_widget    Returns the vertical offset the offset is in the found widget.
-	 *
-	 * @return                    The row number in which the widget was found.
-	 * @retval -1                 If the offset wasn't found.
-	 */
-	size_t row_at_offset(int offset, int& offset_in_widget) const; 
-
-	/** The builder needs to call us so we can write in the proper callbacks. */
-	void finalize_setup();
-
+	/** Inherited from tcontrol. */
+	const std::string& get_control_type() const 
+		{ static const std::string type = "listbox"; return type; }
 };
 
 } // namespace gui2
