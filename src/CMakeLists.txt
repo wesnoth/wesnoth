@@ -304,6 +304,7 @@ SET(wesnoth-main_SRC
     widgets/combo_drag.cpp
     widgets/drop_target.cpp
     widgets/scrollpane.cpp
+    server/forum_auth/md5.cpp
 )
 
 # used with editor2 option in the wesnoth target
