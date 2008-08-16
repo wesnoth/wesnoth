@@ -129,6 +129,7 @@ wesnoth_source = \
 	replay_controller.cpp \
 	sha1.cpp \
 	settings.cpp \
+	server/forum_auth/md5.cpp \
 	statistics.cpp \
 	statistics_dialog.cpp \
 	team.cpp \
@@ -214,17 +215,18 @@ wesnothd_SOURCES = \
 	server/ban.cpp \
 	server/game.cpp \
 	server/input_stream.cpp \
+	server/mail.cpp \
 	server/metrics.cpp \
 	server/player.cpp \
 	server/proxy.cpp \
 	server/server.cpp \
 	server/simple_wml.cpp \
-	server/user_handler.cpp
-	server/forum_user_handler.cpp
-	server/jwsmtp/mailer.cpp
-	server/jwsmtp/compat.cpp
-	server/jwsmtp/base64.cpp
-	server/forum_auth/md5.cpp
+	server/user_handler.cpp \
+	server/forum_user_handler.cpp \
+	server/jwsmtp/mailer.cpp \
+	server/jwsmtp/compat.cpp \
+	server/jwsmtp/base64.cpp \
+	server/forum_auth/md5.cpp \
 	network.cpp \
 	network_worker.cpp \
 	time.cpp \
