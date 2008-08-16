@@ -730,7 +730,7 @@ std::vector<char> mailer::makesmtpmessage() const {
    time_t t;
    time(&t);
    char timestring[128] = "";
-   char * timeformat = "Date: %d %b %y %H:%M:%S %Z";
+   const char * timeformat = "Date: %d %b %y %H:%M:%S %Z";
    if(strftime(timestring, 127, timeformat, localtime(&t))) { // got the date
       headerline = timestring;
       headerline += "\r\n";
@@ -1115,7 +1115,7 @@ bool mailer::gethostaddresses(std::vector<SOCKADDR_IN>& adds) {
 }
 
 // we assume the array 'dns' must be 512 bytes in size!
-bool mailer::parseRR(int& pos, const unsigned char dns[], std::string& name, in_addr& address) {
+bool mailer::parseRR(int& pos, const unsigned char dns[], std::string& name, in_addr& /*address*/) {
    if(pos < 12) // didn,t get more than a header.
       return false;
    if(pos > 512) // oops.

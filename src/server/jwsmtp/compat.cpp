@@ -36,7 +36,7 @@ bool Connect(SOCKET sockfd, const SOCKADDR_IN& addr) {
 #endif
 }
 
-bool Socket(SOCKET& s, int domain, int type, int protocol) {
+bool Socket(SOCKET& s, int /*domain*/, int type, int protocol) {
    s = socket(AF_INET, type, protocol);
 #ifdef WIN32
    return bool(s != INVALID_SOCKET);
