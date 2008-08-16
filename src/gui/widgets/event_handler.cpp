@@ -12,10 +12,12 @@
    See the COPYING file for more details.
 */
 
-//! @file event_handler.cpp
-//! Implementation of event_handler.hpp.
-//!
-//! More documentation at the end of the file.
+/**
+ * @file event_handler.cpp
+ * Implementation of event_handler.hpp.
+ *
+ * More documentation at the end of the file.
+ */
 
 #include "gui/widgets/event_handler.hpp"
 
@@ -35,6 +37,16 @@
 
 namespace gui2{
 
+/**
+ * SDL_AddTimer() callback for the hover event.
+ *
+ * When this callback is called it pushes a new hover event in the event queue.
+ *
+ * @param interval                The time parameter of SDL_AddTimer.
+ * @param param                   Pointer to parameter structure.
+ *
+ * @returns                       The new timer interval, 0 to stop.
+ */
 static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 {
 	DBG_G_E << "Pushing hover event in queue.\n";
@@ -54,7 +66,17 @@ static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 	return 0;
 }
 
-static Uint32 popup_callback(Uint32 /*interval*/, void*)
+/**
+ * SDL_AddTimer() callback for the popup event.
+ *
+ * This event makes sure the popup is removed again.
+ *
+ * @param interval                The time parameter of SDL_AddTimer.
+ * @param param                   Pointer to parameter structure.
+ *
+ * @returns                       The new timer interval, 0 to stop.
+ */
+static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 {
 	DBG_G_E << "Pushing popup removal event in queue.\n";
 
@@ -73,11 +95,12 @@ static Uint32 popup_callback(Uint32 /*interval*/, void*)
 	return 0;
 }
 
-//! At construction we should get the state and from that moment on we keep
-//! track of the changes ourselves, not yet sure what happens when an input
-//! blocker is used.
+/**
+ * @todo At construction we should get the state and from that moment on we
+ * keep track of the changes ourselves, not yet sure what happens when an input
+ * blocker is used.
+ */
 tevent_handler::tevent_handler() :
-	// fixme get state at construction
 	events::handler(false), // don't join we haven't created a context yet
 	event_context_(),
 	mouse_x_(-1),
@@ -130,8 +153,8 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.motion.x;
 			mouse_y_ = event.motion.y;
-			mouse_over =
-				find_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)), true);
+			mouse_over = find_widget(get_window().
+				client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			mouse_move(event, mouse_over);
 
@@ -141,8 +164,8 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
-			mouse_over =
-				find_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)), true);
+			mouse_over = find_widget(get_window().
+				client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT : 
@@ -171,8 +194,8 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
-			mouse_over =
-				find_widget(get_window().client_position(tpoint(mouse_x_, mouse_y_)), true);
+			mouse_over = find_widget(get_window().
+				client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			switch(event.button.button) {
 
@@ -245,6 +268,7 @@ tpoint tevent_handler::get_mouse() const
 
 void tevent_handler::add_to_keyboard_chain(twidget* widget) 
 { 
+	assert(widget);
 	assert(
 		std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget) 
 		== keyboard_focus_chain_.end());
@@ -254,6 +278,7 @@ void tevent_handler::add_to_keyboard_chain(twidget* widget)
 
 void tevent_handler::remove_from_keyboard_chain(twidget* widget)
 {
+	assert(widget);
 	std::vector<twidget*>::iterator itor = std::find(
 		keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget);
 
@@ -262,7 +287,7 @@ void tevent_handler::remove_from_keyboard_chain(twidget* widget)
 	}		
 }
 
-void tevent_handler::show_tooltip(const t_string& tooltip, const unsigned timeout)
+void tevent_handler::show_tooltip(const t_string& message, const unsigned timeout)
 {
 	DBG_G_E << "Event: show tooltip.\n";
 
@@ -274,7 +299,8 @@ void tevent_handler::show_tooltip(const t_string& tooltip, const unsigned timeou
 
 	tooltip_ = mouse_focus_;
 
-	do_show_tooltip(get_window().client_position(tpoint(mouse_x_, mouse_y_)), tooltip);
+	do_show_tooltip(
+		get_window().client_position(tpoint(mouse_x_, mouse_y_)), message);
 
 	if(timeout) {
 		SDL_AddTimer(timeout, popup_callback, 0);
@@ -292,7 +318,7 @@ void tevent_handler::remove_tooltip()
 	do_remove_tooltip();
 }
 
-void tevent_handler::show_help_popup(const t_string& help_popup, const unsigned timeout)
+void tevent_handler::show_help_popup(const t_string& message, const unsigned timeout)
 {
 	DBG_G_E << "Event: show help popup.\n";
 
@@ -311,7 +337,8 @@ void tevent_handler::show_help_popup(const t_string& help_popup, const unsigned 
 
 	help_popup_ = mouse_focus_;
 
-	do_show_help_popup(get_window().client_position(tpoint(mouse_x_, mouse_y_)), help_popup);
+	do_show_help_popup(
+		get_window().client_position(tpoint(mouse_x_, mouse_y_)), message);
 
 	if(timeout) {
 		SDL_AddTimer(timeout, popup_callback, 0);
@@ -341,22 +368,6 @@ void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over
 	set_hover();
 }
 
-void tevent_handler::mouse_hover(const SDL_Event& event, twidget* /*mouse_over*/)
-{
-	const unsigned hover_id = *static_cast<unsigned*>(event.user.data1);
-	delete static_cast<unsigned*>(event.user.data1);
-
-	if(!hover_pending_ || hover_id != hover_id_) {
-		return;
-	}
-	
-	assert(mouse_focus_);
-
-	mouse_focus_->mouse_hover(*this);
-
-	had_hover_ = true;
-}
-
 void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 {
 	// Note we use the fact that a NULL pointer evaluates to false
@@ -382,7 +393,25 @@ void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 	}
 }
 
-void tevent_handler::mouse_leave(const SDL_Event& /*event*/, twidget* /*mouse_over*/)
+void tevent_handler::mouse_hover(
+		const SDL_Event& event, twidget* /*mouse_over*/)
+{
+	const unsigned hover_id = *static_cast<unsigned*>(event.user.data1);
+	delete static_cast<unsigned*>(event.user.data1);
+
+	if(!hover_pending_ || hover_id != hover_id_) {
+		return;
+	}
+	
+	assert(mouse_focus_);
+
+	mouse_focus_->mouse_hover(*this);
+
+	had_hover_ = true;
+}
+
+void tevent_handler::mouse_leave(
+		const SDL_Event& /*event*/, twidget* /*mouse_over*/)
 {
 	assert(mouse_focus_);
 
@@ -396,7 +425,8 @@ void tevent_handler::mouse_leave(const SDL_Event& /*event*/, twidget* /*mouse_ov
 	mouse_focus_ = 0;
 }
 
-void tevent_handler::mouse_button_down(const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
+void tevent_handler::mouse_button_down(
+		const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
 {
 	if(button.is_down) {
 		WRN_G_E << "In 'button down' for button '" << button.name 
@@ -424,7 +454,8 @@ void tevent_handler::mouse_button_down(const SDL_Event& /*event*/, twidget* mous
 	}
 }
 
-void tevent_handler::mouse_button_up(const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
+void tevent_handler::mouse_button_up(
+	const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
 {
 	if(!button.is_down) {
 		WRN_G_E << "In 'button up' for button '" << button.name 
