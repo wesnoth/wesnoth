@@ -589,7 +589,7 @@ namespace {
 	                   const std::string& addon_version_str,
 	                   const network::manager& /*net_manager*/,
 	                   const network::connection& sock, bool* do_refresh,
-	                   bool show_result = true)
+	                   bool /*show_result*/ = true)
 	{
 		// Get all dependencies of the addon/campaign selected for download.
 		const config * const selected_campaign = addons_tree->find_child("campaign", "name", addon_id);
