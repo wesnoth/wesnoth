@@ -126,7 +126,7 @@ public:
 	}
 
 	/** Saves the text in the widget to the history. */
-	void save_to_history() { history_.push(get_text()); }
+	void save_to_history() { history_.push(get_value()); }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
