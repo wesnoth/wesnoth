@@ -21,9 +21,11 @@
 
 namespace gui2 {
 
-//! Base class for text items will get two base decendends
-//! - ttext_box a single line text
-//! - ttext_area a multi line text
+/**
+ * Abstract base class for text items.
+ *
+ * All other text classes should inherit from this base class.
+ */
 class ttext_ : public tcontrol
 {
 
@@ -34,25 +36,40 @@ public:
 		text_(),
 		sel_start_(0),
 		sel_len_(0),
-		max_length_(std::string::npos),
-		dragging_(false)
+		max_length_(std::string::npos)
 	{
 	}
 
-	void set_active(const bool /*active*/) { /*FIXME IMPLEMENT*/ };
-	bool get_active() const { return true; /* FIXME IMPLEMENT */ }
-	unsigned get_state() const { return state_; }
-
+	/** Inherited from tevent_executor. */
 	void mouse_move(tevent_handler&);
 
+	/** Inherited from tevent_executor. */
 	void mouse_left_button_down(tevent_handler& event);
+
+	/** Inherited from tevent_executor. */
 	void mouse_left_button_up(tevent_handler&);
+
+	/** Inherited from tevent_executor. */
 	void mouse_left_button_double_click(tevent_handler&);
 
+	/** Inherited from tevent_executor. */
 	void mouse_middle_button_click(tevent_handler&);
 
-	void key_press(tevent_handler& event, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
+	/** Inherited from tevent_executor. */
+	void key_press(tevent_handler& event, 
+		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
+	/** Inherited from tcontrol. */
+	void set_active(const bool active)
+		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+
+	/** Inherited from tcontrol. */
+	bool get_active() const { return state_ != DISABLED; }
+
+	/** Inherited from tcontrol. */
+	unsigned get_state() const { return state_; }
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_value(const std::string& text); 
 	std::string get_value() const { return text_; }
@@ -61,38 +78,93 @@ public:
 
 protected:
 
+	/**
+	 * Moves the cursor to the end of the line.
+	 *
+	 * @param select              Select the text from the original cursor
+	 *                            position till the end of the line?
+	 */
 	virtual void goto_end_of_line(const bool select = false) = 0;
-	void goto_end_of_data(const bool select = false) { set_cursor(text_.size(), select); }
 
+	/**
+	 * Moves the cursor to the end of all text.
+	 *
+	 * For a single line text this is the same as goto_end_of_line().
+	 *
+	 * @param select              Select the text from the original cursor
+	 *                            position till the end of the data?
+	 */
+	void goto_end_of_data(const bool select = false) 
+		{ set_cursor(text_.size(), select); }
+
+	/**
+	 * Moves the cursor to the beginning of the line.
+	 *
+	 * @param select              Select the text from the original cursor
+	 *                            position till the beginning of the line?
+	 */
 	virtual void goto_start_of_line(const bool select = false) = 0;
+
+	/**
+	 * Moves the cursor to the beginning of the data.
+	 *
+	 * @param select              Select the text from the original cursor
+	 *                            position till the beginning of the data?
+	 */
 	void goto_start_of_data(const bool select = false) { set_cursor(0, select); }
 
+	/** Selects all text. */
 	void select_all() { sel_start_ = 0; goto_end_of_data(true); }
 
-	void set_cursor(const size_t offset, const bool select); // call set dirty
+	/**
+	 * Moves the cursor at the wanted position.
+	 *
+	 * @param offset              The wanted new cursor position.
+	 * @param select              Select the text from the original cursor
+	 *                            position till the new position?
+	 */
+	void set_cursor(const size_t offset, const bool select);
 
+	/**
+	 * Inserts a character at the cursor.
+	 *
+	 * This function is preferred over set_text since it's optimized for
+	 * updating the internal bookkeeping.
+	 *
+	 * @param unicode             The unicode value of the character to insert.
+	 */
+	virtual void insert_char(const Uint16 unicode) = 0;
+
+	/**
+	 *  Deletes the character.
+	 * 
+	 *  @param before_cursor     If true it deletes the character before the cursor
+	 *                           (backspace) else the character after the cursor
+	 *                           (delete). 
+	 */
+	virtual void delete_char(const bool before_cursor) = 0;
+
+	/** Deletes the current selection. */
+	virtual void delete_selection() = 0;
+
+	/** Copies the current selection. */
+	virtual void copy_selection(const bool mouse);
+
+	/** Pastes the current selection. */
+	virtual void paste_selection(const bool mouse);
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+	
 	size_t get_sel_start() const { return sel_start_; }
-	void  set_sel_start(const size_t sel_start) { sel_start_ = sel_start; set_dirty(); }
+	void  set_sel_start(const size_t sel_start) 
+		{ sel_start_ = sel_start; set_dirty(); }
 
 	size_t get_sel_len() const { return sel_len_; }
 	void set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
 
-	//! Inserts a character at the cursor.
-	virtual void insert_char(const Uint16 unicode) = 0;
-
-	//! Deletes the character.
-	virtual void delete_char(const bool before_cursor) = 0;
-
-	//! Deletes the current selection.
-	virtual void delete_selection() = 0;
-
-	//! Copies the current selection.
-	virtual void copy_selection(const bool mouse);
-
-	//! Pastes the current selection.
-	virtual void paste_selection(const bool mouse);
-
 protected:
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	std::string& text() { return text_; }
 
@@ -101,68 +173,198 @@ protected:
 	int& sel_len() { return sel_len_; }
 
 private:
-	//! Note the order of the states must be the same as defined in settings.hpp.
+	/** Note the order of the states must be the same as defined in settings.hpp. */
 	enum tstate { ENABLED, DISABLED, FOCUSSED, COUNT };
 
 	void set_state(const tstate state);
+
+	/** 
+	 * Current state of the widget.
+	 *
+	 * The state of the widget determines what to render and how the widget
+	 * reacts to certain 'events'.
+	 */
 	tstate state_;
 
-
-	//! The text in the widget.
+	/** The text entered in the widget. */
 	std::string text_;
 
-	//! Calculates the offsets of all chars.
+	/** Calculates the offsets of all chars. */
 	virtual void calculate_char_offset() = 0;
 
+	/** Start of the selected text. */
 	size_t sel_start_;
-	//! positive sel_len_ means selection to the right.
-	//! negative sel_len_ means selection to the left.
-	//! sel_len_ == 0 means no selection.
+
+	/** 
+	 * Length of the selected text.
+	 *
+	 *  positive sel_len_ means selection to the right.
+	 *  negative sel_len_ means selection to the left.
+	 *  sel_len_ == 0 means no selection.
+	 */
 	int sel_len_;
+
+	/** 
+	 * Maximum length of the text. 
+	 *
+	 * @todo, respect the maximum (which isn't done at the moment).
+	 */
 	size_t max_length_;
 
-	//! Is the mouse in dragging mode, this affects selection in mouse movee
-	bool dragging_;
+	/****** handling of special keys first the pure virtuals *****/
 
-	// handling of special keys first the pure virtuals
+	/**
+	 * Every key can have several behaviours.
+	 *
+	 * Unmodified                 No modifier is pressed.
+	 * Control                    The control key is pressed.
+	 * Shift                      The shift key is pressed.
+	 * Alt                        The alt key is pressed.
+	 *
+	 * If modifiers together do something else as the sum of the modifiers
+	 * it's listed seperately eg.
+	 *
+	 * Control                    Moves 10 steps at the time.
+	 * Shift                      Selects the text.
+	 * Control + Shift            Inserts 42 in the text.
+	 *
+	 * There are some predefined actions for results.
+	 * Unhandled                  The key/modifier is ignored and also reported
+	 *                            unhandled.
+	 * Ignored                    The key/modifier is ignored and it's _expected_
+	 *                            the inherited classes do the same.
+	 * Implementation defined     The key/modifier is ignored and it's expected
+	 *                            the inherited classes will define some meaning
+	 *                            to it.
+	 */
+
+	/** 
+	 * Up arrow key pressed.
+	 *
+	 * The behaviour is implementation defined.
+	 */
 	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled) = 0;
+
+	/** 
+	 * Down arrow key pressed.
+	 *
+	 * The behaviour is implementation defined.
+	 */
 	virtual void handle_key_down_arrow(SDLMod modifier, bool& handled) = 0;
 
-	// Clears the current line
+	/** 
+	 * Clears the current line.
+	 *
+	 * Unmodified                 Clears the current line.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_clear_line(SDLMod modifier, bool& handled) = 0;
 
-	// Go a character left of not at start of buffer else beep.
-	// ctrl moves a word instead of character.
-	// shift selects while moving.
+	/** 
+	 * Left arrow key pressed.
+	 *
+	 * Unmodified                 Moves the cursor a character to the left.
+	 * Control                    Like unmodified but a word instead of a letter
+	 *                            at the time.
+	 * Shift                      Selects the text while moving.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_left_arrow(SDLMod modifier, bool& handled);
 
-	// Go a character right of not at end of buffer else beep.
-	// ctrl moves a word instead of character.
-	// shift selects while moving.
+	/** 
+	 * Right arrow key pressed.
+	 *
+	 * Unmodified                 Moves the cursor a character to the right.
+	 * Control                    Like unmodified but a word instead of a letter
+	 *                            at the time.
+	 * Shift                      Selects the text while moving.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_right_arrow(SDLMod modifier, bool& handled);
 
-	// Go to the beginning of the line.
-	// ctrl moves the start of data (except when ctrl-e but caller does that) 
-	// shift selects while moving.
+	/**
+	 * Home key pressed.
+	 *
+	 * Unmodified                 Moves the cursor a to the beginning of the
+	 *                            line.
+	 * Control                    Like unmodified but to the beginning of the
+	 *                            data.
+	 * Shift                      Selects the text while moving.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_home(SDLMod modifier, bool& handled);
 
-	// Go to the end of the line.
-	// ctrl moves the end of data (except when ctrl-a but caller does that) 
-	// shift selects while moving.
+	/**
+	 * End key pressed.
+	 *
+	 * Unmodified                 Moves the cursor a to the end of the line.
+	 * Control                    Like unmodified but to the end of the data.
+	 * Shift                      Selects the text while moving.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_end(SDLMod modifier, bool& handled);
 
-	// Deletes the character in front of the cursor (if not at the beginning).
+	/**
+	 * Backspace key pressed.
+	 *
+	 * Unmodified                 Deletes the character before the cursor,
+	 *                            ignored if at the beginning of the data.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_backspace(SDLMod modifier, bool& handled);
 
-	// Deletes either the selection or the character beyond the cursor
+	/**
+	 * Delete key pressed.
+	 *
+	 * Unmodified                 If there is a selection that's deleted.
+	 *                            Else if not at the end of the data the
+	 *                            character after the cursor is deleted.
+	 *                            Else the key is ignored.
+	 *                            ignored if at the beginning of the data.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_delete(SDLMod modifier, bool& handled);
 
-	// Default handler, inserts a unicode char if valid
-	virtual void handle_key_default(bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
-
-	// These are ignored by a single line edit box which is the default behaviour.
+	/**
+	 * Page up key.
+	 *
+	 * Unmodified                 Unhandled.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_page_up(SDLMod /*modifier*/, bool& /*handled*/) {}
+
+	/**
+	 * Page up key.
+	 *
+	 * Unmodified                 Unhandled.
+	 * Control                    Ignored.
+	 * Shift                      Ignored.
+	 * Alt                        Ignored.
+	 */
 	virtual void handle_key_page_down(SDLMod /*modifier*/, bool& /*handled*/) {}
+
+	/**
+	 * Default key handler if none of the above functions is called.
+	 *
+	 * Unmodified                 If invalid unicode it's ignored.
+	 *                            Else if text selected the selected text is
+	 *                            replaced with the unicode character send.
+	 *                            Else the unicode character is inserted after
+	 *                            the cursor.
+	 * Control                    Ignored.
+	 * Shift                      Ignored (already in the unicode value).
+	 * Alt                        Ignored.
+	 */
+	virtual void handle_key_default(
+		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 };
 
 } // namespace gui2

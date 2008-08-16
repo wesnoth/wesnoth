@@ -41,33 +41,6 @@
 
 namespace gui2 {
 
-void ttext_::set_cursor(const size_t offset, const bool select)
-{
-	if(select) {
-
-		if(sel_start_ == offset) {
-			sel_len_ = 0;
-		} else {
-			sel_len_ = - (sel_start_ - offset);
-		}
-
-#ifdef __unix__
-		// selecting copies on UNIX systems.
-		copy_selection(true);
-#endif
-		set_canvas_text();
-		set_dirty();
-
-	} else {
-		assert(offset <= text_.size());
-		sel_start_ = offset;
-		sel_len_ = 0;
-
-		set_canvas_text();
-		set_dirty();
-	}
-}
-
 void ttext_::mouse_move(tevent_handler&)
 {
 	DBG_G_E << "Text: mouse move.\n"; 
@@ -108,7 +81,8 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 
 }
 
-void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+void ttext_::key_press(tevent_handler& /*event*/, 
+		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
 	DBG_G_E << "Text: key press.\n";
 
@@ -228,7 +202,6 @@ void ttext_::key_press(tevent_handler& /*event*/, bool& handled, SDLKey key, SDL
 			handle_key_default(handled, key, modifier, unicode);
 
 	}
-
 }
 
 void ttext_::set_value(const std::string& text)
@@ -245,15 +218,33 @@ void ttext_::set_value(const std::string& text)
 	} 
 }
 
-void ttext_::set_state(const tstate state)
+void ttext_::set_cursor(const size_t offset, const bool select)
 {
-	if(state != state_) {
-		state_ = state;
-		set_dirty(true);
+	if(select) {
+
+		if(sel_start_ == offset) {
+			sel_len_ = 0;
+		} else {
+			sel_len_ = - (sel_start_ - offset);
+		}
+
+#ifdef __unix__
+		// selecting copies on UNIX systems.
+		copy_selection(true);
+#endif
+		set_canvas_text();
+		set_dirty();
+
+	} else {
+		assert(offset <= text_.size());
+		sel_start_ = offset;
+		sel_len_ = 0;
+
+		set_canvas_text();
+		set_dirty();
 	}
 }
 
-//! Copies the current selection.
 void ttext_::copy_selection(const bool mouse)
 {
 	int len = sel_len();
@@ -265,11 +256,12 @@ void ttext_::copy_selection(const bool mouse)
 	}
 
 	const wide_string& wtext = utils::string_to_wstring(text_);
-	const std::string& text = utils::wstring_to_string(wide_string(wtext.begin() + start, wtext.begin() + start +len));
+	const std::string& text = utils::wstring_to_string(
+		wide_string(wtext.begin() + start, wtext.begin() + start +len));
+
 	copy_to_clipboard(text, mouse);
 }
 
-//! Pastes the current selection.
 void ttext_::paste_selection(const bool mouse)
 {
 	const std::string& text = copy_from_clipboard(mouse);
@@ -288,11 +280,17 @@ void ttext_::paste_selection(const bool mouse)
 	set_dirty(); 
 }
 
-// Go a character left of not at start of buffer else beep.
-// ctrl moves a word instead of character.
-// shift selects while moving.
+void ttext_::set_state(const tstate state)
+{
+	if(state != state_) {
+		state_ = state;
+		set_dirty(true);
+	}
+}
+
 void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 {
+	/** @todo implement the ctrl key. */
 	DBG_G_E << "Text: key press: left arrow.\n";
 
 	handled = true;
@@ -301,11 +299,9 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	}
 }
 
-// Go a character right of not at end of buffer else beep.
-// ctrl moves a word instead of character.
-// shift selects while moving.
 void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 {
+	/** @todo implement the ctrl key. */
 	DBG_G_E << "Text: key press: right arrow.\n";
 
 	handled = true;
@@ -314,9 +310,6 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	}
 }
 
-// Go to the beginning of the line.
-// ctrl moves the start of data (except when ctrl-e but caller does that) 
-// shift selects while moving.
 void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 {
 	DBG_G_E << "Text: key press: home.\n";
@@ -329,9 +322,6 @@ void ttext_::handle_key_home(SDLMod modifier, bool& handled)
 	}
 }
 
-// Go to the end of the line.
-// ctrl moves the end of data (except when ctrl-a but caller does that) 
-// shift selects while moving.
 void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 {
 	DBG_G_E << "Text: key press: end.\n";
@@ -344,7 +334,6 @@ void ttext_::handle_key_end(SDLMod modifier, bool& handled)
 	}
 }
 
-// Deletes the character in front of the cursor (if not at the beginning).
 void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 {
 	DBG_G_E << "Text: key press: backspace.\n";
@@ -353,10 +342,8 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	if(sel_start_){
 		delete_char(true);
 	}
-
 }
 
-// Deletes either the selection or the character beyond the cursor
 void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 {
 	DBG_G_E << "Text: key press: delete.\n";
@@ -369,7 +356,8 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 	}
 }
 
-void ttext_::handle_key_default(bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
+void ttext_::handle_key_default(
+		bool& handled, SDLKey /*key*/, SDLMod /*modifier*/, Uint16 unicode)
 {
 	DBG_G_E << "Text: key press: default.\n";
 
