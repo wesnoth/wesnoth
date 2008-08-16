@@ -38,6 +38,11 @@ public:
 		grid_.set_parent(this);
 	}
 
+	/** 
+	 * Returns the size of the client area.
+	 *
+	 * The client area is the area available for widgets.
+	 */
 	virtual SDL_Rect get_client_rect() const { return get_rect(); }
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
