@@ -77,9 +77,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
 	
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
-		new mouse_action_paint(foreground_terrain_, &brush_, key_)));
+		new mouse_action_paint(foreground_terrain_, background_terrain_, &brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
-		new mouse_action_fill(foreground_terrain_, key_)));
+		new mouse_action_fill(foreground_terrain_, background_terrain_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, 
 		new mouse_action_select(&brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
@@ -848,13 +848,22 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
-	if (dragging_left_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON_LEFT) != 0
-	&& get_map().on_board_with_border(drag_from_hex_)) {
-		if (!get_map().on_board_with_border(hex_clicked)) return;
-		LOG_ED << "Mouse drag\n";
-		editor_action* last_undo = get_map_context().last_undo_action();
+	if (get_map().on_board_with_border(drag_from_hex_) && is_dragging()) {
+		LOG_ED << "Drag? " << dragging_left_ << " " << dragging_right_ 
+			<< " " <<(void*)(SDL_GetMouseState(NULL, NULL))
+			<< "\n";
+		editor_action* a = NULL;
 		bool partial = false;
-		editor_action* a = get_mouse_action()->drag(*gui_, x, y, partial, last_undo);
+		editor_action* last_undo = get_map_context().last_undo_action();
+		if (dragging_left_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(1)) != 0) {
+			if (!get_map().on_board_with_border(hex_clicked)) return;
+			LOG_ED << "Mouse drag L\n";
+			a = get_mouse_action()->drag_left(*gui_, x, y, partial, last_undo);
+		} else if (dragging_right_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(3)) != 0) {
+			if (!get_map().on_board_with_border(hex_clicked)) return;
+			LOG_ED << "Mouse drag R\n";
+			a = get_mouse_action()->drag_right(*gui_, x, y, partial, last_undo);
+		}
 		//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
 		//anything to the undo stack (hence a diferent perform_ call
 		if (a != NULL) {
@@ -877,6 +886,11 @@ bool editor_controller::allow_mouse_wheel_scroll(int x, int y)
 	return get_map().on_board_with_border(gui().hex_clicked_on(x,y));
 }
 
+bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	return false;
+}
+
 bool editor_controller::left_click(int x, int y, const bool browse)
 {
 	LOG_ED << "Left click\n";
@@ -885,7 +899,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
-	editor_action* a = get_mouse_action()->click(*gui_, x, y);
+	editor_action* a = get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a);
 	return false;
 }
@@ -897,6 +911,30 @@ void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 }
 
 void editor_controller::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	refresh_after_action();
+}
+
+bool editor_controller::right_click(int x, int y, const bool browse)
+{
+	LOG_ED << "Right click\n";
+	if (mouse_handler_base::right_click(x, y, browse)) return true;
+	LOG_ED << "Right click, after generic handling\n";
+	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
+	if (!get_map().on_board_with_border(hex_clicked)) return true;
+	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
+	editor_action* a = get_mouse_action()->click_right(*gui_, x, y);
+	perform_refresh_delete(a);
+	return false;
+}
+
+void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
+{
+	editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
+	perform_refresh_delete(a);
+}
+
+void editor_controller::right_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 	refresh_after_action();
 }

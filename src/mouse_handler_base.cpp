@@ -246,8 +246,9 @@ bool mouse_handler_base::right_click(int x, int y, const bool browse)
 		} else {
 			LOG_STREAM(warn, display) << "no context menu found...\n";
 		}
+		return true;
 	}
-	return true;
+	return false;
 }
 
 void mouse_handler_base::right_drag_end(int x, int y, const bool browse)

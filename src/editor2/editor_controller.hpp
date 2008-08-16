@@ -192,9 +192,13 @@ class editor_controller : public controller_base,
 		editor_display& gui() { return *gui_; }
 		const editor_display& gui() const { return *gui_; }
 		bool allow_mouse_wheel_scroll(int x, int y);
+		bool right_click_show_menu(int x, int y, const bool browse);
 		bool left_click(int x, int y, const bool browse);
 		void left_drag_end(int x, int y, const bool browse);
 		void left_mouse_up(int x, int y, const bool browse);
+		bool right_click(int x, int y, const bool browse);
+		void right_drag_end(int x, int y, const bool browse);
+		void right_mouse_up(int x, int y, const bool browse);
 		
 	protected:
 		/* controller_base overrides */
