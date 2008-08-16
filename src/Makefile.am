@@ -219,6 +219,12 @@ wesnothd_SOURCES = \
 	server/proxy.cpp \
 	server/server.cpp \
 	server/simple_wml.cpp \
+	server/user_handler.cpp
+	server/forum_user_handler.cpp
+	server/jwsmtp/mailer.cpp
+	server/jwsmtp/compat.cpp
+	server/jwsmtp/base64.cpp
+	server/forum_auth/md5.cpp
 	network.cpp \
 	network_worker.cpp \
 	time.cpp \
