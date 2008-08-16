@@ -153,7 +153,7 @@ editor_action* mouse_action_paint::click_perform_right(
 std::set<gamemap::location> mouse_action_select::affected_hexes(
 	editor_display& disp, const gamemap::location& hex)
 {
-	if (key_[SDLK_RALT] || key_[SDLK_LALT]) {
+	if (has_shift_modifier()) {
 		return disp.map().get_contigious_terrain_tiles(hex);
 	} else {
 		return brush_drag_mouse_action::affected_hexes(disp, hex);

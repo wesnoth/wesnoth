@@ -93,7 +93,13 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 				i->second->set_toolbar_button(&menu);
 			}
 		}
-	}			
+	}
+	foreach (const config* c, game_config.get_children("editor2_tool_hint")) {
+		mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey((*c)["id"]).get_id());
+		if (i != mouse_actions_.end()) {
+			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
+		}
+	}	
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	
 	background_terrain_ = t_translation::GRASS_LAND;
@@ -139,7 +145,7 @@ editor_controller::~editor_controller()
     delete gui_;
 	foreach (const mouse_action_map::value_type a, mouse_actions_) {
 		delete a.second;
-	}	
+	}
 	delete prefs_disp_manager_;
 }
 
@@ -700,6 +706,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		redraw_toolbar();
 		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(command).get_description());
+		gui().set_toolbar_hint(mouse_action_hints_[command]);
 		gui().invalidate_game_status();		
 	} else {
 		ERR_ED << "Invalid hotkey command (" << (int)command << ") passed to set_mouse_action\n";
@@ -849,19 +856,14 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
 	if (get_map().on_board_with_border(drag_from_hex_) && is_dragging()) {
-		LOG_ED << "Drag? " << dragging_left_ << " " << dragging_right_ 
-			<< " " <<(void*)(SDL_GetMouseState(NULL, NULL))
-			<< "\n";
 		editor_action* a = NULL;
 		bool partial = false;
 		editor_action* last_undo = get_map_context().last_undo_action();
 		if (dragging_left_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(1)) != 0) {
 			if (!get_map().on_board_with_border(hex_clicked)) return;
-			LOG_ED << "Mouse drag L\n";
 			a = get_mouse_action()->drag_left(*gui_, x, y, partial, last_undo);
 		} else if (dragging_right_ && (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(3)) != 0) {
 			if (!get_map().on_board_with_border(hex_clicked)) return;
-			LOG_ED << "Mouse drag R\n";
 			a = get_mouse_action()->drag_right(*gui_, x, y, partial, last_undo);
 		}
 		//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
@@ -941,7 +943,6 @@ void editor_controller::right_mouse_up(int /*x*/, int /*y*/, const bool /*browse
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
 {
-	LOG_ED << "keyup\n";
 	editor_action* a = get_mouse_action()->key_event(gui(), event);
 	perform_refresh_delete(a);
 }

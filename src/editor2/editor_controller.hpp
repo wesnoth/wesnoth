@@ -299,6 +299,10 @@ class editor_controller : public controller_base,
 		/** The mouse actions */
 		mouse_action_map mouse_actions_;
 		
+		typedef std::map<hotkey::HOTKEY_COMMAND, std::string> mouse_action_string_map;
+		/** Usage tips for mouse actions */
+		mouse_action_string_map mouse_action_hints_;
+		
 		/** The current mouse action */
 		mouse_action* mouse_action_;
 		

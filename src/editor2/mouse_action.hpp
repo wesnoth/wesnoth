@@ -40,7 +40,7 @@ public:
 	}
 
 	virtual ~mouse_action() {}
-	
+		
 	/**
 	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
@@ -108,6 +108,9 @@ protected:
 	const CKey& key_;
 	
 private:
+	/**
+	 * Pointer to an associated menu/button, if such exists
+	 */
 	const theme::menu* toolbar_button_;
 };
 
@@ -176,7 +179,7 @@ protected:
 	gamemap::location previous_drag_hex_;
 private:
 	/**
-	 * Current brush handle.
+	 * Current brush handle. Currently a pointer-to-pointer with full constness.
 	 */
 	const brush* const * const brush_;
 };

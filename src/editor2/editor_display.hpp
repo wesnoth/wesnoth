@@ -33,6 +33,7 @@ public:
 	void remove_brush_loc(const gamemap::location& hex);
 	const editor_map& map() const { return static_cast<const editor_map&>(map_); }
 	void rebuild_terrain(const gamemap::location &loc);
+	void set_toolbar_hint(const std::string value) { toolbar_hint_ = value; }
 protected:
 	void pre_draw();
 	/**
@@ -43,6 +44,7 @@ protected:
 	void draw_sidebar();
 	
 	std::set<gamemap::location> brush_locations_;
+	std::string toolbar_hint_;
 };
 
 } //end namespace editor2
