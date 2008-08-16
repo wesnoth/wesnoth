@@ -388,10 +388,16 @@ SET(wesnothd_SRC
     server/proxy.cpp
     server/server.cpp
     server/simple_wml.cpp
+    server/user_handler.cpp
+    server/forum_user_handler.cpp
     network.cpp
 	time.cpp
     network_worker.cpp
     loadscreen_empty.cpp 
+    server/jwsmtp/mailer.cpp
+    server/jwsmtp/compat.cpp
+    server/jwsmtp/base64.cpp
+    server/forum_auth/md5.cpp
 )
 
 add_executable(wesnothd ${wesnothd_SRC})
