@@ -104,6 +104,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	
 	background_terrain_ = t_translation::GRASS_LAND;
 	foreground_terrain_ = t_translation::MOUNTAIN;
+	set_mouseover_overlay();
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	gui_->invalidate_game_status();
@@ -703,6 +704,11 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		mouse_action_ = i->second;
+		if (mouse_action_->uses_terrains()) {
+			set_mouseover_overlay();
+		} else {
+			clear_mouseover_overlay();
+		}
 		redraw_toolbar();
 		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(command).get_description());
@@ -740,15 +746,15 @@ mouse_action* editor_controller::get_mouse_action()
 	return mouse_action_;
 }
 
-void editor_controller::perform_refresh_delete(editor_action* action)
+void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
 	if (action) {
 		std::auto_ptr<editor_action> action_auto(action);
-		perform_refresh(*action);
+		perform_refresh(*action, drag_part);
 	}
 }
 
-void editor_controller::perform_refresh(const editor_action& action)
+void editor_controller::perform_refresh(const editor_action& action, bool drag_part /* =false */)
 {
 	get_map_context().perform_action(action);
 	refresh_after_action();
@@ -895,6 +901,7 @@ bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /
 
 bool editor_controller::left_click(int x, int y, const bool browse)
 {
+	clear_mouseover_overlay();
 	LOG_ED << "Left click\n";
 	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	LOG_ED << "Left click, after generic handling\n";
@@ -902,7 +909,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	if (!get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_left(*gui_, x, y);
-	perform_refresh_delete(a);
+	perform_refresh_delete(a, true);
 	return false;
 }
 
@@ -915,10 +922,12 @@ void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 void editor_controller::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 	refresh_after_action();
+	if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
 }
 
 bool editor_controller::right_click(int x, int y, const bool browse)
 {
+	clear_mouseover_overlay();
 	LOG_ED << "Right click\n";
 	if (mouse_handler_base::right_click(x, y, browse)) return true;
 	LOG_ED << "Right click, after generic handling\n";
@@ -926,7 +935,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	if (!get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_right(*gui_, x, y);
-	perform_refresh_delete(a);
+	perform_refresh_delete(a, true);
 	return false;
 }
 
@@ -939,6 +948,7 @@ void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 void editor_controller::right_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 	refresh_after_action();
+	if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
@@ -947,5 +957,60 @@ void editor_controller::process_keyup_event(const SDL_Event& event)
 	perform_refresh_delete(a);
 }
 
+//todo make this a virtual in mouse_action
+void editor_controller::set_mouseover_overlay()
+{
+	surface image_fg(image::get_image("terrain/" + get_map().get_terrain_info(
+				foreground_terrain_).editor_image() +
+				".png"));
+	surface image_bg(image::get_image("terrain/" + get_map().get_terrain_info(
+				background_terrain_).editor_image() +
+				".png"));
+
+	if (image_fg == NULL || image_bg == NULL) {
+		ERR_ED << "Missing terrain icon\n";
+		gui().set_mouseover_hex_overlay(NULL);
+		return; 
+	}
+
+	// Create a transparent surface of the right size.
+	surface image = create_compatible_surface(image_fg, image_fg->w, image_fg->h);
+	SDL_FillRect(image,NULL,SDL_MapRGBA(image->format,0,0,0, 0));
+
+	// For efficiency the size of the tile is cached.
+	// We assume all tiles are of the same size.
+	// The zoom factor can change, so it's not cached.
+	// NOTE: when zooming and not moving the mouse, there are glitches.
+	// Since the optimal alpha factor is unknown, it has to be calculated
+	// on the fly, and caching the surfaces makes no sense yet.
+	static const Uint8 alpha = 196;
+	static const int size = image_fg->w;
+	static const int half_size = size / 2;
+	static const int quarter_size = size / 4;
+	static const int offset = 2;
+	static const int new_size = half_size - 2;
+	const int zoom = static_cast<int>(size * gui().get_zoom_factor());
+
+	// Blit left side
+	image_fg = scale_surface(image_fg, new_size, new_size);
+	SDL_Rect rcDestLeft = { offset, quarter_size, 0, 0 };
+	SDL_BlitSurface ( image_fg, NULL, image, &rcDestLeft );
+
+	// Blit left side
+	image_bg = scale_surface(image_bg, new_size, new_size);
+	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
+	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
+
+	// Add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+
+	// Set as mouseover
+	gui().set_mouseover_hex_overlay(image);
+}
+
+void editor_controller::clear_mouseover_overlay()
+{
+	gui().clear_mouseover_hex_overlay();
+}
 
 } //end namespace editor2

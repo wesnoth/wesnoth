@@ -200,6 +200,9 @@ class editor_controller : public controller_base,
 		void right_drag_end(int x, int y, const bool browse);
 		void right_mouse_up(int x, int y, const bool browse);
 		
+		void set_mouseover_overlay();
+		void clear_mouseover_overlay();
+		
 	protected:
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event);
@@ -216,12 +219,12 @@ class editor_controller : public controller_base,
 		 * Peform an action on the current map_context, then refresh the display 
 		 * and delete the pointer. The pointer can be NULL, in which case nothing will happen.
 		 */
-		void perform_refresh_delete(editor_action* action);
+		void perform_refresh_delete(editor_action* action, bool drag_part = false);
 		
 		/**
 		 * Peform an action on the current map_context, then refresh the display.
 		 */
-		void perform_refresh(const editor_action& action);
+		void perform_refresh(const editor_action& action, bool drag_part = false);
 		
 	private:    		
 		/** init the display object and general set-up */ 

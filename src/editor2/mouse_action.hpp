@@ -88,10 +88,13 @@ public:
 	 * the current action. Should always be NULL or point to a valid menu.
 	 */
 	void set_toolbar_button(const theme::menu* value) { toolbar_button_ = value; }
+
 	/**
 	 * Getter for the (possibly NULL) associated menu/button. 
 	 */
 	const theme::menu* toolbar_button() const { return toolbar_button_; }
+	
+	virtual bool uses_terrains() const { return false; }
 
 protected:
 	bool has_alt_modifier() const;
@@ -208,6 +211,8 @@ public:
 	 * Create an appropriate editor_action and return it
 	 */
 	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+
+	bool uses_terrains() const { return true; }
 protected:
 	const t_translation::t_terrain& terrain_left_;
 	const t_translation::t_terrain& terrain_right_;
@@ -306,6 +311,8 @@ public:
 	 * Left / right click fills with the respective terrain
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
+	
+	bool uses_terrains() const { return true; }
 
 protected:
 	const t_translation::t_terrain& terrain_left_;
