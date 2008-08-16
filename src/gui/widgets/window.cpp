@@ -159,16 +159,22 @@ void twindow::layout(const SDL_Rect position)
 	need_layout_ = false;
 }
 
-void twindow::draw(surface& surface, const bool force, 
+void twindow::draw(surface& surf, const bool force, 
 		const bool invalidate_background)
 {
+	// Hack to make the floating labels work again in the editor, it does fail
+	// in the test scenario since the window there is big and transparent.
+	// Since it's really needed for the editor this hack does suffice.
+	const surface frameBuffer = get_video_surface();
+	font::draw_floating_labels(frameBuffer);
+
 	const bool draw_foreground = need_layout_ || force;
 	if(need_layout_) {
 		DBG_G << "Window: layout client area.\n";
 		layout(get_client_rect());
 
 		canvas(0).draw();
-		blit_surface(canvas(0).surf(), 0, surface, 0);
+		blit_surface(canvas(0).surf(), 0, surf, 0);
 	}
 	
 	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
@@ -178,23 +184,24 @@ void twindow::draw(surface& surface, const bool force,
 
 		log_scope2(gui_draw, "Window: draw child.");
 
-		itor->draw(surface, force, invalidate_background);
+		itor->draw(surf, force, invalidate_background);
 	}
 	if(draw_foreground) {
 		canvas(1).draw();
-		blit_surface(canvas(1).surf(), 0, surface, 0);
+		blit_surface(canvas(1).surf(), 0, surf, 0);
 	}
 	if(tooltip_.is_dirty()) {
-		tooltip_.draw(surface);
+		tooltip_.draw(surf);
 	}
 	if(help_popup_.is_dirty()) {
-		help_popup_.draw(surface);
+		help_popup_.draw(surf);
 	}
 
 	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(surface, 0, video_.getSurface(), &rect);
+	SDL_BlitSurface(surf, 0, video_.getSurface(), &rect);
 	update_rect(get_rect());
 	set_dirty(false);
+
 }
 
 void twindow::flip()
@@ -207,6 +214,8 @@ void twindow::flip()
 	cursor::draw(frameBuffer);
 	video_.flip();
 	cursor::undraw(frameBuffer);
+	// Floating hack part 2.
+	font::undraw_floating_labels(frameBuffer);
 }
 
 void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
