@@ -2072,6 +2072,22 @@ private:
 			void do_display();
 			void do_version();
 
+           		//! Ask the server to register the currently used nick
+			void do_register();
+
+			//! Ask the server do drop the currently used (and registered) nick
+			void do_drop();
+
+			//! Update details for the currently used username
+			void do_set();
+
+			//! Request information about a user from the server
+			void do_info();
+
+			//! Request a list of details that can be set for a username
+			//! as these might vary depending on the configuration of the server
+			void do_details();
+
 			void print(const std::string& title, const std::string& message)
 			{
 				chat_handler_.add_chat_message(time(NULL), title, 0, message);
@@ -2115,6 +2131,17 @@ private:
 				register_alias("list", "display");
 				register_command("version", &chat_command_handler::do_version,
 					_("Display version information."));
+				register_command("register", &chat_command_handler::do_register,
+					_("Register your nick"), "<password> <email (optional)>");
+				register_command("drop", &chat_command_handler::do_drop,
+					_("Drop your nick."));
+				register_command("set", &chat_command_handler::do_set,
+					_("Update details for your username. For possible details see /details"),
+					"<detail> <value>");
+				register_command("info", &chat_command_handler::do_info,
+					_("Request information about a user."), "<nick>");
+				register_command("details", &chat_command_handler::do_details,
+					_("Request a list of details you can set for your registered username."));
 			}
 		private:
 			chat_handler& chat_handler_;
@@ -2460,6 +2487,69 @@ private:
 	}
 	void chat_command_handler::do_version() {
 		print("version", game_config::revision);
+	}
+
+	void chat_command_handler::do_register() {
+		config data;
+		config& nickserv = data.add_child("nickserv");
+
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+
+		nickserv.add_child("register")["password"] = get_arg(1);
+		if(!get_data(2).empty()) {
+			(*(nickserv.child("register")))["mail"] = get_arg(2);
+		}
+		print("nick registration", "registering with password *** and " +
+				(get_data(2).empty() ? "no email address" : "email address " + get_data(2)));
+
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_drop() {
+		config data;
+		config& nickserv = data.add_child("nickserv");
+
+		nickserv.add_child("drop");
+
+		print("nick registration", "dropping your username");
+
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_set() {
+		config data;
+		config& nickserv = data.add_child("nickserv");
+
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+		if (get_data(2).empty()) return command_failed_need_arg(2);
+
+		config &set = nickserv.add_child("set");
+		set["detail"] = get_arg(1);
+		set["value"] = get_data(2);
+		print("nick registration", "setting " + get_arg(1) + " to " + get_data(2));
+
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_info() {
+		if (get_data(1).empty()) return command_failed_need_arg(1);
+
+		config data;
+		config& nickserv = data.add_child("nickserv");
+
+		nickserv.add_child("info")["name"] = get_data(1);
+		print("nick registration", "requesting information for user " + get_data(1));
+
+		network::send_data(data, 0, true);
+	}
+
+	void chat_command_handler::do_details() {
+
+		config data;
+		config& nickserv = data.add_child("nickserv");
+		nickserv.add_child("details");
+
+		network::send_data(data, 0, true);
 	}
 
 	void menu_handler::send_chat_message(const std::string& message, bool allies_only)

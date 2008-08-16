@@ -218,7 +218,8 @@ private:
 			game_id(),
 			location(),
 			relation(ME),
-			state(LOBBY)
+			state(LOBBY),
+			registered()
 		{
 		}
 
@@ -227,6 +228,8 @@ private:
 		std::string    location;
 		user_relation  relation;
 		user_state     state;
+		// True if this user is registered on the server
+		bool           registered;
 		bool operator> (const user_info& b) const;
 	};
 };

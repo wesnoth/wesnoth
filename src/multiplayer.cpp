@@ -41,6 +41,8 @@
 #include "upload_log.hpp"
 #include "wml_separators.hpp"
 
+#include "server/forum_auth/md5.hpp"
+
 #define LOG_NW LOG_STREAM(info, network)
 
 namespace {
@@ -146,7 +148,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			} else {
 				return ABORT_SERVER;
 			}
-			
+
 		} else {
 			gui::dialog d(disp, _("Connect to Host"), "", gui::OK_CANCEL);
 			d.set_textbox(_("Choose host to connect to: "), preferences::network_host());
@@ -235,21 +237,57 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			bool first_time = true;
 			config* error = NULL;
 
+			std::vector<std::string> opts;
+			opts.push_back(_("Log in with password"));
+			opts.push_back(_("Request password reminder for this username"));
+			opts.push_back(_("Choose a different username"));
+
 			do {
 				if(error != NULL) {
 					gui::dialog(disp,"",(*error)["message"],gui::OK_ONLY).show();
 				}
 
 				std::string login = preferences::login();
+				std::string password = "";
+				std::string password_reminder = "";
 
 				if(!first_time) {
-					const int res = gui::show_dialog(disp, NULL, "",
-							_("You must log in to this server"), gui::OK_CANCEL,
-							NULL, NULL, _("Login: "), &login, mp::max_login_size);
-					if(res != 0 || login.empty()) {
-						return ABORT_SERVER;
+
+					//Somewhat hacky implementation, including a goto of death
+
+					//! @todo A fancy textbox that displays characters as dots or asterisks would nice
+					if(!((*error)["password_request"].empty())) {
+						const int res = gui::show_dialog(disp, NULL, _("Login"),
+								(*error)["message"], gui::OK_CANCEL,
+								&opts, NULL, _("Password: "), &password, mp::max_login_size);
+
+						switch(res) {
+							//Log in with password
+							case 0:
+								break;
+							//Request a password reminder
+							case 1:
+								password_reminder = "yes";
+								break;
+							//Choose a different username
+							case 2:
+								password = "";
+								goto new_username;
+								break;
+							default: return ABORT_SERVER;
+						}
+
+					} else {
+						new_username:
+
+						const int res = gui::show_dialog(disp, NULL, "",
+								_("You must log in to this server"), gui::OK_CANCEL,
+								NULL, NULL, _("Login: "), &login, mp::max_login_size);
+						if(res != 0 || login.empty()) {
+							return ABORT_SERVER;
+						}
+						preferences::set_login(login);
 					}
-					preferences::set_login(login);
 				}
 
 				first_time = false;
@@ -257,6 +295,73 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				config response ;
 				config &sp = response.add_child("login") ;
 				sp["username"] = login ;
+				sp["password_reminder"] = password_reminder;
+
+				//If password is not empty start hashing
+
+				std::string result;
+				if(!(password.empty())) {
+					std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+
+					std::string salt = (*error)["salt"];
+					int hash_seed;
+					try {
+						hash_seed = lexical_cast_default<int>((*error)["hash_seed"]);
+					} catch (bad_lexical_cast) {
+						std::cerr << "Bad lexical cast reading hash_seed\n";
+						return ABORT_SERVER;
+					}
+
+					// Start the MD5 hashing
+					salt.append(password);
+					MD5 md5_worker;
+					md5_worker.update((unsigned char *)salt.c_str(),salt.length());
+					md5_worker.finalize();
+					unsigned char * output = (unsigned char *) malloc (sizeof(unsigned char) * 16);
+					output = md5_worker.raw_digest();
+					std::string temp_hash;
+					do {
+						temp_hash = std::string((char *) output, (char *) output + 16);
+						temp_hash.append(password);	  								
+						md5_worker.~MD5();
+						MD5 md5_worker;
+						md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
+						md5_worker.finalize();
+						output =  md5_worker.raw_digest();
+					} while (--hash_seed);
+					temp_hash = std::string((char *) output, (char *) output + 16);
+
+					// Now encode the resulting mix
+					std::string encoded_hash; 
+					unsigned int i = 0, value;
+					do {
+						value = output[i++];
+						encoded_hash.append(itoa64.substr(value & 0x3f,1));
+						if(i < 16)
+							value |= (int)output[i] << 8;
+						encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
+						if(i++ >= 16)
+							break;
+						if(i < 16)
+							value |= (int)output[i] << 16;
+						encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
+						if(i++ >= 16)
+							break;
+						encoded_hash.append(itoa64.substr((value >> 18) & 0x3f,1));
+					} while (i < 16);
+					free (output);
+
+					// Now mix the resulting hash with the random seed
+					result = encoded_hash + (*error)["random_salt"];
+
+					MD5 md5_worker2;	
+					md5_worker2.update((unsigned char *)result.c_str(), result.size());
+					md5_worker2.finalize();
+
+					result = std::string(md5_worker2.hex_digest());
+				}
+
+				sp["password"] = result;
 
 				// Login and enable selective pings -- saves server bandwidth
 				// If ping_timeout has a non-zero value, do not enable
