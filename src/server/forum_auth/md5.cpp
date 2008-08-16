@@ -49,6 +49,8 @@ documentation and/or software.
 
 #include <assert.h>
 #include <strings.h>
+#include <string.h> // Edit: needed for strlen() (strings.h should
+                    // include it but apparently does not for me)
 #include <iostream>
 
 

@@ -36,6 +36,15 @@
 #include "simple_wml.hpp"
 #include "ban.hpp"
 
+#include "user_handler.hpp"
+// For now sample_user_handler is broken due
+// to the hardcoding of the phpbb hashing algorithms
+// #include "sample_user_handler.hpp"
+
+#ifdef HAVE_MYSQLPP
+#include "forum_user_handler.hpp"
+#endif
+
 #include <algorithm>
 #include <cassert>
 #include <cerrno>
@@ -254,9 +263,17 @@ public:
 private:
 	void send_error(network::connection sock, const char* msg) const;
 	void send_error_dup(network::connection sock, const std::string& msg) const;
+
+	// The same as send_error(), we just add an extra child to the response
+	// telling the client the chosen username requires a password.
+	void send_password_request(network::connection sock, const char* msg, const std::string& user);
+
 	const network::manager net_manager_;
 	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
+
+	user_handler* user_handler_;
+	std::map<network::connection,std::string> seeds_;
 
 	//! std::map<network::connection,player>
 	player_map players_;
@@ -307,6 +324,9 @@ private:
 	time_t last_stats_;
 	void dump_stats(const time_t& now);
 
+	time_t last_uh_clean_;
+	void clean_user_handler(const time_t& now);
+
 	void process_data(const network::connection sock,
 	                  simple_wml::document& data);
 	void process_login(const network::connection sock,
@@ -319,6 +339,9 @@ private:
 	//! Handle private messages between players.
 	void process_whisper(const network::connection sock,
 	                     simple_wml::node& whisper) const;
+    //! Handle nickname registreation related requests from clients
+	void process_nickserv(const network::connection sock,
+	                   simple_wml::node& data);
 	void process_data_lobby(const network::connection sock,
 	                        simple_wml::document& data);
 	void process_data_game(const network::connection sock,
@@ -363,12 +386,41 @@ server::server(int port, input_stream& input, const std::string& config_file,
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
 	metrics_(),
 	last_ping_(time(NULL)), 
-	last_stats_(last_ping_)
+	last_stats_(last_ping_),
+	last_uh_clean_(last_ping_)
 {
 	load_config();
 	signal(SIGHUP, reload_config);
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
+
+	// If there is a [user_handler] tag in the config file
+	// allow nick registration, otherwise we set user_handler_
+	// to NULL. Thus we must check user_handler_ for not being
+	// NULL everytime we want to use it.
+
+	if(cfg_.child("user_handler")) {
+		// samples_user_handler is broken, see above
+		/*if(cfg_["user_handler"] == "sample") {
+			user_handler_ = new suh(*(cfg_.child("user_handler")));
+		} else*/ if (cfg_["user_handler"] == "forum") {
+			#ifdef HAVE_MYSQLPP
+			user_handler_ = new fuh(*(cfg_.child("user_handler")));
+			#endif
+			#ifndef HAVE_MYSQLPP
+			user_handler_ = NULL;
+			#endif
+		} else {
+			user_handler_ = NULL;
+		}
+
+		// Initiate the mailer class with the [mail] tag
+		// from the config file
+		if(user_handler_) user_handler_->init_mailer(cfg_.child("mail"));
+
+	} else {
+		user_handler_ = NULL;
+	}
 }
 
 void server::send_error(network::connection sock, const char* msg) const
@@ -385,6 +437,26 @@ void server::send_error_dup(network::connection sock, const std::string& msg) co
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
 	simple_wml::string_span output = doc.output_compressed();
 	network::send_raw_data(output.begin(), output.size(), sock, "error");
+}
+
+void server::send_password_request(network::connection sock, const char* msg, const std::string& user)
+{
+
+	std::string salt1 = user_handler_->create_salt();
+	std::string salt2 = user_handler_->create_pepper(user, 0);
+	std::string salt3 = user_handler_->create_pepper(user, 1);
+
+	seeds_.insert(std::pair<network::connection,std::string>(sock, salt1));
+
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr("message", msg);
+	(*(doc.root().child("error"))).set_attr("password_request", "yes");
+	(*(doc.root().child("error"))).set_attr("random_salt", salt1.c_str());
+	(*(doc.root().child("error"))).set_attr("hash_seed", salt2.c_str());
+	(*(doc.root().child("error"))).set_attr("salt", salt3.c_str());
+
+	simple_wml::string_span output = doc.output_compressed();
+	network::send_raw_data(output.begin(), output.size(), sock);
 }
 
 config server::read_config() const {
@@ -493,12 +565,21 @@ void server::dump_stats(const time_t& now) {
 	LOG_SERVER << "Statistics:"
 		<< "\tnumber_of_games = " << games_.size()
 		<< "\tnumber_of_users = " << players_.size()
-	     << "\tnumber_of_ghost_users = " << ghost_players_.size()
+		 << "\tnumber_of_ghost_users = " << ghost_players_.size()
 		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
+}
+
+void server::clean_user_handler(const time_t& now) {
+	if(!user_handler_) {
+		return;
+	}
+	last_uh_clean_ = now;
+	user_handler_->clean_up();
 }
 
 void server::run() {
 	int graceful_counter = 0;
+
 	for (int loop = 0;; ++loop) {
 		// Try to run with 50 FPS all the time
 		// Server will respond a bit faster under heavy load
@@ -543,6 +624,12 @@ void server::run() {
 				if (last_stats_ + 5*60 <= now) {
 					dump_stats(now);
 				}
+
+				// Cleaning the user_handler once a day should be more than enough
+				if (last_uh_clean_ + 60 * 60 * 24 <= now) {
+					clean_user_handler(now);
+				}
+
 #ifdef BANDWIDTH_MONITOR
 				// Send network stats every hour
 				static size_t prev_hour = localtime(&now)->tm_hour;
@@ -569,7 +656,7 @@ void server::run() {
  							    s.size(),
  							    i->first, "ping" ) ;
  				  }
- 
+
  				// Copy new player list on top of ghost_players_ list.
  				// Only a single thread should be accessing this
 				{
@@ -777,7 +864,9 @@ void server::process_data(const network::connection sock,
 		process_login(sock, data);
 	} else if (simple_wml::node* query = root.child("query")) {
 		process_query(sock, *query);
-	} else if (simple_wml::node* whisper = root.child("whisper")) {
+	} else if (simple_wml::node* nickserv = root.child("nickserv")) {
+		process_nickserv(sock, *nickserv);
+    } else if (simple_wml::node* whisper = root.child("whisper")) {
 		process_whisper(sock, *whisper);
 	} else if (lobby_.is_observer(sock)) {
 		process_data_lobby(sock, data);
@@ -790,6 +879,7 @@ void server::process_data(const network::connection sock,
 
 void server::process_login(const network::connection sock,
                            simple_wml::document& data) {
+
 	// See if the client is sending their version number.
 	if (const simple_wml::node* const version = data.child("version")) {
 		const simple_wml::string_span& version_str_span = (*version)["version"];
@@ -889,12 +979,71 @@ void server::process_login(const network::connection sock,
 			return;
 		}
 	}
+
+	// If this is a request for password reminder
+	if(user_handler_) {
+		std::string password_reminder = (*login)["password_reminder"].to_string();
+		if(password_reminder == "yes") {
+			try {
+				user_handler_->password_reminder(username);
+				send_error(sock, "Your password reminder email has been sent.");
+			} catch (user_handler::error e) {
+				send_error(sock, ("There was an error sending your password reminder email. The error message was: " +
+				e.message).c_str());
+			}
+			return;
+		}
+	}
+
 	// Check the username isn't already taken
 	player_map::const_iterator p;
 	for (p = players_.begin(); p != players_.end(); ++p) {
 		if (p->second.name() == username) {
 			send_error(sock, "The username you chose is already taken.");
 			return;
+		}
+	}
+
+	// Check for password
+
+	// Current login procedure  for registered nicks is:
+	// - Client asks to log in with a particular nick
+	// - Server sends client random salt plus some info
+	// 	generated from the original hash that is required to
+	// 	regenerate the hash
+	// - Client generates hash for the user provided password
+	// 	and mixes it with the received random salt
+	// - Server received salted hash, salts the valid hash with
+	// 	the same salt it sent to the client and compares the results
+
+	bool registered = false;
+	if(user_handler_) {
+		std::string password = (*login)["password"].to_string();
+		if(user_handler_->user_exists(username)) {
+			// This name is registered and no password provided
+			if(password.empty()) {
+				send_password_request(sock, ("The username '" + username + "' is registered on this server.").c_str(), username);
+				return;
+			}
+			// A password (or hashed password) was provided, however
+			// there is no seed
+			if(seeds_[sock].empty()) {
+				send_password_request(sock, "Please try again.", username);
+			}
+			// This name is registered and an incorrect password provided
+			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
+				send_password_request(sock, ("The password you provided for the username '" + username +
+						"' was incorrect.").c_str(), username);
+
+				LOG_SERVER << network::ip_address(sock) << "\t"
+						<< "Login attempt with incorrect password for username '" << username << "'.\n";
+				return;
+			}
+		// This name exists and the password was neither empty nor incorrect
+		registered = true;
+		// Reset the random seed
+		seeds_[sock] = "";
+		user_handler_->user_logged_in(username);
 		}
 	}
 
@@ -911,7 +1060,7 @@ void server::process_login(const network::connection sock,
 	send_doc(join_lobby_response_, sock, "join_lobby");
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	const player new_player(username, player_cfg, default_max_messages_,
+	const player new_player(username, player_cfg, registered, default_max_messages_,
 				default_time_period_, selective_ping );
 
 	// If the new player does not have selective ping enabled, immediately
@@ -1120,7 +1269,7 @@ std::string server::process_command(const std::string& query) {
 				out << "Set ban on '" << target << "' with time '" << time << "'  with reason: '" << reason << "'.\n";
 
 				ban_manager_.ban(target, parsed_time, reason);
-				
+	
 				if (kick) {
 					for (player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
@@ -1212,6 +1361,127 @@ std::string server::process_command(const std::string& query) {
 
 	LOG_SERVER << out.str() << "\n";
 	return out.str();
+}
+
+void server::process_nickserv(const network::connection sock, simple_wml::node& data) {
+	const player_map::iterator pl = players_.find(sock);
+	if (pl == players_.end()) {
+		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "\n";
+		return;
+	}
+
+	// Check if this server allows nick registration at all
+	if(!user_handler_) {
+		lobby_.send_server_message("This server does not allow to register on it.", sock);
+		return;
+	}
+
+	if(data.child("register")) {
+		try {
+			(user_handler_->add_user(pl->second.name(), (*data.child("register"))["mail"].to_string(),
+				(*data.child("register"))["password"].to_string()));
+
+			std::stringstream msg;
+			msg << "Your username has been registered." <<
+					// Warn that providing an email address might be a good idea
+					((*data.child("register"))["mail"].empty() ?
+					" It is recommended that you provide an email address for password recovery." : "");
+			lobby_.send_server_message(msg.str().c_str(), sock);
+
+			// Mark the player as registered and send the other clients
+			// an update to dislpay this change
+			pl->second.mark_registered();
+
+			simple_wml::document diff;
+			make_change_diff(games_and_users_list_.root(), NULL,
+						 "user", pl->second.config_address(), diff);
+			lobby_.send_data(diff);
+
+		} catch (user_handler::error e) {
+			lobby_.send_server_message(("There was and error registering your username. The error message was: "
+			+ e.message).c_str(), sock);
+		}
+		return;
+	}
+
+	// A user requested to update his password or mail
+	if(data.child("set")) {
+		if(!(user_handler_->user_exists(pl->second.name()))) {
+			lobby_.send_server_message("You are not registered. Please register first.",
+					sock);
+			return;
+		}
+
+		const simple_wml::node& set = *(data.child("set"));
+
+		try {
+			user_handler_->set_user_detail(pl->second.name(), set["detail"].to_string(), set["value"].to_string());
+
+			lobby_.send_server_message("Your details have been updated.", sock);
+
+		} catch (user_handler::error e) {
+			lobby_.send_server_message(("There was and error updating your details. The error message was: "
+			+ e.message).c_str(), sock);
+		}
+
+		return;
+	}
+
+	// A user requested information about another user
+	if(data.child("details")) {
+		lobby_.send_server_message(("Valid details for this server are: " +
+				user_handler_->get_valid_details()).c_str(), sock);
+		return;
+	}
+
+	// A user requested a list of which details can be set
+	if(data.child("info")) {
+		try {
+			std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
+			lobby_.send_server_message(res.c_str(), sock);
+		} catch (user_handler::error e) {
+			lobby_.send_server_message(("There was and error looking up the details of the user '" +
+			(*data.child("info"))["name"].to_string() + "'. " +" The error message was: "
+			+ e.message).c_str(), sock);
+		}
+		return;
+	}
+
+	// A user requested to delete his nick
+	if(data.child("drop")) {
+		if(!(user_handler_->user_exists(pl->second.name()))) {
+			lobby_.send_server_message("You are not registered.",
+					sock);
+			return;
+		}
+
+		// With the current policy of dissallowing to log in with a
+		// registerd username without the password we should never get
+		// to calling this
+		if(!(pl->second.registered())) {
+			lobby_.send_server_message("You are not logged in.",
+					sock);
+			return;
+		}
+
+		try {
+			user_handler_->remove_user(pl->second.name());
+			lobby_.send_server_message("Your username has been dropped.", sock);
+
+			// Mark the player as not registered and send the other clients
+			// an update to dislpay this change
+			pl->second.mark_registered(false);
+
+			simple_wml::document diff;
+			make_change_diff(games_and_users_list_.root(), NULL,
+						 "user", pl->second.config_address(), diff);
+			lobby_.send_data(diff);
+		} catch (user_handler::error e) {
+			lobby_.send_server_message(("There was and error dropping your username. The error message was: "
+			+ e.message).c_str(), sock);
+		}
+		return;
+	}
 }
 
 void server::process_whisper(const network::connection sock,
