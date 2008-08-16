@@ -1,8 +1,8 @@
 #include <string>
 #include <iostream>
-#include "md5.hpp"
+#include "forum_auth/md5.hpp"
 #include <string.h>
-#include <mysql++.h>
+#include <mysql++/mysql++.h>
 
 namespace forum_auth {
 
@@ -60,9 +60,9 @@ bool forum_auth::validate(void)
 	db_access_file >> db_password;
 // Connect to the database
 	mysqlpp::Connection db_interface(false);
-	if (!db_interface.connect(db_name, db_host, db_user, db_password))
+	if (!db_interface.connect(db_name.c_str(), db_host.c_str(), db_user.c_str(), db_password.c_str()))
 	{
-		std::string error("Forum auth : Connection to the databese failed\n");
+		std::string error("Forum auth : Connection to the database failed\n");
 		throw error;
 	}
 // Retrive users' password as hash
@@ -70,7 +70,8 @@ bool forum_auth::validate(void)
 	sql.append(user_name);
 	sql.append("'");
 	mysqlpp::Query query = db_interface.query(sql);
-	if(!(mysqlpp::StoreQueryReult sql_res = query.store()))
+	mysqlpp::StoreQueryResult sql_res = query.store();
+	if(sql_res.num_rows() == 0)
 	{
 		std::string error("Forum auth : User not found");
 		throw error;
