@@ -28,7 +28,7 @@ class user_handler {
 	// implementations
 
 	public:
-		virtual ~user_handler();
+		virtual ~user_handler() {}
 
 		//! Adds a user.
 		//! Throws an error containing the error message if adding fails
