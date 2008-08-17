@@ -1034,6 +1034,8 @@ void server::process_login(const network::connection sock,
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
+				// Reset the random seed
+				seeds_.erase(sock);
 				send_password_request(sock, ("The password you provided for the username '" + username +
 						"' was incorrect.").c_str(), username);
 
@@ -1044,7 +1046,7 @@ void server::process_login(const network::connection sock,
 		// This name exists and the password was neither empty nor incorrect
 		registered = true;
 		// Reset the random seed
-		seeds_[sock] = "";
+		seeds_.erase(sock);
 		user_handler_->user_logged_in(username);
 		}
 	}
