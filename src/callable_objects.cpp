@@ -62,7 +62,7 @@ int location_callable::do_compare(const game_logic::formula_callable* callable) 
 void location_callable::serialize_to_string(std::string& str) const
 {
 	std::ostringstream s;
-	s << "loc(" << loc_.x << "," << loc_.y << ")";
+	s << "loc(" << (loc_.x+1) << "," << (loc_.y+1) << ")";
 	str = s.str();
 }
 
