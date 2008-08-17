@@ -509,10 +509,12 @@ public:
 class fallback_function : public function_expression {
 public:
 	explicit fallback_function(const args_list& args)
-	  : function_expression("fallback", args, 1, 1)
+	  : function_expression("fallback", args, 0, 1)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
+		if( args().size() == 0 )
+			return variant(new fallback_callable(""));
 		return variant(new fallback_callable(args()[0]->evaluate(variables).as_string()));
 	}
 };
