@@ -172,7 +172,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		}
 
 		tooltip << _("Resistances: ");
-		if (att_def_diff) 
+		if (att_def_diff)
 			tooltip << _("(Att / Def)");
 		tooltip << "\n";
 
@@ -576,6 +576,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		} else {
 			return report();
 		}
+	}
+	case EDITOR2_TOOL_HINT:	{
+		str << "FIXME"; //FIXME: editor status(?)
+		break;
 	}
 	default:
 		assert(false);
