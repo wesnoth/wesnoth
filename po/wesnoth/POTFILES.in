@@ -55,6 +55,7 @@ src/map.cpp
 src/map_create.cpp
 src/mapgen.cpp
 src/map_label.cpp
+src/md5.cpp
 src/menu_events.cpp
 src/mouse_events.cpp
 src/mouse_handler_base.cpp
@@ -90,14 +91,20 @@ src/serialization/string_utils.cpp
 src/serialization/tokenizer.cpp
 src/server/ban.cpp
 src/server/forum_auth.cpp
-src/server/forum_auth/md5.cpp
+src/server/forum_user_handler.cpp
 src/server/game.cpp
 src/server/input_stream.cpp
+src/server/jwsmtp/base64.cpp
+src/server/jwsmtp/compat.cpp
+src/server/jwsmtp/mailer.cpp
+src/server/mail.cpp
 src/server/metrics.cpp
 src/server/player.cpp
 src/server/proxy.cpp
+src/server/sample_user_handler.cpp
 src/server/server.cpp
 src/server/simple_wml.cpp
+src/server/user_handler.cpp
 src/settings.cpp
 src/sha1.cpp
 src/sound.cpp
@@ -140,4 +147,5 @@ src/upload_log.cpp
 src/util.cpp
 src/variable.cpp
 src/variant.cpp
+src/version.cpp
 src/video.cpp
