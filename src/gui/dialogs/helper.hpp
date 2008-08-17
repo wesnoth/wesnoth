@@ -15,6 +15,8 @@
 #ifndef GUI_DIALOGS_HELPER_HPP_INCLUDED
 #define GUI_DIALOGS_HELPER_HPP_INCLUDED
 
+#include "gui/widgets/window.hpp"
+
 namespace gui2 {
 
 /**
