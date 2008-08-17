@@ -18,6 +18,7 @@
 #include "formula_callable.hpp"
 #include "../../formula.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/static_assert.hpp>
 
