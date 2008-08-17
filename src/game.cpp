@@ -216,10 +216,10 @@ private:
 };
 
 game_controller::game_controller(int argc, char** argv) :
-	argc_(argc), 
-	arg_(1), 
+	argc_(argc),
+	arg_(1),
 	argv_(argv),
-	thread_manager(), 
+	thread_manager(),
 	video_(),
 	font_manager_(),
 	prefs_manager_(),
@@ -230,26 +230,26 @@ game_controller::game_controller(int argc, char** argv) :
 	music_thinker_(),
 	resize_monitor_(),
 	paths_manager_(),
-	test_scenario_("test"), 
-	test_mode_(false), 
-	multiplayer_mode_(false), 
-	no_gui_(false), 
-	use_caching_(true), 
-	force_valid_cache_(false), 
-	force_bpp_(-1), 
+	test_scenario_("test"),
+	test_mode_(false),
+	multiplayer_mode_(false),
+	no_gui_(false),
+	use_caching_(true),
+	force_valid_cache_(false),
+	force_bpp_(-1),
 	game_config_(),
-	disp_(NULL), 
+	disp_(NULL),
 	state_(),
 	resolution(),
 	bpp(0),
 	video_flags(0),
 	loaded_game_(),
-	loaded_game_show_replay_(false), 
-	loaded_game_cancel_orders_(false), 
+	loaded_game_show_replay_(false),
+	loaded_game_cancel_orders_(false),
 	defines_map_(),
 	old_defines_map_(),
 	multiplayer_server_(),
-	jump_to_campaign_(false), 
+	jump_to_campaign_(false),
 	jump_to_multiplayer_(false)
 #ifdef USE_EDITOR2
 	 ,jump_to_editor_(false)
@@ -2303,9 +2303,6 @@ int main(int argc, char** argv)
 	}
 
 	try {
-		//trigger any one-time static initializations
-		unit_animation::init_tag_names();
-
 		/**
 		 * @todo We try to guess the name of the server from the name of the
 		 * binary started. This is very fragile it breaks in at least the

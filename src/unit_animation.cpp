@@ -34,27 +34,34 @@
 #include <cstdlib>
 #include <iostream>
 
-//static initialization
-std::vector<std::string> unit_animation::all_tag_names;
-void unit_animation::init_tag_names() {
-	unit_animation::all_tag_names.clear();
-	unit_animation::all_tag_names.push_back("animation");
-	unit_animation::all_tag_names.push_back("attack_anim");
-	unit_animation::all_tag_names.push_back("death");
-	unit_animation::all_tag_names.push_back("defend");
-	unit_animation::all_tag_names.push_back("extra_anim");
-	unit_animation::all_tag_names.push_back("healed_anim");
-	unit_animation::all_tag_names.push_back("healing_anim");
-	unit_animation::all_tag_names.push_back("idle_anim");
-	unit_animation::all_tag_names.push_back("leading_anim");
-	unit_animation::all_tag_names.push_back("levelin_anim");
-	unit_animation::all_tag_names.push_back("levelout_anim");
-	unit_animation::all_tag_names.push_back("movement_anim");
-	unit_animation::all_tag_names.push_back("poison_anim");
-	unit_animation::all_tag_names.push_back("recruit_anim");
-	unit_animation::all_tag_names.push_back("standing_anim");
-	unit_animation::all_tag_names.push_back("teleport_anim");
-	unit_animation::all_tag_names.push_back("victory_anim");
+struct tag_name_manager {
+	tag_name_manager() : names() {
+		names.push_back("animation");
+		names.push_back("attack_anim");
+		names.push_back("death");
+		names.push_back("defend");
+		names.push_back("extra_anim");
+		names.push_back("healed_anim");
+		names.push_back("healing_anim");
+		names.push_back("idle_anim");
+		names.push_back("leading_anim");
+		names.push_back("levelin_anim");
+		names.push_back("levelout_anim");
+		names.push_back("movement_anim");
+		names.push_back("poison_anim");
+		names.push_back("recruit_anim");
+		names.push_back("standing_anim");
+		names.push_back("teleport_anim");
+		names.push_back("victory_anim");
+	}
+	std::vector<std::string> names;
+};
+namespace {
+	tag_name_manager anim_tags;
+} //end anonymous namespace
+
+const std::vector<std::string>& unit_animation::all_tag_names() {
+	return anim_tags.names;
 }
 
 config unit_animation::prepare_animation(const config &cfg,const std::string animation_tag)

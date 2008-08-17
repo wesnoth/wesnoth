@@ -174,8 +174,8 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, 
-		const std::vector<team>* teams,const config& cfg, 
+unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
+		const std::vector<team>* teams,const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(),
 	advances_to_(),
@@ -254,7 +254,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	game_config::add_color_info(cfg);
 }
 
-unit::unit(const config& cfg,bool use_traits) : 
+unit::unit(const config& cfg,bool use_traits) :
 	cfg_(),
 	advances_to_(),
 	type_(),
@@ -276,211 +276,6 @@ unit::unit(const config& cfg,bool use_traits) :
 	unrenamable_(false),
 	side_(0),
 	gender_(),
-	alpha_(),
-	unit_formula_(),
-	formula_vars_(),
-	recruits_(),
-	movement_(0),
-	max_movement_(0),
-	movement_costs_(),
-	defense_mods_(),
-	hold_position_(false), 
-	end_turn_(false),
-	resting_(false), 
-	attacks_left_(0),
-	max_attacks_(0),
-	states_(),
-	variables_(),
-	emit_zoc_(0),
-	state_(STATE_STANDING), 
-	overlays_(),
-	role_(),
-	ai_special_(),
-	attacks_(),
-	facing_(gamemap::location::SOUTH_EAST), 
-	traits_description_(),
-	unit_value_(),
-	goto_(),
-	interrupted_move_(),
-	flying_(false),
-	is_fearless_(false),
-	is_healthy_(false),
-	modification_descriptions_(),
-	animations_(),
-	anim_(NULL),
-	next_idling_(0),
-	frame_begin_time_(0), 
-	unit_halo_(halo::NO_HALO),
-	unit_anim_halo_(halo::NO_HALO),
-	getsHit_(0),
-	refreshing_(false),
-	hidden_(false),
-	draw_bars_(false), 
-	modifications_(),
-	units_(NULL),
-	map_(NULL), 
-	gamestatus_(NULL),
-	teams_(NULL),
-	invisibility_cache_()
-{
-	read(cfg,use_traits);
-	/** @todo Are these modified by read? if not they can be removed. */
-	getsHit_=0;
-	end_turn_ = false;
-	refreshing_ = false;
-	hidden_ = false;
-}
-
-void unit::clear_status_caches()
-{
-	for(std::vector<const unit *>::const_iterator itor = units_with_cache.begin();
-			itor != units_with_cache.end(); ++itor) {
-		(*itor)->clear_visibility_cache();
-	}
-
-	units_with_cache.clear();
-}
-
-unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_state* state)
-{
-	const std::vector<unit_race::GENDER>& genders = type.genders();
-	// Once random gender is used, don't do it again.
-	// Such as when restoring a saved character.
-	cfg_["random_gender"] = "no";
-	if(genders.empty() == false) {
-		if(state) {
-			return gen ? genders[state->rng().get_random() % genders.size()] : genders.front();
-		} else {
-			return gen ? genders[get_random() % genders.size()] : genders.front();
-		}
-	} else {
-		return unit_race::MALE;
-	}
-}
-
-unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, 
-		const std::vector<team>* teams, const unit_type* t, int side, 
-		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
-	cfg_(),
-	advances_to_(),
-	type_(),
-	race_(NULL),
-	id_(),
-	name_(),
-	underlying_id_(),
-	type_name_(),
-	undead_variation_(),
-	variation_(variation), 
-	hit_points_(0),
-	max_hit_points_(0),
-	experience_(0),
-	max_experience_(0),
-	level_(0),
-	alignment_(),
-	flag_rgb_(),
-	image_mods_(),
-	unrenamable_(false),
-	side_(side),
-	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), 
-	alpha_(),
-	unit_formula_(),
-	formula_vars_(),
-	recruits_(),
-	movement_(0),
-	max_movement_(0),
-	movement_costs_(),
-	defense_mods_(),
-	hold_position_(false),
-	end_turn_(false),
-	resting_(false), 
-	attacks_left_(0),
-	max_attacks_(0),
-	states_(),
-	variables_(),
-	emit_zoc_(0),
-	state_(STATE_STANDING), 
-	overlays_(),
-	role_(),
-	ai_special_(),
-	attacks_(),
-	facing_(gamemap::location::SOUTH_EAST),
-	traits_description_(),
-	unit_value_(),
-	goto_(),
-	interrupted_move_(),
-	flying_(false),
-	is_fearless_(false),
-	is_healthy_(false),
-	modification_descriptions_(),
-	animations_(),
-	anim_(NULL),
-	next_idling_(0),
-	frame_begin_time_(0),
-	unit_halo_(halo::NO_HALO),
-	unit_anim_halo_(halo::NO_HALO),
-	getsHit_(0),
-	refreshing_(false),
-	hidden_(false),
-	draw_bars_(false), 
-	modifications_(),
-	units_(unitmap),
-	map_(map),
-	gamestatus_(game_status),
-	teams_(teams),
-	invisibility_cache_()
-{
-	cfg_["upkeep"]="full";
-	advance_to(t);
-	if(dummy_unit == false) validate_side(side_);
-	if(use_traits) {
-		// Units that don't have traits generated are just
-		// generic units, so they shouldn't get a description
-		// either.
-		name_ = generate_name();
-	}
-	generate_traits(!use_traits);
-	reset_modifications();
-	apply_modifications();
-	set_underlying_id();
-
-	/** 
-	 * @todo Test whether the calls above modify these values if not they can
-	 * removed, since already set in the initialization list.
-	 */
-	unrenamable_ = false;
-	anim_ = NULL;
-	getsHit_=0;
-	end_turn_ = false;
-	hold_position_ = false;
-	next_idling_ = 0;
-	frame_begin_time_ = 0;
-	unit_halo_ = halo::NO_HALO;
-	unit_anim_halo_ = halo::NO_HALO;
-}
-
-unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, 
-		unit_race::GENDER gender, std::string variation) :
-	cfg_(),
-	advances_to_(),
-	type_(),
-	race_(NULL),
-	id_(),
-	name_(),
-	underlying_id_(),
-	type_name_(),
-	undead_variation_(),
-	variation_(variation),
-	hit_points_(0),
-	max_hit_points_(0),
-	experience_(0),
-	max_experience_(0),
-	level_(0),
-	alignment_(),
-	flag_rgb_(),
-	image_mods_(),
-	unrenamable_(false),
-	side_(side),
-	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), 
 	alpha_(),
 	unit_formula_(),
 	formula_vars_(),
@@ -520,7 +315,212 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	getsHit_(0),
 	refreshing_(false),
 	hidden_(false),
-	draw_bars_(false), 
+	draw_bars_(false),
+	modifications_(),
+	units_(NULL),
+	map_(NULL),
+	gamestatus_(NULL),
+	teams_(NULL),
+	invisibility_cache_()
+{
+	read(cfg,use_traits);
+	/** @todo Are these modified by read? if not they can be removed. */
+	getsHit_=0;
+	end_turn_ = false;
+	refreshing_ = false;
+	hidden_ = false;
+}
+
+void unit::clear_status_caches()
+{
+	for(std::vector<const unit *>::const_iterator itor = units_with_cache.begin();
+			itor != units_with_cache.end(); ++itor) {
+		(*itor)->clear_visibility_cache();
+	}
+
+	units_with_cache.clear();
+}
+
+unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_state* state)
+{
+	const std::vector<unit_race::GENDER>& genders = type.genders();
+	// Once random gender is used, don't do it again.
+	// Such as when restoring a saved character.
+	cfg_["random_gender"] = "no";
+	if(genders.empty() == false) {
+		if(state) {
+			return gen ? genders[state->rng().get_random() % genders.size()] : genders.front();
+		} else {
+			return gen ? genders[get_random() % genders.size()] : genders.front();
+		}
+	} else {
+		return unit_race::MALE;
+	}
+}
+
+unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
+		const std::vector<team>* teams, const unit_type* t, int side,
+		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
+	cfg_(),
+	advances_to_(),
+	type_(),
+	race_(NULL),
+	id_(),
+	name_(),
+	underlying_id_(),
+	type_name_(),
+	undead_variation_(),
+	variation_(variation),
+	hit_points_(0),
+	max_hit_points_(0),
+	experience_(0),
+	max_experience_(0),
+	level_(0),
+	alignment_(),
+	flag_rgb_(),
+	image_mods_(),
+	unrenamable_(false),
+	side_(side),
+	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
+	alpha_(),
+	unit_formula_(),
+	formula_vars_(),
+	recruits_(),
+	movement_(0),
+	max_movement_(0),
+	movement_costs_(),
+	defense_mods_(),
+	hold_position_(false),
+	end_turn_(false),
+	resting_(false),
+	attacks_left_(0),
+	max_attacks_(0),
+	states_(),
+	variables_(),
+	emit_zoc_(0),
+	state_(STATE_STANDING),
+	overlays_(),
+	role_(),
+	ai_special_(),
+	attacks_(),
+	facing_(gamemap::location::SOUTH_EAST),
+	traits_description_(),
+	unit_value_(),
+	goto_(),
+	interrupted_move_(),
+	flying_(false),
+	is_fearless_(false),
+	is_healthy_(false),
+	modification_descriptions_(),
+	animations_(),
+	anim_(NULL),
+	next_idling_(0),
+	frame_begin_time_(0),
+	unit_halo_(halo::NO_HALO),
+	unit_anim_halo_(halo::NO_HALO),
+	getsHit_(0),
+	refreshing_(false),
+	hidden_(false),
+	draw_bars_(false),
+	modifications_(),
+	units_(unitmap),
+	map_(map),
+	gamestatus_(game_status),
+	teams_(teams),
+	invisibility_cache_()
+{
+	cfg_["upkeep"]="full";
+	advance_to(t);
+	if(dummy_unit == false) validate_side(side_);
+	if(use_traits) {
+		// Units that don't have traits generated are just
+		// generic units, so they shouldn't get a description
+		// either.
+		name_ = generate_name();
+	}
+	generate_traits(!use_traits);
+	reset_modifications();
+	apply_modifications();
+	set_underlying_id();
+
+	/**
+	 * @todo Test whether the calls above modify these values if not they can
+	 * removed, since already set in the initialization list.
+	 */
+	unrenamable_ = false;
+	anim_ = NULL;
+	getsHit_=0;
+	end_turn_ = false;
+	hold_position_ = false;
+	next_idling_ = 0;
+	frame_begin_time_ = 0;
+	unit_halo_ = halo::NO_HALO;
+	unit_anim_halo_ = halo::NO_HALO;
+}
+
+unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
+		unit_race::GENDER gender, std::string variation) :
+	cfg_(),
+	advances_to_(),
+	type_(),
+	race_(NULL),
+	id_(),
+	name_(),
+	underlying_id_(),
+	type_name_(),
+	undead_variation_(),
+	variation_(variation),
+	hit_points_(0),
+	max_hit_points_(0),
+	experience_(0),
+	max_experience_(0),
+	level_(0),
+	alignment_(),
+	flag_rgb_(),
+	image_mods_(),
+	unrenamable_(false),
+	side_(side),
+	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
+	alpha_(),
+	unit_formula_(),
+	formula_vars_(),
+	recruits_(),
+	movement_(0),
+	max_movement_(0),
+	movement_costs_(),
+	defense_mods_(),
+	hold_position_(false),
+	end_turn_(false),
+	resting_(false),
+	attacks_left_(0),
+	max_attacks_(0),
+	states_(),
+	variables_(),
+	emit_zoc_(0),
+	state_(STATE_STANDING),
+	overlays_(),
+	role_(),
+	ai_special_(),
+	attacks_(),
+	facing_(gamemap::location::SOUTH_EAST),
+	traits_description_(),
+	unit_value_(),
+	goto_(),
+	interrupted_move_(),
+	flying_(false),
+	is_fearless_(false),
+	is_healthy_(false),
+	modification_descriptions_(),
+	animations_(),
+	anim_(NULL),
+	next_idling_(0),
+	frame_begin_time_(0),
+	unit_halo_(halo::NO_HALO),
+	unit_anim_halo_(halo::NO_HALO),
+	getsHit_(0),
+	refreshing_(false),
+	hidden_(false),
+	draw_bars_(false),
 	modifications_(),
 	units_(NULL),
 	map_(NULL),
@@ -541,8 +541,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	reset_modifications();
 	apply_modifications();
 	set_underlying_id();
- 
-	/** 
+
+	/**
 	 * @todo Test whether the calls above modify these values if not they can
 	 * removed, since already set in the initialization list.
 	 */
@@ -713,7 +713,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	reset_modifications();
 
 	// Remove old animations
-	foreach(const std::string& tag_name, unit_animation::all_tag_names) {
+	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
 
@@ -1594,7 +1594,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	// Attach animations for this unit to the in-core object
 	unit_animation::fill_initial_animations(animations_,cfg_);
 	// Remove animations from private cfg, they're not needed there now
-	foreach(const std::string& tag_name, unit_animation::all_tag_names) {
+	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
 
@@ -3337,7 +3337,7 @@ std::string get_checksum(const unit& u) {
 	unit_config["overlays"] = "";
 	// Non-critical tags to ignore.
 	unit_config.clear_children("comment");
-	foreach(const std::string& tag_name, unit_animation::all_tag_names) {
+	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		unit_config.clear_children(tag_name);
 	}
 

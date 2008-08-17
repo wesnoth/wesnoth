@@ -33,8 +33,8 @@ class unit_animation
 	public:
 		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1} variation_type;
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
-		static std::vector<std::string> all_tag_names;
-		static void init_tag_names();
+
+		static const std::vector<std::string>& all_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
