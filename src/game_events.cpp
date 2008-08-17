@@ -2022,7 +2022,7 @@ namespace {
 		bool too_many_recursions_;
 
 		public:
-		recursion_preventer(gamemap::location& loc) : 
+		recursion_preventer(gamemap::location& loc) :
 			loc_(loc),
 			too_many_recursions_(false)
 		{
@@ -2096,7 +2096,11 @@ namespace {
 
 		// If the filter doesn't contain positional information,
 		// then it may match units on all recall lists.
-		if(cfg["x"].empty() && cfg["y"].empty()) {
+		t_string const& cfg_x = cfg["x"];
+		t_string const& cfg_y = cfg["y"];
+		if((cfg_x.empty() || cfg_x == "recall")
+		&& (cfg_y.empty() || cfg_y == "recall"))
+		{
 			std::map<std::string, player_info>& players=state_of_game->players;
 
 			for(std::map<std::string, player_info>::iterator pi = players.begin();
@@ -2226,7 +2230,11 @@ namespace {
 			}
 		}
 
-		if(filter["x"].empty() && filter["y"].empty()) {
+		t_string const& filter_x = filter["x"];
+		t_string const& filter_y = filter["y"];
+		if((filter_x.empty() || filter_x == "recall")
+		&& (filter_y.empty() || filter_y == "recall"))
+		{
 			std::map<std::string, player_info>& players = state_of_game->players;
 
 			for(std::map<std::string, player_info>::iterator pi = players.begin();
@@ -2308,6 +2316,7 @@ namespace {
 
 					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_map, *units, loc, *screen, !sel, true);
+					//! @todo FIXME: triggers advance events without preventing infinite loop
 				}
 
 			} else {
