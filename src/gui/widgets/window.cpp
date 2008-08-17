@@ -12,18 +12,18 @@
    See the COPYING file for more details.
 */
 
-//! @file window.cpp
-//! Implementation of window.hpp.
+/**
+ *  @file window.cpp
+ *  Implementation of window.hpp.
+ */
 
 #include "gui/widgets/window.hpp"
 
-#include "config.hpp"
 #include "cursor.hpp"
 #include "font.hpp"
 #include "log.hpp"
-#include "serialization/parser.hpp"
-#include "variable.hpp"
-#include "sdl_utils.hpp"
+#include "tstring.hpp"
+#include "video.hpp"
 
 #include <cassert>
 
@@ -82,7 +82,7 @@ twindow::twindow(CVideo& video,
 	help_popup_.set_visible(false);
 }
 
-twindow::RETVAL twindow::get_retval_by_id(const std::string& id)
+twindow::tretval twindow::get_retval_by_id(const std::string& id)
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -146,11 +146,9 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 	return retval_;
 }
-
-void twindow::layout(const SDL_Rect position)
+/*
+void twindow::layout(const SDL_Rect& position)
 {
-	need_layout_ = false;
-
 	DBG_G << "Window: layout area " << position.x
 		<< ',' << position.y << " x " << position.w 
 		<< ',' << position.h << ".\n";
@@ -158,102 +156,13 @@ void twindow::layout(const SDL_Rect position)
 	set_client_size(position); 
 	need_layout_ = false;
 }
-
-void twindow::draw(surface& surf, const bool force, 
-		const bool invalidate_background)
-{
-	// Hack to make the floating labels work again in the editor, it does fail
-	// in the test scenario since the window there is big and transparent.
-	// Since it's really needed for the editor this hack does suffice.
-	const surface frameBuffer = get_video_surface();
-	font::draw_floating_labels(frameBuffer);
-
-	const bool draw_foreground = need_layout_ || force;
-	if(need_layout_) {
-		DBG_G << "Window: layout client area.\n";
-		layout(get_client_rect());
-
-		canvas(0).draw();
-		blit_surface(canvas(0).surf(), 0, surf, 0);
-	}
-	
-	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
-		if(! *itor || !itor->is_dirty()) {
-			continue;
-		}
-
-		log_scope2(gui_draw, "Window: draw child.");
-
-		itor->draw(surf, force, invalidate_background);
-	}
-	if(draw_foreground) {
-		canvas(1).draw();
-		blit_surface(canvas(1).surf(), 0, surf, 0);
-	}
-	if(tooltip_.is_dirty()) {
-		tooltip_.draw(surf);
-	}
-	if(help_popup_.is_dirty()) {
-		help_popup_.draw(surf);
-	}
-
-	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(surf, 0, video_.getSurface(), &rect);
-	update_rect(get_rect());
-	set_dirty(false);
-
-}
-
-void twindow::flip()
-{
-	// fixme we need to add the option to either call
-	// video_.flip() or display.flip()
-	
-	const surface frameBuffer = get_video_surface();
-	
-	cursor::draw(frameBuffer);
-	video_.flip();
-	cursor::undraw(frameBuffer);
-	// Floating hack part 2.
-	font::undraw_floating_labels(frameBuffer);
-}
-
-void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
-		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
-{
-	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
-		set_retval(OK);
-		handled = true;
-	} else if(key == SDLK_ESCAPE) {
-		set_retval(CANCEL);
-		handled = true;
-	}
-}
-
+*/
 void twindow::window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height)
 {
 	settings::screen_width = new_width;
 	settings::screen_height = new_height;
 	need_layout_ = true;
-}
-
-SDL_Rect twindow::get_client_rect() const
-{
-	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
-	assert(conf);
-
-	SDL_Rect result = get_rect();
-	result.x = conf->left_border;
-	result.y = conf->top_border;
-	result.w -= conf->left_border + conf->right_border;
-	result.h -= conf->top_border + conf->bottom_border;
-
-	// FIXME validate for an available client area.
-	
-	return result;
-
 }
 
 void twindow::recalculate_size()
@@ -313,6 +222,97 @@ void twindow::recalculate_size()
 
 		set_size(create_rect(position, size));
 	}
+}
+
+void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
+		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
+{
+	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
+		set_retval(OK);
+		handled = true;
+	} else if(key == SDLK_ESCAPE) {
+		set_retval(CANCEL);
+		handled = true;
+	}
+}
+
+SDL_Rect twindow::get_client_rect() const
+{
+	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
+	assert(conf);
+
+	SDL_Rect result = get_rect();
+	result.x = conf->left_border;
+	result.y = conf->top_border;
+	result.w -= conf->left_border + conf->right_border;
+	result.h -= conf->top_border + conf->bottom_border;
+
+	// FIXME validate for an available client area.
+	
+	return result;
+
+}
+
+void twindow::draw(surface& surf, const bool force, 
+		const bool invalidate_background)
+{
+	// Hack to make the floating labels work again in the editor, it does fail
+	// in the test scenario since the window there is big and transparent.
+	// Since it's really needed for the editor this hack does suffice.
+	const surface frameBuffer = get_video_surface();
+	font::draw_floating_labels(frameBuffer);
+
+	const bool draw_foreground = need_layout_ || force;
+	if(need_layout_) {
+		DBG_G << "Window: layout client area.\n";
+//		layout(get_client_rect());
+//		Instead of layout() we need to clear the flag.
+		need_layout_ = false;
+
+		canvas(0).draw();
+		blit_surface(canvas(0).surf(), 0, surf, 0);
+	}
+	
+	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
+		if(! *itor || !itor->is_dirty()) {
+			continue;
+		}
+
+		log_scope2(gui_draw, "Window: draw child.");
+
+		itor->draw(surf, force, invalidate_background);
+	}
+	if(draw_foreground) {
+		canvas(1).draw();
+		blit_surface(canvas(1).surf(), 0, surf, 0);
+	}
+	if(tooltip_.is_dirty()) {
+		tooltip_.draw(surf);
+	}
+	if(help_popup_.is_dirty()) {
+		help_popup_.draw(surf);
+	}
+
+	SDL_Rect rect = get_rect();
+	SDL_BlitSurface(surf, 0, video_.getSurface(), &rect);
+	update_rect(get_rect());
+	set_dirty(false);
+
+}
+
+void twindow::flip()
+{
+	// fixme we need to add the option to either call
+	// video_.flip() or display.flip()
+	
+	const surface frameBuffer = get_video_surface();
+	
+	cursor::draw(frameBuffer);
+	video_.flip();
+	cursor::undraw(frameBuffer);
+	// Floating hack part 2.
+	font::undraw_floating_labels(frameBuffer);
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
