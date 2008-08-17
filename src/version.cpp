@@ -44,7 +44,7 @@ version_info::version_info(unsigned int major, unsigned int minor, unsigned int 
 }
 
 version_info::version_info(const std::string& str)
-	: nums_(3,0), sane_(false)
+	: nums_(3,0), sane_(true)
 {
 	const std::vector<std::string>& string_parts = utils::split(str,'.');
 	// first two components are required to be valid numbers, though
@@ -81,9 +81,8 @@ version_info::version_info(const std::string& str)
 				}
 			}
 		}
-		sane_ = true;
 	} catch (bad_lexical_cast const&) {
-		;
+		sane_ = false;
 	} catch (std::out_of_range const&) {
 		;
 	}
