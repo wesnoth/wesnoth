@@ -390,7 +390,9 @@ server::server(int port, input_stream& input, const std::string& config_file,
 	last_uh_clean_(last_ping_)
 {
 	load_config();
+#ifndef _MSC_VER
 	signal(SIGHUP, reload_config);
+#endif
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
 
@@ -2083,7 +2085,9 @@ void server::update_game_in_lobby(const game* g, network::connection exclude)
        #include <sys/types.h>
        #include <sys/stat.h>
        #include <fcntl.h>
-	   #include <unistd.h>
+#ifndef _MSC_VER
+       #include <unistd.h>
+#endif
 
 int main(int argc, char** argv) {
 	int port = 15000;

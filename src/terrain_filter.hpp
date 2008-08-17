@@ -27,6 +27,10 @@ class unit_map;
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
 public:
+#ifdef _MSC_VER
+	// This constructor is required for MSVC 9 other compilers don't seem to need it. 
+	terrain_filter(); 
+#endif	
 	terrain_filter(const vconfig& cfg, const gamemap& map, const gamestatus& game_status,
 		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);

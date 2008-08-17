@@ -266,7 +266,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 
 				if (retval < 1)
 					return false;
-#elif
+#else
 				//TODO: consider replacing this with a select call
 				time_used = SDL_GetTicks() - startTicks;
 				if(time_used >= timeout_ms) {

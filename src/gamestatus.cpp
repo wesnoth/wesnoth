@@ -41,7 +41,9 @@
 #include <iostream>
 #include <iterator>
 #include <sstream>
+#ifndef _MSC_VER
 #include <sys/time.h>
+#endif
 #include <time.h>
 
 #define DBG_NG lg::debug(lg::engine)

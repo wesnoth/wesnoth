@@ -22,6 +22,9 @@
 
 #include <map>
 #include <string>
+#ifdef WIN32
+#include <time.h>
+#endif
 
 #include "simple_wml.hpp"
 
@@ -54,6 +57,16 @@ public:
 		simple_wml::string_span name;
 		int nsamples;
 		clock_t parsing_time, processing_time;
+#ifdef _MSC_VER
+		bool operator< (const simple_wml::string_span& n) const
+		{
+			return name < n;
+		}
+		operator const simple_wml::string_span&()
+		{
+			return name;
+		}
+#endif
 	};
 
 private:

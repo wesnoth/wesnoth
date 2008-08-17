@@ -1554,7 +1554,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		  break ;
 	}
 
-	if (!fromexists or !toexists)
+	if (!fromexists || !toexists)
 	  {
   	    Py_BLOCK_THREADS ;
 	    Py_RETURN_NONE;

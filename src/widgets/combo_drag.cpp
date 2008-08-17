@@ -52,7 +52,7 @@ namespace gui {
 		const int diff_x = event.x - mouse_x_;
 		const int diff_y = event.y - mouse_y_;
 		if (drag_ == PRESSED_MOVE
-			&& std::sqrt(diff_x*diff_x + diff_y*diff_y) > MIN_DRAG_DISTANCE)
+			&& std::sqrt(static_cast<float>(diff_x*diff_x + diff_y*diff_y)) > MIN_DRAG_DISTANCE)
 		{
 			return;
 		}
@@ -87,7 +87,7 @@ namespace gui {
 			SDL_Rect loc = location();
 			int x_diff = loc.x - old_location_.x;
 			int y_diff = loc.y - old_location_.y;
-			const float length = std::sqrt(x_diff*x_diff + y_diff*y_diff);
+			const float length = std::sqrt(static_cast<float>(x_diff*x_diff + y_diff*y_diff));
 
 			if (length > RETURN_SPEED)
 			{

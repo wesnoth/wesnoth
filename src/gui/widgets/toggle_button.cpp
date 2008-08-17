@@ -126,7 +126,8 @@ void ttoggle_button::set_canvas_text()
 	tcontrol::set_canvas_text();
 
 	// set icon in canvases
-	foreach(tcanvas& canvas, tcontrol::canvas()) {
+	std::vector<tcanvas>& canvases = tcontrol::canvas();
+	foreach(tcanvas& canvas, canvases) {
 		canvas.set_variable("icon", variant(icon_name_));
 	}
 

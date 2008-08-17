@@ -695,7 +695,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	for (int h = first_half; h <= second_half; h++) {
 		const std::string sense( h==0 ? "-in" : "-out" );
 
-		if (!tiles_adjacent(*(i-1+h), *(i+h))) {
+		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
 			std::string teleport_image =
 			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
 			teleport = image::get_image(teleport_image, image::UNMASKED);
@@ -703,7 +703,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		}
 
 		// In function of the half, use the incoming or outgoing direction
-		gamemap::location::DIRECTION dir = (i-1+h)->get_relative_dir(*(i+h));
+		gamemap::location::DIRECTION dir = (i+(h-1))->get_relative_dir(*(i+h));
 
 		std::string rotate;
 		if (dir > gamemap::location::SOUTH_EAST) {

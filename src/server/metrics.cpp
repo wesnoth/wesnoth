@@ -23,6 +23,7 @@
 #include <time.h>
 #include <iostream>
 
+#ifndef _MSC_VER
 static bool operator<(const metrics::sample& s, const simple_wml::string_span& name)
 {
 	return s.name < name;
@@ -32,6 +33,7 @@ static bool operator<(const simple_wml::string_span& name, const metrics::sample
 {
 	return name < s.name;
 }
+#endif
 
 struct compare_samples_by_time {
 	bool operator()(const metrics::sample& a, const metrics::sample& b) const {

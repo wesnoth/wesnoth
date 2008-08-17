@@ -33,6 +33,17 @@
 #define ERR_NG LOG_STREAM(err, engine)
 
 
+#ifdef _MSC_VER
+terrain_filter::terrain_filter(): 
+	cfg_(vconfig()), 
+	map_(gamemap(config(), 
+	std::string())), 
+	status_(gamestatus(config(), 1)), 
+	units_(unit_map())
+{
+}
+#endif
+
 terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
 		const gamestatus& game_status, const unit_map& units, 
 		const bool flat_tod, const size_t max_loop) : 

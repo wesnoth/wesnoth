@@ -529,7 +529,7 @@ variant variant::operator%(const variant& v) const
 
 variant variant::operator^(const variant& v) const
 {
-	return variant(static_cast<int>(pow(as_int(), v.as_int())));
+	return variant(static_cast<int>(pow(static_cast<float>(as_int()), v.as_int())));
 }
 
 variant variant::operator-() const

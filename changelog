@@ -63,7 +63,8 @@ Version 1.5.2+svn:
    * Fixed [filter_attack] and [filter_second_attack] not being effective
      in die/last_breath events.
    * Fixed Wesnoth crashing after an attacker/defender_hits/misses event if
-   the WML kills one unit and replaces/unstores the other
+     the WML kills one unit and replaces/unstores the other
+   * Added a MSVC 9 projectfile and some fixes for that compiler (patch #1093)
 
 Version 1.5.2:
  * campaigns:

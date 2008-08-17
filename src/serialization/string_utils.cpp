@@ -100,7 +100,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 
 		const std::string var_name(var_name_begin, var_end);
 
-		if(*var_end == '|') {
+		if(var_end != res.end() && *var_end == '|') {
 			// It's been used to end this variable name; now it has no more effect.
 			// This can allow use of things like "$$composite_var_name|.x"
 			// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)

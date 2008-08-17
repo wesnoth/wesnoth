@@ -145,7 +145,7 @@ namespace cursor
 
 manager::manager()
 {
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor(use_colour_cursors() ? SDL_DISABLE : SDL_ENABLE);
 	set();
 }
 
@@ -180,6 +180,7 @@ void set(CURSOR_TYPE type)
 	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
 		SDL_SetCursor(cursor_image);
 
+    SDL_ShowCursor(use_colour_cursors() ? SDL_DISABLE : SDL_ENABLE);
 }
 
 void set_dragging(bool drag)
