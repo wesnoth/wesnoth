@@ -206,6 +206,60 @@ std::string fuh::get_mail(const std::string& user) {
 	}
 }
 
+std::vector<std::string> fuh::get_friends(const std::string& user) {
+	std::string sql("SELECT user_id FROM phpbb_users WHERE username='");
+	sql.append(user);
+	sql.append("'");
+
+	std::string id = db_query_to_string(sql);
+
+	sql = "SELECT zebra_id, friend FROM phpbb_zebra WHERE user_id='";
+	sql.append(id);
+	sql.append("'");
+	
+	mysqlpp::StoreQueryResult sqr = db_query(sql);
+
+	std::vector<std::string> friends;
+
+	for(int i = 0; i < sqr.num_rows(); i++) {
+		if(std::string(sqr[i][1]) == "1") {
+			sql = "SELECT username FROM phpbb_users WHERE user_id='";
+			sql.append(std::string(sqr[i][0]));
+			sql.append("'");
+			friends.push_back(db_query_to_string(sql));
+		}
+	}
+
+	return friends;
+}
+
+std::vector<std::string> fuh::get_ignores(const std::string& user) {
+	std::string sql("SELECT user_id FROM phpbb_users WHERE username='");
+	sql.append(user);
+	sql.append("'");
+
+	std::string id = db_query_to_string(sql);
+
+	sql = "SELECT zebra_id, friend FROM phpbb_zebra WHERE user_id='";
+	sql.append(id);
+	sql.append("'");
+	
+	mysqlpp::StoreQueryResult sqr = db_query(sql);
+
+	std::vector<std::string> ignores;
+
+	for(int i = 0; i < sqr.num_rows(); i++) {
+		if(std::string(sqr[i][1]) == "0") {
+			sql = "SELECT username FROM phpbb_users WHERE user_id='";
+			sql.append(std::string(sqr[i][0]));
+			sql.append("'");
+			ignores.push_back(db_query_to_string(sql));
+		}
+	}
+
+	return ignores;
+}
+
 time_t fuh::get_lastlogin(const std::string& user) {
 	std::string sql("SELECT user_lastvisit FROM phpbb_users WHERE username='");
 	sql.append(user);
@@ -253,7 +307,8 @@ std::string fuh::user_info(const std::string& name) {
 	std::stringstream info;
 	info << "Name: " << name << "\n"
 		 << "Registered: " << reg_string
-		 << "Last login: " << ll_string << create_pepper(name, 0) << "\n" << create_pepper(name,1);
+		 << "Last login: " << ll_string;
+
 	return info.str();
 }
 
