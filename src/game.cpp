@@ -1821,6 +1821,7 @@ void game_controller::play_replay()
 editor2::EXIT_STATUS game_controller::start_editor()
 {
     reset_game_cfg();
+    defines_map_["EDITOR"] = preproc_define();
     defines_map_["EDITOR2"] = preproc_define();
     refresh_game_cfg();
     const binary_paths_manager bin_paths_manager(game_config_);

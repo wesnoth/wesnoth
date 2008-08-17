@@ -277,7 +277,7 @@ int main(int argc, char** argv)
 	preproc_map defines_map;
 	// define editor to do conditionnal loading in the main cfg
 	defines_map["EDITOR"] = preproc_define();
-
+	defines_map["OLD_EDITOR"] = preproc_define();
 	defines_map["MEDIUM"] = preproc_define();
 	defines_map["NORMAL"] = preproc_define();
 
