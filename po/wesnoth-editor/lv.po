@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-14 20:11+0200\n"
+"POT-Creation-Date: 2008-08-17 13:54+0200\n"
 "PO-Revision-Date: 2008-06-29 12:24+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -88,13 +88,34 @@ msgstr ""
 msgid "Hex Line NW-SE"
 msgstr ""
 
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold ALT to "
+"paint base layer only"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:16
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:21
+msgid ""
+"Left mouse button displays player selection, right clears. Keys 1-9 set "
+"respectove starting position under cursor and delete clears"
+msgstr ""
+
 #. [menu]
-#: data/themes/editor.cfg:462
+#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
 msgid "File"
 msgstr ""
 
 #. [menu]
-#: data/themes/editor.cfg:472
+#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr ""
 
@@ -104,8 +125,18 @@ msgid "Settings"
 msgstr ""
 
 #. [label]
-#: data/themes/editor.cfg:500
+#: data/themes/editor.cfg:500 data/themes/editor2.cfg:263
 msgid "villages"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor2.cfg:141
+msgid "Map"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor2.cfg:151
+msgid "Tool"
 msgstr ""
 
 #: src/editor/editor.cpp:237
@@ -128,11 +159,11 @@ msgstr ""
 msgid "Zoom out"
 msgstr ""
 
-#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:624
+#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:635
 msgid "Undo"
 msgstr ""
 
-#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:630
+#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:641
 msgid "Redo"
 msgstr ""
 
@@ -172,11 +203,11 @@ msgstr ""
 msgid "Battle for Wesnoth Map Editor"
 msgstr ""
 
-#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:226
+#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:232
 msgid "Save the Map As"
 msgstr ""
 
-#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:230
+#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:236
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr ""
 
@@ -185,7 +216,7 @@ msgid "None"
 msgstr ""
 
 #: src/editor/editor.cpp:559 src/editor/editor.cpp:1425
-#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:184
+#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:240
 msgid "Player"
 msgstr ""
 
@@ -197,7 +228,7 @@ msgstr ""
 msgid "Which player should start here?"
 msgstr ""
 
-#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:191
+#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:197
 msgid "Choose a Map to Load"
 msgstr ""
 
@@ -219,11 +250,11 @@ msgstr ""
 msgid "Do you want to save the map before quitting?"
 msgstr ""
 
-#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:345
+#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:351
 msgid "Map saved."
 msgstr ""
 
-#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:350
+#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:356
 msgid "Could not save the map: $msg"
 msgstr ""
 
@@ -250,59 +281,59 @@ msgstr ""
 msgid " maximum="
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:154
-msgid "Fatal errror"
+#: src/editor2/editor_controller.cpp:160
+msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:162
+#: src/editor2/editor_controller.cpp:168
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:165
+#: src/editor2/editor_controller.cpp:171
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:167
+#: src/editor2/editor_controller.cpp:173
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:177
+#: src/editor2/editor_controller.cpp:183
 msgid "There are unsaved changes in the map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:178
+#: src/editor2/editor_controller.cpp:184
 msgid "Do you want to discard all changes you made te the map?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:367 src/editor2/editor_controller.cpp:373
+#: src/editor2/editor_controller.cpp:373 src/editor2/editor_controller.cpp:379
 msgid "There was an error while loading the map:"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:370
+#: src/editor2/editor_controller.cpp:376
 msgid "Error loading map (format)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:376
+#: src/editor2/editor_controller.cpp:382
 msgid "Error loading map (wml)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:626
+#: src/editor2/editor_controller.cpp:637
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:632
+#: src/editor2/editor_controller.cpp:643
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:181
+#: src/editor2/mouse_action.cpp:237
 msgid "(Player)^None"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:188
+#: src/editor2/mouse_action.cpp:244
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:189
+#: src/editor2/mouse_action.cpp:245
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
