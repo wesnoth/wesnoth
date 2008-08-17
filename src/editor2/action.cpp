@@ -248,6 +248,21 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
+editor_action_select_xor* editor_action_select_none::perform(map_context& mc) const
+{
+	
+	std::set<gamemap::location> current = mc.get_map().selection();
+	mc.get_map().clear_selection();
+	mc.set_everything_changed();
+	return new editor_action_select_xor(current);
+}
+void editor_action_select_none::perform_without_undo(map_context& mc) const
+{
+	mc.get_map().clear_selection();
+	mc.set_everything_changed();
+}
+
+
 editor_action_select_inverse* editor_action_select_inverse::perform(map_context& mc) const
 {
 	perform_without_undo(mc);

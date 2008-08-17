@@ -137,6 +137,7 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP, "editor-terrain-palette-swap", 
 		N_("Swap fore- and background terrains"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_NEXT, "editor-tool-next", N_("Next Tool"), false, hotkey::SCOPE_EDITOR },

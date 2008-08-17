@@ -101,7 +101,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		}
 	}	
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
-	
+	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	background_terrain_ = t_translation::GRASS_LAND;
 	foreground_terrain_ = t_translation::MOUNTAIN;
 	set_mouseover_overlay();
@@ -459,17 +459,18 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true; //tool selection always possible
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
-		case HOTKEY_EDITOR_SELECTION_ROTATE:
-		case HOTKEY_EDITOR_SELECTION_FLIP:
 		case HOTKEY_EDITOR_SELECTION_FILL:
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return !get_map().selection().empty();
+		case HOTKEY_EDITOR_SELECTION_ROTATE:
+		case HOTKEY_EDITOR_SELECTION_FLIP:
 		case HOTKEY_EDITOR_SELECTION_GENERATE:			
 			return false; //not implemented
 		case HOTKEY_EDITOR_PASTE:
 			return !clipboard_.empty();
 		case HOTKEY_EDITOR_SELECT_ALL:
 		case HOTKEY_EDITOR_SELECT_INVERSE:
+		case HOTKEY_EDITOR_SELECT_NONE:
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_FLIP_X:
 		case HOTKEY_EDITOR_MAP_FLIP_Y:
@@ -514,6 +515,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			palette_->swap();
+			if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
 			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
@@ -541,6 +543,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 			perform_refresh(editor_action_select_inverse());
 			return true;
+		case HOTKEY_EDITOR_SELECT_NONE:
+			perform_refresh(editor_action_select_none());
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			fill_selection();
 			return true;

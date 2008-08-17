@@ -251,6 +251,19 @@ class editor_action_select_all : public editor_action
 };
 
 /**
+ * Clear selection
+ */
+class editor_action_select_none : public editor_action
+{
+	public:
+		editor_action_select_none()
+		{
+		}
+		editor_action_select_xor* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
+};
+
+/**
  * Invert the selection
  */
 class editor_action_select_inverse : public editor_action
