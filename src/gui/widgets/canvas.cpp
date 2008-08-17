@@ -757,7 +757,7 @@ ttext::ttext(const config& cfg) :
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
  *     w (f_unsigned = 0)              The width of the rectangle.
  *     h (f_unsigned = 0)              The height of the rectangle.
- *     font_size (unsigned = 0)        The size of the font to draw in.
+ *     font_size (unsigned)            The size of the font to draw in.
  *     font_style (font_style = "")    The style of the text.
  *     colour (colour = "")            The colour of the text.
  *     text (tstring = "")             The text to draw (translatable).
@@ -776,6 +776,8 @@ ttext::ttext(const config& cfg) :
  * Also the general variables are available, see [[#general_variables|Line]].
  *
  */
+
+	VALIDATE(font_size_, _("Text has a font size of 0."));
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
