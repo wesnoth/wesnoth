@@ -1370,7 +1370,7 @@ namespace {
 			{
 				for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
 				{
-					split_vector.push_back(&*i);
+					split_vector.push_back(std::string(1, *i));
 				}
 			}
 			else {
