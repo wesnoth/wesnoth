@@ -1322,7 +1322,7 @@ void formula_ai::play_turn()
 			catch(formula_error& e) {
 				if(e.filename_ == "formula")
 					e.line_ = 0;
-				handle_exception( e, "Error while parsing unit formula" );
+				handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
 			}
 		}
 	}
