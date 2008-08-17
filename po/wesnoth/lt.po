@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-14 20:11+0200\n"
-"PO-Revision-Date: 2008-07-12 01:17+0300\n"
+"PO-Revision-Date: 2008-08-07 19:58+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1617,11 +1617,15 @@ msgstr "Kelias"
 
 #. [topic]
 #: data/core/help.cfg:436
+#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst='terrain_grassland' text='Grassland'</ref>."
 msgstr ""
+"Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
+"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=žolynams</"
+"ref>."
 
 #. [topic]
 #: data/core/help.cfg:441
@@ -1806,11 +1810,15 @@ msgstr "Dykuma"
 
 #. [topic]
 #: data/core/help.cfg:546
+#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
+"Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
+"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=žolynams</"
+"ref>."
 
 #. [topic]
 #: data/core/help.cfg:551
@@ -1891,11 +1899,15 @@ msgstr "Savana"
 
 #. [topic]
 #: data/core/help.cfg:592
+#, fuzzy
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
 "<ref>dst='terrain_grassland' text='Grassland'</ref>."
 msgstr ""
+"Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
+"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=žolynams</"
+"ref>."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
@@ -2240,6 +2252,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Rankiniu būdu nustatyti žaidimo būsenos kintamąjo vertę.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:747
@@ -2248,6 +2263,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Rodyti žaidimo būsenos kintamąjį.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:750
@@ -2408,6 +2426,9 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"Teleportavimasis:\n"
+"Šis dalinys gali teleportuotis tarp bet kokių dviejų jo pusės kaimų, "
+"naudodamas vieną iš savo judėjimų."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:376 data/core/macros/abilities.cfg:377
@@ -2457,6 +2478,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Slėpimasis:\n"
+"Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
+"neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
+"\n"
+"Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus tik "
+"jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
+"aptinka šį dalinį iš karto praranda likusį judėjimą."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:448 data/core/macros/abilities.cfg:453
@@ -2538,6 +2566,11 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
+"Sulėtina:\n"
+"Ši ataka sulėtina taikinį iki jo ėjimo pabaigos. Sulėtinimas perpus sumažina "
+"atakų daromą žalą ir sulėtinto dalinio judėjimo kaina yra padvigubinta. "
+"Dalinys, kuris yra sulėtintas turi sraigės ženkliuką savo šoninės juostos "
+"informacijoje, kai jis yra pažymėtas."
 
 #: data/core/macros/abilities.cfg:592
 msgid "stones"
@@ -2641,6 +2674,8 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
+"Su šia auksine moneta aš noriu, kad šis mūšis pasibaigtų greita ir saugia "
+"pergale."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:55
@@ -2671,7 +2706,7 @@ msgstr "Negalvoti noro."
 #: data/core/macros/items.cfg:148
 #, fuzzy
 msgid "Take it"
-msgstr "Pervadinti dalinį"
+msgstr "Patirta"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -4329,7 +4364,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "$name's tiltas,$name's brąsta"
 
 #. [language]
 #: data/hardwired/english.cfg:19
@@ -4535,6 +4570,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Kai būsite sužaidę kelis scenarijus, atidžiai perskaityite „Žaidimas“ skyrių "
+"pagalbos ekrane. Detalės tampa svarbios, kai scenarijai tampa sunkesni!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -4617,6 +4654,9 @@ msgid ""
 "selected unit in the currently selected terrain is displayed in the top "
 "right corner of the screen."
 msgstr ""
+"Vietovė, kurią užima jūsų daliniai, apibrėžia jūsų priešininkų galimybes "
+"pataikyti į juos mūšyje. Gynybinis dabar pažymėto dalinio reitingas šiuo "
+"metu pažymėtoje vietovėje rodomas viršutiniame kairiajame ekrano kampe."
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
@@ -4790,6 +4830,9 @@ msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
+"Daliniai su „vadovavimo“ gebėjimu padeda greta esantiems tos pačios komandos "
+"žemesnio lygio daliniams geriau kautis. Naudokite vadus, kad padėtumėte "
+"kitiems daliniams greičiau pasikelti lygį."
 
 #. [tip]
 #: data/hardwired/tips.cfg:131
@@ -4823,6 +4866,8 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"Jei pajudinote dalinį, bet nepuolėte ar neaptikote kokios nors papildomos "
+"informacijos, galite atšaukti ėjimą spausdami „u“."
 
 #. [tip]
 #: data/hardwired/tips.cfg:147
@@ -4849,6 +4894,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
+"„Sulėtinančios“ atakos galimybė padaro priešo dalinius lėčiau einančius ir "
+"perpus sumažina jų daromą žalą iki jų ėjimo pabaigos."
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
@@ -5524,7 +5571,7 @@ msgstr "Serveris: "
 #: src/addon_management.cpp:1138
 #, fuzzy
 msgid "Update add-ons"
-msgstr "Siunčiamas priedas"
+msgstr "Gauti priedų"
 
 #: src/ai.cpp:1607
 msgid "Unknown unit type : "
@@ -6169,7 +6216,7 @@ msgstr "Pirmyn >"
 
 #: src/help.cpp:2678
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Nuoroda į nežinomą temą: "
 
 #: src/help.cpp:2932
 msgid "corrupted original file"
@@ -6181,7 +6228,7 @@ msgstr "Mūšio dėl Wesnoth pagalba"
 
 #: src/help.cpp:3088
 msgid "Parse error when parsing help text: "
-msgstr ""
+msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
 
 #: src/intro.cpp:106
 msgid "Next"
@@ -6369,6 +6416,8 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"scenario settings^Auksas\n"
+"kaimui"
 
 #: src/menu_events.cpp:486
 msgid "scenario settings^Fog"
@@ -6478,8 +6527,9 @@ msgid "Recall"
 msgstr ""
 
 #: src/menu_events.cpp:1040
+#, fuzzy
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Atleisti dalinį"
 
 #: src/menu_events.cpp:1058
 msgid "You must have at least 1 gold piece to recall a unit"
@@ -6511,7 +6561,7 @@ msgstr "Sukurti dalinį (Derinimas!)"
 
 #: src/menu_events.cpp:1558
 msgid "Place Label"
-msgstr ""
+msgstr "Padėti žymę"
 
 #: src/menu_events.cpp:1561 src/menu_events.cpp:1564
 msgid "Label: "
@@ -6519,7 +6569,7 @@ msgstr "Žymė: "
 
 #: src/menu_events.cpp:1566
 msgid "Team only"
-msgstr ""
+msgstr "Tik komandai"
 
 #: src/menu_events.cpp:1667
 msgid "Search"
@@ -6683,12 +6733,20 @@ msgid "Set or show alias to a command"
 msgstr ""
 
 #: src/menu_events.cpp:2276
+#, fuzzy
 msgid "Set a scenario variable."
 msgstr ""
+"\n"
+"Rodyti žaidimo būsenos kintamąjį.\n"
+"\n"
 
 #: src/menu_events.cpp:2278
+#, fuzzy
 msgid "Show a scenario variable."
 msgstr ""
+"\n"
+"Rodyti žaidimo būsenos kintamąjį.\n"
+"\n"
 
 #: src/menu_events.cpp:2280
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -6917,7 +6975,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:939
 msgid "Only random sides in the current era."
-msgstr ""
+msgstr "Tik atsitiktinės pusės dabartinėje eroje."
 
 #: src/multiplayer_connect.cpp:963
 msgid "Unable to find a leader type for faction $faction"
@@ -6925,7 +6983,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1000
 msgid "Game Lobby: "
-msgstr ""
+msgstr "Žaidimo vestibiulis: "
 
 #: src/multiplayer_connect.cpp:1019
 msgid "Player/Type"
@@ -7173,7 +7231,7 @@ msgstr "Kaimų auksas: "
 
 #: src/multiplayer_create.cpp:397
 msgid "Exp. Mod.: "
-msgstr ""
+msgstr "Pat. mod.: "
 
 #: src/multiplayer_create.cpp:530
 msgid "Players: "
@@ -7241,7 +7299,7 @@ msgstr "nieko"
 
 #: src/multiplayer_lobby.cpp:668 src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
-msgstr ""
+msgstr "Žaidimo vestibiulis"
 
 #: src/multiplayer_lobby.cpp:673
 msgid "Observe Game"
@@ -7826,7 +7884,7 @@ msgstr ""
 
 #: src/unit.cpp:2882
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$effect_description lygiui"
 
 #: src/unit.cpp:2912
 msgid "$trait_name|: $trait_description "
@@ -7835,9 +7893,9 @@ msgstr "$trait_name|: $trait_description "
 #: src/unit_types.cpp:202 src/unit_types.cpp:268
 msgid "damage"
 msgid_plural "damage"
-msgstr[0] "žala"
-msgstr[1] "žala"
-msgstr[2] "žala"
+msgstr[0] "žalos"
+msgstr[1] "žalos"
+msgstr[2] "žalos"
 
 #: src/unit_types.cpp:212 src/unit_types.cpp:275
 msgid "strike"
@@ -7901,21 +7959,20 @@ msgstr ""
 
 #: src/upload_log.cpp:325
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 
 #: src/upload_log.cpp:327
 msgid "Enable summary uploads"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "Pašalinti priedus"
 
 #~ msgid "ruby of fire"
 #~ msgstr "ugnies rubinas"
 
 #~ msgid "Screenshot"
 #~ msgstr "Ekranvaizdis"
+
+#~ msgid "Remove Add-ons"
+#~ msgstr "Pašalinti priedus"
 
 #~ msgid "Level"
 #~ msgstr "Lygis"
