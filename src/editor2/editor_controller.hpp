@@ -44,6 +44,11 @@ namespace font {
 class floating_label_context;
 }
 
+namespace rand_rng {
+class rng;
+class set_random_generator;
+}
+
 namespace editor2 {
 
 class brush_bar;
@@ -265,6 +270,10 @@ class editor_controller : public controller_base,
 		 * Redos an action in the current map context
 		 */
 		void redo();
+		
+		rand_rng::rng* rng_;
+		
+		rand_rng::set_random_generator* rng_setter_;
 		
 		/** The current map object */
 		map_context map_context_;

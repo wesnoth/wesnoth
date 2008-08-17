@@ -37,6 +37,7 @@
 #include "../map_create.hpp"
 #include "../mapgen.hpp"
 #include "../preferences.hpp"
+#include "../random.hpp"
 #include "../wml_exception.hpp"
 
 #include "SDL.h"
@@ -53,13 +54,15 @@ namespace editor2 {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 : controller_base(SDL_GetTicks(), game_config, video)
-, mouse_handler_base(get_map())
+, mouse_handler_base(get_map()), rng_(NULL), rng_setter_(NULL)
 , map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
 , gui_(NULL), map_generator_(NULL), tooltip_manager_(video), floating_label_manager_(NULL)
 , do_quit_(false), quit_mode_(EXIT_ERROR)
 , toolbar_dirty_(true), auto_update_transitions_(true)
 {
 	init(video);
+	rng_ = new rand_rng::rng();
+	rng_setter_ = new rand_rng::set_random_generator(rng_);
 	floating_label_manager_ = new font::floating_label_context();
 	size_specs_ = new size_specs();
 	adjust_sizes(gui(), *size_specs_);
@@ -148,6 +151,8 @@ editor_controller::~editor_controller()
 		delete a.second;
 	}
 	delete prefs_disp_manager_;
+	delete rng_setter_;
+	delete rng_;
 }
 
 EXIT_STATUS editor_controller::main_loop()
@@ -260,11 +265,23 @@ void editor_controller::generate_map_dialog()
 			map_generator_ = create_map_generator("", cfg);
 		}
 	}
-	if (!confirm_discard()) return;
 	gui2::teditor_generate_map dialog;
+	dialog.set_map_generator(map_generator_);
+	dialog.set_gui(&gui());
 	dialog.show(gui().video());
-	if (map_generator_->allow_user_config()) {
-		map_generator_->user_config(gui());
+	
+	int res = dialog.get_retval();
+	if(res == gui2::twindow::OK) {
+		if (!confirm_discard()) return;
+		std::string map_string =
+			map_generator_->create_map(std::vector<std::string>());
+		if (map_string.empty()) {
+			gui::message_dialog(gui(), "",
+							 _("Map creation failed.")).show();
+		} else {
+			editor_map new_map(game_config_, map_string);
+			set_map(new_map);
+		}
 	}
 }
 
