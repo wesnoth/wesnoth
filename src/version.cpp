@@ -46,7 +46,7 @@ version_info::version_info(unsigned int major, unsigned int minor, unsigned int 
 version_info::version_info(const std::string& str)
 	: nums_(3,0), sane_(false)
 {
-	const std::vector<std::string>& string_parts = utils::split(str,',');
+	const std::vector<std::string>& string_parts = utils::split(str,'.');
 	// first two components are required to be valid numbers, though
 	// only first component's existence is checked at all
 	const size_t parts = string_parts.size();
@@ -83,9 +83,9 @@ version_info::version_info(const std::string& str)
 		}
 		sane_ = true;
 	} catch (bad_lexical_cast const&) {
-		return;
+		;
 	} catch (std::out_of_range const&) {
-		return;
+		;
 	}
 }
 
