@@ -268,10 +268,20 @@ editor_action* mouse_action_starting_position::click_right(editor_display& disp,
 
 editor_action* mouse_action_starting_position::key_event(editor_display& disp, const SDL_Event& event)
 {
-	editor_action* a = NULL;
+	if (has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
+		int side = event.key.keysym.sym - '0';
+		if (side >= 1 && side <= gamemap::MAX_PLAYERS) {
+			gamemap::location pos = disp.get_map().starting_position(side);
+			if (pos.valid()) {
+				disp.scroll_to_tile(pos, display::WARP);
+			}
+		}
+		return NULL;
+	}
 	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
 		return NULL;
 	}
+	editor_action* a = NULL;
 	if ((event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9') || event.key.keysym.sym == SDLK_DELETE) {
 		int res = event.key.keysym.sym - '0';
 		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
