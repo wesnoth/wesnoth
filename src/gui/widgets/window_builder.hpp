@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED
 #define GUI_WIDGETS_WINDOW_BUILDER_HPP_INCLUDED
 
+#include "formula.hpp"
 #include "reference_counted_object.hpp"
 #include "tstring.hpp"
 
@@ -101,10 +102,10 @@ public:
 
 		bool automatic_placement;
 
-		unsigned x;
-		unsigned y;
-		unsigned width;
-		unsigned height;
+		tformula<unsigned> x;
+		tformula<unsigned> y;
+		tformula<unsigned> width;
+		tformula<unsigned> height;
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;

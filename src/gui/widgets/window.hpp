@@ -22,6 +22,7 @@
 #define GUI_WIDGETS_WINDOW_HPP_INCLUDED
 
 #include "gui/widgets/event_handler.hpp"
+#include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp" 
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/settings.hpp"
@@ -45,8 +46,11 @@ class tdialog;
 class twindow : public tpanel, public tevent_handler
 {
 public:
-	twindow(CVideo& video, 
-		const int x, const int y, const int w, const int h,
+	twindow(CVideo& video,
+		tformula<unsigned>x,
+		tformula<unsigned>y,
+		tformula<unsigned>w,
+		tformula<unsigned>h,
 		const bool automatic_placement, 
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
@@ -261,6 +265,26 @@ private:
 	 * The value should be a tgrid placement flag.
 	 */
 	const unsigned vertical_placement_;
+
+	/** The formula to calulate the x value of the dialog. */
+	tformula<unsigned>x_;
+
+	/** The formula to calulate the y value of the dialog. */
+	tformula<unsigned>y_;
+
+	/** The formula to calulate the width of the dialog. */
+	tformula<unsigned>w_;
+
+	/** The formula to calulate the height of the dialog. */
+	tformula<unsigned>h_;
+
+	/**
+	 * Updates the size for the widget.
+	 *
+	 * Then the window isn't placed automatically the tformula for the sizes
+	 * need to be recalculated and set_size() called with the result.
+	 */
+	void update_size();
 
 	/** Does the real updating of the changes on the screen. */
 	void flip();

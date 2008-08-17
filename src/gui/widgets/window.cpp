@@ -51,7 +51,10 @@
 namespace gui2{
 
 twindow::twindow(CVideo& video, 
-		const int x, const int y, const int w, const int h,
+		tformula<unsigned>x,
+		tformula<unsigned>y,
+		tformula<unsigned>w,
+		tformula<unsigned>h,
 		const bool automatic_placement, 
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
@@ -67,13 +70,15 @@ twindow::twindow(CVideo& video,
 	help_popup_(),
 	automatic_placement_(automatic_placement),
 	horizontal_placement_(horizontal_placement),
-	vertical_placement_(vertical_placement)
+	vertical_placement_(vertical_placement),
+	x_(x),
+	y_(y),
+	w_(w),
+	h_(h)
 {
 	// We load the config in here as exception.
 	set_definition(definition);
 	load_config();
-
-	set_size(::create_rect(x, y, w, h));
 
 	tooltip_.set_definition("default");
 	tooltip_.set_visible(false);
@@ -221,6 +226,8 @@ void twindow::recalculate_size()
 		}
 
 		set_size(create_rect(position, size));
+	} else {
+		update_size();
 	}
 }
 
@@ -300,6 +307,17 @@ void twindow::draw(surface& surf, const bool force,
 	set_dirty(false);
 
 }
+
+void twindow::update_size()
+{
+	game_logic::map_formula_callable variables;
+	variables.add("screen_width", variant(settings::screen_width));
+	variables.add("screen_height", variant(settings::screen_height));
+
+	set_size(::create_rect(
+		x_(variables), y_(variables), w_(variables), h_(variables)));
+
+}	
 
 void twindow::flip()
 {

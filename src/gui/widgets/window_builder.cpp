@@ -90,7 +90,9 @@ twindow build(CVideo& video, const std::string& type)
 			}
 
 			twidget* widget = definition->grid->widgets[x * cols + y]->build();
-			window.set_child(widget, x, y, definition->grid->flags[x * cols + y],  definition->grid->border_size[x * cols + y]);
+			window.set_child(widget, x, y, 
+				definition->grid->flags[x * cols + y], 
+				definition->grid->border_size[x * cols + y]);
 		}
 	}
 
@@ -143,10 +145,10 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	window_width(lexical_cast_default<unsigned>(cfg["window_width"])),
 	window_height(lexical_cast_default<unsigned>(cfg["window_height"])),
 	automatic_placement(utils::string_bool(cfg["automatic_placement"], true)),
-	x(lexical_cast_default<unsigned>(cfg["x"])),
-	y(lexical_cast_default<unsigned>(cfg["y"])),
-	width(lexical_cast_default<unsigned>(cfg["width"])),
-	height(lexical_cast_default<unsigned>(cfg["height"])),
+	x(cfg["x"]),
+	y(cfg["y"]),
+	width(cfg["width"]),
+	height(cfg["height"]),
 	vertical_placement(get_v_align(cfg["vertical_placement"])),
 	horizontal_placement(get_h_align(cfg["horizontal_placement"])),
 	definition(cfg["definition"]),
@@ -171,10 +173,10 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   automatically placed the ''width'' and
  *                                   ''height'' are mandatory.
  *
- *     x (unsigned = 0)              X coordinate of the window to show.
- *     y (unsigned = 0)              Y coordinate of the window to show.
- *     width (unsigned = 0)          Width of the window to show.
- *     height (unsigned = 0)         Height of the window to show.
+ *     x (f_unsigned = 0)            X coordinate of the window to show.
+ *     y (f_unsigned = 0)            Y coordinate of the window to show.
+ *     width (f_unsigned = 0)        Width of the window to show.
+ *     height (f_unsigned = 0)       Height of the window to show.
  *
  *     vertical_placement (v_align = "")
  *                                   The vertical placement of the window.
@@ -189,6 +191,13 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   the grid needs its own documentation page.
  * @end_table
  *
+ * The size variables are copied to the window and will be determined runtime.
+ * This is needed since the main window can be resized and the dialog needs to
+ * resize accordingly. The following variables are available:
+ * @start_table = formula
+ *     screen_width unsigned         The usable width of the wesnoth main window.
+ *     screen_height unsigned        The usable height of the wesnoth main window.
+ * @end_table
  */
 
 	VALIDATE(cfg.child("grid"), _("No grid defined."));
@@ -196,8 +205,10 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	grid = new tbuilder_grid(*(cfg.child("grid")));
 
 	if(!automatic_placement) {
-		VALIDATE(width, missing_mandatory_wml_key("resolution", "width"));
-		VALIDATE(height, missing_mandatory_wml_key("resolution", "height"));
+		VALIDATE(width.has_formula() || width(), 
+			missing_mandatory_wml_key("resolution", "width"));
+		VALIDATE(height.has_formula() || height(), 
+			missing_mandatory_wml_key("resolution", "height"));
 	}
 
 	DBG_G_P << "Window builder: parsing resolution " 
