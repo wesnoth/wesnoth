@@ -38,7 +38,7 @@ teditor_generate_map::teditor_generate_map()
 {
 }
 
-void teditor_generate_map::do_settings(twindow& window)
+void teditor_generate_map::do_settings(twindow& /*window*/)
 {
 	if (map_generator_->allow_user_config()) {
 		map_generator_->user_config(*gui_);
