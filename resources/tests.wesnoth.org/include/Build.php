@@ -207,13 +207,17 @@ class Build {
 			}
 			if (strpos($this->error_msg,'error') !== false 
 				|| strpos($this->error_msg,'ld returned'))
-				$this->status = self::S_ERROR;
+					$this->status = self::S_ERROR;
+			$this->error_msg = str_replace("'","\\'",$this->error_msg);
 		}
 
 		$this->time = time();
 		$this->svn_revision = $revision;
 
-		return $this->status == self::S_GOOD;
+		if ($this->status == self::S_GOOD)
+			return true;
+		$this->insert();
+		return false;
 	}
 
 	public function getTestName()
