@@ -118,8 +118,10 @@ void tokenizer::skip_comment()
 
 const token& tokenizer::next_token()
 {
-	token_.value = "";
-	token_.leading_spaces = "";
+#if DEBUG
+	previous_token_ = token_;
+#endif
+	token_.reset();
 
 	// Dump spaces and inlined comments
 	for(;;) {
@@ -196,6 +198,12 @@ const token& tokenizer::current_token() const
 	return token_;
 }
 
+#ifdef DEBUG
+const token& tokenizer::previous_token() const
+{
+	return previous_token_;
+}
+#endif
 
 bool tokenizer::is_space(const int c) const
 {

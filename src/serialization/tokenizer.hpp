@@ -50,6 +50,11 @@ struct token
 		END
 	} type;
 
+	void reset() {
+		leading_spaces = "";
+		value = "";
+	}
+
 	std::string leading_spaces;
 	std::string value;
 };
@@ -63,6 +68,9 @@ public:
 
 	const token& next_token();
 	const token& current_token() const;
+#ifdef DEBUG
+	const token& previous_token() const;
+#endif
 	std::string get_line() const;
 	std::string& textdomain();
 
@@ -124,6 +132,9 @@ private:
 	std::string file_;
 	size_t tokenstart_lineno_;
 	token token_;
+#ifdef DEBUG
+	token previous_token_;
+#endif
 	std::istream& in_;
 };
 

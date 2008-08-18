@@ -334,10 +334,17 @@ void parser::error(const std::string& error_type)
 {
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
-
+	i18n_symbols["value"] = tok_->current_token().value;
+#ifdef DEBUG
+	i18n_symbols["previous_value"] = tok_->previous_token().value;
 	throw config::error(
 		lineno_string(i18n_symbols, tok_->get_line(),
-		              N_("$error at $pos")));
+		              N_("$error, value '$value', previous '$previous_value' at $pos")));
+#else
+	throw config::error(
+		lineno_string(i18n_symbols, tok_->get_line(),
+		              N_("$error, value '$value' at $pos")));
+#endif
 }
 
 } // end anon namespace
