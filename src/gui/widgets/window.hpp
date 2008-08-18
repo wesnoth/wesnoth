@@ -46,8 +46,6 @@ class tdialog;
 class twindow : public tpanel, public tevent_handler
 {
 public:
-	// FIXME this should be removed as well, but easy for the outside world to keep it a bit longer...
-	void recalculate_size() { /*NOP*/ }
 	twindow(CVideo& video,
 		tformula<unsigned>x,
 		tformula<unsigned>y,

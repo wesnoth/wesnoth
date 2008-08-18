@@ -123,7 +123,6 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	update_map_settings(window);
-	window.recalculate_size();
 }
 
 void tmp_create_game::post_show(twindow& window)

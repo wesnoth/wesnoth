@@ -96,7 +96,6 @@ twindow build(CVideo& video, const std::string& type)
 		}
 	}
 
-	window.recalculate_size();
 	window.add_to_keyboard_chain(&window);
 
 	return window;

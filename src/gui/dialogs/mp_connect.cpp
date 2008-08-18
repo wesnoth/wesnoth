@@ -100,8 +100,6 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 
 		list->add_row(data);
 	}
-
-	window.recalculate_size();
 }
 
 void tmp_server_list::post_show(twindow& window)

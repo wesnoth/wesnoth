@@ -66,8 +66,6 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	window.add_to_keyboard_chain(list);
 	window.add_to_keyboard_chain(user_widget);
-
-	window.recalculate_size();
 }
 
 void tmp_method_selection::post_show(twindow& window)

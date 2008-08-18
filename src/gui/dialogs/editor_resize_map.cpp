@@ -111,7 +111,6 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	}
 	direction_buttons_[0]->set_value(true);
 	update_expand_direction(window);
-	window.recalculate_size();
 }
 
 /** Convert a coordinate on a 3  by 3 grid to an index, return 9 for out of bounds */
