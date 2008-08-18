@@ -825,7 +825,7 @@ void attack::refresh_bc()
 		// Fix pointers to weapons
 		if (a_ != units_.end())
 			const_cast<battle_context::unit_stats*>(a_stats_)->weapon = &a_->second.attacks()[attack_with_];
-		
+
 		if (d_ != units_.end())
 			const_cast<battle_context::unit_stats*>(d_stats_)->weapon = &d_->second.attacks()[defend_with_];
 		return;
@@ -1111,7 +1111,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"] = d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
 				(*(dat.child("second")))["weapon"] = a_stats_->weapon != NULL ? a_stats_->weapon->id() : "none";
-				
+
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc, dat));
 
 				d_ = units_.find(death_loc);
@@ -1362,7 +1362,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
-				
+
 				// get weapon info for last_breath and die events
 				config dat;
 				dat.add_child("first");
@@ -1767,19 +1767,36 @@ unit get_advanced_unit(unit_map& units,
 void advance_unit(unit_map& units,
 		gamemap::location loc, const std::string& advance_to)
 {
-	if(units.count(loc) == 0) {
+	unit_map::unit_iterator u = units.find(loc);
+	if(!u.valid()) {
 		return;
 	}
-	const unit& new_unit = get_advanced_unit(units,loc,advance_to);
-	LOG_NG << "firing advance event\n";
+	LOG_NG << "firing advance event at " << loc <<"\n";
+
+/*	config test; // REMOVE ME
+	u->second.write(test);
+	std::cerr << test;*/
+
 	game_events::fire("advance",loc);
+
+	if(!u.valid()) {
+		LOG_NG << "WML has invalidated the advancing unit, abort\n";
+		return;
+	}
+
+/*	test.clear(); // REMOVE ME
+	u->second.write(test);
+	std::cerr << test;*/
+
+	loc = u->first;
+	const unit& new_unit = get_advanced_unit(units,loc,advance_to);
 	statistics::advance_unit(new_unit);
 
 	preferences::encountered_units().insert(new_unit.type_id());
 	LOG_STREAM(info, config) << "Added '" << new_unit.type_id() << "' to encountered units\n";
 
 	units.replace(new std::pair<gamemap::location,unit>(loc,new_unit));
-	LOG_NG << "firing post_advance event\n";
+	LOG_NG << "firing post_advance event at " << loc << "\n";
 	game_events::fire("post_advance",loc);
 }
 

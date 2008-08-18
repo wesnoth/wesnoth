@@ -450,7 +450,7 @@ namespace variable
 
 scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 	previous_val_(),
-	var_name_(var_name), 
+	var_name_(var_name),
 	activated_(false)
 {
 	repos->scoped_variables.push_back(this);
@@ -464,6 +464,7 @@ void scoped_wml_variable::store(const config& var_value)
 	}
 	repos->clear_variable_cfg(var_name_);
 	repos->add_variable_cfg(var_name_, var_value);
+	LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.\n";
 	activated_ = true;
 }
 
@@ -475,6 +476,7 @@ scoped_wml_variable::~scoped_wml_variable()
 		for(config::child_list::iterator j=old_val.begin(); j != old_val.end() ; j++){
 			repos->add_variable_cfg(var_name_,**j);
 		}
+		LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been reverted.\n";
 	}
 	assert(repos->scoped_variables.back() == this);
 	repos->scoped_variables.pop_back();
@@ -488,6 +490,7 @@ void scoped_xy_unit::activate()
 		itor->second.write(tmp_cfg);
 		tmp_cfg["x"] = lexical_cast<std::string,int>(x_ + 1);
 		tmp_cfg["y"] = lexical_cast<std::string,int>(y_ + 1);
+		LOG_NG << "auto-storing $" << name() << " at (" << x_ << ',' << y_ << ")\n";
 		store(tmp_cfg);
 	} else {
 		ERR_NG << "failed to auto-store $" << name() << " at (" << x_ << ',' << y_ << ")\n";
@@ -503,6 +506,8 @@ void scoped_recall_unit::activate()
 			player->available_units[recall_index_].write(tmp_cfg);
 			tmp_cfg["x"] = "recall";
 			tmp_cfg["y"] = "recall";
+			LOG_NG << "auto-storing $" << name() << " for player: " << player_
+				<< " at recall index: " << recall_index_ << '\n';
 			store(tmp_cfg);
 		} else {
 			ERR_NG << "failed to auto-store $" << name() << " for player: " << player_
@@ -539,13 +544,13 @@ void activate_scope_variable(std::string var_name)
 }
 } // end anonymous namespace
 
-variable_info::variable_info(const std::string& varname, 
+variable_info::variable_info(const std::string& varname,
 		bool force_valid, TYPE validation_type) :
-	vartype(validation_type), 
-	is_valid(false), 
+	vartype(validation_type),
+	is_valid(false),
 	key(),
-	explicit_index(false), 
-	index(0), 
+	explicit_index(false),
+	index(0),
 	vars(NULL)
 {
 	assert(repos != NULL);
