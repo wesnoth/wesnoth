@@ -1926,10 +1926,8 @@ namespace {
 		gui2::tspacer* spacer =
 			dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
 		unsigned image_size = 200;
-		unsigned window_height = 400;
 		if(spacer && spacer->get_best_size().x == 500) {
 			image_size = 400;
-			window_height = 600;
 		}
 
 		const unit_map::iterator speaker = units->find(event_info.loc1);
@@ -1939,14 +1937,6 @@ namespace {
 		const std::string image = portrait ? portrait->image : "";
 		const bool mirror = portrait ? portrait->mirror : false;
 
-		/**
-		 * @todo FIXME these fixed sizes should depend on the map size and maybe
-		 * let wml determine the height.
-		 */
-		window.set_size(::create_rect(0,
-			gui2::settings::screen_height - window_height,
-			gui2::settings::screen_width - 142, window_height));
-
 		window.canvas(1).set_variable("portrait_image", variant(image));
 		window.canvas(1).set_variable("portrait_mirror", variant(mirror));
 
@@ -1954,7 +1944,6 @@ namespace {
 		assert(label);
 		label->set_label(message);
 
-		window.recalculate_size();
 		window.show();
 	}
 
@@ -1969,10 +1958,8 @@ namespace {
 		gui2::tspacer* spacer =
 			dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
 		unsigned image_size = 200;
-		unsigned window_height = 400;
 		if(spacer && spacer->get_best_size().x == 500) {
 			image_size = 400;
-			window_height = 600;
 		}
 
 		const unit_map::iterator speaker = units->find(event_info.loc1);
@@ -1982,14 +1969,6 @@ namespace {
 		const std::string image = portrait ? portrait->image : "";
 		const bool mirror = portrait ? portrait->mirror : false;
 
-		/**
-		 * @todo FIXME these fixed sizes should depend on the map size and maybe
-		 * let wml determine the height.
-		 */
-		window.set_size(::create_rect(0,
-			gui2::settings::screen_height - window_height,
-			gui2::settings::screen_width - 142, window_height));
-
 		window.canvas(1).set_variable("portrait_image", variant(image));
 		window.canvas(1).set_variable("portrait_mirror", variant(mirror));
 
@@ -1997,7 +1976,6 @@ namespace {
 		assert(label);
 		label->set_label(message);
 
-		window.recalculate_size();
 		window.show();
 	}
 
