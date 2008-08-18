@@ -207,7 +207,7 @@ void twindow::draw()
 
 	surface frame_buffer = get_video_surface();
 
-	const bool draw_background = resized_ || need_layout_;
+	const bool full_redraw = resized_ || need_layout_;
 	
 	if(resized_) {
 		// Restore old surface.
@@ -231,7 +231,7 @@ void twindow::draw()
 		layout();
 	}
 
-	if(draw_background) {
+	if(full_redraw) {
 		canvas(0).draw();
 		blit_surface(canvas(0).surf(), 0, window_, 0);
 	}		
@@ -245,6 +245,11 @@ void twindow::draw()
 
 		itor->draw(window_, false, false);
 	}
+
+	if(full_redraw) {
+		canvas(1).draw();
+		blit_surface(canvas(1).surf(), 0, window_, 0);
+	}		
 
 	if(tooltip_.is_dirty()) {
 		tooltip_.draw(window_);
