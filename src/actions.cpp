@@ -1771,6 +1771,7 @@ void advance_unit(unit_map& units,
 	if(!u.valid()) {
 		return;
 	}
+	std::string const& original_type =  u->second.type_id();
 	LOG_NG << "firing advance event at " << loc <<"\n";
 
 /*	config test; // REMOVE ME
@@ -1779,7 +1780,9 @@ void advance_unit(unit_map& units,
 
 	game_events::fire("advance",loc);
 
-	if(!u.valid()) {
+	if(!u.valid() || u->second.experience() < u->second.max_experience()
+	|| u->second.type_id() != original_type)
+	{
 		LOG_NG << "WML has invalidated the advancing unit, abort\n";
 		return;
 	}
