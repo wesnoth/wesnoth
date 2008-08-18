@@ -46,6 +46,8 @@ class tdialog;
 class twindow : public tpanel, public tevent_handler
 {
 public:
+	// FIXME this should be removed as well, but easy for the outside world to keep it a bit longer...
+	void recalculate_size() { /*NOP*/ }
 	twindow(CVideo& video,
 		tformula<unsigned>x,
 		tformula<unsigned>y,
@@ -99,13 +101,15 @@ public:
 	 */
 	int show(const bool restore = true, void* flip_function = NULL);
 
-	/** 
-	 * Layouts the window.
+	/**
+	 * Draws the window.
 	 *
-	 * @todo This function has no purpose at the moment, but also the resize
-	 * code doesn't work so might be required later.
+	 * This routine draws the window if needed, it's called from the event
+	 * handler. This is done by a drawing event. When a window is shown it
+	 * manages an SDL timer which fires a drawing event every X milliseconds,
+	 * that event calls this routine. Don't call it manually.
 	 */
-//	void layout(const SDL_Rect& position);
+	void draw();
 
 	/** The status of the window. */
 	enum tstatus{ 
@@ -163,7 +167,7 @@ public:
 	 * window. To be used after creation and after modification or items which
 	 * can have different sizes eg listboxes.
 	 */
-	void recalculate_size();
+	void invalidate_layout() { need_layout_ = true; }
 
 	/** Inherited from tevent_executor. */
 	void key_press(tevent_handler& event_handler, bool& handled, 
@@ -207,10 +211,6 @@ public:
 	/** Inherited from tpanel. */
 	SDL_Rect get_client_rect() const;
 
-	/** Inherited from tpanel. */
-	void draw(surface& surface, const bool force = false, 
-			const bool invalidate_background = false);
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
@@ -240,6 +240,31 @@ private:
 
 	/** When set the form needs a full layout redraw cycle. */
 	bool need_layout_;
+
+	/** 
+	 * When set the window is resized.
+	 *
+	 * This invalidates the layout background etc. So everything should be
+	 * recalcalated.
+	 */
+	bool resized_;
+
+	/** Avoid drawing the window.  */
+	bool suspend_drawing_;
+
+	/** 
+	 * The first window shown is the toplevel window.
+	 *
+	 * The toplevel window is the one that starts and stops the drawing timer.
+	 * It's set when the timer is 0 when the window is shown.
+	 */
+	bool top_level_; 
+
+	/** The surface containing the window. */
+	surface window_; 
+
+	/** When the window closes this surface is used to undraw the window. */
+	surface restorer_;
 
 	/** Widget for the tooltip. */
 	ttooltip tooltip_;
@@ -278,16 +303,8 @@ private:
 	/** The formula to calulate the height of the dialog. */
 	tformula<unsigned>h_;
 
-	/**
-	 * Updates the size for the widget.
-	 *
-	 * Then the window isn't placed automatically the tformula for the sizes
-	 * need to be recalculated and set_size() called with the result.
-	 */
-	void update_size();
-
-	/** Does the real updating of the changes on the screen. */
-	void flip();
+	/** Layouts the window. */
+	void layout();
 
 	/** Inherited from tevent_handler. */
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
@@ -304,6 +321,14 @@ private:
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "window"; return type; }
+
+	/** 
+	 * Inherited from tpanel.
+	 *
+	 * Don't call this function it's only asserts.
+	 */
+	void draw(surface& surface, const bool force = false, 
+			const bool invalidate_background = false);
 };
 
 } // namespace gui2

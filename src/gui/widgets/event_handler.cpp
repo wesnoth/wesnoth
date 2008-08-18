@@ -230,6 +230,10 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			remove_help_popup();
 			break;
 
+		case DRAW_EVENT:
+			get_window().draw();
+			break;
+
 		case SDL_KEYDOWN:
 			key_down(event);
 			break;

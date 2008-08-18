@@ -50,6 +50,45 @@
 
 namespace gui2{
 
+namespace {
+
+/**
+ * The interval between draw events.
+ *
+ * When the window is shown this value is set, the callback function always
+ * uses this value instead of the parameter send, that way the window can stop
+ * drawing when it wants.
+ */
+static int draw_interval = 0;
+
+/**
+ * SDL_AddTimer() callback for the draw event.
+ *
+ * When this callback is called it pushes a new draw event in the event queue.
+ *
+ * @returns                       The new timer interval, 0 to stop.
+ */
+static Uint32 draw_timer(Uint32, void*)
+{
+	DBG_G_E << "Pushing draw event in queue.\n";
+
+	SDL_Event event;
+	SDL_UserEvent data;
+
+	data.type = DRAW_EVENT;
+	data.code = 0;
+	data.data1 = NULL;
+	data.data2 = NULL;
+
+	event.type = DRAW_EVENT;
+	event.user = data;
+	
+	SDL_PushEvent(&event);
+	return draw_interval;
+}
+
+} // namespace
+
 twindow::twindow(CVideo& video, 
 		tformula<unsigned>x,
 		tformula<unsigned>y,
@@ -66,6 +105,11 @@ twindow::twindow(CVideo& video,
 	retval_(0),
 	owner_(0),
 	need_layout_(true),
+	resized_(true),
+	suspend_drawing_(true),
+	top_level_(false),
+	window_(),
+	restorer_(),
 	tooltip_(),
 	help_popup_(),
 	automatic_placement_(automatic_placement),
@@ -115,62 +159,155 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 	assert(status_ == NEW);
 
-	// We cut a piece of the screen and use that, that way all coordinates
-	// are relative to the window.
-	SDL_Rect rect = get_rect();
-	surface restorer = get_surface_portion(video_.getSurface(), rect);
-	surface screen;
+	top_level_ = (draw_interval == 0);
+	if(top_level_) {
+		draw_interval = 30;
+		SDL_AddTimer(draw_interval, draw_timer, NULL);
+	}
+
+	suspend_drawing_ = false;
 
 	// Start our loop drawing will happen here as well.
 	for(status_ = SHOWING; status_ != REQUEST_CLOSE; ) {
 		process_events();
-
-		if(status_ == REQUEST_CLOSE) {
-			break;
-		}
-
-		if(is_dirty() || need_layout_) {
-			if(need_layout_) {
-				screen = make_neutral_surface(restorer);
-			}
-			draw(screen);
-		}
-
-		// delay until it's our frame see display.ccp code for how to do that
+		// Add a delay so we don't keep spinning if there's no event.
 		SDL_Delay(10);
-		flip();
+	}
+
+	suspend_drawing_ = true;
+
+	if(top_level_) {
+		draw_interval = 0;
 	}
 
 	// restore area
 	if(restore) {
-		rect = get_rect();
-		SDL_BlitSurface(restorer, 0, video_.getSurface(), &rect);
+		SDL_Rect rect = get_rect();
+		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rect());
-		flip();
 	}
 
 	return retval_;
 }
-/*
-void twindow::layout(const SDL_Rect& position)
-{
-	DBG_G << "Window: layout area " << position.x
-		<< ',' << position.y << " x " << position.w 
-		<< ',' << position.h << ".\n";
 
-	set_client_size(position); 
-	need_layout_ = false;
+void twindow::draw()
+{
+	// NOTE since we're single threaded there's no need to create a critical
+	// section in this drawing routine. 
+
+	// Prohibited from drawing?
+	if(suspend_drawing_) {
+		return;
+	}
+
+	// Drawing not required?
+	if(!resized_ && !need_layout_ && !is_dirty()) {
+		return;
+	}
+
+	surface frame_buffer = get_video_surface();
+
+	const bool draw_background = resized_ || need_layout_;
+	
+	if(resized_) {
+		// Restore old surface.
+		if(restorer_) {
+			SDL_Rect rect = get_rect();
+			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+		}
+
+		layout();
+		
+		// Get new surface
+		SDL_Rect rect = get_rect();
+		restorer_ = get_surface_portion(video_.getSurface(), rect);
+		window_ = make_neutral_surface(restorer_); // should be copy surface...
+
+		resized_ = false;
+	}
+	assert(window_ && restorer_);
+
+	if(need_layout_) {
+		layout();
+	}
+
+	if(draw_background) {
+		canvas(0).draw();
+		blit_surface(canvas(0).surf(), 0, window_, 0);
+	}		
+
+	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
+		if(! *itor || !itor->is_dirty()) {
+			continue;
+		}
+
+		log_scope2(gui_draw, "Window: draw child.");
+
+		itor->draw(window_, false, false);
+	}
+
+	if(tooltip_.is_dirty()) {
+		tooltip_.draw(window_);
+	}
+
+	if(help_popup_.is_dirty()) {
+		help_popup_.draw(window_);
+	}
+
+	// Floating label hack
+	font::draw_floating_labels(frame_buffer);
+
+	SDL_Rect rect = get_rect();
+	SDL_BlitSurface(window_, 0, frame_buffer, &rect);
+	update_rect(get_rect());
+	set_dirty(false);
+
+	cursor::draw(frame_buffer);
+	video_.flip();
+	cursor::undraw(frame_buffer);
+	// Floating hack part 2.
+	font::undraw_floating_labels(frame_buffer);
 }
-*/
+
 void twindow::window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height)
 {
 	settings::screen_width = new_width;
 	settings::screen_height = new_height;
-	need_layout_ = true;
+	resized_ = true;
 }
 
-void twindow::recalculate_size()
+void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
+		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
+{
+	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
+		set_retval(OK);
+		handled = true;
+	} else if(key == SDLK_ESCAPE) {
+		set_retval(CANCEL);
+		handled = true;
+	}
+}
+
+SDL_Rect twindow::get_client_rect() const
+{
+	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
+	assert(conf);
+
+	SDL_Rect result = get_rect();
+	result.x = conf->left_border;
+	result.y = conf->top_border;
+	result.w -= conf->left_border + conf->right_border;
+	result.h -= conf->top_border + conf->bottom_border;
+
+	// FIXME validate for an available client area.
+	
+	return result;
+
+}
+
+void twindow::layout()
 {
 	if(automatic_placement_) {
 		
@@ -227,110 +364,15 @@ void twindow::recalculate_size()
 
 		set_size(create_rect(position, size));
 	} else {
-		update_size();
-	}
-}
+		game_logic::map_formula_callable variables;
+		variables.add("screen_width", variant(settings::screen_width));
+		variables.add("screen_height", variant(settings::screen_height));
 
-void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
-		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
-{
-	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
-		set_retval(OK);
-		handled = true;
-	} else if(key == SDLK_ESCAPE) {
-		set_retval(CANCEL);
-		handled = true;
-	}
-}
-
-SDL_Rect twindow::get_client_rect() const
-{
-	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
-	assert(conf);
-
-	SDL_Rect result = get_rect();
-	result.x = conf->left_border;
-	result.y = conf->top_border;
-	result.w -= conf->left_border + conf->right_border;
-	result.h -= conf->top_border + conf->bottom_border;
-
-	// FIXME validate for an available client area.
-	
-	return result;
-
-}
-
-void twindow::draw(surface& surf, const bool force, 
-		const bool invalidate_background)
-{
-	// Hack to make the floating labels work again in the editor, it does fail
-	// in the test scenario since the window there is big and transparent.
-	// Since it's really needed for the editor this hack does suffice.
-	const surface frameBuffer = get_video_surface();
-	font::draw_floating_labels(frameBuffer);
-
-	const bool draw_foreground = need_layout_ || force;
-	if(need_layout_) {
-		DBG_G << "Window: layout client area.\n";
-//		layout(get_client_rect());
-//		Instead of layout() we need to clear the flag.
-		need_layout_ = false;
-
-		canvas(0).draw();
-		blit_surface(canvas(0).surf(), 0, surf, 0);
-	}
-	
-	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
-		if(! *itor || !itor->is_dirty()) {
-			continue;
-		}
-
-		log_scope2(gui_draw, "Window: draw child.");
-
-		itor->draw(surf, force, invalidate_background);
-	}
-	if(draw_foreground) {
-		canvas(1).draw();
-		blit_surface(canvas(1).surf(), 0, surf, 0);
-	}
-	if(tooltip_.is_dirty()) {
-		tooltip_.draw(surf);
-	}
-	if(help_popup_.is_dirty()) {
-		help_popup_.draw(surf);
+		set_size(::create_rect(
+			x_(variables), y_(variables), w_(variables), h_(variables)));
 	}
 
-	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(surf, 0, video_.getSurface(), &rect);
-	update_rect(get_rect());
-	set_dirty(false);
-
-}
-
-void twindow::update_size()
-{
-	game_logic::map_formula_callable variables;
-	variables.add("screen_width", variant(settings::screen_width));
-	variables.add("screen_height", variant(settings::screen_height));
-
-	set_size(::create_rect(
-		x_(variables), y_(variables), w_(variables), h_(variables)));
-
-}	
-
-void twindow::flip()
-{
-	// fixme we need to add the option to either call
-	// video_.flip() or display.flip()
-	
-	const surface frameBuffer = get_video_surface();
-	
-	cursor::draw(frameBuffer);
-	video_.flip();
-	cursor::undraw(frameBuffer);
-	// Floating hack part 2.
-	font::undraw_floating_labels(frameBuffer);
+	need_layout_ = false;
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
@@ -409,6 +451,12 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 
 	help_popup_.set_size(help_popup_rect);
 	help_popup_.set_visible();
+}
+
+void twindow::draw(surface& /*surf*/, const bool /*force*/, 
+		const bool /*invalidate_background*/)
+{
+	assert(false);
 }
 
 } // namespace gui2
