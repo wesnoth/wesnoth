@@ -306,6 +306,12 @@ filemoves = (
     ("1.3.14", (
 	("{AMLA_TOUGH 3}", "{AMLA_DEFAULT}"),
     )),
+    ("1.5", (
+	("grassland=", "flat="),
+	("tundra=", "frozen="),
+	("cavewall=", "impassable="),
+	("canyon=", "unwalkable="),
+    )),
     # An empty sentinel value at end is required.
     ("trunk", ()),
 )
