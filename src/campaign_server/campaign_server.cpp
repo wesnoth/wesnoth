@@ -33,6 +33,7 @@
 #include <algorithm>	// Required for gcc 4.3.0
 
 #include <boost/iostreams/filter/gzip.hpp>
+#include <cstdio>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -152,8 +153,7 @@ namespace {
 		net_manager_(min_thread,max_thread),
 		server_manager_(load_config()),
 		hooks_(),
-		input_(0),
-		compress_level_(0)
+		input_(0)
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
@@ -302,48 +302,36 @@ namespace {
  					itor != camps.end(); ++itor)
  			{
  				LOG_CS << "Encoding " << (**itor)["name"] << "\n";
-				std::string data;
-				data.reserve(file_size((**itor)["filename"])*2);
 				{
 					scoped_istream in_file = istream_file((**itor)["filename"]);
-					boost::iostreams::filtering_stream<boost::iostreams::input> filter;
-					filter.push(boost::iostreams::gzip_decompressor());
-					filter.push(*in_file);
+					boost::iostreams::filtering_stream<boost::iostreams::input> in_filter;
+					in_filter.push(boost::iostreams::gzip_decompressor());
+					in_filter.push(*in_file);
 
-					std::copy(std::istream_iterator<char>(filter),
-							  std::istream_iterator<char>(),
-							  std::back_inserter(data));
-				}
-				std::string copy;
-				copy.resize(data.size());
-				int n = 0;
-				int already_encoded = 0;
-				for(std::string::const_iterator ch = data.begin();
-						ch != data.end(); ++ch)
-				{
-					if (*ch == escape_char && *(ch+1) == '\x0E')
-						already_encoded++;
-
-					if (*ch == '\x0D')
+					scoped_ostream out_file = ostream_file((**itor)["filename"] + ".new");
+					boost::iostreams::filtering_stream<boost::iostreams::output> out_filter;
+					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
+					out_filter.push(*out_file);
+					
+					unsigned char c;
+					while(((c = in_filter.get()) >= 0)
+							&& in_filter.good())
 					{
-						copy.resize(copy.size()+1);
-						copy[n++] = escape_char;
-						copy[n++] = *ch + 1;
-					}else {
-						copy[n++] = *ch;
+						if (c == '\r')
+						{
+							out_filter.put('\x01');
+						   	out_filter.put(c+1);
+						} else {
+							out_filter.put(c);
+						}
 					}
-				}
-				LOG_CS << "Encoded " << (copy.size() - data.size()) << " CRs! Found already encoded CRs "<< already_encoded <<"!\n";
-				{
-					scoped_ostream out_file = ostream_file((**itor)["filename"]);
-					boost::iostreams::filtering_stream<boost::iostreams::output> filter;
-					filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
-					filter.push(*out_file);
-					std::copy(copy.begin(),copy.end(), std::ostream_iterator<char>(filter));					
-				}
 
- 			}
- 
+					std::remove((**itor)["filename"].c_str());
+					std::rename(((**itor)["filename"]+".new").c_str(),((**itor)["filename"]).c_str());
+
+				}
+			}
+ 			
 			cfg_["cr_encoded"] = "yes";
 		}
  	}
