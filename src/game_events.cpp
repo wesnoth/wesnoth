@@ -2453,7 +2453,7 @@ namespace {
 
 		std::set<gamemap::location> res;
 		terrain_filter filter(cfg, *game_map, *status_ptr, *units);
-		filter.restrict(game_config::max_loop);
+		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(res);
 
 		state_of_game->clear_variable_cfg(variable);
@@ -3054,7 +3054,7 @@ namespace {
 		else {
 			std::set<gamemap::location> locs;
 			terrain_filter filter(cfg, *game_map, *status_ptr, *units);
-			filter.restrict(game_config::max_loop);
+			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
 			status_ptr->add_time_area(id, locs, cfg.get_parsed_config());
 		}

@@ -50,7 +50,7 @@ public:
 	//restrict: limits the allowed radius size and also limits nesting
 	// The purpose to limit the time spent for WML handling
 	// Note: this feature is not fully implemented, e.g. SLF inside SUF inside SLF
-	void restrict(const size_t max_loop) { max_loop_ = max_loop; }
+	void restrict_size(const size_t max_loop) { max_loop_ = max_loop; }
 
 	//flatten: use base time of day -- ignore illumination ability
 	void flatten(const bool flat_tod=true) { flat_ = flat_tod; }
