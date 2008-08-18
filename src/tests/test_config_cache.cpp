@@ -16,6 +16,8 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "language.hpp"
+#include "gettext.hpp"
 
 #include "serialization/preprocessor.hpp"
 
@@ -68,8 +70,6 @@ preproc_map settup_test_preproc_map()
 	defines_map["APPLE"] = preproc_define();
 #endif
 
-	defines_map["NORMAL"] = preproc_define();
-	defines_map["MEDIUM"] = preproc_define();
 	return defines_map;
 
 }
@@ -91,10 +91,10 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 BOOST_AUTO_TEST_CASE( test_load_config )
 {
 	test_config_cache& cache = test_config_cache::instance();
-	cache.add_define("test");
+	cache.add_define("TEST");
 	
 	preproc_map defines_map(settup_test_preproc_map());
-	defines_map["test"] = preproc_define();
+	defines_map["TEST"] = preproc_define();
 	const preproc_map& test_defines = cache.get_preproc_map();
 	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
 								 defines_map.begin() ,defines_map.end());
@@ -104,14 +104,55 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	BOOST_CHECK_EQUAL(test_data_path, cache.get_config_root());
 
 	config test_config;
-	{
-		config& child = test_config.add_child("textdomain");
-		child["name"] = "wesnoth";
-	}
-	{
-		config& child = test_config.add_child("test_key");
-		child["define"] = "test";
-	}
+	config* child = &test_config.add_child("textdomain");
+	(*child)["name"] = "wesnoth";
+
+	child = &test_config.add_child("test_key");
+	(*child)["define"] = "test";
+
+
+	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+
+	cache.add_define("TEST_DEFINE");
+
+	child = &test_config.add_child("test_key");
+	(*child)["define"] = _("testing translation reset");
+	
+
+	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+}
+
+bool match_german(const language_def& def)
+{
+	return def.localename == "de_DE";
+}
+
+BOOST_AUTO_TEST_CASE( test_translation_reload )
+{
+	test_config_cache& cache = test_config_cache::instance();
+	config test_config;
+	config* child = &test_config.add_child("textdomain");
+	(*child)["name"] = "wesnoth";
+
+	child = &test_config.add_child("test_key");
+	(*child)["define"] = "test";
+
+	child = &test_config.add_child("test_key");
+	(*child)["define"] = _("testing translation reset");
+
+	// Change language
+	const std::vector<language_def>& languages = get_languages();
+	BOOST_CHECK_MESSAGE(languages.size()>0, "No languages found!");
+	std::vector<language_def>::const_iterator German = std::find_if(languages.begin(),
+									languages.end(),
+									match_german); // Using German because the most active translation
+	BOOST_REQUIRE_MESSAGE(German != languages.end(), "German translation not found");
+	::set_language(*German);
+	cache.reload_translations();
+
+	BOOST_CHECK_MESSAGE( test_config != cache.get_config(), "Translation update failed update translations!" );
+	
+	(*child)["define"] = _("test translation reset");
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
 }

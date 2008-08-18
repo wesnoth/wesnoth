@@ -16,7 +16,6 @@
 #define CONFIG_CACHE_HPP_INCLUDED
 
 #include <boost/utility.hpp>
-#include "filesystem.hpp"
 #include "config.hpp"
 #include "serialization/preprocessor.hpp"
 
@@ -31,8 +30,7 @@ class config_cache : private boost::noncopyable {
 	static config_cache cache_;
 
 	config game_config_;
-	file_tree_checksum dir_checksum_;
-	bool force_valid_cache_;
+	bool force_valid_cache_, use_cache_, dirty_;
 	std::string config_root_, user_config_root_;
 	preproc_map defines_map_;
 
@@ -50,7 +48,6 @@ class config_cache : private boost::noncopyable {
 	void set_config_root(const std::string&);
 	void set_user_config_root(const std::string&);
 
-	const config& get_config() const;
 	config& get_config();
 	
 	void clear_defines();
@@ -58,6 +55,8 @@ class config_cache : private boost::noncopyable {
 
 	void reload_translations();
 	void reload_configs(bool recheck_cache = false);
+
+	void set_use_cache(bool use);
 };
 
 }
