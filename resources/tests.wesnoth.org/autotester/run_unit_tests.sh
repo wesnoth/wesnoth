@@ -20,6 +20,6 @@ export DISPLAY=:0.0
 
 WEBDIR=$FULL_PATH/../htdocs
 
-cd $FULL_PATH
-nice php -f run_unit_tests.php $WEBDIR
+cd $FULL_PATH/../trunk
+nice php -f ../autotester/run_unit_tests.php $WEBDIR
 #> $FULL_PATH/err.log
