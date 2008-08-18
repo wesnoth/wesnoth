@@ -313,9 +313,8 @@ namespace {
 					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
 					out_filter.push(*out_file);
 					
-					unsigned char c;
-					while(((c = in_filter.get()) >= 0)
-							&& in_filter.good())
+					unsigned char c = in_filter.get();
+					while( in_filter.good())
 					{
 						if (c == '\r')
 						{
@@ -324,6 +323,7 @@ namespace {
 						} else {
 							out_filter.put(c);
 						}
+						c = in_filter.get();
 					}
 
 					std::remove((**itor)["filename"].c_str());
