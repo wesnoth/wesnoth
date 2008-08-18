@@ -243,7 +243,7 @@ void twindow::draw()
 
 		log_scope2(gui_draw, "Window: draw child.");
 
-		itor->draw(window_, false, false);
+		itor->draw(window_, full_redraw, full_redraw);
 	}
 
 	if(full_redraw) {
