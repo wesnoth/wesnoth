@@ -3,17 +3,17 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.2+svn:
- * Editor2
+  * Editor2
    * Editor2 is a replacement for the old editor. It is launched from
      within the game: "Editor" button in the title screen or command
      line "-e" or "--editor" option. The interface is largely unchanged.
    * The game must be compiled with editor2 support for this to work. See
      RELEASE_NOTES for details.
-   * See http://www.wesnoth.org/wiki/Editor2 for details known issues 
+   * See http://www.wesnoth.org/wiki/Editor2 for details known issues
    * You can continue to use the old editor by launching wesnoth_editor
      like you did so far. New features, however, are much more likely to
      appear in editor2.
-	 
+
  * Language and translations
    * updated translations: Chinese (Traditional), Danish, Finnish, Galician,
      German, Italian, Latvian, Lithuanian, Polish, Russian, Slovak, Spanish.
@@ -31,134 +31,134 @@ Version 1.5.2+svn:
 Version 1.5.2:
   * Campaigns
     * Son of the Black Eye
-     * New set of portrait art.
-     * In 'Black Flag', there's now several galleons transporting enemies to the
-       beach, and no watch towers.
-     * In 'Saving Inarix', you can now more precisely control when you destroy
-       the bridge.
-     * Many assorted small tweaks to most scenarios.
-     * When leading the Great Horde, all units now require 1 less upkeep.
+      * New set of portrait art.
+      * In 'Black Flag', there's now several galleons transporting enemies to
+        the beach, and no watch towers.
+      * In 'Saving Inarix', you can now more precisely control when you destroy
+        the bridge.
+      * Many assorted small tweaks to most scenarios.
+      * When leading the Great Horde, all units now require 1 less upkeep.
 
- * Language and translations
-   * new translation: Latvian.
-   * updated translations: Arabic, Catalan, Chinese (Traditional), Czech,
-     Finnish, French, German, Greek, Italian, Lithuanian, Russian, Serbian,
-     Slovak.
+  * Language and translations
+    * new translation: Latvian.
+    * updated translations: Arabic, Catalan, Chinese (Traditional), Czech,
+      Finnish, French, German, Greek, Italian, Lithuanian, Russian, Serbian,
+      Slovak.
 
- * Unit changes and balancing
-   * Increased the ranged attack of the Bowman from 6-3 to 7-3.
-   * Decreased the melee attack of the Bowman from 6-2 to 4-2.
-   * Decreased the cost of the Bowman from 15 to 14.
-   * Increased the cold resistance of the Fencer line from 0% to 10%.
-   * Decreased the 'orcishfoot' movement cost over frozen from 3 to 2.
+  * Unit changes and balancing
+    * Increased the ranged attack of the Bowman from 6-3 to 7-3.
+    * Decreased the melee attack of the Bowman from 6-2 to 4-2.
+    * Decreased the cost of the Bowman from 15 to 14.
+    * Increased the cold resistance of the Fencer line from 0% to 10%.
+    * Decreased the 'orcishfoot' movement cost over frozen from 3 to 2.
 
- * User interface
-   * In multiplayer lobby, all unit's images are now team colored.
-   * Add a column for traits in the recall dialog.
-   * Add a filter textbox in the recall dialog.
-   * The pathfinding now always prefer straight path and is also more
-     stable between little mouse's moves.
-   * Add-on publish/delete options have now special icons and colors.
-   * new debug command ":choose_level" or ":cl" to directly go to a scenario.
+  * User interface
+    * In multiplayer lobby, all unit's images are now team colored.
+    * Add a column for traits in the recall dialog.
+    * Add a filter textbox in the recall dialog.
+    * The pathfinding now always prefer straight path and is also more
+      stable between little mouse's moves.
+    * Add-on publish/delete options have now special icons and colors.
+    * new debug command ":choose_level" or ":cl" to directly go to a scenario.
 
- * Miscellaneous and bug fixes
-   * In debug-mode, Missing images are now replaced by a "men-at-work" sign and
-     in help broken hyperlinks are shown in red.
-   * Fix an old pathfinding bug causing a inconsistency between the path used
-     and the one showed to others players. Also valid in replay.
-   * Fix missing last publish/remove add-on option
+  * Miscellaneous and bug fixes
+    * In debug-mode, Missing images are now replaced by a "men-at-work" sign and
+      in help broken hyperlinks are shown in red.
+    * Fix an old pathfinding bug causing a inconsistency between the path used
+      and the one showed to others players. Also valid in replay.
+    * Fix missing last publish/remove add-on option
 
 Version 1.5.1:
- * Campaigns
-   * Heir to the Throne
-     * Allowed Kalenz to take the flaming sword.
-   * The Rise of Wesnoth
-     * Fixed the Wesfolk Outcast line's distract ability not working.
-     * Increased the gold you get from not letting Lady Outlaw join you in the
-       second scenario.
-   * An Orcish Incursion
-     * new storyline and dialogues to scenario 1
-     * new storyline and dialogues to scenario 2
-     * made the AI do mixed recruits in scenario 2
-     * new storyline and dialogues to scenario 3
-     * added a form of gold bonus to scenario 3
-     * new storyline to scenario 4
+  * Campaigns
+    * Heir to the Throne
+      * Allowed Kalenz to take the flaming sword.
+    * The Rise of Wesnoth
+      * Fixed the Wesfolk Outcast line's distract ability not working.
+      * Increased the gold you get from not letting Lady Outlaw join you in the
+        second scenario.
+    * An Orcish Incursion
+      * new storyline and dialogues to scenario 1
+      * new storyline and dialogues to scenario 2
+      * made the AI do mixed recruits in scenario 2
+      * new storyline and dialogues to scenario 3
+      * added a form of gold bonus to scenario 3
+      * new storyline to scenario 4
 
- * Graphics
-   * New portraits: Red Mages, Dark Adepts, White Mages
+  * Graphics
+    * New portraits: Red Mages, Dark Adepts, White Mages
 
- * Language and translations
-   * new translations: Arabic, Friulian, Macedonian
-   * updated translations: Chinese, Czech, Danish, Dutch, Estonian, Finnish,
-     French, German, Hungarian, Italian, Japanese, Polish, Russian, Serbian,
-     Slovak, Spanish, Turkish.
+  * Language and translations
+    * new translations: Arabic, Friulian, Macedonian
+    * updated translations: Chinese, Czech, Danish, Dutch, Estonian, Finnish,
+      French, German, Hungarian, Italian, Japanese, Polish, Russian, Serbian,
+      Slovak, Spanish, Turkish.
 
- * Multiplayer
-   * Revised maps: Den of Onis, Sablestone Delta, The Freelands.
-   * Raised the default per-turn MP timer bonus to 60 seconds.
+  * Multiplayer
+    * Revised maps: Den of Onis, Sablestone Delta, The Freelands.
+    * Raised the default per-turn MP timer bonus to 60 seconds.
 
- * Unit changes and balancing
-   * Changed the healthy trait to give 1HP and 1HP per level instead of 2HP.
-   * Decreased the ranged attack of the Mage of Light from 15-3 to 12-3.
-   * Decreased the melee attack of the Merman Warrior from 8-4 to 10-3.
+  * Unit changes and balancing
+    * Changed the healthy trait to give 1HP and 1HP per level instead of 2HP.
+    * Decreased the ranged attack of the Mage of Light from 15-3 to 12-3.
+    * Decreased the melee attack of the Merman Warrior from 8-4 to 10-3.
 
- * Game engine
-   * Added the possibility to see add-on types in the downloads dialog
-     if the authors provide such information
-   * Poison no longer prevents Resting
+  * Game engine
+    * Added the possibility to see add-on types in the downloads dialog
+      if the authors provide such information
+    * Poison no longer prevents Resting
 
- * User interface
-   * Titlescreen is now randomly loaded.
-   * Add a filter text box for the "Add-ons" and "Create Unit" dialogs
-   * Add a hotkey "Custom Command" and a command "custom <command>" to assign
-     a command to this hotkey.
-   * Add a command "alias <name>[=<command>]". To set or show shorter alias to
-     a command.
-   * Added back "Host Network Game" feature to multiplayer menu.
+  * User interface
+    * Titlescreen is now randomly loaded.
+    * Add a filter text box for the "Add-ons" and "Create Unit" dialogs
+    * Add a hotkey "Custom Command" and a command "custom <command>" to assign
+      a command to this hotkey.
+    * Add a command "alias <name>[=<command>]". To set or show shorter alias to
+      a command.
+    * Added back "Host Network Game" feature to multiplayer menu.
 
- * Terrains
-   * Removed duplicate terrain type in unit help
+  * Terrains
+    * Removed duplicate terrain type in unit help
 
- * Miscellaneous and bug fixes
-   * Fixed load-games dialog not displaying correct campaign info for
-     non-compressed saves.
+  * Miscellaneous and bug fixes
+    * Fixed load-games dialog not displaying correct campaign info for
+      non-compressed saves.
 
 Version 1.5.0:
- * Graphics
-   * Terrains can be rendered in front of units again.
+  * Graphics
+    * Terrains can be rendered in front of units again.
 
- * Language and translations
-   * new translation: Croatian.
-   * updated translations: Chinese, Chinese (Traditional), Czech, Danish,
-     Dutch, Finnish, French, Galician, German, Greek, Hungarian, Italian,
-     Lithuanian, Japanese, Polish, Russian, Serbian, Slovak, Spanish, Swedish,
-     Turkish, Valencian.
+  * Language and translations
+    * new translation: Croatian.
+    * updated translations: Chinese, Chinese (Traditional), Czech, Danish,
+      Dutch, Finnish, French, Galician, German, Greek, Hungarian, Italian,
+      Lithuanian, Japanese, Polish, Russian, Serbian, Slovak, Spanish, Swedish,
+      Turkish, Valencian.
 
- * Map editor
-   * Fixed not working "Update transition" and make "Delay transition update"
-     directly trigger an update when toggled off.
+  * Map editor
+    * Fixed not working "Update transition" and make "Delay transition update"
+      directly trigger an update when toggled off.
 
- * Multiplayer
-   * Added maps: Howling Ghost Badlands.
-   * Revised maps: Sablestone Delta, Sullas Ruins,
-     Silverhead Crossing, The Freelands, The Manzivan Traps.
-   * Removed maps: Amohsad Caldera.
-   * Removed the "Wesbowl" scenario.
-   * Added the "A New Land" scenario by Bob_the_Mighty
+  * Multiplayer
+    * Added maps: Howling Ghost Badlands.
+    * Revised maps: Sablestone Delta, Sullas Ruins, Silverhead Crossing,
+      The Freelands, The Manzivan Traps.
+    * Removed maps: Amohsad Caldera.
+    * Removed the "Wesbowl" scenario.
+    * Added the "A New Land" scenario by Bob_the_Mighty
 
- * Unit changes and balancing
-   * Decreased the cost of the Giant Scorpion from 32 to 22.
-   * Increased the HP of the Drake Flare from 54 to 55.
+  * Unit changes and balancing
+    * Decreased the cost of the Giant Scorpion from 32 to 22.
+    * Increased the HP of the Drake Flare from 54 to 55.
 
- * User interface
-   * Smarter pathfinding: if same MP cost, prefer terrains with better defense
-     and empty hexes (less frequent multi-turn moves blocked by a friend).
-   * New full map screenshot feature (no default hotkey).
-   * Screenshots show a pop-up with the url and size of the file created.
-   * When trying to define an already used hotkey, now tell where it's used.
+  * User interface
+    * Smarter pathfinding: if same MP cost, prefer terrains with better defense
+      and empty hexes (less frequent multi-turn moves blocked by a friend).
+    * New full map screenshot feature (no default hotkey).
+    * Screenshots show a pop-up with the url and size of the file created.
+    * When trying to define an already used hotkey, now tell where it's used.
 
- * Miscellaneous and bug fixes
-   * Fixed shroud not directly cleared in minimap after a move+attack action.
+  * Miscellaneous and bug fixes
+    * Fixed shroud not directly cleared in minimap after a move+attack action.
 
 Version 1.4:
   * Language and translations
