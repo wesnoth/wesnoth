@@ -13,11 +13,13 @@
 #*/
 
 FULL_PATH=`dirname $(readlink -f $0)`
-source $FULL_PATH/path_settup.sh
+#source $FULL_PATH/path_settup.sh
 
 export SSH_AUTH_SOCK=`find /tmp/keyring* -name ssh`
 export DISPLAY=:0.0
 
-cd $SVNDIR
-nice php -f ${AUTOTESTDIR}/run_unit_tests.php $WEBDIR 
+WEBDIR=$FULL_PATH/../htdocs
+
+cd $FULL_PATH
+nice php -f run_unit_tests.php $WEBDIR
 #> $FULL_PATH/err.log
