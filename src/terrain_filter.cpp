@@ -55,8 +55,6 @@ terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
 	max_loop_(max_loop),
 	flat_(flat_tod)
 {
-	restrict(max_loop);
-	flatten(flat_tod);
 }
 
 terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
@@ -68,8 +66,6 @@ terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& origina
 	max_loop_(original.max_loop_),
 	flat_(original.flat_)
 {
-	restrict(original.max_loop_);
-	flatten(original.flat_);
 }
 
 terrain_filter::terrain_filter(const terrain_filter& other) :
@@ -83,8 +79,6 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 	max_loop_(other.max_loop_),
 	flat_(other.flat_)
 {
-	restrict(other.max_loop_);
-	flatten(other.flat_);
 }
 
 terrain_filter& terrain_filter::operator=(const terrain_filter& other)
