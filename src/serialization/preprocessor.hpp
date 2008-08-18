@@ -50,6 +50,8 @@ struct preproc_config {
 
 typedef std::map< std::string, preproc_define > preproc_map;
 
+std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def);
+
 //! Function to use the WML preprocessor on a file, 
 //! and returns the resulting preprocessed file data. 
 //! defines is a map of symbols defined.

@@ -17,6 +17,8 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 
+#include "serialization/preprocessor.hpp"
+
 BOOST_AUTO_TEST_SUITE( config_cache )
 
 	/**
@@ -81,24 +83,39 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 	BOOST_CHECK_EQUAL("data/", cache.get_config_root());
 	BOOST_CHECK_EQUAL(get_addon_campaigns_dir(), cache.get_user_config_root());
 
-	BOOST_CHECK_EQUAL(defines_map.size(), cache.get_preproc_map().size());
 	const preproc_map& test_defines = cache.get_preproc_map();
-	preproc_map::const_iterator test_def = test_defines.begin();
-	for(preproc_map::iterator def = defines_map.begin();
-			def != defines_map.end(); ++def, ++test_def)
-	{
-		if (test_def == test_defines.end())
-			break;
-		BOOST_CHECK_EQUAL(def->first, test_def->first);
-		BOOST_CHECK_EQUAL(def->second, test_def->second);
-	}
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+								 defines_map.begin() ,defines_map.end());
 }
 
 BOOST_AUTO_TEST_CASE( test_load_config )
 {
+	test_config_cache& cache = test_config_cache::instance();
+	cache.add_define("test");
+	
+	preproc_map defines_map(settup_test_preproc_map());
+	defines_map["test"] = preproc_define();
+	const preproc_map& test_defines = cache.get_preproc_map();
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+								 defines_map.begin() ,defines_map.end());
+	
+	std::string test_data_path("data/test/test/");
+	cache.set_config_root(test_data_path);
+	BOOST_CHECK_EQUAL(test_data_path, cache.get_config_root());
 
-	BOOST_CHECK_EQUAL(2,2);
+	config test_config;
+	{
+		config& child = test_config.add_child("textdomain");
+		child["name"] = "wesnoth";
+	}
+	{
+		config& child = test_config.add_child("test_key");
+		child["define"] = "test";
+	}
+
+	BOOST_CHECK_EQUAL(test_config, cache.get_config());
 }
 
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
+

@@ -30,6 +30,8 @@
 #include <sstream>
 #include <vector>
 
+#include <boost/bind.hpp>
+
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_CF LOG_STREAM(info, config)
 #define DBG_CF LOG_STREAM(debug, config)
@@ -43,7 +45,12 @@ bool preproc_define::operator==(preproc_define const &v) const {
 
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def)
 {
-	return stream << "value: " << def.value << " arguments: " << def.location;
+	return stream << std::string("value: ") << def.value << std::string(" arguments: ") << def.location;
+}
+
+std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def)
+{
+	return stream << def.second;
 }
 
 class preprocessor;

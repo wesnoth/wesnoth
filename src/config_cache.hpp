@@ -50,7 +50,8 @@ class config_cache : private boost::noncopyable {
 	void set_config_root(const std::string&);
 	void set_user_config_root(const std::string&);
 
-	config& get_game_config() const;
+	const config& get_config() const;
+	config& get_config();
 	
 	void clear_defines();
 	void add_define(const std::string& define);
