@@ -729,7 +729,7 @@ namespace {
 					}
 				}
 			} catch(version_info::not_sane_exception const&) {
-				ERR_CFG << "local add-on '" << name << "' has invalid version string '" << version << "', skipping from updates check...\n";
+				ERR_CFG << "local add-on '" << name << "' has invalid version info, skipping from updates check...\n";
 				continue;
 			}
 		}
@@ -1195,11 +1195,11 @@ void manage_addons(game_display& disp)
 		svr_dialog.set_textbox(_("Server: "), default_host);
 
 		// not ready for production yet
-#if 0
+
 		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Update add-ons"),
 		                      gui::button::TYPE_PRESS, addon_update),
 		                      gui::dialog::BUTTON_EXTRA_LEFT);
-#endif
+
 		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Uninstall add-ons"),
 		                      gui::button::TYPE_PRESS, addon_uninstall),
 		                      gui::dialog::BUTTON_EXTRA);
@@ -1272,11 +1272,6 @@ void refresh_addon_version_info_cache(void)
 const version_info& get_addon_version_info(const std::string& addon)
 {
 	static const version_info nil(0,0,0,false);
-	std::map< std::string, version_info >::iterator ret = version_info_cache.find(addon);
-
-	if (ret != version_info_cache.end())
-		return ret->second;
-	else
-		return nil;
-
+	std::map< std::string, version_info >::iterator entry = version_info_cache.find(addon);
+	return entry != version_info_cache.end() ? entry->second : nil;
 }

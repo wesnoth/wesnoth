@@ -2160,6 +2160,9 @@ static int play_game(int argc, char** argv)
 		return 0;
 	}
 
+	loadscreen::global_loadscreen->increment_progress(0, _("Searching for installed add-ons."));
+	refresh_addon_version_info_cache();
+
 #if defined(_X11) && !defined(__APPLE__)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif

@@ -21,6 +21,8 @@
 #include <sstream>
 #include <stdexcept>
 
+#include <iostream>
+
 version_info::version_info(const version_info& o)
 	: nums_                 (o.nums_),
 	  special_              (o.special_),
@@ -46,7 +48,7 @@ version_info::version_info(unsigned int major, unsigned int minor, unsigned int 
 version_info::version_info(const std::string& str)
 	: nums_(3,0), sane_(true)
 {
-	const std::vector<std::string>& string_parts = utils::split(str,'.');
+	const std::vector<std::string> string_parts = utils::split(str,'.');
 	// first two components are required to be valid numbers, though
 	// only first component's existence is checked at all
 	const size_t parts = string_parts.size();
@@ -95,7 +97,7 @@ void version_info::init_special_version(const std::string& full_component, std::
 		const char& c = full_component[sep_pos];
 		if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
 			special_separator_ = '\0';
-			special_ = c;
+			special_ = full_component.substr(sep_pos);
 		} else {
 			special_separator_ = c;
 			if(sep_pos != full_component.size() - 1) {
@@ -207,6 +209,7 @@ bool operator!=(const version_info& l, const version_info& r)
 
 bool operator<(const version_info& l, const version_info& r)
 {
+	std::cerr << "compare: " << l.str() << " < " << r.str() << '\n';
 	std::less<unsigned int> o;
 	return version_info_comparison_internal(l, r, o) &&
 	       ((l.special_version().empty() && !r.special_version().empty()) ||
@@ -215,6 +218,7 @@ bool operator<(const version_info& l, const version_info& r)
 
 bool operator>(const version_info& l, const version_info& r)
 {
+	std::cerr << "compare: " << l.str() << " > " << r.str() << '\n';
 	std::greater<unsigned int> o;
 	return version_info_comparison_internal(l, r, o) &&
 	       ((r.special_version().empty() && !l.special_version().empty()) ||
