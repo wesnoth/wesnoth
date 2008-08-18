@@ -3,30 +3,48 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.2+svn:
+  * Campaigns
+    * Descent into Darkness
+      * New graphics for Apprentice Necromancer and Dark Mage.
+      * Changed how the ice breakage works in 'Beginning of the Revenge'.
+      * New indoor maps for 'A Small Favor' parts 2 and 3.
+      * Changed how the beginning of the scenario 'Descent into Darkness' works.
+      * Many minor fixes and tweaks to various scenarios.
+    * Sceptre of Fire
+      * Fixed a coordinate bug that caused 'Hills of the Shorbear Clan' to not
+        end when it was supposed to.
+      * Fixed a bug that allowed one to finish 'The Dragon' by defeating both
+        enemy leaders.
+    * Son of the Black Eye
+      * New portraits for Inarix, Jetto and the old orcish shaman.
+      * Fixed the shamans not getting removed from the recall list when they
+        should.
+      * Reworked the scenarios 'Civil War' and 'Coward'.
+
   * Editor2
-   * Editor2 is a replacement for the old editor. It is launched from
-     within the game: "Editor" button in the title screen or command
-     line "-e" or "--editor" option. The interface is largely unchanged.
-   * The game must be compiled with editor2 support for this to work. See
-     RELEASE_NOTES for details.
-   * See http://www.wesnoth.org/wiki/Editor2 for details known issues
-   * You can continue to use the old editor by launching wesnoth_editor
-     like you did so far. New features, however, are much more likely to
-     appear in editor2.
+    * Editor2 is a replacement for the old editor. It is launched from
+      within the game: "Editor" button in the title screen or command
+      line "-e" or "--editor" option. The interface is largely unchanged.
+    * The game must be compiled with editor2 support for this to work. See
+      RELEASE_NOTES for details.
+    * See http://www.wesnoth.org/wiki/Editor2 for details known issues
+    * You can continue to use the old editor by launching wesnoth_editor
+      like you did so far. New features, however, are much more likely to
+      appear in editor2.
 
- * Language and translations
-   * updated translations: Chinese (Traditional), Danish, Finnish, Galician,
-     German, Italian, Latvian, Lithuanian, Polish, Russian, Slovak, Spanish.
+  * Language and translations
+    * updated translations: Chinese (Traditional), Danish, Finnish, Galician,
+      German, Italian, Latvian, Lithuanian, Polish, Russian, Slovak, Spanish.
 
-* Multiplayer
-   * Revised maps: Caves of the Basilisk, Den of Onis, Fallenstar Lake,
-     Silverhead Crossing, Sullas Ruins, The Freelands, Alirok Marsh, Island of
-     the Horatii, 3p Morituri, Blue Water Province, 4p Hamlets, Lagoon,
-     4p Morituri, The Wilderlands, Waterloo Sunset
-   * Removed the "Great War" era.
+  * Multiplayer
+    * Revised maps: Caves of the Basilisk, Den of Onis, Fallenstar Lake,
+      Silverhead Crossing, Sullas Ruins, The Freelands, Alirok Marsh, Island of
+      the Horatii, 3p Morituri, Blue Water Province, 4p Hamlets, Lagoon,
+      4p Morituri, The Wilderlands, Waterloo Sunset
+    * Removed the "Great War" era.
 
-* Music and sound effects
-   * Special music is played on player victory/defeat.
+  * Music and sound effects
+    * Special music is played on player victory/defeat.
 
 Version 1.5.2:
   * Campaigns
