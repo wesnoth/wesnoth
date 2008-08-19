@@ -318,18 +318,16 @@ if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 Export("test_env")
 
-
 SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = "env")
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
 from install import HardLink
-map(lambda bin, node: Alias(bin, node, node and HardLink("./" + bin + build_suffix, node[0].path)), binaries, binary_nodes)
-env.Alias("all", map(Alias, binaries))
+wc_binaries = [ bin and env.Command(bin[0].name.split(".")[0] + build_suffix, bin, HardLink("$TARGET", "$SOURCE")) or None for bin in binary_nodes ]
+map(lambda bin, node, wc_bin: Alias(bin, [node, wc_bin]), binaries, binary_nodes, wc_binaries)
+all = env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))
-all = env.Alias("all")
-
 
 #
 # Utility productions (Unix-like systems only)
