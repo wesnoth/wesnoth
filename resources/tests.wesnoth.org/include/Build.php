@@ -310,8 +310,12 @@ class Build {
 		$build_result = '';
 		if ($this->status == self::S_GOOD)
 		{
-			$build_result = "Build successed." //. " Kaak Test Test"
-				; 
+			$build_result = "Build successed";
+			if (!empty($this->error_msg))
+				$build_result .= ":\n" . $this->error_msg;
+			else
+				$build_result .= ".";
+				
 		} else {
 			$build_result = "Build failed:\n" . $this->error_msg;
 		}

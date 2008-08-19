@@ -25,7 +25,7 @@ function smarty_modifier_autohide($text, $min_length_to_hide, $split_from_space,
 			/*]]>*/
 			</script>";
 	} else {
-		return $text;
+		return str_replace("\\'","'",str_replace('\n',"\n",$text));
 	}
 }
 
