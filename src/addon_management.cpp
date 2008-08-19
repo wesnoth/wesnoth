@@ -483,10 +483,10 @@ namespace {
 			const std::string msg_entrytxt = _n("This add-on depends upon the following add-on which you have not installed yet:",
 												"This add-on depends upon the following add-ons which you have not installed yet:",
 												count_missing);
-			if (gui::dialog(disp, msg_title,
-							msg_entrytxt +
-							"\n" + missing +
-							"\n" + _("Do you still want to download it?"), gui::OK_CANCEL).show())
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog dlg(disp, msg_title, msg_entrytxt + "\n" + missing +
+			                "\n" + _("Do you still want to download it?"), gui::OK_CANCEL);
+			if (dlg.show())
 				return false;
 		}
 		return true;
@@ -510,7 +510,9 @@ namespace {
 			gui::show_error_message(disp, error_message);
 			return;
 		} else if(data.child("message")) {
-			const int res = gui::dialog(disp,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog dlg(disp,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
+			const int res = dlg.show();
 			if(res != 0) {
 				return;
 			}
@@ -589,7 +591,7 @@ namespace {
 	                   const std::string& addon_version_str,
 	                   const network::manager& /*net_manager*/,
 	                   const network::connection& sock, bool* do_refresh,
-	                   bool /*show_result*/ = true)
+	                   bool show_result = true)
 	{
 		// Get all dependencies of the addon/campaign selected for download.
 		const config * const selected_campaign = addons_tree->find_child("campaign", "name", addon_id);
@@ -623,11 +625,7 @@ namespace {
 			gui::show_error_message(disp, _("The add-on has an invalid file or directory name and can not be installed."));
 			return false;
 		}
-		
-		// remove any existing versions of the just downloaded add-on,
-		// assuming it consists of a dir and a cfg file
-		remove_local_addon(addon_id);
-
+	
 		// add revision info to the addon archive
 		config* maindir = cfg.find_child("dir", "name", addon_id);
 		if(maindir == NULL) {
@@ -661,6 +659,11 @@ namespace {
 
 		maindir->add_child("file", f);
 		LOG_CFG << "generated version info, unpacking...\n";
+
+		// remove any existing versions of the just downloaded add-on,
+		// assuming it consists of a dir and a cfg file
+		remove_local_addon(addon_id);
+
 		unarchive_addon(cfg);
 		LOG_CFG << "addon unpacked successfully\n";
 
@@ -674,11 +677,13 @@ namespace {
 				warning += "\n" + (*i)["name"];
 		}
 
-		const std::string& message =
-			utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
-		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::message_dialog dlg(disp, _("Add-on Installed"), message);
-		dlg.show();
+		if(show_result) {
+			const std::string& message =
+				utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::message_dialog dlg(disp, _("Add-on Installed"), message);
+			dlg.show();
+		}
 
 		if(do_refresh != NULL)
 			*do_refresh = true;
@@ -739,18 +744,23 @@ namespace {
 				"An outdated local add-on has publishing information attached. It will not be offered for updating.",
 				"Some outdated local add-ons have publishing information attached. They will not be offered for updating.",
 				unsafe_matches.size());
-			gui::dialog(disp, warn_title, warn_entrytxt + unsafe_list.str(), gui::MESSAGE).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog dlg(disp, warn_title, warn_entrytxt + unsafe_list.str(), gui::MESSAGE);
+			dlg.show();
 		}
 		
 		if(safe_matches.empty()) {
-			gui::dialog(disp, _("No add-ons to update"), _("Could not find any updated add-ons on this server."),
-			            gui::MESSAGE).show();
+			gui::dialog dlg(disp, _("No add-ons to update"), _("Could not find any updated add-ons on this server."),
+			                gui::MESSAGE);
+			dlg.show();
 			return;
 		}
 		
 		// column contents
 		std::vector<std::string> addons, titles, oldversions, newversions, options, filtered_opts;
 		std::vector<int> sizes;
+		
+		std::vector<std::string> types, uploads;
 		
 		std::string sep(1, COLUMN_SEPARATOR);
 		const std::string& heading =
@@ -763,6 +773,10 @@ namespace {
 		assert(safe_matches.size() == remote_matches_cfgs.size());
 		for(size_t i = 0; i < safe_matches.size(); ++i) {
 			const config& c = *(remote_matches_cfgs[i]);
+
+			types.push_back(c["type"]);
+			uploads.push_back(c["uploads"]);
+
 			const std::string& name = c["name"];
 			const std::string& size = c["size"];
 			const std::string& sizef = format_file_size(size);
@@ -849,22 +863,19 @@ namespace {
 		std::vector<std::string> failed_titles;
 
 		if(upd_all) {
-			for(size_t i = 0; i < addons.size(); ++i)
+			for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
 			{
 				if(!install_addon(disp, cfg, cfg.child("campaigns"), addons[i], titles[i],
-				                   (*remote_matches_cfgs[i])["type"], (*remote_matches_cfgs[i])["uploads"],
-				                   (*remote_matches_cfgs[i])["version"], net_manager, sock,
+				                   types[i], uploads[i], newversions[i], net_manager, sock,
 				                   do_refresh, false)) {
 					result=false;
 					failed_titles.push_back(titles[i]);
 				}
 			}
 		} else {
-			assert(index >= 0);
 			const size_t i = static_cast<size_t>(index);
 			if(!install_addon(disp, cfg, cfg.child("campaigns"), addons[i], titles[i],
-				               (*remote_matches_cfgs[i])["type"], (*remote_matches_cfgs[i])["uploads"],
-				               (*remote_matches_cfgs[i])["version"], net_manager, sock,
+				               types[i], uploads[i], newversions[i], net_manager, sock,
 				               do_refresh, false)) {
 				result=false;
 				failed_titles.push_back(titles[i]);
@@ -883,14 +894,18 @@ namespace {
 				_n("The following add-on could not be downloaded or updated successfully:",
 				   "The following add-ons could not be downloaded or updated successfully:",
 				   failed_titles.size()) + failed_titles_list_fmt;
-			gui::dialog(disp, err_title, err_message, gui::MESSAGE).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog err_dlg(disp, err_title, err_message, gui::MESSAGE);
+			err_dlg.show();
 			return;
 		}
 		
 		const std::string msg_title = _("Update succeeded");
 		const std::string msg_message = !upd_all ? _("Add-on updated successfully.") :
 		                                           _("All add-ons updated successfully.");
-		gui::dialog(disp, msg_title, msg_message, gui::MESSAGE).show();
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::dialog msg_dlg(disp, msg_title, msg_message, gui::MESSAGE);
+		msg_dlg.show();
 	}
 
 	void download_addons(game_display& disp, std::string remote_host, bool update_mode, bool* do_refresh)
@@ -1131,7 +1146,9 @@ namespace {
 			utils::string_map symbols;
 			symbols["addon"] = addons.at(index);
 			confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
-			res = gui::dialog(disp, _("Confirm"), confirm_message, gui::YES_NO).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::dialog confirm_dlg(disp, _("Confirm"), confirm_message, gui::YES_NO);
+			res = confirm_dlg.show();
 		} while (res != 0);
 
 		// Put underscores back in the name and remove the addon
