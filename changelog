@@ -21,7 +21,11 @@ Version 1.5.2+svn:
      German, Italian, Latvian, Lithuanian, Polish, Russian, Slovak, Spanish
    * updated fonts: DejaVuSans 2.26
  * Multiplayer:
-   * removed the "Great War" MP era
+   * Removed the "Great War" MP era
+   * Revised maps: Caves of the Basilisk, Den of Onis, Fallenstar Lake,
+     Silverhead Crossing, Sullas Ruins, The Freelands, Alirok Marsh, Island of
+     the Horatii, 3p Morituri, Blue Water Province, 4p Hamlets, Lagoon,
+     4p Morituri, The Wilderlands, Waterloo Sunset
  * Music and sound effects:
    * Engine automatically plays special music on defeat or victory; default
      lists from which an option is randomly chosen at runtime are provided as
@@ -30,11 +34,6 @@ Version 1.5.2+svn:
      victory_music and/or defeat_music attributes on its code - it can also
      be overriden in a [endlevel] block by providing a music= attribute with
      the desired list (feature request #11203).
- * Multiplayer:
-   * Revised maps: Caves of the Basilisk, Den of Onis, Fallenstar Lake,
-     Silverhead Crossing, Sullas Ruins, The Freelands, Alirok Marsh, Island of
-     the Horatii, 3p Morituri, Blue Water Province, 4p Hamlets, Lagoon,
-     4p Morituri, The Wilderlands, Waterloo Sunset
  * Python AI:
    * Added ai_init.py and ai_launcher.py to make it easier to customize
      AI environment and startup. Both are used by the new embedded python
