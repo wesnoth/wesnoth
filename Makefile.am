@@ -14,7 +14,7 @@ finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \!
 # List non-installable utility files
 findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
 # List all Header files
-findnoinst_headers=(cd $(top_srcdir) && find src -name "*.hpp" -print )
+findnoinst_headers=(cd $(top_srcdir) && find src -name "*.hpp" -print && find src -name "*.h" -print )
 # List all files required for scons build recipe
 findsconscript=(cd $(top_srcdir) && find . -name "SConscript" -print )
 findsconstruct=(cd $(top_srcdir) && find . -name "SConstruct" -print )
