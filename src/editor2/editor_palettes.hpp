@@ -187,7 +187,7 @@ private:
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int selected_;
-	std::vector<brush> brushes_;
+	std::vector<brush>& brushes_;
 	brush** the_brush_;
 	const size_t size_;
 };
