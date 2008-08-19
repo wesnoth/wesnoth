@@ -170,11 +170,19 @@ namespace {
 		static size_t level = 0;
 	}
 	
+	/*
+	           x         >          y
+	x0.x1.x2.x3.[...].xN > y0.y1.y2.y3.[...].yN iff
+	
+	x0 > y0 || (x0 == y0 && (x1 > y1 || (x1 == y1 && (x2 > y2 || (x2 >= y2 || 
+	
+	*/
 	template<typename _Toperator, typename _Tfallback_operator>
 	bool recursive_order_operation(const std::vector<unsigned int>& l, const std::vector<unsigned int>& r, size_t k)
 	{
-		if(k >= l.size() || k >= r.size() || ++level > max_recursions)
+		if(k >= l.size() || k >= r.size() || ++level > max_recursions) {
 			return false;
+		}
 
 		unsigned int const& lvalue = l[k];
 		unsigned int const& rvalue = r[k];
@@ -220,10 +228,10 @@ namespace {
 				break;
 			}
 			case LT:
-				result = recursive_order_operation<std::less<unsigned int>, std::less_equal<unsigned int> >(lcc, rcc, 0);
+				result = recursive_order_operation<std::less<unsigned int>, std::equal_to<unsigned int> >(lcc, rcc, 0);
 				break;
 			case GT:
-				result = recursive_order_operation<std::greater<unsigned int> , std::greater_equal<unsigned int> >(lcc, rcc, 0);
+				result = recursive_order_operation<std::greater<unsigned int>, std::equal_to<unsigned int> >(lcc, rcc, 0);
 				break;
 			default:
 				assert(0 == 1);
@@ -246,16 +254,20 @@ bool operator!=(const version_info& l, const version_info& r)
 
 bool operator<(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, LT) &&
-	       ((l.special_version().empty() && !r.special_version().empty()) ||
-	        l.special_version() < r.special_version());
+	return version_numbers_comparison_internal(l, r, LT) && (
+	       (l.special_version().empty() && r.special_version().empty()) ||
+	       (l.special_version().empty() && !r.special_version().empty()) ||
+	       (l.special_version() < r.special_version())
+	       );
 }
 
 bool operator>(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, GT) &&
-	       ((r.special_version().empty() && !l.special_version().empty()) ||
-	        l.special_version() > r.special_version());
+	return version_numbers_comparison_internal(l, r, GT) && (
+	       (r.special_version().empty() && l.special_version().empty()) ||
+	       (r.special_version().empty() && !l.special_version().empty()) ||
+	       (l.special_version() > r.special_version())
+	       );
 }
 
 bool operator<=(const version_info& l, const version_info& r)
