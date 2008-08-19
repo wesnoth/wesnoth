@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-17 13:53+0200\n"
+"POT-Creation-Date: 2008-08-19 21:23+0200\n"
 "PO-Revision-Date: 2008-04-04 12:03+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -1412,10 +1412,11 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:281
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
+"Resting: A unit which neither moves, attacks, nor is attacked will heal 2 HP "
 "in its next turn."
 msgstr ""
 "\n"
@@ -5268,7 +5269,7 @@ msgid ""
 "apt races like elves and mermen tell of very few of their kind who have ever "
 "delved in the dark arts. It is surmised that necromantic magic requires "
 "great adaptability and a flexible mind, extremes of which are most commonly "
-"found in humans.The ultimate goal of most necromancers is to turn the same "
+"found in humans. The ultimate goal of most necromancers is to turn the same "
 "art of preserving and imbuing life upon themselves, to alter themselves at "
 "whatever cost, to ultimately escape death by preserving their own mind and "
 "spirit.\n"
@@ -6080,6 +6081,12 @@ msgstr ""
 "Elfen kunnen hetzelfde doen aan de rand van een bos en dwergen aan de voet "
 "van bergen."
 
+#. [test_key]
+#: data/test/test/_main.cfg:13
+#, fuzzy
+msgid "testing translation reset."
+msgstr "Estse Vertaling"
+
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
@@ -6287,43 +6294,43 @@ msgstr "vertraagd"
 msgid "stone"
 msgstr "versteen"
 
-#: src/actions.cpp:2328
+#: src/actions.cpp:2348
 msgid "Ambushed!"
 msgstr "Hinderlaag!"
 
-#: src/actions.cpp:2335
+#: src/actions.cpp:2355
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleporteren mislukt! Uitgang niet vrij"
 
-#: src/actions.cpp:2374
+#: src/actions.cpp:2394
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Bevriende eenheid in zicht!"
 msgstr[1] "Bevriende eenheden in zicht!"
 
-#: src/actions.cpp:2377
+#: src/actions.cpp:2397
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vijandelijke eenheid in zicht!"
 msgstr[1] "Vijandelijke eenheden in zicht!"
 
-#: src/actions.cpp:2382
+#: src/actions.cpp:2402
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "vriend"
 msgstr[1] "$friends vrienden"
 
-#: src/actions.cpp:2383
+#: src/actions.cpp:2403
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "vijand"
 msgstr[1] "vijanden"
 
-#: src/actions.cpp:2384
+#: src/actions.cpp:2404
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Troepen gesignaleerd! (($friends bevriende, $enemies vijandelijke)"
 
-#: src/actions.cpp:2393
+#: src/actions.cpp:2413
 msgid "(press $hotkey to keep moving)"
 msgstr "(druk $hotkey om door te gaan)"
 
@@ -6396,11 +6403,11 @@ msgid_plural ""
 msgstr[0] "Deze add-on heeft de volgende aanvullende afhankelijkheden:"
 msgstr[1] "Deze add-on heeft de volgende aanvullende afhankelijkheden:"
 
-#: src/addon_management.cpp:489
+#: src/addon_management.cpp:488
 msgid "Do you still want to download it?"
 msgstr "Wilt je het nog steeds downloaden?"
 
-#: src/addon_management.cpp:503 src/addon_management.cpp:575
+#: src/addon_management.cpp:503 src/addon_management.cpp:577
 #: src/multiplayer.cpp:381 src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "Connectie timed out"
@@ -6409,52 +6416,52 @@ msgstr "Connectie timed out"
 msgid "The server responded with an error: \"$error|\""
 msgstr "De server antwoordde met een fout: \"$error|\""
 
-#: src/addon_management.cpp:513
+#: src/addon_management.cpp:514
 msgid "Terms"
 msgstr "Afspraken"
 
-#: src/addon_management.cpp:546
+#: src/addon_management.cpp:548
 msgid "Sending add-on"
 msgstr "Add-on wordt verstuurd"
 
-#: src/addon_management.cpp:550 src/addon_management.cpp:577
+#: src/addon_management.cpp:552 src/addon_management.cpp:579
 msgid "The server responded with an error: \""
 msgstr "De server antwoordde met een fout: \""
 
-#: src/addon_management.cpp:554 src/addon_management.cpp:581
+#: src/addon_management.cpp:556 src/addon_management.cpp:583
 #: src/multiplayer_wait.cpp:414
 msgid "Response"
 msgstr "Antwoord"
 
-#: src/addon_management.cpp:609
+#: src/addon_management.cpp:611
 #, fuzzy
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Add-on downloaden..."
 
-#: src/addon_management.cpp:623
+#: src/addon_management.cpp:625
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:665
+#: src/addon_management.cpp:675
 msgid "Unchecked script files found:"
 msgstr ""
 
-#: src/addon_management.cpp:671
+#: src/addon_management.cpp:682
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "De add-on is geïnstalleerd."
 
-#: src/addon_management.cpp:673
+#: src/addon_management.cpp:684
 msgid "Add-on Installed"
 msgstr "Add-on geïnstalleerd."
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:742
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Add-on wordt verstuurd"
 
-#: src/addon_management.cpp:732
+#: src/addon_management.cpp:744
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6464,50 +6471,58 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:744 src/addon_management.cpp:940
+#: src/addon_management.cpp:753
+msgid "Could not find any updated add-ons on this server."
+msgstr ""
+
+#: src/addon_management.cpp:753
+msgid "No add-ons to update"
+msgstr ""
+
+#: src/addon_management.cpp:767 src/addon_management.cpp:968
 #: src/dialogs.cpp:645 src/menu_events.cpp:205 src/menu_events.cpp:978
 #: src/multiplayer.cpp:114
 msgid "Name"
 msgstr "Naam"
 
-#: src/addon_management.cpp:744
+#: src/addon_management.cpp:767
 #, fuzzy
 msgid "New version"
 msgstr "Versie"
 
-#: src/addon_management.cpp:744
+#: src/addon_management.cpp:767
 #, fuzzy
 msgid "Old version"
 msgstr "Versie"
 
-#: src/addon_management.cpp:745 src/addon_management.cpp:941
+#: src/addon_management.cpp:768 src/addon_management.cpp:969
 msgid "Author"
 msgstr "Auteur"
 
-#: src/addon_management.cpp:745 src/addon_management.cpp:941
+#: src/addon_management.cpp:768 src/addon_management.cpp:969
 msgid "Size"
 msgstr "Grootte"
 
-#: src/addon_management.cpp:795
+#: src/addon_management.cpp:822
 #, fuzzy
 msgid "Update Add-ons"
 msgstr "Add-ons downloaden"
 
-#: src/addon_management.cpp:796
+#: src/addon_management.cpp:823
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon_management.cpp:810
+#: src/addon_management.cpp:837
 #, fuzzy
 msgid "Update all"
 msgstr "Grotwand"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:892
 #, fuzzy
 msgid "Update failed"
 msgstr "Grotwand"
 
-#: src/addon_management.cpp:870
+#: src/addon_management.cpp:894
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -6515,85 +6530,85 @@ msgid_plural ""
 msgstr[0] "De volgende add-on bevat fouten en kon niet worden geladen:"
 msgstr[1] "De volgende add-on bevat fouten en kon niet worden geladen:"
 
-#: src/addon_management.cpp:877
+#: src/addon_management.cpp:903
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Add-ons downloaden"
 
-#: src/addon_management.cpp:878
+#: src/addon_management.cpp:904
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:879
+#: src/addon_management.cpp:905
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:900
+#: src/addon_management.cpp:928
 #, fuzzy
 msgid "Connecting to Add-ons Server..."
 msgstr "Verbinden met Server"
 
-#: src/addon_management.cpp:903
+#: src/addon_management.cpp:931
 msgid "Could not connect to host."
 msgstr "Kon geen verbinding maken met 'host'"
 
-#: src/addon_management.cpp:911
+#: src/addon_management.cpp:939
 #, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Bezig met het opvragen van een lijst met add-ons"
 
-#: src/addon_management.cpp:924
+#: src/addon_management.cpp:952
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Fout bij communiceren met server."
 
-#: src/addon_management.cpp:940 src/titlescreen.cpp:322
+#: src/addon_management.cpp:968 src/titlescreen.cpp:322
 msgid "Version"
 msgstr "Versie"
 
-#: src/addon_management.cpp:941
+#: src/addon_management.cpp:969
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/addon_management.cpp:941 src/help.cpp:1375 src/menu_events.cpp:204
+#: src/addon_management.cpp:969 src/help.cpp:1375 src/menu_events.cpp:204
 #: src/menu_events.cpp:977 src/menu_events.cpp:1476
 msgid "Type"
 msgstr "Type"
 
-#: src/addon_management.cpp:1008
+#: src/addon_management.cpp:1036
 msgid "Publish add-on: "
 msgstr "Add-on publiceren:"
 
-#: src/addon_management.cpp:1014
+#: src/addon_management.cpp:1042
 msgid "Delete add-on: "
 msgstr "Add-on verwijderen:"
 
-#: src/addon_management.cpp:1020
+#: src/addon_management.cpp:1048
 msgid "There are no add-ons available for download from this server."
 msgstr "Er zijn geen add-ons beschikbaar om te downloaden van deze server."
 
-#: src/addon_management.cpp:1027
+#: src/addon_management.cpp:1055
 msgid "Get Add-ons"
 msgstr "Add-ons downloaden"
 
-#: src/addon_management.cpp:1028
+#: src/addon_management.cpp:1056
 msgid "Choose the add-on to download."
 msgstr "Kies een add-on om te downloaden."
 
-#: src/addon_management.cpp:1040 src/dialogs.cpp:670 src/menu_events.cpp:1036
+#: src/addon_management.cpp:1068 src/dialogs.cpp:670 src/menu_events.cpp:1036
 #: src/menu_events.cpp:1505
 msgid "Filter: "
 msgstr "Filter: "
 
-#: src/addon_management.cpp:1070
+#: src/addon_management.cpp:1098
 msgid "Network communication error."
 msgstr "Netwerk communicatie fout."
 
-#: src/addon_management.cpp:1073
+#: src/addon_management.cpp:1101
 msgid "Remote host disconnected."
 msgstr "'Remote host' brak verbinding af."
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1104
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
@@ -6602,61 +6617,61 @@ msgstr ""
 "Er was een probleem om de bestanden te genereren die nodig zijn voor deze "
 "veldtocht."
 
-#: src/addon_management.cpp:1093
+#: src/addon_management.cpp:1121
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Je hebt geen add-ons geïnstalleerd."
 
-#: src/addon_management.cpp:1105
+#: src/addon_management.cpp:1133
 msgid "Choose the add-on to remove."
 msgstr "Kies een add-on om te verwijderen."
 
-#: src/addon_management.cpp:1105 src/addon_management.cpp:1190
+#: src/addon_management.cpp:1133 src/addon_management.cpp:1220
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Add-on wordt verstuurd"
 
-#: src/addon_management.cpp:1117
+#: src/addon_management.cpp:1145
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Weet je zeker dat je de add-on '$addon' wilt verwijderen?"
 
-#: src/addon_management.cpp:1121
+#: src/addon_management.cpp:1150
 msgid "Confirm"
 msgstr "Bevestig"
 
-#: src/addon_management.cpp:1132
+#: src/addon_management.cpp:1162
 msgid "Add-on '$addon|' deleted."
 msgstr "Add-on '$addon|' verwijderd."
 
-#: src/addon_management.cpp:1137
+#: src/addon_management.cpp:1167
 msgid "Add-on deleted"
 msgstr "Add-on verwijderd"
 
-#: src/addon_management.cpp:1146
+#: src/addon_management.cpp:1176
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Add-on kon niet verwijderd worden -- bestand niet gevonden."
 
-#: src/addon_management.cpp:1146 src/dialogs.cpp:280 src/dialogs.cpp:288
+#: src/addon_management.cpp:1176 src/dialogs.cpp:280 src/dialogs.cpp:288
 #: src/menu_events.cpp:590 src/multiplayer_create.cpp:533
 msgid "Error"
 msgstr "Error"
 
-#: src/addon_management.cpp:1179
+#: src/addon_management.cpp:1209
 #, fuzzy
 msgid "Connect to add-ons server"
 msgstr "Met host/server verbinden"
 
-#: src/addon_management.cpp:1180
+#: src/addon_management.cpp:1210
 #, fuzzy
 msgid "Type the address of a server to download add-ons from."
 msgstr ""
 "Er wordt nu verbinding gemaakt met een server om add-ons te downloaden."
 
-#: src/addon_management.cpp:1182
+#: src/addon_management.cpp:1212
 msgid "Server: "
 msgstr "Server:"
 
-#: src/addon_management.cpp:1186
+#: src/addon_management.cpp:1216
 #, fuzzy
 msgid "Update add-ons"
 msgstr "Add-on wordt verstuurd"
@@ -7066,7 +7081,12 @@ msgstr "Inlezen van de configuratiebestanden: "
 msgid "Re-initialize fonts for the current language."
 msgstr "Hermaak de lettertypes voor de huidige taal. "
 
-#: src/game.cpp:2169
+#: src/game.cpp:2163
+#, fuzzy
+msgid "Searching for installed add-ons."
+msgstr "Add-on wordt verstuurd"
+
+#: src/game.cpp:2172
 msgid "Loading title screen."
 msgstr "Inladen titelscherm."
 
@@ -7081,6 +7101,10 @@ msgstr "Overwinning:"
 #: src/game_events.cpp:959
 msgid "Defeat:"
 msgstr "Nederlaag:"
+
+#: src/game_events.cpp:2182
+msgid "[store_unit] missing required [filter] tag\n"
+msgstr ""
 
 #: src/gamestatus.cpp:255 src/gamestatus.cpp:270 src/gamestatus.cpp:290
 #: src/gamestatus.cpp:375 src/gamestatus.cpp:400
@@ -7720,8 +7744,8 @@ msgstr ""
 #: src/menu_events.cpp:2116
 #, fuzzy
 msgid ""
-"Sends a private message. You can't send messages to players that control a "
-"side in a running game you are in."
+"Sends a private message. You can't send messages to players that don't "
+"control a side in a running game you are in."
 msgstr ""
 "Stuurt privéberichten. Je kunt niet aan spelers van elke partij berichten "
 "sturen. Gebruik: /whisper <bijnaam> <bericht>"
@@ -8640,39 +8664,39 @@ msgstr ""
 msgid "Remaining gold: "
 msgstr "Resterend goud: "
 
-#: src/playsingle_controller.cpp:183
+#: src/playsingle_controller.cpp:184
 msgid "Early finish bonus: "
 msgstr "Bonus per beurt: "
 
-#: src/playsingle_controller.cpp:185
+#: src/playsingle_controller.cpp:186
 msgid "per turn"
 msgstr "goudstukken"
 
-#: src/playsingle_controller.cpp:186
+#: src/playsingle_controller.cpp:187
 msgid "Turns finished early: "
 msgstr "Resterend aantal beurten: "
 
-#: src/playsingle_controller.cpp:188
+#: src/playsingle_controller.cpp:189
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:190
+#: src/playsingle_controller.cpp:192
 msgid "Gold: "
 msgstr "Goud: "
 
-#: src/playsingle_controller.cpp:193
+#: src/playsingle_controller.cpp:196
 msgid "Carry over percentage: "
 msgstr "Overdrachtspercentage:"
 
-#: src/playsingle_controller.cpp:195
+#: src/playsingle_controller.cpp:199
 msgid "Bonus Gold: "
 msgstr "Bonusgoud: "
 
-#: src/playsingle_controller.cpp:197
+#: src/playsingle_controller.cpp:201
 msgid "Retained Gold: "
 msgstr "Resterend goud: "
 
-#: src/playsingle_controller.cpp:207
+#: src/playsingle_controller.cpp:211
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -8686,7 +8710,7 @@ msgstr[1] ""
 "Je zult het volgende scenario beginnen met $gold bovenop het gedefinieerde "
 "minimale startgoud."
 
-#: src/playsingle_controller.cpp:215
+#: src/playsingle_controller.cpp:219
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -8700,31 +8724,31 @@ msgstr[1] ""
 "Je zult het volgende scenario beginnen met $gold of met het gedefinieerde "
 "minimale startgoud, wat maar hoger is."
 
-#: src/playsingle_controller.cpp:336
+#: src/playsingle_controller.cpp:340
 msgid "Game Over"
 msgstr "Game over"
 
-#: src/playsingle_controller.cpp:337
+#: src/playsingle_controller.cpp:341
 msgid "The game is over."
 msgstr "Het spel is over."
 
-#: src/playsingle_controller.cpp:430
+#: src/playsingle_controller.cpp:434
 msgid "Scenario Report"
 msgstr "Scenariorapport"
 
-#: src/playsingle_controller.cpp:432
+#: src/playsingle_controller.cpp:436
 msgid "Victory"
 msgstr "Overwinning"
 
-#: src/playsingle_controller.cpp:433
+#: src/playsingle_controller.cpp:437
 msgid "You have emerged victorious!"
 msgstr "Je hebt de overwinning behaald!"
 
-#: src/playsingle_controller.cpp:480 src/playsingle_controller.cpp:525
+#: src/playsingle_controller.cpp:484 src/playsingle_controller.cpp:529
 msgid "The file you have tried to load is corrupt"
 msgstr "Het bestand dat je hebt proberen laden is corrupt"
 
-#: src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:494
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8732,7 +8756,7 @@ msgstr ""
 "Door een verbreking van de netwerkvebinding kan het spel niet voortgezet "
 "worden. Wil je het spel opslaan?"
 
-#: src/playsingle_controller.cpp:635
+#: src/playsingle_controller.cpp:639
 msgid "It is now $name|'s turn"
 msgstr "Het is nu $name|s beurt"
 
@@ -8812,8 +8836,13 @@ msgstr "Niet gesloten string"
 msgid " included from "
 msgstr " geïncludeerd vanuit"
 
-#: src/serialization/parser.cpp:340
-msgid "$error at $pos"
+#: src/serialization/parser.cpp:342
+msgid "$error, value '$value', previous '$previous_value' at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:346
+#, fuzzy
+msgid "$error, value '$value' at $pos"
 msgstr "$error bij $pos"
 
 #: src/statistics_dialog.cpp:68 src/statistics_dialog.cpp:120
@@ -8871,6 +8900,16 @@ msgstr "Vijandelijk dorp"
 #: src/terrain.cpp:162
 msgid "Owned village"
 msgstr "Eigen dorp"
+
+#: src/tests/test_config_cache.cpp:119 src/tests/test_config_cache.cpp:141
+#, fuzzy
+msgid "testing translation reset"
+msgstr "Estse Vertaling"
+
+#: src/tests/test_config_cache.cpp:155
+#, fuzzy
+msgid "test translation reset"
+msgstr "Portugese Vertaling"
 
 #: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-14 19:41+0200\n"
+"POT-Creation-Date: 2008-08-19 21:24+0200\n"
 "PO-Revision-Date: 2008-01-25 09:50+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -413,7 +413,7 @@ msgid "light_level^Blue:"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:513 src/editor/editor_dialogs.cpp:625
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:170
+#: src/hotkeys.cpp:125 src/hotkeys.cpp:171
 msgid "Resize Map"
 msgstr "Haritayı Boyutlandır"
 
@@ -912,7 +912,11 @@ msgstr ""
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:831
+#: src/gui/widgets/canvas.cpp:780
+msgid "Text has a font size of 0."
+msgstr ""
+
+#: src/gui/widgets/canvas.cpp:833
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -921,65 +925,65 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/settings.cpp:136
+#: src/gui/widgets/settings.cpp:135
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/settings.cpp:258
+#: src/gui/widgets/settings.cpp:257
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:322
+#: src/gui/widgets/settings.cpp:321
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:434 src/gui/widgets/window_builder.cpp:132
+#: src/gui/widgets/settings.cpp:433 src/gui/widgets/window_builder.cpp:133
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/settings.cpp:466
+#: src/gui/widgets/settings.cpp:465
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/settings.cpp:617
+#: src/gui/widgets/settings.cpp:616
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/window_builder.cpp:194
-#: src/gui/widgets/window_builder.cpp:902
-#: src/gui/widgets/window_builder.cpp:1082
+#: src/gui/widgets/window_builder.cpp:202
+#: src/gui/widgets/window_builder.cpp:912
+#: src/gui/widgets/window_builder.cpp:1092
 #, fuzzy
 msgid "No grid defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/window_builder.cpp:419
+#: src/gui/widgets/window_builder.cpp:429
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:420
+#: src/gui/widgets/window_builder.cpp:430
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:669
+#: src/gui/widgets/window_builder.cpp:679
 #, fuzzy
 msgid "No list defined."
 msgstr "Tanımlı sunucu yok."
 
-#: src/gui/widgets/window_builder.cpp:672
+#: src/gui/widgets/window_builder.cpp:682
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:691
+#: src/gui/widgets/window_builder.cpp:701
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1013
+#: src/gui/widgets/window_builder.cpp:1023
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -1023,7 +1027,7 @@ msgstr "Uzaklaş"
 msgid "Default Zoom"
 msgstr "Normal Yakınlık"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:965
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:966
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
@@ -1204,23 +1208,23 @@ msgstr "Oyuncunun iç kalesini Belirle"
 msgid "Flood Fill"
 msgstr "Akıcı Doldurma"
 
-#: src/hotkeys.cpp:119 src/hotkeys.cpp:164
+#: src/hotkeys.cpp:119 src/hotkeys.cpp:165
 msgid "Fill Selection"
 msgstr "Seçimi Doldur"
 
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:160
+#: src/hotkeys.cpp:120 src/hotkeys.cpp:161
 msgid "Rotate Selection"
 msgstr "Seçimi Döndür"
 
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:150
+#: src/hotkeys.cpp:121 src/hotkeys.cpp:151
 msgid "Cut"
 msgstr "Kes"
 
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:151
+#: src/hotkeys.cpp:122 src/hotkeys.cpp:152
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:152
+#: src/hotkeys.cpp:123 src/hotkeys.cpp:153
 msgid "Paste"
 msgstr "Yapıştır"
 
@@ -1232,7 +1236,7 @@ msgstr "Diskten eski haline getir"
 msgid "Flip Map"
 msgstr "Haritayı yansıla"
 
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:154
+#: src/hotkeys.cpp:127 src/hotkeys.cpp:155
 msgid "Select All"
 msgstr "Tümünü Seç"
 
@@ -1240,7 +1244,7 @@ msgstr "Tümünü Seç"
 msgid "Draw Terrain"
 msgstr "Zemini Çiz"
 
-#: src/hotkeys.cpp:129 src/hotkeys.cpp:186
+#: src/hotkeys.cpp:129 src/hotkeys.cpp:187
 msgid "Refresh Image Cache"
 msgstr "Resim Belleğini Tazele"
 
@@ -1265,178 +1269,183 @@ msgstr "Haritayı Kaydet"
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:140
+#, fuzzy
+msgid "Map Information"
+msgstr "Harita Üreteci"
+
+#: src/hotkeys.cpp:142
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 #, fuzzy
 msgid "Next Tool"
 msgstr "Sonraki Sıra"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Tümünü Seç"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 #, fuzzy
 msgid "Next Brush"
 msgstr "Sonraki Sıra"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 #, fuzzy
 msgid "Default Brush"
 msgstr "Normal Yakınlık"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 #, fuzzy
 msgid "Select None"
 msgstr "Tümünü Seç"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Seçimi Doldur"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Seçimi Döndür"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Harita Yükle"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid "Flip Map along X axis"
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Flip Map along Y axis"
 msgstr ""
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 #, fuzzy
 msgid "Generate Map"
 msgstr "Yeni Harita Üret"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Görüntü"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 #, fuzzy
 msgid "Update Terrain Tranistions"
 msgstr "Geçişleri güncelle"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Geçişleri güncelle"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Delay Shroud Updates"
 msgstr "Örtü Güncellemeleri Geciktir"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Update Shroud Now"
 msgstr "Örtüyü Şimdi Güncelle"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Continue Move"
 msgstr "Harekete Devam Et"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Find Label or Unit"
 msgstr "Etiket veya Birim Bul"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "Speak to Ally"
 msgstr "Müttefikle Konuş"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Speak to All"
 msgstr "Herkesle konuş"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:197
 msgid "Help"
 msgstr "Yardım"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "View Chat Log"
 msgstr "Sohbet Kaydını Göster"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:199
 msgid "Change the language"
 msgstr "Dili değiştir"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "Enter user command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 #, fuzzy
 msgid "Custom command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:203
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "Clear messages"
 msgstr "İletileri Temizle"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:206
 msgid "User-Command#2"
 msgstr "2. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:207
 msgid "User-Command#3"
 msgstr "3. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:665 src/hotkeys.cpp:1010
+#: src/hotkeys.cpp:666 src/hotkeys.cpp:1011
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/hotkeys.cpp:665 src/hotkeys.cpp:1010
+#: src/hotkeys.cpp:666 src/hotkeys.cpp:1011
 msgid "Quit"
 msgstr "Çık"
 
-#: src/hotkeys.cpp:965
+#: src/hotkeys.cpp:966
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekran görüntüsü"
 
-#: src/hotkeys.cpp:972
+#: src/hotkeys.cpp:973
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekran görüntüsü"
 
-#: src/hotkeys.cpp:974
+#: src/hotkeys.cpp:975
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Ekran görüntüsü"

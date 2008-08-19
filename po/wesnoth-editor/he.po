@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-17 13:54+0200\n"
+"POT-Creation-Date: 2008-08-19 21:24+0200\n"
 "PO-Revision-Date: 2005-12-18 23:18+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -108,8 +108,9 @@ msgstr ""
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:21
 msgid ""
-"Left mouse button displays player selection, right clears. Keys 1-9 set "
-"respectove starting position under cursor and delete clears"
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
 msgstr ""
 
 #. [menu]
@@ -162,11 +163,11 @@ msgstr "הגדלת תצוגה"
 msgid "Zoom out"
 msgstr "הקטנת תצוגה"
 
-#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:635
+#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:656
 msgid "Undo"
 msgstr "ביטול שינוי"
 
-#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:641
+#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:662
 msgid "Redo"
 msgstr "שחזור שינוי"
 
@@ -206,11 +207,11 @@ msgstr "בחירת שפה מועדפת:"
 msgid "Battle for Wesnoth Map Editor"
 msgstr "עורך מפות עבור הקרב על ווסנות'"
 
-#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:232
+#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:237
 msgid "Save the Map As"
 msgstr "שמירת מפה בשם"
 
-#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:236
+#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:241
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "המפה כבר קיימת. האם לדרוס אותה?"
 
@@ -219,7 +220,7 @@ msgid "None"
 msgstr ""
 
 #: src/editor/editor.cpp:559 src/editor/editor.cpp:1425
-#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:240
+#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:265
 msgid "Player"
 msgstr "שחקן"
 
@@ -231,7 +232,7 @@ msgstr "איזה שחקן?"
 msgid "Which player should start here?"
 msgstr "איזה שחקן צריך להתחיל כאן?"
 
-#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:197
+#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:202
 msgid "Choose a Map to Load"
 msgstr "בחירת מפה לטעינה"
 
@@ -245,7 +246,7 @@ msgstr "אזהרה: שם מפה מכיל תווים בלתי חוקיים. אנ�
 msgid "The file does not contain a valid map."
 msgstr "קובץ זה אינו מכיל מפה חוקית."
 
-#: src/editor/editor.cpp:1304
+#: src/editor/editor.cpp:1304 src/editor2/editor_controller.cpp:107
 msgid "Quit Editor"
 msgstr "צא מתוכנית העריכה"
 
@@ -253,11 +254,11 @@ msgstr "צא מתוכנית העריכה"
 msgid "Do you want to save the map before quitting?"
 msgstr "האם ברצונך לשמור את המפה לפני יציאה?"
 
-#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:351
+#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:368
 msgid "Map saved."
 msgstr "מפה נשמרה."
 
-#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:356
+#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:373
 msgid "Could not save the map: $msg"
 msgstr "לא ניתן לשמור את המפה: $msg"
 
@@ -284,60 +285,64 @@ msgstr ""
 msgid " maximum="
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:160
+#: src/editor2/editor_controller.cpp:165
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:168
+#: src/editor2/editor_controller.cpp:173
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:171
+#: src/editor2/editor_controller.cpp:176
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:173
+#: src/editor2/editor_controller.cpp:178
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:183
+#: src/editor2/editor_controller.cpp:188
 msgid "There are unsaved changes in the map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:184
-msgid "Do you want to discard all changes you made te the map?"
+#: src/editor2/editor_controller.cpp:189
+msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:373 src/editor2/editor_controller.cpp:379
+#: src/editor2/editor_controller.cpp:280
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:390 src/editor2/editor_controller.cpp:396
 msgid "There was an error while loading the map:"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:376
+#: src/editor2/editor_controller.cpp:393
 msgid "Error loading map (format)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:382
+#: src/editor2/editor_controller.cpp:399
 msgid "Error loading map (wml)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:637
+#: src/editor2/editor_controller.cpp:658
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:643
+#: src/editor2/editor_controller.cpp:664
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:237
+#: src/editor2/mouse_action.cpp:262
 #, fuzzy
 msgid "(Player)^None"
 msgstr "שחקן"
 
-#: src/editor2/mouse_action.cpp:244
+#: src/editor2/mouse_action.cpp:269
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:245
+#: src/editor2/mouse_action.cpp:270
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
