@@ -10,15 +10,17 @@ is making sure that spelling/grammer/whatever is usable and that you are using
 
 The release team should empty this file after each release.
 
+***
 
 Terrain graphic rules for user-made add-ons are now loaded before
 the core ones, making custom tiles look the same in-game as they did
 in the editor in the previous release (1.5.2).
 
+***
 
-Editor2 is the new map editor developed by Ilor as the GSoC project. Editor2 is 
-a replacement of wesnoth_editor, the old_editor. Unlike the old editor, editor2 
-is compiled in the game executable. The old editor remains in its own 
+Editor2 is the new map editor developed by Ilor as the GSoC project. Editor2 is
+a replacement of wesnoth_editor, the old_editor. Unlike the old editor, editor2
+is compiled in the game executable. The old editor remains in its own
 executable, both can safely coexist.
 
 To build the game with the new editor, use scons with editor2=yes or an
@@ -33,9 +35,19 @@ menu, or use the -e or --editor command line option, i.e. "wesnoth -e". If this
 fails and there is no "Editor" button, it means the game was compiled without
 editor2 support.
 
+***
+
 We found a memory leak in the new widget code and the leak seems to be in a
 library. We're looking into it. This leak causes Wesnoth to use quite some
 memory after opening a few new dialogs. New dialogs are enabled with the
 --new-widgets start switch, but are also used in the new editor (even without
 the --new-widgets) switch. The only solution at the moment is to restart
 Wesnoth.
+
+***
+
+Son of the Black-Eye has received a lot of bug-fixes, map changes and general
+polish. As a result of the bigger changes the balance is probably a bit off:
+later scenarios are likely to be easier than before. Playtesting and rebalancing
+suggestions would be very welcome (the campaign is intended to remain a
+challenging one).
