@@ -57,6 +57,16 @@ public:
 		const std::string& definition);
 
 	/**
+	 * Update the size of the screen variables in settings.
+	 *
+	 * Before a window gets build the screen sizes need to be updates. This
+	 * function does that. It's only done when no other window is active, if
+	 * another window is active it already updates the sizes with it's resize
+	 * event.
+	 */
+	static void update_screen_size();
+
+	/**
 	 * Default return values.
 	 *
 	 * These values are named return values and most are assigned to a widget

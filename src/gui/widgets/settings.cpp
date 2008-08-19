@@ -20,6 +20,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -109,9 +110,7 @@ void load_settings()
 	// Init.
 	fill_window_types();
 
-	const SDL_Rect rect = screen_area();
-	settings::screen_width = rect.w;
-	settings::screen_height = rect.h;
+	twindow::update_screen_size();
 
 	// Read file.
 	config cfg;
@@ -1105,6 +1104,8 @@ tresolution_definition_ptr get_control(
 
 std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type)
 {
+	twindow::update_screen_size();
+
 	std::map<std::string, twindow_builder>::const_iterator 
 		window = current_gui->second.window_types.find(type);
 

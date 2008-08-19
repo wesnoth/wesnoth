@@ -121,6 +121,7 @@ twindow::twindow(CVideo& video,
 	h_(h)
 {
 	// We load the config in here as exception.
+	// Our caller did update the screen size so no need for us to do that again.
 	set_definition(definition);
 	load_config();
 
@@ -129,6 +130,17 @@ twindow::twindow(CVideo& video,
 
 	help_popup_.set_definition("default");
 	help_popup_.set_visible(false);
+}
+
+void twindow::update_screen_size()
+{
+	// Only if we're the toplevel window we need to update the size, otherwise
+	// it's done in the resize event.
+	if(draw_interval == 0) {
+		const SDL_Rect rect = screen_area();
+		settings::screen_width = rect.w;
+		settings::screen_height = rect.h;
+	}
 }
 
 twindow::tretval twindow::get_retval_by_id(const std::string& id)
@@ -163,6 +175,10 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 	if(top_level_) {
 		draw_interval = 30;
 		SDL_AddTimer(draw_interval, draw_timer, NULL);
+
+		// There might be some time between creation and showing so reupdate
+		// the sizes.
+		update_screen_size();
 	}
 
 	suspend_drawing_ = false;
