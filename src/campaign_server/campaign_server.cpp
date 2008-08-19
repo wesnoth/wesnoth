@@ -297,7 +297,6 @@ namespace {
  			config::child_list camps = campaigns().get_children("campaign");
  			LOG_CS << "Encoding CR in all stored campaigns. Number of addons: " << camps.size() <<"\n";
  
-			const char escape_char = '\x01'; //!< Binary escape char.
  			for (config::child_list::iterator itor = camps.begin();
  					itor != camps.end(); ++itor)
  			{
