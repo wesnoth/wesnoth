@@ -46,7 +46,7 @@ version_info::version_info(unsigned int major, unsigned int minor, unsigned int 
 }
 
 version_info::version_info(const std::string& str)
-	: nums_(3,0), sane_(true)
+	: special_(""), special_separator_('\0'), sane_(true)
 {
 	const std::vector<std::string> string_parts = utils::split(str,'.');
 	// first two components are required to be valid numbers, though
@@ -56,38 +56,26 @@ version_info::version_info(const std::string& str)
 		return;
 
 	try {
-		nums_[0] = lexical_cast<unsigned int>(string_parts[0]);
-		if(parts > 1) {
-			nums_[1] = lexical_cast<unsigned int>(string_parts[1]);
+		size_t i = 0;
+		nums_.reserve(parts); // speed up insertion a bit (preallocate memory)
+		while(i < parts - 1) {
+			nums_.push_back( lexical_cast<unsigned int>(string_parts[i]) );
+			i++;
 		}
-		if(parts == 3) {
-			nums_[2] = lexical_cast<unsigned int>(string_parts[2]);
-		} else if(parts > 2) {
-			std::string numstr;
-			// Check for special suffix and use it
-			this->init_special_version(string_parts[2], numstr);
-			nums_[2] = lexical_cast<unsigned int>(numstr);
-		}
-		if(parts > 3) {
-			// Everything else goes to noncanonical space
-			nums_.reserve(nums_.size()+parts-3);
-			for(size_t i = 3; i < parts; ++i) {
-				nums_.push_back(0);
-				if(i == parts-1) {
-					std::string numstr;
-					// Check for special suffix and use it
-					this->init_special_version(string_parts[i], numstr);
-					nums_[i] = lexical_cast<unsigned int>(numstr);
-				} else {
-					nums_[i] = lexical_cast<unsigned int>(string_parts[i]);
-				}
-			}
-		}
-	} catch (bad_lexical_cast const&) {
+		std::string numstr;
+		// Check for special suffix and use it
+		this->init_special_version(string_parts[i], numstr);
+		nums_.push_back( lexical_cast<unsigned int>(numstr) );
+	}
+	catch (bad_lexical_cast const&) {
 		sane_ = false;
-	} catch (std::out_of_range const&) {
+	}
+	catch (std::out_of_range const&) {
 		;
 	}
+	
+	if(nums_.size() < 3) nums_.resize(3,0);
+
 }
 
 void version_info::init_special_version(const std::string& full_component, std::string& number_string)
@@ -136,7 +124,7 @@ std::string version_info::str() const
 		for(size_t i = 3; i < items; ++i)
 			o << nums_[i] << '.';
 	}
-	if(special_separator_ != '\0') o << special_separator_;
+	if(special_separator_ != '\0' && special_.empty() != true) o << special_separator_;
 	if(special_.empty() != true)   o << special_;
 
 	return o.str();
@@ -171,56 +159,101 @@ bool version_info::is_canonical() const {
 }
 
 namespace {
-	template<class Predicate>
-	bool version_info_comparison_internal(const version_info& l, const version_info& r, Predicate comp)
+	enum COMP_TYPE {
+		EQUAL,
+		NOT_EQUAL,
+		LT, GT
+	};
+
+	namespace {
+		static const size_t max_recursions = 256;
+		static size_t level = 0;
+	}
+	
+	template<typename _Toperator, typename _Tfallback_operator>
+	bool recursive_order_operation(const std::vector<unsigned int>& l, const std::vector<unsigned int>& r, size_t k)
+	{
+		if(k >= l.size() || k >= r.size() || ++level > max_recursions)
+			return false;
+
+		unsigned int const& lvalue = l[k];
+		unsigned int const& rvalue = r[k];
+
+		_Toperator o;
+		_Tfallback_operator fallback_o;
+
+		bool ret = o(lvalue, rvalue);
+		if((!ret) && fallback_o(lvalue, rvalue)) {
+			ret = recursive_order_operation<_Toperator, _Tfallback_operator>(l,r,++k);
+		}
+		return ret;
+	}
+
+	bool version_numbers_comparison_internal(const version_info& l, const version_info& r, COMP_TYPE o)
 	{
 		if((!l.good()) || !r.good()) throw version_info::not_sane_exception();
 
-		const std::vector<unsigned int> lc = l.components();
-		const std::vector<unsigned int> rc = r.components();
+		std::vector<unsigned int> lc = l.components();
+		std::vector<unsigned int> rc = r.components();
+
 		const size_t lsize = lc.size();
 		const size_t rsize = rc.size();
 		const size_t csize = maximum(lsize, rsize);
+
+		// make compatible, missing items default to zero
+		if(lsize < csize) lc.resize(csize, 0);
+		if(rsize < csize) rc.resize(csize, 0);
 		
-		unsigned int lcomp, rcomp;
+		bool result = true;
 		
-		bool res = true;
-		for(size_t i = 0; res && i < csize; ++i) {
-			lcomp = i >= lsize ? 0 : lc[i];
-			rcomp = i >= rsize ? 0 : rc[i];
-			res = res && comp(lcomp, rcomp);
+		const std::vector<unsigned int>& lcc = lc;
+		const std::vector<unsigned int>& rcc = rc;
+		
+		switch(o)
+		{
+			case EQUAL: case NOT_EQUAL: {			
+				for(size_t i = 0; result == true && i < csize; ++i) {
+					unsigned int const& lvalue = lc[i];
+					unsigned int const& rvalue = rc[i];
+					result = result && (o == EQUAL ? lvalue == rvalue : lvalue != rvalue);
+				}
+				break;
+			}
+			case LT:
+				result = recursive_order_operation<std::less<unsigned int>, std::less_equal<unsigned int> >(lcc, rcc, 0);
+				break;
+			case GT:
+				result = recursive_order_operation<std::greater<unsigned int> , std::greater_equal<unsigned int> >(lcc, rcc, 0);
+				break;
+			default:
+				assert(0 == 1);
+				break;
 		}
-		return res;
+		return result;
 	}
 	
 } // end unnamed namespace
 
 bool operator==(const version_info& l, const version_info& r)
 {
-	std::equal_to<unsigned int> o;
-	return version_info_comparison_internal(l, r, o) && l.special_version() == r.special_version();
+	return version_numbers_comparison_internal(l, r, EQUAL) && l.special_version() == r.special_version();
 }
 
 bool operator!=(const version_info& l, const version_info& r)
 {
-	std::not_equal_to<unsigned int> o;
-	return version_info_comparison_internal(l, r, o) && l.special_version() != r.special_version();
+	return version_numbers_comparison_internal(l, r, NOT_EQUAL) && l.special_version() != r.special_version();
 }
 
 bool operator<(const version_info& l, const version_info& r)
 {
-	std::cerr << "compare: " << l.str() << " < " << r.str() << '\n';
-	std::less<unsigned int> o;
-	return version_info_comparison_internal(l, r, o) &&
+	return version_numbers_comparison_internal(l, r, LT) &&
 	       ((l.special_version().empty() && !r.special_version().empty()) ||
 	        l.special_version() < r.special_version());
 }
 
 bool operator>(const version_info& l, const version_info& r)
 {
-	std::cerr << "compare: " << l.str() << " > " << r.str() << '\n';
-	std::greater<unsigned int> o;
-	return version_info_comparison_internal(l, r, o) &&
+	return version_numbers_comparison_internal(l, r, GT) &&
 	       ((r.special_version().empty() && !l.special_version().empty()) ||
 	        l.special_version() > r.special_version());
 }
