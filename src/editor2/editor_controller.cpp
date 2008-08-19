@@ -186,7 +186,7 @@ bool editor_controller::confirm_discard()
 {
 	if (get_map_context().modified()) {
 		return !gui::dialog(gui(), _("There are unsaved changes in the map"),
-			_("Do you want to discard all changes you made te the map?"), gui::YES_NO).show();
+			_("Do you want to discard all changes you made to the map?"), gui::YES_NO).show();
 	} else {
 		return true;
 	}
