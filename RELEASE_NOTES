@@ -32,3 +32,10 @@ To start the new editor, launch wesnoth.exe and choose "Editor" in the title
 menu, or use the -e or --editor command line option, i.e. "wesnoth -e". If this
 fails and there is no "Editor" button, it means the game was compiled without
 editor2 support.
+
+We found a memory leak in the new widget code and the leak seems to be in a
+library. We're looking into it. This leak causes Wesnoth to use quite some
+memory after opening a few new dialogs. New dialogs are enabled with the
+--new-widgets start switch, but are also used in the new editor (even without
+the --new-widgets) switch. The only solution at the moment is to restart
+Wesnoth.
