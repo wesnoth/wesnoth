@@ -1100,7 +1100,7 @@ unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
 
 void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 {
-    DBG_UT << "unit_type_data::set_config, cfg:\n" << cfg;
+    DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
 
     clear();
     set_unit_config(cfg);
