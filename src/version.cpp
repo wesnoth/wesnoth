@@ -254,19 +254,21 @@ bool operator!=(const version_info& l, const version_info& r)
 
 bool operator<(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, LT) && (
-	       (l.special_version().empty() && r.special_version().empty()) ||
-	       (l.special_version().empty() && !r.special_version().empty()) ||
-	       (l.special_version() < r.special_version())
+	return version_numbers_comparison_internal(l, r, LT) ||
+	       (l == r && ((l.special_version().empty() && r.special_version().empty()) ||
+	                   (l.special_version().empty() && !r.special_version().empty()) ||
+	                   (l.special_version() < r.special_version())
+	                  )
 	       );
 }
 
 bool operator>(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, GT) && (
-	       (r.special_version().empty() && l.special_version().empty()) ||
-	       (r.special_version().empty() && !l.special_version().empty()) ||
-	       (l.special_version() > r.special_version())
+	return version_numbers_comparison_internal(l, r, GT) ||
+	       (l == r && ((r.special_version().empty() && l.special_version().empty()) ||
+	                   (r.special_version().empty() && !l.special_version().empty()) ||
+	                   (l.special_version() > r.special_version())
+	                  )
 	       );
 }
 
