@@ -49,39 +49,39 @@ Version 1.5.2+svn:
    * Set hidden=yes on main terrain archetypes (Gt, Qt, At, Xt).
  * User interface:
    * Added an experimental add-ons update interface.
+   * Added initial drag&drop support for button widgets
    * Fixed a broken translation which gave all females the prefix female^ on
      alignment description when using the "C" locale or any translation that
      is missing that string.
    * Make the load and recruit hotkey use the ctrl instead of cmd key on non
      Mac systems
-   * Added initial drag&drop support for button widgets
  * Campaign server:
    * Made campaign server encode CRs in old content in first startup
  * WML engine:
+   * Added some convenience macros for units: {TRANSFORM_UNIT}, etc.
    * Extended [modify_turns] to allow scenario designers to change the
      current-turn number dynamically with current=<number>.
    * It is now possible to use [time_area] to add or remove new local ToD
      areas and their schedules during scenario events. Removal requires to
      associate an id. to [time_area]s, or it won't work. Uses Standard
      Location Filter to match locations.
-   * Added some convenience macros for units: {TRANSFORM_UNIT}, etc.
  * Miscellaneous and bug fixes:
+   * Add some gcc-4.3.0 compilation fixes (patch #1083)
+   * Added a MSVC 9 project file and some fixes for that compiler (patch #1093)
    * Add-on uploads by default will skip all dot-files (.*), which are hidden
      files or directories in UNIX filesystems.
    * Downloaded add-ons' meta information is stored in <add-on dir>/_info.cfg
      rather than <add-on dir>/info.cfg now; both the in-game client and the
      wesnoth_addon_manager Python script have been updated for this.
-   * Fixed FULL_HEAL WML macro not working properly.
-   * Fixed segmentation fault when wml modified and killed attacker and
-     defender in a battle
-   * Add some gcc-4.3.0 compilation fixes (patch #1083)
-   * Fixed NR Krash inexplicably disappears from recall list (bug: #11612)
    * Fixed bug #12094: Event "last breath" cannot be triggered for attackers
    * Fixed [filter_attack] and [filter_second_attack] not being effective
      in die/last_breath events.
+   * Fixed FULL_HEAL WML macro not working properly.
+   * Fixed NR Krash inexplicably disappears from recall list (bug: #11612)
+   * Fixed segmentation fault when wml modified and killed attacker and
+     defender in a battle
    * Fixed Wesnoth crashing after an attacker/defender_hits/misses event if
      the WML kills one unit and replaces/unstores the other
-   * Added a MSVC 9 projectfile and some fixes for that compiler (patch #1093)
 
 Version 1.5.2:
  * campaigns:
