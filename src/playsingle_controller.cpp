@@ -180,17 +180,21 @@ void playsingle_controller::report_victory(
 	report << _("Remaining gold: ")
 		   << remaining_gold << "\n";
 	if(end_level.gold_bonus) {
-		report << _("Early finish bonus: ")
-			   << finishing_bonus_per_turn
-			   << " " << _("per turn") << "\n"
-			   << font::BOLD_TEXT << _("Turns finished early: ")
-			   << turns_left << "\n"
-			   << _("Bonus: ")
-			   << finishing_bonus << "\n"
-			   << _("Gold: ")
-			   << (remaining_gold + finishing_bonus);
+		if (turns_left > -1) {
+			report << _("Early finish bonus: ")
+				   << finishing_bonus_per_turn
+				   << " " << _("per turn") << "\n"
+				   << font::BOLD_TEXT << _("Turns finished early: ")
+				   << turns_left << "\n"
+				   << _("Bonus: ")
+				   << finishing_bonus << "\n";
+	  	}
+		report << _("Gold: ")
+		       << (remaining_gold + finishing_bonus);
 	}
-	report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
+	if (remaining_gold > 0) {
+		report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
+	}
 	if(end_level.carryover_add) {
 		report << '\n' << font::BOLD_TEXT << _("Bonus Gold: ") << player_gold;
 	} else {
