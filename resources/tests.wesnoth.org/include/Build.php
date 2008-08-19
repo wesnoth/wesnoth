@@ -208,7 +208,6 @@ class Build {
 			if (strpos($this->error_msg,'error') !== false 
 				|| strpos($this->error_msg,'ld returned'))
 					$this->status = self::S_ERROR;
-			$this->error_msg = str_replace("'","\\'",$this->error_msg);
 		}
 
 		$this->time = time();
@@ -319,7 +318,6 @@ class Build {
 		} else {
 			$build_result = "Build failed:\n" . $this->error_msg;
 		}
-		$build_result = str_replace("\n"," \\n",$build_result);
 
 	
 		return array('result' 			=> $build_result,

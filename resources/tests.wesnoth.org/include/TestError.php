@@ -38,7 +38,7 @@ class TestError {
 			$this->error_type = $name;
 			$this->file = FilenameConverter::stripBuildDirs((string)$data->attributes()->file);
 			$this->line = (string)$data->attributes()->line;
-			$this->error_msg = str_replace("'","\\'",str_replace("\n","\\n",(string)$data[0]));
+			$this->error_msg = (string)$data[0];
 			$result = $this->db->Execute('SELECT t.id as id, before_id, last_id FROM test_errors t, builds b
 					WHERE t.error_type=? 
 					AND t.file=?

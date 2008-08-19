@@ -19,13 +19,14 @@ function smarty_modifier_autohide($text, $min_length_to_hide, $split_from_space,
 	{
 		$split_from_space = $split_from_space?"true":"false";
 		$take_end = $take_end?"true":"false";
+		$text = str_replace("'","\\'",str_replace("\n",'\n',$text));
 		return "<script type='text/javascript'>
 			/*<![CDATA[*/
 			autohide_store.push(new Autohide('$text', $min_length_to_hide, $split_from_space, $take_end));
 			/*]]>*/
 			</script>";
 	} else {
-		return str_replace("\\'","'",str_replace('\n',"\n",$text));
+		return $text;
 	}
 }
 
