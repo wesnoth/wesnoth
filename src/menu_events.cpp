@@ -2114,7 +2114,7 @@ private:
 				register_alias("emote", "me");
 				register_command("whisper", &chat_command_handler::do_whisper,
 					_("Sends a private message. "
-					"You can't send messages to players that control "
+					"You can't send messages to players that don't control "
 					"a side in a running game you are in."), "<nick> <message>");
 				register_alias("whisper", "msg");
 				register_alias("whisper", "m");
