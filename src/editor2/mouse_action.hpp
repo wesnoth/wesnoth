@@ -79,7 +79,7 @@ public:
 	
 	/**
 	 * Function called by the controller on a key event for the current mouse action.
-	 * Defaults to no action.
+	 * Defaults to starting position processing.
 	 */
 	virtual editor_action* key_event(editor_display& disp, const SDL_Event& e);
 	
@@ -329,11 +329,6 @@ public:
 	: mouse_action(key)
 	{
 	}
-	
-	/**
-	 * Allows setting/clearing the starting positions in the mouseover hexes via keyboard
-	 */
-	editor_action* key_event(editor_display& disp, const SDL_Event& e);
 	
 	/**
 	 * Left click displays a player-number-selector dialog and then creates an action

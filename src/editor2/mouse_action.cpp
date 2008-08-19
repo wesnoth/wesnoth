@@ -60,9 +60,34 @@ editor_action* mouse_action::drag_end(
 }
 
 editor_action* mouse_action::key_event(
-	editor_display& /*disp*/, const SDL_Event& /*e*/)
+	editor_display& disp, const SDL_Event& event)
 {
-	return NULL;
+	if (!has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
+		int side = event.key.keysym.sym - '0';
+		if (side >= 1 && side <= gamemap::MAX_PLAYERS) {
+			gamemap::location pos = disp.get_map().starting_position(side);
+			if (pos.valid()) {
+				disp.scroll_to_tile(pos, display::WARP);
+			}
+		}
+		return NULL;
+	}
+	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
+		return NULL;
+	}
+	editor_action* a = NULL;
+	if ((has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9'))
+	|| event.key.keysym.sym == SDLK_DELETE) {
+		int res = event.key.keysym.sym - '0';
+		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
+		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_) + 1;
+		if (res == 0 && player_starting_at_hex != -1) {
+			a = new editor_action_starting_position(gamemap::location(), player_starting_at_hex);
+		} else if (res > 0 && res != player_starting_at_hex) {
+			a = new editor_action_starting_position(previous_move_hex_, res);
+		}
+	}
+	return a;
 }
 
 bool mouse_action::has_alt_modifier() const 
@@ -161,13 +186,13 @@ std::set<gamemap::location> mouse_action_select::affected_hexes(
 }
 
 editor_action* mouse_action_select::key_event(
-		editor_display& disp, const SDL_Event& /*e*/)
+		editor_display& disp, const SDL_Event& event)
 {
-	// Force an actual move
+	// Force an actual move event to update the brush
 	gamemap::location tmp = previous_move_hex_;
 	previous_move_hex_ = gamemap::location();
 	move(disp, tmp);
-	return NULL;
+	return mouse_action::key_event(disp, event);
 }
 
 editor_action* mouse_action_select::click_perform_left(
@@ -265,35 +290,5 @@ editor_action* mouse_action_starting_position::click_right(editor_display& disp,
 		return NULL;
 	}
 }
-
-editor_action* mouse_action_starting_position::key_event(editor_display& disp, const SDL_Event& event)
-{
-	if (has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
-		int side = event.key.keysym.sym - '0';
-		if (side >= 1 && side <= gamemap::MAX_PLAYERS) {
-			gamemap::location pos = disp.get_map().starting_position(side);
-			if (pos.valid()) {
-				disp.scroll_to_tile(pos, display::WARP);
-			}
-		}
-		return NULL;
-	}
-	if (!disp.map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
-		return NULL;
-	}
-	editor_action* a = NULL;
-	if ((event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9') || event.key.keysym.sym == SDLK_DELETE) {
-		int res = event.key.keysym.sym - '0';
-		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
-		int player_starting_at_hex = disp.map().is_starting_position(previous_move_hex_) + 1;
-		if (res == 0 && player_starting_at_hex != -1) {
-			a = new editor_action_starting_position(gamemap::location(), player_starting_at_hex);
-		} else if (res > 0 && res != player_starting_at_hex) {
-			a = new editor_action_starting_position(previous_move_hex_, res);
-		}
-	}
-	return a;
-}
-
 
 } //end namespace editor2
