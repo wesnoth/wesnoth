@@ -139,8 +139,11 @@ public:
 	/** FIXME see whether needed to be exported. */
 	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
 
-protected:
 
+	/** Inherited from twidget. */
+	void set_dirty(const bool dirty = true);
+
+protected:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	const tgrid& grid() const { return grid_; }

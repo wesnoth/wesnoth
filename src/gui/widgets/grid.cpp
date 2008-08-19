@@ -531,6 +531,22 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 	clear_cache();
 }
 
+void tgrid::set_dirty(const bool dirty)
+{
+	// Inherited.
+	twidget::set_dirty(dirty);
+
+	if(!dirty) {
+		for(std::vector<tchild>::iterator itor = children_.begin();
+				itor != children_.end(); ++itor) {
+
+			if(itor->widget()) {
+				itor->widget()->set_dirty(dirty);
+			}
+		}
+	}
+}
+
 tpoint tgrid::tchild::get_best_size() const
 {
 	if(!widget_) {

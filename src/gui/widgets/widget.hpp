@@ -535,14 +535,20 @@ public:
 	unsigned get_width() const { return w_; }
 	unsigned get_height() const { return h_; }
 
-protected:	
+	/**
+	 * Sets the widgets dirty state.
+	 *
+	 * When set to dirty it should also mark it's parents as dirty so that the
+	 * window easily test for it's dirty state.
+	 * When set to not dirty it should also mark it's childeren as not dirty.
+	 * (Obviously only for container classes).
+	 */
 	virtual void set_dirty(const bool dirty = true) 
 	{ 
 		dirty_ = dirty; 
 		if(parent_ && dirty) parent_->set_dirty(true);
 	}
 
-public:	
 	virtual bool is_dirty() const { return dirty_; }
 
 private:

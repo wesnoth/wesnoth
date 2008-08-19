@@ -135,5 +135,15 @@ void tcontainer_::set_active(const bool active)
 	set_self_active(active);
 }
 
+void tcontainer_::set_dirty(const bool dirty)
+{
+	// Inherited.
+	twidget::set_dirty(dirty);
+
+	if(!dirty) {
+		grid_.set_dirty(dirty);
+	}
+}
+
 } // namespace gui2
 

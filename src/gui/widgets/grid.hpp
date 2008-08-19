@@ -207,6 +207,9 @@ public:
 	 */
 	void set_rows_cols(const unsigned rows, const unsigned cols);
 
+	/** Inherited from twidget. */
+	void set_dirty(const bool dirty = true);
+
 private:
 	/** Child item of the grid. */
 	class tchild 
