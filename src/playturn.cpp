@@ -220,10 +220,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		std::vector<team*> allies;
 		std::vector<std::string> options;
 
-		//see if the side still has a leader alive. If they have
-		//no leader, we assume they just want to be replaced by
-		//the AI.
-		if(have_leader) {
+		// We want to give host chance to decide what to do for side
+		{
 			utils::string_map t_vars;
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
