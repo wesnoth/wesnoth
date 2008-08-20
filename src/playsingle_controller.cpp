@@ -443,7 +443,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 						 map_.villages().size() * game_config::village_income +
 						 game_config::base_income;
 				const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
-				const int finishing_bonus = end_level.gold_bonus ?
+				const int finishing_bonus = (end_level.gold_bonus && (turns_left > -1)) ?
 						 (finishing_bonus_per_turn * turns_left) : 0;
 
 				for(i=teams_.begin(); i!=teams_.end(); ++i) {
