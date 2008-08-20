@@ -15,6 +15,8 @@
 #ifndef DISABLE_4786_HPP_INCLUDED
 #define DISABLE_4786_HPP_INCLUDED
 
+#if 0
+
 //for windows compilers
 #ifdef __MSVCRT__
 #ifndef __GNUC__
@@ -78,5 +80,6 @@ namespace std {
   using ::strrchr;
 }
 
+#endif
 #endif
 #endif
