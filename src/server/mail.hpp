@@ -22,17 +22,31 @@
 
 class mailer {
 	public:
-		mailer(const config& c) {
+		mailer(const config& c) :
+			mail_cfg()
+		{
 			load_mail_cfg(c);
 		}
 
-		struct {
+		struct tmail_cfg {
+			
+			tmail_cfg() :
+				from_address(),
+				server(),
+				port(0),
+				username(),
+				password()
+			{
+			}
+
 			std::string from_address;
 			std::string server;
 			unsigned short port;
 			std::string username;
 			std::string password;
-		} mail_cfg;
+		};
+
+		tmail_cfg mail_cfg;
 
 		void load_mail_cfg(const config& c);
 		bool send_mail(const std::string& to_address, const std::string& subject, const std::string& message);
