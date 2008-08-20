@@ -294,10 +294,8 @@ if env["PLATFORM"] == 'darwin':            # Mac OS X
     env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
 
 if os.path.exists('.git'):
-    import re
-    p = re.compile('Revision: ([0-9]+)');
     try:
-        env["svnrev"] = p.search(Popen(Split("git-svn info"), stdout=PIPE).communicate()[0]).group(1)
+        env["svnrev"] = Popen(Split("git-svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n")
     except:
         env["svnrev"] = ""
 else:
