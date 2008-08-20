@@ -130,8 +130,8 @@ void map_fragment::rotate_60_ccw()
 		gamemap::location l(0,0);
 		int x = ti.offset.x;
 		int y = ti.offset.y;
-		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
-		// but if x is odd, simply using x/2 + x/2 will lack a step
+		// rotate the X-Y axes to NORTH/NORTH_EAST - SOUTH_EAST axes'
+		// reverse of what the cw rotation does
 		l = l.get_direction(gamemap::location::NORTH, (x-is_odd(x))/2);
 		l = l.get_direction(gamemap::location::NORTH_EAST, (x+is_odd(x))/2 );
 		l = l.get_direction(gamemap::location::SOUTH_EAST, y);
