@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+// UNUSED CODE -- TODO FOR THE NEW TERRAIN PALETTE
+
 #include "terrain_group.hpp"
 #include "editor_common.hpp"
 #include "../foreach.hpp"

@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+// UNUSED CODE -- TODO FOR THE NEW TERRAIN PALETTE
+
 #ifndef EDITOR2_TERRAIN_GROUP_HPP
 #define EDITOR2_TERRAIN_GROUP_HPP
 
