@@ -144,7 +144,6 @@ void tcontrol::draw(surface& surface, const bool force,
 		restorer_ = 0;
 	}
 
-	set_dirty(false);
 	SDL_Rect rect = get_rect();
 
 	if(!visible_) {

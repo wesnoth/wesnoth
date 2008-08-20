@@ -365,13 +365,6 @@ void tlistbox::draw(surface& surface, const bool force,
 	// Inherited.
 	tcontainer_::draw(surface, force, invalidate_background);
 
-	/**
-	 * @todo there seems to be a redraw bug with the scrollbar. Since we're in
-	 * a rush for a release just force a redraw. The buttons are also broken
-	 * but less important so leave them.
-	 */
-	scrollbar()->draw(surface, true, true);
-
 	if(invalidate_background) {
 		list_background_.assign(NULL);
 	}

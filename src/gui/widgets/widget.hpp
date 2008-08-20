@@ -362,7 +362,10 @@ public:
 	/**
 	 *  Draws a widget.
 	 *
-	 *  The widget is (rather should) only (be) drawn if dirty.
+	 *  The widget is (rather should) only (be) drawn if dirty. Note when a
+	 *  widget draws itself it shouldn't clear the dirty flag. This should be
+	 *  done by the toplevel window that issued the draw. This to avoid
+	 *  inherited functions to clear the dirty flag too early.
 	 * 
 	 *  @todo add force as parameter.
 	 *
