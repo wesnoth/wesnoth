@@ -164,6 +164,7 @@ bool in_ranges(Cmp c, std::vector<std::pair<Cmp, Cmp> >&ranges) {
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
+#if 0
 /**
  *  A definition of 'push_back' for strings,
  * since some implementations don't support string::push_back
@@ -174,6 +175,15 @@ void push_back(T& str, C c)
 	str.resize(str.size()+1);
 	str[str.size()-1] = c;
 }
+#else
+
+template<typename T, typename C>
+void push_back(T& str, C c)
+{	
+	str.push_back(c);
+}
+
+#endif
 
 #ifdef __GNUC__
 #define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen
