@@ -115,6 +115,9 @@ class unit_movement_type;
 class unit_movement_type
 {
 public:
+        // maximum possible move distance 
+	static const int UNREACHABLE = 99;
+
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
 	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);

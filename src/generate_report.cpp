@@ -478,7 +478,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const int move_cost = u->second.movement_cost(terrain);
 		const int defense = 100 - u->second.defense_modifier(terrain);
 
-		if(move_cost < 99) {
+		if(move_cost < unit_movement_type::UNREACHABLE) {
 			str << " (" << defense << "%," << move_cost << ")";
 		} else if (mouseover == displayed_unit_hex) {
 			str << " (" << defense << "%,-)";

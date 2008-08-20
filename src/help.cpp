@@ -1518,7 +1518,7 @@ public:
 					row.push_back(std::make_pair(markup,
 						     font::line_width(str.str(), normal_font_size)));
 
-					//movement  -  range: 1 .. 5, 99=impassable
+					//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
 					str.str(clear_stringstream);
 					if (moves > type_.movement() )		// cannot move in this terrain
 						color = "red";

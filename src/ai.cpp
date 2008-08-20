@@ -1496,7 +1496,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	     j_end = terrain.end(); j != j_end; ++j)
 	{
 		// Use only reachable tiles when computing the average defense.
-		if (a.movement_type().movement_cost(map_, j->first) < 99) {
+	  if (a.movement_type().movement_cost(map_, j->first) < unit_movement_type::UNREACHABLE) {
 			defense += a.movement_type().defense_modifier(map_, j->first) * j->second;
 			weighting_sum += j->second;
 		}
