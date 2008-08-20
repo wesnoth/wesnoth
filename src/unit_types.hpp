@@ -115,7 +115,9 @@ class unit_movement_type;
 class unit_movement_type
 {
 public:
-        // maximum possible move distance 
+        //this move distance means a hex is unreachable
+	//if there is an UNREACHABLE macro declared in the data tree
+	//it should match this value.    
 	static const int UNREACHABLE = 99;
 
 	//this class assumes that the passed in reference will remain valid
