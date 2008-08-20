@@ -51,7 +51,8 @@ class editor_action_whole_map : public editor_action
 class editor_action_chain : public editor_action
 {
 	public:
-		editor_action_chain()
+		editor_action_chain() :
+			actions_()
 		{
 		}
 		explicit editor_action_chain(std::vector<editor_action*> actions)
