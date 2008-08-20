@@ -153,7 +153,8 @@ namespace {
 		net_manager_(min_thread,max_thread),
 		server_manager_(load_config()),
 		hooks_(),
-		input_(0)
+		input_(0),
+		compress_level_(0)
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
