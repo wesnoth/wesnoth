@@ -348,7 +348,7 @@ env.Clean(all, 'TAGS')
 # Dummy locales
 #
 
-if env["nls"]:
+if env["nls"] and env['PLATFORM'] != 'win32':
     env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | localedef --force \"$TARGET\" 2> /dev/null")
     language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
     language_cfgs = glob("data/languages/*.cfg")
@@ -379,7 +379,7 @@ docdir = env['docdir']
 installable_subs = Split('data fonts icons images sounds')
 if env['nls']:
     installable_subs.append("translations")
-if env['nls']:
+if env['nls'] and env['PLATFORM'] != 'win32':
     installable_subs.append("locales")
 fifodir = env['fifodir']
 mandir = env["mandir"]

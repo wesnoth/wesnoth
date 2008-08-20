@@ -50,12 +50,13 @@ struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
 		game_config::use_dummylocales = true;
+		game_config::path = "./";
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
 		test_utils::get_fake_display();
 
-		lg::set_log_domain_severity("all",3);
+//		lg::set_log_domain_severity("all",3);
 
 		// Set more report as default
 		if (boost::unit_test::runtime_config::log_level() == boost::unit_test::invalid_log_level)

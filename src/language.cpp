@@ -104,11 +104,14 @@ bool language_def::operator== (const language_def& a) const
 
 bool language_def::available() const
 {
+#ifndef _WIN32
 	if (game_config::use_dummylocales)
 	{
 		// Dummy has every language available.
 		return true;
-	}else{
+	}else
+#endif
+	{
 		if(has_language(localename)) {
 			return true;
 		} else {
@@ -118,6 +121,7 @@ bool language_def::available() const
 				}
 			}
 		}
+	
 		return false;
 	}
 }
@@ -219,6 +223,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	    category = LC_ALL;
 #endif
 
+#ifndef _WIN32
+	// dummy locales aren't working in windows
 	if (game_config::use_dummylocales)
 	{
 		static enum { UNINIT, NONE, PRESENT } status = UNINIT;
@@ -242,6 +248,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 			locale = xlocale.c_str();
 		}
 	}
+#endif
 
 	char *res = NULL;
 	#ifdef _WIN32
