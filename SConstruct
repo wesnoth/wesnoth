@@ -358,7 +358,7 @@ if env["nls"]:
     languages = map(lambda x: x + "@wesnoth", languages)
     for language in languages:
         env.Command(
-            os.path.join("locales", language),
+            Dir(os.path.join("locales", language)),
             "locales/C",
             "ln -sf $SOURCE.filebase $TARGET"
             )
