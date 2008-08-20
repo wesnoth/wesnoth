@@ -19,10 +19,12 @@
 
 #include "SDL.h"
 
+#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "network.hpp"
 #include "config.hpp"
 #include "log.hpp"
+#include "language.hpp"
 
 #include "tests/utils/fake_display.hpp"
 /**
@@ -47,12 +49,13 @@ static void exception_translator_game(const game::error& e)
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
+		game_config::use_dummylocales = true;
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
 		test_utils::get_fake_display();
 
-//		lg::set_log_domain_severity("all",3);
+		lg::set_log_domain_severity("all",3);
 
 		// Set more report as default
 		if (boost::unit_test::runtime_config::log_level() == boost::unit_test::invalid_log_level)
@@ -63,6 +66,7 @@ struct wesnoth_global_fixture {
 		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
+		load_language_list();
 	}
 	~wesnoth_global_fixture() 
 	{

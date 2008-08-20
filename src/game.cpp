@@ -363,6 +363,8 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
 #endif
+		} else if(val == "--dummylocales") {
+			game_config::use_dummylocales = true;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1957,6 +1959,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               by id.\n"
 			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
 			<< "  --exit-at-end                exit Wesnoth at end of scenario.\n"
+			<< "  --dummylocales               Enable dummylocales for switching to non-system locale.\n"
 			<< "  --new-widgets                there is a new WIP widget toolkit this switch enables the new toolkit\n"
 			<< "                               (VERY EXPERIMENTAL don't file bug reports since most are known).\n"
 			;

@@ -48,6 +48,8 @@ namespace game_config
 
 	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, small_gui, disable_autosave;
 
+	extern bool use_dummylocales;
+
 	extern std::string path;
 
 	struct server_info {

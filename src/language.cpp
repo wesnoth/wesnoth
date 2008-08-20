@@ -104,21 +104,22 @@ bool language_def::operator== (const language_def& a) const
 
 bool language_def::available() const
 {
-#ifdef USE_DUMMYLOCALES
-	// Dummy has every language available.
-	return true;
-#else
-	if(has_language(localename)) {
+	if (game_config::use_dummylocales)
+	{
+		// Dummy has every language available.
 		return true;
-	} else {
-		foreach(const std::string& lang, alternates) {
-			if(has_language(lang)) {
-				return true;
+	}else{
+		if(has_language(localename)) {
+			return true;
+		} else {
+			foreach(const std::string& lang, alternates) {
+				if(has_language(lang)) {
+					return true;
+				}
 			}
 		}
+		return false;
 	}
-	return false;
-#endif
 }
 
 symbol_table string_table;
@@ -218,28 +219,29 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	    category = LC_ALL;
 #endif
 
-#ifdef USE_DUMMYLOCALES
-	static enum { UNINIT, NONE, PRESENT } status = UNINIT;
-	static std::string locpath;
-	if (status == UNINIT) {
-		if (char const *p = getenv("LOCPATH")) {
-			locpath = p;
-			status = PRESENT;
-		} else status = NONE;
+	if (game_config::use_dummylocales)
+	{
+		static enum { UNINIT, NONE, PRESENT } status = UNINIT;
+		static std::string locpath;
+		if (status == UNINIT) {
+			if (char const *p = getenv("LOCPATH")) {
+				locpath = p;
+				status = PRESENT;
+			} else status = NONE;
+		}
+		if (slocale.empty())
+			if (status == NONE)
+				unsetenv("LOCPATH");
+			else
+				setenv("LOCPATH", locpath.c_str(), 1);
+		else setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
+		std::string xlocale;
+		if (!slocale.empty()) {
+			// dummy suffix to prevent locale aliasing from kicking in
+			xlocale = slocale + "@wesnoth";
+			locale = xlocale.c_str();
+		}
 	}
-	if (slocale.empty())
-		if (status == NONE)
-			unsetenv("LOCPATH");
-		else
-			setenv("LOCPATH", locpath.c_str(), 1);
-	else setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
-	std::string xlocale;
-	if (!slocale.empty()) {
-		// dummy suffix to prevent locale aliasing from kicking in
-		xlocale = slocale + "@wesnoth";
-		locale = xlocale.c_str();
-	}
-#endif
 
 	char *res = NULL;
 	#ifdef _WIN32

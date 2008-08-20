@@ -146,7 +146,7 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 	std::vector<language_def>::const_iterator German = std::find_if(languages.begin(),
 									languages.end(),
 									match_german); // Using German because the most active translation
-	BOOST_REQUIRE_MESSAGE(German != languages.end(), "German translation not found");
+	BOOST_REQUIRE_MESSAGE(German != languages.end() && German->available(), "German translation not found");
 	::set_language(*German);
 	cache.reload_translations();
 

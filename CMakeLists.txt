@@ -173,35 +173,36 @@ add_subdirectory(src)
 
 if(ENABLE_DUMMY_LOCALES)
   add_definitions(-DUSE_DUMMYLOCALES)
-  set(DUMMY_LOCALE_C_DIR ${CMAKE_SOURCE_DIR}/locales/C)
-
-  add_custom_command(OUTPUT ${DUMMY_LOCALE_C_DIR}
-                     COMMAND mkdir -p ${DUMMY_LOCALE_C_DIR} 
-                     && echo | localedef --force ${DUMMY_LOCALE_C_DIR} 2> /dev/null || true)
-
-  file(GLOB_RECURSE LANGS RELATIVE ${CMAKE_SOURCE_DIR}/data/languages data/languages/*.cfg)
-
-  set(DUMMY_LOCALES)
-  foreach(LANGFILE ${LANGS})
-    string(REGEX REPLACE "(.*)\\.cfg" "\\1" LANG ${LANGFILE})
-    if(NOT LANG STREQUAL "C")
-      set(DUMMY_LOCALE_DIR ${CMAKE_SOURCE_DIR}/locales/${LANG})
-      add_custom_command(OUTPUT ${DUMMY_LOCALE_DIR}
-                         COMMAND ln -s 
-                         ARGS ${DUMMY_LOCALE_C_DIR} ${DUMMY_LOCALE_DIR}
-                         DEPENDS ${DUMMY_LOCALE_C_DIR})
-
-      set(DUMMY_LOCALES ${DUMMY_LOCALES} ${DUMMY_LOCALE_DIR})
-    endif()
-
-  endforeach()
-  add_custom_target(dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
-
-  # this is a workaround for a bug in 2.4-7
-  file(MAKE_DIRECTORY locales)
-  install(DIRECTORY locales DESTINATION ${DATADIR} )
-
 endif()
+
+set(DUMMY_LOCALE_C_DIR ${CMAKE_SOURCE_DIR}/locales/C)
+
+add_custom_command(OUTPUT ${DUMMY_LOCALE_C_DIR}
+                   COMMAND mkdir -p ${DUMMY_LOCALE_C_DIR} 
+                   && echo | localedef --force ${DUMMY_LOCALE_C_DIR} 2> /dev/null || true)
+
+file(GLOB_RECURSE LANGS RELATIVE ${CMAKE_SOURCE_DIR}/data/languages data/languages/*.cfg)
+
+set(DUMMY_LOCALES)
+foreach(LANGFILE ${LANGS})
+  string(REGEX REPLACE "(.*)\\.cfg" "\\1" LANG ${LANGFILE})
+  if(NOT LANG STREQUAL "C")
+    set(DUMMY_LOCALE_DIR ${CMAKE_SOURCE_DIR}/locales/${LANG})
+    add_custom_command(OUTPUT ${DUMMY_LOCALE_DIR}
+                       COMMAND ln -s 
+                       ARGS ${DUMMY_LOCALE_C_DIR} ${DUMMY_LOCALE_DIR}
+                       DEPENDS ${DUMMY_LOCALE_C_DIR})
+
+    set(DUMMY_LOCALES ${DUMMY_LOCALES} ${DUMMY_LOCALE_DIR})
+  endif()
+
+endforeach()
+add_custom_target(dummy-locales ALL DEPENDS ${DUMMY_LOCALES})
+
+# this is a workaround for a bug in 2.4-7
+file(MAKE_DIRECTORY locales)
+install(DIRECTORY locales DESTINATION ${DATADIR} )
+
 
 #
 # shrink images for tinygui

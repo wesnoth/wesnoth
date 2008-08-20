@@ -66,6 +66,7 @@ libwesnoth_sources = Split("""
     hotkeys.cpp
     image.cpp
     key.cpp
+    language.cpp
     loadscreen.cpp
     map_create.cpp
     map_label.cpp
@@ -104,7 +105,6 @@ libwesnoth_sources = Split("""
     """)
 libwesnoth_sources.extend([
     env.Object("font.cpp", EXTRA_DEFINE = env['fribidi'] and "HAVE_FRIBIDI" or None),
-    env.Object("language.cpp", EXTRA_DEFINE = env['dummy_locales'] and "USE_DUMMYLOCALES" or None)
     ])
 
 libwesnoth = env.Library("wesnoth", libwesnoth_sources)
@@ -370,6 +370,8 @@ if env["svnrev"] != "" and env["svnrev"] != "exported":
                     "Generating revision.hpp..."
                     ))
     game_config_env.Append(CPPDEFINES = 'HAVE_REVISION')
+if env['dummy_locales']:
+    game_config_env.Append(CPPDEFINES = 'USE_DUMMYLOCALES')
 
 sources = []
 if "TAGS" in COMMAND_LINE_TARGETS:

@@ -53,6 +53,12 @@ namespace game_config
 	std::string wesnothd_name;
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, small_gui = false, disable_autosave = false;
 
+#ifdef USE_DUMMYLOCALES
+	bool use_dummylocales = true;
+#else
+	bool use_dummylocales = false;
+#endif
+
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, lobby_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;

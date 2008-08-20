@@ -293,10 +293,18 @@ if env["PLATFORM"] == 'win32':
 if env["PLATFORM"] == 'darwin':            # Mac OS X
     env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
 
-try:
-    env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
-except:
-    env["svnrev"] = ""
+if os.path.exists('.git'):
+    import re
+    p = re.compile('Revision: ([0-9]+)');
+    try:
+        env["svnrev"] = p.search(Popen(Split("git-svn info"), stdout=PIPE).communicate()[0]).group(1)
+    except:
+        env["svnrev"] = ""
+else:
+    try:
+        env["svnrev"] = Popen(Split("svnversion -n ."), stdout=PIPE).communicate()[0]
+    except:
+        env["svnrev"] = ""
 
 Export(Split("env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))
@@ -342,7 +350,7 @@ env.Clean(all, 'TAGS')
 # Dummy locales
 #
 
-if env["dummy_locales"]:
+if env["nls"]:
     env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | localedef --force \"$TARGET\" 2> /dev/null")
     language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
     language_cfgs = glob("data/languages/*.cfg")
@@ -373,7 +381,7 @@ docdir = env['docdir']
 installable_subs = Split('data fonts icons images sounds')
 if env['nls']:
     installable_subs.append("translations")
-if env['dummy_locales']:
+if env['nls']:
     installable_subs.append("locales")
 fifodir = env['fifodir']
 mandir = env["mandir"]
