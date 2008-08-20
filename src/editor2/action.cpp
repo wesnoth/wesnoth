@@ -96,6 +96,7 @@ void editor_action_area::extend(const editor_map& map, const std::set<gamemap::l
 
 void editor_action_paste::extend(const editor_map& map, const std::set<gamemap::location>& locs)
 {
+	LOG_ED << "Area extend\n";
 	paste_.add_tiles(map, locs);
 }
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
@@ -184,24 +185,17 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 	mc.set_needs_labels_reset();
 }
 
-editor_action_select_xor* editor_action_select_xor::perform(map_context& mc) const
+void editor_action_select::extend(const editor_map& map, const std::set<gamemap::location>& locs)
 {
-	perform_without_undo(mc);
-	return new editor_action_select_xor(area_);
-}
-void editor_action_select_xor::perform_without_undo(map_context& mc) const
-{
-	foreach (const gamemap::location& loc, area_) {
-		if (mc.get_map().in_selection(loc)) {
-			mc.get_map().remove_from_selection(loc);
-		} else {
-			mc.get_map().add_to_selection(loc);
+	foreach (const gamemap::location& loc, locs) {
+		LOG_ED << "Checking " << loc << "\n";
+		if (map.in_selection(loc)) {
+			LOG_ED << "Extending by " << loc << "\n";
+			area_.insert(loc);
 		}
-		mc.add_changed_location(loc);
 	}
 }
-
-editor_action_select_xor* editor_action_select::perform(map_context& mc) const
+editor_action* editor_action_select::perform(map_context& mc) const
 {
 	std::set<gamemap::location> undo_locs;
 	foreach (const gamemap::location& loc, area_) {
@@ -211,7 +205,7 @@ editor_action_select_xor* editor_action_select::perform(map_context& mc) const
 		}
 	}
 	perform_without_undo(mc);
-	return new editor_action_select_xor(undo_locs);
+	return new editor_action_deselect(undo_locs);
 }
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
@@ -221,7 +215,17 @@ void editor_action_select::perform_without_undo(map_context& mc) const
 	}
 }
 
-editor_action_select_xor* editor_action_deselect::perform(map_context& mc) const
+void editor_action_deselect::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+{
+	foreach (const gamemap::location& loc, locs) {
+		LOG_ED << "Checking " << loc << "\n";
+		if (!map.in_selection(loc)) {
+			LOG_ED << "Extending by " << loc << "\n";
+			area_.insert(loc);
+		}
+	}
+}
+editor_action* editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<gamemap::location> undo_locs;
 	foreach (const gamemap::location& loc, area_) {
@@ -231,7 +235,7 @@ editor_action_select_xor* editor_action_deselect::perform(map_context& mc) const
 		}
 	}
 	perform_without_undo(mc);
-	return new editor_action_select_xor(undo_locs);
+	return new editor_action_select(undo_locs);
 }
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
@@ -241,7 +245,7 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 	}
 }
 
-editor_action_select_xor* editor_action_select_all::perform(map_context& mc) const
+editor_action_deselect* editor_action_select_all::perform(map_context& mc) const
 {
 	
 	std::set<gamemap::location> current = mc.get_map().selection();
@@ -252,7 +256,7 @@ editor_action_select_xor* editor_action_select_all::perform(map_context& mc) con
 		current.begin(), current.end(), 
 		std::inserter(undo_locs, undo_locs.begin()));
 	mc.set_everything_changed();
-	return new editor_action_select_xor(undo_locs);
+	return new editor_action_deselect(undo_locs);
 }
 void editor_action_select_all::perform_without_undo(map_context& mc) const
 {
@@ -260,13 +264,13 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
-editor_action_select_xor* editor_action_select_none::perform(map_context& mc) const
+editor_action_select* editor_action_select_none::perform(map_context& mc) const
 {
 	
 	std::set<gamemap::location> current = mc.get_map().selection();
 	mc.get_map().clear_selection();
 	mc.set_everything_changed();
-	return new editor_action_select_xor(current);
+	return new editor_action_select(current);
 }
 void editor_action_select_none::perform_without_undo(map_context& mc) const
 {

@@ -177,9 +177,6 @@ public:
 	editor_action* drag_end(editor_display& disp, int x, int y);	
 	
 protected:
-	template <editor_action_extendable* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
-	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-
 	/** Brush accessor */
 	const brush& get_brush();
 	
@@ -189,9 +186,15 @@ protected:
 	 */
 	gamemap::location previous_drag_hex_;
 	
-	editor_action* foo(editor_display&, const std::set<gamemap::location>&) {return NULL;}
-	editor_action* bar(editor_display&, const std::set<gamemap::location>&) {return NULL;}
 private:
+	/**
+	 * Template helper gathering actions common for both drag_right and drag_left.
+	 * The drags differ only in the worker function called, which should be
+	 * passed as the template parameter. This exists only to avoid copy-pasting code.
+	 */
+	template <editor_action_extendable* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
+	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+
 	/**
 	 * Current brush handle. Currently a pointer-to-pointer with full constness.
 	 */

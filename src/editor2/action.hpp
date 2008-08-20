@@ -44,12 +44,24 @@ class editor_action_whole_map : public editor_action
         editor_map m_;
 };
 
+/**
+ * Base class for actions that:
+ * 1) operate on an area
+ * 2) can be used as undo for a click-drag operation
+ * 3) can be extended so one undo action undos several actual drag actions
+ */
 class editor_action_extendable : public editor_action
 {
 	public:
 		editor_action_extendable()
 		{
 		}
+		/**
+		 * The crux of the extendable contract. This member function must be 
+		 * implemented so that the undo behaviour is consistent, exactly the 
+		 * same as would be with separate undo actions for every part of
+		 * the drag.
+		 */
 		virtual void extend(const editor_map& map, const std::set<gamemap::location>& locs) = 0;
 };
 
@@ -210,20 +222,6 @@ class editor_action_starting_position : public editor_action_location
 };
 
 /**
- * "xor" select action, used as undo in select/deselect
- */
-class editor_action_select_xor : public editor_action_area
-{
-	public:
-		editor_action_select_xor(const std::set<gamemap::location>& area)
-		: editor_action_area(area)
-		{
-		}
-		editor_action_select_xor* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-};
-
-/**
  * Select the given locations
  */
 class editor_action_select : public editor_action_area
@@ -233,7 +231,8 @@ class editor_action_select : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
-		editor_action_select_xor* perform(map_context& mc) const;
+		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
+		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 };
 
@@ -247,7 +246,8 @@ class editor_action_deselect : public editor_action_area
 		: editor_action_area(area)
 		{
 		}
-		editor_action_select_xor* perform(map_context& mc) const;
+		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
+		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 };
 
@@ -260,7 +260,7 @@ class editor_action_select_all : public editor_action
 		editor_action_select_all()
 		{
 		}
-		editor_action_select_xor* perform(map_context& mc) const;
+		editor_action_deselect* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 };
 
@@ -273,7 +273,7 @@ class editor_action_select_none : public editor_action
 		editor_action_select_none()
 		{
 		}
-		editor_action_select_xor* perform(map_context& mc) const;
+		editor_action_select* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 };
 

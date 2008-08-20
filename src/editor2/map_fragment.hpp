@@ -127,8 +127,13 @@ class map_fragment
 		 * Rotate the map fragment 60 degrees counter-clockwise around (0,0)
 		 */
 		void rotate_60_ccw();
+		
 	protected:
+		/**
+		 * The data of this map_fragment
+		 */
 		std::vector<tile_info> items_;
+		std::set<gamemap::location> area_;
 };
 
 } //end namespace editor2

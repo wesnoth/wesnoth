@@ -31,7 +31,10 @@ map_fragment::map_fragment(const gamemap& map, const std::set<gamemap::location>
 
 void map_fragment::add_tile(const gamemap& map, const gamemap::location& loc)
 {
-	items_.push_back(tile_info(map, loc));
+	if (area_.find(loc) == area_.end()) {
+		items_.push_back(tile_info(map, loc));
+		area_.insert(loc);
+	}
 }
 
 void map_fragment::add_tiles(const gamemap& map, const std::set<gamemap::location>& locs)
@@ -43,11 +46,7 @@ void map_fragment::add_tiles(const gamemap& map, const std::set<gamemap::locatio
 
 std::set<gamemap::location> map_fragment::get_area() const
 {
-	std::set<gamemap::location> result;
-	foreach (const tile_info& i, items_) {
-		result.insert(i.offset);
-	}
-	return result;
+	return area_;
 }
 
 std::set<gamemap::location> map_fragment::get_offset_area(const gamemap::location& loc) const
@@ -113,6 +112,7 @@ void map_fragment::center_by_mass()
 
 void map_fragment::rotate_60_cw()
 {
+	area_.clear();
 	foreach (tile_info& ti, items_) {
 		gamemap::location l(0,0);
 		int x = ti.offset.x;
@@ -123,6 +123,7 @@ void map_fragment::rotate_60_cw()
 		l = l.get_direction(gamemap::location::SOUTH_EAST, (x-is_odd(x))/2 );
 		l = l.get_direction(gamemap::location::SOUTH_WEST, y);
 		ti.offset = l;
+		area_.insert(l);
 	}
 	if (get_area().size() != items_.size()) {
 		throw editor_exception("Map fragment rotation resulted in duplicate entries");
@@ -131,6 +132,7 @@ void map_fragment::rotate_60_cw()
 
 void map_fragment::rotate_60_ccw()
 {
+	area_.clear();
 	foreach (tile_info& ti, items_) {
 		gamemap::location l(0,0);
 		int x = ti.offset.x;
@@ -141,6 +143,7 @@ void map_fragment::rotate_60_ccw()
 		l = l.get_direction(gamemap::location::NORTH_EAST, (x+is_odd(x))/2 );
 		l = l.get_direction(gamemap::location::SOUTH_EAST, y);
 		ti.offset = l;
+		area_.insert(l);
 	}
 	if (get_area().size() != items_.size()) {
 		throw editor_exception("Map fragment rotation resulted in duplicate entries");

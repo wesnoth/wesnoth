@@ -34,10 +34,21 @@ namespace editor2 {
 class map_context : private boost::noncopyable
 {
 public:
+	/**
+	 * A map context can only by created from an existing map
+	 */
 	map_context(const editor_map& map);
+	
 	~map_context();
 	
+	/**
+	 * Map accesor
+	 */
 	editor_map& get_map() { return map_; };
+	
+	/**
+	 * Map accesor - const version
+	 */
 	const editor_map& get_map() const { return map_; }
 	
 	/**
@@ -54,13 +65,35 @@ public:
 	void draw_terrain(t_translation::t_terrain terrain, const std::set<gamemap::location>& locs, 
 		bool one_layer_only = false);
 
+	/**
+	 * Getter for the reload flag. Reload is the highest level of required refreshing,
+	 * set when the map size has changed or the map was reassigned.
+	 */
 	bool needs_reload() const { return needs_reload_; }
+	
+	/**
+	 * Setter for the reload flag
+	 */
 	void set_needs_reload(bool value=true) { needs_reload_ = value; }
 	
+	/**
+	 * Getter for the terrain rebuild flag. Set whenever any terrain has changed. 
+	 */
 	bool needs_terrain_rebuild() const { return needs_terrain_rebuild_; }
+	
+	/**
+	 * Setter for the terrain rebuild flag
+	 */
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 	
+	/**
+	 * Getter fo the labels reset flag. Set when the labels need to be refreshed.
+	 */
 	bool needs_labels_reset() const { return needs_labels_reset_; }
+	
+	/**
+	 * Setter for the labels reset flag
+	 */
 	void set_needs_labels_reset(bool value=true) { needs_labels_reset_ = value; }
 	
 	const std::set<gamemap::location> changed_locations() const { return changed_locations_; }
@@ -78,6 +111,10 @@ public:
 	
 	void set_filename(const std::string& fn) { filename_ = fn; }
 	
+	/**
+	 * Saves the map under the current filename. Filename must be valid.
+	 * May throw an exception on failure.
+	 */
 	bool save();
 	
 	/**
@@ -87,6 +124,11 @@ public:
 	 */
 	void perform_action(const editor_action& action);
 	
+	/**
+	 * Performs a partial action, assumes that the top undo action has been modified to
+	 * maintain coherent state of the undo stacks, and so a new undo action is not
+	 * created.
+	 */
 	void perform_partial_action(const editor_action& action);
 	
 	/** @return whether the map was modified since the last save */
