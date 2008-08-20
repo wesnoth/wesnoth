@@ -26,6 +26,7 @@
 #include <map>
 #include <sstream>
 
+#if 0
 // instead of playing with VC++'s crazy definitions of min and max,
 // just define our own
 /** Replacement for VC++'s definitions of min and max. */
@@ -40,6 +41,16 @@ inline T& maximum(T& a, T& b) { return a < b ? b : a; }
 
 template<typename T>
 inline const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
+
+#else
+
+template<typename T>
+inline const T& minimum(const T& a, const T& b) { return std::min<T>(a, b); }
+
+template<typename T>
+inline const T& maximum(const T& a, const T& b) { return std::max<T>(a, b); }
+
+#endif
 
 template<typename T>
 inline bool is_odd(T num) {
