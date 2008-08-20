@@ -44,6 +44,15 @@ class editor_action_whole_map : public editor_action
         editor_map m_;
 };
 
+class editor_action_extendable : public editor_action
+{
+	public:
+		editor_action_extendable()
+		{
+		}
+		virtual void extend(const editor_map& map, const std::set<gamemap::location>& locs) = 0;
+};
+
 /**
  * Container action wrapping several actions into one. 
  * The actions are performed in the order they are added,.
@@ -101,7 +110,7 @@ class editor_action_location_terrain : public editor_action_location
 /**
  * Base class for area-affecting actions
  */
-class editor_action_area : public editor_action
+class editor_action_area : public editor_action_extendable
 {
     public:
         editor_action_area(const std::set<gamemap::location>& area)
@@ -109,6 +118,8 @@ class editor_action_area : public editor_action
         {
         }
 		bool add_location(const gamemap::location& loc);
+		void add_locations(const std::set<gamemap::location>& locs);
+		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
     protected:
 		std::set<gamemap::location> area_;
 };
@@ -116,16 +127,18 @@ class editor_action_area : public editor_action
 /**
  * Paste a map fragment into the map. No offset is used.
  */
-class editor_action_paste : public editor_action_location
+class editor_action_paste : public editor_action_extendable
 {
     public:
-        editor_action_paste(const gamemap::location& loc, const map_fragment& paste)
-        : editor_action_location(loc), paste_(paste)
+        editor_action_paste(const map_fragment& paste, const gamemap::location& offset = gamemap::location(0,0))
+        : offset_(offset), paste_(paste)
         {
         }
         editor_action_paste* perform(map_context& mc) const;
         void perform_without_undo(map_context& mc) const;
+		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
     protected:
+		gamemap::location offset_;
         map_fragment paste_;
 };
 

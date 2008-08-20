@@ -141,12 +141,12 @@ public:
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
+	virtual editor_action_extendable* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
 	
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
+	virtual editor_action_extendable* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
 
 	/**
 	 * Calls click_perform_left()
@@ -177,6 +177,9 @@ public:
 	editor_action* drag_end(editor_display& disp, int x, int y);	
 	
 protected:
+	template <editor_action_extendable* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
+	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+
 	/** Brush accessor */
 	const brush& get_brush();
 	
@@ -185,6 +188,9 @@ protected:
 	 * @todo keep a set of all "visited" locations to reduce action count in long drags that hit the same hexes multiple times?
 	 */
 	gamemap::location previous_drag_hex_;
+	
+	editor_action* foo(editor_display&, const std::set<gamemap::location>&) {return NULL;}
+	editor_action* bar(editor_display&, const std::set<gamemap::location>&) {return NULL;}
 private:
 	/**
 	 * Current brush handle. Currently a pointer-to-pointer with full constness.
@@ -210,12 +216,12 @@ public:
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action_extendable* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action_extendable* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
 
 	bool uses_terrains() const { return true; }
 protected:
@@ -247,12 +253,12 @@ public:
 	/**
 	 * Left click/drag selects
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action_extendable* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
 
 	/**
 	 * Right click/drag deselects
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action_extendable* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
 };
 
 /**

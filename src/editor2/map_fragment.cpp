@@ -26,14 +26,19 @@ map_fragment::map_fragment()
 
 map_fragment::map_fragment(const gamemap& map, const std::set<gamemap::location>& area)
 {
-	foreach (const gamemap::location& loc, area) {
-		add_tile(map, loc);
-	}
+	add_tiles(map, area);
 }
 
 void map_fragment::add_tile(const gamemap& map, const gamemap::location& loc)
 {
 	items_.push_back(tile_info(map, loc));
+}
+
+void map_fragment::add_tiles(const gamemap& map, const std::set<gamemap::location>& locs)
+{
+	foreach (const gamemap::location& loc, locs) {
+		add_tile(map, loc);
+	}
 }
 
 std::set<gamemap::location> map_fragment::get_area() const

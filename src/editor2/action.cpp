@@ -85,18 +85,30 @@ bool editor_action_area::add_location(const gamemap::location& loc)
 {
 	return area_.insert(loc).second;
 }
+void editor_action_area::add_locations(const std::set<gamemap::location>& locs)
+{
+	area_.insert(locs.begin(), locs.end());
+}
+void editor_action_area::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+{
+	area_.insert(locs.begin(), locs.end());
+}
 
+void editor_action_paste::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+{
+	paste_.add_tiles(map, locs);
+}
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
-	map_fragment mf(mc.get_map(), paste_.get_offset_area(loc_));
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(gamemap::location(0,0), mf));
+	map_fragment mf(mc.get_map(), paste_.get_offset_area(offset_));
+	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }
 void editor_action_paste::perform_without_undo(map_context& mc) const
 {
-	paste_.paste_into(mc.get_map(), loc_);
-	mc.add_changed_location(paste_.get_offset_area(loc_));
+	paste_.paste_into(mc.get_map(), offset_);
+	mc.add_changed_location(paste_.get_offset_area(offset_));
 	mc.set_needs_terrain_rebuild();
 }
 
@@ -115,7 +127,7 @@ void editor_action_paint_hex::perform_without_undo(map_context& mc) const
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(gamemap::location(0,0), mf));
+	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }	
@@ -309,7 +321,7 @@ void editor_action_plot_route::perform_without_undo(map_context& /*mc*/) const
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(gamemap::location(0,0), mf));
+	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }

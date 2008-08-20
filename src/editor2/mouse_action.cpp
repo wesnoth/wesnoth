@@ -25,6 +25,31 @@
 
 namespace editor2 {
 
+class A
+{
+  void doA(int);
+  void doStuffThenA(int);
+  template<void (A::*foo)(int)>
+  void doStuffThenFoo(int);
+};
+
+void A::doA(int)
+{
+}
+
+void A::doStuffThenA(int a)
+{
+  doStuffThenFoo<&A::doA>(a);
+}
+
+template<void (A::*foo)(int)>
+void A::doStuffThenFoo(int a)
+{
+  //doStuff
+  (this->*foo)(a);
+}
+
+
 void mouse_action::move(editor_display& disp, const gamemap::location& hex)
 {
 	if (hex != previous_move_hex_) {
@@ -126,37 +151,44 @@ editor_action* brush_drag_mouse_action::click_right(editor_display& disp, int x,
 }
 
 editor_action* brush_drag_mouse_action::drag_left(editor_display& disp, 
-		int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+		int x, int y, bool& partial, editor_action* last_undo)
 {
-	gamemap::location hex = disp.hex_clicked_on(x, y);
-	move(disp, hex);
-	if (hex != previous_drag_hex_) {
-		editor_action* a = click_perform_left(disp, affected_hexes(disp, hex));
-		previous_drag_hex_ = hex;
-		return a;
-	} else {
-		return NULL;
-	}
+	return drag_generic<&brush_drag_mouse_action::click_perform_left>(disp, x, y, partial, last_undo);
 }
 
 editor_action* brush_drag_mouse_action::drag_right(editor_display& disp, 
-		int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
+		int x, int y, bool& partial, editor_action* last_undo)
 {
-	gamemap::location hex = disp.hex_clicked_on(x, y);
-	move(disp, hex);
-	if (hex != previous_drag_hex_) {
-		editor_action* a = click_perform_right(disp, affected_hexes(disp, hex));
-		previous_drag_hex_ = hex;
-		return a;
-	} else {
-		return NULL;
-	}
-}	
+	return drag_generic<&brush_drag_mouse_action::click_perform_right>(disp, x, y, partial, last_undo);
+}
 
 editor_action* brush_drag_mouse_action::drag_end(
 		editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
 	return NULL;
+}
+
+template <editor_action_extendable* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
+editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
+{
+	gamemap::location hex = disp.hex_clicked_on(x, y);
+	move(disp, hex);
+	if (hex != previous_drag_hex_) {
+		std::set<gamemap::location> current_step_locs = affected_hexes(disp, hex);
+		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
+		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x << "\n";
+		if (last_undo_x != NULL) {
+			last_undo_x->extend(disp.map(), current_step_locs);
+			partial = true;
+		} else {
+			WRN_ED << "last undo in drag was not an editor_action_extendable\n";
+		}
+		editor_action* a = (this->*perform_func)(disp, affected_hexes(disp, hex));
+		previous_drag_hex_ = hex;
+		return a;
+	} else {
+		return NULL;
+	}
 }
 
 const brush& brush_drag_mouse_action::get_brush()
@@ -167,13 +199,13 @@ const brush& brush_drag_mouse_action::get_brush()
 }
 
 
-editor_action* mouse_action_paint::click_perform_left(
+editor_action_extendable* mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
 	return new editor_action_paint_area(hexes, terrain_left_, has_alt_modifier());
 }
 
-editor_action* mouse_action_paint::click_perform_right(
+editor_action_extendable* mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
 	return new editor_action_paint_area(hexes, terrain_right_, has_alt_modifier());
@@ -198,13 +230,13 @@ editor_action* mouse_action_select::key_event(
 	return ret;
 }
 
-editor_action* mouse_action_select::click_perform_left(
+editor_action_extendable* mouse_action_select::click_perform_left(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
 	return new editor_action_select(hexes);
 }
 
-editor_action* mouse_action_select::click_perform_right(
+editor_action_extendable* mouse_action_select::click_perform_right(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
 	return new editor_action_deselect(hexes);
@@ -220,7 +252,7 @@ std::set<gamemap::location> mouse_action_paste::affected_hexes(
 editor_action* mouse_action_paste::click_left(editor_display& disp, int x, int y)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
-	editor_action_paste* a = new editor_action_paste(hex, paste_);
+	editor_action_paste* a = new editor_action_paste(paste_, hex);
 	return a;
 }
 

@@ -64,6 +64,11 @@ class map_fragment
 		void add_tile(const gamemap& map, const gamemap::location& loc);
 		
 		/**
+		 * Add many locations and pull their info from the map.
+		 */
+		void add_tiles(const gamemap& map, const std::set<gamemap::location>& loc);
+		
+		/**
 		 * Get the tile_info vector.
 		 */
 		const std::vector<tile_info>& get_items() const { return items_; }
