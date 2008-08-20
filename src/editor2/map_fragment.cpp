@@ -33,7 +33,7 @@ map_fragment::map_fragment(const gamemap& map, const std::set<gamemap::location>
 
 void map_fragment::add_tile(const gamemap& map, const gamemap::location& loc)
 {
-	items_.push_back(tile_info(loc, map.get_terrain(loc)));
+	items_.push_back(tile_info(map, loc));
 }
 
 std::set<gamemap::location> map_fragment::get_area() const
@@ -61,19 +61,87 @@ void map_fragment::paste_into(gamemap& map, const gamemap::location& loc) const
 	}
 }
 
-void map_fragment::center()
+void map_fragment::shift(const gamemap::location& offset)
+{
+	foreach (tile_info& ti, items_) {
+		ti.offset.vector_sum_assign(offset);
+	}	
+}
+
+gamemap::location map_fragment::center_of_bounds() const
+{
+	if (empty()) return gamemap::location();
+	gamemap::location top_left = items_[0].offset;
+	gamemap::location bottom_right = items_[0].offset;
+	for (size_t i = 1; i < items_.size(); ++i) {
+		const gamemap::location& loc = items_[i].offset;
+		if (loc.x < top_left.x) top_left.x = loc.x;
+		else if (loc.x > bottom_right.x) bottom_right.x = loc.x;
+		if (loc.y < top_left.y) top_left.y = loc.y;
+		else if (loc.y > bottom_right.y) bottom_right.y = loc.y;
+	}
+	gamemap::location c((top_left.x + bottom_right.x) / 2, 
+		(top_left.y + bottom_right.y) / 2);
+	return c;
+}
+
+gamemap::location map_fragment::center_of_mass() const
 {
 	gamemap::location sum(0, 0);
-	foreach (tile_info& ti, items_) {
-		sum.x += ti.offset.x;
-		sum.y += ti.offset.y;
+	foreach (const tile_info& ti, items_) {
+		sum.vector_sum_assign(ti.offset);
 	}
 	sum.x /= items_.size();
 	sum.y /= items_.size();
-	foreach (tile_info& ti, items_) {
-		ti.offset.vector_difference_assign(sum);
-	}	
+	return sum;
 }
+
+void map_fragment::center_by_bounds()
+{
+	shift(center_of_bounds().vector_negation());
+}
+
+void map_fragment::center_by_mass()
+{
+	shift(center_of_mass().vector_negation());
+}
+
+void map_fragment::rotate_60_cw()
+{
+	foreach (tile_info& ti, items_) {
+		gamemap::location l(0,0);
+		int x = ti.offset.x;
+		int y = ti.offset.y;
+		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
+		// but if x is odd, simply using x/2 + x/2 will lack a step
+		l = l.get_direction(gamemap::location::SOUTH, (x+is_odd(x))/2);
+		l = l.get_direction(gamemap::location::SOUTH_EAST, (x-is_odd(x))/2 );
+		l = l.get_direction(gamemap::location::SOUTH_WEST, y);
+		ti.offset = l;
+	}
+	if (get_area().size() != items_.size()) {
+		throw editor_exception("Map fragment rotation resulted in duplicate entries");
+	}
+}
+
+void map_fragment::rotate_60_ccw()
+{
+	foreach (tile_info& ti, items_) {
+		gamemap::location l(0,0);
+		int x = ti.offset.x;
+		int y = ti.offset.y;
+		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
+		// but if x is odd, simply using x/2 + x/2 will lack a step
+		l = l.get_direction(gamemap::location::NORTH, (x-is_odd(x))/2);
+		l = l.get_direction(gamemap::location::NORTH_EAST, (x+is_odd(x))/2 );
+		l = l.get_direction(gamemap::location::SOUTH_EAST, y);
+		ti.offset = l;
+	}
+	if (get_area().size() != items_.size()) {
+		throw editor_exception("Map fragment rotation resulted in duplicate entries");
+	}
+}
+
 
 bool map_fragment::empty() const
 {

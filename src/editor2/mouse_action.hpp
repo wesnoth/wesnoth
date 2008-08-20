@@ -45,6 +45,11 @@ public:
 	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
 	void move(editor_display& disp, const gamemap::location& hex);
+	
+	/**
+	 * Unconditionally update the brush highlights for the current tool when hex is the center location
+	 */
+	void update_brush_highlights(editor_display& disp, const gamemap::location& hex);
 		
 	/**
 	 * Locations that would be affected by a click, used by move to update highlights. Defauts to higlight the mouseover hex.

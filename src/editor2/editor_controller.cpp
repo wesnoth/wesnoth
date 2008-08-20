@@ -485,6 +485,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return false; //not implemented
 		case HOTKEY_EDITOR_PASTE:
 			return !clipboard_.empty();
+		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
+		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
+			return !clipboard_.empty() && is_mouse_action_set(HOTKEY_EDITOR_PASTE);
 		case HOTKEY_EDITOR_SELECT_ALL:
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 		case HOTKEY_EDITOR_SELECT_NONE:
@@ -542,6 +545,14 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			hotkey_set_mouse_action(command);
+			return true;
+		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
+			clipboard_.rotate_60_cw();
+			update_mouse_action_highlights();
+			return true;
+		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
+			clipboard_.rotate_60_ccw();
+			update_mouse_action_highlights();
 			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 			cycle_brush();
@@ -672,18 +683,15 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 
 void editor_controller::cycle_brush()
 {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-	gamemap::location hex_clicked = gui().hex_clicked_on(x,y);
-	gui().invalidate(get_brush()->project(hex_clicked));
+	DBG_ED << __FUNCTION__ << "\n";
 	if (brush_ == &brushes_.back()) {
 		brush_ = &brushes_.front();
 	} else {
 		++brush_;
 	}
-	std::set<gamemap::location> new_brush_locs = get_brush()->project(hex_clicked);
-	gui().set_brush_locs(new_brush_locs);
-	gui().invalidate(new_brush_locs);
+	DBG_ED << &brushes_.front() << " " << brush_ << " " << &brushes_.back() << "\n";
+	update_mouse_action_highlights();
+	DBG_ED << "END\n";
 }
 
 void editor_controller::preferences()
@@ -702,7 +710,7 @@ void editor_controller::copy_selection()
 {
 	if (!get_map().selection().empty()) {
 		clipboard_ = map_fragment(get_map(), get_map().selection());
-		clipboard_.center();
+		clipboard_.center_by_mass();
 	}
 }
 
@@ -744,6 +752,15 @@ bool editor_controller::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) cons
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::const_iterator i = mouse_actions_.find(command);
 	return (i != mouse_actions_.end()) && (i->second == mouse_action_);
+}
+
+void editor_controller::update_mouse_action_highlights()
+{
+	DBG_ED << __FUNCTION__ << "\n";
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	gamemap::location hex_clicked = gui().hex_clicked_on(x,y);
+	get_mouse_action()->update_brush_highlights(gui(), hex_clicked);
 }
 
 

@@ -28,9 +28,14 @@ namespace editor2 {
 void mouse_action::move(editor_display& disp, const gamemap::location& hex)
 {
 	if (hex != previous_move_hex_) {
-		disp.set_brush_locs(affected_hexes(disp, hex));
+		update_brush_highlights(disp, hex);
 		previous_move_hex_ = hex;
 	}
+}
+
+void mouse_action::update_brush_highlights(editor_display& disp, const gamemap::location& hex)
+{
+	disp.set_brush_locs(affected_hexes(disp, hex));
 }
 
 std::set<gamemap::location> mouse_action::affected_hexes(
@@ -188,11 +193,9 @@ std::set<gamemap::location> mouse_action_select::affected_hexes(
 editor_action* mouse_action_select::key_event(
 		editor_display& disp, const SDL_Event& event)
 {
-	// Force an actual move event to update the brush
-	gamemap::location tmp = previous_move_hex_;
-	previous_move_hex_ = gamemap::location();
-	move(disp, tmp);
-	return mouse_action::key_event(disp, event);
+	editor_action* ret = mouse_action::key_event(disp, event);
+	update_brush_highlights(disp, previous_move_hex_);
+	return ret;
 }
 
 editor_action* mouse_action_select::click_perform_left(

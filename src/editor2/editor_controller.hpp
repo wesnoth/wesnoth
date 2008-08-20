@@ -191,6 +191,8 @@ class editor_controller : public controller_base,
 		 * @return true if the mouse action identified by the hotkey is active
 		 */
 		bool is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const;
+		
+		void update_mouse_action_highlights();
 	
 		/* mouse_handler_base overrides */
 		void mouse_motion(int x, int y, const bool browse, bool update);
