@@ -458,8 +458,6 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return true;
-		case HOTKEY_EDITOR_PARTIAL_REDO:
-			return false;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
