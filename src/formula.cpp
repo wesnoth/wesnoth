@@ -533,17 +533,14 @@ void parse_args(const token* i1, const token* i2,
 {		
 	int parens = 0;
 	const token* beg = i1;
-	const token* begin = i1, *end = i2;	//these are used for error reporting
 	while(i1 != i2) {
-		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE || i1->type == TOKEN_LBRACKET ) {
+		if(i1->type == TOKEN_LPARENS || i1->type == TOKEN_LSQUARE ) {
 			++parens;
-		} else if(i1->type == TOKEN_RPARENS || i1->type == TOKEN_RSQUARE || i1->type == TOKEN_RBRACKET) {
+		} else if(i1->type == TOKEN_RPARENS || i1->type == TOKEN_RSQUARE ) {
 			--parens;
 		} else if(i1->type == TOKEN_COMMA && !parens) {
 			res->push_back(parse_expression(beg,i1, symbols));
 			beg = i1+1;
-		} else if(i1->type == TOKEN_POINTER) {
-				throw formula_error("Unexpected '->' operator found", tokens_to_string(begin,end-1), *i1->filename, i1->line_number);
 		}
 		++i1;
 	}
