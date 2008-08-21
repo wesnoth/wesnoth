@@ -673,16 +673,20 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 	int parens = 0;
 	const token* op = NULL;
+	bool operator_group = false;
 	for(const token* i = i1; i != i2; ++i) {
 		if(i->type == TOKEN_LPARENS || i->type == TOKEN_LSQUARE) {
 			++parens;
 		} else if(i->type == TOKEN_RPARENS || i->type == TOKEN_RSQUARE) {
 			--parens;
 		} else if(parens == 0 && i->type == TOKEN_OPERATOR) {
-			if(op == NULL || operator_precedence(*op) >
-							 operator_precedence(*i)) {
+			if( ( !operator_group ) && (op == NULL || operator_precedence(*op) >=
+							 operator_precedence(*i)) ) {
 				op = i;
+				operator_group = true;
 			}
+		} else {
+			operator_group = false;
 		}
 	}
 
