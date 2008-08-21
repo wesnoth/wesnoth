@@ -33,7 +33,8 @@ def OptionalPath(key, val, env):
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd,test", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder test")),
-    EnumOption('build', 'Build variant: debug, release or profile', "release", ["release", "debug", "profile"]),
+    EnumOption('build', 'Build variant: base (no subdirectory), debug, release or profile', "base", ["base", "release", "debug", "profile"]),
+    ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
@@ -115,7 +116,9 @@ Switches apply to the entire build regardless of where they are in the order.
 Important switches include:
 
     prefix=/usr     probably what you want for production tools
-    build=release   build the release build variant with appropriante flags
+    build=base      build directly in the distribution root;
+                    you'll need this if you're trying to use Emacs compile mode.
+    build=release   build the release build variant with appropriate flags
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant, binaries will be copied with -debug suffix
@@ -309,6 +312,7 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
 builds = {
+    "base"    : dict(CXXFLAGS = "-O2"),	# Don't build in subdirectory
     "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3")),
     "release" : dict(CXXFLAGS = "-O2"),
     "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
@@ -324,7 +328,12 @@ if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 Export("test_env")
 
-SConscript("src/SConscript", build_dir = os.path.join("build", build), exports = "env")
+if build == "base":
+    build_dir = ""
+else:
+    build_dir = os.path.join("build", build)
+
+SConscript("src/SConscript", build_dir = build_dir, exports = "env")
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
