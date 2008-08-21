@@ -96,8 +96,11 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 	}
 }
 
-statistics_dialog::statistics_dialog(game_display &disp, const std::string& title,
-		const unsigned int team, const std::string& player) :
+statistics_dialog::statistics_dialog(game_display &disp, 
+		const std::string& title,
+		const unsigned int team,
+		const std::string team_id, 
+		const std::string& player) :
 	dialog(disp, title, "", gui::NULL_DIALOG), 
 	detail_btn_(new gui::standard_dialog_button(disp.video(), _("Details"), 0 , false)),
 	player_name_(player),
@@ -109,7 +112,7 @@ statistics_dialog::statistics_dialog(game_display &disp, const std::string& titl
 	add_button(new gui::standard_dialog_button(disp.video(), _("Close"), 1, true),
 				gui::dialog::BUTTON_STANDARD);
 
-	stats_ = statistics::calculate_stats(0, team_num_);
+	stats_ = statistics::calculate_stats(0, team_id);
 	int n;
 	std::vector<std::string> items;
 	// Prepare the menu items

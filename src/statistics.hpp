@@ -100,7 +100,7 @@ namespace statistics
 	private:
 
 		std::string attacker_type, defender_type;
-		int attacker_side, defender_side;
+		std::string attacker_side, defender_side;
 		int chance_to_hit_defender, chance_to_hit_attacker;
 		std::string attacker_res, defender_res;
 
@@ -121,8 +121,8 @@ namespace statistics
 	void fresh_stats();
 	void clear_current_scenario();
 
-	void reset_turn_stats(int side);
-	stats calculate_stats(int category, int side);
+	void reset_turn_stats(std::string save_id);
+	stats calculate_stats(int category, std::string save_id);
 } // end namespace statistics
 
 #endif

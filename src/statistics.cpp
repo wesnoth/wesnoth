@@ -50,7 +50,7 @@ struct scenario_stats
 	config write() const;
 	void write(config_writer &out) const;
 
-	std::vector<stats> team_stats;
+	std::map<std::string,stats> team_stats;
 	std::string scenario_name;
 };
 
@@ -60,7 +60,7 @@ scenario_stats::scenario_stats(const config& cfg) :
 {
 	const config::child_list& teams = cfg.get_children("team");
 	for(config::child_list::const_iterator i = teams.begin(); i != teams.end(); ++i) {
-		team_stats.push_back(stats(**i));
+		team_stats[(**i)["save_id"]] = stats(**i);
 	}
 }
 
@@ -68,8 +68,8 @@ config scenario_stats::write() const
 {
 	config res;
 	res["scenario"] = scenario_name;
-	for(std::vector<stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
-		res.add_child("team",i->write());
+	for(std::map<std::string,stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+		res.add_child("team",i->second.write());
 	}
 
 	return res;
@@ -78,9 +78,9 @@ config scenario_stats::write() const
 void scenario_stats::write(config_writer &out) const
 {
 	out.write_key_val("scenario", scenario_name);
-	for(std::vector<stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+	for(std::map<std::string,stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
 		out.open_child("team");
-		i->write(out);
+		i->second.write(out);
 		out.close_child("team");
 	}
 }
@@ -89,19 +89,14 @@ std::vector<scenario_stats> master_stats;
 
 } // end anon namespace
 
-static stats& get_stats(int team)
+static stats& get_stats(std::string save_id)
 {
 	if(master_stats.empty()) {
 		master_stats.push_back(scenario_stats(""));
 	}
 
-	std::vector<stats>& team_stats = master_stats.back().team_stats;
-	const size_t index = size_t(team-1);
-	if(index >= team_stats.size()) {
-		team_stats.resize(index+1);
-	}
-
-	return team_stats[index];
+	std::map<std::string,stats>& team_stats = master_stats.back().team_stats;
+	return team_stats[save_id];
 }
 
 static config write_str_int_map(const stats::str_int_map& m)
@@ -475,8 +470,8 @@ attack_context::attack_context(const unit& a,
 		const unit& d, int a_cth, int d_cth) :
 	attacker_type(a.type_id()), 
 	defender_type(d.type_id()), 
-	attacker_side(a.side()), 
-	defender_side(d.side()), 
+	attacker_side(a.side_id()), 
+	defender_side(d.side_id()), 
 	chance_to_hit_defender(a_cth), 
 	chance_to_hit_attacker(d_cth),
 	attacker_res(),
@@ -604,7 +599,7 @@ void recruit_unit(const unit& u)
 	if(stats_disabled > 0)
 		return;
 
-	stats& s = get_stats(u.side());
+	stats& s = get_stats(u.side_id());
 	s.recruits[u.type_id()]++;
 	s.recruit_cost += u.cost();
 }
@@ -614,7 +609,7 @@ void recall_unit(const unit& u)
 	if(stats_disabled > 0)
 		return;
 
-	stats& s = get_stats(u.side());
+	stats& s = get_stats(u.side_id());
 	s.recalls[u.type_id()]++;
 	s.recall_cost += u.cost();
 }
@@ -624,7 +619,7 @@ void un_recall_unit(const unit& u)
 	if(stats_disabled > 0)
 		return;
 
-	stats& s = get_stats(u.side());
+	stats& s = get_stats(u.side_id());
 	s.recalls[u.type_id()]--;
 	s.recall_cost -= u.cost();
 }
@@ -634,7 +629,7 @@ void un_recruit_unit(const unit& u)
 	if(stats_disabled > 0)
 		return;
 
-	stats& s = get_stats(u.side());
+	stats& s = get_stats(u.side_id());
 	s.recruits[u.type_id()]--;
 	s.recruit_cost -= u.cost();
 }
@@ -645,13 +640,13 @@ void advance_unit(const unit& u)
 	if(stats_disabled > 0)
 		return;
 
-	stats& s = get_stats(u.side());
+	stats& s = get_stats(u.side_id());
 	s.advanced_to[u.type_id()]++;
 }
 
-void reset_turn_stats(int side)
+void reset_turn_stats(std::string save_id)
 {
-	stats &s = get_stats(side);
+	stats &s = get_stats(save_id);
 	s.turn_damage_inflicted = 0;
 	s.turn_damage_taken = 0;
 	s.turn_expected_damage_inflicted = 0;
@@ -660,22 +655,21 @@ void reset_turn_stats(int side)
 	s.new_turn_expected_damage_taken = 0;
 }
 
-stats calculate_stats(int category, int side)
+stats calculate_stats(int category, std::string save_id)
 {
-	DBG_NG << "calculate_stats, category: " << category << " side: " << side << " master_stats.size: " << master_stats.size() << "\n";
+	DBG_NG << "calculate_stats, category: " << category << " side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
 	if(category == 0) {
 		stats res;
-		// We are going from last to first to include corect turn stats in result
+		// We are going from last to first to include correct turn stats in result
 		for(int i = int(master_stats.size()); i > 0 ; --i) {
-			merge_stats(res,calculate_stats(i,side));
+			merge_stats(res,calculate_stats(i,save_id));
 		}
 
 		return res;
 	} else {
 		const size_t index = master_stats.size() - size_t(category);
-		const size_t side_index = size_t(side) - 1;
-		if(index < master_stats.size() && side_index < master_stats[index].team_stats.size()) {
-			return master_stats[index].team_stats[side_index];
+		if(index < master_stats.size() && master_stats[index].team_stats.find(save_id) != master_stats[index].team_stats.end()) {
+			return master_stats[index].team_stats[save_id];
 		} else {
 			return stats();
 		}

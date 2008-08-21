@@ -194,7 +194,11 @@ namespace events{
 		//add player's name to title of dialog
 		std::stringstream title_str;
 		title_str <<  _("Statistics") << " (" << player << ")";
-		statistics_dialog stats_dialog(*gui_, title_str.str(), team_num, player);
+		statistics_dialog stats_dialog(*gui_, 
+					       title_str.str(), 
+					       team_num, 
+					       teams_[team_num - 1].save_id(), 
+					       player);
 		stats_dialog.show();
 	}
 

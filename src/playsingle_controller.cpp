@@ -573,7 +573,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 		end_turn_ = false;
 
 
-		statistics::reset_turn_stats(player_number_);
+		statistics::reset_turn_stats(teams_[team_index].save_id());
 
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
