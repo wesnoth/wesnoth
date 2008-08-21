@@ -25,7 +25,7 @@
 #ifndef __COMPAT_H__
 #define __COMPAT_H__
 
-#ifdef WIN32
+#ifdef _WIN32
 #pragma warning( disable : 4786 )
 // tell the linker which libraries to find functions in
 #pragma comment(lib, "ws2_32.lib")
@@ -91,7 +91,7 @@ struct SOCKADDR_IN {
   SOCKADDR_IN(const std::string& address, unsigned short port, short family = AF_INET) {
     ADDR.sin_port = port;
     ADDR.sin_family = family;
-#ifdef WIN32
+#ifdef _WIN32
     ADDR.sin_addr.S_un.S_addr = inet_addr(address.c_str());
     ok = (ADDR.sin_addr.S_un.S_addr != INADDR_NONE);    
 #else
@@ -126,7 +126,7 @@ struct SOCKADDR_IN {
   }
   void set_port(unsigned short newport) {ADDR.sin_port = newport;}
   void set_ip(const std::string& newip) {
-#ifdef WIN32
+#ifdef _WIN32
     ADDR.sin_addr.S_un.S_addr = inet_addr(newip.c_str());
     ok = (ADDR.sin_addr.S_un.S_addr != INADDR_NONE);
 #else
@@ -134,7 +134,7 @@ struct SOCKADDR_IN {
 #endif
   }
   void zeroaddress() {
-#ifdef WIN32
+#ifdef _WIN32
       ADDR.sin_addr.S_un.S_addr = 0;
 #else
       ADDR.sin_addr.s_addr = 0;

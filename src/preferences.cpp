@@ -254,7 +254,7 @@ size_t sound_buffer_size()
 {
 	// Sounds don't sound good on Windows unless the buffer size is 4k,
 	// but this seems to cause crashes on other systems...
-	#ifdef WIN32
+	#ifdef _WIN32
 		const size_t buf_size = 4096;
 	#else
 		const size_t buf_size = 1024;
@@ -265,7 +265,7 @@ size_t sound_buffer_size()
 
 void save_sound_buffer_size(const size_t size)
 {
-	#ifdef WIN32
+	#ifdef _WIN32
 		const char* buf_size = "4096";
 	#else
 		const char* buf_size = "1024";

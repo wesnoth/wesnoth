@@ -230,7 +230,7 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 bool is_illegal_file_char(char c)
 {
 	return c == '/' || c == '\\' || c == ':'
- 	#ifdef WIN32
+ 	#ifdef _WIN32
 	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
 	#endif
 	;

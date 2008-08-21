@@ -371,7 +371,7 @@ std::string copy_from_clipboard(const bool mouse)
 }
 
 #endif
-#ifdef WIN32
+#ifdef _WIN32
 #include <windows.h>
 
 #define CLIPBOARD_FUNCS_DEFINED

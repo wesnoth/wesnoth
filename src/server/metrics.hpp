@@ -22,7 +22,7 @@
 
 #include <map>
 #include <string>
-#ifdef WIN32
+#ifdef _WIN32
 #include <time.h>
 #endif
 

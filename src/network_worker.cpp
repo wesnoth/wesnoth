@@ -212,7 +212,7 @@ void check_send_buffer_size(TCPsocket& s)
 		return;
 	_TCPsocket* sock = reinterpret_cast<_TCPsocket*>(s);
 	socklen_t len = sizeof(system_send_buffer_size);
-#ifdef WIN32
+#ifdef _WIN32
 	getsockopt(sock->channel, SOL_SOCKET, SO_RCVBUF,reinterpret_cast<char*>(&system_send_buffer_size), &len);
 #else
 	getsockopt(sock->channel, SOL_SOCKET, SO_RCVBUF,&system_send_buffer_size, &len);
