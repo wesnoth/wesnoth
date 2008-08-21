@@ -35,7 +35,9 @@ class mouse_action
 {
 public:
 	mouse_action(const CKey& key)
-	: key_(key), toolbar_button_(NULL)
+		: previous_move_hex_()
+		, key_(key)
+		, toolbar_button_(NULL)
 	{
 	}
 
@@ -129,7 +131,9 @@ class brush_drag_mouse_action : public mouse_action
 {
 public:
 	brush_drag_mouse_action(const brush* const * const brush, const CKey& key)
-	: mouse_action(key), brush_(brush)
+		: mouse_action(key)
+		, brush_(brush)
+		, previous_drag_hex_()
 	{
 	}
 	
