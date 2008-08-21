@@ -67,24 +67,79 @@ class editor_action_extendable : public editor_action
 
 /**
  * Container action wrapping several actions into one. 
- * The actions are performed in the order they are added,.
+ * The actions are performed in the order they are added.
  */
 class editor_action_chain : public editor_action
 {
 	public:
+		/**
+		 * Create an empty action chain
+		 */
 		editor_action_chain() :
 			actions_()
 		{
 		}
+		
+		/**
+		 * Create an action chain from a vector of action pointers.
+		 * Note: the action chain assumes ownership of the pointers.
+		 */
 		explicit editor_action_chain(std::vector<editor_action*> actions)
 		: actions_(actions)
 		{
 		}
+		
+		/**
+		 * Create an action chain by wrapping around a single action pointer.
+		 * Note: the action chain assumes ownership of the pointer.
+		 */
+		explicit editor_action_chain(editor_action* action)
+		: actions_(1, action)
+		{
+		}
+		
+		/**
+		 * The destructor deletes all the owned action pointers
+		 */
 		~editor_action_chain();
+		
+		/**
+		 * Go through the chain and add up all the action counts
+		 */
+		int action_count() const;
+		
+		/**
+		 * Add an action at the end of the chain
+		 */
 		void append_action(editor_action* a);
+		
+		/**
+		 * @return true when there are no actions in the chain. Empty
+		 * action chains should usually be discarded as to not keep
+		 * "empty" actions around.
+		 */
+		bool empty() const;
+		
+		/**
+		 * Remove the last added action and return it, transfering
+		 * ownership to the caller
+		 */
+		editor_action* pop_last_action();
+		
+		/**
+		 * Perform all the actions in order and create a undo action chain
+		 */
 		editor_action_chain* perform(map_context& m) const;
+		
+		/**
+		 * Perform all the actions in order
+		 */
 	    void perform_without_undo(map_context& m) const;
+		
     protected:
+		/**
+		 * The action pointers owned by this action chain
+		 */
         std::vector<editor_action*> actions_;
 };
 

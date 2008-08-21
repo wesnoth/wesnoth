@@ -143,7 +143,7 @@ editor_action* brush_drag_mouse_action::drag_end(
 	return NULL;
 }
 
-template <editor_action_extendable* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
+template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
 editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo)
 {
 	gamemap::location hex = disp.hex_clicked_on(x, y);
@@ -152,12 +152,7 @@ editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x
 		std::set<gamemap::location> current_step_locs = affected_hexes(disp, hex);
 		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
 		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x << "\n";
-		if (last_undo_x != NULL) {
-			last_undo_x->extend(disp.map(), current_step_locs);
-			partial = true;
-		} else {
-			WRN_ED << "last undo in drag was not an editor_action_extendable\n";
-		}
+		partial = true;
 		editor_action* a = (this->*perform_func)(disp, affected_hexes(disp, hex));
 		previous_drag_hex_ = hex;
 		return a;
@@ -174,16 +169,16 @@ const brush& brush_drag_mouse_action::get_brush()
 }
 
 
-editor_action_extendable* mouse_action_paint::click_perform_left(
+editor_action* mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
-	return new editor_action_paint_area(hexes, terrain_left_, has_alt_modifier());
+	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_left_, has_alt_modifier()));
 }
 
-editor_action_extendable* mouse_action_paint::click_perform_right(
+editor_action* mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
-	return new editor_action_paint_area(hexes, terrain_right_, has_alt_modifier());
+	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_right_, has_alt_modifier()));
 }
 
 
@@ -205,16 +200,16 @@ editor_action* mouse_action_select::key_event(
 	return ret;
 }
 
-editor_action_extendable* mouse_action_select::click_perform_left(
+editor_action* mouse_action_select::click_perform_left(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
-	return new editor_action_select(hexes);
+	return new editor_action_chain(new editor_action_select(hexes));
 }
 
-editor_action_extendable* mouse_action_select::click_perform_right(
+editor_action* mouse_action_select::click_perform_right(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
-	return new editor_action_deselect(hexes);
+	return new editor_action_chain(new editor_action_deselect(hexes));
 }
 
 

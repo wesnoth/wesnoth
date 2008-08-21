@@ -456,6 +456,10 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		case HOTKEY_REDO:
 			return true;
+		case HOTKEY_EDITOR_PARTIAL_UNDO:
+			return true;
+		case HOTKEY_EDITOR_PARTIAL_REDO:
+			return false;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
@@ -536,6 +540,14 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			palette_->swap();
 			if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
+			return true;
+		case HOTKEY_EDITOR_PARTIAL_UNDO:
+			if (dynamic_cast<const editor_action_chain*>(get_map_context().last_undo_action()) != NULL) {
+				get_map_context().partial_undo();
+				refresh_after_action();
+			} else {
+				undo();
+			}
 			return true;
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:

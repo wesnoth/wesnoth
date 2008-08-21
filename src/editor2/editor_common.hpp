@@ -45,6 +45,13 @@ struct editor_exception : public std::exception
 	const char* msg;
 };
 
+struct editor_logic_exception : public editor_exception
+{
+	editor_logic_exception(const char* msg)
+	: editor_exception(msg)
+	{
+	}
+};
 
 // forward declarations
 class brush;

@@ -137,17 +137,34 @@ public:
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;
 	
+	/** @return true when redo can be performed, false otherwise */
+	bool can_redo() const;
+
 	/** @return a pointer to the last undo action or NULL if the undo stack is empty */
 	editor_action* last_undo_action();
 
-	/** @return true when redo can be performed, false otherwise */
-	bool can_redo() const;
+	/** @return a pointer to the last redo action or NULL if the undo stack is empty */
+	editor_action* last_redo_action();
+
+	/** const version of last_undo_action */
+	const editor_action* last_undo_action() const;
+
+	/** const version of last_redo_action */
+	const editor_action* last_redo_action() const;
 
 	/** Un-does the last action, and puts it in the redo stack for a possible redo */
 	void undo();
 
 	/** Re-does a previousle undid action, and puts it back in the undo stack. */
 	void redo();
+	
+	/**
+	 * Un-does a single step from a undo action chain. The action is separated
+	 * from the chain and it's undo (the redo) is added as a standalone action
+	 * to the redo stack.
+	 * Precodnition: the last undo action has to actually be an action chain.
+	 */
+	void partial_undo();
 	
 protected:
 	/**

@@ -141,12 +141,12 @@ public:
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action_extendable* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
+	virtual editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
 	
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action_extendable* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
+	virtual editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
 
 	/**
 	 * Calls click_perform_left()
@@ -192,7 +192,7 @@ private:
 	 * The drags differ only in the worker function called, which should be
 	 * passed as the template parameter. This exists only to avoid copy-pasting code.
 	 */
-	template <editor_action_extendable* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
+	template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
 	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
@@ -219,12 +219,12 @@ public:
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action_extendable* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action_extendable* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
 
 	bool uses_terrains() const { return true; }
 protected:
@@ -256,12 +256,12 @@ public:
 	/**
 	 * Left click/drag selects
 	 */
-	editor_action_extendable* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
 
 	/**
 	 * Right click/drag deselects
 	 */
-	editor_action_extendable* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
 };
 
 /**

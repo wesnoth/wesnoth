@@ -57,6 +57,11 @@ class editor_action
 		virtual void perform_without_undo(map_context&) const = 0;
 		
 		/**
+		 * @return the actual number of actions contained within
+		 */
+		virtual int action_count() const;
+		
+		/**
 		 * A textual description of the action. For use e.g. in the undo menu, to have
 		 * a "Undo: Fill with Grassland" item rather than just "Undo". Should be overriden
 		 * by derived Actions, defaults to a debug message.

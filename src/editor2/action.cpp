@@ -33,11 +33,22 @@ editor_action::editor_action()
 : id_(next_id_++)
 {
 	instance_count_++;
+#ifdef EDITOR2_DEBUG_ACTION_LIFETIME
+	LOG_ED << "Action " << std::setw(2) << id_ << " ctor " << this << " (count is " << instance_count << "\n";
+#endif
 }
 
 editor_action::~editor_action()
 {
 	instance_count_--;
+#ifdef EDITOR2_DEBUG_ACTION_LIFETIME
+	LOG_ED << "Action " << std::setw(2) << id_ << " dtor " << this << " (count is " << instance_count << "\n";
+#endif
+}
+
+int editor_action::action_count() const
+{
+	return 1;
 }
 
 std::string editor_action::get_description()
@@ -63,8 +74,24 @@ editor_action_chain::~editor_action_chain()
 		delete a;
 	}
 }
+int editor_action_chain::action_count() const {
+	int count = 0;
+	foreach (const editor_action* a, actions_) {
+		count += a->action_count();
+	}
+	return count;
+}
 void editor_action_chain::append_action(editor_action* a) {
 	actions_.push_back(a);
+}
+bool editor_action_chain::empty() const {
+	return actions_.empty();
+}
+editor_action* editor_action_chain::pop_last_action() {
+	if (empty()) throw editor_action_exception("pop_last_action requested on an empty action_chain");
+	editor_action* last = actions_.back();
+	actions_.pop_back();
+	return last;
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	std::auto_ptr<editor_action_chain> undo(new editor_action_chain());
