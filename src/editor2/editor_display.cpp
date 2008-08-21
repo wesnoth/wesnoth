@@ -78,7 +78,6 @@ image::TYPE editor_display::get_image_type(const gamemap::location& loc)
 void editor_display::draw_hex(const gamemap::location& loc)
 {
 	const bool on_map = map_.on_board(loc);
-	const bool is_shrouded = shrouded(loc);
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
 	int drawing_order = gamemap::get_drawing_order(loc);

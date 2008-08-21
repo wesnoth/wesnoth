@@ -89,7 +89,7 @@ void editor_action_area::add_locations(const std::set<gamemap::location>& locs)
 {
 	area_.insert(locs.begin(), locs.end());
 }
-void editor_action_area::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+void editor_action_area::extend(const editor_map& /*map*/, const std::set<gamemap::location>& locs)
 {
 	area_.insert(locs.begin(), locs.end());
 }
