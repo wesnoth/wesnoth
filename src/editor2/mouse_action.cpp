@@ -25,31 +25,6 @@
 
 namespace editor2 {
 
-class A
-{
-  void doA(int);
-  void doStuffThenA(int);
-  template<void (A::*foo)(int)>
-  void doStuffThenFoo(int);
-};
-
-void A::doA(int)
-{
-}
-
-void A::doStuffThenA(int a)
-{
-  doStuffThenFoo<&A::doA>(a);
-}
-
-template<void (A::*foo)(int)>
-void A::doStuffThenFoo(int a)
-{
-  //doStuff
-  (this->*foo)(a);
-}
-
-
 void mouse_action::move(editor_display& disp, const gamemap::location& hex)
 {
 	if (hex != previous_move_hex_) {
