@@ -1268,7 +1268,7 @@ bool game_controller::play_multiplayer()
 				login = d.textbox_text();
 				if (res == 2 && preferences::mp_server_warning_disabled() < 2)
 				{
-					gui::dialog d(disp(), _("Do you realy want to start the server?"), _("Server will run in background process untill all users have disconnected."), gui::OK_CANCEL);
+					gui::dialog d(disp(), _("Do you really want to start the server?"), _("The server will run in a background process until all users have disconnected."), gui::OK_CANCEL);
 					bool checked = preferences::mp_server_warning_disabled() != 1;
 
 					d.add_option(_("Don't show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
