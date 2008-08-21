@@ -1904,7 +1904,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --decompress INFILE OUTFILE  decompresses a savefile (INFILE) that is in binary\n"
 			<< "                               WML format into text WML format (OUTFILE).\n"
 #ifdef USE_EDITOR2
-			<< " -e, --editor                  starts editor2 not showing title screen.\n"
+			<< "  -e, --editor                 starts editor2 not showing title screen.\n"
 #endif
 			<< "  -f, --fullscreen             runs the game in full screen mode.\n"
 			<< "  --fps                        displays the number of frames per second the game\n"
