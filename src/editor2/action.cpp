@@ -96,7 +96,6 @@ void editor_action_area::extend(const editor_map& map, const std::set<gamemap::l
 
 void editor_action_paste::extend(const editor_map& map, const std::set<gamemap::location>& locs)
 {
-	LOG_ED << "Area extend\n";
 	paste_.add_tiles(map, locs);
 }
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
