@@ -77,13 +77,12 @@ image::TYPE editor_display::get_image_type(const gamemap::location& loc)
 
 void editor_display::draw_hex(const gamemap::location& loc)
 {
-	const bool on_map = map_.on_board(loc);
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
 	int drawing_order = gamemap::get_drawing_order(loc);
 	tblit blit(xpos, ypos);
 	display::draw_hex(loc);
-	if (on_map && map().in_selection(loc)) {
+	if (map().on_board_with_border(loc) && map().in_selection(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
 			image::get_image("editor/selection-overlay.png", image::SCALED_TO_HEX)));
 	}
