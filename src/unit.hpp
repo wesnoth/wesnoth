@@ -119,7 +119,7 @@ public:
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
 	unsigned int side() const { return side_; }
-	std::string side_id() const {return (*teams_)[side()].save_id(); }
+	std::string side_id() const {return (*teams_)[side()-1].save_id(); }
 	Uint32 team_rgb() const { return(team::get_side_rgb(side())); }
 	const std::string& team_color() const { return flag_rgb_; }
 	unit_race::GENDER gender() const { return gender_; }
