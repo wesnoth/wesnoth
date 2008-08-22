@@ -154,7 +154,7 @@ namespace {
 		server_manager_(load_config()),
 		hooks_(),
 		input_(0),
-		compress_level_(0)
+		compress_level_(compress_level_) // Already set by load_config()
 	{
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
@@ -296,7 +296,7 @@ namespace {
 		{
 			// Convert all addons to gzip
  			config::child_list camps = campaigns().get_children("campaign");
- 			LOG_CS << "Encoding CR in all stored campaigns. Number of addons: " << camps.size() <<"\n";
+ 			LOG_CS << "Encoding all stored campaigns. Number of addons: " << camps.size() <<"\n";
  
  			for (config::child_list::iterator itor = camps.begin();
  					itor != camps.end(); ++itor)
@@ -316,7 +316,7 @@ namespace {
 					unsigned char c = in_filter.get();
 					while( in_filter.good())
 					{
-						if (needs_escaping(c) && c == '\x01')
+						if (needs_escaping(c) && c != '\x01')
 						{
 							out_filter.put('\x01');
 						   	out_filter.put(c+1);
@@ -332,7 +332,7 @@ namespace {
 				}
 			}
  			
-			cfg_["cr_encoded"] = "yes";
+			cfg_["encoded"] = "yes";
 		}
  	}
 
