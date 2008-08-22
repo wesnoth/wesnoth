@@ -195,6 +195,8 @@ class Build {
 		$m =array();
 		$this->error_msg = '';
 		$this->status = self::S_GOOD;
+		if ($this->db->debug)
+			echo $compiler_log;
 
 		// build/debug/editor2/
 		$compiler_log = FilenameConverter::stripBuildDirs($compiler_log);
@@ -205,8 +207,8 @@ class Build {
 			{
 				$this->error_msg .= $match[0] . "\n";
 			}
-			if (strpos($this->error_msg,'error') !== false 
-				|| strpos($this->error_msg,'ld returned'))
+			if (stripos($this->error_msg,'error') !== false 
+				|| stripos($this->error_msg,'ld returned'))
 					$this->status = self::S_ERROR;
 		}
 

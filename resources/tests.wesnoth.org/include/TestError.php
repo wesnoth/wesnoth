@@ -71,7 +71,7 @@ class TestError {
 		}
 	}
 
-	private function init($values)
+	public function init($values)
 	{
 		$this->start_version = -1;
 		$this->end_version = -1;
@@ -83,7 +83,7 @@ class TestError {
 
 	private function reset()
 	{
-		$this->id = -1;
+		$this->id = null;
 		$this->before_id = -1;
 		$this->last_id = -1;
 		$this->error_type = "";

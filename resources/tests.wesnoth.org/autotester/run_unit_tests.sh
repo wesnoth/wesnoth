@@ -16,7 +16,7 @@ FULL_PATH=`dirname $(readlink -f $0)`
 #source $FULL_PATH/path_settup.sh
 
 export SSH_AUTH_SOCK=`find /tmp/keyring* -name ssh`
-export DISPLAY=:0.0
+export DISPLAY=:2.0
 
 WEBDIR=$FULL_PATH/../htdocs
 

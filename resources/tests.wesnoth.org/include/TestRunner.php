@@ -26,7 +26,7 @@ class TestRunner {
 			trigger_error("No executeable name for tests");
 			return false;
 		}
-		$test_output = '<UnitTest>'.shell_exec("./$binary_name --log_format=XML --report_format=XML 2>&1").'</UnitTest>';
+		$test_output = shell_exec("./$binary_name --log_format=XML --report_format=XML 2>&1");
 
 		//$test_output = '<UnitTest><TestLog><Message file="./boost/test/impl/results_collector.ipp" line="220">Test case test_user_team_name doesn&apos;t include any assertions</Message><Error file="build/debug/tests/test_config_cache.cpp" line="84">check defines_map.size() == cache.get_preproc_map().size() failed [2 != 0]</Error></TestLog>
 		//<TestResult><TestSuite name="wesnoth unit tests master suite" 
@@ -39,13 +39,28 @@ class TestRunner {
 		//test_cases_skipped="0" 
 		//test_cases_aborted="0"></TestSuite>
 		//</TestResult></UnitTest>';
-		$xml = simplexml_load_string($test_output);
+		$xml = simplexml_load_string('<UnitTest>'.$test_output.'</UnitTest>');
 		global $db;
 		if (!($xml instanceof SimpleXMLElement)
 			|| !isset($xml->TestResult[0]) )
 		{
 			if ($db->debug)
 				echo $test_output;
+			$db->StartTrans();
+			$build->insert();
+			$test_report =  new TestResult();
+			$test_report->init(array('build_id' => $build->getId(),
+									 'result' => 'crash'));
+
+			$test_report->updateDB();
+
+			$test_error = new TestError();
+			$test_error->init(array('file' => 'core',
+							  'error_type' => 'Crash',
+						      'line' => 0,
+						      'error_msg' => $test_output));
+			$test_error->updateDB($build);
+			$db->CompleteTrans();
 			return false;
 		}
 		$db->StartTrans();

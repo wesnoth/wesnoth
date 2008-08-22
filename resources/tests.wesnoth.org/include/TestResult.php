@@ -113,7 +113,7 @@ class TestResult {
 		return $this->build_id;
 	}
 
-	private function init($values)
+	public function init($values)
 	{
 		foreach($values as $key => $value)
 		{

@@ -4,7 +4,7 @@ $config = array('history_builds_per_page' => 18,
 				// Possible: "scons test 2>&1"
 				// "cd src && make test 2>&1 && cd .."
 				// cmake? No idea :P
-				'compile_command' => 'scons 2>&1',
+				'compile_command' => 'scons test 2>&1',
 				// Possible: "./test-debug"
 				// "src/test"
 				// cmake? You know it
