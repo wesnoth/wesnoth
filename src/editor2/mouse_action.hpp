@@ -132,8 +132,8 @@ class brush_drag_mouse_action : public mouse_action
 public:
 	brush_drag_mouse_action(const brush* const * const brush, const CKey& key)
 		: mouse_action(key)
-		, brush_(brush)
 		, previous_drag_hex_()
+		, brush_(brush)
 	{
 	}
 	
