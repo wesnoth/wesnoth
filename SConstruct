@@ -80,7 +80,7 @@ opts.AddOptions(
     PathOption('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath), 
     PathOption('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
-    EnumOption('distcc', "Use distcc", "0", ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"]),
+    ('distcc', "distcc: 0 - don't use distcc, 1.. - use distcc and run this number of parallel compilations", "0", lambda key, value, env: int(value), int),
     BoolOption('ccache', "Use ccache", False),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
     BoolOption("fast", "Make scons faster at cost of less precise dependency tracking.", False)
@@ -107,7 +107,7 @@ if env.get('cxxtool',""):
     env['CXX'] = env['cxxtool']
     env['ENV']['HOME'] = os.environ['HOME']
 
-if env['distcc'] != "0": 
+if env['distcc']: 
     env.Tool('distcc')
     SetOption("num_jobs", env['distcc'])
 if env['ccache']: env.Tool('ccache')
