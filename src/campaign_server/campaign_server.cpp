@@ -316,7 +316,7 @@ namespace {
 					unsigned char c = in_filter.get();
 					while( in_filter.good())
 					{
-						if (needs_escaping(c) && c = '\x01')
+						if (needs_escaping(c) && c == '\x01')
 						{
 							out_filter.put('\x01');
 						   	out_filter.put(c+1);
