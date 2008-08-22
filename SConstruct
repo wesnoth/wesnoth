@@ -107,7 +107,7 @@ if env.get('cxxtool',""):
     env['CXX'] = env['cxxtool']
     env['ENV']['HOME'] = os.environ['HOME']
 
-if env['distcc']: 
+if env['distcc'] != "0": 
     env.Tool('distcc')
     SetOption("num_jobs", env['distcc'])
 if env['ccache']: env.Tool('ccache')
