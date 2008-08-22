@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-19 21:23+0200\n"
-"PO-Revision-Date: 2008-07-05 11:19+0200\n"
+"PO-Revision-Date: 2008-08-21 23:55+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -42,9 +42,8 @@ msgstr "Anima la mappa"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:75
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "Campagna"
+msgstr "Mostra l'animazione nella schermata introduttiva"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:82
@@ -59,7 +58,7 @@ msgstr "Mostra i combattimenti"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:104
 msgid "Only Run Safe Python AIs"
-msgstr ""
+msgstr "Esegui solo IA sicure in Python"
 
 #. [server]
 #: data/_main.cfg:111
@@ -191,9 +190,8 @@ msgstr "Responsabili per l'internazionalizzazione"
 
 #. [about]
 #: data/core/about.cfg:850
-#, fuzzy
 msgid "English strings edition"
-msgstr "Traduzione in inglese britannico"
+msgstr "Edizione dei messagi in inglese"
 
 #. [about]
 #: data/core/about.cfg:857
@@ -1967,7 +1965,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1976,8 +1973,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità sane hanno 2 PF più del solito ed il riposo cura 2 PF in più dopo "
-"ogni turno in cui non hanno combattuto."
+"Le unità sane hanno 1 PF più 1 PF per livello più del solito ed il riposo "
+"cura 2 PF in più dopo ogni turno in cui non hanno combattuto."
 
 #. [topic]
 #: data/core/help.cfg:417
@@ -2247,8 +2244,8 @@ msgid ""
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 "Il ghiaccio rappresenta tutte le masse di acqua congelata. Ai fini del "
-"gioco, è identica alla <ref>dst=terrain_tundra text=neve</ref>. Ricordati "
-"che le unità che nuotano, anche quelle che respirano sott'acqua, non possono "
+"gioco, è identica alla <ref>dst=terrain_snow text=neve</ref>. Ricordati che "
+"le unità che nuotano, anche quelle che respirano sott'acqua, non possono "
 "nuotare al di sotto del ghiaccio."
 
 #. [topic]
@@ -3384,11 +3381,8 @@ msgstr "Bonus PF Massimo +"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
-"Sei arrivato al pozzo dei desideri.\n"
-"Qual è il tuo desiderio?"
+msgstr "Sei arrivato al pozzo dei desideri. Qual è il tuo desiderio?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -3435,13 +3429,12 @@ msgstr "Non esprimere desideri."
 #: data/core/macros/items.cfg:148
 #, fuzzy
 msgid "Take it"
-msgstr "Rinomina unità"
+msgstr "Lascialo"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Rinomina unità"
+msgstr "Lascialo"
 
 #. [object]
 #: data/core/macros/items.cfg:218
@@ -4434,7 +4427,6 @@ msgstr ""
 "solo mentre si difende."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
@@ -4521,12 +4513,12 @@ msgstr ""
 "strisciando dietro il nemico."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-"I nemici che perdono la vita a causa del contagio risorgeranno non-morti."
+" I nemici che perdono la vita a causa del contagio risorgeranno non-morti, a "
+"meno che non si trovino in un villaggio."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4911,20 +4903,21 @@ msgstr ""
 "dalle migliori fonderie dei nani.\n"
 "\n"
 "I draghi nascono dalle uova e di solito vivono tra 20 e 30 anni. La morte in "
-"battaglia e il modo preferito dai draghi per lasciare questo mondo. A "
+"battaglia è il modo preferito dai draghi per lasciare questo mondo. A "
 "differenza dei membri anziani delle altre razze, i draghi diventano sempre "
 "più aggressivi e spericolati verso la fine della loro vita naturale, forse "
 "per garantirsi il posto nelle leggende degli eroi della loro razza.\n"
 "\n"
 "<header>text='Geografia'</header>\n"
-"I draghi hanno origina dall'isola di Morogor nel vasto oceano. Comuqnue, "
-"dato che l'isola sta sprofondando da secoli, le colonie di draghi si sono "
-"diffuse lentamente sul grande continente. I draghi tendono a stabilirsi in "
-"caverne di montagna vicino a vulcani per proteggere le loro uova, nidiate e "
-"forge. Anche se i draghi preferiscono il caldo per natura, il loro fuoco "
-"interno è ampiamente sufficiente per sostenerli persino in un clima "
-"relativamente freddo, capacità che ha permesso loro di popolare anche alcune "
-"delle montagne nell'estremo nord del grande continente."
+"I draghi hanno origine da una catena di isole vulcaniche nel Grande Oceano. "
+"Una combinazione dell'incremento di popolazione e dello sprofondamento di "
+"molte delle loro isole ha fatto in modo che le colonie di draghi si siano "
+"diffuse sul Grande Continente. I draghi tendono a stabilirsi in caverne di "
+"montagna vicino a vulcani per proteggere le loro uova, nidiate e forge. "
+"Anche se i draghi preferiscono il caldo per natura, il loro fuoco interno è "
+"ampiamente sufficiente per sostenerli persino in un clima relativamente "
+"freddo, capacità che ha permesso loro di popolare anche alcune delle "
+"montagne nell'estremo nord del Grande Continente."
 
 #. [race]
 #: data/core/units.cfg:74
@@ -6525,7 +6518,7 @@ msgstr "F."
 #. [label]
 #: data/themes/dfool.cfg:252
 msgid "MP"
-msgstr "MP"
+msgstr "MG"
 
 #. [label]
 #: data/themes/macros.cfg:59
@@ -6647,8 +6640,8 @@ msgstr "Teletrasporto non riuscito! L'uscita non è sgombra"
 #: src/actions.cpp:2394
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Avvistata un'unità alleata."
-msgstr[1] "Avvistate $friend unità alleate."
+msgstr[0] "Avvistata un'unità alleata"
+msgstr[1] "Avvistate $friend unità alleate"
 
 #: src/actions.cpp:2397
 msgid "Enemy unit sighted!"
@@ -6695,55 +6688,57 @@ msgstr "B"
 
 #: src/addon_management.cpp:441
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "Campagna"
 
 #: src/addon_management.cpp:443
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Scenario"
 
 #: src/addon_management.cpp:445
 msgid "addon_type^MP Era"
-msgstr ""
+msgstr "Era MG"
 
 #: src/addon_management.cpp:447
 msgid "addon_type^MP Faction"
-msgstr ""
+msgstr "Fazione MG"
 
 #: src/addon_management.cpp:449
 msgid "addon_type^MP Map-pack"
-msgstr ""
+msgstr "Raccolta di mappe MG"
 
 #: src/addon_management.cpp:451
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Scenario remoto"
+msgstr "Scenario MG"
 
 #: src/addon_management.cpp:453
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "Campagna MG"
 
 #: src/addon_management.cpp:455
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "Risorse"
 
 #: src/addon_management.cpp:457
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(sconosciuta)"
 
 #: src/addon_management.cpp:482
 msgid "Dependencies"
 msgstr "Dipendenze"
 
 #: src/addon_management.cpp:483
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Questa estensione richiede le seguenti dipendenze aggiuntive:"
-msgstr[1] "Questa estensione richiede le seguenti dipendenze aggiuntive:"
+msgstr[0] ""
+"Questa estensione richiede la seguente dipendenza aggiuntiva che non è "
+"ancora installata:"
+msgstr[1] ""
+"Questa estensione richiede le seguenti dipendenze aggiuntive che non sono "
+"ancora installate:"
 
 #: src/addon_management.cpp:488
 msgid "Do you still want to download it?"
@@ -6801,7 +6796,7 @@ msgstr "Estensione installata"
 #: src/addon_management.cpp:742
 #, fuzzy
 msgid "Outdated add-ons"
-msgstr "Invio estensione"
+msgstr "Deinstalla estensioni"
 
 #: src/addon_management.cpp:744
 msgid ""
@@ -6860,9 +6855,8 @@ msgid "Update all"
 msgstr "Parete di caverna"
 
 #: src/addon_management.cpp:892
-#, fuzzy
 msgid "Update failed"
-msgstr "Parete di caverna"
+msgstr ""
 
 #: src/addon_management.cpp:894
 #, fuzzy
@@ -6874,9 +6868,8 @@ msgstr[1] ""
 "Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
 #: src/addon_management.cpp:903
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Estensioni"
+msgstr ""
 
 #: src/addon_management.cpp:904
 msgid "Add-on updated successfully."
@@ -6961,7 +6954,6 @@ msgstr ""
 "questa estensione."
 
 #: src/addon_management.cpp:1121
-#, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Non ci sono estensioni installate."
 
@@ -6970,9 +6962,8 @@ msgid "Choose the add-on to remove."
 msgstr "Scegli l'estensione da eliminare."
 
 #: src/addon_management.cpp:1133 src/addon_management.cpp:1220
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Invio estensione"
+msgstr "Deinstalla estensioni"
 
 #: src/addon_management.cpp:1145
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -7017,7 +7008,7 @@ msgstr "Server: "
 #: src/addon_management.cpp:1216
 #, fuzzy
 msgid "Update add-ons"
-msgstr "Invio estensione"
+msgstr "Deinstalla estensioni"
 
 #: src/ai.cpp:1607
 msgid "Unknown unit type : "
@@ -7030,48 +7021,56 @@ msgstr ""
 "0."
 
 #: src/attack_prediction_display.cpp:120 src/attack_prediction_display.cpp:230
+#, fuzzy
 msgid "Attacker"
-msgstr "Attaccante"
+msgstr "Tipo di attacco"
 
 #: src/attack_prediction_display.cpp:121 src/attack_prediction_display.cpp:229
+#, fuzzy
 msgid "Defender"
-msgstr "Difensore"
+msgstr "Difesa"
 
 #: src/attack_prediction_display.cpp:139
 msgid "Expected Battle Result (HP)"
-msgstr "Probabile esito della battaglia (PF)"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:231
+#, fuzzy
 msgid " resistance vs "
-msgstr " resistenza a "
+msgstr "Resistenze: "
 
 #: src/attack_prediction_display.cpp:232
 msgid " vulnerability vs "
-msgstr " vulnerabilità a "
+msgstr ""
 
 #: src/attack_prediction_display.cpp:242
+#, fuzzy
 msgid "Slowed"
-msgstr "Rallentato"
+msgstr "rallentato"
 
 #: src/attack_prediction_display.cpp:249
+#, fuzzy
 msgid "Time of day"
 msgstr "Periodo del giorno"
 
 #: src/attack_prediction_display.cpp:259
+#, fuzzy
 msgid "Leadership"
-msgstr "Comando"
+msgstr "comando"
 
 #: src/attack_prediction_display.cpp:266
+#, fuzzy
 msgid "Total damage"
-msgstr "Danno totale"
+msgstr "danno"
 
 #: src/attack_prediction_display.cpp:273
+#, fuzzy
 msgid "No usable weapon"
-msgstr "Arma non utilizzabile"
+msgstr "Scegli l'arma:"
 
 #: src/attack_prediction_display.cpp:278
 msgid "Chance of being unscathed"
-msgstr "Probabilità di essere indenne"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:561 src/mouse_events.cpp:642
 msgid "Damage Calculations"
@@ -7226,9 +7225,8 @@ msgid "Show replay"
 msgstr "Mostra replay"
 
 #: src/dialogs.cpp:681
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Annulla"
+msgstr "Annulla gli ordini"
 
 #: src/dialogs.cpp:684 src/multiplayer_create.cpp:87
 msgid "OK"
@@ -7328,13 +7326,12 @@ msgid "Join a different server"
 msgstr "Collegati a un server diverso"
 
 #: src/game.cpp:1250
-#, fuzzy
 msgid "Host Networked Game"
-msgstr "Informazioni sul gioco"
+msgstr "Ospita partita in rete"
 
 #: src/game.cpp:1251
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "Ospita una partita usando il server dedicato «wesnothd»"
 
 #: src/game.cpp:1253
 msgid "Local Game"
@@ -7351,9 +7348,8 @@ msgid "Login: "
 msgstr "Login: "
 
 #: src/game.cpp:1269
-#, fuzzy
 msgid "Do you realy want to start the server?"
-msgstr "Vuoi davvero congedarla?"
+msgstr "Vuoi davvero avviare il server?"
 
 #: src/game.cpp:1269
 msgid ""
@@ -7361,14 +7357,12 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1272
-#, fuzzy
 msgid "Don't show again"
-msgstr "Non chiedermelo più!"
+msgstr "Non mostrare più"
 
 #: src/game.cpp:1347
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "Errore mentre si gioca la partita: "
+msgstr "Errore durante l'avvio del server: "
 
 #: src/game.cpp:1349 src/playcampaign.cpp:103 src/playcampaign.cpp:389
 msgid "The game could not be loaded: "
@@ -7433,7 +7427,7 @@ msgstr "Reimpostazione dei font per la lingua corrente."
 #: src/game.cpp:2163
 #, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Invio estensione"
+msgstr "Sto richiedendo la lista delle estensioni."
 
 #: src/game.cpp:2172
 msgid "Loading title screen."
@@ -7478,13 +7472,12 @@ msgid "invisible: "
 msgstr "invisibile: "
 
 #: src/generate_report.cpp:107
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
 "Questa unità è stata rallentata. Quando attacca provoca la metà dei danni "
-"normali."
+"normali ed il costo del suo movimento è raddoppiato."
 
 #: src/generate_report.cpp:107
 msgid "slowed: "
@@ -7523,7 +7516,7 @@ msgstr "Resistenze: "
 
 #: src/generate_report.cpp:176
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Att / Dif)"
 
 #: src/generate_report.cpp:195 src/multiplayer_create.cpp:399
 msgid "Experience Modifier: "
@@ -7542,9 +7535,9 @@ msgstr[0] "attacco"
 msgstr[1] "attacchi"
 
 #: src/generate_report.cpp:273
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "attacco"
+msgstr "% accuratezza"
 
 #: src/generate_report.cpp:279
 #, fuzzy, no-c-format
@@ -7772,9 +7765,9 @@ msgid "Do you really want to dismiss him?"
 msgstr "Vuoi davvero congedarlo?"
 
 #: src/menu_events.cpp:106
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Mio signore, questa unità sta per avanzare di livello!"
+msgstr ""
+"Mio signore, questa unità è leale e non richiede spese di mantenimento! "
 
 #: src/menu_events.cpp:107 src/menu_events.cpp:110 src/menu_events.cpp:114
 msgid "Do you really want to dismiss her?"
@@ -8049,9 +8042,8 @@ msgid "Search"
 msgstr "Cerca"
 
 #: src/menu_events.cpp:1847
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Nessuna campagna disponibile.\n"
+msgstr "Questo comando non è al momento disponibile."
 
 #: src/menu_events.cpp:1858
 msgid ""
@@ -8060,9 +8052,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1963
-#, fuzzy
 msgid " No help available."
-msgstr "Nessun obiettivo disponibile"
+msgstr " Nessun aiuto disponibile."
 
 #: src/menu_events.cpp:2099
 msgid ""
@@ -8132,9 +8123,8 @@ msgid "Show your ignores and friends list."
 msgstr "Mostra il tuo elenco di amici e utenti da ignorare. Uso: /list display"
 
 #: src/menu_events.cpp:2133
-#, fuzzy
 msgid "Display version information."
-msgstr "Nessuna informazione trovata sull'era."
+msgstr "Mostra informazioni sulla versione."
 
 #: src/menu_events.cpp:2135
 msgid "Register your nick"
@@ -8158,7 +8148,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2264
 msgid "Refresh gui."
-msgstr ""
+msgstr "Aggiorna la GUI."
 
 #: src/menu_events.cpp:2266
 msgid "Switch a side to/from AI control."
@@ -8169,43 +8159,37 @@ msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
 #: src/menu_events.cpp:2271
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Cancella i messaggi di chat.\n"
-"\n"
+msgstr "Cancella la cronologia della chat."
 
 #: src/menu_events.cpp:2273
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2276
-#, fuzzy
 msgid "Save game."
-msgstr "Salva partita"
+msgstr "Salva la partita."
 
 #: src/menu_events.cpp:2278
-#, fuzzy
 msgid "Quit game."
-msgstr "Termina la partita"
+msgstr "Termina la partita."
 
 #: src/menu_events.cpp:2282
 msgid "Save and quit."
-msgstr ""
+msgstr "Salva ed esci."
 
 #: src/menu_events.cpp:2285
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Ignora gli errori delle risposte."
 
 #: src/menu_events.cpp:2287
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Disabilita i salvataggi automatici."
 
 #: src/menu_events.cpp:2289
 #, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Attesa per il prossimo scenario..."
+msgstr "Avanza al prossimo scenario."
 
 #: src/menu_events.cpp:2292
 #, fuzzy
@@ -8213,13 +8197,12 @@ msgid "Choose next scenario"
 msgstr "Scaricamento scenario successivo..."
 
 #: src/menu_events.cpp:2295
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Comandi di debug"
+msgstr "Attiva la modalità di debug."
 
 #: src/menu_events.cpp:2297
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Disattiva la modalità di debug."
 
 #: src/menu_events.cpp:2299
 msgid "Set the command used by the custom command hotkey"
@@ -8230,20 +8213,12 @@ msgid "Set or show alias to a command"
 msgstr ""
 
 #: src/menu_events.cpp:2303
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"Mostra una variabile di stato del gioco.\n"
-"\n"
+msgstr "Imposta una variabile dello scenario."
 
 #: src/menu_events.cpp:2305
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"Mostra una variabile di stato del gioco.\n"
-"\n"
+msgstr "Mostra una variabile dello scenario."
 
 #: src/menu_events.cpp:2307
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -8254,25 +8229,16 @@ msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
 #: src/menu_events.cpp:2313
-#, fuzzy
 msgid "Create a unit."
-msgstr "Crea partita"
+msgstr "Crea un'unità"
 
 #: src/menu_events.cpp:2315
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Mostra o nasconde la nebbia/oscurità per la fazione attuale.\n"
-"\n"
+msgstr "Attiva/disattiva la nebbia per il giocatore attuale."
 
 #: src/menu_events.cpp:2317
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"Mostra o nasconde la nebbia/oscurità per la fazione attuale.\n"
-"\n"
+msgstr "Attiva/disattiva l'oscurità per il giocatore attuale."
 
 #: src/menu_events.cpp:2319
 msgid "Give gold to the current player."
@@ -8768,9 +8734,8 @@ msgid "--no games open--"
 msgstr "--nessuna partita aperta--"
 
 #: src/multiplayer_lobby.cpp:155
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Era sconosciuta"
+msgstr " (Era sconosciuta)"
 
 #: src/multiplayer_lobby.cpp:432
 msgid "Unknown era: $era_id"
@@ -8936,18 +8901,16 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Un terreno con un costo di movimento minore di 1 è stato incontrato."
 
 #: src/play_controller.cpp:109
-#, fuzzy
 msgid "Loading level"
-msgstr "Caricamento schermata dei titoli"
+msgstr "Caricamento livello"
 
 #: src/play_controller.cpp:130
 msgid "Initializing teams"
 msgstr "Preparazione squadre"
 
 #: src/play_controller.cpp:151
-#, fuzzy
 msgid "Loading units"
-msgstr "Caricamento file delle unità."
+msgstr "Caricamento delle unità"
 
 #: src/play_controller.cpp:158 src/play_controller.cpp:166
 msgid "Initializing display"
@@ -9219,48 +9182,54 @@ msgid "$error, value '$value' at $pos"
 msgstr "$error su $pos"
 
 #: src/statistics_dialog.cpp:68 src/statistics_dialog.cpp:120
+#, fuzzy
 msgid "Recruits"
-msgstr "Reclutamenti"
+msgstr "Recluta"
 
 #: src/statistics_dialog.cpp:72 src/statistics_dialog.cpp:127
+#, fuzzy
 msgid "Recalls"
-msgstr "Richiami"
+msgstr "Richiama"
 
 #: src/statistics_dialog.cpp:76 src/statistics_dialog.cpp:134
+#, fuzzy
 msgid "Advancements"
-msgstr "Avanzamenti"
+msgstr "Avanzamento unità"
 
 #: src/statistics_dialog.cpp:80 src/statistics_dialog.cpp:141
 msgid "Losses"
-msgstr "Perdite"
+msgstr ""
 
 #: src/statistics_dialog.cpp:85 src/statistics_dialog.cpp:148
+#, fuzzy
 msgid "Kills"
-msgstr "Uccisioni"
+msgstr "Colline"
 
 #: src/statistics_dialog.cpp:102
 msgid "Details"
-msgstr "Dettagli"
+msgstr ""
 
 #: src/statistics_dialog.cpp:154
+#, fuzzy
 msgid "Damage"
-msgstr "Danni"
+msgstr "danno"
 
 #: src/statistics_dialog.cpp:155
 msgid "Over All"
-msgstr "Totali"
+msgstr ""
 
 #: src/statistics_dialog.cpp:157
+#, fuzzy
 msgid "This Turn"
-msgstr "Questo turno"
+msgstr "Turno"
 
 #: src/statistics_dialog.cpp:161 src/statistics_dialog.cpp:173
 msgid "Inflicted"
-msgstr "Inflitti"
+msgstr ""
 
 #: src/statistics_dialog.cpp:166 src/statistics_dialog.cpp:178
 msgid "Taken"
-msgstr "Subiti"
+msgstr ""
 
 #: src/terrain.cpp:152
 msgid "Allied village"
@@ -9311,9 +9280,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Estensioni"
 
 #: src/titlescreen.cpp:374
-#, fuzzy
 msgid "TitleScreen button^Editor"
-msgstr "Esci"
+msgstr "Editor"
 
 #: src/titlescreen.cpp:376
 msgid "TitleScreen button^Language"
@@ -9373,7 +9341,7 @@ msgstr "Scarica campagne, ere o mappe non ufficiali"
 
 #: src/titlescreen.cpp:394
 msgid "Start the map editor"
-msgstr ""
+msgstr "Avvia l'editor delle mappe"
 
 #: src/titlescreen.cpp:396
 msgid "Change the language"
@@ -9459,7 +9427,7 @@ msgstr[1] "colpi"
 #: src/unit_types.cpp:223
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% accuratezza"
 
 #: src/unit_types.cpp:233
 #, no-c-format
@@ -9521,64 +9489,15 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Filtro: "
+#~ msgid "Pick it up"
+#~ msgstr "Raccoglilo"
 
-#, fuzzy
 #~ msgid "Remove add-ons"
-#~ msgstr "Elimina estensioni"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "mosse"
+#~ msgstr "Rimuovi estensioni"
 
 #~ msgid "Level"
 #~ msgstr "Livello"
 
-#~ msgid "ruby of fire"
-#~ msgstr "rubino di fuoco"
-
-#~ msgid "Screenshot"
-#~ msgstr "Anteprima"
-
-#~ msgid ""
-#~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
-#~ "me/emote <message>. Type /help [<command>] for detailed instructions."
-#~ msgstr ""
-#~ "Comandi: msg/whisper <giocatore> <messaggio>, list <sottocomando> "
-#~ "[<argomento>], me/emote <messaggio>. Type /help [<comando>] per le "
-#~ "istruzioni dettagliate."
-
-#~ msgid ""
-#~ "Ignore messages from players on the ignore list and highlight players on "
-#~ "the friends list. Usage: /list <subcommand> [<argument>] Subcommands: "
-#~ "addfriend, addignore, remove, display, clear. Type /help list "
-#~ "<subcommand> for more info."
-#~ msgstr ""
-#~ "Ignora i messaggi dai giocatori da ignorare ed evidenzia i giocatori "
-#~ "della lista degli amici. Uso: /list <sottocomando> [<argomento>] Sotto-"
-#~ "comandi: addfriend addignore remove display clear. Scrivi /help list "
-#~ "<sottocomando> per ulteriori informazioni."
-
-#~ msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
-#~ msgstr ""
-#~ "Aggiungi il giocatore all'elenco degli amici. Uso: /list addfriend "
-#~ "<giocatore>"
-
-#~ msgid "Clear your complete ignores and friends list. Usage: /list clear"
-#~ msgstr ""
-#~ "Svuota completamente l'elenco degli amici e degli utenti da ignorare: "
-#~ "Uso: /list clear"
-
-#~ msgid "Unknown subcommand."
-#~ msgstr "Sottocomando sconosciuto."
-
-#~ msgid "Unknown command."
-#~ msgstr "Comando sconosciuto."
-
-#~ msgid "Unknown command: "
-#~ msgstr "Comando sconosciuto: "
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Uso: control <fazione> <giocatore>"
+#, fuzzy
+#~ msgid "--move--"
+#~ msgstr "mosse"
