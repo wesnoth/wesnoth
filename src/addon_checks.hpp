@@ -67,4 +67,8 @@ bool check_names_legal(const config& dir);
 /** Return a vector of detected scripts. */
 std::vector<config *> find_scripts(const config &cfg, std::string extension);
 
+std::string encode_binary(const std::string& str);
+std::string unencode_binary(const std::string& str);
+bool needs_escaping(char c);
+
 #endif /* !ADDON_CHECKS_HPP_INCLUDED */

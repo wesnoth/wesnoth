@@ -105,3 +105,58 @@ std::vector<config *> find_scripts(const config &cfg, std::string extension)
 	}
 	return python_scripts;
 }
+
+namespace {
+	const char escape_char = '\x01'; //!< Binary escape char.
+} // end unnamed namespace 2
+
+bool needs_escaping(char c) {
+	switch(c) {
+		case '\x00':
+		case escape_char:
+		case '\x0D': //Windows -- carriage return
+		case '\xFE': //Parser code -- textdomain or linenumber&filename
+			return true;
+		default:
+			return false;
+	}
+}
+
+std::string encode_binary(const std::string& str)
+{
+	std::string res;
+	res.resize(str.size());
+	size_t n = 0;
+	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j) {
+		if(needs_escaping(*j)) {
+			res.resize(res.size()+1);
+			res[n++] = escape_char;
+			res[n++] = *j + 1;
+		} else {
+			res[n++] = *j;
+		}
+	}
+
+	return res;
+}
+
+std::string unencode_binary(const std::string& str)
+{
+	std::string res;
+	res.resize(str.size());
+
+	size_t n = 0;
+	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j) {
+		if(*j == escape_char && j+1 != str.end()) {
+			++j;
+			res[n++] = *j - 1;
+			res.resize(res.size()-1);
+		} else {
+			res[n++] = *j;
+		}
+	}
+
+	return res;
+}
+
+

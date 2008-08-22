@@ -292,7 +292,7 @@ namespace {
  			
  			cfg_["converted_to_gzipped_data"] = "yes";
  		}
-		if (cfg_["cr_encoded"] != "yes")
+		if (cfg_["encoded"] != "yes")
 		{
 			// Convert all addons to gzip
  			config::child_list camps = campaigns().get_children("campaign");
@@ -316,7 +316,7 @@ namespace {
 					unsigned char c = in_filter.get();
 					while( in_filter.good())
 					{
-						if (c == '\r')
+						if (needs_escaping(c))
 						{
 							out_filter.put('\x01');
 						   	out_filter.put(c+1);
