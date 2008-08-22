@@ -434,8 +434,13 @@ private:
 			} else {
 				leader_bools.push_back(false);
 			}
+			std::string side_name;
+			if (gamestate_.campaign_type == "multiplayer")
+		       		side_name = teams_[n].current_player();
+			else
+                        	side_name = teams_[n].user_team_name();
 			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			    << teams_[n].current_player() << COLUMN_SEPARATOR
+			    << side_name << COLUMN_SEPARATOR
 			    << (data.teamname.empty() ? teams_[n].team_name() : data.teamname)
 			    << COLUMN_SEPARATOR;
 
