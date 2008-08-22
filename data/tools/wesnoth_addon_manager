@@ -98,7 +98,7 @@ if __name__ == "__main__":
         address += ":" + str(port)
 
     def get(name, version, uploads, cdir):
-        mythread = cs.get_campaign_async(name, options.raw_download)
+        mythread = cs.get_campaign_raw_async(name, options.raw_download)
 
         pcounter = 0
         while not mythread.event.isSet():
@@ -110,8 +110,9 @@ if __name__ == "__main__":
         if options.raw_download:
             file(name, "w").write(mythread.data)
         else:
+            decoded = cs.decode(myhread.data)
             print "Unpacking %s..." % name
-            cs.unpackdir(mythread.data, cdir,  verbose = options.verbose)
+            cs.unpackdir(decoded, cdir,  verbose = options.verbose)
             d = os.path.join(cdir, name)
             info = os.path.join(d, "_info.cfg")
             try:
@@ -121,7 +122,7 @@ if __name__ == "__main__":
                 f.close()
             except OSError:
                 pass
-            for message in mythread.data.find_all("message", "error"):
+            for message in decoded.find_all("message", "error"):
                 print message.get_text_val("message")
 
     def get_info(name):
@@ -207,6 +208,13 @@ if __name__ == "__main__":
                 if options.verbose:
                     print "Not downloading", name, \
                         "because it is already up-to-date."
+                        
+    elif options.unpack:
+        cs = CampaignClient(address)
+        data = file(options.unpack).read()
+        decoded = cs.decode(data)
+        print "Unpacking %s..." % options.unpack
+        cs.unpackdir(decoded, options.campaigns_dir,  verbose = True)
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)

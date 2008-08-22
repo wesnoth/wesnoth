@@ -3,6 +3,7 @@ import socket, struct, glob, sys, shutil, threading, os
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 
+# See src/addon_management.cpp for specifications, among other files
 
 EMPTY_STRING = ''
 GZ_WRITE_MODE = 'wb'
@@ -150,22 +151,35 @@ class CampaignClient:
         return packet
 
     def decode( self, data ):
-        if self.isBWML( data ):
+        if self.isBWML(data):
             data = self.decode_BWML( data )
-
         else:
             data = self.decode_WML( data )
 
         return data
 
-    def decode_WML( self, data ):
+    def unescape(self, data):
+        # 01 is used as escape character
+        data2 = ""
+        escape = False
+        for c in data:
+            if escape:
+                data2 += chr(ord(c) - 1)
+                escape = False
+            elif c == "\01":
+                escape = True
+            else:
+                data2 += c
+        return data2
+
+    def decode_WML(self, data):
         p = wmlparser.Parser( None, no_macros_in_string=True )
         p.verbose = False
         p.do_preprocessor_logic = True
         p.no_macros = True
-        p.parse_text( data, binary=True )
+        p.parse_text(data, binary=True)
         doc = wmldata.DataSub( "WML" )
-        p.parse_top( doc )
+        p.parse_top(doc)
 
         return doc
 
@@ -349,15 +363,14 @@ class CampaignClient:
         Downloads the named campaign and returns it as a raw binary WML packet.
         """
         request = wmldata.DataSub("request_campaign")
-        request.insert( wmldata.DataText("name", name) )
-        self.send_packet( self.makePacket( request ) )
+        request.insert(wmldata.DataText("name", name))
+        self.send_packet(self.makePacket(request))
         raw_packet = self.read_packet()
-        packet = self.decode( raw_packet )
 
         if self.canceled:
             return None
 
-        return packet
+        return raw_packet
 
     def get_campaign(self, name):
         """
@@ -367,7 +380,7 @@ class CampaignClient:
         packet = self.get_campaign_raw(name)
 
         if packet:
-            return self.decode( packet )
+            return self.decode(packet)
 
         return None
 
@@ -437,9 +450,9 @@ class CampaignClient:
 
         return self.decode( self.read_packet( True ) )
 
-    def get_campaign_async(self, name, raw = False):
+    def get_campaign_raw_async(self, name, raw = False):
         """
-        This is like get_campaign, but returns immediately, 
+        This is like get_campaign_raw, but returns immediately, 
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
@@ -517,9 +530,8 @@ class CampaignClient:
 
             # We MUST un-escape our data
             # Order we apply escape sequences matter here
-            contents = contents.replace( "\x01\x01", "\x00" )
-            contents = contents.replace( "\x01\x02", "\x01" )
-            save.write( contents )
+            contents = self.unescape(contents)
+            save.write(contents)
             save.close()
 
         for dir in data.get_all("dir"):
