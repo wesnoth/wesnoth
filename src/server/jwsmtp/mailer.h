@@ -198,6 +198,13 @@ private:
 
    // email address wrapper struct
    struct Address {
+	
+      Address() 
+	  	: name()
+		,address()
+	  {
+	  }
+
       std::string name;    // e.g.   freddy foobar
       std::string address; // e.g.   someone@mail.com
    };
