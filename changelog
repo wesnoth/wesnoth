@@ -10,6 +10,14 @@ Version 1.5.3+svn:
  * User interface:
    * Parts of the new widget libary are deemed stable enough for testing and
      have been started to replace the old code.
+ * WML engine:
+   * In event attack filters ([filter_attac] and [filter_second_attack]),
+     weapon= attribute has been deprecated in favour of AnimationWML-like
+     attack filtering, which allows to filter damage type, range and weapon
+     specials. Backwards compatibility with weapon= will be removed in 1.5.5.
+     * As a consequence, [fire_event] has had [primary_unit] weapon= and
+       [secondary_unit] weapon= deprecated too; use [primary_attack] and
+       [secondary_attack] blocks instead.
  * Miscellaneous and bug fixes:
    * Changed side_drop handling not to automaticaly assign AI for side if
      leader is dead (bug #12186)
