@@ -19,6 +19,7 @@
 
 #include "SDL.h"
 
+#include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "network.hpp"
@@ -50,7 +51,7 @@ struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
 		game_config::use_dummylocales = true;
-		game_config::path = "./";
+		game_config::path = get_cwd();
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);

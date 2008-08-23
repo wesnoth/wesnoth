@@ -31,11 +31,14 @@
 #include <cassert>
 #include <cctype>
 #include <cerrno>
+#include <cstring>
 #include <clocale>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <stdexcept>
+
+#include <boost/scoped_array.hpp>
 
 #ifdef _WIN32
 //#include "locale.h"
@@ -45,6 +48,7 @@ extern "C" int _putenv(const char*);
 
 #define DBG_FS LOG_STREAM(debug, filesystem)
 #define DBG_GENERAL LOG_STREAM(debug, general)
+#define LOG_GENERAL LOG_STREAM(debug, general)
 #define WRN_GENERAL LOG_STREAM(debug, general)
 
 
@@ -181,10 +185,11 @@ std::vector<language_def> get_languages()
 	return known_languages;
 }
 
-static void wesnoth_setlocale(int category, std::string const &slocale,
+static void wesnoth_setlocale(int category, std::string slocale,
 	std::vector<std::string> const *alternates)
 {
-	char const *locale = slocale.c_str();
+	const char *locale = slocale.c_str();
+	std::string extra;
 	// FIXME: ideally we should check LANGUAGE and on first invocation
 	// use that value, so someone with es would get the game in Spanish
 	// instead of en_US the first time round
@@ -221,6 +226,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	SetEnvironmentVariable("LC_ALL", win_locale.c_str());
 	if(category == LC_MESSAGES)
 	    category = LC_ALL;
+	locale = win_locale.c_str();
 #endif
 
 #ifndef _WIN32
@@ -240,10 +246,14 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 				unsetenv("LOCPATH");
 			else
 				setenv("LOCPATH", locpath.c_str(), 1);
-		else setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
+		else {
+			setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
+			DBG_GENERAL << "LOCPATH set to '" << (game_config::path + "/locales") << "'\n";
+		}
 		std::string xlocale;
 		if (!slocale.empty()) {
 			// dummy suffix to prevent locale aliasing from kicking in
+			extra = "@wesnoth";
 			xlocale = slocale + "@wesnoth";
 			locale = xlocale.c_str();
 		}
@@ -251,28 +261,32 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 #endif
 
 	char *res = NULL;
-	#ifdef _WIN32
-	    char const *try_loc = win_locale.c_str();
-	#else
-		char const *try_loc = locale;
-	#endif
+	std::string orig_locale;
+	orig_locale.assign(locale);
+
+	typedef boost::scoped_array<char> char_array;
+	char_array try_loc(new char[strlen(locale)+1]);
+	std::memcpy(try_loc.get(), locale, strlen(locale)+1);
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 	while (true) {
-		res = std::setlocale(category, try_loc);
+		res = std::setlocale(category, try_loc.get());
 		if (res) break;
 
-		std::string utf8 = std::string(try_loc) + std::string(".utf-8");
+		std::string utf8 = orig_locale + std::string(".utf-8");
 		res = std::setlocale(category, utf8.c_str());
 		if (res) break;
 
-		utf8 = std::string(try_loc) + std::string(".UTF-8");
+		utf8 = orig_locale + std::string(".UTF-8");
 		res = std::setlocale(category, utf8.c_str());
 		if (res) break;
 
 		if (!alternates) break;
 		if (i == alternates->end()) break;
-		try_loc = i->c_str();
+		orig_locale = *i + extra;
+		try_loc.reset(new char[orig_locale.length()+1]);
+		orig_locale.copy(try_loc.get(), orig_locale.length());
+		try_loc[orig_locale.length()] = 0;
 		i++;
 	}
 
@@ -280,7 +294,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 		WRN_GENERAL << "WARNING: setlocale() failed for '"
 			  << locale << "'.\n";
 	else
-		DBG_GENERAL << "set locale to '" << try_loc << "'\n";
+		LOG_GENERAL << "set locale to '" << (try_loc.get()) << "' result: '" << res <<"'\n";
 }
 
 bool set_language(const language_def& locale)

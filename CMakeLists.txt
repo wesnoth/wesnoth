@@ -179,7 +179,7 @@ set(DUMMY_LOCALE_C_DIR ${CMAKE_SOURCE_DIR}/locales/C)
 
 add_custom_command(OUTPUT ${DUMMY_LOCALE_C_DIR}
                    COMMAND mkdir -p ${DUMMY_LOCALE_C_DIR} 
-                   && echo | localedef --force ${DUMMY_LOCALE_C_DIR} 2> /dev/null || true)
+                   && echo | localedef -c ${DUMMY_LOCALE_C_DIR} 2> /dev/null || true)
 
 file(GLOB_RECURSE LANGS RELATIVE ${CMAKE_SOURCE_DIR}/data/languages data/languages/*.cfg)
 

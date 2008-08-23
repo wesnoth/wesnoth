@@ -373,6 +373,8 @@ game_controller::game_controller(int argc, char** argv) :
 		  std::cerr << "Setting path using " << val << std::endl;
 			if(val[0] == '/') {
 				game_config::path = val;
+			} else if (val == "." || val == "./") {
+				game_config::path = get_cwd();
 			} else {
 				game_config::path = get_cwd() + '/' + val;
 			}

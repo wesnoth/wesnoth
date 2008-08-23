@@ -96,7 +96,7 @@ if INSTALLDATA
 	@echo "Create dummy locales beneath the Wesnoth data directory"
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
 	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
-	echo | localedef --force "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
+	echo | localedef -c "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
 	for loc in `ls data/languages/*.cfg | sed -e's/data\/languages\/\(.*\)\.cfg/\1/'`; do \
 	  loclnk="$(DESTDIR)$(pkgdatadir)/locales/$$loc"@wesnoth; \
 	  if test -L "$$loclnk" ; then rm "$$loclnk" ; fi; \
