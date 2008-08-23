@@ -81,7 +81,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 		player_type_changed_ = false;
 		end_turn_ = false;
 
-		statistics::reset_turn_stats(teams_[team_index].save_id());
+		statistics::reset_turn_stats(teams_[team_index-1].save_id());
 
 		// we can't call playsingle_controller::play_side because
 		// we need to catch exception here

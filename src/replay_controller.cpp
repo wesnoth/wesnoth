@@ -332,7 +332,7 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 	// If a side is empty skip over it.
 	if (current_team().is_empty()) return;
 
-	statistics::reset_turn_stats(teams_[team_index].save_id());
+	statistics::reset_turn_stats(teams_[team_index-1].save_id());
 
 	try{
 		play_controller::init_side(player_number_ - 1, true);
