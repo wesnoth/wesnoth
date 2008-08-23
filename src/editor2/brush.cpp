@@ -23,11 +23,16 @@
 namespace editor2 {
 
 brush::brush()
+	: relative_tiles_()
+	, name_()
+	, image_()
 {
 }
 
 brush::brush(const config& cfg)
-: name_(cfg["name"]), image_(cfg["image"])
+	: relative_tiles_()
+ 	, name_(cfg["name"])
+	, image_(cfg["image"])
 {
 	int radius = lexical_cast_default<int>(cfg["radius"], 0);
 	if (radius > 0) {
