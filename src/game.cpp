@@ -1962,6 +1962,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --dummylocales               Enable dummylocales for switching to non-system locale.\n"
 			<< "  --new-widgets                there is a new WIP widget toolkit this switch enables the new toolkit\n"
 			<< "                               (VERY EXPERIMENTAL don't file bug reports since most are known).\n"
+			<< "                               Parts of the library are deemed stable and will work without this switch.\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
