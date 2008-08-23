@@ -242,6 +242,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
 
 	renderer_.set_text(label_, false);
 	renderer_.set_font_size(config_->text_font_size);
+	renderer_.set_font_style(config_->text_font_style);
 
 	// Try with the minimum wanted size.
 	renderer_.set_maximum_width(size.x);

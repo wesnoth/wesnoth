@@ -805,6 +805,7 @@ void ttext::draw(surface& canvas,
 
 	text_renderer.set_text(text, false).
 		set_font_size(font_size_).
+		set_font_style(font_style_).
 		set_foreground_colour(colour_).
 		set_maximum_width(maximum_width_(variables)).
 		set_maximum_height(maximum_height_(variables));
