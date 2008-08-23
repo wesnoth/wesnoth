@@ -47,6 +47,8 @@
 
 #define LOG_CS lg::err(lg::network, false)
 
+#define DEFAULT_CAMPAIGND_PORT          15003
+
 namespace {
 
 	config construct_message(const std::string& msg)
@@ -104,13 +106,13 @@ namespace {
 		if(script == "") return;
 
 #if (defined(_WIN32))
-		LOG_CS << "ERROR: Tried to execute a script on a not supporting platform\n";
+		LOG_CS << "ERROR: Tried to execute a script on an unsupported platform\n";
 		return;
 #else
 		pid_t childpid;
 
 		if((childpid = fork()) == -1) {
-			LOG_CS << "ERROR fork failed while updating campaign " << addon << "\n";
+			LOG_CS << "ERROR: fork failed while updating campaign " << addon << "\n";
 			return;
 		}
 
@@ -121,9 +123,9 @@ namespace {
 			// output which will make the logging look ugly.
 			execlp(script.c_str(), script.c_str(), addon.c_str(), (char *)NULL);
 
-			// exec() and family never return if they do we have a problem
-			std::cerr << "ERROR exec failed for addon " << addon 
-				<< " with errno = " << errno << "\n";
+			// exec() and family never return; if they do, we have a problem
+			std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon 
+			          << '\n';
 			exit(errno);
 
 		} else {
@@ -143,7 +145,7 @@ namespace {
  		/** Seems like compression level above 6 is waste of cpu cycle */
  		compress_level_ = lexical_cast_default<int>(cfg_["compress_level"],6);
  		cfg_["compress_level"] = lexical_cast<std::string>(compress_level_);
-		return lexical_cast_default<int>(cfg_["port"], 15003);
+		return lexical_cast_default<int>(cfg_["port"], DEFAULT_CAMPAIGND_PORT);
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile, 
@@ -280,7 +282,7 @@ namespace {
  				config data;
  				if (binary_stream->peek() == 31) //This is gzip file allready
  				{
- 					LOG_CS << "All ready converted\n";
+ 					LOG_CS << "Already converted\n";
  					continue;
  				}
  				read_compressed(data, *binary_stream);
@@ -458,13 +460,13 @@ namespace {
 						config* data = upload->child("data");
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
-							LOG_CS << "Upload aborted no data.\n";
+							LOG_CS << "Upload aborted - no add-on data.\n";
 							network::send_data(construct_error("No add-on data was supplied."), sock, gzipped);
 						} else if(addon_name_legal((*upload)["name"]) == false) {
-							LOG_CS << "Upload aborted invalid name.\n";
+							LOG_CS << "Upload aborted - invalid add-on name.\n";
 							network::send_data(construct_error("The name of the add-on is invalid"), sock, gzipped);
 						} else if(check_names_legal(*data) == false) {
-							LOG_CS << "Upload aborted invalid file name.\n";
+							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, gzipped);
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
@@ -505,7 +507,7 @@ namespace {
 								network::send_data(construct_message(message), sock, gzipped);
 
 							} else {
-								LOG_CS << "Upload aborted invalid passphrase.\n";
+								LOG_CS << "Upload aborted - incorrect passphrase.\n";
 								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."), sock, gzipped);
 							}
 						} else {
