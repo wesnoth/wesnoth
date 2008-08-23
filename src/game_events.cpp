@@ -1918,7 +1918,6 @@ namespace {
 	WML_HANDLER_FUNCTION(message_test_left,/*handler*/,event_info, cfg)
 	{
 		const std::string message = cfg["message"];
-		gui2::init();
 		gui2::twindow window = gui2::build((screen)->video(), "message_test_left");
 
 		// Use an ugly hack, if the spacer has the wanted best_size we use the
@@ -1950,7 +1949,6 @@ namespace {
 	WML_HANDLER_FUNCTION(message_test_right,/*handler*/,event_info,cfg)
 	{
 		const std::string message = cfg["message"];
-		gui2::init();
 		gui2::twindow window = gui2::build((screen)->video(), "message_test_right");
 
 		// Use an ugly hack, if the spacer has the wanted best_size we use the
