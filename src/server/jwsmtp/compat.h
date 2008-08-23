@@ -88,7 +88,10 @@ struct SOCKADDR_IN {
   // need a real check and set ok appropriately  
 //  SOCKADDR_IN(sockaddr_in addr):ADDR(addr), ok(true) {}
   
-  SOCKADDR_IN(const std::string& address, unsigned short port, short family = AF_INET) {
+  SOCKADDR_IN(const std::string& address, unsigned short port, short family = AF_INET) 
+  	: ADDR()
+	, ok(false)
+  {
     ADDR.sin_port = port;
     ADDR.sin_family = family;
 #ifdef _WIN32
@@ -99,10 +102,12 @@ struct SOCKADDR_IN {
 #endif
   }
 
-  SOCKADDR_IN(const SOCKADDR_IN& addr) {
-    ADDR = addr.ADDR;
-    ok = addr.ok;
+  SOCKADDR_IN(const SOCKADDR_IN& addr)
+  	: ADDR(addr.ADDR)
+	, ok(addr.ok)
+  {
   }
+
   SOCKADDR_IN operator = (const SOCKADDR_IN& addr) {
     ADDR = addr.ADDR;
     ok = addr.ok;
