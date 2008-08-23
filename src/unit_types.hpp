@@ -63,9 +63,7 @@ public:
 	void set_specials_context(const gamemap::location& loc,const gamemap::location& dloc, const unit& un, bool attacker =true) const;
 
 	bool has_special_by_id(const std::string& special) const;
-	//this function returns a random animation out of the possible
-	//animations for this attack. It will not return the same attack
-	//each time.
+
 	bool matches_filter(const config& cfg,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description);
 	bool describe_modification(const config& cfg,std::string* description);
@@ -89,6 +87,9 @@ public:
 	bool special_affects_self(const config& cfg) const;
 
 	config cfg_;
+	//this function returns a random animation out of the possible
+	//animations for this attack. It will not return the same attack
+	//each time.
 	const unit_animation* animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
 	// made public to ease backward compatibility for WML syntax
 	// to be removed (with all corresponding code once 1.3.6 is reached
