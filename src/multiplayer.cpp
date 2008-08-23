@@ -98,39 +98,6 @@ enum server_type {
 	SIMPLE_SERVER
 };
 
-class server_button : public gui::dialog_button
-{
-public:
-	server_button(CVideo &vid): dialog_button(vid, _("View List"))
-	{}
-protected:
-	int action(gui::dialog_process_info &dp_info)
-	{
-		//display a dialog with a list of known servers
-		gui::dialog server_dialog(dialog()->get_display(), _("List of Servers"),
-			_("Choose a known server from the list"), gui::OK_CANCEL);
-		std::vector<std::string> servers;
-		std::ostringstream menu_heading;
-		menu_heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Address");
-		servers.push_back(menu_heading.str());
-		const std::vector<game_config::server_info>& pref_servers = preferences::server_list();
-		std::vector<game_config::server_info>::const_iterator server;
-		for(server = pref_servers.begin(); server != pref_servers.end(); ++server) {
-			servers.push_back(server->name + COLUMN_SEPARATOR + server->address);
-		}
-		server_dialog.set_menu(servers);
-		gui::menu::basic_sorter server_sorter;
-		server_sorter.set_alpha_sort(0).set_id_sort(1);
-		server_dialog.get_menu().set_sorter(&server_sorter);
-		if(server_dialog.show() >= 0) {
-			//now save the result back to the parent dialog
-			dialog()->get_textbox().set_text(preferences::server_list()[server_dialog.result()].address);
-		}
-		//the button state should be cleared after popping up an intermediate dialog
-		dp_info.clear_buttons();
-		return gui::CONTINUE_DIALOG;
-	}
-};
 }
 
 static server_type open_connection(game_display& disp, const std::string& original_host)
@@ -138,24 +105,13 @@ static server_type open_connection(game_display& disp, const std::string& origin
 	std::string h = original_host;
 
 	if(h.empty()) {
-		if(gui2::new_widgets) {
-			gui2::tmp_connect dlg;
+		gui2::tmp_connect dlg;
 
-			dlg.show(disp.video());
-			if(dlg.get_retval() == gui2::twindow::OK) {
-				h = preferences::network_host();
-			} else {
-				return ABORT_SERVER;
-			}
-
+		dlg.show(disp.video());
+		if(dlg.get_retval() == gui2::twindow::OK) {
+			h = preferences::network_host();
 		} else {
-			gui::dialog d(disp, _("Connect to Host"), "", gui::OK_CANCEL);
-			d.set_textbox(_("Choose host to connect to: "), preferences::network_host());
-			d.add_button( new server_button(disp.video()), gui::dialog::BUTTON_EXTRA);
-			if(d.show() || d.textbox_text().empty()) {
-				return ABORT_SERVER;
-			}
-			h = d.textbox_text();
+			return ABORT_SERVER;
 		}
 	}
 
