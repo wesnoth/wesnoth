@@ -1129,7 +1129,7 @@ namespace {
 
 	const int addon_download  = 0;
 	const int addon_uninstall = 2;  // NOTE this value is also known by WML so don't change it.
-	const int addon_update    = 3;
+	const int addon_update    = 3;  // NOTE this value is also known by WML so don't change it.
 
 } // end unnamed namespace 4
 
@@ -1149,8 +1149,8 @@ void manage_addons(game_display& disp)
 		res = addon_dlg.get_retval();
 		if(res == gui2::twindow::OK) {
 			res = 0;
-			remote_host = addon_dlg.host_name();
 		}
+		remote_host = addon_dlg.host_name();
 	} else {
 		gui::dialog svr_dialog(disp,
 		                       _("Connect to add-ons server"),

@@ -40,6 +40,8 @@ namespace gui2 {
  * @start_table = container
  *     [] (button) (2)                 This button closes the dialog and starts
  *                                     the addon manager.
+ *     [] (button) (3)                 This button closes the dialog and starts
+ *                                     the update routine.
  *     host_name (text_box)            This text contains the name of the server
  *                                     to connect to.
  * @end_table
