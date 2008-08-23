@@ -97,7 +97,7 @@ Uint32 decode_colour(const std::string& colour);
  *
  * @returns                       The font style.
  */
-int decode_font_style(const std::string& style);
+unsigned decode_font_style(const std::string& style);
 
 /**
  * Copies a portion of a surface.

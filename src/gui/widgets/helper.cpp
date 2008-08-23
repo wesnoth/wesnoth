@@ -86,7 +86,7 @@ std::ostream &operator<<(std::ostream &stream, const tpoint& point)
 	return stream;
 }
 
-int decode_font_style(const std::string& style)
+unsigned decode_font_style(const std::string& style)
 {
 	if(style == "bold") {
 		return TTF_STYLE_BOLD;

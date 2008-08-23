@@ -717,7 +717,7 @@ private:
 	unsigned font_size_;
 
 	/** The style of the text. */
-	int font_style_;
+	unsigned font_style_;
 
 	/** The colour of the text. */
 	Uint32 colour_;
