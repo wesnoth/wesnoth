@@ -2106,18 +2106,32 @@ namespace {
 			if (u.has_attribute("x") && u.has_attribute("y"))
 				loc1 = cfg_to_loc(u);
 			if (u.has_attribute("weapon")) {
+				lg::wml_error << "weapon= in [fire_event] has been deprecated; support for this will be removed in 1.5.5\n";
+
 				config& f = data.add_child("first");
-				f["weapon"] = u.get_attribute("weapon");
+				f["name"] = u.get_attribute("weapon");
 			}
+		}
+		if (cfg.has_child("primary_attack")) {
+			// mixing this with deprecated [primary_unit] weapon= above may
+			// cause undefined behavior!
+			data.add_child("first", cfg.child("primary_attack").get_parsed_config());
 		}
 		if (cfg.has_child("secondary_unit")) {
 			vconfig u = cfg.child("secondary_unit");
 			if (u.has_attribute("x") && u.has_attribute("y"))
 				loc2 = cfg_to_loc(u);
 			if (u.has_attribute("weapon")) {
+				lg::wml_error << "weapon= in [fire_event] has been deprecated; support for this will be removed in 1.5.5\n";
+
 				config& s = data.add_child("second");
-				s["weapon"] = u.get_attribute("weapon");
+				s["name"] = u.get_attribute("weapon");
 			}
+		}
+		if (cfg.has_child("secondary_attack")) {
+			// mixing this with deprecated [secondary_unit] weapon= above may
+			// cause undefined behavior!
+			data.add_child("second", cfg.child("secondary_attack").get_parsed_config());
 		}
 		game_events::fire(cfg["name"],loc1,loc2,data);
 	}
@@ -3349,16 +3363,14 @@ namespace {
 		{
 			//! @todo FIXME: This filter should be deprecated and removed,
 			// instead we should just auto-store $attacker_weapon and check it in a conditional
+			//! @todo FIXME: ^ what?
 
 			if(!cfg) {
-				return false;
+				return false; //! @todo FIXME: shouldn't this be true!?
 			}
-			bool matches = true;
-			if(filter["weapon"] != "") {
-				if(filter["weapon"] != (*cfg)["weapon"]) {
-					matches = false;
-				}
-			}
+			const config& attack_cfg = *cfg;
+			const attack_type attack(attack_cfg);
+			bool matches = attack.matches_filter(filter.get_parsed_config());
 
 			// Handle [and], [or], and [not] with in-order precedence
 			vconfig::all_children_iterator cond_i = filter.ordered_begin();

@@ -762,12 +762,16 @@ void attack::fire_event(const std::string& n)
 	LOG_NG << "firing " << n << " event\n";
 	if(n == "attack_end") {
 		config dat;
-		dat.add_child("first");
-		dat.add_child("second");
-		if(a_ != units_.end()) {
-			(*(dat.child("first")))["weapon"]= a_stats_->weapon ? a_stats_->weapon->id() : "none";
+		config a_weapon_cfg = (a_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+		config d_weapon_cfg = (d_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+		if(a_weapon_cfg["name"].empty())
+			a_weapon_cfg["name"] = "none";
+		if(d_weapon_cfg["name"].empty())
+			d_weapon_cfg["name"] = "none";
+		dat.add_child("first", a_weapon_cfg);
+		dat.add_child("second", d_weapon_cfg);
 
-		}
+#if 0
 		if(d_ != units_.end()) {
 			config *tempcfg = dat.child("second");
 			t_string d_weap = "none";
@@ -777,6 +781,7 @@ void attack::fire_event(const std::string& n)
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
 		}
+#endif
 
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
@@ -789,10 +794,14 @@ void attack::fire_event(const std::string& n)
 	const int defender_side = d_->second.side();
 	const int attacker_side = a_->second.side();
 	config dat;
-	dat.add_child("first");
-	dat.add_child("second");
-	(*(dat.child("first")))["weapon"]=a_stats_->weapon->id();
-	(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
+	config a_weapon_cfg = (a_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+	config d_weapon_cfg = (d_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+	if(a_weapon_cfg["name"].empty())
+		a_weapon_cfg["name"] = "none";
+	if(d_weapon_cfg["name"].empty())
+		d_weapon_cfg["name"] = "none";
+	dat.add_child("first", a_weapon_cfg);
+	dat.add_child("second", d_weapon_cfg);
 	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
 								game_events::entity_location(attacker_,a_id_),
 								game_events::entity_location(defender_,d_id_),dat));
@@ -1110,10 +1119,14 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				// get weapon info for last_breath and die events
 				config dat;
-				dat.add_child("first");
-				dat.add_child("second");
-				(*(dat.child("first")))["weapon"] = d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
-				(*(dat.child("second")))["weapon"] = a_stats_->weapon != NULL ? a_stats_->weapon->id() : "none";
+				config a_weapon_cfg = (a_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+				config d_weapon_cfg = (d_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+				if(a_weapon_cfg["name"].empty())
+					a_weapon_cfg["name"] = "none";
+				if(d_weapon_cfg["name"].empty())
+					d_weapon_cfg["name"] = "none";
+				dat.add_child("first",  d_weapon_cfg);
+				dat.add_child("second", a_weapon_cfg);
 
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, attacker_loc, dat));
 
@@ -1368,10 +1381,14 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				// get weapon info for last_breath and die events
 				config dat;
-				dat.add_child("first");
-				dat.add_child("second");
-				(*(dat.child("first")))["weapon"] = a_stats_->weapon != NULL ? a_stats_->weapon->id() : "none";
-				(*(dat.child("second")))["weapon"] = d_stats_->weapon != NULL ? d_stats_->weapon->id() : "none";
+				config a_weapon_cfg = (a_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+				config d_weapon_cfg = (d_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
+				if(a_weapon_cfg["name"].empty())
+					a_weapon_cfg["name"] = "none";
+				if(d_weapon_cfg["name"].empty())
+					d_weapon_cfg["name"] = "none";
+				dat.add_child("first" , a_weapon_cfg);
+				dat.add_child("second", d_weapon_cfg);
 
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("last breath", death_loc, defender_loc,dat));
 
