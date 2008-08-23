@@ -22,8 +22,10 @@ namespace editor2 {
 
 editor_display::editor_display(CVideo& video, const editor_map& map,
 		const config& theme_cfg, const config& cfg,
-		const config& level) :
-	display(video, map, theme_cfg, cfg, level)
+		const config& level)
+	: display(video, map, theme_cfg, cfg, level)
+	, brush_locations_()
+	, toolbar_hint_()
 {
     clear_screen();
 }
