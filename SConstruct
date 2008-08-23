@@ -535,7 +535,7 @@ if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = commands.getoutput("svn -v status | awk '/^[^?]/ {print $4;}'").split()
+        lst = commands.getoutput("svn -v status | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'").split()
         lst = filter(os.path.isfile, lst)
         return lst
     dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])
