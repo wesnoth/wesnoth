@@ -1387,57 +1387,20 @@ bool game_controller::play_multiplayer()
 
 bool game_controller::change_language()
 {
-	if(gui2::new_widgets) {
-			gui2::tlanguage_selection dlg;
+	gui2::tlanguage_selection dlg;
 
-			dlg.show(disp().video());
+	dlg.show(disp().video());
 
-			if(dlg.get_retval() == gui2::twindow::OK) {
-				if(!no_gui_) {
-					std::string wm_title_string = _("The Battle for Wesnoth");
-					wm_title_string += " - " + game_config::revision;
-					SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-				}
-
-				refresh_game_cfg(true);
-			}
-
-	} else {
-		const std::vector<language_def>& languages = get_languages();
-		std::vector<std::string> langs;
-
-		for (std::vector<language_def>::const_iterator itor = languages.begin();
-				itor != languages.end(); ++itor) {
-			if (*itor == get_language()) {
-				langs.push_back("*" + itor->language);
-			} else {
-				langs.push_back(itor->language);
-			}
+	if(dlg.get_retval() == gui2::twindow::OK) {
+		if(!no_gui_) {
+			std::string wm_title_string = _("The Battle for Wesnoth");
+			wm_title_string += " - " + game_config::revision;
+			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
 
-		gui::dialog lmenu(disp(),_("Language"),
-								 _("Choose your preferred language:"),
-								 gui::OK_CANCEL);
-		lmenu.set_menu(langs);
-		const int res = lmenu.show();
-		if(size_t(res) < langs.size()) {
-			::set_language(languages[res]);
-			preferences::set_language(languages[res].localename);
-
-			if(!no_gui_) {
-				std::string wm_title_string = _("The Battle for Wesnoth");
-				wm_title_string += " - " + game_config::revision;
-				SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-			}
-
-			refresh_game_cfg(true);
-		} else {
-			return false;
-		}
-
-		font::load_font_config();
-		hotkey::load_descriptions();
+		refresh_game_cfg(true);
 	}
+
 	return true;
 }
 
