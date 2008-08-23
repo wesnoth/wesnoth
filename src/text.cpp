@@ -18,12 +18,19 @@
 #include "font.hpp"
 #include "language.hpp"
 
+#include "SDL_ttf.h"
+
 #include <cassert>
 #include <cstring>
 
 #include <cairo.h>
 
 namespace font {
+
+const unsigned ttext::STYLE_NORMAL = TTF_STYLE_NORMAL;
+const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
+const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
+const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
 
 ttext::ttext() :
 	font_map_(reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_new())),
@@ -34,6 +41,7 @@ ttext::ttext() :
 	text_(),
 	markedup_text_(false),
 	font_size_(14),
+	font_style_(STYLE_NORMAL),
 	foreground_colour_(0xFFFFFFFF), // solid white
 	maximum_width_(-1),
 	maximum_height_(-1),
@@ -120,6 +128,17 @@ ttext& ttext::set_font_size(const unsigned font_size)
 	return *this;
 }
 
+ttext& ttext::set_font_style(const unsigned font_style)
+{
+	if(font_style != font_style_) {
+		font_style_ = font_style;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
+
 ttext& ttext::set_foreground_colour(const Uint32 colour)
 {
 	if(colour != foreground_colour_) {
@@ -168,11 +187,23 @@ class tfont
 	tfont(const tfont&);
 	tfont& operator=(const tfont&);
 public:
-	tfont(const std::string& name, const unsigned size) :
+	tfont(const std::string& name, const unsigned size, const unsigned style) :
 		font_(pango_font_description_new())
 	{
 		pango_font_description_set_family(font_, name.c_str());
 		pango_font_description_set_size(font_, size * PANGO_SCALE);
+
+		if(style != ttext::STYLE_NORMAL) {
+			if(style & ttext::STYLE_ITALIC) {
+				pango_font_description_set_style(font_, PANGO_STYLE_ITALIC);
+			}
+			if(style & ttext::STYLE_BOLD) {
+				pango_font_description_set_weight(font_, PANGO_WEIGHT_BOLD);
+			}
+			if(style & ttext::STYLE_UNDERLINE) {
+				assert(false); // Not implemented yet
+			}
+		}
 	}
 
 	~tfont() { pango_font_description_free(font_); }
@@ -191,7 +222,7 @@ void ttext::recalculate(const bool force)
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		tfont font(get_fonts(), font_size_);
+		tfont font(get_fonts(), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
 
 		// NOTE for now the setting of the ellipse is undocumented and
@@ -210,7 +241,6 @@ void ttext::rerender(const bool force)
 	if(surface_dirty_ || force) {
 		recalculate(force);
 		surface_dirty_ = false;
-
 
 		const unsigned stride = rect_.width * 4;
 		create_surface_buffer(stride * rect_.height);

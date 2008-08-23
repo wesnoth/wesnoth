@@ -64,11 +64,26 @@ public:
 	/** Has the text been truncated? */
 	bool is_truncated();
 
+	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
+
+	/**
+	 * The flags have the same values as the ones in SDL_TTF so it's easy to mix
+	 * them for now. To avoid including SDL_TTF in the header they'r only
+	 * declared here. Once SDL_TTF is removed they can be moved in the header.
+	 */
+
+	static const unsigned STYLE_NORMAL;     /**< Normal text. */
+	static const unsigned STYLE_BOLD;       /**< Bold text. */
+	static const unsigned STYLE_ITALIC;     /**< Italicized text. */
+	static const unsigned STYLE_UNDERLINE;  /**< Underlined text. */
+
 	/***** ***** ***** ***** Setters ***** ***** ***** *****/
 
 	ttext& set_text(const t_string& text, const bool markedup);
 
 	ttext& set_font_size(const unsigned font_size);
+
+	ttext& set_font_style(const unsigned font_style);
 
 	ttext& set_foreground_colour(const Uint32 colour);
 
@@ -95,6 +110,9 @@ private:
 
 	/** The font size to draw. */
 	unsigned font_size_;
+
+	/** The style of the font, this is an orred mask of the font flags. */
+	unsigned font_style_;
 
 	/** The foreground colour. */
 	Uint32 foreground_colour_;
