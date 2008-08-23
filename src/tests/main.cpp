@@ -19,6 +19,7 @@
 
 #include "SDL.h"
 
+#include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -53,6 +54,9 @@ struct wesnoth_global_fixture {
 		game_config::use_dummylocales = true;
 		game_config::path = get_cwd();
 
+		load_language_list();
+		::init_textdomains(game_config::config_cache::instance().get_config());
+
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
 		test_utils::get_fake_display();
@@ -68,7 +72,6 @@ struct wesnoth_global_fixture {
 		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
-		load_language_list();
 	}
 	~wesnoth_global_fixture() 
 	{

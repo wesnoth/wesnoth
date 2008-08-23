@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+
+#define GETTEXT_DOMAIN "wesnoth"
+
 #include <boost/test/auto_unit_test.hpp>
 
 #include "config_cache.hpp"
@@ -102,6 +105,9 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	std::string test_data_path("data/test/test/");
 	cache.set_config_root(test_data_path);
 	BOOST_CHECK_EQUAL(test_data_path, cache.get_config_root());
+	test_data_path = "invalid";
+	cache.set_user_config_root(test_data_path);
+	BOOST_CHECK_EQUAL(test_data_path, cache.get_user_config_root());
 
 	config test_config;
 	config* child = &test_config.add_child("textdomain");
@@ -116,7 +122,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	cache.add_define("TEST_DEFINE");
 
 	child = &test_config.add_child("test_key");
-	(*child)["define"] = _("testing translation reset");
+	(*child)["define"] = _("testing translation reset.");
 	
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
@@ -138,7 +144,7 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 	(*child)["define"] = "test";
 
 	child = &test_config.add_child("test_key");
-	(*child)["define"] = _("testing translation reset");
+	(*child)["define"] = _("testing translation reset.");
 
 	// Change language
 	const std::vector<language_def>& languages = get_languages();
@@ -152,7 +158,7 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 
 	BOOST_CHECK_MESSAGE( test_config != cache.get_config(), "Translation update failed update translations!" );
 	
-	(*child)["define"] = _("test translation reset");
+	(*child)["define"] = _("testing translation reset.");
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
 }

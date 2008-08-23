@@ -34,6 +34,8 @@ class config_cache : private boost::noncopyable {
 	std::string config_root_, user_config_root_;
 	preproc_map defines_map_;
 
+	void read_configs(config&, std::string&);
+
 	protected:
 	config_cache();
 
@@ -41,6 +43,7 @@ class config_cache : private boost::noncopyable {
 	std::string get_config_root() const;
 	std::string get_user_config_root() const;
 	const preproc_map& get_preproc_map() const;
+	void load_configs(config& cfg, bool recheck_cache);
 
 	public:
 	static config_cache& instance();
@@ -48,13 +51,12 @@ class config_cache : private boost::noncopyable {
 	void set_config_root(const std::string&);
 	void set_user_config_root(const std::string&);
 
-	config& get_config();
+	config& get_config(bool recheck_cache = false);
 	
 	void clear_defines();
 	void add_define(const std::string& define);
 
 	void reload_translations();
-	void reload_configs(bool recheck_cache = false);
 
 	void set_use_cache(bool use);
 };
