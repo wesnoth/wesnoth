@@ -1140,35 +1140,16 @@ void manage_addons(game_display& disp)
 	std::string remote_host;
 	const std::string default_host = preferences::campaign_server();
 	
-	if(gui2::new_widgets) {
-		gui2::taddon_connect addon_dlg;
+	gui2::taddon_connect addon_dlg;
 
-		addon_dlg.set_host_name(default_host);
-		addon_dlg.show(disp.video());
+	addon_dlg.set_host_name(default_host);
+	addon_dlg.show(disp.video());
 
-		res = addon_dlg.get_retval();
-		if(res == gui2::twindow::OK) {
-			res = 0;
-		}
-		remote_host = addon_dlg.host_name();
-	} else {
-		gui::dialog svr_dialog(disp,
-		                       _("Connect to add-ons server"),
-		                       _("Type the address of a server to download add-ons from."),
-		                       gui::OK_CANCEL);
-		svr_dialog.set_textbox(_("Server: "), default_host);
+	res = addon_dlg.get_retval();
+	remote_host = addon_dlg.host_name();
 
-		// not ready for production yet
-
-		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Update add-ons"),
-		                      gui::button::TYPE_PRESS, addon_update),
-		                      gui::dialog::BUTTON_EXTRA_LEFT);
-
-		svr_dialog.add_button(new gui::dialog_button(disp.video(), _("Uninstall add-ons"),
-		                      gui::button::TYPE_PRESS, addon_uninstall),
-		                      gui::dialog::BUTTON_EXTRA);
-		res = svr_dialog.show();
-		remote_host = svr_dialog.textbox_text();
+	if(res == gui2::twindow::OK) {
+		res = addon_download;
 	}
 
 	switch(res) {
