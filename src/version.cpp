@@ -46,7 +46,10 @@ version_info::version_info(unsigned int major, unsigned int minor, unsigned int 
 }
 
 version_info::version_info(const std::string& str)
-	: special_(""), special_separator_('\0'), sane_(true)
+	: nums_()
+	,special_("")
+	, special_separator_('\0')
+	, sane_(true)
 {
 	const std::vector<std::string> string_parts = utils::split(str,'.');
 	// first two components are required to be valid numbers, though
