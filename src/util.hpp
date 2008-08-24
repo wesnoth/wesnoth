@@ -23,7 +23,6 @@
 #include "global.hpp"
 #include <cmath>
 #include <vector>
-#include <map>
 #include <sstream>
 
 template<typename T>
