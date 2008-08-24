@@ -21,7 +21,6 @@
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "video.hpp"
 
 #include "SDL.h"
@@ -99,7 +98,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll)
 	const wide_string& wtext = utils::string_to_wstring(text);
 
 	const surface new_text = add_text_line(wtext);
-	const surface new_surface = create_compatible_surface(text_image_,maximum<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
+	const surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
 
 	SDL_SetAlpha(new_text.get(),0,0);
 	SDL_SetAlpha(text_image_.get(),0,0);
@@ -157,8 +156,8 @@ void textbox::draw_contents()
 
 	if(text_image_ != NULL) {
 		src.y = yscroll_;
-		src.w = minimum<size_t>(loc.w,text_image_->w);
-		src.h = minimum<size_t>(loc.h,text_image_->h);
+		src.w = std::min<size_t>(loc.w,text_image_->w);
+		src.h = std::min<size_t>(loc.h,text_image_->h);
 		src.x = text_pos_;
 		SDL_Rect dest = screen_area();
 		dest.x = loc.x;
@@ -166,8 +165,8 @@ void textbox::draw_contents()
 
 		// Fills the selected area
 		if(is_selection()) {
-			const int start = minimum<int>(selstart_,selend_);
-			const int end = maximum<int>(selstart_,selend_);
+			const int start = std::min<int>(selstart_,selend_);
+			const int end = std::max<int>(selstart_,selend_);
 			int startx = char_x_[start];
 			int starty = char_y_[start];
 			const int endx = char_x_[end];
@@ -356,9 +355,9 @@ void textbox::erase_selection()
 	if(!is_selection())
 		return;
 
-	wide_string::iterator itor = text_.begin() + minimum(selstart_, selend_);
+	wide_string::iterator itor = text_.begin() + std::min(selstart_, selend_);
 	text_.erase(itor, itor + abs(selend_ - selstart_));
-	cursor_ = minimum(selstart_, selend_);
+	cursor_ = std::min(selstart_, selend_);
 	selstart_ = selend_ = -1;
 }
 
@@ -575,8 +574,8 @@ void textbox::handle_event(const SDL_Event& event)
 
 			case SDLK_c: // copy
 				{
-				const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
-				const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
+				const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
+				const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
 
 				wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
 				std::string s = utils::wstring_to_string(ws);

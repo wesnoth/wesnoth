@@ -20,7 +20,6 @@
 #include "global.hpp"
 
 #include "pathutils.hpp"
-#include "util.hpp"
 
 size_t distance_between(const gamemap::location& a, const gamemap::location& b)
 {
@@ -35,7 +34,7 @@ size_t distance_between(const gamemap::location& a, const gamemap::location& b)
 	// = maximum(hdistance, vdistance+hdistance-hdistance/2-hdistance%2)
 	// = maximum(hdistance,abs(a.y-b.y)+vpenalty+hdistance/2)
 
-	return maximum<int>(hdistance, abs(a.y - b.y) + vpenalty + hdistance/2);
+	return std::max<int>(hdistance, abs(a.y - b.y) + vpenalty + hdistance/2);
 }
 
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)

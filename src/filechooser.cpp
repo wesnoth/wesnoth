@@ -54,7 +54,7 @@ file_dialog::file_dialog(display &disp, const std::string& file_path,
 {
 	files_list_ = new gui::file_menu(disp.video(), file_path);
 	const unsigned file_list_height = (disp.h() / 2);
-	const unsigned file_list_width = minimum<unsigned>(files_list_->width(), (disp.w() / 4));
+	const unsigned file_list_width = std::min<unsigned>(files_list_->width(), (disp.w() / 4));
 	files_list_->set_measurements(file_list_width, file_list_height);
 	files_list_->set_max_height(file_list_height);
 	set_menu(files_list_);
@@ -74,7 +74,7 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 	gui::dialog::dimension_measurements dim = dialog::layout(xloc, yloc);
 
 	//shift the menu up
-	unsigned y_shift = dim.menu_y - minimum<int>(dim.label_y, dim.textbox.y);
+	unsigned y_shift = dim.menu_y - std::min<int>(dim.label_y, dim.textbox.y);
 	int y_max = dim.menu_y + get_menu().height();
 	dim.menu_y -= y_shift;
 
@@ -86,7 +86,7 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 		{
 			const int btn_h = i->first->height();
 			int& btn_y = i->second.second;
-			y_max = maximum<int>(y_max, btn_y + btn_h);
+			y_max = std::max<int>(y_max, btn_y + btn_h);
 			btn_y -= y_shift;
 		}
 	}
@@ -94,7 +94,7 @@ gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 	//shift the textbox down
 	const int textbox_bottom_y = dim.textbox.y + get_textbox().height();
 	const int label_bottom_y = dim.label_y + get_textbox().get_label()->height();
-	y_shift = y_max - maximum<int>(textbox_bottom_y, label_bottom_y);
+	y_shift = y_max - std::max<int>(textbox_bottom_y, label_bottom_y);
 	dim.textbox.y += y_shift;
 	dim.label_y += y_shift;
 

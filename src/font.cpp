@@ -22,7 +22,6 @@
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -342,7 +341,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 		for(cp_range = itor->present_codepoints.begin();
 				cp_range != itor->present_codepoints.end(); ++cp_range) {
 
-			size_t cp_max = maximum<size_t>(cp_range->first, cp_range->second);
+			size_t cp_max = std::max<size_t>(cp_range->first, cp_range->second);
 			if(cp_max >= font_map.size()) {
 				font_map.resize(cp_max+1, -1);
 			}
@@ -513,7 +512,7 @@ void text_surface::measure() const
 		TTF_SizeUNICODE(ttfont, 
 			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), &w, &h);
 		w_ += w;
-		h_ = maximum<int>(h_, h);
+		h_ = std::max<int>(h_, h);
 	}
 }
 
@@ -648,7 +647,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 
 		if (!res.empty()) {
 			surfaces.push_back(res);
-			width = maximum<size_t>(cached_surf.width(), width);
+			width = std::max<size_t>(cached_surf.width(), width);
 			height += cached_surf.height();
 		}
 	}
@@ -677,7 +676,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 				SDL_Rect dstrect = {xpos, ypos, 0, 0};
 				SDL_BlitSurface(*j, NULL, res, &dstrect);
 				xpos += (*j)->w;
-				height = maximum<size_t>((*j)->h, height);
+				height = std::max<size_t>((*j)->h, height);
 			}
 			ypos += height;
 		}

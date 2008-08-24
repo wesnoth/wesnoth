@@ -28,7 +28,6 @@
 #include "scoped_resource.hpp"
 #include "sound.hpp"
 #include "unit_display.hpp"
-#include "util.hpp"
 #include "mouse_events.hpp"
 
 #include <cassert>
@@ -245,7 +244,7 @@ void unit_attack(
 		}
 
 		std::string text_2 ;
-		if(drain && damage) text_2 = lexical_cast<std::string>(minimum<int>(damage,defender.hitpoints())/2);
+		if(drain && damage) text_2 = lexical_cast<std::string>(std::min<int>(damage,defender.hitpoints())/2);
 		if(!att_text.empty()) {
 			text_2.insert(text_2.begin(),att_text.size()/2,' ');
 			text_2 = text_2 + "\n" + att_text;

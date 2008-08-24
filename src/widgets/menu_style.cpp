@@ -25,7 +25,6 @@
 #include "sdl_utils.hpp"
 #include "SDL.h"
 #include "SDL_image.h"
-#include "util.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
@@ -89,7 +88,7 @@ surface menu::style::get_item_image(const image::locator& img_loc) const
 			scale = (max_img_w_ * 100) / surf->w;
 		}
 		if(max_img_h_ > 0 && surf->h > max_img_h_) {
-			scale = minimum<int>(scale, ((max_img_h_ * 100) / surf->h));
+			scale = std::min<int>(scale, ((max_img_h_ * 100) / surf->h));
 		}
 		if(scale != 100)
 		{
@@ -121,7 +120,7 @@ bool menu::imgsel_style::load_images()
 			&& load_image("border-top")
 			&& load_image("border-bottom") )
 		{
-			thickness_ = minimum(
+			thickness_ = std::min(
 					img_map_["border-top"]->h,
 					img_map_["border-left"]->w);
 

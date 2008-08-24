@@ -40,7 +40,6 @@
 #include "theme.hpp"
 #include "tooltips.hpp"
 #include "unit_display.hpp"
-#include "util.hpp"
 
 #include "SDL_image.h"
 
@@ -525,7 +524,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
 
-	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
+	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
 	height = static_cast<size_t>(height*get_zoom_factor());
 #ifdef USE_TINY_GUI
 	height /= 2;
@@ -581,7 +580,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const Uint8 r_alpha = minimum<unsigned>(unsigned(fxpmult(alpha,255)),255);
+		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
 		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
@@ -678,7 +677,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	if(u != units_.end()) {
 			move_cost = u->second.movement_cost(map_.get_terrain(loc));
 	}
-	int image_number = minimum<int>(move_cost, game_config::foot_speed_prefix.size());
+	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {
 		return res; // Invalid movement cost or no images
 	}

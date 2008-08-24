@@ -25,7 +25,6 @@
 #include "race.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -365,7 +364,7 @@ struct road_path_calculator : cost_calculator
 		map_(terrain), 
 		cfg_(cfg),
 		// Find out how windy roads should be.
-		windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))),
+		windiness_(std::max<int>(1,atoi(cfg["road_windiness"].c_str()))),
 		seed_(rand()),
 		cache_()
 	{
@@ -499,10 +498,10 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 		}
 	}
 
-	const int x_from_border = minimum<int>(x - min_x,max_x - x);
-	const int y_from_border = minimum<int>(y - min_y,max_y - y);
+	const int x_from_border = std::min<int>(x - min_x,max_x - x);
+	const int y_from_border = std::min<int>(y - min_y,max_y - y);
 
-	const int border_ranking = min_distance - minimum<int>(x_from_border,y_from_border) +
+	const int border_ranking = min_distance - std::min<int>(x_from_border,y_from_border) +
 	                           min_distance - x_from_border - y_from_border;
 
 	int current_ranking = border_ranking*2 + avg_distance*10 + lowest_distance*10;

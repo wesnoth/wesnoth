@@ -59,7 +59,6 @@ BPath be_path;
 #include "game_config.hpp"
 #include "log.hpp"
 #include "scoped_resource.hpp"
-#include "util.hpp"
 #include "loadscreen.hpp"
 
 #define DBG_FS LOG_STREAM(debug, filesystem)
@@ -595,7 +594,7 @@ void write_file(const std::string& fname, const std::string& data)
 	char buf[block_size];
 
 	for(size_t i = 0; i < data.size(); i += block_size) {
-		const size_t bytes = minimum<size_t>(block_size,data.size() - i);
+		const size_t bytes = std::min<size_t>(block_size,data.size() - i);
 		std::copy(data.begin() + i, data.begin() + i + bytes,buf);
 		const size_t res = fwrite(buf,1,bytes,file.get());
 		if(res != bytes) {

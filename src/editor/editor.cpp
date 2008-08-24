@@ -35,7 +35,6 @@
 #include "../sdl_utils.hpp"
 #include "../tooltips.hpp"
 #include "../team.hpp"
-#include "../util.hpp"
 #include "../video.hpp"
 #include "../wml_separators.hpp"
 #include "../wml_exception.hpp"
@@ -1478,10 +1477,10 @@ void map_editor::update_l_button_palette() {
 	for (it = menus.begin(); it != menus.end(); it++) {
 		if (is_left_button_func_menu(*it)) {
 			const SDL_Rect &r = (*it).location(gui_.screen_area());
-			const int draw_x = maximum<int>(r.x - 1, gui_.screen_area().x);
-			const int draw_y = maximum<int>(r.y - 1, gui_.screen_area().y);
-			const int draw_w = minimum<int>(r.w + 2, gui_.screen_area().w);
-			const int draw_h = minimum<int>(r.h + 2, gui_.screen_area().h);
+			const int draw_x = std::max<int>(r.x - 1, gui_.screen_area().x);
+			const int draw_y = std::max<int>(r.y - 1, gui_.screen_area().y);
+			const int draw_w = std::min<int>(r.w + 2, gui_.screen_area().w);
+			const int draw_h = std::min<int>(r.h + 2, gui_.screen_area().h);
 			const SDL_Rect draw_rect = {draw_x, draw_y, draw_w, draw_h};
 			SDL_Surface* const screen = gui_.video().getSurface();
 			Uint32 color;

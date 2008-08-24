@@ -144,7 +144,7 @@ public:
 	}
 
 	sourcespec& full_range(int range_) {
-		range = maximum<int>(1, range_);
+		range = std::max<int>(1, range_);
 		return *this;
 	}
 

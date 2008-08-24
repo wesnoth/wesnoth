@@ -79,7 +79,7 @@ void gamebrowser::scroll(unsigned int pos)
 {
 	if(pos < games_.size()) {
 		visible_range_.first = pos;
-		visible_range_.second = minimum<size_t>(pos + inner_location().h / row_height(), games_.size());
+		visible_range_.second = std::min<size_t>(pos + inner_location().h / row_height(), games_.size());
 		set_dirty();
 	}
 }
@@ -302,7 +302,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 				case SDLK_PAGEUP:
 				{
 					const long items_on_screen = visible_range_.second - visible_range_.first;
-					selected_ = static_cast<size_t>(maximum<long>(static_cast<long>(selected_) - items_on_screen, 0));
+					selected_ = static_cast<size_t>(std::max<long>(static_cast<long>(selected_) - items_on_screen, 0));
 					adjust_position(selected_);
 					set_dirty();
 				}
@@ -310,7 +310,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 				case SDLK_PAGEDOWN:
 				{
 					const size_t items_on_screen = visible_range_.second - visible_range_.first;
-					selected_ = minimum<size_t>(selected_ + items_on_screen, games_.size() - 1);
+					selected_ = std::min<size_t>(selected_ + items_on_screen, games_.size() - 1);
 					adjust_position(selected_);
 					set_dirty();
 				}
@@ -583,7 +583,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		}
 	}
 	if(selected_ >= games_.size())
-		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
+		selected_ = std::max<long>(static_cast<long>(games_.size()) - 1, 0);
 
 	if (scrolled_to_max) {
 		set_position(get_max_position());

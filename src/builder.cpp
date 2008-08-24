@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "pathutils.hpp"
 #include "terrain.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
@@ -508,8 +507,8 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 
 	constraint_set::iterator cons2;
 	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {
-		minx = minimum<int>(cons2->second.loc.x, minx);
-		miny = minimum<int>(2*cons2->second.loc.y + (cons2->second.loc.x & 1), miny);
+		minx = std::min<int>(cons2->second.loc.x, minx);
+		miny = std::min<int>(2*cons2->second.loc.y + (cons2->second.loc.x & 1), miny);
 	}
 
 	if((miny & 1) && (minx & 1) && (minx < 0))

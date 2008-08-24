@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "theme.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
@@ -353,10 +352,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		break;
 	case TOP_ANCHORED:
 		relative_loc_.x = loc_.x;
-		relative_loc_.w = screen.w - minimum<size_t>(XDim - loc_.w,screen.w);
+		relative_loc_.w = screen.w - std::min<size_t>(XDim - loc_.w,screen.w);
 		break;
 	case BOTTOM_ANCHORED:
-		relative_loc_.x = screen.w - minimum<size_t>(XDim - loc_.x,screen.w);
+		relative_loc_.x = screen.w - std::min<size_t>(XDim - loc_.x,screen.w);
 		relative_loc_.w = loc_.w;
 		break;
 	case PROPORTIONAL:
@@ -374,10 +373,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		break;
 	case TOP_ANCHORED:
 		relative_loc_.y = loc_.y;
-		relative_loc_.h = screen.h - minimum<size_t>(YDim - loc_.h,screen.h);
+		relative_loc_.h = screen.h - std::min<size_t>(YDim - loc_.h,screen.h);
 		break;
 	case BOTTOM_ANCHORED:
-		relative_loc_.y = screen.h - minimum<size_t>(YDim - loc_.y,screen.h);
+		relative_loc_.y = screen.h - std::min<size_t>(YDim - loc_.y,screen.h);
 		relative_loc_.h = loc_.h;
 		break;
 	case PROPORTIONAL:
@@ -388,10 +387,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		assert(false);
 	}
 
-	relative_loc_.x = minimum<int>(relative_loc_.x,screen.w);
-	relative_loc_.w = minimum<int>(relative_loc_.w,screen.w - relative_loc_.x);
-	relative_loc_.y = minimum<int>(relative_loc_.y,screen.h);
-	relative_loc_.h = minimum<int>(relative_loc_.h,screen.h - relative_loc_.y);
+	relative_loc_.x = std::min<int>(relative_loc_.x,screen.w);
+	relative_loc_.w = std::min<int>(relative_loc_.w,screen.w - relative_loc_.x);
+	relative_loc_.y = std::min<int>(relative_loc_.y,screen.h);
+	relative_loc_.h = std::min<int>(relative_loc_.h,screen.h - relative_loc_.y);
 
 	return relative_loc_;
 }

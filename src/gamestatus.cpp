@@ -28,7 +28,6 @@
 #include "game_preferences.hpp"
 #include "statistics.hpp"
 #include "time_of_day.hpp"
-#include "util.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
@@ -388,11 +387,11 @@ int gamestatus::number_of_turns() const
 }
 void gamestatus::modify_turns(const std::string& mod)
 {
-	numTurns_ = maximum<int>(utils::apply_modifier(numTurns_,mod,0),-1);
+	numTurns_ = std::max<int>(utils::apply_modifier(numTurns_,mod,0),-1);
 }
 void gamestatus::add_turns(int num)
 {
-	numTurns_ = maximum<int>(numTurns_ + num,-1);
+	numTurns_ = std::max<int>(numTurns_ + num,-1);
 }
 
 void gamestatus::set_turn(unsigned int num)

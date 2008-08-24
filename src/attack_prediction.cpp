@@ -32,15 +32,11 @@
 // Compile with -O3 -DBENCHMARK for speed testing,
 // -DCHECK for testing correctness
 // (run tools/wesnoth-attack-sim.c --check on output)
-#if !defined(BENCHMARK) && !defined(CHECK)
-#include "util.hpp"
-#else
+#if defined(BENCHMARK) || defined(CHECK)
 #include <time.h>
 #include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define maximum(a,b) ((a) > (b) ? (a) : (b))
-#define minimum(a,b) ((a) < (b) ? (a) : (b))
 #endif
 
 #ifdef ATTACK_PREDICTION_DEBUG
@@ -190,8 +186,8 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 	} else {
 		// If a unit has drain it might end with more HP than before.
 		// Make sure we don't access the matrix in invalid positions.
-		a_hp = minimum<unsigned int>(a_hp, rows_ - 1);
-		b_hp = minimum<unsigned int>(b_hp, cols_ - 1);
+		a_hp = std::min<unsigned int>(a_hp, rows_ - 1);
+		b_hp = std::min<unsigned int>(b_hp, cols_ - 1);
 		val(NEITHER_SLOWED, a_hp, b_hp) = 1.0;
 	}
 }
@@ -635,7 +631,7 @@ void combatant::one_strike_fight(combatant &opp)
 		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
 		if (hit_chances_.size() == 1) {
 			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
-			opp.summary[0][maximum<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
+			opp.summary[0][std::max<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
 		} else {
 			assert(hit_chances_.size() == 0);
 			opp.summary[0][opp.u_.hp] = 1.0;
@@ -645,7 +641,7 @@ void combatant::one_strike_fight(combatant &opp)
 			for (unsigned int i = 1; i < opp.summary[0].size(); i++) {
 				double move = opp.summary[0][i] * hit_chances_[0];
 				opp.summary[0][i] -= move;
-				opp.summary[0][maximum<int>(i - u_.damage, 0)] += move;
+				opp.summary[0][std::max<int>(i - u_.damage, 0)] += move;
 			}
 		}
 	}
@@ -656,7 +652,7 @@ void combatant::one_strike_fight(combatant &opp)
 		summary[0] = std::vector<double>(u_.max_hp+1);
 		if (opp.hit_chances_.size() == 1) {
 			summary[0][u_.hp] = 1.0 - opp.hit_chances_[0] * opp_alive_prob;
-			summary[0][maximum<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
+			summary[0][std::max<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
 		} else {
 			assert(opp.hit_chances_.size() == 0);
 			summary[0][u_.hp] = 1.0;
@@ -666,7 +662,7 @@ void combatant::one_strike_fight(combatant &opp)
 			for (unsigned int i = 1; i < summary[0].size(); i++) {
 				double move = summary[0][i] * opp.hit_chances_[0] * opp_alive_prob;
 				summary[0][i] -= move;
-				summary[0][maximum<int>(i - opp.u_.damage, 0)] += move;
+				summary[0][std::max<int>(i - opp.u_.damage, 0)] += move;
 			}
 		}
 	}
@@ -678,7 +674,7 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 				  u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
 				  u_.hp, opp.u_.hp, summary, opp.summary);
 
-	unsigned max_attacks = maximum(hit_chances_.size(), opp.hit_chances_.size());
+	unsigned max_attacks = std::max(hit_chances_.size(), opp.hit_chances_.size());
 
 	debug(("A gets %u attacks, B %u\n", hit_chances_.size(), opp.hit_chances_.size()));
 
@@ -770,7 +766,7 @@ void combatant::consider_levelup(combatant &opp) {
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp)
 {
-	unsigned int rounds = maximum<unsigned int>(u_.rounds, opp.u_.rounds);
+	unsigned int rounds = std::max<unsigned int>(u_.rounds, opp.u_.rounds);
 
 	// If defender has firststrike and we don't, reverse.
 	if (opp.u_.firststrike && !u_.firststrike) {
@@ -850,8 +846,8 @@ void combatant::fight(combatant &opp)
 	// Make sure we don't try to access the vectors out of bounds,
 	// drain increases HPs so we determine the number of HP here
 	// and make sure it stays within bounds
-	const unsigned int hp = minimum<unsigned int>(u_.hp, hp_dist.size() - 1);
-	const unsigned int opp_hp = minimum<unsigned int>(opp.u_.hp, opp.hp_dist.size() - 1);
+	const unsigned int hp = std::min<unsigned int>(u_.hp, hp_dist.size() - 1);
+	const unsigned int opp_hp = std::min<unsigned int>(opp.u_.hp, opp.hp_dist.size() - 1);
 
 	// Chance that we / they were touched this time.
 	double touched = untouched - hp_dist[hp];
@@ -877,7 +873,7 @@ double combatant::average_hp(unsigned int healing) const
 
 	// Since sum of probabilities is 1.0, we can just tally weights.
 	for (unsigned int i = 1; i < hp_dist.size(); i++) {
-		total += hp_dist[i] * minimum<unsigned int>(i + healing, u_.max_hp);
+		total += hp_dist[i] * std::min<unsigned int>(i + healing, u_.max_hp);
 	}
 	return total;
 }

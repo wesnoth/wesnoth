@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "team.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -389,7 +388,7 @@ team::team(const config& cfg, int gold) :
 	// gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
 	{
-		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
+		gold_ = std::max(gold,::atoi(info_.gold.c_str()));
 		if (gold_ != ::atoi(info_.gold.c_str()))
 			info_.start_gold = str_cast(gold) + " (" + info_.start_gold + ")";
 	}

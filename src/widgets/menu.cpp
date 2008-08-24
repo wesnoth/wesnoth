@@ -23,7 +23,6 @@
 #include "marked-up_text.hpp"
 #include "sound.hpp"
 #include "sdl_utils.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
@@ -299,10 +298,10 @@ void menu::update_size()
 {
 	unsigned int h = heading_height();
 	for(size_t i = get_position(),
-	    i_end = minimum(items_.size(), i + max_items_onscreen());
+	    i_end = std::min(items_.size(), i + max_items_onscreen());
 	    i < i_end; ++i)
 		h += get_item_rect(i).h;
-	h = maximum(h, height());
+	h = std::max(h, height());
 	if (max_height_ > 0 && h > static_cast<unsigned>(max_height_)) {
 		h = max_height_;
 	}
@@ -312,7 +311,7 @@ void menu::update_size()
 	unsigned w = std::accumulate(widths.begin(), widths.end(), 0);
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
-	w = maximum(w, width());
+	w = std::max(w, width());
 	if (max_width_ > 0 && w > static_cast<unsigned>(max_width_)) {
 		use_ellipsis_ = true;
 		w = max_width_;
@@ -758,14 +757,14 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 			surface const img = get_item_image(image_name);
 			if(img != NULL) {
 				res.w += img->w;
-				res.h = maximum<int>(img->h, res.h);
+				res.h = std::max<int>(img->h, res.h);
 			}
 		} else {
 			const SDL_Rect area = {0,0,10000,10000};
 			const SDL_Rect font_size =
 				font::draw_text(NULL,area,get_font_size(),font::NORMAL_COLOUR,str,0,0);
 			res.w += font_size.w;
-			res.h = maximum<int>(font_size.h, res.h);
+			res.h = std::max<int>(font_size.h, res.h);
 		}
 	}
 	return res;
@@ -891,7 +890,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				const std::string image_name(str.begin()+1,str.end());
 				const surface img = style_->get_item_image(image_name);
 				const int remaining_width = max_width_ < 0 ? area.w :
-				minimum<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
+				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
 				if(img != NULL && img->w <= remaining_width
 				&& rect.y + img->h < area.h) {
 					const size_t y = rect.y + (rect.h - img->h)/2;
@@ -1126,7 +1125,7 @@ size_t menu::get_item_height_internal(const std::vector<std::string>& item) cons
 	size_t res = 0;
 	for(std::vector<std::string>::const_iterator i = item.begin(); i != item.end(); ++i) {
 		SDL_Rect rect = style_->item_size(*i);
-		res = maximum<int>(rect.h,res);
+		res = std::max<int>(rect.h,res);
 	}
 
 	return res;
@@ -1138,7 +1137,7 @@ size_t menu::heading_height() const
 		heading_height_ = int(get_item_height_internal(heading_));
 	}
 
-	return minimum<unsigned int>(heading_height_,max_height_);
+	return std::min<unsigned int>(heading_height_,max_height_);
 }
 
 size_t menu::get_item_height(int) const
@@ -1148,7 +1147,7 @@ size_t menu::get_item_height(int) const
 
 	size_t max_height = 0;
 	for(size_t n = 0; n != items_.size(); ++n) {
-		max_height = maximum<int>(max_height,get_item_height_internal(items_[n].fields));
+		max_height = std::max<int>(max_height,get_item_height_internal(items_[n].fields));
 	}
 
 	return item_height_ = max_height;

@@ -26,32 +26,6 @@
 #include <map>
 #include <sstream>
 
-#if 0
-// instead of playing with VC++'s crazy definitions of min and max,
-// just define our own
-/** Replacement for VC++'s definitions of min and max. */
-template<typename T>
-inline T& minimum(T& a, T& b) { return a < b ? a : b; }
-
-template<typename T>
-inline const T& minimum(const T& a, const T& b) { return a < b ? a : b; }
-
-template<typename T>
-inline T& maximum(T& a, T& b) { return a < b ? b : a; }
-
-template<typename T>
-inline const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
-
-#else
-
-template<typename T>
-inline const T& minimum(const T& a, const T& b) { return std::min<T>(a, b); }
-
-template<typename T>
-inline const T& maximum(const T& a, const T& b) { return std::max<T>(a, b); }
-
-#endif
-
 template<typename T>
 inline bool is_odd(T num) {
   int n = static_cast< int >(num);
@@ -72,7 +46,7 @@ inline int div100rounded(int num) {
  */
 inline int round_damage(int base_damage, int bonus, int divisor) {
 	const int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
-	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
+	return std::max<int>(1, (base_damage * bonus + rounding) / divisor);
 }
 
 // not guaranteed to have exactly the same result on different platforms

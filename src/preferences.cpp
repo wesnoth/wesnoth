@@ -28,7 +28,6 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
-#include "util.hpp"
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -148,8 +147,8 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find('y' + postfix);
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		std::pair<int,int> res (maximum(atoi(x->second.c_str()),min_allowed_width()),
-		                        maximum(atoi(y->second.c_str()),min_allowed_height()));
+		std::pair<int,int> res (std::max(atoi(x->second.c_str()),min_allowed_width()),
+		                        std::max(atoi(y->second.c_str()),min_allowed_height()));
 
 		// Make sure resolutions are always divisible by 4
 		//res.first &= ~3;

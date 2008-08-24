@@ -549,9 +549,9 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	                           bottom_row_y - theme_button_.height());
 
 	// Sound tab
-	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
-	slider_label_width_ = maximum<unsigned>(slider_label_width_, bell_label_.width());
-	slider_label_width_ = maximum<unsigned>(slider_label_width_, UI_sound_label_.width());
+	slider_label_width_ = std::max<unsigned>(music_label_.width(), sound_label_.width());
+	slider_label_width_ = std::max<unsigned>(slider_label_width_, bell_label_.width());
+	slider_label_width_ = std::max<unsigned>(slider_label_width_, UI_sound_label_.width());
 	ypos = rect.y + top_border;
 	sound_button_.set_location(rect.x, ypos);
 

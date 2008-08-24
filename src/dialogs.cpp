@@ -383,8 +383,8 @@ public:
 		map_cache_(),
 		textbox_(textbox)
 	{
-		set_measurements(minimum<int>(200,video.getx()/4),
-				 minimum<int>(400,video.gety() * 4/5));
+		set_measurements(std::min<int>(200,video.getx()/4),
+				 std::min<int>(400,video.gety() * 4/5));
 	}
 
 	void draw_contents();
@@ -493,7 +493,7 @@ void save_preview_pane::draw_contents()
 
 	if(map_surf != NULL) {
 		SDL_Rect map_rect = {area.x + area.w - map_surf->w,area.y,map_surf->w,map_surf->h};
-		ypos = maximum<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
+		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
 		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
 	}
     
@@ -647,7 +647,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	for(i = games.begin(); i != games.end(); ++i) {
 		std::string name = i->name;
-		utils::truncate_as_wstring(name, minimum<size_t>(name.size(), 40));
+		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
 
 		std::ostringstream str;
 		str << name << COLUMN_SEPARATOR << format_time_summary(i->time_modified);
@@ -770,7 +770,7 @@ bool unit_preview_pane::left_side() const
 
 void unit_preview_pane::set_selection(int index)
 {
-	index = minimum<int>(static_cast<int>(size())-1,index);
+	index = std::min<int>(static_cast<int>(size())-1,index);
 	if (filter_) {
 		index = filter_->get_index(index);
 	}
@@ -1091,7 +1091,7 @@ bool campaign_preview_pane::left_side() const { return false; }
 
 void campaign_preview_pane::set_selection(int index)
 {
-	index = minimum<int>(descriptions_->size()-1,index);
+	index = std::min<int>(descriptions_->size()-1,index);
 	if(index != index_ && index >= 0) {
 		index_ = index;
 		set_dirty();
@@ -1143,8 +1143,8 @@ void campaign_preview_pane::draw_contents()
 		int max_height = area.h-(txt_area.h+txt_area.y-area.y);
 
 		src_rect.x = src_rect.y = 0;
-		src_rect.w = minimum<int>(area.w,img->w);
-		src_rect.h = minimum<int>(max_height,img->h);
+		src_rect.w = std::min<int>(area.w,img->w);
+		src_rect.h = std::min<int>(max_height,img->h);
 		dst_rect.x = area.x+(area.w-src_rect.w)/2;
 		dst_rect.y = txt_area.y+((max_height-src_rect.h)*8)/13;
 		if(dst_rect.y - txt_area.h - txt_area.y >= 120) {

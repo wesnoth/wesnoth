@@ -38,7 +38,6 @@
 #include "sdl_utils.hpp"
 #include "theme.hpp"
 #include "tooltips.hpp"
-#include "util.hpp"
 
 #include "SDL_image.h"
 
@@ -1034,7 +1033,7 @@ void display::render_unit_image(int x, int y, const bool /*fake_unit*/,
 		return;
 	}
 
-	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,int(surf->h*(1.0-submerged))));
+	const int submerge_height = std::min<int>(surf->h,std::max<int>(0,int(surf->h*(1.0-submerged))));
 
 	
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
@@ -1157,7 +1156,7 @@ void display::draw_wrap(bool update,bool force,bool changed)
 		// too late value doesn't keep growing.
 		// Note: if force is used too often,
 		// we can also get the opposite effect.
-		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
+		nextDraw_ = std::max<int>(nextDraw_, SDL_GetTicks());
 	}
 }
 
@@ -1585,10 +1584,10 @@ void display::scroll_to_tiles(const std::vector<gamemap::location>& locs,
 			valid = true;
 			first_tile_on_screen = !outside_area(map_area(), x, y);
 		} else {
-			int minx_new = minimum<int>(minx,x);
-			int miny_new = minimum<int>(miny,y);
-			int maxx_new = maximum<int>(maxx,x);
-			int maxy_new = maximum<int>(maxy,y);
+			int minx_new = std::min<int>(minx,x);
+			int miny_new = std::min<int>(miny,y);
+			int maxx_new = std::max<int>(maxx,x);
+			int maxy_new = std::max<int>(maxy,y);
 			SDL_Rect r = map_area();
 			r.x = minx_new;
 			r.y = miny_new;
@@ -2093,8 +2092,8 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 
 					area.x = x;
 					area.y = y;
-					area.w = minimum<int>(rect.w + rect.x - x, img->w);
-					area.h = minimum<int>(rect.h + rect.y - y, img->h);
+					area.w = std::min<int>(rect.w + rect.x - x, img->w);
+					area.h = std::min<int>(rect.h + rect.y - y, img->h);
 					draw_image_for_report(img, area);
 
 					if(brighten) {

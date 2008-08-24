@@ -31,7 +31,6 @@
 #include "../mapgen.hpp"
 #include "../map_create.hpp"
 #include "../marked-up_text.hpp"
-#include "../util.hpp"
 #include "../preferences_display.hpp"
 #include "../video.hpp"
 #include "../widgets/slider.hpp"
@@ -90,7 +89,7 @@ std::string new_map_dialog(display& disp, const t_translation::t_terrain fill_te
 										   height_label, 0, 0);
 
 	const int text_right = xpos + horz_margin +
-	        maximum<int>(width_rect.w,height_rect.w);
+	        std::max<int>(width_rect.w,height_rect.w);
 
 	width_rect.x = text_right - width_rect.w;
 	height_rect.x = text_right - height_rect.w;
@@ -331,7 +330,7 @@ void preferences_dialog(display &disp, config &prefs) {
 	gui::slider lighting_b_slider(disp.video());
 	
 	const int rgb_sliders_ref_x = lighting_r_rect.x +
-	                              maximum<int>(maximum<int>(lighting_r_rect.w, lighting_g_rect.w), lighting_b_rect.w);
+	                              std::max<int>(std::max<int>(lighting_r_rect.w, lighting_g_rect.w), lighting_b_rect.w);
 	const int rgb_sliders_ref_width = hotkeys_button.location().x + hotkeys_button.location().w - rgb_sliders_ref_x;
 	
 	SDL_Rect r_rect = { rgb_sliders_ref_x, lighting_r_rect.y, rgb_sliders_ref_width, 10};

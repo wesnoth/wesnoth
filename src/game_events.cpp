@@ -40,7 +40,6 @@
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
 
 #include "SDL_timer.h"
@@ -859,7 +858,7 @@ namespace {
 			std::vector<gamemap::location> path;
 			gamemap::location src;
 			gamemap::location dst;
-			for(size_t i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
+			for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 				if(i==0){
 					src.x = atoi(xvals[i].c_str())-1;
 					src.y = atoi(yvals[i].c_str())-1;
@@ -1615,7 +1614,7 @@ namespace {
 				spec.check_fog(utils::string_bool(play_fogged));
 			}
 
-			for(unsigned int i = 0; i < minimum(vx.size(), vy.size()); ++i) {
+			for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
 				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
 				spec.location(loc);
 			}
@@ -2872,7 +2871,7 @@ namespace {
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
 			(screen)->highlight_hex(speaker->first);
-			const int offset_from_center = maximum<int>(0, speaker->first.y - 1);
+			const int offset_from_center = std::max<int>(0, speaker->first.y - 1);
 			(screen)->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
 			(screen)->highlight_hex(speaker->first);
 

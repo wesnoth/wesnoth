@@ -30,7 +30,7 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 	input_(data)
 {
 		const std::vector<std::string> first_pass = utils::split(data);
-		const int time_chunk = maximum<int>(duration / (first_pass.size()?first_pass.size():1),1);
+		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
 
 		std::vector<std::string>::const_iterator tmp;
 		for(tmp=first_pass.begin();tmp != first_pass.end() ; tmp++) {
@@ -74,7 +74,7 @@ progressive_<T>::progressive_(const std::string &data, int duration) :
 	input_(data)
 {
 	const std::vector<std::string> first_split = utils::split(data);
-	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
+	const int time_chunk = std::max<int>(duration / (first_split.size()?first_split.size():1),1);
 
 	std::vector<std::string>::const_iterator tmp;
 	std::vector<std::pair<std::string,int> > first_pass;

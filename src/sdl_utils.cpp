@@ -22,7 +22,6 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
-#include "util.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -84,10 +83,10 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 {
 	SDL_Rect res;
-	res.x = maximum<int>(rect1.x, rect2.x);
-	res.y = maximum<int>(rect1.y, rect2.y);
-	res.w = maximum<int>(minimum<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x, 0);
-	res.h = maximum<int>(minimum<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y, 0);
+	res.x = std::max<int>(rect1.x, rect2.x);
+	res.y = std::max<int>(rect1.y, rect2.y);
+	res.w = std::max<int>(std::min<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x, 0);
+	res.h = std::max<int>(std::min<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y, 0);
 	return res;
 }
 
@@ -464,12 +463,12 @@ surface scale_surface_blended(surface const &surf, int w, int h, bool optimize)
 				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
 				// which we want to derive the pixel from
 				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
-					const double xsize = minimum<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
+					const double xsize = std::min<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
 					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
-						const int xsrcint = maximum<int>(0,minimum<int>(src->w-1,static_cast<int>(xsrc)));
-						const int ysrcint = maximum<int>(0,minimum<int>(src->h-1,static_cast<int>(ysrc)));
+						const int xsrcint = std::max<int>(0,std::min<int>(src->w-1,static_cast<int>(xsrc)));
+						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,static_cast<int>(ysrc)));
 
-						const double ysize = minimum<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);
+						const double ysize = std::min<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);
 
 						Uint8 r,g,b,a;
 
@@ -526,9 +525,9 @@ surface adjust_surface_colour(surface const &surf, int red, int green, int blue,
 				g = (*beg) >> 8;
 				b = (*beg) >> 0;
 
-				r = maximum<int>(0,minimum<int>(255,int(r)+red));
-				g = maximum<int>(0,minimum<int>(255,int(g)+green));
-				b = maximum<int>(0,minimum<int>(255,int(b)+blue));
+				r = std::max<int>(0,std::min<int>(255,int(r)+red));
+				g = std::max<int>(0,std::min<int>(255,int(g)+green));
+				b = std::max<int>(0,std::min<int>(255,int(b)+blue));
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -737,9 +736,9 @@ surface brighten_image(surface const &surf, fixed_t amount, bool optimize)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				r = minimum<unsigned>(unsigned(fxpmult(r, amount)),255);
-				g = minimum<unsigned>(unsigned(fxpmult(g, amount)),255);
-				b = minimum<unsigned>(unsigned(fxpmult(b, amount)),255);
+				r = std::min<unsigned>(unsigned(fxpmult(r, amount)),255);
+				g = std::min<unsigned>(unsigned(fxpmult(g, amount)),255);
+				b = std::min<unsigned>(unsigned(fxpmult(b, amount)),255);
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -779,7 +778,7 @@ surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize)
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = minimum<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
@@ -817,7 +816,7 @@ surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
 				g = (*beg) >> 8;
 				b = (*beg);
 				
-				alpha = Uint8(maximum<int>(0,minimum<int>(255,int(alpha) + amount)));
+				alpha = Uint8(std::max<int>(0,std::min<int>(255,int(alpha) + amount)));
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
@@ -927,7 +926,7 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
-			*p = 0xFF000000 | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
+			*p = 0xFF000000 | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(x >= depth) {
 				red -= ((*front) >> 16)&0xFF;
 				green -= ((*front) >> 8)&0xFF;
@@ -971,7 +970,7 @@ surface blur_surface(surface const &surf, int depth, bool optimize)
 
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
-			*p = 0xFF000000 | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
+			*p = 0xFF000000 | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(y >= depth) {
 				red -= ((*front) >> 16)&0xFF;
 				green -= ((*front) >> 8)&0xFF;
@@ -1044,7 +1043,7 @@ surface blur_alpha_surface(surface const &surf, int depth, bool optimize)
 
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
-			*p = (minimum(alpha/avg,ff) << 24) | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
+			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(x >= depth) {
 				alpha -= ((*front) >> 24)&0xFF;
 				red -= ((*front) >> 16)&0xFF;
@@ -1091,7 +1090,7 @@ surface blur_alpha_surface(surface const &surf, int depth, bool optimize)
 
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
-			*p = (minimum(alpha/avg,ff) << 24) | (minimum(red/avg,ff) << 16) | (minimum(green/avg,ff) << 8) | minimum(blue/avg,ff);
+			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(y >= depth) {
 				alpha -= ((*front) >> 24)&0xFF;
 				red -= ((*front) >> 16)&0xFF;
@@ -1353,8 +1352,8 @@ void blit_surface(const surface& src,
 	assert(dst_rect.y >= 0);
 
 	// Get the blit size limits.
-	const unsigned width = minimum(src_rect.w, dst_rect.w);
-	const unsigned height = minimum(src_rect.h, dst_rect.h);
+	const unsigned width = std::min(src_rect.w, dst_rect.w);
+	const unsigned height = std::min(src_rect.h, dst_rect.h);
 // 	std::cout << width << " -- " << height << "\n";
 // 	std::cout << src->w << " -- " << src->h << "\n";
 // 	std::cout << srcrect->x << "," << srcrect->y << " - " << srcrect->w << "x" << srcrect->h << " - " "\n";

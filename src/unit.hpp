@@ -105,7 +105,7 @@ public:
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
 	int experience() const { return experience_; }
-	int max_experience() const { return maximum<int>(1,(max_experience_*unit_type::experience_accelerator::get_acceleration() + 50) / 100); }
+	int max_experience() const { return std::max<int>(1,(max_experience_*unit_type::experience_accelerator::get_acceleration() + 50) / 100); }
 	int level() const { return level_; }
 	/**
 	 * Adds 'xp' points to the units experience; returns true if advancement
@@ -137,7 +137,7 @@ public:
 	bool user_end_turn() const { return end_turn_; }
 	int attacks_left() const { return (attacks_left_ == 0 || incapacitated()) ? 0 : attacks_left_; }
 	void set_movement(int moves);
-	void set_attacks(int left) { attacks_left_ = maximum<int>(0,minimum<int>(left,max_attacks_)); }
+	void set_attacks(int left) { attacks_left_ = std::max<int>(0,std::min<int>(left,max_attacks_)); }
 	void unit_hold_position() { hold_position_ = end_turn_ = true; }
 	void new_turn();
 	void end_turn();

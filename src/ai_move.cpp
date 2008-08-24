@@ -19,7 +19,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "util.hpp"
 #include "variable.hpp"
 #include "wml_exception.hpp"
 
@@ -368,7 +367,7 @@ double ai::rate_group(const std::set<location>& group, const std::vector<locatio
 		const std::vector<attack_type>& attacks = un.attacks();
 		for(std::vector<attack_type>::const_iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			const int strength = a->num_attacks()*a->damage();
-			best_attack = maximum<int>(strength,best_attack);
+			best_attack = std::max<int>(strength,best_attack);
 		}
 
 		const int rating = (defense*best_attack*un.hitpoints())/(100*un.max_hitpoints());
@@ -381,7 +380,7 @@ double ai::rate_group(const std::set<location>& group, const std::vector<locatio
 double ai::compare_groups(const std::set<location>& our_group, const std::set<location>& their_group, const std::vector<location>& battlefield) const
 {
 	const double a = rate_group(our_group,battlefield);
-	const double b = maximum<double>(rate_group(their_group,battlefield),0.01);
+	const double b = std::max<double>(rate_group(their_group,battlefield),0.01);
 	return a/b;
 }
 
@@ -434,7 +433,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 		assert(map_.on_board(tg->loc));
 
-		const double locStopValue = minimum(tg->value / best_rating, 500.0);
+		const double locStopValue = std::min(tg->value / best_rating, 500.0);
 		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
 		if (cur_route.move_left < locStopValue)
@@ -450,7 +449,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			}
 		}
 
-		double rating = tg->value/maximum<int>(1,cur_route.move_left);
+		double rating = tg->value/std::max<int>(1,cur_route.move_left);
 
 		//for 'support' targets, they are rated much higher if we can get there within two turns,
 		//otherwise they are worthless to go for at all.
@@ -519,7 +518,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			raise_user_interact();
 
 			const move_cost_calculator calc(u->second, map_, units_, u->first, dstsrc, enemy_dstsrc);
-			const double locStopValue = minimum(best_target->value / best_rating, 100.0);
+			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 			paths::route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if (cur_route.move_left < locStopValue)
@@ -535,7 +534,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				}
 			}
 
-			double rating = best_target->value/maximum<int>(1,cur_route.move_left);
+			double rating = best_target->value/std::max<int>(1,cur_route.move_left);
 
 			//for 'support' targets, they are rated much higher if we can get there within two turns,
 			//otherwise they are worthless to go for at all.
@@ -692,7 +691,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
-				if(best_loc.valid() == false || (threat < maximum<double>(best_threat,max_acceptable_threat) && distance < best_distance)) {
+				if(best_loc.valid() == false || (threat < std::max<double>(best_threat,max_acceptable_threat) && distance < best_distance)) {
 					best_loc = i->second;
 					best_threat = threat;
 					best_distance = distance;

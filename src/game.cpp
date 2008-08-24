@@ -53,7 +53,6 @@
 #include "statistics.hpp"
 #include "thread.hpp"
 #include "titlescreen.hpp"
-#include "util.hpp"
 #include "upload_log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -270,8 +269,8 @@ game_controller::game_controller(int argc, char** argv) :
 			if(arg_+1 != argc_) {
 				++arg_;
 				int fps = lexical_cast_default<int>(argv_[arg_], 50);
-				fps = minimum<int>(fps, 1000);
-				fps = maximum<int>(fps, 1);
+				fps = std::min<int>(fps, 1000);
+				fps = std::max<int>(fps, 1);
 				fps = 1000 / fps;
 				// increase the delay to avoid going above the maximum
 				if(1000 % fps != 0) {

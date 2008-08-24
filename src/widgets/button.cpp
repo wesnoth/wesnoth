@@ -21,7 +21,6 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "sound.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
@@ -125,7 +124,7 @@ void button::calculate_size()
 #ifdef USE_TINY_GUI
 	set_height(textRect_.h+vertical_padding);
 #else
-	set_height(maximum(textRect_.h+vertical_padding,base_height_));
+	set_height(std::max(textRect_.h+vertical_padding,base_height_));
 #endif
 	if(type_ == TYPE_PRESS) {
 #ifdef USE_TINY_GUI
@@ -134,7 +133,7 @@ void button::calculate_size()
 		if(spacing_ == MINIMUM_SPACE) {
 			set_width(textRect_.w + horizontal_padding);
 		} else {
-			set_width(maximum(textRect_.w+horizontal_padding,base_width_));
+			set_width(std::max(textRect_.w+horizontal_padding,base_width_));
 		}
 #endif
 	} else {

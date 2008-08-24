@@ -29,7 +29,6 @@
 #include "marked-up_text.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
 #include "game_events.hpp"
@@ -129,7 +128,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	double xscale = 1.0 * video.getx() / background->w;
 	double yscale = 1.0 * video.gety() / background->h;
-	double scale = minimum<double>(xscale,yscale);
+	double scale = std::min<double>(xscale,yscale);
 
 	background = scale_surface(background, static_cast<int>(background->w*scale), static_cast<int>(background->h*scale));
 

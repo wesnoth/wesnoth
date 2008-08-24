@@ -458,7 +458,7 @@ std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& k
 			}
 		} else {
 			int val = text.empty() ? def : value;
-			flat = maximum<int>(flat,val);
+			flat = std::max<int>(flat,val);
 			if (value > abs_max) {
 				abs_max = value;
 				best_loc = i->second;
@@ -488,7 +488,7 @@ std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& ke
 			}
 		} else {
 			int val = text.empty() ? def : value;
-			flat = minimum<int>(flat,val);
+			flat = std::min<int>(flat,val);
 			if (value < abs_max) {
 				abs_max = value;
 				best_loc = i->second;
@@ -924,7 +924,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				value_set = value;
 				set_effect.set(SET, value, i->first, i->second);
 			} else {
-				if (cumulative) value_set = maximum<int>(value_set, def);
+				if (cumulative) value_set = std::max<int>(value_set, def);
 				if (value > value_set) {
 					value_set = value;
 					set_effect.set(SET, value, i->first, i->second);

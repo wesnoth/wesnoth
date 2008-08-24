@@ -112,7 +112,7 @@ battle_prediction_pane::battle_prediction_pane(display &disp,
 	get_hp_prob_vector(defender_combatant.hp_dist, hp_prob_vector);
 	get_hp_distrib_surface(hp_prob_vector, defender_stats, attacker_stats, defender_hp_distrib_,
 					   defender_hp_distrib_width_, defender_hp_distrib_height_);
-	hp_distribs_height_ = maximum<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_);
+	hp_distribs_height_ = std::max<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_);
 
 	// Build the strings and compute the layout.
 	std::stringstream str;
@@ -133,19 +133,19 @@ battle_prediction_pane::battle_prediction_pane(display &disp,
 					 defender_left_strings_, defender_right_strings_,
 					 defender_left_strings_width_, defender_right_strings_width_, defender_strings_width_);
 
-	units_strings_height_ = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size())
+	units_strings_height_ = std::max<int>(attacker_left_strings_.size(), defender_left_strings_.size())
 						    * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
 	hp_distrib_string_ = _("Expected Battle Result (HP)");
 	hp_distrib_string_width_ = font::line_width(hp_distrib_string_, font::SIZE_SMALL);
 
-	attacker_width_ = maximum<int>(attacker_label_width_, attacker_strings_width_);
-	attacker_width_ = maximum<int>(attacker_width_, hp_distrib_string_width_);
-	attacker_width_ = maximum<int>(attacker_width_, attacker_hp_distrib_width_);
-	defender_width_ = maximum<int>(defender_label_width_, defender_strings_width_);
-	defender_width_ = maximum<int>(defender_width_, hp_distrib_string_width_);
-	defender_width_ = maximum<int>(defender_width_, defender_hp_distrib_width_);
-	units_width_ = maximum<int>(attacker_width_, defender_width_);
+	attacker_width_ = std::max<int>(attacker_label_width_, attacker_strings_width_);
+	attacker_width_ = std::max<int>(attacker_width_, hp_distrib_string_width_);
+	attacker_width_ = std::max<int>(attacker_width_, attacker_hp_distrib_width_);
+	defender_width_ = std::max<int>(defender_label_width_, defender_strings_width_);
+	defender_width_ = std::max<int>(defender_width_, hp_distrib_string_width_);
+	defender_width_ = std::max<int>(defender_width_, defender_hp_distrib_width_);
+	units_width_ = std::max<int>(attacker_width_, defender_width_);
 
 	dialog_width_ = 2 * units_width_ + inter_units_gap_;
 	dialog_height_ = 15 + 24 + units_strings_height_ + 14 + 19 + hp_distribs_height_ + 18;
@@ -296,7 +296,7 @@ int battle_prediction_pane::get_strings_max_length(const std::vector<std::string
 	int max_len = 0;
 
 	for(int i = 0; i < static_cast<int>(strings.size()); i++)
-		max_len = maximum<int>(font::line_width(strings[i], font::SIZE_NORMAL), max_len);
+		max_len = std::max<int>(font::line_width(strings[i], font::SIZE_NORMAL), max_len);
 
 	return max_len;
 }
@@ -321,7 +321,7 @@ void battle_prediction_pane::get_hp_prob_vector(const std::vector<double>& hp_di
 	std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
 
 	// We store a few of the highest probability hitpoint values.
-	int nb_elem = minimum<int>(max_hp_distrib_rows_, prob_hp_vector.size());
+	int nb_elem = std::min<int>(max_hp_distrib_rows_, prob_hp_vector.size());
 
 	for(i = prob_hp_vector.size() - nb_elem;
 			i < static_cast<int>(prob_hp_vector.size()); i++) {
@@ -337,7 +337,7 @@ void battle_prediction_pane::get_hp_prob_vector(const std::vector<double>& hp_di
 void battle_prediction_pane::draw_contents()
 {
 	// We must align both damage lines.
-	int damage_line_skip = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size()) - 2;
+	int damage_line_skip = std::max<int>(attacker_left_strings_.size(), defender_left_strings_.size()) - 2;
 
 	draw_unit(0, damage_line_skip,
 			  attacker_left_strings_width_, attacker_left_strings_, attacker_right_strings_,
@@ -515,7 +515,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
 							 hp_sep - hp_width - 2, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 
-		int bar_len = maximum<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
+		int bar_len = std::max<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
 		SDL_Rect bar_rect_1 = {hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8};
 		SDL_FillRect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));

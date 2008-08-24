@@ -24,7 +24,6 @@
 #include "unit.hpp"
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
-#include "util.hpp"
 #include "variable.hpp"
 #include "sound.hpp"
 #include "serialization/string_utils.hpp"
@@ -650,7 +649,7 @@ unit_animation::particule::particule(
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
 		for(itor = range.first; itor != range.second; itor++) {
-			starting_frame_time_=minimum(starting_frame_time_,atoi((**itor)["begin"].c_str()));
+			starting_frame_time_=std::min(starting_frame_time_,atoi((**itor)["begin"].c_str()));
 		}
 	} else {
 		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
@@ -711,7 +710,7 @@ int unit_animation::get_end_time() const
 	int result = unit_anim_.get_end_time();
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.end();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		result= minimum<int>(result,anim_itor->second.get_end_time());
+		result= std::min<int>(result,anim_itor->second.get_end_time());
 	}
 	return result;
 }
@@ -721,7 +720,7 @@ int unit_animation::get_begin_time() const
 	int result = unit_anim_.get_begin_time();
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		result= minimum<int>(result,anim_itor->second.get_begin_time());
+		result= std::min<int>(result,anim_itor->second.get_begin_time());
 	}
 	return result;
 }
@@ -859,7 +858,7 @@ if(!tmp.animation) return;
 
 
 
-	start_time_ = maximum<int>(start_time_,tmp.animation->get_begin_time());
+	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
 void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::string& event,
@@ -893,9 +892,9 @@ void unit_animator::start_animations()
 	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 	       if(anim->my_unit->get_animation()) {
 			   if(anim->animation) {
-				   begin_time = minimum<int>(begin_time,anim->animation->get_begin_time());
+				   begin_time = std::min<int>(begin_time,anim->animation->get_begin_time());
 			   } else  {
-				   begin_time = minimum<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
+				   begin_time = std::min<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
 			   }
 		   }
     }
@@ -927,11 +926,11 @@ void unit_animator::wait_until(int animation_time) const
 		disp->draw();
                 end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
 		events::pump();
-		disp->delay(maximum<int>(0,
-			minimum<int>(10,
+		disp->delay(std::max<int>(0,
+			std::min<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 	}
-	disp->delay(maximum<int>(0,end_tick - SDL_GetTicks() +5));
+	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
 	new_animation_frame();
 }
 void unit_animator::wait_for_end() const
@@ -962,7 +961,7 @@ int unit_animator::get_end_time() const
         int end_time = INT_MIN;
         for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 	       if(anim->my_unit->get_animation()) {
-                end_time = maximum<int>(end_time,anim->my_unit->get_animation()->get_end_time());
+                end_time = std::max<int>(end_time,anim->my_unit->get_animation()->get_end_time());
 	       }
         }
         return end_time;

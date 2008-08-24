@@ -93,8 +93,8 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 							r.x = 0;
 							r.y = 0;
 							SDL_BlitSurface(tile, NULL, combined, &r);
-							r.x = maximum(0, (tile->w - overlay->w)/2);
-							r.y = maximum(0, (tile->h - overlay->h)/2);
+							r.x = std::max(0, (tile->w - overlay->w)/2);
+							r.y = std::max(0, (tile->h - overlay->h)/2);
 							blit_surface(overlay, NULL, combined, &r);
 							tile = combined;
 						}
@@ -133,7 +133,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 	double wratio = w*1.0 / minimap->w;
 	double hratio = h*1.0 / minimap->h;
-	double ratio = minimum<double>(wratio, hratio);
+	double ratio = std::min<double>(wratio, hratio);
 	
 	minimap = scale_surface(minimap,
 		static_cast<int>(minimap->w * ratio), static_cast<int>(minimap->h * ratio));

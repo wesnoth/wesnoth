@@ -40,7 +40,6 @@
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"
 #include "titlescreen.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -236,7 +235,7 @@ static void draw_tip_of_day(game_display& screen,
 			SDL_Rect area = font::text_area(text,font::SIZE_NORMAL);
 			area.w = tip_width;
 			SDL_Rect source_area = font::text_area(source, font::SIZE_NORMAL, TTF_STYLE_ITALIC);
-			area.w = maximum<size_t>(area.w, source_area.w) + 2*pad;
+			area.w = std::max<size_t>(area.w, source_area.w) + 2*pad;
 			area.h += source_area.h + next_tip_button->location().h + 3*pad;
 
 			area.x = main_dialog_area->x - (game_config::title_tip_x * screen.w() / 1024) - area.w;
@@ -421,7 +420,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	for(b = 0; b != nbuttons; ++b) {
 		buttons.push_back(button(screen.video(),sgettext(button_labels[b])));
 		buttons.back().set_help_string(sgettext(help_button_labels[b]));
-		max_width = maximum<size_t>(max_width,buttons.back().width());
+		max_width = std::max<size_t>(max_width,buttons.back().width());
 
 		n_menubuttons = b;
 		if(b == QUIT_GAME) break;	// Menu-frame ends at the quit-button

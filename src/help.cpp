@@ -33,7 +33,6 @@
 #include "sound.hpp"
 #include "construct_dialog.hpp"
 #include "unit.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
@@ -2396,7 +2395,7 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 		if (itm.floating) {
 			if ((itm.rect.x + itm.rect.w > x && itm.rect.x < x + width)
 				|| (itm.rect.x > x && itm.rect.x < x + width)) {
-				min_y = maximum<int>(min_y, itm.rect.y + itm.rect.h);
+				min_y = std::max<int>(min_y, itm.rect.y + itm.rect.h);
 			}
 		}
 	}
@@ -2410,7 +2409,7 @@ int help_text_area::get_min_x(const int y, const int height)
 		const item& itm = *it;
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y && itm.align == LEFT) {
-				min_x = maximum<int>(min_x, itm.rect.w + 5);
+				min_x = std::max<int>(min_x, itm.rect.w + 5);
 			}
 		}
 	}
@@ -2426,9 +2425,9 @@ int help_text_area::get_max_x(const int y, const int height)
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y) {
 				if (itm.align == RIGHT) {
-					max_x = minimum<int>(max_x, text_width - itm.rect.w - 5);
+					max_x = std::min<int>(max_x, text_width - itm.rect.w - 5);
 				} else if (itm.align == MIDDLE) {
-					max_x = minimum<int>(max_x, text_width / 2 - itm.rect.w / 2 - 5);
+					max_x = std::min<int>(max_x, text_width / 2 - itm.rect.w / 2 - 5);
 				}
 			}
 		}
@@ -2441,15 +2440,15 @@ void help_text_area::add_item(const item &itm)
 	items_.push_back(itm);
 	if (!itm.floating) {
 		curr_loc_.first += itm.rect.w;
-		curr_row_height_ = maximum<int>(itm.rect.h, curr_row_height_);
-		contents_height_ = maximum<int>(contents_height_, curr_loc_.second + curr_row_height_);
+		curr_row_height_ = std::max<int>(itm.rect.h, curr_row_height_);
+		contents_height_ = std::max<int>(contents_height_, curr_loc_.second + curr_row_height_);
 		last_row_.push_back(&items_.back());
 	}
 	else {
 		if (itm.align == LEFT) {
 			curr_loc_.first = itm.rect.w + 5;
 		}
-		contents_height_ = maximum<int>(contents_height_, itm.rect.y + itm.rect.h);
+		contents_height_ = std::max<int>(contents_height_, itm.rect.y + itm.rect.h);
 	}
 }
 
@@ -2477,7 +2476,7 @@ void help_text_area::down_one_line()
 	last_row_.clear();
 	curr_loc_.second += curr_row_height_ + (curr_row_height_ == min_row_height_ ? 0 : 2);
 	curr_row_height_ = min_row_height_;
-	contents_height_ = maximum<int>(curr_loc_.second + curr_row_height_, contents_height_);
+	contents_height_ = std::max<int>(curr_loc_.second + curr_row_height_, contents_height_);
 	curr_loc_.first = get_min_x(curr_loc_.second, curr_row_height_);
 }
 
@@ -3012,8 +3011,8 @@ void show_help(display &disp, const section &toplevel_sec,
 	CVideo& screen = disp.video();
 	surface const scr = screen.getSurface();
 
-	const int width  = minimum<int>(font::relative_size(900), scr->w - font::relative_size(20));
-	const int height = minimum<int>(font::relative_size(800), scr->h - font::relative_size(150));
+	const int width  = std::min<int>(font::relative_size(900), scr->w - font::relative_size(20));
+	const int height = std::min<int>(font::relative_size(800), scr->h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
 	const int top_padding = font::relative_size(10);

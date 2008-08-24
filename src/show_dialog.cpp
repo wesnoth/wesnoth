@@ -31,7 +31,6 @@
 #include "language.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
@@ -142,7 +141,7 @@ int dialog_frame::bottom_padding() const {
 	int padding = 0;
 	if(buttons_ != NULL) {
 		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
-			padding = maximum<int>((**b).height() + ButtonVPadding, padding);
+			padding = std::max<int>((**b).height() + ButtonVPadding, padding);
 		}
 	}
 	if(have_border_) {
@@ -160,7 +159,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	if(buttons_ != NULL) {
 		for(std::vector<button*>::const_iterator b = buttons_->begin(); b != buttons_->end(); ++b) {
 			dim_.button_row.w += (**b).width() + ButtonHPadding;
-			dim_.button_row.h = maximum<int>((**b).height() + ButtonVPadding,dim_.button_row.h);
+			dim_.button_row.h = std::max<int>((**b).height() + ButtonVPadding,dim_.button_row.h);
 		}
 
 		dim_.button_row.x = -dim_.button_row.w;
@@ -177,7 +176,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	}
 
 	y -= dim_.title.h;
-	w = maximum<int>(w,maximum<int>(int(dim_.title.w),int(buttons_width)));
+	w = std::max<int>(w,std::max<int>(int(dim_.title.w),int(buttons_width)));
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
@@ -291,8 +290,8 @@ void dialog_frame::draw_background()
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
 		for(int j = 0; j < dim_.interior.h; j += bg_->h) {
 			SDL_Rect src = {0,0,0,0};
-			src.w = minimum(dim_.interior.w - i, bg_->w);
-			src.h = minimum(dim_.interior.h - j, bg_->h);
+			src.w = std::min(dim_.interior.w - i, bg_->w);
+			src.h = std::min(dim_.interior.h - j, bg_->h);
 			SDL_Rect dst = src;
 			dst.x = dim_.interior.x + i;
 			dst.y = dim_.interior.y + j;

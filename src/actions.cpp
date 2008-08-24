@@ -955,7 +955,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	defenderxp_ = a_->second.level();
 
 	bool defender_strikes_first = (d_stats_->firststrike && ! a_stats_->firststrike);
-	unsigned int rounds = maximum<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
+	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
 	int abs_n_attack_ = 0;
 	int abs_n_defend_ = 0;
 
@@ -1047,8 +1047,8 @@ attack::attack(game_display& gui, const gamemap& map,
 
 			// Used for stat calcualtion
 			const int drains_damage = a_stats_->drains ?
-				minimum<int>(damage_defender_takes / 2,a_->second.max_hitpoints() - a_->second.hitpoints()) : 0;
-			const int damage_done = minimum<int>(d_->second.hitpoints(), attacker_damage_);
+				std::min<int>(damage_defender_takes / 2,a_->second.max_hitpoints() - a_->second.hitpoints()) : 0;
+			const int damage_done = std::min<int>(d_->second.hitpoints(), attacker_damage_);
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
@@ -1313,8 +1313,8 @@ attack::attack(game_display& gui, const gamemap& map,
 			}
 
 			// used for stats calculation
-			const int drains_damage = d_stats_->drains ? minimum<int>(damage_attacker_takes / 2,d_->second.max_hitpoints() - d_->second.hitpoints()): 0;
-			const int damage_done   = minimum<int>(a_->second.hitpoints(), defender_damage_);
+			const int drains_damage = d_stats_->drains ? std::min<int>(damage_attacker_takes / 2,d_->second.max_hitpoints() - d_->second.hitpoints()): 0;
+			const int damage_done   = std::min<int>(a_->second.hitpoints(), defender_damage_);
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(ran_results == NULL) {
@@ -1894,8 +1894,8 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp)
 
 time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc, const gamemap& map)
 {
-	int lighten = maximum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
-	int darken = minimum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int lighten = std::max<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int darken = std::min<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 
 	time_of_day tod = status.get_time_of_day(lighten + darken,loc);
 
@@ -1914,8 +1914,8 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ga
 				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
 					mod = illum.highest("max_value").first - tod.lawful_bonus;
 				}
-				lighten = maximum<int>(mod, lighten);
-				darken = minimum<int>(mod, darken);
+				lighten = std::max<int>(mod, lighten);
+				darken = std::min<int>(mod, darken);
 			}
 		}
 	}
@@ -1940,7 +1940,7 @@ int combat_modifier(const gamestatus& status,
 	else if(alignment == unit_type::CHAOTIC)
 		bonus = -bonus;
 	if(is_fearless)
-		bonus = maximum<int>(bonus, 0);
+		bonus = std::max<int>(bonus, 0);
 
 	return bonus;
 }

@@ -15,7 +15,7 @@
 #include "foreach.hpp"
 #include "version.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
+
 #include <functional>
 #include <cassert>
 #include <sstream>
@@ -209,7 +209,7 @@ namespace {
 
 		const size_t lsize = lc.size();
 		const size_t rsize = rc.size();
-		const size_t csize = maximum(lsize, rsize);
+		const size_t csize = std::max(lsize, rsize);
 
 		// make compatible, missing items default to zero
 		if(lsize < csize) lc.resize(csize, 0);

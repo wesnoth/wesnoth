@@ -22,7 +22,6 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
@@ -497,10 +496,10 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 {
 	const config::child_list& rules = rules_cfg.get_children("rule");
 
-	const int xstart = maximum<int>(0, -xpos);
-	const int ystart = maximum<int>(0, -ypos-((xpos & 1) ? 1 : 0));
-	const int xend = minimum<int>(m.w(),w()-xpos);
-	const int yend = minimum<int>(m.h(),h()-ypos);
+	const int xstart = std::max<int>(0, -xpos);
+	const int ystart = std::max<int>(0, -ypos-((xpos & 1) ? 1 : 0));
+	const int xend = std::min<int>(m.w(),w()-xpos);
+	const int yend = std::min<int>(m.h(),h()-ypos);
 	for(int x1 = xstart; x1 < xend; ++x1) {
 		for(int y1 = ystart; y1 < yend; ++y1) {
 			const int x2 = x1 + xpos;

@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
@@ -177,7 +176,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	height_adjust_(overlay.height_adjust_),
 	submerge_(overlay.submerge_),
 	light_modification_(base.light_modification_ + overlay.light_modification_),
-	heals_(maximum<int>(base.heals_, overlay.heals_)),
+	heals_(std::max<int>(base.heals_, overlay.heals_)),
 	income_description_(),
 	income_description_ally_(),
 	income_description_enemy_(),

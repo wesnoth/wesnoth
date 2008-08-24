@@ -32,7 +32,6 @@
 #include "language.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
-#include "util.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
@@ -443,8 +442,8 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	int text_widget_height = 0;
 	if(use_textbox) {
 		const SDL_Rect& area = font::text_area(text_widget_->text(),message_font_size);
-		dim.textbox.w = minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget_->width()));
-		dim.textbox.h = minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget_->height()));
+		dim.textbox.w = std::min<size_t>(screen.getx()/2,std::max<size_t>(area.w,text_widget_->width()));
+		dim.textbox.h = std::min<size_t>(screen.gety()/2,std::max<size_t>(area.h,text_widget_->height()));
 		text_widget_width = dim.textbox.w;
 		text_widget_width += (text_widget_->get_label() == NULL) ? 0 : text_widget_->get_label()->width();
 		text_widget_height = dim.textbox.h + message_font_size;
@@ -483,7 +482,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 			break;
 		}
 	}
-	check_button_height = maximum<int>(check_button_height, left_check_button_height);
+	check_button_height = std::max<int>(check_button_height, left_check_button_height);
 
 	size_t above_preview_pane_height = 0, above_left_preview_pane_width = 0, above_right_preview_pane_width = 0;
 	size_t preview_pane_height = 0, left_preview_pane_width = 0, right_preview_pane_width = 0;
@@ -492,14 +491,14 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 			preview_pane const *const pane = *i;
 			const SDL_Rect& rect = pane->location();
 			if(pane->show_above() == false) {
-				preview_pane_height = maximum<size_t>(rect.h,preview_pane_height);
+				preview_pane_height = std::max<size_t>(rect.h,preview_pane_height);
 				if(pane->left_side()) {
 					left_preview_pane_width += rect.w;
 				} else {
 					right_preview_pane_width += rect.w;
 				}
 			} else {
-				above_preview_pane_height = maximum<size_t>(rect.h,above_preview_pane_height);
+				above_preview_pane_height = std::max<size_t>(rect.h,above_preview_pane_height);
 				if(pane->left_side()) {
 					above_left_preview_pane_width += rect.w;
 				} else {
@@ -545,10 +544,10 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	const int total_height = text_and_image_height + padding_height + menu_->height() +
 		text_widget_height + check_button_height;
 
-	dim.interior.w = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
-	dim.interior.h = maximum<int>(total_height,static_cast<int>(preview_pane_height));
-	dim.interior.x = maximum<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.interior.w + left_preview_pane_width + right_preview_pane_width)/2);
-	dim.interior.y = maximum<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.interior.h + above_preview_pane_height)/2);
+	dim.interior.w = std::max<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
+	dim.interior.h = std::max<int>(total_height,static_cast<int>(preview_pane_height));
+	dim.interior.x = std::max<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.interior.w + left_preview_pane_width + right_preview_pane_width)/2);
+	dim.interior.y = std::max<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.interior.h + above_preview_pane_height)/2);
 
 	DBG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
 		<< "dim.interior.y: " << scr->h/2 << " - " << (dim.interior.h + above_preview_pane_height)/2 << " = "
@@ -569,7 +568,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	const int frame_top_pad = get_frame().top_padding();
 	const int frame_bottom_pad = get_frame().bottom_padding();
 	if(dim.y + dim.interior.h + frame_bottom_pad > scr->h) {
-		dim.y = maximum<int>(frame_top_pad, scr->h - dim.interior.h - frame_bottom_pad);
+		dim.y = std::max<int>(frame_top_pad, scr->h - dim.interior.h - frame_bottom_pad);
 		if(dim.y < dim.interior.y) {
 			dim.interior.y = dim.y;
 		}
@@ -583,7 +582,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		//try to rein in the menu height a little bit
 		const int menu_height = menu_->height();
 		if(menu_height > 0) {
-			dim.menu_height = maximum<int>(1, max_height - dim.interior.h + menu_height);
+			dim.menu_height = std::max<int>(1, max_height - dim.interior.h + menu_height);
 			dim.interior.h -= menu_height - dim.menu_height;
 		}
 	}

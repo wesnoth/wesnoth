@@ -673,7 +673,7 @@ void create::layout_children(const SDL_Rect& rect)
 	name_entry_label_.set_location(xpos, ypos);
 	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
 	name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
-	ypos += maximum<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
+	ypos += std::max<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
 
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
@@ -821,7 +821,7 @@ void create::layout_children(const SDL_Rect& rect)
 	name_entry_label_.set_location(xpos, ypos);
 	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
 	name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
-	ypos += maximum<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
+	ypos += std::max<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
 
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;

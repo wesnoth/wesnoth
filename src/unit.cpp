@@ -30,7 +30,6 @@
 #include "unit.hpp"
 #include "unit_types.hpp"
 #include "unit_abilities.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "halo.hpp"
 #include "game_display.hpp"
@@ -908,7 +907,7 @@ void unit::set_movement(int moves)
 {
 	hold_position_ = false;
 	end_turn_ = false;
-	movement_ = maximum<int>(0,minimum<int>(moves,max_movement_));
+	movement_ = std::max<int>(0,std::min<int>(moves,max_movement_));
 }
 
 void unit::new_turn()
@@ -2086,7 +2085,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
 
-			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / maximum<int>(level_,1));
+			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / std::max<int>(level_,1));
 
 			SDL_Color colour=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
@@ -2385,7 +2384,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	if(!resistance_abilities.empty()) {
 		unit_abilities::effect resist_effect(resistance_abilities,res,false);
 
-		res = minimum<int>(resist_effect.get_composite_value(),resistance_abilities.highest("max_value").first);
+		res = std::min<int>(resist_effect.get_composite_value(),resistance_abilities.highest("max_value").first);
 	}
 	return 100 - res;
 }
@@ -3139,7 +3138,7 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	res.units = team_units(units,side);
 	res.upkeep = team_upkeep(units,side);
 	res.villages = tm.villages().size();
-	res.expenses = maximum<int>(0,res.upkeep - res.villages);
+	res.expenses = std::max<int>(0,res.upkeep - res.villages);
 	res.net_income = tm.income() - res.expenses;
 	res.gold = tm.gold();
 	res.teamname = tm.user_team_name();

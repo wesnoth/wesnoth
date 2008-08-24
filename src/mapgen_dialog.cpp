@@ -25,7 +25,6 @@
 #include "mapgen.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
-#include "util.hpp"
 #include "video.hpp"
 
 #include "widgets/button.hpp"
@@ -140,7 +139,7 @@ void default_map_generator::user_config(display& disp)
 
 	const int horz_margin = 15;
 	const int text_right = xpos + horz_margin +
-	        maximum<int>(maximum<int>(maximum<int>(maximum<int>(maximum<int>(maximum<int>(
+	        std::max<int>(std::max<int>(std::max<int>(std::max<int>(std::max<int>(std::max<int>(
 		         players_rect.w,width_rect.w),height_rect.w),iterations_rect.w),hillsize_rect.w),villages_rect.w),castlesize_rect.w);
 
 	players_rect.x = text_right - players_rect.w;
@@ -361,7 +360,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		//the radius of the island should be up to twice the width of the map
 		const size_t island_radius = 40 + ((max_coastal - island_size_)*40)/max_coastal;
 		island_size = (island_radius*width_*2)/100;
-		island_off_center = minimum<size_t>(width_,height_);
+		island_off_center = std::min<size_t>(width_,height_);
 		DBG_NG << "calculated coastal params...\n";
 	}
 

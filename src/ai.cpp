@@ -1534,7 +1534,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		int resistance = a.movement_type().resistance_against(*i);
 		// Apply steadfast resistance modifier.
 		if (steadfast && resistance < 100)
-			resistance = maximum<int>(resistance * 2 - 100, 50);
+			resistance = std::max<int>(resistance * 2 - 100, 50);
 		// Do not look for filters or values, simply assume 70% if CTH is customized.
 		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
 		int weight = i->damage() * i->num_attacks();
@@ -1552,7 +1552,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	}
 
 	// normalize by HP
-	sum /= maximum<int>(1,minimum<int>(a.hitpoints(),1000)); // avoid values really out of range
+	sum /= std::max<int>(1,std::min<int>(a.hitpoints(),1000)); // avoid values really out of range
 
 	// Catch division by zero here if the attacking unit
 	// has zero attacks and/or zero damage.
@@ -2251,7 +2251,7 @@ int ai::attack_depth()
 	}
 
 	const config& parms = current_team().ai_parameters();
-	attack_depth_ = maximum<int>(1,lexical_cast_default<int>(parms["attack_depth"],5));
+	attack_depth_ = std::max<int>(1,lexical_cast_default<int>(parms["attack_depth"],5));
 	return attack_depth_;
 }
 

@@ -204,7 +204,7 @@ void playmp_controller::play_human_turn(){
 		if (!linger_ && (current_team().countdown_time() > 0) && (level_["mp_countdown"] == "yes")) {
 			SDL_Delay(1);
 			const int ticks = SDL_GetTicks();
-			int new_time = current_team().countdown_time()-maximum<int>(1,(ticks - cur_ticks));
+			int new_time = current_team().countdown_time()-std::max<int>(1,(ticks - cur_ticks));
 			if (new_time > 0 ){
 				current_team().set_countdown_time(new_time);
 				cur_ticks = ticks;

@@ -22,7 +22,6 @@
 #include "cavegen.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
@@ -342,13 +341,13 @@ void cave_map_generator::place_passage(const passage& p)
 
 
 	const size_t windiness = atoi(p.cfg["windiness"].c_str());
-	const double laziness = maximum<double>(1.0,atof(p.cfg["laziness"].c_str()));
+	const double laziness = std::max<double>(1.0,atof(p.cfg["laziness"].c_str()));
 
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
 
 	const paths::route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
 
-	const size_t width = maximum<size_t>(1,atoi(p.cfg["width"].c_str()));
+	const size_t width = std::max<size_t>(1,atoi(p.cfg["width"].c_str()));
 
 	const size_t jagged = atoi(p.cfg["jagged"].c_str());
 

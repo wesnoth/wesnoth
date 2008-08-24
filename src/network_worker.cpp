@@ -518,7 +518,7 @@ static SOCKET_STATE send_file(buffer* buf)
 	// if no system implementation is enabled
 	int send_size = 0;
 	// reserve 1024*8 bytes buffer
-	buf->raw_buffer.resize(minimum<size_t>(1024*8, filesize));
+	buf->raw_buffer.resize(std::min<size_t>(1024*8, filesize));
 	SDLNet_Write32(filesize,&buf->raw_buffer[0]);
 	scoped_istream file_stream = istream_file(buf->config_error);
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);

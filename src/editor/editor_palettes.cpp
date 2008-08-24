@@ -27,7 +27,6 @@
 #include "../reports.hpp"
 #include "../gettext.hpp"
 #include "../tooltips.hpp"
-#include "../util.hpp"
 #include "../video.hpp"
 
 #include <cassert>
@@ -144,7 +143,7 @@ void terrain_palette::adjust_size() {
 		static_cast<unsigned> (space_for_terrains / size_specs_.terrain_space) *
 		size_specs_.terrain_width;
 	const unsigned total_terrains = num_terrains();
-	nterrains_ = minimum<int>(terrains_fitting, total_terrains);
+	nterrains_ = std::min<int>(terrains_fitting, total_terrains);
 	bot_button_y_ = size_specs_.palette_y + (nterrains_ / size_specs_.terrain_width) * size_specs_.terrain_space + \
 		button_palette_padding * size_specs_.terrain_width + button_height + group_height;
 	top_button_.set_location(button_x_, top_button_y_);

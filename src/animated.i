@@ -22,7 +22,6 @@
 
 #include "SDL.h"
 #include "animated.hpp"
-#include "util.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace {
@@ -262,7 +261,7 @@ int animated<T,T_void_value>::get_current_frame_time() const
 	if(frames_.empty() )
 		return 0;
 	//FIXME: get_animation_time() use acceleration but get_current_frame_begin_time() doesn't ?
-	return maximum<int>(0,get_animation_time() - get_current_frame_begin_time());
+	return std::max<int>(0,get_animation_time() - get_current_frame_begin_time());
 }
 
 template<typename T,  typename T_void_value>
