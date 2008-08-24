@@ -525,7 +525,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	for(int i = 0; i < 6; ++i) {
 		int a = (angle+i) % 6;
 		std::string token = "@R";
-		push_back(token,'0' + i);
+		token.push_back('0' + i);
 		replace_token(ret, token, rot[a]);
 	}
 

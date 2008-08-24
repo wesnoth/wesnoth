@@ -20,7 +20,6 @@
 #include "global.hpp"
 #include "config.hpp"
 #include "statistics.hpp"
-#include "util.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "unit.hpp"
@@ -521,7 +520,7 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res, long long 
 	if(stats_disabled > 0)
 		return;
 
-	push_back(attacker_res,(res == MISSES ? '0' : '1'));
+	attacker_res.push_back(res == MISSES ? '0' : '1');
 
 	if(res != MISSES) {
 		// handle drain
@@ -560,7 +559,7 @@ void attack_context::defend_result(attack_context::ATTACK_RESULT res, long long 
 	if(stats_disabled > 0)
 		return;
 
-	push_back(defender_res,(res == MISSES ? '0' : '1'));
+	defender_res.push_back(res == MISSES ? '0' : '1');
 
 
 	if(res != MISSES) {

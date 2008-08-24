@@ -22,7 +22,6 @@
 #include <cctype>
 #include <sstream>
 #include "gettext.hpp"
-#include "util.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "wctype.h"
@@ -752,7 +751,7 @@ std::string wstring_to_string(const wide_string &src)
 			}
 
 			if(count == 1) {
-				push_back(ret,static_cast<char>(ch));
+				ret.push_back(static_cast<char>(ch));
 			} else {
 				for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
 					unsigned char c = (ch >> (6 * j)) & 0x3f;
@@ -760,7 +759,7 @@ std::string wstring_to_string(const wide_string &src)
 					if(j == static_cast<int>(count) - 1) {
 						c |= 0xff << (8 - count);
 					}
-					push_back(ret, c);
+					ret.push_back(c);
 				}
 			}
 
@@ -791,7 +790,7 @@ wide_string string_to_wstring(const std::string &src)
 
 		// Equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
 		while(i1 != i2) {
-			push_back(res,*i1);
+			res.push_back(*i1);
 			++i1;
 		}
 	}

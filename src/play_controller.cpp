@@ -850,7 +850,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 					std::string newitem = itor->second->description;
 
 					// Prevent accidental hotkey binding by appending a space
-					push_back<std::string, char>(newitem, ' ');
+					newitem.push_back(' ');
 					newitems.push_back(newitem);
 				}
 			}

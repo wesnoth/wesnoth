@@ -505,7 +505,7 @@ size_t text_to_lines(std::string& message, size_t max_length)
 	for(std::string::iterator i = message.begin(); i != message.end(); ++i) {
 		if(at_start) {
 			if(font::is_format_char(*i)) {
-				push_back(starting_markup,*i);
+				starting_markup.push_back(*i);
 			} else {
 				at_start = false;
 			}
