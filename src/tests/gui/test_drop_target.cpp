@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE( test_create_group )
 
 typedef std::vector<gui::drop_target_ptr> target_store;
 
-void create_drop_targets(const SDL_Rect& loc, gui::drop_group_manager_ptr group, target_store& targets, int& id_counter)
+static void create_drop_targets(const SDL_Rect& loc, gui::drop_group_manager_ptr group, target_store& targets, int& id_counter)
 {
 	gui::drop_target_ptr new_target(new test_drop_target(group, loc));
 	BOOST_CHECK_EQUAL(id_counter++, new_target->get_id());

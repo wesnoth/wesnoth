@@ -177,17 +177,12 @@ struct sendfile_param {
 	bool system_;
 };
 
-std::ostream& operator<<(std::ostream& s, const sendfile_param& p)
-{
-	return s << "size: " << p.size_ << "system: " << (p.system_?"true":"false");
-}
-
 sendfile_param sendfile_sizes[] = {sendfile_param(1*1024,true),
 								   sendfile_param(5*1024*1024,true),
 								   sendfile_param(1*1024,false),
 								   sendfile_param(5*1024*1024,false)};
 
-std::string create_random_sendfile(size_t size)
+static std::string create_random_sendfile(size_t size)
 {
 	char buffer[1024];
 	const int buffer_size = sizeof(buffer)/sizeof(buffer[0]);
@@ -205,7 +200,7 @@ std::string create_random_sendfile(size_t size)
 	return filename;
 }
 
-void delete_random_sendfile(const std::string file)
+static void delete_random_sendfile(const std::string file)
 {
 	delete_directory(file);
 }

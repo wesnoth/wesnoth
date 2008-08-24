@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_SUITE( config_cache )
 
 test_config_cache test_config_cache::cache_;
 
-preproc_map settup_test_preproc_map()
+static preproc_map settup_test_preproc_map()
 {
 	preproc_map defines_map;
 
@@ -128,7 +128,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
 }
 
-bool match_german(const language_def& def)
+static bool match_german(const language_def& def)
 {
 	return def.localename == "de_DE";
 }
