@@ -37,8 +37,7 @@ class tdialog
 public:
 	tdialog() : 
 		retval_(0),
-		fields_(),
-		restore_(true)
+		fields_()
 	{}
 
 	virtual ~tdialog();
@@ -46,11 +45,7 @@ public:
 	/** Shows the window */
 	void show(CVideo& video);
 
-	/***** ***** ***** setters / getters for members ***** ****** *****/
-
 	int get_retval() const { return retval_; }
-
-	void set_restore(const bool restore) { restore_ = restore; }
 
 protected:
 
@@ -110,15 +105,6 @@ private:
 	 * needed the creator should store a copy of the pointer.
 	 */
 	std::vector<tfield_*> fields_;
-
-	/** 
-	 * Restore the screen after showing?
-	 *
-	 * Most windows should restore the display after showing so this value
-	 * defaults to true. Toplevel windows (like the titlescreen don't want this
-	 * behaviour so they can change it in pre_show().
-	 */
-	bool restore_;
 
 	/**
 	 * Builds the window.

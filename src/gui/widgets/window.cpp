@@ -22,7 +22,6 @@
 #include "cursor.hpp"
 #include "font.hpp"
 #include "log.hpp"
-#include "titlescreen.hpp"
 #include "tstring.hpp"
 #include "video.hpp"
 
@@ -161,42 +160,6 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 		return OK;
 	} else if(id == "cancel") {
 		return CANCEL;
-	
-	/**
-	 * The ones for the title screen.
-	 *
-	 * This is a kind of hack, but the values are hardcoded in the titlescreen
-	 * and don't want to change them at the moment. It would be a good idea to
-	 * add some namespaces to avoid names clashing.
-	 */
-	} else if(id == "tutorial") {
-		return static_cast<tretval>(gui::TUTORIAL);
-#ifdef USE_EDITOR2		
-	} else if(id == "editor") {
-		return static_cast<tretval>(gui::START_MAP_EDITOR);
-#endif		
-	} else if(id == "credits") {
-		return static_cast<tretval>(gui::SHOW_ABOUT);
-	} else if(id == "quit") {
-		return static_cast<tretval>(gui::QUIT_GAME);
-
-	/**
-	 * The hacks which are here so the old engine can handle the event. The new
-	 * engine can't handle all dialogs yet, so it needs to fall back to the old
-	 * engine to make certain things happen.
-	 */
-	} else if(id == "campaign") { 
-		return static_cast<tretval>(gui::NEW_CAMPAIGN);
-	} else if(id == "multiplayer") { 
-		return static_cast<tretval>(gui::MULTIPLAYER);
-	} else if(id == "load") { 
-		return static_cast<tretval>(gui::LOAD_GAME);
-	} else if(id == "addons") { 
-		return static_cast<tretval>(gui::GET_ADDONS);
-	} else if(id == "preferences") { 
-		return static_cast<tretval>(gui::EDIT_PREFERENCES);
-
-	// default if nothing matched
 	} else {
 		return NONE;
 	}

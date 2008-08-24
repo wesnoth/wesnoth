@@ -34,7 +34,6 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
-#include "gui/dialogs/title_screen.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -2159,20 +2158,11 @@ static int play_game(int argc, char** argv)
 
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
-		if(gui2::new_widgets) {
-			cursor::set(cursor::NORMAL); // does a window need a cursor manager as well???
-			gui2::ttitle_screen dlg;
-			dlg.show(game.disp().video());
-
-			res = static_cast<gui::TITLE_RESULT>(dlg.get_retval());
-
-		} else {
-			while(res == gui::NOTHING) {
-				res = gui::show_title(game.disp(),tips_of_day);
-				if (res == gui::REDRAW_BACKGROUND) {
-					gui::set_background_dirty();
-					res = gui::NOTHING;
-				}
+		while(res == gui::NOTHING) {
+			res = gui::show_title(game.disp(),tips_of_day);
+			if (res == gui::REDRAW_BACKGROUND) {
+				gui::set_background_dirty();
+				res = gui::NOTHING;
 			}
 		}
 
