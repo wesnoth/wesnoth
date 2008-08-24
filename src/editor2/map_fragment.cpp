@@ -21,10 +21,14 @@
 namespace editor2 {
 
 map_fragment::map_fragment()
+	: items_()
+	, area_()
 {
 }
 
 map_fragment::map_fragment(const gamemap& map, const std::set<gamemap::location>& area)
+	: items_()
+	, area_()
 {
 	add_tiles(map, area);
 }
