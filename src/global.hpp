@@ -15,71 +15,17 @@
 #ifndef DISABLE_4786_HPP_INCLUDED
 #define DISABLE_4786_HPP_INCLUDED
 
-#if 0
-
-//for windows compilers
-#ifdef __MSVCRT__
-#ifndef __GNUC__
-	#undef snprintf
-	#define snprintf _snprintf
-#endif
-#endif
-
 #ifdef _MSC_VER
 
 #undef snprintf
 #define snprintf _snprintf
 
-//disable the warning to let us know about 'this' being used in
-//initializer list, since it's a common thing to want to do
-//for callbacks, and there is no other way to easily workaround the warning
-#pragma warning(disable:4355)
+// Disable warnig about source encoding not in current code page.
+#pragma warning(disable: 4819)
 
-//disable the warnings for long template names
-#pragma warning(disable:4503)
-#pragma warning(disable:4786)
+// Disable warning about deprecated functions.
+#pragma warning(disable: 4996)
 
-//the following code causes the incredibly irritating warning 4786 to really
-//be muted in Visual C++ 6. No-one seems to know *why* it works (possibly not even Microsoft)
-//but it does. So don't ask, and just leave it there.
+#endif 
 
-class warning4786WorkAround {
-public:
-warning4786WorkAround() {}
-};
-
-static warning4786WorkAround VariableThatHacksWarning4786IntoBeingMutedForSomeUnknownReason;
-
-//put the mathematical functions where they belong: in the std namespace
-//it is necessary for VC6 at least
-#include <cmath>
-namespace std {
-  using ::floor;
-  using ::sqrt;
-  using ::ceil;
-  using ::fmod;
-  using ::pow;
-}
-
-//put the FILE where it belongs: in the std namespace
-#include <cstdio>
-namespace std {
-  using ::FILE;
-  using ::fclose;
-}
-
-//put the Locale functions where they belong: in the std namespace
-#include <clocale>
-namespace std {
- using ::setlocale;
-}
-
-//put the string functions where they belong: in the std namespace
-#include <cstring>
-namespace std {
-  using ::strrchr;
-}
-
-#endif
-#endif
 #endif
