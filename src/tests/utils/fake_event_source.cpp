@@ -86,7 +86,9 @@ namespace test_utils {
 	}
 
 
-	fake_event_source::fake_event_source() : frame_count_(0)
+	fake_event_source::fake_event_source() 
+		: frame_count_(0)
+		, queue_()
 	{
 	}
 
