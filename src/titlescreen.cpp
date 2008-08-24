@@ -423,7 +423,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		max_width = std::max<size_t>(max_width,buttons.back().width());
 
 		n_menubuttons = b;
-		if(b == QUIT_GAME) break;	// Menu-frame ends at the quit-button
+		if(b + TUTORIAL == QUIT_GAME) break;	// Menu-frame ends at the quit-button
 	}
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding, menu_ybase-padding, max_width+padding*2,
@@ -442,18 +442,18 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	for(b = 0; b != nbuttons; ++b) {
 		buttons[b].set_width(max_width);
 		buttons[b].set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
-		if(b == QUIT_GAME) break;
+		if(b + TUTORIAL == QUIT_GAME) break;
 	}
 
-	b = TIP_PREVIOUS;
+	b = TIP_PREVIOUS - TUTORIAL;
 	gui::button previous_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
 	previous_tip_button.set_help_string( sgettext(button_labels[b] ));
 
-	b = TIP_NEXT;
+	b = TIP_NEXT - TUTORIAL;
 	gui::button next_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
 	next_tip_button.set_help_string( sgettext(button_labels[b] ));
 
-	b = SHOW_HELP;
+	b = SHOW_HELP - TUTORIAL;
 	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
 	help_tip_button.set_help_string( sgettext(button_labels[b] ));
 
