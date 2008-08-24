@@ -36,6 +36,7 @@ namespace test {
 
 	struct save_dialog_fixture {
 		save_dialog_fixture()
+			: source()
 		{
 		}
 		test_utils::fake_event_source source;
