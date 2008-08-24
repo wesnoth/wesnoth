@@ -372,6 +372,9 @@ if env["nls"] and env['PLATFORM'] != 'win32':
             "ln -sf $SOURCE.filebase $TARGET"
             )
 
+    env.Requires(map(File, binary_nodes), Dir("locales"))
+    env.Requires(map(File, binary_nodes), Dir("translations"))
+
 #
 # Unix installation productions
 #
