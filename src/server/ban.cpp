@@ -12,10 +12,14 @@
    See the COPYING file for more details.
 */
 
-#include "../log.hpp"
-#include "../config.hpp"
+#include "config.hpp"
+#include "log.hpp"
+#include "filesystem.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/binary_or_text.hpp"
 
 #include "ban.hpp"
+
 #include <sstream>
 
 namespace wesnothd {
@@ -61,7 +65,7 @@ namespace wesnothd {
 
 	std::string banned::get_human_end_time() const
 	{
-		if (end_time_)
+		if (end_time_ == 0)
 		{
 			return "permanent";
 		}
@@ -77,8 +81,14 @@ namespace wesnothd {
 		return end_time_ > b.get_end_time();
 	}
 	
-	void ban_manager::read(const config& cfg)
+	void ban_manager::read()
 	{
+		if (filename_.empty() || !file_exists(filename_))
+			return;
+		LOG_SERVER << "Reading bans from " <<  filename_ << "\n";
+		config cfg;
+		scoped_istream ban_file = istream_file(filename_);
+		read_gz(cfg, *ban_file);	
 		const config::child_list& bans = cfg.get_children("ban");
 		for (config::child_list::const_iterator itor = bans.begin();
 				itor != bans.end(); ++itor)
@@ -93,14 +103,21 @@ namespace wesnothd {
 		}
 	}
 
-	void ban_manager::write(config& cfg) const
+	void ban_manager::write() const
 	{
+		if (filename_.empty() || !dirty_)
+			return;
+		LOG_SERVER << "Writing bans to " <<  filename_ << "\n";
+		config cfg;
 		for (ban_map::const_iterator itor = bans_.begin();
 				itor != bans_.end(); ++itor)
 		{
 			config& child = cfg.add_child("ban");
 			itor->second->write(child);
 		}
+		scoped_ostream ban_file = ostream_file(filename_);
+		config_writer writer(*ban_file, true, "");
+		writer.write(cfg);
 	}
 
 	time_t ban_manager::parse_time(std::string time_in) const
@@ -186,11 +203,13 @@ namespace wesnothd {
 							multipler = 1;
 							break;
 						default:
-							LOG_SERVER << "Wrong time multipler code given: '" << *i << "'. Assuming this is begin of comment.\n";
+							DBG_SERVER << "Wrong time multipler code given: '" << *i << "'. Assuming this is begin of comment.\n";
 							ret = number = multipler = 0;
 							break;
 					}
 					ret += number * multipler;
+					if (multipler == 0)
+						break;
 				}
 			}
 			--i;
@@ -204,6 +223,7 @@ namespace wesnothd {
 
 	void ban_manager::ban(const std::string& ip, const time_t& end_time, const std::string& reason)
 	{
+		dirty_ = true;
 		ban_map::iterator ban;
 		if ((ban = bans_.find(ip)) != bans_.end())
 		{
@@ -219,6 +239,7 @@ namespace wesnothd {
 
 	void ban_manager::unban(std::ostringstream& os, const std::string& ip)
 	{
+		dirty_ = true;
 		ban_map::iterator ban = bans_.find(ip);
 		if (ban == bans_.end())
 		{
@@ -240,7 +261,7 @@ namespace wesnothd {
 			if (ban->get_end_time() > time_now)
 			{
 				// No bans going to expire
-				LOG_SERVER << "ban " << ban->get_ip() << " not removed. time: " << time_now << " end_time " << ban->get_end_time() << "\n";
+				DBG_SERVER << "ban " << ban->get_ip() << " not removed. time: " << time_now << " end_time " << ban->get_end_time() << "\n";
 				break;
 			}
 
@@ -251,6 +272,9 @@ namespace wesnothd {
 				continue;
 			}
 
+			// No need to make dirty because
+			// these bans will be handled correctly in next load.
+
 			// This ban is going to expire so delete it.
 			LOG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time() << "\n";
 
@@ -258,6 +282,8 @@ namespace wesnothd {
 			time_queue_.pop();
 
 		}
+		// Save bans if there is any new ones
+		write();
 	}
 
 	void ban_manager::list_bans(std::ostringstream& out) const
@@ -312,7 +338,7 @@ namespace wesnothd {
 		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\nban 127.0.0.2 medium flooded lobby again\n";
 	}
 
-	void ban_manager::set_default_ban_times(const config& cfg)
+	void ban_manager::load_config(const config& cfg)
 	{
 		ban_times_.clear();
 		const config::child_list& times = cfg.get_children("ban_time");
@@ -323,13 +349,14 @@ namespace wesnothd {
 						parse_time((**itor)["time"])-time(NULL)));
 		}
 		init_ban_help();
+		filename_ = cfg["ban_save_file"];
 	}
 
 	ban_manager::~ban_manager()
 	{
 	}
 	
-	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_()
+	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_(), filename_()
 	{
 		init_ban_help();
 	}	

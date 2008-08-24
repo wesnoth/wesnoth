@@ -392,6 +392,7 @@ server::server(int port, input_stream& input, const std::string& config_file,
 	last_uh_clean_(last_ping_)
 {
 	load_config();
+	ban_manager_.read();
 #ifndef _MSC_VER
 	signal(SIGHUP, reload_config);
 #endif
@@ -543,7 +544,7 @@ void server::load_config() {
 			proxy_versions_[*j] = **p;
 		}
 	}
-	ban_manager_.set_default_ban_times(cfg_);
+	ban_manager_.load_config(cfg_);
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const {

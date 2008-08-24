@@ -79,6 +79,8 @@ namespace wesnothd {
 		ban_time_queue time_queue_;
 		default_ban_times ban_times_;
 		std::string ban_help_;
+		std::string filename_;
+		bool dirty_;
 
 		bool is_number(const char& c) const
 		{ return c >= '0' && c <= '9'; }
@@ -90,8 +92,8 @@ namespace wesnothd {
 		ban_manager();
 		~ban_manager();
 		
-		void read(const config&);
-		void write(config&) const;
+		void read();
+		void write() const;
 
 		time_t parse_time(std::string time_in) const;
 
@@ -107,7 +109,7 @@ namespace wesnothd {
 		const std::string& get_ban_help() const
 		{ return ban_help_; }	
 
-		void set_default_ban_times(const config&);
+		void load_config(const config&);
 
 	};
 }
