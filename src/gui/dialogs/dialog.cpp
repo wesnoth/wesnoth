@@ -45,7 +45,7 @@ void tdialog::show(CVideo& video)
 
 	pre_show(video, window);
 
-	retval_ = window.show(true);
+	retval_ = window.show(restore_);
 
 	if(retval_ ==  twindow::OK) {
 		finalize_fields(window);
