@@ -26,18 +26,19 @@ namespace {
 
 namespace editor2 {
 
-size_specs::size_specs() {
-	terrain_size = default_terrain_size;
-	terrain_padding = 2;
-	terrain_space = terrain_size + terrain_padding;
-	terrain_width = default_palette_width;
-	brush_x = 0;
-	brush_y = 0;
-	brush_padding = 1;
-	palette_x = 0;
-	palette_y = 0;
-	palette_w = 10;
-	palette_h = 20;
+size_specs::size_specs() 
+	: terrain_size(default_terrain_size)
+	, terrain_padding(2)
+	, terrain_space(terrain_size + terrain_padding)
+	, terrain_width(default_palette_width)
+	, palette_x(0)
+	, palette_y(0)
+	, palette_h(20)
+	, palette_w(10)
+	, brush_x(0)
+	, brush_y(0)
+	, brush_padding(1)
+{
 }
 
 void adjust_sizes(const display &disp, size_specs &sizes) {
