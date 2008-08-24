@@ -2264,6 +2264,13 @@ int main(int argc, char** argv)
 		} else {
 			std::cerr << "Wesnoth doesn't have the name wesnoth, so can't locate the server.\n";
 		}
+
+		std::string exe_dir = get_exe_dir();
+		if(!exe_dir.empty() && file_exists(exe_dir + "/data/_main.cfg")) {
+			std::cerr << "Found a data directory at " + exe_dir + ", setting path to it.\n";
+			game_config::path = exe_dir;
+		}
+
 		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";

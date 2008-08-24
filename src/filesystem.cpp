@@ -31,6 +31,7 @@
 #else /* !_WIN32 */
 #include <unistd.h>
 #include <dirent.h>
+#include <libgen.h>
 #endif /* !_WIN32 */
 
 #ifdef __BEOS__
@@ -403,6 +404,20 @@ std::string get_cwd()
 	} else {
 		return "";
 	}
+}
+
+std::string get_exe_dir()
+{
+#ifndef _WIN32
+	char buf[1024];
+	size_t path_size = readlink("/proc/self/exe", buf, 1024);
+	if(path_size == -1)
+		return std::string();
+	buf[path_size] = 0;
+	return std::string(dirname(buf));
+#else
+	return std::string();
+#endif
 }
 
 bool create_directory_if_missing(const std::string& dirname)

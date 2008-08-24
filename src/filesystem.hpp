@@ -79,6 +79,7 @@ std::string get_upload_dir();
 const std::string& get_user_data_dir();
 
 std::string get_cwd();
+std::string get_exe_dir();
 
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname);
