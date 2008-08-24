@@ -27,6 +27,7 @@
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
 
+#include "ban.hpp"
 #include "game.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"
@@ -236,6 +237,8 @@ private:
 	//! server socket/fifo
 	input_stream& input_;
 
+	wesnothd::ban_manager ban_manager_;
+
 	const std::string config_file_;
 	config cfg_;
 	//! Read the server config from file 'config_file_'.
@@ -312,6 +315,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	last_stats_(last_ping_)
 {
 	load_config();
+	ban_manager_.read();
 	signal(SIGHUP, reload_config);
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
@@ -416,6 +420,7 @@ void server::load_config() {
 			proxy_versions_[*j] = **p;
 		}
 	}
+	ban_manager_.load_config(cfg_);
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const {
@@ -431,16 +436,7 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 }
 
 bool server::is_ip_banned(const std::string& ip) const {
-	for (std::map<std::string,std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		std::stringstream ss;
-		ss << "Comparing ban '" << i->first << "' vs '..." << ip << "'\t";
-		if (utils::wildcard_string_match(ip, i->first)) {
-			DBG_SERVER << ss.str() << "banned.\n";
-			return true;
-		}
-		DBG_SERVER << ss.str() << "not banned.\n";
-	}
-	return false;
+	return ban_manager_.is_ip_banned(ip);
 }
 
 void server::dump_stats(const time_t& now) {
@@ -480,6 +476,7 @@ void server::run() {
 			}
 
 			time_t now = time(NULL);
+			ban_manager_.check_ban_times(now);
 			if ((loop%100) == 0 && last_ping_ + 10 <= now) {
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) dump_stats(now);
@@ -982,26 +979,38 @@ std::string server::process_command(const std::string& query) {
 		}
 	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban") {
 		if (parameters == "") {
-			if (bans_.empty()) return "No bans set.";
-			out << "BAN LIST\n";
-			for (std::map<std::string,std::string>::const_iterator i = bans_.begin();
-				i != bans_.end(); ++i)
-			{
-				out << "IP: '" << i->first << "' reason: '" << i->second << "'\n";
-			}
+			ban_manager_.list_bans(out);
 		} else {
-			bool banned = false;
+			bool banned_ = false;
 			const bool kick = (command == "kban" || command == "kickban");
-			const std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
-			const std::string target(parameters.begin(), i);
-			std::string reason = (i == parameters.end() ? "" : std::string(i + 1, parameters.end()));
+			const std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+			if (first_space == parameters.end())
+			{
+				return ban_manager_.get_ban_help();
+			}
+			std::string::iterator second_space = std::find(first_space+1, parameters.end(), ' ');
+			const std::string target(parameters.begin(), first_space);
+			const std::string time(first_space+1,second_space);
+			time_t parsed_time = ban_manager_.parse_time(time);
+			if (parsed_time == 0)
+			{
+				second_space = first_space;
+			}
+
+			if (second_space == parameters.end())
+			{
+				--second_space;
+			}
+			std::string reason(second_space + 1, parameters.end());
 			utils::strip(reason);
 			// if we find a '.' consider it an ip mask 
 			//! @todo  FIXME: should also check for only numbers
 			if (std::count(target.begin(), target.end(), '.') >= 1) {
-				banned = true;
-				out << "Set ban on '" << target << "' with reason: '" << reason << "'.\n";
-				bans_[target] = reason;
+				banned_ = true;
+				out << "Set ban on '" << target << "' with end time '" <<  parsed_time << "'  with reason: '" << reason << "'.\n";
+
+				ban_manager_.ban(target, parsed_time, reason);
+	
 				if (kick) {
 					for (player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
@@ -1017,11 +1026,11 @@ std::string server::process_command(const std::string& query) {
 					pl != players_.end(); ++pl)
 				{
 					if (utils::wildcard_string_match(pl->second.name(), target)) {
-						banned = true;
+						banned_ = true;
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
-							bans_[ip] = reason;
-							out << "Set ban on '" << ip << "' with reason: '"
+							ban_manager_.ban(ip,parsed_time, reason);
+							out << "Set ban on '" << ip << "' with end time '" << parsed_time << "' with reason: '"
 								<< reason << "'.\n";
 						}
 						if (kick) {
@@ -1030,7 +1039,7 @@ std::string server::process_command(const std::string& query) {
 						}
 					}
 				}
-				if (!banned) {
+				if (!banned_) {
 					out << "Nickmask '" << target << "' did not match, no bans set.";
 				}
 			}
@@ -1039,12 +1048,7 @@ std::string server::process_command(const std::string& query) {
 		if (parameters == "") {
 			return "You must enter an ipmask to unban.";
 		}
-		const int n = bans_.erase(parameters);
-		if (n == 0) {
-			out << "There is no ban on '" << parameters << "'.";
-		} else {
-			out << "Ban on '" << parameters << "' removed.";
-		}
+		ban_manager_.unban(out, parameters);
 	} else if (command == "kick") {
 		if (parameters == "") {
 			return "You must enter a mask to kick.";

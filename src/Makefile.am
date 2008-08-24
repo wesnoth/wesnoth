@@ -148,6 +148,7 @@ wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 wesnothd_SOURCES = \
 	server/game.cpp \
+	server/ban.cpp \
 	server/input_stream.cpp \
 	server/metrics.cpp \
 	server/player.cpp \
