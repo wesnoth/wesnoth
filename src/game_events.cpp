@@ -799,21 +799,20 @@ namespace {
 		std::string current = cfg["current"];
 		assert(state_of_game != NULL);
 		assert(status_ptr != NULL);
-		if(add != "") {
+		if(!add.empty()) {
 			status_ptr->modify_turns(add);
-		} else {
+		} else if(!value.empty()) {
 			status_ptr->add_turns(-status_ptr->number_of_turns());
-			//!@todo FIXME: why 50 is a good default for this?
-			status_ptr->add_turns(lexical_cast_default<int>(value,50));
+			status_ptr->add_turns(lexical_cast_default<int>(value,-1));
 		}
 		// change current turn only after applying mods
 		if(!current.empty()) {
-			const int new_turn_number = lexical_cast_default<int>(current,1);
-			const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 			const unsigned int current_turn_number = status_ptr->turn();
+			const int new_turn_number = lexical_cast_default<int>(current, current_turn_number);
+			const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 			if(new_turn_number < current_turn_number || new_turn_number > status_ptr->number_of_turns()) {
 				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
-			} else if(new_turn_number_u != status_ptr->turn()) {
+			} else if(new_turn_number_u != current_turn_number) {
 				status_ptr->set_turn(new_turn_number_u);
 				(screen)->new_turn();
 			}
