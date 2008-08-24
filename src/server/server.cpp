@@ -358,6 +358,8 @@ server::server(int port, input_stream& input, const std::string& config_file,
 	net_manager_(min_threads,max_threads), 
 	server_(port),
 	ban_manager_(),
+	user_handler_(NULL),
+	seeds_(),
 	players_(),
 	ghost_players_(),
 	games_(),
@@ -412,8 +414,6 @@ server::server(int port, input_stream& input, const std::string& config_file,
 			#ifndef HAVE_MYSQLPP
 			user_handler_ = NULL;
 			#endif
-		} else {
-			user_handler_ = NULL;
 		}
 
 		// Initiate the mailer class with the [mail] tag
