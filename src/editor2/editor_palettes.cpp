@@ -53,11 +53,21 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 const gamemap &map, const config& cfg,
 								 t_translation::t_terrain& fore,
 								 t_translation::t_terrain& back)
-	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0),
-	  checked_group_btn_(0), map_(map),
-	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button"),
-	  selected_fg_terrain_(fore), selected_bg_terrain_(back)
+	: gui::widget(gui.video())
+	, size_specs_(sizes)
+	, gui_(gui)
+	, tstart_(0)
+	, checked_group_btn_(0)
+	, map_(map)
+	, top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button")
+	, bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
+	, button_x_()
+	, top_button_y_()
+	, bot_button_y_()
+	, nterrains_()
+	, terrain_start_()
+	, selected_fg_terrain_(fore)
+	, selected_bg_terrain_(back)
 {
 
 	// Get the available terrains temporary in terrains_
