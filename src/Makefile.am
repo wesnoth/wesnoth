@@ -78,6 +78,7 @@ wesnoth_source = \
 	gui/dialogs/mp_connect.cpp \
 	gui/dialogs/mp_create_game.cpp \
 	gui/dialogs/mp_method_selection.cpp \
+	gui/dialogs/title_screen.cpp \
 	gui/widgets/button.cpp \
 	gui/widgets/canvas.cpp \
 	gui/widgets/control.cpp \

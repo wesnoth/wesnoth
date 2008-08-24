@@ -24,8 +24,10 @@ namespace gui {
  * Values for the menu-items of the main menu. 
  *
  * The code assumes TUTORIAL is the first item.
+ * The values are also used as the button retour values, where 0 means no
+ * automatic value so we need to avoid 0.
  */
-enum TITLE_RESULT { TUTORIAL = 0,		/**< Start special campaign 'tutorial' */
+enum TITLE_RESULT { TUTORIAL = 1,		/**< Start special campaign 'tutorial' */
 					NEW_CAMPAIGN,		/**< Let user select a campaign to play */
 					MULTIPLAYER,		/**< Play single scenario against humans or AI */
 					LOAD_GAME, GET_ADDONS, 
