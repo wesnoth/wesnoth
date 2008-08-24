@@ -40,13 +40,23 @@ namespace jwsmtp {
 mailer::mailer(const char* TOaddress, const char* FROMaddress,
                const char* Subject, const std::vector<char>& Message,
                const char* Nameserver, unsigned short Port,
-               bool MXLookup): type(LOGIN),
-                               subject(Subject),
-                               server(getserveraddress(TOaddress)),
-                               nameserver(Nameserver),
-                               port(htons(Port)), // make the 'port' network byte order.
-                               lookupMXRecord(MXLookup),
-                               auth(false) {
+               bool MXLookup): 
+	type(LOGIN), 
+	recipients(),
+	fromAddress(),
+	subject(Subject), 
+	message(),
+	messageHTML(),
+	attachments(),
+	server(getserveraddress(TOaddress)), 
+	nameserver(Nameserver),
+	port(htons(Port)), // make the 'port' network byte order.
+	lookupMXRecord(MXLookup),
+	auth(false),
+	user(),
+	pass(),
+	returnstring()
+{
    // Parse the email addresses into an Address structure.
    setsender(FROMaddress);
    addrecipient(TOaddress);
@@ -58,13 +68,23 @@ mailer::mailer(const char* TOaddress, const char* FROMaddress,
 mailer::mailer(const char* TOaddress, const char* FROMaddress,
                const char* Subject, const char* Message,
                const char* Nameserver, unsigned short Port,
-               bool MXLookup): type(LOGIN),
-                               subject(Subject),
-                               server(getserveraddress(TOaddress)),
-                               nameserver(Nameserver),
-                               port(htons(Port)), // make the 'port' network byte order.
-                               lookupMXRecord(MXLookup),
-                               auth(false) {
+               bool MXLookup): 
+	type(LOGIN), 
+	recipients(),
+	fromAddress(),
+	subject(Subject), 
+	message(),
+	messageHTML(),
+	attachments(),
+	server(getserveraddress(TOaddress)), 
+	nameserver(Nameserver), 
+	port(htons(Port)), // make the 'port' network byte order.
+	lookupMXRecord(MXLookup), 
+	auth(false),
+	user(),
+	pass(),
+	returnstring()
+{
    // Parse the email addresses into an Address structure.
    setsender(FROMaddress);
    addrecipient(TOaddress);
@@ -74,10 +94,22 @@ mailer::mailer(const char* TOaddress, const char* FROMaddress,
 }
 
 mailer::mailer(bool MXLookup, unsigned short Port):
-      type(LOGIN),
-      port(htons(Port)),
-      lookupMXRecord(MXLookup),
-      auth(false) {
+	type(LOGIN),
+	recipients(),
+	fromAddress(),
+	subject(),
+	message(),
+	messageHTML(),
+	attachments(),
+	server(),
+	nameserver(),
+	port(htons(Port)),
+	lookupMXRecord(MXLookup),
+	auth(false),
+	user(),
+	pass(),
+	returnstring()
+{
    initNetworking(); // in win32 init networking, else just does nothin'
 }
 
