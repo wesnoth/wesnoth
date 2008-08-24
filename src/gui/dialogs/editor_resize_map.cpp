@@ -45,6 +45,8 @@ teditor_resize_map::teditor_resize_map() :
 	height_(NULL),
 	width_(NULL),
 	copy_edge_terrain_(register_bool("copy_edge_terrain", false)),
+	old_width_(),
+	old_height_(),
 	expand_direction_(EXPAND_BOTTOM_RIGHT)
 {
 }
