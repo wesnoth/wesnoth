@@ -34,6 +34,7 @@ namespace gui2 {
 extern bool new_widgets;
 
 enum twindow_type {
+	TITLE_SCREEN,            /**< The main title screen of the game. */
 	ADDON_CONNECT,           //<! The addon server connection dialog.
 	LANGUAGE_SELECTION,      //<! The language selection dialog.
 	MP_CONNECT,              //<! The mp server connection dialog.

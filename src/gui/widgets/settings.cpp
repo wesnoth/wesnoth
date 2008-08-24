@@ -89,6 +89,7 @@ static void fill_window_types()
 	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
 	window_type_list[MP_SERVER_LIST] = "mp_server_list";
 	window_type_list[MP_CREATE_GAME] = "mp_create_game";
+	window_type_list[TITLE_SCREEN] = "title_screen";
 #ifdef USE_EDITOR2	
 	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
 	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
