@@ -1217,7 +1217,6 @@ void game_controller::start_wesnothd()
 
 bool game_controller::play_multiplayer()
 {
-
 	int res;
 
 	state_ = game_state();
@@ -1226,7 +1225,11 @@ bool game_controller::play_multiplayer()
 
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
-		if(gui2::new_widgets) {
+
+		int start_server;
+		do {
+			start_server = 0;
+
 			gui2::tmp_method_selection dlg;
 
 			dlg.show(disp().video());
@@ -1238,53 +1241,22 @@ bool game_controller::play_multiplayer()
 
 			}
 
-		} else {
+			if (res == 2 && preferences::mp_server_warning_disabled() < 2)
+			{
+				gui::dialog d(disp(), _("Do you really want to start the server?"), 
+					_("The server will run in a background process until all users have disconnected.")
+					, gui::OK_CANCEL);
+				bool checked = preferences::mp_server_warning_disabled() != 1;
 
-			std::vector<std::string> host_or_join;
-			std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
-			char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
+				d.add_option(_("Don't show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
+				start_server = d.show();
+				if (start_server == 0)
+					preferences::set_mp_server_warning_disabled(d.option_checked()?2:1);
 
-			host_or_join.push_back(pre + "server.png"
-					+ sep1 + _("Join Official Server")
-					+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
-			host_or_join.push_back(pre + "serverother.png"
-					+ sep1 + _("Connect to Server")
-					+ sep2 + _("Join a different server"));
-			host_or_join.push_back(pre + "hostgame.png"
-					+ sep1 + _("Host Networked Game")
-					+ sep2 + _("Host a game using dedicated server 'wesnothd'"));
-			host_or_join.push_back(pre + "hotseat.png"
-					+ sep1 + _("Local Game")
-					+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
-
-			std::string login = preferences::login();
-
-			int start_server;
-			do {
-				start_server = 0;
-				gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
-				d.set_menu(host_or_join);
-				d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
-				res = d.show();
-
-				login = d.textbox_text();
-				if (res == 2 && preferences::mp_server_warning_disabled() < 2)
-				{
-					gui::dialog d(disp(), _("Do you really want to start the server?"), _("The server will run in a background process until all users have disconnected."), gui::OK_CANCEL);
-					bool checked = preferences::mp_server_warning_disabled() != 1;
-
-					d.add_option(_("Don't show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
-					start_server = d.show();
-					if (start_server == 0)
-						preferences::set_mp_server_warning_disabled(d.option_checked()?2:1);
-
-				}
-			} while (start_server);
-			if (res < 0)
-				return false;
-
-
-			preferences::set_login(login);
+			}
+		} while (start_server);
+		if (res < 0) {
+			return false;
 		}
 
 	}else{
