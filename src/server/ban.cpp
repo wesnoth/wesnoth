@@ -103,11 +103,12 @@ namespace wesnothd {
 		}
 	}
 
-	void ban_manager::write() const
+	void ban_manager::write()
 	{
-		if (filename_.empty() || !dirty_)
+		if (filename_.empty() || !dirty_)
 			return;
 		LOG_SERVER << "Writing bans to " <<  filename_ << "\n";
+		dirty_ = false;
 		config cfg;
 		for (ban_map::const_iterator itor = bans_.begin();
 				itor != bans_.end(); ++itor)
@@ -356,7 +357,7 @@ namespace wesnothd {
 	{
 	}
 	
-	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_(), filename_()
+	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_(), filename_(), dirty_(false)
 	{
 		init_ban_help();
 	}	

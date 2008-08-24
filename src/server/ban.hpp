@@ -93,7 +93,7 @@ namespace wesnothd {
 		~ban_manager();
 		
 		void read();
-		void write() const;
+		void write();
 
 		time_t parse_time(std::string time_in) const;
 

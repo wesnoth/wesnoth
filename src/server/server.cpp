@@ -1271,7 +1271,7 @@ std::string server::process_command(const std::string& query) {
 			//! @todo  FIXME: should also check for only numbers
 			if (std::count(target.begin(), target.end(), '.') >= 1) {
 				banned_ = true;
-				out << "Set ban on '" << target << "' with time '" << time << "'  with reason: '" << reason << "'.\n";
+				out << "Set ban on '" << target << "' with end time '" <<  parsed_time << "'  with reason: '" << reason << "'.\n";
 
 				ban_manager_.ban(target, parsed_time, reason);
 	
@@ -1294,7 +1294,7 @@ std::string server::process_command(const std::string& query) {
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
 							ban_manager_.ban(ip,parsed_time, reason);
-							out << "Set ban on '" << ip << "' with time '" << time << "' with reason: '"
+							out << "Set ban on '" << ip << "' with end time '" << parsed_time << "' with reason: '"
 								<< reason << "'.\n";
 						}
 						if (kick) {
