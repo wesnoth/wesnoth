@@ -31,9 +31,17 @@ namespace editor2 {
 const int map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map)
-: map_(map), filename_(), actions_since_save_(0),
-needs_reload_(false), needs_terrain_rebuild_(false), 
-needs_labels_reset_(false), everything_changed_(false)
+	: map_(map)
+	, filename_()
+	, undo_stack_()
+	, redo_stack_()
+	, actions_since_save_(0)
+	, starting_position_label_locs_()
+	, needs_reload_(false)
+	, needs_terrain_rebuild_(false)
+	, needs_labels_reset_(false)
+	, changed_locations_()
+	, everything_changed_(false)
 {
 }
 
