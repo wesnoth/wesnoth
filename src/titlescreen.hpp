@@ -20,7 +20,11 @@ class game_display;
 
 namespace gui {
 
-/** Values for the menu-items of the main menu. */
+/** 
+ * Values for the menu-items of the main menu. 
+ *
+ * The code assumes TUTORIAL is the first item.
+ */
 enum TITLE_RESULT { TUTORIAL = 0,		/**< Start special campaign 'tutorial' */
 					NEW_CAMPAIGN,		/**< Let user select a campaign to play */
 					MULTIPLAYER,		/**< Play single scenario against humans or AI */

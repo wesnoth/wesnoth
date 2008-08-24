@@ -487,7 +487,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		events::pump();
 		for(size_t b = 0; b != buttons.size(); ++b) {
 			if(buttons[b].pressed()) {
-				return TITLE_RESULT(b);
+				return static_cast<TITLE_RESULT>(b + TUTORIAL);
 			}
 		}
 
