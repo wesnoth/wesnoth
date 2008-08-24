@@ -58,14 +58,11 @@ documentation and/or software.
 
 // MD5 simple initialization method
 
-MD5::MD5(){
-
+MD5::MD5()
+	: finalized(0)
+{
   init();
-
 }
-
-
-
 
 // MD5 block update operation. Continues an MD5 message-digest
 // operation, processing another message block, and updating the
@@ -218,15 +215,18 @@ void MD5::finalize (){
 
 }
 
-MD5::MD5(unsigned char *string){
+MD5::MD5(unsigned char *string)
+	: finalized(0)
+{
   init();
   update(string, strlen((char *)(string)));
   finalize();
 }
 
 
-MD5::MD5(FILE *file){
-
+MD5::MD5(FILE *file)
+	: finalized(0)
+{
   init();  // must be called be all constructors
   update(file);
   finalize ();
@@ -235,8 +235,9 @@ MD5::MD5(FILE *file){
 
 
 
-MD5::MD5(std::istream& stream){
-
+MD5::MD5(std::istream& stream)
+	: finalized(0)
+{	
   init();  // must called by all constructors
   update (stream);
   finalize();
@@ -244,8 +245,9 @@ MD5::MD5(std::istream& stream){
 
 
 
-MD5::MD5(std::ifstream& stream){
-
+MD5::MD5(std::ifstream& stream)
+	: finalized(0)
+{
   init();  // must called by all constructors
   update (stream);
   finalize();
