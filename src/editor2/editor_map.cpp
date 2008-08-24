@@ -28,14 +28,16 @@
 namespace editor2 {
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
-: gamemap(terrain_cfg, data)
+	: gamemap(terrain_cfg, data)
+	, selection_()
 {
 	sanity_check();
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
-: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
-	t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
+	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
+		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
+	, selection_()
 {
 	sanity_check();
 }
