@@ -144,21 +144,21 @@ Installation directories:
   --exec-prefix=EPREFIX   N/A
 
 Fine tuning of the installation directories:
-  --bindir=DIR           bindir=DIR [EPREFIX/bin]
+  --bindir=DIR           bindir=DIR [bin]
   --sbindir=DIR          N/A
   --libexecdir=DIR       N/A
   --sysconfdir=DIR       N/A
   --sharedstatedir=DIR   N/A
   --localstatedir=DIR    N/A
-  --libdir=DIR           libdir=DIR [PREFIX/lib]
+  --libdir=DIR           libdir=DIR [lib]
   --includedir=DIR       N/A
   --oldincludedir=DIR    N/A
-  --datarootdir=DIR      N/A
-  --datadir=DIR          datadir=DIR [PREFIX/share]
+  --datarootdir=DIR      datarootdir=DIR [share]
+  --datadir=DIR          datadir=DIR [$datarootdir/$datadirname]
   --infodir=DIR          N/A
-  --localedir=DIR        localedir=DIR [PREFIX/share/locale]
-  --mandir=DIR           mandir=DIR [PREFIX/share/man]
-  --docdir=DIR           docdir=DIR [PREFIX/share/doc/wesnoth]
+  --localedir=DIR        localedir=DIR [$datarootdir/locale]
+  --mandir=DIR           mandir=DIR [$datarootdir/man]
+  --docdir=DIR           docdir=DIR [$datarootdir/doc/wesnoth]
   --htmldir=DIR          N/A
   --dvidir=DIR           N/A
   --pdfdir=DIR           N/A
@@ -215,7 +215,7 @@ Optional Packages:
   --without-libiconv-prefix       N/A
   --with-libintl-prefix[=DIR]     N/A
   --without-libintl-prefix        N/A
-  --with-datadir-name[=DIR]       datadir=DIR
+  --with-datadir-name[=DIR]       datadirname=DIR
   --with-localedir[=DIR]          localedir=DIR
   --with-fifodir                  fifodir=DIR
   --with-server-uid               server_uid=ID
@@ -227,7 +227,7 @@ Optional Packages:
   --with-x                        N/A
   --with-freetype-prefix=PFX      N/A
   --with-freetype-exec-prefix=PFX N/A
-  --with-boost=DIR                boostdir=DIR boostlibdir=DIR boost_suffix=suffix
+  --with-boost=DIR                boostdir=DIR boostlibdir=DIR boost_suffix=suffix(e.g. -gcc41-mt-1_35)
 
 
 4. CMake build
