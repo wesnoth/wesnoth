@@ -761,9 +761,8 @@ void attack::fire_event(const std::string& n)
 	LOG_NG << "firing " << n << " event\n";
 	//prepare the event data for weapon filtering
 	config ev_data;
-	bool is_defender_event = (n[0] == 'd');
-	config& a_weapon_cfg = ev_data.add_child(is_defender_event? "second" : "first");
-	config& d_weapon_cfg = ev_data.add_child(is_defender_event? "first" : "second");
+	config& a_weapon_cfg = ev_data.add_child("first");
+	config& d_weapon_cfg = ev_data.add_child("second");
 	if(a_stats_->weapon != NULL && units_.end() != a_) {
 		a_weapon_cfg = a_stats_->weapon->get_cfg();
 	}
