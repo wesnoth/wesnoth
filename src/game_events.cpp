@@ -3387,6 +3387,7 @@ namespace game_events {
 		if(itor - it_begin == match_it - match_begin && match_it == match_end) {
 			return true;
 		}
+		return false;
 	}
 
 	bool matches_special_filter(const config* cfg, const vconfig filter)
