@@ -372,8 +372,9 @@ if env["nls"] and env['PLATFORM'] != 'win32':
             "ln -sf $SOURCE.filebase $TARGET"
             )
 
-    env.Requires(map(File, binary_nodes), Dir("locales"))
-    env.Requires(map(File, binary_nodes), Dir("translations"))
+# TODO: replace with env.Requires when compatibility with scons 0.96.93 isn't required anymore
+    env.Depends(map(File, binary_nodes), Dir("locales"))
+    env.Depends(map(File, binary_nodes), Dir("translations"))
 
 #
 # Unix installation productions
