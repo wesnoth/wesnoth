@@ -105,7 +105,7 @@ namespace wesnothd {
 
 	void ban_manager::write()
 	{
-		if (filename_.empty() || !dirty_)
+		if (filename_.empty() || !dirty_)
 			return;
 		LOG_SERVER << "Writing bans to " <<  filename_ << "\n";
 		dirty_ = false;
