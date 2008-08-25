@@ -6508,9 +6508,9 @@ msgstr ""
 
 #. [test_key]
 #: data/test/test/_main.cfg:13
-#, fuzzy
+#: src/tests/test_config_cache.cpp:119 src/tests/test_config_cache.cpp:141
 msgid "testing translation reset."
-msgstr "Estländische Übersetzung"
+msgstr "Estländische Übersetzung."
 
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -9381,16 +9381,6 @@ msgstr "Gegnerisches Dorf"
 #: src/terrain.cpp:162
 msgid "Owned village"
 msgstr "Eigenes Dorf"
-
-#: src/tests/test_config_cache.cpp:119 src/tests/test_config_cache.cpp:141
-#, fuzzy
-msgid "testing translation reset"
-msgstr "Estländische Übersetzung"
-
-#: src/tests/test_config_cache.cpp:155
-#, fuzzy
-msgid "test translation reset"
-msgstr "Portugiesische Übersetzung"
 
 #: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."

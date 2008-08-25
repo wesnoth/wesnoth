@@ -14,6 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth"
 
+#include <iostream>
 #include <boost/test/auto_unit_test.hpp>
 
 #include "config_cache.hpp"
@@ -121,11 +122,13 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 
 	cache.add_define("TEST_DEFINE");
 
-	child = &test_config.add_child("test_key");
+	child = &test_config.add_child("test_key2");
 	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 	
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+
+	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config().child("test_key2"))["define"].str());
 }
 
 static bool match_german(const language_def& def)
@@ -143,8 +146,10 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 	child = &test_config.add_child("test_key");
 	(*child)["define"] = "test";
 
-	child = &test_config.add_child("test_key");
+	child = &test_config.add_child("test_key2");
 	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
+
+	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config().child("test_key2"))["define"].str());
 
 	// Change language
 	const language_def& original_lang = get_language();
@@ -157,11 +162,12 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 	::set_language(*German);
 	cache.reload_translations();
 
-	BOOST_CHECK_MESSAGE( test_config != cache.get_config(), "Translation update failed to update translations!"  );
+	BOOST_CHECK_MESSAGE((*test_config.child("test_key2"))["define"].str() != (*cache.get_config().child("test_key2"))["define"].str(), "Translation reset failed to make test string different!");
 	
 	(*child)["define"].reset_translation();
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config().child("test_key2"))["define"].str());
 	set_language(original_lang);
 }
 
