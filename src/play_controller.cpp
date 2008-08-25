@@ -373,13 +373,17 @@ void play_controller::fire_prestart(bool execute){
 	if (execute){
 		update_locker lock_display(gui_->video());
 		game_events::fire("prestart");
+		// prestart event may modify start turn with WML, reflect any changes.
+		start_turn_ = status_.turn();
 	}
 }
 
 void play_controller::fire_start(bool execute){
 	if(execute) {
 		game_events::fire("start");
-		gamestate_.set_variable("turn_number", "1");
+		// start event may modify start turn with WML, reflect any changes.
+		start_turn_ = status_.turn();
+		gamestate_.set_variable("turn_number", str_cast<size_t>(start_turn_));
 		first_turn_ = true;
 	} else {
 		first_turn_ = false;
@@ -423,7 +427,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	*/
 	bool real_side_change = true;
 	if(first_turn_) {
-		game_events::fire("turn 1");
+		game_events::fire("turn " + str_cast<size_t>(start_turn_));
 		game_events::fire("new turn");
 		game_events::fire("side turn");
 		first_turn_ = false;
@@ -794,7 +798,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 					} else {
 						newsaves.push_back(name);
 					}
-					if (turn == 1) {
+					if (turn == start_turn_) {
 						newitems.push_back(_("Back to start"));
 					} else {
 						newitems.push_back(_("Back to turn ") + lexical_cast<std::string>(turn));

@@ -814,6 +814,7 @@ namespace {
 				ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 			} else if(new_turn_number_u != current_turn_number) {
 				status_ptr->set_turn(new_turn_number_u);
+				state_of_game->set_variable("turn_number", str_cast<size_t>(new_turn_number_u));
 				(screen)->new_turn();
 			}
 		}

@@ -33,8 +33,15 @@ Version 1.5.3+svn:
    * Changed the behavior of [modify_turns] value= to default to -1
      (no turn limit) instead of 50 if an invalid string is passed instead
      of a number.
+   * Fixed [modify_turns] causing weird behavior when used in prestart
+     or start events to change current turn.
    * Fixed [modify_turns] giving the unwanted side-effect of changing
-     turn limit when only current= modifier was used.=
+     turn limit when only current= modifier was used.
+   * Fixed [modify_turns] not updating $turn_number when current= was
+     used.
+   * Fixed a few inconsistencies related to scenarios which are not at
+     turn 1 at the beginning (namely start autosave detection and initial
+     triggering of a matching "turn *" event).
    * Removed the compiler work arounds for MSVC6.
    * Added some more compiler workarounds for MSVC9.
 
