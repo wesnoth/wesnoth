@@ -674,19 +674,27 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 unit_type::~unit_type()
 {
     DBG_UT << "unit_type destructor\n";
-	delete gender_types_[unit_race::MALE];
-	delete gender_types_[unit_race::FEMALE];
+    if (gender_types_[unit_race::MALE] != NULL)
+        delete gender_types_[unit_race::MALE];
+    if (gender_types_[unit_race::FEMALE] != NULL)
+        delete gender_types_[unit_race::FEMALE];
 
 	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
 		delete i->second;
 	}
 }
 
+void unit_type::set_config(const config& cfg)
+{
+    cfg_ = cfg;
+	id_ = cfg_["id"];
+}
+
 void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
 {
-    if (build_status_ == NOT_BUILT)
-        build_help_index(cfg, races);
+    if ( (build_status_ == NOT_BUILT) || (build_status_ == CREATED) )
+        build_help_index(cfg, mv_types, races, traits);
 
 	movementType_ = unit_movement_type(cfg);
 	alpha_ = ftofxp(1.0);
@@ -709,37 +717,6 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 			variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],
 												 new unit_type(**var,mv_types,races,traits)));
 		}
-	}
-
-	gender_types_[0] = NULL;
-	gender_types_[1] = NULL;
-
-	const config* const male_cfg = cfg.child("male");
-	if(male_cfg != NULL) {
-		config m_cfg;
-		if(!utils::string_bool((*male_cfg)["inherit"], true)) {
-			m_cfg = *male_cfg;
-		} else {
-			m_cfg = cfg;
-			m_cfg.merge_with(*male_cfg);
-		}
-		m_cfg.clear_children("male");
-		m_cfg.clear_children("female");
-		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
-	}
-
-	const config* const female_cfg = cfg.child("female");
-	if(female_cfg != NULL) {
-		config f_cfg;
-		if(!utils::string_bool((*female_cfg)["inherit"], true)) {
-			f_cfg = *female_cfg;
-		} else {
-			f_cfg = cfg;
-			f_cfg.merge_with(*female_cfg);
-		}
-		f_cfg.clear_children("male");
-		f_cfg.clear_children("female");
-		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
 	}
 
 	const std::string& align = cfg["alignment"];
@@ -803,10 +780,6 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
 	}
 
-	const std::string& advance_to_val = cfg["advanceto"];
-	if(advance_to_val != "null" && advance_to_val != "")
-		advances_to_ = utils::split(advance_to_val);
-
 	experience_needed_=lexical_cast_default<int>(cfg["experience"],500);
 
 	flag_rgb_ = cfg["flag_rgb"];
@@ -823,11 +796,14 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	build_status_ = FULL;
 }
 
-void unit_type::build_help_index(const config& cfg, const race_map& races)
+void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_types,
+                     const race_map& races, const std::vector<config*>& traits)
 {
-	cfg_ = cfg;
+    if (build_status_ == NOT_BUILT){
+        set_config(cfg);
+        build_created(cfg, mv_types, races, traits);
+    }
 
-	id_ = cfg_["id"];
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
 	hitpoints_ = lexical_cast_default<int>(cfg["hitpoints"], 1);
@@ -885,6 +861,48 @@ void unit_type::build_help_index(const config& cfg, const race_map& races)
 		}
 		future_advancefroms.erase(id_);
 	}
+}
+
+void unit_type::build_created(const config& cfg, const movement_type_map& mv_types,
+                     const race_map& races, const std::vector<config*>& traits)
+{
+	gender_types_[0] = NULL;
+	gender_types_[1] = NULL;
+
+	const config* const male_cfg = cfg.child("male");
+	if(male_cfg != NULL) {
+		config m_cfg;
+		if(!utils::string_bool((*male_cfg)["inherit"], true)) {
+			m_cfg = *male_cfg;
+		} else {
+			m_cfg = cfg;
+			m_cfg.merge_with(*male_cfg);
+		}
+		m_cfg.clear_children("male");
+		m_cfg.clear_children("female");
+		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
+	}
+
+	const config* const female_cfg = cfg.child("female");
+	if(female_cfg != NULL) {
+		config f_cfg;
+		if(!utils::string_bool((*female_cfg)["inherit"], true)) {
+			f_cfg = *female_cfg;
+		} else {
+			f_cfg = cfg;
+			f_cfg.merge_with(*female_cfg);
+		}
+		f_cfg.clear_children("male");
+		f_cfg.clear_children("female");
+		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
+	}
+
+	const std::string& advance_to_val = cfg["advanceto"];
+	if(advance_to_val != "null" && advance_to_val != "")
+		advances_to_ = utils::split(advance_to_val);
+    DBG_UT << "unit_type '" << id_ << "' advances to : " << advance_to_val << "\n";
+
+    build_status_ = CREATED;
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -1157,7 +1175,6 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
         std::pair<unit_type_map::iterator,bool> insertion =
             insert(std::pair<const std::string,unit_type>(id,unit_type()));
         unit_type_map::iterator itor = types_.find(id);
-        itor->second.set_config(**i.first);
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
         lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
@@ -1191,7 +1208,7 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 		std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
 	}
 
-	build_all(unit_type::NOT_BUILT);
+	build_all(unit_type::CREATED);
 }
 
 unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find(const std::string& key, unit_type::BUILD_STATUS status) const
@@ -1206,6 +1223,10 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
         lg::info(lg::config) << "key not found, returning dummy_unit\n";
+        /*
+        for (unit_type_map::const_iterator ut = types_.begin(); ut != types_.end(); ut++)
+            DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.id() << "'\n";
+        */
         itor = dummy_unit_map_.find("dummy_unit");
         assert(itor != dummy_unit_map_.end());
         return itor;
@@ -1241,6 +1262,9 @@ void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS st
     for (unit_type_map::const_iterator u = types_.begin(); u != types_.end(); u++){
         build_unit_type(u->first, status);
     }
+    for (unit_type_map::iterator u = types_.begin(); u != types_.end(); u++){
+        add_advancement(u->second);
+    }
 }
 
 unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
@@ -1255,26 +1279,28 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
     const config& unit_cfg = find_config(key);
 
     switch (status){
-        case unit_type::NOT_BUILT:
-            add_advancement(unit_cfg, ut->second);
+        case unit_type::CREATED:
+            ut->second.set_config(unit_cfg);
+            ut->second.build_created(unit_cfg, movement_types_, races_, unit_traits_);
             break;
         case unit_type::HELP_INDEX:
             //build the stuff that is needed to feed the help index
-            if (ut->second.build_status() == unit_type::NOT_BUILT)
-                ut->second.build_help_index(unit_cfg, races_);
+            if ( (ut->second.build_status() == unit_type::NOT_BUILT) || (ut->second.build_status() == unit_type::CREATED) )
+                ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_traits_);
 
             add_advancefrom(unit_cfg);
             break;
         case unit_type::WITHOUT_ANIMATIONS:
         case unit_type::FULL:
             if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
+                (ut->second.build_status() == unit_type::CREATED) ||
                 (ut->second.build_status() == unit_type::HELP_INDEX) )
             {
                 ut->second.build_full(unit_cfg, movement_types_, races_, unit_traits_);
 
-                if (ut->second.build_status() == unit_type::NOT_BUILT)
+                if ( (ut->second.build_status() == unit_type::NOT_BUILT) ||
+                    (ut->second.build_status() == unit_type::CREATED) )
                     add_advancefrom(unit_cfg);
-                add_advancement(unit_cfg, ut->second);
             }
             break;
         default:
@@ -1305,9 +1331,11 @@ void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_c
     }
 }
 
-void unit_type_data::unit_type_map_wrapper::add_advancement(const config& cfg, unit_type& to_unit) const
+void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) const
 {
     config::const_child_itors af;
+    const config& cfg = to_unit.get_cfg();
+
     for(af = cfg.child_range("advancefrom"); af.first != af.second; ++af.first)
     {
         const std::string &from = (**af.first)["unit"];

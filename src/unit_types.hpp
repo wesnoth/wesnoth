@@ -170,7 +170,11 @@ public:
 	void build_full(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
 	/** Partially load data into an empty unit_type */
-    void build_help_index(const config& cfg, const race_map& races);
+    void build_help_index(const config& cfg, const movement_type_map& movement_types,
+	          const race_map& races, const std::vector<config*>& traits);
+	/** Load the most needed data into an empty unit_type */
+    void unit_type::build_created(const config& cfg, const movement_type_map& mv_types,
+                         const race_map& races, const std::vector<config*>& traits);
 
 	/**
 	 * Adds an additional advancement path to a unit type.
@@ -251,13 +255,16 @@ public:
 	const std::string& race() const;
 	bool hide_help() const { return hide_help_; }
 
-    enum BUILD_STATUS {NOT_BUILT, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
+    enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
 
     BUILD_STATUS build_status() const { return build_status_; }
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
-	void set_config(config& cfg) { cfg_ = cfg; }
+    const config& get_cfg() { return cfg_; }
+
+	void set_config(const config& cfg);
+
 private:
 	void operator=(const unit_type& o);
 
@@ -366,7 +373,7 @@ public:
 
             unit_type& build_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const;
             void add_advancefrom(const config& unit_cfg) const;
-            void add_advancement(const config& cfg, unit_type& to_unit) const;
+            void add_advancement(unit_type& to_unit) const;
 
             mutable unit_type_map types_;
             mutable unit_type_map dummy_unit_map_;
