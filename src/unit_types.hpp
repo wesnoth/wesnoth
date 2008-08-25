@@ -173,7 +173,7 @@ public:
     void build_help_index(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
 	/** Load the most needed data into an empty unit_type */
-    void unit_type::build_created(const config& cfg, const movement_type_map& mv_types,
+    void build_created(const config& cfg, const movement_type_map& mv_types,
                          const race_map& races, const std::vector<config*>& traits);
 
 	/**
