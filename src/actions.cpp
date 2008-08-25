@@ -817,16 +817,13 @@ namespace {
 			//the currently selected attack fits
 			return;
 		}
-		if(weap_id.empty() && (weap_index < 0 || weap_index > attacks.size())) {
-			//don't attempt to lookup an empty id
-			weap_index = -1;
-			return;
-		}
-		//lookup the weapon by id
-		for(int i=0; i<attacks.size(); ++i) {
-			if(attacks[i].id() == weap_id) {
-				weap_index = i;
-				return;
+		if(!weap_id.empty()) {
+			//lookup the weapon by id
+			for(int i=0; i<attacks.size(); ++i) {
+				if(attacks[i].id() == weap_id) {
+					weap_index = i;
+					return;
+				}
 			}
 		}
 		//lookup has failed
