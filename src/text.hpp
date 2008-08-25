@@ -91,6 +91,8 @@ public:
 
 	ttext& set_maximum_height(const int height);
 
+	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
+
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -123,6 +125,9 @@ private:
 
 	/** The maximum height of the text, -1 means no maximum . */
 	int maximum_height_;
+
+	/** The way too long text is shown depends on this mode. */
+	PangoEllipsizeMode ellipse_mode_;
 
 	/** 
 	 * The text has two dirty states:

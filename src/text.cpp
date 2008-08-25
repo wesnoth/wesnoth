@@ -45,12 +45,15 @@ ttext::ttext() :
 	foreground_colour_(0xFFFFFFFF), // solid white
 	maximum_width_(-1),
 	maximum_height_(-1),
+	ellipse_mode_(PANGO_ELLIPSIZE_END),
 	calculation_dirty_(true),
 	surface_dirty_(true),
 	surface_buffer_(NULL)
 {	
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_, 72.0);
+
+	pango_layout_set_ellipsize(layout_, ellipse_mode_);
 }
 
 ttext::~ttext()
@@ -179,6 +182,18 @@ ttext& ttext::set_maximum_height(const int height)
 	return *this;
 }
 
+ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
+{
+	if(ellipse_mode != ellipse_mode_) {
+		pango_layout_set_ellipsize(layout_, ellipse_mode);
+		ellipse_mode_ = ellipse_mode_;
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
+
 namespace {
 
 /** Small helper class to make sure the font object is destroyed properly. */
@@ -224,13 +239,6 @@ void ttext::recalculate(const bool force)
 
 		tfont font(get_fonts(), font_size_, font_style_);
 		pango_layout_set_font_description(layout_, font.get());
-
-		// NOTE for now the setting of the ellipse is undocumented and
-		// implicitly done, this will change later. We'll need it for the
-		// textboxes.
-		pango_layout_set_ellipsize(layout_, 
-			maximum_width_ == -1 && maximum_height_ == -1 
-			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END);
 
 		pango_layout_get_pixel_extents(layout_, NULL, &rect_);
 	}
