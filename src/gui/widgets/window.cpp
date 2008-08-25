@@ -22,6 +22,7 @@
 #include "cursor.hpp"
 #include "font.hpp"
 #include "log.hpp"
+#include "preferences.hpp"
 #include "titlescreen.hpp"
 #include "tstring.hpp"
 #include "video.hpp"
@@ -255,6 +256,16 @@ void twindow::draw()
 
 	// Drawing not required?
 	if(!resized_ && !need_layout_ && !is_dirty()) {
+		// If we have colour cursor we're responsible for the updates so do
+		// them otherwise the mouse move won't be visible until something else
+		// dirties the screen.
+		if(preferences::use_colour_cursors()) {
+			surface frame_buffer = get_video_surface();
+
+			cursor::draw(frame_buffer);
+			video_.flip();
+			cursor::undraw(frame_buffer);
+		}
 		return;
 	}
 
