@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	cache.add_define("TEST_DEFINE");
 
 	child = &test_config.add_child("test_key");
-	(*child)["define"] = _("testing translation reset.");
+	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 	
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
@@ -144,9 +144,10 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 	(*child)["define"] = "test";
 
 	child = &test_config.add_child("test_key");
-	(*child)["define"] = _("testing translation reset.");
+	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 
 	// Change language
+	const language_def& original_lang = get_language();
 	const std::vector<language_def>& languages = get_languages();
 	BOOST_CHECK_MESSAGE(languages.size()>0, "No languages found!");
 	std::vector<language_def>::const_iterator German = std::find_if(languages.begin(),
@@ -156,11 +157,12 @@ BOOST_AUTO_TEST_CASE( test_translation_reload )
 	::set_language(*German);
 	cache.reload_translations();
 
-	BOOST_CHECK_MESSAGE( test_config != cache.get_config(), "Translation update failed update translations!" );
+	BOOST_CHECK_MESSAGE( test_config != cache.get_config(), "Translation update failed to update translations!"  );
 	
-	(*child)["define"] = _("testing translation reset.");
+	(*child)["define"].reset_translation();
 
 	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+	set_language(original_lang);
 }
 
 /* vim: set ts=4 sw=4: */

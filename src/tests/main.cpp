@@ -43,10 +43,18 @@ static void exception_translator_network(const network::error& e)
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "network::error: " + e.message);
 }
 
+
+
 static void exception_translator_game(const game::error& e)
 {
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "game::error: " + e.message);
 }
+
+static bool match_english(const language_def& def)
+{
+	return def.localename == "C";
+}
+
 
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
@@ -56,6 +64,12 @@ struct wesnoth_global_fixture {
 
 		load_language_list();
 		::init_textdomains(game_config::config_cache::instance().get_config());
+		const std::vector<language_def>& languages = get_languages();
+		std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
+									languages.end(),
+									match_english); // Using German because the most active translation
+		::set_language(*English);
+
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
