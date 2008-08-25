@@ -386,7 +386,7 @@ if env["nls"] and env['PLATFORM'] != 'win32':
 
 env = env.Clone()
 for d in installdirs:
-    env[d] = os.path.join("/", env["destdir"], env[d].lstrip("/"))
+    env[d] = os.path.join(env["destdir"], env[d].lstrip("/"))
 bindir = env['bindir']
 pythonlib = env['python_site_packages_dir']
 datadir = env['datadir']
