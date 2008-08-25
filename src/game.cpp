@@ -2160,7 +2160,12 @@ static int play_game(int argc, char** argv)
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
 		if(gui2::new_widgets) {
-			cursor::set(cursor::NORMAL); // does a window need a cursor manager as well???
+			const preferences::display_manager disp_manager(&game.disp());
+			const hotkey::basic_handler key_handler(&game.disp());
+
+			const font::floating_label_context label_manager;
+
+			cursor::set(cursor::NORMAL);
 			gui2::ttitle_screen dlg;
 			dlg.show(game.disp().video());
 
