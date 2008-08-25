@@ -417,7 +417,7 @@ static std::vector<gamemap::location> multiple_locs(const vconfig cfg)
 
 namespace {
 
-	std::multimap<std::string,game_events::event_handler> events_map;
+	std::vector<game_events::event_handler> event_handlers;
 
 	static void toggle_shroud(const bool remove, const vconfig& cfg)
 	{
@@ -3166,15 +3166,7 @@ namespace {
 	static void commit_new_handlers() {
 		// Commit any spawned events-within-events
 		while(new_handlers.size() > 0) {
-			game_events::event_handler& new_handler = new_handlers.back();
-			std::vector<std::string> names = new_handler.names();
-			std::vector<std::string>::iterator iter,end;
-			for (iter = names.begin(),end = names.end();
-					iter != end; ++iter) {
-				events_map.insert(std::pair<std::string,game_events::event_handler>(*iter,new_handler));
-				LOG_NG << "spawning new handler for event " << *iter << "\n";
-			}
-			//new_handler.cfg_->debug(lg::info(lg::engine));
+			event_handlers.push_back(new_handlers.back());
 			new_handlers.pop_back();
 		}
 	}
@@ -3190,13 +3182,7 @@ namespace {
 				if(!mref->command.empty()) {
 					mref->command["name"] = mref->name;
 					mref->command["first_time_only"] = "no";
-					game_events::event_handler new_handler(&mref->command);
-					std::vector<std::string> names = new_handler.names();
-					std::vector<std::string>::iterator iter,end;
-					for (iter = names.begin(),end = names.end();
-							iter != end; ++iter) {
-						events_map.insert(std::pair<std::string,game_events::event_handler>(*iter, new_handler));
-					}
+					event_handlers.push_back(game_events::event_handler(&mref->command));
 				}
 			} else if(mref->command.empty()) {
 				mref->command["name"] = mref->name;
@@ -3213,100 +3199,100 @@ namespace {
 
 } // end anonymous namespace (4)
 
-	static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
-	{
-		if(handler.disabled())
-			return false;
+static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
+{
+	if(handler.disabled())
+		return false;
 
-		unit_map::iterator unit1 = units->find(ev.loc1);
-		unit_map::iterator unit2 = units->find(ev.loc2);
-		bool filtered_unit1 = false, filtered_unit2 = false;
-		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
-		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
+	unit_map::iterator unit1 = units->find(ev.loc1);
+	unit_map::iterator unit2 = units->find(ev.loc2);
+	bool filtered_unit1 = false, filtered_unit2 = false;
+	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
+	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
 
-		const vconfig::child_list first_filters = handler.first_arg_filters();
-		vconfig::child_list::const_iterator ffi;
-		for(ffi = first_filters.begin();
-				ffi != first_filters.end(); ++ffi) {
+	const vconfig::child_list first_filters = handler.first_arg_filters();
+	vconfig::child_list::const_iterator ffi;
+	for(ffi = first_filters.begin();
+			ffi != first_filters.end(); ++ffi) {
 
-			if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
-				return false;
-			}
-			if(!ffi->empty()) {
-				filtered_unit1 = true;
-			}
-		}
-		bool special_matches = false;
-		const vconfig::child_list first_special_filters = handler.first_special_filters();
-		special_matches = first_special_filters.size() ? false : true;
-		for(ffi = first_special_filters.begin();
-				ffi != first_special_filters.end(); ++ffi) {
-
-			if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
-				special_matches = true;
-			}
-			if(!ffi->empty()) {
-				filtered_unit1 = true;
-			}
-		}
-		if(!special_matches) {
+		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
 			return false;
 		}
+		if(!ffi->empty()) {
+			filtered_unit1 = true;
+		}
+	}
+	bool special_matches = false;
+	const vconfig::child_list first_special_filters = handler.first_special_filters();
+	special_matches = first_special_filters.size() ? false : true;
+	for(ffi = first_special_filters.begin();
+			ffi != first_special_filters.end(); ++ffi) {
 
-		const vconfig::child_list second_filters = handler.second_arg_filters();
-		for(vconfig::child_list::const_iterator sfi = second_filters.begin();
-				sfi != second_filters.end(); ++sfi) {
-			if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
-				return false;
-			}
-			if(!sfi->empty()) {
-				filtered_unit2 = true;
-			}
+		if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
+			special_matches = true;
 		}
-		const vconfig::child_list second_special_filters = handler.second_special_filters();
-		special_matches = second_special_filters.size() ? false : true;
-		for(ffi = second_special_filters.begin();
-				ffi != second_special_filters.end(); ++ffi) {
-
-			if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
-				special_matches = true;
-			}
-			if(!ffi->empty()) {
-				filtered_unit2 = true;
-			}
+		if(!ffi->empty()) {
+			filtered_unit1 = true;
 		}
-		if(!special_matches) {
-			return false;
-		}
-		if(ev.loc1.requires_unit() && filtered_unit1
-				&& (unit1 == units->end() || !ev.loc1.matches_unit(unit1->second))) {
-			// Wrong or missing entity at src location
-			return false;
-		}
-		if(ev.loc2.requires_unit()  && filtered_unit2
-				&& (unit2 == units->end() || !ev.loc2.matches_unit(unit2->second))) {
-			// Wrong or missing entity at dst location
-			return false;
-		}
-
-		// The event hasn't been filtered out, so execute the handler
-		const bool res = handler.handle_event(ev);
-		if(ev.name == "select") {
-			state_of_game->last_selected = ev.loc1;
-		}
-
-		if(handler.rebuild_screen()) {
-			handler.rebuild_screen() = false;
-			(screen)->recalculate_minimap();
-			(screen)->invalidate_all();
-			(screen)->rebuild_all();
-		}
-
-
-		return res;
+	}
+	if(!special_matches) {
+		return false;
 	}
 
-	namespace game_events {
+	const vconfig::child_list second_filters = handler.second_arg_filters();
+	for(vconfig::child_list::const_iterator sfi = second_filters.begin();
+			sfi != second_filters.end(); ++sfi) {
+		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
+			return false;
+		}
+		if(!sfi->empty()) {
+			filtered_unit2 = true;
+		}
+	}
+	const vconfig::child_list second_special_filters = handler.second_special_filters();
+	special_matches = second_special_filters.size() ? false : true;
+	for(ffi = second_special_filters.begin();
+			ffi != second_special_filters.end(); ++ffi) {
+
+		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
+			special_matches = true;
+		}
+		if(!ffi->empty()) {
+			filtered_unit2 = true;
+		}
+	}
+	if(!special_matches) {
+		return false;
+	}
+	if(ev.loc1.requires_unit() && filtered_unit1
+			&& (unit1 == units->end() || !ev.loc1.matches_unit(unit1->second))) {
+		// Wrong or missing entity at src location
+		return false;
+	}
+	if(ev.loc2.requires_unit()  && filtered_unit2
+			&& (unit2 == units->end() || !ev.loc2.matches_unit(unit2->second))) {
+		// Wrong or missing entity at dst location
+		return false;
+	}
+
+	// The event hasn't been filtered out, so execute the handler
+	const bool res = handler.handle_event(ev);
+	if(ev.name == "select") {
+		state_of_game->last_selected = ev.loc1;
+	}
+
+	if(handler.rebuild_screen()) {
+		handler.rebuild_screen() = false;
+		(screen)->recalculate_minimap();
+		(screen)->invalidate_all();
+		(screen)->rebuild_all();
+	}
+
+
+	return res;
+}
+
+namespace game_events {
 	bool event_handler::handle_event(const game_events::queued_event& event_info, const vconfig conf)
 	{
 		if (first_time_only_)
@@ -3344,251 +3330,275 @@ namespace {
 		DBG_NG << "done handling command...\n";
 	}
 
-		bool game_events::event_handler::is_menu_item() const {
-				assert(state_of_game != NULL);
-				std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
-				while(itor != state_of_game->wml_menu_items.end()) {
-					if(&cfg_.get_config() == &itor->second->command) {
-						return true;
-					}
-					++itor;
+	bool game_events::event_handler::is_menu_item() const {
+		assert(state_of_game != NULL);
+		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
+		while(itor != state_of_game->wml_menu_items.end()) {
+			if(&cfg_.get_config() == &itor->second->command) {
+				return true;
+			}
+			++itor;
+		}
+		return false;
+	}
+
+	bool game_events::event_handler::matches_name(const std::string& name) const {
+		const t_string& t_my_names = cfg_["name"];
+		const std::string& my_names = t_my_names;
+		std::string::const_iterator itor,
+			it_begin = my_names.begin(),
+			it_end = my_names.end(),
+			match_it = name.begin(),
+			match_begin = name.begin(),
+			match_end = name.end();
+		for(itor = it_begin; itor != it_end; ++itor) {
+			bool do_eat = false;
+			switch(*itor) {
+			case ',':
+				if(itor - it_begin == match_it - match_begin && match_it == match_end) {
+					return true;
 				}
-				return false;
+				it_begin = itor + 1;
+				match_it = match_begin;
+				continue;
+			case ' ':
+			case '_':
+				if(match_it != match_end && (*match_it == ' ' || *match_it == '_')) {
+					do_eat = true;
+				}
+				break;
+			default:
+				if(match_it != match_end && *match_it == *itor) {
+					do_eat = true;
+				}
+				break;
 			}
+			if(do_eat) {
+				++match_it;
+			} else {
+				itor = std::find(itor, it_end, ',');
+				if(itor == it_end) {
+					return false;
+				}
+				it_begin = itor + 1;
+				match_it = match_begin;
+			}
+		}
+		if(itor - it_begin == match_it - match_begin && match_it == match_end) {
+			return true;
+		}
+	}
 
+	bool matches_special_filter(const config* cfg, const vconfig filter)
+	{
+		if(!cfg) {
+			WRN_NG << "attempt to filter attack for an event with no attack data.\n";
+			// better to not execute the event (so the problem is more obvious)
+			return false;
+		}
+		const config& attack_cfg = *cfg;
+		const attack_type attack(attack_cfg);
+		bool matches = attack.matches_filter(filter.get_parsed_config());
 
-		bool matches_special_filter(const config* cfg, const vconfig filter)
+		// Handle [and], [or], and [not] with in-order precedence
+		vconfig::all_children_iterator cond_i = filter.ordered_begin();
+		vconfig::all_children_iterator cond_end = filter.ordered_end();
+		while(cond_i != cond_end)
 		{
-			if(!cfg) {
-				WRN_NG << "attempt to filter attack for an event with no attack data.\n";
-				// better to not execute the event (so the problem is more obvious)
-				return false;
-			}
-			const config& attack_cfg = *cfg;
-			const attack_type attack(attack_cfg);
-			bool matches = attack.matches_filter(filter.get_parsed_config());
+			const std::string& cond_name = cond_i.get_key();
+			const vconfig& cond_filter = cond_i.get_child();
 
-			// Handle [and], [or], and [not] with in-order precedence
-			vconfig::all_children_iterator cond_i = filter.ordered_begin();
-			vconfig::all_children_iterator cond_end = filter.ordered_end();
-			while(cond_i != cond_end)
+			// Handle [and]
+			if(cond_name == "and")
 			{
-				const std::string& cond_name = cond_i.get_key();
-				const vconfig& cond_filter = cond_i.get_child();
-
-				// Handle [and]
-				if(cond_name == "and")
-				{
-					matches = matches && matches_special_filter(cfg, cond_filter);
-				}
-				// Handle [or]
-				else if(cond_name == "or")
-				{
-					matches = matches || matches_special_filter(cfg, cond_filter);
-				}
-				// Handle [not]
-				else if(cond_name == "not")
-				{
-					matches = matches && !matches_special_filter(cfg, cond_filter);
-				}
-				++cond_i;
+				matches = matches && matches_special_filter(cfg, cond_filter);
 			}
-			return matches;
+			// Handle [or]
+			else if(cond_name == "or")
+			{
+				matches = matches || matches_special_filter(cfg, cond_filter);
+			}
+			// Handle [not]
+			else if(cond_name == "not")
+			{
+				matches = matches && !matches_special_filter(cfg, cond_filter);
+			}
+			++cond_i;
+		}
+		return matches;
+	}
+
+	bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc)
+	{
+		return u.matches_filter(filter,loc);
+	}
+
+	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
+	{
+		return itor->second.matches_filter(filter,itor->first);
+	}
+
+	static std::set<std::string> unit_wml_ids;
+
+
+	manager::manager(const config& cfg, gamemap& map_,
+			unit_map& units_,
+			std::vector<team>& teams_,
+			game_state& state_of_game_, gamestatus& status) :
+		variable_manager(&state_of_game_)
+	{
+		assert(!manager_running);
+		const config::child_list& events_list = cfg.get_children("event");
+		for(config::child_list::const_iterator i = events_list.begin();
+				i != events_list.end(); ++i) {
+			event_handlers.push_back(game_events::event_handler(*i));
+		}
+		std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
+		for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
+			unit_wml_ids.insert(*id_it);
 		}
 
-		bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc)
-		{
-			return u.matches_filter(filter,loc);
-		}
+		teams = &teams_;
+		game_map = &map_;
+		units = &units_;
+		state_of_game = &state_of_game_;
+		status_ptr = &status;
+		manager_running = true;
 
-		bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
-		{
-			return itor->second.matches_filter(filter,itor->first);
-		}
+		used_items.clear();
 
-		static config::child_list unit_wml_configs;
-		static std::set<std::string> unit_wml_ids;
-
-
-		manager::manager(const config& cfg, gamemap& map_,
-				unit_map& units_,
-				std::vector<team>& teams_,
-				game_state& state_of_game_, gamestatus& status) :
-			variable_manager(&state_of_game_)
-		{
-			assert(!manager_running);
-			const config::child_list& events_list = cfg.get_children("event");
-			for(config::child_list::const_iterator i = events_list.begin();
-					i != events_list.end(); ++i) {
-				game_events::event_handler new_handler(*i);
-				std::vector<std::string> names = new_handler.names();
-				std::vector<std::string>::iterator iter,end;
-				for (iter = names.begin(),end = names.end();
-						iter != end; ++iter) {
-					events_map.insert(std::pair<std::string,game_events::event_handler>(*iter, new_handler));
-				}
-			}
-			std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
-			for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
-				unit_wml_ids.insert(*id_it);
-			}
-
-			teams = &teams_;
-			game_map = &map_;
-			units = &units_;
-			state_of_game = &state_of_game_;
-			status_ptr = &status;
-			manager_running = true;
-
-			used_items.clear();
-
-			const std::string used = cfg["used_items"];
-			if(!used.empty()) {
-				const std::vector<std::string>& v = utils::split(used);
-				for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
-					used_items.insert(*i);
-				}
-			}
-			int wmi_count = 0;
-			std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
-			while(itor != state_of_game->wml_menu_items.end()) {
-				if(!itor->second->command.empty()) {
-					game_events::event_handler new_handler(&itor->second->command);
-					std::vector<std::string> names = new_handler.names();
-					std::vector<std::string>::iterator iter,end;
-					for (iter = names.begin(),end = names.end();
-							iter != end; ++iter) {
-						events_map.insert(std::pair<std::string,game_events::event_handler>(*iter, new_handler));
-					}
-				}
-				++itor;
-				++wmi_count;
-			}
-			if(wmi_count > 0) {
-				LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+		const std::string used = cfg["used_items"];
+		if(!used.empty()) {
+			const std::vector<std::string>& v = utils::split(used);
+			for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
+				used_items.insert(*i);
 			}
 		}
-		void manager::set_gui(game_display& gui_)
-		{
-			screen = &gui_;
-		}
-		void manager::set_soundsource(soundsource::manager& sndsources_)
-		{
-			soundsources = &sndsources_;
-		}
-
-		void write_events(config& cfg)
-		{
-			assert(manager_running);
-			for(std::multimap<std::string,game_events::event_handler>::const_iterator i = events_map.begin(); i != events_map.end(); ++i) {
-				if(!i->second.disabled() && !i->second.is_menu_item()) {
-					i->second.write(cfg.add_child("event"));
-				}
+		int wmi_count = 0;
+		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
+		while(itor != state_of_game->wml_menu_items.end()) {
+			if(!itor->second->command.empty()) {
+				event_handlers.push_back(game_events::event_handler(&itor->second->command));
 			}
-
-			std::stringstream used;
-			std::set<std::string>::const_iterator u;
-			for(u = used_items.begin(); u != used_items.end(); ++u) {
-				if(u != used_items.begin())
-					used << ",";
-
-				used << *u;
-			}
-
-			cfg["used_items"] = used.str();
-			std::stringstream ids;
-			for(u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
-				if(u != unit_wml_ids.begin())
-					ids << ",";
-
-				ids << *u;
-			}
-
-			cfg["unit_wml_ids"] = ids.str();
-
-			if(screen != NULL)
-				(screen)->write_overlays(cfg);
+			++itor;
+			++wmi_count;
 		}
-
-		manager::~manager() {
-			assert(manager_running);
-			manager_running = false;
-			events_queue.clear();
-			events_map.clear();
-			screen = NULL;
-			game_map = NULL;
-			units = NULL;
-			state_of_game = NULL;
-			status_ptr = NULL;
-			for(config::child_list::iterator d = unit_wml_configs.begin(); d != unit_wml_configs.end(); ++d) {
-				delete *d;
-			}
-			unit_wml_configs.clear();
-			unit_wml_ids.clear();
+		if(wmi_count > 0) {
+			LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
 		}
+	}
+	void manager::set_gui(game_display& gui_)
+	{
+		screen = &gui_;
+	}
+	void manager::set_soundsource(soundsource::manager& sndsources_)
+	{
+		soundsources = &sndsources_;
+	}
 
-		void raise(const std::string& event,
-				const entity_location& loc1,
-				const entity_location& loc2,
-				const config& data)
-		{
-			assert(manager_running);
-			if(!events_init())
-				return;
-
-			events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
-		}
-
-		bool fire(const std::string& event,
-				const entity_location& loc1,
-				const entity_location& loc2,
-				const config& data)
-		{
-			assert(manager_running);
-			raise(event,loc1,loc2,data);
-			return pump();
-		}
-
-		void add_events(const config::child_list& cfgs,const std::string& id)
-		{
-			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
-				unit_wml_ids.insert(id);
-				for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
-					unit_wml_configs.push_back(new config(**new_ev));
-					game_events::event_handler new_handler(&(*unit_wml_configs.back()));
-					std::vector<std::string> names = new_handler.names();
-					std::vector<std::string>::iterator iter,end;
-					for (iter = names.begin(),end = names.end();
-							iter != end; ++iter) {
-						events_map.insert(std::pair<std::string,game_events::event_handler>(*iter, new_handler));
-					}
-				}
+	void write_events(config& cfg)
+	{
+		assert(manager_running);
+		for(std::vector<game_events::event_handler>::const_iterator i = event_handlers.begin(); i != event_handlers.end(); ++i) {
+			if(!i->disabled() && !i->is_menu_item()) {
+				i->write(cfg.add_child("event"));
 			}
 		}
 
-		bool pump()
-		{
-			assert(manager_running);
-			if(!events_init())
-				return false;
+		std::stringstream used;
+		std::set<std::string>::const_iterator u;
+		for(u = used_items.begin(); u != used_items.end(); ++u) {
+			if(u != used_items.begin())
+				used << ",";
 
-			bool result = false;
+			used << *u;
+		}
 
-			while(events_queue.empty() == false) {
-				game_events::queued_event ev = events_queue.front();
-				events_queue.pop_front();	// pop now for exception safety
-				const std::string& event_name = ev.name;
-				typedef std::multimap<std::string,game_events::event_handler>::iterator itor;
+		cfg["used_items"] = used.str();
+		std::stringstream ids;
+		for(u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
+			if(u != unit_wml_ids.begin())
+				ids << ",";
 
-				// Clear the unit cache, since the best clearing time is hard to figure out
-				// due to status changes by WML. Every event will flush the cache.
-				unit::clear_status_caches();
+			ids << *u;
+		}
 
-				// Find all handlers for this event in the map
-				std::pair<itor,itor> i = events_map.equal_range(event_name);
+		cfg["unit_wml_ids"] = ids.str();
 
+		if(screen != NULL)
+			(screen)->write_overlays(cfg);
+	}
+
+	manager::~manager() {
+		assert(manager_running);
+		manager_running = false;
+		events_queue.clear();
+		event_handlers.clear();
+		screen = NULL;
+		game_map = NULL;
+		units = NULL;
+		state_of_game = NULL;
+		status_ptr = NULL;
+		unit_wml_ids.clear();
+	}
+
+	void raise(const std::string& event,
+			const entity_location& loc1,
+			const entity_location& loc2,
+			const config& data)
+	{
+		assert(manager_running);
+		if(!events_init())
+			return;
+
+		events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
+	}
+
+	bool fire(const std::string& event,
+			const entity_location& loc1,
+			const entity_location& loc2,
+			const config& data)
+	{
+		assert(manager_running);
+		raise(event,loc1,loc2,data);
+		return pump();
+	}
+
+	void add_events(const config::child_list& cfgs,const std::string& id)
+	{
+		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
+			unit_wml_ids.insert(id);
+			for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
+				// the child list memory is not persistant so use vconfig(*,*) to manage a copy
+				event_handlers.push_back(game_events::event_handler(vconfig(*new_ev, *new_ev)));
+			}
+		}
+	}
+
+	bool pump()
+	{
+		assert(manager_running);
+		if(!events_init())
+			return false;
+
+		bool result = false;
+
+		while(events_queue.empty() == false) {
+			game_events::queued_event ev = events_queue.front();
+			events_queue.pop_front();	// pop now for exception safety
+			const std::string& event_name = ev.name;
+
+			// Clear the unit cache, since the best clearing time is hard to figure out
+			// due to status changes by WML. Every event will flush the cache.
+			unit::clear_status_caches();
+
+			bool init_event_vars = true;
+
+			foreach(game_events::event_handler& handler, event_handlers) {
+				if(!handler.matches_name(event_name))
+					continue;
 				// Set the variables for the event
-				if(i.first != i.second && state_of_game != NULL) {
+				if(init_event_vars && state_of_game != NULL) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",ev.loc1.x+1);
 					state_of_game->set_variable("x1", buf);
@@ -3601,51 +3611,46 @@ namespace {
 
 					snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
 					state_of_game->set_variable("y2", buf);
+					init_event_vars = false;
 				}
 
-				while(i.first != i.second) {
-					LOG_NG << "processing event '" << event_name << "'\n";
-					game_events::event_handler& handler = i.first->second;
-					if(process_event(handler, ev))
-						result = true;
-					++i.first;
-				}
-
-				commit_wmi_commands();
-				commit_new_handlers();
-
-				// Dialogs can only be shown if the display is not locked
-				if(! (screen)->video().update_locked()) {
-					show_wml_errors();
-				}
+				LOG_NG << "processing event '" << event_name << "'\n";
+				if(process_event(handler, ev))
+					result = true;
 			}
 
-			return result;
+			commit_wmi_commands();
+			commit_new_handlers();
+
+			// Dialogs can only be shown if the display is not locked
+			if(! (screen)->video().update_locked()) {
+				show_wml_errors();
+			}
 		}
 
-		Uint32 mutations() {
-			return unit_mutations;
-		}
+		return result;
+	}
 
-		entity_location::entity_location(gamemap::location loc, const std::string& id)
-			: location(loc), id_(id)
-		{}
+	Uint32 mutations() {
+		return unit_mutations;
+	}
 
-		entity_location::entity_location(unit_map::iterator itor)
-			: location(itor->first), id_(itor->second.underlying_id())
-		{}
+	entity_location::entity_location(gamemap::location loc, const std::string& id)
+		: location(loc), id_(id)
+	{}
 
-		bool entity_location::matches_unit(const unit& u) const
-		{
-			return id_ == u.underlying_id();
-		}
+	entity_location::entity_location(unit_map::iterator itor)
+		: location(itor->first), id_(itor->second.underlying_id())
+	{}
 
-		bool entity_location::requires_unit() const
-		{
-			return !id_.empty();
-		}
+	bool entity_location::matches_unit(const unit& u) const
+	{
+		return id_ == u.underlying_id();
+	}
 
-	} // end namespace game_events (2)
+	bool entity_location::requires_unit() const
+	{
+		return !id_.empty();
+	}
 
-
-
+} // end namespace game_events (2)

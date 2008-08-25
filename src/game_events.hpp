@@ -92,7 +92,6 @@ namespace game_events
 	{
 		public:
 			event_handler(const vconfig& cfg) :
-				names_(utils::split(cfg["name"])),
 				first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
 				disabled_(false),mutated_(true),
 				skip_messages_(false),rebuild_screen_(false),
@@ -107,7 +106,7 @@ namespace game_events
 				cfg = cfg_.get_config();
 			}
 
-			const std::vector< std::string >& names() const { return names_; }
+			bool matches_name(const std::string& name) const;
 
 			bool first_time_only() const { return first_time_only_; }
 
@@ -115,11 +114,11 @@ namespace game_events
 			bool disabled() const { return disabled_; }
 
 			bool is_menu_item() const;
-			const vconfig::child_list first_arg_filters()
+			const vconfig::child_list first_arg_filters() const
 			{
 				return cfg_.get_children("filter");
 			}
-			const vconfig::child_list first_special_filters()
+			const vconfig::child_list first_special_filters() const
 			{
 				vconfig::child_list kids;
 				kids = cfg_.get_children("filter_attack");
@@ -131,11 +130,11 @@ namespace game_events
 
 			}
 
-			const vconfig::child_list second_arg_filters()
+			const vconfig::child_list second_arg_filters() const
 			{
 				return cfg_.get_children("filter_second");
 			}
-			const vconfig::child_list second_special_filters()
+			const vconfig::child_list second_special_filters() const
 			{
 				vconfig::child_list kids;
 				kids = cfg_.get_children("filter_second_attack");
@@ -156,7 +155,6 @@ namespace game_events
 		private:
 			void handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg);
 
-			std::vector< std::string > names_;
 			bool first_time_only_;
 			bool disabled_;
 			bool mutated_;

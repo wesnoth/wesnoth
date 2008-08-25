@@ -13,13 +13,17 @@ Version 1.5.3+svn:
    * Parts of the new widget libary are deemed stable enough for testing and
      have been started to replace the old code.
  * WML engine:
-   * In event attack filters ([filter_attac] and [filter_second_attack]),
+   * fix bug #11988: Events with multiple types are multiplied
+   * allow variable substitution in event names
+   * allow spaces or underscores to be used interchangeably in event names
+   * In event attack filters ([filter_attack] and [filter_second_attack]),
      weapon= attribute has been deprecated in favour of AnimationWML-like
      attack filtering, which allows to filter damage type, range and weapon
      specials. Backwards compatibility with weapon= will be removed in 1.5.5.
      * As a consequence, [fire_event] has had [primary_unit] weapon= and
        [secondary_unit] weapon= deprecated too; use [primary_attack] and
        [secondary_attack] blocks instead.
+   * fix various minor bugs with attack filtering
  * Miscellaneous and bug fixes:
    * Changed side_drop handling not to automaticaly assign AI for side if
      leader is dead (bug #12186)
@@ -98,6 +102,9 @@ Version 1.5.3:
  * Campaign server:
    * Made campaign server encode CRs in old content in first startup
  * WML engine:
+   * Fixed the filtering for x,y=recall,recall in [store_unit] and [kill] tags
+   * Fixed the bug where any changes to the primary unit in the "advance" 
+     event were totally ignored
    * Added some convenience macros for units: {TRANSFORM_UNIT}, etc.
    * Extended [modify_turns] to allow scenario designers to change the
      current-turn number dynamically with current=<number>.
