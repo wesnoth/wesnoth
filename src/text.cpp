@@ -33,8 +33,8 @@ const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
 const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
 
 ttext::ttext() :
-	font_map_(reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_new())),
-	context_(pango_cairo_font_map_create_context(font_map_)),
+	context_(pango_cairo_font_map_create_context((
+		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())))),
 	layout_(pango_layout_new(context_)),
 	rect_(),
 	surface_(),
@@ -58,9 +58,6 @@ ttext::ttext() :
 
 ttext::~ttext()
 {
-	if(font_map_) {
-		g_object_unref(font_map_);
-	}
 	if(context_) {
 		g_object_unref(context_);
 	}

@@ -96,7 +96,6 @@ public:
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
-	PangoCairoFontMap* font_map_;
 	PangoContext* context_;
 	PangoLayout* layout_;
 	PangoRectangle rect_;
