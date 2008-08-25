@@ -53,6 +53,16 @@
 #include <string>
 #include <cmath>
 
+namespace gui2 {
+	// Preferences depends on new_widgets which are defined in
+	// gui/widgets/settings.cpp. Including that in the editor would pull in
+	// more dependencies. So added ithere, it's a kind of hack but new_widgets
+	// will be removed once the library is finished (probably the editor is
+	// already gone by that time as well.
+	bool new_widgets = false;
+} // namespace gui2
+
+
 namespace {
 	static std::string wm_title_string;
 
