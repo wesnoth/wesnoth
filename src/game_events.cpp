@@ -3359,12 +3359,10 @@ namespace {
 
 		bool matches_special_filter(const config* cfg, const vconfig filter)
 		{
-			//! @todo FIXME: This filter should be deprecated and removed,
-			// instead we should just auto-store $attacker_weapon and check it in a conditional
-			//! @todo FIXME: ^ what?
-
 			if(!cfg) {
-				return false; //! @todo FIXME: shouldn't this be true!?
+				WRN_NG << "attempt to filter attack for an event with no attack data.\n";
+				// better to not execute the event (so the problem is more obvious)
+				return false;
 			}
 			const config& attack_cfg = *cfg;
 			const attack_type attack(attack_cfg);

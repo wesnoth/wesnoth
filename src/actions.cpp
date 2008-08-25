@@ -115,7 +115,7 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 
 	castle_cost_calculator calc(map);
 	// The limit computed in the third argument is more than enough for
-	// any convex castle on the map. Strictly speaking it could be 
+	// any convex castle on the map. Strictly speaking it could be
 	// reduced to sqrt(map.w()**2 + map.h()**2).
 	const paths::route& rt = a_star_search(leader, loc, map.w()+map.h(), &calc, map.w(), map.h());
 
@@ -611,8 +611,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		weapon = &u.attacks()[attack_num];
 	}
 	if(u.hitpoints() < 0) {
-		/** @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante */
-		//		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
 		// If a unit has more hp as it's maximum the engine will fail
@@ -760,63 +759,41 @@ static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 void attack::fire_event(const std::string& n)
 {
 	LOG_NG << "firing " << n << " event\n";
+	//prepare the event data for weapon filtering
+	config ev_data;
+	bool is_defender_event = (n[0] == 'd');
+	config& a_weapon_cfg = ev_data.add_child(is_defender_event? "second" : "first");
+	config& d_weapon_cfg = ev_data.add_child(is_defender_event? "first" : "second");
+	if(a_stats_->weapon != NULL && units_.end() != a_) {
+		a_weapon_cfg = a_stats_->weapon->get_cfg();
+	}
+	if(d_stats_->weapon != NULL && units_.end() != d_) {
+		d_weapon_cfg = d_stats_->weapon->get_cfg();
+	}
+	if(a_weapon_cfg["name"].empty()) {
+		a_weapon_cfg["name"] = "none";
+	}
+	if(d_weapon_cfg["name"].empty()) {
+		d_weapon_cfg["name"] = "none";
+	}
 	if(n == "attack_end") {
-		config dat;
-		config a_weapon_cfg = (a_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
-		config d_weapon_cfg = (d_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
-		if(a_weapon_cfg["name"].empty())
-			a_weapon_cfg["name"] = "none";
-		if(d_weapon_cfg["name"].empty())
-			d_weapon_cfg["name"] = "none";
-		dat.add_child("first", a_weapon_cfg);
-		dat.add_child("second", d_weapon_cfg);
-
-#if 0
-		if(d_ != units_.end()) {
-			config *tempcfg = dat.child("second");
-			t_string d_weap = "none";
-			if(d_stats_->weapon != NULL) {
-				d_weap = d_stats_->weapon->id();
-			}
-			std::pair<std::string,t_string> to_insert("weapon", d_weap);
-			tempcfg->values.insert(to_insert);
-		}
-#endif
-
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML
 		DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
 					attacker_,
-					defender_, dat));
+					defender_, ev_data));
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
 	}
 	const int defender_side = d_->second.side();
 	const int attacker_side = a_->second.side();
-	config dat;
-	config a_weapon_cfg = (a_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
-	config d_weapon_cfg = (d_stats_->weapon != NULL && units_.end() != a_) ? a_stats_->weapon->get_cfg() : config();
-	if(a_weapon_cfg["name"].empty())
-		a_weapon_cfg["name"] = "none";
-	if(d_weapon_cfg["name"].empty())
-		d_weapon_cfg["name"] = "none";
-	dat.add_child("first", a_weapon_cfg);
-	dat.add_child("second", d_weapon_cfg);
 	DELAY_END_LEVEL(delayed_exception, game_events::fire(n,
 								game_events::entity_location(attacker_,a_id_),
-								game_events::entity_location(defender_,d_id_),dat));
+								game_events::entity_location(defender_,d_id_),ev_data));
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist
 	refresh_bc();
-	/**
-	 * @todo FIXME: If the event removes this attack, we should stop attacking.
-	 * The previous code checked if 'attack_with' and 'defend_with'
-	 * were still within the bounds of the attack arrays,
-	 * or -1, but it was incorrect.
-	 * The attack used could be removed and '*_with' variables
-	 * could still be in bounds but point to a different attack.
-	 */
 	if(a_ == units_.end() || d_ == units_.end()) {
 		if (update_display_){
 			recalculate_fog(map_,units_,teams_,attacker_side-1);
@@ -829,16 +806,52 @@ void attack::fire_event(const std::string& n)
 	}
 }
 
+namespace {
+	void refresh_weapon_index(int& weap_index, std::string const& weap_id, std::vector<attack_type> const& attacks) {
+		if(attacks.empty()) {
+			//no attacks to choose from
+			weap_index = -1;
+			return;
+		}
+		if(weap_index >= 0 && weap_index < attacks.size() && attacks[weap_index].id() == weap_id) {
+			//the currently selected attack fits
+			return;
+		}
+		if(weap_id.empty() && (weap_index < 0 || weap_index > attacks.size())) {
+			//don't attempt to lookup an empty id
+			weap_index = -1;
+			return;
+		}
+		//lookup the weapon by id
+		for(int i=0; i<attacks.size(); ++i) {
+			if(attacks[i].id() == weap_id) {
+				weap_index = i;
+				return;
+			}
+		}
+		//lookup has failed
+		weap_index = -1;
+		return;
+	}
+} //end anonymous namespace
+
 void attack::refresh_bc()
 {
 	a_ = units_.find(attacker_);
 	d_ = units_.find(defender_);
+	// Fix index of weapons
+	if (a_ != units_.end()) {
+		refresh_weapon_index(attack_with_, a_weap_id_, a_->second.attacks());
+	}
+	if (d_ != units_.end()) {
+		refresh_weapon_index(defend_with_, d_weap_id_, d_->second.attacks());
+	}
 	if(a_ == units_.end() || d_ == units_.end()) {
-		// Fix pointers to weapons
-		if (a_ != units_.end())
+		// Fix pointer to weapons
+		if (a_ != units_.end() && attack_with_ >= 0)
 			const_cast<battle_context::unit_stats*>(a_stats_)->weapon = &a_->second.attacks()[attack_with_];
 
-		if (d_ != units_.end())
+		if (d_ != units_.end() && defend_with_ >= 0)
 			const_cast<battle_context::unit_stats*>(d_stats_)->weapon = &d_->second.attacks()[defend_with_];
 		return;
 	}
@@ -879,6 +892,8 @@ attack::attack(game_display& gui, const gamemap& map,
 	d_(units_.find(defender)),
 	a_id_(),
 	d_id_(),
+	a_weap_id_(),
+	d_weap_id_(),
 	errbuf_(),
 	bc_(0),
 	a_stats_(0),
@@ -925,6 +940,12 @@ attack::attack(game_display& gui, const gamemap& map,
 	bc_ = new battle_context(map_, teams_, units_, state_, attacker_, defender_, attack_with_, defend_with_);
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
+	if(a_stats_->weapon) {
+		a_weap_id_ = a_stats_->weapon->id();
+	}
+	if(d_stats_->weapon) {
+		d_weap_id_ = d_stats_->weapon->id();
+	}
 
 	try {
 		fire_event("attack");
@@ -2199,23 +2220,6 @@ size_t move_unit(game_display* disp,
 				}
 			}
 		}
-#if 0
-		// Check to see if the unit was deleted
-		// during a sighted event in clear_shroud_unit()
-		ui = units.find(route.front());
-		if(ui == units.end()) {
-			/**
-			 * @todo FIXME: the correct behavior for sighted event would be
-			 * to halt movement, then fire "sighted" after firing "moveto" (see below).
-			 * However, since we have fired "sighted" during movement calculations
-			 * this is a workaround to prevent a crash.
-			 */
-			if(move_recorder != NULL) {
-				move_recorder->add_movement(route.front(),*step);
-			}
-			return (step - route.begin());
-		}
-#endif
 		// we also refreh its side, just in case if an event change it
 		team_num = ui->second.side()-1;
 		team = teams[team_num];

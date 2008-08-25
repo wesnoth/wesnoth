@@ -62,7 +62,7 @@ struct end_level_exception;
  */
 std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		unit u, gamemap::location& recruit_location,const bool is_recall,
-		const bool show=false,const bool need_castle=true, 
+		const bool show=false,const bool need_castle=true,
 		const bool full_movement=false,const bool wml_triggered=false);
 
 /** Computes the statistics of a battle between an attacker and a defender unit. */
@@ -82,9 +82,9 @@ public:
 		bool stones;			/**< Attack turns opponent to stone when it hits. */
 		bool plagues;			/**< Attack turns opponent into a zombie when fatal. */
 		bool poisons;			/**< Attack poisons opponent when it hits. */
-		bool backstab_pos;		/**< 
-		                         * True if the attacker is in *position* to backstab the defender (this is used to 
-								 * determine whether to apply the backstab bonus in case the attacker has backstab). 
+		bool backstab_pos;		/**<
+		                         * True if the attacker is in *position* to backstab the defender (this is used to
+								 * determine whether to apply the backstab bonus in case the attacker has backstab).
 								 */
 		bool swarm;				/**< Attack has swarm special. */
 		bool firststrike;		/**< Attack has firststrike special. */
@@ -199,6 +199,7 @@ class attack {
 		const gamestatus& state_;
 		unit_map::iterator a_,d_; // attacker and defender
 		std::string a_id_, d_id_;
+		std::string a_weap_id_, d_weap_id_;
 		std::stringstream errbuf_;
 		battle_context* bc_;
 		const battle_context::unit_stats* a_stats_;
