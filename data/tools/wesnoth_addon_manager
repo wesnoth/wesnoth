@@ -110,7 +110,7 @@ if __name__ == "__main__":
         if options.raw_download:
             file(name, "w").write(mythread.data)
         else:
-            decoded = cs.decode(myhread.data)
+            decoded = cs.decode(mythread.data)
             print "Unpacking %s..." % name
             cs.unpackdir(decoded, cdir,  verbose = options.verbose)
             d = os.path.join(cdir, name)
