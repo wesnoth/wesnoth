@@ -87,18 +87,18 @@ namespace game_config {
 
 	void config_cache::write_file(std::string path, const config& cfg)
 	{
-		bool gzip = false;
+		scoped_ostream stream = ostream_file(path);
 		switch(game_config::cache_type)
 		{
 			case GZIP:
-				gzip = true;
-				path += ".gz";
-			case BWML:
 				{
-					scoped_ostream stream = ostream_file(path);
+					const bool gzip = true;
 					config_writer writer(*stream,gzip,"",game_config::cache_compression_level);
 					writer.write(cfg);
 				}
+				break;
+			case BWML:
+				write_compressed(*stream, cfg);
 				break;
 		}
 	}
@@ -106,19 +106,14 @@ namespace game_config {
 	void config_cache::read_file(const std::string& path, config& cfg)
 	{
 		std::string error_log;
+		scoped_istream stream = istream_file(path);
 		switch(game_config::cache_type)
 		{
 			case BWML:
-				{
-					scoped_istream stream = istream_file(path);
-					read(cfg, *stream);
-				}
+				read_compressed(cfg, *stream);
 				break;
 			case GZIP:
-				{
-					scoped_istream stream = istream_file(path + ".gz");
-					read_gz(cfg, *stream);
-				}
+				read_gz(cfg, *stream);
 				break;
 		}
 	}

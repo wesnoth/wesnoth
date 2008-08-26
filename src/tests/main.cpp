@@ -59,11 +59,13 @@ static bool match_english(const language_def& def)
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
+//		lg::set_log_domain_severity("all",3);
 		game_config::use_dummylocales = true;
 		game_config::path = get_cwd();
 
 		load_language_list();
-		::init_textdomains(*game_config::config_cache::instance().get_config(game_config::path + "/data/_main.cfg"));
+		game_config::config_cache::instance().add_define("TEST");
+		::init_textdomains(*game_config::config_cache::instance().get_config(game_config::path + "/data/test/"));
 		const std::vector<language_def>& languages = get_languages();
 		std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
 									languages.end(),
@@ -75,7 +77,6 @@ struct wesnoth_global_fixture {
 		SDL_Init(SDL_INIT_TIMER);
 		test_utils::get_fake_display();
 
-//		lg::set_log_domain_severity("all",3);
 
 		// Set more report as default
 		if (boost::unit_test::runtime_config::log_level() == boost::unit_test::invalid_log_level)

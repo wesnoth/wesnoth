@@ -119,6 +119,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
 
 	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config(test_data_path)->child("test_key2"))["define"].str());
+	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].translatable(), (*cache.get_config(test_data_path)->child("test_key2"))["define"].translatable());
 }
 
 BOOST_AUTO_TEST_CASE( test_preproc_defines )
