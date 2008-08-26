@@ -310,9 +310,9 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	DBG_G_E << "Text: key press: left arrow.\n";
 
 	handled = true;
-	if(selection_start_) {
-		set_cursor(
-			selection_start_ - 1 + selection_length_, modifier & KMOD_SHIFT);
+	const int offset = selection_start_ - 1 + selection_length_;
+	if(offset >= 0) {
+		set_cursor(offset, modifier & KMOD_SHIFT);
 	}
 }
 
@@ -322,9 +322,9 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	DBG_G_E << "Text: key press: right arrow.\n";
 
 	handled = true;
-	if(selection_start_ < text_.size()) {
-		set_cursor(
-			selection_start_ + 1 + selection_length_, modifier & KMOD_SHIFT);
+	const int offset = selection_start_ + 1 + selection_length_;
+	if(offset <= text_.size()) {
+		set_cursor(offset, modifier & KMOD_SHIFT);
 	}
 }
 
