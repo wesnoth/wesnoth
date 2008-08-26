@@ -2179,6 +2179,7 @@ if __name__ == '__main__':
             # In unit type definitions
             if under("unit_type") or under("female") or under("unit"):
                 line = line.replace("unit_description=", "description=")
+                line = line.replace("advanceto=", "advances_to=")
             # Inside themes
             if within("theme"):
                 line = line.replace("[unit_description]", "[unit_name]")

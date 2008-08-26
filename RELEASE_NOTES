@@ -12,3 +12,13 @@ The release team should empty this file after each release.
 
 ***
 
+The advanceto key in [unit_type] was changed to advances_to, as internally it
+is immediately renamed to advances_to and used that way in both unit.cpp and
+unit_types.cpp, along with being the key that is actually used in [unit],
+thus being what *should* be edited in stored units.
+
+The advanceto key is now deprecated and will be removed in 1.5.6, 
+wmllint can make the required changes.
+
+***
+
