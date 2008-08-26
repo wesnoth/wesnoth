@@ -1633,11 +1633,15 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		unit_map& units, unsigned int side,
 		const std::vector<team>& teams, bool update_display)
 {
+	DBG_NG << "beginning of healing calculations\n";
+
 	// We look for all allied units, then we see if our healer is near them.
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 
 		if (!utils::string_bool(i->second.get_state("healable"),true))
 			continue;
+
+		DBG_NG << "found healable unit at (" << i->first << ")\n";
 
 		unit_map::iterator curer = units.end();
 		std::vector<unit_map::iterator> healers;
@@ -1703,6 +1707,10 @@ void calculate_healing(game_display& disp, const gamemap& map,
 			healers.push_back(units.find(heal_loc->loc));
 		}
 
+		if (healers.size() > 0)
+			DBG_NG << "Unit has " << healers.size() << " potential healers\n";
+
+
 		if(i->second.side() == side) {
 			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
 			unit_abilities::effect regen_effect(regen,0,false);
@@ -1740,11 +1748,13 @@ void calculate_healing(game_display& disp, const gamemap& map,
 				i->second.set_state("poisoned","");
 				healing = rest_healing;
 				healers.clear();
-				healers.push_back(curer);
+				if (curer != units.end())
+					healers.push_back(curer);
 			} else if(curing == "slowed") {
 				healing = rest_healing;
 				healers.clear();
-				healers.push_back(curer);
+				if (curer != units.end())
+					healers.push_back(curer);
 			} else {
 				healers.clear();
 				healing = rest_healing;
@@ -1770,6 +1780,10 @@ void calculate_healing(game_display& disp, const gamemap& map,
 			healing = neg_max;
 		}
 
+		if (healers.size() > 0)
+			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers\n";
+
+
 		if ( !recorder.is_skipping()
 				&& update_display
 				&& !(i->second.invisible(i->first,units,teams) &&
@@ -1782,6 +1796,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 			i->second.take_hit(-healing);
 		disp.invalidate_unit();
 	}
+	DBG_NG << "end of healing calculations\n";
 }
 
 
