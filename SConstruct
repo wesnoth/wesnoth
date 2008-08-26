@@ -35,7 +35,7 @@ def OptionalPath(key, val, env):
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd,test", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder test")),
-    EnumOption('build', 'Build variant: debug, release profile or base (no subdirectory)', "debug", ["release", "debug", "profile","base"]),
+    EnumOption('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "profile","base"]),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
