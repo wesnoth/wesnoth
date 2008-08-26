@@ -1468,9 +1468,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		undead_variation_ = cfg["undead_variation"];
 	}
 	if(cfg["max_attacks"] != "") {
-		max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"],1);
+		max_attacks_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_attacks"],1));
 	}
-	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"], max_attacks_);
+	attacks_left_ = std::max<int>(0,lexical_cast_default<int>(cfg["attacks_left"], max_attacks_));
 
 	if(cfg["alpha"] != "") {
 		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
@@ -1491,9 +1491,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg["profile"] != "") {
 		cfg_["profile"] = cfg["profile"];
 	}
-	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_);
-	max_movement_ = lexical_cast_default<int>(cfg["max_moves"], max_movement_);
-	max_experience_ = lexical_cast_default<int>(cfg["max_experience"], max_experience_);
+	max_hit_points_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_hitpoints"], max_hit_points_));
+	max_movement_ = std::max<int>(0,lexical_cast_default<int>(cfg["max_moves"], max_movement_));
+	max_experience_ = std::max<int>(1,lexical_cast_default<int>(cfg["max_experience"], max_experience_));
 
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
@@ -2468,7 +2468,7 @@ void unit::reset_modifications()
 	is_fearless_ = false;
 	is_healthy_ = false;
 	max_hit_points_ = t->hitpoints();
-	max_experience_ = t->experience_needed();
+	max_experience_ = t->experience_needed(false);
 	max_movement_ = t->movement();
 	attacks_ = t->attacks();
 
@@ -2994,6 +2994,10 @@ void unit::apply_modifications()
 			traits_description_ += ", ";
 		}
 	}
+
+	//apply the experience acceleration last
+	int exp_accel = unit_type::experience_accelerator::get_acceleration();
+	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
 bool unit::invisible(const gamemap::location& loc,

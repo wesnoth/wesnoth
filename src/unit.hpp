@@ -105,7 +105,7 @@ public:
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
 	int experience() const { return experience_; }
-	int max_experience() const { return std::max<int>(1,(max_experience_*unit_type::experience_accelerator::get_acceleration() + 50) / 100); }
+	int max_experience() const { return max_experience_; }
 	int level() const { return level_; }
 	/**
 	 * Adds 'xp' points to the units experience; returns true if advancement
