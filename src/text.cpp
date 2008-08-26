@@ -204,7 +204,7 @@ size_t ttext::get_length() const
 	return utils::string_to_wstring(text_).size();
 }
 
-ttext& ttext::set_text(const t_string& text, const bool markedup) 
+ttext& ttext::set_text(const std::string& text, const bool markedup) 
 {
 	if(markedup != markedup_text_ || text != text_) {
 		if(markedup) {

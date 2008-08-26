@@ -16,10 +16,11 @@
 #define TEXT_HPP_INCLUDED
 
 #include "sdl_utils.hpp"
-#include "tstring.hpp"
 
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
+
+#include <string>
 
 class language_def;
 
@@ -113,7 +114,7 @@ public:
 
 	/***** ***** ***** ***** Setters ***** ***** ***** *****/
 
-	ttext& set_text(const t_string& text, const bool markedup);
+	ttext& set_text(const std::string& text, const bool markedup);
 
 	ttext& set_font_size(const unsigned font_size);
 
@@ -138,7 +139,7 @@ private:
 	mutable surface surface_;
 
 	/** The text to draw (stored as utf-8). */
-	t_string text_;
+	std::string text_;
 
 	/** Is the text markedup if so the markedup render routines need to be used. */
 	bool markedup_text_;
