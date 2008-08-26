@@ -27,6 +27,7 @@
 
 BOOST_AUTO_TEST_SUITE( config_cache )
 
+	const std::string test_data_path("data/test/test/_main.cfg");
 	/**
 	 * Used to make distinct singleton for testing it
 	 * because other tests will need original one to load data
@@ -41,17 +42,15 @@ BOOST_AUTO_TEST_SUITE( config_cache )
 			return cache_;
 		}
 
-		std::string get_config_root() const {
-			return game_config::config_cache::get_config_root();
-		}
-		std::string get_user_config_root() const {
-			return game_config::config_cache::get_user_config_root();
-		}
-
 		const preproc_map& get_preproc_map() const {
 			return game_config::config_cache::get_preproc_map();
 		}
 	};
+
+	/**
+	 * Used to redirect defines settings to test cache
+	 **/
+	typedef game_config::scoped_preproc_define_internal<test_config_cache> test_scoped_define;
 
 test_config_cache test_config_cache::cache_;
 
@@ -84,9 +83,6 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 	preproc_map defines_map(settup_test_preproc_map());
 	test_config_cache& cache = test_config_cache::instance();
 
-	BOOST_CHECK_EQUAL("data/", cache.get_config_root());
-	BOOST_CHECK_EQUAL(get_addon_campaigns_dir(), cache.get_user_config_root());
-
 	const preproc_map& test_defines = cache.get_preproc_map();
 	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
 								 defines_map.begin() ,defines_map.end());
@@ -95,7 +91,7 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 BOOST_AUTO_TEST_CASE( test_load_config )
 {
 	test_config_cache& cache = test_config_cache::instance();
-	cache.add_define("TEST");
+	test_scoped_define test_def("TEST");
 	
 	preproc_map defines_map(settup_test_preproc_map());
 	defines_map["TEST"] = preproc_define();
@@ -103,12 +99,6 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
 								 defines_map.begin() ,defines_map.end());
 	
-	std::string test_data_path("data/test/test/");
-	cache.set_config_root(test_data_path);
-	BOOST_CHECK_EQUAL(test_data_path, cache.get_config_root());
-	test_data_path = "invalid";
-	cache.set_user_config_root(test_data_path);
-	BOOST_CHECK_EQUAL(test_data_path, cache.get_user_config_root());
 
 	config test_config;
 	config* child = &test_config.add_child("textdomain");
@@ -118,59 +108,55 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	(*child)["define"] = "test";
 
 
-	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
 
-	cache.add_define("TEST_DEFINE");
+	test_scoped_define test_define_def("TEST_DEFINE");
 
 	child = &test_config.add_child("test_key2");
 	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 	
 
-	BOOST_CHECK_EQUAL(test_config, cache.get_config());
+	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
 
-	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config().child("test_key2"))["define"].str());
+	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config(test_data_path)->child("test_key2"))["define"].str());
 }
 
-static bool match_german(const language_def& def)
-{
-	return def.localename == "de_DE";
-}
-
-BOOST_AUTO_TEST_CASE( test_translation_reload )
+BOOST_AUTO_TEST_CASE( test_preproc_defines )
 {
 	test_config_cache& cache = test_config_cache::instance();
-	config test_config;
-	config* child = &test_config.add_child("textdomain");
-	(*child)["name"] = "wesnoth";
+	const preproc_map& test_defines = cache.get_preproc_map();
+	preproc_map defines_map(settup_test_preproc_map());
 
-	child = &test_config.add_child("test_key");
-	(*child)["define"] = "test";
+	// check initial state
+	BOOST_REQUIRE_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+								 defines_map.begin() ,defines_map.end());
 
-	child = &test_config.add_child("test_key2");
-	(*child)["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
+	// scoped
+	{
+		test_scoped_define test("TEST");
+		defines_map["TEST"] = preproc_define();
 
-	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config().child("test_key2"))["define"].str());
+		BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+									 defines_map.begin() ,defines_map.end());
+		defines_map.erase("TEST");
+	}
+	// Check scoped remove
 
-	// Change language
-	const language_def& original_lang = get_language();
-	const std::vector<language_def>& languages = get_languages();
-	BOOST_CHECK_MESSAGE(languages.size()>0, "No languages found!");
-	std::vector<language_def>::const_iterator German = std::find_if(languages.begin(),
-									languages.end(),
-									match_german); // Using German because the most active translation
-	BOOST_REQUIRE_MESSAGE(German != languages.end() && German->available(), "German translation not found");
-	::set_language(*German);
-	cache.reload_translations();
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+								 defines_map.begin() ,defines_map.end());
 
-	BOOST_CHECK_MESSAGE((*test_config.child("test_key2"))["define"].str() != (*cache.get_config().child("test_key2"))["define"].str(), "Translation reset failed to make test string different!");
-	
-	(*child)["define"].reset_translation();
+	// Manual add define
+	cache.add_define("TEST");
+	defines_map["TEST"] = preproc_define();
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+								 defines_map.begin() ,defines_map.end());
 
-	BOOST_CHECK_EQUAL(test_config, cache.get_config());
-	BOOST_CHECK_EQUAL((*test_config.child("test_key2"))["define"].str(), (*cache.get_config().child("test_key2"))["define"].str());
-	set_language(original_lang);
+	// Manual remove define
+	cache.remove_define("TEST");
+	defines_map.erase("TEST");
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+								 defines_map.begin() ,defines_map.end());
 }
-
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
 

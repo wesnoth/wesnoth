@@ -22,44 +22,96 @@
 namespace game_config {
 
 
-	/**
-	 * Singleton object to manage game configs
-	 * and cache reading.
-	 **/
+/**
+ * Singleton object to manage game configs
+ * and cache reading.
+ * @TODO: Make smarter filetree checksum caching so only required parts
+ * 		  of tree are checked at startup. Trees are overlapping so have
+ * 		  to split trees to subtrees to only do check once per file.
+ **/
 class config_cache : private boost::noncopyable {
 	static config_cache cache_;
 
-	config game_config_;
-	bool force_valid_cache_, use_cache_, dirty_;
-	std::string config_root_, user_config_root_;
+	bool force_valid_cache_, use_cache_;
 	preproc_map defines_map_;
 
 	void read_configs(config&, std::string&);
 
+	void read_file(const std::string& file, config& cfg);
+	void write_file(std::string file, const config& cfg);
+
+	void read_cache(const std::string& path, config& cfg);
+
+	void read_configs(const std::string& path, config& cfg);
+
+	// Protected to let test code access
 	protected:
 	config_cache();
 
 
-	std::string get_config_root() const;
-	std::string get_user_config_root() const;
 	const preproc_map& get_preproc_map() const;
-	void load_configs(config& cfg, bool recheck_cache);
+	void load_configs(const std::string& path, config& cfg);
 
 	public:
+	/**
+	 * Get reference to the singleton object
+	 **/
 	static config_cache& instance();
 
-	void set_config_root(const std::string&);
-	void set_user_config_root(const std::string&);
-
-	config& get_config(bool recheck_cache = false);
+	/**
+	 * get config object from given path
+	 * @param path which to load. Should be _main.cfg.
+	 * @return shread_ptr config object
+	 **/
+	config_ptr get_config(const std::string& path);
 	
+	/**
+	 * Clear stored defines map to default values
+	 **/
 	void clear_defines();
+	/**
+	 * Add a entry to preproc defines map
+	 **/
 	void add_define(const std::string& define);
+	/**
+	 * Remove a entry to preproc defines map
+	 **/
+	void remove_define(const std::string& define);
 
-	void reload_translations();
-
+	/**
+	 * Enable/disable caching
+	 **/
 	void set_use_cache(bool use);
+	/**
+	 * Enable/disable cache validation
+	 **/
+	void set_force_valid_cache(bool force);
+	/**
+	 * Force cache checksum validation.
+	 **/
+	void recheck_filetree_checksum();
 };
+
+/**
+ * Used to set and unset scoped defines to preproc_map
+ * This is prefered form to set defines that aren't global
+ **/
+template <class T>
+class scoped_preproc_define_internal : private boost::noncopyable {
+	// Protected to let test code access
+	protected:
+	std::string name_;
+	public:
+	scoped_preproc_define_internal(const std::string& name) : name_(name)
+	{
+		T::instance().add_define(name_);
+	}
+	~scoped_preproc_define_internal()
+	{
+		T::instance().remove_define(name_);
+	}
+};
+typedef scoped_preproc_define_internal<config_cache> scoped_preproc_define;
 
 }
 #endif

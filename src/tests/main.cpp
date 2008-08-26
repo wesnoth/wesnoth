@@ -63,7 +63,7 @@ struct wesnoth_global_fixture {
 		game_config::path = get_cwd();
 
 		load_language_list();
-		::init_textdomains(game_config::config_cache::instance().get_config());
+		::init_textdomains(*game_config::config_cache::instance().get_config(game_config::path + "/data/_main.cfg"));
 		const std::vector<language_def>& languages = get_languages();
 		std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
 									languages.end(),

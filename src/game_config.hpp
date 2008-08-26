@@ -50,6 +50,13 @@ namespace game_config
 
 	extern bool use_dummylocales;
 
+	extern enum cache_types {
+		BWML,
+		GZIP
+	} cache_type;
+
+	extern int cache_compression_level;
+
 	extern std::string path;
 
 	struct server_info {

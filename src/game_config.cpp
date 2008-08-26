@@ -59,6 +59,9 @@ namespace game_config
 	bool use_dummylocales = false;
 #endif
 
+	cache_types cache_type = BWML;
+	int cache_compression_level = 5;
+
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, lobby_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;

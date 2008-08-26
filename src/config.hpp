@@ -30,6 +30,8 @@
 
 #include "global.hpp"
 
+#include <boost/shared_ptr.hpp>
+
 #include <map>
 #include <memory>
 #include <ostream>
@@ -40,6 +42,10 @@
 
 
 typedef std::map<std::string,t_string> string_map;
+
+class config;
+
+typedef boost::shared_ptr<config> config_ptr;
 
 /** A config object defines a single node in a WML file, with access to child nodes. */
 class config
