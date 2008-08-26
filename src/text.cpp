@@ -98,30 +98,30 @@ ttext::~ttext()
 	}
 }
 
-surface ttext::render()
+surface ttext::render() const
 {
 	rerender();
 	return surface_;
 }
 
-int ttext::get_width() 
+int ttext::get_width() const
 {
 	return get_size().x;
 }
 
-int ttext::get_height() 
+int ttext::get_height() const
 {
 	return get_size().y;
 }
 
-gui2::tpoint ttext::get_size() 
+gui2::tpoint ttext::get_size() const
 {
 	recalculate();
 
 	return gui2::tpoint(rect_.width, rect_.height);
 }
 
-bool ttext::is_truncated()
+bool ttext::is_truncated() const
 {
 	recalculate();
 
@@ -129,7 +129,7 @@ bool ttext::is_truncated()
 }
 
 gui2::tpoint ttext::get_cursor_position(
-		const unsigned column, const unsigned line)
+		const unsigned column, const unsigned line) const
 {
 	recalculate();
 
@@ -172,7 +172,7 @@ gui2::tpoint ttext::get_cursor_position(
 	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
-gui2::tpoint ttext::get_column_line(const gui2::tpoint& position)
+gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 {
 	recalculate();
 
@@ -332,7 +332,7 @@ private:
 
 } // namespace
 
-void ttext::recalculate(const bool force)
+void ttext::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
 		calculation_dirty_ = false;
@@ -345,7 +345,7 @@ void ttext::recalculate(const bool force)
 	}
 }
 
-void ttext::rerender(const bool force) 
+void ttext::rerender(const bool force) const
 {
 	if(surface_dirty_ || force) {
 		recalculate(force);
@@ -384,7 +384,7 @@ void ttext::rerender(const bool force)
 	}
 }
 
-void ttext::create_surface_buffer(const size_t size)
+void ttext::create_surface_buffer(const size_t size) const
 {
 	// clear old buffer
 	if(surface_buffer_) {

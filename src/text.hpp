@@ -50,19 +50,19 @@ public:
 	 * Before rendering it tests whether a redraw is needed and if so it first
 	 * redraws the surface before returning it.
 	 */
-	surface render();
+	surface render() const;
 
 	/** Returns the width needed for the text. */
-	int get_width() ;
+	int get_width() const;
 
 	/** Returns the height needed for the text. */
-	int get_height() ;
+	int get_height() const;
 
 	/** Returns the size needed for the text. */
-	gui2::tpoint get_size() ;
+	gui2::tpoint get_size() const;
 
 	/** Has the text been truncated? */
-	bool is_truncated();
+	bool is_truncated() const;
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
@@ -90,7 +90,7 @@ public:
 	 *                            returned.
 	 */
 	gui2::tpoint get_cursor_position(
-		const unsigned column, const unsigned line = 0);
+		const unsigned column, const unsigned line = 0) const;
 
 	/**
 	 * Gets the column of line of the character at the position.
@@ -101,7 +101,7 @@ public:
 	 *                            value the line of the character found (or last
 	 *                            character if not found.
 	 */
-	gui2::tpoint get_column_line(const gui2::tpoint& position);
+	gui2::tpoint get_column_line(const gui2::tpoint& position) const;
 
 	/**
 	 * Gets the length of the text in characters. 
@@ -132,7 +132,7 @@ private:
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
 	PangoContext* context_;
 	PangoLayout* layout_;
-	PangoRectangle rect_;
+	mutable PangoRectangle rect_;
 
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
@@ -169,7 +169,7 @@ private:
 	 */
 
 	/** The dirty state of the calculations. */
-	bool calculation_dirty_;
+	mutable bool calculation_dirty_;
 
 	/**
 	 * Recalculates the text.
@@ -178,10 +178,10 @@ private:
 	 *
 	 * @param force               Recalculate even if not dirty?
 	 */
-	void recalculate(const bool force = false);
+	void recalculate(const bool force = false) const;
 
 	/** The dirty state of the surface. */
-	bool surface_dirty_;
+	mutable bool surface_dirty_;
 
 	/**
 	 * Renders the text.
@@ -191,7 +191,7 @@ private:
 	 * @param force               Render even if not dirty? This parameter is
 	 *                            also send to recalculate().
 	 */
-	void rerender(const bool force = false);
+	void rerender(const bool force = false) const;
 
 	/** 
 	 * Buffer to store the image on.
@@ -200,7 +200,7 @@ private:
 	 * data source for the SDL_Surface. This means the buffer needs to be stored
 	 * in the object.
 	 */
-	unsigned char* surface_buffer_;
+	mutable unsigned char* surface_buffer_;
 	
 	/**
 	 * Creates a new buffer.
@@ -208,9 +208,13 @@ private:
 	 * If needed frees the other surface and then creates a new buffer and
 	 * initializes the entire buffer with values 0.
 	 *
+	 * NOTE eventhough we're clearly modifing function we don't change the
+	 * state of the object. The const is needed so other functions can also be
+	 * marked const (those also don't change the state of the object.
+	 *
 	 * @param size                The required size of the buffer.
 	 */
-	void create_surface_buffer(const size_t size); 
+	void create_surface_buffer(const size_t size) const; 
 };
 
 } // namespace font 
