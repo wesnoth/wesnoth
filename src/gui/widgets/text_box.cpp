@@ -123,19 +123,20 @@ void ttext_box::set_canvas_text()
 {
 	foreach(tcanvas& tmp, canvas()) {
 
-		// NOTE when sel_start() == - sel_len() then the offset calculation will
-		// access character_offset_[-1] so add special cases to use 0 instead.
-		// The same can happen if sel_start() == 0.
+		// NOTE when get_selection_start() == - get_selection_length() then the
+		// offset calculation will access character_offset_[-1] so add special
+		// cases to use 0 instead.  The same can happen if
+		// get_selection_start() == 0.
 
 		// Set the general variables.
-		tmp.set_variable("text", variant(text()));
+		tmp.set_variable("text", variant(get_value()));
 		tmp.set_variable("text_x_offset", variant(text_x_offset_));
 		tmp.set_variable("text_y_offset", variant(text_y_offset_));
 
 		// Set the cursor info.
-		const unsigned start = sel_start();
-		const int len = sel_len();
-		if(text().empty() || start + len == 0) {
+		const unsigned start = get_selection_start();
+		const int len = get_selection_length();
+		if(get_value().empty() || start + len == 0) {
 			tmp.set_variable("cursor_offset", variant(0));
 		} else {
 			tmp.set_variable("cursor_offset", 
@@ -208,22 +209,29 @@ void ttext_box::insert_char(const Uint16 unicode)
 	const unsigned width = surf->w;
 
 	// Insert the char in the buffer, we need to assume it's a wide string.
-	wide_string tmp = utils::string_to_wstring(text());
-	tmp.insert(tmp.begin() + sel_start(), unicode);
-	text() = utils::wstring_to_string(tmp);
+	wide_string tmp = utils::string_to_wstring(get_value());
+	tmp.insert(tmp.begin() + get_selection_start(), unicode);
 
 	// Update the widths.
-	character_offset_.insert(character_offset_.begin() + sel_start(), width);
-	if(sel_start() != 0) {
-		character_offset_[sel_start()] += character_offset_[sel_start() - 1]; 
+	character_offset_.insert(
+		character_offset_.begin() + get_selection_start(), width);
+
+	if(get_selection_start() != 0) {
+		character_offset_[get_selection_start()] 
+			+= character_offset_[get_selection_start() - 1]; 
 	}
 
-	++sel_start();
-	for(size_t i = sel_start(); i < character_offset_.size(); ++i) {
+	const unsigned start = get_selection_start() + 1;
+	// set_value also resets the selection start, maybe add a real insert
+	// member to avoid that.
+	set_value(utils::wstring_to_string(tmp));
+	for(size_t i = start; 
+			i < character_offset_.size(); ++i) {
+
 		character_offset_[i] += width;
 	}
 
-	set_cursor(sel_start(), false);
+	set_cursor(start, false);
 	set_canvas_text();
 	set_dirty();
 }
@@ -231,32 +239,31 @@ void ttext_box::insert_char(const Uint16 unicode)
 void ttext_box::delete_char(const bool before_cursor)
 {
 	if(before_cursor) {
-		--sel_start();
-		set_cursor(sel_start(), false);
+		set_cursor(get_selection_start() - 1, false);
 	}
 
-	sel_len() = 1;
+	set_selection_length(1);
 
 	delete_selection();
 }
 
 void ttext_box::delete_selection()
 {
-	if(sel_len() == 0) {
+	if(get_selection_length() == 0) {
 		return;
 	}
 
 	// If we have a negative range change it to a positive range.
 	// This makes the rest of the algoritms easier.
-	int len = sel_len();
-	unsigned  start = sel_start();
+	int len = get_selection_length();
+	unsigned  start = get_selection_start();
 	if(len < 0) {
 		len = - len;
 		start -= len;
 	}
 
 	// Update the text, we need to assume it's a wide string.
-	wide_string tmp = utils::string_to_wstring(text());
+	wide_string tmp = utils::string_to_wstring(get_value());
 	tmp.erase(tmp.begin() + start, tmp.begin() + start + len);
 	const std::string& text = utils::wstring_to_string(tmp);
 	set_value(text);
@@ -276,7 +283,9 @@ void ttext_box::handle_mouse_selection(
 		return;
 	}
 
-	int offset = get_character_offset_at(mouse.x - static_cast<int>(text_x_offset_));
+	int offset = 
+		get_character_offset_at(mouse.x - static_cast<int>(text_x_offset_));
+
 	if(offset < 0) {
 		return;
 	}
@@ -298,7 +307,7 @@ unsigned ttext_box::get_character_offset_at(const unsigned offset)
 
 		++result;
 	}
-	return text().size();
+	return get_value().size();
 }
 
 void ttext_box::update_offsets()
@@ -306,7 +315,9 @@ void ttext_box::update_offsets()
 	assert(config());
 
 	boost::intrusive_ptr<const ttext_box_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const ttext_box_definition::tresolution>(config());
+		boost::dynamic_pointer_cast
+		<const ttext_box_definition::tresolution>(config());
+
 	assert(conf);
 
 	text_height_ = font::get_max_height(conf->text_font_size);
@@ -337,7 +348,7 @@ void ttext_box::calculate_char_offset()
 	std::string rendered_text;
 	const unsigned font_size = config()->text_font_size;
 
-	foreach(const wchar_t& unicode, utils::string_to_wstring(text())) {
+	foreach(const wchar_t& unicode, utils::string_to_wstring(get_value())) {
 		rendered_text.insert(rendered_text.end(), unicode);
 		surface surf = render_text(rendered_text, font_size);
 		assert(surf);
@@ -349,7 +360,7 @@ void ttext_box::calculate_char_offset()
 void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 {
 	if (history_.get_enabled()) {
-		std::string s = history_.up(text());
+		std::string s = history_.up(get_value());
 		if (!s.empty()) {
 			set_value(s);
 		}
@@ -361,7 +372,7 @@ void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 void ttext_box::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 {
 	if (history_.get_enabled()) {
-		set_value(history_.down(text()));
+		set_value(history_.down(get_value()));
 		handled = true;
 	}
 }

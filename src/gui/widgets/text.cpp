@@ -66,8 +66,8 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 { 
 	DBG_G_E << "Text: left mouse button double click.\n";
 
-	sel_start_ = 0;
-	sel_len_ = text_.size();
+	selection_start_ = 0;
+	selection_length_ = text_.size();
 
 }
 
@@ -211,8 +211,8 @@ void ttext_::set_value(const std::string& text)
 		calculate_char_offset(); 
 
 		// default to put the cursor at the end of the buffer.
-		sel_start_ = text_.size();
-		sel_len_ = 0;
+		selection_start_ = text_.size();
+		selection_length_ = 0;
 		set_canvas_text();
 		set_dirty(); 
 	} 
@@ -222,10 +222,10 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 {
 	if(select) {
 
-		if(sel_start_ == offset) {
-			sel_len_ = 0;
+		if(selection_start_ == offset) {
+			selection_length_ = 0;
 		} else {
-			sel_len_ = - (sel_start_ - offset);
+			selection_length_ = - (selection_start_ - offset);
 		}
 
 #ifdef __unix__
@@ -237,8 +237,8 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 
 	} else {
 		assert(offset <= text_.size());
-		sel_start_ = offset;
-		sel_len_ = 0;
+		selection_start_ = offset;
+		selection_length_ = 0;
 
 		set_canvas_text();
 		set_dirty();
@@ -247,17 +247,17 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 
 void ttext_::copy_selection(const bool mouse)
 {
-	int len = sel_len();
-	unsigned start = sel_start();
+	int length = selection_length_;
+	unsigned start = selection_start_;
 
-	if(len < 0) {
-		len = - len;
-		start -= len;
+	if(length < 0) {
+		length = - length;
+		start -= length;
 	}
 
 	const wide_string& wtext = utils::string_to_wstring(text_);
 	const std::string& text = utils::wstring_to_string(
-		wide_string(wtext.begin() + start, wtext.begin() + start +len));
+		wide_string(wtext.begin() + start, wtext.begin() + start + length));
 
 	copy_to_clipboard(text, mouse);
 }
@@ -271,13 +271,29 @@ void ttext_::paste_selection(const bool mouse)
 
 	delete_selection();
 
-	text_.insert(sel_start_, text);
+	text_.insert(selection_start_, text);
 
-	sel_start_ += utils::string_to_wstring(text).size();
+	selection_start_ += utils::string_to_wstring(text).size();
 
 	calculate_char_offset(); 
 	set_canvas_text();
 	set_dirty(); 
+}
+
+void  ttext_::set_selection_start(const size_t selection_start)
+{
+	if(selection_start != selection_start_) {
+		selection_start_ = selection_start;
+		set_dirty();
+	}
+}
+
+void ttext_::set_selection_length(const unsigned selection_length) 
+{ 
+	if(selection_length != selection_length_) {
+		selection_length_ = selection_length;
+		set_dirty();
+	}
 }
 
 void ttext_::set_state(const tstate state)
@@ -294,8 +310,9 @@ void ttext_::handle_key_left_arrow(SDLMod modifier, bool& handled)
 	DBG_G_E << "Text: key press: left arrow.\n";
 
 	handled = true;
-	if(sel_start_) {
-		set_cursor(sel_start_ - 1 + sel_len_, modifier & KMOD_SHIFT);
+	if(selection_start_) {
+		set_cursor(
+			selection_start_ - 1 + selection_length_, modifier & KMOD_SHIFT);
 	}
 }
 
@@ -305,8 +322,9 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	DBG_G_E << "Text: key press: right arrow.\n";
 
 	handled = true;
-	if(sel_start_ < text_.size()) {
-		set_cursor(sel_start_ + 1 + sel_len_, modifier & KMOD_SHIFT);
+	if(selection_start_ < text_.size()) {
+		set_cursor(
+			selection_start_ + 1 + selection_length_, modifier & KMOD_SHIFT);
 	}
 }
 
@@ -339,7 +357,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	DBG_G_E << "Text: key press: backspace.\n";
 
 	handled = true;
-	if(sel_start_){
+	if(selection_start_){
 		delete_char(true);
 	}
 }
@@ -349,9 +367,9 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 	DBG_G_E << "Text: key press: delete.\n";
 
 	handled = true;
-	if(sel_len_ != 0) {
+	if(selection_length_ != 0) {
 		delete_selection();
-	} else if (sel_start_ < text_.size()) {
+	} else if (selection_start_ < text_.size()) {
 		delete_char(false);
 	}
 }

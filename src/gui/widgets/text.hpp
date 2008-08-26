@@ -34,8 +34,8 @@ public:
 		tcontrol(COUNT),
 		state_(ENABLED),
 		text_(),
-		sel_start_(0),
-		sel_len_(0),
+		selection_start_(0),
+		selection_length_(0),
 		max_length_(std::string::npos)
 	{
 	}
@@ -114,7 +114,7 @@ protected:
 	void goto_start_of_data(const bool select = false) { set_cursor(0, select); }
 
 	/** Selects all text. */
-	void select_all() { sel_start_ = 0; goto_end_of_data(true); }
+	void select_all() { selection_start_ = 0; goto_end_of_data(true); }
 
 	/**
 	 * Moves the cursor at the wanted position.
@@ -155,22 +155,11 @@ protected:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	
-	size_t get_sel_start() const { return sel_start_; }
-	void  set_sel_start(const size_t sel_start) 
-		{ sel_start_ = sel_start; set_dirty(); }
+	size_t get_selection_start() const { return selection_start_; }
+	void  set_selection_start(const size_t selection_start);
 
-	size_t get_sel_len() const { return sel_len_; }
-	void set_sel_len(const unsigned sel_len) { sel_len_ = sel_len; set_dirty(); }
-
-protected:
-
-	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	std::string& text() { return text_; }
-
-	size_t& sel_start() { return sel_start_; }
-
-	int& sel_len() { return sel_len_; }
+	size_t get_selection_length() const { return selection_length_; }
+	void set_selection_length(const unsigned selection_length);
 
 private:
 	/** Note the order of the states must be the same as defined in settings.hpp. */
@@ -193,16 +182,16 @@ private:
 	virtual void calculate_char_offset() = 0;
 
 	/** Start of the selected text. */
-	size_t sel_start_;
+	size_t selection_start_;
 
 	/** 
 	 * Length of the selected text.
 	 *
-	 *  positive sel_len_ means selection to the right.
-	 *  negative sel_len_ means selection to the left.
-	 *  sel_len_ == 0 means no selection.
+	 * * positive selection_len_ means selection to the right.
+	 * * negative selection_len_ means selection to the left.
+	 * * selection_len_ == 0 means no selection.
 	 */
-	int sel_len_;
+	int selection_length_;
 
 	/** 
 	 * Maximum length of the text. 
