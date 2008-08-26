@@ -14,6 +14,8 @@ from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
 
+SConsignFile("build/sconsign.dblite")
+
 # Warn user of current set of build options.
 if os.path.exists('.scons-option-cache'):
     optfile = file('.scons-option-cache')
@@ -186,7 +188,8 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango"]), config_h = "config.h")
+conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango"]), config_h = "config.h",
+    log_file="build/config.log", conf_dir="build/sconf_temp")
 
 if env["prereqs"]:
     if env["gettextdir"]:
