@@ -1707,9 +1707,9 @@ void calculate_healing(game_display& disp, const gamemap& map,
 			healers.push_back(units.find(heal_loc->loc));
 		}
 
-		if (healers.size() > 0)
+		if (healers.size() > 0) {
 			DBG_NG << "Unit has " << healers.size() << " potential healers\n";
-
+		}
 
 		if(i->second.side() == side) {
 			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
@@ -1780,8 +1780,9 @@ void calculate_healing(game_display& disp, const gamemap& map,
 			healing = neg_max;
 		}
 
-		if (healers.size() > 0)
+		if (healers.size() > 0) {
 			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers\n";
+		}
 
 
 		if ( !recorder.is_skipping()
