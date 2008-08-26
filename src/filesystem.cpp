@@ -28,6 +28,7 @@
 
 #ifdef _WIN32
 #include "filesystem_win32.ii"
+#include <cctype>
 #else /* !_WIN32 */
 #include <unistd.h>
 #include <dirent.h>
@@ -548,25 +549,31 @@ static std::string read_stream(std::istream& s)
 	return ss.str();
 }
 
-std::istream *istream_file(std::string const &fname)
+std::istream *istream_file(std::string fname)
 {
 	LOG_FS << "streaming " << fname << " for reading.\n";
-	if (!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
-		std::ifstream *s = new std::ifstream((game_config::path + "/" + fname).c_str(),std::ios_base::binary);
-		if (s->is_open())
-			return s;
-		LOG_FS << "could not open " << (game_config::path + "/" + fname) << " for reading.\n";
-		delete s;
+	if (fname.empty())
+	{
+		ERR_FS << "Trying to open file with empty name\n";
+		return new std::ifstream();
 	}
-
-	//! @todo FIXME: why do we rely on this even with relative paths ?
-	// Still useful with zipios, for things like cache and prefs.
-	// NOTE zipios has been removed - not sure what to do with this code.
-	std::istream *s = new std::ifstream(fname.c_str(), std::ios_base::binary);
-	if (s->fail()) {
-		LOG_FS << "streaming " << fname << " failed.\n";
+#ifndef _WIN32
+	if (fname[0] != '/') {
+#else
+	// Check if not start with driver letter
+	if (!std::isalpha(fname[0])) {
+#endif
+		if (!game_config::path.empty())
+			fname = game_config::path + "/" + fname;
+		else
+			WRN_FS << "Using relative path for opening file without game_config::path set\n";
 	}
+	std::ifstream *s = new std::ifstream(fname.c_str(),std::ios_base::binary);
+	if (s->is_open())
+		return s;
+	LOG_FS << "could not open '" << fname << "' for reading.\n";
 	return s;
+
 }
 
 std::string read_file(std::string const &fname)

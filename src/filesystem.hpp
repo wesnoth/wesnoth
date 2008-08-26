@@ -88,7 +88,7 @@ bool delete_directory(const std::string& dirname);
 
 //! Basic disk I/O - read file.
 std::string read_file(const std::string& fname);
-std::istream *istream_file(std::string const &fname);
+std::istream *istream_file(std::string fname);
 std::ostream *ostream_file(std::string const &fname);
 //! Throws io_exception if an error occurs.
 void write_file(const std::string& fname, const std::string& data);
