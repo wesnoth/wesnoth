@@ -17,6 +17,7 @@
 #include "gui/widgets/helper.hpp"
 #include "font.hpp"
 #include "language.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "SDL_ttf.h"
 
@@ -26,6 +27,33 @@
 #include <cairo.h>
 
 namespace font {
+
+namespace {
+
+/**
+ * Small helper wrapper for PangoLayoutIter*.
+ *
+ * Needed to make sure it gets freed properly.
+ */
+class titor
+{
+	titor(const titor&);
+	titor& operator=(const titor&);
+public:
+	titor(PangoLayout* layout_) :
+		itor_(pango_layout_get_iter(layout_))
+	{
+	}
+
+	~titor() { pango_layout_iter_free(itor_); }
+
+	operator PangoLayoutIter*() { return itor_; }
+
+private:
+	PangoLayoutIter* itor_;
+};
+
+} // namespace
 
 const unsigned ttext::STYLE_NORMAL = TTF_STYLE_NORMAL;
 const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
@@ -98,7 +126,83 @@ bool ttext::is_truncated()
 	recalculate();
 
 	return (pango_layout_is_ellipsized(layout_) == TRUE);
-}	
+}
+
+gui2::tpoint ttext::get_cursor_position(
+		const unsigned column, const unsigned line)
+{
+	recalculate();
+
+	// First we need to determine the byte offset, if more routines need it it
+	// would be a good idea to make it a separate function.
+	titor itor(layout_);
+
+	// Go the the wanted line.
+	if(line != 0) {
+		if(pango_layout_get_line_count(layout_) >= line) {
+			return gui2::tpoint(0, 0);
+		}
+
+		for(size_t i = 0; i < line; ++i) {
+			pango_layout_iter_next_line(itor);
+		}
+	}
+
+	// Go the wanted column.
+	for(size_t i = 0; i < column; ++i) {
+		if(!pango_layout_iter_next_char(itor)) {
+			// It seems that the documentation is wrong and causes and off by
+			// one error... the result should be false if already at the end of
+			// the data when started.
+			if(i + 1 == column) {
+				break;
+			}
+			// beyound data.
+			return gui2::tpoint(0, 0);
+		}
+	}
+
+	// Get the byte offset
+	const int offset = pango_layout_iter_get_index(itor);
+
+	// Convert the byte offset in a position.
+	PangoRectangle rect;
+	pango_layout_get_cursor_pos(layout_, offset, &rect, NULL);
+
+	return gui2::tpoint(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
+}
+
+gui2::tpoint ttext::get_column_line(const gui2::tpoint& position)
+{
+	recalculate();
+
+	// Get the index of the character.
+	int index, trailing;
+	pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE, 
+		position.y * PANGO_SCALE, &index, &trailing); 
+
+	// Extract the line and the offset in pixels in that line.
+	int line, offset;
+	pango_layout_index_to_line_x(layout_, index, trailing, &line, &offset);
+	offset = PANGO_PIXELS(offset);
+
+	// Now convert this offset to a column, this way is a bit hacky but haven't
+	// found a better solution yet.
+	for(size_t i = 0; ; ++i) {
+		const int pos = get_cursor_position(i, line).x;
+
+		if(pos == offset) {
+			return  gui2::tpoint(i, line);
+		} else if(pos == 0) {
+			assert(i == 0);
+		}
+	}
+}
+
+size_t ttext::get_length() const
+{
+	return utils::string_to_wstring(text_).size();
+}
 
 ttext& ttext::set_text(const t_string& text, const bool markedup) 
 {

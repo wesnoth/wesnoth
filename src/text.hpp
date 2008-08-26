@@ -77,6 +77,40 @@ public:
 	static const unsigned STYLE_ITALIC;     /**< Italicized text. */
 	static const unsigned STYLE_UNDERLINE;  /**< Underlined text. */
 
+	/***** ***** ***** ***** Query details ***** ***** ***** *****/
+
+	/**
+	 * Gets the location for the cursor.
+	 *
+	 * @param column              The column offset of the cursor.
+	 * @param line                The line offset of the cursor.
+	 *
+	 * @returns                   The position of the top of the cursor. It the
+	 *                            requested location is out of range 0,0 is
+	 *                            returned.
+	 */
+	gui2::tpoint get_cursor_position(
+		const unsigned column, const unsigned line = 0);
+
+	/**
+	 * Gets the column of line of the character at the position.
+	 *
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   A point with the x value the column and the y
+	 *                            value the line of the character found (or last
+	 *                            character if not found.
+	 */
+	gui2::tpoint get_column_line(const gui2::tpoint& position);
+
+	/**
+	 * Gets the length of the text in characters. 
+	 *
+	 * The text set is utf-8 so the length of the string might not be the length
+	 * of the text.
+	 */
+	size_t get_length() const;
+
 	/***** ***** ***** ***** Setters ***** ***** ***** *****/
 
 	ttext& set_text(const t_string& text, const bool markedup);
@@ -103,7 +137,7 @@ private:
 	/** The surface to render upon used as a cache. */
 	mutable surface surface_;
 
-	/** The text to draw. */
+	/** The text to draw (stored as utf-8). */
 	t_string text_;
 
 	/** Is the text markedup if so the markedup render routines need to be used. */
