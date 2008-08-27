@@ -17,7 +17,7 @@
 
 //! An action is constructed in response to a user command, then executed on 
 //! the map. An undo action is returned by default via pointer, caller-owned).
-//! It is possible to call an action without creatung the undo action.
+//! It is possible to call an action without creating the undo action.
 //! Actions report failure via exceptions.
 //! Code that only deals with actions polymorphically should only need to 
 //! include this header file.
@@ -33,10 +33,11 @@
 namespace editor2 {
 
 /**
- * Base class for all editor actions. An editor_action object encapsulates the action 
- * to be performed on a map, in separation from the user interface or display, 
- * and provodes a way of reversing it's affects by creating an "undo" action.
- * All the actions can be proccessed via this base class' virtual functions.
+ * Base class for all editor actions. An editor_action object
+ * encapsulates the action to be performed on a map, in separation
+ * from the user interface or display, and provides a way of reversing
+ * its affects by creating an "undo" action.  All the actions can be
+ * processed via this base class' virtual functions.
  */
 class editor_action
 {
@@ -45,9 +46,12 @@ class editor_action
         virtual ~editor_action();
 		
 		/**
-		 * Perform the action, returning an undo action that, when performed, shall reverse any effects of this action.
-		 * The undo action object is owned by the caller. Default behaviour is to create a whole-map undo, call
-		 * the perform_without_undo function and return the undo object.
+		 * Perform the action, returning an undo action that,
+		 * when performed, shall reverse any effects of this
+		 * action.  The undo action object is owned by the
+		 * caller. Default behaviour is to create a whole-map
+		 * undo, call the perform_without_undo function and
+		 * return the undo object.
 		 */
 		virtual editor_action* perform(map_context&) const;
 		
@@ -62,9 +66,11 @@ class editor_action
 		virtual int action_count() const;
 		
 		/**
-		 * A textual description of the action. For use e.g. in the undo menu, to have
-		 * a "Undo: Fill with Grassland" item rather than just "Undo". Should be overriden
-		 * by derived Actions, defaults to a debug message.
+		 * A textual description of the action. For use
+		 * e.g. in the undo menu, to have a "Undo: Fill with
+		 * Grassland" item rather than just "Undo". Should be
+		 * overriden by derived Actions, defaults to a debug
+		 * message.
 		 */
 		virtual std::string get_description();
 		
