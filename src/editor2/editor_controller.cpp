@@ -403,8 +403,9 @@ void editor_controller::load_map(const std::string& filename)
 		editor_map new_map(game_config_, map_string);
 		get_map_context().set_filename(filename);
 		set_map(new_map);
-		//TODO when this fails see if it's a scenario with a mapdata= key and give
-		//the user an option of loading that map instead of just failing
+		//TODO when this fails see if it's a scenario with a
+		//mapdata= key and give the user an option of loading
+		//that map instead of just failing
 	} catch (gamemap::incorrect_format_exception& e) {
 		std::string message = _("There was an error while loading the map:");
 		message += "\n";
@@ -939,8 +940,11 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 			if (!get_map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action()->drag_right(*gui_, x, y, partial, last_undo);
 		}
-		//Partial means that the mouse action has modified the last undo action and the controller shouldn't add
-		//anything to the undo stack (hence a diferent perform_ call
+
+		//Partial means that the mouse action has modified the
+		//last undo action and the controller shouldn't add
+		//anything to the undo stack (hence a different
+		//perform_ call)
 		if (a != NULL) {
 			std::auto_ptr<editor_action> aa(a);
 			if (partial) {
