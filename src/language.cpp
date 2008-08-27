@@ -89,7 +89,7 @@ namespace {
 	string_map strings_;
 }
 
-static std::vector<language_def> known_languages;
+static language_list known_languages;
 
 std::string languagedef_name (const language_def& def)
 {
@@ -177,7 +177,7 @@ bool load_language_list()
 	return true;
 }
 
-std::vector<language_def> get_languages()
+language_list get_languages()
 {
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
@@ -332,7 +332,7 @@ bool set_language(const language_def& locale)
 	// end of string_table fill
 
 	// Reset translations for the name of current languages
-	for (std::vector<language_def>::iterator itor = known_languages.begin();
+	for (language_list::iterator itor = known_languages.begin();
 			itor != known_languages.end(); ++itor) {
 
 		itor->language.reset_translation();
@@ -352,7 +352,7 @@ const language_def& get_locale()
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
 		wesnoth_setlocale(LC_MESSAGES, prefs_locale, NULL);
-		for(std::vector<language_def>::const_iterator i = known_languages.begin();
+		for(language_list::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)
 				return *i;
