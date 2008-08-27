@@ -46,7 +46,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                 --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
                 --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
                 --keyword=_ --keyword=N_ --output=$TARGET \
-                ;sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
+                ; touch $TARGET; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
                 """ % (domain, join("po", domain, "POTFILES.in"))
                 )
         cfgs = []
@@ -58,7 +58,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
             wml_pot = env.Command(
                 join(domain, domain + ".wml.po"),
                 cfgs,
-                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
+                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET; touch $TARGET" % domain
                 )
 
         new_pot = str(pot) + ".new"
