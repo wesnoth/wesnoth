@@ -13,10 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-25 15:45+0200\n"
-"PO-Revision-Date: 2008-07-05 10:59+0200\n"
+"POT-Creation-Date: 2008-08-14 19:40+0200\n"
+"PO-Revision-Date: 2008-08-15 14:14+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian\n"
+"Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -767,8 +767,7 @@ msgstr "zöld, ha az egység még nem lépett az adott körben,"
 #. [topic]
 #: data/core/help.cfg:176
 msgid "yellow if it has moved, but could still move further or attack, or"
-msgstr ""
-"sárga, ha már lépett, de még tehet további lépéseket, illetve támadhat; vagy"
+msgstr "sárga, ha már lépett, de még tehet további lépéseket, illetve támadhat; vagy"
 
 #. [topic]
 #: data/core/help.cfg:177
@@ -778,8 +777,7 @@ msgstr "piros, ha már minden lépését felhasználta az aktuális körben."
 #. [topic]
 #: data/core/help.cfg:178
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr ""
-"A gömböcske kék, ha az egység egy szövetséges egység, de nem te irányítod."
+msgstr "A gömböcske kék, ha az egység egy szövetséges egység, de nem te irányítod."
 
 #. [topic]
 #: data/core/help.cfg:179
@@ -1421,7 +1419,7 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneráció</ref>: Bizonyos egységek (mint "
+"<ref>dst=ability_regenerates text=Regenerálódás</ref>: Bizonyos egységek (mint "
 "a trollok), minden körben automatikusan 8 ÉP-t gyógyulnak."
 
 #. [topic]
@@ -1464,7 +1462,7 @@ msgstr ""
 "\n"
 "\n"
 "Ne felejtsd el, hogy amíg a nyugalmi helyzet összevonható a gyógyítás egyéb "
-"formáival, addig a falvak, a regeneráció és a csillapítás/gyógyítás "
+"formáival, addig a falvak, a regenerálódás és a csillapítás/gyógyítás "
 "egymással nem kombinálhatóak, ezek közül a legjobb lehetőség fog érvényre "
 "jutni. Természetesen két pálya között az egységek teljesen regenerálódnak."
 
@@ -1883,8 +1881,7 @@ msgstr "Ügyeskezű"
 
 #. [topic]
 #: data/core/help.cfg:399
-msgid ""
-"Dextrous units do 1 more damage for every successful strike in ranged combat."
+msgid "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Az ügyeskezű egységek eggyel többet sebeznek minden sikeres távolsági "
 "támadás során."
@@ -2871,10 +2868,8 @@ msgstr ""
 "Az egység képes a szomszédos szövetséges egységeket gyógyítani a kör "
 "kezdetén.\n"
 "\n"
-"A csillapító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
-"körönként.\n"
-"Mérgezett egységet nem képes kigyógyítani a mérgezésből, annak csak egy falu "
-"vagy egy gyógyításra képes egység lehet a segítségére."
+"A csillapító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat körönként. Ha azonban az ellátott egység mérgezett, akkor nem gyógyul, de a csillapító megakadályozza, hogy a méreg az adott körben hasson.\n"
+"Mérgezett egységet a csillapító nem képes kigyógyítani a mérgezésből, annak csak egy falu vagy egy gyógyításra képes egység lehet a segítségére."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:29
@@ -2897,10 +2892,8 @@ msgstr ""
 "Ez az egység ötvözi a gyógynövények erejét a mágiával, ezáltal sokkal "
 "gyorsabban gyógyít, mint az a csatatéren általában lehetséges.\n"
 "\n"
-"A csillapító által kezelt egység legfeljebb 8 életerőpontot gyógyulhat "
-"körönként.\n"
-"Mérgezett egységet nem képes kigyógyítani a mérgezésből, annak csak egy falu "
-"vagy egy gyógyításra képes egység lehet a segítségére."
+"A csillapító által kezelt egység legfeljebb 8 életerőpontot gyógyulhat körönként. Ha azonban az ellátott egység mérgezett, akkor nem gyógyul, de a csillapító megakadályozza, hogy a méreg az adott körben hasson.\n"
+"Mérgezett egységet a csillapító nem képes kigyógyítani a mérgezésből, annak csak egy falu vagy egy gyógyításra képes egység lehet a segítségére."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:49
@@ -3031,7 +3024,7 @@ msgid ""
 "using one of its moves."
 msgstr ""
 "Teleportáció:\n"
-"Ez az egység bármely két éppen üresen álló szövetséges falu között képes "
+"Ez az egység bármely két, éppen üresen álló szövetséges falu között képes "
 "egyetlen lépéspont felhasználásával térugrásos helyváltoztatásra."
 
 #. [hides]
@@ -4312,8 +4305,7 @@ msgid " This unit is capable of basic healing."
 msgstr " Ez az egység képes gyógyítani."
 
 #: data/core/macros/special-notes.cfg:17
-msgid ""
-" This unit is capable of healing those around it, and curing them of poison."
+msgid " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 " Ez az egység képes gyógyítani a körülötte állók sebződéseit, valamint "
 "kigyógyítani őket a mérgezésből."
@@ -4322,8 +4314,7 @@ msgstr ""
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
-" Ez az egység képes semlegesíteni a mérgek hatását a körülötte állókban."
+msgstr " Ez az egység képes semlegesíteni a mérgek hatását a körülötte állókban."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
@@ -4383,8 +4374,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:44
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
-" Ez az egység képes elrejtőzni az éjszakában, így nyoma sincs jelenlétének."
+msgstr " Ez az egység képes elrejtőzni az éjszakában, így nyoma sincs jelenlétének."
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
@@ -4395,8 +4385,7 @@ msgstr ""
 "észrevétlen marad az ellenség számára, kivéve azokat, akik mellette állnak."
 
 #: data/core/macros/special-notes.cfg:50
-msgid ""
-" This unit can move unseen in deep water, requiring no air from the surface."
+msgid " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Ez az egység észrevétlenül közlekedik mélyvízben, mivel nincsen szüksége "
 "levegőre a felszínről."
@@ -4405,8 +4394,7 @@ msgstr ""
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
-"Ez az egység 1 életpontot kap a maximumához, ha megöl egy élő egységet."
+msgstr "Ez az egység 1 életpontot kap a maximumához, ha megöl egy élő egységet."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -4441,8 +4429,7 @@ msgstr ""
 "gyorsaságát és sebzésüket a körük végéig."
 
 #: data/core/macros/special-notes.cfg:68
-msgid ""
-" The ability to turn the living to stone makes this unit extremely dangerous."
+msgid " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " Az a képessége, hogy kővé változtathatja az élőket, nagyon veszélyessé "
 "teszi ezt az egységet."
@@ -4621,8 +4608,7 @@ msgstr "bátor"
 #. [trait]
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
-"A számára kedvezőtlen napszak nem befolyásolja hátrányosan a harci erejét."
+msgstr "A számára kedvezőtlen napszak nem befolyásolja hátrányosan a harci erejét."
 
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
@@ -5636,8 +5622,7 @@ msgstr "$name|falva,$name|város,$name|vár,$name|völgye,$name|tető"
 
 #. [language]
 #: data/hardwired/english.cfg:30
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|falva,$name|város,$name|vár,$name hegye,$name hegye,$name|tető,$name|"
 "tető"
@@ -5851,13 +5836,11 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
-"- Királyi Vezérfonal a Harcászati Szaknyelvhez - II. kötet, w.i.sz. 212"
+msgstr "- Királyi Vezérfonal a Harcászati Szaknyelvhez - II. kötet, w.i.sz. 212"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
-msgid ""
-"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgid "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
 "Egy egyébként jól hangzó terv is megbukhat, ha nem a megfelelő napszakban "
 "támadsz."
@@ -6069,10 +6052,8 @@ msgstr "- Konrad király, w.i.sz. 552"
 
 #. [tip]
 #: data/hardwired/tips.cfg:111
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"Ne félj visszavonulni és rendezni soraid, gyakran ez a győzelem kulcsa."
+msgid "Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr "Ne félj visszavonulni és rendezni soraid, gyakran ez a győzelem kulcsa."
 
 #. [tip]
 #: data/hardwired/tips.cfg:112
@@ -6798,8 +6779,7 @@ msgstr ""
 
 #: src/game.cpp:779 src/multiplayer_connect.cpp:1453
 msgid "This save is from a version too old to be loaded."
-msgstr ""
-"Ez a mentés a játéknak egy túl régi verziójával készült. Nem lehet betölteni."
+msgstr "Ez a mentés a játéknak egy túl régi verziójával készült. Nem lehet betölteni."
 
 #: src/game.cpp:785 src/multiplayer_connect.cpp:1460
 msgid ""
@@ -6847,8 +6827,7 @@ msgstr "Csatlakozás a kiszolgálóhoz"
 
 #: src/game.cpp:1009
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
-"Most kapcsolódni fogsz egy kiszolgálóhoz, ahonnan kiegészítőket tölthetsz le."
+msgstr "Most kapcsolódni fogsz egy kiszolgálóhoz, ahonnan kiegészítőket tölthetsz le."
 
 #: src/game.cpp:1011
 msgid "Server: "
@@ -6971,8 +6950,7 @@ msgid "Remote host disconnected."
 msgstr "A távoli kiszolgáló lekapcsolódott."
 
 #: src/game.cpp:1374
-msgid ""
-"There was a problem creating the files necessary to install this add-on."
+msgid "There was a problem creating the files necessary to install this add-on."
 msgstr "Gond volt a kiegészítés telepítéséhez szükséges fájlok létrehozásával."
 
 #: src/game.cpp:1389 src/game.cpp:1460 src/multiplayer.cpp:248
@@ -7018,8 +6996,7 @@ msgstr "Helyi játék"
 
 #: src/game.cpp:1497
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
-"Többjátékos játék MI-vel vagy más emberekkel egyazon számítógép megosztásával"
+msgstr "Többjátékos játék MI-vel vagy más emberekkel egyazon számítógép megosztásával"
 
 #: src/game.cpp:1505 src/multiplayer.cpp:233
 msgid "Login: "
@@ -7216,8 +7193,7 @@ msgstr "Súgó"
 
 #: src/help.cpp:1111
 msgid "<header>text='Units having this special attack'</header>"
-msgstr ""
-"<header>text='Az ezzel a speciális támadással rendelkező egységek'</header>"
+msgstr "<header>text='Az ezzel a speciális támadással rendelkező egységek'</header>"
 
 #: src/help.cpp:1179
 msgid "<header>text='Units having this ability'</header>"
@@ -7612,8 +7588,7 @@ msgstr "A térképet nem sikerült elmenteni: $msg"
 
 #: src/menu_events.cpp:899
 msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
-"Nem sikerült automatikusan elmenteni az állást. Kérlek, mentsd saját kezűleg."
+msgstr "Nem sikerült automatikusan elmenteni az állást. Kérlek, mentsd saját kezűleg."
 
 #: src/menu_events.cpp:927
 msgid "Chat Log"
@@ -7680,15 +7655,13 @@ msgstr "Visszahívás"
 #: src/menu_events.cpp:1205
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] ""
-"Legalább 1 arannyal kell rendelkezned ahhoz, hogy visszahívhass egy egységet."
+msgstr[0] "Legalább 1 arannyal kell rendelkezned ahhoz, hogy visszahívhass egy egységet."
 msgstr[1] ""
 "Legalább $cost arannyal kell rendelkezned ahhoz, hogy visszahívhass egy "
 "egységet."
 
 #: src/menu_events.cpp:1536
-msgid ""
-"You have not started your turn yet. Do you really want to end your turn?"
+msgid "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Még nem tettél semmit ebben a körben. Mégis befejezed a köröd?"
 
 #: src/menu_events.cpp:1544 src/menu_events.cpp:1549
@@ -7772,17 +7745,14 @@ msgstr ""
 
 #: src/menu_events.cpp:1959
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
-msgstr ""
-"Játékos hozzáadása a barátok listájához. Használat: /list addfriend <becenév>"
+msgstr "Játékos hozzáadása a barátok listájához. Használat: /list addfriend <becenév>"
 
 #: src/menu_events.cpp:1964
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
-msgstr ""
-"Játékos hozzáadása a mellőzési listához. Használat: /list ignore <becenév>"
+msgstr "Játékos hozzáadása a mellőzési listához. Használat: /list ignore <becenév>"
 
 #: src/menu_events.cpp:1968
-msgid ""
-"Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
+msgid "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Játékos eltávolítása a mellőzési vagy a barátok listáról. Használat: /list "
 "remove <becenév>"
@@ -8161,8 +8131,7 @@ msgstr "Általános feladatokra fordítható idő egy-egy körben (másodpercben
 
 #: src/multiplayer_create.cpp:169
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
-"Egy-egy támadásra, toborzásra, illetve falufoglalásra felhasználható idő."
+msgstr "Egy-egy támadásra, toborzásra, illetve falufoglalásra felhasználható idő."
 
 #: src/multiplayer_create.cpp:174
 msgid "The amount of income each village yields per turn"
@@ -8235,8 +8204,7 @@ msgid "Password: "
 msgstr "Jelszó:"
 
 #: src/multiplayer_create.cpp:330
-msgid ""
-"Set the password that people wanting to join your game as players must enter."
+msgid "Set the password that people wanting to join your game as players must enter."
 msgstr ""
 "Adj meg egy jelszót, amelyet a játékodba csatlakozni kívánó embereknek majd "
 "meg kell adniuk."
@@ -8357,8 +8325,7 @@ msgstr "Kilépés"
 
 #: src/multiplayer_lobby.cpp:653
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
-"Megfigyeléskor a visszajátszás gyors átugrása egészen a jelenlegi körig"
+msgstr "Megfigyeléskor a visszajátszás gyors átugrása egészen a jelenlegi körig"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Joining this game requires a password."
@@ -8444,8 +8411,7 @@ msgstr "Nem sikerült a kézfogás kezdeményezése"
 
 #: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
-"Olyan terepet találtam, amelynek 1-nél alacsonyabb a lépéspontköltsége."
+msgstr "Olyan terepet találtam, amelynek 1-nél alacsonyabb a lépéspontköltsége."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
@@ -8632,23 +8598,23 @@ msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az ál
 msgid "It is now $name|'s turn"
 msgstr "$name következik"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:223
 msgid "Replace with AI"
 msgstr "Helyettesítés MI-vel"
 
-#: src/playturn.cpp:222
+#: src/playturn.cpp:224
 msgid "Replace with local player"
 msgstr "Helyettesítés helyi játékossal"
 
-#: src/playturn.cpp:223
+#: src/playturn.cpp:225
 msgid "Abort game"
 msgstr "Játék megszakítása"
 
-#: src/playturn.cpp:228 src/playturn.cpp:240
+#: src/playturn.cpp:230 src/playturn.cpp:242
 msgid "Replace with $player"
 msgstr "Helyettesítés $player helyi játékossal"
 
-#: src/playturn.cpp:246
+#: src/playturn.cpp:248
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player kilépett a játékból. Mit tegyünk most?"
 
@@ -8690,8 +8656,7 @@ msgstr "Váratlan lezáró tag"
 
 #: src/serialization/parser.cpp:206
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr ""
-"Érvénytelen lezáró tag ($tag2) a(z) $tag tag-hez ($pos helyen megnyitva)"
+msgstr "Érvénytelen lezáró tag ($tag2) a(z) $tag tag-hez ($pos helyen megnyitva)"
 
 #: src/serialization/parser.cpp:231 src/serialization/parser.cpp:243
 msgid "Empty variable name"
@@ -8922,3 +8887,4 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
