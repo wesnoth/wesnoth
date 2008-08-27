@@ -101,7 +101,7 @@ static config setup_test_config()
 {
 	config test_config;
 	config* child = &test_config.add_child("textdomain");
-	(*child)["name"] = "wesnoth";
+	(*child)["name"] = GETTEXT_DOMAIN;
 
 	child = &test_config.add_child("test_key");
 	(*child)["define"] = "test";
