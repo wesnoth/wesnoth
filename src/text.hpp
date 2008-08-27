@@ -65,6 +65,34 @@ public:
 	/** Has the text been truncated? */
 	bool is_truncated() const;
 
+	/**
+	 * Inserts utf 8 text.
+	 *
+	 * @param offset              The position to insert the text.
+	 * @param text                The utf-8 text to insert.
+	 *
+	 * @returns                   The number of characters inserted.
+	 */
+	unsigned insert_text(const unsigned offset, const std::string& text);
+
+	/**
+	 * Inserts a unicode char.
+	 *
+	 * @param offset              The position to insert the char.
+	 * @param unicode             The character to insert.
+	 *
+	 */
+	void insert_unicode(const unsigned offset, const wchar_t unicode);
+
+	/**
+	 * Inserts unicode text.
+	 *
+	 * @param offset              The position to insert the text.
+	 * @param unicode             Vector with characters to insert.
+	 */
+	void insert_unicode(
+		const unsigned offset, const std::vector<wchar_t>& unicode);
+
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
 	/**
@@ -110,11 +138,12 @@ public:
 	 * The text set is utf-8 so the length of the string might not be the length
 	 * of the text.
 	 */
-	size_t get_length() const;
+	size_t get_length() const { return length_; }
 
-	/***** ***** ***** ***** Setters ***** ***** ***** *****/
+	/***** ***** ***** ***** Setters / getters ***** ***** ***** *****/
 
 	ttext& set_text(const std::string& text, const bool markedup);
+	const std::string& text() const { return text_; }
 
 	ttext& set_font_size(const unsigned font_size);
 
@@ -171,6 +200,9 @@ private:
 
 	/** The dirty state of the calculations. */
 	mutable bool calculation_dirty_;
+
+	/** Length of the text. */
+	mutable size_t length_;
 
 	/**
 	 * Recalculates the text.

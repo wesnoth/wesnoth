@@ -75,6 +75,7 @@ ttext::ttext() :
 	maximum_height_(-1),
 	ellipse_mode_(PANGO_ELLIPSIZE_END),
 	calculation_dirty_(true),
+	length_(0),
 	surface_dirty_(true),
 	surface_buffer_(NULL)
 {	
@@ -126,6 +127,32 @@ bool ttext::is_truncated() const
 	recalculate();
 
 	return (pango_layout_is_ellipsized(layout_) == TRUE);
+}
+
+unsigned ttext::insert_text(const unsigned offset, const std::string& text)
+{
+	if(text.empty()) {
+		return 0;
+	}
+
+	wide_string wtext = utils::string_to_wstring(text_);
+	insert_unicode(offset, wtext);
+	return wtext.size();
+}
+
+void ttext::insert_unicode(const unsigned offset, const wchar_t unicode)
+{
+	insert_unicode(offset, wide_string(1, unicode));
+}
+
+void ttext::insert_unicode(const unsigned offset, const wide_string& unicode)
+{
+	assert(offset <= length_);
+
+	wide_string tmp = utils::string_to_wstring(text_);
+	tmp.insert(tmp.begin() + offset, unicode.begin(), unicode.end());
+
+	set_text(utils::wstring_to_string(tmp), false);
 }
 
 gui2::tpoint ttext::get_cursor_position(
@@ -199,11 +226,6 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 	}
 }
 
-size_t ttext::get_length() const
-{
-	return utils::string_to_wstring(text_).size();
-}
-
 ttext& ttext::set_text(const std::string& text, const bool markedup) 
 {
 	if(markedup != markedup_text_ || text != text_) {
@@ -212,7 +234,8 @@ ttext& ttext::set_text(const std::string& text, const bool markedup)
 		} else {
 			pango_layout_set_text(layout_, text.c_str(), text.size());
 		}
-		text_ = text; 
+		text_ = text;
+		length_ = utils::string_to_wstring(text_).size();
 		markedup_text_ = markedup;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
