@@ -277,8 +277,8 @@ private:
 	std::map<network::connection,std::string> seeds_;
 
 	//! std::map<network::connection,player>
-	player_map players_;
-	player_map ghost_players_ ;
+	wesnothd::player_map players_;
+	wesnothd::player_map ghost_players_ ;
 
 	std::vector<wesnothd::game*> games_;
 	wesnothd::game not_logged_in_;
@@ -551,7 +551,7 @@ void server::load_config() {
 bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 	if (concurrent_connections_ == 0) return false;
 	size_t connections = 0;
-	for (player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+	for (wesnothd::player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if (network::ip_address(i->first) == ip) {
 			++connections;
 		}
@@ -652,7 +652,7 @@ void server::run() {
  				simple_wml::document ping( strstr.str().c_str(),
  							   simple_wml::INIT_COMPRESSED ) ;
  				simple_wml::string_span s = ping.output_compressed() ;
- 				for (player_map::const_iterator i = ghost_players_.begin();
+ 				for (wesnothd::player_map::const_iterator i = ghost_players_.begin();
  				     i != ghost_players_.end(); ++i)
  				  {
  				    DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n" ;
@@ -759,7 +759,7 @@ void server::run() {
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
 				LOG_SERVER << "Try to disconnect all users...\n";
-				for (player_map::const_iterator pl = players_.begin();
+				for (wesnothd::player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 				{
 					network::disconnect(pl->first);
@@ -782,7 +782,7 @@ void server::run() {
 				continue;
 			}
 			// Was the user already logged in?
-			const player_map::iterator pl_it = players_.find(e.socket);
+			const wesnothd::player_map::iterator pl_it = players_.find(e.socket);
 			if (pl_it == players_.end()) {
 				if (not_logged_in_.is_observer(e.socket)) {
 					DBG_SERVER << ip << "\tNot logged in user disconnected.\n";
@@ -853,7 +853,7 @@ void server::process_data(const network::connection sock,
 	// We know the client is alive for this interval
 	// Remove player from ghost_players map if selective_ping
 	// is enabled for the player.
-	const player_map::const_iterator pl = ghost_players_.find( sock ) ;
+	const wesnothd::player_map::const_iterator pl = ghost_players_.find( sock ) ;
 	if( pl != ghost_players_.end() && pl->second.selective_ping() ) {
 	  ghost_players_.erase( sock ) ;
 	}
@@ -1000,7 +1000,7 @@ void server::process_login(const network::connection sock,
 	}
 
 	// Check the username isn't already taken
-	player_map::const_iterator p;
+	wesnothd::player_map::const_iterator p;
 	for (p = players_.begin(); p != players_.end(); ++p) {
 		if (p->second.name() == username) {
 			send_error(sock, "The username you chose is already taken.");
@@ -1103,7 +1103,7 @@ void server::process_login(const network::connection sock,
 
 void server::process_query(const network::connection sock,
                            simple_wml::node& query) {
-	const player_map::const_iterator pl = players_.find(sock);
+	const wesnothd::player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "\n";
 		return;
@@ -1227,7 +1227,7 @@ std::string server::process_command(const std::string& query) {
 		out << "message '" << parameters << "' relayed to players\n";
 	} else if (command == "status") {
 		out << "STATUS REPORT\n";
-		for (player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (parameters == ""
 				|| utils::wildcard_string_match(pl->second.name(), parameters)
 				|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
@@ -1277,7 +1277,7 @@ std::string server::process_command(const std::string& query) {
 				ban_manager_.ban(target, parsed_time, reason);
 	
 				if (kick) {
-					for (player_map::const_iterator pl = players_.begin();
+					for (wesnothd::player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
 					{
 						if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
@@ -1287,7 +1287,7 @@ std::string server::process_command(const std::string& query) {
 					}
 				}
 			} else {
-				for (player_map::const_iterator pl = players_.begin();
+				for (wesnothd::player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 				{
 					if (utils::wildcard_string_match(pl->second.name(), target)) {
@@ -1321,7 +1321,7 @@ std::string server::process_command(const std::string& query) {
 		bool kicked = false;
 		// if we find a '.' consider it an ip mask
 		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
-			for (player_map::const_iterator pl = players_.begin();
+			for (wesnothd::player_map::const_iterator pl = players_.begin();
 				pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
@@ -1331,7 +1331,7 @@ std::string server::process_command(const std::string& query) {
 				}
 			}
 		} else {
-			for (player_map::const_iterator pl = players_.begin();
+			for (wesnothd::player_map::const_iterator pl = players_.begin();
 				pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(pl->second.name(), parameters)) {
@@ -1370,7 +1370,7 @@ std::string server::process_command(const std::string& query) {
 }
 
 void server::process_nickserv(const network::connection sock, simple_wml::node& data) {
-	const player_map::iterator pl = players_.find(sock);
+	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "\n";
 		return;
@@ -1501,7 +1501,7 @@ void server::process_whisper(const network::connection sock,
 		send_doc(data, sock, "error");
 		return;
 	}
-	const player_map::const_iterator pl = players_.find(sock);
+	const wesnothd::player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find whispering player. (socket: "
 			<< sock << ")\n";
@@ -1510,7 +1510,7 @@ void server::process_whisper(const network::connection sock,
 	whisper.set_attr_dup("sender", pl->second.name().c_str());
 	bool dont_send = false;
 	const simple_wml::string_span& whisper_receiver = whisper["receiver"];
-	for (player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+	for (wesnothd::player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if (whisper_receiver != i->second.name().c_str()) {
 			continue;
 		}
@@ -1549,7 +1549,7 @@ void server::process_data_lobby(const network::connection sock,
                                 simple_wml::document& data) {
 	DBG_SERVER << "in process_data_lobby...\n";
 
-	const player_map::iterator pl = players_.find(sock);
+	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
 			<< sock << ")\n";
@@ -1593,7 +1593,7 @@ void server::process_data_lobby(const network::connection sock,
 		int game_id = (*data.root().child("join"))["id"].to_int();
 
 		const std::vector<wesnothd::game*>::iterator g =
-			std::find_if(games_.begin(),games_.end(), game_id_matches(game_id));
+			std::find_if(games_.begin(),games_.end(), wesnothd::game_id_matches(game_id));
 
 		static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 		if (g == games_.end()) {
@@ -1673,7 +1673,7 @@ void server::process_data_game(const network::connection sock,
                                simple_wml::document& data) {
 	DBG_SERVER << "in process_data_game...\n";
 	
-	const player_map::iterator pl = players_.find(sock);
+	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
 			<< sock << ")\n";
@@ -2045,12 +2045,12 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 		LOG_SERVER << "Could not find game (" << (*game_it)->id()
 			<< ") to delete in games_and_users_list_.\n";
 	}
-	const user_vector& users = (*game_it)->all_game_users();
+	const wesnothd::user_vector& users = (*game_it)->all_game_users();
 	// Set the availability status for all quitting users.
-	for (user_vector::const_iterator user = users.begin();
+	for (wesnothd::user_vector::const_iterator user = users.begin();
 		user != users.end(); user++)
 	{
-		const player_map::iterator pl = players_.find(*user);
+		const wesnothd::player_map::iterator pl = players_.find(*user);
 		if (pl != players_.end()) {
 			pl->second.mark_available();
 			if (make_change_diff(games_and_users_list_.root(), NULL,
