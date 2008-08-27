@@ -1,0 +1,349 @@
+# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# Japanese translations for Battle for Wesnoth package.
+# Copyright (C) 2005-2006 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2005.
+# Nobuhito Okada <okyada@gmail.com>, 2005-2007.
+# Naoki IIMURA <amatubu@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2008-08-19 21:24+0200\n"
+"PO-Revision-Date: 2008-02-18 23:48+0900\n"
+"Last-Translator: Naoki IIMURA <amatubu@gmail.com>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: KBabel 1.9\n"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:10
+msgid "all"
+msgstr "すべて"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:16
+msgid "water"
+msgstr "水域"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:28
+msgid "flat"
+msgstr "平地"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:34
+msgid "desert"
+msgstr "砂漠"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:40
+msgid "forest"
+msgstr "森林"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:46
+msgid "frozen"
+msgstr "雪原"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:52
+msgid "rough"
+msgstr "荒地"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:58
+msgid "cave"
+msgstr "洞窟"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:64
+msgid "village"
+msgstr "村"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:70
+msgid "castle"
+msgstr "城"
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:4
+msgid "Single Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:15
+msgid "Radius 1 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:25
+msgid "Radius 2 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:55
+msgid "Hex Line NW-SE"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold ALT to "
+"paint base layer only"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:16
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:21
+msgid ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
+msgstr ""
+
+#. [menu]
+#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+msgid "File"
+msgstr "ファイル"
+
+#. [menu]
+#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+msgid "Edit"
+msgstr "編集"
+
+#. [menu]
+#: data/themes/editor.cfg:481
+msgid "Settings"
+msgstr "設定"
+
+#. [label]
+#: data/themes/editor.cfg:500 data/themes/editor2.cfg:263
+msgid "villages"
+msgstr "村"
+
+#. [menu]
+#: data/themes/editor2.cfg:141
+msgid "Map"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor2.cfg:151
+msgid "Tool"
+msgstr ""
+
+#: src/editor/editor.cpp:237
+msgid "Draw tiles"
+msgstr "タイル描画"
+
+#: src/editor/editor.cpp:239
+msgid "Fill"
+msgstr "塗りつぶし"
+
+#: src/editor/editor.cpp:241
+msgid "Set player's starting position"
+msgstr "プレイヤーの開始位置を設定"
+
+#: src/editor/editor.cpp:243
+msgid "Zoom in"
+msgstr "ズーム・イン"
+
+#: src/editor/editor.cpp:245
+msgid "Zoom out"
+msgstr "ズーム・アウト"
+
+#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:656
+msgid "Undo"
+msgstr "やり直す"
+
+#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:662
+msgid "Redo"
+msgstr "元に戻す"
+
+#: src/editor/editor.cpp:251
+msgid "Zoom to default view"
+msgstr "初期視点にズーム"
+
+#: src/editor/editor.cpp:253
+msgid "Toggle grid"
+msgstr "グリッド切替"
+
+#: src/editor/editor.cpp:255
+msgid "Resize the map"
+msgstr "マップサイズ変更"
+
+#: src/editor/editor.cpp:257
+msgid "Flip map"
+msgstr "マップを反転する"
+
+#: src/editor/editor.cpp:259
+msgid "Update transitions"
+msgstr "変化を更新する"
+
+#: src/editor/editor.cpp:261
+msgid "Delay transition updates"
+msgstr "変化の更新を遅らせる"
+
+#: src/editor/editor.cpp:477
+msgid "Language"
+msgstr "言語"
+
+#: src/editor/editor.cpp:478
+msgid "Choose your preferred language:"
+msgstr "お好みの言語を選んで下さい:"
+
+#: src/editor/editor.cpp:495 src/editor/editor_main.cpp:304
+msgid "Battle for Wesnoth Map Editor"
+msgstr "Battle for Wesnoth マップエディタ"
+
+#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:237
+msgid "Save the Map As"
+msgstr "マップに名前を付けて保存"
+
+#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:241
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "マップはすでに存在します。 上書きしますか？"
+
+#: src/editor/editor.cpp:554
+msgid "None"
+msgstr "なし"
+
+#: src/editor/editor.cpp:559 src/editor/editor.cpp:1425
+#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:265
+msgid "Player"
+msgstr "プレイヤー"
+
+#: src/editor/editor.cpp:563
+msgid "Which Player?"
+msgstr "どのプレイヤー？"
+
+#: src/editor/editor.cpp:564
+msgid "Which player should start here?"
+msgstr "どのプレイヤーがここからスタートしますか？"
+
+#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:202
+msgid "Choose a Map to Load"
+msgstr "読み込むマップを選択"
+
+#: src/editor/editor.cpp:634
+msgid ""
+"Warning: Illegal characters found in the map name. Please save under a "
+"different name."
+msgstr "警告: マップ名に不正な文字が見つかりました。別な名前で保存して下さい。"
+
+#: src/editor/editor.cpp:647 src/editor/editor.cpp:727
+msgid "The file does not contain a valid map."
+msgstr "そのファイルには有効なマップがありません。"
+
+#: src/editor/editor.cpp:1304 src/editor2/editor_controller.cpp:107
+msgid "Quit Editor"
+msgstr "エディタを終了"
+
+#: src/editor/editor.cpp:1308
+msgid "Do you want to save the map before quitting?"
+msgstr "終了前にマップを保存しますか？"
+
+#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:368
+msgid "Map saved."
+msgstr "マップを保存しました。"
+
+#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:373
+msgid "Could not save the map: $msg"
+msgstr "マップを保存できませんでした: $msg"
+
+#: src/editor/editor.cpp:1379
+msgid "Error: Illegal character in filename."
+msgstr "エラー: ファイル名に不正な文字"
+
+#: src/editor/editor_palettes.cpp:464 src/editor2/editor_palettes.cpp:486
+msgid "FG"
+msgstr "FG"
+
+#: src/editor/editor_palettes.cpp:466 src/editor2/editor_palettes.cpp:488
+msgid "BG"
+msgstr "BG"
+
+#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
+#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
+msgid ""
+"Can't resize the map, the requested size is bigger than the maximum, size="
+msgstr ""
+"マップをリサイズできません。要求されたサイズは最大値よりも大きいです。サイズ="
+
+#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
+#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
+msgid " maximum="
+msgstr " 最大値="
+
+#: src/editor2/editor_controller.cpp:165
+msgid "Fatal error"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:173
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:176
+msgid "There are unsaved changes in the map."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:178
+msgid "Quit"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:188
+msgid "There are unsaved changes in the map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:189
+msgid "Do you want to discard all changes you made to the map?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:280
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:390 src/editor2/editor_controller.cpp:396
+msgid "There was an error while loading the map:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:393
+msgid "Error loading map (format)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:399
+msgid "Error loading map (wml)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:658
+msgid "Can't Undo"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:664
+msgid "Can't Redo"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:262
+#, fuzzy
+msgid "(Player)^None"
+msgstr "プレイヤー"
+
+#: src/editor2/mouse_action.cpp:269
+msgid "Choose player"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:270
+msgid ""
+"Which player should start here? You can also use the 1-9 and delete keys to "
+"set/clear staring positions."
+msgstr ""

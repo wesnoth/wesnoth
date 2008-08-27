@@ -1,0 +1,357 @@
+# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# Language valencia translations for Battle for Wesnoth package.
+# Copyright (C) 2006 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2008-08-19 21:24+0200\n"
+"PO-Revision-Date: 2008-02-14 12:37+0100\n"
+"Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:10
+msgid "all"
+msgstr "tot"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:16
+msgid "water"
+msgstr "aigua"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:28
+msgid "flat"
+msgstr "pla"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:34
+msgid "desert"
+msgstr "desert"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:40
+msgid "forest"
+msgstr "bosc"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:46
+msgid "frozen"
+msgstr "gelat"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:52
+msgid "rough"
+msgstr "abrupte"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:58
+msgid "cave"
+msgstr "cova"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:64
+msgid "village"
+msgstr "aldea"
+
+#. [editor_group]
+#: data/core/editor-groups.cfg:70
+msgid "castle"
+msgstr "castell"
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:4
+msgid "Single Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:15
+msgid "Radius 1 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:25
+msgid "Radius 2 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor2-brushes.cfg:55
+msgid "Hex Line NW-SE"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold ALT to "
+"paint base layer only"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:16
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain"
+msgstr ""
+
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:21
+msgid ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
+msgstr ""
+
+#. [menu]
+#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+msgid "File"
+msgstr "Archiu"
+
+#. [menu]
+#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+msgid "Edit"
+msgstr "Editar"
+
+#. [menu]
+#: data/themes/editor.cfg:481
+msgid "Settings"
+msgstr "Ajusts"
+
+#. [label]
+#: data/themes/editor.cfg:500 data/themes/editor2.cfg:263
+msgid "villages"
+msgstr "aldees"
+
+#. [menu]
+#: data/themes/editor2.cfg:141
+msgid "Map"
+msgstr ""
+
+#. [menu]
+#: data/themes/editor2.cfg:151
+msgid "Tool"
+msgstr ""
+
+#: src/editor/editor.cpp:237
+msgid "Draw tiles"
+msgstr "Dibuixar segments"
+
+#: src/editor/editor.cpp:239
+msgid "Fill"
+msgstr "Omplir"
+
+#: src/editor/editor.cpp:241
+msgid "Set player's starting position"
+msgstr "Definir la posició inicial del jugador"
+
+#: src/editor/editor.cpp:243
+msgid "Zoom in"
+msgstr "Acostar"
+
+#: src/editor/editor.cpp:245
+msgid "Zoom out"
+msgstr "Alluntar"
+
+#: src/editor/editor.cpp:247 src/editor2/editor_controller.cpp:656
+msgid "Undo"
+msgstr "Desfer"
+
+#: src/editor/editor.cpp:249 src/editor2/editor_controller.cpp:662
+msgid "Redo"
+msgstr "Refer"
+
+#: src/editor/editor.cpp:251
+msgid "Zoom to default view"
+msgstr "Escala predeterminada"
+
+#: src/editor/editor.cpp:253
+msgid "Toggle grid"
+msgstr "Activar quadrícula"
+
+#: src/editor/editor.cpp:255
+msgid "Resize the map"
+msgstr "Redimensionar el mapa"
+
+#: src/editor/editor.cpp:257
+msgid "Flip map"
+msgstr "Invertir el mapa"
+
+#: src/editor/editor.cpp:259
+msgid "Update transitions"
+msgstr "Actualisar transicions"
+
+#: src/editor/editor.cpp:261
+msgid "Delay transition updates"
+msgstr "Retart entre las actualisacions de la transició"
+
+#: src/editor/editor.cpp:477
+msgid "Language"
+msgstr "Idioma"
+
+#: src/editor/editor.cpp:478
+msgid "Choose your preferred language:"
+msgstr "Tria el teu idioma:"
+
+#: src/editor/editor.cpp:495 src/editor/editor_main.cpp:304
+msgid "Battle for Wesnoth Map Editor"
+msgstr "Editor de mapes de Batalla per Wesnoth"
+
+#: src/editor/editor.cpp:520 src/editor2/editor_controller.cpp:237
+msgid "Save the Map As"
+msgstr "Guardar com"
+
+#: src/editor/editor.cpp:531 src/editor2/editor_controller.cpp:241
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "Ya existix un mapa ab este nom. ¿Vols sobreescriure-ho?"
+
+#: src/editor/editor.cpp:554
+msgid "None"
+msgstr "Res"
+
+#: src/editor/editor.cpp:559 src/editor/editor.cpp:1425
+#: src/editor2/editor_map.cpp:103 src/editor2/mouse_action.cpp:265
+msgid "Player"
+msgstr "Jugador"
+
+#: src/editor/editor.cpp:563
+msgid "Which Player?"
+msgstr "¿Quin jugador?"
+
+#: src/editor/editor.cpp:564
+msgid "Which player should start here?"
+msgstr "¿Quin jugador hauria de començar ací?"
+
+#: src/editor/editor.cpp:630 src/editor2/editor_controller.cpp:202
+msgid "Choose a Map to Load"
+msgstr "Tria el mapa que vols carregar"
+
+#: src/editor/editor.cpp:634
+msgid ""
+"Warning: Illegal characters found in the map name. Please save under a "
+"different name."
+msgstr ""
+"Avís: s'han trobat caràcters invàlits en el nom del mapa. Per favor, guarda "
+"el mapa ab un nom diferent."
+
+#: src/editor/editor.cpp:647 src/editor/editor.cpp:727
+msgid "The file does not contain a valid map."
+msgstr "Est archiu no conté un mapa vàlit."
+
+#: src/editor/editor.cpp:1304 src/editor2/editor_controller.cpp:107
+msgid "Quit Editor"
+msgstr "Eixir de l'editor"
+
+#: src/editor/editor.cpp:1308
+msgid "Do you want to save the map before quitting?"
+msgstr "¿Vols guardar el mapa abans d'eixir?"
+
+#: src/editor/editor.cpp:1356 src/editor2/editor_controller.cpp:368
+msgid "Map saved."
+msgstr "Mapa guardat."
+
+#: src/editor/editor.cpp:1364 src/editor2/editor_controller.cpp:373
+msgid "Could not save the map: $msg"
+msgstr "No s'ha pogut guardar el mapa: $msg"
+
+#: src/editor/editor.cpp:1379
+msgid "Error: Illegal character in filename."
+msgstr "Erro: caràcters invàlits en el nom de l'archiu."
+
+#: src/editor/editor_palettes.cpp:464 src/editor2/editor_palettes.cpp:486
+msgid "FG"
+msgstr "PP"
+
+#: src/editor/editor_palettes.cpp:466 src/editor2/editor_palettes.cpp:488
+msgid "BG"
+msgstr "SP"
+
+#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
+#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
+msgid ""
+"Can't resize the map, the requested size is bigger than the maximum, size="
+msgstr ""
+"No es pot redimensionar el mapa, el tamany solicitat és major que el máxim, "
+"tamany="
+
+#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
+#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
+msgid " maximum="
+msgstr " màxim="
+
+#: src/editor2/editor_controller.cpp:165
+msgid "Fatal error"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:173
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:176
+msgid "There are unsaved changes in the map."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:178
+msgid "Quit"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:188
+msgid "There are unsaved changes in the map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:189
+msgid "Do you want to discard all changes you made to the map?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:280
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:390 src/editor2/editor_controller.cpp:396
+msgid "There was an error while loading the map:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:393
+msgid "Error loading map (format)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:399
+msgid "Error loading map (wml)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:658
+msgid "Can't Undo"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:664
+msgid "Can't Redo"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:262
+#, fuzzy
+msgid "(Player)^None"
+msgstr "Jugador"
+
+#: src/editor2/mouse_action.cpp:269
+msgid "Choose player"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:270
+msgid ""
+"Which player should start here? You can also use the 1-9 and delete keys to "
+"set/clear staring positions."
+msgstr ""
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "'$filename' no existix o no pot ser llegit."
+
+#~ msgid "Load failed: "
+#~ msgstr "Càrrega fallida: "
+
+#~ msgid "You must have a hex selected on the board."
+#~ msgstr "Has de tindre un hexàgon seleccionat en el mapa."
