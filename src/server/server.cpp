@@ -62,6 +62,7 @@
 #ifndef _WIN32
 #include <sys/times.h>
 
+
 namespace {
 
 clock_t get_cpu_time(bool active) {
@@ -279,10 +280,10 @@ private:
 	player_map players_;
 	player_map ghost_players_ ;
 
-	std::vector<game*> games_;
-	game not_logged_in_;
+	std::vector<wesnothd::game*> games_;
+	wesnothd::game not_logged_in_;
 	//! The lobby is implemented as a game.
-	game lobby_;
+	wesnothd::game lobby_;
 
 	//! server socket/fifo
 	input_stream& input_;
@@ -346,9 +347,9 @@ private:
 	                        simple_wml::document& data);
 	void process_data_game(const network::connection sock,
 	                       simple_wml::document& data);
-	void delete_game(std::vector<game*>::iterator game_it);
+	void delete_game(std::vector<wesnothd::game*>::iterator game_it);
 
-	void update_game_in_lobby(const game* g, network::connection exclude=0);
+	void update_game_in_lobby(const wesnothd::game* g, network::connection exclude=0);
 
 	void start_new_server();
 };
@@ -814,7 +815,7 @@ void server::run() {
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
 				                 
 			} else {
-				for (std::vector<game*>::iterator g = games_.begin();
+				for (std::vector<wesnothd::game*>::iterator g = games_.begin();
 					g != games_.end(); ++g)
 				{
 					if (!(*g)->is_member(e.socket)) {
@@ -1094,7 +1095,7 @@ void server::process_login(const network::connection sock,
 	LOG_SERVER << network::ip_address(sock) << "\t" << username
 		<< "\thas logged on. (socket: " << sock << ")\n";
 
-	for (std::vector<game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
+	for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
 		// Note: This string is parsed by the client to identify lobby join messages!
 		(*g)->send_server_message_to_all((username + " has logged into the lobby").c_str());
 	}
@@ -1218,7 +1219,7 @@ std::string server::process_command(const std::string& query) {
 		}
 		lobby_.send_server_message_to_all(parameters.c_str());
 		if (command == "msg") {
-			for (std::vector<game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
+			for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
 				(*g)->send_server_message_to_all(parameters.c_str());
 			}
 		}
@@ -1514,7 +1515,7 @@ void server::process_whisper(const network::connection sock,
 			continue;
 		}
 
-		std::vector<game*>::const_iterator g;
+		std::vector<wesnothd::game*>::const_iterator g;
 		for (g = games_.begin(); g != games_.end(); ++g) {
 			if (!(*g)->is_member(i->first)) continue;
 			// Don't send to players in a running game the sender is part of.
@@ -1569,8 +1570,8 @@ void server::process_data_lobby(const network::connection sock,
 			<< "\tcreates a new game: \"" << game_name << "\".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
-		games_.push_back(new game(players_, sock, game_name));
-		game& g = *games_.back();
+		games_.push_back(new wesnothd::game(players_, sock, game_name));
+		wesnothd::game& g = *games_.back();
 		if(game_password.empty() == false) {
 			g.set_password(game_password);
 		}
@@ -1591,7 +1592,7 @@ void server::process_data_lobby(const network::connection sock,
 		const std::string& password = (*data.root().child("join"))["password"].to_string();
 		int game_id = (*data.root().child("join"))["id"].to_int();
 
-		const std::vector<game*>::iterator g =
+		const std::vector<wesnothd::game*>::iterator g =
 			std::find_if(games_.begin(),games_.end(), game_id_matches(game_id));
 
 		static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
@@ -1679,7 +1680,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	}
 
-	std::vector<game*>::iterator itor;
+	std::vector<wesnothd::game*>::iterator itor;
 	for (itor = games_.begin(); itor != games_.end(); ++itor) {
 		if ((*itor)->is_owner(sock) || (*itor)->is_member(sock))
 			break;
@@ -1690,7 +1691,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	}
 
-	game* g = *itor;
+	wesnothd::game* g = *itor;
 
 	// If this is data describing the level for a game.
 	if (data.root().child("side")) {
@@ -2018,7 +2019,7 @@ void server::process_data_game(const network::connection sock,
 		<< ". (socket:" << sock << ")\n" << data.output();
 }
 
-void server::delete_game(std::vector<game*>::iterator game_it) {
+void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 	metrics_.game_terminated((*game_it)->termination_reason());
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
@@ -2077,7 +2078,7 @@ void server::delete_game(std::vector<game*>::iterator game_it) {
 	games_.erase(game_it);
 }
 
-void server::update_game_in_lobby(const game* g, network::connection exclude)
+void server::update_game_in_lobby(const wesnothd::game* g, network::connection exclude)
 {
 	simple_wml::document diff;
 	if(make_change_diff(*games_and_users_list_.root().child("gamelist"), "gamelist", "game", g->description(), diff)) {

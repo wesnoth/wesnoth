@@ -25,6 +25,8 @@
 
 //class player;
 
+namespace wesnothd {
+
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> user_vector;
 typedef std::vector<network::connection> side_vector;
@@ -217,11 +219,12 @@ private:
 };
 
 struct game_id_matches {
-	game_id_matches(int id) : id_(id) {}
+	game_id_matches(int id) : id_(id) {};
 	bool operator()(const game* g) const { return g->id() == id_; }
 
 private:
 	int id_;
 };
-
+}
 #endif
+
