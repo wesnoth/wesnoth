@@ -5,7 +5,10 @@
 
 # This had better take us to the top-level source directory.  
 # Otherwise, confusion will ensue. 
-cd ..
+
+#Detect location of this script use it to cd to top-level
+FULL_PATH=`dirname $(readlink -f $0)`
+cd $FULL_PATH/..
 if [ ! -d data -o ! -d images ]
 then
 	echo "sanity_check: " \
@@ -18,7 +21,7 @@ problems=no
 
 echo "Checking POTFILES correctness..."
 
-potfiles="po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in"
+potfiles="po/wesnoth/POTFILES.in po/wesnoth-lib/POTFILES.in po/wesnoth-editor/POTFILES.in po/wesnoth-test/POTFILES.in"
 
 # Gather the list of sources
 find src -name '*.cpp' -print | sort >/tmp/sschk$$_sources
