@@ -316,10 +316,9 @@ static void output_to_buffer(TCPsocket sock, const config& cfg, std::ostringstre
 
 static void make_network_buffer(const char* input, int len, std::vector<char>& buf)
 {
-	buf.resize(4 + len + 1);
-	SDLNet_Write32(len + 1, &buf[0]);
+	buf.resize(4 + len);
+	SDLNet_Write32(len, &buf[0]);
 	memcpy(&buf[4], input, len);
-	buf.back() = 0;
 }
 
 static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_size = -1)
@@ -505,8 +504,6 @@ static SOCKET_STATE send_file(buffer* buf)
 
 			if (upto == filesize)
 			{
-				buf->raw_buffer.push_back(0);
-				result = send_buffer(buf->sock, buf->raw_buffer, 1);
 				break;
 			}
 		}
@@ -544,8 +541,6 @@ static SOCKET_STATE send_file(buffer* buf)
 		}
 		if (upto == filesize)
 		{
-			buf->raw_buffer[0] = 0;
-			result = send_buffer(buf->sock, buf->raw_buffer, 1);
 			break;
 		}
 
