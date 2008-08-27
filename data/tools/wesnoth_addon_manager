@@ -98,7 +98,7 @@ if __name__ == "__main__":
         address += ":" + str(port)
 
     def get(name, version, uploads, cdir):
-        mythread = cs.get_campaign_raw_async(name, options.raw_download)
+        mythread = cs.get_campaign_raw_async(name)
 
         pcounter = 0
         while not mythread.event.isSet():

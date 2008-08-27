@@ -3,14 +3,13 @@ import socket, struct, glob, sys, shutil, threading, os
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 
-# See src/addon_management.cpp for specifications, among other files
+# See the following files (among others):
+# src/addon_management.cpp
+# src/network.cpp
 
-EMPTY_STRING = ''
-GZ_WRITE_MODE = 'wb'
-GZ_READ_MODE = 'rb'
 BWML_PREFIXES = "\x00\x01\x02\x03"
 
-
+dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
     portmap = (("15003", "1.5.x"), ("15004", "1.2.x"), ("15005", "1.4.x"))
@@ -28,8 +27,6 @@ class CampaignClient:
         self.wordcount = 4 # codewords in above dictionary
         self.codes = {} # dictionary for WML encoder
         self.codescount = 4 # codewords in above dictionary
-        self.gzIn = StringIO.StringIO()
-        self.gzOut = StringIO.StringIO()
         self.event = None
         self.name = None
         self.args = None
@@ -93,8 +90,8 @@ class CampaignClient:
         return False
 
     def makePacket( self, doc ):
-        root = wmldata.DataSub( "WML" )
-        root.insert( doc )
+        root = wmldata.DataSub("WML")
+        root.insert(doc)
         return root.make_string()
 
     def send_packet(self, packet):
@@ -102,58 +99,65 @@ class CampaignClient:
         Send binary data to the server.
         """
         # Compress the packet before we send it
-        z = gzip.GzipFile( EMPTY_STRING,
-                           mode=GZ_WRITE_MODE,
-                           fileobj=self.gzOut )
-        z.write( packet )
+        io = StringIO.StringIO()
+        z = gzip.GzipFile(mode = "w", fileobj = io)
+        z.write(packet)
         z.close()
-        zdata = self.gzOut.getvalue()
-        self.gzOut.seek(0)
-        self.gzOut.truncate()
-        zpacket = struct.pack("!l", len(zdata)) + zdata
-        self.sock.sendall( zpacket )
+        zdata = io.getvalue()
 
-    def read_packet(self, shortRead=False):
+        # Wesnoth expects a 0 byte after each packet (according to suokko)
+        zpacket = struct.pack("!i", len(zdata) + 1) + zdata + "\0"
+        self.sock.sendall(zpacket)
+
+    def read_packet(self, skip_last_0_hack = True):
         """
         Read binary data from the server.
-        shortRead is a hack to work around extra data delivered for unknown reason!
-        -oracle
         """
-        lenPacket = self.sock.recv(4)
-        self.length = l = struct.unpack("!l", lenPacket)[0]
+        packet = ""
+        while len(packet) < 4 and not self.canceled:
+            packet += self.sock.recv(4 - len(packet))
+        if self.canceled:
+            return None
+
+        self.length = l = struct.unpack("!i", packet)[0]
         packet = ""
         while len(packet) < l and not self.canceled:
             packet += self.sock.recv(l - len(packet))
             self.counter = len(packet)
         if self.canceled:
             return None
+        
+        global dumpi
+        dumpi += 1
+        open("dump%d" % dumpi, "wb").write(packet)
 
-        if packet.startswith( '\x1F\x8B' ):
-            # If GZIP compressed, decompress - ignoring last byte
-            if shortRead:
-                self.gzIn.write( packet[:-1] )
+        # There's a bug in the C++ code, so sometimes a 0 byte is sent.
+        if skip_last_0_hack:
+            packet = packet[:-1]
+        else:
+            self.sock.recv(1)
 
-            else:
-                self.gzIn.write( packet )
-            self.gzIn.seek(0)
-            z = gzip.GzipFile( EMPTY_STRING,
-                               mode=GZ_READ_MODE,
-                               fileobj=self.gzIn )
-            packet = z.read()
+        if packet.startswith("\x1F\x8B"):
+            sys.stderr.write("GZIP compression found...\n")
+            io = StringIO.StringIO(packet)
+            z = gzip.GzipFile(fileobj = io)
+            unzip = z.read()
             z.close()
-            self.gzIn.seek(0)
-            self.gzIn.truncate()
+            print len(unzip)
+            packet = unzip
 
         elif packet.startswith( '\x78\x9C' ):
-            # If ZLIB compressed, decompress
+            sys.stderr.write("ZLIB compression found...\n")
             packet = zlib.decompres( packet )
 
         return packet
 
     def decode( self, data ):
         if self.isBWML(data):
+            sys.stderr.write("Decoding binary WML...\n")
             data = self.decode_BWML( data )
         else:
+            sys.stderr.write("Decoding text WML...\n")
             data = self.decode_WML( data )
 
         return data
@@ -321,8 +325,7 @@ class CampaignClient:
         request = wmldata.DataSub("request_campaign_list")
         self.send_packet( self.makePacket( request ) )
 
-        # Passing True to read_packet is a hack - likely a campaignd bug
-        return self.decode( self.read_packet( True ) )
+        return self.decode(self.read_packet())
 
     def validate_campaign(self, name, passphrase):
         """
@@ -343,8 +346,8 @@ class CampaignClient:
         request.set_text_val("name", name)
         request.set_text_val("passphrase", passphrase)
 
-        self.send_packet( self.makePacket( request ) )
-        return self.decode( self.read_packet( True) )
+        self.send_packet(self.makePacket(request))
+        return self.decode(self.read_packet())
 
     def change_passphrase(self, name, old, new):
         """
@@ -356,7 +359,7 @@ class CampaignClient:
         request.set_text_val("new_passphrase", new)
 
         self.send_packet( self.makePacket( request ) )
-        return self.decode( self.read_packet() )
+        return self.decode(self.read_packet())
 
     def get_campaign_raw(self, name):
         """
@@ -365,7 +368,7 @@ class CampaignClient:
         request = wmldata.DataSub("request_campaign")
         request.insert(wmldata.DataText("name", name))
         self.send_packet(self.makePacket(request))
-        raw_packet = self.read_packet()
+        raw_packet = self.read_packet(skip_last_0_hack = False)
 
         if self.canceled:
             return None
@@ -441,7 +444,6 @@ class CampaignClient:
         print "putting dir", name, os.path.basename(directory)
         dataNode.insert( put_dir(name, directory) )
 
-        request.debug()
         print
 ##        print "packet:", self.makePacket( request )
         print "packet len:", len(self.makePacket( request ))
@@ -450,7 +452,7 @@ class CampaignClient:
 
         return self.decode( self.read_packet( True ) )
 
-    def get_campaign_raw_async(self, name, raw = False):
+    def get_campaign_raw_async(self, name):
         """
         This is like get_campaign_raw, but returns immediately, 
         doing server communications in a background thread.
@@ -515,7 +517,6 @@ class CampaignClient:
         path is the path under which it will be placed.
         """
 
-        data.debug()
         try:
             os.mkdir(path)
         except OSError:

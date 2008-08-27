@@ -157,10 +157,10 @@ class DataSub(Data):
             print "Removing empty #ifdef %s" % item.name
             self.remove(item)
 
-    def write_file( self, f, indent=0, textdomain="" ):
-        f.write( self.make_string( indent, textdomain ) )
+    def write_file(self, f, indent=0, textdomain=""):
+        f.write(self.make_string( indent, textdomain))
         
-    def make_string( self, indent=0, textdomain="" ):
+    def make_string(self, indent = 0, textdomain = ""):
         """Write the data object to the given file object."""
         ifdef = 0
         result = []
@@ -242,7 +242,7 @@ class DataSub(Data):
         if ifdef:
             result.append("#endif\n")
 
-        return "".join( result )
+        return "".join(result)
 
     def is_empty(self):
         return len(self.data) == 0
