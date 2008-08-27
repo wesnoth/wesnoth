@@ -108,6 +108,9 @@ key="\fIvalue\fR,\fIvalue\fR,..."
 .SS "Global keys:"
 .
 .TP
+.B ban_save_file
+Full or relative path to a file that server can read and write. All bans active in server will be writen there.
+.TP
 .B connections_allowed
 The number of allowed connections from the same IP. \fB0\fR means infinite. (default: \fB5\fR)
 .TP
@@ -129,6 +132,9 @@ The message of the day.
 .TP
 .B passwd
 The password used to gain admin privileges. Usually it starts with `admin '.
+.TP
+.B restart_command
+Command that server can use to start new server process. Restart can be done using /query restart.
 .TP
 .B versions_accepted
 A comma separated list of version strings to be accepted by the server. `*' and `?' from wildcard patterns are supported.
@@ -155,6 +161,8 @@ A comma separated list of versions to redirect. Behaves the same way as
 in regard to wildcard patterns.
 .RE
 .P
+.B [ban_time]
+A tag to define keywords for temporary ban lengths. Name and time keys are used by server.
 .B [proxy]
 A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
 Accepts the same keys as 
