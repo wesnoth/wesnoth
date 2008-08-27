@@ -37,6 +37,8 @@
 #include <ostream>
 #include <string>
 #include <vector>
+
+#include "game_errors.hpp"
 #include "tstring.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -113,9 +115,8 @@ public:
 	std::string debug() const;
 	std::string hash() const;
 
-	struct error {
-		error(const std::string& msg) : message(msg) {}
-		std::string message;
+	struct error : public game::error {
+		error(const std::string& message) : game::error(message) {}
 	};
 
 	struct child_pos {

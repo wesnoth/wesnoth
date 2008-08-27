@@ -19,6 +19,7 @@
 
 #include "about.hpp"
 #include "config.hpp"
+#include "config_cache.hpp"
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
@@ -124,10 +125,7 @@ public:
 	bool play_test();
 	bool play_multiplayer_mode();
 
-	void reset_game_cfg();
-	void reset_defines_map();
 	void reload_changed_game_config();
-	void read_configs(std::string&);
 
 	bool is_loading() const;
 	bool load_game();
@@ -159,8 +157,8 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void read_game_cfg(bool use_cache);
-	void refresh_game_cfg(bool reset_translations=false);
+	void load_game_cfg();
+	void reset_translations();
     void set_unit_data();
 
 	bool detect_video_settings(); // FIXME
@@ -188,8 +186,6 @@ private:
 	std::string test_scenario_;
 
 	bool test_mode_, multiplayer_mode_, no_gui_;
-	bool use_caching_;
-	bool force_valid_cache_;
 	int force_bpp_;
 
 	config game_config_;
@@ -206,13 +202,12 @@ private:
 	bool loaded_game_show_replay_;
 	bool loaded_game_cancel_orders_;
 
-	preproc_map defines_map_, old_defines_map_;
-
 	std::string multiplayer_server_;
 	bool jump_to_campaign_, jump_to_multiplayer_;
 #ifdef USE_EDITOR2
 	bool jump_to_editor_;
 #endif
+	game_config::config_cache& cache_;
 };
 
 game_controller::game_controller(int argc, char** argv) :
@@ -234,8 +229,6 @@ game_controller::game_controller(int argc, char** argv) :
 	test_mode_(false),
 	multiplayer_mode_(false),
 	no_gui_(false),
-	use_caching_(true),
-	force_valid_cache_(false),
 	force_bpp_(-1),
 	game_config_(),
 	disp_(NULL),
@@ -246,14 +239,13 @@ game_controller::game_controller(int argc, char** argv) :
 	loaded_game_(),
 	loaded_game_show_replay_(false),
 	loaded_game_cancel_orders_(false),
-	defines_map_(),
-	old_defines_map_(),
 	multiplayer_server_(),
 	jump_to_campaign_(false),
 	jump_to_multiplayer_(false)
 #ifdef USE_EDITOR2
 	 ,jump_to_editor_(false)
 #endif
+	,cache_(game_config::config_cache::instance())
 {
 	bool no_sound = false;
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
@@ -265,7 +257,7 @@ game_controller::game_controller(int argc, char** argv) :
 		if(val == "--fps") {
 			preferences::set_show_fps(true);
 		} else if(val == "--nocache") {
-			use_caching_ = false;
+			cache_.set_use_cache(false);
 		} else if(val == "--max-fps") {
 			if(arg_+1 != argc_) {
 				++arg_;
@@ -280,7 +272,7 @@ game_controller::game_controller(int argc, char** argv) :
 				preferences::set_draw_delay(fps);
 			}
 		} else if(val == "--validcache") {
-			force_valid_cache_ = true;
+			cache_.set_force_valid_cache(true);
 		} else if(val == "--resolution" || val == "-r") {
 			if(arg_+1 != argc_) {
 				++arg_;
@@ -549,11 +541,12 @@ bool game_controller::init_video()
 
 bool game_controller::init_config()
 {
-	//Resets old_defines_map_, to force refresh_game_cfg to reload
-	//everything.
-	old_defines_map_.clear();
-	reset_game_cfg();
-	refresh_game_cfg();
+	cache_.clear_defines();
+
+	// make sure that multiplayer mode is set if command line parameter is selected
+	if (multiplayer_mode_)
+		cache_.add_define("MULTIPLAYER");
+	load_game_cfg();
 
 	game_config::load_config(game_config_.child("game_config"));
 	hotkey::deactivate_all_scopes();
@@ -603,10 +596,10 @@ bool game_controller::play_test()
 	state_.scenario = test_scenario_;
 
 	try {
-		refresh_game_cfg();
+		load_game_cfg();
 	} catch(config::error&) {
-		reset_game_cfg();
-		refresh_game_cfg();
+		cache_.clear_defines();
+		load_game_cfg();
 		return false;
 	}
 
@@ -861,32 +854,34 @@ bool game_controller::load_game()
 					error_log);
 		}
 
-		reset_defines_map();
-		defines_map_[cfg["difficulty"]] = preproc_define();
-
-		if(defines_map_.count("NORMAL")) {
-			defines_map_["MEDIUM"] = preproc_define();
-		}
+		cache_.clear_defines();
+		game_config::scoped_preproc_define dificulty_def(cfg["difficulty"]);
 
 		const std::string& campaign_define = cfg["campaign_define"];
+		game_config::scoped_preproc_define_sptr campaign_define_def;
 		if(campaign_define.empty() == false) {
-			defines_map_[campaign_define] = preproc_define();
+			campaign_define_def.reset(new game_config::scoped_preproc_define(campaign_define));
 		}
+		
+		game_config::scoped_preproc_define_sptr campaign_type_def;
 		if (campaign_define.empty() && (cfg["campaign_type"] == "multiplayer")){
-			defines_map_["MULTIPLAYER"] = preproc_define();
+			campaign_type_def.reset(new game_config::scoped_preproc_define("MULTIPLAYER"));
 		}
 
 		const std::vector<std::string> campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
 
+		typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
+		std::deque<define_ptr> extra_defines;
 		for(std::vector<std::string>::const_iterator i = campaign_xtra_defines.begin(); i != campaign_xtra_defines.end(); ++i) {
-			defines_map_[*i] = preproc_define();
+			define_ptr newdefine(new game_config::scoped_preproc_define(*i));
+			extra_defines.push_back(newdefine);
 		}
 
 		try {
-			refresh_game_cfg();
+			load_game_cfg();
 		} catch(config::error&) {
-			reset_game_cfg();
-			refresh_game_cfg();
+			cache_.clear_defines();
+			load_game_cfg();
 			return false;
 		}
 
@@ -924,10 +919,10 @@ bool game_controller::load_game()
 			lexical_cast_default<unsigned> (state_.snapshot["random_calls"]);
 		state_.rng().seed_random(seed, calls);
 
-	} catch(game::error& e) {
+	} catch(config::error& e) {
 		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		return false;
-	} catch(config::error& e) {
+	} catch(game::error& e) {
 		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		return false;
 	} catch(io_exception&) {
@@ -967,13 +962,13 @@ bool game_controller::load_game()
 		}
 	}
 
-	if(state_.campaign_type == "tutorial") {
-		defines_map_["TUTORIAL"] = preproc_define();
-	} else if(state_.campaign_type == "multiplayer") {
+	if(state_.campaign_type == "multiplayer") {
 		for(config::child_itors sides = state_.snapshot.child_range("side");
 		    sides.first != sides.second; ++sides.first) {
 			if((**sides.first)["controller"] == "network")
 				(**sides.first)["controller"] = "human";
+			if((**sides.first)["controller"] == "network_ai")
+				(**sides.first)["controller"] = "human_ai";
 		}
 	}
 
@@ -999,8 +994,8 @@ void game_controller::set_tutorial()
 	state_.campaign_type = "tutorial";
 	state_.scenario = "tutorial";
 	state_.campaign_define = "TUTORIAL";
-	reset_defines_map();
-	defines_map_["TUTORIAL"] = preproc_define();
+	cache_.clear_defines();
+	cache_.add_define("TUTORIAL");
 
 }
 
@@ -1088,8 +1083,8 @@ bool game_controller::new_campaign()
 		}
 
 		state_.difficulty = difficulties[dlg.result()];
-		reset_defines_map();
-		defines_map_[difficulties[dlg.result()]] = preproc_define();
+		cache_.clear_defines();
+		cache_.add_define(difficulties[dlg.result()]);
 	}
 
 	state_.campaign_define = campaign["define"];
@@ -1149,13 +1144,9 @@ namespace
 		refresh_addon_version_info_cache();
 
 		//force a reload of configuration information
-		old_defines_map_.clear();
-		reset_game_cfg();
-		data_tree_checksum(true); // Reload checksums
-		refresh_game_cfg();
-		::init_textdomains(game_config_);
-		paths_manager_.set_paths(game_config_);
+		cache_.recheck_filetree_checksum();
 		clear_binary_paths_cache();
+		init_config();
 	}
 
 void game_controller::start_wesnothd()
@@ -1287,9 +1278,9 @@ bool game_controller::play_multiplayer()
 		}
 
 		/* do */ {
-			reset_defines_map();
-			defines_map_[state_.campaign_define] = preproc_define();
-			refresh_game_cfg();
+			cache_.clear_defines();
+			cache_.add_define(state_.campaign_define);
+			load_game_cfg();
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
 			// update binary paths
@@ -1370,7 +1361,7 @@ bool game_controller::change_language()
 			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
 
-		refresh_game_cfg(true);
+		reset_translations();
 	}
 
 	return true;
@@ -1392,214 +1383,6 @@ void game_controller::show_upload_begging()
 }
 
 
-void game_controller::read_configs(std::string& error_log)
-{
-	// We need this as soon as possible for loading MP binary_paths
-	// only when they are needed.
-	if(multiplayer_mode_) {
-		defines_map_["MULTIPLAYER"] = preproc_define();
-	}
-
-	preproc_map defines_map(defines_map_);
-
-	std::string user_error_log;
-	//read the file and then write to the cache
-	scoped_istream stream = preprocess_file("data/", &defines_map, &error_log);
-
-	//reset the parse counter before reading the game files
-	if (loadscreen::global_loadscreen) {
-		loadscreen::global_loadscreen->parser_counter = 0;
-	}
-
-	read(game_config_, *stream, &error_log);
-	// clone and put the gfx rules aside so that we can prepend the add-on
-	// rules to them.
-	config core_terrain_rules;
-	// FIXME: there should be a canned algorithm for cloning child_list objects,
-	// along with the memory their elements point to... little implementation detail.
-	foreach(config const* p_cfg, game_config_.get_children("terrain_graphics")) {
-		core_terrain_rules.add_child("terrain_graphics", *p_cfg);
-	}
-	game_config_.clear_children("terrain_graphics");
-
-	// load usermade add-ons
-	const std::string user_campaign_dir = get_addon_campaigns_dir();
-	std::vector< std::string > error_addons;
-	// Scan addon directories
-	std::vector<std::string> user_addons;
-
-	get_files_in_dir(user_campaign_dir,NULL,&user_addons,ENTIRE_FILE_PATH);
-
-	// Load the addons
-	for(std::vector<std::string>::const_iterator uc = user_addons.begin(); uc != user_addons.end(); ++uc) {
-		std::string oldstyle_cfg = *uc + ".cfg";
-		std::string main_cfg = *uc + "/_main.cfg";
-		std::string toplevel;
-		if (file_exists(oldstyle_cfg))
-			toplevel = oldstyle_cfg;
-		else if (file_exists(main_cfg))
-			toplevel = main_cfg;
-		else
-			continue;
-
-		try {
-			preproc_map addon_defines_map(defines_map);
-			scoped_istream stream = preprocess_file(toplevel, &addon_defines_map);
-
-			std::string addon_error_log;
-
-			config umc_cfg;
-			read(umc_cfg, *stream, &addon_error_log);
-
-			if (addon_error_log.empty()) {
-				game_config_.append(umc_cfg);
-			} else {
-				user_error_log += addon_error_log;
-				error_addons.push_back(*uc);
-			}
-		} catch(config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-			error_addons.push_back(*uc);
-			user_error_log += err.message + "\n";
-		} catch(preproc_config::error&) {
-			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-			error_addons.push_back(*uc);
-			//no need to modify the error log here, already done by the preprocessor
-		} catch(io_exception&) {
-			ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
-			error_addons.push_back(*uc);
-		}
-		if(error_addons.empty() == false) {
-			std::stringstream msg;
-			msg << _n("The following add-on had errors and could not be loaded:",
-					"The following add-ons had errors and could not be loaded:",
-					error_addons.size());
-			for(std::vector<std::string>::const_iterator i = error_addons.begin(); i != error_addons.end(); ++i) {
-				msg << "\n" << *i;
-			}
-
-			msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
-
-			gui::show_error_message(disp(),msg.str());
-		}
-	}
-
-	game_config_.merge_children("units");
-	game_config_.append(core_terrain_rules);
-
-	config& hashes = game_config_.add_child("multiplayer_hashes");
-	for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
-		hashes[(**ch)["id"]] = (*ch)->hash();
-	}
-}
-
-//this function reads the game configuration, searching for valid cached copies first
-void game_controller::read_game_cfg(bool use_cache)
-{
-	log_scope("read_game_cfg");
-
-	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
-
-	bool is_valid = true;
-	std::stringstream str;
-	for(preproc_map::const_iterator i = defines_map_.begin(); i != defines_map_.end(); ++i) {
-		if(i->second.value != "" || i->second.arguments.empty() == false) {
-			is_valid = false;
-			break;
-		}
-
-		str << " " << i->first;
-	}
-	//std::string localename = get_locale().localename;
-	//str << "-lang_" << (localename.empty() ? "default" : localename);
-
-	if(is_valid) {
-		const std::string& cache = get_cache_dir();
-		if(cache != "") {
-			sha1_hash sha(str.str()); // use a hash for a shorter display of the defines
-			const std::string fname = cache + "/cache-v" + game_config::version + "-" + sha.display();
-			const std::string fname_checksum = fname + ".checksum";
-
-			file_tree_checksum dir_checksum;
-
-			if(use_cache && !force_valid_cache_) {
-				try {
-					if(file_exists(fname_checksum)) {
-						config checksum_cfg;
-						scoped_istream stream = istream_file(fname_checksum);
-						read(checksum_cfg, *stream);
-						dir_checksum = file_tree_checksum(checksum_cfg);
-					}
-				} catch(config::error&) {
-					ERR_CONFIG << "cache checksum is corrupt\n";
-				} catch(io_exception&) {
-					ERR_CONFIG << "error reading cache checksum\n";
-				}
-			}
-
-			if(force_valid_cache_) {
-				LOG_CONFIG << "skipping cache validation (forced)\n";
-			}
-
-			if(use_cache && file_exists(fname) && (force_valid_cache_ || (dir_checksum == data_tree_checksum()))) {
-				LOG_CONFIG << "found valid cache at '" << fname << "' using it\n";
-				log_scope("read cache");
-				try {
-					scoped_istream stream = istream_file(fname);
-					read_compressed(game_config_, *stream);
-					set_unit_data();
-					return;
-				} catch(config::error&) {
-					ERR_CONFIG << "cache is corrupt. Loading from files\n";
-				} catch(io_exception&) {
-					ERR_CONFIG << "error reading cache. Loading from files\n";
-				}
-			}
-
-			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << " with defines_map "<< str.str() << "'\n";
-			DBG_CONFIG << ((use_cache && file_exists(fname)) ? "yes":"no ") << " " << dir_checksum.modified << "==" << data_tree_checksum().modified << "  " << dir_checksum.nfiles << "==" << data_tree_checksum().nfiles << "  " << dir_checksum.sum_size << "==" << data_tree_checksum().sum_size << "\n";
-
-			std::string error_log;
-
-			read_configs(error_log);
-
-			if(!error_log.empty()) {
-				gui::show_error_message(disp(),
-						_("Warning: Errors occurred while loading game configuration files: '") +
-						font::nullify_markup(error_log));
-
-			} else {
-				try {
-					scoped_ostream cache = ostream_file(fname);
-					write_compressed(*cache, game_config_);
-					config checksum_cfg;
-					data_tree_checksum().write(checksum_cfg);
-					scoped_ostream checksum = ostream_file(fname_checksum);
-					write(*checksum, checksum_cfg);
-				} catch(io_exception&) {
-					ERR_FS << "could not write to cache '" << fname << "'\n";
-				}
-			}
-
-			set_unit_data();
-			return;
-		}
-	}
-
-	ERR_CONFIG << "caching cannot be done. Reading file\n";
-
-	std::string error_log;
-
-	read_configs(error_log);
-	if(!error_log.empty()) {
-		gui::show_error_message(disp(),
-				_("Warning: Errors occurred while loading game configuration files: '") +
-				font::nullify_markup(error_log));
-
-	}
-	set_unit_data();
-}
-
 void game_controller::set_unit_data(){
     const config* const units = game_config_.child("units");
     if(units != NULL) {
@@ -1607,101 +1390,146 @@ void game_controller::set_unit_data(){
     }
 }
 
-void game_controller::refresh_game_cfg(bool reset_translations)
+void game_controller::reset_translations()
 {
+	cursor::setter cur(cursor::WAIT);
+
+	try {
+		game_config_.reset_translation();
+		// we may have translatable strings in [game_config]
+		// e.g. team color names are defined there
+		game_config::load_config(game_config_.child("game_config"));
+	} catch(game::error& e) {
+		ERR_CONFIG << "Error loading game configuration files\n";
+		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
+			font::nullify_markup(e.message) + _("' (The game will now exit)"));
+		throw;
+	}
+
+}
+
+void game_controller::load_game_cfg()
+{
+	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
+	cursor::setter cur(cursor::WAIT);
 	// The loadscreen will erase the titlescreen
 	// NOTE: even without loadscreen, needed after MP lobby
 	gui::set_background_dirty();
-
 	try {
-		if(old_defines_map_.empty() || defines_map_ != old_defines_map_ || reset_translations) {
-			cursor::setter cur(cursor::WAIT);
+		/** 
+		 * Read all game configs
+		 * First we should load data/
+		 * Then handle terrains so that they are last loaded from data/
+		 * 2nd everything in userdata
+		 **/
+		//reset the parse counter before reading the game files
+		loadscreen::global_loadscreen->parser_counter = 0;
 
-			if(!reset_translations) {
-				game_config_.clear();
-				read_game_cfg(use_caching_);
-			} else {
-				game_config_.reset_translation();
-				// we may have translatable strings in [game_config]
-				// e.g. team color names are defined there
-				game_config::load_config(game_config_.child("game_config"));
-			}
+		cache_.get_config(game_config::path +"/data", game_config_);
 
-			old_defines_map_ = defines_map_;
+		// clone and put the gfx rules aside so that we can prepend the add-on
+		// rules to them.
+		config core_terrain_rules;
+		// FIXME: there should be a canned algorithm for cloning child_list objects,
+		// along with the memory their elements point to... little implementation detail.
+		foreach(config const* p_cfg, game_config_.get_children("terrain_graphics")) {
+			core_terrain_rules.add_child("terrain_graphics", *p_cfg);
 		}
-	} catch(config::error& e) {
+		game_config_.clear_children("terrain_graphics");
+
+		// load usermade add-ons
+		const std::string user_campaign_dir = get_addon_campaigns_dir();
+		std::vector< std::string > error_addons;
+		// Scan addon directories
+		std::vector<std::string> user_addons;
+
+		get_files_in_dir(user_campaign_dir,NULL,&user_addons,ENTIRE_FILE_PATH);
+		std::string user_error_log;
+
+		// Load the addons
+		for(std::vector<std::string>::const_iterator uc = user_addons.begin(); uc != user_addons.end(); ++uc) {
+			std::string oldstyle_cfg = *uc + ".cfg";
+			std::string main_cfg = *uc + "/_main.cfg";
+			std::string toplevel;
+			if (file_exists(oldstyle_cfg))
+				toplevel = oldstyle_cfg;
+			else if (file_exists(main_cfg))
+				toplevel = main_cfg;
+			else
+				continue;
+
+			try {
+				config umc_cfg;
+				cache_.get_config(toplevel, umc_cfg);
+
+				game_config_.append(umc_cfg);
+			} catch(config::error& err) {
+				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+				error_addons.push_back(*uc);
+				user_error_log += err.message + "\n";
+			} catch(preproc_config::error& err) {
+				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+				error_addons.push_back(*uc);
+				user_error_log += err.message + "\n";
+			} catch(io_exception&) {
+				ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
+				error_addons.push_back(*uc);
+			}
+			if(error_addons.empty() == false) {
+				std::stringstream msg;
+				msg << _n("The following add-on had errors and could not be loaded:",
+						"The following add-ons had errors and could not be loaded:",
+						error_addons.size());
+				for(std::vector<std::string>::const_iterator i = error_addons.begin(); i != error_addons.end(); ++i) {
+					msg << "\n" << *i;
+				}
+
+				msg << "\n" << _("ERROR DETAILS:") << "\n" << font::nullify_markup(user_error_log);
+
+				gui::show_error_message(disp(),msg.str());
+			}
+		}
+
+		game_config_.merge_children("units");
+		game_config_.append(core_terrain_rules);
+
+		config& hashes = game_config_.add_child("multiplayer_hashes");
+		for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
+			hashes[(**ch)["id"]] = (*ch)->hash();
+		}
+
+		set_unit_data();
+
+	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
 			font::nullify_markup(e.message) + _("' (The game will now exit)"));
-		throw e;
-	} catch(preproc_config::error& e) {
-		ERR_CONFIG << "Error loading game configuration files\n";
-		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
-			font::nullify_markup(e.message) + _("' (The game will now exit)"));
-		throw e;
+		throw;
 	}
 }
 
-void game_controller::reset_game_cfg()
-{
-	reset_defines_map();
-
-	//load in the game's configuration files
-#if defined(__APPLE__)
-	defines_map_["APPLE"] = preproc_define();
-#endif
-
-	if(multiplayer_mode_) {
-		defines_map_["MULTIPLAYER"] = preproc_define();
-	} else {
-		defines_map_["NORMAL"] = preproc_define();
-		defines_map_["MEDIUM"] = preproc_define();
-	}
-
-	//refresh_game_cfg();
-}
-
-void game_controller::reset_defines_map()
-{
-	defines_map_.clear();
-
-/* APPLE is only meant for configuration so it's not there */
-
-#ifdef USE_TINY_GUI
-	defines_map_["TINY"] = preproc_define();
-#endif
-
-	if (game_config::small_gui)
-    	defines_map_["SMALL_GUI"] = preproc_define();
-
-#ifdef HAVE_PYTHON
-	defines_map_["PYTHON"] = preproc_define();
-#endif
-}
 
 void game_controller::play_game(RELOAD_GAME_DATA reload)
 {
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::global_loadscreen->set_progress(0, _("Loading data files"));
 	if(reload == RELOAD_DATA) {
+		game_config::scoped_preproc_define_sptr campaign_define;
 		if(state_.campaign_define.empty() == false) {
-			defines_map_[state_.campaign_define] = preproc_define();
+			campaign_define.reset(new game_config::scoped_preproc_define(state_.campaign_define));
 		}
 
-		for( std::vector<std::string>::const_iterator i = state_.campaign_xtra_defines.begin();
-		     i != state_.campaign_xtra_defines.end(); ++i) {
-			defines_map_[*i] = preproc_define();
+		typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
+		std::deque<define_ptr> extra_defines;
+		for(std::vector<std::string>::const_iterator i = state_.campaign_xtra_defines.begin(); i != state_.campaign_xtra_defines.end(); ++i) {
+			define_ptr newdefine(new game_config::scoped_preproc_define(*i));
+			extra_defines.push_back(newdefine);
 		}
-
-		if(defines_map_.count("NORMAL")) {
-			defines_map_["MEDIUM"] = preproc_define();
-		}
-
 		try {
-			refresh_game_cfg();
+			load_game_cfg();
 		} catch(config::error&) {
-			reset_game_cfg();
-			refresh_game_cfg();
+			cache_.clear_defines();
+			load_game_cfg();
 			return;
 		}
 	}
@@ -1759,10 +1587,10 @@ void game_controller::play_replay()
 #ifdef USE_EDITOR2
 editor2::EXIT_STATUS game_controller::start_editor()
 {
-    reset_game_cfg();
-    defines_map_["EDITOR"] = preproc_define();
-    defines_map_["EDITOR2"] = preproc_define();
-    refresh_game_cfg();
+    cache_.clear_defines();
+    cache_.add_define("EDITOR");
+    cache_.add_define("EDITOR2");
+	load_game_cfg();
     const binary_paths_manager bin_paths_manager(game_config_);
 	return editor2::start(game_config_, video_);
 }
@@ -2114,13 +1942,7 @@ static int play_game(int argc, char** argv)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	for(int first_time = true;;first_time = false){
-        //init_config already processed the configs, so we don't need to do it for the
-        //first loop pass.
-		if (!first_time){
-			//make sure the game config is always set to how it should be at the title screen
-			//game.reset_game_cfg();
-		}
+	for(;;){
 
 		// reset the TC, since a game can modify it, and it may be used
 		// by images in add-ons or campaigns dialogs

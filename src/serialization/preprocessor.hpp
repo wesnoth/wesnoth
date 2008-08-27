@@ -23,6 +23,8 @@
 #include <string>
 #include <vector>
 
+#include "game_errors.hpp" 
+
 struct preproc_define
 {
 	preproc_define() : value(""), arguments(), textdomain(""), linenum(0), location("") {}
@@ -42,9 +44,8 @@ struct preproc_define
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def);
 
 struct preproc_config {
-	struct error {
-		error(const std::string& msg) : message(msg) {}
-		std::string message;
+	struct error : public game::error {
+		error(const std::string& message) : game::error(message) {}
 	};
 };
 

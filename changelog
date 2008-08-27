@@ -32,6 +32,8 @@ Version 1.5.3+svn:
    * prevent some negative/nonsense values in direct WML unit modifications
    * Renamed the advanceto key in [unit_type] to advances_to in order to be
      consistent with its own and [unit]'s internals.
+ * Networking
+   * removed null termination character from end of packet send by wesnoth
  * Miscellaneous and bug fixes:
    * Changed side_drop handling not to automaticaly assign AI for side if
      leader is dead (bug #12186)
@@ -40,6 +42,7 @@ Version 1.5.3+svn:
      of a number.
    * Fixed [modify_turns] causing weird behavior when used in prestart
      or start events to change current turn.
+   * Made config cache code available to eveverywhere in wesnoth
    * Fixed [modify_turns] giving the unwanted side-effect of changing
      turn limit when only current= modifier was used.
    * Fixed [modify_turns] not updating $turn_number when current= was

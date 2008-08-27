@@ -18,7 +18,6 @@
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
-#include "loadscreen.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
@@ -131,11 +130,6 @@ namespace game_config {
 		//read the file and then write to the cache
 		scoped_istream stream = preprocess_file(path, &defines_map, &error_log);
 
-		//reset the parse counter before reading the game files
-		if (loadscreen::global_loadscreen) {
-			loadscreen::global_loadscreen->parser_counter = 0;
-		}
-
 		read(cfg, *stream, &error_log);
 		if (!error_log.empty())
 		{
@@ -151,7 +145,7 @@ namespace game_config {
 		for(preproc_map::const_iterator i = defines_map_.begin(); i != defines_map_.end(); ++i) {
 			if(i->second.value != "" || i->second.arguments.empty() == false) {
 				is_valid = false;
-				ERR_CONFIG << "Preproc define not valid\n";
+				ERR_CONFIG << "Preprocessor define not valid\n";
 				break;
 			}
 
@@ -188,7 +182,7 @@ namespace game_config {
 				}
 
 				if(file_exists(fname) && (force_valid_cache_ || (dir_checksum == data_tree_checksum()))) {
-					LOG_CONFIG << "found valid cache at '" << fname << "' using it\n";
+					LOG_CONFIG << "found valid cache at '" << fname << "' with defines_map " << defines_string.str() << "\n";
 					log_scope("read cache");
 					try {
 						read_file(fname,cfg);
@@ -229,17 +223,6 @@ namespace game_config {
 		}
 
 		return;
-		ERR_CONFIG << "caching cannot be done. Reading file\n";
-
-		std::string error_log;
-
-		read_configs(cfg, error_log);
-		if(!error_log.empty()) {
-			gui::show_error_message(*game_display::get_singleton(),
-					_("Warning: Errors occurred while loading game configuration files: '") +
-					font::nullify_markup(error_log));
-
-		}
 	}
 
 	void config_cache::set_use_cache(bool use)
@@ -259,11 +242,13 @@ namespace game_config {
 
 	void config_cache::add_define(const std::string& define)
 	{
+		DBG_CONFIG << "adding define: " << define << "\n";
 		defines_map_[define] = preproc_define();
 	}
 
 	void config_cache::remove_define(const std::string& define)
 	{
+		DBG_CONFIG << "removing define: " << define << "\n";
 		defines_map_.erase(define);
 	}
 }

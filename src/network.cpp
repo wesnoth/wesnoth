@@ -866,7 +866,7 @@ connection receive_data(std::vector<char>& buf
 		{
 			bandwidth_in = &temp;
 		}
-		const int headers = 5;
+		const int headers = 4;
 		bandwidth_in->reset(new network::bandwidth_in(buf.size() + headers));
 	}
 #endif

@@ -16,6 +16,8 @@
 #define CONFIG_CACHE_HPP_INCLUDED
 
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
+
 #include "config.hpp"
 #include "serialization/preprocessor.hpp"
 
@@ -119,6 +121,7 @@ namespace game_config {
 				}
 		};
 	typedef scoped_preproc_define_internal<config_cache> scoped_preproc_define;
+	typedef boost::scoped_ptr<scoped_preproc_define> scoped_preproc_define_sptr;
 
 }
 #endif
