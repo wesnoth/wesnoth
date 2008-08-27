@@ -67,7 +67,7 @@ void ttext_::mouse_left_button_double_click(tevent_handler&)
 	DBG_G_E << "Text: left mouse button double click.\n";
 
 	selection_start_ = 0;
-	selection_length_ = text_.size();
+	selection_length_ = text_.get_length();
 
 }
 
@@ -206,12 +206,11 @@ void ttext_::key_press(tevent_handler& /*event*/,
 
 void ttext_::set_value(const std::string& text)
 { 
-	if(text != text_) { 
-		text_ = text; 
-		calculate_char_offset(); 
+	if(text != text_.text()) { 
+		text_.set_text(text, false);
 
 		// default to put the cursor at the end of the buffer.
-		selection_start_ = text_.size();
+		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		set_canvas_text();
 		set_dirty(); 
@@ -236,13 +235,25 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		set_dirty();
 
 	} else {
-		assert(offset <= text_.size());
+		assert(offset <= text_.get_length());
 		selection_start_ = offset;
 		selection_length_ = 0;
 
 		set_canvas_text();
 		set_dirty();
 	}
+}
+
+void ttext_::insert_char(const Uint16 unicode)
+{
+	delete_selection();
+
+	text_.insert_unicode(selection_start_, unicode);
+
+	// Update status
+	set_cursor(selection_start_ + 1, false);
+	set_canvas_text();
+	set_dirty();
 }
 
 void ttext_::copy_selection(const bool mouse)
@@ -255,7 +266,7 @@ void ttext_::copy_selection(const bool mouse)
 		start -= length;
 	}
 
-	const wide_string& wtext = utils::string_to_wstring(text_);
+	const wide_string& wtext = utils::string_to_wstring(text_.text());
 	const std::string& text = utils::wstring_to_string(
 		wide_string(wtext.begin() + start, wtext.begin() + start + length));
 
@@ -271,11 +282,8 @@ void ttext_::paste_selection(const bool mouse)
 
 	delete_selection();
 
-	text_.insert(selection_start_, text);
+	selection_start_ += text_.insert_text(selection_start_, text);
 
-	selection_start_ += utils::string_to_wstring(text).size();
-
-	calculate_char_offset(); 
 	set_canvas_text();
 	set_dirty(); 
 }
@@ -323,7 +331,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 
 	handled = true;
 	const int offset = selection_start_ + 1 + selection_length_;
-	if(offset <= text_.size()) {
+	if(offset <= text_.get_length()) {
 		set_cursor(offset, modifier & KMOD_SHIFT);
 	}
 }
@@ -369,7 +377,7 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 	handled = true;
 	if(selection_length_ != 0) {
 		delete_selection();
-	} else if (selection_start_ < text_.size()) {
+	} else if (selection_start_ < text_.get_length()) {
 		delete_char(false);
 	}
 }

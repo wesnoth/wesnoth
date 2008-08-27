@@ -16,6 +16,7 @@
 #define GUI_WIDGETS_TEXT_HPP_INCLUDED
 
 #include "gui/widgets/control.hpp"
+#include "../../text.hpp"
 
 #include <string>
 
@@ -72,9 +73,9 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_value(const std::string& text); 
-	std::string get_value() const { return text_; }
+	std::string get_value() const { return text_.text(); }
 
-	const std::string& text() const { return text_; }
+	const std::string& text() const { return text_.text(); }
 
 protected:
 
@@ -95,10 +96,10 @@ protected:
 	 *                            position till the end of the data?
 	 */
 	void goto_end_of_data(const bool select = false) 
-		{ set_cursor(text_.size(), select); }
+		{ set_cursor(text_.get_length(), select); }
 
 	/**
-	 * Moves the cursor to the beginning of the line.
+	 * Moves the cursor to the beginning of the line
 	 *
 	 * @param select              Select the text from the original cursor
 	 *                            position till the beginning of the line?
@@ -133,7 +134,7 @@ protected:
 	 *
 	 * @param unicode             The unicode value of the character to insert.
 	 */
-	virtual void insert_char(const Uint16 unicode) = 0;
+	void insert_char(const Uint16 unicode);
 
 	/**
 	 *  Deletes the character.
@@ -153,6 +154,15 @@ protected:
 	/** Pastes the current selection. */
 	virtual void paste_selection(const bool mouse);
 
+	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
+
+	gui2::tpoint get_cursor_position(
+		const unsigned column, const unsigned line = 0) const
+		{ return text_.get_cursor_position(column, line); }
+
+	tpoint get_column_line(const tpoint& position) const
+		{ return text_.get_column_line(position); }
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	
 	size_t get_selection_start() const { return selection_start_; }
@@ -160,6 +170,7 @@ protected:
 
 	size_t get_selection_length() const { return selection_length_; }
 	void set_selection_length(const unsigned selection_length);
+
 
 private:
 	/** Note the order of the states must be the same as defined in settings.hpp. */
@@ -176,10 +187,7 @@ private:
 	tstate state_;
 
 	/** The text entered in the widget. */
-	std::string text_;
-
-	/** Calculates the offsets of all chars. */
-	virtual void calculate_char_offset() = 0;
+	font::ttext text_;
 
 	/** Start of the selected text. */
 	size_t selection_start_;

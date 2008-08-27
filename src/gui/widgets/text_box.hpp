@@ -115,7 +115,6 @@ class ttext_box : public ttext_
 public:
 	ttext_box() :
 		ttext_(),
-		character_offset_(),
 		history_(),
 		text_x_offset_(0),
 		text_y_offset_(0),
@@ -162,9 +161,6 @@ protected:
 		{ goto_start_of_data(select); }
 
 	/** Inherited from ttext_. */
-	void insert_char(const Uint16 unicode);
-
-	/** Inherited from ttext_. */
 	void delete_char(const bool before_cursor);
 
 	/** Inherited from ttext_. */
@@ -176,32 +172,14 @@ protected:
 
 private:
 
-	/** 
-	 * Contains the end offset of each character in the text area.
-	 *
-	 * This is used for placing the cursor at the proper offset and determine
-	 * the offset for a mouse click.
-	 */
-	std::vector<unsigned> character_offset_;
-
-	/**
-	 * Gets the character at the wanted offset.
-	 * 
-	 * If the click is beyond the text, the last character will be selected.
-	 * 
-	 * @param offset              The offset in the widget to test.
-	 *
-	 * @returns                   The character offset where the click occured.
-	 */
-	unsigned get_character_offset_at(const unsigned offset);
-
 	/** The history text for this widget. */
 	ttext_history history_;
 
 	/** 
 	 * The x offset in the widget where the text starts.
 	 * 
-	 * This value is needed for get_character_offset_at()
+	 * This value is needed to translate a location in the widget to a location
+	 * in the text.
 	 */
 	unsigned text_x_offset_;
 
@@ -224,9 +202,6 @@ private:
 
 	/** Is the mouse in dragging mode, this affects selection in mouse move */
 	bool dragging_;
-
-	/** Inherited from ttext_. */
-	void calculate_char_offset();
 
 	/** 
 	 * Inherited from ttext_.

@@ -46,12 +46,6 @@
 
 namespace gui2 {
 
-static surface render_text(const std::string& text, unsigned font_size)
-{
-	static SDL_Color col = {0, 0, 0, 0};
-	return font::get_rendered_text(text, font_size, col, TTF_STYLE_NORMAL);
-}
-
 ttext_history ttext_history::get_history(const std::string& id, const bool enabled) 
 {
 	std::vector<std::string>* vec = preferences::get_history(id);
@@ -121,41 +115,36 @@ void ttext_box::set_size(const SDL_Rect& rect)
 
 void ttext_box::set_canvas_text()
 {
+	/***** Gather the info *****/
+	
+	// Set the cursor info.
+	const unsigned start = get_selection_start();
+	const int length = get_selection_length();
+
+	// Set the selection info
+	unsigned start_offset = 0;
+	unsigned end_offset = 0;
+	if(length == 0) {
+		// No nothing.
+	} else if(length > 0) {
+		start_offset = get_cursor_position(start).x;
+		end_offset = get_cursor_position(start + length).x;
+	} else {
+		start_offset = get_cursor_position(start + length).x;
+		end_offset = get_cursor_position(start).x;
+	}
+
+	/***** Set in all canvases *****/
+
 	foreach(tcanvas& tmp, canvas()) {
 
-		// NOTE when get_selection_start() == - get_selection_length() then the
-		// offset calculation will access character_offset_[-1] so add special
-		// cases to use 0 instead.  The same can happen if
-		// get_selection_start() == 0.
-
-		// Set the general variables.
 		tmp.set_variable("text", variant(get_value()));
 		tmp.set_variable("text_x_offset", variant(text_x_offset_));
 		tmp.set_variable("text_y_offset", variant(text_y_offset_));
 
-		// Set the cursor info.
-		const unsigned start = get_selection_start();
-		const int len = get_selection_length();
-		if(get_value().empty() || start + len == 0) {
-			tmp.set_variable("cursor_offset", variant(0));
-		} else {
-			tmp.set_variable("cursor_offset", 
-				variant(character_offset_[start - 1 + len]));
-		}
+		tmp.set_variable("cursor_offset", 
+			variant(get_cursor_position(start + length).x));
 
-		// Set the seleciton info
-		unsigned start_offset = 0;
-		unsigned end_offset = 0;
-		if(len == 0) {
-			// No nothing.
-		} else if(len > 0) {
-			start_offset = start == 0 ? 0 :character_offset_[start - 1];
-			end_offset = character_offset_[start - 1 + len];
-		} else {
-			start_offset = 
-				(start + len == 0) ? 0 : character_offset_[start - 1 + len];
-			end_offset = character_offset_[start - 1];
-		}
 		tmp.set_variable("selection_offset", variant(start_offset));
 		tmp.set_variable("selection_width", variant(end_offset  - start_offset ));
 	}
@@ -194,46 +183,6 @@ void ttext_box::mouse_left_button_double_click(tevent_handler&)
 	DBG_G_E << "Text box: left mouse double click.\n";
 
 	select_all();
-}
-
-void ttext_box::insert_char(const Uint16 unicode)
-{
-	delete_selection();
-
-	// Determine the width of the new character.
-	std::string tmp_text;
-	tmp_text.insert(tmp_text.begin(), unicode);
-
-	surface surf = render_text(tmp_text, config()->text_font_size);
-	assert(surf);
-	const unsigned width = surf->w;
-
-	// Insert the char in the buffer, we need to assume it's a wide string.
-	wide_string tmp = utils::string_to_wstring(get_value());
-	tmp.insert(tmp.begin() + get_selection_start(), unicode);
-
-	// Update the widths.
-	character_offset_.insert(
-		character_offset_.begin() + get_selection_start(), width);
-
-	if(get_selection_start() != 0) {
-		character_offset_[get_selection_start()] 
-			+= character_offset_[get_selection_start() - 1]; 
-	}
-
-	const unsigned start = get_selection_start() + 1;
-	// set_value also resets the selection start, maybe add a real insert
-	// member to avoid that.
-	set_value(utils::wstring_to_string(tmp));
-	for(size_t i = start; 
-			i < character_offset_.size(); ++i) {
-
-		character_offset_[i] += width;
-	}
-
-	set_cursor(start, false);
-	set_canvas_text();
-	set_dirty();
 }
 
 void ttext_box::delete_char(const bool before_cursor)
@@ -283,8 +232,8 @@ void ttext_box::handle_mouse_selection(
 		return;
 	}
 
-	int offset = 
-		get_character_offset_at(mouse.x - static_cast<int>(text_x_offset_));
+	int offset = get_column_line(tpoint(
+		mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
 
 	if(offset < 0) {
 		return;
@@ -295,19 +244,6 @@ void ttext_box::handle_mouse_selection(
 	set_canvas_text();
 	set_dirty();
 	dragging_ |= start_selection;
-}
-
-unsigned ttext_box::get_character_offset_at(const unsigned offset)
-{
-	unsigned result = 0;
-	foreach(unsigned off, character_offset_) {
-		if(offset < off) {
-			return result;
-		}
-
-		++result;
-	}
-	return get_value().size();
 }
 
 void ttext_box::update_offsets()
@@ -338,23 +274,6 @@ void ttext_box::update_offsets()
  
  	// Force an update of the canvas since now text_font_height is known.
 	set_canvas_text();
-}
-
-void ttext_box::calculate_char_offset()
-{
-	assert(config());
-	character_offset_.clear();
-
-	std::string rendered_text;
-	const unsigned font_size = config()->text_font_size;
-
-	foreach(const wchar_t& unicode, utils::string_to_wstring(get_value())) {
-		rendered_text.insert(rendered_text.end(), unicode);
-		surface surf = render_text(rendered_text, font_size);
-		assert(surf);
-		character_offset_.push_back(surf->w);
-
-	}
 }
 
 void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
