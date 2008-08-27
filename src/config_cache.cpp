@@ -77,6 +77,11 @@ namespace game_config {
 
 	}
 
+	void config_cache::get_config(const std::string& path, config& cfg)
+	{
+		load_configs(path, cfg);
+	}
+
 	config_ptr config_cache::get_config(const std::string& path)
 	{
 		config_ptr ret(new config());
