@@ -41,12 +41,12 @@ if "pot-update" in COMMAND_LINE_TARGETS:
             source_pot = env.Command(
                 join(domain, domain + ".cpp.po"),
                 sources,
-                """xgettext --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
+                """xgettext --force-po --default-domain=%s --directory=. --add-comments=TRANSLATORS: \
                 --from-code=UTF-8 --sort-by-file --keyword=sgettext \
                 --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 \
                 --files-from=%s --copyright-holder='Wesnoth development team' --msgid-bugs-address=http://bugs.wesnoth.org/ \
                 --keyword=_ --keyword=N_ --output=$TARGET \
-                ; touch $TARGET; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
+                ; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
                 """ % (domain, join("po", domain, "POTFILES.in"))
                 )
         cfgs = []
@@ -58,7 +58,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
             wml_pot = env.Command(
                 join(domain, domain + ".wml.po"),
                 cfgs,
-                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET; touch $TARGET" % domain
+                "utils/wmlxgettext --directory=. --domain=%s $SOURCES > $TARGET" % domain
                 )
 
         new_pot = str(pot) + ".new"
