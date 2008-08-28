@@ -31,6 +31,7 @@ class CampaignClient:
         self.name = None
         self.args = None
         self.cs = None
+        self.verbose = False
 
         if address != None:
             s = address.split(":")
@@ -126,31 +127,30 @@ class CampaignClient:
         if self.canceled:
             return None
         
-        global dumpi
-        dumpi += 1
-        open("dump%d" % dumpi, "wb").write(packet)
-
         if packet.startswith("\x1F\x8B"):
-            sys.stderr.write("GZIP compression found...\n")
+            if self.verbose:
+                sys.stderr.write("GZIP compression found...\n")
             io = StringIO.StringIO(packet)
             z = gzip.GzipFile(fileobj = io)
             unzip = z.read()
             z.close()
-            print len(unzip)
             packet = unzip
 
         elif packet.startswith( '\x78\x9C' ):
-            sys.stderr.write("ZLIB compression found...\n")
+            if self.verbose:
+                sys.stderr.write("ZLIB compression found...\n")
             packet = zlib.decompres( packet )
 
         return packet
 
     def decode( self, data ):
         if self.isBWML(data):
-            sys.stderr.write("Decoding binary WML...\n")
+            if self.verbose:
+                sys.stderr.write("Decoding binary WML...\n")
             data = self.decode_BWML( data )
         else:
-            sys.stderr.write("Decoding text WML...\n")
+            if self.verbose:
+                sys.stderr.write("Decoding text WML...\n")
             data = self.decode_WML( data )
 
         return data
