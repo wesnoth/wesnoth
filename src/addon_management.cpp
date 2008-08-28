@@ -296,10 +296,13 @@ void unarchive_addon(const config& cfg)
 }
 
 namespace {
-	//! Strip the ".cfg" extension and replace "_" with " " for display.
-	//! @param files      List of files in the add-ons directory.
-	//! @param dirs       List of subdirectories in the add-ons directory.
-	//! @param parent_dir Path to the add-ons directory.
+	/**
+	 * Strip the ".cfg" extension and replace "_" with " " for display.
+	 *
+	 * @param files      List of files in the add-ons directory.
+	 * @param dirs       List of subdirectories in the add-ons directory.
+	 * @param parent_dir Path to the add-ons directory.
+	 */
 	void prepare_addons_list_for_display(std::vector<std::string>& files,
 	                                     std::vector<std::string>& dirs,
 	                                     const std::string& parent_dir)
@@ -337,10 +340,14 @@ namespace {
 		}
 	}
 	
-	//! Creates a more human-readable representation of a file size.
-	//! @param size_str File size string, as obtained from a config object.
-	//! @return         Representation of file size in the biggest byte multiply
-	//!                 possible.
+	/**
+	 * Creates a more human-readable representation of a file size.
+	 *
+	 * @param size_str File size string, as obtained from a config object.
+	 *
+	 * @returns        Representation of file size in the biggest byte multiply
+	 *                 possible.
+	 */
 	static std::string format_file_size(const std::string& size_str)
 	{
 		double size = lexical_cast_default<double>(size_str,0.0);
@@ -378,9 +385,13 @@ namespace {
 		}
 	}
 	
-	//! Return a short string describing an add-on's type.
-	//! @param type Numerical add-on type.
-	//! @return     A string, translated to the current locale.
+	/**
+	 * Return a short string describing an add-on's type.
+	 *
+	 * @param type Numerical add-on type.
+	 *
+	 * @return     A string, translated to the current locale.
+	 */
 	std::string get_translatable_addon_type(ADDON_TYPE type)
 	{
 		switch (type) {
@@ -405,10 +416,14 @@ namespace {
 		}
 	}
 	
-	//! Checks if an add-on's dependencies are met.
-	//! @param disp    Object to be used for displaying interactive messages.
-	//! @param deplist List of dependencies (add-on identifiers).
-	//! @return        true if dependencies are met; false otherwise.
+	/**
+	 * Checks if an add-on's dependencies are met.
+	 *
+	 * @param disp    Object to be used for displaying interactive messages.
+	 * @param deplist List of dependencies (add-on identifiers).
+	 *
+	 * @returns       true if dependencies are met; false otherwise.
+	 */
 	bool addon_dependencies_met(game_display& disp, const std::vector<std::string>& deplist)
 	{
 		const std::vector<std::string>& installed = installed_addons();

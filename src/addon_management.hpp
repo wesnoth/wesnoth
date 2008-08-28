@@ -59,15 +59,17 @@ void archive_addon(const std::string& addon_name, class config& cfg);
 /** Unarchives an add-on from campaignd's retrieved config object. */
 void unarchive_addon(const class config& cfg);
 
-/** Shows the game add-ons manager dialog.
- *  @param disp game_display instance to draw on.
+/** 
+ * Shows the game add-ons manager dialog.
+ *
+ * @param disp game_display instance to draw on.
  */
 void manage_addons(class game_display& disp);
 
-//! Refreshes the per-session cache of add-on's version
-//! information structs.
+/** Refreshes the per-session cache of add-on's version information structs. */
 void refresh_addon_version_info_cache();
-//! Returns a particular installed add-on's version information.
+
+/** Returns a particular installed add-on's version information. */
 const class version_info& get_addon_version_info(const std::string& addon);
 
 #endif /* !ADDON_MANAGEMENT_HPP_INCLUDED */
