@@ -372,8 +372,6 @@ if env["svnrev"] != "" and env["svnrev"] != "exported":
                     "Generating revision.hpp..."
                     ))
     game_config_env.Append(CPPDEFINES = 'HAVE_REVISION')
-if env['dummy_locales']:
-    game_config_env.Append(CPPDEFINES = 'USE_DUMMYLOCALES')
 
 sources = []
 if "TAGS" in COMMAND_LINE_TARGETS:

@@ -43,7 +43,6 @@ opts.AddOptions(
     PathOption('bindir', 'Where to install binaries', "bin", PathOption.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathOption('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathOption.PathAccept),
-    BoolOption('dummy_locales','Set to enable Wesnoth private locales', False),
     PathOption('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathOption.PathAccept),
     BoolOption('fribidi','Clear to disable bidirectional-language support', True),
     BoolOption('desktop_entry','Clear to disable desktop-entry', True),
