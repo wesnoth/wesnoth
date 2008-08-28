@@ -75,7 +75,9 @@ def is_directive(str):
 
 def closer(str):
     "Are we looking at a closing tag?"
-    if str.startswith("[/"):
+    if str.startswith("#"):
+        return False
+    elif str.startswith("[/") or str.startswith(")"):
         return True
     else:
         for prefix in closer_prefixes:
@@ -85,10 +87,15 @@ def closer(str):
 
 def opener(str):
     "Are we looking at an opening tag?"
+    if str.startswith("#"):
+        return False
     # This logic is a bit obscure. The 'not "[/" in str' catches the
     # obvious case of a closing tag, but it also catches the idiom
     # [allow_undo][/allow_undo] which we want to treat as a no-op.
-    if (str.startswith("[") and not closer(str) and not "[/" in str):
+    elif (str.startswith("[") and not closer(str) and not "[/" in str):
+        return True
+    # Trailing ( opens a scope to be closed by ).
+    elif str.endswith("(\n"):
         return True
     else:
         for prefix in opener_prefixes:
