@@ -336,7 +336,7 @@ private:
 	void process_query(const network::connection sock,
 	                   simple_wml::node& query);
 	//! Process commands from admins and users.
-	std::string process_command(const std::string& cmd);
+	std::string process_command(const std::string& cmd, const std::string& issuer_name);
 	//! Handle private messages between players.
 	void process_whisper(const network::connection sock,
 	                     simple_wml::node& whisper) const;
@@ -598,7 +598,7 @@ void server::run() {
 				// Then client would reconnect to new server automaticaly.
 				// This would also allow server to move to new port or address if there is need
 
-				process_command("msg All games ended. Shutting down now. Reconnect to the new server.");
+				process_command("msg All games ended. Shutting down now. Reconnect to the new server.", "system");
 				throw network::error("shut down");
 			}
 
@@ -611,7 +611,7 @@ void server::run() {
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_.read_line(admin_cmd)) {
-				process_command(admin_cmd);
+				process_command(admin_cmd, "socket");
 			}
 
 			time_t now = time(NULL); 
@@ -1116,15 +1116,15 @@ void server::process_query(const network::connection sock,
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
 			<< "\tnick: "<< pl->second.name() << std::endl;
-		response << process_command(command.to_string());
+		response << process_command(command.to_string(), pl->second.name());
 	// Commands a player may issue.
 	} else if (command == "help") {
 		response << help_msg;
 	} else if (command == "status") {
-		response << process_command(command.to_string() + " " + pl->second.name());
+		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
 	} else if (command == "status " + pl->second.name() || command == "metrics"
 	|| command == "motd" || command == "wml" || command == "netstats" || command == "netstats all") {
-		response << process_command(command.to_string());
+		response << process_command(command.to_string(), pl->second.name());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "
 			<< network::ip_address(sock) << "\tnick: "
@@ -1154,7 +1154,7 @@ void server::start_new_server() {
 	LOG_SERVER << "New server started with command: " << restart_command << "\n";
 }
 
-std::string server::process_command(const std::string& query) {
+std::string server::process_command(const std::string& query, const std::string& issuer_name) {
 	std::ostringstream out;
 	const std::string::const_iterator i = std::find(query.begin(),query.end(),' ');
 	const std::string command(query.begin(),i);
@@ -1172,7 +1172,7 @@ std::string server::process_command(const std::string& query) {
 			server_.stop();
 			input_.stop();
 			graceful_restart = true;
-			process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.");
+			process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
 			out << "Server is doing graceful shut down.";
 		}
 
@@ -1189,7 +1189,7 @@ std::string server::process_command(const std::string& query) {
 			input_.stop();
 			// start new server
 			start_new_server();
-			process_command("msg The server has been restarted. You may finish your games but can't start new ones and new players can't join this server.");
+			process_command("msg The server has been restarted. You may finish your games but can't start new ones and new players can't join this server.", issuer_name);
 			out << "New server started.";
 		}
 #endif
@@ -1242,19 +1242,27 @@ std::string server::process_command(const std::string& query) {
 					<< stats.bytes_received << " bytes\n";
 			}
 		}
-	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban") {
+	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban" || command == "gban") {
 		if (parameters == "") {
 			ban_manager_.list_bans(out);
 		} else {
 			bool banned_ = false;
 			const bool kick = (command == "kban" || command == "kickban");
-			const std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+			const bool group_ban = command == "gban";
+			std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
 			if (first_space == parameters.end())
 			{
 				return ban_manager_.get_ban_help();
 			}
 			std::string::iterator second_space = std::find(first_space+1, parameters.end(), ' ');
 			const std::string target(parameters.begin(), first_space);
+			std::string group;
+			if (group_ban)
+			{
+				group = std::string(first_space+1, second_space);
+				first_space = second_space;
+				second_space = std::find(first_space+1, parameters.end(), ' ');
+			}
 			const std::string time(first_space+1,second_space);
 			time_t parsed_time = ban_manager_.parse_time(time);
 			if (parsed_time == 0)
@@ -1268,13 +1276,19 @@ std::string server::process_command(const std::string& query) {
 			}
 			std::string reason(second_space + 1, parameters.end());
 			utils::strip(reason);
+			if (reason.empty())
+				return ban_manager_.get_ban_help();
+
 			// if we find a '.' consider it an ip mask 
 			//! @todo  FIXME: should also check for only numbers
 			if (std::count(target.begin(), target.end(), '.') >= 1) {
 				banned_ = true;
-				out << "Set ban on '" << target << "' with end time '" <<  parsed_time << "'  with reason: '" << reason << "'.\n";
 
-				ban_manager_.ban(target, parsed_time, reason);
+				std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
+				if (err.empty())
+					out << "Set ban on '" << target << "' with end time '" <<  wesnothd::banned::get_human_end_time(parsed_time) << "'  with reason: '" << reason << "'.\n";
+				else
+					out << err << "\n";
 	
 				if (kick) {
 					for (wesnothd::player_map::const_iterator pl = players_.begin();
@@ -1294,9 +1308,12 @@ std::string server::process_command(const std::string& query) {
 						banned_ = true;
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
-							ban_manager_.ban(ip,parsed_time, reason);
-							out << "Set ban on '" << ip << "' with end time '" << parsed_time << "' with reason: '"
-								<< reason << "'.\n";
+							std::string err = ban_manager_.ban(ip,parsed_time, reason, issuer_name, group);
+							if (err.empty())
+								out << "Set ban on '" << ip << "' with end time '" << wesnothd::banned::get_human_end_time(parsed_time) << "' with reason: '"
+									<< reason << "'.\n";
+							else
+								out << err << "\n";
 						}
 						if (kick) {
 							out << "Kicked " << pl->second.name() << ".\n";
@@ -1314,6 +1331,11 @@ std::string server::process_command(const std::string& query) {
 			return "You must enter an ipmask to unban.";
 		}
 		ban_manager_.unban(out, parameters);
+	} else if (command == "ungban") {
+		if (parameters == "") {
+			return "You must enter an ipmask to unban.";
+		}
+		ban_manager_.unban_group(out, parameters);
 	} else if (command == "kick") {
 		if (parameters == "") {
 			return "You must enter a mask to kick.";
@@ -2105,6 +2127,9 @@ int main(int argc, char** argv) {
 # define FIFODIR "/var/run/wesnothd"
 #endif
 	std::string fifo_path = std::string(FIFODIR) + "/socket";
+
+	// setting path to currentworking directory
+	game_config::path = get_cwd();
 
 	// show 'info' by default
 	lg::set_log_domain_severity("server", 2);
