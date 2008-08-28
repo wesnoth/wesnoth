@@ -27,6 +27,21 @@ wmlindent will ignore them.  You may need to do this for unbalanced
 macros (it's better, though, to get rid of those where possible).
 Use 'wmlindent: {start,stop} ignoring' anywhere in a comment.
 
+It is also possible to declare custom openers an closers, e.g for macros
+that are actually control constructs.  To do this, use declarations
+
+    # wmlindent: opener "{EXCEPTIONAL_OPENER "
+    # wmlindent: closer "{EXCEPTIONAL_CLOSER "
+
+The lines after an opener will be indented an extra level; a closer
+and lines following will be indented one level less. Note that these
+declare prefixes; any prefix match to the non-whitespace text of a line
+will be recognized.
+
+The public utility macros "{FOREACH" and "{NEXT" come as wired-in exceptions,
+because it is not guaranteed that their indent declarations will be processed
+before the macro library is reached.
+
 Interrupting will be safe, as each reindenting will be done to a copy
 that is atomically renamed when it's done.  If the output file is identical
 to the input, the output file will simply be deleted, so the timestamp
@@ -48,6 +63,9 @@ indent already zero; these two conditions strongly suggest unbalanced WML.
 import sys, os, getopt, filecmp, re
 from wesnoth import wmltools
 
+closer_prefixes = ["{NEXT "]
+opener_prefixes = ["{FOREACH "]
+
 def is_directive(str):
     "Identify things that shouldn't be indented."
     for prefix in ("#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"):
@@ -57,11 +75,26 @@ def is_directive(str):
 
 def closer(str):
     "Are we looking at a closing tag?"
-    return str.startswith("[/")
+    if str.startswith("[/"):
+        return True
+    else:
+        for prefix in closer_prefixes:
+           if str.startswith(prefix):
+               return True
+    return False
 
 def opener(str):
     "Are we looking at an opening tag?"
-    return str.startswith("[") and not closer(str)
+    # This logic is a bit obscure. The 'not "[/" in str' catches the
+    # obvious case of a closing tag, but it also catches the idiom
+    # [allow_undo][/allow_undo] which we want to treat as a no-op.
+    if (str.startswith("[") and not closer(str) and not "[/" in str):
+        return True
+    else:
+        for prefix in opener_prefixes:
+           if str.startswith(prefix):
+               return True
+    return False
 
 class bailout:
     def __init__(self, filename, lineno, msg):
@@ -82,6 +115,17 @@ def reindent(name, infp, outfp):
     multitag = re.compile(r"\[a-z]].*\[[a-z]")	# Avoid triggering on arrays
     for line in infp:
         countlines += 1
+        # User may declare indentation exceptions
+        if "wmlindent: opener" in line:
+            tag = line.split('"')[1]
+            if verbose and not quiet:
+                print >>sys.stderr, "wmlindent: declaring indent exception for %s" % tag
+            opener_prefixes.append(tag)
+        elif "wmlindent: closer" in line:
+            tag = line.split('"')[1]
+            if verbose and not quiet:
+                print >>sys.stderr, "wmlindent: declaring outdent exception for %s" % tag 
+            closer_prefixes.append(tag)
         # Implement passthrough mode
         if "wmlindent: start ignoring" in line:
             ignoring = True
@@ -118,7 +162,7 @@ def reindent(name, infp, outfp):
         # one that started the block.
         if closer(transformed):
             if indent == "":
-                print >>sys.stderr, 'wmlindent: "%s", line %d: close tag with indent already zero.' % (name, countlines)
+                print >>sys.stderr, 'wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip())
             else:
                 indent = indent[:-len(wmltools.baseindent)]
         # Cope with blank lines outside of multiline literals
@@ -144,11 +188,7 @@ def reindent(name, infp, outfp):
         # And ship the line
         outfp.write(output)
         # May need to indent based on the line we just saw.
-        # This logic is a bit obscure.  The 'not "[/" in transformed'
-        # catches the obvious case of a closing tag, but it also
-        # catches the idiom [allow_undo][/allow_undo] which we
-        # want to treat as a no-op.
-        if transformed.startswith("[") and not "[/" in transformed:
+        if opener(transformed):
             indent += wmltools.baseindent
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
@@ -212,7 +252,8 @@ def convertor(linefilter, arglist, exclude):
                                 sys.stderr.write("wmlindent: %s unchanged\n" % filename)
                             os.remove(filename + ".out")
                         else:
-                            sys.stderr.write("wmlindent: %s changed\n" % filename)
+                            if not quiet:
+                                sys.stderr.write("wmlindent: %s changed\n" % filename)
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
@@ -225,9 +266,10 @@ def convertor(linefilter, arglist, exclude):
                                 os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h?de:v",
-                                         ['help', 'dryrun', 'exclude=', 'verbose'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h?de:qv",
+                                         ['help', 'dryrun', 'exclude=', 'quiet', 'verbose'])
     verbose = 0
+    quiet = False
     dryrun = False
     exclude = []
     for (opt, val) in options:
@@ -239,6 +281,8 @@ if __name__ == '__main__':
             verbose = max(1, verbose)
         elif opt in ('-e', '--exclude'):
             exclude.append(val)
+        elif opt in ('-q', '--quiet'):
+            quiet = True
         elif opt in ('-v', '--verbose'):
             verbose += 1
     convertor(lambda n, f1, f2: reindent(n, f1, f2),
