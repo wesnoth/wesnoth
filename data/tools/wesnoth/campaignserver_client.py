@@ -105,11 +105,10 @@ class CampaignClient:
         z.close()
         zdata = io.getvalue()
 
-        # Wesnoth expects a 0 byte after each packet (according to suokko)
-        zpacket = struct.pack("!i", len(zdata) + 1) + zdata + "\0"
+        zpacket = struct.pack("!i", len(zdata)) + zdata
         self.sock.sendall(zpacket)
 
-    def read_packet(self, skip_last_0_hack = True):
+    def read_packet(self):
         """
         Read binary data from the server.
         """
@@ -130,12 +129,6 @@ class CampaignClient:
         global dumpi
         dumpi += 1
         open("dump%d" % dumpi, "wb").write(packet)
-
-        # There's a bug in the C++ code, so sometimes a 0 byte is sent.
-        if skip_last_0_hack:
-            packet = packet[:-1]
-        else:
-            self.sock.recv(1)
 
         if packet.startswith("\x1F\x8B"):
             sys.stderr.write("GZIP compression found...\n")
@@ -368,7 +361,7 @@ class CampaignClient:
         request = wmldata.DataSub("request_campaign")
         request.insert(wmldata.DataText("name", name))
         self.send_packet(self.makePacket(request))
-        raw_packet = self.read_packet(skip_last_0_hack = False)
+        raw_packet = self.read_packet()
 
         if self.canceled:
             return None
@@ -523,7 +516,13 @@ class CampaignClient:
             pass
         for f in data.get_all("file"):
             name = f.get_text_val("name", "?")
-            contents = f.get_text("contents").get_value()
+            contents = f.get_text("contents")
+            if not contents:
+                contents = ""
+                sys.stderr.write("File %s is empty.\n" % name)
+                sys.stderr.write(f.debug(write = False) + "\n")
+            if contents:
+                contents = contents.get_value()
             if verbose:
                 print i * " " + name + " (" +\
                       str(len(contents)) + ")"
