@@ -416,7 +416,7 @@ std::string get_exe_dir()
 	buf[path_size] = 0;
 	return std::string(dirname(buf));
 #else
-	return std::string();
+	return get_cwd();
 #endif
 }
 
