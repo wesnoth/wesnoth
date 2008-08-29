@@ -77,9 +77,9 @@ editor_bindings:
 
 # For performing test lifts of mainline
 lift:
-	./wmllint --oldversion 1.3.1 --verbose $(MAINLINE) $(UMC)
+	./wmllint --verbose $(MAINLINE) $(UMC)
 trylift:
-	./wmllint --oldversion 1.3.1 --dryrun --verbose $(MAINLINE) $(UMC)
+	./wmllint --dryrun --verbose $(MAINLINE) $(UMC)
 diffs:
 	./wmllint --diffs $(MAINLINE) $(UMC)
 revert:
