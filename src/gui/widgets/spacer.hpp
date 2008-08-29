@@ -50,6 +50,9 @@ public:
 	tpoint get_best_size() const 
 		{ return best_size_ != tpoint(0, 0) ? best_size_ : tcontrol::get_best_size(); }
 
+	/** Import overloaded versions. */
+	using tcontrol::get_best_size;
+
 	/** 
 	 * Inherited from tcontrol. 
 	 *

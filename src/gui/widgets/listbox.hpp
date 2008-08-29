@@ -169,6 +169,9 @@ public:
 	const twidget* find_widget(const tpoint& coordinate, 
 			const bool must_be_active) const;
 
+	/** Import overloaded versions. */
+	using tcontainer_::find_widget;
+
 	/** Inherited from tcontainer_. */
 	void set_size(const SDL_Rect& rect);
 

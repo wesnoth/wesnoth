@@ -60,6 +60,9 @@ public:
 	/** Inherited from tcontrol. */
 	tpoint get_best_size() const;
 
+	/** Import overloaded versions. */
+	using tcontrol::get_best_size;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length) 

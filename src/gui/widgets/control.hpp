@@ -98,6 +98,9 @@ public:
 	/** Inherited from twidget. */
 	tpoint get_best_size() const;
 
+	/** Import overloaded versions. */
+	using twidget::get_best_size;
+
 	/** Inherited from twidget. */
 	tpoint get_maximum_size() const;
 
