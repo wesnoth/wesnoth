@@ -490,7 +490,7 @@ bool game_controller::detect_video_settings()
 
 			if((video_flags&FULL_SCREEN) != 0) {
 				std::cerr << "Try running the program with the --windowed option "
-				          << "using a " << DefaultBPP << "bpp X windows setting\n";
+				          << "using a " << DefaultBPP << "bpp setting for your display adapter\n";
 			}
 
 			if((video_flags&FULL_SCREEN) == 0) {
