@@ -66,7 +66,7 @@ def parse_attribute(str):
 class Forest:
     "Return an iterable directory forest object."
     def __init__(self, dirpath, exclude=None):
-        "Get the names of all files under dirpath, ignoring .svn directories."
+        "Get the names of all files under dirpath, ignoring .svn and .git directories."
         self.forest = []
         self.dirpath = dirpath
         for dir in dirpath:
@@ -77,7 +77,7 @@ class Forest:
                          None)
             self.forest.append(subtree)
         for i in range(len(self.forest)):
-            self.forest[i] = filter(lambda x: ".svn" not in x, self.forest[i])
+            self.forest[i] = filter(lambda x: ".svn" not in x and ".git" not in x, self.forest[i])
             self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
             if exclude:
                 self.forest[i] = filter(lambda x: not re.search(exclude, x), self.forest[i])
