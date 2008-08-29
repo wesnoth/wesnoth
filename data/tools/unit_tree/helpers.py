@@ -299,7 +299,7 @@ class WesnothList:
             except KeyError: unit.movetype = None
             
             unit.advance = []
-            advanceto = unit.get_text_val("advanceto")
+            advanceto = unit.get_text_val("advances_to")
             if advanceto and advanceto != "null":
                 for advance in advanceto.split(","):
                     auid = advance.strip()
