@@ -23,6 +23,7 @@
 #include <vector>
 
 class player;
+namespace wesnothd {
 
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> user_vector;
@@ -222,5 +223,5 @@ struct game_id_matches {
 private:
 	int id_;
 };
-
+}
 #endif

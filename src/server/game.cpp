@@ -49,6 +49,8 @@ static void truncate_message(const simple_wml::string_span& str, simple_wml::nod
 
 } // end chat_message namespace
 
+namespace wesnothd {
+
 int game::id_num = 1;
 
 game::game(player_map& players, const network::connection host, const std::string name)
@@ -1292,4 +1294,6 @@ void game::send_server_message(const char* message, network::connection sock, si
 	if(sock) {
 		send_to_one(doc, sock);
 	}
+}
+
 }
