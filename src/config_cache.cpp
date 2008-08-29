@@ -124,7 +124,7 @@ namespace game_config {
 		read_gz(cfg, *stream);
 	}
 	
-	void config_cache::read_file(const std::string& path, config& cfg, preproc_map& defines_map)
+	void config_cache::read_file(const std::string& path, config& cfg, preproc_map& /*defines_map*/)
 	{
 		std::string error_log;
 		scoped_istream stream = istream_file(path);
@@ -153,7 +153,7 @@ namespace game_config {
 		defines_active_map_[def.first] = def.second;
 	}
 
-	bool compare_define(const preproc_map::value_type& a, const preproc_map::value_type& b)
+	static bool compare_define(const preproc_map::value_type& a, const preproc_map::value_type& b)
 	{
 		if (a.first < b.first)
 			return true;
