@@ -163,6 +163,12 @@ protected:
 	tpoint get_column_line(const tpoint& position) const
 		{ return text_.get_column_line(position); }
 
+	void set_font_size(const unsigned font_size)
+		{ text_.set_font_size(font_size); }
+
+	void set_font_style(const unsigned font_style)
+		{ text_.set_font_style(font_style); }
+	
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	
 	size_t get_selection_start() const { return selection_start_; }

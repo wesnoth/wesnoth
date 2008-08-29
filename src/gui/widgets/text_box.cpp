@@ -305,6 +305,17 @@ void ttext_box::handle_key_clear_line(SDLMod /*modifier*/, bool& handled)
 
 void ttext_box::load_config_extra()
 {
+	assert(config());
+
+	boost::intrusive_ptr<const ttext_box_definition::tresolution> conf =
+		boost::dynamic_pointer_cast
+		<const ttext_box_definition::tresolution>(config());
+
+	assert(conf);
+
+	set_font_size(conf->text_font_size);
+	set_font_style(conf->text_font_style);
+
 	update_offsets();
 }
 
