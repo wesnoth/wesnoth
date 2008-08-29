@@ -839,7 +839,7 @@ def sanity_check(filename, lines):
                     pass	# Ignore ill-formed integer literals
         except TypeError:
             pass
-    # Interpret magic comments for setting the sage pattern of units.
+    # Interpret magic comments for setting the usage pattern of units.
     # This copes with some wacky UtBS units that are defined with
     # variant-spawning macros.  The prototype comment looks like this:
     #wmllint: usage of "Desert Fighter" is fighter 
