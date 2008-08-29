@@ -115,6 +115,7 @@ linechanges = (
         ("tundra=", "frozen="),
         ("cavewall=", "impassable="),
         ("canyon=", "unwalkable="),
+        ("advanceto=", "advances_to="),
         )
 
 def validate_stack(stack, filename, lineno):
