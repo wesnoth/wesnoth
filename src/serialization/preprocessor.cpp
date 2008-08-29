@@ -42,6 +42,14 @@ bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
 
+bool preproc_define::operator<(preproc_define const &v) const {
+	if (location < v.location)
+		return true;
+	if (v.location < location)
+		return false;
+	return linenum < v.linenum;
+}
+
 
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def)
 {

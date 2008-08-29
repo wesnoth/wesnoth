@@ -19,13 +19,14 @@
 #ifndef SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 #define SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 
+#include "preprocessor.hpp"
+
 #include <iosfwd>
 #include <string>
 
 #include <boost/iostreams/filtering_stream.hpp>
 
 class config;
-
 //! Reads a file, and detects it is compressed before reading it. 
 //! If it is not a valid file at all, it will throw an error 
 //! as if it was trying to read it as text WML. 
@@ -42,6 +43,10 @@ public:
 	config_writer(std::ostream &out, bool compress, const std::string &textdomain, int level = -1);
 
 	void write(const config &cfg);
+	void write(const preproc_map& defines_map);
+
+	void write_define(const preproc_map::value_type&);
+
 	void write_child(const std::string &key, const config &cfg);
 	void write_key_val(const std::string &key, const std::string &value);
 	void open_child(const std::string &key);

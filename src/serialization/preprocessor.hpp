@@ -38,6 +38,7 @@ struct preproc_define
 	int linenum;
 	std::string location;
 	bool operator==(preproc_define const &) const;
+	bool operator<(preproc_define const &) const;
 	bool operator!=(preproc_define const &v) const { return !operator==(v); }
 };
 

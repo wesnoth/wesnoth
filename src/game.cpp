@@ -1279,7 +1279,7 @@ bool game_controller::play_multiplayer()
 
 		/* do */ {
 			cache_.clear_defines();
-			cache_.add_define(state_.campaign_define);
+			game_config::scoped_preproc_define multiplayer(state_.campaign_define);
 			load_game_cfg();
 			events::discard(INPUT_MASK); // prevent the "keylogger" effect
 			cursor::set(cursor::NORMAL);
@@ -1425,7 +1425,13 @@ void game_controller::load_game_cfg()
 		//reset the parse counter before reading the game files
 		loadscreen::global_loadscreen->parser_counter = 0;
 
+		// start transaction so macros are shared
+		game_config::config_cache_transaction main_transaction;
+
+
 		cache_.get_config(game_config::path +"/data", game_config_);
+
+		main_transaction.lock();
 
 		// clone and put the gfx rules aside so that we can prepend the add-on
 		// rules to them.

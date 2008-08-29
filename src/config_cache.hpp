@@ -36,23 +36,27 @@ namespace game_config {
 
 		bool force_valid_cache_, use_cache_;
 		preproc_map defines_map_;
-
-		void read_configs(config&, std::string&);
+		preproc_map defines_active_map_;
 
 		void read_file(const std::string& file, config& cfg);
+		void read_file(const std::string& file, config& cfg, preproc_map&);
 		void write_file(std::string file, const config& cfg);
+		void write_file(std::string file, const config& cfg, const preproc_map&);
 
 		void read_cache(const std::string& path, config& cfg);
 
-		void read_configs(const std::string& path, config& cfg);
+		void read_configs(const std::string& path, config& cfg, preproc_map& defines);
+		void load_configs(const std::string& path, config& cfg);
+
+		preproc_map& make_copy_map();
+//		void add_defines_map(const preproc_map&);
+		void add_defines_map_diff(preproc_map&);
 
 		// Protected to let test code access
 		protected:
 		config_cache();
 
 
-		const preproc_map& get_preproc_map() const;
-		void load_configs(const std::string& path, config& cfg);
 
 		public:
 		/**
@@ -66,6 +70,7 @@ namespace game_config {
 		 * @param config object that is writen to, It should be empty
 		 * 	      because there is no quarentee how filled in config is handled
 		 **/
+		const preproc_map& get_preproc_map() const;
 		void get_config(const std::string& path, config& cfg);
 		/**
 		 * get config_ptr from given path
@@ -99,6 +104,12 @@ namespace game_config {
 		 * Force cache checksum validation.
 		 **/
 		void recheck_filetree_checksum();
+		
+		/**
+		 * Used to let std::for_each insert defines from another
+		 * map to active 
+		 **/
+		void insert_to_active(const preproc_map::value_type& def);
 	};
 
 	/**
@@ -123,5 +134,26 @@ namespace game_config {
 	typedef scoped_preproc_define_internal<config_cache> scoped_preproc_define;
 	typedef boost::scoped_ptr<scoped_preproc_define> scoped_preproc_define_sptr;
 
+	/**
+	 * Used to share macros between load operations
+	 * It uses empty map if no transaction is started
+	 **/
+	class config_cache_transaction  : private boost::noncopyable {
+		public:
+		config_cache_transaction();
+		~config_cache_transaction();
+		void lock();
+
+		enum state { FREE,
+			START,
+			LOCK
+		};
+
+		private:
+		static state transaction_;
+		public:
+		static state get_state()
+		{return transaction_; }
+	};
 }
 #endif
