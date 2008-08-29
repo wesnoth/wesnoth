@@ -64,7 +64,6 @@ ttext::ttext() :
 	context_(pango_cairo_font_map_create_context((
 		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())))),
 	layout_(pango_layout_new(context_)),
-	font_(pango_font_description_new()),
 	rect_(),
 	surface_(),
 	text_(),
@@ -83,9 +82,6 @@ ttext::ttext() :
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_, 72.0);
 
-	pango_font_description_set_family(font_, get_fonts().c_str());
-	pango_layout_set_font_description(layout_, font_);
-
 	pango_layout_set_ellipsize(layout_, ellipse_mode_);
 }
 
@@ -96,9 +92,6 @@ ttext::~ttext()
 	}
 	if(layout_) {
 		g_object_unref(layout_);
-	}
-	if(font_) {
-		pango_font_description_free(font_); 
 	}
 	if(surface_buffer_) {
 		surface_.assign(NULL);
@@ -254,8 +247,6 @@ ttext& ttext::set_text(const std::string& text, const bool markedup)
 ttext& ttext::set_font_size(const unsigned font_size)
 {
 	if(font_size != font_size_) {
-		pango_font_description_set_size(font_, font_size * PANGO_SCALE);
-		pango_layout_set_font_description(layout_, font_);
 		font_size_ = font_size;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -327,11 +318,51 @@ ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 	return *this;
 }
 
+namespace {
+
+/** Small helper class to make sure the font object is destroyed properly. */
+class tfont
+{
+	tfont(const tfont&);
+	tfont& operator=(const tfont&);
+public:
+	tfont(const std::string& name, const unsigned size, const unsigned style) :
+		font_(pango_font_description_new())
+	{
+		pango_font_description_set_family(font_, name.c_str());
+		pango_font_description_set_size(font_, size * PANGO_SCALE);
+
+		if(style != ttext::STYLE_NORMAL) {
+			if(style & ttext::STYLE_ITALIC) {
+				pango_font_description_set_style(font_, PANGO_STYLE_ITALIC);
+			}
+			if(style & ttext::STYLE_BOLD) {
+				pango_font_description_set_weight(font_, PANGO_WEIGHT_BOLD);
+			}
+			if(style & ttext::STYLE_UNDERLINE) {
+				assert(false); // Not implemented yet
+			}
+		}
+	}
+
+	~tfont() { pango_font_description_free(font_); }
+
+	PangoFontDescription* get() { return font_; }
+
+private:
+	PangoFontDescription *font_;
+};
+
+} // namespace
+
 void ttext::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
+
+		tfont font(get_fonts(), font_size_, font_style_);
+		pango_layout_set_font_description(layout_, font.get());
 
 		pango_layout_get_pixel_extents(layout_, NULL, &rect_);
 	}

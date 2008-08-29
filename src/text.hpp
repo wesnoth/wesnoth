@@ -179,7 +179,6 @@ private:
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
 	PangoContext* context_;
 	PangoLayout* layout_;
-	PangoFontDescription* font_;
 	mutable PangoRectangle rect_;
 
 	/** The surface to render upon used as a cache. */
