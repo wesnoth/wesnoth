@@ -1938,6 +1938,7 @@ def translator(filename, mapxforms, textxform, versions):
         return None
 
 ignore = (".tgz", ".png", ".jpg", "-bak")
+vctypes = (".svn", ".git")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
@@ -1956,8 +1957,9 @@ def allcfgfiles(dir):
                 datafiles.append(dir)
     else:
         for root, dirs, files in os.walk(dir):
-            if vcdir in dirs:
-                dirs.remove(vcdir)
+            for vcsubdir in vctypes: 
+                if vcsubdir in dirs:
+                    dirs.remove(vcsubdir)
             for name in files:
                 if interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
