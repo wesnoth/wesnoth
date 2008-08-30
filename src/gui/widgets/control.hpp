@@ -194,8 +194,13 @@ protected:
 	/** Does the widget need to restore the surface before (re)painting? */
 	virtual bool needs_full_redraw() const;
 
-	/** Sets the text variable for the canvases. */
-	virtual void set_canvas_text();
+	/** 
+	 * Updates the canvas(ses).
+	 *
+	 * This function should be called if either the size of the widget changes
+	 * or the text on the widget changes.
+	 */
+	virtual void update_canvas();
 
 	/** 
 	 * Returns the maximum width available for the text.

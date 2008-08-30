@@ -70,7 +70,7 @@ public:
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tcontrol. */
-	void set_canvas_text();
+	void update_canvas();
 	
 	/** Inherited from tselectable_ */
 	bool get_value() const { return state_ >= ENABLED_SELECTED; }
@@ -87,7 +87,7 @@ public:
 		{ callback_state_change_ = callback; }
 
 	void set_icon_name(const std::string& icon_name) 
-		{ icon_name_ = icon_name; set_canvas_text(); }
+		{ icon_name_ = icon_name; update_canvas(); }
 	const std::string& icon_name() const { return icon_name_; }
 	
 private:

@@ -120,10 +120,10 @@ void ttoggle_button::set_active(const bool active)
 	}
 }
 
-void ttoggle_button::set_canvas_text()
+void ttoggle_button::update_canvas()
 {
 	// Inherit.
-	tcontrol::set_canvas_text();
+	tcontrol::update_canvas();
 
 	// set icon in canvases
 	std::vector<tcanvas>& canvases = tcontrol::canvas();

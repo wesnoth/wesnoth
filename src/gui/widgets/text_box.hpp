@@ -138,7 +138,7 @@ protected:
 	void set_size(const SDL_Rect& rect);
 
 	/** Inherited from tcontrol. */
-	void set_canvas_text();
+	void update_canvas();
 
 	/** Inherited from ttext_. */
 	void mouse_move(tevent_handler& event);

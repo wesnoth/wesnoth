@@ -212,7 +212,7 @@ void ttext_::set_value(const std::string& text)
 		// default to put the cursor at the end of the buffer.
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
-		set_canvas_text();
+		update_canvas();
 		set_dirty(); 
 	} 
 }
@@ -231,7 +231,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		// selecting copies on UNIX systems.
 		copy_selection(true);
 #endif
-		set_canvas_text();
+		update_canvas();
 		set_dirty();
 
 	} else {
@@ -239,7 +239,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		selection_start_ = offset;
 		selection_length_ = 0;
 
-		set_canvas_text();
+		update_canvas();
 		set_dirty();
 	}
 }
@@ -252,7 +252,7 @@ void ttext_::insert_char(const Uint16 unicode)
 
 	// Update status
 	set_cursor(selection_start_ + 1, false);
-	set_canvas_text();
+	update_canvas();
 	set_dirty();
 }
 
@@ -284,7 +284,7 @@ void ttext_::paste_selection(const bool mouse)
 
 	selection_start_ += text_.insert_text(selection_start_, text);
 
-	set_canvas_text();
+	update_canvas();
 	set_dirty(); 
 }
 

@@ -116,7 +116,7 @@ void ttext_box::set_size(const SDL_Rect& rect)
 	update_offsets();
 }	
 
-void ttext_box::set_canvas_text()
+void ttext_box::update_canvas()
 {
 	/***** Gather the info *****/
 	
@@ -249,7 +249,7 @@ void ttext_box::handle_mouse_selection(
 
 
 	set_cursor(offset, !start_selection);
-	set_canvas_text();
+	update_canvas();
 	set_dirty();
 	dragging_ |= start_selection;
 }
@@ -275,13 +275,13 @@ void ttext_box::update_offsets()
 	text_y_offset_ = conf->text_y_offset(variables);
 
 	// Since this variable doesn't change set it here instead of in
-	// set_canvas_text().
+	// update_canvas().
 	foreach(tcanvas& tmp, canvas()) {
 		tmp.set_variable("text_font_height", variant(text_height_));
 	}
  
  	// Force an update of the canvas since now text_font_height is known.
-	set_canvas_text();
+	update_canvas();
 }
 
 void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)

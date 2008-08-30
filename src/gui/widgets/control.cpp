@@ -95,7 +95,7 @@ void tcontrol::load_config()
 			canvas(i) = config()->state[i].canvas;
 		}
 
-		set_canvas_text();
+		update_canvas();
 
 		load_config_extra();
 	}
@@ -196,7 +196,7 @@ void tcontrol::set_size(const SDL_Rect& rect)
 	twidget::set_size(rect);
 
 	// update the state of the canvas after the sizes have been set.
-	set_canvas_text();
+	update_canvas();
 }
 
 void tcontrol::set_label(const t_string& label)
@@ -206,7 +206,7 @@ void tcontrol::set_label(const t_string& label)
 	}
 
 	label_ = label;
-	set_canvas_text();
+	update_canvas();
 	set_dirty();
 }
 
@@ -216,7 +216,7 @@ bool tcontrol::needs_full_redraw() const
 	return config()->state[get_state()].full_redraw;
 }
 
-void tcontrol::set_canvas_text()
+void tcontrol::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
