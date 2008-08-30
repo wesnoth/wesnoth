@@ -1,3 +1,8 @@
+<ESR_> Shadow_Master: I found out how your file confuses wmlindent.  It's the frowny face at the end of the comment on line 51. :-)
+<ESR_> You frowned at wmlindent and it became confused and distraught.
+<ESR_> You hurt its widdle feelings.  You bad person. :-)
+  -- #wesnoth-dev, 2008-08-29
+%
 <Ivanovic> Sirp_: short version: esr has done a whole massacre to WML
 <Ivanovic> ;)
  * esr notes that Ivanovic egged him on.
@@ -20,11 +25,6 @@
 <Ivanovic> that was not shown anywhere so far, a hidden secret
   -- #wesnoth-dev, 2008-03-13
 %
-<zookeeper> interesting bug
-<Shadow_Master> zookeeper: I suppose it's a legacy bug; Wesnoth didn't support female "variations" of units from the beginning IIRC
-<Shadow_Master> so this piece of code was not updated when females were "implemented"
-  -- #wesnoth-dev, 2008-03-03
-%
 02:06 <Sapient> I found it funny when I was debugging UtBS and noticed Nym was gender::MALE
 02:07 <Sapient> I wonder if Kaleh ever knew...
   -- #wesnoth-dev, 2007-12-06
@@ -36,6 +36,14 @@
 <yann> otoh, the tools have evolved at the same time, so that should counter-balance things a bit :)
 <misc> yann: what patch ? you mean the move of the 2 first process out of the low memory, after a forbidden access to the apple bios ?
 				#wesnoth-devel, 2005-01-16
+%
+Another consequence of changing the initial implementation of the world:
+
+<zookeeper> interesting bug
+<Shadow_Master> zookeeper: I suppose it's a legacy bug; Wesnoth didn't support female "variations" of units from the beginning IIRC
+<Shadow_Master> so this piece of code was not updated when females were "implemented"
+
+  -- #wesnoth-dev, 2008-03-03
 %
 Thrawn: I'm finally back [...] Anywho, what new has happened, so I don't have to read every topic that's been made since June?
 User #1: Forum crash. You only need to catch up on late august =)
