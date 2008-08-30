@@ -16,6 +16,9 @@ Version 1.5.3+svn:
      have been started to replace the old code.
  * WML engine:
    * fix bug #11988: Events with multiple types are multiplied
+   * added a new image-path function: SECTION(x,y,w,h) - it extracts a slice
+     of a graphic with the requested dimensions.
+     (feature #12067)
    * allow variable substitution in event names
    * allow spaces or underscores to be used interchangeably in event names
    * In event attack filters ([filter_attack] and [filter_second_attack]),
