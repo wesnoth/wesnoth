@@ -70,28 +70,6 @@ config_writer::config_writer(
 }
 
 
-void config_writer::write_define(const preproc_map::value_type& def)
-{
-
-	out_ << "#line " << def.second.linenum << " " << def.second.location << "\n";
-	out_ << "#textdomain " << def.second.textdomain << "\n";
-	out_ << "#define " << def.first;
-	for(std::vector<std::string>::const_iterator it = def.second.arguments.begin();
-				  it != def.second.arguments.end();
-				  ++it)
-	{
-		out_ << *it << " ";
-	}
-	out_ << "\n";
-	out_ << def.second.value;
-	out_ << "#enddef\n";
-}
-
-void config_writer::write(const preproc_map& defines_map)
-{
-	std::for_each(defines_map.begin(), defines_map.end(), boost::bind(&config_writer::write_define,this,_1));
-}
-
 void config_writer::write(const config &cfg)
 {
 	::write(out_, cfg, level_);

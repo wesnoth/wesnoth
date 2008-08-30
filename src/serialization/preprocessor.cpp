@@ -18,9 +18,11 @@
 
 #include "../global.hpp"
 
+#include "../config.hpp"
 #include "../filesystem.hpp"
 #include "../log.hpp"
 #include "../wesconfig.h"
+#include "binary_or_text.hpp"
 #include "preprocessor.hpp"
 #include "string_utils.hpp"
 
@@ -50,6 +52,69 @@ bool preproc_define::operator<(preproc_define const &v) const {
 	return linenum < v.linenum;
 }
 
+#include <list>
+void preproc_define::write_argument(config_writer& writer, const std::string& arg) const
+{
+	
+	const std::string key = "argument";
+
+	writer.open_child(key);
+
+	writer.write_key_val("name", arg);
+	writer.close_child(key);
+}
+
+void preproc_define::write(config_writer& writer, const std::string& name) const
+{
+
+	const std::string key = "preproc_define";
+	writer.open_child(key);
+
+	writer.write_key_val("name", name);
+	writer.write_key_val("value", value);
+	writer.write_key_val("textdomain", textdomain);
+	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
+	writer.write_key_val("location", location);
+
+	std::for_each(arguments.begin(), arguments.end(), 
+			boost::bind(&preproc_define::write_argument,
+				this,
+				boost::ref(writer),
+				_1));
+
+	writer.close_child(key);
+}
+
+void preproc_define::read_argument(const config* cfg)
+{
+	arguments.push_back((*cfg)["name"]);
+}
+
+void preproc_define::read(const config& cfg)
+{
+	value = cfg["value"];
+	textdomain = cfg["textdomain"];
+	linenum = lexical_cast<int>(cfg["linenum"]);
+	location = cfg["location"];
+
+	const config::child_list args= cfg.get_children("argument");
+	typedef std::vector< std::string > arg_vec;
+	std::for_each(args.begin(), args.end(),
+			boost::bind(&preproc_define::read_argument,
+				this,
+				_1
+				)
+			);
+}
+
+preproc_map::value_type preproc_define::read_pair(const config* cfg)
+{
+	std::string first = (*cfg)["name"];
+
+	preproc_define second;
+	second.read(*cfg);
+	return std::make_pair(first, second);
+}
 
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def)
 {

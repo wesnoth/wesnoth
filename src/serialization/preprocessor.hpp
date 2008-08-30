@@ -25,6 +25,12 @@
 
 #include "game_errors.hpp" 
 
+class config_writer;
+class config;
+
+struct preproc_define;
+typedef std::map< std::string, preproc_define > preproc_map;
+
 struct preproc_define
 {
 	preproc_define() : value(""), arguments(), textdomain(""), linenum(0), location("") {}
@@ -37,6 +43,11 @@ struct preproc_define
 	std::string textdomain;
 	int linenum;
 	std::string location;
+	void write(config_writer&, const std::string&) const;
+	void write_argument(config_writer&, const std::string&) const;
+	void read(const config&);
+	void read_argument(const config*);
+	static preproc_map::value_type read_pair(const config*);
 	bool operator==(preproc_define const &) const;
 	bool operator<(preproc_define const &) const;
 	bool operator!=(preproc_define const &v) const { return !operator==(v); }
@@ -50,7 +61,6 @@ struct preproc_config {
 	};
 };
 
-typedef std::map< std::string, preproc_define > preproc_map;
 
 std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def);
 

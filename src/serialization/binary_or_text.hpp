@@ -43,9 +43,6 @@ public:
 	config_writer(std::ostream &out, bool compress, const std::string &textdomain, int level = -1);
 
 	void write(const config &cfg);
-	void write(const preproc_map& defines_map);
-
-	void write_define(const preproc_map::value_type&);
 
 	void write_child(const std::string &key, const config &cfg);
 	void write_key_val(const std::string &key, const std::string &value);
