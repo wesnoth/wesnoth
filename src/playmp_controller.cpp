@@ -23,6 +23,8 @@
 #include "sound.hpp"
 #include "upload_log.hpp"
 
+#include "SDL.h"
+
 #include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
@@ -182,6 +184,9 @@ void playmp_controller::play_human_turn(){
 				try{
 					if (turn_data_->process_network_data(cfg,res,backlog,skip_replay_) == turn_info::PROCESS_RESTART_TURN)
 					{
+						// Clean undo stack if turn has to be restarted (losing control)
+						while(!undo_stack_.empty())
+							menu_handler_.undo(gui_->get_playing_team() + 1);
 						throw end_turn_exception(gui_->get_playing_team() + 1);
 					}
 				}
