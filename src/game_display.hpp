@@ -171,7 +171,7 @@ public:
 	//! Functions to add and remove overlays from locations.
 	//! An overlay is an image that is displayed on top of the tile.
 	//! One tile may have multiple overlays.
-	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="");
+	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="", const std::string& team_name="");
 	//! remove_overlay will remove all overlays on a tile.
 	void remove_overlay(const gamemap::location& loc);
 	//! remove_single_overlay will remove a single overlay from a tile
@@ -180,6 +180,9 @@ public:
 	//! Function to serialize overlay data.
 	void write_overlays(config& cfg) const;
 
+	//! Check the overlay_map for proper team-specific overlays
+	//! to be displayed/hidden
+	void parse_team_overlays();
 
 	// Functions used in the editor:
 
@@ -278,10 +281,11 @@ private:
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
-		        int handle) : image(img), halo(halo_img),
-				halo_handle(handle) {}
+				int handle, const std::string& overlay_team_name) : image(img), halo(halo_img),
+				halo_handle(handle), team_name(overlay_team_name) {}
 		std::string image;
 		std::string halo;
+		std::string team_name;
 		int halo_handle;
 	};
 
