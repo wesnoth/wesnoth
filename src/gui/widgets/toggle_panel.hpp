@@ -45,7 +45,7 @@ public:
 	 *
 	 * @param data                Map with the key value pairs to set the members.
 	 */
-	void set_members(const std::map<std::string /* widget id */, std::map<
+	void set_child_members(const std::map<std::string /* widget id */, std::map<
 		std::string /* member id */, t_string /* member value */> >& data);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/

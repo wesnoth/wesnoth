@@ -781,7 +781,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 				}
 			} else if(panel) {
 				panel->set_callback_state_change(callback_select_list_item);
-				panel->set_members(data);
+				panel->set_child_members(data);
 			} else if(child_grid) {
 				init_in_grid(child_grid, data);
 			} else {

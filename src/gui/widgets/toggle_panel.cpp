@@ -40,7 +40,7 @@
 
 namespace gui2 {
 
-void ttoggle_panel::set_members(const std::map<std::string /* widget id */, std::map<
+void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, std::map<
 		std::string /* member id */, t_string /* member value */> >& data)
 {
 	// typedef boost problem work around.
