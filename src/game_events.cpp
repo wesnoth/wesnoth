@@ -1564,10 +1564,9 @@ namespace {
 		gamemap::location loc = cfg_to_loc(cfg);
 		std::string img = cfg["image"];
 		std::string halo = cfg["halo"];
-		std::string team_name = cfg["team_name"];
 		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
-			(screen)->add_overlay(loc,img,halo,team_name);
+			(screen)->add_overlay(loc,img,halo);
 			(screen)->invalidate(loc);
 			(screen)->draw();
 		}

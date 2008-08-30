@@ -338,12 +338,8 @@ void game_display::draw_hex(const gamemap::location& loc)
 		typedef overlay_map::const_iterator Itor;
 		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 		for( ; overlays.first != overlays.second; ++overlays.first) {
-			(overlays.first->second.team_name == "" ||
-			overlays.first->second.team_name.find(teams_[playing_team()].team_name()) != std::string::npos)
-			{
-				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
 				image::get_image(overlays.first->second.image,image_type)));
-			}
 		}
 		// village-control flags.
 		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(loc)));		
@@ -966,12 +962,12 @@ void game_display::clear_attack_indicator()
 	set_attack_indicator(gamemap::location::null_location, gamemap::location::null_location);
 }
 
-void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo,const std::string& team_name)
+void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
 	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-	const overlay item(img,halo,halo_handle,team_name);
+	const overlay item(img,halo,halo_handle);
 	overlays_.insert(overlay_map::value_type(loc,item));
 }
 
@@ -1014,20 +1010,6 @@ void game_display::write_overlays(config& cfg) const
 		i->first.write(item);
 		item["image"] = i->second.image;
 		item["halo"] = i->second.halo;
-		item["team_name"] = i->second.team_name;
-	}
-}
-
-void game_display::parse_team_overlays()
-{
-	for (game_display::overlay_map::const_iterator overlay = overlays_.begin(); overlay != overlays_.end(); ++overlay) {
-
-		if (overlay->second.team_name != "" &&
-			bool(overlay->second.team_name.find(teams_[playing_team()].team_name())+1) !=
-			bool(overlay->second.team_name.find(teams_[playing_team()-1 > -1 ? playing_team()-1 : teams_.size()-1].team_name())+1))
-			{
-			invalidate(overlay->first);
-		}
 	}
 }
 
@@ -1197,5 +1179,4 @@ void game_display::prune_chat_messages(bool remove_all)
 }
 
 game_display *game_display::singleton_ = NULL;
-
 
