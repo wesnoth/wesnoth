@@ -355,6 +355,9 @@ surface locator::load_image_sub_file() const
 		bool xflip = false;
 		bool yflip = false;
 		bool greyscale = false;
+		bool slice = false;
+		SDL_Rect slice_rect = { 0,0,0,0 };
+
 		std::map<Uint32, Uint32> recolor_map;
 		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
 		for(std::vector<std::string>::const_iterator i=modlist.begin();
@@ -410,6 +413,7 @@ surface locator::load_image_sub_file() const
 						}
 					}
 				}
+
 				if("FL" == function){	// Flip layer
 					if(field.empty() || field.find("horiz") != std::string::npos) {
 						xflip = !xflip;
@@ -418,12 +422,46 @@ surface locator::load_image_sub_file() const
 						yflip = !yflip;
 					}
 				}
-				if("GS" == function){	// Flip layer
+
+				if("GS" == function){	// Grayscale image
 					greyscale=true;
+				}
+				
+				if("SECTION" == function){ // Slice image
+					std::vector<std::string> const& slice_params = utils::split(field, ',', utils::STRIP_SPACES);
+					if(slice_params.empty() != true) {
+						slice = true;
+							slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
+						if(slice_params.size() > 1)
+							slice_rect.y = lexical_cast_default<Sint16, const std::string&>(slice_params[1]);
+						if(slice_params.size() > 2)
+							slice_rect.w = lexical_cast_default<Uint16, const std::string&>(slice_params[2]);
+						if(slice_params.size() > 3)
+							slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
+					}
 				}
 			}
 		}
 		surf = recolor_image(surf,recolor_map);
+		if(slice) {
+			// yummy, a slice of surface! this needs to get done
+			// before any other geometric transformations
+			if(slice_rect.w == 0) {
+				slice_rect.w = surf->w;
+			}
+			if(slice_rect.h == 0) {
+				slice_rect.h = surf->h;
+			}	
+			if(slice_rect.x < 0) {
+				ERR_DP << "start X coordinate of SECTION function is negative - truncating to zero\n";
+				slice_rect.x = 0;
+			}
+			if(slice_rect.y < 0) {
+				ERR_DP << "start Y coordinate of SECTION function is negative - truncating to zero\n";
+				slice_rect.y = 0;
+			}
+			surf = cut_surface(surf, slice_rect);
+		}
 		if(xflip) {
 			surf = flip_surface(surf);
 		}
