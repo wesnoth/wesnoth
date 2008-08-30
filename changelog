@@ -44,6 +44,7 @@ Version 1.5.3+svn:
    * Made config cache code available to eveverywhere in wesnoth
    * Fixed [modify_turns] giving the unwanted side-effect of changing
      turn limit when only current= modifier was used.
+   * Fixed OOS bug when giving control and having move in undo stack.
    * Fixed [modify_turns] not updating $turn_number when current= was
      used.
    * Fixed a few inconsistencies related to scenarios which are not at

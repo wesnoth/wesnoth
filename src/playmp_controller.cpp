@@ -23,6 +23,8 @@
 #include "sound.hpp"
 #include "upload_log.hpp"
 
+#include "SDL.h"
+
 #include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
@@ -186,6 +188,21 @@ void playmp_controller::play_human_turn(){
 				try{
 					if (turn_data_->process_network_data(cfg,res,backlog,skip_replay_) == turn_info::PROCESS_RESTART_TURN)
 					{
+						// Clean undo stack if turn has to be restarted (losing control)
+						if (!undo_stack_.empty())
+						{
+							const std::string msg =_("Undoing moves not yet transmited to server.");
+							const int size = 20;
+							const int lifetime = 150;
+							SDL_Color colour = {255,255,255,255};
+
+							SDL_Rect rect = gui_->map_area();
+							font::add_floating_label(msg,size, colour,
+								rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
+						}
+
+						while(!undo_stack_.empty())
+							menu_handler_.undo(gui_->get_playing_team() + 1);
 						throw end_turn_exception(gui_->get_playing_team() + 1);
 					}
 				}
