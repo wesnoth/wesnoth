@@ -142,8 +142,8 @@ private:
 			const bool player_left=true);
 	void transfer_ai_sides();
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
-			const network::connection exclude=0) const;
-	void send_data_observers(simple_wml::document& data, const network::connection exclude=0) const;
+			const network::connection exclude=0, const std::string packet_type = "unknown") const;
+	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, const std::string packet_type = "unknown") const;
 	//! Send [observer] tags of all the observers in the game to the user or
 	//! everyone if none given.
 	void send_observerjoins(const network::connection sock=0) const;
