@@ -95,7 +95,7 @@ def opener(str):
     elif (str.startswith("[") and not closer(str) and not "[/" in str):
         return True
     # Trailing ( opens a scope to be closed by ).
-    elif str.endswith("(\n"):
+    elif str.endswith("(\n") and '#' not in str:
         return True
     else:
         for prefix in opener_prefixes:
