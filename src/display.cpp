@@ -394,7 +394,7 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	// Can maybe be optimized by using pixel_position_to_hex
 
 	return res;
-};
+}
 
 int display::get_location_x(const gamemap::location& loc) const
 {
