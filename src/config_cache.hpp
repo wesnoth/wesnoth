@@ -56,11 +56,12 @@ namespace game_config {
 
 				~scoped_preproc_define_internal()
 				{
-					if(add_)
+					if(add_) {
 						if (path_.empty())
 							T::instance().remove_define(name_);
 						else
 							T::instance().remove_path_define(path_, name_);
+					}
 				}
 		};
 

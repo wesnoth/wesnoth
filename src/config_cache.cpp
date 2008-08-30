@@ -288,7 +288,6 @@ namespace game_config {
 	void config_cache::read_defines_queue()
 	{
 		const config_cache_transaction::filenames& files = config_cache_transaction::instance().get_define_files();
-		preproc_map& active = config_cache_transaction::instance().get_active_map(defines_map_);
 		std::for_each(files.begin(), files.end(),
 				boost::bind(&config_cache::read_defines_file,
 					this,
