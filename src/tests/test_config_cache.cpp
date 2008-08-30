@@ -65,6 +65,11 @@ class test_config_cache : public game_config::config_cache {
 	static test_config_cache& instance() {
 		return cache_;
 	}
+
+	void set_force_not_valid_cache(bool force)
+	{
+		game_config::config_cache::set_force_not_valid_cache(force);
+	}
 };
 
 /**
@@ -240,11 +245,44 @@ BOOST_AUTO_TEST_CASE( test_transaction )
 	config umc_config;
 	child = &umc_config.add_child("umc");
 	(*child)["test"] = "umc load";
-	child = &test_config.add_child("test_key3");
+	child = &umc_config.add_child("test_key3");
+	(*child)["define"] = "transaction";
+	child = &umc_config.add_child("test_key4");
+	(*child)["defined"] = "parameter";
+	BOOST_CHECK_EQUAL(umc_config, *cache.get_config("data/test/test/umc.cfg"));
+}
+
+BOOST_AUTO_TEST_CASE( test_define_loading )
+{
+	// try to load umc without valid cache
+	config test_config = setup_test_config();
+
+	config* child = &test_config.add_child("test_key3");
 	(*child)["define"] = "transaction";
 	child = &test_config.add_child("test_key4");
 	(*child)["defined"] = "parameter";
+
+	// test first that macro loading works
+	test_scoped_define macro("TEST_MACRO");
+
+	//Start transaction
+
+	game_config::config_cache_transaction transaction;
+
+	BOOST_CHECK_EQUAL(test_config, *cache.get_config(test_data_path));
+
+	transaction.lock();
+
+	cache.set_force_not_valid_cache(true);
+	config umc_config;
+	child = &umc_config.add_child("umc");
+	(*child)["test"] = "umc load";
+	child = &umc_config.add_child("test_key3");
+	(*child)["define"] = "transaction";
+	child = &umc_config.add_child("test_key4");
+	(*child)["defined"] = "parameter";
 	BOOST_CHECK_EQUAL(umc_config, *cache.get_config("data/test/test/umc.cfg"));
+	cache.set_force_not_valid_cache(false);
 }
 
 /* vim: set ts=4 sw=4: */

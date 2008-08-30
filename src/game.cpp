@@ -189,6 +189,7 @@ private:
 	int force_bpp_;
 
 	config game_config_;
+	preproc_map old_defines_map_;
 
 	util::scoped_ptr<game_display> disp_;
 
@@ -231,6 +232,7 @@ game_controller::game_controller(int argc, char** argv) :
 	no_gui_(false),
 	force_bpp_(-1),
 	game_config_(),
+	old_defines_map_(),
 	disp_(NULL),
 	state_(),
 	resolution(),
@@ -858,15 +860,11 @@ bool game_controller::load_game()
 		game_config::scoped_preproc_define dificulty_def(cfg["difficulty"]);
 
 		const std::string& campaign_define = cfg["campaign_define"];
-		game_config::scoped_preproc_define_sptr campaign_define_def;
-		if(campaign_define.empty() == false) {
-			campaign_define_def.reset(new game_config::scoped_preproc_define(campaign_define));
-		}
+	
+		game_config::scoped_preproc_define campaign_define_def(campaign_define, !campaign_define.empty());
 		
-		game_config::scoped_preproc_define_sptr campaign_type_def;
-		if (campaign_define.empty() && (cfg["campaign_type"] == "multiplayer")){
-			campaign_type_def.reset(new game_config::scoped_preproc_define("MULTIPLAYER"));
-		}
+		game_config::scoped_preproc_define campaign_type_def("MULTIPLAYER", campaign_define.empty() && (cfg["campaign_type"] == "multiplayer"));
+
 
 		const std::vector<std::string> campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
 
@@ -1410,11 +1408,14 @@ void game_controller::reset_translations()
 
 void game_controller::load_game_cfg()
 {
+	gui::set_background_dirty();
+	if (old_defines_map_ == cache_.get_preproc_map())
+		return; // game_config already holds requested config in memory
+	old_defines_map_ = cache_.get_preproc_map();
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	cursor::setter cur(cursor::WAIT);
 	// The loadscreen will erase the titlescreen
 	// NOTE: even without loadscreen, needed after MP lobby
-	gui::set_background_dirty();
 	try {
 		/** 
 		 * Read all game configs
@@ -1423,11 +1424,11 @@ void game_controller::load_game_cfg()
 		 * 2nd everything in userdata
 		 **/
 		//reset the parse counter before reading the game files
+		data_tree_checksum();
 		loadscreen::global_loadscreen->parser_counter = 0;
 
 		// start transaction so macros are shared
 		game_config::config_cache_transaction main_transaction;
-
 
 		cache_.get_config(game_config::path +"/data", game_config_);
 
@@ -1520,10 +1521,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::global_loadscreen->set_progress(0, _("Loading data files"));
 	if(reload == RELOAD_DATA) {
-		game_config::scoped_preproc_define_sptr campaign_define;
-		if(state_.campaign_define.empty() == false) {
-			campaign_define.reset(new game_config::scoped_preproc_define(state_.campaign_define));
-		}
+		game_config::scoped_preproc_define campaign_define(state_.campaign_define, state_.campaign_define.empty() == false);
 
 		typedef boost::shared_ptr<game_config::scoped_preproc_define> define_ptr;
 		std::deque<define_ptr> extra_defines;
