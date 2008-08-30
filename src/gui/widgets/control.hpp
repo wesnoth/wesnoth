@@ -197,6 +197,22 @@ protected:
 	/** Sets the text variable for the canvases. */
 	virtual void set_canvas_text();
 
+	/** 
+	 * Returns the maximum width available for the text.
+	 *
+	 * This value makes sense after the widget has been given a size, since the
+	 * maximum width is based on the width of the widget.
+	 */
+	int get_text_maximum_width() const;
+
+	/** 
+	 * Returns the maximum height available for the text.
+	 *
+	 * This value makes sense after the widget has been given a size, since the
+	 * maximum height is based on the height of the widget.
+	 */
+	int get_text_maximum_height() const;
+
 private:
 
 	/** Visible state of the control, invisible controls aren't drawn. */
@@ -314,7 +330,6 @@ private:
 	 * @returns                   The best size.
 	 */
 	tpoint get_best_text_size(const tpoint& minimum_size) const;
-
 
 	/** 
 	 * Contains a helper cache for the rendering.

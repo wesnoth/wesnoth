@@ -194,6 +194,9 @@ void tcontrol::set_size(const SDL_Rect& rect)
 
 	// inherited
 	twidget::set_size(rect);
+
+	// update the state of the canvas after the sizes have been set.
+	set_canvas_text();
 }
 
 void tcontrol::set_label(const t_string& label)
@@ -215,10 +218,29 @@ bool tcontrol::needs_full_redraw() const
 
 void tcontrol::set_canvas_text()
 {
+	const int max_width = get_text_maximum_width();
+	const int max_height = get_text_maximum_height();
+
 	// set label in canvases
 	foreach(tcanvas& canvas, canvas_) {
 		canvas.set_variable("text", variant(label_));
+		canvas.set_variable("text_maximum_width", variant(max_width));
+		canvas.set_variable("text_maximum_height", variant(max_height));
 	}
+}
+
+int tcontrol::get_text_maximum_width() const
+{
+	assert(config_);
+	
+	return get_width() - config_->text_extra_width;
+}
+
+int tcontrol::get_text_maximum_height() const
+{
+	assert(config_);
+
+	return get_height() - config_->text_extra_height;
 }
 
 void tcontrol::save_background(const surface& src)

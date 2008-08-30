@@ -143,6 +143,10 @@ tline::tline(const config& cfg) :
  *     width unsigned                  The width of the canvas.
  *     height unsigned                 The height of the canvas.
  *     text tstring                    The text to render on the widget.
+ *     text_maximum_width unsigned     The maximum width available for the text
+ *                                     on the widget.
+ *     text_maximum_height unsigned    The maximum height available for the text
+ *                                     on the widget.
  *@end_table
  *
  * Note when drawing the valid coordinates are:<br>

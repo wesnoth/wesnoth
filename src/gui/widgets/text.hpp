@@ -168,6 +168,12 @@ protected:
 
 	void set_font_style(const unsigned font_style)
 		{ text_.set_font_style(font_style); }
+
+	void set_maximum_width(const int width) 
+		{ text_.set_maximum_width(width); }
+	
+	void set_maximum_height(const int height) 
+		{ text_.set_maximum_height(height); }
 	
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	

@@ -110,6 +110,9 @@ void ttext_box::set_size(const SDL_Rect& rect)
 	// Inherited.
 	tcontrol::set_size(rect);
 
+	set_maximum_width(get_text_maximum_width());
+	set_maximum_height(get_text_maximum_height());
+
 	update_offsets();
 }	
 
@@ -136,11 +139,16 @@ void ttext_box::set_canvas_text()
 
 	/***** Set in all canvases *****/
 
+	const int max_width = get_text_maximum_width();
+	const int max_height = get_text_maximum_height();
+
 	foreach(tcanvas& tmp, canvas()) {
 
 		tmp.set_variable("text", variant(get_value()));
 		tmp.set_variable("text_x_offset", variant(text_x_offset_));
 		tmp.set_variable("text_y_offset", variant(text_y_offset_));
+		tmp.set_variable("text_maximum_width", variant(max_width));
+		tmp.set_variable("text_maximum_height", variant(max_height));
 
 		tmp.set_variable("cursor_offset", 
 			variant(get_cursor_position(start + length).x));
