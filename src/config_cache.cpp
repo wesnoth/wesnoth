@@ -267,7 +267,7 @@ namespace game_config {
 	void config_cache::add_define_from_file(const config::all_children_iterator::value_type& value)
 	{
 		config_cache_transaction::instance().insert_to_active(
-				preproc_define::read_pair(value::second));
+				preproc_define::read_pair(value.second));
 	}
 
 	void config_cache::read_defines_file(const std::string& path)
@@ -284,7 +284,6 @@ namespace game_config {
 					this,
 					_1)
 				);	
-			boost::bind(&config::all_children_iterator::value_type::second,_1);
 	}
 
 	void config_cache::read_defines_queue()
