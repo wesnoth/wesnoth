@@ -302,7 +302,15 @@ if env["PLATFORM"] == 'darwin':            # Mac OS X
 
 if os.path.exists('.git'):
     try:
-        env["svnrev"] = Popen(Split("git-svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n")
+        extra_version = "";
+        modified = "";
+        env["svnrev"] = "";
+        while env["svnrev"] == "" and extra_version != "^^^^^^^^^^^^^":
+            env["svnrev"] = Popen(Split("git-svn find-rev HEAD" + extra_version), stdout=PIPE).communicate()[0].rstrip("\n")
+            extra_version += "^"
+        if extra_version != "^":
+            env["svnrev"] += "M"
+        
     except:
         env["svnrev"] = ""
 else:
@@ -316,7 +324,7 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
 builds = {
-    "base"    : dict(CXXFLAGS = "-O2"),	# Don't build in subdirectory
+    "base"    : dict(CXXFLAGS = "-O2"),    # Don't build in subdirectory
     "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3")),
     "release" : dict(CXXFLAGS = "-O2"),
     "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
