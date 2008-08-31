@@ -1,4 +1,4 @@
-# translation of hu-manpages.po to Hungarian
+# translation of hu-manpages_1.5.po to Hungarian
 # Hungarian translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 #
@@ -8,10 +8,10 @@
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu-manpages\n"
+"Project-Id-Version: hu-manpages_1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-31 11:48+0300\n"
-"PO-Revision-Date: 2008-03-16 10:39+0100\n"
+"PO-Revision-Date: 2008-08-30 11:36+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -125,14 +125,14 @@ msgstr "meghatározza az egy képpontra jutó bitek számát. Példa: B<--bpp 32
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "skip menu, show directly the campaign menu."
-msgstr ""
+msgstr "átugorja a főmenüt, és közvetlenül a hadjárat menüt nyitja meg"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
@@ -183,9 +183,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummylocales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummylocales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -193,6 +193,8 @@ msgid ""
 "Use special dummy locales to switch to any language even if that language "
 "isn't installed to system"
 msgstr ""
+"Speciális állokalizációk használata, hogy akkor is lehessen bármilyen "
+"nyelvre váltani, ha az adott nyelv nincs is telepítve a rendszerre"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
@@ -277,14 +279,14 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:98
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:101
 msgid "replays the game loaded with --load option."
-msgstr ""
+msgstr "visszajátssza a --load kapcsolóval betöltött játszmát."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:101 ../../doc/man/wesnothd.6:58
@@ -331,9 +333,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:118
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:124
@@ -379,15 +381,16 @@ msgstr "kiírja a játék adatkönyvtárának nevét, majd kilép."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:136
-#, fuzzy
 msgid "prints the name of the user configuration directory and exits."
-msgstr "kiírja a játék adatkönyvtárának nevét, majd kilép."
+msgstr ""
+"kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd "
+"kilép."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:136 ../../doc/man/wesnoth_editor.6:62
@@ -402,9 +405,9 @@ msgstr "beállítja a képernyő felbontását. Példa: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:140
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [kiszolgáló]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:144
@@ -412,6 +415,9 @@ msgid ""
 "skip menu, connect to specified host if any, otherwise connect to the first "
 "server in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"átugorja a főmenüt, és csatlakozik a megadott kiszolgálóhoz. Ha nem lett "
+"kiszolgáló meghatározva, akkor a beállításokban elsőként megadott "
+"kiszolgálóhoz csatlakozik. Például: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:144
@@ -656,7 +662,7 @@ msgstr ""
 "E<lt>ott@gaon.netE<gt> és Soliton E<lt>soliton.de@gmail.comE<gt>.\n"
 " Magyarra fordították: Gilluin E<lt>gilluin@citromail.huE<gt>, Széll Tamás "
 "E<lt>tomi@digiflex.huE<gt>, Pintér Csaba és Kádár-Németh Krisztián "
-"E<lt>krisztian.7@vizslamail.huE<gt>."
+"E<lt>krisztian.kad@gmail.comE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:226 ../../doc/man/wesnoth_editor.6:81
@@ -673,7 +679,7 @@ msgstr ""
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar "
-"közösségi portált: http://wesnoth.fw.hu/"
+"közösségi portált: http://users.cwi.hu/wesnoth"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:229 ../../doc/man/wesnoth_editor.6:84

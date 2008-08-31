@@ -1,4 +1,4 @@
-# translation of hu-wesnoth.po to Hungarian
+# translation of hu-wesnoth_1.5.po to Hungarian
 # translation of wesnoth.pot to Hungarian
 # Hungarian translations for Battle for Wesnoth package.
 # Copyright (C) 2008 Wesnoth Development Team
@@ -11,12 +11,12 @@
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu-wesnoth\n"
+"Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:47+0200\n"
-"PO-Revision-Date: 2008-08-15 14:14+0200\n"
+"PO-Revision-Date: 2008-08-30 11:52+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
+"Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5914,7 +5914,7 @@ msgid ""
 msgstr ""
 "A www.wesnoth.org honlapon találhatsz stratégiai útmutatókat, technikai "
 "segítséget, Wesnoth történetét és még sok mást. A Magyar Wesnoth Közösségi "
-"Portál címe: www.wesnoth.fw.hu"
+"Portál címe: http://users.cwi.hu/wesnoth"
 
 #. [tip]
 #: data/hardwired/tips.cfg:40
@@ -6661,46 +6661,44 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:366
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:399
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "Hadjárat"
 
 #: src/addon_management.cpp:401
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Küldetés"
 
 #: src/addon_management.cpp:403
 msgid "addon_type^MP Era"
-msgstr ""
+msgstr "Többjátékos korszak"
 
 #: src/addon_management.cpp:405
 msgid "addon_type^MP Faction"
-msgstr ""
+msgstr "Többjátékos faj"
 
 #: src/addon_management.cpp:407
 msgid "addon_type^MP Map-pack"
-msgstr ""
+msgstr "Többjátékos térképcsomag"
 
 #: src/addon_management.cpp:409
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Távoli pálya"
+msgstr "Többjátékos küldetés"
 
 #: src/addon_management.cpp:411
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "Többjátékos hadjárat"
 
 #: src/addon_management.cpp:413
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "Források"
 
 #: src/addon_management.cpp:415
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(ismeretlen)"
 
 #: src/addon_management.cpp:444
 msgid "Dependencies"
@@ -6771,9 +6769,8 @@ msgid "Add-on Installed"
 msgstr "Kiegészítés telepítve"
 
 #: src/addon_management.cpp:704
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "Kiegészítés küldése"
+msgstr "Elavult kiegészítések"
 
 #: src/addon_management.cpp:706
 msgid ""
@@ -6791,7 +6788,7 @@ msgstr ""
 
 #: src/addon_management.cpp:715
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Nincs frissítendő kiegészítés"
 
 #: src/addon_management.cpp:729 src/addon_management.cpp:930
 #: src/dialogs.cpp:645 src/menu_events.cpp:209 src/menu_events.cpp:987
@@ -6799,14 +6796,12 @@ msgid "Name"
 msgstr "Név"
 
 #: src/addon_management.cpp:729
-#, fuzzy
 msgid "New version"
-msgstr "Verzió"
+msgstr "Új verzió"
 
 #: src/addon_management.cpp:729
-#, fuzzy
 msgid "Old version"
-msgstr "Verzió"
+msgstr "Régi verzió"
 
 #: src/addon_management.cpp:730 src/addon_management.cpp:931
 msgid "Author"
@@ -6817,9 +6812,8 @@ msgid "Size"
 msgstr "Méret"
 
 #: src/addon_management.cpp:784
-#, fuzzy
 msgid "Update Add-ons"
-msgstr "Kiegészítések telepítése"
+msgstr "Kiegészítések frissítése"
 
 #: src/addon_management.cpp:785
 msgid "Select an add-on to update:"
@@ -6936,9 +6930,8 @@ msgid "Choose the add-on to remove."
 msgstr "Válaszd ki az eltávolítandó kiegészítést"
 
 #: src/addon_management.cpp:1095
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Kiegészítés küldése"
+msgstr "Kiegészítések eltávolítása"
 
 #: src/addon_management.cpp:1107
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -9389,105 +9382,3 @@ msgstr "Összesítések feltöltésének engedélyezése"
 
 #~ msgid "Warning: Errors occurred while loading game configuration files: '"
 #~ msgstr "Figyelem: Hiba a konfigurációs fájlok betöltésekor: '"
-
-#~ msgid "ruby of fire"
-#~ msgstr "tűz rubinja"
-
-#~ msgid "Screenshot"
-#~ msgstr "Képernyőkép"
-
-#~ msgid "Connect to Server"
-#~ msgstr "Csatlakozás a kiszolgálóhoz"
-
-#~ msgid "You will now connect to a server to download add-ons."
-#~ msgstr ""
-#~ "Most kapcsolódni fogsz egy kiszolgálóhoz, ahonnan kiegészítőket tölthetsz "
-#~ "le."
-
-#~ msgid "Server: "
-#~ msgstr "Kiszolgáló: "
-
-#~ msgid "Remove Add-ons"
-#~ msgstr "Kiegészítések eltávolítása"
-
-#~ msgid "Join Official Server"
-#~ msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
-
-#~ msgid "Log on to the official Wesnoth multiplayer server"
-#~ msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos kiszolgálójára"
-
-#~ msgid "Local Game"
-#~ msgstr "Helyi játék"
-
-#~ msgid ""
-#~ "Play a multiplayer game with the AI or humans sharing the same machine"
-#~ msgstr ""
-#~ "Többjátékos játék MI-vel vagy más emberekkel egyazon számítógép "
-#~ "megosztásával"
-
-#~ msgid "Language"
-#~ msgstr "Nyelv"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "A megfelelő nyelv kiválasztása:"
-
-#~ msgid "Level"
-#~ msgstr "Szint"
-
-#~ msgid ""
-#~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
-#~ "me/emote <message>. Type /help [<command>] for detailed instructions."
-#~ msgstr ""
-#~ "Parancsok: msg/whisper <becenév> <üzenet>, list <alparancs> "
-#~ "[<paraméter>], me/emote <üzenet>. A részletes útmutatóhoz írd be: /help "
-#~ "[<parancs>]"
-
-#~ msgid ""
-#~ "Ignore messages from players on the ignore list and highlight players on "
-#~ "the friends list. Usage: /list <subcommand> [<argument>] Subcommands: "
-#~ "addfriend, addignore, remove, display, clear. Type /help list "
-#~ "<subcommand> for more info."
-#~ msgstr ""
-#~ "A mellőzési listán lévők nem tudnak üzenetet küldeni neked, és a barátok "
-#~ "listáján lévők neve ki lesz emelve. Használat: /list <alparancs> "
-#~ "[<paraméter>] (nem kötelező). Alparancsok: addfriend, addignore, remove, "
-#~ "display, clear. További információkért add ki a /help list <alparancs> "
-#~ "parancsot."
-
-#~ msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
-#~ msgstr ""
-#~ "Játékos hozzáadása a barátok listájához. Használat: /list addfriend "
-#~ "<becenév>"
-
-#~ msgid "Clear your complete ignores and friends list. Usage: /list clear"
-#~ msgstr "Mellőzési és barátok listád kiürítése. Használat: /list clear"
-
-#~ msgid "Unknown subcommand."
-#~ msgstr "Ismeretlen alparancs"
-
-#~ msgid "Unknown command."
-#~ msgstr "Ismeretlen parancs"
-
-#~ msgid "Unknown command: "
-#~ msgstr "Ismeretlen parancs: "
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "Használat: control <oldal> <becenév>"
-
-#~ msgid "View List"
-#~ msgstr "Lista megtekintése"
-
-#~ msgid "List of Servers"
-#~ msgstr "Kiszolgálók listája"
-
-#~ msgid "Choose a known server from the list"
-#~ msgstr "Válassz egy ismert szervert a listából"
-
-#~ msgid "Address"
-#~ msgstr "Cím"
-
-#~ msgid "Connect to Host"
-#~ msgstr "Csatlakozás a kiszolgálóhoz"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "Válassz kiszolgálót a csatlakozáshoz: "
