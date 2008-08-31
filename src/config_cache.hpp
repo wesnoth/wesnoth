@@ -98,7 +98,6 @@ namespace game_config {
 		void read_configs(const std::string& path, config& cfg, preproc_map& defines);
 		void load_configs(const std::string& path, config& cfg);
 		void read_defines_queue();
-		void add_define_from_file(const config::all_children_iterator::value_type& value);
 		void read_defines_file(const std::string& path);
 
 		preproc_map& make_copy_map();
@@ -171,6 +170,7 @@ namespace game_config {
 		
 	};
 
+	struct add_define_from_file;
 	class fake_transaction;
 	/**
 	 * Used to share macros between load operations
@@ -207,12 +207,22 @@ namespace game_config {
 		static config_cache_transaction& instance()
 		{ assert(active_); return *active_; }
 		friend class config_cache;
+		friend class add_define_from_file;
 		friend class fake_transaction;
 		const filenames& get_define_files() const;
 		void add_define_file(const std::string&);
 		preproc_map& get_active_map(const preproc_map&);
 		void add_defines_map_diff(preproc_map& defines_map);
 	};
+
+	struct add_define_from_file {
+		void operator()(const config::all_children_iterator::value_type& value) const
+		{
+			config_cache_transaction::instance().insert_to_active(
+					preproc_define::read_pair(value.second));
+		}
+	};
+
 
 	/**
 	 * Holds a fake cache transaction if no real one is used
