@@ -26,6 +26,8 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 
+#include <boost/lambda/lambda.hpp>
+#include <boost/lambda/bind.hpp>
 #include <boost/bind.hpp>
 
 #define ERR_CACHE LOG_STREAM(err, cache)
@@ -264,7 +266,7 @@ namespace game_config {
 		add_defines_map_diff(copy_map);
 	}
 
-	void config_cache::add_define_from_file(const config::all_children_iterator::value_type& value)
+	void config_cache::add_define_from_file(const config::all_children_iterator::value_type value) const
 	{
 		config_cache_transaction::instance().insert_to_active(
 				preproc_define::read_pair(value.second));
@@ -272,6 +274,9 @@ namespace game_config {
 
 	void config_cache::read_defines_file(const std::string& path)
 	{
+		using namespace boost::lambda;
+		boost::lambda::placeholder1_type X;
+
 		config cfg;
 		read_file(path, cfg);
 
@@ -280,9 +285,9 @@ namespace game_config {
 		// use static preproc_define::read_pair(config*) to make a object
 		// and pass that object config_cache_transaction::insert_to_active method
 	   	std::for_each(cfg.ordered_begin(), cfg.ordered_end(),
-				boost::bind(&config_cache::add_define_from_file,
+				bind(&config_cache::add_define_from_file,
 					this,
-					_1)
+					X)
 				);	
 	}
 
