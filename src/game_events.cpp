@@ -1313,8 +1313,20 @@ namespace {
 		std::string mode = cfg["mode"]; // replace, append, merge, or insert
 		if(mode == "extend") {
 			mode = "append";
-		} else if(mode != "append" && mode != "merge" && mode != "insert") {
-			mode = "replace";
+		} else if(mode != "append" && mode != "merge") {
+			if(mode == "insert") {
+				size_t child_count = dest.vars->child_count(dest.key);
+				if(dest.index >= child_count) {
+					while(dest.index >= ++child_count) {
+						//inserting past the end requires empty data
+						dest.vars->append(config(dest.key));
+					}
+					//inserting at the end is handled by an append
+					mode = "append";
+				}
+			} else {
+				mode = "replace";
+			}
 		}
 
 		const vconfig::child_list values = cfg.get_children("value");

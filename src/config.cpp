@@ -113,6 +113,15 @@ config::const_child_itors config::child_range(const std::string& key) const
 	}
 }
 
+size_t config::child_count(const std::string& key) const
+{
+	child_map::const_iterator i = children.find(key);
+	if(i != children.end()) {
+		return i->second.size();
+	}
+	return 0;
+}
+
 const config::child_list& config::get_children(const std::string& key) const
 {
 	const child_map::const_iterator i = children.find(key);

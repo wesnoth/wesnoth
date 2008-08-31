@@ -75,6 +75,7 @@ public:
 
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
+	size_t child_count(const std::string& key) const;
 
 	const child_list& get_children(const std::string& key) const;
 	const child_map& all_children() const;
@@ -89,9 +90,9 @@ public:
 
 	const t_string& get_attribute(const std::string& key) const;
 	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
-	
-	/** 
-	 * This should only be used if there is no mapping of the key already, 
+
+	/**
+	 * This should only be used if there is no mapping of the key already,
 	 * e.g. when creating a new config object. It does not replace an existing value.
 	 * @returns true when it added the key-value pair, false if it already existed
 	 *          (and you probably wanted to use config[key] = value)
