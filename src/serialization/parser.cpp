@@ -70,18 +70,20 @@ private:
 
 	struct element {
 		element(config *cfg, std::string 
-			const &name, std::string const &start_line) :
+			const &name, const size_t& start_line = 0, const std::string& file="") :
 				cfg(cfg), 
 				name(name),
 				last_element_map(),
-				start_line(start_line) 
+				start_line(start_line),
+			    file(file)
 			{}
 
 		config* cfg;
 		std::string name;
 
 		std::map<std::string, config*> last_element_map;
-		std::string start_line;
+		size_t start_line;
+		std::string file;
 	};
 
 	std::stack<element> elements;
@@ -105,7 +107,7 @@ parser::~parser()
 void parser::operator()(std::string* error_log)
 {
 	cfg_.clear();
-	elements.push(element(&cfg_, "", ""));
+	elements.push(element(&cfg_, ""));
 
 	do {
 		try {
@@ -147,7 +149,9 @@ void parser::operator()(std::string* error_log)
 	if(elements.size() != 1) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["tag"] = elements.top().name;
-		error(lineno_string(i18n_symbols, elements.top().start_line,
+		std::stringstream ss;
+		ss << elements.top().start_line << " " << elements.top().file;
+		error(lineno_string(i18n_symbols, ss.str(),
 				N_("Missing closing tag for tag $tag at $pos")));
 	}
 }
@@ -168,7 +172,7 @@ void parser::parse_element()
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
 		elements.top().last_element_map[elname] = current_element;
-		elements.push(element(current_element, elname, tok_->get_line()));
+		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
 
 	case '+': // [+element]
@@ -187,7 +191,7 @@ void parser::parse_element()
 			current_element = last_element_itor->second;
 		}
 		elements.top().last_element_map[elname] = current_element;
-		elements.push(element(current_element, elname, tok_->get_line()));
+		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
 
 	case '/': // [/element]
@@ -202,7 +206,9 @@ void parser::parse_element()
 			utils::string_map i18n_symbols;
 			i18n_symbols["tag"] = elements.top().name;
 			i18n_symbols["tag2"] = elname;
-			error(lineno_string(i18n_symbols, elements.top().start_line,
+			std::stringstream ss;
+			ss << elements.top().start_line << " " << elements.top().file;
+			error(lineno_string(i18n_symbols, ss.str(),
 					N_("Found invalid closing tag $tag2 for tag $tag (opened at $pos)")));
 		}
 
@@ -287,7 +293,7 @@ void parser::parse_variable()
 			// Ignore this
 			break;
 		default:
-			cfg[*curvar] += tok_->current_token().leading_spaces + tok_->current_token().value;
+			cfg[*curvar] += tok_->current_token().value;
 			break;
 		case token::QSTRING:
 			cfg[*curvar] += tok_->current_token().value;
@@ -335,14 +341,16 @@ void parser::error(const std::string& error_type)
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
 	i18n_symbols["value"] = tok_->current_token().value;
+	std::stringstream ss;
+	ss << tok_->get_start_line() << " " << tok_->get_file();
 #ifdef DEBUG
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
 	throw config::error(
-		lineno_string(i18n_symbols, tok_->get_line(),
+		lineno_string(i18n_symbols, ss.str(),
 		              N_("$error, value '$value', previous '$previous_value' at $pos")));
 #else
 	throw config::error(
-		lineno_string(i18n_symbols, tok_->get_line(),
+		lineno_string(i18n_symbols, ss.str(),
 		              N_("$error, value '$value' at $pos")));
 #endif
 }

@@ -291,9 +291,9 @@ BOOST_AUTO_TEST_CASE( test_performance )
 {
 	test_scoped_define mp("MULTIPLAYER");
 	config cfg_ref;
-	cache.set_force_not_valid_cache(true);
+//	cache.set_force_not_valid_cache(true);
 	cache.get_config("data/", cfg_ref);
-	cache.set_force_not_valid_cache(false);
+//	cache.set_force_not_valid_cache(false);
 	for (int i=0; i < 3; ++i)
 	{
 		cache.get_config("data/");
