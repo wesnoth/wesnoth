@@ -98,7 +98,7 @@ namespace game_config {
 		void read_configs(const std::string& path, config& cfg, preproc_map& defines);
 		void load_configs(const std::string& path, config& cfg);
 		void read_defines_queue();
-		void add_define_from_file(const config::all_children_iterator::value_type value) const;
+		void add_define_from_file(const config::all_children_iterator::value_type& value);
 		void read_defines_file(const std::string& path);
 
 		preproc_map& make_copy_map();
