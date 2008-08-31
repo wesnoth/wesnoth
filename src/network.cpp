@@ -481,14 +481,14 @@ connection connect(const std::string& host, int port)
 
 connection connect(const std::string& host, int port, threading::waiter& waiter)
 {
-	const threading::async_operation_holder<connect_operation> op(new connect_operation(host,port));
-	const connect_operation::RESULT res = op.operation().execute(waiter);
+	const threading::async_operation_ptr op(new connect_operation(host,port));
+	const connect_operation::RESULT res = op->execute(op, waiter);
 	if(res == connect_operation::ABORTED) {
 		return 0;
 	}
 
-	op.operation().check_error();
-	return op.operation().result();
+	static_cast<connect_operation*>(op.get())->check_error();
+	return static_cast<connect_operation*>(op.get())->result();
 }
 
 connection accept_connection()

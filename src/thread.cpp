@@ -26,7 +26,7 @@
 
 static int run_async_operation(void* data)
 {
-	threading::async_operation* const op = reinterpret_cast<threading::async_operation*>(data);
+	threading::async_operation_ptr op(*reinterpret_cast<threading::async_operation_ptr*>(data));
 	op->run();
 
 	const threading::lock l(op->get_mutex());
@@ -148,7 +148,7 @@ bool async_operation::notify_finished()
 	return finished_.notify_one();
 }
 
-async_operation::RESULT async_operation::execute(waiter& wait)
+async_operation::RESULT async_operation::execute(async_operation_ptr this_ptr, waiter& wait)
 {
 	//the thread must be created after the lock, and also destroyed after it.
 	//this is because during the thread's execution, we must always hold the mutex
@@ -157,10 +157,9 @@ async_operation::RESULT async_operation::execute(waiter& wait)
 	//
 	//we cannot hold the mutex while waiting for the thread to join though, because
 	//the thread needs access to the mutex before it terminates
-	std::auto_ptr<thread> t(NULL);
 	{
 		const lock l(get_mutex());
-		t = std::auto_ptr<thread>(new thread(run_async_operation,this));
+		thread_.reset(new thread(run_async_operation,&this_ptr));
 
 		bool completed = false;
 		while(wait.process() == waiter::WAIT) {

@@ -18,6 +18,9 @@
 #include "SDL.h"
 #include "SDL_thread.h"
 
+#include <boost/scoped_ptr.hpp>
+#include <boost/smart_ptr.hpp>
+
 // Threading primitives wrapper for SDL_Thread.
 //
 // This module defines primitives for wrapping C++ around SDL's threading
@@ -190,6 +193,10 @@ public:
 	virtual ACTION process() = 0;
 };
 
+class async_operation;
+
+typedef boost::shared_ptr<async_operation> async_operation_ptr;
+
 //class which defines an asynchronous operation. Objects of this class are accessed from
 //both the worker thread and the calling thread, and so it has 'strange' allocation semantics.
 //It is allocated by the caller, and generally deleted by the caller. However, in some cases
@@ -206,10 +213,10 @@ public:
 	enum RESULT { COMPLETED, ABORTED };
 
 	async_operation() : 
-		aborted_(false), finished_(), finishedVar_(false), mutex_() {}
+		thread_(), aborted_(false), finished_(), finishedVar_(false), mutex_() {}
 	virtual ~async_operation() {}
 
-	RESULT execute(waiter& wait);
+	RESULT execute(async_operation_ptr this_ptr, waiter& wait);
 
 	mutex& get_mutex() { return mutex_; }
 
@@ -225,30 +232,11 @@ public:
 	bool is_aborted() const { return aborted_; }
 
 private:
+	boost::scoped_ptr<thread> thread_;
 	bool aborted_;
 	condition finished_;
 	bool finishedVar_;
 	mutex mutex_;
-};
-
-//T should be a type derived from async_operation
-template<typename T>
-class async_operation_holder
-{
-public:
-	explicit async_operation_holder(T* op) : op_(op)
-	{}
-
-	~async_operation_holder() {
-		//it's okay to call is_aborted() without the mutex here,
-		//because we are in the calling thread, not the worker thread
-		delete op_;
-	}
-
-	T& operation() const { return *op_; }
-
-private:
-	T* const op_;
 };
 
 }
