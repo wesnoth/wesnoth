@@ -84,6 +84,10 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .SS 全球關鍵字:
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 同一IP允許的連接數。(預設值：\fB5\fP)
 .TP 
@@ -102,6 +106,10 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .TP 
 \fBpasswd\fP
 取得管理員權限的密碼。通常以"admin"開頭。
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 用逗號分隔的伺服器接受版本列表。支援 "＊" 和 "？" 符號。（預設為相同版本）
@@ -124,7 +132,10 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 重定向用逗號分隔列表的版本。顯示同樣的模式包括\fBversions_accepted\fP在符號模式。
 .RE
 .P
-\fB[proxy]\fP 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺服器。與\fB[redirect]\fP接受一樣的參數。
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH 作者
 .

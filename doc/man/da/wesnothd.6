@@ -91,6 +91,10 @@ nøgle="\fIværdi\fP,\fIværdi\fP,..."
 .SS "Globale nøgler:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Antallet af tilladte forbindelser fra samme IP. \fB0\fP betyder
 uendelig. (standard: \fB5\fP)
@@ -114,6 +118,10 @@ Dagens besked.
 \fBpasswd\fP
 Adgangskoden der giver administratorrettigheder. Starter normalt med `admin
 \&'.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 En kommasepareret liste af versionsstrenge som accepteres af serveren. `*'
@@ -139,9 +147,10 @@ En kommasepareret liste af versioner som omdirigeres. Fungerer på samme måde
 som \fBversions_accepted\fP i forhold til wildcard patterns.
 .RE
 .P
-\fB[proxy]\fP Et mærke som fortæller serveren den skal fungere som en proxy og
-og videresende den forbundne klients forespørgsler til den specificerede
-server.  Accepterer de samme nøgler som \fB[redirect]\fP.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH FORFATTER
 .

@@ -91,6 +91,10 @@ key="\fIdeğer\fP,\fIdeğer\fP,..."
 .SS "Genel anahtar (key) isimleri:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
 gelir. \fB5\fP öntanımlıdır.
@@ -115,6 +119,10 @@ Günün sözü.
 \fBpasswd\fP
 Yönetici yetkilerini kazanmak için kullanılacak parola. Genellikle `admin '
 ile başlar.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
@@ -141,9 +149,10 @@ Yönlendirilecek sürümlerin virgül ayraçlı listesi. Dosya kalıbı karakter
 bakımından \fBversions_accepted\fP ile aynı yöntem kullanılır.
 .RE
 .P
-\fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalışacağını ve bağlanan
-istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
-etiket. \fB[redirect]\fP için kullanılan anahtarlar kullanılır.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH YAZAN
 .

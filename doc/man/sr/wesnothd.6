@@ -91,6 +91,10 @@ http://www.wesnoth.org/wiki/ServerAdministration за наредбе које с
 .SS "Глобални кључеви:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 број дозвољених веза са исте ИП адресе, \fB0\fP значи безброј (подразумевно:
 \fB5\fP)
@@ -114,6 +118,10 @@ http://www.wesnoth.org/wiki/ServerAdministration за наредбе које с
 .TP 
 \fBpasswd\fP
 лозинка за стицање администраторских овлашћења. Обично почиње са ‘admin  ’
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Запетама раздвојен списак ниски верзија које сервер прихвата. Прихватају се
@@ -140,9 +148,10 @@ http://www.wesnoth.org/wiki/ServerAdministration за наредбе које с
 и \fBversions_accepted\fP у погледу џокера
 .RE
 .P
-\fB[proxy]\fP ознака која говори серверу да се понаша као посредник и
-прослеђује захтеве повезаних клијената на одређени сервер. Прихвата исте
-кључеве као и \fB[redirect]\fP
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH АУТОР
 .

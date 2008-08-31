@@ -92,6 +92,10 @@ Schlüssel="\fIWert\fP,\fIWert\fP,..."
 .SS "Globale Schlüssel:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
@@ -116,6 +120,10 @@ Die "Nachricht des Tages".
 \fBpasswd\fP
 Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt
 per Konvention mit `admin '.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
@@ -143,10 +151,10 @@ sollen. Verhält sich in Bezug auf Wildcards genauso wie
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein
-Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
-den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
-bei \fB[redirect]\fP akzeptiert.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH AUTOR
 .

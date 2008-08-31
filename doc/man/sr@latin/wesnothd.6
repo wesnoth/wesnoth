@@ -91,6 +91,10 @@ ključ="\fIvrednost\fP,\fIvrednost\fP,..."
 .SS "Globalni ključevi:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 broj dozvoljenih veza sa iste IP adrese, \fB0\fP znači bezbroj (podrazumevno:
 \fB5\fP)
@@ -115,6 +119,10 @@ poruka dana
 \fBpasswd\fP
 lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa ‘admin
 ’
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se
@@ -141,9 +149,10 @@ zapetama razdvojen spisak verzija koje se preusmeravaju. Ponaša se isto kao
 i \fBversions_accepted\fP u pogledu džokera
 .RE
 .P
-\fB[proxy]\fP oznaka koja govori serveru da se ponaša kao posrednik i
-prosleđuje zahteve povezanih klijenata na određeni server. Prihvata iste
-ključeve kao i \fB[redirect]\fP
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH AUTOR
 .

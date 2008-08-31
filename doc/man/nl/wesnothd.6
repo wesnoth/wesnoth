@@ -91,6 +91,10 @@ sleutel="\fIwaarde\fP,\fIwaarde\fP,..."
 .SS "Globale sleutels:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Het aantal toegestane verbindingen van hetzelfde IP. \fB0\fP betekent
 oneindig. (standaard: \fB5\fP)
@@ -114,6 +118,10 @@ Bericht van de dag.
 .TP 
 \fBpasswd\fP
 Het wachtwoord om admin rechten te krijgen. Meestal begint het met `admin '.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Een comma gescheiden lijst van versies die door de server geaccepteerd dient
@@ -140,9 +148,10 @@ Een comma gescheiden lijst van te verwijzen versies. Gedraagt zich hetzelfde
 als \fBversions_accepted\fP wat betreft jokertekens.
 .RE
 .P
-\fB[proxy]\fP Een element om de server te vertellen om als proxy te handelen en
-de verbonden klant door te sturen naar de ingestelde server. Accepteert
-dezelfde sleutels als\fB[redirect]\fP.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH AUTEUR
 .

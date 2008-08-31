@@ -84,6 +84,10 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .SS "Global keys:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
@@ -103,6 +107,10 @@ infinite. (default: \fB5\fP)
 .TP 
 \fBpasswd\fP
 获取管理员权限的密码。通常以`admin '开头。
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 用逗号分隔的服务器接受的版本号列表。支持`*'和`?'通配符。（默认为(与服务器)一致的wesnoth版本）
@@ -125,7 +133,10 @@ infinite. (default: \fB5\fP)
 用逗号分隔的需要重定向的版本号列表。同样可以使用`*'和`?'通配符。
 .RE
 .P
-\fB[proxy]\fP 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务器。与\fB[redirect]\fP接受一样的参数。
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH 作者
 .

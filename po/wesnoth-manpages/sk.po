@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2008-08-27 13:28+0300\n"
+"POT-Creation-Date: 2008-08-31 11:48+0300\n"
 "PO-Revision-Date: 2008-04-20 21:39+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -625,7 +625,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:219 ../../doc/man/wesnoth_editor.6:74
-#: ../../doc/man/wesnothd.6:163
+#: ../../doc/man/wesnothd.6:171
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
@@ -656,27 +656,27 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:228 ../../doc/man/wesnoth_editor.6:83
-#: ../../doc/man/wesnothd.6:170
+#: ../../doc/man/wesnothd.6:178
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Navštívte oficiálnu stránku: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:229 ../../doc/man/wesnoth_editor.6:84
-#: ../../doc/man/wesnothd.6:171
+#: ../../doc/man/wesnothd.6:179
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnoth_editor.6:87
-#: ../../doc/man/wesnothd.6:174
+#: ../../doc/man/wesnothd.6:182
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:235 ../../doc/man/wesnoth_editor.6:90
-#: ../../doc/man/wesnothd.6:177
+#: ../../doc/man/wesnothd.6:185
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -689,7 +689,7 @@ msgstr ""
 
 # type: SH
 #: ../../doc/man/wesnoth.6:236 ../../doc/man/wesnoth_editor.6:91
-#: ../../doc/man/wesnothd.6:178
+#: ../../doc/man/wesnothd.6:186
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIĎ AJ"
@@ -1014,11 +1014,24 @@ msgstr "Globálne kľúče:"
 # type: TP
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
+msgid "B<ban_save_file>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:113
+msgid ""
+"Full or relative path to a file that server can read and write. All bans "
+"active in server will be writen there."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:113
+#, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:113
+#: ../../doc/man/wesnothd.6:116
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
@@ -1027,13 +1040,13 @@ msgstr ""
 "(štandardne: B<5>)"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:113
+#: ../../doc/man/wesnothd.6:116
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:120
+#: ../../doc/man/wesnothd.6:123
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1045,26 +1058,26 @@ msgstr ""
 "nezadá) sú: B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:120
+#: ../../doc/man/wesnothd.6:123
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:123
+#: ../../doc/man/wesnothd.6:126
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
 "Počet povolených správ počas B<messages_time_period>. (štandardne: B<4>)"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:123
+#: ../../doc/man/wesnothd.6:126
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:129
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
@@ -1073,24 +1086,24 @@ msgstr ""
 "(štandardne: B<10> sekúnd)"
 
 # type: TP
-#: ../../doc/man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:129
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:129
+#: ../../doc/man/wesnothd.6:132
 msgid "The message of the day."
 msgstr "Správa dňa."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:129
+#: ../../doc/man/wesnothd.6:132
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:132
+#: ../../doc/man/wesnothd.6:135
 msgid ""
 "The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr ""
@@ -1098,13 +1111,26 @@ msgstr ""
 "`admin '."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:132
+#: ../../doc/man/wesnothd.6:135
+#, no-wrap
+msgid "B<restart_command>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:138
+msgid ""
+"Command that server can use to start new server process. Restart can be done "
+"using /query restart."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:138
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:136
+#: ../../doc/man/wesnothd.6:142
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
@@ -1114,18 +1140,18 @@ msgstr ""
 "žolíkové znaky `*' and `?'. (štandardne je to zodpovedajúca verzia wesnoth)"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:138
+#: ../../doc/man/wesnothd.6:144
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "Napríklad: B<versions_accepted=\"*\"> prijme hocijakú verziu."
 
 # type: SS
-#: ../../doc/man/wesnothd.6:139
+#: ../../doc/man/wesnothd.6:145
 #, no-wrap
 msgid "Global tags:"
 msgstr "Globálne značky:"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:144
+#: ../../doc/man/wesnothd.6:150
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -1134,35 +1160,35 @@ msgstr ""
 "klientov."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:145
+#: ../../doc/man/wesnothd.6:151
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:148
+#: ../../doc/man/wesnothd.6:154
 msgid "The address of the server to redirect to."
 msgstr "Adresa servera, kam sa presmerujú."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:148
+#: ../../doc/man/wesnothd.6:154
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:151
+#: ../../doc/man/wesnothd.6:157
 msgid "The port to connect to."
 msgstr "Port, na ktorý sa majú pripojiť."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:151
+#: ../../doc/man/wesnothd.6:157
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:156
+#: ../../doc/man/wesnothd.6:162
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1171,18 +1197,20 @@ msgstr ""
 "žolíkové znaky rovnako ako  B<versions_accepted>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:162
+#: ../../doc/man/wesnothd.6:170
+#, fuzzy
 msgid ""
-"B<[proxy]> A tag to tell the server to act as a proxy and forward the "
-"connected client's requests to the specified server.  Accepts the same keys "
-"as B<[redirect]>."
+"B<[ban_time]> A tag to define keywords for temporary ban lengths. Name and "
+"time keys are used by server.  B<[proxy]> A tag to tell the server to act as "
+"a proxy and forward the connected client's requests to the specified "
+"server.  Accepts the same keys as B<[redirect]>."
 msgstr ""
 "B<[proxy]> Značka, ktorá povie serveru, aby sa správal ako proxy a "
 "preposielal požiadavky pripojených klientov na daný server. Podporuje "
 "rovnaké kľúče ako B<[redirect]>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:168
+#: ../../doc/man/wesnothd.6:176
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -1196,6 +1224,6 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:181
+#: ../../doc/man/wesnothd.6:189
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"

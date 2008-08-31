@@ -90,6 +90,10 @@ kľúč="\fIhodnota\fP,\fIhodnota\fP,..."
 .SS "Globálne kľúče:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z rovnakej IP adresy. \fB0\fP znamená
 nekonečno. (štandardne: \fB5\fP)
@@ -113,6 +117,10 @@ Správa dňa.
 \fBpasswd\fP
 Heslo používané na získanie administrátorských práv. Zvyčajne začína na
 `admin '.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú sa
@@ -138,9 +146,10 @@ Port, na ktorý sa majú pripojiť.
 žolíkové znaky rovnako ako  \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Značka, ktorá povie serveru, aby sa správal ako proxy a
-preposielal požiadavky pripojených klientov na daný server. Podporuje
-rovnaké kľúče ako \fB[redirect]\fP.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH AUTOR
 .

@@ -90,6 +90,10 @@ key="\fIérték\fP,\fIérték\fP,..."
 .SS "Globális kapcsolók:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Az azonos IP címről engedélyezett párhuzamos kapcsolatok száma. \fB0\fP esetén
 korlátlan.(alapértelmezett: \fB5\fP)
@@ -115,6 +119,10 @@ Az aznapra szánt üzenet.
 \fBpasswd\fP
 A jelszó, amivel adminisztrátori jogok nyerhetőek. Általában az 'admin'
 szóval kezdődik.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Egy vesszőkkel elválasztott lista azokról a verziószámokról, amelyeket a
@@ -143,9 +151,10 @@ kiszolgáló átirányít. A különleges jelzések ( '*' és '?') a
 \fBversions_accepted\fP\-hez hasonlóan használhatóak.
 .RE
 .P
-\fB[proxy]\fP Proxy\-ként való viselkedés, azaz a bejövő kliens kapcsolatok
-továbbítása a megadott kiszolgáló felé. Ugyanazokat az értékeket fogadja el,
-mint a \fB[redirect]\fP.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH SZERZŐ
 .

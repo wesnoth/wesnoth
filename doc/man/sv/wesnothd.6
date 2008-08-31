@@ -90,6 +90,10 @@ parameter="\fIvärde\fP,\fIvärde\fP,..."
 .SS "Globala parametrar:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 The number of allowed connections from the same IP. \fB0\fP means
 infinite. (default: \fB5\fP)
@@ -113,6 +117,10 @@ Meddelandet för dagen.
 .TP 
 \fBpasswd\fP
 Lösenordet för administrationsrättigheter. Börjar ofta med `admin '.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 En komma\-separerad lista med versionssträngar som accepteras av servern. '*'
@@ -139,9 +147,10 @@ En komma\-separerad lista av versioner att omdirigera. Fungerar på samma sätt
 som \fBversions_accepted\fP vad gäller strängmatchning.
 .RE
 .P
-\fB[proxy]\fP En tag som anger att servern skall agera som proxy och
-vidarebefordra klientförfrågningar till den angiva servern. Accepterar samma
-parametrar som \fB[redirect]\fP.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH FÖRFATTARE
 .

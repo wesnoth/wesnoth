@@ -90,6 +90,10 @@ klíč="\fIhodnota\fP,\fIhodnota\fP"
 .SS "Globální klíče:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a file that server can read and write. All bans
+active in server will be writen there.
+.TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z jedné IP adresy. \fB0\fP znamená
 nekonečno. (implicitně \fB5\fP)
@@ -112,6 +116,10 @@ Zpráva dne.
 .TP 
 \fBpasswd\fP
 Heslo pro získání administrátorských práv. Obvykle začíná na „admin“.
+.TP 
+\fBrestart_command\fP
+Command that server can use to start new server process. Restart can be done
+using /query restart.
 .TP 
 \fBversions_accepted\fP
 Seznam čárkou oddělených řetězců verzí Wesnothu, které jsou serverem
@@ -139,8 +147,10 @@ přesměrovány na tento vzdálený server. Obdobný zápis jako u
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[proxy]\fP Značka říkající, který server se chová jako proxy a přesměrovává
-na určený server své požadavky. Akceptuje stejné klíče jako \fB[redirect]\fP.
+\fB[ban_time]\fP A tag to define keywords for temporary ban lengths. Name and
+time keys are used by server.  \fB[proxy]\fP A tag to tell the server to act as
+a proxy and forward the connected client's requests to the specified
+server.  Accepts the same keys as \fB[redirect]\fP.
 .
 .SH AUTOŘI
 .
