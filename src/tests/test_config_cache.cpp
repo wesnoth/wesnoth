@@ -285,6 +285,22 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 	cache.set_force_not_valid_cache(false);
 }
 
+#if 0
+// for profiling cache speed
+BOOST_AUTO_TEST_CASE( test_performance )
+{
+	test_scoped_define mp("MULTIPLAYER");
+	config cfg_ref;
+	cache.set_force_not_valid_cache(true);
+	cache.get_config("data/", cfg_ref);
+	cache.set_force_not_valid_cache(false);
+	for (int i=0; i < 3; ++i)
+	{
+		cache.get_config("data/");
+	}
+}
+#endif
+
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
 

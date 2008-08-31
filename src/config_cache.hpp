@@ -12,6 +12,11 @@
    See the COPYING file for more details.
 */
 
+/**
+ * this file implements game config caching
+ * to speed up startup 
+ ***/
+
 #ifndef CONFIG_CACHE_HPP_INCLUDED
 #define CONFIG_CACHE_HPP_INCLUDED
 
@@ -40,6 +45,7 @@ namespace game_config {
 				std::string path_;
 			public:
 				/**
+				 * adds normal preproc define
 				 * @params name of preproc define to add
 				 * @aprams true if we should add this
 				 **/
@@ -48,12 +54,19 @@ namespace game_config {
 					if (add_)
 						T::instance().add_define(name_);
 				}
+
+				/**
+				 * adds path specific preproc define
+				 **/
 				scoped_preproc_define_internal(const std::string& path, const std::string& name, bool add = true) : name_(name), add_(add), path_(path)
 				{
 					if (add_)
 						T::instance().add_path_define(path_, name_);
 				}
 
+				/**
+				 * This removes preproc define from cacher
+				 **/
 				~scoped_preproc_define_internal()
 				{
 					if(add_) 
@@ -72,11 +85,13 @@ namespace game_config {
 	typedef boost::shared_ptr<scoped_preproc_define> scoped_preproc_define_ptr;
 	typedef std::list<scoped_preproc_define_ptr> scoped_preproc_define_list;
 	/**
-	 * Singleton object to manage game configs
-	 * and cache reading.
+	 * Singleton class to manage game config file caching.
+	 * It uses paths to config files as key to find correct cache
 	 * @TODO: Make smarter filetree checksum caching so only required parts
 	 * 		  of tree are checked at startup. Trees are overlapping so have
 	 * 		  to split trees to subtrees to only do check once per file.
+	 * @TODO: Make cache system easily allow validation of in memory cache objects
+	 * 		  using hash checksum of preproc_map.
 	 **/
 	class config_cache : private boost::noncopyable {
 		public:
@@ -173,13 +188,19 @@ namespace game_config {
 	struct add_define_from_file;
 	class fake_transaction;
 	/**
-	 * Used to share macros between load operations
-	 * It uses empty map if no transaction is started
+	 * Used to share macros between cache objects
+	 * You have to create transaction object to load all
+	 * macros to memory and share them subsequent cache loads.
+	 * If transaction is locked all stored macros are still
+	 * available but new macros aren't added.
 	 **/
 	class config_cache_transaction  : private boost::noncopyable {
 		public:
 		config_cache_transaction();
 		~config_cache_transaction();
+		/**
+		 * Lock the transaction so no more macros are added
+		 **/
 		void lock();
 
 		enum state { FREE,
@@ -190,10 +211,11 @@ namespace game_config {
 		typedef std::vector<std::string> filenames;
 
 		/**
-		 * Used to let std::for_each insert defines from another
+		 * Used to let std::for_each insert new defines to active_map
 		 * map to active 
 		 **/
 		void insert_to_active(const preproc_map::value_type& def);
+		
 		private:
 		static state state_;
 		static config_cache_transaction* active_;
