@@ -27,15 +27,15 @@ case $SERVER in
 		CXXFLAGS="$CXXFLAGS -ggdb3"
 	;;
 	1.4 )   cd $SOURCE/1.4   || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
 		#SCONS=yes
 	;;
 	trunk ) cd $SOURCE/trunk || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0"
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
 		SCONS=yes
 	;;
 	*   )   cd $SOURCE/trunk || exit 1
-		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7"
+		CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
 		SCONS=yes
 	;;
 esac
