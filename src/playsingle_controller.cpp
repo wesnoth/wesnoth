@@ -253,7 +253,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	// Find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui_->add_overlay(gamemap::location(**overlay,game_events::get_state_of_game()),(**overlay)["image"], (**overlay)["halo"]);
+		gui_->add_overlay(gamemap::location(**overlay, game_events::get_state_of_game()), (**overlay)["image"], (**overlay)["halo"], (**overlay)["team_name"]);
 	}
 
 	victory_conditions::set_victory_when_enemies_defeated(
@@ -563,6 +563,9 @@ void playsingle_controller::play_turn(bool save)
 
 void playsingle_controller::play_side(const unsigned int team_index, bool save)
 {
+	//check for team-specific items in the scenario
+	gui_->parse_team_overlays();
+
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {

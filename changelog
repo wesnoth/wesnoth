@@ -34,6 +34,8 @@ Version 1.5.3+svn:
    * prevent some negative/nonsense values in direct WML unit modifications
    * Renamed the advanceto key in [unit_type] to advances_to in order to be
      consistent with its own and [unit]'s internals.
+   * implemented FR #11817: Allow [item]s to be visible only to specified teams
+     (patch #1100 by Broodkiller)
  * Networking
    * removed null termination character from end of packet send by wesnoth
  * Miscellaneous and bug fixes:
