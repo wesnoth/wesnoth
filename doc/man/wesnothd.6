@@ -109,7 +109,8 @@ key="\fIvalue\fR,\fIvalue\fR,..."
 .
 .TP
 .B ban_save_file
-Full or relative path to a file that server can read and write. All bans active in server will be writen there.
+Full or relative path to a (gzip compressed) file that the server can read and write.
+Bans will be saved to this file and read again on server start.
 .TP
 .B connections_allowed
 The number of allowed connections from the same IP. \fB0\fR means infinite. (default: \fB5\fR)
@@ -162,17 +163,19 @@ in regard to wildcard patterns.
 .RE
 .P
 .B [ban_time]
-A tag to define keywords for temporary ban lengths. Name and time keys are used by server.
+A tag to define convenient keywords for temporary ban time lengths.
+.RS
 .TP
 .B name
-Name that can be used with ban command instead of time
+The name used to reference the ban time.
 .TP
 .B time
-Time tells how long ban should be set if using this to ban someone. Format is %d[%s[%d%s[%d%s[...]]]] 
-where ‰d is number telling length of ban and %s is used as modifier to number. possible modifiers are
-s (seconds), m (minutes), h (hours), D (dayes), M (month) and Y (years)
-1D means a day
-3M15D means 3 months and 15 dayes
+The time length definition.
+The format is: %d[%s[%d%s[...]]] where %s is s (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d is a number.
+If no time modifier is given minutes (m) are assumed.
+Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30 minutes.
+.RE
+.P
 .B [proxy]
 A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
 Accepts the same keys as 
