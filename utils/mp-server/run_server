@@ -1,33 +1,34 @@
 #!/bin/sh
-#Example wesnothd.cfg
-#versions_accepted="1.5.0+svn"
-#restart_command="run_server 1.5 &"
 
 if [ $# -lt 1 ]; then
-	echo "Syntax: $0 <server version> [<additional parameters for wesnothd>]" >&2
+	echo "Syntax: $0 <server version> [--test] [<additional parameters for wesnothd>]" >&2
 	exit 1
 fi
 
 SERVER=$1
-shift
-PARAMETERS=$*
 SERVERBASE=$HOME/servers/$SERVER
-SOURCE=$HOME/source/trunk
-
 if ! [ -d "$SERVERBASE" ]; then
 	echo "Server '$SERVER' not found." >&2
 	exit 1
 fi
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 
+shift
+if [ "$1" = "--test" ]; then
+	shift
+	PARAMETERS=$*
+	cd $SERVERBASE/build || exit 1
+	bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT $PARAMETERS
+	# remove the socket so it looks like we never ran the server
+	rm var/run/socket
+	exit 0
+fi
+
+PARAMETERS=$*
 THREADS=4
 PORT=15000
 
 case $SERVER in
-	1.2 )	PORT=14999
-		THREADS=30
-		SOURCE=$HOME/source/1.2
-		;;
 	1.4 )	PORT=14998
 		;;
 	1.5* )	PORT=14999
@@ -41,7 +42,7 @@ ulimit -Ss 2048
 ulimit -c unlimited
 
 # send the standard server message to the appropriate server when killing it with ctrl+c
-trap "$HOME/bin/send_server_message $SERVER; sleep 2; killall wesnothd-$SERVER -q; echo -n 'terminated: '; date; exit 0" INT
+trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; date; exit 0" INT
 
 while [ true ] 
 do
@@ -58,31 +59,20 @@ do
 	REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
 	LOG="wesnothd.$DATE.$REV.log"
 	COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
-	nice -n 3 $COMMAND > $SERVERBASE/logs/$LOG 2>&1 &
+	$COMMAND &> "$SERVERBASE/logs/$LOG"
 	PID=$!
 	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
 	# create some convenient links
 	ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
 	rm -f $SERVERBASE/old.log
-	mv $SERVERBASE/current.log $SERVERBASE/old.log > /dev/null 2>&1
+	mv $SERVERBASE/current.log $SERVERBASE/old.log &> /dev/null
 	ln -s "logs/$LOG" $SERVERBASE/current.log
-	# wait a bit so the server is likely up and listening
-	sleep 1
-	#cat $SERVERBASE/banlist 2> /dev/null | while read -r ip time reason; do $HOME/bin/send_server_command $SERVER ban "$ip $time $reason"; done
-	if [ "$SERVER" = "1.2" ]; then
-		rm -f $SERVERBASE/oldlobby.log
-		mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
-		ln -s "$SERVERBASE/logs/lobby.$DATE.$REV.log" $SERVERBASE/currentlobby.log
-		cd $SOURCE/utils/
-		./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
-		cd $SERVERBASE/build/
-	fi
 	# wait for the server to terminate
 	wait $PID
 	EXIT_CODE=$?
 	echo "wesnothd exited with code: $EXIT_CODE"
 	# need to use the recorded path since the build/ symlink might have changed
-	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" > /dev/null 2>&1
+	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" &> /dev/null
 	# check for return code if not zero or 98 (port in use) the server should be restarted
 	if [ "$EXIT_CODE" = "0" ] || [ "$EXIT_CODE" = "98" ]; then
 		echo "run_server script shutting down."
