@@ -29,6 +29,8 @@ namespace wesnothd {
 
 	class banned;
 
+	std::ostream& operator<<(std::ostream& o, const banned& n);
+
 	typedef boost::shared_ptr<banned> banned_ptr;
 
 	//! We want to move the lowest value to the top
