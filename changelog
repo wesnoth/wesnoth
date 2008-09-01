@@ -16,6 +16,8 @@ Version 1.4.4+svn:
    * Fixed crash when ai moves units next to level 0 hiden unit (bug #12252)
    * Fixed loading ai parameters. MP side defination now overwrites 
      era values (bug #12171)
+   * Fixed MP saves to transfer correct completion state to remote clients
+     when loadin game (bug #10385)
 
 Version 1.4.4:
  * language and i18n:

@@ -1472,6 +1472,7 @@ void connect::load_game()
 		level_["map_data"] = start_data["map_data"];
 		level_["id"] = start_data["id"];
 		level_["name"] = start_data["name"];
+		level_["completion"] = start_data["completion"];
 		// Probably not needed.
 		level_["turn"] = start_data["turn_at"];
 		level_["turn_at"] = start_data["turn_at"];
