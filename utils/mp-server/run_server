@@ -18,7 +18,7 @@ if [ "$1" = "--test" ]; then
 	shift
 	PARAMETERS=$*
 	cd $SERVERBASE/build || exit 1
-	bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT $PARAMETERS
+	bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port 15001 $PARAMETERS
 	# remove the socket so it looks like we never ran the server
 	rm var/run/socket
 	exit 0
