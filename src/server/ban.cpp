@@ -32,6 +32,15 @@ namespace wesnothd {
 #define LOG_SERVER LOG_STREAM(info, mp_server)
 #define DBG_SERVER LOG_STREAM(debug, mp_server)
 
+	std::ostream& operator<<(std::ostream& o, const banned& n)
+	{
+	   return o << "IP: '" << n.get_ip() << 
+					"' end_time: '" << n.get_human_end_time() <<
+					"' reason: '" << n.get_reason() << 
+					"' issuer: "<<  n.get_who_banned() << "\n";
+
+	}
+
 	bool banned_compare::operator()(const banned_ptr& a, const banned_ptr& b) const
 	{
 		//! We want to move the lowest value to the top
@@ -334,7 +343,8 @@ namespace wesnothd {
 			ret += time_itor->second;
 		else
 		{
-			size_t multipler = 60; // default minutes
+			const size_t default_multipler = 60;
+			size_t multipler = default_multipler; // default minutes
 			std::string::iterator i = time_in.begin();
 			size_t number = 0;
 			for (; i != time_in.end(); ++i)
@@ -368,9 +378,13 @@ namespace wesnothd {
 							ret = number = multipler = 0;
 							break;
 					}
-					ret += number * multipler;
 					if (multipler == 0)
 						break;
+					if (number == 0)
+						number = 1;
+					ret += number * multipler;
+					multipler = default_multipler;
+					number = 0;
 				}
 			}
 			--i;
@@ -388,29 +402,31 @@ namespace wesnothd {
 								 const std::string& who_banned, 
 								 const std::string& group)
 	{
-		ban_set::iterator ban;
 		try {
+			ban_set::iterator ban;
 			if ((ban = bans_.find(banned::create_dummy(ip))) != bans_.end())
 			{
 				// Already exsiting ban for ip. We have to first remove it
-				bans_.erase(ban);
 				LOG_SERVER << "Overwriting ban: " << (*ban)->get_ip() << " reason was: " << (*ban)->get_reason() << "\n";
+				bans_.erase(ban);
 			}
 		} catch (banned::error& e) {
 			ERR_SERVER << e.message << " while creating dummy ban for finding existing ban\n";
 			return e.message;
 		}
+		std::ostringstream ret;
 		try {
 			banned_ptr new_ban(new banned(ip, end_time, reason,who_banned, group));
 			bans_.insert(new_ban);
 			if (end_time != 0)
 				time_queue_.push(new_ban);
+			ret << *new_ban << "\n";
 		} catch (banned::error& e) {
 			ERR_SERVER << e.message << " while banning\n";
 			return e.message;
 		}
 		dirty_ = true;
-		return std::string();
+		return ret.str();
 	}
 
 	void ban_manager::unban(std::ostringstream& os, const std::string& ip)
@@ -486,10 +502,7 @@ namespace wesnothd {
 		{
 			if ((*i)->get_group().empty())
 			{
-				out << "IP: '" << (*i)->get_ip() << 
-					"' end_time: '" << (*i)->get_human_end_time() <<
-					"' reason: '" << (*i)->get_reason() << 
-					"' issuer: "<<  (*i)->get_who_banned() << "\n";
+				out << (**i) << "\n";
 			} else {
 				groups.insert((*i)->get_group());				
 			}
@@ -522,7 +535,7 @@ namespace wesnothd {
 	
 	void ban_manager::init_ban_help()
 	{
-		ban_help_ = "ban <ip|nickname> [<time>] <reason>\nTime is give in format ‰d[‰s[‰d‰s[...]]] (where ‰s is s, m, h, D, M or Y).\nIf no time modifier is given minutes are used.\n";
+		ban_help_ = "ban <ip|nickname> [<time>] <reason>\nTime is give in format <number>[<letter>[<number><letter>[...]]]\n where <letter> is time modifier and valid values are s (seconds), m (minutes), h (hours, default), D (dayes), M (months) and Y (years).\nIf no time is given then ban is permanent.\n";
 		default_ban_times::iterator itor = ban_times_.begin();
 		if (itor != ban_times_.end())
 		{
@@ -537,7 +550,7 @@ namespace wesnothd {
 		{
 			ban_help_ += " for standard ban times.\n";
 		}
-		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\nban 127.0.0.2 medium flooded lobby again\n";
+		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\nkban suokko 5D flooded again\nkban suokko Y One year ban for constant flooding\n";
 	}
 
 	void ban_manager::load_config(const config& cfg)
@@ -560,6 +573,7 @@ namespace wesnothd {
 
 	ban_manager::~ban_manager()
 	{
+		write();
 	}
 	
 	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_(), filename_(), dirty_(false)

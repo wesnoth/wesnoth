@@ -142,7 +142,7 @@ void make_add_diff(const simple_wml::node& src, const char* gamelist,
 		index = children.size() - 1;
 	}
 
-	assert(index < children.size());
+	assert(static_cast<size_t>(index) < children.size());
 	insert.set_attr_int("index", index);
 	children[index]->copy_into(insert.add_child(type));
 }
@@ -476,8 +476,8 @@ void server::run() {
 			}
 
 			time_t now = time(NULL);
-			ban_manager_.check_ban_times(now);
 			if ((loop%100) == 0 && last_ping_ + 10 <= now) {
+				ban_manager_.check_ban_times(now);
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) dump_stats(now);
 #ifdef BANDWIDTH_MONITOR
