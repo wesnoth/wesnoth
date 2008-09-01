@@ -55,6 +55,7 @@ Version 1.5.3+svn:
    * Fixed OOS bug when giving control and having move in undo stack.
    * Fixed [modify_turns] not updating $turn_number when current= was
      used.
+   * Fixed crash when ai moves units next to level 0 hiden unit (bug #12252)
    * Fixed a few inconsistencies related to scenarios which are not at
      turn 1 at the beginning (namely start autosave detection and initial
      triggering of a matching "turn *" event).
