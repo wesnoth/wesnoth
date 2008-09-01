@@ -56,6 +56,8 @@ Version 1.5.3+svn:
    * Fixed [modify_turns] not updating $turn_number when current= was
      used.
    * Fixed crash when ai moves units next to level 0 hiden unit (bug #12252)
+   * Fixed loading ai parameters. MP side defination now overwrites 
+     era values (bug #12171)
    * Fixed a few inconsistencies related to scenarios which are not at
      turn 1 at the beginning (namely start autosave detection and initial
      triggering of a matching "turn *" event).
