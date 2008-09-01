@@ -105,6 +105,8 @@ public:
 
 		int villages_per_scout;
 		double leader_value, village_value;
+		//cached values for ai parameters
+		double aggression_, caution_;
 
 		std::vector<target> targets;
 
@@ -160,6 +162,16 @@ public:
 	std::set<std::string>& recruits() { return info_.can_recruit; }
 	const std::vector<std::string>& recruitment_pattern() const
 		{ return info_.recruitment_pattern; }
+	bool remove_recruitment_pattern_entry(const std::string& key)
+	{
+	   	std::vector<std::string>::iterator itor = std::find(info_.recruitment_pattern.begin(),
+				info_.recruitment_pattern.end(),
+				key);
+		if (itor == info_.recruitment_pattern.end())
+			return false;
+		info_.recruitment_pattern.erase(itor); 
+		return true;
+	}
 	const std::string& name() const
 		{ return info_.name; }
 	const std::string& save_id() const { return info_.save_id; }
@@ -195,8 +207,8 @@ public:
 		seen_[index] = true;
 	}
 
-	double aggression() const { return aggression_; }
-	double caution() const { return caution_; }
+	double aggression() const { return info_.aggression_; }
+	double caution() const { return info_.caution_; }
 
 	team_info::CONTROLLER controller() const { return info_.controller; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
@@ -295,8 +307,6 @@ private:
 
 	config aiparams_;
 
-	//cached values for ai parameters
-	double aggression_, caution_;
 
 	bool calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;

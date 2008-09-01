@@ -266,9 +266,10 @@ bool ai::recruit_usage(const std::string& usage)
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
 		if (i->second.usage() == usage || usage == "") {
+			if (recruits.count(name) == 0)
+				continue;
 			found = true;
-			if(recruits.count(name)
-				&& current_team().gold() - i->second.cost() > min_gold
+			if(current_team().gold() - i->second.cost() > min_gold
 				&& not_recommended_units_.count(name) == 0)
 			{
 				LOG_AI << "recommending '" << name << "'\n";
@@ -287,6 +288,12 @@ bool ai::recruit_usage(const std::string& usage)
 	} else {
 		WRN_AI << "Trying to recruit a: " << usage
 			<< " but no unit of that type (usage=) is available.\n";
+
+		if (usage != "")
+		{
+			return current_team().remove_recruitment_pattern_entry(usage);
+			// remove this recruitment pattern and try again
+		}
 	}
 	return false;
 }
@@ -1761,12 +1768,12 @@ void ai::do_recruitment()
 
 	// If there is no recruitment_pattern use "" which makes us consider
 	// any unit available.
-	if (options.empty()) {
-		options.push_back("");
-	}
-	// Buy units as long as we have room and can afford it.
-	while(recruit_usage(options[rand()%options.size()])) {
-	}
+	do {
+		if (options.empty()) {
+			options.push_back("");
+		}
+		// Buy units as long as we have room and can afford it.
+	}while(recruit_usage(options[rand()%options.size()]));
 }
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
