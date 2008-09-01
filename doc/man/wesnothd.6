@@ -163,6 +163,16 @@ in regard to wildcard patterns.
 .P
 .B [ban_time]
 A tag to define keywords for temporary ban lengths. Name and time keys are used by server.
+.TP
+.B name
+Name that can be used with ban command instead of time
+.TP
+.B time
+Time tells how long ban should be set if using this to ban someone. Format is %d[%s[%d%s[%d%s[...]]]] 
+where ‰d is number telling length of ban and %s is used as modifier to number. possible modifiers are
+s (seconds), m (minutes), h (hours), D (dayes), M (month) and Y (years)
+1D means a day
+3M15D means 3 months and 15 dayes
 .B [proxy]
 A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
 Accepts the same keys as 
