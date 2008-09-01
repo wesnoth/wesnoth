@@ -68,7 +68,7 @@ do
 	ln -s "logs/$LOG" $SERVERBASE/current.log
 	# wait a bit so the server is likely up and listening
 	sleep 1
-	cat $SERVERBASE/banlist 2> /dev/null | while read -r ip time reason; do $HOME/bin/send_server_command $SERVER ban "$ip $time $reason"; done
+	#cat $SERVERBASE/banlist 2> /dev/null | while read -r ip time reason; do $HOME/bin/send_server_command $SERVER ban "$ip $time $reason"; done
 	if [ "$SERVER" = "1.2" ]; then
 		rm -f $SERVERBASE/oldlobby.log
 		mv $SERVERBASE/currentlobby.log $SERVERBASE/oldlobby.log > /dev/null 2>&1
