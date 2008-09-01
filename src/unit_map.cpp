@@ -28,10 +28,10 @@
 
 typedef std::pair<std::string, std::pair<bool, std::pair<gamemap::location, unit>*> > umap_pair;
 
-unit_map::unit_map(const gamemap::location &loc, const unit &u) : 
+unit_map::unit_map(const gamemap::location &loc, const unit &u) :
 	map_(),
 	lmap_(),
-	num_iters_(0), 
+	num_iters_(0),
 	num_invalid_(0)
 {
 	add(new std::pair<gamemap::location,unit>(loc, u));
@@ -41,7 +41,7 @@ unit_map::unit_map(const unit_map &that) :
 	/* Initialize to silence compiler warnings. */
 	map_(),
 	lmap_(),
-	num_iters_(0), 
+	num_iters_(0),
 	num_invalid_(0)
 {
 	*this = that;
@@ -154,9 +154,9 @@ unit_map::const_unit_iterator unit_map::const_unit_iterator::operator++(int){
 	return const_unit_iterator(iter, map_);
 }
 
-unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
@@ -213,17 +213,17 @@ bool unit_map::unit_xy_iterator::valid() const {
 	return i_ != map_->map_.end() && i_->second.first && loc_ == i_->second.second->first;
 }
 
-unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i) : 
-	counter_(i.map_), 
+unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i) :
+	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
 }
 
-unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
@@ -279,17 +279,17 @@ bool unit_map::const_unit_xy_iterator::valid() const {
 }
 
 
-unit_map::xy_accessor::xy_accessor(const unit_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::xy_accessor::xy_accessor(const unit_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
 }
 
-unit_map::xy_accessor::xy_accessor(const unit_xy_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::xy_accessor::xy_accessor(const unit_xy_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
@@ -323,33 +323,33 @@ bool unit_map::xy_accessor::valid() {
 	return false;
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const const_unit_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::const_xy_accessor::const_xy_accessor(const const_unit_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const unit_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::const_xy_accessor::const_xy_accessor(const unit_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const const_unit_xy_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::const_xy_accessor::const_xy_accessor(const const_unit_xy_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
 }
 
-unit_map::const_xy_accessor::const_xy_accessor(const unit_xy_iterator &i) : 
-	counter_(i.map_), 
-	i_(i.i_), 
+unit_map::const_xy_accessor::const_xy_accessor(const unit_xy_iterator &i) :
+	counter_(i.map_),
+	i_(i.i_),
 	map_(i.map_),
 	loc_(i.valid() ? i->first : gamemap::location())
 {
@@ -535,11 +535,13 @@ void unit_map::clear()
 void unit_map::clean_invalid() {
 	size_t num_cleaned = 0;
 
-	umap::iterator iter;
-	for (iter = map_.begin(); iter != map_.end(); ++iter) {
+	umap::iterator iter = map_.begin();
+	while (iter != map_.end()) {
 		if (!iter->second.first) {
-			map_.erase(iter--);
-			num_cleaned++;
+			map_.erase(iter++);
+			++num_cleaned;
+		} else {
+			++iter;
 		}
 	}
 
