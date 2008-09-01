@@ -44,11 +44,13 @@ class TestError {
 					AND t.file=?
 					AND t.error_msg=?
 					AND t.last_id=b.id
+					AND b.id < ?
 					AND b.time > ?
 					LIMIT 1',
 					array($this->error_type,
 						  $this->file,
 						  $this->error_msg,
+						  $build->getId(),
 						  $this->db->DBTimeStamp(time() - 24*60*60)
 						));
 			if (!$result->EOF())

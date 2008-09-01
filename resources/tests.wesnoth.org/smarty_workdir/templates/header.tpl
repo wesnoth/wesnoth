@@ -25,7 +25,7 @@
 
 <div id="header">
   <div id="logo">
-    <a href="home"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
+    <a href="http://www.wesnoth.org/"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
   </div>
 
 </div>
