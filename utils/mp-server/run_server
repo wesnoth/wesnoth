@@ -59,7 +59,7 @@ do
 	REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
 	LOG="wesnothd.$DATE.$REV.log"
 	COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
-	$COMMAND &> "$SERVERBASE/logs/$LOG"
+	$COMMAND &> "$SERVERBASE/logs/$LOG" &
 	PID=$!
 	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
 	# create some convenient links
