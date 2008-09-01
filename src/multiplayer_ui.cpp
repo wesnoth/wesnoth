@@ -117,6 +117,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 
 	level["campaign_type"] = "multiplayer";
 	state.campaign_type = "multiplayer";
+	state.completion = level["completion"];
 	state.version = level["version"];
 
 	const config* const vars = level.child("variables");

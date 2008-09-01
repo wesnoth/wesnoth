@@ -695,6 +695,7 @@ private:
 		sound::write_music_play_list(start);
 
 		write_game(gamestate_, start, WRITE_SNAPSHOT_ONLY);
+		start["completion"] = gamestate_.completion;
 
         /*
         // 29.11.07, YogiHH: I can't see why this is needed at all and it
