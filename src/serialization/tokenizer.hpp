@@ -164,7 +164,7 @@ class tokenizer
 			return file_;
 		}
 
-		const int get_start_line() const
+		int get_start_line() const
 		{
 			return startlineno_;
 		}
