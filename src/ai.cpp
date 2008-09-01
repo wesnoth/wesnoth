@@ -461,11 +461,11 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 			}
 
 			if(steps.size()>1) { // First step is starting hex
-			  unit_map::const_iterator utest=info_.units.find(*(steps.begin()+1));
-			  if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
-			    LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
-			    //			    return(from);
-			  }
+				unit_map::const_iterator utest=info_.units.find(*(steps.begin()+1));
+				if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
+					LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
+					//			    return(from);
+				}
 
 				// Check if there are any invisible units that we uncover
 				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
@@ -481,27 +481,29 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 
 						// Or would it?  If it doesn't cheat, it might...
 						const unit_map::const_iterator u = info_.units.find(adj[n]);
-						if (u != info_.units.end() && u->second.emits_zoc()
-							&& current_team().is_enemy(u->second.side())) {
+						// If level 0 is invisible it ambush us too
+						if (u != info_.units.end() && (u->second.emits_zoc()||u->second.invisible(adj[n], info_.units, info_.teams))
+								&& current_team().is_enemy(u->second.side())) {
 							if (u->second.invisible(adj[n], info_.units, info_.teams)) {
 								to = *i;
+								u->second.ambush(adj[n]);
 								steps.erase(i,steps.end());
 								break;
 							} else {
-							  if (!u_it->second.get_ability_bool("skirmisher",*i)){
-							    LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
-							    LOG_AI << "\tresetting destination from " <<to;
-							    to = *i;
-							    LOG_AI << " to " << to;
-							    steps.erase(i,steps.end());
-							    while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
-								 to = *(steps.end()-1);
-								 steps.pop_back();
-								 LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-							    }
+								if (!u_it->second.get_ability_bool("skirmisher",*i)){
+									LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+									LOG_AI << "\tresetting destination from " <<to;
+									to = *i;
+									LOG_AI << " to " << to;
+									steps.erase(i,steps.end());
+									while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
+										to = *(steps.end()-1);
+										steps.pop_back();
+										LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
+									}
 
-							    break;
-							  }
+									break;
+								}
 							}
 						}
 					}
