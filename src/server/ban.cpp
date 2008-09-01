@@ -551,7 +551,11 @@ namespace wesnothd {
 						parse_time((**itor)["time"])-time(NULL)));
 		}
 		init_ban_help();
-		filename_ = cfg["ban_save_file"];
+		if (filename_ != cfg["ban_save_file"])
+		{
+			dirty_ = true;
+			filename_ = cfg["ban_save_file"];
+		}
 	}
 
 	ban_manager::~ban_manager()
