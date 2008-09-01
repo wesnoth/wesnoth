@@ -489,8 +489,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		load_recall_list(cfg.get_children("player"));
 	}
 
-	std::cerr << "scenario: '" << scenario << "'\n";
-	std::cerr << "next_scenario: '" << next_scenario << "'\n";
+	LOG_NG << "scenario: '" << scenario << "'\n";
+	LOG_NG << "next_scenario: '" << next_scenario << "'\n";
 
 	if(difficulty.empty()) {
 		difficulty = "NORMAL";
@@ -791,12 +791,12 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		}
 	} catch (config::error &err)
 	{
-		std::cerr << err.message;
+		ERR_NG << err.message;
 		throw game::load_game_failed();
 	}
 
 	if(cfg.empty()) {
-		std::cerr << "Could not parse file data into config\n";
+		ERR_NG << "Could not parse file data into config\n";
 		throw game::load_game_failed();
 	}
 }
@@ -892,9 +892,9 @@ static config& save_index()
 			scoped_istream stream = istream_file(get_save_index_file());
 			detect_format_and_read(save_index_cfg, *stream);
 		} catch(io_exception& e) {
-			std::cerr << "error reading save index: '" << e.what() << "'\n";
+			ERR_NG << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
-			std::cerr << "error parsing save index config file\n";
+			ERR_NG << "error parsing save index config file\n";
 			save_index_cfg.clear();
 		}
 
@@ -923,7 +923,7 @@ void write_save_index()
 		scoped_ostream stream = ostream_file(get_save_index_file());
 		write_compressed(*stream, save_index());
 	} catch(io_exception& e) {
-		std::cerr << "error writing to save index file: '" << e.what() << "'\n";
+		ERR_NG << "error writing to save index file: '" << e.what() << "'\n";
 	}
 }
 
@@ -1153,7 +1153,7 @@ void game_state::load_recall_list(const config::child_list& players)
 			std::string save_id = (**i)["save_id"];
 
 			if(save_id.empty()) {
-				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
+				ERR_NG << "Corrupted player entry: NULL save_id" << std::endl;
 			} else {
 				player_info player = read_player(*i);
 				this->players.insert(std::pair<std::string, player_info>(save_id,player));
