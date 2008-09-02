@@ -643,7 +643,6 @@ config connect::side::get_config() const
 		res["side"] = lexical_cast<std::string>(index_ + 1);
 	}
 	res["controller"] = controller_names[controller_];
-	res["id"] = id_;
 	res["current_player"] = id_.empty() ? current_player_ : id_;
 
 	if (id_.empty()) {
@@ -656,7 +655,7 @@ config connect::side::get_config() const
 			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 				res["save_id"] = preferences::login() + res["side"].str();
 			}
-			res["id"] = preferences::login();
+			res["id"] = preferences::login() + res["side"].str();
 			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
 			break;
@@ -665,6 +664,7 @@ config connect::side::get_config() const
 				res["save_id"] = "ai" + res["side"].str();
 			}
 			{
+				res["id"] = res["save_id"];
 				config *ai = res.child("ai");
 				if (!ai) ai = &res.add_child("ai");
 				#ifdef HAVE_PYTHON
@@ -699,6 +699,7 @@ config connect::side::get_config() const
 		}
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
+		res["id"] = id_ + res["side"];
 		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 			res["save_id"] = id_ + res["side"].str();
 		}

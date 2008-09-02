@@ -181,6 +181,7 @@ void replay_controller::reset_replay(){
 	statistics::fresh_stats();
 	if (events_manager_ != NULL){
 		delete events_manager_;
+		events_manager_ = 0;
 		events_manager_ = new game_events::manager(level_,map_,
 								units_,teams_, gamestate_,status_);
 		events_manager_->set_gui(*gui_);
@@ -332,7 +333,7 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 	// If a side is empty skip over it.
 	if (current_team().is_empty()) return;
 
-	statistics::reset_turn_stats(teams_[team_index-1].save_id());
+	statistics::reset_turn_stats(current_team().save_id());
 
 	try{
 		play_controller::init_side(player_number_ - 1, true);

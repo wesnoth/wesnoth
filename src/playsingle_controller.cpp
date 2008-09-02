@@ -673,6 +673,20 @@ void playsingle_controller::play_human_turn(){
 		gui_->draw();
 	}
 }
+struct set_completion
+{
+	set_completion(game_state& state, const std::string& completion) :
+		state_(state), completion_(completion)
+	{
+	}
+	~set_completion()
+	{
+		state_.completion = completion_;
+	}
+	private:
+	game_state& state_;
+	const std::string completion_;
+};
 
 void playsingle_controller::linger(upload_log& log)
 {
@@ -687,7 +701,7 @@ void playsingle_controller::linger(upload_log& log)
 	// this is actually for after linger mode is over -- we don't
 	// want to stay stuck in linger state when the *next* scenario
 	// is over.
-	gamestate_.completion = "running";
+	set_completion setter(gamestate_,"running");
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title2"));

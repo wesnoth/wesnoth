@@ -124,6 +124,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 }
 
 void playmp_controller::before_human_turn(bool save){
+	LOG_NG << "playmp::before_human_turn...\n";
 	playsingle_controller::before_human_turn(save);
 
 	turn_data_ = new turn_info(gamestate_,status_,
@@ -173,6 +174,7 @@ void playmp_controller::think_about_countdown(int ticks) {
 }
 
 void playmp_controller::play_human_turn(){
+	LOG_NG << "playmp::play_human_turn...\n";
 	int cur_ticks = SDL_GetTicks();
 
 	if ((!linger_) || (is_host_))
@@ -326,6 +328,7 @@ void playmp_controller::linger(upload_log& log)
 			turn_data_->host_transfer().attach_handler(this);
 
 			play_human_turn();
+			turn_over_ = true;  // We don't want to linger mode to add end_turn to replay
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
 		} catch (game::load_game_exception&) {
@@ -413,6 +416,7 @@ void playmp_controller::after_human_turn(){
 		current_team().set_countdown_time(1000 * secs);
 		recorder.add_countdown_update(current_team().countdown_time(),player_number_);
 	}
+	LOG_NG << "playmp::after_human_turn...\n";
 	end_turn_record();
 
 	//send one more time to make sure network is up-to-date.

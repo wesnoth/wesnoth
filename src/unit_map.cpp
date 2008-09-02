@@ -25,6 +25,7 @@
 #define ERR_NG LOG_STREAM(err, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
 #define LOG_NG LOG_STREAM(info, engine)
+#define DBG_NG LOG_STREAM(debug, engine)
 
 typedef std::pair<std::string, std::pair<bool, std::pair<gamemap::location, unit>*> > umap_pair;
 
@@ -467,6 +468,8 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 			<< "," << iter->second.second->first.y+1 << ").\n";
 	}
 
+	DBG_NG << "Adding unit " << p->second.underlying_id() << "\n";
+
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::string>(p->first, unit_id));
 	assert(res.second);
 }
@@ -475,13 +478,17 @@ void unit_map::replace(std::pair<gamemap::location,unit> *p)
 {
 	if (erase(p->first) != 1)
 		assert(0);
+	DBG_NG << "Replace unit " << p->second.underluig_id() << "\n";
 	add(p);
 }
 
 void unit_map::delete_all()
 {
 	for (umap::iterator i = map_.begin(); i != map_.end(); ++i) {
-		if (i->second.first) delete(i->second.second);
+		if (i->second.first) {
+			DBG_NG << "Delete unit " << i->second.second.underluig_id() << "\n";
+			delete(i->second.second);
+		}
 	}
 
 	lmap_.clear();
@@ -497,6 +504,7 @@ std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &lo
 	umap::iterator iter = map_.find(i->second);
 	std::pair<gamemap::location,unit> *res = iter->second.second;
 
+	DBG_NG << "Extract unit " << iter->second << "\n";
 	invalidate(iter);
 	lmap_.erase(i);
 
@@ -510,6 +518,7 @@ size_t unit_map::erase(const gamemap::location &loc)
 		return 0;
 
 	umap::iterator iter = map_.find(i->second);
+	DBG_NG << "Replace unit " << i->second << "\n";
 
 	invalidate(iter);
 
