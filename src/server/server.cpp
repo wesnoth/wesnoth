@@ -611,7 +611,7 @@ void server::run() {
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_.read_line(admin_cmd)) {
-				process_command(admin_cmd, "socket");
+				process_command(admin_cmd, "*socket*");
 			}
 
 			time_t now = time(NULL); 
@@ -1111,7 +1111,7 @@ void server::process_query(const network::connection sock,
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: help, metrics,"
-			" motd, status, wml.";
+			" motd, netstats [all], status, wml.";
 	if (admins_.count(sock) != 0) {
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
@@ -1163,8 +1163,9 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string& help_msg = "Available commands are: ban(s) [<mask>] [<time>] <reason>,"
 			"kick <mask>, k(ick)ban [<mask>] [<time>] <reason>, help, metrics, netstats,"
 			" (lobby)msg <message>, motd [<message>], status [<mask>],"
-			" unban <ipmask>, shut_down [now], restart";
-	if (command == "shut_down") {
+			" unban <ipmask>";
+	// Shutdown and restart commands can only be issued via the socket.
+	if (command == "shut_down" && issuer_name == "*socket*") {
 		if (parameters == "now") {
 			throw network::error("shut down");
 		} else {
@@ -1178,7 +1179,7 @@ std::string server::process_command(const std::string& query, const std::string&
 
 #ifndef _WIN32  // Not sure if this works on windows
 		// TODO: check if this works in windows.
-	} else if (command == "restart") {
+	} else if (command == "restart" && issuer_name == "*socket*") {
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
 		} else {
