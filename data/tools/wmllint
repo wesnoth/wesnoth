@@ -783,10 +783,8 @@ def translator(filename, mapxforms, textxform):
             refname = line[line.find("{"):line.rfind("}")]            
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
-                print \
-                      '"%s", line %d: warning, correctness of %s cannot be checked' \
-                      % (filename, lineno+1, refname)
-            elif 'mask=' in line and not refname.endswith(".mask"):
+                pass
+            elif 'mask=' in line and not (refname.endwith("}") or refname.endswith(".mask")):
                 print \
                       '"%s", line %d: fatal error, mask file without .mask extension (%s)' \
                       % (filename, lineno+1, refname)
