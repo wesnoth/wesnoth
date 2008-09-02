@@ -263,43 +263,56 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 	 * glitches exist in this hack.
 	 */
 	tscrollbar_* sb = scrollbar();
+	int row = get_selected_row();
 	switch(key) {
 
-		case SDLK_UP : {
-
-			int i = get_selected_row() - 1;
-			while(i >= 0 && !rows_[i].get_active()) {
-				--i;
+		case SDLK_PAGEUP :
+			row -= sb->get_visible_items() - 1;
+			if(row <= 0) {
+				row = 1;
 			}
-			if(i >= 0) {
-				select_row(i);
+			// FALL DOWN
+
+		case SDLK_UP : 
+
+			--row;
+			while(row >= 0 && !rows_[row].get_active()) {
+				--row;
+			}
+			if(row >= 0) {
+				select_row(row);
 				handled = true;
 
-				if(i < sb->get_item_position()) {
-					sb->set_item_position(i);
+				if(row < sb->get_item_position()) {
+					sb->set_item_position(row);
 					set_scrollbar_button_status();
 				}
 			}
 			break;
-		}
 			
-		case SDLK_DOWN : {
-
-			int i = get_selected_row() + 1;
-			while(i <  rows_.size() && !rows_[i].get_active()) {
-				++i;
+		case SDLK_PAGEDOWN :
+			row += sb->get_visible_items() - 1;
+			if(row + 1 >= rows_.size()) {
+				row = rows_.size() - 2;
 			}
-			if(i < rows_.size()) {
-				select_row(i);
-				handled = true;
-				if(i >= sb->get_item_position() + sb->get_visible_items()) {
+			// FALL DOWN
 
-					sb->set_item_position(i + 1 -  sb->get_visible_items());
+		case SDLK_DOWN : 
+
+			++row;
+			while(row < rows_.size() && !rows_[row].get_active()) {
+				++row;
+			}
+			if(row < rows_.size()) {
+				select_row(row);
+				handled = true;
+				if(row >= sb->get_item_position() + sb->get_visible_items()) {
+
+					sb->set_item_position(row + 1 - sb->get_visible_items());
 					set_scrollbar_button_status();
 				}
 			}
 			break;
-		}
 
 		default :
 			/* DO NOTHING */
