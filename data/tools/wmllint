@@ -708,7 +708,7 @@ def hack_syntax(filename, lines):
 # Generic machinery starts here
 
 def is_map(filename):
-    "Is this file a map in either old or new style?"
+    "Is this file a map?"
     if isresource(filename) or '{' in filename or '}' in filename:
         return False
     if filename.endswith(".map"):
@@ -1057,7 +1057,6 @@ Usage: wmllint [options] [dir]
     Options may be any of these:
     -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
-    -n, --nolift               Don't perform version-lifting
     -v, --verbose              -v        lists changes.
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
@@ -1076,7 +1075,6 @@ if __name__ == '__main__':
             "dryrun",
             "future",
             "help",
-            "nolift",
             "revert",
             "stripcr",
             "verbose",
