@@ -14,12 +14,20 @@ if LITE
 exclude=| egrep -v '(/sounds|/music)' 
 endif
 
+# List all datafiles, ignoring junk
 finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print ) $(exclude)
+# List all data subdirectories
 finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print ) $(exclude)
+# List non-installable utility files
 findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
+# List all Header files
+findnoinst_headers=(cd $(top_srcdir) && find src -name "*.hpp" -print && find src -name "*.h" -print && find src -name "*.ii" -print && find src -name "*.i" -print )
 
+# Find files derived from the manual that should go in a distribution
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
+# Same list as previous, but with doc/ stripped off the front
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
+# List all document directories
 finddocdirs=(cd $(top_srcdir)/doc && find manual -type d \! \( -name .svn -prune \) -print; )
 
 # This is a workaround to include manpage and manual translation files in the
@@ -145,7 +153,7 @@ endif
 
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	( $(finddata); $(finddocdist); $(findnoinst); $(findextrapo) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
+	( $(finddata); $(finddocdist); $(findnoinst); $(findnoinst_headers); $(findextrapo) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = copyright changelog players_changelog wesnoth.dev editor.dev server.dev wesnoth.kdevelop campaign_server.dsp map_editor.dsp server.dsp wesnoth.dsp wesnoth.dsw
 
