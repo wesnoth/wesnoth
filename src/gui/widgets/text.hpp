@@ -36,8 +36,7 @@ public:
 		state_(ENABLED),
 		text_(),
 		selection_start_(0),
-		selection_length_(0),
-		max_length_(std::string::npos)
+		selection_length_(0)
 	{
 	}
 
@@ -69,6 +68,10 @@ public:
 
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
+
+	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
+
+	void set_maximum_length(const size_t maximum_length);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -212,13 +215,6 @@ private:
 	 * * selection_len_ == 0 means no selection.
 	 */
 	int selection_length_;
-
-	/** 
-	 * Maximum length of the text. 
-	 *
-	 * @todo, respect the maximum (which isn't done at the moment).
-	 */
-	size_t max_length_;
 
 	/****** handling of special keys first the pure virtuals *****/
 

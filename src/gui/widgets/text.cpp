@@ -204,6 +204,24 @@ void ttext_::key_press(tevent_handler& /*event*/,
 	}
 }
 
+void ttext_::set_maximum_length(const size_t maximum_length)
+{
+	const bool need_update = text_.get_length() > maximum_length;
+
+	text_.set_maximum_length(maximum_length); 
+
+	if(need_update) {
+		if(selection_start_ > maximum_length) {
+			selection_start_ = maximum_length;
+			selection_length_ = 0;
+		} else if(selection_start_ + selection_length_ > maximum_length) {
+			selection_length_ = maximum_length - selection_start_;
+		}
+		update_canvas();
+		set_dirty(); 
+	}
+}
+
 void ttext_::set_value(const std::string& text)
 { 
 	if(text != text_.text()) { 
@@ -248,12 +266,13 @@ void ttext_::insert_char(const Uint16 unicode)
 {
 	delete_selection();
 
-	text_.insert_unicode(selection_start_, unicode);
+	if(text_.insert_unicode(selection_start_, unicode)) {
 
-	// Update status
-	set_cursor(selection_start_ + 1, false);
-	update_canvas();
-	set_dirty();
+		// Update status
+		set_cursor(selection_start_ + 1, false);
+		update_canvas();
+		set_dirty();
+	}
 }
 
 void ttext_::copy_selection(const bool mouse)

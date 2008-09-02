@@ -23,6 +23,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "log.hpp"
+#include "multiplayer.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -43,7 +44,8 @@ namespace gui2 {
  * 
  * @start_table = container
  *     user_name (text_box)            This text contains the name the user on 
- *                                     the MP server.
+ *                                     the MP server. This widget will get a
+ *                                     fixed maximum length by the engine.
  *     method_list (listbox)           The list with possible game methods.
  * @end_table
  */
@@ -59,6 +61,7 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(user_widget, missing_widget("user_name"));
 
 	user_widget->set_value(user_name_);
+	user_widget->set_maximum_length(mp::max_login_size);
 	window.keyboard_capture(user_widget);
 
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));

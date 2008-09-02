@@ -98,16 +98,19 @@ public:
 	 * @param offset              The position to insert the char.
 	 * @param unicode             The character to insert.
 	 *
+	 * @returns                   True upon success, false otherwise.
 	 */
-	void insert_unicode(const unsigned offset, const wchar_t unicode);
+	bool insert_unicode(const unsigned offset, const wchar_t unicode);
 
 	/**
 	 * Inserts unicode text.
 	 *
 	 * @param offset              The position to insert the text.
 	 * @param unicode             Vector with characters to insert.
+	 *
+	 * @returns                   The number of characters inserted.
 	 */
-	void insert_unicode(
+	unsigned insert_unicode(
 		const unsigned offset, const std::vector<wchar_t>& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
@@ -174,6 +177,8 @@ public:
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
+	ttext& set_maximum_length(const size_t maximum_length);
+
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -208,6 +213,9 @@ private:
 
 	/** The way too long text is shown depends on this mode. */
 	PangoEllipsizeMode ellipse_mode_;
+
+	/** The maximum length of the text. */
+	size_t maximum_length_;
 
 	/** 
 	 * The text has two dirty states:
