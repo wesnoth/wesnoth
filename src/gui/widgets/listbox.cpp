@@ -262,6 +262,7 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 	 * moving out of visible range we don't scroll down and possibly more minor
 	 * glitches exist in this hack.
 	 */
+	tscrollbar_* sb = scrollbar();
 	switch(key) {
 
 		case SDLK_UP : {
@@ -273,6 +274,11 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 			if(i >= 0) {
 				select_row(i);
 				handled = true;
+
+				if(i < sb->get_item_position()) {
+					sb->set_item_position(i);
+					set_scrollbar_button_status();
+				}
 			}
 			break;
 		}
@@ -286,6 +292,11 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 			if(i < rows_.size()) {
 				select_row(i);
 				handled = true;
+				if(i >= sb->get_item_position() + sb->get_visible_items()) {
+
+					sb->set_item_position(i + 1 -  sb->get_visible_items());
+					set_scrollbar_button_status();
+				}
 			}
 			break;
 		}
