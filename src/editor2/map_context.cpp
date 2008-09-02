@@ -57,6 +57,15 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
     if (!one_layer_only) {
         terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
     }
+	draw_terrain_actual(terrain, loc, one_layer_only);
+}
+
+void map_context::draw_terrain_actual(t_translation::t_terrain terrain, 
+	const gamemap::location& loc, bool one_layer_only)
+{
+	if (!map_.on_board_with_border(loc)) {
+		throw editor_action_exception("Attempted to draw terrain off the map");
+	}
 	t_translation::t_terrain old_terrain = map_.get_terrain(loc);
 	if (terrain != old_terrain) {
 		if (terrain.base == t_translation::NO_LAYER) {
@@ -77,17 +86,7 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
         terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
     }
 	foreach (const gamemap::location& loc, locs) {
-		t_translation::t_terrain old_terrain = map_.get_terrain(loc);
-		if (terrain != old_terrain) {
-			if (terrain.base == t_translation::NO_LAYER) {
-				map_.set_terrain(loc, terrain, gamemap::OVERLAY);
-			} else if (one_layer_only) {
-				map_.set_terrain(loc, terrain, gamemap::BASE);
-			} else {
-				map_.set_terrain(loc, terrain);
-			}
-			add_changed_location(loc);
-		}
+		draw_terrain_actual(terrain, loc, one_layer_only);
 	}
 }
 
@@ -250,6 +249,12 @@ void map_context::partial_undo()
 	}
 	redo_stack_.push_back(last_action_in_chain.get()->perform(*this));
 	//actions_since_save_ -= last_redo_action()->action_count();
+}
+
+void map_context::clear_undo_redo()
+{
+	clear_stack(undo_stack_);
+	clear_stack(redo_stack_);
 }
 
 void map_context::trim_stack(action_stack& stack)

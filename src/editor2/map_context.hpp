@@ -57,6 +57,12 @@ public:
 	 */
 	void draw_terrain(t_translation::t_terrain terrain, const gamemap::location& loc, 
 		bool one_layer_only = false);
+		
+	/**
+	 * Actual drawing function used by both overloaded variants of draw_terrain.
+	 */
+	void draw_terrain_actual(t_translation::t_terrain terrain, const gamemap::location& loc,
+		bool one_layer_only = false);
 	
 	/**
 	 * Draw a terrain on a set of locations on the map. 
@@ -165,6 +171,11 @@ public:
 	 * Precodnition: the last undo action has to actually be an action chain.
 	 */
 	void partial_undo();
+	
+	/**
+	 * Clear the undo and redo stacks
+	 */
+	void clear_undo_redo();
 	
 protected:
 	/**

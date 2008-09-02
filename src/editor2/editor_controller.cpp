@@ -441,6 +441,7 @@ void editor_controller::set_map(const editor_map& map)
 {
 	get_map_context().clear_starting_position_labels(gui());
 	get_map() = map;
+	get_map_context().clear_undo_redo();
 	gui().reload_map();
 	get_map_context().set_starting_position_labels(gui());
 	refresh_all();
