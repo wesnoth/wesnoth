@@ -1091,7 +1091,6 @@ if __name__ == '__main__':
     revert = False
     stringfreeze = False
     stripcr = False
-    upconvert = True
     verbose = 0
     for (switch, val) in options:
         if switch in ('-h', '--help'):
@@ -1106,8 +1105,6 @@ if __name__ == '__main__':
             diffs = True
         elif switch in ('-f', '--future'):
             future = True
-        elif switch in ('-n', '--nolift'):
-            upconvert = False
         elif switch in ('-r', '--revert'):
             revert = True
         elif switch in ('-s', '--stripcr'):
@@ -1128,54 +1125,51 @@ if __name__ == '__main__':
 
     def texttransform(filename, lineno, line):
         "Resource-name transformation on text lines."
-        if not upconvert:
-            return line
         original = line
-        if upconvert:
-            # Perform line changes
-            if "wmllint: noconvert" not in original:
-                for (old, new) in linechanges:
-                    line = line.replace(old, new)
-            # Perform tag renaming for 1.5.  Note: this has to happen before
-            # the sanity check, which assumes [unit] has already been
-            # mapped to [unit_type].  Also, beware that this test will fail to
-            # convert any unit definitions not in conventionally-named
-            # directories -- this is necessary in order to avoid stepping
-            # on SingleUnitWML in macro files. 
-            # UnitWML
-            if "units" in filename:
-                line = line.replace("[unit]", "[unit_type]")
-                line = line.replace("[+unit]", "[+unit_type]")
-                line = line.replace("[/unit]", "[/unit_type]")
-            # Handle SingleUnitWML or Standard Unit Filter or SideWML
-            # Also, when macro calls have description= in them, the arg is
-            # a SUF being passed in.
-            if (under("unit") and not "units" in filename) or \
-                   standard_unit_filter() or \
-                   under("side") or \
-                   re.search("{[A-Z]+.*description=.*}", line):
-                if "id" not in tagstack[-1][1] and "_" not in line:
-                    line = re.sub(r"\bdescription\s*=", "id=", line)
-                if "name" not in tagstack[-1][1]:
-                    line = re.sub(r"user_description\s*=", "name=", line)
-            # Now, inside objects...
-            if under("object") and "description" not in tagstack[-1][1]:
-                line = re.sub(r"user_description\s*=", "description=", line)
-            # Alas, WML variable references cannot be converted so
-            # automatically.
-            if ".description" in line: 
-                print '"%s", line %d: .description may need hand fixup' % \
-                                       (filename, lineno)
-            if ".user_description" in line: 
-                print '"%s", line %d: .user_description may need hand fixup' % \
-                                       (filename, lineno)
-            # In unit type definitions
-            if under("unit_type") or under("female") or under("unit"):
-                line = line.replace("unit_description=", "description=")
-                line = line.replace("advanceto=", "advances_to=")
-            # Inside themes
-            if within("theme"):
-                line = line.replace("[unit_description]", "[unit_name]")
+        # Perform line changes
+        if "wmllint: noconvert" not in original:
+            for (old, new) in linechanges:
+                line = line.replace(old, new)
+        # Perform tag renaming for 1.5.  Note: this has to happen before
+        # the sanity check, which assumes [unit] has already been
+        # mapped to [unit_type].  Also, beware that this test will fail to
+        # convert any unit definitions not in conventionally-named
+        # directories -- this is necessary in order to avoid stepping
+        # on SingleUnitWML in macro files. 
+        # UnitWML
+        if "units" in filename:
+            line = line.replace("[unit]", "[unit_type]")
+            line = line.replace("[+unit]", "[+unit_type]")
+            line = line.replace("[/unit]", "[/unit_type]")
+        # Handle SingleUnitWML or Standard Unit Filter or SideWML
+        # Also, when macro calls have description= in them, the arg is
+        # a SUF being passed in.
+        if (under("unit") and not "units" in filename) or \
+               standard_unit_filter() or \
+               under("side") or \
+               re.search("{[A-Z]+.*description=.*}", line):
+            if "id" not in tagstack[-1][1] and "_" not in line:
+                line = re.sub(r"\bdescription\s*=", "id=", line)
+            if "name" not in tagstack[-1][1]:
+                line = re.sub(r"user_description\s*=", "name=", line)
+        # Now, inside objects...
+        if under("object") and "description" not in tagstack[-1][1]:
+            line = re.sub(r"user_description\s*=", "description=", line)
+        # Alas, WML variable references cannot be converted so
+        # automatically.
+        if ".description" in line: 
+            print '"%s", line %d: .description may need hand fixup' % \
+                                   (filename, lineno)
+        if ".user_description" in line: 
+            print '"%s", line %d: .user_description may need hand fixup' % \
+                                   (filename, lineno)
+        # In unit type definitions
+        if under("unit_type") or under("female") or under("unit"):
+            line = line.replace("unit_description=", "description=")
+            line = line.replace("advanceto=", "advances_to=")
+        # Inside themes
+        if within("theme"):
+            line = line.replace("[unit_description]", "[unit_name]")
         # Report the changes
         if verbose > 0 and line != original:
             msg = "%s, line %d: %s -> %s" % \
