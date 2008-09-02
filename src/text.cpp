@@ -135,7 +135,7 @@ unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 		return 0;
 	}
 
-	wide_string wtext = utils::string_to_wstring(text_);
+	wide_string wtext = utils::string_to_wstring(text);
 	insert_unicode(offset, wtext);
 	return wtext.size();
 }
