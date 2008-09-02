@@ -1124,9 +1124,7 @@ bool game_controller::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
-		if (start_editor() != editor2::EXIT_QUIT_TO_DESKTOP){
-			;
-		}else{
+		if (start_editor() == editor2::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
 	}
@@ -2063,8 +2061,11 @@ static int play_game(int argc, char** argv)
 #ifdef USE_EDITOR2
 		} else if(res == gui::START_MAP_EDITOR) {
 			//@todo editor can ask the game to quit completely
-			game.start_editor();
-			gui::set_background_dirty();
+			if (game.start_editor() == editor2::EXIT_QUIT_TO_DESKTOP) {
+				return 0;
+			} else {
+				gui::set_background_dirty();
+			}
 			continue;
 #endif
 		}
