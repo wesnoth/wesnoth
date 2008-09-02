@@ -899,8 +899,9 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string& help_msg = "Available commands are: ban(s) [<mask>] [<time>] <reason>,"
 			"kick <mask>, k(ick)ban [<mask>] [<time>] <reason>, help, metrics, netstats,"
 			" (lobby)msg <message>, motd [<message>], status [<mask>],"
-			" unban <ipmask>, shut_down [now], restart";
-	if (command == "shut_down") {
+			" unban <ipmask>";
+	// Shutdown and restart commands can only be issued via the socket.
+	if (command == "shut_down" && issuer_name == "*socket*") {
 		if (parameters == "now") {
 			throw network::error("shut down");
 		} else {
@@ -914,7 +915,7 @@ std::string server::process_command(const std::string& query, const std::string&
 
 #ifndef _WIN32  // Not sure if this works on windows
 		// TODO: check if this works in windows.
-	} else if (command == "restart") {
+	} else if (command == "restart" && issuer_name == "*socket*") {
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
 		} else {
