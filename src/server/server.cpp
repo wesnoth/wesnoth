@@ -472,7 +472,7 @@ void server::run() {
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
 			if (input_.read_line(admin_cmd)) {
-				process_command(admin_cmd, "socket");
+				process_command(admin_cmd, "*socket*");
 			}
 
 			time_t now = time(NULL);
