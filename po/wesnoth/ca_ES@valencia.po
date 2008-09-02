@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:42+0200\n"
+"POT-Creation-Date: 2008-09-02 22:27+0200\n"
 "PO-Revision-Date: 2007-10-09 22:30+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -5114,7 +5114,7 @@ msgstr "PV"
 #. [label]
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
-#: src/menu_events.cpp:1152
+#: src/menu_events.cpp:1153
 msgid "XP"
 msgstr "PE"
 
@@ -5333,7 +5333,7 @@ msgstr "¡Unitats a la vista! ($friends amigues, $enemies enemigues)."
 msgid "(press $hotkey to keep moving)"
 msgstr "(pulsa $hotkey per continuar)"
 
-#: src/ai.cpp:1530
+#: src/ai.cpp:1539
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Escenari desconegut"
@@ -5492,7 +5492,7 @@ msgid "Date"
 msgstr "Data"
 
 #: src/dialogs.cpp:673 src/game.cpp:1184 src/menu_events.cpp:382
-#: src/menu_events.cpp:1150 src/multiplayer.cpp:110
+#: src/menu_events.cpp:1151 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nom"
 
@@ -6058,8 +6058,8 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "Eixir del joc"
 
-#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1149
-#: src/menu_events.cpp:1622
+#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1150
+#: src/menu_events.cpp:1623
 msgid "Type"
 msgstr "Tipo"
 
@@ -6199,7 +6199,7 @@ msgstr ""
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
-#: src/menu_events.cpp:55 src/menu_events.cpp:892 src/menu_events.cpp:894
+#: src/menu_events.cpp:55 src/menu_events.cpp:893 src/menu_events.cpp:895
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "Partida guardada automàticament"
@@ -6433,57 +6433,57 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:899
+#: src/menu_events.cpp:900
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "No ha segut possible guardar la partida automàticament. Per favor, guarda-la "
 "manualment."
 
-#: src/menu_events.cpp:927
+#: src/menu_events.cpp:928
 msgid "Chat Log"
 msgstr "Registre del chat"
 
-#: src/menu_events.cpp:937
+#: src/menu_events.cpp:938
 msgid "Message:"
 msgstr "Mensage: "
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 msgid "Send to allies only"
 msgstr "Enviar només als aliats"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Enviar només als aliats"
 
-#: src/menu_events.cpp:1018
+#: src/menu_events.cpp:1019
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Or"
 msgstr[1] "Or"
 
-#: src/menu_events.cpp:1025
+#: src/menu_events.cpp:1026
 msgid "You have no units available to recruit."
 msgstr "No tens unitats disponibles per a reclutar."
 
-#: src/menu_events.cpp:1037
+#: src/menu_events.cpp:1038
 msgid "Recruit"
 msgstr "Reclutar"
 
-#: src/menu_events.cpp:1038 src/menu_events.cpp:1189
+#: src/menu_events.cpp:1039 src/menu_events.cpp:1190
 msgid "Select unit:"
 msgstr "Selecciona una unitat:"
 
-#: src/menu_events.cpp:1083
+#: src/menu_events.cpp:1084
 msgid "You don't have enough gold to recruit that unit"
 msgstr "No tens suficient diners per a reclutar esta unitat."
 
-#: src/menu_events.cpp:1142
+#: src/menu_events.cpp:1143
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Estàs llunt dels teus soldats i no pots reincorporar-los."
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6491,19 +6491,19 @@ msgstr ""
 "No hi ha tropes disponibles per a reincorporar.\n"
 "(Has de tindre supervivents veterans d'escenaris anteriors.)"
 
-#: src/menu_events.cpp:1151
+#: src/menu_events.cpp:1152
 msgid "Level"
 msgstr "Nivell"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1184
 msgid "Dismiss Unit"
 msgstr "Llicenciar unitat"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1189
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1206
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -6512,75 +6512,75 @@ msgstr[0] ""
 msgstr[1] ""
 "Necessites a lo manco $cost monedes d'or per a reincorporar una unitat."
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1537
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "No has començat a moure les unitats. ¿Segur que vols finalisar la teua tanda?"
 
-#: src/menu_events.cpp:1544 src/menu_events.cpp:1549
+#: src/menu_events.cpp:1545 src/menu_events.cpp:1550
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunes unitats encara es poden moure. ¿Segur que vols finalisar la teua "
 "tanda?"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1585
 msgid "Rename Unit"
 msgstr "Renomenar unitat"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1622
 #, fuzzy
 msgid "Race"
 msgstr "maça"
 
-#: src/menu_events.cpp:1646
+#: src/menu_events.cpp:1647
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1690
+#: src/menu_events.cpp:1691
 msgid "Place Label"
 msgstr "Posar etiqueta"
 
-#: src/menu_events.cpp:1693 src/menu_events.cpp:1696
+#: src/menu_events.cpp:1694 src/menu_events.cpp:1697
 #, fuzzy
 msgid "Label: "
 msgstr "Etiqueta: "
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1699
 #, fuzzy
 msgid "Team only"
 msgstr "Vert blavós"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1800
 msgid "Search"
 msgstr "Busca"
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1842
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:1843 src/menu_events.cpp:1852 src/menu_events.cpp:2158
-#: src/menu_events.cpp:2164 src/menu_events.cpp:2198 src/menu_events.cpp:2210
-#: src/menu_events.cpp:2217
+#: src/menu_events.cpp:1844 src/menu_events.cpp:1853 src/menu_events.cpp:2159
+#: src/menu_events.cpp:2165 src/menu_events.cpp:2199 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2218
 #, fuzzy
 msgid "error"
 msgstr "Erro"
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1851
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1915
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
 
-#: src/menu_events.cpp:1945
+#: src/menu_events.cpp:1946
 #, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
@@ -6589,7 +6589,7 @@ msgstr ""
 "Envia un mensage privat. No pots enviar mensages a jugadors que controlen "
 "qualsevol bando del joc. Us: /whisper [renom] [mensage]"
 
-#: src/menu_events.cpp:1951
+#: src/menu_events.cpp:1952
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -6601,21 +6601,21 @@ msgstr ""
 "[argument] [opcional] Subcomandament: add remove list clear. Escriu /help "
 "ignore [subcomandament] per a més informació."
 
-#: src/menu_events.cpp:1959
+#: src/menu_events.cpp:1960
 #, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr ""
 "Afegir un jugador a la teua llista de jugadors ignorats. Us: /ignore add "
 "[argument]"
 
-#: src/menu_events.cpp:1964
+#: src/menu_events.cpp:1965
 #, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr ""
 "Afegir un jugador a la teua llista de jugadors ignorats. Us: /ignore add "
 "[argument]"
 
-#: src/menu_events.cpp:1968
+#: src/menu_events.cpp:1969
 #, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
@@ -6623,97 +6623,97 @@ msgstr ""
 "Eliminar un jugador de la teua llista de jugadors ignorats. Us: /ignore "
 "remove [argument]"
 
-#: src/menu_events.cpp:1972
+#: src/menu_events.cpp:1973
 #, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr "Borrar la teua llista de jugadors ignorats. Us: /ignore clear"
 
-#: src/menu_events.cpp:1976
+#: src/menu_events.cpp:1977
 #, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "Mostrar la teua llista de jugadors ignorats. Us: /ignore list"
 
-#: src/menu_events.cpp:1979
+#: src/menu_events.cpp:1980
 #, fuzzy
 msgid "Unknown subcommand."
 msgstr "Subcomandament desconegut"
 
-#: src/menu_events.cpp:1984
+#: src/menu_events.cpp:1985
 #, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr ""
 "Enviar un «emoticon» o acció personal per mig de text. Us: /emote [mensage]"
 
-#: src/menu_events.cpp:1987
+#: src/menu_events.cpp:1988
 #, fuzzy
 msgid "Unknown command."
 msgstr "Comandament desconegut"
 
-#: src/menu_events.cpp:1993
+#: src/menu_events.cpp:1994
 msgid "Added to ignore list: "
 msgstr "Afegir a llista d'usuaris a ignorar"
 
-#: src/menu_events.cpp:1993 src/menu_events.cpp:1999
+#: src/menu_events.cpp:1994 src/menu_events.cpp:2000
 msgid "Invalid username: "
 msgstr "Nom d'usuari invàlit"
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2000
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Afegir a llista d'usuaris a ignorar"
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2006
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Eliminat de llista d'usuaris a ignorar:"
 
-#: src/menu_events.cpp:2017
+#: src/menu_events.cpp:2018
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2023
+#: src/menu_events.cpp:2024
 msgid "Unknown command: "
 msgstr "Comandament desconegut: "
 
-#: src/menu_events.cpp:2130
+#: src/menu_events.cpp:2131
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No s'ha trobat cap etiqueta o unitat ab el nom '$search'."
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2160
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2165
+#: src/menu_events.cpp:2166
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2199
+#: src/menu_events.cpp:2200
 msgid "Usage: control <side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2211
+#: src/menu_events.cpp:2212
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2219
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2256
+#: src/menu_events.cpp:2257
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Comandaments generals"
 
-#: src/menu_events.cpp:2259
+#: src/menu_events.cpp:2260
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Comandaments generals"
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2341
 msgid "prompt^Command:"
 msgstr "Comandament:"
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Órdens"
@@ -6915,11 +6915,11 @@ msgstr "Buit"
 msgid "This is not a multiplayer save"
 msgstr "Est archiu no correspon a una partida multijugador."
 
-#: src/multiplayer_connect.cpp:1555
+#: src/multiplayer_connect.cpp:1556
 msgid "Cannot find era $era"
 msgstr "No ha segut possible trobar $era."
 
-#: src/multiplayer_connect.cpp:1576
+#: src/multiplayer_connect.cpp:1577
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6927,7 +6927,7 @@ msgstr ""
 "Victòria\n"
 "@Derrota el/s líder/s enemic/s"
 
-#: src/multiplayer_connect.cpp:1636
+#: src/multiplayer_connect.cpp:1637
 msgid "Waiting for players to join..."
 msgstr "Esperant a que s'afigen jugadors..."
 
@@ -7218,20 +7218,20 @@ msgstr "Botar ràpidament a la tanda activa (quan s'observa)"
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:171
+#: src/multiplayer_ui.cpp:172
 msgid "Invalid Color"
 msgstr "Color no vàlit"
 
-#: src/multiplayer_ui.cpp:379
+#: src/multiplayer_ui.cpp:380
 msgid "Send a private message to "
 msgstr ""
 
-#: src/multiplayer_ui.cpp:380
+#: src/multiplayer_ui.cpp:381
 #, fuzzy
 msgid "Whisper"
 msgstr "llança"
 
-#: src/multiplayer_ui.cpp:381
+#: src/multiplayer_ui.cpp:382
 #, fuzzy
 msgid "Message: "
 msgstr "Mensage: "

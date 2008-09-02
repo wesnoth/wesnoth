@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:42+0200\n"
+"POT-Creation-Date: 2008-09-02 22:27+0200\n"
 "PO-Revision-Date: 2008-07-14 15:53+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -6297,7 +6297,7 @@ msgstr "EP"
 #. [label]
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
-#: src/menu_events.cpp:1152
+#: src/menu_events.cpp:1153
 msgid "XP"
 msgstr "KP"
 
@@ -6510,7 +6510,7 @@ msgstr "Yksiköitä näköpiirissä! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
-#: src/ai.cpp:1530
+#: src/ai.cpp:1539
 msgid "Unknown unit type : "
 msgstr "Tuntematon yksikkötyyppi:"
 
@@ -6664,7 +6664,7 @@ msgid "Date"
 msgstr "Päivämäärä"
 
 #: src/dialogs.cpp:673 src/game.cpp:1184 src/menu_events.cpp:382
-#: src/menu_events.cpp:1150 src/multiplayer.cpp:110
+#: src/menu_events.cpp:1151 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nimi"
 
@@ -7193,8 +7193,8 @@ msgstr "Hyökkäykset"
 msgid "unit help^Name"
 msgstr "Nimi"
 
-#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1149
-#: src/menu_events.cpp:1622
+#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1150
+#: src/menu_events.cpp:1623
 msgid "Type"
 msgstr "tyyppi"
 
@@ -7329,7 +7329,7 @@ msgstr "Kartat ilman otsakkeita eivät ole tuettuja."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Satunnaiskartat oudoilla leveyksillä eivät ole tuettuja."
 
-#: src/menu_events.cpp:55 src/menu_events.cpp:892 src/menu_events.cpp:894
+#: src/menu_events.cpp:55 src/menu_events.cpp:893 src/menu_events.cpp:895
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
@@ -7538,54 +7538,54 @@ msgstr "Kartta tallennettu."
 msgid "Could not save the map: $msg"
 msgstr "Ei voitu tallentaa karttaa: $msg"
 
-#: src/menu_events.cpp:899
+#: src/menu_events.cpp:900
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Automaattinen tallennus epäonnistui. Yritä tallentaa peli manuaalisesti."
 
-#: src/menu_events.cpp:927
+#: src/menu_events.cpp:928
 msgid "Chat Log"
 msgstr "Keskusteluhistoria"
 
-#: src/menu_events.cpp:937
+#: src/menu_events.cpp:938
 msgid "Message:"
 msgstr "Viesti:"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 msgid "Send to allies only"
 msgstr "Lähetä vain liittolaisille"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 msgid "Send to observers only"
 msgstr "Lähetä vain katsojille"
 
-#: src/menu_events.cpp:1018
+#: src/menu_events.cpp:1019
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Kultapala"
 msgstr[1] "Kultapalaa"
 
-#: src/menu_events.cpp:1025
+#: src/menu_events.cpp:1026
 msgid "You have no units available to recruit."
 msgstr "Sinulla ei ole yksiköitä, joita värvätä."
 
-#: src/menu_events.cpp:1037
+#: src/menu_events.cpp:1038
 msgid "Recruit"
 msgstr "Värvää"
 
-#: src/menu_events.cpp:1038 src/menu_events.cpp:1189
+#: src/menu_events.cpp:1039 src/menu_events.cpp:1190
 msgid "Select unit:"
 msgstr "Valitse yksikkö:"
 
-#: src/menu_events.cpp:1083
+#: src/menu_events.cpp:1084
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Sinulla ei ole tarpeeksi kultaa yksikön värväämiseen."
 
-#: src/menu_events.cpp:1142
+#: src/menu_events.cpp:1143
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Olet erossa sotilaistasi, etkä voi kutsua heitä."
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7593,19 +7593,19 @@ msgstr ""
 "Palvelukseen kutsuminen ei onnistu, koska sinulla ei ole jäljellä aiemmista "
 "tehtävistä henkiinjääneitä yksiköitä."
 
-#: src/menu_events.cpp:1151
+#: src/menu_events.cpp:1152
 msgid "Level"
 msgstr "taso"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1184
 msgid "Dismiss Unit"
 msgstr "Vapauta yksikkö palveluksesta"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1189
 msgid "Recall"
 msgstr "Kutsu veteraaniyksikkö"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1206
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
@@ -7615,64 +7615,64 @@ msgstr[1] ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin palvelukseen."
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1537
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Et ole vielä aloittanut vuoroasi.  Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:1544 src/menu_events.cpp:1549
+#: src/menu_events.cpp:1545 src/menu_events.cpp:1550
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1585
 msgid "Rename Unit"
 msgstr "Vaihda yksikön nimeä"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1622
 msgid "Race"
 msgstr "Laji"
 
-#: src/menu_events.cpp:1646
+#: src/menu_events.cpp:1647
 msgid "Create Unit (Debug!)"
 msgstr "Luo yksikkö (Debug!)"
 
-#: src/menu_events.cpp:1690
+#: src/menu_events.cpp:1691
 msgid "Place Label"
 msgstr "Lisää karttamerkintä"
 
-#: src/menu_events.cpp:1693 src/menu_events.cpp:1696
+#: src/menu_events.cpp:1694 src/menu_events.cpp:1697
 msgid "Label: "
 msgstr "Karttamerkintä:"
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1699
 msgid "Team only"
 msgstr "Vain joukkue"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1800
 msgid "Search"
 msgstr "Etsi"
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1842
 msgid "Unknown debug level: '$level'."
 msgstr "Tuntematon korjaustaso: '$level'."
 
-#: src/menu_events.cpp:1843 src/menu_events.cpp:1852 src/menu_events.cpp:2158
-#: src/menu_events.cpp:2164 src/menu_events.cpp:2198 src/menu_events.cpp:2210
-#: src/menu_events.cpp:2217
+#: src/menu_events.cpp:1844 src/menu_events.cpp:1853 src/menu_events.cpp:2159
+#: src/menu_events.cpp:2165 src/menu_events.cpp:2199 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2218
 msgid "error"
 msgstr "virhe"
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1851
 msgid "Unknown debug domain: '$domain'."
 msgstr "Tuntematon korjausalue: '$domain'."
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Tason '$level' alueeseen '$domain' vaihdettu."
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1915
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
@@ -7681,7 +7681,7 @@ msgstr ""
 "[<argumentti>], me/emote <viesti>. Kirjoita /help [<komento], jos tarvitset "
 "lisäohjeistusta."
 
-#: src/menu_events.cpp:1945
+#: src/menu_events.cpp:1946
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
@@ -7689,7 +7689,7 @@ msgstr ""
 "Lähettää yksityisviestin. Et voi lähettää viestejä pelaajille, jotka eivät "
 "hallitse mitään puolta pelissä. Käyttö: /msg <nimimerkki> <viesti>"
 
-#: src/menu_events.cpp:1951
+#: src/menu_events.cpp:1952
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list <subcommand> [<argument>] Subcommands: addfriend, "
@@ -7701,102 +7701,102 @@ msgstr ""
 "Alikomennot: addfriend addignore remove display clear. Kirjoita /help list "
 "<alikomento> lisätietoa saadaksesi."
 
-#: src/menu_events.cpp:1959
+#: src/menu_events.cpp:1960
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr "Lisää pelaaja ystävälistallesi. Käyttö: /list addfriend <nimi>"
 
-#: src/menu_events.cpp:1964
+#: src/menu_events.cpp:1965
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr "Lisää pelaaja torjuttujen listallesi. Käyttö: /list ignore <nimi>"
 
-#: src/menu_events.cpp:1968
+#: src/menu_events.cpp:1969
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Poista pelaaja ystävien tai torjuttujen listaltasi. Käyttö: /ignore remove "
 "<pelaajanimi>"
 
-#: src/menu_events.cpp:1972
+#: src/menu_events.cpp:1973
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr "Puhdista torjuttujen ja ystävien listasi. Käyttö: /list clear"
 
-#: src/menu_events.cpp:1976
+#: src/menu_events.cpp:1977
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "Näytä torjuttujen ja ystävien listasi. Käyttö: /list display"
 
-#: src/menu_events.cpp:1979
+#: src/menu_events.cpp:1980
 msgid "Unknown subcommand."
 msgstr "Tuntematon alikomento."
 
-#: src/menu_events.cpp:1984
+#: src/menu_events.cpp:1985
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr "Lähetä tunneilmaisu tai toiminto keskustelussa. Käyttö: /me <viesti>"
 
-#: src/menu_events.cpp:1987
+#: src/menu_events.cpp:1988
 msgid "Unknown command."
 msgstr "Tuntematon komento."
 
-#: src/menu_events.cpp:1993
+#: src/menu_events.cpp:1994
 msgid "Added to ignore list: "
 msgstr "Et enää saa viestejä, jotka lähettää"
 
-#: src/menu_events.cpp:1993 src/menu_events.cpp:1999
+#: src/menu_events.cpp:1994 src/menu_events.cpp:2000
 msgid "Invalid username: "
 msgstr "Virheellinen käyttäjänimi"
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2000
 msgid "Added to friends list: "
 msgstr "Lisätyt ystävälistalle:"
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2006
 msgid "Removed from list: "
 msgstr "Poistettu listalta:"
 
-#: src/menu_events.cpp:2017
+#: src/menu_events.cpp:2018
 msgid "There are no players on your friends or ignore list."
 msgstr "Sinulla ei ole pelaajia ystävien tai tai torjuttujen listalla."
 
-#: src/menu_events.cpp:2023
+#: src/menu_events.cpp:2024
 msgid "Unknown command: "
 msgstr "Tuntematon komento:"
 
-#: src/menu_events.cpp:2130
+#: src/menu_events.cpp:2131
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Tekstiä '$search' sisältävää yksikköä tai karttamerkintää ei löytynyt."
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2160
 msgid "Can't droid invalid side: '$side'."
 msgstr "Ei voida automatisoida epäkelpoa puolta: '$side'"
 
-#: src/menu_events.cpp:2165
+#: src/menu_events.cpp:2166
 msgid "Can't droid networked side: '$side'."
 msgstr "Ei voida automatisoida verkkopelaajan puolta: '$side'"
 
-#: src/menu_events.cpp:2199
+#: src/menu_events.cpp:2200
 msgid "Usage: control <side> <nick>"
 msgstr "Käyttö: control <puoli> <nimimerkki>"
 
-#: src/menu_events.cpp:2211
+#: src/menu_events.cpp:2212
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Ei voida vaihtaa epäkelvon puolen kontrollia: '$side'."
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2219
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Ei voida vaihtaa salaisten joukkueiden puolta: '$side'."
 
-#: src/menu_events.cpp:2256
+#: src/menu_events.cpp:2257
 msgid "Debug mode activated!"
 msgstr "Testaustila otettu käyttöön!"
 
-#: src/menu_events.cpp:2259
+#: src/menu_events.cpp:2260
 msgid "Debug mode deactivated!"
 msgstr "Testaustila poistettu käytöstä!"
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2341
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
 msgid "User-Command#3"
 msgstr "Käyttäjäkomento#3"
 
@@ -7990,11 +7990,11 @@ msgstr "tyhjä"
 msgid "This is not a multiplayer save"
 msgstr "Tämä ei ole moninpelin tallenne"
 
-#: src/multiplayer_connect.cpp:1555
+#: src/multiplayer_connect.cpp:1556
 msgid "Cannot find era $era"
 msgstr "Aikakautta $era ei löydy"
 
-#: src/multiplayer_connect.cpp:1576
+#: src/multiplayer_connect.cpp:1577
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8002,7 +8002,7 @@ msgstr ""
 "Voitto:\n"
 "@Kukista vihollisjohtaja(t)"
 
-#: src/multiplayer_connect.cpp:1636
+#: src/multiplayer_connect.cpp:1637
 msgid "Waiting for players to join..."
 msgstr "Odotetaan pelaajien liittymistä..."
 
@@ -8285,19 +8285,19 @@ msgstr "Hyppää tarkkaillessasi heti nykyiseen vuoroon "
 msgid "Joining this game requires a password."
 msgstr "Tähän peliin liittyminen vaatii salasanan."
 
-#: src/multiplayer_ui.cpp:171
+#: src/multiplayer_ui.cpp:172
 msgid "Invalid Color"
 msgstr "Virheellinen väri"
 
-#: src/multiplayer_ui.cpp:379
+#: src/multiplayer_ui.cpp:380
 msgid "Send a private message to "
 msgstr "Lähetä yksityisviesti henkilölle"
 
-#: src/multiplayer_ui.cpp:380
+#: src/multiplayer_ui.cpp:381
 msgid "Whisper"
 msgstr "Kuiskaa"
 
-#: src/multiplayer_ui.cpp:381
+#: src/multiplayer_ui.cpp:382
 msgid "Message: "
 msgstr "Viesti:"
 

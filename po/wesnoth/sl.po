@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:42+0200\n"
+"POT-Creation-Date: 2008-09-02 22:27+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -5487,7 +5487,7 @@ msgstr "HP"
 #. [label]
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
-#: src/menu_events.cpp:1152
+#: src/menu_events.cpp:1153
 msgid "XP"
 msgstr "XP"
 
@@ -5714,7 +5714,7 @@ msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
-#: src/ai.cpp:1530
+#: src/ai.cpp:1539
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Neznan scenarij"
@@ -5875,7 +5875,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:673 src/game.cpp:1184 src/menu_events.cpp:382
-#: src/menu_events.cpp:1150 src/multiplayer.cpp:110
+#: src/menu_events.cpp:1151 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Ime"
 
@@ -6440,8 +6440,8 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "Izhod iz igre"
 
-#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1149
-#: src/menu_events.cpp:1622
+#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1150
+#: src/menu_events.cpp:1623
 msgid "Type"
 msgstr "Vrsta"
 
@@ -6581,7 +6581,7 @@ msgstr ""
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
-#: src/menu_events.cpp:55 src/menu_events.cpp:892 src/menu_events.cpp:894
+#: src/menu_events.cpp:55 src/menu_events.cpp:893 src/menu_events.cpp:895
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
@@ -6817,28 +6817,28 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:899
+#: src/menu_events.cpp:900
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ni bilo mogoče samodejno shraniti igre. Shranite jo ročno."
 
-#: src/menu_events.cpp:927
+#: src/menu_events.cpp:928
 msgid "Chat Log"
 msgstr "Dnevnik pogovorov"
 
-#: src/menu_events.cpp:937
+#: src/menu_events.cpp:938
 msgid "Message:"
 msgstr "Sporočilo:"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 msgid "Send to allies only"
 msgstr "Pošlji samo zaveznikom"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Pošlji samo zaveznikom"
 
-#: src/menu_events.cpp:1018
+#: src/menu_events.cpp:1019
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
@@ -6847,27 +6847,27 @@ msgstr[1] "Zlata"
 msgstr[2] "Zlata"
 msgstr[3] "Zlata"
 
-#: src/menu_events.cpp:1025
+#: src/menu_events.cpp:1026
 msgid "You have no units available to recruit."
 msgstr "Nikogar ne morete vpoklicati."
 
-#: src/menu_events.cpp:1037
+#: src/menu_events.cpp:1038
 msgid "Recruit"
 msgstr "Vpokliči"
 
-#: src/menu_events.cpp:1038 src/menu_events.cpp:1189
+#: src/menu_events.cpp:1039 src/menu_events.cpp:1190
 msgid "Select unit:"
 msgstr "Izberite enoto:"
 
-#: src/menu_events.cpp:1083
+#: src/menu_events.cpp:1084
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Za vpoklic te enote nimate dovolj zlata"
 
-#: src/menu_events.cpp:1142
+#: src/menu_events.cpp:1143
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Od svojih enot ste ločeni in jih ne morete priklicati"
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6875,19 +6875,19 @@ msgstr ""
 "Nobenih enot ne morete priklicati\n"
 " (imeti morate preživele veterane iz prejšnjih scenarijev)"
 
-#: src/menu_events.cpp:1151
+#: src/menu_events.cpp:1152
 msgid "Level"
 msgstr "Stopnja"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1184
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1189
 msgid "Recall"
 msgstr "Prikliči"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1206
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -6896,72 +6896,72 @@ msgstr[1] "Za priklic enote potrebujete vsaj $cost zlata"
 msgstr[2] "Za priklic enote potrebujete vsaj $cost zlata"
 msgstr[3] "Za priklic enote potrebujete vsaj $cost zlata"
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1537
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Niste še začeli svoje poteze. Ali jo res želite končati?"
 
-#: src/menu_events.cpp:1544 src/menu_events.cpp:1549
+#: src/menu_events.cpp:1545 src/menu_events.cpp:1550
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Nekatere enote se še lahko premaknejo. Ali res želite končati potezo?"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1585
 msgid "Rename Unit"
 msgstr "Preimenuj enoto"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1622
 #, fuzzy
 msgid "Race"
 msgstr "buzdovan"
 
-#: src/menu_events.cpp:1646
+#: src/menu_events.cpp:1647
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1690
+#: src/menu_events.cpp:1691
 msgid "Place Label"
 msgstr "Postavi oznako"
 
-#: src/menu_events.cpp:1693 src/menu_events.cpp:1696
+#: src/menu_events.cpp:1694 src/menu_events.cpp:1697
 #, fuzzy
 msgid "Label: "
 msgstr "Oznaka:"
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1699
 #, fuzzy
 msgid "Team only"
 msgstr "Turkizna"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1800
 msgid "Search"
 msgstr "Iskanje"
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1842
 msgid "Unknown debug level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:1843 src/menu_events.cpp:1852 src/menu_events.cpp:2158
-#: src/menu_events.cpp:2164 src/menu_events.cpp:2198 src/menu_events.cpp:2210
-#: src/menu_events.cpp:2217
+#: src/menu_events.cpp:1844 src/menu_events.cpp:1853 src/menu_events.cpp:2159
+#: src/menu_events.cpp:2165 src/menu_events.cpp:2199 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2218
 #, fuzzy
 msgid "error"
 msgstr "Napaka"
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1851
 msgid "Unknown debug domain: '$domain'."
 msgstr ""
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1915
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
 msgstr ""
 
-#: src/menu_events.cpp:1945
+#: src/menu_events.cpp:1946
 #, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
@@ -6970,7 +6970,7 @@ msgstr ""
 "Pošlje privatno sporočilo. Dela samo opazovalcih. Uporaba: /whisper "
 "[igralec] [sporočilo]"
 
-#: src/menu_events.cpp:1951
+#: src/menu_events.cpp:1952
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -6982,113 +6982,113 @@ msgstr ""
 "<argument>. Podukazi: add remove list clear. Vpišite /help ignore [podukaz] "
 "za več podatkov."
 
-#: src/menu_events.cpp:1959
+#: src/menu_events.cpp:1960
 #, fuzzy
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr "Dodaj igralca na seznam ignoriranih. Uporaba: /ignore add [argument]"
 
-#: src/menu_events.cpp:1964
+#: src/menu_events.cpp:1965
 #, fuzzy
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr "Dodaj igralca na seznam ignoriranih. Uporaba: /ignore add [argument]"
 
-#: src/menu_events.cpp:1968
+#: src/menu_events.cpp:1969
 #, fuzzy
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr ""
 "Izbriši igralca s seznama ignoriranih. Uporaba: /ignore remove [argument]"
 
-#: src/menu_events.cpp:1972
+#: src/menu_events.cpp:1973
 #, fuzzy
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr "Počisti seznam ignoriranih. Uporaba: /ignore clear"
 
-#: src/menu_events.cpp:1976
+#: src/menu_events.cpp:1977
 #, fuzzy
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "Prikaži seznam ignoriranih. Uporaba: /ignore list"
 
-#: src/menu_events.cpp:1979
+#: src/menu_events.cpp:1980
 #, fuzzy
 msgid "Unknown subcommand."
 msgstr "Neznan podukaz"
 
-#: src/menu_events.cpp:1984
+#: src/menu_events.cpp:1985
 #, fuzzy
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr "Pošlji emotikon ali osebno dejanje. Uporaba: /emote [sporočilo]"
 
-#: src/menu_events.cpp:1987
+#: src/menu_events.cpp:1988
 #, fuzzy
 msgid "Unknown command."
 msgstr "Neznan ukaz"
 
-#: src/menu_events.cpp:1993
+#: src/menu_events.cpp:1994
 msgid "Added to ignore list: "
 msgstr "Dodan na seznam ignoriranih: "
 
-#: src/menu_events.cpp:1993 src/menu_events.cpp:1999
+#: src/menu_events.cpp:1994 src/menu_events.cpp:2000
 msgid "Invalid username: "
 msgstr "Neveljavno uporabniško ime: "
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2000
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Dodan na seznam ignoriranih: "
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2006
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Odstranjen s seznama ignoriranih: "
 
-#: src/menu_events.cpp:2017
+#: src/menu_events.cpp:2018
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:2023
+#: src/menu_events.cpp:2024
 msgid "Unknown command: "
 msgstr "Neznan ukaz: "
 
-#: src/menu_events.cpp:2130
+#: src/menu_events.cpp:2131
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2160
 msgid "Can't droid invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2165
+#: src/menu_events.cpp:2166
 msgid "Can't droid networked side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2199
+#: src/menu_events.cpp:2200
 msgid "Usage: control <side> <nick>"
 msgstr ""
 
-#: src/menu_events.cpp:2211
+#: src/menu_events.cpp:2212
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2219
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
-#: src/menu_events.cpp:2256
+#: src/menu_events.cpp:2257
 #, fuzzy
 msgid "Debug mode activated!"
 msgstr "Splošni ukazi"
 
-#: src/menu_events.cpp:2259
+#: src/menu_events.cpp:2260
 #, fuzzy
 msgid "Debug mode deactivated!"
 msgstr "Splošni ukazi"
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2341
 msgid "prompt^Command:"
 msgstr "Ukaz:"
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Ukazi"
@@ -7290,11 +7290,11 @@ msgstr "Prazno"
 msgid "This is not a multiplayer save"
 msgstr "To ni večigralski shranjen položaj"
 
-#: src/multiplayer_connect.cpp:1555
+#: src/multiplayer_connect.cpp:1556
 msgid "Cannot find era $era"
 msgstr "Ni mogoče najti ere $era"
 
-#: src/multiplayer_connect.cpp:1576
+#: src/multiplayer_connect.cpp:1577
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -7302,7 +7302,7 @@ msgstr ""
 "Zmaga:\n"
 "@Premagaj sovražne voditelje"
 
-#: src/multiplayer_connect.cpp:1636
+#: src/multiplayer_connect.cpp:1637
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
@@ -7594,20 +7594,20 @@ msgstr "Hitri preskok na trenutno potezo (pri opazovanju)"
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:171
+#: src/multiplayer_ui.cpp:172
 msgid "Invalid Color"
 msgstr "Neveljavna barva"
 
-#: src/multiplayer_ui.cpp:379
+#: src/multiplayer_ui.cpp:380
 msgid "Send a private message to "
 msgstr ""
 
-#: src/multiplayer_ui.cpp:380
+#: src/multiplayer_ui.cpp:381
 #, fuzzy
 msgid "Whisper"
 msgstr "Bela"
 
-#: src/multiplayer_ui.cpp:381
+#: src/multiplayer_ui.cpp:382
 #, fuzzy
 msgid "Message: "
 msgstr "Sporočilo:"

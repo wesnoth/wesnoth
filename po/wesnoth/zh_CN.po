@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:42+0200\n"
+"POT-Creation-Date: 2008-09-02 22:27+0200\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -5706,7 +5706,7 @@ msgstr "生命值"
 #. [label]
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:385
-#: src/menu_events.cpp:1152
+#: src/menu_events.cpp:1153
 msgid "XP"
 msgstr "经验值"
 
@@ -5921,7 +5921,7 @@ msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
-#: src/ai.cpp:1530
+#: src/ai.cpp:1539
 msgid "Unknown unit type : "
 msgstr "未知单位"
 
@@ -6070,7 +6070,7 @@ msgid "Date"
 msgstr "日期"
 
 #: src/dialogs.cpp:673 src/game.cpp:1184 src/menu_events.cpp:382
-#: src/menu_events.cpp:1150 src/multiplayer.cpp:110
+#: src/menu_events.cpp:1151 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名称"
 
@@ -6594,8 +6594,8 @@ msgstr "攻击"
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1149
-#: src/menu_events.cpp:1622
+#: src/help.cpp:1356 src/menu_events.cpp:381 src/menu_events.cpp:1150
+#: src/menu_events.cpp:1623
 msgid "Type"
 msgstr "类型"
 
@@ -6730,7 +6730,7 @@ msgstr "不支持不含标题的地图"
 msgid "Random maps with an odd width aren't supported."
 msgstr "不支持宽度为奇数的随机地图(?)"
 
-#: src/menu_events.cpp:55 src/menu_events.cpp:892 src/menu_events.cpp:894
+#: src/menu_events.cpp:55 src/menu_events.cpp:893 src/menu_events.cpp:895
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
 msgid "Auto-Save"
 msgstr "自动存档"
@@ -6945,53 +6945,53 @@ msgstr "地图已保存."
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图: $msg"
 
-#: src/menu_events.cpp:899
+#: src/menu_events.cpp:900
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自动存储当前游戏，请手动存档。"
 
-#: src/menu_events.cpp:927
+#: src/menu_events.cpp:928
 msgid "Chat Log"
 msgstr "聊天记录"
 
-#: src/menu_events.cpp:937
+#: src/menu_events.cpp:938
 msgid "Message:"
 msgstr "信息："
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 msgid "Send to allies only"
 msgstr "仅发送给同盟"
 
-#: src/menu_events.cpp:938
+#: src/menu_events.cpp:939
 msgid "Send to observers only"
 msgstr "仅发送给观察者"
 
-#: src/menu_events.cpp:1018
+#: src/menu_events.cpp:1019
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "金币"
 msgstr[1] "金币"
 
-#: src/menu_events.cpp:1025
+#: src/menu_events.cpp:1026
 msgid "You have no units available to recruit."
 msgstr "没有可供征募的单位。"
 
-#: src/menu_events.cpp:1037
+#: src/menu_events.cpp:1038
 msgid "Recruit"
 msgstr "征募"
 
-#: src/menu_events.cpp:1038 src/menu_events.cpp:1189
+#: src/menu_events.cpp:1039 src/menu_events.cpp:1190
 msgid "Select unit:"
 msgstr "选择单位："
 
-#: src/menu_events.cpp:1083
+#: src/menu_events.cpp:1084
 msgid "You don't have enough gold to recruit that unit"
 msgstr "您没有足够的金币去征募该单位"
 
-#: src/menu_events.cpp:1142
+#: src/menu_events.cpp:1143
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "您与您的士兵已分离，因此不能召回他们。"
 
-#: src/menu_events.cpp:1144
+#: src/menu_events.cpp:1145
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6999,80 +6999,80 @@ msgstr ""
 "没有可供召回的单位\n"
 "（只能召回上一幕存活下来的单位）"
 
-#: src/menu_events.cpp:1151
+#: src/menu_events.cpp:1152
 msgid "Level"
 msgstr "等级"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1184
 msgid "Dismiss Unit"
 msgstr "解散单位"
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1189
 msgid "Recall"
 msgstr "召回"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1206
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "要召回一个单位，您至少需要有1个金币"
 msgstr[1] "要召回一个单位，您至少需要有 $cost 个金币"
 
-#: src/menu_events.cpp:1536
+#: src/menu_events.cpp:1537
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "您在这回合还没进行操作。您真的想结束本回合吗？"
 
-#: src/menu_events.cpp:1544 src/menu_events.cpp:1549
+#: src/menu_events.cpp:1545 src/menu_events.cpp:1550
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还可以移动。您真的要结束本回合吗？"
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1585
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1622
 msgid "Race"
 msgstr "种族"
 
-#: src/menu_events.cpp:1646
+#: src/menu_events.cpp:1647
 msgid "Create Unit (Debug!)"
 msgstr "创建单位(调试!)"
 
-#: src/menu_events.cpp:1690
+#: src/menu_events.cpp:1691
 msgid "Place Label"
 msgstr "设置标签"
 
-#: src/menu_events.cpp:1693 src/menu_events.cpp:1696
+#: src/menu_events.cpp:1694 src/menu_events.cpp:1697
 msgid "Label: "
 msgstr "标签："
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1699
 msgid "Team only"
 msgstr "针对团队"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1800
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1842
 msgid "Unknown debug level: '$level'."
 msgstr "未知调式级别：'$level'。"
 
-#: src/menu_events.cpp:1843 src/menu_events.cpp:1852 src/menu_events.cpp:2158
-#: src/menu_events.cpp:2164 src/menu_events.cpp:2198 src/menu_events.cpp:2210
-#: src/menu_events.cpp:2217
+#: src/menu_events.cpp:1844 src/menu_events.cpp:1853 src/menu_events.cpp:2159
+#: src/menu_events.cpp:2165 src/menu_events.cpp:2199 src/menu_events.cpp:2211
+#: src/menu_events.cpp:2218
 msgid "error"
 msgstr "错误"
 
-#: src/menu_events.cpp:1850
+#: src/menu_events.cpp:1851
 msgid "Unknown debug domain: '$domain'."
 msgstr "未知调试域：'$domain'。"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "域已切换：'$domain' 切换到 '$level' 级别。"
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1915
 msgid ""
 "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], me/"
 "emote <message>. Type /help [<command>] for detailed instructions."
@@ -7080,7 +7080,7 @@ msgstr ""
 "命令: msg/whisper <玩家id> <消息>， list <子命令> [<参数>]， me/emote <消息"
 ">。 输入 /help [<命令>] 可以取得详细的使用说明。"
 
-#: src/menu_events.cpp:1945
+#: src/menu_events.cpp:1946
 msgid ""
 "Sends a private message. You can't send messages to players that control any "
 "side in a game. Usage: /msg <nick> <message>"
@@ -7088,7 +7088,7 @@ msgstr ""
 "发送私人消息。您不能发送消息给正在控制游戏中任何一方的玩家。用法：/msg <玩家"
 "id> <消息>"
 
-#: src/menu_events.cpp:1951
+#: src/menu_events.cpp:1952
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list <subcommand> [<argument>] Subcommands: addfriend, "
@@ -7100,100 +7100,100 @@ msgstr ""
 "略), remove(移除), display(显示), clear(清空)。输入/help list <子命令>获取更"
 "多信息。"
 
-#: src/menu_events.cpp:1959
+#: src/menu_events.cpp:1960
 msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
 msgstr "将玩家列入您的好友名单。用法：/list addfriend <玩家id>"
 
-#: src/menu_events.cpp:1964
+#: src/menu_events.cpp:1965
 msgid "Add a nick to your ignores list. Usage: /list ignore <nick>"
 msgstr "将玩家列入您的忽略名单。用法：/list ignore <玩家id>"
 
-#: src/menu_events.cpp:1968
+#: src/menu_events.cpp:1969
 msgid ""
 "Remove a nick from your ignores or friends list. Usage: /list remove <nick>"
 msgstr "将玩家从您的好友名单或忽略名单中去除。用法：/list remove <玩家id>"
 
-#: src/menu_events.cpp:1972
+#: src/menu_events.cpp:1973
 msgid "Clear your complete ignores and friends list. Usage: /list clear"
 msgstr "清空您的好友名单和忽略名单。用法：/list clear"
 
-#: src/menu_events.cpp:1976
+#: src/menu_events.cpp:1977
 msgid "Show your ignores and friends list. Usage: /list display"
 msgstr "显示您的好友名单和忽略名单。用法：/list display"
 
-#: src/menu_events.cpp:1979
+#: src/menu_events.cpp:1980
 msgid "Unknown subcommand."
 msgstr "未知的子命令"
 
-#: src/menu_events.cpp:1984
+#: src/menu_events.cpp:1985
 msgid "Send an emotion or personal action in chat. Usage: /me <message>"
 msgstr "在聊天中发送表情符号或者个人动作。用法： /me <消息>"
 
-#: src/menu_events.cpp:1987
+#: src/menu_events.cpp:1988
 msgid "Unknown command."
 msgstr "未知命令"
 
-#: src/menu_events.cpp:1993
+#: src/menu_events.cpp:1994
 msgid "Added to ignore list: "
 msgstr "已加入忽略名单："
 
-#: src/menu_events.cpp:1993 src/menu_events.cpp:1999
+#: src/menu_events.cpp:1994 src/menu_events.cpp:2000
 msgid "Invalid username: "
 msgstr "无效的用户名："
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2000
 msgid "Added to friends list: "
 msgstr "已加入好友名单："
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2006
 msgid "Removed from list: "
 msgstr "从名单中除去："
 
-#: src/menu_events.cpp:2017
+#: src/menu_events.cpp:2018
 msgid "There are no players on your friends or ignore list."
 msgstr "您的好友列表和忽略列表是空的."
 
-#: src/menu_events.cpp:2023
+#: src/menu_events.cpp:2024
 msgid "Unknown command: "
 msgstr "未知命令："
 
-#: src/menu_events.cpp:2130
+#: src/menu_events.cpp:2131
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "不能找到含有“$search”的标签或单位。"
 
-#: src/menu_events.cpp:2159
+#: src/menu_events.cpp:2160
 msgid "Can't droid invalid side: '$side'."
 msgstr "无法droid无效阵营：'$side'。"
 
-#: src/menu_events.cpp:2165
+#: src/menu_events.cpp:2166
 msgid "Can't droid networked side: '$side'."
 msgstr "无法droid网络上的阵营：'$side'。"
 
-#: src/menu_events.cpp:2199
+#: src/menu_events.cpp:2200
 msgid "Usage: control <side> <nick>"
 msgstr "用法: control <阵营> <玩家id>"
 
-#: src/menu_events.cpp:2211
+#: src/menu_events.cpp:2212
 msgid "Can't change control of invalid side: '$side'."
 msgstr "无法改变非法阵营的控制权：'$side'。"
 
-#: src/menu_events.cpp:2218
+#: src/menu_events.cpp:2219
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "无法改变固定方的控制权：'$side'。"
 
-#: src/menu_events.cpp:2256
+#: src/menu_events.cpp:2257
 msgid "Debug mode activated!"
 msgstr "调试模式开启！"
 
-#: src/menu_events.cpp:2259
+#: src/menu_events.cpp:2260
 msgid "Debug mode deactivated!"
 msgstr "调试模式关闭！"
 
-#: src/menu_events.cpp:2340
+#: src/menu_events.cpp:2341
 msgid "prompt^Command:"
 msgstr "命令："
 
-#: src/menu_events.cpp:2359
+#: src/menu_events.cpp:2360
 msgid "User-Command#3"
 msgstr "用户命令#3"
 
@@ -7386,11 +7386,11 @@ msgstr "空位"
 msgid "This is not a multiplayer save"
 msgstr "这不是多人对战存档"
 
-#: src/multiplayer_connect.cpp:1555
+#: src/multiplayer_connect.cpp:1556
 msgid "Cannot find era $era"
 msgstr "找不到$era时期"
 
-#: src/multiplayer_connect.cpp:1576
+#: src/multiplayer_connect.cpp:1577
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -7398,7 +7398,7 @@ msgstr ""
 "胜利条件：\n"
 "@打败敌人的领袖(们)"
 
-#: src/multiplayer_connect.cpp:1636
+#: src/multiplayer_connect.cpp:1637
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
@@ -7680,19 +7680,19 @@ msgstr "观察游戏时快速跳至当前进行中的回合"
 msgid "Joining this game requires a password."
 msgstr "加入此游戏需要密码."
 
-#: src/multiplayer_ui.cpp:171
+#: src/multiplayer_ui.cpp:172
 msgid "Invalid Color"
 msgstr "无效颜色"
 
-#: src/multiplayer_ui.cpp:379
+#: src/multiplayer_ui.cpp:380
 msgid "Send a private message to "
 msgstr "发送一条私人消息给 "
 
-#: src/multiplayer_ui.cpp:380
+#: src/multiplayer_ui.cpp:381
 msgid "Whisper"
 msgstr "悄悄话"
 
-#: src/multiplayer_ui.cpp:381
+#: src/multiplayer_ui.cpp:382
 msgid "Message: "
 msgstr "信息："
 
