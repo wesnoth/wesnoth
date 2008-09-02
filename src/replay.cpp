@@ -820,8 +820,6 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			DBG_REPLAY << "Repaly data at end\n";
 		}
 
-		ERR_REPLAY << *cfg << "\n";
-
 
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {

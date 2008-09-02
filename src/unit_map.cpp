@@ -48,18 +48,19 @@ unit_map::unit_map(const unit_map &that) :
 	*this = that;
 }
 
-unit_map &unit_map::operator =(const unit_map &that)
+unit_map &unit_map::operator=(const unit_map &that)
 {
 	clear();
 	num_iters_ = 0;
 	num_invalid_ = 0;
 	for (umap::const_iterator i = that.map_.begin(); i != that.map_.end(); i++) {
 		if (i->second.first) {
-			add(i->second.second);
+			add(new std::pair<gamemap::location,unit>(i->second.second->first, i->second.second->second));
 		}
 	}
 	return *this;
 }
+
 
 unit_map::~unit_map()
 {
@@ -468,7 +469,8 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 			<< "," << iter->second.second->first.y+1 << ").\n";
 	}
 
-	DBG_NG << "Adding unit " << p->second.underlying_id() << "\n";
+	DBG_NG << "Adding unit " << p->second.underlying_id()<< " to location: (" << p->first.x+1 << "," << p->first.y+1
+			<< ")\n";
 
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::string>(p->first, unit_id));
 	assert(res.second);
@@ -478,7 +480,7 @@ void unit_map::replace(std::pair<gamemap::location,unit> *p)
 {
 	if (erase(p->first) != 1)
 		assert(0);
-	DBG_NG << "Replace unit " << p->second.underluig_id() << "\n";
+	DBG_NG << "Replace unit " << p->second.underlying_id() << "\n";
 	add(p);
 }
 
@@ -486,7 +488,7 @@ void unit_map::delete_all()
 {
 	for (umap::iterator i = map_.begin(); i != map_.end(); ++i) {
 		if (i->second.first) {
-			DBG_NG << "Delete unit " << i->second.second.underluig_id() << "\n";
+			DBG_NG << "Delete unit " << i->second.second->second.underlying_id() << "\n";
 			delete(i->second.second);
 		}
 	}
@@ -504,7 +506,7 @@ std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &lo
 	umap::iterator iter = map_.find(i->second);
 	std::pair<gamemap::location,unit> *res = iter->second.second;
 
-	DBG_NG << "Extract unit " << iter->second << "\n";
+	DBG_NG << "Extract unit " << i->second << "\n";
 	invalidate(iter);
 	lmap_.erase(i);
 
