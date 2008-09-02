@@ -261,6 +261,10 @@ void ttext_::copy_selection(const bool mouse)
 	int length = selection_length_;
 	unsigned start = selection_start_;
 
+	if(length == 0) {
+		return;
+	}
+
 	if(length < 0) {
 		length = - length;
 		start -= length;
