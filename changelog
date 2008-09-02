@@ -32,6 +32,7 @@ Version 1.5.3+svn:
        [secondary_unit] weapon= deprecated too; use [primary_attack] and
        [secondary_attack] blocks instead.
    * fix various minor bugs with attack filtering
+   * Fixed linewrapping with not to wrap markups (bug #11946 and bug #11945)
    * fix bug where max_experience of stored units was not the true max when
      playing with under 100% exp. settings
    * prevent some negative/nonsense values in direct WML unit modifications
