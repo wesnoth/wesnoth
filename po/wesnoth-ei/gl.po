@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-04-20 13:29+0200\n"
-"PO-Revision-Date: 2008-06-29 17:39+0100\n"
+"PO-Revision-Date: 2008-07-27 13:07+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -2102,13 +2102,12 @@ msgstr "Destrúe a ponte OU derrota a tódolos inimigos"
 
 #. [objectives]
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
-#, fuzzy
 msgid ""
 "Note: every unit not on the south side of the river when the bridge is "
 "destroyed will be lost (including not recalled units)"
 msgstr ""
 "Nota: perderanse tódalas unidades que non estean na beira sur do río cando "
-"se destrúa a ponte"
+"se destrúa a ponte (incluindo ás unidades non reincorporadas)"
 
 #. [unit]: description=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:186
@@ -2850,7 +2849,7 @@ msgid ""
 "The first leader to fall loses the duel."
 msgstr ""
 "As regras do duelo son estas:\n"
-"Podes recrutar ou volver chamar ata 6 unidades.\n"
+"Podes recrutar ou reincorporar ata 6 unidades.\n"
 "Ó final do teu primeiro turno, a túa torre ha desaparecer, e debes loitar "
 "cas tropas que teñas nese momento.\n"
 "O primeiro líder que caia perde o duelo."
@@ -3068,10 +3067,11 @@ msgstr ""
 "Con estas palabras e actos comezou a Idade Prateada de Wesnoth, coñecida "
 "neses tempos polos historiadores coma a Reconstrucción..."
 
+# señor dos cabalos FIXADO
 #. [unit]: race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
-msgstr "Señor dos Cabalos"
+msgstr "Señor dos cabalos"
 
 #. [unit]: race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
