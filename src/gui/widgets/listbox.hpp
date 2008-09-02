@@ -292,7 +292,7 @@ private:
 	tpoint best_spacer_size_;
 
 	/**
-	 * This callback is used when the selection is chnaged due to a user event.
+	 * This callback is used when the selection is changed due to a user event.
 	 * The name is not fully appropriate for the event but it's choosen to be
 	 * generic.
 	 */
