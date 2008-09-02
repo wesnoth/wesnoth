@@ -4,17 +4,16 @@
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Paco <fran dot dieguez at glug dot es>, 2008.
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 #
 # Proxecto Trasno <http://trasno.net>
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gl_ES\n"
+"Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:47+0200\n"
-"PO-Revision-Date: 2008-07-02 20:19+0100\n"
+"PO-Revision-Date: 2008-08-10 19:51+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -43,10 +42,8 @@ msgstr "Mapa Animado"
 msgid "Show Titlescreen Animation"
 msgstr "Campañas"
 
-# quedas ou estáticas
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:82
-#, fuzzy
 msgid "Unit Standing Animations"
 msgstr "Animacións das unidades quedas"
 
@@ -84,12 +81,13 @@ msgstr "Baixo a Terra"
 msgid "poisoned"
 msgstr "envelenado"
 
+# furia, mirar en wesnoth-units
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:531
 #, fuzzy
 msgid "berserk"
-msgstr "berserk"
+msgstr "FURIA, mirar en wesnoth-units"
 
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
@@ -168,12 +166,10 @@ msgstr "Efectos de Son"
 msgid "Campaign Design"
 msgstr "Deseño de Campañas"
 
-# equilibrado??
 #. [about]
 #: data/core/about.cfg:574
-#, fuzzy
 msgid "Multiplayer Maps and Balancing"
-msgstr "Mapas Multixogador e equilibrado"
+msgstr "Mapas Multixogador e Balanceo"
 
 #. [about]
 #: data/core/about.cfg:615
@@ -692,7 +688,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:159
 msgid "Recruiting and Recalling"
-msgstr "Recrutar e Volver Chamar"
+msgstr "Recrutar e Reincorporar"
 
 #. [topic]
 #: data/core/help.cfg:160
@@ -763,7 +759,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"En escenarios posteriores, tamén poderás Volver Chamar superviventes de "
+"En escenarios posteriores, tamén poderás Reincorporar superviventes de "
 "batallas anteriores. Volver chamar ten un custo estándar de 20 de ouro e "
 "dache unha lista de tódalas unidades superviventes de escenarios anteriores."
 
@@ -779,7 +775,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"As unidades non só custan ouro ó Recrutalas ou Volvelas Chamar, tamén "
+"As unidades non só custan ouro ó Recrutalas ou Reincorporalas, tamén "
 "requiren cartos para mantelas. Consulta <ref>dst=income_and_upkeep "
 "text='Ingresos e Mantemento'</ref> para obter máis información."
 
@@ -930,7 +926,7 @@ msgstr ""
 "nela, seleccionando Descrición da Unidade, e despois mirando en "
 "<italic>text='Modificadores de Terreo'</italic>."
 
-# hostigadores=fustrigadores
+# hostigadores=fustrigadores??
 #. [topic]
 #: data/core/help.cfg:200
 #, fuzzy
@@ -975,7 +971,6 @@ msgstr "Manto do Descoñecido e Néboa de Guerra"
 
 #. [topic]
 #: data/core/help.cfg:210
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -998,19 +993,19 @@ msgid ""
 msgstr ""
 "Nalgúns escenarios, partes do mapa estarán ocultas á túa vista. Hai dous "
 "xeitos que se poden usar por separado ou en conxunción. O Manto do "
-"Descoñecido agocha tanto o terreo coma calquera unidade nunha localización "
-"dada. Sen embargo, cando se limpa sempre poderás ver o que hai nesa "
-"localización. A Néboa de Guerra só agocha as unidades e o dono das vilas "
-"(que non sexades nin ti nin os teus aliados). A Néboa de Guerra retirase "
-"temporalmente cando tes unidades preto, pero volve cando marchan. Tanto o "
-"Manto do Descoñecido coma a Néboa de Guerra retíranse con unidades. Cada "
-"unidade limpa as localizacións adxacentes que están a un turno de movemento "
-"delas (ignorando as zonas de control e as unidades inimigas). \n"
+"Descoñecido agocha tanto o terreo coma calquera unidade nunha posición dada. "
+"Sen embargo, cando se limpa sempre poderás ver o que hai nesa posición. A "
+"Néboa de Guerra só agocha as unidades e o dono das vilas (que non sexades "
+"nin ti nin os teus aliados). A Néboa de Guerra retirase temporalmente cando "
+"tes unidades preto, pero volve cando marchan. Tanto o Manto do Descoñecido "
+"coma a Néboa de Guerra retíranse con unidades. Cada unidade limpa as "
+"posicións adxacentes que están a un turno de movemento delas (ignorando as "
+"zonas de control e as unidades inimigas). \n"
 "\n"
 "Normalmente é posible desfacer o movemento dunha unidade, sempre que non "
 "ocorrera un evento cun resultado aleatorio, coma un combate ou un "
 "recrutamento (dado que moitas unidades reciben trazos aleatorios cando se "
-"recrutan). Ó explorar o terreo oculto limpando o Manto do Descoñecido ou a "
+"recrutan). Explorar o terreo oculto limpando o Manto do Descoñecido ou a "
 "Néboa de Guerra tamén impedirá volver a un estado anterior. Pode ser "
 "desexable activar a opción «Retardar as actualizacións do manto do "
 "descoñecido» no menú de accións. Isto evitará que as unidades limpen o Manto "
@@ -1060,7 +1055,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1075,13 +1069,12 @@ msgstr ""
 "\n"
 "\n"
 "O atacante ataca en primeiro lugar, e despois o defensor contraataca. Cada "
-"golpe ou acada ó inimigo, inflixindo unha cantidade determinada de dano, ou "
-"erra, sen facer ningún dano. Os golpes altérnanse ata que cada unidade "
-"remate tódolos seus golpes. O número de golpes que ten unha unidade varía; "
-"por exemplo, un Elfo Loitador cun ataque 5-4 pode golpear 4 veces, e cada "
-"golpe con éxito produce 5 de dano, mentres que un soldado raso orco cun "
-"ataque 9-2 só pode golpear dúas veces (pero fai 9 de dano cada vez que "
-"atinan)."
+"golpe pode acadar ó inimigo, inflixindo unha cantidade determinada de dano, "
+"ou pode errar, sen facer ningún dano. Os golpes altérnanse ata que cada "
+"unidade remate tódolos seus golpes. O número de golpes que ten unha unidade "
+"varía; por exemplo, un Elfo Loitador cun ataque 5-4 pode golpear 4 veces, e "
+"cada golpe con éxito produce 5 de dano, mentres que un Orco Roñón cun ataque "
+"9-2 só pode golpear dúas veces (pero fai 9 de dano cada vez que atinan)."
 
 #. [topic]
 #: data/core/help.cfg:222
@@ -1547,7 +1540,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:297
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1561,7 +1553,7 @@ msgstr ""
 "\n"
 "\n"
 "O mantemento tamén é bastante sinxelo. Cada unidade require de unha "
-"cantidade de pezas de ouro en concepto de mantemento igual ó seu nivel. "
+"cantidade de pezas de ouro igual ó seu nivel en concepto de mantemento. "
 "Podes manter tantos <italic>text=niveis</italic> de unidades coma aldeas "
 "teñas, sen custo de mantemento ningún. Sen embargo terás que pagar unha peza "
 "de ouro cada turno por cada nivel de unidade que exceda do número de aldeas "
@@ -1585,7 +1577,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1599,9 +1590,9 @@ msgstr ""
 "Hai dúas excepcións importantes ó Mantemento: as unidades con trazo Leal e "
 "os líderes nunca precisan mantemento. As unidades cas que comezas un "
 "escenario (coma Delfador), ou as unidades que se unen a ti durante un "
-"escenario (coma os xinetes no segundo nivel da campaña Herdeiro ó trono) "
-"normalmente terán o trazo Leal. A unidade ca que estás xogando (coma Konrad) "
-"será sempre un líder."
+"escenario (coma os Homes a cabalo no segundo nivel da campaña Herdeiro ó "
+"trono) normalmente terán o trazo Leal. A unidade ca que estás xogando (coma "
+"Konrad) será case sempre un líder."
 
 #. [topic]
 #: data/core/help.cfg:305
@@ -1712,8 +1703,8 @@ msgstr ""
 "avanzar a niveis superiores máis rápido. Ó avanzar nas campañas as unidades "
 "Intelixentes non son tan útiles xa que o Avance Posterior ó Nivel Máximo "
 "(AMLA) non é un cambio tan significativo coma avanzar un nivel. Se tes "
-"moitas unidades de 'nivel máximo' pode que desexes volver chamar unidades "
-"con trazos máis desexables."
+"moitas unidades de 'nivel máximo' pode que desexes reincorporar unidades con "
+"trazos máis desexables."
 
 #. [topic]
 #: data/core/help.cfg:344
@@ -1727,6 +1718,7 @@ msgstr ""
 "As unidades rápidas teñen 1 punto de movemento a maiores, pero un 5% HP "
 "menor ó normal."
 
+# heavy infantry==???
 #. [topic]
 #: data/core/help.cfg:347
 #, fuzzy
@@ -1852,7 +1844,7 @@ msgstr ""
 "\n"
 "Durante as campañas, certas unidades poden optar por  unirse ó exército do "
 "xogador pola súa propia vontade. Estas unidades teñen o trazo Leal. Ainda "
-"que se precisa pagar para volvelas chamar, nunca precisarán mantemento. Isto "
+"que se precisa pagar para reincorporalas, nunca precisarán mantemento. Isto "
 "pode convertelas en unidades moi valiosas durante unha campaña longa, cando "
 "o ouro escasea. Este trazo nunca se lle aplicará ás unidades recrutadas, así "
 "que pode ser pouco intelixente despedir a estas unidades ou envialas a unha "
@@ -2160,7 +2152,6 @@ msgstr "Auga Superficial"
 
 #. [topic]
 #: data/core/help.cfg:488
-#, fuzzy
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2173,12 +2164,12 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 "As augas superficiais representan calquera extensión de auga o "
-"suficientemente profunda como para cubrir a un home ata a cintura       . "
-"Isto é suficiente para ralentizar   a case calquera criatura, así coma "
-"deixala case sen defensa. Os ananos, dado que a auga lles chega case ó "
-"pescozo, pásano moi mal se teñen que atravesalas. A excepción son as razas "
-"con corpos afeitas á natación, polo que teñen todo o seu movemento e un "
-"apreciable plus defensivo.\n"
+"suficientemente profunda como para cubrir a un home ata a cintura. Isto é "
+"suficiente para ralentizar a case calquera criatura, así coma deixala case "
+"sen defensa. Os ananos, dado que a auga lles chega case ó pescozo, pásano "
+"moi mal se teñen que atravesalas. A excepción son as razas con corpos "
+"afeitos á natación, polo que conservan todo o seu movemento e un apreciable "
+"plus defensivo.\n"
 "\n"
 "A maioría das unidades teñen entre un 20 e un 30% de defensa nas augas "
 "superficiais, onde tanto os Naga coma os Sirénidos gozan dun 60%."
@@ -2363,18 +2354,17 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 "O terreo de cova rochosa formouse pola acción da auga e o vento, que levan "
-"partículas erosivas que roen a rocha. Lembra a un caverna subterránea \n"
+"partículas erosivas que roen a rocha. Lembra a unha estreita caverna "
+"subterránea o cal reduce a eficiencia da maioría das unidades, pero da "
+"abeiro. Os Ananos e mailos Trolls, que son os principais habitantes das "
+"covas,  poden desprazarse por este terreo con relativa facilidade. Os "
+"Ananos, debido ó seu pequeno tamaño non teñen ningún problema para moverse "
+"neste ambiente. En certas ocasións as covas están "
+"<ref>dst=terrain_illuminated_cave text=Iluminadas</ref>\n"
 "\n"
-" Seméllase a unha estreita caverna subterránea, o que reduce a eficiencia da "
-"maior parte das unidades, pero mellora a súa defensa. Os ananos e mailos "
-"trolls, que son os principais habitantes das covas, poden atravesar este "
-"terreo con relativa facilidade. Os ananos, debido ó seu pequeno tamaño, non "
-"teñen ningún problema para moverse neste ambiente. En certas ocasións as "
-"covas están <ref>dst=terrain_illuminated_cave text=iluminadas</ref>\n"
-"\n"
-"A maioría das unidades teñen un 50% de defensa nas covas rochosas, pero a "
-"cabalería está limitada a un 40%. Os ananos gozan dun 60% de defensa nas "
-"covas rochosas."
+"A maioría das unidades teñen arredor dun 50% de defensa nas covas rochosas, "
+"nas cales a cabalería está limitada ó 40%. Os Ananos gozan dun 60% de "
+"defensa nas covas rochosas."
 
 #. [topic]
 #: data/core/help.cfg:571
@@ -2402,7 +2392,6 @@ msgstr "Colonia de Cogomelos"
 
 #. [topic]
 #: data/core/help.cfg:584
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2417,10 +2406,10 @@ msgstr ""
 "As colonias de cogomelos son vastos bosques subterráneos de cogomelos "
 "xigantes, que medran na húmida escuridade. A maioría das unidades teñen "
 "problemas ó franquear o chan esponxoso dos pequenos fungos, pero teñen moito "
-"abeiro tralos grandes talos. As unidades montadas, en "
-"troques,                 e carecen de liberdade de movemento para o combate. "
-"As unidades non mortas teñen unha afinidade natural pola podremia e actúan "
-"moi ben nos bosques de cogomelos.\n"
+"abeiro tralos grandes talos. As unidades montadas, en troques, quedan "
+"totalmente atoadas e carecen de liberdade de movemento para o combate. As "
+"unidades non mortas teñen unha afinidade natural pola podremia e actúan moi "
+"ben nos bosques de cogomelos.\n"
 "\n"
 "A maioría das unidades reciben entre un 50% e un 60% de defensa nas colonias "
 "de cogomelos, nos cales a cabalería só recibe un 20%."
@@ -2509,7 +2498,6 @@ msgstr "Abismo"
 
 #. [topic]
 #: data/core/help.cfg:624
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2889,7 +2877,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:752
-#, fuzzy
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3040,7 +3027,7 @@ msgstr ""
 "bando có líder que manda ó combate, os seus ataques inflixirán un 25% máis "
 "dano ca veces a diferencia entre os seus niveis."
 
-# fustrigador?? escapulidor???
+# fustrigador?? escapulidor??? guerrilla??
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:336
 #, fuzzy
@@ -3192,21 +3179,19 @@ msgstr ""
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:475
-#, fuzzy
 msgid "feeding"
-msgstr "alimentando"
+msgstr "alimentación"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:477
-#, fuzzy
 msgid ""
 "Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 "Alimentación:\n"
-"Esta unidade gaña 1 punto de vida engadido ó seu máximo cando mata a unha "
-"unidade viva."
+"Esta unidade obtén 1 punto de vida que se engade ó seu máximo cando mata "
+"unha unidade viva."
 
 #: data/core/macros/abilities.cfg:501
 msgid "+1 max HP"
@@ -3288,14 +3273,11 @@ msgstr ""
 "Este ataque converte ó obxectivo en pedra. As unidades convertidas en pedra "
 "non poden moverse nin atacar."
 
-# puntería tirador
 #: data/core/macros/abilities.cfg:603
-#, fuzzy
 msgid "marksman"
 msgstr "tirador"
 
 #: data/core/macros/abilities.cfg:605
-#, fuzzy
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3308,7 +3290,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:630
 #, fuzzy
 msgid "swarm"
-msgstr "enxamio"
+msgstr "enxamio barafunda  ataque en masa"
 
 #: data/core/macros/abilities.cfg:632
 #, fuzzy
@@ -3390,8 +3372,8 @@ msgstr "Plus máximo de HP +"
 #, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr ""
-"Chegou a través dun pozo de desexos.\n"
-"¿Qué desexo quere?"
+"Atopaches un pozo de desexos.\n"
+"Que é o que desexas?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -3436,7 +3418,7 @@ msgstr "Non pedir un desexo."
 #: data/core/macros/items.cfg:148
 #, fuzzy
 msgid "Take it"
-msgstr "Renomear Unidade"
+msgstr "Recibido"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -4352,13 +4334,12 @@ msgstr ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
+# aldea, ribeira
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
-"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
-"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:147
@@ -4392,7 +4373,6 @@ msgstr ""
 "lentamente sobre a auga aberta."
 
 #: data/core/macros/special-notes.cfg:11
-#, fuzzy
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -4443,7 +4423,7 @@ msgstr ""
 "dela inflixir máis dano no combate, ainda que isto só se aplica ás unidades "
 "de nivel inferior."
 
-# escapulirse??
+# escapulirse??guerrilla??
 #: data/core/macros/special-notes.cfg:32
 #, fuzzy
 msgid ""
@@ -4504,6 +4484,7 @@ msgstr ""
 " Esta unidade obtén 1 punto de vida que se suma ó seu máximo cando mata  "
 "unha unidade viva."
 
+# berserk??
 #: data/core/macros/special-notes.cfg:56
 #, fuzzy
 msgid ""
@@ -4514,13 +4495,12 @@ msgstr ""
 "algún dos dous morra."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Se hai un inimigo do obxetivo no lado oposto de dito obxectivo mentres o "
+" Se hai un inimigo do obxectivo no lado oposto de dito obxectivo mentres o "
 "ataca, esta unidade pode apuñalar ó obxectivo por atrás, inflixíndolle así o "
 "dobre de dano."
 
@@ -4547,13 +4527,12 @@ msgstr ""
 "perigosa."
 
 #: data/core/macros/special-notes.cfg:71
-#, fuzzy
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-"A puntería de esta unidade  confírelle unha alta probabilidade de golpear ós "
-"seus inimigos, pero non de atacar."
+" A puntería de esta unidade confírelle unha alta probabilidade de acadar ós "
+"inimigos elixidos, pero só no ataque."
 
 #: data/core/macros/special-notes.cfg:74
 msgid ""
@@ -4563,6 +4542,7 @@ msgstr ""
 " A unidade ten ataques máxicos, que sempre teñen unha alta probabilidade de "
 "acadar ó opoñente."
 
+# swarm??
 #: data/core/macros/special-notes.cfg:77
 #, fuzzy
 msgid ""
@@ -4573,7 +4553,6 @@ msgstr ""
 "membros están feridos."
 
 #: data/core/macros/special-notes.cfg:80
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -4789,19 +4768,18 @@ msgstr "Morcegos"
 #. [race]
 #: data/core/units.cfg:52
 msgid "race^Drake"
-msgstr ""
+msgstr "Draconián"
 
 #. [race]
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr ""
+msgstr "Draconianas"
 
 #. [race]
 #: data/core/units.cfg:54
 msgid "race^Drakes"
-msgstr ""
+msgstr "Draconiáns"
 
-# non miña
 #. [race]
 #: data/core/units.cfg:67
 #, fuzzy
@@ -4869,76 +4847,70 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
-"Os Dracos son grandes, criaturas aladas e con alento de lume, que recordan "
-"ós verdadeiros dragóns. En promedio, un adulto draco está ó redor dos tres "
-"metros de altura e fácilmente pesa máis que un hombre e un cabalo xuntos. A "
-"súa pel está formada por escamas duras, resistentes á maioría dos  ataques "
-"físicos, excepto dano de penetración e de frío. A maioría dos dracos son "
-"capaces de voar e poden viaxar grandes distancias rápidamente. Sen embargo, "
-"o seu gran peso e tamaño limitan a súa capacidade de vóo un pouco, o que os "
-"fai torpes no aire. De ser posible, fan  uso das características do terreno, "
-"como as colinas, as montañas e as árboles como trampolíns para gañar unha "
-"maior altura e velocidade. Afortunadamente para os seus inimigos, seguen "
-"siendo criaturas bastante torpes e sorprendentemente lentas en combate. "
-"Isto, combinado co seu grande tamaño, fainos un blanco fácil para aqueles "
-"que se atreven a atacalos.\n"
+"Os Draconiáns son criaturas grandes, aladas e con alento de lume, que "
+"recordan ós verdadeiros dragóns. En promedio un draconián adulto ten arredor "
+"de tres metros de altura e facilmente pesa máis ca un home e un cabalo "
+"xuntos. A súa pel está formada por escamas duras, resistentes á maioría dos "
+"ataques físicos agás ós de perforación e de frío. A maioría dos draconiáns é "
+"capaz de voar de verdade e poden viaxar grandes distancias rapidamente. "
+"Ainda así, o seu peso e tamaño limitan algo a súa capacidade de voo, "
+"facendoos torpes no aire. Onde é posible, fan uso das características do "
+"terreo coma os outeiros, as montañas e as árbores coma trampolíns para obter "
+"unha forza e velocidade maiores. Afortunadamente para os seus inimigos, "
+"ainda son criaturas torpes e sorprendentemente lentas no combate. Isto, "
+"combinado co seu gran tamaño, convértenos en brancos fáciles para os que "
+"ousan atacalos.\n"
 "\n"
-"Os Dracos son inherentemente criaturas máxicas, cun misterioso lumeinterior "
-"alimentando a súa propia vida. Isto pódese ver facilmente cando unda súa "
-"especie perece en combate; o seu lume interno é posto en liberdade,queimando "
-"os seus restos ata as cinzas. O seu lume interior é tamén o seu "
-"maiordebilidade, que os fai vulnerables en extremo a ataques de frío. A "
-"pesar deo seu carácter máxico, os dracos son incapaces de canalizar a maxia "
-"dunxeito controlado. Aínda que a maxia interior dun draco permítelle "
-"chuspirlume e dálle a vida, non teñen ningún control voluntario sobre "
-"asfuncións desta maxia.\n"
-"\n"
+"Os Draconiáns son criaturas inherentemente máxicas, cun misterioso lume "
+"interior que prolonga as súas longas vidas. Isto pode observarse cando un "
+"dos seus morre en combate; o seu lume interno libérase, convertendo os seus "
+"restos en cinza. O seu lume interno tamén é a súa maior debilidade; fainos "
+"extremadamente vulnerables ós ataques de frío. A pesar da sua natureza "
+"máxica, os draconiáns son incapaces de canalizar a maxia dun xeito "
+"controlado. Ainda que a maxia interior dun draconián lle permite cuspir lume "
+"e lle da a vida, non ten ningún control voluntario sobre esta maxia.\n"
 "\n"
 "<header>text='Sociedade'</header>\n"
-"Aínda que parece que os Dracos son unha raza relativamente bélica, e que as "
-"súassociedades poden describirse mellor como unha sociedade culta marcial. "
-"Unpequeno grupo de veteranos guerreiros encabezado por un mutuo respecto - "
-"ousimplemente temor - do líder goberna a sociedade cun puño de ferro. Decada "
-"draco espérase que gañe o seu lugar na estrita orde xerárquica, aobedecer "
-"aos seus superiores e o seu comandar os seus inferiores. A entrada ás "
-"máisaltas clases dominantes practicamente só se produce a través de retar "
-"ederrotar a un superior en combate singular, que é a forma en que axerarquía "
-"dentro da propia clase dominante está establecida. O uso decalquera tipo de "
-"engano cara aos compañeiros dracos é, sen excepción,visto de forma covarde e "
-"inaceptable.\n"
+"Os Draconiáns son unha raza relativamente guerreira e as súas sociedades "
+"poden describirse mellor coma sociedades marciais con cultura. O núcleo "
+"dunha tribo de draconiáns é un pequeno grupo de guerreiros veteranos "
+"encabezado por líder respectado - ou simplemente temido - que dirixe a "
+"sociedade con férrea disciplina. Agárdase que cada draconián gañe o seu "
+"lugar na estricta xerarquía, obedeza ós seus superiores e dirixa ós seus "
+"inferiores. A entrada na elite dirixente só é posible retando e derrotando a "
+"un superior en combate singular, que é a forma na que se define a xerarquía "
+"na propia elite. O uso de calquera tipo de engano cara calquera compañeiro "
+"draconián, é visto sen excepcións, coma un acto covarde e inaceptable.\n"
 "\n"
+"Ainda que a súa natureza guerreira e o seu sentido de territorio os leva a "
+"defender os seus territorios de forma salvaxe, os draconiáns rara vez "
+"invaden ou entran en zonas xa ocupadas polas outras principais razas. En "
+"troques, establecense en zonas deshabitadas para ter alí o seu propio "
+"territorio. Alimentanse principalmente de veados que cazan nas terras baixas "
+"que rodean ós seus fogares, pero sábese que as crías e os draconiáns de "
+"casta inferior tamén se alimentan de certos brións e fungos que cultivan na "
+"profundidade das súas cavernas. A única tecnoloxía que os draconiáns valoran "
+"é a ferrería de armaduras e armas, e non coñecen nin precisan outra ciencia "
+"ou cultura á parte disto. Ainda así os poucos instrumentos que fan non teñen "
+"rival en calidade e só son equiparables ós producidos nas mellores forxas "
+"dos Ananos.\n"
 "\n"
-"Aínda que o seu carácter bélico e o sentido de territorio condúcenos "
-"ádefensa dos seus propios territorios salvajemente, os dracos de cando en "
-"cando invadenou traspasan as zonas xa ocupadas das outras grandes carreiras. "
-"En lugar deiso, é máis común que se instalen en zonas pouco habitadas para "
-"establecero seu propio territorio. Principalmente aliméntanse do gran xogo "
-"que cazarnas terras baixas ao redor dos seus fogares, pero as crías e a "
-"casteinferior de dracos aliméntanse tamén dalgúns brións e fungos "
-"quecultivan na profundidade das súas covas. O único valor tecnolóxico "
-"quevaloran os dracos son as armaduras e facer as armas, e teñen "
-"poucanecesidade da cienca e de cultura para sobrevivir e prosperar. Con "
-"todoos poucos instrumentos que crean son case inigualables en calidade, "
-"sóigualados polos que se producen nos mellores fundicións dos Ananos.\n"
-"\n"
-"\n"
-"Os Dracos son incubados en ovos e viven de forma natural polo xeralentre 20 "
-"a 30 anos. A morte en batalla é o xeito preferido para undraco de saír deste "
-"mundo, e a diferenza dos antigos membros deoutras razas, os dracos crecen "
-"naturalmente de forma máis agresiva etemeraria cara aos extremos da súa vida "
-"natural, talvez para axudar aasegurar o seu lugar nas heroicas lendas da súa "
-"xente.\n"
-"\n"
+"Os Draconiáns nacen de ovos e normalmente viven de forma natural de 20 a 30 "
+"anos. A morte na batalla é a forma preferida por eles para deixar este "
+"mundo. A diferencia dos membros máis vellos doutras razas, os draconiáns "
+"fanse de forma natural máis agresivos e temerarios cara a fin das súas vidas "
+"naturais, tal vez para axudar a asegurar o seu lugar nas heroicas lendas da "
+"súa xente.\n"
 "\n"
 "<header>text='Xeografía'</header>\n"
-"Os Dracos proceden da illa de Morogor no Gran Océano. Con todo,posto que a "
-"illa estívose afundindo lentamente  durante séculos, e ascolonias de dracos "
-"lentamente estendéronse á Gran Continente. OsDracos adoitan facer os seus "
-"fogares nas cavernas das montañas preto dosvolcáns para protexer os seus "
-"ovos, niños e forxas. Aínda que, naturalmente, osdracos prefiren a calor, o "
-"seu lume interno é máis que capaz de mantelos,ata nun clima relativamente "
-"frío, unha característica que lles hapermitido poboar ata algunhas das "
-"montañas do extremo norte daGran Continente."
+"Os Draconiáns proveñen da illa de Morogor no Gran Océano. Con todo, xa que a "
+"illa estivo afundindo lentamente durante séculos, as colonias de draconiáns "
+"estendéronse ó Gran Continente. Os Draconiáns tenden a construir os seus "
+"fogares en cavernas nas montañas preto de volcáns para protexer os seus "
+"ovos, crías e forxas. Ainda que os draconiáns prefiren de forma natural a "
+"calor, o seu lume interno é máis que capaz de mantelos incluso nun clima "
+"relativamente frío, unha caracteristica que lles permitiu poboar incluso "
+"algunhas das montañas do lonxano norte do Gran Continente."
 
 #. [race]
 #: data/core/units.cfg:74
@@ -4957,7 +4929,6 @@ msgstr "Ananos"
 
 #. [race]
 #: data/core/units.cfg:81
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5010,51 +4981,52 @@ msgstr ""
 "Os ananos son unha raza famosa polos seus mineiros, ferreiros, comerciantes "
 "e guerreiros. Considerados coma a terceira raza máis vella do gran "
 "continente despois dos elfos e dos trolls, o principio da súa historia está "
-"rodeado de misterios. As lendas falan dun tempo esquecido hai moito no que "
+"envolto en misterios. As lendas falan dun tempo esquecido hai moito no que "
 "as súas xentes comezaron a emerxer de debaixo da terra a través das covas. "
 "Non se sabe nada sobre a súa vida antes da súa chegada, ou das súas razóns "
 "para saír á superficie do mundo, pero foron parte da historia do continente "
-"dende aquela. Pouco despois da súa emersión dende o subterráneo, os ananos "
-"tiveron problemas cos habitantes orixinais da terra, os elfos. A razón "
-"orixinal da súa disputa perdeuse na historia, pero as dúas razas loitaron en "
-"tres grandes guerras dende aquela, interrumpidas por unhas poucas décadas de "
-"paz. Durante estas guerras os ananos non puideron sacar ós elfos dos "
-"profundos bosques do sur, pero conseguiron consolidar as súas posicións nos "
-"outeiros e nas montañas do norte do continente, coñecidas agora coma as "
-"Terras do Norte. Dende entón construiron fantásticas fortificacións e "
-"colonias na profundidade das montañas e penedos do seu territorio.\n"
+"dende aquela. Pouco despois da súa emersión dende o mundo subterráneo, os "
+"ananos tiveron problemas cos habitantes orixinais da terra, os elfos. A "
+"razón orixinal da súa disputa perdeuse na historia, pero as dúas razas "
+"loitaron en tres grandes guerras dende aquela, interrumpidas por unhas "
+"poucas décadas de paz. Durante estas guerras os ananos non puideron expulsar "
+"ós elfos dos profundos bosques do sur, pero puideron consolidar as súas "
+"posicións nos outeiros e nas montañas do norte do continente, coñecidas "
+"agora coma as Terras do Norte. Dende entón construiron fantásticas "
+"fortificacións e colonias na profundidade das montañas e penedos do seu "
+"territorio.\n"
 "\n"
 "Posiblemente debido ó seu illamento, os ananos son normalmente desconfiados "
 "ou hostís cara a maioría das outras razas, sobre todo cos elfos. A única "
-"excepción a este temperamento son os humanos. Isto pódese ver dende a era de "
-"Haldric I e a chegada dos humanos e os orcos ó continente. Neste punto os "
-"ananos comezaron a permitirlle a algúns humanos, na súa maioría disidentes e "
-"proscritos da Coroa de Wesnoth, para colonizar certas áreas das Terras do "
-"Norte. A súa motivación non era sorprendente. A situación destes individuos "
-"lembráballe ós ananos a persecución dos seus primeiros anos, creando un "
-"sentido de solidariedade. Os ananos tamén tiñan moito que gañar creando "
-"lazos con estes parias. Estableceríanse en áreas nas que ós ananos non lles "
-"gustaba vivir; chairas, bosques, e brañas, liberándoos de defender estas "
-"áreas. Máis adiante, cando foron ameazados polos Orcos, os ananos e os seus "
-"aliados humanos formaron a Alianza de Knalga para defender o seu reino "
-"común.\n"
+"excepción a este temperamento son os humanos. Isto pódese ver dende os "
+"tempos de Haldric I e a chegada dos humanos e dos orcos ó continente. Neste "
+"punto os ananos comezaron a permitirlle a algúns humanos, na súa maioría "
+"disidentes e proscritos da Coroa de Wesnoth, para colonizar certas zonas das "
+"Terras do Norte. A súa motivación non era nada sorprendente. A situación "
+"destes individuos lembráballe ós ananos a persecución dos seus primeiros "
+"anos, creando un sentido de solidariedade. Os ananos tamén tiñan moito que "
+"gañar creando lazos con estes parias. Estableceríanse en áreas nas que ós "
+"ananos non lles gustaba vivir; chairas, bosques, e brañas, liberándoos da "
+"defensa destas zonas. Máis adiante, cando foron ameazados polos Orcos, os "
+"ananos e os seus aliados humanos formaron a Alianza de Knalga para defender "
+"o seu reino común.\n"
 "\n"
 "Os ananos son de pequena estatura respecto ós humanos, pero non son "
 "fráxiles. Os seus guerreiros, resistentes e poderosos son temidos e "
-"respectados en todo o continente pola súa destreza na batalla. Ademais, os "
-"ananos son coñecidos polos seus intelectos calculadores e magnífica "
-"destreza. Os ferreiros ananos son famosos polas súas mortais armas e "
-"armaduras pesadas. Estes logros non teñen rivais en calidade, e posiblemente "
-"só son igualados polos producidos polos armeiros dos dragóns. A súa "
-"intelixencia e curiosidade naturais tamén os convertiu na raza técnicamente "
-"máis avanzada do continente. Un dos seus descubrimentos máis famosos, e "
-"temidos, foi unha misteriosa pólvora que produce unha gran explosión cando "
-"se expón ó lume ou ás faíscas. Certos guerreiros ananos usan esta pólvora "
-"para lanzar pequenos obxectos a velocidades incribles. Dadas as súas "
-"inclinacións tecnolóxicas, moitos ananos tenden a desconfiar dos que usan a "
-"maxia. Sen embargo algúns practican unha forma de maxia baseada no gravado "
-"de runas. Chamados Ciceladores, usan estas talladuras para encantar "
-"elementos para aumentar certos aspectos das súas naturezas."
+"respectados en todo o continente pola súa capacidade para a batalla. "
+"Ademais, os ananos son coñecidos polos seus intelectos calculadores e "
+"magnífica destreza. Os ferreiros ananos son famosos polas súas mortais armas "
+"e armaduras pesadas. Estes logros non teñen rivais en calidade, e "
+"posiblemente só son igualados polos producidos polos armeiros dos "
+"draconiáns. A súa intelixencia e curiosidade naturais tamén os convertiu na "
+"raza técnicamente máis avanzada do continente. Un dos seus descubrimentos "
+"máis famosos, e temidos, foi unha misteriosa pólvora que produce unha gran "
+"explosión cando se expón ó lume ou ás faíscas. Certos guerreiros ananos usan "
+"esta pólvora para lanzar pequenos obxectos a velocidades incribles. Dadas as "
+"súas inclinacións tecnolóxicas, moitos ananos tenden a desconfiar dos que "
+"usan a maxia. Sen embargo algúns practican unha forma de maxia baseada no "
+"gravado de runas. Os chamados Mestres das runas, usan estas inscricións para "
+"encantar elementos para aumentar certos aspectos das súas naturezas."
 
 #. [race]
 #: data/core/units.cfg:89
@@ -5073,7 +5045,6 @@ msgstr "Elfos"
 
 #. [race]
 #: data/core/units.cfg:94
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5108,29 +5079,29 @@ msgstr ""
 "longa destes últimos - a maioría, a non ser por enfermidade, accidente ou "
 "guerra, vive dous séculos completos. Mentres que se sabe que algúns elfos "
 "que posúen unha gran aptitude para a maxia viviron un século adicional, a "
-"maioría dos elfos comeza a medrar físicamente                \n"
-" Os elfos están imbuidos dunha maxia natural ata un pequeno grao. Ainda que "
-"a maioría non é capaz de canalizala directamente, a presencia latente dalles "
-"os seus agudos sentidos e a súa longa vida. A maioría dos elfos ten talentos "
-"relacionadas ca maxia coma , permitíndolles levar a cabo tarefas que a "
-"maioría dos seres normais atoparía abraiantes. Estes elfos que aprenden a "
-"exercer este poder de formas máis xerais poden chegar a ser "
-"realmente                       no seu uso. Moitos elixen usar o seu don "
-"para sandar a outros.\n"
+"maioría dos elfos comeza a debilitarse físicamente ó achegarse á súa "
+"vinteava década e falecen unhas poucas décadas despois. Os elfos están "
+"imbuidos dunha maxia natural ata un pequeno grao. Ainda que a maioría non é "
+"capaz de canalizala directamente, a presencia latente dalles os seus agudos "
+"sentidos e a súa longa vida. A maioría dos elfos ten talentos relacionadas "
+"ca maxia coma a puntería e a ocultación, permitíndolles levar a cabo tarefas "
+"que a maioría dos seres normais atoparía abraiantes. Estes elfos que "
+"aprenden a exercer este poder de formas máis xerais poden chegar a ser "
+"realmente formidables no seu uso. Moitos elixen usar o seu don para sandar a "
+"outros.\n"
 "\n"
-"Os elfos pasan moito do seu tempo                      os seus talentos e "
-"habilidades. \n"
-"\n"
-"Os elfos gastan moito tempo en mellorar os seus talentos e habilidades. Isto "
-"non adoita ser nas súas devotas artes máxicas  senón que melloran as súas "
-"capaciades físicas. Como resultado, os elfos son excelentes en tiro con "
-"arco, o cal é o seu método de guerra máis importante. A maioría dos tropas "
-"de elfos levan un arco e ningunha outra raza pode ser rival nos seus "
-"espazos, que os conduce a facer as súas casas os bosques do Gran Continente, "
-"como as Aethenwood ó suroeste e Wesmere no noroeste. Os elfos son a raza "
-"máis antiga do continente, coa posible excepción dos trols. Moitos das súas "
-"construccións non poden datarse confiablemente, sen dúbida pódese afirmar "
-"que teñen máis dun milenio."
+"Os elfos pasan moito do seu tempo mellorando os seus talentos e habilidades. "
+"Os que non son hábiles ca maxia normalmente adican o seu tempo a mellorar as "
+"súas habilidades físicas. Coma resultado, os elfos son excelentes arqueiros, "
+"que é quizais o seu método de guerra máis importante. A maioría das tropas "
+"dos elfos portan un arco e ningunha outra raza pode competir cos seus "
+"arqueiros en velocidade e puntería. Tódolos elfos comparten tamén unha "
+"inexplicable afección pola natureza salvaxe. A miúdo séntense incómodos en "
+"espazos abertos sen vexetación, o que os levou a facer os seus fogares nos "
+"bosques do Gran Continente, coma Aethenwood no sudoeste e Wesmere no "
+"noroeste. Os elfos son a raza máis antiga do continente, ca posible "
+"excepción dos trolls. Moitos dos seus establecementos non poden datarse de "
+"forma fiable, e sen dúbida existiron durante máis dun milenio."
 
 #. [race]: description=
 #: data/core/units.cfg:103
@@ -5179,7 +5150,6 @@ msgstr "Humanos"
 
 #. [race]
 #: data/core/units.cfg:132
-#, fuzzy
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5223,34 +5193,35 @@ msgstr ""
 "do Vello Continente, os homes espalláronse por todo o mundo e dividírono e "
 "moitas culturas e razas diferentes. Ainda que non están imbuídos pola maxia "
 "coma outras criaturas, os humanos poden aprender a usala e son capaces de "
-"aprender máis tipos cá maioría dos demais. Non teñen máis habilidades "
-"especiais ou aptitudes agás a súa versatilidade e o seu vigor. Ainda que "
-"raramente se relacionan con outras razas, ocasionalmente forman alianzas cas "
-"razas menos agresivas coma os elfos e os ananos. Os menos escrupulosos deles "
-"non teñen medo en contratar mercenarios orcos. Non teñen inimigos naturais, "
-"ainda que a maioría dos homes, coma a maioría de tódalas razas ten unha "
-"repulsión instintiva polos non mortos. Os homes son máis baixos cós elfos, "
-"pero máis altos cós ananos. A súa cor de pel pode variar, dende case branca "
-"a marrón escura.\n"
+"aprender máis tipos de maxia cá maioría das outras razas. Non teñen máis "
+"habilidades especiais ou outras aptitudes agás a súa versatilidade e o seu "
+"vigor. Ainda que a miúdo teñen problemas con tódalas razas, a veces poden "
+"formar alianzas cas razas menos agresivas coma os elfos e os ananos. Os "
+"menos escrupulosos deles non teñen medo en contratar mercenarios orcos. Non "
+"teñen inimigos naturais, ainda que a maioría dos homes, coma a maioría de "
+"tódalas razas ten unha repulsión instintiva polos non mortos. Os homes son "
+"máis baixos cós elfos, pero máis altos cós ananos. A súa cor de pel pode "
+"variar, dende case branca a marrón escura.\n"
 "\n"
 "<header>text='Súbditos da Coroa'</header>\n"
-"Existen moitos grupos de homes diferentes, pero a maioría deles no Gran "
+"Existen moitos grupos de homes diferentes, pero a maioría dos do Gran "
 "Continente viven baixo o dominio da Coroa de Wesnoth. Os humanos apareceron "
 "por primeira vez no Gran Continente vindo dende unha terra moi lonxe "
 "cruzando o océano cara o oeste, a Illa Verde, e pronto estableceu a súa "
-"capital na cidade interior de Weldyn. Nos siglos posteriores construiron un "
-"gran número de cidades polo continente. Os soldados da Coroa de Wesnoth "
-"protexen o país, formando a forza militar máis organizada do mundo coñecido. "
-"Os seus guerreiros proveñen das principais provincias, nas que tódolos homes "
-"son recrutados cando son novos.\n"
+"capital en Weldyn, unha cidade no interior do continente. Nos séculos "
+"posteriores construiron un gran número de cidades polo continente adiante. "
+"Os soldados da Coroa de Wesnoth protexen o país, formando a forza militar "
+"máis organizada do mundo coñecido. Os seus guerreiros proveñen das "
+"principais provincias, nas que tódolos homes son recrutados cando son "
+"novos.\n"
 "\n"
 "<header>text='Os Homes dos Clans'</header>\n"
 "As provincias orientais de Wesnoth, coñecidas coma as Terras dos Clans, "
 "teñen unha xeografía consistente en máis chairas abertas e outeiros "
 "ondulados ca no oeste, nas provincias máis civilizadas. Son o fogar dos "
-"Clans dos Cabalos, que están aliados ca Coroa de Wesnoth pero operan "
-"independientemente e manteñen a súa propia identidade. Algúns consideranos "
-"un estado tributario, que envia comida e soldados á Coroa a cambio de "
+"Clans dos Cabalos, que están aliados ca Coroa de Wesnoth pero actúan "
+"independentemente e manteñen a súa propia identidade. Algúns consideranos un "
+"estado tributario, que envia comida e soldados á Coroa a cambio de "
 "protección. Outros din que están na mesma posición cá metade occidental de "
 "Wesnoth. En calquera caso, as provincias orientais non teñen un exército "
 "recrutado igual ca Wesnoth Occidental. O adestramento para a loita é parte "
@@ -5356,7 +5327,6 @@ msgstr "Orcos"
 
 #. [race]
 #: data/core/units.cfg:211
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -5414,8 +5384,8 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
-"En aparencia, os orcos son medio humanos e medio bestas. Son máis altos, "
-"máis rexos e máis fortes cós humanos. Gústalles a guerra, son salvaxes e "
+"En aparencia, os orcos son metade humanos e metade bestas. Son máis altos, "
+"máis rexos e máis fortes cós humanos. Gústalles a guerra, e son salvaxes e "
 "crueis por natureza. O seu sangue é escuro e máis denso có dos humanos "
 "normais e teñen pouca preocupación pola hixiene persoal ou a súa aparencia "
 "física. Ainda que os Orcos son violentos incluso entre eles, teñen tendencia "
@@ -5428,24 +5398,24 @@ msgstr ""
 "mutuo ameaza a súa existencia ou a perspectica dun gran saqueo elimine a "
 "animadversión mutua. Ocasionalmente, un único xefe forte pode emerxer para "
 "liderar varias tribos de cando en vez, normalmente a través da intimidación "
-"dos seguidores. Unha tribo orca en tempos de paz tende a enfocarse case "
+"dos seguidores. Unha tribo orca en tempos de paz tende a centrarse case "
 "exclusivamente en reforzarse para a preparación do seguinte conflicto "
-"armado. Os orcos son coñecidos por posuir un sistema de escritura basto - "
-"normalmente con sangue - ainda que o máis común é usala para intercambiar "
+"armado. Os orcos son coñecidos por posuír un sistema de escritura basto - "
+"normalmente con sangue - ainda que o máis común é usalo para intercambiar "
 "insultos ou ameazas entre líderes de tribos.\n"
 "\n"
 "As sociedades orcas baseanse en pouco máis ca na forza; a forza da o "
 "dereito, e un líder lidera e sobrevive só mentres ninguén intente loitar con "
 "el polo título. Mantense unha loita constante polo poder entre os potenciais "
 "xefes da tribo. Un líder orco raramente vive máis dun puñado de anos para "
-"gozar da súa autoridade absoluta antes de ser matado pola súa posición - "
-"ainda que a historia coñece algunhas excepcións notables. Os orcos non "
-"manteñen ningún código de honor e mentres a forza bruta indiscutible é "
-"normalmente o método preferido para mostrar o poder, o asasinato, o "
-"envelenamento e a puñalada por atrás son medios totalmente viables para "
-"conseguir os obxectivos propios.\n"
+"gozar da súa autoridade absoluta antes de ser asasinado para obter a súa "
+"posición - ainda que a historia coñece algunhas excepcións notables. Os "
+"orcos non manteñen ningún código de honor e mentres a forza bruta "
+"indiscutible é normalmente o método preferido para mostrar o poder, o "
+"asasinato, o envelenamento e a puñalada por atrás son medios totalmente "
+"viables para conseguir os propios obxectivos.\n"
 "\n"
-"Os orcos viven na súa maioría en áreas rurais, a miúdo ó pé dos outeiros ou "
+"Os orcos viven na súa maioría en zonas rurais, a miúdo ó pé dos outeiros ou "
 "en rexións montañosas, algunhas veces en covas. Non cultivan nin teñen "
 "gando, pero son cazadores competentes coma resultado da súa estatura física "
 "e a súa brutalidade. Debido ó seu gran número son capaces de cazar nunha "
@@ -5453,7 +5423,7 @@ msgstr ""
 "relativamente curto. Debido a isto e ó seu liderado inestable, as tribos "
 "orcas tenden a levar un estilo de vida seminómade, non establecéndose nunha "
 "rexión moito tempo. As tribos maiores poden establecerse firmemente nunha "
-"área durante anos ou incluso décadas e construir grandes campamentos que "
+"zona durante anos ou incluso décadas e construir grandes campamentos que "
 "case parecen cidades, pero incluso estes se desmontan e abandonan facilmente "
 "se hai necesidade de cambiar a localización da horda.\n"
 "\n"
@@ -5492,7 +5462,6 @@ msgstr "Trolls"
 
 #. [race]
 #: data/core/units.cfg:226
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5529,25 +5498,41 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
-"Os Trolls son criaturas antigas, unha das razas máis antigas en habitar o "
-"Gran Continente. Son grandes, lentos, parvos, e teñen vidas extremadamente "
-"longas dentro das covas profundas ou na cima das altas montañas.  A única "
-"característica única dos trasgos é a súa vitalidade interna que mantén e "
-"alimenta a tódos os que estean con eles. Como resultado viven vides moi "
-"diferentes das outras criaturas coñecidas. Os trasgos teñen poucos "
-"sentimentos reais: precisan pouca comida ou auga, e ata agora pequenos "
-"incentivos para exerver mellor a protección polos que son hostís ó redor "
-"deles. Isto pola contra significa que raramente se preocupan por nada e "
-"poden gastar moito tempo durmindo ou contemplando. Os trolls teñen unha "
-"curiosa afinidade coa natureza. Non se relacionan moito coas cousas vivas "
-"como o fan os elfos, pero si o fan pola contra coa terra e rochas. Tamén son "
-"curiosos co seu entorno e máis xoves se divirten viaxando e vendo o mundo. "
-"Como os trolls medran máis vellos tenden a ser incrementalmente pasivos, "
-"gradualmente perdendo o interes polo seu entorno e gastando máis tempo "
-"durmindo nun lugar tranquilo, e familiar da súa cova. Isto é ata que "
-"finalmente fallecen os seus corpos e se convirten en estatuas de pedra sen "
-"vida.\n"
+"Os Trolls son criaturas antigas, unha das razas máis antigas que se sabe que "
+"habita no Gran Continente. Son grandes, lentos, parvos, e teñen vidas "
+"extremadamente longas dentro das covas profundas ou na cima das altas "
+"montañas.  A principal característica única dos trolls é a súa vitalidade "
+"interna que os mantén e os sanda dende dentro. Como resultado viven vidas "
+"moi diferentes ás das outras criaturas coñecidas. Os trolls teñen poucas "
+"necesidades reais: precisan pouca comida ou auga, e polo tanto teñen poucos "
+"incentivos para conseguir máis a non ser protección contra os que son hostís "
+"a eles. Isto pola contra significa que raramente teñen que preocuparse por "
+"nada e poden pasar moito tempo durmindo ou meditando. Os trolls teñen unha "
+"curiosa afinidade ca natureza. Non se relacionan cas cousas vivas como fan "
+"os elfos, pero si o fan pola contra ca terra e cas pedras. Tamén senten "
+"curiosidade polo seu contorno e moitos dos máis xoves incluso gozan viaxando "
+"e vendo o mundo. A medida que os trolls se fan máis vellos tenden a ser máis "
+"pasivos, perdendo gradualmente o interese polo seu contorno e pasando máis "
+"tempo durmindo nun tranquilo e familiar recanto da súa cova fogar. Isto é "
+"ata que finalmente os seus corpos morren e se converten en estatuas de pedra "
+"sen vida.\n"
 "\n"
+"Os trolls son vistos por moitos coma pouco máis ca outra raza de monstros "
+"salvaxes. Este erro común é mantida en parte polos orcos para convencer ós "
+"trolls para que se unan ós seus exércitos. Debido a que son unha raza "
+"sinxela e non entenden os costumes das outras razas ou a veces nin poden "
+"distinguilas, normalmente é fácil para unha banda de orcos convencer a un "
+"grupo de trolls de que unindose a eles conseguen vingarse daqueles que antes "
+"os cazaron. Estes novos recrutas son enviados entón a atacar a quen queira "
+"que sexa con quen están loitando os orcos nese momento, sexa un inimigo dos "
+"trolls ou non, facendo así máis inimigos dos enganados trolls. O inimigo "
+"máis común dos trolls son os ananos, e a rancor entre estas dúas razas é "
+"antiga.\n"
+"\n"
+"<header>text='Xeografía'</header>\n"
+"Os trolls viviron nas montañas do Gran Continente máis tempo cós ananos que "
+"migraron alí. Os trolls son fáciles de atopar nas cordilleiras montañosas do "
+"norte e do leste de Wesnoth, e a onde queira que viaxen as hordas dos trolls."
 
 #. [race]
 #: data/core/units.cfg:238
@@ -5566,6 +5551,7 @@ msgstr "Non Mortos"
 
 #. [race]
 #: data/core/units.cfg:246
+#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5592,6 +5578,31 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"Os Non Mortos non son en realidade unha única raza de criaturas, ainda que a "
+"miúdo son tratadas así. Case tódalas criaturas mortas poden, ser reanimadas "
+"e erguidas de novo coma non mortos por medio dun nigromante cas habilidades "
+"suficientes. Os Non Mortos son principalmente criaturas antinaturais e "
+"parvas, que obedecen a quen os creara sen preguntar nin cuestionar. Un dos "
+"grandes misterios dos nigromantes é de que xeito se manteñen estas criaturas "
+"sen o esforzo constante do nigromante. Unha criatura non morta non precisa a "
+"atención constante do nigromante para recibir ordes e manterse, e pode "
+"traballar de forma autónoma de acordo cas ordes do seu dono. Só raras veces, "
+"quizais unha vez cada poucos meses, o nigromante ten que manter á súa "
+"creación.\n"
+"\n"
+"A nigromancia está case só limitada ós humanos. Incluso as lendas de razas "
+"dadas á maxia coma os elfos ou os sirénidos falan moi pouco dos seus "
+"semellantes que profundizaron nas artes escuras. Suponse que a maxia dos "
+"nigromantes esixe unha gran adaptabilidade e unha mente flexible, os cales "
+"se atopan máis a miúdo entre os humanos. O obxectivo último da maioría dos "
+"nigromantes é usar a mesma arte para conservar e imbuír a vida sobre eles "
+"mesmos, alterándose eles mesmos a calquera custo, para fuxir por último da "
+"morte conservando a súa propia mente e espírito.\n"
+"\n"
+"<header>text='Xeografía'</header>\n"
+"Ainda que os señores non mortos chegaron ó Gran Continente en número "
+"considerable só nos tempos de Haldric I, non foron totalmente ignorados "
+"polos elfos e os ananos antes diso."
 
 #. [race]: description=
 #: data/core/units.cfg:254
@@ -5845,7 +5856,7 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
-"Podes acceder ós comandos 'Recrutar' e 'Volver chamar' premendo co botón "
+"Podes acceder ós comandos 'Recrutar' e 'Reincorporar' premendo co botón "
 "dereito nun hexágono de castelo. Iso deixaráche elixir en que hexágono pos "
 "unha nova unidade. Situar as unidades con siso a veces pode permitirche "
 "chegar a unha vila un turno antes."
@@ -5943,22 +5954,20 @@ msgstr "- Manual de Análise Táctica Volume I - Haldric II, 42AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
-#, fuzzy
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
 "what you're facing. In this case, long-range scouting units are worth their "
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
-"Se estas xogando con 'Oscuridade' ou 'Néboa de Guerra' activada, non saberás "
-"ó que te estás a enfrentares. Neste caso, as unidades exploradoras de longo "
-"alcance valen o seu custo. Trata de elexir exploradores que poidan moverse "
-"facilmente a través do terreo, xa que as unidades ven tan lexos como poden "
-"moverse nun \tturno."
+"Se estás xogando co 'Manto da Escuridade' ou a 'Néboa de Guerra' activados, "
+"non saberás ó que te estás a enfrontar. Neste caso, as unidades exploradoras "
+"de longo alcance valen o que custan. Trata de escoller exploradores que "
+"poidan moverse facilmente polo terreo circundante, xa que as unidades ven "
+"tan lonxe como poden moverse nun turno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -6007,10 +6016,11 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Podes usar unidades dun escenario anterior seleccionando 'Volver Chamar' no "
+"Podes usar unidades dun escenario anterior seleccionando 'Reincorporar' no "
 "menú 'Accións'. Volvendo chamar as mesmas unidades unha e outra vez, poderás "
 "construír un exército poderoso e con experiencia."
 
+# fustrigadores
 #. [tip]
 #: data/hardwired/tips.cfg:71
 #, fuzzy
@@ -6023,14 +6033,13 @@ msgid ""
 msgstr ""
 "As unidades de nivel un e superior teñen unha 'Zona de Control' en cada un "
 "dos hexágonos adxacentes a elas. Se unha unidade se move a unha zona de "
-"control do inimigo, non poderá moverse máis nese turno. Isto significa que "
-"as unidades poden ter dous hexágonos baleiros entre elas e ainda crear unha "
-"barreira para o inimigo. Sen embargo, os fustrigadores están adestrados para "
-"ignorar estas zonas."
+"control dun inimigo, non poderá moverse máis nese turno. Isto significa que "
+"as unidades poden ter dous hexágonos baleiros entre elas e ainda así crear "
+"unha barreira para o inimigo. Sen embargo, os fustrigadores están adestrados "
+"para ignorar estas zonas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -6177,7 +6186,7 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"O teu líder pode recrutar e volver chamar unidades dende calquera torre "
+"O teu líder pode recrutar e reincorporar unidades dende calquera torre "
 "dentro dun castelo, e non só dende a torre na que comeza. Podes capturar "
 "unha torre dun inimigo e recrutar dende alí. Ademais, algúns dos teus "
 "aliados poden estar dispostos a deixarche usar as súas torres para que "
@@ -6185,7 +6194,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -6310,7 +6318,7 @@ msgid ""
 "your lower-level units instead."
 msgstr ""
 "En vez de subir de nivel, as unidades de alto nivel obteñen un 'Avance "
-"Posterior o Máximo Nivel' (After Maximum Level Advancement' ou AMLA), o que "
+"Posterior o Nivel Máximo' (After Maximum Level Advancement' ou AMLA), o que "
 "normalmente incrementa os puntos de vida máximos da unidade en 3 e sandaa "
 "completamente. Isto é moito menos que os beneficios obtidos ó avanzar un "
 "nivel, polo tanto normalmente é máis útil intentar mellorar as túas unidades "
@@ -6369,15 +6377,15 @@ msgstr "- Raíña Li'sar, 528AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
-#, fuzzy
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
-"Non podes desfacer un movemento que descobre néboa ou manto do descoñecido. "
-"Activa a opción «Retardar refresco das zonas oscuras» cando queiras mover "
-"unidades e á vez preservar a túa capacidade de desfacer movementos."
+"Non podes desfacer un movemento que descubra néboa de guerra ou manto do "
+"descoñecido. Activa a opción «Retardar as actualizacións do manto do "
+"descoñecido» cando queiras mover unidades e á vez conservar a túa capacidade "
+"de desfacer movementos."
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -6502,7 +6510,7 @@ msgstr "MP"
 #. [label]
 #: data/themes/macros.cfg:59
 msgid "Replay"
-msgstr "Reprodución"
+msgstr "Repetición"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:74
@@ -6512,7 +6520,7 @@ msgstr "Reproducir"
 #. [menu]: type=image
 #: data/themes/macros.cfg:75
 msgid "continous replay"
-msgstr "reprodución continua"
+msgstr "repetición continua"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:92
@@ -6582,12 +6590,10 @@ msgstr "Pechar"
 msgid "You don't have a leader to recruit with."
 msgstr "Non tes un líder co que recrutar."
 
-# reincorporar en vez de volver chamar???
 #: src/actions.cpp:156
-#, fuzzy
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Debes ter ó teu líder nunha torre para recrutar ou volve chamar unidades."
+"Debes ter ó teu líder nunha torre para recrutar ou reincorporar unidades."
 
 #: src/actions.cpp:175
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -6834,9 +6840,8 @@ msgid "Update all"
 msgstr "Parede de Cova"
 
 #: src/addon_management.cpp:854
-#, fuzzy
 msgid "Update failed"
-msgstr "Parede de Cova"
+msgstr ""
 
 #: src/addon_management.cpp:856
 #, fuzzy
@@ -6847,9 +6852,8 @@ msgstr[0] "O seguinte complemento ten erros e non se puido cargar:"
 msgstr[1] "Os seguintes complementos teñen erros e non se puideron cargar:"
 
 #: src/addon_management.cpp:865
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Obter Complementos"
+msgstr ""
 
 #: src/addon_management.cpp:866
 msgid "Add-on updated successfully."
@@ -7097,7 +7101,7 @@ msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:525
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Incorrecto)"
 
 #: src/dialogs.cpp:539
 msgid "Campaign: $campaign_name"
@@ -7113,7 +7117,7 @@ msgstr "Titorial"
 
 #: src/dialogs.cpp:556 src/menu_events.cpp:573
 msgid "replay"
-msgstr "reproducir"
+msgstr "repetir"
 
 #: src/dialogs.cpp:558 src/menu_events.cpp:575
 msgid "Turn"
@@ -7175,7 +7179,7 @@ msgstr "Escolle a partida a cargar"
 
 #: src/dialogs.cpp:677
 msgid "Show replay"
-msgstr "Amosar reprodución"
+msgstr "Amosar repetición"
 
 #: src/dialogs.cpp:681
 #, fuzzy
@@ -7262,11 +7266,10 @@ msgstr "Dificultade"
 msgid "Select difficulty level:"
 msgstr "Selecciona o nivel de dificultade:"
 
-# despedir, mirar en tódolos outros ficheiros tamén
 #: src/game.cpp:1235
 #, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "Desexas descartala?"
+msgstr "Desexas despedila?"
 
 #: src/game.cpp:1236
 msgid ""
@@ -7333,7 +7336,7 @@ msgstr "Volvendo inicializar os tipos de letra para a lingua actual."
 #: src/game.cpp:1936
 #, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Enviando complemento"
+msgstr "Solicitando a lista de complementos"
 
 #: src/game.cpp:1945
 msgid "Loading title screen."
@@ -7362,7 +7365,7 @@ msgstr "Non se definiu a hora do día."
 
 #: src/gamestatus.cpp:719 src/gamestatus.cpp:721 src/playcampaign.cpp:423
 msgid " replay"
-msgstr " reprodución"
+msgstr " repetición"
 
 #: src/gamestatus.cpp:856
 msgid "Could not write to file"
@@ -7533,9 +7536,8 @@ msgid "unit help^Name"
 msgstr "Nome"
 
 #: src/help.cpp:1375
-#, fuzzy
 msgid "Strikes"
-msgstr "Ataque"
+msgstr "Golpes"
 
 #: src/help.cpp:1376
 msgid "Range"
@@ -7660,9 +7662,7 @@ msgstr "Lendo ficheiros e creando a caché."
 msgid "A map without a header is not supported"
 msgstr "Non se soportan os mapas sen cabeceira"
 
-# impar ou raro??
 #: src/mapgen.cpp:715
-#, fuzzy
 msgid "Random maps with an odd width aren't supported."
 msgstr "Os mapas aleatorios cun ancho raro non están soportados."
 
@@ -7671,22 +7671,18 @@ msgstr "Os mapas aleatorios cun ancho raro non están soportados."
 msgid "Auto-Save"
 msgstr "Gardar Automaticamente"
 
-# despedir, mirar en tódolos outros ficheiros tamén
 #: src/menu_events.cpp:106 src/menu_events.cpp:109 src/menu_events.cpp:113
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Desexas descartalo?"
+msgstr "Desexas despedilo?"
 
 #: src/menu_events.cpp:106
 #, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr "Señor, esta unidade está a piques de avanzar un nivel!"
 
-# despedir, mirar en tódolos outros ficheiros tamén
 #: src/menu_events.cpp:107 src/menu_events.cpp:110 src/menu_events.cpp:114
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Desexas descartala?"
+msgstr "Desexas despedila?"
 
 #: src/menu_events.cpp:109
 msgid "My lord, this unit is an experienced one, having advanced levels! "
@@ -7893,34 +7889,30 @@ msgstr "Non tes ouro dabondo para recrutar esa unidade"
 
 #: src/menu_events.cpp:979
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "Estás separado dos teus soldados e non podes volvelos chamar"
+msgstr "Estás separado dos teus soldados e non podes reincorporalos"
 
 #: src/menu_events.cpp:981
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Non hai tropas dispoñibles para volvelas chamar\n"
+"Non hai tropas dispoñibles para reincorporar\n"
 "(Debes ter veteranos superviventes de escenarios anteriores)"
 
-# reincorporar??
 #: src/menu_events.cpp:1038
-#, fuzzy
 msgid "Recall"
-msgstr "Volver Chamar"
+msgstr "Reincorporar"
 
-# despedir, mirar en tódolos outros ficheiros tamén
 #: src/menu_events.cpp:1049
-#, fuzzy
 msgid "Dismiss Unit"
-msgstr "Descartar Unidade"
+msgstr "Despedir unidade"
 
 #: src/menu_events.cpp:1067
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Debes ter alomenos 1 peza de ouro para volver chamar unha unidade"
+msgstr[0] "Debes ter alomenos 1 peza de ouro para reincorporar unha unidade"
 msgstr[1] ""
-"Debes ter alomenos $cost pezas de ouro para volver chamar unha unidade"
+"Debes ter alomenos $cost pezas de ouro para reincorporar unha unidade"
 
 #: src/menu_events.cpp:1398
 msgid ""
@@ -8361,7 +8353,6 @@ msgid "Default AI"
 msgstr "IA Predeterminada"
 
 #: src/multiplayer_connect.cpp:648
-#, fuzzy
 msgid "(Vacant slot)"
 msgstr "(Posto vacante)"
 
@@ -8374,9 +8365,8 @@ msgid "Computer player"
 msgstr "Xogador do ordenador"
 
 #: src/multiplayer_connect.cpp:680
-#, fuzzy
 msgid "(Empty slot)"
-msgstr "(Posto valeiro)"
+msgstr "(Posto baleiro)"
 
 #: src/multiplayer_connect.cpp:687
 msgid "(Reserved for $playername)"
@@ -8729,7 +8719,7 @@ msgstr "Unirse á Partida"
 
 #: src/multiplayer_lobby.cpp:676
 msgid "Quick Replays"
-msgstr "Reproducións Rápidas"
+msgstr "Repeticións rápidas"
 
 #: src/multiplayer_lobby.cpp:678
 msgid "Preferences"
@@ -8805,6 +8795,7 @@ msgstr "Escolle o teu bando: "
 msgid "Starting position: "
 msgstr ""
 
+# non miña
 #: src/network.cpp:110
 #, fuzzy
 msgid "invalid network handle"
@@ -8849,11 +8840,9 @@ msgstr "Iniciando os equipos"
 msgid "Loading units"
 msgstr "Lendo os ficheiros das unidades."
 
-# visualización mellor?
 #: src/play_controller.cpp:158 src/play_controller.cpp:166
-#, fuzzy
 msgid "Initializing display"
-msgstr "Iniciando a pantalla"
+msgstr "Iniciando a visualización"
 
 #: src/play_controller.cpp:201
 msgid "Starting game"
@@ -8879,15 +8868,13 @@ msgstr "Derrotáronte!"
 msgid "Error while reading the WML: "
 msgstr "Erro ó ler o WML: "
 
-# repetición ou reprodución
 #: src/playcampaign.cpp:425
-#, fuzzy
 msgid "Save Replay"
-msgstr "Gardar Repetición"
+msgstr "Gardar repetición"
 
 #: src/playcampaign.cpp:430
 msgid "The replay could not be saved"
-msgstr "Non se puido gardar a reprodución"
+msgstr "Non se puido gardar a repetición"
 
 #: src/playcampaign.cpp:447
 msgid "This scenario has ended. Do you want to continue the campaign?"
@@ -8921,6 +8908,7 @@ msgstr "Rematar escenario"
 msgid "Waiting for next scenario..."
 msgstr "Agardando polo seguinte escenario..."
 
+# non miña
 #: src/playmp_controller.cpp:501
 #, fuzzy
 msgid ""
@@ -8963,6 +8951,7 @@ msgstr "Plus: "
 msgid "Gold: "
 msgstr "Ouro:"
 
+# non miña
 #: src/playsingle_controller.cpp:196
 #, fuzzy
 msgid "Carry over percentage: "
@@ -9112,6 +9101,7 @@ msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 "Caracteres non agardados despois do nome de variable (agardábase , ou =)"
 
+# comiñas en teoria existe (falar en trasno)
 #: src/serialization/parser.cpp:272 src/serialization/parser.cpp:296
 #, fuzzy
 msgid "Unterminated quoted string"
@@ -9134,11 +9124,9 @@ msgstr "$error en $pos"
 msgid "Recruits"
 msgstr "Recrutamentos"
 
-# Reincorporacións?
 #: src/statistics_dialog.cpp:72 src/statistics_dialog.cpp:130
-#, fuzzy
 msgid "Recalls"
-msgstr "Veteráns"
+msgstr "Reincorporacións"
 
 #: src/statistics_dialog.cpp:76 src/statistics_dialog.cpp:137
 msgid "Advancements"
@@ -9163,7 +9151,7 @@ msgstr "Dano"
 #: src/statistics_dialog.cpp:158
 #, fuzzy
 msgid "Over All"
-msgstr "Sobre todo"
+msgstr "Sobre todo RESUMO"
 
 #: src/statistics_dialog.cpp:160
 msgid "This Turn"
@@ -9424,45 +9412,29 @@ msgstr "Axúdanos a mellorar Wesnoth para ti!"
 msgid "Enable summary uploads"
 msgstr "Activar a suba de resumos"
 
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr ""
-#~ "Advertencia: Ocorreron erros mentres se cargaban os ficheiros de "
-#~ "configuración do xogo: '"
+#~ msgid "ruby of fire"
+#~ msgstr "rubí do lume"
 
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "Tradución ó Estonio"
+#~ msgid "Screenshot"
+#~ msgstr "Captura de pantalla"
 
-#, fuzzy
-#~ msgid "Connect to add-ons server"
+#~ msgid "Connect to Server"
 #~ msgstr "Conectar ó Servidor"
 
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
+#~ msgid "You will now connect to a server to download add-ons."
 #~ msgstr "Agora conectarase a un servidor para descargar complementos."
 
 #~ msgid "Server: "
 #~ msgstr "Servidor:"
 
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Enviando complemento"
+#~ msgid "Remove Add-ons"
+#~ msgstr "Eliminar Complementos"
 
 #~ msgid "Join Official Server"
 #~ msgstr "Unirse a un Servidor Oficial"
 
 #~ msgid "Log on to the official Wesnoth multiplayer server"
 #~ msgstr "Conectarse ó servidor multixogador oficial de Wesnoth"
-
-#~ msgid "Connect to Server"
-#~ msgstr "Conectar ó Servidor"
-
-#~ msgid "Join a different server"
-#~ msgstr "Unirse a un servidor diferente"
-
-#, fuzzy
-#~ msgid "Host Networked Game"
-#~ msgstr "Acerca do xogo"
 
 #~ msgid "Local Game"
 #~ msgstr "Partida Local"
@@ -9479,49 +9451,10 @@ msgstr "Activar a suba de resumos"
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Escolle a túa lingua preferida:"
 
-#~ msgid "View List"
-#~ msgstr "Ver a Lista"
-
-#~ msgid "List of Servers"
-#~ msgstr "Lista de Servidores"
-
-#~ msgid "Choose a known server from the list"
-#~ msgstr "Elixir un servidor coñecido da lista"
-
-#~ msgid "Address"
-#~ msgstr "Enderezo"
-
-#~ msgid "Connect to Host"
-#~ msgstr "Conectar á Máquina"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "Elixa a máquina á que conectarse: "
-
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "Tradución ó Estonio"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "Tradución ó Portugués"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Filtro: "
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "Eliminar Complementos"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "movementos"
-
-#~ msgid "ruby of fire"
-#~ msgstr "rubí do lume"
-
-#~ msgid "Screenshot"
-#~ msgstr "Captura de pantalla"
+#~ msgid "Warning: Errors occurred while loading game configuration files: '"
+#~ msgstr ""
+#~ "Advertencia: Ocorreron erros mentres se cargaban os ficheiros de "
+#~ "configuración do xogo: '"
 
 #~ msgid "Level"
 #~ msgstr "Nivel"
@@ -9563,3 +9496,21 @@ msgstr "Activar a suba de resumos"
 
 #~ msgid "Usage: control <side> <nick>"
 #~ msgstr "Uso: control <bando> <alcume>"
+
+#~ msgid "View List"
+#~ msgstr "Ver a Lista"
+
+#~ msgid "List of Servers"
+#~ msgstr "Lista de Servidores"
+
+#~ msgid "Choose a known server from the list"
+#~ msgstr "Elixir un servidor coñecido da lista"
+
+#~ msgid "Address"
+#~ msgstr "Enderezo"
+
+#~ msgid "Connect to Host"
+#~ msgstr "Conectar á Máquina"
+
+#~ msgid "Choose host to connect to: "
+#~ msgstr "Elixa a máquina á que conectarse: "

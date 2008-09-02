@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:48+0200\n"
-"PO-Revision-Date: 2008-06-19 18:20+0100\n"
+"PO-Revision-Date: 2008-08-02 10:57+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "(Fácil)"
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "Steelclad"
-msgstr ""
+msgstr "Acoirazado"
 
 #. [campaign]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
@@ -1004,9 +1004,8 @@ msgstr ""
 
 #. [scenario]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:3
-#, fuzzy
 msgid "Fear"
-msgstr "5 xog - Bosque do medo"
+msgstr "Medo"
 
 #. [unit]: type=Dwarvish Masked Steelclad
 #. [unit]: type=Dwarvish Ulfserker
@@ -1575,6 +1574,8 @@ msgstr "Derrota a Karrag"
 msgid ""
 "Neither side can recruit or recall. You must win with the troops you have."
 msgstr ""
+"Ningún dos bandos pode recrutar nin reincorporar. Debes gañar cas tropas que "
+"tes."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:316
@@ -1748,7 +1749,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:564
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:585
 msgid "A door. Perhaps Karrag is hiding in here..."
-msgstr ""
+msgstr "Unha porta. Quizais Karrag se estea agochando aquí..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:604
@@ -2002,10 +2003,11 @@ msgid ""
 "But it seems that I have some work to do here first."
 msgstr ""
 
+# anano cronista FIXADO
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:4
 msgid "Dwarvish Annalist"
-msgstr "Anano Analista"
+msgstr "Anano Cronista"
 
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
@@ -2030,10 +2032,11 @@ msgstr ""
 msgid "bolas"
 msgstr ""
 
+# anano historiador FIXADO
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:4
 msgid "Dwarvish Loremaster"
-msgstr "Anano Maestro"
+msgstr "Anano Historiador"
 
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:23
@@ -2064,11 +2067,11 @@ msgstr "daga"
 msgid "dragonstaff"
 msgstr ""
 
+# anano loitador enmascarado FIXADO
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Fighter"
-msgstr "Loitador Aquí"
+msgstr "Anano loitador enmascarado"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:23
@@ -2083,11 +2086,11 @@ msgstr "machada"
 msgid "hammer"
 msgstr "martelo"
 
+# señor anano enmascarado FIXADO
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Lord"
-msgstr "Elfo Alto Nobre"
+msgstr "Señor anano enmascarado"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:9
@@ -2113,11 +2116,11 @@ msgstr "machada de batalla"
 msgid "hatchet"
 msgstr "machada"
 
+# anano acoirazado enmascarado FIXADO
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Steelclad"
-msgstr "Derrota ó Anano Enmascarado"
+msgstr "Anano acoirazado enmascarado"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:10
@@ -2127,11 +2130,11 @@ msgid ""
 "conceal their faces behind riveted masks."
 msgstr ""
 
+# anano arcabuceiro enmascarado FIXADO
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Thunderer"
-msgstr "Derrota ó Anano Enmascarado"
+msgstr "Anano arcabuceiro enmascarado"
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:22
@@ -2139,17 +2142,17 @@ msgstr "Derrota ó Anano Enmascarado"
 msgid "thunderstick"
 msgstr ""
 
+# anano mosqueteiro enmascarado FIXADO
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Thunderguard"
-msgstr "Derrota ó Anano Enmascarado"
+msgstr "Anano mosqueteiro enmascarado"
 
+# anano mestre das runas FIXADO
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
-#, fuzzy
 msgid "Dwarvish Runemaster"
-msgstr "Anano Cicelador"
+msgstr "Anano mestre das runas"
 
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:26
@@ -2167,10 +2170,11 @@ msgstr ""
 msgid "chill tempest"
 msgstr ""
 
+# anano observador FIXADO
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
 msgid "Dwarvish Witness"
-msgstr "Anano Testigo"
+msgstr "Anano Observador"
 
 #. [unit_type]: race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
