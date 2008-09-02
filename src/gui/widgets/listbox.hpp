@@ -353,6 +353,9 @@ private:
 
 		void set_selected(const bool selected = true);
 		bool get_selected() const { return selected_; }
+
+		void  set_active(const bool active) { active_ = active; }
+		bool get_active() const { return active_; }
 	private:
 
 		/** The grid containing the widgets in the row. */
@@ -366,6 +369,15 @@ private:
 
 		/** Is the row currently selected or not. */
 		bool selected_;
+
+		/** 
+		 * Is the row active or not?
+		 *
+		 * This value is used to store the status setting it doesn't change the
+		 * status, so the function that changes the active status should also
+		 * update this value.
+		 */
+		bool active_;
 
 		/** Initializes all widgets in the grid. */
 		void init_in_grid(tgrid* grid, 

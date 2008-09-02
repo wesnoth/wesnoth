@@ -231,6 +231,7 @@ void tlistbox::set_row_active(const unsigned row, const bool active)
 	assert(row < get_item_count());
 	assert(rows_[row].grid());
 	rows_[row].grid()->set_active(active);
+	rows_[row].set_active(active);
 }
 
 const tgrid* tlistbox::get_row_grid(const unsigned row) const
@@ -266,6 +267,9 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 		case SDLK_UP : {
 
 			int i = get_selected_row() - 1;
+			while(i >= 0 && !rows_[i].get_active()) {
+				--i;
+			}
 			if(i >= 0) {
 				select_row(i);
 				handled = true;
@@ -276,6 +280,9 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 		case SDLK_DOWN : {
 
 			int i = get_selected_row() + 1;
+			while(i <  rows_.size() && !rows_[i].get_active()) {
+				++i;
+			}
 			if(i < rows_.size()) {
 				select_row(i);
 				handled = true;
@@ -740,7 +747,8 @@ tlistbox::trow::trow(const tbuilder_grid& list_builder_,
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
 	canvas_(),
-	selected_(false)
+	selected_(false),
+	active_(true)
 {
 	assert(grid_);
 	init_in_grid(grid_, data);
