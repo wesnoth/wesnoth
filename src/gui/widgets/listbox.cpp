@@ -256,12 +256,6 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 {
 	DBG_G_E << "Listbox: key press.\n";
 
-	/** 
-	 * @todo Proof of concept only handles up and down and not too elegant.
-	 * Ignores the modifiers and also whether or not rows are active.  When
-	 * moving out of visible range we don't scroll down and possibly more minor
-	 * glitches exist in this hack.
-	 */
 	tscrollbar_* sb = scrollbar();
 	int row = get_selected_row();
 	switch(key) {
@@ -287,6 +281,9 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 					sb->set_item_position(row);
 					set_scrollbar_button_status();
 				}
+				if(callback_value_change_) {
+					callback_value_change_(this);
+				}
 			}
 			break;
 			
@@ -310,6 +307,9 @@ void tlistbox::key_press(tevent_handler& /*event*/, bool& handled,
 
 					sb->set_item_position(row + 1 - sb->get_visible_items());
 					set_scrollbar_button_status();
+				}
+				if(callback_value_change_) {
+					callback_value_change_(this);
 				}
 			}
 			break;
