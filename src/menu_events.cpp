@@ -414,6 +414,7 @@ private:
 			const team_data data = calculate_team_data(teams_[n],n+1,units_);
 
 			const unit_map::const_iterator leader = team_leader(n+1,units_);
+			std::string leader_name;
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
@@ -423,10 +424,14 @@ private:
 				if (known || game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
 					leader_bools.push_back(true);
+					leader_name = leader->second.name();
 				} else {
 					str << IMAGE_PREFIX << std::string("unknown-unit.png");
 					leader_bools.push_back(false);
+					leader_name = "Unknown";
 				}
+			if (gamestate_.campaign_type == "multiplayer")
+		       		leader_name = teams_[n].current_player();
 
 #ifndef LOW_MEM
 				str << "~RC(" << leader->second.team_color() << ">" << team::get_side_colour_index(n+1) << ")";
@@ -434,13 +439,8 @@ private:
 			} else {
 				leader_bools.push_back(false);
 			}
-			std::string side_name;
-			if (gamestate_.campaign_type == "multiplayer")
-		       		side_name = teams_[n].current_player();
-			else
-                        	side_name = teams_[n].user_team_name();
 			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
-			    << side_name << COLUMN_SEPARATOR
+			    << leader_name << COLUMN_SEPARATOR
 			    << (data.teamname.empty() ? teams_[n].team_name() : data.teamname)
 			    << COLUMN_SEPARATOR;
 
