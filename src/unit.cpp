@@ -1943,7 +1943,10 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
 		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
 	}
-	if(unit_halo_ != halo::NO_HALO) {
+	if(unit_halo_ != halo::NO_HALO && image_halo().empty()) {
+		halo::remove(unit_halo_);
+		unit_halo_ = halo::NO_HALO;
+	} else if(unit_halo_ != halo::NO_HALO) {
 		halo::set_location(unit_halo_, x, y);
 	}
 
