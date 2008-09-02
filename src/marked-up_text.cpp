@@ -374,7 +374,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 	while(1) {
 		if(start_of_line) {
 			line_width = 0;
-			format_string = "";
+			format_string.clear();
 			while(ch != end && *ch < static_cast<wchar_t>(0x100)
 					&& is_format_char(*ch) && !ch.next_is_end()) {
 
@@ -421,7 +421,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 		if(current_word == "\n") {
 			line_break = true;
-			current_word = "";
+			current_word.clear();
 			start_of_line = true;
 		} else {
 
@@ -453,8 +453,8 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				wrapped_text += '\n';
 			}
 
-			wrapped_text += current_line;
-			current_line = format_string;
+			wrapped_text += format_string + current_line;
+			current_line.clear();
 			line_width = 0;
 			current_height += size.h;
 			line_break = false;
