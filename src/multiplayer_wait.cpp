@@ -240,17 +240,22 @@ void wait::join_game(bool observe)
 		//available side.
 		int side_choice = -1;
 		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
+			if((**s)["controller"] == "reserved" && (**s)["current_player"] == preferences::login())
+			{
+				side_choice = s - sides_list.begin();
+				break;
+			}
 			if((**s)["controller"] == "network" && (**s)["id"].empty()) {
 				if (side_choice < 0)  // found the first empty side
 					side_choice = s - sides_list.begin();
-				if((**s)["save_id"] == preferences::login() || (**s)["current_player"] == preferences::login()) {
+				if((**s)["current_player"] == preferences::login()) {
+					side_choice = s - sides_list.begin();
 					break;  // found the prefered one
 				}
 			}
 		}
 		if (side_choice < 0 || side_choice >= sides_list.size()) {
-			set_result(QUIT);
-			throw config::error(_("No multiplayer sides available in this game"));
+			join_game(true);
 			return;
 		}
 

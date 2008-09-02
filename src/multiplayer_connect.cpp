@@ -86,6 +86,10 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
+	// convert ai controllers
+	if (cfg_["controller"] == "human_ai"
+			|| cfg_["controller"] == "network_ai")
+		cfg_["controller"] = "ai";
 	if(allow_player_ && enabled_) {
 		controller_ = parent_->default_controller_;
 	} else {
@@ -98,7 +102,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		}
 		else
 		{
-			if (!save_id_.empty())
+			if (cfg_["controller"] == "network"
+					|| cfg_["controller"] == "human")
 			{
 				cfg_["controller"] = "reserved";
 
@@ -1187,6 +1192,7 @@ void connect::process_network_data(const config& data, const network::connection
 				update_user_combos();
 			}
 			update_and_send_diff();
+			update_playerlist_state(true);
 			return;
 		}
 	}
