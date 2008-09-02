@@ -612,7 +612,7 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find(type_id());
 	// Calculate the unit's traits
 	if (type == unit_type_data::types().end()) {
-		std::string error_message = _("Unknown unit type '$type|'");
+		std::string error_message = _("Unknown unit type '$type|' while generating traits");
 		utils::string_map symbols;
 		symbols["type"] = type_id();
 		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
