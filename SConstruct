@@ -92,7 +92,7 @@ opts.AddOptions(
 #
 
 sys.path.insert(0, "./scons")
-env = Environment(tools=["tar", "gettext", "install", "python_devel"], options = opts, toolpath = ["scons"])
+env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = ["scons"])
 
 opts.Save('.scons-option-cache', env)
 
@@ -578,6 +578,12 @@ data_tarball = data_tar_env.Tar('wesnoth-data.tar.bz2', datadir)
 data_tar_env.Append(TARFLAGS='-j', TARCOMSTR="Making data tarball...")
 env.Clean(all, 'wesnoth-data.tar.bz2')
 env.Alias('data-dist', data_tarball)
+
+#
+# Windows installer
+#
+
+env.WindowsInstaller([wesnoth, wesnoth_editor, Dir(installable_subs)])
 
 #
 # Making Mac OS X application bundles

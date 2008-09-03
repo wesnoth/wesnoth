@@ -4,11 +4,15 @@
 
 from string import Template
 
+class PercentDelimitedTemplate(Template):
+    delimiter = "%"
+
 def replace_action(target, source, env):
-	open(str(target[0]), 'w').write(Template(open(str(source[0]), 'r').read()).safe_substitute(env))
+	open(str(target[0]), 'w').write(PercentDelimitedTemplate(open(str(source[0]), 'r').read()).substitute(env))
+    env.Depends(target, env.Value(env.Dictionary()))
 
 def replace_string(target, source, env):
-    return "building '%s' from '%s'" % (str(target[0]), str(source[0]))
+    return "Generating '%s' from '%s'..." % (str(target[0]), str(source[0]))
 
 def generate(env, **kw):
     action = env.Action(replace_action, replace_string)

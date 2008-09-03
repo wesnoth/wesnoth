@@ -11,36 +11,22 @@ for bin in binaries:
         #env.Depends(res, icon)
     except AttributeError:
         res = []
-    locals()[bin + "_res"] = res
-    Export(bin + "_res")
+    env[bin + "_res"] = res
 
-if "windows-release" in COMMAND_LINE_TARGETS:
-    env.Tool("scanreplace", toolpath = ["../../scons"])
-    env["packaging_dir"] = Dir(".").abspath
-    iss = env.ScanReplace(join(env["windows_release_dir"], "Wesnoth.iss"), "Wesnoth.iss.in")
-    Depends(iss, Value(env.Dictionary()))
-    Alias("windows-release", iss)
-    
-    docs = [ File(doc, "../..") for doc in Split("README COPYING copyright") ]
-    datadirs = [ Dir(dir, "../..") for dir in Split("data fonts images sounds translations") ]
-    dlls = glob("../../*.dll")
-    Alias("windows-release", env.InstallFiltered(Dir(env["windows_release_dir"]), datadirs))
-    Alias("windows-release", env.Install(env["windows_release_dir"], docs + dlls))
+def WindowsInstaller(env, files):
+    files = Flatten(files)
+    env["NSIS_INSTALL_FILES"] = ""
+    env["NSIS_UNINSTALL_FILES"] = ""
+    for file in files:
+        if file.isdir():
+            env["NSIS_INSTALL_FILES"] += 'SetOutPath "$INSTDIR\\' + file.path + '"\n  '
+            env["NSIS_INSTALL_FILES"] += "File /r /x .* " + file.path + "\\*.*\n  "
+            env["NSIS_UNINSTALL_FILES"] += "RMDir /r $INSTDIR\\" + file.name + "\n  "
+        else:
+            env["NSIS_INSTALL_FILES"] += 'SetOutPath "$INSTDIR"\n  '
+            env["NSIS_INSTALL_FILES"] += "File " + file.path + "\n  "
+            env["NSIS_UNINSTALL_FILES"] += "Delete $INSTDIR\\" + file.name + "\n  "
+    env.ScanReplace("#/Wesnoth.nsi", "#/packaging/windows/Wesnoth.nsi.in")
 
-    release_binaries = ["wesnoth", "wesnoth_editor", "wesnothd"]
-    builds = {
-        ""        : "",
-        "_i486"   : "-march=i486",
-        "_p2"     : "-march=pentium2",
-        "_p4"     : "-march=pentium4",
-        "_k6"     : "-march=k6",
-        "_athlon" : "-march=athlon",
-        }
-    for build in builds.keys():
-        SConscript("../../src/SConscript", 
-                   build_dir = "../../build/release_win" + build,
-                   exports = {"env":env.Clone(CXXFLAGS = builds[build])}
-                   )
-        Import(release_binaries)
-        for bin in release_binaries:
-            Alias("windows-release", env.InstallAs("$windows_release_dir/%s%s$PROGSUFFIX" % (bin, build), eval(bin)))
+from SCons.Script.SConscript import SConsEnvironment
+SConsEnvironment.WindowsInstaller = WindowsInstaller

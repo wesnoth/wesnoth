@@ -286,7 +286,7 @@ SConsEnvironment.WesnothProgram = WesnothProgram
 
 game_cpp = python_env.Object("game.cpp");
 
-env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd] + wesnoth_res, have_client_prereqs)
+env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
 
 wesnoth_editor_sources = Split("""
     editor/editor.cpp
@@ -299,7 +299,7 @@ wesnoth_editor_sources = Split("""
     editor/editor_undo.cpp
     animated_editor.cpp
     """)
-env.WesnothProgram("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth] + wesnoth_editor_res, have_client_prereqs)
+env.WesnothProgram("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, env["wesnoth_editor_res"]], have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp
