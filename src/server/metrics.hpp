@@ -50,23 +50,21 @@ public:
 			name(),
 			nsamples(0),
 			parsing_time(0),
-			processing_time(0)
+			processing_time(0),
+			max_parsing_time(0),
+			max_processing_time(0)
 		{
 		}
 
 		simple_wml::string_span name;
 		int nsamples;
 		clock_t parsing_time, processing_time;
-#ifdef _MSC_VER
-		bool operator< (const simple_wml::string_span& n) const
-		{
-			return name < n;
-		}
+		clock_t max_parsing_time, max_processing_time;
+
 		operator const simple_wml::string_span&()
 		{
 			return name;
 		}
-#endif
 	};
 
 private:
