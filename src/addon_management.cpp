@@ -155,8 +155,10 @@ namespace {
 		files.push_back(".*");
 		dirs.push_back(".*");
 
+		files.push_back("#*#");
 		files.push_back("*~");
 		files.push_back("*-bak");
+		files.push_back("*.swp");
 		files.push_back("*.pbl");
 		files.push_back("*.ign");
 		files.push_back("_info.cfg");
