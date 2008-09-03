@@ -23,15 +23,12 @@
 #include <time.h>
 #include <iostream>
 
-bool operator<(const metrics::sample& s, const simple_wml::string_span& name)
-{
-	return s.name < name;
-}
-
-bool operator<(const simple_wml::string_span& name, const metrics::sample& s)
-{
-	return name < s.name;
-}
+struct compare_samples_to_stringspan {
+	bool operator()(const simple_wml::string_span& a, const simple_wml::string_span& b)
+	{
+		return a < b;
+	}
+};
 
 struct compare_samples_by_time {
 	bool operator()(const metrics::sample& a, const metrics::sample& b) const {
@@ -77,28 +74,26 @@ void metrics::no_requests()
 void metrics::record_sample(const simple_wml::string_span& name,
                             clock_t parsing_time, clock_t processing_time)
 {
-	std::pair<std::vector<sample>::iterator,std::vector<sample>::iterator>
-	    range = std::equal_range(samples_.begin(), samples_.end(), name);
-	if(range.first == range.second) {
+	std::vector<sample>::iterator isample = std::lower_bound(samples_.begin(), samples_.end(), name,compare_samples_to_stringspan());
+	if(isample->name != name) {
 		//protect against DoS with memory exhaustion
 		if(samples_.size() > 30) {
 			return;
 		}
-		int index = range.first - samples_.begin();
+		int index = isample - samples_.begin();
 		simple_wml::string_span dup_name(name.duplicate());
 		sample new_sample;
 		new_sample.name = dup_name;
-		new_sample.nsamples = 0;
-		new_sample.parsing_time = 0;
-		new_sample.processing_time = 0;
-		samples_.insert(range.first, new_sample);
+		samples_.insert(isample, new_sample);
 
-		range.first = samples_.begin() + index;
+		isample = samples_.begin() + index;
 	}
 
-	range.first->nsamples++;
-	range.first->parsing_time += parsing_time;
-	range.first->processing_time += processing_time;
+	isample->nsamples++;
+	isample->parsing_time += parsing_time;
+	isample->processing_time += processing_time;
+	isample->max_parsing_time = std::max(parsing_time,isample->max_parsing_time);
+	isample->max_processing_time = std::max(processing_time,isample->max_processing_time);
 }
 
 void metrics::game_terminated(const std::string& reason)
@@ -135,7 +130,10 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	out << "\n\nRequest types:\n";
 
 	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
-		out << "'" << s->name << "' called " << s->nsamples << " times " << s->parsing_time << " parsing time, " << s->processing_time << " processing time\n";
+		out << "'" << s->name 
+			<< "' called " << s->nsamples << " times " 
+			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, " 
+			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
 	}
 
 	return out;
