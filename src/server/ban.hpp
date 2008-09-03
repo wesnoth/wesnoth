@@ -18,6 +18,7 @@
 
 #include <set>
 #include <map>
+#include <list>
 #include <queue>
 #include <ctime>
 
@@ -56,6 +57,7 @@ namespace wesnothd {
 	};
 
 	typedef std::set<banned_ptr,banned_compare_subnet > ban_set;
+	typedef std::list<banned_ptr> deleted_ban_list;
 	typedef std::priority_queue<banned_ptr,std::vector<banned_ptr>, banned_compare> ban_time_queue;
 	typedef std::map<std::string, size_t> default_ban_times;
 
@@ -65,13 +67,17 @@ namespace wesnothd {
 		unsigned int mask_;
 		std::string ip_text_;
 		time_t end_time_;
+		time_t start_time_;
 		std::string reason_;
 		std::string who_banned_;
 		std::string group_;
 		static const std::string who_banned_default_;
 		typedef std::pair<unsigned int, unsigned int> ip_mask;
+		
 		ip_mask parse_ip(const std::string&) const;
+		
 		banned(const std::string& ip);
+
 	public:
 		banned(const std::string& ip, const time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="");
 		banned(const config&);
@@ -83,7 +89,8 @@ namespace wesnothd {
 		{ return end_time_;	}
 
 		std::string get_human_end_time() const;
-		static std::string get_human_end_time(const time_t&);
+		std::string get_human_start_time() const;
+		static std::string get_human_time(const time_t&);
 
 		std::string get_reason() const
 		{ return reason_; }
@@ -119,6 +126,7 @@ namespace wesnothd {
 	{
 
 		ban_set bans_;
+		deleted_ban_list deleted_bans_;
 		ban_time_queue time_queue_;
 		default_ban_times ban_times_;
 		std::string ban_help_;
@@ -147,6 +155,7 @@ namespace wesnothd {
 
 		void check_ban_times(time_t time_now);
 
+		void list_deleted_bans(std::ostringstream& out) const;
 		void list_bans(std::ostringstream& out) const;
 
 		bool is_ip_banned(std::string ip) const;
