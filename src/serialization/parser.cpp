@@ -293,7 +293,7 @@ void parser::parse_variable()
 			// Ignore this
 			break;
 		default:
-			cfg[*curvar] += tok_->current_token().value;
+			cfg[*curvar] += tok_->current_token().leading_spaces + tok_->current_token().value;
 			break;
 		case token::QSTRING:
 			cfg[*curvar] += tok_->current_token().value;

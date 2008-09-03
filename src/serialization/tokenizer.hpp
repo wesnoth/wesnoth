@@ -29,6 +29,7 @@ struct token
 {
 	token() :
 		type(END),
+		leading_spaces(),
 		value()
 		{}
 
@@ -51,8 +52,10 @@ struct token
 
 	void reset() {
 		value.clear();
+		leading_spaces.clear();
 	}
 
+	std::string leading_spaces;
 	std::string value;
 };
 
@@ -73,6 +76,7 @@ class tokenizer
 			// Dump spaces and inlined comments
 			for(;;) {
 				while (is_space(current_)) {
+					token_.leading_spaces += current_;
 					next_char_fast();
 				}
 				if (current_ != 254)
