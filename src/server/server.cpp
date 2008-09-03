@@ -634,7 +634,6 @@ void server::run() {
 					clean_user_handler(now);
 				}
 
-#ifdef BANDWIDTH_MONITOR
 				// Send network stats every hour
 				static size_t prev_hour = localtime(&now)->tm_hour;
 				if (prev_hour != localtime(&now)->tm_hour)
@@ -643,7 +642,6 @@ void server::run() {
 					LOG_SERVER << network::get_bandwidth_stats();
 
 				}
-#endif
 
 				// send a 'ping' to all players to detect ghosts
 				DBG_SERVER << "Pinging inactive players.\n" ;
@@ -696,14 +694,8 @@ void server::run() {
 			static int sample_counter = 0;
 
 			std::vector<char> buf;
-#ifdef BANDWIDTH_MONITOR
 			network::bandwidth_in_ptr bandwidth_type;
-#endif
-			while ((sock = network::receive_data(buf
-#ifdef BANDWIDTH_MONITOR
-							, &bandwidth_type
-#endif
-							)) != network::null_connection) {
+			while ((sock = network::receive_data(buf, &bandwidth_type)) != network::null_connection) {
 				metrics_.service_request();
 
 				if(buf.empty()) {
@@ -739,9 +731,7 @@ void server::run() {
 
 				process_data(sock, data);
 
-#ifdef BANDWIDTH_MONITOR
 				bandwidth_type->set_type("command");
-#endif
 				if(sample) {
 					const clock_t after_processing = get_cpu_time(sample);
 					metrics_.record_sample(data.root().first_child(),
@@ -1208,12 +1198,10 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Network stats:\nPending send buffers: "
 		    << stats.npending_sends << "\nBytes in buffers: "
 			<< stats.nbytes_pending_sends << "\n";
-#ifdef BANDWIDTH_MONITOR
 		if (parameters == "all")
 			out << network::get_bandwidth_stats_all();
 		else
 			out << network::get_bandwidth_stats(); // stats from previuos hour
-#endif
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";

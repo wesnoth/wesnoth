@@ -20,7 +20,6 @@
 /**
  * Enable bandwidth stats
  **/
-//#define BANDWIDTH_MONITOR
 
 class config;
 
@@ -128,7 +127,6 @@ bool disconnect(connection connection_num=0, bool force=false);
 //! on the given connection (and presumably then the handling of the error
 //! will include closing the connection).
 void queue_disconnect(connection connection_num);
-#ifdef BANDWIDTH_MONITOR
 
 std::string get_bandwidth_stats();
 std::string get_bandwidth_stats_all();
@@ -139,9 +137,6 @@ void add_bandwidth_in(const std::string& packet_type, size_t len);
 struct bandwidth_in {
 	bandwidth_in(int len) : len_(len), type_("unknown") {}
 	~bandwidth_in();
-//	{
-//		network::add_bandwidth_in(type_, len_);
-//	}
 
 	void set_type(const std::string& type)
 	{
@@ -155,7 +150,6 @@ struct bandwidth_in {
 
 typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
 
-#endif
 
 
 //! Function to receive data from either a certain connection,
@@ -165,21 +159,9 @@ typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
 //! Returns the connection that data was received from,
 //! or 0 if timeout occurred.
 //! Throws error if an error occurred.
-connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0
-#ifdef BANDWIDTH_MONITOR
-		, bandwidth_in_ptr* b = 0
-#endif
-		);
-connection receive_data(config& cfg, connection connection_num, unsigned int timeout
-#ifdef BANDWIDTH_MONITOR
-		, bandwidth_in_ptr* b = 0
-#endif
-		);
-connection receive_data(std::vector<char>& buf
-#ifdef BANDWIDTH_MONITOR
-		, bandwidth_in_ptr* = 0
-#endif
-		);
+connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0, bandwidth_in_ptr* b = 0);
+connection receive_data(config& cfg, connection connection_num, unsigned int timeout, bandwidth_in_ptr* b = 0);
+connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* = 0);
 
 void send_file(const std::string&, connection, const std::string& packet_type = "unknown");
 
