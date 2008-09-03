@@ -385,6 +385,7 @@ SET(wesnothd_SRC
 	server/ban.cpp
     server/game.cpp
     server/input_stream.cpp
+    server/mail.cpp
     server/metrics.cpp
     server/player.cpp
     server/proxy.cpp
