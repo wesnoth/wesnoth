@@ -382,11 +382,6 @@ game_controller::game_controller(int argc, char** argv) :
 	}
 	std::cerr << "Data at '" << game_config::path << "'\n";
 
-	//TODO: remove this and the configure option
-#ifdef USE_SMALL_GUI
-	game_config::small_gui = true;
-#endif
-
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
 	                  preferences::turn_bell() || preferences::UI_sound_on()) &&

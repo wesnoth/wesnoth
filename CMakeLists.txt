@@ -59,7 +59,7 @@ set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.w
 option(ENABLE_PYTHON "Enable in-game python extensions" ON)
 option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
 option(ENABLE_DUMMY_LOCALES "Create dummy locales")
-set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 800x480 (eeePC, Nokia 8x0) or 320x240 (PDAs) (normal|small|tiny)")
+set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 320x240 (PDAs) (normal|tiny)")
 
 #server options
 set(SERVER_UID "" CACHE STRING "User id of the user who runs wesnothd")
@@ -120,8 +120,6 @@ endif(PREFERENCES_DIR)
 
 if(GUI STREQUAL "tiny")
   add_definitions(-DUSE_TINY_GUI)
-elseif(GUI STREQUAL "small")
-  add_definitions(-DUSE_SMALL_GUI)
 endif(GUI STREQUAL "tiny")
 
 if(ENABLE_PYTHON AND PYTHON_LIBRARIES)
