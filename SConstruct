@@ -208,6 +208,8 @@ if env["prereqs"]:
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
         conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
+    if have_client_prereqs:
+        env.Append(LIBS = "fontconfig")
 
     have_X = False
     if env["PLATFORM"] != "win32":
