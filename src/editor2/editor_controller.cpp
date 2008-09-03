@@ -154,7 +154,7 @@ void editor_controller::init_mouse_actions(const config& game_config)
 	}	
 }
 
-void editor_controller::init_map_generators(const config& game_config)
+void editor_controller::init_map_generators(const config& /*game_config*/)
 {
 }
 
