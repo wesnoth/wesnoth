@@ -237,6 +237,15 @@ class editor_controller : public controller_base,
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
 		
+		/** init the brushes */
+		void init_brushes(const config& game_config);
+
+		/** init the mouse actions (tools) */
+		void init_mouse_actions(const config& game_config);
+		
+		/** init available random map generators */
+		void init_map_generators(const config& game_config);
+		
 		/**
 		 * Load editor-specific tooltips
 		 */

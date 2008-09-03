@@ -87,6 +87,35 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	adjust_sizes(gui(), *size_specs_);
 	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
 		foreground_terrain_, background_terrain_);
+	init_brushes(game_config);
+	brush_ = &brushes_[0];
+	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
+	init_mouse_actions(game_config);
+	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
+	init_map_generators(game_config);
+	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
+	background_terrain_ = t_translation::GRASS_LAND;
+	foreground_terrain_ = t_translation::MOUNTAIN;
+	get_map_context().set_starting_position_labels(gui());
+	cursor::set(cursor::NORMAL);
+	gui_->invalidate_game_status();
+	refresh_all();
+	events::raise_draw_event();	
+}
+
+void editor_controller::init(CVideo& video)
+{
+	config dummy;
+	const config* theme_cfg = get_theme(game_config_, "editor2");
+	theme_cfg = theme_cfg ? theme_cfg : &dummy;
+	gui_ = new editor_display(video, get_map(), *theme_cfg, game_config_, config());
+	gui_->set_grid(preferences::grid());
+	prefs_disp_manager_ = new preferences::display_manager(gui_);
+	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
+}
+
+void editor_controller::init_brushes(const config& game_config)
+{
 	foreach (const config* i, game_config.get_children("brush")) {
 		brushes_.push_back(brush(*i));
 	}
@@ -95,9 +124,10 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		brushes_.push_back(brush());
 		brushes_[0].add_relative_location(0, 0);
 	}
-	brush_ = &brushes_[0];
-	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
-	
+}
+
+void editor_controller::init_mouse_actions(const config& game_config)
+{
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
 		new mouse_action_paint(foreground_terrain_, background_terrain_, &brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
@@ -122,34 +152,10 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
 		}
 	}	
-	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
-	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
-	background_terrain_ = t_translation::GRASS_LAND;
-	foreground_terrain_ = t_translation::MOUNTAIN;
-	set_mouseover_overlay();
-	get_map_context().set_starting_position_labels(gui());
-	cursor::set(cursor::NORMAL);
-	gui_->invalidate_game_status();
-	palette_->adjust_size();
-	brush_bar_->adjust_size();
-	refresh_all();
-	gui_->draw();
-	palette_->draw(true);
-	brush_bar_->draw(true);
-	load_tooltips();
-	redraw_toolbar();
-	events::raise_draw_event();	
 }
 
-void editor_controller::init(CVideo& video)
+void editor_controller::init_map_generators(const config& game_config)
 {
-	config dummy;
-	const config* theme_cfg = get_theme(game_config_, "editor2");
-	theme_cfg = theme_cfg ? theme_cfg : &dummy;
-	gui_ = new editor_display(video, get_map(), *theme_cfg, game_config_, config());
-	gui_->set_grid(preferences::grid());
-	prefs_disp_manager_ = new preferences::display_manager(gui_);
-	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 }
 
 void editor_controller::load_tooltips()
