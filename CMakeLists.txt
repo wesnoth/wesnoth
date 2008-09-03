@@ -39,6 +39,9 @@ find_package( X11 )
 #use pkg-config to find pangocairo:
 pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 
+#use pkg-config to find fontconfig:
+pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.2 )
+
 #
 # Options
 #

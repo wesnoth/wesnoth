@@ -38,6 +38,8 @@
 #include <stack>
 #include <string>
 
+#include <fontconfig/fontconfig.h>
+
 #define DBG_FT LOG_STREAM(debug, display)
 #define LOG_FT LOG_STREAM(info, display)
 #define WRN_FT LOG_STREAM(warn, display)
@@ -286,10 +288,20 @@ manager::manager()
 	} else {
 		LOG_FT << "Initialized true type fonts\n";
 	}
+
+	if(!FcConfigAppFontAddDir( FcConfigGetCurrent(), 
+			reinterpret_cast<const FcChar8*>
+			((game_config::path + "/fonts/").c_str()))) {
+
+		ERR_FT << "Could not load the  true type fonts\n";
+		throw error();
+	}
 }
 
 manager::~manager()
 {
+	FcConfigAppFontClear(FcConfigGetCurrent());
+
 	clear_fonts();
 	TTF_Quit();
 }

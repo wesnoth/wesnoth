@@ -2,6 +2,7 @@
 include_directories( ${Boost_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
+include_directories( ${FONTCONFIG_INCLUDE_DIRS} )
 include_directories( ${GETTEXT_INCLUDE_DIR} )
 
 #optional dependencies
@@ -39,6 +40,7 @@ set( game-external-libs
     ${SDLNET_LIBRARY}
     ${SDLTTF_LIBRARY}
     ${PANGOCAIRO_LDFLAGS}
+    ${FONTCONFIG_LDFLAGS}
 )
 
 set( server-external-libs
@@ -51,6 +53,7 @@ set( editor-external-libs
     ${SDLIMAGE_LIBRARY}
     ${SDLMIXER_LIBRARY}
     ${SDLTTF_LIBRARY}
+    ${FONTCONFIG_LDFLAGS}
 )
 
 set( tools-external-libs
