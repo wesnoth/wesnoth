@@ -728,6 +728,8 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		}
 	}
 
+	// we don't want to inherit our previous type's halo
+	cfg_["halo"] = "";
 	cfg_.merge_with(t->cfg_);
 	if (!specific_profile.empty()) {
 		cfg_["profile"] = specific_profile;
