@@ -27,7 +27,7 @@ class replay_controller : public play_controller
 public:
 	replay_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video);
-	~replay_controller();
+	virtual ~replay_controller();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 

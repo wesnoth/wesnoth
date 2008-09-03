@@ -1,4 +1,5 @@
 /* $Id$ */
+
 /*
    Copyright (C) 2006 - 2008 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -62,7 +63,7 @@ playsingle_controller::playsingle_controller(const config& level,
 
 playsingle_controller::~playsingle_controller()
 {
-  ai_manager::reap_ais() ;
+	ai_manager::reap_ais() ;
 }
 
 

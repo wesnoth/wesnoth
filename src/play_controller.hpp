@@ -34,6 +34,8 @@
 
 #include <vector>
 
+#include <boost/scoped_ptr.hpp>
+
 class game_display;
 class team;
 
@@ -42,7 +44,7 @@ class play_controller : public controller_base, public events::observer
 public:
 	play_controller(const config& level, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay, bool is_replay);
-	~play_controller();
+	virtual ~play_controller();
 
 	//event handler, overriden from observer
 	//there is nothing to handle in this class actually but that might change in the future
@@ -118,18 +120,18 @@ protected:
 	//managers
 	const verification_manager verify_manager_;
 	teams_manager team_manager_;
-	preferences::display_manager* prefs_disp_manager_;
-	tooltips::manager* tooltips_manager_;
-	game_events::manager* events_manager_;
-	halo::manager* halo_manager_;
+	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
+	boost::scoped_ptr<tooltips::manager> tooltips_manager_;
+	boost::scoped_ptr<game_events::manager> events_manager_;
+	boost::scoped_ptr<halo::manager> halo_manager_;
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
-	soundsource::manager* soundsources_manager_;
+	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 
 	//other objects
-	game_display* gui_;
+	boost::scoped_ptr<game_display> gui_;
 	const rand_rng::set_random_generator generator_setter;
 	const statistics::scenario_context statistics_context_;
 	const config& level_;

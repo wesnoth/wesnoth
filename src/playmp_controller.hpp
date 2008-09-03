@@ -31,7 +31,7 @@ public:
 	playmp_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video,
 		bool skip_replay, bool is_host);
-	~playmp_controller();
+	virtual ~playmp_controller();
 
 	bool is_host() { return is_host_; }
 

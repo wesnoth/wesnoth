@@ -41,16 +41,16 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	controller_base(ticks, game_config, video),	
 	verify_manager_(units_), 
 	team_manager_(teams_), 
-	prefs_disp_manager_(NULL),
-	tooltips_manager_(NULL),
-	events_manager_(NULL),
-	halo_manager_(NULL),
+	prefs_disp_manager_(),
+	tooltips_manager_(),
+	events_manager_(),
+	halo_manager_(),
 	labels_manager_(), 
 	help_manager_(&game_config, &map_), 
-	mouse_handler_(gui_, teams_, units_, map_, status_, undo_stack_, redo_stack_), 
-	menu_handler_(gui_, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_), 
-	soundsources_manager_(NULL),
-	gui_(NULL),
+	mouse_handler_(NULL, teams_, units_, map_, status_, undo_stack_, redo_stack_), 
+	menu_handler_(NULL, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_), 
+	soundsources_manager_(),
+	gui_(),
 	generator_setter(&recorder), 
 	statistics_context_(level["name"]), 
 	level_(level), 
@@ -89,12 +89,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 }
 
 play_controller::~play_controller(){
-	delete halo_manager_;
-	delete prefs_disp_manager_;
-	delete tooltips_manager_;
-	delete events_manager_;
-	delete soundsources_manager_;
-	delete gui_;
 }
 
 void play_controller::init(CVideo& video, bool is_replay){
@@ -133,8 +127,8 @@ void play_controller::init(CVideo& video, bool is_replay){
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!
-	events_manager_ = new game_events::manager(level_,map_,
-                                                   units_,teams_, gamestate_,status_);
+	events_manager_.reset(new game_events::manager(level_,map_,
+                                                   units_,teams_, gamestate_,status_));
 
 	std::set<std::string> seen_save_ids;
 
@@ -160,12 +154,12 @@ void play_controller::init(CVideo& video, bool is_replay){
 
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	if (theme_cfg)
-		gui_ = new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
+		gui_.reset(new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_));
 	else
-		gui_ = new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_);
+		gui_.reset(new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_));
 	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
-	mouse_handler_.set_gui(gui_);
-	menu_handler_.set_gui(gui_);
+	mouse_handler_.set_gui(gui_.get());
+	menu_handler_.set_gui(gui_.get());
 	events_manager_->set_gui(*gui_);
 	theme::set_known_themes(&game_config_);
 
@@ -204,13 +198,13 @@ void play_controller::init(CVideo& video, bool is_replay){
 
 void play_controller::init_managers(){
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
-	prefs_disp_manager_ = new preferences::display_manager(gui_);
-	tooltips_manager_ = new tooltips::manager(gui_->video());
-	soundsources_manager_ = new soundsource::manager(*gui_);
+	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
+	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
+	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	events_manager_->set_soundsource(*soundsources_manager_);
 
-	halo_manager_ = new halo::manager(*gui_);
+	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
@@ -546,7 +540,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
 			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
 				// The event has mutated the gamestate
-				apply_shroud_changes(undo_stack_, gui_, map_,
+				apply_shroud_changes(undo_stack_, gui_.get(), map_,
 					units_, teams_, (player_number_ - 1));
 				undo_stack_.clear();
 			}
