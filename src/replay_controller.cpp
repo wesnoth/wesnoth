@@ -319,7 +319,7 @@ void replay_controller::play_turn(){
 	}
 }
 
-void replay_controller::play_side(const unsigned int team_index, bool){
+void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	if (recorder.at_end()){
 		return;
 	}
