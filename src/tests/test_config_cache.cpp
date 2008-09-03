@@ -285,6 +285,17 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 	cache.set_force_not_valid_cache(false);
 }
 
+BOOST_AUTO_TEST_CASE( test_lead_spaces_loading )
+{
+	config test_config;
+	test_config.add_child("test_lead_space")["space"] = "empty char in middle";
+	// Force reload of cache
+	cache.set_force_not_valid_cache(true);
+	BOOST_CHECK_EQUAL(test_config, *cache.get_config("data/test/test/leading_space.cfg"));
+	cache.set_force_not_valid_cache(false);
+	BOOST_CHECK_EQUAL(test_config, *cache.get_config("data/test/test/leading_space.cfg"));
+}
+
 #if 0
 // for profiling cache speed
 BOOST_AUTO_TEST_CASE( test_performance )
