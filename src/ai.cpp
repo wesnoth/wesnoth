@@ -1612,7 +1612,7 @@ void ai::analyze_potential_recruit_combat()
 
 			unit const &un = j->second;
 			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find(un.type_id());
-			VALIDATE((enemy_info != unit_type_data::types().end()), _("Unknown unit type : ") + un.type_id());
+			VALIDATE((enemy_info != unit_type_data::types().end()), _("Unknown unit type : ") + un.type_id() + " while soring units.");
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
