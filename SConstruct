@@ -187,7 +187,7 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango"]), config_h = "config.h",
+conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig"]), config_h = "config.h",
     log_file="build/config.log", conf_dir="build/sconf_temp")
 
 if env["prereqs"]:
@@ -203,13 +203,12 @@ if env["prereqs"]:
 
     have_client_prereqs = \
         conf.CheckPango("cairo") and \
+        conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("regex") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
         conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
-    if have_client_prereqs:
-        env.Append(LIBS = "fontconfig")
 
     have_X = False
     if env["PLATFORM"] != "win32":
