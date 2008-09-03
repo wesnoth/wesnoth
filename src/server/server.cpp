@@ -981,7 +981,9 @@ std::string server::process_command(const std::string& query, const std::string&
 	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban" || command == "gban") {
 		if (parameters == "") {
 			ban_manager_.list_bans(out);
-		} else {
+		} else if (parameters == "deleted") {
+			ban_manager_.list_deleted_bans(out);
+		}else {
 			bool banned_ = false;
 			const bool kick = (command == "kban" || command == "kickban");
 			const bool group_ban = command == "gban";
@@ -1021,17 +1023,14 @@ std::string server::process_command(const std::string& query, const std::string&
 				banned_ = true;
 
 				std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
-				if (err.empty())
-					out << "Set ban on '" << target << "' with end time '" <<  wesnothd::banned::get_human_end_time(parsed_time) << "'  with reason: '" << reason << "'.\n";
-				else
-					out << err << "\n";
+				out << err;
 	
 				if (kick) {
 					for (wesnothd::player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
 					{
 						if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
-							out << "Kicked " << pl->second.name() << ".\n";
+							out << "\nKicked " << pl->second.name() << ".";
 							network::queue_disconnect(pl->first);
 						}
 					}
@@ -1045,14 +1044,10 @@ std::string server::process_command(const std::string& query, const std::string&
 						const std::string& ip = network::ip_address(pl->first);
 						if (!is_ip_banned(ip)) {
 							std::string err = ban_manager_.ban(ip,parsed_time, reason, issuer_name, group);
-							if (err.empty())
-								out << "Set ban on '" << ip << "' with end time '" << wesnothd::banned::get_human_end_time(parsed_time) << "' with reason: '"
-									<< reason << "'.\n";
-							else
-								out << err << "\n";
+							out << err;
 						}
 						if (kick) {
-							out << "Kicked " << pl->second.name() << ".\n";
+							out << "\nKicked " << pl->second.name() << ".";
 							network::queue_disconnect(pl->first);
 						}
 					}

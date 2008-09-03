@@ -75,7 +75,8 @@ void metrics::record_sample(const simple_wml::string_span& name,
                             clock_t parsing_time, clock_t processing_time)
 {
 	std::vector<sample>::iterator isample = std::lower_bound(samples_.begin(), samples_.end(), name,compare_samples_to_stringspan());
-	if(isample->name != name) {
+	if(isample == samples_.end()
+		|| isample->name != name) {
 		//protect against DoS with memory exhaustion
 		if(samples_.size() > 30) {
 			return;

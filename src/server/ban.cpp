@@ -34,10 +34,11 @@ namespace wesnothd {
 
 	std::ostream& operator<<(std::ostream& o, const banned& n)
 	{
-	   return o << "IP: '" << n.get_ip() << 
-					"' end_time: '" << n.get_human_end_time() <<
-					"' reason: '" << n.get_reason() << 
-					"' issuer: "<<  n.get_who_banned() << "\n";
+	   return o << "IP: " << n.get_ip() << 
+					" reason: '" << n.get_reason() << 
+					"' end_time: " << n.get_human_end_time() <<
+					" start_time: " << n.get_human_start_time() <<
+					" issuer: " <<  n.get_who_banned();
 
 	}
 
@@ -100,6 +101,7 @@ namespace wesnothd {
 		mask_(0),
 		ip_text_(),
 		end_time_(0),
+		start_time_(0),
 		reason_(),
 		who_banned_(who_banned_default_)
 
@@ -116,6 +118,7 @@ namespace wesnothd {
 				   const std::string& group) : 
 		ip_text_(ip),
 		end_time_(end_time), 
+		start_time_(time(0)),
 		reason_(reason), 
 		who_banned_(who_banned), 
 		group_(group)
@@ -130,6 +133,7 @@ namespace wesnothd {
 		mask_(0),
 		ip_text_(),
 		end_time_(0),
+		start_time_(0),
 		reason_(),
 		who_banned_(who_banned_default_)
 	{
@@ -190,6 +194,8 @@ namespace wesnothd {
 	
 		if (cfg.has_attribute("end_time"))
 			end_time_ 	= lexical_cast_default<time_t>(cfg["end_time"], 0);
+		if (cfg.has_attribute("start_time"))
+			start_time_ 	= lexical_cast_default<time_t>(cfg["start_time"], 0);
 		reason_	  	= cfg["reason"];
 
 		// only overwrite defaults if exists
@@ -208,6 +214,13 @@ namespace wesnothd {
 			ss << end_time_;
 			cfg["end_time"] = ss.str();
 		}
+		if (start_time_ > 0)
+		{
+			std::stringstream ss;
+			ss << start_time_;
+			cfg["start_time"] = ss.str();
+		}
+
 		cfg["reason"]	= reason_;
 		if (who_banned_ != who_banned_default_)
 		{
@@ -219,12 +232,15 @@ namespace wesnothd {
 		}
 	}
 
-	std::string banned::get_human_end_time(const time_t& time)
+	std::string banned::get_human_start_time() const
 	{
-		if (time == 0)
-		{
-			return "permanent";
-		}
+		if (start_time_ == 0)
+			return "unknown";
+		return banned::get_human_time(start_time_);
+	}
+
+	std::string banned::get_human_time(const time_t& time)
+	{
 		char buf[30];
 		struct tm* local;
 		local = localtime(&time);
@@ -235,7 +251,11 @@ namespace wesnothd {
 
 	std::string banned::get_human_end_time() const
 	{
-		return banned::get_human_end_time(end_time_);
+		if (end_time_ == 0)
+		{
+			return "permanent";
+		}
+		return banned::get_human_time(end_time_);
 	}
 	
 	bool banned::operator>(const banned& b) const
@@ -256,6 +276,7 @@ namespace wesnothd {
 		config cfg;
 		scoped_istream ban_file = istream_file(filename_);
 		read_gz(cfg, *ban_file);	
+
 		const config::child_list& bans = cfg.get_children("ban");
 		for (config::child_list::const_iterator itor = bans.begin();
 				itor != bans.end(); ++itor)
@@ -270,6 +291,25 @@ namespace wesnothd {
 				ERR_SERVER << e.message << " while reading bans\n";
 			}
 		}
+
+		// load deleted too
+		if (cfg.child("deleted"))
+		{
+			const config& cfg_del = *cfg.child("deleted"); 
+			const config::child_list& del_bans = cfg_del.get_children("ban");
+			for (config::child_list::const_iterator itor = del_bans.begin();
+					itor != del_bans.end(); ++itor)
+			{
+				try {
+					banned_ptr new_ban(new banned(**itor));
+					deleted_bans_.push_back(new_ban);
+				} catch (banned::error& e) {
+					ERR_SERVER << e.message << " while reading deleted bans\n";
+				}
+			}
+		}
+
+
 	}
 
 	void ban_manager::write()
@@ -285,6 +325,14 @@ namespace wesnothd {
 			config& child = cfg.add_child("ban");
 			(*itor)->write(child);
 		}
+		config& deleted = cfg.add_child("deleted");
+		for (deleted_ban_list::const_iterator itor = deleted_bans_.begin();
+				itor != deleted_bans_.end(); ++itor)
+		{
+			config& child = deleted.add_child("ban");
+			(*itor)->write(child);
+		}
+
 		scoped_ostream ban_file = ostream_file(filename_);
 		config_writer writer(*ban_file, true, "");
 		writer.write(cfg);
@@ -407,7 +455,7 @@ namespace wesnothd {
 			if ((ban = bans_.find(banned::create_dummy(ip))) != bans_.end())
 			{
 				// Already exsiting ban for ip. We have to first remove it
-				LOG_SERVER << "Overwriting ban: " << (*ban)->get_ip() << " reason was: " << (*ban)->get_reason() << "\n";
+				LOG_SERVER << "Overwriting ban: " << (**ban) << "\n";
 				bans_.erase(ban);
 			}
 		} catch (banned::error& e) {
@@ -420,7 +468,7 @@ namespace wesnothd {
 			bans_.insert(new_ban);
 			if (end_time != 0)
 				time_queue_.push(new_ban);
-			ret << *new_ban << "\n";
+			ret << *new_ban;
 		} catch (banned::error& e) {
 			ERR_SERVER << e.message << " while banning\n";
 			return e.message;
@@ -436,7 +484,7 @@ namespace wesnothd {
 			ban = bans_.find(banned::create_dummy(ip));
 		} catch (banned::error& e) {
 			ERR_SERVER << e.message << "\n";
-			os << e.message << "\n";
+			os << e.message;
 			return;
 		}
 
@@ -445,10 +493,12 @@ namespace wesnothd {
 			os << "There is no ban on '" << ip << "'.";
 			return;
 		}
+		// keep ban entry still in memory
+		os << "Ban on '" << **ban << "' removed.";
+		deleted_bans_.push_back(*ban);
 		bans_.erase(ban);
 		dirty_ = true;
 
-		os << "Ban on '" << ip << "' removed.";
 	}
 
 	void ban_manager::unban_group(std::ostringstream& os, const std::string& group)
@@ -486,6 +536,27 @@ namespace wesnothd {
 		write();
 	}
 
+	void ban_manager::list_deleted_bans(std::ostringstream& out) const
+	{
+		if (deleted_bans_.empty()) 
+		{ 
+			out << "No removed bans found.";
+			return;
+		}
+
+		for (deleted_ban_list::const_iterator i = deleted_bans_.begin();
+				i != deleted_bans_.end();
+				++i)
+		{
+			if (i != deleted_bans_.begin())
+				out << "\n";
+			out << (**i);
+		}
+
+	}
+
+
+
 	void ban_manager::list_bans(std::ostringstream& out) const
 	{
 		if (bans_.empty()) 
@@ -496,13 +567,14 @@ namespace wesnothd {
 
 		std::set<std::string> groups;
 
-		out << "BAN LIST\n";
 		for (ban_set::const_iterator i = bans_.begin();
 				i != bans_.end(); ++i)
 		{
 			if ((*i)->get_group().empty())
 			{
-				out << (**i) << "\n";
+				if (i != bans_.begin())
+					out << "\n";
+				out << (**i);
 			} else {
 				groups.insert((*i)->get_group());				
 			}
