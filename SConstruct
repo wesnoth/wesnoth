@@ -92,12 +92,10 @@ opts.AddOptions(
 #
 
 sys.path.insert(0, "./scons")
-env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = ["scons"])
+env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = ["scons"], ENV = { 'PATH' : os.environ["PATH"] })
 
 opts.Save('.scons-option-cache', env)
 
-# Make sure the user's environment is always available
-env['ENV']['PATH'] = os.environ["PATH"]
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
 else:
