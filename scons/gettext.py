@@ -2,7 +2,7 @@
 from os.path import join
 import os
 from SCons.Builder import Builder
-from SCons.Script  import *
+from SCons.Util    import WhereIs
 
 def exists():
     return True
