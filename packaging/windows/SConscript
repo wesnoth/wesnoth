@@ -18,6 +18,8 @@ def WindowsInstaller(env, files):
     env["NSIS_INSTALL_FILES"] = ""
     env["NSIS_UNINSTALL_FILES"] = ""
     for file in files:
+        if not file:
+            continue
         if file.isdir():
             env["NSIS_INSTALL_FILES"] += 'SetOutPath "$INSTDIR\\' + file.path + '"\n  '
             env["NSIS_INSTALL_FILES"] += "File /r /x .* " + file.path + "\\*.*\n  "
