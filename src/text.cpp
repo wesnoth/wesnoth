@@ -127,7 +127,12 @@ bool ttext::is_truncated() const
 {
 	recalculate();
 
+#if defined(PANGO_VERSION_CHECK)
+#if PANGO_VERSION_CHECK(1,16,0)
 	return (pango_layout_is_ellipsized(layout_) == TRUE);
+#endif
+#endif
+	return false;
 }
 
 unsigned ttext::insert_text(const unsigned offset, const std::string& text)
