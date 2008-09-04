@@ -31,6 +31,7 @@
 #   * consistency between recruit= and recruitment_pattern= instances
 #   * double space after punctuation in translatable strings.
 #   * unknown races or movement types in units
+#   * unknown unit types in recruitment lists
 #
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
@@ -228,7 +229,9 @@ note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
 # This needs to match the list of usage types in ai_python.cpp
 usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
 
-# These are accumulated by sanity_check() and examined by consistency_check() 
+# These are accumulated by sanity_check() and examined by consistency_check()
+unit_types = []
+derived_units = []
 usage = {}
 sides = []
 movetypes = []
@@ -253,6 +256,7 @@ def sanity_check(filename, lines):
     in_unit_type = False
     in_theme = False
     in_filter_attack = False
+    in_base_unit = False
     unit_race = None
     for i in range(len(lines)):
         if "[filter_attack]" in lines[i]:
@@ -260,6 +264,13 @@ def sanity_check(filename, lines):
             continue
         elif "[/filter_attack]" in lines[i]:
             in_filter_attack = False
+            continue
+        if "[base_unit]" in lines[i]:
+            in_base_unit = True
+            derived_unit = True
+            continue
+        elif "[/base_unit]" in lines[i]:
+            in_base_unit = False
             continue
         elif "[theme]" in lines[i]:
             in_theme = True
@@ -277,6 +288,8 @@ def sanity_check(filename, lines):
         elif "[/unit_type]" in lines[i]:
             #print '"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes)
+            if unit_id and derived_unit:
+                derived_units.append(unit_id)
             if unit_id and not derived_unit:
                 missing_notes = []
                 for trait in traits:
@@ -299,7 +312,7 @@ def sanity_check(filename, lines):
                 if not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                          % (filename, in_unit_type, unit_id)
-                if not in_theme and not unit_race:
+                if not in_theme and not derived_unit and not unit_race:
                     print '"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id)
             in_unit_type = None
@@ -309,13 +322,14 @@ def sanity_check(filename, lines):
             has_special_notes = False
             derived_unit = False
             unit_race = None
-        if in_unit_type and not in_filter_attack:
+        if in_unit_type and not in_filter_attack and not in_base_unit:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
                 if key == "id" and not unit_id:
                     if value[0] == "_":
                         value = value[1:].strip()
                     unit_id = value
+                    unit_types.append(unit_id)
                 elif key == "usage":
                     assert(unit_id)
                     usage[unit_id] = value
@@ -332,8 +346,6 @@ def sanity_check(filename, lines):
                 pass
             if "{SPECIAL_NOTES}" in lines[i]:
                 has_special_notes = True
-            if "[base_unit]" in lines[i]:
-                derived_unit = True
             for (p, q) in notepairs:
                 if p in lines[i]:
                     traits.append(p)
@@ -377,7 +389,7 @@ def sanity_check(filename, lines):
     # vary by EASY/NORMAL/HARD level) this code will only record the
     # last of each for later consistency checking.
     in_side = False
-    in_subtag = False
+    in_ai = in_subunit = False
     recruit = []
     in_generator = False
     sidecount = 0
@@ -394,30 +406,41 @@ def sanity_check(filename, lines):
             sidecount += 1
             continue
         elif "[/side]" in lines[i]:
-            if recruit and recruitment_pattern:
+            if recruit or recruitment_pattern:
                 sides.append((filename, recruit, recruitment_pattern))
             in_side = False
             recruit = []
             recruitment_pattern = []
             continue
-        elif in_side and ("[unit]" in lines[i] or "[ai]" in lines[i]):
-            in_subtag = True
+        elif in_side and "[ai]" in lines[i]:
+            in_ai = True
             continue
-        elif in_side and ("[/side]" in lines[i] or "[/ai]" in lines[i]):
-            in_subtag = False
-        if not in_side or in_subtag or '=' not in lines[i]:
+        elif in_side and "[unit]" in lines[i]:
+            in_subunit = True
+            continue
+        elif in_side and "[/ai]" in lines[i]:
+            in_ai = False
+            continue
+        elif in_side and "[/unit]" in lines[i]:
+            in_subunit = False
+            continue
+        if not in_side or in_subunit or '=' not in lines[i]:
             continue
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if key == "recruit" and value:
                 recruit = (i+1, map(lambda x: x.strip(), value.split(",")))
             elif key == "recruitment_pattern" and value:
-                recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
-                for utype in recruitment_pattern[1]:
-                    if not utype in usage_types:
-                        print '"%s", line %d: unknown usage class %s' \
-                              % (filename, i+1, utype)
-            elif key == "side":
+                if not in_ai:
+                    print '"%s", line %d: recruitment_pattern outside [ai]' \
+                              % (filename, i+1)
+                else:
+                    recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
+                    for utype in recruitment_pattern[1]:
+                        if not utype in usage_types:
+                            print '"%s", line %d: unknown usage class %s' \
+                                  % (filename, i+1, utype)
+            elif key == "side" and not in_ai:
                 try:
                     if not in_generator and sidecount != int(value):
                         print '"%s", line %d: side number %s is out of sequence' \
@@ -434,6 +457,7 @@ def sanity_check(filename, lines):
         m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
         if m:
             usage[m.group(1)] = m.group(2).strip()
+            unit_types.append(m.group(1))
     # Consistency-check the id= attributes in [side], [unit], [recall],
     # and [message] scopes, also correctness-check translation marks and look
     # for double spaces at end of sentence.
@@ -551,19 +575,29 @@ def sanity_check(filename, lines):
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
     utypes = []
-    for (filename, (rl, recruit), (pl, recruitment_pattern)) in sides:
+    for (filename, recruitlist, patternlist) in sides:
         #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
-        for rtype in recruit:
-            if rtype not in usage:
-                print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
-                continue
-            utype = usage[rtype]
-            if utype not in recruitment_pattern:
-                print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
-            utypes.append(utype)
-        for utype in recruitment_pattern:
-            if utype not in utypes:
-                print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, rl, utype)
+        if recruitlist:
+            (rl, recruit) = recruitlist
+            for rtype in recruit:
+                if rtype not in unit_types:
+                    print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
+                    continue
+                elif rtype not in usage:
+                    if not rtype in derived_units:
+                        print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
+                    continue
+                utype = usage[rtype]
+                if patternlist:
+                    (pl, recruitment_pattern) = patternlist
+                    if utype not in recruitment_pattern:
+                        print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
+                    utypes.append(utype)
+            if patternlist:
+                (pl, recruitment_pattern) = patternlist
+                for utype in recruitment_pattern:
+                    if utype not in utypes:
+                        print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, pl, utype)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
