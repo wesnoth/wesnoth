@@ -17,6 +17,7 @@
 #include "gui/dialogs/helper.hpp"
 
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/window_builder.hpp"
@@ -34,15 +35,40 @@
 namespace gui2 {
 
 teditor_generate_map::teditor_generate_map()
-: map_generator_(NULL), gui_(NULL)
+: map_generators_(), current_map_generator_(0),
+current_generator_label_(NULL), gui_(NULL)
 {
 }
 
 void teditor_generate_map::do_settings(twindow& /*window*/)
 {
-	if (map_generator_->allow_user_config()) {
-		map_generator_->user_config(*gui_);
+	map_generator* mg = get_selected_map_generator();
+	if (mg->allow_user_config()) {
+		mg->user_config(*gui_);
 	}
+}
+
+void teditor_generate_map::do_next_generator(twindow& /*window*/)
+{
+	current_map_generator_++;
+	current_map_generator_ %= map_generators_.size();
+	update_current_generator_label();
+}
+
+map_generator* teditor_generate_map::get_selected_map_generator()
+{
+	assert(current_map_generator_ >= 0 && current_map_generator_ < map_generators_.size());
+	return map_generators_[current_map_generator_];
+}
+
+void teditor_generate_map::update_current_generator_label()
+{
+	std::stringstream ss; 
+	ss << lexical_cast<std::string>(current_map_generator_ + 1);
+	ss << "/" << lexical_cast<std::string>(map_generators_.size());
+	ss << ": " << get_selected_map_generator()->name() << ", " << get_selected_map_generator()->config_name();
+	ERR_ED << ss.str() << "\n";
+	current_generator_label_->set_label(ss.str());
 }
 
 twindow teditor_generate_map::build_window(CVideo& video)
@@ -52,11 +78,16 @@ twindow teditor_generate_map::build_window(CVideo& video)
 
 void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 {
-	assert(map_generator_);
+	assert(!map_generators_.empty());
 	assert(gui_);
+	current_generator_label_ = &window.get_widget<tlabel>("current_generator", false);
 	tbutton& settings_button = window.get_widget<tbutton>("settings", false);
 	settings_button.set_callback_mouse_left_click(
 		dialog_callback<teditor_generate_map, &teditor_generate_map::do_settings>);
+	tbutton& next_generator_button = window.get_widget<tbutton>("next_generator", false);
+	next_generator_button.set_callback_mouse_left_click(
+		dialog_callback<teditor_generate_map, &teditor_generate_map::do_next_generator>);
+	update_current_generator_label();
 }
 
 void teditor_generate_map::post_show(twindow& /*window*/)

@@ -44,6 +44,10 @@ public:
 	//! Returns a string identifying the generator by name.
 	//! The name should not contain spaces.
 	virtual std::string name() const = 0;
+	
+	//! Return a friendly name for the generator
+	//! used to differentiate between different configs of the same generator
+	virtual std::string config_name() const = 0;
 
 	//! Creates a new map and returns it.
 	//! args may contain arguments to the map generator.

@@ -292,7 +292,7 @@ class editor_controller : public controller_base,
 		/** The display object used and owned by the editor. */
 		editor_display* gui_;
 		
-		map_generator* map_generator_;
+		std::vector<map_generator*> map_generators_;
 		
 		/** Legacy object required by the legacy terrain palette and brush bar */
 		size_specs* size_specs_;

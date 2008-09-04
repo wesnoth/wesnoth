@@ -59,7 +59,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, rng_setter_(NULL)
 	, map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
 	, gui_(NULL)
-	, map_generator_(NULL)
+	, map_generators_()
 	, size_specs_()
 	, palette_()
 	, brush_bar_()
@@ -154,8 +154,19 @@ void editor_controller::init_mouse_actions(const config& game_config)
 	}	
 }
 
-void editor_controller::init_map_generators(const config& /*game_config*/)
+void editor_controller::init_map_generators(const config& game_config)
 {
+	foreach (const config* i, game_config.get_children("multiplayer")) {
+		if ((*i)["map_generation"] == "default") {
+			const config* generator_cfg = i->child("generator");
+			if (generator_cfg == NULL) {
+				ERR_ED << "Scenario \"" << (*i)["name"] << "\" with id " << (*i)["id"] << " has map_generation=default but no [generator] tag";
+			} else {
+				map_generator* m = create_map_generator("", generator_cfg);
+				map_generators_.push_back(m);
+			}
+		}
+	}
 }
 
 void editor_controller::load_tooltips()
@@ -170,10 +181,12 @@ editor_controller::~editor_controller()
 	delete brush_bar_;
 	delete size_specs_;
 	delete floating_label_manager_;
-	delete map_generator_;
     delete gui_;
 	foreach (const mouse_action_map::value_type a, mouse_actions_) {
 		delete a.second;
+	}
+	foreach (map_generator* m, map_generators_) {
+		delete m;
 	}
 	delete prefs_disp_manager_;
 	delete rng_setter_;
@@ -278,20 +291,13 @@ void editor_controller::save_map_as_dialog()
 
 void editor_controller::generate_map_dialog()
 {
-	if (map_generator_ == NULL) {
-		// Initialize the map generator if it has not been used before
-		const config* const toplevel_cfg = game_config_.find_child("multiplayer","id","multiplayer_Random_Map");
-		const config* const cfg = toplevel_cfg == NULL ? NULL : toplevel_cfg->child("generator");
-		if (cfg == NULL) {
-			WRN_ED << "No random map generator\n";
-			return;
-		}
-		else {
-			map_generator_ = create_map_generator("", cfg);
-		}
+	if (map_generators_.empty()) {
+		gui::message_dialog(gui(), _("Error"), _("No random map generators found")).show();
+		return;
 	}
+
 	gui2::teditor_generate_map dialog;
-	dialog.set_map_generator(map_generator_);
+	dialog.set_map_generators(map_generators_);
 	dialog.set_gui(&gui());
 	dialog.show(gui().video());
 	
@@ -299,7 +305,7 @@ void editor_controller::generate_map_dialog()
 	if(res == gui2::twindow::OK) {
 		if (!confirm_discard()) return;
 		std::string map_string =
-			map_generator_->create_map(std::vector<std::string>());
+			dialog.get_selected_map_generator()->create_map(std::vector<std::string>());
 		if (map_string.empty()) {
 			gui::message_dialog(gui(), "",
 							 _("Map creation failed.")).show();

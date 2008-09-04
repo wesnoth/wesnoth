@@ -330,6 +330,16 @@ void default_map_generator::user_config(display& disp)
 
 std::string default_map_generator::name() const { return "default"; }
 
+std::string default_map_generator::config_name() const
+{
+	const config* c = cfg_.child("scenario");
+	if (c != NULL) {
+		return (*c)["name"];
+	} else {
+		return "";
+	}
+}
+
 std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
 	return generate_map(args);

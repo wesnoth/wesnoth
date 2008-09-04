@@ -69,6 +69,11 @@ cave_map_generator::cave_map_generator(const config* cfg) :
 
 }
 
+std::string cave_map_generator::config_name() const
+{
+	return "";
+}
+
 size_t cave_map_generator::translate_x(size_t x) const
 {
 	if(flipx_) {
