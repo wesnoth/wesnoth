@@ -1152,10 +1152,10 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string command(query.begin(),i);
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
-	const std::string& help_msg = "Available commands are: ban(s) [<mask>] [<time>] <reason>,"
-			"kick <mask>, k(ick)ban [<mask>] [<time>] <reason>, help, metrics, netstats,"
-			" (lobby)msg <message>, motd [<message>], status [<mask>],"
-			" unban <ipmask>";
+	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
+			" bans [deleted], kick <mask>, k(ick)ban <mask> [<time>] <reason>,"
+			" help, metrics, netstats, (lobby)msg <message>, motd [<message>],"
+			" status [<mask>], unban <ipmask>";
 	// Shutdown and restart commands can only be issued via the socket.
 	if (command == "shut_down" && issuer_name == "*socket*") {
 		if (parameters == "now") {
