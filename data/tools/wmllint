@@ -700,10 +700,7 @@ def hack_syntax(filename, lines):
 
 def is_map(filename):
     "Is this file a map?"
-    if isresource(filename) or '{' in filename or '}' in filename:
-        return False
-    if filename.endswith(".map"):
-        return True
+    return filename.endswith(".map")
 
 if 0:	# Not used, as there are currently no defined map transforms
     class maptransform_error:
