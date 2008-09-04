@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:47+0200\n"
-"PO-Revision-Date: 2008-06-21 15:54+0100\n"
+"PO-Revision-Date: 2008-09-03 23:24+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -268,9 +268,8 @@ msgstr "Brod řeky"
 
 #. [terrain]
 #: data/core/terrain.cfg:1006
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Pobřeží"
+msgstr "Pobřežní útes"
 
 #. [terrain]
 #: data/core/terrain.cfg:1020
@@ -922,7 +921,7 @@ msgstr "Načti hru"
 
 #: src/gui/dialogs/title_screen.cpp:81
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 #: src/gui/widgets/canvas.cpp:293
 msgid "Line doesn't fit on canvas."
@@ -934,7 +933,7 @@ msgstr "Obdélník se nevejde na plátno."
 
 #: src/gui/widgets/canvas.cpp:784
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Text má výšku fontu nula."
 
 #: src/gui/widgets/canvas.cpp:838
 msgid "Text doesn't start on canvas."
@@ -1000,9 +999,11 @@ msgid ""
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
+# Je "values" slovo, nebo označení druhu proměnné?
 #: src/gui/widgets/window_builder.cpp:1023
+#, fuzzy
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Nesouhlasí počet value_labels a values."
 
 #: src/hotkeys.cpp:57
 msgid "Next Unit"
@@ -1297,7 +1298,7 @@ msgstr "Generátor map"
 
 #: src/hotkeys.cpp:143
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Prohodit terény pro popředí a pozadí"
 
 #: src/hotkeys.cpp:144
 #, fuzzy
@@ -1313,9 +1314,8 @@ msgid "Fill Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:147
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Vyber vše"
+msgstr "Nástroj pro výběr"
 
 #: src/hotkeys.cpp:149
 msgid "Set Starting Positions Tool"
@@ -1333,7 +1333,7 @@ msgstr "Implicitní pohled"
 
 #: src/hotkeys.cpp:158
 msgid "Select Inverse"
-msgstr ""
+msgstr "Invertovat výběr"
 
 #: src/hotkeys.cpp:160
 #, fuzzy
@@ -1365,7 +1365,7 @@ msgstr ""
 #: src/hotkeys.cpp:178
 #, fuzzy
 msgid "Rotate Map"
-msgstr "Načti mapu"
+msgstr "Ulož mapu"
 
 #: src/hotkeys.cpp:180
 msgid "Flip Map along X axis"
@@ -1622,10 +1622,6 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Otoč výběr"
 
 #~ msgid "Cave Lit"
 #~ msgstr "Osvětlená jeskyně"

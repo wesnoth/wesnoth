@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:47+0200\n"
-"PO-Revision-Date: 2008-07-04 13:41+0100\n"
+"PO-Revision-Date: 2008-09-03 23:41+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -56,6 +56,7 @@ msgstr "Zobrazovat animace stojících jednotek"
 msgid "Show Combat"
 msgstr "Ukazovat boj"
 
+# Kratší!
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:104
 #, fuzzy
@@ -192,7 +193,7 @@ msgstr "Správa internacionalizace"
 #. [about]
 #: data/core/about.cfg:852
 msgid "English strings edition"
-msgstr ""
+msgstr "Úpravy anglické verze textů"
 
 #. [about]
 #: data/core/about.cfg:859
@@ -586,7 +587,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:138
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -597,7 +597,7 @@ msgstr ""
 "Během hry mějte na paměti, že pokud budete ve hře pohybovat myší přes řadu "
 "předmětů, zobrazí se ve stavovém panelu informace ve tvaru stručného popisku "
 "k danému předmětu. To je zejména užitečné v případě, kdy se poprvé setkáte s "
-"novou <ref>dst=abilities text=schopností</ref>."
+"novou <ref>dst='..abilities_section' text='schopností'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:143
@@ -683,7 +683,6 @@ msgstr "Verbování a přivolávání"
 # pův.: "hlásce"
 #. [topic]
 #: data/core/help.cfg:160
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -697,14 +696,14 @@ msgid ""
 "recruit it."
 msgstr ""
 "Každá ze stran začíná hrát s jedním vůdcem umístěným na hradě. Na začátku "
-"každé bitvy i během ní můžete verbovat <ref>dst=units text=jednotky</ref> do "
-"své armády. Pro verbování je nutné mít umístěného vůdce (např. v tažení "
-"Dědic trůnu jím je Konrád) v tvrzi <ref>dst=terrain_castle text=Hradu</ref>. "
-"Pak můžete verbovat nováčky buď pomocí volby menu nebo pravým klikem na "
-"příslušný čtverec a volbou <italic>text=Naverbuj</italic>. To vyvolá menu "
-"verbování, které obsahuje seznam dostupných posil i jejich cenu. Kliknutím "
-"na jednotku uvidíte její statistiku, pak klikněte na tlačítko Ok čímž jí "
-"naverbujete."
+"každé bitvy i během ní můžete verbovat <ref>dst='..units' text='jednotky'</"
+"ref> do své armády. Pro verbování je nutné mít umístěného vůdce (např. v "
+"tažení Dědic trůnu jím je Konrád) v tvrzi <ref>dst='terrain_castle' "
+"text='hradu'</ref>. Pak můžete verbovat nováčky buď pomocí volby menu nebo "
+"pravým klikem na příslušný čtverec a volbou <italic>text=Naverbuj</italic>. "
+"To vyvolá menu verbování, které obsahuje seznam dostupných posil i jejich "
+"cenu. Kliknutím na jednotku uvidíte její statistiku, pak klikněte na "
+"tlačítko Ok čímž ji naverbujete."
 
 #. [topic]
 #: data/core/help.cfg:162
@@ -725,7 +724,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -734,8 +732,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Naverbované jednotky přicházejí se dvěma náhodnými <ref>dst=..traits_section "
-"text=Vlastnostmi</ref> jež upravují jejích statistiku."
+"Naverbované jednotky přicházejí se dvěma náhodnými <ref>dst='.."
+"traits_section' text='Vlastnostmi'</ref>, jež upravují jejích statistiku."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -754,7 +752,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:168
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -764,9 +761,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jednotky nejen stojí peníze při verbování či vyvolání, ale také požadují "
+"Jednotky stojí peníze nejen při verbování či vyvolání, ale také požadují "
 "peníze pro obživu. Pro více informací se podívejte na "
-"<ref>dst=income_and_upkeep text='Příjmy a Výdaje'</ref>."
+"<ref>dst='income_and_upkeep' text='Příjmy a Výdaje'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:173
@@ -839,7 +836,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:190
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -849,7 +845,7 @@ msgstr ""
 "Množství života je také u každé jednotky naznačeno ukazatelem energie, který "
 "může být zelený, žlutý nebo červený. Jednotka, která má alespoň 1 "
 "zkušenostní bod má ukazatel energie zbarvený do modra, který se v případě "
-"<ref>dst=experience_and_advancement text=povýšení</ref> změní na bílý."
+"<ref>dst='experience_and_advancement' text='povýšení'</ref> změní na bílý."
 
 #. [topic]
 #: data/core/help.cfg:195
@@ -1439,7 +1435,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:284
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1448,14 +1443,13 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Léčitelé: Jednotky se schopností <ref>dst=ability_heals text=Léčení</ref> "
-"mohou léčit či chránit před jedy způsobujícími poškození. Budou vyléčeny "
-"pouze ty jednotky, které se nacházejí v těsné blízkosti a jsou na stejné "
-"straně jako léčitel a to pouze o 4 nebo 8HP na jednotku."
+"Léčitelé: Jednotky se schopností <ref>dst='ability_heals +4' text='Léčení'</"
+"ref> mohou léčit či chránit před jedy způsobujícími poškození. Budou "
+"vyléčeny pouze ty jednotky, které se nacházejí v těsné blízkosti a jsou na "
+"stejné straně jako léčitel a to pouze o 4 nebo 8HP na jednotku."
 
 #. [topic]
 #: data/core/help.cfg:285
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1463,7 +1457,7 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Uzdravovatelé: Jednotky se schopností <ref>dst=ability_cures "
+"Uzdravovatelé: Jednotky se schopností <ref>dst='ability_cures' "
 "text='uzdravování'</ref> uzdraví všechny spřátelené jednotky z otravy "
 "(uzdravování má u spřátelené jednotky přednost před léčením či ošetřováním, "
 "má-li uzdravovatel i tuto schopnost)."
@@ -1578,7 +1572,6 @@ msgstr "Závěr"
 
 #. [topic]
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1587,9 +1580,10 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "Tím jsme uzavřeli základy Wesnothu. Možná se budete chtít podívat na "
-"Základní Strategii nebo se seznámit s <ref>dst=traits text=Vlastnostmi</ref> "
-"a <ref>dst=abilities text=Schopnostmi</ref>, ale nyní víte vše, co "
-"potřebujete k hraní tažení „Dědic trůnu“. Dobře se bavte a mnoho štěstí!"
+"Základní Strategii nebo se seznámit s <ref>dst='..traits_section' "
+"text='vlastnostmi'</ref> a <ref>dst='..abilities_section' "
+"text='schopnostmi'</ref>, ale nyní víte vše, co potřebujete k hraní tažení "
+"„Dědic trůnu“. Dobře se bavte a mnoho štěstí!"
 
 #. [topic]
 #: data/core/help.cfg:311
@@ -1634,7 +1628,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:331
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1646,8 +1639,8 @@ msgstr ""
 "\n"
 "\n"
 "Další vlastnosti, které mohou být přiřazeny jednotkám jsou "
-"<ref>dst=traits_dextrous text=Obratnost</ref>,<ref>dst=traits_loyal "
-"text=Věrnost</ref> a <ref>dst=traits_undead text=Nemrtví</ref>.\n"
+"<ref>dst='traits_dextrous' text='obratnost'</ref>, <ref>dst='traits_loyal' "
+"text=věrnost</ref> a <ref>dst='traits_undead' text='Nemrtví'</ref>.\n"
 "\n"
 
 #. [topic]
@@ -1977,7 +1970,6 @@ msgstr "Cesta"
 
 #. [topic]
 #: data/core/help.cfg:436
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1985,7 +1977,7 @@ msgid ""
 msgstr ""
 "Cesta je tvořena udusanou hlínou, vytvořenou spoustou cestujících, kteří jí "
 "použili. Co se týká herních vlastností, jsou stejné jako u "
-"<ref>dst=terrain_grassland text=Louky</ref>."
+"<ref>dst='terrain_grassland' text='louky'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:441
@@ -2296,7 +2288,6 @@ msgstr "Skalnatá jeskyně"
 
 #. [topic]
 #: data/core/help.cfg:566
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2313,8 +2304,8 @@ msgstr ""
 "Připomíná rozeklanou podzemní dutinu, která snižuje efektivitu většiny "
 "jednotek a zvyšuje obranné možnosti. Trpaslíci a trollové žijící v jeskyních "
 "nemají s pohybem v tomto terénu problémy, zvláště trpaslíci díky jejich "
-"malému vzrůstu. Někdy jsou jeskyně <ref>dst=terrain_illuminated_cave "
-"text=osvětlené</ref>\n"
+"malému vzrůstu. Někdy jsou jeskyně <ref>dst='terrain_illuminated_cave' "
+"text='osvětlené'</ref>\n"
 "\n"
 "Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, jízda "
 "pouze 40% a trpaslíci 60%."
@@ -2370,7 +2361,6 @@ msgstr "Step"
 
 #. [topic]
 #: data/core/help.cfg:592
-#, fuzzy
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2378,7 +2368,7 @@ msgid ""
 msgstr ""
 "Stepi jsou roviny s vysokou travou, můžeme je nalézt zejména v teplejších "
 "krajinách. Jejich herní význam je stejný jako v případě "
-"<ref>dst=terrain_grassland text=Louky</ref>."
+"<ref>dst='terrain_grassland' text='Louky'</ref>."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
@@ -2573,7 +2563,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2583,7 +2572,7 @@ msgid ""
 msgstr ""
 "\n"
 "Zapne ladící režim (nefunguje ve hře více hráčů) - viz "
-"<ref>dst=debug_commands text='příkazy ladícího módu'</ref>.\n"
+"<ref>dst='debug_commands' text='příkazy ladícího módu'</ref>.\n"
 "Ladící režim je vypnut ukončením hry nebo příkazem :nodebug.\n"
 "\n"
 
@@ -3462,7 +3451,7 @@ msgstr "Jen vodní lidé mohou používat tento předmět!"
 
 #: data/core/macros/items.cfg:516
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Má $unit.name sebrat trojzubec?"
 
 #. [object]
 #: data/core/macros/items.cfg:518
@@ -6561,9 +6550,8 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:366
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:399
 msgid "addon_type^Campaign"
@@ -6654,9 +6642,8 @@ msgid "Response"
 msgstr "Odpověď"
 
 #: src/addon_management.cpp:573
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Stahuji rozšíření..."
+msgstr "Stahuji rozšíření: $addon_title|..."
 
 #: src/addon_management.cpp:587
 msgid ""
@@ -6668,18 +6655,16 @@ msgid "Unchecked script files found:"
 msgstr ""
 
 #: src/addon_management.cpp:644
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "Rozšíření bylo nainstalováno."
+msgstr "Rozšíření '$addon_title|' bylo úspěšně nainstalováno."
 
 #: src/addon_management.cpp:646
 msgid "Add-on Installed"
 msgstr "Rozšíření nainstalováno"
 
 #: src/addon_management.cpp:704
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "Odinstalovat rozšíření"
+msgstr "Zastaralá rozšíření"
 
 #: src/addon_management.cpp:706
 msgid ""
@@ -6706,14 +6691,12 @@ msgid "Name"
 msgstr "Jméno"
 
 #: src/addon_management.cpp:729
-#, fuzzy
 msgid "New version"
-msgstr "Verze"
+msgstr "Nová verze"
 
 #: src/addon_management.cpp:729
-#, fuzzy
 msgid "Old version"
-msgstr "Verze"
+msgstr "Stará verze"
 
 #: src/addon_management.cpp:730 src/addon_management.cpp:931
 msgid "Author"
@@ -6724,45 +6707,40 @@ msgid "Size"
 msgstr "Velikost"
 
 #: src/addon_management.cpp:784
-#, fuzzy
 msgid "Update Add-ons"
-msgstr "Získat rozšíření"
+msgstr "Aktualizace rozšíření"
 
 #: src/addon_management.cpp:785
 msgid "Select an add-on to update:"
 msgstr ""
 
 #: src/addon_management.cpp:799
-#, fuzzy
 msgid "Update all"
-msgstr "Jeskynní hradba"
+msgstr "Aktualizovat vše"
 
 #: src/addon_management.cpp:854
-#, fuzzy
 msgid "Update failed"
-msgstr "Jeskynní hradba"
+msgstr "Aktualizace selhala"
 
 #: src/addon_management.cpp:856
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Následující rozšíření obsahovalo chybu a nemohlo být nahráno:"
-msgstr[1] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
-msgstr[2] "Následující rozšíření obsahovala chybu a nemohly být nahrány:"
+msgstr[0] "Následující rozšíření se nezdařilo stáhnout či aktualizovat:"
+msgstr[1] "Následující rozšíření se nezdařilo stáhnout či aktualizovat:"
+msgstr[2] "Následující rozšíření se nezdařilo stáhnout či aktualizovat:"
 
 #: src/addon_management.cpp:865
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Získat rozšíření"
+msgstr "Aktualizace proběhla úspěšně"
 
 #: src/addon_management.cpp:866
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Rozšíření bylo úspěšně aktualizováno."
 
 #: src/addon_management.cpp:867
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Všechna rozšíření byla úspěšně aktualizována."
 
 #: src/addon_management.cpp:890
 #, fuzzy
@@ -6779,9 +6757,8 @@ msgid "Requesting list of add-ons"
 msgstr "Získávám seznam rozšíření"
 
 #: src/addon_management.cpp:914
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Chyba při komunikaci se serverem."
+msgstr "Při komunikaci se serverem došlo k chybě."
 
 #: src/addon_management.cpp:930 src/titlescreen.cpp:321
 msgid "Version"
@@ -7159,12 +7136,10 @@ msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
 #: src/game.cpp:1235
-#, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Opravdu chcete spustit server?"
 
 #: src/game.cpp:1236
-#, fuzzy
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7230,7 +7205,7 @@ msgstr "Probíhá přenastavení písma pro současný jazyk."
 #: src/game.cpp:1936
 #, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Odinstalovat rozšíření"
+msgstr "Získávám seznam rozšíření"
 
 #: src/game.cpp:1945
 msgid "Loading title screen."
@@ -7250,7 +7225,7 @@ msgstr "Prohra:"
 
 #: src/game_events.cpp:2194
 msgid "[store_unit] missing required [filter] tag\n"
-msgstr ""
+msgstr "[store_unit] neobsahuje povinný tag [filter]\n"
 
 #: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
 #: src/gamestatus.cpp:374 src/gamestatus.cpp:399
@@ -7907,9 +7882,8 @@ msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"Pošli soukromou zprávu.\n"
-"Nelze poslat zprávu hráči, který hraje za jakoukoli stranu v právě běžící "
-"hře."
+"Pošli soukromou zprávu. Nelze poslat hráči, který nehraje za některou stranu "
+"v právě běžící hře."
 
 #: src/menu_events.cpp:2131
 msgid "Change the log level of a log domain."
@@ -8979,9 +8953,8 @@ msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
 #: src/serialization/parser.cpp:346
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error na $pos"
+msgstr "$error, hodnota '$value' na $pos"
 
 #: src/statistics_dialog.cpp:68 src/statistics_dialog.cpp:123
 msgid "Recruits"
@@ -9237,19 +9210,16 @@ msgid "neutral"
 msgstr "neutrální"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^chaotic"
-msgstr "stroj"
+msgstr "chaotická"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^lawful"
-msgstr "věrná"
+msgstr "zákonná"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^neutral"
-msgstr "nemrtvá"
+msgstr "neutrální"
 
 #: src/upload_log.cpp:320
 msgid ""
@@ -9282,36 +9252,23 @@ msgstr "Povolit posílání souhrnů"
 #~ msgid "Warning: Errors occurred while loading game configuration files: '"
 #~ msgstr "Upozornění: Při načítání konfiguračních souborů se vyskytly chyby."
 
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "Estonský překlad"
+#~ msgid "Remove add-ons"
+#~ msgstr "Odstranit rozšíření"
 
-#, fuzzy
-#~ msgid "Connect to add-ons server"
+#~ msgid "Connect to Server"
 #~ msgstr "Připoj se na server"
 
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
+#~ msgid "You will now connect to a server to download add-ons."
 #~ msgstr "Nyní se připojíš na server s rozšířeními, abys nějaké stáhl."
 
 #~ msgid "Server: "
 #~ msgstr "Server: "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Odinstalovat rozšíření"
 
 #~ msgid "Join Official Server"
 #~ msgstr "Připoj se na oficiální server"
 
 #~ msgid "Log on to the official Wesnoth multiplayer server"
 #~ msgstr "Připoj se na oficiální herní server Wesnothu"
-
-#~ msgid "Connect to Server"
-#~ msgstr "Připoj se na server"
-
-#~ msgid "Join a different server"
-#~ msgstr "Připoj se na jiný server"
 
 #~ msgid "Host Networked Game"
 #~ msgstr "Hostuj síťovou hru"
@@ -9329,6 +9286,12 @@ msgstr "Povolit posílání souhrnů"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Vyber si preferovaný jazyk:"
+
+#~ msgid "Level"
+#~ msgstr "Úroveň"
+
+#~ msgid "Add a trait to a unit."
+#~ msgstr "Přidej jednotce vlastnost."
 
 #~ msgid "View List"
 #~ msgstr "Ukaž seznam"
@@ -9349,29 +9312,8 @@ msgstr "Povolit posílání souhrnů"
 #~ msgstr "Vyber hostitele k připojení: "
 
 #, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "Estonský překlad"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "Portugalský překlad"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Filtr: "
-
-#~ msgid "Remove add-ons"
-#~ msgstr "Odstranit rozšíření"
-
-#, fuzzy
 #~ msgid "--move--"
 #~ msgstr "kroků"
-
-#~ msgid "Level"
-#~ msgstr "Úroveň"
-
-#~ msgid "Add a trait to a unit."
-#~ msgstr "Přidej jednotce vlastnost."
 
 #~ msgid "ruby of fire"
 #~ msgstr "Ohnivý rubín"
