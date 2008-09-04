@@ -583,15 +583,6 @@ def leader(s):
     "Return a copy of the leading whitespace in the argument."
     return leading_ws.match(s).group(0)
 
-def outdent(s):
-    "Outdent line by one level."
-    if s.startswith(baseindent):
-        return s[len(baseindent):]
-    elif s.endswith("\t"):
-        return s[:-1] + baseindent
-    else:
-        return s
-
 def hack_syntax(filename, lines):
     # Syntax transformations go here.  This gets called once per WML file;
     # the name of the file is passed as filename, text of the file as the
