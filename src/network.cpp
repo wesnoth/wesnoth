@@ -628,18 +628,13 @@ void queue_disconnect(network::connection sock)
 	disconnection_queue.push_back(sock);
 }
 
-connection receive_data(config& cfg, connection connection_num, unsigned int timeout
-#ifdef BANDWIDTH_MONITOR
-		, bandwidth_in_ptr* bandwidth_in
-#endif
+connection receive_data(config& cfg, connection connection_num, unsigned int timeout, bandwidth_in_ptr* bandwidth_in
 		)
 {
 	unsigned int start_ticks = SDL_GetTicks();
 	while(true) {
 		const connection res = receive_data(cfg,connection_num
-#ifdef BANDWIDTH_MONITOR
 		,(bool*)0 , bandwidth_in
-#endif
 		);
 		if(res != 0) {
 			return res;
@@ -659,9 +654,7 @@ connection receive_data(config& cfg, connection connection_num, unsigned int tim
 }
 
 connection receive_data(config& cfg, connection connection_num, bool* gzipped
-#ifdef BANDWIDTH_MONITOR
 		, bandwidth_in_ptr* bandwidth_in
-#endif
 		)
 {
 	if(!socket_set) {
@@ -717,17 +710,13 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped
 
 	TCPsocket sock = connection_num == 0 ? 0 : get_socket(connection_num);
 	TCPsocket s = sock;
-#ifdef BANDWIDTH_MONITOR
 	bandwidth_in_ptr temp;
 	if (!bandwidth_in)
 	{
 		bandwidth_in = &temp;
 	}
-#endif
 	sock = network_worker_pool::get_received_data(sock,cfg, gzipped
-#ifdef BANDWIDTH_MONITOR
 			, *bandwidth_in
-#endif
 			);
 	if (sock == NULL) {
 		if (!is_server() && last_ping != 0 && ping_timeout != 0)
@@ -773,9 +762,7 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped
 }
 
 connection receive_data(std::vector<char>& buf
-#ifdef BANDWIDTH_MONITOR
 		, bandwidth_in_ptr* bandwidth_in
-#endif
 		)
 {
 	if(!socket_set) {
@@ -834,7 +821,6 @@ connection receive_data(std::vector<char>& buf
 		return 0;
 	}
 
-#ifdef BANDWIDTH_MONITOR
 	{
 		bandwidth_in_ptr temp;
 		if (!bandwidth_in)
@@ -844,7 +830,6 @@ connection receive_data(std::vector<char>& buf
 		const int headers = 5;
 		bandwidth_in->reset(new network::bandwidth_in(buf.size() + headers));
 	}
-#endif
 
 	SDLNet_TCP_AddSocket(socket_set,sock);
 
@@ -860,7 +845,6 @@ connection receive_data(std::vector<char>& buf
 	waiting_sockets.insert(result);
 	return result;
 }
-#ifdef BANDWIDTH_MONITOR
 struct bandwidth_stats {
 	int out_packets;
 	int out_bytes;
@@ -989,7 +973,6 @@ void add_bandwidth_in(const std::string packet_type, size_t len)
 		add_bandwidth_in(type_, len_);
 	}
 
-#endif
 void send_file(const std::string& filename, connection connection_num, const std::string packet_type
 		)
 {
@@ -1005,10 +988,8 @@ void send_file(const std::string& filename, connection connection_num, const std
 		return;
 	}
 
-#ifdef BANDWIDTH_MONITOR
 	const int packet_headers = 5;
 	add_bandwidth_out(packet_type, file_size(filename) + packet_headers);
-#endif
 	network_worker_pool::queue_file(info->second.sock, filename);
 	
 }
@@ -1037,9 +1018,7 @@ size_t send_data(const config& cfg, connection connection_num, const bool gzippe
 		    i != sockets.end(); ++i) {
 			DBG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
 			size = send_data(cfg,*i, gzipped
-#ifdef BANDWIDTH_MONITOR
 					, packet_type
-#endif
 					);
 		}
 		return size;
@@ -1054,9 +1033,7 @@ size_t send_data(const config& cfg, connection connection_num, const bool gzippe
 
 	LOG_NW << "SENDING to: " << connection_num << ": " << cfg;
 	return network_worker_pool::queue_data(info->second.sock, cfg, gzipped
-#ifdef BANDWIDTH_MONITOR
 			, packet_type
-#endif 
 			);
 }
 
@@ -1086,10 +1063,8 @@ void send_raw_data(const char* buf, int len, connection connection_num, const st
 			<< "\tnot found in connection_map. Not sending...\n";
 		return;
 	}
-#ifdef BANDWIDTH_MONITOR
 	const int packet_headers = 5;
 	add_bandwidth_out(packet_type, len + packet_headers);
-#endif
 
 	network_worker_pool::queue_raw_data(info->second.sock, buf, len);
 }
@@ -1109,9 +1084,7 @@ void send_data_all_except(const config& cfg, connection connection_num, const bo
 		}
 
 		send_data(cfg,*i, gzipped
-#ifdef BANDWIDTH_MONITOR
 				, packet_type
-#endif
 				);
 	}
 }

@@ -807,9 +807,7 @@ void receive_data(TCPsocket sock)
 }
 
 TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped
-#ifdef BANDWIDTH_MONITOR
 		,network::bandwidth_in_ptr& bandwidth_in
-#endif
 		)
 {
 	assert(!raw_data_only);
@@ -841,9 +839,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped
 		if (gzipped)
 			*gzipped = buf->gzipped;
 		received_data_queue.erase(itor);
-#ifdef BANDWIDTH_MONITOR
 		bandwidth_in.reset(new network::bandwidth_in((*itor)->raw_buffer.size()));
-#endif
 		delete buf;
 		return res;
 	}
@@ -898,9 +894,7 @@ void queue_raw_data(TCPsocket sock, const char* buf, int len)
 }
 
 size_t queue_data(TCPsocket sock,const config& buf, const bool gzipped
-#ifdef BANDWIDTH_MONITOR
 		, const std::string& packet_type
-#endif
 		)
 {
 	DBG_NW << "queuing data...\n";
@@ -909,9 +903,7 @@ size_t queue_data(TCPsocket sock,const config& buf, const bool gzipped
 	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
 	queued_buf->gzipped = gzipped;
 	size_t size = queued_buf->stream.str().size();
-#ifdef BANDWIDTH_MONITOR
 	network::add_bandwidth_out(packet_type, size);
-#endif
 	queue_buffer(sock, queued_buf);
 	return size;
 }

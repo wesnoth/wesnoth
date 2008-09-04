@@ -114,8 +114,10 @@ namespace {
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
 
-void send_doc(simple_wml::document& doc, network::connection connection, std::string type = "unknown")
+void send_doc(simple_wml::document& doc, network::connection connection, std::string type = "")
 {
+	if (type.empty())
+		type = doc.root().first_child().to_string();
 	simple_wml::string_span s = doc.output_compressed();
 	network::send_raw_data(s.begin(), s.size(), connection, type);
 }
@@ -480,7 +482,6 @@ void server::run() {
 				ban_manager_.check_ban_times(now);
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) dump_stats(now);
-#ifdef BANDWIDTH_MONITOR
 				// Send network stats every hour
 				static size_t prev_hour = localtime(&now)->tm_hour;
 				if (prev_hour != localtime(&now)->tm_hour)
@@ -489,7 +490,6 @@ void server::run() {
 					LOG_SERVER << network::get_bandwidth_stats();
 
 				}
-#endif
 				// send a 'ping' to all players to detect ghosts
 				config ping;
 				ping["ping"] = lexical_cast<std::string>(now);
@@ -517,7 +517,7 @@ void server::run() {
 				} else {
 					DBG_SERVER << ip << "\tnew connection accepted. (socket: "
 						<< sock << ")\n";
-					send_doc(version_query_response_, sock,"command");
+					send_doc(version_query_response_, sock);
 					not_logged_in_.add_player(sock, true);
 				}
 			}
@@ -525,14 +525,8 @@ void server::run() {
 			static int sample_counter = 0;
 
 			std::vector<char> buf;
-#ifdef BANDWIDTH_MONITOR
 			network::bandwidth_in_ptr bandwidth_type;
-#endif
-			while ((sock = network::receive_data(buf
-#ifdef BANDWIDTH_MONITOR
-							, &bandwidth_type
-#endif
-							)) != network::null_connection) {
+			while ((sock = network::receive_data(buf, &bandwidth_type)) != network::null_connection) {
 				metrics_.service_request();
 
 				if(buf.empty()) {
@@ -567,9 +561,7 @@ void server::run() {
 
 				process_data(sock, data);
 
-#ifdef BANDWIDTH_MONITOR
-				bandwidth_type->set_type("command");
-#endif
+				bandwidth_type->set_type(data.root().first_child().to_string());
 				if(sample) {
 					const clock_t after_processing = get_cpu_time(sample);
 					metrics_.record_sample(data.root().first_child(),
@@ -666,9 +658,7 @@ void server::run() {
 			DBG_SERVER << "done closing socket...\n";
 		}
 	}
-#ifdef BANDWIDTH_MONITOR
 	LOG_SERVER << network::get_bandwidth_stats_all();
-#endif
 }
 
 void server::process_data(const network::connection sock,
@@ -713,7 +703,7 @@ void server::process_login(const network::connection sock,
 			LOG_SERVER << network::ip_address(sock)
 				<< "\tplayer joined using accepted version " << version_str
 				<< ":\ttelling them to log in.\n";
-			send_doc(login_response_, sock, "command");
+			send_doc(login_response_, sock);
 			return;
 		}
 		std::map<std::string,config>::const_iterator config_it;
@@ -806,7 +796,7 @@ void server::process_login(const network::connection sock,
 		}
 	}
 
-	send_doc(join_lobby_response_, sock, "join_lobby");
+	send_doc(join_lobby_response_, sock);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 	const player new_player(username, player_cfg, default_max_messages_,
@@ -817,7 +807,7 @@ void server::process_login(const network::connection sock,
 	lobby_.add_player(sock, true);
 
 	// Send the new player the entire list of games and players
-	send_doc(games_and_users_list_, sock, "lobby_list");
+	send_doc(games_and_users_list_, sock);
 
 	if (motd_ != "") {
 		lobby_.send_server_message(motd_.c_str(), sock);
@@ -913,8 +903,8 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << "Server is doing graceful shut down.";
 		}
 
-#ifndef _WIN32  // Not sure if this works on windows
-		// TODO: check if this works in windows.
+		// this works in windows if using "start /B"
+		// like in wesnoth MP server start code
 	} else if (command == "restart" && issuer_name == "*socket*") {
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
@@ -929,7 +919,6 @@ std::string server::process_command(const std::string& query, const std::string&
 			process_command("msg The server has been restarted. You may finish your games but can't start new ones and new players can't join this server.", issuer_name);
 			out << "New server started.";
 		}
-#endif
 	} else if (command == "help") {
 		out << help_msg;
 	} else if (command == "metrics") {
@@ -943,12 +932,10 @@ std::string server::process_command(const std::string& query, const std::string&
 		out << "Network stats:\nPending send buffers: "
 		    << stats.npending_sends << "\nBytes in buffers: "
 			<< stats.nbytes_pending_sends << "\n";
-#ifdef BANDWIDTH_MONITOR
 		if (parameters == "all")
 			out << network::get_bandwidth_stats_all();
 		else
 			out << network::get_bandwidth_stats(); // stats from previuos hour
-#endif
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
@@ -1130,7 +1117,7 @@ void server::process_whisper(const network::connection sock,
 		  "message=\"Invalid number of arguments\"\n"
 		  "sender=\"server\"\n"
 		  "[/message]\n", simple_wml::INIT_COMPRESSED);
-		send_doc(data, sock, "error");
+		send_doc(data, sock);
 		return;
 	}
 	const wesnothd::player_map::const_iterator pl = players_.find(sock);
@@ -1160,7 +1147,7 @@ void server::process_whisper(const network::connection sock,
 
 		simple_wml::document cwhisper;
 		whisper.copy_into(cwhisper.root().add_child("whisper"));
-		send_doc(cwhisper, i->first, "command");
+		send_doc(cwhisper, i->first);
 		return;
 	}
 
@@ -1174,7 +1161,7 @@ void server::process_whisper(const network::connection sock,
 	}
 
 	msg.set_attr("sender", "server");
-	send_doc(data, sock, "error");
+	send_doc(data, sock);
 }
 
 void server::process_data_lobby(const network::connection sock,
@@ -1191,9 +1178,9 @@ void server::process_data_lobby(const network::connection sock,
 	if (data.root().child("create_game")) {
 		if (graceful_restart) {
 			static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-			send_doc(leave_game_doc, sock,"command");
+			send_doc(leave_game_doc, sock);
 			lobby_.send_server_message("This server is shutting down. You aren't allowed to make new games. Please reconnect to the new server.", sock);
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 			return;
 		}
 		const std::string game_name = (*data.root().child("create_game"))["name"].to_string();
@@ -1231,41 +1218,41 @@ void server::process_data_lobby(const network::connection sock,
 		if (g == games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join unknown game:\t" << game_id << ".\n";
-			send_doc(leave_game_doc, sock, "command");
+			send_doc(leave_game_doc, sock);
 			lobby_.send_server_message("Attempt to join unknown game.", sock);
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 			return;
 		} else if ((*g)->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
-			send_doc(leave_game_doc, sock, "command");
+			send_doc(leave_game_doc, sock);
 			lobby_.send_server_message("You are banned from this game.", sock);
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 			return;
 		} else if(!observer && !(*g)->password_matches(password)) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join game:\t\"" << (*g)->name() << "\" ("
 				<< game_id << ") with bad password\n";
-			send_doc(leave_game_doc, sock, "command");
+			send_doc(leave_game_doc, sock);
 			lobby_.send_server_message("Incorrect password.", sock);
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 			return;
 		} else if (observer && !(*g)->allow_observers()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
 				<< game_id << ") which doesn't allow observers.\n";
-			send_doc(leave_game_doc, sock, "command");
+			send_doc(leave_game_doc, sock);
 			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers.", sock);
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 			return;
 		} else if (!(*g)->level_init()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join uninitialized game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
-			send_doc(leave_game_doc, sock, "command");
+			send_doc(leave_game_doc, sock);
 			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers.", sock);
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 			return;
 		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -1295,7 +1282,7 @@ void server::process_data_lobby(const network::connection sock,
 	// Player requests update of lobby content,
 	// for example when cancelling the create game dialog
 	if (data.child("refresh_lobby")) {
-		send_doc(games_and_users_list_, sock, "lobby_list");
+		send_doc(games_and_users_list_, sock);
 	}
 }
 
@@ -1553,7 +1540,7 @@ void server::process_data_game(const network::connection sock,
 			}
 
 			// Send the player who has quit the gamelist.
-			send_doc(games_and_users_list_, sock, "lobby_list");
+			send_doc(games_and_users_list_, sock);
 		}
 		return;
 	// If this is data describing side changes by the host.
@@ -1606,7 +1593,7 @@ void server::process_data_game(const network::connection sock,
 				update_game_in_lobby(g, user);
 			}
 			// Send the removed user the lobby game list.
-			send_doc(games_and_users_list_, user, "lobby_list");
+			send_doc(games_and_users_list_, user);
 			// FIXME: should also send a user diff to the lobby
 			//        to mark this player as available for others
 		}
