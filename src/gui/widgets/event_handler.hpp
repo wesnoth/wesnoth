@@ -145,6 +145,7 @@ private:
 			void (tevent_executor::*double_click) (tevent_handler&),
 			bool (tevent_executor::*wants_double_click) () const) :
 				last_click_stamp(0),
+				last_clicked_widget(NULL),
 				focus(0),
 				name(name),
 				down(down),
@@ -157,6 +158,9 @@ private:
 
 		/** The time of the last click used for double clicking. */
 		Uint32 last_click_stamp;
+
+		/** The widget the last click was on, used for double clicking. */
+		twidget* last_clicked_widget;
 
 		/**
 		 * If the mouse isn't captured we need to verify the up is on the same

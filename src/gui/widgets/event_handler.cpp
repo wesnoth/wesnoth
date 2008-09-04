@@ -498,15 +498,18 @@ void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
 {
 	if((widget->*button.wants_double_click)()) {
 		Uint32 stamp = SDL_GetTicks();
-		if(button.last_click_stamp + settings::double_click_time >= stamp) {
+		if(button.last_click_stamp + settings::double_click_time >= stamp
+				&& button.last_clicked_widget == widget) {
 
 			(widget->*button.double_click)(*this);
 			button.last_click_stamp = 0;
+			button.last_clicked_widget = NULL;
 
 		} else {
 
 			(widget->*button.click)(*this);
 			button.last_click_stamp = stamp;
+			button.last_clicked_widget = widget;
 		}
 
 	} else {
