@@ -35,6 +35,7 @@
 #include "proxy.hpp"
 #include "simple_wml.hpp"
 
+#include <boost/scoped_ptr.hpp>
 #include <algorithm>
 #include <cassert>
 #include <cerrno>
@@ -221,7 +222,7 @@ bool make_change_diff(const simple_wml::node& src,
 class server
 {
 public:
-	server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads);
+	server(int port, const std::string& config_file, size_t min_threads, size_t max_threads);
 	void run();
 private:
 	void send_error(network::connection sock, const char* msg) const;
@@ -237,7 +238,7 @@ private:
 	wesnothd::game lobby_;
 
 	//! server socket/fifo
-	input_stream& input_;
+	boost::scoped_ptr<input_stream> input_;
 
 	wesnothd::ban_manager ban_manager_;
 
@@ -300,12 +301,12 @@ private:
 	void start_new_server();
 };
 
-server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
+server::server(int port, const std::string& config_file, size_t min_threads, size_t max_threads)
 	: net_manager_(min_threads,max_threads), 
 	server_(port), 
 	not_logged_in_(players_),
 	lobby_(players_), 
-	input_(input), 
+	input_(),
 	config_file_(config_file),
 	cfg_(read_config()), 
 	graceful_restart(false),
@@ -361,6 +362,14 @@ config server::read_config() const {
 }
 
 void server::load_config() {
+#ifndef FIFODIR
+# warning "No FIFODIR set"
+# define FIFODIR "/var/run/wesnothd"
+#endif
+	const std::string fifo_path = (cfg_["fifo_path"].empty() ? std::string(FIFODIR) + "/socket" : std::string(cfg_["fifo_path"]));
+	input_.reset();
+	input_.reset(new input_stream(fifo_path));
+
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
 
@@ -473,7 +482,7 @@ void server::run() {
 			}
 			// Process commands from the server socket/fifo
 			std::string admin_cmd;
-			if (input_.read_line(admin_cmd)) {
+			if (input_ && input_->read_line(admin_cmd)) {
 				process_command(admin_cmd, "*socket*");
 			}
 
@@ -897,7 +906,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		} else {
 			// Graceful shut down.
 			server_.stop();
-			input_.stop();
+			input_.reset();
 			graceful_restart = true;
 			process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
 			out << "Server is doing graceful shut down.";
@@ -913,7 +922,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			graceful_restart = true;
 			// stop listening socket
 			server_.stop();
-			input_.stop();
+			input_.reset();
 			// start new server
 			start_new_server();
 			process_command("msg The server has been restarted. You may finish your games but can't start new ones and new players can't join this server.", issuer_name);
@@ -1714,12 +1723,6 @@ int main(int argc, char** argv) {
 
 	std::string config_file;
 
-#ifndef FIFODIR
-# warning "No FIFODIR set"
-# define FIFODIR "/var/run/wesnothd"
-#endif
-	std::string fifo_path = std::string(FIFODIR) + "/socket";
-
 	// setting path to currentworking directory
 	game_config::path = get_cwd();
 
@@ -1816,12 +1819,11 @@ int main(int argc, char** argv) {
 			port = atoi(argv[arg]);
 		}
 	}
-	input_stream input(fifo_path);
 
 	network::set_raw_data_only();
 
 	try {
-		server(port, input, config_file, min_threads, max_threads).run();
+		server(port, config_file, min_threads, max_threads).run();
 	} catch(network::error& e) {
 		ERR_SERVER << "Caught network error while server was running. Aborting.: "
 			<< e.message << "\n";
