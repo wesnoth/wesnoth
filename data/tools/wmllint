@@ -29,9 +29,10 @@
 #   * filter references by id= not matched by an actual unit
 #   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
+#   * unknown unit types in recruitment lists
 #   * double space after punctuation in translatable strings.
 #   * unknown races or movement types in units
-#   * unknown unit types in recruitment lists
+#   * unknown base units
 #
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
@@ -252,7 +253,6 @@ def sanity_check(filename, lines):
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units derived via [base_unit].
     # Also, build dictionaries of unit movement types and races
-    unit_id = ""
     in_unit_type = False
     in_theme = False
     in_filter_attack = False
@@ -267,7 +267,6 @@ def sanity_check(filename, lines):
             continue
         if "[base_unit]" in lines[i]:
             in_base_unit = True
-            derived_unit = True
             continue
         elif "[/base_unit]" in lines[i]:
             in_base_unit = False
@@ -279,18 +278,19 @@ def sanity_check(filename, lines):
             in_theme = False
             continue
         elif "[unit_type]" in lines[i]:
+            unit_id = ""
+            base_unit = ""
             traits = []
             notes = []
             has_special_notes = False
-            derived_unit = False
             in_unit_type = i+1
             continue
         elif "[/unit_type]" in lines[i]:
             #print '"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes)
-            if unit_id and derived_unit:
-                derived_units.append(unit_id)
-            if unit_id and not derived_unit:
+            if unit_id and base_unit:
+                derived_units.append((filename, i+1, unit_id, base_unit))
+            if unit_id and not base_unit:
                 missing_notes = []
                 for trait in traits:
                     tn = trait_note[trait]
@@ -312,24 +312,27 @@ def sanity_check(filename, lines):
                 if not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                          % (filename, in_unit_type, unit_id)
-                if not in_theme and not derived_unit and not unit_race:
+                if not in_theme and not base_unit and not unit_race:
                     print '"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id)
             in_unit_type = None
             traits = []
             notes = []
             unit_id = ""
+            base_unit = ""
             has_special_notes = False
-            derived_unit = False
             unit_race = None
-        if in_unit_type and not in_filter_attack and not in_base_unit:
+        if in_unit_type and not in_filter_attack:
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
-                if key == "id" and not unit_id:
+                if key == "id":
                     if value[0] == "_":
                         value = value[1:].strip()
-                    unit_id = value
-                    unit_types.append(unit_id)
+                    if not unit_id and not in_base_unit:
+                        unit_id = value
+                        unit_types.append(unit_id)
+                    if not base_unit and in_base_unit:
+                        base_unit = value
                 elif key == "usage":
                     assert(unit_id)
                     usage[unit_id] = value
@@ -575,6 +578,8 @@ def sanity_check(filename, lines):
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
     utypes = []
+    derivedlist = map(lambda x: x[2], derived_units)
+    baselist = map(lambda x: x[3], derived_units)
     for (filename, recruitlist, patternlist) in sides:
         #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
         if recruitlist:
@@ -584,7 +589,7 @@ def consistency_check():
                     print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
                     continue
                 elif rtype not in usage:
-                    if not rtype in derived_units:
+                    if not rtype in derivedlist:
                         print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
                     continue
                 utype = usage[rtype]
@@ -608,6 +613,12 @@ def consistency_check():
             if race not in races:
                 print '"%s", line %d: %s has unknown race' \
                       % (filename, line, unit_id)
+    # Should we be checking the transitive closure of derivation?
+    # It's not clear whether [base_unit] works when the base is itself derived.
+    for (filename, line, unit_type, base_unit) in derived_units:
+        if base_unit not in unit_types:
+            print '"%s", line %d: derivation of %s from %s does not resolve' \
+                  % (filename, line, unit_type, base_unit)
 
 # Syntax transformations
 
