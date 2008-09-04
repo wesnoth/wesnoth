@@ -1052,14 +1052,11 @@ def translator(filename, mapxforms, textxform):
     else:
         return None
 
-ignore = (".tgz", ".png", ".jpg", "-bak")
 vctypes = (".svn", ".git")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return fn.endswith(".cfg") or fn.endswith(".map") \
-        or ("maps" in fn and fn[-4:] not in ignore) \
-        or is_map(fn)
+    return fn.endswith(".cfg") or is_map(fn)
 
 def allcfgfiles(dir):
     "Get the names of all interesting files under dir."
