@@ -18,6 +18,8 @@
 #include "SDL.h"
 #include "SDL_thread.h"
 
+#include <list>
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/smart_ptr.hpp>
 
@@ -197,6 +199,8 @@ class async_operation;
 
 typedef boost::shared_ptr<async_operation> async_operation_ptr;
 
+typedef std::list<async_operation_ptr> active_operation_list;
+
 //class which defines an asynchronous operation. Objects of this class are accessed from
 //both the worker thread and the calling thread, and so it has 'strange' allocation semantics.
 //It is allocated by the caller, and generally deleted by the caller. However, in some cases
@@ -213,7 +217,11 @@ public:
 	enum RESULT { COMPLETED, ABORTED };
 
 	async_operation() : 
-		thread_(), aborted_(false), finished_(), finishedVar_(false), mutex_() {}
+		thread_(), aborted_(false), finished_(), finishedVar_(false), mutex_() 
+	{
+		while (active_.front().unique())
+			active_.pop_front();
+	}
 	virtual ~async_operation() {}
 
 	RESULT execute(async_operation_ptr this_ptr, waiter& wait);
@@ -237,6 +245,8 @@ private:
 	condition finished_;
 	bool finishedVar_;
 	mutex mutex_;
+
+	static active_operation_list active_;
 };
 
 }

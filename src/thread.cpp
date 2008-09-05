@@ -147,6 +147,7 @@ bool async_operation::notify_finished()
 	finishedVar_ = true;
 	return finished_.notify_one();
 }
+active_operation_list async_operation::active_;
 
 async_operation::RESULT async_operation::execute(async_operation_ptr this_ptr, waiter& wait)
 {
@@ -159,6 +160,7 @@ async_operation::RESULT async_operation::execute(async_operation_ptr this_ptr, w
 	//the thread needs access to the mutex before it terminates
 	{
 		const lock l(get_mutex());
+		active_.push_back(this_ptr);
 		thread_.reset(new thread(run_async_operation,&this_ptr));
 
 		bool completed = false;
