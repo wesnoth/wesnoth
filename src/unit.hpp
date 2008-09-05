@@ -221,6 +221,7 @@ public:
 	void set_goto(const gamemap::location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
+	bool loyal() const {return cfg_["upkeep"]=="loyal"; }
 
 	void set_hidden(bool state);
 	bool get_hidden() { return hidden_; };
