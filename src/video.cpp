@@ -128,11 +128,13 @@ static void clear_updates()
 namespace {
 
 surface frameBuffer = NULL;
-
+bool fake_interactive = false;
 }
 
 bool non_interactive()
 {
+	if (fake_interactive)
+		return false;
 	return SDL_GetVideoSurface() == NULL;
 }
 
@@ -299,8 +301,10 @@ void CVideo::make_test_fake()
 {
 	// Create fake screen that is 1024x768 24bpp
 	// We can then use this in tests to draw
-	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,1024,768,24,0xFF0000,0xFF00,0xFF,0);
+	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,1024,768,32,0xFF0000,0xFF00,0xFF,0);
 	image::set_pixel_format(frameBuffer->format);
+
+	fake_interactive = true;
 
 }
 

@@ -25,6 +25,8 @@
 
 #include "serialization/preprocessor.hpp"
 
+#include "tests/utils/game_config_manager.hpp"
+
 #include <boost/bind.hpp>
 
 
@@ -82,6 +84,7 @@ test_config_cache test_config_cache::cache_;
 struct config_cache_fixture {
 	config_cache_fixture() : cache(test_config_cache::instance()), old_locale(get_language()), test_def("TEST")
 	{
+		test_utils::get_test_config_ref();
 		const language_list& langs = get_languages();
 		language_list::const_iterator German = std::find_if(langs.begin(), langs.end(), boost::bind(&config_cache_fixture::match_de, this, _1));
 		set_language(*German);

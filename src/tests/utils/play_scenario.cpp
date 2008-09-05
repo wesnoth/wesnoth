@@ -12,15 +12,18 @@
    See the COPYING file for more details.
 */
 
+
 #include "tests/utils/play_scenario.hpp"
 #include "tests/utils/game_config_manager.hpp"
 #include "tests/utils/fake_event_source.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include "gamemap.hpp"
+#include "map.hpp"
 #include "gamestatus.hpp"
 #include "playcampaign.hpp"
 #include "upload_log.hpp"
+
+#include "events.hpp"
 
 #include <boost/bind.hpp>
 
@@ -30,7 +33,7 @@ namespace test_utils {
 		id_(id),
 		source_(),
 		game_config_(get_test_config_ref()),	
-		current_time_(5)
+		current_time_(30)
 	{
 		add_initial_signals();
 	}
@@ -38,6 +41,8 @@ namespace test_utils {
 	void play_scenario::add_initial_signals()
 	{
 		source_.type_key(current_time_++, SDLK_RETURN);
+		current_time_+= 20;
+
 	}
 
 	struct add_key_type_to_source {
@@ -59,9 +64,9 @@ namespace test_utils {
 	{
 		// Activate command line;
 		source_.type_key(current_time_++, SDLK_f);
-		current_time_ += size_t(2);
 		std::for_each(command.begin(), command.end(),
 				add_key_type_to_source(source_, current_time_));
+		source_.type_key(current_time_++, SDLK_RETURN);
 	}
 
 	class end_position_collector : public event_node {
@@ -79,14 +84,18 @@ namespace test_utils {
 			virtual void fire_event()
 			{
 				// Now collect data and quit the game
-				std::cerr << "Collecting game data\n\n\n";
-				units_ = game_display::get_signelton()->get_units();
+				units_ = game_display::get_singleton()->get_units();
 			}
 			
 			game_state& get_state()
 			{
 				return state_;
 			}		
+
+			unit_map& get_units()
+			{
+				return units_;
+			}
 	};
 
 	void play_scenario::play()
@@ -96,9 +105,9 @@ namespace test_utils {
 		end_position_collector* end = static_cast<end_position_collector*>(end_pos_.get());
 		source_.add_event(end_pos_);
 
-		const std::string end_command = ":q";
-		std::for_each(end_command.begin(), end_command.end(),
-				add_key_type_to_source(source_, current_time_));
+		source_.type_key(current_time_++, SDLK_COLON, SDLMod(KMOD_LSHIFT | KMOD_SHIFT) );
+		source_.type_key(current_time_++, SDLK_q);
+		source_.type_key(current_time_++, SDLK_RETURN);
 		
 		upload_log no_upload(false);
 		game_state& state = end->get_state();
@@ -107,13 +116,14 @@ namespace test_utils {
 		play_game(get_fake_display(), state, game_config_, no_upload);
 	}
 
-	gamemap::location find_unit_loc(const std::string& id)
+	gamemap::location play_scenario::find_unit_loc(const std::string& id)
 	{
 		if (!end_pos_)
 			return gamemap::location(-133,-133);
 
+		end_position_collector* end = static_cast<end_position_collector*>(end_pos_.get());
 
-		return ;
+		return end->get_units().find(id)->first;
 	}
 
 }

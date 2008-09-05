@@ -243,6 +243,10 @@ const config* get_theme(const config& game_config, std::string theme_name){
 		theme_cfg = game_config.find_child("theme","name",preferences::theme());
 	}
 
+	if(theme_cfg == NULL) {
+		theme_cfg = game_config.find_child("theme","name","default");
+	}
+
 	return theme_cfg;
 }
 

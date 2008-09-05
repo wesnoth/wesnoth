@@ -349,7 +349,6 @@ test_utils_sources = Split("""
     tests/utils/game_config_manager.cpp
     tests/utils/fake_event_source.cpp
     tests/utils/fake_display.cpp
-    tests/utils/play_scenario.cpp
     """)
 
 libtest_utils = env.Library("test_utils", test_utils_sources)
@@ -362,6 +361,7 @@ test_sources = Split("""
     tests/test_util.cpp
     tests/gui/test_drop_target.cpp
     tests/gui/test_save_dialog.cpp
+    tests/utils/play_scenario.cpp
     """)
 test_sources.extend(env.Object("tests/test_config_cache.cpp", EXTRA_DEFINE = env['python'] and "HAVE_PYTHON" or None))
 

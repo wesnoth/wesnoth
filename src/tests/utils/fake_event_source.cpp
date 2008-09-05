@@ -15,6 +15,8 @@
 #include <iostream>
 #include "tests/utils/fake_event_source.hpp"
 
+#include "mouse_handler_base.hpp"
+
 namespace test_utils {
 	/**
 	 * Base class for all event nodes to be used to fire fake input events
@@ -60,7 +62,9 @@ namespace test_utils {
 		static int num_keys = 300;
 		Uint8* key_list = SDL_GetKeyState( &num_keys );
 		if (event_.type == SDL_KEYDOWN)
+		{
 			key_list[event_.key.keysym.sym] = 1;
+		}
 		else
 			key_list[event_.key.keysym.sym] = 0;
 	}
@@ -130,9 +134,9 @@ namespace test_utils {
 		else
 			event.key.state = SDL_RELEASED;
 		event.key.keysym.sym = key;
-		event.key.keysym.scancode = 65; // Always report 65 as scancode
+		event.key.keysym.scancode = key; // 
 		event.key.keysym.mod = mod;
-		event.key.keysym.unicode = 0; // Unicode disabled
+		event.key.keysym.unicode = key; //
 		return event;
 	}
 
@@ -178,7 +182,7 @@ namespace test_utils {
 	event_node_ptr fake_event_source::mouse_click(const size_t time, const Uint8 button)
 	{
 		mouse_press(time, button);
-		return mouse_release(time,button);
+		return mouse_release(time+1,button);
 	}
 
 	event_node_ptr fake_event_source::press_key(const size_t time, const SDLKey key, const SDLMod mod)
@@ -200,11 +204,13 @@ namespace test_utils {
 	event_node_ptr fake_event_source::type_key(const size_t time, const SDLKey key, const SDLMod mod)
 	{
 		press_key(time,key,mod);
-		return release_key(time,key,mod);
+		return release_key(time+1,key,mod);
 	}
 
 	void fake_event_source::process(events::pump_info& /*info*/)
 	{
+		if (events::commands_disabled > 0)
+			return;
 		++frame_count_;
 		if (queue_.empty())
 			return;

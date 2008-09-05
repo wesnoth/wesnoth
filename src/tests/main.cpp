@@ -52,7 +52,7 @@ static void exception_translator_game(const game::error& e)
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
-		lg::set_log_domain_severity("all",3);
+//		lg::set_log_domain_severity("all",3);
 		game_config::use_dummylocales = true;
 		game_config::path = get_cwd();
 

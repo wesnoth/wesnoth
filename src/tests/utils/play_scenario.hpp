@@ -17,17 +17,21 @@
 
 #include "tests/utils/fake_event_source.hpp"
 
+#include "map.hpp"
+
 #include <string>
 
 #include <boost/scoped_ptr.hpp>
 
 class config;
 
+
 namespace test_utils {
 
 	class end_position_collector;
 
 	class timing {
+		static const size_t step_size = 2;
 		size_t time_;
 		public:
 		timing() : time_(0) {}
@@ -35,7 +39,7 @@ namespace test_utils {
 
 		timing operator++()
 		{ 
-			return time_ += 2;
+			return time_ += step_size;
 		}
 
 		timing operator++(int)
@@ -49,13 +53,13 @@ namespace test_utils {
 		{ return time_;}
 
 		timing operator+(const size_t& t)
-		{ return timing(time_ + t*2);}
+		{ return timing(time_ + t*step_size);}
 		
 		timing operator+(const int& t)
 		{ return *this + size_t(t);}
 
 		timing& operator+=(const size_t& t)
-		{ time_ += t*2;
+		{ time_ += t*step_size;
 		return *this;}
 		
 		timing& operator+=(const int& t)
@@ -83,6 +87,8 @@ namespace test_utils {
 			void play();
 
 			void add_formula_command(const std::string& command);
+
+			gamemap::location find_unit_loc(const std::string& id);
 	};
 }
 
