@@ -413,6 +413,25 @@ surface locator::load_image_sub_file() const
 						}
 					}
 				}
+				
+				if("RE" == function){	// Remap colors function - like RC, but works with palettes only, not color ranges
+					std::vector<std::string> recolor = utils::split(field, '>');
+					if(recolor.size() > 1) {
+						std::map<Uint32, Uint32> tmp_map;
+						try {
+							std::vector<Uint32> const& old_palette = game_config::tc_info(recolor[0]);
+							std::vector<Uint32> const& new_palette = game_config::tc_info(recolor[1]);
+							for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
+							    tmp_map[old_palette[i]] = new_palette[i];
+							}
+						} catch(config::error& e) {
+							ERR_DP << "caught config::error... " << e.message << '\n';
+						}
+						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){
+							recolor_map[tmp->first] = tmp->second;
+						}
+					}
+				}
 
 				if("FL" == function){	// Flip layer
 					if(field.empty() || field.find("horiz") != std::string::npos) {
