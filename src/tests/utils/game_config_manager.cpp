@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "playcampaign.hpp"
