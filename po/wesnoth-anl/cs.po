@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:48+0200\n"
-"PO-Revision-Date: 2008-09-03 23:13+0100\n"
+"PO-Revision-Date: 2008-09-05 00:30+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
 msgid "`Right-click on your leader during your turn for help"
 msgstr ""
-"Kliknutí pravým tlačítkem na vůdce během tvého kola ti poskytne nápovědu"
+"`Kliknutí pravým tlačítkem na vůdce během tvého kola ti poskytne nápovědu"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
@@ -120,9 +120,9 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
-"Přesuň nějakou svou jednotku k těmto obětem a oni se k tobě přidají. "
-"Pavouci, kteří hlídají každou oběť jsou momentálně zranění, takže čím "
-"rychleji se k nim dostaneš, tím větší máš šanci je zabít."
+"Přesuň nějakou svou jednotku k zajatcům a oni se k tobě přidají. Pavouci, "
+"kteří hlídají zajatce, jsou momentálně zranění, takže čím rychleji se k nim "
+"dostaneš, tím větší máš šanci je zabít."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
@@ -139,7 +139,7 @@ msgid ""
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
 "Vypadá to, že nepřítel postavil někde blízko podzemní houbové doly. "
-"Představují hlavní pilíř jeho zdrojů. Pokud bysme je byli schopni zničit, "
+"Představují hlavní pilíř jeho zdrojů. Pokud bychom je byli schopni zničit, "
 "naše pozice by již nebyla tak vratká.  "
 
 #. [message]: speaker=narrator
@@ -148,13 +148,13 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
-"Přesuň nějakou svou jednotku do těchto vesnic a zničíš důl. S každým "
-"zničeným dolem klesne příjem nepřítele o 10 zlatých. "
+"Přesuneš-li libovolnou svou jednotku do takové vesnice, zničíš houbových "
+"důl. S každým zničeným dolem klesne příjem nepřítele o 10 zlatých."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:634
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr "Tato bitva se chýlí k závěru a vítězství je na dosah ruky!"
+msgstr "Bitva se chýlí k závěru a vítězství je na dosah ruky!"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:645
@@ -205,9 +205,10 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
-"Sedláci tvoří pracovní sílu. Podle terénu na kterém stojí, se ti po kliknutí "
-"pravým tlačítkem na sedláka objeví nabídka možných úprav terénu a/nebo "
-"možnost postavení hradu, dolu, farmy, vesnice či univerzity.   "
+"Sedláci tvoří tvou pracovní sílu. Po kliknutí pravým tlačítkem na sedláka se "
+"ti v závislosti na terénu, na kterém se právě nachází, objeví nabídka "
+"možných úprav terénu a/nebo možnost postavení hradu, dolu, farmy, vesnice či "
+"univerzity."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
@@ -216,7 +217,7 @@ msgid ""
 "in mining, farming and recruitment."
 msgstr ""
 "Mágové tvoří inteligenci. Mohou bádat na univerzitách a objevovat tak "
-"pokroky v těžení, farmaření a verbování."
+"pokroky v těžbě, farmaření a verbování."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
@@ -569,10 +570,11 @@ msgstr "Osvobodím tě!"
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Osvobodil jsi tyto tvory ze sítě. Chtějí se k tobě přidat."
 
+# Pův.: "Co mám udělat, můj vládče?"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr "Co mám udělat, můj vládče?"
+msgstr "Co mám udělat, Vaše Milosti?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
