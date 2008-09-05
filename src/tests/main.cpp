@@ -19,14 +19,12 @@
 
 #include "SDL.h"
 
-#include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "network.hpp"
 #include "config.hpp"
 #include "log.hpp"
-#include "language.hpp"
 
 #include "tests/utils/fake_display.hpp"
 /**
@@ -50,27 +48,13 @@ static void exception_translator_game(const game::error& e)
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "game::error: " + e.message);
 }
 
-static bool match_english(const language_def& def)
-{
-	return def.localename == "C";
-}
-
 
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
-//		lg::set_log_domain_severity("all",3);
+		lg::set_log_domain_severity("all",3);
 		game_config::use_dummylocales = true;
 		game_config::path = get_cwd();
-
-		load_language_list();
-		game_config::config_cache::instance().add_define("TEST");
-		::init_textdomains(*game_config::config_cache::instance().get_config(game_config::path + "/data/test/"));
-		const std::vector<language_def>& languages = get_languages();
-		std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
-									languages.end(),
-									match_english); // Using German because the most active translation
-		::set_language(*English);
 
 
 		// Initialize unit tests

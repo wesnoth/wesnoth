@@ -174,6 +174,12 @@ namespace test_utils {
 		add_event(new_click);
 		return new_click;
 	}
+	
+	event_node_ptr fake_event_source::mouse_click(const size_t time, const Uint8 button)
+	{
+		mouse_press(time, button);
+		return mouse_release(time,button);
+	}
 
 	event_node_ptr fake_event_source::press_key(const size_t time, const SDLKey key, const SDLMod mod)
 	{
@@ -189,6 +195,12 @@ namespace test_utils {
 		event_node_ptr new_key(new event_node_keyboard(time, event));
 		add_event(new_key);
 		return new_key;
+	}
+	
+	event_node_ptr fake_event_source::type_key(const size_t time, const SDLKey key, const SDLMod mod)
+	{
+		press_key(time,key,mod);
+		return release_key(time,key,mod);
 	}
 
 	void fake_event_source::process(events::pump_info& /*info*/)

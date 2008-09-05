@@ -145,6 +145,12 @@ namespace test_utils {
 			 * adds keyboard release event to queue
 			 **/
 			event_node_ptr release_key(const size_t time, const SDLKey key, const SDLMod mod =KMOD_NONE);
+			/**
+			 * Just push and release a key
+			 * release is done in time+1
+			 * @return release event only
+			 **/
+			event_node_ptr type_key(const size_t time, const SDLKey key, const SDLMod mod =KMOD_NONE);
 
 			/**
 			 * Adds mouse motion event to queue
@@ -158,6 +164,12 @@ namespace test_utils {
 			 * adds mouse button realease event to queue
 			 **/
 			event_node_ptr mouse_release(const size_t time, const Uint8 button);
+			/**
+			 * Make mouse click that equals to press and release
+			 * relase is done in time+1
+			 * @return release event only
+			 **/
+			event_node_ptr mouse_click(const size_t time, const Uint8 button);
 
 			/**
 			 * Called by events::pump() to fire events

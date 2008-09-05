@@ -284,12 +284,15 @@ test_SOURCES =  \
 	tests/main.cpp \
 	tests/utils/fake_display.cpp \
 	tests/utils/fake_event_source.cpp \
+	tests/utils/game_config_manager.cpp \
+	tests/utils/play_scenario.cpp \
 	tests/test_config_cache.cpp \
-	tests/test_util.cpp \
+	tests/test_formula_ai.cpp \
     tests/test_network_worker.cpp \
+	tests/test_team.cpp \
+	tests/test_util.cpp \
 	tests/gui/test_save_dialog.cpp \
 	tests/gui/test_drop_target.cpp \
-	tests/test_team.cpp \
 	$(wesnoth_source)
 
 test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
