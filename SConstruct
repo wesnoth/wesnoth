@@ -282,8 +282,8 @@ if env['lowmem']:
 if env['internal_data']:
     env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
-if env['editor2']:
-    env.Append(CPPDEFINES = "USE_EDITOR2")
+if not env['editor2']:
+    env.Append(CPPDEFINES = "DISABLE_EDITOR2")
 
 if have_X:
     env.Append(CPPDEFINES = "_X11")

@@ -73,7 +73,7 @@
 #include "ai_python.hpp"
 #endif
 
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 #include "editor2/editor_main.hpp"
 #endif
 
@@ -134,7 +134,7 @@ public:
 	bool new_campaign();
 	bool goto_campaign();
 	bool goto_multiplayer();
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 	bool goto_editor();
 #endif
 	bool play_multiplayer();
@@ -147,7 +147,7 @@ public:
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 	editor2::EXIT_STATUS start_editor();
 #endif
 	void start_wesnothd();
@@ -205,7 +205,7 @@ private:
 
 	std::string multiplayer_server_;
 	bool jump_to_campaign_, jump_to_multiplayer_;
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 	bool jump_to_editor_;
 #endif
 	game_config::config_cache& cache_;
@@ -244,7 +244,7 @@ game_controller::game_controller(int argc, char** argv) :
 	multiplayer_server_(),
 	jump_to_campaign_(false),
 	jump_to_multiplayer_(false)
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 	 ,jump_to_editor_(false)
 #endif
 	,cache_(game_config::config_cache::instance())
@@ -353,7 +353,7 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 		} else if(val == "-e" || val == "--editor") {
 			jump_to_editor_ = true;
 #endif
@@ -1114,7 +1114,7 @@ bool game_controller::goto_multiplayer()
 	return true;
 }
 
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 bool game_controller::goto_editor()
 {
 	if(jump_to_editor_){
@@ -1581,7 +1581,7 @@ void game_controller::play_replay()
 	}
 }
 
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 editor2::EXIT_STATUS game_controller::start_editor()
 {
     cache_.clear_defines();
@@ -1665,7 +1665,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               additional command mode options in-game.\n"
 			<< "  --decompress INFILE OUTFILE  decompresses a savefile (INFILE) that is in binary\n"
 			<< "                               WML format into text WML format (OUTFILE).\n"
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 			<< "  -e, --editor                 starts editor2 not showing title screen.\n"
 #endif
 			<< "  -f, --fullscreen             runs the game in full screen mode.\n"
@@ -1969,7 +1969,7 @@ static int play_game(int argc, char** argv)
 		if(game.goto_multiplayer() == false){
 			continue; //Go to main menu
 		}
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 		if (game.goto_editor() == false) {
 			return 0;
 		}
@@ -2053,7 +2053,7 @@ static int play_game(int argc, char** argv)
 			loadscreen::global_loadscreen_manager loadscreen(game.disp().video());
 			game.reload_changed_game_config();
 			continue;
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 		} else if(res == gui::START_MAP_EDITOR) {
 			//@todo editor can ask the game to quit completely
 			if (game.start_editor() == editor2::EXIT_QUIT_TO_DESKTOP) {

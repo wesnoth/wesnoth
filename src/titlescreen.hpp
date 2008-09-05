@@ -31,7 +31,7 @@ enum TITLE_RESULT { TUTORIAL = 1,		/**< Start special campaign 'tutorial' */
 					NEW_CAMPAIGN,		/**< Let user select a campaign to play */
 					MULTIPLAYER,		/**< Play single scenario against humans or AI */
 					LOAD_GAME, GET_ADDONS, 
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 					START_MAP_EDITOR,
 #endif
                     CHANGE_LANGUAGE, EDIT_PREFERENCES,

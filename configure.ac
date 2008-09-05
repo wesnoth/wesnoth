@@ -302,9 +302,9 @@ AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes || test x$editor2 = xyes ]])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 
-if test x$editor2 = xyes
+if test x$editor2 = xno
 then
-	CXXFLAGS="$CXXFLAGS -DUSE_EDITOR2"
+	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR2"
 fi
 
 if test x$dummylocales = xyes; then

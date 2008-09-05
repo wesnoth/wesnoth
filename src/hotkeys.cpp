@@ -130,7 +130,7 @@ const struct {
 	{ hotkey::HOTKEY_EDIT_AUTO_UPDATE, "editautoupdate", N_("Delay transition updates"), true, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_EDIT_UPDATE, "editupdate", N_("Update transitions"), true, hotkey::SCOPE_GENERAL },
 
-#ifdef USE_EDITOR2
+#ifndef DISABLE_EDITOR2
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, hotkey::SCOPE_EDITOR },

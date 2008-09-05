@@ -100,9 +100,9 @@ if(NOT WIN32)
   add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
 endif(NOT WIN32)
 
-if(ENABLE_EDITOR2)
-  add_definitions(-DUSE_EDITOR2)
-endif(ENABLE_EDITOR2)
+if(NOT ENABLE_EDITOR2)
+  add_definitions(-DDISABLE_EDITOR2)
+endif(NOT ENABLE_EDITOR2)
 
 if(X11_FOUND)
   add_definitions(-D_X11)
