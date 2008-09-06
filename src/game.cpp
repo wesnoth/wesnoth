@@ -249,6 +249,7 @@ game_controller::game_controller(int argc, char** argv) :
 #endif
 	,cache_(game_config::config_cache::instance())
 {
+	bool no_music = false;
 	bool no_sound = false;
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
@@ -350,6 +351,8 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
 			no_sound = true;
+		} else if(val == "--nomusic") {
+			no_music = true;
 		} else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
@@ -390,6 +393,9 @@ game_controller::game_controller(int argc, char** argv) :
 		preferences::set_music(false);
 		preferences::set_turn_bell(false);
 		preferences::set_UI_sound(false);
+	}
+	else if (no_music) { // else disable the music in nomusic mode
+		preferences::set_music(false);
 	}
 }
 
@@ -1689,6 +1695,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --validcache                 assume that cache is valid (dangerous)\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
+			<< "  --nomusic                    runs the game without only music.\n"
 			<< "  --max-fps                    the maximum fps the game tries to run at the value\n"
 			<< "                               should be between the 1 and 1000, the default is 50.\n"
 			<< "  --config-path                prints the path to the game config directory and exits.\n"
