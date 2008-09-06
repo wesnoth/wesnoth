@@ -33,10 +33,17 @@ Version 1.5.3+svn:
      * As a consequence, [fire_event] has had [primary_unit] weapon= and
        [secondary_unit] weapon= deprecated too; use [primary_attack] and
        [secondary_attack] blocks instead.
+   * In events triggered by unit fighting ('attack' et al), the weapon info
+     is automatically stored in the 'weapon' and 'second_weapon' WML
+     variables; this works just like 'unit' and 'second_unit'.
    * fix various minor bugs with attack filtering
    * Fixed linewrapping with not to wrap markups (bug #11946 and bug #11945)
    * fix bug where max_experience of stored units was not the true max when
      playing with under 100% exp. settings
+   * Made it possible to use another color palette as second parameter in
+     RC(A=B) image path function by using '=' instead of '>' as parameter
+     separator; this allows simple color replacement that RC(A>B) did not
+     allow.
    * prevent some negative/nonsense values in direct WML unit modifications
    * Renamed the advanceto key in [unit_type] to advances_to in order to be
      consistent with its own and [unit]'s internals.
