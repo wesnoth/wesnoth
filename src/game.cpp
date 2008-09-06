@@ -159,7 +159,7 @@ private:
 
 	void load_game_cfg();
 	void reset_translations();
-    void set_unit_data();
+	void set_unit_data();
 
 	bool detect_video_settings(); // FIXME
 
