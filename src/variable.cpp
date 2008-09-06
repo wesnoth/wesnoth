@@ -497,6 +497,13 @@ void scoped_xy_unit::activate()
 	}
 }
 
+void scoped_weapon_info::activate()
+{
+	if(data_ != NULL) {
+		store(*data_);
+	}
+}
+
 void scoped_recall_unit::activate()
 {
 	player_info* const player = repos->get_player(player_);

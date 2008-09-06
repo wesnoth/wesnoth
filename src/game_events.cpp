@@ -3148,6 +3148,8 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	bool filtered_unit1 = false, filtered_unit2 = false;
 	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
 	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
+	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
+	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 
 	const vconfig::child_list first_filters = handler.first_arg_filters();
 	vconfig::child_list::const_iterator ffi;
