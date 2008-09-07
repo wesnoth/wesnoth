@@ -2786,7 +2786,7 @@ void unit::apply_modifications()
 
 void unit::ambush(const gamemap::location& loc) const
 {
-	invisibility_cache_.find(loc);
+	clear_visibility_cache();
 	std::vector<const unit *>::iterator itor =
 	std::find(units_with_cache.begin(), units_with_cache.end(), this);
 
