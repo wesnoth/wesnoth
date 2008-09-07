@@ -111,7 +111,9 @@ void playsingle_controller::end_turn(){
 	if (linger_)
 		end_turn_ = true;
 	else if (!browse_){
+		browse_ = true;
 		end_turn_ = menu_handler_.end_turn(player_number_);
+		browse_ = !end_turn_;
 	}
 }
 
@@ -591,6 +593,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 					// If new controller is not human,
 					// reset gui to prev human one
 					if (!teams_[team_index-1].is_human()) {
+						browse_ = true;
 						int t = find_human_team_before(team_index);
 						if (t > 0) {
 							gui_->set_team(t-1);
@@ -753,6 +756,7 @@ void playsingle_controller::end_turn_record_unlock()
 }
 
 void playsingle_controller::after_human_turn(){
+	browse_ = true;
 	end_turn_record();
 	end_turn_record_unlock();
 	menu_handler_.clear_undo_stack(player_number_);

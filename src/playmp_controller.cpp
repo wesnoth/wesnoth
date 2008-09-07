@@ -101,6 +101,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 					// if new controller is not human,
 					// reset gui to prev human one
 					if (!teams_[team_index-1].is_human()) {
+						browse_ = true;
 						int t = find_human_team_before(team_index);
 
 						if (t <= 0)
@@ -421,6 +422,7 @@ void playmp_controller::after_human_turn(){
 
 	//send one more time to make sure network is up-to-date.
 	turn_data_->send_data();
+	playsingle_controller::after_human_turn();
 	if (turn_data_ != NULL){
 		turn_data_->replay_error().detach_handler(this);
 		turn_data_->host_transfer().detach_handler(this);
@@ -428,7 +430,6 @@ void playmp_controller::after_human_turn(){
 		turn_data_ = NULL;
 	}
 
-	playsingle_controller::after_human_turn();
 }
 
 void playmp_controller::finish_side_turn(){
@@ -445,7 +446,6 @@ void playmp_controller::finish_side_turn(){
 void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
-	browse_ = true;
 	gui_->enable_menu("endturn", false);
 	turn_info turn_data(gamestate_,status_,*gui_,
 				map_,teams_,player_number_,units_, replay_sender_, undo_stack_);

@@ -70,6 +70,7 @@ Version 1.5.3+svn:
      era values (bug #12171)
    * Fixed MP saves to transfer correct completion state to remote clients
      when loadin game (bug #10385)
+   * Fixed can move enemy units (causing OOS) (bug #11205)
    * Fixed a few inconsistencies related to scenarios which are not at
      turn 1 at the beginning (namely start autosave detection and initial
      triggering of a matching "turn *" event).
