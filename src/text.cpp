@@ -385,7 +385,7 @@ private:
 
 std::ostream& operator<<(std::ostream& s, const PangoRectangle &rect) 
 {
-	s << rect.x << ',' << rect.y << ' ' << rect.width << ',' << rect.height;
+	s << rect.x << ',' << rect.y << " x " << rect.width << ',' << rect.height;
 	return s;
 }
 
