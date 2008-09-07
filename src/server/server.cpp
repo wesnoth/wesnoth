@@ -472,7 +472,7 @@ void server::run() {
 				// Then client would reconnect to new server automaticaly.
 				// This would also allow server to move to new port or address if there is need
 
-				process_command("msg All games ended. Shutting down now. Reconnect to the new server.", "system");
+				process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
 				throw network::error("shut down");
 			}
 			if (config_reload == 1) {
@@ -925,7 +925,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			input_.reset();
 			// start new server
 			start_new_server();
-			process_command("msg The server has been restarted. You may finish your games but can't start new ones and new players can't join this server.", issuer_name);
+			process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
 			out << "New server started.";
 		}
 	} else if (command == "help") {
