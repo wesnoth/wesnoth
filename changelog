@@ -52,6 +52,7 @@ Version 1.5.3+svn:
  * Networking
    * removed null termination character from end of packet send by wesnoth
  * Miscellaneous and bug fixes:
+   * Applied changes suggested by bug #11676 to wesnoth-optipng.
    * Changed side_drop handling not to automaticaly assign AI for side if
      leader is dead (bug #12186)
    * Changed the behavior of [modify_turns] value= to default to -1
