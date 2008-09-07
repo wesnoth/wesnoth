@@ -271,13 +271,20 @@ void twindow::draw()
 
 	surface frame_buffer = get_video_surface();
 
+	/**
+	 * @todo It seems resized_ and need_layout_ need to do exactly the same so
+	 * maybe remove the resized_ flag. Wait for some testing.
+	 */
+
 	const bool full_redraw = resized_ || need_layout_;
-	
-	if(resized_) {
+
+	if(resized_ || need_layout_) {
 		// Restore old surface.
 		if(restorer_) {
 			SDL_Rect rect = get_rect();
 			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+			// Since the old area might be bigger as the new one, invalidate it.
+			update_rect(rect);
 		}
 
 		layout();
@@ -290,10 +297,6 @@ void twindow::draw()
 		resized_ = false;
 	}
 	assert(window_ && restorer_);
-
-	if(need_layout_) {
-		layout();
-	}
 
 	if(full_redraw) {
 		canvas(0).draw();
