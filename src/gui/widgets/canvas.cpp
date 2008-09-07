@@ -818,7 +818,13 @@ void ttext::draw(surface& canvas,
 	game_logic::map_formula_callable local_variables(variables);
 	local_variables.add("text_width", variant(surf->w));
 	local_variables.add("text_height", variant(surf->h));
-
+/*
+	std::cerr << "Text: drawing text '" << text
+		<< " maximum width " << maximum_width_(variables)
+		<< " maximum height " << maximum_height_(variables)
+		<< " text width " << surf->w
+		<< " text height " << surf->h;
+*/
 	//@todo formulas are now recalculated every draw cycle which is a 
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.

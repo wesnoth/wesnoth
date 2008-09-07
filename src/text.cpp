@@ -383,6 +383,12 @@ private:
 	PangoFontDescription *font_;
 };
 
+std::ostream& operator<<(std::ostream& s, const PangoRectangle &rect) 
+{
+	s << rect.x << ',' << rect.y << ' ' << rect.width << ',' << rect.height;
+	return s;
+}
+
 } // namespace
 
 void ttext::recalculate(const bool force) const
@@ -404,12 +410,14 @@ void ttext::rerender(const bool force) const
 		recalculate(force);
 		surface_dirty_ = false;
 
-		const unsigned stride = rect_.width * 4;
-		create_surface_buffer(stride * rect_.height);
+		const unsigned width = rect_.x + rect_.width;
+		const unsigned height = rect_.y + rect_.height;
+		const unsigned stride = width * 4;
+		create_surface_buffer(stride * height);
 
 		cairo_surface_t *cairo_surface =
 			cairo_image_surface_create_for_data(surface_buffer_,
-				CAIRO_FORMAT_ARGB32, rect_.width, rect_.height, stride);
+				CAIRO_FORMAT_ARGB32, width, height, stride);
 		cairo_t *cr = cairo_create(cairo_surface);
 
 		pango_cairo_update_context (cr, context_); // Needed?
@@ -432,7 +440,7 @@ void ttext::rerender(const bool force) const
 		pango_cairo_show_layout(cr, layout_);
 
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
-			surface_buffer_, rect_.width, rect_.height, 32, stride, 
+			surface_buffer_, width, height, 32, stride, 
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 	}
 }
