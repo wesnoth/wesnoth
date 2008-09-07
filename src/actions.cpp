@@ -182,6 +182,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		new_unit.set_attacks(0);
 	}
 	new_unit.heal_all();
+	new_unit.set_hidden(true);
 
 	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
 
@@ -195,6 +196,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		LOG_NG << "firing prerecruit event\n";
 		game_events::fire("prerecruit",recruit_location);
 	}
+	new_unit.set_hidden(false);
 	if(show)unit_display::unit_recruited(recruit_location);
 	if (is_recall)
 	{
