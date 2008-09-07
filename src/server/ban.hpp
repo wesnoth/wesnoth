@@ -133,9 +133,9 @@ namespace wesnothd {
 		std::string filename_;
 		bool dirty_;
 
-		bool is_number(const char& c) const
+		bool is_digit(const char& c) const
 		{ return c >= '0' && c <= '9'; }
-		size_t to_number(const char& c) const
+		size_t to_digit(const char& c) const
 		{ return c - '0'; }
 
 		void init_ban_help();

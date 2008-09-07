@@ -351,9 +351,9 @@ namespace wesnothd {
 			size_t number = 0;
 			for (; i != time_in.end(); ++i)
 			{
-				if (is_number(*i))
+				if (is_digit(*i))
 				{
-					number = number*10 + to_number(*i);
+					number = number * 10 + to_digit(*i);
 				}
 				else
 				{
@@ -378,7 +378,7 @@ namespace wesnothd {
 							loc->tm_sec = number;
 							break;
 						default:
-							LOG_SERVER << "Wrong time code for ban: " << *i << "\n";
+							LOG_SERVER << "Invalid time modifier given: '" << *i << "'.\n";
 							break;
 					}
 					number = 0;
@@ -391,15 +391,15 @@ namespace wesnothd {
 			ret += time_itor->second;
 		else
 		{
-			const size_t default_multipler = 60;
-			size_t multipler = default_multipler; // default minutes
+			const size_t default_multipler = 60; // default to minutes
+			size_t multipler = default_multipler;
 			std::string::iterator i = time_in.begin();
 			size_t number = 0;
 			for (; i != time_in.end(); ++i)
 			{
-				if (is_number(*i))
+				if (is_digit(*i))
 				{
-					number = number * 10  + to_number(*i);
+					number = number * 10 + to_digit(*i);
 				} else {
 					switch(*i)
 					{
@@ -422,7 +422,7 @@ namespace wesnothd {
 							multipler = 1;
 							break;
 						default:
-							DBG_SERVER << "Wrong time multipler code given: '" << *i << "'. Assuming this is begin of comment.\n";
+							DBG_SERVER << "Invalid time modifier given: '" << *i << "'. Assuming this is the begin of the reason.\n";
 							ret = number = multipler = 0;
 							break;
 					}
@@ -436,7 +436,7 @@ namespace wesnothd {
 				}
 			}
 			--i;
-			if (is_number(*i))
+			if (is_digit(*i))
 			{
 					ret += number * multipler;
 			}
@@ -607,7 +607,9 @@ namespace wesnothd {
 	
 	void ban_manager::init_ban_help()
 	{
-		ban_help_ = "ban <ip|nickname> [<time>] <reason>\nTime is give in format <number>[<letter>[<number><letter>[...]]]\n where <letter> is time modifier and valid values are s (seconds), m (minutes), h (hours, default), D (dayes), M (months) and Y (years).\nIf no time is given then ban is permanent.\n";
+		ban_help_ = "ban <ip|nickmask> [<time>] <reason>\n"
+				"The time format is: %d[%s[%d[%s[...]]]] where %s is a time modifier: s (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d is a number.\n"
+				"If no time is given then the ban is permanent.\n";
 		default_ban_times::iterator itor = ban_times_.begin();
 		if (itor != ban_times_.end())
 		{
@@ -622,7 +624,9 @@ namespace wesnothd {
 		{
 			ban_help_ += " for standard ban times.\n";
 		}
-		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\nkban suokko 5D flooded again\nkban suokko Y One year ban for constant flooding\n";
+		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\n"
+				"kban suokko 5D flooded again\n"
+				"kban suokko Y One year ban for constant flooding\n";
 	}
 
 	void ban_manager::load_config(const config& cfg)
