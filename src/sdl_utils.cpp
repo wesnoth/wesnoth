@@ -1716,3 +1716,10 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_C
 	}
 	update_rect(rect);
 }
+
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect) 
+{
+	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
+	return s;
+}
+

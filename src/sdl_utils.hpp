@@ -335,4 +335,6 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 void draw_centered_on_background(surface surf, const SDL_Rect& rect,
 	const SDL_Color& color, surface target);
 
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect); 
+
 #endif
