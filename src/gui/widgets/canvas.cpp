@@ -552,7 +552,7 @@ timage::timage(const config& cfg) :
  *                                     if only the heigth or the width is not zero.
  *                                     It will copy the first pixel the the others.
  *     vertical_mirror (f_bool = false)
- *                                     Mirror the image over the vertical axis.                                
+ *                                     Mirror the image over the vertical axis. 
  *     name (f_string = "")            The name of the image.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
@@ -765,8 +765,8 @@ ttext::ttext(const config& cfg) :
  *     font_style (font_style = "")    The style of the text.
  *     colour (colour = "")            The colour of the text.
  *     text (tstring = "")             The text to draw (translatable).
- *     maximum_width (f_int = -1)      The maximum width the text is allowed to be.                                
- *     maximum_height (f_int = -1)     The maximum height the text is allowed to be.                                
+ *     maximum_width (f_int = -1)      The maximum width the text is allowed to be.
+ *     maximum_height (f_int = -1)     The maximum height the text is allowed to be.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  * @end_table
