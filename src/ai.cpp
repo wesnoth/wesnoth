@@ -570,7 +570,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 							&& current_team().is_enemy(u->second.side())) {
 							if (u->second.invisible(adj[n], info_.units, info_.teams)) {
 								to = *i;
-								u->second.ambush(adj[n]);
+								u->second.ambush();
 								steps.erase(i,steps.end());
 								break;
 							} else {
