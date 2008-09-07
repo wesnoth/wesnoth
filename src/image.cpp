@@ -396,8 +396,7 @@ surface locator::load_image_sub_file() const
 						field = param[1] + ">" + team_color;
 					}
 				}
-
-				if("RC" == function){	// Re-color range/palette function
+				else if("RC" == function){	// Re-color range/palette function
 					std::vector<std::string> recolor=utils::split(field,'>'); // recolor palette to range
 					if(recolor.size()>1){
 						std::map<Uint32, Uint32> tmp_map;
@@ -430,8 +429,7 @@ surface locator::load_image_sub_file() const
 						}
 					}
 				}
-
-				if("FL" == function){	// Flip layer
+				else if("FL" == function){	// Flip layer
 					if(field.empty() || field.find("horiz") != std::string::npos) {
 						xflip = !xflip;
 					}
@@ -439,12 +437,10 @@ surface locator::load_image_sub_file() const
 						yflip = !yflip;
 					}
 				}
-
-				if("GS" == function){	// Grayscale image
+				else if("GS" == function){	// Grayscale image
 					greyscale=true;
 				}
-				
-				if("SECTION" == function){ // Slice image
+				else if("SECTION" == function){ // Slice image
 					std::vector<std::string> const& slice_params = utils::split(field, ',', utils::STRIP_SPACES);
 					if(slice_params.empty() != true) {
 						slice = true;
