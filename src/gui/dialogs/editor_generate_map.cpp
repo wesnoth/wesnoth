@@ -48,11 +48,11 @@ void teditor_generate_map::do_settings(twindow& /*window*/)
 	}
 }
 
-void teditor_generate_map::do_next_generator(twindow& /*window*/)
+void teditor_generate_map::do_next_generator(twindow& window)
 {
 	current_map_generator_++;
 	current_map_generator_ %= map_generators_.size();
-	update_current_generator_label();
+	update_current_generator_label(window);
 }
 
 map_generator* teditor_generate_map::get_selected_map_generator()
@@ -61,7 +61,7 @@ map_generator* teditor_generate_map::get_selected_map_generator()
 	return map_generators_[current_map_generator_];
 }
 
-void teditor_generate_map::update_current_generator_label()
+void teditor_generate_map::update_current_generator_label(twindow& window)
 {
 	std::stringstream ss; 
 	ss << lexical_cast<std::string>(current_map_generator_ + 1);
@@ -69,6 +69,8 @@ void teditor_generate_map::update_current_generator_label()
 	ss << ": " << get_selected_map_generator()->name() << ", " << get_selected_map_generator()->config_name();
 	ERR_ED << ss.str() << "\n";
 	current_generator_label_->set_label(ss.str());
+
+	window.invalidate_layout();
 }
 
 twindow teditor_generate_map::build_window(CVideo& video)
@@ -87,7 +89,7 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 	tbutton& next_generator_button = window.get_widget<tbutton>("next_generator", false);
 	next_generator_button.set_callback_mouse_left_click(
 		dialog_callback<teditor_generate_map, &teditor_generate_map::do_next_generator>);
-	update_current_generator_label();
+	update_current_generator_label(window);
 }
 
 void teditor_generate_map::post_show(twindow& /*window*/)

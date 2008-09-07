@@ -43,7 +43,7 @@ public:
 	
 	map_generator* get_selected_map_generator();
 	
-	void update_current_generator_label();
+	void update_current_generator_label(twindow& window);
 	
 	void set_gui(display* d) { gui_ = d; }
 	display* get_gui() { return gui_; }
