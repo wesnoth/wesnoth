@@ -23,7 +23,7 @@ Version 1.5.3+svn:
      have been started to replace the old code.
  * WML engine:
    * fix bug #11988: Events with multiple types are multiplied
-   * added a new image-path function: SECTION(x,y,w,h) - it extracts a slice
+   * added a new image-path function: CROP(x,y,w,h) - it extracts a slice
      of a graphic with the requested dimensions.
      (feature #12067)
    * allow variable substitution in event names
