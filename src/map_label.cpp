@@ -360,7 +360,7 @@ void terrain_label::read(const config& cfg, const variable_set *variables)
 
 	text_      = cfg["text"];
 	team_name_ = cfg["team_name"];
-	fogged_ = utils::string_bool(cfg["fogged"],true);
+	fogged_ = utils::string_bool(cfg["fogged"],false);
 
 	if (variables)
 	{
@@ -507,7 +507,7 @@ void terrain_label::draw()
 
 bool terrain_label::visible() const
 {
-	if (!fogged_)
+	if (fogged_)
 	{
 		if (parent_->disp().fogged(loc_))
 		{
