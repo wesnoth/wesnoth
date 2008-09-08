@@ -629,7 +629,7 @@ void connect::side::update_ui()
 
 config connect::side::get_config() const
 {
-	config res(cfg_);
+	config res;
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
@@ -637,6 +637,7 @@ config connect::side::get_config() const
 		// Merge the faction data to res
 		res.append(*(parent_->era_sides_[faction_]));
 	}
+	res.append(cfg_);
 	if (cfg_.get_attribute("side").empty()
 			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
 	{

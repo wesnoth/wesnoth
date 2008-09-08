@@ -116,11 +116,10 @@ team::team_info::team_info(const config& cfg) :
 		user_team_name = user_team_name.from_serialized(user_team_name);
 	config global_ai_params;
 	const config::child_list& ai_parameters = cfg.get_children("ai");
-	for(config::child_list::const_reverse_iterator aiparam = ai_parameters.rbegin(); aiparam != ai_parameters.rend(); ++aiparam) {
+	for(config::child_list::const_iterator aiparam = ai_parameters.begin(); aiparam != ai_parameters.end(); ++aiparam) {
 		ai_params.push_back(**aiparam);
 
 		if((**aiparam)["turns"].empty() && (**aiparam)["time_of_day"].empty()) {
-//			LOG_NG << "Global ai entry: " << **aiparam << "\n";
 			global_ai_params.append(**aiparam);
 		}
 	}
