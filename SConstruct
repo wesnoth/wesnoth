@@ -300,15 +300,12 @@ if env["PLATFORM"] == 'darwin':            # Mac OS X
 
 if os.path.exists('.git'):
     try:
-        extra_version = "";
-        modified = "";
-        env["svnrev"] = "";
-        while env["svnrev"] == "" and extra_version != "^^^^^^^^^^^^^":
-            env["svnrev"] = Popen(Split("git-svn find-rev HEAD" + extra_version), stdout=PIPE).communicate()[0].rstrip("\n")
-            extra_version += "^"
-        if extra_version != "^":
+        env["svnrev"] = Popen(Split("git-svn find-rev refs/remotes/trunk"), stdout=PIPE).communicate()[0].rstrip("\n")
+        # if git-svn can't find HEAD it's a local commit
+        if Popen(Split("git-svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n") == "":
+            env["svnrev"] += "L"
+        if Popen(Split("git diff --exit-code --quiet")).returncode == 1:
             env["svnrev"] += "M"
-        
     except:
         env["svnrev"] = ""
 else:
