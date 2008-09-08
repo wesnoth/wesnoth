@@ -98,6 +98,9 @@ public:
 		const twidget* result = tcontrol::find_widget(id, must_be_active);
 		return result ? result : grid_.find_widget(id, must_be_active); 
 	}
+
+	/** Import overloaded versions. */
+	using tcontrol::find_widget;
 	
 	/** Inherited from tcontrol. */
 	void set_size(const SDL_Rect& rect) 
