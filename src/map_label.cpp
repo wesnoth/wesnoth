@@ -507,8 +507,15 @@ void terrain_label::draw()
 
 bool terrain_label::visible() const
 {
+	if (!fogged_)
+	{
+		if (parent_->disp().fogged(loc_))
+		{
+			return false;
+		}
+	}
 	return  (parent_->team_name() == team_name_
-			|| (team_name_.empty() && parent_->visible_global_label(loc_)) && !(parent_->disp().fogged(loc_) && fogged()));
+			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
 }
 
 void terrain_label::check_text_length()
