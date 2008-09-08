@@ -47,6 +47,7 @@
 #include <cassert>
 #include <fstream>
 
+#define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)
 #define ERR_AI LOG_STREAM(err, ai)
@@ -321,8 +322,8 @@ bool ai::recruit_usage(const std::string& usage)
 	log_scope2(ai, "recruiting troops");
 	LOG_AI << "recruiting '" << usage << "'\n";
 
-    //make sure id, usage and cost are known for the coming evaluation of unit types
-    unit_type_data::types().build_all(unit_type::HELP_INDEX);
+	//make sure id, usage and cost are known for the coming evaluation of unit types
+	unit_type_data::types().build_all(unit_type::HELP_INDEX);
 
 	std::vector<std::string> options;
 	bool found = false;
@@ -334,13 +335,13 @@ bool ai::recruit_usage(const std::string& usage)
 	{
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
-		LOG_AI << name << " considered\n";
+		DBG_AI << name << " considered\n";
 		if (i->second.usage() == usage || usage == "") {
-			LOG_AI << name << " considered for " << usage << " recruitment\n";
 			if (!recruits.count(name)) {
-				LOG_AI << name << " rejected, not in recruitment list\n";
+				DBG_AI << name << " rejected, not in recruitment list\n";
 				continue;
 			}
+			LOG_AI << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
 			if (current_team().gold() - i->second.cost() < min_gold) {
@@ -366,15 +367,13 @@ bool ai::recruit_usage(const std::string& usage)
 	}
 	if (found) {
 		LOG_AI << "No available units to recruit that come under the price.\n";
-	} else {
-		WRN_AI << "Trying to recruit a: " << usage
-			<< " but no unit of that type (usage=) is available.\n";
-
-		if (usage != "")
-		{
-			return current_team().remove_recruitment_pattern_entry(usage);
-			// remove this recruitment pattern and try again
-		}
+	} else if (usage != "")	{
+		const std::string warning = "Trying to recruit a: " + usage + " but no unit of that type (usage=) is available. "
+			"Check the recruit and [ai] recruitment_pattern keys for this side against the usage key of the units in question! ";
+			"Removing invalid recruitment_pattern entry and continuing...\n";
+		WRN_AI << warning;
+		lg::wml_error << warning;
+		return current_team().remove_recruitment_pattern_entry(usage);
 	}
 	return false;
 }
@@ -1843,11 +1842,12 @@ void ai::do_recruitment()
 		++unit_types["scout"];
 	}
 
-	std::vector<std::string> options = current_team().recruitment_pattern();
+	std::vector<std::string> options;
 
-	// If there is no recruitment_pattern use "" which makes us consider
-	// any unit available.
 	do {
+		options = current_team().recruitment_pattern();
+		// If there is no recruitment_pattern use "" which makes us consider
+		// any unit available.
 		if (options.empty()) {
 			options.push_back("");
 		}
