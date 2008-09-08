@@ -196,7 +196,8 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 		LOG_NG << "firing prerecruit event\n";
 		game_events::fire("prerecruit",recruit_location);
 	}
-	new_unit.set_hidden(false);
+	const unit_map::iterator new_unit_itor = units.find(recruit_location);
+	if(new_unit_itor != units.end()) new_unit_itor->second.set_hidden(false);
 	if(show)unit_display::unit_recruited(recruit_location);
 	if (is_recall)
 	{
