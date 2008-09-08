@@ -481,7 +481,7 @@ public:
 	 * Gets a widget with the wanted id.
 	 *
 	 * This template function doesn't return a pointer to a generic widget but
-	 * return the wanted type and tests for its existence.
+	 * returns the wanted type and tests for its existence.
 	 *
 	 * @param id                  The id of the widget to find.
 	 * @param must_be_active      The widget should be active, not all widgets
