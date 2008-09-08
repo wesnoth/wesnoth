@@ -42,6 +42,7 @@ Version 1.5.3+svn:
    * Fixed linewrapping with not to wrap markups (bug #11946 and bug #11945)
    * fix bug where max_experience of stored units was not the true max when
      playing with under 100% exp. settings
+   * Added support for labels and items that are hiden by fog (patch #1101)
    * Made it possible to use another color palette as second parameter in
      RC(A=B) image path function by using '=' instead of '>' as parameter
      separator; this allows simple color replacement that RC(A>B) did not

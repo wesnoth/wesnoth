@@ -2134,6 +2134,7 @@ bool clear_shroud(game_display& disp, const gamemap& map,
 		recalculate_fog(map,units,teams,team);
 	}
 
+    disp.labels().recalculate_labels();
 	disp.labels().recalculate_shroud();
 
 	return result;

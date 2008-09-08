@@ -109,6 +109,7 @@ public:
 
 	const std::string& text() const;
 	const std::string& team_name() const;
+	bool fogged() const;
 	const gamemap::location& location() const;
 	const SDL_Colour& colour() const;
 
@@ -136,6 +137,7 @@ private:
 
 	std::string text_;
 	std::string team_name_;
+	bool fogged_;
 	SDL_Color	colour_;
 
 	const map_labels* parent_;

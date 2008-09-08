@@ -1577,9 +1577,10 @@ namespace {
 		std::string img = cfg["image"];
 		std::string halo = cfg["halo"];
 		std::string team_name = cfg["team_name"];
+		std::string fogged = cfg["fogged"];
 		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
-			(screen)->add_overlay(loc, img, halo, team_name);
+			(screen)->add_overlay(loc, img, halo, team_name, fogged);
 			(screen)->invalidate(loc);
 			(screen)->draw();
 		}

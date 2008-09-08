@@ -360,6 +360,7 @@ void terrain_label::read(const config& cfg, const variable_set *variables)
 
 	text_      = cfg["text"];
 	team_name_ = cfg["team_name"];
+	fogged_ = utils::string_bool(cfg["fogged"],true);
 
 	if (variables)
 	{
@@ -391,7 +392,7 @@ void terrain_label::write(config& cfg) const
 	cfg["text"] = text();
 	cfg["team_name"] = (this->team_name());
 	cfg["colour"] = cfg_colour();
-
+	cfg["fogged"] = fogged() ? "yes" : "no";
 }
 
 const std::string& terrain_label::text() const
@@ -402,6 +403,11 @@ const std::string& terrain_label::text() const
 const std::string& terrain_label::team_name() const
 {
 	return team_name_;
+}
+
+bool terrain_label::fogged() const
+{
+	return fogged_;
 }
 
 const gamemap::location& terrain_label::location() const
@@ -502,7 +508,7 @@ void terrain_label::draw()
 bool terrain_label::visible() const
 {
 	return  (parent_->team_name() == team_name_
-			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
+			|| (team_name_.empty() && parent_->visible_global_label(loc_)) && !(parent_->disp().fogged(loc_) && fogged()));
 }
 
 void terrain_label::check_text_length()

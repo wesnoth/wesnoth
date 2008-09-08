@@ -171,7 +171,7 @@ public:
 	//! Functions to add and remove overlays from locations.
 	//! An overlay is an image that is displayed on top of the tile.
 	//! One tile may have multiple overlays.
-	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="", const std::string& team_name="");
+	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="", const std::string& team_name="",const std::string& fogged="yes");
 	//! remove_overlay will remove all overlays on a tile.
 	void remove_overlay(const gamemap::location& loc);
 	//! remove_single_overlay will remove a single overlay from a tile
@@ -281,12 +281,13 @@ private:
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
-		        int handle, const std::string& overlay_team_name) : image(img), halo(halo_img),
-				team_name(overlay_team_name), halo_handle(handle) {}
+		        int handle, const std::string& overlay_team_name, const bool can_be_fogged) : image(img), halo(halo_img),
+				team_name(overlay_team_name), halo_handle(handle) , fogged(can_be_fogged){}
 		std::string image;
 		std::string halo;
 		std::string team_name;
 		int halo_handle;
+		bool fogged;
 	};
 
 	typedef std::multimap<gamemap::location,overlay> overlay_map;
