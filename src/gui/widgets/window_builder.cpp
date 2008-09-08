@@ -295,6 +295,7 @@ static unsigned read_flags(const config& cfg)
 
 tbuilder_grid::tbuilder_grid(const config& cfg) : 
 	tbuilder_widget(cfg),
+	id(cfg["id"]),
 	rows(0),
 	cols(0),
 	row_grow_factor(),
@@ -1164,6 +1165,7 @@ twidget* tbuilder_grid::build() const
 {
 	tgrid* grid = new tgrid();
 
+	grid->set_id(id);
 	grid->set_rows_cols(rows, cols);
 
 	log_scope2(gui, "Window builder: building grid");

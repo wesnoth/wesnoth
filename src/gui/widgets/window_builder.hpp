@@ -58,6 +58,8 @@ private:
 
 public:
 	tbuilder_grid(const config& cfg);
+	
+	std::string id;
 	unsigned rows;
 	unsigned cols;
 
