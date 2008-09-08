@@ -1044,17 +1044,20 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(hits) {
 					if (a_stats_->poisons &&
 							!utils::string_bool(d_->second.get_state("poisoned"))) {
-						float_text = float_text + _("poisoned") + "\n";
+						float_text += (d_->second.gender() == unit_race::FEMALE ?  _("female^poisoned") : _("poisoned")) +
+						              "\n";
 					}
 
 					if(a_stats_->slows && !utils::string_bool(d_->second.get_state("slowed"))) {
-						float_text = float_text + _("slowed") + "\n";
+						float_text += (d_->second.gender() == unit_race::FEMALE ?  _("female^slowed") : _("slowed")) +
+						              "\n";
 					}
 
 					// If the defender is turned to stone, the fight stops immediately
 					static const std::string stone_string("stone");
 					if (a_stats_->stones) {
-						float_text = float_text + _("stone") + "\n";
+						float_text += (d_->second.gender() == unit_race::FEMALE ?  _("female^stone") : _("stone")) +
+						              "\n";
 					}
 				}
 
@@ -1312,17 +1315,20 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(hits) {
 					if (d_stats_->poisons &&
 							!utils::string_bool(a_->second.get_state("poisoned"))) {
-						float_text = float_text + _("poisoned") + "\n";
+						float_text += (a_->second.gender() == unit_race::FEMALE ?  _("female^poisoned") : _("poisoned")) +
+						              "\n";
 					}
 
 					if(d_stats_->slows && !utils::string_bool(a_->second.get_state("slowed"))) {
-						float_text = float_text + _("slowed") + "\n";
+						float_text += (a_->second.gender() == unit_race::FEMALE ?  _("female^slowed") : _("slowed")) +
+						              "\n";
 					}
 
 					// If the defender is turned to stone, the fight stops immediately
 					static const std::string stone_string("stone");
 					if (d_stats_->stones) {
-						float_text = float_text + _("stone") + "\n";
+						float_text += (a_->second.gender() == unit_race::FEMALE ?  _("female^stone") : _("stone")) +
+						              "\n";
 					}
 				}
 				unit_display::unit_attack(defender_,attacker_,
