@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2008-09-09 23:13+0300\n"
-"PO-Revision-Date: 2008-05-26 20:47+0200\n"
+"PO-Revision-Date: 2008-09-09 23:16+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -180,9 +180,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummylocales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummylocale>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -190,6 +190,8 @@ msgid ""
 "Use special dummy locales to switch to any language even if that language "
 "isn't installed to system"
 msgstr ""
+"Utilisez les locales factices pour pouvoir changer de langue même si celle-"
+"ci n'est pas installée sur le système."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
@@ -1041,7 +1043,7 @@ msgstr "Clés globales : "
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -1049,6 +1051,8 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Chemin relatif ou absolu d'un fichier que le serveur peut lire. Tout les "
+"bannissements actifs sur le serveur y seront écrits."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1156,7 +1160,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1164,6 +1168,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Commande pour démarer un nouveau processus serveur. Un redemarrage peut être "
+"fait avec un /query restart."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1281,7 +1287,9 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
-"B<[proxy]> Balise pour demander au serveur de se comporter comme un proxy et "
+"B<[ban_time]> Balise pour définir les paramètres des bannissements "
+"temporaires. Les clés de nom et de temps sont utilisées par le serveur. B<"
+"[proxy]> Balise pour demander au serveur de se comporter comme un proxy et "
 "de rediriger les requêtes des clients vers le serveur spécifié. Accepte les "
 "mêmes clés que B<[redirect]>."
 
