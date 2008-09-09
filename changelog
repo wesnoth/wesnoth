@@ -3,6 +3,7 @@ Version 1.5.3+svn:
    * Rotate clipboard 60 deg. cw/ccw, ctrl+r/ctrl+shift+r respectively
      (cmd instead of ctrl on Mac). Active in the "paste" mode.
    * A drag operation only creates one undo action instead of many.
+   * Partial undo feature to keep the old behavior of drag undo available
    * More visible selection - draw a special overlay on every selected hex.
    * Allow different map generators to be used in map -> generate map
      (FR #3950)
