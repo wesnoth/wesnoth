@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:47+0200\n"
-"PO-Revision-Date: 2008-08-07 19:58+0300\n"
+"PO-Revision-Date: 2008-09-09 19:03+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "Rodyti kovą"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:104
 msgid "Only Run Safe Python AIs"
-msgstr ""
+msgstr "Paleisti tik saugius Pythono DI"
 
 #. [server]
 #: data/_main.cfg:111
@@ -175,9 +175,8 @@ msgstr "Internacionalizavimo koordinatoriai"
 
 #. [about]
 #: data/core/about.cfg:852
-#, fuzzy
 msgid "English strings edition"
-msgstr "Anglų (DB) vertimas"
+msgstr "Angliškų eilučių redagavimas"
 
 #. [about]
 #: data/core/about.cfg:859
@@ -1339,7 +1338,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:331
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1351,8 +1349,9 @@ msgstr ""
 "\n"
 "\n"
 "Kiti bruožai, kurie gali būti priskirti daliniams yra "
-"<ref>dst=traits_dextrous text=Vikrus</ref>, <ref>dst=traits_loyal "
-"text=Ištikimas</ref>, and <ref>dst=traits_undead text=Nemirėlis</ref>.\n"
+"<ref>dst='traits_dextrous' text='Vikrus'</ref>, <ref>dst='traits_loyal' "
+"text='Ištikimas'</ref>, and <ref>dst='traits_undead' text='Nemirėlis'</"
+"ref>.\n"
 "\n"
 
 #. [topic]
@@ -1810,15 +1809,11 @@ msgstr "Dykuma"
 
 #. [topic]
 #: data/core/help.cfg:546
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
-"Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
-"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=žolynams</"
-"ref>."
 
 #. [topic]
 #: data/core/help.cfg:551
@@ -1899,15 +1894,14 @@ msgstr "Savana"
 
 #. [topic]
 #: data/core/help.cfg:592
-#, fuzzy
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
 "<ref>dst='terrain_grassland' text='Grassland'</ref>."
 msgstr ""
 "Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
-"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=žolynams</"
-"ref>."
+"dalyse. Žaidime jos yra identiškos <ref>dst='terrain_grassland' "
+"text='žolynams'</ref>."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
@@ -2704,15 +2698,13 @@ msgstr "Negalvoti noro."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Patirta"
+msgstr "Paimti"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Pervadinti dalinį"
+msgstr "Palikti"
 
 #. [object]
 #: data/core/macros/items.cfg:218
@@ -4255,7 +4247,6 @@ msgstr "Nemirėliai"
 
 #. [race]
 #: data/core/units.cfg:246
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5261,21 +5252,20 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:366
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:399
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "addon_type^Kampanija"
 
 #: src/addon_management.cpp:401
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "addon_type^Scenarijus"
 
 #: src/addon_management.cpp:403
 msgid "addon_type^MP Era"
-msgstr ""
+msgstr "addon_type^DŽ era"
 
 #: src/addon_management.cpp:405
 msgid "addon_type^MP Faction"
@@ -5283,24 +5273,23 @@ msgstr ""
 
 #: src/addon_management.cpp:407
 msgid "addon_type^MP Map-pack"
-msgstr ""
+msgstr "addon_type^DŽ žemėlapių rinkinys"
 
 #: src/addon_management.cpp:409
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Nutolęs scenarijus"
+msgstr "addon_type^DŽ scenarijus"
 
 #: src/addon_management.cpp:411
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "addon_type^DŽ kampanija"
 
 #: src/addon_management.cpp:413
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "addon_type^Resursai"
 
 #: src/addon_management.cpp:415
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "addon_type^(nežinomas)"
 
 #: src/addon_management.cpp:444
 msgid "Dependencies"
@@ -5348,9 +5337,8 @@ msgid "Response"
 msgstr "Atsakas"
 
 #: src/addon_management.cpp:573
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Priedas atsiunčiamas..."
+msgstr "Atsiunčiamas priedas: $addon_title|..."
 
 #: src/addon_management.cpp:587
 msgid ""
@@ -5362,18 +5350,16 @@ msgid "Unchecked script files found:"
 msgstr ""
 
 #: src/addon_management.cpp:644
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "Priedas buvo įdiegtas"
+msgstr "Priedas „$addon_title|“ buvo sėkmingai įdiegtas."
 
 #: src/addon_management.cpp:646
 msgid "Add-on Installed"
 msgstr "Priedas įdiegtas"
 
 #: src/addon_management.cpp:704
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "Siunčiamas priedas"
+msgstr "Pasenę priedai"
 
 #: src/addon_management.cpp:706
 msgid ""
@@ -5400,14 +5386,12 @@ msgid "Name"
 msgstr "Vardas"
 
 #: src/addon_management.cpp:729
-#, fuzzy
 msgid "New version"
-msgstr "Versija"
+msgstr "Nauja versija"
 
 #: src/addon_management.cpp:729
-#, fuzzy
 msgid "Old version"
-msgstr "Versija"
+msgstr "Sena versija"
 
 #: src/addon_management.cpp:730 src/addon_management.cpp:931
 msgid "Author"
@@ -5418,23 +5402,20 @@ msgid "Size"
 msgstr "Dydis"
 
 #: src/addon_management.cpp:784
-#, fuzzy
 msgid "Update Add-ons"
-msgstr "Gauti priedų"
+msgstr "Atnaujinti priedus"
 
 #: src/addon_management.cpp:785
 msgid "Select an add-on to update:"
 msgstr ""
 
 #: src/addon_management.cpp:799
-#, fuzzy
 msgid "Update all"
-msgstr "Urvo siena"
+msgstr "Atnaujinti viską"
 
 #: src/addon_management.cpp:854
-#, fuzzy
 msgid "Update failed"
-msgstr "Urvo siena"
+msgstr "Atnaujinimas nepavyko"
 
 #: src/addon_management.cpp:856
 #, fuzzy
@@ -5446,9 +5427,8 @@ msgstr[1] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 msgstr[2] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 
 #: src/addon_management.cpp:865
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Gauti priedų"
+msgstr "Sėkmingai atnaujinta"
 
 #: src/addon_management.cpp:866
 msgid "Add-on updated successfully."
@@ -5459,23 +5439,20 @@ msgid "All add-ons updated successfully."
 msgstr ""
 
 #: src/addon_management.cpp:890
-#, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "Jungiamasi prie serverio..."
+msgstr "Jungiamasi prie priedų serverio..."
 
 #: src/addon_management.cpp:893
 msgid "Could not connect to host."
 msgstr ""
 
 #: src/addon_management.cpp:901
-#, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Užklausiamas priedų sąrašas"
 
 #: src/addon_management.cpp:914
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Klaida, bendraujant su serveriu."
+msgstr "Įvyko klaida, bendraujant su serveriu."
 
 #: src/addon_management.cpp:930 src/titlescreen.cpp:321
 msgid "Version"
@@ -5530,7 +5507,6 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:1083
-#, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Neturite įdiegtų priedų."
 
@@ -5539,9 +5515,8 @@ msgid "Choose the add-on to remove."
 msgstr ""
 
 #: src/addon_management.cpp:1095
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Siunčiamas priedas"
+msgstr "Pašalinti priedus"
 
 #: src/addon_management.cpp:1107
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -5852,9 +5827,8 @@ msgid "Select difficulty level:"
 msgstr "Pasirinkite sunkumo lygį:"
 
 #: src/game.cpp:1235
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "Ar tikrai norite atleisti ją?"
+msgstr "Ar tikrai norite paleisti serverį?"
 
 #: src/game.cpp:1236
 msgid ""
@@ -5863,14 +5837,12 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1240
-#, fuzzy
 msgid "Don't show again"
-msgstr "Daugiau manęs nebeklausti!"
+msgstr "Daugiau neberodyti"
 
 #: src/game.cpp:1312
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "Įvyko klaida, žaidžiant žaidimą: "
+msgstr "Įvyko klaida, paleidžiant serverį: "
 
 #: src/game.cpp:1314 src/playcampaign.cpp:103 src/playcampaign.cpp:389
 msgid "The game could not be loaded: "
@@ -6260,7 +6232,7 @@ msgstr "Ar tikrai norite atleisti jį?"
 
 #: src/menu_events.cpp:106
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr ""
+msgstr "Mano valdove, šis dalinys yra ištikimas ir nereikalauja išlaikymo!"
 
 #: src/menu_events.cpp:107 src/menu_events.cpp:110 src/menu_events.cpp:114
 msgid "Do you really want to dismiss her?"
@@ -6279,7 +6251,6 @@ msgid "Statistics"
 msgstr "Statistika"
 
 #: src/menu_events.cpp:210 src/menu_events.cpp:988
-#, fuzzy
 msgid "Level^Lvl."
 msgstr "Lyg."
 
@@ -6483,7 +6454,6 @@ msgid "Recall"
 msgstr ""
 
 #: src/menu_events.cpp:1049
-#, fuzzy
 msgid "Dismiss Unit"
 msgstr "Atleisti dalinį"
 
@@ -6543,9 +6513,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1972
-#, fuzzy
 msgid " No help available."
-msgstr "Nėra jokių tikslų"
+msgstr " Nėra prieinamos pagalbos."
 
 #: src/menu_events.cpp:2108
 msgid ""
@@ -6565,17 +6534,15 @@ msgstr ""
 
 #: src/menu_events.cpp:2116
 msgid "Mute an observer."
-msgstr ""
+msgstr "Nutildyti stebėtoją."
 
 #: src/menu_events.cpp:2118
 msgid "Mute all observers."
-msgstr ""
+msgstr "Nutildyti visus stebėtojus."
 
 #: src/menu_events.cpp:2122
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr ""
-"Siunčia emociją ar asmeninį veiksmą pokalbyje. Naudojimas: /me <žinutė>"
+msgstr "Siųsti emociją ar asmeninį veiksmą pokalbyje."
 
 #: src/menu_events.cpp:2125
 msgid ""
@@ -6588,33 +6555,24 @@ msgid "Change the log level of a log domain."
 msgstr ""
 
 #: src/menu_events.cpp:2133
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr ""
-"Prideda slapyvardį į jūsų ignoruojamų sąrašą. Naudojimas: /list ignore "
-"<slapyvardis>"
+msgstr "Prideda slapyvardį į jūsų ignoruojamų sąrašą."
 
 #: src/menu_events.cpp:2135
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Pridėti į draugų sąrašą: "
+msgstr "Pridėti į draugų sąrašą."
 
 #: src/menu_events.cpp:2137
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Pašalina slapyvardį iš jūsų ignoruojamų sąrašo. Naudojimas: /list remove "
-"<slapyvardis>"
+msgstr "Pašalina slapyvardį iš jūsų ignoruojamų sąrašo."
 
 #: src/menu_events.cpp:2139
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Rodo jūsų ignoruojamų ir draugų sąrašą. Naudojimas: /list display"
+msgstr "Rodo jūsų ignoruojamų ir draugų sąrašą."
 
 #: src/menu_events.cpp:2142
-#, fuzzy
 msgid "Display version information."
-msgstr "Nerasta eros informacijos."
+msgstr "Rodyti versijos informaciją."
 
 #: src/menu_events.cpp:2144
 msgid "Register your nick"
@@ -6649,26 +6607,20 @@ msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
 #: src/menu_events.cpp:2280
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Išvalyti pokalbių žinutes.\n"
-"\n"
+msgstr "Išvalyti pokalbių istoriją."
 
 #: src/menu_events.cpp:2282
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2285
-#, fuzzy
 msgid "Save game."
-msgstr "Išsaugoti žaidimą"
+msgstr "Išsaugoti žaidimą."
 
 #: src/menu_events.cpp:2287
-#, fuzzy
 msgid "Quit game."
-msgstr "Išjungti žaidimą"
+msgstr "Išjungti žaidimą."
 
 #: src/menu_events.cpp:2291
 msgid "Save and quit."
@@ -6687,14 +6639,12 @@ msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
 #: src/menu_events.cpp:2301
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Atsiunčiamas kitas scenarijus..."
+msgstr "Pasirinkite kitą scenarijų..."
 
 #: src/menu_events.cpp:2304
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Derinimo režimo komandos"
+msgstr "Įjungti derinimo režimą."
 
 #: src/menu_events.cpp:2306
 msgid "Turn debug mode off."
@@ -6709,20 +6659,12 @@ msgid "Set or show alias to a command"
 msgstr ""
 
 #: src/menu_events.cpp:2312
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"Rodyti žaidimo būsenos kintamąjį.\n"
-"\n"
+msgstr "Nustatyti scenarijaus kintamajį."
 
 #: src/menu_events.cpp:2314
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"Rodyti žaidimo būsenos kintamąjį.\n"
-"\n"
+msgstr "Rodyti scenarijaus kintamąjį."
 
 #: src/menu_events.cpp:2316
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -6733,25 +6675,16 @@ msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
 #: src/menu_events.cpp:2322
-#, fuzzy
 msgid "Create a unit."
-msgstr "Sukurti žaidimą"
+msgstr "Sukurti dalinį."
 
 #: src/menu_events.cpp:2324
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Dabartinei pusei perjungia rūką/uždangą.\n"
-"\n"
+msgstr "Perjungti rūką dabartiniam žaidėjui."
 
 #: src/menu_events.cpp:2326
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"Dabartinei pusei perjungia rūką/uždangą.\n"
-"\n"
+msgstr "Perjungti uždangą dabartiniam žaidėjui."
 
 #: src/menu_events.cpp:2328
 msgid "Give gold to the current player."
@@ -6818,9 +6751,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
 #: src/menu_events.cpp:2802
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Sukurti dalinį (Derinimas!)"
+msgstr "Pasirinkti scenarijų (Derinimas!)"
 
 #: src/menu_events.cpp:2815
 msgid "Debug mode activated!"
@@ -6828,7 +6760,7 @@ msgstr "Įjungtas derinimo režimas!"
 
 #: src/menu_events.cpp:2818
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Derinimo režimas neprieinamas tinklo žaidimuose"
 
 #: src/menu_events.cpp:2823
 msgid "Debug mode deactivated!"
@@ -6875,16 +6807,15 @@ msgstr ""
 
 #: src/multiplayer.cpp:196
 msgid "Log in with password"
-msgstr ""
+msgstr "Prisijungti su slaptažodžiu"
 
 #: src/multiplayer.cpp:197
 msgid "Request password reminder for this username"
 msgstr ""
 
 #: src/multiplayer.cpp:198
-#, fuzzy
 msgid "Choose a different username"
-msgstr "Prisijungti prie kito severio"
+msgstr "Pasirinkite kitą naudotojo vardą"
 
 #: src/multiplayer.cpp:215
 msgid "Login"
@@ -6943,9 +6874,8 @@ msgid "(Reserved for $playername)"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:816
-#, fuzzy
 msgid "Reserved"
-msgstr "Perleisti"
+msgstr "Rezervuota"
 
 #: src/multiplayer_connect.cpp:817
 msgid "--give--"
@@ -7220,9 +7150,8 @@ msgid "--no games open--"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:155
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Nežinoma era"
+msgstr " (Nežinoma era)"
 
 #: src/multiplayer_lobby.cpp:432
 msgid "Unknown era: $era_id"
@@ -7309,7 +7238,7 @@ msgstr "Netinkama spalva"
 
 #: src/multiplayer_ui.cpp:382
 msgid "Send a private message to "
-msgstr ""
+msgstr "Siųsti asmeninę žinutę žaidėjui "
 
 #: src/multiplayer_ui.cpp:383
 msgid "Whisper"
@@ -7358,7 +7287,7 @@ msgstr "Pasirinkite savo pusę:"
 
 #: src/multiplayer_wait.cpp:309
 msgid "Starting position: "
-msgstr ""
+msgstr "Pradžios pozicija: "
 
 #: src/network.cpp:110
 msgid "invalid network handle"
@@ -7385,21 +7314,19 @@ msgstr ""
 
 #: src/pathfind.cpp:305
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Rasta vietovė su judėjimo kaina mažesne nei 1."
 
 #: src/play_controller.cpp:109
-#, fuzzy
 msgid "Loading level"
-msgstr "Įkeliamas titulinis vaizdas."
+msgstr "Įkeliamas lygis"
 
 #: src/play_controller.cpp:130
 msgid "Initializing teams"
 msgstr "Paruošiamos komandos"
 
 #: src/play_controller.cpp:151
-#, fuzzy
 msgid "Loading units"
-msgstr "Skaitomi dalinių failai."
+msgstr "Įkeliami daliniai"
 
 #: src/play_controller.cpp:158 src/play_controller.cpp:166
 msgid "Initializing display"
@@ -7739,9 +7666,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Priedai"
 
 #: src/titlescreen.cpp:373
-#, fuzzy
 msgid "TitleScreen button^Editor"
-msgstr "Išjungti"
+msgstr "Redaktorius"
 
 #: src/titlescreen.cpp:375
 msgid "TitleScreen button^Language"
@@ -7801,7 +7727,7 @@ msgstr "Atsisiųsti naudotojų sukurtas kampanijas, eras, žemėlapių rinkinius
 
 #: src/titlescreen.cpp:393
 msgid "Start the map editor"
-msgstr ""
+msgstr "Paleisti žemėlapių redaktorių"
 
 #: src/titlescreen.cpp:395
 msgid "Change the language"
@@ -7832,9 +7758,8 @@ msgid "Upload statistics"
 msgstr ""
 
 #: src/titlescreen.cpp:460
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "Mūšis dėl Wesnoth"
+msgstr "Padėkite Wesnoth"
 
 #: src/titlescreen.cpp:461
 msgid "Help Wesnoth by sending us information"
@@ -7909,9 +7834,8 @@ msgid "neutral"
 msgstr "neutralus"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^chaotic"
-msgstr "mechaninė"
+msgstr "chaotiška"
 
 #: src/unit_types.cpp:1008
 #, fuzzy
@@ -7919,9 +7843,8 @@ msgid "female^lawful"
 msgstr "ištikima"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^neutral"
-msgstr "nemirėlė"
+msgstr "neutrali"
 
 #: src/upload_log.cpp:320
 msgid ""

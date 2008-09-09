@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "POT-Creation-Date: 2008-08-31 11:48+0300\n"
-"PO-Revision-Date: 2008-07-05 22:48+0300\n"
+"PO-Revision-Date: 2008-09-09 19:13+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -120,14 +120,14 @@ msgstr "nustato bitų vienam pikseliui vertę. Pavyzdžiui: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "skip menu, show directly the campaign menu."
-msgstr ""
+msgstr "praleidžia meniu, iš karto rodo kampanijos meniu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
@@ -171,9 +171,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummylocales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummylocales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -181,6 +181,8 @@ msgid ""
 "Use special dummy locales to switch to any language even if that language "
 "isn't installed to system"
 msgstr ""
+"Naudoja specialias netikras lokales persijungimui į bet kurią kalbą, net jei "
+"ta kalba nepalaikoma jūsų sistemoje"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73
@@ -264,9 +266,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:98
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:101
@@ -315,9 +317,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:118
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:124
@@ -363,15 +365,14 @@ msgstr "atsausdina žaidimo duomenų aplanko pavadinimą ir išeina."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:136
-#, fuzzy
 msgid "prints the name of the user configuration directory and exits."
-msgstr "atsausdina žaidimo duomenų aplanko pavadinimą ir išeina."
+msgstr "atsausdina naudotojo konfigūracijos aplanko pavadinimą ir išeina."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:136 ../../doc/man/wesnoth_editor.6:62
@@ -841,6 +842,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client or the socket."
 msgstr ""
+"Tvarko Mūšio dėl Wesnoth daugelio žaidėjų žaidimus. Žiūrėkite http://www."
+"wesnoth.org/wiki/ServerAdministration kurias komandas priima serveris iš "
+"wesnoth kliento arba iš socket'o."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -981,7 +985,7 @@ msgstr "Globalūs raktai:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
@@ -1076,7 +1080,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:135
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:138
@@ -1084,6 +1088,8 @@ msgid ""
 "Command that server can use to start new server process. Restart can be done "
 "using /query restart."
 msgstr ""
+"Komandos, kurias serveris naudoja paleisti naują serverio procesą. "
+"Perkrovimas gali būti atliktas naudojant /query perkrovimą."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:138

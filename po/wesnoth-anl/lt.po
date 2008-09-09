@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:48+0200\n"
-"PO-Revision-Date: 2008-03-10 20:05+0300\n"
+"PO-Revision-Date: 2008-09-09 18:45+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,8 @@ msgstr ""
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
-msgstr "4ž – Lagūna"
+msgstr "4ž – Nauja šalis"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
@@ -45,7 +44,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "Privalote išgyventi iki 25 ėjimo."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:423
@@ -129,12 +128,12 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:649
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Jūs laimėjote žaidimą, bet galite tęsti, jeigu norite..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:664
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Aš kritau, bet dar ne viskas prarasta!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:676
@@ -144,7 +143,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:688
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "Bendražygiai, atkeršykite už mane!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:700
@@ -159,7 +158,7 @@ msgstr ""
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Grįžti į meniu"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
@@ -217,49 +216,47 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
 msgid "Select a topic."
-msgstr ""
+msgstr "Pasirinkite temą."
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
 msgid "Done"
-msgstr ""
+msgstr "Baigta"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
 msgid "Peasants"
-msgstr ""
+msgstr "Valstiečiai"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
 msgid "Mages"
-msgstr ""
+msgstr "Magai"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
-#, fuzzy
 msgid "Farms"
-msgstr "Fėja"
+msgstr "Fermos"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
 msgid "Villages"
-msgstr ""
+msgstr "Kaimai"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
-#, fuzzy
 msgid "Mines"
-msgstr "Monstrai"
+msgstr "Kasyklos"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 msgid "Universities"
-msgstr ""
+msgstr "Universitetai"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomatija"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
@@ -294,6 +291,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"Dalintis žemdirbystės žiniomis"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:193
@@ -301,6 +300,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"Dalintis kalnakasybos žiniomis"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:198
@@ -308,17 +309,19 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"Dalintis karinėmis žiniomis"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
 msgid "What shall I do?"
-msgstr ""
+msgstr "Ką aš turiu daryti?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "Nothing"
-msgstr ""
+msgstr "Nieko"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:233
@@ -336,7 +339,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Back"
-msgstr ""
+msgstr "Atgal"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:266
@@ -348,7 +351,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:276
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "Su kuo jūs dalinsitės žiniomis?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:313
@@ -401,7 +404,7 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:103
 msgid "Continue as before"
-msgstr ""
+msgstr "Tęsti kaip anksčiau"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:115
@@ -454,12 +457,12 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:149
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "Išlaisvinkime tave!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
-msgstr ""
+msgstr "Jūs išlaisvinote būtybę iš voratinklio ir ji sutinka jums padėti."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
@@ -477,87 +480,87 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Kaina: 0a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:76
 msgid "Plant Farm"
-msgstr ""
+msgstr "Pasodinti fermą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Kaina: 15a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Build Village"
-msgstr ""
+msgstr "Pastatyti kaimą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 msgid "Build Castle"
-msgstr ""
+msgstr "Pastatyti pilį"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Kaina: 6a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Flood the Field"
-msgstr ""
+msgstr "Užlieti lauką"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Kaina: 4a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Kaina: 1a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 msgid "Plant Saplings"
-msgstr ""
+msgstr "Pasodinti medelius"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:160
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "Iškirsti mišką"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:160
 msgid "Earns: 1g"
-msgstr ""
+msgstr "Uždirba: 1a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Build Mine"
-msgstr ""
+msgstr "Statyti kasyklą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Kaina: 25a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:321
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Kaina: 3a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 msgid "Make a Ford"
-msgstr ""
+msgstr "Padaryti brastą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
@@ -568,12 +571,12 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Kaina: 5a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "Sunaikinti brastą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
@@ -584,32 +587,32 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Kaina: 2a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "Rinkti grybus"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Earns: 3g"
-msgstr ""
+msgstr "Uždirba: 3a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Build a Keep"
-msgstr ""
+msgstr "Pastatyti bokštą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Kaina: 7a"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Establish University"
-msgstr ""
+msgstr "Įkurti universitetą"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
