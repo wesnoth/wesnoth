@@ -1408,7 +1408,7 @@ void game_controller::reset_translations()
 void game_controller::load_game_cfg()
 {
 	gui::set_background_dirty();
-	if (!game_config.empty() 
+	if (!game_config_.empty() 
 			&& old_defines_map_ == cache_.get_preproc_map())
 		return; // game_config already holds requested config in memory
 	old_defines_map_ = cache_.get_preproc_map();
