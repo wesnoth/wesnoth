@@ -93,8 +93,8 @@ clé="\fIvaleur\fP,\fIvaleur\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+Chemin relatif ou absolu d'un fichier que le serveur peut lire. Tout les
+bannissements actifs sur le serveur y seront écrits.
 .TP 
 \fBconnections_allowed\fP
 Nombre maximum de connexions ayant la même adresse IP. \fB0\fP pour
@@ -127,8 +127,8 @@ Mot de passe des habilitations de l'administrateur. Commence souvent par
 «\ admin\ ».
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+Commande pour démarer un nouveau processus serveur. Un redemarrage peut être
+fait avec un /query restart.
 .TP 
 \fBversions_accepted\fP
 Liste des versions acceptées par le serveur, séparées par des virgules. Les
