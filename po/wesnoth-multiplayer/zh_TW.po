@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:48+0200\n"
+"POT-Creation-Date: 2008-09-09 23:12+0200\n"
 "PO-Revision-Date: 2008-07-12 12:42+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -564,18 +564,21 @@ msgid "2p - Dark Forecast (Survival)"
 msgstr "2p - Dark Forecast (Survival)"
 
 #. [multiplayer]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
 "enemy waves.  During the course of gameplay, the terrain will change based "
-"on random weather effects."
+"on random weather effects.\n"
+"\n"
+"Note: You need to use map settings for the scenario to work right."
 msgstr ""
 "Dark Forecast 是生存遊戲。供自殘或雙人組隊娱樂，對抗隨機出現的AI。 勝利條件"
 "是：戰勝對手然後活下來。這個過程中，整個區域會隨機出現季節效果。"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:471
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -585,7 +588,7 @@ msgstr ""
 "治都穩固下來。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:832
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:834
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -593,62 +596,62 @@ msgstr ""
 "最後也是最强大的戰士站在我們這邊。獲得勝利是絕對的，我想可以馬上解决他們。"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1009
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1011
 msgid "Heavy Snowfall"
 msgstr "大雪"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1023
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1025
 msgid "Snowfall"
 msgstr "降雪"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1043
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1045
 msgid "Heavy Rains"
 msgstr "大雨"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1057
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1059
 msgid "Drought"
 msgstr "乾旱"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1065
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1067
 msgid "Clear Weather"
 msgstr "晴天"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1417
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1419
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr "單人模式 - 較簡單"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1420
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1422
 msgid "Two player mode - uses the full strength spawns."
 msgstr "雙人模式 - 較難"
 
 #. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1440
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
 msgid "Survive and defeat the waves of opposition."
 msgstr "擊敗對方並且活下來。"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
 msgid "Defeat all waves"
 msgstr "擊敗所有敵人"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1446
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
 msgid "Lose all your team's leaders"
 msgstr "所有主角死亡"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
 msgid "Dark Forecast - a random survival scenario"
 msgstr "Dark Forecast - a random survival scenario"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1479
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -696,12 +699,12 @@ msgstr ""
 "- WML 執行 (WML implementation)"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1484
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1486
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr "所以這是被詛咒的山谷-我們要征服的土地。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1488
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -711,21 +714,21 @@ msgstr ""
 "必須為這片土地上一切不可知的東西作好準備。 "
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1492
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "看看他們説的謊言和下場──讓我們教訓這些不聽話的傢伙."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1529
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1531
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "哦呃！怎麽會這様？竟然失敗了，輸給野蠻人！神哪，你拋棄了我..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1543
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1545
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -734,7 +737,7 @@ msgstr ""
 "只剩下憤恨，其他的都是他們的喜悦。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1565
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1567
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "

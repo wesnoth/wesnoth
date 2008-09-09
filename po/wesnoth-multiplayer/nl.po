@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:48+0200\n"
+"POT-Creation-Date: 2008-09-09 23:12+0200\n"
 "PO-Revision-Date: 2008-02-26 20:16+0100\n"
 "Last-Translator: Joeri Melis <joeri_melis@hotmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -586,12 +586,15 @@ msgid "2p - Dark Forecast (Survival)"
 msgstr "2p - Duistere Voorspellling (Overleving)"
 
 #. [multiplayer]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
 "enemy waves.  During the course of gameplay, the terrain will change based "
-"on random weather effects."
+"on random weather effects.\n"
+"\n"
+"Note: You need to use map settings for the scenario to work right."
 msgstr ""
 "Duistere voorspelling is een overlevingsscenario voor één speler of voor een "
 "twee speler team waarin tegen willekeurig opduikende eenheden van de KI "
@@ -600,7 +603,7 @@ msgstr ""
 "weerseffecten."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:471
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -612,7 +615,7 @@ msgstr ""
 "stabiel."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:832
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:834
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -621,62 +624,62 @@ msgstr ""
 "tijdig kunnen uitschakelen we de overwinning kunnen opeisen."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1009
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1011
 msgid "Heavy Snowfall"
 msgstr "Hevige sneeuwval."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1023
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1025
 msgid "Snowfall"
 msgstr "Sneeuwval."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1043
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1045
 msgid "Heavy Rains"
 msgstr "Hevige regen"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1057
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1059
 msgid "Drought"
 msgstr "Droogte"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1065
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1067
 msgid "Clear Weather"
 msgstr "Helder weer"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1417
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1419
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr "Enkele speler modus - wekt minder sterke tegenstand op"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1420
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1422
 msgid "Two player mode - uses the full strength spawns."
 msgstr "Tweespelermodus - wekt de volle kracht aan tegenstand op"
 
 #. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1440
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
 msgid "Survive and defeat the waves of opposition."
 msgstr "Overleef en versla iedere golf tegenstanders."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
 msgid "Defeat all waves"
 msgstr "Versla alle aanvalsgolven."
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1446
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
 msgid "Lose all your team's leaders"
 msgstr "Dood van een van de teamleiders."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
 msgid "Dark Forecast - a random survival scenario"
 msgstr "Duistere voorspelling - een willekeurig overlevingsscenario"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1479
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -727,12 +730,12 @@ msgstr ""
 "- WML implementatie"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1484
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1486
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr "Zo dit is de vervloekte vallei - een land voor ons om te veroveren."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1488
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -743,7 +746,7 @@ msgstr ""
 "voorbereiden op vele verassingen."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1492
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -752,7 +755,7 @@ msgstr ""
 "tegen onze claim kunnen verzetten"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1529
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1531
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -761,7 +764,7 @@ msgstr ""
 "verlaten...."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1543
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1545
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -770,7 +773,7 @@ msgstr ""
 "wegglijdt... hun vreugde vult je laatste momenten met pure haat."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1565
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1567
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "

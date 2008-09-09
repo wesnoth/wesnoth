@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:47+0200\n"
+"POT-Creation-Date: 2008-09-09 23:12+0200\n"
 "PO-Revision-Date: 2007-08-20 01:10+0600\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -174,11 +174,11 @@ msgstr "Увеличить"
 msgid "Zoom out"
 msgstr "Уменьшить"
 
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:697
+#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:710
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:703
+#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:716
 msgid "Redo"
 msgstr "Повторить"
 
@@ -218,11 +218,11 @@ msgstr "Выберите предпочтительный язык:"
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Битва за Веснот: Редактор карт"
 
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:256
+#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:275
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:260
+#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:279
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Карта уже существует. Вы хотите перезаписать её?"
 
@@ -243,7 +243,7 @@ msgstr "Какой игрок?"
 msgid "Which player should start here?"
 msgstr "Какой игрок должен начинать здесь?"
 
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:221
+#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:240
 msgid "Choose a Map to Load"
 msgstr "Выберите карту для загрузки"
 
@@ -259,7 +259,7 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Файл не содержит карту."
 
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:126
+#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:96
 msgid "Quit Editor"
 msgstr "Выход из редактора"
 
@@ -267,11 +267,11 @@ msgstr "Выход из редактора"
 msgid "Do you want to save the map before quitting?"
 msgstr "Вы хотите сохранить карту перед выходом?"
 
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:387
+#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:399
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:392
+#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:404
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
@@ -298,51 +298,59 @@ msgstr ""
 msgid " maximum="
 msgstr "максимум="
 
-#: src/editor2/editor_controller.cpp:184
+#: src/editor2/editor_controller.cpp:203
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:192
+#: src/editor2/editor_controller.cpp:211
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:195
+#: src/editor2/editor_controller.cpp:214
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:197
+#: src/editor2/editor_controller.cpp:216
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:207
+#: src/editor2/editor_controller.cpp:226
 msgid "There are unsaved changes in the map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:208
+#: src/editor2/editor_controller.cpp:227
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:299
+#: src/editor2/editor_controller.cpp:295
+msgid "Error"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:295
+msgid "No random map generators found"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:311
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:410 src/editor2/editor_controller.cpp:416
+#: src/editor2/editor_controller.cpp:422 src/editor2/editor_controller.cpp:428
 msgid "There was an error while loading the map:"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:413
+#: src/editor2/editor_controller.cpp:425
 msgid "Error loading map (format)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:419
+#: src/editor2/editor_controller.cpp:431
 msgid "Error loading map (wml)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:699
+#: src/editor2/editor_controller.cpp:712
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:705
+#: src/editor2/editor_controller.cpp:718
 msgid "Can't Redo"
 msgstr ""
 

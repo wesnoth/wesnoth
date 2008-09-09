@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-31 11:48+0200\n"
+"POT-Creation-Date: 2008-09-09 23:12+0200\n"
 "PO-Revision-Date: 2008-03-21 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -588,12 +588,15 @@ msgid "2p - Dark Forecast (Survival)"
 msgstr "2i: Mračna prognoza (opstanak)"
 
 #. [multiplayer]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
 "enemy waves.  During the course of gameplay, the terrain will change based "
-"on random weather effects."
+"on random weather effects.\n"
+"\n"
+"Note: You need to use map settings for the scenario to work right."
 msgstr ""
 "„Mračna prognoza“ je scenario opstanka za samostalnu ili igru u dvoje protiv "
 "nasumično izvlačenih jedinica VI. Pobeda se ostvaruje odbijanjem svih "
@@ -601,7 +604,7 @@ msgstr ""
 "vremenskim uslovima."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:471
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
 msgid ""
 "The screams and pleas for mercy are finally silenced, as you remove your "
 "blood soaked blade from the last of the rebels. There will be no more "
@@ -612,7 +615,7 @@ msgstr ""
 "Vladavina tvoja napokon je zaradila stabilnost."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:832
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:834
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
@@ -621,62 +624,62 @@ msgstr ""
 "ih na vreme, pobeda je naša."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1009
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1011
 msgid "Heavy Snowfall"
 msgstr "teška mećava"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1023
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1025
 msgid "Snowfall"
 msgstr "mećava"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1043
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1045
 msgid "Heavy Rains"
 msgstr "težak pljusak"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1057
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1059
 msgid "Drought"
 msgstr "suša"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1065
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1067
 msgid "Clear Weather"
 msgstr "čisto nebo"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1417
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1419
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr "Za jednog igrača — izranjanja smanjene snage."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1420
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1422
 msgid "Two player mode - uses the full strength spawns."
 msgstr "Za dva igrača — izranjanja pune snage."
 
 #. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1440
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
 msgid "Survive and defeat the waves of opposition."
 msgstr "Preživiš li i poraziš protivničke talase"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
 msgid "Defeat all waves"
 msgstr "Poraziš li sve talase"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1446
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
 msgid "Lose all your team's leaders"
 msgstr "Stradaju li svi vođi timova"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
 msgid "Dark Forecast - a random survival scenario"
 msgstr "Mračna prognoza — nasumični scenario opstanka"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1479
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -726,12 +729,12 @@ msgstr ""
 "— izvedba WML-a"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1484
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1486
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr "Ovo je, dakle, ta kleta dolina — zemlja naša za zauzimanje."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1488
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -741,14 +744,14 @@ msgstr ""
 "zahtevi neće proći bez otpora. Moramo biti spremni na iznenađenja ove zemlje."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1492
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "Otkrijmo onda šta vreba pritajeno i naučimo ih da nama nema otpora."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1529
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1531
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -756,7 +759,7 @@ msgstr ""
 "Ah! Kako ovo može biti? Poraziše nas obični varvari! Bogovi me napustiše..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1543
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1545
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -765,7 +768,7 @@ msgstr ""
 "njihova ispunjava ti poslednje trenutke čistom mržnjom."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1565
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1567
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
