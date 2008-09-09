@@ -84,6 +84,9 @@ int editor_action_chain::action_count() const {
 void editor_action_chain::append_action(editor_action* a) {
 	actions_.push_back(a);
 }
+void editor_action_chain::prepend_action(editor_action* a) {
+	actions_.push_front(a);
+}
 bool editor_action_chain::empty() const {
 	return actions_.empty();
 }
@@ -91,6 +94,12 @@ editor_action* editor_action_chain::pop_last_action() {
 	if (empty()) throw editor_action_exception("pop_last_action requested on an empty action_chain");
 	editor_action* last = actions_.back();
 	actions_.pop_back();
+	return last;
+}
+editor_action* editor_action_chain::pop_first_action() {
+	if (empty()) throw editor_action_exception("pop_first_action requested on an empty action_chain");
+	editor_action* last = actions_.front();
+	actions_.pop_front();
 	return last;
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {

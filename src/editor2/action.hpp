@@ -67,7 +67,8 @@ class editor_action_extendable : public editor_action
 
 /**
  * Container action wrapping several actions into one. 
- * The actions are performed in the order they are added.
+ * The actions are performed in the order they are added,
+ * i.e. in the usual iteration order through the container.
  */
 class editor_action_chain : public editor_action
 {
@@ -81,10 +82,10 @@ class editor_action_chain : public editor_action
 		}
 		
 		/**
-		 * Create an action chain from a vector of action pointers.
+		 * Create an action chain from a deque of action pointers.
 		 * Note: the action chain assumes ownership of the pointers.
 		 */
-		explicit editor_action_chain(std::vector<editor_action*> actions)
+		explicit editor_action_chain(std::deque<editor_action*> actions)
 		: actions_(actions)
 		{
 		}
@@ -114,6 +115,11 @@ class editor_action_chain : public editor_action
 		void append_action(editor_action* a);
 		
 		/**
+		 * Add an action at the beginning of the chain
+		 */
+		void prepend_action(editor_action* a);
+
+		/**
 		 * @return true when there are no actions in the chain. Empty
 		 * action chains should usually be discarded as to not keep
 		 * "empty" actions around.
@@ -126,6 +132,12 @@ class editor_action_chain : public editor_action
 		 */
 		editor_action* pop_last_action();
 		
+		/**
+		 * Remove the first added action and return it, transfering
+		 * ownership to the caller
+		 */
+		editor_action* pop_first_action();
+
 		/**
 		 * Perform all the actions in order and create a undo action chain
 		 */
@@ -140,7 +152,7 @@ class editor_action_chain : public editor_action
 		/**
 		 * The action pointers owned by this action chain
 		 */
-        std::vector<editor_action*> actions_;
+        std::deque<editor_action*> actions_;
 };
 
 
