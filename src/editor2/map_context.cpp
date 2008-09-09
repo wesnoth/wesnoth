@@ -172,7 +172,7 @@ void map_context::perform_partial_action(const editor_action& action)
 	}
 	editor_action* undo = action.perform(*this);
 	//actions_since_save_ += action.action_count();
-	undo_chain->append_action(undo);
+	undo_chain->prepend_action(undo);
 	clear_stack(redo_stack_);
 }
 
@@ -237,6 +237,7 @@ void map_context::redo()
 
 void map_context::partial_undo()
 {
+	//callers should check for these conditions
 	if (!can_undo()) {
 		throw editor_logic_exception("Empty undo stack in partial_undo()");
 	}
@@ -244,13 +245,15 @@ void map_context::partial_undo()
 	if (undo_chain == NULL) {
 		throw editor_logic_exception("Last undo action not a chain in partial undo");
 	}
-	std::auto_ptr<editor_action> last_action_in_chain(undo_chain->pop_last_action());
+	//a partial undo performs the first action form the current action's action_chain that would be normally performed
+	//i.e. the *first* one.
+	std::auto_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
 	if (undo_chain->empty()) {
 		actions_since_save_--;
 		delete undo_chain;
 		undo_stack_.pop_back();
 	}
-	redo_stack_.push_back(last_action_in_chain.get()->perform(*this));
+	redo_stack_.push_back(first_action_in_chain.get()->perform(*this));
 	//actions_since_save_ -= last_redo_action()->action_count();
 }
 
