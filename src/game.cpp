@@ -1408,7 +1408,8 @@ void game_controller::reset_translations()
 void game_controller::load_game_cfg()
 {
 	gui::set_background_dirty();
-	if (old_defines_map_ == cache_.get_preproc_map())
+	if (!game_config.empty() 
+			&& old_defines_map_ == cache_.get_preproc_map())
 		return; // game_config already holds requested config in memory
 	old_defines_map_ = cache_.get_preproc_map();
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
