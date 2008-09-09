@@ -1768,7 +1768,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 				healers.clear();
 				healing = rest_healing;
 				if(i->second.side() == side) {
-					healing -= game_config::poison_amount;
+					healing -= i->second.is_healthy() ? game_config::poison_amount / 2 : game_config::poison_amount;
 				}
 			}
 		}
