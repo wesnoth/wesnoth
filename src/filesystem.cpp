@@ -457,7 +457,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 		{
 			path = PREFERENCES_DIR;
 		}
-		game_config::preferences_dir += appdata +"/"+ path;
+		game_config::preferences_dir += appdata +std::string("/")+ path;
 		return;
 	} else {
 		if (path.empty())
@@ -473,7 +473,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 		} else {
 			std::string cur_path(res);
 			std::replace(cur_path.begin(),cur_path.end(),'\\','/');
-			game_config::preference_dir = cur_path + "/" + path;
+			game_config::preferences_dir = cur_path + "/" + path;
 			return;
 		}
 	}
@@ -509,17 +509,17 @@ static std::string setup_user_data_dir()
 	if (game_config::preferences_dir.empty())
 		set_preferences_dir(std::string());
 #ifdef _WIN32
-	_mkdir(game_config::preferences_dir);
-	_mkdir(game_config::preferences_dir + "/editor");
-	_mkdir(game_config::preferences_dir + "/editor/maps");
-	_mkdir(game_config::preferences_dir + "/data");
-	_mkdir(game_config::preferences_dir + "/data/ais");
-	_mkdir(game_config::preferences_dir + "/data/campaigns");
-	_mkdir(game_config::preferences_dir + "/data/multiplayer");
-	_mkdir(game_config::preferences_dir + "/data/maps");
-	_mkdir(game_config::preferences_dir + "/data/maps/multiplayer");
-	_mkdir(game_config::preferences_dir + "/data/units");
-	_mkdir(game_config::preferences_dir + "/saves");
+	_mkdir((game_config::preferences_dir).c_str());
+	_mkdir((game_config::preferences_dir + "/editor").c_str());
+	_mkdir((game_config::preferences_dir + "/editor/maps").c_str());
+	_mkdir((game_config::preferences_dir + "/data").c_str());
+	_mkdir((game_config::preferences_dir + "/data/ais").c_str());
+	_mkdir((game_config::preferences_dir + "/data/campaigns").c_str());
+	_mkdir((game_config::preferences_dir + "/data/multiplayer").c_str());
+	_mkdir((game_config::preferences_dir + "/data/maps").c_str());
+	_mkdir((game_config::preferences_dir + "/data/maps/multiplayer").c_str());
+	_mkdir((game_config::preferences_dir + "/data/units").c_str());
+	_mkdir((game_config::preferences_dir + "/saves").c_str());
 
 	return game_config::preferences_dir;
 #elif defined(__BEOS__)
