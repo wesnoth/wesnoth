@@ -433,35 +433,95 @@ bool create_directory_if_missing(const std::string& dirname)
 	return make_directory(dirname);
 }
 
+
+namespace {
+	std::string user_data_dir;
+}
+
+static std::string setup_user_data_dir();
+
+void set_preferences_dir(std::string path)
+{
 #ifndef PREFERENCES_DIR
-#define PREFERENCES_DIR ".wesnoth"
+const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::version).substr(0,3);
 #endif
+#ifdef _WIN32
+#ifndef SHARED_USERDATA
+	const char* appdata = getenv("APPDATA");
+#else
+	const char* appdata = "";
+#endif
+	if (strlen(appdata) > 0)
+	{
+		if (path.empty())
+		{
+			path = PREFERENCES_DIR;
+		}
+		game_config::preferences_dir += appdata +"/"+ path;
+		return;
+	} else {
+		if (path.empty())
+		{
+			path = "userdata";
+		}
+		char buf[512];
+		const char* const res = getcwd(buf,sizeof(buf));
+		if (res == NULL)
+		{
+			game_config::preferences_dir = path;
+			return;
+		} else {
+			std::string cur_path(res);
+			std::replace(cur_path.begin(),cur_path.end(),'\\','/');
+			game_config::preference_dir = cur_path + "/" + path;
+			return;
+		}
+	}
+
+#else
+	if (path.empty())
+		path = PREFERENCES_DIR;
+#ifndef __AMIGAOS4__
+	const char* const current_dir = ".";
+	const char* home_str = getenv("HOME");
+#else
+	const char* const current_dir = " ";
+	const char* home_str = "PROGDIR:";
+#endif
+	if(home_str == NULL)
+		home_str = current_dir;
+
+	const std::string home(home_str);
+
+#ifndef __AMIGAOS4__
+	game_config::preferences_dir = home + std::string("/") + path;
+#else
+	game_config::preferences_dir = home + path;
+#endif
+
+#endif
+	user_data_dir = setup_user_data_dir();
+}
+
 
 static std::string setup_user_data_dir()
 {
+	if (game_config::preferences_dir.empty())
+		set_preferences_dir(std::string());
 #ifdef _WIN32
-	_mkdir("userdata");
-	_mkdir("userdata/editor");
-	_mkdir("userdata/editor/maps");
-	_mkdir("userdata/data");
-	_mkdir("userdata/data/ais");
-	_mkdir("userdata/data/campaigns");
-	_mkdir("userdata/data/multiplayer");
-	_mkdir("userdata/data/maps");
-	_mkdir("userdata/data/maps/multiplayer");
-	_mkdir("userdata/data/units");
-	_mkdir("userdata/saves");
+	_mkdir(game_config::preferences_dir);
+	_mkdir(game_config::preferences_dir + "/editor");
+	_mkdir(game_config::preferences_dir + "/editor/maps");
+	_mkdir(game_config::preferences_dir + "/data");
+	_mkdir(game_config::preferences_dir + "/data/ais");
+	_mkdir(game_config::preferences_dir + "/data/campaigns");
+	_mkdir(game_config::preferences_dir + "/data/multiplayer");
+	_mkdir(game_config::preferences_dir + "/data/maps");
+	_mkdir(game_config::preferences_dir + "/data/maps/multiplayer");
+	_mkdir(game_config::preferences_dir + "/data/units");
+	_mkdir(game_config::preferences_dir + "/saves");
 
-	char buf[256];
-	const char* const res = getcwd(buf,sizeof(buf));
-
-	if(res != NULL) {
-		std::string cur_path(res);
-		std::replace(cur_path.begin(),cur_path.end(),'\\','/');
-		return cur_path + "/userdata";
-	} else {
-		return "userdata";
-	}
+	return game_config::preferences_dir;
 #elif defined(__BEOS__)
 	if (be_path.InitCheck() != B_OK) {
 		BPath tpath;
@@ -489,24 +549,7 @@ static std::string setup_user_data_dir()
 	}
 	return be_path.Path();
 #else
-
-#ifndef __AMIGAOS4__
-	static const char* const current_dir = ".";
-	const char* home_str = getenv("HOME");
-#else
-	static const char* const current_dir = " ";
-	const char* home_str = "PROGDIR:";
-#endif
-	if(home_str == NULL)
-		home_str = current_dir;
-
-	const std::string home(home_str);
-
-#ifndef __AMIGAOS4__
-	const std::string dir_path = home + std::string("/") + PREFERENCES_DIR;
-#else
-	const std::string dir_path = home + PREFERENCES_DIR;
-#endif
+	const std::string& dir_path = game_config::preferences_dir;
 
 	const bool res = create_directory_if_missing(dir_path);
 	// probe read permissions (if we could make the directory)
@@ -538,7 +581,10 @@ const std::string& get_user_data_dir()
 	// ensure setup gets called only once per session
 	// FIXME: this is okay and optimized, but how should we react
 	// if the user deletes a dir while we are running?
-	static std::string const user_data_dir = setup_user_data_dir();
+	if (user_data_dir.empty())
+	{
+		user_data_dir = setup_user_data_dir();
+	}
 	return user_data_dir;
 }
 

@@ -53,14 +53,6 @@
 #define ERR_NET LOG_STREAM(err , network)
 #define LOG_NET LOG_STREAM(info, network)
 
-namespace {
-	void setup_addon_dirs()
-	{
-		make_directory(get_user_data_dir() + "/data");
-		make_directory(get_addon_campaigns_dir());
-	}
-} // end unnamed namespace 1
-
 void get_addon_info(const std::string& addon_name, config& cfg)
 {
 	const std::string parentd = get_addon_campaigns_dir();
@@ -293,7 +285,6 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 void unarchive_addon(const config& cfg)
 {
 	const std::string parentd = get_addon_campaigns_dir();
-	setup_addon_dirs();
 	unarchive_dir(parentd, cfg);
 }
 

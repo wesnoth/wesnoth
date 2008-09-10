@@ -331,6 +331,10 @@ game_controller::game_controller(int argc, char** argv) :
 					multiplayer_server_ = "";
 			}
 
+		} else if(val == "--config-dir") {
+			if (argc_ <= ++arg_)
+				break;
+			set_preferences_dir(argv_[arg_]);
 		} else if(val == "--multiplayer" || val == "-m") {
 			multiplayer_mode_ = true;
 			break; //parse the rest of the arguments when we set up the game
@@ -1142,6 +1146,7 @@ namespace
 
 		//force a reload of configuration information
 		cache_.recheck_filetree_checksum();
+		old_defines_map_.clear();
 		clear_binary_paths_cache();
 		init_config();
 	}
@@ -1666,12 +1671,8 @@ static int process_command_args(int argc, char** argv) {
 			std::cout << "usage: " << argv[0]
 			<< " [OPTIONS] [DATA-DIRECTORY]\n"
 			<< "  --bpp number                 sets BitsPerPixel value. Example: --bpp 32\n"
-			<< "  --compress INFILE OUTFILE    compresses a savefile (INFILE) that is in text WML\n"
-			<< "                               format into binary WML format (OUTFILE).\n"
 			<< "  -d, --debug                  shows extra debugging information and enables\n"
 			<< "                               additional command mode options in-game.\n"
-			<< "  --decompress INFILE OUTFILE  decompresses a savefile (INFILE) that is in binary\n"
-			<< "                               WML format into text WML format (OUTFILE).\n"
 #ifndef DISABLE_EDITOR2
 			<< "  -e, --editor                 starts editor2 not showing title screen.\n"
 #endif
@@ -1700,6 +1701,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --max-fps                    the maximum fps the game tries to run at the value\n"
 			<< "                               should be between the 1 and 1000, the default is 50.\n"
 			<< "  --config-path                prints the path to the game config directory and exits.\n"
+			<< "  --config-dir=<path>          set name of game config directory.\n"
 			<< "  --path                       prints the path to the game data directory and exits.\n"
 #ifdef HAVE_PYTHON
 			<< "  --python-api                 prints the runtime documentation for the python API.\n"
@@ -1776,47 +1778,6 @@ static int process_command_args(int argc, char** argv) {
 				}
 				p = q;
 			}
-		//! @todo the (de)compress will be removed, the feature is broken for quite
-		//! a while and is replaced with --g(un)zip. 1.5.1 would be a nice point for
-		//! removal.
-		} else if(val == "--compress" || val == "--decompress") {
-			if(argc != arg+3) {
-				std::cerr << "format of " << val << " command: " << val << " <input file> <output file>\n";
-				return 0;
-			}
-
-			const std::string input(argv[arg+1]);
-			const std::string output(argv[arg+2]);
-
-			scoped_istream stream = istream_file(input);
-			if (stream->fail()) {
-				std::cerr << "could not read file '" << input << "'\n";
-				return 0;
-			}
-
-			config cfg;
-
-			const bool compress = val == "--compress";
-			try {
-				const bool is_compressed = detect_format_and_read(cfg, *stream);
-				if(is_compressed && compress) {
-					std::cerr << input << " is already compressed\n";
-					return 0;
-				} else if(!is_compressed && !compress) {
-					std::cerr << input << " is already decompressed\n";
-					return 0;
-				}
-
-				scoped_ostream output_stream = ostream_file(output);
-				write_possibly_compressed(*output_stream, cfg, compress);
-			} catch(config::error& e) {
-				std::cerr << input << " is not a valid Wesnoth file: " << e.message << "\n";
-			} catch(io_exception& e) {
-				std::cerr << "IO error: " << e.what() << "\n";
-			}
-
-			return 0;
-
 		} else if(val == "--gzip") {
 			if(argc != arg + 2) {
 				std::cerr << "format of " << val << " command: " << val << " <input file>\n";
