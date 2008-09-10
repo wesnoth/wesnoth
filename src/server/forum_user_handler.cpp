@@ -12,8 +12,10 @@ fuh::fuh(config c) {
 	db_password_ = c["db_password"];
 
 	// Connect to the database
-	if(!(db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str()))) {
-		std::cerr << "FUH: ERROR: Could not connect to database" << std::endl;
+	try {
+		db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
+	} catch(...) {
+		 std::cerr << "FUH: ERROR: Could not connect to database: " << db_interface_.error() << std::endl;
 	}
 }
 
@@ -37,10 +39,12 @@ mysqlpp::StoreQueryResult fuh::db_query(const std::string& sql) {
 
 	//Check if we are connected
 	if(!(db_interface_.connected())) {
+		std::cerr << "FUH: not connected to database, reconnecting..." << std::endl;
 		//Try to reconnect
-		if(!(db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str()))) {
-			//If we still are not connect throw an error
-			throw error("Not connected to database");
+		try {
+			db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
+		} catch(...) {
+			 std::cerr << "FUH: ERROR: Could not connect to database: " << db_interface_.error() << std::endl;
 		}
 	}
 
