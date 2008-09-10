@@ -3,6 +3,9 @@ Version 1.5.4+svn:
    * updated translations:
  * User interface:
    * Various minor cleanups and refactoring of the new widgets.
+ * Miscellaneous and bug fixes:
+   * Fixed the list of the unit's attacks getting cut off in the right panel
+     (bug #12297).
 
 Version 1.5.4:
  * Editor2:
@@ -85,7 +88,7 @@ Version 1.5.4:
    * Fixed [modify_turns] not updating $turn_number when current= was
      used.
    * Fixed crash when ai moves units next to level 0 hiden unit (bug #12252)
-   * Fixed loading ai parameters. MP side defination now overwrites 
+   * Fixed loading ai parameters. MP side defination now overwrites
      era values (bug #12171)
    * Fixed MP saves to transfer correct completion state to remote clients
      when loadin game (bug #10385)
@@ -120,7 +123,7 @@ Version 1.5.3:
  * Editor2
    * Future replacement for wesnoth_editor, launched from title menu or via
      wesnoth -e. Most old editor's features are duplicated, with some
-	 improvements.
+     improvements.
    * Built by default in scons, cmake and autotools, if building manually
      see RELEASE_NOTES.
    * See http://www.wesnoth.org/wiki/Editor2 for details and known issues.
@@ -167,7 +170,7 @@ Version 1.5.3:
    * Made campaign server encode CRs in old content in first startup
  * WML engine:
    * Fixed the filtering for x,y=recall,recall in [store_unit] and [kill] tags
-   * Fixed the bug where any changes to the primary unit in the "advance" 
+   * Fixed the bug where any changes to the primary unit in the "advance"
      event were totally ignored
    * Added some convenience macros for units: {TRANSFORM_UNIT}, etc.
    * Extended [modify_turns] to allow scenario designers to change the
