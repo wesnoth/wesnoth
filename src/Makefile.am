@@ -101,6 +101,7 @@ wesnoth_source = \
 	gui/widgets/toggle_panel.cpp \
 	gui/widgets/tooltip.cpp \
 	gui/widgets/vertical_scrollbar.cpp \
+	gui/widgets/vertical_scrollbar_container.cpp \
 	gui/widgets/widget.cpp \
 	gui/widgets/window.cpp \
 	gui/widgets/window_builder.cpp \

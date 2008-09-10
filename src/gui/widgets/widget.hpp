@@ -22,6 +22,7 @@
 #include "SDL.h"
 
 #include <string>
+#include <cassert>
 
 namespace gui2 {
 
@@ -640,6 +641,27 @@ private:
 	bool dirty_;
 
 };
+
+/**
+ * Returns the first parent of a widget with a certain type.
+ *
+ * @param widget                  The widget to get the parent from,
+ * @param T                       The class of the widget to return.
+ *
+ * @returns                       The parent widget.
+ */
+template<class T> T* get_parent(twidget* widget)
+{
+	T* result;
+	do {
+		widget = widget->parent();
+		result = dynamic_cast<T*>(widget);
+
+	} while (widget && !result);
+	
+	assert(result);
+	return result;
+}
 
 /**
  * Small abstract helper class.

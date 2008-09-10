@@ -15,12 +15,11 @@
 #ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 #define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 
-#include "tstring.hpp"
-#include "gui/widgets/container.hpp"
+#include "tstring.hpp" //NEEDED?
+#include "gui/widgets/vertical_scrollbar_container.hpp"
 
 namespace gui2 {
 
-class tscrollbar_;
 class tspacer;
 
 /**
@@ -33,9 +32,8 @@ class tspacer;
  */
 
 /** The listbox class. */
-class tlistbox : public tcontainer_
+class tlistbox : public tvertical_scrollbar_container_
 {
-	friend class tbuilder_listbox;
 public:
 	
 	tlistbox();
@@ -46,16 +44,6 @@ public:
 	 * calls us.
 	 */
 	void list_item_selected(twidget* caller);
-
-	/** Callback when the scrollbar moves. */
-	void scrollbar_moved(twidget* /*caller*/)
-		{ set_scrollbar_button_status(); set_dirty(); }
-
-	/** 
-	 * When an item scrollbar control button is clicked we need to move the
-	 * scrollbar and update the list. 
-	 */
-	void scrollbar_click(twidget* caller);
 
 	/***** ***** ***** row handling ****** *****/
 
@@ -106,17 +94,6 @@ public:
 	unsigned get_item_count() const { return rows_.size(); }
 
 	/** 
-	 * Selects an entire row. 
-	 *
-	 * @param row                 The row to (de)select.
-	 * @param select              true select, false deselect.
-	 *
-	 * @returns                   false if deselecting wasn't allowed.
-	 *                            true otherwise.
-	 */
-	bool select_row(const unsigned row, const bool select = true);
-
-	/** 
 	 * Makes a row active or inactive.
 	 *
 	 * NOTE this doesn't change the select status of the row.
@@ -145,15 +122,8 @@ public:
 	/** Inherited from tevent_executor. */
 	void mouse_left_button_down(tevent_handler& event);
 
-	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event, bool& handled, 
-		SDLKey key, SDLMod modifier, Uint16 unicode);
-
 	/** Inherited from twidget. */
 	tpoint get_best_size(const tpoint& maximum_size) const;
-
-	/** Inherited from twidget. */
-	bool has_vertical_scrollbar() const { return true; }
 
 	/** Inherited from tcontainer_. */
 	tpoint get_best_size() const;
@@ -170,7 +140,7 @@ public:
 			const bool must_be_active) const;
 
 	/** Import overloaded versions. */
-	using tcontainer_::find_widget;
+	using tvertical_scrollbar_container_::find_widget;
 
 	/** Inherited from tcontainer_. */
 	void set_size(const SDL_Rect& rect);
@@ -179,14 +149,14 @@ public:
 	void set_self_active(const bool active) 
 		{ state_ = active ? ENABLED : DISABLED; }
 
+	/** Inherited from tvertical_scrollbar_container_. */
+	bool select_row(const unsigned row, const bool select = true);
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	bool get_active() const { return state_ != DISABLED; }
 
 	unsigned get_state() const { return state_; }
-
-	void set_callback_value_change(void (*callback) (twidget* caller))
-		{ callback_value_change_ = callback; }
 
 	void set_list_builder(tbuilder_grid_ptr list_builder) 
 		{ list_builder_ = list_builder; }
@@ -197,14 +167,6 @@ public:
 		{ assume_fixed_row_size_ = assume; }
 
 private:
-
-	/** 
-	 * Sets the status of the scrollbar buttons.
-	 *
-	 * This is needed after the scrollbar moves so the status of the buttons
-	 * will be active or inactive as needed.
-	 */
-	void set_scrollbar_button_status();
 
 	/**
 	 * Possible states of the widget.
@@ -229,12 +191,6 @@ private:
 	 * in that case 
 	 */
 	tbuilder_grid_ptr list_builder_;
-
-	/** Returns the scrollbar widget. */
-	tscrollbar_* scrollbar();
-
-	/** Returns the scrollbar widget. */
-	const tscrollbar_* scrollbar() const;
 
 	/** Returns the spacer widget which is used to reserve space of the real list. */
 	tspacer* list();
@@ -291,13 +247,6 @@ private:
 	/** The best size for the spacer, if not set it's calculated. */
 	tpoint best_spacer_size_;
 
-	/**
-	 * This callback is used when the selection is changed due to a user event.
-	 * The name is not fully appropriate for the event but it's choosen to be
-	 * generic.
-	 */
-	void (*callback_value_change_) (twidget* caller);
-
 	/** 
 	 * Draws the list area if assume_fixed_row_size_ is true. 
 	 *
@@ -326,10 +275,10 @@ private:
 	 * @returns                   The row number in which the widget was found.
 	 * @retval -1                 If the offset wasn't found.
 	 */
-	size_t row_at_offset(int offset, int& offset_in_widget) const; 
+	size_t row_at_offset(int offset, int& offset_in_widget) const;
 
-	/** The builder needs to call us so we can write in the proper callbacks. */
-	void finalize_setup();
+	/** Inherited. */
+	bool get_item_active(const unsigned item) const;
 
 	/** Contains the info for a row in the listbox. */
 	class trow {

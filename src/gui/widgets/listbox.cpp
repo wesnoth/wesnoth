@@ -15,7 +15,6 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "foreach.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/scrollbar.hpp"
@@ -64,18 +63,8 @@ static void callback_select_list_item(twidget* caller)
 	get_listbox(caller)->list_item_selected(caller);
 }
 
-static void callback_scrollbar(twidget* caller)
-{
-	get_listbox(caller)->scrollbar_moved(caller);
-}
-
-static void callback_scrollbar_button(twidget* caller)
-{
-	get_listbox(caller)->scrollbar_click(caller);
-}
-
 tlistbox::tlistbox() :
-	tcontainer_(COUNT),
+	tvertical_scrollbar_container_(COUNT),
 	state_(ENABLED),
 	list_builder_(0),
 	assume_fixed_row_size_(true),
@@ -87,7 +76,6 @@ tlistbox::tlistbox() :
 	list_rect_(),
 	list_background_(),
 	best_spacer_size_(0, 0),
-	callback_value_change_(NULL),
 	rows_()
 {
 }
@@ -98,9 +86,9 @@ void tlistbox::list_item_selected(twidget* caller)
 	get_window()->keyboard_capture(this);
 
 	if(assume_fixed_row_size_) {
-		for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
+		for(unsigned i = 0; i < find_scrollbar()->get_visible_items(); ++i) {
 
-			const unsigned row = i + scrollbar()->get_item_position();
+			const unsigned row = i + find_scrollbar()->get_item_position();
 
 			if(list_row_selected(row, caller)) {
 				return;
@@ -117,34 +105,6 @@ void tlistbox::list_item_selected(twidget* caller)
 
 	// we aren't supposed to get here.
 	assert(false);
-}
-
-void tlistbox::scrollbar_click(twidget* caller)
-{
-	/** @todo Hack to capture the keyboard focus. */
-	get_window()->keyboard_capture(this);
-
-	if(caller->id() == "_begin") {
-		scrollbar()->scroll(tscrollbar_::BEGIN);
-	} else if(caller->id() == "_line_up") {
-		scrollbar()->scroll(tscrollbar_::ITEM_BACKWARDS);
-	} else if(caller->id() == "_half_page_up") {
-		scrollbar()->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
-	} else if(caller->id() == "_page_up") {
-		scrollbar()->scroll(tscrollbar_::JUMP_BACKWARDS);
-	} else if(caller->id() == "_end") {
-		scrollbar()->scroll(tscrollbar_::END);
-	} else if(caller->id() == "_line_down") {
-		scrollbar()->scroll(tscrollbar_::ITEM_FORWARD);
-	} else if(caller->id() == "_half_page_down") {
-		scrollbar()->scroll(tscrollbar_::HALF_JUMP_FORWARD);
-	} else if(caller->id() == "_page_down") {
-		scrollbar()->scroll(tscrollbar_::JUMP_FORWARD);
-	} else {
-		assert(false);
-	}
-
-	set_scrollbar_button_status();
 }
 
 void tlistbox::add_row(const std::map<
@@ -173,14 +133,14 @@ void tlistbox::add_row(const std::map<std::string /* widget id */, std::map<
 	}
 
 	if(assume_fixed_row_size_) {
-		scrollbar()->set_item_count(get_item_count());
+		find_scrollbar()->set_item_count(get_item_count());
 	} else {
 		unsigned height = 0;
 		foreach(trow& row, rows_) {
 			height += row.get_height();
 		}
 		std::cerr << "Items " << height << ".\n"; 
-		scrollbar()->set_item_count(height);
+		find_scrollbar()->set_item_count(height);
 	}
 
 	set_scrollbar_button_status();
@@ -194,36 +154,6 @@ void tlistbox::add_rows(const std::vector< std::map<std::string, t_string> >& da
 	foreach(const hack& cell, data) {
 		add_row(cell);
 	}
-}
-
-bool tlistbox::select_row(const unsigned row, const bool select)
-{
-	if(!select && must_select_ && selection_count_ < 2) {
-		return false;
-	}
-
-	if((select && rows_[row].get_selected()) 
-		|| (!select && !rows_[row].get_selected())) {
-		return true;
-	}
-
-	if(select && !multi_select_ && selection_count_ == 1) {
-		assert(selected_row_ < get_item_count());
-		rows_[selected_row_].set_selected(false);
-		--selection_count_;
-	}
-
-	if(select) {
-		++selection_count_;
-	} else {
-		--selection_count_;
-	}
-
-	assert(row < get_item_count());
-	selected_row_ = row;
-	rows_[row].set_selected();
-
-	return true;
 }
 
 void tlistbox::set_row_active(const unsigned row, const bool active)
@@ -249,75 +179,6 @@ void tlistbox::mouse_left_button_down(tevent_handler& event)
 	DBG_G_E << "Listbox: left mouse button down.\n"; 
 
 	event.keyboard_capture(this);
-}
-
-void tlistbox::key_press(tevent_handler& /*event*/, bool& handled, 
-		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
-{
-	DBG_G_E << "Listbox: key press.\n";
-
-	tscrollbar_* sb = scrollbar();
-	int row = get_selected_row();
-	switch(key) {
-
-		case SDLK_PAGEUP :
-			row -= sb->get_visible_items() - 1;
-			if(row <= 0) {
-				row = 1;
-			}
-			// FALL DOWN
-
-		case SDLK_UP : 
-
-			--row;
-			while(row >= 0 && !rows_[row].get_active()) {
-				--row;
-			}
-			if(row >= 0) {
-				select_row(row);
-				handled = true;
-
-				if(row < sb->get_item_position()) {
-					sb->set_item_position(row);
-					set_scrollbar_button_status();
-				}
-				if(callback_value_change_) {
-					callback_value_change_(this);
-				}
-			}
-			break;
-			
-		case SDLK_PAGEDOWN :
-			row += sb->get_visible_items() - 1;
-			if(row + 1 >= rows_.size()) {
-				row = rows_.size() - 2;
-			}
-			// FALL DOWN
-
-		case SDLK_DOWN : 
-
-			++row;
-			while(row < rows_.size() && !rows_[row].get_active()) {
-				++row;
-			}
-			if(row < rows_.size()) {
-				select_row(row);
-				handled = true;
-				if(row >= sb->get_item_position() + sb->get_visible_items()) {
-
-					sb->set_item_position(row + 1 - sb->get_visible_items());
-					set_scrollbar_button_status();
-				}
-				if(callback_value_change_) {
-					callback_value_change_(this);
-				}
-			}
-			break;
-
-		default :
-			/* DO NOTHING */
-			break;
-	}
 }
 
 tpoint tlistbox::get_best_size(const tpoint& maximum_size) const
@@ -478,7 +339,9 @@ void tlistbox::set_size(const SDL_Rect& rect)
 			if(assume_fixed_row_size_) {
 				const unsigned row_height = rows_[0].grid()->get_best_size().y;
 				const unsigned orig_height = best_spacer_size_.y;
-				best_spacer_size_.y = (best_spacer_size_.y / row_height) * row_height;
+				best_spacer_size_.y = 
+					(best_spacer_size_.y / row_height) * row_height;
+
 				best_rect.h -= (orig_height - best_spacer_size_.y);
 			}
 			// This call is required to update the best size.
@@ -506,7 +369,7 @@ void tlistbox::set_size(const SDL_Rect& rect)
 		total_height += height;
 	}
 	if(!assume_fixed_row_size_) {
-		scrollbar()->set_item_count(total_height);
+		find_scrollbar()->set_item_count(total_height);
 	}
 
 	if(rows_.size() > 0) {
@@ -514,16 +377,16 @@ void tlistbox::set_size(const SDL_Rect& rect)
 			const unsigned row_height = rows_[0].get_height();
 			if(row_height) {
 				const unsigned rows = list()->get_best_size().y / row_height;
-				scrollbar()->set_visible_items(rows);
+				find_scrollbar()->set_visible_items(rows);
 			} else {
 				WRN_G << "Listbox row 0 has no height, making all rows visible.\n";
-				scrollbar()->set_visible_items(rows_.size());
+				find_scrollbar()->set_visible_items(rows_.size());
 			}
 		} else {
-			scrollbar()->set_visible_items(best_spacer_size_.y);
+			find_scrollbar()->set_visible_items(best_spacer_size_.y);
 		}
 	} else {
-		scrollbar()->set_visible_items(1);
+		find_scrollbar()->set_visible_items(1);
 	}
 	set_scrollbar_button_status();
 
@@ -531,64 +394,34 @@ void tlistbox::set_size(const SDL_Rect& rect)
 	best_spacer_size_ = tpoint(0, 0);
 }
 
-void tlistbox::set_scrollbar_button_status()
+bool tlistbox::select_row(const unsigned row, const bool select)
 {
-	// Set scroll up button status
-	static std::vector<std::string> button_up_names;
-	if(button_up_names.empty()) {
-		button_up_names.push_back("_begin");
-		button_up_names.push_back("_line_up");
-		button_up_names.push_back("_half_page_up");
-		button_up_names.push_back("_page_up");
+	if(!select && must_select_ && selection_count_ < 2) {
+		return false;
 	}
 
-	foreach(const std::string& name, button_up_names) {
-		tbutton* button = 
-			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
-
-		if(button) {
-			button->set_active(!scrollbar()->at_begin());
-		}
+	if((select && rows_[row].get_selected()) 
+		|| (!select && !rows_[row].get_selected())) {
+		return true;
 	}
 
-	// Set scroll down button status
-	static std::vector<std::string> button_down_names;
-	if(button_down_names.empty()) {
-		button_down_names.push_back("_end");
-		button_down_names.push_back("_line_down");
-		button_down_names.push_back("_half_page_down");
-		button_down_names.push_back("_page_down");
+	if(select && !multi_select_ && selection_count_ == 1) {
+		assert(selected_row_ < get_item_count());
+		rows_[selected_row_].set_selected(false);
+		--selection_count_;
 	}
 
-	foreach(const std::string& name, button_down_names) {
-		tbutton* button = 
-			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
-
-		if(button) {
-			button->set_active(!scrollbar()->at_end());
-		}
+	if(select) {
+		++selection_count_;
+	} else {
+		--selection_count_;
 	}
 
-	// Set the scrollbar itself
-	scrollbar()->set_active(!(scrollbar()->at_begin() && scrollbar()->at_end()));
-}
+	assert(row < get_item_count());
+	selected_row_ = row;
+	rows_[row].set_selected();
 
-tscrollbar_* tlistbox::scrollbar()
-{
-	// Note we don't cache the result, we might want change things later.	
-	tscrollbar_* result = 
-		dynamic_cast<tscrollbar_*>(tcontainer_::find_widget("_scrollbar", false));
-	assert(result);
-	return result;
-}
-
-const tscrollbar_* tlistbox::scrollbar() const
-{
-	// Note we don't cache the result, we might want change things later.	
-	const tscrollbar_* result = 
-		dynamic_cast<const tscrollbar_*>(tcontainer_::find_widget("_scrollbar", false));
-	assert(result);
-	return result;
+	return true;
 }
 
 tspacer* tlistbox::list()
@@ -613,9 +446,7 @@ bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 	if(rows_[row].grid()->has_widget(caller)) {
 
 		if(select_row(row, !rows_[row].get_selected())) {
-			if(callback_value_change_) {
-				callback_value_change_(this);
-			}
+			value_changed();
 		} else {
 			// if not allowed to deselect reselect.
 			tselectable_* selectable = dynamic_cast<tselectable_*>(caller);
@@ -633,10 +464,10 @@ void tlistbox::draw_list_area_fixed_row_height(surface& surface,
 		const bool force, const bool invalidate_background)
 {
 	unsigned offset = list_rect_.y;
-	for(unsigned i = 0; i < scrollbar()->get_visible_items(); ++i) {
+	for(unsigned i = 0; i < find_scrollbar()->get_visible_items(); ++i) {
 
 		// make sure we stay inside the valid range.
-		const unsigned index = i + scrollbar()->get_item_position();
+		const unsigned index = i + find_scrollbar()->get_item_position();
 		if(index >= rows_.size()) {
 			return;
 		}
@@ -661,8 +492,8 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 {
 
 	// Get the start and end offset to draw on.
-	const unsigned start = scrollbar()->get_item_position();
-	const unsigned end = start + scrollbar()->get_visible_items();
+	const unsigned start = find_scrollbar()->get_item_position();
+	const unsigned end = start + find_scrollbar()->get_visible_items();
 
 	unsigned offset = 0;
 	foreach(trow& row, rows_) {
@@ -716,15 +547,15 @@ size_t tlistbox::row_at_offset(int offset, int& offset_in_widget) const
 			// The position of the scrollbar is the offset of rows,
 			// so add to the result.
 			offset_in_widget = offset % rows_[0].get_height();
-			const size_t result = 
-				(offset / rows_[0].get_height()) + scrollbar()->get_item_position();
+			const size_t result = (offset / rows_[0].get_height()) 
+				+ find_scrollbar()->get_item_position();
 
 			return result < rows_.size() ? result : -1;
 		}
 	} else {
 		// The position of the scrollbar is the number of pixels scrolled, 
 		// so add to the offset.
-		offset += scrollbar()->get_item_position();
+		offset += find_scrollbar()->get_item_position();
 		for(unsigned i = 0; i < rows_.size(); ++i) {
 			offset -= rows_[i].get_height();
 
@@ -738,31 +569,11 @@ size_t tlistbox::row_at_offset(int offset, int& offset_in_widget) const
 	}
 }
 
-void tlistbox::finalize_setup()
+bool tlistbox::get_item_active(const unsigned item) const
 {
-	scrollbar()->set_callback_positioner_move(callback_scrollbar);
+	assert(item < rows_.size());
 
-	static std::vector<std::string> button_names;
-	if(button_names.empty()) {
-		button_names.push_back("_begin");
-		button_names.push_back("_line_up");
-		button_names.push_back("_half_page_up");
-		button_names.push_back("_page_up");
-
-		button_names.push_back("_end");
-		button_names.push_back("_line_down");
-		button_names.push_back("_half_page_down");
-		button_names.push_back("_page_down");
-	}
-
-	foreach(const std::string& name, button_names) {
-		tbutton* button = 
-			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
-
-		if(button) {
-			button->set_callback_mouse_left_click(callback_scrollbar_button);
-		}
-	}
+	return rows_[item].get_active();
 }
 
 tlistbox::trow::trow(const tbuilder_grid& list_builder_, 
@@ -845,7 +656,6 @@ void tlistbox::trow::select_in_grid(tgrid* grid, const bool selected)
 		}
 	}
 }
-
 
 } // namespace gui2
 
