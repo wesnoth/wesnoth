@@ -23,10 +23,12 @@ Version 1.4.5:
    * Fixed linewrapping with not to wrap markups (bug #11946 and bug #11945)
    * Fixed OOS bug when giving control and having move in undo stack.
    * Fixed crash when ai moves units next to level 0 hiden unit (bug #12252)
-   * Fixed loading ai parameters. MP side defination now overwrites 
+   * Fixed loading ai parameters. MP side defination now overwrites
      era values (bug #12171)
    * Fixed MP saves to transfer correct completion state to remote clients
      when loadin game (bug #10385)
+   * Fixed the list of the unit's attacks getting cut off in the right panel
+     (bug #12297).
 
 Version 1.4.4:
  * language and i18n:
@@ -67,11 +69,11 @@ Version 1.4.3:
    * Improved connection stability with slow connections.
    * Implemented send_file to reduce memory usage when sending files
    * Fixed a mememory leak in networking code
-   * fixed an alignement issue which caused a SIGBUS on a Sparc 
+   * fixed an alignement issue which caused a SIGBUS on a Sparc
      (debian bug #426318)
    * Fixed tokenizer not to strip CR from quoted string becaue it would destroy
      images transfered over network
-   * added some includes to fix compilation problems with Sun Studio 12 
+   * added some includes to fix compilation problems with Sun Studio 12
      (patch #1066)
    * fixed null-pointer reference in network code
 
