@@ -10,6 +10,7 @@ fuh::fuh(config c) {
 	db_host_ = c["db_host"];
 	db_user_ = c["db_user"];
 	db_password_ = c["db_password"];
+	db_users_table_ = c["db_users_table"];
 
 	// Connect to the database
 	try {
@@ -17,6 +18,15 @@ fuh::fuh(config c) {
 	} catch(...) {
 		 std::cerr << "FUH: ERROR: Could not connect to database: " << db_interface_.error() << std::endl;
 	}
+}
+
+std::string fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
+	return std::string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE username='" + name + "'");
+}
+
+std::string fuh::set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value) {
+	std::cout <<  std::string("UPDATE " + db_users_table_ + " SET " + detail + "='" + name + "' WHERE username='" + name + "'") << std::endl;
+	return std::string("UPDATE " + db_users_table_ + " SET " + detail + "='" + value + "' WHERE username='" + name + "'");
 }
 
 void fuh::add_user(const std::string& name, const std::string& mail, const std::string& password) {
@@ -141,12 +151,8 @@ std::string fuh::create_pepper(const std::string& name, int index) {
 bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
-	std::string sql("SELECT username FROM phpbb_users WHERE username='");
-	sql.append(name);
-	sql.append("'");
-
 	try {
-		return db_query(sql).num_rows() > 0;
+		return db_query(get_detail_for_user(name, "username")).num_rows() > 0;
 	} catch (error e) {
 		std::cerr << "FUH: ERROR: " << e.message << std::endl;
 		// If the database is down just let all usernames log in
@@ -165,32 +171,19 @@ void fuh::clean_up() {
 
 void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 
-	// Disabled for now
-
-	/*
 	std::stringstream ss;
 	ss << lastlogin;
 
-	std::string sql("UPDATE phpbb_users set user_lastvisit='");
-	sql.append(ss.str());
-	sql.append("' where username='");
-	sql.append(user);
-	sql.append("'");
-
 	try {
-	db_query(sql);
+	db_query(set_detail_for_user(user, "user_lastvisit", ss.str()));
 	} catch (error e) {
 		std::cerr << "FUH: ERROR: " << e.message << std::endl;
-	}*/
+	}
 }
 
 std::string fuh::get_hash(const std::string& user) {
-	std::string sql("SELECT user_password FROM phpbb_users WHERE username='");
-	sql.append(user);
-	sql.append("'");
-
 	try {
-		return db_query_to_string(sql);
+		return db_query_to_string(get_detail_for_user(user, "user_password"));
 	} catch (error e) {
 		std::cerr << "FUH: ERROR: " << e.message << std::endl;
 		return time_t(0);
@@ -198,18 +191,15 @@ std::string fuh::get_hash(const std::string& user) {
 }
 
 std::string fuh::get_mail(const std::string& user) {
-	std::string sql("SELECT user_email FROM phpbb_users WHERE username='");
-	sql.append(user);
-	sql.append("'");
-
 	try {
-		return db_query_to_string(sql);
+		return db_query_to_string(get_detail_for_user(user, "user_email"));
 	} catch (error e) {
 		std::cerr << "FUH: ERROR: " << e.message << std::endl;
 		return time_t(0);
 	}
 }
 
+/*
 std::vector<std::string> fuh::get_friends(const std::string& user) {
 	std::string sql("SELECT user_id FROM phpbb_users WHERE username='");
 	sql.append(user);
@@ -263,14 +253,11 @@ std::vector<std::string> fuh::get_ignores(const std::string& user) {
 
 	return ignores;
 }
+*/
 
 time_t fuh::get_lastlogin(const std::string& user) {
-	std::string sql("SELECT user_lastvisit FROM phpbb_users WHERE username='");
-	sql.append(user);
-	sql.append("'");
-
 	try {
-		int time_int = atoi(db_query_to_string(sql).c_str());
+		int time_int = atoi(db_query_to_string(get_detail_for_user(user, "user_lastvisit")).c_str());
 		return time_t(time_int);
 	} catch (error e) {
 		std::cerr << "FUH: ERROR: " << e.message << std::endl;
@@ -279,12 +266,8 @@ time_t fuh::get_lastlogin(const std::string& user) {
 }
 
 time_t fuh::get_registrationdate(const std::string& user) {
-	std::string sql("SELECT user_regdate FROM phpbb_users WHERE username='");
-	sql.append(user);
-	sql.append("'");
-
 	try {
-		int time_int = atoi(db_query_to_string(sql).c_str());
+		int time_int = atoi(db_query_to_string(get_detail_for_user(user, "user_regdate")).c_str());
 		return time_t(time_int);
 	} catch (error e) {
 		std::cerr << "FUH: ERROR: " << e.message << std::endl;
