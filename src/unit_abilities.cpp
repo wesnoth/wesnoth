@@ -130,7 +130,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 		}
 	}
 
-	assert(units_ && teams_);
+	assert(units_);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -143,7 +143,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 		const config::child_list& list = adj_abilities->get_children(ability);
 		for (config::child_list::const_iterator j = list.begin(),
 		     j_end = list.end(); j != j_end; ++j) {
-			if (unit_abilities::affects_side(**j, *teams_, side(), it->second.side()) &&
+			if (unit_abilities::affects_side(**j, teams_manager::get_teams(), side(), it->second.side()) &&
 			    it->second.ability_active(ability, **j, adjacent[i]) &&
 			    ability_affects_adjacent(ability,  **j, i, loc))
 				return true;
@@ -182,7 +182,7 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 		const config::child_list& list = adj_abilities->get_children(ability);
 		for (config::child_list::const_iterator j = list.begin(),
 		     j_end = list.end(); j != j_end; ++j) {
-			if (unit_abilities::affects_side(**j, *teams_, side(), it->second.side()) &&
+			if (unit_abilities::affects_side(**j, teams_manager::get_teams(), side(), it->second.side()) &&
 			    it->second.ability_active(ability, **j, adjacent[i]) &&
 			    ability_affects_adjacent(ability, **j, i, loc))
 				res.cfgs.push_back(std::pair<config*, gamemap::location>
@@ -828,14 +828,13 @@ bool attack_type::special_affects_self(const config& cfg) const
 void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
                               const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status,
-							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
+							  const std::vector<team>* /*teams*/, bool attacker,const attack_type* other_attack) const
 {
 	aloc_ = aloc;
 	dloc_ = dloc;
 	unitmap_ = unitmap;
 	map_ = map;
 	game_status_ = game_status;
-	teams_ = teams;
 	attacker_ = attacker;
 	other_attack_ = other_attack;
 }
@@ -847,7 +846,6 @@ void attack_type::set_specials_context(const gamemap::location& loc, const gamem
 	unitmap_ = un.units_;
 	map_ = un.map_;
 	game_status_ = un.gamestatus_;
-	teams_ = un.teams_;
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }
