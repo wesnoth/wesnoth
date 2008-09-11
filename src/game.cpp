@@ -1750,9 +1750,9 @@ static int process_command_args(int argc, char** argv) {
 			return 0;
 #endif
 		} else if(val == "--config-dir") {
-			if (argc_ <= ++arg_)
+			if (argc <= ++arg)
 				break;
-			set_preferences_dir(argv_[arg_]);
+			set_preferences_dir(argv[arg]);
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
