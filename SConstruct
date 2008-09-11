@@ -581,7 +581,7 @@ env.Alias('data-dist', data_tarball)
 # Windows installer
 #
 
-env.WindowsInstaller([wesnoth, wesnoth_editor, Dir(installable_subs)])
+env.WindowsInstaller([wesnoth, wesnoth_editor, Dir(installable_subs)] + glob("*.dll"))
 
 #
 # Making Mac OS X application bundles

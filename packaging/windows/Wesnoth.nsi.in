@@ -22,6 +22,13 @@
   ;Get installation folder from registry if available
   InstallDirRegKey HKCU "Software\Battle for Wesnoth" ""
 
+  RequestExecutionLevel user
+
+;--------------------------------
+;Variables
+
+  Var StartMenuFolder
+
 ;--------------------------------
 ;Interface Settings
 
@@ -41,6 +48,14 @@
   !insertmacro MUI_PAGE_LICENSE "COPYING"
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
+
+  ;Start Menu Folder Page Configuration
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU" 
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth" 
+  !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+  
+  !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
+
   !insertmacro MUI_PAGE_INSTFILES
   
   !insertmacro MUI_UNPAGE_CONFIRM
@@ -117,7 +132,7 @@
 ;--------------------------------
 ;Installer Sections
 
-Section "Dummy Section" SecDummy
+Section "Battle for Wesnoth" BfWSection
 
   SetOutPath "$INSTDIR"
   
@@ -129,6 +144,17 @@ Section "Dummy Section" SecDummy
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+    
+    ;Create shortcuts
+    CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth_editor.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+  
+  !insertmacro MUI_STARTMENU_WRITE_END
 
 SectionEnd
 
@@ -148,7 +174,7 @@ FunctionEnd
 
   ;Assign descriptions to sections
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-    !insertmacro MUI_DESCRIPTION_TEXT ${SecDummy} "A test section."
+    !insertmacro MUI_DESCRIPTION_TEXT ${BfWSection} "Battle for wesnoth executable and data."
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
  
@@ -163,6 +189,14 @@ Section "Uninstall"
   Delete "$INSTDIR\Uninstall.exe"
 
   RMDir "$INSTDIR"
+
+  !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
+
+  Delete "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk"
+  RMDir "$SMPROGRAMS\$StartMenuFolder"
 
   DeleteRegKey /ifempty HKCU "Software\Battle for Wesnoth"
 

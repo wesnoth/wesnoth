@@ -15,7 +15,7 @@ for bin in binaries:
     env[bin + "_res"] = res
 
 def WindowsInstaller(env, files):
-    files = Flatten(files)
+    files = Entry(Flatten(files))
     env["NSIS_INSTALL_FILES"] = ""
     env["NSIS_UNINSTALL_FILES"] = ""
     for file in files:
