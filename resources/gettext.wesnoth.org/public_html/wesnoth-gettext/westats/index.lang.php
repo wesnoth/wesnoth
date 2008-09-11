@@ -218,7 +218,7 @@ foreach($stats as $stat){
 
 ?>
 	</td>
-<? if(($stat[0]==1) || ($total == 0)){ ?>
+<? if(($stat[0]==1) || ($total == 0) || ($stat[5] == 0)){ ?>
 	<td colspan="8">Error in <? echo $stat[4] ; ?> translation files</td>
 <? }else{ ?>
     <td align="right"><? echo $stat[1]; ?></td>
