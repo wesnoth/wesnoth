@@ -119,7 +119,7 @@ public:
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
 	unsigned int side() const { return side_; }
-	std::string side_id() const {return (*teams_)[side()-1].save_id(); }
+	std::string side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
 	Uint32 team_rgb() const { return(team::get_side_rgb(side())); }
 	const std::string& team_color() const { return flag_rgb_; }
 	unit_race::GENDER gender() const { return gender_; }
@@ -425,7 +425,6 @@ private:
 	const unit_map* units_;
 	const gamemap* map_;
 	const gamestatus* gamestatus_;
-	const std::vector<team>* teams_;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
 	mutable std::map<gamemap::location, bool> invisibility_cache_;

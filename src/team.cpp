@@ -43,12 +43,19 @@ const int team::default_team_gold = 100;
 
 teams_manager::teams_manager(std::vector<team>& teams_list)
 {
+	assert(!teams);
 	teams = &teams_list;
 }
 
 teams_manager::~teams_manager()
 {
 	teams = NULL;
+}
+
+const std::vector<team>& teams_manager::get_teams()
+{
+	assert(teams);
+	return *teams;
 }
 
 bool teams_manager::is_observer()

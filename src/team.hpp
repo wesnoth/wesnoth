@@ -331,6 +331,7 @@ struct teams_manager {
 	~teams_manager();
 
 	bool is_observer();
+	static const std::vector<team>& get_teams();
 };
 
 namespace player_teams {
