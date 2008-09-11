@@ -10,37 +10,11 @@ is making sure that spelling/grammer/whatever is usable and that you are using
 
 The release team should empty this file after each release.
 
-***
-
-The advanceto key in [unit_type] was changed to advances_to, as internally it
-is immediately renamed to advances_to and used that way in both unit.cpp and
-unit_types.cpp, along with being the key that is actually used in [unit],
-thus being what *should* be edited in stored units.
-
-The advanceto key is now deprecated and will be removed in 1.5.6, 
-wmllint can make the required changes.
-
-***
-
-Building Wesnoth now requires fontconfig 2.4.2 or higher (only tested with
-2.6.0). This dependency was already needed for using pango so no new runtime
-requirements are added.
-
-***
-
-Removed the --small-gui build option, starting Wesnoth with the --smallgui
-parameter achieves the same.
-
-***
-
-Editor2 is now built by default, that is, without having to supply an extra 
-compilation flag. To build *without* editor2, set the DISABLE_EDITOR2 define. 
-The behaviour of scons, cmake and autotools is unchanged, this affects only
-people who use some other building method. If you start getting linker errors,
-you most likely need to add editor2's sources to the build or disable it.i
-
 *** 1.5.4+svn
 
-In wnidows user data directory location changed to AppData in user's home 
-directory. If giving "--config-dir SHARED" as command line parameter wenoth
-uses old userdata directory inside instalation directory.
+Under windows the location of the user data directory changed to AppData in
+user's home directory. If giving "--config-dir SHARED" as command line parameter
+wesnoth uses the old userdata directory inside installation directory.
+
+***
+
