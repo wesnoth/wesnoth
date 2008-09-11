@@ -331,10 +331,6 @@ game_controller::game_controller(int argc, char** argv) :
 					multiplayer_server_ = "";
 			}
 
-		} else if(val == "--config-dir") {
-			if (argc_ <= ++arg_)
-				break;
-			set_preferences_dir(argv_[arg_]);
 		} else if(val == "--multiplayer" || val == "-m") {
 			multiplayer_mode_ = true;
 			break; //parse the rest of the arguments when we set up the game
@@ -1753,6 +1749,10 @@ static int process_command_args(int argc, char** argv) {
 			python_ai::invoke("documentation.py");
 			return 0;
 #endif
+		} else if(val == "--config-dir") {
+			if (argc_ <= ++arg_)
+				break;
+			set_preferences_dir(argv_[arg_]);
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {

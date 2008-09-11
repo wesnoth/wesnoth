@@ -37,4 +37,10 @@ Editor2 is now built by default, that is, without having to supply an extra
 compilation flag. To build *without* editor2, set the DISABLE_EDITOR2 define. 
 The behaviour of scons, cmake and autotools is unchanged, this affects only
 people who use some other building method. If you start getting linker errors,
-you most likely need to add editor2's sources to the build or disable it.
+you most likely need to add editor2's sources to the build or disable it.i
+
+*** 1.5.4+svn
+
+In wnidows user data directory location changed to AppData in user's home 
+directory. If giving "--config-dir SHARED" as command line parameter wenoth
+uses old userdata directory inside instalation directory.

@@ -50,22 +50,14 @@ sets BitsPerPixel value. Example:
 .B -c, --campaign
 skip menu, show directly the campaign menu.
 .TP
-.BI --compress \ infile\ outfile
-compresses a savefile
-.RI ( infile )
-that is in text WML format into binary WML format
-.RI ( outfile ).
+.B --config-dir <name>
+Makes wesnoth use <name> directory in $HOME for storing user data.
+win32: If <name> is SHARED wesnoth uses userdata directory in weanoth instalation directory.
 .TP
 .B -d, --debug
 shows extra debugging information and enables additional command mode
 options in-game (see the website at http://www.wesnoth.org/wiki/CommandMode
 for more information about command mode).
-.TP
-.BI --decompress \ infile\ outfile
-decompresses a savefile
-.RI ( infile )
-that is in binary WML format into text WML format
-.RI ( outfile ).
 .TP
 .B --dummylocales
 Use special dummy locales to switch to any language even if that language 

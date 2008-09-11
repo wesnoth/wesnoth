@@ -446,18 +446,16 @@ void set_preferences_dir(std::string path)
 const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::version).substr(0,3);
 #endif
 #ifdef _WIN32
-#ifndef SHARED_USERDATA
-	const char* appdata = getenv("APPDATA");
-#else
 	const char* appdata = "";
-#endif
+	if(path != "SHARED")
+		appdata = getenv("APPDATA");
 	if (strlen(appdata) > 0)
 	{
 		if (path.empty())
 		{
 			path = PREFERENCES_DIR;
 		}
-		game_config::preferences_dir += appdata +std::string("/")+ path;
+		game_config::preferences_dir = appdata +std::string("/")+ path;
 		return;
 	} else {
 		if (path.empty())
