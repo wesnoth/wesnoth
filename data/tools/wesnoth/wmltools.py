@@ -52,10 +52,11 @@ def parse_attribute(str):
     after = after.lstrip()
     if "#" in after:
         where = after.find("#")
-        while after[where-1] in (" ", "\t"):
+        where -= 1
+        while after[where] in (" ", "\t"):
             where -= 1
         value = after[:where+1]
-        comment = after[where:]
+        comment = after[where+1:]
     else:
         value = after.rstrip()
         comment = ""
