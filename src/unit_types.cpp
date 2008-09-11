@@ -841,7 +841,11 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
 			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
 				if((**k)["name"] != "") {
-					abilities_.push_back(genders_.front() == unit_race::MALE ? (**k)["name"] : (**k)["female_name"]);
+					abilities_.push_back(
+						genders_.front() == unit_race::MALE || (**k)["female_name"].empty() ?
+						(**k)["name"] :
+						(**k)["female_name"]
+					);
 					ability_tooltips_.push_back((**k)["description"]);
 				}
 			}

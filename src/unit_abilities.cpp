@@ -212,8 +212,13 @@ std::vector<std::string> unit::unit_ability_tooltips() const
 	for (config::child_map::const_iterator i = list_map.begin(),
 	     i_end = list_map.end(); i != i_end; ++i) {
 		for (config::child_list::const_iterator j = i->second.begin(),
-		     j_end = i->second.end(); j != j_end; ++j) {
-			std::string const &name = (this->gender_ == unit_race::MALE ? (**j)["name"] : (**j)["female_name"]);
+		     j_end = i->second.end(); j != j_end; ++j)
+		{
+			std::string const &name = (
+				this->gender_ == unit_race::MALE || (**j)["female_name"].empty() ?
+				(**j)["name"] :
+				(**j)["female_name"]
+			);
 			if (!name.empty()) {
 				res.push_back(name);
 				res.push_back((**j)["description"]);
@@ -253,13 +258,23 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 			for (config::child_list::const_iterator j = i->second.begin(),
 			     j_end = i->second.end(); j != j_end; ++j) {
 				if (ability_active(i->first, **j, loc)) {
-					std::string const &name = (gender_ == unit_race::MALE ? (**j)["name"] : (**j)["female_name"]);
+					std::string const &name = (
+						gender_ == unit_race::MALE || (**j)["female_name"].empty() ?
+						(**j)["name"] :
+						(**j)["female_name"]
+					);
+
 					if (!name.empty()) {
 						res.push_back(name);
 						res.push_back((**j)["description"]);
 					}
 				} else {
-					std::string const &name = (gender_ == unit_race::MALE ? (**j)["name_inactive"] : (**j)["female_name_inactive"]);
+					std::string const &name = (
+						gender_ == unit_race::MALE || (**j)["female_name_inactive"].empty() ?
+						(**j)["name_inactive"] :
+						(**j)["female_name_inactive"]
+					);
+
 					if (!name.empty()) {
 						res.push_back(name);
 						res.push_back((**j)["description_inactive"]);
