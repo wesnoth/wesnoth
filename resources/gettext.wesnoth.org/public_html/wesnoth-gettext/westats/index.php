@@ -323,9 +323,9 @@ foreach($stats as $lang => $stat){
 	$total = $stat[1] + $stat[2] + $stat[3];
 
 	$class="-" . ($i%2);
-	if(cmp_translated($stat, $oldstat)!=0){
+	//if(cmp_translated($stat, $oldstat)!=0){
 		$pos=$i+1;
-	}
+	//}
 ?>
 <tr class="row<?=$class?>">
 <?
