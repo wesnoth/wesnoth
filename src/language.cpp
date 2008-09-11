@@ -265,7 +265,7 @@ static void wesnoth_setlocale(int category, std::string slocale,
 	orig_locale.assign(locale);
 
 	typedef boost::scoped_array<char> char_array;
-	int length = orig_locale.length()+1;
+	size_t length = orig_locale.length()+1;
 	char_array try_loc(new char[length]);
 	orig_locale.copy(try_loc.get(), orig_locale.length());
 	try_loc[orig_locale.length()] = 0;
@@ -287,7 +287,10 @@ static void wesnoth_setlocale(int category, std::string slocale,
 		if (i == alternates->end()) break;
 		orig_locale = *i + extra;
 		if (length < orig_locale.length()+1)
-			try_loc.reset(new char[orig_locale.length()+1]);
+		{
+			length = orig_locale.length()+1;
+			try_loc.reset(new char[length]);
+		}
 		orig_locale.copy(try_loc.get(), orig_locale.length());
 		try_loc[orig_locale.length()] = 0;
 		i++;

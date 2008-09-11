@@ -265,7 +265,7 @@ void map_context::clear_undo_redo()
 
 void map_context::trim_stack(action_stack& stack)
 {
-	if (stack.size() > max_action_stack_size_) {
+	if (stack.size() > static_cast<size_t>(max_action_stack_size_)) {
 		delete stack.front();
 		stack.pop_front();
 	}

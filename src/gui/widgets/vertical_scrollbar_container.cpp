@@ -111,7 +111,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 				select_row(row);
 				handled = true;
 
-				if(row < sb->get_item_position()) {
+				if(static_cast<size_t>(row) < sb->get_item_position()) {
 					sb->set_item_position(row);
 					set_scrollbar_button_status();
 				}
@@ -121,7 +121,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 			
 		case SDLK_PAGEDOWN :
 			row += sb->get_visible_items() - 1;
-			if(row + 1 >= sb->get_item_count()) {
+			if(static_cast<size_t>(row + 1) >= sb->get_item_count()) {
 				row = sb->get_item_count() - 2;
 			}
 			// FALL DOWN
@@ -129,13 +129,13 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 		case SDLK_DOWN : 
 
 			++row;
-			while(row < sb->get_item_count() && !get_item_active(row)) {
+			while(static_cast<size_t>(row) < sb->get_item_count() && !get_item_active(row)) {
 				++row;
 			}
-			if(row < sb->get_item_count()) {
+			if(static_cast<size_t>(row) < sb->get_item_count()) {
 				select_row(row);
 				handled = true;
-				if(row >= sb->get_item_position() + sb->get_visible_items()) {
+				if(static_cast<size_t>(row) >= sb->get_item_position() + sb->get_visible_items()) {
 
 					sb->set_item_position(row + 1 - sb->get_visible_items());
 					set_scrollbar_button_status();

@@ -403,7 +403,7 @@ void gamestatus::set_turn(unsigned int num)
 	if (currentTime_ < 0) {
 		currentTime_ += times_.size();
 	}
-	if(num > numTurns_ && numTurns_ != -1) {
+	if(static_cast<int>(num) > numTurns_ && numTurns_ != -1) {
 		this->add_turns(numTurns_ - num);
 	}
 	turn_ = num;

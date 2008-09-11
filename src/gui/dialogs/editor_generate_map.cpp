@@ -57,7 +57,7 @@ void teditor_generate_map::do_next_generator(twindow& window)
 
 map_generator* teditor_generate_map::get_selected_map_generator()
 {
-	assert(current_map_generator_ >= 0 && current_map_generator_ < map_generators_.size());
+	assert(static_cast<size_t>(current_map_generator_) < map_generators_.size());
 	return map_generators_[current_map_generator_];
 }
 

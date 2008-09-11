@@ -833,7 +833,7 @@ unsigned tgrid::get_best_row_height(const unsigned row, const unsigned maximum_h
 		const tchild& cell = child(row, x);
 
 		const tpoint size = cell.get_best_size(tpoint(0, maximum_height));
-		if(required_height == 0 || size.y > required_height) {
+		if(required_height == 0 || static_cast<size_t>(size.y) > required_height) {
 			required_height = size.y;
 		}
 	}

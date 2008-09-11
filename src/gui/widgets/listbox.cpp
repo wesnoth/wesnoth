@@ -287,7 +287,7 @@ twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_acti
 		int offset = 0;
 		const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
 
-		if(row == -1) {
+		if(row == static_cast<size_t>(-1)) {
 			return NULL;
 		}
 
@@ -311,7 +311,7 @@ const twidget* tlistbox::find_widget(
 		int offset = 0;
 		const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
 
-		if(row == -1) {
+		if(row == static_cast<size_t>(-1)) {
 			return NULL;
 		}
 

@@ -309,6 +309,9 @@ game_controller::game_controller(int argc, char** argv) :
 			preferences::disable_preferences_save();
 		} else if(val == "--smallgui") {
 			game_config::small_gui = true;
+		} else if(val == "--config-dir") {
+			if (argc_ <= ++arg_)
+				break;
 		} else if(val == "--windowed" || val == "-w") {
 			preferences::set_fullscreen(false);
 		} else if(val == "--fullscreen" || val == "-f") {

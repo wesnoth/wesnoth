@@ -245,12 +245,12 @@ WESNOTH_PARAMETERIZED_TEST_CASE( test_multi_sendfile, sendfile_param, sendfile_s
 	std::vector<char> data;
 
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
-	BOOST_CHECK_EQUAL(data.size(), file_size(file));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
-	BOOST_CHECK_EQUAL(data.size(), file_size(file));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
 	BOOST_CHECK_PREDICATE(test_utils::one_of<network::connection> , (receive(data,500))(3)(se_client1)(se_client2)(se_client3));
 
-	BOOST_CHECK_EQUAL(data.size(), file_size(file));
+	BOOST_CHECK_EQUAL(data.size(), static_cast<size_t>(file_size(file)));
 
 	network::disconnect(cl_client1);
 	network::disconnect(cl_client2);

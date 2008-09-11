@@ -269,9 +269,11 @@ env.Replace(CPPDEFINES = ["HAVE_CONFIG_H"])
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
 
-env.AppendUnique(CXXFLAGS = Split("-W -Wall -Wno-unused -Wno-sign-compare -ansi"))
+env.AppendUnique(CXXFLAGS = Split("-W -Wall -ansi"))
 if env['strict']:
     env.AppendUnique(CXXFLAGS = "-Werror")
+else:
+    env.AppendUnique(CXXFLAGS = Split("-Wno-unused -Wno-sign-compare"))
 
 if env['gui'] == 'tiny':
     env.Append(CPPDEFINES = "USE_TINY_GUI")
@@ -333,6 +335,7 @@ env.MergeFlags(env["extra_flags_" + build])
 test_env = env.Clone()
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
+test_env.AppendUnique(CXXFLAGS = "-Wno-unused")
 Export("test_env")
 
 if build == "base":

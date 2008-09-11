@@ -184,7 +184,7 @@ protected:
 	void  set_selection_start(const size_t selection_start);
 
 	size_t get_selection_length() const { return selection_length_; }
-	void set_selection_length(const unsigned selection_length);
+	void set_selection_length(const int selection_length);
 
 
 private:

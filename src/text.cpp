@@ -179,7 +179,7 @@ gui2::tpoint ttext::get_cursor_position(
 
 	// Go the the wanted line.
 	if(line != 0) {
-		if(pango_layout_get_line_count(layout_) >= line) {
+		if(pango_layout_get_line_count(layout_) >= static_cast<int>(line)) {
 			return gui2::tpoint(0, 0);
 		}
 

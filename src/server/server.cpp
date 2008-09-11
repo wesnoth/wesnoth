@@ -646,7 +646,7 @@ void server::run() {
 				}
 
 				// Send network stats every hour
-				static size_t prev_hour = localtime(&now)->tm_hour;
+				static int prev_hour = localtime(&now)->tm_hour;
 				if (prev_hour != localtime(&now)->tm_hour)
 				{
 					prev_hour = localtime(&now)->tm_hour;

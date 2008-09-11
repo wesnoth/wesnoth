@@ -541,14 +541,14 @@ unsigned int brush_bar::selected_brush_size() {
 }
 
 void brush_bar::select_brush(int index) {
-	assert(index > 0 && index < brushes_.size());
+	assert(static_cast<size_t>(index) < brushes_.size());
 	selected_ = index;
 }
 
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
-		if (index != selected_) {
+		if (static_cast<size_t>(index) != selected_) {
 			set_dirty();
 			selected_ = index;
 			*the_brush_ = &brushes_[index];
@@ -624,16 +624,16 @@ int brush_bar::selected_index(int x, int y) const {
 	const int bar_x = size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
-	if ((x < bar_x || x > bar_x + size_ * brushes_.size() +
+	if ((x < bar_x || static_cast<size_t>(x) > bar_x + size_ * brushes_.size() +
 			 brushes_.size() * size_specs_.brush_padding) ||
-		    (y < bar_y || y > bar_y + size_)) {
+		    (y < bar_y || static_cast<size_t>(y) > bar_y + size_)) {
 
 		return -1;
 	}
 
-	for(int i = 0; i <  brushes_.size(); i++) {
+	for(size_t i = 0; i <  brushes_.size(); i++) {
 		int px = bar_x + size_ * i + i * size_specs_.brush_padding;
-		if (x >= px && x <= px + size_ && y >= bar_y && y <= bar_y + size_) {
+		if (x >= px && x <= px + static_cast<int>(size_) && y >= bar_y && y <= bar_y + static_cast<int>(size_)) {
 			return i;
 		}
 	}

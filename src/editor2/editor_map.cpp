@@ -49,11 +49,11 @@ editor_map::~editor_map()
 void editor_map::sanity_check()
 {
 	int errors = 0;
-	if (total_width() != tiles_.size()) {
+	if (total_width() != static_cast<int>(tiles_.size())) {
 		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.size() << "\n";
 		++errors;
 	}
-	if (total_height() != tiles_[0].size()) {
+	if (total_height() != static_cast<int>(tiles_[0].size())) {
 		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.size() << "\n";
 		++errors;
 	}
@@ -155,7 +155,7 @@ void editor_map::select_all()
 bool editor_map::everything_selected() const
 {
 	LOG_ED << selection_.size() << " " << total_width() * total_height() << "\n";
-	return selection_.size() == total_width() * total_height();
+	return static_cast<int>(selection_.size()) == total_width() * total_height();
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
@@ -301,7 +301,7 @@ void editor_map::expand_left(int count, t_translation::t_terrain filler)
 void editor_map::expand_top(int count, t_translation::t_terrain filler)
 {
 	for (int y = 0; y < count; ++y) {
-		for (int x = 0; x < tiles_.size(); ++x) {
+		for (int x = 0; x < static_cast<int>(tiles_.size()); ++x) {
 			t_translation::t_terrain terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
@@ -319,7 +319,7 @@ void editor_map::expand_bottom(int count, t_translation::t_terrain filler)
 {
 	int h = tiles_[1].size();
 	for (int y = 0; y < count; ++y) {
-		for (int x = 0; x < tiles_.size(); ++x) {
+		for (int x = 0; x < static_cast<int>(tiles_.size()); ++x) {
 			t_translation::t_terrain terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
@@ -334,7 +334,7 @@ void editor_map::expand_bottom(int count, t_translation::t_terrain filler)
 
 void editor_map::shrink_right(int count)
 {
-	if(count < 0 || count > tiles_.size()) {
+	if(count < 0 || count > static_cast<int>(tiles_.size())) {
 		throw editor_map_operation_exception();
 	}
 	tiles_.resize(tiles_.size() - count);
@@ -344,7 +344,7 @@ void editor_map::shrink_right(int count)
 
 void editor_map::shrink_left(int count)
 {
-	if(count < 0 || count > tiles_.size()) {
+	if(count < 0 || count > static_cast<int>(tiles_.size())) {
 		throw editor_map_operation_exception();
 	}
 	tiles_.erase(tiles_.begin(), tiles_.begin() + count);
@@ -354,7 +354,7 @@ void editor_map::shrink_left(int count)
 
 void editor_map::shrink_top(int count)
 {
-	if(count < 0 || count > tiles_[0].size()) {
+	if(count < 0 || count > static_cast<int>(tiles_[0].size())) {
 		throw editor_map_operation_exception();
 	}
 	for (size_t x = 0; x < tiles_.size(); ++x) {
@@ -366,7 +366,7 @@ void editor_map::shrink_top(int count)
 
 void editor_map::shrink_bottom(int count)
 {
-	if(count < 0 || count > tiles_[0].size()) {
+	if(count < 0 || count > static_cast<int>(tiles_[0].size())) {
 		throw editor_map_operation_exception();
 	}
 	for (size_t x = 0; x < tiles_.size(); ++x) {

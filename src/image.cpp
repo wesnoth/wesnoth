@@ -848,7 +848,7 @@ void precache_file_existence(const std::string& subdir)
 template<typename T>
 cache_item<T>& cache_type<T>::get_element(int index){
 	assert (index != -1);
-	while(index >= content_.size()) {
+	while(static_cast<size_t>(index) >= content_.size()) {
 		content_.push_back(cache_item<T>());
 	}
 	cache_item<T>& elt = content_[index];

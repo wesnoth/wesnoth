@@ -869,7 +869,7 @@ int filter_textbox::get_index(int selection) const {
 
 void filter_textbox::delete_item(int selection) {
 	// use the real selection
-	int adjusted_selection = selection + header_row_;
+	size_t adjusted_selection = selection + header_row_;
 
 	if (adjusted_selection >= index_map_.size())
 		return;

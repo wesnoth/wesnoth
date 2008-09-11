@@ -254,7 +254,7 @@ void wait::join_game(bool observe)
 				}
 			}
 		}
-		if (side_choice < 0 || side_choice >= sides_list.size()) {
+		if (static_cast<size_t>(side_choice) >= sides_list.size()) {
 			join_game(true);
 			return;
 		}

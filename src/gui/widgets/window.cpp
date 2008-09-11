@@ -390,8 +390,8 @@ void twindow::layout()
 			<< settings::screen_width << ',' << settings::screen_height << ".\n";
 
 		// If too big try it gracefully.
-		if(size.x > settings::screen_width 
-				|| size.y > settings::screen_height) {
+		if(static_cast<size_t>(size.x) > settings::screen_width 
+				|| static_cast<size_t>(size.y) > settings::screen_height) {
 
 			size = get_best_size(
 				tpoint(settings::screen_width, settings::screen_height));

@@ -1908,7 +1908,7 @@ bool formula_ai::can_attack(const gamemap::location unit_loc,
 
 
 void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units, 
-		int team_num) {
+		size_t team_num) {
 	score_ = -1000;
 	if(type_ == "attack") {
 		for(unit_map::unit_iterator me = units.begin() ; me != units.end() ; ++me)

@@ -40,7 +40,7 @@ public:
 		enemy_unit_()
 	{};
 
-	void evaluate_move(const formula_ai* ai, unit_map& units, int team_num); 
+	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_num); 
 
 	int get_score() const {return score_;}
 	std::string get_type() const {return type_;}

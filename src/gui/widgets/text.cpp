@@ -319,7 +319,7 @@ void  ttext_::set_selection_start(const size_t selection_start)
 	}
 }
 
-void ttext_::set_selection_length(const unsigned selection_length) 
+void ttext_::set_selection_length(const int selection_length) 
 { 
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
@@ -353,7 +353,7 @@ void ttext_::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	DBG_G_E << "Text: key press: right arrow.\n";
 
 	handled = true;
-	const int offset = selection_start_ + 1 + selection_length_;
+	const size_t offset = selection_start_ + 1 + selection_length_;
 	if(offset <= text_.get_length()) {
 		set_cursor(offset, modifier & KMOD_SHIFT);
 	}

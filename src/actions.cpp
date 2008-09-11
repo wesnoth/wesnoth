@@ -815,13 +815,13 @@ namespace {
 			weap_index = -1;
 			return;
 		}
-		if(weap_index >= 0 && weap_index < attacks.size() && attacks[weap_index].id() == weap_id) {
+		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id) {
 			//the currently selected attack fits
 			return;
 		}
 		if(!weap_id.empty()) {
 			//lookup the weapon by id
-			for(int i=0; i<attacks.size(); ++i) {
+			for(int i=0; i<static_cast<int>(attacks.size()); ++i) {
 				if(attacks[i].id() == weap_id) {
 					weap_index = i;
 					return;

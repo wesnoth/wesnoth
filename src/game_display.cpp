@@ -1027,7 +1027,7 @@ void game_display::parse_team_overlays()
 
 		if (overlay->second.team_name != "" &&
 		bool(overlay->second.team_name.find(teams_[playing_team()].team_name())+1) !=
-		bool(overlay->second.team_name.find(teams_[playing_team()-1 > -1 ? playing_team()-1 : teams_.size()-1].team_name())+1))
+		bool(overlay->second.team_name.find(teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1].team_name())+1))
 		{
 			invalidate(overlay->first);
 		}
