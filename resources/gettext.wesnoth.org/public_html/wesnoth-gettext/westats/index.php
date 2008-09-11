@@ -344,15 +344,11 @@ if ($package=='alloff'){
 }elseif($package=='allcore'){
 	echo "<strong>" . $langs[$lang] . "</strong> (" . $lang . ")";
 }else{
+	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official){
-		if($version == 'trunk') {
-			$repo = 'trunk';
-		}else{
-			$repo = "branches/$branch";
-		}
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
-		echo "<a href='http://svn.berlios.de/viewcvs/*checkout*/wescamp-i18n/" . getpackage($package) . "/po/" . $lang . ".po'>" . $langs[$lang] . "</a> (" . $lang . ")";
+		echo "<a href='http://svn.berlios.de/viewcvs/*checkout*/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $lang . ".po'>" . $langs[$lang] . "</a> (" . $lang . ")";
 	}
 } ?>
 	</td>
@@ -392,10 +388,11 @@ if ($package=='alloff'){
 }elseif($package=='all'){
 	echo "<strong>Template catalog</strong>";
 }else{
+	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official){
-		echo "<a href='http://savannah.nongnu.org/cgi-bin/viewcvs/wesnoth/wesnoth/po/" . $package . "/" . $package . ".pot?rev=HEAD&content-type=text/vnd.viewcvs-markup'>Template catalog</a>";
+		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}else{
-		echo "<a href='http://svn.berlios.de/viewcvs/wescamp-i18n/" . getpackage($package) . "/po/" . $package . ".pot?view=markup'>Template catalog</a>";
+		echo "<a href='http://svn.berlios.de/viewcvs/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}
 }
 ?></td>

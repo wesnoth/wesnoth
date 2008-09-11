@@ -204,15 +204,10 @@ foreach($stats as $stat){
 <tr class="row<?=$class?>">
     <td>
 <? 
+	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official == 0){
-		if($version == 'trunk') {
-			$repo = 'trunk';
-		}else{
-			$repo = "branches/$branch";
-		}
 		echo "<strong><a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $stat[4]. "/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}else{
-		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 		echo "<strong><a href='http://svn.berlios.de/viewcvs/*checkout*/wescamp-i18n/$repo/" . getpackage($stat[4]) . "/po/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}
 
