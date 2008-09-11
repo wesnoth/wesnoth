@@ -266,9 +266,7 @@ foreach($stats as $lang => $stat){
 ?>
     <td>
 <? 
-if ($package=='alloff'){
-	echo "<strong>" . $langs[$lang] . "</strong> (" . $lang . ")";
-}elseif($package=='all'){
+if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong>" . $langs[$lang] . "</strong> (" . $lang . ")";
 }else{
 	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
@@ -308,9 +306,8 @@ if ($package=='alloff'){
 <?	}
 ?>
     <td>
-<? if($package=='alloff'){
-	echo "<strong>Template catalog</strong>";
-}elseif($package=='all'){
+<?
+if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong>Template catalog</strong>";
 }else{
 	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
