@@ -11,7 +11,9 @@
 
    See the COPYING file for more details.
 */
-#include <boost/test/auto_unit_test.hpp>
+
+#include "utils/test_support.hpp"
+
 #include "team.hpp"
 
 BOOST_AUTO_TEST_SUITE( teams )

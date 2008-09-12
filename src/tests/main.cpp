@@ -11,11 +11,18 @@
 
    See the COPYING file for more details.
 */
+#include <boost/version.hpp>
+
 #define BOOST_TEST_MODULE wesnoth unit tests master suite
 #include <boost/test/unit_test.hpp>
 #include <boost/test/unit_test_monitor.hpp>
 #include <boost/test/detail/unit_test_parameters.hpp>
 #include <boost/test/results_reporter.hpp>
+
+#if BOOST_VERSION < 103400
+#include <boost/test/unit_test_log.hpp>
+#include <boost/scoped_ptr.hpp>
+#endif
 
 #include "SDL.h"
 
@@ -48,7 +55,6 @@ static void exception_translator_game(const game::error& e)
 	throw boost::execution_exception(boost::execution_exception::cpp_exception_error, "game::error: " + e.message);
 }
 
-
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture() 
 	{
@@ -78,8 +84,30 @@ struct wesnoth_global_fixture {
 	}
 };
 
-BOOST_GLOBAL_FIXTURE( wesnoth_global_fixture );
+#if BOOST_VERSION < 103400
+#include <boost/test/auto_unit_test.hpp>
 
+#define BOOST_GLOBAL_FIXTURE(name)\
+boost::scoped_ptr<name> global_fix;\
+boost::unit_test::test_suite*\
+init_unit_test_suite( int argc, char* argv[] ) { \
+    boost::unit_test::auto_unit_test_suite_t* master_test_suite = boost::unit_test::auto_unit_test_suite();\
+\
+    boost::unit_test::const_string new_name = boost::unit_test::const_string( BOOST_STRINGIZE(BOOST_TEST_MODULE) );\
+\
+    if( !new_name.is_empty() )\
+        boost::unit_test::assign_op( master_test_suite->p_name.value, new_name, 0 );\
+\
+    master_test_suite->argc = argc;\
+    master_test_suite->argv = argv;\
+\
+	global_fix.reset(new name());\
+    return master_test_suite;\
+}
+
+#endif
+
+BOOST_GLOBAL_FIXTURE(wesnoth_global_fixture);
 
 /*
  * This is a main compilation unit for the test program.

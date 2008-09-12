@@ -886,7 +886,6 @@ BOOST_IOSTREAMS
 BOOST_REGEX
 
 if test "x$tests" = "xyes"; then
-	BOOST_REQUIRE([1.34])
 	BOOST_TEST
 	# workaround for broken 1.33.1 debian packet
 	if test x"$BOOST_UNIT_TEST_FRAMEWORK_LIBS" = x; then

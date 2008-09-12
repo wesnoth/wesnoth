@@ -12,7 +12,8 @@
    See the COPYING file for more details.
 */
 
-#include <boost/test/auto_unit_test.hpp>
+#include "utils/test_support.hpp"
+
 #include <string>
 #include <SDL.h>
 #include <iostream>

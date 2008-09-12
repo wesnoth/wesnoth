@@ -152,6 +152,9 @@ if(ENABLE_TOOLS)
   find_package( ZLIB REQUIRED )
   find_package( PNG REQUIRED )
 endif()
+if(ENABLE_TESTS)
+	find_package( Boost 1.33 REQUIRED COMPONENTS unit_test_framework )
+endif()
 
 # get languages
 file(READ po/LINGUAS LINGUAS)

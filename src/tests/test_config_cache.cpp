@@ -12,10 +12,11 @@
    See the COPYING file for more details.
 */
 
+#include "utils/test_support.hpp"
+
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <iostream>
-#include <boost/test/auto_unit_test.hpp>
 
 #include "config_cache.hpp"
 #include "filesystem.hpp"

@@ -224,7 +224,7 @@ if env["prereqs"]:
 
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
-    have_test_prereqs =  have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.34.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
+    have_test_prereqs =  have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
 
 #    have_boost_asio = \
 #        conf.CheckBoost("system", require_version = "1.35.0") and \

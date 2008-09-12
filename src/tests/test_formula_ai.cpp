@@ -12,14 +12,15 @@
    See the COPYING file for more details.
 */
 
-#include <boost/test/auto_unit_test.hpp>
+#include "utils/test_support.hpp"
+
 
 #include "map.hpp"
 
 #include "tests/utils/play_scenario.hpp"
 
 
-BOOST_AUTO_TEST_SUITE( formula_ai );
+BOOST_AUTO_TEST_SUITE( formula_ai )
 
 BOOST_AUTO_TEST_CASE( test_move )
 {
