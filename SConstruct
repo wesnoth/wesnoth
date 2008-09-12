@@ -67,6 +67,7 @@ opts.AddOptions(
     ('version_suffix', 'suffix that will be added to default values of prefsdir, program_suffix and datadirname', ""),
     BoolOption('python', 'Enable in-game python extensions.', True),
     BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
+    BoolOption('forum_user_handler', 'Enable forum user handler in wesnothd', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     EnumOption('gui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs)', "normal", ["normal", "tiny"]),
@@ -222,6 +223,11 @@ if env["prereqs"]:
         conf.CheckCHeader("sys/poll.h", "<>")
         conf.CheckCHeader("sys/select.h", "<>")
 
+    if env["forum_user_handler"]:
+        env.ParseConfig("mysql_config --libs --cflags")
+        if conf.CheckLibWithHeader("mysqlpp", "mysql++/mysql++.h", "C++"):
+            env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
+
     have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
 
     have_test_prereqs =  have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
@@ -264,7 +270,7 @@ env = conf.Finish()
 # Link only on demand, so we don't need separate link lists for each binary
 env.Append(LINKFLAGS = "-Wl,--as-needed")
 
-env.Replace(CPPDEFINES = ["HAVE_CONFIG_H"])
+env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
 if env['static']:
     env.AppendUnique(LINKFLAGS = "-all-static")
