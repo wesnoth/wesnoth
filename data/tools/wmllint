@@ -52,8 +52,9 @@
 # or they'll have an incorrect usage=map generated into them.
 #
 # Note: You can shut wmllint up about custom terrains by having a comment
-# on the same line that includes the string "wmllint: ignore".
-# The same magic comment will also disable checking of translation marks.
+# on the same line that includes the string "wmllint: ignore" or
+# "wmllint: noconvert". The same magic comments will also disable checking
+# of translation marks.
 #
 # You can also prevent description insertions with "wmllint: no-icon".
 #
@@ -535,7 +536,7 @@ def sanity_check(filename, lines):
                 pass
             elif key == 'letter':	# May be led with _s for void 
                 pass
-            elif key == 'name':		# FIXME: check this someday
+            elif key in ('name', 'male_name', 'female_name'):		# FIXME: check this someday
                 pass
             elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description", "user_team_name") and not value.startswith("$"):
                 if not has_tr_mark:
@@ -557,7 +558,7 @@ def sanity_check(filename, lines):
                     elif preamble_seen and not ignore_id and not in_object and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
                               % (filename, i+1, value)
-                if has_tr_mark and not "wmllint: ignore" in lines[i]:
+                if has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
                               % (filename, i+1, key)                
                     lines[i] = lines[i].replace("_", "", 1)
