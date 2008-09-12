@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-09 23:12+0200\n"
-"PO-Revision-Date: 2008-07-21 22:19+0100\n"
+"PO-Revision-Date: 2008-09-06 19:22+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Komprimovať uložené hry"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:61
 msgid "Mouse Scrolling"
-msgstr "Rolovanie myšou"
+msgstr "Umožniť rolovanie myšou"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:68
@@ -42,12 +42,12 @@ msgstr "Výprava"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:82
 msgid "Unit Standing Animations"
-msgstr "Animácie stojacich jednotiek"
+msgstr "Animovať stojace jednotky"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:89
 msgid "Show Combat"
-msgstr "Zobrazuj súboj"
+msgstr "Zobrazovať súboj"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:104
@@ -1403,7 +1403,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regeneration text='Regenerácia'</ref>: Niektoré jednotky "
-"(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 bodov."
+"(napríklad trolovia) sa v každom kole automaticky uzdravia o 8 bodov."
 
 #. [topic]
 #: data/core/help.cfg:284
@@ -1674,7 +1674,7 @@ msgstr ""
 "\n"
 "\n"
 "Rýchlosť je najviditeľnejšia vlastnosť, najmä u pomalých jednotiek ako sú "
-"trollovia či ťažká pechota. Rýchle jednotky môžu byť výrazne pohyblivejšie v "
+"trolovia či ťažká pechota. Rýchle jednotky môžu byť výrazne pohyblivejšie v "
 "náročných terénoch; vezmite to do úvahy pri rozmiestňovaní síl. Rýchle "
 "jednotky však nevydržia rovnako veľa ako obyčajné, a preto nie sú také dobré "
 "na obranu už dobytých pozícií."
@@ -2006,7 +2006,7 @@ msgid ""
 msgstr ""
 "Kopce predstavujú pomerne nerovný terén, kde je dosť údolí a kopcov "
 "poskytujúcich úkryt. Väčšina jednotiek sa v kopcoch ťažko pohybuje. "
-"Trpaslíci, trollovia a orkovia sa v tomto teréne cítia ako doma a môžu ním "
+"Trpaslíci, trolovia a orkovia sa v tomto teréne cítia ako doma a môžu ním "
 "prechádzať bez spomalenia. Jazda má zvyčajne problém orientovať sa v tomto "
 "teréne, a preto nezískava žiaden obranný bonus.\n"
 "\n"
@@ -2035,7 +2035,7 @@ msgstr ""
 "prekážky. Poskytujú preto veľký obranný bonus pre väčšinu jednotiek, ale "
 "zároveň výrazne spomaľujú pohyb. Väčšina jazdeckých jednotiek na tento terén "
 "ani nemôže vstúpiť; výnimkou sú elfí jazdci a goblinskí jazdci na vlkoch. "
-"Trpaslíci a trollovia sú v týchto oblastiach doma, a preto sa v nich pomerne "
+"Trpaslíci a trolovia sú v týchto oblastiach doma, a preto sa v nich pomerne "
 "ľahko pohybujú.\n"
 "\n"
 "Väčšina jednotiek má v horách obranu 60%, trpaslíci majú 70%."
@@ -2233,7 +2233,7 @@ msgid ""
 msgstr ""
 "Jaskynný terén predstavuje akúkoľvek podzemnú chodbu, do ktorej sa zmestí "
 "vojenská jednotka. Väčšina jednotiek s týmto terénom nemá skúsenosti, a "
-"preto sú tu pomalé a ťažko sa bránia. Trpaslíci a trollovia žijú v "
+"preto sú tu pomalé a ťažko sa bránia. Trpaslíci a trolovia žijú v "
 "jaskyniach, preto sa tu pomerne ľahko pohybujú; zvlášť trpaslíci, ktorí sa "
 "vďaka menším rozmerom ľahko vyhnú mnohým prekážkam. Jaskyne sú niekedy "
 "<ref>dst=terrain_illuminated_cave text=osvetlené</ref>.\n"
@@ -2262,11 +2262,10 @@ msgid ""
 msgstr ""
 "Terén skalnatej jaskyne je vytvarovaný pôsobením vody a vetra, "
 "zvetrávajúcich skalnatý podklad. Je to hrboľatý podklad, ktorý zmenšuje "
-"efektivitu väčšiny jednotiek, ale zlepšuje ich obranu. Trpaslíci a "
-"trollovia, hlavní obyvatelia jaskýň, sa v tomto teréne orientujú pomerne "
-"ľahko. Trpaslíci majú vďaka svojej malej výške v takomto teréne veľké "
-"výhody. Jaskyne sú niekedy <ref>dst=terrain_illuminated_cave text=osvetlené</"
-"ref>.\n"
+"efektivitu väčšiny jednotiek, ale zlepšuje ich obranu. Trpaslíci a trolovia, "
+"hlavní obyvatelia jaskýň, sa v tomto teréne orientujú pomerne ľahko. "
+"Trpaslíci majú vďaka svojej malej výške v takomto teréne veľké výhody. "
+"Jaskyne sú niekedy <ref>dst=terrain_illuminated_cave text=osvetlené</ref>.\n"
 "\n"
 "Väčšina jednotiek má v skalnatej jaskyni obranu okolo 50%, jazda len 40%. "
 "Trpaslíci majú v skalnatej jaskyni obranu 60%."
@@ -3294,7 +3293,7 @@ msgstr "Nemám žiadne želanie."
 #: data/core/macros/items.cfg:148
 #, fuzzy
 msgid "Take it"
-msgstr "Premenuj jednotku"
+msgstr "Utŕžené zranenia"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -5297,17 +5296,17 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:218
 msgid "race^Troll"
-msgstr "Troll"
+msgstr "Trol"
 
 #. [race]
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
-msgstr "Trollka"
+msgstr "Trolka"
 
 #. [race]
 #: data/core/units.cfg:220
 msgid "race^Trolls"
-msgstr "Trollovia"
+msgstr "Trolovia"
 
 #. [race]
 #: data/core/units.cfg:226
@@ -6699,9 +6698,8 @@ msgid "Update all"
 msgstr "Stena jaskyne"
 
 #: src/addon_management.cpp:856
-#, fuzzy
 msgid "Update failed"
-msgstr "Stena jaskyne"
+msgstr ""
 
 #: src/addon_management.cpp:858
 #, fuzzy
@@ -6713,9 +6711,8 @@ msgstr[1] "Kvôli chybám sa nepodarilo načítať nasledujúci doplňujúci pr�
 msgstr[2] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
 
 #: src/addon_management.cpp:867
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Stiahni doplnky"
+msgstr ""
 
 #: src/addon_management.cpp:868
 msgid "Add-on updated successfully."
@@ -7192,7 +7189,7 @@ msgstr "Znovunačítaj písmo pre aktuálny jazyk"
 #: src/game.cpp:1937
 #, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Posielam doplnok"
+msgstr "Pýtam si zoznam doplnkov"
 
 #: src/game.cpp:1946
 msgid "Loading title screen."
@@ -9247,45 +9244,29 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
 
-#~ msgid "No multiplayer sides available in this game"
-#~ msgstr "V tejto hre už žiadna strana nie je voľná"
+#~ msgid "ruby of fire"
+#~ msgstr "ohnivý rubín"
 
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr "Pozor: Chyby pri načítavaní konfiguračných súborov hry: '"
+#~ msgid "Screenshot"
+#~ msgstr "Záber obrazovky"
 
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "Estónsky preklad"
-
-#, fuzzy
-#~ msgid "Connect to add-ons server"
+#~ msgid "Connect to Server"
 #~ msgstr "Pripoj sa na server"
 
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
+#~ msgid "You will now connect to a server to download add-ons."
 #~ msgstr "Teraz sa pripojíš na server, aby si si stiahol doplnky."
 
 #~ msgid "Server: "
 #~ msgstr "Server: "
 
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Posielam doplnok"
+#~ msgid "Remove Add-ons"
+#~ msgstr "Odstráň doplnky"
 
 #~ msgid "Join Official Server"
 #~ msgstr "Prihlás sa na Wesnoth"
 
 #~ msgid "Log on to the official Wesnoth multiplayer server"
 #~ msgstr "Prihlás sa na oficiálny server Wesnothu"
-
-#~ msgid "Connect to Server"
-#~ msgstr "Pripoj sa na server"
-
-#~ msgid "Join a different server"
-#~ msgstr "Pripoj sa na iný server"
-
-#~ msgid "Host Networked Game"
-#~ msgstr "Založ sieťovú hru"
 
 #~ msgid "Local Game"
 #~ msgstr "Lokálna hra"
@@ -9300,49 +9281,8 @@ msgstr "Umožni posielanie štatistík"
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Vyber si obľúbený jazyk:"
 
-#~ msgid "View List"
-#~ msgstr "Zobraz zoznam"
-
-#~ msgid "List of Servers"
-#~ msgstr "Zoznam serverov"
-
-#~ msgid "Choose a known server from the list"
-#~ msgstr "Vyberte si známy server zo zoznamu"
-
-#~ msgid "Address"
-#~ msgstr "Adresa"
-
-#~ msgid "Connect to Host"
-#~ msgstr "Pripoj sa na server"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "Vyber si herný server, na ktorý sa pripojíš: "
-
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "Estónsky preklad"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "Portugalský preklad"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Filter: "
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "Odstráň doplnky"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "ťahy"
-
-#~ msgid "ruby of fire"
-#~ msgstr "ohnivý rubín"
-
-#~ msgid "Screenshot"
-#~ msgstr "Záber obrazovky"
+#~ msgid "Warning: Errors occurred while loading game configuration files: '"
+#~ msgstr "Pozor: Chyby pri načítavaní konfiguračných súborov hry: '"
 
 #~ msgid "Level"
 #~ msgstr "Úroveň"
@@ -9385,6 +9325,27 @@ msgstr "Umožni posielanie štatistík"
 #~ msgid "Usage: control <side> <nick>"
 #~ msgstr "Použitie: control [strana] [meno]"
 
+#~ msgid "View List"
+#~ msgstr "Zobraz zoznam"
+
+#~ msgid "List of Servers"
+#~ msgstr "Zoznam serverov"
+
+#~ msgid "Choose a known server from the list"
+#~ msgstr "Vyberte si známy server zo zoznamu"
+
+#~ msgid "Address"
+#~ msgstr "Adresa"
+
+#~ msgid "Connect to Host"
+#~ msgstr "Pripoj sa na server"
+
+#~ msgid "Choose host to connect to: "
+#~ msgstr "Vyber si herný server, na ktorý sa pripojíš: "
+
+#~ msgid "No multiplayer sides available in this game"
+#~ msgstr "V tejto hre už žiadna strana nie je voľná"
+
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
 #~ "effects of poison, not cure them entirely."
@@ -9400,12 +9361,19 @@ msgstr "Umožni posielanie štatistík"
 #~ "dedinami; musia však obe patriť danému hráčovi, a cieľová dedina musí byť "
 #~ "voľná."
 
+#, fuzzy
+#~ msgid "Connect to Host/Server"
+#~ msgstr "Pripoj sa na server"
+
 #~ msgid "Join a server or hosted game"
 #~ msgstr "Pridaj sa na server alebo do založenej hry"
 
 #, fuzzy
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "Bepa-Roman.ttf"
+
+#~ msgid "Host Networked Game"
+#~ msgstr "Založ sieťovú hru"
 
 #~ msgid "Vacant Slots:"
 #~ msgstr "Voľné miesta:"
