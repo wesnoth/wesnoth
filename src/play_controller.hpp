@@ -132,7 +132,6 @@ protected:
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
-	const rand_rng::set_random_generator generator_setter;
 	const statistics::scenario_context statistics_context_;
 	const config& level_;
 	std::vector<team> teams_;

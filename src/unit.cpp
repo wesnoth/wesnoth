@@ -1402,24 +1402,14 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	variation_ = cfg["variation"];
 
 	id_ = cfg["id"];
-	name_ = cfg["name"];
-	// FIXME OBSOLETE This will go away in 1.5.3
-	if (id_.empty())
-		id_ = cfg["description"];
-	// FIXME OBSOLETE This will go away in 1.5.3
-	if (!cfg["user_description"].empty()) {
-		name_ = cfg["user_description"];
-	}
-	std::string custom_unit_desc = cfg["description"];
-	// FIXME OBSOLETE This will go away in 1.5.3
-	if (custom_unit_desc.empty())
-		custom_unit_desc = cfg["unit_description"];
-
-	underlying_id_ = id_;
-	if(id_.empty()) {
-		set_underlying_id();
+	if (id_.empty()) {
 		id_ = cfg["type"].c_str();
 	}
+	name_ = cfg["name"];
+	std::string custom_unit_desc = cfg["description"];
+
+	underlying_id_ = cfg["underlying_id"];
+	set_underlying_id();
 
 	role_ = cfg["role"];
 	ai_special_ = cfg["ai_special"];
@@ -1714,7 +1704,8 @@ void unit::write(config& cfg) const
 	cfg["overlays"] = utils::join(overlays_);
 
 	cfg["name"] = name_;
-	cfg["id"] = underlying_id_;
+	cfg["id"] = id_;
+	cfg["underlying_id"] = underlying_id_;
 
 	if(can_recruit())
 		cfg["canrecruit"] = "yes";

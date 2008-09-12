@@ -30,6 +30,7 @@
 #include <string>
 #include <vector>
 
+
 class scoped_wml_variable;
 
 struct wml_menu_item
@@ -69,37 +70,12 @@ struct player_info
 class game_state : public variable_set
 {
 public:
-	game_state() :
-		label(),
-		version(),
-		campaign_type(),
-		campaign_define(),
-		campaign_xtra_defines(),
-		campaign(),
-		history(),
-		abbrev(),
-		scenario(),
-		next_scenario(),
-		completion(),
-		players(),
-		scoped_variables(),
-		wml_menu_items(),
-		difficulty("NORMAL"),
-		replay_data(),
-		starting_pos(),
-		snapshot(),
-		last_selected(gamemap::location::null_location),
-		rng_(),
-		variables(),
-		temporaries()
-		{}
-
+	game_state();
 	game_state(const game_state& state);
 	game_state(const config& cfg, bool show_replay = false);
 
 	~game_state();
 	game_state& operator=(const game_state& state);
-
 	std::string label;                               //!< Name of the game (e.g. name of save file).
 	std::string version;                             //!< Version game was created with.
 	std::string campaign_type;                       //!< Type of the game - campaign, multiplayer etc.
@@ -170,6 +146,7 @@ private:
   rand_rng::simple_rng rng_ ;
 	config variables;
 	mutable config temporaries; // lengths of arrays, etc.
+	const rand_rng::set_random_generator generator_setter; //! Make sure that rng is initialized first
 	friend struct variable_info;
 
 	//! Loads the recall list.

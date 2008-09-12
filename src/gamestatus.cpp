@@ -29,6 +29,7 @@
 #include "statistics.hpp"
 #include "time_of_day.hpp"
 #include "wesconfig.h"
+#include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
@@ -443,6 +444,33 @@ static player_info read_player(const config* cfg)
 	return res;
 }
 
+game_state::game_state()  :
+		label(),
+		version(),
+		campaign_type(),
+		campaign_define(),
+		campaign_xtra_defines(),
+		campaign(),
+		history(),
+		abbrev(),
+		scenario(),
+		next_scenario(),
+		completion(),
+		players(),
+		scoped_variables(),
+		wml_menu_items(),
+		difficulty("NORMAL"),
+		replay_data(),
+		starting_pos(),
+		snapshot(),
+		last_selected(gamemap::location::null_location),
+		rng_(),
+		variables(),
+		temporaries(),
+		generator_setter(&recorder)
+		{}
+
+
 game_state::game_state(const config& cfg, bool show_replay) :
 		label(cfg["label"]),
 		version(cfg["version"]),
@@ -465,7 +493,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		last_selected(gamemap::location::null_location),
 		rng_(cfg),
 		variables(),
-		temporaries()
+		temporaries(),
+		generator_setter(&recorder)
 {
 	log_scope("read_game");
 
@@ -1194,7 +1223,8 @@ game_state::game_state(const game_state& state) :
 	last_selected(),
 	rng_(),
 	variables(),
-	temporaries()
+	temporaries(),
+	generator_setter(&recorder)
 {
 	*this = state;
 }
