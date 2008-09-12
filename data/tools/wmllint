@@ -236,6 +236,7 @@ unit_types = []
 derived_units = []
 usage = {}
 sides = []
+advances = []
 movetypes = []
 unit_movetypes = []
 races = []
@@ -346,6 +347,11 @@ def sanity_check(filename, lines):
                         assert(unit_id)
                         unit_race = value
                         unit_races.append((unit_id, filename, i+1, unit_race))
+                elif key == "advances_to":
+                    assert(unit_id)
+                    advancements = value
+                    if advancements.strip() != "null":
+                        advances.append((unit_id, filename, i+1, advancements))
             except TypeError:
                 pass
             if "{SPECIAL_NOTES}" in lines[i]:
@@ -620,6 +626,13 @@ def consistency_check():
         if base_unit not in unit_types:
             print '"%s", line %d: derivation of %s from %s does not resolve' \
                   % (filename, line, unit_type, base_unit)
+    # Check that all advancements are known units
+    for (unit_id, filename, lineno, advancements) in advances:
+        advancements = map(string.strip, advancements.split(","))
+        bad_advancements = filter(lambda x: x not in (unit_types+derivedlist), advancements)
+        if bad_advancements:
+            print '"%s", line %d: %s has unknown advancements %s' \
+                  % (filename, lineno, unit_id, bad_advancements)
 
 # Syntax transformations
 
