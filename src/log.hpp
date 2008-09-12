@@ -67,7 +67,7 @@ std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %H:
 extern logger err, warn, info, debug;
 extern log_domain general, ai,cache, config, display, engine, network, mp_server,
 	filesystem, audio, notifs, replay, help, gui, gui_parse, gui_draw,
-	gui_event, editor, wml;
+	gui_event, editor, wml, mp_user_handler;
 
 class scope_logger
 {

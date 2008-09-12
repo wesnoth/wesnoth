@@ -4,6 +4,7 @@
 #include "../global.hpp"
 
 #include "../config.hpp"
+#include "../log.hpp"
 
 #include <vector>
 #include <string>
@@ -14,6 +15,11 @@
 #include <sstream>
 
 #include "mail.hpp"
+
+#define ERR_UH LOG_STREAM(err, mp_user_handler)
+#define WRN_UH LOG_STREAM(warn, mp_user_handler)
+#define LOG_UH LOG_STREAM(info, mp_user_handler)
+#define DBG_UH LOG_STREAM(debug, mp_user_handler)
 
 //! @class An interface class to handle nick registration
 //! To activate it put a [user_handler] section into the

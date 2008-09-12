@@ -16,7 +16,7 @@ fuh::fuh(config c) {
 	try {
 		db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
 	} catch(...) {
-		 std::cerr << "FUH: ERROR: Could not connect to database: " << db_interface_.error() << std::endl;
+		 ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
 	}
 }
 
@@ -25,7 +25,6 @@ std::string fuh::get_detail_for_user(const std::string& name, const std::string&
 }
 
 std::string fuh::set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value) {
-	std::cout <<  std::string("UPDATE " + db_users_table_ + " SET " + detail + "='" + name + "' WHERE username='" + name + "'") << std::endl;
 	return std::string("UPDATE " + db_users_table_ + " SET " + detail + "='" + value + "' WHERE username='" + name + "'");
 }
 
@@ -49,12 +48,12 @@ mysqlpp::StoreQueryResult fuh::db_query(const std::string& sql) {
 
 	//Check if we are connected
 	if(!(db_interface_.connected())) {
-		std::cerr << "FUH: not connected to database, reconnecting..." << std::endl;
+		WRN_UH << "not connected to database, reconnecting..." << std::endl;
 		//Try to reconnect
 		try {
 			db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
 		} catch(...) {
-			 std::cerr << "FUH: ERROR: Could not connect to database: " << db_interface_.error() << std::endl;
+			 ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
 		}
 	}
 
@@ -72,20 +71,20 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 	// Set an alphabet-like string for use in encrytpion algorithm	 
 	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
-	// Retrive users' password as hash
+	// Retrieve users' password as hash
 
 	std::string hash;
 
 	try {
 		hash = get_hash(name);
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}
 
 	// Check hash prefix, if different than $H$ hash is invalid
 	if(hash.substr(0,3) != "$H$") {
-		std::cerr << "ERROR: Invalid hash prefix for user '" << name << "'" << std::endl;
+		ERR_UH << "Invalid hash prefix for user '" << name << "'" << std::endl;
 		return false;
 	}
 
@@ -115,7 +114,7 @@ std::string fuh::create_pepper(const std::string& name, int index) {
 	try {
 		hash = get_hash(name);
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not retrieve hash for user '" << name << "' :" << e.message << std::endl;
 		return "";
 	}
 
@@ -154,7 +153,7 @@ bool fuh::user_exists(const std::string& name) {
 	try {
 		return db_query(get_detail_for_user(name, "username")).num_rows() > 0;
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not execute test query for user '" << e.message << std::endl;
 		// If the database is down just let all usernames log in
 		return false;
 	}
@@ -177,7 +176,7 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 	try {
 	db_query(set_detail_for_user(user, "user_lastvisit", ss.str()));
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not set last visit for user '" << e.message << std::endl;
 	}
 }
 
@@ -185,7 +184,7 @@ std::string fuh::get_hash(const std::string& user) {
 	try {
 		return db_query_to_string(get_detail_for_user(user, "user_password"));
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not retrieve password for user '" << e.message << std::endl;
 		return time_t(0);
 	}
 }
@@ -194,7 +193,7 @@ std::string fuh::get_mail(const std::string& user) {
 	try {
 		return db_query_to_string(get_detail_for_user(user, "user_email"));
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not retrieve email for user '" << e.message << std::endl;
 		return time_t(0);
 	}
 }
@@ -260,7 +259,7 @@ time_t fuh::get_lastlogin(const std::string& user) {
 		int time_int = atoi(db_query_to_string(get_detail_for_user(user, "user_lastvisit")).c_str());
 		return time_t(time_int);
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not retrieve last visit for user '" << e.message << std::endl;
 		return time_t(0);
 	}
 }
@@ -270,7 +269,7 @@ time_t fuh::get_registrationdate(const std::string& user) {
 		int time_int = atoi(db_query_to_string(get_detail_for_user(user, "user_regdate")).c_str());
 		return time_t(time_int);
 	} catch (error e) {
-		std::cerr << "FUH: ERROR: " << e.message << std::endl;
+		ERR_UH << "Could not retrieve registration date for user '" << e.message << std::endl;
 		return time_t(0);
 	}
 }
