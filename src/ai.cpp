@@ -370,7 +370,7 @@ bool ai::recruit_usage(const std::string& usage)
 	} else if (usage != "")	{
 		const std::string warning = "Trying to recruit a: " + usage + " but no "
 			"unit of that type (usage=) is available. Check the recruit and "
-			"[ai] recruitment_pattern keys for this side against the usage key "
+		  "[ai] recruitment_pattern keys for team '" + current_team().name() + "' against the usage key "
 			"of the units in question! Removing invalid recruitment_pattern "
 			"entry and continuing...\n";
 		WRN_AI << warning;
