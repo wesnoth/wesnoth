@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-02 22:27+0200\n"
-"PO-Revision-Date: 2008-07-21 22:19+0100\n"
+"PO-Revision-Date: 2008-09-06 19:22+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Komprimovať uložené hry"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:43
 msgid "Mouse Scrolling"
-msgstr "Rolovanie myšou"
+msgstr "Umožniť rolovanie myšou"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:50
@@ -36,12 +36,12 @@ msgstr "Animovať mapu"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:57
 msgid "Unit Standing Animations"
-msgstr "Animácie stojacich jednotiek"
+msgstr "Animovať stojace jednotky"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:64
 msgid "Show Combat"
-msgstr "Zobrazuj súboj"
+msgstr "Zobrazovať súboj"
 
 #. [server]
 #: data/_main.cfg:79
@@ -1373,7 +1373,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regeneration text='Regenerácia'</ref>: Niektoré jednotky "
-"(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 bodov."
+"(napríklad trolovia) sa v každom kole automaticky uzdravia o 8 bodov."
 
 #. [topic]
 #: data/core/help.cfg:284
@@ -1638,7 +1638,7 @@ msgstr ""
 "\n"
 "\n"
 "Rýchlosť je najviditeľnejšia vlastnosť, najmä u pomalých jednotiek ako sú "
-"trollovia či ťažká pechota. Rýchle jednotky môžu byť výrazne pohyblivejšie v "
+"trolovia či ťažká pechota. Rýchle jednotky môžu byť výrazne pohyblivejšie v "
 "náročných terénoch; vezmite to do úvahy pri rozmiestňovaní síl. Rýchle "
 "jednotky však nevydržia rovnako veľa ako obyčajné, a preto nie sú také dobré "
 "na obranu už dobytých pozícií."
@@ -1968,7 +1968,7 @@ msgid ""
 msgstr ""
 "Kopce predstavujú pomerne nerovný terén, kde je dosť údolí a kopcov "
 "poskytujúcich úkryt. Väčšina jednotiek sa v kopcoch ťažko pohybuje. "
-"Trpaslíci, trollovia a orkovia sa v tomto teréne cítia ako doma a môžu ním "
+"Trpaslíci, trolovia a orkovia sa v tomto teréne cítia ako doma a môžu ním "
 "prechádzať bez spomalenia. Jazda má zvyčajne problém orientovať sa v tomto "
 "teréne, a preto nezískava žiaden obranný bonus.\n"
 "\n"
@@ -1997,7 +1997,7 @@ msgstr ""
 "prekážky. Poskytujú preto veľký obranný bonus pre väčšinu jednotiek, ale "
 "zároveň výrazne spomaľujú pohyb. Väčšina jazdeckých jednotiek na tento terén "
 "ani nemôže vstúpiť; výnimkou sú elfí jazdci a goblinskí jazdci na vlkoch. "
-"Trpaslíci a trollovia sú v týchto oblastiach doma, a preto sa v nich pomerne "
+"Trpaslíci a trolovia sú v týchto oblastiach doma, a preto sa v nich pomerne "
 "ľahko pohybujú.\n"
 "\n"
 "Väčšina jednotiek má v horách obranu 60%, trpaslíci majú 70%."
@@ -2192,7 +2192,7 @@ msgid ""
 msgstr ""
 "Jaskynný terén predstavuje akúkoľvek podzemnú chodbu, do ktorej sa zmestí "
 "vojenská jednotka. Väčšina jednotiek s týmto terénom nemá skúsenosti, a "
-"preto sú tu pomalé a ťažko sa bránia. Trpaslíci a trollovia žijú v "
+"preto sú tu pomalé a ťažko sa bránia. Trpaslíci a trolovia žijú v "
 "jaskyniach, preto sa tu pomerne ľahko pohybujú; zvlášť trpaslíci, ktorí sa "
 "vďaka menším rozmerom ľahko vyhnú mnohým prekážkam. Jaskyne sú niekedy "
 "<ref>dst=terrain_illuminated_cave text=osvetlené</ref>.\n"
@@ -2220,11 +2220,10 @@ msgid ""
 msgstr ""
 "Terén skalnatej jaskyne je vytvarovaný pôsobením vody a vetra, "
 "zvetrávajúcich skalnatý podklad. Je to hrboľatý podklad, ktorý zmenšuje "
-"efektivitu väčšiny jednotiek, ale zlepšuje ich obranu. Trpaslíci a "
-"trollovia, hlavní obyvatelia jaskýň, sa v tomto teréne orientujú pomerne "
-"ľahko. Trpaslíci majú vďaka svojej malej výške v takomto teréne veľké "
-"výhody. Jaskyne sú niekedy <ref>dst=terrain_illuminated_cave text=osvetlené</"
-"ref>.\n"
+"efektivitu väčšiny jednotiek, ale zlepšuje ich obranu. Trpaslíci a trolovia, "
+"hlavní obyvatelia jaskýň, sa v tomto teréne orientujú pomerne ľahko. "
+"Trpaslíci majú vďaka svojej malej výške v takomto teréne veľké výhody. "
+"Jaskyne sú niekedy <ref>dst=terrain_illuminated_cave text=osvetlené</ref>.\n"
 "\n"
 "Väčšina jednotiek má v skalnatej jaskyni obranu okolo 50%, jazda len 40%. "
 "Trpaslíci majú v skalnatej jaskyni obranu 60%."
@@ -5227,17 +5226,17 @@ msgstr ""
 #. [race]
 #: data/core/units.cfg:218
 msgid "race^Troll"
-msgstr "Troll"
+msgstr "Trol"
 
 #. [race]
 #: data/core/units.cfg:219
 msgid "race+female^Troll"
-msgstr "Trollka"
+msgstr "Trolka"
 
 #. [race]
 #: data/core/units.cfg:220
 msgid "race^Trolls"
-msgstr "Trollovia"
+msgstr "Trolovia"
 
 #. [race]
 #: data/core/units.cfg:226
