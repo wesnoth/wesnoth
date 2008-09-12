@@ -399,7 +399,7 @@ bindir = env['bindir']
 pythonlib = env['python_site_packages_dir']
 datadir = env['datadir']
 docdir = env['docdir']
-installable_subs = Split('data fonts icons images sounds')
+installable_subs = Split('data fonts images sounds')
 if env['nls']:
     installable_subs.append("translations")
 if env['nls'] and env['PLATFORM'] != 'win32':
@@ -581,7 +581,7 @@ env.Alias('data-dist', data_tarball)
 # Windows installer
 #
 
-env.WindowsInstaller([wesnoth, wesnoth_editor, Dir(installable_subs)] + glob("*.dll"))
+env.WindowsInstaller([wesnoth, wesnoth_editor, Dir(installable_subs)] + glob("*.dll") + Split("README copyright COPYING"))
 
 #
 # Making Mac OS X application bundles
