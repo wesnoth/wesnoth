@@ -14,7 +14,11 @@
 #include <boost/version.hpp>
 
 #define BOOST_TEST_MODULE wesnoth unit tests master suite
+#if BOOST_VERSION < 103400
+#include <boost/test/auto_unit_test.hpp>
+#else
 #include <boost/test/unit_test.hpp>
+#endif
 #include <boost/test/unit_test_monitor.hpp>
 #include <boost/test/detail/unit_test_parameters.hpp>
 #include <boost/test/results_reporter.hpp>
