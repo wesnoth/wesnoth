@@ -1787,14 +1787,8 @@ void ai::do_recruitment()
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
 
-	// FIXME: This entire block of code should be conditionalized
-	// on a test for whether the recruitment list of the team contains
-	// any units with scout usage.  Otherwise, the AI will emit a spurious
-	// message beginning "Deprecated WML found: Trying to recruit a: scout 
-        // but no unit of that type (usage=) is available." on teams with no
-	// recruitment list and no scout-type units.  This happens, for example,
-	// when team Gore first recruits in NR:The Eastern Flank.
-	{
+	std::vector<std::string> options = current_team().recruitment_pattern();
+	if (std::count(options.begin(), options.end(), "scout") > 0) {
 		size_t neutral_villages = 0;
 
 		// We recruit the initial allocation of scouts
@@ -1853,17 +1847,18 @@ void ai::do_recruitment()
 		}
 	}
 
-	std::vector<std::string> options;
-
-	do {
+	// If there is no recruitment_pattern use "" which makes us consider
+	// any unit available.
+	if (options.empty()) {
+		options.push_back("");
+	}
+	// Buy units as long as we have room and can afford it.
+	while (recruit_usage(options[rand()%options.size()])) {
 		options = current_team().recruitment_pattern();
-		// If there is no recruitment_pattern use "" which makes us consider
-		// any unit available.
 		if (options.empty()) {
 			options.push_back("");
 		}
-		// Buy units as long as we have room and can afford it.
-	}while(recruit_usage(options[rand()%options.size()]));
+	}
 }
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
