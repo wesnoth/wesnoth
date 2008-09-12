@@ -1787,61 +1787,70 @@ void ai::do_recruitment()
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
 
-	size_t neutral_villages = 0;
+	// FIXME: This entire block of code should be conditionalized
+	// on a test for whether the recruitment list of the team contains
+	// any units with scout usage.  Otherwise, the AI will emit a spurious
+	// message beginning "Deprecated WML found: Trying to recruit a: scout 
+        // but no unit of that type (usage=) is available." on teams with no
+	// recruitment list and no scout-type units.  This happens, for example,
+	// when team Gore first recruits in NR:The Eastern Flank.
+	{
+		size_t neutral_villages = 0;
 
-	// We recruit the initial allocation of scouts
-	// based on how many neutral villages there are
-	// that are closer to us than to other keeps.
-	const std::vector<location>& villages = map_.villages();
-	for(std::vector<location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-		const int owner = village_owner(*v,teams_);
-		if(owner == -1) {
-			const size_t distance = distance_between(start_pos,*v);
+		// We recruit the initial allocation of scouts
+		// based on how many neutral villages there are
+		// that are closer to us than to other keeps.
+		const std::vector<location>& villages = map_.villages();
+		for(std::vector<location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
+			const int owner = village_owner(*v,teams_);
+			if(owner == -1) {
+				const size_t distance = distance_between(start_pos,*v);
 
-			bool closest = true;
-			for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
-				const int index = i - teams_.begin() + 1;
-				const gamemap::location& loc = map_.starting_position(index);
-				if(loc != start_pos && distance_between(loc,*v) < distance) {
-					closest = false;
-					break;
+				bool closest = true;
+				for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
+					const int index = i - teams_.begin() + 1;
+					const gamemap::location& loc = map_.starting_position(index);
+					if(loc != start_pos && distance_between(loc,*v) < distance) {
+						closest = false;
+						break;
+					}
+				}
+
+				if(closest) {
+					++neutral_villages;
 				}
 			}
+		}
 
-			if(closest) {
-				++neutral_villages;
+		// The villages per scout is for a two-side battle,
+		// accounting for all neutral villages on the map.
+		// We only look at villages closer to us, so we halve it,
+		// making us get twice as many scouts.
+		const int villages_per_scout = current_team().villages_per_scout()/2;
+
+		// Get scouts depending on how many neutral villages there are.
+		int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
+
+		LOG_AI << "scouts_wanted: " << neutral_villages << "/"
+			<< villages_per_scout << " = " << scouts_wanted << "\n";
+
+		std::map<std::string,int> unit_types;
+
+		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+			if(u->second.side() == team_num_) {
+				++unit_types[u->second.usage()];
 			}
 		}
-	}
 
-	// The villages per scout is for a two-side battle,
-	// accounting for all neutral villages on the map.
-	// We only look at villages closer to us, so we halve it,
-	// making us get twice as many scouts.
-	const int villages_per_scout = current_team().villages_per_scout()/2;
+		LOG_AI << "we have " << unit_types["scout"] << " scouts already and we want "
+			<< scouts_wanted << " in total\n";
 
-	// Get scouts depending on how many neutral villages there are.
-	int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
+		while(unit_types["scout"] < scouts_wanted) {
+			if(recruit_usage("scout") == false)
+				break;
 
-	LOG_AI << "scouts_wanted: " << neutral_villages << "/"
-		<< villages_per_scout << " = " << scouts_wanted << "\n";
-
-	std::map<std::string,int> unit_types;
-
-	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(u->second.side() == team_num_) {
-			++unit_types[u->second.usage()];
+			++unit_types["scout"];
 		}
-	}
-
-	LOG_AI << "we have " << unit_types["scout"] << " scouts already and we want "
-		<< scouts_wanted << " in total\n";
-
-	while(unit_types["scout"] < scouts_wanted) {
-		if(recruit_usage("scout") == false)
-			break;
-
-		++unit_types["scout"];
 	}
 
 	std::vector<std::string> options;
