@@ -11,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+
 #ifndef GAME_EVENTS_H_INCLUDED
 #define GAME_EVENTS_H_INCLUDED
 
@@ -30,17 +31,18 @@ class team;
 class t_string;
 class unit;
 
-
-//! @file game_events.hpp
-//! Define the game's events mechanism.
-//
-// Events might be units moving or fighting, or when victory or defeat occurs.
-// A scenario's configuration file will define actions to take when certain events occur.
-// This module is responsible for making sure that when the events occur, the actions take place.
-//
-// Note that game events have nothing to do with SDL events,
-// like mouse movement, keyboard events, etc.
-// See events.hpp for how they are handled.
+/**
+ * @file game_events.hpp
+ * Define the game's events mechanism.
+ *
+ * Events might be units moving or fighting, or when victory or defeat occurs.
+ * A scenario's configuration file will define actions to take when certain events occur.
+ * This module is responsible for making sure that when the events occur, the actions take place.
+ *
+ * Note that game events have nothing to do with SDL events,
+ * like mouse movement, keyboard events, etc.
+ * See events.hpp for how they are handled.
+ */
 
 namespace game_events
 {
@@ -282,8 +284,11 @@ namespace game_events
 
 	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
 
-	//! Function to fire an event.
-	// Events may have up to two arguments, both of which must be locations.
+	/**
+	 * Function to fire an event.
+	 *
+	 * Events may have up to two arguments, both of which must be locations.
+	 */
 	bool fire(const std::string& event,
 			const entity_location& loc1=gamemap::location::null_location,
 			const entity_location& loc2=gamemap::location::null_location,

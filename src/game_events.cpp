@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file game_events.cpp
-//! Processing of WML-events.
+/**
+ * @file game_events.cpp
+ * Processing of WML-events.
+ */
 
 #include "global.hpp"
 #include "actions.hpp"
@@ -372,8 +374,11 @@ namespace game_events {
 		if(matches && or_count > 1 && allow_backwards_compat)
 		{
 			lg::wml_error << "possible deprecated [or] syntax: now forcing re-interpretation\n";
-			//! @todo For now we will re-interpret it according to the old rules,
-			// but this should be later to prevent re-interpretation errors.
+			/**
+			 * @todo For now we will re-interpret it according to the old
+			 * rules, but this should be later to prevent re-interpretation
+			 * errors.
+			 */
 			const vconfig::child_list& orcfgs = cond.get_children("or");
 			for(unsigned int i=0; i < orcfgs.size(); ++i) {
 				if(conditional_passed(units, orcfgs[i])) {
@@ -683,8 +688,10 @@ namespace {
 		std::string village_gold = cfg["village_gold"];
 		const config& parsed = cfg.get_parsed_config();
 		const config::child_list& ai = parsed.get_children("ai");
-		//!@todo also allow client to modify a side's colour if it
-		//!is possible to change it on the fly without causing visual glitches
+		/**
+		 * @todo also allow client to modify a side's colour if it is possible
+		 * to change it on the fly without causing visual glitches
+		 */
 
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
@@ -1771,8 +1778,12 @@ namespace {
 		bool unit_recalled = false;
 		config temp_config(cfg.get_config());
 		// Prevent the recall unit filter from using the location as a criterion
-		//! @todo FIXME: we should design the WML to avoid these types of collisions;
-		// filters should be named consistently and always have a distinct scope.
+		
+		/**
+		 * @todo FIXME: we should design the WML to avoid these types of
+		 * collisions; filters should be named consistently and always have a
+		 * distinct scope.
+		 */
 		temp_config["x"] = "";
 		temp_config["y"] = "";
 		vconfig unit_filter(&temp_config);
@@ -2197,7 +2208,7 @@ namespace {
 		}
 	}
 	// Unit serialization to and from variables
-	//! @todo FIXME: Check that store is automove bug safe
+	/** @todo FIXME: Check that store is automove bug safe */
 	WML_HANDLER_FUNCTION(store_unit,/*handler*/,/*event_info*/,cfg)
 	{
 		const config empty_filter;
@@ -2311,7 +2322,7 @@ namespace {
 				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
 					// Try to advance the unit
 
-					//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
+					/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
 					const t_string& side_str = state_of_game->get_variable("side_number");
 					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
@@ -2321,7 +2332,7 @@ namespace {
 
 					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_map, *units, loc, *screen, !sel, true);
-					//! @todo FIXME: triggers advance events without preventing infinite loop
+					/** @todo FIXME: triggers advance events without preventing infinite loop */
 				}
 
 			} else {
@@ -2355,9 +2366,10 @@ namespace {
 					}
 
 					// Avoid duplicates in the list.
-					//! @todo it would be better to change available_units from
-					//! a vector to a map and use the underlying_id
-					//! as key.
+					/**
+					 * @todo it would be better to change available_units from
+					 * a vector to a map and use the underlying_id as key.
+					 */
 					const std::string key = u.underlying_id();
 					for(std::vector<unit>::iterator itor =
 							player->available_units.begin();
@@ -2444,7 +2456,7 @@ namespace {
 
 		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 			bool matches = false;
-			if(cfg.has_attribute("side")) { 	//! @deprecated, use owner_side instead
+			if(cfg.has_attribute("side")) { 	/** @deprecated, use owner_side instead */
 				lg::wml_error << "side key is no longer accepted in [store_villages],"
 					<< " use owner_side instead.\n";
 				config temp_cfg(cfg.get_config());
@@ -3006,7 +3018,7 @@ namespace {
 
 			// Otherwise if an input has to be made, get it from the replay data
 		} else {
-			//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
+			/** @todo FIXME: get player_number_ from the play_controller, not from the WML vars. */
 			const t_string& side_str = state_of_game->get_variable("side_number");
 			const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
@@ -3101,7 +3113,7 @@ namespace {
 	}
 
 
-	//! Handles all the different types of actions that can be triggered by an event.
+	/** Handles all the different types of actions that can be triggered by an event. */
 
 	static void commit_new_handlers() {
 		// Commit any spawned events-within-events
