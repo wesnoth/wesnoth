@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file gamestatus.hpp
-//!
-//!
+/** @file gamestatus.hpp */
 
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
@@ -45,7 +43,7 @@ struct wml_menu_item
 	config command;
 };
 
-//! Information on a particular player of the game.
+/** Information on a particular player of the game. */
 struct player_info
 {
 	player_info() :
@@ -56,13 +54,15 @@ struct player_info
 		can_recruit()
 	{}
 
-	std::string name;                  //!< Stores the current_player name
-	int gold;                          //!< Amount of gold the player has saved
-	bool gold_add;                     //!< Amount of gold is added to the
-	                                   //!< starting gold, if not it uses the highest
-	                                   //!< of the two.
-	std::vector<unit> available_units; //!< Units the player may recall
-	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit
+	std::string name;                  /**< Stores the current_player name */
+	int gold;                          /**< Amount of gold the player has saved */
+	bool gold_add;                     /**< 
+										* Amount of gold is added to the
+										* starting gold, if not it uses the
+										* highest of the two.
+										*/
+	std::vector<unit> available_units; /**< Units the player may recall */
+	std::set<std::string> can_recruit; /**< Units the player has the ability to recruit */
 
 	void debug();
 };
@@ -76,27 +76,28 @@ public:
 
 	~game_state();
 	game_state& operator=(const game_state& state);
-	std::string label;                               //!< Name of the game (e.g. name of save file).
-	std::string version;                             //!< Version game was created with.
-	std::string campaign_type;                       //!< Type of the game - campaign, multiplayer etc.
+	std::string label;                               /**< Name of the game (e.g. name of save file). */
+	std::string version;                             /**< Version game was created with. */
+	std::string campaign_type;                       /**< Type of the game - campaign, multiplayer etc. */
 
-	std::string campaign_define;                     //!< If there is a define the campaign uses to customize data
-	std::vector<std::string> campaign_xtra_defines;  //!< more customization of data
+	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
+	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
 
-	std::string campaign;                            //!< the campaign being played
-	std::string history;	                         //!< ancestral IDs
-	std::string abbrev;	                         //!< the campaign abbreviation
-	std::string scenario;                            //!< the scenario being played
-	std::string next_scenario;                       //!< the scenario coming next (for campaigns)
-	std::string completion;                          //!< running. victory, or defeat
+	std::string campaign;                            /**< the campaign being played */
+	std::string history;                             /**< ancestral IDs */
+	std::string abbrev;                              /**< the campaign abbreviation */
+	std::string scenario;                            /**< the scenario being played */
+	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
+	std::string completion;                          /**< running. victory, or defeat */
 
-	//! Information about campaign players who carry resources
-	//! from previous levels, indexed by a string identifier
-	// (which is the leader name by default, but can be set
-	// with the "id" attribute of the "side" tag).
+	/**
+	 * Information about campaign players who carry resources from previous
+	 * levels, indexed by a string identifier (which is the leader name by
+	 * default, but can be set with the "id" attribute of the "side" tag).
+	 */
 	std::map<std::string, player_info> players;
 
-	//! Return the Nth player, or NULL if no such player exists.
+	/** Return the Nth player, or NULL if no such player exists. */
 	player_info* get_player(const std::string& id);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
@@ -123,92 +124,146 @@ public:
         const rand_rng::simple_rng& rng() const { return rng_; }
         rand_rng::simple_rng& rng() { return rng_; }
 
-	std::string difficulty; //!< The difficulty level the game is being played on.
+	std::string difficulty; /**< The difficulty level the game is being played on. */
 
-	//! If the game is saved mid-level, we have a series of replay steps
-	//! to take the game up to the position it was saved at.
+	/**
+	 * If the game is saved mid-level, we have a series of replay steps
+	 * to take the game up to the position it was saved at.
+	 */
 	config replay_data;
 
-	//! Saved starting state of the game.
-	//! For multiplayer games, the position the game started in
-	//! may be different to the scenario,
+	/**
+	 * Saved starting state of the game.
+	 *
+	 * For multiplayer games, the position the game started in may be different
+	 * to the scenario.
+	 */
 	config starting_pos;
 
-	//! Snapshot of the game's current contents.
-	//! i.e. unless the player selects to view a replay,
-	//! the game's settings are read in from this object.
+	/**
+	 * Snapshot of the game's current contents.
+	 *
+	 * i.e. unless the player selects to view a replay, the game's settings are
+	 * read in from this object.
+	 */
 	config snapshot;
 
-	//! the last location where a select event fired.
+	/** the last location where a select event fired. */
 	gamemap::location last_selected;
 
 private:
   rand_rng::simple_rng rng_ ;
 	config variables;
 	mutable config temporaries; // lengths of arrays, etc.
-	const rand_rng::set_random_generator generator_setter; //! Make sure that rng is initialized first
+	const rand_rng::set_random_generator generator_setter; /**< Make sure that rng is initialized first */
 	friend struct variable_info;
 
-	//! Loads the recall list.
+	/**
+	 * Loads the recall list.
+	 *
+	 * @param players      Reference to the players section to load.
+	 */
 	void load_recall_list(const config::child_list& players);
 };
 
-
-//! Contains the global status of the game.
-//! Namely the current turn, the number of turns, and the time of day.
+/**
+ * Contains the global status of the game.
+ *
+ * Namely the current turn, the number of turns, and the time of day.
+ */
 class gamestatus
 {
 public:
+	/**
+	 * Reads turns and time information from parameters.
+	 *
+	 * It sets random starting ToD and current_tod to config.
+	 */
 	gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g = NULL);
 	void write(config& cfg) const;
 
+	/** Returns time of day object for current turn. */
 	time_of_day get_time_of_day() const;
 	time_of_day get_previous_time_of_day() const;
 	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc) const;
+
+	/**
+	 * Returns time of day object in the turn.
+	 *
+	 * It first tries to look for specified. If no area time specified in
+	 * location, it returns global time.
+	 */
 	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
-	bool set_time_of_day(int);
+
+	/**
+	 * Sets global time of day in this turn.
+	 *
+	 * Time is a number between 0 and n-1, where n is number of ToDs.
+	 */
+	bool set_time_of_day(int newTime);
 	size_t turn() const;
 	int number_of_turns() const;
 	void modify_turns(const std::string& mod);
 	void add_turns(int num);
 
-	//! Dynamically change the current turn number.
+	/** Dynamically change the current turn number. */
 	void set_turn(unsigned int num);
 
-	//! Function to move to the next turn.
-	//! Returns true if time has not expired.
+	/**
+	 * Function to move to the next turn.
+	 *
+	 * @returns                   True if time has not expired.
+	 */
 	bool next_turn();
 
 	static bool is_start_ToD(const std::string&);
 	
-	//! Adds a new local time area from config, making it follow its own
-	//! time-of-day sequence.
-	//! @param cfg Config object containing x,y range/list of locations,
-	//!            and desired [time] information.
+	/**
+	 * Adds a new local time area from config, making it follow its own
+	 * time-of-day sequence.
+	 *
+	 * @param cfg                 Config object containing x,y range/list of 
+	 *                            locations and desired [time] information.
+	 */
 	void add_time_area(const config& cfg);
 
-	//! Adds a new local time area from a set of locations, making those
-	//! follow a different time-of-day sequence.
-	//! @param id          Identifier string to associate this time area with.
-	//! @param locs        Set of locations to be affected.
-	//! @param time_cfg    Config object containing [time] information
+	/**
+	 * Adds a new local time area from a set of locations, making those
+	 * follow a different time-of-day sequence.
+	 *
+	 * @param id                  Identifier string to associate this time area
+	 *                            with.
+	 * @param locs                Set of locations to be affected.
+	 * @param time_cfg            Config object containing [time] information.
+	 */
 	void add_time_area(const std::string& id, const std::set<gamemap::location>& locs,
 	                   const config& time_cfg);
 
-	//! Removes a time area from config, making it follow the scenario's
-	//! normal time-of-day sequence.
-	//! @param id Identifier of time_area to remove. Supply an empty one
-	//!           to remove all local time areas.
+	/**
+	 * Removes a time area from config, making it follow the scenario's
+	 * normal time-of-day sequence.
+	 *
+	 * @param id                  Identifier of time_area to remove. Supply an
+	 *                            empty one to remove all local time areas.
+	 */
 	void remove_time_area(const std::string& id);
 
-	//! @todo FIXME: since gamestatus may be constructed with NULL game_state* (by default),
-	//! you should not rely on this function to return the current game_state.
+	/**
+	 * @todo FIXME: since gamestatus may be constructed with NULL game_state* (by default),
+	 * you should not rely on this function to return the current game_state.
+	 */
 	const game_state& sog() const{return(*state_of_game_);}
 
 	std::vector<team> *teams;
 
 private:
 	void set_start_ToD(config&, game_state*);
+
+	/**
+	 * Returns time of day object in the turn.
+	 *
+	 * Correct time is calculated from current time.
+	 */
 	time_of_day get_time_of_day_turn(int nturn) const;
 	void next_time_of_day();
 
@@ -239,16 +294,19 @@ private:
 
 std::string generate_game_uuid();
 
-//! Holds all the data needed to start a scenario.
-//! I.e. this is the object serialized to disk when saving/loading a game.
-//! It is also the object which needs to be created to start a new game.
+/**
+ * Holds all the data needed to start a scenario.
+ *
+ * I.e. this is the object serialized to disk when saving/loading a game.
+ * It is also the object which needs to be created to start a new game.
+ */
 struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
 	std::string name;
 	time_t time_modified;
 };
 
-//! Get a list of available saves.
+/** Get a list of available saves. */
 std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
 
 enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
@@ -258,20 +316,21 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 
-//! Returns true iff there is already a savegame with that name.
+/** Returns true iff there is already a savegame with that name. */
 bool save_game_exists(const std::string & name);
 
-//! Throws game::save_game_failed
+/** Throws game::save_game_failed. */
 scoped_ostream open_save_game(const std::string &label);
 void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label);
 
-//! Load/Save games.
+/** Load/Save games. */
 void load_game(const std::string& name, game_state& gamestate, std::string* error_log);
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
-//! Throws gamestatus::save_game_failed
+
+/** Throws gamestatus::save_game_failed. */
 void save_game(const game_state& gamestate);
 
-//! Delete a savegame.
+/** Delete a savegame. */
 void delete_game(const std::string& name);
 
 config& save_summary(const std::string& save);

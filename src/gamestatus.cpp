@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file gamestatus.cpp
-//! Maintain status of a game, load&save games.
+/**
+ * @file gamestatus.cpp
+ * Maintain status of a game, load&save games.
+ */
 
 #include "global.hpp"
 
@@ -54,13 +56,15 @@
 #ifdef _WIN32
 #include <windows.h>
 
-//! conv_ansi_utf8()
-//!   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
-//!  string &name
-//!     - filename to be converted
-//!  bool a2u
-//!     - if true, convert the string from ANSI to UTF-8.
-//!     - if false, reverse. (convert it from UTF-8 to ANSI)
+/**
+ * conv_ansi_utf8()
+ *   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
+ *  string &name
+ *     - filename to be converted
+ *  bool a2u
+ *     - if true, convert the string from ANSI to UTF-8.
+ *     - if false, reverse. (convert it from UTF-8 to ANSI)
+ */
 void conv_ansi_utf8(std::string &name, bool a2u) {
 	int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
                                    name.c_str(), -1, NULL, 0);
@@ -185,8 +189,6 @@ void gamestatus::remove_time_area(const std::string& area_id)
 	}
 }
 
-//! Reads turns and time information from parameters.
-//! It sets random starting ToD and current_tod to config.
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
 		teams(0),
 		times_(),
@@ -248,8 +250,6 @@ void gamestatus::write(config& cfg) const
 	}
 }
 
-//! Returns time of day object in the turn.
-//! Correct time is calculated from current time.
 time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
 	VALIDATE(times_.size(), _("No time of day has been defined."));
@@ -264,7 +264,6 @@ time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 	return times_[time];
 }
 
-//! ~eturns time of day object for current turn.
 time_of_day gamestatus::get_time_of_day() const
 {
 	VALIDATE(times_.size(), _("No time of day has been defined."));
@@ -277,9 +276,6 @@ time_of_day gamestatus::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn()-1);
 }
 
-//! Returns time of day object in the turn.
-//! It first tries to look for specified.
-//! If no area time specified in location, it returns global time.
 time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
 {
 	time_of_day res = get_time_of_day_turn(n_turn);
@@ -307,8 +303,6 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 	return get_time_of_day(illuminated,loc,turn());
 }
 
-//! Sets global time of day in this turn.
-//! Time is a number between 0 and n-1, where n is number of ToDs.
 bool gamestatus::set_time_of_day(int newTime)
 {
 	// newTime can come from network so have to take run time test
@@ -611,8 +605,7 @@ static void write_player(config_writer &out, const player_info& player)
 	out.write_key_val("can_recruit", can_recruit_str);
 }
 
-
-//! @deprecated, use other write_game below.
+/** @deprecated, use other write_game below. */
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
@@ -732,8 +725,10 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	}
 }
 
-//! A structure for comparing to save_info objects based on their modified time.
-//! If the times are equal, will order based on the name.
+/**
+ * A structure for comparing to save_info objects based on their modified time.
+ * If the times are equal, will order based on the name.
+ */
 struct save_info_less_time {
 	bool operator()(const save_info& a, const save_info& b) const {
 		if (a.time_modified > b.time_modified) {
@@ -981,7 +976,7 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 
 	// Find the first human leader so we can display their icon in the load menu.
 
-	//! @todo Ideally we should grab all leaders if there's more than 1 human player?
+	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
 	std::string leader;
 
 	for(std::map<std::string, player_info>::const_iterator p = gamestate.players.begin();
@@ -1062,7 +1057,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	// Find the first human leader so we can display their icon in the load menu.
 
-	//! @todo Ideally we should grab all leaders if there's more than 1 human player?
+	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
 	std::string leader;
 
 	const config::child_list& players = cfg_save.get_children("player");
@@ -1172,9 +1167,6 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
-//! Loads the recall list.
-//!
-//! @param players      Reference to the players section to load.
 void game_state::load_recall_list(const config::child_list& players)
 {
 	if(!players.empty()) {
