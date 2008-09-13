@@ -44,7 +44,7 @@ std::string fuh::get_valid_details() {
 	return "For now this is a 'read-only' user_handler";
 }
 
-mysqlpp::StoreQueryResult fuh::db_query(const std::string& sql) {
+mysqlpp::Result fuh::db_query(const std::string& sql) {
 
 	//Check if we are connected
 	if(!(db_interface_.connected())) {
@@ -57,12 +57,13 @@ mysqlpp::StoreQueryResult fuh::db_query(const std::string& sql) {
 		}
 	}
 
-	mysqlpp::Query query = db_interface_.query(sql);
+	mysqlpp::Query query = db_interface_.query();
+	query << sql;
 	return query.store();
 }
 
 std::string fuh::db_query_to_string(const std::string& query) {
-	return std::string(db_query(query)[0][0]);
+	return std::string(db_query(query).at(0).at(0));
 }
 
 // The hashing code is basically taken from forum_auth.cpp

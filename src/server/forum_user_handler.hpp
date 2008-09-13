@@ -63,7 +63,7 @@ class fuh : public user_handler {
 
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_;
 
-		mysqlpp::StoreQueryResult db_query(const std::string& query);
+		mysqlpp::Result db_query(const std::string& query);
 		std::string db_query_to_string(const std::string& query);
 		mysqlpp::Connection db_interface_;
 
