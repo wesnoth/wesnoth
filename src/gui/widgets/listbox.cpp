@@ -46,21 +46,9 @@
 
 namespace gui2 {
 
-static tlistbox* get_listbox(twidget* widget)
-{
-	do {
-		widget = widget->parent();
-
-	} while (widget && !dynamic_cast<tlistbox*>(widget));
-	
-	tlistbox* listbox = dynamic_cast<tlistbox*>(widget);
-	assert(listbox);
-	return listbox;
-}
-
 static void callback_select_list_item(twidget* caller)
 {
-	get_listbox(caller)->list_item_selected(caller);
+	get_parent<tlistbox>(caller)->list_item_selected(caller);
 }
 
 tlistbox::tlistbox() :

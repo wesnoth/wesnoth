@@ -41,21 +41,9 @@
 
 namespace gui2 {
 
-static tmenubar* get_menubar(twidget* widget)
-{
-	do {
-		widget = widget->parent();
-
-	} while (widget && !dynamic_cast<tmenubar*>(widget));
-	
-	tmenubar* menubar = dynamic_cast<tmenubar*>(widget);
-	assert(menubar);
-	return menubar;
-}
-
 static void callback_select_item(twidget* caller)
 {
-	get_menubar(caller)->item_selected(caller);
+	get_parent<tmenubar>(caller)->item_selected(caller);
 }
 
 size_t tmenubar::get_item_count() const
