@@ -209,7 +209,10 @@ void wait::process_event()
 
 void wait::join_game(bool observe)
 {
-	for(;;) {
+	//if we have got valid side data
+	//the first condition is to make sure that we don't have another
+	//WML message with a side-tag in it
+	while((level_.values.find("version") == level_.values.end()) || (level_.child("side") == NULL)) {
 		network::connection data_res = dialogs::network_receive_dialog(disp(),
 				_("Getting game data..."), level_);
 		if (!data_res) {
@@ -221,11 +224,6 @@ void wait::join_game(bool observe)
 			set_result(QUIT);
 			return;
 		}
-		//if we have got valid side data
-		//the first condition is to make sure that we don't have another
-		//WML message with a side-tag in it
-		if( (level_.values.find("version") != level_.values.end()) && (level_.child("side") != NULL) )
-			break;
 	}
 
 	// Add the map name to the title.
@@ -255,7 +253,7 @@ void wait::join_game(bool observe)
 			}
 		}
 		if (static_cast<size_t>(side_choice) >= sides_list.size()) {
-			join_game(true);
+			set_result(QUIT);
 			return;
 		}
 

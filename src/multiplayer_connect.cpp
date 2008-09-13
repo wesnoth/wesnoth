@@ -646,6 +646,7 @@ config connect::side::get_config() const
 	}
 	res["controller"] = controller_names[controller_];
 	res["current_player"] = id_.empty() ? current_player_ : id_;
+	res["id"] = id_;
 
 	if (id_.empty()) {
 		char const *description;
