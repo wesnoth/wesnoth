@@ -12,9 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file halo.cpp 
-//! Maintain halo-effects for units and items.
-//! Examples: white mage, lighthouse.
+/**
+ * @file halo.cpp 
+ * Maintain halo-effects for units and items.
+ * Examples: white mage, lighthouse.
+ */
 
 #include "global.hpp"
 
@@ -66,34 +68,41 @@ private:
 	surface surf_, buffer_;
 	SDL_Rect rect_;
 
-	//! The location of the center of the halo
+	/** The location of the center of the halo. */
 	gamemap::location loc_;
 
-	//! All locations over which the halo lies
+	/** All locations over which the halo lies. */
 	std::vector<gamemap::location> overlayed_hexes_;
 };
 
 std::map<int, effect> haloes;
 int halo_id = 1;
 
-//! Upon unrendering, an invalidation list is send. All haloes in 
-//! that area and the other invalidated haloes are stored in this set. 
-//! Then there'll be tested which haloes overlap 
-//! and they're also stored in this set.
+/**
+ * Upon unrendering, an invalidation list is send. All haloes in that area and
+ * the other invalidated haloes are stored in this set. Then there'll be
+ * tested which haloes overlap and they're also stored in this set.
+ */
 std::set<int> invalidated_haloes;
 
-//! A newly added halo will be added to this list, these haloes don't need to be 
-//! unrendered but do not to be rendered regardless which tiles are invalidated.
-//! These haloes will stay in this set until there're really rendered
-//! (rendering won't happen if for example the halo is offscreen).
+/**
+ * A newly added halo will be added to this list, these haloes don't need to be
+ * unrendered but do not to be rendered regardless which tiles are invalidated.
+ * These haloes will stay in this set until there're really rendered (rendering
+ * won't happen if for example the halo is offscreen).
+ */
 std::set<int> new_haloes;
 
-//! Upon deleting, a halo isn't deleted but added to this set, 
-//! upon unrendering the image is unrendered and deleted.
+/**
+ * Upon deleting, a halo isn't deleted but added to this set, upon unrendering
+ * the image is unrendered and deleted.
+ */
 std::set<int> deleted_haloes;
 
-//! Haloes that have an animation or expiration time 
-//! need to be checked every frame and are stored in this set.
+/**
+ * Haloes that have an animation or expiration time need to be checked every
+ * frame and are stored in this set.
+ */
 std::set<int> changing_haloes;
 
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
