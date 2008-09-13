@@ -12,9 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file generate_report.cpp
-//! Formatted output of various stats about units and the game.
-//! Used for the right sidebar and the top line of the main game-display.
+/**
+ * @file generate_report.cpp
+ * Formatted output of various stats about units and the game.
+ * Used for the right sidebar and the top line of the main game-display.
+ */
 
 #include "global.hpp"
 
