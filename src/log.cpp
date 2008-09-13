@@ -13,9 +13,11 @@
    See the COPYING file for more details.
 */
 
-//! @file log.cpp
-//! Logger for debugging.
-//! See also wesnoth-commandline-params --logdomains and --log-<level>="domain".
+/**
+ * @file log.cpp
+ * Logger for debugging.
+ * See also wesnoth-commandline-params --logdomains and --log-<level>="domain".
+ */
 
 #include "global.hpp"
 
