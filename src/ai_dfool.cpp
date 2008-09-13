@@ -188,13 +188,13 @@ namespace dfool {
       //      LOG_STREAM(info, ai)<<"filter2:"<<std::endl;
       unit_map::iterator j = unit(*i,um);
       //      LOG_STREAM(info, ai)<<"j:"<<j->second.underlying_id()<<":"<<j->first.x<<","<<j->first.y<<std::endl;
-      if(j->second.underlying_id().size()>0){
+      assert(j->second.underlying_id() >0);
 	//	LOG_STREAM(info, ai)<<"filter3:"<<std::endl;
 	if(j->second.matches_filter(&filter,j->first)) {
 	  //	  LOG_STREAM(info, ai)<<"filter4:"<<std::endl;
 	  filtered_units_.push_back(*i);
 	}
-      }
+      
     }
     //    LOG_STREAM(info, ai)<<"filter:"<<std::endl;
     return filtered_units_;
@@ -283,7 +283,7 @@ namespace dfool {
       return(true);
   }
 
-  unit_map::iterator dfool_ai::unit(std::string unit_id, unit_map& um){
+  unit_map::iterator dfool_ai::unit(size_t unit_id, unit_map& um){
     //    LOG_STREAM(info, ai)<<"unit start:"<<unit_id<<std::endl;
     for(unit_map::iterator u = um.begin(); u != um.end(); u++){
       if(unit_id == u->second.underlying_id()){
@@ -315,7 +315,7 @@ namespace dfool {
   }
 
   void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
-    std::string unit_id= u.underlying_id();
+    size_t unit_id= u.underlying_id();
     // Check if this unit has already been seen
     size_t i,j;
     for(i=0; i < ids_.size();i++){
@@ -347,7 +347,7 @@ namespace dfool {
     }
   }
 
-  void unit_memory::remove_unit_sighting(std::string id){
+  void unit_memory::remove_unit_sighting(size_t id){
     size_t i;
     for(i=0;i<ids_.size();i++){
       if(id == ids_[i]){break;}

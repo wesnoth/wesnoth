@@ -85,9 +85,10 @@ public:
 	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
 
-	/** The unique internal ID of the unit */
+	/** id assigned by wml */
 	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
-	const std::string& underlying_id() const { return underlying_id_; }
+	/** The unique internal ID of the unit */
+	size_t underlying_id() const { return underlying_id_; }
 
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
@@ -303,6 +304,9 @@ public:
 	bool invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
 
+	/** Mark this unit as clone so it can be insterted to unit_map */
+	void clone();
+
 	/**
 	 * Make sure that invisibility cache is revalidate
 	 * after ambush;
@@ -351,7 +355,7 @@ private:
 	const unit_race* race_;
 	std::string id_;
 	std::string name_;
-	std::string underlying_id_;
+	size_t underlying_id_;
 	t_string type_name_;
 	std::string undead_variation_;
 	std::string variation_;
@@ -501,7 +505,7 @@ team_data calculate_team_data(const class team& tm, int side, const unit_map& un
  */
 struct temporary_unit_placer
 {
-	temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u);
+	temporary_unit_placer(unit_map& m, const gamemap::location& loc, unit& u);
 	~temporary_unit_placer();
 
 private:

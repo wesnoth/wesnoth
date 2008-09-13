@@ -28,10 +28,11 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "game_preferences.hpp"
+#include "replay.hpp"
 #include "statistics.hpp"
 #include "time_of_day.hpp"
+#include "unit_id.hpp"
 #include "wesconfig.h"
-#include "replay.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
@@ -490,6 +491,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		temporaries(),
 		generator_setter(&recorder)
 {
+	n_unit::id_manager::instance().set_save_id(lexical_cast_default<size_t>(cfg["next_underlying_unit_id"],0));
 	log_scope("read_game");
 
 	const config* snapshot = cfg.child("snapshot");
@@ -627,6 +629,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg["campaign_define"] = gamestate.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(gamestate.campaign_xtra_defines);
+	cfg["next_underlying_unit_id"] = lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id());
 
 	cfg["random_seed"] = lexical_cast<std::string>(gamestate.rng().get_random_seed());
 	cfg["random_calls"] = lexical_cast<std::string>(gamestate.rng().get_random_calls());
@@ -686,6 +689,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("campaign_extra_defines", utils::join(gamestate.campaign_xtra_defines));
 	out.write_key_val("random_seed", lexical_cast<std::string>(gamestate.rng().get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(gamestate.rng().get_random_calls()));
+	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
 	out.write_child("variables", gamestate.get_variables());
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();

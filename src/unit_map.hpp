@@ -83,10 +83,10 @@ public:
 	 * Keyed with unit's underlying_id. bool flag is whether the following pair
 	 * pointer is valid. pointer to pair used to imitate a map<location, unit>
 	 */
-	typedef std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > umap;
+	typedef std::map<size_t,std::pair<bool, std::pair<gamemap::location,unit>*> > umap;
 	
 	/** Maps locations to the underlying_id() of the unit at that location. */
-	typedef std::map<gamemap::location, std::string> lmap;
+	typedef std::map<gamemap::location, size_t> lmap;
 		
 	struct const_unit_iterator;	
 	struct unit_xy_iterator;
@@ -356,14 +356,16 @@ public:
 	 * or accessors
 	 */
 	unit_iterator find(const gamemap::location &loc) ;
-	unit_iterator find(const std::string &id);
+	unit_iterator find(const size_t& id);
+	unit_iterator find(const std::string& id);
 	
 	/**
 	 * Return object can be implicity converted to any of the other const
 	 * iterators or accessors
 	 */
 	const_unit_iterator find(const gamemap::location &loc) const;
-	const_unit_iterator find(const std::string &id) const;
+	const_unit_iterator find(const size_t& id) const;
+	const_unit_iterator find(const std::string& id) const;
 	
 	size_t count(const gamemap::location &loc) const {
 		return lmap_.count(loc);
@@ -449,13 +451,13 @@ private:
 	 * Key: unit's underlying_id. bool indicates validity of pointer. pointer to
 	 * pair used to imitate a map<location, unit>
 	 */
-	std::map<std::string,std::pair<bool, std::pair<gamemap::location,unit>*> > map_;
+	umap map_;
 	
 	/** location -> unit.underlying_id(). Unit_map is usually used as though it
 	 * is a map<location, unit> and so we need this map for efficient
 	 * access/modification.
 	 */
-	std::map<gamemap::location, std::string> lmap_;
+	lmap lmap_;
 	
 	mutable size_t num_iters_;
 	size_t num_invalid_;

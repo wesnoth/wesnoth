@@ -410,7 +410,7 @@ unit_map::const_unit_iterator unit_map::find(const gamemap::location &loc) const
 	return const_unit_iterator(i , this);
 }
 
-unit_map::unit_iterator unit_map::find(const std::string &id) {
+unit_map::unit_iterator unit_map::find(const size_t &id) {
 	umap::iterator iter = map_.find(id);
 	if (iter == map_.end() || !iter->second.first) {
 		return unit_iterator(map_.end(), this);
@@ -418,8 +418,39 @@ unit_map::unit_iterator unit_map::find(const std::string &id) {
 	return unit_iterator(iter, this);
 }
 
-unit_map::const_unit_iterator unit_map::find(const std::string &id) const {
+unit_map::const_unit_iterator unit_map::find(const size_t &id) const {
 	umap::const_iterator iter = map_.find(id);
+	if (iter == map_.end() || !iter->second.first) {
+		return const_unit_iterator(map_.end(), this);
+	}
+	return const_unit_iterator(iter, this);
+}
+
+struct match_unit_id {
+	match_unit_id(const std::string& id) : id_(id)
+	{}
+	bool operator()(const unit_map::umap::value_type& val) const
+	{
+		if (!val.first)
+			return false;
+		return val.second.second->second.id() == id_;
+	}
+	private:
+	const std::string& id_;
+};
+
+unit_map::unit_iterator unit_map::find(const std::string& id) {
+	WRN_NG << "Finding using id is slow operation\n";
+	umap::iterator iter = std::find_if(map_.begin(), map_.end(), match_unit_id(id));
+	if (iter == map_.end() || !iter->second.first) {
+		return unit_iterator(map_.end(), this);
+	}
+	return unit_iterator(iter, this);
+}
+
+unit_map::const_unit_iterator unit_map::find(const std::string& id) const {
+	WRN_NG << "Finding using id is slow operation\n";
+	umap::const_iterator iter = std::find_if(map_.begin(), map_.end(), match_unit_id(id));
 	if (iter == map_.end() || !iter->second.first) {
 		return const_unit_iterator(map_.end(), this);
 	}
@@ -443,11 +474,11 @@ unit_map::unit_iterator unit_map::begin() {
 
 void unit_map::add(std::pair<gamemap::location,unit> *p)
 {
-	std::string unit_id = p->second.underlying_id();
+	size_t unit_id = p->second.underlying_id();
 	umap::iterator iter = map_.find(unit_id);
 
 	if (iter == map_.end()) {
-		map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
+		map_[unit_id] = std::make_pair(true, p);
 	} else if(!iter->second.first) {
 		iter->second.second = p;
 		validate(iter);
@@ -455,24 +486,13 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 		replace(p);
 		return;
 	} else {
-		// if iter->second.first, then this is a duplicate underlying_id, or the map is already in an undefined
-		// state due to a different duplicate id entry. This is not allowed. By storing it with a different id it
-		// will not be accessible with find(std::string).
-		std::stringstream id;
-		id << unit_id << "-duplicate-" << get_random();
-		unit_id = id.str();
-
-		map_[unit_id] = std::pair<bool, std::pair<gamemap::location, unit>*>(true, p);
-		ERR_NG << "unit_map::add -- duplicate id in unit map: " << p->second.underlying_id()
-			<< " added to location: (" << p->first.x+1 << "," << p->first.y+1
-			<< ") but exists already at: (" << iter->second.second->first.x+1
-			<< "," << iter->second.second->first.y+1 << ").\n";
+		assert(false && "Duplicated underlying_id not allowed");
 	}
 
 	DBG_NG << "Adding unit " << p->second.underlying_id()<< " to location: (" << p->first.x+1 << "," << p->first.y+1
 			<< ")\n";
 
-	std::pair<lmap::iterator,bool> res = lmap_.insert(std::pair<gamemap::location,std::string>(p->first, unit_id));
+	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(p->first, unit_id));
 	assert(res.second);
 }
 

@@ -68,12 +68,12 @@ namespace game_events
 	};
 
 	struct entity_location : public gamemap::location {
-		entity_location(gamemap::location loc, const std::string& id="");
+		entity_location(gamemap::location loc, const size_t id=0);
 		explicit entity_location(unit_map::iterator itor);
 		bool requires_unit() const;
 		bool matches_unit(const unit& u) const;
 		private:
-		std::string id_;
+		size_t id_;
 	};
 
 

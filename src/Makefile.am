@@ -144,6 +144,7 @@ wesnoth_source = \
 	unit_animation.cpp \
 	unit_display.cpp \
 	unit_frame.cpp \
+	unit_id.cpp \
 	unit_map.cpp \
 	unit_types.cpp \
 	upload_log.cpp \

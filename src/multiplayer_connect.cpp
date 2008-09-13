@@ -28,6 +28,7 @@
 #include "multiplayer_connect.hpp"
 #include "statistics.hpp"
 #include "show_dialog.hpp"
+#include "unit_id.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_separators.hpp"
 
@@ -1587,6 +1588,7 @@ void connect::load_game()
 		level_["id"] = start_data["id"];
 		level_["name"] = start_data["name"];
 		level_["completion"] = start_data["completion"];
+		level_["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
 		// Probably not needed.
 		level_["turn"] = start_data["turn_at"];
 		level_["turn_at"] = start_data["turn_at"];
@@ -1623,6 +1625,8 @@ void connect::load_game()
 		level_["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_turn_bonus, "35");
 		level_["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(params_.mp_countdown_reservoir_time, "330");
 		level_["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_action_bonus, "13");
+		level_["next_underlying_unit_id"] = lexical_cast<std::string>(0);
+		n_unit::id_manager::instance().clear();
 
 		if (params_.random_start_time)
 		{

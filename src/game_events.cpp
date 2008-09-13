@@ -2346,18 +2346,18 @@ namespace {
 					// bugs. Duplicates here might cause the wrong unit being
 					// replaced by the wrong unit.
 					if(player->available_units.size() > 1) {
-						std::vector<std::string> desciptions;
+						std::vector<size_t> desciptions;
 						for(std::vector<unit>::const_iterator citor =
 								player->available_units.begin();
 								citor != player->available_units.end(); ++citor) {
 
-							const std::string desciption =
+							const size_t desciption =
 								citor->underlying_id();
 							if(std::find(desciptions.begin(), desciptions.end(),
 										desciption) != desciptions.end()) {
 
 								lg::wml_error << "Recall list has duplicate unit "
-									"description '" << desciption
+									"uderlying_ids '" << desciption
 									<< "' unstore_unit may not work as expected.\n";
 							} else {
 								desciptions.push_back(desciption);
@@ -2370,7 +2370,7 @@ namespace {
 					 * @todo it would be better to change available_units from
 					 * a vector to a map and use the underlying_id as key.
 					 */
-					const std::string key = u.underlying_id();
+					const size_t key = u.underlying_id();
 					for(std::vector<unit>::iterator itor =
 							player->available_units.begin();
 							itor != player->available_units.end(); ++itor) {
@@ -3590,7 +3590,7 @@ namespace game_events {
 		return unit_mutations;
 	}
 
-	entity_location::entity_location(gamemap::location loc, const std::string& id)
+	entity_location::entity_location(gamemap::location loc, const size_t id)
 		: location(loc), id_(id)
 	{}
 
@@ -3605,7 +3605,7 @@ namespace game_events {
 
 	bool entity_location::requires_unit() const
 	{
-		return !id_.empty();
+		return id_ > 0;
 	}
 
 } // end namespace game_events (2)

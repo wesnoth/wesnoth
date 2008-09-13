@@ -33,7 +33,7 @@
 #include <string>
 
 namespace dfool {
-  typedef std::vector<std::string> unit_list;
+  typedef std::vector<size_t> unit_list;
 
 //  class target {
 //  public:
@@ -51,7 +51,7 @@ namespace dfool {
   public:
     unit_memory(const config& cfg);
     void add_unit_sighting(unit u, gamemap::location l, size_t t);
-    void remove_unit_sighting(std::string id);
+    void remove_unit_sighting(size_t id);
     //void purge(int turn = -1); // Clean outdated entries
     void write(config& temp);
     // Create a map based upon units seen since turn
@@ -60,7 +60,7 @@ namespace dfool {
     void write_element(int i, config& temp);
     // Could replace these with a single vector of memory elements
     std::vector<unit> units_;
-    std::vector<std::string> ids_;
+    unit_list ids_;
     std::vector<size_t> turns_;
     std::vector<gamemap::location> locations_;
   };
@@ -109,7 +109,7 @@ namespace dfool {
     unit_list my_units();
     unit_list filter_units(const config& filter,unit_list& ul, unit_map& um);
     bool moveto(config::child_list::const_iterator o, unit_map::const_iterator m);
-    unit_map::iterator unit(std::string unit_id, unit_map& um);
+    unit_map::iterator unit(size_t unit_id, unit_map& um);
 
     unit_memory unit_memory_;
 

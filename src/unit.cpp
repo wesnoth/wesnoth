@@ -28,6 +28,7 @@
 #include "pathfind.hpp"
 #include "random.hpp"
 #include "unit.hpp"
+#include "unit_id.hpp"
 #include "unit_types.hpp"
 #include "unit_abilities.hpp"
 #include "serialization/string_utils.hpp"
@@ -181,7 +182,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	race_(NULL),
 	id_(),
 	name_(),
-	underlying_id_(),
+	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
 	variation_(),
@@ -258,7 +259,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	race_(NULL),
 	id_(),
 	name_(),
-	underlying_id_(),
+	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
 	variation_(),
@@ -363,7 +364,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	race_(NULL),
 	id_(),
 	name_(),
-	underlying_id_(),
+	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
 	variation_(variation),
@@ -461,7 +462,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	race_(NULL),
 	id_(),
 	name_(),
-	underlying_id_(),
+	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
 	variation_(variation),
@@ -1098,22 +1099,16 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const std::string& defense = t_defense;
 	const std::string& mvt_cost = t_movement_cost;
 
-	// FIXME OBSOLETE To be altered in 1.5.3
-	// description= can match either the id or the custom unit description.
-	// This is deliberate as a backward-compatibility-hack to
-	// accommodate pre-1.5.1 versions, but it may produce odd results.
-	// if (as in THoT) several units are deliberately given the same
-	// user description.  After 1.5.3 the middle clause should go.
-	if(description.empty() == false && description != this->underlying_id() && description != name_) {
+	if(description.empty() == false && description != name_) {
 		return false;
 	}
 
-	if(id.empty() == false && id != this->underlying_id()) {
+	if(id.empty() == false && id != this->id()) {
 		return false;
 	}
 
 	// Allow 'speaker' as an alternative to id, since people use it so often
-	if(speaker.empty() == false && speaker != this->underlying_id()) {
+	if(speaker.empty() == false && speaker != this->id()) {
 		return false;
 	}
 
@@ -1408,7 +1403,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	name_ = cfg["name"];
 	std::string custom_unit_desc = cfg["description"];
 
-	underlying_id_ = cfg["underlying_id"];
+	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
 
 	role_ = cfg["role"];
@@ -1705,7 +1700,7 @@ void unit::write(config& cfg) const
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
-	cfg["underlying_id"] = underlying_id_;
+	cfg["underlying_id"] = lexical_cast<std::string>(underlying_id_);
 
 	if(can_recruit())
 		cfg["canrecruit"] = "yes";
@@ -3048,16 +3043,15 @@ bool unit::invisible(const gamemap::location& loc,
 }
 
 void unit::set_underlying_id() {
-	if(underlying_id_.empty()){
-		std::stringstream id;
-
-		if(!name_.empty()){
-			id << type()->id() << "-" << get_random() << get_random() << "-" <<  name_;
-		} else {
-			id << type()->id() << "-" << get_random() << get_random();
-		}
-		underlying_id_ = id.str();
+	if(underlying_id_ == 0){
+		underlying_id_ = n_unit::id_manager::instance().next_id();
 	}
+}
+
+void unit::clone()
+{
+	underlying_id_ = n_unit::id_manager::instance().next_id();
+
 }
 
 int team_units(const unit_map& units, unsigned int side)
@@ -3150,9 +3144,10 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	return res;
 }
 
-temporary_unit_placer::temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u)
+temporary_unit_placer::temporary_unit_placer(unit_map& m, const gamemap::location& loc, unit& u)
 	: m_(m), loc_(loc), temp_(m.extract(loc))
 {
+	u.clone();
 	m.add(new std::pair<gamemap::location,unit>(loc,u));
 }
 

@@ -614,7 +614,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		weapon = &u.attacks()[attack_num];
 	}
 	if(u.hitpoints() < 0) {
-		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		LOG_STREAM(info, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
 		// If a unit has more hp as it's maximum the engine will fail
