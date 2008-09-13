@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file image.cpp
-//! Routines for images: load, scale, re-color, etc.
+/**
+ * @file image.cpp
+ * Routines for images: load, scale, re-color, etc.
+ */
 
 #include "global.hpp"
 
@@ -43,7 +45,7 @@ typedef std::map<image::locator::value, int> locator_finder_t;
 typedef std::pair<image::locator::value, int> locator_finder_pair;
 locator_finder_t locator_finder;
 
-//! Definition of all image maps
+/** Definition of all image maps */
 image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
 image::image_cache brightened_images_,semi_brightened_images_;
 
@@ -58,7 +60,7 @@ std::map<surface, surface> reversed_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
-//! List of colors used by the TC image modification
+/** List of colors used by the TC image modification */
 std::vector<std::string> team_colors;
 
 std::string image_mask;
