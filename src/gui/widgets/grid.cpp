@@ -322,10 +322,16 @@ const twidget* tgrid::find_widget(const tpoint& coordinate,
 
 twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
 {
+	// Inherited.
+	twidget* widget = twidget::find_widget(id, must_be_active);
+	if(widget) {
+		return widget;
+	}
+
 	for(std::vector<tchild>::iterator itor = children_.begin(); 
 			itor != children_.end(); ++itor) {
 
-		twidget* widget = itor->widget();
+		widget = itor->widget();
 		if(!widget) {
 			continue;
 		}
@@ -344,10 +350,16 @@ twidget* tgrid::find_widget(const std::string& id, const bool must_be_active)
 const twidget* tgrid::find_widget(const std::string& id, 
 		const bool must_be_active) const
 {
+	// Inherited.
+	const twidget* widget = twidget::find_widget(id, must_be_active);
+	if(widget) {
+		return widget;
+	}
+
 	for(std::vector<tchild>::const_iterator itor = children_.begin(); 
 			itor != children_.end(); ++itor) {
 
-		const twidget* widget = itor->widget();
+		widget = itor->widget();
 		if(!widget) {
 			continue;
 		}
