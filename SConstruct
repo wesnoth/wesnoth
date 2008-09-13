@@ -193,8 +193,8 @@ conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_d
 
 if env["prereqs"]:
     if env["gettextdir"]:
-        env.AppendUnique(CPPPATH = os.path.join(env["gettextdir"], "include"),
-                         LIBPATH = os.path.join(env["gettextdir"], "lib"),
+        env.AppendUnique(CPPPATH = [os.path.join(env["gettextdir"], "include")],
+                         LIBPATH = [os.path.join(env["gettextdir"], "lib")],
                          LIBS = ["intl"])
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
