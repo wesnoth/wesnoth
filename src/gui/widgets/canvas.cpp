@@ -153,7 +153,7 @@ tline::tline(const config& cfg) :
  * 0 -> width - 1 <br>
  * 0 -> height -1 
  *
- * Drawing outside this area will result in unpredicatable results including
+ * Drawing outside this area will result in unpredictable results including
  * crashing. (That should be fixed, when encountered.)
  *
  */
@@ -176,7 +176,7 @@ tline::tline(const config& cfg) :
  *
  *
  *
- * Formulas are a funtion between brackets, that way the engine can see whether
+ * Formulas are a function between brackets, that way the engine can see whether
  * there is standing a plain number or a formula eg:
  * 0     A value of zero
  * (0)   A formula returning zero
@@ -198,7 +198,7 @@ tline::tline(const config& cfg) :
  * @start_table = variable_types
  *     unsigned                        Unsigned number (positive whole numbers
  *                                     and zero).
- *     f_unsigned                      Unsinged number or formula returning an
+ *     f_unsigned                      Unsigned number or formula returning an
  *                                     unsigned number.
  *     int                             Signed number (whole numbers).
  *     f_int                           Signed number or formula returning an
@@ -211,13 +211,13 @@ tline::tline(const config& cfg) :
  *     tstring                         A translatable string.
  *     f_tstring                       Formula returning a translatable string.
  *
- *     colour                          A string which constains the colour, this
+ *     colour                          A string which contains the colour, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
  *                                     component, green component, blue 
  *                                     component and alpha. A colour of 0 is not
  *                                     available. An alpha of 255 is fully 
- *                                     transparent. Ommitted values are set to 0.
+ *                                     transparent. Omitted values are set to 0.
  *
  *     font_style                      A string which contains the style of the
  *                                     font:
@@ -386,7 +386,7 @@ trectangle::trectangle(const config& cfg) :
  *                                     thickness is zero it's not drawn.
  *     border_colour (colour = "")     The colour of the border if empty it's
  *                                     not drawn.
- *     fill_colour (colour = "")       The colour of the interior if ommitted
+ *     fill_colour (colour = "")       The colour of the interior if omitted
  *                                     it's not drawn.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
@@ -551,8 +551,8 @@ timage::timage(const config& cfg) :
  *     stretch (bool = false)          Border images often need to be either 
  *                                     stretched in the width or the height. If
  *                                     that's the case use stretch. It only works
- *                                     if only the heigth or the width is not zero.
- *                                     It will copy the first pixel the the others.
+ *                                     if only the height or the width is not zero.
+ *                                     It will copy the first pixel to the others.
  *     vertical_mirror (f_bool = false)
  *                                     Mirror the image over the vertical axis. 
  *     name (f_string = "")            The name of the image.
@@ -563,13 +563,13 @@ timage::timage(const config& cfg) :
  * Variables:
  * @start_table = formula
  *     image_width unsigned             The width of the image, either the
- *                                      requested width or the natrual width of
+ *                                      requested width or the natural width of
  *                                      the image. This value can be used to set
  *                                      the x (or y) value of the image. (This
  *                                      means x and y are evaluated after the
  *                                      width and height.)
  *     image_height unsigned            The height of the image, either the
- *                                      requested height or the natrual height of
+ *                                      requested height or the natural height of
  *                                      the image. This value can be used to set
  *                                      the y (or x) value of the image. (This
  *                                      means x and y are evaluated after the
@@ -772,12 +772,12 @@ ttext::ttext(const config& cfg) :
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
  * @end_table
- * NOTE alignment can be done with the forumulas.
+ * NOTE alignment can be done with the formulas.
  *
  * Variables:
  * @start_table = formula
  *     text_width unsigned             The width of the rendered text.
- *     text_height unsigned            The height of the renedered text.
+ *     text_height unsigned            The height of the rendered text.
  * @end_table
  * Also the general variables are available, see [[#general_variables|Line]].
  *
