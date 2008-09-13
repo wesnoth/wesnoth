@@ -15,7 +15,7 @@
 #ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 #define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 
-#include "tstring.hpp" //NEEDED?
+#include "tstring.hpp"
 #include "gui/widgets/vertical_scrollbar_container.hpp"
 
 namespace gui2 {
@@ -27,6 +27,9 @@ class tspacer;
  * - Header row + footer row same width as client data.
  * - Cell or row select.
  * - Sort at some way.
+ * - Test whether footers work properly.
+ * - More testing with listboxes with their own background.
+ * - client rect is also untested.
  *
  * Maybe create two types 1 fixed size and one with a builder to add new rows.
  */
@@ -122,29 +125,6 @@ public:
 	/** Inherited from tevent_executor. */
 	void mouse_left_button_down(tevent_handler& event);
 
-	/** Inherited from twidget. */
-	tpoint get_best_size(const tpoint& maximum_size) const;
-
-	/** Inherited from tcontainer_. */
-	tpoint get_best_size() const;
-
-	/** Inherited from tcontainer_. */
-	void draw(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-
-	/** Inherited from tcontainer_. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from tcontainer_. */
-	const twidget* find_widget(const tpoint& coordinate, 
-			const bool must_be_active) const;
-
-	/** Import overloaded versions. */
-	using tvertical_scrollbar_container_::find_widget;
-
-	/** Inherited from tcontainer_. */
-	void set_size(const SDL_Rect& rect);
-
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool active) 
 		{ state_ = active ? ENABLED : DISABLED; }
@@ -192,12 +172,6 @@ private:
 	 */
 	tbuilder_grid_ptr list_builder_;
 
-	/** Returns the spacer widget which is used to reserve space of the real list. */
-	tspacer* list();
-
-	/** Returns the spacer widget which is used to reserve space of the real list. */
-	const tspacer* list() const;
-
 	/**
 	 * Does every row in the listbox have the same height?
 	 *
@@ -237,16 +211,38 @@ private:
 
 	/** Multiple items can be selected. */
 	bool multi_select_; 
-	
-	/** The sizes of the spacer. */
-	SDL_Rect list_rect_;
 
 	/** The background of the list, needed for redrawing. */
 	surface list_background_;
 
-	/** The best size for the spacer, if not set it's calculated. */
-	tpoint best_spacer_size_;
+	/**
+	 * The content grid of a list might contain another grid name _list. This
+	 * grid must exist if there is a header or footer. This grid marks the
+	 * space for the real scrollable area.
+	 */
 
+	/**
+	 * @todo evaluate whether the value of the grid needs to be cached as well
+	 * as it's size. It would be save since we get notified about a resize.
+	 */
+
+	/**
+	 * Returns the list area.
+	 *
+	 * If the listbox has no _list grid the _content_grid grid will be returned
+	 * instead.
+	 *
+	 * @param must_exist          If true the grid must exist and the
+	 *                            function will fail if that's not the case. If
+	 *                            true the pointer returned is always valid.
+	 *
+	 * @returns                   A pointer to the grid or NULL.
+	 */
+	tgrid* find_list(const bool must_exist = true);
+
+	/** The const version. */
+	const tgrid* find_list(const bool must_exist = true) const;
+	
 	/** 
 	 * Draws the list area if assume_fixed_row_size_ is true. 
 	 *
@@ -345,9 +341,32 @@ private:
 	/** The rows in the listbox. */
 	std::vector<trow> rows_;
 
+	/***** ***** ***** inherited ****** *****/
+
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "listbox"; return type; }
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	tpoint get_content_best_size(const tpoint& maximum_size) const;
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	tpoint get_content_best_size() const;
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	void set_content_size(const SDL_Rect& rect);
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	void draw_content(surface& surface,  const bool force = false,
+	        const bool invalidate_background = false);
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	twidget* find_content_widget(
+		const tpoint& coordinate, const bool must_be_active);
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	const twidget* find_content_widget(const tpoint& coordinate, 
+			const bool must_be_active) const;
 };
 
 } // namespace gui2

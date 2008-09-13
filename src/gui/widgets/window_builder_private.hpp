@@ -25,6 +25,7 @@
 
 #include "config.hpp"
 #include "gui/widgets/menubar.hpp"
+#include "gui/widgets/vertical_scrollbar_container.hpp"
 
 namespace gui2 {
 
@@ -115,6 +116,8 @@ public:
 	tbuilder_listbox(const config& cfg);
 
 	twidget* build () const;
+
+	tvertical_scrollbar_container_::tscrollbar_mode scrollbar_mode;
 
 	tbuilder_grid_ptr header;
 	tbuilder_grid_ptr footer;

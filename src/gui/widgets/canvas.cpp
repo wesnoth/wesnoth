@@ -261,6 +261,17 @@ tline::tline(const config& cfg) :
  *                                     @* all    alias for "left, right, top,
  *                                     bottom"
  *
+ *     scrollbar_mode                  How to show the scrollbar of a widget.
+ *                                     Possible values:
+ *                                     @* always The scrollbar is always shown,
+ *                                     regardless whether it's required or not.
+ *                                     @* never  The scrollbar is never shown,
+ *                                     even not when needed. (Note when setting
+ *                                     this mode dialogs might not properly fit
+ *                                     anymore).
+ *                                     @* auto   Shows the scrollbar when
+ *                                     needed. The widget will reserve space for
+ *                                     the scrollbar, but only show when needed.
  * @end_table
  */
 

@@ -61,9 +61,7 @@ tlistbox::tlistbox() :
 	row_select_(true),
 	must_select_(true),
 	multi_select_(false),
-	list_rect_(),
 	list_background_(),
-	best_spacer_size_(0, 0),
 	rows_()
 {
 }
@@ -127,7 +125,6 @@ void tlistbox::add_row(const std::map<std::string /* widget id */, std::map<
 		foreach(trow& row, rows_) {
 			height += row.get_height();
 		}
-		std::cerr << "Items " << height << ".\n"; 
 		find_scrollbar()->set_item_count(height);
 	}
 
@@ -169,219 +166,6 @@ void tlistbox::mouse_left_button_down(tevent_handler& event)
 	event.keyboard_capture(this);
 }
 
-tpoint tlistbox::get_best_size(const tpoint& maximum_size) const
-{
-	log_scope2(gui, "Listbox: Get best size");	
-
-	tpoint best_size = get_best_size();
-
-	// We can only reduce our height so we ignore the x value.
-	// NOTE we might later be able to reduce our width as well, but that's
-	// something for later, also we don't ask our children for a better value.
-	if(best_size.y <= maximum_size.y) {
-		return best_size;
-	}
-
-	/**
-	 * @todo At this point we should check whether maximum_size is larger as
-	 * the minimum size for the widget (the scrollbar) and adjust accordingly.
-	 */
-	tpoint max = maximum_size;
-
-	if(assume_fixed_row_size_) {
-		// Only adjust the sizes if we have some rows
-		if(rows_.size() > 0) {
-			// The row might not have a size, since it might never been set
-			// so ask the best size.
-			const unsigned row_height = (*rows_[0].grid()).get_best_size().y;
-			best_size.y = (max.y / row_height) * row_height;
-		}
-
-	} else {
-		best_size.y = max.y;
-	}
-
-	DBG_G << "Grid : maximum size " 
-			<< maximum_size << " returning " << best_size << ".\n";
-
-	return best_size;
-}
-
-tpoint tlistbox::get_best_size() const 
-{
-	// Set the size of the spacer to the wanted size for the list.
-	unsigned width = 0;
-	unsigned height = 0;
-
-	if(best_spacer_size_ != tpoint(0, 0)) {
-		// We got a best size set use that instead of calculating it.
-		height = best_spacer_size_.y;
-		width = best_spacer_size_.x;
-	} else {
-		// NOTE we should look at the number of visible items etc
-		foreach(const trow& row, rows_) {
-			assert(row.grid());
-			const tpoint best_size = row.grid()->get_best_size();
-			width = (static_cast<int>(width) >= best_size.x) ? 
-				width : static_cast<int>(best_size.x);
-
-			height += static_cast<int>(best_size.y);
-		}
-	}
-	
-	// Kind of a hack, we edit the spacer in a const function.
-	// Of course we could cache the list and make it mutable instead.
-	// But since the spacer is a kind of cache the const_cast doesn't 
-	// look too ugly.
-	const_cast<tspacer*>(list())->set_best_size(tpoint(width, height));
-
-	// Now the container will return the wanted result.
-	return tcontainer_::get_best_size();
-}
-
-void tlistbox::draw(surface& surface, const bool force, 
-		const bool invalidate_background)
-{
-	// Inherited.
-	tcontainer_::draw(surface, force, invalidate_background);
-
-	if(invalidate_background) {
-		list_background_.assign(NULL);
-	}
-
-	// Handle our full redraw for the spacer area.
-	if(!list_background_) {
-		list_background_.assign(gui2::save_background(surface, list_rect_));
-	} else {
-		gui2::restore_background(list_background_, surface, list_rect_);
-	}
-	
-	// Now paint the list over the spacer.
-	if(assume_fixed_row_size_) {
-		draw_list_area_fixed_row_height(surface, force, invalidate_background);
-	} else {
-		draw_list_area_variable_row_height(
-			surface, force, invalidate_background);
-	}
-}
-
-twidget* tlistbox::find_widget(const tpoint& coordinate, const bool must_be_active) 
-{ 
-	// Inherited
-	twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
-
-	// if on the panel we need to do special things.
-	if(result && result->id() == "_list") {
-		int offset = 0;
-		const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
-
-		if(row == static_cast<size_t>(-1)) {
-			return NULL;
-		}
-
-		assert(row < rows_.size());
-		assert(rows_[row].grid());
-		return rows_[row].grid()->find_widget(
-			tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
-	}
-
-	return result;
-}
-
-const twidget* tlistbox::find_widget(
-		const tpoint& coordinate, const bool must_be_active) const
-{
-	// Inherited
-	const twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
-
-	// if on the panel we need to do special things.
-	if(result && result->id() == "_list") {
-		int offset = 0;
-		const size_t row = row_at_offset(coordinate.y - list_rect_.y, offset);
-
-		if(row == static_cast<size_t>(-1)) {
-			return NULL;
-		}
-
-		assert(row < rows_.size());
-		assert(rows_[row].grid());
-		return rows_[row].grid()->find_widget(
-			tpoint(coordinate.x - list_rect_.x, offset), must_be_active);
-	}
-
-	return result;
-}
-
-void tlistbox::set_size(const SDL_Rect& rect)
-{
-	// Since we allow to be resized we need to determine the real size we get.
-	assert(best_spacer_size_ == tpoint(0, 0));
-	SDL_Rect best_rect = rect;
-	if(rows_.size()) {
-
-		const tpoint best_size = get_best_size();
-
-		if(best_size.y > rect.h) {
-			best_spacer_size_ = list()->get_best_size();
-			best_spacer_size_.y -= (best_size.y - rect.h);
-			if(assume_fixed_row_size_) {
-				const unsigned row_height = rows_[0].grid()->get_best_size().y;
-				const unsigned orig_height = best_spacer_size_.y;
-				best_spacer_size_.y = 
-					(best_spacer_size_.y / row_height) * row_height;
-
-				best_rect.h -= (orig_height - best_spacer_size_.y);
-			}
-			// This call is required to update the best size.
-			get_best_size();
-		}
-	}
-
-	// Inherit.
-	tcontainer_::set_size(best_rect);
-
-	// Now set the items in the spacer.
-	tspacer* spacer = list();
-	list_rect_ = spacer->get_rect();
-
-	unsigned total_height = 0;
-	foreach(trow& row, rows_) {
-		assert(row.grid());
-
-		const unsigned height = row.grid()->get_best_size().y;
-		row.set_height(height);
-
-		row.grid()->set_size(::create_rect(0, 0, list_rect_.w, height));
-		row.canvas().assign(create_neutral_surface(list_rect_.w, height));
-
-		total_height += height;
-	}
-	if(!assume_fixed_row_size_) {
-		find_scrollbar()->set_item_count(total_height);
-	}
-
-	if(rows_.size() > 0) {
-		if(assume_fixed_row_size_) {
-			const unsigned row_height = rows_[0].get_height();
-			if(row_height) {
-				const unsigned rows = list()->get_best_size().y / row_height;
-				find_scrollbar()->set_visible_items(rows);
-			} else {
-				WRN_G << "Listbox row 0 has no height, making all rows visible.\n";
-				find_scrollbar()->set_visible_items(rows_.size());
-			}
-		} else {
-			find_scrollbar()->set_visible_items(best_spacer_size_.y);
-		}
-	} else {
-		find_scrollbar()->set_visible_items(1);
-	}
-	set_scrollbar_button_status();
-
-	// Clear for next run.
-	best_spacer_size_ = tpoint(0, 0);
-}
-
 bool tlistbox::select_row(const unsigned row, const bool select)
 {
 	if(!select && must_select_ && selection_count_ < 2) {
@@ -412,22 +196,6 @@ bool tlistbox::select_row(const unsigned row, const bool select)
 	return true;
 }
 
-tspacer* tlistbox::list()
-{
-	tspacer* list = 
-		dynamic_cast<tspacer*>(tcontainer_::find_widget("_list", false));
-	assert(list);
-	return list;
-}
-
-const tspacer* tlistbox::list() const
-{
-	const tspacer* list = 
-		dynamic_cast<const tspacer*>(tcontainer_::find_widget("_list", false));
-	assert(list);
-	return list;
-}
-
 bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 {
 	assert(rows_[row].grid());
@@ -448,10 +216,22 @@ bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 	return false;
 }
 
+tgrid* tlistbox::find_list(const bool must_exist)
+{
+	tgrid* result = find_widget<tgrid>("_list", false, false);
+	return result ? result : find_content_grid(must_exist);
+}
+
+const tgrid* tlistbox::find_list(const bool must_exist) const
+{
+	const tgrid* result = find_widget<const tgrid>("_list", false, false);
+	return result ? result : find_content_grid(must_exist);
+}
+
 void tlistbox::draw_list_area_fixed_row_height(surface& surface, 
 		const bool force, const bool invalidate_background)
 {
-	unsigned offset = list_rect_.y;
+	unsigned offset = find_list()->get_rect().y;
 	for(unsigned i = 0; i < find_scrollbar()->get_visible_items(); ++i) {
 
 		// make sure we stay inside the valid range.
@@ -466,7 +246,8 @@ void tlistbox::draw_list_area_fixed_row_height(surface& surface,
 		
 		// draw background
 		const SDL_Rect rect = 
-			{list_rect_.x, offset, list_rect_.w, row.get_height() };
+			{find_list()->get_rect().x, offset, 
+			find_list()->get_rect().w, row.get_height() };
 
 		// draw widget
 		blit_surface(row.canvas(), 0, surface, &rect);
@@ -483,7 +264,7 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 	const unsigned start = find_scrollbar()->get_item_position();
 	const unsigned end = start + find_scrollbar()->get_visible_items();
 
-	unsigned offset = 0;
+	unsigned offset = find_list()->get_rect().y;
 	foreach(trow& row, rows_) {
 		const unsigned height = row.get_height();
 
@@ -510,8 +291,8 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 
 			// Draw on the surface.
 			SDL_Rect rect = { 
-				list_rect_.x,
-				offset + top_cut - start + list_rect_.y,
+				find_list()->get_rect().x,
+				offset + top_cut - start + find_list()->get_rect().y,
 				0,
 				0};
 
@@ -645,5 +426,165 @@ void tlistbox::trow::select_in_grid(tgrid* grid, const bool selected)
 	}
 }
 
-} // namespace gui2
+tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
+{
+	log_scope2(gui, "Listbox: Get best content size with max");	
 
+	tpoint best_size = get_content_best_size();
+
+	// We can only reduce our height so we ignore the x value.
+	// NOTE we might later be able to reduce our width as well, but that's
+	// something for later, also we don't ask our children for a better value.
+	if(best_size.y <= maximum_size.y) {
+		return best_size;
+	}
+
+	tpoint max = maximum_size;
+
+	// Adjust for the size of the header and footer.
+	const tpoint base = find_content_grid()->get_best_size();
+	max.y -= base.y;
+	if(base.x > max.x) {
+		max.x = base.x;
+	}
+
+	if(assume_fixed_row_size_) {
+		// Only adjust the sizes if we have some rows
+		if(rows_.size() > 0) {
+			// The row might not have a size, since it might never been set
+			// so ask the best size.
+			const unsigned row_height = (*rows_[0].grid()).get_best_size().y;
+			best_size.y = (max.y / row_height) * row_height;
+		}
+
+	} else {
+		best_size.y = max.y;
+	}
+
+	DBG_G << "Grid : maximum size " 
+			<< maximum_size << " returning " << best_size << ".\n";
+
+	return best_size;
+}
+
+tpoint tlistbox::get_content_best_size() const
+{
+	log_scope2(gui, "Listbox: Get best content size");	
+
+	// First determine the size wanted for the grid, which is used when header
+	// or footer are used.
+	const tpoint base = find_content_grid()->get_best_size();
+	unsigned width = base.x;
+	unsigned height = base.y;
+
+	// NOTE we should look at the number of visible items etc
+	foreach(const trow& row, rows_) {
+		assert(row.grid());
+		const tpoint best_size = row.grid()->get_best_size();
+		width = (static_cast<int>(width) >= best_size.x) ? 
+			width : static_cast<int>(best_size.x);
+
+		height += static_cast<int>(best_size.y);
+	}
+
+	return tpoint(width, height);
+}
+
+void tlistbox::set_content_size(const SDL_Rect& rect)
+{
+	unsigned total_height = 0;
+	foreach(trow& row, rows_) {
+		assert(row.grid());
+
+		const unsigned height = row.grid()->get_best_size().y;
+		row.set_height(height);
+
+		row.grid()->set_size(::create_rect(0, 0, rect.w, height));
+		row.canvas().assign(create_neutral_surface(rect.w, height));
+
+		total_height += height;
+	}
+	if(!assume_fixed_row_size_) {
+		find_scrollbar()->set_item_count(total_height);
+	}
+
+	if(rows_.size() > 0) {
+		if(assume_fixed_row_size_) {
+			const unsigned row_height = rows_[0].get_height();
+			if(row_height) {
+				const unsigned rows = rect.h / row_height;
+				find_scrollbar()->set_visible_items(rows);
+			} else {
+				WRN_G << "Listbox row 0 has no height, making all rows visible.\n";
+				find_scrollbar()->set_visible_items(rows_.size());
+			}
+		} else {
+			find_scrollbar()->set_visible_items(rect.h); 
+		}
+	} else {
+		find_scrollbar()->set_visible_items(1);
+	}
+}
+
+void tlistbox::draw_content(surface& surface, const bool force, 
+		const bool invalidate_background)
+{
+	// Handle our full redraw for the spacer area.
+	if(!list_background_) {
+		list_background_.assign(
+			gui2::save_background(surface, find_content_grid()->get_rect()));
+	} else {
+		gui2::restore_background(
+			list_background_, surface, find_content_grid()->get_rect());
+	}
+
+	// draw header and footer.
+	find_content_grid()->draw(surface, force, invalidate_background);
+	
+	// Now paint the list
+	if(assume_fixed_row_size_) {
+		draw_list_area_fixed_row_height(surface, force, invalidate_background);
+	} else {
+		draw_list_area_variable_row_height(
+			surface, force, invalidate_background);
+	}
+}
+
+twidget* tlistbox::find_content_widget(
+		const tpoint& coordinate, const bool must_be_active)
+{ 
+
+	int offset = 0;
+	tpoint coord = coordinate;
+	coord.y -= find_list()->get_rect().y - find_content_grid()->get_rect().y;
+	const size_t row = row_at_offset(coord.y, offset);
+
+	if(row == static_cast<size_t>(-1)) {
+		return NULL;
+	}
+
+	assert(row < rows_.size());
+	assert(rows_[row].grid());
+	return rows_[row].grid()->find_widget(
+		tpoint(coordinate.x, offset), must_be_active);
+}
+
+const twidget* tlistbox::find_content_widget(
+		const tpoint& coordinate, const bool must_be_active) const
+{
+	int offset = 0;
+	tpoint coord = coordinate;
+	coord.y -= find_list()->get_rect().y - find_content_grid()->get_rect().y;
+	const size_t row = row_at_offset(coord.y, offset);
+
+	if(row == static_cast<size_t>(-1)) {
+		return NULL;
+	}
+
+	assert(row < rows_.size());
+	assert(rows_[row].grid());
+	return rows_[row].grid()->find_widget(
+		tpoint(coordinate.x, offset), must_be_active);
+}
+
+} // namespace gui2

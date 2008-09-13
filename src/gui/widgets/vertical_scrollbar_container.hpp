@@ -21,8 +21,6 @@ namespace gui2 {
 
 class tscrollbar_;
 
-
-
 /** Base class for creating containers with a vertical scrollbar. */
 class tvertical_scrollbar_container_ : public tcontainer_
 {
@@ -30,26 +28,35 @@ class tvertical_scrollbar_container_ : public tcontainer_
 	friend class tbuilder_listbox;
 
 
-	// Callbacks can call update rountines. Note these are not further declared
-	// here only need extrnal linkage to be friends.
+	// Callbacks can call update routines. Note these are not further declared
+	// here only need external linkage to be friends.
 	friend void callback_scrollbar_button(twidget*);
 	friend void callback_scrollbar(twidget*);
 public:
 	
-	tvertical_scrollbar_container_(const unsigned canvas_count) 
-		: tcontainer_(canvas_count),
-		callback_value_change_(NULL)
-	{
-	}
+	tvertical_scrollbar_container_(const unsigned canvas_count);
 
-	/***** ***** ***** inherited ****** *****/
+	~tvertical_scrollbar_container_();
 
-	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event, bool& handled, 
-		SDLKey key, SDLMod modifier, Uint16 unicode);
-
-	/** Inherited from twidget. */
-	bool has_vertical_scrollbar() const { return true; }
+	/** The way to handle the showing or hiding of the scrollbar. */
+	enum tscrollbar_mode {
+		SHOW,                     /**< 
+								   * The scrollbar is always shown, whether
+								   * needed or not.  
+								   */
+		HIDE,                     /**<
+								   * The scrollbar is never shown even not when
+								   * needed. There's also no space reserved for
+								   * the scrollbar. 
+								   */
+		SHOW_WHEN_NEEDED          /**< 
+								   * The scrollbar is shown when the number of
+								   * items is larger as the visible items. The
+								   * space for the scrollbar is always
+								   * reserved, just in case it's needed after
+								   * the initial sizing (due to adding items).
+								   */
+	};
 
 	/** 
 	 * Selects an entire row. 
@@ -62,10 +69,46 @@ public:
 	 */
 	virtual bool select_row(const unsigned row, const bool select = true) = 0;
 
+	/***** ***** ***** inherited ****** *****/
+
+	/** Inherited from tevent_executor. */
+	void key_press(tevent_handler& event, bool& handled, 
+		SDLKey key, SDLMod modifier, Uint16 unicode);
+
+	/** Inherited from twidget. */
+	bool has_vertical_scrollbar() const { return true; }
+
+	/** Inherited from tcontainer. */
+	tpoint get_best_size() const;
+
+	/** Inherited from tcontainer. */
+	tpoint get_best_size(const tpoint& maximum_size) const;
+
+	/** Inherited from tcontainer. */
+	void draw(surface& surface,  const bool force = false,
+	        const bool invalidate_background = false);
+
+	/** Inherited from tcontainer. */
+	void set_size(const SDL_Rect& rect);
+
+	/** Inherited from tcontainer_. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
+
+	/** Inherited from tcontainer_. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const;
+
+	/** Import overloaded versions. */
+	using tcontainer_::find_widget;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
+
 	void set_callback_value_change(void (*callback) (twidget* caller))
 		{ callback_value_change_ = callback; }
 
+	void set_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
+	tscrollbar_mode get_scrollbar_mode() const { return scrollbar_mode_; }
+	
 protected:
 
 	/**
@@ -74,22 +117,42 @@ protected:
 	 */
 	void value_changed();
 
+	/**
+	 * The widget contains named widgets:
+	 * - _scrollbar_grid a grid containing all items regarding the scrollbar and
+	 *   associated buttons etc.
+	 * - _scrollbar a scrollbar itself.
+	 * - _content_grid a grid containing the widgets in the container.
+	 *   Subclasses may define extra named widgets in this container for their
+	 *   own purposes.
+	 */
 
 	/** 
-	 * Returns the scroll widget.
+	 * Returns the scrollbar grid.
 	 *
-	 * This always returns the wdiget, regardless of the mode.
+	 * This always returns the grid, regardless of the mode (active or not).
 	 * 
-	 * @param must_exist          If true the widget must exist and the
+	 * @param must_exist          If true the grid must exist and the
 	 *                            function will fail if that's not the case. If
 	 *                            true the pointer returned is always valid.
 	 *
-	 * @returns                   A pointer to the widget or NULL.
+	 * @returns                   A pointer to the grid or NULL.
 	 */
-    tscrollbar_* find_scrollbar(const bool must_exist = true);
+	tgrid* find_scrollbar_grid(const bool must_exist = true);
 
 	/** The const version. */
-    const tscrollbar_* find_scrollbar(const bool must_exist = true) const;
+	const tgrid* find_scrollbar_grid(const bool must_exist = true) const;
+
+
+	/** See find_scrollbar_grid, but returns the scrollbar instead. */
+	tscrollbar_* find_scrollbar(const bool must_exist = true);
+
+	/** The const version. */
+	const tscrollbar_* find_scrollbar(const bool must_exist = true) const;
+
+	/** See find_scrollbar_grid, but returns the content grid instead. */
+	tgrid* find_content_grid(const bool must_exist = true);
+	const tgrid* find_content_grid(const bool must_exist = true) const;
 
 	/** 
 	 * Sets the status of the scrollbar buttons.
@@ -102,8 +165,20 @@ protected:
 private:
 
 	/**
+	 * The mode of how to show the scrollbar.
+	 *
+	 * This value should only be modified before showing, doing it while
+	 * showing results in UB.
+	 */
+	tscrollbar_mode scrollbar_mode_;
+
+	tgrid* scrollbar_grid_;
+
+	void show_scrollbar(const bool show);
+
+	/**
 	 * This callback is used when the selection is changed due to a user event.
-	 * The name is not fully appropriate for the event but it's choosen to be
+	 * The name is not fully appropriate for the event but it's chosen to be
 	 * generic.
 	 */
 	void (*callback_value_change_) (twidget* caller);
@@ -132,10 +207,54 @@ private:
 	 */
 	virtual bool get_item_active(const unsigned /*item*/) const { return true; }
 
-
 	/** Returns the selected row. */
 	virtual unsigned get_selected_row() const;
 
+	/***** ***** pure virtuals for the subclasses ****** *****/
+
+	/** 
+	 * Returns the best size for the content part. 
+	 *
+	 * See get_best_size() for more info.
+	 */
+	virtual tpoint get_content_best_size() const = 0;
+
+	/** 
+	 * Returns the best size for the content part. 
+	 *
+	 * See get_best_size(cont tpoint&) for more info.
+	 */
+	virtual tpoint get_content_best_size(const tpoint& maximum_size) const = 0;
+
+	/**
+	 * Sets the size for the content.
+	 *
+	 * This is a notification after the size of the content grid has been set
+	 * so the function only needs to update its state if applicable.
+	 *
+	 * @param rect                The new size of the content grid.
+	 */
+	virtual void set_content_size(const SDL_Rect& rect) = 0;
+
+	/** 
+	 * Draws the content part of the widget.
+	 *
+	 * See draw_content for more info.
+	 */
+	virtual void draw_content(surface& surface, const bool force,
+	        const bool invalidate_background) = 0;
+
+	/**
+	 * Finds a widget in the content area.
+	 *
+	 * See find_content_widget for more info.
+	 */
+	virtual twidget* find_content_widget(
+		const tpoint& coordinate, const bool must_be_active) = 0;
+
+	/** The const version. */
+	virtual const twidget* find_content_widget(
+		const tpoint& coordinate, const bool must_be_active) const = 0;
 };
 
 } // namespace gui2

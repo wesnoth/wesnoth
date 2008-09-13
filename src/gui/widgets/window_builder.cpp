@@ -60,6 +60,8 @@ static unsigned get_v_align(const std::string& v_align);
 static unsigned get_h_align(const std::string& h_align);
 static unsigned get_border(const std::vector<std::string>& border);
 static unsigned read_flags(const config& cfg);
+static tvertical_scrollbar_container_::tscrollbar_mode 
+	get_scrollbar_mode(const std::string& scrollbar_mode);
 
 twindow build(CVideo& video, const std::string& type)
 {
@@ -221,7 +223,6 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 
 static unsigned get_v_align(const std::string& v_align)
 {
-
 	if(v_align == "top") {
 		return tgrid::VERTICAL_ALIGN_TOP;
 	} else if(v_align == "bottom") {
@@ -616,8 +617,25 @@ twidget* tbuilder_label::build() const
 	return tmp_label;
 }
 
+static tvertical_scrollbar_container_::tscrollbar_mode  
+		get_scrollbar_mode(const std::string& scrollbar_mode)
+{
+	if(scrollbar_mode == "always") {
+		return tvertical_scrollbar_container_::SHOW;
+	} else if(scrollbar_mode == "never") {
+		return tvertical_scrollbar_container_::HIDE;
+	} else {
+		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
+			ERR_G_E << "Invalid scrollbar mode '" 
+				<< scrollbar_mode << "' falling back to 'auto'.\n";
+		}
+		return tvertical_scrollbar_container_::SHOW_WHEN_NEEDED;
+	}
+}
+
 tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	tbuilder_control(cfg),
+	scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
 	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
 	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
 	list_builder(0),
@@ -634,16 +652,10 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *
  * List with the listbox specific variables:
  * @start_table = config
- *     scrollbar_mode (foo)            The mode for the scrollbar
- *                                     @* always_show the srollbar is always 
- *                                     shown even if all items can be shown. The
- *                                     scrollbar will be disabled in this case.
- *                                     @* auto_show the scrollbar is shown if
- *                                     more items are in the listbox as can be
- *                                     shown.  
- *                                     @* never_show the scrollbar is
- *                                     never shown even not if more items are
- *                                     available as visible.
+ *     vertical_scrollbar_mode (scrollbar_mode = auto)
+ *                                     Determines whether or not to show the 
+ *                                     scrollbar.
+ *
  *     header (section = [])           Defines the grid for the optional header.
  *     footer (section = [])           Defines the grid for the optional footer.
  *    
@@ -713,6 +725,7 @@ twidget* tbuilder_listbox::build() const
 
 	listbox->set_list_builder(list_builder);
 	listbox->set_assume_fixed_row_size(assume_fixed_row_size);
+	listbox->set_scrollbar_mode(scrollbar_mode);
 
 	DBG_G << "Window builder: placed listbox '" << id << "' with defintion '" 
 		<< definition << "'.\n";
@@ -721,21 +734,29 @@ twidget* tbuilder_listbox::build() const
 		boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(listbox->config());
 	assert(conf);
 
+	/*
+	 * We generate the following items to put in the listbox grid
+	 * - _scrollbar_grid the grid containing the scrollbar.
+	 * - _content_grid   the grid containing the content of the listbox.
+	 * - _list           if the content has a header of footer they're an extra
+	 *                   grid needed to find the scrolling content, the item 
+	 *                   with the id _list holds this, so the listbox needs to
+	 *                   test for this item as well.
+	 */
+
 	tgrid* scrollbar = dynamic_cast<tgrid*>(conf->scrollbar->build());
 	assert(scrollbar);
 
-	scrollbar->set_id("_scroll");
+	scrollbar->set_id("_scrollbar_grid");
 
-	twidget* list_area = new tspacer();
-	assert(list_area);
-	list_area->set_definition("default");
-	list_area->set_id("_list");
+	tgrid* content_grid = new tgrid();
+	content_grid->set_definition("default");
+	content_grid->set_id("_content_grid");
+	assert(content_grid);
 
 	if(header || footer) {
 
-		// Create a grid to hold header (if needed), list and footer (if needed).
-		tgrid* grid = new tgrid();
-		grid->set_rows_cols(header && footer ? 3 : 2, 1);
+		content_grid->set_rows_cols(header && footer ? 3 : 2, 1);
 
 		// Create and add the header.
 		if(header) {
@@ -748,7 +769,7 @@ twidget* tbuilder_listbox::build() const
 			 * We need sort indicators, which are tristat_buttons;
 			 * none, acending, decending. Once we have them we can write them in.
 			 */
-			grid->set_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
+			content_grid->set_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
 				| tgrid::VERTICAL_ALIGN_TOP, 0);
 		}
 
@@ -757,24 +778,26 @@ twidget* tbuilder_listbox::build() const
 			twidget* widget = footer->build();
 			assert(widget);
 
-			grid->set_child(widget, header && footer ? 2 : 1, 0, 
+			content_grid->set_child(widget, header && footer ? 2 : 1, 0, 
 				tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
 				| tgrid::VERTICAL_ALIGN_BOTTOM, 0);
 		}
 
-		// Add the list itself.
-		grid->set_child(list_area, header ? 1 : 0, 0, 
+		// Add the list itself which needs a new grid as described above.
+		tgrid* list = new tgrid();
+		assert(list);
+
+		list->set_definition("default");
+		list->set_id("_list");
+		content_grid->set_child(list, header ? 1 : 0, 0, 
 			tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
 			| tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 			, 0);
-
-		// Now make the list_area the grid so the code with and without a header
-		// or footer is the same.
-		list_area = grid;
+		content_grid->set_row_grow_factor( header ? 1 : 0, 1);
 	}
 
 	listbox->grid().set_rows_cols(1, 2);
-	listbox->grid().set_child(list_area, 0, 0, 
+	listbox->grid().set_child(content_grid, 0, 0, 
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
 		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
 		, 0);

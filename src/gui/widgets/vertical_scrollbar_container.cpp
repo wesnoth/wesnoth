@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scrollbar.hpp"
+#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
@@ -85,6 +86,29 @@ const std::map<std::string, tscrollbar_::tscroll>& scroll_lookup()
 
 } // namespace
 
+tvertical_scrollbar_container_::
+		tvertical_scrollbar_container_(const unsigned canvas_count) 
+	: tcontainer_(canvas_count)
+	, scrollbar_mode_(SHOW_WHEN_NEEDED)
+	, scrollbar_grid_(NULL)
+	, callback_value_change_(NULL)
+{
+}
+
+tvertical_scrollbar_container_::~tvertical_scrollbar_container_()
+{
+	delete scrollbar_grid_;
+}
+
+void tvertical_scrollbar_container_::
+		set_scrollbar_mode(const tscrollbar_mode scrollbar_mode)
+{ 
+	if(scrollbar_mode_ != scrollbar_mode) {
+		scrollbar_mode_ = scrollbar_mode;
+		show_scrollbar(scrollbar_mode_ != HIDE);
+	}
+}
+
 void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/, 
 		bool& handled, SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
 {
@@ -129,13 +153,16 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 		case SDLK_DOWN : 
 
 			++row;
-			while(static_cast<size_t>(row) < sb->get_item_count() && !get_item_active(row)) {
+			while(static_cast<size_t>(row) < sb->get_item_count() 
+					&& !get_item_active(row)) {
+
 				++row;
 			}
 			if(static_cast<size_t>(row) < sb->get_item_count()) {
 				select_row(row);
 				handled = true;
-				if(static_cast<size_t>(row) >= sb->get_item_position() + sb->get_visible_items()) {
+				if(static_cast<size_t>(row) >= sb->get_item_position() 
+						+ sb->get_visible_items()) {
 
 					sb->set_item_position(row + 1 - sb->get_visible_items());
 					set_scrollbar_button_status();
@@ -150,6 +177,129 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 	}
 }
 
+tpoint tvertical_scrollbar_container_::get_best_size() const
+{
+	const tpoint content = get_content_best_size();
+	if(scrollbar_mode_ == HIDE) {
+		return content;
+	} 
+	
+	const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
+	if(scrollbar_mode_ == SHOW) {
+		// We need to show the scrollbar so the biggest height of scrollbar and
+		// content is needed. The width is the sum of them.
+		return tpoint(
+			content.x + scrollbar.x,
+			std::max(content.y, scrollbar.y));
+	}
+
+	// When auto show the height of the content is leading. (Width again the sum.)
+	return tpoint(content.x + scrollbar.x, content.y);
+}
+
+tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size) const
+{
+	if(scrollbar_mode_ == HIDE) {
+		// No scrollbar hope the normal size is small enough. Don't send the
+		// maximum_size parameter since then the content 'thinks' there will be
+		// a scrollbar.
+		return get_content_best_size();
+	} else {
+		// The scrollbar also can't be resized so ask the best size.
+		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
+		const tpoint content = get_content_best_size(tpoint(maximum_size.x - scrollbar.x, maximum_size.y));
+
+		// Width and height same rules as above.
+		if(scrollbar_mode_ == SHOW) {
+			return tpoint( 
+				content.x + scrollbar.x,
+				std::max(content.y, scrollbar.y));
+		}
+		return tpoint(content.x + scrollbar.x, content.y);
+	}
+}
+
+void tvertical_scrollbar_container_::set_size(const SDL_Rect& rect)
+{
+	// Inherited. -- note we don't use client size, might change
+	tcontrol::set_size(rect);
+
+	// Test whether we need a scrollbar.
+	bool scrollbar_needed = (scrollbar_mode_ == SHOW);
+	if(scrollbar_mode_ == SHOW_WHEN_NEEDED) {
+		tpoint size = get_content_best_size();
+		scrollbar_needed = size.x > rect.w || size.y > rect.h; 
+	}
+
+	if(scrollbar_needed) {
+
+		show_scrollbar(true);
+
+		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
+		SDL_Rect tmp = rect;
+		tmp.x += tmp.w - scrollbar.x;
+		tmp.w = scrollbar.x;
+		find_scrollbar_grid()->set_size(tmp);
+
+		tmp = rect;
+		tmp.w -= scrollbar.x;
+		find_content_grid()->set_size(tmp);
+		set_content_size(tmp);
+	} else {
+
+		show_scrollbar(false);
+
+		find_content_grid()->set_size(rect);
+	 	set_content_size(rect);
+	}
+
+	set_scrollbar_button_status();
+}
+
+void tvertical_scrollbar_container_::draw(
+		surface& surface,  const bool force, const bool invalidate_background)
+{
+	// Inherited.
+	tcontainer_::draw(surface, force, invalidate_background);
+
+	if(scrollbar_mode_ != HIDE) {
+		draw_content(surface, force, invalidate_background);
+	}
+	draw_content(surface, force, invalidate_background);
+}
+
+twidget* tvertical_scrollbar_container_::find_widget(
+		const tpoint& coordinate, const bool must_be_active) 
+{
+	SDL_Rect content = find_content_grid()->get_rect();
+
+	if(point_in_rect(coordinate.x, coordinate.y, content)) {
+
+		return find_content_widget(tpoint( 
+			coordinate.x - get_x(), coordinate.y - get_y())
+			, must_be_active);
+	} 
+
+	// Inherited
+	return tcontainer_::find_widget(coordinate, must_be_active);
+}
+
+const twidget* tvertical_scrollbar_container_::find_widget(
+		const tpoint& coordinate, const bool must_be_active) const
+{
+	SDL_Rect content = find_content_grid()->get_rect();
+
+	if(point_in_rect(coordinate.x, coordinate.y, content)) {
+		
+		return find_content_widget(tpoint( 
+			coordinate.x - get_x(), coordinate.y - get_y())
+			, must_be_active);
+	} 
+
+	// Inherited
+	return tcontainer_::find_widget(coordinate, must_be_active);
+}
+
 void tvertical_scrollbar_container_::value_changed()
 {
 	if(callback_value_change_) {
@@ -157,15 +307,41 @@ void tvertical_scrollbar_container_::value_changed()
 	}
 }
 
+tgrid* tvertical_scrollbar_container_::find_scrollbar_grid(const bool must_exist)
+{
+    return scrollbar_grid_ ? scrollbar_grid_
+		: find_widget<tgrid>("_scrollbar_grid", false, must_exist);
+}
+
+const tgrid* tvertical_scrollbar_container_::
+		find_scrollbar_grid(const bool must_exist) const
+{
+    return scrollbar_grid_ ? scrollbar_grid_
+    	: find_widget<tgrid>("_scrollbar_grid", false, must_exist);
+}
+
 tscrollbar_* tvertical_scrollbar_container_::find_scrollbar(const bool must_exist)
 {
-    return find_widget<tscrollbar_>("_scrollbar", false, must_exist);
+    return static_cast<twidget*>(find_scrollbar_grid())
+		->find_widget<tscrollbar_>("_scrollbar", false, must_exist);
 }
 
 const tscrollbar_* tvertical_scrollbar_container_::find_scrollbar(
 		const bool must_exist) const
 {
-    return find_widget<const tscrollbar_>("_scrollbar", false, must_exist);
+    return static_cast<const twidget*>(find_scrollbar_grid())
+    	->find_widget<const tscrollbar_>("_scrollbar", false, must_exist);
+}
+
+tgrid* tvertical_scrollbar_container_::find_content_grid(const bool must_exist)
+{
+    return find_widget<tgrid>("_content_grid", false, must_exist);
+}
+
+const tgrid* tvertical_scrollbar_container_::
+		find_content_grid(const bool must_exist) const
+{
+    return find_widget<tgrid>("_content_grid", false, must_exist);
 }
 
 void tvertical_scrollbar_container_::set_scrollbar_button_status()
@@ -195,6 +371,24 @@ void tvertical_scrollbar_container_::set_scrollbar_button_status()
 		!(find_scrollbar()->at_begin() && find_scrollbar()->at_end()));
 }
 
+void tvertical_scrollbar_container_::show_scrollbar(const bool show)
+{
+	if(show && scrollbar_grid_) {
+
+		tgrid* tmp = dynamic_cast<tgrid*>
+			(grid().swap_child("_scrollbar_grid", scrollbar_grid_, true));
+
+		delete tmp;
+		scrollbar_grid_ = NULL;
+
+	} else if(!show && !scrollbar_grid_) {
+
+		tgrid* tmp = new tgrid();
+        scrollbar_grid_ = dynamic_cast<tgrid*>
+			(grid().swap_child("_scrollbar_grid", tmp, true));
+	}
+}
+
 void tvertical_scrollbar_container_::finalize_setup()
 {
 	find_scrollbar()->set_callback_positioner_move(callback_scrollbar);
@@ -210,6 +404,10 @@ void tvertical_scrollbar_container_::finalize_setup()
 			button->set_callback_mouse_left_click(callback_scrollbar_button);
 		}
 	}
+
+	// Make sure all mandatory widgets are tested
+	find_scrollbar_grid();
+	find_content_grid();
 }
 
 void tvertical_scrollbar_container_::scrollbar_click(twidget* caller)
@@ -230,5 +428,6 @@ unsigned tvertical_scrollbar_container_::get_selected_row() const
 {
 	return find_scrollbar()->get_item_position();
 }
+
 } // namespace gui2
 
