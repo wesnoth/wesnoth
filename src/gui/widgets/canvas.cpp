@@ -205,6 +205,8 @@ tline::tline(const config& cfg) :
  *                                     signed number.
  *     bool                            A boolean value accepts the normal 
  *                                     values as the rest of the game.
+ *     f_bool                          Boolean value or a formula returning a
+ *                                     boolean value.
  *     string                          A text.
  *     tstring                         A translatable string.
  *     f_tstring                       Formula returning a translatable string.
