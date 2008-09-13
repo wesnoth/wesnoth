@@ -110,6 +110,44 @@ void tgrid::set_child(twidget* widget, const unsigned row,
 	clear_cache();
 }
 
+twidget* tgrid::swap_child(
+		const std::string& id, twidget* widget, const bool recurse)
+{
+	assert(widget);
+
+	foreach(tchild& child, children_) {
+		if(child.id() != id) {
+
+			if(recurse) {
+				// decent in the nested grids.
+				tgrid* grid = dynamic_cast<tgrid*>(child.widget());
+				if(grid) {
+
+					twidget* old = grid->swap_child(id, widget, true);
+					if(old) {
+						return old;
+					}
+				}
+			}
+
+			continue;
+		}
+
+		// When find the widget there should be a widget.
+		twidget* old = child.widget();
+		assert(old);
+		old->set_parent(NULL);
+
+		widget->set_parent(this);
+		child.set_widget(widget);
+		child.set_id(widget->id());
+
+		return old;
+	}
+
+	return NULL;
+}
+
 void tgrid::remove_child(const unsigned row, const unsigned col)
 {
 	assert(row < rows_ && col < cols_);

@@ -114,6 +114,23 @@ public:
 		const unsigned col, const unsigned flags, const unsigned border_size);
 
 	/**
+	 * Exchangs a child in the grid.
+	 *
+	 * It replaced the child with a certain id with the new widget but doesn't
+	 * touch the other settings of the child.
+	 *
+	 * @param id                  The id of the widget to free.
+	 * @param widget              The widget to put in the grid.
+	 * @parem recurse             Do we want to decent into the child grids.
+	 *
+	 * returns                    The widget which got removed (the parent of
+	 *                            the widget is cleared). If no widget found
+	 *                            and thus not replace NULL will returned.
+	 */
+	twidget* swap_child(
+		const std::string& id, twidget* widget, const bool recurse);
+
+	/**
 	 * Removes and frees a widget in a cell.
 	 *
 	 * @param row                 The row of the cell.
