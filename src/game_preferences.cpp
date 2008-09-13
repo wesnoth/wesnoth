@@ -50,14 +50,14 @@ std::set<t_translation::t_terrain> encountered_terrains_set;
 std::map<std::string, std::vector<std::string> > history_map;
 const unsigned max_history_saved = 50;
 
-//! Add a nick to the specified relation setting.
+/** Add a nick to the specified relation setting. */
 void add_relation(const std::string& nick, const std::string& relation) {
 	std::vector<std::string> r = utils::split(preferences::get(relation));
 	r.push_back(nick);
 	preferences::set(relation, utils::join(r));
 }
 
-//! Remove a nick from the specified relation setting.
+/** Remove a nick from the specified relation setting. */
 void remove_relation(const std::string& nick, const std::string& relation) {
 	std::vector<std::string> r = utils::split(preferences::get(relation));
 	r.erase(std::remove(r.begin(), r.end(), nick), r.end());
@@ -772,9 +772,12 @@ void set_custom_command(const std::string& command) {
 	return preferences::set("custom_command", command);
 }
 
-//! Returns a pointer to the history vector associated with given id
-//! making a new one if it doesn't exist.
-// FIXME only used for gui2. Could be used for the above histories.
+/**
+ * Returns a pointer to the history vector associated with given id
+ * making a new one if it doesn't exist.
+ * 
+ * @todo FIXME only used for gui2. Could be used for the above histories.
+ */
 std::vector<std::string>* get_history(const std::string& id) {
 	return &history_map[id];
 }
