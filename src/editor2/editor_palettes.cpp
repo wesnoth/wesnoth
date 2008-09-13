@@ -141,7 +141,7 @@ void terrain_palette::adjust_size() {
 	const size_t button_palette_padding = 8;
 
 	// Values for the group buttons fully hardcoded for now
-	//! @todo will be fixed later
+	/** @todo will be fixed later */
 	const size_t group_button_height   = 24;
 	const size_t group_button_padding  =  2;
 	const size_t group_buttons_per_row =  5;
@@ -282,7 +282,7 @@ void terrain_palette::swap()
 }
 
 
-//! After the language is changed, the selected terrains needs an update.
+/** After the language is changed, the selected terrains needs an update. */
 void terrain_palette::update_selected_terrains(void)
 {
 	set_dirty();

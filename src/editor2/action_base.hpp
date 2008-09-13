@@ -12,15 +12,17 @@
    See the COPYING file for more details.
 */
 
-//! @file action_base.hpp
-//! Base class for editor actions
-
-//! An action is constructed in response to a user command, then executed on 
-//! the map. An undo action is returned by default via pointer, caller-owned).
-//! It is possible to call an action without creating the undo action.
-//! Actions report failure via exceptions.
-//! Code that only deals with actions polymorphically should only need to 
-//! include this header file.
+/**
+ * @file action_base.hpp
+ * Base class for editor actions
+ *
+ * An action is constructed in response to a user command, then executed on 
+ * the map. An undo action is returned by default via pointer, caller-owned).
+ * It is possible to call an action without creating the undo action.
+ * Actions report failure via exceptions.
+ * Code that only deals with actions polymorphically should only need to 
+ * include this header file.
+ */
 
 #ifndef EDITOR2_ACTION_BASE_HPP_INCLUDED
 #define EDITOR2_ACTION_BASE_HPP_INCLUDED

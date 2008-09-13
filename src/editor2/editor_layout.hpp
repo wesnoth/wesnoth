@@ -12,8 +12,7 @@
   See the COPYING file for more details.
 */
 
-//! @file editor/editor_layout.hpp 
-//!
+/** @file editor/editor_layout.hpp */
 
 #ifndef EDITOR_LAYOUT_H_INCLUDED
 #define EDITOR_LAYOUT_H_INCLUDED
@@ -24,11 +23,13 @@
 
 namespace editor2 {
 
-//! Size specifications for the map editor.
+/** Size specifications for the map editor. */
 struct size_specs {
-	//! Initialize the values to dummie-values that will 
-	//! avoid floating point errors if calculations are made 
-	//! before the sizes are adjusted through adjust_sizes().
+	/**
+	 * Initialize the values to dummie-values that will avoid floating point
+	 * errors if calculations are made before the sizes are adjusted through
+	 * adjust_sizes().
+	 */
 	size_specs();
 	size_t terrain_size;
 	size_t terrain_padding;
@@ -43,7 +44,7 @@ struct size_specs {
 	size_t brush_padding;
 };
 
-//! Adjust the internal size specifications to fit the display.
+/** Adjust the internal size specifications to fit the display. */
 void adjust_sizes(const display &disp, size_specs &sizes);
 
 }

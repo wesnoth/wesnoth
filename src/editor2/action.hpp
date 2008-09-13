@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file action.hpp
-//! Editor action classes
+/**
+ * @file action.hpp
+ * Editor action classes
+ */
 
 #ifndef EDITOR2_ACTION_HPP
 #define EDITOR2_ACTION_HPP

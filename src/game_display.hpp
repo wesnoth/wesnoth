@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file game_display.hpp
-//!
+/** @file game_display.hpp */
 
 #ifndef GAME_DISPLAY_H_INCLUDED
 #define GAME_DISPLAY_H_INCLUDED
@@ -48,68 +47,94 @@ public:
 	~game_display();
 	static game_display* get_singleton() { return singleton_ ;}
 
-	//! Update lighting settings.
-	//! Should be called on every new turn,
+	/**
+	 * Update lighting settings.
+	 *
+	 * Should be called on every new turn.
+	 */
 	void new_turn();
 
-	//! Add r,g,b to the colours for all images displayed on the map.
-	//! Used for special effects like flashes.
+	/**
+	 * Add r,g,b to the colours for all images displayed on the map.
+	 *
+	 * Used for special effects like flashes.
+	 */
 	void adjust_colours(int r, int g, int b);
 
-	//! Scrolls to the leader of a certain side.
-	//! This will normally be the playing team.
+	/**
+	 * Scrolls to the leader of a certain side.
+	 *
+	 * This will normally be the playing team.
+	 */
 	void scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type = ONSCREEN);
 
-	//! Function to display a location as selected.
-	//! If a unit is in the location, and there is no unit
-	//! in the currently highlighted hex,
-	//! the unit will be displayed in the sidebar.
+	/**
+	 * Function to display a location as selected.
+	 *
+	 * If a unit is in the location, and there is no unit in the currently
+	 * highlighted hex, the unit will be displayed in the sidebar.
+	 */
 	virtual void select_hex(gamemap::location hex);
 
-	//! Function to highlight a location.
-	//! If a unit is in the location, it will be displayed in the sidebar.
-	//! Selection is used when a unit has been clicked on,
-	//! while highlighting is used when a location has been moused over.
+	/**
+	 * Function to highlight a location.
+	 *
+	 * If a unit is in the location, it will be displayed in the sidebar.
+	 * Selection is used when a unit has been clicked on, while highlighting is
+	 * used when a location has been moused over.
+	 */
 	virtual void highlight_hex(gamemap::location hex);
 
-	//! Change the unit to be displayed in the sidebar.
-	//! This is used when selecting or highlighting is not wanted.
+	/**
+	 * Change the unit to be displayed in the sidebar.
+	 *
+	 * This is used when selecting or highlighting is not wanted.
+	 */
 	void display_unit_hex(gamemap::location hex);
 
-	//! Sets the paths that are currently displayed as available
-	//! for the unit to move along.
-	//! All other paths will be greyed out.
+	/**
+	 * Sets the paths that are currently displayed as available
+	 * for the unit to move along.
+	 * All other paths will be greyed out.
+	 */
 	void highlight_reach(const paths &paths_list);
 
-	//! Add more paths to highlight.  Print numbers where they overlap.
-	//! Used only by Show Enemy Moves.
+	/**
+	 * Add more paths to highlight.  Print numbers where they overlap.
+	 * Used only by Show Enemy Moves.
+	 */
 	void highlight_another_reach(const paths &paths_list);
 
-	//! Reset highlighting of paths.
+	/** Reset highlighting of paths. */
 	void unhighlight_reach();
-
-	//! Sets the route along which footsteps are drawn to show movement of a unit.
-	//! If NULL, no route is displayed. route does not have to remain valid after being set.
+	
+	/**
+	 * Sets the route along which footsteps are drawn to show movement of a
+	 * unit. If NULL, no route is displayed. route does not have to remain
+	 * valid after being set.
+	 */
 	void set_route(const paths::route* route);
 
-	//! Function to float a label above a tile
+	/** Function to float a label above a tile */
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-	//! Function to return 2 half-hex footsteps images for the given location.
-	//! Only loc is on the current route set by set_route.
+	/**
+	 * Function to return 2 half-hex footsteps images for the given location.
+	 * Only loc is on the current route set by set_route.
+	 */
 	std::vector<surface> footsteps_images(const gamemap::location& loc);
 
-	//! Draws the movement info (turns available) for a given location.
+	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const gamemap::location& loc);
 
 	const gamestatus &get_game_status() { return status_; }
 	void draw_report(reports::TYPE report_num);
 
-	//! Function to invalidate that unit status displayed on the sidebar.
+	/** Function to invalidate that unit status displayed on the sidebar. */
 	void invalidate_unit() { invalidateUnit_ = true; }
 
-	//! Same as invalidate_unit() if moving the displayed unit.
+	/** Same as invalidate_unit() if moving the displayed unit. */
 	void invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst);
 
 protected:
@@ -155,33 +180,43 @@ protected:
 	virtual void draw_minimap_units();
 
 public:
-	//! Temporarily place a unit on map (moving: can overlap others).
+	/** Temporarily place a unit on map (moving: can overlap others). */
 	void place_temporary_unit(unit &u, const gamemap::location& loc);
 	void remove_temporary_unit();
 
-	//! Set the attack direction indicator
+	/** Set the attack direction indicator. */
 	void set_attack_indicator(const gamemap::location& src, const gamemap::location& dst);
 	void clear_attack_indicator();
-	//! Function to get attack direction suffix
+
+	/** Function to get attack direction suffix. */
 	std::string attack_indicator_direction() const { 
 		return gamemap::location::write_direction(
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
 
-	//! Functions to add and remove overlays from locations.
-	//! An overlay is an image that is displayed on top of the tile.
-	//! One tile may have multiple overlays.
-	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="", const std::string& team_name="",const std::string& fogged="yes");
-	//! remove_overlay will remove all overlays on a tile.
+	/**
+	 * Functions to add and remove overlays from locations.
+	 *
+	 * An overlay is an image that is displayed on top of the tile.
+	 * One tile may have multiple overlays.
+	 */
+	void add_overlay(const gamemap::location& loc, const std::string& image, 
+		const std::string& halo="", const std::string& team_name="",
+		const std::string& fogged="yes");
+
+	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const gamemap::location& loc);
-	//! remove_single_overlay will remove a single overlay from a tile
+
+	/** remove_single_overlay will remove a single overlay from a tile */
 	void remove_single_overlay(const gamemap::location& loc, const std::string& toDelete);
 
-	//! Function to serialize overlay data.
+	/** Function to serialize overlay data. */
 	void write_overlays(config& cfg) const;
 
-	//! Check the overlay_map for proper team-specific overlays
-	//! to be displayed/hidden
+	/**
+	 * Check the overlay_map for proper team-specific overlays to be
+	 * displayed/hidden
+	 */
 	void parse_team_overlays();
 
 	// Functions used in the editor:
@@ -189,9 +224,12 @@ public:
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
 	t_translation::t_terrain get_terrain_on(int palx, int paly, int x, int y);
 
-	//! Sets the team controlled by the player using the computer.
-	//! Data from this team will be displayed in the game status.
-	//! set_playing_team sets the team whose turn it currently is
+	/**
+	 * Sets the team controlled by the player using the computer.
+	 *
+	 * Data from this team will be displayed in the game status.
+	 * set_playing_team sets the team whose turn it currently is
+	 */
 	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
 	size_t get_playing_team() const {return activeTeam_;};
@@ -200,14 +238,18 @@ public:
 	unit_map& get_units() {return units_;};
 	const unit_map& get_const_units() const {return units_;};
 
-	//! Draws a cross on a tile to emphasize something there.
-	//! It is used in debug mode, typically to show AI plans.
+	/**
+	 * Draws a cross on a tile to emphasize something there.
+	 *
+	 * It is used in debug mode, typically to show AI plans.
+	 */
 	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-	//! The viewing team is the team currently viewing the game.
+	/** The viewing team is the team currently viewing the game. */
 	size_t viewing_team() const { return currentTeam_; }
-	//! The playing team is the team whose turn it is.
+
+	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
 
 	bool team_valid() const { return currentTeam_ < teams_.size(); }
@@ -228,17 +270,19 @@ public:
 	void draw_bar(const std::string& image, int xpos, int ypos,
 		const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
-	//! Sets the linger mode for the display.
-	//! There have been some discussions on what to do with fog and shroud
-	//! the extra variables make it easier to modify the behaviour. There
-	//! might even be a split between victory and defeat.
-	//
-	//! @todo if the current implementation is wanted we can change
-	//! the stuff back to a boolean
+	/**
+	 * Sets the linger mode for the display.
+	 * There have been some discussions on what to do with fog and shroud
+	 * the extra variables make it easier to modify the behaviour. There
+	 * might even be a split between victory and defeat.
+	 *
+	 * @todo if the current implementation is wanted we can change
+	 * the stuff back to a boolean
+	 */
 	enum tgame_mode {
-		RUNNING,         //!< no linger overlay, show fog and shroud
-		LINGER_SP,       //!< linger overlay, show fog and shroud
-		LINGER_MP };     //!< linger overlay, show fog and shroud
+		RUNNING,         /**< no linger overlay, show fog and shroud. */
+		LINGER_SP,       /**< linger overlay, show fog and shroud. */
+		LINGER_MP };     /**< linger overlay, show fog and shroud. */
 
 	void set_game_mode(const tgame_mode game_mode);
 
@@ -261,8 +305,11 @@ private:
 	gamemap::location attack_indicator_src_;
 	gamemap::location attack_indicator_dst_;
 
-	//! Finds the start and end rows on the energy bar image.
-	//! White pixels are substituted for the colour of the energy
+	/**
+	 * Finds the start and end rows on the energy bar image.
+	 *
+	 * White pixels are substituted for the colour of the energy.
+	 */
 	const SDL_Rect& calculate_energy_bar(surface surf);
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 
@@ -332,11 +379,13 @@ private:
 	// For debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;
 
-	//! Animated flags for each team
+	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
 
-	//! the tiles invalidated at last redraw, 
-	//! to simplify the cleaning up of tiles left by units
+	/**
+	 * the tiles invalidated at last redraw, 
+	 * to simplify the cleaning up of tiles left by units
+	 */
 	std::set<gamemap::location> previous_invalidated_;
 	static game_display * singleton_;
 };

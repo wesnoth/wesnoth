@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file game_display.cpp
-//! During a game, show map & info-panels at top+right.
+/**
+ * @file game_display.cpp
+ * During a game, show map & info-panels at top+right.
+ */
 
 #include "global.hpp"
 
@@ -274,8 +276,10 @@ void game_display::pre_draw() {
 	// call invalidate_animation again to deal with new conflict arising from the merge
 	invalidate_animations();
 	process_reachmap_changes();
-	//! @todo FIXME: must modify changed, but best to do it
-	//! at the floating_label level
+	/**
+	 * @todo FIXME: must modify changed, but best to do it at the
+	 * floating_label level
+	 */
 	prune_chat_messages();
 }
 

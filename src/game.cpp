@@ -1655,7 +1655,7 @@ static void gzip_decode(const std::string & input_file, const std::string & outp
 }
 
 
-//! Process commandline-arguments
+/** Process commandline-arguments */
 static int process_command_args(int argc, char** argv) {
 	//parse arguments that shouldn't require a display device
 	int arg;
@@ -1839,7 +1839,7 @@ static void init_locale() {
 	textdomain (PACKAGE);
 }
 
-//! Setups the game environment
+/** Setups the game environment */
 static int play_game(int argc, char** argv)
 {
 	int finished = process_command_args(argc, argv);

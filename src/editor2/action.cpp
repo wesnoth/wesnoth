@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file action.cpp
-//! Editor action classes
+/**
+ * @file action.cpp
+ * Editor action classes
+ */
 
 #include "action.hpp"
 #include "editor_common.hpp"

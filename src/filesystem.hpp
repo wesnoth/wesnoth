@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file filesystem.hpp 
-//! Declarations for File-IO.
+/**
+ * @file filesystem.hpp 
+ * Declarations for File-IO.
+ */
 
 #ifndef FILESYSTEM_HPP_INCLUDED
 #define FILESYSTEM_HPP_INCLUDED
@@ -24,7 +26,7 @@
 #include <string>
 #include <vector>
 
-//! An exception object used when an IO error occurs
+/** An exception object used when an IO error occurs */
 struct io_exception : public std::exception {
 	io_exception() : message("") {}
 	io_exception(const std::string& msg) : message(msg) {}
@@ -41,14 +43,16 @@ enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 enum FILE_FILTER { NO_FILTER, SKIP_MEDIA_DIR};
 enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 
-//! Populates 'files' with all the files and 
-//! 'dirs' with all the directories in dir. 
-//! If files or dirs are NULL they will not be used.
-//!
-//! mode: determines whether the entire path or just the filename is retrieved.
-//! filter: determines if we skip images and sounds directories
-//! reorder: triggers the special handling of _main.cfg and _final.cfg
-//! checksum: can be used to store checksum info
+/**
+ * Populates 'files' with all the files and 
+ * 'dirs' with all the directories in dir. 
+ * If files or dirs are NULL they will not be used.
+ *
+ * mode: determines whether the entire path or just the filename is retrieved.
+ * filter: determines if we skip images and sounds directories
+ * reorder: triggers the special handling of _main.cfg and _final.cfg
+ * checksum: can be used to store checksum info
+ */
 void get_files_in_dir(const std::string dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
@@ -68,12 +72,16 @@ std::string get_intl_dir();
 std::string get_screenshot_dir();
 std::string get_addon_campaigns_dir();
 
-// Wrapper around get_mp_addons_dir() and get_addon_campaigns_dir() intended
-// for massive operations with add-ons, e.g. enumerating for publishing.
+/**
+ * Wrapper around get_mp_addons_dir() and get_addon_campaigns_dir() intended
+ * for massive operations with add-ons, e.g. enumerating for publishing.
+ */
 std::vector< std::string > get_addon_dirs();
 
-//! Get the next free filename using "name + number (3 digits) + extension"
-//! maximum 1000 files then start always giving 999
+/**
+ * Get the next free filename using "name + number (3 digits) + extension"
+ * maximum 1000 files then start always giving 999
+ */
 std::string get_next_filename(const std::string& name, const std::string& extension);
 std::string get_upload_dir();
 void set_preferences_dir(std::string path);
@@ -87,34 +95,37 @@ bool delete_directory(const std::string& dirname);
 
 // Basic disk I/O:
 
-//! Basic disk I/O - read file.
+/** Basic disk I/O - read file. */
 std::string read_file(const std::string& fname);
 std::istream *istream_file(std::string fname);
 std::ostream *ostream_file(std::string const &fname);
-//! Throws io_exception if an error occurs.
+/** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);
 
 std::string read_map(const std::string& name);
 
-//! Creates a directory if it does not exist already.
-//! @param dirname Path to directory. All parents should exist.
-//! @return True if the directory exists or could be successfully
-//!         created; false otherwise.
+/**
+ * Creates a directory if it does not exist already.
+ *
+ * @param dirname                 Path to directory. All parents should exist.
+ * @returns                       True if the directory exists or could be
+ *                                successfully created; false otherwise.
+ */
 bool create_directory_if_missing(const std::string& dirname);
 
-//! Returns true if the given file is a directory.
+/** Returns true if the given file is a directory. */
 bool is_directory(const std::string& fname);
 
-//! Returns true if file with name already exists.
+/** Returns true if file with name already exists. */
 bool file_exists(const std::string& name);
 
-//! Get the creation time of a file.
+/** Get the creation time of a file. */
 time_t file_create_time(const std::string& fname);
 
-//! Return the next ordered full filename within this directory.
+/** Return the next ordered full filename within this directory. */
 std::string next_filename(const std::string &dirname, unsigned int max = 0);
 
-//! Returns true if the file ends with '.gz'.
+/** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);
 
 struct file_tree_checksum
@@ -131,24 +142,28 @@ struct file_tree_checksum
 bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
 bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
 
-
-//! Get the time at which the data/ tree was last modified at.
+/** Get the time at which the data/ tree was last modified at. */
 const file_tree_checksum& data_tree_checksum(bool reset = false);
 
-//! Returns the size of a file, or -1 if the file doesn't exist.
+/** Returns the size of a file, or -1 if the file doesn't exist. */
 int file_size(const std::string& fname);
 
 bool ends_with(const std::string& str, const std::string& suffix);
 
-//! Returns the base filename of a file, with directory name stripped. 
-//! Equivalent to a portable basename() function.
+/**
+ * Returns the base filename of a file, with directory name stripped. 
+ * Equivalent to a portable basename() function.
+ */
 std::string file_name(const std::string& file);
 
-//! Returns the directory name of a file, with filename stripped. 
-//! Equivalent to a portable dirname()
+/**
+ * Returns the directory name of a file, with filename stripped. 
+ * Equivalent to a portable dirname()
+ */
 std::string directory_name(const std::string& file);
 
-/*! The paths manager is responsible for recording the various paths 
+/**
+ *  The paths manager is responsible for recording the various paths 
  *  that binary files may be located at. 
  *  It should be passed a config object which holds binary path information. 
  *  This is in the format
@@ -178,12 +193,16 @@ private:
 
 void clear_binary_paths_cache();
 
-//! Returns a vector with all possible paths to a given type of binary,
-//! e.g. 'images', 'sounds', etc,
+/**
+ * Returns a vector with all possible paths to a given type of binary,
+ * e.g. 'images', 'sounds', etc,
+ */
 const std::vector<std::string>& get_binary_paths(const std::string& type);
 
-//! Returns a complete path to the actual file of a given a type of binary, 
-//! or an empty string if the file isn't present.
+/**
+ * Returns a complete path to the actual file of a given a type of binary, 
+ * or an empty string if the file isn't present.
+ */
 std::string get_binary_file_location(const std::string& type, const std::string& filename);
 
 class scoped_istream {

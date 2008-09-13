@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file filesystem.cpp 
-//! File-IO
+/**
+ * @file filesystem.cpp 
+ * File-IO
+ */
 
 #include "global.hpp"
 
@@ -723,7 +725,6 @@ time_t file_create_time(const std::string& fname)
 	return buf.st_mtime;
 }
 
-//! Return the next ordered full filename within this directory.
 std::string next_filename(const std::string &dirname, unsigned int max)
 {
 	std::vector<std::string> files;

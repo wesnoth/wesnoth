@@ -38,12 +38,14 @@ namespace game_config
 
 	extern std::string wesnothd_name;
 
-	//! Default percentage gold carried over to the next scenario.
+	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
-	//! If true the carried over gold is added to the start gold
-	//! in the next scenario, otherwise it uses the maximum of
-	//! starting gold and carryover gold.
+	/**
+	 * If true the carried over gold is added to the start gold in the next
+	 * scenario, otherwise it uses the maximum of starting gold and carryover
+	 * gold.
+	 */
 	extern const bool gold_carryover_add;
 
 	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay, small_gui, disable_autosave;
@@ -58,7 +60,7 @@ namespace game_config
 	struct server_info {
 		server_info() : name(""), address("") { }
 		std::string name;
-		std::string address; //!< may include ':' followed by port number
+		std::string address; /**< may include ':' followed by port number */
 	};
 	extern std::vector<server_info> server_list;
 
@@ -85,11 +87,13 @@ namespace game_config
 	extern std::map<std::string, t_string> team_rgb_name;
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 
-	//! observer team name used for observer team chat
+	/** observer team name used for observer team chat */
 	extern const std::string observer_team_name;
 
-	//! The maximum number of hexes on a map and items in an array and also
-	//! used as maximum in wml loops.
+	/**
+	 * The maximum number of hexes on a map and items in an array and also used
+	 * as maximum in wml loops.
+	 */
 	extern const size_t max_loop;
 
 	namespace sounds {
