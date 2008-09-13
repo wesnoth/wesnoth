@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file map.cpp
-//! Routines related to game-maps, terrain, locations, directions. etc.
+/**
+ * @file map.cpp
+ * Routines related to game-maps, terrain, locations, directions. etc.
+ */
 
 #include "global.hpp"
 
@@ -319,10 +321,6 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 	}
 }
 
-//! gamemap constructor
-//!
-//! @param cfg          the game config
-//! @param data			the mapdata to load
 gamemap::gamemap(const config& cfg, const std::string& data):
 		tiles_(1),
 		terrainList_(),
@@ -348,9 +346,6 @@ gamemap::~gamemap()
 {
 }
 
-//! Reads a map
-//!
-//! @param data			the mapdata to load
 void gamemap::read(const std::string& data)
 {
 	// Initial stuff

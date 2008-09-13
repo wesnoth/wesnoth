@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file map.hpp 
-//! 
+/** @file map.hpp  */
 
 #ifndef MAP_H_INCLUDED
 #define MAP_H_INCLUDED
@@ -36,10 +35,13 @@ class unit_map;
 
 #define MAX_MAP_AREA	65536
 
-//! Encapsulates the map of the game. 
-//! Although the game is hexagonal, the map is stored as a grid. 
-//! Each type of terrain is represented by a multiletter terrain code.
-//! @todo Update for new map-format.
+/**
+ * Encapsulates the map of the game. 
+ *
+ * Although the game is hexagonal, the map is stored as a grid. 
+ * Each type of terrain is represented by a multiletter terrain code.
+ * @todo Update for new map-format.
+ */
 class gamemap
 {
 public:
@@ -56,21 +58,24 @@ public:
 	 */
 	std::string get_terrain_string(const t_translation::t_terrain& terrain) const;
 
-	//! Throws exception if the map file is not in the correct format.
+	/** Throws exception if the map file is not in the correct format. */
 	struct incorrect_format_exception {
 		incorrect_format_exception(const char* msg) : msg_(msg) {}
 		const char* const msg_;
 	};
 
-	//! Represents a location on the map.
+	/** Represents a location on the map. */
 	struct location {
-		//! Valid directions which can be moved in our hexagonal world.
+		/** Valid directions which can be moved in our hexagonal world. */
 		enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
 		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
 
 		static DIRECTION parse_direction(const std::string& str);
-		//! Parse_directions takes a comma-separated list,
-		//! and filters out any invalid directions
+
+		/**
+		 * Parse_directions takes a comma-separated list, and filters out any
+		 * invalid directions
+		 */
 		static std::vector<DIRECTION> parse_directions(const std::string& str);
 		static std::string write_direction(DIRECTION dir);
 
@@ -124,10 +129,12 @@ public:
 		static const location null_location;
 	};
 
-	//! Drawing order, copied from ordered_draw in display.hpp.
-	//!
-	//! This returns the order in which the units should be drawn so they overlap 
-	//! propererly.
+	/**
+	 * Drawing order, copied from ordered_draw in display.hpp.
+	 *
+	 * This returns the order in which the units should be drawn so they overlap 
+	 * propererly.
+	 */
 	static int get_drawing_order (const gamemap::location& loc )
 			{ return (loc.y * 2 + loc.x % 2) * 1024+loc.x; }
        
@@ -173,119 +180,158 @@ public:
         BOTH
 		};
 
-	//! Loads a map, with the given terrain configuration.
-	//! Data should be a series of lines, with each character 
-	//! representing one hex on the map. 
-	//! Starting locations are represented by numbers, 
-	//! and will be of type keep.
+	/**
+	 * Loads a map, with the given terrain configuration.
+	 *
+	 * Data should be a series of lines, with each character representing one
+	 * hex on the map.  Starting locations are represented by numbers, and will
+	 * be of type keep.
+	 *
+	 * @param cfg                 The game config.
+	 * @param data			      The mapdata to load.
+	 */
 	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
 	virtual ~gamemap();
+
+	/**
+	 * Reads a map
+	 *
+	 * @param data		          The mapdata to load.
+	 */
 	void read(const std::string& data);
 
 	std::string write() const;
 
-	//! Overlays another map onto this one at the given position.
+	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, const config& rules, const int x=0, const int y=0);
 
-	//! Effective map width.
+	/** Effective map width. */
 	int w() const { return w_; }
-	//! Effective map height.
+
+	/** Effective map height. */
 	int h() const { return h_; }
 
-	//! Size of the map border.
+	/** Size of the map border. */
 	int border_size() const { return border_size_; }
 
-	//! Real width of the map, including borders.
+	/** Real width of the map, including borders. */
 	int total_width()  const { return total_width_; }
-	//! Real height of the map, including borders
+
+	/** Real height of the map, including borders */
 	int total_height() const { return total_height_; }
 
 	const t_translation::t_terrain operator[](const gamemap::location& loc) const
 		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
 
-	//! Looks up terrain at a particular location. 
-	//! Hexes off the map may be looked up, 
-	//! and their 'emulated' terrain will also be returned.
-	//! This allows proper drawing of the edges of the map.
+	/**
+	 * Looks up terrain at a particular location. 
+	 *
+	 * Hexes off the map may be looked up, and their 'emulated' terrain will
+	 * also be returned.  This allows proper drawing of the edges of the map.
+	 */
 	t_translation::t_terrain get_terrain(const location& loc) const;
 
-	//! Writes the terrain at loc to cfg.
+	/** Writes the terrain at loc to cfg. */
 	void write_terrain(const gamemap::location &loc, config& cfg) const;
 
 
-	//! Manipulate starting positions of the different sides.
+	/** Manipulate starting positions of the different sides. */
 	const location& starting_position(int side) const;
 	int is_starting_position(const location& loc) const;
 	int num_valid_starting_positions() const;
 
 	void set_starting_position(int side, const location& loc);
 
-	//! Tell if a location is on the map. 
-	//! Should be called before indexing using [].
-	//! @todo inline for performace? -- Ilor
+	/**
+	 * Tell if a location is on the map. 
+	 *
+	 * Should be called before indexing using [].
+	 * @todo inline for performace? -- Ilor
+	 */
 	bool on_board(const location& loc) const;
 	bool on_board_with_border(const location& loc) const;
 
-	//! Tell if the map is of 0 size.
+	/** Tell if the map is of 0 size. */
 	bool empty() const
 	{
 		return w_ == 0 || h_ == 0;
 	}
 
-	//! Return a list of the locations of villages on the map
+	/** Return a list of the locations of villages on the map. */
 	const std::vector<location>& villages() const { return villages_; }
 
-	//! Get the corresponding terrain_type information object
-	//! for a given type of terrain.
+	/**
+	 * Get the corresponding terrain_type information object
+	 * for a given type of terrain.
+	 */
 	const terrain_type& get_terrain_info(const t_translation::t_terrain terrain) const;
 
-	//! Shortcut to get_terrain_info(get_terrain(loc)).
+	/** Shortcut to get_terrain_info(get_terrain(loc)). */
 	const terrain_type& get_terrain_info(const location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
 
-	//! Gets the list of terrains.
+	/** Gets the list of terrains. */
 	const t_translation::t_list& get_terrain_list() const
 		{ return terrainList_; }
 
-	//! Clobbers over the terrain at location 'loc', with the given terrain.
-	//! Uses mode and replace_if_failed like merge_terrains().
+	/**
+	 * Clobbers over the terrain at location 'loc', with the given terrain.
+	 * Uses mode and replace_if_failed like merge_terrains().
+	 */
 	void set_terrain(const location& loc, const t_translation::t_terrain terrain, const tmerge_mode mode=BOTH, bool replace_if_failed = false);
 
-	//! Returns a list of the frequencies of different terrain types on the map, 
-	//! with terrain nearer the center getting weighted higher.
+	/**
+	 * Returns a list of the frequencies of different terrain types on the map,
+	 * with terrain nearer the center getting weighted higher.
+	 */
 	const std::map<t_translation::t_terrain, size_t>& get_weighted_terrain_frequencies() const;
-	//! Remove the cached border terrain at loc. 
-	//! Needed by the editor to make tiles at the border update correctly 
-	//! when drawing other tiles.
+
+	/**
+	 * Remove the cached border terrain at loc. 
+	 *
+	 * Needed by the editor to make tiles at the border update correctly when
+	 * drawing other tiles.
+	 */
 	void remove_from_border_cache(const location &loc)
 		{ borderCache_.erase(loc); }
 
-	//! Maximum number of players supported. 
-	//! Warning: when you increase this, you need to add 
-	//! more definitions to the team_colors.cfg file.
+	/**
+	 * Maximum number of players supported. 
+	 *
+	 * Warning: when you increase this, you need to add 
+	 * more definitions to the team_colors.cfg file.
+	 */
 	enum { MAX_PLAYERS = 9 };
 
-	//! Returns the usage of the map.
+	/** Returns the usage of the map. */
 	tusage get_usage() const { return usage_; }
 
-	//! The default map header, needed for maps created with 
-	//! terrain_translation::write_game_map().
+	/**
+	 * The default map header, needed for maps created with 
+	 * terrain_translation::write_game_map().
+	 */
 	static const std::string default_map_header;
-	//! The default border style for a map
+
+	/** The default border style for a map. */
 	static const tborder default_border;
 
-	//! Tries to merge old and new terrain using the merge_settings config
-    //! Relevant parameters are "layer" and "replace_conflicting"
-    //! "layer" specifies the layer that should be replaced (base or overlay, default is both). 
-    //! If "replace_conflicting" is true the new terrain will replace the old one if merging failed
-    //! (using the default base if new terrain is an overlay terrain)
-    //! Will return the resulting terrain or NONE_TERRAIN if merging failed
+	/**
+	 * Tries to merge old and new terrain using the merge_settings config
+     * Relevant parameters are "layer" and "replace_conflicting"
+     * "layer" specifies the layer that should be replaced (base or overlay, default is both). 
+     * If "replace_conflicting" is true the new terrain will replace the old one if merging failed
+     * (using the default base if new terrain is an overlay terrain)
+     * Will return the resulting terrain or NONE_TERRAIN if merging failed
+	 */
     t_translation::t_terrain merge_terrains(const t_translation::t_terrain old_t, const t_translation::t_terrain new_t, const tmerge_mode mode, bool replace_if_failed = false);
 	
 protected:
 	t_translation::t_map tiles_;
-	//! The size of the starting positions array is MAX_PLAYERS + 1, 
-	//! because the positions themselves are numbered from 1.
+
+	/**
+	 * The size of the starting positions array is MAX_PLAYERS + 1, 
+	 * because the positions themselves are numbered from 1.
+	 */
 	location startingPositions_[MAX_PLAYERS+1];
 
 	/**
@@ -297,12 +343,15 @@ private:
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 
-	//! Allows lookup of terrain at a particular location.
+	/** Allows lookup of terrain at a particular location. */
 	const t_translation::t_list operator[](int index) const
 		{ return tiles_[index + border_size_]; }
 
-	//! Tries to find out if "terrain" can be created by combining two existing terrains
-	//! Will add the resulting terrain to the terrain list if successfull
+	/**
+	 * Tries to find out if "terrain" can be created by combining two existing
+	 * terrains Will add the resulting terrain to the terrain list if
+	 * successfull
+	 */
 	bool try_merge_terrains(const t_translation::t_terrain terrain);
 
 	t_translation::t_list terrainList_;
@@ -313,18 +362,19 @@ private:
 	mutable std::map<t_translation::t_terrain, size_t> terrainFrequencyCache_;
 
 protected:
-	//! Sizes of the map area.
+	/** Sizes of the map area. */
 	int w_;
 	int h_;
 
-	//! Sizes of the map including the borders.
+	/** Sizes of the map including the borders. */
 	int total_width_;
 	int total_height_;
 	
 private:
-	//! The size of the border around the map.
+	/** The size of the border around the map. */
 	int border_size_;
-	//! The kind of map is being loaded.
+
+	/** The kind of map is being loaded. */
 	tusage usage_;
 };
 
@@ -336,11 +386,11 @@ public:
 	virtual ~viewpoint() {};
 };
 
-//! Parses ranges of locations into a vector of locations.
+/** Parses ranges of locations into a vector of locations. */
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,
 	const std::string& yvals, const gamemap *const map=NULL);
 
-//! Dumps a position on a stream, for debug purposes.
+/** Dumps a position on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
 
 #endif
