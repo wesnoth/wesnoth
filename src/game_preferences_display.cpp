@@ -921,7 +921,7 @@ void preferences_dialog::process_event()
 				to_remove = friends_names_[friends_.selection()];
 			}
 			if(!to_remove.empty()) {
-				//! @todo Better to remove from a specific relation.
+				//! @t**o Better to remove from a specific relation. */
 				preferences::remove_friend(to_remove);
 				preferences::remove_ignore(to_remove);
 				friends_input_.clear();
