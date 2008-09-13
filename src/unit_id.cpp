@@ -15,6 +15,8 @@
 #include "log.hpp"
 #include "unit_id.hpp"
 
+#define DBG_UT LOG_STREAM(debug, engine)
+
 namespace n_unit {
 	id_manager id_manager::manager_;
 
@@ -28,7 +30,7 @@ namespace n_unit {
 
 	size_t id_manager::next_id()
 	{
-		std::cerr << "id: " << next_id_ << "\n";
+		DBG_UT << "id: " << next_id_ << "\n";
 		return ++next_id_;
 	}
 
@@ -39,7 +41,7 @@ namespace n_unit {
 
 	void id_manager::set_save_id(size_t id)
 	{
-		std::cerr << "set save id: " << id << "\n";
+		DBG_UT << "set save id: " << id << "\n";
 		next_id_ = id;
 	}
 
