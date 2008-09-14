@@ -276,7 +276,7 @@ private:
 	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
 
-	user_handler* user_handler_;
+	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<network::connection,std::string> seeds_;
 
 	//! std::map<network::connection,player>
@@ -343,9 +343,8 @@ private:
 	//! Handle private messages between players.
 	void process_whisper(const network::connection sock,
 	                     simple_wml::node& whisper) const;
-    //! Handle nickname registreation related requests from clients
-	void process_nickserv(const network::connection sock,
-	                   simple_wml::node& data);
+	//! Handle nickname registration related requests from clients
+	void process_nickserv(const network::connection sock, simple_wml::node& data);
 	void process_data_lobby(const network::connection sock,
 	                        simple_wml::document& data);
 	void process_data_game(const network::connection sock,
@@ -402,32 +401,6 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 #endif
 	signal(SIGINT, exit_sigint);
 	signal(SIGTERM, exit_sigterm);
-
-	// If there is a [user_handler] tag in the config file
-	// allow nick registration, otherwise we set user_handler_
-	// to NULL. Thus we must check user_handler_ for not being
-	// NULL everytime we want to use it.
-
-	if(cfg_.child("user_handler")) {
-		// samples_user_handler is broken, see above
-		/*if(cfg_["user_handler"] == "sample") {
-			user_handler_ = new suh(*(cfg_.child("user_handler")));
-		} else*/ if (cfg_["user_handler"] == "forum") {
-			#ifdef HAVE_MYSQLPP
-			user_handler_ = new fuh(*(cfg_.child("user_handler")));
-			#endif
-			#ifndef HAVE_MYSQLPP
-			user_handler_ = NULL;
-			#endif
-		}
-
-		// Initiate the mailer class with the [mail] tag
-		// from the config file
-		if(user_handler_) user_handler_->init_mailer(cfg_.child("mail"));
-
-	} else {
-		user_handler_ = NULL;
-	}
 }
 
 void server::send_error(network::connection sock, const char* msg) const
@@ -557,6 +530,21 @@ void server::load_config() {
 		}
 	}
 	ban_manager_.load_config(cfg_);
+
+	// If there is a [user_handler] tag in the config file
+	// allow nick registration, otherwise we set user_handler_
+	// to NULL. Thus we must check user_handler_ for not being
+	// NULL everytime we want to use it.
+	user_handler_.reset();
+
+#ifdef HAVE_MYSQLPP
+	if (const simple_wml::node* const user_handler = cfg_.child("user_handler")) {
+		user_handler_.reset(new fuh(*user_handler));
+		// Initiate the mailer class with the [mail] tag
+		// from the config file
+		if (user_handler_) user_handler_->init_mailer(cfg_.child("mail"));
+	}
+#endif
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const {
