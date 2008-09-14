@@ -145,7 +145,7 @@ public:
 	void show_upload_begging();
 
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
-	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
+	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
 #ifndef DISABLE_EDITOR2
 	editor2::EXIT_STATUS start_editor();
@@ -369,8 +369,7 @@ game_controller::game_controller(int argc, char** argv) :
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
 		} else {
-
-		  std::cerr << "Setting path using " << val << std::endl;
+		  std::cerr << "Overriding data directory with " << val << std::endl;
 			if(val[0] == '/') {
 				game_config::path = val;
 			} else if (val == "." || val == "./") {
@@ -386,7 +385,10 @@ game_controller::game_controller(int argc, char** argv) :
 
 		}
 	}
-	std::cerr << "Data at '" << game_config::path << "'\n";
+	std::cerr << '\n';
+	std::cerr << "Data directory: " << game_config::path << '\n'
+	          << "User configuration directory: " << get_user_data_dir() << '\n'
+	          << '\n';
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -611,7 +613,7 @@ bool game_controller::play_test()
 
 	try {
 		upload_log nolog(false);
-		::play_game(disp(),state_,game_config_,nolog);
+		play_game(disp(),state_,game_config_,nolog);
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
@@ -807,7 +809,7 @@ bool game_controller::play_multiplayer_mode()
 	try {
 		upload_log nolog(false);
 		state_.snapshot = level;
-		::play_game(disp(),state_,game_config_,nolog);
+		play_game(disp(),state_,game_config_,nolog);
 	} catch(game::error& e) {
 		std::cerr << "caught error: '" << e.message << "'\n";
 	} catch(game::load_game_exception& e) {
@@ -1102,7 +1104,7 @@ bool game_controller::goto_campaign()
 	if(jump_to_campaign_){
 		jump_to_campaign_ = false;
 		if(new_campaign()) {
-			play_game(game_controller::RELOAD_DATA);
+			launch_game(game_controller::RELOAD_DATA);
 		}else{
 			return false;
 		}
@@ -1520,7 +1522,7 @@ void game_controller::load_game_cfg()
 }
 
 
-void game_controller::play_game(RELOAD_GAME_DATA reload)
+void game_controller::launch_game(RELOAD_GAME_DATA reload)
 {
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
 	loadscreen::global_loadscreen->set_progress(0, _("Loading data files"));
@@ -1552,7 +1554,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 					   || state_.campaign_type == "scenario"
 					   || state_.campaign_type == "tutorial");
 
-		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_, log);
+		const LEVEL_RESULT result = play_game(disp(),state_,game_config_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if((result == VICTORY || result == LEVEL_CONTINUE_NO_SAVE) && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
@@ -1737,7 +1739,7 @@ static int process_command_args(int argc, char** argv) {
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
-			std::cout << _("Battle for Wesnoth") << " " << game_config::version
+			std::cout << "Battle for Wesnoth" << " " << game_config::version
 			          << "\n";
 			return 0;
 		} else if (val == "--config-path") {
@@ -1839,8 +1841,11 @@ static void init_locale() {
 	textdomain (PACKAGE);
 }
 
-/** Setups the game environment */
-static int play_game(int argc, char** argv)
+/**
+ * Setups the game environment and enters
+ * the titlescreen or game loops.
+ */
+static int do_gameloop(int argc, char** argv)
 {
 	int finished = process_command_args(argc, argv);
 	if(finished != -1) {
@@ -2038,7 +2043,7 @@ static int play_game(int argc, char** argv)
 		}
 
 		if (recorder.at_end()){
-			game.play_game(should_reload);
+			game.launch_game(should_reload);
 		}
 		else{
 			game.play_replay();
@@ -2056,6 +2061,10 @@ int main(int argc, char** argv)
 	}
 
 	try {
+		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
+		const time_t t = time(NULL);
+		std::cerr << "Started on " << ctime(&t) << "\n";
+
 		/**
 		 * @todo We try to guess the name of the server from the name of the
 		 * binary started. This is very fragile it breaks in at least the
@@ -2063,27 +2072,25 @@ int main(int argc, char** argv)
 		 * - Wesnoth got renamed to something without wesnoth in it.
 		 * - Wesnoth got a pre/suffix but the server not.
 		 */
-		std::string program(argv[0]);
-		std::string wesnoth("wesnoth");
+		std::string program = argv[0];
+		const std::string wesnoth = "wesnoth";
 		const size_t offset = program.rfind(wesnoth);
 		if(offset != std::string::npos) {
 			program.replace(offset, wesnoth.length(), "wesnothd");
 			game_config::wesnothd_name = program;
 		} else {
-			std::cerr << "Wesnoth doesn't have the name wesnoth, so can't locate the server.\n";
+			std::cerr << "Game executable doesn't have the name \"" << wesnoth
+			          << "\" or similar; impossible to guess the server executable name.\n";
 		}
 
-		std::string exe_dir = get_exe_dir();
+		const std::string exe_dir = get_exe_dir();
 		if(!exe_dir.empty() && file_exists(exe_dir + "/data/_main.cfg")) {
-			std::cerr << "Found a data directory at " + exe_dir + ", setting path to it.\n";
+			std::cerr << "Automatically found a possible data directory at "
+			          << exe_dir << '\n';
 			game_config::path = exe_dir;
 		}
 
-		std::cerr << "Battle for Wesnoth v" << game_config::revision << '\n';
-		time_t t = time(NULL);
-		std::cerr << "Started on " << ctime(&t) << "\n";
-
-		const int res = play_game(argc,argv);
+		const int res = do_gameloop(argc,argv);
 		safe_exit(res);
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
