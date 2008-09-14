@@ -174,7 +174,6 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 
 		if(u_itor->second.side() == team_num_ 
 				&& u_itor->second.movement_left()) {
-
 			reachmap.insert(std::make_pair(u_itor->first,	std::vector<gamemap::location>()));
 		}
 	}
@@ -261,7 +260,7 @@ void ai::find_villages(
 {
 	std::map<location, double> vulnerability;
 
-	const bool passive_leader = 
+	const bool passive_leader = recruiting_prefered_ ||  
 		utils::string_bool(current_team().ai_parameters()["passive_leader"]);
 
 	size_t min_distance = 100000;

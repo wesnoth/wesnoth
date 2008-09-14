@@ -25,7 +25,10 @@
 #include <cassert>
 #include <iostream>
 
+#include <queue>
+
 #define LOG_AI LOG_STREAM(info, ai)
+#define DBG_AI LOG_STREAM(debug, ai)
 
 struct move_cost_calculator : cost_calculator
 {
@@ -433,8 +436,11 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 		assert(map_.on_board(tg->loc));
 
-		const double locStopValue = std::min(tg->value / best_rating, 500.0);
+		const double locStopValue = 500.0;
 		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
+
+		if (cur_route.move_left == cost_calc.getNoPathValue())
+			continue;
 
 		if (cur_route.move_left < locStopValue)
 		{
@@ -790,3 +796,114 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 		}
 	}
 }
+
+struct keep_value {
+	size_t value;
+	gamemap::location loc;
+
+	keep_value(size_t v, const gamemap::location& l) : value(v), loc(l)
+	{}
+	bool operator<(const keep_value& val) const 
+	{
+		return value > val.value;
+	}
+};
+
+
+void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
+{
+	const unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end() 
+		|| leader->second.incapacitated() 
+		|| leader->second.movement_left() == 0
+		|| !recruiting_prefered_) {
+		return;
+	}
+
+	std::map<gamemap::location,paths> possible_moves;
+	std::map<gamemap::location,paths>::iterator path_itor = possible_moves.insert(std::make_pair(leader->first, paths())).first;
+
+	// Guess how many units we want to recruit
+	const int number_of_recruit = current_team().gold() / 15;
+
+	// If the leader is not on his starting location, move him there.
+	{
+		{
+			// Make a map of the possible locations the leader can move to,
+			// ordered by the distance from the keep.
+			std::priority_queue<keep_value> moves_toward_keep;
+
+			// The leader can't move to his keep, try to move to the closest location
+			// to the keep where there are no enemies in range.
+			for(std::set<location>::iterator i = keeps().begin();
+					i != keeps().end(); ++i) {
+
+				const shortest_path_calculator cost_calc(leader->second, current_team(), units_,
+						teams_,map_);
+				
+				paths::routes_map::iterator route = path_itor->second.routes.insert(
+						std::make_pair(*i,
+							a_star_search(leader->first, *i, 10000.0, &cost_calc,map_.w(), map_.h()))).first;
+
+				std::set<gamemap::location> checked_hexes;
+				const int distance = route->second.steps.size()-1;
+				checked_hexes.insert(*i);
+				const int free_slots = count_free_hexes_in_castle(*i, checked_hexes);
+				const int tactical_value = leader->second.total_movement() * 0;
+				const int empty_slots = leader->second.total_movement() * std::max(number_of_recruit - free_slots,0);
+				unit_map::const_iterator u = units_.find(*i);
+				const int reserved_penalty = leader->second.total_movement() * 
+					(u != units_.end()?
+						(current_team().is_enemy(u->second.side())?4:2)
+					:0);
+				const int enemy = leader->second.total_movement() * enemy_dstsrc.count(*i);
+				gamemap::location target;
+				if (distance > leader->second.movement_left())
+				{
+					target = route->second.steps[leader->second.movement_left()+1];
+					route->second.steps.erase(route->second.steps.begin() + leader->second.movement_left(),route->second.steps.end());
+					route->second.move_left = 0;
+				} else {
+					target = *i;
+					route->second.move_left = leader->second.movement_left() - distance;
+				}
+				DBG_AI << "Considiring keep: " << *i << 
+					" empty slots: " << empty_slots << 
+					" distance: " << distance << 
+					" enemy: " << enemy << 
+					" target: " << target <<
+				    " route: " << route->second.steps.size() << " " << route->second.move_left << 	
+					"\n";
+				moves_toward_keep.push(keep_value(distance + empty_slots + enemy + tactical_value + reserved_penalty ,target));
+			}
+
+			// Find the location with the best value
+			if (leader->first != moves_toward_keep.top().loc)
+				move_unit(leader->first,moves_toward_keep.top().loc,possible_moves);
+		}
+	}
+}
+
+int ai::count_free_hexes_in_castle(const gamemap::location& loc, std::set<gamemap::location>& checked_hexes)
+{
+	int ret = 0;
+	location adj[6];
+	get_adjacent_tiles(loc,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		if (checked_hexes.find(adj[n]) != checked_hexes.end())
+			continue;
+		checked_hexes.insert(adj[n]);
+		if (map_.is_castle(adj[n])) {
+			const unit_map::const_iterator u = units_.find(adj[n]);
+			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
+			if (u == units_.end() 
+				|| (current_team().is_enemy(u->second.side()) 
+					&& u->second.invisible(adj[n], units_, teams_))) {
+				ret += 1;
+			}
+		}
+	}
+	return ret;
+}
+
+

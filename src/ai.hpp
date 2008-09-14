@@ -338,6 +338,9 @@ protected:
 	/** Functions to deal with keeps. */
 	const std::set<location>& keeps();
 	const location& nearest_keep(const location& loc);
+	int count_free_hexes_in_castle(const gamemap::location& loc, std::set<gamemap::location>&);
+
+	void evaluate_recruiting_value(unit_map::iterator leader);
 
 	std::set<location> keeps_;
 
@@ -373,6 +376,9 @@ private:
 		const std::multimap<gamemap::location,gamemap::location>& dstsrc,
 		const std::map<gamemap::location,paths>& possible_moves,
 		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
+	
+	bool recruiting_prefered_;
+	static const int min_recruiting_value_to_force_recruit = 28;
 };
 
 class ai_manager {

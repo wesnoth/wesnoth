@@ -47,6 +47,7 @@
 #include <cassert>
 #include <fstream>
 
+
 #define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)
@@ -293,7 +294,8 @@ ai::ai(ai_interface::info& info) :
 	keeps_(),
 	avoid_(),
 	unit_stats_cache_(),
-	attack_depth_(0)
+	attack_depth_(0),
+	recruiting_prefered_(false)
 {}
 
 void ai::new_turn()
@@ -335,10 +337,10 @@ bool ai::recruit_usage(const std::string& usage)
 	{
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
-		DBG_AI << name << " considered\n";
+//		DBG_AI << name << " considered\n";
 		if (i->second.usage() == usage || usage == "") {
 			if (!recruits.count(name)) {
-				DBG_AI << name << " rejected, not in recruitment list\n";
+//				DBG_AI << name << " rejected, not in recruitment list\n";
 				continue;
 			}
 			LOG_AI << name << " considered for " << usage << " recruitment\n";
@@ -489,7 +491,7 @@ gamemap::location ai_interface::move_unit(location from, location to,
 		if(u->second.movement_left()==u->second.total_movement()) {
 			u->second.set_movement(0);
 			u->second.set_state("not_moved","yes");
-		} else {
+		} else if (from == loc) {
 			u->second.set_movement(0);
 		}
 	}
@@ -532,25 +534,26 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		}
 
 		if(rt != p.routes.end()) {
+			assert(static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size()-1 && "Trying to move unit without enough move points left\n");
 			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
 
 			while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
-				    LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
-				    LOG_AI << "\t" << info_.units.find(to)->second.underlying_id() <<" already on " << to << "\n";
-				    LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
-				    to = *(steps.end()-1);
-				    steps.pop_back();
-				    LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
+				LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
+				LOG_AI << "\t" << info_.units.find(to)->second.underlying_id() <<" already on " << to << "\n";
+				LOG_AI <<"\tremoving "<<*(steps.end()-1)<<"\n";
+				to = *(steps.end()-1);
+				steps.pop_back();
+				LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
 			}
 
 			if(steps.size()) { // First step is starting hex
-			  unit_map::const_iterator utest=info_.units.find(*(steps.begin()));
-			  if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
-			    LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
-			    //			    return(from);
-			  }
+				unit_map::const_iterator utest=info_.units.find(*(steps.begin()));
+				if(utest != info_.units.end() && current_team().is_enemy(utest->second.side())){
+					LOG_STREAM(err, ai) << "AI tried to move onto existing enemy unit at"<<*(steps.begin())<<"\n";
+					//			    return(from);
+				}
 
 				// Check if there are any invisible units that we uncover
 				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
@@ -568,27 +571,27 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 						const unit_map::const_iterator u = info_.units.find(adj[n]);
 						// If level 0 is invisible it ambush us too
 						if (u != info_.units.end() && (u->second.emits_zoc() || u->second.invisible(adj[n], info_.units, info_.teams))
-							&& current_team().is_enemy(u->second.side())) {
+								&& current_team().is_enemy(u->second.side())) {
 							if (u->second.invisible(adj[n], info_.units, info_.teams)) {
 								to = *i;
 								u->second.ambush();
 								steps.erase(i,steps.end());
 								break;
 							} else {
-							  if (!u_it->second.get_ability_bool("skirmisher",*i)){
-							    LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
-							    LOG_AI << "\tresetting destination from " <<to;
-							    to = *i;
-							    LOG_AI << " to " << to;
-							    steps.erase(i,steps.end());
-							    while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
-								 to = *(steps.end()-1);
-								 steps.pop_back();
-								 LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
-							    }
+								if (!u_it->second.get_ability_bool("skirmisher",*i)){
+									LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+									LOG_AI << "\tresetting destination from " <<to;
+									to = *i;
+									LOG_AI << " to " << to;
+									steps.erase(i,steps.end());
+									while(steps.empty() == false && (!(info_.units.find(to) == info_.units.end() || from == to))){
+										to = *(steps.end()-1);
+										steps.pop_back();
+										LOG_AI << "\tresetting to " << from << " -> " << to << '\n';
+									}
 
-							    break;
-							  }
+									break;
+								}
 							}
 						}
 					}
@@ -726,7 +729,8 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 			possible_moves_ptr = &temp_possible_moves;
 		}
 
-		do_recruitment();
+		if (map_.is_keep(from))
+			do_recruitment();
 	}
 
 	if(units_.count(to) == 0 || from == to) {
@@ -795,7 +799,8 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			continue;
 		}
 		// Discount incapacitated units
-		if(un_it->second.incapacitated()) {
+		if(un_it->second.incapacitated() 
+			|| un_it->second.movement_left() == 0) {
 			continue;
 		}
 
@@ -960,6 +965,14 @@ void ai::play_turn()
 	}
 }
 
+void ai::evaluate_recruiting_value(unit_map::iterator leader)
+{
+	const int gold = current_team().gold();
+//	const int unit_price = current_team().average_recruit_price();
+//	recruiting_prefered_ = (gold/unit_price) > min_recruiting_value_to_force_recruit && !map_.is_keep();
+	recruiting_prefered_ = gold > min_recruiting_value_to_force_recruit && !map_.is_keep(leader->first);
+}
+
 void ai::do_move()
 {
 	log_scope2(ai, "doing ai move");
@@ -980,9 +993,13 @@ void ai::do_move()
 
 	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"]);
 
-	if (passive_leader) {
-		unit_map::iterator leader = find_leader(units_,team_num_);
-		if(leader != units_.end()) {
+
+	unit_map::iterator leader = find_leader(units_,team_num_);
+	if (leader != units_.end())
+	{
+		evaluate_recruiting_value(leader);
+		if (passive_leader)
+		{
 			remove_unit_from_moves(leader->first,srcdst,dstsrc);
 		}
 	}
@@ -1037,7 +1054,7 @@ void ai::do_move()
 	LOG_AI << "get villages phase\n";
 
 	// Iterator could be invalidated by combat analysis or move_leader_to_goals.
-	unit_map::iterator leader = find_leader(units_,team_num_);
+	leader = find_leader(units_,team_num_);
 
 	LOG_AI << "villages...\n";
 	if(get_villages(possible_moves, dstsrc, enemy_dstsrc, leader)) {
@@ -1089,7 +1106,8 @@ void ai::do_move()
 			move_leader_to_keep(enemy_dstsrc);
 		}
 
-		do_recruitment();
+		if (map_.is_keep(leader->first))
+			do_recruitment();
 
 		if(!passive_leader) {
 			move_leader_after_recruit(srcdst,dstsrc,enemy_dstsrc);
@@ -1135,6 +1153,16 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		LOG_AI << "attack option rated at " << rating << " ("
 			<< current_team().aggression() << ")\n";
 
+		if (recruiting_prefered_)
+		{
+			unit_map::unit_iterator u = units_.find(it->movements[0].first);
+			if (u != units_.end()
+				&& u->second.can_recruit())
+			{
+				LOG_AI << "Not fighting with leader because recruiting is more preferable\n";
+				continue;
+			}
+		}
 		if(rating > choice_rating) {
 			choice_it = it;
 			choice_rating = rating;
@@ -1144,7 +1172,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	time_taken = SDL_GetTicks() - ticks;
 	LOG_AI << "analysis took " << time_taken << " ticks\n";
 
-	if(choice_rating > 0.0) {
+	if(choice_rating > current_team().caution()) {
 		location from   = choice_it->movements[0].first;
 		location to     = choice_it->movements[0].second;
 		location target_loc = choice_it->target;
@@ -1916,64 +1944,12 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	}
 }
 
-void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
-{
-	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.incapacitated()) {
-		return;
-	}
-
-	// Find where the leader can move
-	const paths leader_paths(map_, units_, leader->first,
-			teams_, false, false, current_team());
-	const gamemap::location& start_pos = nearest_keep(leader->first);
-
-	std::map<gamemap::location,paths> possible_moves;
-	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
-
-	// If the leader is not on his starting location, move him there.
-	if(leader->first != start_pos) {
-		const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
-		if(itor != leader_paths.routes.end() && units_.count(start_pos) == 0) {
-			move_unit(leader->first,start_pos,possible_moves);
-		} else {
-			// Make a map of the possible locations the leader can move to,
-			// ordered by the distance from the keep.
-			std::multimap<int,gamemap::location> moves_toward_keep;
-
-			// The leader can't move to his keep, try to move to the closest location
-			// to the keep where there are no enemies in range.
-			const int current_distance = distance_between(leader->first,start_pos);
-			for(paths::routes_map::const_iterator i = leader_paths.routes.begin();
-					i != leader_paths.routes.end(); ++i) {
-
-				const int new_distance = distance_between(i->first,start_pos);
-				if(new_distance < current_distance) {
-					moves_toward_keep.insert(std::pair<int,gamemap::location>(new_distance,i->first));
-				}
-			}
-
-			// Find the first location which we can move to,
-			// without the threat of enemies.
-			for(std::multimap<int,gamemap::location>::const_iterator j = moves_toward_keep.begin();
-					j != moves_toward_keep.end(); ++j) {
-
-				if(enemy_dstsrc.count(j->second) == 0) {
-					move_unit(leader->first,j->second,possible_moves);
-					break;
-				}
-			}
-		}
-	}
-}
-
 void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 		const move_map& /*dstsrc*/, const move_map& enemy_dstsrc)
 {
-	LOG_AI << "moving leader after recruit...\n";
 
 	unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.incapacitated()) {
+	if(leader == units_.end() || leader->second.incapacitated() || leader->second.movement_left() == 0) {
 		return;
 	}
 
