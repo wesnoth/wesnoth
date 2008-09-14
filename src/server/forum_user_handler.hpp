@@ -39,7 +39,7 @@
 
 class fuh : public user_handler {
 	public:
-		fuh(config c);
+		fuh(const config& c);
 		~fuh() {}
 
 		void add_user(const std::string& name, const std::string& mail, const std::string& password);

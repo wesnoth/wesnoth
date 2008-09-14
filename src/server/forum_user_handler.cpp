@@ -19,7 +19,7 @@
 #include <stdlib.h> 
 #include <sstream>
 
-fuh::fuh(config c) {
+fuh::fuh(const config& c) {
 	db_name_ = c["db_name"];
 	db_host_ = c["db_host"];
 	db_user_ = c["db_user"];

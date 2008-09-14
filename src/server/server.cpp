@@ -538,7 +538,7 @@ void server::load_config() {
 	user_handler_.reset();
 
 #ifdef HAVE_MYSQLPP
-	if (const simple_wml::node* const user_handler = cfg_.child("user_handler")) {
+	if (const config* user_handler = cfg_.child("user_handler")) {
 		user_handler_.reset(new fuh(*user_handler));
 		// Initiate the mailer class with the [mail] tag
 		// from the config file
