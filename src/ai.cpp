@@ -1274,7 +1274,8 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 		// 1/2 round worth of healing, and doesn't regenerate itself,
 		// then try to find a vacant village for it to rest in.
 		if(u.side() == team_num_ &&
-		   u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2 &&
+		   (u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2
+		   || utils::string_bool(u.get_state("poisoned"))) &&
 		   !u.get_ability_bool("regenerate",u_it->first)) {
 
 			// Look for the village which is the least vulnerable to enemy attack.
@@ -1287,7 +1288,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 				if(map_.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
 					const double vuln = power_projection(it.first->first, enemy_dstsrc);
 					LOG_AI << "found village with vulnerability: " << vuln << "\n";
-					if(vuln < best_vulnerability || best_loc == it.second) {
+					if(vuln < best_vulnerability) {
 						best_vulnerability = vuln;
 						best_loc = it.first;
 						LOG_AI << "chose village " << dst << '\n';
@@ -1304,7 +1305,9 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 
 				LOG_AI << "moving unit to village for healing...\n";
 
-				move_unit(src,dst,possible_moves);
+				unit_map::iterator u = units_.find(move_unit(src,dst,possible_moves));
+				if (u != units_.end())
+					u->second.set_movement(0);
 				return true;
 			}
 		}
