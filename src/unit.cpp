@@ -3050,7 +3050,7 @@ void unit::set_underlying_id() {
 
 void unit::clone()
 {
-	underlying_id_ = n_unit::id_manager::instance().next_id();
+	underlying_id_ = n_unit::id_manager::instance().next_fake_id();
 
 }
 

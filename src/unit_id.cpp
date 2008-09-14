@@ -15,12 +15,14 @@
 #include "log.hpp"
 #include "unit_id.hpp"
 
+#include <cassert>
+
 #define DBG_UT LOG_STREAM(debug, engine)
 
 namespace n_unit {
 	id_manager id_manager::manager_;
 
-	id_manager::id_manager() : next_id_(0)
+	id_manager::id_manager() : next_id_(0), fake_id_(-1)
 	{}
 
 	id_manager& id_manager::instance()
@@ -30,8 +32,15 @@ namespace n_unit {
 
 	size_t id_manager::next_id()
 	{
+		assert(next_id_ != fake_id_);
 		DBG_UT << "id: " << next_id_ << "\n";
 		return ++next_id_;
+	}
+
+	size_t id_manager::next_fake_id()
+	{
+		assert(next_id_ != fake_id_);
+		return --fake_id_;
 	}
 
 	size_t id_manager::get_save_id()

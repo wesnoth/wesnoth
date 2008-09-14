@@ -25,12 +25,15 @@ namespace n_unit {
 	class id_manager : private boost::noncopyable {
 		private:
 			size_t next_id_;
+			size_t fake_id_;
 			static id_manager manager_;
 			id_manager();
 		public:
 			static id_manager& instance();
 			/** returns id for unit that is created */
 			size_t next_id();
+
+			size_t next_fake_id();
 
 			/** Used for saving id to savegame */
 			size_t get_save_id();
