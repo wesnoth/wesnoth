@@ -61,7 +61,7 @@
   !insertmacro MUI_PAGE_INSTFILES
 
   !define MUI_FINISHPAGE_RUN wesnoth.exe
-  !define MUI_PAGE_FINISH
+  !insertmacro MUI_PAGE_FINISH
   
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
