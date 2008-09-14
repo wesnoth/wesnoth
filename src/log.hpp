@@ -13,7 +13,8 @@
    See the COPYING file for more details.
 */
 
-/** @file log.hpp */
+//! @file log.hpp
+//! Standard logging facilities (interface).
 
 #ifndef LOG_HPP_INCLUDED
 #define LOG_HPP_INCLUDED

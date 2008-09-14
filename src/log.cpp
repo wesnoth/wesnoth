@@ -15,8 +15,8 @@
 
 /**
  * @file log.cpp
- * Logger for debugging.
- * See also wesnoth-commandline-params --logdomains and --log-<level>="domain".
+ * Standard logging facilities (implementation).
+ * See also the command line switches --logdomains and --log-<level>="domain".
  */
 
 #include "global.hpp"
