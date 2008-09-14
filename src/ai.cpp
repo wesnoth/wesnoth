@@ -553,7 +553,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 			  }
 
 				// Check if there are any invisible units that we uncover
-				for(std::vector<location>::iterator i = steps.begin(); i != steps.end(); ++i) {
+				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
 					location adj[6];
 					get_adjacent_tiles(*i,adj);
 
