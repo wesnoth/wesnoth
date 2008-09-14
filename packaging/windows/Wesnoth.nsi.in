@@ -32,6 +32,7 @@
 ;--------------------------------
 ;Interface Settings
 
+  !define MUI_WELCOMEFINISHPAGE_BITMAP packaging\windows\WindowsInstallerGraphic.bmp
   !define MUI_ABORTWARNING
 
 ;--------------------------------
@@ -45,6 +46,7 @@
 ;--------------------------------
 ;Pages
 
+  !insertmacro MUI_PAGE_WELCOME
   !insertmacro MUI_PAGE_LICENSE "COPYING"
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
@@ -57,6 +59,9 @@
   !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
   !insertmacro MUI_PAGE_INSTFILES
+
+  !define MUI_FINISHPAGE_RUN wesnoth.exe
+  !define MUI_PAGE_FINISH
   
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
