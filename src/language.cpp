@@ -108,14 +108,17 @@ bool language_def::operator== (const language_def& a) const
 
 bool language_def::available() const
 {
-#ifndef _WIN32
+#ifdef _WIN32
+	// Under windows all locales are available and testing for it seems to fail
+	// so just return true.
+	return true;
+#endif
+
 	if (game_config::use_dummylocales)
 	{
 		// Dummy has every language available.
 		return true;
-	}else
-#endif
-	{
+	} else {
 		if(has_language(localename)) {
 			return true;
 		} else {
