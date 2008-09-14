@@ -33,7 +33,8 @@
 //	db_host=localhost
 //	db_user=root
 //	db_password=secret
-//	db_table=users
+//	db_users_table=users
+//	db_extra_table=extra_data
 //[/user_handler]
 
 
@@ -75,17 +76,21 @@ class fuh : public user_handler {
 
 		void set_lastlogin(const std::string& user, const time_t& lastlogin);
 
-		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_;
+		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_extra_table_;
 
 		mysqlpp::Result db_query(const std::string& query);
 		std::string db_query_to_string(const std::string& query);
 		mysqlpp::Connection db_interface_;
 
-		// A helper function to create the SQL to query a detail for a particular user
+		// Query a detail for a particular user from the database
 		std::string get_detail_for_user(const std::string& name, const std::string& detail);
+		std::string get_writable_detail_for_user(const std::string& name, const std::string& detail);
 
-		// A helper function to create the SQL to set a detail for a particular user
-		std::string set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value);
+		// Write something to the write table
+		void set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value);
+
+		// Same as user_exists() but checks if we have a row for this user in the extra table
+		bool extra_row_exists(const std::string& name);
 };
 
 #endif //FORUM_USER_HANDLER_HPP_INCLUDED

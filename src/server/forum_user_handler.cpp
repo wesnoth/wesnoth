@@ -25,6 +25,7 @@ fuh::fuh(const config& c) {
 	db_user_ = c["db_user"];
 	db_password_ = c["db_password"];
 	db_users_table_ = c["db_users_table"];
+	db_extra_table_ = c["db_extra_table"];
 
 	// Connect to the database
 	try {
@@ -35,11 +36,25 @@ fuh::fuh(const config& c) {
 }
 
 std::string fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
-	return std::string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE username='" + name + "'");
+	return db_query_to_string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE username='" + name + "'");
 }
 
-std::string fuh::set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value) {
-	return std::string("UPDATE " + db_users_table_ + " SET " + detail + "='" + value + "' WHERE username='" + name + "'");
+std::string fuh::get_writable_detail_for_user(const std::string& name, const std::string& detail) {
+	if(!extra_row_exists(name)) return "";
+	return db_query_to_string("SELECT " + detail + " FROM " + db_extra_table_ + " WHERE username='" + name + "'");
+}
+
+void fuh::set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value) {
+	try {
+		// Check if we do already have a row for this user in the extra table
+		if(!extra_row_exists(name)) {
+			// If not create the row
+			db_query("INSERT INTO " + db_extra_table_ + " VALUES('" + name + "','" + value + "')");
+		}
+		db_query("UPDATE " + db_extra_table_ + " SET " + detail + "='" + value + "' WHERE username='" + name + "'");
+	} catch (error e) {
+		ERR_UH << "Could not set detail for user '" << name << "': " << e.message << std::endl;
+	}
 }
 
 void fuh::add_user(const std::string& name, const std::string& mail, const std::string& password) {
@@ -68,12 +83,18 @@ mysqlpp::Result fuh::db_query(const std::string& sql) {
 			db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
 		} catch(...) {
 			 ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
+			throw error("Could not connect to database.");
 		}
 	}
 
-	mysqlpp::Query query = db_interface_.query();
-	query << sql;
-	return query.store();
+	try {
+		mysqlpp::Query query = db_interface_.query();
+		query << sql;
+		return query.store();
+	} catch(...) {
+		 ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
+		throw error("Error querying database.");
+	}
 }
 
 std::string fuh::db_query_to_string(const std::string& query) {
@@ -166,10 +187,21 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return db_query(get_detail_for_user(name, "username")).num_rows() > 0;
+		return db_query("SELECT username FROM " + db_users_table_ + " WHERE username='" + name + "'").num_rows() > 0;
 	} catch (error e) {
-		ERR_UH << "Could not execute test query for user '" << e.message << std::endl;
+		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
+		return false;
+	}
+}
+
+bool fuh::extra_row_exists(const std::string& name) {
+
+	// Make a test query for this username
+	try {
+		return db_query("SELECT username FROM " + db_extra_table_ + " WHERE username='" + name + "'").num_rows() > 0;
+	} catch (error e) {
+		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}
 }
@@ -189,26 +221,26 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 	ss << lastlogin;
 
 	try {
-	db_query(set_detail_for_user(user, "user_lastvisit", ss.str()));
+		set_detail_for_user(user, "user_lastvisit", ss.str());
 	} catch (error e) {
-		ERR_UH << "Could not set last visit for user '" << e.message << std::endl;
+		ERR_UH << "Could not set last visit for user '" << user << "' :" << e.message << std::endl;
 	}
 }
 
 std::string fuh::get_hash(const std::string& user) {
 	try {
-		return db_query_to_string(get_detail_for_user(user, "user_password"));
+		return get_detail_for_user(user, "user_password");
 	} catch (error e) {
-		ERR_UH << "Could not retrieve password for user '" << e.message << std::endl;
+		ERR_UH << "Could not retrieve password for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
 }
 
 std::string fuh::get_mail(const std::string& user) {
 	try {
-		return db_query_to_string(get_detail_for_user(user, "user_email"));
+		return get_detail_for_user(user, "user_email");
 	} catch (error e) {
-		ERR_UH << "Could not retrieve email for user '" << e.message << std::endl;
+		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
 }
@@ -271,20 +303,20 @@ std::vector<std::string> fuh::get_ignores(const std::string& user) {
 
 time_t fuh::get_lastlogin(const std::string& user) {
 	try {
-		int time_int = atoi(db_query_to_string(get_detail_for_user(user, "user_lastvisit")).c_str());
+		int time_int = atoi(get_writable_detail_for_user(user, "user_lastvisit").c_str());
 		return time_t(time_int);
 	} catch (error e) {
-		ERR_UH << "Could not retrieve last visit for user '" << e.message << std::endl;
+		ERR_UH << "Could not retrieve last visit for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
 }
 
 time_t fuh::get_registrationdate(const std::string& user) {
 	try {
-		int time_int = atoi(db_query_to_string(get_detail_for_user(user, "user_regdate")).c_str());
+		int time_int = atoi(get_detail_for_user(user, "user_regdate").c_str());
 		return time_t(time_int);
 	} catch (error e) {
-		ERR_UH << "Could not retrieve registration date for user '" << e.message << std::endl;
+		ERR_UH << "Could not retrieve registration date for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
 }
