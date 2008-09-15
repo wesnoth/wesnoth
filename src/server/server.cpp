@@ -1383,7 +1383,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
 	// Check if this server allows nick registration at all
 	if(!user_handler_) {
-		lobby_.send_server_message("This server does not allow to register on it.", sock);
+		lobby_.send_server_message("This server does not allow username registration.", sock);
 		return;
 	}
 
@@ -1409,7 +1409,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			lobby_.send_data(diff);
 
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was and error registering your username. The error message was: "
+			lobby_.send_server_message(("There was an error registering your username. The error message was: "
 			+ e.message).c_str(), sock);
 		}
 		return;
@@ -1431,7 +1431,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			lobby_.send_server_message("Your details have been updated.", sock);
 
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was and error updating your details. The error message was: "
+			lobby_.send_server_message(("There was an error updating your details. The error message was: "
 			+ e.message).c_str(), sock);
 		}
 
@@ -1451,7 +1451,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 			std::string res = user_handler_->user_info((*data.child("info"))["name"].to_string());
 			lobby_.send_server_message(res.c_str(), sock);
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was and error looking up the details of the user '" +
+			lobby_.send_server_message(("There was an error looking up the details of the user '" +
 			(*data.child("info"))["name"].to_string() + "'. " +" The error message was: "
 			+ e.message).c_str(), sock);
 		}
@@ -1468,7 +1468,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 
 		// With the current policy of dissallowing to log in with a
 		// registerd username without the password we should never get
-		// to calling this
+		// to call this
 		if(!(pl->second.registered())) {
 			lobby_.send_server_message("You are not logged in.",
 					sock);
@@ -1488,7 +1488,7 @@ void server::process_nickserv(const network::connection sock, simple_wml::node& 
 						 "user", pl->second.config_address(), diff);
 			lobby_.send_data(diff);
 		} catch (user_handler::error e) {
-			lobby_.send_server_message(("There was and error dropping your username. The error message was: "
+			lobby_.send_server_message(("There was an error dropping your username. The error message was: "
 			+ e.message).c_str(), sock);
 		}
 		return;
@@ -1875,8 +1875,6 @@ void server::process_data_game(const network::connection sock,
 		//desc[""] = s["turns"];
 		//desc["client_version"] = s["version"];
 		// Send the update of the game description to the lobby.
-
-		//update the game having changed in the lobby
 		update_game_in_lobby(g);
 		return;
 	// If a player advances to the next scenario of a mp campaign. (deprecated)
