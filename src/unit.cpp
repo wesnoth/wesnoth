@@ -706,10 +706,13 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
 
-	// Remove old animations
+	// Remove old type's halo, animations, abilities, and attacks
+	cfg_["halo"] = "";
 	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
+	cfg_.clear_children("abilities");
+	cfg_.clear_children("attacks");
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -723,8 +726,6 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		}
 	}
 
-	// we don't want to inherit our previous type's halo
-	cfg_["halo"] = "";
 	cfg_.merge_with(t->cfg_);
 	if (!specific_profile.empty()) {
 		cfg_["profile"] = specific_profile;
