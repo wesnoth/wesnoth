@@ -845,8 +845,8 @@ void server::process_query(const network::connection sock,
 	}
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
-	const std::string& help_msg = "Available commands are: help, metrics,"
-			" motd, netstats [all], status, wml.";
+	const std::string& help_msg = "Available commands are: help, games, metrics,"
+			" motd, netstats [all], samples, stats, status, wml.";
 	if (admins_.count(sock) != 0) {
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
@@ -897,8 +897,8 @@ std::string server::process_command(const std::string& query, const std::string&
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
 			" bans [deleted], kick <mask>, k(ick)ban <mask> [<time>] <reason>,"
-			" help, metrics, netstats, (lobby)msg <message>, motd [<message>],"
-			" status [<mask>], unban <ipmask>";
+			" help, games, metrics, netstats, (lobby)msg <message>, motd [<message>],"
+			" samples, stats, status [<mask>], unban <ipmask>";
 	// Shutdown and restart commands can only be issued via the socket.
 	if (command == "shut_down" && issuer_name == "*socket*") {
 		if (parameters == "now") {
@@ -930,10 +930,16 @@ std::string server::process_command(const std::string& query, const std::string&
 		}
 	} else if (command == "help") {
 		out << help_msg;
+	} else if (command == "stats") {
+		out << "Number of games = " << games_.size()
+			<< "\nTotal number of users = " << players_.size()
+			<< "\nNumber of users in the lobby = " << lobby_.nobservers();
 	} else if (command == "metrics") {
-		out << metrics_ << "Current number of games = " << games_.size() << "\n"
-		"Total number of users = " << players_.size() << "\n"
-		"Number of users in the lobby = " << lobby_.nobservers() << "\n";
+		out << metrics_;
+	} else if (command == "samples") {
+		metrics_.samples(out);
+	} else if (command == "games") {
+		metrics_.games(out);
 	} else if (command == "wml") {
 		out << simple_wml::document::stats();
 	} else if (command == "netstats") {
