@@ -817,6 +817,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	const int number_of_recruit = current_team().gold() / current_team().average_recruit_price();
 
 	// If the leader is not on his starting location, move him there.
+	if (number_of_recruit)
 	{
 		{
 			// Make a map of the possible locations the leader can move to,
@@ -865,8 +866,8 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 				gamemap::location target;
 				if (distance > leader->second.movement_left())
 				{
-					target = route->second.steps[leader->second.movement_left()+1];
-					route->second.steps.erase(route->second.steps.begin() + leader->second.movement_left(),route->second.steps.end());
+					target = route->second.steps[leader->second.movement_left()];
+					route->second.steps.erase(route->second.steps.begin() + leader->second.movement_left() + 1,route->second.steps.end());
 					route->second.move_left = 0;
 				} else {
 					target = *i;
@@ -874,7 +875,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 				}
 				best_value = value;
 				best_target = target;
-				ERR_AI << "Considiring keep: " << *i << 
+				DBG_AI << "Considiring keep: " << *i << 
 					" empty slots: " << empty_slots << 
 					" distance: " << distance << 
 					" enemy: " << enemy << 

@@ -536,7 +536,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		}
 
 		if(rt != p.routes.end()) {
-			assert(static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size()-1 && "Trying to move unit without enough move points left\n");
+			assert(static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size() && "Trying to move unit without enough move points left\n");
 			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
@@ -1007,8 +1007,8 @@ void ai::do_move()
 
 	// Formula AI is first going to move everything that it can
 
-	if (master_)
-		static_cast<formula_ai*>(ai_manager::get_ai("formula_ai", info_).get())->play_turn();
+//	if (master_)
+//		static_cast<formula_ai*>(ai_manager::get_ai("formula_ai", info_).get())->play_turn();
 
 	typedef paths::route route;
 
