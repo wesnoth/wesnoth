@@ -940,7 +940,9 @@ void ai::find_threats()
 
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 			const int distance = distance_between(u->first,item.loc);
-			if(current_team().is_enemy(u->second.side()) && distance < item.radius) {
+			if(current_team().is_enemy(u->second.side()) && distance < item.radius
+			&& !u->second.invisible(u->first, units_, teams_)) {
+				LOG_AI << "found threat target... " << u->first << "\n";
 				add_target(target(u->first, item.value * double(item.radius-distance) /
 							double(item.radius),target::THREAT));
 			}
@@ -1198,6 +1200,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		// If this is the only unit in the attack, and the target
 		// is still alive, then also summon reinforcements
 		if(choice_it->movements.size() == 1 && units_.count(target_loc)) {
+			LOG_AI << "found reinforcement target... " << target_loc << "\n";
 			add_target(target(target_loc,3.0,target::BATTLE_AID));
 		}
 

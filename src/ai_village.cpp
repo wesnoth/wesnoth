@@ -232,6 +232,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 
 				if(new_unit != units_.end() &&
 						power_projection(i->first,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
+					LOG_AI << "found support target... " << new_unit->first << "\n";
 					add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}

@@ -120,6 +120,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 			const double value = threat/double(threats.size());
 			for(std::set<gamemap::location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
+				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
 				targets.push_back(target(*i,value,target::THREAT));
 			}
 		}
@@ -140,6 +141,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			}
 
 			if(get_village) {
+				LOG_AI << "found village target... " << *t << " with value: " << current_team().village_value() << "\n";
 				targets.push_back(target(*t,current_team().village_value(),target::VILLAGE));
 			}
 		}
@@ -151,11 +153,11 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	unit_map::const_iterator u;
 	for(u = units_.begin(); u != units_.end(); ++u) {
 
-		//is an enemy leader
-		if(u->second.can_recruit() &&
-				current_team().is_enemy(u->second.side())) {
-
+		//is a visible enemy leader
+		if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
+		&& !u->second.invisible(u->first, units_, teams_)) {
 			assert(map_.on_board(u->first));
+			LOG_AI << "found enemy leader target... " << u->first << " with value: " << current_team().leader_value() << "\n";
 			targets.push_back(target(u->first,current_team().leader_value(),target::LEADER));
 		}
 
@@ -163,7 +165,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		for(std::vector<team::target>::iterator j = team_targets.begin();
 		    j != team_targets.end(); ++j) {
 			if(u->second.matches_filter(&(j->criteria),u->first)) {
-				LOG_AI << "found explicit target..." << j->value << "\n";
+				LOG_AI << "found explicit target... " << u->first << " with value: " << j->value << "\n";
 				targets.push_back(target(u->first,j->value,target::EXPLICIT));
 			}
 		}
@@ -431,6 +433,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		if(avoided_locations().count(tg->loc) > 0) {
 			continue;
 		}
+		LOG_AI << "Considering target at: " << tg->loc <<"\n";
 
 		raise_user_interact();
 
@@ -710,6 +713,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 			for(std::set<location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
+					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
 					targets.push_back(target(*j,value*4.0,target::MASS));
 				}
 			}
@@ -741,6 +745,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 						//there are enemies ahead. Rally troops around us to
 						//try to take the target
 						if(is_dangerous) {
+							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0 << "\n";
 							targets.push_back(target(its.first->first,value*2.0,target::BATTLE_AID));
 						}
 
