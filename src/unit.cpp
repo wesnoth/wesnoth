@@ -1254,18 +1254,6 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			}
 		}
 	}
-	// FIXME OBSOLETE: Remove in 1.5.3
-	const vconfig::child_list& wmlcfgs_old = cfg.get_children("wml_filter");
-	if (!wmlcfgs_old.empty()) {
-		config unit_cfg;
-		write(unit_cfg);
-		// Now, match the kids, WML based
-		for(unsigned int i=0; i < wmlcfgs_old.size(); ++i) {
-			if(!unit_cfg.matches(wmlcfgs_old[i].get_parsed_config())) {
-				return false;
-			}
-		}
-	}
 
 	if (cfg.has_child("filter_vision")) {
 		const vconfig::child_list& vis_filt = cfg.get_children("filter_vision");
@@ -1607,8 +1595,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
 	}
-	// FIXME OBSOLETE Remove in 1.5.3
-	if(utils::string_bool(cfg["generate_name"]) || utils::string_bool(cfg["generate_description"])) {
+	if(utils::string_bool(cfg["generate_name"])) {
 		name_ = generate_name(state ? &(state->rng()) : 0);
 		cfg_["generate_name"] = "";
 	}
