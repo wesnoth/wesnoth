@@ -1,4 +1,4 @@
-/* vim:set encoding=utf-8: */
+/* $Id$ */
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -429,3 +429,4 @@ void init_textdomains(const config& cfg)
 
 }
 
+/* vim:set encoding=utf-8: */
