@@ -281,16 +281,17 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 {
 	time_of_day res = get_time_of_day_turn(n_turn);
 
-	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
-		if(i->hexes.count(loc) == 1) {
-
-			VALIDATE(i->times.size(), _("No time of day has been defined."));
-
-			res = i->times[(n_turn-1)%i->times.size()];
-			break;
+	if(loc.valid()) {
+		for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
+			if(i->hexes.count(loc) == 1) {
+	
+				VALIDATE(i->times.size(), _("No time of day has been defined."));
+	
+				res = i->times[(n_turn-1)%i->times.size()];
+				break;
+			}
 		}
 	}
-
 
 	if(illuminated) {
 		res.bonus_modified=illuminated;
