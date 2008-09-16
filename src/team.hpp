@@ -72,6 +72,8 @@ public:
 		std::string start_gold;
 		std::string income;
 		int income_per_village;
+		size_t average_price;
+		float number_of_possible_recruits_to_force_recruit;
 		std::set<std::string> can_recruit;
 		std::vector<std::string> global_recruitment_pattern;
 		std::vector<std::string> recruitment_pattern;
@@ -157,9 +159,14 @@ public:
 	void set_current_player(const std::string player)
 		{ info_.current_player = player; }
 
+	size_t average_recruit_price();
+	float num_pos_recruits_to_force()
+	{ return info_.number_of_possible_recruits_to_force_recruit; }
 	const std::set<std::string>& recruits() const
 		{ return info_.can_recruit; }
-	std::set<std::string>& recruits() { return info_.can_recruit; }
+	void add_recruits(const std::set<std::string>& recruits);
+	void remove_recruit(const std::string& recruits);
+	void set_recruits(const std::set<std::string>& recruits);
 	const std::vector<std::string>& recruitment_pattern() const
 		{ return info_.recruitment_pattern; }
 	bool remove_recruitment_pattern_entry(const std::string& key)

@@ -85,6 +85,8 @@ team::team_info::team_info(const config& cfg) :
 		start_gold(),
 		income(cfg["income"]),
 		income_per_village(),
+		average_price(0),
+		number_of_possible_recruits_to_force_recruit(lexical_cast_default<float>(cfg["number_of_possible_recruits_to_force_recruit"],0.0)),
 		can_recruit(),
 		global_recruitment_pattern(utils::split(cfg["global_recruitment_pattern"])),
 		recruitment_pattern(utils::split(cfg["recruitment_pattern"])),
@@ -204,6 +206,11 @@ team::team_info::team_info(const config& cfg) :
 		ai_algorithm = global_ai_params["ai_algorithm"];
 	}
 
+	if (!cfg.has_attribute("number_of_possible_recruits_to_force_recruit"))
+	{
+		number_of_possible_recruits_to_force_recruit = lexical_cast_default<float>(global_ai_params["number_of_possible_recruits_to_force_recruit"],3.1);
+	}
+
 	std::string scouts_val = cfg["villages_per_scout"];
 
 	if(scouts_val.empty()
@@ -264,7 +271,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(caution_val.empty()) {
-		caution_ = 1.0;
+		caution_ = 0.25;
 	} else {
 		caution_ = atof(caution_val.c_str());
 	}
@@ -343,6 +350,7 @@ void team::team_info::write(config& cfg) const
 	cfg["disallow_observers"] = disallow_observers ? "yes" : "no";
 	cfg["allow_player"] = allow_player ? "yes" : "no";
 	cfg["no_leader"] = no_leader ? "yes" : "no";
+	cfg["number_of_possible_recruits_to_force_recruit"] = lexical_cast<std::string>(number_of_possible_recruits_to_force_recruit);
 
 	std::stringstream enemies_str;
 	for(std::vector<int>::const_iterator en = enemies.begin(); en != enemies.end(); ++en) {
@@ -491,6 +499,57 @@ void team::lose_village(const gamemap::location& loc)
 	}
 }
 
+void team::remove_recruit(const std::string& recruit)
+{
+	info_.can_recruit.erase(recruit);
+	info_.average_price = 0;
+}
+
+void team::set_recruits(const std::set<std::string>& recruits)
+{
+	info_.can_recruit = recruits;
+	info_.average_price = 0;
+}
+
+void team::add_recruits(const std::set<std::string>& recruits)
+{
+	std::copy(recruits.begin(),recruits.end(),
+			std::inserter(info_.can_recruit, info_.can_recruit.end()));
+	info_.average_price = 0;
+}
+
+
+namespace {
+	struct count_average {
+		count_average(size_t& a) : a_(a), sum_(0), count_(0)
+		{}
+		~count_average() {
+			a_ = sum_/count_;
+		}
+		void operator()(const std::string& recruit)
+		{
+			unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find(recruit);
+			if (i == unit_type_data::types().end())
+				return;
+			++count_;
+			sum_ += i->second.cost();
+		}
+		private:
+		size_t& a_;
+		size_t sum_;
+		size_t count_;
+	};
+}
+
+size_t team::average_recruit_price()
+{
+	if (info_.average_price)
+		return info_.average_price;
+
+	std::for_each(info_.can_recruit.begin(), info_.can_recruit.end(), count_average(info_.average_price));
+	return info_.average_price;
+}
+
 void team::set_time_of_day(int turn, const time_of_day& tod)
 {
 	aiparams_.clear();
@@ -529,8 +588,9 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 	info_.recruitment_pattern = utils::split(aiparams_["recruitment_pattern"]);
 	if (info_.recruitment_pattern.empty())
 		info_.recruitment_pattern = info_.global_recruitment_pattern;
-	info_.aggression_ = lexical_cast_default<double>(aiparams_["aggression"],0.5);
-	info_.caution_ = lexical_cast_default<double>(aiparams_["caution"],0.25);
+	info_.aggression_ = lexical_cast_default<double>(aiparams_["aggression"],info_.aggression_);
+	info_.caution_ = lexical_cast_default<double>(aiparams_["caution"],info_.caution_);
+	info_.number_of_possible_recruits_to_force_recruit = lexical_cast_default<float>(aiparams_["number_of_possible_recruits_to_force_recruit"],info_.number_of_possible_recruits_to_force_recruit);
 }
 
 bool team::calculate_enemies(size_t index) const

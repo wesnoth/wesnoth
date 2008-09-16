@@ -174,7 +174,7 @@ protected:
 		}
 	}
 
-	void do_recruitment() {
+	bool do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
 	if (!options.empty()) {
 			const int choice = (rand()%options.size());
@@ -183,9 +183,11 @@ protected:
 
 			const bool res = recruit(*i);
 			if(res) {
-				do_recruitment();
+				return do_recruitment();
 			}
+			return true;
 		}
+		return false;
 	}
 };
 
@@ -288,6 +290,7 @@ ai::ai(ai_interface::info& info) :
 	state_(info.state),
 	consider_combat_(true),
 	additional_targets_(),
+	info_(info),
 	unit_movement_scores_(),
 	not_recommended_units_(),
 	unit_combat_scores_(),
@@ -295,8 +298,11 @@ ai::ai(ai_interface::info& info) :
 	avoid_(),
 	unit_stats_cache_(),
 	attack_depth_(0),
-	recruiting_prefered_(false)
-{}
+	recruiting_prefered_(false),
+	master_(info_.master)
+{
+	info_.master = false;
+}
 
 void ai::new_turn()
 {
@@ -312,6 +318,7 @@ void ai::new_turn()
 	avoid_.clear();
 	unit_stats_cache_.clear();
 	attack_depth_ = 0;
+	ai_manager::get_ai("formula_ai", info_)->new_turn();
 	ai_interface::new_turn();
 }
 
@@ -332,17 +339,12 @@ bool ai::recruit_usage(const std::string& usage)
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
 	const std::set<std::string>& recruits = current_team().recruits();
-	for(std::map<std::string,unit_type>::const_iterator i =
-	    unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
+	for(std::set<std::string>::const_iterator recruit_item = recruits.begin(); recruit_item != recruits.end(); ++recruit_item)
 	{
+		std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find(*recruit_item);
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
-//		DBG_AI << name << " considered\n";
 		if (i->second.usage() == usage || usage == "") {
-			if (!recruits.count(name)) {
-//				DBG_AI << name << " rejected, not in recruitment list\n";
-				continue;
-			}
 			LOG_AI << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
@@ -799,8 +801,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			continue;
 		}
 		// Discount incapacitated units
-		if(un_it->second.incapacitated() 
-			|| un_it->second.movement_left() == 0) {
+		if(un_it->second.incapacitated()) {
 			continue;
 		}
 
@@ -905,8 +906,8 @@ void ai::find_threats()
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader != units_.end()) {
 		items.push_back(protected_item(
-					lexical_cast_default<double>(parms["protect_leader"], 1.0),
-					lexical_cast_default<int>(parms["protect_leader_radius"], 20),
+					lexical_cast_default<double>(parms["protect_leader"], 2.0),
+					lexical_cast_default<int>(parms["protect_leader_radius"], 7),
 					leader->first));
 	}
 
@@ -969,10 +970,28 @@ void ai::play_turn()
 
 void ai::evaluate_recruiting_value(unit_map::iterator leader)
 {
-	const int gold = current_team().gold();
-//	const int unit_price = current_team().average_recruit_price();
-//	recruiting_prefered_ = (gold/unit_price) > min_recruiting_value_to_force_recruit && !map_.is_keep();
-	recruiting_prefered_ = gold > min_recruiting_value_to_force_recruit && !map_.is_keep(leader->first);
+	ERR_AI << current_team().num_pos_recruits_to_force() << "\n";
+	if (current_team().num_pos_recruits_to_force()< 0.01f)
+	{
+		ERR_AI << "Recruiting force code disabled\n";
+		return;
+	}
+
+	float free_slots = 0.0f;
+	if (map_.is_keep(leader->first))
+	{
+		std::set<gamemap::location> checked_hexes;
+		checked_hexes.insert(leader->first);
+		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
+	}
+	const float gold = current_team().gold();
+	const float unit_price = current_team().average_recruit_price();
+	recruiting_prefered_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
+	ERR_AI << "recruiting prefered: " << (recruiting_prefered_?"yes":"no") << 
+		" units to recruit: " << (gold/unit_price) << 
+		" unit_price: " << unit_price <<
+		" free slots: " << free_slots <<
+		" limit: " << current_team().num_pos_recruits_to_force() << "\n";
 }
 
 void ai::do_move()
@@ -982,6 +1001,11 @@ void ai::do_move()
 	invalidate_defensive_position_cache();
 
 	raise_user_interact();
+
+	// Formula AI is first going to move everything that it can
+
+	if (master_)
+		static_cast<formula_ai*>(ai_manager::get_ai("formula_ai", info_).get())->play_turn();
 
 	typedef paths::route route;
 
@@ -1109,7 +1133,14 @@ void ai::do_move()
 		}
 
 		if (map_.is_keep(leader->first))
+		{
 			do_recruitment();
+			if (recruiting_prefered_)
+			{
+				do_move();
+				return;
+			}
+		}
 
 		if(!passive_leader) {
 			move_leader_after_recruit(srcdst,dstsrc,enemy_dstsrc);
@@ -1809,11 +1840,20 @@ void ai::analyze_potential_recruit_movements()
 	}
 }
 
-void ai::do_recruitment()
+bool ai::do_recruitment()
 {
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end()) {
-		return;
+		return false;
+	}
+
+	// Let formula ai to do recruiting first
+	if (master_)
+	{
+		if(static_cast<formula_ai*>(ai_manager::get_ai("formula_ai",info_).get())->do_recruitment()) {
+			LOG_AI << "Recruitment done by formula_ai\n";
+			return true;
+		}
 	}
 
 	const location& start_pos = nearest_keep(leader->first);
@@ -1893,6 +1933,7 @@ void ai::do_recruitment()
 			options.push_back("");
 		}
 	}
+	return true;
 }
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
@@ -2344,25 +2385,25 @@ void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inp
 
 ai_manager::AINameMap ai_manager::ais = ai_manager::AINameMap();
 
-boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
+boost::intrusive_ptr<ai_interface> ai_manager::get_ai(const std::string& ai_algo,
 						       ai_interface::info& ai_info )
 {
-  int ai_key = ai_info.team_num - 1 ;
+  const std::string ai_key = ai_algo + lexical_cast<std::string>(ai_info.team_num - 1);
   boost::intrusive_ptr<ai_interface> ai_obj;
 
   // If we are dealing with an AI - try to find it
   if( ai_algo.size() )
     {
       AINameMap::const_iterator itor = ais.find(ai_key);
-      std::cout << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
+      LOG_AI << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
       if(itor == ais.end())
 	{
-	  std::cout << "manager did not find AI - creating..." << std::endl ;
-	  ai_obj = create_ai(ai_algo, ai_info) ;
-	  std::cout << "Asking newly created AI if it wants to be managed." << std::endl ;
+	  LOG_AI << "manager did not find AI - creating..." << std::endl ;
+	  ai_obj.reset(create_ai(ai_algo, ai_info));
+	  LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl ;
 	  if( ai_obj->manager_manage_ai() )
 	    {
-	      std::cout << "AI has requested itself be managed: " << ai_algo << std::endl ;
+	      LOG_AI << "AI has requested itself be managed: " << ai_algo << std::endl ;
 	      AINameMap::value_type new_ai_pair( ai_key, ai_obj ) ;
 	      itor = ais.insert(new_ai_pair).first ;
 	    }
@@ -2370,7 +2411,7 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
       else
 	{
 	  // AI was found - so return it
-	  std::cout << "Reusing managed AI" << std::endl ;
+	  LOG_AI << "Reusing managed AI" << std::endl ;
 	  ai_obj = itor->second ;
 	}
     }

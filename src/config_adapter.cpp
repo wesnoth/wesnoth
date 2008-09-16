@@ -166,8 +166,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 	// If the game state specifies units that
 	// can be recruited for the player, add them.
 	if(player != NULL && player->can_recruit.empty() == false) {
-		std::copy(player->can_recruit.begin(),player->can_recruit.end(),
-				std::inserter(teams.back().recruits(),teams.back().recruits().end()));
+		teams.back().add_recruits(player->can_recruit);
 	}
 
 	if(player != NULL) {

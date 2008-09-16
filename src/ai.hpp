@@ -91,7 +91,7 @@ protected:
 			const unit_map::const_iterator un, const move_map& srcdst,
 			const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
-	virtual void do_recruitment();
+	virtual bool do_recruitment();
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
 	virtual void move_leader_after_recruit(const move_map& srcdst,
@@ -294,7 +294,8 @@ protected:
 	gamestatus& state_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
-
+	ai_interface::info info_;
+	
 	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
 
 	/**
@@ -378,16 +379,17 @@ private:
 		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
 	
 	bool recruiting_prefered_;
-	static const int min_recruiting_value_to_force_recruit = 28;
+protected:
+	bool master_;
 };
 
 class ai_manager {
 public: 
-  static boost::intrusive_ptr<ai_interface> get_ai( std::string, ai_interface::info& );
+  static boost::intrusive_ptr<ai_interface> get_ai(const std::string&, ai_interface::info& );
   static int reap_ais() ;
 
 private:
-  typedef std::map< int, boost::intrusive_ptr<ai_interface> > AINameMap ;
+  typedef std::map< std::string, boost::intrusive_ptr<ai_interface> > AINameMap ;
 
   static AINameMap ais ;
 };

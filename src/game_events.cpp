@@ -535,8 +535,9 @@ namespace {
 		const std::string type = cfg["type"];
 
 		const std::vector<std::string>& types = utils::split(type);
+		const std::set<std::string> recruits(types.begin(), types.end());
+		(*teams)[index].add_recruits(recruits);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
-			(*teams)[index].recruits().insert(*i);
 			preferences::encountered_units().insert(*i);
 
 			player_info *player=state_of_game->get_player((*teams)[index].save_id());
@@ -559,7 +560,7 @@ namespace {
 		const std::string type = cfg["type"];
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
-			(*teams)[index].recruits().erase(*i);
+			(*teams)[index].remove_recruit(*i);
 
 			player_info *player=state_of_game->get_player((*teams)[index].save_id());
 			if(player) {
@@ -582,13 +583,11 @@ namespace {
 		if(recruit.size() == 1 && recruit.back() == "")
 			recruit.clear();
 
-		std::set<std::string>& can_recruit = (*teams)[index].recruits();
-		can_recruit.clear();
-		std::copy(recruit.begin(),recruit.end(),std::inserter(can_recruit,can_recruit.end()));
+		(*teams)[index].set_recruits(std::set<std::string>(recruit.begin(), recruit.end()));
 
 		player_info *player=state_of_game->get_player((*teams)[index].save_id());
 		if(player) {
-			player->can_recruit = can_recruit;
+			player->can_recruit = (*teams)[index].recruits();
 		}
 	}
 
@@ -710,13 +709,10 @@ namespace {
 				if (recruit.size() == 1 && recruit.back() == "")
 					recruit.clear();
 
-				std::set<std::string>& rlist_set = (*teams)[team_index].recruits();
-				rlist_set.clear();
-
-				std::copy( recruit.begin(), recruit.end(), std::inserter(rlist_set,rlist_set.end()) );
+				(*teams)[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
 				player_info *player = state_of_game->get_player((*teams)[team_index].save_id());
 
-				if (player) player->can_recruit = rlist_set;
+				if (player) player->can_recruit = (*teams)[team_index].recruits();
 			}
 			// Modify income
 			if(!income.empty()) {
