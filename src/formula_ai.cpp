@@ -1612,8 +1612,9 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			return false;
 		} else {
 			//this information is unneded when evaluating formulas form commandline
-			if (!commandline)
+			if (!commandline) {
 				LOG_AI << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
+			}
 		}
 	}
 
