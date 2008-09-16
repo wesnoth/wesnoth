@@ -1637,14 +1637,16 @@ bool formula_ai::do_recruitment()
 		vars.push_back(var);
 	}
 
+	bool ret = false;
 	for(std::vector<variant>::const_iterator i = vars.begin(); i != vars.end(); ++i) {
 		if(!i->is_string()) {
 			return false;
 		}
 
 		if(!recruit(i->as_string())) {
-			return true;
+			return ret;
 		}
+		ret = true;
 	}
 
 	return do_recruitment();

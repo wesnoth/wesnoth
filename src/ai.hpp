@@ -378,7 +378,7 @@ private:
 		const std::map<gamemap::location,paths>& possible_moves,
 		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
 	
-	bool recruiting_prefered_;
+	int recruiting_prefered_;
 protected:
 	bool master_;
 };

@@ -298,7 +298,7 @@ ai::ai(ai_interface::info& info) :
 	avoid_(),
 	unit_stats_cache_(),
 	attack_depth_(0),
-	recruiting_prefered_(false),
+	recruiting_prefered_(0),
 	master_(info_.master)
 {
 	info_.master = false;
@@ -970,10 +970,13 @@ void ai::play_turn()
 
 void ai::evaluate_recruiting_value(unit_map::iterator leader)
 {
-	ERR_AI << current_team().num_pos_recruits_to_force() << "\n";
+	if (recruiting_prefered_ == 2)
+	{
+		recruiting_prefered_ = 0;
+		return;
+	}
 	if (current_team().num_pos_recruits_to_force()< 0.01f)
 	{
-		ERR_AI << "Recruiting force code disabled\n";
 		return;
 	}
 
@@ -987,7 +990,7 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
 	const float gold = current_team().gold();
 	const float unit_price = current_team().average_recruit_price();
 	recruiting_prefered_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
-	ERR_AI << "recruiting prefered: " << (recruiting_prefered_?"yes":"no") << 
+	DBG_AI << "recruiting prefered: " << (recruiting_prefered_?"yes":"no") << 
 		" units to recruit: " << (gold/unit_price) << 
 		" unit_price: " << unit_price <<
 		" free slots: " << free_slots <<
@@ -1134,9 +1137,12 @@ void ai::do_move()
 
 		if (map_.is_keep(leader->first))
 		{
-			do_recruitment();
-			if (recruiting_prefered_)
+			if (do_recruitment())
 			{
+				do_move();
+				return;
+			} else if (recruiting_prefered_){
+				recruiting_prefered_ = 2;
 				do_move();
 				return;
 			}
@@ -1926,14 +1932,16 @@ bool ai::do_recruitment()
 	if (options.empty()) {
 		options.push_back("");
 	}
+	bool ret = false;
 	// Buy units as long as we have room and can afford it.
 	while (recruit_usage(options[rand()%options.size()])) {
+		ret = true;
 		options = current_team().recruitment_pattern();
 		if (options.empty()) {
 			options.push_back("");
 		}
 	}
-	return true;
+	return ret;
 }
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
@@ -2399,7 +2407,7 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai(const std::string& ai_algo
       if(itor == ais.end())
 	{
 	  LOG_AI << "manager did not find AI - creating..." << std::endl ;
-	  ai_obj.reset(create_ai(ai_algo, ai_info));
+	  ai_obj = create_ai(ai_algo, ai_info);
 	  LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl ;
 	  if( ai_obj->manager_manage_ai() )
 	    {
