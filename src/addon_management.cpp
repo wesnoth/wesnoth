@@ -74,13 +74,30 @@ void set_addon_info(const std::string& addon_name, const config& cfg)
 	write(*stream, cfg);
 }
 
-void remove_local_addon(const std::string& addon)
+bool remove_local_addon(const std::string& addon, std::string* log)
 {
+	bool ret = true;
+	std::ostringstream messages;
 	const std::string addon_dir = get_addon_campaigns_dir() + "/" + addon;
 
-	delete_directory(addon_dir);
-	if (file_exists(addon_dir + ".cfg"))
-		delete_directory(addon_dir + ".cfg");
+	LOG_CFG << "removing local add-on: " << addon << '\n';
+
+	if(file_exists(addon_dir) && !delete_directory(addon_dir)) {
+		messages << "Failed to delete directory/file: " << addon_dir << '\n';
+		ret = false;
+	}
+
+	if(file_exists(addon_dir + ".cfg") && !delete_directory(addon_dir + ".cfg")) {
+		messages << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
+		ret = false;
+	}
+	
+	if(log != NULL) {
+		*log = messages.str();
+	}
+	ERR_CFG << "removal of add-on " << addon << " failed:\n" << messages;
+
+	return ret;
 }
 
 std::vector<std::string> available_addons()
@@ -617,7 +634,9 @@ namespace {
 
 		// remove any existing versions of the just downloaded add-on,
 		// assuming it consists of a dir and a cfg file
-		remove_local_addon(addon_id);
+		if(!remove_local_addon(addon_id)) {
+			WRN_CFG << "failed to uninstall existing add-on version before installing; add-on may not work properly\n";
+		}
 
 		unarchive_addon(cfg);
 		LOG_CFG << "addon unpacked successfully\n";
@@ -1106,13 +1125,13 @@ namespace {
 			res = confirm_dlg.show();
 		} while (res != 0);
 
-		// Put underscores back in the name and remove the addon
-		std::string filename = addons.at(index);
-		std::replace(filename.begin(), filename.end(), ' ', '_');
-		bool delete_success = delete_directory(parentdir + filename);
-		delete_success |= delete_directory(parentdir + filename + ".cfg");
-		// Report results
-		if (delete_success)
+		// Put underscores back in the name
+		std::string addon_id = addons.at(index);
+		std::replace(addon_id.begin(), addon_id.end(), ' ', '_');
+
+		// Try to remove add-on and report results
+		std::string removal_log;
+		if(remove_local_addon(addon_id, &removal_log))
 		{
 			std::string message = _("Add-on '$addon|' deleted.");
 			utils::string_map symbols;
@@ -1127,9 +1146,12 @@ namespace {
 		}
 		else
 		{
+			const std::string err_msg_title = _("Error");
+			std::string err_msg = _("Add-on could not be deleted properly:");
+			err_msg += '\n';
+			err_msg += removal_log;
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::dialog dlg2(disp, _("Error"), _("Add-on could not be deleted -- a file was not found."),
-					gui::OK_ONLY);
+			gui::dialog dlg2(disp, err_msg_title, err_msg, gui::OK_ONLY);
 			dlg2.show();
 		}
 	}

@@ -27,7 +27,7 @@ class config;
 typedef std::pair< std::string, ADDON_TYPE > addon_list_item;
 class config_changed_exception {};
 
-void remove_local_addon(const std::string& addon);
+bool remove_local_addon(const std::string& addon, std::string* log = NULL);
 
 /**
  * Gets the publish information for an add-on.
