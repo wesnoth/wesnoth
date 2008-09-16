@@ -550,7 +550,6 @@ def create_recruits_map(ai*)
 	);
 
 if(vars.turn_initialized = turn,
-	if(my_leader.loc = loc(11,23),
 		if( 
 			get_unit_type(
 				choose(
@@ -559,7 +558,7 @@ if(vars.turn_initialized = turn,
 				).key
 			).cost <
 			my_side.gold,
-			recruit(
+			recruit(debug_print(
 				unit_chooser(
 					self,
 					unit_map_cost_filter(
@@ -567,14 +566,10 @@ if(vars.turn_initialized = turn,
 						vars.recruits_map
 					)
 				)
-			),
+			)),
 			fallback('') 
 		),
-		if(vars.check = turn, 
-			[set_var('check', 0), fallback('')], 
-			[set_var('check', turn), move(my_leader.loc, nearest_keep(my_leader.loc))])
-	),
-	[set_var('turn_initialized', turn)] +
+	[set_var(debug_print('turn_initialized'), turn)] +
 	initialize_weapon_specials_map(self) +
 	create_recruits_map(self)
 )
