@@ -116,7 +116,7 @@ bool create_directory_if_missing(const std::string& dirname);
 /** Returns true if the given file is a directory. */
 bool is_directory(const std::string& fname);
 
-/** Returns true if file with name already exists. */
+/** Returns true if a file or directory with such name already exists. */
 bool file_exists(const std::string& name);
 
 /** Get the creation time of a file. */
