@@ -1846,6 +1846,8 @@ void server::process_data_game(const network::connection sock,
 		// what the map looks like.
 		if (s["mp_shroud"].to_bool()) {
 			desc.set_attr_dup("map_data", s["map_data"]);
+		} else {
+			desc.set_attr("map_data", "");
 		}
 
 		if(s.child("era")) {
