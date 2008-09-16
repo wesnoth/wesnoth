@@ -1191,34 +1191,6 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
         lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 	}
 
-	// FIXME OBSOLETE compatibility hack to be removed in 1.5.3
-	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
-	{
-	    std::string id = (**i.first)["id"];
-		if((**i.first).child("base_unit"))
-		{
-            // Derive a new unit type from an existing base unit id
-			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
-			config from_cfg = find_config(based_from);
-
-            //merge the base_unit config into this one
-            //ugly hack, but couldn't think of anything better for the moment
-            from_cfg.merge_with(**i.first);
-            (**i.first).merge_with(from_cfg);
-
-            (**i.first).clear_children("base_unit");
-            (**i.first)["id"] = id;
-		}
-        // we insert an empty unit_type and build it after the copy (for performance)
-        std::pair<unit_type_map::iterator,bool> insertion =
-            insert(std::pair<const std::string,unit_type>(id,unit_type()));
-
-        //	if (!insertion.second)
-        // TODO: else { warning for multiple units with same id}
-        lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
-		std::cerr << "warning: UnitWML [unit] tag will be removed in 1.5.3, run wmllint on WML defining " << id << " to convert it to using [unit_type]" << std::endl;
-	}
-
 	build_all(unit_type::CREATED);
 }
 
@@ -1258,9 +1230,6 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
 
     DBG_UT << "unit type not found: " << key << "\n";
     DBG_UT << *unit_cfg_ << "\n";
-
-    // FIXME OBSOLETE compatibility hack to be removed in 1.5.3
-    cfg = unit_cfg_->find_child("unit", "id", key);
 
     assert(cfg != NULL);
     return *cfg;
@@ -1399,9 +1368,6 @@ bool unit_type::not_living() const
 				// hypothetical recruit is.
 				vals = &((**i.first).values);
 				temp = vals->find("unit_type");
-				//FIXME OBSOLETE Remove in 1.5.3
-				if(temp == vals->end())
-					temp = vals->find("unit");
 				if(temp != vals->end()) {
 					const std::vector<std::string>& types = utils::split((*temp).second);
 					if(std::find(types.begin(),types.end(),id()) == types.end()) {

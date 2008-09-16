@@ -124,11 +124,7 @@ namespace game_events
 			{
 				vconfig::child_list kids;
 				kids = cfg_.get_children("filter_attack");
-				// FIXME OBSOLETE: remove in 1.5.3
-				if (!kids.empty())
-					return kids;
-				else
-					return cfg_.get_children("special_filter");
+				return kids;
 
 			}
 
@@ -140,11 +136,7 @@ namespace game_events
 			{
 				vconfig::child_list kids;
 				kids = cfg_.get_children("filter_second_attack");
-				// FIXME OBSOLETE: remove in 1.5.3
-				if (!kids.empty())
-					return kids;
-				else
-					return cfg_.get_children("special_filter_second");
+				return kids;
 			}
 
 			bool handle_event(const queued_event& event_info,

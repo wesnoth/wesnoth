@@ -220,15 +220,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(itor = cfg.child_range("filter_attack").first; itor <cfg.child_range("filter_attack").second;itor++) {
 		primary_attack_filter_.push_back(**itor);
 	}
-	// FIXME OBSOLETE: Remove in 1.5,3
-	for(itor = cfg.child_range("attack_filter").first; itor <cfg.child_range("attack_filter").second;itor++) {
-		primary_attack_filter_.push_back(**itor);
-	}
 	for(itor = cfg.child_range("filter_second_attack").first; itor <cfg.child_range("filter_second_attack").second;itor++) {
-		secondary_attack_filter_.push_back(**itor);
-	}
-	// FIXME OBSOLETE: Remove in 1.5,3
-	for(itor = cfg.child_range("secondary_attack_filter").first; itor <cfg.child_range("secondary_attack_filter").second;itor++) {
 		secondary_attack_filter_.push_back(**itor);
 	}
 
