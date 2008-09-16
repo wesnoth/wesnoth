@@ -107,6 +107,42 @@ void metrics::game_terminated(const std::string& reason)
 	terminations_[reason]++;
 }
 
+std::ostream& metrics::games(std::ostream& out)
+{
+	if (terminations_.empty()) return out;
+
+	size_t n = 0;
+	out << "Games have been terminated in the following ways: \n";
+	for(std::map<std::string,int>::const_iterator i = terminations_.begin(); i != terminations_.end(); ++i) {
+		out << i->first << ": " << i->second << "\n";
+		++n;
+	}
+	out << "Total number of games = " << n;
+
+	return out;
+}
+
+std::ostream& metrics::samples(std::ostream& out)
+{
+	if (samples_.empty()) return out;
+
+	std::vector<metrics::sample> ordered_samples = samples_;
+	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
+
+	out << "Request types:\n";
+
+	size_t n = 0;
+	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
+		out << "'" << s->name << "' called " << s->nsamples << " times "
+			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "
+			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
+		++n;
+	}
+	out << "Total number of games = " << n;
+
+	return out;
+}
+
 std::ostream& operator<<(std::ostream& out, metrics& met)
 {
 	const time_t time_up = time(NULL) - met.started_at_;
@@ -121,26 +157,7 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	    << met.nrequests_ << " requests serviced. " << requests_immediate
 	    << " (" << percent_immediate << "%) "
 	    << " requests were serviced immediately\n"
-	    << "longest burst of requests was " << met.most_consecutive_requests_ << "\n";
-
-	if(met.terminations_.empty() == false) {
-		out << "Games have been terminated in the following ways: \n";
-		for(std::map<std::string,int>::const_iterator i = met.terminations_.begin(); i != met.terminations_.end(); ++i) {
-			out << i->first << ": " << i->second << "\n";
-		}
-	}
-
-	std::vector<metrics::sample> ordered_samples = met.samples_;
-	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
-
-	out << "\n\nRequest types:\n";
-
-	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
-		out << "'" << s->name 
-			<< "' called " << s->nsamples << " times " 
-			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, " 
-			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
-	}
+	    << "longest burst of requests was " << met.most_consecutive_requests_;
 
 	return out;
 }

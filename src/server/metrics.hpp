@@ -42,6 +42,8 @@ public:
 
 	void game_terminated(const std::string& reason);
 
+	std::ostream& games(std::ostream& out);
+	std::ostream& samples(std::ostream& out);
 	friend std::ostream& operator<<(std::ostream& out, metrics& met);
 
 	struct sample {
