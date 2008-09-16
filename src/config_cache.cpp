@@ -47,7 +47,7 @@ namespace game_config {
 		defines_map_(),
 		path_defines_()
 	{
-		// To settup initial defines map correctly
+		// To set-up initial defines map correctly
 		clear_defines();
 	}
 
@@ -66,7 +66,7 @@ namespace game_config {
 	{
 		LOG_CACHE << "Clearing defines map!\n";
 		defines_map_.clear();
-		// settup default defines map
+		// set-up default defines map
 
 #ifdef USE_TINY_GUI
 		defines_map_["TINY"] = preproc_define();
