@@ -28,7 +28,7 @@
 
 namespace editor2 {
 
-const int map_context::max_action_stack_size_ = 100;
+const size_t map_context::max_action_stack_size_ = 100;
 
 map_context::map_context(const editor_map& map)
 	: map_(map)
@@ -265,7 +265,7 @@ void map_context::clear_undo_redo()
 
 void map_context::trim_stack(action_stack& stack)
 {
-	if (stack.size() > static_cast<size_t>(max_action_stack_size_)) {
+	if (stack.size() > max_action_stack_size_) {
 		delete stack.front();
 		stack.pop_front();
 	}

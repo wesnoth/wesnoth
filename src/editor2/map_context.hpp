@@ -229,7 +229,7 @@ protected:
 	/**
 	 * Action stack (i.e. undo and redo) maximum size
 	 */
-	static const int max_action_stack_size_;
+	static const size_t max_action_stack_size_;
 	
 	/**
 	 * Number of actions performed since the map was saved. Zero means the map was not modified.
