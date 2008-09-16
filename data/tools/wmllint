@@ -1010,8 +1010,8 @@ def translator(filename, mapxforms, textxform):
                         attribute = instance.group(1)
                         value = instance.group(2)
                         if '#' in value:
-                            value = value.split("#")[0].strip()
-                        tagstack[-1][1][attribute] = value
+                            value = value.split("#")[0]
+                        tagstack[-1][1][attribute] = value.strip()
                     if validate:
                         validate_stack(tagstack, filename, lineno)
             if "wmllint: validate-on" in comment:
