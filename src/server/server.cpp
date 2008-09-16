@@ -974,83 +974,78 @@ std::string server::process_command(const std::string& query, const std::string&
 					<< stats.bytes_received << " bytes\n";
 			}
 		}
-	} else if (command == "ban" || command == "bans" || command == "kban" || command == "kickban" || command == "gban") {
-		if (parameters == "") {
-			ban_manager_.list_bans(out);
-		} else if (parameters == "deleted") {
+	} else if (command == "bans") {
+		if (parameters == "deleted") {
 			ban_manager_.list_deleted_bans(out);
-		}else {
-			bool banned_ = false;
-			const bool kick = (command == "kban" || command == "kickban");
-			const bool group_ban = command == "gban";
-			std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
-			if (first_space == parameters.end())
-			{
-				return ban_manager_.get_ban_help();
-			}
-			std::string::iterator second_space = std::find(first_space+1, parameters.end(), ' ');
-			const std::string target(parameters.begin(), first_space);
-			std::string group;
-			if (group_ban)
-			{
-				group = std::string(first_space+1, second_space);
-				first_space = second_space;
-				second_space = std::find(first_space+1, parameters.end(), ' ');
-			}
-			const std::string time(first_space+1,second_space);
-			time_t parsed_time = ban_manager_.parse_time(time);
-			if (parsed_time == 0)
-			{
-				second_space = first_space;
-			}
+		} else {
+			ban_manager_.list_bans(out);
+		}
+	} else if (command == "ban" || command == "kban" || command == "kickban" || command == "gban") {
+		bool banned_ = false;
+		const bool kick = (command == "kban" || command == "kickban");
+		const bool group_ban = command == "gban";
+		std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
+		if (first_space == parameters.end()) {
+			return ban_manager_.get_ban_help();
+		}
+		std::string::iterator second_space = std::find(first_space + 1, parameters.end(), ' ');
+		const std::string target(parameters.begin(), first_space);
+		std::string group;
+		if (group_ban) {
+			group = std::string(first_space + 1, second_space);
+			first_space = second_space;
+			second_space = std::find(first_space + 1, parameters.end(), ' ');
+		}
+		const std::string time(first_space + 1, second_space);
+		time_t parsed_time = ban_manager_.parse_time(time);
+		if (parsed_time == 0) {
+			second_space = first_space;
+		}
 
-			if (second_space == parameters.end())
-			{
-				--second_space;
-			}
-			std::string reason(second_space + 1, parameters.end());
-			utils::strip(reason);
-			if (reason.empty())
-				return ban_manager_.get_ban_help();
+		if (second_space == parameters.end()) {
+			--second_space;
+		}
+		std::string reason(second_space + 1, parameters.end());
+		utils::strip(reason);
+		if (reason.empty()) return ban_manager_.get_ban_help();
 
-			// if we find a '.' consider it an ip mask 
-			//! @todo  FIXME: should also check for only numbers
-			if (std::count(target.begin(), target.end(), '.') >= 1) {
-				banned_ = true;
+		// if we find a '.' consider it an ip mask
+		//! @todo  FIXME: make a proper check for valid IPs
+		if (std::count(target.begin(), target.end(), '.') >= 1) {
+			banned_ = true;
 
-				std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
-				out << err;
-	
-				if (kick) {
-					for (wesnothd::player_map::const_iterator pl = players_.begin();
-						pl != players_.end(); ++pl)
-					{
-						if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
-							out << "\nKicked " << pl->second.name() << ".";
-							network::queue_disconnect(pl->first);
-						}
-					}
-				}
-			} else {
+			std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
+			out << err;
+
+			if (kick) {
 				for (wesnothd::player_map::const_iterator pl = players_.begin();
-					pl != players_.end(); ++pl)
+						pl != players_.end(); ++pl)
 				{
-					if (utils::wildcard_string_match(pl->second.name(), target)) {
-						banned_ = true;
-						const std::string& ip = network::ip_address(pl->first);
-						if (!is_ip_banned(ip)) {
-							std::string err = ban_manager_.ban(ip,parsed_time, reason, issuer_name, group);
-							out << err;
-						}
-						if (kick) {
-							out << "\nKicked " << pl->second.name() << ".";
-							network::queue_disconnect(pl->first);
-						}
+					if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
+						out << "\nKicked " << pl->second.name() << ".";
+						network::queue_disconnect(pl->first);
 					}
 				}
-				if (!banned_) {
-					out << "Nickmask '" << target << "' did not match, no bans set.";
+			}
+		} else {
+			for (wesnothd::player_map::const_iterator pl = players_.begin();
+					pl != players_.end(); ++pl)
+			{
+				if (utils::wildcard_string_match(pl->second.name(), target)) {
+					banned_ = true;
+					const std::string& ip = network::ip_address(pl->first);
+					if (!is_ip_banned(ip)) {
+						std::string err = ban_manager_.ban(ip,parsed_time, reason, issuer_name, group);
+						out << err;
+					}
+					if (kick) {
+						out << "\nKicked " << pl->second.name() << ".";
+						network::queue_disconnect(pl->first);
+					}
 				}
+			}
+			if (!banned_) {
+				out << "Nickmask '" << target << "' did not match, no bans set.";
 			}
 		}
 	} else if (command == "unban") {
