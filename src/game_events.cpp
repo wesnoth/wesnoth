@@ -657,6 +657,31 @@ namespace {
 			(screen)->scroll_to_tile(u->first,game_display::SCROLL,utils::string_bool(check_fogged,false));
 		}
 	}
+	
+	// store time of day config in a WML variable; useful for those who
+	// are too lazy to calculate the corresponding time of day for a given turn,
+	// or if the turn / time-of-day sequence mutates in a scenario.
+	WML_HANDLER_FUNCTION(store_time_of_day,/*handler*/,/*event_info*/,cfg)
+	{
+		assert(status_ptr != NULL);
+		assert(state_of_game != NULL);
+
+		const gamemap::location loc = cfg_to_loc(cfg, -999, -999);
+		const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
+		const time_of_day tod = turn ? status_ptr->get_time_of_day(0,loc,turn) : status_ptr->get_time_of_day(0,loc);
+
+		std::string variable = cfg["variable"];
+		if(variable.empty()) {
+			variable = "time_of_day";
+		}
+
+		variable_info store(variable, true, variable_info::TYPE_CONTAINER);
+
+		config tod_cfg;
+		tod.write(tod_cfg);
+
+		(*store.vars).add_child(store.key, tod_cfg);
+	}
 
 	WML_HANDLER_FUNCTION(gold,/*handler*/,/*event_info*/,cfg)
 	{
