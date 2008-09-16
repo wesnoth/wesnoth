@@ -960,6 +960,11 @@ private:
 
 	void menu_handler::recall(const unsigned int team_num, const gamemap::location& last_hex)
 	{
+		if(utils::string_bool(level_["disallow_recall"])) {
+			gui::message_dialog(*gui_,"",_("You are separated from your soldiers and may not recall them")).show();
+			return;
+		}
+
 		player_info *player = gamestate_.get_player(teams_[team_num-1].save_id());
 		if(!player) {
 			ERR_NG << "cannot recall a unit for side " << team_num
@@ -976,9 +981,7 @@ private:
 
 		gui_->draw(); //clear the old menu
 
-		if(utils::string_bool(level_["disallow_recall"])) {
-			gui::message_dialog(*gui_,"",_("You are separated from your soldiers and may not recall them")).show();
-		} else if(recall_list.empty()) {
+		if(recall_list.empty()) {
 			gui::message_dialog(*gui_,"",_("There are no troops available to recall\n(You must have veteran survivors from a previous scenario)")).show();
 		} else {
 			std::vector<std::string> options, options_to_filter;
