@@ -5,6 +5,8 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 Version 1.5.4+svn:
   * Language and translations
     * updated translations: Finnish, Slovak.
+  * Unit changes and balancing
+    * Made units with the healthy trait take a quarter less damage from poison.
 
 Version 1.5.4:
   * Editor2
@@ -15,7 +17,7 @@ Version 1.5.4:
       Use the new "partial undo" feature (default hotkey ctrl+z, cmd+z 
       on Mac) to get the old behaviour, when you want to only undo a part 
       of a paint-drag or select-drag. After the actions are split this way
-	  they are never combined again.
+      they are never combined again.
     * More visible selection.
     * Different map generators can be used in map -> generate map (FR #3950)
 
