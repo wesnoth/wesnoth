@@ -46,6 +46,7 @@ enum twindow_type {
 	EDITOR_NEW_MAP,          //<! New map dialog
 	EDITOR_GENERATE_MAP,     /** Editor random map genarator dialog */
 	EDITOR_RESIZE_MAP, 	   	 /** Editor resize map dialog */
+	EDITOR_SETTINGS,		 /** Editor settings dialog */
 #endif
 	DUMMY                    //<! Dummy always the last one.
 };

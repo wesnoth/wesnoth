@@ -94,6 +94,7 @@ static void fill_window_types()
 	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
 	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
 	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
+	window_type_list[EDITOR_SETTINGS] = "editor_settings";
 #endif
 }
 

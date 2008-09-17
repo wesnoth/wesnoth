@@ -161,6 +161,7 @@ wesnoth_editor2_SOURCES = \
 	gui/dialogs/editor_generate_map.cpp \
 	gui/dialogs/editor_new_map.cpp \
 	gui/dialogs/editor_resize_map.cpp \
+	gui/dialogs/editor_settings.cpp \
 	editor2/action.cpp \
 	editor2/brush.cpp \
 	editor2/editor_main.cpp \

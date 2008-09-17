@@ -22,6 +22,7 @@
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
+#include "gui/dialogs/editor_settings.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -93,11 +94,13 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	init_mouse_actions(game_config);
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	init_map_generators(game_config);
+	init_tods(game_config);
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	background_terrain_ = t_translation::GRASS_LAND;
 	foreground_terrain_ = t_translation::MOUNTAIN;
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
+	image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
 	gui_->invalidate_game_status();
 	refresh_all();
 	events::raise_draw_event();	
@@ -169,6 +172,19 @@ void editor_controller::init_map_generators(const config& game_config)
 	}
 }
 
+void editor_controller::init_tods(const config& game_config)
+{
+	const config* cfg = game_config.child("editor_times");
+	if (cfg == NULL) {
+		ERR_ED << "No editor time-of-day defined\n";
+		return;
+	}
+	foreach (const config* i, cfg->get_children("time")) {
+		tods_.push_back(time_of_day(*i));
+	}
+}
+
+
 void editor_controller::load_tooltips()
 {
 	// Tooltips for the groups
@@ -218,6 +234,38 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 		do_quit_ = true;
 		quit_mode_ = mode;
 	}
+}
+
+void editor_controller::editor_settings_dialog()
+{
+	if (tods_.empty()) {
+		gui::message_dialog(gui(), _("Error"), _("No editor time-of-day found")).show();
+		return;
+	}
+
+	gui2::teditor_settings dialog;
+	dialog.set_tods(tods_);
+	dialog.set_current_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
+	dialog.set_redraw_callback(boost::bind(&editor_controller::editor_settings_dialog_redraw_callback, this, _1, _2, _3));
+	image::colour_adjustment_resetter adjust_resetter;
+	dialog.show(gui().video());
+	
+	int res = dialog.get_retval();
+	if(res == gui2::twindow::OK) {
+		image::set_colour_adjustment(dialog.get_red(), dialog.get_green(), dialog.get_blue());
+		preferences::set_editor_r(dialog.get_red());
+		preferences::set_editor_g(dialog.get_green());
+		preferences::set_editor_b(dialog.get_blue());
+	} else {
+		adjust_resetter.reset();
+	}
+	refresh_all();
+}
+
+void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int b)
+{
+	image::set_colour_adjustment(r, g, b);
+	refresh_all();
 }
 
 bool editor_controller::confirm_discard()
@@ -492,6 +540,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return true;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
+		case HOTKEY_EDITOR_SETTINGS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
@@ -567,6 +616,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
+			return true;
+		case HOTKEY_EDITOR_SETTINGS:
+			editor_settings_dialog();
 			return true;
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			palette_->swap();

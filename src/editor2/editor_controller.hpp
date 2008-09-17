@@ -80,6 +80,8 @@ class editor_controller : public controller_base,
 		 */
 		void quit_confirm(EXIT_STATUS status);
 		
+		void editor_settings_dialog();
+		
 		/**
 		 * Shows an are-you-sure dialog if the map was modified.
 		 * @return true if the user confirmed or the map was not modified, false otherwise
@@ -233,6 +235,7 @@ class editor_controller : public controller_base,
 		 */
 		void perform_refresh(const editor_action& action, bool drag_part = false);
 		
+		void editor_settings_dialog_redraw_callback(int r, int g, int b);
 	private:    		
 		/** init the display object and general set-up */ 
 		void init(CVideo& video);
@@ -245,6 +248,8 @@ class editor_controller : public controller_base,
 		
 		/** init available random map generators */
 		void init_map_generators(const config& game_config);
+		
+		void init_tods(const config& game_config);
 		
 		/**
 		 * Load editor-specific tooltips
@@ -293,6 +298,12 @@ class editor_controller : public controller_base,
 		editor_display* gui_;
 		
 		std::vector<map_generator*> map_generators_;
+		
+		int current_map_generator_index_;
+		
+		std::vector<time_of_day> tods_;
+		
+		int current_tod_index_;
 		
 		/** Legacy object required by the legacy terrain palette and brush bar */
 		size_specs* size_specs_;
