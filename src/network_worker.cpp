@@ -135,7 +135,8 @@ struct buffer {
 };
 
 
-bool managed = false, raw_data_only = false;
+bool volatile managed = false;
+bool raw_data_only = false;
 typedef std::vector< buffer* > buffer_set;
 buffer_set outgoing_bufs[NUM_SHARDS];
 
@@ -748,11 +749,20 @@ manager::~manager()
 				DBG_NW << "thread exited...\n";
 			}
 
+			// Condition variables must be deleted first as
+			// they make reference to mutexs. If the mutexs
+			// are destroyed first, the condition variables
+			// will access memory already freed by way of
+			// stale mutex. Bad things will follow. ;)
+
 			threads[shard].clear();
-			delete shard_mutexes[shard];
-			shard_mutexes[shard] = NULL;
+
+			to_clear[shard].clear();
+
 			delete cond[shard];
 			cond[shard] = NULL;
+			delete shard_mutexes[shard];
+			shard_mutexes[shard] = NULL;
 		}
 
 		delete  stats_mutex;
