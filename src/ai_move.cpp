@@ -845,8 +845,8 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 				std::set<gamemap::location> checked_hexes;
 				checked_hexes.insert(*i);
 				const int free_slots = count_free_hexes_in_castle(*i, checked_hexes);
-				const int tactical_value = std::sqrt(std::pow(static_cast<float>(map_.w()/2 - i->x),2) +
-							std::pow(static_cast<float>(map_.h()/2 - i->y),2))*2;
+				gamemap::location center(map_.w()/2, map_.h()/2);
+				const int tactical_value = distance_between(center, *i);
 				const int empty_slots = leader->second.total_movement() * std::max(number_of_recruit - free_slots,0);
 				unit_map::const_iterator u = units_.find(*i);
 				const int reserved_penalty = leader->second.total_movement() * 
