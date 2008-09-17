@@ -81,7 +81,7 @@ int teditor_settings::get_blue() const
 	return custom_tod_blue_field_->get_cache_value();
 }
 
-void teditor_settings::update_tod_display(twindow& window)
+void teditor_settings::update_tod_display(twindow& /*window*/)
 {
 	redraw_callback_(custom_tod_red_->get_value(),
 		custom_tod_green_->get_value(),
