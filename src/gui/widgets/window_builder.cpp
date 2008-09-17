@@ -974,8 +974,8 @@ twidget* tbuilder_panel::build() const
 tbuilder_slider::tbuilder_slider(const config& cfg) :
 	tbuilder_control(cfg),
 	best_slider_length_(lexical_cast_default<unsigned>(cfg["best_slider_length"])),
-	minimum_value_(lexical_cast_default<unsigned>(cfg["minimum_value"])),
-	maximum_value_(lexical_cast_default<unsigned>(cfg["maximum_value"])),
+	minimum_value_(lexical_cast_default<int>(cfg["minimum_value"])),
+	maximum_value_(lexical_cast_default<int>(cfg["maximum_value"])),
 	step_size_(lexical_cast_default<unsigned>(cfg["step_size"])),
 	value_(lexical_cast_default<unsigned>(cfg["value"])),
 	minimum_value_label_(cfg["minimum_value_label"]),
