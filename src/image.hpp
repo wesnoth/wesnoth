@@ -24,6 +24,8 @@
 #include <vector>
 #include <list>
 
+#include <boost/tuple/tuple.hpp>
+
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
@@ -197,6 +199,17 @@ namespace image {
 	///their pixels. i.e. add a certain colour hint to images. useful
 	///for representing day/night. Invalidates all scaled images.
 	void set_colour_adjustment(int r, int g, int b);
+	
+	boost::tuple<int, int, int> get_colour_adjustment();
+	
+	class colour_adjustment_resetter
+	{
+		public:
+			colour_adjustment_resetter();
+			void reset();
+		private:
+			int r_, g_, b_;
+	};
 
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team

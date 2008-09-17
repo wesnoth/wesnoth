@@ -557,6 +557,21 @@ void set_colour_adjustment(int r, int g, int b)
 	}
 }
 
+boost::tuple<int, int, int> get_colour_adjustment()
+{
+	return boost::make_tuple(red_adjust, green_adjust, blue_adjust);
+}
+
+colour_adjustment_resetter::colour_adjustment_resetter()
+: r_(red_adjust), g_(green_adjust), b_(blue_adjust)
+{
+}
+
+void colour_adjustment_resetter::reset()
+{
+	set_colour_adjustment(r_, g_, b_);
+}
+
 void set_team_colors(const std::vector<std::string>* colors)
 {
 	if (colors == NULL)
