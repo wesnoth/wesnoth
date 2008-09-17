@@ -132,6 +132,7 @@ const struct {
 
 #ifndef DISABLE_EDITOR2
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SETTINGS, "editor-settings", N_("Editor Settings"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map"), false, hotkey::SCOPE_EDITOR },
