@@ -138,11 +138,11 @@ namespace preferences {
 	void set_editor_b(int value);
 	
 	/** Get editor red tint level. */
-	int editor_r(void);
+	int editor_r();
 	/** Get editor green tint level. */
-	int editor_g(void);
+	int editor_g();
 	/** Get editor blue tint level. */
-	int editor_b(void);
+	int editor_b();
 
 	int draw_delay();
 	void set_draw_delay(int value);
