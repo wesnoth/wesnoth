@@ -822,7 +822,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 		{
 			// Make a map of the possible locations the leader can move to,
 			// ordered by the distance from the keep.
-			int best_value = INT_MAX;
+			int best_value = INT_MAX - 1;
 			gamemap::location best_target;
 
 			// The leader can't move to his keep, try to move to the closest location
@@ -832,12 +832,16 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 
 				const shortest_path_calculator cost_calc(leader->second, current_team(), units_,
 						teams_,map_);
-				
+				const double limit = std::min(10000, best_value + 1);
 				paths::routes_map::iterator route = path_itor->second.routes.insert(
 						std::make_pair(*i,
-							a_star_search(leader->first, *i, 10000.0, &cost_calc,map_.w(), map_.h()))).first;
+							a_star_search(leader->first, *i, limit, &cost_calc,map_.w(), map_.h()))).first;
+				if (route->second.steps.empty())
+				{
+					path_itor->second.routes.erase(route);
+					continue;
+				}
 
-				const int distance = route->second.steps.size()-1;
 				std::set<gamemap::location> checked_hexes;
 				checked_hexes.insert(*i);
 				const int free_slots = count_free_hexes_in_castle(*i, checked_hexes);
@@ -851,7 +855,34 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 						&& !u->second.invisible(u->first, units_, teams_)
 							?(current_team().is_enemy(u->second.side())?6:3)
 					:0);
-				const int enemy = (power_projection(*i, enemy_dstsrc) * 8 * leader->second.total_movement())/leader->second.hitpoints();
+				const int enemy = (power_projection(*i, enemy_dstsrc) * 15 * leader->second.total_movement())/leader->second.hitpoints();
+
+				int value = empty_slots + enemy + tactical_value + reserved_penalty;
+	
+				if (value + static_cast<int>(route->second.steps.size()) - 1 >= best_value)
+					continue;
+
+				route->second.move_left = leader->second.movement_left();
+				int distance = 0;
+				gamemap::location target;
+				std::vector<gamemap::location>::iterator loc;
+
+				for (loc = route->second.steps.begin() + 1;
+						loc != route->second.steps.end();
+						++loc)
+				{
+					distance += leader->second.movement_cost(map_.get_terrain(*loc));
+					if (route->second.move_left == 0)
+						continue;
+					route->second.move_left -= leader->second.movement_cost(map_.get_terrain(*loc));
+					if (route->second.move_left <= 0)
+					{
+						target = *loc;
+						route->second.move_left = 0;
+					}
+				}
+				if (route->second.move_left > 0)
+					target = *(loc-1);
 
 				int multiturn_move_penalty = 0;
 				if (recruiting_prefered_)
@@ -859,20 +890,11 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 
 				const int distance_value = (distance > leader->second.movement_left()? 
 						((distance - leader->second.movement_left())/leader->second.total_movement()+multiturn_move_penalty)*leader->second.total_movement() : 0);
-				const int value = distance_value + empty_slots + enemy + tactical_value + reserved_penalty;
-	
-				if (value > best_value)
+				value += distance_value;
+				
+				if (value >= best_value)
 					continue;
-				gamemap::location target;
-				if (distance > leader->second.movement_left())
-				{
-					target = route->second.steps[leader->second.movement_left()];
-					route->second.steps.erase(route->second.steps.begin() + leader->second.movement_left() + 1,route->second.steps.end());
-					route->second.move_left = 0;
-				} else {
-					target = *i;
-					route->second.move_left = leader->second.movement_left() - distance;
-				}
+
 				best_value = value;
 				best_target = target;
 				DBG_AI << "Considiring keep: " << *i << 
@@ -888,7 +910,8 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 		}
 
 			// Find the location with the best value
-			if (leader->first != best_target)
+			if (leader->first != best_target
+				&& best_target != gamemap::location::null_location)
 				move_unit(leader->first,best_target,possible_moves);
 		}
 	}

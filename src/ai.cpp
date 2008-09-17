@@ -536,7 +536,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		}
 
 		if(rt != p.routes.end()) {
-			assert(static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size() && "Trying to move unit without enough move points left\n");
 			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
@@ -981,14 +980,21 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
 	}
 
 	float free_slots = 0.0f;
+	const float gold = current_team().gold();
+	const float unit_price = current_team().average_recruit_price();
 	if (map_.is_keep(leader->first))
 	{
 		std::set<gamemap::location> checked_hexes;
 		checked_hexes.insert(leader->first);
 		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
+	} else {
+		gamemap::location loc = nearest_keep(leader->first);
+		if (units_.find(loc) == units_.end()
+			&& gold/unit_price > 1.0f)
+		{
+			free_slots -= current_team().num_pos_recruits_to_force();
+		}
 	}
-	const float gold = current_team().gold();
-	const float unit_price = current_team().average_recruit_price();
 	recruiting_prefered_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
 	DBG_AI << "recruiting prefered: " << (recruiting_prefered_?"yes":"no") << 
 		" units to recruit: " << (gold/unit_price) << 
@@ -1132,7 +1138,17 @@ void ai::do_move()
 	if(leader != units_.end()) {
 
 		if(!passive_leader) {
+			gamemap::location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
+			leader = find_leader(units_,team_num_);
+			if (leader->first != before
+				&& leader->second.movement_left() > 0
+				&& recruiting_prefered_)
+			{
+				recruiting_prefered_ = 2;
+				do_move();
+				return;
+			}
 		}
 
 		if (map_.is_keep(leader->first))
@@ -1211,7 +1227,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	time_taken = SDL_GetTicks() - ticks;
 	LOG_AI << "analysis took " << time_taken << " ticks\n";
 
-	if(choice_rating > current_team().caution()) {
+	if(choice_rating > current_team().caution()/2) {
 		location from   = choice_it->movements[0].first;
 		location to     = choice_it->movements[0].second;
 		location target_loc = choice_it->target;
@@ -1322,11 +1338,12 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
 			double best_vulnerability = 100000.0;
+			const double leader_penalty = (u.can_recruit()?2.0:1.0);
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
 				if(map_.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
-					const double vuln = power_projection(it.first->first, enemy_dstsrc);
+					const double vuln = power_projection(it.first->first, enemy_dstsrc)*leader_penalty;
 					LOG_AI << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability) {
 						best_vulnerability = vuln;
@@ -1339,7 +1356,8 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 			}
 
 			// If we have found an eligible village:
-			if(best_loc != it.second) {
+			if(best_loc != it.second
+				&& best_vulnerability < u.hitpoints()) {
 				const location& src = best_loc->first;
 				const location& dst = best_loc->second;
 

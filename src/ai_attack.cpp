@@ -207,22 +207,24 @@ void ai::do_attack_analysis(
 			}
 
 			// See if this position is the best rated we've seen so far.
-			const int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus;
-			if(cur_position >= 0 && rating < best_rating) {
+			int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus;
+			if(cur_position >= 0 && rating < best_rating * 2) {
 				continue;
 			}
 
 			// Find out how vulnerable we are to attack from enemy units in this hex.
-			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
+			const double vulnerability = power_projection(tiles[j],enemy_dstsrc)*current_team().caution()*10;
 
 			// Calculate how much support we have on this hex from allies.
 			// Support does not take into account terrain, because we don't want
 			// to move into a hex that is surrounded by good defensive terrain.
-			const double support = power_projection(tiles[j],fullmove_dstsrc,false);
+			const double support = power_projection(tiles[j],fullmove_dstsrc,false)*current_team().aggression();
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
-			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
+			const double leader_penalty = (unit_itor->second.can_recruit()? 1.4:1.0);
+			rating -= ((vulnerability/surround_bonus)*leader_penalty - support*surround_bonus);
+			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
 
