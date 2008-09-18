@@ -2553,21 +2553,22 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 		//NOTE: for the moment shroud cleared during recall seems never delayed
 		if(un->is_recall() || un->is_recruit()) continue;
 
+		// Make a temporary unit move in map and hide the original
+		unit_map::iterator unit_itor = units.find(un->affected_unit.underlying_id());
+		assert(unit_itor != units.end());
+		unit temporary_unit(unit_itor->second);
 		// We're not really going to mutate the unit, just temporarily
 		// set its moves to maximum, but then switch them back.
-		// TODO: do this for the temporary unit instead
-		// (and maybe move it instead or recreate it for each step ?)
-		const unit_movement_resetter move_resetter(un->affected_unit);
+		const unit_movement_resetter move_resetter(temporary_unit);
 
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
 			// we search where is the unit now, before placing its temporary clone
-			unit_map::const_iterator real_unit = units.find(un->affected_unit.underlying_id());
 
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
 			// FIXME: in other move functions, we are blind when traversing occupied hex
-			const temporary_unit_placer unit_placer(units,*step,un->affected_unit);
+			const temporary_unit_placer unit_placer(units,*step, temporary_unit);
 
 			// In theory we don't know this clone, but
 			// - he can't be in newly cleared locations
@@ -2592,7 +2593,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 				assert(new_unit != units.end());
 				teams[team].see(new_unit->second.side()-1);
 
-				game_events::raise("sighted",*sight_it,real_unit->first);
+				game_events::raise("sighted",*sight_it,unit_itor->first);
 				sighted_event = true;
 			}
 
