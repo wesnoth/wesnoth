@@ -44,6 +44,8 @@
 
 #include <cassert>
 
+#include <boost/scoped_ptr.hpp>
+
 #define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)
@@ -2563,12 +2565,16 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
-			// we search where is the unit now, before placing its temporary clone
+			// we skip places where
 
+			if (*step != unit_itor->first
+				&& units.find(*step) != units.end())
+				continue;
 			// We have to swap out any unit that is already in the hex,
 			// so we can put our unit there, then we'll swap back at the end.
-			// FIXME: in other move functions, we are blind when traversing occupied hex
-			const temporary_unit_placer unit_placer(units,*step, temporary_unit);
+			boost::scoped_ptr<temporary_unit_placer> unit_placer;
+			if (*step != unit_itor->first)
+				unit_placer.reset(new temporary_unit_placer(units,*step, temporary_unit));
 
 			// In theory we don't know this clone, but
 			// - he can't be in newly cleared locations
