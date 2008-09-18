@@ -186,9 +186,8 @@ void ai::do_attack_analysis(
 			}
 
 		    unit_ability_list abil = unit_itor->second.get_abilities("leadership",tiles[j]);
-		    int best_leadership_bonus = abil.highest("value").first;
-			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
-			if (leadership_bonus > 1.1) {
+		    int leadership_bonus = abil.highest("value").first + 100;
+			if (leadership_bonus > 100) {
 				ERR_AI << unit_itor->second.name() << " is getting leadership " << leadership_bonus << "\n";
 			}
 
@@ -222,7 +221,7 @@ void ai::do_attack_analysis(
 			}
 
 			// See if this position is the best rated we've seen so far.
-			int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus;
+			int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus / 100;
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
