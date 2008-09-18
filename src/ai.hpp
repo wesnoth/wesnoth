@@ -378,9 +378,16 @@ private:
 		const std::multimap<gamemap::location,gamemap::location>& dstsrc,
 		const std::map<gamemap::location,paths>& possible_moves,
 		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
-	
+	/** Used to tell AI if it should recruit ASAP
+	 *  possible values are 0 for false and 1 for true
+	 *  2 is used to disable gold check for recruiting
+	 **/
 	int recruiting_prefered_;
 protected:
+	/**
+	 * true if this is master AI instance that is allowed to span
+	 * slave AI instances (like formula AI)
+	 **/
 	bool master_;
 };
 
