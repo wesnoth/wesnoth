@@ -489,9 +489,15 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 		ERR_NG << "Trying to add " << p->second.name() << 
 			" - " << p->second.id() << 
 			" - " << p->second.underlying_id() <<
+			" ("  << p->first.x <<
+			","   << p->first.y <<
+			") "  <<
 			" over " << iter->second.second->second.name() << 
 			" - " << iter->second.second->second.id() << 
-			" - " << iter->second.second->second.underlying_id();
+			" - " << iter->second.second->second.underlying_id() <<
+			" ("  << iter->second.second->first.x <<
+			","   << iter->second.second->first.y <<
+			") \n";
 
 		assert(false && "Duplicated underlying_id not allowed");
 	}

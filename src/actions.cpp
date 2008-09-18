@@ -2236,7 +2236,8 @@ size_t move_unit(game_display* disp,
 
 				// We have to swap out any unit that is already in the hex,
 				// so we can put our unit there, then we'll swap back at the end.
-				const temporary_unit_placer unit_placer(units,*step,ui->second);
+				unit temp_unit(ui->second);
+				const temporary_unit_placer unit_placer(units,*step,temp_unit);
 				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
 							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
