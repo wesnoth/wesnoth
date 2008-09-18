@@ -377,6 +377,12 @@ surface locator::load_image_sub_file() const
 				}
 				std::string field = *j++;
 
+				// ~TC() is the only function which is an alias to another one,
+				// so it must be out of the if-elseif chain.
+				/** @todo: move RC functionality into a different method
+				 *         that is called by both functions to avoid the
+				 *         unneeded load of string comparison.
+				 */
 				if("TC" == function){
 					std::vector<std::string> param = utils::split(field,',');
 					if(param.size() < 2)
@@ -398,7 +404,8 @@ surface locator::load_image_sub_file() const
 						field = param[1] + ">" + team_color;
 					}
 				}
-				else if("RC" == function){	// Re-color range/palette function
+
+				if("RC" == function){	// Re-color range/palette function
 					std::vector<std::string> recolor=utils::split(field,'>'); // recolor palette to range
 					if(recolor.size()>1){
 						std::map<Uint32, Uint32> tmp_map;
