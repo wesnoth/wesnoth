@@ -2574,7 +2574,9 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			// so we can put our unit there, then we'll swap back at the end.
 			boost::scoped_ptr<temporary_unit_placer> unit_placer;
 			if (*step != unit_itor->first)
+			{
 				unit_placer.reset(new temporary_unit_placer(units,*step, temporary_unit));
+			}
 
 			// In theory we don't know this clone, but
 			// - he can't be in newly cleared locations
@@ -2602,17 +2604,6 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 				game_events::raise("sighted",*sight_it,unit_itor->first);
 				sighted_event = true;
 			}
-
-			// NOTE: (invalid now, we track the source, but let the warning for the moment)
-			// There is potential for a bug, here. If the "sighted"
-			// events, raised by the clear_shroud_unit function,
-			// loops on all units, changing them all, the unit which
-			// was swapped by the temporary unit placer will not be
-			// affected. However, if we place the pump() out of the
-			// temporary_unit_placer scope, the "sighted" event will
-			// be raised with an invalid source unit, which is even
-			// worse.
-			// game_events::pump();
 
 		}
 	}

@@ -40,6 +40,7 @@ namespace n_unit {
 			void set_save_id(size_t);
 			/** Clears id counter after game */
 			void clear();
+			void reset_fake();
 	};
 
 }

@@ -22,6 +22,16 @@ Version 1.5.4+svn:
  * WML engine:
    * New command, [store_time_of_day], makes it possible to store ToD info
      in a WML array/container.
+   * Changed underlying_id in unit to be unique number
+ * AI
+   * Made it possible to use formula AI for recruiting when using default ai
+   * Changed defaults for AI parameters: village_value, villages_per_scout,
+     protect_leader, protect_leader_radius, leader_value
+   * Added new ai paramater number_of_possible_recruits_to_force_recruit which
+     tells AI when it must move leader back to keep.
+   * Improved leader movement and protection.
+   * Improved village grabbing and protection.
+   * Made 'caution' to control how dangerous place AI tries to attack
  * Miscellaneous and bug fixes:
    * Fixed the list of the unit's attacks getting cut off in the right panel
      (bug #12297).

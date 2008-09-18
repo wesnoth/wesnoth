@@ -40,6 +40,7 @@ namespace n_unit {
 	size_t id_manager::next_fake_id()
 	{
 		assert(next_id_ != fake_id_);
+		DBG_UT << "fake id: " << fake_id_ << "\n";
 		return --fake_id_;
 	}
 
@@ -50,12 +51,19 @@ namespace n_unit {
 
 	void id_manager::set_save_id(size_t id)
 	{
+		clear();
 		DBG_UT << "set save id: " << id << "\n";
 		next_id_ = id;
+	}
+
+	void id_manager::reset_fake()
+	{
+		fake_id_ = -1;
 	}
 
 	void id_manager::clear()
 	{
 		next_id_ = 0;
+		reset_fake();
 	}
 }

@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "sound.hpp"
 #include "team.hpp"
+#include "unit_id.hpp"
 #include "terrain_filter.hpp"
 #include "variable.hpp"
 
@@ -492,6 +493,7 @@ void play_controller::finish_side_turn(){
 	}
 
 	mouse_handler_.deselect_hex();
+	n_unit::id_manager::instance().reset_fake();
 	game_events::pump();
 }
 

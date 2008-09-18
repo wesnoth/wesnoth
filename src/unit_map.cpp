@@ -486,10 +486,17 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 		replace(p);
 		return;
 	} else {
+		ERR_NG << "Trying to add " << p->second.name() << 
+			" - " << p->second.id() << 
+			" - " << p->second.underlying_id() <<
+			" over " << iter->second.second->second.name() << 
+			" - " << iter->second.second->second.id() << 
+			" - " << iter->second.second->second.underlying_id();
+
 		assert(false && "Duplicated underlying_id not allowed");
 	}
 
-	DBG_NG << "Adding unit " << p->second.underlying_id()<< " to location: (" << p->first.x+1 << "," << p->first.y+1
+	DBG_NG << "Adding unit " << p->second.underlying_id()<< " - " << p->second.id() << " to location: (" << p->first.x+1 << "," << p->first.y+1
 			<< ")\n";
 
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(p->first, unit_id));
