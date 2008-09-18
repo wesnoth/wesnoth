@@ -111,6 +111,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	const std::string& background_name = part["background"];
 	const bool show_title = utils::string_bool(part["show_title"]);
+	const bool scale_background = part["scale_background"].empty() ? true : utils::string_bool(part["scale_background"]);
 
 	surface background(NULL);
 	if(background_name.empty() == false) {
@@ -126,8 +127,8 @@ bool show_intro_part(display &disp, const config& part,
 		background.assign(create_neutral_surface(video.getx(),video.gety()));
 	}
 
-	double xscale = 1.0 * video.getx() / background->w;
-	double yscale = 1.0 * video.gety() / background->h;
+	double xscale = scale_background ? 1.0 * video.getx() / background->w : 1.0;
+	double yscale = scale_background ? 1.0 * video.gety() / background->h : 1.0;
 	double scale = std::min<double>(xscale,yscale);
 
 	background = scale_surface(background, static_cast<int>(background->w*scale), static_cast<int>(background->h*scale));
@@ -142,11 +143,12 @@ bool show_intro_part(display &disp, const config& part,
 #ifdef USE_TINY_GUI
 	textx = 10;
 	int xbuttons = video.getx() - 50;
+	int ybuttons = dstrect.y + dstrect.h - 20;
 
 	// Use the whole screen for text
 	texty = 0;
 #else
-	int xbuttons;
+	int xbuttons, ybuttons;
 
 	if (background->w > 500) {
 		textx = dstrect.x + 150;
@@ -156,7 +158,13 @@ bool show_intro_part(display &disp, const config& part,
 		xbuttons = video.getx() - 200 - 40;
 	}
 
-	texty = dstrect.y + dstrect.h - 200;
+	if (background->h > 375) {
+		texty = dstrect.y + dstrect.h - 200;
+		ybuttons = dstrect.y + dstrect.h - 40;
+	} else {
+		texty = video.gety() - 200;
+		ybuttons = video.gety() - 40;
+	}
 #endif
 
 	// Darken the area for the text and buttons to be drawn on
@@ -165,11 +173,11 @@ bool show_intro_part(display &disp, const config& part,
 	}
 
 #ifdef USE_TINY_GUI
-	next_button.set_location(xbuttons,dstrect.y+dstrect.h-40);
-	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-20);
+	next_button.set_location(xbuttons,ybuttons-20);
+	skip_button.set_location(xbuttons,ybuttons);
 #else
-	next_button.set_location(xbuttons,dstrect.y+dstrect.h-70);
-	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-40);
+	next_button.set_location(xbuttons,ybuttons-30);
+	skip_button.set_location(xbuttons,ybuttons);
 #endif
 
 	// Draw title if needed
