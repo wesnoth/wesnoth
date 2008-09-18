@@ -779,6 +779,8 @@ bool game_controller::play_multiplayer_mode()
 				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
 				return false;
 			}
+			std::cerr << " Faction " << (*side)["name"] << 
+				" selected for side " << side_num << ".\n";
 		}
 
 		char buf[20];

@@ -281,7 +281,8 @@ protected:
 			const std::vector<location>& battlefield) const;
 
 	virtual std::pair<location,location> choose_move(std::vector<target>& targets,
-			const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
+			const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
+			std::vector<target>::iterator& best_target);
 
 	/** Rates the value of moving onto certain terrain for a unit. */
 	virtual int rate_terrain(const unit& u, const location& loc);

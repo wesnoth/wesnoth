@@ -275,6 +275,10 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 			movement -= move_cost;
 		}
 	}
+	if (turns == 1)
+		rt.move_left = movement;
+	else
+		rt.move_left = 0;
 
 	return turns;
 }

@@ -107,8 +107,8 @@ team::team_info::team_info(const config& cfg) :
 		ai_params(),
 		ai_memory_(),
 		villages_per_scout(),
-		leader_value(0.0),
-		village_value(0.0),
+		leader_value(3.0),
+		village_value(4.5),
 		aggression_(0.5), 
 		caution_(0.25),
 		targets(),
@@ -219,7 +219,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(scouts_val.empty()) {
-		villages_per_scout = 4;
+		villages_per_scout = 8;
 	} else {
 		villages_per_scout = atoi(scouts_val.c_str());
 	}
@@ -245,7 +245,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(village_val.empty()) {
-		village_value = 1.0;
+		village_value = 4.5;
 	} else {
 		village_value = atof(village_val.c_str());
 	}
@@ -258,7 +258,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(aggression_val.empty()) {
-		aggression_ = 0.5;
+		aggression_ = 0.4;
 	} else {
 		aggression_ = atof(aggression_val.c_str());
 	}

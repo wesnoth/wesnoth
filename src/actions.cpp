@@ -537,9 +537,14 @@ bool battle_context::better_combat(const combatant &us_a, const combatant &them_
 	if (a - b > 0.01)
 		return true;
 
+	// Add poison to calculations
+	double poison_a_us = (us_a.poisoned) * game_config::poison_amount;
+	double poison_a_them = (them_a.poisoned) * game_config::poison_amount;
+	double poison_b_us = (us_b.poisoned) * game_config::poison_amount;
+	double poison_b_them = (them_b.poisoned) * game_config::poison_amount;
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = us_a.average_hp()*harm_weight - them_a.average_hp();
-	b = us_b.average_hp()*harm_weight - them_b.average_hp();
+	a = (us_a.average_hp()+poison_a_us)*harm_weight - (them_a.average_hp()+poison_a_them);
+	b = (us_b.average_hp()+poison_b_us)*harm_weight - (them_b.average_hp()+poison_b_them);
 	if (a - b < -0.01)
 		return false;
 	if (a - b > 0.01)

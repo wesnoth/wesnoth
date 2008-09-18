@@ -538,6 +538,6 @@ while True:
 ai.recruit()
 ai.report_stats()
 
-print "======================="
-print "bruteforce ran for %0.4f-seconds." % (time.time() - st)
-print "======================="
+#print "======================="
+#print "bruteforce ran for %0.4f-seconds." % (time.time() - st)
+#print "======================="
