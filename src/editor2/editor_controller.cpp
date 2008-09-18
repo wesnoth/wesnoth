@@ -264,8 +264,9 @@ void editor_controller::editor_settings_dialog()
 
 void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int b)
 {
+	SCOPE_ED;
 	image::set_colour_adjustment(r, g, b);
-	refresh_all();
+	gui().redraw_everything();
 }
 
 bool editor_controller::confirm_discard()
