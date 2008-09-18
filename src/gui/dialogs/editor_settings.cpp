@@ -67,17 +67,14 @@ const time_of_day& teditor_settings::get_selected_tod() const
 
 int teditor_settings::get_red() const
 {
-	std::cerr << "get red " << custom_tod_red_field_->get_cache_value() << "\n";
 	return custom_tod_red_field_->get_cache_value();
 }
 int teditor_settings::get_green() const
 {
-	std::cerr << "get green " << custom_tod_green_field_->get_cache_value() << "\n";
 	return custom_tod_green_field_->get_cache_value();
 }
 int teditor_settings::get_blue() const
 {
-	std::cerr << "get blue" << custom_tod_blue_field_->get_cache_value() << "\n";
 	return custom_tod_blue_field_->get_cache_value();
 }
 
@@ -99,17 +96,14 @@ void teditor_settings::set_current_adjustment(int r, int g, int b)
 		}
 	}
 	/* custom tod */
-	std::cerr << "adj set b\n";
 	custom_tod_red_field_->set_cache_value(r);
 	custom_tod_green_field_->set_cache_value(g);
 	custom_tod_blue_field_->set_cache_value(b);
 	custom_tod_toggle_field_->set_cache_value(true);
-	std::cerr << "adj set " << r << " " << g << " " << b << "\n";
 }
 
 void teditor_settings::update_selected_tod_info(twindow& window)
 {
-	std::cerr << "update_selected_tod_info begin\n";
 	bool custom = custom_tod_toggle_->get_value();
 	if (custom) {
 		current_tod_label_->set_label(_("Custom setting"));
@@ -133,7 +127,6 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 	current_tod_label_->set_active(!custom);
 	update_tod_display(window);
 	window.invalidate_layout();
-	std::cerr << "update_selected_tod_info end\n";
 }
 
 twindow teditor_settings::build_window(CVideo& video)
