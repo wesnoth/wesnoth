@@ -210,7 +210,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 					//Somewhat hacky implementation, including a goto of death
 
-					//! @todo A fancy textbox that displays characters as dots or asterisks would nice
+					/** @todo A fancy textbox that displays characters as dots or asterisks would nice. */
 					if(!((*error)["password_request"].empty())) {
 						const int res = gui::show_dialog(disp, NULL, _("Login"),
 								(*error)["message"], gui::OK_CANCEL,
