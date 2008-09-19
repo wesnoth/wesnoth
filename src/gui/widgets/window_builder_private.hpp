@@ -206,6 +206,37 @@ private:
 	std::vector<t_string> value_labels_;
 };
 
+struct tbuilder_scroll_label : public tbuilder_control
+{
+public:
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_scroll_label
+ *
+ * == Scroll label ==
+ *
+ * A scroll label has no special fields.
+ *
+ * @start_table = config
+ *     auto_hide_scrollbar (bool = true)
+ *                                     Automatically hide the scrollbar when the
+ *                                     text can be shown without the scrollbar.
+ * @end_table
+ */
+	tbuilder_scroll_label(const config& cfg) 
+		: tbuilder_control(cfg)
+		, auto_hide_scrollbar_(
+			utils::string_bool(cfg["auto_hide_scrollbar"], true))
+	{
+	}
+
+	twidget* build () const;
+
+private:
+
+	bool auto_hide_scrollbar_;
+};
+
 struct tbuilder_spacer : public tbuilder_control
 {
 

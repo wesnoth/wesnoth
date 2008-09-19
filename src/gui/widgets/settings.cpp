@@ -193,6 +193,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     label_definition              A label.
  *     listbox_definition            A listbox.
  *     panel_definition              A panel.
+ *     scroll_label_definition       A scroll_label.
  *     slider_definition             A slider.
  *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
@@ -230,6 +231,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tmenubar_definition>("menubar", cfg.get_children("menubar_definition"));
 	load_definitions<tminimap_definition>("minimap", cfg.get_children("minimap_definition"));
 	load_definitions<tpanel_definition>("panel", cfg.get_children("panel_definition"));
+	load_definitions<tscroll_label_definition>("scroll_label", cfg.get_children("scroll_label_definition"));
 	load_definitions<tslider_definition>("slider", cfg.get_children("slider_definition"));
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
@@ -714,12 +716,66 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
  *
  * The following layers exist:
  * * background, the background of the panel.
- * * foreground, the foreground of the panel/
+ * * foreground, the foreground of the panel.
  */
 
 	// The panel needs to know the order.
 	state.push_back(tstate_definition(cfg.child("background")));
 	state.push_back(tstate_definition(cfg.child("foreground")));
+}
+
+tscroll_label_definition::tscroll_label_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing scroll label " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+tscroll_label_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg),
+	grid(NULL)
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_scroll_label
+ *
+ * == Scroll label ==
+ *
+ * The definition of a normal scroll label. A scroll label is a label that
+ * wraps its text and also has a vertical scrollbar. This way a text can't be
+ * too long to be shown for this widget. This widget is slower as a normal
+ * label widget so only use this widget when the scrollbar is required (or
+ * expected to become required).
+ * 
+ * @start_table = config
+ *     grid (section)                  A grid containing the widgets for main
+ *                                     widget. 
+ * @end_table
+ *
+ * TODO we need one definition for a vertical scrollbar since this is the second
+ * time we use it.
+ *
+ * @start_table = container
+ *     _content_grid (grid)            A grid which should only contain one
+ *                                     label widget.
+ *     _scrollbar_grid (grid)          A grid for the scrollbar
+ *                                     (Merge with listbox info.)
+ * @end_table
+ *
+ * The following states exist:
+ * * state_enabled, the scroll label is enabled.
+ * * state_disabled, the scroll label is disabled.
+ *
+ */
+	// Note the order should be the same as the enum tstate is scroll_label.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
+	state.push_back(tstate_definition(cfg.child("state_disabled")));
+
+	const config* child = cfg.child("grid");
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(*child);
 }
 
 tslider_definition::tslider_definition(const config& cfg) :

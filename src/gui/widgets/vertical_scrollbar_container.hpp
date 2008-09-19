@@ -26,7 +26,7 @@ class tvertical_scrollbar_container_ : public tcontainer_
 {
 	// Builders need to be able to finalize the object.
 	friend class tbuilder_listbox;
-
+	friend class tbuilder_scroll_label;
 
 	// Callbacks can call update routines. Note these are not further declared
 	// here only need external linkage to be friends.

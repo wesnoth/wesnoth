@@ -20,6 +20,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -401,6 +402,8 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				widgets.push_back(new tbuilder_minimap(*((**col_itor).child("minimap"))));
 			} else if((**col_itor).child("panel")) {
 				widgets.push_back(new tbuilder_panel(*((**col_itor).child("panel"))));
+			} else if((**col_itor).child("scroll_label")) {
+				widgets.push_back(new tbuilder_scroll_label(*((**col_itor).child("scroll_label"))));
 			} else if((**col_itor).child("slider")) {
 				widgets.push_back(new tbuilder_slider(*((**col_itor).child("slider"))));
 			} else if((**col_itor).child("spacer")) {
@@ -584,6 +587,8 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 		widget=new tbuilder_minimap(*((cfg).child("minimap")));
 	} else if((cfg).child("panel")) {
 		widget=new tbuilder_panel(*((cfg).child("panel")));
+	} else if((cfg).child("scroll_label")) {
+		widget=new tbuilder_scroll_label(*((cfg).child("scroll_label")));
 	} else if((cfg).child("slider")) {
 		widget=new tbuilder_slider(*((cfg).child("slider")));
 	} else if((cfg).child("spacer")) {
@@ -969,6 +974,33 @@ twidget* tbuilder_panel::build() const
 	}
 
 	return panel;
+}
+
+twidget* tbuilder_scroll_label::build() const
+{
+	tscroll_label* widget = new tscroll_label();
+
+	init_control(widget);
+
+	boost::intrusive_ptr<const tscroll_label_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const tscroll_label_definition::tresolution>(widget->config());
+	assert(conf);
+
+	tgrid* grid = dynamic_cast<tgrid*>(conf->grid->build());
+	assert(grid);
+
+	widget->grid().set_rows_cols(1, 1);
+	widget->grid().set_child(grid, 0, 0, 
+		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
+		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
+		, 0);
+
+	widget->finalize_setup();
+
+	DBG_G << "Window builder: placed scroll label '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return widget;
 }
 
 tbuilder_slider::tbuilder_slider(const config& cfg) :

@@ -92,6 +92,7 @@ wesnoth_source = \
 	gui/widgets/minimap.cpp \
 	gui/widgets/panel.cpp \
 	gui/widgets/settings.cpp \
+	gui/widgets/scroll_label.cpp \
 	gui/widgets/scrollbar.cpp \
 	gui/widgets/slider.cpp \
 	gui/widgets/spacer.cpp \
