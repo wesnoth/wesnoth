@@ -268,7 +268,7 @@ void wait::join_game(bool observe)
 			events::event_context context;
 
 			const config* era = level_.child("era");
-			//! @todo Check whether we have the era. If we don't inform the user.
+			/** @todo Check whether we have the era. If we don't inform the user. */
 			if(era == NULL)
 				throw config::error(_("No era information found."));
 			const config::child_list& possible_sides =
@@ -348,15 +348,15 @@ void wait::start_game()
 		statistics::read_stats(*stats);
 	}
 
-
-
-	//! @todo Instead of using level_to_gamestate reinit the state_,
-	//! this needs more testing -- Mordante
-	//! It seems level_to_gamestate is needed for the start of game
-	//! download, but downloads of later scenarios miss certain info
-	//! and add a players section. Use players to decide between old
-	//! and new way. (Of course it would be nice to unify the data
-	//! stored.)
+	/**
+	 * @todo Instead of using level_to_gamestate reinit the state_,
+	 * this needs more testing -- Mordante
+	 * It seems level_to_gamestate is needed for the start of game
+	 * download, but downloads of later scenarios miss certain info
+	 * and add a players section. Use players to decide between old
+	 * and new way. (Of course it would be nice to unify the data
+	 * stored.)
+	 */
 	if(level_.child("player") == 0) {
 		level_to_gamestate(level_, state_, level_["savegame"] == "yes");
 	} else {
@@ -431,7 +431,7 @@ void wait::process_network_data(const config& data, const network::connection so
 		return;
 	} else if(data.child("scenario_diff")) {
 		LOG_NW << "received diff for scenario... applying...\n";
-		//! @todo We should catch config::error and then leave the game.
+		/** @todo We should catch config::error and then leave the game. */
 		level_.apply_diff(*data.child("scenario_diff"));
 		generate_menu();
 	} else if(data.child("side")) {
@@ -554,8 +554,10 @@ void wait::generate_menu()
 				//ignore
 			}
 		} else {
-			//! @todo we fall back to the side colour, but that's ugly rather
-			// make the colour mandatory in 1.5.
+			/**
+			 * @todo we fall back to the side colour, but that's ugly rather
+			 * make the colour mandatory in 1.5.
+			 */
 			disp_color = lexical_cast_default<int>(sd["side"], 0) - 1;
 		}
 		str << COLUMN_SEPARATOR << get_colour_string(disp_color);
