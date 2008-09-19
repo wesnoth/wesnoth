@@ -39,7 +39,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game=false)
 
 std::string get_colour_string(int id);
 
-//this class memorizes a chat session.
+/** this class memorizes a chat session. */
 class chat
 {
 public:
@@ -67,8 +67,10 @@ private:
 	msg_hist::size_type last_update_;
 };
 
-//a base class for the different multiplayer base dialogs: game list, create
-//game, wait game, game setup
+/**
+ * a base class for the different multiplayer base dialogs: game list, create
+ * game, wait game, game setup.
+ */
 class ui : public gui::widget, private events::chat_handler, private font::floating_label_context
 {
 public:
@@ -77,18 +79,25 @@ public:
 	ui(game_display& d, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);
 
-	// Asks the multiplayer_ui to pump some data from the network, and then
-	// to process it. The actual processing will be left to the child
-	// classes, through process_network_data and process_network_error
+	/**
+	 * Asks the multiplayer_ui to pump some data from the network, and then to
+	 * process it. The actual processing will be left to the child classes,
+	 * through process_network_data and process_network_error.
+	 */
 	void process_network();
 
-	// Returns the result of the current widget. While the result is equal
-	// to continue, the widget should not be destroyed.
+	/**
+	 * Returns the result of the current widget. While the result is equal to
+	 * continue, the widget should not be destroyed.
+	 */
 	result get_result();
 
-	// Hides children, moves them (using layout_children), then shows them.
-	// The methodes hide_children and layout_children are supposed to be
-	// overridden by subclasses of this class which add new sub-widgets.
+	/**
+	 * Hides children, moves them (using layout_children), then shows them.
+	 *
+	 * The methodes hide_children and layout_children are supposed to be
+	 * overridden by subclasses of this class which add new sub-widgets.
+	 */
 	void set_location(const SDL_Rect& rect);
 	using widget::set_location;
 
@@ -103,9 +112,11 @@ protected:
 	game_display& disp_;
 	game_display& disp() { return disp_; };
 
-	// Returns the main game config, as defined by loading the preprocessed
-	// WML files. Children of this class may need this to obtain, for
-	// example, the list of available eras.
+	/**
+	 * Returns the main game config, as defined by loading the preprocessed WML
+	 * files. Children of this class may need this to obtain, for example, the
+	 * list of available eras.
+	 */
 	const config& game_config() const;
 
 	virtual void draw_contents();
@@ -115,73 +126,91 @@ protected:
 	virtual void handle_event(const SDL_Event& event);
 	virtual void handle_key_event(const SDL_KeyboardEvent& event);
 
-	// Override chat_handler
+	/** Override chat_handler. */
 	void add_chat_message(const time_t& time, const std::string& speaker,
 			int side, const std::string& message,
 			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 
-	//! Process chat messages.
+	/** Process chat messages. */
 	void process_message(const config& msg, const bool whisper=false);
 
-	// Processes any pending network data. Called by the public
-	// process_network() method. Overridden by subclasses who add more
-	// behaviour for network.
+	/**
+	 * Processes any pending network data. Called by the public
+	 * process_network() method. Overridden by subclasses who add more
+	 * behaviour for network.
+	 */
 	virtual void process_network_data(const config& data, const network::connection sock);
 
-	// Processes any pending network error. Called by the public
-	// process_network() method. Overridden by subclasses
+	/**
+	 * Processes any pending network error. Called by the public
+	 * process_network() method. Overridden by subclasses.
+	 */
 	virtual void process_network_error(network::error& error);
 
-	// Return true if we must accept incoming connections, false if not.
-	// Defaults to not.
+	/**
+	 * Return true if we must accept incoming connections, false if not.
+	 * Defaults to not.
+	 */
 	virtual bool accept_connections() { return false; };
 
-	// Processes a pending network connection.
+	/** Processes a pending network connection. */
 	virtual void process_network_connection(const network::connection sock);
 
-	// Hides or shows all gui::widget children of this widget. Should be
-	// overridden by subclasses which add their own children.
+	/**
+	 * Hides or shows all gui::widget children of this widget. Should be
+	 * overridden by subclasses which add their own children.
+	 */
 	virtual void hide_children(bool hide=true);
 
-	// Lays the children out. This method is to be overridden by the
-	// subclasses of the mp_ui class; it will be called
+	/**
+	 * Lays the children out. This method is to be overridden by the subclasses
+	 * of the mp_ui class; it will be called.
+	 */
 	virtual void layout_children(const SDL_Rect& rect);
 
-	// Sets the result of this dialog, to be checked by get_result()
+	/** Sets the result of this dialog, to be checked by get_result(). */
 	result set_result(result res);
 
-	// Sets the name of the selected game which is used to highlight
-	// the names of the players which have joined this game
+	/**
+	 * Sets the name of the selected game which is used to highlight the names
+	 * of the players which have joined this game.
+	 */
 	void set_selected_game(const std::string game_name);
 
-	// Called each time the gamelist_ variable is updated. May be
-	// overridden by child classes to add custom gamelist behaviour.
+	/**
+	 * Called each time the gamelist_ variable is updated. May be
+	 * overridden by child classes to add custom gamelist behaviour.
+	 */
 	virtual void gamelist_updated(bool silent=true);
 
-	// Sets the user list
+	/** Sets the user list */
 	void set_user_list(const std::vector<std::string>&, bool silent);
 	void set_user_menu_items(const std::vector<std::string>& list);
 
-	// Returns the current gamelist
+	/** Returns the current gamelist */
 	config& gamelist() { return gamelist_; };
 
 	void append_to_title(const std::string& name);
 	const gui::label& title() const;
 
 private:
-	/** Set to true when the widgets are intialized. Allows delayed
-	 * initialization on first positioning. */
+	/** 
+	 * Set to true when the widgets are intialized. Allows delayed
+	 * initialization on first positioning.
+	 */
 	bool initialized_;
 	bool gamelist_initialized_;
 
-	// Ensures standard hotkeys are coorectly handled
+	/** Ensures standard hotkeys are coorectly handled. */
 	const hotkey::basic_handler hotkey_handler_;
 
 	const preferences::display_manager disp_manager_;
 
-	// The main game configuration, as defined by loading the preprocessed
-	// WML files. Access using the game_config() method if necessary.
+	/**
+	 * The main game configuration, as defined by loading the preprocessed WML
+	 * files. Access using the game_config() method if necessary.
+	 */
 	const config& game_config_;
 
 	chat& chat_;
@@ -228,7 +257,7 @@ private:
 		std::string    location;
 		user_relation  relation;
 		user_state     state;
-		// True if this user is registered on the server
+		/** True if this user is registered on the server. */
 		bool           registered;
 		bool operator> (const user_info& b) const;
 	};
