@@ -28,6 +28,7 @@
 #include "serialization/string_utils.hpp"
 #include "color_range.hpp"
 #include "game_display.hpp"
+#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -1228,11 +1229,10 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
     if (cfg != NULL)
         return *cfg;
 
-    DBG_UT << "unit type not found: " << key << "\n";
-    DBG_UT << *unit_cfg_ << "\n";
+    ERR_CONFIG << "unit type not found: " << key << "\n";
+    ERR_CONFIG << *unit_cfg_ << "\n";
 
-    assert(cfg != NULL);
-    return *cfg;
+    assert(false && "unit type not found");
 }
 
 void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS status) const
