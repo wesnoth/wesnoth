@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file mapgen.cpp
-//! Map-generator, with standalone testprogram.
+/**
+ * @file mapgen.cpp
+ * Map-generator, with standalone testprogram.
+ */
 
 #include "global.hpp"
 
@@ -55,19 +57,19 @@ typedef t_translation::t_map terrain_map;
 
 typedef gamemap::location location;
 
-//! Generate a height-map.
-//! Basically we generate alot of hills,
-//! each hill being centered at a certain point,
-//! with a certain radius - being a half sphere.
-//! Hills are combined additively to form a bumpy surface.
-//! The size of each hill varies randomly from 1-hill_size.
-//! We generate 'iterations' hills in total.
-//! The range of heights is normalized to 0-1000.
-//! 'island_size' controls whether or not the map should tend toward an island shape,
-//! and if so, how large the island should be.
-//! Hills with centers that are more than 'island_size' away from
-//! the center of the map will be inverted (i.e. be valleys).
-//! 'island_size' as 0 indicates no island.
+/**
+ * Generate a height-map.
+ *
+ * Basically we generate alot of hills, each hill being centered at a certain
+ * point, with a certain radius - being a half sphere.  Hills are combined
+ * additively to form a bumpy surface.  The size of each hill varies randomly
+ * from 1-hill_size.  We generate 'iterations' hills in total.  The range of
+ * heights is normalized to 0-1000.  'island_size' controls whether or not the
+ * map should tend toward an island shape, and if so, how large the island
+ * should be.  Hills with centers that are more than 'island_size' away from
+ * the center of the map will be inverted (i.e. be valleys).  'island_size' as
+ * 0 indicates no island.
+ */
 static height_map generate_height_map(size_t width, size_t height,
                                size_t iterations, size_t hill_size,
 							   size_t island_size, size_t island_off_center)
@@ -185,12 +187,15 @@ static height_map generate_height_map(size_t width, size_t height,
 	return res;
 }
 
-//! Generate a lake.
-//! It will create water at (x,y), and then have 'lake_fall_off' % chance
-//! to make another water tile in each of the directions n,s,e,w.
-//! In each of the directions it does make another water tile,
-//! it will have 'lake_fall_off'/2 % chance to make another water tile
-//! in each of the directions. This will continue recursively.
+/**
+ * Generate a lake.
+ *
+ * It will create water at (x,y), and then have 'lake_fall_off' % chance to
+ * make another water tile in each of the directions n,s,e,w.  In each of the
+ * directions it does make another water tile, it will have 'lake_fall_off'/2 %
+ * chance to make another water tile in each of the directions. This will
+ * continue recursively.
+ */
 static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
 {
 	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
@@ -219,21 +224,23 @@ static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off,
 	return true;
 }
 
-//! River generation.
-//! Rivers have a source, and then keep on flowing
-//! until they meet another body of water, which they flow into,
-//! or until they reach the edge of the map.
-//! Rivers will always flow downhill, except that they can flow
-//! a maximum of 'river_uphill' uphill.
-//! This is to represent the water eroding the higher ground lower.
-//!
-//! Every possible path for a river will be attempted, in random order,
-//! and the first river path that can be found that makes the river flow
-//! into another body of water or off the map will be used.
-//!
-//! If no path can be found, then the river's generation will be aborted,
-//! and false will be returned.
-//! true is returned if the river is generated successfully.
+/**
+ * River generation.
+ *
+ * Rivers have a source, and then keep on flowing until they meet another body
+ * of water, which they flow into, or until they reach the edge of the map.
+ * Rivers will always flow downhill, except that they can flow a maximum of
+ * 'river_uphill' uphill.  This is to represent the water eroding the higher
+ * ground lower.
+ *
+ * Every possible path for a river will be attempted, in random order, and the
+ * first river path that can be found that makes the river flow into another
+ * body of water or off the map will be used.
+ *
+ * If no path can be found, then the river's generation will be aborted, and
+ * false will be returned.  true is returned if the river is generated
+ * successfully.
+ */
 static bool generate_river_internal(const height_map& heights,
 	terrain_map& terrain, int x, int y, std::vector<location>& river,
 	std::set<location>& seen_locations, int river_uphill)
@@ -302,8 +309,10 @@ static std::vector<location> generate_river(const height_map& heights, terrain_m
 	return river;
 }
 
-//! Return a random tile at one of the borders of a map
-//! that is of the given dimensions.
+/**
+ * Returns a random tile at one of the borders of a map that is of the given
+ * dimensions.
+ */
 static location random_point_at_side(size_t width, size_t height)
 {
 	const int side = rand()%4;
@@ -318,7 +327,7 @@ static location random_point_at_side(size_t width, size_t height)
 	}
 }
 
-//! Function which, given the map will output it in a valid format.
+/** Function which, given the map will output it in a valid format. */
 static std::string output_map(const terrain_map& terrain,
 		std::map<int, t_translation::coordinate> starting_positions)
 {
@@ -355,8 +364,10 @@ static std::string output_map(const terrain_map& terrain,
 
 namespace {
 
-//! Calculate the cost of building a road over terrain.
-//! For use in the a_star_search algorithm.
+/**
+ * Calculates the cost of building a road over terrain.  For use in the
+ * a_star_search algorithm.
+ */
 struct road_path_calculator : cost_calculator
 {
 	road_path_calculator(const terrain_map& terrain, const config& cfg) :
@@ -431,7 +442,6 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 	return windiness*res;
 }
 
-//!
 struct is_valid_terrain
 {
 	is_valid_terrain(const t_translation::t_map& map,
@@ -460,7 +470,6 @@ bool is_valid_terrain::operator()(int x, int y) const
 
 }
 
-//!
 static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y,
 						 size_t min_distance, const std::vector<gamemap::location>& other_castles, int highest_ranking)
 {
@@ -528,7 +537,6 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 
 typedef std::map<t_translation::t_terrain, t_translation::t_list> tcode_list_cache;
 
-//!
 static gamemap::location place_village(const t_translation::t_map& map,
 	const size_t x, const size_t y, const size_t radius, const config& cfg,
 	tcode_list_cache &adj_liked_cache)
@@ -585,7 +593,6 @@ static gamemap::location place_village(const t_translation::t_map& map,
 	return best_loc;
 }
 
-//!
 static std::string generate_name(const unit_race& name_generator, const std::string& id,
 		std::string* base_name=NULL,
 		utils::string_map* additional_symbols=NULL)
@@ -703,7 +710,6 @@ t_translation::t_terrain terrain_converter::convert_to() const
 
 } // end anon namespace
 
-//! Generate the map.
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
 						         size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers, bool roads_between_castles,
@@ -867,11 +873,14 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	const size_t default_dimensions = 40*40*9;
 
-	//! Convert grassland terrain to other types of flat terrain.
-	//! We generate a 'temperature map' which uses the height generation algorithm
-	//! to generate the temperature levels all over the map.
-	//! Then we can use a combination of height and terrain
-	//! to divide terrain up into more interesting types than the default.
+	/*
+	 * Convert grassland terrain to other types of flat terrain.
+	 *
+	 * We generate a 'temperature map' which uses the height generation
+	 * algorithm to generate the temperature levels all over the map.  Then we
+	 * can use a combination of height and terrain to divide terrain up into
+	 * more interesting types than the default.
+	 */
 	const height_map temperature_map = generate_height_map(width,height,
 	                                                       (atoi(cfg["temperature_iterations"].c_str())*width*height)/default_dimensions,
 														   atoi(cfg["temperature_size"].c_str()),0,0);
@@ -905,34 +914,40 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << "placing villages...\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
-	//! Place villages in a 'grid', to make placing fair,
-	//! but with villages displaced from their position
-	//! according to terrain and randomness, to add some variety.
+	/*
+	 * Place villages in a 'grid', to make placing fair, but with villages
+	 * displaced from their position according to terrain and randomness, to
+	 * add some variety.
+	 */
 	std::set<location> villages;
 
 	LOG_NG << "placing castles...\n";
 
-	//! Try to find configuration for castles.
+	/** Try to find configuration for castles. */
 	const config* const castle_config = cfg.child("castle");
 	if(castle_config == NULL) {
 		LOG_NG << "Could not find castle configuration\n";
 		return "";
 	}
 
-	//! Castle configuration tag contains a 'valid_terrain' attribute
-	//! which is a list of terrains that the castle may appear on.
+	/*
+	 * Castle configuration tag contains a 'valid_terrain' attribute which is a
+	 * list of terrains that the castle may appear on.
+	 */
 	const t_translation::t_list list =
 		t_translation::read_list((*castle_config)["valid_terrain"]);
 
 	const is_valid_terrain terrain_tester(terrain, list);
 
-	//! Attempt to place castles at random.
-	//! Once we have placed castles, we run a sanity check
-	//! to make sure that the castles are well-placed.
-	//! If the castles are not well-placed, we try again.
-	//! Definition of 'well-placed' is if no two castles
-	//! are closer than 'min_distance' hexes from each other,
-	//! and the castles appear on a terrain listed in 'valid_terrain'.
+	/*
+	 * Attempt to place castles at random.
+	 *
+	 * Once we have placed castles, we run a sanity check to make sure that the
+	 * castles are well-placed.  If the castles are not well-placed, we try
+	 * again.  Definition of 'well-placed' is if no two castles are closer than
+	 * 'min_distance' hexes from each other, and the castles appear on a
+	 * terrain listed in 'valid_terrain'.
+	 */
 	std::vector<location> castles;
 	std::set<location> failed_locs;
 
@@ -992,9 +1007,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	for(size_t road = 0; road != nroads; ++road) {
 		log_scope("creating road");
 
-		//! We want the locations to be on the portion of the map
-		//! we're actually going to use, since roads on other parts of the map
-		//! won't have any influence, and doing it like this will be quicker.
+		/*
+		 * We want the locations to be on the portion of the map we're actually
+		 * going to use, since roads on other parts of the map won't have any
+		 * influence, and doing it like this will be quicker.
+		 */
 		location src = random_point_at_side(width/3 + 2,height/3 + 2);
 		location dst = random_point_at_side(width/3 + 2,height/3 + 2);
 
@@ -1314,7 +1331,7 @@ generator_map generators;
 
 #ifdef TEST_MAPGEN
 
-//! Standalone testprogram for the mapgenerator.
+/** Standalone testprogram for the mapgenerator. */
 int main(int argc, char** argv)
 {
 	int x = 50, y = 50, iterations = 50,

@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file mapgen.hpp
-//!
+/** @file mapgen.hpp */
 
 #ifndef MAP_GEN_HPP_INCLUDED
 #define MAP_GEN_HPP_INCLUDED
@@ -32,30 +31,41 @@ class map_generator
 public:
 	virtual ~map_generator() {}
 
-	//! Returns true iff the map generator has an interactive screen,
-	//! which allows the user to modify how the generator behaves.
+	/**
+	 * Returns true iff the map generator has an interactive screen,
+	 * which allows the user to modify how the generator behaves.
+	 */
 	virtual bool allow_user_config() const = 0;
 
-	//! Display the interactive screen, which allows the user
-	//! to modify how the generator behaves.
-	//! (This function will not be called if allow_user_config() returns false).
+	/**
+	 * Display the interactive screen, which allows the user
+	 * to modify how the generator behaves.
+	 * (This function will not be called if allow_user_config() returns false).
+	 */
 	virtual void user_config(display& disp) = 0;
 
-	//! Returns a string identifying the generator by name.
-	//! The name should not contain spaces.
+	/**
+	 * Returns a string identifying the generator by name.
+	 * The name should not contain spaces.
+	 */
 	virtual std::string name() const = 0;
 	
-	//! Return a friendly name for the generator
-	//! used to differentiate between different configs of the same generator
+	/**
+	 * Return a friendly name for the generator
+	 * used to differentiate between different configs of the same generator
+	 */
 	virtual std::string config_name() const = 0;
 
-	//! Creates a new map and returns it.
-	//! args may contain arguments to the map generator.
+	/**
+	 * Creates a new map and returns it.
+	 * args may contain arguments to the map generator.
+	 */
 	virtual std::string create_map(const std::vector<std::string>& args) = 0;
 
 	virtual config create_scenario(const std::vector<std::string>& args);
 };
 
+/** Generate the map. */
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
 								 size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers,
