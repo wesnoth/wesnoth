@@ -13,9 +13,11 @@
    See the COPYING file for more details.
 */
 
-//! @file menu_events.cpp
-//! Operations activated from menus/hotkeys while playing a game.
-//! E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
+/**
+ * @file menu_events.cpp
+ * Operations activated from menus/hotkeys while playing a game.
+ * E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
+ */
 
 #include "global.hpp"
 
@@ -239,7 +241,7 @@ namespace events{
 			}
 //%%
 			// If unit is leader, show name in special color, e.g. gold/silver
-			//! @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query
+			/** @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query */
 
 			if(i->second.can_recruit() ) {
 //				row << "<255,255,200>";
@@ -306,7 +308,7 @@ namespace events{
 			if(utils::string_bool(i->second.get_state("poisoned")))
 				row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
 
-			//! @todo FIXME: condition for "invisible" does not work
+			/** @todo FIXME: condition for "invisible" does not work */
 			//if(utils::string_bool(i->second.get_state("hides")))	// "hides" gives ability, not status
 			if(utils::string_bool(i->second.get_state("invisible")))
 				row << IMAGE_PREFIX << "misc/invisible.png";
@@ -2085,20 +2087,22 @@ private:
 			void do_display();
 			void do_version();
 
-           		//! Ask the server to register the currently used nick
+			/** Ask the server to register the currently used nick. */
 			void do_register();
 
-			//! Ask the server do drop the currently used (and registered) nick
+			/** Ask the server do drop the currently used (and registered) nick. */
 			void do_drop();
 
-			//! Update details for the currently used username
+			/** Update details for the currently used username. */
 			void do_set();
 
-			//! Request information about a user from the server
+			/** Request information about a user from the server. */
 			void do_info();
 
-			//! Request a list of details that can be set for a username
-			//! as these might vary depending on the configuration of the server
+			/**
+			 * Request a list of details that can be set for a username
+			 * as these might vary depending on the configuration of the server.
+			 */
 			void do_details();
 
 			void print(const std::string& title, const std::string& message)
@@ -2356,8 +2360,11 @@ private:
 	{
 	}
 
-	//! Change the log level of a log domain.
-	//! @param data String of the form: '<level> <domain>'
+	/**
+	 * Change the log level of a log domain.
+	 *
+	 * @param data               String of the form: '<level> <domain>'
+	 */
 	void chat_handler::change_logging(const std::string& data) {
 		const std::string::const_iterator j =
 				std::find(data.begin(), data.end(), ' ');
