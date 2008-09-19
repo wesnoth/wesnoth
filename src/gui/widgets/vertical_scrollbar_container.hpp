@@ -67,7 +67,8 @@ public:
 	 * @returns                   false if deselecting wasn't allowed.
 	 *                            true otherwise.
 	 */
-	virtual bool select_row(const unsigned row, const bool select = true) = 0;
+	virtual bool select_row(const unsigned /*row*/, const bool /*select*/ = true) 
+		{ return false; }
 
 	/***** ***** ***** inherited ****** *****/
 
