@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file multiplayer_lobby.hpp
-//!
+/** @file multiplayer_lobby.hpp. */
 
 #ifndef MULTIPLAYER_LOBBY_HPP_INCLUDED
 #define MULTIPLAYER_LOBBY_HPP_INCLUDED
@@ -26,9 +25,12 @@ class config;
 class video;
 class game_display;
 
-//! This module controls the multiplayer lobby. 
-//! A section on the server which allows players to chat, 
-//! create games, and join games.
+/**
+ * This module controls the multiplayer lobby. 
+ *
+ * A section on the server which allows players to chat, create games, and join
+ * games.
+ */
 namespace mp {
 class gamebrowser : public gui::menu {
 public:
