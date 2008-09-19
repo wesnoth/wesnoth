@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file multiplayer_connect.cpp
-//! Prepare to join a multiplayer-game.
+/**
+ * @file multiplayer_connect.cpp
+ * Prepare to join a multiplayer-game.
+ */
 
 #include "global.hpp"
 
@@ -1216,8 +1218,10 @@ void connect::process_network_data(const config& data, const network::connection
 
 		connected_user_list::iterator player = find_player(name);
 		if(player != users_.end()) {
-			//! @todo Seems like a needless limitation to only allow one side
-			//! per player.
+			/** 
+			 * @todo Seems like a needless limitation to only allow one side 
+			 * per player. 
+			 */
 			if(find_player_side(name) != -1) {
 				config response;
 				response.values["failed"] = "yes";
@@ -1522,7 +1526,6 @@ void connect::lists_init()
 	}
 }
 
-//! Called by the constructor to initialize the game from a create::parameters structure.
 void connect::load_game()
 {
 	if(params_.saved_game) {
