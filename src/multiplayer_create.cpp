@@ -12,8 +12,9 @@
    See the COPYING file for more details.
 */
 
-/** @file multiplayer_create.cpp 
- *  Create a multiplayer-game: select map, players, options etc.
+/** 
+ * @file multiplayer_create.cpp 
+ * Create a multiplayer-game: select map, players, options etc.
  */
 
 #include "global.hpp"
@@ -246,7 +247,7 @@ create::~create()
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
 	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
 	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_era(era_combo_.selected()); //! @todo FIXME: may be broken if new eras are added
+	preferences::set_era(era_combo_.selected()); /** @todo FIXME: may be broken if new eras are added. */
 	preferences::set_map(map_selection_);
 
 	// When using map settings, the following variables are determined by the map,
@@ -555,10 +556,12 @@ void create::process_event()
 			preferences::random_start_time());
 
 		// These are per player, always show values of player 1.
-		//! @todo This might not be 100% correct, but at the moment 
-		//! it is not possible to show the fog and shroud per player.
-		// This might change in the future.
-		// NOTE when 'load game' is selected there are no sides.
+		/**
+		 * @todo This might not be 100% correct, but at the moment 
+		 * it is not possible to show the fog and shroud per player.
+		 * This might change in the future.
+		 * NOTE when 'load game' is selected there are no sides.
+		 */
 		if(parameters_.scenario_data.get_children("side").size()) {
 
 			village_gold_slider_.set_value(map_settings ?
