@@ -257,15 +257,16 @@ void tvertical_scrollbar_container_::set_size(const SDL_Rect& rect)
 }
 
 void tvertical_scrollbar_container_::draw(
-		surface& surface,  const bool force, const bool invalidate_background)
+		surface& surface, const bool force, const bool invalidate_background)
 {
 	// Inherited.
-	tcontainer_::draw(surface, force, invalidate_background);
+	const bool do_force = force || needs_full_redraw();
+	tcontainer_::draw(surface, do_force, invalidate_background);
 
 	if(scrollbar_mode_ != HIDE) {
-		draw_content(surface, force, invalidate_background);
+		draw_content(surface, do_force, invalidate_background);
 	}
-	draw_content(surface, force, invalidate_background);
+	draw_content(surface, do_force, invalidate_background);
 }
 
 twidget* tvertical_scrollbar_container_::find_widget(
