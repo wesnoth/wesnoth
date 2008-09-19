@@ -186,6 +186,9 @@ private:
 	/** The builder needs to call us so we can write in the proper callbacks. */
 	void finalize_setup();
 
+	/** After doing it's own finalization finalize_setup() calls us. */
+	virtual void finalize() {}
+
 	/** Callback when the scrollbar moves. */
 	void scrollbar_moved(twidget* /*caller*/)
 		{ set_scrollbar_button_status(); set_dirty(); }

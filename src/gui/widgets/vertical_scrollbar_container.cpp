@@ -409,6 +409,9 @@ void tvertical_scrollbar_container_::finalize_setup()
 	// Make sure all mandatory widgets are tested
 	find_scrollbar_grid();
 	find_content_grid();
+
+	// Call the virtual function to subclasses can do their finalization part.
+	finalize();
 }
 
 void tvertical_scrollbar_container_::scrollbar_click(twidget* caller)
