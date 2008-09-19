@@ -14,6 +14,7 @@ not allow composed strings like above.
 
 import re, sys
 import wmlparser
+import codecs
 
 class Data:
     """Common subclass."""
@@ -34,7 +35,9 @@ class Data:
         if show_contents:
             result += "'" + self.get_value() + "'"
         if write:
-            sys.stdout.write(result + "\n")
+            # The below is a pretty ugly hack forcing python to accept utf-8
+            # If your terminal can't handle utf-8, you'll obviously get a big mess (but otherwise you'd get a crash)
+            codecs.getwriter('utf-8')(sys.stdout).write(result + "\n")
 
         else: return result
 
