@@ -111,7 +111,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	const std::string& background_name = part["background"];
 	const bool show_title = utils::string_bool(part["show_title"]);
-	const bool scale_background = part["scale_background"].empty() ? true : utils::string_bool(part["scale_background"]);
+	const bool scale_background = utils::string_bool(part["scale_background"], true);
 
 	surface background(NULL);
 	if(background_name.empty() == false) {
@@ -127,9 +127,9 @@ bool show_intro_part(display &disp, const config& part,
 		background.assign(create_neutral_surface(video.getx(),video.gety()));
 	}
 
-	double xscale = scale_background ? 1.0 * video.getx() / background->w : 1.0;
-	double yscale = scale_background ? 1.0 * video.gety() / background->h : 1.0;
-	double scale = std::min<double>(xscale,yscale);
+	const double xscale = 1.0 * video.getx() / background->w;
+	const double yscale = 1.0 * video.gety() / background->h;
+	const double scale = scale_background ? std::min<double>(xscale,yscale) : 1.0;
 
 	background = scale_surface(background, static_cast<int>(background->w*scale), static_cast<int>(background->h*scale));
 
