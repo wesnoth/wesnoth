@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/binary_wml.cpp 
-//! Data compression, designed for network traffic.
+/**
+ * @file serialization/binary_wml.cpp.
+ * Data compression, designed for network traffic.
+ */
 
 #include "global.hpp"
 
