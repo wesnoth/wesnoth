@@ -14,8 +14,10 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/string_utils.cpp
-//! Various string-routines.
+/**
+ * @file serialization/string_utils.cpp
+ * Various string-routines.
+ */
 
 #include "global.hpp"
 
@@ -148,7 +150,6 @@ bool notspace(const char c)
 	return !portable_isspace(c);
 }
 
-//! Remove whitespace from the front and back of the string 'str'.
 std::string &strip(std::string &str)
 {
 	// If all the string contains is whitespace,
@@ -163,7 +164,6 @@ std::string &strip(std::string &str)
 	return str;
 }
 
-//! Removes character 'c' from the first and last position of the string 'str'.
 std::string& strip_char(std::string &str, const char c) {
 	if (*str.begin() == c)
 		str.erase(str.begin(), str.begin() + 1);
@@ -207,25 +207,9 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-//! Splits a string based either on a separator where text within paranthesis
-//! is protected from splitting (Note that one can use the same character for
-//! both the left and right paranthesis. In this mode it usually makes only
-//! sense to have one character for the left and right paranthesis.)
-//! or if the separator == 0 it splits a string into an odd number of parts:
-//! - The part before the first '(',
-//! - the part between the first '('
-//! - and the matching right ')', etc ...
-//! and the remainder of the string.
-//! Note that this will find the first matching char in the left string
-//! and match against the corresponding char in the right string.
-//! In this mode, a correctly processed string should return with
-//! an odd number of elements to the vector and
-//! an empty elements are never removed as they are placeholders.
-//! hence REMOVE EMPTY only works for the separator split.
-//!
-//! parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
-//! a vector of <"a","b","c","d","e","f{g}","h">
-std::vector< std::string > paranthetical_split(std::string const &val, const char separator, std::string const &left, std::string const &right,int flags)
+std::vector< std::string > paranthetical_split(std::string const &val, 
+		const char separator, std::string const &left, 
+		std::string const &right,int flags)
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
@@ -355,7 +339,6 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 	return value;
 }
 
-//! Prepends a configurable set of characters with a backslash
 std::string &escape(std::string &str, const std::string& special_chars)
 {
 	std::string::size_type pos = 0;
@@ -369,16 +352,12 @@ std::string &escape(std::string &str, const std::string& special_chars)
 	return str;
 }
 
-//! Prepend all special characters with a backslash.
-// Special characters are:
-// #@{}+-,\*=
 std::string& escape(std::string& str)
 {
 	static const std::string special_chars("#@{}+-,\\*=");
 	return escape(str, special_chars);
 }
 
-//! Remove all escape characters (backslash)
 std::string &unescape(std::string &str)
 {
 	std::string::size_type pos = 0;
@@ -408,8 +387,6 @@ static bool is_username_char(char c) {
 	return ((c == '_') || (c == '-'));
 }
 
-//! Check if the username is valid.
-//! (all alpha-numeric characters plus underscore and hyphen)
 bool isvalid_username(const std::string& username) {
 	const size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const size_t valid_char =
@@ -422,12 +399,6 @@ bool isvalid_username(const std::string& username) {
 	return true;
 }
 
-//! Try to complete the last word of 'text' with the 'wordlist'.
-//! @param[in]  'text'     Text where we try to complete the last word of.
-//! @param[out] 'text'     Text with completed last word.
-//! @param[in]  'wordlist' A vector of strings to complete against.
-//! @param[out] 'wordlist' A vector of strings that matched 'text'.
-//! @return 'true' iff text is just one word (no spaces)
 bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	std::vector<std::string> matches;
 	const size_t last_space = text.rfind(" ");
@@ -479,7 +450,6 @@ static bool is_word_boundary(char c) {
 	return (c == ' ' || c == ',' || c == ':' || c == '\'' || c == '"' || c == '-');
 }
 
-//! Check if a string contains a word.
 bool word_match(const std::string& message, const std::string& word) {
 	size_t first = message.find(word);
 	if (first == std::string::npos) return false;
@@ -492,8 +462,6 @@ bool word_match(const std::string& message, const std::string& word) {
 	return false;
 }
 
-//! Match using '*' as any number of characters (including none), 
-//! and '?' as any one character.
 bool wildcard_string_match(const std::string& str, const std::string& match) {
 	const bool wild_matching = (!match.empty() && match[0] == '*');
 	const std::string::size_type solid_begin = match.find_first_not_of('*');
@@ -541,13 +509,6 @@ std::string join(std::vector< std::string > const &v, char c)
 	return str.str();
 }
 
-// This function is identical to split(), except it does not split
-// when it otherwise would if the previous character was identical to the parameter 'quote'.
-// i.e. it does not split quoted commas.
-// This method was added to make it possible to quote user input,
-// particularly so commas in user input will not cause visual problems in menus.
-//
-//! @todo Why not change split()? That would change the methods post condition.
 std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)
 {
 	std::vector<std::string> res;
@@ -807,7 +768,7 @@ utf8_string capitalize(const utf8_string& s)
 	if(s.size() > 0) {
 		utf8_iterator itor(s);
 #if defined(__APPLE__) || defined(__AMIGAOS4__)
-		//! @todo FIXME: Should we support towupper on recent OSX platforms?
+		/** @todo FIXME: Should we support towupper on recent OSX platforms? */
 		wchar_t uchar = *itor;
 		if(uchar >= 0 && uchar < 0x100)
 			uchar = toupper(uchar);
@@ -829,7 +790,7 @@ utf8_string uppercase(const utf8_string& s)
 
 		for(;itor != utf8_iterator::end(s); ++itor) {
 #if defined(__APPLE__) || defined(__AMIGAOS4__)
-			//! @todo FIXME: Should we support towupper on recent OSX platforms?
+			/** @todo FIXME: Should we support towupper on recent OSX platforms? */
 			wchar_t uchar = *itor;
 			if(uchar >= 0 && uchar < 0x100)
 				uchar = toupper(uchar);
@@ -852,7 +813,7 @@ utf8_string lowercase(const utf8_string& s)
 
 		for(;itor != utf8_iterator::end(s); ++itor) {
 #if defined(__APPLE__) || defined(__OpenBSD__) || defined(__AMIGAOS4__)
-			//! @todo FIXME: Should we support towupper on recent OSX platforms?
+			/** @todo FIXME: Should we support towupper on recent OSX platforms? */
 			wchar_t uchar = *itor;
 			if(uchar >= 0 && uchar < 0x100)
 				uchar = tolower(uchar);
@@ -868,15 +829,6 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
-//! Truncates a string.
-//!
-//! If the string send has more than size utf-8 characters it will be truncated
-//! to this size. 
-//! No assumptions can be made about the actual size of the string.
-//! 
-//! @param[in]  str     String which can be converted to utf-8.
-//! @param[out] str     String which contains maximal size utf-8 characters.
-//! @param size         The size to truncate at.
 void truncate_as_wstring(std::string& str, const size_t size)
 {
 	wide_string utf8_str = utils::string_to_wstring(str);
