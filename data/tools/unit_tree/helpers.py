@@ -300,6 +300,9 @@ class WesnothList:
             
             unit.advance = []
             advanceto = unit.get_text_val("advances_to")
+            # Add backwards compatibility for 1.4
+            if not advanceto:
+                advanceto = unit.get_text_val("advanceto")
             if advanceto and advanceto != "null":
                 for advance in advanceto.split(","):
                     auid = advance.strip()
