@@ -61,7 +61,6 @@ opts.AddOptions(
     PathOption('prefix', 'autotools-style installation prefix', "/usr/local", PathOption.PathAccept),
     PathOption('prefsdir', 'user preferences directory', ".wesnoth$version_suffix", PathOption.PathAccept),
     PathOption('destdir', 'prefix to add to all installation paths.', "/", PathOption.PathAccept),
-    PathOption('windows_release_dir', 'Directory where windows release will be prepared.', "", PathOption.PathAccept),
     BoolOption('prereqs','abort if prerequisites cannot be detected',True),
     ('program_suffix', 'suffix to append to names of installed programs',"$version_suffix"),
     ('version_suffix', 'suffix that will be added to default values of prefsdir, program_suffix and datadirname', ""),
