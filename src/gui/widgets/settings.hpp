@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file setting.hpp
-//! This file contains the settings handling of the widget library.
+/**
+ * @file setting.hpp
+ * This file contains the settings handling of the widget library.
+ */
 
 #ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
 #define GUI_WIDGETS_SETTING_HPP_INCLUDED
@@ -35,28 +37,33 @@ extern bool new_widgets;
 
 enum twindow_type {
 	TITLE_SCREEN,            /**< The main title screen of the game. */
-	ADDON_CONNECT,           //<! The addon server connection dialog.
-	LANGUAGE_SELECTION,      //<! The language selection dialog.
-	MP_CONNECT,              //<! The mp server connection dialog.
-	MP_METHOD_SELECTION,     //<! The dialog which allows you to choose the kind
-	                         //!  mp game the user wants to play.
-	MP_SERVER_LIST,          //<! The mp server list dialog.
+	ADDON_CONNECT,           /**< The addon server connection dialog. */
+	LANGUAGE_SELECTION,      /**< The language selection dialog. */
+	MP_CONNECT,              /**< The mp server connection dialog. */
+	MP_METHOD_SELECTION,     /**< 
+	                          * The dialog which allows you to choose the kind
+	                          * mp game the user wants to play.
+							  */
+	MP_SERVER_LIST,          /**< The mp server list dialog. */
 	MP_CREATE_GAME,          /**< The mp creation dialog. */
 #ifndef DISABLE_EDITOR2
-	EDITOR_NEW_MAP,          //<! New map dialog
-	EDITOR_GENERATE_MAP,     /** Editor random map genarator dialog */
-	EDITOR_RESIZE_MAP, 	   	 /** Editor resize map dialog */
-	EDITOR_SETTINGS,		 /** Editor settings dialog */
+	EDITOR_NEW_MAP,          /**< New map dialog. */
+	EDITOR_GENERATE_MAP,     /**< Editor random map genarator dialog. */
+	EDITOR_RESIZE_MAP, 	   	 /**< Editor resize map dialog. */
+	EDITOR_SETTINGS,		 /**< Editor settings dialog. */
 #endif
-	DUMMY                    //<! Dummy always the last one.
+	DUMMY                    /**< Dummy always the last one. */
 };
 
 const std::string& get_id(const twindow_type window_type);
 
-//! Contains the state info for a resolution.
-//! Atm all states are the same so there is no need to use inheritance. If that
-//! is needed at some point the containers should contain pointers and we should
-//! inherit from reference_counted_object.
+/**
+ * Contains the state info for a resolution.
+ *
+ * At the moment all states are the same so there is no need to use
+ * inheritance. If that is needed at some point the containers should contain
+ * pointers and we should inherit from reference_counted_object.
+ */
 struct tstate_definition
 {
 private:
@@ -71,7 +78,7 @@ public:
 };
 
 
-//! Base class of a resolution, contains the common keys for a resolution.
+/** Base class of a resolution, contains the common keys for a resolution. */
 struct tresolution_definition_ : public reference_counted_object
 {
 private:
@@ -338,7 +345,7 @@ struct tgui_definition
 
 	const std::string& read(const config& cfg);
 
-	//! Activates a gui.
+	/** Activates a gui. */
 	void activate() const;
 	
 	typedef std::map <std::string /*control type*/, 
@@ -367,18 +374,21 @@ private:
 	std::vector<twindow_builder::tresolution>::const_iterator 
 		get_window_builder(const std::string& type);
 
-	//! Loads the setting for the theme.
+	/** Loads the setting for the theme. */
 	void load_settings();
 
 
-	// This namespace contains the 'global' settings.
+	/** This namespace contains the 'global' settings. */
 	namespace settings {
-		//! The screen resolution should be available for all widgets since their
-		//! drawing method will depend on it.
+
+		/**
+		 * The screen resolution should be available for all widgets since
+		 * their drawing method will depend on it.
+		 */
 		extern unsigned screen_width;
 		extern unsigned screen_height;
 
-		//! These are copied from the active gui.
+		/** These are copied from the active gui. */
 		extern unsigned popup_show_delay;
 		extern unsigned popup_show_time;
 		extern unsigned help_show_time;

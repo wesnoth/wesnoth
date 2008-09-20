@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file setting.cpp
-//! Implementation of settings.hpp.
+/**
+ * @file setting.cpp
+ * Implementation of settings.hpp.
+ */
 
 #include "gui/widgets/settings.hpp"
 
@@ -67,17 +69,19 @@ namespace settings {
 
 namespace {
 
-	//! Map with all known windows, (the builder class builds a window).
+	/** Map with all known windows, (the builder class builds a window). */
 	std::map<std::string, twindow_builder> windows;
 
-	//! Map with all known guis.
+	/** Map with all known guis. */
 	std::map<std::string, tgui_definition> guis;
 
-	//! Points to the current gui.
+	/** Points to the current gui. */
 	std::map<std::string, tgui_definition>::const_iterator current_gui = guis.end();
 
-	//! Vector with all known windows, these are validated on existance on startup.
-	//! The enum twindow_type is the index of the array.
+	/**
+	 * Vector with all known windows, these are validated on existance on startup.
+	 * The enum twindow_type is the index of the array.
+	 */
 	std::vector<std::string> window_type_list(DUMMY);
 } // namespace 
 
