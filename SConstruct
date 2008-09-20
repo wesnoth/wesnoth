@@ -248,7 +248,7 @@ else:
     have_server_prereqs = True
     have_test_prereqs = True
 
-env.Append(CPPPATH = ["#/src", "#/"])
+env.Append(CPPPATH = ["#/", "."])
 
 
 have_msgfmt = env["MSGFMT"]
@@ -351,7 +351,7 @@ else:
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
 Export("build_suffix")
-SConscript("src/SConscript", build_dir = build_dir, exports = "env")
+SConscript("src/SConscript", build_dir = build_dir, exports = "env", duplicate = False)
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 all = env.Alias("all", map(Alias, binaries))
