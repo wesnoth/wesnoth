@@ -390,6 +390,13 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				col_grow_factor.push_back(lexical_cast_default<unsigned>((**col_itor)["grow_factor"]));
 			}
 
+			if((**col_itor).all_children().size() != 1) {
+				ERR_G_P << "Grid cell has " << (**col_itor).all_children().size()
+					<< " children instead of 1, aborting. Config :\n"
+					<< **col_itor;
+				assert(false);
+			}
+
 			if((**col_itor).child("button")) {
 				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
 			} else if((**col_itor).child("label")) {
