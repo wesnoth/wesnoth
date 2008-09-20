@@ -348,14 +348,12 @@ if build == "base":
 else:
     build_dir = os.path.join("build", build)
 
+if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
+else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
+Export("build_suffix")
 SConscript("src/SConscript", build_dir = build_dir, exports = "env")
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
-if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
-else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
-from install import HardLink
-wc_binaries = [ bin and env.Command(bin[0].name.split(".")[0] + build_suffix, bin, HardLink("$TARGET", "$SOURCE")) or None for bin in binary_nodes ]
-map(lambda bin, node, wc_bin: Alias(bin, [node, wc_bin]), binaries, binary_nodes, wc_binaries)
 all = env.Alias("all", map(Alias, binaries))
 env.Default(map(Alias, env["default_targets"]))
 
