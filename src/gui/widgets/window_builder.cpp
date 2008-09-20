@@ -57,12 +57,155 @@
 
 namespace gui2 {
 
-static unsigned get_v_align(const std::string& v_align);
-static unsigned get_h_align(const std::string& h_align);
-static unsigned get_border(const std::vector<std::string>& border);
-static unsigned read_flags(const config& cfg);
-static tvertical_scrollbar_container_::tscrollbar_mode 
-	get_scrollbar_mode(const std::string& scrollbar_mode);
+namespace {
+
+unsigned get_v_align(const std::string& v_align)
+{
+	if(v_align == "top") {
+		return tgrid::VERTICAL_ALIGN_TOP;
+	} else if(v_align == "bottom") {
+		return tgrid::VERTICAL_ALIGN_BOTTOM;
+	} else {
+		if(!v_align.empty() && v_align != "center") {
+			ERR_G_E << "Invalid vertical alignment '" 
+				<< v_align << "' falling back to 'center'.\n";
+		}
+		return tgrid::VERTICAL_ALIGN_CENTER;
+	}
+}
+
+unsigned get_h_align(const std::string& h_align)
+{
+	if(h_align == "left") {
+		return tgrid::HORIZONTAL_ALIGN_LEFT;
+	} else if(h_align == "right") {
+		return tgrid::HORIZONTAL_ALIGN_RIGHT;
+	} else {
+		if(!h_align.empty() && h_align != "center") {
+			ERR_G_E << "Invalid horizontal alignment '" 
+				<< h_align << "' falling back to 'center'.\n";
+		}
+		return tgrid::HORIZONTAL_ALIGN_CENTER;
+	}
+}
+
+unsigned get_border(const std::vector<std::string>& border)
+{
+	if(std::find(border.begin(), border.end(), "all") != border.end()) {
+		return tgrid::BORDER_TOP 
+			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
+	} else {
+		if(std::find(border.begin(), border.end(), "top") != border.end()) {
+			return tgrid::BORDER_TOP;
+		}
+		if(std::find(border.begin(), border.end(), "bottom") != border.end()) {
+			return tgrid::BORDER_BOTTOM;
+		}
+		if(std::find(border.begin(), border.end(), "left") != border.end()) {
+			return tgrid::BORDER_LEFT;
+		}
+		if(std::find(border.begin(), border.end(), "right") != border.end()) {
+			return tgrid::BORDER_RIGHT;
+		}
+	}
+
+	return 0;
+}
+
+unsigned read_flags(const config& cfg)
+{
+	unsigned flags = 0;
+
+	// Read the flags. FIXME document.
+	flags |= get_v_align(cfg["vertical_alignment"]);
+	flags |= get_h_align(cfg["horizontal_alignment"]);
+	flags |= get_border( utils::split(cfg["border"]));
+
+	if(utils::string_bool(cfg["vertical_grow"])) {
+		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
+	}
+
+	if(utils::string_bool(cfg["horizontal_grow"])) {
+		flags |= tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT;
+	}
+
+	return flags;
+}
+
+tmenubar::tdirection read_direction(const std::string& direction)
+{
+	if(direction == "vertical") {
+		return tmenubar::VERTICAL;
+	} else if(direction == "horizontal") {
+		return tmenubar::HORIZONTAL;
+	} else {
+		ERR_G_E << "Invalid direction " 
+				<< direction << "' falling back to 'horizontal'.\n";
+		return tmenubar::HORIZONTAL;
+	}
+}
+
+tvertical_scrollbar_container_::tscrollbar_mode  
+		get_scrollbar_mode(const std::string& scrollbar_mode)
+{
+	if(scrollbar_mode == "always") {
+		return tvertical_scrollbar_container_::SHOW;
+	} else if(scrollbar_mode == "never") {
+		return tvertical_scrollbar_container_::HIDE;
+	} else {
+		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
+			ERR_G_E << "Invalid scrollbar mode '" 
+				<< scrollbar_mode << "' falling back to 'auto'.\n";
+		}
+		return tvertical_scrollbar_container_::SHOW_WHEN_NEEDED;
+	}
+}
+
+tbuilder_widget_ptr create_builder_widget(const config& cfg)
+{
+	if(cfg.all_children().size() != 1) {
+		ERR_G_P << "Grid cell has " << cfg.all_children().size()
+			<< " children instead of 1, aborting. Config :\n"
+			<< cfg;
+		assert(false);
+	}
+
+	if(cfg.child("button")) {
+		return new tbuilder_button(*(cfg.child("button")));
+	} else if(cfg.child("label")) {
+		return new tbuilder_label(*(cfg.child("label")));
+	} else if(cfg.child("listbox")) {
+		return new tbuilder_listbox(*(cfg.child("listbox")));
+	} else if(cfg.child("menubar")) {
+		return new tbuilder_menubar(*(cfg.child("menubar")));
+	} else if(cfg.child("minimap")) {
+		return new tbuilder_minimap(*(cfg.child("minimap")));
+	} else if(cfg.child("panel")) {
+		return new tbuilder_panel(*(cfg.child("panel")));
+	} else if(cfg.child("scroll_label")) {
+		return new tbuilder_scroll_label(*(cfg.child("scroll_label")));
+	} else if(cfg.child("slider")) {
+		return new tbuilder_slider(*(cfg.child("slider")));
+	} else if(cfg.child("spacer")) {
+		return new tbuilder_spacer(*(cfg.child("spacer")));
+	} else if(cfg.child("text_box")) {
+		return new tbuilder_text_box(*(cfg.child("text_box")));
+	} else if(cfg.child("toggle_button")) {
+		return new tbuilder_toggle_button(*(cfg.child("toggle_button")));
+	} else if(cfg.child("toggle_panel")) {
+		return new tbuilder_toggle_panel(*(cfg.child("toggle_panel")));
+	} else if(cfg.child("vertical_scrollbar")) {
+		return 
+			new tbuilder_vertical_scrollbar(*(cfg.child("vertical_scrollbar")));
+	} else if(cfg.child("grid")) {
+		return new tbuilder_grid(*(cfg.child("grid")));
+	} else {
+		std::cerr << cfg;
+		assert(false);
+	}
+}
+
+} // namespace
 
 twindow build(CVideo& video, const std::string& type)
 {
@@ -222,79 +365,6 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	
 }
 
-static unsigned get_v_align(const std::string& v_align)
-{
-	if(v_align == "top") {
-		return tgrid::VERTICAL_ALIGN_TOP;
-	} else if(v_align == "bottom") {
-		return tgrid::VERTICAL_ALIGN_BOTTOM;
-	} else {
-		if(!v_align.empty() && v_align != "center") {
-			ERR_G_E << "Invalid vertical alignment '" 
-				<< v_align << "' falling back to 'center'.\n";
-		}
-		return tgrid::VERTICAL_ALIGN_CENTER;
-	}
-}
-
-static unsigned get_h_align(const std::string& h_align)
-{
-	if(h_align == "left") {
-		return tgrid::HORIZONTAL_ALIGN_LEFT;
-	} else if(h_align == "right") {
-		return tgrid::HORIZONTAL_ALIGN_RIGHT;
-	} else {
-		if(!h_align.empty() && h_align != "center") {
-			ERR_G_E << "Invalid horizontal alignment '" 
-				<< h_align << "' falling back to 'center'.\n";
-		}
-		return tgrid::HORIZONTAL_ALIGN_CENTER;
-	}
-}
-
-static unsigned get_border(const std::vector<std::string>& border)
-{
-	if(std::find(border.begin(), border.end(), "all") != border.end()) {
-		return tgrid::BORDER_TOP 
-			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
-	} else {
-		if(std::find(border.begin(), border.end(), "top") != border.end()) {
-			return tgrid::BORDER_TOP;
-		}
-		if(std::find(border.begin(), border.end(), "bottom") != border.end()) {
-			return tgrid::BORDER_BOTTOM;
-		}
-		if(std::find(border.begin(), border.end(), "left") != border.end()) {
-			return tgrid::BORDER_LEFT;
-		}
-		if(std::find(border.begin(), border.end(), "right") != border.end()) {
-			return tgrid::BORDER_RIGHT;
-		}
-	}
-
-	return 0;
-}
-
-static unsigned read_flags(const config& cfg)
-{
-	unsigned flags = 0;
-
-	// Read the flags. FIXME document.
-	flags |= get_v_align(cfg["vertical_alignment"]);
-	flags |= get_h_align(cfg["horizontal_alignment"]);
-	flags |= get_border( utils::split(cfg["border"]));
-
-	if(utils::string_bool(cfg["vertical_grow"])) {
-		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
-	}
-
-	if(utils::string_bool(cfg["horizontal_grow"])) {
-		flags |= tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT;
-	}
-
-	return flags;
-}
-
 tbuilder_grid::tbuilder_grid(const config& cfg) : 
 	tbuilder_widget(cfg),
 	id(cfg["id"]),
@@ -390,46 +460,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 				col_grow_factor.push_back(lexical_cast_default<unsigned>((**col_itor)["grow_factor"]));
 			}
 
-			if((**col_itor).all_children().size() != 1) {
-				ERR_G_P << "Grid cell has " << (**col_itor).all_children().size()
-					<< " children instead of 1, aborting. Config :\n"
-					<< **col_itor;
-				assert(false);
-			}
-
-			if((**col_itor).child("button")) {
-				widgets.push_back(new tbuilder_button(*((**col_itor).child("button"))));
-			} else if((**col_itor).child("label")) {
-				widgets.push_back(new tbuilder_label(*((**col_itor).child("label"))));
-			} else if((**col_itor).child("listbox")) {
-				widgets.push_back(new tbuilder_listbox(*((**col_itor).child("listbox"))));
-			} else if((**col_itor).child("menubar")) {
-				widgets.push_back(new tbuilder_menubar(*((**col_itor).child("menubar"))));
-			} else if((**col_itor).child("minimap")) {
-				widgets.push_back(new tbuilder_minimap(*((**col_itor).child("minimap"))));
-			} else if((**col_itor).child("panel")) {
-				widgets.push_back(new tbuilder_panel(*((**col_itor).child("panel"))));
-			} else if((**col_itor).child("scroll_label")) {
-				widgets.push_back(new tbuilder_scroll_label(*((**col_itor).child("scroll_label"))));
-			} else if((**col_itor).child("slider")) {
-				widgets.push_back(new tbuilder_slider(*((**col_itor).child("slider"))));
-			} else if((**col_itor).child("spacer")) {
-				widgets.push_back(new tbuilder_spacer(*((**col_itor).child("spacer"))));
-			} else if((**col_itor).child("text_box")) {
-				widgets.push_back(new tbuilder_text_box(*((**col_itor).child("text_box"))));
-			} else if((**col_itor).child("toggle_button")) {
-				widgets.push_back(new tbuilder_toggle_button(*((**col_itor).child("toggle_button"))));
-			} else if((**col_itor).child("toggle_panel")) {
-				widgets.push_back(new tbuilder_toggle_panel(*((**col_itor).child("toggle_panel"))));
-			} else if((**col_itor).child("vertical_scrollbar")) {
-				widgets.push_back(
-					new tbuilder_vertical_scrollbar(*((**col_itor).child("vertical_scrollbar"))));
-			} else if((**col_itor).child("grid")) {
-				widgets.push_back(new tbuilder_grid(*((**col_itor).child("grid"))));
-			} else {
-				std::cerr << (**col_itor);
-				assert(false);
-			}
+			widgets.push_back(create_builder_widget(**col_itor));
 
 			++col;
 		}
@@ -575,46 +606,12 @@ twidget* tbuilder_button::build() const
 	return button;
 }
 
-
 tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 	tbuilder_widget(cfg),
 	flags(read_flags(cfg)),
 	border_size(lexical_cast_default<unsigned>((cfg)["border_size"])),
-	widget(NULL)
+	widget(create_builder_widget(cfg))
 {
-	if((cfg).child("button")) {
-		widget=new tbuilder_button(*((cfg).child("button")));
-	} else if((cfg).child("label")) {
-		widget=new tbuilder_label(*((cfg).child("label")));
-	} else if((cfg).child("listbox")) {
-		widget=new tbuilder_listbox(*((cfg).child("listbox")));
-	} else if((cfg).child("menubar")) {
-		widget=new tbuilder_menubar(*((cfg).child("menubar")));
-	} else if((cfg).child("minimap")) {
-		widget=new tbuilder_minimap(*((cfg).child("minimap")));
-	} else if((cfg).child("panel")) {
-		widget=new tbuilder_panel(*((cfg).child("panel")));
-	} else if((cfg).child("scroll_label")) {
-		widget=new tbuilder_scroll_label(*((cfg).child("scroll_label")));
-	} else if((cfg).child("slider")) {
-		widget=new tbuilder_slider(*((cfg).child("slider")));
-	} else if((cfg).child("spacer")) {
-		widget=new tbuilder_spacer(*((cfg).child("spacer")));
-	} else if((cfg).child("text_box")) {
-		widget=new tbuilder_text_box(*((cfg).child("text_box")));
-	} else if((cfg).child("toggle_button")) {
-		widget=new tbuilder_toggle_button(*((cfg).child("toggle_button")));
-	} else if((cfg).child("toggle_panel")) {
-		widget=new tbuilder_toggle_panel(*((cfg).child("toggle_panel")));
-	} else if((cfg).child("vertical_scrollbar")) {
-		widget=
-			new tbuilder_vertical_scrollbar(*((cfg).child("vertical_scrollbar")));
-	} else if((cfg).child("grid")) {
-		widget=new tbuilder_grid(*((cfg).child("grid")));
-	} else {
-		std::cerr << cfg;
-		assert(false);
-	}
 }
 
 twidget* tbuilder_label::build() const
@@ -627,22 +624,6 @@ twidget* tbuilder_label::build() const
 		<< definition << "'.\n";
 
 	return tmp_label;
-}
-
-static tvertical_scrollbar_container_::tscrollbar_mode  
-		get_scrollbar_mode(const std::string& scrollbar_mode)
-{
-	if(scrollbar_mode == "always") {
-		return tvertical_scrollbar_container_::SHOW;
-	} else if(scrollbar_mode == "never") {
-		return tvertical_scrollbar_container_::HIDE;
-	} else {
-		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
-			ERR_G_E << "Invalid scrollbar mode '" 
-				<< scrollbar_mode << "' falling back to 'auto'.\n";
-		}
-		return tvertical_scrollbar_container_::SHOW_WHEN_NEEDED;
-	}
 }
 
 tbuilder_listbox::tbuilder_listbox(const config& cfg) :
@@ -826,19 +807,6 @@ twidget* tbuilder_listbox::build() const
 	listbox->finalize_setup();
 
 	return listbox;
-}
-
-static tmenubar::tdirection read_direction(const std::string& direction)
-{
-	if(direction == "vertical") {
-		return tmenubar::VERTICAL;
-	} else if(direction == "horizontal") {
-		return tmenubar::HORIZONTAL;
-	} else {
-		ERR_G_E << "Invalid direction " 
-				<< direction << "' falling back to 'horizontal'.\n";
-		return tmenubar::HORIZONTAL;
-	}
 }
 
 tbuilder_menubar::tbuilder_menubar(const config& cfg) :
