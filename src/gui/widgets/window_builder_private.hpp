@@ -39,7 +39,7 @@ public:
 
 	void init_control(tcontrol* control) const;
 
-	//! Parameters for the control.
+	/** Parameters for the control. */
 	std::string id;
 	std::string definition;
 	t_string label;
@@ -65,22 +65,22 @@ private:
 /**
  * A temporary helper class.
  *
- * @todo refactore with the grid builder.
+ * @todo refactor with the grid builder.
  */
 struct tbuilder_gridcell : public tbuilder_widget
 {
 	tbuilder_gridcell(const config& cfg);
 
-	//! The flags for the cell.
+	/** The flags for the cell. */
 	unsigned flags;
 
-	//! The bordersize for the cell.
+	/** The bordersize for the cell. */
 	unsigned border_size;
 
-	//! The widgets for the cell.
+	/** The widgets for the cell. */
 	tbuilder_widget_ptr widget;
 
-	// We're a dummy the building is done on construction.
+	/** We're a dummy the building is done on construction. */
 	twidget* build () const { return NULL; }
 };
 

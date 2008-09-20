@@ -33,7 +33,7 @@ class twindow;
 twindow build(CVideo& video, const std::string& type);
 
 
-//! Contains the info needed to instantiate a widget.
+/** Contains the info needed to instantiate a widget. */
 struct tbuilder_widget : public reference_counted_object
 {
 private:
@@ -50,7 +50,6 @@ public:
 typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
 typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
 
-//!
 struct tbuilder_grid : public tbuilder_widget
 {
 private:
@@ -63,23 +62,23 @@ public:
 	unsigned rows;
 	unsigned cols;
 
-	//! The grow factor for the rows / columns.
+	/** The grow factor for the rows / columns. */
 	std::vector<unsigned> row_grow_factor;
 	std::vector<unsigned> col_grow_factor;
 
-	//! The flags per grid cell.
+	/** The flags per grid cell. */
 	std::vector<unsigned> flags;
 
-	//! The border size per grid cell.
+	/** The border size per grid cell. */
 	std::vector<unsigned> border_size;
 
-	//! The widgets per grid cell.
+	/** The widgets per grid cell. */
 	std::vector<tbuilder_widget_ptr> widgets;
 
 	twidget* build () const;
 
 private:
-	//! After reading the general part in the constructor read extra data.
+	/** After reading the general part in the constructor read extra data. */
 	void read_extra(const config& cfg);
 };
 
