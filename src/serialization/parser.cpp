@@ -14,8 +14,10 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/parser.cpp 
-//! Read/Write & analyse WML- and config-files.
+/**
+ * @file serialization/parser.cpp 
+ * Read/Write & analyse WML- and config-files.
+ */
 
 #include "serialization/parser.hpp"
 
