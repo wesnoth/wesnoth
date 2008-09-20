@@ -1033,7 +1033,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
  *     minimum_value (int = 0)        The minimum value the slider can have.
  *     maximum_value (int = 0)        The maximum value the slider can have.
  *
- *     step_size (int = 0)            The number of items the slider's value
+ *     step_size (unsigned = 0)       The number of items the slider's value
  *                                    increases with one step.
  *     value (int = 0)                The value of the slider.
  *
