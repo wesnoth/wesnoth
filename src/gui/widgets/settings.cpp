@@ -82,7 +82,7 @@ namespace {
 	 * Vector with all known windows, these are validated on existance on startup.
 	 * The enum twindow_type is the index of the array.
 	 */
-	std::vector<std::string> window_type_list(DUMMY);
+	std::vector<std::string> window_type_list(COUNT);
 } // namespace 
 
 static void fill_window_types() 
@@ -104,7 +104,7 @@ static void fill_window_types()
 
 const std::string& get_id(const twindow_type window_type)
 {
-	assert(window_type >= 0 && window_type < DUMMY);
+	assert(window_type >= 0 && window_type < COUNT);
 
 	return window_type_list[window_type];
 }

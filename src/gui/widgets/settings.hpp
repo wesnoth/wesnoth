@@ -52,7 +52,10 @@ enum twindow_type {
 	EDITOR_RESIZE_MAP, 	   	 /**< Editor resize map dialog. */
 	EDITOR_SETTINGS,		 /**< Editor settings dialog. */
 #endif
-	DUMMY                    /**< Dummy always the last one. */
+	COUNT                    /**< 
+							  * The last one to hold the number of items and as
+							  * sentinel.
+							  */
 };
 
 const std::string& get_id(const twindow_type window_type);
