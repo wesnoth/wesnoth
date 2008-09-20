@@ -14,6 +14,8 @@ from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
 
+map(os.remove, glob(os.path.join("build", "*", "SConscript")))
+
 SConsignFile("build/sconsign.dblite")
 
 # Warn user of current set of build options.
