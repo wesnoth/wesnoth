@@ -387,6 +387,10 @@ static bool is_username_char(char c) {
 	return ((c == '_') || (c == '-'));
 }
 
+static bool is_wildcard_char(char c) {
+    return ((c == '?') || (c == '*'));
+}
+
 bool isvalid_username(const std::string& username) {
 	const size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const size_t valid_char =
@@ -398,6 +402,21 @@ bool isvalid_username(const std::string& username) {
 	}
 	return true;
 }
+
+bool isvalid_wildcard(const std::string& username) {
+    const size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const size_t valid_char =
+			std::count_if(username.begin(), username.end(), is_username_char);
+    const size_t wild_char =
+            std::count_if(username.begin(), username.end(), is_wildcard_char);
+	if ((alnum + valid_char + wild_char != username.size())
+			|| valid_char == username.size() || username.empty() )
+	{
+		return false;
+	}
+	return true;
+}
+
 
 bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	std::vector<std::string> matches;

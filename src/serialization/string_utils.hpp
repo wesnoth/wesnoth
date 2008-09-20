@@ -145,6 +145,14 @@ bool wildcard_string_match(const std::string& str, const std::string& match);
  */
 bool isvalid_username(const std::string &login);
 
+/**
+ * Check if the username pattern contains only valid characters.
+ *
+ * (all alpha-numeric characters plus underscore, hyphen,
+ * question mark and asterisk)
+ */
+bool isvalid_wildcard(const std::string &login);
+
 typedef std::map< std::string, t_string > string_map;
 
 /**

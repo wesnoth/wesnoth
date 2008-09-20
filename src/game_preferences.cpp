@@ -169,13 +169,13 @@ std::string get_ignores() {
 }
 
 bool add_friend(const std::string& nick) {
-	if (!utils::isvalid_username(nick)) return false;
+	if (!utils::isvalid_wildcard(nick)) return false;
 	add_relation(nick, "friends");
 	return true;
 }
 
 bool add_ignore(const std::string& nick) {
-	if (!utils::isvalid_username(nick)) return false;
+	if (!utils::isvalid_wildcard(nick)) return false;
 	add_relation(nick, "ignores");
 	return true;
 }
@@ -198,12 +198,20 @@ void clear_ignores() {
 
 bool is_friend(const std::string& nick) {
 	const std::vector<std::string>& friends = utils::split(get_friends());
-	return (std::find(friends.begin(), friends.end(), nick) != friends.end());
+    foreach(const std::string& var, friends) {
+        if(utils::wildcard_string_match(nick, var))
+            return true;
+    }
+    return false;
 }
 
 bool is_ignored(const std::string& nick) {
 	const std::vector<std::string>& ignores = utils::split(get_ignores());
-	return (std::find(ignores.begin(), ignores.end(), nick) != ignores.end());
+    foreach(const std::string& var, ignores) {
+        if(utils::wildcard_string_match(nick, var))
+            return true;
+    }
+    return false;
 }
 
 bool show_lobby_join(const std::string& sender, const std::string& message) {
