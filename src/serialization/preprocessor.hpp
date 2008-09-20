@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/preprocessor.hpp
+/** @file serialization/preprocessor.hpp. */
 
 #ifndef SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
 #define SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
@@ -64,9 +64,13 @@ struct preproc_config {
 
 std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def);
 
-//! Function to use the WML preprocessor on a file, 
-//! and returns the resulting preprocessed file data. 
-//! defines is a map of symbols defined.
+/**
+ * Function to use the WML preprocessor on a file.
+ *
+ * @param defines                 A map of symbols defined.
+ *
+ * @returns                       The resulting preprocessed file data. 
+ */
 std::istream *preprocess_file(std::string const &fname,
                               preproc_map *defines = NULL, std::string *error_log=NULL);
 

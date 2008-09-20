@@ -13,8 +13,10 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/preprocessor.cpp
-//! WML preprocessor.
+/**
+ * @file serialization/preprocessor.cpp
+ * WML preprocessor.
+ */
 
 #include "../global.hpp"
 
@@ -353,7 +355,7 @@ class preprocessor_data: preprocessor
 {
 	struct token_desc
 	{
-		//! @todo FIXME: add enum for token type, with explanation of the different types
+		/** @todo FIXME: add enum for token type, with explanation of the different types. */
 		char type;
 		int stack_pos;
 		int linenum;
@@ -363,8 +365,11 @@ class preprocessor_data: preprocessor
 	std::vector< std::string > strings_;
 	std::vector< token_desc > tokens_;
 	bool is_macro;
-	int slowpath_, //! @todo FIXME: add explanation of this variable
-		skipping_, //will get set to true when skipping text(e.g. #ifdef that evaluates to false)
+	int slowpath_, /** @todo FIXME: add explanation of this variable. */
+		skipping_, /**< 
+		            * Will get set to true when skipping text
+		            * (e.g. #ifdef that evaluates to false) 
+					*/
 		linenum_;
 
 	std::string read_word();
@@ -812,14 +817,16 @@ bool preprocessor_data::get_chunk()
 			preproc_map::const_iterator macro = target_.defines_->find(symbol);
 			if(macro != target_.defines_->end()) {			
 
-//! @todo it seems some addons use other names instead of include so disable
-//! the code for now. Once 1.4 has been released we can try to fix it again or
-//! make it mandatory to use INCLUDE for this purpose.
-//
-//! ESR says: No, it was a fundamentally mistaken idea to do this here; wmllint 
-//! could do the same direct-recursion check without imposing runtime overhead
-//! or causing the problems this code did.  Leaving this code in for 
-//! documentation purposes only, don't re-enable it. 
+/**
+ * @todo it seems some addons use other names instead of include so disable the
+ * code for now. Once 1.4 has been released we can try to fix it again or make
+ * it mandatory to use INCLUDE for this purpose.
+ *
+ * ESR says: No, it was a fundamentally mistaken idea to do this here; wmllint
+ * could do the same direct-recursion check without imposing runtime overhead
+ * or causing the problems this code did.  Leaving this code in for
+ * documentation purposes only, don't re-enable it. 
+ */
 #if 0			
 				// INCLUDE is special and is allowed to be used recusively.
 				if(symbol != "INCLUDE") {
