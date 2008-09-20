@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/tokenizer.hpp 
-//!
+/** @file serialization/tokenizer.hpp. */
 
 #ifndef TOKENIZER_H_INCLUDED
 #define TOKENIZER_H_INCLUDED
@@ -59,7 +58,7 @@ struct token
 	std::string value;
 };
 
-//! Abstract baseclass for the tokenizer
+/** Abstract baseclass for the tokenizer. */
 class tokenizer
 {
 	public:
