@@ -81,7 +81,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 		break;
 	case 4:
 		items_sub = create_unit_table(stats_.killed, team_num_);
-		//! @todo FIXME? Perhaps killed units shouldn't have the same team-color as your own.
+		/** @todo FIXME? Perhaps killed units shouldn't have the same team-color as your own. */
 		title = _("Kills");
 		break;
 	default:
