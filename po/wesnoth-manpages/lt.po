@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "POT-Creation-Date: 2008-09-09 23:13+0300\n"
-"PO-Revision-Date: 2008-09-09 19:13+0300\n"
+"PO-Revision-Date: 2008-09-11 19:53+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -262,7 +262,7 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:98
 msgid "loads the file savegame from the standard save game directory."
-msgstr ""
+msgstr "įkelia išsaugotą žaidimą iš standartinio išsaugotų žaidimų aplanko."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:98
@@ -354,15 +354,14 @@ msgstr "paleidžia žaidimą be garsų ir muzikos."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:130
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:133
-#, fuzzy
 msgid "runs the game without only music."
-msgstr "paleidžia žaidimą be garsų ir muzikos."
+msgstr "paleidžia žaidimą be muzikos."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:133 ../../doc/man/wesnoth_editor.6:59
@@ -849,7 +848,6 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -857,7 +855,7 @@ msgid ""
 msgstr ""
 "Tvarko Mūšio dėl Wesnoth daugelio žaidėjų žaidimus. Žiūrėkite http://www."
 "wesnoth.org/wiki/ServerAdministration kurias komandas priima serveris iš "
-"wesnoth kliento arba iš socket'o."
+"wesnoth kliento (/query ...) arba per fifo."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -1039,9 +1037,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1111,13 +1109,12 @@ msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
-"Komandos, kurias serveris naudoja paleisti naują serverio procesą. "
-"Perkrovimas gali būti atliktas naudojant /query perkrovimą."
+"Komandos, kurias serveris naudoja paleisti naują serverio procesą su "
+"„restart“ komanda. (gali būti iškviesta per fifo.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1200,9 +1197,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
@@ -1213,7 +1210,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181

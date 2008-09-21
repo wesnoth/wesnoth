@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-09 23:13+0200\n"
-"PO-Revision-Date: 2008-03-19 18:22+0300\n"
+"PO-Revision-Date: 2008-09-13 01:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "JAS"
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
 msgid "Grunt"
-msgstr ""
+msgstr "Pėstininkas"
 
 #. [campaign]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
@@ -71,12 +71,12 @@ msgstr ""
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:26
 msgid "Campaign Design"
-msgstr ""
+msgstr "Kampanijos kūrimas"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:37
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Kampanijos priežiūra"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:47
@@ -86,7 +86,7 @@ msgstr ""
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:53
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "Grafika"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:4
@@ -124,7 +124,7 @@ msgstr "Nugalėkite Albertą ir jo karius"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:23
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:33
 msgid "Death of Kapou'e"
-msgstr ""
+msgstr "Kapou'e mirtis"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:45
@@ -209,7 +209,7 @@ msgstr "Pasibaigia ėjimai"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:57
 msgid "Kapou'e"
-msgstr ""
+msgstr "Kapou'e"
 
 #. [side]: type=Lieutenant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:69
@@ -225,7 +225,7 @@ msgstr "Albertas"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:113
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:75
 msgid "Humans"
-msgstr ""
+msgstr "Žmonės"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:97
@@ -315,9 +315,8 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:173
-#, fuzzy
 msgid "Victory!"
-msgstr "Valio! Pergalė!"
+msgstr "Pergalė!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:178
@@ -469,9 +468,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:105
-#, fuzzy
 msgid "The battle began."
-msgstr "Mūšis prasidėjo"
+msgstr "Mūšis prasidėjo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:115
@@ -519,9 +517,8 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:164
-#, fuzzy
 msgid " $stored_helper.name|!"
-msgstr " $stored_helper.user_description|!"
+msgstr " $stored_helper.name|!"
 
 #. [message]: role=Helper
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:169
@@ -596,7 +593,7 @@ msgstr ""
 #. [side]: type=Dwarvish Lord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:92
 msgid "Dwarves"
-msgstr ""
+msgstr "Dvorfai"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:133
@@ -702,12 +699,12 @@ msgstr ""
 #. [message]: speaker=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:252
 msgid "Look! Dwarves are fighting orcs!"
-msgstr ""
+msgstr "Žiūrėkite! Dvorfai kaunasi su orkais!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:256
 msgid "Father, we should help them. Orcs are our allies."
-msgstr ""
+msgstr "Tėve, mes turime jiems padėti. Orkai yra mūsų ssąjungininkai."
 
 #. [message]: speaker=Blemaker
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:260
@@ -715,6 +712,8 @@ msgid ""
 "I don't know. Orcs have been our allies in the past, but they treat us as "
 "fools."
 msgstr ""
+"Aš nežinau. Orkai buvo mūsų sąjungininkais anksčiau, bet jie elgiasi su "
+"mumis kaip su kvailiais."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:264
@@ -969,7 +968,7 @@ msgstr ""
 #. [message]: role=Scout
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:353
 msgid "Sure."
-msgstr ""
+msgstr "Žinoma."
 
 #. [message]: speaker=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:383
@@ -1595,7 +1594,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:79
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:91
 msgid "Villains"
-msgstr ""
+msgstr "Niekšai"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:103
@@ -2030,9 +2029,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:24
-#, fuzzy
 msgid "Defeat Shan Taum (bonus)"
-msgstr "Šamano mirtis"
+msgstr "Nugalėkite Šan Taumą (premija)"
 
 #. [side]: type=Orcish Warlord
 #. [unit]: type=Orcish Warlord
@@ -2507,22 +2505,22 @@ msgstr ""
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:239
 msgid "Great! When do they arrive?"
-msgstr ""
+msgstr "Puiku! Kada jie atvyksta?"
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:244
 msgid "In four days. I fear it will be too late."
-msgstr ""
+msgstr "Keturių dienų bėgyje. Bijau, kad bus per vėlu."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:249
 msgid "Fool! We can hold that long."
-msgstr ""
+msgstr "Kvaily! Mes galime tiek išsilaikyti."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:254
 msgid "How?"
-msgstr ""
+msgstr "Kaip?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:259
@@ -2530,11 +2528,13 @@ msgid ""
 "Most of their forces will cross the river by the ford where the bridge "
 "previously stood. If we can hold that ford, we can hold the fortress."
 msgstr ""
+"Didžioji dalis jų pajėgų persikels per upę per brastą, kur anksčiau stovėjo "
+"tiltas. Jei mes galėsime išlaikyti tą brastą, galėsime išlaikyti tvirtovę."
 
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:264
 msgid "And if we fail?"
-msgstr ""
+msgstr "O jei mums nepavyks?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:269
@@ -2546,7 +2546,7 @@ msgstr ""
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:274
 msgid "Great."
-msgstr ""
+msgstr "Puiku."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:279
@@ -3223,7 +3223,7 @@ msgstr "Braga"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:107
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:121
 msgid "Rebels"
-msgstr ""
+msgstr "Sukilėliai"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:90
@@ -3417,9 +3417,8 @@ msgstr ""
 
 #. [message]: role=new_leader
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:483
-#, fuzzy
 msgid "Thank you, Son of the Black-Eye!"
-msgstr "Juodosios-Akies sūnus"
+msgstr "Ačiū tau, Juodosios-Akies sūnau!"
 
 #. [message]: role=new_leader
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:493
@@ -3487,7 +3486,7 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:4
 msgid "The Coward"
-msgstr ""
+msgstr "Bailys"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:65
@@ -3541,9 +3540,8 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:235
-#, fuzzy
 msgid "Good morning, Shan Taum!"
-msgstr "Labas rytas, Šan Taumai."
+msgstr "Labas rytas, Šan Taumai!"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:241
@@ -3606,7 +3604,7 @@ msgstr ""
 #. [message]: speaker=Orga
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:286
 msgid "Yes sir!"
-msgstr ""
+msgstr "Taip, pone!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:302
@@ -4069,7 +4067,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
 #, fuzzy
 msgid "Novice Orcish Shaman"
-msgstr "Orkų šamanas"
+msgstr "Naujokas orkų šamanas"
 
 #. [unit_type]: race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:21
@@ -4133,7 +4131,7 @@ msgstr ""
 #. [unit_type]: race=mechanical
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:4
 msgid "Watch Tower"
-msgstr ""
+msgstr "Sargybos bokštas"
 
 #. [unit_type]: race=mechanical
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:33
@@ -4182,18 +4180,3 @@ msgstr ""
 
 #~ msgid "Which plan?"
 #~ msgstr "Kurį planą?"
-
-#~ msgid "Ah...."
-#~ msgstr "Ah...."
-
-#~ msgid "Defeat All Enemy Leaders."
-#~ msgstr "Nugalėkite visus priešų vadus."
-
-#~ msgid "Pirate Galleon"
-#~ msgstr "Piratų galionas"
-
-#~ msgid "Transport Galleon"
-#~ msgstr "Transporto galionas"
-
-#~ msgid "Transport"
-#~ msgstr "Transportas"
