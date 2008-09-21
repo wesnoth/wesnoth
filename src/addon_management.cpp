@@ -26,18 +26,13 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
-#include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "network.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
 #include "version.hpp"
-#include "widgets/menu.hpp"
-#include "wml_exception.hpp"
 #include "wml_separators.hpp"
 
 #include <algorithm>
