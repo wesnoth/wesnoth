@@ -120,9 +120,12 @@ tpoint tscroll_label::get_content_best_size() const
 
 void tscroll_label::set_content_size(const SDL_Rect& rect)
 {
-	//maybe add a get best height for a label with a given width...
 	assert(label_);
 
+	// Set the dummy spacer.
+	find_spacer()->set_size(rect);
+
+	//maybe add a get best height for a label with a given width...
 	SDL_Rect size = { 0, 0, get_best_size().x, get_best_size().y };
 	label_->set_size(size);
 
