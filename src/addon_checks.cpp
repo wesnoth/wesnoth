@@ -107,7 +107,7 @@ std::vector<config *> find_scripts(const config &cfg, std::string extension)
 }
 
 namespace {
-	const char escape_char = '\x01'; //!< Binary escape char.
+	const char escape_char = '\x01'; /**< Binary escape char. */
 } // end unnamed namespace 2
 
 bool needs_escaping(char c) {
