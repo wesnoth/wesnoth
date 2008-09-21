@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file server/server.cpp
-//! Wesnoth-Server, for multiplayer-games.
+/**
+ * @file server/server.cpp
+ * Wesnoth-Server, for multiplayer-games.
+ */
 
 #include "../global.hpp"
 
@@ -86,12 +88,16 @@ clock_t get_cpu_time(bool active) {
 
 #endif
 
-//! fatal and directly server related errors/warnings,
-//! ie not caused by erroneous client data
+/**
+ * fatal and directly server related errors/warnings,
+ * ie not caused by erroneous client data
+ */
 #define ERR_SERVER LOG_STREAM(err, mp_server)
-//! clients send wrong/unexpected data
+
+/** clients send wrong/unexpected data */
 #define WRN_SERVER LOG_STREAM(warn, mp_server)
-//! normal events
+
+/** normal events */
 #define LOG_SERVER LOG_STREAM(info, mp_server)
 #define DBG_SERVER LOG_STREAM(debug, mp_server)
 #define ERR_CONFIG LOG_STREAM(err, config)
@@ -101,7 +107,7 @@ clock_t get_cpu_time(bool active) {
 #ifndef SIGHUP
 #define SIGHUP 20
 #endif
-// FIXME: should define SIGINT here too, but to what?
+/** @todo FIXME: should define SIGINT here too, but to what? */
 
 sig_atomic_t config_reload = 0;
 
@@ -279,21 +285,23 @@ private:
 	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<network::connection,std::string> seeds_;
 
-	//! std::map<network::connection,player>
+	/** std::map<network::connection,player>. */
 	wesnothd::player_map players_;
 	wesnothd::player_map ghost_players_ ;
 
 	std::vector<wesnothd::game*> games_;
 	wesnothd::game not_logged_in_;
-	//! The lobby is implemented as a game.
+
+	/** The lobby is implemented as a game. */
 	wesnothd::game lobby_;
 
-	//! server socket/fifo
+	/** server socket/fifo. */
 	boost::scoped_ptr<input_stream> input_;
 
 	const std::string config_file_;
 	config cfg_;
-	//! Read the server config from file 'config_file_'.
+
+	/** Read the server config from file 'config_file_'. */
 	config read_config() const;
 	
 	// settings from the server config
@@ -311,7 +319,8 @@ private:
 	time_t lan_server_;
 	time_t last_user_seen_time_;
 	std::string restart_command;
-	//! Parse the server config into local variables.
+
+	/** Parse the server config into local variables. */
 	void load_config();
 	
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
@@ -335,15 +344,19 @@ private:
 	                  simple_wml::document& data);
 	void process_login(const network::connection sock,
 	                   simple_wml::document& data);
-	//! Handle queries from clients.
+
+	/** Handle queries from clients. */
 	void process_query(const network::connection sock,
 	                   simple_wml::node& query);
-	//! Process commands from admins and users.
+
+	/** Process commands from admins and users. */
 	std::string process_command(const std::string& cmd, const std::string& issuer_name);
-	//! Handle private messages between players.
+
+	/** Handle private messages between players. */
 	void process_whisper(const network::connection sock,
 	                     simple_wml::node& whisper) const;
-	//! Handle nickname registration related requests from clients
+
+	/** Handle nickname registration related requests from clients. */
 	void process_nickserv(const network::connection sock, simple_wml::node& data);
 	void process_data_lobby(const network::connection sock,
 	                        simple_wml::document& data);
@@ -1272,7 +1285,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (reason.empty()) return ban_manager_.get_ban_help();
 
 		// if we find a '.' consider it an ip mask
-		//! @todo  FIXME: make a proper check for valid IPs
+		/** @todo  FIXME: make a proper check for valid IPs. */
 		if (std::count(target.begin(), target.end(), '.') >= 1) {
 			banned_ = true;
 
@@ -1673,8 +1686,10 @@ void server::process_data_lobby(const network::connection sock,
 	}
 }
 
-//! Process data sent by a player in a game. Note that 'data' by default gets
-//! broadcasted and saved in the replay.
+/**
+ * Process data sent by a player in a game. Note that 'data' by default gets
+ * broadcasted and saved in the replay.
+ */
 void server::process_data_game(const network::connection sock,
                                simple_wml::document& data) {
 	DBG_SERVER << "in process_data_game...\n";
@@ -1799,7 +1814,7 @@ void server::process_data_game(const network::connection sock,
 		make_add_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", diff);
 		lobby_.send_data(diff);
 
-		//! @todo FIXME: Why not save the level data in the history_?
+		/** @todo FIXME: Why not save the level data in the history_? */
 		return;
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g->level_init()) {
@@ -2210,8 +2225,11 @@ int main(int argc, char** argv) {
 	} catch(network::error& e) {
 		ERR_SERVER << "Caught network error while server was running. Aborting.: "
 			<< e.message << "\n";
-		//! @todo errno should be passed here with the error or it might not be
-		//! the true errno anymore. Seems to work good enough for now though.
+
+		/**
+		 * @todo errno should be passed here with the error or it might not be
+		 * the true errno anymore. Seems to work good enough for now though.
+		 */
 		return errno;
 	} catch(std::bad_alloc&) {
                 ERR_SERVER << "Ran out of memory. Aborting.\n";
