@@ -1408,10 +1408,8 @@ std::string server::process_command(const std::string& query, const std::string&
 		}
 		motd_ = parameters;
 		out << "Message of the day set to: " << motd_;
-	} else if (command == "lookup") {
-		if (parameters == "") {
-			return "You must enter an ip or nick mask to look up.";
-		}
+	} else if (command == "searchlog") {
+		out << "IP/NICK LOG\n";
 
 		bool found_something = false;
 
@@ -1422,8 +1420,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->second, parameters)) {
 					found_something = true;
-					out << "Found nick '" << i->first << "' used '" << i->second
-							<< "' which matched '" << parameters << "'\n";
+					out << i->first << "@" << i->second << "\n";
 				}
 			}
 		} else {
@@ -1431,8 +1428,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->first, parameters)) {
 					found_something = true;
-					out << "Found nick '" << i->first << "' which matched '"
-							<< parameters << "' used '" << i->second << "'\n";
+					out << "'" << i->first << "' @ " << i->second << "\n";
 				}
 			}
 		}
