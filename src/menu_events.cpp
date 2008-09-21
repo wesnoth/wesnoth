@@ -2466,10 +2466,12 @@ private:
 			const std::string& tmp = preferences::get_ignores();
 			print("ignores list", tmp.empty() ? "(empty)" : tmp);
 		} else {
-			if (preferences::add_ignore(get_arg(1))) {
-				print("ignore",  _("Added to ignore list: ") + get_arg(1));
-			} else {
-				command_failed(_("Invalid username: ") + get_arg(1));
+			for(int i = 1;!get_arg(i).empty();i++){
+				if (preferences::add_ignore(get_arg(i))) {
+					print("ignore",  _("Added to ignore list: ") + get_arg(i));
+				} else {
+					command_failed(_("Invalid username: ") + get_arg(i));
+				}
 			}
 		}
 	}
@@ -2479,18 +2481,22 @@ private:
 			const std::string& tmp = preferences::get_friends();
 			print("friends list", tmp.empty() ? "(empty)" : tmp);
 		} else {
-			if (preferences::add_friend(get_arg(1))) {
-				print("friend",  _("Added to friends list: ") + get_arg(1));
-			} else {
-				command_failed(_("Invalid username: ") + get_arg(1));
+			for(int i = 1;!get_arg(i).empty();i++){
+				if (preferences::add_friend(get_arg(i))) {
+					print("friend",  _("Added to friends list: ") + get_arg(i));
+				} else {
+					command_failed(_("Invalid username: ") + get_arg(i));
+				}
 			}
 		}
 	}
 	void chat_command_handler::do_remove()
 	{
-		preferences::remove_friend(get_arg(1));
-		preferences::remove_ignore(get_arg(1));
-		print("list", _("Removed from list: ") + get_arg(1));
+		for(int i = 1;!get_arg(i).empty();i++){
+			preferences::remove_friend(get_arg(i));
+			preferences::remove_ignore(get_arg(i));
+			print("list", _("Removed from list: ") + get_arg(i));
+		}
 	}
 	void chat_command_handler::do_display()
 	{
