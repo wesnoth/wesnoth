@@ -282,6 +282,8 @@ private:
 	network::server_manager server_;
 	wesnothd::ban_manager ban_manager_;
 
+	std::map<std::string, std::string> ip_log_;
+
 	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<network::connection,std::string> seeds_;
 
@@ -319,6 +321,7 @@ private:
 	time_t lan_server_;
 	time_t last_user_seen_time_;
 	std::string restart_command;
+	size_t max_ip_log_size_;
 
 	/** Parse the server config into local variables. */
 	void load_config();
@@ -398,6 +401,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	lan_server_(time(NULL)),
 	last_user_seen_time_(time(NULL)),
 	restart_command(),
+	max_ip_log_size_(0),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED), 
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
@@ -506,6 +510,8 @@ void server::load_config() {
 			lexical_cast_default<size_t>(cfg_["messages_time_period"],10);
 	concurrent_connections_ =
 			lexical_cast_default<size_t>(cfg_["connections_allowed"],5);
+	max_ip_log_size_ =
+			lexical_cast_default<size_t>(cfg_["max_ip_log_size"],500);
 	// Example config line: 
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
@@ -1101,6 +1107,11 @@ void server::process_login(const network::connection sock,
 		// Note: This string is parsed by the client to identify lobby join messages!
 		(*g)->send_server_message_to_all((username + " has logged into the lobby").c_str());
 	}
+
+	// Log the IP
+	ip_log_[username] = network::ip_address(sock);
+	// Remove the oldes entry in the size of the IP log exceeds the maximum size 
+	if(ip_log_.size() > max_ip_log_size_) ip_log_.erase(ip_log_.begin());
 }
 
 void server::process_query(const network::connection sock,
@@ -1320,7 +1331,20 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 			if (!banned_) {
-				out << "Nickmask '" << target << "' did not match, no bans set.";
+				// If nobody was banned yet look in the logs
+				for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+						i != ip_log_.end(); i++) {
+					if (utils::wildcard_string_match(i->first, target)) {
+						banned_ = true;
+						if (!is_ip_banned(i->second)) {
+							std::string err = ban_manager_.ban(i->second,parsed_time, reason, issuer_name, group);
+							out << err;
+						}
+					}
+				}
+				if(!banned_) {
+					out << "Nickmask '" << target << "' did not match, no bans set.";
+				}
 			}
 		}
 	} else if (command == "unban") {
@@ -1380,6 +1404,35 @@ std::string server::process_command(const std::string& query, const std::string&
 		}
 		motd_ = parameters;
 		out << "Message of the day set to: " << motd_;
+	} else if (command == "lookup") {
+		if (parameters == "") {
+			return "You must enter an ip or nick mask to look up.";
+		}
+
+		bool found_something = false;
+
+		// If this looks like an IP look up which nicks have been connected from it
+		// Otherwise look for the last IP the nick used to connect
+		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
+			for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+					i != ip_log_.end(); i++) {
+				if (utils::wildcard_string_match(i->second, parameters)) {
+					found_something = true;
+					out << "Found nick '" << i->first << "' used '" << i->second
+							<< "' which matched '" << parameters << "'\n";
+				}
+			}
+		} else {
+			for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+					i != ip_log_.end(); i++) {
+				if (utils::wildcard_string_match(i->first, parameters)) {
+					found_something = true;
+					out << "Found nick '" << i->first << "' which matched '"
+							<< parameters << "' used '" << i->second << "'\n";
+				}
+			}
+		}
+		if(!found_something) out << "No results found for '" << parameters << "'.\n";
 	} else {
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
