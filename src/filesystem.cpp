@@ -757,9 +757,11 @@ std::string next_filename(const std::string &dirname, unsigned int max)
 	return dirname + "/" + fname.str();
 }
 
-//! Returns true if the file ends with '.gz'.
-//! 
-//! @param filename     The name to test.
+/**
+ * Returns true if the file ends with '.gz'.
+ * 
+ * @param filename                The name to test.
+ */
 bool is_gzip_file(const std::string& filename)
 { 
 	return (filename.length() > 3 
