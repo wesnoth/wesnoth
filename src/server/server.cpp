@@ -1309,6 +1309,7 @@ std::string server::process_command(const std::string& query, const std::string&
 				{
 					if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
 						out << "\nKicked " << pl->second.name() << ".";
+						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
 					}
 				}
@@ -1326,6 +1327,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					}
 					if (kick) {
 						out << "\nKicked " << pl->second.name() << ".";
+						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
 					}
 				}
@@ -1370,6 +1372,7 @@ std::string server::process_command(const std::string& query, const std::string&
 				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
 					kicked = true;
 					out << "Kicked " << pl->second.name() << ".\n";
+					send_error(pl->first, "You have been kicked.");
 					network::queue_disconnect(pl->first);
 				}
 			}
@@ -1381,6 +1384,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					kicked = true;
 					out << "Kicked " << pl->second.name() << " ("
 						<< network::ip_address(pl->first) << ").\n";
+					send_error(pl->first, "You have been kicked.");
 					network::queue_disconnect(pl->first);
 				}
 			}
