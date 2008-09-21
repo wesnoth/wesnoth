@@ -39,6 +39,7 @@ enum twindow_type {
 	TITLE_SCREEN,            /**< The main title screen of the game. */
 	ADDON_CONNECT,           /**< The addon server connection dialog. */
 	LANGUAGE_SELECTION,      /**< The language selection dialog. */
+	MESSAGE,                 /**< A generic message dialog. */
 	MP_CONNECT,              /**< The mp server connection dialog. */
 	MP_METHOD_SELECTION,     /**< 
 	                          * The dialog which allows you to choose the kind

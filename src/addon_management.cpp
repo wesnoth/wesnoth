@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -1092,7 +1093,9 @@ namespace {
 		prepare_addons_list_for_display(addons, addon_dirs, parentdir);
 
 		if (addons.empty()) {
-			gui::show_error_message(disp, _("You have no add-ons installed."));
+			/** @todo should use a dialog which always shows the close button. */
+			gui2::show_message(disp.video(), _("Error"), 
+				_("You have no add-ons installed."));
 			return;
 		}
 

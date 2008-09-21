@@ -89,6 +89,7 @@ static void fill_window_types()
 {
 	window_type_list[ADDON_CONNECT] = "addon_connect";
 	window_type_list[LANGUAGE_SELECTION] = "language_selection";
+	window_type_list[MESSAGE] = "message";
 	window_type_list[MP_CONNECT] = "mp_connect";
 	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
 	window_type_list[MP_SERVER_LIST] = "mp_server_list";
