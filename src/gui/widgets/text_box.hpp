@@ -228,11 +228,11 @@ private:
 	/** Inherited from ttext_. */
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "text_box"; return type; }
 
-	//! Inherited from tcontrol.
+	/** Inherited from tcontrol. */
 	void load_config_extra();
 	
 };
