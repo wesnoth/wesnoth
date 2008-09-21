@@ -34,7 +34,7 @@ namespace wesnothd {
 
 	typedef boost::shared_ptr<banned> banned_ptr;
 
-	//! We want to move the lowest value to the top
+	/** We want to move the lowest value to the top. */
 	struct banned_compare {
 		bool operator()(const banned_ptr& a, const banned_ptr& b) const;
 	};

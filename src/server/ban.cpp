@@ -44,7 +44,6 @@ namespace wesnothd {
 
 	bool banned_compare::operator()(const banned_ptr& a, const banned_ptr& b) const
 	{
-		//! We want to move the lowest value to the top
 		return (*a) > (*b);
 	}
 
