@@ -41,11 +41,13 @@ public:
 	static const unsigned VERTICAL_ALIGN_TOP             = 2 << 0;   
 	static const unsigned VERTICAL_ALIGN_CENTER          = 3 << 0;   
 	static const unsigned VERTICAL_ALIGN_BOTTOM          = 4 << 0;   
+	static const unsigned VERTICAL_MASK                  = 7 << 0;   
 
 	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1 << 3;
 	static const unsigned HORIZONTAL_ALIGN_LEFT          = 2 << 3;   
 	static const unsigned HORIZONTAL_ALIGN_CENTER        = 3 << 3;   
 	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 4 << 3;   
+	static const unsigned HORIZONTAL_MASK                = 7 << 3;   
 
 	static const unsigned BORDER_TOP                     = 1 << 6;
 	static const unsigned BORDER_BOTTOM                  = 1 << 7;

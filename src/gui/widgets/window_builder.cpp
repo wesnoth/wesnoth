@@ -116,17 +116,30 @@ unsigned read_flags(const config& cfg)
 {
 	unsigned flags = 0;
 
-	// Read the flags. FIXME document.
-	flags |= get_v_align(cfg["vertical_alignment"]);
-	flags |= get_h_align(cfg["horizontal_alignment"]);
+	const unsigned v_flags = get_v_align(cfg["vertical_alignment"]);
+	const unsigned h_flags = get_h_align(cfg["horizontal_alignment"]);
 	flags |= get_border( utils::split(cfg["border"]));
 
 	if(utils::string_bool(cfg["vertical_grow"])) {
 		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
+
+		if(! (cfg["vertical_alignment"]).empty()) {
+			ERR_G_P << "vertical_grow and vertical_alignment "
+				"can't be combined, alignment is ignored.\n";
+		}
+	} else {
+		flags |= v_flags;
 	}
 
 	if(utils::string_bool(cfg["horizontal_grow"])) {
 		flags |= tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT;
+
+		if(! (cfg["horizontal_alignment"]).empty()) {
+			ERR_G_P << "horizontal_grow and horizontal_alignment "
+				"can't be combined, alignment is ignored.\n";
+		}
+	} else {
+		flags |= h_flags;
 	}
 
 	return flags;
@@ -407,10 +420,12 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  *
  *     vertical_alignment (v_align = "")
  *                                     The vertical alignment of the widget in
- *                                     the grid cell.
+ *                                     the grid cell. (This value is ignored if
+ *                                     vertical_grow is true.)
  *     horizontal_alignment (h_align = "")
  *                                     The horizontal alignment of the widget in
- *                                     the grid cell.
+ *                                     the grid cell.(This value is ignored if
+ *                                     horizontal_grow is true.)
  *    
  *     vertical_grow (bool = false)    Does the widget grow in vertical
  *                                     direction when the grid cell grows in the
