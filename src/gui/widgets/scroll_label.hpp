@@ -41,7 +41,7 @@ public:
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const { return true; }
 
-	/** *OVERRIDDEN* from tcontrol */
+	/** Inherited from tcontrol. */
 	void set_label(const t_string& label);
 
 	/** Inherited from tcontainer_. */

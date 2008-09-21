@@ -170,7 +170,7 @@ public:
 		{ use_tooltip_on_label_overflow_ = use_tooltip; }
 
 	const t_string& label() const { return label_; }
-	void set_label(const t_string& label);
+	virtual void set_label(const t_string& label);
 
 	const t_string& tooltip() const { return tooltip_; }
 	// Note setting the tooltip_ doesn't dirty an object.
