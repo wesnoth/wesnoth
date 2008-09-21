@@ -17,8 +17,10 @@
 
 #include "user_handler.hpp"
 
-//! @class An exmple how to implement user_handler to demonstrate the interface
-//! If you use this on anything real you are insane
+/**
+ * @class An exmple how to implement user_handler to demonstrate the interface
+ * If you use this on anything real you are insane
+ */
 
 // Class is currently broken due to the hardcoding of the phpbb hashing algorithms
 // @todo fix it
