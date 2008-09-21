@@ -8,7 +8,7 @@
 
 #include <string>
 
-//! @class A helper classe for sending email using the jwsmtp library
+/** @class A helper classe for sending email using the jwsmtp library. */
 
 // The [mail] section in the server configuration
 // file could look like this:
