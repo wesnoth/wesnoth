@@ -1176,7 +1176,7 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
 			" bans [deleted], kick <mask>, k(ick)ban <mask> [<time>] <reason>,"
 			" help, games, metrics, netstats, (lobby)msg <message>, motd [<message>],"
-			" samples, stats, status [<mask>], unban <ipmask>";
+			" samples, stats, status [<mask>], searchlog [<mask>], unban <ipmask>";
 	// Shutdown and restart commands can only be issued via the socket.
 	if (command == "shut_down" && issuer_name == "*socket*") {
 		if (parameters == "now") {
