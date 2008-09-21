@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file server/metrics.cpp
-//! Various server-statistics.
+/**
+ * @file server/metrics.cpp
+ * Various server-statistics.
+ */
 
 #include "../global.hpp"
 
