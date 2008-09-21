@@ -194,12 +194,6 @@ void game::start_game(const player_map::const_iterator starter) {
 	send_observerjoins();
 }
 
-//! Figures out which side to take and tells that side to the game owner.
-//! The owner then should send a [scenario_diff] that implements the side
-//! change and a subsequent update_side_data() call makes it actually
-//! happen.
-//! First we look for a side where save_id= or current_player= matches the
-//! new user's name then we search for the first controller="network" side.
 bool game::take_side(const player_map::const_iterator user)
 {
 	DBG_GAME << "take_side...\n";
@@ -264,7 +258,6 @@ bool game::take_side(const player_map::const_iterator user)
 	return false;
 }
 
-//! Resets the side configuration according to the scenario data.
 void game::update_side_data() {
 	DBG_GAME << "update_side_data...\n";
 	DBG_GAME << debug_player_info();
@@ -458,7 +451,6 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	}
 }
 
-//! Send [change_controller] message to tell all clients the new controller's name.
 void game::send_change_controller(const size_t side_num,
 		const player_map::const_iterator newplayer, const bool player_left)
 {
@@ -584,7 +576,6 @@ bool game::describe_slots() {
 	}
 }
 
-//! Checks whether the connection's ip address is banned.
 bool game::player_is_banned(const network::connection sock) const {
 	std::vector<std::string>::const_iterator ban =
 		std::find(bans_.begin(), bans_.end(), network::ip_address(sock));
@@ -600,8 +591,6 @@ void game::mute_all_observers() {
 	}
 }
 
-//! Mute an observer or give a message of all currently muted observers if no
-//! name is given.
 void game::mute_observer(const simple_wml::node& mute, const player_map::const_iterator muter) {
 	if (muter->first != owner_) {
 		send_server_message("You cannot mute: not the game host.", muter->first);
@@ -627,13 +616,16 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 		return;
 	}
 	const player_map::const_iterator user = find_user(name);
-	//! @todo FIXME: Maybe rather save muted nicks as a vector of strings
-	//! and also allow muting of usernames not in the game.
+	/**
+	 * @todo FIXME: Maybe rather save muted nicks as a vector of strings and
+	 * also allow muting of usernames not in the game.
+	 */
 	if (user == player_info_->end() || !is_observer(user->first)) {
 		send_server_message("Observer not found.", muter->first);
 		return;
 	}
-	//! Prevent muting ourselves.
+
+	// Prevent muting ourselves.
 	if (user->first == muter->first) {
 		send_server_message("Don't mute yourself, silly.", muter->first);
 		return;
@@ -649,8 +641,6 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 	send_and_record_server_message((user->second.name() + " has been muted.").c_str());
 }
 
-//! Kick a member by name.
-//! @return the network handle of the removed member if successful, '0' otherwise.
 network::connection game::kick_member(const simple_wml::node& kick, 
 		const player_map::const_iterator kicker)
 {
@@ -681,10 +671,6 @@ network::connection game::kick_member(const simple_wml::node& kick,
 	return user->first;
 }
 
-//! Ban a user by name.
-//! The user does not need to be in this game but logged in.
-//! @return the network handle of the banned player if he was in this game, '0'
-//! otherwise.
 network::connection game::ban_user(const simple_wml::node& ban,
 		const player_map::const_iterator banner)
 {
@@ -777,12 +763,6 @@ bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
 	return false;
 }
 
-//! Handles [end_turn], repackages [commands] with private [speak]s in them
-//! and sends the data.
-//! Also filters commands from all but the current player.
-//! Currently removes all commands but [speak] for observers and all but
-//! [speak], [label] and [rename] for players.
-//! Returns true if the turn ended.
 bool game::process_turn(simple_wml::document& data, const player_map::const_iterator user) {
 	//DBG_GAME << "processing commands: '" << cfg << "'\n";
 	if (!started_) return false;
@@ -988,9 +968,6 @@ void game::add_player(const network::connection player, bool observer) {
 	}
 }
 
-//! Removes a user from the game.
-//! @return true iff the game ends that is if there are no more players
-//! or the host left on a not yet started game.
 bool game::remove_player(const network::connection player, const bool disconnect) {
 	if (!is_member(player)) {
 		ERR_GAME << "ERROR: User is not in this game. (socket: "
@@ -1088,7 +1065,7 @@ void game::send_user_list(const network::connection exclude) const {
 	//if the game hasn't started yet, then send all players a list
 	//of the users in the game
 	if (started_ || description_ == NULL) return;
-	//! @todo Should be renamed to userlist.
+	/** @todo Should be renamed to userlist. */
 	simple_wml::document cfg;
 	cfg.root().add_child("gamelist");
 	user_vector users = all_game_users();
@@ -1103,7 +1080,6 @@ void game::send_user_list(const network::connection exclude) const {
 	send_data(cfg, exclude);
 }
 
-//! A member asks for the next scenario to advance to.
 void game::load_next_scenario(const player_map::const_iterator user) const {
 	send_server_message_to_all((user->second.name() + " advances to the next scenario").c_str(), user->first);
 	simple_wml::document cfg_scenario;
@@ -1181,8 +1157,6 @@ bool game::is_on_team(const simple_wml::string_span& team, const network::connec
 	return false;
 }
 
-//! Send [observer] tags of all the observers in the game to the user or
-//! everyone if none given.
 void game::send_observerjoins(const network::connection sock) const {
 	for (user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
 		if (*ob == sock) continue;
@@ -1316,7 +1290,6 @@ std::string game::debug_player_info() const {
 	return result.str();
 }
 
-//! Find a user by name.
 player_map::const_iterator game::find_user(const simple_wml::string_span& name) const {
 	player_map::const_iterator pl;
 	for (pl = player_info_->begin(); pl != player_info_->end(); pl++) {

@@ -46,6 +46,8 @@ public:
 	bool allow_observers() const;
 	bool is_observer(const network::connection player) const;
 	bool is_player(const network::connection player) const;
+
+	/** Checks whether the connection's ip address is banned. */
 	bool player_is_banned(const network::connection player) const;
 	bool level_init() const { return level_.child("side") != NULL; }
 	bool started() const { return started_; }
@@ -55,44 +57,88 @@ public:
 	size_t current_turn() const { return (nsides_ ? end_turn_ / nsides_ + 1 : 0); }
 
 	void mute_all_observers();
-	//! Mute an observer by name.
+
+	/**
+	 * Mute an observer or give a message of all currently muted observers if no
+	 * name is given.
+	 */
 	void mute_observer(const simple_wml::node& mute, const player_map::const_iterator muter);
-	//! Kick a member by name.
+
+	/**
+	 * Kick a member by name.
+	 *
+	 * @return                    The network handle of the removed member if
+	 *                            successful, '0' otherwise.
+	 */
 	network::connection kick_member(const simple_wml::node& kick, const player_map::const_iterator kicker);
-	//! Ban and kick a user by name. He doesn't need to be in this game.
+
+	/**
+	 * Ban and kick a user by name.
+	 *
+	 * The user does not need to be in this game but logged in.
+	 *
+	 * @return                    The network handle of the banned player if he
+	 *                            was in this game, '0' otherwise.
+	 */
 	network::connection ban_user(const simple_wml::node& ban, const player_map::const_iterator banner);
 
 	void add_player(const network::connection player, bool observer = false);
+
+	/**
+	 * Removes a user from the game.
+	 *
+	 * @return                    True iff the game ends that is if there are
+	 *                            no more players or the host left on a not yet
+	 *                            started game.
+	 */
 	bool remove_player(const network::connection player, const bool disconnect=false);
 
-	//! Adds players and observers into one vector and returns that.
+	/** Adds players and observers into one vector and returns that. */
 	const user_vector all_game_users() const;
-	//! Adds players from one game to another. This is used to add players and
-	//! observers from a game to the lobby (which is also implemented as a game),
-	//! if that game ends. The second parameter controls, wether the players are
-	//! added to the players_ or observers_ vector (default observers_).
+
+	/**
+	 * Adds players from one game to another. This is used to add players and
+	 * observers from a game to the lobby (which is also implemented as a game),
+	 * if that game ends. The second parameter controls, wether the players are
+	 * added to the players_ or observers_ vector (default observers_).
+	 */
 	void add_players(const game& other_game, const bool observer = true);
 
 	void start_game(const player_map::const_iterator starter);
-	//! A user (player only?) asks for the next scenario to advance to.
+
+	/** A user (player only?) asks for the next scenario to advance to. */
 	void load_next_scenario(const player_map::const_iterator user) const;
 
-	//! Resets the side configuration according to the scenario data.
+	/** Resets the side configuration according to the scenario data. */
 	void update_side_data();
-	//! Let's a player owning a side give it to another player or observer.
+
+	/** Let's a player owning a side give it to another player or observer. */
 	void transfer_side_control(const network::connection sock, const simple_wml::node& cfg);
 
 	void process_message(simple_wml::document& data, const player_map::iterator user);
-	//! Filters and processes (some) commands.
-	//! Returns true iff the turn ended.
+
+	/**
+	 * Handles [end_turn], repackages [commands] with private [speak]s in them
+	 * and sends the data.
+	 * Also filters commands from all but the current player.
+	 * Currently removes all commands but [speak] for observers and all but
+	 * [speak], [label] and [rename] for players.
+	 *
+	 * @returns                   True if the turn ended.
+	 */
 	bool process_turn(simple_wml::document& data, const player_map::const_iterator user);
-	//! Set the description to the number of available slots.
-	//! Returns true iff the number of slots has changed.
+
+	/**
+	 * Set the description to the number of available slots.
+	 *
+	 * @Returns                   True iff the number of slots has changed.
+	 */
 	bool describe_slots();
 
 	void send_server_message_to_all(const char* message, network::connection exclude=0) const;
 	void send_server_message(const char* message, network::connection sock=0, simple_wml::document* doc=NULL) const;
-	//! Send data to all players in this game except 'exclude'.
+
+	/** Send data to all players in this game except 'exclude'. */
 	void send_and_record_server_message(const char* message,
 			const network::connection exclude=0);
 	void send_data(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
@@ -100,11 +146,13 @@ public:
 
 	void record_data(simple_wml::document* data);
 
-	//! The full scenario data.
+	/** The full scenario data. */
 	simple_wml::document& level() { return level_; }
 
-	//! Functions to set/get the address of the game's summary description as
-	//! sent to players in the lobby.
+	/**
+	 * Functions to set/get the address of the game's summary description as
+	 * sent to players in the lobby.
+	 */
 	void set_description(simple_wml::node* desc);
 	simple_wml::node* description() const { return description_; }
 
@@ -134,9 +182,18 @@ private:
 	bool is_muted_observer(const network::connection player) const;
 	bool all_observers_muted() const { return all_observers_muted_; }
 
-	//! Figures out which side to take and tells that side to the game owner.
+	/**
+	 * Figures out which side to take and tells that side to the game owner.
+	 *
+	 * The owner then should send a [scenario_diff] that implements the side
+	 * change and a subsequent update_side_data() call makes it actually
+	 * happen.
+	 * First we look for a side where save_id= or current_player= matches the
+	 * new user's name then we search for the first controller="network" side.
+	 */
 	bool take_side(const player_map::const_iterator user);
-	//! Send [change_controller] message to tell all clients the new controller's name.
+
+	/** Send [change_controller] message to tell all clients the new controller's name. */
 	void send_change_controller(const size_t side_num,
 			const player_map::const_iterator newplayer,
 			const bool player_left=true);
@@ -144,69 +201,91 @@ private:
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0, std::string packet_type = "") const;
 	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
-	//! Send [observer] tags of all the observers in the game to the user or
-	//! everyone if none given.
+
+	/**
+	 * Send [observer] tags of all the observers in the game to the user or
+	 * everyone if none given.
+	 */
 	void send_observerjoins(const network::connection sock=0) const;
 	void send_observerquit(const player_map::const_iterator observer) const;
 	void send_history(const network::connection sock) const;
-	//! In case of a host transfer, notify the new host about its status.
+
+	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
-	//! Convenience function for finding a user by name.
+
+	/** Convenience function for finding a user by name. */
 	player_map::const_iterator find_user(const simple_wml::string_span& name) const;
 
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
 	bool is_legal_command(const simple_wml::node& command, bool is_player);
-	//! Function which returns true iff 'player' is on 'team'.
+
+	/** Function which returns true iff 'player' is on 'team'. */
 	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
 
-	//! Function which should be called every time a player ends their turn
-	//! (i.e. [end_turn] received). This will update the 'turn' attribute for
-	//! the game's description when appropriate. Will return true iff there has
-	//! been a change.
+	/**
+	 * Function which should be called every time a player ends their turn
+	 * (i.e. [end_turn] received). This will update the 'turn' attribute for
+	 * the game's description when appropriate. Will return true iff there has
+	 * been a change.
+	 */
 	bool end_turn();
 
-	//! Function to send a list of users to all clients.
-	//! Only sends data if the game is initialized but not yet started.
+	/**
+	 * Function to send a list of users to all clients.
+	 *
+	 * Only sends data if the game is initialized but not yet started.
+	 */
 	void send_user_list(const network::connection exclude=0) const;
 
-	//! Helps debugging player and observer lists.
+	/** Helps debugging player and observer lists. */
 	std::string debug_player_info() const;
 
 	player_map* player_info_;
 
 	static int id_num;
 	int id_;
-	//! The name of the game.
+
+	/** The name of the game. */
 	std::string name_;
 	std::string password_;
-	//! The game host or later owner (if the host left).
+
+	/** The game host or later owner (if the host left). */
 	network::connection owner_;
-	//! A vector of players (members owning a side).
+
+	/** A vector of players (members owning a side). */
 	user_vector players_;
-	//! A vector of observers (members not owning a side).
+
+	/** A vector of observers (members not owning a side). */
 	user_vector observers_;
 	user_vector muted_observers_;
-	//! A vector of side owners.
+
+	/** A vector of side owners. */
 	side_vector sides_;
-	//! A vector indicating what sides are actually taken. (Really needed?)
+
+	/** A vector indicating what sides are actually taken. (Really needed?) */
 	std::vector<bool> sides_taken_;
-	//! A vector of controller strings indicating the type.
-	//! "network" - a side controlled by some member of the game (not the owner)
-	//! "human"   - a side controlled by the owner
-	//! "ai"      - a side of the owner controlled by an AI
-	//! "null"    - an empty side
+
+	/**
+	 * A vector of controller strings indicating the type.
+	 * "network" - a side controlled by some member of the game (not the owner)
+	 * "human"   - a side controlled by the owner
+	 * "ai"      - a side of the owner controlled by an AI
+	 * "null"    - an empty side
+	 */
 	std::vector<std::string> side_controllers_;
 	
-	//! Number of sides in the current scenario.
+	/** Number of sides in the current scenario. */
 	int nsides_;
 	bool started_;
 
-	//! The current scenario data.
+	/** The current scenario data. */
 	simple_wml::document level_;
-	//! Replay data.
+
+	/** Replay data. */
 	mutable std::vector<simple_wml::document*> history_;
-	//! Pointer to the game's description in the games_and_users_list_.
+
+	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
 
 	int end_turn_;
