@@ -22,8 +22,10 @@
 #include <mysql++/mysql++.h>
 #include "../md5.hpp"
 
-//! @class A user_handler implementation to link the server
-//! with a phpbb3 forum.
+/**
+ * @class A user_handler implementation to link the server
+ * with a phpbb3 forum.
+ */
 
 // The [user_handler] section in the server configuration
 // file could look like this:
@@ -60,10 +62,12 @@ class fuh : public user_handler {
 		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
 		std::string get_valid_details();
 
-		// Needed because the hashing algorithm used by phpbb requires some info
-		// from the original hash to recreate the same hash
-		//! index = 0 returns the hash seed
-		//! index = 1 return the salt
+		/**
+		 * Needed because the hashing algorithm used by phpbb requires some info
+		 * from the original hash to recreate the same hash
+		 * index = 0 returns the hash seed
+		 * index = 1 return the salt
+		 */
 		std::string create_pepper(const std::string& name, int index);
 
 	private:
