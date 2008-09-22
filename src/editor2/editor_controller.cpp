@@ -40,6 +40,7 @@
 #include "../preferences.hpp"
 #include "../random.hpp"
 #include "../wml_exception.hpp"
+#include "../serialization/string_utils.hpp"
 
 #include "SDL.h"
 
@@ -48,7 +49,8 @@
 #include <boost/bind.hpp>
 
 namespace {
-	std::string default_dir = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+	const char* prefkey_default_dir = "editor2_default_dir";
+	const char* prefkey_auto_update_transitions = "editor2_auto_update_transitions";
 }
 
 namespace editor2 {
@@ -78,8 +80,12 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, foreground_terrain_()
 	, background_terrain_()
 	, clipboard_()
-	, auto_update_transitions_(true)
+	, auto_update_transitions_(utils::string_bool(preferences::get(prefkey_auto_update_transitions), true))
+	, default_dir_(preferences::get(prefkey_default_dir))
 {
+	if (default_dir_.empty()) {
+		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+	}
 	init(video);
 	rng_ = new rand_rng::rng();
 	rng_setter_ = new rand_rng::set_random_generator(rng_);
@@ -284,7 +290,7 @@ void editor_controller::load_map_dialog()
 	if (!confirm_discard()) return;
 	std::string fn = get_map_context().get_filename();
 	if (fn.empty()) {
-		fn = default_dir;
+		fn = default_dir_;
 	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
 	if (res == 0) {
@@ -313,7 +319,7 @@ void editor_controller::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
-		input_name = default_dir;
+		input_name = default_dir_;
 	}
 	const std::string old_input_name = input_name;
 
@@ -623,7 +629,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			palette_->swap();
-			if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
+			set_mouseover_overlay();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			if (dynamic_cast<const editor_action_chain*>(get_map_context().last_undo_action()) != NULL) {
@@ -708,6 +714,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 			auto_update_transitions_ = !auto_update_transitions_;
+			preferences::set(prefkey_auto_update_transitions, lexical_cast<std::string>(auto_update_transitions_));
 			if (!auto_update_transitions_) {
 				return true;
 			} // else intentionally fall through
@@ -829,11 +836,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		mouse_action_ = i->second;
-		if (mouse_action_->uses_terrains()) {
-			set_mouseover_overlay();
-		} else {
-			clear_mouseover_overlay();
-		}
+		set_mouseover_overlay();
 		redraw_toolbar();
 		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(command).get_description());
@@ -879,6 +882,15 @@ mouse_action* editor_controller::get_mouse_action()
 {
 	return mouse_action_;
 }
+
+void editor_controller::perform_delete(editor_action* action)
+{
+	if (action) {
+		std::auto_ptr<editor_action> action_auto(action);
+		get_map_context().perform_action(*action);
+	}
+}
+
 
 void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
@@ -1021,6 +1033,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 			refresh_after_action(true);
 		}
 	} else {
+		DBG_ED << "move " << hex_clicked << "\n";
 		get_mouse_action()->move(*gui_, hex_clicked);
 	}
 	gui().highlight_hex(hex_clicked);
@@ -1053,13 +1066,15 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 void editor_controller::left_drag_end(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
-	perform_refresh_delete(a);
+	perform_delete(a);
 }
 
-void editor_controller::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
+void editor_controller::left_mouse_up(int x, int y, const bool /*browse*/)
 {
+	editor_action* a = get_mouse_action()->up_left(*gui_, x, y);
+	perform_delete(a);
 	refresh_after_action();
-	if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
+	set_mouseover_overlay();
 }
 
 bool editor_controller::right_click(int x, int y, const bool browse)
@@ -1079,13 +1094,15 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 {
 	editor_action* a = get_mouse_action()->drag_end(*gui_, x, y);
-	perform_refresh_delete(a);
+	perform_delete(a);
 }
 
-void editor_controller::right_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
+void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 {
+	editor_action* a = get_mouse_action()->up_right(*gui_, x, y);
+	perform_delete(a);
 	refresh_after_action();
-	if (get_mouse_action()->uses_terrains()) set_mouseover_overlay();
+	set_mouseover_overlay();
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)
@@ -1094,55 +1111,9 @@ void editor_controller::process_keyup_event(const SDL_Event& event)
 	perform_refresh_delete(a);
 }
 
-//todo make this a virtual in mouse_action
 void editor_controller::set_mouseover_overlay()
 {
-	surface image_fg(image::get_image("terrain/" + get_map().get_terrain_info(
-				foreground_terrain_).editor_image() +
-				".png"));
-	surface image_bg(image::get_image("terrain/" + get_map().get_terrain_info(
-				background_terrain_).editor_image() +
-				".png"));
-
-	if (image_fg == NULL || image_bg == NULL) {
-		ERR_ED << "Missing terrain icon\n";
-		gui().set_mouseover_hex_overlay(NULL);
-		return; 
-	}
-
-	// Create a transparent surface of the right size.
-	surface image = create_compatible_surface(image_fg, image_fg->w, image_fg->h);
-	SDL_FillRect(image,NULL,SDL_MapRGBA(image->format,0,0,0, 0));
-
-	// For efficiency the size of the tile is cached.
-	// We assume all tiles are of the same size.
-	// The zoom factor can change, so it's not cached.
-	// NOTE: when zooming and not moving the mouse, there are glitches.
-	// Since the optimal alpha factor is unknown, it has to be calculated
-	// on the fly, and caching the surfaces makes no sense yet.
-	static const Uint8 alpha = 196;
-	static const int size = image_fg->w;
-	static const int half_size = size / 2;
-	static const int quarter_size = size / 4;
-	static const int offset = 2;
-	static const int new_size = half_size - 2;
-	const int zoom = static_cast<int>(size * gui().get_zoom_factor());
-
-	// Blit left side
-	image_fg = scale_surface(image_fg, new_size, new_size);
-	SDL_Rect rcDestLeft = { offset, quarter_size, 0, 0 };
-	SDL_BlitSurface ( image_fg, NULL, image, &rcDestLeft );
-
-	// Blit left side
-	image_bg = scale_surface(image_bg, new_size, new_size);
-	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
-	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
-
-	// Add the alpha factor and scale the image
-	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
-
-	// Set as mouseover
-	gui().set_mouseover_hex_overlay(image);
+	get_mouse_action()->set_mouse_overlay(gui());
 }
 
 void editor_controller::clear_mouseover_overlay()

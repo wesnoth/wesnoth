@@ -50,6 +50,8 @@ public:
 	
 	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
+	editor_map(const config& terrain_cfg, const gamemap& map);
+	
 	~editor_map();
 	
 	/** 

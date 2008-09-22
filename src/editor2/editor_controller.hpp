@@ -225,6 +225,12 @@ class editor_controller : public controller_base,
 		mouse_action* get_mouse_action();
 		
 		/**
+		 * Perform an action, then delete the action object.
+		 * The pointer can be NULL, in which case nothing will happen.
+		 */
+		void perform_delete(editor_action* action);
+		
+		/**
 		 * Peform an action on the current map_context, then refresh the display 
 		 * and delete the pointer. The pointer can be NULL, in which case nothing will happen.
 		 */
@@ -343,11 +349,20 @@ class editor_controller : public controller_base,
 		/** Toolbar-requires-redraw flag */
 		bool toolbar_dirty_;
 		
+		/** Palette's active fg tereain */
 		t_translation::t_terrain foreground_terrain_;
+
+		/** Palette's active fg tereain */
 		t_translation::t_terrain background_terrain_;		
+
+		/** Clipboard map_fragment -- used for copy-paste. */
 		map_fragment clipboard_;
 		
+		/** Flag to rebuild terrain on every terrain change */
 		bool auto_update_transitions_;
+		
+		/** Default directory for map load/save as dialogs */
+		std::string default_dir_;
 };
 
 } //end namespace editor2

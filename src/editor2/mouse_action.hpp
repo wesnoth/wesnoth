@@ -84,6 +84,11 @@ public:
 	 */
 	virtual editor_action* drag_end(editor_display& disp, int x, int y);
 	
+
+	virtual editor_action* up_left(editor_display& disp, int x, int y);
+	
+	virtual editor_action* up_right(editor_display& disp, int x, int y);
+	
 	/**
 	 * Function called by the controller on a key event for the current mouse action.
 	 * Defaults to starting position processing.
@@ -101,11 +106,20 @@ public:
 	 */
 	const theme::menu* toolbar_button() const { return toolbar_button_; }
 	
-	virtual bool uses_terrains() const { return false; }
-
+	/**
+	 * Set the mouse overlay for this action. Defaults to an empty overlay.
+	 */
+	virtual void set_mouse_overlay(editor_display& disp);
+	
 protected:
 	bool has_alt_modifier() const;
 	bool has_shift_modifier() const;
+	
+	/** 
+	 * Helper function for derived classes that need a active-terrain mouse overlay
+	 */
+	void set_terrain_mouse_overlay(editor_display& disp, t_translation::t_terrain fg,
+		t_translation::t_terrain bg);
 	
 	/**
 	 * The hex previously used in move operations
@@ -201,6 +215,9 @@ private:
 
 	/**
 	 * Current brush handle. Currently a pointer-to-pointer with full constness.
+	 * The mouse action does not modify the brush, does not modify the pointer
+	 * to the current brush, and we allow setting this pointr only once, hence
+	 * the three "consts".
 	 */
 	const brush* const * const brush_;
 };
@@ -230,7 +247,8 @@ public:
 	 */
 	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
 
-	bool uses_terrains() const { return true; }
+	void set_mouse_overlay(editor_display& disp);
+	
 protected:
 	const t_translation::t_terrain& terrain_left_;
 	const t_translation::t_terrain& terrain_right_;
@@ -266,6 +284,8 @@ public:
 	 * Right click/drag deselects
 	 */
 	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	
+	virtual void set_mouse_overlay(editor_display& disp);
 };
 
 /**
@@ -293,6 +313,8 @@ public:
 	 * Right click does nothing for now
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
+	
+	virtual void set_mouse_overlay(editor_display& disp);
 	
 protected:
 	/**
@@ -330,8 +352,8 @@ public:
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
 	
-	bool uses_terrains() const { return true; }
-
+	virtual void set_mouse_overlay(editor_display& disp);
+	
 protected:
 	const t_translation::t_terrain& terrain_left_;
 	const t_translation::t_terrain& terrain_right_;
@@ -351,14 +373,20 @@ public:
 	/**
 	 * Left click displays a player-number-selector dialog and then creates an action
 	 * or returns NULL if cancel was pressed or there would be no change.
+	 * Do this on mouse up to avoid drag issue.
 	 */
-	editor_action* click_left(editor_display& disp, int x, int y);
+	editor_action* up_left(editor_display& disp, int x, int y);
 
+	editor_action* click_left(editor_display& disp, int x, int y);
 	/**
-	 * Right click only erases the starting position if there is one
+	 * Right click only erases the starting position if there is one.
+	 * Do this on mouse up to avoid drag issue,
 	 */
-	editor_action* click_right(editor_display& disp, int x, int y);
+	editor_action* up_right(editor_display& disp, int x, int y);
 	
+	editor_action* click_right(editor_display& disp, int x, int y);
+
+	virtual void set_mouse_overlay(editor_display& disp);
 };
 
 } //end namespace editor2
