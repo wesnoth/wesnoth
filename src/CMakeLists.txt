@@ -244,6 +244,7 @@ SET(wesnoth-main_SRC
     gui/widgets/event_handler.cpp
     gui/widgets/grid.cpp
     gui/widgets/helper.cpp
+    gui/widgets/image.cpp
     gui/widgets/label.cpp
     gui/widgets/listbox.cpp
     gui/widgets/menubar.cpp

@@ -62,6 +62,25 @@ private:
 	int retval_;
 };
 
+struct tbuilder_image : public tbuilder_control
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 3_widget_image
+ *
+ * == Image ==
+ *
+ * An image has no extra fields.
+ */
+
+	tbuilder_image(const config& cfg)
+		: tbuilder_control(cfg)
+	{
+	}
+
+	twidget* build () const;
+};
+
 /**
  * A temporary helper class.
  *

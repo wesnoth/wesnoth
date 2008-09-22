@@ -188,6 +188,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * <span id="widget_list"></span>List of available widgets:
  * @start_table = widget_definition
  *     button_definition             A push button.
+ *     image_definition              An image.
  *     menubar_definition            A menubar which is used in menus and the
  *                                   tabbar in a tabcontrol.
  *     minimap_definition            A minimap to show the gamemap, this only
@@ -231,6 +232,7 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	/***** Control definitions *****/
 	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
+	load_definitions<timage_definition>("image", cfg.get_children("image_definition"));
 	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
 	load_definitions<tlistbox_definition>("listbox", cfg.get_children("listbox_definition"));
 	load_definitions<tmenubar_definition>("menubar", cfg.get_children("menubar_definition"));
@@ -522,6 +524,35 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 	state.push_back(tstate_definition(cfg.child("state_pressed")));
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
+}
+
+timage_definition::timage_definition(const config& cfg) :
+	tcontrol_definition(cfg)
+{
+	DBG_G_P << "Parsing image " << id << '\n';
+
+	load_resolutions<tresolution>(cfg.get_children("resolution"));
+}
+
+timage_definition::tresolution::tresolution(const config& cfg) :
+	tresolution_definition_(cfg)
+{
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget_image
+ *
+ * == Image ==
+ *
+ * The definition of an image. The label field of the widget is used as the
+ * name of file to show.
+ *
+ * The following states exist:
+ * * state_enabled, the image is enabled.
+ *
+ */
+
+	// Note the order should be the same as the enum tstate is image.hpp.
+	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
 tlabel_definition::tlabel_definition(const config& cfg) :

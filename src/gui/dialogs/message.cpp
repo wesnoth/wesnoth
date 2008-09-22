@@ -14,6 +14,7 @@
 
 #include "gui/dialogs/message.hpp"
 
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -41,6 +42,12 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(title, missing_widget("title"));
 
 	title->set_label(title_);
+
+	timage* image = 
+		dynamic_cast<timage*>(window.find_widget("image", false));
+	VALIDATE(image, missing_widget("image"));
+
+	image->set_label(image_);
 
 	tcontrol* label = 
 		dynamic_cast<tcontrol*>(window.find_widget("label", false));

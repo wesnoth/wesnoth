@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
@@ -185,6 +186,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 
 	if(cfg.child("button")) {
 		return new tbuilder_button(*(cfg.child("button")));
+	} else if(cfg.child("image")) {
+		return new tbuilder_image(*(cfg.child("image")));
 	} else if(cfg.child("label")) {
 		return new tbuilder_label(*(cfg.child("label")));
 	} else if(cfg.child("listbox")) {
@@ -443,6 +446,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  *
  * The widget is one of the following items:
  * * button a button.
+ * * image an image.
  * * grid a grid, this is used to nest items.
  * * label a label.
  * * listbox a listbox.
@@ -619,6 +623,18 @@ twidget* tbuilder_button::build() const
 		<< definition << "'.\n";
 
 	return button;
+}
+
+twidget* tbuilder_image::build() const
+{
+	timage* widget = new timage();
+
+	init_control(widget);
+
+	DBG_G << "Window builder: placed image '" << id << "' with defintion '" 
+		<< definition << "'.\n";
+
+	return widget;
 }
 
 tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :

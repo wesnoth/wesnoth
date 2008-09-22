@@ -149,6 +149,17 @@ struct tbutton_definition : public tcontrol_definition
 
 };
 
+struct timage_definition : public tcontrol_definition
+{
+	timage_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+	};
+
+};
+
 struct tlabel_definition : public tcontrol_definition
 {
 

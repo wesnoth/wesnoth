@@ -37,11 +37,20 @@ public:
 
 	void set_title(const std::string& title) {  title_ = title; }
 
+	void set_image(const std::string& image) {  image_ = image; }
+
 	void set_message(const std::string& message) {  message_ = message; }
 
 private:
 	/** The title for the dialog. */
 	std::string title_;
+
+	/** 
+	 * The image which is shown in the dialog. 
+	 *
+	 * This image can be an icon or portrait or any other image.
+	 */
+	std::string image_;
 
 	/** The message to show to the user. */
 	std::string message_;

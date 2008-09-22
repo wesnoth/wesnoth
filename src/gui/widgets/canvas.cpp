@@ -20,7 +20,7 @@
 #include "gui/widgets/canvas.hpp"
 
 #include "config.hpp"
-#include "image.hpp"
+#include "../../image.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
