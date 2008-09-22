@@ -245,7 +245,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(village_val.empty()) {
-		village_value = 4.5;
+		village_value = 3.0;
 	} else {
 		village_value = atof(village_val.c_str());
 	}
@@ -258,7 +258,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(aggression_val.empty()) {
-		aggression_ = 0.4;
+		aggression_ = 0.3;
 	} else {
 		aggression_ = atof(aggression_val.c_str());
 	}
@@ -271,7 +271,7 @@ team::team_info::team_info(const config& cfg) :
 	}
 
 	if(caution_val.empty()) {
-		caution_ = 0.25;
+		caution_ = 0.4;
 	} else {
 		caution_ = atof(caution_val.c_str());
 	}
@@ -524,7 +524,11 @@ namespace {
 		count_average(size_t& a) : a_(a), sum_(0), count_(0)
 		{}
 		~count_average() {
-			a_ = sum_/count_;
+			// If no recruits disable leader from moving to keep
+			if (count_ == 0)
+				a_ = 424242;
+			else
+				a_ = sum_/count_;
 		}
 		void operator()(const std::string& recruit)
 		{
