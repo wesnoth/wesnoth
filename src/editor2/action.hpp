@@ -14,7 +14,13 @@
 
 /**
  * @file action.hpp
- * Editor action classes
+ * Editor action classes. Some important points:
+ * - This is a polymorphic hierarchy of classes, so actions are usually passed around
+ *   as editor_action pointers
+ * - The pointers can, in general, be null. Always check for null before doing anything.
+ *   The helper functions perform_ that take a pointer do that.
+ * - The perform() functions can throw when an error occurs. Use smart pointers if you
+ *   need to ensure the pointer is deleted.
  */
 
 #ifndef EDITOR2_ACTION_HPP
