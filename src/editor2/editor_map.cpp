@@ -42,7 +42,7 @@ editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t
 	sanity_check();
 }
 
-editor_map::editor_map(const config& terrain_cfg, const gamemap& map)
+editor_map::editor_map(const config& /*terrain_cfg*/, const gamemap& map)
 	: gamemap(map)
 	, selection_()
 {
