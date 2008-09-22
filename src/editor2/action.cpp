@@ -79,7 +79,9 @@ editor_action_chain::~editor_action_chain()
 int editor_action_chain::action_count() const {
 	int count = 0;
 	foreach (const editor_action* a, actions_) {
-		count += a->action_count();
+		if (a) {
+			count += a->action_count();
+		}
 	}
 	return count;
 }
@@ -107,7 +109,9 @@ editor_action* editor_action_chain::pop_first_action() {
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 	std::auto_ptr<editor_action_chain> undo(new editor_action_chain());
 	foreach (editor_action* a, actions_) {
-		undo->append_action(a->perform(mc));
+		if (a != NULL) {
+			undo->append_action(a->perform(mc));
+		}
 	}
 	std::reverse(undo->actions_.begin(), undo->actions_.end());
 	return undo.release();
@@ -115,7 +119,9 @@ editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
     foreach (editor_action* a, actions_) {
-		a->perform_without_undo(mc);
+		if (a != NULL) {
+			a->perform_without_undo(mc);
+		}
 	}
 }
 
