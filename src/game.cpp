@@ -1457,9 +1457,26 @@ void game_controller::load_game_cfg()
 		std::vector< std::string > error_addons;
 		// Scan addon directories
 		std::vector<std::string> user_addons;
+		// Scan for standalone files
+		std::vector<std::string> user_files;
 
-		get_files_in_dir(user_campaign_dir,NULL,&user_addons,ENTIRE_FILE_PATH);
+		get_files_in_dir(user_campaign_dir,&user_files,&user_addons,ENTIRE_FILE_PATH);
 		std::string user_error_log;
+
+		// Append the standalone files, with '.cfg' removed, to the directories.
+		// They will be caught by the oldstyle_cfg so we don't need to duplicate logic.
+		// FIXME: rewrite this code so it does the following:
+		// -Include $user_campaign_dir/*.cfg
+		// -Include $user_campaign_dir/*/_main.cfg
+		for(std::vector<std::string>::const_iterator uc = user_files.begin(); uc != user_files.end(); ++uc) {
+			std::string full_file = *uc;
+			if(full_file.substr(full_file.size() - 4, full_file.size()) != ".cfg")
+				continue;
+			std::string file = full_file.substr(0, full_file.size() - 4);
+			if(std::find(user_addons.begin(), user_addons.end(), file) == user_addons.end()) {
+				user_addons.push_back(file);
+			}
+		}
 
 		// Load the addons
 		for(std::vector<std::string>::const_iterator uc = user_addons.begin(); uc != user_addons.end(); ++uc) {
