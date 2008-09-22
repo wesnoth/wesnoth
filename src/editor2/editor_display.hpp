@@ -34,6 +34,10 @@ public:
 	const editor_map& map() const { return static_cast<const editor_map&>(map_); }
 	void rebuild_terrain(const gamemap::location &loc);
 	void set_toolbar_hint(const std::string value) { toolbar_hint_ = value; }
+	bool get_draw_coordinates() { return draw_coordinates_; }
+	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
+	bool get_draw_terrain_codes() { return draw_terrain_codes_; }
+	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
 protected:
 	void pre_draw();
 	/**
@@ -48,6 +52,9 @@ protected:
 	
 	std::set<gamemap::location> brush_locations_;
 	std::string toolbar_hint_;
+	
+	bool draw_coordinates_;
+	bool draw_terrain_codes_;
 };
 
 } //end namespace editor2

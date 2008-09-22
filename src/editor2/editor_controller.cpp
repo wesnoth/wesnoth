@@ -593,6 +593,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		case HOTKEY_EDITOR_MAP_ROTATE:
 			return false; //not implemented
+		case HOTKEY_EDITOR_DRAW_COORDINATES:
+		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+			return true;
 		default:
 			return false;
 	}
@@ -608,6 +611,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
 			return auto_update_transitions_ ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_DRAW_COORDINATES:
+			return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+			return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
 		default:
 			return command_executor::get_action_state(command);
 	}
@@ -726,6 +733,14 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
 			refresh_image_cache();
+			return true;
+		case HOTKEY_EDITOR_DRAW_COORDINATES:
+			gui().set_draw_coordinates(!gui().get_draw_coordinates());
+			gui().invalidate_all();
+			return true;
+		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
+			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
+			gui().invalidate_all();
 			return true;
 		default:
 			return controller_base::execute_command(command, index);

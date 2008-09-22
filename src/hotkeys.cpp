@@ -186,11 +186,16 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_REFRESH, "editor-refresh", 
 		N_("Refresh Display"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_UPDATE_TRANSITIONS, "editor-update-transitions", 
-		N_("Update Terrain Tranistions"), false, hotkey::SCOPE_EDITOR },
+		N_("Update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", 
-		N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },	
+		N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", 
-		N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR },	
+		N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", 
+		N_("Draw Hex Coordinates"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes", 
+		N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR },
+	
 	
 #endif
 
