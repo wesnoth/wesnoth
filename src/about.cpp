@@ -253,6 +253,7 @@ void show_about(display &disp, std::string campaign)
 	bool recalculate_textbox = true;
 
 	int image_count=0;
+	int scroll_speed = 4;		// scroll_speed*50 = speed of scroll in pixel per second
 	do {
 		last_escape = key[SDLK_ESCAPE] != 0;
 
@@ -298,10 +299,9 @@ void show_about(display &disp, std::string campaign)
 		} while(y<map_rect.y + map_rect.h - bottom_margin);
 
 		// performs the actual scrolling
-		const int scroll_speed = 4;		// scroll_speed*50 = speed of scroll in pixel per second
 
 		offset += scroll_speed;
-		if(offset>=first_line_height) {
+		if (offset>=first_line_height) {
 			offset -= first_line_height;
 			is_new_line = true;
 			startline++;
@@ -318,6 +318,13 @@ void show_about(display &disp, std::string campaign)
 		SDL_BlitSurface(map_image,&lower_src,video.getSurface(),&lower_dest);
 
 		// handle events
+		if (key[SDLK_UP] && scroll_speed < 20) {
+			++scroll_speed;
+		}
+		if (key[SDLK_DOWN] && scroll_speed > 0) {
+			--scroll_speed;
+		}
+		
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
