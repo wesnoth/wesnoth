@@ -5,7 +5,6 @@ Version 1.5.4+svn:
      (hardcoded) list of time_of_days. Can change the settings and see the
      effects without having to close the settings dialog. The preferences
      are shared with the old editor.
-   * Added a feature to draw hex coordinates and/or terrain code on every hex
    * Auto update transitions option is stored in the preferences
  * Graphics:
    * New or updated unit frames: Walking Corpse swimmer, Soulless swimmer
@@ -28,6 +27,8 @@ Version 1.5.4+svn:
    * Allowed usage of lists in /friend, /ignore and /remove commands. (feature
      #7492)
    * Added a new image widget.
+   * Added a feature to draw hex coordinates and/or terrain code on every hex.
+     Available in-game via :sc and :tc commands, and in editor2's menu.
  * WML engine:
    * New command, [store_time_of_day], makes it possible to store ToD info
      in a WML array/container.
