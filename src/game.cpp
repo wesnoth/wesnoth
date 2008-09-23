@@ -1456,40 +1456,33 @@ void game_controller::load_game_cfg()
 		const std::string user_campaign_dir = get_addon_campaigns_dir();
 		std::vector< std::string > error_addons;
 		// Scan addon directories
-		std::vector<std::string> user_addons;
+		std::vector<std::string> user_dirs;
 		// Scan for standalone files
 		std::vector<std::string> user_files;
 
-		get_files_in_dir(user_campaign_dir,&user_files,&user_addons,ENTIRE_FILE_PATH);
+		// The addons that we'll actually load
+		std::vector<std::string> addons_to_load;
+
+		get_files_in_dir(user_campaign_dir,&user_files,&user_dirs,ENTIRE_FILE_PATH);
 		std::string user_error_log;
 
-		// Append the standalone files, with '.cfg' removed, to the directories.
-		// They will be caught by the oldstyle_cfg so we don't need to duplicate logic.
-		// FIXME: rewrite this code so it does the following:
-		// -Include $user_campaign_dir/*.cfg
-		// -Include $user_campaign_dir/*/_main.cfg
+		// Append the $user_campaign_dir/*.cfg files to addons_to_load.
 		for(std::vector<std::string>::const_iterator uc = user_files.begin(); uc != user_files.end(); ++uc) {
-			std::string full_file = *uc;
-			if(full_file.substr(full_file.size() - 4, full_file.size()) != ".cfg")
-				continue;
-			std::string file = full_file.substr(0, full_file.size() - 4);
-			if(std::find(user_addons.begin(), user_addons.end(), file) == user_addons.end()) {
-				user_addons.push_back(file);
-			}
+			const std::string file = *uc;
+			if(file.substr(file.size() - 4, file.size()) == ".cfg")
+				addons_to_load.push_back(file);
+		}
+
+		// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
+		for(std::vector<std::string>::const_iterator uc = user_dirs.begin(); uc != user_dirs.end(); ++uc){
+			const std::string main_cfg = *uc + "/_main.cfg";
+			if (file_exists(main_cfg))
+				addons_to_load.push_back(main_cfg);
 		}
 
 		// Load the addons
-		for(std::vector<std::string>::const_iterator uc = user_addons.begin(); uc != user_addons.end(); ++uc) {
-			std::string oldstyle_cfg = *uc + ".cfg";
-			std::string main_cfg = *uc + "/_main.cfg";
-			std::string toplevel;
-			if (file_exists(oldstyle_cfg))
-				toplevel = oldstyle_cfg;
-			else if (file_exists(main_cfg))
-				toplevel = main_cfg;
-			else
-				continue;
-
+		for(std::vector<std::string>::const_iterator uc = addons_to_load.begin(); uc != addons_to_load.end(); ++uc) {
+			const std::string toplevel = *uc;
 			try {
 				config umc_cfg;
 				cache_.get_config(toplevel, umc_cfg);
