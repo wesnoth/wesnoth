@@ -344,18 +344,6 @@ void editor_action_rotate_map::perform_without_undo(map_context& /*mc*/) const
 	throw editor_action_not_implemented();
 }
 
-void editor_action_flip_x::perform_without_undo(map_context& mc) const
-{
-	mc.get_map().flip_x();
-	mc.set_needs_reload();
-}
-
-void editor_action_flip_y::perform_without_undo(map_context& mc) const
-{
-	mc.get_map().flip_y();
-	mc.set_needs_reload();
-}
-
 editor_action_paste* editor_action_plot_route::perform(map_context& /*mc*/) const
 {
 	throw editor_action_not_implemented();

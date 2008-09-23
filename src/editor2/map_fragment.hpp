@@ -94,6 +94,12 @@ class map_fragment
 		void shift(const gamemap::location& offset);
 		
 		/**
+		 * Return a location at the top left corner of this fragment's
+		 * bounding rectangle
+		 */
+		gamemap::location top_left_boundary() const;
+
+		/**
 		 * Get the center of the map fragment, bounds-wise.
 		 */
 		gamemap::location center_of_bounds() const;
@@ -102,6 +108,11 @@ class map_fragment
 		 * Get the center of the map fragment, mass-wise.
 		 */
 		gamemap::location center_of_mass() const;
+		
+		/**
+		 * Shift the map fragment so that all locations have nonnegative coordinates
+		 */
+		void normalize();
 		
 		/**
 		 * Shift the map fragment so it is roughly centered around the (0,0) point, bounds-wise.
@@ -127,6 +138,21 @@ class map_fragment
 		 * Rotate the map fragment 60 degrees counter-clockwise around (0,0)
 		 */
 		void rotate_60_ccw();
+		
+		/**
+		 * Flip the map fragment horizontally
+		 */
+		void flip_horizontal();
+
+		/**
+		 * Flip the map fragment vertically
+		 */
+		void flip_vertical();		
+		
+		/**
+		 * Debug dump to a string
+		 */
+		std::string dump() const;
 		
 	protected:
 		/**

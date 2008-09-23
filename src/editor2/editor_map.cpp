@@ -79,6 +79,11 @@ void editor_map::sanity_check()
 			++errors;
 		}
 	}
+	foreach (const location& loc, selection_) {
+		if (!on_board_with_border(loc)) {
+			ERR_ED << "Off-map tile in selection: " << loc << "\n";
+		}
+	}
 	if (errors) {
 		throw editor_map_integrity_error();
 	}
@@ -128,7 +133,7 @@ bool editor_map::in_selection(const gamemap::location& loc) const
 
 bool editor_map::add_to_selection(const gamemap::location& loc)
 {
-	return selection_.insert(loc).second;
+	return on_board_with_border(loc) ? selection_.insert(loc).second : false;
 }
 
 bool editor_map::remove_from_selection(const gamemap::location& loc)
@@ -164,6 +169,18 @@ bool editor_map::everything_selected() const
 {
 	LOG_ED << selection_.size() << " " << total_width() * total_height() << "\n";
 	return static_cast<int>(selection_.size()) == total_width() * total_height();
+}
+
+void editor_map::sanitize_selection()
+{
+	std::set<location>::iterator it = selection_.begin();
+	while (it != selection_.end()) {
+		if (on_board_with_border(*it)) {
+			++it;
+		} else {
+			selection_.erase(it++);
+		}
+	}
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
@@ -212,52 +229,6 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 		}
 	}
 	sanity_check();
-}
-
-void editor_map::flip_x()
-{
-	LOG_ED << "FlipX\n";
-	// Due to the hexes we need some mirror tricks when mirroring over the
-	// X axis. We resize the map and fill it. The odd columns will be extended
-	// with the data in row 0 the even columns are extended with the data in
-	// the last row
-	const size_t middle = (tiles_[0].size() / 2); // the middle if reached we flipped all
-	const size_t end = tiles_[0].size() - 1; // the last row _before_ resizing
-	for(size_t x = 0; x < tiles_.size(); ++x) {
-		if(x % 2) {
-			// odd lines
-			tiles_[x].resize(tiles_[x].size() + 1, tiles_[x][0]);
-			for(size_t y1 = 0, y2 = end; y1 < middle; ++y1, --y2) {
-				swap_starting_position(x, y1, x, y2);
-				std::swap(tiles_[x][y1], tiles_[x][y2]);
-			}
-		} else {
-			// even lines
-			tiles_[x].resize(tiles_[x].size() + 1, tiles_[x][end]);
-			for(size_t y1 = 0, y2 = end + 1; y1 < middle; ++y1, --y2) {
-				swap_starting_position(x, y1, x, y2);
-				std::swap(tiles_[x][y1], tiles_[x][y2]);
-			}
-		}
-	}
-	h_++;
-	total_height_++;
-	sanity_check();
-}
-
-void editor_map::flip_y()
-{
-	LOG_ED << "FlipY\n";
-	// Flipping on the Y axis requires no resize,
-	// so the code is much simpler.
-	const size_t middle = (tiles_.size() / 2);
-	const size_t end = tiles_.size() - 1;
-	for(size_t y = 0; y < tiles_[0].size(); ++y) {
-		for(size_t x1 = 0, x2 = end; x1 < middle; ++x1, --x2) {
-			swap_starting_position(x1, y, x2, y);
-			std::swap(tiles_[x1][y], tiles_[x2][y]);
-		}
-	}
 }
 
 void editor_map::swap_starting_position(int x1, int y1, int x2, int y2)

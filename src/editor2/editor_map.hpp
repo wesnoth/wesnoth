@@ -113,6 +113,11 @@ public:
 	 * @return true if the entire map is selected, false otherwise
 	 */
 	bool everything_selected() const;
+	
+	/**
+	 * Ensure no off-map tiles are in the selection
+	 */
+	void sanitize_selection();
 		
 	/** 
 	 * Resize the map. If the filler is NONE, the border terrain will be copied

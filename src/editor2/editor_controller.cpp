@@ -578,13 +578,13 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return !clipboard_.empty();
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
-			return !clipboard_.empty() && is_mouse_action_set(HOTKEY_EDITOR_PASTE);
+		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
+		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
+			return !clipboard_.empty();
 		case HOTKEY_EDITOR_SELECT_ALL:
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 		case HOTKEY_EDITOR_SELECT_NONE:
 		case HOTKEY_EDITOR_MAP_RESIZE:
-		case HOTKEY_EDITOR_MAP_FLIP_X:
-		case HOTKEY_EDITOR_MAP_FLIP_Y:
 		case HOTKEY_EDITOR_MAP_GENERATE:
 		case HOTKEY_EDITOR_REFRESH:
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
@@ -663,6 +663,14 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			clipboard_.rotate_60_ccw();
 			update_mouse_action_highlights();
 			return true;
+		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
+			clipboard_.flip_horizontal();
+			update_mouse_action_highlights();
+			return true;
+		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
+			clipboard_.flip_vertical();
+			update_mouse_action_highlights();
+			return true;			
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 			cycle_brush();
 			return true;
@@ -687,12 +695,6 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			perform_refresh(editor_action_shuffle_area(get_map().selection()));
-			return true;
-		case HOTKEY_EDITOR_MAP_FLIP_X:
-			perform_refresh(editor_action_flip_x());
-			return true;
-		case HOTKEY_EDITOR_MAP_FLIP_Y:
-			perform_refresh(editor_action_flip_y());
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:
 			load_map_dialog();

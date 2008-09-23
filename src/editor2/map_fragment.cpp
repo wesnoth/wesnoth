@@ -16,6 +16,7 @@
 
 #include "../foreach.hpp"
 
+#include <sstream>
 #include <vector>
 
 namespace editor2 {
@@ -73,7 +74,18 @@ void map_fragment::shift(const gamemap::location& offset)
 {
 	foreach (tile_info& ti, items_) {
 		ti.offset.vector_sum_assign(offset);
-	}	
+	}
+}
+
+gamemap::location map_fragment::top_left_boundary() const
+{
+	gamemap::location top_left = items_[0].offset;
+	for (size_t i = 1; i < items_.size(); ++i) {
+		const gamemap::location& loc = items_[i].offset;
+		if (loc.x < top_left.x) top_left.x = loc.x;
+		if (loc.y < top_left.y) top_left.y = loc.y;
+	}
+	return top_left;
 }
 
 gamemap::location map_fragment::center_of_bounds() const
@@ -99,19 +111,32 @@ gamemap::location map_fragment::center_of_mass() const
 	foreach (const tile_info& ti, items_) {
 		sum.vector_sum_assign(ti.offset);
 	}
-	sum.x /= items_.size();
-	sum.y /= items_.size();
+	sum.x /= static_cast<int>(items_.size());
+	sum.y /= static_cast<int>(items_.size());
 	return sum;
+}
+
+void map_fragment::normalize()
+{
+	shift(top_left_boundary().vector_negation());
 }
 
 void map_fragment::center_by_bounds()
 {
 	shift(center_of_bounds().vector_negation());
+	area_.clear();
+	foreach (tile_info& ti, items_) {
+		area_.insert(ti.offset);
+	}
 }
 
 void map_fragment::center_by_mass()
 {
 	shift(center_of_mass().vector_negation());
+	area_.clear();
+	foreach (tile_info& ti, items_) {
+		area_.insert(ti.offset);
+	}
 }
 
 void map_fragment::rotate_60_cw()
@@ -154,10 +179,43 @@ void map_fragment::rotate_60_ccw()
 	}
 }
 
+void map_fragment::flip_horizontal()
+{
+	foreach (tile_info& ti, items_) {
+		ti.offset.x = -ti.offset.x;
+	}
+	center_by_mass();
+}
+
+void map_fragment::flip_vertical()
+{
+	foreach (tile_info& ti, items_) {
+		ti.offset.y = -ti.offset.y;
+		if (ti.offset.x % 2) {
+			ti.offset.y--;
+		}
+	}
+	center_by_mass();
+}
+
 
 bool map_fragment::empty() const
 {
 	return items_.empty();
+}
+
+std::string map_fragment::dump() const
+{
+	std::stringstream ss;
+	ss << "MF: ";
+	foreach (const tile_info& ti, items_) {
+		ss << "(" << ti.offset << ")";
+	}
+	ss << " -- ";
+	foreach (const gamemap::location& loc, area_) {
+		ss << "(" << loc << ")";
+	}
+	return ss.str();
 }
 
 } //end namespace editor2

@@ -403,31 +403,6 @@ class editor_action_rotate_map : public editor_action
 		int angle_;
 };
 
-/**
- * Flip the map along the X axis.
- */
-class editor_action_flip_x : public editor_action
-{
-	public:
-		editor_action_flip_x()
-		{
-		}
-		void perform_without_undo(map_context& mc) const;
-};
-
-/**
- * Flip the map along the Y axis.
- */
-class editor_action_flip_y : public editor_action
-{
-	public:
-		editor_action_flip_y()
-		{
-		}
-		void perform_without_undo(map_context& mc) const;
-		bool require_map_reload() { return true; }
-};
-
 //plot a route between two points
 class editor_action_plot_route : public editor_action_location_terrain
 {
