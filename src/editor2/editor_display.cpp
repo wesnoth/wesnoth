@@ -26,8 +26,6 @@ editor_display::editor_display(CVideo& video, const editor_map& map,
 	: display(video, map, theme_cfg, cfg, level)
 	, brush_locations_()
 	, toolbar_hint_()
-	, draw_coordinates_(false)
-	, draw_terrain_codes_(false)
 {
     clear_screen();
 }
@@ -90,38 +88,6 @@ void editor_display::draw_hex(const gamemap::location& loc)
 		if (map().in_selection(loc)) {
 			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
 				image::get_image("editor/selection-overlay.png", image::SCALED_TO_HEX)));
-		}
-	}
-	if (map().on_board(loc)) {
-		if (draw_coordinates_) {
-			int off_x = xpos + hex_size()/2;
-			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOUR);
-			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = {0, 0, text->w, text->h};
-			SDL_FillRect(bg, &bg_rect, 0xff000000);
-			off_x -= text->w / 2;
-			if (draw_terrain_codes_) {	
-				off_y -= text->h;
-			} else {
-				off_y -= text->h / 2;
-			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
-		}
-		if (draw_terrain_codes_) {
-			int off_x = xpos + hex_size()/2;
-			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOUR);
-			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = {0, 0, text->w, text->h};
-			SDL_FillRect(bg, &bg_rect, 0xff000000);
-			off_x -= text->w / 2;
-			if (!draw_coordinates_) {	
-				off_y -= text->h / 2;
-			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
 		}
 	}
 }

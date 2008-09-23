@@ -119,7 +119,9 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	idle_anim_(preferences::idle_anim()),
 	idle_anim_rate_(1.0),
 	map_screenshot_surf_(NULL),
-	redraw_observers_()
+	redraw_observers_(),
+	draw_coordinates_(false),
+	draw_terrain_codes_(false)
 {
 	if(non_interactive()
 		&& (get_video_surface() != NULL
@@ -1923,6 +1925,38 @@ void display::draw_hex(const gamemap::location& loc) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
 			get_terrain_images(loc, tod_.id, image_type, ADJACENT_FOGSHROUD)));
 	}
+	if (on_map) {
+		if (draw_coordinates_) {
+			int off_x = xpos + hex_size()/2;
+			int off_y = ypos + hex_size()/2;
+			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOUR);
+			surface bg = create_neutral_surface(text->w, text->h);
+			SDL_Rect bg_rect = {0, 0, text->w, text->h};
+			SDL_FillRect(bg, &bg_rect, 0xaa000000);
+			off_x -= text->w / 2;
+			if (draw_terrain_codes_) {	
+				off_y -= text->h;
+			} else {
+				off_y -= text->h / 2;
+			}
+			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
+		}
+		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
+			int off_x = xpos + hex_size()/2;
+			int off_y = ypos + hex_size()/2;
+			surface text = font::get_rendered_text(lexical_cast<std::string>(map_.get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOUR);
+			surface bg = create_neutral_surface(text->w, text->h);
+			SDL_Rect bg_rect = {0, 0, text->w, text->h};
+			SDL_FillRect(bg, &bg_rect, 0xaa000000);
+			off_x -= text->w / 2;
+			if (!draw_coordinates_) {	
+				off_y -= text->h / 2;
+			}
+			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
+		}
+	}		
 }
 
 image::TYPE display::get_image_type(const gamemap::location& /*loc*/) {

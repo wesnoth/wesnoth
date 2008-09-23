@@ -2247,6 +2247,8 @@ private:
 			void do_shroud();
 			void do_gold();
 			void do_event();
+			void do_toggle_draw_coordinates();
+			void do_toggle_draw_terrain_codes();
 
 			std::string get_flags_description() const {
 				return "(D) - debug only, (N) - network only";
@@ -2337,6 +2339,12 @@ private:
 				register_command("throw", &console_handler::do_event,
 					_("Fire a game event."), "", "D");
 				register_alias("throw", "fire");
+				register_command("show_coordinates", &console_handler::do_toggle_draw_coordinates,
+					_("Toggle overalying of x,y coordinates on hexes."));
+				register_alias("show_coordinates", "sc");
+				register_command("show_terrain_codes", &console_handler::do_toggle_draw_terrain_codes,
+					_("Toggle overalying of terrain codes on hexes."));
+				register_alias("show_terrain_codes", "tc");
 
 				config* alias_list = preferences::get_alias();
 				if (alias_list != NULL) {
@@ -2977,6 +2985,14 @@ private:
 	void console_handler::do_event() {
 		game_events::fire(get_data());
 		menu_handler_.gui_->redraw_everything();
+	}
+	void console_handler::do_toggle_draw_coordinates() {
+		menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
+		menu_handler_.gui_->invalidate_all();
+	}
+	void console_handler::do_toggle_draw_terrain_codes() {
+		menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
+		menu_handler_.gui_->invalidate_all();	
 	}
 
 	void menu_handler::do_ai_formula(const std::string& str,

@@ -222,6 +222,16 @@ public:
 	 * (to more clearly show where hexes are)
 	 */
 	void set_grid(const bool grid) { grid_ = grid; }
+	
+	/** Getter for the x,y debug overlay on tiles */
+	bool get_draw_coordinates() { return draw_coordinates_; }
+	/** Setter for the x,y debug overlay on tiles */
+	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
+	
+	/** Getter for the terrain code debug overlay on tiles */
+	bool get_draw_terrain_codes() { return draw_terrain_codes_; }
+	/** Setter for the terrain code debug overlay on tiles */
+	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }	
 
 	/** Save a (map-)screenshot and return the estimated file size */
 	int screenshot(std::string filename, bool map_screenshot = false);
@@ -771,6 +781,11 @@ private:
 	surface map_screenshot_surf_;
 	
 	std::vector<boost::function<void(display&)> > redraw_observers_;
+	
+	/** Debug flag - overlay x,y coords on tiles */
+	bool draw_coordinates_;
+	/** Debug flag - overlay terrain codes on tiles */
+	bool draw_terrain_codes_;
 };
 
 #endif
