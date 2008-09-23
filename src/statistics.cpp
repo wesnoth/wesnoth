@@ -265,7 +265,8 @@ stats::stats(const config& cfg) :
 	new_expected_damage_inflicted(0), 
 	new_expected_damage_taken(0), 
 	new_turn_expected_damage_inflicted(0), 
-	new_turn_expected_damage_taken(0)
+	new_turn_expected_damage_taken(0),
+	save_id(std::string())
 {
 	read(cfg);
 }
@@ -400,6 +401,8 @@ void stats::write(config_writer &out) const
 	ss << new_turn_expected_damage_taken;
 	out.write_key_val("new_turn_expected_damage_taken", ss.str());
 
+	out.write_key_val("save_id", save_id);
+
 }
 
 void stats::read(const config& cfg)
@@ -446,6 +449,7 @@ void stats::read(const config& cfg)
 	new_expected_damage_taken = lexical_cast_default<long long>(cfg["new_expected_damage_taken"],expected_damage_taken);
 	new_turn_expected_damage_inflicted = lexical_cast_default<long long>(cfg["new_turn_expected_damage_inflicted"],turn_expected_damage_inflicted);
 	new_turn_expected_damage_taken = lexical_cast_default<long long>(cfg["new_turn_expected_damage_taken"],turn_expected_damage_taken);
+	save_id = cfg["save_id"];
 }
 
 disabler::disabler() { stats_disabled++; }
@@ -652,6 +656,7 @@ void reset_turn_stats(std::string save_id)
 	s.turn_expected_damage_taken = 0;
 	s.new_turn_expected_damage_inflicted = 0;
 	s.new_turn_expected_damage_taken = 0;
+	s.save_id = save_id;
 }
 
 stats calculate_stats(int category, std::string save_id)

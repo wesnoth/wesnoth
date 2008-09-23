@@ -69,6 +69,7 @@ namespace statistics
 		long long turn_expected_damage_inflicted, turn_expected_damage_taken;
 		long long new_expected_damage_inflicted, new_expected_damage_taken;
 		long long new_turn_expected_damage_inflicted, new_turn_expected_damage_taken;
+		std::string save_id;
 	};
 
 	int sum_str_int_map(const stats::str_int_map& m);
