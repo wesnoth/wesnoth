@@ -20,6 +20,7 @@
 #include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../pathutils.hpp"
+#include "../wml_exception.hpp"
 
 #include <cassert>
 #include <deque>
@@ -47,6 +48,31 @@ editor_map::editor_map(const config& /*terrain_cfg*/, const gamemap& map)
 	, selection_()
 {
 	sanity_check();
+}
+
+editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
+{
+	std::string map_string = read_file(filename);
+	if (map_string.empty()) {
+		std::string message = _("Empty map file or file not found");
+		throw editor_map_load_exception(filename, message);
+	}
+	try {
+		editor_map new_map(game_config, map_string);
+		return new_map;
+	} catch (gamemap::incorrect_format_exception& e) {
+		WRN_ED << "format error in load map " << filename << "\n";
+		std::string message = _("There was a format error while loading the map:");
+		message += "\n";
+		message += e.msg_;
+		throw editor_map_load_exception(filename, message);
+	} catch (twml_exception& e) {
+		WRN_ED << "wml error in load map " << filename << "\n";
+		std::string message = _("There was a wml error while loading the map:");
+		message += "\n";
+		message += e.user_message;
+		throw editor_map_load_exception(filename, message);
+	}
 }
 
 

@@ -66,8 +66,7 @@ editor_action* editor_action::perform(map_context& mc) const
 }
 
 void editor_action_whole_map::perform_without_undo(map_context& mc) const {
-	mc.get_map() = m_;
-	mc.set_needs_reload();
+	mc.set_map(m_);
 }
 
 editor_action_chain::~editor_action_chain()

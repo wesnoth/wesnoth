@@ -137,12 +137,35 @@ void map_context::set_starting_position_labels(display& disp)
 	starting_position_label_locs_.insert(new_label_locs.begin(), new_label_locs.end());
 }
 
+void map_context::reset_starting_position_labels(display& disp)
+{
+	clear_starting_position_labels(disp);
+	set_starting_position_labels(disp);
+	set_needs_labels_reset(false);
+}
+
 bool map_context::save()
 {
 	std::string data = map_.write();
 	write_file(get_filename(), data);
 	actions_since_save_ = 0;
 	return true;
+}
+
+void map_context::load_map(const config& game_config, const std::string& filename)
+{
+	editor_map new_map = editor_map::load_from_file(game_config, filename);
+	set_filename(filename);
+	set_map(new_map);
+	//TODO when this fails see if it's a scenario with a
+	//mapdata= key and give the user an option of loading
+	//that map instead of just failing
+}
+
+void map_context::set_map(const editor_map& map)
+{
+	map_ = map;
+	set_needs_reload();
 }
 
 void map_context::perform_action(const editor_action& action)

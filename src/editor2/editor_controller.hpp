@@ -54,6 +54,7 @@ namespace editor2 {
 class brush_bar;
 class size_specs;
 class terrain_palette;
+class editor_map;
 
 /**
  * The editor_controller class containts the mouse and keyboard event handling
@@ -65,7 +66,7 @@ class editor_controller : public controller_base,
 	private boost::noncopyable
 {
 	public:
-		editor_controller(const config &game_config, CVideo& video);
+		editor_controller(const config &game_config, CVideo& video, editor_map* init_map = NULL);
 		~editor_controller();
 		
 		EXIT_STATUS main_loop();
@@ -89,9 +90,9 @@ class editor_controller : public controller_base,
 		bool confirm_discard();
 		
 		/** Get the current map context object */
-		map_context& get_map_context() { return map_context_; }
+		map_context& get_map_context() { return *map_context_; }
 		/** Get the current map context object - const version */
-		const map_context& get_map_context() const { return map_context_; }
+		const map_context& get_map_context() const { return *map_context_; }
 		/** Get the map from the current map context object */
 		editor_map& get_map() { return get_map_context().get_map(); }
 		/** Get the map from the current map context object - const version*/
@@ -138,13 +139,7 @@ class editor_controller : public controller_base,
 		 * Revert the map by reloading it from disk
 		 */
 		void revert_map();
-		
-		/**
-		 * Set the map object. This requires some special reloading in addition to the obvious 
-		 * assignment and hence is a separate function.
-		 */
-		void set_map(const editor_map& map);
-		
+				
 		/**
 		 * Reload the map after ot has significantly changed (when e.g. the dimensions changed).
 		 * This is necessary to avoid issues with parts of the map being cached in the display class.
@@ -244,7 +239,10 @@ class editor_controller : public controller_base,
 		void editor_settings_dialog_redraw_callback(int r, int g, int b);
 	private:    		
 		/** init the display object and general set-up */ 
-		void init(CVideo& video);
+		void init_gui(CVideo& video);
+		
+		/** init the sidebar objects */
+		void init_sidebar(const config& game_config);
 		
 		/** init the brushes */
 		void init_brushes(const config& game_config);
@@ -255,15 +253,15 @@ class editor_controller : public controller_base,
 		/** init available random map generators */
 		void init_map_generators(const config& game_config);
 		
+		/** init the available time-of-day settings */
 		void init_tods(const config& game_config);
 		
-		/**
-		 * Load editor-specific tooltips
-		 */
+		/** Load editor-specific tooltips */
 		void load_tooltips();
 		
 		void redraw_toolbar();
 		
+		/** Reload images */
 		void refresh_image_cache();
 		
 		/**
@@ -298,7 +296,7 @@ class editor_controller : public controller_base,
 		rand_rng::set_random_generator* rng_setter_;
 		
 		/** The current map object */
-		map_context map_context_;
+		map_context* map_context_;
 		
 		/** The display object used and owned by the editor. */
 		editor_display* gui_;

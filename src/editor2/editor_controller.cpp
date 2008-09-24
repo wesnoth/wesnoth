@@ -39,7 +39,6 @@
 #include "../mapgen.hpp"
 #include "../preferences.hpp"
 #include "../random.hpp"
-#include "../wml_exception.hpp"
 #include "../serialization/string_utils.hpp"
 
 #include "SDL.h"
@@ -55,12 +54,12 @@ namespace {
 
 namespace editor2 {
 
-editor_controller::editor_controller(const config &game_config, CVideo& video)
+editor_controller::editor_controller(const config &game_config, CVideo& video, editor_map* init_map /*=NULL*/)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base(get_map())
 	, rng_(NULL)
 	, rng_setter_(NULL)
-	, map_context_(editor_map(game_config, 44, 33, t_translation::GRASS_LAND))
+	, map_context_(NULL)
 	, gui_(NULL)
 	, map_generators_()
 	, size_specs_()
@@ -77,42 +76,38 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, mouse_action_hints_()
 	, mouse_action_(NULL)
 	, toolbar_dirty_(true)
-	, foreground_terrain_()
-	, background_terrain_()
+	, foreground_terrain_(t_translation::MOUNTAIN)
+	, background_terrain_(t_translation::GRASS_LAND)
 	, clipboard_()
 	, auto_update_transitions_(utils::string_bool(preferences::get(prefkey_auto_update_transitions), true))
 	, default_dir_(preferences::get(prefkey_default_dir))
 {
+	if (init_map == NULL) {
+		map_context_ = new map_context(editor_map(game_config, 44, 33, t_translation::GRASS_LAND));
+	} else {
+		map_context_ = new map_context(*init_map);
+	}
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	}
-	init(video);
-	rng_ = new rand_rng::rng();
-	rng_setter_ = new rand_rng::set_random_generator(rng_);
-	floating_label_manager_ = new font::floating_label_context();
-	size_specs_ = new size_specs();
-	adjust_sizes(gui(), *size_specs_);
-	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
-		foreground_terrain_, background_terrain_);
+	init_gui(video);
 	init_brushes(game_config);
-	brush_ = &brushes_[0];
-	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
 	init_mouse_actions(game_config);
-	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	init_map_generators(game_config);
 	init_tods(game_config);
+	init_sidebar(game_config);
+	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
+	rng_ = new rand_rng::rng();
+	rng_setter_ = new rand_rng::set_random_generator(rng_);
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
-	background_terrain_ = t_translation::GRASS_LAND;
-	foreground_terrain_ = t_translation::MOUNTAIN;
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
-	gui_->invalidate_game_status();
 	refresh_all();
 	events::raise_draw_event();	
 }
 
-void editor_controller::init(CVideo& video)
+void editor_controller::init_gui(CVideo& video)
 {
 	config dummy;
 	const config* theme_cfg = get_theme(game_config_, "editor2");
@@ -121,6 +116,16 @@ void editor_controller::init(CVideo& video)
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_ = new preferences::display_manager(gui_);
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
+	floating_label_manager_ = new font::floating_label_context();
+}
+
+void editor_controller::init_sidebar(const config& game_config)
+{
+	size_specs_ = new size_specs();
+	adjust_sizes(gui(), *size_specs_);
+	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
+		foreground_terrain_, background_terrain_);
+	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
 }
 
 void editor_controller::init_brushes(const config& game_config)
@@ -133,6 +138,7 @@ void editor_controller::init_brushes(const config& game_config)
 		brushes_.push_back(brush());
 		brushes_[0].add_relative_location(0, 0);
 	}
+	brush_ = &brushes_[0];
 }
 
 void editor_controller::init_mouse_actions(const config& game_config)
@@ -213,6 +219,7 @@ editor_controller::~editor_controller()
 	delete prefs_disp_manager_;
 	delete rng_setter_;
 	delete rng_;
+	delete map_context_;
 }
 
 EXIT_STATUS editor_controller::main_loop()
@@ -350,23 +357,19 @@ void editor_controller::generate_map_dialog()
 		gui::message_dialog(gui(), _("Error"), _("No random map generators found")).show();
 		return;
 	}
-
 	gui2::teditor_generate_map dialog;
 	dialog.set_map_generators(map_generators_);
 	dialog.set_gui(&gui());
 	dialog.show(gui().video());
-	
-	int res = dialog.get_retval();
-	if(res == gui2::twindow::OK) {
-		if (!confirm_discard()) return;
+	if (dialog.get_retval() == gui2::twindow::OK) {
 		std::string map_string =
 			dialog.get_selected_map_generator()->create_map(std::vector<std::string>());
 		if (map_string.empty()) {
-			gui::message_dialog(gui(), "",
-							 _("Map creation failed.")).show();
+			gui::message_dialog(gui(), "", _("Map creation failed.")).show();
 		} else {
 			editor_map new_map(game_config_, map_string);
-			set_map(new_map);
+			editor_action_whole_map a(new_map);
+			perform_refresh(a);
 		}
 	}
 }
@@ -465,25 +468,12 @@ bool editor_controller::save_map(bool display_confirmation)
 
 void editor_controller::load_map(const std::string& filename)
 {
-	std::string map_string = read_file(filename);
 	try {
-		editor_map new_map(game_config_, map_string);
-		get_map_context().set_filename(filename);
-		set_map(new_map);
-		//TODO when this fails see if it's a scenario with a
-		//mapdata= key and give the user an option of loading
-		//that map instead of just failing
-	} catch (gamemap::incorrect_format_exception& e) {
-		std::string message = _("There was an error while loading the map:");
-		message += "\n";
-		message += e.msg_;
-		gui::message_dialog(gui(), _("Error loading map (format)"), message).show();
-		return;
-	} catch (twml_exception& e) {
-		std::string message = _("There was an error while loading the map:");
-		message += "\n";
-		message += e.user_message;
-		gui::message_dialog(gui(), _("Error loading map (wml)"), message).show();
+		get_map_context().load_map(game_config_, filename);
+		get_map_context().clear_undo_redo();
+		refresh_after_action();
+	} catch (editor_map_load_exception& e) {
+		gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
 		return;
 	}
 }
@@ -501,27 +491,59 @@ void editor_controller::revert_map()
 
 void editor_controller::new_map(int width, int height, t_translation::t_terrain fill)
 {
-	set_map(editor_map(game_config_, width, height, fill));
-}
-
-void editor_controller::set_map(const editor_map& map)
-{
-	get_map_context().clear_starting_position_labels(gui());
-	get_map() = map;
+	get_map_context().set_map(editor_map(game_config_, width, height, fill));
 	get_map_context().clear_undo_redo();
-	gui().reload_map();
-	get_map_context().set_starting_position_labels(gui());
-	refresh_all();
+	refresh_after_action();
 }
 
 void editor_controller::reload_map()
 {
-	get_map_context().clear_starting_position_labels(gui());
 	gui().reload_map();
-	get_map_context().set_starting_position_labels(gui());
+	get_map_context().set_needs_reload(false);
+	get_map_context().reset_starting_position_labels(gui());
 	refresh_all();
 }
 
+void editor_controller::refresh_all()
+{
+	gui().rebuild_all();
+	get_map_context().set_needs_terrain_rebuild(false);
+	gui().redraw_everything();
+	get_map_context().clear_changed_locations();
+	gui().recalculate_minimap();
+}
+
+void editor_controller::refresh_after_action(bool drag_part)
+{
+	if (get_map_context().needs_reload()) {
+		reload_map();
+		return;
+	} else {
+		if (get_map_context().needs_terrain_rebuild()) {
+			if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
+				gui().rebuild_all();
+				get_map_context().set_needs_terrain_rebuild(false);
+				gui().invalidate_all();
+			} else {
+				foreach (const gamemap::location& loc, get_map_context().changed_locations()) {
+					gui().rebuild_terrain(loc);
+				}
+				gui().invalidate(get_map_context().changed_locations());
+			}
+		} else {
+			if (get_map_context().everything_changed()) {
+				gui().invalidate_all();
+			} else {
+				gui().invalidate(get_map_context().changed_locations());
+			}
+		}
+		if (get_map_context().needs_labels_reset()) {
+			get_map_context().reset_starting_position_labels(gui());
+		}
+	}
+	get_map_context().clear_changed_locations();
+	gui().recalculate_minimap();
+}
 
 bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
@@ -908,7 +930,6 @@ void editor_controller::perform_delete(editor_action* action)
 	}
 }
 
-
 void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
 	if (action) {
@@ -922,7 +943,6 @@ void editor_controller::perform_refresh(const editor_action& action, bool drag_p
 	get_map_context().perform_action(action);
 	refresh_after_action(drag_part);
 }
-
 
 void editor_controller::redraw_toolbar()
 {
@@ -949,51 +969,6 @@ void editor_controller::refresh_image_cache()
 {
 	image::flush_cache();
 	refresh_all();
-}
-
-void editor_controller::refresh_after_action(bool drag_part)
-{
-	if (get_map_context().needs_reload()) {
-		reload_map();
-		get_map_context().set_needs_reload(false);
-		get_map_context().set_needs_terrain_rebuild(false);
-		get_map_context().set_needs_labels_reset(false);
-	} else {
-		if (get_map_context().needs_terrain_rebuild()) {
-			if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
-				gui().rebuild_all();
-				gui().invalidate_all();	
-				get_map_context().set_needs_terrain_rebuild(false);
-			} else {
-				foreach (const gamemap::location& loc, get_map_context().changed_locations()) {
-					gui().rebuild_terrain(loc);
-				}
-				gui().invalidate(get_map_context().changed_locations());
-			}
-		} else {
-			if (get_map_context().everything_changed()) {
-				gui().invalidate_all();
-			} else {
-				gui().invalidate(get_map_context().changed_locations());
-			}
-		}
-		if (get_map_context().needs_labels_reset()) {
-			get_map_context().clear_starting_position_labels(gui());
-			get_map_context().set_starting_position_labels(gui());
-			get_map_context().set_needs_labels_reset(false);
-		}
-	}
-	get_map_context().clear_changed_locations();
-	gui().recalculate_minimap();
-}
-
-void editor_controller::refresh_all()
-{
-	gui().rebuild_all();
-	gui().redraw_everything();
-	gui().recalculate_minimap();
-	get_map_context().set_needs_terrain_rebuild(false);
-	get_map_context().clear_changed_locations();
 }
 
 void editor_controller::display_redraw_callback(display&)

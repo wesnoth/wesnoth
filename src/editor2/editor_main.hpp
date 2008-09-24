@@ -32,7 +32,7 @@ enum EXIT_STATUS {
  *          go back to the titlescreen or quit to desktop altogeter)
  */
 
-EXIT_STATUS start(config& game_config, CVideo& video);
+EXIT_STATUS start(config& game_config, CVideo& video, const std::string& filename = "");
 	
 } //end namespace editor2
 

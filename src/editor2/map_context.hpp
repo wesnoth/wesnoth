@@ -113,6 +113,8 @@ public:
 	
 	void set_starting_position_labels(display& disp);
 	
+	void reset_starting_position_labels(display& disp);
+	
 	const std::string& get_filename() const { return filename_; }
 	
 	void set_filename(const std::string& fn) { filename_ = fn; }
@@ -122,6 +124,10 @@ public:
 	 * May throw an exception on failure.
 	 */
 	bool save();
+	
+	void load_map(const config& game_config, const std::string& filename);
+	
+	void set_map(const editor_map& map);
 	
 	/**
 	 * Performs an action (thus modyfying the map). An appropriate undo action is added to

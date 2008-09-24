@@ -39,6 +39,17 @@ struct editor_map_integrity_error : public editor_exception
 	}
 };
 
+struct editor_map_load_exception : public editor_exception
+{
+	editor_map_load_exception(const std::string& fn, const std::string& msg)
+	: editor_exception(msg), filename(fn)
+	{
+	}
+	~editor_map_load_exception() throw() {}
+	std::string filename;
+};
+
+
 /**
  * This class adds extra editor-specific functionality to a normal gamemap.
  */	
@@ -51,6 +62,8 @@ public:
 	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
 	
 	editor_map(const config& terrain_cfg, const gamemap& map);
+	
+	static editor_map load_from_file(const config& game_config, const std::string& filename);
 	
 	~editor_map();
 	

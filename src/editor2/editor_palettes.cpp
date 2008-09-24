@@ -126,10 +126,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	if(terrains_.empty()) {
 		ERR_ED << "No terrain found.\n";
 	}
-	else {
-		selected_fg_terrain_ = terrains_[0];
-		selected_bg_terrain_ = terrains_[0];
-	}
 	update_report();
 	//adjust_size();
 }

@@ -148,7 +148,7 @@ public:
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
 #ifndef DISABLE_EDITOR2
-	editor2::EXIT_STATUS start_editor();
+	editor2::EXIT_STATUS start_editor(const std::string& filename = "");
 #endif
 	void start_wesnothd();
 	const config& game_config(){return game_config_;};
@@ -1132,7 +1132,7 @@ bool game_controller::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
-		if (start_editor() == editor2::EXIT_QUIT_TO_DESKTOP) {
+		if (start_editor(loaded_game_) == editor2::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
 	}
@@ -1607,14 +1607,14 @@ void game_controller::play_replay()
 }
 
 #ifndef DISABLE_EDITOR2
-editor2::EXIT_STATUS game_controller::start_editor()
+editor2::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
     cache_.clear_defines();
     cache_.add_define("EDITOR");
     cache_.add_define("EDITOR2");
 	load_game_cfg();
     const binary_paths_manager bin_paths_manager(game_config_);
-	return editor2::start(game_config_, video_);
+	return editor2::start(game_config_, video_, filename);
 }
 #endif
 
@@ -1698,8 +1698,12 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --gzip INFILE                compresses a file (INFILE) in gzip format,\n"
 			<< "                               stores it as INFILE.gz and removes INFILE.\n"
 			<< "  -h, --help                   prints this message and exits.\n"
-			<< "  --load SAVEGAME              loads the file SAVEGAME from the standard save\n"
+			<< "  --load FILE                  loads the save FILE from the standard save\n"
 			<< "                               game directory.\n"
+#ifndef DISABLE_EDITOR2
+			<< "                               When launching the map editor via -e, the map FILE is\n"
+			<< "                               loaded, relative to the current directory.\n"
+#endif
 			<< "  --with-replay                replays the file SAVEGAME loaded with --load option.\n"
 			<< "  --log-<level>=<domain1>,<domain2>,...\n"
 			<< "                               sets the severity level of the log domains.\n"
