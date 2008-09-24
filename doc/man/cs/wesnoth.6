@@ -50,18 +50,15 @@ nastavuje hodnotu BitsPerPixel \- počet bitů na bod. Příklad: \fB\-\-bpp 32\
 \fB\-c, \-\-campaign\fP
 přeskočí hlavní menu a zobrazí ihned seznam tažení.
 .TP 
-\fB\-\-compress\fP\fI\ vstupní_soubor\ výstupní_soubor\fP
-komprimuje soubor s uloženou hrou (\fIvstupní_soubor\fP), který je v textovém
-formátu WML, do binárního tvaru (\fIvýstupní_soubor\fP).
+\fB\-\-config\-dir <name>\fP
+Makes wesnoth use <name> directory in $HOME for storing user data.
+win32: If <name> is SHARED wesnoth uses userdata directory in
+weanoth instalation directory.
 .TP 
 \fB\-d, \-\-debug\fP
 zobrazuje dodatečné ladící informace a umožňuje použít rozšiřující volby
 příkazového módu (více viz Wiki na
 http://www.wesnoth.org/wiki/CommandMode).
-.TP 
-\fB\-\-decompress\fP\fI\ vstupní_soubor\ výstupní_soubor\fP
-dekomprimuje soubor s uloženou hrou (\fIvstupní_soubor\fP), který je v binárním
-formátu WML, do textového tvaru (\fIvýstupní_soubor\fP).
 .TP 
 \fB\-\-dummylocales\fP
 Use special dummy locales to switch to any language even if that language
@@ -115,7 +112,7 @@ vypíná cache pro herní data.
 spustí hru bez zvuků a hudby.
 .TP 
 \fB\-\-nomusic\fP
-runs the game without only music.
+spustí hru bez hudby.
 .TP 
 \fB\-\-path\fP
 pouze zobrazí cestu k adresáři s daty a skončí.

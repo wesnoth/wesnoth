@@ -46,20 +46,16 @@ Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: \fB\-\-bpp
 \fB\-c, \-\-campaign\fP
 skip menu, show directly the campaign menu.
 .TP 
-\fB\-\-compress\fP\fI\ entpackte_datei\ komprimierte_datei\fP
-Wandelt eine normale WML\-Textdatei (\fIentpackte_datei\fP) in einen als
-WML\-Binärdatei komprimierten Spielstand (\fIkomprimierte_datei\fP) um.
+\fB\-\-config\-dir <name>\fP
+Makes wesnoth use <name> directory in $HOME for storing user data.
+win32: If <name> is SHARED wesnoth uses userdata directory in
+weanoth instalation directory.
 .TP 
 \fB\-d, \-\-debug\fP
 Zeigt Entwicklerinformationen im Spiel an und erlaubt zusätzliche Kommandos
 in der spieleigenen Befehlszeile (auf der Internet\-Seite
 http://www.wesnoth.org/wiki/CommandMode sind weitere Informationen hierzu
 verfügbar).
-.TP 
-\fB\-\-decompress\fP\fI\ komprimierte_datei\ entpackte_datei\fP
-Wandelt einen als WML\-Binärdatei komprimierten Spielstand
-(\fIkomprimierte_datei\fP)  in eine normale WML\-Textdatei (\fIentpackte_datei\fP)
-um.
 .TP 
 \fB\-\-dummylocales\fP
 Use special dummy locales to switch to any language even if that language

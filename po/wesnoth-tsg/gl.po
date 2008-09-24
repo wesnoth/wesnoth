@@ -2,6 +2,7 @@
 #
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
+# Victor Portela <spikesmaster AT gmail DOT com>, 2008.
 #
 # Proxecto Trasno <http://trasno.net>
 #
@@ -10,7 +11,7 @@ msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-08-31 11:49+0200\n"
-"PO-Revision-Date: 2008-06-19 18:21+0100\n"
+"PO-Revision-Date: 2008-09-20 12:28+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -727,9 +728,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:197
-#, fuzzy
 msgid "Take the Citadel at Westin by the end of the ninth turn."
-msgstr "Toma a Cidadela de Westin antes de que pasen dez turnos."
+msgstr "Toma a Cidadela de Westin antes da fin do noveno turno."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:236
@@ -945,7 +945,7 @@ msgstr "O meu irmán morreu sen ser vingado! Que fixemos!?"
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:538
 msgid "Commander, how can a bandit have summoned undead?"
-msgstr "Comandante, como puido un bandido convovar ós non mortos?"
+msgstr "Comandante, como puido un bandido convocar ós non mortos?"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:543
@@ -970,9 +970,9 @@ msgid ""
 "No. He suspected the elves of some trickery and made no reply to them. "
 "Perhaps they know the origin of these dead warriors we now face."
 msgstr ""
-"Non. Sospeitaba que os elfos que os elfos querían enganalo e e non lles "
-"respondeu. Quizais eles saben da orixe deses guerreiros non mortos ós que "
-"nos enfrentamos."
+"Non. Sospeitaba que os elfos querían enganalo e e non lles respondeu. "
+"Quizais eles saben da orixe deses guerreiros non mortos ós que nos "
+"enfrentamos."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:558
@@ -1180,8 +1180,8 @@ msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
 msgstr ""
-"Fala con coidado, porque os castigo por entrar sen permiso nas nosas terras "
-"é a morte, e perderás a túa vida."
+"Fala con coidado, porque o castigo por entrar sen permiso nas nosas terras é "
+"a morte, e perderás a túa vida."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:312
@@ -1230,7 +1230,8 @@ msgid ""
 "stand against them for long."
 msgstr ""
 "Dirixirei ós meus homes ó sur do río para atopar a orixe deses seres escuros "
-"e agardamos destruíla. Seguramente non durará moito."
+"e deberemos destruíla. Certamente, debemos gañar,  non podemos aguantar "
+"contra eles moito tempo."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:337
@@ -1300,7 +1301,7 @@ msgid ""
 "they feel that it is time for them to allow others to lead our people. The "
 "sage you speak of lives in a secluded village between the two lakes."
 msgstr ""
-"Este é o Val das Árbores en Flor. Os nosos grande sabios veñen vivir aquí "
+"Este é o Val das Árbores en Flor. Os nosos grandes sabios veñen vivir aquí "
 "cando sinten que é hora de que outros dirixan á nosa xente. O sabio do que "
 "falas vive nunha vila illada entre os dous lagos."
 
@@ -2598,7 +2599,7 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:257
 msgid "That is wise. Speed is less valuable in caves than toughness."
 msgstr ""
-"Iso é intelixente.  A velocidade é menor valiosa nas covas que a cabeza."
+"Iso é intelixente.  A velocidade é menos valiosa nas covas que a resistencia."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:263
@@ -3570,10 +3571,11 @@ msgstr "lanza"
 msgid "mace"
 msgstr "maza"
 
+# ollo asexante FIXADO
 #. [unit_type]: race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
 msgid "Eyestalk"
-msgstr ""
+msgstr "Ollo asexante"
 
 #. [unit_type]: race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
@@ -3695,17 +3697,16 @@ msgstr "Caio lonxe do meu fogar - pero non en van! Coida da nosa xente Deoran!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29
-#, fuzzy
 msgid ""
 "Thugs are the mainstay of the bandit armies. They do not have a ranged "
 "attack, and are vulnerable to your archers. Deoran's lance will also strike "
 "fear into their hearts! Like all of the bandit units, they are much more "
 "dangerous at night."
 msgstr ""
-"Os Vándalos son o piar dos exércitos inimigos.  Non teñen un ataque a "
+"Os Vándalos son o piar dos exércitos dos bandidos.  Non teñen ataque a "
 "distancia, e son vulnerables ós teus arqueiros.  A lanza de Deoran tamén "
-"fará que sintan medo nos seus corazóns!  Coma tódalas unidades dos bandidos, "
-"son moito máis perigosos pola noite."
+"infundirá medo nos seus corazóns! Coma tódalas unidades dos bandidos, son "
+"moito máis perigosos pola noite."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:56
@@ -3776,6 +3777,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:25
+#, fuzzy
 msgid ""
 "For eight years the South Guard had defended the farms and homes surrounding "
 "the city of Westin, the capital of Wesnoth's frontier province of Kerlath in "
@@ -3786,6 +3788,15 @@ msgid ""
 "the ancient heart forest of the Great Continent so dense and gloomy that "
 "even elves forbore from dwelling there."
 msgstr ""
+"Durante oito anos a Garda do Sur defendeu as granxas e as casas que rodean a "
+"cidade de Westin, capital da fronteiriza provincia de Wesnoth chamada "
+"Kerlath na zona máis septentrional do reino. O inimigo máis perigoso ó que "
+"se tiñan que afrontar era o típico bandido ocasional. Os orcos estaban lonxe "
+"ó norte. Ó oeste, en Aethenwood, soñaban os elfos, non enfrontados ós "
+"humanos pero mantendo as distancias con eles. Só algúns foraxidos vivían no "
+"salvaxe sur de Kerlath, un bastión do corazón do antigo bosque do Gran "
+"Continente tan denso e espeso que incluso os elfos evitaban adentrarse "
+"naquel lugar."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:29
@@ -3800,20 +3811,29 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
+#, fuzzy
 msgid ""
 "King Haldric summoned a young, undistinguished but promising cavalry officer "
 "named Deoran. Deoran was the son of Haldiel, who had fought with distinction "
 "alongside Konrad I in the wars against the orcs. The King had a mission for "
 "Haldiel's son."
 msgstr ""
+"O rei Haldric convocou un xoven, distinguido e prometedor oficial cabaleiro "
+"chamado Deoran. Deoran era fillo de Haldiel, quen tiña loitado con distición "
+"ó lado de Konrad I nas guerras contra os orcos. O rei tiña a misión para o "
+"fillo de Haldiel."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:37
+#, fuzzy
 msgid ""
 "King Haldric knighted young Deoran, and when he rose tasked him to ride to "
 "Westin, to demand an accounting from Sir Loris, the commander of the South "
 "Guard..."
 msgstr ""
+"O rei Haldric nomeou cabaleiro do reino a Deoran, e cando él se ergueu, "
+"encomendoulle cabalgar a Westin, para pedir contas a Sir Loris, o comandante "
+"da Garda do Sur..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:58
@@ -3883,7 +3903,7 @@ msgid ""
 "Black River, beyond which no elf or man would willingly pass."
 msgstr ""
 "Por fin Ethiliel díxolles ós homes que se detiveran e montaran o campamento "
-"- acadaran o gran río, máis alá do cal ningún elfo nin home pasaría de boa "
+"- acadaran o Río Escuro, máis aló do cal ningún elfo nin home pasaría de boa "
 "gana."
 
 #. [part]

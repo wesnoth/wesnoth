@@ -51,18 +51,15 @@ nustato bitų vienam pikseliui vertę. Pavyzdžiui: \fB\-\-bpp 32\fP
 \fB\-c, \-\-campaign\fP
 praleidžia meniu, iš karto rodo kampanijos meniu.
 .TP 
-\fB\-\-compress\fP\fI\ įvedamas failas\ išvedamas failas\fP
-compresses a savefile (\fIinfile\fP)  that is in text WML format into binary
-WML format (\fIoutfile\fP).
+\fB\-\-config\-dir <name>\fP
+Makes wesnoth use <name> directory in $HOME for storing user data.
+win32: If <name> is SHARED wesnoth uses userdata directory in
+weanoth instalation directory.
 .TP 
 \fB\-d, \-\-debug\fP
 shows extra debugging information and enables additional command mode
 options in\-game (see the website at http://www.wesnoth.org/wiki/CommandMode
 for more information about command mode).
-.TP 
-\fB\-\-decompress\fP\fI\ įvedamas failas\ išvedamas failas\fP
-decompresses a savefile (\fIinfile\fP)  that is in binary WML format into text
-WML format (\fIoutfile\fP).
 .TP 
 \fB\-\-dummylocales\fP
 Naudoja specialias netikras lokales persijungimui į bet kurią kalbą, net jei
@@ -87,7 +84,7 @@ išveda komandinės eilutės parametrų santrauką į standartinį išvedimą ir
 išeina.
 .TP 
 \fB\-\-load\fP\fI\ savegame\fP
-loads the file savegame from the standard save game directory.
+įkelia išsaugotą žaidimą iš standartinio išsaugotų žaidimų aplanko.
 .TP 
 \fB\-\-with\-replay\fP
 replays the game loaded with \-\-load option.
@@ -115,7 +112,7 @@ disables caching of game data.
 paleidžia žaidimą be garsų ir muzikos.
 .TP 
 \fB\-\-nomusic\fP
-runs the game without only music.
+paleidžia žaidimą be muzikos.
 .TP 
 \fB\-\-path\fP
 atsausdina žaidimo duomenų aplanko pavadinimą ir išeina.

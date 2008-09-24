@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-09 23:12+0200\n"
-"PO-Revision-Date: 2008-09-11 19:59+0200\n"
-"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
+"PO-Revision-Date: 2008-09-24 02:43+0200\n"
+"Last-Translator: Simo Sutela\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -479,8 +479,8 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
-"Joillakin aseilla on erityisiä ominaisuuksia, jotka tehostavat niiden "
-"hyökkäysarvoa.\n"
+"Joillakin aseilla on erityisiä ominaisuuksia, jotka lisäävät niiden "
+"tehokkuutta hyökätessä.\n"
 "\n"
 
 #. [topic]
@@ -639,11 +639,11 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
-"Huomioi tarkasti tavoiteikkuna ennen jokaista skenaariota. Yleensä voitat "
+"Huomioi tarkasti tavoiteikkuna jokaisen skenaarion alussa. Yleensä voitat "
 "tappamalla kaikki vihollisjohtajat ja häviät vain, jos oma johtajasi kuolee. "
-"Mutta skenaarioilla voi olla muitakin voittoedellytyksiä – saada johtajasi "
-"tiettyyn paikkaan, jonkun pelastaminen, arvoituksen ratkaiseminen, tai "
-"paikan puolustaminen, kunnes tietty määrä vuoroja on kulunut."
+"Skenaarioilla voi kuitenkin olla muitakin voittoedellytyksiä – saada "
+"johtajasi tiettyyn paikkaan, jonkun pelastaminen, arvoituksen ratkaiseminen, "
+"tai paikan puolustaminen, kunnes tietty määrä vuoroja on kulunut."
 
 #. [topic]
 #: data/core/help.cfg:154
@@ -658,7 +658,7 @@ msgstr ""
 "\n"
 "\n"
 "Kun voitat skenaarion, kartta harmaantuu ja Lopeta vuoro -nappi muuttuu "
-"Lopeta skenaario -napiksi. Voit vielä tehdä asioita, kuten muuttaa "
+"Päätä skenaario -napiksi. Voit vielä tehdä asioita, kuten muuttaa "
 "tallennusasetuksia tai (moninpelissä) keskustella muiden pelaajien kanssa, "
 "ennen kuin painat lopetusnappia päästääksesi takaisin palvelimen aulaan/"
 "valikkoon."
@@ -968,23 +968,24 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"Joissain skenaarioissa osa kartasta on piilotettu sinulta. Tähän on kaksi "
-"eri tapaa, joita voidaan käyttää yhdessä tai erikseen. Huntu piilottaa "
-"molemmat maaston ja yksiköt. Kuitenkin, kun paljastat alueen, tulet näkemään "
-"alueen aina. Sumu piilottaa vain vihollisyksiköt ja (vain) vihollisten "
-"kylien omistustiedot. Sumu poistuu yksiköittesi näkyvyysalueelta, mutta "
-"palaa, kun yksikkösi poistuu alueelta. Molemmat, huntu ja sumu, puhdistetaan "
-"käyttäen yksiköitä. Jokainen yksikkö poistaa näkyvyysalueensa verran"
-"(lasketaan ilman vihollisia).\n"
+"Joissain skenaarioissa osa kartasta on piilotettu. Tähän on kaksi eri tapaa, "
+"joita voidaan käyttää yhdessä tai erikseen. Huntu piilottaa sekä maaston "
+"että yksiköt. Kun paljastat jonkin alueen, se on kuitenkin pysyvästi "
+"näkyvillä. Sumu piilottaa vain vihollisyksiköt ja muiden kuin omien kyliesi "
+"omistustiedot. Sumu poistuu yksiköittesi läheltä, mutta palaa, kun yksikkösi "
+"poistuvat alueelta. Sekä huntu että sumu hälvennetään käyttäen yksiköitä. "
+"Jokainen yksikkö paljastaa alueet, jotka ovat niiden heksojen vieressä, "
+"joihin pääsee yhden vuoron aikana (ottamatta vihollisia huomioon).\n"
 "\n"
-"Normaalisti voit peruuttaa yksikön liikkeen, niin kauan kuin satunnaisen "
-"tuloksen omaavaa tapahtumaa ei ole tapahtunut, kuten taistelu tai värväys. "
-"Myös piilotetun maaston puhdistaminen hunnusta tai sumusta estää "
-"peruuttamisen. Halutessasi voit aktivoida ”viivytä hunnun päivityksiä” "
-"tapahtumavalikosta. Tämä estää yksiköitä puhdistamasta huntua tai sumua "
-"ennen kuin seuraava satunnainen tapahtuma tai manuaalinen päivitys (”päivitä "
-"huntu nyt”) on ajettu. Näin voit käyttää peruutustoimintoa normaalisti. "
-"Yksiköt tekevät puhdistuksen automaattisesti vuoron lopussa."
+"Tavallisesti voit peruuttaa yksikön liikkeen niin kauan kuin satunnaista "
+"tapahtumaa, kuten taistelua tai värväystä, ei ole tapahtunut. (Useimmat "
+"yksiköt saavat satunnaisia ominaisuuksia.) Myös piilotetun maaston "
+"paljastaminen hunnusta tai sumusta estää peruuttamisen. Halutessasi voit "
+"aktivoida asetuksen ”Viivytä peitteen päivitystä” Toiminnot-valikosta. Tämä "
+"estää yksiköitä hälventämästä huntua tai sumua ennen kuin seuraava "
+"satunnainen tapahtuma tai manuaalinen päivitys (”Päivitä peite nyt”) on "
+"tapahtunut tai vuorosi päättyy. Näin voit käyttää peruutustoimintoa "
+"normaalisti."
 
 #. [topic]
 #: data/core/help.cfg:215
@@ -1076,7 +1077,7 @@ msgstr ""
 "\n"
 "Mahdollisuus osua yksikköön riippuu puolustautuvan yksikön puolustuksesta "
 "siinä maastossa, missä se on. Tämä arvo näkyy tilannepaneelissa, ja sen saa "
-"selville myös painamalla yksikköä hiiren oikealla napilla, valitsemalla "
+"selville myös klikkaamalla yksikköä hiiren oikealla napilla, valitsemalla "
 "Yksikön kuvaus ja katsomalla kohtaa <italic>text='Maaston vaikutus'</"
 "italic>. Esimerkiksi joillakin haltioilla on 70% puolustus metsässä, joten "
 "hyökkäävillä yksiköillä on vain 30% mahdollisuus osua niihin. Haltian "
@@ -1827,7 +1828,7 @@ msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Epäkuolleet yksiköt ovat immuuneja myrkylle, myös imu ja rutto ovat "
+"Epäkuolleet yksiköt ovat immuuneja myrkylle. Myös elämänimu ja rutto ovat "
 "tehottomia niitä vastaan."
 
 #. [topic]
@@ -1858,7 +1859,7 @@ msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Mekaaniset yksiköt ovat immuuneja myrkylle, myös imu ja rutto ovat "
+"Mekaaniset yksiköt ovat immuuneja myrkylle. Myös elämänimu ja rutto ovat "
 "tehottomia niitä vastaan."
 
 #. [topic]
@@ -1873,8 +1874,8 @@ msgstr ""
 "\n"
 "\n"
 "Mekaanisilla yksiköillä on yleensä ”mekaaninen” ainoana ominaisuutenaan. "
-"Koska mekaaniset yksiköt eivät oikeasti elä, imu, myrkky ja rutto eivät "
-"vaikuta niihin."
+"Koska mekaaniset yksiköt eivät oikeasti elä, elämänimu, myrkky ja rutto "
+"eivät vaikuta niihin."
 
 #. [topic]
 #: data/core/help.cfg:398
@@ -1916,8 +1917,8 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
-"Heidän elinvoimalleen maineikkaaksi, jotkut kääpiöt ovat vantterampia kuin "
-"muut ja voivat levätä jopa matkustaessaan."
+"Kääpiöt ovat tunnettuja elinvoimaisuudestaan. Jotkut heistä ovat muita "
+"sitkeämpiä ja voivat levätä jopa matkatessaan."
 
 #. [topic]
 #: data/core/help.cfg:409
@@ -2427,15 +2428,15 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
-"Uponneet kylät ovat merenväen ja nagojen kotina. Samalla kun vesi-asukkaat "
-"olennot ovat kotonaan täällä, maa-asukkailla on ongelmia navigoida ja "
-"puolustaa näitä kyliä. Kuitenkin, kuten kaikki kylät, helpotuksia on "
-"saatavilla kaikille olennoille, mikä antaa yksiköiden parantaa heidän "
-"haavojaan. Jokainen yksikkö kylässä voi parantaa kahdeksan elämäpistettä "
-"vuorossa, tai parantua myrkystä.\n"
+"Uponneet kylät ovat merenväen ja nagojen asuinpaikkoja. Vedessä viihtyvät "
+"olennot ovat täällä kotonaan, kun taas maakravuilla on ongelmia liikkua "
+"näissä kylissä ja puolustaa niitä. Kuten kaikissa kylissä, haavojen "
+"parantamiseen varatut tilat ovat kuitenkin avoinna kaikille olennoille. "
+"Kylään sijoitettu yksikkö paranee kahdeksan elämäpistettä vuorossa tai "
+"parantuu myrkystä.\n"
 "\n"
 "Merenväellä ja nagoilla on 60% puolustus uponneissa kylissä, kun taas "
-"maanpäällisellä väellä on yleensä pieni puolustus."
+"maanpäällisellä väellä on yleensä heikko puolustus."
 
 #. [topic]
 #: data/core/help.cfg:621
@@ -2451,9 +2452,8 @@ msgid ""
 "terrain."
 msgstr ""
 "Kuilu on maassa oleva rotko, jonka syvyys voi olla suunnaton. Kuilujen "
-"tunnusmerkkinä ovat korkeat seinämät, joiden ylittämiseen kuluisi päiviä. "
-"Pelaamisen kannalta tärkeää on, että vain lentävät yksiköt voivat liikkua "
-"yli kuilun."
+"tunnusmerkkinä ovat jyrkät seinämät, joiden kiipeämiseen kuluisi päiviä. "
+"Pelissä vain lentävät yksiköt voivat liikkua kuilujen yli."
 
 #. [topic]
 #: data/core/help.cfg:629
@@ -3206,8 +3206,8 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Kivetys:\n"
-"Tämä hyökkäys kivettää kohteen. Kivetetyt yksiköt eivät voi liikkua eivätkä "
-"hyökätä."
+"Tämä hyökkäys muuttaa kohteen kiveksi. Kivetetyt yksiköt eivät voi liikkua "
+"eivätkä hyökätä."
 
 #: data/core/macros/abilities.cfg:603
 msgid "marksman"
@@ -4537,7 +4537,7 @@ msgstr "epäkuollut"
 #. [trait]
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
-msgstr "Immuuni imulle, myrkylle ja rutolle"
+msgstr "Immuuni elämänimulle, myrkylle ja rutolle"
 
 #. [trait]
 #: data/core/macros/traits.cfg:37
@@ -4902,10 +4902,10 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
-"Kääpiöiden rotu on kuuluisia mainaajistaan, sepistään, kauppiaistaan ja "
+"Kääpiöiden rotu on kuuluisia mainareistaan, sepistään, kauppiaistaan ja "
 "sotureistaan. Heitä pidetään kolmanneksi vanhimpana rotuna suurella "
-"mantereella, heti kääpiöiden ja haltioiden jälken, luonnollisesti heidän "
-"aikainen historiansa on mysteerien peitossa. Legendat kertovat kauan sitten "
+"mantereella, heti haltioiden ja peikkojen jälken, ja heidän varhainen "
+"historiansa on mysteerien peitossa. Legendat kertovat kauan sitten "
 "unohdetusta ajasta, kun he alkoivat ilmestymään heidän maanalaisesta "
 "maailmastaan luolien lävitse. Mitään ei tiedetä heidän elämästään ennen "
 "heidän saapumisestaan, tai syistään maanpäälliselle maailmalle "
@@ -5651,12 +5651,12 @@ msgstr "$name|maa,$name|kylä,$name|pelto"
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|kylä,$name|kylä,$name|salo,$name|metsä"
+msgstr "$name|kylä,$name|kylä,$name|metsä,$name|korpi"
 
 #. [language]
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|mäki,$name|kumpu,$name|harju,$name|salo,$name|kukkula"
+msgstr "$name|mäki,$name|kumpu,$name|harju,$name|kukkula,$name|rinne"
 
 #. [language]
 #: data/hardwired/english.cfg:30
@@ -5911,8 +5911,8 @@ msgid ""
 msgstr ""
 "Hyökkäyksiä on kuutta tyyppiä: lävistys, viilto, murjova, tuli, kylmä ja "
 "salatiede. Eri yksiköillä on heikkouksia erilaisia hyökkäyksiä vastaan. "
-"Paina yksikköä hiiren oikealla napilla, valitse ”Yksikön kuvaus” nähdäksesi, "
-"kuinka hyvin yksikkö vastustaa erilaisia hyökkäystyyppejä."
+"Klikkaa yksikköä hiiren oikealla napilla, valitse ”Yksikön kuvaus” "
+"nähdäksesi, kuinka hyvin yksikkö vastustaa erilaisia hyökkäystyyppejä."
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -6309,7 +6309,7 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
-"Et voi peruuttaa siirtoa, joka on puhdistanut yhtään sumua tai huntua. Aseta "
+"Et voi peruuttaa siirtoa, joka on hälventänyt yhtään sumua tai huntua. Aseta "
 "”Viivytä peitteen päivitystä” -asetus päälle, jos tarvitset tällaisissa "
 "tilanteissa peruutustoimintoa."
 
@@ -6357,7 +6357,7 @@ msgstr "Lopeta vuoro"
 #: data/themes/default.cfg:154 data/themes/default.cfg:779
 #: data/themes/default.cfg:1033 data/themes/dfool.cfg:161
 msgid "End Scenario"
-msgstr "Lopeta skenaario"
+msgstr "Päätä skenaario"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6808,7 +6808,7 @@ msgstr "Yhdistetään palvelimeen..."
 
 #: src/addon_management.cpp:895
 msgid "Could not connect to host."
-msgstr "Yhteyttä isäntäkoneeseen ei saatu."
+msgstr "Yhteyttä koneeseen ei saatu."
 
 #: src/addon_management.cpp:903
 #, fuzzy
@@ -6864,7 +6864,7 @@ msgstr "Verkkoviestintävirhe."
 
 #: src/addon_management.cpp:1065
 msgid "Remote host disconnected."
-msgstr "Isäntäkone katkaisi yhteyden."
+msgstr "Toinen kone katkaisi yhteyden."
 
 #: src/addon_management.cpp:1068
 #, fuzzy
@@ -8233,7 +8233,7 @@ msgstr ""
 #: src/multiplayer.cpp:198
 #, fuzzy
 msgid "Choose a different username"
-msgstr "Ota yhteys toiselle palvelimelle"
+msgstr "Ota yhteys toiseen palvelimeen"
 
 #: src/multiplayer.cpp:215
 #, fuzzy
@@ -8506,7 +8506,7 @@ msgstr "Ei löydetä aikakausia."
 
 #: src/multiplayer_create.cpp:226
 msgid "$login's game"
-msgstr "$login:n peli"
+msgstr "$login’n peli"
 
 #: src/multiplayer_create.cpp:285
 msgid "Invalid era selected"
@@ -8928,7 +8928,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:646
 msgid "It is now $name|'s turn"
-msgstr "Vuorossa on nyt $name"
+msgstr "Nyt on vuorossa $name"
 
 #: src/playturn.cpp:226
 msgid "Replace with AI"
@@ -9343,7 +9343,7 @@ msgstr "Salli yhteenvetojen lähettäminen"
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"
 #~ msgstr ""
 #~ "Pelaa moninpeli tekoälyn tai muiden ihmisten kanssa käyttäen yhtä "
-#~ "tietokonetta"
+#~ "tietokonetta."
 
 #~ msgid "Language"
 #~ msgstr "Valitse kieli"
@@ -9410,7 +9410,7 @@ msgstr "Salli yhteenvetojen lähettäminen"
 #~ msgstr "Yhdistä"
 
 #~ msgid "Choose host to connect to: "
-#~ msgstr "Valitse isäntäkone, johon yhdistetään: "
+#~ msgstr "Valitse kone, johon yhdistetään: "
 
 #~ msgid "No multiplayer sides available in this game"
 #~ msgstr "Tässä pelissä ei ole vapaata puolta."

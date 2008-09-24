@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-09 23:12+0200\n"
-"PO-Revision-Date: 2008-08-10 19:57+0100\n"
+"PO-Revision-Date: 2008-09-21 16:15+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -442,9 +442,8 @@ msgid "Y-Axis"
 msgstr "Eixe Y"
 
 #: src/editor/editor_dialogs.cpp:687
-#, fuzzy
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Dar a volta (isto pode cambiar as dimensións do mapa):"
+msgstr "Virar (isto pode cambiar as dimensións do mapa):"
 
 #: src/filechooser.cpp:62
 msgid "File: "
@@ -545,7 +544,6 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Show Floating Labels"
 msgstr "Mostrar etiquetas flotantes"
 
@@ -566,9 +564,8 @@ msgid "Show Color Cursors"
 msgstr "Amosar Cursores Coloreados"
 
 #: src/game_preferences_display.cpp:186
-#, fuzzy
 msgid "Show Haloing Effects"
-msgstr "Mostrar Efectos Halo"
+msgstr "Mostrar Efectos de Halo"
 
 #: src/game_preferences_display.cpp:187
 msgid "Change Resolution"
@@ -583,7 +580,6 @@ msgid "Adjust Gamma"
 msgstr "Axustar Gamma"
 
 #: src/game_preferences_display.cpp:191
-#, fuzzy
 msgid "Reverse Time Graphics"
 msgstr "Inverter os Gráficos de Hora"
 
@@ -644,7 +640,6 @@ msgid "Gamma:"
 msgstr "Gamma:"
 
 #: src/game_preferences_display.cpp:210
-#, fuzzy
 msgid "Sample Rate (Hz):"
 msgstr "Frecuencia de Mostraxe (Hz):"
 
@@ -681,12 +676,10 @@ msgid "Change the sound volume for button clicks, etc."
 msgstr "Cambiar o volume do son de premer nos botóns, etc."
 
 #: src/game_preferences_display.cpp:261
-#, fuzzy
 msgid "Change the sample rate"
 msgstr "Cambiar a frecuencia de mostraxe"
 
 #: src/game_preferences_display.cpp:270
-#, fuzzy
 msgid "User defined sample rate"
 msgstr "Frecuencia de mostraxe definida polo usuario"
 
@@ -854,9 +847,11 @@ msgstr "Ver e configurar os atallos de teclado"
 msgid "Speed: "
 msgstr "Velocidade:"
 
+# buscar tradución de save por algures!!!
 #: src/game_preferences_display.cpp:703 src/game_preferences_display.cpp:705
+#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Número máximo de partidas gardadas automáticamente             :"
 
 #: src/game_preferences_display.cpp:703
 msgid "infinite"
@@ -903,9 +898,8 @@ msgid "Advanced section^Advanced"
 msgstr "Avanzado"
 
 #: src/game_preferences_display.cpp:1178
-#, fuzzy
 msgid "Saved Theme Preference: "
-msgstr "Preferencia do Tema Gardado:"
+msgstr "Preferencia de Tema Gardada:"
 
 #: src/game_preferences_display.cpp:1184
 msgid "New theme will take effect on next new or loaded game."
@@ -1233,7 +1227,6 @@ msgid "Set Player's keep"
 msgstr "Establecer a torre do Xogador"
 
 #: src/hotkeys.cpp:118
-#, fuzzy
 msgid "Flood Fill"
 msgstr "Encher a selección"
 

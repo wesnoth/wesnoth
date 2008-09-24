@@ -42,15 +42,14 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 \fB\-c, \-\-campaign\fP
 skip menu, show directly the campaign menu.
 .TP 
-\fB\-\-compress\fP\fI\ infile\ outfile\fP
-テキストWML形式のセーブファイル(\fIinfile\fP)をバイナリWML形式(\fIoutfile\fP)に圧縮する。
+\fB\-\-config\-dir <name>\fP
+Makes wesnoth use <name> directory in $HOME for storing user data.
+win32: If <name> is SHARED wesnoth uses userdata directory in
+weanoth instalation directory.
 .TP 
 \fB\-d, \-\-debug\fP
 追加のデバッグ用情報を表示して、ゲーム内での追加コマンドモードオプションを有効にする。(コマンドモードについてのより多くの情報については、ウェブサイト
 http://www.wesnoth.org/wiki/CommandMode を参照のこと)
-.TP 
-\fB\-\-decompress\fP\fI\ infile\ outfile\fP
-バイナリWML形式のセーブファイル(\fIinfile\fP)をテキストWML形式(\fIoutfile\fP)に展開する。
 .TP 
 \fB\-\-dummylocales\fP
 Use special dummy locales to switch to any language even if that language

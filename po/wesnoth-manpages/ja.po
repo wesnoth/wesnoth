@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2008-09-09 23:13+0300\n"
+"POT-Creation-Date: 2008-09-24 22:18+0300\n"
 "PO-Revision-Date: 2008-02-19 00:21+0900\n"
 "Last-Translator: Naoki IIMURA <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -128,27 +128,26 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, no-wrap
-msgid "B<--compress>I<\\ infile\\ outfile>"
-msgstr "B<--compress>I<\\ infile\\ outfile>"
+#, fuzzy, no-wrap
+msgid "B<--config-dir E<lt>nameE<gt>>"
+msgstr "B<--path>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:58
+#: ../../doc/man/wesnoth.6:56
 msgid ""
-"compresses a savefile (I<infile>)  that is in text WML format into binary "
-"WML format (I<outfile>)."
+"Makes wesnoth use E<lt>nameE<gt> directory in $HOME for storing user data.  "
+"win32: If E<lt>nameE<gt> is SHARED wesnoth uses userdata directory in "
+"weanoth instalation directory."
 msgstr ""
-"テキストWML形式のセーブファイル(I<infile>)をバイナリWML形式(I<outfile>)に圧縮"
-"する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:58
+#: ../../doc/man/wesnoth.6:56
 #, no-wrap
 msgid "B<-d, --debug>"
 msgstr "B<-d, --debug>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:63
+#: ../../doc/man/wesnoth.6:61
 msgid ""
 "shows extra debugging information and enables additional command mode "
 "options in-game (see the website at http://www.wesnoth.org/wiki/CommandMode "
@@ -159,65 +158,50 @@ msgstr ""
 "http://www.wesnoth.org/wiki/CommandMode を参照のこと)"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:63
-#, no-wrap
-msgid "B<--decompress>I<\\ infile\\ outfile>"
-msgstr "B<--decompress>I<\\ infile\\ outfile>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth.6:69
-msgid ""
-"decompresses a savefile (I<infile>)  that is in binary WML format into text "
-"WML format (I<outfile>)."
-msgstr ""
-"バイナリWML形式のセーブファイル(I<infile>)をテキストWML形式(I<outfile>)に展開"
-"する。"
-
-# type: TP
-#: ../../doc/man/wesnoth.6:69
+#: ../../doc/man/wesnoth.6:61
 #, fuzzy, no-wrap
 msgid "B<--dummylocales>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:65
 msgid ""
 "Use special dummy locales to switch to any language even if that language "
 "isn't installed to system"
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:65
 #, no-wrap
 msgid "B<-f, --fullscreen>"
 msgstr "B<-f, --fullscreen>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:76
+#: ../../doc/man/wesnoth.6:68
 msgid "runs the game in full screen mode."
 msgstr "フルスクリーンモードでゲームを実行する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:76
+#: ../../doc/man/wesnoth.6:68
 #, no-wrap
 msgid "B<--fps>"
 msgstr "B<--fps>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:80
+#: ../../doc/man/wesnoth.6:72
 msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr "ゲーム実行時の秒当たりのフレーム数(FPS)をスクリーンの隅に表示する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:80
+#: ../../doc/man/wesnoth.6:72
 #, no-wrap
 msgid "B<--gunzip>I<\\ infile.gz>"
 msgstr "B<--gunzip>I<\\ infile.gz>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:86
+#: ../../doc/man/wesnoth.6:78
 msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
@@ -226,13 +210,13 @@ msgstr ""
 "する。I<infile.gz> は削除される。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:86
+#: ../../doc/man/wesnoth.6:78
 #, no-wrap
 msgid "B<--gzip>I<\\ infile>"
 msgstr "B<--gzip>I<\\ infile>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:84
 msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
@@ -241,47 +225,47 @@ msgstr ""
 "除する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:92 ../../doc/man/wesnothd.6:55
+#: ../../doc/man/wesnoth.6:84 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:95
+#: ../../doc/man/wesnoth.6:87
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr "標準出力にコマンドラインオプションの要約を表示して、終了する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:95
+#: ../../doc/man/wesnoth.6:87
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
 msgstr "B<--load>I<\\ savegame>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:98
+#: ../../doc/man/wesnoth.6:90
 msgid "loads the file savegame from the standard save game directory."
 msgstr "ファイル savegame を標準のセーブゲームディレクトリから読み込む。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:98
+#: ../../doc/man/wesnoth.6:90
 #, fuzzy, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:93
 msgid "replays the game loaded with --load option."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:101 ../../doc/man/wesnothd.6:58
+#: ../../doc/man/wesnoth.6:93 ../../doc/man/wesnothd.6:58
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:110 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnoth_editor.6:56
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -292,24 +276,24 @@ msgstr ""
 "\\ B<info>、\\ B<debug>。デフォルトでは B<error> レベルが使用される。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:110 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnoth_editor.6:56
 #, no-wrap
 msgid "B<--logdomains>"
 msgstr "B<--logdomains>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:113 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnoth_editor.6:59
 msgid "Dumps a list of all log domains and exits."
 msgstr "すべてのログ領域(domain)のリストを表示して、終了する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:113
+#: ../../doc/man/wesnoth.6:105
 #, no-wrap
 msgid "B<--max-fps>"
 msgstr "B<--max-fps>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:118
+#: ../../doc/man/wesnoth.6:110
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is B<50>."
@@ -318,13 +302,13 @@ msgstr ""
 "は B<50>。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:118
+#: ../../doc/man/wesnoth.6:110
 #, fuzzy, no-wrap
 msgid "B<-m, --multiplayer>"
 msgstr "B<--multiplayer>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:124
+#: ../../doc/man/wesnoth.6:116
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
@@ -333,127 +317,127 @@ msgstr ""
 "プションは後述。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:124
+#: ../../doc/man/wesnoth.6:116
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:127
+#: ../../doc/man/wesnoth.6:119
 msgid "disables caching of game data."
 msgstr "ゲームデータのキャッシュを使用しない。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:127
+#: ../../doc/man/wesnoth.6:119
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:130
+#: ../../doc/man/wesnoth.6:122
 msgid "runs the game without sounds and music."
 msgstr "サウンドや音楽なしでゲームを実行する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:130
+#: ../../doc/man/wesnoth.6:122
 #, fuzzy, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:133
+#: ../../doc/man/wesnoth.6:125
 #, fuzzy
 msgid "runs the game without only music."
 msgstr "サウンドや音楽なしでゲームを実行する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:133 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:125 ../../doc/man/wesnoth_editor.6:59
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:136 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:128 ../../doc/man/wesnoth_editor.6:62
 msgid "prints the name of the game data directory and exits."
 msgstr "ゲームデータディレクトリの名前を表示して、終了する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:136
+#: ../../doc/man/wesnoth.6:128
 #, fuzzy, no-wrap
 msgid "B<--config-path>"
 msgstr "B<--path>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:139
+#: ../../doc/man/wesnoth.6:131
 #, fuzzy
 msgid "prints the name of the user configuration directory and exits."
 msgstr "ゲームデータディレクトリの名前を表示して、終了する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:139 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:131 ../../doc/man/wesnoth_editor.6:62
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:143
+#: ../../doc/man/wesnoth.6:135
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "画面解像度を設定する。 例: B<-r 800x600>"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:143
+#: ../../doc/man/wesnoth.6:135
 #, fuzzy, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-v, --verbose>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:147
+#: ../../doc/man/wesnoth.6:139
 msgid ""
 "skip menu, connect to specified host if any, otherwise connect to the first "
 "server in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:147
+#: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:150
+#: ../../doc/man/wesnoth.6:142
 msgid "runs the game in a small test scenario."
 msgstr "簡単なテストシナリオでゲームを実行する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:150
+#: ../../doc/man/wesnoth.6:142
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:153
+#: ../../doc/man/wesnoth.6:145
 msgid "shows the version number and exits."
 msgstr "バージョン番号を表示して、終了する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:153
+#: ../../doc/man/wesnoth.6:145
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:156
+#: ../../doc/man/wesnoth.6:148
 msgid "runs the game in windowed mode."
 msgstr "ウィンドウ化されたモードでゲームを実行する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:156
+#: ../../doc/man/wesnoth.6:148
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:160
+#: ../../doc/man/wesnoth.6:152
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by B<--nogui>."
@@ -462,13 +446,13 @@ msgstr ""
 "nogui> では自動的に有効になる。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:160
+#: ../../doc/man/wesnoth.6:152
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:165
+#: ../../doc/man/wesnoth.6:157
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -477,13 +461,13 @@ msgstr ""
 "なければならない。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:165
+#: ../../doc/man/wesnoth.6:157
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:168
+#: ../../doc/man/wesnoth.6:160
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -493,13 +477,13 @@ msgstr ""
 "を表示せずに終了する。これはスクリプト化可能なベンチマークにも利用される。"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:169
+#: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "--multiplayer 用のオプション"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:168
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -510,13 +494,13 @@ msgstr ""
 "択されたシナリオでの可能なプレイヤー数に依存する。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:168
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<number>B<=>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:175
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -525,25 +509,25 @@ msgstr ""
 "る。設定可能な値(value)は、 B<idle_ai> と B<sample_ai>。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:175
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<number>B<=>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:189
+#: ../../doc/man/wesnoth.6:181
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "この陣営の操作者を選択する。設定可能な値(value)は、B<human> と B<ai>。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:189
+#: ../../doc/man/wesnoth.6:181
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:188
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -554,13 +538,13 @@ msgstr ""
 "に記述されている。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:188
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:205
+#: ../../doc/man/wesnoth.6:197
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -571,13 +555,13 @@ msgstr ""
 "用と思われる。(まだ完全には文書化されていない)"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:205
+#: ../../doc/man/wesnoth.6:197
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:209
+#: ../../doc/man/wesnoth.6:201
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -586,13 +570,13 @@ msgstr ""
 "B<multiplayer_The_Freelands>。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:209
+#: ../../doc/man/wesnoth.6:201
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:214
+#: ../../doc/man/wesnoth.6:206
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -601,24 +585,24 @@ msgstr ""
 "ファイル data/multiplayer.cfg の中に記述されている。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:214
+#: ../../doc/man/wesnoth.6:206
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:218
+#: ../../doc/man/wesnoth.6:210
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "選択されたシナリオのターン数を設定する。 既定値は B<50>。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:218
+#: ../../doc/man/wesnoth.6:210
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
 msgstr "あなた自身の AI を GUI を表示させることなくデフォルトの AI と対戦させるための例:"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:213
 msgid ""
 "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
@@ -627,19 +611,19 @@ msgstr ""
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:222 ../../doc/man/wesnoth_editor.6:74
+#: ../../doc/man/wesnoth.6:214 ../../doc/man/wesnoth_editor.6:74
 #: ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "著者"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:225 ../../doc/man/wesnoth_editor.6:77
+#: ../../doc/man/wesnoth.6:217 ../../doc/man/wesnoth_editor.6:77
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "David White E<lt>davidnwhite@verizon.netE<gt>によって書かれた。"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:227
+#: ../../doc/man/wesnoth.6:219
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -648,7 +632,7 @@ msgstr ""
 "と Soliton E<lt>soliton@gmail.comE<gt> によって編集された。"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:229 ../../doc/man/wesnoth_editor.6:81
+#: ../../doc/man/wesnoth.6:221 ../../doc/man/wesnoth_editor.6:81
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -658,27 +642,27 @@ msgstr ""
 "た。"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:231 ../../doc/man/wesnoth_editor.6:83
+#: ../../doc/man/wesnoth.6:223 ../../doc/man/wesnoth_editor.6:83
 #: ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "公式ホームページ http://www.wesnoth.org/ を訪問して下さい。"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnoth_editor.6:84
+#: ../../doc/man/wesnoth.6:224 ../../doc/man/wesnoth_editor.6:84
 #: ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "著作権"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:235 ../../doc/man/wesnoth_editor.6:87
+#: ../../doc/man/wesnoth.6:227 ../../doc/man/wesnoth_editor.6:87
 #: ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnoth_editor.6:90
+#: ../../doc/man/wesnoth.6:230 ../../doc/man/wesnoth_editor.6:90
 #: ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
@@ -690,14 +674,14 @@ msgstr ""
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:239 ../../doc/man/wesnoth_editor.6:91
+#: ../../doc/man/wesnoth.6:231 ../../doc/man/wesnoth_editor.6:91
 #: ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "関連項目"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:242
+#: ../../doc/man/wesnoth.6:234
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 
@@ -1279,3 +1263,27 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: TP
+#~ msgid "B<--compress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--compress>I<\\ infile\\ outfile>"
+
+# type: Plain text
+#~ msgid ""
+#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
+#~ "WML format (I<outfile>)."
+#~ msgstr ""
+#~ "テキストWML形式のセーブファイル(I<infile>)をバイナリWML形式(I<outfile>)に"
+#~ "圧縮する。"
+
+# type: TP
+#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--decompress>I<\\ infile\\ outfile>"
+
+# type: Plain text
+#~ msgid ""
+#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
+#~ "text WML format (I<outfile>)."
+#~ msgstr ""
+#~ "バイナリWML形式のセーブファイル(I<infile>)をテキストWML形式(I<outfile>)に"
+#~ "展開する。"

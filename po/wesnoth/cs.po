@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-09 23:12+0200\n"
-"PO-Revision-Date: 2008-09-03 23:41+0100\n"
+"PO-Revision-Date: 2008-09-23 13:51+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -6487,9 +6487,8 @@ msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "Poslána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
 
 #: src/actions.cpp:1048 src/actions.cpp:1319
-#, fuzzy
 msgid "female^poisoned"
-msgstr "nemrtvá"
+msgstr "otrávená"
 
 #: src/actions.cpp:1053 src/actions.cpp:1324
 #, fuzzy
@@ -6761,7 +6760,7 @@ msgstr "Všechna rozšíření byla úspěšně aktualizována."
 #: src/addon_management.cpp:892
 #, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "Připojuji se na server...."
+msgstr "Připojuji se na server..."
 
 #: src/addon_management.cpp:895
 msgid "Could not connect to host."
@@ -6823,11 +6822,10 @@ msgid "Remote host disconnected."
 msgstr "Vzdálený hostitel se odpojil."
 
 #: src/addon_management.cpp:1068
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
+msgstr "Při vytváření souborů potřebných k instalaci rozšíření došlo k chybě."
 
 #: src/addon_management.cpp:1085
 msgid "You have no add-ons installed."
@@ -8651,7 +8649,7 @@ msgstr "Vyber si svoji stranu:"
 
 #: src/multiplayer_wait.cpp:314
 msgid "Starting position: "
-msgstr ""
+msgstr "Počáteční pozice: "
 
 #: src/network.cpp:110
 msgid "invalid network handle"
@@ -8693,9 +8691,8 @@ msgid "Initializing teams"
 msgstr "Nastavuji týmy"
 
 #: src/play_controller.cpp:145
-#, fuzzy
 msgid "Loading units"
-msgstr "Načítám soubory s jednotkami."
+msgstr "Načítám jednotky"
 
 #: src/play_controller.cpp:152 src/play_controller.cpp:160
 msgid "Initializing display"
@@ -9144,16 +9141,15 @@ msgstr "Odeslat statistiky"
 #: src/titlescreen.cpp:460
 #, fuzzy
 msgid "Help Wesnoth"
-msgstr "Bitva o Wesnoth"
+msgstr "Pomozte Wesnothu"
 
 #: src/titlescreen.cpp:461
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomozte Wesnothu tím, že nám odešlete informace"
 
 #: src/unit.cpp:615
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Neznámá jednotka „$type|“"
+msgstr "Neznámá jednotka „$type|“ při vytváření vlastností."
 
 #: src/unit.cpp:816
 msgid "Unknown unit type '$type|'"

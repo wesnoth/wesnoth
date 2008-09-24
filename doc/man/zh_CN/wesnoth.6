@@ -44,15 +44,14 @@ wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
 \fB\-c, \-\-campaign\fP
 skip menu, show directly the campaign menu.
 .TP 
-\fB\-\-compress\fP\fI\ infile\ outfile\fP
-将文本格式的WML存档文件(\fIinfile\fP)压缩为二进制格式的WML存档文件(\fIoutfile\fP)。
+\fB\-\-config\-dir <name>\fP
+Makes wesnoth use <name> directory in $HOME for storing user data.
+win32: If <name> is SHARED wesnoth uses userdata directory in
+weanoth instalation directory.
 .TP 
 \fB\-d, \-\-debug\fP
 显示额外的调试信息，使一些附加的命令模式选项可用。关于命令模式(Command Mode)可以参考wiki:
 http://www.wesnoth.org/wiki/CommandMode
-.TP 
-\fB\-\-decompress\fP\fI\ infile\ outfile\fP
-将二进制格式的WML存档文件(\fIinfile\fP)压缩为文本格式的WML存档文件(\fIoutfile\fP)
 .TP 
 \fB\-\-dummylocales\fP
 Use special dummy locales to switch to any language even if that language
