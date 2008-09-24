@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2008-06-01 10:50+0200\n"
+"POT-Creation-Date: 2008-09-24 22:21+0300\n"
 "PO-Revision-Date: 2008-08-13 14:46+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -455,7 +455,7 @@ msgstr ""
 "--parm2=python_script:py/my_own_python_ai.py"
 
 #: ../../doc/man/wesnoth.6:202 ../../doc/man/wesnoth_editor.6:74
-#: ../../doc/man/wesnothd.6:163
+#: ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
@@ -479,25 +479,25 @@ msgid ""
 msgstr "這個說明頁最早由 Cyril Bouthors 撰寫E<lt>cyril@bouthors.orgE<gt>。"
 
 #: ../../doc/man/wesnoth.6:211 ../../doc/man/wesnoth_editor.6:83
-#: ../../doc/man/wesnothd.6:170
+#: ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "官方網站: http://www.wesnoth.org/繁體中文翻譯團隊:http://wesnoth-tw.blogspot."
 "com/"
 
 #: ../../doc/man/wesnoth.6:212 ../../doc/man/wesnoth_editor.6:84
-#: ../../doc/man/wesnothd.6:171
+#: ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版權"
 
 #: ../../doc/man/wesnoth.6:215 ../../doc/man/wesnoth_editor.6:87
-#: ../../doc/man/wesnothd.6:174
+#: ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版權 \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #: ../../doc/man/wesnoth.6:218 ../../doc/man/wesnoth_editor.6:90
-#: ../../doc/man/wesnothd.6:177
+#: ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -510,7 +510,7 @@ msgstr ""
 "not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 #: ../../doc/man/wesnoth.6:219 ../../doc/man/wesnoth_editor.6:91
-#: ../../doc/man/wesnothd.6:178
+#: ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "參見"
@@ -649,10 +649,11 @@ msgid "B<wesnothd> B<-V>"
 msgstr "B<wesnothd> B<-V>"
 
 #: ../../doc/man/wesnothd.6:44
+#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
-"wesnoth client or the socket."
+"wesnoth client (/query ...) or the fifo."
 msgstr ""
 "控制韋諾之戰多人遊戲。 官方wiki上的ServerAdministration頁面上取得更多可以經由"
 "韋諾之戰客戶端或者socket在伺服器上運行的指令。對應wiki: http://www.wesnoth."
@@ -777,23 +778,36 @@ msgstr "[/I<tag>]"
 msgid "Global keys:"
 msgstr "全球關鍵字:"
 
+# type: TP
 #: ../../doc/man/wesnothd.6:110
+#, no-wrap
+msgid "B<ban_save_file>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:114
+msgid ""
+"Full or relative path to a (gzip compressed) file that the server can read "
+"and write.  Bans will be saved to this file and read again on server start."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:114
 #, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
-#: ../../doc/man/wesnothd.6:113
+#: ../../doc/man/wesnothd.6:117
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
 msgstr "同一IP允許的連接數。(預設值：B<5>)"
 
-#: ../../doc/man/wesnothd.6:113
+#: ../../doc/man/wesnothd.6:117
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
-#: ../../doc/man/wesnothd.6:120
+#: ../../doc/man/wesnothd.6:124
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -804,52 +818,78 @@ msgstr ""
 "查看 B<glob>(7) 。預設值(如果使用者沒有指定則自動使用)是： B<*admin*,*admln*,"
 "*server*,ai,ai?,computer,human,network,player>。"
 
-#: ../../doc/man/wesnothd.6:120
+#: ../../doc/man/wesnothd.6:124
+#, fuzzy, no-wrap
+msgid "B<fifo_path>"
+msgstr "B<--path>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:128
+msgid ""
+"The path to the fifo you can echo server commands into (same as /query ... "
+"from wesnoth).  If not specified defaults to the compile-time specified path "
+"(default: /var/run/socket/wesnothd/socket)."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:128
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
-#: ../../doc/man/wesnothd.6:123
+#: ../../doc/man/wesnothd.6:131
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr "B<messages_time_period>中允許存在的訊息數。 (默認值: B<4>)"
 
-#: ../../doc/man/wesnothd.6:123
+#: ../../doc/man/wesnothd.6:131
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
-#: ../../doc/man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:134
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
 msgstr "訊息檢測間隔(秒)。 (預設值: B<10> 秒)"
 
-#: ../../doc/man/wesnothd.6:126
+#: ../../doc/man/wesnothd.6:134
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
-#: ../../doc/man/wesnothd.6:129
+#: ../../doc/man/wesnothd.6:137
 msgid "The message of the day."
 msgstr "當日訊息。"
 
-#: ../../doc/man/wesnothd.6:129
+#: ../../doc/man/wesnothd.6:137
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
-#: ../../doc/man/wesnothd.6:132
+#: ../../doc/man/wesnothd.6:140
 msgid ""
 "The password used to gain admin privileges. Usually it starts with `admin '."
 msgstr "取得管理員權限的密碼。通常以\"admin\"開頭。"
 
-#: ../../doc/man/wesnothd.6:132
+# type: TP
+#: ../../doc/man/wesnothd.6:140
+#, no-wrap
+msgid "B<restart_command>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:143
+msgid ""
+"The command that the server uses to start a new server process via the "
+"`restart' command. (Can only be issued via the fifo.)"
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:143
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
-#: ../../doc/man/wesnothd.6:136
+#: ../../doc/man/wesnothd.6:147
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
@@ -858,45 +898,45 @@ msgstr ""
 "用逗號分隔的伺服器接受版本列表。支援 \"＊\" 和 \"？\" 符號。（預設為相同版"
 "本）"
 
-#: ../../doc/man/wesnothd.6:138
+#: ../../doc/man/wesnothd.6:149
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "例如: B<versions_accepted=\"*\"> 允許所有版本連接。"
 
-#: ../../doc/man/wesnothd.6:139
+#: ../../doc/man/wesnothd.6:150
 #, no-wrap
 msgid "Global tags:"
 msgstr "全球標籤:"
 
-#: ../../doc/man/wesnothd.6:144
+#: ../../doc/man/wesnothd.6:155
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
 msgstr "B<[redirect]> 伺服器用來重定向特定客戶端版本的標簽。"
 
-#: ../../doc/man/wesnothd.6:145
+#: ../../doc/man/wesnothd.6:156
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
-#: ../../doc/man/wesnothd.6:148
+#: ../../doc/man/wesnothd.6:159
 msgid "The address of the server to redirect to."
 msgstr "重定向到的伺服器地址。"
 
-#: ../../doc/man/wesnothd.6:148
+#: ../../doc/man/wesnothd.6:159
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
-#: ../../doc/man/wesnothd.6:151
+#: ../../doc/man/wesnothd.6:162
 msgid "The port to connect to."
 msgstr "連接埠口"
 
-#: ../../doc/man/wesnothd.6:151
+#: ../../doc/man/wesnothd.6:162
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
-#: ../../doc/man/wesnothd.6:156
+#: ../../doc/man/wesnothd.6:167
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -904,7 +944,40 @@ msgstr ""
 "重定向用逗號分隔列表的版本。顯示同樣的模式包括B<versions_accepted>在符號模"
 "式。"
 
-#: ../../doc/man/wesnothd.6:162
+# type: Plain text
+#: ../../doc/man/wesnothd.6:171
+msgid ""
+"B<[ban_time]> A tag to define convenient keywords for temporary ban time "
+"lengths."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:172
+#, fuzzy, no-wrap
+msgid "B<name>"
+msgstr "B<--nocache>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:175
+msgid "The name used to reference the ban time."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:175
+#, no-wrap
+msgid "B<time>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:181
+msgid ""
+"The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
+"(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
+"is a number.  If no time modifier is given minutes (m) are assumed.  "
+"Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
+"minutes."
+msgstr ""
+
+#: ../../doc/man/wesnothd.6:187
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -913,7 +986,7 @@ msgstr ""
 "B<[proxy]> 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺"
 "服器。與B<[redirect]>接受一樣的參數。"
 
-#: ../../doc/man/wesnothd.6:168
+#: ../../doc/man/wesnothd.6:193
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
@@ -925,6 +998,6 @@ msgstr ""
 "E<lt>soliton.de@gmail.comE<gt>修改。這個說明頁最早由Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>編寫。"
 
-#: ../../doc/man/wesnothd.6:181
+#: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-02 22:27+0200\n"
-"PO-Revision-Date: 2008-08-10 19:51+0100\n"
+"PO-Revision-Date: 2008-09-23 16:16+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -894,7 +894,7 @@ msgstr ""
 "nela, seleccionando Descrición da Unidade, e despois mirando en "
 "<italic>text='Modificadores de Terreo'</italic>."
 
-# hostigadores=fustrigadores??
+# hostigadores=fustrigadores??  guerrilleiros??
 #. [topic]
 #: data/core/help.cfg:200
 #, fuzzy
@@ -1673,10 +1673,8 @@ msgstr ""
 "As unidades rápidas teñen 1 punto de movemento a maiores, pero un 5% HP "
 "menor ó normal."
 
-# heavy infantry==???
 #. [topic]
 #: data/core/help.cfg:347
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2727,8 +2725,10 @@ msgstr ""
 "botón 'máis' na 'Táboa de Estado' (alt+s por defecto) para chegar alí.\n"
 "\n"
 
+# isto está ben traducido en principio, fuzzy para comparar ca cadea de "ban a user in a multiplayer...
 #. [topic]
 #: data/core/help.cfg:720
+#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2974,7 +2974,7 @@ msgstr ""
 "bando có líder que manda ó combate, os seus ataques inflixirán un 25% máis "
 "dano ca veces a diferencia entre os seus niveis."
 
-# fustrigador?? escapulidor??? guerrilla??
+# fustrigador?? escapulidor??? guerrilla?? acosador???
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:335
 #, fuzzy
@@ -4267,7 +4267,7 @@ msgstr ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
-# aldea, ribeira
+# aldea, ribeira, vila
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
@@ -5610,41 +5610,50 @@ msgstr "Bosque $name,Bosque de $name"
 msgid "$name Lake"
 msgstr "Lago $name"
 
+# nome de vila
 #. [language]
 #: data/hardwired/english.cfg:23
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
+# nome de vila xunta a un lago
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name|harbor,$name|port"
 msgstr ""
 
+# nome de vila xunta a un río
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
+# nome de vila con ponte sobre un río
+# riba de xxx, ribas de xxx, beira xxx
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
+# nome de vila nun prado
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
+# nome de vila nun bosque
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
+# nome de vila nun outeiro
 #. [language]
 #: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
+# nome de vila na montaña
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid ""
@@ -5789,8 +5798,8 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"Hai algunhas pantallas de resumo útiles no menú principal: por exemplo, a "
-"'Táboa de Estado' permitiráche saber como o fan os teus inimigos, e como o "
+"Hai algunhas ventás de resumo útiles no menú principal: por exemplo, a "
+"'Táboa de Estado' permitirache saber como o fan os teus inimigos, e como o "
 "estás facendo ti en comparación."
 
 #. [tip]
@@ -5940,7 +5949,7 @@ msgstr ""
 "menú 'Accións'. Volvendo chamar as mesmas unidades unha e outra vez, poderás "
 "construír un exército poderoso e con experiencia."
 
-# fustrigadores
+# fustrigadores, guerrilleiros???
 #. [tip]
 #: data/hardwired/tips.cfg:71
 #, fuzzy
@@ -6173,7 +6182,7 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Podes ver ata onde se poden mover as unidades inimigas poñendo o punteiro do "
+"Podes ver ata onde poden moverse as unidades inimigas poñendo o punteiro do "
 "rato enriba delas."
 
 #. [tip]
@@ -6262,7 +6271,7 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
-"Case calquera icona e palabra da pantalla de xogo de Wesnoth ten un "
+"Case tódalas iconas e palabras da pantalla de xogo de Wesnoth teñen un "
 "consello. Pon o punteiro do rato enriba dunha para obter unha explicación ou "
 "descrición."
 
@@ -6943,7 +6952,7 @@ msgstr "Non hai complementos dispoñibles para descargar dende este servidor."
 
 #: src/game.cpp:1252
 msgid "Get Add-ons"
-msgstr "Obter Complementos"
+msgstr "Complementos"
 
 #: src/game.cpp:1253
 msgid "Choose the add-on to download."
@@ -7036,7 +7045,7 @@ msgstr ""
 
 #: src/game.cpp:1505 src/multiplayer.cpp:233
 msgid "Login: "
-msgstr "Usuario:"
+msgstr "Usuario: "
 
 #: src/game.cpp:1542 src/playcampaign.cpp:101 src/playcampaign.cpp:388
 msgid "The game could not be loaded: "
@@ -7415,7 +7424,7 @@ msgstr "Os mapas aleatorios cun ancho raro non están soportados."
 #: src/menu_events.cpp:55 src/menu_events.cpp:893 src/menu_events.cpp:895
 #: src/play_controller.cpp:821 src/playcampaign.cpp:114
 msgid "Auto-Save"
-msgstr "Gardar Automaticamente"
+msgstr "Automático"
 
 #: src/menu_events.cpp:127 src/menu_events.cpp:176
 msgid "Recruits"
@@ -7448,7 +7457,7 @@ msgstr "Dano"
 #: src/menu_events.cpp:211
 #, fuzzy
 msgid "Over All"
-msgstr "Sobre todo RESUMO"
+msgstr "Resumo"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -7854,11 +7863,13 @@ msgstr ""
 "Non se puido atopar ningunha etiqueta nin unidade que conteña a cadea "
 "'$search'."
 
+# droid???
 #: src/menu_events.cpp:2160
 #, fuzzy
 msgid "Can't droid invalid side: '$side'."
 msgstr "Non se pode dirixir un bando inválido: '$side'."
 
+# droid???
 #: src/menu_events.cpp:2166
 #, fuzzy
 msgid "Can't droid networked side: '$side'."
@@ -8125,7 +8136,7 @@ msgstr "Mapa a xogar:"
 
 #: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:258
 msgid "Use map settings"
-msgstr "Empregar configuracións do mapa"
+msgstr "Usar configuracións do mapa"
 
 #: src/multiplayer_create.cpp:82
 msgid "Random start time"
@@ -8460,7 +8471,6 @@ msgid "Could not add socket to socket set"
 msgstr "Non se puido engadir o socket ó grupo de sockets"
 
 #: src/network.cpp:567
-#, fuzzy
 msgid "Could not send initial handshake"
 msgstr "No se pode enviar o saúdo inicial "
 

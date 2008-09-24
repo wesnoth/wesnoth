@@ -33,9 +33,9 @@ wesnothd \- \fBWesnoth\fPSavaþý çok oyunculu að sunucusu
 .
 .SH AÇIKLAMA
 .
-Wesnoth Savaþý çok oyunculu oyunlarýný yönetir. Wesnoth istemcisinden veya
-soket üzerinden hangi komutlarýn kabul edildiðini öðrenmek için
-http://www.wesnoth.org/wiki/ServerAdministration adresine bakýnýz.
+Manages Battle for Wesnoth multiplayer games. See
+http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
+accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH SEÇENEKLER
 .
@@ -53,7 +53,8 @@ Komut satýrý seçeneklerini basar ve çýkar.
 .TP 
 \fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
 Günlük alanlarýnýn önem seviyelerini ayarlar. Bütün günlük alanlarýný
-kapsamak üzere \fBall\fP belirtilebilir. Olasý önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi öntanýmlýdýr ve \fBserver\fP
+kapsamak üzere \fBall\fP belirtilebilir. Olasý önem seviyeleri: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. \fBerror\fP seviyesi öntanýmlýdýr ve \fBserver\fP
 alaný için \fBinfo\fP seviyesi kullanýlýr.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
@@ -90,6 +91,10 @@ key="\fIdeðer\fP,\fIdeðer\fP,..."
 .SS "Genel anahtar (key) isimleri:"
 .
 .TP 
+\fBban_save_file\fP
+Full or relative path to a (gzip compressed) file that the server can read
+and write.  Bans will be saved to this file and read again on server start.
+.TP 
 \fBconnections_allowed\fP
 Ayný IP adresinden izin verilen baðlantý sayýsý. \fB0\fP sonsuz anlamýna
 gelir. \fB5\fP öntanýmlýdýr.
@@ -99,6 +104,11 @@ Sunucu tarafýndan kabul edilmeyen isimler/rumuzlar. Dosya ismi kalýp
 karakterlerinden `*' ve `?' desteklenir. Daha ayrýntýlý bilgi için
 \fBglob\fP(7) sayfasýna bakýnýz. Öntanýmlý (bir þey belirtilmezse kullanýlacak)
 deðerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP
+.TP 
+\fBfifo_path\fP
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time specified
+path (default: /var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
  \fBmessages_time_period\fP süresince izin verilen ileti sayýsý. \fB4\fP
@@ -114,6 +124,10 @@ Günün sözü.
 \fBpasswd\fP
 Yönetici yetkilerini kazanmak için kullanýlacak parola. Genellikle `admin '
 ile baþlar.
+.TP 
+\fBrestart_command\fP
+The command that the server uses to start a new server process via the
+`restart' command. (Can only be issued via the fifo.)
 .TP 
 \fBversions_accepted\fP
 Sunucu tarafýndan kabul edilen sürüm dizgelerinin virgül ayraçlý
@@ -138,6 +152,21 @@ Baðlanýlacak port.
 \fBversion\fP
 Yönlendirilecek sürümlerin virgül ayraçlý listesi. Dosya kalýbý karakterleri
 bakýmýndan \fBversions_accepted\fP ile ayný yöntem kullanýlýr.
+.RE
+.P
+\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
+lengths.
+.RS
+.TP 
+\fBname\fP
+The name used to reference the ban time.
+.TP 
+\fBtime\fP
+The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
+(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
+is a number.  If no time modifier is given minutes (m) are assumed.
+Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
+minutes.
 .RE
 .P
 \fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalýþacaðýný ve baðlanan
