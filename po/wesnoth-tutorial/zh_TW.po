@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-08-27 13:28+0200\n"
+"POT-Creation-Date: 2008-09-24 22:34+0200\n"
 "PO-Revision-Date: 2008-08-12 16:07+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <steven2880@gmail.com>\n"
@@ -1628,7 +1628,7 @@ msgstr ""
 "驗值。慎選您要升級的單位！"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1334
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1338
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -1638,7 +1638,7 @@ msgstr ""
 "驗值，這表示他快升到等級2了，您最好讓他安全升級。"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1343
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1347
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but it's better than one of our experienced "
@@ -1646,13 +1646,13 @@ msgid ""
 msgstr "雖然我們會損失 $deadguy.user_description|，但總比損失有經驗的戰士好！"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1356
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1360
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy's reach!"
 msgstr "損失一個治療者對整個隊伍是個危機！盡可能讓他們處於敵人的攻擊範圍外！"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1361
 #, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
@@ -1663,7 +1663,7 @@ msgstr ""
 "的地方，請點選'動作'選單中的'顯示敵人移動範圍'。"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1361
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1365
 #, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
@@ -1671,16 +1671,16 @@ msgstr ""
 "等級2的單位是比較強，但不是無堅不摧的。永別了， $deadguy.user_description|。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1380
 #, fuzzy
 msgid ""
-"BBeware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
+"Beware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
 "注意敵人的領導者：他晚上最多可以造成36點的傷害！最好在白天用多個單位圍攻他。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1390
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1394
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1692,7 +1692,7 @@ msgstr ""
 "讓我來處理那些難以擊中的單位吧。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1404
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1408
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1705,7 +1705,7 @@ msgstr ""
 "人靠近我。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1418
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1422
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1717,7 +1717,7 @@ msgstr ""
 "的傷害，所以請謹慎安排我的位置。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1433
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1437
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1727,13 +1727,13 @@ msgstr ""
 "我擅長使用劍：每回合可以攻擊4次，每次8點傷害。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1601
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1605
 #, fuzzy
 msgid "You took too long! We'll never be rid of these Orcs!"
 msgstr "您浪費太多時間了，這樣我們永遠不能將這些半獸人驅除！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1619
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1623
 #, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "

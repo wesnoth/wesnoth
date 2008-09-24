@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-09 23:12+0200\n"
+"POT-Creation-Date: 2008-09-24 22:33+0200\n"
 "PO-Revision-Date: 2007-12-06 00:41+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -109,6 +109,11 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 
+#. [editor2_tool_hint]
+#: data/core/editor2-tool-hints.cfg:26
+msgid "Click to paste."
+msgstr ""
+
 #. [menu]
 #: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
 msgid "File"
@@ -159,11 +164,11 @@ msgstr "Aproximar"
 msgid "Zoom out"
 msgstr "Afastar"
 
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:710
+#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:809
 msgid "Undo"
 msgstr "Desfazer"
 
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:716
+#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:815
 msgid "Redo"
 msgstr "Refazer"
 
@@ -203,11 +208,11 @@ msgstr "Escolha seu idioma preferido:"
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Battle for Wesnoth Editor de Mapas"
 
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:275
+#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:337
 msgid "Save the Map As"
 msgstr "Salvar o mapa como"
 
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:279
+#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:341
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "O mapa já existe. Você quer sobreescrevê-lo?"
 
@@ -216,7 +221,7 @@ msgid "None"
 msgstr "Nenhum"
 
 #: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:105 src/editor2/mouse_action.cpp:270
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:369
 msgid "Player"
 msgstr "Jogador"
 
@@ -228,7 +233,7 @@ msgstr "Qual jogador?"
 msgid "Which player should start here?"
 msgstr "Qual jogador deve começar aqui?"
 
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:240
+#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:302
 msgid "Choose a Map to Load"
 msgstr "Escolha um mapa para carregar"
 
@@ -244,7 +249,7 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "O arquivo não contém um mapa válido."
 
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:96
+#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:102
 msgid "Quit Editor"
 msgstr "Sair do Editor"
 
@@ -252,11 +257,11 @@ msgstr "Sair do Editor"
 msgid "Do you want to save the map before quitting?"
 msgstr "Você quer salvar o mapa antes de sair?"
 
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:399
+#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:457
 msgid "Map saved."
 msgstr "Mapa salvo."
 
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:404
+#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:462
 msgid "Could not save the map: $msg"
 msgstr "Não foi possível salvar o mapa: $msg"
 
@@ -264,11 +269,11 @@ msgstr "Não foi possível salvar o mapa: $msg"
 msgid "Error: Illegal character in filename."
 msgstr "Erro: Caractere inválido no nome do arquivo."
 
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:499
+#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
 msgid "FG"
 msgstr "Frente"
 
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:501
+#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
 msgid "BG"
 msgstr "Fundo"
 
@@ -285,72 +290,80 @@ msgstr ""
 msgid " maximum="
 msgstr " máximo="
 
-#: src/editor2/editor_controller.cpp:203
+#: src/editor2/editor_controller.cpp:232
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:211
+#: src/editor2/editor_controller.cpp:240
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:214
+#: src/editor2/editor_controller.cpp:243
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:216
+#: src/editor2/editor_controller.cpp:245
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:226
-msgid "There are unsaved changes in the map"
-msgstr ""
-
-#: src/editor2/editor_controller.cpp:227
-msgid "Do you want to discard all changes you made to the map?"
-msgstr ""
-
-#: src/editor2/editor_controller.cpp:295
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:357
 msgid "Error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:295
+#: src/editor2/editor_controller.cpp:255
+msgid "No editor time-of-day found"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:288
+msgid "There are unsaved changes in the map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:289
+msgid "Do you want to discard all changes you made to the map?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:357
 msgid "No random map generators found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:368
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:422 src/editor2/editor_controller.cpp:428
-msgid "There was an error while loading the map:"
+#: src/editor2/editor_controller.cpp:476 src/editor2/editor_main.cpp:57
+msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:425
-msgid "Error loading map (format)"
-msgstr ""
-
-#: src/editor2/editor_controller.cpp:431
-msgid "Error loading map (wml)"
-msgstr ""
-
-#: src/editor2/editor_controller.cpp:712
+#: src/editor2/editor_controller.cpp:811
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:718
+#: src/editor2/editor_controller.cpp:817
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:267
+#: src/editor2/editor_map.cpp:57
+msgid "Empty map file or file not found"
+msgstr ""
+
+#: src/editor2/editor_map.cpp:65
+msgid "There was a format error while loading the map:"
+msgstr ""
+
+#: src/editor2/editor_map.cpp:71
+msgid "There was a wml error while loading the map:"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:366
 #, fuzzy
 msgid "(Player)^None"
 msgstr "Jogador"
 
-#: src/editor2/mouse_action.cpp:274
+#: src/editor2/mouse_action.cpp:373
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:275
+#: src/editor2/mouse_action.cpp:374
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."

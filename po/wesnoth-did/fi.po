@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-09 23:13+0200\n"
+"POT-Creation-Date: 2008-09-24 22:34+0200\n"
 "PO-Revision-Date: 2008-07-16 17:54+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
@@ -194,8 +194,8 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:48
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:84
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:42
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:42
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:75
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:43
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:86
 msgid "Defenders"
 msgstr "Puolustajat"
 
@@ -205,7 +205,7 @@ msgstr "Puolustajat"
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:38
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:36
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:36
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:165
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:154
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:39
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:51
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:25
@@ -236,7 +236,7 @@ msgstr "Kreg'a'shar Trr"
 #. [side]: type=Sergeant
 #. [side]: type=Lieutenant
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:87
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:59
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:70
 msgid "Drogan"
 msgstr "Drogan"
 
@@ -253,17 +253,18 @@ msgstr "Örkit murtautuvat jokilinnoituksen puolustuksen läpi"
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:107
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:119
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:472
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:107
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:102
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:106
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:128
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:63
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:394
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:154
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:83
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:299
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:356
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:113
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:285
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:84
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:300
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:357
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:124
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:309
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:76
 msgid "Death of Malin Keshar"
 msgstr "Malin Kesharin kuolema"
@@ -273,38 +274,65 @@ msgstr "Malin Kesharin kuolema"
 msgid "Death of Drogan"
 msgstr "Droganin kuolema"
 
+#. [objectives]
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:114
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:74
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:114
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:535
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:135
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:161
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:83
+msgid "Early finish bonus."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:115
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:75
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:123
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:476
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:115
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:536
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:114
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:136
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:162
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:128
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:313
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:84
+msgid " of finishing gold carried over to the next scenario."
+msgstr ""
+
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:141
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:144
 msgid "Kerith"
 msgstr "Kerith"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:142
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:145
 msgid "Owain"
 msgstr "Owain"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:143
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:146
 msgid "Aethun"
 msgstr "Aethun"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:145
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:148
 msgid "Yran"
 msgstr "Yran"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:146
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:149
 msgid "Luddy"
 msgstr "Luddy"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:147
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:150
 msgid "Gwilam"
 msgstr "Gwilam"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:157
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:160
 msgid ""
 "Malin, troubled by his father's death, argues to no avail that Darken Volk "
 "be allowed to stay to help defend the town. The necromancer leaves Parthyn "
@@ -315,12 +343,12 @@ msgstr ""
 "lähtee Parthynistä välikohtauksetta."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:162
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:165
 msgid "Several weeks pass..."
 msgstr "Useita viikkoja kuluu..."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:167
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:170
 msgid ""
 "Although I dislike sending a raiding party out so early, they should clear "
 "out the orc encampments and leave us a relatively quiet summer."
@@ -330,13 +358,13 @@ msgstr ""
 "suhteellisen rauhallinen kesä."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:171
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:174
 msgid "So much for quiet, Drogan. Orcs mass north of the river!"
 msgstr ""
 "Niin paljon rauhallisuudesta, Drogan. Örkit kokoontuvat joen pojoispuolella."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:175
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:178
 msgid ""
 "Curse them! You must hold the river fort, Malin, or they shall surely "
 "overrun the town. I will bring what soldiers remain to your aid. The raiding "
@@ -349,12 +377,12 @@ msgstr ""
 "uskalla taistella sellaisen voiman tullessa selustaan."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:189
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:192
 msgid "What in blazes is that thing? Has the necromancer returned?"
 msgstr "Mikä pihkura tuo juttu on? Onko pimeyden herra palannut?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:193
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:196
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught to me "
 "before he left. While I have no love for it, without the help of the dead we "
@@ -367,7 +395,7 @@ msgstr ""
 "ymmärrät sen!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:200
 msgid ""
 "No benefit is worth the price of defiling the bodies of our dead! You have "
 "been very close-mouthed about why the mages sent you home from Alduin; if it "
@@ -379,7 +407,7 @@ msgstr ""
 "ihmekään, että he antoivat sinulle kenkää!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:201
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:204
 msgid ""
 "No! No...it was nothing like that...but I will not stand by and allow the "
 "orcs to destroy my home while I have the skills to prevent it!"
@@ -389,13 +417,13 @@ msgstr ""
 "kauhun ennaltaehkäisemiseen!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:215
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:204
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:228
 msgid "Welcome to Parthyn"
 msgstr "Tervetuloa Parthyniin"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:229
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:232
 msgid ""
 "Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. "
 "Hate leads to suffering."
@@ -404,18 +432,18 @@ msgstr ""
 "johtaa vihaan. Viha johtaa kärsimykseen."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:244
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:247
 msgid "The orcs have broken through our line. Parthyn is open to attack!"
 msgstr ""
 "Örkit ovat murtautuneet linjojemme läpi. Parthyn on avoin hyökkäykselle!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:260
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:263
 msgid "Who will be left to defend Parthyn?"
 msgstr "Kuka jää jäljelle puolustamaan Parthynia?"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:281
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:284
 msgid ""
 "By all rights, I should have you executed on the spot, Malin. I certainly "
 "should have not given the necromancer the chance to corrupt you. Since I "
@@ -429,7 +457,7 @@ msgstr ""
 "Wesnothin kuningaskunnasta."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:285
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:288
 msgid ""
 "Would you rather have let the orcs overrun the town and seen us both dead?"
 msgstr ""
@@ -437,7 +465,7 @@ msgstr ""
 "jalkoihinsa? Me kumpikin olisimme kuolleet!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:289
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:292
 msgid ""
 "Aye, better that than to even dabble in dark magic. People would have "
 "rebuilt the town, just as they always have in the past. Would that the mages "
@@ -448,7 +476,7 @@ msgstr ""
 "ennenkin. Luulisi maagien opettaneen sinulle enemmän maalaisjärkeä."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:293
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:296
 msgid ""
 "The mages taught me enough. You won't truly banish me, will you, Drogan?"
 msgstr ""
@@ -456,7 +484,7 @@ msgstr ""
 "karkota, ethän Drogan?"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:297
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:300
 msgid ""
 "Begone, now. I've no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you've come."
@@ -465,7 +493,7 @@ msgstr ""
 "hän tietäisi mikä sinusta on tullut."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:303
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:306
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. The mages "
 "taught you well. But there is grave news from the village; your sister Dela "
@@ -478,7 +506,7 @@ msgstr ""
 "voi olla, ettei hän enää elä kauan."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:307
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:310
 msgid ""
 "Orcs. Foul, pestilent creatures. The wide green world would be a better "
 "place with them all dead. Dead!"
@@ -487,7 +515,7 @@ msgstr ""
 "jos ne kaikki olisivat kuolleita. Kuolleita!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:311
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:314
 msgid ""
 "Perhaps, but if kings and great mages have not abolished them neither you "
 "nor I are ever likely to."
@@ -496,7 +524,7 @@ msgstr ""
 "tuskin sinä tai minäkään ikinä voisimme."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:315
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:318
 msgid ""
 "Perhaps I cannot kill them all...but I see the back-trail of this band we "
 "defeated, and there will be more orcs at the other end of it. I shall pursue "
@@ -506,19 +534,19 @@ msgstr ""
 "ja siellä on vielä lisää örkkejä. Vainoan ne."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:319
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:322
 msgid "And leave your sister?"
 msgstr "Ja jätät sisaresi?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:323
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:326
 msgid "My hands were never apt for healing. But revenge I can give her."
 msgstr ""
 "Käteni eivät ikinä ole olleet soveliaita parantamiseen, mutta voin kostaa "
 "hänen puolestaan!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:327
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:330
 msgid ""
 "No! We need every man who can fight here, not lost in doomed attempt to "
 "harry the orcs in their own country!"
@@ -527,12 +555,12 @@ msgstr ""
 "yritykselle kiusata örkkejä niiden omilla mailla!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:331
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:334
 msgid "I am resolved."
 msgstr "Olen päättänyt."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:335
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:338
 msgid ""
 "You'll go without my blessing or my men, then. I won't spare any on such an "
 "errand."
@@ -541,7 +569,7 @@ msgstr ""
 "juttuun."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:359
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:365
 msgid ""
 "The raiding party returns, and the orcs flee in the face of a superior force."
 msgstr ""
@@ -549,7 +577,7 @@ msgstr ""
 "edessä."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:372
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:378
 msgid "The orcs are broken, dead or fled."
 msgstr "Örkit ovat hajalla, kuolleita tai paenneet."
 
@@ -602,34 +630,34 @@ msgstr "Valtaa kaikki hiisikylät"
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:111
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:111
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:106
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:110
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:67
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:398
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:158
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:87
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:303
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:360
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:88
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:304
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:361
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:80
 msgid "Death of Darken Volk"
 msgstr "Darken Volkin kuolema"
 
 #. [unit]: type=Dark Sorcerer DiD
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:90
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:93
 msgid "Darken Volk"
 msgstr "Darken Volk"
 
 #. [trait]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:98
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:101
 msgid "loyal"
 msgstr "uskollinen"
 
 #. [trait]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:99
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:102
 msgid "to himself"
 msgstr "itselleen"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:114
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:117
 msgid ""
 "In truth, I share your hatred for the orcs. The northlands have been my... "
 "home... for many years, and the orcs have been a growing infestation in "
@@ -644,12 +672,12 @@ msgstr ""
 "minua taistelemaan niitä vastaan."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:118
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:121
 msgid "Yes! I thirst for revenge on those creatures!"
 msgstr "Kyllä! Janoan kostoa noille olennoille!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:122
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:125
 msgid ""
 "Who knows? Perhaps removing the threat of orc raids will persuade the people "
 "of Parthyn to... welcome you home."
@@ -658,14 +686,14 @@ msgstr ""
 "suostuteltua... toivottamaan sinut tervetulleeksi kotiin."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:126
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:129
 msgid ""
 "Perhaps. Even Drogan would have to be thankful for a summer without orc "
 "raids."
 msgstr "Ehkäpä. Jopa Drogan voisi olla kiitollinen örkittömästä kesästä."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:130
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:133
 msgid ""
 "A goblin village lies in this valley, just ahead. They are a bastard race "
 "born of the orcs, and help them in their wars against humans and dwarves. "
@@ -678,22 +706,22 @@ msgstr ""
 "kutsuttaviksi taisteluun örkkejä vastaan."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:134
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:137
 msgid "It will be a worthwhile test of your new skills."
 msgstr "Uusien kykyjesi testaaminen voisi olla sen arvoista."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:193
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:196
 msgid "Beware the goblin guards in the villages."
 msgstr "Varo hiisivahteja kylissä."
 
 #. [then]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:206
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:209
 msgid "Villager"
 msgstr "Kyläläinen"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:226
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:229
 msgid ""
 "Ahhh... I did not realize there was a swamp near this village. Malin, I "
 "believe it would be beneficial for your training if you and I were to "
@@ -703,17 +731,17 @@ msgstr ""
 "koulutuksesi kannalta hyödyllistä, jos sinä ja minä tutkisimme sen."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:249
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:252
 msgid "Rise, rise from the realms of death and decay!"
 msgstr "Nouskaa, nouskaa kalman ja kuoleman valtakunnista!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:261
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:264
 msgid "What are those things?"
 msgstr "Mitä nuo jutut ovat?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:265
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:268
 msgid ""
 "They are ghouls. Once, they were... evil men... murderers and outlaws. "
 "Through magic they have been transformed so their outsides match the spirits "
@@ -726,12 +754,12 @@ msgstr ""
 "pidempään, vetää puoleensa rämeiden ja soiden mätä."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:269
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:272
 msgid "It seems cruel to turn men into such a hideous form."
 msgstr "Vaikuttaa julmalta muuttaa henkilöitä tuonmuotoisiksi hirvityksiksi."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:273
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:276
 msgid ""
 "In their present form they can best serve the greater good. Even now they "
 "will aid you in defeating this goblin rabble. Besides, as I said, these were "
@@ -743,73 +771,73 @@ msgstr ""
 "suuri heidänlaisilleen."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:277
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:280
 msgid "I suppose so..."
 msgstr "Luulen niin..."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:287
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:290
 msgid "Shaun"
 msgstr "Shaun"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:288
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:291
 msgid "Ed"
 msgstr "Ed"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:289
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
 msgid "Any zombies out there?"
 msgstr "Onko siellä yhtään zombeja?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:290
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:293
 msgid "Don't say that!"
 msgstr "Älä sano sitä!"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:291
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:293
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:294
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:296
 msgid "What?"
 msgstr "Mitä?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:292
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:295
 msgid "That!"
 msgstr "Sitä!"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:294
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:297
 msgid "The 'zed' word. Don't say it!"
 msgstr "Z-sanaa. Älä sano sitä!"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:295
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:298
 msgid "Why not?"
 msgstr "Miksi en?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:296
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:299
 msgid "Because it's ridiculous"
 msgstr "Koska se on naurettavaa."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:297
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:300
 msgid "Well... are there any?"
 msgstr "No... onko niitä yhtään?"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:298
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:301
 msgid "I don't see any. Maybe it's not as bad as all that."
 msgstr "En näe yhtään. Ehkä se ei ole niin huono kuin kaikki tuo."
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:299
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:302
 msgid "Oh, no, wait, there they are."
 msgstr "Oho, ei, odota, siellä he ovat."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:329
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:332
 msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won't stand up to full orcish warriors."
@@ -818,7 +846,7 @@ msgstr ""
 "lepakoilla ei vastusteta pitkäänkään örkkisotureita."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:333
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:336
 msgid ""
 "Your training is just beginning, Malin. With the souls from these goblins "
 "now available for our use, you will see your forces grow quickly."
@@ -827,7 +855,7 @@ msgstr ""
 "voimiesi kasvavan nopeasti."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:337
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:340
 msgid "Excellent. I'm eager to move on to the real foes."
 msgstr "Erinomaista. En malta odottaa siirtymistä oikeisiin vihollisiin."
 
@@ -877,12 +905,12 @@ msgid "Clear the cave of enemies"
 msgstr "Puhdista luola vihollisista"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:129
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:132
 msgid "Watchman"
 msgstr "Vartija"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:149
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:152
 msgid ""
 "Winter comes on fast, and we need a sheltered place to spend it. This cave "
 "looks promising, but from the tracks in and out several bands of outlaws "
@@ -894,7 +922,7 @@ msgstr ""
 "voisimme käyttää luolaa turvallisesti."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:165
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:168
 msgid ""
 "Be careful when imprisoning a soul and use all your might to retain control "
 "over it or it might attempt to break free and destroy you!"
@@ -903,12 +931,12 @@ msgstr ""
 "tai se saattaa yrittää karata vapaaksi ja tuhota sinut!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:169
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:172
 msgid "I... I will try."
 msgstr "Minä... yritän."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:190
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:193
 msgid ""
 "Dwarves! They have often been our allies against the orc hordes. Surely they "
 "will allow us to winter with them."
@@ -917,7 +945,7 @@ msgstr ""
 "Eivätköhän ne salli meidän viettää talvea täällä kanssaan."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:199
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:202
 msgid ""
 "Two necromancers are at the cave entrance! Break out your axes, boys, if you "
 "don't want to be a walking pile of bones."
@@ -926,12 +954,12 @@ msgstr ""
 "tulla käveleviksi luukasoiksi."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:203
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:206
 msgid "Or not. Why do they hate us so much?"
 msgstr "Tai sitten eivät. Miksi he vihaavat meitä niin paljon?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:210
 msgid ""
 "People fear that which they don't understand, and death, after all, is the "
 "greatest mystery. Those who dare to investigate that mystery are bound to "
@@ -946,12 +974,12 @@ msgstr ""
 "vaihtoehtoja."
 
 #. [event]: type=Ghost side 4}
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:234
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:237
 msgid "Tortured Soul"
 msgstr "Kidutettu sielu"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:240
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:243
 msgid ""
 "Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
 "shall pay for keeping me from my final rest!"
@@ -960,7 +988,7 @@ msgstr ""
 "Kirottu. Vielä maksat siitä, ettet päästänyt minua viimeiseen lepooni!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:244
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:247
 msgid ""
 "Fool boy! Your will must be stronger or you will never be able to control "
 "your soldiers well enough to face the orcs. Many are the young necromancers "
@@ -973,13 +1001,13 @@ msgstr ""
 "Hän hyökkää kimppuusi antamatta periksi."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:248
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:251
 msgid "But why are they attacking me? And what should I do?!?"
 msgstr ""
 "Mutta miksi ne minun kimppuuni hyökkäävät? Ja mitä minun pitäisi tehdä?!?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:252
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:255
 msgid ""
 "Destroy the rebel quickly and all will be well. Wait, and he will begin to "
 "turn the rest of your forces against you."
@@ -988,7 +1016,7 @@ msgstr ""
 "kääntää loppujakin joukoistasi sinua vastaan."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:287
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:290
 msgid ""
 "I think I've got the rest of them under control now. That was a close call."
 msgstr "Luulen, että nyt sain loput niistä hallintaani. Liippasipa läheltä."
@@ -1049,7 +1077,7 @@ msgid "Kill the orc leaders"
 msgstr "Kukista örkkijohtajat"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:133
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:136
 msgid ""
 "Orcs block the way out of the mountain pass. Destroy them, and we will move "
 "on to bigger targets."
@@ -1058,7 +1086,7 @@ msgstr ""
 "siirtymään suurempia kohteita kohti."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:137
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:140
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for getting me banished from Parthyn."
@@ -1067,18 +1095,18 @@ msgstr ""
 "maksaa, kun saivat minut karkotetuksi Parthynistä."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:151
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:154
 msgid "Feel my wrath, vile creature!"
 msgstr "Tunne raivoni, katala otus!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:172
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:175
 #, fuzzy
 msgid "The ice doesn't look very thick..."
 msgstr "Jää täällä ei näytä kovinkaan paksulta..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:229
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:232
 msgid ""
 "The weak ice gives way beneath the undead creature, who becomes mired in the "
 "thick mud at the lake's bottom."
@@ -1087,7 +1115,7 @@ msgstr ""
 "tiheään mutaan järven pohjassa."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:237
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:240
 msgid ""
 "The weak ice gives way beneath the heavy warrior, who drowns in the frigid "
 "mountain waters."
@@ -1145,6 +1173,7 @@ msgstr ""
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:57
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:47
 msgid "Borth"
 msgstr "Borth"
 
@@ -1159,7 +1188,7 @@ msgid "K'Vark"
 msgstr "K'Vark"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:177
 msgid ""
 "Since the very founding of Wesnoth you have hounded humans at every turn. "
 "You have raided my home at every opportunity. You have trampled our fields, "
@@ -1182,7 +1211,7 @@ msgstr ""
 "Kun toimitan sanan häviöstänne, kaupunki juhlii menestyksekästä paluutani."
 
 #. [message]: speaker=Borth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:178
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:181
 msgid ""
 "Stop your silly talk, foul necromancer. You have caused enough trouble. It "
 "is time for you to die."
@@ -1191,22 +1220,22 @@ msgstr ""
 "harmia. Sinun on aika kuolla."
 
 #. [message]: speaker=P'Gareth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:182
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:185
 msgid "Ummm... unless... you are already dead, like the skeletons?"
 msgstr "Ummm... paitsi jos... olet jo valmiiksi kuollut, niin kuin luurangot?"
 
 #. [message]: speaker=K'Vark
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:186
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:189
 msgid "Then, it will be time for you to die again!!!"
 msgstr "Sitten sinun on aika kuolla uudestaan!!!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:290
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:293
 msgid "The last chieftain... he's escaping! The coward!"
 msgstr "Viimeinen päällikkö! Hän pakenee! Pelkuri!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:294
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:297
 msgid ""
 "Coward, yes. You must hunt him down before he can take word to the orcish "
 "council. A single chieftain, even after he gathers the survivors from this "
@@ -1218,12 +1247,12 @@ msgstr ""
 "yksinäsi."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:298
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:301
 msgid "On my own? Is my apprenticeship over?"
 msgstr "Yksinäni? Onko oppipoikuuteni ohi?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:302
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:305
 msgid ""
 "... Almost. The growth of your power has been truly impressive to watch. "
 "There is, however, a small favor I will ask of you. That will constitute the "
@@ -1263,41 +1292,50 @@ msgid "Within a few days, Malin recognizes some familiar surroundings..."
 msgstr "Muutaman päivän sisällä Malin huomaa tuttuja maisemia..."
 
 #. [side]: type=Lieutenant
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:56
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:67
 msgid "Guardsmen"
 msgstr "Vartijat"
 
 #. [unit]: type=Frontier Baroness
 #. [side]: type=Frontier Baroness
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:415
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:78
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:418
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:89
 msgid "Dela Keshar"
 msgstr "Dela Keshar"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:105
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:116
 msgid "Remove the traitor Drogan"
 msgstr "Poista petturi Drogan"
 
 #. [objective]: condition=lose
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:109
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:120
 msgid "Kill any people from Parthyn but Drogan"
 msgstr "Tapa kuka tahansa Parthynista paitsi Drogan"
 
+#. [objectives]
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:122
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:475
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:113
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:127
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:312
+msgid "No early finish bonus."
+msgstr ""
+
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:144
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:145
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:146
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:168
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:169
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:170
 msgid "River fort guard"
 msgstr "Jokilinnakkeen vartija"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:155
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:179
 msgid "I bring word of a great victory against the orcs, Drogan."
 msgstr "Tuon sanan suuresta voitosta örkkejä vastaan, Drogan."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:159
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:183
 msgid ""
 "I had hoped you would never return, Malin. You have been banished, and now "
 "return. You give me no choice but to order my soldiers to attack you."
@@ -1306,7 +1344,7 @@ msgstr ""
 "anna minulle muuta vaihtoehtoa kuin käskeä sotilaani hyökkäämään kimppuusi."
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:163
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:187
 msgid ""
 "Master, do not listen to the lies he tells. There is always a choice, and he "
 "chooses to attack you. He jeopardizes the safety of Parthyn!"
@@ -1316,12 +1354,12 @@ msgstr ""
 "turvallisuudelle!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:167
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:191
 msgid "Silence from you."
 msgstr "Hiljaa, sinä siinä!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:171
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:195
 msgid ""
 "I have eliminated two orc chieftains. I doubt that we will see any orc raids "
 "this summer. The beasts will be too busy trying to regroup."
@@ -1331,13 +1369,13 @@ msgstr ""
 "yrittäessään järjestellä asiansa uudelleen."
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:175
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:199
 msgid "You are mistaken, brother. Even now the orcs camp north of the river."
 msgstr ""
 "Olet erehtynyt, veliseni. Jopa nyt örkit pitävät leiriä joen pohjoispuolella."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:179
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:203
 msgid ""
 "I have been tracking that band since they fled the field at my great "
 "victory! But how did they get north of the river? Let my forces be and I "
@@ -1348,7 +1386,7 @@ msgstr ""
 "Anna voimieni olla ja hoitelen ne."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:183
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:207
 msgid ""
 "A nice story. I find it more likely that you brought your orcish allies here "
 "with you to take your revenge upon the city. If we stand down your undead "
@@ -1361,12 +1399,12 @@ msgstr ""
 "uskonut, että sinusta voisi tulla petturi."
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:187
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:211
 msgid "Master, he threatens the safety of the city by standing in your way."
 msgstr "Herra, hän uhkaa kaupungin turvallisuutta seistessään tielläsi."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:191
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:215
 msgid ""
 "Then you are the traitor, Drogan, for preventing me from protecting the "
 "city. I will defend Parthyn, and if you stand in my way I will cut you down "
@@ -1377,24 +1415,24 @@ msgstr ""
 "sinut maanpetoksesi tähden."
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:221
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:245
 msgid ""
 "I am defeated but not dead, foul thing that was once my brother. Watch your "
 "back, because I will be coming for you..."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:241
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:265
 msgid "Now the people of Parthyn will never accept me back!"
 msgstr "Nyt Parthynin väki ei koskaan hyväksy paluutani!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:262
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:286
 msgid "See what your traitorous ways have won you, Drogan?"
 msgstr "Näetkö nyt, Drogan, mitä petturin tiesi on sinulle voittanut?"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:266
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:290
 msgid ""
 "You will pay for Drogan's death. Now that I have seen the true evil to which "
 "you have come, I will commit every guardsman to your demise. It pains me to "
@@ -1405,7 +1443,7 @@ msgstr ""
 "Minua iljettää ajatella, että joskus olet ollut veljeni."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:270
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:294
 msgid ""
 "Even with my new power, I cannot fight the entire town as well as the orcs. "
 "I must flee to the west to find Darken Volk!"
@@ -1414,12 +1452,12 @@ msgstr ""
 "samaan aikaan. Minun on paettava länteen ja löydettävä Darken Volk!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:281
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:305
 msgid "Escape to the northwest"
 msgstr "Pakene luoteeseen"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:302
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:329
 msgid ""
 "While our forces must stay here to fight off your pet orcs, when we are done "
 "I shall come after you. You are my brother no longer."
@@ -1428,7 +1466,7 @@ msgstr ""
 "tulemme perässäsi heti kun olemme hoidelleet jutun. Et ole veljeni enää."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:306
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:333
 msgid ""
 "Gods of Darkness, how did it come to this? My own sister determined on my "
 "death. Nothing has gone right since...since that day the fat toad Zephrin "
@@ -1444,7 +1482,7 @@ msgstr ""
 "akatemiasta."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:310
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:337
 msgid ""
 "Now the only being who still wants to keep me alive is a necromancer. Curse "
 "them all! Live or die, I'll have my revenge on those that have wronged me."
@@ -1454,7 +1492,7 @@ msgstr ""
 "toimineet minua kohtaan väärin."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:333
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:362
 msgid "See how you die when you spurn the help of Malin Keshar!"
 msgstr "Katso kuinka kuolet, kun torjut Malin Kesharin avun!"
 
@@ -1517,7 +1555,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:36
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:22
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:23
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:54
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:55
 msgid "Intruders"
 msgstr "Tunkeutujat"
 
@@ -1527,52 +1565,52 @@ msgid "Taylor"
 msgstr "Taylor"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:98
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:102
 msgid "Malin and Darken Volk enter the Mage Lord's manor"
 msgstr "Malin ja Darken Volk astuvat maagimestarin kartanoon"
-
-#. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:143
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:144
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:145
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:146
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:151
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:152
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:153
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:154
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:155
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:159
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:160
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:165
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:166
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:173
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:174
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:176
-msgid "Night Watchman"
-msgstr "Yövartija"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:147
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:148
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:149
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:150
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:155
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:156
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:157
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:158
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:159
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:163
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:164
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:169
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:170
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:176
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:177
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:178
+msgid "Night Watchman"
+msgstr "Yövartija"
+
+#. [event]
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:151
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:152
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:153
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:154
 msgid "Gate Guard"
 msgstr "Porttivahti"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:161
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:169
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:177
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:165
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:172
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:179
 msgid "Head Trainer"
 msgstr "Pääkouluttaja"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:168
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:171
 msgid "Townperson"
 msgstr "Kaupunkilainen"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:202
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:204
 msgid ""
 "The stolen book lies within Lord Karres's manor on the north end of the "
 "city. We cannot defeat the entire city guard, so we must stay hidden as long "
@@ -1588,7 +1626,7 @@ msgstr ""
 "kaupungin."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:206
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:208
 msgid ""
 "Note: Only the units you recruit now will be available to you once inside."
 msgstr ""
@@ -1596,7 +1634,7 @@ msgstr ""
 "saatavilla."
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:233
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:235
 msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
@@ -1605,22 +1643,22 @@ msgstr ""
 "välittömästi!"
 
 #. [message]: speaker=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:237
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:239
 msgid "To arms, men!"
 msgstr "Aseisiin, miehet!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:259
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:261
 msgid "Ooouuuh! It burns... burrrrnnns..."
 msgstr "Aaauuuh! Se polttaa... polllltttaa..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:263
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:265
 msgid "What in the name of all demons of hell was this thing?"
 msgstr "Kaikkien helvetin demoneiden nimeen, mikä tuo juttu oli?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:267
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:269
 msgid ""
 "This was the impact of what is known as holy water among common people. It "
 "is brewed in a complicated and mysterious procedure only known to a few "
@@ -1633,8 +1671,8 @@ msgstr ""
 "sillä siihen liittyy suuria noituuksia."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:314
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:342
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:346
 msgid "Here is the entrance! Hurry!"
 msgstr "Täällä on sisäänkäynti! Nopeasti!"
 
@@ -1657,7 +1695,7 @@ msgstr "Mestari Karres"
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:142
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:200
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:131
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:132
 msgid "Guard"
 msgstr "Vartija"
 
@@ -1699,8 +1737,8 @@ msgid "I think I have found the passage to the great hall. Follow me quickly!"
 msgstr "Luulen, että olen löytänyt tien suureen saliin. Seuraa minua äkkiä!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:432
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:427
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:434
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:430
 msgid ""
 "As dawn breaks, the city guards force their way into the manor and capture "
 "the two necromancers."
@@ -1714,36 +1752,36 @@ msgid "A Small Favor - Part 3"
 msgstr "Pieni palvelus – osa 3"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:79
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:80
 msgid "Find the book"
 msgstr "Etsi kirja"
 
 #. [event]
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:107
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:108
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:109
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:136
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:110
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:137
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:138
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:139
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:140
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:141
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:142
 msgid "Guardian"
 msgstr "Holhooja"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:217
 msgid "I feel the book is very close somewhere in the northwest."
 msgstr "Tunnen kirjan olevan hyvin lähellä jossakin luoteessa."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:282
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:371
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:283
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:372
 msgid "We've got the book, but now how do we get out of here?"
 msgstr "Meillä on kirja, mutta kuinka pääsemme täältä ulos?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:287
 msgid ""
 "There's a small tunnel in the cellar to the northeast. It will lead us far "
 "enough out of the city that we can escape pursuit."
@@ -1752,32 +1790,32 @@ msgstr ""
 "kaupungista, jotta voimme paeta takaa-ajajia."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:295
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:296
 msgid "Escape via the tunnel in the northeast cellar"
 msgstr "Pakene pitkin koillisessa kellarissa olevaa tunnelia"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:321
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:322
 msgid "Phew! Let's get out of here"
 msgstr "Huh! Lähdetään täältä!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:352
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:353
 msgid "Escape the manor"
 msgstr "Pakene kartanosta"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:378
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:379
 msgid "Wait, you aren't leaving me behind, are you?"
 msgstr "Odota! Et aio jättää minua jälkeesi, ethän?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:389
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:390
 msgid "You have served me well, my apprentice."
 msgstr "Olet palvellut minua hyvin, oppipoikani."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:393
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:394
 msgid ""
 "As he heads into the tunnel Darken Volk collapses its entrance, leaving "
 "Malin to be captured and executed by the city guards."
@@ -1786,7 +1824,7 @@ msgstr ""
 "Malinin kaupunginvartioston vangittavaksi ja teloitettavaksi."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:408
+#: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:409
 #, fuzzy
 msgid "Phew! Let's get out of here."
 msgstr "Huh! Lähdetään täältä!"
@@ -1830,7 +1868,7 @@ msgid "Take the book back from Darken Volk"
 msgstr "Ota kirja takaisin Darken Volkilta"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:184
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:187
 msgid ""
 "Well, we made it out. We got your precious book. What's in it, anyway? And "
 "what do we do now?"
@@ -1839,46 +1877,46 @@ msgstr ""
 "muuten lukee? Ja mitä me teemme nyt?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:188
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:191
 msgid "We? WE do nothing. You are no longer my apprentice."
 msgstr "Me? ME emme tee mitään. Et enää ole oppipoikani."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:202
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:205
 msgid "Now give the book to me."
 msgstr "Anna kirja nyt minulle."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:206
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:209
 msgid ""
 "Darken Volk grabs the mysterious book from Malin's hands and stalks away."
 msgstr "Darken Volk nappaa salaperäisen kirjan Malinin käsistä ja hiipii pois."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:211
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:222
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:214
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:225
 msgid "You can't just leave me here!"
 msgstr "Et voi vain jättää minua tänne!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:218
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:221
 msgid "Now go your own way, and I will go mine."
 msgstr "Nyt lähdet omille teillesi, ja minä lähden omilleni."
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:247
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:250
 msgid "Master, do you not see? He has merely been using you to get that book!"
 msgstr ""
 "Herra, etkö ymmärrä? Hän on käyttänyt sinua hyväkseen ainoastaan saadakseen "
 "tuon kirjan!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:251
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:254
 msgid "What do you mean?"
 msgstr "Mitä tarkoitat?"
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:255
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:258
 msgid ""
 "He cares not about your noble quest to push back the orcs. He needed your "
 "help to fight the mages! The book is rightfully yours!"
@@ -1887,12 +1925,12 @@ msgstr ""
 "taistelemaan maageja vastaan! Kirja on oikeastaan sinun!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:259
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:262
 msgid "Wait!"
 msgstr "Odota!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:263
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:266
 msgid ""
 "All of the training you gave me, that was just so I would help you get that "
 "book! Return it to me now, or I will take it by force."
@@ -1902,12 +1940,12 @@ msgstr ""
 "väkivalloin!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:267
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:270
 msgid "You are even more of a fool than I thought."
 msgstr "Olet vieläkin tyhmempi kuin luulin."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:297
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:300
 msgid ""
 "You let me believe Parthyn would accept me back so when they didn't I would "
 "be willing to attack my own countrymen!"
@@ -1916,7 +1954,7 @@ msgstr ""
 "käynyt, auttaisin sinua hyökkäämään omia maanmiehiäni vastaan!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:301
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:304
 msgid ""
 "What you let yourself believe is no fault of mine. Cease your foolish "
 "prattle. I gave you more power than you could have possibly dreamed. Use it "
@@ -1928,7 +1966,7 @@ msgstr ""
 "ärsyttävät, eivät minua."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:305
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:308
 msgid ""
 "So it is true! You took my home away from me. You took Drogan away. Now that "
 "all of that is gone, I will at least keep the fruits of my labors."
@@ -1937,22 +1975,22 @@ msgstr ""
 "mennyttä, aion vähintäänkin pitää työni hedelmät itselläni."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:309
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:312
 msgid "Hardly. I will crush you easily."
 msgstr "Tuskinpa. Murskaan sinut helposti."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:313
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:316
 msgid "Perhaps, but I have nothing left to lose."
 msgstr "Ehkäpä, mutta minulla ei ole enää mitään hävittävää."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:328
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:331
 msgid "Now you shall pay for what you have done to me."
 msgstr "Nyt saat maksaa siitä mitä olet minulle tehnyt."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:332
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:335
 msgid ""
 "Done? I have done nothing but give you an opportunity. You have chosen your "
 "own path. Now leave me alone!"
@@ -1961,12 +1999,12 @@ msgstr ""
 "valinnut oman tiesi. Jätä minut nyt yksin!"
 
 #. [unit]: type=Paladin
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:358
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:361
 msgid "Sir Cadaeus"
 msgstr "Herra Cadaeus"
 
 #. [message]: speaker=Sir Cadaeus
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:379
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:382
 msgid ""
 "Your travels in this region have not gone unnoticed, foul necromancers! We "
 "have been tracking you for weeks, with our purpose renewed this morning upon "
@@ -1978,7 +2016,7 @@ msgstr ""
 "jumalaisessa kaupungissa."
 
 #. [message]: speaker=Sir Cadaeus
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:383
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:386
 msgid ""
 "Do not even think of running away - my horsemen can easily catch you. Yes, "
 "on this day you shall have to answer for your innumerable crimes."
@@ -1988,7 +2026,7 @@ msgstr ""
 "rikoksistanne."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:387
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:390
 msgid ""
 "We'll see how well your pompous words protect you from the blades of the "
 "undead once I have finished this upstart."
@@ -1997,7 +2035,7 @@ msgstr ""
 "teriltä, kunhan olen kukistanut tämän nousukkaan."
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:432
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:435
 msgid ""
 "I told you, Malin, that I would find you again, and I have kept my word. I "
 "will not suffer you to bring any further harm to my people, and so you will "
@@ -2008,7 +2046,7 @@ msgstr ""
 "joten et enää elä näkemään seuraavaa auringonlaskua."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:436
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:439
 msgid ""
 "You wrong me, sister. I have only tried to help. Have you not seen fewer "
 "orcs this past summer?"
@@ -2017,27 +2055,27 @@ msgstr ""
 "nähnyt tänä kesänä vähemmän örkkejä?"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:440
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:443
 msgid "I will not listen to any more of your lies. Men, attack!"
 msgstr "En enää kuuntele valheitasi. Miehet, hyökätkää!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:454
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:457
 msgid "With my dying breath I curse you, Malin the Damned!"
 msgstr "Viimeisellä henkäykselläni kiroan sinut, Malin Kirottu!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:458
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:461
 msgid "Now I've just got to get that book out of the battleground!"
 msgstr "Nyt minun täytyy enää saada se kirja pois taistelukentältä!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:465
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:468
 msgid "Bring the book back to Malin's castle"
 msgstr "Tuo kirja takaisin Malinin linnaan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:471
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:481
 msgid ""
 "Pick up the book by moving a unit onto it. Bats and ghosts cannot carry the "
 "book."
@@ -2046,17 +2084,17 @@ msgstr ""
 "kuljettaa kirjaa."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:513
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:523
 msgid "I have the book."
 msgstr "Minulla on se kirja."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:537
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:547
 msgid "I am sorry master, that is too heavy for me."
 msgstr "Olen pahoillani, herrani, se on liian painava minulle."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:559
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:569
 msgid ""
 "The paladins will not be able to pursue me through the mountains, and Dela "
 "will not dare take the soldiers too far from Parthyn."
@@ -2125,34 +2163,34 @@ msgid "Trolls"
 msgstr "Peikot"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:141
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:130
 msgid "Become a Lich"
 msgstr "Muutu kuolonherraksi"
 
 #. [unit]: type=Ancient Wose
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:247
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:236
 msgid "Dumdumbadoom"
 msgstr ""
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:266
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:255
 msgid "Master, you are gravely injured!"
 msgstr "Herra, olette vakavasti haavoittunut!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:270
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:259
 msgid ""
 "I won't go down like this, felled by an orc's blade. I won't see them defeat "
 "me!"
 msgstr "En aio kaatua örkkiterään! En aio nähdä heidän kukistavan minut!"
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:274
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:263
 msgid "There is another way, master. Remember the book..."
 msgstr "On olemassa toinenkin tie, herrani. Muista se kirja..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:278
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:267
 msgid ""
 "Yes... yes. The orcs are too strong for me now, but once I have undergone "
 "the transformation they'll begin to fall before me. And I will continue to "
@@ -2163,50 +2201,50 @@ msgstr ""
 "heidän takaa-ajoaan kunnes heistä viimeinen kaatuu!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:282
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:271
 msgid "Leave me now while I prepare."
 msgstr "Jätä minut nyt valmistautumaan."
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:275
 msgid "Yes, master."
 msgstr "Kyllä, herra."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:293
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:282
 msgid ""
 "With his last bits of strength, Malin assembles an altar as the book "
 "instructs."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:317
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:306
 msgid "I pray that I am strong enough to complete the spell."
 msgstr "Rukoilen, että olen tarpeeksi vahva suorittaakseni loitsun."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:321
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:310
 #, fuzzy
 msgid "I'm ready. Do it."
 msgstr "En ole valmis kuolemaan..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:355
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:346
 msgid "There is darkness..."
 msgstr "Pimeys..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:360
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:351
 msgid "and peace..."
 msgstr "ja rauha..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:365
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:356
 msgid "for a moment."
 msgstr "hetkeksi."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:371
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:362
 msgid ""
 "Then they are replaced by a pulling, a pain too strong to resist, and then..."
 msgstr ""
@@ -2214,51 +2252,51 @@ msgstr ""
 "sitten..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:376
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:367
 msgid "by emptiness."
 msgstr "tyhjyydellä."
 
 #. [side]: type=Lich
 #. [unit]: type=Lich DiD
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:28
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:387
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:378
 msgid "Mal Keshar"
 msgstr "Mal Keshar"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:403
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:394
 msgid "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
 msgstr "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:408
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:399
 msgid "The cold, it burns!"
 msgstr "Kylmyys, se polttaa!"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:412
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:403
 msgid "I need warmth... life... I sense some here!"
 msgstr "Tarvitsen lämpöä... elämää... Vaistoan sellaista täällä!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:448
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:439
 msgid "Regain your strength"
 msgstr "Hanki voimasi takaisin"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:71
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:452
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:541
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:443
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:532
 msgid "Destruction of Mal Keshar"
 msgstr "Mal Kesharin kukistuminen"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:481
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:472
 msgid "Yes! I can draw energy even from these insignificant creatures."
 msgstr "Kyllä! Voin imeä energiaa jopa näistä merkityksettömistä olennoista."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:509
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:500
 msgid ""
 "There, in along this old road, I sense a place worthy of being my home. From "
 "there I will build by armies. But I am still too weak to clear the vermin "
@@ -2270,7 +2308,7 @@ msgstr ""
 "voimani takaisin."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:513
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:504
 msgid ""
 "I will need a castle from which to call upon my soldiers. I sense one nearby."
 msgstr ""
@@ -2278,18 +2316,19 @@ msgstr ""
 "lähettyvillä."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:530
-msgid " Yes, this will do until I can take my new home."
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:521
+#, fuzzy
+msgid "Yes, this will do until I can take my new home."
 msgstr ""
 "Kyllä, tämä menettelee siihen saakka, kunnes voin valloittaa uuden kotini."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:537
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:528
 msgid "Clear your new home of trolls"
 msgstr "Puhdista uusi kotisi peikoista"
 
 #. [message]: speaker=Dumdumbadoom
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:616
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:605
 msgid ""
 "Who has awoken me from my slumber? Undead? I shall not suffer the existence "
 "of such foul creatures."
@@ -2298,7 +2337,7 @@ msgstr ""
 "sellaisten kamalien olentojen olemassaolosta."
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:632
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:623
 msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 msgstr "AAAAAAAuuuuuuuttttttttssssssssss!!!!...... . . . ."
 
@@ -2339,23 +2378,23 @@ msgstr "Kukista hölmö sankari"
 #. [unit]: type=Elvish Marshal
 #. [unit]: type=Dwarvish Lord
 #. [unit]: type=Orcish Warlord
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:123
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:150
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:172
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:199
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:226
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:126
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:153
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:175
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:202
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:229
 msgid "Foolish Hero"
 msgstr "Hölmö sankari"
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:288
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:291
 msgid "Your doom is at hand, foul lich! I shall bring you down by my own hand."
 msgstr ""
 "Tuomiosi on käsillä, hölmö kuolonherra! Sinun on määrä kukistua omasta "
 "kädestäni."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:292
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:295
 msgid ""
 "The only doom at hand is yours, if you do not leave now. Go back to your "
 "manors and taverns, and do not trouble me further."
@@ -2364,7 +2403,7 @@ msgstr ""
 "takaisin kartanoihisi ja majataloihisi, äläkä häiritse minua enempää."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:304
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:307
 msgid ""
 "You have preyed on too many of my boys. I have come here to end this, once "
 "and for all."
@@ -2373,12 +2412,12 @@ msgstr ""
 "lopettamaan tämän ikiajoiksi."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:308
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:311
 msgid "Not even real soldiers. I will sweep you aside."
 msgstr "Ei edes oikeita sotilaita. Minä pyyhkäisen sinut syrjään."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:320
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:323
 msgid ""
 "Your kind is an abomination. I am here to see that you inflict no more harm "
 "on the spirits that have passed on."
@@ -2387,7 +2426,7 @@ msgstr ""
 "harmia menehtyneiden hengille."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:324
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:327
 msgid ""
 "Fool! By leaving your forests and coming into my domain, you have sacrificed "
 "your own spirits."
@@ -2396,7 +2435,7 @@ msgstr ""
 "omat henkesi."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:336
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:339
 msgid ""
 "I've been itching for a chance to break some bones with my hammer, and now "
 "you've given me cause. Goodness knows you've got plenty of bones over there."
@@ -2405,7 +2444,7 @@ msgstr ""
 "antanut minulle syyn. Sinulla on siellä paljon luuta."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:340
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:343
 msgid ""
 "Go back to your tunnels and your mines, and do not trouble me unless you "
 "want your hammers to work for me once you are dead."
@@ -2414,7 +2453,7 @@ msgstr ""
 "tahdo vasaroidenne tekevän työtä minulle, kun olette kuolleet."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:344
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:347
 msgid ""
 "Hear that boys, he's threatening us! It's time he learned what real dwarves "
 "are made of."
@@ -2423,7 +2462,7 @@ msgstr ""
 "oikeat kääpiöt on tehty."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:356
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:359
 msgid ""
 "So, I've finally found your lair, Lich. You, who have been attacking the "
 "orcs for years and have destroyed many of our tribes."
@@ -2432,7 +2471,7 @@ msgstr ""
 "meitä vastaan vuosikaudet ja tuhonnut monia heimoistamme."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:360
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:363
 msgid ""
 "Orcs? It is you who have forced me to choose the dark path, and it is you "
 "who ended my mortal life and made me turn into a Lich. I am actually "
@@ -2446,18 +2485,19 @@ msgstr ""
 "taas mahdollisuuden tappaa örkkejä!"
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:364
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:367
+#, fuzzy
 msgid ""
 "Nothing will stop me from taking revenge for my father who died at your hand "
 "and for the rest of my people you and your minions have killed, Lich. Orcs, "
-"attack! The one who brings me his scull gets a bag of gold."
+"attack! The one who brings me his skull gets a bag of gold."
 msgstr ""
 "Ei mikään pysäytä minua kostamasta isääni, joka kuoli kädestänne, eikä muita "
 "kansastani, jotka sinä ja kätyrinne tapoitte, kuolonherra. Örkit, hyökätkää! "
 "Se, joka tuo minulle hänen kallonsa, saa säkillisen kultaa."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:378
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:381
 msgid ""
 "Is there an endless supply of foolish heroes with deathwishes? Honestly, "
 "where do you all come from?"
@@ -2466,12 +2506,12 @@ msgstr ""
 "kuolla? Ollaksemme rehellisiä, mistä te kaikki tulette?"
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:414
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:417
 msgid "Well, that is the end of his evil ways."
 msgstr "No niin, tämä on hänen pahojen teidensä loppu."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:418
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:421
 msgid ""
 "I wonder who he was in life, before fell into the evil ways that led him to "
 "today."
@@ -2480,7 +2520,7 @@ msgstr ""
 "jotka johtivat hänet tähän päivään."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:422
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:425
 msgid ""
 "Once he chose this un-life for himself and his soldiers, he forfeited any "
 "claim to our compassion. Does it even matter who he was?"
@@ -2489,7 +2529,7 @@ msgstr ""
 "tunteitamme. Onko sillä edes väliä, kuka hän oli?"
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:426
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:429
 msgid "No, I suppose it does not."
 msgstr "Eipä kai. Luulen, että ei ollut."
 
