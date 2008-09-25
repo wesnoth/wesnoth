@@ -29,16 +29,16 @@ public:
 	{
 	}
 
-	/** Inherited from twidget. */
+	/** Inherited from tcontrol. */
 	tpoint get_minimum_size() const { return get_best_size(); }
 
-	/** Inherited from twidget. */
+	/** Inherited from tcontrol. */
 	tpoint get_best_size() const;
 
 	/** Import overloaded versions. */
 	using tcontrol::get_best_size;
 
-	/** Inherited from twidget. */
+	/** Inherited from tcontrol. */
 	tpoint get_maximum_size() const { return get_best_size(); }
 
 	/** Inherited from tcontrol. */
