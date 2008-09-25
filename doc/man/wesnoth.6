@@ -63,6 +63,9 @@ for more information about command mode).
 Use special dummy locales to switch to any language even if that language 
 isn't installed to system
 .TP
+.B -e, --editor
+Start the in-game map editor directly
+.TP
 .B -f, --fullscreen
 runs the game in full screen mode.
 .TP
@@ -85,8 +88,17 @@ and removes
 .B -h, --help
 displays a summary of command line options to standard output, and exits.
 .TP
-.BI --load \ savegame
-loads the file savegame from the standard save game directory.
+.BI -l,\ --load \ file
+loads the savegame 
+.I file
+from the standard save game directory.
+If the 
+.B -e
+or
+.B --editor
+option is used as well, starts the editor with the map from
+.I file
+open.
 .TP
 .B --with-replay
 replays the game loaded with --load option.
