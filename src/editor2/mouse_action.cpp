@@ -357,6 +357,8 @@ void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 
 editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
 {
+	if (!click_) return NULL;
+	click_ = false;
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	if (!disp.map().on_board(hex)) {
 		return NULL;
@@ -387,6 +389,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 
 editor_action* mouse_action_starting_position::click_left(editor_display& /*disp*/, int /*x*/, int /*y*/)
 {
+	click_ = true;
 	return NULL;
 }
 
