@@ -350,7 +350,7 @@ public:
 	virtual bool has_vertical_scrollbar() const { return false; }
 
 	/**
-	 * Does the widget have a vertical scrollbar.
+	 * Does the widget have a horizontal scrollbar.
 	 *
 	 * See has_vertical_scrollbar for more info.
 	 * @returns                   Whether or not the widget has a horizontal
