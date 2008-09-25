@@ -1,7 +1,3 @@
-;NSIS Modern User Interface
-;Multilingual Example Script
-;Written by Joost Verburg
-
 ;--------------------------------
 ;Include Modern UI
 
@@ -14,13 +10,13 @@
 
   ;Name and file
   Name "Battle for Wesnoth"
-  OutFile "wesnoth-1.5-win32.exe"
+  OutFile "wesnoth-%version-win32.exe"
 
   ;Default installation folder
-  InstallDir "$PROGRAMFILES\Battle for Wesnoth"
+  InstallDir "$PROGRAMFILES\Battle for Wesnoth %version"
   
   ;Get installation folder from registry if available
-  InstallDirRegKey HKCU "Software\Battle for Wesnoth" ""
+  InstallDirRegKey HKCU "Software\Battle for Wesnoth\%version" ""
 
   RequestExecutionLevel user
 
@@ -40,7 +36,7 @@
 
   ;Remember the installer language
   !define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
-  !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth" 
+  !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
   !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 ;--------------------------------
@@ -53,7 +49,7 @@
 
   ;Start Menu Folder Page Configuration
   !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU" 
-  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth" 
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
   
   !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
@@ -147,7 +143,7 @@ Section "Battle for Wesnoth" BfWSection
   %NSIS_INSTALL_FILES
   
   ;Store installation folder
-  WriteRegStr HKCU "Software\Battle for Wesnoth" "" $INSTDIR
+  WriteRegStr HKCU "Software\Battle for Wesnoth\%version" "" $INSTDIR
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -208,6 +204,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
 
+  DeleteRegKey /ifempty HKCU "Software\Battle for Wesnoth\%version"
   DeleteRegKey /ifempty HKCU "Software\Battle for Wesnoth"
 
 SectionEnd
