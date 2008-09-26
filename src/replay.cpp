@@ -1056,6 +1056,11 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			const gamemap::location src(*source, game_events::get_state_of_game());
 			const gamemap::location dst(*destination, game_events::get_state_of_game());
 
+			if (src == dst) {
+				WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
+				continue;
+			}
+
 			unit_map::iterator u = units.find(dst);
 			if(u != units.end()) {
 				std::stringstream errbuf;
