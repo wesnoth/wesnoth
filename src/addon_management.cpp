@@ -1201,7 +1201,7 @@ namespace {
 	std::map< std::string, version_info > version_info_cache;
 } // end unnamed namespace 5
 
-void refresh_addon_version_info_cache(void)
+void refresh_addon_version_info_cache()
 {
 	if(version_info_cache.empty() != true)
 		version_info_cache.clear();
