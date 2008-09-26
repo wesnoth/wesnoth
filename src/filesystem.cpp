@@ -448,9 +448,11 @@ void set_preferences_dir(std::string path)
 const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::version).substr(0,3);
 #endif
 #ifdef _WIN32
+#ifdef APPDATA_USERDATA
+	const char* const appdata = getenv("APPDATA");
+#else
 	const char* appdata = "";
-	if(path != "SHARED")
-		appdata = getenv("APPDATA");
+#endif
 	if (strlen(appdata) > 0)
 	{
 		if (path.empty())
@@ -464,6 +466,15 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 		{
 			path = "userdata";
 		}
+#ifndef APPDATA_USERDATA
+		else
+		{
+			// if the path is given fallback to %APPDATA%.
+			appdata = getenv("APPDATA");
+			game_config::preferences_dir = appdata + std::string("/") + path;
+			return;
+		}
+#endif
 		char buf[512];
 		const char* const res = getcwd(buf,sizeof(buf));
 		if (res == NULL)
@@ -479,8 +490,9 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 	}
 
 #else
-	if (path.empty())
+	if (path.empty()) {
 		path = PREFERENCES_DIR;
+	}
 #ifndef __AMIGAOS4__
 	const char* const current_dir = ".";
 	const char* home_str = getenv("HOME");

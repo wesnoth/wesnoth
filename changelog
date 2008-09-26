@@ -47,6 +47,10 @@ Version 1.5.4+svn:
    * Improved village grabbing and protection.
    * Made 'caution' to control how dangerous place AI tries to attack
  * Miscellaneous and bug fixes:
+   * The config dir can now be changed when defining APPDATA_USERDATA at
+     compile-time to default to a dir under %APPDATA% on windows.
+     When specifying --config-dir on the command line %APPDATA% is used even
+     without that define.
    * Fixed the list of the unit's attacks getting cut off in the right panel
      (bug #12297).
    * Fixed wesnoth not to try to add duplicate ids to unit_map

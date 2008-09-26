@@ -48,30 +48,33 @@ sets BitsPerPixel value. Example:
 .B --bpp 32
 .TP
 .B -c, --campaign
-skip menu, show directly the campaign menu.
+goes directly to the campaign selection menu.
 .TP
-.B --config-dir <name>
-Makes wesnoth use <name> directory in $HOME for storing user data.
-win32: If <name> is SHARED wesnoth uses userdata directory in weanoth instalation directory.
+.BI --config-dir \ name
+sets the user configuration directory to
+.I name
+under $HOME or %APPDATA% for windows.
+.TP
+.B --config-path
+prints the path of the user configuration directory and exits.
 .TP
 .B -d, --debug
-shows extra debugging information and enables additional command mode
-options in-game (see the website at http://www.wesnoth.org/wiki/CommandMode
-for more information about command mode).
+enables additional command mode options in-game
+(see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more information about command mode).
 .TP
 .B --dummylocales
-Use special dummy locales to switch to any language even if that language 
-isn't installed to system
+use special dummy locales to switch to any language even if that language
+isn't installed system-wide.
 .TP
 .B -e, --editor
-Start the in-game map editor directly
-.TP
-.B -f, --fullscreen
-runs the game in full screen mode.
+start the in-game map editor directly.
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
 at, in a corner of the screen.
+.TP
+.B -f, --fullscreen
+runs the game in full screen mode.
 .TP
 .BI --gunzip \ infile.gz
 decompresses a file which should be in gzip format and stores it 
@@ -89,7 +92,7 @@ and removes
 displays a summary of command line options to standard output, and exits.
 .TP
 .BI -l,\ --load \ file
-loads the savegame 
+loads the savegame
 .I file
 from the standard save game directory.
 If the 
@@ -99,9 +102,6 @@ or
 option is used as well, starts the editor with the map from
 .I file
 open.
-.TP
-.B --with-replay
-replays the game loaded with --load option.
 .TP
 .BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
@@ -126,31 +126,41 @@ together with
 .B --multiplayer
 as explained below.
 .TP
+.B --no-delay
+runs the game without any delays for graphic benchmarking.  This is automatically enabled by
+.BR --nogui .
+.TP
 .B --nocache
 disables caching of game data.
+.TP
+.B --nomusic
+runs the game without music.
 .TP
 .B --nosound
 runs the game without sounds and music.
 .TP
-.B --nomusic
-runs the game without only music.
-.TP
 .B --path
 prints the name of the game data directory and exits.
 .TP
-.B --config-path
-prints the name of the user configuration directory and exits.
+.B --python-api
+prints the runtime documentation for the python API.
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
 .B -r 800x600
 .TP
+.B --smallgui
+allows to use screen resolutions down to 800x480 and resizes a few interface elements.
+.TP
 .BI -s,\ --server\ [host]
-skip menu, connect to specified host if any, otherwise connect to the first server in preferences. Example:
+connects to the specified host if any, otherwise connect to the first server in preferences. Example:
 .B --server server.wesnoth.org
 .TP
 .B -t, --test
 runs the game in a small test scenario.
+.TP
+.B --validcache
+assumes that the cache is valid. (dangerous)
 .TP
 .B -v, --version
 shows the version number and exits.
@@ -158,17 +168,10 @@ shows the version number and exits.
 .B -w, --windowed
 runs the game in windowed mode.
 .TP
-.B --no-delay
-runs the game without any delays for graphic benchmarking.  This is automatically enabled by
-.BR --nogui .
-.TP
-.B --nogui
-runs the game without the GUI. Must appear before
-.B --multiplayer
-to have the desired effect.
-.TP
-.B --exit-at-end
-exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.  This is also used for scriptable benchmarking.
+.B --with-replay
+replays the game loaded with the
+.B --load
+option.
 .
 .SH Options for --multiplayer
 .
@@ -197,6 +200,15 @@ use this option to play in the selected era instead of the
 era. The era is chosen by an id. Eras are described in the
 .B "data/multiplayer/eras.cfg"
 file.
+.TP
+.B --exit-at-end
+exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.
+This is also used for scriptable benchmarking.
+.TP
+.B --nogui
+runs the game without the GUI. Must appear before
+.B --multiplayer
+to have the desired effect.
 .TP
 .BI --parm number = name : value
 sets additional parameters for this side. This parameter depends on the
