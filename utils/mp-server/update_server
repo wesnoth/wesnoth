@@ -1,12 +1,25 @@
 #!/bin/sh
 
-if [ $# -gt 2 -o $# -lt 1 ]; then
-	echo "Syntax: $0 <server version> [<revision>]" >&2
+if [ $# -gt 3 -o $# -lt 1 ]; then
+	echo "Syntax: $0 [-c] <server version> [<revision>]" >&2
 	exit 1
 fi
 
+if [ "$1" = "-c" ]; then
+	echo "building campaignd..."
+	TYPE=campaignd
+	shift
+else
+	echo "building wesnothd..."
+	TYPE=wesnothd
+fi
+
 SERVER=$1
-SERVERBASE=$HOME/servers/$SERVER
+SERVERBASE=$HOME/$TYPE/$SERVER
+if [ $TYPE = wesnothd ]; then
+	SERVERBASE=$HOME/servers/$SERVER
+fi
+
 SOURCE=$HOME/source
 SOCKET=$SERVERBASE/build/var/run/socket
 
@@ -39,6 +52,11 @@ case $SERVER in
 		SCONS=yes
 	;;
 esac
+if [ $TYPE = campaignd ]; then
+	CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
+	LDFLAGS="$LDFLAGS -pg"
+	SCONS="no"
+fi
 
 REVISION=""
 if [ "$2" != "" ]; then
@@ -54,8 +72,11 @@ if [ "$rev" = "" ]; then
 fi
 # reminder for local changes
 #svn status
-DIR=wesnothd-svn-${rev}_$SERVER
-BUILD=$HOME/servers/builds/$DIR
+DIR=$TYPE-svn-${rev}_$SERVER
+BUILD=$HOME/$TYPE/builds/$DIR
+if [ $TYPE = wesnothd ]; then
+	BUILD=$HOME/servers/builds/$DIR
+fi
 mkdir -p $BUILD
 
 if [ "$SCONS" = "yes" ]; then
@@ -64,9 +85,14 @@ if [ "$SCONS" = "yes" ]; then
 	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-wesnothd prefix=$BUILD fifodir=$BUILD/var/run raw_sockets=1 program_suffix=-$SERVER profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
 #	boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt
 else
+	if [ $TYPE = wesnothd ]; then
+		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=$BUILD/var/run"
+	else
+		BUILD_FLAGS="--enable-campaign-server"
+	fi
 	echo 'autogen.sh and configure...'
 	./autogen.sh > $BUILD/autogen.log
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$BUILD --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/var/run --disable-nls --enable-lite --disable-profile --with-boost=$HOME/tools > $BUILD/configure.log || exit 1
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$BUILD --program-suffix=-$SERVER $BUILD_FLAGS --disable-game --disable-nls --enable-lite --with-boost=$HOME/tools > $BUILD/configure.log || exit 1
 	make clean > /dev/null
 	echo 'make...'
 	make > $BUILD/make.log || exit 1
@@ -78,10 +104,13 @@ fi
 rm -rf $BUILD/share/
 
 cd $SERVERBASE
-if [ -p $SOCKET ]; then
+if [ -p $SOCKET -o $TYPE = campaignd ]; then
 	rm -f oldbuild
 	mv build oldbuild
 else #the server under build has never been started, keep the oldbuild link to the (currently) running server
 	rm -f build
 fi
 ln -s ../builds/$DIR/ build
+
+cd $HOME/bin || exit 1
+ln -sf $BUILD/bin/$TYPE-$SERVER $TYPE-$SERVER
