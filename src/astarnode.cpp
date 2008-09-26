@@ -142,7 +142,7 @@ void a_star_world::resize_IFN(size_t parWidth, size_t parHeight)
 	vectAStarNode_.resize(sz);
 }
 
-void a_star_world::clear(void)
+void a_star_world::clear()
 {
 	a_star_node *locNode = NULL;
 	std::fill(vectAStarNode_.begin(), vectAStarNode_.end(), locNode);
