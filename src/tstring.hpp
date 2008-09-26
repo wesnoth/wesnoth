@@ -40,7 +40,7 @@ public:
 		std::string::const_iterator begin() const { return string_.begin() + begin_; }
 		std::string::const_iterator end() const   { return string_.begin() + end_; }
 	private:
-		void update(void);
+		void update();
 
 		const std::string& string_;
 		std::string::size_type begin_;
