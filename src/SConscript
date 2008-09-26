@@ -380,7 +380,7 @@ test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwe
 
 if env["svnrev"] != "" and env["svnrev"] != "exported":
     revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
-    env.Command("revision.hpp", Value(env["svnrev"]), Action(
+    env.Command("#/src/revision.hpp", Value(env["svnrev"]), Action(
                     lambda target, source, env: open(str(target[0]), "w").write(revision_define),
                     "Generating revision.hpp..."
                     ))

@@ -253,7 +253,7 @@ else:
     have_server_prereqs = True
     have_test_prereqs = True
 
-env.Append(CPPPATH = ["#/", "."])
+env.Append(CPPPATH = ["#/", "#/src"])
 
 
 have_msgfmt = env["MSGFMT"]
