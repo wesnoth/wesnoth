@@ -112,7 +112,7 @@ public:
 		return wmInf_.info.x11.window;
 	}
 
-	void acquire(void)
+	void acquire()
 	{
 		++acquireCount_;
 		if (acquireCount_ == 1) {
@@ -123,7 +123,7 @@ public:
 		}
 	}
 
-	void release(void)
+	void release()
 	{
 		--acquireCount_;
 		if (acquireCount_ == 0)
