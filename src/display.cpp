@@ -1906,7 +1906,7 @@ void display::draw_hex(const gamemap::location& loc) {
 	if(loc == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
 	}
-	if(loc == mouseoverHex_ && (on_map || in_editor() && map_.on_board_with_border(loc)) && mouseover_hex_overlay_ != NULL) {
+	if(loc == mouseoverHex_ && (on_map || (in_editor() && map_.on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
 	}
 	
