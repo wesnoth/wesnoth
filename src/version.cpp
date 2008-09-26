@@ -31,7 +31,7 @@ version_info::version_info(const version_info& o)
 {
 }
 
-version_info::version_info(void)
+version_info::version_info()
 	: nums_(3,0), special_(""), special_separator_('\0'), sane_(true)
 {
 }
