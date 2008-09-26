@@ -1676,9 +1676,6 @@ namespace {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 
 		std::string terrain_type = cfg["terrain"];
-		// FIXME: OBSOLETE Remove this in 1.5
-		if (terrain_type.empty())
-			terrain_type = cfg["letter"];
 		assert(state_of_game != NULL);
 
 		t_translation::t_terrain terrain = t_translation::read_terrain_code(terrain_type);

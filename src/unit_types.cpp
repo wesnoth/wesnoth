@@ -106,16 +106,11 @@ std::string attack_type::accuracy_parry_description() const
 
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
-	const bool deprecated_style = cfg["name"].empty() && !cfg["weapon"].empty();
-
 	const std::vector<std::string>& filter_range = utils::split(cfg["range"]);
-	const std::vector<std::string> filter_name = !deprecated_style ? utils::split(cfg["name"]) : utils::split(cfg["weapon"]);
+	const std::vector<std::string> filter_name = utils::split(cfg["name"]);
 	const std::vector<std::string> filter_type = utils::split(cfg["type"]);
 	const std::string filter_special = cfg["special"];
 	
-	if(deprecated_style)
-		lg::wml_error << "deprecated 'weapon' attribute in attack filter; support for this will be removed in 1.5.5 (use 'name' instead)\n";
-
 	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
 
