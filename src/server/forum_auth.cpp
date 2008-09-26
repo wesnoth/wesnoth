@@ -21,17 +21,17 @@ class forum_auth
 		std::string user_name;
 		std::string user_password;
 		bool authorised;
-		bool validate(void);
+		bool validate();
 	public :
 // Constructor - sets the data and evaluates them		   
 		forum_auth(std::string name, std::string password);
 // Destructor is empty
-		~forum_auth(void);
+		~forum_auth();
 // Function to return authorisation status
-		bool is_authorised(void);
+		bool is_authorised();
 };
 // Destructor
-forum_auth::~forum_auth(void)
+forum_auth::~forum_auth()
 {
 }
 // Constructor
@@ -42,7 +42,7 @@ forum_auth::forum_auth(std::string name, std::string password)
 	authorised = validate();
 } 								   
 // Validation function
-bool forum_auth::validate(void)
+bool forum_auth::validate()
 {
 // Set an alphabet-like string for use in encrytpion algorithm	 
 	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"); 								   
@@ -138,7 +138,7 @@ bool forum_auth::validate(void)
 	return true;
 }
 // Function returning status
-bool forum_auth::is_authorised(void)
+bool forum_auth::is_authorised()
 {
 	return authorised;
 }
