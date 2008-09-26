@@ -75,7 +75,7 @@ struct cost_calculator
 {
 	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far) const = 0;
 	virtual ~cost_calculator() {}
-	inline double getNoPathValue(void) const { return (42424242.0); }
+	inline double getNoPathValue() const { return (42424242.0); }
 };
 
 /** 
