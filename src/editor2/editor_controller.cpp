@@ -1101,6 +1101,7 @@ void editor_controller::process_keyup_event(const SDL_Event& event)
 {
 	editor_action* a = get_mouse_action()->key_event(gui(), event);
 	perform_refresh_delete(a);
+	set_mouseover_overlay();
 }
 
 void editor_controller::set_mouseover_overlay()

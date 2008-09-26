@@ -297,7 +297,19 @@ editor_action* mouse_action_select::click_perform_right(
 
 void mouse_action_select::set_mouse_overlay(editor_display& disp)
 {
-	disp.set_mouseover_hex_overlay(NULL); //TODO
+	surface image;
+	if (has_shift_modifier()) {
+		image = image::get_image("editor/tool-overlay-select-wand.png");
+	} else {
+		image = image::get_image("editor/tool-overlay-select-brush.png");
+	}
+	Uint8 alpha = 196;
+	int size = image->w;
+	int zoom = static_cast<int>(size * disp.get_zoom_factor());
+
+	// Add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	disp.set_mouseover_hex_overlay(image);
 }
 
 
@@ -411,7 +423,14 @@ editor_action* mouse_action_starting_position::click_right(editor_display& /*dis
 
 void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 {
-	disp.set_mouseover_hex_overlay(NULL); //TODO
+	surface image = image::get_image("editor/tool-overlay-starting-position.png");
+	Uint8 alpha = 196;
+	int size = image->w;
+	int zoom = static_cast<int>(size * disp.get_zoom_factor());
+
+	// Add the alpha factor and scale the image
+	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
+	disp.set_mouseover_hex_overlay(image);
 }
 
 
