@@ -316,7 +316,7 @@ if os.path.exists('.git'):
         # if git-svn can't find HEAD it's a local commit
         if Popen(Split("git-svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n") == "":
             env["svnrev"] += "L"
-        if Popen(Split("git diff --exit-code --quiet")).returncode == 1:
+        if Popen(Split("git diff --exit-code --quiet")).wait() == 1:
             env["svnrev"] += "M"
     except:
         env["svnrev"] = ""
