@@ -96,4 +96,34 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         env.Replace(**backup)
         return False
 
-config_checks = { "CheckBoost" : CheckBoost }
+def CheckBoostIostreamsGZip(context):
+    env = context.env
+    backup = env.Clone().Dictionary()
+
+    context.Message("Checking for gzip support in Boost Iostreams... ")
+    test_program = """
+        #include <boost/iostreams/filtering_stream.hpp>
+        #include <boost/iostreams/filter/gzip.hpp>
+
+        int main()
+        {
+            boost::iostreams::filtering_stream<boost::iostreams::output> filter;
+            filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params()));
+        }
+        \n"""
+
+    for zlib in ["", "z"]:
+        env.Append(LIBS = [zlib])
+        comment = ""
+        if zlib:
+                comment = "        //Trying to link against '%s'.\n" % zlib
+        if context.TryLink(comment + test_program, ".cpp"):
+            context.Result("yes")
+            return True
+        else:
+            env.Replace(**backup)
+
+    context.Result("no")
+    return False
+
+config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip }

@@ -201,6 +201,7 @@ if env["prereqs"]:
                          LIBS = ["intl"])
     conf.CheckCPlusPlus(gcc_version = "3.3") and \
     conf.CheckBoost("iostreams", require_version = "1.33.0") and \
+    conf.CheckBoostIostreamsGZip() and \
     conf.CheckBoost("smart_ptr", header_only = True) and \
     conf.CheckCHeader("libintl.h", "<>") and \
     conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
