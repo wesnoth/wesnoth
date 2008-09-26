@@ -114,7 +114,7 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
-	void update_minimap(void);
+	void update_minimap();
 
 	tooltips::manager tooltip_manager_;
 	int map_selection_;
