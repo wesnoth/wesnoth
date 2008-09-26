@@ -437,7 +437,7 @@ int CVideo::mustLock()
 	return SDL_MUSTLOCK(frameBuffer);
 }
 
-surface CVideo::getSurface( void )
+surface CVideo::getSurface()
 {
 	return frameBuffer;
 }
