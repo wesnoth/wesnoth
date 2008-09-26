@@ -488,17 +488,17 @@ void set_editor_b(int value)
 	prefs["editor_b"] = lexical_cast<std::string>(value);
 }
 
-int editor_r(void)
+int editor_r()
 {
 	return lexical_cast_in_range<int>(get("editor_r"), 0, -255, 255);
 }
 
-int editor_g(void)
+int editor_g()
 {
 	return lexical_cast_in_range<int>(get("editor_g"), 0, -255, 255);
 }
 
-int editor_b(void)
+int editor_b()
 {
 	return lexical_cast_in_range<int>(get("editor_b"), 0, -255, 255);
 }
