@@ -41,7 +41,7 @@ class theme
 		virtual ~object() { }
 
 		SDL_Rect& location(const SDL_Rect& screen) const;
-		const SDL_Rect& get_location(void) const { return loc_; }
+		const SDL_Rect& get_location() const { return loc_; }
 		const std::string& get_id() const { return id_; }
 
 		// This supports relocating of theme elements ingame.
