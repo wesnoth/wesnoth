@@ -199,12 +199,14 @@ if env["prereqs"]:
         env.AppendUnique(CPPPATH = [os.path.join(env["gettextdir"], "include")],
                          LIBPATH = [os.path.join(env["gettextdir"], "lib")],
                          LIBS = ["intl"])
-    conf.CheckCPlusPlus(gcc_version = "3.3") and \
-    conf.CheckBoost("iostreams", require_version = "1.33.0") and \
-    conf.CheckBoostIostreamsGZip() and \
-    conf.CheckBoost("smart_ptr", header_only = True) and \
-    conf.CheckCHeader("libintl.h", "<>") and \
-    conf.CheckSDL(require_version = '1.2.7') or Die("Base prerequisites are not met.")
+    have_server_prereqs = \
+        conf.CheckCPlusPlus(gcc_version = "3.3") and \
+        conf.CheckBoost("iostreams", require_version = "1.33.0") and \
+        conf.CheckBoostIostreamsGZip() and \
+        conf.CheckBoost("smart_ptr", header_only = True) and \
+        conf.CheckCHeader("libintl.h", "<>") and \
+        conf.CheckSDL(require_version = '1.2.7') and \
+        conf.CheckSDL('SDL_net') or Die("Base prerequisites are not met.")
 
     have_client_prereqs = \
         conf.CheckPango("cairo") and \
@@ -232,9 +234,7 @@ if env["prereqs"]:
         if conf.CheckLibWithHeader("mysqlpp", "mysql++/mysql++.h", "C++"):
             env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
 
-    have_server_prereqs = conf.CheckSDL('SDL_net') or Warning("Server prerequisites are not met. wesnothd and campaignd cannot be built.")
-
-    have_test_prereqs =  have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
+    have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
 
 #    have_boost_asio = \
 #        conf.CheckBoost("system", require_version = "1.35.0") and \
