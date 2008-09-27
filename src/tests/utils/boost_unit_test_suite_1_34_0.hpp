@@ -7,7 +7,7 @@
 //
 //  File        : $RCSfile: unit_test_suite.hpp,v $
 //
-//  Version     : $Revision: 1.36.1 $
+//  Version     : $Revision$
 //
 //  Description : defines Unit Test Framework public API
 // ***************************************************************************
