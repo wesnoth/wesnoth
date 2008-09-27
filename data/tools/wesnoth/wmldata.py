@@ -187,7 +187,7 @@ class DataSub(Data):
             elif isinstance(item, DataSub):
                 result.append(" " * indent)
                 result.append("[%s]\n" % item.name)
-                result.append( item.make_string(indent + 4, textdomain) )
+                result.append(item.make_string(indent + 4, textdomain))
                 result.append(" " * indent)
                 close = item.name
                 if close[0] == "+": close = close[1:]
@@ -245,7 +245,13 @@ class DataSub(Data):
         if ifdef:
             result.append("#endif\n")
 
-        return "".join(result)
+        bytes = ""
+        for r in result:
+            if r != None:
+                # For networking, we need actual bytesteam here, not unicode.
+                bytes += str(r)
+
+        return bytes
 
     def is_empty(self):
         return len(self.data) == 0

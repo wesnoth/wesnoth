@@ -7,8 +7,6 @@ import wesnoth.wmlparser as wmlparser
 # src/addon_management.cpp
 # src/network.cpp
 
-BWML_PREFIXES = "\x00\x01\x02\x03"
-
 dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
@@ -85,12 +83,12 @@ class CampaignClient:
         Return True if packet is encoded as binary WML. Else
         return False.
         """
-        if packet[0] in BWML_PREFIXES:
+        if packet[0] in "\x00\x01\x02\x03":
             return True
 
         return False
 
-    def makePacket( self, doc ):
+    def make_packet(self, doc):
         root = wmldata.DataSub("WML")
         root.insert(doc)
         return root.make_string()
@@ -113,6 +111,7 @@ class CampaignClient:
         """
         Read binary data from the server.
         """
+        sys.stderr.write("read_packet\n")
         packet = ""
         while len(packet) < 4 and not self.canceled:
             packet += self.sock.recv(4 - len(packet))
@@ -120,12 +119,17 @@ class CampaignClient:
             return None
 
         self.length = l = struct.unpack("!i", packet)[0]
+        
+        sys.stderr.write("Receiving %d bytes.\n" % self.length)
+    
         packet = ""
         while len(packet) < l and not self.canceled:
             packet += self.sock.recv(l - len(packet))
             self.counter = len(packet)
         if self.canceled:
             return None
+        
+        sys.stderr.write("Received %d bytes.\n" % len(packet))
         
         if packet.startswith("\x1F\x8B"):
             if self.verbose:
@@ -316,7 +320,7 @@ class CampaignClient:
         if self.error:
             return None
         request = wmldata.DataSub("request_campaign_list")
-        self.send_packet( self.makePacket( request ) )
+        self.send_packet(self.make_packet(request))
 
         return self.decode(self.read_packet())
 
@@ -327,9 +331,9 @@ class CampaignClient:
         request = wmldata.DataSub("validate_scripts")
         request.set_text_val("name", name)
         request.set_text_val("master_password", passphrase)
-        self.send_packet( self.makePacket( request ) )
+        self.send_packet(self.make_packet(request))
 
-        return self.decode( self.read_packet() )
+        return self.decode(self.read_packet())
 
     def delete_campaign(self, name, passphrase):
         """
@@ -339,7 +343,7 @@ class CampaignClient:
         request.set_text_val("name", name)
         request.set_text_val("passphrase", passphrase)
 
-        self.send_packet(self.makePacket(request))
+        self.send_packet(self.make_packet(request))
         return self.decode(self.read_packet())
 
     def change_passphrase(self, name, old, new):
@@ -351,7 +355,7 @@ class CampaignClient:
         request.set_text_val("passphrase", old)
         request.set_text_val("new_passphrase", new)
 
-        self.send_packet( self.makePacket( request ) )
+        self.send_packet(self.make_packet(request))
         return self.decode(self.read_packet())
 
     def get_campaign_raw(self, name):
@@ -360,7 +364,7 @@ class CampaignClient:
         """
         request = wmldata.DataSub("request_campaign")
         request.insert(wmldata.DataText("name", name))
-        self.send_packet(self.makePacket(request))
+        self.send_packet(self.make_packet(request))
         raw_packet = self.read_packet()
 
         if self.canceled:
@@ -392,31 +396,30 @@ class CampaignClient:
         The directory is the name of the campaign's directory.
         """
         request = wmldata.DataSub("upload")
-        request.set_text_val("title", title)
-        request.set_text_val("name", name)
         request.set_text_val("author", author)
-        request.set_text_val("passphrase", passphrase)
         request.set_text_val("description", description)
+        request.set_text_val("name", name)
+        request.set_text_val("passphrase", passphrase)
+        request.set_text_val("title", title)
         request.set_text_val("version", version)
         request.set_text_val("icon", icon)
-        dataNode = wmldata.DataSub( "data" )
-        request.insert( dataNode )
 
         def put_file(name, f):
             fileNode = wmldata.DataSub("file")
+
+            # Order in which we apply escape sequences matters.
+            contents = f.read()
+            contents = contents.replace("\x01", "\x01\x02" )
+            contents = contents.replace("\x00", "\x01\x01")
+            contents = contents.replace("\x0d", "\x01\x0e")
+
+            fileContents = wmldata.DataText( "contents", contents )
+            fileNode.insert(fileContents)
             fileNode.set_text_val("name", name)
 
-            # Order we apply escape sequences matters
-            contents = f.read().replace( "\x01", "\x01\x02" ).replace( "\x00", "\x01\x01" )
-##            import time
-##            contents = str(time.ctime())
-            fileContents = wmldata.DataText( "contents", contents )
-            fileNode.insert( fileContents )
-            
             return fileNode
 
         def put_dir(name, path):
-            print "put_dir(", name, path, ")"
             dataNode = wmldata.DataSub("dir")
             dataNode.set_text_val("name", name)
             for fn in glob.glob(path + "/*"):
@@ -432,18 +435,17 @@ class CampaignClient:
         # Only used if it's an old-style campaign directory
         # with an external config.
         if os.path.exists(cfgfile):
-            dataNode.insert( put_file(name + ".cfg", file(cfgfile)) )
+            request.insert(put_file(name + ".cfg", file(cfgfile)))
 
-        print "putting dir", name, os.path.basename(directory)
-        dataNode.insert( put_dir(name, directory) )
+        sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
+        request.insert(put_dir(name, directory))
 
-        print
-##        print "packet:", self.makePacket( request )
-        print "packet len:", len(self.makePacket( request ))
-        print
-        self.send_packet( self.makePacket( request ) )
+        packet = self.make_packet(request)
+        sys.stderr.write("Packet length is %d bytes.\n" % len(packet))
+        open("packet.dump", "wb").write(packet)
+        self.send_packet(packet)
 
-        return self.decode( self.read_packet( True ) )
+        return self.decode(self.read_packet())
 
     def get_campaign_raw_async(self, name):
         """
@@ -451,7 +453,7 @@ class CampaignClient:
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
-            def __init__( self, name, client ):
+            def __init__(self, name, client):
                 threading.Thread.__init__( self, name=name )
                 self.name = name
                 self.cs = client
@@ -480,7 +482,7 @@ class CampaignClient:
         doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
-            def __init__( self, name, cs, args ):
+            def __init__(self, name, cs, args):
                 threading.Thread.__init__( self, name=name )
                 self.name = name
                 self.cs = cs
@@ -488,7 +490,7 @@ class CampaignClient:
                 self.data = None
 
                 self.event = threading.Event()
-                
+
             def run(self):
                 self.data = self.cs.put_campaign(*self.args)
                 self.event.set()
@@ -498,7 +500,7 @@ class CampaignClient:
                 self.event.set()
                 self.cs.async_cancel()
 
-        mythread = MyThread( args[1], self, args )
+        mythread = MyThread(args[1], self, args)
         mythread.start()
 
         return mythread
@@ -524,8 +526,8 @@ class CampaignClient:
             if contents:
                 contents = contents.get_value()
             if verbose:
-                print i * " " + name + " (" +\
-                      str(len(contents)) + ")"
+                sys.stderr.write(i * " " + name + " (" +
+                      str(len(contents)) + ")")
             save = file( os.path.join(path, name), "wb")
 
             # We MUST un-escape our data
@@ -539,7 +541,7 @@ class CampaignClient:
             shutil.rmtree(os.path.join(path, name), True)
             os.mkdir(os.path.join(path, name))
             if verbose:
-                print i * " " + name
+                sys.stderr.write(i * " " + name + "\n")
             self.unpackdir(dir, os.path.join(path, name), i + 2, verbose)
 
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:

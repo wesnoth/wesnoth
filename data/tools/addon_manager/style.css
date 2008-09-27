@@ -1,0 +1,69 @@
+body {
+    background-color:  #fffbf0;
+    margin: 0px;
+    }
+h1 {
+    text-align: center;
+    }
+
+div.header {
+    background:#444444 url("http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg") repeat-x scroll center top;
+    border-bottom:1px solid #000000;
+    margin:0pt;
+    padding:0pt;
+    width:100%;
+    text-align: center;
+}
+div.topnav {
+    background:#272727 url("http://www.wesnoth.org/mw/skins/glamdrol/navbg.png") repeat-x scroll center bottom;
+    border-top:1px solid #595959;
+    margin:0pt;
+    padding:3px 4px 15px;
+    text-align:center;
+}
+div.topnav a {
+    color:#B48648;
+    font-family:"Trebuchet MS",sans-serif;
+    line-height:0.8em;
+    font-size:0.8em;
+    font-weight:bold;
+    text-decoration:none;
+}
+div.topnav a:hover {
+    color:#CCCCCC;
+}
+img {
+    border: none;
+}
+div.header img {
+    vertical-align:middle;
+}
+
+div#footer {
+    clear: both;
+    font-size: x-small;
+    border-top: 1px solid black;
+    padding: 1em;
+    }
+
+table#campaigns th {
+    text-align: left;
+}
+
+table#campaigns td img {
+    float: left;
+}
+
+div.desc {
+    display: none;
+}
+
+td:hover div.desc {
+    display: block;
+    left: 72px;
+    position: absolute;
+    width: 20em;
+    background-color: #ffffff;
+    border: 1px solid black;
+    padding: 8px;
+}
