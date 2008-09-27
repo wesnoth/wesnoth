@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2008-09-24 22:21+0300\n"
-"PO-Revision-Date: 2008-02-21 22:14+0100\n"
+"PO-Revision-Date: 2008-09-27 22:37+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -804,14 +804,13 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
 "Gère les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que "
-"que le serveur accepte par socket ou via le client wesnoth sur http://www."
+"que le serveur accepte via le client wesnoth ou via une fifo sur http://www."
 "wesnoth.org/wiki/ServerAdministration."
 
 # type: TP
@@ -964,7 +963,7 @@ msgstr "Clés globales : "
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -972,6 +971,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Chemin complet ou relatif vers un fichier compressé (au format gzip) que le "
+"serveur peut lire et écrire. Les bannissements seront sauvegardés dans ce "
+"fichier et relu à chaque démarrage du serveur."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1009,9 +1011,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1020,6 +1022,10 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Chemin de la fifo dans laquelle vous pouvez envoyer des commandes au serveur "
+"(comme les /query depuis wesnoth). Si elle n'est pas précisée le chemin est "
+"celui prédéfini lors de la compilation (valeur par défaut : /var/run/socket/"
+"wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1079,7 +1085,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1087,6 +1093,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Ligne de commande avec laquelle le serveur relance un processus depuis la "
+"commande « restart » (seulement possible depuis la fifo)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1167,24 +1175,24 @@ msgstr ""
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
-msgstr ""
+msgstr "B<[ban_time]> Balise pour définir des alias de durée de bannissement."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Le nom utilisé pour décrire une durée de bannissement."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1195,6 +1203,11 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Format de durée. Le format est le suivant : %d[%s[%d%s[...]]] où %s est s "
+"(secondes), m (minutes), h (heures), D (jours), M (mois) ou Y (années), et %"
+"d un nombre. Si le type de durée n'est pas précisée le temps est exprimé en "
+"minutes par défaut. Exemple : time=\"1D12h30m\" donne un bannissement de 1 "
+"jour, 12 heures et 30 minutes."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
