@@ -1,6 +1,9 @@
 import time, os, glob, sys
 
 def output(path, data):
+    try: os.mkdir(path)
+    except OSError: pass
+
     f = open(path + "/index.html", "w")
     def w(x):
         f.write(x + "\n")
