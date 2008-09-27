@@ -856,6 +856,7 @@ void server::process_data(const network::connection sock,
                           simple_wml::document& data) {
 	if (proxy::is_proxy(sock)) {
 		proxy::received_data(sock, data);
+		return;
 	}
 
 	// We know the client is alive for this interval
