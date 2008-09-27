@@ -17,6 +17,8 @@ if __name__ == "__main__":
     optionparser = optparse.OptionParser()
     optionparser.add_option("-a", "--address", help = "specify server address",
         default = "add-ons.wesnoth.org")
+    optionparser.add_option("--html",
+        help = "Output HTML overview into the givendirectory.",)
     optionparser.add_option("-p", "--port",
         help = "specify server port or BfW version (%s)" % " or ".join(
         map(lambda x: x[1], CampaignClient.portmap)),
@@ -125,7 +127,15 @@ if __name__ == "__main__":
         version = info.get_or_create_sub("info").get_text_val("version", "")
         return uploads, version
 
-    if options.list:
+    if options.html:
+        cs = CampaignClient(address)
+        data = cs.list_campaigns()
+        if data:
+            import campaigns_client.html
+            campaigns_client.html.output(options.html, data)
+        else:
+            sys.stderr.write("Could not connect.\n")
+    elif options.list:
         cs = CampaignClient(address)
         data = cs.list_campaigns()
         if data:
