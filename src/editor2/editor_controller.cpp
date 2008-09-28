@@ -62,6 +62,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, e
 	, map_context_(NULL)
 	, gui_(NULL)
 	, map_generators_()
+	, tods_()
 	, size_specs_()
 	, palette_()
 	, brush_bar_()
