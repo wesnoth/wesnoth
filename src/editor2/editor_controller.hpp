@@ -302,13 +302,9 @@ class editor_controller : public controller_base,
 		editor_display* gui_;
 		
 		std::vector<map_generator*> map_generators_;
-		
-		int current_map_generator_index_;
-		
+
 		std::vector<time_of_day> tods_;
-		
-		int current_tod_index_;
-		
+
 		/** Legacy object required by the legacy terrain palette and brush bar */
 		size_specs* size_specs_;
 		
