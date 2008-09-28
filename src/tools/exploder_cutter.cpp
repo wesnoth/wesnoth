@@ -20,9 +20,10 @@
 #include "serialization/string_utils.hpp"
 #include "SDL_image.h"
 
-cutter::cutter() : verbose_(false)
+cutter::cutter() 
+	: masks_()
+	, verbose_(false)
 {
-
 }
 
 const config cutter::load_config(const std::string &filename)
