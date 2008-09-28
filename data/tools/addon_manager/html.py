@@ -54,8 +54,8 @@ def output(path, data):
                 if src: src = src[0]
                 if not src or not os.path.exists(src):
                     sys.stderr.write("Cannot find icon " + icon + "\n")
-                    src = "./data/core/images/units/unknown-unit.png"
-                    imgurl = "icons/unknown-unit.png"
+                    src = "./images/misc/missing-image.png"
+                    imgurl = "icons/missing-image.png"
                 else:
                     imgurl = "icons/" + os.path.basename(icon)
             else:
@@ -81,9 +81,7 @@ def output(path, data):
 
     w("""\
 <div id="footer">
-<p><a href="http://www.wesnoth.org/wiki/Site_Map">Site map</a></p>
 <p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2008 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
-<p><a href="http://www.ibiblio.org/"><img src="http://www.ibiblio.org/hosted/images/ibiblio_hosted-110x32.png" width="110" height="32" border="0" alt="hosted by ibiblio" /></a></p>
 </div>
 </body></html>""")
