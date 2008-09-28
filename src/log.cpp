@@ -55,7 +55,7 @@ log_domain general("general"), ai("ai"), formula_ai("formula_ai"), cache("cache"
 	engine("engine"), network("network"), mp_server("server"),
 	filesystem("filesystem"), audio("audio"), notifs("notifs"),
 	replay("replay"), help("help"), gui("gui"), gui_parse("gui_parse"),
-	gui_draw("gui_draw"), gui_event("gui_event"), editor("editor"), wml("wml"),
+	gui_draw("gui_draw"), gui_layout("gui_layout"), gui_event("gui_event"), editor("editor"), wml("wml"),
 	mp_user_handler("user_handler");
 
 log_domain::log_domain(char const *name) : domain_(log_domains.size())
