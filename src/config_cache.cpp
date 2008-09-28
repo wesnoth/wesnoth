@@ -33,11 +33,11 @@
 #define DBG_CACHE LOG_STREAM(debug, cache)
 
 namespace game_config {
-	config_cache config_cache::cache_;
 
 	config_cache& config_cache::instance()
 	{
-		return cache_;
+		static config_cache cache;
+		return cache;
 	}
 
 	config_cache::config_cache() : 
