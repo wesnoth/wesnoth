@@ -30,6 +30,7 @@ class tmessage : public tdialog
 public:
 	tmessage(const std::string& title, const std::string& message)
 		: title_(title)
+		, image_()
 		, message_(message)
 	{}
 
