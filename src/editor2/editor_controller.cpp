@@ -826,7 +826,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 
 void editor_controller::cycle_brush()
 {
-	DBG_ED << __FUNCTION__ << "\n";
+	DBG_ED << __func__ << "\n";
 	if (brush_ == &brushes_.back()) {
 		brush_ = &brushes_.front();
 	} else {
@@ -895,7 +895,7 @@ bool editor_controller::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) cons
 
 void editor_controller::update_mouse_action_highlights()
 {
-	DBG_ED << __FUNCTION__ << "\n";
+	DBG_ED << __func__ << "\n";
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 	gamemap::location hex_clicked = gui().hex_clicked_on(x,y);

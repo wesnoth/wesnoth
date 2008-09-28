@@ -28,7 +28,7 @@
 #define LOG_ED LOG_STREAM_INDENT(info, editor)
 #define WRN_ED LOG_STREAM_INDENT(warn, editor)
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
-#define SCOPE_ED log_scope2(editor, __FUNCTION__)
+#define SCOPE_ED log_scope2(editor, __func__)
 
 class display;
 class gamemap;
