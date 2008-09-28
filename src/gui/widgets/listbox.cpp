@@ -24,26 +24,6 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
-#define DBG_G LOG_STREAM_INDENT(debug, gui)
-#define LOG_G LOG_STREAM_INDENT(info, gui)
-#define WRN_G LOG_STREAM_INDENT(warn, gui)
-#define ERR_G LOG_STREAM_INDENT(err, gui)
-
-#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
-
-#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
-
-#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
-#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
-
 namespace gui2 {
 
 static void callback_select_list_item(twidget* caller)
@@ -461,7 +441,7 @@ tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
 		best_size.y = max.y;
 	}
 
-	DBG_G << "Grid : maximum size " 
+	DBG_GUI << "Grid : maximum size " 
 			<< maximum_size << " returning " << best_size << ".\n";
 
 	return best_size;
@@ -515,7 +495,7 @@ void tlistbox::set_content_size(const SDL_Rect& rect)
 				const unsigned rows = rect.h / row_height;
 				find_scrollbar()->set_visible_items(rows);
 			} else {
-				WRN_G << "Listbox row 0 has no height, making all rows visible.\n";
+				WRN_GUI << "Listbox row 0 has no height, making all rows visible.\n";
 				find_scrollbar()->set_visible_items(rows_.size());
 			}
 		} else {

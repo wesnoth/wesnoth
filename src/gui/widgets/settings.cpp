@@ -32,26 +32,6 @@
 
 #include <cassert>
 
-#define DBG_G LOG_STREAM_INDENT(debug, gui)
-#define LOG_G LOG_STREAM_INDENT(info, gui)
-#define WRN_G LOG_STREAM_INDENT(warn, gui)
-#define ERR_G LOG_STREAM_INDENT(err, gui)
-
-#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
-
-#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
-
-#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
-#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
-
 namespace gui2 {
 
 bool new_widgets = false;
@@ -112,7 +92,7 @@ const std::string& get_id(const twindow_type window_type)
 
 void load_settings() 
 {
-	LOG_G << "Setting: init gui.\n";
+	LOG_GUI << "Setting: init gui.\n";
 
 	// Init.
 	fill_window_types();
@@ -1172,7 +1152,7 @@ tresolution_definition_ptr get_control(
 		control = control_definition->second.find(definition);
 
 	if(control == control_definition->second.end()) {
-		LOG_G << "Control: type '" << control_type << "' definition '" 
+		LOG_GUI << "Control: type '" << control_type << "' definition '" 
 			<< definition << "' not found, falling back to 'default'.\n";
 		control = control_definition->second.find("default");
 		assert(control != control_definition->second.end());

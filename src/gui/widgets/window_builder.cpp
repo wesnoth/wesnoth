@@ -36,26 +36,6 @@
 
 #include <cassert>
 
-#define DBG_G LOG_STREAM_INDENT(debug, gui)
-#define LOG_G LOG_STREAM_INDENT(info, gui)
-#define WRN_G LOG_STREAM_INDENT(warn, gui)
-#define ERR_G LOG_STREAM_INDENT(err, gui)
-
-#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
-
-#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
-
-#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
-#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
-
 namespace gui2 {
 
 namespace {
@@ -619,7 +599,7 @@ twidget* tbuilder_button::build() const
 		button->set_retval(twindow::get_retval_by_id(id));
 	}
 
-	DBG_G << "Window builder: placed button '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed button '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return button;
@@ -631,7 +611,7 @@ twidget* tbuilder_image::build() const
 
 	init_control(widget);
 
-	DBG_G << "Window builder: placed image '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed image '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return widget;
@@ -651,7 +631,7 @@ twidget* tbuilder_label::build() const
 
 	init_control(tmp_label);
 
-	DBG_G << "Window builder: placed label '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed label '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return tmp_label;
@@ -751,7 +731,7 @@ twidget* tbuilder_listbox::build() const
 	listbox->set_assume_fixed_row_size(assume_fixed_row_size);
 	listbox->set_scrollbar_mode(scrollbar_mode);
 
-	DBG_G << "Window builder: placed listbox '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed listbox '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
@@ -885,7 +865,7 @@ twidget* tbuilder_menubar::build() const
 	init_control(menubar);
 
 
-	DBG_G << "Window builder: placed menubar '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed menubar '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	if(direction_ == tmenubar::HORIZONTAL) {
@@ -918,7 +898,7 @@ twidget* tbuilder_minimap::build() const
 
 	init_control(minimap);
 
-	DBG_G << "Window builder: placed minimap '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed minimap '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 	
 	return minimap;
@@ -955,7 +935,7 @@ twidget* tbuilder_panel::build() const
 
 	init_control(panel);
 
-	DBG_G << "Window builder: placed panel '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed panel '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 
@@ -1003,7 +983,7 @@ twidget* tbuilder_scroll_label::build() const
 
 	widget->finalize_setup();
 
-	DBG_G << "Window builder: placed scroll label '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed scroll label '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return widget;
@@ -1091,7 +1071,7 @@ twidget* tbuilder_slider::build() const
 		slider->set_maximum_value_label(maximum_value_label_);
 	}
 
-	DBG_G << "Window builder: placed slider '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed slider '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return slider;
@@ -1107,7 +1087,7 @@ twidget* tbuilder_spacer::build() const
 		spacer->set_best_size(tpoint(width_, height_));
 	}
 
-	DBG_G << "Window builder: placed spacer '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed spacer '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return spacer;
@@ -1122,7 +1102,7 @@ twidget* tbuilder_toggle_button::build() const
 	toggle_button->set_icon_name(icon_name_);
 	toggle_button->set_retval(retval_);
 
-	DBG_G << "Window builder: placed toggle button '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed toggle button '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return toggle_button;
@@ -1164,7 +1144,7 @@ twidget* tbuilder_toggle_panel::build() const
 
 	toggle_panel->set_retval(retval_);
 
-	DBG_G << "Window builder: placed toggle panel '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed toggle panel '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 
@@ -1204,7 +1184,7 @@ twidget* tbuilder_text_box::build() const
 		text_box->set_history(history_);		
 	}
 
-	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed text box '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return text_box;
@@ -1216,7 +1196,7 @@ twidget* tbuilder_vertical_scrollbar::build() const
 
 	init_control(vertical_scrollbar);
 
-	DBG_G << "Window builder: placed text box '" << id << "' with defintion '" 
+	DBG_GUI << "Window builder: placed text box '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	return vertical_scrollbar;
@@ -1231,7 +1211,7 @@ twidget* tbuilder_grid::build() const
 
 	log_scope2(gui, "Window builder: building grid");
 
-	DBG_G << "Window builder: grid has " << rows << " rows and "
+	DBG_GUI << "Window builder: grid has " << rows << " rows and "
 		<< cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {
@@ -1242,7 +1222,7 @@ twidget* tbuilder_grid::build() const
 				grid->set_col_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_G << "Window builder: adding child at " << x << ',' << y << ".\n";
+			DBG_GUI << "Window builder: adding child at " << x << ',' << y << ".\n";
 
 			twidget* widget = widgets[x * cols + y]->build();
 			grid->set_child(widget, x, y, flags[x * cols + y],  border_size[x * cols + y]);

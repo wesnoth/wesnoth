@@ -26,11 +26,6 @@
 #include "log.hpp"
 #include "wml_exception.hpp"
 
-#define DBG_GUI LOG_STREAM_INDENT(debug, gui)
-#define LOG_GUI LOG_STREAM_INDENT(info, gui)
-#define WRN_GUI LOG_STREAM_INDENT(warn, gui)
-#define ERR_GUI LOG_STREAM_INDENT(err, gui)
-
 #define ERR_CONFIG LOG_STREAM(err, config)
 
 namespace gui2 {

@@ -23,26 +23,6 @@
 
 #include "SDL_ttf.h"
 
-#define DBG_G LOG_STREAM_INDENT(debug, gui)
-#define LOG_G LOG_STREAM_INDENT(info, gui)
-#define WRN_G LOG_STREAM_INDENT(warn, gui)
-#define ERR_G LOG_STREAM_INDENT(err, gui)
-
-#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
-
-#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
-
-#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
-#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
-
 namespace gui2 {
 
 namespace {
@@ -98,7 +78,7 @@ unsigned decode_font_style(const std::string& style)
 		return TTF_STYLE_NORMAL;
 	}
 
-	ERR_G << "Unknown style '" << style << "' using 'normal' instead.\n";
+	ERR_GUI << "Unknown style '" << style << "' using 'normal' instead.\n";
 
 	return TTF_STYLE_NORMAL;
 }

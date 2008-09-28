@@ -29,27 +29,6 @@
 
 #include <cassert>
 
-#define DBG_G LOG_STREAM_INDENT(debug, gui)
-#define LOG_G LOG_STREAM_INDENT(info, gui)
-#define WRN_G LOG_STREAM_INDENT(warn, gui)
-#define ERR_G LOG_STREAM_INDENT(err, gui)
-
-#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
-#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
-#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
-#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
-
-#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
-#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
-#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
-#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
-
-#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
-#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
-#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
-#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
-
-
 namespace gui2{
 
 namespace {
@@ -386,7 +365,7 @@ void twindow::layout()
 		log_scope2(gui, "Window: Recalculate size");	
 
 		tpoint size = get_best_size(); 
-		DBG_G << "Window best size : " << size << " screen size " 
+		DBG_GUI << "Window best size : " << size << " screen size " 
 			<< settings::screen_width << ',' << settings::screen_height << ".\n";
 
 		// If too big try it gracefully.
@@ -395,7 +374,7 @@ void twindow::layout()
 
 			size = get_best_size(
 				tpoint(settings::screen_width, settings::screen_height));
-			DBG_G << "Window best size : After resize request : " << size << ".\n";
+			DBG_GUI << "Window best size : After resize request : " << size << ".\n";
 		}
 		// If still to big, just resize.
 		size.x = size.x < static_cast<int>(settings::screen_width) 
@@ -404,7 +383,7 @@ void twindow::layout()
 		size.y = size.y < static_cast<int>(settings::screen_height) 
 			? size.y : static_cast<int>(settings::screen_height);
 
-		DBG_G << "Window final size " << size << ".\n";
+		DBG_GUI << "Window final size " << size << ".\n";
 
 		tpoint position(0, 0);
 		switch(horizontal_placement_) {
@@ -449,7 +428,7 @@ void twindow::layout()
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 {
-	DBG_G << "Showing tooltip message: '" << tooltip << "'.\n";
+	DBG_GUI << "Showing tooltip message: '" << tooltip << "'.\n";
 
 	assert(!tooltip.empty());
 
@@ -488,7 +467,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
 {
 	// Note copy past of twindow::do_show_tooltip except that the help may be empty.
-	DBG_G << "Showing help message: '" << help_popup << "'.\n";
+	DBG_GUI << "Showing help message: '" << help_popup << "'.\n";
 
 	if(help_popup.empty()) {
 		return;

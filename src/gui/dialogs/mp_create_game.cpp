@@ -34,11 +34,6 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
-#define DBG_GUI LOG_STREAM_INDENT(debug, gui)
-#define LOG_GUI LOG_STREAM_INDENT(info, gui)
-#define WRN_GUI LOG_STREAM_INDENT(warn, gui)
-#define ERR_GUI LOG_STREAM_INDENT(err, gui)
-
 namespace gui2 {
 
 tmp_create_game::tmp_create_game(const config& cfg) :

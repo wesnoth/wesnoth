@@ -122,4 +122,31 @@ extern std::stringstream wml_error;
 // When using log_scope/log_scope2 it is nice to have all output indented.
 #define LOG_STREAM_INDENT(a,b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b, true, true)
 
+
+// Define a list of standard loggers.
+#define DBG_GUI LOG_STREAM_INDENT(debug, gui)
+#define LOG_GUI LOG_STREAM_INDENT(info, gui)
+#define WRN_GUI LOG_STREAM_INDENT(warn, gui)
+#define ERR_GUI LOG_STREAM_INDENT(err, gui)
+
+#define DBG_G_P LOG_STREAM_INDENT(debug, gui_parse)
+#define LOG_G_P LOG_STREAM_INDENT(info, gui_parse)
+#define WRN_G_P LOG_STREAM_INDENT(warn, gui_parse)
+#define ERR_G_P LOG_STREAM_INDENT(err, gui_parse)
+
+#define DBG_G_L LOG_STREAM_INDENT(debug, gui_layout)
+#define LOG_G_L LOG_STREAM_INDENT(info, gui_layout)
+#define WRN_G_L LOG_STREAM_INDENT(warn, gui_layout)
+#define ERR_G_L LOG_STREAM_INDENT(err, gui_layout)
+
+#define DBG_G_D LOG_STREAM_INDENT(debug, gui_draw)
+#define LOG_G_D LOG_STREAM_INDENT(info, gui_draw)
+#define WRN_G_D LOG_STREAM_INDENT(warn, gui_draw)
+#define ERR_G_D LOG_STREAM_INDENT(err, gui_draw)
+
+#define DBG_G_E LOG_STREAM_INDENT(debug, gui_event)
+#define LOG_G_E LOG_STREAM_INDENT(info, gui_event)
+#define WRN_G_E LOG_STREAM_INDENT(warn, gui_event)
+#define ERR_G_E LOG_STREAM_INDENT(err, gui_event)
+
 #endif
