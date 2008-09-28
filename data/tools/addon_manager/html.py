@@ -24,7 +24,11 @@ def output(path, data):
 </div>
 <div class="topnav">
 <a href="index.html">Wesnoth Addons</a>
-</div>""")
+</div>
+<p>To install an add-on please go to the title screen of Battle for Wesnoth. Select "Add-ons" from the menu and click "OK" to connect to add-ons.wesnoth.org.
+Select the add-on you want to install from the list and click "OK". The download will commence immediately. Wesnoth will then automatically install and load the add-on so you can use it.</p>
+<p>Note: Hover over the icons to see the description of the add-on.</p>
+<br/>""")
 
     os.system("cp -u data/tools/addon_manager/style.css " + path)
 
