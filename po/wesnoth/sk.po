@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-24 22:32+0200\n"
-"PO-Revision-Date: 2008-09-06 19:22+0100\n"
+"PO-Revision-Date: 2008-09-27 22:17+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -505,7 +505,7 @@ msgstr ""
 "\n"
 "\n"
 "Bitka o Wesnoth je ťahová fantasy stratégia, čo je medzi modernými "
-"stragegickými hrami trochu nezvyčajné. Zatiaľ čo sa ostatné hry snažia o "
+"strategickými hrami trochu nezvyčajné. Zatiaľ čo sa ostatné hry snažia o "
 "zložitosť, Bitka o Wesnoth sa snaží o jednoduchosť v pravidlách i hraní. "
 "Neznamená to však, že hra je jednoduchá - na týchto jednoduchých pravidlách "
 "možno postaviť rozmanité stratégie, takže je ľahké hru pochopiť, ale náročné "
@@ -529,7 +529,7 @@ msgstr ""
 "Wesnoth. Obsahuje návod na hru a základné herné mechanizmy. Počas hry sa "
 "budú na týchto stránkach objavovať nové informácie, zároveň ako budete "
 "stretávať nové stránky hry. Podrobnejšie informácie o zvláštnych situáciách "
-"a výnimkach nájdete na nasledujúcich stránkach."
+"a výnimkách nájdete na nasledujúcich stránkach."
 
 #. [topic]
 #: data/core/help.cfg:135
@@ -807,10 +807,10 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst=experience_and_advancement text=advance</ref>."
 msgstr ""
-"Body zdravia sa zobrazujú aj pomocou ukazovateľa zdravia pri každe jednotke. "
-"Tento ukazovateľ je zelený, žltý alebo červený. Jednotka, ktorá má aspoň 1 "
-"bod skúsenosti, má aj ukazovateľ skúsenosti. Ten je modrý, a zmení sa na "
-"biely, ak je jednotka blízko <ref>dst=experience_and_advancement text="
+"Body zdravia sa zobrazujú aj pomocou ukazovateľa zdravia pri každej "
+"jednotke. Tento ukazovateľ je zelený, žltý alebo červený. Jednotka, ktorá má "
+"aspoň 1 bod skúsenosti, má aj ukazovateľ skúsenosti. Ten je modrý, a zmení "
+"sa na biely, ak je jednotka blízko <ref>dst=experience_and_advancement text="
 "\"povýšenia\"</ref>."
 
 #. [topic]
@@ -1063,7 +1063,7 @@ msgstr ""
 "Toto pravidlo má dve výnimky: <ref>dst=magical_attacks text='magický útok'</"
 "ref> a útok <ref>dst=ability_marksman text='ostrostrelca'</ref>. Magickú "
 "útok má vždy šancu na zásah 70%, bez ohľadu na terén, a ostrostrelec má "
-"počas svojho útoku vždy šancu na záhas aspoň 60%, bez ohľadu na terén."
+"počas svojho útoku vždy šancu na zásah aspoň 60%, bez ohľadu na terén."
 
 #. [topic]
 #: data/core/help.cfg:228
@@ -1352,7 +1352,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Oddych: Jednotka, ktorá sa nehýbala, neútočila, ani nikto naútočil na ňu, sa "
+"Oddych: Jednotka, ktorá sa nehýbala, neútočila, ani nikto neútočil na ňu, sa "
 "v ďalšom kole uzdraví o 2 body."
 
 #. [topic]
@@ -1399,9 +1399,9 @@ msgid ""
 msgstr ""
 "\n"
 "Liečiace jednotky: Jednotky so schopnosťou <ref>dst=ability_cures "
-"text='liečiť'</ref> vyliečia jedn všetkým spojeneckým jednotkám na "
-"vedľajších políčkach (ak majú aj uzdravovanie, tieto jednotky už v danom "
-"ťahu neuzdravujú)."
+"text='liečiť'</ref> vyliečia jed všetkým spojeneckým jednotkám na vedľajších "
+"políčkach (ak majú aj uzdravovanie, tieto jednotky už v danom ťahu "
+"neuzdravujú)."
 
 #. [topic]
 #: data/core/help.cfg:287
@@ -1700,7 +1700,7 @@ msgstr ""
 "\n"
 "Sila je užitočná pre každú jednotku bojujúcu na blízko, najviac však pre tie "
 "jednotky, ktoré dávajú veľa úderov, ako napríklad elf vojak. Silné jednotky "
-"môžu byť veľmi užitočné vo chvíľach, keď malé zranenie navyše môže rozhodúť "
+"môžu byť veľmi užitočné vo chvíľach, keď malé zranenie navyše môže rozhodnúť "
 "o tom, či bude úder smrteľný."
 
 #. [topic]
@@ -2044,7 +2044,7 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
-"Platká voda znamená, že hladina vody siaha nanajvýš dospelému človeku po "
+"Plytká voda znamená, že hladina vody siaha nanajvýš dospelému človeku po "
 "pás. To je dosť na to, aby spomalila takmer každého a urobila ho veľmi "
 "zraniteľným. Keďže trpaslíkom takáto voda siaha až po krk, majú to zvlášť "
 "ťažké. Výnimkou sú bytosti, ktorých telá sú prispôsobené na plávanie; tieto "
@@ -3308,7 +3308,7 @@ msgstr "Nápoj rozkladu"
 #. [object]
 #: data/core/macros/items.cfg:283
 msgid "This poor unit drank something really bad."
-msgstr "Táto úboha jednotka vypila niečo naozaj zlé."
+msgstr "Táto úbohá jednotka vypila niečo naozaj zlé."
 
 #. [object]
 #: data/core/macros/items.cfg:318
@@ -4294,8 +4294,8 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Ak táto jednotka použije svoj zurvalý útok, bude boj pokračovať dovtedy, "
-"kým jeden z bojujúcich nepadne mŕtvy."
+" Ak táto jednotka použije svoj zúrivý útok, bude boj pokračovať dovtedy, kým "
+"jeden z bojujúcich nepadne mŕtvy."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -4356,7 +4356,7 @@ msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"Použitie výpadu pri útoku zdvojnásobí sa spôsobené i utŕžené zranenie. Toto "
+" Použitie výpadu pri útoku zdvojnásobí sa spôsobené i utŕžené zranenie. Toto "
 "neplatí počas obranného protiúderu."
 
 #: data/core/macros/special-notes.cfg:83
@@ -4506,27 +4506,27 @@ msgstr "Bojuje normálne aj počas nevýhodnej dennej/nočnej doby"
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
-msgstr "Červený"
+msgstr "Červená"
 
 #. [color_range]
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
-msgstr "Modrý"
+msgstr "Modrá"
 
 #. [color_range]
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
-msgstr "Zelený"
+msgstr "Zelená"
 
 #. [color_range]
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
-msgstr "Purpurový"
+msgstr "Fialová"
 
 #. [color_range]
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
-msgstr "Oranžový"
+msgstr "Oranžová"
 
 #. [color_range]
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
@@ -4536,12 +4536,12 @@ msgstr "Čierna"
 #. [color_range]
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
-msgstr "Biely"
+msgstr "Biela"
 
 #. [color_range]
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
-msgstr "Hnedý"
+msgstr "Hnedá"
 
 #. [color_range]
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
@@ -4925,12 +4925,12 @@ msgstr "Gryfovia"
 #. [race]
 #: data/core/units.cfg:123
 msgid "race^Human"
-msgstr "Človek"
+msgstr "Človek muž"
 
 #. [race]
 #: data/core/units.cfg:124
 msgid "race+female^Human"
-msgstr "Žena"
+msgstr "Človek žena"
 
 #. [race]
 #: data/core/units.cfg:125
@@ -5836,7 +5836,7 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Nehýb zranenými jednotkam ak to nie je nutné - nechaj ich odpočívať. "
+"Nehýb zranenými jednotkami ak to nie je nutné - nechaj ich odpočívať. "
 "Jednotky, ktoré sa počas kola nepohli ani neútočili, získajú 2 životy na "
 "začiatku ich nasledujúceho kola."
 
@@ -6004,7 +6004,7 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
-"Ak pohneš jednotku, ale pritom nezaútočíš ani nezistíš žiadnu novú "
+"Ak pohneš jednotkou, ale pritom nezaútočíš ani nezistíš žiadnu novú "
 "informáciu, môžeš vrátiť pohyb klávesom 'u'."
 
 #. [tip]
@@ -6022,7 +6022,7 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Pri útoku použi pomocné uzdravovacie jednotky - pomôžu ti vyhrať boj, aj keď "
+"Pri útoku použi pomocné uzdravujúce jednotky - pomôžu ti vyhrať boj, aj keď "
 "sami nebudú útočiť."
 
 #. [tip]
@@ -8029,7 +8029,7 @@ msgstr "Mapa je zakrytá, dokiaľ ju tvoje jednotky nezmapujú"
 
 #: src/multiplayer_create.cpp:195
 msgid "Allow users who are not playing to watch the game"
-msgstr "Umožni divákom sledovať hru"
+msgstr "Umožni nehrajúcim divákom sledovať hru"
 
 #: src/multiplayer_create.cpp:199
 msgid "Share View"
@@ -8045,11 +8045,11 @@ msgstr "Nič spoločné"
 
 #: src/multiplayer_create.cpp:212
 msgid "No eras found."
-msgstr "Neviem nájsť éry."
+msgstr "Nenašli sa žiadne éry."
 
 #: src/multiplayer_create.cpp:213
 msgid "No eras found"
-msgstr "Neviem nájsť éry"
+msgstr "Nenašli sa žiadne éry"
 
 #: src/multiplayer_create.cpp:226
 msgid "$login's game"
@@ -8193,7 +8193,7 @@ msgstr "Koniec"
 
 #: src/multiplayer_lobby.cpp:653
 msgid "Skip quickly to the active turn when observing"
-msgstr "Pri pozorovaní rýchlo preskoč na aktuálny ťah"
+msgstr "Pri pozorovaní rýchlo preskoč na aktuálne kolo"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Joining this game requires a password."
@@ -8307,7 +8307,7 @@ msgstr "Prehra"
 
 #: src/playcampaign.cpp:139 src/playcampaign.cpp:174
 msgid "You have been defeated!"
-msgstr "Prehral si!"
+msgstr "Bol si porazený!"
 
 #: src/playcampaign.cpp:398
 msgid "Error while reading the WML: "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2008-09-24 22:21+0300\n"
-"PO-Revision-Date: 2008-04-20 21:39+0100\n"
+"PO-Revision-Date: 2008-09-27 00:17+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -300,7 +300,7 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
-"spustí hru pre viacerých hráčov. Ďalšie možnosti použuteľné v kombinácii s "
+"spustí hru pre viacerých hráčov. Ďalšie možnosti použiteľné v kombinácii s "
 "B<--multiplayer> sú vysvetlené nižšie."
 
 # type: TP
@@ -797,15 +797,14 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Riadi sieťové hry Bitky o Wesnoth. Na stránke http://www.wesnoth.org/wiki/"
-"ServerAdministration sú uvedené príkazy, ktoré server príjíma cez klienta "
-"alebo socket."
+"Riadi sieťové hry pre viacerých hráčov Bitky o Wesnoth. Na stránke http://"
+"www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, ktoré server "
+"prijíma cez klienta (/query ...) alebo soket (fifo)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -956,7 +955,7 @@ msgstr "Globálne kľúče:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<súbor_zákazov>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -964,6 +963,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Plná alebo relatívna cesta k (komprimovanému gzipom) súboru, ktorý môže "
+"server čítať a zapisovať. Zákazy budú ukladané do tohto súboru a načítané "
+"pri štarte."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1000,9 +1002,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<cesta_k_soketu>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1011,6 +1013,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Cesta k soketu (fifo), do ktorého môžete posielať príkazy pre server "
+"(rovnaké ako /query ... z wesnoth).  Ak nie je uvedená, použije sa cesta "
+"zadaná pri kompilácii (predvolená: /var/run/socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1069,7 +1074,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<reštartovací_príkaz>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1077,6 +1082,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Príkaz, ktorý server použije na spustenie nového serverovského procesu  po "
+"príkaze `restart'. (Môže byť použité iba cez soket (fifo).)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1157,23 +1164,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[dĺžka_zákazu]> Značka na pohodlné definovanie kľúčových slov pre dĺžku "
+"dočasných zákazov."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<názov>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Názov použitý na pomenovanie času zákazu"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<čas>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1184,6 +1193,10 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Definícia dĺžky trvania.  Formát je: %d[%s[%d%s[...]]] kde %s sú s "
+"(sekundy), m (minúty), h (hodiny), D (dni), M (mesiace) alebo Y (roky) a %d "
+"je číslo.  Ak nie je zadaná jednotka času, použije sa minúta (m).  Príklad: "
+"čas=\"1D12h30m\" znamená zákaz trvajúci 1 deň, 12 hodín a 30 minút."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
