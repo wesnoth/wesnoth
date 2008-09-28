@@ -126,7 +126,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 	}
 }
 
-void scope_logger::do_log_entry(log_domain const &domain, const char* str)
+void scope_logger::do_log_entry(log_domain const &domain, const std::string& str)
 {
 	output_ = &debug(domain, false, true);
 	str_ = str;

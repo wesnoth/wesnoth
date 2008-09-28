@@ -75,21 +75,21 @@ class scope_logger
 {
 	int ticks_;
 	std::ostream *output_;
-	const char* str_;
+	std::string str_;
 public:
 	scope_logger(log_domain const &domain, const char* str) :
 		ticks_(0),
 		output_(0),
-		str_(0)
+		str_()
 	{
 		if (!debug.dont_log(domain)) do_log_entry(domain, str);
 	}
 	scope_logger(log_domain const &domain, const std::string& str) :
 		ticks_(0),
 		output_(0),
-		str_(0)
+		str_()
 	{
-		if (!debug.dont_log(domain)) do_log_entry(domain, str.c_str());
+		if (!debug.dont_log(domain)) do_log_entry(domain, str);
 	}
 	~scope_logger()
 	{
@@ -97,7 +97,7 @@ public:
 	}
 	void do_indent() const;
 private:
-	void do_log_entry(log_domain const &domain, const char* str);
+	void do_log_entry(log_domain const &domain, const std::string& str);
 	void do_log_exit();
 };
 
