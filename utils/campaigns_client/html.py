@@ -66,7 +66,7 @@ Select the add-on you want to install from the list and click "OK". The download
                 imgurl = "icons/" + os.path.basename(icon)
             os.system("cp -u " + src + " " + path + "/icons")
                 
-        name = v("name", "unknown").replace("_", " ")
+        name = v("title", "unknown")
         w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
             ) % (icon, imgurl))
         w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (
