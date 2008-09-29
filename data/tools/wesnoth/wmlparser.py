@@ -739,9 +739,13 @@ class Parser:
             elif c == '[':
                 name = self.read_until("]")[:-1]
                 if name[0] == '/':
-                    if state == name[1:] or state == "+" + name[1:]:
+                    if state == name[1:]:
                         return
                     raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
+                #TODO: make a [+tag] properly append to most recent [tag] 
+                # The below is an ugly hack, but better than keeping the '+' in the tag name.
+                elif name[0] == '+':
+                    name = name[1:]
                 subdata = wmldata.DataSub(name)
                 self.parse_top(subdata, name)
                 data.insert(subdata)
