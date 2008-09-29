@@ -27,19 +27,19 @@ class Tester:
         if not tag:
             tag = self.wmltree
         if self.verbosity > 2:
-            print "%sTesting tag %s" % (depth * ' ', tag.name, )
+            print "%s[%s]" % (depth * ' ', tag.name, )
         for item in tag.data:
             if isinstance(item, wmldata.DataSub):
                 if item.name in self.grammar[tag.name][0]:
                     self.test(item, depth + 1)
                 else:
-                    print "Found tag %s which is meaningless in %s" % (item.name, tag.name)
+                    print "%s[%s] ******** meaningless in [%s] ********" % ((depth + 1) * '*', item.name, tag.name)
             elif isinstance(item, wmldata.DataText):
                 if item.name in self.grammar[tag.name][1]:
                     if self.verbosity > 2:
-                        print "%sFound key %s with contents %s" % ((depth + 1) * ' ', item.name, item.data)
+                        print "%s%s=\"%s\"" % ((depth + 1) * ' ', item.name, item.data)
                 else:
-                    print "Found key %s with value %s, which is meaningless in %s" % (item.name, item.data, tag.name)
+                    print "%s%s=\"%s\" ******** meaningless in [%s] ********" % ((depth + 1) * '*', item.name, item.data, tag.name)
             else:
                 raise Exception( "WTF we found something of class %s" % (item.__class__,) )
 
