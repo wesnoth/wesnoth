@@ -8,6 +8,8 @@ This tuple consists of the following:
 
 Instead of a tuple, it can instead contain a single string,
  which points to the tag (dictionary key) whose contents should be used.
+The lists themselves can also be replaced by a string, in which case the
+ corresponding part of that tag should be used.
 """
 class Grammar:
     _grammar = {
@@ -78,7 +80,7 @@ class Grammar:
     [],
     'panel'),
 'movetype' : (
-    [], #TODO: unfinished (resistance, defense, movement_costs)
+    [], #TODO: unfinished (resistance, defense, movement_costs), problems with these are dynamic keys
     [ 'flies', 'name', ]),
 'panel' : (
     [],
@@ -107,6 +109,9 @@ class Grammar:
 'server' : (
     [],
     [ 'address', 'name', ]),
+#'status' : (
+#    [ 'gold', 'income', 'num_units', 'panel', 'position', 'side_playing', 'terrain', 'time_of_day', 'turn', 'villages', 'upkeep', ],
+#TODO: differentiate between theme-terrain, toplevel-terrain and event-terrain
 'terrain' : (
     [],
     [ 'aliasof', 'default_base', 'def_alias', 'editor_group', 'editor_image', 'gives_income', 'heals', 'hidden', 'id', 'light', 'mvt_alias', 'name', 'recruit_from', 'recruit_onto', 'string', 'submerge', 'symbol_image', 'unit_height_adjust', ]),

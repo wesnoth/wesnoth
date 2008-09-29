@@ -7,6 +7,11 @@ TODO:
 -Include linenumbers and filenames in "complaint messages"
 -Create option to define macros (like MULTIPLAYER or CAMPAIGN_HTTT)
 -Write function to check dependencies
+-Allow for dynamic keys in the grammar, probably use a wildcard,
+    validate it during dependency-checking.
+-Create a way to do linking PLUS some extra tag-specific things.
+-Either create a way to differentiate between keys with the same name
+    depending on context, or get rid of them. ;) (unit_type)
 """
 
 import wesnoth.wmldata as wmldata
