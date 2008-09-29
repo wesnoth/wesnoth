@@ -1,12 +1,13 @@
-;--------------------------------
-;Include Modern UI
+  SetCompressor /SOLID lzma
 
-  !include "MUI.nsh"
+  !define MULTIUSER_EXECUTIONLEVEL Highest
+  !define MULTIUSER_MUI
+  !define MULTIUSER_INSTALLMODE_COMMANDLINE
+  !include "MultiUser.nsh"
+  !include "MUI2.nsh"
 
 ;--------------------------------
 ;General
-
-  SetCompressor /SOLID lzma
 
   ;Name and file
   Name "Battle for Wesnoth"
@@ -17,8 +18,6 @@
   
   ;Get installation folder from registry if available
   InstallDirRegKey HKCU "Software\Battle for Wesnoth\%version" ""
-
-  RequestExecutionLevel user
 
 ;--------------------------------
 ;Variables
@@ -45,6 +44,7 @@
   !insertmacro MUI_PAGE_WELCOME
   !insertmacro MUI_PAGE_LICENSE "COPYING"
   !insertmacro MUI_PAGE_COMPONENTS
+  !insertmacro MULTIUSER_PAGE_INSTALLMODE
   !insertmacro MUI_PAGE_DIRECTORY
 
   ;Start Menu Folder Page Configuration
@@ -129,6 +129,7 @@
   ;because this will make your installer start faster.
   
   !insertmacro MUI_RESERVEFILE_LANGDLL
+  ReserveFile "${NSISDIR}\Plugins\*.dll"
 
 ;--------------------------------
 ;Installer Sections
@@ -168,6 +169,7 @@ SectionEnd
 Function .onInit
 
   !insertmacro MUI_LANGDLL_DISPLAY
+  !insertmacro MULTIUSER_INIT
 
 FunctionEnd
 
@@ -214,6 +216,7 @@ SectionEnd
 
 Function un.onInit
 
+  !insertmacro MULTIUSER_UNINIT
   !insertmacro MUI_UNGETLANGUAGE
   
 FunctionEnd
