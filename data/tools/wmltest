@@ -1,0 +1,90 @@
+#!/usr/bin/env python
+"""
+wmltest -- tool to test the integrity and meaning of WML.
+
+Run without arguments to see usage.
+"""
+
+import wesnoth.wmldata as wmldata
+import wesnoth.wmlparser as wmlparser
+# Not needed yet
+#import wesnoth.wmltools as wmltools
+import wesnoth.wmlgrammar as wmlgrammar
+
+class Tester:
+    """
+    The Tester class, this walks the WML tree and checks wheter stuff has meaning.
+    """
+    def __init__(self, wmltree, verbosity):
+        self.wmltree = wmltree
+        self.verbosity = verbosity
+    def test(self, tag=None, depth=0):
+        if not tag:
+            tag = self.wmltree
+        if self.verbosity > 2:
+            print "%sTesting tag %s" % (depth * ' ', tag.name, )
+        for item in tag.data:
+            if isinstance(item, wmldata.DataSub):
+                if item.name in wmlgrammar.grammar[tag.name][0]:
+                    self.test(item, depth + 1)
+                else:
+                    print "Found tag %s which is meaningless in %s" % (item.name, tag.name)
+            elif isinstance(item, wmldata.DataText):
+                if item.name in wmlgrammar.grammar[tag.name][1]:
+                    if self.verbosity > 2:
+                        print "%sFound key %s with contents %s" % ((depth + 1) * ' ', item.name, item.data)
+                else:
+                    print "Found key %s with value %s, which is meaningless in %s" % (item.name, item.data, tag.name)
+            else:
+                raise Exception( "WTF we found something of class %s" % (item.__class__,) )
+
+
+if __name__ == '__main__':
+    import optparse, subprocess, os, codecs, sys
+
+    # Ugly hack to force the output of UTF-8.
+    # This prevents us from crashing when we're being verbose 
+    #  and encounter a non-ascii character.
+    sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
+
+    op = optparse.OptionParser()
+    op.set_usage("Usage: %prog [options] [filename]")
+    op.add_option("-p", "--path",
+        help = "Specify Wesnoth's data dir.",
+        dest = "path")
+    op.add_option("-u", "--userpath",
+        help = "Specify user data dir..",
+        dest = "userpath")
+    op.add_option("-v", "--verbose",
+        action = "count",
+        dest = "verbose",
+        help = "Increase verbosity, 4 is the maximum.")
+    (options, args) = op.parse_args()
+
+    if not options.path:
+        try:
+            p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
+            path = p.stdout.read().strip()
+            options.path = os.path.join(path, "data")
+        except OSError:
+            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '.'\n")
+            options.path = '.'
+
+    if len(args) < 1:
+        args.append('%s/_main.cfg' % options.path)
+
+    if options.verbose > 1:
+        print "Options: %s\nArgs: %s\n"% (options, args)
+
+    parser = wmlparser.Parser(options.path, options.userpath)
+
+    if options.verbose > 3:
+        parser.verbose = True
+
+    map(parser.parse_file, args)
+
+    data = wmldata.DataSub("WML")
+    parser.parse_top(data)
+
+    tester = Tester(data, options.verbose)
+    tester.test()
