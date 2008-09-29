@@ -5,8 +5,12 @@ Format: The grammar is a dictionary mapping every recognised tag
 This tuple consists of the following:
 -A list of all subtags recognised in the tag.
 -A list of all keys recognised in the tag.
+
+Instead of a tuple, it can instead contain a single string,
+ which points to the tag (dictionary key) whose contents should be used.
 """
-grammar = {
+class Grammar:
+    _grammar = {
 # This is the top-level pseudo-tag that everything is a child of.
 # It should have no keys
 'WML' : (
@@ -48,4 +52,10 @@ grammar = {
     [ 'sections', 'topics', ]),
 
 }
-
+    def grammar(self):
+        out = {}
+        for key in self._grammar.keys():
+            out.update( { key : self._grammar[key] } )
+            while isinstance(self._grammar[key], str):
+                out.update( { key : self._grammar[self._grammar[key]] } )
+        return out

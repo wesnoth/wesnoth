@@ -22,6 +22,7 @@ class Tester:
     def __init__(self, wmltree, verbosity):
         self.wmltree = wmltree
         self.verbosity = verbosity
+        self.grammar = wmlgrammar.Grammar().grammar()
     def test(self, tag=None, depth=0):
         if not tag:
             tag = self.wmltree
@@ -29,12 +30,12 @@ class Tester:
             print "%sTesting tag %s" % (depth * ' ', tag.name, )
         for item in tag.data:
             if isinstance(item, wmldata.DataSub):
-                if item.name in wmlgrammar.grammar[tag.name][0]:
+                if item.name in self.grammar[tag.name][0]:
                     self.test(item, depth + 1)
                 else:
                     print "Found tag %s which is meaningless in %s" % (item.name, tag.name)
             elif isinstance(item, wmldata.DataText):
-                if item.name in wmlgrammar.grammar[tag.name][1]:
+                if item.name in self.grammar[tag.name][1]:
                     if self.verbosity > 2:
                         print "%sFound key %s with contents %s" % ((depth + 1) * ' ', item.name, item.data)
                 else:
