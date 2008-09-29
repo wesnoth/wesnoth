@@ -742,7 +742,7 @@ class Parser:
                     if state == name[1:]:
                         return
                     raise Error(self, "Mismatched closing tag [%s], expected [/%s]" % (name, state))
-                #TODO: make a [+tag] properly append to most recent [tag] 
+                #TODO: make a [+tag] properly append to most recent [tag]
                 # The below is an ugly hack, but better than keeping the '+' in the tag name.
                 elif name[0] == '+':
                     name = name[1:]

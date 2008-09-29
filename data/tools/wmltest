@@ -2,7 +2,11 @@
 """
 wmltest -- tool to test the integrity and meaning of WML.
 
-Run without arguments to see usage.
+Use --help to see usage.
+TODO:
+-Include linenumbers and filenames in "complaint messages"
+-Create option to define macros (like MULTIPLAYER or CAMPAIGN_HTTT)
+-Write function to check dependencies
 """
 
 import wesnoth.wmldata as wmldata
@@ -43,7 +47,7 @@ if __name__ == '__main__':
     import optparse, subprocess, os, codecs, sys
 
     # Ugly hack to force the output of UTF-8.
-    # This prevents us from crashing when we're being verbose 
+    # This prevents us from crashing when we're being verbose
     #  and encounter a non-ascii character.
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 

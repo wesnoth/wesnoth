@@ -1,9 +1,10 @@
 """
 This file is used to store the grammar of WML for wmltest.
-Format: The grammar is a dictionary mapping every recognised tag 
- plus the pseudo-tag WML to a pair of lists.
-The first list contains all tags recognised in it,
- the second all keys.
+Format: The grammar is a dictionary mapping every recognised tag
+ plus the pseudo-tag WML to a tuple.
+This tuple consists of the following:
+-A list of all subtags recognised in the tag.
+-A list of all keys recognised in the tag.
 """
 grammar = {
 # This is the top-level pseudo-tag that everything is a child of.
