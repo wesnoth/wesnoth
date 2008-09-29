@@ -19,6 +19,7 @@ import wesnoth.wmlparser as wmlparser
 # Not needed yet
 #import wesnoth.wmltools as wmltools
 import wesnoth.wmlgrammar as wmlgrammar
+import re
 
 class Tester:
     """
@@ -38,9 +39,21 @@ class Tester:
                 if item.name in self.grammar[tag.name][0]:
                     self.test(item, depth + 1)
                 else:
-                    print "%s[%s] ******** meaningless in [%s] ********" % ((depth + 1) * '*', item.name, tag.name)
+                    # FIXME: this code is *UGLY*, clean it up
+                    dicts = {}
+                    for d in filter(lambda x:isinstance(x,dict),self.grammar[tag.name][0]):
+                        dicts.update(d)
+                    found = False
+                    for key in dicts.keys():
+                        if (isinstance(key, str) and key == item.name) \
+                        or (isinstance(key, re._pattern_type) and key.search(item.name)):
+                            item.name = dicts[key]
+                            self.test(item, depth + 1)
+                            found = True
+                    if not found:
+                        print "%s[%s] ******** meaningless in [%s] ********" % ((depth + 1) * '*', item.name, tag.name)
             elif isinstance(item, wmldata.DataText):
-                if item.name in self.grammar[tag.name][1]:
+                if item.name in self.grammar[tag.name][1] or any(map(lambda x:(bool)(x.search(item.name)),filter(lambda x:isinstance(x,re._pattern_type),self.grammar[tag.name][1]))):
                     if self.verbosity > 2:
                         print "%s%s=\"%s\"" % ((depth + 1) * ' ', item.name, item.data)
                 else:
