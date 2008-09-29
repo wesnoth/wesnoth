@@ -14,12 +14,18 @@ class Grammar:
 # This is the top-level pseudo-tag that everything is a child of.
 # It should have no keys
 'WML' : (
-    [ 'about', 'game_config', 'help', 'textdomain', ],
+    [ 'about', 'game_config', 'help', 'textdomain', 'theme', ],
     []),
 # Attempt to keep everything alphabetically ordered
 'about' : (
     [ 'entry', ],
     [ 'images', 'title', ]),
+'add' : (
+    'resolution',
+    [ ]),
+'change' : (
+    [],
+    [ 'font_size', 'id', 'image', 'items', 'rect', 'ref', ]), #TODO: unfinished
 'color_palette' : (
     [],
     [ 'ellipse_red', 'flag_green', 'magenta', ]),
@@ -35,6 +41,36 @@ class Grammar:
 'help' : (
     [ 'section', 'topic', 'toplevel' ],
     []),
+'label' : (
+    [],
+    [ 'font_rgb', 'font_size', 'icon', 'id', 'image', 'text', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'main_map' : (
+[],
+    'panel'),
+'main_map_border' : (
+    [],
+    [ 'background_image', 'border_image_bottom_even', 'border_image_bottom_odd', 'border_image_left', 'border_image_right', 'border_image_top_even', 'border_image_top_odd', 'border_size', 'corner_image_bottom_left', 'corner_image_bottom_right_even', 'corner_image_bottom_right_odd', 'corner_image_top_left','corner_image_top_right_even',  'corner_image_top_right_odd', 'tile_image', ]),
+'menu' : (
+    [],
+    [ 'auto_tooltip', 'id', 'image', 'is_context_menu', 'items', 'title', 'title2', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'mini_map' : (
+    [],
+    'panel'),
+'panel' : (
+    [],
+    [ 'id', 'image', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'partialresolution' : (
+    [ 'add', 'change', 'remove', ],
+    [ 'height', 'id', 'inherits', 'width', ]),
+'remove' : (
+    [],
+    [ 'id', ]),
+'resolution' : (
+    [ 'label', 'main_map', 'main_map_border', 'menu', 'mini_map', 'panel', 'screen', ], #TODO: unfinished
+    [ 'height', 'id', 'width', ]),
+'screen' : (
+    [],
+    [ 'id', 'rect' ]),
 'section' : (
     [],
     [ 'generator', 'id', 'sections_generator', 'sort_sections', 'sort_topics', 'title', 'topics', ]),
@@ -43,6 +79,9 @@ class Grammar:
     [ 'address', 'name', ]),
 'textdomain' : (
     [],
+    [ 'name', ]),
+'theme' : (
+    [ 'partialresolution', 'resolution', ],
     [ 'name', ]),
 'topic' : (
     [],
