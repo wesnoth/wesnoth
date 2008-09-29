@@ -23,13 +23,14 @@ import re
 
 class Tester:
     """
-    The Tester class, this walks the WML tree and checks wheter stuff has meaning.
+    The Tester class, this walks the WML tree and checks whether stuff has meaning. (among other things)
     """
     def __init__(self, wmltree, verbosity):
         self.wmltree = wmltree
         self.verbosity = verbosity
         self.grammar = wmlgrammar.Grammar().grammar()
     def test(self, tag=None, depth=0):
+        """Tests whether things have meaning, walks the wml tree."""
         if not tag:
             tag = self.wmltree
         if self.verbosity > 2:
@@ -89,9 +90,10 @@ if __name__ == '__main__':
             p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
             path = p.stdout.read().strip()
             options.path = os.path.join(path, "data")
+            sys.stderr.write("No Wesnoth path given.\nAutomatically found '%s'\n" % (options.path, ) )
         except OSError:
-            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '.'\n")
             options.path = '.'
+            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (options.path, ) )
 
     if len(args) < 1:
         args.append('%s/_main.cfg' % options.path)

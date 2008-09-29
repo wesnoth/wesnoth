@@ -129,7 +129,7 @@ class Grammar:
     [],
     [ re.compile('\w+'), ]),
 'resolution' : (
-    [ { 'label' : 'label-theme' }, 'main_map', 'main_map_border', 'menu', 'mini_map', 'panel', 'replay', 'screen', 'status', ], #TODO: unfinished
+    [ { 'label' : 'label-theme' }, 'main_map', 'main_map_border', 'menu', 'mini_map', 'panel', 'replay', 'screen', 'status', ], 
     [ 'height', 'id', 'width', ]),
 'screen' : (
     [],
@@ -196,6 +196,10 @@ class Grammar:
 'upkeep' : 'gold-theme',
 }
     def grammar(self):
+        """Grammar pre-processor.
+
+        This function is responsible for turning all the 'pointers' into actual data.
+        It can go into an infinite loop if a tag points to itself in some manner."""
         out = {}
         for key in self._grammar.keys():
             out.update( { key : self._grammar[key] } )
