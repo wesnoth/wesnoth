@@ -22,6 +22,7 @@ Grammar of the grammar:
 <KEY>               -> str | re._pattern_type
 """
 class Grammar:
+    import re
     _grammar = {
 # This is the top-level pseudo-tag that everything is a child of.
 # It should have no keys
@@ -53,6 +54,11 @@ class Grammar:
 'color_range' : (
     [],
     [ 'id', 'name', 'rgb', ]),
+'defense' : 'movement_costs',
+'editor2_tool_hint' : 'gold-theme',
+'effect' : (
+    [ 'defense', 'movement_costs', 'resistance', ], #TODO: point tags to where they should go (specials, contents of filter_attack, { set_specials : specials }, abilities)
+    [ 'apply_to', 'times', 'unit_type', re.compile("\w+"), ]),
 'entry' : (
     [],
     [ 'comment', 'email', 'ircuser', 'name', 'wikiuser', ]),
@@ -65,16 +71,20 @@ class Grammar:
 'game_config' : (
     [ 'color_palette', 'color_range', 'server', ],
     [ 'ally_ball_image', 'base_income', 'buttons_x', 'buttons_y', 'buttons_padding', 'cross_image', 'default_defeat_music', 'default_victory_music', 'defense_color_scale', 'ellipsis_image', 'enemy_ball_image', 'energy_image', 'flag_icon_image', 'flag_image', 'flag_rgb', 'footprint_prefix', 'footprint_teleport_enter', 'footprint_teleport_exit', 'grid_image', 'hp_bar_scaling', 'icon', 'kill_experience', 'level_image', 'lobby_music', 'lobby_refresh', 'logo', 'logo_x', 'logo_y', 'moved_ball_image', 'observer_image', 'partmoved_ball_image', 'poison_amount', 'recall_cost', 'rest_heal_amount', 'terrain_mask_image', 'tip_padding', 'tip_width', 'tip_x', 'title', 'title_music', 'tod_bright_image', 'unmoved_ball_image', 'unreachable_image', 'village_income', 'wesnothd_name', 'xp_bar_scaling', ]),
+'gold-theme' : (
+    [],
+    [ 'font_rgb', 'font_size', 'id', 'prefix', 'prefix_literal', 'rect', 'ref', 'xanchor', 'yanchor', ]),
 'help' : (
     [ 'section', 'topic', 'toplevel' ],
     []),
 'hotkey' : (
     [],
     [ 'alt', 'cmd', 'command', 'ctrl', 'key', 'shift', ]),
+'income' : 'gold-theme',
 'image' : (
     [],
     [ 'base', 'center', 'layer', 'name', ]),
-'label' : (
+'label-theme' : (
     [],
     [ 'font_rgb', 'font_size', 'icon', 'id', 'image', 'text', 'rect', 'ref', 'xanchor', 'yanchor', ]),
 'main_map' : (
@@ -89,15 +99,21 @@ class Grammar:
 'mini_map' : (
     [],
     'panel'),
+'movement_costs' : (
+    [],
+    [ re.compile('\w+'), ]),
 'movetype' : (
-    [], #TODO: unfinished (resistance, defense, movement_costs), problems with these are dynamic keys
+    [ 'defense', 'movement_costs', 'resistance', ],
     [ 'flies', 'name', ]),
+'num_units' : 'gold-theme',
+'observers' : 'gold-theme',
 'panel' : (
     [],
     [ 'id', 'image', 'rect', 'ref', 'xanchor', 'yanchor', ]),
 'partialresolution' : (
     [ 'add', 'change', 'remove', ],
     [ 'height', 'id', 'inherits', 'width', ]),
+'position' : 'gold-theme',
 'race' : (
     [ 'trait', ],
     [ 'description', 'female_name', 'female_names', 'id', 'ignore_global_traits', 'male_name', 'male_names', 'markov_chain_size', 'name', 'num_traits', 'plural_name', ]),
@@ -107,8 +123,13 @@ class Grammar:
 'replay' : (
     'partialresolution',
     []),
+'report_clock' : 'gold-theme',
+'report_countdown' : 'gold-theme',
+'resistance' : (
+    [],
+    [ re.compile('\w+'), ]),
 'resolution' : (
-    [ 'label', 'main_map', 'main_map_border', 'menu', 'mini_map', 'panel', 'replay', 'screen', ], #TODO: unfinished
+    [ { 'label' : 'label-theme' }, 'main_map', 'main_map_border', 'menu', 'mini_map', 'panel', 'replay', 'screen', 'status', ], #TODO: unfinished
     [ 'height', 'id', 'width', ]),
 'screen' : (
     [],
@@ -119,12 +140,16 @@ class Grammar:
 'server' : (
     [],
     [ 'address', 'name', ]),
-#'status' : (
-#    [ 'gold', 'income', 'num_units', 'panel', 'position', 'side_playing', 'terrain', 'time_of_day', 'turn', 'villages', 'upkeep', ],
-#TODO: differentiate between theme-terrain, toplevel-terrain and event-terrain
+'side_playing' : (
+    [],
+    [ 'id', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'status' : (
+    [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', 'unit_type', 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
+    []),
 'terrain' : (
     [],
     [ 'aliasof', 'default_base', 'def_alias', 'editor_group', 'editor_image', 'gives_income', 'heals', 'hidden', 'id', 'light', 'mvt_alias', 'name', 'recruit_from', 'recruit_onto', 'string', 'submerge', 'symbol_image', 'unit_height_adjust', ]),
+'terrain-theme' : 'gold-theme',
 'terrain_graphics' : (
     [ 'image', 'tile', ],
     [ 'map', 'no_flag', 'precedence', 'probability', 'rotations', 'set_flag', ]),
@@ -137,6 +162,7 @@ class Grammar:
 'tile' : (
     [ 'image', ],
     [ 'no_flag', 'pos', 'set_flag', 'type', 'x', 'y', ]),
+'time_of_day' : 'side_playing',
 'topic' : (
     [],
     [ 'generator', 'id', 'text', 'title', ]),
@@ -144,11 +170,30 @@ class Grammar:
     [],
     [ 'sections', 'topics', ]),
 'trait' : (
-    [],#TODO: UNFINISHED (effect)
+    [ 'effect', ],
     [ 'availability', 'description', 'female_name', 'id', 'male_name', 'name', ]),
+'turn' : 'gold-theme',
+'unit_abilities' : 'gold-theme',
+'unit_advancement_options' : 'gold-theme',
+'unit_alignment' : 'gold-theme',
+'unit_amla' : 'gold-theme',
+'unit_hp' : 'gold-theme',
+'unit_image' : 'gold-theme',
+'unit_level' : 'gold-theme',
+'unit_moves' : 'gold-theme',
+'unit_name' : 'gold-theme',
+'unit_race' : 'gold-theme',
+'unit_side' : 'gold-theme',
+'unit_status' : 'gold-theme',
+'unit_traits' : 'gold-theme',
+'unit_type' : 'gold-theme',
+'unit_weapons' : 'gold-theme',
+'unit_xp' : 'gold-theme',
 'units' : (
     [ 'movetype', 'race', 'trait', ], #TODO: unfinished (unit_type)
     []),
+'villages' : 'gold-theme',
+'upkeep' : 'gold-theme',
 }
     def grammar(self):
         out = {}
