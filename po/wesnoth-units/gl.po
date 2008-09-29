@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-24 22:33+0200\n"
-"PO-Revision-Date: 2008-09-21 13:34+0100\n"
+"PO-Revision-Date: 2008-09-29 13:53+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -117,11 +117,10 @@ msgstr ""
 "ovellas. Os piratas que van a bordo estarían moi contentos por axudar a "
 "outros barcos a alixeirar a súa pesada carga."
 
-# BALISTA
+# balista FIXADO
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
-#, fuzzy
 msgid "ballista"
 msgstr "balista"
 
@@ -291,16 +290,18 @@ msgid ""
 "arrows."
 msgstr ""
 "Un Draconián Batallador é incapaz de voar ou de botar un alento de lume, e a "
-"maioría aceptan                  ó combate corpo a corpo debido a esta "
-"incapacidade - un intento de                   , pero aqueles que apoian "
-"esta teoría non         .\n"
+"maioría aceptan a súa relegación ó combate corpo a corpo debido a esta "
+"incapacidade - un intento de darlle un uso ó que doutro xeito sería algo "
+"inútil. É posible que teñan unha lixeira deficiencia para estas habilidades, "
+"pero aqueles que apoian esta teoría "
+"non                                     .\n"
 "\n"
-"Son en realidade os                  , e ainda que o seu armamento é agora "
-"sobre todo cerimonial, non é o menos efectivo. Nos seus enfrontamentos con "
-"razas menores, descubriron que o seu tamaño e forza naturais eran poderosas "
-"armas, e que combinadas co armamento da súa caste, os guerreiros resultantes "
-"non tiñan algunhas das típicas debilidades da súa raza, coma a forte "
-"vulnerabilidade ás lanzas e ás frechas."
+"Son en realidade os Xuíces da Xerarquía dos Draconiáns, e ainda que o seu "
+"armamento é agora sobre todo cerimonial, non é o menos efectivo. Nos seus "
+"enfrontamentos con razas menores, descubriron que o seu tamaño e forza "
+"naturais eran poderosas armas, e que combinadas co armamento da súa caste, "
+"os guerreiros resultantes non tiñan algunhas das típicas debilidades da súa "
+"raza, coma a forte vulnerabilidade ás lanzas e ás frechas."
 
 # lanza FIXADO
 #. [attack]: type=pierce
@@ -726,16 +727,15 @@ msgstr ""
 "terreos montañosos e baixo terra. Ainda que non son rápidos, o seu poder e "
 "resistencia compénsano."
 
-# MACHADO OU MACHADA?? ATOPAR MELLOR TRADUCION PARA HATCHET
+# machado FIXADO
 #. [attack]: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/undead/Skele_Deathblade.cfg:105
 #: data/core/units/undead/Skele_Revenant.cfg:29
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Draug.cfg:30
-#, fuzzy
 msgid "axe"
-msgstr "MACHADO OU MACHADA?? ATOPAR MELLOR TRADUCION PARA HATCHET"
+msgstr "machado"
 
 # martelo FIXADO
 #. [attack]: type=impact
@@ -804,14 +804,11 @@ msgstr ""
 msgid "battle axe"
 msgstr "machada de batalla"
 
-# MACHADA, CAMBIAR MAIS BEN POR OUTRA COUSA, É PARECIDO A UN PICO OU UN PIOLET      MACHADIÑAS
+# macheta FIXADO
 #. [attack]: type=blade
 #: data/core/units/dwarves/Lord.cfg:47
-#, fuzzy
 msgid "hatchet"
-msgstr ""
-"MACHADA, CAMBIAR MAIS BEN POR OUTRA COUSA, É PARECIDO A UN PICO OU UN "
-"PIOLET      MACHADIÑAS"
+msgstr "macheta"
 
 # anano mestre das runas FIXADO
 #. [unit_type]: race=dwarf
@@ -1099,7 +1096,6 @@ msgstr "Campión élfico"
 
 #. [unit_type]: race=elf
 #: data/core/units/elves/Champion.cfg:20
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -1107,10 +1103,11 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
-"Os poucos elfos que deliberadamente            armas de "
-"guerra                          . A dedicación e a "
-"habilidade               , e o resultado               . Incluso a arqueria, "
-"tratada coma un segundo propósito, é dominada con excelencia."
+"Os poucos elfos que deliberadamente se dedican ás armas de guerra chegan a "
+"ser algo que contradí a reputación de docilidade da súa raza. A dedicación e "
+"a habilidade únense á pureza, e o resultado é un espadachín co que poucos se "
+"poden comparar. Incluso a arqueria, tratada coma un segundo propósito, é "
+"dominada con excelencia."
 
 # elfa druida FIXADO
 #. [unit_type]: race=elf
@@ -1155,12 +1152,11 @@ msgstr ""
 msgid "staff"
 msgstr "bastón"
 
-# ENTRAMPAR   ENREDAR
+# engaiolar FIXADO
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:65
-#, fuzzy
 msgid "ensnare"
-msgstr "ENTRAMPAR   ENREDAR"
+msgstr "engaiolar"
 
 # ESPIÑAS
 #. [attack]: type=pierce
@@ -1190,20 +1186,21 @@ msgstr ""
 "que son respectados pola súa xente, moi pouco se pode dicir sobre a súa "
 "función actual ou propósito dentro desa sociedade."
 
+# enredar FIXADO
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36
 #: data/core/units/elves/Shaman.cfg:39 data/core/units/elves/Sorceress.cfg:38
 msgid "entangle"
 msgstr "enredar"
 
-# LUME DE FADA??
+# faerie=fairy
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:47 data/core/units/elves/Lord.cfg:33
 #: data/core/units/elves/High_Lord.cfg:70
 #: data/core/units/elves/Sorceress.cfg:49 data/core/units/elves/Sylph.cfg:52
 #, fuzzy
 msgid "faerie fire"
-msgstr "LUME DE FADA??"
+msgstr "Ahhh! Lume!"
 
 # elfo loitador FIXADO
 #. [unit_type]: race=elf
@@ -1469,6 +1466,7 @@ msgstr ""
 msgid "female^Elvish Shaman"
 msgstr "Elfa xamán"
 
+# faerie
 #. [unit_type]: race=elf
 #: data/core/units/elves/Shaman.cfg:23
 msgid ""
@@ -1513,6 +1511,7 @@ msgstr "Tiradora de elite élfica"
 msgid "female^Elvish Shyde"
 msgstr "Elfa fuxidía"
 
+# faerie
 #. [unit_type]: race=elf
 #: data/core/units/elves/Shyde.cfg:21
 msgid ""
@@ -1522,6 +1521,7 @@ msgid ""
 "mystery of their people."
 msgstr ""
 
+# faerie
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:52 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
@@ -1533,6 +1533,7 @@ msgstr ""
 msgid "female^Elvish Sorceress"
 msgstr "Elfa feiticeira"
 
+# faerie
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sorceress.cfg:21
 msgid ""
@@ -1551,6 +1552,7 @@ msgstr ""
 msgid "female^Elvish Sylph"
 msgstr "Elfa sílfide"
 
+# faerie
 #. [unit_type]: race=elf
 #: data/core/units/elves/Sylph.cfg:20
 msgid ""
@@ -1560,12 +1562,11 @@ msgid ""
 "the elves."
 msgstr ""
 
-# ARAÑEIRA
+# arañeira FIXADO
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:40
-#, fuzzy
 msgid "gossamer"
-msgstr "ARAÑEIRA"
+msgstr "arañeira"
 
 #. [unit_type]: race=monster, description=
 #: data/core/units/fake/Fog_Clearer.cfg:7
@@ -1687,6 +1688,7 @@ msgstr "Trasno provocador"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
+#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1694,6 +1696,11 @@ msgid ""
 "Nonetheless, a rouser's frenzied goading effectively steels the younger at "
 "arms to fight harder and longer before they die."
 msgstr ""
+"                    entre os trasnos. Que un trasno sobreviva a suficientes "
+"batallas para ser considerado un veterano é bastante raro, e ainda é máis "
+"raro que os outros trasnos recoñezan e respecten a súa "
+"veteranía.                       para loitar máis e durante máis tempo antes "
+"de que morra."
 
 # trasno lanceiro FIXADO
 #. [unit_type]: race=goblin
@@ -1703,7 +1710,6 @@ msgstr "Trasno lanceiro"
 
 #. [unit_type]: race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
-#, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -1715,14 +1721,15 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
-"chámanse 'Trasnos' e son        polo resto da súa raza. Na batalla, a estes "
-"dáselles o equipamento máis                  , e son usados coma unha "
-"forza              para darlle tempo ós Señores da Guerra para preparar o "
-"ataque real.\n"
+"En tódalas camadas de orcos, algúns nacen moito máis pequenos e máis débiles "
+"có resto. Estes chámanse 'Trasnos' e son desprezados polo resto da súa raza. "
+"Na batalla, son ós que se lles da menos equipamento, e son usados coma unha "
+"forza de debilitamento para darlle tempo ós Señores da Guerra para preparar "
+"o ataque real.\n"
 "\n"
 "Algúns din que a existencia de estas criaturas é o comezo dun fallo na liña "
 "de sangue dos orcos, ainda que ninguén sabe dabondo da súa historia para "
-"asegurar nada     concluínte     ."
+"asegurar nada     concluínte."
 
 # xinete de lobo FIXADO
 #. [unit_type]: race=goblin
@@ -1848,7 +1855,6 @@ msgstr "Cabaleiro"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -1858,13 +1864,13 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
-"Os homes a cabalo con capacidade e disciplina son          ascendidos "
-"a        Cabaleiros. Combatentes veteranos, viron os resultados a miúdo "
-"fatais dunha carga       fallida     , e "
-"aprenderon                         . Os cabaleiros, polo tanto, inclúen "
+"Os homes a cabalo con capacidade e disciplina son ascendidos a Cabaleiros. "
+"Combatentes veteranos, viron os resultados a miúdo fatais dunha carga sen "
+"éxito, e aprenderon a usala con siso. Os cabaleiros, polo tanto, inclúen "
 "espadas no seu armamento, e practican tácticas que, ainda que requiren moita "
-"paciencia, son menos perigosas que unha carga. As súas lanzas              , "
-"ainda así, e                 con estas armas fainos letais            ."
+"paciencia, son menos perigosas que unha carga. As súas lanzas están listas, "
+"ainda así, e a crecente experiencia con estas armas fainos letais nos "
+"enfrontamentos."
 
 # xustador FIXADO
 #. [unit_type]: race=human
@@ -1918,7 +1924,21 @@ msgid ""
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 "Cabaleiros de grande virtude, os Paladíns obtiveron a súa forza non para o "
-"rei e a coroa, senón para os seus propios ideais; "
+"rei e a coroa, senón para os seus propios ideais; de                      , "
+"e            de que todo é bo. Poden servir nos exércitos do mundo, pero a "
+"súa principal lealdade "
+"sempre                              ;                   . Os dirixentes a "
+"miúdo están        por eles, xa que a lealdade dos paladíns só é tan forte "
+"coma                       . Isto levou ás         ambicións a intentar      "
+"difamar        e dispersar a estes grupos, ou en ocasións máis raras, "
+"a                   para manter             tropas leais no servizo.\n"
+"\n"
+"Os paladíns completos normalmente non son tan temibles coma os 'Grandes "
+"Cabaleiros' que          a maioría dos exércitos, pero son loitadores de "
+"primeira clase             . Ademais,            e piedade confírelles a "
+"estes monxes guerreiros certas habilidades curiosas; un paladín é moi "
+"poderoso ó combater contra cousas máxicas ou antinaturais, e a maioría ten "
+"algunhas habilidades na medicina e na sandación."
 
 # home a cabalo FIXADO
 #. [unit_type]: race=human
@@ -2067,7 +2087,6 @@ msgstr "Duelista"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2082,16 +2101,17 @@ msgid ""
 "veterans typically do so by making such concessions to utility and survival."
 msgstr ""
 "É un costume peculiar da nobreza de Wesnoth enrolar ós seus fillos nunha das "
-"dúas ordes de          , que os adestran  na arte da equitación ou na da "
+"dúas ordes de alféreces, que os adestran  na arte da equitación ou na da "
 "esgrima. Os duelistas reciben dito nome por unha práctica desafortunadamente "
-"común dos xoves aristócratas, na que o      do insulto, real ou ficticio, "
-"pode           do seu dereito natural.\n"
+"común dos xoves aristócratas, na que o insulto, real ou ficticio, pode "
+"provocar unha inmediata demostración do seu dereito natural.\n"
 "\n"
-"Os esgrimidores con experiencia, que a miúdo            , levan con eles "
-"unha pequena bésta que se agocha facilmente debaixo       ou capa. De carga "
-"lenta e considerada a miúdo de uso         , é en realidade moi útil, "
-"e                 que viven dabondo para ser veteranos normalmente fano "
-"realizando ditas concesións á utilidade e á supervivencia."
+"Os esgrimidores con experiencia, que a miúdo visten traxe, incluso se non "
+"son de nobre nacemento, levan con eles unha pequena bésta que se agocha "
+"facilmente debaixo dun abrigo ou capa. De carga lenta e considerada a miúdo "
+"de uso deshonroso, é en realidade moi útil, e aqueles dos seus que viven "
+"dabondo para ser veteranos normalmente fano realizando ditas concesións á "
+"utilidade e á supervivencia."
 
 # sabre FIXADO
 #. [attack]: type=blade
@@ -2466,7 +2486,6 @@ msgstr "Infante de choque"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2477,13 +2496,14 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
-"Os Infantes de Choque son a elite da infantería pesada, e unha parte      "
-"significativa       dos seus usos é a simple "
-"intimidación.                     . A visión dos Infantes de Choque dándolle "
-"unha malleira a un inimigo a miúdo fai o mesmo na moral de calquera "
-"oposición, que a veces                a armadura cubre monstros, máis ca "
-"homes. O inconveniente de dita armadura pesada é, por suposto, o tempo que "
-"leva entrar e saír do combate."
+"Os Infantes de Choque son a elite da infantería pesada, e unha parte "
+"significativa dos seus usos é a simple intimidación. Só os homes rexos poden "
+"entrar nas súas filas, e cando están acoirazados con láminas negras das que "
+"saen pinchos, son unha visión temible. A visión dos Infantes de Choque "
+"dándolle unha malleira a un inimigo a miúdo fai o mesmo na moral de calquera "
+"oposición, que a veces pensan que a armadura cubre monstros, máis ca homes. "
+"O inconveniente de dita armadura pesada é, por suposto, o tempo que leva "
+"entrar e saír do combate."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:99
@@ -2531,9 +2551,10 @@ msgid ""
 "a spear, and much better in close quarters."
 msgstr ""
 "Un soldado con experiencia a miúdo aforrará dabondo para equiparse cun traxe "
-"de                          , xa que todos coñecen ben as limitacións da "
-"arma que abandonan. Unha espada tampouco carece de desvantaxes, pero é máis "
-"versátil ca unha lanza, e moito mellor             ."
+"de láminas ou unha armadura de aneis, e                        , xa que "
+"todos coñecen ben as limitacións da arma que abandonan. Unha espada tampouco "
+"carece de desvantaxes, pero é máis versátil ca unha lanza, e moito mellor en "
+"distancias curtas."
 
 # mago FIXADO
 #. [unit_type]: race=human
@@ -2543,6 +2564,7 @@ msgstr "Mago"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage.cfg:24
+#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2563,14 +2585,30 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle."
 msgstr ""
+"Os humanos a miúdo             os traballos do mundo no que "
+"viven.                              , para convertelo na principal tarefa "
+"das súas vidas. Calquera mago                 do título pasou como mínimo "
+"unha década estudando,            unha cantidade de coñecementos que os "
+"diferencia da outra xente. Estes homes e mulleres, que                   na "
+"busca da sabiduría,                    mundo no que poucos poden ler ou "
+"escribir. As súas filas están cheas de rapaces da                     "
+"nobreza, ou daqueles que                       .\n"
+"\n"
+"É irónico que, con todo o seu coñecemento, e        Ainda así, o seu "
+"verdadeiro amor non é nin os cartos, nin o poder, e aqueles que ven o estudo "
+"da maxia coma un medio para ditas fins a miúdo non teñen               "
+"requirida para a verdadeira mestría.\n"
+"\n"
+"Físicamente débiles, e sen moita idea da loita, os magos posúen certas artes "
+"que son de gran utilidade na batalla."
 
-# MISIL PROXECTIL
+# MISIL PROXECTIL MÁXICO
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:63
 #: data/core/units/humans/Mage_Silver.cfg:45
 #, fuzzy
 msgid "missile"
-msgstr "mí­sil PROXECTIL"
+msgstr "mísil máxico"
 
 # maga FIXADO
 #. [female]
@@ -2586,6 +2624,7 @@ msgstr "Arquimago"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Arch.cfg:21
+#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -2600,6 +2639,17 @@ msgid ""
 "unleash the full power of their art, something which is not to be taken "
 "lightly."
 msgstr ""
+"O título de Arquimago confírese tradicionalmente só despois dunha vida de "
+"estudo e logros equiparables. Os Arquimagos empréganse a miúdo en posicións "
+"de educación, ou coma conselleiros daqueles                dabondo para "
+"buscar os froitos da súa sabiduría. Moitos tenden "
+"a                               a súa investigación sen "
+"molestias.                     a maior parte do coñecemento dos humanos; as "
+"ciencias, as filosofias, e as artes que                  a todo o mundo.\n"
+"\n"
+"Ainda que non están adestrados para ningún tipo de combate, se é preciso un "
+"Arquimago pode            todo o poder da súa arte, algo que non se "
+"pode        tomar á lixeira         ."
 
 # bóla de lume FIXADO
 #. [attack]: type=fire
@@ -2638,7 +2688,16 @@ msgid ""
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
 "Calquera persoa que sexa considerada para o título de Gran Mago é case unha "
-"lenda no seu propio tempo, e "
+"lenda no seu propio tempo, e             aprenderon               a aplicar "
+"o título con coidado. O mérito para o título é considerado con coidado por "
+"un consello dos magos dirixentes da época, e o título só se confire cunha "
+"maioría dos votos.             , calquera que sexa nominado de forma seria "
+"para o honor de ser chamado Gran Mago é, sen ningún tipo de dúbida, un "
+"mestre na súa arte, e sobrepasou a case tódolos seus compañeiros en "
+"habilidades.\n"
+"\n"
+"Ainda que non son guerreiros, dalgún xeito, a aplicación da súa arte ó "
+"combate é algo que a miúdo fai que os outros soldados               ."
 
 # gran maga FIXADO
 #. [female]
@@ -2779,15 +2838,14 @@ msgstr ""
 "Ainda que non foron adestrados para o combate, son un poderoso aliado contra "
 "cousas máxicas ou antinaturais."
 
-# RAIO DE LUZ   LAMPEXO
+# lampexo FIXADO
 #. [attack]: type=arcane
 #: data/core/units/merfolk/Priestess.cfg:71
 #: data/core/units/merfolk/Diviner.cfg:74
 #: data/core/units/humans/Mage_of_Light.cfg:108
 #: data/core/units/humans/Mage_White.cfg:130
-#, fuzzy
 msgid "lightbeam"
-msgstr "raio de luz   LAMPEXO"
+msgstr "lampexo"
 
 # maga branca FIXADO
 #. [female]
@@ -3327,6 +3385,7 @@ msgstr "Sirénida adiviña"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Diviner.cfg:24
+#, fuzzy
 msgid ""
 "Years of devotion will endow a priestess with great wisdom on the workings "
 "of the world, and will grant them the favor of the light. The power thus "
@@ -3335,6 +3394,11 @@ msgid ""
 "man at the banks of the Alavynne, but who rode again the next day, in full "
 "number, and wrought the downfall of the crimson duke."
 msgstr ""
+"Anos de devoción             unha sacerdotisa con gran sabiduría sobre os "
+"traballos do mundo, e conferiranlle o         favor        da luz. Polo "
+"tanto o poder dado a estas señoras da auga é un         motivo "
+"recurrente            nos contos e nas cantigas; coma o dos "
+"cabaleiros               "
 
 # sirénida encantadora FIXADO
 #. [unit_type]: race=merman
@@ -3441,16 +3505,16 @@ msgstr "Sirénido cazador"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Hunter.cfg:19
-#, fuzzy
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
-"As habilidades que empregan os sirénidos para a pesca con lanza              "
-"para a guerra, especialmente contra os que non están afeitos á auga. En "
-"tempos de necesidade, moitos sirénidos             os rangos do seu"
+"As habilidades que empregan os sirénidos para a pesca con lanza son "
+"trasladadas facilmente á guerra, especialmente contra os que non están "
+"afeitos á auga. En tempos de necesidade, moitos sirénidos con dita ocupación "
+"serán voluntarios para aumentar as filas do seu exército."
 
 # sirénida iniciada FIXADO
 #. [unit_type]: race=merman
@@ -3458,6 +3522,7 @@ msgstr ""
 msgid "female^Mermaid Initiate"
 msgstr "Sirénida iniciada"
 
+# faerie??
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
 #, fuzzy
@@ -3470,11 +3535,11 @@ msgid ""
 "can call upon the very water about them to smite their enemies."
 msgstr ""
 "A miúdo as xoves Sirénidas son iniciadas na maxia acuática propia da súa "
-"xente. As capacidades                que isto confire son             por "
+"xente. As marabillosas capacidades que esta lles confire son inimitables por "
 "ningunha outra raza, un sinal               destas criaturas.\n"
 "\n"
-"A pesar da súa fraxilidade, isto fainas bastante           no combate, xa "
-"que poden                            ós seus inimigos."
+"A pesar da súa fraxilidade, isto fainas bastante temibles no combate, xa que "
+"poden convocar as propias augas que as rodean para castigar ós seus inimigos."
 
 # sirénido lanzador de xavelina FIXADO
 #. [unit_type]: race=merman
@@ -3484,7 +3549,6 @@ msgstr "Sirénido lanzador de xavelina"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Those mermen who master the art of javelinry can become nearly as effective "
 "as an archer - though the heft of their weapons impedes their range, the "
@@ -3492,10 +3556,10 @@ msgid ""
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
 "Aqueles sirénidos que son mestres na arte das xavelinas poden chegar a ser "
-"case tan efectivos coma un arqueiro - ainda que               das súas "
-"armas               , o impacto dunha é considerablemente maior. Na auga, a "
-"mobilidade dos sirénidos                       cando se enfrontan a inimigos "
-"que non poden nadar."
+"case tan efectivos coma un arqueiro - ainda que o peso das súas armas limita "
+"o seu alcance, o impacto dunha é considerablemente maior. Na auga, a "
+"mobilidade dos sirénidos compensa totalmente isto cando se enfrontan a "
+"inimigos que non poden nadar."
 
 # sirenido naseiro FIXADO
 #. [unit_type]: race=merman
@@ -3505,6 +3569,7 @@ msgstr "Sirénido naseiro"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
+#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -3515,6 +3580,15 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage."
 msgstr ""
+"A pesca, tal coma a fan os sirénidos,                    redes que os "
+"agardan. Estas non son moi perigosas, pero poden usarse con gran éxito "
+"contra tropas que intentan                            vadear            un "
+"río. Redes máis pequenas e pesadas poden                         polo aire; "
+"ainda que estas non se deseñaron para o uso en tempo de paz, son "
+"especialmente efectivas na guerra. Os sirénidos usan ditas armas para "
+"inmobilizar ás tropas na auga, e sobre todo, "
+"para                                contra tropas na terra, que doutro xeito "
+"terían unha gran vantaxe."
 
 # sirénida sacerdotisa FIXADO
 #. [unit_type]: race=merman
@@ -3524,7 +3598,6 @@ msgstr "Sirénida sacerdotisa"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3532,20 +3605,20 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
-"Entre os sirénidos, o         misticismo          normalmente déixase ás "
-"sirénidas, que están máis inclinadas a el. Son elas as que se          "
-"adican            ó ideal de traer a paz e a vida ó mundo, e ás artes que o "
-"fan posible. A súa piedade tamén lles concede certos poderes, "
-"permitíndolles          da súa xente fronte a ataques máxicos ou de cousas "
-"antinaturais."
+"Entre os sirénidos, o misticismo normalmente déixase ás sirénidas, que están "
+"máis inclinadas a el. Son elas as que se dedican ó ideal de traer a paz e a "
+"vida ó mundo, e ás artes que o fan posible. A súa piedade tamén lles concede "
+"certos poderes, permitíndolles protexer á súa xente fronte a ataques máxicos "
+"ou de cousas antinaturais."
 
-# SEREA
+# SEREA, SIRENIDA ONDINA
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 #, fuzzy
 msgid "Mermaid Siren"
-msgstr "SEREA"
+msgstr "Sirénida"
 
+# faerie
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Siren.cfg:22
 msgid ""
@@ -3560,6 +3633,7 @@ msgid ""
 "regard it with wonder."
 msgstr ""
 
+# naia??
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
@@ -3573,6 +3647,7 @@ msgstr "Sirénido lanceiro"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
+#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -3581,6 +3656,13 @@ msgid ""
 "damage. They are also useful in melee, even deep under the surface, which is "
 "something that certainly cannot be said of arrows."
 msgstr ""
+"Ós sirénidos gústanlles pouco os arcos, xa que a eles as xavelinas danlles "
+"un servizo igual. Ainda que as xavelinas guindadas se usan pouco baixo a "
+"auga, son extremadamente efectivas na superficie, onde o seu peso lles "
+"permite                   varios pés          a auga mentres conservan "
+"suficiente             para              dano. Tamén son útiles no combate "
+"corpo a corpo, incluso moi por debaixo da superficie, o que certamente é "
+"algo que non se pode dicir das frechas."
 
 # sirénido tritón FIXADO
 #. [unit_type]: race=merman
@@ -3707,12 +3789,11 @@ msgstr ""
 msgid "bite"
 msgstr "trabada"
 
-# COLETAZO
+# cola FIXADO
 #. [attack]: type=impact
 #: data/core/units/monsters/Fire_Dragon.cfg:37
-#, fuzzy
 msgid "tail"
-msgstr "COLETAZO"
+msgstr "cola"
 
 # monstro de lama xigante FIXADO
 #. [unit_type]: race=monster
@@ -3852,23 +3933,22 @@ msgstr ""
 msgid "Wolf"
 msgstr "Lobo"
 
+# home das neves FIXADO
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
-#, fuzzy
 msgid "Yeti"
-msgstr "YETI"
+msgstr "Home das neves"
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:18
-#, fuzzy
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"Pouco se sabe dos                 , criaturas semellantes ós monos que se di "
-"que viven en montañas afastadas e cubertas de neve. Poucos                   "
-"ter visto un, e a súa existencia é dubidosa para moitos."
+"Pouco se sabe dos Homes das Neves, criaturas semellantes ós monos que se di "
+"que viven en montañas afastadas e cubertas de neve. Poucos din ter visto un, "
+"e a súa existencia é dubidosa para moitos."
 
 # naga loitador FIXADO
 #. [unit_type]: race=naga
@@ -3878,6 +3958,7 @@ msgstr "Naga loitador"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Fighter.cfg:20
+#, fuzzy
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them a whole world forbidden to land dwellers. "
@@ -3885,6 +3966,13 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Os               naga            son unha das poucas razas capaces "
+"de             mobilidade na auga, o que lles da acceso a todo un mundo "
+"prohibido para os habitantes da terra. Ainda así non son verdadeiras "
+"criaturas mariñas, e a súa incapacidade de respirar na "
+"auga                       . Son pequenos, e algo "
+"débiles                      , pero a miúdo moito máis               cós "
+"seus opoñentes."
 
 # naga loitadora FIXADO
 #. [female]
@@ -3942,6 +4030,7 @@ msgstr "Naga guerreiro"
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Warrior.cfg:19
+#, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -3950,6 +4039,11 @@ msgid ""
 "from blows. This makes them potent on land, but the friction of water "
 "greatly impedes the technique."
 msgstr ""
+"Moitos dos xoves guerreiros dos naga                   o día no que merezan "
+"a súa segunda espada. A súa práctica guerreira de usar dúas espadas é moi "
+"diferente á dos Orcos e á doutras razas, xa que comezaron a aprender a arte "
+"do uso da súa forma                      . Isto fainos poderosos na terra, "
+"pero a fricción da auga               ."
 
 # naga guerreira FIXADO
 #. [female]
@@ -3959,6 +4053,7 @@ msgstr "Naga guerreira"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:69
+#, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3967,6 +4062,11 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Moitas das xoves guerreiras dos naga                   o día no que merezan "
+"a súa segunda espada. A súa práctica guerreira de usar dúas espadas é moi "
+"diferente á dos Orcos e á doutras razas, xa que comezaron a aprender a arte "
+"do uso da súa forma                      . Isto fainos poderosos na terra, "
+"pero a fricción da auga               ."
 
 # ogro FIXADO
 #. [unit_type]: race=ogre
@@ -3987,12 +4087,11 @@ msgstr ""
 "deformes. Ainda que facilmente se poden deixar atrás ou ser superados en "
 "intelixencia, a súa forza non pode ser infravalorada."
 
-# O COITELO DOS CARNICEIROS
+# machete FIXADO
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
-#, fuzzy
 msgid "cleaver"
-msgstr "O COITELO DOS CARNICEIROS"
+msgstr "machete"
 
 # ogro xove FIXADO
 #. [unit_type]: race=ogre
@@ -4126,7 +4225,6 @@ msgstr "Orco dirixente"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Ruler.cfg:24
-#, fuzzy
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -4134,11 +4232,11 @@ msgid ""
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
-"Calquera orco que poida manter a unha gran                  é a miúdo "
-"anormalmente intelixente e            , e tamén é inevitablemente moi forte. "
-"Están afeitos á espada e ó arco, pero o seu       talento       real é a súa "
-"rara habilidade para        ós orcos á batalla, dar ordes que son seguidas "
-"non só por temor, senón tamén por lealdade."
+"Calquera orco que poida evitar que unha gran tribo busque problemas ou loite "
+"é a miúdo anormalmente intelixente e autoritario, e tamén é inevitablemente "
+"moi forte. Están afeitos á espada e ó arco, pero o seu verdadeiro talento é "
+"a súa rara habilidade para levar ós orcos á batalla, dar ordes que son "
+"seguidas non só por temor, senón tamén por lealdade."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:34
@@ -4175,7 +4273,6 @@ msgstr "Orco mestre besteiro"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:21
-#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to recock "
@@ -4187,7 +4284,7 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
-"O deseño básico dunha bésta        .\n"
+"cO deseño básico dunha bésta        .\n"
 "\n"
 "Os orcos valoran calquera arma que poidan usar para            , e "
 "inevitablemente rematan nas mans dos seus arqueiros máis fortes e "
@@ -4256,7 +4353,6 @@ msgstr "Saurio emboscador"
 
 #. [unit_type]: race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this is combined with experience, strength, "
@@ -4266,11 +4362,13 @@ msgid ""
 "smallest gap in an enemy line, and have the prowess to make the enemy regret "
 "tactical mistakes."
 msgstr ""
-"Os Saurios son rápidos, e capaces de moverse por terreos que a "
-"miúdo               ós seus inimigos. Cando isto se combina ca experiencia, "
-"ca forza, e co equipamento, un dos seus guerreiros pode chegar a "
-"ser                 na batalla, sobre todo debido a que son moito máis "
-"difíciles de           ca outros inimigos.                      ."
+"Os Saurios son rápidos, e capaces de moverse por terreos que a miúdo "
+"confunde ós seus inimigos. Cando isto se combina ca experiencia, ca forza, e "
+"co equipamento, un dos seus guerreiros pode chegar a ser particularmente "
+"ameazador na batalla, sobre todo debido a que son moito máis difíciles de "
+"confinar ca outros inimigos. Incluso con armadura, os guerreiros saurios "
+"poden aproveitar as vantaxes do máis pequeno oco na liña dos inimigos, e ter "
+"a capacidade para facer que o inimigo lamente os seus erros tácticos."
 
 # saurio augur FIXADO
 #. [unit_type]: race=lizard
@@ -4336,7 +4434,7 @@ msgid ""
 "the strange magics their kind possess, and are beings to be wary of if ever "
 "seen."
 msgstr ""
-"Vense certos saurios vestidos                e cubertos de pés a cabeza "
+"Certos saurios son vistos vestidos                e cubertos de pés a cabeza "
 "con                  . Algúns sospeitan que son                 , ou "
 "oráculos entre os da súa raza. Pero sexa cal sexa a función     'social'    "
 "que teñan, son             poderosos         maxia que a súa caste posúe, e "
@@ -4395,7 +4493,6 @@ msgstr "Troll grande"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -4403,10 +4500,11 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
-"Cando un troll,                            , convértese nalgo "
-"extraordinario, un besta que se lembrará durante "
-"xeracións.                           son a fonte de contos sobre os trolls, "
-"e ver os contos facerse realidade non diminúe a súa grandeza."
+"Cando un troll, co don dunha forza vital anormal, combina iso ca idade e "
+"maila sabiduría, convértese nalgo extraordinario, un besta que se lembrará "
+"durante xeracións. As súas fazañas de forza e astucia son a fonte da maioría "
+"dos contos sobre os trolls, e ver os contos facerse realidade non diminúe a "
+"súa grandeza."
 
 # troll heroe FIXADO
 #. [unit_type]: race=troll
@@ -4433,7 +4531,6 @@ msgstr "Troll tirapedras"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -4441,10 +4538,11 @@ msgid ""
 "in sacks slung over their shoulders. The same leather out of which the sack "
 "is formed is easily adapted to a crude sling."
 msgstr ""
-"A idea de guindar              no combate                moitos trolls, e "
-"algúns escollérono coma arma. Debido a que ditas pedras non sempre son "
-"fáciles de atopar, os                         carréxanas en "
-"sacos                      "
+"A idea de guindar croios no combate ocorréuselle a moitos trolls, e algúns "
+"escollérono coma a súa arma. Debido a que ditas pedras non sempre son "
+"fáciles de atopar, os Tirapedras carréxanas en sacos que levan no seus "
+"ombreiros. O mesmo coiro do que está feito o saco adáptase de facilmente a "
+"un rudo tirapedras.     "
 
 # troll FIXADO
 #. [unit_type]: race=troll
@@ -4454,7 +4552,6 @@ msgstr "Troll"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -4463,8 +4560,13 @@ msgid ""
 "clubs typically favored in fighting act as extensions of their arms, used "
 "for the same purpose of mauling their prey into submission."
 msgstr ""
-"Os Trolls durante moito tempo                    os pensamentos da "
-"humanidade e dos ananos. "
+"Os Trolls durante moito tempo perturbaron os pensamentos da humanidade e dos "
+"ananos. Os sabios continúan desconcertados cas orixes destas criaturas e "
+"maila forza vital que está detrás da súa antinatural vitalidade e forza. Un "
+"troll adulto é máis alto ca un home, e incluso desarmado, sería unha gran "
+"ameaza no combate. As grandes trancas que normalmente lles gusta usar para a "
+"loita son unha extensión dos seus brazos, e úsanas co propósito de baterlle "
+"ás súas presas ata sometelas."
 
 # cachorro de troll FIXADO
 #. [unit_type]: race=troll
@@ -4494,7 +4596,6 @@ msgstr "Troll guerreiro"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -4505,13 +4606,14 @@ msgid ""
 "kind. Given how dangerous a troll is with its bare hands, the thought of a "
 "troll with proper armament is entirely unsettling."
 msgstr ""
-"Os Trolls normalmente non precisan nin prefiren usar "
-"ningún                    e portando martelos de metal. Especúlase que os "
-"aliados orcos son a orixe e creadores dos mesmos;               mostraron "
-"poucas probas do uso de ferramentas, e certamente ningún tipo de traballo co "
-"metal. Dado o perigoso que é un troll cas súas                   "
-"mans         , a idea dun troll cun armamento axeitado é "
-"totalmente           ."
+"Os Trolls normalmente non precisan nin prefiren usar ningún armamento "
+"axeitado no combate, xa que lles valen perfectamente as 'trancas e pedras'. "
+"Ainda así, en varias ocasións vironse trolls vestidos con armaduras e "
+"portando martelos de metal. Especúlase que os aliados orcos son a orixe e "
+"creadores dos mesmos; as expedicións a varios buratos de trolls desaloxados "
+"á forza mostraron poucas probas do uso de ferramentas, e certamente ningún "
+"tipo de traballo co metal. Dado o perigoso que é un troll cas súas mans "
+"núas, a idea dun troll cun armamento axeitado é totalmente inquietante."
 
 # cachorro de troll FIXADO
 #. [unit_type]: race=troll
@@ -4519,6 +4621,7 @@ msgstr ""
 msgid "Troll Whelp"
 msgstr "Cachorro de troll"
 
+# oxymoron
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Whelp.cfg:19
 #, fuzzy
@@ -4530,9 +4633,10 @@ msgid ""
 "the raw strength of their race."
 msgstr ""
 "Describir a un troll coma un cachorro é                    , xa que os seus "
-"corpos xa son moito máis                  có dun home          . "
-"Son           e ainda non son capaces de andar "
-"correctamente,                   "
+"corpos xa son moito máis rexos có dun home adulto . Son torpes e ainda non "
+"son capaces de andar correctamente, o que os leva a gatear cas catro patas, "
+"pero calquera dificultade que isto lles provoque é compensada pola forza "
+"bruta da súa raza."
 
 # monstro carroñeiro FIXADO
 #. [unit_type]: race=undead
@@ -4540,7 +4644,6 @@ msgstr ""
 msgid "Ghoul"
 msgstr "Monstro carroñeiro"
 
-# gul NON, monstro carroñeiro SI
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 #, fuzzy
@@ -4554,14 +4657,14 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred in all civilized lands."
 msgstr ""
-"Só os máis        perversos        e sádicos    nigromantes saben o que se "
-"debe facer para converter a unha persoa nun gul, e é un segredo que non "
+"Só os máis perversos e sádicos nigromantes saben o que se debe facer para "
+"converter a unha persoa nun monstro carroñeiro, e é un segredo que non "
 "contan. O resultado, ainda así, é ben coñecido para todos; é un besta que "
 "non sabe nada da súa vida humana, unha criatura que                o día que "
 "naceu, e                .\n"
 "\n"
-"É debido a ditas cousas polo que a nigromancia está                   en "
-"tódalas terras civilizadas."
+"É debido a ditas cousas polo que a nigromancia é condenada cun odio case "
+"visceral en tódalas terras civilizadas."
 
 # necrófago FIXADO
 #. [unit_type]: race=undead
@@ -4571,7 +4674,6 @@ msgstr "Necrófago"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4581,12 +4683,13 @@ msgid ""
 "from living men - a process about which almost nothing is known, but which "
 "can be nothing but nightmarish."
 msgstr ""
-"O necrófago, ou 'devorador dos mortos', é unha cousa             monstruosa, "
-"corpulenta        , que          . Parece ser bastante                      "
-"da súa capacidade para moverse;                           . Probablemente o "
-"feito máis             sobre eles, xa que parece ser un feito, é que foron "
+"O necrófago, ou 'devorador dos mortos', é unha cousa monstruosa, corpulenta, "
+"que só conserva unha crúa semellanza a un home. Parece estar bastante "
+"corrompido a pesar da súa capacidade para moverse; están cheos de "
+"enfermidades e velenos do sangue e posúen un fedor comparable. Probablemente "
+"o feito máis perturbador sobre eles, xa que parece ser un feito, é que foron "
 "feitos dalgunha maneira a partir de homes vivos - un proceso sobre o que "
-"case non se sabe nada, pero que non pode ser máis ca                   ."
+"case non se sabe nada, pero que non pode ser máis ca arrepiante."
 
 # inanimado FIXADO
 #. [unit_type]: race=undead
@@ -4596,7 +4699,6 @@ msgstr "Inanimado"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
-#, fuzzy
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -4604,8 +4706,10 @@ msgid ""
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
 "A técnica de darlle vida a un corpo morto é desafortunadamente ben coñecida "
-"nas artes escuras; os        seus practicantes       usana a miúdo para "
-"erguer a servidores e soldados                         .                ."
+"nas artes escuras; os seus practicantes úsana a miúdo para erguer a "
+"servidores e soldados a partir de cadáveres. Estes seres son a miúdo "
+"numerosos, pero fráxiles; un golpe no combate pode espertalos, ainda que, "
+"facéndoos moito máis temibles."
 
 # tocar FIXADO
 #. [attack]: type=impact
@@ -4642,6 +4746,7 @@ msgstr ""
 msgid "Ancient Lich"
 msgstr "Liche ancián"
 
+# revenant??
 #. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:24
 #, fuzzy
@@ -4652,24 +4757,22 @@ msgstr ""
 "Un ser desta orde é un                           . Calquera que se atope cun "
 "Liche Ancián ten cousas peores das que se preocupar ca da morte."
 
-# TEMPESTADE DE FRIALDADE
+# tempestade de frialdade FIXADO
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Lich.cfg:71
-#, fuzzy
 msgid "chill tempest"
-msgstr "TEMPESTADE DE FRIALDADE"
+msgstr "tempestade de frialdade"
 
-# ONDA DE SOMBRA
+# onda sombría FIXADO
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
 #: data/core/units/undead/Necro_Lich.cfg:83
 #: data/core/units/undead/Necromancer.cfg:51
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:47
-#, fuzzy
 msgid "shadow wave"
-msgstr "ONDA DE SOMBRA"
+msgstr "onda sombría"
 
 # adepto escuro FIXADO
 #. [unit_type]: race=human
@@ -4702,14 +4805,13 @@ msgstr ""
 "En tales condicións, a súa única arma son as mañas que se obrigaron a "
 "aprender."
 
-# ONDA DE FRIALDADE
+# onda de frialdade FIXADO
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:31
 #: data/core/units/undead/Necromancer.cfg:39
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:35
-#, fuzzy
 msgid "chill wave"
-msgstr "ONDA DE FRIALDADE"
+msgstr "onda de frialdade"
 
 # adepta escura FIXADO
 #. [female]
@@ -4750,7 +4852,6 @@ msgstr "Feiticeiro escuro"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -4768,20 +4869,21 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
-"O terror inspirado pola maxia negra                    do pouco que sabe "
-"dela o home común. Os Feiticeiros Escuros                os segredos da vida "
-"e da morte, sendo o segundo                        . Este "
-"traballo                        da conexión entre a alma e a materia inerte, "
-"e os primeiros experimentos con éxito sobre a manipulación "
-"deste             . O terrible descoñecemento          que asexa alén da "
-"morte          , e inevitablemente     .\n"
+"O terror inspirado pola maxia negra provén principalmente do pouco que sabe "
+"dela o home común. Os Feiticeiros Escuros comezaron a descubrir os segredos "
+"da vida e da morte, sendo o segundo moi fácil de entender para todos. Este "
+"traballo permítelles comezar a albiscar a conexión entre a alma e a materia "
+"inerte, e realizar os primeiros experimentos con éxito sobre a manipulación "
+"deste vínculo. Enxergarán o terrible descoñecemento que asexa alén da morte, "
+"e inevitablemente hano descifrar.\n"
 "\n"
-"A pesar                        , os primeiros resultados do seu traballo "
-"tiveron aplicacións inmediatas, e desagradables. A vida que lle             "
-"á materia inerte pode crear servidores para eles, servidores que "
-"traballarán, pero que tamén matarán, e nunca           cuestionarán         "
-"ós seus amos. Estas creacións teñen unha lealdade que calquera tirano "
-"desexaría, e é tentador para aqueles co menor desexo de poder."
+"A pesar de calquera intención que puideran ter para usar isto para obter a "
+"súa propia inmortalidade controlando a natureza, os primeiros resultados do "
+"seu traballo tiveron aplicacións inmediatas, e desagradables. A vida que lle "
+"insuflan á materia inerte pode crear servidores para eles, servidores que "
+"traballarán, pero que tamén matarán, e nunca cuestionarán ós seus amos. "
+"Estas creacións teñen unha lealdade que calquera tirano desexaría, e é "
+"tentador para aqueles co menor desexo de poder."
 
 # feiticeira escura FIXADO
 #. [female]
@@ -4791,7 +4893,6 @@ msgstr "Feiticeira escura"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:184
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -4808,7 +4909,22 @@ msgid ""
 "will also kill, and will never question their mistress. These creations have "
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
-msgstr "O terror inspirado pola maxia negra   "
+msgstr ""
+"O terror inspirado pola maxia negra provén principalmente do pouco que sabe "
+"dela o home común. As Feiticeiras Escuras comezaron a descubrir os segredos "
+"da vida e da morte, sendo o segundo moi fácil de entender para todos. Este "
+"traballo permítelles comezar a albiscar a conexión entre a alma e a materia "
+"inerte, e realizar os primeiros experimentos con éxito sobre a manipulación "
+"deste vínculo. Enxergarán o terrible descoñecemento que asexa alén da morte, "
+"e inevitablemente hano descifrar.\n"
+"\n"
+"A pesar de calquera intención que puideran ter para usar isto para obter a "
+"súa propia inmortalidade controlando a natureza, os primeiros resultados do "
+"seu traballo tiveron aplicacións inmediatas, e desagradables. A vida que lle "
+"insuflan á materia inerte pode crear servidores para eles, servidores que "
+"traballarán, pero que tamén matarán, e nunca cuestionarán ós seus amos. "
+"Estas creacións teñen unha lealdade que calquera tirano desexaría, e é "
+"tentador para aqueles co menor desexo de poder."
 
 # liche FIXADO
 #. [unit_type]: race=undead
@@ -4818,6 +4934,7 @@ msgstr "Liche"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Necro_Lich.cfg:24
+#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4830,6 +4947,15 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
+"Un liche é                  física do primeiro obxectivo da maxia negra: a "
+"busca para conseguri a inmortalidade. Ainda que                 se sacrifica "
+"no renacemento, ó converterse nun liche un evita a morte do que realmente "
+"lles da o seu terror.                      a mente que se conserva, e o "
+"espírito                , ainda que o corpo pode           .\n"
+"\n"
+"Non se sabe, ocultado quizais                dos nigromantes, se a vida se "
+"prolonga indefinidamente ou se só se prolonga. Pero o certo é que esta "
+"pregunta                 do que a súa orde conseguiu."
 
 # nigromante FIXADO
 #. [unit_type]: race=human
@@ -4839,7 +4965,6 @@ msgstr "Nigromante"
 
 #. [unit_type]: race=human
 #: data/core/units/undead/Necromancer.cfg:22
-#, fuzzy
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -4849,17 +4974,21 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
-"Un dos    cúspides   pináculos, cimas cumios            do que é considerado "
-"a 'maxia negra' é a arte da nigromancia, a terrible capacidade para espertar "
-"ós mortos con falsa vida.                        .\n"
+"Unha das cimas do que é considerado a 'maxia negra' é a arte da nigromancia, "
+"a terrible capacidade para espertar ós mortos con falsa vida. Este único "
+"descubrimento provocou a condenación da maxia negra pola humanidade, debido "
+"a que as arrepiantes cousas que fixo reais lle deron ó medo unha chea de "
+"novas armas.\n"
 "\n"
 "Esta capacidade, en tódolos aspectos, é o primeiro paso cara a evitación da "
-"morte           ."
+"morte ata as últimas consecuencias."
 
+# bastón de praga  PONZOÑENTO
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:27
+#, fuzzy
 msgid "plague staff"
-msgstr ""
+msgstr "Bastón da Rapidez"
 
 # nigromante FIXADO
 #. [female]
@@ -4875,7 +5004,6 @@ msgstr "Arqueiro maldito"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:17
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4884,7 +5012,11 @@ msgid ""
 "borne of their empty and tortured existence."
 msgstr ""
 "Os máis poderosos dos arqueiros dos non mortos terminan sendo "
-"invariablemente aqueles que foron arqueiros na súa vida anterior."
+"invariablemente aqueles que foron arqueiros na súa vida anterior. Percorren "
+"os campos de batalla, guiados pola esvaecidos recordos da súa anterior "
+"habilidade, sen saber, nin preocuparse polo seu propósito, ou quen son os "
+"inimigos. Están guiados só por unha maldade debida á súa existencia baleira "
+"e torturada."
 
 # tirador de ósos FIXADO
 #. [unit_type]: race=undead
@@ -4903,14 +5035,20 @@ msgid ""
 "victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
 "unfortunate enemies."
 msgstr ""
-"As creacións dun feiticeiro escuro, algunhas            á falsa vida que se "
-"lles deu.                        "
+"Entre as creacións dun feiticeiro escuro, algunhas reciben con máis "
+"intensidade a falsa vida que se lles deu. A forza da súa non-"
+"vida                      ; os arqueiros, en particular, a miúdo están "
+"equipados cun arsenal realmente vil.                feitas non de madeira, "
+"senón dos ósos das súas vítimas.               polos seus        "
+"infortunados             inimigos."
 
+# choco-bone
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
 msgstr ""
 
+# chocobone???
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
 #, fuzzy
@@ -4950,7 +5088,6 @@ msgstr "Espadachín da morte"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "
@@ -4958,12 +5095,11 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"En vida, as         abominacións         coñecidas coma 'Espadachíns da "
-"morte' foron mestres no combate, soldados que foron                 e "
-"letais. Os seus novos donos, que recoñeceron isto, equipáronos "
-"para           as capacidades que unha vez tiveron. Ainda que son fráxiles, "
-"estes monstros son moito máis rápidos có resto dos seus, tanto a pé coma cas "
-"súas espadas."
+"En vida, as abominacións coñecidas coma 'Espadachíns da morte' foron mestres "
+"no combate, soldados que foron áxiles e letais. Os seus novos donos, que "
+"recoñendo isto, equipáronos de acordo cas capacidades que unha vez tiveron. "
+"Ainda que son fráxiles, estes monstros son moito máis rápidos có resto dos "
+"seus, tanto a pé coma cas súas espadas."
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
@@ -4972,7 +5108,6 @@ msgstr ""
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -4980,19 +5115,21 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
-"Pouco queda, nestas grandes ruínas, dos homes que unha vez foron. "
-"Guerreiros                    , están agora perdidos no "
-"soño                 ;                batallas         e loitando "
-"desesperadamente para liberarse, por unha paz obtida só a través da "
-"forza             . "
+"Pouco queda, nestas grandes ruínas, dos homes que unha vez foron. Guerreiros "
+"de corazón, están agora perdidos no soño da non-vida; distraídos nas "
+"batallas da súa memoria e loitando desesperadamente para liberarse, por unha "
+"paz obtida só a través da forza das armas. E polo tanto loitan; sen pensar, "
+"e sen descansar."
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
 msgstr ""
 
+# revenant
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:17
+#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -5000,6 +5137,13 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
+"Ca falsa vida que recibiron para loitar outra vez máis, as criaturas "
+"coñecidas coma                      foron verdadeiramente grandes guerreiros "
+"no seu tempo, ainda que o recordo deses tempos xa hai moito que se foi. "
+"Incluso os feiticeiros que os ergueron só poden                             "
+"sobre o seu pasado.                    é unha poderosa ferramenta para o "
+"combate: un ousado guerreiro que non sinte dor, e que loitará ata o amargo "
+"final."
 
 # esqueleto FIXADO
 #. [unit_type]: race=undead
@@ -5028,7 +5172,6 @@ msgstr "Esqueleto arqueiro"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -5037,10 +5180,10 @@ msgid ""
 "is already dead."
 msgstr ""
 "Un esqueleto arqueiro é un pouco diferente ós 'esqueletos' que o acompañan a "
-"miúdo -            , un guerreiro erguido da morte para loitar de novo. Nas "
-"mans dos seus amos, estes soldados farán calquera cousa para realizar as "
-"tarefas que lles asignen, xa que a morte non é temible para un que xa está "
-"morto."
+"miúdo - é un pecado contra a natureza, un guerreiro erguido da morte para "
+"loitar de novo. Nas mans dos seus amos, estes soldados farán calquera cousa "
+"para realizar as tarefas que lles asignen, xa que a morte non é temible para "
+"un que xa está morto."
 
 # fantasma FIXADO
 #. [unit_type]: race=undead
@@ -5050,6 +5193,7 @@ msgstr "Fantasma"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
+#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -5059,15 +5203,20 @@ msgid ""
 "the wind in the sails of a ship. This damned vessel becomes an unfailing "
 "servant which can be bound to whatever task their master sees fit."
 msgstr ""
+"               da creación que a alma humana é inmutable, e non se pode "
+"destruír. Ainda así, as moitas cousas que un nigromante pode facer a pesar "
+"disto son totalmente            .\n"
+"\n"
+"Escravizado dentro                de encantamentos, un espírito atrapado "
+"pode                     "
 
-# OULEO SALAIO MEIGALLO XEMIDO
+# salaio FIXADO
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 #: data/core/units/undead/Spirit_Ghost.cfg:131
 #: data/core/units/undead/Spirit_Spectre.cfg:57
-#, fuzzy
 msgid "wail"
-msgstr "OULEO SALAIO MEIGALLO XEMIDO"
+msgstr "salaio"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
@@ -5116,6 +5265,7 @@ msgstr "Espectro"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:20
+#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -5125,6 +5275,13 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake."
 msgstr ""
+"A veces chamados 'homes baleiros', os espectros conforman                    "
+"dos poderes dos seus amos. Son un terror          para os vivos, xa que son "
+"case tan letais coma a súa aparencia suxire.\n"
+"\n"
+"A creación deles                             ; o verdadeiro perigo de atopar "
+"un é tal que é probable que só                 dunha forza moito máis "
+"perigosa                    ."
 
 # espada funesta FIXADO
 # tamén espada maldita
@@ -5142,7 +5299,6 @@ msgstr "Ánima"
 
 #. [unit_type]: race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -5151,8 +5307,10 @@ msgid ""
 "from the truth."
 msgstr ""
 "Estas sombras que unha vez foron guerreiros están entre as cousas máis "
-"terroríficas que un nigromante pode crear,               . Pénsase que estes "
-"inimigos son invencibles o cal é                    "
+"terroríficas que un nigromante pode crear, xa que unha espada pode "
+"atravesalos coma se foran de aire, aparentemente sen facer dano. Pénsase que "
+"estes inimigos son invencibles o cal é arrepiante, algo que afortunadamente "
+"está lonxe da realidade.     "
 
 # wose ancián FIXADO
 #. [unit_type]: race=wose
@@ -5173,9 +5331,15 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses."
 msgstr ""
-"Existe un curioso conto dun granxeiro que tiña un          , unha árbore "
-"que               cando o seu pai                        , e baixo a que a "
-"súa familia                   . Foi por iso polo     "
+"Existe un curioso conto dun granxeiro que tiña un gran carballo na súa eira, "
+"unha árbore que estaba aí cando o seu pai sachou por primeira vez nesa "
+"terra, e baixo a que a súa familia                   . Foi por iso polo que "
+"foi unha sorpresa para el, que unha mañá, cando se espertou "
+"para                          agás un basto carreiro na terra onde unha vez "
+"estivo.\n"
+"\n"
+"Ditos encontros é todo o que sabe do que supostamente son os woses máis "
+"antigos."
 
 # esmagadura FIXADO
 #. [attack]: type=impact
@@ -5192,6 +5356,7 @@ msgstr "Wose vello"
 
 #. [unit_type]: race=wose
 #: data/core/units/wose/Elder.cfg:19
+#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -5205,6 +5370,16 @@ msgid ""
 "turned to violence, should someone manage to raise the ire of these "
 "creatures."
 msgstr ""
+"Dise que os Woses teñen moitas formas, todas elas semellantes a árbores, e a "
+"medida que envellecen aumentan de tamaño. Os contos din que os woses que "
+"parecen árbores                            . Esta é a maior razón pola que "
+"rara veces se ven -                       un wose de dita estatura parece "
+"non ser máis ca unha árbore                 . Incluso un elfo           "
+"descoidado         pode a veces ser           .\n"
+"\n"
+"Os woses non son de ningún xeito guerreiros, pero a súa gran forza pode "
+"converterse facilmente en violencia,                         destas "
+"criaturas."
 
 # wose FIXADO
 #. [unit_type]: race=wose
@@ -5212,6 +5387,7 @@ msgstr ""
 msgid "Wose"
 msgstr "Wose"
 
+# faerie
 #. [unit_type]: race=wose
 #: data/core/units/wose/Wose.cfg:20
 #, fuzzy

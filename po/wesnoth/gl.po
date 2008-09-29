@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-24 22:33+0200\n"
-"PO-Revision-Date: 2008-09-23 16:16+0100\n"
+"PO-Revision-Date: 2008-09-29 13:11+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -71,26 +71,24 @@ msgstr "Baixo a Terra"
 msgid "poisoned"
 msgstr "envelenado"
 
-# furia, mirar en wesnoth-units
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:553
-#, fuzzy
 msgid "berserk"
-msgstr "FURIA, mirar en wesnoth-units"
+msgstr "furia"
 
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:555
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserk:\n"
-"Pódese usar offensiva ou defensivamente, o ataque dura ata que un dos "
-"combatentes morre ou despois de 30 rondas."
+"Furia:\n"
+"Cando se usa de forma ofensiva ou defensiva, este ataque obriga a "
+"enfrontarse ata que morre un dos combatentes, ou ata que se realicen 30 "
+"ataques."
 
 #. [chance_to_hit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
@@ -219,9 +217,8 @@ msgstr "Tradución ó Chinés (Taiwan)"
 
 #. [about]
 #: data/core/about.cfg:999
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Tradución ó Catalán"
+msgstr "Tradución ó Croata"
 
 #. [about]
 #: data/core/about.cfg:1006
@@ -270,9 +267,8 @@ msgstr "Tradución ó Francés"
 
 #. [about]
 #: data/core/about.cfg:1359
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Tradución ó Filipino"
+msgstr "Tradución ó Friulano"
 
 #. [about]
 #: data/core/about.cfg:1366
@@ -326,9 +322,8 @@ msgstr "Tradución ó Latín"
 
 #. [about]
 #: data/core/about.cfg:1642
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Tradución ó Latín"
+msgstr "Tradución ó Letón"
 
 #. [about]
 #: data/core/about.cfg:1649
@@ -337,9 +332,8 @@ msgstr "Tradución ó Lituano"
 
 #. [about]
 #: data/core/about.cfg:1657
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Tradución ó Indonesio"
+msgstr "Tradución ó Macedonio"
 
 #. [about]
 #: data/core/about.cfg:1664
@@ -363,9 +357,8 @@ msgstr "Tradución ó Portugués Brasileiro"
 
 #. [about]
 #: data/core/about.cfg:1777
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Tradución ó Estonio"
+msgstr "Tradución ó Romanés"
 
 #. [about]
 #: data/core/about.cfg:1785
@@ -937,7 +930,8 @@ msgstr ""
 "unidade inimiga que entra neses hexágonos remata automaticamente os seus "
 "movementos. Aprender como usar as zonas de control no teu proveito é unha "
 "parte importante de Wesnoth, xa que só os <ref>dst=ability_skirmisher "
-"text='Hostigadores'</ref> poden ignorar as zonas de control."
+"text='                                           Hostigadores                "
+"'</ref> poden ignorar as zonas de control."
 
 #. [topic]
 #: data/core/help.cfg:202
@@ -2591,10 +2585,8 @@ msgstr ""
 "O modo de depuración desactívase ó saír do xogo ou con :nodebug.\n"
 "\n"
 
-# non miña
 #. [topic]
 #: data/core/help.cfg:665
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2605,11 +2597,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-" Alterna o control de un bando entre un humán e a intelixencia artificial."
-"Esta orde debea dar o xogador ou o cliente que controle o bando en cuestión."
-"Se non se especifica o segundo parámetro, cambia entre humán e IA.Se é 'on', "
-"establece un controlador de intelixencia artificial. Se é 'off'establece un "
-"controlador humano. Por defecto será o bando actualmenteactivo se non se "
+"Define ou cambia o xogador do bando entre humano e xogador da intelixencia "
+"artificial. Esta orde ten que dala o xogador ou o cliente que controla dito "
+"bando. Se non se proporciona un segundo parámetro, cambia entre humano e IA. "
+"Se é 'on', establece un controlador de intelixencia artificial. Se é 'off' "
+"establece un controlador humano. Por defecto mantén o bando actual se non se "
 "especifica ningún parámetro.\n"
 "\n"
 
@@ -2693,6 +2685,7 @@ msgstr ""
 msgid "Multiplayer commands"
 msgstr "Comandos multixogador"
 
+# ban   e    kick              expulsar e vedar           cal é cal???
 #. [topic]
 #: data/core/help.cfg:694
 #, fuzzy
@@ -3016,14 +3009,14 @@ msgstr ""
 #: data/core/macros/abilities.cfg:346
 #, fuzzy
 msgid "skirmisher"
-msgstr "hostigador"
+msgstr "Saurio guerrilleiro"
 
 # fustrigador?? escapulidor??? guerrilla?? acosador???
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:347
 #, fuzzy
 msgid "female^skirmisher"
-msgstr "hostigador"
+msgstr "Saurio guerrilleiro"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:349
@@ -3096,7 +3089,7 @@ msgstr "emboscada"
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 #, fuzzy
 msgid "female^ambush"
-msgstr "leal"
+msgstr "saudable"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -4464,8 +4457,9 @@ msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" A habilidade de escabullirse de esta unidade permitelle ser ignorada nas "
-"zonas de control dos inimigos, podendo así moverse libremente arredor deles."
+" A habilidade de          escabullirse       desta unidade permitelle ser "
+"ignorada nas zonas de control dos inimigos, podendo así moverse libremente "
+"arredor deles."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -4518,15 +4512,13 @@ msgstr ""
 " Esta unidade obtén 1 punto de vida que se suma ó seu máximo cando mata  "
 "unha unidade viva."
 
-# berserk??
 #: data/core/macros/special-notes.cfg:56
-#, fuzzy
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Cando se usa un ataque berserk, esta unidade continua atacando ata que o "
-"algún dos dous morra."
+" Cando se usa un ataque furioso, esta unidade continúa atacando ata que "
+"morra ela ou o seu inimigo."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -6089,8 +6081,8 @@ msgstr ""
 "dos hexágonos adxacentes a elas. Se unha unidade se move a unha zona de "
 "control dun inimigo, non poderá moverse máis nese turno. Isto significa que "
 "as unidades poden ter dous hexágonos baleiros entre elas e ainda así crear "
-"unha barreira para o inimigo. Sen embargo, os fustrigadores están adestrados "
-"para ignorar estas zonas."
+"unha barreira para o inimigo. Sen embargo, os            "
+"fustrigadores               están adestrados para ignorar estas zonas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -6613,8 +6605,9 @@ msgstr "Seguinte bando"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:147
+#, fuzzy
 msgid "play side turn"
-msgstr ""
+msgstr "Rematar o Turno da Unidade"
 
 #. [menu]
 #: data/themes/macros.cfg:163
@@ -7486,7 +7479,7 @@ msgstr "Esta unidade está petrificada. Non se poderá mover nin atacar."
 
 #: src/generate_report.cpp:121
 msgid "stone: "
-msgstr "petrificado:"
+msgstr "petrificado: "
 
 #: src/generate_report.cpp:176
 msgid "Resistances: "
@@ -8010,7 +8003,7 @@ msgstr "Establecer Etiqueta"
 
 #: src/menu_events.cpp:1576 src/menu_events.cpp:1579
 msgid "Label: "
-msgstr "Etiqueta:"
+msgstr "Etiqueta: "
 
 #: src/menu_events.cpp:1581
 msgid "Team only"
@@ -8260,7 +8253,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2391
 msgid "Unknown debug level: '$level'."
-msgstr "Nivel de depuración descoñecido: '$level':"
+msgstr "Nivel de depuración descoñecido: '$level'."
 
 #: src/menu_events.cpp:2393 src/menu_events.cpp:2402
 msgid "error"
@@ -8304,13 +8297,13 @@ msgstr ""
 #: src/menu_events.cpp:2716
 #, fuzzy
 msgid "Can't droid invalid side: '$side'."
-msgstr "Non se pode dirixir un bando inválido: '$side'."
+msgstr "Non se puido cambiar o control do bando incorrecto: '$side'."
 
 # droid???
 #: src/menu_events.cpp:2721
 #, fuzzy
 msgid "Can't droid networked side: '$side'."
-msgstr "Non se poden dirixir bandos de rede: '$side'."
+msgstr "Non se puido cambiar o control do bando incorrecto: '$side'."
 
 #: src/menu_events.cpp:2758
 msgid "Can't change control of invalid side: '$side'."
@@ -8377,7 +8370,7 @@ msgstr ""
 #: src/multiplayer.cpp:172
 #, fuzzy
 msgid "Server-side redirect loop"
-msgstr "Bucle de redirección no servidor"
+msgstr "O enderezo do servidor ó que se redirixe."
 
 #: src/multiplayer.cpp:196
 msgid "Log in with password"
@@ -8400,7 +8393,7 @@ msgstr "Usuario: "
 #: src/multiplayer.cpp:217 src/multiplayer_create.cpp:331
 #: src/multiplayer_lobby.cpp:792
 msgid "Password: "
-msgstr "Contrasinal:"
+msgstr "Contrasinal: "
 
 #: src/multiplayer.cpp:239
 msgid "You must log in to this server"
@@ -8452,7 +8445,7 @@ msgstr ""
 #: src/multiplayer_connect.cpp:827
 #, fuzzy
 msgid "Reserved"
-msgstr "Depósito:"
+msgstr "Reserva:"
 
 #: src/multiplayer_connect.cpp:828
 msgid "--give--"
@@ -8468,7 +8461,7 @@ msgstr "Non se atopou o tipo de líder para a facción $faction"
 
 #: src/multiplayer_connect.cpp:1011
 msgid "Game Lobby: "
-msgstr "Sala de xogo:"
+msgstr "Sala de xogo: "
 
 #: src/multiplayer_connect.cpp:1030
 msgid "Player/Type"
@@ -8494,7 +8487,7 @@ msgstr "Estou Preparado"
 #: src/multiplayer_connect.cpp:1048
 #, fuzzy
 msgid "The scenario is invalid because it has no sides."
-msgstr "O escenario é incorrecto porque non ten beiras."
+msgstr "O escenario é incorrecto porque non ten bandos."
 
 #: src/multiplayer_connect.cpp:1439
 msgid "Network Player"
@@ -8558,7 +8551,7 @@ msgstr "Usar configuracións do mapa"
 
 #: src/multiplayer_create.cpp:83
 msgid "Random start time"
-msgstr "Hora de comezo aleatoria"
+msgstr "Hora de inicio aleatoria"
 
 #: src/multiplayer_create.cpp:84
 msgid "Fog Of War"
@@ -8696,20 +8689,19 @@ msgstr "Turnos Ilimitados"
 
 #: src/multiplayer_create.cpp:369
 msgid "Init. Limit: "
-msgstr "Límite Inic."
+msgstr "Límite Inicial: "
 
 #: src/multiplayer_create.cpp:374
 msgid "Turn Bonus: "
-msgstr "Plus de Turno:"
+msgstr "Plus de Turno: "
 
 #: src/multiplayer_create.cpp:378
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Depósito:"
+msgstr "Reserva:"
 
 #: src/multiplayer_create.cpp:383
 msgid "Action Bonus: "
-msgstr "Plus de Acción"
+msgstr "Plus de Acción: "
 
 #: src/multiplayer_create.cpp:390
 msgid "Village Gold: "
@@ -8717,7 +8709,7 @@ msgstr "Ouro de Vilas: "
 
 #: src/multiplayer_create.cpp:398
 msgid "Exp. Mod.: "
-msgstr "Mod. Exp.:"
+msgstr "Mod. Exp.: "
 
 #: src/multiplayer_create.cpp:531
 msgid "Players: "
@@ -8872,7 +8864,7 @@ msgstr ""
 #: src/network.cpp:110
 #, fuzzy
 msgid "invalid network handle"
-msgstr "mantedor de rede inválido"
+msgstr "Erro de comunicación da rede."
 
 #: src/network.cpp:143
 msgid "Client disconnected"
@@ -8980,9 +8972,7 @@ msgstr "Rematar escenario"
 msgid "Waiting for next scenario..."
 msgstr "Agardando polo seguinte escenario..."
 
-# non miña
 #: src/playmp_controller.cpp:505
-#, fuzzy
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8991,13 +8981,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
-"O xogo non está sincronizado, e non se pode continuar.Hai unha serie de "
-"razóns de que isto podría suceder: isto pode ocurrir se ti ou outro xogador "
-"modificastedes as vosas opcións de xogo. Isto pode significar que un dos "
-"xogadores está tratando de facer trampas. Tamén podría deberse a un erro no "
-"juego, pero isto é menos probable.\n"
-" \n"
-" ¿Queres gardar un rexistro de erros da túa partida?"
+"O xogo non está sincronizado, e non se pode continuar. Hai unha serie de "
+"razóns para que isto ocorra: isto pode pasar se ti ou outro xogador "
+"modificou as súas opcións de xogo. Isto pode significar que un dos xogadores "
+"está intentando facer trampas. Tamén podería deberse a un erro no xogo, pero "
+"isto é menos probable.\n"
+"\n"
+"Desexas gardar un rexistro de erros da túa partida?"
 
 #: src/playsingle_controller.cpp:183
 msgid "Remaining gold: "
@@ -9021,13 +9011,13 @@ msgstr "Plus: "
 
 #: src/playsingle_controller.cpp:195
 msgid "Gold: "
-msgstr "Ouro:"
+msgstr "Ouro: "
 
 # non miña
 #: src/playsingle_controller.cpp:199
 #, fuzzy
 msgid "Carry over percentage: "
-msgstr "Porcentaxe avanzado:"
+msgstr "A partida rematou."
 
 #: src/playsingle_controller.cpp:202
 msgid "Bonus Gold: "
@@ -9177,7 +9167,7 @@ msgstr ""
 #: src/serialization/parser.cpp:280 src/serialization/parser.cpp:304
 #, fuzzy
 msgid "Unterminated quoted string"
-msgstr "Cadea entrecomiñada sen terminar"
+msgstr "Etiqueta [element] non terminada"
 
 #: src/serialization/parser.cpp:327
 msgid " included from "
@@ -9223,7 +9213,7 @@ msgstr "Dano"
 #: src/statistics_dialog.cpp:158
 #, fuzzy
 msgid "Over All"
-msgstr "Resumo"
+msgstr "Seleccionar Todo"
 
 #: src/statistics_dialog.cpp:160
 msgid "This Turn"
@@ -9498,12 +9488,10 @@ msgstr "Activar a suba de resumos"
 #~ msgid "Ice"
 #~ msgstr "Xeo"
 
-#, fuzzy
 #~ msgid ""
 #~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
+#~ "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
+#~ "units, even those who can breathe underwater, cannot swim underneath ice."
 #~ msgstr ""
 #~ "O xeo representa calquera masa de auga conxelada. Para o xogo é igual á "
 #~ "<ref>dst=terrain_tundra text=Neve</ref>. Ten en conta que as unidades que "
@@ -9513,11 +9501,10 @@ msgstr "Activar a suba de resumos"
 #~ msgid "Savanna"
 #~ msgstr "Sabana"
 
-#, fuzzy
 #~ msgid ""
 #~ "Savannas are plains of tall grass, found in the warmer climates of the "
 #~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
+#~ "<ref>dst=terrain_grassland text=Grassland</ref>."
 #~ msgstr ""
 #~ "As sabanas son chairas de herba alta, que se atopan nas zonas de clima "
 #~ "temperado do mundo. Para os propósitos do xogo son idénticas ós "
@@ -9525,9 +9512,6 @@ msgstr "Activar a suba de resumos"
 
 #~ msgid "Chasm"
 #~ msgstr "Abismo"
-
-#~ msgid "Cave Wall"
-#~ msgstr "Parede de Cova"
 
 #~ msgid ""
 #~ "Cave walls are made of solid stone, renowned for its ability to impede "
@@ -9547,9 +9531,6 @@ msgstr "Activar a suba de resumos"
 #~ "practicamente imposible. Ata as criaturas voadoras non poden moverse por "
 #~ "entre os altos picos a tan grandes alturas."
 
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth"
-
 #~ msgid "ruby of fire"
 #~ msgstr "rubí do lume"
 
@@ -9563,7 +9544,7 @@ msgstr "Activar a suba de resumos"
 #~ msgstr "Agora conectarase a un servidor para descargar complementos."
 
 #~ msgid "Server: "
-#~ msgstr "Servidor:"
+#~ msgstr "Servidor: "
 
 #~ msgid "Remove Add-ons"
 #~ msgstr "Eliminar Complementos"

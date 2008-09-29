@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "POT-Creation-Date: 2008-09-24 22:18+0300\n"
-"PO-Revision-Date: 2008-07-03 11:58+0100\n"
+"PO-Revision-Date: 2008-09-29 13:14+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -133,9 +133,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir E<lt>nameE<gt>>"
-msgstr "B<--path>"
+msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:56
@@ -1015,16 +1015,19 @@ msgstr "Claves globais:"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:110
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "Fallo ó eliminar o ficheiro."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
+#, fuzzy
 msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Ruta completa ou relativa a un ficheiro (comprimido con gzip) que o servidor "
+"poida ler e escribir. "
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1064,15 +1067,18 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:124
 #, fuzzy, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<-c\\ >I<ruta>B<,\\ --config>I<\\ ruta>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
+#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"              . Se non se especifica, por defecto toma a ruta especificada "
+"no tempo de compilación (por defecto: /var/run/socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1130,16 +1136,19 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:140
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "Comando-Usuario#2"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
+#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"O comando que usa o servidor para iniciar un novo proceso do servidor a "
+"través do comando "
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1224,20 +1233,21 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<nome>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
+#, fuzzy
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "O nome que se usa para refirirse ó tempo de             "
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<hora>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181

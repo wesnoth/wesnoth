@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2008-09-24 22:18+0300\n"
-"PO-Revision-Date: 2008-02-08 20:26+0100\n"
+"PO-Revision-Date: 2008-09-29 12:29+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -134,9 +134,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir E<lt>nameE<gt>>"
-msgstr "B<--path>"
+msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:56
@@ -859,15 +859,14 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
 "Zarządza grami wieloosobowymi Bitwy o Wesnoth. Więcej informacji o "
-"poleceniach akceptowanych przez serwer za pośrednictwem klienta wesnoth lub "
-"gniazda można znaleźć pod adresem http://www.wesnoth.org/wiki/"
+"poleceniach akceptowanych przez serwer za pośrednictwem klienta wesnoth (/"
+"query ...) lub kolejki można znaleźć pod adresem http://www.wesnoth.org/wiki/"
 "ServerAdministration."
 
 # type: TP
@@ -1020,7 +1019,7 @@ msgstr "Klawisze globalne:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -1028,6 +1027,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Pełna lub względna ścieżka do pliku (archiwum gzip), do którego serwer ma "
+"dostęp do odczytu i zapisu. Blokady będą zapisywane w tym pliku i wczytywane "
+"ponownie podczas uruchamiania serwera."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1066,9 +1068,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1077,6 +1079,10 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Ścieżka do kolejki, do której można przesyłać polecenia serwera (działanie "
+"równoważne do polecenia /query ... z wesnoth). Jeśli nie zostanie podana, "
+"przyjmowana jest wartość określona podczas kompilacji (domyślnie: /var/run/"
+"socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1136,7 +1142,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1144,6 +1150,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Polecenie używane przez serwer do uruchomienia nowego procesu serwera "
+"poleceniem \"restart\". (Może zostać wydane wyłącznie poprzez kolejkę)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1227,23 +1235,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[ban_time]> Znacznik do definiowania wygodnych słów kluczowych, "
+"określających przedziały czasu tymczasowych blokad."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Nazwa używana do określenia danego czasu blokady."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1254,10 +1264,14 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Definicja przedziału czasowego. Format: %d[%s[%d%s[...]]], gdzie %s ma "
+"wartość s (sekundy), m (minuty), h (godziny), D (dni), M (miesiące) lub Y "
+"(lata), a %d jest liczbą. Jeśli nie zostanie podany żaden modyfikator czasu, "
+"przyjmowane są minuty (m). Przykład: time=\"1D12h30m\" spowoduje ustawienie "
+"blokady trwającej 1 dzień, 12 godzin i 30 minut."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
