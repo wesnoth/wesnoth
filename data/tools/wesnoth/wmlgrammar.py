@@ -50,12 +50,33 @@ class Grammar:
 'toplevel' : (
     [],
     [ 'sections', 'topics', ]),
-
 }
     def grammar(self):
         out = {}
         for key in self._grammar.keys():
             out.update( { key : self._grammar[key] } )
-            while isinstance(self._grammar[key], str):
-                out.update( { key : self._grammar[self._grammar[key]] } )
+            while isinstance(out[key], str):
+                out.update( { key :
+                    self._grammar[
+                        out[key]
+                    ]
+                } )
+            while isinstance(out[key][0], str):
+                out.update( { key :
+                    (
+                        self._grammar[
+                            out[key][0]
+                        ][0],
+                        out[key][1]
+                    )
+                } )
+            while isinstance(out[key][1], str):
+                out.update( { key :
+                    (
+                        out[key][0],
+                        self._grammar[
+                            out[key][1]
+                        ][1]
+                    )
+                } )
         return out
