@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-24 22:32+0200\n"
-"PO-Revision-Date: 2008-09-23 16:16+0100\n"
+"PO-Revision-Date: 2008-09-29 13:11+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -68,26 +68,24 @@ msgstr "Baixo a Terra"
 msgid "Artwork and Graphics"
 msgstr "Gráficos e Traballo Artístico"
 
-# furia, mirar en wesnoth-units
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:60
 #: data/core/macros/abilities.cfg:530
-#, fuzzy
 msgid "berserk"
-msgstr "FURIA, mirar en wesnoth-units"
+msgstr "furia"
 
 #. [berserk]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
 #: data/core/macros/abilities.cfg:532
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserk:\n"
-"Pódese usar offensiva ou defensivamente, o ataque dura ata que un dos "
-"combatentes morre ou despois de 30 rondas."
+"Furia:\n"
+"Cando se usa de forma ofensiva ou defensiva, este ataque obriga a "
+"enfrontarse ata que morre un dos combatentes, ou ata que se realicen 30 "
+"ataques."
 
 #. [chance_to_hit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:75
@@ -205,9 +203,8 @@ msgstr "Tradución ó Chinés (Taiwan)"
 
 #. [about]
 #: data/core/about.cfg:907
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Tradución ó Catalán"
+msgstr "Tradución ó Croata"
 
 #. [about]
 #: data/core/about.cfg:914
@@ -256,9 +253,8 @@ msgstr "Tradución ó Francés"
 
 #. [about]
 #: data/core/about.cfg:1267
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Tradución ó Filipino"
+msgstr "Tradución ó Friulano"
 
 #. [about]
 #: data/core/about.cfg:1274
@@ -312,9 +308,8 @@ msgstr "Tradución ó Latín"
 
 #. [about]
 #: data/core/about.cfg:1550
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Tradución ó Latín"
+msgstr "Tradución ó Letón"
 
 #. [about]
 #: data/core/about.cfg:1557
@@ -323,9 +318,8 @@ msgstr "Tradución ó Lituano"
 
 #. [about]
 #: data/core/about.cfg:1565
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Tradución ó Indonesio"
+msgstr "Tradución ó Macedonio"
 
 #. [about]
 #: data/core/about.cfg:1572
@@ -349,9 +343,8 @@ msgstr "Tradución ó Portugués Brasileiro"
 
 #. [about]
 #: data/core/about.cfg:1685
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Tradución ó Estonio"
+msgstr "Tradución ó Romanés"
 
 #. [about]
 #: data/core/about.cfg:1693
@@ -915,7 +908,8 @@ msgstr ""
 "unidade inimiga que entra neses hexágonos remata automaticamente os seus "
 "movementos. Aprender como usar as zonas de control no teu proveito é unha "
 "parte importante de Wesnoth, xa que só os <ref>dst=ability_skirmisher "
-"text='Hostigadores'</ref> poden ignorar as zonas de control."
+"text='                                           Hostigadores                "
+"'</ref> poden ignorar as zonas de control."
 
 #. [topic]
 #: data/core/help.cfg:202
@@ -2592,10 +2586,8 @@ msgstr ""
 "O modo de depuración desactívase ó saír do xogo ou con :nodebug.\n"
 "\n"
 
-# non miña
 #. [topic]
 #: data/core/help.cfg:686
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2606,11 +2598,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-" Alterna o control de un bando entre un humán e a intelixencia artificial."
-"Esta orde debea dar o xogador ou o cliente que controle o bando en cuestión."
-"Se non se especifica o segundo parámetro, cambia entre humán e IA.Se é 'on', "
-"establece un controlador de intelixencia artificial. Se é 'off'establece un "
-"controlador humano. Por defecto será o bando actualmenteactivo se non se "
+"Define ou cambia o xogador do bando entre humano e xogador da intelixencia "
+"artificial. Esta orde ten que dala o xogador ou o cliente que controla dito "
+"bando. Se non se proporciona un segundo parámetro, cambia entre humano e IA. "
+"Se é 'on', establece un controlador de intelixencia artificial. Se é 'off' "
+"establece un controlador humano. Por defecto mantén o bando actual se non se "
 "especifica ningún parámetro.\n"
 "\n"
 
@@ -2694,6 +2686,7 @@ msgstr ""
 msgid "Multiplayer commands"
 msgstr "Comandos multixogador"
 
+# ban   e    kick              expulsar e vedar           cal é cal???
 #. [topic]
 #: data/core/help.cfg:714
 #, fuzzy
@@ -2979,7 +2972,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:335
 #, fuzzy
 msgid "skirmisher"
-msgstr "hostigador"
+msgstr "Saurio guerrilleiro"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:337
@@ -4356,8 +4349,9 @@ msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" A habilidade de escabullirse de esta unidade permitelle ser ignorada nas "
-"zonas de control dos inimigos, podendo así moverse libremente arredor deles."
+" A habilidade de          escabullirse       desta unidade permitelle ser "
+"ignorada nas zonas de control dos inimigos, podendo así moverse libremente "
+"arredor deles."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -4410,15 +4404,13 @@ msgstr ""
 " Esta unidade obtén 1 punto de vida que se suma ó seu máximo cando mata  "
 "unha unidade viva."
 
-# berserk??
 #: data/core/macros/special-notes.cfg:56
-#, fuzzy
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Cando se usa un ataque berserk, esta unidade continua atacando ata que o "
-"algún dos dous morra."
+" Cando se usa un ataque furioso, esta unidade continúa atacando ata que "
+"morra ela ou o seu inimigo."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
@@ -5964,8 +5956,8 @@ msgstr ""
 "dos hexágonos adxacentes a elas. Se unha unidade se move a unha zona de "
 "control dun inimigo, non poderá moverse máis nese turno. Isto significa que "
 "as unidades poden ter dous hexágonos baleiros entre elas e ainda así crear "
-"unha barreira para o inimigo. Sen embargo, os fustrigadores están adestrados "
-"para ignorar estas zonas."
+"unha barreira para o inimigo. Sen embargo, os            "
+"fustrigadores               están adestrados para ignorar estas zonas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -6493,8 +6485,9 @@ msgstr "Seguinte bando"
 
 #. [menu]: type=image
 #: data/themes/macros.cfg:147
+#, fuzzy
 msgid "play side turn"
-msgstr ""
+msgstr "Rematar o Turno da Unidade"
 
 #. [menu]
 #: data/themes/macros.cfg:163
@@ -6872,7 +6865,7 @@ msgstr "Agora conectarase a un servidor para descargar complementos."
 
 #: src/game.cpp:1011
 msgid "Server: "
-msgstr "Servidor:"
+msgstr "Servidor: "
 
 #: src/game.cpp:1012 src/game.cpp:1079
 msgid "Remove Add-ons"
@@ -7183,7 +7176,7 @@ msgstr "Esta unidade está petrificada. Non se poderá mover nin atacar."
 
 #: src/generate_report.cpp:106
 msgid "stone: "
-msgstr "petrificado:"
+msgstr "petrificado: "
 
 #: src/generate_report.cpp:159
 msgid "Resistances: "
@@ -7457,7 +7450,7 @@ msgstr "Dano"
 #: src/menu_events.cpp:211
 #, fuzzy
 msgid "Over All"
-msgstr "Resumo"
+msgstr "Seleccionar Todo"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -7741,7 +7734,7 @@ msgstr "Establecer Etiqueta"
 
 #: src/menu_events.cpp:1694 src/menu_events.cpp:1697
 msgid "Label: "
-msgstr "Etiqueta:"
+msgstr "Etiqueta: "
 
 #: src/menu_events.cpp:1699
 msgid "Team only"
@@ -7753,7 +7746,7 @@ msgstr "Buscar"
 
 #: src/menu_events.cpp:1842
 msgid "Unknown debug level: '$level'."
-msgstr "Nivel de depuración descoñecido: '$level':"
+msgstr "Nivel de depuración descoñecido: '$level'."
 
 #: src/menu_events.cpp:1844 src/menu_events.cpp:1853 src/menu_events.cpp:2159
 #: src/menu_events.cpp:2165 src/menu_events.cpp:2199 src/menu_events.cpp:2211
@@ -7867,13 +7860,13 @@ msgstr ""
 #: src/menu_events.cpp:2160
 #, fuzzy
 msgid "Can't droid invalid side: '$side'."
-msgstr "Non se pode dirixir un bando inválido: '$side'."
+msgstr "Non se puido cambiar o control do bando incorrecto: '$side'."
 
 # droid???
 #: src/menu_events.cpp:2166
 #, fuzzy
 msgid "Can't droid networked side: '$side'."
-msgstr "Non se poden dirixir bandos de rede: '$side'."
+msgstr "Non se puido cambiar o control do bando incorrecto: '$side'."
 
 #: src/menu_events.cpp:2200
 msgid "Usage: control <side> <nick>"
@@ -7999,7 +7992,7 @@ msgstr ""
 #: src/multiplayer.cpp:200
 #, fuzzy
 msgid "Server-side redirect loop"
-msgstr "Bucle de redirección no servidor"
+msgstr "O enderezo do servidor ó que se redirixe."
 
 #: src/multiplayer.cpp:232
 msgid "You must log in to this server"
@@ -8050,7 +8043,7 @@ msgstr "Non se atopou o tipo de líder para a facción $faction"
 
 #: src/multiplayer_connect.cpp:905
 msgid "Game Lobby: "
-msgstr "Sala de xogo:"
+msgstr "Sala de xogo: "
 
 #: src/multiplayer_connect.cpp:925
 msgid "Player/Type"
@@ -8076,7 +8069,7 @@ msgstr "Estou Preparado"
 #: src/multiplayer_connect.cpp:942
 #, fuzzy
 msgid "The scenario is invalid because it has no sides."
-msgstr "O escenario é incorrecto porque non ten beiras."
+msgstr "O escenario é incorrecto porque non ten bandos."
 
 #: src/multiplayer_connect.cpp:1322
 msgid "Network Player"
@@ -8140,7 +8133,7 @@ msgstr "Usar configuracións do mapa"
 
 #: src/multiplayer_create.cpp:82
 msgid "Random start time"
-msgstr "Hora de comezo aleatoria"
+msgstr "Hora de inicio aleatoria"
 
 #: src/multiplayer_create.cpp:83
 msgid "Fog Of War"
@@ -8263,7 +8256,7 @@ msgstr "Establecer Contrasinal"
 
 #: src/multiplayer_create.cpp:330 src/multiplayer_lobby.cpp:759
 msgid "Password: "
-msgstr "Contrasinal:"
+msgstr "Contrasinal: "
 
 #: src/multiplayer_create.cpp:330
 msgid ""
@@ -8282,20 +8275,19 @@ msgstr "Turnos Ilimitados"
 
 #: src/multiplayer_create.cpp:368
 msgid "Init. Limit: "
-msgstr "Límite Inic."
+msgstr "Límite Inicial: "
 
 #: src/multiplayer_create.cpp:373
 msgid "Turn Bonus: "
-msgstr "Plus de Turno:"
+msgstr "Plus de Turno: "
 
 #: src/multiplayer_create.cpp:377
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Depósito:"
+msgstr "Reserva:"
 
 #: src/multiplayer_create.cpp:382
 msgid "Action Bonus: "
-msgstr "Plus de Acción"
+msgstr "Plus de Acción: "
 
 #: src/multiplayer_create.cpp:389
 msgid "Village Gold: "
@@ -8303,7 +8295,7 @@ msgstr "Ouro de Vilas: "
 
 #: src/multiplayer_create.cpp:397
 msgid "Exp. Mod.: "
-msgstr "Mod. Exp.:"
+msgstr "Mod. Exp.: "
 
 #: src/multiplayer_create.cpp:530
 msgid "Players: "
@@ -8452,7 +8444,7 @@ msgstr "Escolle o teu bando: "
 #: src/network.cpp:110
 #, fuzzy
 msgid "invalid network handle"
-msgstr "mantedor de rede inválido"
+msgstr "Erro de comunicación da rede."
 
 #: src/network.cpp:143
 msgid "Client disconnected"
@@ -8546,9 +8538,7 @@ msgstr "Rematar escenario"
 msgid "Waiting for next scenario..."
 msgstr "Agardando polo seguinte escenario..."
 
-# non miña
 #: src/playmp_controller.cpp:487
-#, fuzzy
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8557,13 +8547,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
-"O xogo non está sincronizado, e non se pode continuar.Hai unha serie de "
-"razóns de que isto podría suceder: isto pode ocurrir se ti ou outro xogador "
-"modificastedes as vosas opcións de xogo. Isto pode significar que un dos "
-"xogadores está tratando de facer trampas. Tamén podría deberse a un erro no "
-"juego, pero isto é menos probable.\n"
-" \n"
-" ¿Queres gardar un rexistro de erros da túa partida?"
+"O xogo non está sincronizado, e non se pode continuar. Hai unha serie de "
+"razóns para que isto ocorra: isto pode pasar se ti ou outro xogador "
+"modificou as súas opcións de xogo. Isto pode significar que un dos xogadores "
+"está intentando facer trampas. Tamén podería deberse a un erro no xogo, pero "
+"isto é menos probable.\n"
+"\n"
+"Desexas gardar un rexistro de erros da túa partida?"
 
 #: src/playsingle_controller.cpp:155
 msgid "Remaining gold: "
@@ -8587,13 +8577,13 @@ msgstr "Plus: "
 
 #: src/playsingle_controller.cpp:165
 msgid "Gold: "
-msgstr "Ouro:"
+msgstr "Ouro: "
 
 # non miña
 #: src/playsingle_controller.cpp:168
 #, fuzzy
 msgid "Carry over percentage: "
-msgstr "Porcentaxe avanzado:"
+msgstr "A partida rematou."
 
 #: src/playsingle_controller.cpp:170
 msgid "Bonus Gold: "
@@ -8743,7 +8733,7 @@ msgstr ""
 #: src/serialization/parser.cpp:272 src/serialization/parser.cpp:296
 #, fuzzy
 msgid "Unterminated quoted string"
-msgstr "Cadea entrecomiñada sen terminar"
+msgstr "Etiqueta [element] non terminada"
 
 #: src/serialization/parser.cpp:319
 msgid " included from "
