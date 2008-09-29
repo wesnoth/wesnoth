@@ -1,15 +1,25 @@
 """
 This file is used to store the grammar of WML for wmltest.
-Format: The grammar is a dictionary mapping every recognised tag
- plus the pseudo-tag WML to a tuple.
-This tuple consists of the following:
--A list of all subtags recognised in the tag.
--A list of all keys recognised in the tag.
 
-Instead of a tuple, it can instead contain a single string,
- which points to the tag (dictionary key) whose contents should be used.
-The lists themselves can also be replaced by a string, in which case the
- corresponding part of that tag should be used.
+Grammar of the grammar:
+<GRAMMAR>           -> { <GRAMMAR_CONTENTS> }
+<GRAMMAR_CONTENTS>  -> <TAG_IDENTIFIER> : <TAG_CONTENTS>, <GRAMMAR_CONTENTS> | <EMPTY>
+# EMPTY AKA the emtpy string
+<EMPTY>             -> 
+# TAG_IDENTIFIER doesn't have to be a tag name, it can be an alias or a psuedo-tag (WML)
+<TAG_IDENTIFIER>    -> str
+# TAG_CONTENTS either contains a pair, or points to the pair of another tag.
+<TAG_CONTENTS>      -> (<ALLOWED_TAGS>, <ALLOWED_KEYS>) | <TAG_IDENTIFIER>
+# ALLOWED_TAGS either contains a list of tags, or points to the list of another tag.
+<ALLOWED_TAGS>      -> [ <TAGS> ] | <TAG_IDENTIFIER>
+<TAGS>              -> <TAG>, <TAGS> | <EMPTY>
+# TAG is a string, a dict of two strings or a dict of a regex to a string
+<TAG>               -> <TAG_IDENTIFIER> | { str : <TAG_IDENTIFIER> } | { re._pattern_type : <TAG_IDENTIFIER> }
+# ALLOWED_KEYS either contains a list of keys, or points to the list of another tag.
+<ALLOWED_KEYS>      -> [ <KEYS> ] | <TAG_IDENTIFIER>
+<KEYS>              -> <KEY>, <KEYS> | <EMPTY>
+# KEY is either a string or a regular expression
+<KEY>               -> str | re._pattern_type
 """
 class Grammar:
     _grammar = {
