@@ -289,8 +289,12 @@ ttext& ttext::set_foreground_colour(const Uint32 colour)
 	return *this;
 }
 
-ttext& ttext::set_maximum_width(const int width)
+ttext& ttext::set_maximum_width(int width)
 {
+	if(width <= 0) {
+		width = -1;
+	}
+
 	if(width != maximum_width_) {
 		pango_layout_set_width(layout_, width == -1 ? -1 : width * PANGO_SCALE);
 		maximum_width_ = width;
@@ -301,8 +305,12 @@ ttext& ttext::set_maximum_width(const int width)
 	return *this;
 }
 
-ttext& ttext::set_maximum_height(const int height)
+ttext& ttext::set_maximum_height(int height)
 {
+	if(height <= 0) {
+		height = -1;
+	}
+
 	if(height != maximum_height_) {
 /**
  * @todo See whether we can make pango 1.20 mandatory before Wesnoth 1.6 is

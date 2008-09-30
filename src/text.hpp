@@ -171,9 +171,9 @@ public:
 
 	ttext& set_foreground_colour(const Uint32 colour);
 
-	ttext& set_maximum_width(const int width);
+	ttext& set_maximum_width(int width);
 
-	ttext& set_maximum_height(const int height);
+	ttext& set_maximum_height(int height);
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
 
@@ -205,10 +205,19 @@ private:
 	Uint32 foreground_colour_;
 
 	/** 
-	 * The maximum width of the text, -1 means no maximum. */
+	 * The maximum width of the text.
+	 *
+	 * Values less or equal to 0 mean no maximum and are internally stored as
+	 * -1, since that's the value pango uses for it.
+	 */
 	int maximum_width_;
 
-	/** The maximum height of the text, -1 means no maximum . */
+	/** 
+	 * The maximum height of the text.
+	 *
+	 * Values less or equal to 0 mean no maximum and are internally stored as
+	 * -1, since that's the value pango uses for it.
+	 */
 	int maximum_height_;
 
 	/** The way too long text is shown depends on this mode. */
