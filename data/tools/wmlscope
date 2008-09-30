@@ -31,6 +31,12 @@
 # somewhere.  wmlscope will complain when it sees a nam,espace with no export
 # property, then treat it as non-exporting.
 #
+# You can tell wmlscope to ignore stretches of config files
+# with the following magic comments?
+#
+#     # wmlscope: start ignoring
+#     # wmlscope: stop ignoring
+#
 # This tool does catch one kind of implicit reference: if an attack name
 # is specified but no icon is given, the attack icon will default to
 # a name generated from the attack name.  This behavior can be suppressed

@@ -305,6 +305,7 @@ class CrossRef:
         self.noxref = False
         self.properties = {}
         self.unit_ids = {}
+        ignoreflag = False
         if warnlevel >=2:
             print "*** Beginning definition-gathering pass..."
         for (namespace, filename) in self.filelist.generator():
@@ -335,6 +336,18 @@ class CrossRef:
                         if namespace not in self.properties:
                             self.properties[namespace] = {}
                         self.properties[namespace][prop] = value
+                    if "# wmlscope: start ignoring" in line:
+                        if warnlevel:
+                            print '"%s", line %d: starting ignoring' \
+                                  % (filename, n+1)
+                        ignoreflag = True
+                    elif "# wmlscope: stop ignoring" in line:
+                        if warnlevel:
+                            print '"%s", line %d: stopping ignoring' \
+                                  % (filename, n+1)
+                        ignoreflag = False
+                    elif ignoreflag:
+                        continue
                     if line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
