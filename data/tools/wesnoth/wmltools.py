@@ -337,12 +337,12 @@ class CrossRef:
                             self.properties[namespace] = {}
                         self.properties[namespace][prop] = value
                     if "# wmlscope: start ignoring" in line:
-                        if warnlevel:
+                        if warnlevel > 1:
                             print '"%s", line %d: starting ignoring' \
                                   % (filename, n+1)
                         ignoreflag = True
                     elif "# wmlscope: stop ignoring" in line:
-                        if warnlevel:
+                        if warnlevel > 1:
                             print '"%s", line %d: stopping ignoring' \
                                   % (filename, n+1)
                         ignoreflag = False
