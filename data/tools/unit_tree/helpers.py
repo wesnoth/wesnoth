@@ -255,7 +255,7 @@ class WesnothList:
         we reference them everywhere by this id, and here can add them all to
         one big collection.
         """
-        addunits = WML.get_all("+units")
+        addunits = WML.get_all("units")
         if not addunits: return 0
         
         def getall(oftype):
