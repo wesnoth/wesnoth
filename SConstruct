@@ -400,20 +400,13 @@ if env["nls"] and env['PLATFORM'] != 'win32':
 # and doc files.
 #
 
-env = env.Clone()
 for d in installdirs:
-    env[d] = os.path.join(env["destdir"], env[d].lstrip("/"))
-bindir = env['bindir']
-pythonlib = env['python_site_packages_dir']
-datadir = env['datadir']
-docdir = env['docdir']
+    exec d + ' = os.path.join(env["destdir"], env[d].lstrip("/"))'
 installable_subs = Split('data fonts images sounds')
 if env['nls']:
     installable_subs.append("translations")
 if env['nls'] and env['PLATFORM'] != 'win32':
     installable_subs.append("locales")
-fifodir = env['fifodir']
-mandir = env["mandir"]
 clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
@@ -456,14 +449,14 @@ env.Alias("install-wesnoth", [
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
          env.Alias("install-wesnoth",
-            env.Install(env["icondir"],
+            env.Install(icondir,
                             "icons/wesnoth-icon-Mac.png"))
      else:
          env.Alias("install-wesnoth",
-            env.Install(env["icondir"],
+            env.Install(icondir,
                             "icons/wesnoth-icon.png"))
      env.Alias("install-wesnoth",
-         env.Install(env["desktopdir"],
+         env.Install(desktopdir,
                          "icons/wesnoth.desktop"))
 InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
@@ -476,14 +469,14 @@ env.Alias("install-wesnoth_editor", [
 if have_client_prereqs and have_X and env["desktop_entry"]:
     if sys.platform == "darwin":
         env.Alias("install-wesnoth_editor",
-            env.Install(env["icondir"],
+            env.Install(icondir,
                             "icons/wesnoth_editor-icon-Mac.png"))
     else:
         env.Alias("install-wesnoth_editor",
-            env.Install(env["icondir"],
+            env.Install(icondir,
                             "icons/wesnoth_editor-icon.png"))
     env.Alias("install-wesnoth_editor",
-        env.Install(env["desktopdir"],
+        env.Install(desktopdir,
                         "icons/wesnoth_editor.desktop"))
 InstallLocalizedManPage("install-wesnoth_editor", "wesnoth_editor.6", env)
 
@@ -491,7 +484,7 @@ InstallLocalizedManPage("install-wesnoth_editor", "wesnoth_editor.6", env)
 env.Alias("install-pytools", [
     env.Install(bindir,
                 map(lambda tool: 'data/tools/' + tool, pythontools)),
-    env.Install(pythonlib,
+    env.Install(python_site_packages_dir,
                 map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
     ])
 
