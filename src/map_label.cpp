@@ -312,6 +312,7 @@ terrain_label::terrain_label(const std::string& text,
 		handle_(0),
 		text_(text),
 		team_name_(team_name),
+		fogged_(false),
 		colour_(colour),
 		parent_(&parent),
 		loc_(loc)
@@ -324,6 +325,7 @@ terrain_label::terrain_label(const map_labels& parent)  :
 		handle_(0),
 		text_(),
 		team_name_(),
+		fogged_(false),
 		colour_(),
 		parent_(&parent),
 		loc_()
@@ -338,6 +340,7 @@ terrain_label::terrain_label(const map_labels& parent,
 		handle_(0),
 		text_(),
 		team_name_(),
+		fogged_(false),
 		colour_(),
 		parent_(&parent),
 		loc_()
