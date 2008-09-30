@@ -525,7 +525,11 @@ def sanity_check(filename, lines):
             if key == 'role':
                 present.append(value)
             if has_tr_mark:
-                if '{' in value:
+                # FIXME: This test is rather bogus as is.
+                # Doing a better job would require tokenizing to pivk up the
+                # string boundaries. I'd do it, but AI0867 is already working
+                # on a parser-based wmllint.   
+                if '{' in value and "+" not in value:
                     print '"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1)
                 if future and re.search("[.,!?]  ", lines[i]):
