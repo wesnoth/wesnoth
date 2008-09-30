@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 #
 # Automagically set the village_per_scout parameters in MP scenarios.
 

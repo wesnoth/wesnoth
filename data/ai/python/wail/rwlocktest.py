@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 #
 # Most of these tests were shamelessly taken and adopted from
 # Dmitry Dvoinikov's shared lock tests. As the lock implementations
