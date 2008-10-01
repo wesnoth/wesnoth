@@ -127,6 +127,15 @@ tline::tline(const config& cfg) :
  *                                     on the widget.
  *     text_maximum_height unsigned    The maximum height available for the text
  *                                     on the widget.
+ *     text_wrap_mode int              When the text doesn't fit in the
+ *                                     available width there are serveral ways
+ *                                     to fix that. This variable holds the
+ *                                     best method. (NOTE this is a 'hidden'
+ *                                     variable meant to copy state from a
+ *                                     widget to its canvas so there's no
+ *                                     reason to use this variable and thus
+ *                                     it's values are not listed and might
+ *                                     change without further notice.)
  *@end_table
  *
  * Note when drawing the valid coordinates are:<br>
@@ -805,7 +814,12 @@ void ttext::draw(surface& canvas,
 		set_font_style(font_style_).
 		set_foreground_colour(colour_).
 		set_maximum_width(maximum_width_(variables)).
-		set_maximum_height(maximum_height_(variables));
+		set_maximum_height(maximum_height_(variables)).
+		set_ellipse_mode(variables.has_key("text_wrap_mode")
+			? static_cast<PangoEllipsizeMode>
+				(variables.query_value("text_wrap_mode").as_int())
+			: PANGO_ELLIPSIZE_END);
+
 	surface surf = text_renderer.render();
 
 	game_logic::map_formula_callable local_variables(variables);
