@@ -50,28 +50,33 @@ másokkal is.
 meghatározza az egy képpontra jutó bitek számát. Példa: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
-átugorja a főmenüt, és közvetlenül a hadjárat menüt nyitja meg
+goes directly to the campaign selection menu.
 .TP 
-\fB\-\-config\-dir <name>\fP
-Makes wesnoth use <name> directory in $HOME for storing user data.
-win32: If <name> is SHARED wesnoth uses userdata directory in
-weanoth instalation directory.
+\fB\-\-config\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or %APPDATA%
+for windows.
+.TP 
+\fB\-\-config\-path\fP
+prints the path of the user configuration directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
-extra hibakeresési információkat jelenít meg, és újabb beállításokat tesz
-lehetővé a parancssori módban (további információkért a parancssori módról
-lásd a Wikit a http://www.wesnoth.org/CommandMode címen).
+enables additional command mode options in\-game (see the wiki page at
+http://www.wesnoth.org/wiki/CommandMode for more information about command
+mode).
 .TP 
 \fB\-\-dummylocales\fP
-Speciális állokalizációk használata, hogy akkor is lehessen bármilyen
-nyelvre váltani, ha az adott nyelv nincs is telepítve a rendszerre
+use special dummy locales to switch to any language even if that language
+isn't installed system\-wide.
 .TP 
-\fB\-f, \-\-fullscreen\fP
-a játékot teljes képernyős módban indítja el.
+\fB\-e, \-\-editor\fP
+start the in\-game map editor directly.
 .TP 
 \fB\-\-fps\fP
 a képernyő sarkában megjeleníti az aktuális fps\-t (frames per second\-öt,
 azaz a képernyőfrissítések másodpercenkénti számát).
+.TP 
+\fB\-f, \-\-fullscreen\fP
+a játékot teljes képernyős módban indítja el.
 .TP 
 \fB\-\-gunzip\fP\fI\ bemeneti_fájl.gz\fP
 kitömörít egy gzip formátumú fájlt, majd .gz kiterjesztés nélkül
@@ -84,12 +89,10 @@ tárolva. Az eredeti \fIbemeneti fájl\fP törlődik.
 \fB\-h, \-\-help\fP
 megjeleníti a parancssori lehetőségek rövid leírását, majd kilép.
 .TP 
-\fB\-\-load\fP\fI\ mentett_állás\fP
-Betölti a mentett_állás néven tárolt játékot a mentéseket tartalmazó
-könyvtárból.
-.TP 
-\fB\-\-with\-replay\fP
-visszajátssza a \-\-load kapcsolóval betöltött játszmát.
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 beállítja a naplózási tartomány szintjét. Az \fBall\fP minden naplózási
@@ -107,32 +110,42 @@ között kell legyen, alapértelmezetten \fB50\fP
 a játékot többjátékos üzemmódban indítja el. A \fB\-\-multiplayer\fP opcióval
 használható egyéb opciókat bővebben lásd alább.
 .TP 
+\fB\-\-no\-delay\fP
+a játékot minden grafikai késleltetés nélkül indítja el grafikai
+teljesítménymérés céljából. Ez önműködően bekapcsol a \fB\-\-nogui\fP kapcsoló
+használatakor is.
+.TP 
 \fB\-\-nocache\fP
 letiltja a játék gyorsítótárát (cache).
+.TP 
+\fB\-\-nomusic\fP
+runs the game without music.
 .TP 
 \fB\-\-nosound\fP
 a játékot hangok és zene nélkül indítja el.
 .TP 
-\fB\-\-nomusic\fP
-runs the game without only music.
-.TP 
 \fB\-\-path\fP
 kiírja a játék adatkönyvtárának nevét, majd kilép.
 .TP 
-\fB\-\-config\-path\fP
-kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd
-kilép.
+\fB\-\-python\-api\fP
+prints the runtime documentation for the python API.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 beállítja a képernyő felbontását. Példa: \fB\-r 800x600\fP
 .TP 
+\fB\-\-smallgui\fP
+allows to use screen resolutions down to 800x480 and resizes a few interface
+elements.
+.TP 
 \fB\-s,\ \-\-server\ [kiszolgáló]\fP
-átugorja a főmenüt, és csatlakozik a megadott kiszolgálóhoz. Ha nem lett
-kiszolgáló meghatározva, akkor a beállításokban elsőként megadott
-kiszolgálóhoz csatlakozik. Például: \fB\-\-server server.wesnoth.org\fP
+connects to the specified host if any, otherwise connect to the first server
+in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 elindítja a játékot, és betölt egy kis tesztpályát.
+.TP 
+\fB\-\-validcache\fP
+assumes that the cache is valid. (dangerous)
 .TP 
 \fB\-v, \-\-version\fP
 kiírja a játék verziószámát, majd kilép.
@@ -140,19 +153,8 @@ kiírja a játék verziószámát, majd kilép.
 \fB\-w, \-\-windowed\fP
 a játékot ablakos módban indítja el.
 .TP 
-\fB\-\-no\-delay\fP
-a játékot minden grafikai késleltetés nélkül indítja el grafikai
-teljesítménymérés céljából. Ez önműködően bekapcsol a \fB\-\-nogui\fP kapcsoló
-használatakor is.
-.TP 
-\fB\-\-nogui\fP
-a játékot grafikus felhasználói felület (GUI) nélkül indítja el. A
-\fB\-\-multiplayer\fP opció előtt kell beírnod, hogy a kívánt hatást érd el.
-.TP 
-\fB\-\-exit\-at\-end\fP
-a mérkőzés után azonnal kilép, nem jelenít meg semmilyen győzelmet, vagy
-vereséget jelző üzenetet, ami a felhasználótól az Oké gomb megnyomását
-kívánná meg. Ez szkriptelt teljesítménymérés esetén lehet hasznos.
+\fB\-\-with\-replay\fP
+replays the game loaded with the \fB\-\-load\fP option.
 .
 .SH "Opciók \-\-multiplayer módban"
 .
@@ -173,6 +175,15 @@ ezzel az opcióval kiválaszthatod, hogy melyik korszakban szeretnél játszani
 az \fBAlapértelmezett\fP korszak helyett. A korszakot egy azonosítóval adhatod
 meg. A korszakok leírásai a \fBdata/multiplayer/eras.cfg\fP fájlban
 találhatóak.
+.TP 
+\fB\-\-exit\-at\-end\fP
+a mérkőzés után azonnal kilép, nem jelenít meg semmilyen győzelmet, vagy
+vereséget jelző üzenetet, ami a felhasználótól az Oké gomb megnyomását
+kívánná meg. Ez szkriptelt teljesítménymérés esetén lehet hasznos.
+.TP 
+\fB\-\-nogui\fP
+a játékot grafikus felhasználói felület (GUI) nélkül indítja el. A
+\fB\-\-multiplayer\fP opció előtt kell beírnod, hogy a kívánt hatást érd el.
 .TP 
 \fB\-\-parm\fP\fIszám\fP\fB=\fP\fInév\fP\fB:\fP\fIérték\fP
 további paramétereket ad meg az adott csapatnak. Ez a paraméter függ a

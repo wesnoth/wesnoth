@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-24 22:33+0200\n"
+"POT-Creation-Date: 2008-10-01 11:39+0200\n"
 "PO-Revision-Date: 2007-05-14 22:02+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -133,18 +133,13 @@ msgid "Settings"
 msgstr "Настройки"
 
 #. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:262
+#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
 msgid "villages"
 msgstr ""
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
-
-#. [menu]
-#: data/themes/editor2.cfg:151
-msgid "Tool"
 msgstr ""
 
 #: src/editor/editor.cpp:246
@@ -167,11 +162,11 @@ msgstr "Приближаване"
 msgid "Zoom out"
 msgstr "Отдалечаване"
 
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:809
+#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
 msgid "Undo"
 msgstr "Отмяна"
 
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:815
+#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
 msgid "Redo"
 msgstr "Възстановяване"
 
@@ -212,11 +207,11 @@ msgstr "Избор на език:"
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Редактор за карти на Битката за Уеснот"
 
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:337
+#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
 msgid "Save the Map As"
 msgstr "Запазване на картата като"
 
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:341
+#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Картата съществува. Искате ли да презапишете отгоре?"
 
@@ -225,7 +220,7 @@ msgid "None"
 msgstr "Няма"
 
 #: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:369
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "Играч"
 
@@ -237,7 +232,7 @@ msgstr "Кой играч?"
 msgid "Which player should start here?"
 msgstr "Кой играч да започне тук?"
 
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:302
+#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
 msgid "Choose a Map to Load"
 msgstr "Избор на карта "
 
@@ -252,7 +247,7 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Файлът не съдържа валидна карта."
 
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:102
+#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "Изход от редактора"
 
@@ -260,11 +255,11 @@ msgstr "Изход от редактора"
 msgid "Do you want to save the map before quitting?"
 msgstr "Искате ли да запазите картата?"
 
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:457
+#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
 msgid "Map saved."
 msgstr "Картата запазена."
 
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:462
+#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
 msgid "Could not save the map: $msg"
 msgstr "Файлът не може да се запише: $msg"
 
@@ -291,55 +286,55 @@ msgstr ""
 msgid " maximum="
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:232
+#: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:240
+#: src/editor2/editor_controller.cpp:241
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:243
+#: src/editor2/editor_controller.cpp:244
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:245
+#: src/editor2/editor_controller.cpp:246
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:357
+#: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
 msgid "Error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:255
+#: src/editor2/editor_controller.cpp:256
 msgid "No editor time-of-day found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:288
+#: src/editor2/editor_controller.cpp:289
 msgid "There are unsaved changes in the map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:289
+#: src/editor2/editor_controller.cpp:290
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:357
+#: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:368
+#: src/editor2/editor_controller.cpp:369
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:476 src/editor2/editor_main.cpp:57
+#: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:811
+#: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:817
+#: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
 msgstr ""
 
@@ -355,17 +350,21 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:366
+#: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
 msgstr "Играч"
 
-#: src/editor2/mouse_action.cpp:373
+#: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:374
+#: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
+msgstr ""
+
+#: src/gui/dialogs/editor_settings.cpp:106
+msgid "Custom setting"
 msgstr ""

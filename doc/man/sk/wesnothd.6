@@ -33,9 +33,9 @@ wesnothd \- Démon na sieťovú hru Bitky o \fBWesnoth\fP
 .
 .SH POPIS
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Riadi sieťové hry pre viacerých hráčov Bitky o Wesnoth. Na stránke
+http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, ktoré
+server prijíma cez klienta (/query ...) alebo soket (fifo).
 .
 .SH MOŽNOSTI
 .
@@ -90,9 +90,10 @@ kľúč="\fIhodnota\fP,\fIhodnota\fP,..."
 .SS "Globálne kľúče:"
 .
 .TP 
-\fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+\fBsúbor_zákazov\fP
+Plná alebo relatívna cesta k (komprimovanému gzipom) súboru, ktorý môže
+server čítať a zapisovať. Zákazy budú ukladané do tohto súboru a načítané
+pri štarte.
 .TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z rovnakej IP adresy. \fB0\fP znamená
@@ -104,10 +105,10 @@ Mená/prezývky, ktoré server neprijíma. Podporujú sa žolíkové znaky`*' an
 nezadá) sú:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
-\fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+\fBcesta_k_soketu\fP
+Cesta k soketu (fifo), do ktorého môžete posielať príkazy pre server
+(rovnaké ako /query ... z wesnoth).  Ak nie je uvedená, použije sa cesta
+zadaná pri kompilácii (predvolená: /var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 Počet povolených správ počas \fBmessages_time_period\fP. (štandardne: \fB4\fP)
@@ -123,9 +124,9 @@ Správa dňa.
 Heslo používané na získanie administrátorských práv. Zvyčajne začína na
 `admin '.
 .TP 
-\fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+\fBreštartovací_príkaz\fP
+Príkaz, ktorý server použije na spustenie nového serverovského procesu  po
+príkaze `restart'. (Môže byť použité iba cez soket (fifo).)
 .TP 
 \fBversions_accepted\fP
 Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú sa
@@ -151,24 +152,23 @@ Port, na ktorý sa majú pripojiť.
 žolíkové znaky rovnako ako  \fBversions_accepted\fP.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[dĺžka_zákazu]\fP Značka na pohodlné definovanie kľúčových slov pre dĺžku
+dočasných zákazov.
 .RS
 .TP 
-\fBname\fP
-The name used to reference the ban time.
+\fBnázov\fP
+Názov použitý na pomenovanie času zákazu
 .TP 
-\fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+\fBčas\fP
+Definícia dĺžky trvania.  Formát je: %d[%s[%d%s[...]]] kde %s sú s
+(sekundy), m (minúty), h (hodiny), D (dni), M (mesiace) alebo Y (roky) a %d
+je číslo.  Ak nie je zadaná jednotka času, použije sa minúta (m).  Príklad:
+čas="1D12h30m" znamená zákaz trvajúci 1 deň, 12 hodín a 30 minút.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Značka, ktorá povie serveru, aby sa správal ako proxy a
+preposielal požiadavky pripojených klientov na daný server. Podporuje
+rovnaké kľúče ako \fB[redirect]\fP.
 .
 .SH AUTOR
 .

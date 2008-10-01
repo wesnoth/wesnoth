@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-24 22:33+0200\n"
+"POT-Creation-Date: 2008-10-01 11:39+0200\n"
 "PO-Revision-Date: 2008-02-18 23:48+0900\n"
 "Last-Translator: Naoki IIMURA <amatubu@gmail.com>\n"
 "Language-Team: none\n"
@@ -133,18 +133,13 @@ msgid "Settings"
 msgstr "設定"
 
 #. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:262
+#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
 msgid "villages"
 msgstr "村"
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
-
-#. [menu]
-#: data/themes/editor2.cfg:151
-msgid "Tool"
 msgstr ""
 
 #: src/editor/editor.cpp:246
@@ -167,11 +162,11 @@ msgstr "ズーム・イン"
 msgid "Zoom out"
 msgstr "ズーム・アウト"
 
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:809
+#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
 msgid "Undo"
 msgstr "やり直す"
 
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:815
+#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
 msgid "Redo"
 msgstr "元に戻す"
 
@@ -211,11 +206,11 @@ msgstr "お好みの言語を選んで下さい:"
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Battle for Wesnoth マップエディタ"
 
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:337
+#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
 msgid "Save the Map As"
 msgstr "マップに名前を付けて保存"
 
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:341
+#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。 上書きしますか？"
 
@@ -224,7 +219,7 @@ msgid "None"
 msgstr "なし"
 
 #: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:369
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "プレイヤー"
 
@@ -236,7 +231,7 @@ msgstr "どのプレイヤー？"
 msgid "Which player should start here?"
 msgstr "どのプレイヤーがここからスタートしますか？"
 
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:302
+#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
 msgid "Choose a Map to Load"
 msgstr "読み込むマップを選択"
 
@@ -250,7 +245,7 @@ msgstr "警告: マップ名に不正な文字が見つかりました。別な�
 msgid "The file does not contain a valid map."
 msgstr "そのファイルには有効なマップがありません。"
 
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:102
+#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "エディタを終了"
 
@@ -258,11 +253,11 @@ msgstr "エディタを終了"
 msgid "Do you want to save the map before quitting?"
 msgstr "終了前にマップを保存しますか？"
 
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:457
+#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
 msgid "Map saved."
 msgstr "マップを保存しました。"
 
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:462
+#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
@@ -290,55 +285,55 @@ msgstr ""
 msgid " maximum="
 msgstr " 最大値="
 
-#: src/editor2/editor_controller.cpp:232
+#: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:240
+#: src/editor2/editor_controller.cpp:241
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:243
+#: src/editor2/editor_controller.cpp:244
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:245
+#: src/editor2/editor_controller.cpp:246
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:357
+#: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
 msgid "Error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:255
+#: src/editor2/editor_controller.cpp:256
 msgid "No editor time-of-day found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:288
+#: src/editor2/editor_controller.cpp:289
 msgid "There are unsaved changes in the map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:289
+#: src/editor2/editor_controller.cpp:290
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:357
+#: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:368
+#: src/editor2/editor_controller.cpp:369
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:476 src/editor2/editor_main.cpp:57
+#: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:811
+#: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:817
+#: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
 msgstr ""
 
@@ -354,17 +349,21 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:366
+#: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
 msgstr "プレイヤー"
 
-#: src/editor2/mouse_action.cpp:373
+#: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:374
+#: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
+msgstr ""
+
+#: src/gui/dialogs/editor_settings.cpp:106
+msgid "Custom setting"
 msgstr ""

@@ -48,28 +48,33 @@ ostatními.
 nastavuje hodnotu BitsPerPixel \- počet bitů na bod. Příklad: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
-přeskočí hlavní menu a zobrazí ihned seznam tažení.
+goes directly to the campaign selection menu.
 .TP 
-\fB\-\-config\-dir <name>\fP
-Makes wesnoth use <name> directory in $HOME for storing user data.
-win32: If <name> is SHARED wesnoth uses userdata directory in
-weanoth instalation directory.
+\fB\-\-config\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or %APPDATA%
+for windows.
+.TP 
+\fB\-\-config\-path\fP
+prints the path of the user configuration directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
-zobrazuje dodatečné ladící informace a umožňuje použít rozšiřující volby
-příkazového módu (více viz Wiki na
-http://www.wesnoth.org/wiki/CommandMode).
+enables additional command mode options in\-game (see the wiki page at
+http://www.wesnoth.org/wiki/CommandMode for more information about command
+mode).
 .TP 
 \fB\-\-dummylocales\fP
-Use special dummy locales to switch to any language even if that language
-isn't installed to system
+use special dummy locales to switch to any language even if that language
+isn't installed system\-wide.
 .TP 
-\fB\-f, \-\-fullscreen\fP
-spouští hru v celoobrazovkovém režimu.
+\fB\-e, \-\-editor\fP
+start the in\-game map editor directly.
 .TP 
 \fB\-\-fps\fP
 zobrazuje počet fps, tedy počet zobrazení za sekundu, během hry v rohu
 obrazovky.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+spouští hru v celoobrazovkovém režimu.
 .TP 
 \fB\-\-gunzip\fP\fI\ soubor_se_hrou\fP
 dekomprimuje soubor s uloženou hrou (soubor_se_hrou) ve formátu gzip a uloží
@@ -82,11 +87,10 @@ jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
 \fB\-h, \-\-help\fP
 zobrazuje nápovědu k parametrům příkazové řádky.
 .TP 
-\fB\-\-load\fP\fI\ soubor_se_hrou\fP
-nahraje uloženou hru ze souboru ze standardního adresáře pro uložené hry.
-.TP 
-\fB\-\-with\-replay\fP
-přehraje záznam načtený volbou \-\-load.
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
 nastavuje úroveň závažnosti pro jednotlivé kategorie. \fBall\fP znamená, že
@@ -105,30 +109,41 @@ rozsahu 1 až 1000, implicitně \fB50\fP.
 spouští hru více hráčů. Níže jsou popsány další volby, které se k této volbě
 váží.
 .TP 
+\fB\-\-no\-delay\fP
+vypustí testování grafiky během startu. Tato volba je automaticky použita
+použitím \fB\-\-nogui\fP.
+.TP 
 \fB\-\-nocache\fP
 vypíná cache pro herní data.
+.TP 
+\fB\-\-nomusic\fP
+runs the game without music.
 .TP 
 \fB\-\-nosound\fP
 spustí hru bez zvuků a hudby.
 .TP 
-\fB\-\-nomusic\fP
-spustí hru bez hudby.
-.TP 
 \fB\-\-path\fP
 pouze zobrazí cestu k adresáři s daty a skončí.
 .TP 
-\fB\-\-config\-path\fP
-pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
+\fB\-\-python\-api\fP
+prints the runtime documentation for the python API.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastavuje rozlišení. Příklad: \fB\-r 800x600\fP
 .TP 
+\fB\-\-smallgui\fP
+allows to use screen resolutions down to 800x480 and resizes a few interface
+elements.
+.TP 
 \fB\-s,\ \-\-server\ [hostitel]\fP
-přeskočí menu, připojí se k určenému hostiteli (pokud byl určen) nebo
-prvnímu serveru v nastavení. Příklad: \fB\-\-server server.wesnoth.org\fP
+connects to the specified host if any, otherwise connect to the first server
+in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 spouští hru v malém testovacím scénáři.
+.TP 
+\fB\-\-validcache\fP
+assumes that the cache is valid. (dangerous)
 .TP 
 \fB\-v, \-\-version\fP
 zobrazí verzi wesnothu a skončí.
@@ -136,18 +151,8 @@ zobrazí verzi wesnothu a skončí.
 \fB\-w, \-\-windowed\fP
 spustí hry v okně.
 .TP 
-\fB\-\-no\-delay\fP
-vypustí testování grafiky během startu. Tato volba je automaticky použita
-použitím \fB\-\-nogui\fP.
-.TP 
-\fB\-\-nogui\fP
-spouští hru bez GUI. Musí být použito před \fB\-\-multiplayer\fP pro docílení
-kýženého efektu.
-.TP 
-\fB\-\-exit\-at\-end\fP
-skončí hru při konci scénáře, tedy bez zobrazení okénka s informací o
-vítězství/prohře, které vyžaduje uživatelskou akci \- stisk tlačítka OK. Tato
-volba se používá při ruzných měřeních.
+\fB\-\-with\-replay\fP
+replays the game loaded with the \fB\-\-load\fP option.
 .
 .SH "Volby pro \-\-multiplayer"
 .
@@ -166,6 +171,15 @@ vybírá druh ovládání strany. Použitelné hodnoty jsou \fBhuman\fP a \fBai\
 použij tuto volbu pro hraní ve specifické éře místo éry \fBDefault\fP. Éra je
 vybrána pomocí svého id. Všechny éry jsou popsány v souboru
 \fBdata/multiplayer.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+skončí hru při konci scénáře, tedy bez zobrazení okénka s informací o
+vítězství/prohře, které vyžaduje uživatelskou akci \- stisk tlačítka OK. Tato
+volba se používá při ruzných měřeních.
+.TP 
+\fB\-\-nogui\fP
+spouští hru bez GUI. Musí být použito před \fB\-\-multiplayer\fP pro docílení
+kýženého efektu.
 .TP 
 \fB\-\-parm\fP\fIstrana\fP\fB=\fP\fIjméno\fP\fB:\fP\fIhodnota\fP
 nastavuje další parametry pro tuto stranu. Jméno a hodnota parametru závisí

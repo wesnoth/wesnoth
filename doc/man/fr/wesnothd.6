@@ -34,9 +34,9 @@ wesnothd \- Serveur pour jeu multijoueur en réseau de Bataille pour
 .
 .SH DESCRIPTION
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Gère les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que
+que le serveur accepte via le client wesnoth ou via une fifo sur
+http://www.wesnoth.org/wiki/ServerAdministration.
 .
 .SH OPTIONS
 .
@@ -93,8 +93,9 @@ clé="\fIvaleur\fP,\fIvaleur\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Chemin relatif ou absolu d'un fichier que le serveur peut lire. Tout les
-bannissements actifs sur le serveur y seront écrits.
+Chemin complet ou relatif vers un fichier compressé (au format gzip) que le
+serveur peut lire et écrire. Les bannissements seront sauvegardés dans ce
+fichier et relu à chaque démarrage du serveur.
 .TP 
 \fBconnections_allowed\fP
 Nombre maximum de connexions ayant la même adresse IP. \fB0\fP pour
@@ -107,9 +108,10 @@ par défaut (utilisées si rien n'est précisé) sont\ :
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+Chemin de la fifo dans laquelle vous pouvez envoyer des commandes au serveur
+(comme les /query depuis wesnoth). Si elle n'est pas précisée le chemin est
+celui prédéfini lors de la compilation (valeur par défaut\ :
+/var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 Nombre maximum de messages permis en \fBmessages_time_period\fP. (par défaut :
@@ -127,8 +129,8 @@ Mot de passe des habilitations de l'administrateur. Commence souvent par
 «\ admin\ ».
 .TP 
 \fBrestart_command\fP
-Commande pour démarer un nouveau processus serveur. Un redemarrage peut être
-fait avec un /query restart.
+Ligne de commande avec laquelle le serveur relance un processus depuis la
+commande «\ restart\ » (seulement possible depuis la fifo).
 .TP 
 \fBversions_accepted\fP
 Liste des versions acceptées par le serveur, séparées par des virgules. Les
@@ -155,24 +157,23 @@ Liste des versions redirigées, séparées par des virgules. Même syntaxe que
 pour \fBversions_accepted\fP pour les caractères génériques.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Balise pour définir des alias de durée de bannissement.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+Le nom utilisé pour décrire une durée de bannissement.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+Format de durée. Le format est le suivant\ : %d[%s[%d%s[...]]] où %s est s
+(secondes), m (minutes), h (heures), D (jours), M (mois) ou Y (années), et
+%d un nombre. Si le type de durée n'est pas précisée le temps est exprimé en
+minutes par défaut. Exemple\ : time="1D12h30m" donne un bannissement de 1
+jour, 12 heures et 30 minutes.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Balise pour demander au serveur de se comporter comme un proxy et
+de rediriger les requêtes des clients vers le serveur spécifié. Accepte les
+mêmes clés que \fB[redirect]\fP.
 .
 .SH AUTEUR
 .
