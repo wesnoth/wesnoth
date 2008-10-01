@@ -113,7 +113,7 @@ void playsingle_controller::end_turn(){
 	else if (!browse_){
 		browse_ = true;
 		end_turn_ = menu_handler_.end_turn(player_number_);
-		browse_ = !end_turn_;
+		browse_ = end_turn_;
 	}
 }
 
