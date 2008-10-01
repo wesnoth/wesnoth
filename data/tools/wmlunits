@@ -608,12 +608,7 @@ class HTMLOutput:
             for i, attack in enumerate(this_unit.get_all("attack")):
                 aid = attack.get_text_val("name")
                 if aid:
-                    for already in attacks:
-                        if already.get_text_val("name") == aid:
-                            copy_attributes(attack, already)
-                            break
-                    else:
-                        attacks.append(attack)
+                    attacks.append(attack)
                 else:
                     copy_attributes(attack, attacks[i])
             return attacks
