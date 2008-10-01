@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-03-25 14:27+0100\n"
-"PO-Revision-Date: 2008-09-29 13:14+0100\n"
+"PO-Revision-Date: 2008-09-29 21:15+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -435,19 +435,15 @@ msgstr "Velocidade Acelerada"
 msgid "Skip AI Moves"
 msgstr "Saltar os Movementos da IA"
 
+# UX=un xogador, MX=multixogador
 #: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
-"Gardar Repetición en Victorias de Un Xogador/Multixogador ou Derrotas "
-"Multixogador."
+msgstr "Gardar repetición en victorias UX/MX ou derrotas MX"
 
+# UX=un xogador, MX=multixogador
 #: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:348
-#, fuzzy
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr ""
-"Eliminar as partidas gardadas automáticamente en Victorias de Un Xogador/"
-"Multixogador ou Derrotas Multixogador."
+msgstr "Borrar as gardas automáticas en victorias UX/MX ou derrotas MX"
 
 #: src/game_preferences_display.cpp:166
 msgid "Do Not Show Lobby Joins"
@@ -630,14 +626,12 @@ msgid "User defined sample rate"
 msgstr "Frecuencia de mostraxe definida polo usuario"
 
 #: src/game_preferences_display.cpp:274 src/game_preferences_display.cpp:278
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Tamaño Máximo de Outeiro:"
+msgstr "Cambiar o tamaño do búfer"
 
 #: src/game_preferences_display.cpp:276 src/game_preferences_display.cpp:826
-#, fuzzy
 msgid "Buffer Size: "
-msgstr "Tamaño do Castelo:"
+msgstr "Tamaño do Búfer:"
 
 #: src/game_preferences_display.cpp:283
 msgid "Change the speed of scrolling around the map"
@@ -789,11 +783,9 @@ msgstr "Ver e configurar os atallos de teclado"
 msgid "Speed: "
 msgstr "Velocidade:"
 
-# buscar tradución de save (substantivo) por algures!!!
 #: src/game_preferences_display.cpp:694 src/game_preferences_display.cpp:696
-#, fuzzy
 msgid "Maximum Auto-Saves: "
-msgstr "Número máximo de partidas gardadas automáticamente             :"
+msgstr "Número máximo de partidas gardadas automáticamente:"
 
 #: src/game_preferences_display.cpp:694
 msgid "infinite"

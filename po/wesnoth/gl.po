@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-01 11:35+0200\n"
-"PO-Revision-Date: 2008-09-29 13:11+0100\n"
+"PO-Revision-Date: 2008-09-30 23:09+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -887,10 +887,8 @@ msgstr ""
 "nela, seleccionando Descrición da Unidade, e despois mirando en "
 "<italic>text='Modificadores de Terreo'</italic>."
 
-# hostigadores=fustrigadores??  guerrilleiros??
 #. [topic]
 #: data/core/help.cfg:200
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -905,11 +903,10 @@ msgstr ""
 "\n"
 "Outra cousa que debes ter en conta ó moverte son as Zonas de Control. Cada "
 "unidade xera unha zona de control nos hexágonos contiguos a ela, e calquera "
-"unidade inimiga que entra neses hexágonos remata automaticamente os seus "
+"unidade inimiga que entra neses hexágonos acaba automaticamente os seus "
 "movementos. Aprender como usar as zonas de control no teu proveito é unha "
 "parte importante de Wesnoth, xa que só os <ref>dst=ability_skirmisher "
-"text='                                           Hostigadores                "
-"'</ref> poden ignorar as zonas de control."
+"text='Guerrilleiros'</ref> poden ignorar as zonas de control."
 
 #. [topic]
 #: data/core/help.cfg:202
@@ -1809,7 +1806,7 @@ msgid ""
 "them."
 msgstr ""
 "As unidades non mortas son inmunes ó veleno, e tampouco funcionan nelas a "
-"absorción nin a praga."
+"absorción nin a peste."
 
 #. [topic]
 #: data/core/help.cfg:385
@@ -1840,7 +1837,7 @@ msgid ""
 "them."
 msgstr ""
 "As unidades mecánicas son inmunes ó veleno, e tampouco funcionan nelas a "
-"absorción nin a praga."
+"absorción nin a peste."
 
 #. [topic]
 #: data/core/help.cfg:393
@@ -1855,7 +1852,7 @@ msgstr ""
 "\n"
 "As unidades mecánicas normalmente teñen 'Mecánico' coma o seu único trazo. "
 "Xa que as unidades mecánicas en realidade non teñen vida, a absorción, o "
-"veleno e maila praga non teñen efecto nelas."
+"veleno e maila peste non teñen efecto nelas."
 
 #. [topic]
 #: data/core/help.cfg:398
@@ -2686,10 +2683,8 @@ msgstr ""
 msgid "Multiplayer commands"
 msgstr "Comandos multixogador"
 
-# ban   e    kick              expulsar e vedar           cal é cal???
 #. [topic]
 #: data/core/help.cfg:714
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2697,8 +2692,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Expulsar e vedar a un usuario en multixogador, e mailo enderezo IP que usaba "
-"ese nome de usuario.\n"
+"Vedar a un usuario en multixogador mediante o enderezo IP que usa e "
+"expulsalo.\n"
 "\n"
 
 #. [topic]
@@ -2712,16 +2707,14 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-" Cede os controles do bando (escriba aquí o número do bando) ó usuario "
-"(escriba aquí o apodo do xogador ou observador). Podes comprobar qué bando "
-"pertence a qué xogador no diálogo de 'Axustes do Escenario' (Presiona o "
-"botón 'máis' na 'Táboa de Estado' (alt+s por defecto) para chegar alí.\n"
+"Cede o control do bando (escriba aquí o número do bando) ó usuario (escriba "
+"aquí o apodo do xogador ou observador). Podes comprobar que bando pertence a "
+"que xogador no diálogo de 'Preferencias do Escenario' (Preme o botón 'máis' "
+"na 'Táboa de Estado' (alt+s por defecto) para chegar alí.\n"
 "\n"
 
-# isto está ben traducido en principio, fuzzy para comparar ca cadea de "ban a user in a multiplayer...
 #. [topic]
 #: data/core/help.cfg:720
-#, fuzzy
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2770,6 +2763,7 @@ msgid ""
 msgstr ""
 "\n"
 "Crear unha unidade do tipo especificado no hexágono seleccionado.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:736
@@ -2801,7 +2795,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Establece a man o valor dunha variable de estado do xogo.\n"
+"Establece manualmente o valor dunha variable de estado do xogo.\n"
 "\n"
 
 #. [topic]
@@ -2967,22 +2961,19 @@ msgstr ""
 "bando có líder que manda ó combate, os seus ataques inflixirán un 25% máis "
 "dano ca veces a diferencia entre os seus niveis."
 
-# fustrigador?? escapulidor??? guerrilla?? acosador???
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:335
-#, fuzzy
 msgid "skirmisher"
-msgstr "Saurio guerrilleiro"
+msgstr "guerrilleiro"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:337
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Hostigador:\n"
+"Guerrilleiro:\n"
 "Esta unidade ten a habilidade de moverse rápido entre os inimigos, e pode "
 "ignorar todas as Zonas de Control inimigas."
 
@@ -3155,7 +3146,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
-msgstr "praga"
+msgstr "peste"
 
 #: data/core/macros/abilities.cfg:558
 msgid ""
@@ -3164,9 +3155,9 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
-"Praga:\n"
-"Cando unha unidade morre polo un ataque Praga, esa unidade substitúese por "
-"unha exactamente igual pero do bando que fixo o ataque Praga. Non funciona "
+"Peste:\n"
+"Cando unha unidade morre polo un ataque Peste, esa unidade substitúese por "
+"unha exactamente igual pero do bando que fixo o ataque Peste. Non funciona "
 "con Non Mortos ou unidades en vilas."
 
 #: data/core/macros/abilities.cfg:570
@@ -3176,9 +3167,9 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
-"Praga:\n"
+"Peste:\n"
 "Cando unha unidade morre por este ataque, esa unidade substitúese por un "
-"Cadáver Andante do mesmo bando da unidade que fixo o ataque Praga. Non "
+"Cadáver Andante do mesmo bando da unidade que fixo o ataque Peste. Non "
 "funciona con Non Mortos ou unidades en vilas."
 
 #: data/core/macros/abilities.cfg:580
@@ -3226,14 +3217,11 @@ msgstr ""
 "Cando se usa de forma ofensiva, este ataque sempre ten como mínimo un 60% de "
 "posibilidades de acadar."
 
-# enxamio barafunda  ataque en masa
 #: data/core/macros/abilities.cfg:629
-#, fuzzy
 msgid "swarm"
-msgstr "enxamio barafunda  ataque en masa"
+msgstr "enxame"
 
 #: data/core/macros/abilities.cfg:631
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3241,11 +3229,11 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
-"Enxambre:\n"
-"O número de picaduras deste ataque diminue cando a unidade é ferida. O "
-"número de picaduras é proporcional á vida que lle queda entre a total (HP/"
-"MAX HP) que a unidade ten. Por exemplo, se a unidade ten 3 da vida que lle "
-"queda e 4 da total terá 3/4 picaduras."
+"Enxame:\n"
+"O número de golpes deste ataque diminúe cando a unidade está ferida. O "
+"número de golpes é proporcional á vida que lle queda entre a total (HP/MAX "
+"HP) que ten a unidade. Por exemplo, se unha unidade ten 3 cuartos de vida "
+"terá 3/4 do número de golpes."
 
 #: data/core/macros/abilities.cfg:640
 msgid "charge"
@@ -4260,7 +4248,8 @@ msgstr ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
-# aldea, ribeira, vila
+# aldea, ribeira, vila, auga
+# vella, longa, nova, forte
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
@@ -4342,16 +4331,13 @@ msgstr ""
 "dela inflixir máis dano no combate, ainda que isto só se aplica ás unidades "
 "de nivel inferior."
 
-# escapulirse??guerrilla??
 #: data/core/macros/special-notes.cfg:32
-#, fuzzy
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" A habilidade de          escabullirse       desta unidade permitelle ser "
-"ignorada nas zonas de control dos inimigos, podendo así moverse libremente "
-"arredor deles."
+" A habilidade para a guerrilla desta unidade permítelle ignorar as zonas de "
+"control dos inimigos, podendo así moverse libremente arredor deles."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -4424,7 +4410,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
-msgstr " Os inimigos que perden a súa vida pola praga voltan coma non mortos."
+msgstr " Os inimigos que perden a súa vida pola peste voltan coma non mortos."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4457,14 +4443,12 @@ msgstr ""
 " A unidade ten ataques máxicos, que sempre teñen unha alta probabilidade de "
 "acadar ó opoñente."
 
-# swarm??
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-"Os ataques en masa de esta unidade vólvense menos mortiferos cando os seus "
+" Os ataques de enxame desta unidade vólvense menos mortíferos cando os seus "
 "membros están feridos."
 
 #: data/core/macros/special-notes.cfg:80
@@ -4527,7 +4511,7 @@ msgstr "non morta"
 #. [trait]
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 msgid "Immune to drain, poison and plague"
-msgstr "Inmune á absorción, veleno e praga"
+msgstr "Inmune á absorción, ó veleno e á peste"
 
 #. [trait]
 #: data/core/macros/traits.cfg:38
@@ -5941,10 +5925,8 @@ msgstr ""
 "menú 'Accións'. Volvendo chamar as mesmas unidades unha e outra vez, poderás "
 "construír un exército poderoso e con experiencia."
 
-# fustrigadores, guerrilleiros???
 #. [tip]
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -5956,8 +5938,8 @@ msgstr ""
 "dos hexágonos adxacentes a elas. Se unha unidade se move a unha zona de "
 "control dun inimigo, non poderá moverse máis nese turno. Isto significa que "
 "as unidades poden ter dous hexágonos baleiros entre elas e ainda así crear "
-"unha barreira para o inimigo. Sen embargo, os            "
-"fustrigadores               están adestrados para ignorar estas zonas."
+"unha barreira para o inimigo. Sen embargo, os guerrilleiros están adestrados "
+"para ignorar estas zonas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -6483,6 +6465,7 @@ msgstr "xogar turno"
 msgid "Next Side"
 msgstr "Seguinte bando"
 
+# xogar turno do bando
 #. [menu]: type=image
 #: data/themes/macros.cfg:147
 #, fuzzy
@@ -7448,9 +7431,8 @@ msgid "Damage"
 msgstr "Dano"
 
 #: src/menu_events.cpp:211
-#, fuzzy
 msgid "Over All"
-msgstr "Seleccionar Todo"
+msgstr "Resumo"
 
 #: src/menu_events.cpp:213
 msgid "This Turn"
@@ -7877,9 +7859,8 @@ msgid "Can't change control of invalid side: '$side'."
 msgstr "Non se puido cambiar o control do bando incorrecto: '$side'."
 
 #: src/menu_events.cpp:2219
-#, fuzzy
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr "Non se puido cambiar o control do bando fora de límites: '$side'."
+msgstr "Non se puido cambiar o control do bando fóra de límites: '$side'."
 
 #: src/menu_events.cpp:2257
 msgid "Debug mode activated!"
@@ -7990,9 +7971,8 @@ msgstr ""
 "'$version2'"
 
 #: src/multiplayer.cpp:200
-#, fuzzy
 msgid "Server-side redirect loop"
-msgstr "O enderezo do servidor ó que se redirixe."
+msgstr "Bucle de redirección no servidor"
 
 #: src/multiplayer.cpp:232
 msgid "You must log in to this server"
@@ -8065,9 +8045,8 @@ msgstr "Cor"
 msgid "I'm Ready"
 msgstr "Estou Preparado"
 
-# beiras ou bandos??
+# beiras ou bandos???
 #: src/multiplayer_connect.cpp:942
-#, fuzzy
 msgid "The scenario is invalid because it has no sides."
 msgstr "O escenario é incorrecto porque non ten bandos."
 
@@ -8440,11 +8419,9 @@ msgstr "No se atoparon bandos multixogador"
 msgid "Choose your side:"
 msgstr "Escolle o teu bando: "
 
-# non miña
 #: src/network.cpp:110
-#, fuzzy
 msgid "invalid network handle"
-msgstr "Erro de comunicación da rede."
+msgstr "manexador de rede incorrecto"
 
 #: src/network.cpp:143
 msgid "Client disconnected"
@@ -8579,7 +8556,7 @@ msgstr "Plus: "
 msgid "Gold: "
 msgstr "Ouro: "
 
-# non miña
+# porcentaxe avanzado??
 #: src/playsingle_controller.cpp:168
 #, fuzzy
 msgid "Carry over percentage: "
