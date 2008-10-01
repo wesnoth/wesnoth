@@ -6,7 +6,6 @@ Use --help to see usage.
 """
 #TODO:
 #-Include linenumbers and filenames in "complaint messages"
-#-Create option to define macros (like MULTIPLAYER or CAMPAIGN_HTTT)
 #-Write function to check dependencies
 #-Create a way to do linking PLUS some extra tag-specific things.
 #List of dependencies to check:
@@ -83,6 +82,10 @@ if __name__ == '__main__':
         action = "count",
         dest = "verbose",
         help = "Increase verbosity, 4 is the maximum.")
+    op.add_option("-D", "--define",
+        action = "append",
+        dest = "defines",
+        help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
     (options, args) = op.parse_args()
 
     if not options.path:
@@ -106,7 +109,10 @@ if __name__ == '__main__':
     if options.verbose > 3:
         parser.verbose = True
 
-    map(parser.parse_file, args)
+    for file in args:
+        parser.parse_file(file)
+    for macro in options.defines:
+        parser.parse_text("#define %s \n#enddef" % (macro, ) )
 
     data = wmldata.DataSub("WML")
     parser.parse_top(data)
