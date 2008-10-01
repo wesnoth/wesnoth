@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "POT-Creation-Date: 2008-10-01 11:40+0300\n"
-"PO-Revision-Date: 2008-09-29 13:14+0100\n"
+"PO-Revision-Date: 2008-09-29 21:29+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -1063,21 +1063,21 @@ msgstr "Claves globais:"
 #: ../../doc/man/wesnothd.6:110
 #, fuzzy, no-wrap
 msgid "B<ban_save_file>"
-msgstr "Fallo ó eliminar o ficheiro."
+msgstr "B<ficheiro_de_vedas>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
-#, fuzzy
 msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
 "Ruta completa ou relativa a un ficheiro (comprimido con gzip) que o servidor "
-"poida ler e escribir. "
+"poida ler e escribir. As vedas hanse gardar neste ficheiro e leranse de novo "
+"cando se inicie o servidor."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
@@ -1092,7 +1092,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:117
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
@@ -1113,7 +1113,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:124
 #, fuzzy, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<-c\\ >I<ruta>B<,\\ --config>I<\\ ruta>"
+msgstr "B<ruta_a_fifo>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1128,7 +1128,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
@@ -1142,7 +1142,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:131
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
@@ -1157,7 +1157,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:134
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
@@ -1168,7 +1168,7 @@ msgstr "A mensaxe do día."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:137
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
@@ -1184,7 +1184,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, fuzzy, no-wrap
 msgid "B<restart_command>"
-msgstr "Comando-Usuario#2"
+msgstr "B<comando_reinicio>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1198,7 +1198,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
@@ -1235,7 +1235,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
@@ -1246,7 +1246,7 @@ msgstr "O enderezo do servidor ó que se redirixe."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:159
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
@@ -1257,7 +1257,7 @@ msgstr "O porto ó que se conectar."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:162
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
@@ -1276,27 +1276,29 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[tempo_de_veda]> Unha etiqueta para definir palabras clave axeitadas para "
+"duracións de tempo de veda temporais."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<name>"
 msgstr "B<nome>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
-#, fuzzy
 msgid "The name used to reference the ban time."
-msgstr "O nome que se usa para refirirse ó tempo de             "
+msgstr "O nome que se usa para refirirse ó tempo de veda."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<time>"
 msgstr "B<hora>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
+#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1304,6 +1306,9 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"A definición de duración do tempo. O formato é: %d[%s[%d%s[...]]] onde %s é "
+"s (segundos), m (minutos), h (horas), D (días), M (meses) ou Y (anos) e %d é "
+"un número. "
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
@@ -1334,12 +1339,6 @@ msgstr ""
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr ""
-#~ "carga o ficheiro de partida gardada dende o directorio estándar de "
-#~ "partidas gardadas."
-
 # type: TP
 #~ msgid "B<--compress>I<\\ infile\\ outfile>"
 #~ msgstr "B<--compress>I<\\ ficheiroentrada\\ ficheirosaída>"
@@ -1363,3 +1362,9 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 #~ msgstr ""
 #~ "descomprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está "
 #~ "en formato WML binario a formato WML de texto (I<ficheirosaída>)."
+
+# type: Plain text
+#~ msgid "loads the file savegame from the standard save game directory."
+#~ msgstr ""
+#~ "carga o ficheiro de partida gardada dende o directorio estándar de "
+#~ "partidas gardadas."

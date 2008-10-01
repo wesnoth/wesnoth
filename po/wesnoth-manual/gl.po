@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-09-24 22:20+0300\n"
-"PO-Revision-Date: 2008-09-29 13:14+0100\n"
+"PO-Revision-Date: 2008-09-30 20:27+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -2199,7 +2199,7 @@ msgid ""
 "with foes who use poison in conjunction with their attacks."
 msgstr ""
 "As unidades non mortas son inmunes ó veleno, e tampouco funcionan con elas a "
-"absorción nin a praga. As unidades Non Mortas normalmente teñen "
+"absorción nin a peste. As unidades Non Mortas normalmente teñen "
 "<emphasis>Non Morto</emphasis> coma único trazo. Xa que as unidades Non "
 "Mortas son os corpos dos mortos, levantados para loitar outra vez, o veleno "
 "non ten efecto neles. Isto pode facelos moi valiosos ó tratar con inimigos "
@@ -2218,7 +2218,7 @@ msgid ""
 "<emphasis>Mechanical</emphasis> as their only trait."
 msgstr ""
 "As unidades Mecánicas non están vivas e polo tanto son inmunes ó veleno, e "
-"tampouco funcionan con elas a absorción nin a praga. As unidades Mecánicas "
+"tampouco funcionan con elas a absorción nin a peste. As unidades Mecánicas "
 "normalmente teñen <emphasis>Mecánico</emphasis> coma o seu único trazo."
 
 # type: Content of: <book><chapter><section><section><title>
@@ -2331,7 +2331,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1555
 msgid "Plague"
-msgstr "Praga"
+msgstr "Peste"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1559
@@ -2340,7 +2340,7 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
-"Cando unha unidade morre por un ataque Praga, esa unidade substitúese por un "
+"Cando unha unidade morre por un ataque Peste, esa unidade substitúese por un "
 "Cadáver Andante do mesmo bando da unidade que a matou. Isto non funciona con "
 "unidades Non Mortas ou unidades que están en vilas."
 
@@ -2393,9 +2393,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1603
-#, fuzzy
 msgid "Swarm"
-msgstr "Barafunda"
+msgstr "Enxame"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1607
@@ -2590,9 +2589,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1745
-#, fuzzy
 msgid "Skirmisher"
-msgstr "Saurio guerrilleiro"
+msgstr "Guerrilleiro"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1749
@@ -2836,7 +2834,6 @@ msgstr "Zona de Control"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1951
-#, fuzzy
 msgid ""
 "A unit's Zone of Control extends to the six hexes immediately adjacent to "
 "the unit, and units that move into an enemy zone of control are forced to "
@@ -2847,12 +2844,12 @@ msgid ""
 msgstr ""
 "A Zona de Control dunha unidade esténdese ós seis hexágonos inmediatamente "
 "adxacentes á unidade, e as unidades que se moven á zona de control dun "
-"inimigo están forzadas a deterse. As unidades ca habilidade               "
-"fustrigador            ignoran as zonas de control do inimigo e son capaces "
-"de moverse entre eles libremente sen ser forzados a deterse. As unidades de "
-"nivel 0 son consideradas demasiado febles para xerar unha zona de control e "
-"tódalas unidades son capaces de moverse libremente a través dos hexágonos "
-"que rodean a un inimigo de nivel 0."
+"inimigo están forzadas a deterse. As unidades ca habilidade guerrilla "
+"ignoran as zonas de control do inimigo e son capaces de moverse entre eles "
+"libremente sen ser forzados a deterse. As unidades de nivel 0 son "
+"consideradas demasiado febles para xerar unha zona de control e tódalas "
+"unidades son capaces de moverse libremente a través dos hexágonos que rodean "
+"a un inimigo de nivel 0."
 
 #: ../../doc/manual/manual.en.xml:1961 ../../doc/manual/manual.en.xml:1969
 msgid "Orbs"
@@ -2950,7 +2947,7 @@ msgstr ""
 #: ../../doc/manual/manual.en.xml:2038
 #, fuzzy
 msgid "Blue"
-msgstr "Praga"
+msgstr "Peste"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2041
@@ -3487,7 +3484,6 @@ msgstr "Protéxete ca túa zona de control (ZdC)"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2329
-#, fuzzy
 msgid ""
 "Every unit of level 1 or higher maintains a zone of control (ZOC) covering "
 "all 6 neighboring hexes. This means that once an enemy moves into one of the "
@@ -3497,8 +3493,8 @@ msgstr ""
 "Cada unidade de nivel 1 ou superior mantén unha zona de control (ZdC) que "
 "cubre os 6 hexágonos adxacentes a ela. Isto significa que unha vez que un "
 "inimigo se move dentro dun dos seis hexágonos adxacentes, fórzaselle a "
-"deterse e os seus movementos acábanse (só os inimigos ca rara "
-"habilidade           fustrigador            ignoran as ZdC)."
+"deterse e os seus movementos acábanse (só os inimigos ca rara habilidade "
+"guerrilla ignoran as ZdC)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2334
