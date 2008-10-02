@@ -71,6 +71,7 @@ namespace wesnothd {
 		std::string reason_;
 		std::string who_banned_;
 		std::string group_;
+		std::string nick_;
 		static const std::string who_banned_default_;
 		typedef std::pair<unsigned int, unsigned int> ip_mask;
 		
@@ -79,7 +80,7 @@ namespace wesnothd {
 		banned(const std::string& ip);
 
 	public:
-		banned(const std::string& ip, const time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="");
+		banned(const std::string& ip, const time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
 		banned(const config&);
 
 		void read(const config&);
@@ -102,6 +103,9 @@ namespace wesnothd {
 
 		std::string get_who_banned() const
 		{ return who_banned_; }
+
+		std::string get_nick() const
+		{ return nick_; }
 
 		bool match_group(const std::string& group) const
 		{ return group_ == group; }
@@ -148,7 +152,7 @@ namespace wesnothd {
 
 		time_t parse_time(std::string time_in) const;
 
-		std::string ban(const std::string&, const time_t&, const std::string&, const std::string&, const std::string&);
+		std::string ban(const std::string&, const time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
 		void unban(std::ostringstream& os, const std::string& ip);
 		void unban_group(std::ostringstream& os, const std::string& group);
 

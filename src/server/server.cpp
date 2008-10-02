@@ -1208,6 +1208,17 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << "New server started.";
 		}
 #endif
+	} else if (command == "sample" && issuer_name == "*socket*") {
+		if (parameters.empty()) {
+			out << "Current sample frequency: " << request_sample_frequency;
+			return out.str();
+		}
+		request_sample_frequency = atoi(parameters.c_str());
+		if (request_sample_frequency <= 0) {
+			out << "Sampling turned off.";
+		} else {
+			out << "Sampling every " << request_sample_frequency << " requests.";
+		}
 	} else if (command == "help") {
 		out << help_msg;
 	} else if (command == "stats") {
@@ -1245,20 +1256,32 @@ std::string server::process_command(const std::string& query, const std::string&
 		LOG_SERVER << "<server> " + parameters + "\n";
 		out << "message '" << parameters << "' relayed to players\n";
 	} else if (command == "status") {
-		out << "STATUS REPORT\n";
+		out << "STATUS REPORT";
+		// If a simple username is given we'll check for its IP instead.
+		if (utils::isvalid_username(parameters)) {
+			bool found = false;
+			for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+				if (parameters == pl->second.name().c_str()) {
+					parameters = network::ip_address(pl->first);
+					found = true;
+					break;
+				}
+			}
+			if (!found) return "";
+		}
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (parameters == ""
-				|| utils::wildcard_string_match(pl->second.name(), parameters)
-				|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
+			|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)
+			|| utils::wildcard_string_match(pl->second.name(), parameters)) {
 				const network::connection_stats& stats = network::get_connection_stats(pl->first);
 				const int time_connected = stats.time_connected/1000;
 				const int seconds = time_connected%60;
 				const int minutes = (time_connected/60)%60;
 				const int hours = time_connected/(60*60);
-				out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
+				out << "\n'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
 					<< " connected for " << hours << ":" << minutes << ":" << seconds
 					<< " sent " << stats.bytes_sent << " bytes, received "
-					<< stats.bytes_received << " bytes\n";
+					<< stats.bytes_received << " bytes";
 			}
 		}
 	} else if (command == "bans") {
@@ -1268,7 +1291,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			ban_manager_.list_bans(out);
 		}
 	} else if (command == "ban" || command == "kban" || command == "kickban" || command == "gban") {
-		bool banned_ = false;
+		bool banned = false;
 		const bool kick = (command == "kban" || command == "kickban");
 		const bool group_ban = command == "gban";
 		std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
@@ -1299,7 +1322,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		// if we find a '.' consider it an ip mask
 		/** @todo  FIXME: make a proper check for valid IPs. */
 		if (std::count(target.begin(), target.end(), '.') >= 1) {
-			banned_ = true;
+			banned = true;
 
 			std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
 			out << err;
@@ -1316,36 +1339,39 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 		} else {
+			bool kicked = false;
 			for (wesnothd::player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(pl->second.name(), target)) {
-					banned_ = true;
+					banned = true;
 					const std::string& ip = network::ip_address(pl->first);
 					if (!is_ip_banned(ip)) {
-						std::string err = ban_manager_.ban(ip,parsed_time, reason, issuer_name, group);
+						std::string err = ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
 						out << err;
 					}
 					if (kick) {
+						if (kicked) out << "\n";
+						else kicked = true;
 						out << "\nKicked " << pl->second.name() << ".";
 						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
 					}
 				}
 			}
-			if (!banned_) {
+			if (!banned) {
 				// If nobody was banned yet look in the logs
 				for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
 						i != ip_log_.end(); i++) {
 					if (utils::wildcard_string_match(i->first, target)) {
-						banned_ = true;
+						banned = true;
 						if (!is_ip_banned(i->second)) {
 							std::string err = ban_manager_.ban(i->second,parsed_time, reason, issuer_name, group);
 							out << err;
 						}
 					}
 				}
-				if(!banned_) {
+				if(!banned) {
 					out << "Nickmask '" << target << "' did not match, no bans set.";
 				}
 			}
@@ -1357,7 +1383,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		ban_manager_.unban(out, parameters);
 	} else if (command == "ungban") {
 		if (parameters == "") {
-			return "You must enter an ipmask to unban.";
+			return "You must enter an ipmask to ungban.";
 		}
 		ban_manager_.unban_group(out, parameters);
 	} else if (command == "kick") {
@@ -1371,8 +1397,10 @@ std::string server::process_command(const std::string& query, const std::string&
 				pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
-					kicked = true;
-					out << "Kicked " << pl->second.name() << ".\n";
+					if (kicked) out << "\n";
+					else kicked = true;
+					out << "Kicked " << pl->second.name() << " ("
+						<< network::ip_address(pl->first) << ").";
 					send_error(pl->first, "You have been kicked.");
 					network::queue_disconnect(pl->first);
 				}
@@ -1382,22 +1410,16 @@ std::string server::process_command(const std::string& query, const std::string&
 				pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(pl->second.name(), parameters)) {
-					kicked = true;
+					if (kicked) out << "\n";
+					else kicked = true;
 					out << "Kicked " << pl->second.name() << " ("
-						<< network::ip_address(pl->first) << ").\n";
+						<< network::ip_address(pl->first) << ").";
 					send_error(pl->first, "You have been kicked.");
 					network::queue_disconnect(pl->first);
 				}
 			}
 		}
-		if (!kicked) out << "No user matched '" << parameters << "'.\n";
-	} else if(command == "sample") {
-		request_sample_frequency = atoi(parameters.c_str());
-		if(request_sample_frequency <= 0) {
-			out << "Sampling turned off";
-		} else {
-			out << "Sampling every " << request_sample_frequency << " requests\n";
-		}
+		if (!kicked) out << "No user matched '" << parameters << "'.";
 	} else if (command == "motd") {
 		if (parameters == "") {
 			if (motd_ != "") {
@@ -1410,7 +1432,10 @@ std::string server::process_command(const std::string& query, const std::string&
 		motd_ = parameters;
 		out << "Message of the day set to: " << motd_;
 	} else if (command == "searchlog") {
-		out << "IP/NICK LOG\n";
+		if (parameters.empty()) {
+			return "You must enter a mask to search for.";
+		}
+		out << "IP/NICK LOG";
 
 		bool found_something = false;
 
@@ -1421,7 +1446,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->second, parameters)) {
 					found_something = true;
-					out << i->first << "@" << i->second << "\n";
+					out << "\n" << i->first << "@" << i->second;
 				}
 			}
 		} else {
@@ -1429,11 +1454,11 @@ std::string server::process_command(const std::string& query, const std::string&
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->first, parameters)) {
 					found_something = true;
-					out << "'" << i->first << "' @ " << i->second << "\n";
+					out << "\n'" << i->first << "' @ " << i->second;
 				}
 			}
 		}
-		if(!found_something) out << "No results found for '" << parameters << "'.\n";
+		if (!found_something) out << "No results found for '" << parameters << "'.";
 	} else {
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
