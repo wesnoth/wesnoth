@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-24 22:21+0300\n"
-"PO-Revision-Date: 2008-02-04 14:23+0100\n"
+"PO-Revision-Date: 2008-09-28 00:11+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -804,7 +804,6 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -812,7 +811,7 @@ msgid ""
 msgstr ""
 "Součást Bitvy o Wesnoth spravující hry více hráčů. Na http://www.wesnoth.org/"
 "wiki/ServerAdministration lze nalézt příkazy, které server akceptuje, a to "
-"jak přes soket, tak přímo od klienta wesnoth."
+"jak přes fifo, tak přímo od klienta wesnoth."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -962,7 +961,7 @@ msgstr "Globální klíče:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -970,6 +969,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Plná či relativní cesta k souboru (komprese gzip), jenž může server číst a "
+"přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načítány "
+"při spuštění."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1006,9 +1008,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1017,6 +1019,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí /"
+"query z klienta). Pokud není explicitně určena, je použita výchozí hodnota "
+"určená při kompilaci (běžně /var/run/socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1074,7 +1079,7 @@ msgstr "Heslo pro získání administrátorských práv. Obvykle začíná na �
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1082,6 +1087,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Příkaz, který server použije pro spuštění nového procesu sebe sama při "
+"příkazu \"restart\" (lze nastavit pouze přes fifo)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1164,23 +1171,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[ban_time]> Tag umožňující definovat klíčová slova pro délky zákazů "
+"přístupu (ban)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Název pro období."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1191,6 +1200,10 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Definice doby. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), \"m"
+"\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" (roky) a "
+"%d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty (m). "
+"Například \"1D12H30m\" představuje zákaz pro jeden den, 12 hodin a 30 minut."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
