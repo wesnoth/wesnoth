@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:40+0200\n"
+"POT-Creation-Date: 2008-10-03 00:56+0200\n"
 "PO-Revision-Date: 2008-06-03 12:11+0100\n"
 "Last-Translator: Rico <griffioenrico@hotmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -2493,35 +2493,10 @@ msgstr ""
 msgid "Dwarvish Masked Dragonguard"
 msgstr "Gemaskerde Dwergendraakwachter"
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
-msgid "dagger"
-msgstr "dolk"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:22
-msgid "dragonstaff"
-msgstr "drakenstok"
-
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr "Gemaskerde Dwergenkrijger"
-
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:23
-msgid "axe"
-msgstr "bijl"
-
-#. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:23
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:31
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
-msgid "hammer"
-msgstr "hamer"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
@@ -2546,17 +2521,6 @@ msgstr ""
 "verschillende passen. Alhoewel traag, zijn deze dwergen een bewijs van moed "
 "van hun verwanten."
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:14
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:13
-msgid "battle axe"
-msgstr "strijdbijl"
-
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:30
-msgid "hatchet"
-msgstr "handbijl"
-
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
@@ -2577,12 +2541,6 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr "Gemaskerde Donderdwerg"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:38
-msgid "thunderstick"
-msgstr "donderstok"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
@@ -2610,6 +2568,11 @@ msgstr ""
 "angstaanjagend zijn zonder hun ambacht, maar met de runen zijn ze bijna "
 "onoverwinbaar, sinds hun runen fysieke uithalen van hun vijanden minder "
 "schade doen maken dan men zou verwachten."
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
+msgid "hammer"
+msgstr "hamer"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:81
@@ -2801,6 +2764,24 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:331
 msgid "I sense wrongness.  Some greater evil awakens before us."
 msgstr ""
+
+#~ msgid "dagger"
+#~ msgstr "dolk"
+
+#~ msgid "dragonstaff"
+#~ msgstr "drakenstok"
+
+#~ msgid "axe"
+#~ msgstr "bijl"
+
+#~ msgid "battle axe"
+#~ msgstr "strijdbijl"
+
+#~ msgid "hatchet"
+#~ msgstr "handbijl"
+
+#~ msgid "thunderstick"
+#~ msgstr "donderstok"
 
 #~ msgid ""
 #~ "It is not clear why the Dragonguards are called what they are, a name "

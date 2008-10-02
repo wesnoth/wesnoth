@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:40+0200\n"
+"POT-Creation-Date: 2008-10-03 00:56+0200\n"
 "PO-Revision-Date: 2008-09-23 14:00+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -2656,40 +2656,11 @@ msgstr ""
 msgid "Dwarvish Masked Dragonguard"
 msgstr "Maskovaná trpasličí dračí stráž"
 
-# zbraň
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
-msgid "dagger"
-msgstr "dýka"
-
-# zbraň
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:22
-msgid "dragonstaff"
-msgstr "dračí hůl"
-
 # Název jednotky
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr "Maskovaný trpasličí bojovník"
-
-# zbraň
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:23
-msgid "axe"
-msgstr "sekera"
-
-# zbraň
-#. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:23
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:31
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
-msgid "hammer"
-msgstr "kladivo"
 
 # Název jednotky
 #. [unit_type]
@@ -2717,19 +2688,6 @@ msgstr ""
 "Ačkoliv jsou při pochodu pomalí, jsou tito trpaslíci dokladem statečnosti "
 "svého národa."
 
-# zbraň
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:14
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:13
-msgid "battle axe"
-msgstr "válečná sekera"
-
-# zbraň
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:30
-msgid "hatchet"
-msgstr "sekyrka"
-
 # Název jednotky
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
@@ -2753,13 +2711,6 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr "Maskovaný trpasličí hromovládce"
-
-# zbraň
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:38
-msgid "thunderstick"
-msgstr "hromová hůl"
 
 # Název jednotky
 #. [unit_type]
@@ -2791,6 +2742,12 @@ msgstr ""
 "umění. S ním se však stavájí takřka neporazitelnými, neboť jejich runy "
 "působí fyzická zranění jejich nepřátelům, zatímco sami jsou zraňováni méně, "
 "než by se dalo očekávat."
+
+# zbraň
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
+msgid "hammer"
+msgstr "kladivo"
 
 # zbraň
 #. [attack]: type=cold
@@ -3009,3 +2966,27 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:331
 msgid "I sense wrongness.  Some greater evil awakens before us."
 msgstr "Cítím špatnost. Probouzí se nějaké velké zlo."
+
+# zbraň
+#~ msgid "dagger"
+#~ msgstr "dýka"
+
+# zbraň
+#~ msgid "dragonstaff"
+#~ msgstr "dračí hůl"
+
+# zbraň
+#~ msgid "axe"
+#~ msgstr "sekera"
+
+# zbraň
+#~ msgid "battle axe"
+#~ msgstr "válečná sekera"
+
+# zbraň
+#~ msgid "hatchet"
+#~ msgstr "sekyrka"
+
+# zbraň
+#~ msgid "thunderstick"
+#~ msgstr "hromová hůl"

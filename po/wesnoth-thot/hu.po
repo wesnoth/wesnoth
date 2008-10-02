@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:40+0200\n"
+"POT-Creation-Date: 2008-10-03 00:56+0200\n"
 "PO-Revision-Date: 2008-03-23 12:05+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian\n"
@@ -2470,35 +2470,10 @@ msgstr ""
 msgid "Dwarvish Masked Dragonguard"
 msgstr "Álarcos törp sárkányőr"
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
-msgid "dagger"
-msgstr "tőr"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:22
-msgid "dragonstaff"
-msgstr "sárkánybot"
-
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr "Álarcos törp harcos"
-
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:23
-msgid "axe"
-msgstr "fejsze"
-
-#. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:23
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:31
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
-msgid "hammer"
-msgstr "kalapács"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
@@ -2522,17 +2497,6 @@ msgstr ""
 "eltalálnak kézből hajított bárdjaikkal akár több lépés távolságból is. Habár "
 "gyalog lassúak, ezek a törpök nemzetségük hősiességének megtestesítői."
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:14
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:13
-msgid "battle axe"
-msgstr "csatabárd"
-
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:30
-msgid "hatchet"
-msgstr "balta"
-
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
@@ -2553,12 +2517,6 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr "Álarcos törp mennydörgő"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:38
-msgid "thunderstick"
-msgstr "villámvessző"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
@@ -2586,6 +2544,11 @@ msgstr ""
 "félelmetesek lennének, de annak segítségével már szinte legyőzhetetlenek. "
 "Rúnáik eltérítik ellenfeleik fizikai csapásait, ezért azok kisebb sérülést "
 "okoznak, mint amire számítani lehetne."
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
+msgid "hammer"
+msgstr "kalapács"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:81
@@ -2774,6 +2737,24 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:331
 msgid "I sense wrongness.  Some greater evil awakens before us."
 msgstr ""
+
+#~ msgid "dagger"
+#~ msgstr "tőr"
+
+#~ msgid "dragonstaff"
+#~ msgstr "sárkánybot"
+
+#~ msgid "axe"
+#~ msgstr "fejsze"
+
+#~ msgid "battle axe"
+#~ msgstr "csatabárd"
+
+#~ msgid "hatchet"
+#~ msgstr "balta"
+
+#~ msgid "thunderstick"
+#~ msgstr "villámvessző"
 
 #~ msgid ""
 #~ "It is not clear why the Dragonguards are called what they are, a name "

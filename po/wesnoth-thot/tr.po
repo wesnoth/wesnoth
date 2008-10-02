@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:40+0200\n"
+"POT-Creation-Date: 2008-10-03 00:56+0200\n"
 "PO-Revision-Date: 2008-04-29 18:17+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -2424,35 +2424,10 @@ msgstr ""
 msgid "Dwarvish Masked Dragonguard"
 msgstr "Maskeli Cüce Ejder Muhafızı"
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:13
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
-msgid "dagger"
-msgstr "hançer"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:22
-msgid "dragonstaff"
-msgstr "ejderha değneği"
-
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr "Maskeli Cüce Savaşçı"
-
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:23
-msgid "axe"
-msgstr "balta"
-
-#. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:23
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:31
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
-msgid "hammer"
-msgstr "çekiç"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
@@ -2476,17 +2451,6 @@ msgstr ""
 "ile bir hedefi birkaç adımdan vurabilirler. Yavaş hareket etseler de bu "
 "cüceler türlerinin yiğitliğinin birer kanıtıdırlar."
 
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:14
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:13
-msgid "battle axe"
-msgstr "savaş baltası"
-
-#. [attack]: type=blade
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:30
-msgid "hatchet"
-msgstr "el baltası"
-
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
@@ -2507,12 +2471,6 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr "Maskeli Cüce Gürleyici"
-
-#. [attack]: type=pierce
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:22
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:38
-msgid "thunderstick"
-msgstr "gürültü silahı"
 
 #. [unit_type]
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
@@ -2538,6 +2496,11 @@ msgstr ""
 "simgelerle ortaya koyar, bu simgeler sırf varlıklarıyla nesneyi güçle "
 "doldurur. Döğüşte nadiren görülmekle birlikte cüceler bu özel simgeli "
 "nesneleri ürkütücü bir şekilde kullanabilirler."
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
+msgid "hammer"
+msgstr "çekiç"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:81
@@ -2716,6 +2679,24 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:331
 msgid "I sense wrongness.  Some greater evil awakens before us."
 msgstr ""
+
+#~ msgid "dagger"
+#~ msgstr "hançer"
+
+#~ msgid "dragonstaff"
+#~ msgstr "ejderha değneği"
+
+#~ msgid "axe"
+#~ msgstr "balta"
+
+#~ msgid "battle axe"
+#~ msgstr "savaş baltası"
+
+#~ msgid "hatchet"
+#~ msgstr "el baltası"
+
+#~ msgid "thunderstick"
+#~ msgstr "gürültü silahı"
 
 #~ msgid ""
 #~ "It is not clear why the Dragonguards are called what they are, a name "
