@@ -44,6 +44,30 @@
 
 #define LOG_CS lg::err(lg::network, false)
 
+//compatibility code for MS compilers
+#ifndef SIGHUP
+#define SIGHUP 20
+#endif
+/** @todo FIXME: should define SIGINT here too, but to what? */
+
+static void exit_sighup(int signal) {
+	assert(signal == SIGHUP);                                                                                                                                                     
+	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
+static void exit_sigint(int signal) {
+	assert(signal == SIGINT);
+	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
+static void exit_sigterm(int signal) {
+	assert(signal == SIGTERM);
+	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
 namespace {
 
 	config construct_message(const std::string& msg)
@@ -143,6 +167,12 @@ namespace {
 	campaign_server::campaign_server(const std::string& cfgfile,size_t min_thread,size_t max_thread)
 		: file_(cfgfile), net_manager_(min_thread,max_thread), server_manager_(load_config()), input_(0)
 	{
+#ifndef _MSC_VER
+		signal(SIGHUP, exit_sighup);
+#endif
+		signal(SIGINT, exit_sigint);
+		signal(SIGTERM, exit_sigterm);
+
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
 		}
