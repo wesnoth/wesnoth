@@ -85,6 +85,7 @@ if __name__ == '__main__':
     op.add_option("-D", "--define",
         action = "append",
         dest = "defines",
+        default = [],
         help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
     (options, args) = op.parse_args()
 
