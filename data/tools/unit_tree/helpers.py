@@ -126,8 +126,10 @@ class ImageCollector:
             ipath, i, c, bases = self.images[iid]
             if ipath and os.path.exists(ipath):
                 #shutil.copy2(ipath, opath)
-                command = os.path.join(self.datadir,
-                    "tools/unit_tree/TeamColorizer") + " '%s' '%s'" % (
+                # We assume TeamColorizer is in the same directory as the
+                # helpers.py currently executing.
+                command = os.path.join(os.path.dirname(__file__),
+                    "TeamColorizer") + " '%s' '%s'" % (
                     ipath, opath)
                 os.system(command)
             else:
