@@ -1185,7 +1185,7 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
 			" bans [deleted], kick <mask>, k[ick]ban <mask> [<time>] <reason>,"
 			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
-			" requestes, stats, status [<mask>], searchlog [<mask>], unban <ipmask>";
+			" requests, stats, status [<mask>], searchlog [<mask>], unban <ipmask>";
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
 		if (issuer_name != "*socket*") return "";
@@ -1199,9 +1199,6 @@ std::string server::process_command(const std::string& query, const std::string&
 			process_command("msg The server is shutting down. You may finish your games but can't start new ones. Once all games have ended the server will exit.", issuer_name);
 			out << "Server is doing graceful shut down.";
 		}
-
-#ifndef _WIN32  // Not sure if this works on windows
-		// TODO: check if this works in windows.
 	} else if (command == "restart") {
 		if (issuer_name != "*socket*") return "";
 		if (restart_command.empty()) {
@@ -1217,7 +1214,6 @@ std::string server::process_command(const std::string& query, const std::string&
 			process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
 			out << "New server started.";
 		}
-#endif
 	} else if (command == "sample") {
 		if (parameters.empty()) {
 			out << "Current sample frequency: " << request_sample_frequency;
