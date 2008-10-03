@@ -345,10 +345,10 @@ class HTMLOutput:
         if base_unit:
             attacks = self.get_recursive_attacks(base_unit)
 
-        base_attacks = attacks[:]
+        base_attacks_count = len(attacks)
         for i, attack in enumerate(this_unit.get_all("attack")):
             # Attack merging is order based.
-            if i < len(base_attacks):
+            if i < base_attacks_count:
                 copy_attributes(attack, attacks[i])
             else:
                 attacks.append(attack)
@@ -546,7 +546,9 @@ class HTMLOutput:
             write('<img src="%s" alt="(image)" />\n' % image)
         write('</div>\n')
 
-        description = unit.get_text_val("description")
+        description = self.wesnoth.get_unit_value(unit, "description")
+        
+        # TODO: what is unit_description?
         if not description: description = unit.get_text_val("unit_description")
         if not description: description = "-"
         write("<p>%s</p>\n" % description)
