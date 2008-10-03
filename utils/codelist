@@ -1,4 +1,4 @@
-#!/usr/bin/perl -n
+#!/usr/bin/env python
 # codelist
 # given list of integers, one per line, outputs a minimal list of ranges
 # describing the list
@@ -6,19 +6,37 @@
 # this is useful for codepoints that are in a font, based on list of codes
 # output format is suitable for codepoints="" in Wesnoth fonts.cfg
 
-#push @n, hex;
-chomp; push @n, $_;
-END {
-    foreach (sort { $a <=> $b } @n) {
-	if ($_ == $last + 1) {
-	    $last = $_;
-	} else {
-	    push @r, ($first == $last) ? "$first" : "$first-$last";
-	    $first = $last = $_;
-	}
-    }
-    push @r, ($first == $last) ? "$first" : "$first-$last";
-    shift @r; # get rid of blank first element
-    print join(",", @r), "\n";
-}
+import sys
+
+def rangeify(lst):
+    "Turn ranges of adjacent ints in a list into [start, end] list elements."
+    lst.sort()
+    lst.append(None)
+    while True:
+        for i in range(len(lst)-1):
+            if type(lst[i]) == type(0) and lst[i+1] == lst[i]+1:
+                lst = lst[:i] + [[lst[i], lst[i+1]]] + lst[i+2:]
+                break
+            elif type(lst[i]) == type([]) and lst[i+1] == lst[i][-1]+1:
+                lst[i][1] = lst[i+1]
+                lst = lst[:i+1] + lst[i+2:]
+                break
+        else:
+            break
+    lst.pop()
+    return lst
+
+def printbyrange(lst):
+    out = ""
+    for elt in lst:
+        if type(elt) == type(0):
+            out += `elt` + ","
+        else:
+            out += "%d-%d," % tuple(elt)
+    return out[:-1]
+
+codepoints = map(lambda x: int(x.strip()), sys.stdin.readlines())
+print printbyrange(rangeify(codepoints))
+
+
 
