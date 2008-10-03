@@ -1268,7 +1268,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (utils::isvalid_username(parameters)) {
 			bool found = false;
 			for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-				if (parameters == pl->second.name().c_str()) {
+				if (parameters == pl->second.name()) {
 					parameters = network::ip_address(pl->first);
 					found = true;
 					break;
@@ -1367,14 +1367,16 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 			if (!banned) {
-				// If nobody was banned yet look in the logs
-				for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
-						i != ip_log_.end(); i++) {
-					if (utils::wildcard_string_match(i->first, target)) {
-						banned = true;
-						if (!is_ip_banned(i->second)) {
-							std::string err = ban_manager_.ban(i->second,parsed_time, reason, issuer_name, group);
-							out << err;
+				// If nobody was banned yet check the ip_log but only if a
+				// simple username was used to prevent accidental bans.
+				if (utils::isvalid_username(target)) {
+					for (std::map<std::string, std::string>::const_iterator i = ip_log_.begin();
+							i != ip_log_.end(); i++) {
+						if (i->first == target) {
+							banned = true;
+							if (!is_ip_banned(i->second)) {
+								out << ban_manager_.ban(i->second, parsed_time, reason, issuer_name, group, target);
+							}
 						}
 					}
 				}
