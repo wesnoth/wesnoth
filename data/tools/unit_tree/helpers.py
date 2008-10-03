@@ -126,7 +126,7 @@ class ImageCollector:
             ipath, i, c, bases = self.images[iid]
             if ipath and os.path.exists(ipath):
                 #shutil.copy2(ipath, opath)
-                command = os.path.join("data",
+                command = os.path.join(self.datadir,
                     "tools/unit_tree/TeamColorizer") + " '%s' '%s'" % (
                     ipath, opath)
                 os.system(command)
