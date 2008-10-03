@@ -1,0 +1,37 @@
+#!/bin/sh
+die() {
+	echo >&2 "$@"
+	exit 1
+}
+[ $# -ge 1 ] || die "Usage: $0 <server version> [<additional parameters for campaignd>]"
+
+VERSION=$1
+shift
+PARAMETERS="$@"
+
+case $VERSION in
+1.4)
+	THREADS=4
+	;;
+*)
+	THREADS=2
+	;;
+esac
+
+SERVERBASE=$HOME/campaignd/$VERSION/
+
+[ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
+[ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
+
+ulimit -c unlimited
+
+cd $SERVERBASE/data || exit 1
+
+while [ true ]
+do
+	DATE=$(date +"%Y%m%d-%H%M%S")
+	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
+	echo "started $VERSION campaignd with command: '$COMMAND' at: $DATE"
+	$COMMAND &> $SERVERBASE/logs/campaignd.$DATE
+
+done
