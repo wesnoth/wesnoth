@@ -629,7 +629,7 @@ namespace wesnothd {
 		}
 		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\n"
 				"kban suokko 5D flooded again\n"
-				"kban suokko Y One year ban for constant flooding\n";
+				"kban suokko Y One year ban for constant flooding";
 	}
 
 	void ban_manager::load_config(const config& cfg)

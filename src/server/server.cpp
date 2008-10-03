@@ -1125,7 +1125,7 @@ void server::process_query(const network::connection sock,
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: help, games, metrics,"
-			" motd, netstats [all], samples, stats, status, wml.";
+			" motd, netstats [all], stats, status, wml.";
 	if (admins_.count(sock) != 0) {
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
@@ -1136,8 +1136,16 @@ void server::process_query(const network::connection sock,
 		response << help_msg;
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
-	} else if (command == "status " + pl->second.name() || command == "metrics"
-	|| command == "motd" || command == "wml" || command == "netstats" || command == "netstats all") {
+	} else if (command == "games"
+			|| command == "metrics"
+			|| command == "motd"
+			|| command == "netstats"
+			|| command == "netstats all"
+			|| command == "sample"
+			|| command == "stats"
+			|| command == "status " + pl->second.name()
+			|| command == "wml")
+	{
 		response << process_command(command.to_string(), pl->second.name());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "
@@ -1175,11 +1183,12 @@ std::string server::process_command(const std::string& query, const std::string&
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
-			" bans [deleted], kick <mask>, k(ick)ban <mask> [<time>] <reason>,"
-			" help, games, metrics, netstats, (lobby)msg <message>, motd [<message>],"
-			" samples, stats, status [<mask>], searchlog [<mask>], unban <ipmask>";
-	// Shutdown and restart commands can only be issued via the socket.
-	if (command == "shut_down" && issuer_name == "*socket*") {
+			" bans [deleted], kick <mask>, k[ick]ban <mask> [<time>] <reason>,"
+			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
+			" requestes, stats, status [<mask>], searchlog [<mask>], unban <ipmask>";
+	// Shutdown, restart and sample commands can only be issued via the socket.
+	if (command == "shut_down") {
+		if (issuer_name != "*socket*") return "";
 		if (parameters == "now") {
 			throw network::error("shut down");
 		} else {
@@ -1193,7 +1202,8 @@ std::string server::process_command(const std::string& query, const std::string&
 
 #ifndef _WIN32  // Not sure if this works on windows
 		// TODO: check if this works in windows.
-	} else if (command == "restart" && issuer_name == "*socket*") {
+	} else if (command == "restart") {
+		if (issuer_name != "*socket*") return "";
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
 		} else {
@@ -1208,10 +1218,12 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << "New server started.";
 		}
 #endif
-	} else if (command == "sample" && issuer_name == "*socket*") {
+	} else if (command == "sample") {
 		if (parameters.empty()) {
 			out << "Current sample frequency: " << request_sample_frequency;
 			return out.str();
+		} else if (issuer_name != "*socket*") {
+			return "";
 		}
 		request_sample_frequency = atoi(parameters.c_str());
 		if (request_sample_frequency <= 0) {
@@ -1220,16 +1232,15 @@ std::string server::process_command(const std::string& query, const std::string&
 			out << "Sampling every " << request_sample_frequency << " requests.";
 		}
 	} else if (command == "help") {
-		out << help_msg;
+		return help_msg;
 	} else if (command == "stats") {
 		out << "Number of games = " << games_.size()
 			<< "\nTotal number of users = " << players_.size()
 			<< "\nNumber of ghost users = " << ghost_players_.size()
 			<< "\nNumber of users in the lobby = " << lobby_.nobservers();
+		return out.str();
 	} else if (command == "metrics") {
 		out << metrics_;
-	} else if (command == "samples") {
-		metrics_.samples(out);
 	} else if (command == "games") {
 		metrics_.games(out);
 	} else if (command == "wml") {
@@ -1254,7 +1265,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			}
 		}
 		LOG_SERVER << "<server> " + parameters + "\n";
-		out << "message '" << parameters << "' relayed to players\n";
+		out << "message '" << parameters << "' relayed to players";
 	} else if (command == "status") {
 		out << "STATUS REPORT";
 		// If a simple username is given we'll check for its IP instead.
@@ -1267,7 +1278,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					break;
 				}
 			}
-			if (!found) return "";
+			if (!found) return out.str();
 		}
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (parameters == ""
@@ -1446,7 +1457,7 @@ std::string server::process_command(const std::string& query, const std::string&
 					i != ip_log_.end(); i++) {
 				if (utils::wildcard_string_match(i->second, parameters)) {
 					found_something = true;
-					out << "\n" << i->first << "@" << i->second;
+					out << "\n'" << i->first << "' @ " << i->second;
 				}
 			}
 		} else {
@@ -1458,7 +1469,7 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 		}
-		if (!found_something) out << "No results found for '" << parameters << "'.";
+		if (!found_something) out << "\nNo results found for '" << parameters << "'.";
 	} else {
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}

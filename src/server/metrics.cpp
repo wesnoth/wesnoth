@@ -111,36 +111,15 @@ void metrics::game_terminated(const std::string& reason)
 
 std::ostream& metrics::games(std::ostream& out)
 {
-	if (terminations_.empty()) return out;
+	if (terminations_.empty()) return out << "No game ended so far.";
 
 	size_t n = 0;
-	out << "Games have been terminated in the following ways: \n";
+	out << "Games have been terminated in the following ways:\n";
 	for(std::map<std::string,int>::const_iterator i = terminations_.begin(); i != terminations_.end(); ++i) {
 		out << i->first << ": " << i->second << "\n";
 		++n;
 	}
-	out << "Total number of games = " << n;
-
-	return out;
-}
-
-std::ostream& metrics::samples(std::ostream& out)
-{
-	if (samples_.empty()) return out;
-
-	std::vector<metrics::sample> ordered_samples = samples_;
-	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
-
-	out << "Request types:\n";
-
-	size_t n = 0;
-	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
-		out << "'" << s->name << "' called " << s->nsamples << " times "
-			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "
-			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
-		++n;
-	}
-	out << "Total number of games = " << n;
+	out << "Total number of finished games = " << n;
 
 	return out;
 }
@@ -158,8 +137,30 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	    << minutes << " minutes, " << seconds << " seconds\n"
 	    << met.nrequests_ << " requests serviced. " << requests_immediate
 	    << " (" << percent_immediate << "%) "
-	    << " requests were serviced immediately\n"
-	    << "longest burst of requests was " << met.most_consecutive_requests_;
+	    << "requests were serviced immediately.\n"
+	    << "longest burst of requests was: " << met.most_consecutive_requests_;
+
+	if (met.samples_.empty()) return out;
+
+	std::vector<metrics::sample> ordered_samples = met.samples_;
+	std::sort(ordered_samples.begin(), ordered_samples.end(), compare_samples_by_time());
+
+	out << "\nSampled request types:\n";
+
+	size_t n = 0;
+	size_t pa = 0;
+	size_t pr = 0;
+	for(std::vector<metrics::sample>::const_iterator s = ordered_samples.begin(); s != ordered_samples.end(); ++s) {
+		out << "'" << s->name << "' called " << s->nsamples << " times "
+			<< s->parsing_time << "("<< s->max_parsing_time <<") parsing time, "
+			<< s->processing_time << "("<<s->max_processing_time<<") processing time\n";
+		n += s->nsamples;
+		pa += s->parsing_time;
+		pr += s->processing_time;
+	}
+	out << "Total number of request samples = " << n << "\n"
+		<< "Total parsing time = " << pa << "\n"
+		<< "Total processing time = " << pr;
 
 	return out;
 }
