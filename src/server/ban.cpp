@@ -34,12 +34,12 @@ namespace wesnothd {
 
 	std::ostream& operator<<(std::ostream& o, const banned& n)
 	{
-	   return o << "IP: " << n.get_ip() << 
-					" reason: '" << n.get_reason() << 
-					"' end_time: " << n.get_human_end_time() <<
-					" start_time: " << n.get_human_start_time() <<
-					" issuer: " <<  n.get_who_banned();
-
+	   return o << "IP: " << n.get_ip() <<
+					(n.get_nick().empty() ? "" : "  nick: " + n.get_nick()) <<
+					"  reason: '" << n.get_reason() << "'"
+					"\nstart_time: " << n.get_human_start_time() <<
+					"  end_time: " << n.get_human_end_time() <<
+					"  issuer: " <<  n.get_who_banned();
 	}
 
 	bool banned_compare::operator()(const banned_ptr& a, const banned_ptr& b) const
@@ -115,13 +115,15 @@ namespace wesnothd {
 				   const time_t end_time, 
 				   const std::string& reason, 
 				   const std::string& who_banned, 
-				   const std::string& group) : 
+				   const std::string& group,
+				   const std::string& nick) :
 		ip_text_(ip),
 		end_time_(end_time), 
 		start_time_(time(0)),
 		reason_(reason), 
 		who_banned_(who_banned), 
-		group_(group)
+		group_(group),
+		nick_(nick)
 	{
 		ip_mask pair = parse_ip(ip_text_);
 		ip_ = pair.first;
@@ -191,7 +193,7 @@ namespace wesnothd {
 			ip_ = pair.first;
 			mask_ = pair.second;
 		}
-	
+		nick_ = cfg["nick"];
 		if (cfg.has_attribute("end_time"))
 			end_time_ 	= lexical_cast_default<time_t>(cfg["end_time"], 0);
 		if (cfg.has_attribute("start_time"))
@@ -208,6 +210,7 @@ namespace wesnothd {
 	void banned::write(config& cfg) const
 	{
 		cfg["ip"]		= get_ip();
+		cfg["nick"] = get_nick();
 		if (end_time_ > 0)
 		{
 			std::stringstream ss;
@@ -448,7 +451,8 @@ namespace wesnothd {
 								 const time_t& end_time, 
 								 const std::string& reason, 
 								 const std::string& who_banned, 
-								 const std::string& group)
+								 const std::string& group,
+								 const std::string& nick)
 	{
 		try {
 			ban_set::iterator ban;
@@ -464,7 +468,7 @@ namespace wesnothd {
 		}
 		std::ostringstream ret;
 		try {
-			banned_ptr new_ban(new banned(ip, end_time, reason,who_banned, group));
+			banned_ptr new_ban(new banned(ip, end_time, reason,who_banned, group, nick));
 			bans_.insert(new_ban);
 			if (end_time != 0)
 				time_queue_.push(new_ban);
@@ -564,7 +568,7 @@ namespace wesnothd {
 			out << "No bans set.";
 			return;
 		}
-
+		out << "BAN LIST\n";
 		std::set<std::string> groups;
 
 		for (ban_set::const_iterator i = bans_.begin();
@@ -626,7 +630,7 @@ namespace wesnothd {
 		}
 		ban_help_ += "ban 127.0.0.1 2h20m flooded lobby\n"
 				"kban suokko 5D flooded again\n"
-				"kban suokko Y One year ban for constant flooding\n";
+				"kban suokko Y One year ban for constant flooding";
 	}
 
 	void ban_manager::load_config(const config& cfg)

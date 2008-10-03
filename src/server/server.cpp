@@ -846,7 +846,7 @@ void server::process_query(const network::connection sock,
 	const simple_wml::string_span& command(query["type"]);
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: help, games, metrics,"
-			" motd, netstats [all], samples, stats, status, wml.";
+			" motd, netstats [all], stats, status, wml.";
 	if (admins_.count(sock) != 0) {
 		LOG_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
@@ -857,8 +857,16 @@ void server::process_query(const network::connection sock,
 		response << help_msg;
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
-	} else if (command == "status " + pl->second.name() || command == "metrics"
-	|| command == "motd" || command == "wml" || command == "netstats" || command == "netstats all") {
+	} else if (command == "games"
+			|| command == "metrics"
+			|| command == "motd"
+			|| command == "netstats"
+			|| command == "netstats all"
+			|| command == "sample"
+			|| command == "stats"
+			|| command == "status " + pl->second.name()
+			|| command == "wml")
+	{
 		response << process_command(command.to_string(), pl->second.name());
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized:" << "\tIP: "
@@ -896,11 +904,12 @@ std::string server::process_command(const std::string& query, const std::string&
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
-			" bans [deleted], kick <mask>, k(ick)ban <mask> [<time>] <reason>,"
-			" help, games, metrics, netstats, (lobby)msg <message>, motd [<message>],"
-			" samples, stats, status [<mask>], unban <ipmask>";
-	// Shutdown and restart commands can only be issued via the socket.
-	if (command == "shut_down" && issuer_name == "*socket*") {
+			" bans [deleted], kick <mask>, k[ick]ban <mask> [<time>] <reason>,"
+			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
+			" requests, stats, status [<mask>], unban <ipmask>";
+	// Shutdown, restart and sample commands can only be issued via the socket.
+	if (command == "shut_down") {
+		if (issuer_name != "*socket*") return "";
 		if (parameters == "now") {
 			throw network::error("shut down");
 		} else {
@@ -914,7 +923,8 @@ std::string server::process_command(const std::string& query, const std::string&
 
 		// this works in windows if using "start /B"
 		// like in wesnoth MP server start code
-	} else if (command == "restart" && issuer_name == "*socket*") {
+	} else if (command == "restart") {
+		if (issuer_name != "*socket*") return "";
 		if (restart_command.empty()) {
 			out << "No restart_command configured! Not restarting.";
 		} else {
@@ -928,16 +938,28 @@ std::string server::process_command(const std::string& query, const std::string&
 			process_command("msg The server has been restarted. You may finish current games but can't start new ones and new players can't join this (old) server instance. (So if a player of your game disconnects you have to save, reconnect and reload the game on the new server instance. It is actually recommended to do that right away.)", issuer_name);
 			out << "New server started.";
 		}
+	} else if (command == "sample") {
+		if (parameters.empty()) {
+			out << "Current sample frequency: " << request_sample_frequency;
+			return out.str();
+		} else if (issuer_name != "*socket*") {
+			return "";
+		}
+		request_sample_frequency = atoi(parameters.c_str());
+		if (request_sample_frequency <= 0) {
+			out << "Sampling turned off.";
+		} else {
+			out << "Sampling every " << request_sample_frequency << " requests.";
+		}
 	} else if (command == "help") {
-		out << help_msg;
+		return help_msg;
 	} else if (command == "stats") {
 		out << "Number of games = " << games_.size()
 			<< "\nTotal number of users = " << players_.size()
 			<< "\nNumber of users in the lobby = " << lobby_.nobservers();
+		return out.str();
 	} else if (command == "metrics") {
 		out << metrics_;
-	} else if (command == "samples") {
-		metrics_.samples(out);
 	} else if (command == "games") {
 		metrics_.games(out);
 	} else if (command == "wml") {
@@ -962,22 +984,34 @@ std::string server::process_command(const std::string& query, const std::string&
 			}
 		}
 		LOG_SERVER << "<server> " + parameters + "\n";
-		out << "message '" << parameters << "' relayed to players\n";
+		out << "message '" << parameters << "' relayed to players";
 	} else if (command == "status") {
-		out << "STATUS REPORT\n";
+		out << "STATUS REPORT";
+		// If a simple username is given we'll check for its IP instead.
+		if (utils::isvalid_username(parameters)) {
+			bool found = false;
+			for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+				if (parameters == pl->second.name().c_str()) {
+					parameters = network::ip_address(pl->first);
+					found = true;
+					break;
+				}
+			}
+			if (!found) return out.str();
+		}
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 			if (parameters == ""
-				|| utils::wildcard_string_match(pl->second.name(), parameters)
-				|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
+			|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)
+			|| utils::wildcard_string_match(pl->second.name(), parameters)) {
 				const network::connection_stats& stats = network::get_connection_stats(pl->first);
 				const int time_connected = stats.time_connected/1000;
 				const int seconds = time_connected%60;
 				const int minutes = (time_connected/60)%60;
 				const int hours = time_connected/(60*60);
-				out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
+				out << "\n'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
 					<< " connected for " << hours << ":" << minutes << ":" << seconds
 					<< " sent " << stats.bytes_sent << " bytes, received "
-					<< stats.bytes_received << " bytes\n";
+					<< stats.bytes_received << " bytes";
 			}
 		}
 	} else if (command == "bans") {
@@ -987,7 +1021,7 @@ std::string server::process_command(const std::string& query, const std::string&
 			ban_manager_.list_bans(out);
 		}
 	} else if (command == "ban" || command == "kban" || command == "kickban" || command == "gban") {
-		bool banned_ = false;
+		bool banned = false;
 		const bool kick = (command == "kban" || command == "kickban");
 		const bool group_ban = command == "gban";
 		std::string::iterator first_space = std::find(parameters.begin(), parameters.end(), ' ');
@@ -1018,7 +1052,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		// if we find a '.' consider it an ip mask
 		//! @todo  FIXME: make a proper check for valid IPs
 		if (std::count(target.begin(), target.end(), '.') >= 1) {
-			banned_ = true;
+			banned = true;
 
 			std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
 			out << err;
@@ -1035,24 +1069,27 @@ std::string server::process_command(const std::string& query, const std::string&
 				}
 			}
 		} else {
+			bool kicked = false;
 			for (wesnothd::player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(pl->second.name(), target)) {
-					banned_ = true;
+					banned = true;
 					const std::string& ip = network::ip_address(pl->first);
 					if (!is_ip_banned(ip)) {
-						std::string err = ban_manager_.ban(ip,parsed_time, reason, issuer_name, group);
+						std::string err = ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
 						out << err;
 					}
 					if (kick) {
+						if (kicked) out << "\n";
+						else kicked = true;
 						out << "\nKicked " << pl->second.name() << ".";
 						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
 					}
 				}
 			}
-			if (!banned_) {
+			if (!banned) {
 				out << "Nickmask '" << target << "' did not match, no bans set.";
 			}
 		}
@@ -1063,7 +1100,7 @@ std::string server::process_command(const std::string& query, const std::string&
 		ban_manager_.unban(out, parameters);
 	} else if (command == "ungban") {
 		if (parameters == "") {
-			return "You must enter an ipmask to unban.";
+			return "You must enter an ipmask to ungban.";
 		}
 		ban_manager_.unban_group(out, parameters);
 	} else if (command == "kick") {
@@ -1077,8 +1114,10 @@ std::string server::process_command(const std::string& query, const std::string&
 				pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
-					kicked = true;
-					out << "Kicked " << pl->second.name() << ".\n";
+					if (kicked) out << "\n";
+					else kicked = true;
+					out << "Kicked " << pl->second.name() << " ("
+						<< network::ip_address(pl->first) << ").";
 					send_error(pl->first, "You have been kicked.");
 					network::queue_disconnect(pl->first);
 				}
@@ -1088,22 +1127,16 @@ std::string server::process_command(const std::string& query, const std::string&
 				pl != players_.end(); ++pl)
 			{
 				if (utils::wildcard_string_match(pl->second.name(), parameters)) {
-					kicked = true;
+					if (kicked) out << "\n";
+					else kicked = true;
 					out << "Kicked " << pl->second.name() << " ("
-						<< network::ip_address(pl->first) << ").\n";
+						<< network::ip_address(pl->first) << ").";
 					send_error(pl->first, "You have been kicked.");
 					network::queue_disconnect(pl->first);
 				}
 			}
 		}
-		if (!kicked) out << "No user matched '" << parameters << "'.\n";
-	} else if(command == "sample") {
-		request_sample_frequency = atoi(parameters.c_str());
-		if(request_sample_frequency <= 0) {
-			out << "Sampling turned off";
-		} else {
-			out << "Sampling every " << request_sample_frequency << " requests\n";
-		}
+		if (!kicked) out << "No user matched '" << parameters << "'.";
 	} else if (command == "motd") {
 		if (parameters == "") {
 			if (motd_ != "") {
