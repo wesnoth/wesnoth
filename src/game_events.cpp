@@ -2555,7 +2555,7 @@ namespace {
 		}
 	}
 
-	WML_HANDLER_FUNCTION(end_turn,/*handler*/,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(end_turn,/*handler*/,/*event_info*/,/*cfg*/)
 	{
 		throw end_turn_exception();
 	}
