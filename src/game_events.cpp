@@ -2555,6 +2555,11 @@ namespace {
 		}
 	}
 
+	WML_HANDLER_FUNCTION(end_turn,/*handler*/,/*event_info*/,cfg)
+	{
+		throw end_turn_exception();
+	}
+
 	WML_HANDLER_FUNCTION(endlevel,/*handler*/,/*event_info*/,cfg)
 	{
 		// Remove 0-hp units from the unit map to avoid the following problem:
