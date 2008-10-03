@@ -47,6 +47,30 @@
 
 #define LOG_CS lg::err(lg::network, false)
 
+//compatibility code for MS compilers
+#ifndef SIGHUP
+#define SIGHUP 20
+#endif
+/** @todo FIXME: should define SIGINT here too, but to what? */
+
+static void exit_sighup(int signal) {
+	assert(signal == SIGHUP);                                                                                                                                                     
+	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
+static void exit_sigint(int signal) {
+	assert(signal == SIGINT);
+	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
+static void exit_sigterm(int signal) {
+	assert(signal == SIGTERM);
+	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
+	exit(1);
+}
+
 #define DEFAULT_CAMPAIGND_PORT          15003
 
 namespace {
@@ -158,6 +182,12 @@ namespace {
 		input_(0),
 		compress_level_(compress_level_) // Already set by load_config()
 	{
+#ifndef _MSC_VER
+		signal(SIGHUP, exit_sighup);
+#endif
+		signal(SIGINT, exit_sigint);
+		signal(SIGTERM, exit_sigterm);
+
 		if(cfg_.child("campaigns") == NULL) {
 			cfg_.add_child("campaigns");
 		}
