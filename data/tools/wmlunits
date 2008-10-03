@@ -347,19 +347,12 @@ class HTMLOutput:
 
         base_attacks = attacks[:]
         for i, attack in enumerate(this_unit.get_all("attack")):
-            aid = attack.get_text_val("name")
-            if aid:
-                # The attack does have a name - either merge with the base
-                # which has the same name, or else append it as new attack.
-                for already in base_attacks:
-                    if already.get_text_val("name") == aid:
-                        copy_attributes(attack, already)
-                        break
-                else:
-                    attacks.append(attack)
-            else:
-                # The attack has no name, so merge based on order.
+            # Attack merging is order based.
+            if i < len(base_attacks):
                 copy_attributes(attack, attacks[i])
+            else:
+                attacks.append(attack)
+                
         return attacks
 
     def write_units(self):
