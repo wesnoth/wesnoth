@@ -322,7 +322,7 @@ time_t fuh::get_registrationdate(const std::string& user) {
 }
 
 void fuh::password_reminder(const std::string& name) {
-	throw error("For now please use the password recovery"
+	throw error("For now please use the password recovery "
 		"function provided at http://forum.wesnoth.org");
 }
 
