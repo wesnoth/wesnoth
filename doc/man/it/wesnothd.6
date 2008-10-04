@@ -35,9 +35,10 @@ wesnothd \- Demone di rete per multigiocatore di Battle for
 .
 .SH DESCRIZIONE
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi
+http://www.wesnoth.org/wiki/ServerAdministration per sapere quali comandi
+sono accettati dal server attraverso il client di wesnoth (/query ...) o la
+FIFO.
 .
 .SH OPZIONI
 .
@@ -94,8 +95,9 @@ key="\fIvalore\fP,\fIvalore\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+Percorso completo o relativo di un file (compresso con gzip) che il file
+possa leggere e scrivere. Le espulsioni saranno memorizzate in questo file e
+lette ogni volta che il server è avviato.
 .TP 
 \fBconnections_allowed\fP
 Il numero di connessioni permesse dallo stesso IP. \fB0\fP indica infinite
@@ -108,9 +110,9 @@ predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+Il percorso della FIFO su cui puoi mostrare i comandi del server (analogo di
+/query ... in wesnoth). Se non è specificato viene usato il percorso fornito
+a tempo di compilazione (solitamente /var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
@@ -128,12 +130,12 @@ La password da usare per dare i privilegi di amministratore. Di solito
 inizia con «admin ».
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+Il comando usato dal server per avviare un nuovo processo del server con il
+comando «restart» (Può essere inoltrato solo attraverso la FIFO).
 .TP 
 \fBversions_accepted\fP
 Un elenco separato da virgole delle stringhe di versione che il server deve
-accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito è
+accettare. I caratteri jolly «*» e «?» sono ammessi (il valore predefinito è
 lo stesso della versione di wesnoth corrispondente).
 .br
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
@@ -156,19 +158,19 @@ Una lista separata da virgole delle versioni daredirigere. Si comporta come
 \fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[tempo_di_espulsione]\fP Un'etichetta per definire parole chiave per
+definire lunghezze convenienti per il tempo di espulsione.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+Il nome usato per fare riferimento al tempo di espulsione.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+La definizione di periodi temporali. Il formato è %d[%s[%d%s[...]]] dove %s
+sta per s (secondi) m (minuti) h (ore) D (giorni) M (mesi) o Y (anni) e %d è
+un numero. Se non viene fornito un modificatore temporale il tempo viene
+considerato espresso in minuti. Esempio: time="1D12h30m" risulta in un tempo
+di espulsione di 1 giorno, 12 ore e 30 minuti.
 .RE
 .P
 \fB[proxy]\fP Un tag che indica al server di fare da proxy e di inoltrare le

@@ -33,9 +33,9 @@ wesnothd \- Harc \fBWesnoth\fPért többjátékos hálózati démon
 .
 .SH LEÍRÁS
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+A Harc Wesnothért többjátékos mérkõzéseit kezeli. A klienstõl, vagy
+máshonnan érkezõ, a kiszolgáló által elfogadott parancsokról itt
+tájékozódhatsz: http://www.wesnoth.org/wiki/ServerAdministration
 .
 .SH BEÁLLÍTÁSOK
 .
@@ -91,8 +91,10 @@ key="\fIérték\fP,\fIérték\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+A kiszolgáló által olvasható és írható, gzipbe tömörített fájl teljes vagy
+viszonylagos elérési útvonala. A tiltásokkal kapcsolatos információk
+bekerülnek ebbe a fájlba, és ismét be lesznek olvasva a kiszolgáló
+indulásakor.
 .TP 
 \fBconnections_allowed\fP
 Az azonos IP címrõl engedélyezett párhuzamos kapcsolatok száma. \fB0\fP esetén
@@ -105,9 +107,10 @@ részletekért. Alapértelmezett értékek (ha más nincsen megadva):
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+A fifo elérési útvonala, amellyel a kiszolgáló parancsairól kapható
+információ (echo; megegyezik a wesnothban kiadott /query ... paranccsal). Ha
+nincs másképp meghatározva, akkor az alapértelmezést
+(/var/run/socket/wesnothd/socket) használja.
 .TP 
 \fBmax_messages\fP
 A megadott idõtartam (\fBmessages_time_period\fP) alatt küldhetõ üzenetek
@@ -126,8 +129,8 @@ A jelszó, amivel adminisztrátori jogok nyerhetõek. Általában az 'admin'
 szóval kezdõdik.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+A kiszolgáló ezt a parancsot használja új kiszolgálói folyamatok
+elindításához. (Csak a fifon keresztül lehet kiadni.)
 .TP 
 \fBversions_accepted\fP
 Egy vesszõkkel elválasztott lista azokról a verziószámokról, amelyeket a
@@ -156,19 +159,19 @@ kiszolgáló átirányít. A különleges jelzések ( '*' és '?') a
 \fBversions_accepted\fP\-hez hasonlóan használhatóak.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Egy olyan tag, melyben kényelmes kulcsszavak segítségével
+lehet az átmeneti tiltás idejét meghatározni.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+A felhasználó, akire az eltiltás ideje vonatkozik.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+Az idõtartam megadása. Alakja: %d[%s[%d%s[...]]], ahol %s a másodperceket
+(s), perceket (m), órákat (h), napokat (D), hónapokat (M) vagy éveket (Y)
+jelenti, a %d pedig egy szám. Ha nincs külön mértékegység megadva, a parancs
+percként (m) értelmezi az értéket. Például: a time="1D12h30m" parancs 1 nap,
+12 óra és még 30 percnyi kitiltást eredményez.
 .RE
 .P
 \fB[proxy]\fP Proxy\-ként való viselkedés, azaz a bejövõ kliens kapcsolatok
@@ -184,7 +187,7 @@ Ennek a dokumentumnak az eredetijét Cyril Bouthors
 <cyril@bouthors.org> írta.
 Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
 <tomi@digiflex.hu>, Pintér Csaba és Kádár\-Németh Krisztián
-<krisztian.7@vizslamail.hu>.
+<krisztian.kad@gmail.com>.
 .br
 Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
 közösségi portált: http://users.cwi.hu/wesnoth/
