@@ -100,7 +100,7 @@ if(NOT WIN32)
 endif(NOT WIN32)
 
 if(NOT ENABLE_EDITOR)
-  add_definitions(-DDISABLE_EDITOR)
+  add_definitions(-DDISABLE_EDITOR2)
 endif(NOT ENABLE_EDITOR)
 
 if(X11_FOUND)
