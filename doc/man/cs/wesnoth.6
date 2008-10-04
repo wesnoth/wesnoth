@@ -48,26 +48,25 @@ ostatními.
 nastavuje hodnotu BitsPerPixel \- počet bitů na bod. Příklad: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign\fP
-goes directly to the campaign selection menu.
+přeskočí hlavní menu a zobrazí ihned seznam tažení.
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or %APPDATA%
-for windows.
+\fB\-\-config\-dir\fP\fI\ jméno\fP
+nastaví složku s uživatelskými daty na \fIjméno\fP v $HOME nebo %APPDATA% pod
+Windows.
 .TP 
 \fB\-\-config\-path\fP
-prints the path of the user configuration directory and exits.
+pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
 .TP 
 \fB\-d, \-\-debug\fP
-enables additional command mode options in\-game (see the wiki page at
-http://www.wesnoth.org/wiki/CommandMode for more information about command
-mode).
+umožňuje použít rozšiřující volby příkazového módu (více viz Wiki na
+http://www.wesnoth.org/wiki/CommandMode).
 .TP 
 \fB\-\-dummylocales\fP
-use special dummy locales to switch to any language even if that language
-isn't installed system\-wide.
+použije speciální falešné locale pro umožnění přepínání do jakéhokoliv
+jazyka, i pokud není nainstalován v systému.
 .TP 
 \fB\-e, \-\-editor\fP
-start the in\-game map editor directly.
+přeskočí hlavní menu a otevře vestavěný editor map.
 .TP 
 \fB\-\-fps\fP
 zobrazuje počet fps, tedy počet zobrazení za sekundu, během hry v rohu
@@ -87,10 +86,10 @@ jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
 \fB\-h, \-\-help\fP
 zobrazuje nápovědu k parametrům příkazové řádky.
 .TP 
-\fB\-l,\ \-\-load\fP\fI\ file\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open.
+\fB\-l,\ \-\-load\fP\fI\ soubor\fP
+načte uloženou hru \fIsoubor\fP ze standardní složky pro uložené hry. Pokud je
+použit i přepínač \fB\-e\fP nebo \fB\-\-editor\fP, otevře editor s načtenou mapou ze
+\fIsoubor\fP.
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
 nastavuje úroveň závažnosti pro jednotlivé kategorie. \fBall\fP znamená, že
@@ -126,24 +125,24 @@ spustí hru bez zvuků a hudby.
 pouze zobrazí cestu k adresáři s daty a skončí.
 .TP 
 \fB\-\-python\-api\fP
-prints the runtime documentation for the python API.
+zobrazí běhovou dokumentaci pro API Pythonu.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastavuje rozlišení. Příklad: \fB\-r 800x600\fP
 .TP 
 \fB\-\-smallgui\fP
-allows to use screen resolutions down to 800x480 and resizes a few interface
-elements.
+umožní změnu rozlišení obrazovky až k 800x480 a změní velikost některých
+prvků grafického rozhraní.
 .TP 
 \fB\-s,\ \-\-server\ [hostitel]\fP
-connects to the specified host if any, otherwise connect to the first server
-in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+přeskočí menu, připojí se k určenému hostiteli (pokud byl určen) nebo
+prvnímu serveru v nastavení. Příklad: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 spouští hru v malém testovacím scénáři.
 .TP 
 \fB\-\-validcache\fP
-assumes that the cache is valid. (dangerous)
+považuje cache za platnou bez kontroly. (nebezpečné)
 .TP 
 \fB\-v, \-\-version\fP
 zobrazí verzi wesnothu a skončí.
@@ -152,7 +151,7 @@ zobrazí verzi wesnothu a skončí.
 spustí hry v okně.
 .TP 
 \fB\-\-with\-replay\fP
-replays the game loaded with the \fB\-\-load\fP option.
+přehraje záznam načtený volbou \fB\-\-load\fP.
 .
 .SH "Volby pro \-\-multiplayer"
 .

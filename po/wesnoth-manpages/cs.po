@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:40+0300\n"
+"POT-Creation-Date: 2008-10-04 20:34+0300\n"
 "PO-Revision-Date: 2008-10-04 14:59+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -32,8 +32,7 @@ msgid "WESNOTH"
 msgstr "WESNOTH"
 
 # type: TH
-#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2007"
 msgstr "2007"
@@ -51,8 +50,7 @@ msgid "Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
-#: ../../doc/man/wesnothd.6:18
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
 msgstr "NÁZEV"
@@ -63,8 +61,7 @@ msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr "wesnoth - Bitva o Wesnoth, tahová fantasy strategická hra"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
-#: ../../doc/man/wesnothd.6:24
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr "POUŽITÍ"
@@ -75,8 +72,7 @@ msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr "B<wesnoth> [I<VOLBY>] [I<CESTA_K_DATŮM>]"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:27
-#: ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnothd.6:40
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "POPIS"
@@ -108,8 +104,7 @@ msgstr ""
 "Vytvoř si vlastní jednotky, scénáře a tažení a poděl se o ně s ostatními."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
-#: ../../doc/man/wesnothd.6:45
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnothd.6:45
 #, no-wrap
 msgid "OPTIONS"
 msgstr "VOLBY"
@@ -121,7 +116,7 @@ msgid "B<--bpp>I<\\ number>"
 msgstr "B<--bpp>I<\\ číslo>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:49 ../../doc/man/wesnoth_editor.6:38
+#: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
 msgstr ""
 "nastavuje hodnotu BitsPerPixel - počet bitů na bod. Příklad: B<--bpp 32>"
@@ -298,7 +293,7 @@ msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<level>B<=>I<kategorie1>B<,>I<kategorie2>B<,>I<...>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:114 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:114
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -310,13 +305,13 @@ msgstr ""
 "B<error>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:114 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:114
 #, no-wrap
 msgid "B<--logdomains>"
 msgstr "B<--logdomains>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:117 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:117
 msgid "Dumps a list of all log domains and exits."
 msgstr "Vypíše seznam všech kategorií logování a skončí."
 
@@ -399,13 +394,13 @@ msgid "runs the game without sounds and music."
 msgstr "spustí hru bez zvuků a hudby."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:141 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:141
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:144 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:144
 msgid "prints the name of the game data directory and exits."
 msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
 
@@ -421,7 +416,7 @@ msgid "prints the runtime documentation for the python API."
 msgstr "zobrazí běhovou dokumentaci pro API Pythonu."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:147 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:147
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
@@ -683,14 +678,13 @@ msgstr ""
 "algorithm2=python_ai --parm2=python_script:py/moje_vlastní_ai_v_pythonu.py>"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnoth_editor.6:74
-#: ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOŘI"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnoth_editor.6:77
+#: ../../doc/man/wesnoth.6:241
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>."
 
@@ -704,7 +698,7 @@ msgstr ""
 "netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnoth_editor.6:81
+#: ../../doc/man/wesnoth.6:245
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -713,30 +707,26 @@ msgstr ""
 "orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnoth_editor.6:83
-#: ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální české "
 "stránky http://www.wesnoth.wz.cz/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnoth_editor.6:84
-#: ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnoth_editor.6:87
-#: ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnoth_editor.6:90
-#: ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -747,8 +737,7 @@ msgstr ""
 "to i co se týká obchodovatelnosti a použitelnosti."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnoth_editor.6:91
-#: ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIZ TAKÉ"
@@ -757,125 +746,6 @@ msgstr "VIZ TAKÉ"
 #: ../../doc/man/wesnoth.6:258
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: TH
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "WESNOTH_EDITOR"
-msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "wesnoth_editor"
-msgstr "wesnoth_editor"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "Battle for Wesnoth map editor"
-msgstr "editor map pro Bitvu o Wesnoth"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:20
-msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "wesnoth_editor - editor map pro Bitvu o Wesnoth"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:26
-msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-msgstr "B<wesnoth_editor> [I<VOLBY>] [I<CESTA_K_DATŮM>]"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:31
-msgid "Battle for B<Wesnoth> map editor."
-msgstr "Editor map pro Bitvu o B<Wesnoth>"
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:34
-#, no-wrap
-msgid "B<--bpp>\\ number"
-msgstr "B<--bpp>\\ číslo"
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:38
-#, no-wrap
-msgid "B<--datadir>"
-msgstr "B<--datadir>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:41
-msgid "selects the data directory to use."
-msgstr "specifikuje adresář s daty."
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:41
-#, no-wrap
-msgid "B<-f>,B<\\ --fullscreen>"
-msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:44
-msgid "runs the editor in full screen mode."
-msgstr "spouští editor v celoobrazovkovém režimu."
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:44
-#, no-wrap
-msgid "B<-h>,B<\\ --help>"
-msgstr "B<-h>,B<\\ --help>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:47 ../../doc/man/wesnothd.6:58
-msgid "tells you what the command line options do."
-msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:47
-#, no-wrap
-msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-msgstr "B<--log->levelB<=>kategorie1B<,>kategorie2B<,>..."
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:66
-msgid "sets screen resolution. Example: B<-r 800x600>"
-msgstr "nastavuje rozlišení. Příklad: B<-r 800x600>"
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:66
-#, no-wrap
-msgid "B<-v>,B<\\ --version>"
-msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:69
-msgid "prints version number and exits."
-msgstr "zobrazí verzi Wesnothu a skončí."
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:69
-#, no-wrap
-msgid "B<-w>,B<\\ --windowed>"
-msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:72
-msgid "runs the editor in windowed mode."
-msgstr "spouští editor v okně."
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:79
-msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-"E<lt>ott@gaon.netE<gt>."
-msgstr ""
-"Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> a ott E<lt>ott@gaon."
-"netE<gt>."
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:94
-msgid "B<wesnoth>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth>(6), B<wesnothd>(6)"
 
 # type: TH
 #: ../../doc/man/wesnothd.6:16
@@ -952,6 +822,11 @@ msgstr "B<-d, --daemon>"
 #: ../../doc/man/wesnothd.6:55
 msgid "runs wesnothd as a daemon."
 msgstr "spouští wesnothd jako démona."
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:58
+msgid "tells you what the command line options do."
+msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:72
@@ -1347,3 +1222,87 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: TH
+#~ msgid "WESNOTH_EDITOR"
+#~ msgstr "WESNOTH_EDITOR"
+
+# type: TH
+#~ msgid "wesnoth_editor"
+#~ msgstr "wesnoth_editor"
+
+# type: Plain text
+#~ msgid "Battle for Wesnoth map editor"
+#~ msgstr "editor map pro Bitvu o Wesnoth"
+
+# type: Plain text
+#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
+#~ msgstr "wesnoth_editor - editor map pro Bitvu o Wesnoth"
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
+#~ msgstr "B<wesnoth_editor> [I<VOLBY>] [I<CESTA_K_DATŮM>]"
+
+# type: Plain text
+#~ msgid "Battle for B<Wesnoth> map editor."
+#~ msgstr "Editor map pro Bitvu o B<Wesnoth>"
+
+# type: TP
+#~ msgid "B<--bpp>\\ number"
+#~ msgstr "B<--bpp>\\ číslo"
+
+# type: TP
+#~ msgid "B<--datadir>"
+#~ msgstr "B<--datadir>"
+
+# type: Plain text
+#~ msgid "selects the data directory to use."
+#~ msgstr "specifikuje adresář s daty."
+
+# type: TP
+#~ msgid "B<-f>,B<\\ --fullscreen>"
+#~ msgstr "B<-f>,B<\\ --fullscreen>"
+
+# type: Plain text
+#~ msgid "runs the editor in full screen mode."
+#~ msgstr "spouští editor v celoobrazovkovém režimu."
+
+# type: TP
+#~ msgid "B<-h>,B<\\ --help>"
+#~ msgstr "B<-h>,B<\\ --help>"
+
+# type: TP
+#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
+#~ msgstr "B<--log->levelB<=>kategorie1B<,>kategorie2B<,>..."
+
+# type: Plain text
+#~ msgid "sets screen resolution. Example: B<-r 800x600>"
+#~ msgstr "nastavuje rozlišení. Příklad: B<-r 800x600>"
+
+# type: TP
+#~ msgid "B<-v>,B<\\ --version>"
+#~ msgstr "B<-v>,B<\\ --version>"
+
+# type: Plain text
+#~ msgid "prints version number and exits."
+#~ msgstr "zobrazí verzi Wesnothu a skončí."
+
+# type: TP
+#~ msgid "B<-w>,B<\\ --windowed>"
+#~ msgstr "B<-w>,B<\\ --windowed>"
+
+# type: Plain text
+#~ msgid "runs the editor in windowed mode."
+#~ msgstr "spouští editor v okně."
+
+# type: Plain text
+#~ msgid ""
+#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
+#~ "E<lt>ott@gaon.netE<gt>."
+#~ msgstr ""
+#~ "Upravili Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> a ott "
+#~ "E<lt>ott@gaon.netE<gt>."
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
-"POT-Creation-Date: 2008-10-01 11:40+0300\n"
+"POT-Creation-Date: 2008-10-04 20:34+0300\n"
 "PO-Revision-Date: 2008-02-02 21:15+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -23,8 +23,7 @@ msgid "WESNOTH"
 msgstr ""
 
 # type: TH
-#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2007"
 msgstr ""
@@ -42,8 +41,7 @@ msgid "Battle for Wesnoth"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
-#: ../../doc/man/wesnothd.6:18
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
 msgstr ""
@@ -54,8 +52,7 @@ msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
-#: ../../doc/man/wesnothd.6:24
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr ""
@@ -66,8 +63,7 @@ msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:27
-#: ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnothd.6:40
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr ""
@@ -91,8 +87,7 @@ msgid ""
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
-#: ../../doc/man/wesnothd.6:45
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnothd.6:45
 #, no-wrap
 msgid "OPTIONS"
 msgstr ""
@@ -104,7 +99,7 @@ msgid "B<--bpp>I<\\ number>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:49 ../../doc/man/wesnoth_editor.6:38
+#: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
 msgstr ""
 
@@ -263,7 +258,7 @@ msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:114 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:114
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -271,13 +266,13 @@ msgid ""
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:114 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:114
 #, no-wrap
 msgid "B<--logdomains>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:117 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:117
 msgid "Dumps a list of all log domains and exits."
 msgstr ""
 
@@ -354,13 +349,13 @@ msgid "runs the game without sounds and music."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:141 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:141
 #, no-wrap
 msgid "B<--path>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:144 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:144
 msgid "prints the name of the game data directory and exits."
 msgstr ""
 
@@ -376,7 +371,7 @@ msgid "prints the runtime documentation for the python API."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:147 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:147
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr ""
@@ -612,14 +607,13 @@ msgid ""
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnoth_editor.6:74
-#: ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnoth_editor.6:77
+#: ../../doc/man/wesnoth.6:241
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr ""
 
@@ -631,34 +625,30 @@ msgid ""
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnoth_editor.6:81
+#: ../../doc/man/wesnoth.6:245
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnoth_editor.6:83
-#: ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnoth_editor.6:84
-#: ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnoth_editor.6:87
-#: ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnoth_editor.6:90
-#: ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -666,8 +656,7 @@ msgid ""
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnoth_editor.6:91
-#: ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr ""
@@ -675,123 +664,6 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:258
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr ""
-
-# type: TH
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "WESNOTH_EDITOR"
-msgstr ""
-
-# type: TH
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "wesnoth_editor"
-msgstr ""
-
-# type: TH
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "Battle for Wesnoth map editor"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:20
-msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:26
-msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:31
-msgid "Battle for B<Wesnoth> map editor."
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:34
-#, no-wrap
-msgid "B<--bpp>\\ number"
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:38
-#, no-wrap
-msgid "B<--datadir>"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:41
-msgid "selects the data directory to use."
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:41
-#, no-wrap
-msgid "B<-f>,B<\\ --fullscreen>"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:44
-msgid "runs the editor in full screen mode."
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:44
-#, no-wrap
-msgid "B<-h>,B<\\ --help>"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:47 ../../doc/man/wesnothd.6:58
-msgid "tells you what the command line options do."
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:47
-#, no-wrap
-msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:66
-msgid "sets screen resolution. Example: B<-r 800x600>"
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:66
-#, no-wrap
-msgid "B<-v>,B<\\ --version>"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:69
-msgid "prints version number and exits."
-msgstr ""
-
-# type: TP
-#: ../../doc/man/wesnoth_editor.6:69
-#, no-wrap
-msgid "B<-w>,B<\\ --windowed>"
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:72
-msgid "runs the editor in windowed mode."
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:79
-msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-"E<lt>ott@gaon.netE<gt>."
-msgstr ""
-
-# type: Plain text
-#: ../../doc/man/wesnoth_editor.6:94
-msgid "B<wesnoth>(6), B<wesnothd>(6)"
 msgstr ""
 
 # type: TH
@@ -860,6 +732,11 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnothd.6:55
 msgid "runs wesnothd as a daemon."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:58
+msgid "tells you what the command line options do."
 msgstr ""
 
 # type: Plain text

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2008-10-01 11:40+0300\n"
+"POT-Creation-Date: 2008-10-04 20:34+0300\n"
 "PO-Revision-Date: 2008-08-13 14:46+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -17,8 +17,7 @@ msgstr ""
 msgid "WESNOTH"
 msgstr "WESNOTH"
 
-#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnoth_editor.6:16
-#: ../../doc/man/wesnothd.6:16
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2007"
 msgstr "2007"
@@ -33,8 +32,7 @@ msgstr "wesnoth"
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
-#: ../../doc/man/wesnothd.6:18
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
 msgstr "命名"
@@ -43,8 +41,7 @@ msgstr "命名"
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr "韋諾之戰，一個回合制奇幻風格的六角戰棋遊戲"
 
-#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
-#: ../../doc/man/wesnothd.6:24
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr "摘要"
@@ -53,8 +50,7 @@ msgstr "摘要"
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 
-#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:27
-#: ../../doc/man/wesnothd.6:40
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnothd.6:40
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "描述"
@@ -80,8 +76,7 @@ msgstr ""
 "戲。通過與電腦AI進行對抗提高自己的技能，當然也可以進入韋諾網路多人對戰。你還"
 "可以創造自己的單位，關卡和戰役，並與所有韋諾玩家分享。"
 
-#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
-#: ../../doc/man/wesnothd.6:45
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnothd.6:45
 #, no-wrap
 msgid "OPTIONS"
 msgstr "選項"
@@ -91,7 +86,7 @@ msgstr "選項"
 msgid "B<--bpp>I<\\ number>"
 msgstr "B<--bpp>I<\\ number>"
 
-#: ../../doc/man/wesnoth.6:49 ../../doc/man/wesnoth_editor.6:38
+#: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
 msgstr "設定每個像素佔多少位子。例如：B<--bpp 32>"
 
@@ -235,7 +230,7 @@ msgstr ""
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
-#: ../../doc/man/wesnoth.6:114 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:114
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -244,12 +239,12 @@ msgstr ""
 "設定debug的級別。B<all>用來支配任意bebug級別。可選的級別有：B<error>，\\ "
 "B<warning>，\\ B<info>，\\ B<debug>。預設的級別是B<error>。"
 
-#: ../../doc/man/wesnoth.6:114 ../../doc/man/wesnoth_editor.6:56
+#: ../../doc/man/wesnoth.6:114
 #, no-wrap
 msgid "B<--logdomains>"
 msgstr "B<--logdomains>"
 
-#: ../../doc/man/wesnoth.6:117 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:117
 msgid "Dumps a list of all log domains and exits."
 msgstr "匯出所有日志列表並退出。"
 
@@ -316,12 +311,12 @@ msgstr "B<--nosound>"
 msgid "runs the game without sounds and music."
 msgstr "以無音樂和音效的方式啟動游戲。"
 
-#: ../../doc/man/wesnoth.6:141 ../../doc/man/wesnoth_editor.6:59
+#: ../../doc/man/wesnoth.6:141
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
-#: ../../doc/man/wesnoth.6:144 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:144
 msgid "prints the name of the game data directory and exits."
 msgstr "顯示遊戲資料庫目錄並退出。"
 
@@ -335,7 +330,7 @@ msgstr "B<--path>"
 msgid "prints the runtime documentation for the python API."
 msgstr ""
 
-#: ../../doc/man/wesnoth.6:147 ../../doc/man/wesnoth_editor.6:62
+#: ../../doc/man/wesnoth.6:147
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
@@ -554,13 +549,12 @@ msgstr ""
 "nogui --multiplayer --controller1=ai --controller2=ai --algorithm2=python_ai "
 "--parm2=python_script:py/my_own_python_ai.py"
 
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnoth_editor.6:74
-#: ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
-#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnoth_editor.6:77
+#: ../../doc/man/wesnoth.6:241
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt>編寫。"
 
@@ -572,32 +566,28 @@ msgstr ""
 "經Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> "
 "and Soliton E<lt>soliton.de@gmail.comE<gt>更動。"
 
-#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnoth_editor.6:81
+#: ../../doc/man/wesnoth.6:245
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "這個說明頁最早由 Cyril Bouthors 撰寫E<lt>cyril@bouthors.orgE<gt>。"
 
-#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnoth_editor.6:83
-#: ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "官方網站: http://www.wesnoth.org/繁體中文翻譯團隊:http://wesnoth-tw.blogspot."
 "com/"
 
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnoth_editor.6:84
-#: ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版權"
 
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnoth_editor.6:87
-#: ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版權 \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnoth_editor.6:90
-#: ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -609,8 +599,7 @@ msgstr ""
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.There is NO warranty; "
 "not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
-#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnoth_editor.6:91
-#: ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "參見"
@@ -618,104 +607,6 @@ msgstr "參見"
 #: ../../doc/man/wesnoth.6:258
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "WESNOTH_EDITOR"
-msgstr "WESNOTH_EDITOR"
-
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "wesnoth_editor"
-msgstr "wesnoth_editor"
-
-#: ../../doc/man/wesnoth_editor.6:16
-#, no-wrap
-msgid "Battle for Wesnoth map editor"
-msgstr "Battle for Wesnoth map editor"
-
-#: ../../doc/man/wesnoth_editor.6:20
-msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "韋諾之戰地圖編輯器"
-
-#: ../../doc/man/wesnoth_editor.6:26
-msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-msgstr "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-
-#: ../../doc/man/wesnoth_editor.6:31
-msgid "Battle for B<Wesnoth> map editor."
-msgstr "Battle for B<Wesnoth> map editor."
-
-#: ../../doc/man/wesnoth_editor.6:34
-#, no-wrap
-msgid "B<--bpp>\\ number"
-msgstr "B<--bpp>\\ number"
-
-#: ../../doc/man/wesnoth_editor.6:38
-#, no-wrap
-msgid "B<--datadir>"
-msgstr "B<--datadir>"
-
-#: ../../doc/man/wesnoth_editor.6:41
-msgid "selects the data directory to use."
-msgstr "選擇想使用的資料目錄。"
-
-#: ../../doc/man/wesnoth_editor.6:41
-#, no-wrap
-msgid "B<-f>,B<\\ --fullscreen>"
-msgstr "B<-f>,B<\\ --fullscreen>"
-
-#: ../../doc/man/wesnoth_editor.6:44
-msgid "runs the editor in full screen mode."
-msgstr "允許地圖編輯器使用全螢幕模式"
-
-#: ../../doc/man/wesnoth_editor.6:44
-#, no-wrap
-msgid "B<-h>,B<\\ --help>"
-msgstr "B<-h>,B<\\ --help>"
-
-#: ../../doc/man/wesnoth_editor.6:47 ../../doc/man/wesnothd.6:58
-msgid "tells you what the command line options do."
-msgstr "顯示指令的功用。"
-
-#: ../../doc/man/wesnoth_editor.6:47
-#, no-wrap
-msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-msgstr "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-
-#: ../../doc/man/wesnoth_editor.6:66
-msgid "sets screen resolution. Example: B<-r 800x600>"
-msgstr "設定螢幕解析度。例如： B<-r 800x600>"
-
-#: ../../doc/man/wesnoth_editor.6:66
-#, no-wrap
-msgid "B<-v>,B<\\ --version>"
-msgstr "B<-v>,B<\\ --version>"
-
-#: ../../doc/man/wesnoth_editor.6:69
-msgid "prints version number and exits."
-msgstr "顯示版本並退出。"
-
-#: ../../doc/man/wesnoth_editor.6:69
-#, no-wrap
-msgid "B<-w>,B<\\ --windowed>"
-msgstr "B<-w>,B<\\ --windowed>"
-
-#: ../../doc/man/wesnoth_editor.6:72
-msgid "runs the editor in windowed mode."
-msgstr "使用視窗模式執行地圖編輯器。"
-
-#: ../../doc/man/wesnoth_editor.6:79
-msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-"E<lt>ott@gaon.netE<gt>."
-msgstr ""
-"經Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon."
-"netE<gt>更動。"
-
-#: ../../doc/man/wesnoth_editor.6:94
-msgid "B<wesnoth>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth>(6), B<wesnothd>(6)"
 
 #: ../../doc/man/wesnothd.6:16
 #, no-wrap
@@ -781,6 +672,10 @@ msgstr "B<-d, --daemon>"
 #: ../../doc/man/wesnothd.6:55
 msgid "runs wesnothd as a daemon."
 msgstr "以安全模式執行韋諾。"
+
+#: ../../doc/man/wesnothd.6:58
+msgid "tells you what the command line options do."
+msgstr "顯示指令的功用。"
 
 #: ../../doc/man/wesnothd.6:72
 msgid ""
@@ -1102,6 +997,70 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+#~ msgid "WESNOTH_EDITOR"
+#~ msgstr "WESNOTH_EDITOR"
+
+#~ msgid "wesnoth_editor"
+#~ msgstr "wesnoth_editor"
+
+#~ msgid "Battle for Wesnoth map editor"
+#~ msgstr "Battle for Wesnoth map editor"
+
+#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
+#~ msgstr "韋諾之戰地圖編輯器"
+
+#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
+#~ msgstr "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
+
+#~ msgid "Battle for B<Wesnoth> map editor."
+#~ msgstr "Battle for B<Wesnoth> map editor."
+
+#~ msgid "B<--bpp>\\ number"
+#~ msgstr "B<--bpp>\\ number"
+
+#~ msgid "B<--datadir>"
+#~ msgstr "B<--datadir>"
+
+#~ msgid "selects the data directory to use."
+#~ msgstr "選擇想使用的資料目錄。"
+
+#~ msgid "B<-f>,B<\\ --fullscreen>"
+#~ msgstr "B<-f>,B<\\ --fullscreen>"
+
+#~ msgid "runs the editor in full screen mode."
+#~ msgstr "允許地圖編輯器使用全螢幕模式"
+
+#~ msgid "B<-h>,B<\\ --help>"
+#~ msgstr "B<-h>,B<\\ --help>"
+
+#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
+#~ msgstr "B<--log->levelB<=>domain1B<,>domain2B<,>..."
+
+#~ msgid "sets screen resolution. Example: B<-r 800x600>"
+#~ msgstr "設定螢幕解析度。例如： B<-r 800x600>"
+
+#~ msgid "B<-v>,B<\\ --version>"
+#~ msgstr "B<-v>,B<\\ --version>"
+
+#~ msgid "prints version number and exits."
+#~ msgstr "顯示版本並退出。"
+
+#~ msgid "B<-w>,B<\\ --windowed>"
+#~ msgstr "B<-w>,B<\\ --windowed>"
+
+#~ msgid "runs the editor in windowed mode."
+#~ msgstr "使用視窗模式執行地圖編輯器。"
+
+#~ msgid ""
+#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
+#~ "E<lt>ott@gaon.netE<gt>."
+#~ msgstr ""
+#~ "經Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon."
+#~ "netE<gt>更動。"
+
+#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
 
 #~ msgid "loads the file savegame from the standard save game directory."
 #~ msgstr "從標準存檔目錄讀取檔案"

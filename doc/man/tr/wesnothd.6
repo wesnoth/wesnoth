@@ -33,9 +33,9 @@ wesnothd \- \fBWesnoth\fPSavaşı çok oyunculu ağ sunucusu
 .
 .SH AÇIKLAMA
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Wesnoth Savaşı çok oyunculu oyunlarını yönetir. Wesnoth istemcisinden veya
+soket üzerinden hangi komutların (/query ...) kabul edildiğini öğrenmek için
+http://www.wesnoth.org/wiki/ServerAdministration adresine bakınız.
 .
 .SH SEÇENEKLER
 .
@@ -91,9 +91,10 @@ key="\fIdeğer\fP,\fIdeğer\fP,..."
 .SS "Genel anahtar (key) isimleri:"
 .
 .TP 
-\fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+\fBban_kayıt\-dosyası\fP
+Sunucunun okuyup yazabildiği bir (gzip sıkıştırmalı) dosyanın göreli veya
+tam yolu. Sunucuya girişi yasaklanan oyuncular bu dosyaya kaydedilir ve
+sunucu başlatılırken okunur.
 .TP 
 \fBconnections_allowed\fP
 Aynı IP adresinden izin verilen bağlantı sayısı. \fB0\fP sonsuz anlamına
@@ -105,10 +106,10 @@ karakterlerinden `*' ve `?' desteklenir. Daha ayrıntılı bilgi için
 \fBglob\fP(7) sayfasına bakınız. Öntanımlı (bir şey belirtilmezse kullanılacak)
 değerler: \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP
 .TP 
-\fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+\fBfifo_yolu\fP
+Sunucu komutlarının yansılandığı fifo yolu (wesnoth'tan /query ... ile aynı)
+Yol belirtilmezse derleme sırasında belirtilen yol
+(/var/run/socket/wesnothd/socket) öntanımlıdır.
 .TP 
 \fBmax_messages\fP
  \fBmessages_time_period\fP süresince izin verilen ileti sayısı. \fB4\fP
@@ -125,9 +126,9 @@ Günün sözü.
 Yönetici yetkilerini kazanmak için kullanılacak parola. Genellikle `admin '
 ile başlar.
 .TP 
-\fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+\fByeniden_başlatma_komutu\fP
+`restart' komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun
+kullanacağı komut. (Sadece fifo üzerinden kullanılabilir.)
 .TP 
 \fBversions_accepted\fP
 Sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
@@ -154,24 +155,24 @@ Yönlendirilecek sürümlerin virgül ayraçlı listesi. Dosya kalıbı karakter
 bakımından \fBversions_accepted\fP ile aynı yöntem kullanılır.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Geçici sunucuya giriş yasağı süresi için uygun sözcüklerin
+tanımlandığı etiket.
 .RS
 .TP 
-\fBname\fP
-The name used to reference the ban time.
+\fBisim\fP
+Yasaklama süresine atfedilen isim.
 .TP 
-\fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+\fBsüre\fP
+Biçemi: %d[%s[%d%s[...]]]
+Burada %s yerine (saniye)s, (dakika)m, (saat)h, (gün)D, (ay)M, (sene)Y; %d
+yerine de bir numara belirtilebilir. Bir zaman birimi belirteci
+kullanılmamışsa dakika (m) öntanımlıdır. Örneğin time="1D12h30m"
+belirtilmişse 1 gün 12 saat 30 dakikalık yasak süresi konmuş olur.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Sunucuya bir vekil sunucu gibi çalışacağını ve bağlanan
+istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
+etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
 .
 .SH YAZAN
 .
