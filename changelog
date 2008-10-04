@@ -40,6 +40,8 @@ Version 1.5.4+svn:
    * Added a new image widget.
    * Added a feature to draw hex coordinates and/or terrain code on every hex.
      Available in-game via :sc and :tc commands, and in editor2's menu.
+   * Move the attack indicator on it's own layer and show at a higher layer so
+     its view won't be obscured by the terrain (bug #12401).
  * WML engine:
    * New command, [store_time_of_day], makes it possible to store ToD info
      in a WML array/container.

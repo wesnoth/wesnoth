@@ -384,10 +384,10 @@ void game_display::draw_hex(const gamemap::location& loc)
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, drawing_order, tblit(xpos, ypos,
 			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED)));
 	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, drawing_order, tblit(xpos, ypos,
 			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED)));
 	}
 

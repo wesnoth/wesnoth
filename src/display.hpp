@@ -674,6 +674,7 @@ public:
 									* Unit bars and overlays are drawn on this
 									* layer (for testing here).
 									*/
+		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
 		LAYER_MOVE_INFO,           /**< Movement info (defense%, ect...). */
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
