@@ -53,14 +53,6 @@ bundle_contents=@PACKAGE_NAME@.app/Contents
 	echo "APPL????" > "$(bundle_contents)/PkgInfo"
 	$(INSTALL_PROGRAM) $< "$(bundle_contents)/MacOS/@PACKAGE_NAME@"
 
-# Create Macintosh app bundle from the editor
-bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
-@PACKAGE@_editor_bundle: src/@PACKAGE@_editor
-	mkdir -p "$(bundle_editor_contents)/MacOS"
-	mkdir -p "$(bundle_editor_contents)/Resources"
-	echo "APPL????" > "$(bundle_editor_contents)/PkgInfo"
-	$(INSTALL_PROGRAM) $< "$(bundle_editor_contents)/MacOS/@PACKAGE_NAME@ Editor"
-
 # Run this before release to check that POTs and data are in good shape
 sanity-check:
 	cd utils; ./sanity_check
@@ -156,7 +148,7 @@ dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata); $(finddocdist); $(findnoinst); $(findnoinst_headers); $(findextrapo); $(findsconscript); $(findsconstruct); $(findsconsdir); $(findcmakelists); $(findcmakedir); $(findcmakeextrafiles) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
-dist_noinst_DATA = copyright changelog players_changelog campaign_server.dsp editor.dev editor_gcc4.dev map_editor.dsp server.dev server.dsp unit_test.dev wesnothd.dev wesnoth.dev wesnothd_gcc4.dev wesnoth.dsp wesnoth.dsw wesnoth_gcc4.dev wesnoth.kdevelop
+dist_noinst_DATA = copyright changelog players_changelog campaign_server.dsp server.dev server.dsp unit_test.dev wesnothd.dev wesnoth.dev wesnothd_gcc4.dev wesnoth.dsp wesnoth.dsw wesnoth_gcc4.dev wesnoth.kdevelop
 
 uninstall-hook:
 	if test -d $(pkgdatadir) ; then rm -r $(pkgdatadir) ; fi

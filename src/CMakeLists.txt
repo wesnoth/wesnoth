@@ -306,10 +306,10 @@ SET(wesnoth-main_SRC
     widgets/scrollpane.cpp
 )
 
-# used with editor2 option in the wesnoth target
-IF(ENABLE_EDITOR2)
+# used with editor option in the wesnoth target
+IF(ENABLE_EDITOR)
 
-SET(wesnoth-editor2_SRC
+SET(wesnoth-editor_SRC
     gui/dialogs/editor_generate_map.cpp
     gui/dialogs/editor_new_map.cpp
     gui/dialogs/editor_resize_map.cpp
@@ -330,17 +330,17 @@ SET(wesnoth-editor2_SRC
 SET(wesnoth_SRC
     game.cpp
     ${wesnoth-main_SRC}
-    ${wesnoth-editor2_SRC}
+    ${wesnoth-editor_SRC}
 )
 
-ELSE(ENABLE_EDITOR2)
+ELSE(ENABLE_EDITOR)
 
 SET(wesnoth_SRC
     game.cpp
     ${wesnoth-main_SRC}
 )
 
-ENDIF(ENABLE_EDITOR2)
+ENDIF(ENABLE_EDITOR)
 
 add_executable(wesnoth ${wesnoth_SRC})
 target_link_libraries(wesnoth wesnoth-core wesnoth-game ${game-external-libs})
