@@ -1491,9 +1491,34 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		prepare_move();
 		if(move) {
 			std::cerr << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
-			unit_map::iterator i = units_.find(move->src());
-			if( (possible_moves_.count(move->src()) > 0) && (i->second.movement_left() != 0) ) {
-				move_unit(move->src(), move->dst(), possible_moves_);
+
+			unit_map::iterator unit_it = units_.find(move->src());
+			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
+				std::map<gamemap::location,paths>::iterator path = possible_moves_.find(move->src());
+
+				gamemap::location destination = move->dst();
+
+				//check if destination is within unit's reach
+				if( path->second.routes.count(move->dst()) == 0) {
+					//destination is too far, check where unit can go
+					shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
+					paths::route route = a_star_search(move->src(), move->dst(), 1000.0, &calc,
+						get_info().map.w(), get_info().map.h());
+
+					int movement = unit_it->second.movement_left();
+					
+					for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
+				
+						if ( move_cost > movement ) {
+							break;
+						}
+						destination = *loc_iter;
+						movement -= move_cost;
+					}
+				}
+
+				move_unit(move->src(), destination, possible_moves_);
 				made_move = true;
 			}
 		} else if(attack) {
@@ -1577,8 +1602,9 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			return false;
 		} else {
 			//this information is unneded when evaluating formulas form commandline
-			if (!commandline)
+			if (!commandline) {
 				std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
+			}
 		}
 	}
 
