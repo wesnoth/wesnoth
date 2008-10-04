@@ -38,7 +38,7 @@ def OptionalPath(key, val, env):
 
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd,test", Split("wesnoth wesnothd wesnoth_editor campaignd cutter exploder test")),
+        "wesnoth,wesnothd,test", Split("wesnoth wesnothd campaignd cutter exploder test")),
     EnumOption('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "profile","base"]),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
@@ -132,11 +132,11 @@ Important switches include:
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
 
-    wesnoth wesnoth_editor wesnothd campaignd exploder cutter test
+    wesnoth wesnothd campaignd exploder cutter test
 
 You can make the following special build targets:
 
-    all = wesnoth wesnoth_editor exploder cutter wesnothd campaignd (*).
+    all = wesnoth exploder cutter wesnothd campaignd (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
@@ -154,7 +154,6 @@ You can make the following special build targets:
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
     wesnoth-bundle = make Mac OS application bundle from game (*)
-    wesnoth-editor-bundle = make Mac OS application bundle from editor (*).
     sanity-check = run a pre-release sanity check on the distribution.
     manual = regenerate English-language manual and, possibly, localized manuals if appropriate xmls exist.
 

@@ -27,10 +27,6 @@ bin_SCRIPTS += wmlscope wmllint wmlindent wesnoth_addon_manager
 CLEANFILES += $(bin_SCRIPTS)
 endif
 
-if EDITOR
-bin_PROGRAMS += wesnoth_editor
-endif
-
 noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 
 pkgdatadir=$(datadir)/@DATADIR@
@@ -193,25 +189,6 @@ wesnoth_SOURCES = \
 wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
-#############################################################################
-#    Editor                                                                 #
-#############################################################################
-
-wesnoth_editor_SOURCES = \
-	editor/editor.cpp \
-	editor/editor_layout.cpp \
-	editor/map_manip.cpp \
-	editor/editor_display.cpp \
-	editor/editor_palettes.cpp \
-	editor/editor_main.cpp \
-	editor/editor_dialogs.cpp \
-	editor/editor_undo.cpp \
-	animated_editor.cpp \
-	generic_event.cpp \
-	tooltips.cpp 
-
-wesnoth_editor_LDADD = $(INTERNALLIBS) $(THELIBS) $(FONTCONFIG_LIBS)
-wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
 #    Wesnothd Server                                                        #
@@ -480,7 +457,7 @@ endif
 CLEANFILES += TAGS
 
 TAGS:
-	etags -l c++ $(wesnoth_SOURCES) $(wesnoth_editor_SOURCES) $(wesnothd_SOURCES) $(campaignd_SOURCES) $(exploder_SOURCES) $(cutter_SOURCES) $(libwesnoth_core_a_SOURCES) $(libwesnoth__a_SOURCES) 
+	etags -l c++ $(wesnoth_SOURCES) $(wesnothd_SOURCES) $(campaignd_SOURCES) $(exploder_SOURCES) $(cutter_SOURCES) $(libwesnoth_core_a_SOURCES) $(libwesnoth__a_SOURCES) 
 
 #############################################################################
 #    Scripts

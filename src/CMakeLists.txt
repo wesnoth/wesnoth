@@ -48,14 +48,6 @@ set( server-external-libs
     ${SDLNET_LIBRARY}
 )
 
-set( editor-external-libs
-    ${common-external-libs}
-    ${SDLIMAGE_LIBRARY}
-    ${SDLMIXER_LIBRARY}
-    ${SDLTTF_LIBRARY}
-    ${FONTCONFIG_LDFLAGS}
-)
-
 set( tools-external-libs
     ${common-external-libs}
     ${SDLIMAGE_LIBRARY}
@@ -69,13 +61,11 @@ endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   include_directories( ${FRIBIDI_INCLUDE_PATH} )
   set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
-  set(editor-external-libs ${editor-external-libs} ${FRIBIDI_LIBRARIES})
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
 if(X11_FOUND)
   include_directories( ${X11_INCLUDE_DIR} )
   set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
-  set(editor-external-libs ${editor-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
 #
 # Create targets for revision.hpp
@@ -359,32 +349,6 @@ set_target_properties(wesnoth PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BI
 install(TARGETS wesnoth DESTINATION ${BINDIR})
 
 ENDIF(ENABLE_GAME)
-
-########### Editor ###############
-
-IF(ENABLE_EDITOR)
-
-SET(wesnoth_editor_SRC
-    editor/editor.cpp
-    editor/editor_layout.cpp
-    editor/map_manip.cpp
-    editor/editor_display.cpp
-    editor/editor_palettes.cpp
-    editor/editor_main.cpp
-    editor/editor_dialogs.cpp
-    editor/editor_undo.cpp
-    animated_editor.cpp
-    generic_event.cpp
-    tooltips.cpp 
-)
-
-add_executable(wesnoth_editor ${wesnoth_editor_SRC})
-target_link_libraries(wesnoth_editor wesnoth-core wesnoth-game ${editor-external-libs})
-set_target_properties(wesnoth_editor PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX})
-
-install(TARGETS wesnoth_editor DESTINATION ${BINDIR})
-
-ENDIF(ENABLE_EDITOR)
 
 ########### Wesnothd Server ###############
 

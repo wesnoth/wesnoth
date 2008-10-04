@@ -222,11 +222,6 @@ AC_ARG_ENABLE([campaign_server],
 	      [campaignserver=$enableval],
 	      [campaignserver=no])
 
-AC_ARG_ENABLE([editor],
-              AS_HELP_STRING([--enable-editor], [enable compilation of map editor]),
-	      [editor=$enableval],
-	      [editor=no])
-
 AC_ARG_ENABLE([editor2],
             AS_HELP_STRING([--enable-editor2], [build the new map editor in the game executable]),
 	      [editor2=$enableval],
@@ -293,13 +288,12 @@ AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([TESTS], [test x$tests = xyes])
-AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([EDITOR2], [test x$editor2 = xyes])
 AM_CONDITIONAL([BANDWIDTH_MONITOR], [test x$bandwidth_monitor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
-AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes || test x$editor2 = xyes ]])
+AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor2 = xyes ]])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 
 if test x$editor2 = xno
@@ -989,7 +983,6 @@ AC_SUBST([SOUND_FILES])
 AC_CONFIG_FILES([Makefile
 		 po/Makefile
 		 po/wesnoth/Makefile.in
-		 po/wesnoth-editor/Makefile.in
 		 po/wesnoth-test/Makefile.in
 		 po/wesnoth-lib/Makefile.in
 		 po/wesnoth-units/Makefile.in

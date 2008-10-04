@@ -70,7 +70,6 @@ set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo s
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
-option(ENABLE_EDITOR "Enable compilation of map editor")
 option(ENABLE_EDITOR2 "Enable compilation of the new map editor into the game executable" ON)
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
@@ -138,10 +137,10 @@ endif()
 # Libraries that are only required by some targets
 #
 
-if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_EDITOR OR ENABLE_TESTS)
+if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
   find_package( SDL_image 1.2 REQUIRED )
 endif()
-if(ENABLE_GAME OR ENABLE_EDITOR OR ENABLE_TESTS)
+if(ENABLE_GAME OR ENABLE_TESTS)
   find_package( SDL_mixer 1.2 REQUIRED )
   find_package( SDL_ttf 2.0.8 REQUIRED )
 endif()

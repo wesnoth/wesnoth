@@ -108,28 +108,6 @@ const struct {
 	  N_("Team 1"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false, hotkey::SCOPE_GAME },
 
-	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_QUIT, "editquit", N_("Quit Editor"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_NEW_MAP, "editnewmap", N_("New Map"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_LOAD_MAP, "editloadmap", N_("Load Map"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_SAVE_MAP, "editsavemap", N_("Save Map"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_SAVE_AS, "editsaveas", N_("Save As"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_SET_START_POS, "editsetstartpos", N_("Set Player's keep"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", N_("Flood Fill"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_FILL_SELECTION, "editfillselection", N_("Fill Selection"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_ROTATE_SELECTION, "editrotateselection", N_("Rotate Selection"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_CUT, "editcut", N_("Cut"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_COPY, "editcopy", N_("Copy"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_PASTE, "editpaste", N_("Paste"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_REVERT, "editrevert", N_("Revert from Disk"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_RESIZE, "editresize", N_("Resize Map"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_FLIP, "editflip", N_("Flip Map"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_SELECT_ALL, "editselectall", N_("Select All"),true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_DRAW, "editdraw", N_("Draw Terrain"), true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_REFRESH, "editrefresh", N_("Refresh Image Cache"), true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_AUTO_UPDATE, "editautoupdate", N_("Delay transition updates"), true, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_EDIT_UPDATE, "editupdate", N_("Update transitions"), true, hotkey::SCOPE_GENERAL },
-
 #ifndef DISABLE_EDITOR2
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SETTINGS, "editor-settings", N_("Editor Settings"), false, hotkey::SCOPE_EDITOR },
@@ -846,70 +824,6 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			user_command_3();
 			break;
 #endif
-
-		case HOTKEY_EDIT_SET_TERRAIN:
-			edit_set_terrain();
-			break;
-		case HOTKEY_EDIT_QUIT:
-			edit_quit();
-			break;
-		 case HOTKEY_EDIT_NEW_MAP:
-			edit_new_map();
-			break;
-		 case HOTKEY_EDIT_LOAD_MAP:
-			edit_load_map();
-			break;
-		 case HOTKEY_EDIT_SAVE_MAP:
-			edit_save_map();
-			break;
-		 case HOTKEY_EDIT_SAVE_AS:
-			edit_save_as();
-			break;
-		 case HOTKEY_EDIT_SET_START_POS:
-			edit_set_start_pos();
-			break;
-		 case HOTKEY_EDIT_FLOOD_FILL:
-			edit_flood_fill();
-			break;
-		 case HOTKEY_EDIT_FILL_SELECTION:
-			edit_fill_selection();
-			break;
-		 case HOTKEY_EDIT_ROTATE_SELECTION:
-			edit_rotate_selection();
-			break;
-		 case HOTKEY_EDIT_CUT:
-			edit_cut();
-			break;
-		 case HOTKEY_EDIT_PASTE:
-			edit_paste();
-			break;
-		 case HOTKEY_EDIT_COPY:
-			edit_copy();
-			break;
-		 case HOTKEY_EDIT_REVERT:
-			edit_revert();
-			break;
-		 case HOTKEY_EDIT_RESIZE:
-			edit_resize();
-			break;
-		 case HOTKEY_EDIT_FLIP:
-			edit_flip();
-			break;
-		 case HOTKEY_EDIT_SELECT_ALL:
-			edit_select_all();
-			break;
-		 case HOTKEY_EDIT_DRAW:
-			edit_draw();
-			break;
-		 case HOTKEY_EDIT_REFRESH:
-			edit_refresh();
-			break;
-		 case HOTKEY_EDIT_UPDATE:
-			edit_update();
-			break;
-		 case HOTKEY_EDIT_AUTO_UPDATE:
-			edit_auto_update();
-			break;
 
 		 case HOTKEY_LANGUAGE:
 			change_language();

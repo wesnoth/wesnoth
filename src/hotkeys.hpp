@@ -59,16 +59,6 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_NEXT_SIDE, HOTKEY_REPLAY_SHOW_EVERYTHING,
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
-
-	//editing specific commands
-	HOTKEY_EDIT_SET_TERRAIN,
-	HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP,
-	HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
-	HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP, HOTKEY_EDIT_FLOOD_FILL,
-	HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_ROTATE_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
-	HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
-	HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
-	HOTKEY_EDIT_REFRESH, HOTKEY_EDIT_UPDATE, HOTKEY_EDIT_AUTO_UPDATE,
 	
 #ifndef DISABLE_EDITOR2
 	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
@@ -300,29 +290,6 @@ public:
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}
 	virtual void replay_skip_animation() {}
-
-	// Map editor stuff.
-	virtual void edit_set_terrain() {}
-	virtual void edit_quit() {}
-	virtual void edit_new_map() {}
-	virtual void edit_load_map() {}
-	virtual void edit_save_map() {}
-	virtual void edit_save_as() {}
-	virtual void edit_set_start_pos() {}
-	virtual void edit_flood_fill() {}
-	virtual void edit_fill_selection() {}
-	virtual void edit_rotate_selection() {}
-	virtual void edit_cut() {}
-	virtual void edit_copy() {}
-	virtual void edit_paste() {}
-	virtual void edit_revert() {}
-	virtual void edit_resize() {}
-	virtual void edit_flip() {}
-	virtual void edit_select_all() {}
-	virtual void edit_draw() {}
-	virtual void edit_refresh() {}
-	virtual void edit_update() {}
-	virtual void edit_auto_update() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
