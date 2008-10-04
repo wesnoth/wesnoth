@@ -632,9 +632,9 @@ public:
 		int y;                      /**< y screen coordinate to render at. */
 		std::vector<surface> surf;  /**< surface(s) to render. */
 		SDL_Rect clip;              /**< 
-									 * The clipping area of the source if
-									 * ommitted the entire source is used.
-									 */
+		                             * The clipping area of the source if
+		                             * ommitted the entire source is used.
+		                             */
 	};
 
 	/**
@@ -645,44 +645,44 @@ public:
 	 */
 	enum tdrawing_layer{
 		LAYER_TERRAIN_BG,          /**< 
-									* Layer for the terrain drawn behind the
-									* unit.
-									*/
+		                            * Layer for the terrain drawn behind the
+		                            * unit.
+		                            */
 		LAYER_TERRAIN_TMP_BG,      /**< 
-									* Layer which holds stuff that needs to be
-									* sorted out further, but under units.
-									*/
+		                            * Layer which holds stuff that needs to be
+		                            * sorted out further, but under units.
+		                            */
 		LAYER_UNIT_BG,             /**< Used for the ellipse behind the unit. */
 		LAYER_UNIT_FIRST,          /**< Reserve layeres to be selected for WML. */
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
 		LAYER_UNIT_FG,             /**< 
-									* Used for the ellipse in front of the
-									* unit.
-									*/
+		                            * Used for the ellipse in front of the
+		                            * unit.
+		                            */
 		LAYER_UNIT_FAKE,           /**< The fake unit is drawn on this layer. */
 		LAYER_TERRAIN_FG,          /**< 
-									* Layer for the terrain drawn in front of
-									* the unit.
-									*/
+		                            * Layer for the terrain drawn in front of
+		                            * the unit.
+		                            */
 		LAYER_TERRAIN_TMP_FG,      /**< 
-									* Layer which holds stuff that needs to be
-									* sorted out further, but on top of units.
-									*/
+		                            * Layer which holds stuff that needs to be
+		                            * sorted out further, but on top of units.
+		                            */
 		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
 		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
 		LAYER_UNIT_BAR,            /**< 
-									* Unit bars and overlays are drawn on this
-									* layer (for testing here).
-									*/
+		                            * Unit bars and overlays are drawn on this
+		                            * layer (for testing here).
+		                            */
 		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
 		LAYER_MOVE_INFO,           /**< Movement info (defense%, ect...). */
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
 
 		LAYER_LAST_LAYER           /**< 
-									* Don't draw to this layer it's a dummy to
-									* size the vector.
-									*/
+		                            * Don't draw to this layer it's a dummy to
+		                            * size the vector.
+		                            */
 		};
 
 	/**
