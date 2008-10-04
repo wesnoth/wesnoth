@@ -456,6 +456,7 @@ SET(test_SRC
 	tests/test_config_cache.cpp
 	tests/test_formula_ai.cpp
 	tests/test_network_worker.cpp
+    tests/test_policy.cpp
 	tests/test_team.cpp
     tests/test_util.cpp
 	tests/gui/test_save_dialog.cpp
