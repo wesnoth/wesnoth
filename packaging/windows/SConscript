@@ -3,7 +3,7 @@ from os.path import join
 from glob import glob
 Import("env")
 
-binaries = ["wesnoth", "wesnoth_editor"]
+binaries = ["wesnoth"]
 for bin in binaries:
     #icon = env.Command(bin + "-icon.ico", join("../../icons", bin + "-icon.png"), "$IM_CONVERT $SOURCE $TARGET")
     try:

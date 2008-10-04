@@ -53,7 +53,6 @@ opts.AddOptions(
     PathOption('datarootdir', 'sets the root of data directories to a non-default location', "share", PathOption.PathAccept),
     PathOption('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathOption.PathAccept),
     PathOption('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathOption.PathAccept),
-    BoolOption('editor2', 'set to build the new map editor in the "wesnoth" target (inside the game)', True),
     PathOption('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathOption.PathAccept),
     BoolOption('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathOption('localedirname', 'sets the locale data directory to a non-default location', "translations", PathOption.PathAccept),
@@ -215,7 +214,7 @@ if env["prereqs"]:
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
-        conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, wesnoth_editor, cutter and exploder cannot be built.")
+        conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
 
     have_X = False
     if env["PLATFORM"] != "win32":
@@ -294,9 +293,6 @@ if env['lowmem']:
 if env['internal_data']:
     env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
-if not env['editor2']:
-    env.Append(CPPDEFINES = "DISABLE_EDITOR2")
-
 if have_X:
     env.Append(CPPDEFINES = "_X11")
 
@@ -329,7 +325,7 @@ else:
 Export(Split("env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))
 
-binaries = Split("wesnoth wesnoth_editor wesnothd cutter exploder campaignd test")
+binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
     "base"    : dict(CXXFLAGS = "-O2"),    # Don't build in subdirectory
     "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3")),
@@ -407,7 +403,7 @@ if env['nls']:
     installable_subs.append("translations")
 if env['nls'] and env['PLATFORM'] != 'win32':
     installable_subs.append("locales")
-clientside = filter(lambda x : x, [wesnoth, wesnoth_editor, cutter, exploder])
+clientside = filter(lambda x : x, [wesnoth, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
@@ -460,26 +456,6 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
                          "icons/wesnoth.desktop"))
 InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
-# The editor and associated resources
-env.Alias("install-wesnoth_editor", [
-    env.InstallWithSuffix(bindir, wesnoth_editor),
-    env.Install(os.path.join(mandir, "man6"),
-                                     "doc/man/wesnoth_editor.6"),
-                                     install_data, install_manual])
-if have_client_prereqs and have_X and env["desktop_entry"]:
-    if sys.platform == "darwin":
-        env.Alias("install-wesnoth_editor",
-            env.Install(icondir,
-                            "icons/wesnoth_editor-icon-Mac.png"))
-    else:
-        env.Alias("install-wesnoth_editor",
-            env.Install(icondir,
-                            "icons/wesnoth_editor-icon.png"))
-    env.Alias("install-wesnoth_editor",
-        env.Install(desktopdir,
-                        "icons/wesnoth_editor.desktop"))
-InstallLocalizedManPage("install-wesnoth_editor", "wesnoth_editor.6", env)
-
 # Python tools
 env.Alias("install-pytools", [
     env.Install(bindir,
@@ -517,7 +493,7 @@ env.Alias("install-exploder", env.InstallWithSuffix(bindir, exploder))
 
 # Compute things for default install based on which targets have been created.
 install = env.Alias('install', [])
-for installable in ('wesnoth', 'wesnoth_editor',
+for installable in ('wesnoth',
                     'wesnothd', 'campaignd',
                     'exploder', 'cutter'):
     if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
@@ -582,7 +558,7 @@ env.Alias('data-dist', data_tarball)
 # Windows installer
 #
 
-env.WindowsInstaller([wesnoth, wesnoth_editor, wesnothd, Dir(installable_subs)] + glob("*.dll") + Split("README copyright COPYING"))
+env.WindowsInstaller([wesnoth, wesnothd, Dir(installable_subs)] + glob("*.dll") + Split("README copyright COPYING"))
 
 #
 # Making Mac OS X application bundles
@@ -596,15 +572,6 @@ env.Alias("wesnoth-bundle",
               Copy("${TARGET}/Contents/MacOS/wesnoth", "wesnoth"),
               ]))
 env.Clean(all, "Battle For Wesnoth.app")    
-env.Alias("wesnoth-editor-bundle",
-          env.Command("Battle For Wesnoth Editor.app", "wesnoth_editor", [
-              Mkdir("${TARGET}/Contents"),
-              Mkdir("${TARGET}/Contents/MacOS"),
-              Mkdir("${TARGET}/Contents/Resources"),
-              Action('echo "APPL????" > "${TARGET}/Contents/PkgInfo"'),
-              Copy("${TARGET}/Contents/MacOS/wesnoth_editor", "wesnoth_editor"),
-              ]))
-env.Clean(all, "Battle For Wesnoth Editor.app")
 
 #
 # Sanity checking

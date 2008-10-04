@@ -254,7 +254,6 @@ wesnoth_sources.extend(python_env.Object(Split("""
     multiplayer_connect.cpp
     """)))
 
-# used with editor2 option in the wesnoth target
 wesnoth_editor2_sources = Split("""
     gui/dialogs/editor_generate_map.cpp
     gui/dialogs/editor_new_map.cpp
@@ -273,8 +272,7 @@ wesnoth_editor2_sources = Split("""
     editor2/mouse_action.cpp
     """)
     
-if env['editor2']:
-    wesnoth_sources += wesnoth_editor2_sources
+wesnoth_sources += wesnoth_editor2_sources
 
 libwesnoth_extras = env.Library("wesnoth_extras", wesnoth_sources)
 #
@@ -298,19 +296,6 @@ SConsEnvironment.WesnothProgram = WesnothProgram
 game_cpp = python_env.Object("game.cpp");
 
 env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
-
-wesnoth_editor_sources = Split("""
-    editor/editor.cpp
-    editor/editor_layout.cpp
-    editor/map_manip.cpp
-    editor/editor_display.cpp
-    editor/editor_palettes.cpp
-    editor/editor_main.cpp
-    editor/editor_dialogs.cpp
-    editor/editor_undo.cpp
-    animated_editor.cpp
-    """)
-env.WesnothProgram("wesnoth_editor", wesnoth_editor_sources + [libwesnoth_core, libwesnoth_sdl, libwesnoth, env["wesnoth_editor_res"]], have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp
