@@ -10,10 +10,6 @@ if SERVER
 INSTALL_MAN_PAGES += wesnothd.6
 endif
 
-if EDITOR
-INSTALL_MAN_PAGES += wesnoth_editor.6
-endif
-
 install-data-hook:
 	mkdir -p $(DESTDIR)$(mandir)/man6 ; \
 	for j in $(INSTALL_MAN_PAGES); do \

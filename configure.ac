@@ -222,10 +222,10 @@ AC_ARG_ENABLE([campaign_server],
 	      [campaignserver=$enableval],
 	      [campaignserver=no])
 
-AC_ARG_ENABLE([editor2],
-            AS_HELP_STRING([--enable-editor2], [build the new map editor in the game executable]),
-	      [editor2=$enableval],
-	      [editor2=yes])
+AC_ARG_ENABLE([editor],
+            AS_HELP_STRING([--disable-editor], [disable the map editor in the game executable]),
+	      [editor=$enableval],
+	      [editor=yes])
 
 AC_ARG_ENABLE([tools],
               AS_HELP_STRING([--enable-tools], [enable building and installation of tools for artists and WML maintainers]),
@@ -288,15 +288,15 @@ AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([TESTS], [test x$tests = xyes])
-AM_CONDITIONAL([EDITOR2], [test x$editor2 = xyes])
+AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([BANDWIDTH_MONITOR], [test x$bandwidth_monitor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
-AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor2 = xyes ]])
+AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes ]])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 
-if test x$editor2 = xno
+if test x$editor = xno
 then
 	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR2"
 fi

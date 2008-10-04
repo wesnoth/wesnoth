@@ -155,8 +155,8 @@ wesnoth_source = \
 	widgets/drop_target.cpp \
 	widgets/scrollpane.cpp
     
-# used with editor2 option in the wesnoth target
-wesnoth_editor2_SOURCES = \
+# used with editor option in the wesnoth target
+wesnoth_editor_SOURCES = \
 	gui/dialogs/editor_generate_map.cpp \
 	gui/dialogs/editor_new_map.cpp \
 	gui/dialogs/editor_resize_map.cpp \
@@ -173,8 +173,8 @@ wesnoth_editor2_SOURCES = \
 	editor2/map_fragment.cpp \
 	editor2/mouse_action.cpp
 
-if EDITOR2
-wesnoth_source += $(wesnoth_editor2_SOURCES)
+if EDITOR
+wesnoth_source += $(wesnoth_editor_SOURCES)
 endif
 
 
