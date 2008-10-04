@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2008-09-24 22:21+0300\n"
-"PO-Revision-Date: 2008-04-25 00:41+0300\n"
+"PO-Revision-Date: 2008-10-04 15:36+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -801,15 +801,14 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Wesnoth Savaşı çok oyunculu oyunlarını yönetir. Wesnoth istemcisinden veya "
-"soket üzerinden hangi komutların kabul edildiğini öğrenmek için http://www."
-"wesnoth.org/wiki/ServerAdministration adresine bakınız."
+"Wesnoth Savaşı çok oyunculu oyunlarını yönetir. Wesnoth istemcisinden (/"
+"query ...) veya fifo üzerinden hangi komutların kabul edildiğini öğrenmek "
+"için http://www.wesnoth.org/wiki/ServerAdministration adresine bakınız."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -961,7 +960,7 @@ msgstr "Genel anahtar (key) isimleri:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_kayıt_dosyası>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -969,6 +968,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Sunucunun okuyup yazabildiği (gzip sıkışkırmalı) bir dosyanın göreli veya "
+"tam yolu. Sunucuya girişi yasaklananlar (ban) bu dosyaya kaydedilir. Dosya "
+"sunucu başlatılırken okunur."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1006,9 +1008,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_yolu>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1017,6 +1019,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Sunucu komutlarının (/query ... gibi) gönderileceği fifo’nun yolu. "
+"Belirtilmediği takdirde derleme sırasında belirtilen yol öntanımlıdır: /var/"
+"run/socket/wesnothd/socket"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1076,7 +1081,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<yeniden_başlatma_komutu>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1084,6 +1089,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"`restart' komutu üzerinden yeni bir sunucu sürecini başlatmak için sunucunun "
+"kullanacağı komut. (Sadece fifo üzerinden gönderilebilir.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1165,23 +1172,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[ban_time]> Sunucuya girişi yasaklananlar için bunun süresinin "
+"belirlendiği yerin etiketi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<isim>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Ban süresinin atanacağı değişkenin ismi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<süre>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1192,6 +1201,11 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Biçemi: %d[%s[%d%s[...]]] olup %s yerine "
+"I<saniye>sI<dakika>mI<saat>hI<gün>DI<ay>MI<yıl>Y ve %d yerine bir sayı "
+"belirtilir. %s için değerin yanında bir birim belirtilmezse dakika (m) "
+"öntanımlıdır. Örneğin, 1 gün 12 saat 30 dakikalık bir yasaklama için süre: "
+"time=\"1D12h30m\""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187

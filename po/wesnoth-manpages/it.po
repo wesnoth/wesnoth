@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2008-09-24 22:21+0300\n"
-"PO-Revision-Date: 2008-02-11 10:59+0100\n"
+"PO-Revision-Date: 2008-09-28 16:39+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -101,8 +101,8 @@ msgstr ""
 "l'esperienza, acquistano nuove abilità e diventano più potenti. Gioca nella "
 "tua lingua e metti alla prova le tue capacità contro un abile nemico "
 "controllato dal computer, o unisciti alla numerosa comunità di giocatori on-"
-"line.Crea le tue unità personalizzate, scenari o campagne, e condividile con "
-"gli altri."
+"line. Crea le tue unità personalizzate, scenari o campagne, e condividile "
+"con gli altri."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:32
@@ -307,7 +307,7 @@ msgid ""
 "together with B<--multiplayer> as explained below."
 msgstr ""
 "esegue una partita multigiocatore. Ci sono opzioni aggiuntive che possono "
-"essere usate con B<--mutiplayer>, come spiegato di seguito."
+"essere usate con B<--multiplayer>, come spiegato di seguito."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:114
@@ -527,7 +527,7 @@ msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
-"seleziona uno scenario multigiocatore. lo scenario predefinito è "
+"seleziona uno scenario multigiocatore. Lo scenario predefinito è "
 "B<multiplayer_The_Freelands>."
 
 # type: TP
@@ -809,7 +809,6 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -817,7 +816,7 @@ msgid ""
 msgstr ""
 "Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi http://www."
 "wesnoth.org/wiki/ServerAdministration per sapere quali comandi sono "
-"accettati dal server attraverso il client di wesnoth o il socket."
+"accettati dal server attraverso il client di wesnoth (/query ...) o la FIFO."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -969,7 +968,7 @@ msgstr "Caratteri globali:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -977,6 +976,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Percorso completo o relativo di un file (compresso con gzip) che il file "
+"possa leggere e scrivere. Le espulsioni saranno memorizzate in questo file e "
+"lette ogni volta che il server è avviato."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1014,9 +1016,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1025,6 +1027,10 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Il percorso della FIFO su cui puoi mostrare i comandi del server (analogo "
+"di /query ... in wesnoth). Se non è specificato viene usato il percorso "
+"fornito a tempo di compilazione (solitamente /var/run/socket/wesnothd/"
+"socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1084,7 +1090,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1092,6 +1098,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Il comando usato dal server per avviare un nuovo processo del server con il "
+"comando «restart» (Può essere inoltrato solo attraverso la FIFO)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1107,7 +1115,7 @@ msgid ""
 "corresponding wesnoth version)"
 msgstr ""
 "Un elenco separato da virgole delle stringhe di versione che il server deve "
-"accettare. I caratteri jolly `*' e `?' sono ammessi (il valore predefinito è "
+"accettare. I caratteri jolly «*» e «?» sono ammessi (il valore predefinito è "
 "lo stesso della versione di wesnoth corrispondente)."
 
 # type: Plain text
@@ -1174,23 +1182,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[tempo_di_espulsione]> Un'etichetta per definire parole chiave per "
+"definire lunghezze convenienti per il tempo di espulsione."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Il nome usato per fare riferimento al tempo di espulsione."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1201,6 +1211,11 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"La definizione di periodi temporali. Il formato è %d[%s[%d%s[...]]] dove %s "
+"sta per s (secondi) m (minuti) h (ore) D (giorni) M (mesi) o Y (anni) e %d è "
+"un numero. Se non viene fornito un modificatore temporale il tempo viene "
+"considerato espresso in minuti. Esempio: time=\"1D12h30m\" risulta in un "
+"tempo di espulsione di 1 giorno, 12 ore e 30 minuti."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
