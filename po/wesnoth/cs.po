@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-04 11:49+0200\n"
-"PO-Revision-Date: 2008-09-23 13:51+0100\n"
+"PO-Revision-Date: 2008-10-04 14:38+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -902,7 +902,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:200
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -919,7 +918,7 @@ msgstr ""
 "Každá jednotka vytváří oblast kontroly na políčkách které jí bezprostředně "
 "obklopují a jakmile na ně vstoupí jakákoliv cizí jednotka, ihned ukončí svůj "
 "pohyb. Naučit se používat tyto oblasti pro svůj prospěch je důležitou částí "
-"Wesnothu, protože pouze jednotky s vlastností <ref>dst=ability_skirmisher "
+"Wesnothu, protože pouze jednotky s vlastností <ref>dst='ability_skirmisher' "
 "text='průbojnost'</ref> mohou tyto oblasti ignorovat."
 
 #. [topic]
@@ -1080,7 +1079,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1092,8 +1090,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Z tohoto pravidla vybočují 2 výjimky: <ref>dst=weaponspecial_magical "
-"text='Útoky magií'</ref> a <ref>dst=weaponspecial_marksman text='Střelnou "
+"Z tohoto pravidla vybočují 2 výjimky: <ref>dst='weaponspecial_magical' "
+"text='Útoky magií'</ref> a <ref>dst='weaponspecial_marksman' text='Střelnou "
 "zbraní'</ref>. Útoky magií mají vždy 70% šanci na úspěch, nezáležíce na "
 "terénu a když jsou použity při útoku. Střelci mají vždy alespoň 60% šanci na "
 "úspěch a také nezáleží na terénu."
@@ -1111,7 +1109,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:230
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1127,10 +1124,11 @@ msgstr ""
 "\n"
 "Každý útok, který zasáhne cíl, způsobí nějaké základní poškození závisející "
 "na typu útoku. Např. Elfí bojovník s útokem 5-4 způsobí základní poškození "
-"5. To je obvykle určeno dvěma věcmi: <ref>dst=damage_types_and_resistance "
-"text=Odolností</ref> a <ref>dst=time_of_day text='Denní dobou'</ref>. Pokud "
-"se chcete podívat jak je základní poškození ovlivněno okolnostmi, pak se "
-"podívejte v nabídce výběr útoku na <italic>text='Výpočty poškození'</italic>."
+"5. To je obvykle určeno dvěma věcmi: <ref>dst='damage_types_and_resistance' "
+"text='Odolností'</ref> a <ref>dst='time_of_day' text='Denní dobou'</ref>. "
+"Pokud se chcete podívat jak je základní poškození ovlivněno okolnostmi, pak "
+"se podívejte v nabídce výběr útoku na <italic>text='Výpočty poškození'</"
+"italic>."
 
 #. [topic]
 #: data/core/help.cfg:232
@@ -1390,7 +1388,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:281
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1413,15 +1410,14 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:283
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regenerace</ref>: Některé jednotky (např. "
-"trollové) se vyléčí automaticky o 8HP každý tah."
+"<ref>dst='ability_regenerates' text='Regenerace'</ref>: Některé jednotky "
+"(např. trollové) se vyléčí automaticky o 8HP každý tah."
 
 #. [topic]
 #: data/core/help.cfg:284
@@ -1600,7 +1596,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:327
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1612,9 +1607,9 @@ msgstr ""
 "\n"
 "\n"
 "Pro všechny ne-Nemrtvé jednotky jsou k dispozici tyto vlastnosti: "
-"<ref>dst=traits_intelligent text=Inteligence</ref>, <ref>dst=traits_quick "
-"text=Rychlost</ref>, <ref>dst=traits_resilient text=Houževnatost</ref>, a "
-"<ref>dst=traits_strong text=Síla</ref>."
+"<ref>dst='traits_intelligent' text='Inteligence'</ref>, "
+"<ref>dst='traits_quick' text='Rychlost'</ref>, <ref>dst='traits_resilient' "
+"text='Houževnatost'</ref>, a <ref>dst='traits_strong' text='Síla'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:331
@@ -1933,10 +1928,11 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:423
 msgid "Flat"
-msgstr ""
+msgstr "Plochý"
 
 #. [topic]
 #: data/core/help.cfg:428
+#, fuzzy
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1951,6 +1947,7 @@ msgstr ""
 "ale je zde těžké se bránit. Typickou jednotkou, pro kterou je tato krajina "
 "nejlepší je jezdectvo, nebo velmi hbité jednotky, které dávají přednost "
 "otevřenému prostranství.\n"
+"\n"
 "Většina jednotek má na louce defenzivní bonus od 30 do 40%."
 
 #. [topic]
@@ -1960,7 +1957,6 @@ msgstr "Cesta"
 
 #. [topic]
 #: data/core/help.cfg:436
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
@@ -1968,7 +1964,7 @@ msgid ""
 msgstr ""
 "Cesta je tvořena udusanou hlínou, vytvořenou spoustou cestujících, kteří jí "
 "použili. Co se týká herních vlastností, jsou stejné jako u "
-"<ref>dst='terrain_grassland' text='louky'</ref>."
+"<ref>dst='terrain_flat' text='plochého terénu'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:441
@@ -2143,11 +2139,10 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:503
 msgid "Frozen"
-msgstr ""
+msgstr "Zmrzlý"
 
 #. [topic]
 #: data/core/help.cfg:508
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2156,9 +2151,9 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Sníh představuje jakákoliv zamrzlá rovná plocha a to buď trvale (např. "
-"tundra), nebo dočasně (v případě sněhem pokryté louky). Většina jednotek je "
-"tímto zpomalena a je pro ně obtížnější se bránit.\n"
+"Zmrzlý povrch představuje jakákoliv zamrzlá rovná plocha pokrytý sněhem nebo "
+"ledem. Většina jednotek je tímto zpomalena a je pro ně obtížnější se bránit. "
+"Plavecké jednotky roněž nemohou pod led.\n"
 "\n"
 "Většina jednotek ve sněhu získá 20 až 40% obranný bonus."
 
@@ -2218,14 +2213,13 @@ msgstr "Poušť"
 
 #. [topic]
 #: data/core/help.cfg:538
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
 "Pouště mají poněkud odlišné složení než malé jámy s pískem nebo pláže, hru "
-"ale ovlivňují obdobně. Podívejte se na <ref>dst=terrain_sand text=Písek</"
+"ale ovlivňují obdobně. Podívejte se na <ref>dst='terrain_sand' text='Písek'</"
 "ref>."
 
 #. [topic]
@@ -2235,7 +2229,6 @@ msgstr "Jeskyně"
 
 #. [topic]
 #: data/core/help.cfg:548
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2252,7 +2245,8 @@ msgstr ""
 "zpomaleny a překáží jim to v obraně. Trpaslíci a Trollové, kteří zde bydlí, "
 "tu jsou jako doma a to zejména trpaslíci, kteří se zde mohou díky své malé "
 "velikosti snadno pohybovat a překonávat překážky. To jiným činí problémy. "
-"Někdy jsou jeskyně <ref>dst=terrain_illuminated_cave text=Osvětlené</ref>\n"
+"Někdy jsou jeskyně <ref>dst='terrain_illuminated_cave' text='Osvětlené'</"
+"ref>\n"
 "\n"
 "Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
 
@@ -2389,20 +2383,20 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:605
 msgid "Unwalkable"
-msgstr ""
+msgstr "Neschůdný"
 
 #. [topic]
 #: data/core/help.cfg:608
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Kaňon je roklina v zemi, vedoucí do neznámé hloubky. Kaňony jsou známé pro "
-"příkré svahy, jejichž překonání může trvat dny. Co se týká herních "
-"vlastností, mohou být překonány pouze jednotkami schopnými létat."
+"Neschůdný terén zahrnuje rokliny a průrvy v zemi, vedoucí do neznámé "
+"hloubky. Nemohou tak být překročeny pěšky. Jsou známé pro příkré svahy, "
+"jejichž překonání může trvat dny. Co se týká herních vlastností, mohou být "
+"překonány pouze jednotkami schopnými létat."
 
 #. [topic]
 #: data/core/help.cfg:613
@@ -2411,7 +2405,6 @@ msgstr "Láva"
 
 #. [topic]
 #: data/core/help.cfg:616
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2423,8 +2416,10 @@ msgid ""
 msgstr ""
 "Nebezpečí vyplývající z pokusu o přechod lávy je zřejmé. Tento terén může "
 "být překonán pouze jednotkami schopnými létat ve značné vzdálenosti nad ní. "
-"Žhavá láva také produkuje svit, osvětlující oblasti přímo nad nimi. Tím "
-"poskytuje výhodu při útoku všem zákonným jednotkám a odnímá ji chaotickým. "
+"Ve věci pohybu je tedy láva identická s <ref>dst='terrain_unwalkable' "
+"text='neschůdným'</ref> terénem. Žhavá láva také vytváří svit, osvětlující "
+"oblasti přímo nad nimi. Tím poskytuje výhodu při útoku všem zákonným "
+"jednotkám a odnímá ji chaotickým. "
 
 #. [topic]
 #: data/core/help.cfg:621
@@ -2480,9 +2475,8 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:639
-#, fuzzy
 msgid "Impassable"
-msgstr "Neschůdné hory"
+msgstr "Neprůchozí"
 
 #. [topic]
 #: data/core/help.cfg:642
@@ -3329,12 +3323,16 @@ msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% výsledného zlata je přeneseno do dalšího scénáře."
 
 #: data/core/macros/carryover-utils.cfg:49
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% výsledného zlata je přeneseno do dalšího scénáře."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -4647,9 +4645,8 @@ msgstr "zdravá"
 
 #. [trait]
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, halves poison damage"
-msgstr "Odpočívá i při pohybu"
+msgstr "Odpočívá i při pohybu, snižuje jedem na polovinu"
 
 #. [trait]
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -8168,9 +8165,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Nelze změnit vlastníka strany „$side|“ - mimo rozsah platných stran."
 
 #: src/menu_events.cpp:2827
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Vytvořit jednotku (Ladění!)"
+msgstr "Vybrat scénář (Ladění!)"
 
 #: src/menu_events.cpp:2840
 msgid "Debug mode activated!"
@@ -8290,7 +8286,7 @@ msgstr "(prázdná pozice)"
 
 #: src/multiplayer_connect.cpp:697
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(Vyhrazeno pro $playername)"
 
 #: src/multiplayer_connect.cpp:827
 #, fuzzy
@@ -9203,7 +9199,6 @@ msgid "Upload statistics"
 msgstr "Odeslat statistiky"
 
 #: src/titlescreen.cpp:460
-#, fuzzy
 msgid "Help Wesnoth"
 msgstr "Pomozte Wesnothu"
 

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-01 11:36+0200\n"
-"PO-Revision-Date: 2008-01-25 09:50+0200\n"
+"PO-Revision-Date: 2008-10-03 14:59+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -201,7 +201,7 @@ msgstr "Bataklık"
 #. [terrain]
 #: data/core/terrain.cfg:644
 msgid "Lit"
-msgstr ""
+msgstr "Hüzme"
 
 #. [terrain]
 #: data/core/terrain.cfg:654
@@ -210,9 +210,8 @@ msgstr "Mağara"
 
 #. [terrain]
 #: data/core/terrain.cfg:672
-#, fuzzy
 msgid "Cave path"
-msgstr "Işıklı Mağara"
+msgstr "Mağara yolu"
 
 #. [terrain]
 #: data/core/terrain.cfg:681
@@ -261,9 +260,8 @@ msgstr "Sığ Geçit"
 
 #. [terrain]
 #: data/core/terrain.cfg:1016
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Sahil"
+msgstr "Kayalık Sahil"
 
 #. [terrain]
 #: data/core/terrain.cfg:1030
@@ -282,9 +280,8 @@ msgstr "Mağara Duvarı"
 
 #. [terrain]
 #: data/core/terrain.cfg:1057
-#, fuzzy
 msgid "Wall"
-msgstr "Mağara Duvarı"
+msgstr "Duvar"
 
 #. [terrain]
 #: data/core/terrain.cfg:1067
@@ -294,23 +291,22 @@ msgstr "Boş"
 #. [terrain]
 #: data/core/terrain.cfg:1080
 msgid "Flat"
-msgstr ""
+msgstr "Çayır"
 
 #. [terrain]
 #: data/core/terrain.cfg:1087
 msgid "Frozen"
-msgstr ""
+msgstr "Kar"
 
 #. [terrain]
 #: data/core/terrain.cfg:1094
-#, fuzzy
 msgid "Impassable"
-msgstr "Aşılmaz Dağlar"
+msgstr "Geçit Vermez"
 
 #. [terrain]
 #: data/core/terrain.cfg:1101
 msgid "Unwalkable"
-msgstr ""
+msgstr "Yürünmez"
 
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:551
@@ -401,19 +397,19 @@ msgstr "Klavye kısayolları"
 
 #: src/editor/editor_dialogs.cpp:305
 msgid "Lighting levels (time of day):"
-msgstr ""
+msgstr "Aydınlık Seviyeleri (günlük vakit):"
 
 #: src/editor/editor_dialogs.cpp:312
 msgid "light_level^Red:"
-msgstr ""
+msgstr "Kırmızı:"
 
 #: src/editor/editor_dialogs.cpp:313
 msgid "light_level^Green:"
-msgstr ""
+msgstr "Yeşil:"
 
 #: src/editor/editor_dialogs.cpp:314
 msgid "light_level^Blue:"
-msgstr ""
+msgstr "Mavi:"
 
 #: src/editor/editor_dialogs.cpp:512 src/editor/editor_dialogs.cpp:624
 #: src/hotkeys.cpp:125 src/hotkeys.cpp:181
@@ -515,7 +511,7 @@ msgstr "Salondakiler Listesini Simgeleştir"
 
 #: src/game_preferences_display.cpp:175
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "wesnothd için dosya yolu tanımlar"
 
 #: src/game_preferences_display.cpp:176
 msgid "Friends List"
@@ -756,7 +752,7 @@ msgstr "ÇO salonuna giren tüm oyuncularla ilgili iletiler gösterilir."
 
 #: src/game_preferences_display.cpp:370
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Ağ oyunlarını sunacak ÇO sunucu için dosya yolunu tanımlar veya bulur."
 
 #: src/game_preferences_display.cpp:371
 msgid "View and edit your friends and ignores list"
@@ -896,103 +892,95 @@ msgstr "Bilinen bir tema yok. Mevcut bir oyunun içinden değiştirmeyi deneyin.
 
 #: src/game_preferences_display.cpp:1230
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Ağ oyunlarını sunacak $filename sunucu çalıştırılabilirini bulur."
 
 #: src/gui/dialogs/mp_create_game.cpp:86 src/hotkeys.cpp:76
 msgid "Load Game"
 msgstr "Oyun Yükle"
 
 #: src/gui/dialogs/mp_create_game.cpp:87
-#, fuzzy
 msgid "Load Game..."
-msgstr "Oyun Yükle"
+msgstr "Oyun Yükle..."
 
 #: src/gui/dialogs/title_screen.cpp:76
 msgid "Version"
-msgstr ""
+msgstr "Sürüm"
 
 #: src/gui/widgets/canvas.cpp:295
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Çizgi tuvale sığmıyor."
 
 #: src/gui/widgets/canvas.cpp:430
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Dörtgen tuvali sığmıyor."
 
 #: src/gui/widgets/canvas.cpp:786
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Yazı tipi boyutu 0."
 
 #: src/gui/widgets/canvas.cpp:851
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Metin tuvale sığmıyor."
 
 #: src/gui/widgets/helper.cpp:170
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Zorunlu pencere gereci 'id' tanımlı değil."
 
 #: src/gui/widgets/settings.cpp:122
-#, fuzzy
 msgid "No default gui defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Tanımlı bir arayüz yok."
 
 #: src/gui/widgets/settings.cpp:248
 msgid "Window not defined."
-msgstr ""
+msgstr "Pencere tanımsız."
 
 #: src/gui/widgets/settings.cpp:312
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "Pencere gereci tanımı '$definition', '$id' için tanım içermiyor."
 
 #: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:275
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Tanımlı bir çözünürlük yok."
 
 #: src/gui/widgets/settings.cpp:456
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Tanımlı durum veya çizim bölümü yok."
 
 #: src/gui/widgets/settings.cpp:636
-#, fuzzy
 msgid "No scrollbar defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Tanımlı bir kaydırma çubuğu yok."
 
 #: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:344
 #: src/gui/widgets/window_builder.cpp:927
 #: src/gui/widgets/window_builder.cpp:1134
-#, fuzzy
 msgid "No grid defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Tanımlı bir ızgara yok."
 
 #: src/gui/widgets/window_builder.cpp:471
 msgid "A row must have a column."
-msgstr ""
+msgstr "Her satırın bir sütunu olmalı."
 
 #: src/gui/widgets/window_builder.cpp:472
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Sütun sayıları farklı."
 
 #: src/gui/widgets/window_builder.cpp:696
-#, fuzzy
 msgid "No list defined."
-msgstr "Tanımlı sunucu yok."
+msgstr "Tanımlı bir liste yok."
 
 #: src/gui/widgets/window_builder.cpp:699
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Bir 'list_definition' tek bir satır içermelidir."
 
 #: src/gui/widgets/window_builder.cpp:718
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
+msgstr "'list_data', 'list_definition' ile aynı sütun sayısında olmalı."
 
 #: src/gui/widgets/window_builder.cpp:1065
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Değer etiketleri ile değerlerin sayısı aynı değil."
 
 #: src/hotkeys.cpp:57
 msgid "Next Unit"
@@ -1039,9 +1027,8 @@ msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
 #: src/hotkeys.cpp:69
-#, fuzzy
 msgid "Map Screenshot"
-msgstr "Ekran görüntüsü"
+msgstr "Harita Ekran Görüntüsü"
 
 #: src/hotkeys.cpp:70
 msgid "Accelerated"
@@ -1265,139 +1252,123 @@ msgstr "Geçişleri güncelle"
 
 #: src/hotkeys.cpp:134
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Masaüstüne Çık"
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Klavye Kısayolları"
+msgstr "Düzenleyici Ayarları"
 
 #: src/hotkeys.cpp:136
 msgid "Partial Undo"
-msgstr ""
+msgstr "Kısmî Geri Alma"
 
 #: src/hotkeys.cpp:140
-#, fuzzy
 msgid "Save Map As"
-msgstr "Haritayı Kaydet"
+msgstr "Haritayı Adıyla Kaydet"
 
 #: src/hotkeys.cpp:141
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Tüm Değişiklikleri Geri Al"
 
 #: src/hotkeys.cpp:142
-#, fuzzy
 msgid "Map Information"
-msgstr "Harita Üreteci"
+msgstr "Harita Bilgileri"
 
 #: src/hotkeys.cpp:144
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Ön ve art alan arazileri yer değiştir"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Next Tool"
-msgstr "Sonraki Sıra"
+msgstr "Sonraki Araç"
 
 #: src/hotkeys.cpp:146
 msgid "Paint Tool"
-msgstr ""
+msgstr "Boyama Aracı"
 
 #: src/hotkeys.cpp:147
 msgid "Fill Tool"
-msgstr ""
+msgstr "Dolgu Aracı"
 
 #: src/hotkeys.cpp:148
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Tümünü Seç"
+msgstr "Seçim Aracı"
 
 #: src/hotkeys.cpp:150
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Başlangıç Konumları Araçları"
 
 #: src/hotkeys.cpp:151
-#, fuzzy
 msgid "Next Brush"
-msgstr "Sonraki Sıra"
+msgstr "Sonraki Fırça"
 
 #: src/hotkeys.cpp:152
-#, fuzzy
 msgid "Default Brush"
-msgstr "Normal Yakınlık"
+msgstr "Öntanımlı Fırça"
 
 #: src/hotkeys.cpp:159
 msgid "Select Inverse"
-msgstr ""
+msgstr "Tersini Seç"
 
 #: src/hotkeys.cpp:161
-#, fuzzy
 msgid "Select None"
-msgstr "Tümünü Seç"
+msgstr "Hiçbir şey Seçme"
 
 #: src/hotkeys.cpp:163
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Panoyu Saat Yönünde Çevir"
 
 #: src/hotkeys.cpp:165
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Panoyu Saat Yönünün Tersine Çevir"
 
 #: src/hotkeys.cpp:167
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Panoyu Yatayda Katla"
 
 #: src/hotkeys.cpp:169
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Panoyu Düşeyde Katla"
 
 #: src/hotkeys.cpp:173
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Seçimi Doldur"
+msgstr "Seçimi Katla"
 
 #: src/hotkeys.cpp:177
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Seçimi Döndür"
+msgstr "Seçimde Döşeme Üret"
 
 #: src/hotkeys.cpp:179
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Seçimi Rasgele Döşe"
 
 #: src/hotkeys.cpp:183
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Harita Yükle"
+msgstr "Haritayı Döndür"
 
 #: src/hotkeys.cpp:185
-#, fuzzy
 msgid "Generate Map"
-msgstr "Yeni Harita Üret"
+msgstr "Harita Üret"
 
 #: src/hotkeys.cpp:187
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Görüntü"
+msgstr "Görüntüyü Tazele"
 
 #: src/hotkeys.cpp:189
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Geçişleri güncelle"
+msgstr "Arazi Geçişlerini Güncelle"
 
 #: src/hotkeys.cpp:191
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Geçişleri güncelle"
+msgstr "Arazi Geçişlerini Sürekli Güncelle"
 
 #: src/hotkeys.cpp:195
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Altıgen Koordinatlarını Göster"
 
 #: src/hotkeys.cpp:197
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Zemini Çiz"
+msgstr "Arazi Kodlarını Göster"
 
 #: src/hotkeys.cpp:202
 msgid "Delay Shroud Updates"
@@ -1440,13 +1411,12 @@ msgid "Enter user command"
 msgstr "Kullanıcı komutu gir"
 
 #: src/hotkeys.cpp:213
-#, fuzzy
 msgid "Custom command"
-msgstr "Kullanıcı komutu gir"
+msgstr "Kullanıcı komutu"
 
 #: src/hotkeys.cpp:214
 msgid "Run AI formula"
-msgstr ""
+msgstr "SA formülünü işlet"
 
 #: src/hotkeys.cpp:215
 msgid "Clear messages"
@@ -1469,19 +1439,16 @@ msgid "Quit"
 msgstr "Çık"
 
 #: src/hotkeys.cpp:977
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "Ekran görüntüsü"
+msgstr "Harita-Ekran-Görüntüsü"
 
 #: src/hotkeys.cpp:984
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Ekran görüntüsü"
+msgstr "Ekran görüntüsü alındı"
 
 #: src/hotkeys.cpp:986
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Ekran görüntüsü"
+msgstr "Ekran görüntüsü alınamadı"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1558,9 +1525,8 @@ msgid "Hotkey Settings"
 msgstr "Klavye Kısayolları"
 
 #: src/preferences_display.cpp:239 src/preferences_display.cpp:307
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Klavye kısayolunu gir"
+msgstr "Klavye kısayolunu gir (Esc iptal eder)"
 
 #: src/preferences_display.cpp:258
 msgid "Action"
@@ -1575,9 +1541,8 @@ msgid "Change Hotkey"
 msgstr "Kısayolu Değiştir"
 
 #: src/preferences_display.cpp:273
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "Kısayolu Değiştir"
+msgstr "Kısayolu Sil"
 
 #: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
@@ -1587,6 +1552,7 @@ msgstr "Bu kısayol zaten kullanımda."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Uyarı: Ekran görüntüsü kısayollarında Ctrl, Alt ve Meta tuşları kullanılamaz."
 
 #: src/preferences_display.cpp:431
 msgid "There are no alternative video modes available"
@@ -1631,44 +1597,3 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Seçimi Döndür"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Işıklı Mağara"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Işıklı Taşlık Mağara"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr ""
-#~ "Geçersiz zemin bulundu; muhtemelen 1.2 sürümü bir zemin biçemi; zemin = "
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "Tanımlı sunucu yok."
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "Tanımlı sunucu yok."
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Tanımlı sunucu yok."
-
-#, fuzzy
-#~ msgid "No default label defined."
-#~ msgstr "Tanımlı sunucu yok."
-
-#~ msgid "Save replays on SP victory or SP/MP defeat."
-#~ msgstr "TO zaferinde veya TO/ÇO yenilgisinde oyun kaydedilir."
-
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr ""
-#~ "TO zaferinde veya TO/ÇO yenilgisinde kaydadilen oyunlar kendiliğinden "
-#~ "silinir"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Kısayolları Kaydet"

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-01 11:39+0200\n"
-"PO-Revision-Date: 2008-02-20 03:03+0200\n"
+"PO-Revision-Date: 2008-10-03 17:13+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -473,7 +473,6 @@ msgstr "2p - Kara Öngörü (Ölümüne)"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player teambased "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
@@ -485,7 +484,9 @@ msgstr ""
 "Kara Öngörü, saldırı arabirimim tarafından sahaya sürüyen birimlere karşı "
 "iki oyuncudan oluşan bir takımın yer aldığı bir ayakta kalma mücadelesidir. "
 "Düşmanın hücum dalgaları bertaraf edilerek zafere ulaşılır. Oyun sırasında "
-"harita hava durumuna bağlı olarak değiştirilir."
+"harita hava durumuna bağlı olarak değiştirilir.\n"
+"\n"
+"Senaryonun doğru çalışması için harita ayarlarını kullanmalısınız."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
@@ -767,7 +768,7 @@ msgstr ""
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
-msgstr ""
+msgstr "2o - Issız Hayalet Vadileri"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -1590,81 +1591,3 @@ msgstr ""
 "\n"
 "--no-delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end\n"
 "seçenekleri ile çalıştırarak deneyiniz."
-
-#~ msgid "Great War"
-#~ msgstr "Büyük Savaş"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "Kara İttifak"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "Işık İttifakı"
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "6o - Amosat Krateri"
-
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "Sadece gerçek bir taktikçi altı kapana kısılmış ordunun kafa kafaya "
-#~ "geldiği bu ölümcül ve daracık savaş alanında hayatta kalabilir."
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "2o - Vestop"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "Vestop’ta, oyuncular topu öbür oyuncunun bitiş sahasına mümkün olduğunca "
-#~ "sık aralıklarla götürmelidir. Ne var ki, rakip oyuncular birimlerine "
-#~ "saldırabilir. Vestop’un sürekliliği körelmiş silahlar ve "
-#~ "iyileştiricilerin yardımıyla sağlanır. Öldürülen birimler,yaralı olarak "
-#~ "oyuna baştan başlarlar."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "Zafer:\n"
-#~ "@Rakibin başlama alanına götürdüğün top sayısının rakibinkinden fazla "
-#~ "olması.\n"
-#~ "Yenilgi:\n"
-#~ "#Rakibin başlama alanına götürdüğün top sayısının rakibinkinden az olması."
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "Kırmızılar kazanır! Mevcut durum: $redscore-$bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "Maviler kazanır! Mevcut durum: $redscore-$bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "Topu $passto.type’a ($xloc,$yloc) versem?"
-
-#~ msgid "Yes!"
-#~ msgstr "Evet!"
-
-#~ msgid "No"
-#~ msgstr "Hayır"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Maviler kazanır! Son durum: $redscore-$bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Kırmızılar kazanır! Son durum: $redscore-$bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "Berabere! Son durum: $redscore-$bluescore"
-
-#~ msgid "Monsters"
-#~ msgstr "Canavarlar"

@@ -8,10 +8,10 @@
 # Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-multiplayer\n"
+"Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-09-09 23:13+0200\n"
-"PO-Revision-Date: 2008-02-20 03:03+0200\n"
+"PO-Revision-Date: 2008-10-04 19:14+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,8 @@ msgstr ""
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
-msgstr "4o - Lagün"
+msgstr "4o - Yeni Bir Ülke"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
@@ -32,6 +31,9 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
+"Bu 4 oyunculu hayatta kalma senaryosunda kendi ülkenizi kurup kalkındırırken "
+"bir yandan düşmanlarla savaşacaksınız. Harita ayarlarını kullanın. Önerilen "
+"başlangıç altını=100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -45,43 +47,49 @@ msgstr ""
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
 msgid "Right-click on your leader during your turn for help"
-msgstr ""
+msgstr "Yardım için sıranız geldiğinde lidere sağ tıklayın."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "25. el dayanmalısınız."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:423
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
+"Mantar tarlalarını yok ettiniz. Kuzeybatı yarı ölülerinin geliri 10 altın "
+"azaldı."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:443
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
+"Mantar tarlalarını yok ettiniz. Kuzeydoğu orklarının geliri 10 altın azaldı."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:463
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
+"Mantar tarlalarını yok ettiniz. Güneybatı orklarının geliri 10 altın azaldı."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:483
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
+"Mantar tarlalarını yok ettiniz. Güneydoğu yarı ölülerinin geliri 10 altın "
+"azaldı."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:575
 msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
-msgstr ""
+msgstr "Birer vatandaşınız kuzey ve güneydeki örümceklere tutsak düşmüş."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:581
@@ -89,6 +97,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
+"Örümceğin ağına takılmış birini gördüğüme yemin ederim. Belki onu "
+"kurtarabiliriz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:593
@@ -97,12 +107,16 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Bu tutsakların yanına bir biriminizi gönderirseniz size katılacaktır. "
+"Örümcekler onları tutsak alırken ağır yaralanmış. Örümcekler iyileşmeden "
+"onları kurtarma şansınız daha yüksek. Her el bu daha da güçleşecek."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Adamlarınız doğu ve batıdaki mağaralardan tuhaf sesler geldiğini rapor etti."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
@@ -111,6 +125,9 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
+"Düşman yakınlardaki bazı yeraltı mağaralarında mantar tarlaları kurmuş. "
+"Onlardan iyi gelir elde ediyor olmalılar. Tarlaları yokedersek onları "
+"zayıflatmış oluruz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:622
@@ -118,11 +135,14 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
+"Mantar tarlasındaki köye bir birimi konuşlandırdığınızda tarla yokedilmiş "
+"olacak. Böyle her ele geçirme düşmanın gelirinde 10 altınlık kayba yol "
+"açacak."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:634
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "Savaşın bitmesi yakın. Zafer bizim olacak!"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:645
@@ -130,41 +150,43 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"Son nefesimize kadar dayandık! Savaşın gidişatı iyi değil, zafer fırsatını "
+"kaçırdık!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:649
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Oyunu kazandınız, ama isterseniz devam edebilirsiniz..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:664
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Ben ölüyorum ama bu herşeyin kaybedildiği anlamına gelmez!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:676
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Ben bittim ama henüz bu savaşı kaybetmedik!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:688
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "İntikamımı yerde bırakmayın!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:700
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "Korkma, hala bir umut var!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:78
 msgid "The chest contains $oc_treasure gold."
-msgstr ""
+msgstr "Sandıkta $oc_treasure altın var."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Menüye dön"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
@@ -173,6 +195,9 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"Köylüler sizin işçileriniz. Bir köylüye sağ tıkladığınızda arazi türüne "
+"bağlı olarak orada bir kale, maden, köy veya üniversite inşa edebilir, "
+"araziyi şekillendirebilir veya toprağa birşeyler ekebilirsiniz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
@@ -180,6 +205,8 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"Büyücüler bilge insanlarınızdır. Üniversitede okur, madenlerinizin, "
+"çiftliklerinizin ve askerlerinizin gelişmesine katkıda bulunurlar."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
@@ -187,6 +214,8 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Tarlalar sadece çayırlık alanlar ekilerek elde edilir. Bir köylüyü bir "
+"tarlaya götürerek ekini biçip altın kazanabilirsiniz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
@@ -195,6 +224,9 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Köyler sadece çayıra kurulabilir. Onlar normal gelirlerini sağlamak dışında "
+"tedavi yerleridir. Köydeki bir köylüye sağ tıklayıp köyde bir üniversite "
+"kurabilirsiniz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
@@ -202,6 +234,8 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Madenler sadece dağlarda ve tepelerde kurulabilir. Madenlerdeki bir köylü "
+"her elin başında bir miktar altın kazanmanızı sağlar."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
@@ -211,6 +245,10 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"'Elf' tarzı köyler üniversiteleri temsil eder. Her elin başında "
+"üniversitedeki büyücüler seçtiğiniz araştırma türüne göre eğitim alırlar. "
+"Üniversitelerde bulunan büyücülere sağ tıklayıp eğitim konusunu "
+"belirleyebilirsiniz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
@@ -218,58 +256,58 @@ msgid ""
 "Right-clicking on your leader when in a univerity allows you to select "
 "special diplomatic options."
 msgstr ""
+"Üniversitede bulunan liderinize sağ tıklayıp diplomatik seçeneklerden birini "
+"seçebilirsiniz."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
 msgid "Select a topic."
-msgstr ""
+msgstr "Bir konu seçiniz."
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
 msgid "Done"
-msgstr ""
+msgstr "Bitti"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
 msgid "Peasants"
-msgstr ""
+msgstr "Köylüler"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
 msgid "Mages"
-msgstr ""
+msgstr "Büyücüler"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
-#, fuzzy
 msgid "Farms"
-msgstr "Perili"
+msgstr "Tarlalar"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
 msgid "Villages"
-msgstr ""
+msgstr "Köyler"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
-#, fuzzy
 msgid "Mines"
-msgstr "Canavarlar"
+msgstr "Madenler"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 msgid "Universities"
-msgstr ""
+msgstr "Üniversiteler"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomasi"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr " $df_player_name| bağışladığınız 20 altın için teşekkür ediyor."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -299,6 +337,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"Tarımsal bilgini paşlaş"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:193
@@ -306,6 +346,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"Madencilik bilgini paylaş"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:198
@@ -313,17 +355,19 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"Askeri bilgini paylaş"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
 msgid "What shall I do?"
-msgstr ""
+msgstr "Ne yapayım?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "Nothing"
-msgstr ""
+msgstr "Hiçbir şey"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:233
@@ -331,17 +375,19 @@ msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
+"Bağış yap\n"
+"Başka bir oyuncuya 20 altın ver"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:243
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "Kime bağış yapacaksınız?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Back"
-msgstr ""
+msgstr "Geri"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:266
@@ -349,11 +395,13 @@ msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
+"Bilgini paylaş\n"
+"Araştırmasında bir müttefikine yardım et"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:276
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "Bilgini kiminle paylaşacaksın?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:313
@@ -363,6 +411,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"Cücelerle anlaşma yapın.\n"
+"Bir cüce birimi askere alabilesiniz.\n"
+"Anlaşma süreci: $player_$side_number|.leader_option_1.progress|/$player_"
+"$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:339
@@ -372,6 +424,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"Elflerle anlaşma yapın.\n"
+"Bir elf birimi askere alabilesiniz.\n"
+"Anlaşma süreci: $player_$side_number|.leader_option_2.progress|/$player_"
+"$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
@@ -379,6 +435,8 @@ msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"Görüşmemiz tamamlandı. Cüceler yanınızda memnuniyetle savaşacak. Hangi "
+"kardeşlerimi askere almak istersiniz?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:397
@@ -386,11 +444,13 @@ msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"Görüşmemiz tamamlandı. Elfler yanınızda memnuniyetle savaşacak. Bizden "
+"kimleri askere almak istersiniz?"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr ""
+msgstr "Hangi birim türünü askere alabilmeyi istersiniz?"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:99
@@ -402,11 +462,18 @@ msgid ""
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 "                                                                                "
 msgstr ""
+"Şu an $player_$side_number|.research.current_target| üzerinde çalışıyoruz. "
+"Sonuçta neyi elde etmeyi hedefliyorsunuz?\n"
+"\n"
+"Çiftliklerimiz produce $player_$side_number|.farming.gold| altın gelir "
+"getirsin.\n"
+"Madenlerimiz $player_$side_number|.mining.gold| altın gelir getirsin.\n"
+"                                                                                "
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:103
 msgid "Continue as before"
-msgstr ""
+msgstr "Eskisi gibi devam"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:115
@@ -416,6 +483,10 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"Ziraat\n"
+"Çiftçiler 1 altın fazla gelir elde etsin\n"
+"Eğitim süreci: $player_$side_number|.farming.progress|/$player_$side_number|."
+"farming.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:129
@@ -425,6 +496,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"Madencilik\n"
+"Madencilerin geliri 1 altın artsın.\n"
+"Eğitim süreci:$player_$side_number|.mining.progress|/$player_$side_number|."
+"mining.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:143
@@ -434,6 +509,10 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"Askerlik\n"
+"Yeni bir birim askere alabilelim.\n"
+"Eğitim süreci: $player_$side_number|.warfare.progress|/$player_$side_number|."
+"warfare.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:210
@@ -441,6 +520,8 @@ msgid ""
 "$player_$side_number|.name|'s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"$player_$side_number|.name| artık tarlalardan $player_$side_number|.farming."
+"gold altın gelir sağlayacak."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:227
@@ -448,6 +529,8 @@ msgid ""
 "$player_$side_number|.name|'s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"$player_$side_number|.name| artık madenlerden $player_$side_number|.mining."
+"gold altın gelir elde edecek."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:243
@@ -455,26 +538,29 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|, askerlikle ilgili araştırma tamamlandı. "
+"Üniversitedeki bir büyücüye sağ tıklayıp askere alınacak birim türünü "
+"seçebilirsin."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:149
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "Artık özgürsün!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
-msgstr ""
+msgstr "Ağdan kurtardığınız birim size katılmayı kabul etti."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "Ne yapayım?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "Çayıra dönüştür"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
@@ -482,1037 +568,141 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Bedeli: 0 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:76
 msgid "Plant Farm"
-msgstr ""
+msgstr "Ekin Ek"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Bedeli: 15 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Build Village"
-msgstr ""
+msgstr "Köy Kur"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 msgid "Build Castle"
-msgstr ""
+msgstr "Kale Yap"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Bedeli: 6 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Flood the Field"
-msgstr ""
+msgstr "Dere geçir"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Bedeli: 4 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Bedeli: 1 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 msgid "Plant Saplings"
-msgstr ""
+msgstr "Fide Ek"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:160
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "Ormanı Kes"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:160
 msgid "Earns: 1g"
-msgstr ""
+msgstr "Kazancınız: 1 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Build Mine"
-msgstr ""
+msgstr "Maden Kaz"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Bedeli: 25 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:321
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Bedeli: 3 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 msgid "Make a Ford"
-msgstr ""
+msgstr "Geçit Yap"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Landfill"
-msgstr ""
+msgstr "Toprak Kazan"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Bedeli: 5 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "Geçidi Boz"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:321
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "Mağara Zeminini Düzelt"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Bedeli: 2 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "Mantarları Biç"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Earns: 3g"
-msgstr ""
+msgstr "Kazancınız: 3 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Build a Keep"
-msgstr ""
+msgstr "Burç Yap"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Bedeli: 7 altın"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Establish University"
-msgstr ""
+msgstr "Üniversite Kur"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
-#, fuzzy
 msgid "Clear the Ground"
-msgstr "Güneşli"
-
-#~ msgid "User Map"
-#~ msgstr "Kullanıcı Haritası"
-
-#~ msgid "Random"
-#~ msgstr "Rasgele"
-
-#~ msgid "Default"
-#~ msgstr "Öntanımlı"
-
-#~ msgid "Age of Heroes"
-#~ msgstr "Kahramanlar Çağı"
-
-#~ msgid "Great War"
-#~ msgstr "Büyük Savaş"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "Kara İttifak"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "Işık İttifakı"
-
-#~ msgid "Drakes"
-#~ msgstr "Ejderler"
-
-#~ msgid "Knalgan Alliance"
-#~ msgstr "Kanalga İttifakı"
-
-#~ msgid "Loyalists"
-#~ msgstr "Kralcılar"
-
-#~ msgid "Northerners"
-#~ msgstr "Kuzeyliler"
-
-#~ msgid "Rebels"
-#~ msgstr "Asiler"
-
-#~ msgid "Undead"
-#~ msgstr "Yarı ölüler"
-
-#~ msgid "2p - Caves of the Basilisk"
-#~ msgstr "2o - Medusa Mağarası"
-
-#~ msgid ""
-#~ "Players must maneuver their units through the divisive terrain of this "
-#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
-#~ "caves and the stark wilderness surrounding them are filled with the "
-#~ "petrified forms of some of Wesnoth's greatest heroes."
-#~ msgstr ""
-#~ "Oyuncular, birimlerini efsanevi tanrıça Medusa’nın evi olan bu korkutucu "
-#~ "bölgenin zorlu arazisinden geçirmek için onlara manevra yaptırmalıdır. "
-#~ "Mağaralar ve onları çevreleyen katılaşmış kalabalık aslında Wesnoth’un en "
-#~ "büyük kahramanlarından bazılarının taşlaşmış bedenleridir."
-
-#~ msgid "teamname^North"
-#~ msgstr "Kuzey"
-
-#~ msgid "teamname^South"
-#~ msgstr "Güney"
-
-#~ msgid ""
-#~ "The winds of the dark sky blew so cold,\n"
-#~ "The moon was high, the night was old,\n"
-#~ "Brave was the drake that dared forsake\n"
-#~ "His home to steal the Basilisk's gold.\n"
-#~ "\n"
-#~ "On that dark night, the skies so churned,\n"
-#~ "He disregarded what he had learned,\n"
-#~ "Foolish but brave, to the Basilisk's cave,\n"
-#~ "He flew, and the fire within him burned.\n"
-#~ "\n"
-#~ "Alas, that fire burns no more,\n"
-#~ "For the Basilisk, with one mighty roar,\n"
-#~ "Chilled him to the bone, and he turned to stone,\n"
-#~ "And so he stays forevermore.\n"
-#~ "\n"
-#~ "The winds of the sky blow so cold,\n"
-#~ "The years pass by, the days are old,\n"
-#~ "Here stands that drake, who dared forsake\n"
-#~ "His home to steal the Basilisk's gold.\n"
-#~ "(inscribed by Flametrooper)"
-#~ msgstr ""
-#~ "Simsiyah göğü yırtan rüzgarlar soğuktu,\n"
-#~ "Ay yükselmiş, gece iyice çökmüştü,\n"
-#~ "Kahraman, altınlarını çalmak için,\n"
-#~ "Medusanın mağarasına giren ejderdi.\n"
-#~ "\n"
-#~ "Bu kara gecede, gök yayık gibi çalkalanıyordu,\n"
-#~ "Öğrendiği şeylere itibar etmedi,\n"
-#~ "Medusanın mağarasına girecek kadar cesur,\n"
-#~ "Fakat bir o kadar da aptaldı;\n"
-#~ "Uçtu ve kendi ateşinde yandı.\n"
-#~ "\n"
-#~ "Bu ateş artık yanmayacaktı, ne yazık ki,\n"
-#~ "Kemikleri titreten lanetli kükreyişiyle,\n"
-#~ "Medusa onu taşa çevirmişti,\n"
-#~ "Ve sonsuza kadar öyle kalacaktı.\n"
-#~ "\n"
-#~ "Göğü yırtan rüzgarlar yine soğuktu,\n"
-#~ "Yıllar geçmiş, günler solmuştu,\n"
-#~ "Medusanın altınlarını çalmaya gelen,\n"
-#~ "Meydan okumaktan vazgeçmiş Ejder ayaktaydı.\n"
-#~ "\n"
-#~ "(Flametrooper tarafından yazıldı)"
-
-#~ msgid "Xikkrisx"
-#~ msgstr "Kikrisk"
-
-#~ msgid ""
-#~ "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region "
-#~ "by the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-"
-#~ "In-Boiling-Rivers Clan''). The Elders were preparing to make war on a "
-#~ "human outpost, and were in great need of the powerful magics of Oxsrrsk, "
-#~ "a Saurian Mystic who had last been seen heading in the direction of "
-#~ "Ruaskkolin Lake. Xikkrisx found the petrified body of Oxsrrsk, along with "
-#~ "a carefully bound scroll that had apparently been dropped into a small "
-#~ "crevice in the cave floor. He opened the scroll and read a brief passage "
-#~ "from the middle of the text: ''After he was bound and cast from the Upper "
-#~ "World, Chak'kso's enraged spirit sought release, and was able to exert a "
-#~ "corrupting influence on certain regions of the Upper World, channeled "
-#~ "through ''pathways of stone'' that extend from the surface into the "
-#~ "depths of the Under Reaches. This rage altered the eggs of great lizards, "
-#~ "shaping their bodies and spirits into implements of Chak'kso's hatred.'' "
-#~ "Confused, Xikkrisx fixed his attention on the task at hand. Thinking that "
-#~ "perhaps the Elders could find some way to restore Oxsrrsk, he began the "
-#~ "long and strenuous task of hauling the statue back to the domain of the "
-#~ "Rysssrylosszkk Clan. Exhausted, and not having traveled far from the "
-#~ "lake, Xikkrisx set the statue down inside of a small cave, and lay down "
-#~ "to rest. He was awoken by a bone-chilling roar."
-#~ msgstr ""
-#~ "Sirsisk’li Kikrisk güçlü bir Sürüngen savaşçıydı ve Rissirilosk klanının "
-#~ "(tercümesi: Yanan nehirde düşman avlayanlar klanı) yaşlıları tarafından "
-#~ "bu bölgeye gönderilmişti. Yaşlılar bir insan karakoluna saldırma hazılığı "
-#~ "yapıyorlardı ve Oksirisk’in güçlü büyülerine çok ihtiyaçları vardı. "
-#~ "Kikrisk, mağaranın bir yarığında kalakalmış bir halde  Oksirisk’in, "
-#~ "Ruaskolin Gölünün yönetimine başkanlık eden son Sürüngen Büyücünün "
-#~ "taşlaşmış gövdesini buldu. "
-
-#~ msgid "Oxsrrsk"
-#~ msgstr "Oksirisk"
-
-#~ msgid ""
-#~ "Slim of Stature, dexterous Hands\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Left his Foes so slim a Chance\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Marksman known as Dragonbane\n"
-#~ "'mongst the Statues here was slain\n"
-#~ "- - Seven Stones - and the Elven\n"
-#~ "(inscribed by Gauteamus)"
-#~ msgstr ""
-#~ "Slim of Stature, dexterous Hands\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Left his Foes so slim a Chance\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Marksman known as Dragonbane\n"
-#~ "'mongst the Statues here was slain\n"
-#~ "- - Seven Stones - and the Elven\n"
-#~ "(inscribed by Gauteamus)"
-
-#~ msgid "Blum Duk"
-#~ msgstr "Blum Duk"
-
-#~ msgid "Rah Ihn Mar"
-#~ msgstr "Rahin Mar"
-
-#~ msgid "Bramwythl"
-#~ msgstr "Bramvitil"
-
-#~ msgid "Talael Ryndoc"
-#~ msgstr "Talarel Rindoç"
-
-#~ msgid "Aethec Corryn"
-#~ msgstr "Areteç Korrin"
-
-#~ msgid "Rilhon"
-#~ msgstr "Rilnon"
-
-#~ msgid "2p - Cynsaun Battlefield"
-#~ msgstr "2o - Sinson Savaş alanı"
-
-#~ msgid " Recommended settings of 150 gold and 2 gold per village."
-#~ msgstr " Önerilen ayarlar: 150 altın ve köy başına 2 altın."
-
-#~ msgid ""
-#~ "There is much to explore in this vast battlefront, designed for players "
-#~ "who favor epic, large-scale duel matches."
-#~ msgstr ""
-#~ "Efsanevi, büyük boyutlu ikili karşılaşmalar isteyen oyuncular için "
-#~ "tasarlanan bu kocaman savaş alanında, keşfedilmeyi bekleyen pek çok şey "
-#~ "var."
-
-#~ msgid "2p - Dark Forecast (Survival)"
-#~ msgstr "2p - Kara Öngörü (Ölümüne)"
-
-#~ msgid ""
-#~ "Dark Forecast is a survival scenario for solitaire or two-player "
-#~ "teambased play against randomly AI spawned units. Victory is achieved by "
-#~ "surviving all enemy waves.  During the course of gameplay, the terrain "
-#~ "will change based on random weather effects."
-#~ msgstr ""
-#~ "Kara Öngörü, saldırı arabirimim tarafından sahaya sürüyen birimlere karşı "
-#~ "iki oyuncudan oluşan bir takımın yer aldığı bir ayakta kalma "
-#~ "mücadelesidir. Düşmanın hücum dalgaları bertaraf edilerek zafere "
-#~ "ulaşılır. Oyun sırasında harita hava durumuna bağlı olarak değiştirilir."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Karatipi"
-
-#~ msgid "Snowfall"
-#~ msgstr "Tipi"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Fırtına"
-
-#~ msgid "Drought"
-#~ msgstr "Kurak"
-
-#~ msgid "Single player mode - uses the reduced strength spawns."
-#~ msgstr "Tek oyunculu kip - Gücü azalan akınlar kullanılır."
-
-#~ msgid "Two player mode - uses the full strength spawns."
-#~ msgstr "İki oyunculu kip - Tam güçlü akınlar kullanılır."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Düşman akınlarını bertaraf et ve hayatta kal."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Tüm akınları bertaraf et"
-
-#~ msgid "Lose all your team's leaders"
-#~ msgstr "Ekip liderlerinin tamamının ölümü"
-
-#~ msgid "Dark Forecast - a random survival scenario"
-#~ msgstr "Kara Öngörü - Bir rasgele hayatta kalma senaryosu"
-
-#~ msgid ""
-#~ "Your aim is to survive the spawning waves and defeat the final arch-"
-#~ "enemies.\n"
-#~ "       \n"
-#~ "The spawning waves are generated randomly and will different each time "
-#~ "Dark Forecast is played.\n"
-#~ "\n"
-#~ "\n"
-#~ "They appear along the north, south and west map edges - though they are "
-#~ "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#~ "regular intervals.\n"
-#~ "\n"
-#~ "\n"
-#~ "The weather will also change randomly, affecting the layout of the map.\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "#Dark Forecast was made by:\n"
-#~ "\n"
-#~ "@jb\n"
-#~ "- map design, spawn groups and scenario concept\n"
-#~ "\n"
-#~ "@Rhuvaen\n"
-#~ "- WML implementation"
-#~ msgstr ""
-#~ "Göreviniz, düşman akınlarını bertaraf etmek ve son yıkıcı akına "
-#~ "dayanmaktır.\n"
-#~ "\n"
-#~ "Düşman akınları rasgele ve her oyuncu için farklı üretilir.\n"
-#~ "\n"
-#~ "Haritanın kuzey, güney ve batı kenarlarında ortaya çıkarlarsa da en çok "
-#~ "batı kenarında görülürler. Akınlar belli aralıklarla görülür.\n"
-#~ "\n"
-#~ "Ayrıca hava durumu da değişir ve harita yerleşimi bundan etkilenir.\n"
-#~ "\n"
-#~ "\n"
-#~ "#Emeği geçenler:\n"
-#~ "\n"
-#~ "@jb\n"
-#~ "\t- harita tasarımı, akınlar ve senaryo fikri\n"
-#~ "\n"
-#~ "@Rhuvaen\n"
-#~ "\t- WML gerçeklenimi"
-
-#~ msgid "So this is the accursed valley - a land ours for the taking."
-#~ msgstr "Bu lanetli vadi ülkeniz olacak; ele geçirebilirseniz..."
-
-#~ msgid "2p - Den of Onis"
-#~ msgstr "2o - Onis’in ini"
-
-#~ msgid ""
-#~ "Danger lurks around every corner in this underground battlefield, a duel "
-#~ "map where players must find the balance between force and subterfuge."
-#~ msgstr ""
-#~ "Bu yeraltı savaş alanının her köşesinde tehlike gizleniyor, gücün ve "
-#~ "hilenin birleştiği bir düello haritası."
-
-#~ msgid " Recommended setting of 2 gold per village."
-#~ msgstr " Önerilen ayarlar: Köy başına 2 altın."
-
-#~ msgid "2p - Fallenstar Lake"
-#~ msgstr "2o - Kayanyıldız gölü"
-
-#~ msgid ""
-#~ "Long ago, a great star fell from the heavens, leaving its mark on this "
-#~ "coniferous region."
-#~ msgstr ""
-#~ "Vaktin birinde, gökten koca bir göktaşı düştü, bu tepelik bölgede izini "
-#~ "bıraktı."
-
-#~ msgid "teamname^West"
-#~ msgstr "Batı"
-
-#~ msgid "teamname^East"
-#~ msgstr "Doğu"
-
-#~ msgid "2p - Hamlets"
-#~ msgstr "2o - Mezralar"
-
-#~ msgid ""
-#~ "Warfare transforms the simple farms and villages of a peaceful region "
-#~ "into a subtly parceled battlefield."
-#~ msgstr ""
-#~ "Harp, barışçıl bölgelerdeki kasaba ve çiftlikleri, ufak parçalara "
-#~ "ayrılmış bir savaş alanına çeviriyor."
-
-#~ msgid "2p - Hornshark Island"
-#~ msgstr "2o - Boynuz Adası"
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "Oyuncular, küçük ama topografik olarak yoğun bu ufak adanın dağınık "
-#~ "arazisinde dolaşmalılar."
-
-#~ msgid "2p - Sablestone Delta"
-#~ msgstr "2o - Karataş Deltası"
-
-#~ msgid ""
-#~ "Two armies collide on this disjointed coastal landscape of hidden caves "
-#~ "and jagged rivers."
-#~ msgstr ""
-#~ "İki ordu bu gizli mağara ve dik ırmaklardan oluşan parçalanmış arazide "
-#~ "birbirine giriyor."
-
-#~ msgid "2p - Silverhead Crossing"
-#~ msgstr "2o - Gümüşkafa Kavşağı"
-
-#~ msgid ""
-#~ "Players must traverse all manner of terrain in pursuit of victory on this "
-#~ "multi-fronted duel map."
-#~ msgstr ""
-#~ "Bu çok cepheli düello haritasında, oyuncular başarıyı yakalamak için "
-#~ "arazinin tüm engebelerini aşmalılar."
-
-#~ msgid "statue"
-#~ msgstr "heykel"
-
-#~ msgid "This is a sculpture made of stone."
-#~ msgstr "Taştan heykel."
-
-#~ msgid "2p - Sullas Ruins"
-#~ msgstr "2o - Sulla Harabeleri"
-
-#~ msgid ""
-#~ "Flooded by the seas and battered by the winter elements, only ruins, "
-#~ "water and ice now remain in the shadow of this once mighty empire."
-#~ msgstr ""
-#~ "Bir zamanların güçlü krallığı, denizlerin yuttuğu, çetin kış şartlarının "
-#~ "yıprattığı bu yerde, bir zamanlarki koca imparatorluktan geriye, artık "
-#~ "sadece harabeler, su ve buz kalmış."
-
-#~ msgid "Statue of Sulla"
-#~ msgstr "Sulla Heykeli"
-
-#~ msgid "Statue of Lhun-dup"
-#~ msgstr "Lun-dup’un heykeli"
-
-#~ msgid "Statue of Ri-nzen"
-#~ msgstr "Rinzen’in heykeli"
-
-#~ msgid "Statue of Ten-zin"
-#~ msgstr "Tenzin’in heykeli"
-
-#~ msgid "Statue of Lo-bsang"
-#~ msgstr "Lobsang’ın heykeli"
-
-#~ msgid "2p - The Freelands"
-#~ msgstr "4o - Özgür Topraklar"
-
-#~ msgid "A duel map for super fast play."
-#~ msgstr "Çok hızlı oynamak için bir düello haritası."
-
-#~ msgid "2p - Weldyn Channel"
-#~ msgstr "2o - Veldin Kanalı"
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "2o - Vestop"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "Vestop’ta, oyuncular topu öbür oyuncunun bitiş sahasına mümkün olduğunca "
-#~ "sık aralıklarla götürmelidir. Ne var ki, rakip oyuncular birimlerine "
-#~ "saldırabilir. Vestop’un sürekliliği körelmiş silahlar ve "
-#~ "iyileştiricilerin yardımıyla sağlanır. Öldürülen birimler,yaralı olarak "
-#~ "oyuna baştan başlarlar."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "Zafer:\n"
-#~ "@Rakibin başlama alanına götürdüğün top sayısının rakibinkinden fazla "
-#~ "olması.\n"
-#~ "Yenilgi:\n"
-#~ "#Rakibin başlama alanına götürdüğün top sayısının rakibinkinden az olması."
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "Kırmızılar kazanır! Mevcut durum: $redscore-$bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "Maviler kazanır! Mevcut durum: $redscore-$bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "Topu $passto.type’a ($xloc,$yloc) versem?"
-
-#~ msgid "Yes!"
-#~ msgstr "Evet!"
-
-#~ msgid "No"
-#~ msgstr "Hayır"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Maviler kazanır! Son durum: $redscore-$bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Kırmızılar kazanır! Son durum: $redscore-$bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "Berabere! Son durum: $redscore-$bluescore"
-
-#~ msgid "3p - Alirok Marsh"
-#~ msgstr "3o - Alirok Bataklığı"
-
-#~ msgid "Three players come head to head on this water-cut battlefield."
-#~ msgstr "Üç oyuncu bu suyla ayrılmış savaş bölgesinde kafa kafaya gelirler."
-
-#~ msgid "3p - Island of the Horatii"
-#~ msgstr "3o - Horaçyo Adası"
-
-#~ msgid ""
-#~ "Controlling the central island is often the key to victory in this "
-#~ "21x21hex 3 player free for all map."
-#~ msgstr ""
-#~ "Bu 21x21, 3 rakibin karşılaştığı oyunda, merkezdeki adanın denetimini ele "
-#~ "geçiren kazanır."
-
-#~ msgid "3p - Morituri"
-#~ msgstr "3o - Morituri"
-
-#~ msgid ""
-#~ "Only one faction will emerge victorious from this tightly bordered three-"
-#~ "player map."
-#~ msgstr ""
-#~ "Bu sıkıca sınırlanmış üç oyunculu haritada sadece bir ırk zafere "
-#~ "ulaşabilir."
-
-#~ msgid "4p - Blue Water Province"
-#~ msgstr "4o - Mavisu Bölgesi"
-
-#~ msgid ""
-#~ "Historians write that Bluewater Province has been destroyed and rebuilt "
-#~ "some twenty times. Now, as armies once again converge on the rocky "
-#~ "streams and snowcapped mountains of this small province, its villagers "
-#~ "hardly seem to take notice."
-#~ msgstr ""
-#~ "Söylentiye göre Mavisu bölgesi neredeyse 20 kez yok edilip yeniden imar "
-#~ "edilmiş. Şimdi bir kez daha askerler bu küçük bölgenin coşkun sularında "
-#~ "ve karlı dağlarında belirmişken, köylülerin pek bundan haberi var gibi "
-#~ "gözükmüyor."
-
-#~ msgid "teamname^Team 1"
-#~ msgstr "1. Takım"
-
-#~ msgid "teamname^Team 2"
-#~ msgstr "2. Takım"
-
-#~ msgid "4p - Castle Hopping Isle"
-#~ msgstr "4o - Kale Kapmaca Adası"
-
-#~ msgid "Hop from castle to castle while fighting over a central isle."
-#~ msgstr ""
-#~ "İki ordu bu gizli mağara ve dik ırmaklardan oluşan parçalanmış arazide "
-#~ "birbirine giriyor."
-
-#~ msgid "4p - Clash"
-#~ msgstr "4o - Çarpışma"
-
-#~ msgid "Small map for 2 vs. 2."
-#~ msgstr "2’ye 2 oynanan küçük bir harita."
-
-#~ msgid "4p - Hamlets"
-#~ msgstr "4o - Mezralar"
-
-#~ msgid "4p - Isar's Cross"
-#~ msgstr "4o - Isar Kavşağı"
-
-#~ msgid ""
-#~ "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#~ "rotation of units and planning of moves is important. Teams set for "
-#~ "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
-#~ "gold, 20 villages."
-#~ msgstr ""
-#~ "2’ye 2 oyunculu küçük bir harita. Karargahların yakınlığından dolayı "
-#~ "birimlerin yer değiştirmelere ve hareketlerin planlanması önem kazanıyor. "
-#~ "Takımlar kuzeydoğuya güneybatı şeklinde yerleşir ve 1’e 3 olarak da "
-#~ "oynanabilir.\n"
-#~ "\n"
-#~ "Önerilen ayarlar: 75 altın, 20 köy."
-
-#~ msgid "teamname^South-West"
-#~ msgstr "Güneybatı"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "Kuzeydoğu"
-
-#~ msgid "4p - King of the Hill"
-#~ msgstr "4o - Tepenin Kralı"
-
-#~ msgid ""
-#~ "Controlling the area around the central keep is very lucrative in this "
-#~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
-#~ msgstr ""
-#~ "Bu 36x36'lık 4 rakibin karşılaştığı haritada merkezdeki hisarı denetim "
-#~ "altına almak çok yararlıdır. 2’ye 2 olarak da oynanabilir."
-
-#~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
-#~ msgstr " Önerilen ayarlar: 150 altın ve köy başına 2 altın."
-
-#~ msgid "teamname^South-East"
-#~ msgstr "Güneydoğu"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "Kuzeybatı"
-
-#~ msgid " Recommended setting of 1 gold per village."
-#~ msgstr " Önerilen ayarlar: Köy başına 2 altın."
-
-#~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr "Bu sulak yerleşime hükmetmek için dört ırk savaş veriyor."
-
-#~ msgid "4p - Loris River"
-#~ msgstr "4o - Loris Nehri"
-
-#~ msgid ""
-#~ "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
-#~ "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
-#~ msgstr ""
-#~ "25x25’lik, rakiplerin zıt köşelerde yer aldığı, 2’ye 2 oynanan, bir "
-#~ "nehrin etrafında şekillenmiş bir harita."
-
-#~ msgid "4p - Morituri"
-#~ msgstr "4o - Morituri"
-
-#~ msgid "4p - Paths of Daggers"
-#~ msgstr "4o - Kamalı Patikalar"
-
-#~ msgid " Recommended setting of 2 gold per village, 28 villages."
-#~ msgstr " Önerilen ayarlar: Köy başına 2 altın, 28 köy."
-
-#~ msgid ""
-#~ "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-#~ "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
-#~ msgstr ""
-#~ "Beş farklı çarpışma yolu olan, 35x27 büyüklüğünde 2'ye 2 harita. Doğuya "
-#~ "karşı batı şeklinde oynanmak için (1 ve 3, 2 ve 4) dengelidir, fakat "
-#~ "takımlar halinde veya herkes tek olarak da oynanabilir. "
-
-#~ msgid "4p - Siege Castles"
-#~ msgstr "4o - Kale Kuşatma"
-
-#~ msgid ""
-#~ "40X30 4 player map where 4 mighty castles face off at the convergence of "
-#~ "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
-#~ "villages."
-#~ msgstr ""
-#~ "4 oyuncuya birer kale ile bir nehir etrafında geçen 40x30’luk bir harita. "
-#~ "En iyi 2’ye 2 veya herkes tek oynanır. Yaklaşık 45 köy vardır."
-
-#~ msgid "4p - The Wilderlands"
-#~ msgstr "4o - Harikalar Diyarı"
-
-#~ msgid ""
-#~ "A vast region of wild, untamed wilderness, its terrain dotted with "
-#~ "forests, caves, rivers, and the ruins of ancient fortresses."
-#~ msgstr ""
-#~ "Ormanlar, nehirler ve çok eski kalelerle kaplı ve el değmemiş vahşi "
-#~ "hayatla dolu yabani bir bölge."
-
-#~ msgid "4p - Xanthe Chaos"
-#~ msgstr "4o - Sarı Karmaşa"
-
-#~ msgid ""
-#~ "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-#~ "center common."
-#~ msgstr ""
-#~ "24X28’lik yardımcı kalelerle 2’ye 2 oyunculu büyükçe dağınık bir savaş "
-#~ "alanı."
-
-#~ msgid "5p - Auction-X"
-#~ msgstr "5o - Mezat"
-
-#~ msgid ""
-#~ "4 players surround a central keep, play vs the AI survival style, or as a "
-#~ "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#~ "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#~ "wins. It is a very small map so 75 gold is recommended for the other "
-#~ "players."
-#~ msgstr ""
-#~ "4 oyuncu merkezdeki kaleyi kuşatmış durumda. Oyunu saldırı arabirimine "
-#~ "karşı, herkes tek veya 4’e 1 oynayabilirsiniz. Merkezdeki oyuncunun "
-#~ "altını diğer oyuncuların toplamından fazla olmalı. Kuşatmacı oyunculara "
-#~ "başlangıç olarak 75 altın önerilir. Kazanan mezat usulü ile belirlenir, "
-#~ "EN DÜŞÜK teklifi veren kazanır."
-
-#~ msgid "teamname^Northeast"
-#~ msgstr "Kuzeydoğu"
-
-#~ msgid "teamname^Southeast"
-#~ msgstr "Güneydoğu"
-
-#~ msgid "teamname^Southwest"
-#~ msgstr "Güneybatı"
-
-#~ msgid "teamname^Northwest"
-#~ msgstr "Kuzeybatı"
-
-#~ msgid "teamname^Center"
-#~ msgstr "Merkezi"
-
-#~ msgid "5p - Forest of Fear"
-#~ msgstr "5o - Korku ormanı"
-
-#~ msgid "In this mixed landscape, five armies battle for supremacy."
-#~ msgstr "Bu karışık bölgede, beş ordu egemenlik için savaşıyor."
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "6o - Amosat Krateri"
-
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "Sadece gerçek bir taktikçi altı kapana kısılmış ordunun kafa kafaya "
-#~ "geldiği bu ölümcül ve daracık savaş alanında hayatta kalabilir."
-
-#~ msgid "6p - Crusaders' Field"
-#~ msgstr "6o - Haçlı Tarlası"
-
-#~ msgid ""
-#~ "The rallying cries of battle can once again be heard on this time-worn "
-#~ "field of war, where the ghosts of thousands of brave warriors float "
-#~ "invisibly through the mountains, trees and rivers."
-#~ msgstr ""
-#~ "Dağların, ormanların ve nehirlerin arasından, binlerce cesur kahramanın "
-#~ "hayaletlerinin akın ettiği, zamana yenik düşmüş bu savaş alanında, savaş "
-#~ "çığlıkları tekrar duyulmaya başlandı."
-
-#~ msgid "6p - Hexcake"
-#~ msgstr "6o - Altıgen pasta"
-
-#~ msgid "2 vs. 2 or 3 vs. 3 team game."
-#~ msgstr "2’ye 2 veya 3’e 3 takım oyunu."
-
-#~ msgid "Turn 2: Loyalists"
-#~ msgstr "2. El: Kralcılar"
-
-#~ msgid "Turn 5: Knalgans"
-#~ msgstr "5. El: Kanalgalılar"
-
-#~ msgid "Turn 8: Rebels"
-#~ msgstr "8. El: Asiler"
-
-#~ msgid "Turn 11: Northerners"
-#~ msgstr "11. El: Kuzeyliler"
-
-#~ msgid "Turn 14: Drakes"
-#~ msgstr "14. El: Ejderler"
-
-#~ msgid "Turn 17: Undead"
-#~ msgstr "17. El: Yarı ölüler"
-
-#~ msgid "Tower of Doom"
-#~ msgstr "Cehennem Kulesi"
-
-#~ msgid "6p - Team Survival"
-#~ msgstr "6o - Hayatta kalma oyunu"
-
-#~ msgid "Scenario where the objective is to survive for as long as possible."
-#~ msgstr "Amacı olabildiğince hayatta kalmak olan bir senaryo."
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "32 el dayan."
-
-#~ msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-#~ msgstr ""
-#~ "İpucu: Düşman akınlarının yerlerini ve türlerini öğrenmek oldukça "
-#~ "yardımcı olacaktır."
-
-#~ msgid "Survive all enemy attacks."
-#~ msgstr "Tüm düşman akınlarına dayan."
-
-#~ msgid "Death of your team leaders."
-#~ msgstr "Ekip liderlerinizin tamamının ölümü."
-
-#~ msgid ""
-#~ "Congratulations for surviving the map that so many people claim is "
-#~ "impossible. Frankly, I haven't got a clue as to how you did it, so send "
-#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
-#~ msgstr ""
-#~ "Tebrikler, çoğu kimsenin hayatta kalmayı başaramadığı bir haritada "
-#~ "başarılı oldunuz. Açıkçası, bunu nasıl becerdiniz bilmiyorum ama bana "
-#~ "(roze@roze.mine.nu) bir oyun kaydı gönderirseniz memnun olurum; "
-#~ "teşekkürler!"
-
-#~ msgid "Death"
-#~ msgstr "Ölüm"
-
-#~ msgid ""
-#~ "You have lost this game, but fear not. You can always try again. And "
-#~ "again. And again. *Muahahaha*"
-#~ msgstr ""
-#~ "Bu oyunu kaybettiniz, fakat üzülmeyin. Tekrar denemek mümkün. Kim tutar "
-#~ "sizi! *Muhahaha*"
-
-#~ msgid "Attacker"
-#~ msgstr "Saldıran"
-
-#~ msgid "Defender"
-#~ msgstr "Savunan"
-
-#~ msgid "6p - The Manzivan Traps"
-#~ msgstr "6o - Manzivan Tuzakları"
-
-#~ msgid ""
-#~ "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
-#~ "and confusing area of terrain where it is easy to end up out of position "
-#~ "or over extended. Teams set for players 145 vs. 236 (east vs west). "
-#~ "Designed for 100 starting gold, has 33 villages."
-#~ msgstr ""
-#~ "40x20’lik 3’e 3 oyunculu bir harita. Önerilen ayarlar: Takımlar 145’e 236 "
-#~ "(doğuya batı), 100 altın ve 33 köy."
-
-#~ msgid "6p - Waterloo Sunset"
-#~ msgstr "6o - Waterloo'da Gün Batımı"
-
-#~ msgid ""
-#~ "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
-#~ "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-#~ "south), but having players 146 or 136 as a team is also interesting. "
-#~ "Designed for 150 starting gold, has 44 villages."
-#~ msgstr ""
-#~ "40x30’luk 3’e 3 oyunculu bir harita. Önerilen ayarlar: Takımlar 145’e 236 "
-#~ "(kuzeye güney), 150 altın ve 44 köy, fakat 146 veya 136’lı takımlar da "
-#~ "ilginç olabilir."
-
-#~ msgid "8p - Mokena Prairie"
-#~ msgstr "8o - Mokena Çayırı"
-
-#~ msgid ""
-#~ "Inspired from Morituri, this 8 player map creates an epic battle scene "
-#~ "that requires two teams to coordinate on both offense and defense."
-#~ msgstr "8 oyunculu iki takımlı bir harita."
-
-#~ msgid "teamname^east"
-#~ msgstr "doğu"
-
-#~ msgid "teamname^west"
-#~ msgstr "batı"
-
-#~ msgid "8p - Morituri"
-#~ msgstr "8o - Morituri"
-
-#~ msgid ""
-#~ "Teamwork and tactics are key to victory in this unusual battlefield, "
-#~ "where eight armies fight to the finish."
-#~ msgstr ""
-#~ "Sekiz ordunun ölümüne savaştığı bu olağan dışı savaş alanında takım oyunu "
-#~ "ve taktikler başarının anahtarıdır."
-
-#~ msgid "9p - Merkwuerdigliebe"
-#~ msgstr "9o - Merkwuerdigliebe"
-
-#~ msgid ""
-#~ "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
-#~ "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
-#~ "vs. southeast vs. southwest). There are very few villages per player, so "
-#~ "3 gold per villages is recommended."
-#~ msgstr ""
-#~ "Çok küçük 3’e 3 oynanan 3 harita. Oyuncuların kalabalıklığından dolayı 60 "
-#~ "saniyelik bir zamanlayıcı tavsiye edilir. Takımların oyuncuları: 159 "
-#~ "(kuzey), 267(güneydoğu) 348 (güneybatı). Her bir oyuncuya çok az sayıda "
-#~ "köy düşüyor, bu nedenle her köye 3 altın tavsiye edilir."
-
-#~ msgid "Random map"
-#~ msgstr "Rastgele harita"
-
-#~ msgid ""
-#~ "Randomly generated map. Note: random maps are often unbalanced, but if "
-#~ "you have time, you can regenerate them until you get a good one."
-#~ msgstr ""
-#~ "Rastgele oluşturulmuş harita. Bilginize: Rastgele haritalar genellikle "
-#~ "dengeli değillerdir, eğer zamanınız varsa, tekrar tekrar deneyerek güzel "
-#~ "bir tane yakalayabilirsiniz."
-
-#~ msgid "Random map (Desert)"
-#~ msgstr "Rastgele harita (Çöl)"
-
-#~ msgid ""
-#~ "A random map with sand as the primary terrain. Note: random maps are "
-#~ "often unbalanced, but if you have time, you can regenerate them until you "
-#~ "get a good one."
-#~ msgstr ""
-#~ "Kumun temel alındığı bir rastgele harita. Bilginize: Rastgele haritalar "
-#~ "genellikle dengeli değillerdir, eğer zamanınız varsa, tekrar tekrar "
-#~ "deneyerek güzel bir tane yakalayabilirsiniz."
-
-#~ msgid "Random map (Marsh)"
-#~ msgstr "Rastgele harita (Bataklık)"
-
-#~ msgid ""
-#~ "A random map with swamp as the primary terrain. Note: random maps are "
-#~ "often unbalanced, but if you have time, you can regenerate them until you "
-#~ "get a good one."
-#~ msgstr ""
-#~ "Bataklığın temel alındığı bir rastgele harita. Bilginize: Rastgele "
-#~ "haritalar genellikle dengeli değillerdir, eğer zamanınız varsa, tekrar "
-#~ "tekrar deneyerek güzel bir tane yakalayabilirsiniz."
-
-#~ msgid "Random map (Winter)"
-#~ msgstr "Rastgele harita (Kış)"
-
-#~ msgid ""
-#~ "A random map set in the break between spring and winter, mainly with "
-#~ "snowy terrains. Note: random maps are often unbalanced, but if you have "
-#~ "time, you can regenerate them until you get a good one."
-#~ msgstr ""
-#~ "Bahar ile kışın karşılaştığı zamanda, çoğunlukla karlı bölgeli bir "
-#~ "rastgele harita. Bilginize: Rastgele haritalar genellikle dengeli "
-#~ "değillerdir, eğer zamanınız varsa, tekrar tekrar deneyerek güzel bir tane "
-#~ "yakalayabilirsiniz."
-
-#~ msgid "Wesnoth Benchmark: AI"
-#~ msgstr "Wesnoth Değerlendirmesi: SA"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-#~ "scenario=wesbench_ai --exit-at-end."
-#~ msgstr ""
-#~ "Bir Wesnoth değerlendirmesi; programı\n"
-#~ "\n"
-#~ "--nogui --no-delay --multiplayer --scenario=wesbench_ai --exit-at-end\n"
-#~ "seçenekleri ile çalıştırarak deneyiniz."
-
-#~ msgid "Wesnoth Benchmark: Scrolling"
-#~ msgstr "Wesnoth Değerlendirmesi: Kaydırma"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_scroll --exit-at-end."
-#~ msgstr ""
-#~ "Bir Wesnoth değerlendirmesi; programı\n"
-#~ "\n"
-#~ "--no-delay --multiplayer --scenario=wesbench_scroll --exit-at-end\n"
-#~ "seçenekleri ile çalıştırarak deneyiniz."
-
-#~ msgid "Wesnoth Benchmark: Walking through Shroud"
-#~ msgstr "Wesnoth Değerlendirmesi: Örtü içinde yüreme"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_shroud_walk --exit-at-end."
-#~ msgstr ""
-#~ "Bir Wesnoth değerlendirmesi; programı\n"
-#~ "\n"
-#~ "--no-delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end\n"
-#~ "seçenekleri ile çalıştırarak deneyiniz."
+msgstr "Toprağı Düzelt"

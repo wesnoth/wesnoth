@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2008-10-01 11:40+0300\n"
-"PO-Revision-Date: 2008-04-25 00:41+0300\n"
+"PO-Revision-Date: 2008-10-03 05:19+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -119,20 +119,20 @@ msgstr "Benek başına düşen bit sayısını ayarlar. Örnek: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "Doğrudan seferberlik seçim menüsüne gider."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--path>"
+msgstr "B<--config-dir>I<\\ isim>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -140,18 +140,19 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or %APPDATA% "
 "for windows."
 msgstr ""
+"Kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows’ta %"
+"APPDATA% altında <isim> dizini kullanılır"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
-msgstr "Oyun data dizininin yerini basar ve çıkar."
+msgstr "Kullanıcı yapılandırma dizininin yolunu basar ve çıkar."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -161,20 +162,18 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"Fazladan hata ayıklama bilgileri gösterir ve ek olarak oyun içi komut kipi "
-"seçeneklerini etkin kılar (komut kipi hakkında bilgi edinmek için http://www."
-"wesnoth.org/wiki/CommandMode adresine bakınız)."
+"Oyun içi ek komut kipi seçeneklerini etkin kılar (komut kipi hakkında bilgi "
+"edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummylocales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummylocales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -182,17 +181,19 @@ msgid ""
 "use special dummy locales to switch to any language even if that language "
 "isn't installed system-wide."
 msgstr ""
+"Dil sistem genelinde tanımlı olmasa bile o dile geçmek için taklit yereller "
+"kullanılır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor>"
-msgstr "B<-t, --test>"
+msgstr "B<-e, --editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "Harita düzenleyiciyi doğrudan oyunun içinden başlatır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -264,9 +265,9 @@ msgstr "Komut satırı seçeneklerini standart çıktıya listeler ve çıkar."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ oyun-kaydı>"
+msgstr "B<-l,\\ --load>I<\\ dosya>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
@@ -275,6 +276,9 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
+"Kayıtlı oyun dosyası I<dosya>, oyun kayıt dizininden yüklenir. Eğer B<-e> "
+"veya B<--editor> seçeneği de kullanılmışsa I<dosya>'ya ait harita, harita "
+"düzenleyicide açılır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnothd.6:58
@@ -321,9 +325,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
@@ -363,15 +367,14 @@ msgstr "Oyun verisinin belleklenmesini iptal eder."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy
 msgid "runs the game without music."
-msgstr "Oyunu sesler ve müzikler olmaksızın çalıştırır."
+msgstr "Oyunu müziksiz çalıştırır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -397,14 +400,14 @@ msgstr "Oyun data dizininin yerini basar ve çıkar."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:144
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-api>"
-msgstr "B<--path>"
+msgstr "B<--python-api>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the runtime documentation for the python API."
-msgstr ""
+msgstr "Python API için çalışma anı belgelerini basar."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147 ../../doc/man/wesnoth_editor.6:62
@@ -419,9 +422,9 @@ msgstr "Ekran çözünürlüğünü ayarlar. Örnek: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:151
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:154
@@ -429,12 +432,14 @@ msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
+"Ekran çözünürlüğü için 800x480'e inilmesine izin verilir ve daha az arayüz "
+"bileşeni boyutlandırılır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [sunucu]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:158
@@ -442,6 +447,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"Varsa belirtilen sunucuya, yoksa tercihler arasındaki ilk sunucuya "
+"bağlanılır. Örnek: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:158
@@ -456,14 +463,14 @@ msgstr "Oyunu küçük bir deneme senaryosuyla başlatır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "Önbelleğin geçerli olduğu varsayılır. (tehlikeli)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:164
@@ -489,14 +496,14 @@ msgstr "Oyunu pencereli kipte çalıştırır."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:170
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:175
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "B<--load> seçeneğiyle yüklenen oyun tekrar oynatılır."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:176
@@ -905,15 +912,14 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
 "Wesnoth Savaşı çok oyunculu oyunlarını yönetir. Wesnoth istemcisinden veya "
-"soket üzerinden hangi komutların kabul edildiğini öğrenmek için http://www."
-"wesnoth.org/wiki/ServerAdministration adresine bakınız."
+"soket üzerinden hangi komutların (/query ...) kabul edildiğini öğrenmek için "
+"http://www.wesnoth.org/wiki/ServerAdministration adresine bakınız."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -1065,7 +1071,7 @@ msgstr "Genel anahtar (key) isimleri:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_kayıt-dosyası>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -1073,6 +1079,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Sunucunun okuyup yazabildiği bir (gzip sıkıştırmalı) dosyanın göreli veya "
+"tam yolu. Sunucuya girişi yasaklanan oyuncular bu dosyaya kaydedilir ve "
+"sunucu başlatılırken okunur."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -1110,9 +1119,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_yolu>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1121,6 +1130,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Sunucu komutlarının yansılandığı fifo yolu (wesnoth'tan /query ... ile aynı) "
+"Yol belirtilmezse derleme sırasında belirtilen yol (/var/run/socket/wesnothd/"
+"socket) öntanımlıdır."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1180,7 +1192,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<yeniden_başlatma_komutu>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1188,6 +1200,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"`restart' komutu üzerinden yeni bir sunucu süreci başlatmak için sunucunun "
+"kullanacağı komut. (Sadece fifo üzerinden kullanılabilir.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1269,23 +1283,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[ban_time]> Geçici sunucuya giriş yasağı süresi için uygun sözcüklerin "
+"tanımlandığı etiket."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<isim>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Yasaklama süresine atfedilen isim."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<süre>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1296,10 +1312,14 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Biçemi: %d[%s[%d%s[...]]]\n"
+"Burada %s yerine (saniye)s, (dakika)m, (saat)h, (gün)D, (ay)M, (sene)Y; %d "
+"yerine de bir numara belirtilebilir. Bir zaman birimi belirteci "
+"kullanılmamışsa dakika (m) öntanımlıdır. Örneğin time=\"1D12h30m\" "
+"belirtilmişse 1 gün 12 saat 30 dakikalık yasak süresi konmuş olur."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1307,7 +1327,7 @@ msgid ""
 msgstr ""
 "B<[proxy]> Sunucuya bir vekil sunucu gibi çalışacağını ve bağlanan "
 "istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen etiket. "
-"B<[redirect]> için kullanılan anahtarlar kullanılır."
+"B<[redirect]> için kullanılan değişkenler kullanılır."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:193
@@ -1328,31 +1348,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr "Standart oyun kayıt dizininden bir oyun kaydını yükler."
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ girdi-dosyası\\ çıktı-dosyası>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "Metin biçimli senaryo kaydını (I<girdi-dosyası>) ikilik biçimde I<çıktı-"
-#~ "dosyası> adıyla kaydeder."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ girdi-dosyası\\ çıktı-dosyası>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "İkilik senaryo kaydını (I<girdi-dosyası>) açıp metin biçimli olarak "
-#~ "(I<çıktı-dosyası>) kaydeder."

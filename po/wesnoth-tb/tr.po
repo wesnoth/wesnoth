@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-04 11:50+0200\n"
-"PO-Revision-Date: 2008-01-22 12:07+0200\n"
+"PO-Revision-Date: 2008-10-03 18:50+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,6 @@ msgstr ""
 
 #. [campaign]
 #: data/campaigns/Two_Brothers/_main.cfg:12
-#, fuzzy
 msgid "A Tale of Two Brothers"
 msgstr "İki Kardeşin Hikayesi"
 
@@ -51,7 +50,6 @@ msgstr "Şövalye"
 
 #. [campaign]
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village Maghre and its inhabitants. "
 "The villages mage Bjarn send for his brother to help, but not all goes as "
@@ -60,12 +58,11 @@ msgid ""
 "(Novice level, 4 scenarios; the 'Hard' version may challenge more "
 "experienced players.)"
 msgstr ""
-"Bir kara büyücü bir köyü ve orada yaşayanları tehdit ediyordu. Liderleri "
-"Biyarn abisi Arni’den yardım istediğinde galip durumdaydı, fakat Biyarn "
-"kaçırıldı. Onu kurtarabilir misin?\n"
+"Bir kara büyücü bir köyü ve orada yaşayanları tehdit ediyor. Köylerin "
+"Büyücüsü Biyarn abisinden yardım istemeye gitti, fakat işler umduğu gibi "
+"gitmedi. Ona yardım edebilir misin?\n"
 "\n"
-"(Acemi seviyesi, 4 senaryo; ‘Zor’ sürüm daha deneyimli oyunculara meydan "
-"okuyabilir.)"
+"(Acemi seviyesi, 4 senaryo; ‘Zor’ sürüm daha deneyimli oyuncular içindir.)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:28
@@ -246,7 +243,7 @@ msgstr "Magnus"
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:97
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:138
 msgid "Humans"
-msgstr ""
+msgstr "İnsanlar"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:271
@@ -261,13 +258,13 @@ msgstr "Mordak"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:139
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:126
 msgid "Enemies"
-msgstr ""
+msgstr "Düşmanlar"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:303
 #, fuzzy
 msgid "Greetings, my brother! How may my men and I be of aid?"
-msgstr "Merhaba, Biyarn. Nedir bu telaş?"
+msgstr "Merhaba, Biyarn. Adamlarım ve ben sana nasıl yardım edebiliriz?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:307
@@ -308,8 +305,8 @@ msgid ""
 "Bjarn should be in position by now. Press them, distract the adept so Bjarn "
 "can spring his trap!"
 msgstr ""
-"Biyarn şu sıralar yerini almış olmalı. Ona bir şeyler olursa diye "
-"endişeleniyorum..."
+"Biyarn şu sıralar yerini almış olmalı. Ordularına karşı tetikte olalım. Ona "
+"bir şeyler olursa diye öyle endişeleniyorum ki..."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:338
@@ -404,8 +401,8 @@ msgid ""
 "Unaware of those rumors, Arne followed them. His only worry was that his "
 "horsemen would be at disadvantage if attacked in the forest."
 msgstr ""
-"Biyarn’ı kaçıranlar ormanın kuzeyine doğru kaçtılar ve atlıları ormanda iyi "
-"yol alamasa da Arni peşlerine düştü."
+"Atlıları ormanda iyi yol alamasa da hatta ormanda saldırıya uğradığında "
+"üstün gelemeyecek olsa da Arni söylentileri öğrenemeden peşlerine düştü."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:87
@@ -420,7 +417,7 @@ msgstr "Nil-Galyon"
 #. [side]: type=Elvish Rider
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:174
 msgid "Elves"
-msgstr ""
+msgstr "Elfler"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:266
@@ -466,11 +463,14 @@ msgstr ""
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:294
+#, fuzzy
 msgid ""
 "I am glad at least that we will not have to face ghosts. But those elves "
 "will have us at a disadvantage; our horses will not maneuver wekll in the "
 "trees."
 msgstr ""
+"En azından hayaletlerle karşılaşmadık. Fakat ağaçlar arasında atlarımız iyi "
+"manevra yapamadığından burada elfler üstün durumda."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:298
@@ -1075,7 +1075,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:206
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
 msgstr "Ork Savaş Lordunu öldür ve kasabayı kurtar"
 
@@ -1119,9 +1118,8 @@ msgstr "İnsanları yeterince koruyamadım. Ah nedir bu başıma gelen?!?"
 
 #. [scenario]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
-#, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"
-msgstr "İki Kardeşin Hikayesi"
+msgstr "İki Kardeşin Hikayesi - Sonsöz"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:11
@@ -1144,15 +1142,23 @@ msgstr ""
 #~ msgstr ""
 #~ "Haydi askerler. Ormanda sıkı bir yürüyüş hiç de zor olmaz, değil mi?"
 
-#, fuzzy
 #~ msgid ""
 #~ "Those men had some great arguments persuading me to stop you and let them "
 #~ "pass my forest. Any further, and you will die."
 #~ msgstr ""
-#~ "Bu adamlar ormana girmenize izin vermemem için beni ikna ederken önemli "
-#~ "deliller sundular.  Ormana girmeyi denerseniz ölürsünüz."
+#~ "Bu adamlar ormanı geçmelerine yardım etmem ve sizin de ormana girmenize "
+#~ "izin vermemem için beni ikna ederken önemli deliller sundular. Ormana "
+#~ "girmeyi deneyen ölür."
 
-#, fuzzy
+#~ msgid ""
+#~ "So much about your ghost stories. Looks like some outlaws took control of "
+#~ "this ancient castle. They will not stop me from chasing those who took my "
+#~ "brother!"
+#~ msgstr ""
+#~ "Hayalet hikayeleriniz çok dinledik. Haydutlar bu eski kalenin yönetimini "
+#~ "ele geçirmiş görünüyor. Kardeşimi ellerinden almaktan beni hiçbir şey "
+#~ "alıkoyamaz!"
+
 #~ msgid "Curses! I hope the reinforcements get here to aid our escape."
 #~ msgstr ""
 #~ "Lanet! Umarım destek kuvvetleri gelmiştir, böylece hemen kaçabilirim."
@@ -1173,7 +1179,6 @@ msgstr ""
 #~ "Hayırrrr! Gene kandırıldık. Bize yerini söyle biz de sefil hayatını "
 #~ "bağışlayalım."
 
-#, fuzzy
 #~ msgid "Thank you. Leave him, men, we ride east."
 #~ msgstr "Teşekkürler. Bırakın onu, doğuya gidiyoruz."
 
@@ -1209,88 +1214,3 @@ msgstr ""
 #~ "Benim artık gitmem lazım. Bana ve adamlarıma başkalarının da ihtiyacı "
 #~ "var. Ama eğer köyün yine bir tehditle karşılaşırsa, bana bir haberci "
 #~ "yolla. Mümkün olduğunca çabuk gelirim, kardeşim."
-
-#~ msgid ""
-#~ "In a remote part of Wesnoth, people lived their lives working hard and "
-#~ "caring for each other, but not knowing much about the world outside. But "
-#~ "there came a day when their peaceful world was shattered, as an evil mage "
-#~ "came to the region, spreading havoc and despair."
-#~ msgstr ""
-#~ "Wesnoth’un uzak bir köşesinde, insanlar ağır koşullarda çalışarak ve "
-#~ "birbirlerini gözeterek yaşamlarını sürdürüyor ama dış dünyada neler olup "
-#~ "bittiğini pek bilmiyorlardı. Bir gün bir kara büyücünün bölgelerine "
-#~ "gelmesi ile huzurları bozuldu ve bölgeye umutsuzluk hakim olmaya başladı."
-
-#~ msgid ""
-#~ "Bjarn, the local mage of the village, was the man who saw best how to "
-#~ "deal with this threat. He asked the help of his brother Arne, leader of a "
-#~ "mercenary band of horsemen, and outfitted several of the villagers with "
-#~ "gear from the armory."
-#~ msgstr ""
-#~ "Köyün büyücüsü Biyarn bu tehlike ile nasıl başa çıkabileciğini gayet iyi "
-#~ "biliyordu. Kardeşi Arni’yi yardıma çağırdı. Arni, bir paralı süvari "
-#~ "grubunun lideri idi ve bazı köylüleri getirdiği silahlarla donattı."
-
-#~ msgid ""
-#~ "Mordak, an evil mage, threatens our lives and livelihoods. He is "
-#~ "terrorizing our countryside. I've already called the village to arms and "
-#~ "now it's up to you to lead them. You'll find him about two days' ride "
-#~ "north of here."
-#~ msgstr ""
-#~ "Mordak adında bir kara büyücü yaşamımızı ve sevdiklerimizi tehdit ediyor. "
-#~ "Bölgemizde terör estiriyor. Köylülere silah başı yaptırdım ve emrine "
-#~ "girmeye hazırlar. Büyücüyü buradan at sürüşüyle iki günlük mesafede "
-#~ "bulursun."
-
-#~ msgid ""
-#~ "Very well. We will go there and slay this source of evil. Charge, men!"
-#~ msgstr ""
-#~ "Çok iyi. Oraya gidecek ve bu şeytanlığın kaynağını yok edeceğiz. Askerler "
-#~ "ileri!"
-
-#~ msgid ""
-#~ "I will attempt to sneak through the forest. If I can slay the evil one "
-#~ "while he is off his guard, the battle will be over in one stroke!"
-#~ msgstr ""
-#~ "Ben ormandan gizlice yaklaşmayı deneyeceğim. Eğer bu şeytani şeyi "
-#~ "geldiğinizi farketmeden önce öldürebilirsem savaşı bir hamlede bitirmiş "
-#~ "oluruz!"
-
-#~ msgid ""
-#~ "This is worrying. What's happened to Bjarn? I suppose we must slay the "
-#~ "dark sorcerer ourselves."
-#~ msgstr ""
-#~ "Bu beni endişelendiriyor. Biyarn’a ne oldu, acaba? Kara büyücüyü öldürmek "
-#~ "bize kaldı anlaşılan."
-
-#~ msgid "Good work, men. Now, where is Bjarn?"
-#~ msgstr "İyi işti adamlarım. Peki Biyarn nerede?"
-
-#~ msgid "Nothing more to be had from him."
-#~ msgstr "Ondan fayda gelmez."
-
-#~ msgid ""
-#~ "Sir, he's been kidnapped! I just saw some men running off with him. They "
-#~ "looked like friends of this one."
-#~ msgstr ""
-#~ "Efendim, o kaçırıldı! Onunla kaçan bazı adamlar gördüm. Onlar bunun "
-#~ "arkadaşlarıydı galiba."
-
-#~ msgid "Damn! I suppose we have to go after him, then."
-#~ msgstr "Kahretsin! Anlaşılan peşlerinden gitmemiz gerekecek."
-
-#~ msgid ""
-#~ "Ha, so you thought to send a mage around and stab me in the back? Well, I "
-#~ "have news for you. We've kidnapped him!"
-#~ msgstr ""
-#~ "Ne, sen bir büyücü göndererek beni arkadan hançerleyebileceğini mi "
-#~ "düşündün? Pekala, sana haberlerim var. Biz onu kaçırdık!"
-
-#~ msgid ""
-#~ "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
-#~ msgstr ""
-#~ "Ne? Biyarn kaçırıldı mı? Ve kara büyücü bölgeyi harabetmeye devam mı "
-#~ "ediyor? Hayııııır!"
-
-#~ msgid "A glorious combat at last, against mounted enemies!"
-#~ msgstr "Sonunda atlı düşmanlara karşı şanlı bir döğüş!"

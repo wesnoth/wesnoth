@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-01 11:39+0200\n"
-"PO-Revision-Date: 2008-01-22 12:44+0200\n"
+"PO-Revision-Date: 2008-10-03 17:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -71,22 +71,22 @@ msgstr "kale"
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
-msgstr ""
+msgstr "Tek Altıgen"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Yarıçapı 1 Altıgen"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Yarıçapı 2 Altıgen"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "KB-GD Altıgen Hattı"
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
@@ -94,6 +94,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold ALT to "
 "paint base layer only"
 msgstr ""
+"Arazinin ön ve art alanlarını çizmek için farenin sol ve sağ düğmelerini "
+"kullanın. Sadece zemin katmanını boyamak isterseniz ALT tuşunu basılı tutun."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:16
@@ -101,6 +103,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain"
 msgstr ""
+"Farenin sol düğmesi yakalar, sağ düğmesi bırakır. Çok sayıda arazi altıgeni "
+"seçmek için Shift tuşunu basılı tutun."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:21
@@ -109,11 +113,14 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Farenin sol düğmesi seçili oyunculu gösterir, sağ bunu siler. Sayısal tuşlar "
+"başlangıç yerini kaydırır. Alt+sayı ise imlecin altındaki yeri ilgili "
+"tarafın başlangıç noktası yapar."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:26
 msgid "Click to paste."
-msgstr ""
+msgstr "Yapıştırmak için tıklayın."
 
 #. [menu]
 #: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
@@ -138,7 +145,7 @@ msgstr "köyler"
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Harita"
 
 #: src/editor/editor.cpp:246
 msgid "Draw tiles"
@@ -287,83 +294,84 @@ msgstr " azami="
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
-msgstr ""
+msgstr "Ölümcül hata"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Gerçekten çıkmak istiyor musunuz?"
 
 #: src/editor2/editor_controller.cpp:244
 msgid "There are unsaved changes in the map."
-msgstr ""
+msgstr "Haritada kaydedilmemiş değişiklikler var."
 
 #: src/editor2/editor_controller.cpp:246
 msgid "Quit"
-msgstr ""
+msgstr "Çık"
 
 #: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: src/editor2/editor_controller.cpp:256
 msgid "No editor time-of-day found"
-msgstr ""
+msgstr "Bir düzenleyici vakti yok."
 
 #: src/editor2/editor_controller.cpp:289
 msgid "There are unsaved changes in the map"
-msgstr ""
+msgstr "Haritada kaydedilmemiş değişiklikler var"
 
 #: src/editor2/editor_controller.cpp:290
 msgid "Do you want to discard all changes you made to the map?"
-msgstr ""
+msgstr "Haritada yaptığınız değişiklikleri iptal etmek mi istiyorsunuz?"
 
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
-msgstr ""
+msgstr "Bir rasgele harita üreteci yok."
 
 #: src/editor2/editor_controller.cpp:369
 msgid "Map creation failed."
-msgstr ""
+msgstr "Harita oluşturulamadı."
 
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
-msgstr ""
+msgstr "Harita yüklenirken hata"
 
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
-msgstr ""
+msgstr "Geri Alınamaz"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
-msgstr ""
+msgstr "Tekrarlanamaz"
 
 #: src/editor2/editor_map.cpp:57
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Harita dosyası ya boş ya da yok."
 
 #: src/editor2/editor_map.cpp:65
 msgid "There was a format error while loading the map:"
-msgstr ""
+msgstr "Harita yüklenirken bir biçem hatası bulundu:"
 
 #: src/editor2/editor_map.cpp:71
 msgid "There was a wml error while loading the map:"
-msgstr ""
+msgstr "Harita yüklenirken bir WML hatası saptandı:"
 
 #: src/editor2/mouse_action.cpp:380
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Oyuncu"
+msgstr "Hiçbiri"
 
 #: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
-msgstr ""
+msgstr "Oyuncu seçiniz"
 
 #: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
+"Burada hangi oyuncu oyuna başlayacak? Başlangıç konumunu belirlemek için 1-9 "
+"tuşlarını, silmek için Del tuşunu kullanabilirsiniz."
 
 #: src/gui/dialogs/editor_settings.cpp:106
 msgid "Custom setting"
-msgstr ""
+msgstr "Özel Ayarlar"

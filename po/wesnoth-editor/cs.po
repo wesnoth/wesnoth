@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-01 11:39+0200\n"
-"PO-Revision-Date: 2008-09-23 14:19+0100\n"
+"PO-Revision-Date: 2008-10-04 14:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -293,7 +293,7 @@ msgstr " maximum="
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
-msgstr ""
+msgstr "Kritická chyba"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Do you really want to quit?"
@@ -301,7 +301,7 @@ msgstr "Opravdu si přejete skončit?"
 
 #: src/editor2/editor_controller.cpp:244
 msgid "There are unsaved changes in the map."
-msgstr ""
+msgstr "Na mapě jsou neuložené změny."
 
 #: src/editor2/editor_controller.cpp:246
 msgid "Quit"
@@ -313,7 +313,7 @@ msgstr "Chyba"
 
 #: src/editor2/editor_controller.cpp:256
 msgid "No editor time-of-day found"
-msgstr ""
+msgstr "Nenalezena žádná denní doba pro editor"
 
 #: src/editor2/editor_controller.cpp:289
 msgid "There are unsaved changes in the map"
@@ -325,16 +325,15 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
-msgstr ""
+msgstr "Nenalezeny žádné náhodné generátory"
 
 #: src/editor2/editor_controller.cpp:369
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
-#, fuzzy
 msgid "Error loading map"
-msgstr "Chyba načítání mapy (wml)"
+msgstr "Chyba načítání mapy"
 
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
@@ -346,20 +345,17 @@ msgstr "Nelze opakovat"
 
 #: src/editor2/editor_map.cpp:57
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Soubor mapy nebyl nalezen nebo je prázdný"
 
 #: src/editor2/editor_map.cpp:65
-#, fuzzy
 msgid "There was a format error while loading the map:"
-msgstr "Při načítání mapy se vyskytl problém:"
+msgstr "Při načítání mapy se vyskytla chyba formátu:"
 
 #: src/editor2/editor_map.cpp:71
-#, fuzzy
 msgid "There was a wml error while loading the map:"
-msgstr "Při načítání mapy se vyskytl problém:"
+msgstr "Při načítání mapy se vyskytla chyba WML:"
 
 #: src/editor2/mouse_action.cpp:380
-#, fuzzy
 msgid "(Player)^None"
 msgstr "Žádný"
 
