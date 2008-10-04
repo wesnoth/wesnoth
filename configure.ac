@@ -983,6 +983,7 @@ AC_SUBST([SOUND_FILES])
 AC_CONFIG_FILES([Makefile
 		 po/Makefile
 		 po/wesnoth/Makefile.in
+		 po/wesnoth-editor/Makefile.in
 		 po/wesnoth-test/Makefile.in
 		 po/wesnoth-lib/Makefile.in
 		 po/wesnoth-units/Makefile.in
