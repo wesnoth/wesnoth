@@ -242,6 +242,8 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 ttext& ttext::set_text(const std::string& text, const bool markedup) 
 {
 	if(markedup != markedup_text_ || text != text_) {
+		assert(layout_);
+
 		if(markedup) {
 			pango_layout_set_markup(layout_, text.c_str(), text.size());
 		} else {
@@ -296,6 +298,8 @@ ttext& ttext::set_maximum_width(int width)
 	}
 
 	if(width != maximum_width_) {
+		assert(context_);
+
 		pango_layout_set_width(layout_, width == -1 ? -1 : width * PANGO_SCALE);
 		maximum_width_ = width;
 		calculation_dirty_ = true;
@@ -312,6 +316,8 @@ ttext& ttext::set_maximum_height(int height)
 	}
 
 	if(height != maximum_height_) {
+		assert(context_);
+
 /**
  * @todo See whether we can make pango 1.20 mandatory before Wesnoth 1.6 is
  * released.
@@ -332,6 +338,8 @@ ttext& ttext::set_maximum_height(int height)
 ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 {
 	if(ellipse_mode != ellipse_mode_) {
+		assert(context_);
+
 		pango_layout_set_ellipsize(layout_, ellipse_mode);
 		ellipse_mode_ = ellipse_mode_;
 		calculation_dirty_ = true;
@@ -402,6 +410,8 @@ std::ostream& operator<<(std::ostream& s, const PangoRectangle &rect)
 void ttext::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
+		assert(layout_);
+
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
@@ -415,6 +425,8 @@ void ttext::recalculate(const bool force) const
 void ttext::rerender(const bool force) const
 {
 	if(surface_dirty_ || force) {
+		assert(layout_);
+
 		recalculate(force);
 		surface_dirty_ = false;
 
