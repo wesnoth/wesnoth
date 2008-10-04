@@ -272,7 +272,8 @@ wesnoth_editor2_sources = Split("""
     editor2/mouse_action.cpp
     """)
     
-wesnoth_sources += wesnoth_editor2_sources
+if env["editor"]:
+    wesnoth_sources += wesnoth_editor2_sources
 
 libwesnoth_extras = env.Library("wesnoth_extras", wesnoth_sources)
 #

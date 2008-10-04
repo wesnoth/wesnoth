@@ -59,6 +59,7 @@ opts.AddOptions(
     PathOption('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathOption.PathAccept),
     PathOption('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathOption.PathAccept),
     PathOption('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathOption.PathAccept),
+    BoolOption('editor', 'Enable editor', True),
     BoolOption('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
     BoolOption('nls','enable compile/install of gettext message catalogs',True),
     PathOption('prefix', 'autotools-style installation prefix', "/usr/local", PathOption.PathAccept),
@@ -291,6 +292,9 @@ if env['lowmem']:
 
 if env['internal_data']:
     env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
+
+if not env["editor"]:
+    env.Append(CPPDEFINES = "DISABLE_EDITOR2")
 
 if have_X:
     env.Append(CPPDEFINES = "_X11")
