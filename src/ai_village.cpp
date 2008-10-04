@@ -231,9 +231,9 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 				const unit_map::const_iterator new_unit = units_.find(loc);
 
 				if(new_unit != units_.end() &&
-						power_projection(loc,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
+						power_projection(i->first,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
 					LOG_AI << "found support target... " << new_unit->first << "\n";
-					add_target(target(new_unit->first,25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints(),target::SUPPORT));
+					add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}
 		}
@@ -344,8 +344,7 @@ void ai::find_villages(
 		}
 
 		const unit& un = u->second;
-		const double threat_multipler = (current_loc == leader_loc?1.5:1.0);
-		if(un.hitpoints() < (threat_multipler*threat*2.0*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
+		if(un.hitpoints() < (threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
 			continue;
 		}
 

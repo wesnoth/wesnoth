@@ -22,9 +22,9 @@
 #include "log.hpp"
 #include "attack_prediction.hpp"
 
-#define LOG_AI LOG_STREAM(info, formula_ai)
-#define WRN_AI LOG_STREAM(warn, formula_ai)
-#define ERR_AI LOG_STREAM(err, formula_ai)
+#define LOG_AI LOG_STREAM(info, ai)
+#define WRN_AI LOG_STREAM(warn, ai)
+#define ERR_AI LOG_STREAM(err, ai)
 
 namespace {
 using namespace game_logic;
@@ -467,7 +467,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
-		LOG_AI << "move(): " << src << ", " << dst << ")\n";
+		std::cerr << "move(): " << src << ", " << dst << ")\n";
 		return variant(new move_callable(src, dst));
 	}
 };
@@ -571,7 +571,7 @@ private:
 		const gamemap::location dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
-			LOG_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
+			std::cerr << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
 			return variant();
 		}
 		return variant(new attack_callable(ai_, move_from, src, dst, weapon));
@@ -1281,14 +1281,14 @@ void formula_ai::handle_exception(game_logic::formula_error& e)
 
 void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation)
 {
-	LOG_AI << failed_operation << ": " << e.formula_ << std::endl;
+	std::cerr << failed_operation << ": " << e.formula_ << std::endl;
 	display_message(failed_operation + ": " + e.formula_);
 	//if line number = 0, don't display info about filename and line number
 	if (e.line_ != 0) {
-		LOG_AI << e.type_ << " in " << e.filename_ << ":" << e.line_ << std::endl;
+		std::cerr << e.type_ << " in " << e.filename_ << ":" << e.line_ << std::endl;
 		display_message(e.type_ + " in " + e.filename_ + ":" + boost::lexical_cast<std::string>(e.line_));
 	} else {
-		LOG_AI << e.type_ << std::endl;
+		std::cerr << e.type_ << std::endl;
 		display_message(e.type_);
 	}
 }
@@ -1348,11 +1348,8 @@ void formula_ai::make_candidate_moves() {
 		int best_score = (*best_move)->get_score();
 		// If no evals > 0, fallback
 		if(best_score < 0) {
-			if (master_)
-			{
-				ai_interface* fallback = create_ai("", get_info());
-				fallback->play_turn();
-			}
+			ai_interface* fallback = create_ai("", get_info());
+			fallback->play_turn();
 			return;
 		}
 		// Otherwise, make the best scoring move
@@ -1372,11 +1369,8 @@ void formula_ai::make_candidate_moves() {
 	}
 
 	// After all candidate moves have been exhausted, fallback
-	if (master_)
-	{
-		ai_interface* fallback = create_ai("", get_info());
-		fallback->play_turn();
-	}
+	ai_interface* fallback = create_ai("", get_info());
+	fallback->play_turn();
 
 }
 
@@ -1454,17 +1448,15 @@ void formula_ai::prepare_move() const
 
 bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
-	if(!formula_ ) {
-		if(master_) {
-			ai_interface* fallback = create_ai("", get_info());
-			fallback->play_turn();
-		}
+	if(!formula_) {
+		ai_interface* fallback = create_ai("", get_info());
+		fallback->play_turn();
 		return false;
 	}
 
 	move_maps_valid_ = false;
 
-	LOG_AI << "do move...\n";
+	std::cerr << "do move...\n";
 	const variant var = formula_->execute(variables);
 
 	return execute_variant(var);
@@ -1498,34 +1490,10 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 		prepare_move();
 		if(move) {
-			LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
-			unit_map::iterator unit_it = units_.find(move->src());
-			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
-				std::map<gamemap::location,paths>::iterator path = possible_moves_.find(move->src());
-
-				gamemap::location destination = move->dst();
-
-				//check if destination is within unit's reach
-				if( path->second.routes.count(move->dst()) == 0) {
-					//destination is too far, check where unit can go
-					shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
-					paths::route route = a_star_search(move->src(), move->dst(), 1000.0, &calc,
-						get_info().map.w(), get_info().map.h());
-
-					int movement = unit_it->second.movement_left();
-					
-					for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
-				
-						if ( move_cost > movement ) {
-							break;
-						}
-						destination = *loc_iter;
-						movement -= move_cost;
-					}
-				}
-
-				move_unit(move->src(), destination, possible_moves_);
+			std::cerr << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
+			unit_map::iterator i = units_.find(move->src());
+			if( (possible_moves_.count(move->src()) > 0) && (i->second.movement_left() != 0) ) {
+				move_unit(move->src(), move->dst(), possible_moves_);
 				made_move = true;
 			}
 		} else if(attack) {
@@ -1539,7 +1507,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if(attack->move_from() != attack->src()) {
 				move_unit(attack->move_from(), attack->src(), possible_moves_);
 			}
-			LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
+			std::cerr << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
 			attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
 			made_move = true;
 		} else if(attack_analysis) {
@@ -1581,12 +1549,12 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			}
 			made_move = true;
 		} else if(recruit_command) {
-			LOG_AI << "RECRUIT: '" << recruit_command->type() << "'\n";
+			std::cerr << "RECRUIT: '" << recruit_command->type() << "'\n";
 			if(recruit(recruit_command->type(), recruit_command->loc())) {
 				made_move = true;
 			}
 		} else if(set_var_command) {
-			LOG_AI << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
+			std::cerr << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
 			vars_.add(set_var_command->key(), set_var_command->value());
 			made_move = true;
 		} else if(i->is_string() && i->as_string() == "recruit") {
@@ -1595,26 +1563,22 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(i->is_string() && i->as_string() == "end_turn") {
 			return false;
 		} else if(fallback_command) {
-			if (master_)
+			if(fallback_command->key() == "human")
 			{
-				if(fallback_command->key() == "human")
-				{
-					//we want give control of the side to human for the rest of this turn
-					throw fallback_ai_to_human_exception();
-				} else
-				{
-					ai_interface* fallback = create_ai(fallback_command->key(), get_info());
-					if(fallback) {
-						fallback->play_turn();
-					}
+				//we want give control of the side to human for the rest of this turn
+				throw fallback_ai_to_human_exception();
+			} else
+			{
+				ai_interface* fallback = create_ai(fallback_command->key(), get_info());
+				if(fallback) {
+					fallback->play_turn();
 				}
 			}
 			return false;
 		} else {
 			//this information is unneded when evaluating formulas form commandline
-			if (!commandline) {
-				LOG_AI << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
-			}
+			if (!commandline)
+				std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
 		}
 	}
 
@@ -1622,10 +1586,10 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 }
 
 
-bool formula_ai::do_recruitment()
+void formula_ai::do_recruitment()
 {
 	if(!recruit_formula_) {
-		return false;
+		return;
 	}
 
 	variant var = recruit_formula_->execute(*this);
@@ -1638,19 +1602,17 @@ bool formula_ai::do_recruitment()
 		vars.push_back(var);
 	}
 
-	bool ret = false;
 	for(std::vector<variant>::const_iterator i = vars.begin(); i != vars.end(); ++i) {
 		if(!i->is_string()) {
-			return false;
+			return;
 		}
 
 		if(!recruit(i->as_string())) {
-			return ret;
+			return;
 		}
-		ret = true;
 	}
 
-	return do_recruitment();
+	do_recruitment();
 }
 
 namespace {

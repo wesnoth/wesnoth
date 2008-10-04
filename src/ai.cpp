@@ -37,7 +37,6 @@
 #include "log.hpp"
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
-#include "attack_prediction.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
@@ -48,8 +47,6 @@
 #include <cassert>
 #include <fstream>
 
-
-#include <boost/scoped_ptr.hpp>
 
 #define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)
@@ -177,7 +174,7 @@ protected:
 		}
 	}
 
-	bool do_recruitment() {
+	void do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
 	if (!options.empty()) {
 			const int choice = (rand()%options.size());
@@ -186,11 +183,9 @@ protected:
 
 			const bool res = recruit(*i);
 			if(res) {
-				return do_recruitment();
+				do_recruitment();
 			}
-			return true;
 		}
-		return false;
 	}
 };
 
@@ -293,7 +288,6 @@ ai::ai(ai_interface::info& info) :
 	state_(info.state),
 	consider_combat_(true),
 	additional_targets_(),
-	info_(info),
 	unit_movement_scores_(),
 	not_recommended_units_(),
 	unit_combat_scores_(),
@@ -301,11 +295,8 @@ ai::ai(ai_interface::info& info) :
 	avoid_(),
 	unit_stats_cache_(),
 	attack_depth_(0),
-	recruiting_prefered_(0),
-	master_(info_.master)
-{
-	info_.master = false;
-}
+	recruiting_prefered_(false)
+{}
 
 void ai::new_turn()
 {
@@ -321,7 +312,6 @@ void ai::new_turn()
 	avoid_.clear();
 	unit_stats_cache_.clear();
 	attack_depth_ = 0;
-	ai_manager::get_ai("formula_ai", info_)->new_turn();
 	ai_interface::new_turn();
 }
 
@@ -334,7 +324,6 @@ bool ai::recruit_usage(const std::string& usage)
 	log_scope2(ai, "recruiting troops");
 	LOG_AI << "recruiting '" << usage << "'\n";
 
-	raise_user_interact();
 	//make sure id, usage and cost are known for the coming evaluation of unit types
 	unit_type_data::types().build_all(unit_type::HELP_INDEX);
 
@@ -343,12 +332,17 @@ bool ai::recruit_usage(const std::string& usage)
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
 	const std::set<std::string>& recruits = current_team().recruits();
-	for(std::set<std::string>::const_iterator recruit_item = recruits.begin(); recruit_item != recruits.end(); ++recruit_item)
+	for(std::map<std::string,unit_type>::const_iterator i =
+	    unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i)
 	{
-		std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find(*recruit_item);
 		const std::string& name = i->second.id();
 		// If usage is empty consider any unit.
+//		DBG_AI << name << " considered\n";
 		if (i->second.usage() == usage || usage == "") {
+			if (!recruits.count(name)) {
+//				DBG_AI << name << " rejected, not in recruitment list\n";
+				continue;
+			}
 			LOG_AI << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
@@ -540,6 +534,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		}
 
 		if(rt != p.routes.end()) {
+			assert(static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size()-1 && "Trying to move unit without enough move points left\n");
 			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
@@ -583,8 +578,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 								steps.erase(i,steps.end());
 								break;
 							} else {
-								if (i+1 != steps.end()
-										&& !u_it->second.get_ability_bool("skirmisher",*i)){
+								if (!u_it->second.get_ability_bool("skirmisher",*i)){
 									LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
 									LOG_AI << "\tresetting destination from " <<to;
 									to = *i;
@@ -805,7 +799,8 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			continue;
 		}
 		// Discount incapacitated units
-		if(un_it->second.incapacitated()) {
+		if(un_it->second.incapacitated() 
+			|| un_it->second.movement_left() == 0) {
 			continue;
 		}
 
@@ -910,8 +905,8 @@ void ai::find_threats()
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader != units_.end()) {
 		items.push_back(protected_item(
-					lexical_cast_default<double>(parms["protect_leader"], 2.0),
-					lexical_cast_default<int>(parms["protect_leader_radius"], 15),
+					lexical_cast_default<double>(parms["protect_leader"], 1.0),
+					lexical_cast_default<int>(parms["protect_leader_radius"], 20),
 					leader->first));
 	}
 
@@ -974,38 +969,10 @@ void ai::play_turn()
 
 void ai::evaluate_recruiting_value(unit_map::iterator leader)
 {
-	if (recruiting_prefered_ == 2)
-	{
-		recruiting_prefered_ = 0;
-		return;
-	}
-	if (current_team().num_pos_recruits_to_force()< 0.01f)
-	{
-		return;
-	}
-
-	float free_slots = 0.0f;
-	const float gold = current_team().gold();
-	const float unit_price = current_team().average_recruit_price();
-	if (map_.is_keep(leader->first))
-	{
-		std::set<gamemap::location> checked_hexes;
-		checked_hexes.insert(leader->first);
-		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
-	} else {
-		gamemap::location loc = nearest_keep(leader->first);
-		if (units_.find(loc) == units_.end()
-			&& gold/unit_price > 1.0f)
-		{
-			free_slots -= current_team().num_pos_recruits_to_force();
-		}
-	}
-	recruiting_prefered_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
-	DBG_AI << "recruiting prefered: " << (recruiting_prefered_?"yes":"no") << 
-		" units to recruit: " << (gold/unit_price) << 
-		" unit_price: " << unit_price <<
-		" free slots: " << free_slots <<
-		" limit: " << current_team().num_pos_recruits_to_force() << "\n";
+	const int gold = current_team().gold();
+//	const int unit_price = current_team().average_recruit_price();
+//	recruiting_prefered_ = (gold/unit_price) > min_recruiting_value_to_force_recruit && !map_.is_keep();
+	recruiting_prefered_ = gold > min_recruiting_value_to_force_recruit && !map_.is_keep(leader->first);
 }
 
 void ai::do_move()
@@ -1015,11 +982,6 @@ void ai::do_move()
 	invalidate_defensive_position_cache();
 
 	raise_user_interact();
-
-	// Formula AI is first going to move everything that it can
-
-//	if (master_)
-//		static_cast<formula_ai*>(ai_manager::get_ai("formula_ai", info_).get())->play_turn();
 
 	typedef paths::route route;
 
@@ -1143,31 +1105,11 @@ void ai::do_move()
 	if(leader != units_.end()) {
 
 		if(!passive_leader) {
-			gamemap::location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
-			leader = find_leader(units_,team_num_);
-			if (leader->first != before
-				&& leader->second.movement_left() > 0
-				&& recruiting_prefered_)
-			{
-				recruiting_prefered_ = 2;
-				do_move();
-				return;
-			}
 		}
 
 		if (map_.is_keep(leader->first))
-		{
-			if (do_recruitment())
-			{
-				do_move();
-				return;
-			} else if (recruiting_prefered_){
-				recruiting_prefered_ = 2;
-				do_move();
-				return;
-			}
-		}
+			do_recruitment();
 
 		if(!passive_leader) {
 			move_leader_after_recruit(srcdst,dstsrc,enemy_dstsrc);
@@ -1203,7 +1145,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 	std::vector<attack_analysis>::iterator choice_it = analysis.end();
 	double choice_rating = -1000.0;
-	double vuln = 0.0;
 	for(std::vector<attack_analysis>::iterator it = analysis.begin();
 			it != analysis.end(); ++it) {
 
@@ -1227,7 +1168,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		if(rating > choice_rating) {
 			choice_it = it;
 			choice_rating = rating;
-			vuln = it->vulnerability/it->support;
 		}
 	}
 
@@ -1250,14 +1190,10 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			return true;
 		}
 
-		if (vuln > 1.5)
-			add_target(target(to, vuln,target::SUPPORT));
-
 		// Recalc appropriate weapons here: AI uses approximations.
 		battle_context bc(map_, teams_, units_, state_,
 						  to, target_loc, -1, -1,
 						  current_team().aggression());
-
 		attack_enemy(to, target_loc, bc.get_attacker_stats().attack_num,
 				bc.get_defender_stats().attack_num);
 
@@ -1265,7 +1201,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		// is still alive, then also summon reinforcements
 		if(choice_it->movements.size() == 1 && units_.count(target_loc)) {
 			LOG_AI << "found reinforcement target... " << target_loc << "\n";
-			add_target(target(target_loc,5.0,target::BATTLE_AID));
+			add_target(target(target_loc,3.0,target::BATTLE_AID));
 		}
 
 		return true;
@@ -1281,32 +1217,38 @@ void ai_interface::attack_enemy(const location u,
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 
-	if(!info_.units.count(u))
-	{
-		ERR_AI << "attempt to attack without attacker\n";
-	}
-	if (!info_.units.count(target)) 
-	{
-		ERR_AI << "attempt to attack without defender\n";
-	}
-	if(info_.units.find(target)->second.incapacitated()) {
-		LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
-		return;
-	}
-	if(!info_.units.find(u)->second.attacks_left()) {
-		LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
-		return;
-	}
+	if(info_.units.count(u) && info_.units.count(target)) {
+		if(info_.units.find(target)->second.incapacitated()) {
+			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
+			return;
+		}
+		if(!info_.units.find(u)->second.attacks_left()) {
+			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
+			return;
+		}
 
-	if(weapon >= 0) {
-		recorder.add_attack(u,target,weapon,def_weapon);
-	}
-	try {
-		attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
-				info_.units, info_.state);
-	}
-	catch (end_level_exception&)
-	{
+    	if(weapon >= 0) {
+			recorder.add_attack(u,target,weapon,def_weapon);
+		}
+		try {
+			attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
+					info_.units, info_.state);
+		}
+		catch (end_level_exception&)
+		{
+			dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
+
+			const unit_map::const_iterator defender = info_.units.find(target);
+			if(defender != info_.units.end()) {
+				const size_t defender_team = size_t(defender->second.side()) - 1;
+				if(defender_team < info_.teams.size()) {
+					dialogs::advance_unit(info_.map, info_.units,
+							target, info_.disp, !info_.teams[defender_team].is_human());
+				}
+			}
+
+			throw;
+		}
 		dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
 
 		const unit_map::const_iterator defender = info_.units.find(target);
@@ -1318,22 +1260,9 @@ void ai_interface::attack_enemy(const location u,
 			}
 		}
 
-		throw;
+		check_victory(info_.units,info_.teams, info_.disp);
+		raise_enemy_attacked();
 	}
-	dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
-
-	const unit_map::const_iterator defender = info_.units.find(target);
-	if(defender != info_.units.end()) {
-		const size_t defender_team = size_t(defender->second.side()) - 1;
-		if(defender_team < info_.teams.size()) {
-			dialogs::advance_unit(info_.map, info_.units,
-					target, info_.disp, !info_.teams[defender_team].is_human());
-		}
-	}
-
-	check_victory(info_.units,info_.teams, info_.disp);
-	raise_enemy_attacked();
-
 }
 
 bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
@@ -1356,12 +1285,11 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
 			double best_vulnerability = 100000.0;
-			const double leader_penalty = (u.can_recruit()?2.0:1.0);
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
 				if(map_.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
-					const double vuln = power_projection(it.first->first, enemy_dstsrc)*leader_penalty;
+					const double vuln = power_projection(it.first->first, enemy_dstsrc);
 					LOG_AI << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability) {
 						best_vulnerability = vuln;
@@ -1374,8 +1302,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 			}
 
 			// If we have found an eligible village:
-			if(best_loc != it.second
-				&& best_vulnerability < u.hitpoints()) {
+			if(best_loc != it.second) {
 				const location& src = best_loc->first;
 				const location& dst = best_loc->second;
 
@@ -1433,7 +1360,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 		if(i->second.side() == team_num_ &&
 				i->second.movement_left() == i->second.total_movement() &&
-				(unit_map::const_iterator(i) != leader || !recruiting_prefered_) &&
+				unit_map::const_iterator(i) != leader &&
 				!i->second.incapacitated()) {
 
 			// This unit still has movement left, and is a candidate to retreat.
@@ -1509,9 +1436,6 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
 					LOG_AI << "retreating '" << i->second.type_id() << "' " << i->first
 					       << " -> " << best_pos << '\n';
 					move_unit(i->first,best_pos,possible_moves);
-					i->second.set_movement(0);
-					if (best_rating < 0.0)
-						add_target(target(best_pos, -3.0*best_rating, target::SUPPORT));
 					return true;
 				}
 			}
@@ -1537,11 +1461,14 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 			}
 		}
 
-		std::vector<target>::iterator choosen;
-
 		LOG_AI << "choosing move...\n";
 		std::pair<location,location> move = choose_move(targets, srcdst,
-				dstsrc, enemy_dstsrc, choosen);
+				dstsrc, enemy_dstsrc);
+
+		for(std::vector<target>::const_iterator ittg = targets.begin();
+				ittg != targets.end(); ++ittg) {
+			assert(map_.on_board(ittg->loc));
+		}
 
 		if(move.first.valid() == false) {
 			break;
@@ -1550,8 +1477,6 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 		if(move.second.valid() == false) {
 			return true;
 		}
-		assert (map_.on_board(move.first)
-			&& map_.on_board(move.second));
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
@@ -1565,52 +1490,32 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 			return true;
 		}
 
-		unit_map::iterator u_it = units_.find(arrived_at);
+		const unit_map::const_iterator u_it = units_.find(arrived_at);
 		// Event could have done anything: check
 		if (u_it == units_.end() || u_it->second.incapacitated()) {
 			LOG_STREAM(warn, ai) << "stolen or incapacitated\n";
 		} else {
-			u_it->second.set_movement(0);
 			// Search to see if there are any enemy units next to the tile
 			// which really should be attacked now the move is done.
 			gamemap::location adj[6];
 			get_adjacent_tiles(arrived_at,adj);
 			gamemap::location target;
-			int selected = -1;
-			boost::scoped_ptr<battle_context> bc_sel;
 
-			double harm_weight = 2.0 + current_team().caution();
-			if (choosen->type == target::THREAT
-				|| choosen->type == target::BATTLE_AID)
-				harm_weight -= 1.0;
-			harm_weight =  current_team().aggression() - harm_weight;
 			for(int n = 0; n != 6; ++n) {
 				const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
-						map_,
-						teams_,current_team());
+																   map_,
+																   teams_,current_team());
 
 				if(enemy != units_.end() &&
-						current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
+				   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 					// Current behavior is to only make risk-free attacks.
 					battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
-					
-
-					const double value = (bc.get_defender_combatant().hp_dist[0] - bc.get_attacker_combatant().hp_dist[0]*harm_weight)*u_it->second.max_hitpoints()/2
-						+ (bc.get_defender_combatant().average_hp() - bc.get_attacker_combatant().average_hp() * harm_weight);
-
-					if (value > 0.0
-						&& (selected == -1 
-							|| bc_sel->better_attack(bc,harm_weight)))
-					{
-						// Select attack target
-						bc_sel.reset(new battle_context(bc));
-						selected = n;
+					if (bc.get_defender_stats().damage == 0) {
+						attack_enemy(arrived_at, adj[n], bc.get_attacker_stats().attack_num,
+								bc.get_defender_stats().attack_num);
+						break;
 					}
 				}
-			}
-			if (selected >= 0) {
-				attack_enemy(arrived_at, adj[selected], bc_sel->get_attacker_stats().attack_num,
-						bc_sel->get_defender_stats().attack_num);
 			}
 		}
 
@@ -1904,21 +1809,11 @@ void ai::analyze_potential_recruit_movements()
 	}
 }
 
-bool ai::do_recruitment()
+void ai::do_recruitment()
 {
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end()) {
-		return false;
-	}
-
-	raise_user_interact();
-	// Let formula ai to do recruiting first
-	if (master_)
-	{
-		if(static_cast<formula_ai*>(ai_manager::get_ai("formula_ai",info_).get())->do_recruitment()) {
-			LOG_AI << "Recruitment done by formula_ai\n";
-			return true;
-		}
+		return;
 	}
 
 	const location& start_pos = nearest_keep(leader->first);
@@ -1991,16 +1886,13 @@ bool ai::do_recruitment()
 	if (options.empty()) {
 		options.push_back("");
 	}
-	bool ret = false;
 	// Buy units as long as we have room and can afford it.
 	while (recruit_usage(options[rand()%options.size()])) {
-		ret = true;
 		options = current_team().recruitment_pattern();
 		if (options.empty()) {
 			options.push_back("");
 		}
 	}
-	return ret;
 }
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
@@ -2105,7 +1997,6 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 					if(p.routes.count(i->first)) {
 						move_unit(leader->first,current_loc,possible_moves);
-						leader->second.set_movement(0);
 						return;
 					}
 				}
@@ -2453,25 +2344,25 @@ void ai::attack_analysis::get_inputs(std::vector<game_logic::formula_input>* inp
 
 ai_manager::AINameMap ai_manager::ais = ai_manager::AINameMap();
 
-boost::intrusive_ptr<ai_interface> ai_manager::get_ai(const std::string& ai_algo,
+boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 						       ai_interface::info& ai_info )
 {
-  const std::string ai_key = ai_algo + lexical_cast<std::string>(ai_info.team_num - 1);
+  int ai_key = ai_info.team_num - 1 ;
   boost::intrusive_ptr<ai_interface> ai_obj;
 
   // If we are dealing with an AI - try to find it
   if( ai_algo.size() )
     {
       AINameMap::const_iterator itor = ais.find(ai_key);
-      LOG_AI << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
+      std::cout << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
       if(itor == ais.end())
 	{
-	  LOG_AI << "manager did not find AI - creating..." << std::endl ;
-	  ai_obj = create_ai(ai_algo, ai_info);
-	  LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl ;
+	  std::cout << "manager did not find AI - creating..." << std::endl ;
+	  ai_obj = create_ai(ai_algo, ai_info) ;
+	  std::cout << "Asking newly created AI if it wants to be managed." << std::endl ;
 	  if( ai_obj->manager_manage_ai() )
 	    {
-	      LOG_AI << "AI has requested itself be managed: " << ai_algo << std::endl ;
+	      std::cout << "AI has requested itself be managed: " << ai_algo << std::endl ;
 	      AINameMap::value_type new_ai_pair( ai_key, ai_obj ) ;
 	      itor = ais.insert(new_ai_pair).first ;
 	    }
@@ -2479,7 +2370,7 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai(const std::string& ai_algo
       else
 	{
 	  // AI was found - so return it
-	  LOG_AI << "Reusing managed AI" << std::endl ;
+	  std::cout << "Reusing managed AI" << std::endl ;
 	  ai_obj = itor->second ;
 	}
     }

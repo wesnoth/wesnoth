@@ -1713,7 +1713,6 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 	std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
 	std::pair<gamemap::location,unit> *backup = temp;
 	std::pair<gamemap::location,unit> replace(*from->location_,*self->unit_);
-	replace.second.clone();
 	inf.units.add(&replace);
 
 	battle_context bc(

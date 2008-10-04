@@ -91,7 +91,7 @@ protected:
 			const unit_map::const_iterator un, const move_map& srcdst,
 			const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
-	virtual bool do_recruitment();
+	virtual void do_recruitment();
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
 	virtual void move_leader_after_recruit(const move_map& srcdst,
@@ -281,8 +281,7 @@ protected:
 			const std::vector<location>& battlefield) const;
 
 	virtual std::pair<location,location> choose_move(std::vector<target>& targets,
-			const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
-			std::vector<target>::iterator& best_target);
+			const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
 
 	/** Rates the value of moving onto certain terrain for a unit. */
 	virtual int rate_terrain(const unit& u, const location& loc);
@@ -295,8 +294,7 @@ protected:
 	gamestatus& state_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
-	ai_interface::info info_;
-	
+
 	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
 
 	/**
@@ -378,26 +376,18 @@ private:
 		const std::multimap<gamemap::location,gamemap::location>& dstsrc,
 		const std::map<gamemap::location,paths>& possible_moves,
 		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
-	/** Used to tell AI if it should recruit ASAP
-	 *  possible values are 0 for false and 1 for true
-	 *  2 is used to disable gold check for recruiting
-	 **/
-	int recruiting_prefered_;
-protected:
-	/**
-	 * true if this is master AI instance that is allowed to span
-	 * slave AI instances (like formula AI)
-	 **/
-	bool master_;
+	
+	bool recruiting_prefered_;
+	static const int min_recruiting_value_to_force_recruit = 28;
 };
 
 class ai_manager {
 public: 
-  static boost::intrusive_ptr<ai_interface> get_ai(const std::string&, ai_interface::info& );
+  static boost::intrusive_ptr<ai_interface> get_ai( std::string, ai_interface::info& );
   static int reap_ais() ;
 
 private:
-  typedef std::map< std::string, boost::intrusive_ptr<ai_interface> > AINameMap ;
+  typedef std::map< int, boost::intrusive_ptr<ai_interface> > AINameMap ;
 
   static AINameMap ais ;
 };

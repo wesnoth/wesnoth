@@ -21,17 +21,13 @@
 
 #include "ai.hpp"
 #include "attack_prediction.hpp"
-#include "actions.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
-#include "unit_abilities.hpp"
 #include "log.hpp"
 
 #include <cassert>
 
-#define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)
-#define ERR_AI LOG_STREAM(err, ai)
 
 const int max_positions = 10000;
 
@@ -84,7 +80,6 @@ void ai::do_attack_analysis(
 
 		unit_map::iterator unit_itor = units_.find(current_unit);
 		assert(unit_itor != units_.end());
-
 
 		// See if the unit has the backstab ability.
 		// Units with backstab will want to try to have a
@@ -185,12 +180,6 @@ void ai::do_attack_analysis(
 				}
 			}
 
-		    unit_ability_list abil = unit_itor->second.get_abilities("leadership",tiles[j]);
-		    int leadership_bonus = abil.highest("value").first + 100;
-			if (leadership_bonus > 100) {
-				ERR_AI << unit_itor->second.name() << " is getting leadership " << leadership_bonus << "\n";
-			}
-
 			// Check to see whether this move would be a backstab.
 			int backstab_bonus = 1;
 			double surround_bonus = 1.0;
@@ -211,24 +200,20 @@ void ai::do_attack_analysis(
 						backstab_bonus = 2;
 					}
 
-					// No surround bonus if target is skirmisher
-					if (!itor->second.get_ability_bool("skirmisker", itor->first))
-						surround_bonus = 1.2;
+					surround_bonus = 1.2;
 				}
-
 
 
 			}
 
 			// See if this position is the best rated we've seen so far.
-			int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus / 100;
+			const int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus;
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
 
 			// Find out how vulnerable we are to attack from enemy units in this hex.
-			const double penalty = 1.5;
-			const double vulnerability = power_projection(tiles[j],enemy_dstsrc)*penalty;
+			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
 			// Calculate how much support we have on this hex from allies.
 			// Support does not take into account terrain, because we don't want
@@ -237,18 +222,14 @@ void ai::do_attack_analysis(
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
-			// scale vulnerability to 60 hp unit
-			if(cur_position >= 0 && rating < best_rating
-					&& (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints() - 
-						(support*surround_bonus*30.0)/unit_itor->second.max_hitpoints()
-						> best_vulnerability - best_support) {
+			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
 				continue;
 			}
 
 			cur_position = j;
 			best_rating = rating;
-			best_vulnerability = (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints();
-			best_support = (support*surround_bonus*30.0)/unit_itor->second.max_hitpoints();
+			best_vulnerability = vulnerability/surround_bonus;
+			best_support = support*surround_bonus;
 		}
 
 		if(cur_position != -1) {
@@ -355,6 +336,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		if (up->second.can_recruit()) {
 			uses_leader = true;
+			leader_threat = false;
 		}
 
 		int att_weapon = -1, def_weapon = -1;
@@ -409,9 +391,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		cost += (double(up->second.experience())/double(up->second.max_experience()))*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
-
-		// add half of cost for poisoned unit so it might get chance to heal
-		avg_losses += cost * utils::string_bool(up->second.get_state("poisoned")) /2;
 
 		// Double reward to emphasize getting onto villages if they survive.
 		if (on_village) {
@@ -499,6 +478,13 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		aggression = 1.0;
 	}
 
+	// Only use the leader if we do a serious amount of damage,
+	// compared to how much they do to us.
+	if(uses_leader && aggression > -4.0) {
+		LOG_AI << "uses leader..\n";
+		aggression = -4.0;
+	}
+
 	double value = chance_to_kill*target_value - avg_losses*(1.0-aggression);
 
 	if(terrain_quality > alternative_terrain_quality) {
@@ -507,8 +493,8 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		// into sub-optimal terrain.
 		// Calculate the 'exposure' of our units to risk.
 
-		const double exposure_mod = uses_leader ? ai_obj.current_team().caution()* 8.0 : ai_obj.current_team().caution() * 4.0;
-		const double exposure = exposure_mod*resources_used*((terrain_quality - alternative_terrain_quality)/10)*vulnerability/std::max<double>(0.01,support);
+		const double exposure_mod = uses_leader ? 2.0 : ai_obj.current_team().caution();
+		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/std::max<double>(0.01,support);
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
 			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
 		if(uses_leader) {
@@ -518,10 +504,10 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		value -= exposure*(1.0-aggression);
 	}
 
-	// If this attack uses our leader and has gold to spend, 
-	// reduce the value to reflect the leader's
+	// If this attack uses our leader, and the leader can reach the keep,
+	// and has gold to spend, reduce the value to reflect the leader's
 	// lost recruitment opportunity in the case of an attack.
-	if(uses_leader &&  ai_obj.current_team().gold() > 20) {
+	if(uses_leader && ai_obj.leader_can_reach_keep() && ai_obj.current_team().gold() > 20) {
 		value -= double(ai_obj.current_team().gold())*0.5;
 	}
 
@@ -677,23 +663,16 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 			int hp = un.hitpoints() * 1000 / un.max_hitpoints();
 			int most_damage = 0;
 			for(std::vector<attack_type>::const_iterator att =
-					un.attacks().begin(); att != un.attacks().end(); ++att) {
-				int poison_bonus = 0;
-
-				if (att->get_special_bool("poison", true))
-					poison_bonus = 800 * (1.0 - 
-							std::pow(0.7,
-								static_cast<double>(att->num_attacks())));
-
+			    un.attacks().begin(); att != un.attacks().end(); ++att) {
 				int damage = att->damage() * att->num_attacks() *
-					(100 + tod_modifier) + poison_bonus;
+				             (100 + tod_modifier);
 				if(damage > most_damage) {
 					most_damage = damage;
 				}
 			}
 
-			int defense = use_terrain ? 100 - un.defense_modifier(terrain) : 50;
 			int village_bonus = use_terrain && map_.is_village(terrain) ? 3 : 2;
+			int defense = use_terrain ? 100 - un.defense_modifier(terrain) : 50;
 			int rating = hp * defense * most_damage * village_bonus / 200;
 			if(rating > best_rating) {
 				gamemap::location *pos = std::find(beg_used, end_used, it->second);
