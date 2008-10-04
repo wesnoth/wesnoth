@@ -1012,8 +1012,7 @@ void server::process_login(const network::connection sock,
 	wesnothd::player_map::const_iterator p;
 	for (p = players_.begin(); p != players_.end(); ++p) {
 		if (p->second.name() == username) {
-			send_error(sock, "The username you chose is already taken.");
-			return;
+			break;
 		}
 	}
 
@@ -1035,7 +1034,9 @@ void server::process_login(const network::connection sock,
 		if(user_handler_->user_exists(username)) {
 			// This name is registered and no password provided
 			if(password.empty()) {
-				send_password_request(sock, ("The username '" + username + "' is registered on this server.").c_str(), username);
+				send_password_request(sock, ("The username '" + username + "' is registered on this server." +
+						(p != players_.end() ? "\n \nWARNING: There is already a client using this username, "
+						"logging in will cause that client to be kicked!" : "")).c_str(), username);
 				return;
 			}
 			// A password (or hashed password) was provided, however
@@ -1059,6 +1060,16 @@ void server::process_login(const network::connection sock,
 		// Reset the random seed
 		seeds_.erase(sock);
 		user_handler_->user_logged_in(username);
+		}
+	}
+
+	if(p != players_.end()) {
+		 if(registered) {
+			// If there is already a client using this username kick it	
+			process_command("kick " + p->second.name(), "autokick by registered user");
+		} else {
+			send_error(sock, "The username you chose is already taken.");
+			return;
 		}
 	}
 
