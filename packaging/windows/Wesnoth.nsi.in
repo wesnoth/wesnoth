@@ -154,7 +154,7 @@ Section "Battle for Wesnoth" BfWSection
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth_editor.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.en.html"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
