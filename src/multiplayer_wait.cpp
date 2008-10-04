@@ -459,7 +459,7 @@ void wait::generate_menu()
 			continue;
 		}
 
-		std::string description = sd["user_description"];
+		std::string description = sd["description"];
 		const std::string faction_id = sd["id"];
 
 		t_string side_name = sd["name"];

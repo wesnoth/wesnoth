@@ -505,7 +505,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						if (player) {
 							(**side)["current_player"] = player->name;
 							/** @todo TODO : remove (see TODO line 276 in server/game.cpp) */
-							(**side)["user_description"] = player->name;
+							(**side)["name"] = player->name;
 						}
 						(**side)["controller"] = ctr->second.controller;
 					}
