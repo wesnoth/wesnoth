@@ -156,6 +156,17 @@ void button::set_check(bool check)
 	}
 }
 
+void button::set_active(bool active)
+{
+	if ((state_ == NORMAL) && active) {
+		state_ = ACTIVE;
+		set_dirty();
+	} else if ((state_ == ACTIVE) && !active) {
+		state_ = NORMAL;
+		set_dirty();
+	}
+}
+
 bool button::checked() const
 {
 	return state_ == PRESSED || state_ == PRESSED_ACTIVE;

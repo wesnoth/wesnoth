@@ -475,7 +475,9 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	LOG_DP << "drew buttons dialog\n";
 
 	CKey key;
-
+	
+	size_t keyboard_button = nbuttons;	
+	bool key_processed = false;
 
 	update_whole_screen();
 	background_is_dirty_ = false;
@@ -507,17 +509,45 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		if(beg_button.pressed()) {
 			return BEG_FOR_UPLOAD;
 		}
+		if (key[SDLK_UP]) {
+			if (!key_processed) {
+				buttons[keyboard_button].set_active(false);
+				if (keyboard_button == 0) {
+					keyboard_button = nbuttons - 1;
+				} else {
+					keyboard_button--;
+				}
+				key_processed = true;
+				buttons[keyboard_button].set_active(true);
+			}
+		} else if (key[SDLK_DOWN]) {
+			if (!key_processed) {
+				buttons[keyboard_button].set_active(false);
+				if (keyboard_button > nbuttons - 1) {
+					keyboard_button = 0;
+				} else {
+					keyboard_button++;
+				}
+				key_processed = true;
+				buttons[keyboard_button].set_active(true);
+			}
+		} else {
+			key_processed = false;
+		}		
 
 		events::raise_process_event();
 		events::raise_draw_event();
 
 		screen.flip();
 
-		if(key[SDLK_ESCAPE])
+		if (key[SDLK_ESCAPE])
 			return QUIT_GAME;
-		if(key[SDLK_F5])
+		if (key[SDLK_F5])
 			return RELOAD_GAME_DATA;
 
+		if (key[SDLK_RETURN] && keyboard_button < nbuttons) {
+			return static_cast<TITLE_RESULT>(keyboard_button + TUTORIAL);
+		}
 
 
 

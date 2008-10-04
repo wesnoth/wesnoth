@@ -41,6 +41,7 @@ public:
 
 	virtual ~button() {}
 	void set_check(bool check);
+	void set_active(bool active);
 	bool checked() const;
 
 	void set_label(const std::string& val);
