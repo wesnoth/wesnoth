@@ -2147,32 +2147,16 @@ namespace {
 			vconfig u = cfg.child("primary_unit");
 			if (u.has_attribute("x") && u.has_attribute("y"))
 				loc1 = cfg_to_loc(u);
-			if (u.has_attribute("weapon")) {
-				lg::wml_error << "weapon= in [fire_event] has been deprecated; support for this will be removed in 1.5.5\n";
-
-				config& f = data.add_child("first");
-				f["name"] = u.get_attribute("weapon");
-			}
 		}
 		if (cfg.has_child("primary_attack")) {
-			// mixing this with deprecated [primary_unit] weapon= above may
-			// cause undefined behavior!
 			data.add_child("first", cfg.child("primary_attack").get_parsed_config());
 		}
 		if (cfg.has_child("secondary_unit")) {
 			vconfig u = cfg.child("secondary_unit");
 			if (u.has_attribute("x") && u.has_attribute("y"))
 				loc2 = cfg_to_loc(u);
-			if (u.has_attribute("weapon")) {
-				lg::wml_error << "weapon= in [fire_event] has been deprecated; support for this will be removed in 1.5.5\n";
-
-				config& s = data.add_child("second");
-				s["name"] = u.get_attribute("weapon");
-			}
 		}
 		if (cfg.has_child("secondary_attack")) {
-			// mixing this with deprecated [secondary_unit] weapon= above may
-			// cause undefined behavior!
 			data.add_child("second", cfg.child("secondary_attack").get_parsed_config());
 		}
 		game_events::fire(cfg["name"],loc1,loc2,data);
