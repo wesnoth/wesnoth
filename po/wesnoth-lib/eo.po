@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:36+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -311,7 +311,6 @@ msgid "Unwalkable"
 msgstr ""
 
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
-#: src/editor/editor_dialogs.cpp:551
 msgid "OK"
 msgstr "En ordo"
 
@@ -324,123 +323,12 @@ msgid "No"
 msgstr "Ne"
 
 #: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-#: src/editor/editor_dialogs.cpp:103 src/editor/editor_dialogs.cpp:550
 msgid "Cancel"
 msgstr "Nuligu"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
 msgstr "Fermi"
-
-#: src/editor/editor_dialogs.cpp:51
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Viaj ŝanĝoj de la mapo malaperos. Daŭrigi?"
-
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Krei Novan Mapon"
-
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:514
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "Larĝeco:"
-
-#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "Alteco:"
-
-#: src/editor/editor_dialogs.cpp:100
-msgid "Generate New Map"
-msgstr "Generi Novan Mapon"
-
-#: src/editor/editor_dialogs.cpp:101
-msgid "Generate Random Map"
-msgstr "Generi Hazardan Mapon"
-
-#: src/editor/editor_dialogs.cpp:102
-msgid "Random Generator Settings"
-msgstr "Agordi Hazardan Generatoron"
-
-#: src/editor/editor_dialogs.cpp:180
-msgid "Map creation failed."
-msgstr "Kreado de mapo malsukcesis."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:112
-#: src/preferences_display.cpp:229
-msgid "Close Window"
-msgstr "Fermu fenestron"
-
-#: src/editor/editor_dialogs.cpp:252 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "Preferoj"
-
-#: src/editor/editor_dialogs.cpp:256 src/game_preferences_display.cpp:207
-msgid "Scroll Speed:"
-msgstr "Rapideco de la rulumo:"
-
-#: src/editor/editor_dialogs.cpp:283 src/game_preferences_display.cpp:164
-#: src/hotkeys.cpp:67
-msgid "Toggle Full Screen"
-msgstr "Tuta ekrano"
-
-#: src/editor/editor_dialogs.cpp:290 src/game_preferences_display.cpp:167
-msgid "Show Grid"
-msgstr "Montri kradeton"
-
-#: src/editor/editor_dialogs.cpp:297
-msgid "Video Mode"
-msgstr "Reĝimo de la ekrano"
-
-#: src/editor/editor_dialogs.cpp:300 src/game_preferences_display.cpp:189
-msgid "Hotkeys"
-msgstr "Klavkomandoj"
-
-#: src/editor/editor_dialogs.cpp:305
-msgid "Lighting levels (time of day):"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:312
-msgid "light_level^Red:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:313
-msgid "light_level^Green:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:314
-msgid "light_level^Blue:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:512 src/editor/editor_dialogs.cpp:624
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:181
-msgid "Resize Map"
-msgstr "Ŝanĝi grandecon de mapo"
-
-#: src/editor/editor_dialogs.cpp:516
-msgid "X offset:"
-msgstr "X delokigo:"
-
-#: src/editor/editor_dialogs.cpp:517
-msgid "Y offset:"
-msgstr "Y delokigo:"
-
-#: src/editor/editor_dialogs.cpp:596
-msgid "Smart expand"
-msgstr "Saĝa pligrandigo"
-
-#: src/editor/editor_dialogs.cpp:685
-msgid "X-Axis"
-msgstr "X-akso"
-
-#: src/editor/editor_dialogs.cpp:686
-msgid "Y-Axis"
-msgstr "Y-akso"
-
-#: src/editor/editor_dialogs.cpp:687
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Renversi mapon (tio povas ŝanĝi dimensiojn de la mapo):"
 
 #: src/filechooser.cpp:62
 msgid "File: "
@@ -474,6 +362,14 @@ msgstr "Neniu servilo estis difinita."
 msgid "player"
 msgstr "ludanto"
 
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "Preferoj"
+
+#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+msgid "Toggle Full Screen"
+msgstr "Tuta ekrano"
+
 #: src/game_preferences_display.cpp:165
 msgid "Accelerated Speed"
 msgstr "Plirapidigo"
@@ -481,6 +377,10 @@ msgstr "Plirapidigo"
 #: src/game_preferences_display.cpp:166
 msgid "Skip AI Moves"
 msgstr "Trasaltu movojn de komputilo"
+
+#: src/game_preferences_display.cpp:167
+msgid "Show Grid"
+msgstr "Montri kradeton"
 
 #: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
 msgid "Save Replay on SP/MP Victory or MP Defeat"
@@ -566,6 +466,10 @@ msgstr "Ŝanĝi Distingivon"
 msgid "Theme"
 msgstr "Temo"
 
+#: src/game_preferences_display.cpp:189
+msgid "Hotkeys"
+msgstr "Klavkomandoj"
+
 #: src/game_preferences_display.cpp:190
 msgid "Adjust Gamma"
 msgstr "Agordu Gamon"
@@ -625,6 +529,10 @@ msgstr "Laŭteco de la UI:"
 #: src/game_preferences_display.cpp:207
 msgid "Bell Volume:"
 msgstr "Laŭteco de sonorilo:"
+
+#: src/game_preferences_display.cpp:207
+msgid "Scroll Speed:"
+msgstr "Rapideco de la rulumo:"
 
 #: src/game_preferences_display.cpp:208
 msgid "Gamma:"
@@ -1030,7 +938,7 @@ msgstr "Malzomi"
 msgid "Default Zoom"
 msgstr "Defaŭlta zomo"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:977
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:891
 msgid "Screenshot"
 msgstr "Ekrankopio"
 
@@ -1179,305 +1087,273 @@ msgstr "Teamo 1"
 msgid "Skip animation"
 msgstr "Ne bildigi figurmovojn"
 
-#: src/hotkeys.cpp:111
-msgid "Set Terrain"
-msgstr "Agordi terenon"
-
 #: src/hotkeys.cpp:112
-msgid "Quit Editor"
-msgstr "Forlasi la redaktilon"
-
-#: src/hotkeys.cpp:113 src/hotkeys.cpp:137
-msgid "New Map"
-msgstr "Nova mapo"
-
-#: src/hotkeys.cpp:114 src/hotkeys.cpp:138
-msgid "Load Map"
-msgstr "Legi mapon"
-
-#: src/hotkeys.cpp:115 src/hotkeys.cpp:139
-msgid "Save Map"
-msgstr "Konservi mapon"
-
-#: src/hotkeys.cpp:116
-msgid "Save As"
-msgstr "Konservi kiel"
-
-#: src/hotkeys.cpp:117
-msgid "Set Player's keep"
-msgstr "Fiksi defendejon de Ludanto"
-
-#: src/hotkeys.cpp:118
-msgid "Flood Fill"
-msgstr "Plenigu"
-
-#: src/hotkeys.cpp:119 src/hotkeys.cpp:175
-msgid "Fill Selection"
-msgstr "Plenigi markitan"
-
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:171
-msgid "Rotate Selection"
-msgstr "Turni markitan"
-
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:153
-msgid "Cut"
-msgstr "Eltondi"
-
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:154
-msgid "Copy"
-msgstr "Kopii"
-
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:155
-msgid "Paste"
-msgstr "Enmeti"
-
-#: src/hotkeys.cpp:124
-msgid "Revert from Disk"
-msgstr "Relegi el la disko"
-
-#: src/hotkeys.cpp:126
-msgid "Flip Map"
-msgstr "Renversi la mapon"
-
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:157
-msgid "Select All"
-msgstr "Elekti ĉiiujn"
-
-#: src/hotkeys.cpp:128
-msgid "Draw Terrain"
-msgstr "Bildigi terenon"
-
-#: src/hotkeys.cpp:129 src/hotkeys.cpp:193
-msgid "Refresh Image Cache"
-msgstr "Refreŝigi Memorkaŝon de Bildoj"
-
-#: src/hotkeys.cpp:130
-msgid "Delay transition updates"
-msgstr "Haltigi aktualigon de la vualo"
-
-#: src/hotkeys.cpp:131
-msgid "Update transitions"
-msgstr "Ĝisdatigi trapasojn"
-
-#: src/hotkeys.cpp:134
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Klavkomandaj preferoj"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "Nova mapo"
+
+#: src/hotkeys.cpp:116
+msgid "Load Map"
+msgstr "Legi mapon"
+
+#: src/hotkeys.cpp:117
+msgid "Save Map"
+msgstr "Konservi mapon"
+
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Save Map As"
 msgstr "Konservi mapon"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Map Information"
 msgstr "Generatoro de mapoj"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Next Tool"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Next Brush"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:130
 #, fuzzy
 msgid "Default Brush"
 msgstr "Defaŭlta zomo"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:131
+msgid "Cut"
+msgstr "Eltondi"
+
+#: src/hotkeys.cpp:132
+msgid "Copy"
+msgstr "Kopii"
+
+#: src/hotkeys.cpp:133
+msgid "Paste"
+msgstr "Enmeti"
+
+#: src/hotkeys.cpp:135
+msgid "Select All"
+msgstr "Elekti ĉiiujn"
+
+#: src/hotkeys.cpp:137
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:139
 #, fuzzy
 msgid "Select None"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:141
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:143
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:145
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:147
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:149
+msgid "Rotate Selection"
+msgstr "Turni markitan"
+
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:153
+msgid "Fill Selection"
+msgstr "Plenigi markitan"
+
+#: src/hotkeys.cpp:155
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Turni markitan"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:157
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "Ŝanĝi grandecon de mapo"
+
+#: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Generate Map"
 msgstr "Generi Novan Mapon"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Ekrano"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:171
+msgid "Refresh Image Cache"
+msgstr "Refreŝigi Memorkaŝon de Bildoj"
+
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Bildigi terenon"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "Haltigi Aktualigon de Vualo"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "Aktualigi Vualon Nun"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "Daŭri movon"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "Trovi markon aŭ batalunuon "
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "Diri al la aliancano"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Helpo"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "Ŝanghi lingvon"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:193
 msgid "Clear messages"
 msgstr "Forigi mesaĝojn"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr "Uzant-Komando#2"
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr "Uzant-Komando#3"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Quit"
 msgstr "Finu ludon"
 
-#: src/hotkeys.cpp:977
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:984
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:986
+#: src/hotkeys.cpp:900
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Ekrankopio"
+
+#: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
+msgid "Close Window"
+msgstr "Fermu fenestron"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1486,6 +1362,14 @@ msgstr "Generatoro de mapoj"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "Ludantoj:"
+
+#: src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "Larĝeco:"
+
+#: src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "Alteco:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1621,6 +1505,75 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Viaj ŝanĝoj de la mapo malaperos. Daŭrigi?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Krei Novan Mapon"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generi Novan Mapon"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Generi Hazardan Mapon"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Agordi Hazardan Generatoron"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Kreado de mapo malsukcesis."
+
+#~ msgid "Video Mode"
+#~ msgstr "Reĝimo de la ekrano"
+
+#~ msgid "X offset:"
+#~ msgstr "X delokigo:"
+
+#~ msgid "Y offset:"
+#~ msgstr "Y delokigo:"
+
+#~ msgid "Smart expand"
+#~ msgstr "Saĝa pligrandigo"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-akso"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-akso"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Renversi mapon (tio povas ŝanĝi dimensiojn de la mapo):"
+
+#~ msgid "Set Terrain"
+#~ msgstr "Agordi terenon"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Forlasi la redaktilon"
+
+#~ msgid "Save As"
+#~ msgstr "Konservi kiel"
+
+#~ msgid "Set Player's keep"
+#~ msgstr "Fiksi defendejon de Ludanto"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Plenigu"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Relegi el la disko"
+
+#~ msgid "Flip Map"
+#~ msgstr "Renversi la mapon"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Bildigi terenon"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Haltigi aktualigon de la vualo"
+
+#~ msgid "Update transitions"
+#~ msgstr "Ĝisdatigi trapasojn"
 
 #, fuzzy
 #~ msgid "Invert Selection"

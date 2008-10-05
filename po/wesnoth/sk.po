@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-04 11:49+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-09-27 22:17+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -19,38 +19,38 @@ msgstr ""
 "X-Poedit-Country: SLOVAKIA\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:54
+#: data/_main.cfg:48
 msgid "Compressed Saves"
 msgstr "Komprimovať uložené hry"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:61
+#: data/_main.cfg:55
 msgid "Mouse Scrolling"
 msgstr "Umožniť rolovanie myšou"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:68
+#: data/_main.cfg:62
 msgid "Animate Map"
 msgstr "Animovať mapu"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:75
+#: data/_main.cfg:69
 #, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Výprava"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:82
+#: data/_main.cfg:76
 msgid "Unit Standing Animations"
 msgstr "Animovať stojace jednotky"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:89
+#: data/_main.cfg:83
 msgid "Show Combat"
 msgstr "Zobrazovať súboj"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:104
+#: data/_main.cfg:98
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
@@ -3288,13 +3288,13 @@ msgstr ", MAX SKÚS. +25%"
 msgid "Max HP bonus +"
 msgstr "Bonus k maximálnemu počtu životov +"
 
-#: data/core/macros/carryover-utils.cfg:44
+#: data/core/macros/carryover-utils.cfg:48
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/carryover-utils.cfg:49
+#: data/core/macros/carryover-utils.cfg:53
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -4629,6 +4629,41 @@ msgstr "nebojácna"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Bojuje normálne aj počas nevýhodnej dennej/nočnej doby"
 
+#. [trait]
+#: data/core/macros/traits.cfg:174
+msgid "weak"
+msgstr ""
+
+#. [trait]
+#: data/core/macros/traits.cfg:175
+#, fuzzy
+msgid "female^weak"
+msgstr "nemŕtva"
+
+#. [trait]
+#: data/core/macros/traits.cfg:192
+#, fuzzy
+msgid "slow"
+msgstr "spomaľuje"
+
+#. [trait]
+#: data/core/macros/traits.cfg:193
+#, fuzzy
+msgid "female^slow"
+msgstr "verná"
+
+#. [trait]
+#: data/core/macros/traits.cfg:209
+#, fuzzy
+msgid "dim"
+msgstr "Stredná"
+
+#. [trait]
+#: data/core/macros/traits.cfg:210
+#, fuzzy
+msgid "female^dim"
+msgstr "nebojácna"
+
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
@@ -5035,37 +5070,37 @@ msgid "race^Goblins"
 msgstr "Goblini"
 
 #. [race]: description=
-#: data/core/units.cfg:113
+#: data/core/units.cfg:117
 msgid "race^Gryphon"
 msgstr "Gryf"
 
 #. [race]: description=
-#: data/core/units.cfg:114
+#: data/core/units.cfg:118
 msgid "race+female^Gryphon"
 msgstr "Gryfka"
 
 #. [race]: description=
-#: data/core/units.cfg:115
+#: data/core/units.cfg:119
 msgid "race^Gryphons"
 msgstr "Gryfovia"
 
 #. [race]
-#: data/core/units.cfg:123
+#: data/core/units.cfg:127
 msgid "race^Human"
 msgstr "Človek muž"
 
 #. [race]
-#: data/core/units.cfg:124
+#: data/core/units.cfg:128
 msgid "race+female^Human"
 msgstr "Človek žena"
 
 #. [race]
-#: data/core/units.cfg:125
+#: data/core/units.cfg:129
 msgid "race^Humans"
 msgstr "Ľudia"
 
 #. [race]
-#: data/core/units.cfg:132
+#: data/core/units.cfg:136
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5142,102 +5177,102 @@ msgstr ""
 "Wesnotu, a tak silné stránky tejto podskupiny sú vyvážené ich slabosťami."
 
 #. [race]: description=
-#: data/core/units.cfg:139
+#: data/core/units.cfg:143
 msgid "race^Saurian"
 msgstr "Saur"
 
 #. [race]: description=
-#: data/core/units.cfg:140
+#: data/core/units.cfg:144
 msgid "race+female^Saurian"
 msgstr "Saurka"
 
 #. [race]: description=
-#: data/core/units.cfg:141
+#: data/core/units.cfg:145
 msgid "race^Saurians"
 msgstr "Sauri"
 
 #. [race]: description=
-#: data/core/units.cfg:150
+#: data/core/units.cfg:154
 msgid "race^Mechanical"
 msgstr "Mechanické"
 
 #. [race]: description=
-#: data/core/units.cfg:151
+#: data/core/units.cfg:155
 msgid "race+plural^Mechanical"
 msgstr "Mechanické"
 
 #. [race]: description=
-#: data/core/units.cfg:160
+#: data/core/units.cfg:164
 msgid "race^Merman"
 msgstr "Morský človek"
 
 #. [race]: description=
-#: data/core/units.cfg:161
+#: data/core/units.cfg:165
 msgid "race^Mermaid"
 msgstr "Morská žena"
 
 #. [race]: description=
-#: data/core/units.cfg:162
+#: data/core/units.cfg:166
 msgid "race^Mermen"
 msgstr "Morskí ľudia"
 
 #. [race]: description=
-#: data/core/units.cfg:170
+#: data/core/units.cfg:174
 msgid "race^Monster"
 msgstr "Potvora"
 
 #. [race]: description=
-#: data/core/units.cfg:171
+#: data/core/units.cfg:175
 msgid "race^Monsters"
 msgstr "Potvory"
 
 #. [race]: description=
-#: data/core/units.cfg:178
+#: data/core/units.cfg:182
 msgid "race^Naga"
 msgstr "Hadí človek"
 
 #. [race]: description=
-#: data/core/units.cfg:179
+#: data/core/units.cfg:183
 msgid "race^Nagani"
 msgstr "Hadí ľudia"
 
 #. [race]: description=
-#: data/core/units.cfg:180
+#: data/core/units.cfg:184
 msgid "race^Nagas"
 msgstr "Hadí ľudia"
 
 #. [race]: description=
-#: data/core/units.cfg:188
+#: data/core/units.cfg:192
 msgid "race^Ogre"
 msgstr "Ohyzd"
 
 #. [race]: description=
-#: data/core/units.cfg:189
+#: data/core/units.cfg:193
 msgid "race+female^Ogre"
 msgstr "Ohyzdka"
 
 #. [race]: description=
-#: data/core/units.cfg:190
+#: data/core/units.cfg:194
 msgid "race^Ogres"
 msgstr "Ohyzdi"
 
 #. [race]
-#: data/core/units.cfg:198
+#: data/core/units.cfg:202
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]
-#: data/core/units.cfg:199
+#: data/core/units.cfg:203
 msgid "race+female^Orc"
 msgstr "Orkyňa"
 
 #. [race]
-#: data/core/units.cfg:200
+#: data/core/units.cfg:204
 msgid "race^Orcs"
 msgstr "Orkovia"
 
 #. [race]
-#: data/core/units.cfg:210
+#: data/core/units.cfg:214
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -5351,22 +5386,22 @@ msgstr ""
 "napríklad atentátnictvo, otravy a podobne."
 
 #. [race]
-#: data/core/units.cfg:217
+#: data/core/units.cfg:221
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]
-#: data/core/units.cfg:218
+#: data/core/units.cfg:222
 msgid "race+female^Troll"
 msgstr "Trolka"
 
 #. [race]
-#: data/core/units.cfg:219
+#: data/core/units.cfg:223
 msgid "race^Trolls"
 msgstr "Trolovia"
 
 #. [race]
-#: data/core/units.cfg:225
+#: data/core/units.cfg:229
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5436,22 +5471,22 @@ msgstr ""
 "a kdekoľvek putujú hordy orkov."
 
 #. [race]
-#: data/core/units.cfg:237
+#: data/core/units.cfg:241
 msgid "race^Undead"
 msgstr "Nemŕtvy"
 
 #. [race]
-#: data/core/units.cfg:238
+#: data/core/units.cfg:242
 msgid "race+female^Undead"
 msgstr "Nemŕtva"
 
 #. [race]
-#: data/core/units.cfg:239
+#: data/core/units.cfg:243
 msgid "race+plural^Undead"
 msgstr "Nemŕtvi"
 
 #. [race]
-#: data/core/units.cfg:245
+#: data/core/units.cfg:249
 #, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -5503,12 +5538,24 @@ msgstr ""
 "Haldrikovi I., ale elfovia a trpaslíci o nich počuli už aj predtým."
 
 #. [race]: description=
-#: data/core/units.cfg:253
+#: data/core/units.cfg:257
+#, fuzzy
+msgid "race^Wolf"
+msgstr "Elf"
+
+#. [race]: description=
+#: data/core/units.cfg:258
+#, fuzzy
+msgid "race^Wolves"
+msgstr "Elfovia"
+
+#. [race]: description=
+#: data/core/units.cfg:266
 msgid "race^Wose"
 msgstr "Lesný muž"
 
 #. [race]: description=
-#: data/core/units.cfg:254
+#: data/core/units.cfg:267
 msgid "race^Woses"
 msgstr "Lesní muži"
 
@@ -6330,8 +6377,8 @@ msgstr "Ukončiť scénu"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2657
-#: src/unit.cpp:2831
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
+#: src/unit.cpp:2826
 msgid "HP"
 msgstr "Životy"
 
@@ -6892,11 +6939,11 @@ msgstr "Doplnok odstránený"
 msgid "Add-on could not be deleted properly:"
 msgstr "Doplnok nemohol byť vymazaný -- súbor sa nenašiel."
 
-#: src/ai.cpp:1745
+#: src/ai.cpp:1650
 msgid "Unknown unit type : "
 msgstr "Neznámy typ jednotky : "
 
-#: src/ai_move.cpp:76
+#: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr "Cena pohybu je 0, pravdepodobne terén s cenou pohybu 0."
 
@@ -7262,7 +7309,7 @@ msgstr "Vyhráš, ak:"
 msgid "Defeat:"
 msgstr "Prehráš, ak:"
 
-#: src/game_events.cpp:2236
+#: src/game_events.cpp:2220
 msgid "[store_unit] missing required [filter] tag\n"
 msgstr ""
 
@@ -9200,31 +9247,31 @@ msgstr "Neznámy typ jednotky '$type|'"
 msgid "Unknown unit type '$type|'"
 msgstr "Neznámy typ jednotky '$type|'"
 
-#: src/unit.cpp:2614 src/unit.cpp:2819 src/unit.cpp:2875
+#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
 msgid " and "
 msgstr " a "
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2620
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2690
+#: src/unit.cpp:2685
 msgid "moves"
 msgstr "ťahy"
 
-#: src/unit.cpp:2708 src/unit.cpp:2846
+#: src/unit.cpp:2703 src/unit.cpp:2841
 msgid "XP to advance"
 msgstr "skúseností na povýšenie"
 
-#: src/unit.cpp:2838
+#: src/unit.cpp:2833
 msgid " move"
 msgstr "ťah"
 
-#: src/unit.cpp:2854
+#: src/unit.cpp:2849
 msgid "$effect_description per level"
 msgstr "$effect_description za každú úroveň"
 
-#: src/unit.cpp:2884
+#: src/unit.cpp:2879
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9252,29 +9299,29 @@ msgstr ""
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "chaotic"
 msgstr "chaos"
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "lawful"
 msgstr "poriadok"
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "neutral"
 msgstr "neutrál"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^chaotic"
 msgstr "mechanická"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^lawful"
 msgstr "verná"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^neutral"
 msgstr "nemŕtva"

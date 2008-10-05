@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:39+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-10-03 17:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -19,52 +19,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:10
+#: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "tümü"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:16
+#: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "sulak"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:28
+#: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "düzlük"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:34
+#: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "çöl"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:40
+#: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "orman"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:46
+#: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "donuk"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:52
+#: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "engebeli"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:58
+#: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "mağara"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:64
+#: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "köy"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:70
+#: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "kale"
 
@@ -123,174 +123,28 @@ msgid "Click to paste."
 msgstr "Yapıştırmak için tıklayın."
 
 #. [menu]
-#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+#: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Dosya"
 
 #. [menu]
-#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+#: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Düzenle"
-
-#. [menu]
-#: data/themes/editor.cfg:481
-msgid "Settings"
-msgstr "Ayarlar"
-
-#. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
-msgid "villages"
-msgstr "köyler"
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr "Harita"
 
-#: src/editor/editor.cpp:246
-msgid "Draw tiles"
-msgstr "Kiremitleri çiz"
+#. [label]
+#: data/themes/editor2.cfg:252
+msgid "villages"
+msgstr "köyler"
 
-#: src/editor/editor.cpp:248
-msgid "Fill"
-msgstr "Doldur"
-
-#: src/editor/editor.cpp:250
-msgid "Set player's starting position"
-msgstr "Oyuncunun başlama yerini belirle"
-
-#: src/editor/editor.cpp:252
-msgid "Zoom in"
-msgstr "Yakınlaş"
-
-#: src/editor/editor.cpp:254
-msgid "Zoom out"
-msgstr "Uzaklaş"
-
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
-msgid "Undo"
-msgstr "Geri al"
-
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
-msgid "Redo"
-msgstr "Tekrar yap"
-
-#: src/editor/editor.cpp:260
-msgid "Zoom to default view"
-msgstr "Öntanımlı görünüm"
-
-#: src/editor/editor.cpp:262
-msgid "Toggle grid"
-msgstr "Izgarayı aç-kapa"
-
-#: src/editor/editor.cpp:264
-msgid "Resize the map"
-msgstr "Haritayı boyutlandır"
-
-#: src/editor/editor.cpp:266
-msgid "Flip map"
-msgstr "Haritayı ters çevir"
-
-#: src/editor/editor.cpp:268
-msgid "Update transitions"
-msgstr "Geçişleri güncelle"
-
-#: src/editor/editor.cpp:270
-msgid "Delay transition updates"
-msgstr "Geçiş güncellemelerine geciktir"
-
-#: src/editor/editor.cpp:486
-msgid "Language"
-msgstr "Dil"
-
-#: src/editor/editor.cpp:487
-msgid "Choose your preferred language:"
-msgstr "Tercih ettiğiniz dili seçin:"
-
-#: src/editor/editor.cpp:504 src/editor/editor_main.cpp:304
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Wesnoth Savaşı Harita Düzenleyici"
-
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
-msgid "Save the Map As"
-msgstr "Haritayı Farklı Kaydet"
-
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Bu isimde bir harita zaten var. Üzerine yazmak ister misiniz?"
-
-#: src/editor/editor.cpp:563
-msgid "None"
-msgstr "Hiçbiri"
-
-#: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
-msgid "Player"
-msgstr "Oyuncu"
-
-#: src/editor/editor.cpp:572
-msgid "Which Player?"
-msgstr "Hangi oyuncu?"
-
-#: src/editor/editor.cpp:573
-msgid "Which player should start here?"
-msgstr "Hangi oyuncu burada başlasın?"
-
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
-msgid "Choose a Map to Load"
-msgstr "Yüklemek için bir harita seç"
-
-#: src/editor/editor.cpp:643
-msgid ""
-"Warning: Illegal characters found in the map name. Please save under a "
-"different name."
-msgstr ""
-"Uyarı: Harita isminde geçersiz karakter bulundu. Lütfen başka bir isimle "
-"kayıt edin."
-
-#: src/editor/editor.cpp:656 src/editor/editor.cpp:736
-msgid "The file does not contain a valid map."
-msgstr "Bu dosya geçerli bir harita içermiyor."
-
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "Düzenleyiciden çıkılsın mı?"
-
-#: src/editor/editor.cpp:1317
-msgid "Do you want to save the map before quitting?"
-msgstr "Çıkmadan önce bu haritayı kaydetmek ister misiniz?"
-
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "Harita kaydedildi."
-
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "Harita kaydedilemedi: $msg"
-
-#: src/editor/editor.cpp:1388
-msgid "Error: Illegal character in filename."
-msgstr "Hata: Dosya isminde geçersiz karakter."
-
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
-msgid "FG"
-msgstr "ÖP"
-
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
-msgid "BG"
-msgstr "AP"
-
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
-msgid ""
-"Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr ""
-"Harita tekrar boyutlandırılamıyor, istenen boyut azami boyutu aşıyor, boyut="
-
-#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
-#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
-msgid " maximum="
-msgstr " azami="
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
@@ -324,6 +178,18 @@ msgstr "Haritada kaydedilmemiş değişiklikler var"
 msgid "Do you want to discard all changes you made to the map?"
 msgstr "Haritada yaptığınız değişiklikleri iptal etmek mi istiyorsunuz?"
 
+#: src/editor2/editor_controller.cpp:303
+msgid "Choose a Map to Load"
+msgstr "Yüklemek için bir harita seç"
+
+#: src/editor2/editor_controller.cpp:338
+msgid "Save the Map As"
+msgstr "Haritayı Farklı Kaydet"
+
+#: src/editor2/editor_controller.cpp:342
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "Bu isimde bir harita zaten var. Üzerine yazmak ister misiniz?"
+
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr "Bir rasgele harita üreteci yok."
@@ -332,13 +198,29 @@ msgstr "Bir rasgele harita üreteci yok."
 msgid "Map creation failed."
 msgstr "Harita oluşturulamadı."
 
+#: src/editor2/editor_controller.cpp:458
+msgid "Map saved."
+msgstr "Harita kaydedildi."
+
+#: src/editor2/editor_controller.cpp:463
+msgid "Could not save the map: $msg"
+msgstr "Harita kaydedilemedi: $msg"
+
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr "Harita yüklenirken hata"
 
+#: src/editor2/editor_controller.cpp:810
+msgid "Undo"
+msgstr "Geri al"
+
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr "Geri Alınamaz"
+
+#: src/editor2/editor_controller.cpp:816
+msgid "Redo"
+msgstr "Tekrar yap"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
@@ -356,6 +238,18 @@ msgstr "Harita yüklenirken bir biçem hatası bulundu:"
 msgid "There was a wml error while loading the map:"
 msgstr "Harita yüklenirken bir WML hatası saptandı:"
 
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+msgid "Player"
+msgstr "Oyuncu"
+
+#: src/editor2/editor_palettes.cpp:495
+msgid "FG"
+msgstr "ÖP"
+
+#: src/editor2/editor_palettes.cpp:497
+msgid "BG"
+msgstr "AP"
+
 #: src/editor2/mouse_action.cpp:380
 msgid "(Player)^None"
 msgstr "Hiçbiri"
@@ -372,6 +266,85 @@ msgstr ""
 "Burada hangi oyuncu oyuna başlayacak? Başlangıç konumunu belirlemek için 1-9 "
 "tuşlarını, silmek için Del tuşunu kullanabilirsiniz."
 
-#: src/gui/dialogs/editor_settings.cpp:106
+#: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
+
+#~ msgid "Settings"
+#~ msgstr "Ayarlar"
+
+#~ msgid "Draw tiles"
+#~ msgstr "Kiremitleri çiz"
+
+#~ msgid "Fill"
+#~ msgstr "Doldur"
+
+#~ msgid "Set player's starting position"
+#~ msgstr "Oyuncunun başlama yerini belirle"
+
+#~ msgid "Zoom in"
+#~ msgstr "Yakınlaş"
+
+#~ msgid "Zoom out"
+#~ msgstr "Uzaklaş"
+
+#~ msgid "Zoom to default view"
+#~ msgstr "Öntanımlı görünüm"
+
+#~ msgid "Toggle grid"
+#~ msgstr "Izgarayı aç-kapa"
+
+#~ msgid "Resize the map"
+#~ msgstr "Haritayı boyutlandır"
+
+#~ msgid "Flip map"
+#~ msgstr "Haritayı ters çevir"
+
+#~ msgid "Update transitions"
+#~ msgstr "Geçişleri güncelle"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Geçiş güncellemelerine geciktir"
+
+#~ msgid "Language"
+#~ msgstr "Dil"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "Tercih ettiğiniz dili seçin:"
+
+#~ msgid "Battle for Wesnoth Map Editor"
+#~ msgstr "Wesnoth Savaşı Harita Düzenleyici"
+
+#~ msgid "None"
+#~ msgstr "Hiçbiri"
+
+#~ msgid "Which Player?"
+#~ msgstr "Hangi oyuncu?"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "Hangi oyuncu burada başlasın?"
+
+#~ msgid ""
+#~ "Warning: Illegal characters found in the map name. Please save under a "
+#~ "different name."
+#~ msgstr ""
+#~ "Uyarı: Harita isminde geçersiz karakter bulundu. Lütfen başka bir isimle "
+#~ "kayıt edin."
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "Bu dosya geçerli bir harita içermiyor."
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "Çıkmadan önce bu haritayı kaydetmek ister misiniz?"
+
+#~ msgid "Error: Illegal character in filename."
+#~ msgstr "Hata: Dosya isminde geçersiz karakter."
+
+#~ msgid ""
+#~ "Can't resize the map, the requested size is bigger than the maximum, size="
+#~ msgstr ""
+#~ "Harita tekrar boyutlandırılamıyor, istenen boyut azami boyutu aşıyor, "
+#~ "boyut="
+
+#~ msgid " maximum="
+#~ msgstr " azami="

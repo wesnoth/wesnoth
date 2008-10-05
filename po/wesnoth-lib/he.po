@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:36+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -317,7 +317,6 @@ msgid "Unwalkable"
 msgstr ""
 
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
-#: src/editor/editor_dialogs.cpp:551
 msgid "OK"
 msgstr "אשר"
 
@@ -330,123 +329,12 @@ msgid "No"
 msgstr "לא"
 
 #: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-#: src/editor/editor_dialogs.cpp:103 src/editor/editor_dialogs.cpp:550
 msgid "Cancel"
 msgstr "בטל"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
 msgstr "סגור"
-
-#: src/editor/editor_dialogs.cpp:51
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "השינויים שביצעת במפה יאבדו. האם להמשיך?"
-
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "יצירת מפה חדשה"
-
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:514
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "רוחב:"
-
-#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "גובה:"
-
-#: src/editor/editor_dialogs.cpp:100
-msgid "Generate New Map"
-msgstr "יצירת מפה חדשה"
-
-#: src/editor/editor_dialogs.cpp:101
-msgid "Generate Random Map"
-msgstr "יצירת מפה אקראית"
-
-#: src/editor/editor_dialogs.cpp:102
-msgid "Random Generator Settings"
-msgstr "אפשרויות מחולל אקראי"
-
-#: src/editor/editor_dialogs.cpp:180
-msgid "Map creation failed."
-msgstr "יצירת מפה נכשלה."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:112
-#: src/preferences_display.cpp:229
-msgid "Close Window"
-msgstr "סגור חלון"
-
-#: src/editor/editor_dialogs.cpp:252 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "העדפות"
-
-#: src/editor/editor_dialogs.cpp:256 src/game_preferences_display.cpp:207
-msgid "Scroll Speed:"
-msgstr "מהירות גלילה:"
-
-#: src/editor/editor_dialogs.cpp:283 src/game_preferences_display.cpp:164
-#: src/hotkeys.cpp:67
-msgid "Toggle Full Screen"
-msgstr "החלף מצב מסך מלא"
-
-#: src/editor/editor_dialogs.cpp:290 src/game_preferences_display.cpp:167
-msgid "Show Grid"
-msgstr "הצג סריג"
-
-#: src/editor/editor_dialogs.cpp:297
-msgid "Video Mode"
-msgstr "אופן תצוגה"
-
-#: src/editor/editor_dialogs.cpp:300 src/game_preferences_display.cpp:189
-msgid "Hotkeys"
-msgstr "מקשי קיצור"
-
-#: src/editor/editor_dialogs.cpp:305
-msgid "Lighting levels (time of day):"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:312
-msgid "light_level^Red:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:313
-msgid "light_level^Green:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:314
-msgid "light_level^Blue:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:512 src/editor/editor_dialogs.cpp:624
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:181
-msgid "Resize Map"
-msgstr "שנה גודל מפה"
-
-#: src/editor/editor_dialogs.cpp:516
-msgid "X offset:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:517
-msgid "Y offset:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:596
-msgid "Smart expand"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:685
-msgid "X-Axis"
-msgstr "ציר X"
-
-#: src/editor/editor_dialogs.cpp:686
-msgid "Y-Axis"
-msgstr "ציר Y"
-
-#: src/editor/editor_dialogs.cpp:687
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "הפיכה (עלול לשנות את מימדי המפה)"
 
 #: src/filechooser.cpp:62
 msgid "File: "
@@ -481,6 +369,14 @@ msgstr ""
 msgid "player"
 msgstr "שחקן"
 
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "העדפות"
+
+#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+msgid "Toggle Full Screen"
+msgstr "החלף מצב מסך מלא"
+
 #: src/game_preferences_display.cpp:165
 msgid "Accelerated Speed"
 msgstr "מהירות מואצת"
@@ -488,6 +384,10 @@ msgstr "מהירות מואצת"
 #: src/game_preferences_display.cpp:166
 msgid "Skip AI Moves"
 msgstr "דלג על הצגת מהלכי המחשב"
+
+#: src/game_preferences_display.cpp:167
+msgid "Show Grid"
+msgstr "הצג סריג"
 
 #: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
 msgid "Save Replay on SP/MP Victory or MP Defeat"
@@ -580,6 +480,10 @@ msgstr "בחירת רזולוציה"
 msgid "Theme"
 msgstr "ערכת נושא"
 
+#: src/game_preferences_display.cpp:189
+msgid "Hotkeys"
+msgstr "מקשי קיצור"
+
 #: src/game_preferences_display.cpp:190
 msgid "Adjust Gamma"
 msgstr "כוון גאמא"
@@ -642,6 +546,10 @@ msgstr "עוצמת אפקטים מיוחדים:"
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "עוצמת אפקטים מיוחדים:"
+
+#: src/game_preferences_display.cpp:207
+msgid "Scroll Speed:"
+msgstr "מהירות גלילה:"
 
 #: src/game_preferences_display.cpp:208
 msgid "Gamma:"
@@ -1049,7 +957,7 @@ msgstr "הקטנה"
 msgid "Default Zoom"
 msgstr "גודל רגיל"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:977
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:891
 msgid "Screenshot"
 msgstr "צילום מסך"
 
@@ -1202,306 +1110,273 @@ msgstr ""
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
 
-#: src/hotkeys.cpp:111
-msgid "Set Terrain"
-msgstr "קביעת קרקע"
-
 #: src/hotkeys.cpp:112
-msgid "Quit Editor"
-msgstr "צא מהעורך"
-
-#: src/hotkeys.cpp:113 src/hotkeys.cpp:137
-msgid "New Map"
-msgstr "מפה חדשה"
-
-#: src/hotkeys.cpp:114 src/hotkeys.cpp:138
-msgid "Load Map"
-msgstr "טען מפה"
-
-#: src/hotkeys.cpp:115 src/hotkeys.cpp:139
-msgid "Save Map"
-msgstr "שמור מפה"
-
-#: src/hotkeys.cpp:116
-msgid "Save As"
-msgstr "שמור בשם"
-
-#: src/hotkeys.cpp:117
-msgid "Set Player's keep"
-msgstr "קביעת המצודה של השחקן"
-
-#: src/hotkeys.cpp:118
-msgid "Flood Fill"
-msgstr "הצפה"
-
-#: src/hotkeys.cpp:119 src/hotkeys.cpp:175
-msgid "Fill Selection"
-msgstr "מלא את הבחירה"
-
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:171
-#, fuzzy
-msgid "Rotate Selection"
-msgstr "מלא את הבחירה"
-
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:153
-msgid "Cut"
-msgstr "גזור"
-
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:154
-msgid "Copy"
-msgstr "העתק"
-
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:155
-msgid "Paste"
-msgstr "הדבק"
-
-#: src/hotkeys.cpp:124
-msgid "Revert from Disk"
-msgstr "שחזר מהדיסק"
-
-#: src/hotkeys.cpp:126
-msgid "Flip Map"
-msgstr "הפיכת מפה"
-
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:157
-msgid "Select All"
-msgstr "בחר הכל"
-
-#: src/hotkeys.cpp:128
-msgid "Draw Terrain"
-msgstr "צייר קרקע"
-
-#: src/hotkeys.cpp:129 src/hotkeys.cpp:193
-msgid "Refresh Image Cache"
-msgstr "רענן מטמון דמויות"
-
-#: src/hotkeys.cpp:130
-#, fuzzy
-msgid "Delay transition updates"
-msgstr "השהיית עדכון הסתרה"
-
-#: src/hotkeys.cpp:131
-msgid "Update transitions"
-msgstr ""
-
-#: src/hotkeys.cpp:134
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Editor Settings"
 msgstr "מקשי קיצור"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "מפה חדשה"
+
+#: src/hotkeys.cpp:116
+msgid "Load Map"
+msgstr "טען מפה"
+
+#: src/hotkeys.cpp:117
+msgid "Save Map"
+msgstr "שמור מפה"
+
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Save Map As"
 msgstr "שמור מפה"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Map Information"
 msgstr "יצירת מפה"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Next Tool"
 msgstr "התור הבא"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Selection Tool"
 msgstr "בחר הכל"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Next Brush"
 msgstr "התור הבא"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:130
 #, fuzzy
 msgid "Default Brush"
 msgstr "גודל רגיל"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:131
+msgid "Cut"
+msgstr "גזור"
+
+#: src/hotkeys.cpp:132
+msgid "Copy"
+msgstr "העתק"
+
+#: src/hotkeys.cpp:133
+msgid "Paste"
+msgstr "הדבק"
+
+#: src/hotkeys.cpp:135
+msgid "Select All"
+msgstr "בחר הכל"
+
+#: src/hotkeys.cpp:137
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:139
 #, fuzzy
 msgid "Select None"
 msgstr "בחר הכל"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:141
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:143
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:145
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:147
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:149
+#, fuzzy
+msgid "Rotate Selection"
+msgstr "מלא את הבחירה"
+
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Flip Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:153
+msgid "Fill Selection"
+msgstr "מלא את הבחירה"
+
+#: src/hotkeys.cpp:155
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:157
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "שנה גודל מפה"
+
+#: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Rotate Map"
 msgstr "טען מפה"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Generate Map"
 msgstr "יצירת מפה חדשה"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "תצוגה"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:167
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:169
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:171
+msgid "Refresh Image Cache"
+msgstr "רענן מטמון דמויות"
+
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "צייר קרקע"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "השהיית עדכון הסתרה"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "עדכון הסתרה מיידי"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "המשך תנועה"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "חיפוש תגית או יחידה"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "דבר לבן ברית"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "דבר לכולם"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:186
 msgid "Help"
 msgstr "עזרה"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "הצג רישום שיחות"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "החלף שפה"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "הכנס פקודת משתמש"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "הכנס פקודת משתמש"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:193
 #, fuzzy
 msgid "Clear messages"
 msgstr "נקה תגית"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Do you really want to quit?"
 msgstr "האם באמת ברצונך לצאת?"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Quit"
 msgstr "צא"
 
-#: src/hotkeys.cpp:977
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:984
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot done"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:986
+#: src/hotkeys.cpp:900
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "צילום מסך"
+
+#: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
+msgid "Close Window"
+msgstr "סגור חלון"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1510,6 +1385,14 @@ msgstr "יצירת מפה"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "שחקנים:"
+
+#: src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "רוחב:"
+
+#: src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "גובה:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1646,6 +1529,64 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "השינויים שביצעת במפה יאבדו. האם להמשיך?"
+
+#~ msgid "Create New Map"
+#~ msgstr "יצירת מפה חדשה"
+
+#~ msgid "Generate New Map"
+#~ msgstr "יצירת מפה חדשה"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "יצירת מפה אקראית"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "אפשרויות מחולל אקראי"
+
+#~ msgid "Map creation failed."
+#~ msgstr "יצירת מפה נכשלה."
+
+#~ msgid "Video Mode"
+#~ msgstr "אופן תצוגה"
+
+#~ msgid "X-Axis"
+#~ msgstr "ציר X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "ציר Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "הפיכה (עלול לשנות את מימדי המפה)"
+
+#~ msgid "Set Terrain"
+#~ msgstr "קביעת קרקע"
+
+#~ msgid "Quit Editor"
+#~ msgstr "צא מהעורך"
+
+#~ msgid "Save As"
+#~ msgstr "שמור בשם"
+
+#~ msgid "Set Player's keep"
+#~ msgstr "קביעת המצודה של השחקן"
+
+#~ msgid "Flood Fill"
+#~ msgstr "הצפה"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "שחזר מהדיסק"
+
+#~ msgid "Flip Map"
+#~ msgstr "הפיכת מפה"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "צייר קרקע"
+
+#, fuzzy
+#~ msgid "Delay transition updates"
+#~ msgstr "השהיית עדכון הסתרה"
 
 #, fuzzy
 #~ msgid "Invert Selection"

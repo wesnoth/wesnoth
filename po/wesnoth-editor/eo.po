@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:39+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-02-12 20:47+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: eo-EO\n"
@@ -14,52 +14,52 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:10
+#: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "ĉiuj"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:16
+#: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "akvo"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:28
+#: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "glata"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:34
+#: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "dezerto"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:40
+#: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "arbaro"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:46
+#: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "glaciita"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:52
+#: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "monteca"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:58
+#: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "kaverno"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:64
+#: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "vilaĝo"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:70
+#: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "kastelo"
 
@@ -111,175 +111,28 @@ msgid "Click to paste."
 msgstr ""
 
 #. [menu]
-#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+#: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Dosiero"
 
 #. [menu]
-#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+#: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Redakti"
-
-#. [menu]
-#: data/themes/editor.cfg:481
-msgid "Settings"
-msgstr "Agordaĵoj"
-
-#. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
-msgid "villages"
-msgstr "vilaĝoj"
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr ""
 
-#: src/editor/editor.cpp:246
-msgid "Draw tiles"
-msgstr "Pentri ĉelojn"
+#. [label]
+#: data/themes/editor2.cfg:252
+msgid "villages"
+msgstr "vilaĝoj"
 
-#: src/editor/editor.cpp:248
-msgid "Fill"
-msgstr "Plenigi"
-
-#: src/editor/editor.cpp:250
-msgid "Set player's starting position"
-msgstr "Marki startan pozicion de ludanto"
-
-#: src/editor/editor.cpp:252
-msgid "Zoom in"
-msgstr "Zomi"
-
-#: src/editor/editor.cpp:254
-msgid "Zoom out"
-msgstr "Malzomi"
-
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
-msgid "Undo"
-msgstr "Malfari"
-
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
-msgid "Redo"
-msgstr "Refari"
-
-#: src/editor/editor.cpp:260
-msgid "Zoom to default view"
-msgstr "Defaŭlta zomo"
-
-#: src/editor/editor.cpp:262
-msgid "Toggle grid"
-msgstr "Ŝalti kradeton"
-
-#: src/editor/editor.cpp:264
-msgid "Resize the map"
-msgstr "Ŝanĝi grandecon de la mapo"
-
-#: src/editor/editor.cpp:266
-msgid "Flip map"
-msgstr "Renversi mapon"
-
-#: src/editor/editor.cpp:268
-msgid "Update transitions"
-msgstr "Ĝisdatigi transirojn"
-
-#: src/editor/editor.cpp:270
-msgid "Delay transition updates"
-msgstr "Haltigi ĝisdatigon de transiroj"
-
-#: src/editor/editor.cpp:486
-msgid "Language"
-msgstr "Lingvo"
-
-#: src/editor/editor.cpp:487
-msgid "Choose your preferred language:"
-msgstr "Elektu vian preferan lingvon:"
-
-#: src/editor/editor.cpp:504 src/editor/editor_main.cpp:304
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Batalo por Vesnot: Redaktilo de mapoj."
-
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
-msgid "Save the Map As"
-msgstr "Savi la Mapon Kiel..."
-
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "La mapo jam ekzistas. Ĉu vi volas anstaŭigi ĝin?"
-
-#: src/editor/editor.cpp:563
-msgid "None"
-msgstr "Neniu"
-
-#: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
-msgid "Player"
-msgstr "Ludanto"
-
-#: src/editor/editor.cpp:572
-msgid "Which Player?"
-msgstr "Kiu Ludanto?"
-
-#: src/editor/editor.cpp:573
-msgid "Which player should start here?"
-msgstr "Kiu ludanto komencos ĉi tie?"
-
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
-msgid "Choose a Map to Load"
-msgstr "Elektu Mapon por Ŝarĝado"
-
-#: src/editor/editor.cpp:643
-msgid ""
-"Warning: Illegal characters found in the map name. Please save under a "
-"different name."
-msgstr ""
-"Averto: Nelegala simbolo en nomo de la mapo. Vi devas savi mapon kun alia "
-"nomo."
-
-#: src/editor/editor.cpp:656 src/editor/editor.cpp:736
-msgid "The file does not contain a valid map."
-msgstr "La dosiero ne enhavas mapon."
-
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "Eliri"
-
-#: src/editor/editor.cpp:1317
-msgid "Do you want to save the map before quitting?"
-msgstr "Ĉu vi volas savi la mapon antaŭ eliro?"
-
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "Mapo estas savita."
-
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "Vi ne povas savi mapon: $msg"
-
-#: src/editor/editor.cpp:1388
-msgid "Error: Illegal character in filename."
-msgstr "Eraro: Nelegala simbolo en nomo de dosiero."
-
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
-msgid "FG"
-msgstr "Antaŭa"
-
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
-msgid "BG"
-msgstr "Malantaŭa"
-
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
-msgid ""
-"Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr ""
-"Ne eblas ŝanĝi grandecon de la mapo, la menciita estas pli granda ol "
-"maksimuma, grandeco="
-
-#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
-#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
-msgid " maximum="
-msgstr "maksimumo="
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
@@ -313,6 +166,18 @@ msgstr ""
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:303
+msgid "Choose a Map to Load"
+msgstr "Elektu Mapon por Ŝarĝado"
+
+#: src/editor2/editor_controller.cpp:338
+msgid "Save the Map As"
+msgstr "Savi la Mapon Kiel..."
+
+#: src/editor2/editor_controller.cpp:342
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "La mapo jam ekzistas. Ĉu vi volas anstaŭigi ĝin?"
+
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
@@ -321,13 +186,29 @@ msgstr ""
 msgid "Map creation failed."
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:458
+msgid "Map saved."
+msgstr "Mapo estas savita."
+
+#: src/editor2/editor_controller.cpp:463
+msgid "Could not save the map: $msg"
+msgstr "Vi ne povas savi mapon: $msg"
+
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:810
+msgid "Undo"
+msgstr "Malfari"
+
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
+
+#: src/editor2/editor_controller.cpp:816
+msgid "Redo"
+msgstr "Refari"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
@@ -345,6 +226,18 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+msgid "Player"
+msgstr "Ludanto"
+
+#: src/editor2/editor_palettes.cpp:495
+msgid "FG"
+msgstr "Antaŭa"
+
+#: src/editor2/editor_palettes.cpp:497
+msgid "BG"
+msgstr "Malantaŭa"
+
 #: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
@@ -360,6 +253,85 @@ msgid ""
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:106
+#: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "Agordaĵoj"
+
+#~ msgid "Draw tiles"
+#~ msgstr "Pentri ĉelojn"
+
+#~ msgid "Fill"
+#~ msgstr "Plenigi"
+
+#~ msgid "Set player's starting position"
+#~ msgstr "Marki startan pozicion de ludanto"
+
+#~ msgid "Zoom in"
+#~ msgstr "Zomi"
+
+#~ msgid "Zoom out"
+#~ msgstr "Malzomi"
+
+#~ msgid "Zoom to default view"
+#~ msgstr "Defaŭlta zomo"
+
+#~ msgid "Toggle grid"
+#~ msgstr "Ŝalti kradeton"
+
+#~ msgid "Resize the map"
+#~ msgstr "Ŝanĝi grandecon de la mapo"
+
+#~ msgid "Flip map"
+#~ msgstr "Renversi mapon"
+
+#~ msgid "Update transitions"
+#~ msgstr "Ĝisdatigi transirojn"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Haltigi ĝisdatigon de transiroj"
+
+#~ msgid "Language"
+#~ msgstr "Lingvo"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "Elektu vian preferan lingvon:"
+
+#~ msgid "Battle for Wesnoth Map Editor"
+#~ msgstr "Batalo por Vesnot: Redaktilo de mapoj."
+
+#~ msgid "None"
+#~ msgstr "Neniu"
+
+#~ msgid "Which Player?"
+#~ msgstr "Kiu Ludanto?"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "Kiu ludanto komencos ĉi tie?"
+
+#~ msgid ""
+#~ "Warning: Illegal characters found in the map name. Please save under a "
+#~ "different name."
+#~ msgstr ""
+#~ "Averto: Nelegala simbolo en nomo de la mapo. Vi devas savi mapon kun alia "
+#~ "nomo."
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "La dosiero ne enhavas mapon."
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "Ĉu vi volas savi la mapon antaŭ eliro?"
+
+#~ msgid "Error: Illegal character in filename."
+#~ msgstr "Eraro: Nelegala simbolo en nomo de dosiero."
+
+#~ msgid ""
+#~ "Can't resize the map, the requested size is bigger than the maximum, size="
+#~ msgstr ""
+#~ "Ne eblas ŝanĝi grandecon de la mapo, la menciita estas pli granda ol "
+#~ "maksimuma, grandeco="
+
+#~ msgid " maximum="
+#~ msgstr "maksimumo="

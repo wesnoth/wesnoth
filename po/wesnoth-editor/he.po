@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:39+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2005-12-18 23:18+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -22,52 +22,52 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:10
+#: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:16
+#: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:28
+#: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:34
+#: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:40
+#: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:46
+#: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:52
+#: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:58
+#: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:64
+#: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr ""
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:70
+#: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr ""
 
@@ -119,171 +119,28 @@ msgid "Click to paste."
 msgstr ""
 
 #. [menu]
-#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+#: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "קובץ"
 
 #. [menu]
-#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+#: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "עריכה"
-
-#. [menu]
-#: data/themes/editor.cfg:481
-msgid "Settings"
-msgstr "הגדרות"
-
-#. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
-msgid "villages"
-msgstr ""
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr ""
 
-#: src/editor/editor.cpp:246
-msgid "Draw tiles"
-msgstr "שרטט מרצפות"
-
-#: src/editor/editor.cpp:248
-msgid "Fill"
-msgstr "מילוי"
-
-#: src/editor/editor.cpp:250
-msgid "Set player's starting position"
-msgstr "קביעת מיקום התחלתי לשחקן"
-
-#: src/editor/editor.cpp:252
-msgid "Zoom in"
-msgstr "הגדלת תצוגה"
-
-#: src/editor/editor.cpp:254
-msgid "Zoom out"
-msgstr "הקטנת תצוגה"
-
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
-msgid "Undo"
-msgstr "ביטול שינוי"
-
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
-msgid "Redo"
-msgstr "שחזור שינוי"
-
-#: src/editor/editor.cpp:260
-msgid "Zoom to default view"
-msgstr "גודל תצוגה רגיל"
-
-#: src/editor/editor.cpp:262
-msgid "Toggle grid"
-msgstr "הצגת/כיבוי סריג"
-
-#: src/editor/editor.cpp:264
-msgid "Resize the map"
-msgstr "שינוי גודל מפה"
-
-#: src/editor/editor.cpp:266
-msgid "Flip map"
-msgstr "הפיכת מפה"
-
-#: src/editor/editor.cpp:268
-msgid "Update transitions"
+#. [label]
+#: data/themes/editor2.cfg:252
+msgid "villages"
 msgstr ""
 
-#: src/editor/editor.cpp:270
-msgid "Delay transition updates"
-msgstr ""
-
-#: src/editor/editor.cpp:486
-msgid "Language"
-msgstr "שפה"
-
-#: src/editor/editor.cpp:487
-msgid "Choose your preferred language:"
-msgstr "בחירת שפה מועדפת:"
-
-#: src/editor/editor.cpp:504 src/editor/editor_main.cpp:304
-msgid "Battle for Wesnoth Map Editor"
-msgstr "עורך מפות עבור הקרב על ווסנות'"
-
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
-msgid "Save the Map As"
-msgstr "שמירת מפה בשם"
-
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "המפה כבר קיימת. האם לדרוס אותה?"
-
-#: src/editor/editor.cpp:563
-msgid "None"
-msgstr ""
-
-#: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
-msgid "Player"
-msgstr "שחקן"
-
-#: src/editor/editor.cpp:572
-msgid "Which Player?"
-msgstr "איזה שחקן?"
-
-#: src/editor/editor.cpp:573
-msgid "Which player should start here?"
-msgstr "איזה שחקן צריך להתחיל כאן?"
-
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
-msgid "Choose a Map to Load"
-msgstr "בחירת מפה לטעינה"
-
-#: src/editor/editor.cpp:643
-msgid ""
-"Warning: Illegal characters found in the map name. Please save under a "
-"different name."
-msgstr "אזהרה: שם מפה מכיל תווים בלתי חוקיים. אנא שמור תחת שם אחר."
-
-#: src/editor/editor.cpp:656 src/editor/editor.cpp:736
-msgid "The file does not contain a valid map."
-msgstr "קובץ זה אינו מכיל מפה חוקית."
-
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "צא מתוכנית העריכה"
-
-#: src/editor/editor.cpp:1317
-msgid "Do you want to save the map before quitting?"
-msgstr "האם ברצונך לשמור את המפה לפני יציאה?"
-
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "מפה נשמרה."
-
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "לא ניתן לשמור את המפה: $msg"
-
-#: src/editor/editor.cpp:1388
-msgid "Error: Illegal character in filename."
-msgstr "שגיאה: תו בלתי חוקי לשם קובץ."
-
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
-msgid "FG"
-msgstr "חזית"
-
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
-msgid "BG"
-msgstr "רקע"
-
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
-msgid ""
-"Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr ""
-
-#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
-#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
-msgid " maximum="
-msgstr ""
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
@@ -317,6 +174,18 @@ msgstr ""
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:303
+msgid "Choose a Map to Load"
+msgstr "בחירת מפה לטעינה"
+
+#: src/editor2/editor_controller.cpp:338
+msgid "Save the Map As"
+msgstr "שמירת מפה בשם"
+
+#: src/editor2/editor_controller.cpp:342
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "המפה כבר קיימת. האם לדרוס אותה?"
+
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
@@ -325,13 +194,29 @@ msgstr ""
 msgid "Map creation failed."
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:458
+msgid "Map saved."
+msgstr "מפה נשמרה."
+
+#: src/editor2/editor_controller.cpp:463
+msgid "Could not save the map: $msg"
+msgstr "לא ניתן לשמור את המפה: $msg"
+
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:810
+msgid "Undo"
+msgstr "ביטול שינוי"
+
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
+
+#: src/editor2/editor_controller.cpp:816
+msgid "Redo"
+msgstr "שחזור שינוי"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
@@ -349,6 +234,18 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+msgid "Player"
+msgstr "שחקן"
+
+#: src/editor2/editor_palettes.cpp:495
+msgid "FG"
+msgstr "חזית"
+
+#: src/editor2/editor_palettes.cpp:497
+msgid "BG"
+msgstr "רקע"
+
 #: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
@@ -364,6 +261,65 @@ msgid ""
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:106
+#: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "הגדרות"
+
+#~ msgid "Draw tiles"
+#~ msgstr "שרטט מרצפות"
+
+#~ msgid "Fill"
+#~ msgstr "מילוי"
+
+#~ msgid "Set player's starting position"
+#~ msgstr "קביעת מיקום התחלתי לשחקן"
+
+#~ msgid "Zoom in"
+#~ msgstr "הגדלת תצוגה"
+
+#~ msgid "Zoom out"
+#~ msgstr "הקטנת תצוגה"
+
+#~ msgid "Zoom to default view"
+#~ msgstr "גודל תצוגה רגיל"
+
+#~ msgid "Toggle grid"
+#~ msgstr "הצגת/כיבוי סריג"
+
+#~ msgid "Resize the map"
+#~ msgstr "שינוי גודל מפה"
+
+#~ msgid "Flip map"
+#~ msgstr "הפיכת מפה"
+
+#~ msgid "Language"
+#~ msgstr "שפה"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "בחירת שפה מועדפת:"
+
+#~ msgid "Battle for Wesnoth Map Editor"
+#~ msgstr "עורך מפות עבור הקרב על ווסנות'"
+
+#~ msgid "Which Player?"
+#~ msgstr "איזה שחקן?"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "איזה שחקן צריך להתחיל כאן?"
+
+#~ msgid ""
+#~ "Warning: Illegal characters found in the map name. Please save under a "
+#~ "different name."
+#~ msgstr "אזהרה: שם מפה מכיל תווים בלתי חוקיים. אנא שמור תחת שם אחר."
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "קובץ זה אינו מכיל מפה חוקית."
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "האם ברצונך לשמור את המפה לפני יציאה?"
+
+#~ msgid "Error: Illegal character in filename."
+#~ msgstr "שגיאה: תו בלתי חוקי לשם קובץ."

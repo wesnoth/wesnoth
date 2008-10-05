@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-04 11:49+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -19,38 +19,38 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:54
+#: data/_main.cfg:48
 msgid "Compressed Saves"
 msgstr "Partides guardades comprimides"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:61
+#: data/_main.cfg:55
 msgid "Mouse Scrolling"
 msgstr "Desplaçament del ratolí"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:68
+#: data/_main.cfg:62
 msgid "Animate Map"
 msgstr "Animar mapa"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:75
+#: data/_main.cfg:69
 #, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Campanya"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:82
+#: data/_main.cfg:76
 msgid "Unit Standing Animations"
 msgstr "Animacions d'Unitats Parades"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:89
+#: data/_main.cfg:83
 msgid "Show Combat"
 msgstr "Mostrar combat"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:104
+#: data/_main.cfg:98
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
@@ -3380,14 +3380,14 @@ msgstr ", Màx. PE +25%"
 msgid "Max HP bonus +"
 msgstr "Bonificació PV màxim +"
 
-#: data/core/macros/carryover-utils.cfg:44
+#: data/core/macros/carryover-utils.cfg:48
 #, fuzzy
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr "El 80% de l'or es manté per al següent escenari."
 
-#: data/core/macros/carryover-utils.cfg:49
+#: data/core/macros/carryover-utils.cfg:53
 #, fuzzy
 msgid ""
 "\n"
@@ -4733,6 +4733,41 @@ msgstr "intrèpida"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Lluita normalment durant moments desfavorables del dia o la nit"
 
+#. [trait]
+#: data/core/macros/traits.cfg:174
+msgid "weak"
+msgstr ""
+
+#. [trait]
+#: data/core/macros/traits.cfg:175
+#, fuzzy
+msgid "female^weak"
+msgstr "no morta"
+
+#. [trait]
+#: data/core/macros/traits.cfg:192
+#, fuzzy
+msgid "slow"
+msgstr "retardar"
+
+#. [trait]
+#: data/core/macros/traits.cfg:193
+#, fuzzy
+msgid "female^slow"
+msgstr "lleal"
+
+#. [trait]
+#: data/core/macros/traits.cfg:209
+#, fuzzy
+msgid "dim"
+msgstr "Mig"
+
+#. [trait]
+#: data/core/macros/traits.cfg:210
+#, fuzzy
+msgid "female^dim"
+msgstr "intrèpida"
+
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
@@ -5152,37 +5187,37 @@ msgid "race^Goblins"
 msgstr "Goblins"
 
 #. [race]: description=
-#: data/core/units.cfg:113
+#: data/core/units.cfg:117
 msgid "race^Gryphon"
 msgstr "Grif"
 
 #. [race]: description=
-#: data/core/units.cfg:114
+#: data/core/units.cfg:118
 msgid "race+female^Gryphon"
 msgstr "Grifa"
 
 #. [race]: description=
-#: data/core/units.cfg:115
+#: data/core/units.cfg:119
 msgid "race^Gryphons"
 msgstr "Grifs"
 
 #. [race]
-#: data/core/units.cfg:123
+#: data/core/units.cfg:127
 msgid "race^Human"
 msgstr "Humà"
 
 #. [race]
-#: data/core/units.cfg:124
+#: data/core/units.cfg:128
 msgid "race+female^Human"
 msgstr "Humana"
 
 #. [race]
-#: data/core/units.cfg:125
+#: data/core/units.cfg:129
 msgid "race^Humans"
 msgstr "Humans"
 
 #. [race]
-#: data/core/units.cfg:132
+#: data/core/units.cfg:136
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5265,102 +5300,102 @@ msgstr ""
 "complementen."
 
 #. [race]: description=
-#: data/core/units.cfg:139
+#: data/core/units.cfg:143
 msgid "race^Saurian"
 msgstr "Sauri"
 
 #. [race]: description=
-#: data/core/units.cfg:140
+#: data/core/units.cfg:144
 msgid "race+female^Saurian"
 msgstr "Sauria"
 
 #. [race]: description=
-#: data/core/units.cfg:141
+#: data/core/units.cfg:145
 msgid "race^Saurians"
 msgstr "Sauris"
 
 #. [race]: description=
-#: data/core/units.cfg:150
+#: data/core/units.cfg:154
 msgid "race^Mechanical"
 msgstr "Mecànic"
 
 #. [race]: description=
-#: data/core/units.cfg:151
+#: data/core/units.cfg:155
 msgid "race+plural^Mechanical"
 msgstr "Mecànics"
 
 #. [race]: description=
-#: data/core/units.cfg:160
+#: data/core/units.cfg:164
 msgid "race^Merman"
 msgstr "Sirènit"
 
 #. [race]: description=
-#: data/core/units.cfg:161
+#: data/core/units.cfg:165
 msgid "race^Mermaid"
 msgstr "Sirena"
 
 #. [race]: description=
-#: data/core/units.cfg:162
+#: data/core/units.cfg:166
 msgid "race^Mermen"
 msgstr "Sirènits"
 
 #. [race]: description=
-#: data/core/units.cfg:170
+#: data/core/units.cfg:174
 msgid "race^Monster"
 msgstr "Mònstruo"
 
 #. [race]: description=
-#: data/core/units.cfg:171
+#: data/core/units.cfg:175
 msgid "race^Monsters"
 msgstr "Mònstruos"
 
 #. [race]: description=
-#: data/core/units.cfg:178
+#: data/core/units.cfg:182
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:179
+#: data/core/units.cfg:183
 msgid "race^Nagani"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:180
+#: data/core/units.cfg:184
 msgid "race^Nagas"
 msgstr "Nagues"
 
 #. [race]: description=
-#: data/core/units.cfg:188
+#: data/core/units.cfg:192
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #. [race]: description=
-#: data/core/units.cfg:189
+#: data/core/units.cfg:193
 msgid "race+female^Ogre"
 msgstr "Ogra"
 
 #. [race]: description=
-#: data/core/units.cfg:190
+#: data/core/units.cfg:194
 msgid "race^Ogres"
 msgstr "Ogres"
 
 #. [race]
-#: data/core/units.cfg:198
+#: data/core/units.cfg:202
 msgid "race^Orc"
 msgstr "Orc"
 
 #. [race]
-#: data/core/units.cfg:199
+#: data/core/units.cfg:203
 msgid "race+female^Orc"
 msgstr "Orca"
 
 #. [race]
-#: data/core/units.cfg:200
+#: data/core/units.cfg:204
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #. [race]
-#: data/core/units.cfg:210
+#: data/core/units.cfg:214
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -5482,22 +5517,22 @@ msgstr ""
 "o l'assessinat."
 
 #. [race]
-#: data/core/units.cfg:217
+#: data/core/units.cfg:221
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]
-#: data/core/units.cfg:218
+#: data/core/units.cfg:222
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]
-#: data/core/units.cfg:219
+#: data/core/units.cfg:223
 msgid "race^Trolls"
 msgstr "Trolls"
 
 #. [race]
-#: data/core/units.cfg:225
+#: data/core/units.cfg:229
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5571,22 +5606,22 @@ msgstr ""
 "nort i est de Wesnoth, i allí on les hordes d'Orcs viagen."
 
 #. [race]
-#: data/core/units.cfg:237
+#: data/core/units.cfg:241
 msgid "race^Undead"
 msgstr "No morts"
 
 #. [race]
-#: data/core/units.cfg:238
+#: data/core/units.cfg:242
 msgid "race+female^Undead"
 msgstr "No morta"
 
 #. [race]
-#: data/core/units.cfg:239
+#: data/core/units.cfg:243
 msgid "race+plural^Undead"
 msgstr "No morts"
 
 #. [race]
-#: data/core/units.cfg:245
+#: data/core/units.cfg:249
 #, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -5642,12 +5677,24 @@ msgstr ""
 "desconeguts per elfs i nanos abans d'això."
 
 #. [race]: description=
-#: data/core/units.cfg:253
+#: data/core/units.cfg:257
+#, fuzzy
+msgid "race^Wolf"
+msgstr "Elf"
+
+#. [race]: description=
+#: data/core/units.cfg:258
+#, fuzzy
+msgid "race^Wolves"
+msgstr "Elfs"
+
+#. [race]: description=
+#: data/core/units.cfg:266
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: description=
-#: data/core/units.cfg:254
+#: data/core/units.cfg:267
 msgid "race^Woses"
 msgstr "Woses"
 
@@ -6484,8 +6531,8 @@ msgstr "Fi de l'escenari"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2657
-#: src/unit.cpp:2831
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
+#: src/unit.cpp:2826
 msgid "HP"
 msgstr "PV"
 
@@ -7038,11 +7085,11 @@ msgstr "Expansió eliminada"
 msgid "Add-on could not be deleted properly:"
 msgstr "L'expansió no s'ha pogut eliminar; no s'ha trobat l'archiu."
 
-#: src/ai.cpp:1745
+#: src/ai.cpp:1650
 msgid "Unknown unit type : "
 msgstr "Tipo d'unitat desconegut :"
 
-#: src/ai_move.cpp:76
+#: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
 "El cost del moviment és 0, provablement un terreny ab moviment de cost 0."
@@ -7411,7 +7458,7 @@ msgstr "Victòria:"
 msgid "Defeat:"
 msgstr "Derrota:"
 
-#: src/game_events.cpp:2236
+#: src/game_events.cpp:2220
 msgid "[store_unit] missing required [filter] tag\n"
 msgstr ""
 
@@ -9354,31 +9401,31 @@ msgstr "Tipo d'unitat '$type|' desconegut"
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo d'unitat '$type|' desconegut"
 
-#: src/unit.cpp:2614 src/unit.cpp:2819 src/unit.cpp:2875
+#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
 msgid " and "
 msgstr " i"
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2620
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2690
+#: src/unit.cpp:2685
 msgid "moves"
 msgstr "moviments"
 
-#: src/unit.cpp:2708 src/unit.cpp:2846
+#: src/unit.cpp:2703 src/unit.cpp:2841
 msgid "XP to advance"
 msgstr "Punts d'Experiència per a alvançar"
 
-#: src/unit.cpp:2838
+#: src/unit.cpp:2833
 msgid " move"
 msgstr " moviment"
 
-#: src/unit.cpp:2854
+#: src/unit.cpp:2849
 msgid "$effect_description per level"
 msgstr "$effect_description per nivell"
 
-#: src/unit.cpp:2884
+#: src/unit.cpp:2879
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9404,29 +9451,29 @@ msgstr ""
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "chaotic"
 msgstr "caòtic"
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "lawful"
 msgstr "llegal"
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "neutral"
 msgstr "neutral"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^chaotic"
 msgstr "mecànica"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^lawful"
 msgstr "lleal"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^neutral"
 msgstr "no morta"

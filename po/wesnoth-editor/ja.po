@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:39+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-02-18 23:48+0900\n"
 "Last-Translator: Naoki IIMURA <amatubu@gmail.com>\n"
 "Language-Team: none\n"
@@ -21,52 +21,52 @@ msgstr ""
 "X-Generator: KBabel 1.9\n"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:10
+#: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "すべて"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:16
+#: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "水域"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:28
+#: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "平地"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:34
+#: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "砂漠"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:40
+#: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "森林"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:46
+#: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "雪原"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:52
+#: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "荒地"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:58
+#: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "洞窟"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:64
+#: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "村"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:70
+#: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "城"
 
@@ -118,172 +118,28 @@ msgid "Click to paste."
 msgstr ""
 
 #. [menu]
-#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+#: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "ファイル"
 
 #. [menu]
-#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+#: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "編集"
-
-#. [menu]
-#: data/themes/editor.cfg:481
-msgid "Settings"
-msgstr "設定"
-
-#. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
-msgid "villages"
-msgstr "村"
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr ""
 
-#: src/editor/editor.cpp:246
-msgid "Draw tiles"
-msgstr "タイル描画"
+#. [label]
+#: data/themes/editor2.cfg:252
+msgid "villages"
+msgstr "村"
 
-#: src/editor/editor.cpp:248
-msgid "Fill"
-msgstr "塗りつぶし"
-
-#: src/editor/editor.cpp:250
-msgid "Set player's starting position"
-msgstr "プレイヤーの開始位置を設定"
-
-#: src/editor/editor.cpp:252
-msgid "Zoom in"
-msgstr "ズーム・イン"
-
-#: src/editor/editor.cpp:254
-msgid "Zoom out"
-msgstr "ズーム・アウト"
-
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
-msgid "Undo"
-msgstr "やり直す"
-
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
-msgid "Redo"
-msgstr "元に戻す"
-
-#: src/editor/editor.cpp:260
-msgid "Zoom to default view"
-msgstr "初期視点にズーム"
-
-#: src/editor/editor.cpp:262
-msgid "Toggle grid"
-msgstr "グリッド切替"
-
-#: src/editor/editor.cpp:264
-msgid "Resize the map"
-msgstr "マップサイズ変更"
-
-#: src/editor/editor.cpp:266
-msgid "Flip map"
-msgstr "マップを反転する"
-
-#: src/editor/editor.cpp:268
-msgid "Update transitions"
-msgstr "変化を更新する"
-
-#: src/editor/editor.cpp:270
-msgid "Delay transition updates"
-msgstr "変化の更新を遅らせる"
-
-#: src/editor/editor.cpp:486
-msgid "Language"
-msgstr "言語"
-
-#: src/editor/editor.cpp:487
-msgid "Choose your preferred language:"
-msgstr "お好みの言語を選んで下さい:"
-
-#: src/editor/editor.cpp:504 src/editor/editor_main.cpp:304
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Battle for Wesnoth マップエディタ"
-
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
-msgid "Save the Map As"
-msgstr "マップに名前を付けて保存"
-
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "マップはすでに存在します。 上書きしますか？"
-
-#: src/editor/editor.cpp:563
-msgid "None"
-msgstr "なし"
-
-#: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
-msgid "Player"
-msgstr "プレイヤー"
-
-#: src/editor/editor.cpp:572
-msgid "Which Player?"
-msgstr "どのプレイヤー？"
-
-#: src/editor/editor.cpp:573
-msgid "Which player should start here?"
-msgstr "どのプレイヤーがここからスタートしますか？"
-
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
-msgid "Choose a Map to Load"
-msgstr "読み込むマップを選択"
-
-#: src/editor/editor.cpp:643
-msgid ""
-"Warning: Illegal characters found in the map name. Please save under a "
-"different name."
-msgstr "警告: マップ名に不正な文字が見つかりました。別な名前で保存して下さい。"
-
-#: src/editor/editor.cpp:656 src/editor/editor.cpp:736
-msgid "The file does not contain a valid map."
-msgstr "そのファイルには有効なマップがありません。"
-
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "エディタを終了"
-
-#: src/editor/editor.cpp:1317
-msgid "Do you want to save the map before quitting?"
-msgstr "終了前にマップを保存しますか？"
-
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "マップを保存しました。"
-
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "マップを保存できませんでした: $msg"
-
-#: src/editor/editor.cpp:1388
-msgid "Error: Illegal character in filename."
-msgstr "エラー: ファイル名に不正な文字"
-
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
-msgid "FG"
-msgstr "FG"
-
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
-msgid "BG"
-msgstr "BG"
-
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
-msgid ""
-"Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr ""
-"マップをリサイズできません。要求されたサイズは最大値よりも大きいです。サイズ="
-
-#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
-#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
-msgid " maximum="
-msgstr " 最大値="
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
@@ -317,6 +173,18 @@ msgstr ""
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:303
+msgid "Choose a Map to Load"
+msgstr "読み込むマップを選択"
+
+#: src/editor2/editor_controller.cpp:338
+msgid "Save the Map As"
+msgstr "マップに名前を付けて保存"
+
+#: src/editor2/editor_controller.cpp:342
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "マップはすでに存在します。 上書きしますか？"
+
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
@@ -325,13 +193,29 @@ msgstr ""
 msgid "Map creation failed."
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:458
+msgid "Map saved."
+msgstr "マップを保存しました。"
+
+#: src/editor2/editor_controller.cpp:463
+msgid "Could not save the map: $msg"
+msgstr "マップを保存できませんでした: $msg"
+
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:810
+msgid "Undo"
+msgstr "やり直す"
+
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
+
+#: src/editor2/editor_controller.cpp:816
+msgid "Redo"
+msgstr "元に戻す"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
@@ -349,6 +233,18 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+msgid "Player"
+msgstr "プレイヤー"
+
+#: src/editor2/editor_palettes.cpp:495
+msgid "FG"
+msgstr "FG"
+
+#: src/editor2/editor_palettes.cpp:497
+msgid "BG"
+msgstr "BG"
+
 #: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
@@ -364,6 +260,84 @@ msgid ""
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:106
+#: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "設定"
+
+#~ msgid "Draw tiles"
+#~ msgstr "タイル描画"
+
+#~ msgid "Fill"
+#~ msgstr "塗りつぶし"
+
+#~ msgid "Set player's starting position"
+#~ msgstr "プレイヤーの開始位置を設定"
+
+#~ msgid "Zoom in"
+#~ msgstr "ズーム・イン"
+
+#~ msgid "Zoom out"
+#~ msgstr "ズーム・アウト"
+
+#~ msgid "Zoom to default view"
+#~ msgstr "初期視点にズーム"
+
+#~ msgid "Toggle grid"
+#~ msgstr "グリッド切替"
+
+#~ msgid "Resize the map"
+#~ msgstr "マップサイズ変更"
+
+#~ msgid "Flip map"
+#~ msgstr "マップを反転する"
+
+#~ msgid "Update transitions"
+#~ msgstr "変化を更新する"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "変化の更新を遅らせる"
+
+#~ msgid "Language"
+#~ msgstr "言語"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "お好みの言語を選んで下さい:"
+
+#~ msgid "Battle for Wesnoth Map Editor"
+#~ msgstr "Battle for Wesnoth マップエディタ"
+
+#~ msgid "None"
+#~ msgstr "なし"
+
+#~ msgid "Which Player?"
+#~ msgstr "どのプレイヤー？"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "どのプレイヤーがここからスタートしますか？"
+
+#~ msgid ""
+#~ "Warning: Illegal characters found in the map name. Please save under a "
+#~ "different name."
+#~ msgstr ""
+#~ "警告: マップ名に不正な文字が見つかりました。別な名前で保存して下さい。"
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "そのファイルには有効なマップがありません。"
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "終了前にマップを保存しますか？"
+
+#~ msgid "Error: Illegal character in filename."
+#~ msgstr "エラー: ファイル名に不正な文字"
+
+#~ msgid ""
+#~ "Can't resize the map, the requested size is bigger than the maximum, size="
+#~ msgstr ""
+#~ "マップをリサイズできません。要求されたサイズは最大値よりも大きいです。サイ"
+#~ "ズ="
+
+#~ msgid " maximum="
+#~ msgstr " 最大値="

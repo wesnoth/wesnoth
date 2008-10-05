@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:36+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-10-03 14:59+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -309,7 +309,6 @@ msgid "Unwalkable"
 msgstr "Yürünmez"
 
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
-#: src/editor/editor_dialogs.cpp:551
 msgid "OK"
 msgstr "Tamam"
 
@@ -322,123 +321,12 @@ msgid "No"
 msgstr "Hayır"
 
 #: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-#: src/editor/editor_dialogs.cpp:103 src/editor/editor_dialogs.cpp:550
 msgid "Cancel"
 msgstr "İptal"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
 msgstr "Kapat"
-
-#: src/editor/editor_dialogs.cpp:51
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Haritaya yaptığınız değişiklikler kaybolacak. Devam?"
-
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Yeni Harita Oluştur"
-
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:514
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "Eni:"
-
-#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "Boyu:"
-
-#: src/editor/editor_dialogs.cpp:100
-msgid "Generate New Map"
-msgstr "Yeni Harita Üret"
-
-#: src/editor/editor_dialogs.cpp:101
-msgid "Generate Random Map"
-msgstr "Rastgele Harita Üret"
-
-#: src/editor/editor_dialogs.cpp:102
-msgid "Random Generator Settings"
-msgstr "Rastgele Üreteç Ayarları"
-
-#: src/editor/editor_dialogs.cpp:180
-msgid "Map creation failed."
-msgstr "Harita oluşturma başarısız oldu."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:112
-#: src/preferences_display.cpp:229
-msgid "Close Window"
-msgstr "Pencereyi Kapat"
-
-#: src/editor/editor_dialogs.cpp:252 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "Tercihler"
-
-#: src/editor/editor_dialogs.cpp:256 src/game_preferences_display.cpp:207
-msgid "Scroll Speed:"
-msgstr "Kaydırma Hızı:"
-
-#: src/editor/editor_dialogs.cpp:283 src/game_preferences_display.cpp:164
-#: src/hotkeys.cpp:67
-msgid "Toggle Full Screen"
-msgstr "Tam Ekran Aç-Kapa"
-
-#: src/editor/editor_dialogs.cpp:290 src/game_preferences_display.cpp:167
-msgid "Show Grid"
-msgstr "Izgarayı Göster"
-
-#: src/editor/editor_dialogs.cpp:297
-msgid "Video Mode"
-msgstr "Video Kipi"
-
-#: src/editor/editor_dialogs.cpp:300 src/game_preferences_display.cpp:189
-msgid "Hotkeys"
-msgstr "Klavye kısayolları"
-
-#: src/editor/editor_dialogs.cpp:305
-msgid "Lighting levels (time of day):"
-msgstr "Aydınlık Seviyeleri (günlük vakit):"
-
-#: src/editor/editor_dialogs.cpp:312
-msgid "light_level^Red:"
-msgstr "Kırmızı:"
-
-#: src/editor/editor_dialogs.cpp:313
-msgid "light_level^Green:"
-msgstr "Yeşil:"
-
-#: src/editor/editor_dialogs.cpp:314
-msgid "light_level^Blue:"
-msgstr "Mavi:"
-
-#: src/editor/editor_dialogs.cpp:512 src/editor/editor_dialogs.cpp:624
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:181
-msgid "Resize Map"
-msgstr "Haritayı Boyutlandır"
-
-#: src/editor/editor_dialogs.cpp:516
-msgid "X offset:"
-msgstr "X mesafesi:"
-
-#: src/editor/editor_dialogs.cpp:517
-msgid "Y offset:"
-msgstr "Y mesafesi:"
-
-#: src/editor/editor_dialogs.cpp:596
-msgid "Smart expand"
-msgstr "Akıllıca genişlet"
-
-#: src/editor/editor_dialogs.cpp:685
-msgid "X-Axis"
-msgstr "X-Ekseni"
-
-#: src/editor/editor_dialogs.cpp:686
-msgid "Y-Axis"
-msgstr "Y-Ekseni"
-
-#: src/editor/editor_dialogs.cpp:687
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Döndür (bu işlem harita boyutlarının değişmesine sebep olabilir):"
 
 #: src/filechooser.cpp:62
 msgid "File: "
@@ -472,6 +360,14 @@ msgstr "Tanımlı sunucu yok."
 msgid "player"
 msgstr "oyuncu"
 
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+msgid "Toggle Full Screen"
+msgstr "Tam Ekran Aç-Kapa"
+
 #: src/game_preferences_display.cpp:165
 msgid "Accelerated Speed"
 msgstr "Arttırılmış Hız"
@@ -479,6 +375,10 @@ msgstr "Arttırılmış Hız"
 #: src/game_preferences_display.cpp:166
 msgid "Skip AI Moves"
 msgstr "Saldırı Arabirimi Hareketlerini Atla"
+
+#: src/game_preferences_display.cpp:167
+msgid "Show Grid"
+msgstr "Izgarayı Göster"
 
 #: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
 msgid "Save Replay on SP/MP Victory or MP Defeat"
@@ -565,6 +465,10 @@ msgstr "Çözünürlüğü Değiştir"
 msgid "Theme"
 msgstr "Tema"
 
+#: src/game_preferences_display.cpp:189
+msgid "Hotkeys"
+msgstr "Klavye kısayolları"
+
 #: src/game_preferences_display.cpp:190
 msgid "Adjust Gamma"
 msgstr "Gammayı Ayarla"
@@ -624,6 +528,10 @@ msgstr "KA Ses Düzeyi:"
 #: src/game_preferences_display.cpp:207
 msgid "Bell Volume:"
 msgstr "Gong Ses Düzeyi:"
+
+#: src/game_preferences_display.cpp:207
+msgid "Scroll Speed:"
+msgstr "Kaydırma Hızı:"
 
 #: src/game_preferences_display.cpp:208
 msgid "Gamma:"
@@ -1022,7 +930,7 @@ msgstr "Uzaklaş"
 msgid "Default Zoom"
 msgstr "Normal Yakınlık"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:977
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:891
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
@@ -1170,285 +1078,253 @@ msgstr "1. Takım"
 msgid "Skip animation"
 msgstr "Animasyonu Atla"
 
-#: src/hotkeys.cpp:111
-msgid "Set Terrain"
-msgstr "Zemini Belirle"
-
 #: src/hotkeys.cpp:112
-msgid "Quit Editor"
-msgstr "Düzenleyiciden Çık"
-
-#: src/hotkeys.cpp:113 src/hotkeys.cpp:137
-msgid "New Map"
-msgstr "Yeni Harita"
-
-#: src/hotkeys.cpp:114 src/hotkeys.cpp:138
-msgid "Load Map"
-msgstr "Harita Yükle"
-
-#: src/hotkeys.cpp:115 src/hotkeys.cpp:139
-msgid "Save Map"
-msgstr "Haritayı Kaydet"
-
-#: src/hotkeys.cpp:116
-msgid "Save As"
-msgstr "Farklı Kaydet"
-
-#: src/hotkeys.cpp:117
-msgid "Set Player's keep"
-msgstr "Oyuncunun iç kalesini Belirle"
-
-#: src/hotkeys.cpp:118
-msgid "Flood Fill"
-msgstr "Akıcı Doldurma"
-
-#: src/hotkeys.cpp:119 src/hotkeys.cpp:175
-msgid "Fill Selection"
-msgstr "Seçimi Doldur"
-
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:171
-msgid "Rotate Selection"
-msgstr "Seçimi Döndür"
-
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:153
-msgid "Cut"
-msgstr "Kes"
-
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:154
-msgid "Copy"
-msgstr "Kopyala"
-
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:155
-msgid "Paste"
-msgstr "Yapıştır"
-
-#: src/hotkeys.cpp:124
-msgid "Revert from Disk"
-msgstr "Diskten eski haline getir"
-
-#: src/hotkeys.cpp:126
-msgid "Flip Map"
-msgstr "Haritayı yansıla"
-
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:157
-msgid "Select All"
-msgstr "Tümünü Seç"
-
-#: src/hotkeys.cpp:128
-msgid "Draw Terrain"
-msgstr "Zemini Çiz"
-
-#: src/hotkeys.cpp:129 src/hotkeys.cpp:193
-msgid "Refresh Image Cache"
-msgstr "Resim Belleğini Tazele"
-
-#: src/hotkeys.cpp:130
-msgid "Delay transition updates"
-msgstr "Geçiş güncellemelerini geciktir"
-
-#: src/hotkeys.cpp:131
-msgid "Update transitions"
-msgstr "Geçişleri güncelle"
-
-#: src/hotkeys.cpp:134
 msgid "Quit to Desktop"
 msgstr "Masaüstüne Çık"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:113
 msgid "Editor Settings"
 msgstr "Düzenleyici Ayarları"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr "Kısmî Geri Alma"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "Yeni Harita"
+
+#: src/hotkeys.cpp:116
+msgid "Load Map"
+msgstr "Harita Yükle"
+
+#: src/hotkeys.cpp:117
+msgid "Save Map"
+msgstr "Haritayı Kaydet"
+
+#: src/hotkeys.cpp:118
 msgid "Save Map As"
 msgstr "Haritayı Adıyla Kaydet"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr "Tüm Değişiklikleri Geri Al"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:120
 msgid "Map Information"
 msgstr "Harita Bilgileri"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr "Ön ve art alan arazileri yer değiştir"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:123
 msgid "Next Tool"
 msgstr "Sonraki Araç"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr "Boyama Aracı"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr "Dolgu Aracı"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:126
 msgid "Selection Tool"
 msgstr "Seçim Aracı"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr "Başlangıç Konumları Araçları"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:129
 msgid "Next Brush"
 msgstr "Sonraki Fırça"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:130
 msgid "Default Brush"
 msgstr "Öntanımlı Fırça"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:131
+msgid "Cut"
+msgstr "Kes"
+
+#: src/hotkeys.cpp:132
+msgid "Copy"
+msgstr "Kopyala"
+
+#: src/hotkeys.cpp:133
+msgid "Paste"
+msgstr "Yapıştır"
+
+#: src/hotkeys.cpp:135
+msgid "Select All"
+msgstr "Tümünü Seç"
+
+#: src/hotkeys.cpp:137
 msgid "Select Inverse"
 msgstr "Tersini Seç"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:139
 msgid "Select None"
 msgstr "Hiçbir şey Seçme"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:141
 msgid "Rotate Clipboard Clockwise"
 msgstr "Panoyu Saat Yönünde Çevir"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:143
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Panoyu Saat Yönünün Tersine Çevir"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:145
 msgid "Flip Clipboard Horizontally"
 msgstr "Panoyu Yatayda Katla"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:147
 msgid "Flip Clipboard Vertically"
 msgstr "Panoyu Düşeyde Katla"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:149
+msgid "Rotate Selection"
+msgstr "Seçimi Döndür"
+
+#: src/hotkeys.cpp:151
 msgid "Flip Selection"
 msgstr "Seçimi Katla"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:153
+msgid "Fill Selection"
+msgstr "Seçimi Doldur"
+
+#: src/hotkeys.cpp:155
 msgid "Generate Tiles In Selection"
 msgstr "Seçimde Döşeme Üret"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:157
 msgid "Randomize Tiles In Selection"
 msgstr "Seçimi Rasgele Döşe"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "Haritayı Boyutlandır"
+
+#: src/hotkeys.cpp:161
 msgid "Rotate Map"
 msgstr "Haritayı Döndür"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:163
 msgid "Generate Map"
 msgstr "Harita Üret"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:165
 msgid "Refresh Display"
 msgstr "Görüntüyü Tazele"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:167
 msgid "Update Terrain Transitions"
 msgstr "Arazi Geçişlerini Güncelle"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:169
 msgid "Auto-update Terrain Transitions"
 msgstr "Arazi Geçişlerini Sürekli Güncelle"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:171
+msgid "Refresh Image Cache"
+msgstr "Resim Belleğini Tazele"
+
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr "Altıgen Koordinatlarını Göster"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:175
 msgid "Draw Terrain Codes"
 msgstr "Arazi Kodlarını Göster"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "Örtü Güncellemeleri Geciktir"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "Örtüyü Şimdi Güncelle"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "Harekete Devam Et"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "Etiket veya Birim Bul"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "Müttefikle Konuş"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "Herkesle konuş"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Yardım"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "Sohbet Kaydını Göster"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "Dili değiştir"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:191
 msgid "Custom command"
 msgstr "Kullanıcı komutu"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr "SA formülünü işlet"
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:193
 msgid "Clear messages"
 msgstr "İletileri Temizle"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr "2. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr "3. Kullanıcı Komutu"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Quit"
 msgstr "Çık"
 
-#: src/hotkeys.cpp:977
+#: src/hotkeys.cpp:891
 msgid "Map-Screenshot"
 msgstr "Harita-Ekran-Görüntüsü"
 
-#: src/hotkeys.cpp:984
+#: src/hotkeys.cpp:898
 msgid "Screenshot done"
 msgstr "Ekran görüntüsü alındı"
 
-#: src/hotkeys.cpp:986
+#: src/hotkeys.cpp:900
 msgid "Screenshot failed"
 msgstr "Ekran görüntüsü alınamadı"
+
+#: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
+msgid "Close Window"
+msgstr "Pencereyi Kapat"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1457,6 +1333,14 @@ msgstr "Harita Üreteci"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "Oyuncular:"
+
+#: src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "Eni:"
+
+#: src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "Boyu:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1597,3 +1481,84 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Haritaya yaptığınız değişiklikler kaybolacak. Devam?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Yeni Harita Oluştur"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Yeni Harita Üret"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Rastgele Harita Üret"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Rastgele Üreteç Ayarları"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Harita oluşturma başarısız oldu."
+
+#~ msgid "Video Mode"
+#~ msgstr "Video Kipi"
+
+#~ msgid "Lighting levels (time of day):"
+#~ msgstr "Aydınlık Seviyeleri (günlük vakit):"
+
+#~ msgid "light_level^Red:"
+#~ msgstr "Kırmızı:"
+
+#~ msgid "light_level^Green:"
+#~ msgstr "Yeşil:"
+
+#~ msgid "light_level^Blue:"
+#~ msgstr "Mavi:"
+
+#~ msgid "X offset:"
+#~ msgstr "X mesafesi:"
+
+#~ msgid "Y offset:"
+#~ msgstr "Y mesafesi:"
+
+#~ msgid "Smart expand"
+#~ msgstr "Akıllıca genişlet"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-Ekseni"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-Ekseni"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Döndür (bu işlem harita boyutlarının değişmesine sebep olabilir):"
+
+#~ msgid "Set Terrain"
+#~ msgstr "Zemini Belirle"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Düzenleyiciden Çık"
+
+#~ msgid "Save As"
+#~ msgstr "Farklı Kaydet"
+
+#~ msgid "Set Player's keep"
+#~ msgstr "Oyuncunun iç kalesini Belirle"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Akıcı Doldurma"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Diskten eski haline getir"
+
+#~ msgid "Flip Map"
+#~ msgstr "Haritayı yansıla"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Zemini Çiz"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Geçiş güncellemelerini geciktir"
+
+#~ msgid "Update transitions"
+#~ msgstr "Geçişleri güncelle"

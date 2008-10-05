@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:39+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2007-12-09 18:53+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -17,52 +17,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:10
+#: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "wszystkie"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:16
+#: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "woda"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:28
+#: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "równina"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:34
+#: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "pustynia"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:40
+#: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "las"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:46
+#: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "lód"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:52
+#: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "nierówności"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:58
+#: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "jaskinia"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:64
+#: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "wioska"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:70
+#: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "zamek"
 
@@ -114,173 +114,28 @@ msgid "Click to paste."
 msgstr ""
 
 #. [menu]
-#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+#: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Plik"
 
 #. [menu]
-#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+#: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Edycja"
-
-#. [menu]
-#: data/themes/editor.cfg:481
-msgid "Settings"
-msgstr "Ustawienia"
-
-#. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
-msgid "villages"
-msgstr "wioski"
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr ""
 
-#: src/editor/editor.cpp:246
-msgid "Draw tiles"
-msgstr "Rysuj pola"
+#. [label]
+#: data/themes/editor2.cfg:252
+msgid "villages"
+msgstr "wioski"
 
-#: src/editor/editor.cpp:248
-msgid "Fill"
-msgstr "Wypełnienie"
-
-#: src/editor/editor.cpp:250
-msgid "Set player's starting position"
-msgstr "Ustaw początkową pozycję gracza"
-
-#: src/editor/editor.cpp:252
-msgid "Zoom in"
-msgstr "Przybliż"
-
-#: src/editor/editor.cpp:254
-msgid "Zoom out"
-msgstr "Oddal"
-
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
-msgid "Undo"
-msgstr "Cofnij"
-
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
-msgid "Redo"
-msgstr "Ponów"
-
-#: src/editor/editor.cpp:260
-msgid "Zoom to default view"
-msgstr "Ustaw domyślne zbliżenie"
-
-#: src/editor/editor.cpp:262
-msgid "Toggle grid"
-msgstr "Przełącz siatkę"
-
-#: src/editor/editor.cpp:264
-msgid "Resize the map"
-msgstr "Zmień rozmiar mapy"
-
-#: src/editor/editor.cpp:266
-msgid "Flip map"
-msgstr "Odwróć mapę"
-
-#: src/editor/editor.cpp:268
-msgid "Update transitions"
-msgstr "Aktualizacja przejść"
-
-#: src/editor/editor.cpp:270
-msgid "Delay transition updates"
-msgstr "Opóźniaj aktualizację przejść"
-
-#: src/editor/editor.cpp:486
-msgid "Language"
-msgstr "Język"
-
-#: src/editor/editor.cpp:487
-msgid "Choose your preferred language:"
-msgstr "Wybierz preferowany język:"
-
-#: src/editor/editor.cpp:504 src/editor/editor_main.cpp:304
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Edytor map Bitwy o Wesnoth"
-
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
-msgid "Save the Map As"
-msgstr "Zapisz Mapę Jako"
-
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
-
-#: src/editor/editor.cpp:563
-msgid "None"
-msgstr "Brak"
-
-#: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
-msgid "Player"
-msgstr "Gracz"
-
-#: src/editor/editor.cpp:572
-msgid "Which Player?"
-msgstr "Który Gracz?"
-
-#: src/editor/editor.cpp:573
-msgid "Which player should start here?"
-msgstr "Który gracz powinien tutaj zaczynać?"
-
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
-msgid "Choose a Map to Load"
-msgstr "Wybierz mapę do załadowania"
-
-#: src/editor/editor.cpp:643
-msgid ""
-"Warning: Illegal characters found in the map name. Please save under a "
-"different name."
-msgstr ""
-"Ostrzeżenie: niedozwolone znaki w nazwie mapy. Zapisz mapę pod inną nazwą."
-
-#: src/editor/editor.cpp:656 src/editor/editor.cpp:736
-msgid "The file does not contain a valid map."
-msgstr "Plik nie zawiera prawidłowej mapy."
-
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "Wyjście z edytora"
-
-#: src/editor/editor.cpp:1317
-msgid "Do you want to save the map before quitting?"
-msgstr "Czy chcesz zapisać mapę przed wyjściem?"
-
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "Mapa zapisana."
-
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "Zapisanie mapy nie powiodło się: $msg"
-
-#: src/editor/editor.cpp:1388
-msgid "Error: Illegal character in filename."
-msgstr "Błąd: niewłaściwy znak w nazwie pliku."
-
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
-msgid "FG"
-msgstr "FG"
-
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
-msgid "BG"
-msgstr "BG"
-
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
-msgid ""
-"Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr ""
-"Nie można zmienić rozmiaru mapy, żądany rozmiar przekracza maksimum: rozmiar="
-
-#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
-#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
-msgid " maximum="
-msgstr " maksimum="
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
@@ -314,6 +169,18 @@ msgstr ""
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:303
+msgid "Choose a Map to Load"
+msgstr "Wybierz mapę do załadowania"
+
+#: src/editor2/editor_controller.cpp:338
+msgid "Save the Map As"
+msgstr "Zapisz Mapę Jako"
+
+#: src/editor2/editor_controller.cpp:342
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
+
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
@@ -322,13 +189,29 @@ msgstr ""
 msgid "Map creation failed."
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:458
+msgid "Map saved."
+msgstr "Mapa zapisana."
+
+#: src/editor2/editor_controller.cpp:463
+msgid "Could not save the map: $msg"
+msgstr "Zapisanie mapy nie powiodło się: $msg"
+
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:810
+msgid "Undo"
+msgstr "Cofnij"
+
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
+
+#: src/editor2/editor_controller.cpp:816
+msgid "Redo"
+msgstr "Ponów"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
@@ -346,6 +229,18 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+msgid "Player"
+msgstr "Gracz"
+
+#: src/editor2/editor_palettes.cpp:495
+msgid "FG"
+msgstr "FG"
+
+#: src/editor2/editor_palettes.cpp:497
+msgid "BG"
+msgstr "BG"
+
 #: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
@@ -361,6 +256,84 @@ msgid ""
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:106
+#: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "Ustawienia"
+
+#~ msgid "Draw tiles"
+#~ msgstr "Rysuj pola"
+
+#~ msgid "Fill"
+#~ msgstr "Wypełnienie"
+
+#~ msgid "Set player's starting position"
+#~ msgstr "Ustaw początkową pozycję gracza"
+
+#~ msgid "Zoom in"
+#~ msgstr "Przybliż"
+
+#~ msgid "Zoom out"
+#~ msgstr "Oddal"
+
+#~ msgid "Zoom to default view"
+#~ msgstr "Ustaw domyślne zbliżenie"
+
+#~ msgid "Toggle grid"
+#~ msgstr "Przełącz siatkę"
+
+#~ msgid "Resize the map"
+#~ msgstr "Zmień rozmiar mapy"
+
+#~ msgid "Flip map"
+#~ msgstr "Odwróć mapę"
+
+#~ msgid "Update transitions"
+#~ msgstr "Aktualizacja przejść"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Opóźniaj aktualizację przejść"
+
+#~ msgid "Language"
+#~ msgstr "Język"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "Wybierz preferowany język:"
+
+#~ msgid "Battle for Wesnoth Map Editor"
+#~ msgstr "Edytor map Bitwy o Wesnoth"
+
+#~ msgid "None"
+#~ msgstr "Brak"
+
+#~ msgid "Which Player?"
+#~ msgstr "Który Gracz?"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "Który gracz powinien tutaj zaczynać?"
+
+#~ msgid ""
+#~ "Warning: Illegal characters found in the map name. Please save under a "
+#~ "different name."
+#~ msgstr ""
+#~ "Ostrzeżenie: niedozwolone znaki w nazwie mapy. Zapisz mapę pod inną nazwą."
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "Plik nie zawiera prawidłowej mapy."
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "Czy chcesz zapisać mapę przed wyjściem?"
+
+#~ msgid "Error: Illegal character in filename."
+#~ msgstr "Błąd: niewłaściwy znak w nazwie pliku."
+
+#~ msgid ""
+#~ "Can't resize the map, the requested size is bigger than the maximum, size="
+#~ msgstr ""
+#~ "Nie można zmienić rozmiaru mapy, żądany rozmiar przekracza maksimum: "
+#~ "rozmiar="
+
+#~ msgid " maximum="
+#~ msgstr " maksimum="

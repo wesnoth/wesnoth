@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-04 11:49+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -20,38 +20,38 @@ msgstr ""
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:54
+#: data/_main.cfg:48
 msgid "Compressed Saves"
 msgstr "компресовани снимци"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:61
+#: data/_main.cfg:55
 msgid "Mouse Scrolling"
 msgstr "панирање мишем"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:68
+#: data/_main.cfg:62
 msgid "Animate Map"
 msgstr "анимирана мапа"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:75
+#: data/_main.cfg:69
 #, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Поход"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:82
+#: data/_main.cfg:76
 msgid "Unit Standing Animations"
 msgstr "анимације стојећих јединица"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:89
+#: data/_main.cfg:83
 msgid "Show Combat"
 msgstr "приказ борбе"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:104
+#: data/_main.cfg:98
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
@@ -3294,13 +3294,13 @@ msgstr ", макс. ИП +25%"
 msgid "Max HP bonus +"
 msgstr "Maкс. бонус УП +"
 
-#: data/core/macros/carryover-utils.cfg:44
+#: data/core/macros/carryover-utils.cfg:48
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/carryover-utils.cfg:49
+#: data/core/macros/carryover-utils.cfg:53
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -4621,6 +4621,41 @@ msgstr "неустрашивост"
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "у боју без заостатка у неповољна доба дана/ноћи"
 
+#. [trait]
+#: data/core/macros/traits.cfg:174
+msgid "weak"
+msgstr ""
+
+#. [trait]
+#: data/core/macros/traits.cfg:175
+#, fuzzy
+msgid "female^weak"
+msgstr "немртвост"
+
+#. [trait]
+#: data/core/macros/traits.cfg:192
+#, fuzzy
+msgid "slow"
+msgstr "успоравање"
+
+#. [trait]
+#: data/core/macros/traits.cfg:193
+#, fuzzy
+msgid "female^slow"
+msgstr "оданост"
+
+#. [trait]
+#: data/core/macros/traits.cfg:209
+#, fuzzy
+msgid "dim"
+msgstr "средње"
+
+#. [trait]
+#: data/core/macros/traits.cfg:210
+#, fuzzy
+msgid "female^dim"
+msgstr "неустрашивост"
+
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
@@ -5017,37 +5052,37 @@ msgid "race^Goblins"
 msgstr "гоблини"
 
 #. [race]: description=
-#: data/core/units.cfg:113
+#: data/core/units.cfg:117
 msgid "race^Gryphon"
 msgstr "грифон"
 
 #. [race]: description=
-#: data/core/units.cfg:114
+#: data/core/units.cfg:118
 msgid "race+female^Gryphon"
 msgstr "грифонка"
 
 #. [race]: description=
-#: data/core/units.cfg:115
+#: data/core/units.cfg:119
 msgid "race^Gryphons"
 msgstr "грифони"
 
 #. [race]
-#: data/core/units.cfg:123
+#: data/core/units.cfg:127
 msgid "race^Human"
 msgstr "човек"
 
 #. [race]
-#: data/core/units.cfg:124
+#: data/core/units.cfg:128
 msgid "race+female^Human"
 msgstr "човек"
 
 #. [race]
-#: data/core/units.cfg:125
+#: data/core/units.cfg:129
 msgid "race^Humans"
 msgstr "људи"
 
 #. [race]
-#: data/core/units.cfg:132
+#: data/core/units.cfg:136
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5122,102 +5157,102 @@ msgstr ""
 "мане ових дружина међусобно надопуњују."
 
 #. [race]: description=
-#: data/core/units.cfg:139
+#: data/core/units.cfg:143
 msgid "race^Saurian"
 msgstr "сауријанац"
 
 #. [race]: description=
-#: data/core/units.cfg:140
+#: data/core/units.cfg:144
 msgid "race+female^Saurian"
 msgstr "сауријанка"
 
 #. [race]: description=
-#: data/core/units.cfg:141
+#: data/core/units.cfg:145
 msgid "race^Saurians"
 msgstr "сауријанци"
 
 #. [race]: description=
-#: data/core/units.cfg:150
+#: data/core/units.cfg:154
 msgid "race^Mechanical"
 msgstr "механички"
 
 #. [race]: description=
-#: data/core/units.cfg:151
+#: data/core/units.cfg:155
 msgid "race+plural^Mechanical"
 msgstr "механички"
 
 #. [race]: description=
-#: data/core/units.cfg:160
+#: data/core/units.cfg:164
 msgid "race^Merman"
 msgstr "морејац"
 
 #. [race]: description=
-#: data/core/units.cfg:161
+#: data/core/units.cfg:165
 msgid "race^Mermaid"
 msgstr "морејка"
 
 #. [race]: description=
-#: data/core/units.cfg:162
+#: data/core/units.cfg:166
 msgid "race^Mermen"
 msgstr "морејци"
 
 #. [race]: description=
-#: data/core/units.cfg:170
+#: data/core/units.cfg:174
 msgid "race^Monster"
 msgstr "чудовиште"
 
 #. [race]: description=
-#: data/core/units.cfg:171
+#: data/core/units.cfg:175
 msgid "race^Monsters"
 msgstr "чудовишта"
 
 #. [race]: description=
-#: data/core/units.cfg:178
+#: data/core/units.cfg:182
 msgid "race^Naga"
 msgstr "нагајац"
 
 #. [race]: description=
-#: data/core/units.cfg:179
+#: data/core/units.cfg:183
 msgid "race^Nagani"
 msgstr "нагајка"
 
 #. [race]: description=
-#: data/core/units.cfg:180
+#: data/core/units.cfg:184
 msgid "race^Nagas"
 msgstr "нагајци"
 
 #. [race]: description=
-#: data/core/units.cfg:188
+#: data/core/units.cfg:192
 msgid "race^Ogre"
 msgstr "огр"
 
 #. [race]: description=
-#: data/core/units.cfg:189
+#: data/core/units.cfg:193
 msgid "race+female^Ogre"
 msgstr "огрица"
 
 #. [race]: description=
-#: data/core/units.cfg:190
+#: data/core/units.cfg:194
 msgid "race^Ogres"
 msgstr "огрови"
 
 #. [race]
-#: data/core/units.cfg:198
+#: data/core/units.cfg:202
 msgid "race^Orc"
 msgstr "орк"
 
 #. [race]
-#: data/core/units.cfg:199
+#: data/core/units.cfg:203
 msgid "race+female^Orc"
 msgstr "оркиња"
 
 #. [race]
-#: data/core/units.cfg:200
+#: data/core/units.cfg:204
 msgid "race^Orcs"
 msgstr "оркови"
 
 #. [race]
-#: data/core/units.cfg:210
+#: data/core/units.cfg:214
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans.  They are warlike, savage, and cruel by nature. "
@@ -5327,22 +5362,22 @@ msgstr ""
 "убијање из потаје."
 
 #. [race]
-#: data/core/units.cfg:217
+#: data/core/units.cfg:221
 msgid "race^Troll"
 msgstr "трол"
 
 #. [race]
-#: data/core/units.cfg:218
+#: data/core/units.cfg:222
 msgid "race+female^Troll"
 msgstr "тролкиња"
 
 #. [race]
-#: data/core/units.cfg:219
+#: data/core/units.cfg:223
 msgid "race^Trolls"
 msgstr "тролови"
 
 #. [race]
-#: data/core/units.cfg:225
+#: data/core/units.cfg:229
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5413,22 +5448,22 @@ msgstr ""
 "Веснота, и куда год се крећу орковске хорде."
 
 #. [race]
-#: data/core/units.cfg:237
+#: data/core/units.cfg:241
 msgid "race^Undead"
 msgstr "немртав"
 
 #. [race]
-#: data/core/units.cfg:238
+#: data/core/units.cfg:242
 msgid "race+female^Undead"
 msgstr "немртва"
 
 #. [race]
-#: data/core/units.cfg:239
+#: data/core/units.cfg:243
 msgid "race+plural^Undead"
 msgstr "немртви"
 
 #. [race]
-#: data/core/units.cfg:245
+#: data/core/units.cfg:249
 #, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -5480,12 +5515,24 @@ msgstr ""
 "вилењацима и патуљцима."
 
 #. [race]: description=
-#: data/core/units.cfg:253
+#: data/core/units.cfg:257
+#, fuzzy
+msgid "race^Wolf"
+msgstr "вилењак"
+
+#. [race]: description=
+#: data/core/units.cfg:258
+#, fuzzy
+msgid "race^Wolves"
+msgstr "вилењаци"
+
+#. [race]: description=
+#: data/core/units.cfg:266
 msgid "race^Wose"
 msgstr "ивер"
 
 #. [race]: description=
-#: data/core/units.cfg:254
+#: data/core/units.cfg:267
 msgid "race^Woses"
 msgstr "ивери"
 
@@ -6299,8 +6346,8 @@ msgstr "Крај"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2657
-#: src/unit.cpp:2831
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
+#: src/unit.cpp:2826
 msgid "HP"
 msgstr "УП"
 
@@ -6866,11 +6913,11 @@ msgstr "Додатак обрисан"
 msgid "Add-on could not be deleted properly:"
 msgstr "Додатак не може бити обрисан — нема датотеке."
 
-#: src/ai.cpp:1745
+#: src/ai.cpp:1650
 msgid "Unknown unit type : "
 msgstr "Непознат тип јединице: "
 
-#: src/ai_move.cpp:76
+#: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr "Трошак кретања 0, вероватно терен са трошком кретања 0."
 
@@ -7239,7 +7286,7 @@ msgstr "победа:"
 msgid "Defeat:"
 msgstr "пораз:"
 
-#: src/game_events.cpp:2236
+#: src/game_events.cpp:2220
 msgid "[store_unit] missing required [filter] tag\n"
 msgstr ""
 
@@ -9186,31 +9233,31 @@ msgstr "Непознат тип јединице ‘$type|’"
 msgid "Unknown unit type '$type|'"
 msgstr "Непознат тип јединице ‘$type|’"
 
-#: src/unit.cpp:2614 src/unit.cpp:2819 src/unit.cpp:2875
+#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
 msgid " and "
 msgstr " и "
 
-#: src/unit.cpp:2625
+#: src/unit.cpp:2620
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2690
+#: src/unit.cpp:2685
 msgid "moves"
 msgstr "кретњи"
 
-#: src/unit.cpp:2708 src/unit.cpp:2846
+#: src/unit.cpp:2703 src/unit.cpp:2841
 msgid "XP to advance"
 msgstr "ИП за напредовање"
 
-#: src/unit.cpp:2838
+#: src/unit.cpp:2833
 msgid " move"
 msgstr " покрет"
 
-#: src/unit.cpp:2854
+#: src/unit.cpp:2849
 msgid "$effect_description per level"
 msgstr "$effect_description по нивоу"
 
-#: src/unit.cpp:2884
+#: src/unit.cpp:2879
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9240,29 +9287,29 @@ msgstr ""
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "chaotic"
 msgstr "хаотичан"
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "lawful"
 msgstr "законит"
 
-#: src/unit_types.cpp:1007
+#: src/unit_types.cpp:1009
 msgid "neutral"
 msgstr "неутралан"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^chaotic"
 msgstr "механичност"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^lawful"
 msgstr "оданост"
 
-#: src/unit_types.cpp:1008
+#: src/unit_types.cpp:1010
 #, fuzzy
 msgid "female^neutral"
 msgstr "немртвост"

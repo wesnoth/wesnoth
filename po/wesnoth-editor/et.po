@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:39+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2008-05-27 00:04+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -18,52 +18,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:10
+#: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "kõik"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:16
+#: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "vesi"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:28
+#: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "lage"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:34
+#: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "kõrb"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:40
+#: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "mets"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:46
+#: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "talv"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:52
+#: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "mäed"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:58
+#: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "koobas"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:64
+#: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "küla"
 
 #. [editor_group]
-#: data/core/editor-groups.cfg:70
+#: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "loss"
 
@@ -115,175 +115,28 @@ msgid "Click to paste."
 msgstr ""
 
 #. [menu]
-#: data/themes/editor.cfg:462 data/themes/editor2.cfg:120
+#: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Fail"
 
 #. [menu]
-#: data/themes/editor.cfg:472 data/themes/editor2.cfg:131
+#: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Redigeeri"
-
-#. [menu]
-#: data/themes/editor.cfg:481
-msgid "Settings"
-msgstr "Sätted"
-
-#. [label]
-#: data/themes/editor.cfg:500 data/themes/editor2.cfg:252
-msgid "villages"
-msgstr "külad"
 
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr ""
 
-#: src/editor/editor.cpp:246
-msgid "Draw tiles"
-msgstr "Joonista väljad"
+#. [label]
+#: data/themes/editor2.cfg:252
+msgid "villages"
+msgstr "külad"
 
-#: src/editor/editor.cpp:248
-msgid "Fill"
-msgstr "Täida"
-
-#: src/editor/editor.cpp:250
-msgid "Set player's starting position"
-msgstr "Määra mängija alustamiskoht"
-
-#: src/editor/editor.cpp:252
-msgid "Zoom in"
-msgstr "Suurenda"
-
-#: src/editor/editor.cpp:254
-msgid "Zoom out"
-msgstr "Vähenda"
-
-#: src/editor/editor.cpp:256 src/editor2/editor_controller.cpp:810
-msgid "Undo"
-msgstr "Võta tagasi"
-
-#: src/editor/editor.cpp:258 src/editor2/editor_controller.cpp:816
-msgid "Redo"
-msgstr "Tee uuesti"
-
-#: src/editor/editor.cpp:260
-msgid "Zoom to default view"
-msgstr "Vaikimisi suurendus"
-
-#: src/editor/editor.cpp:262
-msgid "Toggle grid"
-msgstr "Näita võrgustikku"
-
-#: src/editor/editor.cpp:264
-msgid "Resize the map"
-msgstr "Muuda kaardi mõõtmeid"
-
-#: src/editor/editor.cpp:266
-msgid "Flip map"
-msgstr "Pööra kaarti"
-
-#: src/editor/editor.cpp:268
-msgid "Update transitions"
-msgstr "Uuenda üleminekuid"
-
-#: src/editor/editor.cpp:270
-msgid "Delay transition updates"
-msgstr "Viivita üleminekute uuendamisega"
-
-#: src/editor/editor.cpp:486
-msgid "Language"
-msgstr "Keel"
-
-#: src/editor/editor.cpp:487
-msgid "Choose your preferred language:"
-msgstr "Vali eelistatud keel:"
-
-#: src/editor/editor.cpp:504 src/editor/editor_main.cpp:304
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Wesnothi Lahingu kaardiredaktor"
-
-#: src/editor/editor.cpp:529 src/editor2/editor_controller.cpp:338
-msgid "Save the Map As"
-msgstr "Salvesta kaart kui"
-
-#: src/editor/editor.cpp:540 src/editor2/editor_controller.cpp:342
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Kaart on juba olemas. Kas soovid selle üle kirjutada?"
-
-#: src/editor/editor.cpp:563
-msgid "None"
-msgstr "Puudub"
-
-#: src/editor/editor.cpp:568 src/editor/editor.cpp:1434
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
-msgid "Player"
-msgstr "Mängija"
-
-#: src/editor/editor.cpp:572
-msgid "Which Player?"
-msgstr "Milline mängija?"
-
-#: src/editor/editor.cpp:573
-msgid "Which player should start here?"
-msgstr "Milline mängija peaks siit alustama?"
-
-#: src/editor/editor.cpp:639 src/editor2/editor_controller.cpp:303
-msgid "Choose a Map to Load"
-msgstr "Vali laetav kaart"
-
-#: src/editor/editor.cpp:643
-msgid ""
-"Warning: Illegal characters found in the map name. Please save under a "
-"different name."
-msgstr ""
-"Hoiatus: Kaardi nimest leiti keelatud sümboleid. Palun salvesta teistsuguse "
-"nimega."
-
-#: src/editor/editor.cpp:656 src/editor/editor.cpp:736
-msgid "The file does not contain a valid map."
-msgstr "See fail ei sisalda korralikku kaarti."
-
-#: src/editor/editor.cpp:1313 src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
 msgstr "Välju redaktorist"
-
-#: src/editor/editor.cpp:1317
-msgid "Do you want to save the map before quitting?"
-msgstr "Kas soovid kaardi enne väljumist salvestada?"
-
-#: src/editor/editor.cpp:1365 src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "Kaart salvestatud"
-
-#: src/editor/editor.cpp:1373 src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "Ei saa kaarti salvestada: $msg"
-
-#: src/editor/editor.cpp:1388
-msgid "Error: Illegal character in filename."
-msgstr "Viga: Lubamatu sümbol failinimes."
-
-#: src/editor/editor_palettes.cpp:463 src/editor2/editor_palettes.cpp:495
-msgid "FG"
-msgstr "esiplaan"
-
-#: src/editor/editor_palettes.cpp:465 src/editor2/editor_palettes.cpp:497
-msgid "BG"
-msgstr "tagaplaan"
-
-#: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
-#: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
-msgid ""
-"Can't resize the map, the requested size is bigger than the maximum, size="
-msgstr ""
-"Kaardi suurust ei saa muuta  - soovitud suurus on üle maksimumväärtuse, "
-"milleks on "
-
-#: src/editor/map_manip.cpp:207 src/editor/map_manip.cpp:221
-#: src/editor/map_manip.cpp:268 src/editor/map_manip.cpp:284
-msgid " maximum="
-msgstr "maksimum = "
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
@@ -317,6 +170,18 @@ msgstr ""
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:303
+msgid "Choose a Map to Load"
+msgstr "Vali laetav kaart"
+
+#: src/editor2/editor_controller.cpp:338
+msgid "Save the Map As"
+msgstr "Salvesta kaart kui"
+
+#: src/editor2/editor_controller.cpp:342
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "Kaart on juba olemas. Kas soovid selle üle kirjutada?"
+
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
 msgstr ""
@@ -325,13 +190,29 @@ msgstr ""
 msgid "Map creation failed."
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:458
+msgid "Map saved."
+msgstr "Kaart salvestatud"
+
+#: src/editor2/editor_controller.cpp:463
+msgid "Could not save the map: $msg"
+msgstr "Ei saa kaarti salvestada: $msg"
+
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
 msgstr ""
 
+#: src/editor2/editor_controller.cpp:810
+msgid "Undo"
+msgstr "Võta tagasi"
+
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
 msgstr ""
+
+#: src/editor2/editor_controller.cpp:816
+msgid "Redo"
+msgstr "Tee uuesti"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
@@ -349,6 +230,18 @@ msgstr ""
 msgid "There was a wml error while loading the map:"
 msgstr ""
 
+#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+msgid "Player"
+msgstr "Mängija"
+
+#: src/editor2/editor_palettes.cpp:495
+msgid "FG"
+msgstr "esiplaan"
+
+#: src/editor2/editor_palettes.cpp:497
+msgid "BG"
+msgstr "tagaplaan"
+
 #: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
@@ -364,6 +257,85 @@ msgid ""
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:106
+#: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "Sätted"
+
+#~ msgid "Draw tiles"
+#~ msgstr "Joonista väljad"
+
+#~ msgid "Fill"
+#~ msgstr "Täida"
+
+#~ msgid "Set player's starting position"
+#~ msgstr "Määra mängija alustamiskoht"
+
+#~ msgid "Zoom in"
+#~ msgstr "Suurenda"
+
+#~ msgid "Zoom out"
+#~ msgstr "Vähenda"
+
+#~ msgid "Zoom to default view"
+#~ msgstr "Vaikimisi suurendus"
+
+#~ msgid "Toggle grid"
+#~ msgstr "Näita võrgustikku"
+
+#~ msgid "Resize the map"
+#~ msgstr "Muuda kaardi mõõtmeid"
+
+#~ msgid "Flip map"
+#~ msgstr "Pööra kaarti"
+
+#~ msgid "Update transitions"
+#~ msgstr "Uuenda üleminekuid"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Viivita üleminekute uuendamisega"
+
+#~ msgid "Language"
+#~ msgstr "Keel"
+
+#~ msgid "Choose your preferred language:"
+#~ msgstr "Vali eelistatud keel:"
+
+#~ msgid "Battle for Wesnoth Map Editor"
+#~ msgstr "Wesnothi Lahingu kaardiredaktor"
+
+#~ msgid "None"
+#~ msgstr "Puudub"
+
+#~ msgid "Which Player?"
+#~ msgstr "Milline mängija?"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "Milline mängija peaks siit alustama?"
+
+#~ msgid ""
+#~ "Warning: Illegal characters found in the map name. Please save under a "
+#~ "different name."
+#~ msgstr ""
+#~ "Hoiatus: Kaardi nimest leiti keelatud sümboleid. Palun salvesta "
+#~ "teistsuguse nimega."
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "See fail ei sisalda korralikku kaarti."
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "Kas soovid kaardi enne väljumist salvestada?"
+
+#~ msgid "Error: Illegal character in filename."
+#~ msgstr "Viga: Lubamatu sümbol failinimes."
+
+#~ msgid ""
+#~ "Can't resize the map, the requested size is bigger than the maximum, size="
+#~ msgstr ""
+#~ "Kaardi suurust ei saa muuta  - soovitud suurus on üle maksimumväärtuse, "
+#~ "milleks on "
+
+#~ msgid " maximum="
+#~ msgstr "maksimum = "

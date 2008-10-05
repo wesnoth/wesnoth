@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:36+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -314,7 +314,6 @@ msgid "Unwalkable"
 msgstr ""
 
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
-#: src/editor/editor_dialogs.cpp:551
 msgid "OK"
 msgstr "ОК "
 
@@ -327,123 +326,12 @@ msgid "No"
 msgstr "Не"
 
 #: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-#: src/editor/editor_dialogs.cpp:103 src/editor/editor_dialogs.cpp:550
 msgid "Cancel"
 msgstr "Отказ"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
 msgstr "Затваряне"
-
-#: src/editor/editor_dialogs.cpp:51
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Промените ви на картата ще бъдат загубени. Ще продължите ли?"
-
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Създаване на нова карта"
-
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:514
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "Ширина:"
-
-#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "Височина:"
-
-#: src/editor/editor_dialogs.cpp:100
-msgid "Generate New Map"
-msgstr "Генериране на нова карта"
-
-#: src/editor/editor_dialogs.cpp:101
-msgid "Generate Random Map"
-msgstr "Генериране на произволна карта"
-
-#: src/editor/editor_dialogs.cpp:102
-msgid "Random Generator Settings"
-msgstr "Настройки на генераторът"
-
-#: src/editor/editor_dialogs.cpp:180
-msgid "Map creation failed."
-msgstr "Създаването на картата се провали."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:112
-#: src/preferences_display.cpp:229
-msgid "Close Window"
-msgstr "Затваряне"
-
-#: src/editor/editor_dialogs.cpp:252 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "Настройки"
-
-#: src/editor/editor_dialogs.cpp:256 src/game_preferences_display.cpp:207
-msgid "Scroll Speed:"
-msgstr "Скорост на местене на изгледа:"
-
-#: src/editor/editor_dialogs.cpp:283 src/game_preferences_display.cpp:164
-#: src/hotkeys.cpp:67
-msgid "Toggle Full Screen"
-msgstr "Цял екран"
-
-#: src/editor/editor_dialogs.cpp:290 src/game_preferences_display.cpp:167
-msgid "Show Grid"
-msgstr "Мрежа"
-
-#: src/editor/editor_dialogs.cpp:297
-msgid "Video Mode"
-msgstr "Графичен режим"
-
-#: src/editor/editor_dialogs.cpp:300 src/game_preferences_display.cpp:189
-msgid "Hotkeys"
-msgstr "Горещи клавиши"
-
-#: src/editor/editor_dialogs.cpp:305
-msgid "Lighting levels (time of day):"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:312
-msgid "light_level^Red:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:313
-msgid "light_level^Green:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:314
-msgid "light_level^Blue:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:512 src/editor/editor_dialogs.cpp:624
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:181
-msgid "Resize Map"
-msgstr "Размер на картата"
-
-#: src/editor/editor_dialogs.cpp:516
-msgid "X offset:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:517
-msgid "Y offset:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:596
-msgid "Smart expand"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:685
-msgid "X-Axis"
-msgstr "Х-оста"
-
-#: src/editor/editor_dialogs.cpp:686
-msgid "Y-Axis"
-msgstr "Y-оста"
-
-#: src/editor/editor_dialogs.cpp:687
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Обръщане(това може да промени измеренията на картата):"
 
 #: src/filechooser.cpp:62
 msgid "File: "
@@ -477,6 +365,14 @@ msgstr ""
 msgid "player"
 msgstr "играч"
 
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "Настройки"
+
+#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+msgid "Toggle Full Screen"
+msgstr "Цял екран"
+
 #: src/game_preferences_display.cpp:165
 msgid "Accelerated Speed"
 msgstr "Ускорена скорост"
@@ -484,6 +380,10 @@ msgstr "Ускорена скорост"
 #: src/game_preferences_display.cpp:166
 msgid "Skip AI Moves"
 msgstr "Пропускате ходовете на компютъра"
+
+#: src/game_preferences_display.cpp:167
+msgid "Show Grid"
+msgstr "Мрежа"
 
 #: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
 msgid "Save Replay on SP/MP Victory or MP Defeat"
@@ -570,6 +470,10 @@ msgstr "Избор на резолюция"
 msgid "Theme"
 msgstr "Тема"
 
+#: src/game_preferences_display.cpp:189
+msgid "Hotkeys"
+msgstr "Горещи клавиши"
+
 #: src/game_preferences_display.cpp:190
 msgid "Adjust Gamma"
 msgstr "Настройка на гамата"
@@ -629,6 +533,10 @@ msgstr "Сила на звуковите ефекти:"
 #: src/game_preferences_display.cpp:207
 msgid "Bell Volume:"
 msgstr "Камбанка:"
+
+#: src/game_preferences_display.cpp:207
+msgid "Scroll Speed:"
+msgstr "Скорост на местене на изгледа:"
 
 #: src/game_preferences_display.cpp:208
 msgid "Gamma:"
@@ -1033,7 +941,7 @@ msgstr "Отдалечаване на изгледа"
 msgid "Default Zoom"
 msgstr "Стандартен изглед"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:977
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:891
 msgid "Screenshot"
 msgstr "Снимка на екрана"
 
@@ -1184,308 +1092,275 @@ msgstr ""
 msgid "Skip animation"
 msgstr "Прескачане на анимацията"
 
-#: src/hotkeys.cpp:111
-msgid "Set Terrain"
-msgstr "Определяне на терен"
-
 #: src/hotkeys.cpp:112
-msgid "Quit Editor"
-msgstr "Изход от редактора"
-
-#: src/hotkeys.cpp:113 src/hotkeys.cpp:137
-msgid "New Map"
-msgstr "Нова карта"
-
-#: src/hotkeys.cpp:114 src/hotkeys.cpp:138
-msgid "Load Map"
-msgstr "Зареждане на карта"
-
-#: src/hotkeys.cpp:115 src/hotkeys.cpp:139
-msgid "Save Map"
-msgstr "Запис на карта"
-
-#: src/hotkeys.cpp:116
-msgid "Save As"
-msgstr "Запис като"
-
-#: src/hotkeys.cpp:117
-msgid "Set Player's keep"
-msgstr "Определяне крепостта на играча"
-
-#: src/hotkeys.cpp:118
-msgid "Flood Fill"
-msgstr "Запълване изцяло"
-
-#: src/hotkeys.cpp:119 src/hotkeys.cpp:175
-msgid "Fill Selection"
-msgstr "Запълване на селекцията"
-
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:171
-#, fuzzy
-msgid "Rotate Selection"
-msgstr "Запълване на селекцията"
-
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:153
-msgid "Cut"
-msgstr "Отрязване"
-
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:154
-msgid "Copy"
-msgstr "Копиране"
-
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:155
-msgid "Paste"
-msgstr "Поставяне"
-
-#: src/hotkeys.cpp:124
-msgid "Revert from Disk"
-msgstr "Възстановяване от записа "
-
-#: src/hotkeys.cpp:126
-msgid "Flip Map"
-msgstr "Завъртане на картата"
-
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:157
-msgid "Select All"
-msgstr "Избор на всичко"
-
-#: src/hotkeys.cpp:128
-msgid "Draw Terrain"
-msgstr "Начертаване на терена"
-
-#: src/hotkeys.cpp:129 src/hotkeys.cpp:193
-msgid "Refresh Image Cache"
-msgstr "Обновяване кеша на картинките"
-
-#: src/hotkeys.cpp:130
-#, fuzzy
-msgid "Delay transition updates"
-msgstr "Забавяне помените в преходите"
-
-#: src/hotkeys.cpp:131
-msgid "Update transitions"
-msgstr "Обновяване на преходите"
-
-#: src/hotkeys.cpp:134
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Настройка на горещите клавиши"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "Нова карта"
+
+#: src/hotkeys.cpp:116
+msgid "Load Map"
+msgstr "Зареждане на карта"
+
+#: src/hotkeys.cpp:117
+msgid "Save Map"
+msgstr "Запис на карта"
+
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Save Map As"
 msgstr "Запис на карта"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Map Information"
 msgstr "Генератор на карти"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Next Tool"
 msgstr "Следващ ход"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Избор на всичко"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Next Brush"
 msgstr "Следващ ход"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:130
 #, fuzzy
 msgid "Default Brush"
 msgstr "Стандартен изглед"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:131
+msgid "Cut"
+msgstr "Отрязване"
+
+#: src/hotkeys.cpp:132
+msgid "Copy"
+msgstr "Копиране"
+
+#: src/hotkeys.cpp:133
+msgid "Paste"
+msgstr "Поставяне"
+
+#: src/hotkeys.cpp:135
+msgid "Select All"
+msgstr "Избор на всичко"
+
+#: src/hotkeys.cpp:137
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:139
 #, fuzzy
 msgid "Select None"
 msgstr "Избор на всичко"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:141
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:143
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:145
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:147
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:149
+#, fuzzy
+msgid "Rotate Selection"
+msgstr "Запълване на селекцията"
+
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:153
+msgid "Fill Selection"
+msgstr "Запълване на селекцията"
+
+#: src/hotkeys.cpp:155
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Запълване на селекцията"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:157
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "Размер на картата"
+
+#: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Зареждане на карта"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Generate Map"
 msgstr "Генериране на нова карта"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Графика"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Обновяване на преходите"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Обновяване на преходите"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:171
+msgid "Refresh Image Cache"
+msgstr "Обновяване кеша на картинките"
+
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Начертаване на терена"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "Забавяне на промените във видимостта "
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "Обновяване на видимостта"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "Продължаване на хода"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "Търсене на надпис или единица"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "Говорене със съюзник"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "Говорене на всички"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Помощ"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "Преглед на дневника на разговорите"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "Смяна на езика"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:193
 #, fuzzy
 msgid "Clear messages"
 msgstr "Изчистване на надписите"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Quit"
 msgstr "Изход"
 
-#: src/hotkeys.cpp:977
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:984
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Снимка на екрана"
 
-#: src/hotkeys.cpp:986
+#: src/hotkeys.cpp:900
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Снимка на екрана"
+
+#: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
+msgid "Close Window"
+msgstr "Затваряне"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1494,6 +1369,14 @@ msgstr "Генератор на карти"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "Играчи:"
+
+#: src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "Ширина:"
+
+#: src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "Височина:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1630,6 +1513,67 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Промените ви на картата ще бъдат загубени. Ще продължите ли?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Създаване на нова карта"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Генериране на нова карта"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Генериране на произволна карта"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Настройки на генераторът"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Създаването на картата се провали."
+
+#~ msgid "Video Mode"
+#~ msgstr "Графичен режим"
+
+#~ msgid "X-Axis"
+#~ msgstr "Х-оста"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-оста"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Обръщане(това може да промени измеренията на картата):"
+
+#~ msgid "Set Terrain"
+#~ msgstr "Определяне на терен"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Изход от редактора"
+
+#~ msgid "Save As"
+#~ msgstr "Запис като"
+
+#~ msgid "Set Player's keep"
+#~ msgstr "Определяне крепостта на играча"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Запълване изцяло"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Възстановяване от записа "
+
+#~ msgid "Flip Map"
+#~ msgstr "Завъртане на картата"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Начертаване на терена"
+
+#, fuzzy
+#~ msgid "Delay transition updates"
+#~ msgstr "Забавяне помените в преходите"
+
+#~ msgid "Update transitions"
+#~ msgstr "Обновяване на преходите"
 
 #, fuzzy
 #~ msgid "Invert Selection"

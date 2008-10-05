@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-01 11:36+0200\n"
+"POT-Creation-Date: 2008-10-05 20:18+0200\n"
 "PO-Revision-Date: 2007-12-11 22:46+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -314,7 +314,6 @@ msgid "Unwalkable"
 msgstr ""
 
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
-#: src/editor/editor_dialogs.cpp:551
 msgid "OK"
 msgstr "OK"
 
@@ -327,123 +326,12 @@ msgid "No"
 msgstr "Nej"
 
 #: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-#: src/editor/editor_dialogs.cpp:103 src/editor/editor_dialogs.cpp:550
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
 msgstr "Stäng"
-
-#: src/editor/editor_dialogs.cpp:51
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
-
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Skapa ny karta"
-
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:514
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "Bredd:"
-
-#: src/editor/editor_dialogs.cpp:84 src/editor/editor_dialogs.cpp:515
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "Höjd:"
-
-#: src/editor/editor_dialogs.cpp:100
-msgid "Generate New Map"
-msgstr "Generera ny karta"
-
-#: src/editor/editor_dialogs.cpp:101
-msgid "Generate Random Map"
-msgstr "Generera slumpkarta"
-
-#: src/editor/editor_dialogs.cpp:102
-msgid "Random Generator Settings"
-msgstr "Inställningar för slumpgenerator"
-
-#: src/editor/editor_dialogs.cpp:180
-msgid "Map creation failed."
-msgstr "Kunde inte skapa karta."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:112
-#: src/preferences_display.cpp:229
-msgid "Close Window"
-msgstr "Stäng fönster"
-
-#: src/editor/editor_dialogs.cpp:252 src/game_preferences_display.cpp:63
-#: src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "Inställningar"
-
-#: src/editor/editor_dialogs.cpp:256 src/game_preferences_display.cpp:207
-msgid "Scroll Speed:"
-msgstr "Rullningsfart:"
-
-#: src/editor/editor_dialogs.cpp:283 src/game_preferences_display.cpp:164
-#: src/hotkeys.cpp:67
-msgid "Toggle Full Screen"
-msgstr "Helskärm på/av"
-
-#: src/editor/editor_dialogs.cpp:290 src/game_preferences_display.cpp:167
-msgid "Show Grid"
-msgstr "Visa rutnät"
-
-#: src/editor/editor_dialogs.cpp:297
-msgid "Video Mode"
-msgstr "Videoläge"
-
-#: src/editor/editor_dialogs.cpp:300 src/game_preferences_display.cpp:189
-msgid "Hotkeys"
-msgstr "Snabbtangenter"
-
-#: src/editor/editor_dialogs.cpp:305
-msgid "Lighting levels (time of day):"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:312
-msgid "light_level^Red:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:313
-msgid "light_level^Green:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:314
-msgid "light_level^Blue:"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:512 src/editor/editor_dialogs.cpp:624
-#: src/hotkeys.cpp:125 src/hotkeys.cpp:181
-msgid "Resize Map"
-msgstr "Ändra kartans storlek"
-
-#: src/editor/editor_dialogs.cpp:516
-msgid "X offset:"
-msgstr "X-offset:"
-
-#: src/editor/editor_dialogs.cpp:517
-msgid "Y offset:"
-msgstr "Y-offset:"
-
-#: src/editor/editor_dialogs.cpp:596
-msgid "Smart expand"
-msgstr "Smart utvidgning"
-
-#: src/editor/editor_dialogs.cpp:685
-msgid "X-Axis"
-msgstr "X-axel"
-
-#: src/editor/editor_dialogs.cpp:686
-msgid "Y-Axis"
-msgstr "Y-axel"
-
-#: src/editor/editor_dialogs.cpp:687
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
 #: src/filechooser.cpp:62
 msgid "File: "
@@ -477,6 +365,14 @@ msgstr ""
 msgid "player"
 msgstr "spelare"
 
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+msgid "Toggle Full Screen"
+msgstr "Helskärm på/av"
+
 #: src/game_preferences_display.cpp:165
 msgid "Accelerated Speed"
 msgstr "Accelererad"
@@ -484,6 +380,10 @@ msgstr "Accelererad"
 #: src/game_preferences_display.cpp:166
 msgid "Skip AI Moves"
 msgstr "Visa ej datorns steg"
+
+#: src/game_preferences_display.cpp:167
+msgid "Show Grid"
+msgstr "Visa rutnät"
 
 #: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
 msgid "Save Replay on SP/MP Victory or MP Defeat"
@@ -570,6 +470,10 @@ msgstr "Ändra upplösning"
 msgid "Theme"
 msgstr "Tema"
 
+#: src/game_preferences_display.cpp:189
+msgid "Hotkeys"
+msgstr "Snabbtangenter"
+
 #: src/game_preferences_display.cpp:190
 msgid "Adjust Gamma"
 msgstr "Ställ in ljusstyrka"
@@ -629,6 +533,10 @@ msgstr "Användargränssnittssvolym:"
 #: src/game_preferences_display.cpp:207
 msgid "Bell Volume:"
 msgstr "Klockvolym:"
+
+#: src/game_preferences_display.cpp:207
+msgid "Scroll Speed:"
+msgstr "Rullningsfart:"
 
 #: src/game_preferences_display.cpp:208
 msgid "Gamma:"
@@ -1031,7 +939,7 @@ msgstr "Zooma ut"
 msgid "Default Zoom"
 msgstr "Standardzoom"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:977
+#: src/hotkeys.cpp:68 src/hotkeys.cpp:891
 msgid "Screenshot"
 msgstr "Skärmdump"
 
@@ -1181,305 +1089,273 @@ msgstr "Lag 1"
 msgid "Skip animation"
 msgstr "Skippa animeringar"
 
-#: src/hotkeys.cpp:111
-msgid "Set Terrain"
-msgstr "Ange terräng"
-
 #: src/hotkeys.cpp:112
-msgid "Quit Editor"
-msgstr "Avsluta"
-
-#: src/hotkeys.cpp:113 src/hotkeys.cpp:137
-msgid "New Map"
-msgstr "Ny karta"
-
-#: src/hotkeys.cpp:114 src/hotkeys.cpp:138
-msgid "Load Map"
-msgstr "Öppna karta"
-
-#: src/hotkeys.cpp:115 src/hotkeys.cpp:139
-msgid "Save Map"
-msgstr "Spara"
-
-#: src/hotkeys.cpp:116
-msgid "Save As"
-msgstr "Spara som..."
-
-#: src/hotkeys.cpp:117
-msgid "Set Player's keep"
-msgstr "Ange spelarens kärntorn"
-
-#: src/hotkeys.cpp:118
-msgid "Flood Fill"
-msgstr "Fyll allt"
-
-#: src/hotkeys.cpp:119 src/hotkeys.cpp:175
-msgid "Fill Selection"
-msgstr "Fyll markerat"
-
-#: src/hotkeys.cpp:120 src/hotkeys.cpp:171
-msgid "Rotate Selection"
-msgstr "Rotera markerat"
-
-#: src/hotkeys.cpp:121 src/hotkeys.cpp:153
-msgid "Cut"
-msgstr "Klipp ut"
-
-#: src/hotkeys.cpp:122 src/hotkeys.cpp:154
-msgid "Copy"
-msgstr "Kopiera"
-
-#: src/hotkeys.cpp:123 src/hotkeys.cpp:155
-msgid "Paste"
-msgstr "Klistra in"
-
-#: src/hotkeys.cpp:124
-msgid "Revert from Disk"
-msgstr "Återställ från disk"
-
-#: src/hotkeys.cpp:126
-msgid "Flip Map"
-msgstr "Flippa kartan"
-
-#: src/hotkeys.cpp:127 src/hotkeys.cpp:157
-msgid "Select All"
-msgstr "Markera alla"
-
-#: src/hotkeys.cpp:128
-msgid "Draw Terrain"
-msgstr "Rita terräng"
-
-#: src/hotkeys.cpp:129 src/hotkeys.cpp:193
-msgid "Refresh Image Cache"
-msgstr "Uppdatera bildcache"
-
-#: src/hotkeys.cpp:130
-msgid "Delay transition updates"
-msgstr "Fördröj övergångsuppdateringarna"
-
-#: src/hotkeys.cpp:131
-msgid "Update transitions"
-msgstr "Uppdatera övergångar"
-
-#: src/hotkeys.cpp:134
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Snabbtangentsinställningar"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "Ny karta"
+
+#: src/hotkeys.cpp:116
+msgid "Load Map"
+msgstr "Öppna karta"
+
+#: src/hotkeys.cpp:117
+msgid "Save Map"
+msgstr "Spara"
+
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Save Map As"
 msgstr "Spara"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Map Information"
 msgstr "Kartgenerator"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Next Tool"
 msgstr "Nästa drag"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Markera alla"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Next Brush"
 msgstr "Nästa drag"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:130
 #, fuzzy
 msgid "Default Brush"
 msgstr "Standardzoom"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:131
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: src/hotkeys.cpp:132
+msgid "Copy"
+msgstr "Kopiera"
+
+#: src/hotkeys.cpp:133
+msgid "Paste"
+msgstr "Klistra in"
+
+#: src/hotkeys.cpp:135
+msgid "Select All"
+msgstr "Markera alla"
+
+#: src/hotkeys.cpp:137
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:139
 #, fuzzy
 msgid "Select None"
 msgstr "Markera alla"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:141
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:143
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:145
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:147
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:149
+msgid "Rotate Selection"
+msgstr "Rotera markerat"
+
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Fyll markerat"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:153
+msgid "Fill Selection"
+msgstr "Fyll markerat"
+
+#: src/hotkeys.cpp:155
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Rotera markerat"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:157
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "Ändra kartans storlek"
+
+#: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Öppna karta"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Generate Map"
 msgstr "Generera ny karta"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:165
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Skärm"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:167
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Uppdatera övergångar"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Uppdatera övergångar"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:171
+msgid "Refresh Image Cache"
+msgstr "Uppdatera bildcache"
+
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Rita terräng"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "Fördröj slöjuppdateringarna"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "Uppdatera slöjan nu"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "Fortsätt draget"
 
-#: src/hotkeys.cpp:205
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "Sök efter etikett eller trupp"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "Tala med allierad"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "Tala med alla"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "Se chattloggen"
 
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:188
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/hotkeys.cpp:212
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "Ge användarkommando"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:191
 #, fuzzy
 msgid "Custom command"
 msgstr "Ge användarkommando"
 
-#: src/hotkeys.cpp:214
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:215
+#: src/hotkeys.cpp:193
 msgid "Clear messages"
 msgstr "Rensa meddelanden"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr "Användarkommando #2"
 
-#: src/hotkeys.cpp:218
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr "Användarkommando #3"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen sluta?"
 
-#: src/hotkeys.cpp:677 src/hotkeys.cpp:1022
+#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/hotkeys.cpp:977
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Skärmdump"
 
-#: src/hotkeys.cpp:984
+#: src/hotkeys.cpp:898
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Skärmdump"
 
-#: src/hotkeys.cpp:986
+#: src/hotkeys.cpp:900
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Skärmdump"
+
+#: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
+msgid "Close Window"
+msgstr "Stäng fönster"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1488,6 +1364,14 @@ msgstr "Kartgenerator"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "Spelare:"
+
+#: src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "Bredd:"
+
+#: src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "Höjd:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1624,6 +1508,76 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr ""
+#~ "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Skapa ny karta"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generera ny karta"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Generera slumpkarta"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Inställningar för slumpgenerator"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Kunde inte skapa karta."
+
+#~ msgid "Video Mode"
+#~ msgstr "Videoläge"
+
+#~ msgid "X offset:"
+#~ msgstr "X-offset:"
+
+#~ msgid "Y offset:"
+#~ msgstr "Y-offset:"
+
+#~ msgid "Smart expand"
+#~ msgstr "Smart utvidgning"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-axel"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-axel"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Flippa (detta kan ändra kartans dimensioner):"
+
+#~ msgid "Set Terrain"
+#~ msgstr "Ange terräng"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Avsluta"
+
+#~ msgid "Save As"
+#~ msgstr "Spara som..."
+
+#~ msgid "Set Player's keep"
+#~ msgstr "Ange spelarens kärntorn"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Fyll allt"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Återställ från disk"
+
+#~ msgid "Flip Map"
+#~ msgstr "Flippa kartan"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Rita terräng"
+
+#~ msgid "Delay transition updates"
+#~ msgstr "Fördröj övergångsuppdateringarna"
+
+#~ msgid "Update transitions"
+#~ msgstr "Uppdatera övergångar"
 
 #, fuzzy
 #~ msgid "Invert Selection"
