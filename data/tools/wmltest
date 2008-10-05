@@ -110,6 +110,8 @@ if __name__ == '__main__':
     if options.verbose > 3:
         parser.verbose = True
 
+    if options.userpath:
+        parser.parse_text("{~campaigns}")
     for file in args:
         parser.parse_file(file)
     for macro in options.defines:
