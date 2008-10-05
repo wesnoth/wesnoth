@@ -140,6 +140,8 @@ Section "Battle for Wesnoth" BfWSection
   File /r /x .* doc\manual\*.html
   File /r /x .* doc\manual\styles
   File /r /x .* doc\manual\images
+
+  File packaging\windows\wesnoth_editor-icon.ico
   
   %NSIS_INSTALL_FILES
   
@@ -154,7 +156,7 @@ Section "Battle for Wesnoth" BfWSection
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e" "wesnoth_editor-icon.ico"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.en.html"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
@@ -191,6 +193,7 @@ Section "Uninstall"
 
   ;ADD YOUR OWN FILES HERE...
   %NSIS_UNINSTALL_FILES
+  Delete "$INSTDIR\wesnoth_editor-icon.ico"
   RMDir /r "$INSTDIR\manual"
 
   Delete "$INSTDIR\Uninstall.exe"
