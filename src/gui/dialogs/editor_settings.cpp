@@ -82,6 +82,13 @@ void teditor_settings::update_tod_display(twindow& /*window*/)
 		custom_tod_blue_->get_value());
 }
 
+void teditor_settings::slider_update_callback(twindow& window)
+{
+	if (custom_tod_auto_refresh_->get_value()) {
+		update_tod_display(window);
+	}
+}
+
 void teditor_settings::set_current_adjustment(int r, int g, int b)
 {
 	for (size_t i = 0; i < tods_.size(); ++i) {
@@ -137,20 +144,24 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 	current_tod_label_ = &window.get_widget<tlabel>("current_tod", false);
 	current_tod_image_ = &window.get_widget<tlabel>("current_tod_image", false);
 	custom_tod_toggle_ = &window.get_widget<ttoggle_button>("custom_tod_toggle", false);
+	custom_tod_auto_refresh_ = &window.get_widget<ttoggle_button>("custom_tod_auto_refresh", false);
 	custom_tod_red_ = &window.get_widget<tslider>("custom_tod_red", false);
 	custom_tod_green_ = &window.get_widget<tslider>("custom_tod_green", false);
 	custom_tod_blue_ = &window.get_widget<tslider>("custom_tod_blue", false);
 	tbutton& next_tod_button = window.get_widget<tbutton>("next_tod", false);
 	next_tod_button.set_callback_mouse_left_click(
 		dialog_callback<teditor_settings, &teditor_settings::do_next_tod>);
+	tbutton& apply_button = window.get_widget<tbutton>("apply", false);
+	apply_button.set_callback_mouse_left_click(
+		dialog_callback<teditor_settings, &teditor_settings::update_tod_display>);
 	custom_tod_toggle_->set_callback_state_change(
 		dialog_callback<teditor_settings, &teditor_settings::update_selected_tod_info>);
 	custom_tod_red_->set_callback_positioner_move(
-		dialog_callback<teditor_settings, &teditor_settings::update_tod_display>);
+		dialog_callback<teditor_settings, &teditor_settings::slider_update_callback>);
 	custom_tod_green_->set_callback_positioner_move(
-		dialog_callback<teditor_settings, &teditor_settings::update_tod_display>);
+		dialog_callback<teditor_settings, &teditor_settings::slider_update_callback>);
 	custom_tod_blue_->set_callback_positioner_move(
-		dialog_callback<teditor_settings, &teditor_settings::update_tod_display>);
+		dialog_callback<teditor_settings, &teditor_settings::slider_update_callback>);
 	update_selected_tod_info(window);
 }
 

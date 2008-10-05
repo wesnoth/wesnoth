@@ -39,6 +39,8 @@ public:
 	
 	void update_tod_display(twindow& window);
 	
+	void slider_update_callback(twindow& window);
+	
 	void set_tods(const std::vector<time_of_day>& tods) { tods_ = tods; }
 	const std::vector<time_of_day>& get_tods() const { return tods_; }
 	
@@ -78,6 +80,7 @@ private:
 	tlabel* current_tod_image_;
 	
 	ttoggle_button* custom_tod_toggle_;
+	ttoggle_button* custom_tod_auto_refresh_;
 	
 	tfield_bool* custom_tod_toggle_field_;
 	
