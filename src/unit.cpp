@@ -1547,12 +1547,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
 		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
-			// backwards compatibility (to be dropped after 1.5.2)
-			if(st->first == "hides") {
-				states_["hidden"] = st->second;
-			} else {
-				states_[st->first] = st->second;
-			}
+			states_[st->first] = st->second;
 		}
 		cfg_.remove_child("status",0);
 	}
