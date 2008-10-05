@@ -3,25 +3,37 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.4+svn:
-  * Campaigns:
-    * Two Brothers:
+  * Campaigns
+    * A new experimental gold carryover system is now supported in Heir to the
+      Throne, Sceptre of Fire and Descent into Darkness: the choice appears in
+      the difficulty level menu when starting the campaign.
+
+    * Son of the Black Eye
+      * New portraits for Al'Brock, Flar'Tar and Howgarth.
+
+    * Two Brothers
       * Rewrite to include story screens by Stefan.
       * Improved scenario texts and dialogs.
 
   * Editor2
     * Allow changing the display time of day from a preset list or to custom
-	  values via sliders, available in the new editor settings dialog.
-	* Removed map flipping feature. Added clipboard flipping instead, which
+      values via sliders, available in the new editor settings dialog.
+    * Removed map flipping feature. Added clipboard flipping instead, which
       works much more reliably.
     * Added --load support for -e command line option. Loads the map file
       with the given filename.
-	  
+
   * Map editor
     * Removed wesnoth-editor. Use editor2.
 
   * Language and translations
     * updated translations: Czech, Finnish, French, Galician, German, Hungarian,
       Lithuanian, Polish, Slovak, Turkish, Valencian.
+
+  * Multiplayer
+    * Revised maps: Fallenstar Lake, 2p Hamlets, Hornshark Island,
+      The Freelands, Castle Hopping Isle.
+     * In default era, all leaders with 4 MP now receive the quick trait.
 
   * Unit changes and balancing
     * Made units with the healthy trait take a quarter less damage from poison.
@@ -30,7 +42,7 @@ Version 1.5.4+svn:
   * AI
     * Made default AI to play better in multiplayer maps.
 
-  * User interface:
+  * User interface
     * Allowed the /friend, /ignore and /remove commands to use
       lists (FR #7492) and wildcards.
     * Added a feature to draw hex coordinates and/or terrain code on every hex.
@@ -43,8 +55,8 @@ Version 1.5.4:
       or ctrl+shift+r respectively (cmd instead of ctrl on Mac). Active
       in the "paste" mode.
     * A drag operation only creates one undo action instead of many.
-      Use the new "partial undo" feature (default hotkey ctrl+z, cmd+z 
-      on Mac) to get the old behaviour, when you want to only undo a part 
+      Use the new "partial undo" feature (default hotkey ctrl+z, cmd+z
+      on Mac) to get the old behaviour, when you want to only undo a part
       of a paint-drag or select-drag. After the actions are split this way
       they are never combined again.
     * More visible selection.
@@ -78,10 +90,10 @@ Version 1.5.4:
   * Campaigns
     * The Hammer Of Thursagan
       * 'Mages and Drakes' and 'Fear' have been retuned and are now
-	somewhat more challenging.
+    somewhat more challenging.
       * 'The Underlevels' has some fixes to the timing of when bad-guy
-	sides get activated.  This should make the last battle more of
-	a climax.
+    sides get activated.  This should make the last battle more of
+    a climax.
 
 Version 1.5.3:
   * Campaigns

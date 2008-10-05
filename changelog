@@ -1,5 +1,10 @@
 Version 1.5.4+svn:
  * Campaigns:
+   * A new experimental gold carryover system is now supported in Heir to the
+     Throne, Sceptre of Fire and Descent into Darkness: the choice appears in
+     the difficulty level menu when starting the campaign.
+   * Son of the Black Eye:
+     * New portraits for Al'Brock, Flar'Tar and Howgarth.
    * Two Brothers:
      * Rewrite to include story screens by Stefan
      * Improved scenario texts and dialogs
@@ -15,6 +20,9 @@ Version 1.5.4+svn:
    * Command line: added "--load FILE" support to "-e" (FR #12299)
  * Graphics:
    * New or updated unit frames: Walking Corpse swimmer, Soulless swimmer
+ * Music and sound effects:
+   * New music track "Heroes Rite" by Doug Kaufman.
+   * New music track "The Deep Path" by Gianmarco Leone.
  * Language and i18n:
    * Fixed a problem under Windows where the locales detection didn't
      work; all languages are now enabled for Windows.
@@ -22,8 +30,9 @@ Version 1.5.4+svn:
      unit/unit_type's gender (feature #11982).
    * updated translations: Czech, Finnish, French, Galician, German, Hungarian,
      Lithuanian, Polish, Slovak, Turkish, Valencian
- * Map editor:
+ * Map editor and terrains:
    * Removed wesnoth-editor. Use editor2.
+   * Added a new "Snow Mountains" terrain (graphics still incomplete).
  * Multiplayer:
    * Revised maps: Fallenstar Lake, 2p Hamlets, Hornshark Island, The Freelands,
      Castle Hopping Isle.
