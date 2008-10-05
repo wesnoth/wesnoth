@@ -22,7 +22,12 @@
  * operator which does a shallow copy and then call copy() (copy() test for self
  * assignment, but the assignment operator can also do the test.
  *
- * See tests/test_policy.cpp for an example implementation of this policy.
+ * Another option is to use the tcopy_policy class, which uses the default
+ * constructor, copy constructor and assignment operator of the class. This way
+ * it can easily be added to an existing class without changes.
+ *
+ * See tests/test_policy.cpp for an example implementation of this policy, both
+ * the intrusive and non-intrusive version.
  */
 
 #ifndef COPY_POLICY_HPP_INCLUDED
@@ -148,6 +153,53 @@ public:
 		if(&rhs != this) {
 			rhs.invalidate();
 		}
+	}
+};
+
+/**
+ * Helper class to add a policy to an existing class.
+ *
+ * This 
+ */
+template <
+	class base,
+	template<class> class copy_policy 
+>
+struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_policy> >
+{
+	typedef copy_policy<tcopy_policy<base, copy_policy> > policy;
+	typedef typename tcopy_policy<base, copy_policy>::rhs_type rhs_type;
+
+	tcopy_policy()
+		: base()
+		, policy()
+	{
+#if COPY_POLICY_DEBUG
+		std::cerr << "tcopy_policy: default constructor.\n";
+#endif
+	}
+
+	tcopy_policy(rhs_type rhs) 
+		: base(rhs)
+		, policy(rhs)
+	{ 
+#if COPY_POLICY_DEBUG
+		std::cerr << "tcopy_policy: copy constructor.\n";
+#endif
+		copy(rhs); 
+	}
+
+	tcopy_policy& operator=(rhs_type rhs) 
+	{
+#if COPY_POLICY_DEBUG
+		std::cerr << "tcopy_policy: assignment operator.\n";
+#endif
+		static_cast<base>(*this) = rhs;
+		static_cast<policy>(*this) = rhs;
+
+		copy(rhs);
+
+		return *this;
 	}
 };
 
