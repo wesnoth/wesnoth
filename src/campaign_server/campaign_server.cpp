@@ -12,6 +12,13 @@
    See the COPYING file for more details.
    */
 
+/**
+ * @file campaign_server/campaign_server.cpp
+ * Wesnoth addon server.
+ * Expects a "server.cfg" config file in the current directory
+ * and saves addons under data/.
+ */
+
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -51,7 +58,7 @@
 /** @todo FIXME: should define SIGINT here too, but to what? */
 
 static void exit_sighup(int signal) {
-	assert(signal == SIGHUP);                                                                                                                                                     
+	assert(signal == SIGHUP);
 	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
 	exit(1);
 }
@@ -271,14 +278,14 @@ namespace {
 		if (dir->find_child("file", "name", "COPYING.TXT")) return;
 
 		// Copy over COPYING.txt
-		std::string contents = read_file("data/COPYING.txt");
+		std::string contents = read_file("COPYING.txt");
 		config &copying = dir->add_child("file");
 		copying["name"] = "COPYING.txt";
 		copying["contents"] = contents;
 
 		if (contents.empty()) {
-			std::cerr << "Could not find " << "data/COPYING.txt" <<
-				", path is \"" << game_config::path << "\"\n";
+			LOG_CS << "Could not find COPYING.txt, path is \""
+				<< game_config::path << "\"\n";
 		}
 	}
 	void campaign_server::convert_binary_to_gzip()
@@ -503,7 +510,7 @@ namespace {
 
 							(*campaign)["title"] = (*upload)["title"];
 							(*campaign)["name"] = (*upload)["name"];
-							(*campaign)["filename"] = (*upload)["name"];
+							(*campaign)["filename"] = "data/" + (*upload)["name"];
 							(*campaign)["passphrase"] = (*upload)["passphrase"];
 							(*campaign)["author"] = (*upload)["author"];
 							(*campaign)["description"] = (*upload)["description"];
@@ -652,7 +659,7 @@ namespace {
 					LOG_CS << "fatal network error: " << e.message <<"\n";
 					throw;
 				} else {
-					LOG_CS <<"client disconnect : "<<e.message<<" " << network::ip_address(e.socket) << "\n";
+					LOG_CS << "client disconnect: " << e.message << " " << network::ip_address(e.socket) << "\n";
 					e.disconnect();
 				}
 			} catch(config::error& /*e*/) {
