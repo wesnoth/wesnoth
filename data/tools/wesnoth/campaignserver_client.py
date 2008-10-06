@@ -78,15 +78,6 @@ class CampaignClient:
         except socket.error:
             pass # Well, what can we do?
 
-    def isBWML( self, packet ):
-        """
-        Return True if packet is encoded as binary WML. Else
-        return False.
-        """
-        if packet[0] in "\x00\x01\x02\x03":
-            return True
-
-        return False
 
     def make_packet(self, doc):
         root = wmldata.DataSub("WML")
@@ -148,14 +139,9 @@ class CampaignClient:
         return packet
 
     def decode( self, data ):
-        if self.isBWML(data):
-            if self.verbose:
-                sys.stderr.write("Decoding binary WML...\n")
-            data = self.decode_BWML( data )
-        else:
-            if self.verbose:
-                sys.stderr.write("Decoding text WML...\n")
-            data = self.decode_WML( data )
+        if self.verbose:
+            sys.stderr.write("Decoding text WML...\n")
+        data = self.decode_WML( data )
 
         return data
 
@@ -183,32 +169,6 @@ class CampaignClient:
         p.parse_top(doc)
 
         return doc
-
-    def decode_BWML(self, data):
-        """
-        Given a block of binary data, decode it as binary WML 
-        and return it as a WML object.
-
-        The binary WML format is a byte stream. The format is:
-        0 3 <name> means a new element <name> is opened
-        0 4..255 means the same as 0 3 but with a coded name
-        1 means the current element is closed
-        2 <name> means, add a new code for <name> to the dictionary
-        3 <name> <data> means, a new attribute <name> is added with <data>
-        4..255 <data> means, the same as above but with a coded name
-
-        For example if we got:
-        [message]text=blah[/message]
-        [message]text=bleh[/message]
-        It would look like:
-        0 2 message 4 2 text 5 blah 1 0 4 5 bleh 1
-        This would be the same: 
-        0 3 message 3 text blah 1 0 3 message 3 text bleh 1
-        """
-        WML = wmldata.DataSub("campaign_server")
-        pos = [0]
-        tag = [WML]
-        open_element = False
 
         def done():
             return pos[0] >= len(data)
@@ -264,48 +224,6 @@ class CampaignClient:
         Not needed - not sure this method should even be here.
         """
         pass
-
-    def encode_BWML(self, data):
-        """
-        Given a WML object, encode it into binary WML 
-        and return it as a python string.
-        """
-        packet = str("")
-
-        def literal(data):
-            if not data:
-                return str("")
-            data = data.replace("\01", "\01\02")
-            data = data.replace("\00", "\01\01")
-            return str(data)
-
-        def encode(name):
-            if name in self.codes:
-                return self.codes[name]
-            what = literal(name)
-            # Gah.. why didn't nobody tell me about the 20 characters limit?
-            # Without adhering to this (hardcoded in the C++ code) limit, the
-            # campaign server simply will crash if we talk to it.
-            if len(what) <= 20 and self.codescount < 256:
-                data = "\02" + what + "\00" + chr(self.codescount)
-                self.codes[name] = chr(self.codescount)
-                self.codescount += 1
-                return data
-            return "\03" + what + "\00"
-
-        if isinstance(data, wmldata.DataSub):
-            packet += "\00" + encode(data.name)
-            for item in data.data:
-                encoded = self.encode_BWML(item)
-                packet += encoded
-            packet += "\01"
-        elif isinstance(data, wmldata.DataText):
-            packet += encode(data.name)
-            packet += literal(data.data) + "\00"
-        elif isinstance(data, wmldata.DataBinary):
-            packet += encode(data.name)
-            packet += literal(data.data) + "\00"
-        return packet
 
     def encode( self, data ):
         """
@@ -403,6 +321,9 @@ class CampaignClient:
         request.set_text_val("title", title)
         request.set_text_val("version", version)
         request.set_text_val("icon", icon)
+        
+        data = wmldata.DataSub("data")
+        request.insert(data)
 
         def put_file(name, f):
             fileNode = wmldata.DataSub("file")
@@ -412,8 +333,9 @@ class CampaignClient:
             contents = contents.replace("\x01", "\x01\x02" )
             contents = contents.replace("\x00", "\x01\x01")
             contents = contents.replace("\x0d", "\x01\x0e")
+            contents = contents.replace("\xfe", "\x01\xff")
 
-            fileContents = wmldata.DataText( "contents", contents )
+            fileContents = wmldata.DataText("contents", contents)
             fileNode.insert(fileContents)
             fileNode.set_text_val("name", name)
 
@@ -425,7 +347,7 @@ class CampaignClient:
             for fn in glob.glob(path + "/*"):
                 if os.path.isdir(fn):
                     sub = put_dir(os.path.basename(fn), fn)
-                elif filter(lambda x: fn.endswith(x), CampaignClient.excluded):
+                elif [x for x in CampaignClient.excluded if fn.endswith(x)]:
                     continue
                 else:
                     sub = put_file(os.path.basename(fn), file(fn))
@@ -434,11 +356,11 @@ class CampaignClient:
 
         # Only used if it's an old-style campaign directory
         # with an external config.
-        if os.path.exists(cfgfile):
-            request.insert(put_file(name + ".cfg", file(cfgfile)))
+        if cfgfile:
+            data.insert(put_file(name + ".cfg", file(cfgdile)))
 
         sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
-        request.insert(put_dir(name, directory))
+        data.insert(put_dir(name, directory))
 
         packet = self.make_packet(request)
         sys.stderr.write("Packet length is %d bytes.\n" % len(packet))

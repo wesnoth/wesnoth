@@ -53,7 +53,7 @@ if __name__ == "__main__":
         "current directory will be used by default)")
     optionparser.add_option("-u", "--upload",
         help = "Upload an add-on. " +
-        "UPLOAD should be either the name of a add-on subdirectory," +
+        "UPLOAD should be either the name of an add-on subdirectory," +
         "(in which case the client looks for _server.pbl beneath it) " +
         "or a path to the .pbl file (in which case the name of the " +
         "add-on subdirectory is the name of the path with .pbl removed)")
@@ -173,7 +173,7 @@ if __name__ == "__main__":
                         campaign.get_text_val("uploads", "?"),
                         campaign.get_text_val("downloads", "?"),
                         campaign.get_text_val("size", "?"),
-                        time.ctime(int(campaign.get_text_val("timestamp", "?"))),
+                        time.ctime(int(campaign.get_text_val("timestamp", "0"))),
                         campaign.get_text_val("translate", "false")]
                     columns.append(column)
                     for i, s in enumerate(column_sizes):
@@ -241,17 +241,19 @@ if __name__ == "__main__":
 
     elif options.upload:
         cs = CampaignClient(address)
-        if os.path.isdir(os.path.join(options.campaigns_dir, options.upload)):
+        if os.path.isdir(options.upload):
             # New style with _server.pbl
-            pblfile = os.path.join(options.campaigns_dir, options.upload, "_server.pbl")
+            pblfile = os.path.join(options.upload, "_server.pbl")
             name = os.path.basename(options.upload)
-            wmldir = os.path.join(options.campaigns_dir, name) 
+            wmldir = options.upload
+            cfgfile = None # _main.cfg will be uploaded with the rest
         else:
             # Old style with external .pbl file
             pblfile = options.upload
             name = os.path.basename(options.upload)
             name = os.path.splitext(name)[0]
             wmldir = os.path.join(os.path.dirname(options.upload), name)
+            cfgfile = options.upload.replace(".pbl", ".cfg")
 
         pbl = wmldata.read_file(pblfile, "PBL")
         mythread = cs.put_campaign_async(
@@ -262,7 +264,7 @@ if __name__ == "__main__":
             pbl.get_text_val("description"),
             pbl.get_text_val("version"),
             pbl.get_text_val("icon"),
-            options.upload.replace(".pbl", ".cfg"), wmldir)
+            cfgfile, wmldir)
 
         pcounter = 0
         while not mythread.event.isSet():

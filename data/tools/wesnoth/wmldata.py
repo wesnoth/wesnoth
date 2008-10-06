@@ -22,7 +22,7 @@ class Data:
         self.name = name
 
     def __str__( self ):
-        return self.debug( show_contents=True, write=False )
+        return self.debug(show_contents = True, write = False)
 
     def debug(self, show_contents = False, use_color = False, indent=0, write=True):
         if use_color:
@@ -35,9 +35,14 @@ class Data:
         if show_contents:
             result += "'" + self.get_value() + "'"
         if write:
-            # The below is a pretty ugly hack forcing python to accept utf-8
-            # If your terminal can't handle utf-8, you'll obviously get a big mess (but otherwise you'd get a crash)
-            codecs.getwriter('utf-8')(sys.stdout).write(result + "\n")
+            # The input usually is utf8, but it also may be not - for example
+            # if a .png image is transmitted over WML. As this is only for
+            # display purposes, we ask Python to replace any garbage - and then
+            # re-encode as utf8 for console output.
+            text = result.decode("utf8", "replace")
+            text = text.encode("utf8", "replace")
+            sys.stdout.write(text)
+            sys.stdout.write("\n")
 
         else: return result
 
@@ -236,8 +241,10 @@ class DataSub(Data):
             elif isinstance(item, DataClosingTag):
                 result.append("[/%s]\n" % item.name)
 
-            elif isinstance( item, DataBinary ):
-                result.append( "[%s][/%s]\n" % item.name )
+            elif isinstance(item, DataBinary):
+                data = item.data.replace('"', r'""')
+                result.append("%s=\"%s\"\n" % (
+                    item.name, data))
 
             else:
                 raise WMLException("Unknown item: %s" % item.__class__.__name__)
