@@ -7,9 +7,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gl\n"
+"Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2008-10-04 20:34+0300\n"
-"PO-Revision-Date: 2008-09-29 21:29+0100\n"
+"PO-Revision-Date: 2008-10-05 13:18+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -773,7 +773,6 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -781,7 +780,7 @@ msgid ""
 msgstr ""
 "Administra partidas multixogador de Battle for Wesnoth. Consulte http://www."
 "wesnoth.org/wiki/ServerAdministration para ver os comandos que acepta o "
-"servidor a través do cliente wesnoth ou do socket."
+"servidor a través do cliente wesnoth (/query ...) ou do fifo."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -936,9 +935,9 @@ msgstr "Claves globais:"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:110
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<ban_save_file>"
-msgstr "B<ficheiro_de_vedas>"
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -952,7 +951,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
@@ -967,7 +966,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:117
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
@@ -986,24 +985,25 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<ruta_a_fifo>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
-"              . Se non se especifica, por defecto toma a ruta especificada "
-"no tempo de compilación (por defecto: /var/run/socket/wesnothd/socket)."
+"A ruta ó fifo polo que se poden enviar comandos ó servidor (igual có /"
+"query ... de wesnoth. Se non se especifica, por defecto toma a ruta "
+"especificada no tempo de compilación (por defecto: /var/run/socket/wesnothd/"
+"socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
@@ -1017,7 +1017,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
@@ -1032,7 +1032,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:134
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
@@ -1043,7 +1043,7 @@ msgstr "A mensaxe do día."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:137
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
@@ -1057,23 +1057,22 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:140
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<restart_command>"
-msgstr "B<comando_reinicio>"
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
 "O comando que usa o servidor para iniciar un novo proceso do servidor a "
-"través do comando "
+"través do comando `restart'. (Só se pode usar a través do fifo.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
@@ -1110,7 +1109,7 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
@@ -1121,7 +1120,7 @@ msgstr "O enderezo do servidor ó que se redirixe."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
@@ -1132,7 +1131,7 @@ msgstr "O porto ó que se conectar."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:162
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
@@ -1151,14 +1150,14 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
-"B<[tempo_de_veda]> Unha etiqueta para definir palabras clave axeitadas para "
-"duracións de tempo de veda temporais."
+"B<[ban_time]> Unha etiqueta para definir palabras clave axeitadas para "
+"duracións de tempos de veda temporais."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<nome>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
@@ -1167,13 +1166,12 @@ msgstr "O nome que se usa para refirirse ó tempo de veda."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<time>"
-msgstr "B<hora>"
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1183,7 +1181,9 @@ msgid ""
 msgstr ""
 "A definición de duración do tempo. O formato é: %d[%s[%d%s[...]]] onde %s é "
 "s (segundos), m (minutos), h (horas), D (días), M (meses) ou Y (anos) e %d é "
-"un número. "
+"un número. Se non se proporciona un modificador de tempo suponse que é "
+"minutos (m). Exemplo: time=\"1D12h30m\" é un tempo de veda de 1 día, 12 "
+"horas e 30 minutos."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
@@ -1213,6 +1213,36 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: TP
+#~ msgid "B<--compress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--compress>I<\\ ficheiroentrada\\ ficheirosaída>"
+
+# type: Plain text
+#~ msgid ""
+#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
+#~ "WML format (I<outfile>)."
+#~ msgstr ""
+#~ "comprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está en "
+#~ "formato WML de texto a formato WML binario (I<ficheirosaída>)."
+
+# type: TP
+#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--decompress>I<\\ ficheiroentrada\\ ficheirosaída>"
+
+# type: Plain text
+#~ msgid ""
+#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
+#~ "text WML format (I<outfile>)."
+#~ msgstr ""
+#~ "descomprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está "
+#~ "en formato WML binario a formato WML de texto (I<ficheirosaída>)."
+
+# type: Plain text
+#~ msgid "loads the file savegame from the standard save game directory."
+#~ msgstr ""
+#~ "carga o ficheiro de partida gardada dende o directorio estándar de "
+#~ "partidas gardadas."
 
 # type: TH
 #~ msgid "WESNOTH_EDITOR"
@@ -1297,33 +1327,3 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 # type: Plain text
 #~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
 #~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ ficheiroentrada\\ ficheirosaída>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "comprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está en "
-#~ "formato WML de texto a formato WML binario (I<ficheirosaída>)."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ ficheiroentrada\\ ficheirosaída>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "descomprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está "
-#~ "en formato WML binario a formato WML de texto (I<ficheirosaída>)."
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr ""
-#~ "carga o ficheiro de partida gardada dende o directorio estándar de "
-#~ "partidas gardadas."
