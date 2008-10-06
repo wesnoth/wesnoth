@@ -21,11 +21,12 @@ esac
 SERVERBASE=$HOME/campaignd/$VERSION/
 
 [ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
+[ -d "$SERVERBASE/data" ] || die "Server '$VERSION' has no data/ dir."
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 
 ulimit -c unlimited
 
-cd $SERVERBASE/data || exit 1
+cd $SERVERBASE || exit 1
 
 while [ true ]
 do
@@ -33,7 +34,7 @@ do
 	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
 	echo "started $VERSION campaignd with command: '$COMMAND' at: $DATE"
 	$COMMAND &> $SERVERBASE/logs/campaignd.$DATE
-	mv gmon.out ../gmon.$DATE.out &> /dev/null
+	mv gmon.out gmon.$DATE.out &> /dev/null
 	[ "$?" != "0" ] || exit
 	[ "$?" != "1" ] || die "File I/O error."
 	[ "$?" != "2" ] || die "Could not parse config file."
