@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-05 20:19+0200\n"
-"PO-Revision-Date: 2008-02-16 17:54+0100\n"
+"PO-Revision-Date: 2008-10-06 22:46+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -105,9 +105,8 @@ msgstr "Kampagnengestaltung"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:41
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Kampagnengestaltung"
+msgstr "Kampagnenbetreuung"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:47
@@ -136,7 +135,7 @@ msgstr "Rugnur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:18
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:29
 msgid "Allies"
-msgstr ""
+msgstr "Verbündete"
 
 #. [side]: type=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
@@ -211,6 +210,9 @@ msgid ""
 "@Defeat Glildur\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternatives Missionsziel:\n"
+"@Besiegt Glildur\n"
+"`(Bonus für ein frühzeitiges Ende)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:137
@@ -701,7 +703,7 @@ msgstr "Baglur fällt in der Schlacht"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:125
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:559
 msgid "Early finish bonus."
-msgstr ""
+msgstr "Bonus für ein frühzeitiges Ende."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:142
@@ -1927,7 +1929,7 @@ msgstr "Hier ist das Gold."
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:820
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:879
 msgid "Trolls"
-msgstr ""
+msgstr "Trolle"
 
 #. [scenario]
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:3
@@ -2202,7 +2204,7 @@ msgstr "Glonoin"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:52
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:93
 msgid "Enemies"
-msgstr ""
+msgstr "Feinde"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:98
@@ -2239,7 +2241,7 @@ msgstr "Durstorn fällt in der Schlacht"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:515
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:578
 msgid "No early finish bonus."
-msgstr ""
+msgstr "Kein Bonus für ein frühzeitiges Ende."
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:201
@@ -3358,7 +3360,7 @@ msgstr "Höhlen des Feuers"
 #. [side]: type=Dwarvish Fighter
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:26
 msgid "Dwarves"
-msgstr ""
+msgstr "Zwerge"
 
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -3367,7 +3369,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:105
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:128
 msgid "Orcs"
-msgstr ""
+msgstr "Orks"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:139
@@ -3804,7 +3806,6 @@ msgstr "Was zum Teufel sagt er?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:218
-#, fuzzy
 msgid ""
 "He says that he has seen the Sceptre. Rugnur had it, but he lost it in the "
 "caves. He came to tell you, so that you would know that the dwarves did "
