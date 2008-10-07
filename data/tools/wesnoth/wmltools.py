@@ -717,8 +717,12 @@ def namespace_member(path, namespace):
     ns = directory_namespace(path)
     return ns != None and ns == namespace
 
-def resolve_unit_cfg(namespace, resource):
+def resolve_unit_cfg(namespace, utype, resource=None):
     "Get the location of a specified unit in a specified scope."
+    if resource:
+        resource = os.path.join(utype, resource)
+    else:
+        resource = utype
     loc = namespace_directory(namespace) + "units/" + resource
     if not loc.endswith(".cfg"):
         loc += ".cfg"

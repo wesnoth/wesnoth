@@ -13,9 +13,12 @@ anywhere beneath.
 
 For purposes of this command, a "namespace identifier" is either the
 basename of a campaign subdirectory or the special name "core",
-indicating the units, images and sounds directories in data/core.  A
-source must be a namespace identifier, followed by "::", followed by
-the name of a unit (the basename of its path without the .cfg extwension).  A destination must be a namespace identifier.  
+indicating the units, images and sounds directories in data/core.
+
+A source must be a namespace identifier, followed by "::", followed by
+the name of a unit (the basename of its path without the .cfg
+extension).  A destination must be a namespace identifier, optionally
+followed by :: and a unit class.
 
 The script generates a sequence of shell commands.  These commands
 will move the unit and all its resources to appropriate places under
@@ -53,7 +56,7 @@ of the unit.
 
 Here is an example:
 
-   wmlmove --imageclass=elves-wood Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core 
+   wmlmove --imageclass=elves-wood --unitclass=elves Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core::humans 
 
 ''' 
 
@@ -122,6 +125,12 @@ if __name__ == "__main__":
   
     # Validate the destination.
     if not delete:
+        uclass = None
+        if "::" in dst:
+            (dst, uclass) = dst.split("::")
+        elif dst == "core":
+            sys.stderr.write("wmlmove: moves to core require a unit subclass.\n")
+            sys.exit(1)
         dstdir = namespace_directory(dst)
         if dstdir == None:
             sys.stderr.write("wmlmove: invalid namespace %s\n" % dstdir)
@@ -218,7 +227,7 @@ overwrite()
         print "# .cfg moves and transformations"
         for filename in srclist:
             source = directory_namespace(filename)
-            target = resolve_unit_cfg(dst, os.path.basename(filename))
+            target = resolve_unit_cfg(dst, uclass, os.path.basename(filename))
             if revert:
                 if not namespace_member(filename, source):
                     print vcunmove(filename, target)
