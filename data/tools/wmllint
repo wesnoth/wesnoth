@@ -598,7 +598,9 @@ def consistency_check():
             (rl, recruit) = recruitlist
             for rtype in recruit:
                 if rtype not in unit_types:
-                    print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
+                    # Assume WML coder knew what he was doing if macro reference
+                    if not rtype.startswith("{"):
+                        print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
                     continue
                 elif rtype not in usage:
                     if not rtype in derivedlist:
