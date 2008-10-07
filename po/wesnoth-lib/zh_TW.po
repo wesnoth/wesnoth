@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-05 20:18+0200\n"
+"POT-Creation-Date: 2008-10-07 16:14+0200\n"
 "PO-Revision-Date: 2008-08-11 01:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -21,7 +21,8 @@ msgid "None"
 msgstr "無"
 
 #. [terrain]
-#: data/core/terrain.cfg:20
+#. [toggle_button]
+#: data/core/terrain.cfg:20 data/gui/default/window/mp_create_game.cfg:473
 msgid "Shroud"
 msgstr "戰爭迷霧"
 
@@ -128,187 +129,660 @@ msgid "Tropical Forest"
 msgstr "熱帶森林"
 
 #. [terrain]
-#: data/core/terrain.cfg:444 data/core/terrain.cfg:453
-#: data/core/terrain.cfg:462
+#: data/core/terrain.cfg:444
+#, fuzzy
+msgid "Forested Hills"
+msgstr "森林"
+
+#. [terrain]
+#: data/core/terrain.cfg:454
+#, fuzzy
+msgid "Forested Snow Hills"
+msgstr "雪丘"
+
+#. [terrain]
+#: data/core/terrain.cfg:468 data/core/terrain.cfg:477
+#: data/core/terrain.cfg:486
 msgid "Grassland"
 msgstr "草原"
 
 #. [terrain]
-#: data/core/terrain.cfg:471
+#: data/core/terrain.cfg:495
 msgid "Savanna"
 msgstr "熱帶草原"
 
 #. [terrain]
-#: data/core/terrain.cfg:484
+#: data/core/terrain.cfg:508
 msgid "Snow Hills"
 msgstr "雪丘"
 
 #. [terrain]
-#: data/core/terrain.cfg:494
+#: data/core/terrain.cfg:518
 msgid "Dunes"
 msgstr "沙丘"
 
 #. [terrain]
-#: data/core/terrain.cfg:504
+#: data/core/terrain.cfg:528
 msgid "Hills"
 msgstr "丘陵"
 
 #. [terrain]
-#: data/core/terrain.cfg:516 data/core/terrain.cfg:525
-#: data/core/terrain.cfg:533
+#: data/core/terrain.cfg:540 data/core/terrain.cfg:549
+#: data/core/terrain.cfg:557
 msgid "Mountains"
 msgstr "山嶺"
 
 #. [terrain]
-#: data/core/terrain.cfg:547
+#: data/core/terrain.cfg:571
 msgid "Chasm"
 msgstr "深淵"
 
 #. [terrain]
-#: data/core/terrain.cfg:556
+#: data/core/terrain.cfg:580
 msgid "Lava chasm"
 msgstr "熔岩裂口"
 
 #. [terrain]
-#: data/core/terrain.cfg:566
+#: data/core/terrain.cfg:590
 msgid "Lava"
 msgstr "熔岩"
 
 #. [terrain]
-#: data/core/terrain.cfg:580 data/core/terrain.cfg:598
-#: data/core/terrain.cfg:607
+#: data/core/terrain.cfg:604 data/core/terrain.cfg:622
+#: data/core/terrain.cfg:631
 msgid "Road"
 msgstr "道路"
 
 #. [terrain]
-#: data/core/terrain.cfg:589
+#: data/core/terrain.cfg:613
 msgid "Dirt"
 msgstr "塵土"
 
 #. [terrain]
-#: data/core/terrain.cfg:616
+#: data/core/terrain.cfg:640
 msgid "Farmland"
 msgstr "農場"
 
 #. [terrain]
-#: data/core/terrain.cfg:630
+#: data/core/terrain.cfg:654
 msgid "Swamp"
 msgstr "沼澤"
 
 #. [terrain]
-#: data/core/terrain.cfg:644
+#: data/core/terrain.cfg:668
 msgid "Lit"
 msgstr "光亮"
 
 #. [terrain]
-#: data/core/terrain.cfg:654
+#: data/core/terrain.cfg:678
 msgid "Cave"
 msgstr "洞穴"
 
 #. [terrain]
-#: data/core/terrain.cfg:672
+#: data/core/terrain.cfg:696
 msgid "Cave path"
 msgstr "洞穴走道"
 
 #. [terrain]
-#: data/core/terrain.cfg:681
+#: data/core/terrain.cfg:705
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #. [terrain]
-#: data/core/terrain.cfg:690
+#: data/core/terrain.cfg:714
 msgid "Mushroom Grove Lit"
 msgstr "蘑菇林（亮）"
 
 #. [terrain]
-#: data/core/terrain.cfg:701
+#: data/core/terrain.cfg:725
 msgid "Rockbound Cave"
 msgstr "岩石洞穴"
 
 #. [terrain]
-#: data/core/terrain.cfg:728 data/core/terrain.cfg:739
 #: data/core/terrain.cfg:752 data/core/terrain.cfg:763
 #: data/core/terrain.cfg:776 data/core/terrain.cfg:787
-#: data/core/terrain.cfg:797 data/core/terrain.cfg:808
-#: data/core/terrain.cfg:819 data/core/terrain.cfg:830
-#: data/core/terrain.cfg:841 data/core/terrain.cfg:852
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:811
+#: data/core/terrain.cfg:821 data/core/terrain.cfg:832
+#: data/core/terrain.cfg:843 data/core/terrain.cfg:854
 #: data/core/terrain.cfg:865 data/core/terrain.cfg:876
-#: data/core/terrain.cfg:887 data/core/terrain.cfg:898
-#: data/core/terrain.cfg:909 data/core/terrain.cfg:920
-#: data/core/terrain.cfg:931 data/core/terrain.cfg:944
-#: data/core/terrain.cfg:959 data/core/terrain.cfg:970
+#: data/core/terrain.cfg:889 data/core/terrain.cfg:900
+#: data/core/terrain.cfg:911 data/core/terrain.cfg:922
+#: data/core/terrain.cfg:933 data/core/terrain.cfg:944
+#: data/core/terrain.cfg:955 data/core/terrain.cfg:968
+#: data/core/terrain.cfg:983 data/core/terrain.cfg:994
 msgid "Village"
 msgstr "村莊"
 
 #. [terrain]
-#: data/core/terrain.cfg:985
+#: data/core/terrain.cfg:1009
 msgid "Deep Water"
 msgstr "深水"
 
 #. [terrain]
-#: data/core/terrain.cfg:995
+#: data/core/terrain.cfg:1019
 msgid "Shallow Water"
 msgstr "淺水"
 
 #. [terrain]
-#: data/core/terrain.cfg:1005
+#: data/core/terrain.cfg:1029
 msgid "River Ford"
 msgstr "河灘"
 
 #. [terrain]
-#: data/core/terrain.cfg:1016
+#: data/core/terrain.cfg:1040
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "濱海"
 
 #. [terrain]
-#: data/core/terrain.cfg:1030
+#: data/core/terrain.cfg:1054
 msgid "Impassable Mountains"
 msgstr "高不可攀的大山"
 
 #. [terrain]
-#: data/core/terrain.cfg:1039
+#: data/core/terrain.cfg:1063
 msgid "Impassable Desert Mountains"
 msgstr "高不可攀的山脉"
 
 #. [terrain]
-#: data/core/terrain.cfg:1048
+#: data/core/terrain.cfg:1072
 msgid "Cave Wall"
 msgstr "洞穴墻壁"
 
 #. [terrain]
-#: data/core/terrain.cfg:1057
+#: data/core/terrain.cfg:1081
 msgid "Wall"
 msgstr "牆壁"
 
 #. [terrain]
-#: data/core/terrain.cfg:1067
+#: data/core/terrain.cfg:1091
 msgid "Void"
 msgstr "無"
 
 #. [terrain]
-#: data/core/terrain.cfg:1080
+#: data/core/terrain.cfg:1104
 msgid "Flat"
 msgstr "平坦"
 
 #. [terrain]
-#: data/core/terrain.cfg:1087
+#: data/core/terrain.cfg:1111
 msgid "Frozen"
 msgstr "寒冰"
 
 #. [terrain]
-#: data/core/terrain.cfg:1094
+#: data/core/terrain.cfg:1118
 msgid "Impassable"
 msgstr "高不可攀的大山"
 
 #. [terrain]
-#: data/core/terrain.cfg:1101
+#: data/core/terrain.cfg:1125
 msgid "Unwalkable"
 msgstr "無法步行"
 
+#. [label]
+#. [column]
+#: data/gui/default/window/addon_connect.cfg:32
+#: data/gui/default/window/mp_connect.cfg:31
+#: data/gui/default/window/mp_method_selection.cfg:147
+#: data/gui/default/window/mp_server_list.cfg:31
+#, fuzzy
+msgid "Connect to Server"
+msgstr "繼續移動"
+
+#. [label]
+#: data/gui/default/window/addon_connect.cfg:51
+msgid "You will now connect to a server to download add-ons."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_connect.cfg:81
+#: data/gui/default/window/mp_connect.cfg:80
+msgid "Server:"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:135
+#: data/gui/default/window/addon_connect.cfg:136
+#, fuzzy
+msgid "Update add-ons"
+msgstr "刷新戰爭迷霧"
+
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:168
+#: data/gui/default/window/addon_connect.cfg:169
+#, fuzzy
+msgid "Remove Add-ons"
+msgstr "移除"
+
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:201
+#: data/gui/default/window/addon_connect.cfg:202
+#: data/gui/default/window/mp_connect.cfg:175
+#: data/gui/default/window/mp_connect.cfg:176
+msgid "Connect"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:216
+#: data/gui/default/window/editor_generate_map.cfg:111
+#: data/gui/default/window/editor_new_map.cfg:111
+#: data/gui/default/window/editor_resize_map.cfg:275
+#: data/gui/default/window/editor_settings.cfg:218
+#: data/gui/default/window/language_selection.cfg:136
+#: data/gui/default/window/mp_connect.cfg:190
+#: data/gui/default/window/mp_create_game.cfg:552
+#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:150
+#: src/construct_dialog.cpp:153
+msgid "Cancel"
+msgstr "取消"
+
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:38
+msgid "Generate Random Map"
+msgstr "隨機地圖"
+
+#. [button]
+#: data/gui/default/window/editor_generate_map.cfg:67
+#: data/gui/default/window/editor_generate_map.cfg:68
+#, fuzzy
+msgid "Next Generator"
+msgstr "地圖生成器"
+
+#. [button]
+#: data/gui/default/window/editor_generate_map.cfg:90
+#: data/gui/default/window/editor_generate_map.cfg:91
+#, fuzzy
+msgid "Settings"
+msgstr "快捷鍵設定"
+
+#. [button]
+#: data/gui/default/window/editor_generate_map.cfg:101
+#, fuzzy
+msgid "Generate"
+msgstr "新地圖"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "新地圖"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "寬度："
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "高度："
+
+#. [button]
+#: data/gui/default/window/editor_new_map.cfg:100
+#: data/gui/default/window/editor_new_map.cfg:101
+#, fuzzy
+msgid "Create new map"
+msgstr "創造新地圖"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "改變地圖大小"
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:46
+#, fuzzy
+msgid "New width:"
+msgstr "寬度："
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:70
+#, fuzzy
+msgid "Old width:"
+msgstr "寬度："
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:81
+#: data/gui/default/window/editor_resize_map.cfg:130
+msgid "2000"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:82
+#: data/gui/default/window/editor_resize_map.cfg:131
+msgid "-1"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:95
+#, fuzzy
+msgid "New height:"
+msgstr "高度："
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:119
+#, fuzzy
+msgid "Old height:"
+msgstr "高度："
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:147
+msgid "Expand / shrink direction"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/editor_resize_map.cfg:242
+msgid "Copy edge terrain"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/editor_resize_map.cfg:264
+#: data/gui/default/window/editor_resize_map.cfg:265
+#, fuzzy
+msgid "Resize map"
+msgstr "改變地圖大小"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
+#, fuzzy
+msgid "Editor Settings"
+msgstr "快捷鍵設定"
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:46
+msgid "Time of day lightning preset"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/editor_settings.cfg:75
+#: data/gui/default/window/editor_settings.cfg:76
+#, fuzzy
+msgid "Next"
+msgstr "下一個"
+
+#. [toggle_button]
+#: data/gui/default/window/editor_settings.cfg:83
+msgid "Custom lightning setting"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/editor_settings.cfg:93
+msgid "Auto-update map view"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:120
+#, fuzzy
+msgid "Red:"
+msgstr "重作"
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:146
+#, fuzzy
+msgid "Green:"
+msgstr "頻率:"
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:172
+msgid "Blue:"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]
+#: data/gui/default/window/editor_settings.cfg:208
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
 msgid "OK"
 msgstr "確定"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]
+#: data/gui/default/window/editor_settings.cfg:228
+#: src/game_preferences_display.cpp:202
+msgid "Apply"
+msgstr "應用"
+
+#. [grid]
+#. [label]
+#: data/gui/default/window/language_selection.cfg:31
+#: data/gui/default/window/title_screen.cfg:83
+msgid "Language"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/language_selection.cfg:50
+msgid "Choose your preferred language:"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/language_selection.cfg:121
+#: data/gui/default/window/language_selection.cfg:122
+#, fuzzy
+msgid "Change language"
+msgstr "切換語言"
+
+#. [label]
+#: data/gui/default/window/mp_connect.cfg:50
+#: data/gui/default/window/mp_server_list.cfg:51
+msgid "You will now connect to the multiplayer server."
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_connect.cfg:148
+#, fuzzy
+msgid "View List"
+msgstr "好友列表"
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:33
+#, fuzzy
+msgid "Create Game"
+msgstr "儲存遊戲"
+
+#. [label]
+#. [text_box]
+#: data/gui/default/window/mp_create_game.cfg:62
+#: data/gui/default/window/mp_create_game.cfg:77
+msgid "Name of game:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:140
+#, fuzzy
+msgid "Players: "
+msgstr "玩家數量："
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:159
+msgid "Map size: "
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:177
+msgid "Era:"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_create_game.cfg:196
+#, fuzzy
+msgid "Default"
+msgstr "預設縮放比例"
+
+#. [button]
+#: data/gui/default/window/mp_create_game.cfg:218
+msgid "Set Password"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:246
+msgid "Map to play:"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/mp_create_game.cfg:315
+msgid "Use map settings"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:333
+#, fuzzy
+msgid "Number of turns"
+msgstr "山地的數量："
+
+#. [slider]
+#: data/gui/default/window/mp_create_game.cfg:356
+msgid "Unlimited"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:374
+#, fuzzy
+msgid "Village gold"
+msgstr "村莊"
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:414
+msgid "Experience modifier"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/mp_create_game.cfg:454
+msgid "Fog of War"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/mp_create_game.cfg:495
+msgid "Random start time"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_create_game.cfg:537
+#, fuzzy
+msgid "Create game"
+msgstr "創造新地圖"
+
+#. [label]
+#. [grid]
+#: data/gui/default/window/mp_method_selection.cfg:31
+#: data/gui/default/window/title_screen.cfg:79
+#, fuzzy
+msgid "Multiplayer"
+msgstr "多人遊戲設定"
+
+#. [label]
+#: data/gui/default/window/mp_method_selection.cfg:61
+msgid "Login:"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:136
+msgid "Join Official Server"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:137
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:148
+msgid "Join a different server"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:158
+msgid "Host Networked Game"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:159
+msgid "Host a game using dedicated server 'wesnothd"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:169
+#, fuzzy
+msgid "Local Game"
+msgstr "讀取遊戲"
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:170
+msgid "Play a multiplayer game with the AI or humans sharing the same machine"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_method_selection.cfg:205
+msgid "Ok"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_server_list.cfg:84
+#, fuzzy
+msgid "Name"
+msgstr "名字:"
+
+#. [label]
+#: data/gui/default/window/mp_server_list.cfg:96
+msgid "Address"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_server_list.cfg:198
+#, fuzzy
+msgid "Select"
+msgstr "全選"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:77
+#, fuzzy
+msgid "Tutorial"
+msgstr "顯示回合對話框"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:78
+msgid "Campaign"
+msgstr ""
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:80
+#, fuzzy
+msgid "Load"
+msgstr "道路"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:81
+msgid "Add-ons"
+msgstr ""
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:82
+#, fuzzy
+msgid "Editor"
+msgstr "退出編輯器"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:84
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "選項"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:85
+msgid "Credits"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:655
+#: src/hotkeys.cpp:936
+msgid "Quit"
+msgstr "退出"
 
 #: src/construct_dialog.cpp:145
 msgid "Yes"
@@ -317,10 +791,6 @@ msgstr "是"
 #: src/construct_dialog.cpp:146
 msgid "No"
 msgstr "否"
-
-#: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-msgid "Cancel"
-msgstr "取消"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
@@ -357,10 +827,6 @@ msgstr "没有已定義的伺服器"
 #: src/game_preferences.cpp:344
 msgid "player"
 msgstr "玩家"
-
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "選項"
 
 #: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
 msgid "Toggle Full Screen"
@@ -501,10 +967,6 @@ msgstr "UI音量"
 #: src/game_preferences_display.cpp:201
 msgid "Custom"
 msgstr "自定義"
-
-#: src/game_preferences_display.cpp:202
-msgid "Apply"
-msgstr "應用"
 
 #: src/game_preferences_display.cpp:203
 msgid "Show Unit Idle Animations"
@@ -1074,18 +1536,9 @@ msgstr "略過動畫"
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:113
-#, fuzzy
-msgid "Editor Settings"
-msgstr "快捷鍵設定"
-
 #: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
-
-#: src/hotkeys.cpp:115
-msgid "New Map"
-msgstr "新地圖"
 
 #: src/hotkeys.cpp:116
 msgid "Load Map"
@@ -1208,10 +1661,6 @@ msgstr "旋轉選擇區域"
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:159
-msgid "Resize Map"
-msgstr "改變地圖大小"
-
 #: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Rotate Map"
@@ -1314,10 +1763,6 @@ msgstr "玩家指令#3"
 msgid "Do you really want to quit?"
 msgstr "您要退出嗎？"
 
-#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
-msgid "Quit"
-msgstr "退出"
-
 #: src/hotkeys.cpp:891
 msgid "Map-Screenshot"
 msgstr "截圖"
@@ -1341,14 +1786,6 @@ msgstr "地圖生成器"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "玩家數量："
-
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "寬度："
-
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "高度："
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1490,14 +1927,8 @@ msgstr "在區塊'[$section|]'中，必須設的值'$key|'没有設定。"
 #~ msgid "Your modifications to the map will be lost. Continue?"
 #~ msgstr "您對地圖的更動將會遺失，確定要繼續？"
 
-#~ msgid "Create New Map"
-#~ msgstr "創造新地圖"
-
 #~ msgid "Generate New Map"
 #~ msgstr "新地圖"
-
-#~ msgid "Generate Random Map"
-#~ msgstr "隨機地圖"
 
 #~ msgid "Random Generator Settings"
 #~ msgstr "隨機地圖設定"
@@ -1541,9 +1972,6 @@ msgstr "在區塊'[$section|]'中，必須設的值'$key|'没有設定。"
 #~ msgid "Set Terrain"
 #~ msgstr "設定地形"
 
-#~ msgid "Quit Editor"
-#~ msgstr "退出編輯器"
-
 #~ msgid "Save As"
 #~ msgstr "另存為"
 
@@ -1564,9 +1992,6 @@ msgstr "在區塊'[$section|]'中，必須設的值'$key|'没有設定。"
 
 #~ msgid "Delay transition updates"
 #~ msgstr "暫緩刷新戰爭迷霧"
-
-#~ msgid "Update transitions"
-#~ msgstr "刷新戰爭迷霧"
 
 #, fuzzy
 #~ msgid "Invert Selection"

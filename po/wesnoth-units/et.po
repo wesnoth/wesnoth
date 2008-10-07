@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-05 20:18+0200\n"
+"POT-Creation-Date: 2008-10-07 16:14+0200\n"
 "PO-Revision-Date: 2008-05-26 23:50+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -41,6 +41,7 @@ msgstr ""
 #: data/core/units/monsters/Wolf.cfg:49
 #: data/core/units/monsters/Cave_Spider.cfg:34
 #: data/core/units/monsters/Sea_Serpent.cfg:27
+#: data/core/units/goblins/Pillager.cfg:34
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
@@ -1041,6 +1042,7 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:54
 #: data/core/units/humans/Mage_White.cfg:121
 #: data/core/units/humans/Mage_Great.cfg:30
+#: data/core/units/humans/Mage_Elder.cfg:25
 #: data/core/units/humans/Mage_Silver.cfg:36
 #: data/core/units/humans/Mage_Arch.cfg:29
 #: data/core/units/humans/Mage_Red.cfg:54
@@ -1534,14 +1536,14 @@ msgstr ""
 "ka võrke, millega vastaseid maha rabada."
 
 #. [attack]: type=fire
-#: data/core/units/goblins/Pillager.cfg:34
+#: data/core/units/goblins/Pillager.cfg:43
 msgid "torch"
 msgstr "tõrvik"
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Netcaster.cfg:31
 #: data/core/units/merfolk/Entangler.cfg:32
-#: data/core/units/goblins/Pillager.cfg:43
+#: data/core/units/goblins/Pillager.cfg:52
 msgid "net"
 msgstr "võrk"
 
@@ -2453,6 +2455,26 @@ msgstr ""
 "Kuigi nad pole õppinud ühtki võitluskunsti, võib peavõlur vajaduse korral "
 "võtta kasutusele enda kunstide tõelise jõu - ja sellesse ei maksa kerglaselt "
 "suhtuda."
+
+#. [unit_type]: race=human
+#: data/core/units/humans/Mage_Elder.cfg:4
+#, fuzzy
+msgid "Elder Mage"
+msgstr "Hõbevõlur"
+
+#. [unit_type]: race=human
+#: data/core/units/humans/Mage_Elder.cfg:22
+msgid ""
+"Once great, Elder Magi have seen their power a little diminished from "
+"wearying years of battle. Nevertheless they remain feared on the battlefield "
+"on account of their powerful lightning bolts."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/humans/Mage_Elder.cfg:34
+#, fuzzy
+msgid "lightning"
+msgstr "Välgunool"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Great.cfg:4

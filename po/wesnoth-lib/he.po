@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-05 20:18+0200\n"
+"POT-Creation-Date: 2008-10-07 16:14+0200\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -28,7 +28,8 @@ msgid "None"
 msgstr "לא"
 
 #. [terrain]
-#: data/core/terrain.cfg:20
+#. [toggle_button]
+#: data/core/terrain.cfg:20 data/gui/default/window/mp_create_game.cfg:473
 msgid "Shroud"
 msgstr "ממוסך"
 
@@ -135,190 +136,660 @@ msgid "Tropical Forest"
 msgstr "יער טרופי"
 
 #. [terrain]
-#: data/core/terrain.cfg:444 data/core/terrain.cfg:453
-#: data/core/terrain.cfg:462
+#: data/core/terrain.cfg:444
+#, fuzzy
+msgid "Forested Hills"
+msgstr "יער"
+
+#. [terrain]
+#: data/core/terrain.cfg:454
+#, fuzzy
+msgid "Forested Snow Hills"
+msgstr "גבעות שלג"
+
+#. [terrain]
+#: data/core/terrain.cfg:468 data/core/terrain.cfg:477
+#: data/core/terrain.cfg:486
 msgid "Grassland"
 msgstr "אדמת מרעה"
 
 #. [terrain]
-#: data/core/terrain.cfg:471
+#: data/core/terrain.cfg:495
 msgid "Savanna"
 msgstr "ערבה"
 
 #. [terrain]
-#: data/core/terrain.cfg:484
+#: data/core/terrain.cfg:508
 msgid "Snow Hills"
 msgstr "גבעות שלג"
 
 #. [terrain]
-#: data/core/terrain.cfg:494
+#: data/core/terrain.cfg:518
 msgid "Dunes"
 msgstr "דיונות"
 
 #. [terrain]
-#: data/core/terrain.cfg:504
+#: data/core/terrain.cfg:528
 msgid "Hills"
 msgstr "גבעות"
 
 #. [terrain]
-#: data/core/terrain.cfg:516 data/core/terrain.cfg:525
-#: data/core/terrain.cfg:533
+#: data/core/terrain.cfg:540 data/core/terrain.cfg:549
+#: data/core/terrain.cfg:557
 msgid "Mountains"
 msgstr "הרים"
 
 #. [terrain]
-#: data/core/terrain.cfg:547
+#: data/core/terrain.cfg:571
 msgid "Chasm"
 msgstr "תהום"
 
 #. [terrain]
-#: data/core/terrain.cfg:556
+#: data/core/terrain.cfg:580
 msgid "Lava chasm"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:566
+#: data/core/terrain.cfg:590
 msgid "Lava"
 msgstr "לבה"
 
 #. [terrain]
-#: data/core/terrain.cfg:580 data/core/terrain.cfg:598
-#: data/core/terrain.cfg:607
+#: data/core/terrain.cfg:604 data/core/terrain.cfg:622
+#: data/core/terrain.cfg:631
 msgid "Road"
 msgstr "דרך"
 
 #. [terrain]
-#: data/core/terrain.cfg:589
+#: data/core/terrain.cfg:613
 msgid "Dirt"
 msgstr "עפר"
 
 #. [terrain]
-#: data/core/terrain.cfg:616
+#: data/core/terrain.cfg:640
 msgid "Farmland"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:630
+#: data/core/terrain.cfg:654
 msgid "Swamp"
 msgstr "ביצה"
 
 #. [terrain]
-#: data/core/terrain.cfg:644
+#: data/core/terrain.cfg:668
 msgid "Lit"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:654
+#: data/core/terrain.cfg:678
 msgid "Cave"
 msgstr "מערה"
 
 #. [terrain]
-#: data/core/terrain.cfg:672
+#: data/core/terrain.cfg:696
 #, fuzzy
 msgid "Cave path"
 msgstr "מערה מוארת"
 
 #. [terrain]
-#: data/core/terrain.cfg:681
+#: data/core/terrain.cfg:705
 msgid "Mushroom Grove"
 msgstr "חורשת פיטריות"
 
 #. [terrain]
-#: data/core/terrain.cfg:690
+#: data/core/terrain.cfg:714
 #, fuzzy
 msgid "Mushroom Grove Lit"
 msgstr "חורשת פיטריות"
 
 #. [terrain]
-#: data/core/terrain.cfg:701
+#: data/core/terrain.cfg:725
 msgid "Rockbound Cave"
 msgstr "מערה מוקפת סלעים"
 
 #. [terrain]
-#: data/core/terrain.cfg:728 data/core/terrain.cfg:739
 #: data/core/terrain.cfg:752 data/core/terrain.cfg:763
 #: data/core/terrain.cfg:776 data/core/terrain.cfg:787
-#: data/core/terrain.cfg:797 data/core/terrain.cfg:808
-#: data/core/terrain.cfg:819 data/core/terrain.cfg:830
-#: data/core/terrain.cfg:841 data/core/terrain.cfg:852
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:811
+#: data/core/terrain.cfg:821 data/core/terrain.cfg:832
+#: data/core/terrain.cfg:843 data/core/terrain.cfg:854
 #: data/core/terrain.cfg:865 data/core/terrain.cfg:876
-#: data/core/terrain.cfg:887 data/core/terrain.cfg:898
-#: data/core/terrain.cfg:909 data/core/terrain.cfg:920
-#: data/core/terrain.cfg:931 data/core/terrain.cfg:944
-#: data/core/terrain.cfg:959 data/core/terrain.cfg:970
+#: data/core/terrain.cfg:889 data/core/terrain.cfg:900
+#: data/core/terrain.cfg:911 data/core/terrain.cfg:922
+#: data/core/terrain.cfg:933 data/core/terrain.cfg:944
+#: data/core/terrain.cfg:955 data/core/terrain.cfg:968
+#: data/core/terrain.cfg:983 data/core/terrain.cfg:994
 msgid "Village"
 msgstr "כפר"
 
 #. [terrain]
-#: data/core/terrain.cfg:985
+#: data/core/terrain.cfg:1009
 msgid "Deep Water"
 msgstr "מים עמוקים"
 
 #. [terrain]
-#: data/core/terrain.cfg:995
+#: data/core/terrain.cfg:1019
 msgid "Shallow Water"
 msgstr "מים רדודים"
 
 #. [terrain]
-#: data/core/terrain.cfg:1005
+#: data/core/terrain.cfg:1029
 msgid "River Ford"
 msgstr "שפך נהר"
 
 #. [terrain]
-#: data/core/terrain.cfg:1016
+#: data/core/terrain.cfg:1040
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "חופי"
 
 #. [terrain]
-#: data/core/terrain.cfg:1030
+#: data/core/terrain.cfg:1054
 msgid "Impassable Mountains"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1039
+#: data/core/terrain.cfg:1063
 msgid "Impassable Desert Mountains"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1048
+#: data/core/terrain.cfg:1072
 msgid "Cave Wall"
 msgstr "קיר מערה"
 
 #. [terrain]
-#: data/core/terrain.cfg:1057
+#: data/core/terrain.cfg:1081
 #, fuzzy
 msgid "Wall"
 msgstr "קיר מערה"
 
 #. [terrain]
-#: data/core/terrain.cfg:1067
+#: data/core/terrain.cfg:1091
 msgid "Void"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1080
+#: data/core/terrain.cfg:1104
 msgid "Flat"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1087
+#: data/core/terrain.cfg:1111
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1094
+#: data/core/terrain.cfg:1118
 msgid "Impassable"
 msgstr ""
 
 #. [terrain]
-#: data/core/terrain.cfg:1101
+#: data/core/terrain.cfg:1125
 msgid "Unwalkable"
 msgstr ""
 
+#. [label]
+#. [column]
+#: data/gui/default/window/addon_connect.cfg:32
+#: data/gui/default/window/mp_connect.cfg:31
+#: data/gui/default/window/mp_method_selection.cfg:147
+#: data/gui/default/window/mp_server_list.cfg:31
+#, fuzzy
+msgid "Connect to Server"
+msgstr "המשך תנועה"
+
+#. [label]
+#: data/gui/default/window/addon_connect.cfg:51
+msgid "You will now connect to a server to download add-ons."
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_connect.cfg:81
+#: data/gui/default/window/mp_connect.cfg:80
+msgid "Server:"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:135
+#: data/gui/default/window/addon_connect.cfg:136
+msgid "Update add-ons"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:168
+#: data/gui/default/window/addon_connect.cfg:169
+#, fuzzy
+msgid "Remove Add-ons"
+msgstr "שחזור פעולה"
+
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:201
+#: data/gui/default/window/addon_connect.cfg:202
+#: data/gui/default/window/mp_connect.cfg:175
+#: data/gui/default/window/mp_connect.cfg:176
+msgid "Connect"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]
+#: data/gui/default/window/addon_connect.cfg:216
+#: data/gui/default/window/editor_generate_map.cfg:111
+#: data/gui/default/window/editor_new_map.cfg:111
+#: data/gui/default/window/editor_resize_map.cfg:275
+#: data/gui/default/window/editor_settings.cfg:218
+#: data/gui/default/window/language_selection.cfg:136
+#: data/gui/default/window/mp_connect.cfg:190
+#: data/gui/default/window/mp_create_game.cfg:552
+#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:150
+#: src/construct_dialog.cpp:153
+msgid "Cancel"
+msgstr "בטל"
+
+#. [label]
+#: data/gui/default/window/editor_generate_map.cfg:38
+msgid "Generate Random Map"
+msgstr "יצירת מפה אקראית"
+
+#. [button]
+#: data/gui/default/window/editor_generate_map.cfg:67
+#: data/gui/default/window/editor_generate_map.cfg:68
+#, fuzzy
+msgid "Next Generator"
+msgstr "יצירת מפה"
+
+#. [button]
+#: data/gui/default/window/editor_generate_map.cfg:90
+#: data/gui/default/window/editor_generate_map.cfg:91
+#, fuzzy
+msgid "Settings"
+msgstr "מקשי קיצור"
+
+#. [button]
+#: data/gui/default/window/editor_generate_map.cfg:101
+#, fuzzy
+msgid "Generate"
+msgstr "יצירת מפה חדשה"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
+msgid "New Map"
+msgstr "מפה חדשה"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:123
+msgid "Width:"
+msgstr "רוחב:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:124
+msgid "Height:"
+msgstr "גובה:"
+
+#. [button]
+#: data/gui/default/window/editor_new_map.cfg:100
+#: data/gui/default/window/editor_new_map.cfg:101
+#, fuzzy
+msgid "Create new map"
+msgstr "יצירת מפה חדשה"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
+msgid "Resize Map"
+msgstr "שנה גודל מפה"
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:46
+#, fuzzy
+msgid "New width:"
+msgstr "רוחב:"
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:70
+#, fuzzy
+msgid "Old width:"
+msgstr "רוחב:"
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:81
+#: data/gui/default/window/editor_resize_map.cfg:130
+msgid "2000"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:82
+#: data/gui/default/window/editor_resize_map.cfg:131
+msgid "-1"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:95
+#, fuzzy
+msgid "New height:"
+msgstr "גובה:"
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:119
+#, fuzzy
+msgid "Old height:"
+msgstr "גובה:"
+
+#. [label]
+#: data/gui/default/window/editor_resize_map.cfg:147
+msgid "Expand / shrink direction"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/editor_resize_map.cfg:242
+msgid "Copy edge terrain"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/editor_resize_map.cfg:264
+#: data/gui/default/window/editor_resize_map.cfg:265
+#, fuzzy
+msgid "Resize map"
+msgstr "שנה גודל מפה"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
+#, fuzzy
+msgid "Editor Settings"
+msgstr "מקשי קיצור"
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:46
+msgid "Time of day lightning preset"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/editor_settings.cfg:75
+#: data/gui/default/window/editor_settings.cfg:76
+#, fuzzy
+msgid "Next"
+msgstr "היחידה הבאה"
+
+#. [toggle_button]
+#: data/gui/default/window/editor_settings.cfg:83
+msgid "Custom lightning setting"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/editor_settings.cfg:93
+msgid "Auto-update map view"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:120
+#, fuzzy
+msgid "Red:"
+msgstr "שחזור פעולה"
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:146
+msgid "Green:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/editor_settings.cfg:172
+msgid "Blue:"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]
+#: data/gui/default/window/editor_settings.cfg:208
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
 msgid "OK"
 msgstr "אשר"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]
+#: data/gui/default/window/editor_settings.cfg:228
+#: src/game_preferences_display.cpp:202
+msgid "Apply"
+msgstr ""
+
+#. [grid]
+#. [label]
+#: data/gui/default/window/language_selection.cfg:31
+#: data/gui/default/window/title_screen.cfg:83
+msgid "Language"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/language_selection.cfg:50
+msgid "Choose your preferred language:"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/language_selection.cfg:121
+#: data/gui/default/window/language_selection.cfg:122
+#, fuzzy
+msgid "Change language"
+msgstr "החלף שפה"
+
+#. [label]
+#: data/gui/default/window/mp_connect.cfg:50
+#: data/gui/default/window/mp_server_list.cfg:51
+msgid "You will now connect to the multiplayer server."
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_connect.cfg:148
+#, fuzzy
+msgid "View List"
+msgstr "רשימת יחידות"
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:33
+#, fuzzy
+msgid "Create Game"
+msgstr "שמור משחק"
+
+#. [label]
+#. [text_box]
+#: data/gui/default/window/mp_create_game.cfg:62
+#: data/gui/default/window/mp_create_game.cfg:77
+msgid "Name of game:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:140
+#, fuzzy
+msgid "Players: "
+msgstr "שחקנים:"
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:159
+msgid "Map size: "
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:177
+msgid "Era:"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_create_game.cfg:196
+#, fuzzy
+msgid "Default"
+msgstr "גודל רגיל"
+
+#. [button]
+#: data/gui/default/window/mp_create_game.cfg:218
+msgid "Set Password"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:246
+msgid "Map to play:"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/mp_create_game.cfg:315
+msgid "Use map settings"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:333
+#, fuzzy
+msgid "Number of turns"
+msgstr "מספר הגבעות:"
+
+#. [slider]
+#: data/gui/default/window/mp_create_game.cfg:356
+msgid "Unlimited"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:374
+#, fuzzy
+msgid "Village gold"
+msgstr "כפר"
+
+#. [label]
+#: data/gui/default/window/mp_create_game.cfg:414
+msgid "Experience modifier"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/mp_create_game.cfg:454
+msgid "Fog of War"
+msgstr ""
+
+#. [toggle_button]
+#: data/gui/default/window/mp_create_game.cfg:495
+msgid "Random start time"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_create_game.cfg:537
+#, fuzzy
+msgid "Create game"
+msgstr "יצירת מפה חדשה"
+
+#. [label]
+#. [grid]
+#: data/gui/default/window/mp_method_selection.cfg:31
+#: data/gui/default/window/title_screen.cfg:79
+#, fuzzy
+msgid "Multiplayer"
+msgstr "שחקן"
+
+#. [label]
+#: data/gui/default/window/mp_method_selection.cfg:61
+msgid "Login:"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:136
+msgid "Join Official Server"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:137
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:148
+msgid "Join a different server"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:158
+msgid "Host Networked Game"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:159
+msgid "Host a game using dedicated server 'wesnothd"
+msgstr ""
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:169
+#, fuzzy
+msgid "Local Game"
+msgstr "טען משחק"
+
+#. [column]
+#: data/gui/default/window/mp_method_selection.cfg:170
+msgid "Play a multiplayer game with the AI or humans sharing the same machine"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_method_selection.cfg:205
+msgid "Ok"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_server_list.cfg:84
+msgid "Name"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_server_list.cfg:96
+msgid "Address"
+msgstr ""
+
+#. [button]
+#: data/gui/default/window/mp_server_list.cfg:198
+#, fuzzy
+msgid "Select"
+msgstr "בחר הכל"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:77
+#, fuzzy
+msgid "Tutorial"
+msgstr "הודעת תור"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:78
+msgid "Campaign"
+msgstr ""
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:80
+#, fuzzy
+msgid "Load"
+msgstr "דרך"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:81
+msgid "Add-ons"
+msgstr ""
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:82
+#, fuzzy
+msgid "Editor"
+msgstr "צא מהעורך"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:84
+#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+msgid "Preferences"
+msgstr "העדפות"
+
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:85
+msgid "Credits"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [grid]
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:655
+#: src/hotkeys.cpp:936
+msgid "Quit"
+msgstr "צא"
 
 #: src/construct_dialog.cpp:145
 msgid "Yes"
@@ -327,10 +798,6 @@ msgstr "כן"
 #: src/construct_dialog.cpp:146
 msgid "No"
 msgstr "לא"
-
-#: src/construct_dialog.cpp:150 src/construct_dialog.cpp:153
-msgid "Cancel"
-msgstr "בטל"
 
 #: src/construct_dialog.cpp:156
 msgid "Close"
@@ -368,10 +835,6 @@ msgstr ""
 #: src/game_preferences.cpp:344
 msgid "player"
 msgstr "שחקן"
-
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
-msgid "Preferences"
-msgstr "העדפות"
 
 #: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
 msgid "Toggle Full Screen"
@@ -520,10 +983,6 @@ msgstr ""
 #, fuzzy
 msgid "Custom"
 msgstr "גזור"
-
-#: src/game_preferences_display.cpp:202
-msgid "Apply"
-msgstr ""
 
 #: src/game_preferences_display.cpp:203
 msgid "Show Unit Idle Animations"
@@ -1114,18 +1573,9 @@ msgstr "דלג על האנימציה"
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:113
-#, fuzzy
-msgid "Editor Settings"
-msgstr "מקשי קיצור"
-
 #: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
-
-#: src/hotkeys.cpp:115
-msgid "New Map"
-msgstr "מפה חדשה"
 
 #: src/hotkeys.cpp:116
 msgid "Load Map"
@@ -1249,10 +1699,6 @@ msgstr "מלא את הבחירה"
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:159
-msgid "Resize Map"
-msgstr "שנה גודל מפה"
-
 #: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Rotate Map"
@@ -1355,10 +1801,6 @@ msgstr ""
 msgid "Do you really want to quit?"
 msgstr "האם באמת ברצונך לצאת?"
 
-#: src/hotkeys.cpp:655 src/hotkeys.cpp:936
-msgid "Quit"
-msgstr "צא"
-
 #: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Map-Screenshot"
@@ -1385,14 +1827,6 @@ msgstr "יצירת מפה"
 #: src/mapgen_dialog.cpp:122
 msgid "Players:"
 msgstr "שחקנים:"
-
-#: src/mapgen_dialog.cpp:123
-msgid "Width:"
-msgstr "רוחב:"
-
-#: src/mapgen_dialog.cpp:124
-msgid "Height:"
-msgstr "גובה:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Number of Hills:"
@@ -1533,14 +1967,8 @@ msgstr ""
 #~ msgid "Your modifications to the map will be lost. Continue?"
 #~ msgstr "השינויים שביצעת במפה יאבדו. האם להמשיך?"
 
-#~ msgid "Create New Map"
-#~ msgstr "יצירת מפה חדשה"
-
 #~ msgid "Generate New Map"
 #~ msgstr "יצירת מפה חדשה"
-
-#~ msgid "Generate Random Map"
-#~ msgstr "יצירת מפה אקראית"
 
 #~ msgid "Random Generator Settings"
 #~ msgstr "אפשרויות מחולל אקראי"
@@ -1562,9 +1990,6 @@ msgstr ""
 
 #~ msgid "Set Terrain"
 #~ msgstr "קביעת קרקע"
-
-#~ msgid "Quit Editor"
-#~ msgstr "צא מהעורך"
 
 #~ msgid "Save As"
 #~ msgstr "שמור בשם"

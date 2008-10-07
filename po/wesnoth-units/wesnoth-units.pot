@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-05 20:18+0200\n"
+"POT-Creation-Date: 2008-10-07 16:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:175 data/core/units/bats/Bat_Vampire.cfg:174 data/core/units/monsters/Wolf.cfg:49 data/core/units/monsters/Cave_Spider.cfg:34 data/core/units/monsters/Sea_Serpent.cfg:27 data/core/units/goblins/Wolf_Rider.cfg:51 data/core/units/goblins/Knight.cfg:35 data/core/units/goblins/Direwolf_Rider.cfg:33
+#: data/core/units/bats/Bat_Blood.cfg:175 data/core/units/bats/Bat_Vampire.cfg:174 data/core/units/monsters/Wolf.cfg:49 data/core/units/monsters/Cave_Spider.cfg:34 data/core/units/monsters/Sea_Serpent.cfg:27 data/core/units/goblins/Pillager.cfg:34 data/core/units/goblins/Wolf_Rider.cfg:51 data/core/units/goblins/Knight.cfg:35 data/core/units/goblins/Direwolf_Rider.cfg:33
 msgid "fangs"
 msgstr ""
 
@@ -547,7 +547,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:52 data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28 data/core/units/saurians/Soothsayer.cfg:66 data/core/units/saurians/Augur.cfg:66 data/core/units/saurians/Oracle.cfg:66 data/core/units/merfolk/Priestess.cfg:62 data/core/units/merfolk/Enchantress.cfg:24 data/core/units/merfolk/Initiate.cfg:28 data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:54 data/core/units/humans/Mage_White.cfg:121 data/core/units/humans/Mage_Great.cfg:30 data/core/units/humans/Mage_Silver.cfg:36 data/core/units/humans/Mage_Arch.cfg:29 data/core/units/humans/Mage_Red.cfg:54 data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
+#: data/core/units/elves/Enchantress.cfg:26 data/core/units/elves/Druid.cfg:52 data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28 data/core/units/saurians/Soothsayer.cfg:66 data/core/units/saurians/Augur.cfg:66 data/core/units/saurians/Oracle.cfg:66 data/core/units/merfolk/Priestess.cfg:62 data/core/units/merfolk/Enchantress.cfg:24 data/core/units/merfolk/Initiate.cfg:28 data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:54 data/core/units/humans/Mage_White.cfg:121 data/core/units/humans/Mage_Great.cfg:30 data/core/units/humans/Mage_Elder.cfg:25 data/core/units/humans/Mage_Silver.cfg:36 data/core/units/humans/Mage_Arch.cfg:29 data/core/units/humans/Mage_Red.cfg:54 data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
 msgid "staff"
 msgstr ""
 
@@ -838,12 +838,12 @@ msgid "Some Goblins train their wolves to overcome their fear of fire. In raids,
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/goblins/Pillager.cfg:34
+#: data/core/units/goblins/Pillager.cfg:43
 msgid "torch"
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Netcaster.cfg:31 data/core/units/merfolk/Entangler.cfg:32 data/core/units/goblins/Pillager.cfg:43
+#: data/core/units/merfolk/Netcaster.cfg:31 data/core/units/merfolk/Entangler.cfg:32 data/core/units/goblins/Pillager.cfg:52
 msgid "net"
 msgstr ""
 
@@ -1281,6 +1281,21 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:119
 msgid "female^Arch Mage"
+msgstr ""
+
+#. [unit_type]: race=human
+#: data/core/units/humans/Mage_Elder.cfg:4
+msgid "Elder Mage"
+msgstr ""
+
+#. [unit_type]: race=human
+#: data/core/units/humans/Mage_Elder.cfg:22
+msgid "Once great, Elder Magi have seen their power a little diminished from wearying years of battle. Nevertheless they remain feared on the battlefield on account of their powerful lightning bolts."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/humans/Mage_Elder.cfg:34
+msgid "lightning"
 msgstr ""
 
 #. [unit_type]: race=human
