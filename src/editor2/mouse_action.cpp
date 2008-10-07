@@ -250,13 +250,13 @@ const brush& brush_drag_mouse_action::get_brush()
 editor_action* mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
-	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_left_, has_alt_modifier()));
+	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_left_, has_shift_modifier()));
 }
 
 editor_action* mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<gamemap::location>& hexes)
 {
-	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_right_, has_alt_modifier()));
+	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_right_, has_shift_modifier()));
 }
 
 void mouse_action_paint::set_mouse_overlay(editor_display& disp)
@@ -348,7 +348,7 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	//TODO only take the base terrain into account when searching for contigious terrain when painting base only
 	//or use a different key modifier for that
-	editor_action_fill* a = new editor_action_fill(hex, terrain_left_, has_alt_modifier());
+	editor_action_fill* a = new editor_action_fill(hex, terrain_left_, has_shift_modifier());
 	return a;
 }
 
@@ -357,7 +357,7 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 	gamemap::location hex = disp.hex_clicked_on(x, y);
 	//TODO only take the base terrain into account when searching for contigious terrain when painting base only
 	//or use a different key modifier for that
-	editor_action_fill* a = new editor_action_fill(hex, terrain_right_, has_alt_modifier());
+	editor_action_fill* a = new editor_action_fill(hex, terrain_right_, has_shift_modifier());
 	return a;
 }
 
