@@ -15,6 +15,7 @@
 #ifndef TEXT_HPP_INCLUDED
 #define TEXT_HPP_INCLUDED
 
+#include "copy_policy.hpp"
 #include "sdl_utils.hpp"
 
 #include <pango/pango.h>
@@ -32,33 +33,23 @@ namespace font {
 
 // add background colour and also font markup.
 
+/** 
+ * The classes in this namespace should not be used directly.
+ *
+ * Use the typedef which sets the policy instead.
+ */
+namespace internal {
 /**
- * Text class .
+ * Text class.
  *
  * This class stores the text to draw and uses pango with the cairo backend to
  * render the text. See http://pango.org for more info.
  */
-class ttext {
-	ttext& operator=(const ttext&);
+class ttext 
+{
 public:
 
 	ttext();
-
-	/**
-	 * Copy constructor.
-	 *
-	 * The class is not copyable but the compiler needs the have the illusion
-	 * the class is copy constructable. The copy constructor is declared but not
-	 * fully defined. We assume all compilers do a RVO [1] at the places where
-	 * the constructor is used. If some compiler doesn't support it we'll get
-	 * linker errors. We declare this constructor to avoid a default copy
-	 * constructor which would do the wrong thing (double freeing the Pango data
-	 * and the surface_surface buffer). If it breaks on some compiler or we need
-	 * to copy this class a real constructor should be written.
-	 *
-	 * [1] http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.9
-	 */
-	ttext(const ttext&);
 
 	~ttext();
 
@@ -159,6 +150,9 @@ public:
 	 * of the text.
 	 */
 	size_t get_length() const { return length_; }
+
+	/** Helper for policies::tdeep_copy. */
+	void clone();
 
 	/***** ***** ***** ***** Setters / getters ***** ***** ***** *****/
 
@@ -283,6 +277,18 @@ private:
 	 */
 	void create_surface_buffer(const size_t size) const; 
 };
+
+} // namespace internal 
+
+
+/**
+ * Note the deepcopy might not be used on all compilers due to RVO [1].
+ * This means the code might be less tested, gcc does this optimization and
+ * thus I didn't test it on my platform -- Mordante.
+ *
+ * [1] http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.9
+ */
+typedef policies::tcopy_policy<internal::ttext, policies::tdeep_copy> ttext;
 
 } // namespace font 
 

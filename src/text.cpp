@@ -28,6 +28,8 @@
 
 namespace font {
 
+namespace internal {
+
 namespace {
 
 /**
@@ -237,6 +239,20 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 			assert(i == 0);
 		}
 	}
+}
+
+void ttext::clone()
+{
+	context_ = pango_cairo_font_map_create_context((
+		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default())));
+	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
+	pango_cairo_context_set_resolution(context_, 72.0);
+
+	layout_ = pango_layout_new(context_);
+	pango_layout_set_ellipsize(layout_, ellipse_mode_);
+
+	surface_dirty_ = true;
+	surface_buffer_ = 0;
 }
 
 ttext& ttext::set_text(const std::string& text, const bool markedup) 
@@ -476,6 +492,8 @@ void ttext::create_surface_buffer(const size_t size) const
 	surface_buffer_ = new unsigned char [size];
 	memset(surface_buffer_, 0, size);
 }
+
+} // namespace internal 
 
 } // namespace font 
 
