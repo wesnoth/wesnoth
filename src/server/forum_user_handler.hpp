@@ -45,22 +45,15 @@ class fuh : public user_handler {
 		fuh(const config& c);
 		~fuh() {}
 
+		// Throws user_handler::error
 		void add_user(const std::string& name, const std::string& mail, const std::string& password);
+
+		// Throws user_handler::error
 		void remove_user(const std::string& name);
 
-		void clean_up();
+		void clean_up() {}
 
 		bool login(const std::string& name, const std::string& password, const std::string& seed);
-		void user_logged_in(const std::string& name);
-
-		bool user_exists(const std::string& name);
-
-		void password_reminder(const std::string& name);
-
-		std::string user_info(const std::string& name);
-
-		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
-		std::string get_valid_details();
 
 		/**
 		 * Needed because the hashing algorithm used by phpbb requires some info
@@ -69,6 +62,20 @@ class fuh : public user_handler {
 		 * index = 1 return the salt
 		 */
 		std::string create_pepper(const std::string& name, int index);
+
+		void user_logged_in(const std::string& name);
+
+		bool user_exists(const std::string& name);
+
+		// Throws user_handler::error
+		void password_reminder(const std::string& name);
+
+		// Throws user_handler::error
+		std::string user_info(const std::string& name);
+
+		// Throws user_handler::error
+		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
+		std::string get_valid_details();
 
 	private:
 		std::string get_hash(const std::string& user);
@@ -82,7 +89,10 @@ class fuh : public user_handler {
 
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_extra_table_;
 
+		// Throws user_handler::error
 		mysqlpp::Result db_query(const std::string& query);
+
+		// Throws user_handler::error via db_query() 
 		std::string db_query_to_string(const std::string& query);
 		mysqlpp::Connection db_interface_;
 
@@ -91,7 +101,7 @@ class fuh : public user_handler {
 		std::string get_writable_detail_for_user(const std::string& name, const std::string& detail);
 
 		// Write something to the write table
-		void set_detail_for_user(const std::string& name, const std::string& detail, const std::string& value);
+		void write_detail(const std::string& name, const std::string& detail, const std::string& value);
 
 		// Same as user_exists() but checks if we have a row for this user in the extra table
 		bool extra_row_exists(const std::string& name);
