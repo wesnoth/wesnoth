@@ -848,6 +848,13 @@ void server::run() {
 			}
 			e.disconnect();
 			DBG_SERVER << "done closing socket...\n";
+
+		// Catch user_handler exceptions here, to prevent the
+		// server from going down completely. Once we are sure
+		// all user_handler exceptions are caught correctly
+		// this can removed.
+		} catch (user_handler::error e) {
+			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "\n"; 
 		}
 	}
 }
