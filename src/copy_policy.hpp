@@ -79,7 +79,7 @@ class tno_copy
 {
 public:
 	/** The type to use in the copy constructor and assignment operator. */
-	typedef const typename utils::treference_type<T>::type rhs_type;
+	typedef typename utils::treference_type<const T>::type rhs_type;
 
 	void copy(rhs_type /*rhs*/) 
 	{
@@ -97,7 +97,7 @@ class tshallow_copy
 {
 public:
 	/** The type to use in the copy constructor and assignment operator. */
-	typedef const typename utils::treference_type<T>::type rhs_type;
+	typedef typename utils::treference_type<const T>::type rhs_type;
 
 	void copy(rhs_type /*rhs*/) 
 	{ 
@@ -118,7 +118,7 @@ class tdeep_copy
 {
 public:
 	/** The type to use in the copy constructor and assignment operator. */
-	typedef const typename utils::treference_type<T>::type rhs_type;
+	typedef typename utils::treference_type<const T>::type rhs_type;
 
 	void copy(rhs_type rhs) 
 	{ 
