@@ -106,7 +106,7 @@ if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS
             PO4A_CHARSET = "utf8", PO4A_FORMAT = "docbook")
     Alias("update-po4a", Alias("manual"))
 
-    manpages = Split("wesnoth.6 wesnoth_editor.6 wesnothd.6")
+    manpages = Split("wesnoth.6 wesnothd.6")
     charsets = { "ar":"utf8", "bg":"cp1251", "ca_ES@valencia":"iso-8859-15", "cs":"iso-8859-2", "el":"iso-8859-7",
           "he":"iso-8859-8", "hr":"utf8", "hu":"iso-8859-2", "ja":"euc-jp", "ko":"euc-kr", "lt":"iso-8859-13", "pl":"iso-8859-2",
           "ro":"iso-8859-2", "ru":"iso-8859-5", "sk":"iso-8859-2", "sl":"iso-8859-2", "sr":"utf8", "sr@latin":"utf8",
