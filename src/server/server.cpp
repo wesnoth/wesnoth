@@ -442,6 +442,11 @@ void server::send_password_request(network::connection sock, const char* msg, co
 	std::string salt1 = user_handler_->create_salt();
 	std::string salt2 = user_handler_->create_pepper(user, 0);
 	std::string salt3 = user_handler_->create_pepper(user, 1);
+	if(salt2.empty() || salt3.empty()) {
+		send_error(sock, "Even though your nick is registered on this server you"
+					"cannot log in due to an error in the hashing algorithm.");
+		return;
+	}
 
 	seeds_.insert(std::pair<network::connection,std::string>(sock, salt1));
 

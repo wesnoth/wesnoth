@@ -252,10 +252,16 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				sp["username"] = login ;
 				sp["password_reminder"] = password_reminder;
 
-				//If password is not empty start hashing
+				// If password is not empty start hashing
 
 				std::string result;
 				if(!(password.empty())) {
+
+					// Check if we have everything we need
+					if((*error)["salt"].empty() || (*error)["hash_seed"].empty()) {
+						return ABORT_SERVER;
+					}
+
 					std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
 					std::string salt = (*error)["salt"];

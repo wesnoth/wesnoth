@@ -60,6 +60,8 @@ class fuh : public user_handler {
 		 * from the original hash to recreate the same hash
 		 * index = 0 returns the hash seed
 		 * index = 1 return the salt
+		 *
+		 * Return an empty string if an error occurs
 		 */
 		std::string create_pepper(const std::string& name, int index);
 
