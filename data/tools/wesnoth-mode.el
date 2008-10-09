@@ -103,7 +103,9 @@
 ;; * Added support for #ifndef.
 
 ;;; Code:
-(defconst wesnoth-mode-version "1.2.5"
+(require 'cl)
+
+(defconst wesnoth-mode-version "1.2.5a"
   "The current version of `wesnoth-mode'.")
 
 (defgroup wesnoth-mode nil "Wesnoth-mode access"
@@ -115,14 +117,12 @@
   :type 'boolean
   :group 'wesnoth-mode)
 
-(defcustom wesnoth-indent-default-style t
+(defcustom wesnoth-indent-savefile t
   "Non-nil means to use the current indentation conventions.
 If nil, use the old convention for indentation.
 The current convention is all attributes are indented a level deeper
 than their parent; in the past attributes were indented to the same
 level as their parent.")
-
-(defvaralias 'wesnoth-indent-savefile 'wesnoth-indent-default-style)
 
 (defcustom wesnoth-base-indent 4
   "The number of columns to indent WML."
@@ -199,9 +199,10 @@ level as their parent.")
 
 (defun wesnoth-preprocessor-best-face ()
   "Use `font-lock-preprocessor-face' when available."
-  (if (boundp 'font-lock-preprocessor-face)
-      (copy-face 'font-lock-preprocessor-face 'wesnoth-preprocessor-face)
-    (copy-face 'font-lock-keyword-face 'wesnoth-preprocessor-face)))
+  (when global-font-lock-mode
+    (if (boundp 'font-lock-preprocessor-face)
+	(copy-face 'font-lock-preprocessor-face 'wesnoth-preprocessor-face)
+      (copy-face 'font-lock-keyword-face 'wesnoth-preprocessor-face))))
 
 (defvar wesnoth-font-lock-keywords
   (list
@@ -476,14 +477,14 @@ CONTEXT represents the type of element which precedes the current element."
 	  (wesnoth-determine-context (point))
 	(cond
 	 ((eq context 'opening)
-	  (if (or (and wesnoth-indent-default-style
+	  (if (or (and wesnoth-indent-savefile
 		       (not (looking-at wesnoth-element-closing)))
 		  (looking-at wesnoth-element-opening))
 	      (setq cur-indent (+ ref-indent wesnoth-base-indent))
 	    (setq cur-indent ref-indent)))
 	 ((eq context 'closing)
 	  (if (or (looking-at "^[\t ]*\\[/")
-		  (and (not wesnoth-indent-default-style)
+		  (and (not wesnoth-indent-savefile)
 		       (not (looking-at wesnoth-element-opening))))
 	      (setq cur-indent (- ref-indent wesnoth-base-indent))
 	    (setq cur-indent ref-indent))))))
