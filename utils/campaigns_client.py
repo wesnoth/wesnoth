@@ -140,15 +140,7 @@ if __name__ == "__main__":
         version = info.get_or_create_sub("info").get_text_val("version", "")
         return uploads, version
 
-    if options.html:
-        cs = CampaignClient(address)
-        data = cs.list_campaigns()
-        if data:
-            import campaigns_client.html
-            campaigns_client.html.output(options.html, options.url, data)
-        else:
-            sys.stderr.write("Could not connect.\n")
-    elif options.list:
+    if options.list:
         cs = CampaignClient(address)
         data = cs.list_campaigns()
         if data:
@@ -301,6 +293,18 @@ if __name__ == "__main__":
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
+    elif options.html:
+        pass
     else:
         optionparser.print_help()
 
+    # This is independent, so a single call to the script can also do the
+    # HTML output.
+    if options.html:
+        cs = CampaignClient(address)
+        data = cs.list_campaigns()
+        if data:
+            import addon_manager.html
+            campaigns_client.html.output(options.html, options.url, data)
+        else:
+            sys.stderr.write("Could not connect.\n")
