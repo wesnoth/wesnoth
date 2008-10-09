@@ -18,7 +18,7 @@ if __name__ == "__main__":
     optionparser.add_option("-a", "--address", help = "specify server address",
         default = "add-ons.wesnoth.org")
     optionparser.add_option("--html",
-        help = "Output HTML overview into the givendirectory.",)
+        help = "Output a HTML overview into the given directory.",)
     optionparser.add_option("-p", "--port",
         help = "specify server port or BfW version (%s)" % " or ".join(
         map(lambda x: x[1], CampaignClient.portmap)),
@@ -41,6 +41,9 @@ if __name__ == "__main__":
         "name may be a Python regexp matched against all campaign names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
+    optionparser.add_option("-t", "--tar", action = "store_true",
+        help = "When used together with --download, create tarballs of any " +
+        "downloaded addons.")
     optionparser.add_option("-u", "--upload",
         help = "Upload campaign. " +
         "UPLOAD should be either the name of a campaign subdirectory," +
@@ -67,6 +70,9 @@ if __name__ == "__main__":
     optionparser.add_option("-R", "--raw-download",
         action = "store_true",
         help = "download as a binary WML packet")
+    optionparser.add_option("--url", help = "When used with --html, " +
+        "a download link will be added for each campaign, with the given " +
+        "base URL.")
     optionparser.add_option("-U", "--unpack",
         help = "unpack the file UNPACK as a binary WML packet " +
         "(specify the campaign path with -c)")
@@ -113,6 +119,13 @@ if __name__ == "__main__":
             for message in mythread.data.find_all("message", "error"):
                 print message.get_text_val("message")
 
+            if options.tar:
+                tarname = cdir + "/" + name + ".tar.bz2"
+                if options.verbose:
+                    sys.stderr.write("Creating tarball %(tarname)s.\n" %
+                        locals())
+                os.system("tar cjf %(tarname)s %(dirname)s" % locals())
+
     def get_info(name):
         """
         Get info for a locally installed campaign. It expects a direct path
@@ -132,7 +145,7 @@ if __name__ == "__main__":
         data = cs.list_campaigns()
         if data:
             import campaigns_client.html
-            campaigns_client.html.output(options.html, data)
+            campaigns_client.html.output(options.html, options.url, data)
         else:
             sys.stderr.write("Could not connect.\n")
     elif options.list:
