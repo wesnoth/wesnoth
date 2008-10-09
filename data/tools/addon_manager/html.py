@@ -1,6 +1,6 @@
 import time, os, glob, sys
 
-def output(path, data):
+def output(path, url, data):
     try: os.mkdir(path)
     except OSError: pass
 
@@ -74,7 +74,13 @@ Select the add-on you want to install from the list and click "OK". The download
         w("<td><b>%s</b><br/>" % name)
         w("Version: %s<br/>" % v("version", "unknown"))
         w("Author: %s</td>" % v("author", "unknown"))
-        w("<td>%.1fMB</td>" % (float(v("size", "unknown")) / 1024 / 1024))
+        MB = 1024 * 1024
+        w("<td>%.2fMB" % (float(v("size", "unknown")) / MB))
+        if url:
+            link = url.rstrip("/") + "/" + v("name") + ".tar.bz2"
+            w("<br/><a href=\"%s\">download</a></td>" % link)
+        else:
+            w("</td>")
         w("<td><b>%s</b> down<br/>" % v("downloads", "unknown"))
         w("%s up</td>" % v("uploads", "unknown"))
         t = time.localtime(int(v("timestamp", "unknown")))
