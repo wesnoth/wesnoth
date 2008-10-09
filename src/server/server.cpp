@@ -443,8 +443,10 @@ void server::send_password_request(network::connection sock, const char* msg, co
 	std::string salt2 = user_handler_->create_pepper(user, 0);
 	std::string salt3 = user_handler_->create_pepper(user, 1);
 	if(salt2.empty() || salt3.empty()) {
-		send_error(sock, "Even though your nick is registered on this server you"
-					" cannot log in due to an error in the hashing algorithm.");
+		send_error(sock, "Even though your nick is registered on this server you "
+					"cannot log in due to an error in the hashing algorithm. "
+					"Logging into your forum account on http://forum.wesnoth.org "
+					"may fix this problem.");
 		return;
 	}
 
