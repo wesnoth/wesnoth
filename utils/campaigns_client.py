@@ -106,9 +106,9 @@ if __name__ == "__main__":
             file(name, "w").write(mythread.data)
         else:
             print "Unpacking %s..." % name
-            cs.unpackdir(mythread.data, cdir,  verbose = options.verbose)
-            d = os.path.join(cdir, name)
-            info = os.path.join(d, "info.cfg")
+            cs.unpackdir(mythread.data, cdir, verbose = options.verbose)
+            dirname = os.path.join(cdir, name)
+            info = os.path.join(dirname, "info.cfg")
             try:
                 f = file(info, "w")
                 f.write("[info]\nversion=\"%s\"\nuploads=\"%s\"\n[/info]\n" %
