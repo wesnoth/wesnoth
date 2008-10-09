@@ -1519,6 +1519,12 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				}
 
 				move_unit(move->src(), destination, possible_moves_);
+				unit_map::iterator unit = get_info().units.find(destination);
+				if(unit != get_info().units.end()) {
+					unit->second.set_movement(0);
+				} else {
+					throw formula_error("Incorrect result of calling the move() formula", "", "", 0);;
+				}
 				made_move = true;
 			}
 		} else if(attack) {
