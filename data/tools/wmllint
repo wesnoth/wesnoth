@@ -243,6 +243,36 @@ unit_movetypes = []
 races = []
 unit_races = []
 
+translatables = (\
+               "abbrev",
+               "cannot_use_message",
+               "caption",
+               "current_player",
+               "description",
+               "description_inactive",
+               "difficulty_descriptions",
+               "female_name_inactive",
+               "female_names",
+               "label",
+               "male_names",
+    	       "message",
+               "name",
+               "name_inactive",
+               "note",
+               "order",
+               "plural_name",
+               "prefix",
+               "set_description",
+               "story",
+               "summary",
+               "text",
+               "title",
+               "title2",
+               "tooltip",
+               "translator_comment",
+               "user_team_name",
+               )
+
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
     for i in range(len(lines)):
@@ -481,6 +511,8 @@ def sanity_check(filename, lines):
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
+    markcheck = True
+    translation_mark = re.compile(r'_ *"')
     for i in range(len(lines)):
         if '[' in lines[i]:
             preamble_seen = True
@@ -510,8 +542,10 @@ def sanity_check(filename, lines):
             continue
         elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
             in_person = False
-        if not in_scenario:
-            continue
+        if "wmllint: markcheck off" in lines[i]:
+            markcheck = False
+        if "wmllint: markcheck on" in lines[i]:
+            markcheck = True
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
@@ -521,7 +555,7 @@ def sanity_check(filename, lines):
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if "wmllint: ignore" in comment:
                 continue
-            has_tr_mark = value.lstrip().startswith("_")
+            has_tr_mark = translation_mark.search(value)
             if key == 'role':
                 present.append(value)
             if has_tr_mark:
@@ -538,12 +572,14 @@ def sanity_check(filename, lines):
             # Check correctness of translation marks and descriptions
             if key.startswith("#"):	# FIXME: parse_attribute is confused.
                 pass
+            elif key.startswith("{"):
+                pass
             elif key == 'letter':	# May be led with _s for void 
                 pass
             elif key in ('name', 'male_name', 'female_name'):		# FIXME: check this someday
                 pass
-            elif key in ("message", "name", "description", "story", "note", "text", "summary", "caption", "label", "cannot_use_message", "set_description", "user_team_name") and not value.startswith("$"):
-                if not has_tr_mark:
+            elif key in translatables:
+                if markcheck  and not value.startswith("$")  and not value.startswith("{") and not has_tr_mark:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace('=', "=_ ")
@@ -554,7 +590,7 @@ def sanity_check(filename, lines):
                     if not stringfreeze:
                         lines[i] = sentence_end.sub(" ", lines[i])
             else:
-                if key == "id":
+                if in_scenario and key == "id":
                     if in_person:
                         present.append(value)
                     elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
@@ -562,7 +598,7 @@ def sanity_check(filename, lines):
                     elif preamble_seen and not ignore_id and not in_object and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
                               % (filename, i+1, value)
-                if has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
                               % (filename, i+1, key)                
                     lines[i] = lines[i].replace("_", "", 1)
