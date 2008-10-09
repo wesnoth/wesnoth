@@ -41,9 +41,9 @@ if __name__ == "__main__":
         "name may be a Python regexp matched against all campaign names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
-    optionparser.add_option("-t", "--tar", action = "store_true",
+    optionparser.add_option("-t", "--tar",
         help = "When used together with --download, create tarballs of any " +
-        "downloaded addons.")
+        "downloaded addons and put into the specified directory.")
     optionparser.add_option("-u", "--upload",
         help = "Upload campaign. " +
         "UPLOAD should be either the name of a campaign subdirectory," +
@@ -120,7 +120,7 @@ if __name__ == "__main__":
                 print message.get_text_val("message")
 
             if options.tar:
-                tarname = cdir + "/" + name + ".tar.bz2"
+                tarname = options.tar + "/" + name + ".tar.bz2"
                 if options.verbose:
                     sys.stderr.write("Creating tarball %(tarname)s.\n" %
                         locals())
@@ -308,3 +308,4 @@ if __name__ == "__main__":
             campaigns_client.html.output(options.html, options.url, data)
         else:
             sys.stderr.write("Could not connect.\n")
+
