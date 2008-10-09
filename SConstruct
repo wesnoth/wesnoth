@@ -39,7 +39,7 @@ def OptionalPath(key, val, env):
 opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd,test", Split("wesnoth wesnothd campaignd cutter exploder test")),
-    EnumOption('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "profile","base"]),
+    EnumOption('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
@@ -330,11 +330,14 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
-    "base"    : dict(CXXFLAGS = "-O2"),    # Don't build in subdirectory
-    "debug"   : dict(CXXFLAGS = Split("-O0 -DDEBUG -ggdb3")),
-    "release" : dict(CXXFLAGS = "-O2"),
-    "profile" : dict(CXXFLAGS = "-pg", LINKFLAGS = "-pg")
+    "base"          : dict(CXXFLAGS   = "-O2"),    # Don't build in subdirectory
+    "debug"         : dict(CXXFLAGS   = Split("-O0 -DDEBUG -ggdb3")),
+    "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
+    "release"       : dict(CXXFLAGS   = "-O2"),
+    "profile"       : dict(CXXFLAGS   = "-pg", LINKFLAGS = "-pg")
     }
+builds["glibcxx_debug"].update(builds["debug"])
+env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
 build = env["build"]
 
 env.AppendUnique(**builds[build])
