@@ -374,8 +374,10 @@ env.Clean(all, 'TAGS')
 # Dummy locales
 #
 
-if env["nls"] and env['PLATFORM'] != 'win32':
-    env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | localedef -c \"$TARGET\" 2> /dev/null")
+env["LOCALEDEF"] = WhereIs("localedef")
+env["dummy_locales"] = env["nls"] and env["LOCALEDEF"]
+if env["dummy_locales"]:
+    env.Command(Dir("locales/C"), [], "-mkdir -p locales;echo | $LOCALEDEF -c \"$TARGET\" 2> /dev/null")
     language_cfg_re = re.compile(r"data/languages/(.*)\.cfg")
     language_cfgs = glob("data/languages/*.cfg")
     languages = Flatten(map(language_cfg_re.findall, language_cfgs))
@@ -404,7 +406,7 @@ for d in installdirs:
 installable_subs = Split('data fonts images sounds')
 if env['nls']:
     installable_subs.append("translations")
-if env['nls'] and env['PLATFORM'] != 'win32':
+if env["dummy_locales"]:
     installable_subs.append("locales")
 clientside = filter(lambda x : x, [wesnoth, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
