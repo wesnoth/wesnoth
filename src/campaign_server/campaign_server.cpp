@@ -41,6 +41,7 @@
 
 #include <boost/iostreams/filter/gzip.hpp>
 #include <cstdio>
+#include <csignal>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
