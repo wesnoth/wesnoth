@@ -279,10 +279,8 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
-		// Following lines are currently commented out because they trigger when
-		//the attack is removed in attack_end. (FIXME: bug #12428)
-		//VALIDATE(defender_weapon == -1,
-		//		_("An invalid weapon is send, possibly due to the Python AI."));
+		VALIDATE(defender_weapon == -1,
+				_("An invalid weapon is send, possibly due to the Python AI."));
 
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
 				status, attacker_loc, defender_loc,
