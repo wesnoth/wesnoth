@@ -570,7 +570,9 @@ void playsingle_controller::before_human_turn(bool save)
 	if(preferences::turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
+}
 
+void playsingle_controller::show_turn_dialog(){
 	if(preferences::turn_dialog()) {
 		std::string message = _("It is now $name|'s turn");
 		utils::string_map symbols;
@@ -578,7 +580,9 @@ void playsingle_controller::before_human_turn(bool save)
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui::message_dialog(*gui_, "", message).show();
 	}
+}
 
+void playsingle_controller::execute_gotos(){
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<gamemap::location> gotos;
 
@@ -599,7 +603,10 @@ void playsingle_controller::before_human_turn(bool save)
 	gui_->set_route(NULL);
 }
 
-void playsingle_controller::play_human_turn(){
+void playsingle_controller::play_human_turn() {
+	show_turn_dialog();
+	execute_gotos();
+
 	gui_->enable_menu("endturn", true);
 	while(!end_turn_) {
 		play_slice();
