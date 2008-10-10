@@ -194,7 +194,7 @@ void playmp_controller::play_human_turn(){
 						// Clean undo stack if turn has to be restarted (losing control)
 						if (!undo_stack_.empty())
 						{
-							const std::string msg =_("Undoing moves not yet transmited to server.");
+							const std::string msg =_("Undoing moves not yet transmitted to the server.");
 							const int size = 20;
 							const int lifetime = 150;
 							SDL_Color colour = {255,255,255,255};
