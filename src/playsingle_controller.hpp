@@ -65,6 +65,8 @@ protected:
 	virtual void play_turn(bool no_save);
 	virtual void play_side(const unsigned int team_index, bool save);
 	virtual void before_human_turn(bool save);
+	void show_turn_dialog();
+	void execute_gotos();
 	virtual void play_human_turn();
 	virtual void after_human_turn();
 	void end_turn_record();

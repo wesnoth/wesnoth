@@ -177,6 +177,8 @@ void playmp_controller::think_about_countdown(int ticks) {
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
 	int cur_ticks = SDL_GetTicks();
+	show_turn_dialog();
+	execute_gotos();
 
 	if ((!linger_) || (is_host_))
 		gui_->enable_menu("endturn", true);
