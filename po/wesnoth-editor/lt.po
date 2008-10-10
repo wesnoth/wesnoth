@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007.
+# Copyright (C) Wesnoth development team, 2007-2008.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.4\n"
+"Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-05 20:18+0200\n"
-"PO-Revision-Date: 2008-09-13 17:17+0300\n"
+"PO-Revision-Date: 2008-10-09 00:49+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. [editor_group]
 #: data/core/editor-groups.cfg:11
 msgid "all"
-msgstr "viskas"
+msgstr "visos"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:17
@@ -28,42 +28,42 @@ msgstr "vanduo"
 #. [editor_group]
 #: data/core/editor-groups.cfg:29
 msgid "flat"
-msgstr "plokščias"
+msgstr "plokščios"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:35
 msgid "desert"
-msgstr "dykuma"
+msgstr "dykumos"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:41
 msgid "forest"
-msgstr "miškas"
+msgstr "miškai"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
-msgstr "užšalęs"
+msgstr "užšalusios"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:53
 msgid "rough"
-msgstr "nelygus"
+msgstr "nelygios"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:59
 msgid "cave"
-msgstr "urvas"
+msgstr "urvai"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:65
 msgid "village"
-msgstr "kaimas"
+msgstr "kaimai"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:71
 msgid "castle"
-msgstr "pilis"
+msgstr "pilys"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
@@ -115,7 +115,7 @@ msgstr ""
 #. [menu]
 #: data/themes/editor2.cfg:120
 msgid "File"
-msgstr "Byla"
+msgstr "Failas"
 
 #. [menu]
 #: data/themes/editor2.cfg:131
@@ -197,9 +197,8 @@ msgid "Could not save the map: $msg"
 msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
-#, fuzzy
 msgid "Error loading map"
-msgstr "Klaida įkeliant žemėlapį (wml)"
+msgstr "Klaida, įkeliant žemėlapį"
 
 #: src/editor2/editor_controller.cpp:810
 msgid "Undo"
@@ -219,7 +218,7 @@ msgstr "Negalima pakartoti"
 
 #: src/editor2/editor_map.cpp:57
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Tuščias žemėlapio failas arba failas nerastas"
 
 #: src/editor2/editor_map.cpp:65
 #, fuzzy
@@ -245,7 +244,7 @@ msgstr "Fonas"
 
 #: src/editor2/mouse_action.cpp:380
 msgid "(Player)^None"
-msgstr "(Player)^Jokio"
+msgstr "Joks"
 
 #: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
@@ -262,88 +261,3 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
 msgstr ""
-
-#~ msgid "Settings"
-#~ msgstr "Nustatymai"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Piešti laukelius"
-
-#~ msgid "Fill"
-#~ msgstr "Užpildyti"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Nustatyti žaidėjo pradžios poziciją"
-
-#~ msgid "Zoom in"
-#~ msgstr "Padidinti"
-
-#~ msgid "Zoom out"
-#~ msgstr "Sumažinti"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Numatytas didinimas"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Perjungti tinklelį"
-
-#~ msgid "Resize the map"
-#~ msgstr "Keisti žemėlapio dydį"
-
-#~ msgid "Flip map"
-#~ msgstr "Apversti žemėlapį"
-
-#~ msgid "Update transitions"
-#~ msgstr "Atnaujinti perėjimus"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Atidėti perėjimų atnaujinimą"
-
-#~ msgid "Language"
-#~ msgstr "Kalba"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Pasirinkite pageidaujamą kalbą:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Mūšio dėl Wesnoth žemėlapių redaktorius"
-
-#~ msgid "None"
-#~ msgstr "Joks"
-
-#~ msgid "Which Player?"
-#~ msgstr "Kuris žaidėjas?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Kuris žaidėjas čia turi pradėti?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Dėmesio: Žemėlaio pavadinime rasti netinkami simboliai. Prašom išsaugoti "
-#~ "kitu pavadinimu."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Faile nėra tinkamo žemėlapio."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Ar norite prieš išjungdami išsaugoti žemėlapį?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Klaida: Netinkamas simbolis failo pavadinime."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Nepavyksta pakeisti žemėlapio dydžio, pareikalautas dydis yra didesnis už "
-#~ "maksimalų,dydis="
-
-#~ msgid " maximum="
-#~ msgstr " maksimalus="
-
-#~ msgid "Tool"
-#~ msgstr "Įrankis"
-
-#~ msgid "Error loading map (format)"
-#~ msgstr "Klaida įkeliant žemėlapį (formatas)"

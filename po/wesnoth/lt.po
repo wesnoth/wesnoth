@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.4\n"
+"Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-07 16:13+0200\n"
-"PO-Revision-Date: 2008-09-21 14:03+0300\n"
+"PO-Revision-Date: 2008-10-09 21:38+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1322,7 +1322,7 @@ msgstr ""
 "Bruožai galimi visiems ne-nemirėliams daliniams yra "
 "<ref>dst='traits_intelligent' text='Protingas'</ref>, "
 "<ref>dst='traits_quick' text='Greitas'</ref>, <ref>dst='traits_resilient' "
-"text='Atsparus'</ref> ir <ref>dst='traits_strong text'='Stiprus'</ref>."
+"text='Atsparus'</ref> ir <ref>dst='traits_strong' text='Stiprus'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:331
@@ -1583,7 +1583,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:423
 msgid "Flat"
-msgstr ""
+msgstr "Plokščia"
 
 #. [topic]
 #: data/core/help.cfg:428
@@ -1731,7 +1731,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:503
 msgid "Frozen"
-msgstr ""
+msgstr "Užšalusi"
 
 #. [topic]
 #: data/core/help.cfg:508
@@ -1906,7 +1906,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:605
 msgid "Unwalkable"
-msgstr ""
+msgstr "Nevaikštoma"
 
 #. [topic]
 #: data/core/help.cfg:608
@@ -1973,9 +1973,8 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:639
-#, fuzzy
 msgid "Impassable"
-msgstr "Nepraeinamas kalnas"
+msgstr "Nepraeinama"
 
 #. [topic]
 #: data/core/help.cfg:642
@@ -2240,9 +2239,8 @@ msgstr ""
 
 #. [heals]
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "sveika"
+msgstr ""
 
 #. [heals]
 #: data/core/macros/abilities.cfg:16
@@ -2264,9 +2262,8 @@ msgstr ""
 
 #. [heals]
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "sveika"
+msgstr ""
 
 #. [heals]
 #: data/core/macros/abilities.cfg:36
@@ -2288,9 +2285,8 @@ msgstr ""
 
 #. [heals]
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "bebaimė"
+msgstr ""
 
 #. [heals]
 #: data/core/macros/abilities.cfg:54
@@ -2303,13 +2299,12 @@ msgstr ""
 #. [regenerate]
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr "regeneuojasi"
+msgstr "regeneruojasi"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
-msgstr "regeneuojasi"
+msgstr "regeneruojasi"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:79
@@ -2326,9 +2321,8 @@ msgstr ""
 
 #. [resistance]
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
-msgstr "akmuo"
+msgstr ""
 
 #. [resistance]
 #: data/core/macros/abilities.cfg:100
@@ -2349,7 +2343,6 @@ msgstr "vadovavimas"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "vadovavimas"
 
@@ -2375,9 +2368,8 @@ msgstr ""
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
-msgstr "atspari"
+msgstr ""
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:349
@@ -2394,7 +2386,6 @@ msgstr "apšviečia"
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "apšviečia"
 
@@ -2416,9 +2407,8 @@ msgstr "teleportavimas"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "protinga"
+msgstr "teleportavimas"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:380
@@ -2427,7 +2417,7 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleportavimasis:\n"
+"Teleportavimas:\n"
 "Šis dalinys gali teleportuotis tarp bet kokių dviejų jo pusės kaimų, "
 "naudodamas vieną iš savo judėjimų."
 
@@ -2438,9 +2428,8 @@ msgstr "pasala"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "ištikima"
+msgstr "pasala"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -2472,9 +2461,8 @@ msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
-msgstr "neutrali"
+msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
@@ -2483,7 +2471,6 @@ msgstr "slėpimasis"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
 msgstr "slėpimasis"
 
@@ -2513,9 +2500,8 @@ msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "stipri"
+msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -2531,13 +2517,12 @@ msgstr ""
 #. [dummy]
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
-msgstr "maitinimasis"
+msgstr "maitinimas"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "bebaimė"
+msgstr "maitinimas"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:499
@@ -2546,7 +2531,7 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Maitinimasis:\n"
+"Maitinimas:\n"
 "Šis dalinys gauna 1 gyvybės tašką, pridedamą prie jo maksimalaus, kai jis "
 "užmuša gyvą dalinį."
 
@@ -2796,17 +2781,17 @@ msgstr ""
 #. [object]
 #: data/core/macros/items.cfg:298
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr ""
+msgstr "Aš netinkamas naudoti šį daiktą! Tegul kas nors kitas paima."
 
 #. [object]
 #: data/core/macros/items.cfg:333
 msgid "Potion of Strength"
-msgstr ""
+msgstr "Stiprybės eliksyras"
 
 #. [object]
 #: data/core/macros/items.cfg:336
 msgid "Strength is given to the drinker."
-msgstr ""
+msgstr "Išgėręs gauna stiprybės."
 
 #. [object]
 #: data/core/macros/items.cfg:377
@@ -2851,7 +2836,7 @@ msgstr ""
 #. [object]
 #: data/core/macros/items.cfg:497
 msgid "Only magical beings can wield such an object."
-msgstr ""
+msgstr "Tik magiškos būtybės gali valdyti tokį objektą."
 
 #: data/core/macros/items.cfg:516
 msgid "Only the mermen can use this item!"
@@ -3704,37 +3689,32 @@ msgstr "Normaliai kaunasi nepalankiu dienos/nakties laiku"
 #. [trait]
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "silpnas"
 
 #. [trait]
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "nemirėlė"
+msgstr "silpna"
 
 #. [trait]
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "sulėtina"
+msgstr "lėtas"
 
 #. [trait]
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "sulėtinta"
+msgstr "lėta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Vidutiniška"
+msgstr "bukas"
 
 #. [trait]
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "bebaimė"
+msgstr "buka"
 
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
@@ -3991,33 +3971,33 @@ msgid ""
 "undoubtedly having existed for over a millennium."
 msgstr ""
 "Lyginant su žmonėmis, elfai yra šiek tiek aukštesni, vikresni, bet mažiau "
-"tvirti. Jie turi šiek tiek smailias ausis, blankią odą ir paprastai šviesius "
-"plaukus. Mažai skirtumų tarp žmonių ir elfų yra labiau išryškinti, nei "
-"pastarųjų neįprastai ilgas gyvenimas – dauguma, nebent pasiglemžti ligos, "
-"nelaimingo atsitikimo ar karo, gyvena pilnus du šimtmečius. Nepaisant to, "
-"kad yra žinoma, kad kai kurie elfai, turintys aukštus magiškus gabumus, "
+"tvirti. Jie turi šiek tiek smailias ausis, blankią odą ir dažniausiai "
+"šviesius plaukus. Mažai skirtumų tarp žmonių ir elfų yra labiau išryškinti, "
+"nei pastarųjų neįprastai ilgas gyvenimas – dauguma, nebent pasiglemžti "
+"ligos, nelaimingo atsitikimo ar karo, gyvena pilnus du šimtmečius. Nepaisant "
+"to, kad yra žinoma, kad kai kurie elfai, turintys aukštus magiškus gabumus, "
 "gyvena papildomą pilną šimtmetį, dauguma elfų pradeda darytis fiziškai "
 "silpni, artėjant jų dvidešimtam dešimtmečiui, ir miršta kelių dešimtmečių "
-"bėgyje. Elfai yra įgimtai pripildyti magijos iki tam tikro nedidelio "
-"laipsnio. Nors ir dauguma nesugeba tiesiogiai jos nukreipti, jos paslėptas "
-"buvimas duoda jiems jų aštrius pojūčius ir ilgą gyvenimą. Daug elfų turi "
-"magija varomų gabumų, tokių, kaip taiklus šaudymas ar slaptumas, leidžiančių "
-"jiems pasiekti užduotis, kurias paprastos būtybės laiko įspūdingomis. Tie "
-"elfai, kurie išmoksta valdyti šią galią bendresniais būdais, gali tapti iš "
-"tikrųjų sunkiai įveikiami jos naudojime. Daug pasirenka naudoti savo dovaną "
-"kitų gydymui.\n"
+"bėgyje. Elfai yra įgimtai truputį pripildyti magijos. Nors ir dauguma "
+"nesugeba tiesiogiai jos nukreipti, jos paslėptas buvimas duoda jiems jų "
+"aštrius pojūčius ir ilgą gyvenimą. Daug elfų turi magija varomų gabumų, "
+"tokių, kaip taiklus šaudymas ar slaptumas, leidžiančių jiems atlikti "
+"užduotis, kurias paprastos būtybės laiko įspūdingomis. Tie elfai, kurie "
+"išmoksta valdyti šią galią bendresniais būdais, gali tapti iš tikrųjų "
+"sunkiai įveikiami ją naudojant. Daugelis pasirenka naudoti savo dovaną "
+"gydyti kitus.\n"
 "\n"
 "Elfai daug savo laiko išleidžia tobulindami savo gabumus ir gebėjimus. Tie, "
-"kurie nenusimano magiškuose menuose paprastai skiria savo laiką šlifuodami "
+"kurie nenusimano magiškuose menuose, paprastai skiria savo laiką šlifuodami "
 "savo fizinius gebėjimus. Todėl elfai išsiskiria šaudyme iš lanko, kas yra "
 "matyt jų svarbiausias kariavimo būdas. Dauguma elfų karių nešiojasi lanką ir "
 "jokia kita rasė negali lygintis su jų lankininkais greičiu ir taiklumu. Visi "
 "elfai taip pat turi nepaaiškinamą potraukį prie nepaliestos gamtos. Jie "
-"dažnai jaučiasi nejaukiai didelėse erdvėse be augalų, kas nulemia jų namų "
-"statymą Didžiojo žemyno miškuose, tokiuose kaip Aethenvudas pietvakariuose "
-"ir Wesmera šiaurės vakaruose. Elfai yra seniausia žemyno rasė, galbūt "
-"neskaitant trolių. Daugumos iš jų gyvenviečių amžius negali būti patikimai "
-"nustatytas, neabejotinai egzistavus virš tūkstantmečio."
+"dažnai jaučiasi nejaukiai didelėse erdvėse be augalų, todėl elfai apsigyvena "
+"Didžiojo žemyno miškuose, kaip antai Aethenvudas pietvakariuose ir Wesmera "
+"šiaurės vakaruose. Elfai yra seniausia žemyno rasė, galbūt neskaitant "
+"trolių. Daugumos iš jų gyvenviečių amžius negali būti patikimai nustatytas, "
+"jos neabejotinai egzistavo virš tūkstantmečio."
 
 #. [race]: description=
 #: data/core/units.cfg:103
@@ -4384,15 +4364,13 @@ msgstr ""
 
 #. [race]: description=
 #: data/core/units.cfg:257
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Elfas"
+msgstr "Vilkas"
 
 #. [race]: description=
 #: data/core/units.cfg:258
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Elfai"
+msgstr "Vilkai"
 
 #. [race]: description=
 #: data/core/units.cfg:266
@@ -5672,9 +5650,8 @@ msgid "Add-on deleted"
 msgstr "Priedas pašalintas"
 
 #: src/addon_management.cpp:1148
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "Priedas negali būti ištrintas -- failas nerastas."
+msgstr "Priedas negali būti tinkamai ištrintas:"
 
 #: src/ai.cpp:1650
 msgid "Unknown unit type : "
@@ -6945,7 +6922,7 @@ msgstr "Prisijungti su slaptažodžiu"
 
 #: src/multiplayer.cpp:197
 msgid "Request password reminder for this username"
-msgstr ""
+msgstr "Pareikalauti slaptažodžio priminimą šiam naudotojo vardui"
 
 #: src/multiplayer.cpp:198
 msgid "Choose a different username"
@@ -7013,7 +6990,7 @@ msgstr "Rezervuota"
 
 #: src/multiplayer_connect.cpp:828
 msgid "--give--"
-msgstr ""
+msgstr "--duoti--"
 
 #: src/multiplayer_connect.cpp:950
 msgid "Only random sides in the current era."
@@ -7281,7 +7258,7 @@ msgstr "Dydis: "
 
 #: src/multiplayer_lobby.cpp:120
 msgid "--no games open--"
-msgstr ""
+msgstr "--nėra atvirų žaidimų--"
 
 #: src/multiplayer_lobby.cpp:155
 msgid " (Unknown Era)"
@@ -7973,9 +7950,8 @@ msgid "female^chaotic"
 msgstr "chaotiška"
 
 #: src/unit_types.cpp:1010
-#, fuzzy
 msgid "female^lawful"
-msgstr "ištikima"
+msgstr ""
 
 #: src/unit_types.cpp:1010
 msgid "female^neutral"
@@ -8003,41 +7979,4 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 
 #: src/upload_log.cpp:327
 msgid "Enable summary uploads"
-msgstr ""
-
-#~ msgid "Grassland"
-#~ msgstr "Žolynai"
-
-#~ msgid "Snow"
-#~ msgstr "Sniegas"
-
-#~ msgid "Ice"
-#~ msgstr "Ledas"
-
-#~ msgid "Savanna"
-#~ msgstr "Savana"
-
-#~ msgid ""
-#~ "Savannas are plains of tall grass, found in the warmer climates of the "
-#~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
-#~ msgstr ""
-#~ "Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
-#~ "dalyse. Žaidime jos yra identiškos <ref>dst='terrain_grassland' "
-#~ "text='žolynams'</ref>."
-
-#~ msgid "Chasm"
-#~ msgstr "Bedugnė"
-
-#~ msgid "Cave Wall"
-#~ msgstr "Urvo siena"
-
-#~ msgid ""
-#~ "Cave walls are made of solid stone, renowned for its ability to impede "
-#~ "even the most determined traveler."
-#~ msgstr ""
-#~ "Urvų sienos yra iš vientiso akmens, pagarsėjusio galimybe priešintis net "
-#~ "ryžtingiausiam keliautojui."
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Mūšis dėl Wesnoth"
+msgstr "Įgalinti santraukų siuntimą"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-07 16:14+0200\n"
-"PO-Revision-Date: 2008-10-03 14:59+0300\n"
+"PO-Revision-Date: 2008-10-08 20:03+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -133,15 +133,13 @@ msgstr "Tropik Orman"
 
 #. [terrain]
 #: data/core/terrain.cfg:444
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Orman"
+msgstr "Ağaçlık Tepeler"
 
 #. [terrain]
 #: data/core/terrain.cfg:454
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Karlı Tepeler"
+msgstr "Ağaçlık Karlı Tepeler"
 
 #. [terrain]
 #: data/core/terrain.cfg:468 data/core/terrain.cfg:477
@@ -327,34 +325,31 @@ msgstr "Yürünmez"
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Harekete Devam Et"
+msgstr "Sunucuya Bağlan"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Eklentileri indirmek üzere sunucuya bağlanacaksınız."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Sunucu"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Geçişleri güncelle"
+msgstr "Eklentileri güncelle"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Sil"
+msgstr "Eklentileri Sil"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:201
@@ -362,7 +357,7 @@ msgstr "Sil"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Bağlan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -388,22 +383,19 @@ msgstr "Rastgele Harita Üret"
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Harita Üreteci"
+msgstr "Sonraki Üreteç"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Düzenleyici Ayarları"
+msgstr "Ayarlar"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "Harita Üret"
+msgstr "Üret"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -426,9 +418,8 @@ msgstr "Boyu:"
 #. [button]
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
-msgstr "Yeni Harita Oluştur"
+msgstr "Yeni harita üretir"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -438,56 +429,51 @@ msgstr "Haritayı Boyutlandır"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Eni:"
+msgstr "Yeni genişlik:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Eni:"
+msgstr "Eski genişlik:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:81
 #: data/gui/default/window/editor_resize_map.cfg:130
 msgid "2000"
-msgstr ""
+msgstr "2000"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:82
 #: data/gui/default/window/editor_resize_map.cfg:131
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Boyu:"
+msgstr "Yeni yükseklik:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Boyu:"
+msgstr "Eski yükseklik:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Kenarı uzat/kısalt"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Arazi kenarlarını kopyala"
 
 #. [button]
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
-msgstr "Haritayı Boyutlandır"
+msgstr "Haritayı boyutlandır"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -498,41 +484,38 @@ msgstr "Düzenleyici Ayarları"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lightning preset"
-msgstr ""
+msgstr "Vaktin aydınlığını sıfırla"
 
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Sonraki Birim"
+msgstr "Sonraki"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lightning setting"
-msgstr ""
+msgstr "Özel aydınlatma ayarları"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Harite görünümünü güncel tut"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Tekrarla"
+msgstr "Kırmızı:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "Sıklık:"
+msgstr "Yeşil:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Mavi:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -553,17 +536,16 @@ msgstr "Uygula"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Dil"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Dil tercihinizi belirtin:"
 
 #. [button]
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
-#, fuzzy
 msgid "Change language"
 msgstr "Dili değiştir"
 
@@ -571,200 +553,187 @@ msgstr "Dili değiştir"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Çok oyunculu oyun sunucusuna bağlanıyorsunuz."
 
 #. [button]
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "Arkadaşlar Listesi"
+msgstr "Listeyi Göster"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "Oyunu Kaydet"
+msgstr "Oyun Üret"
 
 #. [label]
 #. [text_box]
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Oyunun adı:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
-msgstr "Oyuncular:"
+msgstr "Oyuncular: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Harita Boyutları:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Çağ:"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "Normal Yakınlık"
+msgstr "Öntanımlı"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "Parola Ata"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Oyun haritasi:"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
-msgstr ""
+msgstr "Harite ayarlarını kullan"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:333
-#, fuzzy
 msgid "Number of turns"
-msgstr "Tepe sayısı:"
+msgstr "El sayısı"
 
 #. [slider]
 #: data/gui/default/window/mp_create_game.cfg:356
 msgid "Unlimited"
-msgstr ""
+msgstr "Sınırsız"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:374
-#, fuzzy
 msgid "Village gold"
-msgstr "Köy"
+msgstr "Köy altını"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:414
 msgid "Experience modifier"
-msgstr ""
+msgstr "Tecrübe ayarı"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
-msgstr ""
+msgstr "Savaş Dumanı"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
-msgstr ""
+msgstr "Rasgele başlatma zamanı"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:537
-#, fuzzy
 msgid "Create game"
-msgstr "Yeni Harita Oluştur"
+msgstr "Oyun oluştur"
 
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Çok Oyuncu Seçenekleri"
+msgstr "Çok Oyunculu"
 
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Kullanıcı:"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:136
 msgid "Join Official Server"
-msgstr ""
+msgstr "Resmi Sunucuya Bağlan"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Resmi Wesnoth çok oyunculu oyun sunucusunda oturum açar"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:148
 msgid "Join a different server"
-msgstr ""
+msgstr "Başka bir sunucuya bağlan"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Sunucuyu Başlat"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd"
-msgstr ""
+msgstr "Kendi wesnothd sunucunuzu başlatırsınız"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
-#, fuzzy
 msgid "Local Game"
-msgstr "Oyun Yükle"
+msgstr "Yerel Oyun"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Oyunu bu makine üzerinde arkadaşlarınızla veya bilgisayara karşı oynarsınız"
 
 #. [button]
 #: data/gui/default/window/mp_method_selection.cfg:205
 msgid "Ok"
-msgstr ""
+msgstr "Tamam"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
-#, fuzzy
 msgid "Name"
-msgstr "Ad: "
+msgstr "İsim"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
-msgstr ""
+msgstr "Adres"
 
 #. [button]
 #: data/gui/default/window/mp_server_list.cfg:198
-#, fuzzy
 msgid "Select"
-msgstr "Tümünü Seç"
+msgstr "Seçiniz"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Sıra Gelme Kutusu"
+msgstr "Öğretici"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Seferberlik"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "Yol"
+msgstr "Yükle"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Eklentiler"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "Düzenleyiciden Çık"
+msgstr "Düzenleyici"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -776,7 +745,7 @@ msgstr "Tercihler"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Teşekkür"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1918,72 +1887,3 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Haritaya yaptığınız değişiklikler kaybolacak. Devam?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Yeni Harita Üret"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Rastgele Üreteç Ayarları"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Harita oluşturma başarısız oldu."
-
-#~ msgid "Video Mode"
-#~ msgstr "Video Kipi"
-
-#~ msgid "Lighting levels (time of day):"
-#~ msgstr "Aydınlık Seviyeleri (günlük vakit):"
-
-#~ msgid "light_level^Red:"
-#~ msgstr "Kırmızı:"
-
-#~ msgid "light_level^Green:"
-#~ msgstr "Yeşil:"
-
-#~ msgid "light_level^Blue:"
-#~ msgstr "Mavi:"
-
-#~ msgid "X offset:"
-#~ msgstr "X mesafesi:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Y mesafesi:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Akıllıca genişlet"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-Ekseni"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-Ekseni"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Döndür (bu işlem harita boyutlarının değişmesine sebep olabilir):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Zemini Belirle"
-
-#~ msgid "Save As"
-#~ msgstr "Farklı Kaydet"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Oyuncunun iç kalesini Belirle"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Akıcı Doldurma"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Diskten eski haline getir"
-
-#~ msgid "Flip Map"
-#~ msgstr "Haritayı yansıla"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Zemini Çiz"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Geçiş güncellemelerini geciktir"

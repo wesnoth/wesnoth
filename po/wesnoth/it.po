@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-07 16:13+0200\n"
-"PO-Revision-Date: 2008-08-21 23:55+0200\n"
+"PO-Revision-Date: 2008-10-10 01:00+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -578,7 +578,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:138
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -586,11 +585,11 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Mentre giochi, ricordati che se passi con il cursore sopra a molti oggetti "
-"del gioco, come le informazioni visualizzate sul pannello di stato, vedrai "
-"apparire una breve descrizione dell'oggetto. Questa caratteristica è molto "
-"utile quando incontri per la prima volta una creatura con delle nuove "
-"<ref>dst=abilities text=abilità</ref>."
+"Mentre giochi, ricordati che se passi con il cursore sopra a molti elementi "
+"del gioco (ad esdempio le informazioni visualizzate sul pannello di stato) "
+"vedrai apparire una breve descrizione dell'elemento.Ciò è molto utile quando "
+"incontri per la prima volta una creatura con delle nuove <ref>dst='.."
+"abilities_section' text='abilità'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:143
@@ -725,7 +724,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -734,8 +732,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità reclutate hanno due <ref>dst=..traits_section text=Qualità</ref> "
-"casuali che modificano le loro caratteristiche."
+"Le unità reclutate hanno due <ref>dst='..traits_section' text='Qualità'</"
+"ref> casuali che modificano le loro caratteristiche."
 
 #. [topic]
 #: data/core/help.cfg:166
@@ -754,7 +752,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:168
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -766,7 +763,7 @@ msgstr ""
 "\n"
 "Ricorda che le unità non hanno solo un costo per essere reclutate o "
 "richiamate, ma necessitano anche un costo per essere mantenute. Leggi "
-"<ref>dst=income_and_upkeep text=\"Entrate e mantenimento\"</ref> per saperne "
+"<ref>dst='income_and_upkeep' text='Entrate e mantenimento'</ref> per saperne "
 "di più."
 
 #. [topic]
@@ -1422,7 +1419,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:281
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1445,15 +1441,14 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:283
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Rigenerazione</ref>: Alcune unità (come i "
-"troll) recuperano automaticamente 8PF a ogni turno."
+"<ref>dst='ability_regenerates' text='Rigenerazione'</ref>: Alcune unità "
+"(come i troll) recuperano automaticamente 8PF a ogni turno."
 
 #. [topic]
 #: data/core/help.cfg:284
@@ -1472,7 +1467,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:285
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1480,10 +1474,10 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Unità curatrici: Le unità con l'abilità <ref>dst=ability_cures text=Cura</"
-"ref> cureranno dall'avvelenamento tutte le unità alleate adiacenti "
-"(preferenzialmente rispetto alla guarigione, se l'unità ha anche questa "
-"abilità)."
+"Unità curatrici: Le unità con l'abilità <ref>dst='ability_cures' "
+"text='Cura'</ref> cureranno dall'avvelenamento tutte le unità alleate "
+"adiacenti (preferenzialmente rispetto alla guarigione, se l'unità ha anche "
+"questa abilità)."
 
 #. [topic]
 #: data/core/help.cfg:287
@@ -1981,7 +1975,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:423
 msgid "Flat"
-msgstr ""
+msgstr "Pianura"
 
 #. [topic]
 #: data/core/help.cfg:428
@@ -2011,15 +2005,14 @@ msgstr "Strada"
 
 #. [topic]
 #: data/core/help.cfg:436
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain."
 msgstr ""
-"Le strade sono dei percorsi battuti di terra che sono stati formati dal "
-"passaggio di molti viaggiatori su di essi. Nel gioco esse hanno le stesse "
-"caratteristiche della <ref>dst=terrain_grassland text=prateria</ref>."
+"Le strade sono dei percorsi di terra battuta che sono stati formati dal "
+"passaggio di molti viaggiatori. Nel gioco esse hanno le stesse "
+"caratteristiche della <ref>dst='terrain_flat' text='Pianura'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:441
@@ -2201,11 +2194,10 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:503
 msgid "Frozen"
-msgstr ""
+msgstr "Congelato"
 
 #. [topic]
 #: data/core/help.cfg:508
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2214,13 +2206,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"La neve rappresenta tutte le aree pianeggianti che sono congelate, sia "
-"quelle che lo sono permanentemente (come la tundra), sia quelle che lo sono "
-"temporaneamente (come la prateria ricoperta di neve). La maggior parte delle "
-"unità vengono rallentate dalla neve e hanno serie difficoltà nel "
-"difendersi.\n"
+"Il terreno congelato rappresenta tutte le aree pianeggianti coperte da neve "
+"o ghiaccio. Quasi tutte le unità vengono rallentate da questo terreno e "
+"hanno maggior difficoltà nel difendersi.\n"
 "\n"
-"La maggior parte delle unità hanno dal 20% al 40% di difesa nella neve."
+"La maggior parte delle unità ha dal 20% al 40% di difesa su terreno "
+"congelato."
 
 #. [topic]
 #: data/core/help.cfg:513
@@ -2279,7 +2270,6 @@ msgstr "Deserto"
 
 #. [topic]
 #: data/core/help.cfg:538
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -2287,7 +2277,8 @@ msgid ""
 msgstr ""
 "I deserti hanno una composizione leggermente differente rispetto ai piccoli "
 "cumuli si sabbia o alle spiagge, comunque influiscono in maniera identica "
-"sul gioco. Leggi <ref>dst=terrain_sand text=sabbia</ref> per saperne di più."
+"sul gioco. Leggi <ref>dst='terrain_sand' text='Sabbia'</ref> per saperne di "
+"più."
 
 #. [topic]
 #: data/core/help.cfg:543
@@ -2463,8 +2454,9 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:605
+#, fuzzy
 msgid "Unwalkable"
-msgstr ""
+msgstr "Impervio"
 
 #. [topic]
 #: data/core/help.cfg:608
@@ -2561,9 +2553,8 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:639
-#, fuzzy
 msgid "Impassable"
-msgstr "Montagna invalicabili"
+msgstr "Invalicabile"
 
 #. [topic]
 #: data/core/help.cfg:642
@@ -2593,7 +2584,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2603,7 +2593,7 @@ msgid ""
 msgstr ""
 "\n"
 "Attiva la modalità di debug (non funziona in multiplayer). Vedi "
-"<ref>dst=debug_commands text='Comandi di debug'</ref>.\n"
+"<ref>dst='debug_commands' text='Comandi di debug'</ref>.\n"
 "La modalità debug si disattiva abbandonando la partita o usando :nodebug.\n"
 "\n"
 
@@ -2859,13 +2849,12 @@ msgstr ""
 #. [heals]
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr "guarire +4"
+msgstr "guarisce +4"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "sana"
+msgstr "guarisce +4"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:16
@@ -2879,12 +2868,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guarire +4:\n"
+"Guarisce +4:\n"
 "Permette all'unità di guarire, all'inizio del turno, le truppe amiche "
 "vicine.\n"
 "\n"
-"L'unità di cui si è occupata il guaritore può recuperare fino a 4 PF per "
-"turno oppure arrestare gli effetti del veleno per quel turno.\n"
+"L'unità di cui si occupa il guaritore può recuperare fino a 4 PF per turno "
+"oppure arrestare gli effetti del veleno per quel turno.\n"
 "Un'unità avvelenata non può essere curata dal veleno da un guaritore e dovrà "
 "cercare l'assistenza di un villaggio o di un'unità che abbia l'abilità "
 "“cura”."
@@ -2892,13 +2881,12 @@ msgstr ""
 #. [heals]
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr "guarire +8"
+msgstr "guarisce +8"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "sana"
+msgstr "guarisce +8"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:36
@@ -2912,12 +2900,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guarire +8:\n"
+"Guarisce +8:\n"
 "Questa unità unisce i rimedi delle erbe con la magia per guarire le unità "
-"più velocemente di quanto è normalmente possibile sul campo di battaglia\n"
+"più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
 "\n"
-"L'unità di cui si è occupata il guaritore può recuperare fino a 8 PF per "
-"turno oppure arrestare gli effetti del veleno per quel turno.\n"
+"L'unità di cui si occupa il guaritore può recuperare fino a 8 PF per turno "
+"oppure arrestare gli effetti del veleno per quel turno.\n"
 "Un'unità avvelenata non può essere curata dal veleno da un guaritore e dovrà "
 "cercare l'assistenza di un villaggio o di un'unità che abbia l'abilità "
 "“cura”."
@@ -2929,9 +2917,8 @@ msgstr "cura"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "impavida"
+msgstr "cura"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:54
@@ -3055,7 +3042,6 @@ msgstr "illumina"
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "illumina"
 
@@ -3417,12 +3403,18 @@ msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"Il 40% dell'oro al termine con cui si termina viene portato nello scenario "
+"successivo."
 
 #: data/core/macros/carryover-utils.cfg:53
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"Il 20% dell'oro al termine con cui si termina viene portato nello scenario "
+"successivo."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3472,9 +3464,8 @@ msgstr "Non esprimere desideri."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Lascialo"
+msgstr "Prendilo"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -4737,9 +4728,8 @@ msgstr "sana"
 
 #. [trait]
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, halves poison damage"
-msgstr "Può riposare durante gli spostamenti"
+msgstr "Può riposare durante gli spostamenti, dimezza il danno da veleno"
 
 #. [trait]
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4760,25 +4750,22 @@ msgstr ""
 #. [trait]
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "debole"
 
 #. [trait]
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "non-morta"
+msgstr "debole"
 
 #. [trait]
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "rallenta"
+msgstr "lenta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "leale"
+msgstr "lenta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:209
@@ -5690,15 +5677,13 @@ msgstr ""
 
 #. [race]: description=
 #: data/core/units.cfg:257
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Elfo"
+msgstr "Lupo"
 
 #. [race]: description=
 #: data/core/units.cfg:258
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Elfi"
+msgstr "Lupi"
 
 #. [race]: description=
 #: data/core/units.cfg:266
@@ -6729,14 +6714,12 @@ msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "È stata inviata un'arma non valida, forse dall'IA in Python."
 
 #: src/actions.cpp:1055 src/actions.cpp:1326
-#, fuzzy
 msgid "female^poisoned"
-msgstr "non-morta"
+msgstr "avvelenata"
 
 #: src/actions.cpp:1060 src/actions.cpp:1331
-#, fuzzy
 msgid "female^slowed"
-msgstr "leale"
+msgstr "rallentata"
 
 #: src/actions.cpp:1060 src/actions.cpp:1331
 msgid "slowed"
@@ -6804,9 +6787,8 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:372
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:405
 msgid "addon_type^Campaign"
@@ -6893,9 +6875,8 @@ msgid "Response"
 msgstr "Risposta"
 
 #: src/addon_management.cpp:579
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Scaricamento estensione in corso..."
+msgstr "Scaricamento estensione: $addon_title|..."
 
 #: src/addon_management.cpp:593
 msgid ""
@@ -6907,18 +6888,16 @@ msgid "Unchecked script files found:"
 msgstr ""
 
 #: src/addon_management.cpp:652
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "L'estensione è stata installata."
+msgstr "L'estensione «$addon_title|» è stata installata."
 
 #: src/addon_management.cpp:654
 msgid "Add-on Installed"
 msgstr "Estensione installata"
 
 #: src/addon_management.cpp:712
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "Deinstalla estensioni"
+msgstr "Estensioni obsolete"
 
 #: src/addon_management.cpp:714
 msgid ""
@@ -6936,7 +6915,7 @@ msgstr ""
 
 #: src/addon_management.cpp:723
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Non ci sono estensioni da aggiornare"
 
 #: src/addon_management.cpp:737 src/addon_management.cpp:938
 #: src/dialogs.cpp:645 src/menu_events.cpp:211 src/menu_events.cpp:993
@@ -6944,14 +6923,12 @@ msgid "Name"
 msgstr "Nome"
 
 #: src/addon_management.cpp:737
-#, fuzzy
 msgid "New version"
-msgstr "Versione"
+msgstr "Nuova versione"
 
 #: src/addon_management.cpp:737
-#, fuzzy
 msgid "Old version"
-msgstr "Versione"
+msgstr "Vecchia versione"
 
 #: src/addon_management.cpp:738 src/addon_management.cpp:939
 msgid "Author"
@@ -6962,22 +6939,20 @@ msgid "Size"
 msgstr "Dimensione"
 
 #: src/addon_management.cpp:792
-#, fuzzy
 msgid "Update Add-ons"
-msgstr "Estensioni"
+msgstr "Aggiorna estensioni"
 
 #: src/addon_management.cpp:793
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Seleziona l'estensione da aggiornare:"
 
 #: src/addon_management.cpp:807
-#, fuzzy
 msgid "Update all"
-msgstr "Parete di caverna"
+msgstr "Aggiorna tutte"
 
 #: src/addon_management.cpp:862
 msgid "Update failed"
-msgstr ""
+msgstr "Aggiornamento non riuscito"
 
 #: src/addon_management.cpp:864
 #, fuzzy
@@ -6990,34 +6965,31 @@ msgstr[1] ""
 
 #: src/addon_management.cpp:873
 msgid "Update succeeded"
-msgstr ""
+msgstr "Aggiornamento riuscito"
 
 #: src/addon_management.cpp:874
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Estensione aggiornata correttamente."
 
 #: src/addon_management.cpp:875
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Tutte le estensioni aggiornate correttamente."
 
 #: src/addon_management.cpp:898
-#, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "Connessione al server..."
+msgstr "Connessione al server delle estensioni..."
 
 #: src/addon_management.cpp:901
 msgid "Could not connect to host."
 msgstr "Impossibile connettersi all'host remoto."
 
 #: src/addon_management.cpp:909
-#, fuzzy
 msgid "Requesting list of add-ons"
-msgstr "Sto richiedendo la lista delle estensioni."
+msgstr "Sto richiedendo la lista delle estensioni"
 
 #: src/addon_management.cpp:922
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Errore di comunicazione con il server."
+msgstr "Errore durante la comunicazione con il server."
 
 #: src/addon_management.cpp:938 src/titlescreen.cpp:321
 msgid "Version"
@@ -7066,7 +7038,6 @@ msgid "Remote host disconnected."
 msgstr "Disconnesso dall'host remoto."
 
 #: src/addon_management.cpp:1074
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -7109,10 +7080,8 @@ msgid "Add-on deleted"
 msgstr "Estensione eliminata"
 
 #: src/addon_management.cpp:1148
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr ""
-"Non è stato possibile eliminare l'estensione — non è stato trovato un file."
+msgstr "Non è stato possibile eliminare completamente l'estensione:"
 
 #: src/ai.cpp:1650
 msgid "Unknown unit type : "
@@ -7125,52 +7094,44 @@ msgstr ""
 "0."
 
 #: src/attack_prediction_display.cpp:120 src/attack_prediction_display.cpp:230
-#, fuzzy
 msgid "Attacker"
-msgstr "Tipo di attacco"
+msgstr "Attaccante"
 
 #: src/attack_prediction_display.cpp:121 src/attack_prediction_display.cpp:229
-#, fuzzy
 msgid "Defender"
-msgstr "Difesa"
+msgstr "Difensore"
 
 #: src/attack_prediction_display.cpp:139
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "Risultato atteso della battaglia (PF)"
 
 #: src/attack_prediction_display.cpp:231
-#, fuzzy
 msgid " resistance vs "
-msgstr "Resistenze: "
+msgstr " resistenza contro "
 
 #: src/attack_prediction_display.cpp:232
 msgid " vulnerability vs "
-msgstr ""
+msgstr " vulnerabilità a "
 
 #: src/attack_prediction_display.cpp:242
-#, fuzzy
 msgid "Slowed"
-msgstr "rallentato"
+msgstr "Rallentato"
 
 #: src/attack_prediction_display.cpp:249
-#, fuzzy
 msgid "Time of day"
 msgstr "Periodo del giorno"
 
 #: src/attack_prediction_display.cpp:259
-#, fuzzy
 msgid "Leadership"
-msgstr "comando"
+msgstr "Comando"
 
 #: src/attack_prediction_display.cpp:266
-#, fuzzy
 msgid "Total damage"
-msgstr "danno"
+msgstr "Danno totale"
 
 #: src/attack_prediction_display.cpp:273
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Scegli l'arma:"
+msgstr "Arma inutilizzabile"
 
 #: src/attack_prediction_display.cpp:278
 msgid "Chance of being unscathed"
@@ -7414,7 +7375,6 @@ msgid "Select difficulty level:"
 msgstr "Seleziona il livello di difficoltà"
 
 #: src/game.cpp:1242
-#, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Vuoi davvero avviare il server?"
 
@@ -7476,9 +7436,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "Reimpostazione dei font per la lingua corrente."
 
 #: src/game.cpp:1933
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Sto richiedendo la lista delle estensioni."
+msgstr "Controllo delle estensioni installate."
 
 #: src/game.cpp:1942
 msgid "Loading title screen."
@@ -7837,7 +7796,6 @@ msgid "Statistics"
 msgstr "Statistiche"
 
 #: src/menu_events.cpp:212 src/menu_events.cpp:994
-#, fuzzy
 msgid "Level^Lvl."
 msgstr "Liv."
 
@@ -8131,47 +8089,36 @@ msgid "Mute all observers."
 msgstr ""
 
 #: src/menu_events.cpp:2130
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "Invia un'emozione o una azione personale in chat. Uso: /me <messaggio>"
+msgstr "Invia un'emozione o una azione personale in chat."
 
 #: src/menu_events.cpp:2133
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"Invia un messaggio privato. Non si possono mandare messaggi ai giocatori che "
-"controllano una qualunque fazione in partita. Uso: /whisper <giocatore> "
-"<messaggio>"
+"Invia un messaggio privato. Non si possono mandare messaggi a giocatori che "
+"noncontrollano una fazione della partita a cui stai giocando."
 
 #: src/menu_events.cpp:2139
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Cambia il livello di dettaglio di un dominio di log."
 
 #: src/menu_events.cpp:2141
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr ""
-"Aggiungi il giocatore all'elenco degli utenti da ignorare. Uso: /list ignore "
-"<giocatore>"
+msgstr "Aggiunge il giocatore all'elenco degli utenti da ignorare."
 
 #: src/menu_events.cpp:2143
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Aggiunto all'elenco degli amici: "
+msgstr "Aggiunge un giocatore all'elenco degli amici."
 
 #: src/menu_events.cpp:2145
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Rimuovi il giocatore dal tuo elenco di amici o utenti da ignorare. Uso: /"
-"list remove <giocatore>"
+msgstr "Rimuove il giocatore dall'elenco di amici o utenti da ignorare."
 
 #: src/menu_events.cpp:2147
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Mostra il tuo elenco di amici e utenti da ignorare. Uso: /list display"
+msgstr "Mostra il tuo elenco di amici e utenti da ignorare."
 
 #: src/menu_events.cpp:2150
 msgid "Display version information."
@@ -8293,7 +8240,7 @@ msgstr "Attiva/disattiva l'oscurità per il giocatore attuale."
 
 #: src/menu_events.cpp:2338
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Dà dell'oro al giocatore attuale."
 
 #: src/menu_events.cpp:2340
 msgid "Fire a game event."
@@ -8905,7 +8852,7 @@ msgstr "Scegli il tuo esercito:"
 
 #: src/multiplayer_wait.cpp:312
 msgid "Starting position: "
-msgstr ""
+msgstr "Posizione iniziale: "
 
 #: src/network.cpp:110
 msgid "invalid network handle"
@@ -9237,7 +9184,7 @@ msgstr "Avanzamento unità"
 
 #: src/statistics_dialog.cpp:80 src/statistics_dialog.cpp:144
 msgid "Losses"
-msgstr ""
+msgstr "Perdite"
 
 #: src/statistics_dialog.cpp:85 src/statistics_dialog.cpp:151
 #, fuzzy
@@ -9246,7 +9193,7 @@ msgstr "Colline"
 
 #: src/statistics_dialog.cpp:105
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 #: src/statistics_dialog.cpp:157
 #, fuzzy
@@ -9522,162 +9469,3 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:327
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
-
-#~ msgid "Grassland"
-#~ msgstr "Prateria"
-
-#~ msgid "Snow"
-#~ msgstr "Neve"
-
-#~ msgid "Ice"
-#~ msgstr "Ghiaccio"
-
-#, fuzzy
-#~ msgid ""
-#~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
-#~ msgstr ""
-#~ "Il ghiaccio rappresenta tutte le masse di acqua congelata. Ai fini del "
-#~ "gioco, è identica alla <ref>dst=terrain_snow text=neve</ref>. Ricordati "
-#~ "che le unità che nuotano, anche quelle che respirano sott'acqua, non "
-#~ "possono nuotare al di sotto del ghiaccio."
-
-#~ msgid "Savanna"
-#~ msgstr "Savana"
-
-#, fuzzy
-#~ msgid ""
-#~ "Savannas are plains of tall grass, found in the warmer climates of the "
-#~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
-#~ msgstr ""
-#~ "Le savane sono le pianure di erba alta e si trovano nei climi più caldi "
-#~ "al mondo. Ai fini del gioco, la savana è identica alla "
-#~ "<ref>dst=terrain_grassland text=prateria</ref>."
-
-#~ msgid "Chasm"
-#~ msgstr "Abisso"
-
-#~ msgid "Cave Wall"
-#~ msgstr "Parete di caverna"
-
-#~ msgid ""
-#~ "Cave walls are made of solid stone, renowned for its ability to impede "
-#~ "even the most determined traveler."
-#~ msgstr ""
-#~ "Le pareti delle caverne sono fatte di solida pietra, nota per la sua "
-#~ "capacità di bloccare anche il viaggiatore più determinato."
-
-#~ msgid ""
-#~ "Impassable mountains are so tall and steep that they are constantly "
-#~ "wreathed in cloud. To cross such mountains is practically impossible. "
-#~ "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#~ "heights."
-#~ msgstr ""
-#~ "Le montagne invalicabili sono così alte e scoscese da essere "
-#~ "costantemente avvolte da nubi. L'attraversamento di tali montagne è "
-#~ "praticamente impossibile. Anche le creature volanti non riescono ad "
-#~ "affrontare i picchi frastagliati e l'aria rarefatta di tali altitudini."
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth"
-
-#~ msgid "No multiplayer sides available in this game"
-#~ msgstr "Non ci sono posti liberi per giocatori remoti in questa partita."
-
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr ""
-#~ "Attenzione: errore durante il caricamento dei file di configurazione: '"
-
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "Traduzione in estone"
-
-#, fuzzy
-#~ msgid "Connect to add-ons server"
-#~ msgstr "Connetti al server"
-
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
-#~ msgstr "Ti stai per connettere al server per scaricare le estensioni."
-
-#~ msgid "Server: "
-#~ msgstr "Server: "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Deinstalla estensioni"
-
-#~ msgid "Join Official Server"
-#~ msgstr "Collegati al server ufficiale"
-
-#~ msgid "Log on to the official Wesnoth multiplayer server"
-#~ msgstr "Accedi al server ufficiale di Wesnoth in multiplayer"
-
-#~ msgid "Connect to Server"
-#~ msgstr "Connetti al server"
-
-#~ msgid "Join a different server"
-#~ msgstr "Collegati a un server diverso"
-
-#~ msgid "Host Networked Game"
-#~ msgstr "Ospita partita in rete"
-
-#~ msgid "Host a game using dedicated server 'wesnothd'"
-#~ msgstr "Ospita una partita usando il server dedicato «wesnothd»"
-
-#~ msgid "Local Game"
-#~ msgstr "Partita locale"
-
-#~ msgid ""
-#~ "Play a multiplayer game with the AI or humans sharing the same machine"
-#~ msgstr ""
-#~ "Gioca una partita in multigiocatore con IA o persone condividendo la "
-#~ "stessa macchina"
-
-#~ msgid "Language"
-#~ msgstr "Lingua"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Scegli la lingua che preferisci:"
-
-#~ msgid "View List"
-#~ msgstr "Mostra elenco"
-
-#~ msgid "List of Servers"
-#~ msgstr "Elenco dei server"
-
-#~ msgid "Choose a known server from the list"
-#~ msgstr "Scegli un server noto dall'elenco"
-
-#~ msgid "Address"
-#~ msgstr "Indirizzo"
-
-#~ msgid "Connect to Host"
-#~ msgstr "Connetti al server"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "Scegli l'host a cui connetterti: "
-
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "Traduzione in estone"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "Traduzione in portoghese"
-
-#~ msgid "Pick it up"
-#~ msgstr "Raccoglilo"
-
-#~ msgid "Remove add-ons"
-#~ msgstr "Rimuovi estensioni"
-
-#~ msgid "Level"
-#~ msgstr "Livello"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "mosse"

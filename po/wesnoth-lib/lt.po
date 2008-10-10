@@ -3,10 +3,10 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.4\n"
+"Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-07 16:14+0200\n"
-"PO-Revision-Date: 2008-09-21 14:07+0300\n"
+"PO-Revision-Date: 2008-10-09 21:01+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -131,15 +131,13 @@ msgstr "Tropinis miškas"
 
 #. [terrain]
 #: data/core/terrain.cfg:444
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Miškas"
+msgstr "Miškingos kalvos"
 
 #. [terrain]
 #: data/core/terrain.cfg:454
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Apsnigtos kalvos"
+msgstr "Apsnigtos miškingos kalvos"
 
 #. [terrain]
 #: data/core/terrain.cfg:468 data/core/terrain.cfg:477
@@ -221,9 +219,8 @@ msgstr "Urvas"
 
 #. [terrain]
 #: data/core/terrain.cfg:696
-#, fuzzy
 msgid "Cave path"
-msgstr "Apšviestas urvas"
+msgstr "Urvo takelis"
 
 #. [terrain]
 #: data/core/terrain.cfg:705
@@ -272,9 +269,8 @@ msgstr "Upės brasta"
 
 #. [terrain]
 #: data/core/terrain.cfg:1040
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Pilis"
+msgstr "Pakrantės povandeninės uolos"
 
 #. [terrain]
 #: data/core/terrain.cfg:1054
@@ -304,22 +300,22 @@ msgstr "Tuštuma"
 #. [terrain]
 #: data/core/terrain.cfg:1104
 msgid "Flat"
-msgstr "Plokščios"
+msgstr "Plokščia"
 
 #. [terrain]
 #: data/core/terrain.cfg:1111
 msgid "Frozen"
-msgstr "Užšalusios"
+msgstr "Užšalusi"
 
 #. [terrain]
 #: data/core/terrain.cfg:1118
 msgid "Impassable"
-msgstr "Nepereinamos"
+msgstr "Nepereinama"
 
 #. [terrain]
 #: data/core/terrain.cfg:1125
 msgid "Unwalkable"
-msgstr "Nevaikštomos"
+msgstr "Nevaikštoma"
 
 #. [label]
 #. [column]
@@ -327,34 +323,31 @@ msgstr "Nevaikštomos"
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Tęsti judėjimą"
+msgstr "Prisijungti prie serverio"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Dabar prisijungsite prie serverio, kad atsisiųstumėte priedų."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Serveris:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Atnaujinti perėjimus"
+msgstr "Atnaujinti priedus"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Pašalinti"
+msgstr "Pašalinti priedus"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:201
@@ -362,7 +355,7 @@ msgstr "Pašalinti"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Prisijungti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -388,22 +381,19 @@ msgstr "Generuoti atsitiktinį žemėlapį"
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Žemėlapio generatorius"
+msgstr "Kitas generatorius"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Atsitiktinių skaičių generatoriaus nustatymai"
+msgstr "Nustatymai"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "Generuoti žemėlapį"
+msgstr "Generuoti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -426,7 +416,6 @@ msgstr "Aukštis:"
 #. [button]
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
 msgstr "Sukurti naują žemėlapį"
 
@@ -438,39 +427,35 @@ msgstr "Keisti žemėlapio dydį"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Plotis:"
+msgstr "Naujas plotis:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Plotis:"
+msgstr "Senas plotis:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:81
 #: data/gui/default/window/editor_resize_map.cfg:130
 msgid "2000"
-msgstr ""
+msgstr "2000"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:82
 #: data/gui/default/window/editor_resize_map.cfg:131
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Aukštis:"
+msgstr "Naujas aukštis:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Aukštis:"
+msgstr "Senas aukštis:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
@@ -485,16 +470,14 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
 msgstr "Keisti žemėlapio dydį"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Atsitiktinių skaičių generatoriaus nustatymai"
+msgstr "Redaktoriaus nustatymai"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
@@ -504,9 +487,8 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Kitas dalinys"
+msgstr "Kitas"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
@@ -520,20 +502,18 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Atstatyti"
+msgstr "Raudona:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "Dažnis:"
+msgstr "Žalio:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Mėlyna:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -554,17 +534,16 @@ msgstr "Pritaikyti"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Kalba"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Pasirinkite pageidaujamą kalbą:"
 
 #. [button]
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
-#, fuzzy
 msgid "Change language"
 msgstr "Keisti kalbą"
 
@@ -572,42 +551,39 @@ msgstr "Keisti kalbą"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Dabar prisijungsite prie daugelio žaidėjų serverio."
 
 #. [button]
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "Draugų sąrašas"
+msgstr "Žiūrėti sąrašą"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "Išsaugoti žaidimą"
+msgstr "Sukurti žaidimą"
 
 #. [label]
 #. [text_box]
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Žaidimo pavadinimas:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
-msgstr "Žaidėjai:"
+msgstr "Žaidėjai: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Žemėlapio dydis: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Era:"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
@@ -618,7 +594,7 @@ msgstr "Numatytas didinimas"
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "Nustatyti slaptažodį"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
@@ -628,24 +604,22 @@ msgstr ""
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
-msgstr ""
+msgstr "Naudoti žemėlapio nustatymus"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:333
-#, fuzzy
 msgid "Number of turns"
-msgstr "Kalvų skaičius:"
+msgstr "Ėjimų skaičius"
 
 #. [slider]
 #: data/gui/default/window/mp_create_game.cfg:356
 msgid "Unlimited"
-msgstr ""
+msgstr "Neribotas"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:374
-#, fuzzy
 msgid "Village gold"
-msgstr "Kaimas"
+msgstr "Kaimo auksas"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:414
@@ -655,26 +629,24 @@ msgstr ""
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
-msgstr ""
+msgstr "Karo rūkas"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
-msgstr ""
+msgstr "Atsitiktinis pradžios laikas"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:537
-#, fuzzy
 msgid "Create game"
-msgstr "Sukurti naują žemėlapį"
+msgstr "Sukurti žaidimą"
 
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
-#, fuzzy
 msgid "Multiplayer"
-msgstr "žaidėjas"
+msgstr "Daug žaidėjų"
 
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:61
@@ -684,17 +656,17 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:136
 msgid "Join Official Server"
-msgstr ""
+msgstr "Prisijungti prie oficialaus serverio"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Prisijunkite prie oficialaus Wesnoth daugelio žaidėjų serverio"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:148
 msgid "Join a different server"
-msgstr ""
+msgstr "Prisijungti prie kito serverio"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
@@ -708,64 +680,60 @@ msgstr ""
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
-#, fuzzy
 msgid "Local Game"
-msgstr "Įkelti žaidimą"
+msgstr "Vietinis žaidimas"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Žaiskite daugelio žaidėjų žaidimą su DI arba žmonėmis dalindamiesi tą patį "
+"kompiuterį"
 
 #. [button]
 #: data/gui/default/window/mp_method_selection.cfg:205
 msgid "Ok"
-msgstr ""
+msgstr "Gerai"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
-#, fuzzy
 msgid "Name"
-msgstr "Pavadinimas:"
+msgstr "Pavadinimas"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
-msgstr ""
+msgstr "Adresas"
 
 #. [button]
 #: data/gui/default/window/mp_server_list.cfg:198
-#, fuzzy
 msgid "Select"
-msgstr "Pažymėti viską"
+msgstr "Pasirinkti"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Ėjimo dialogas"
+msgstr "Apmokymas"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanija"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "Kelias"
+msgstr "Įkelti"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Priedai"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "Išjungti redaktorių"
+msgstr "Redaktorius"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -777,7 +745,7 @@ msgstr "Nustatymai"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Autoriai"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1652,9 +1620,8 @@ msgid "Rotate Selection"
 msgstr "Sukti pažymėjimą"
 
 #: src/hotkeys.cpp:151
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Užpildyti pažymėjimą"
+msgstr "Apversti pažymėjimą"
 
 #: src/hotkeys.cpp:153
 msgid "Fill Selection"
@@ -1682,7 +1649,6 @@ msgid "Refresh Display"
 msgstr "Atnaujinti vaizdą"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Atnaujinti vietovių perėjimus"
 
@@ -1716,7 +1682,7 @@ msgstr "Tęsti judėjimą"
 
 #: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
-msgstr ""
+msgstr "Rasti žymę arba dalinį"
 
 #: src/hotkeys.cpp:184
 msgid "Speak to Ally"
@@ -1809,7 +1775,7 @@ msgstr "Pilies dydis:"
 
 #: src/mapgen_dialog.cpp:129
 msgid "Landform:"
-msgstr ""
+msgstr "Žemės forma:"
 
 #: src/mapgen_dialog.cpp:247
 msgid "Roads Between Castles"
@@ -1821,11 +1787,11 @@ msgstr "/1000 laukelių"
 
 #: src/mapgen_dialog.cpp:317
 msgid "Coastal"
-msgstr ""
+msgstr "Pakrantė"
 
 #: src/mapgen_dialog.cpp:317
 msgid "Inland"
-msgstr ""
+msgstr "Toli nuo jūros"
 
 #: src/mapgen_dialog.cpp:317
 msgid "Island"
@@ -1925,72 +1891,3 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Jūsų pakeitimai šiame žemėlapyje bus prarasti. Tęsti?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Generuoti naują žemėlapį"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Atsitiktinių skaičių generatoriaus nustatymai"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Žemėlapio kūrimas nepavyko"
-
-#~ msgid "Video Mode"
-#~ msgstr "Video režimas"
-
-#~ msgid "Lighting levels (time of day):"
-#~ msgstr "Apšvietimo lygiai (dienos laikas):"
-
-#~ msgid "light_level^Red:"
-#~ msgstr "light_level^Raudona:"
-
-#~ msgid "light_level^Green:"
-#~ msgstr "light_level^Žalia:"
-
-#~ msgid "light_level^Blue:"
-#~ msgstr "light_level^Mėlyna:"
-
-#~ msgid "X offset:"
-#~ msgstr "X postūmis:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Y postūmis:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Protingas išskleidimas"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-ašis"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-ašis"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Apversti (tai gali pakeisti žemėlapio išmatavimus):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Nustatyti vietovę"
-
-#~ msgid "Save As"
-#~ msgstr "Išsaugoti kaip"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Nustatyti žaidėjo bokštą"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Atstatyti iš disko"
-
-#~ msgid "Flip Map"
-#~ msgstr "Apversti žemėlapį"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Atidėti perėjimų atnaujinimą"
-
-#~ msgid "Flip Map along X axis"
-#~ msgstr "Apversti žemėlapį apie X ašį"
-
-#~ msgid "Flip Map along Y axis"
-#~ msgstr "Apversti žemėlapį apie Y ašį"
