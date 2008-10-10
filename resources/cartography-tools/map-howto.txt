@@ -1,0 +1,24 @@
+This directory contains the resources needed to edit the Wesnoth main
+map and variants thereof with the GIMP.
+
+The most important file is great-continent.xcf.  This started out as a
+straight conversion of mapmaker Kestenvarn's Photoshop file for the
+main map as it existed on 9 Oct 2008 (still here as  bfw-htt-gimp.psd).
+XCF is the layered format the GIMP uses for storing images.
+
+The layers contain lots of hidden treasure, including isolated copies
+of all the various icons and cartouches and things used to compose the
+main map. To edit, hack a layer (you probably should not touch any of
+the base maps).  When adding new features, put them in new layers.
+Layers are cheap.
+
+The font used for the legends (mostly at 13-point size) is Monotype
+Corsiva. We cannot distribute it because it is issued under a
+proprietary license, but copies are not hard to find on the Web.  To
+fully enable that font in GIMP, copy the downloaded file to your GIMP
+fonts directory; this will be something like ~/.gimp-M.N/fonts/, where
+M.N is your GIMP version.
+
+To generate maps, simply enable the layers you want and save with the
+appropriate file extension.  GIMP will tell you it has to flatten
+the layer stack; that's OK.
