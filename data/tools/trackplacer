@@ -100,15 +100,12 @@ class ModalFileSelector:
                                          lambda w: self.filew.destroy())
     
         self.filew.set_filename(self.default)
-        self.filew.show()
-        gtk.main()
+        self.filew.run()
 
     def file_selected(self, w):
         self.filename = self.filew.get_filename()
-        gtk.main_quit()
 
     def destroy(self, widget):
-        gtk.main_quit()
         sys.exit(0)
 
 class TrackEditor:
