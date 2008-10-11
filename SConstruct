@@ -111,6 +111,7 @@ elif env["PLATFORM"] == "sunos":
     env.Tool("sunlink")
     env.Append(CXXFLAGS = Split("-library=stlport4 -staticlib=stlport4 -norunpath -features=tmplife -features=tmplrefstatic -features=extensions"))
     env.Append(LINKFLAGS = Split("-library=stlport4 -staticlib=stlport4 -lsocket -lnsl -lboost_iostreams -L. -R."))
+    env['CC'] = env['CXX']
 else:
     from cross_compile import *
     setup_cross_compile(env)
