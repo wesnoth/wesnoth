@@ -269,20 +269,20 @@ env = conf.Finish()
 # Implement configuration switches
 #
 
-# FIXME: gcc-specific.
-# Link only on demand, so we don't need separate link lists for each binary
-env.Append(LINKFLAGS = "-Wl,--as-needed")
+if "gnulink" in env["TOOLS"]:
+    env.Append(LINKFLAGS = "-Wl,--as-needed")
 
 env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
-if env['static']:
-    env.AppendUnique(LINKFLAGS = "-all-static")
+if "gcc" in env["TOOLS"]:
+    env.AppendUnique(CXXFLAGS = Split("-W -Wall -ansi"))
+    if env['strict']:
+        env.AppendUnique(CXXFLAGS = "-Werror")
+    else:
+        env.AppendUnique(CXXFLAGS = Split("-Wno-unused -Wno-sign-compare"))
 
-env.AppendUnique(CXXFLAGS = Split("-W -Wall -ansi"))
-if env['strict']:
-    env.AppendUnique(CXXFLAGS = "-Werror")
-else:
-    env.AppendUnique(CXXFLAGS = Split("-Wno-unused -Wno-sign-compare"))
+    env["OPT_FLAGS"] = "-O2"
+    env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
 
 if env['gui'] == 'tiny':
     env.Append(CPPDEFINES = "USE_TINY_GUI")
@@ -330,10 +330,10 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
-    "base"          : dict(CXXFLAGS   = "-O2"),    # Don't build in subdirectory
-    "debug"         : dict(CXXFLAGS   = Split("-O0 -DDEBUG -ggdb3")),
+    "base"          : dict(CXXFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
+    "debug"         : dict(CXXFLAGS   = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CXXFLAGS   = "-O2"),
+    "release"       : dict(CXXFLAGS   = "$OPT_FLAGS"),
     "profile"       : dict(CXXFLAGS   = "-pg", LINKFLAGS = "-pg")
     }
 builds["glibcxx_debug"].update(builds["debug"])
