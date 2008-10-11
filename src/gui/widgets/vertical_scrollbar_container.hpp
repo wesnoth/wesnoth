@@ -77,13 +77,13 @@ public:
 		SDLKey key, SDLMod modifier, Uint16 unicode);
 
 	/** Inherited from twidget. */
-	bool can_wrap() const { return can_content_wrap(); }
+	bool can_wrap() const { return content_can_wrap(); }
 	
 	/** Inherited from twidget. */
 	bool set_width_constrain(const unsigned width);
 
 	/** Inherited from twidget. */
-	void clear_width_constrain() { clear_content_width_constrain(); }
+	void clear_width_constrain() { content_clear_width_constrain(); }
 
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const { return true; }
@@ -161,8 +161,8 @@ protected:
 	const tscrollbar_* find_scrollbar(const bool must_exist = true) const;
 
 	/** See find_scrollbar_grid, but returns the content grid instead. */
-	tgrid* find_content_grid(const bool must_exist = true);
-	const tgrid* find_content_grid(const bool must_exist = true) const;
+	tgrid* content_find_grid(const bool must_exist = true);
+	const tgrid* content_find_grid(const bool must_exist = true) const;
 
 	/** 
 	 * Sets the status of the scrollbar buttons.
@@ -230,14 +230,14 @@ private:
 	 *
 	 * See can_wrap() for more info.
 	 */
-	virtual bool can_content_wrap() const { return false; }
+	virtual bool content_can_wrap() const { return false; }
 
 	/**
 	 * Sets the content width constrain.
 	 *
 	 * See set_width_contrain() for more info.
 	 */
-	virtual bool set_content_width_constrain(const unsigned /*width*/) 
+	virtual bool content_set_width_constrain(const unsigned /*width*/) 
 		{return false; }
 
 	/**
@@ -245,21 +245,21 @@ private:
 	 *
 	 * See clear_width_constrain() for more info.
 	 */
-	virtual void clear_content_width_constrain() {}
+	virtual void content_clear_width_constrain() {}
 
 	/** 
 	 * Returns the best size for the content part. 
 	 *
 	 * See get_best_size() for more info.
 	 */
-	virtual tpoint get_content_best_size() const = 0;
+	virtual tpoint content_get_best_size() const = 0;
 
 	/** 
 	 * Returns the best size for the content part. 
 	 *
 	 * See get_best_size(cont tpoint&) for more info.
 	 */
-	virtual tpoint get_content_best_size(const tpoint& maximum_size) const = 0;
+	virtual tpoint content_get_best_size(const tpoint& maximum_size) const = 0;
 
 	/**
 	 * Sets the size for the content.
@@ -269,7 +269,7 @@ private:
 	 *
 	 * @param rect                The new size of the content grid.
 	 */
-	virtual void set_content_size(const SDL_Rect& rect) = 0;
+	virtual void content_set_size(const SDL_Rect& rect) = 0;
 
 	/** 
 	 * Draws the content part of the widget.
@@ -282,13 +282,13 @@ private:
 	/**
 	 * Finds a widget in the content area.
 	 *
-	 * See find_content_widget for more info.
+	 * See content_find_widget for more info.
 	 */
-	virtual twidget* find_content_widget(
+	virtual twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active) = 0;
 
 	/** The const version. */
-	virtual const twidget* find_content_widget(
+	virtual const twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active) const = 0;
 };
 

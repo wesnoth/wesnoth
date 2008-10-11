@@ -164,7 +164,7 @@ bool tvertical_scrollbar_container_::set_width_constrain(const unsigned width)
 	const unsigned scrollbar_width = scrollbar_mode_ == HIDE 
 		? 0 : find_scrollbar_grid()->get_best_size().x;
 	
-	const bool result = set_content_width_constrain(width - scrollbar_width);
+	const bool result = content_set_width_constrain(width - scrollbar_width);
 
 	DBG_G_L << "tvertical_scrollbar_container_ " 
 		<< " width " << width
@@ -179,7 +179,7 @@ tpoint tvertical_scrollbar_container_::get_best_size() const
 	log_scope2(gui_layout, 
 		std::string("tvertical_scrollbar_container_ ") + __func__);
 
-	const tpoint content = get_content_best_size();
+	const tpoint content = content_get_best_size();
 	if(scrollbar_mode_ == HIDE) {
 		DBG_G_L << "tvertical_scrollbar_container_ result " << content << ".\n";
 		return content;
@@ -216,14 +216,14 @@ tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size)
 		// No scrollbar hope the normal size is small enough. Don't send the
 		// maximum_size parameter since then the content 'thinks' there will be
 		// a scrollbar.
-		const tpoint result = get_content_best_size();
+		const tpoint result = content_get_best_size();
 
 		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
 		return result;
 	} else {
 		// The scrollbar also can't be resized so ask the best size.
 		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
-		const tpoint content = get_content_best_size(tpoint(
+		const tpoint content = content_get_best_size(tpoint(
 			maximum_size.x - scrollbar.x, maximum_size.y));
 
 		// Width and height same rules as above.
@@ -250,7 +250,7 @@ void tvertical_scrollbar_container_::set_size(const SDL_Rect& rect)
 	// Test whether we need a scrollbar.
 	bool scrollbar_needed = (scrollbar_mode_ == SHOW);
 	if(scrollbar_mode_ == SHOW_WHEN_NEEDED) {
-		tpoint size = get_content_best_size();
+		tpoint size = content_get_best_size();
 		scrollbar_needed = size.x > rect.w || size.y > rect.h; 
 	}
 
@@ -266,14 +266,14 @@ void tvertical_scrollbar_container_::set_size(const SDL_Rect& rect)
 
 		tmp = rect;
 		tmp.w -= scrollbar.x;
-		find_content_grid()->set_size(tmp);
-		set_content_size(tmp);
+		content_find_grid()->set_size(tmp);
+		content_set_size(tmp);
 	} else {
 
 		show_scrollbar(false);
 
-		find_content_grid()->set_size(rect);
-	 	set_content_size(rect);
+		content_find_grid()->set_size(rect);
+	 	content_set_size(rect);
 	}
 
 	set_scrollbar_button_status();
@@ -295,11 +295,11 @@ void tvertical_scrollbar_container_::draw(
 twidget* tvertical_scrollbar_container_::find_widget(
 		const tpoint& coordinate, const bool must_be_active) 
 {
-	SDL_Rect content = find_content_grid()->get_rect();
+	SDL_Rect content = content_find_grid()->get_rect();
 
 	if(point_in_rect(coordinate.x, coordinate.y, content)) {
 
-		return find_content_widget(tpoint( 
+		return content_find_widget(tpoint( 
 			coordinate.x - get_x(), coordinate.y - get_y())
 			, must_be_active);
 	} 
@@ -311,11 +311,11 @@ twidget* tvertical_scrollbar_container_::find_widget(
 const twidget* tvertical_scrollbar_container_::find_widget(
 		const tpoint& coordinate, const bool must_be_active) const
 {
-	SDL_Rect content = find_content_grid()->get_rect();
+	SDL_Rect content = content_find_grid()->get_rect();
 
 	if(point_in_rect(coordinate.x, coordinate.y, content)) {
 		
-		return find_content_widget(tpoint( 
+		return content_find_widget(tpoint( 
 			coordinate.x - get_x(), coordinate.y - get_y())
 			, must_be_active);
 	} 
@@ -357,13 +357,13 @@ const tscrollbar_* tvertical_scrollbar_container_::find_scrollbar(
     	->find_widget<const tscrollbar_>("_scrollbar", false, must_exist);
 }
 
-tgrid* tvertical_scrollbar_container_::find_content_grid(const bool must_exist)
+tgrid* tvertical_scrollbar_container_::content_find_grid(const bool must_exist)
 {
     return find_widget<tgrid>("_content_grid", false, must_exist);
 }
 
 const tgrid* tvertical_scrollbar_container_::
-		find_content_grid(const bool must_exist) const
+		content_find_grid(const bool must_exist) const
 {
     return find_widget<tgrid>("_content_grid", false, must_exist);
 }
@@ -431,7 +431,7 @@ void tvertical_scrollbar_container_::finalize_setup()
 
 	// Make sure all mandatory widgets are tested
 	find_scrollbar_grid();
-	find_content_grid();
+	content_find_grid();
 
 	// Call the virtual function to subclasses can do their finalization part.
 	finalize();

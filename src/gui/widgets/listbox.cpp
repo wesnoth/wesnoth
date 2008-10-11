@@ -199,13 +199,13 @@ bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 tgrid* tlistbox::find_list(const bool must_exist)
 {
 	tgrid* result = find_widget<tgrid>("_list", false, false);
-	return result ? result : find_content_grid(must_exist);
+	return result ? result : content_find_grid(must_exist);
 }
 
 const tgrid* tlistbox::find_list(const bool must_exist) const
 {
 	const tgrid* result = find_widget<const tgrid>("_list", false, false);
-	return result ? result : find_content_grid(must_exist);
+	return result ? result : content_find_grid(must_exist);
 }
 
 void tlistbox::draw_list_area_fixed_row_height(surface& surface, 
@@ -406,11 +406,11 @@ void tlistbox::trow::select_in_grid(tgrid* grid, const bool selected)
 	}
 }
 
-tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
+tpoint tlistbox::content_get_best_size(const tpoint& maximum_size) const
 {
 	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
 
-	tpoint best_size = get_content_best_size();
+	tpoint best_size = content_get_best_size();
 
 	// We can only reduce our height so we ignore the x value.
 	// NOTE we might later be able to reduce our width as well, but that's
@@ -422,7 +422,7 @@ tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
 	tpoint max = maximum_size;
 
 	// Adjust for the size of the header and footer.
-	const tpoint base = find_content_grid()->get_best_size();
+	const tpoint base = content_find_grid()->get_best_size();
 	max.y -= base.y;
 	if(base.x > max.x) {
 		max.x = base.x;
@@ -447,13 +447,13 @@ tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
 	return best_size;
 }
 
-tpoint tlistbox::get_content_best_size() const
+tpoint tlistbox::content_get_best_size() const
 {
 	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
 
 	// First determine the size wanted for the grid, which is used when header
 	// or footer are used.
-	const tpoint base = find_content_grid()->get_best_size();
+	const tpoint base = content_find_grid()->get_best_size();
 	unsigned width = base.x;
 	unsigned height = base.y;
 
@@ -472,7 +472,7 @@ tpoint tlistbox::get_content_best_size() const
 	return tpoint(width, height);
 }
 
-void tlistbox::set_content_size(const SDL_Rect& rect)
+void tlistbox::content_set_size(const SDL_Rect& rect)
 {
 	unsigned total_height = 0;
 	foreach(trow& row, rows_) {
@@ -514,14 +514,14 @@ void tlistbox::draw_content(surface& surface, const bool force,
 	// Handle our full redraw for the spacer area.
 	if(!list_background_) {
 		list_background_.assign(
-			gui2::save_background(surface, find_content_grid()->get_rect()));
+			gui2::save_background(surface, content_find_grid()->get_rect()));
 	} else {
 		gui2::restore_background(
-			list_background_, surface, find_content_grid()->get_rect());
+			list_background_, surface, content_find_grid()->get_rect());
 	}
 
 	// draw header and footer.
-	find_content_grid()->draw(surface, force, invalidate_background);
+	content_find_grid()->draw(surface, force, invalidate_background);
 	
 	// Now paint the list
 	if(assume_fixed_row_size_) {
@@ -532,13 +532,13 @@ void tlistbox::draw_content(surface& surface, const bool force,
 	}
 }
 
-twidget* tlistbox::find_content_widget(
+twidget* tlistbox::content_find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 { 
 
 	int offset = 0;
 	tpoint coord = coordinate;
-	coord.y -= find_list()->get_rect().y - find_content_grid()->get_rect().y;
+	coord.y -= find_list()->get_rect().y - content_find_grid()->get_rect().y;
 	const size_t row = row_at_offset(coord.y, offset);
 
 	if(row == static_cast<size_t>(-1)) {
@@ -551,12 +551,12 @@ twidget* tlistbox::find_content_widget(
 		tpoint(coordinate.x, offset), must_be_active);
 }
 
-const twidget* tlistbox::find_content_widget(
+const twidget* tlistbox::content_find_widget(
 		const tpoint& coordinate, const bool must_be_active) const
 {
 	int offset = 0;
 	tpoint coord = coordinate;
-	coord.y -= find_list()->get_rect().y - find_content_grid()->get_rect().y;
+	coord.y -= find_list()->get_rect().y - content_find_grid()->get_rect().y;
 	const size_t row = row_at_offset(coord.y, offset);
 
 	if(row == static_cast<size_t>(-1)) {

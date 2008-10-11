@@ -102,33 +102,33 @@ private:
 		{ static const std::string type = "scroll_label"; return type; }
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	bool can_content_wrap() const { return true; }
+	bool content_can_wrap() const { return true; }
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	bool set_content_width_constrain(const unsigned width);
+	bool content_set_width_constrain(const unsigned width);
 	 
 	/** Inherited from tvertical_scrollbar_container_. */
-	void clear_content_width_constrain();
+	void content_clear_width_constrain();
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint get_content_best_size(const tpoint& maximum_size) const;
+	tpoint content_get_best_size(const tpoint& maximum_size) const;
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint get_content_best_size() const;
+	tpoint content_get_best_size() const;
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	void set_content_size(const SDL_Rect& rect);
+	void content_set_size(const SDL_Rect& rect);
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	void draw_content(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	twidget* find_content_widget(
+	twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	const twidget* find_content_widget(const tpoint& coordinate, 
+	const twidget* content_find_widget(const tpoint& coordinate, 
 			const bool must_be_active) const;
 };
 

@@ -88,7 +88,7 @@ void tscroll_label::finalize()
 	label_->set_can_wrap(true);
 }
 
-bool tscroll_label::set_content_width_constrain(const unsigned width)
+bool tscroll_label::content_set_width_constrain(const unsigned width)
 {
 	bool result = !label_ ? true : label_->set_width_constrain(width);
 
@@ -99,14 +99,14 @@ bool tscroll_label::set_content_width_constrain(const unsigned width)
 	return result;
 }
 
-void tscroll_label::clear_content_width_constrain()
+void tscroll_label::content_clear_width_constrain()
 {
 	if(label_) {
 		label_->clear_width_constrain();
 	}
 }
 
-tpoint tscroll_label::get_content_best_size(const tpoint& maximum_size) const
+tpoint tscroll_label::content_get_best_size(const tpoint& maximum_size) const
 {
 	assert(label_);
 
@@ -119,7 +119,7 @@ tpoint tscroll_label::get_content_best_size(const tpoint& maximum_size) const
 	return result;
 }
 
-tpoint tscroll_label::get_content_best_size() const
+tpoint tscroll_label::content_get_best_size() const
 {
 	assert(label_);
 
@@ -130,7 +130,7 @@ tpoint tscroll_label::get_content_best_size() const
 	return result;
 }
 
-void tscroll_label::set_content_size(const SDL_Rect& rect)
+void tscroll_label::content_set_size(const SDL_Rect& rect)
 {
 	assert(label_);
 
@@ -153,7 +153,7 @@ void tscroll_label::draw_content(surface& surf, const bool force,
 {
 	assert(label_);
 	if(label_ == NULL) {
-		find_content_grid()->draw(surf, force, invalidate_background);
+		content_find_grid()->draw(surf, force, invalidate_background);
 		return;
 	}
 
@@ -173,13 +173,13 @@ void tscroll_label::draw_content(surface& surf, const bool force,
 	blit_surface(label_surf, &src_rect , surf, &dst_rect);
 }
 
-twidget* tscroll_label::find_content_widget(
+twidget* tscroll_label::content_find_widget(
 		const tpoint& /*coordinate*/, const bool /*must_be_active*/)
 {
 	return label_;
 }
 
-const twidget* tscroll_label::find_content_widget(const tpoint& /*coordinate*/, 
+const twidget* tscroll_label::content_find_widget(const tpoint& /*coordinate*/, 
 		const bool /*must_be_active*/) const
 {
 	return label_;
