@@ -24,11 +24,15 @@ class tlabel : public tcontrol
 {
 public:
 	
-	tlabel() :
-		tcontrol(COUNT),
-		state_(ENABLED)
+	tlabel() 
+		: tcontrol(COUNT)
+		, state_(ENABLED)
+		, can_wrap_(false)
 	{
 	}
+
+	/** Inherited from twidget. */
+	bool can_wrap() const { return can_wrap_; }
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active) 
@@ -39,6 +43,10 @@ public:
 
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_can_wrap(const bool wrap) {  can_wrap_ = wrap; }
 
 private:
 
@@ -58,6 +66,9 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
+
+	/** Holds the label can wrap or not. */
+	bool can_wrap_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 

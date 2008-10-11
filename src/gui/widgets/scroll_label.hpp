@@ -38,9 +38,6 @@ public:
 
 	~tscroll_label();
 
-	/** Inherited from twidget. */
-	bool has_vertical_scrollbar() const { return true; }
-
 	/** Inherited from tcontrol. */
 	void set_label(const t_string& label);
 
@@ -103,6 +100,15 @@ private:
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "scroll_label"; return type; }
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	bool can_content_wrap() const { return true; }
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	bool set_content_width_constrain(const unsigned width);
+	 
+	/** Inherited from tvertical_scrollbar_container_. */
+	void clear_content_width_constrain();
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	tpoint get_content_best_size(const tpoint& maximum_size) const;

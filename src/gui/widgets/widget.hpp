@@ -325,8 +325,7 @@ public:
 	 * @returns                   The best size for the widget.
 	 * @retval 0,0                The best size is 0,0.
 	 */
-	virtual tpoint get_best_size(const tpoint& /*maximum_size*/) const
-		{ return get_best_size(); }
+	virtual tpoint get_best_size(const tpoint& maximum_size) const = 0;
 
 	/**
 	 * Gets the maximum size for the widget.
@@ -335,6 +334,32 @@ public:
 	 * @retval 0,0                   The widget has no maximum size.
 	 */
 	virtual tpoint get_maximum_size() const = 0;	
+
+	/**
+	 * Can the widget wrap.
+	 *
+	 * When a widget can wrap it can reduce it's width by increasing it's
+	 * height. When a layout is too wide it should first try to wrap and if
+	 * that fails it should check the vertical scrollbar status. After wrapping
+	 * the height might (probably will) change so the layout engine needs to
+	 * recalculate.
+	 */
+	virtual bool can_wrap() const { return false; }
+
+	/**
+	 * Limits the maximum width for a widget.
+	 *
+	 * This function should only be called on widgets that can wrap.
+	 *
+	 * @param width               The maximum width for the widget.
+	 *
+	 * @returns                   True if the widget can wrap in the wanted
+	 *                            width, false otherwise.
+	 */
+	virtual bool set_width_constrain(const unsigned /*width*/) { return false; }
+
+	/** Clears the width constrains set. */
+	virtual void clear_width_constrain() {}
 
 	/**
 	 * Does the widget have a vertical scrollbar.

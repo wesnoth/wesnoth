@@ -184,6 +184,15 @@ public:
 	tpoint get_maximum_size() const;
 
 	/** Inherited from twidget. */
+	bool can_wrap() const;
+
+	/** Inherited from twidget. */
+	bool set_width_constrain(const unsigned width);
+
+	/** Inherited from twidget. */
+	void clear_width_constrain();
+
+	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const;
 
 	/** Inherited from twidget. */
@@ -259,6 +268,12 @@ private:
 
 		/** Returns the maximum size for the cell. */
 		tpoint get_maximum_size() const;
+
+		/** Returns the can_wrap for the cell. */
+		bool can_wrap() const { return widget_ ? widget_->can_wrap() : false; }
+
+		/** Returns the set_width_constrain for the cell. */
+		bool set_width_constrain(const unsigned width);
 
 		/**
 		 * Sets the size of the widget in the cell.

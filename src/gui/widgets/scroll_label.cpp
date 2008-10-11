@@ -77,14 +77,33 @@ const tspacer* tscroll_label::find_spacer(const bool must_exist) const
 
 void tscroll_label::finalize()
 {
-	find_label(true)->set_label(label());
-
 	tspacer* spacer = new tspacer();
 	spacer->set_id("_label");
 	spacer->set_definition("default");
 
 	label_ = dynamic_cast<tlabel*>(grid().swap_child("_label", spacer, true));
 	assert(label_);
+
+	label_->set_label(label());
+	label_->set_can_wrap(true);
+}
+
+bool tscroll_label::set_content_width_constrain(const unsigned width)
+{
+	bool result = !label_ ? true : label_->set_width_constrain(width);
+
+	DBG_G_L << "tscroll_label " << __func__ << ":"
+		<< " no label " << !label_
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+void tscroll_label::clear_content_width_constrain()
+{
+	if(label_) {
+		label_->clear_width_constrain();
+	}
 }
 
 tpoint tscroll_label::get_content_best_size(const tpoint& maximum_size) const

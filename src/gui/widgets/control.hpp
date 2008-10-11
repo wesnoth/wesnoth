@@ -98,11 +98,17 @@ public:
 	/** Inherited from twidget. */
 	tpoint get_best_size() const;
 
-	/** Import overloaded versions. */
-	using twidget::get_best_size;
+	/** Inherited from twidget. */
+	tpoint get_best_size(const tpoint& maximum_size) const;
 
 	/** Inherited from twidget. */
 	tpoint get_maximum_size() const;
+
+	/** Inherited from twidget. */
+	bool set_width_constrain(const unsigned width);
+
+	/** Inherited from twidget. */
+	void clear_width_constrain();
 
 	/** Inherited from twidget. */
 	void draw(surface& surface,  const bool force = false,
@@ -334,10 +340,14 @@ private:
 	 * Gets the best size for a text.
 	 *
 	 * @param minimum_size        The minimum size of the text.
+	 * @param maximum_size        The wanted maximum size of the text, if not
+	 *                            possible it's ignored. A value of 0 means
+	 *                            that it's ignored as well.
 	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_best_text_size(const tpoint& minimum_size) const;
+	tpoint get_best_text_size(const tpoint& minimum_size, 
+		const tpoint& maximum_size = tpoint(0,0)) const;
 
 	/** 
 	 * Contains a helper cache for the rendering.
@@ -351,6 +361,9 @@ private:
 	 * as wanted.
 	 */
 	mutable font::ttext renderer_;
+
+	/** The maximum width for the text in a control. */
+	int text_maximum_width_;
 };
 
 } // namespace gui2

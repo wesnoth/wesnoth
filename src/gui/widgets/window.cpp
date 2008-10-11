@@ -360,6 +360,10 @@ SDL_Rect twindow::get_client_rect() const
 
 void twindow::layout()
 {
+	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
+		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
+	assert(conf);
+
 	if(automatic_placement_) {
 		
 		log_scope2(gui_layout, "Window: Recalculate size");	
@@ -367,6 +371,20 @@ void twindow::layout()
 		tpoint size = get_best_size(); 
 		DBG_G_L << "twindow " << __func__ << ": " << size << " screen size " 
 			<< settings::screen_width << ',' << settings::screen_height << ".\n";
+
+		// Too wide and we can wrap, try that.
+		if(static_cast<size_t>(size.x) > settings::screen_width && can_wrap()) {
+			DBG_G_L << "twindow " << __func__ << ": start wrapping.\n";
+			if(set_width_constrain(settings::screen_width
+					-  conf->left_border - conf->right_border)) {
+
+				size = get_best_size();
+				DBG_G_L << "twindow " << __func__ 
+					<< ": After wrapping : " << size << ".\n";
+			} else {
+				DBG_G_L << "twindow " << __func__ << ": wrapping failed.\n";
+			}
+		}
 
 		// If too big try it gracefully.
 		if(static_cast<size_t>(size.x) > settings::screen_width 
@@ -424,6 +442,8 @@ void twindow::layout()
 			x_(variables), y_(variables), w_(variables), h_(variables)));
 	}
 
+	// Make sure the contrains are cleared, they might be partially set.
+	clear_width_constrain();
 	need_layout_ = false;
 }
 

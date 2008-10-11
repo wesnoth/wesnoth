@@ -47,6 +47,19 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
+	/** Inherited from twidget. */
+	bool can_wrap() const { return grid_.can_wrap() || twidget::can_wrap(); }
+
+	/** 
+	 * Inherited from twidget. 
+	 *
+	 * @todo Adjust for our border.
+	 */
+	bool set_width_constrain(const unsigned width) {  return grid_.set_width_constrain(width); }
+
+	/** Inherited from twidget. */
+	void clear_width_constrain() { grid_.clear_width_constrain(); }
+
 	/** 
 	 * Inherited from twidget. 
 	 * 

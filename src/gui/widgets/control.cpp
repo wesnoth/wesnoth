@@ -20,17 +20,18 @@
 
 namespace gui2 {
 
-tcontrol::tcontrol(const unsigned canvas_count) :
-	visible_(true),
-	label_(),
-	multiline_label_(false),
-	use_tooltip_on_label_overflow_(true),
-	tooltip_(),
-	help_message_(),
-	canvas_(canvas_count),
-	restorer_(),
-	config_(0),
-	renderer_()
+tcontrol::tcontrol(const unsigned canvas_count)
+	: visible_(true)
+	, label_()
+	, multiline_label_(false)
+	, use_tooltip_on_label_overflow_(true)
+	, tooltip_()
+	, help_message_()
+	, canvas_(canvas_count)
+	, restorer_()
+	, config_(0)
+	, renderer_()
+	, text_maximum_width_(0)
 {
 }
 
@@ -84,31 +85,104 @@ void tcontrol::load_config()
 tpoint tcontrol::get_minimum_size() const
 {
 	assert(config_);
-	const tpoint min_size(config_->min_width, config_->min_height);
-	if(label_.empty()) {
-		return min_size;
+
+	tpoint result(config_->min_width, config_->min_height);
+	if(! label_.empty()) {
+		// If no label text set we use the predefined value.
+		 
+		/** 
+		 * @todo The value send should subtract the border size
+		 * and readd it after calculation to get the proper result.
+		 */
+		result = get_best_text_size(result);
 	}
 
-	return get_best_text_size(min_size);
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " empty label " << label_.empty()
+		<< " result " << result
+		<< ".\n";
+	return result;
 }
 
 tpoint tcontrol::get_best_size() const
 {
 	assert(config_);
+	tpoint result(config_->default_width, config_->default_height);
+	if(! label_.empty()) {
+		// If no label text set we use the predefined value.
 
-	// Return default on an empty label.
-	const tpoint default_size(config_->default_width, config_->default_height);
-	if(label_.empty()) {
-		return default_size;
+		/** 
+		 * @todo The value send should subtract the border size
+		 * and readd it after calculation to get the proper result.
+		 */
+		result = get_best_text_size(result);
 	}
 
-	return get_best_text_size(default_size);
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " empty label " << label_.empty()
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+tpoint tcontrol::get_best_size(const tpoint& maximum_size) const
+{
+	assert(config_);
+	tpoint result(0, 0);
+	if(! label_.empty()) {
+		// If no label text set we use the predefined value.
+
+		/** 
+		 * @todo The value send should subtract the border size
+		 * and readd it after calculation to get the proper result.
+		 */
+		result = get_best_text_size(tpoint(0,0), maximum_size);
+	}
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " empty label " << label_.empty()
+		<< " result " << result
+		<< ".\n";
+	return result;
 }
 
 tpoint tcontrol::get_maximum_size() const
 {
 	assert(config_);
-	return tpoint(config_->max_width, config_->max_height);
+
+	tpoint result = tpoint(config_->max_width, config_->max_height);
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+bool tcontrol::set_width_constrain(const unsigned width)
+{
+	assert(can_wrap());
+	assert(text_maximum_width_ == 0);
+
+	bool result = false;
+	if(label_.empty()) {
+		// Return true on empty label but don't set the value.
+		result = true;
+	} else if(get_best_text_size(tpoint(width, 0)).y <= static_cast<int>(width)) {
+		// Test whether we can achieve the wanted size.
+		text_maximum_width_ = width;
+		result = true;
+	}
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " empty label " << label_.empty()
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+void tcontrol::clear_width_constrain()
+{
+	text_maximum_width_ = 0;
 }
 
 void tcontrol::draw(surface& surface, const bool force, 
@@ -206,14 +280,18 @@ void tcontrol::update_canvas()
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
+		canvas.set_variable("text_wrap_mode", variant(can_wrap() 
+			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END));
 	}
 }
 
 int tcontrol::get_text_maximum_width() const
 {
 	assert(config_);
-	
-	return get_width() - config_->text_extra_width;
+
+	return text_maximum_width_ != 0
+		? text_maximum_width_ 
+		: get_width() - config_->text_extra_width;
 }
 
 int tcontrol::get_text_maximum_height() const
@@ -235,8 +313,10 @@ void tcontrol::restore_background(surface& dst)
 	gui2::restore_background(restorer_, dst, get_rect());
 }
 
-tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
+tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
 {
+	log_scope2(gui_layout, "tcontrol(" + get_control_type() + ") " + __func__);
+
 	assert(!label_.empty());
 
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
@@ -247,13 +327,34 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
 	renderer_.set_font_style(config_->text_font_style);
 
 	// Try with the minimum wanted size.
-	renderer_.set_maximum_width(size.x);
+	const int maximum_width =  text_maximum_width_ != 0 
+		? text_maximum_width_ 
+		: maximum_size.x;
+		
+	renderer_.set_maximum_width(maximum_width);
+
+	if(can_wrap()) {
+		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
+	}
+
 	if(multiline_label_) {
+		// FIXME multiline seems to be unused
 		renderer_.set_maximum_height(size.y);
 	}
 
+	DBG_G_L << "tcontrol(" + get_control_type() + ") status:\n";
+	DBG_G_L << "minimum_size " << minimum_size
+		<< " maximum_size " << maximum_size
+		<< " text_maximum_width_ " << text_maximum_width_
+		<< " can_wrap " << can_wrap()
+		<< " truncated " << renderer_.is_truncated()
+		<< " renderer size " << renderer_.get_size()
+		<< ".\n";
+
 	// If doesn't fit try the maximum.
-	if(renderer_.is_truncated()) {
+	if(renderer_.is_truncated() && !can_wrap()) {
+		// FIXME if maximum size is defined we should look at that
+		// but also we don't adjust for the extra text space yet!!!
 		const tpoint maximum_size(config_->max_width, config_->max_height);
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
 		if(multiline_label_) {
@@ -270,7 +371,8 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size) const
 	if(size.y < minimum_size.y) {
 		size.y = minimum_size.y;
 	}
-
+	
+	DBG_G_L << "tcontrol(" + get_control_type() + ") result " << size << ".\n";
 	return size;
 }
 

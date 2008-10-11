@@ -156,9 +156,28 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 	}
 }
 
+bool tvertical_scrollbar_container_::set_width_constrain(const unsigned width)
+{
+	log_scope2(gui_layout, 
+		std::string("tvertical_scrollbar_container_ ") + __func__);
+
+	const unsigned scrollbar_width = scrollbar_mode_ == HIDE 
+		? 0 : find_scrollbar_grid()->get_best_size().x;
+	
+	const bool result = set_content_width_constrain(width - scrollbar_width);
+
+	DBG_G_L << "tvertical_scrollbar_container_ " 
+		<< " width " << width
+		<< " scrollbar_width " << scrollbar_width
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
 tpoint tvertical_scrollbar_container_::get_best_size() const
 {
-	log_scope2(gui_layout, std::string("tvertical_scrollbar_container_ ") + __func__);
+	log_scope2(gui_layout, 
+		std::string("tvertical_scrollbar_container_ ") + __func__);
 
 	const tpoint content = get_content_best_size();
 	if(scrollbar_mode_ == HIDE) {
@@ -187,8 +206,11 @@ tpoint tvertical_scrollbar_container_::get_best_size() const
 
 tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size) const
 {
-	log_scope2(gui_layout, std::string("tvertical_scrollbar_container_ ") + __func__);
-	DBG_G_L << "tvertical_scrollbar_container_ maximum_size " << maximum_size << ".\n";
+	log_scope2(gui_layout, 
+		std::string("tvertical_scrollbar_container_ ") + __func__);
+
+	DBG_G_L << "tvertical_scrollbar_container_ maximum_size " 
+		<< maximum_size << ".\n";
 
 	if(scrollbar_mode_ == HIDE) {
 		// No scrollbar hope the normal size is small enough. Don't send the
@@ -201,7 +223,8 @@ tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size)
 	} else {
 		// The scrollbar also can't be resized so ask the best size.
 		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
-		const tpoint content = get_content_best_size(tpoint(maximum_size.x - scrollbar.x, maximum_size.y));
+		const tpoint content = get_content_best_size(tpoint(
+			maximum_size.x - scrollbar.x, maximum_size.y));
 
 		// Width and height same rules as above.
 		if(scrollbar_mode_ == SHOW) {

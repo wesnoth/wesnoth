@@ -77,6 +77,15 @@ public:
 		SDLKey key, SDLMod modifier, Uint16 unicode);
 
 	/** Inherited from twidget. */
+	bool can_wrap() const { return can_content_wrap(); }
+	
+	/** Inherited from twidget. */
+	bool set_width_constrain(const unsigned width);
+
+	/** Inherited from twidget. */
+	void clear_width_constrain() { clear_content_width_constrain(); }
+
+	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const { return true; }
 
 	/** Inherited from tcontainer. */
@@ -214,7 +223,29 @@ private:
 	/** Returns the selected row. */
 	virtual unsigned get_selected_row() const;
 
-	/***** ***** pure virtuals for the subclasses ****** *****/
+	/***** ***** (pure) virtuals for the subclasses ****** *****/
+
+	/**
+	 * Returns whether or not the content can wrap.
+	 *
+	 * See can_wrap() for more info.
+	 */
+	virtual bool can_content_wrap() const { return false; }
+
+	/**
+	 * Sets the content width constrain.
+	 *
+	 * See set_width_contrain() for more info.
+	 */
+	virtual bool set_content_width_constrain(const unsigned /*width*/) 
+		{return false; }
+
+	/**
+	 * Clears the content width constrain.
+	 *
+	 * See clear_width_constrain() for more info.
+	 */
+	virtual void clear_content_width_constrain() {}
 
 	/** 
 	 * Returns the best size for the content part. 
