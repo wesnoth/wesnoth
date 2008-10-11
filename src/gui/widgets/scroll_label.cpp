@@ -89,13 +89,26 @@ void tscroll_label::finalize()
 
 tpoint tscroll_label::get_content_best_size(const tpoint& maximum_size) const
 {
-	return tpoint(get_content_best_size().x, maximum_size.y);
+	assert(label_);
+
+	log_scope2(gui_layout, std::string("tscroll_label ") + __func__);
+	DBG_G_L << "maximum size " << maximum_size << ".\n";
+
+	tpoint result = label_->get_best_size(maximum_size);
+
+	DBG_G_L << " result " << result << ".\n";
+	return result;
 }
 
 tpoint tscroll_label::get_content_best_size() const
 {
 	assert(label_);
-	return label_->get_best_size();
+
+	log_scope2(gui_layout, std::string("tscroll_label ") + __func__);
+	tpoint result = label_->get_best_size();
+
+	DBG_G_L << " result " << result << ".\n";
+	return result;
 }
 
 void tscroll_label::set_content_size(const SDL_Rect& rect)

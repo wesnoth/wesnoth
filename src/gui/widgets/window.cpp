@@ -362,10 +362,10 @@ void twindow::layout()
 {
 	if(automatic_placement_) {
 		
-		log_scope2(gui, "Window: Recalculate size");	
+		log_scope2(gui_layout, "Window: Recalculate size");	
 
 		tpoint size = get_best_size(); 
-		DBG_GUI << "Window best size : " << size << " screen size " 
+		DBG_G_L << "twindow " << __func__ << ": " << size << " screen size " 
 			<< settings::screen_width << ',' << settings::screen_height << ".\n";
 
 		// If too big try it gracefully.
@@ -374,16 +374,17 @@ void twindow::layout()
 
 			size = get_best_size(
 				tpoint(settings::screen_width, settings::screen_height));
-			DBG_GUI << "Window best size : After resize request : " << size << ".\n";
+			DBG_G_L << "twindow " << __func__ 
+				<< ": After resize request : " << size << ".\n";
 		}
-		// If still to big, just resize.
+		// If still too big, just resize and hope for the best.
 		size.x = size.x < static_cast<int>(settings::screen_width) 
 			? size.x : static_cast<int>(settings::screen_width);
 
 		size.y = size.y < static_cast<int>(settings::screen_height) 
 			? size.y : static_cast<int>(settings::screen_height);
 
-		DBG_GUI << "Window final size " << size << ".\n";
+		DBG_G_L << "twindow " << __func__ << ": final size " << size << ".\n";
 
 		tpoint position(0, 0);
 		switch(horizontal_placement_) {

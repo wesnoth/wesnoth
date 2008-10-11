@@ -20,6 +20,8 @@ namespace gui2 {
 
 tpoint tcontainer_::get_minimum_size() const
 {
+	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+
 	tpoint size = grid_.get_maximum_size();
 	tpoint border_size = border_space();
 
@@ -31,11 +33,15 @@ tpoint tcontainer_::get_minimum_size() const
 		size.y += border_size.y;
 	}
 
+	DBG_G_L << "tcontainer(" + get_control_type() + "): returning "
+		<< size << ".\n";
 	return size;
 }
 
 tpoint tcontainer_::get_best_size() const
 {
+	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+
 	tpoint size = grid_.get_best_size();
 	const tpoint border_size = border_space();
 
@@ -49,12 +55,16 @@ tpoint tcontainer_::get_best_size() const
 		size.y += border_size.y;
 	}
 
+	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+		<< " border size " << border_size
+		<< " returning " << size 
+		<< ".\n";
 	return size;
 }
 
 tpoint tcontainer_::get_best_size(const tpoint& maximum_size) const
 {
-	log_scope2(gui, "Container: Get best size");	
+	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
 	
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
@@ -81,9 +91,11 @@ tpoint tcontainer_::get_best_size(const tpoint& maximum_size) const
 		size.y += border_size.y;
 	}
 	
-	DBG_GUI << "Container : maximum size " 
-		<< maximum_size << " returning " << size << ".\n";
-
+	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+		<< " maximum_size " << maximum_size
+		<< " border size " << border_size
+		<< " returning " << size 
+		<< ".\n";
 	return size;
 }
 

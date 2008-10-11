@@ -94,19 +94,24 @@ void tslider::set_maximum_value(const int maximum_value)
 
 tpoint tslider::get_best_size() const
 {
+	log_scope2(gui_layout, std::string("tslider ") + __func__);
 	// Inherited.
-	tpoint size = tcontrol::get_best_size();
-	if(best_slider_length_ == 0) {
-		return size;
+	tpoint result = tcontrol::get_best_size();
+	if(best_slider_length_ != 0) {
+
+		// Override length.
+		boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+			boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
+		assert(conf); 
+
+		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	// Override length.
-	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
-	assert(conf); 
-
-	size.x = conf->left_offset + best_slider_length_ + conf->right_offset;
-	return size;
+	DBG_G_L << "tslider " << __func__ << ":"
+		<< " best_slider_length " << best_slider_length_
+		<< " result " << result
+		<< ".\n";
+	return result;
 }
 
 t_string tslider::get_value_label() const

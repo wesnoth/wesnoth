@@ -23,12 +23,16 @@ tpoint timage::get_best_size() const
 {
 	surface image(get_image(image::locator(label())));
 
+	tpoint result(0, 0);
 	if(image) {
-		return tpoint(image->w, image->h);
+		result = tpoint(image->w, image->h);
 	}
 
-	return tpoint(0, 0);
-	
+	DBG_G_L << "timage " << __func__ << ":"
+		<< " empty image " << !image
+		<< " result " << result
+		<< ".\n";
+	return result;
 }
 
 } // namespace gui2

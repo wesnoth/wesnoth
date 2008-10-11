@@ -408,7 +408,7 @@ void tlistbox::trow::select_in_grid(tgrid* grid, const bool selected)
 
 tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
 {
-	log_scope2(gui, "Listbox: Get best content size with max");	
+	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
 
 	tpoint best_size = get_content_best_size();
 
@@ -441,15 +441,15 @@ tpoint tlistbox::get_content_best_size(const tpoint& maximum_size) const
 		best_size.y = max.y;
 	}
 
-	DBG_GUI << "Grid : maximum size " 
-			<< maximum_size << " returning " << best_size << ".\n";
+	DBG_G_L << "tlistbox: maximum size " 
+			<< maximum_size << " result " << best_size << ".\n";
 
 	return best_size;
 }
 
 tpoint tlistbox::get_content_best_size() const
 {
-	log_scope2(gui, "Listbox: Get best content size");	
+	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
 
 	// First determine the size wanted for the grid, which is used when header
 	// or footer are used.
@@ -466,6 +466,8 @@ tpoint tlistbox::get_content_best_size() const
 
 		height += static_cast<int>(best_size.y);
 	}
+
+	DBG_G_L << "tlistbox: result " << tpoint(width, height) << ".\n";
 
 	return tpoint(width, height);
 }
@@ -495,7 +497,7 @@ void tlistbox::set_content_size(const SDL_Rect& rect)
 				const unsigned rows = rect.h / row_height;
 				find_scrollbar()->set_visible_items(rows);
 			} else {
-				WRN_GUI << "Listbox row 0 has no height, making all rows visible.\n";
+				WRN_G_L << "Listbox row 0 has no height, making all rows visible.\n";
 				find_scrollbar()->set_visible_items(rows_.size());
 			}
 		} else {

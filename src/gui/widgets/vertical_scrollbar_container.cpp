@@ -158,8 +158,11 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 
 tpoint tvertical_scrollbar_container_::get_best_size() const
 {
+	log_scope2(gui_layout, std::string("tvertical_scrollbar_container_ ") + __func__);
+
 	const tpoint content = get_content_best_size();
 	if(scrollbar_mode_ == HIDE) {
+		DBG_G_L << "tvertical_scrollbar_container_ result " << content << ".\n";
 		return content;
 	} 
 	
@@ -167,22 +170,34 @@ tpoint tvertical_scrollbar_container_::get_best_size() const
 	if(scrollbar_mode_ == SHOW) {
 		// We need to show the scrollbar so the biggest height of scrollbar and
 		// content is needed. The width is the sum of them.
-		return tpoint(
+		const tpoint result(
 			content.x + scrollbar.x,
 			std::max(content.y, scrollbar.y));
+
+		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+		return result;
 	}
 
 	// When auto show the height of the content is leading. (Width again the sum.)
-	return tpoint(content.x + scrollbar.x, content.y);
+	const tpoint result(content.x + scrollbar.x, content.y);
+
+	DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+	return result;
 }
 
 tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size) const
 {
+	log_scope2(gui_layout, std::string("tvertical_scrollbar_container_ ") + __func__);
+	DBG_G_L << "tvertical_scrollbar_container_ maximum_size " << maximum_size << ".\n";
+
 	if(scrollbar_mode_ == HIDE) {
 		// No scrollbar hope the normal size is small enough. Don't send the
 		// maximum_size parameter since then the content 'thinks' there will be
 		// a scrollbar.
-		return get_content_best_size();
+		const tpoint result = get_content_best_size();
+
+		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+		return result;
 	} else {
 		// The scrollbar also can't be resized so ask the best size.
 		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
@@ -190,11 +205,17 @@ tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size)
 
 		// Width and height same rules as above.
 		if(scrollbar_mode_ == SHOW) {
-			return tpoint( 
+			const tpoint result( 
 				content.x + scrollbar.x,
 				std::max(content.y, scrollbar.y));
+
+			DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+			return result;
 		}
-		return tpoint(content.x + scrollbar.x, content.y);
+		const tpoint result(content.x + scrollbar.x, content.y);
+
+		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+		return result;
 	}
 }
 

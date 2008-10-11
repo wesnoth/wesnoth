@@ -318,7 +318,7 @@ private:
 	 * does nothing but classes can override it to implement custom behaviour.
 	 */
 	virtual void load_config_extra() {}
-
+protected:
 	/**
 	 * Returns the control_type of the control.
 	 *
@@ -329,7 +329,7 @@ private:
 	 * control involved.
 	 */
 	virtual const std::string& get_control_type() const = 0;
-
+private:
 	/**
 	 * Gets the best size for a text.
 	 *
