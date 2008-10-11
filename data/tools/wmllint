@@ -560,7 +560,7 @@ def sanity_check(filename, lines):
                 present.append(value)
             if has_tr_mark:
                 # FIXME: This test is rather bogus as is.
-                # Doing a better job would require tokenizing to pivk up the
+                # Doing a better job would require tokenizing to pick up the
                 # string boundaries. I'd do it, but AI0867 is already working
                 # on a parser-based wmllint.   
                 if '{' in value and "+" not in value:
@@ -743,58 +743,6 @@ def hack_syntax(filename, lines):
                     print '"%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
                 lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
             need_image = in_message = False
-    # Boucmanize death animations
-    if future:
-        in_death = None
-        frame_commented = in_death_commented = False
-        frame_start = frame_end = None
-        image = None
-        for i in range(len(lines)):
-            if "no-syntax-rewrite" in lines[i]:
-                break
-            elif "[death]" in lines[i]:
-                in_death = i
-                in_death_commented = lines[i].strip().startswith("#")
-            elif "[/death]" in lines[i]:
-                if frame_start is None:
-                    print '"%s", %d: [death] with no frames' % (filename, i)
-                    continue
-                # Find the image tag
-                for inside in range(frame_start, frame_end):
-                    if "image=" in lines[inside]:
-                        image = lines[inside].strip().split("=")[1]
-                        break
-                else:
-                    print'"%s", line %d: no image in last frame'\
-                          % (filename, i)
-                    continue
-                # Modify the death wrapper
-                lines[i] = lines[i].replace("death", "animation")
-                inner = leader(lines[in_death])+baseindent
-                if in_death_commented:
-                    inner = "#" + inner
-                lines[in_death] = lines[in_death].replace("death", "animation") \
-                                  + inner + "apply_to=death" + "\n"
-                # Add a new last frame to the death animation
-                outer = leader(lines[frame_start])
-                if frame_commented:
-                    outer = "#" + outer
-                inner = outer + baseindent
-                if frame_commented:
-                    inner = "#" + inner
-                insertion = outer + "[frame]\n" + \
-                            inner + "duration=600\n" + \
-                            inner + "alpha=1~0\n" + \
-                            inner + "image=" + image + "\n" + \
-                            outer + "[/frame]\n"
-                lines[i] = insertion + lines[i]
-                in_death = frame_start = frame_end = None
-                frame_commented = in_death_commented = False
-            elif in_death and "[frame]" in lines[i]:
-                frame_start = i
-                frame_commented = lines[i].strip().startswith("#")
-            elif in_death and "[/frame]" in lines[i]:
-                frame_end = i
     # Hack tracking-map macros from 1.4 and earlier.  The idea is to lose
     # all assumptions about colors in the names
     for i in range(len(lines)):
