@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2004.
-# Luciano Montanaro <mikelima@cirulla.net>, 2007.
+# Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-07 16:14+0200\n"
-"PO-Revision-Date: 2008-02-16 14:53+0100\n"
+"PO-Revision-Date: 2008-10-11 02:08+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -215,7 +215,7 @@ msgstr "Palude"
 #. [terrain]
 #: data/core/terrain.cfg:668
 msgid "Lit"
-msgstr ""
+msgstr "Illuminato"
 
 #. [terrain]
 #: data/core/terrain.cfg:678
@@ -224,9 +224,8 @@ msgstr "Caverna"
 
 #. [terrain]
 #: data/core/terrain.cfg:696
-#, fuzzy
 msgid "Cave path"
-msgstr "Caverna illuminata"
+msgstr "Sentiero di caverna"
 
 #. [terrain]
 #: data/core/terrain.cfg:705
@@ -296,9 +295,8 @@ msgstr "Parete di caverna"
 
 #. [terrain]
 #: data/core/terrain.cfg:1081
-#, fuzzy
 msgid "Wall"
-msgstr "Parete di caverna"
+msgstr "Parete"
 
 #. [terrain]
 #: data/core/terrain.cfg:1091
@@ -308,23 +306,23 @@ msgstr "Vuoto"
 #. [terrain]
 #: data/core/terrain.cfg:1104
 msgid "Flat"
-msgstr ""
+msgstr "Pianura"
 
 #. [terrain]
 #: data/core/terrain.cfg:1111
 msgid "Frozen"
-msgstr ""
+msgstr "Congelato"
 
 #. [terrain]
 #: data/core/terrain.cfg:1118
-#, fuzzy
 msgid "Impassable"
-msgstr "Montagne invalicabili"
+msgstr "Invalicabile"
 
 #. [terrain]
 #: data/core/terrain.cfg:1125
+#, fuzzy
 msgid "Unwalkable"
-msgstr ""
+msgstr "Impervio"
 
 #. [label]
 #. [column]
@@ -332,9 +330,8 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Continua"
+msgstr "Connettiti al server"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
@@ -345,21 +342,19 @@ msgstr ""
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Aggiorna transizioni"
+msgstr "Aggiorna estensioni"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Rimuovi"
+msgstr "Rimuovi estensioni"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:201
@@ -367,7 +362,7 @@ msgstr "Rimuovi"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Connetti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -393,22 +388,19 @@ msgstr "Genera mappa casuale"
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Generatore di mappe"
+msgstr "Generatore successivo"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Impostazioni dei tasti-scorciatoia"
+msgstr "Impostazioni"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "Genera nuova mappa"
+msgstr "Genera"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -431,9 +423,8 @@ msgstr "Altezza:"
 #. [button]
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
-msgstr "Crea una nuova mappa"
+msgstr "Crea nuova mappa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -443,39 +434,35 @@ msgstr "Ridimensiona mappa"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Larghezza:"
+msgstr "Nuova larghezza:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Larghezza:"
+msgstr "Vecchia larghezza:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:81
 #: data/gui/default/window/editor_resize_map.cfg:130
 msgid "2000"
-msgstr ""
+msgstr "2000"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:82
 #: data/gui/default/window/editor_resize_map.cfg:131
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Altezza:"
+msgstr "Nuova altezza:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Altezza:"
+msgstr "Vecchia altezza:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
@@ -484,27 +471,26 @@ msgstr ""
 
 #. [toggle_button]
 #: data/gui/default/window/editor_resize_map.cfg:242
+#, fuzzy
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Copia"
 
 #. [button]
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
 msgstr "Ridimensiona mappa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Impostazioni dei tasti-scorciatoia"
+msgstr "Impostazioni dell'editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lightning preset"
-msgstr ""
+msgstr "Preimpostazioni dell'illuminazione dell'ora del giorno"
 
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:75
@@ -515,30 +501,30 @@ msgstr "Unità successiva"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
+#, fuzzy
 msgid "Custom lightning setting"
-msgstr ""
+msgstr "Personalizzato"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:93
+#, fuzzy
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Automatica"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Ripeti"
+msgstr "Rosso:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "Frequenza:"
+msgstr "Verde:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Blu:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -559,17 +545,16 @@ msgstr "Applica"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Lingua"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Scegli la lingua preferita:"
 
 #. [button]
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
-#, fuzzy
 msgid "Change language"
 msgstr "Cambia la lingua"
 
@@ -577,7 +562,7 @@ msgstr "Cambia la lingua"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Verrai ora connesso al server multigiocatore."
 
 #. [button]
 #: data/gui/default/window/mp_connect.cfg:148
@@ -596,23 +581,22 @@ msgstr "Salva la partita"
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Nome della partita:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
 msgstr "Giocatori: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Dimensione mappa: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Era:"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
@@ -622,24 +606,25 @@ msgstr "Vista normale"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
+#, fuzzy
 msgid "Set Password"
-msgstr ""
+msgstr "Password"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Mappa di gioco:"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:315
+#, fuzzy
 msgid "Use map settings"
-msgstr ""
+msgstr "Usa impostazioni"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:333
-#, fuzzy
 msgid "Number of turns"
-msgstr "Numero di colline: "
+msgstr "Numero di turni"
 
 #. [slider]
 #: data/gui/default/window/mp_create_game.cfg:356
@@ -659,13 +644,15 @@ msgstr ""
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:454
+#, fuzzy
 msgid "Fog of War"
-msgstr ""
+msgstr "Nebbia"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:495
+#, fuzzy
 msgid "Random start time"
-msgstr ""
+msgstr "start time"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:537
@@ -683,39 +670,44 @@ msgstr "Opzioni per multigiocatori"
 
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:61
+#, fuzzy
 msgid "Login:"
-msgstr ""
+msgstr "Login:"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:136
+#, fuzzy
 msgid "Join Official Server"
-msgstr ""
+msgstr "Server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:137
+#, fuzzy
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:148
+#, fuzzy
 msgid "Join a different server"
-msgstr ""
+msgstr "server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
+#, fuzzy
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Host"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
+#, fuzzy
 msgid "Host a game using dedicated server 'wesnothd"
-msgstr ""
+msgstr "Host server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
-#, fuzzy
 msgid "Local Game"
-msgstr "Carica una partita"
+msgstr "Partita locale"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:170
@@ -725,52 +717,47 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/mp_method_selection.cfg:205
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
-#, fuzzy
 msgid "Name"
-msgstr "Nome: "
+msgstr "Nome"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
-msgstr ""
+msgstr "Indirizzo"
 
 #. [button]
 #: data/gui/default/window/mp_server_list.cfg:198
-#, fuzzy
 msgid "Select"
-msgstr "Seleziona tutto"
+msgstr "Seleziona"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Dialoghi"
+msgstr "Esercitazione"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Campagna"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "Strada"
+msgstr "Carica"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Estensioni"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "Esci dall'editor"
+msgstr "Editor"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -782,7 +769,7 @@ msgstr "Preferenze"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Riconoscimenti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1282,13 +1269,12 @@ msgid "Load Game"
 msgstr "Carica una partita"
 
 #: src/gui/dialogs/mp_create_game.cpp:87
-#, fuzzy
 msgid "Load Game..."
-msgstr "Carica una partita"
+msgstr "Carica partita..."
 
 #: src/gui/dialogs/title_screen.cpp:76
 msgid "Version"
-msgstr ""
+msgstr "Versione"
 
 #: src/gui/widgets/canvas.cpp:295
 msgid "Line doesn't fit on canvas."
@@ -1300,11 +1286,11 @@ msgstr ""
 
 #: src/gui/widgets/canvas.cpp:786
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Il testo ha una dimensione di carattere di 0."
 
 #: src/gui/widgets/canvas.cpp:851
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Il testo non inizia su una tela."
 
 #: src/gui/widgets/helper.cpp:170
 #, fuzzy
@@ -1349,11 +1335,11 @@ msgstr "Non è stato definito nessun server."
 
 #: src/gui/widgets/window_builder.cpp:471
 msgid "A row must have a column."
-msgstr ""
+msgstr "Una riga deve avere una colonna."
 
 #: src/gui/widgets/window_builder.cpp:472
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Il numero di colonne è diverso."
 
 #: src/gui/widgets/window_builder.cpp:696
 #, fuzzy
@@ -1563,70 +1549,65 @@ msgid "Skip animation"
 msgstr "Salta le animazioni"
 
 #: src/hotkeys.cpp:112
+#, fuzzy
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Esci Desktop"
 
 #: src/hotkeys.cpp:114
 msgid "Partial Undo"
-msgstr ""
+msgstr "Annullamento parziale"
 
 #: src/hotkeys.cpp:116
 msgid "Load Map"
-msgstr "Carica una mappa"
+msgstr "Carica mappa"
 
 #: src/hotkeys.cpp:117
 msgid "Save Map"
 msgstr "Salva una mappa"
 
 #: src/hotkeys.cpp:118
-#, fuzzy
 msgid "Save Map As"
-msgstr "Salva una mappa"
+msgstr "Salva mappa come"
 
 #: src/hotkeys.cpp:119
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Annulla tutte le modifiche"
 
 #: src/hotkeys.cpp:120
-#, fuzzy
 msgid "Map Information"
-msgstr "Generatore di mappe"
+msgstr "Informazioni sulla mappa"
 
 #: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:123
-#, fuzzy
 msgid "Next Tool"
-msgstr "Turno successivo"
+msgstr "Strumento successivo"
 
 #: src/hotkeys.cpp:124
 msgid "Paint Tool"
-msgstr ""
+msgstr "Strumento di pittura"
 
 #: src/hotkeys.cpp:125
 msgid "Fill Tool"
-msgstr ""
+msgstr "Strumento di riempimento"
 
 #: src/hotkeys.cpp:126
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Seleziona tutto"
+msgstr "Strumento di selezione"
 
 #: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:129
-#, fuzzy
 msgid "Next Brush"
-msgstr "Turno successivo"
+msgstr "Pennello successivo"
 
 #: src/hotkeys.cpp:130
-#, fuzzy
 msgid "Default Brush"
-msgstr "Vista normale"
+msgstr "Pennello predefinito"
 
 #: src/hotkeys.cpp:131
 msgid "Cut"
@@ -1649,34 +1630,36 @@ msgid "Select Inverse"
 msgstr ""
 
 #: src/hotkeys.cpp:139
-#, fuzzy
 msgid "Select None"
-msgstr "Seleziona tutto"
+msgstr "Seleziona niente"
 
 #: src/hotkeys.cpp:141
+#, fuzzy
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Appunti di sistema"
 
 #: src/hotkeys.cpp:143
+#, fuzzy
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Appunti di sistema"
 
 #: src/hotkeys.cpp:145
+#, fuzzy
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Appunti di sistema"
 
 #: src/hotkeys.cpp:147
+#, fuzzy
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Appunti di sistema"
 
 #: src/hotkeys.cpp:149
 msgid "Rotate Selection"
 msgstr "Ruota selezione"
 
 #: src/hotkeys.cpp:151
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Riempi selezione"
+msgstr "Ribalta selezione"
 
 #: src/hotkeys.cpp:153
 msgid "Fill Selection"
@@ -1688,33 +1671,29 @@ msgid "Generate Tiles In Selection"
 msgstr "Ruota selezione"
 
 #: src/hotkeys.cpp:157
+#, fuzzy
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "In Selezione"
 
 #: src/hotkeys.cpp:161
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Carica una mappa"
+msgstr "Ruota mappa"
 
 #: src/hotkeys.cpp:163
-#, fuzzy
 msgid "Generate Map"
-msgstr "Genera nuova mappa"
+msgstr "Genera mappa"
 
 #: src/hotkeys.cpp:165
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Video"
+msgstr "Aggiorna schermo"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Aggiorna transizioni"
+msgstr "Aggiorna transizioni del terreno"
 
 #: src/hotkeys.cpp:169
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Aggiorna transizioni"
+msgstr "Aggiorna automaticamente transizioni del terreno"
 
 #: src/hotkeys.cpp:171
 msgid "Refresh Image Cache"
@@ -1725,9 +1704,8 @@ msgid "Draw Hex Coordinates"
 msgstr ""
 
 #: src/hotkeys.cpp:175
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Disegna terreno"
+msgstr "Disegna i codici del terreno"
 
 #: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
@@ -1800,18 +1778,16 @@ msgid "Map-Screenshot"
 msgstr "Cattura schermata"
 
 #: src/hotkeys.cpp:898
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Cattura schermata"
+msgstr "Schermata catturata"
 
 #: src/hotkeys.cpp:900
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Cattura schermata"
+msgstr "Cattura schermata non riuscita"
 
 #: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
 msgid "Close Window"
-msgstr "Chiudi la finestra"
+msgstr "Chiudi finestra"
 
 #: src/mapgen_dialog.cpp:115
 msgid "Map Generator"
@@ -1889,9 +1865,8 @@ msgid "Hotkey Settings"
 msgstr "Impostazioni dei tasti-scorciatoia"
 
 #: src/preferences_display.cpp:239 src/preferences_display.cpp:307
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Premi il tasto-scorciatoia desiderato"
+msgstr "Premi il tasto-scorciatoia desiderato (Esc annulla)"
 
 #: src/preferences_display.cpp:258
 msgid "Action"
@@ -1906,9 +1881,8 @@ msgid "Change Hotkey"
 msgstr "Cambia il tasto-scorciatoia"
 
 #: src/preferences_display.cpp:273
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "Cambia il tasto-scorciatoia"
+msgstr "Cambia la scorciatoia"
 
 #: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."
@@ -1967,115 +1941,3 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Le tue modifiche alla mappa andranno perse. Vuoi continuare?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Genera nuova mappa"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Impostazioni del generatore casuale"
-
-#~ msgid "Map creation failed."
-#~ msgstr "La creazione della mappa non è riuscita."
-
-#~ msgid "Video Mode"
-#~ msgstr "Modalità video"
-
-#~ msgid "X offset:"
-#~ msgstr "Scostamento X:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Scostamento Y:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Espansione intelligente"
-
-#~ msgid "X-Axis"
-#~ msgstr "Asse X"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Asse Y"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Ruota (potrebbe cambiare le dimensioni della mappa):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Imposta il terreno"
-
-#~ msgid "Save As"
-#~ msgstr "Salva come..."
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Imposta la fortezza del giocatore"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Riempi"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Carica da disco"
-
-#~ msgid "Flip Map"
-#~ msgstr "Ruota la mappa"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Disegna terreno"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Ritarda gli aggiornamenti delle transizioni"
-
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Ruota selezione"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Caverna illuminata"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Breccia di cava illuminata"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr ""
-#~ "Terreno non valido, probabilmente in formato di terreno 1.2, terreno ="
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "Non è stato definito nessun server."
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "Non è stato definito nessun server."
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Non è stato definito nessun server."
-
-#, fuzzy
-#~ msgid "No default label defined."
-#~ msgstr "Non è stato definito nessun server."
-
-#~ msgid "Save replays on SP victory or SP/MP defeat."
-#~ msgstr ""
-#~ "Salva i replay alla vittoria in giocatore singolo o di sconfitta in "
-#~ "giocatore singolo/multiplo."
-
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr ""
-#~ "Elimina automaticamente i salvataggi alla vittoria in giocatore singolo o "
-#~ "sconfitta in giocatore singolo/multiplo"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Salva i tasti-scorciatoia"
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "Elimina salvataggi automatici"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Salva reply alla fine dello scenario."
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Modalità avanzata"
-
-#~ msgid "Normal Mode"
-#~ msgstr "Modalità normale"

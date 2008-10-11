@@ -1,11 +1,11 @@
 # translation of it.po to Italian
-# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007.
+# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-07 16:14+0200\n"
-"PO-Revision-Date: 2008-03-12 21:54+0100\n"
+"PO-Revision-Date: 2008-10-11 02:25+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,6 @@ msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:127
-#, fuzzy
 msgid ""
 "You will learn the basics of:\n"
 "Movement\n"
@@ -57,16 +56,16 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
-"Imparerai i fondamentali riguardo: \n"
-" movimento\n"
-" attacco\n"
-" guarigione\n"
-" reclutamento"
+"Imparerai i fondamenti di:\n"
+"Movimento\n"
+"Attacco\n"
+"Guarigione\n"
+"Reclutamento"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:129
 msgid "Destroy a fierce enemy"
-msgstr "Distruggi il feroce nemico"
+msgstr "Distruggi un feroce nemico"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:133
@@ -106,13 +105,12 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
-#, fuzzy
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
-"Inizierai stando sulla tua fortezza mentre il tuo maestro Delfador si "
-"troverà sulla riva orientale del fiume."
+"Inizi stando sulla tua fortezza mentre il tuo maestro Delfador si trova "
+"sulla riva orientale del fiume."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
@@ -157,7 +155,6 @@ msgstr "Fai clic col tasto sinistro su Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:222
-#, fuzzy
 msgid ""
 "*You have selected Konrad.\n"
 "The places he can move to are highlighted."
@@ -167,7 +164,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:230
-#, fuzzy
 msgid ""
 "*You have selected Li'sar.\n"
 "The places she can move to are highlighted."
@@ -182,25 +178,22 @@ msgstr "Qui"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:242
-#, fuzzy
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Muovi Konrad vicino a Delfador, facendo clic nel punto segnato con la "
-"scritta \"QUI\"."
+"scritta «QUI»."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:247
-#, fuzzy
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Muovi Li'sar vicino a Delfador, facendo clic nel punto segnato con la "
-"scritta \"QUI\"."
+"scritta «QUI»."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:253
-#, fuzzy
 msgid "Left click on tile labeled HERE"
-msgstr "Fai clic sull'esagono indicato come \"Qui\""
+msgstr "Fai clic sull'esagono indicato come «Qui»"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:289
@@ -218,7 +211,6 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:312
-#, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Buongiorno, Delfador! È giunto il momento di imparare a combattere?"
 
@@ -251,9 +243,8 @@ msgstr "... questa quintana!"
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:360
-#, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
-msgstr "Una quintana? Vuoi che combatta con un fantoccio??"
+msgstr "Una quintana? Vuoi che combatta con un fantoccio!?"
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:364
@@ -370,7 +361,6 @@ msgstr "Fai clic sul pulsante Fine turno in basso a destra"
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
-#, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
 "Ahi, che male! Ho bisogno di cure! Mi sono rimasti solo altri $student_hp "
@@ -520,7 +510,6 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:693
-#, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
 msgstr ""
@@ -530,28 +519,24 @@ msgstr ""
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:697
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
-msgstr ""
+msgstr "Sì, se un'unità non fa niente per un turno, guarirà lentamente."
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:709
-#, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
-"Sì, se un'unità non fa nulla per un turno, guarirà lentamente.\n"
-"Ma prima che tu mandi i tuoi combattenti contro la quintana, dovresti sapere "
-"che possono avere due tipi di attacco..."
+"Ma prima di mandare i tuoi combattenti contro la quintana, devi sapere che "
+"hanno due tipi di attacco..."
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:713
-#, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Dirò loro di usare l'attacco che provoca più danni!"
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:717
-#, fuzzy
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
 "find out..."
@@ -566,7 +551,6 @@ msgstr "Fai clic col tasto sinistro su un elfo combattente"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
-#, fuzzy
 msgid "End your turn and attack again."
 msgstr "Termina il turno e poi attacca di nuovo."
 
@@ -624,7 +608,6 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:805
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
-#, fuzzy
 msgid "Attack with the other Elf"
 msgstr "Attacca con l'altro elfo"
 
@@ -657,7 +640,6 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:873
-#, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr ""
 "Continua ad attaccare con entrambi gli elfi, fino a quando la quintana non "
@@ -747,13 +729,12 @@ msgstr "La quintana è morta, signori, e ho guadagnato esperienza!"
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:999
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1003
-#, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you'll become more powerful."
 msgstr ""
-"Sì, guadagni più esperienza durante la battaglia, specialmente uccidendo un "
-"avversario: quando avrai abbastanza esperienza diventerai molto più potente."
+"Sì, guadagni esperienza mediante la battaglia, specialmente uccidendo un "
+"avversario: quando avrai abbastanza esperienza diventerai più potente."
 
 #. [message]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1000
@@ -911,25 +892,21 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:226
-#, fuzzy
 msgid "I hope I have a chance to retreat after this!"
 msgstr "Spero di potermi ritirare, ora!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-#, fuzzy
 msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
-msgstr "Un attacco fortunato da una mia recluta d'orco ed è fatta!"
+msgstr "Un attacco fortunato da una recluta d'orco e sono spacciato!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:248
-#, fuzzy
 msgid "Ouch! I could make use of some healing in a village."
 msgstr "Ahi! Ahi! Avrei bisogno di cure in un villaggio."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
-#, fuzzy
 msgid "I have $side.gold gold; enough to recruit!"
 msgstr "Ho $side.gold monete: Abbastanza per reclutare!"
 
@@ -1947,47 +1924,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mazza"
-
-#~ msgid "Elder Mage"
-#~ msgstr "Mago anziano"
-
-#, fuzzy
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power diminished from wearying "
-#~ "years of battle. Nevertheless, they remain feared on the battlefield for "
-#~ "their powerful lightning bolts."
-#~ msgstr ""
-#~ "I maghi anziani, un tempo molto potenti, hanno visto il loro potere "
-#~ "affievolirsi dopo anni passati in battaglia. Nonostante ciò sono ancora "
-#~ "temibili nel campo di battaglia a causa delle loro potenti saette "
-#~ "fulminanti."
-
-#~ msgid "staff"
-#~ msgstr "bastone"
-
-#~ msgid "lightning"
-#~ msgstr "fulmine"
-
-#~ msgid ""
-#~ "\n"
-#~ "*Left click to continue..."
-#~ msgstr ""
-#~ "\n"
-#~ "*Premi il tasto sinistro per continuare..."
-
-#~ msgid "Right click on the tile south of you and recall $recall_name1"
-#~ msgstr ""
-#~ "Fai clic col tasto destro sulla casella a sud e richiama $recall_name1"
-
-#, fuzzy
-#~ msgid "Recruit two Elvish Archers in tiles to your east"
-#~ msgstr "Recluta due Arcieri Elfici nelle caselle ad ovest"
-
-#~ msgid "impact"
-#~ msgstr "impatto"
-
-#~ msgid "fire"
-#~ msgstr "fuoco"
-
-#~ msgid "blade"
-#~ msgstr "lama"

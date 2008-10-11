@@ -4,19 +4,20 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2004.
-# Luciano Montanaro <mikelima@cirulla.net>, 2007.
+# Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-05 20:18+0200\n"
-"PO-Revision-Date: 2007-12-02 12:14+0100\n"
+"PO-Revision-Date: 2008-10-11 02:14+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. [editor_group]
 #: data/core/editor-groups.cfg:11
@@ -141,23 +142,23 @@ msgstr "Esci dall'editor"
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
-msgstr ""
+msgstr "Errore fatale"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Vuoi davvero uscire?"
 
 #: src/editor2/editor_controller.cpp:244
 msgid "There are unsaved changes in the map."
-msgstr ""
+msgstr "Ci sono modifiche non salvate nella mappa."
 
 #: src/editor2/editor_controller.cpp:246
 msgid "Quit"
-msgstr ""
+msgstr "Esci"
 
 #: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: src/editor2/editor_controller.cpp:256
 msgid "No editor time-of-day found"
@@ -165,11 +166,11 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:289
 msgid "There are unsaved changes in the map"
-msgstr ""
+msgstr "Ci sono modifiche non salvate nella mappa"
 
 #: src/editor2/editor_controller.cpp:290
 msgid "Do you want to discard all changes you made to the map?"
-msgstr ""
+msgstr "Vuoi scartare tutte le modifiche fatte alla mappa?"
 
 #: src/editor2/editor_controller.cpp:303
 msgid "Choose a Map to Load"
@@ -189,7 +190,7 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:369
 msgid "Map creation failed."
-msgstr ""
+msgstr "La creazione della mappa non è riuscita."
 
 #: src/editor2/editor_controller.cpp:458
 msgid "Map saved."
@@ -201,7 +202,7 @@ msgstr "Impossibile salvare la mappa: $msg"
 
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
-msgstr ""
+msgstr "Errore di caricamento della mappa"
 
 #: src/editor2/editor_controller.cpp:810
 msgid "Undo"
@@ -209,7 +210,7 @@ msgstr "Annulla"
 
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
-msgstr ""
+msgstr "Non è possibile annullare"
 
 #: src/editor2/editor_controller.cpp:816
 msgid "Redo"
@@ -217,7 +218,7 @@ msgstr "Ripeti"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
-msgstr ""
+msgstr "Non è possibile rifare"
 
 #: src/editor2/editor_map.cpp:57
 msgid "Empty map file or file not found"
@@ -226,10 +227,11 @@ msgstr ""
 #: src/editor2/editor_map.cpp:65
 msgid "There was a format error while loading the map:"
 msgstr ""
+"Si è verificato un errore di formato durante il caricamento della mappa:"
 
 #: src/editor2/editor_map.cpp:71
 msgid "There was a wml error while loading the map:"
-msgstr ""
+msgstr "Si è verificato un errore di wml durante il caricamento della mappa:"
 
 #: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
 msgid "Player"
@@ -244,13 +246,12 @@ msgid "BG"
 msgstr "Sfondo"
 
 #: src/editor2/mouse_action.cpp:380
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Giocatore"
+msgstr "Nessuno"
 
 #: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
-msgstr ""
+msgstr "Scegli giocatore"
 
 #: src/editor2/mouse_action.cpp:388
 msgid ""
@@ -259,85 +260,6 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:113
+#, fuzzy
 msgid "Custom setting"
-msgstr ""
-
-#~ msgid "Settings"
-#~ msgstr "Impostazioni"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Disegna le caselle"
-
-#~ msgid "Fill"
-#~ msgstr "Riempi"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Scegli posizione iniziale del giocatore"
-
-#~ msgid "Zoom in"
-#~ msgstr "Aumenta lo zoom"
-
-#~ msgid "Zoom out"
-#~ msgstr "Diminuisci lo zoom"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Visuale normale"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Griglia"
-
-#~ msgid "Resize the map"
-#~ msgstr "Ridimensiona la mappa"
-
-#~ msgid "Flip map"
-#~ msgstr "Rifletti la mappa"
-
-#~ msgid "Update transitions"
-#~ msgstr "Aggiorna transizioni"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Ritarda aggiornamento transizioni"
-
-#~ msgid "Language"
-#~ msgstr "Lingua"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Scegli la lingua preferita:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Editor per le mappe di Battle for Wesnoth"
-
-#~ msgid "None"
-#~ msgstr "Nessuno"
-
-#~ msgid "Which Player?"
-#~ msgstr "Quale giocatore?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Quale giocatore inizia da qui?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Attenzione: Sono stati utilizzati dei caratteri non validi nel nome della "
-#~ "mappa. Bisogna salvarla con un nome differente."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Il file non contiene una mappa valida."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Vuoi salvare la mappa prima di uscire?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Errore: Carattere non valido nel nome del file."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Non è possibilie ridimensionare la mappa, la dimensione richiesta è "
-#~ "maggiore del massimo, dimensione=Non è possibilie ridimensionare la "
-#~ "mappa, la dimensione richiesta è maggiore del massimo, dimensione="
-
-#~ msgid " maximum="
-#~ msgstr " massimo="
+msgstr "Personalizzato"
