@@ -12,7 +12,8 @@ def output(path, url, data):
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel=stylesheet href=\"style.css\" type=\"text/css\">
+<link rel=stylesheet href="style.css" type="text/css">
+<script src="sorttable.js"></script>
 </head>
 <body>""")
 
@@ -31,11 +32,12 @@ Select the add-on you want to install from the list and click "OK". The download
 <br/>""")
 
     os.system("cp -u data/tools/addon_manager/style.css " + path)
+    os.system("cp -u data/tools/addon_manager/sorttable.js " + path)
 
     campaigns = data.get_or_create_sub("campaigns")
-    w("<table id=\"campaigns\">")
+    w("<table class=\"sortable\" id=\"campaigns\">")
     w("<tr>")
-    w("<th></th>")
+    w("<th class=\"sorttable_nosort\"></th>")
     w("<th>Addon</th>")
     w("<th>Size</th>")
     w("<th>Traffic</th>")
@@ -83,8 +85,10 @@ Select the add-on you want to install from the list and click "OK". The download
             w("</td>")
         w("<td><b>%s</b> down<br/>" % v("downloads", "unknown"))
         w("%s up</td>" % v("uploads", "unknown"))
-        t = time.localtime(int(v("timestamp", "unknown")))
-        w("<td>%s</td>" % time.strftime("%b %d %Y", t))
+        timestamp = int(v("timestamp", "0"))
+        t = time.localtime(timestamp)
+        w("<td sorttable_customkey=\"%d\">%s</td>" % (timestamp,
+            time.strftime("%b %d %Y", t)))
         w("<td>%s</td>" % v("translate", ""))
         w("</tr>")
     w("</table>")
