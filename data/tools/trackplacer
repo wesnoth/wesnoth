@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 #
 # Map journey track editor.  Just a stub at the moment, not yet working.
+#
+# Can be started with a map image, in which case we're editing a new journey.
+#
+# Can be started with a track file. A track file is a text file interpreted
+# line-by-line; each line is interpreted as whitespace-separated fields.
+# The first field of the first line must be FILE, and the second field
+# of that line must be valid filename.  Subsequent lines must have three
+# fields each: an action tag (JOURNEY, BATTLE, or REST) and two numeric
+# coordinate fields.
+#
+# A journey is an object containing a map file name and a (possibly empty)
+# track. This program exists to visually edit journeys.
 
 import sys, exceptions
 
@@ -99,42 +111,45 @@ class ModalFileSelector:
         gtk.main_quit()
         sys.exit(0)
 
-def log(msg):
-    "Notify user of error and die."
-    # FIXME: conditionalize of a debug flag
-    print >>sys.stderr, "trackplacer:", msg
-
-def fatal_error(msg):
-    "Notify user of error and die."
-    # FIXME: Needs to change to modal notification window
-    print >>sys.stderr, msg
-    sys.exit(1)
-
 class TrackEditor:
     def __init__(self):
+        self.quiet = False
         # Initialize our info about the map and track 
         self.journey = JourneyTrack()
         self.journey.read(ModalFileSelector(default_map).filename)
         # We need two copies of the map -- one scratchpad for scribbling on,
         # and one for restoring from when we erase track dots.
-        log("about to read map %s" % self.journey.filename)
+        self.log("about to read map %s" % self.journey.filename)
         try:
             self.background = gtk.Image()
             self.background.set_from_file(self.journey.filename)
             self.scratchpad = gtk.Image()
             self.scratchpad.set_from_file(self.journey.filename)
         except:
-            fatal_error("Error while reading background map %s" % self.journey.filename)
-        #try:
+            self.fatal_error("Error while reading background map %s" % self.journey.filename)
+        # Now get the icons we'll need for scribbling on the map with.
+        try:
             self.journey_image = gtk.Image()
             self.journey_image.set_from_file(journey_icon)
-            self.battle.image = gtk.Image()
+            self.battle_image = gtk.Image()
             self.battle_image.set_from_file(battle_icon)
             self.rest_image = gtk.Image()
             self.rest_image.set_from_file(rest_icon)
-        #except:
-        #    fatal_error("Error while reading icons")
-        log("initialization successful")
+        except:
+            self.fatal_error("error while reading icons")
+        # FIXME: Set up editing window
+        self.log("initialization successful")
+
+    def log(self, msg):
+        "Notify user of error and die."
+        if not self.quiet:
+            print >>sys.stderr, "trackplacer:", msg
+
+    def fatal_error(self, msg):
+        "Notify user of error and die."
+        # FIXME: Needs to change to modal notification window
+        print >>sys.stderr, msg
+        sys.exit(1)
 
 if __name__ == "__main__":
     wesnoth.wmltools.pop_to_top("trackplacer")
