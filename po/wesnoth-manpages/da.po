@@ -1,6 +1,5 @@
-# Danish translations for Battle for Wesnoth package
-# Copyright (C) 2006 Wesnoth development team.
-# Automatically generated, 2006.
+# Danish translations for Battle for Wesnoth package.
+# Copyright (C) 2008 Wesnoth development team.
 # Joe Hansen <joedalton2@yahoo.dk>, 2007, 2008.
 #
 # Konventioner:
@@ -12,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2008-10-04 20:34+0300\n"
-"PO-Revision-Date: 2008-02-26 17:58+0200\n"
+"PO-Revision-Date: 2008-10-07 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +129,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:52
 #, fuzzy, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--path>"
+msgstr "B<--load>I<\\ savegame>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -166,7 +165,7 @@ msgid ""
 msgstr ""
 "viser ekstra fejlsøgningsinformation og slår ekstra kommandoer til i selve "
 "spillet (se http://www.wesnoth.org/wiki/CommandMode (engelsk) for flere "
-"oplysninger om kommandoerne.)"
+"oplysninger om kommandoerne)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
@@ -775,7 +774,6 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -783,7 +781,7 @@ msgid ""
 msgstr ""
 "Håndterer flerspillers-sessioner af Kampen om Wesnoth. Se http://www.wesnoth."
 "org/wiki/ServerAdministration for hvilke kommandoer serveren accepterer via "
-"wesnoth-klienten eller soklen."
+"wesnoth-klienten (/query ...) eller fifoen."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -940,7 +938,7 @@ msgstr "Globale nøgler:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -948,6 +946,9 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"Fuld eller relativ sti til en (gzip-pakket) fil som serveren kan læse og "
+"skrive til.  Karantæner vil blive gemt i denne fil, og indlæst når serveren "
+"startes igen."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -986,9 +987,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -997,6 +998,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"Stien til fifoen som du kan sende serverkommandoer til (svarende til /"
+"query ... fra wesnoth).  Hvis den ikke er angivet er standard den angivne "
+"compile-time sti (standard: /var/run/socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1056,7 +1060,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1064,6 +1068,8 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"Kommandoen som serveren anvender til at starte en ny serverproces via "
+"`restart'-kommandoen. (kan alene sendes via fifoen.)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1144,23 +1150,25 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[ban_time]> Et mærke der kan definere praktiske nøgleord for midlertidige "
+"længder af karantænetider."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "Navnet der refererer til karantænetiden."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1171,10 +1179,14 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"Definiton af tidslængden.  Formatet er: %d[%s[%d%s[...]]] hvor %s er s "
+"(sekunder), m (minutter), h (timer), D (dage), M (måneder) eller Y (år) og %"
+"d er et tal.  Hvis ingen tidsændrer er angivet anvendes (m) minutter. "
+"Eksempel: tidslængde=\"1D12h30m\" medfører en karantænetid på 1 dag, 12 "
+"timer og 30 minutter."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1201,6 +1213,34 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: TP
+#~ msgid "B<--compress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--compress>I<\\ valgtfil\\ nyfil>"
+
+# type: Plain text
+#~ msgid ""
+#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
+#~ "WML format (I<outfile>)."
+#~ msgstr ""
+#~ "komprimerer en gemt fil (I<valgtfil>)  som er i tekstformatet WML til "
+#~ "binært WML. (I<nyfil>)."
+
+# type: TP
+#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--decompress>I<\\ valgtfil\\ nyfil>"
+
+# type: Plain text
+#~ msgid ""
+#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
+#~ "text WML format (I<outfile>)."
+#~ msgstr ""
+#~ "udpakker en gemt fil (I<valgtfil>) som er i binært WML til tekstbaseret "
+#~ "WML-format (I<nyfil>)."
+
+# type: Plain text
+#~ msgid "loads the file savegame from the standard save game directory."
+#~ msgstr "henter det gemte spil fra standardkataloget for gemte spil."
 
 # type: TH
 #~ msgid "WESNOTH_EDITOR"
@@ -1244,7 +1284,7 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: Plain text
 #~ msgid "runs the editor in full screen mode."
-#~ msgstr "afvikler kortredigering i fuldskærmsindstilling"
+#~ msgstr "afvikler kortredigering i fuldskærmsindstilling."
 
 # type: TP
 #~ msgid "B<-h>,B<\\ --help>"
@@ -1285,34 +1325,6 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 # type: Plain text
 #~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
 #~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr "henter det gemte spil fra standardkataloget for gemte spil."
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ valgtfil\\ nyfil>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "komprimerer en gemt fil (I<valgtfil>)  som er i tekstformatet WML til "
-#~ "binært WML. (I<nyfil>)."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ valgtfil\\ nyfil>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "udpakker en gemt fil (I<valgtfil>) som er i binært WML til tekstbaseret "
-#~ "WML-format (I<nyfil>)."
 
 # type: TP
 #~ msgid "B<-r>,B<\\ --resolution>"
