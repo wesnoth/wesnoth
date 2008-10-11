@@ -616,6 +616,10 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 				//give control to human for the rest of this turn
 				player_type_changed_ = true;
 				temporary_human = true;
+			} catch(end_turn_exception& end_turn) {
+				if (end_turn.redo == team_index) {
+					player_type_changed_ = true;
+				}
 			}
 		}
 	} while (player_type_changed_);
