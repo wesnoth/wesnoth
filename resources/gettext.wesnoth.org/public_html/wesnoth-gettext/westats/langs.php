@@ -34,6 +34,7 @@ $langs['nb_NO'] = 'Norwegian';
 $langs['pl'] = 'Polish';
 $langs['pt'] = 'Portuguese';
 $langs['pt_BR'] = 'Brazilian Portuguese';
+$langs['racv'] = 'RACV Language';
 $langs['ro'] = 'Romanian';
 $langs['ru'] = 'Russian';
 $langs['sk'] = 'Slovak';
