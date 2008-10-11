@@ -304,8 +304,8 @@ if __name__ == "__main__":
         cs = CampaignClient(address)
         data = cs.list_campaigns()
         if data:
-            import campaigns_client.html
-            campaigns_client.html.output(options.html, options.url, data)
+            import addon_manager.html
+            addon_manager.html.output(options.html, options.url, data)
         else:
             sys.stderr.write("Could not connect.\n")
 
