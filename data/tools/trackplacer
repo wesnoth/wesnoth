@@ -93,28 +93,28 @@ class JourneyTrack:
         self.track.pop()
 
 class ModalFileSelector:
-    def __init__(self, default):
+    def __init__(self, default, blocker=False):
         self.default = default
         self.filename = None
         # Create a new file selection widget
         self.filew = gtk.FileSelection("File selection")
+        self.filew.set_modal(True);
 
-        self.filew.connect("destroy", self.destroy)
-        # Connect the ok_button to file_selected method
-        self.filew.ok_button.connect("clicked", self.file_selected)
-    
-        # Connect the cancel_button to destroy the widget
-        self.filew.cancel_button.connect("clicked",
-                                         lambda w: self.filew.destroy())
-    
+        if blocker:
+            self.filew.connect("destroy", lambda w: sys.exit(0))
+
+        self.filew.ok_button.connect("clicked", self.selection_ok)
+        self.filew.cancel_button.connect("clicked", self.selection_canceled)
         self.filew.set_filename(self.default)
         self.filew.run()
 
-    def file_selected(self, w):
-        self.filename = self.filew.get_filename()
+    def selection_canceled(self, widget):
+        self.filename = None
+        self.filew.destroy()
 
-    def destroy(self, widget):
-        sys.exit(0)
+    def selection_ok(self, widget):
+        self.filename = self.filew.get_filename()
+        self.filew.destroy()
 
 # Backing pixmap for drawing area
 pixmap = None
