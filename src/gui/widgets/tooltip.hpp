@@ -24,6 +24,8 @@ namespace gui2 {
  *
  * This is a small class which only has one state and that's active, so the
  * functions implemented are mostly dummies.
+ *
+ * @todo Allow wrapping for the tooltip.
  */
 class ttooltip : public tcontrol
 {
@@ -32,7 +34,6 @@ public:
 	ttooltip() :
 		tcontrol(1)
 	{
-		set_multiline_label();
 	}
 
 	/** Inherited from tcontrol. */

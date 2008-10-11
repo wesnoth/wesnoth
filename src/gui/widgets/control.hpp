@@ -167,10 +167,6 @@ public:
 	void set_visible(const bool visible = true) 
 		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
 
-	bool get_multiline_label() const { return multiline_label_; }
-	void set_multiline_label(const bool multiline = true) 
-		{ if(multiline != multiline_label_) { multiline_label_ = multiline; set_dirty(); } }
-
 	bool get_use_tooltip_on_label_overflow() const { return use_tooltip_on_label_overflow_; }
 	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true) 
 		{ use_tooltip_on_label_overflow_ = use_tooltip; }
@@ -234,14 +230,6 @@ private:
 
 	/** Contain the non-editable text associated with control. */
 	t_string label_;
-
-	/** 
-	 * Can the label contain multiple lines.
-	 *
-	 * This is needed in order to get the sizing, when the control can contain
-	 * multiple lines of text we need to find the best width/height combination.
-	 */
-	bool multiline_label_;
 
 	/**
 	 * If the text doesn't fit on the label should the text be used as tooltip?

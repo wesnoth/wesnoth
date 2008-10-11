@@ -23,7 +23,6 @@ namespace gui2 {
 tcontrol::tcontrol(const unsigned canvas_count)
 	: visible_(true)
 	, label_()
-	, multiline_label_(false)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
@@ -337,11 +336,6 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 	}
 
-	if(multiline_label_) {
-		// FIXME multiline seems to be unused
-		renderer_.set_maximum_height(size.y);
-	}
-
 	DBG_G_L << "tcontrol(" + get_control_type() + ") status:\n";
 	DBG_G_L << "minimum_size " << minimum_size
 		<< " maximum_size " << maximum_size
@@ -357,9 +351,6 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 		// but also we don't adjust for the extra text space yet!!!
 		const tpoint maximum_size(config_->max_width, config_->max_height);
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
-		if(multiline_label_) {
-			renderer_.set_maximum_height(maximum_size.y ? maximum_size.y - border.y : -1);
-		}
 	}
 
 	size = renderer_.get_size() + border;
