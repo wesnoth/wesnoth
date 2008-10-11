@@ -113,7 +113,7 @@ class ModalFileSelector:
 
 class TrackEditor:
     def __init__(self):
-        self.quiet = False
+        self.quiet = False	# FIXME: needs to be settable
         # Initialize our info about the map and track 
         self.journey = JourneyTrack()
         self.journey.read(ModalFileSelector(default_map).filename)
@@ -147,8 +147,11 @@ class TrackEditor:
 
     def fatal_error(self, msg):
         "Notify user of error and die."
-        # FIXME: Needs to change to modal notification window
-        print >>sys.stderr, msg
+        w = gtk.MessageDialog(flags= gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
+                              type=gtk.MESSAGE_ERROR,
+                              buttons=gtk.BUTTONS_OK)
+        w.set_markup(msg)
+        w.run()
         sys.exit(1)
 
 if __name__ == "__main__":
