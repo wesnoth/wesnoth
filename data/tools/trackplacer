@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+#
+# Map journey track editor.  Just a stub at the moment, not yet working.
+
+import sys
+
+import pygtk
+pygtk.require('2.0')
+import gtk
+
+import wesnoth.wmltools
+
+default_map = "data/core/images/maps/wesnoth.png"
+
+class ModalFileSelector:
+    def __init__(self, default):
+        self.default = default
+        self.filename = None
+        # Create a new file selection widget
+        self.filew = gtk.FileSelection("File selection")
+
+        self.filew.connect("destroy", self.destroy)
+        # Connect the ok_button to file_selected method
+        self.filew.ok_button.connect("clicked", self.file_selected)
+    
+        # Connect the cancel_button to destroy the widget
+        self.filew.cancel_button.connect("clicked",
+                                         lambda w: self.filew.destroy())
+    
+        self.filew.set_filename(self.default)
+        self.filew.show()
+        gtk.main()
+
+    def file_selected(self, w):
+        self.filename = self.filew.get_filename()
+        gtk.main_quit()
+
+    def destroy(self, widget):
+        gtk.main_quit()
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    wesnoth.wmltools.pop_to_top("trackplacer")
+    operand = ModalFileSelector(default_map).filename
+    print "I see", operand
