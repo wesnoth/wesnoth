@@ -109,6 +109,8 @@ elif env["PLATFORM"] == "sunos":
     env.Tool("suncc")
     env.Tool("sunar")
     env.Tool("sunlink")
+    env.Append(CXXFLAGS = Split("-library=stlport4 -staticlib=stlport4 -norunpath -features=tmplife -features=tmplrefstatic -features=extensions"))
+    env.Append(LINKFLAGS = Split("-library=stlport4 -staticlib=stlport4 -lsocket -lnsl -lboost_iostreams -L. -R."))
 else:
     from cross_compile import *
     setup_cross_compile(env)
@@ -290,8 +292,6 @@ if "gcc" in env["TOOLS"]:
     env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
 
 if "suncc" in env["TOOLS"]:
-    env.Append(CXXFLAGS = Split("-library=stlport4 -staticlib=stlport4 -norunpath -features=tmplife -features=tmplrefstatic -features=extensions"))
-    env.Append(LINKFLAGS = Split("-library=stlport4 -staticlib=stlport4 -lsocket -lnsl -lboost_iostreams -L. -R."))
     env["OPT_FLAGS"] = "-g0"
     env["DEBUG_FLAGS"] = "-g"
 
