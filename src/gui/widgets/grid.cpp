@@ -20,6 +20,11 @@
 #include <cassert>
 #include <numeric>
 
+// Disable the size caching for now, it gives problems with the new wrapping
+// code. Postpone the final faith of this code until we know whether or not the
+// caching is needed for speed.
+#define DISABLE_CACHE 1
+
 namespace gui2 {
 
 tgrid::tgrid(const unsigned rows, const unsigned cols) :
@@ -584,7 +589,11 @@ tpoint tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
+#if DISABLE_CACHE
+	if(true) {
+#else	
 	if(widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
+#endif	
 		best_size_ = widget_->get_best_size() + border_space();
 	}
 
@@ -814,6 +823,10 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
 		tpoint (tchild::*size_proc_max)(const tpoint&) const,
 		const tpoint& maximum_size) const
 {
+#if DISABLE_CACHE
+	height.clear();
+	width.clear();
+#endif	
 	if(height.empty() || width.empty() || maximum_size != tpoint(0, 0)) {
 
 		DBG_GUI << "Grid: calculate " << id << " size.\n";
