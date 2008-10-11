@@ -104,6 +104,11 @@ opts.Save('.scons-option-cache', env)
 env['ENV']['PATH'] = os.environ["PATH"]
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
+elif env["PLATFORM"] == "sunos":
+    env.Tool("sunc++")
+    env.Tool("suncc")
+    env.Tool("sunar")
+    env.Tool("sunlink")
 else:
     from cross_compile import *
     setup_cross_compile(env)
@@ -283,6 +288,12 @@ if "gcc" in env["TOOLS"]:
 
     env["OPT_FLAGS"] = "-O2"
     env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+
+if "suncc" in env["TOOLS"]:
+    env.Append(CXXFLAGS = Split("-library=stlport4 -staticlib=stlport4 -norunpath -features=tmplife -features=tmplrefstatic -features=extensions"))
+    env.Append(LINKFLAGS = Split("-library=stlport4 -staticlib=stlport4 -lsocket -lnsl -lboost_iostreams -L. -R."))
+    env["OPT_FLAGS"] = "-g0"
+    env["DEBUG_FLAGS"] = "-g"
 
 if env['gui'] == 'tiny':
     env.Append(CPPDEFINES = "USE_TINY_GUI")
