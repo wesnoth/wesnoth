@@ -1,20 +1,28 @@
 #!/usr/bin/env python
-#
-# Map journey track editor.  Just a stub at the moment, not yet working.
-#
-# Can be started with a map image, in which case we're editing a new journey.
-#
-# Can be started with a track file. A track file is a text file interpreted
-# line-by-line; each line is interpreted as whitespace-separated fields.
-# The first field of the first line must be FILE, and the second field
-# of that line must be valid filename.  Subsequent lines must have three
-# fields each: an action tag (JOURNEY, BATTLE, or REST) and two numeric
-# coordinate fields.
-#
-# A journey is an object containing a map file name and a (possibly empty)
-# track. This program exists to visually edit journeys.
+"""
+trackplacer -- map journey track editor.
 
-import sys, exceptions
+usage: trackplacesr [-vh?] [filename]
+
+If the filename is not specified, tracplacer will pop up a file selector.
+
+Can be started with a map image, in which case we're editing a new journey.
+Can be started with a track file. A track file is a text file interpreted
+line-by-line; each line is interpreted as whitespace-separated fields.
+The first field of the first line must be FILE, and the second field
+of that line must be valid filename.  Subsequent lines must have three
+fields each: an action tag (JOURNEY, BATTLE, or REST) and two numeric
+coordinate fields.
+
+A journey is an object containing a map file name and a (possibly empty)
+track. This program exists to visually edit journeys.
+
+The -v option enables verbose logging to standard error.
+
+The -h or -? options display this summary.
+"""
+
+import sys, exceptions, getopt
 
 import pygtk
 pygtk.require('2.0')
@@ -109,11 +117,11 @@ class ModalFileSelector:
         sys.exit(0)
 
 class TrackEditor:
-    def __init__(self):
-        self.quiet = False	# FIXME: needs to be settable
+    def __init__(self, filename=None, verbose=False):
+        self.verbose = verbose
         # Initialize our info about the map and track 
         self.journey = JourneyTrack()
-        self.journey.read(ModalFileSelector(default_map).filename)
+        self.journey.read(filename)
         # We need two copies of the map -- one scratchpad for scribbling on,
         # and one for restoring from when we erase track dots.
         self.log("about to read map %s" % self.journey.filename)
@@ -139,18 +147,28 @@ class TrackEditor:
 
     def log(self, msg):
         "Notify user of error and die."
-        if not self.quiet:
+        if self.verbose:
             print >>sys.stderr, "trackplacer:", msg
 
     def fatal_error(self, msg):
         "Notify user of error and die."
-        w = gtk.MessageDialog(flags= gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
-                              type=gtk.MESSAGE_ERROR,
-                              buttons=gtk.BUTTONS_OK)
+        w = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         w.set_markup(msg)
         w.run()
         sys.exit(1)
 
 if __name__ == "__main__":
+    (options, arguments) = getopt.getopt(sys.argv[1:], "hv?", ['verbose', 'help'])
+    verbose = False
+    for (opt, val) in options:
+        if opt in ('-?', '-h', '--help'):
+            print __doc__
+            sys.exit(0)
+        elif opt in ('-v', '--verbose'):
+            verbose=True
+
     wesnoth.wmltools.pop_to_top("trackplacer")
-    TrackEditor()
+    if arguments:
+        TrackEditor(filename=arguments[0], verbose=verbose)
+    else:
+        TrackEditor(ModalFileSelector(default_map).filename, verbose=verbose)
