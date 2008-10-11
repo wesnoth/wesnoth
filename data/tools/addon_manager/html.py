@@ -83,7 +83,9 @@ Select the add-on you want to install from the list and click "OK". The download
             w("<br/><a href=\"%s\">download</a></td>" % link)
         else:
             w("</td>")
-        w("<td><b>%s</b> down<br/>" % v("downloads", "unknown"))
+        downloads = int(v("downloads", "0"))
+        w("<td sorttable_customkey=\"%d\"><b>%d</b> down<br/>" % (downloads,
+            downloads))
         w("%s up</td>" % v("uploads", "unknown"))
         timestamp = int(v("timestamp", "0"))
         t = time.localtime(timestamp)
