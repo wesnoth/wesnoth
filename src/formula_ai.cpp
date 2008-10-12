@@ -473,6 +473,20 @@ private:
 	}
 };
 
+class move_partial_function : public function_expression {
+public:
+	explicit move_partial_function(const args_list& args)
+	  : function_expression("move", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		std::cerr << "move_partial(): " << src << ", " << dst << ")\n";
+		return variant(new move_partial_callable(src, dst));
+	}
+};
+
 class set_var_callable : public formula_callable {
 	std::string key_;
 	variant value_;
@@ -1109,6 +1123,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new evaluate_for_position_function(args, ai_));
 	} else if(fn == "move") {
 		return expression_ptr(new move_function(args));
+	} else if(fn == "move_partial") {
+		return expression_ptr(new move_partial_function(args));
 	} else if(fn == "attack") {
 		return expression_ptr(new attack_function(args, ai_));
 	} else if(fn == "recruit") {
@@ -1483,6 +1499,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		}
 
 		const move_callable* move = try_convert_variant<move_callable>(*i);
+		const move_partial_callable* move_partial = try_convert_variant<move_partial_callable>(*i);
 		const attack_callable* attack = try_convert_variant<attack_callable>(*i);
 		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
@@ -1526,6 +1543,38 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				} else {
 					throw formula_error("Incorrect result of calling the move() formula", "", "", 0);;
 				}
+				made_move = true;
+			}
+		} else if(move_partial) {
+			std::cerr << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
+
+			unit_map::iterator unit_it = units_.find(move_partial->src());
+			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
+				std::map<gamemap::location,paths>::iterator path = possible_moves_.find(move_partial->src());
+
+				gamemap::location destination = move_partial->dst();
+
+				//check if destination is within unit's reach
+				if( path->second.routes.count(move_partial->dst()) == 0) {
+					//destination is too far, check where unit can go
+					shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
+					paths::route route = a_star_search(move_partial->src(), move_partial->dst(), 1000.0, &calc,
+						get_info().map.w(), get_info().map.h());
+
+					int movement = unit_it->second.movement_left();
+					
+					for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
+				
+						if ( move_cost > movement ) {
+							break;
+						}
+						destination = *loc_iter;
+						movement -= move_cost;
+					}
+				}
+
+				move_unit_partial(move_partial->src(), destination, possible_moves_);
 				made_move = true;
 			}
 		} else if(attack) {

@@ -137,6 +137,30 @@ public:
 	const gamemap::location& dst() const { return dst_; }
 };
 
+class move_partial_callable : public game_logic::formula_callable {
+	gamemap::location src_, dst_;
+	variant get_value(const std::string& key) const {
+		if(key == "src") {
+			return variant(new location_callable(src_));
+		} else if(key == "dst") {
+			return variant(new location_callable(dst_));
+		} else {
+			return variant();
+		}
+	}
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const {
+		inputs->push_back(game_logic::formula_input("src", game_logic::FORMULA_READ_ONLY));
+		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
+	}
+public:
+	move_partial_callable(const gamemap::location& src, const gamemap::location& dst) :
+	  src_(src), dst_(dst)
+	{}
+
+	const gamemap::location& src() const { return src_; }
+	const gamemap::location& dst() const { return dst_; }
+};
+
 class move_map_callable : public game_logic::formula_callable {
 	typedef std::multimap<gamemap::location, gamemap::location> move_map;
 	const move_map& srcdst_;
