@@ -144,6 +144,7 @@ class TrackEditor:
             self.rest_image.set_from_file(rest_icon)
         except:
             self.fatal_error("error while reading icons")
+
         # Window-layout time
         window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         window.set_name ("Test Input")
@@ -154,10 +155,58 @@ class TrackEditor:
 
         window.connect("destroy", lambda w: gtk.main_quit())
 
+        hbox1 = gtk.HBox()
+        vbox.add(hbox1)
+        hbox1.show()
+
+        # A radiobutton array
+        radiobox = gtk.HBox()
+        hbox1.pack_start(radiobox, expand=False, fill=False, padding=0)
+        radiobox.show()
+
+        button = gtk.RadioButton(None, "journey")
+        button.set_active(True)
+        button.connect("toggled", self.button_callback, "JOURNEY")
+        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        button.show()
+   	
+        button = gtk.RadioButton(button, "battle")
+        button.connect("toggled", self.button_callback, "BATTLE")
+        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        button.show()
+   	
+        button = gtk.RadioButton(button, "rest")
+        button.connect("toggled", self.button_callback, "REST")
+        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        button.show()
+
+        button = gtk.RadioButton(button, "delete")
+        button.connect("toggled", self.button_callback, "DELETE")
+        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        button.show()
+
+        # A quit button
+        button = gtk.Button("Quit")
+        hbox1.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked", lambda w: w.destroy(), window)
+        button.show()
+
+        # A save button
+        button = gtk.Button("Save")
+        hbox1.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked", lambda w: w.destroy(), window)
+        button.show()
+
+        # A help button
+        button = gtk.Button("Help")
+        hbox1.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked", lambda w: w.destroy(), window)
+        button.show()
+
         # Create the drawing area
         self.drawing_area = gtk.DrawingArea()
         self.drawing_area.set_size_request(self.map_width, self.map_height)
-        vbox.pack_start(self.drawing_area, True, True, 0)
+        vbox.pack_start(self.drawing_area, expand=True, fill=True, padding=0)
 
         self.drawing_area.show()
 
@@ -175,18 +224,15 @@ class TrackEditor:
                                 | gtk.gdk.POINTER_MOTION_MASK
                                 | gtk.gdk.POINTER_MOTION_HINT_MASK)
 
-        # .. And a quit button
-        button = gtk.Button("Quit")
-        vbox.pack_start(button, False, False, 0)
-
-        button.connect_object("clicked", lambda w: w.destroy(), window)
-        button.show()
 
         window.show()
 
         gtk.main()
 
         self.log("initialization successful")
+
+    def button_callback(self, widget, data=None):
+        print "%s was toggled %s" % (data, ("OFF", "ON")[widget.get_active()])
 
     def refresh_map(self, x=0, y=0, xs=-1, ys=-1):
         "Refresh part of the drawing area with the apprpriate map rectangle."
