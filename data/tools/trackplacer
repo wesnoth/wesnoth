@@ -135,13 +135,11 @@ class JourneyTrack:
 class ModalFileSelector:
     def __init__(self, default, blocker=False):
         self.default = default
+        self.blocker = blocker
         self.filename = None
         # Create a new file selection widget
         self.filew = gtk.FileSelection("File selection")
         self.filew.set_modal(True);
-
-        if blocker:
-            self.filew.connect("destroy", lambda w: sys.exit(0))
 
         self.filew.ok_button.connect("clicked", self.selection_ok)
         self.filew.cancel_button.connect("clicked", self.selection_canceled)
@@ -151,6 +149,8 @@ class ModalFileSelector:
     def selection_canceled(self, widget):
         self.filename = None
         self.filew.destroy()
+        if self.blocker:
+            sys.exit(0)
 
     def selection_ok(self, widget):
         self.filename = self.filew.get_filename()
@@ -391,4 +391,4 @@ if __name__ == "__main__":
     if arguments:
         TrackEditor(filename=arguments[0], verbose=verbose)
     else:
-        TrackEditor(ModalFileSelector(default_map).filename, verbose=verbose)
+        TrackEditor(ModalFileSelector(default=default_map, blocker=True).filename, verbose=verbose)
