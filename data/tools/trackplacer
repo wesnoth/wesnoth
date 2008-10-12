@@ -122,6 +122,7 @@ class TrackEditor:
         # Initialize our info about the map and track 
         self.journey = JourneyTrack()
         self.journey.read(filename)
+        self.action = "JOURNEY"
         # Backing pixmap for drawing area
         self.pixmap = None
 
@@ -232,7 +233,9 @@ class TrackEditor:
         self.log("initialization successful")
 
     def button_callback(self, widget, data=None):
-        print "%s was toggled %s" % (data, ("OFF", "ON")[widget.get_active()])
+        "Radio button callback, changes selected editing action."
+        if widget.get_active():
+            self.action = data
 
     def refresh_map(self, x=0, y=0, xs=-1, ys=-1):
         "Refresh part of the drawing area with the apprpriate map rectangle."
