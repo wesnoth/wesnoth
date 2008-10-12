@@ -22,6 +22,11 @@ The -v option enables verbose logging to standard error.
 The -h or -? options display this summary.
 """
 
+# TODO:
+# 1. Fix the distorted icon drawing (transparency and size).
+# 2. Test reading and writing of track files
+# 3. Write track-to-macro tool.
+
 import sys, os, exceptions, getopt
 
 import pygtk
@@ -159,8 +164,14 @@ class ModalFileSelector:
 class TrackEditorIcon:
     def __init__(self, action, filename):
         self.action = action
+        # We need an image for the toolbar...
         self.image = gtk.Image()
         self.image.set_from_file(filename)
+        # ...and a pixbuf for drawing on the map with.
+        self.icon = gtk.gdk.pixbuf_new_from_file(filename)
+        self.icon_width = self.icon.get_width()
+        self.icon_height = self.icon.get_height()
+        self.icon = self.icon.render_pixmap_and_mask()[0]
 
 class TrackEditor:
     def __init__(self, filename=None, verbose=False):
@@ -182,10 +193,10 @@ class TrackEditor:
         except gtk.Gerror:
             self.fatal_error("Error while reading background map %s" % self.journey.filename)
         # Now get the icons we'll need for scribbling on the map with.
-        action_dictionary = {}
+        self.action_dictionary = {}
         try:
             for (action, filename) in icon_dictionary.items():
-                action_dictionary[action] = TrackEditorIcon(action, filename)
+                self.action_dictionary[action] = TrackEditorIcon(action, filename)
         except:
             self.fatal_error("error while reading icons")
 
@@ -210,7 +221,8 @@ class TrackEditor:
 
         # Fake icon-labeled buttons with liberal use of labels...
         basebutton = None
-        for icon in action_dictionary.values():
+        for action in ("JOURNEY", "BATTLE", "REST"):
+            icon = self.action_dictionary[action]
             button = gtk.RadioButton(basebutton)
             if not basebutton:
                 button.set_active(True)
@@ -298,6 +310,14 @@ class TrackEditor:
             ys = self.map_height - y
         self.pixmap.draw_drawable(self.default_gc, self.map, x, y, x, y, xs, ys)
 
+    def draw_feature(self, x, y, icon):
+        "Draw specified icon on the map."
+        self.pixmap.draw_drawable(self.default_gc,
+                                  icon.icon,
+                                  0, 0,
+                                  x-icon.icon_width/2, y-icon.icon_height/2,
+                                  icon.icon_width, icon.icon_height)
+
     def configure_event(self, widget, event):
         "Create a new backing pixmap of the appropriate size."
         x, y, width, height = widget.get_allocation()
@@ -329,8 +349,9 @@ class TrackEditor:
         # Actual drawing and mutation of the journey track happens here
         if not feature and self.action != "DELETE":
             rect = self.bounding_box((x, y))
-            self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
-                                       rect[0], rect[1], rect[2], rect[3])
+            #self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
+            #                           rect[0], rect[1], rect[2], rect[3])
+            self.draw_feature(x, y, self.action_dictionary[self.action])
             self.journey.track.append((self.action, int(x), int(y)))
         elif feature and self.action == "DELETE":
             rect = self.bounding_box(feature)
