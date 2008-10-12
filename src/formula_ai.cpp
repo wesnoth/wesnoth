@@ -16,6 +16,7 @@
 #include <boost/lexical_cast.hpp>
 
 #include "actions.hpp"
+#include "game_events.hpp"
 #include "menu_events.hpp"
 #include "formula_ai.hpp"
 #include "pathutils.hpp"
@@ -1539,6 +1540,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				move_unit(attack->move_from(), attack->src(), possible_moves_);
 			}
 			std::cerr << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
+			game_events::fire("consider attack", attack->src(), attack->dst());
 			attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
 			made_move = true;
 		} else if(attack_analysis) {
@@ -1564,17 +1566,18 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if ( unit == units_.end() )
 				continue;
 
-			move_unit(attack_analysis->movements.front().first,
-			          attack_analysis->movements.front().second,
+			move_unit(src,
+					  dst,
 					  possible_moves_);
 
 			if(get_info().units.count(src)) {
+				game_events::fire("consider attack", src, dst);
 				battle_context bc(get_info().map, get_info().teams,
-				                  get_info().units, get_info().state,
-				                  src, dst, -1, -1, 1.0, NULL,
+								  get_info().units, get_info().state,
+								  src, dst, -1, -1, 1.0, NULL,
 								  &get_info().units.find(src)->second);
-				attack_enemy(attack_analysis->movements.front().second,
-				             attack_analysis->target,
+				attack_enemy(src,
+							 dst,
 							 bc.get_attacker_stats().attack_num,
 							 bc.get_defender_stats().attack_num);
 			}
