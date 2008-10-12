@@ -379,9 +379,9 @@ class TrackEditor:
                 candidates = self.journey.find(x, y)
                 if len(candidates) == 1:
                     # Prefer to delete the most recent candidate
-                    action = self.journey.track[candidates[-1]][0]
+                    (action, x, y) = self.journey.track[candidates[-1]]
                     self.draw_feature(widget, x, y, action, erase=True)
-                    self.journey.remove(feature[0], feature[1])
+                    self.journey.remove(x, y)
             self.log("Track is %s" % self.journey)
         return True
 
