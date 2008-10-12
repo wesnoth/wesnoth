@@ -125,14 +125,11 @@ class TrackEditor:
         # Backing pixmap for drawing area
         self.pixmap = None
 
-        # We need two copies of the map -- one scratchpad for scribbling on,
-        # and one for restoring from when we erase track dots.
+        # Grab the map into a pixmap
         self.log("about to read map %s" % self.journey.filename)
         try:
-            self.background = gtk.Image()
-            self.background.set_from_file(self.journey.filename)
-            (self.map_width, self.map_height) = self.background.size_request()
-        except:
+            self.map = gtk.gdk.pixbuf_new_from_file(self.journey.filename)
+        except gtk.Gerror:
             self.fatal_error("Error while reading background map %s" % self.journey.filename)
         # Now get the icons we'll need for scribbling on the map with.
         try:
@@ -144,8 +141,7 @@ class TrackEditor:
             self.rest_image.set_from_file(rest_icon)
         except:
             self.fatal_error("error while reading icons")
-        # FIXME: This is a copy of simplescribble.py from the tutorial.
-        # It will need to be edited to do what we really want. 
+        # Window-layout time
         window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         window.set_name ("Test Input")
 
@@ -156,21 +152,21 @@ class TrackEditor:
         window.connect("destroy", lambda w: gtk.main_quit())
 
         # Create the drawing area
-        drawing_area = gtk.DrawingArea()
-        drawing_area.set_size_request(self.map_width, self.map_height)
-        vbox.pack_start(drawing_area, True, True, 0)
+        self.drawing_area = gtk.DrawingArea()
+        self.drawing_area.set_size_request(self.map.get_width(), self.map.get_height())
+        vbox.pack_start(self.drawing_area, True, True, 0)
 
-        drawing_area.show()
+        self.drawing_area.show()
 
         # Signals used to handle backing pixmap
-        drawing_area.connect("expose_event", self.expose_event)
-        drawing_area.connect("configure_event", self.configure_event)
+        self.drawing_area.connect("expose_event", self.expose_event)
+        self.drawing_area.connect("configure_event", self.configure_event)
 
         # Event signals
-        drawing_area.connect("motion_notify_event", self.motion_notify_event)
-        drawing_area.connect("button_press_event", self.button_press_event)
+        self.drawing_area.connect("motion_notify_event", self.motion_notify_event)
+        self.drawing_area.connect("button_press_event", self.button_press_event)
 
-        drawing_area.set_events(gtk.gdk.EXPOSURE_MASK
+        self.drawing_area.set_events(gtk.gdk.EXPOSURE_MASK
                                 | gtk.gdk.LEAVE_NOTIFY_MASK
                                 | gtk.gdk.BUTTON_PRESS_MASK
                                 | gtk.gdk.POINTER_MOTION_MASK
@@ -189,15 +185,21 @@ class TrackEditor:
 
         self.log("initialization successful")
 
+    def refresh_map(self, x=0, y=0, xs=-1, ys=-1):
+        "Refresh part of the drawing area with the apprpriate map rectangle."
+        if xs == -1:
+            xs = self.map.get_width() - x
+        if ys == -1:
+            ys = self.map.get_height() - y
+        #self.map.copy_area(x, y, xs, ys, self.pixmap, x, y)
+
     # Create a new backing pixmap of the appropriate size
     def configure_event(self, widget, event):
-        print "The background", self.background
-        print "The image", self.background.get_image()
         x, y, width, height = widget.get_allocation()
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
-        self.pixmap.draw_image(widget.get_style().white_gc,
-                                   self.background, 0, 0, 0, 0, -1, -1)
-
+        self.pixmap.draw_rectangle(widget.get_style().white_gc,
+                                   True, 0, 0, width, height)
+        #self.refresh_map()
         return True
 
     # Redraw the screen from the backing pixmap
