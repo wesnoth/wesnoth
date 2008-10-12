@@ -1566,8 +1566,8 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if ( unit == units_.end() )
 				continue;
 
-			move_unit(src,
-					  dst,
+			move_unit(attack_analysis->movements.front().first,
+					  attack_analysis->movements.front().second,
 					  possible_moves_);
 
 			if(get_info().units.count(src)) {
