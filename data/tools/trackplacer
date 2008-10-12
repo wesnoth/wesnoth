@@ -23,7 +23,7 @@ The -h or -? options display this summary.
 """
 
 # TODO:
-# 1. Fix the distorted icon drawing (transparency and size).
+# 1. Fix clipping of flag icon.
 # 2. Test reading and writing of track files
 # 3. Write track-to-macro tool.
 
@@ -171,7 +171,6 @@ class TrackEditorIcon:
         self.icon = gtk.gdk.pixbuf_new_from_file(filename)
         self.icon_width = self.icon.get_width()
         self.icon_height = self.icon.get_height()
-        self.icon = self.icon.render_pixmap_and_mask()[0]
 
 class TrackEditor:
     def __init__(self, filename=None, verbose=False):
@@ -312,12 +311,12 @@ class TrackEditor:
 
     def draw_feature(self, x, y, icon):
         "Draw specified icon on the map."
-        self.pixmap.draw_drawable(self.default_gc,
-                                  icon.icon,
-                                  0, 0,
-                                  x-icon.icon_width/2, y-icon.icon_height/2,
-                                  icon.icon_width, icon.icon_height)
-
+        self.pixmap.draw_pixbuf(self.default_gc,
+                                icon.icon,
+                                0, 0,
+                                x-icon.icon_width/2, y-icon.icon_height/2,
+                                icon.icon_width, icon.icon_height)
+        
     def configure_event(self, widget, event):
         "Create a new backing pixmap of the appropriate size."
         x, y, width, height = widget.get_allocation()
@@ -349,8 +348,6 @@ class TrackEditor:
         # Actual drawing and mutation of the journey track happens here
         if not feature and self.action != "DELETE":
             rect = self.bounding_box((x, y))
-            #self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
-            #                           rect[0], rect[1], rect[2], rect[3])
             self.draw_feature(x, y, self.action_dictionary[self.action])
             self.journey.track.append((self.action, int(x), int(y)))
         elif feature and self.action == "DELETE":
