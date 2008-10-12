@@ -131,8 +131,7 @@ class TrackEditor:
         try:
             self.background = gtk.Image()
             self.background.set_from_file(self.journey.filename)
-            self.scratchpad = gtk.Image()
-            self.scratchpad.set_from_file(self.journey.filename)
+            (self.map_width, self.map_height) = self.background.size_request()
         except:
             self.fatal_error("Error while reading background map %s" % self.journey.filename)
         # Now get the icons we'll need for scribbling on the map with.
@@ -158,7 +157,7 @@ class TrackEditor:
 
         # Create the drawing area
         drawing_area = gtk.DrawingArea()
-        drawing_area.set_size_request(200, 200)
+        drawing_area.set_size_request(self.map_width, self.map_height)
         vbox.pack_start(drawing_area, True, True, 0)
 
         drawing_area.show()
@@ -192,10 +191,12 @@ class TrackEditor:
 
     # Create a new backing pixmap of the appropriate size
     def configure_event(self, widget, event):
+        print "The background", self.background
+        print "The image", self.background.get_image()
         x, y, width, height = widget.get_allocation()
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
-        self.pixmap.draw_rectangle(widget.get_style().white_gc,
-                                   True, 0, 0, width, height)
+        self.pixmap.draw_image(widget.get_style().white_gc,
+                                   self.background, 0, 0, 0, 0, -1, -1)
 
         return True
 
