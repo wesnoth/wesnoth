@@ -72,11 +72,21 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	, selected_fg_terrain_(fore)
 	, selected_bg_terrain_(back)
 {
-
 	// Get the available terrains temporary in terrains_
 	terrains_ = map_.get_terrain_list();
-	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
-					terrains_.end());
+	
+	//move "invalid" terrains to the end 
+	size_t size = terrains_.size();
+	for (size_t i = 0; i < size; ++i) {
+		std::cerr << "C" << terrains_[i] << map_.get_terrain_string(terrains_[i]);
+		if (is_invalid_terrain(terrains_[i])) {
+			std::cerr << "Invalid" << map_.get_terrain_string(terrains_[i]);
+			terrains_.push_back(terrains_[i]);
+			terrains_.erase(terrains_.begin() + i);
+			size--;
+			i--;
+		}
+	}
 
 	// Get the available groups and add them to the structure
     const config::child_list& groups = cfg.get_children("editor_group");
