@@ -32,18 +32,25 @@ div.topnav a {
 div.topnav a:hover {
     color:#CCCCCC;
 }
+div.main {
+    margin: 0em 1em 0em 1em;
+}
 img {
     border: none;
 }
 div.header img {
     vertical-align:middle;
 }
+.hidden {display: none;}
 
 div#footer {
     clear: both;
-    font-size: x-small;
+    font-size: 0.7em;
+    line-height:0.7em;
     border-top: 1px solid black;
     padding: 1em;
+    color:#333333;
+    font-family:sans-serif;
     }
 
 table#campaigns th {
@@ -66,4 +73,34 @@ td:hover div.desc {
     background-color: #ffffff;
     border: 1px solid black;
     padding: 8px;
+}
+
+/* tables */
+table.tablesorter {
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	border: 1px solid #000000;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	padding: 4px;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 }
