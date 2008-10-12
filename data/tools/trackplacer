@@ -22,7 +22,7 @@ The -v option enables verbose logging to standard error.
 The -h or -? options display this summary.
 """
 
-import sys, exceptions, getopt
+import sys, os, exceptions, getopt
 
 import pygtk
 pygtk.require('2.0')
@@ -44,7 +44,7 @@ icon_dictionary = {
 # pixel radius of the journey dot.  For this and other reasons, it's
 # helpful id the tracking dot and other icons all have a square
 # aspect ratio and an odd number of pixels on the sise, so each has
-# a well-defibed center pixel.
+# a well-defined center pixel.
 vision_distance = 5
 
 class ReadException(exceptions.Exception):
@@ -371,16 +371,23 @@ class TrackEditor:
         sys.exit(1)
 
 if __name__ == "__main__":
-    (options, arguments) = getopt.getopt(sys.argv[1:], "hv?", ['verbose', 'help'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "d:hv?",
+                                         ['directory=', 'help', 'verbose'])
     verbose = False
+    top = None
     for (opt, val) in options:
-        if opt in ('-?', '-h', '--help'):
+        if opt in ('-d', '--directory'):
+            top = val
+        elif opt in ('-?', '-h', '--help'):
             print __doc__
             sys.exit(0)
         elif opt in ('-v', '--verbose'):
             verbose=True
 
-    wesnoth.wmltools.pop_to_top("trackplacer")
+    if top:
+        os.chdir(top)
+    else:
+        wesnoth.wmltools.pop_to_top("trackplacer")
     if arguments:
         TrackEditor(filename=arguments[0], verbose=verbose)
     else:
