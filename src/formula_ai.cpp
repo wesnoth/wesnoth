@@ -459,6 +459,38 @@ private:
 	}
 };
 
+class shortest_path_function : public function_expression {
+public:
+	explicit shortest_path_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("shortest_path", args, 2, 2), ai_(ai)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+
+		std::vector<variant> locations;
+
+		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+
+		unit_map::iterator unit_it = ai_.get_info().units.find(src);
+		if( (ai_.get_possible_moves().count(src) > 0) ) {
+			std::map<gamemap::location,paths>::const_iterator path = ai_.get_possible_moves().find(src);
+
+			shortest_path_calculator calc(unit_it->second, ai_.current_team(), ai_.get_info().units, ai_.get_info().teams, ai_.get_info().map);
+			paths::route route = a_star_search(src, dst, 1000.0, &calc, ai_.get_info().map.w(), ai_.get_info().map.h());
+
+			for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+				locations.push_back( variant( new location_callable(*loc_iter) ));
+			}
+		}
+
+		return variant(&locations);
+	}
+
+	const formula_ai& ai_;
+};
+
 class move_function : public function_expression {
 public:
 	explicit move_function(const args_list& args)
@@ -476,7 +508,7 @@ private:
 class move_partial_function : public function_expression {
 public:
 	explicit move_partial_function(const args_list& args)
-	  : function_expression("move", args, 2, 2)
+	  : function_expression("move_partial", args, 2, 2)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
@@ -1157,6 +1189,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
 	} else if(fn == "distance_to_nearest_unowned_village") {
 		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
+	} else if(fn == "shortest_path") {
+		return expression_ptr(new shortest_path_function(args, ai_));
 	} else if(fn == "nearest_keep") {
 		return expression_ptr(new nearest_keep_function(args, ai_));
 	} else if(fn == "nearest_loc") {

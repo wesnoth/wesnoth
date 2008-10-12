@@ -147,6 +147,8 @@ public:
 	// Check if given unit loc can reach attack range of enemy loc 
 	bool can_attack (const gamemap::location, const gamemap::location) const;
 
+	const std::map<location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
+
 private:
 	void handle_exception(game_logic::formula_error& e);
 	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation);
