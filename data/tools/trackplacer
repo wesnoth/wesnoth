@@ -42,7 +42,7 @@ rest_icon =  "data/core/images/misc/flag-red.png"
 # helpful id the tracking dot and other icons all have a square
 # aspect ratio and an odd number of pixels on the sise, so each has
 # a well-defibed center pixel.
-see_distance = 5
+vision_distance = 5
 
 class ReadException(exceptions.Exception):
     "Exception thrown while reading a track file."
@@ -97,8 +97,34 @@ class JourneyTrack:
         return self.track[n]
     def __setitem__(self, n, v):
         self.track[n] = v
-    def pop(self):
-        self.track.pop()
+    def find(self, x, y, d=vision_distance):
+        "Find all track actions near a given point."
+        candidates = []
+        ind = 0
+        for (tag, xt, yt) in self.track:
+            if x >= xt - d and x <= xt + d and y >= yt - d and y <= yt + d:
+                candidates.append(ind)
+                ind += 1
+        return candidates
+    def append(self, tag, x, y):
+        "Append a feature to the track."
+        self.track.append((tag, x, y))
+    def remove(self, x, y):
+        "Remove a feature from the track."
+        ind = self.find(x, y)
+        if ind:
+            # Prefer to delete the most recent feature
+            self.track = self.track[:ind[-1]] + self.track[ind[-1]:]
+    def snap_to(self, x, y, d=vision_distance):
+        "Snap a location to a nearby track feature, if there is one."
+        candidates = []
+        for (tag, xt, yt) in self.track:
+            if x >= xt - d and x <= xt + d and y >= yt - d and y <= yt + d:
+                candidates.append((xt, yt))
+        if len(candidates) == 1:
+            return candidates[0]
+        else:
+            return None
 
 class ModalFileSelector:
     def __init__(self, default, blocker=False):
@@ -300,15 +326,29 @@ class TrackEditor:
                                     self.pixmap, x, y, x, y, width, height)
         return False
 
+    def bounding_box(self, p, d=vision_distance):
+        "Return a feature-containing rangle around a pixel."
+        return (int(p[0]-d), int(p[1]-d), d*2, d*2)
+
     def draw_icon(self, widget, x, y):
         "Draw or erase a track dot."
-        rect = (int(x-see_distance), int(y-see_distance), see_distance*2, see_distance*2)
-        if self.action == "DELETE":
-            self.refresh_map(*rect)
-        else:
+        feature = self.journey.snap_to(x, y)
+        # Skip the redraw in half the cases
+        self.log("Action %s at (%d, %d): feature = %s" % (self.action, x, y, feature))
+        if (feature == None) and (self.action == "DELETE"):
+            return
+        if (feature != None) and (self.action != "DELETE"):
+            return
+        # Actual drawing and mutation of the journey track happens here
+        if not feature and self.action != "DELETE":
+            rect = self.bounding_box((x, y))
             self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
                                        rect[0], rect[1], rect[2], rect[3])
-            self.journey.track.append(self.action)
+            self.journey.track.append((self.action, x, y))
+        elif feature and self.action == "DELETE":
+            rect = self.bounding_box(feature)
+            self.refresh_map(*rect)
+            self.journey.remove(feature[0], feature[1])
         widget.queue_draw_area(rect[0], rect[1], rect[2], rect[3])
 
     def button_press_event(self, widget, event):
