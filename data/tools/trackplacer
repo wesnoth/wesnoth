@@ -165,6 +165,9 @@ class TrackEditor:
         hbox1.pack_start(radiobox, expand=False, fill=False, padding=0)
         radiobox.show()
 
+        # Fake icon-labeled buttons with liberal use of labels...
+
+        # The journey button and its label.
         button = gtk.RadioButton(None)
         button.set_active(True)
         button.connect("toggled", self.button_callback, "JOURNEY")
@@ -173,8 +176,11 @@ class TrackEditor:
         radiobox.pack_start(self.journey_image,
                             expand=False, fill=False, padding=0) 
         self.journey_image.show()
+        spacer = gtk.Label("  ")
+        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
+        spacer.show()
 
-
+        # The battle button and its label
         button = gtk.RadioButton(button)
         button.connect("toggled", self.button_callback, "BATTLE")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
@@ -182,6 +188,9 @@ class TrackEditor:
         radiobox.pack_start(self.battle_image,
                             expand=False, fill=False, padding=0) 
         self.battle_image.show()
+        spacer = gtk.Label("  ")
+        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
+        spacer.show()
 
         # The rest button and its label
         button = gtk.RadioButton(button)
@@ -191,6 +200,9 @@ class TrackEditor:
         radiobox.pack_start(self.rest_image,
                             expand=False, fill=False, padding=0) 
         self.rest_image.show()
+        spacer = gtk.Label("  ")
+        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
+        spacer.show()
 
         # The delete button and its label
         button = gtk.RadioButton(button)
@@ -202,6 +214,9 @@ class TrackEditor:
         radiobox.pack_start(delimage,
                             expand=False, fill=False, padding=0) 
         delimage.show()
+        spacer = gtk.Label("  ")
+        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
+        spacer.show()
 
         # A quit button
         button = gtk.Button("Quit")
