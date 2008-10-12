@@ -258,9 +258,7 @@ class TrackEditor:
         spacer.show()
 
         # The coordinate display in the middle
-        self.coordbuf = gtk.TextBuffer()
-        self.coordwin = gtk.TextView(self.coordbuf)
-        self.coordwin.set_editable(False)
+        self.coordwin = gtk.Label()
         hbox1.pack_start(self.coordwin, expand=True, fill=False, padding=0)
         self.coordwin.show()
 
@@ -391,7 +389,7 @@ class TrackEditor:
         else:
             x = event.x
             y = event.y
-        self.coordbuf.set_text("(%d, %d)" % (x, y))
+        self.coordwin.set_text("(%d, %d)" % (x, y))
         state = event.state
 
         # Lets you draw pixels by dragging, not the effect we want.
