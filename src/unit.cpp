@@ -1781,7 +1781,7 @@ void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 	if (preferences::show_standing_animations()) {
 		start_animation(INT_MAX,loc,choose_animation(disp,loc,"selected"),true,false,"",0,STATE_FORGET);
 	} else {
-		start_animation(INT_MAX,loc,choose_animation(disp,loc,"_disabled_selected_"),true,false,"",0,STATE_STANDING);
+		start_animation(INT_MAX,loc,choose_animation(disp,loc,"_disabled_selected_"),true,false,"",0,STATE_FORGET);
 	}
 }
 
