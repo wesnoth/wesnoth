@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-07 16:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:33+0200\n"
 "PO-Revision-Date: 2008-08-05 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -59,6 +59,230 @@ msgstr ""
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
 msgstr "Under jorden"
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:29
+#, fuzzy
+msgid "define ai location"
+msgstr "Indonesisk oversættelse"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:35
+#, fuzzy
+msgid "Location name?"
+msgstr "Lokalt spil"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:45
+msgid "Range in Hexfields?"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:59
+msgid "enable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:73
+msgid "disable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:87
+#, fuzzy
+msgid "Give new orders"
+msgstr "Anullér"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:131
+msgid "Command $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:161
+msgid "Which ally should i command?"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:228
+msgid "How important is this command?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:232
+msgid "It is very important.(value 90)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:239
+msgid "It is important.(value 50)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:246
+msgid "It is not so important.(value 25)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:253
+msgid "It has the importance ..."
+msgstr ""
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:259
+#, fuzzy
+msgid "value: "
+msgstr "Navn: "
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:327
+msgid ""
+"Which kind of order do you want me to obey?\n"
+"@$ai_controller.current_orders"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:338
+msgid "#I revoke all your commands!"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:383
+#, fuzzy
+msgid "Defeat an enemy Leader!"
+msgstr ""
+"Sejr:\n"
+"@Besejr fjendtlige leder(e)"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:392
+msgid "Defeat $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:415
+msgid "I am already attacking $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:430
+msgid "Which enemy Leaders do you want me to defeat?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:440
+msgid "Protect an allied leader!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:447
+msgid "Protect $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:471
+msgid "I am already protecting $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:498
+msgid "Which allied leader should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:509
+msgid "Defend a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:517
+msgid "Defend the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:540
+msgid "I am allready defending $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:557
+msgid "Which location should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:568
+msgid "Go to a location!(only the leader)"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:576
+msgid "Goto the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:597
+msgid "I am allready going to $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:611
+msgid "To which location shall i move?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:622
+msgid "Avoid a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:630
+msgid "Avoid the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:651
+msgid ""
+"I am allready ordered to avoid $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:664
+msgid "Which location shall i avoid?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:732
+msgid "Send your army to a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:740
+msgid "Move to the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:784
+msgid ""
+"I am allready ordered to send all men to $ai_controller.locations[$location]."
+"name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:793
+msgid "Which location shall i send my men to?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:810
+msgid ""
+"@I don't want to be in command any more! Take care of yourselves! (Disables "
+"AI_CONTROLLER)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:824
+msgid "@Execute my orders!"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -397,7 +621,13 @@ msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencisk (sydlig katalansk) oversættelse"
 
 #. [about]
-#: data/core/about.cfg:1996
+#: data/core/about.cfg:1993
+#, fuzzy
+msgid "RACV's Translation"
+msgstr "Kinesisk oversættelse"
+
+#. [about]
+#: data/core/about.cfg:2000
 msgid "Bots"
 msgstr "Bots"
 
@@ -415,14 +645,14 @@ msgstr "Introduktion"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:27 data/core/help.cfg:126
+#: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "Gameplay"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]
 #. [topic]
-#: data/core/help.cfg:33 data/core/help.cfg:323 src/menu_events.cpp:997
+#: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:997
 msgid "Traits"
 msgstr "Karaktertræk"
 
@@ -445,13 +675,13 @@ msgstr "Våbenspecialiteter"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:67 data/core/help.cfg:414
+#: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "Terræner"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:74 data/core/help.cfg:647
+#: data/core/help.cfg:74 data/core/help.cfg:720
 msgid "Commands"
 msgstr "Kommandoer"
 
@@ -485,12 +715,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:110
+#: data/core/help.cfg:111
 msgid "Unknown Unit"
 msgstr "Ukendt enhed"
 
 #. [topic]
-#: data/core/help.cfg:113
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -503,12 +733,12 @@ msgstr ""
 "se dens beskrivelse."
 
 #. [topic]
-#: data/core/help.cfg:118
+#: data/core/help.cfg:119
 msgid "Overview"
 msgstr "Overblik"
 
 #. [topic]
-#: data/core/help.cfg:121
+#: data/core/help.cfg:122
 msgid ""
 "\n"
 "\n"
@@ -528,12 +758,12 @@ msgstr ""
 "mestre."
 
 #. [topic]
-#: data/core/help.cfg:132
+#: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "Grundlæggende spilide"
 
 #. [topic]
-#: data/core/help.cfg:133
+#: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -548,7 +778,7 @@ msgstr ""
 "undtagelser, så følg de inkluderede links."
 
 #. [topic]
-#: data/core/help.cfg:135
+#: data/core/help.cfg:137
 msgid ""
 "\n"
 "\n"
@@ -570,7 +800,7 @@ msgstr ""
 "at du starter på niveauet: <italic>text=Let</italic>."
 
 #. [topic]
-#: data/core/help.cfg:138
+#: data/core/help.cfg:140
 #, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -585,12 +815,12 @@ msgstr ""
 "<ref>dst=abilities text=evner</ref>."
 
 #. [topic]
-#: data/core/help.cfg:143
+#: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "Om spillet"
 
 #. [topic]
-#: data/core/help.cfg:144
+#: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -608,7 +838,7 @@ msgstr ""
 "internettet kan du spille med andre over internettet."
 
 #. [topic]
-#: data/core/help.cfg:146
+#: data/core/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -624,12 +854,12 @@ msgstr ""
 "bedste enheder overlever, så du kan bruge dem senere i kampagnen."
 
 #. [topic]
-#: data/core/help.cfg:151
+#: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr "Sejr og nederlag"
 
 #. [topic]
-#: data/core/help.cfg:152
+#: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -645,7 +875,7 @@ msgstr ""
 "eller holde stand mod en belejring indtil et bestemt antal runder er gået."
 
 #. [topic]
-#: data/core/help.cfg:154
+#: data/core/help.cfg:157
 msgid ""
 "\n"
 "\n"
@@ -662,12 +892,12 @@ msgstr ""
 "knappen for det næste scenarie."
 
 #. [topic]
-#: data/core/help.cfg:159
+#: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "Rekruttering og Tilbagekaldelse"
 
 #. [topic]
-#: data/core/help.cfg:160
+#: data/core/help.cfg:165
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -692,7 +922,7 @@ msgstr ""
 "egenskaber og tryk på Rekrutterknappen for at rekruttere dem."
 
 #. [topic]
-#: data/core/help.cfg:162
+#: data/core/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -709,7 +939,7 @@ msgstr ""
 "til på din borg og heller ikke bruge mere guld end du har på rekrutteringer."
 
 #. [topic]
-#: data/core/help.cfg:164
+#: data/core/help.cfg:169
 #, fuzzy
 msgid ""
 "\n"
@@ -723,7 +953,7 @@ msgstr ""
 "text=karaktertræk</ref>, som påvirker deres egenskaber."
 
 #. [topic]
-#: data/core/help.cfg:166
+#: data/core/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -739,7 +969,7 @@ msgstr ""
 "20 guld."
 
 #. [topic]
-#: data/core/help.cfg:168
+#: data/core/help.cfg:173
 #, fuzzy
 msgid ""
 "\n"
@@ -757,12 +987,12 @@ msgstr ""
 # > kugle, sfære, klode..  sfære!
 # Nah... Jeg ved nu ikke... Der er nok ikke ret mange der ved hvad en sfære er. (Jeg kender i hvert fald mange der ikke gør.)
 #. [topic]
-#: data/core/help.cfg:173
+#: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "Sfærer"
 
 #. [topic]
-#: data/core/help.cfg:174
+#: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -771,39 +1001,39 @@ msgstr ""
 "For enheder du kontrolerer, er denne sfære:"
 
 #. [topic]
-#: data/core/help.cfg:175
+#: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "grøn, hvis den ikke er blevet flyttet i indeværende tur,"
 
 #. [topic]
-#: data/core/help.cfg:176
+#: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "gul, hvis den er blevet flyttet, men stadig kan flytte yderligere eller "
 "angribe, eller"
 
 #. [topic]
-#: data/core/help.cfg:177
+#: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "rød, hvis den har brugt alle dens ryk for denne tur."
 
 #. [topic]
-#: data/core/help.cfg:178
+#: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Sfæren er blå hvis det er en enhed du ikke kontrollerer."
 
 #. [topic]
-#: data/core/help.cfg:179
+#: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Fjendtlige enheder har ingen sfære over deres energibar."
 
 #. [topic]
-#: data/core/help.cfg:184
+#: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "Liv og erfaring"
 
 #. [topic]
-#: data/core/help.cfg:185
+#: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -816,7 +1046,7 @@ msgstr ""
 "fjender."
 
 #. [topic]
-#: data/core/help.cfg:189
+#: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -826,7 +1056,7 @@ msgstr ""
 "disse indikerer den nuværende værdi og den maksimale værdi enheden kan have."
 
 #. [topic]
-#: data/core/help.cfg:190
+#: data/core/help.cfg:199
 #, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -840,12 +1070,12 @@ msgstr ""
 "<ref>dst=experience_and_advancement text=forfremmelse</ref>."
 
 #. [topic]
-#: data/core/help.cfg:195
+#: data/core/help.cfg:206
 msgid "Movement"
 msgstr "Bevægelse"
 
 #. [topic]
-#: data/core/help.cfg:196
+#: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -875,7 +1105,7 @@ msgstr ""
 "bevægelse også slutte, men enheden kan stadig angribe."
 
 #. [topic]
-#: data/core/help.cfg:198
+#: data/core/help.cfg:209
 msgid ""
 "\n"
 "\n"
@@ -901,7 +1131,7 @@ msgstr ""
 "<italic>text='Terrain Modifiers'</italic>."
 
 #. [topic]
-#: data/core/help.cfg:200
+#: data/core/help.cfg:211
 #, fuzzy
 msgid ""
 "\n"
@@ -923,7 +1153,7 @@ msgstr ""
 "af kontrolzoner."
 
 #. [topic]
-#: data/core/help.cfg:202
+#: data/core/help.cfg:213
 msgid ""
 "\n"
 "\n"
@@ -938,12 +1168,12 @@ msgstr ""
 "enheder ikke var på kortet og blokerede deres vej."
 
 #. [topic]
-#: data/core/help.cfg:207
+#: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "Sløring og krigståge"
 
 #. [topic]
-#: data/core/help.cfg:210
+#: data/core/help.cfg:223
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -983,12 +1213,12 @@ msgstr ""
 "mulighed for at fortryde et ryk."
 
 #. [topic]
-#: data/core/help.cfg:215
+#: data/core/help.cfg:230
 msgid "Combat"
 msgstr "Kamp"
 
 #. [topic]
-#: data/core/help.cfg:216
+#: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -1011,7 +1241,7 @@ msgstr ""
 "afstandskamp som normalt inkluderer våben som bue, spyd og ildkugler."
 
 #. [topic]
-#: data/core/help.cfg:218
+#: data/core/help.cfg:233
 msgid ""
 "\n"
 "\n"
@@ -1022,7 +1252,7 @@ msgstr ""
 "<header>text='Rækkefølge og antal slag'</header>"
 
 #. [topic]
-#: data/core/help.cfg:220
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1045,7 +1275,7 @@ msgstr ""
 "angribe 2 gange (men med 9 skade for hver succesfuldt angreb i alt 18)."
 
 #. [topic]
-#: data/core/help.cfg:222
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "\n"
@@ -1056,7 +1286,7 @@ msgstr ""
 "<header>text='Træfsikkerhed'</header>"
 
 #. [topic]
-#: data/core/help.cfg:224
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -1079,7 +1309,7 @@ msgstr ""
 "ramme angriberen afhængig af hvilket terræn angriberen befinder sig i."
 
 #. [topic]
-#: data/core/help.cfg:226
+#: data/core/help.cfg:241
 #, fuzzy
 msgid ""
 "\n"
@@ -1099,7 +1329,7 @@ msgstr ""
 "træfsikkerhed på mindst 60% uanset terræn."
 
 #. [topic]
-#: data/core/help.cfg:228
+#: data/core/help.cfg:243
 msgid ""
 "\n"
 "\n"
@@ -1110,7 +1340,7 @@ msgstr ""
 "<header>text=Skade</header>"
 
 #. [topic]
-#: data/core/help.cfg:230
+#: data/core/help.cfg:245
 #, fuzzy
 msgid ""
 "\n"
@@ -1133,7 +1363,7 @@ msgstr ""
 "<italic>text='Skadeberegninger'</italic> i angrebsmenuen."
 
 #. [topic]
-#: data/core/help.cfg:232
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -1151,12 +1381,12 @@ msgstr ""
 "forvoldt af både angriber og forsvarer når enheden med charge angriber."
 
 #. [topic]
-#: data/core/help.cfg:237
+#: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "Skadestyper og Modstand"
 
 #. [topic]
-#: data/core/help.cfg:238
+#: data/core/help.cfg:254
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1171,7 +1401,7 @@ msgstr ""
 "skadestyper."
 
 #. [topic]
-#: data/core/help.cfg:240
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1190,7 +1420,7 @@ msgstr ""
 "skadestype, så vil den modtage 100 % mere skade når den rammes af denne type."
 
 #. [topic]
-#: data/core/help.cfg:242
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1204,7 +1434,7 @@ msgstr ""
 "sårbare overfor slag- og ildvåben og ekstremt sårbare over for magisk skade."
 
 #. [topic]
-#: data/core/help.cfg:244
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1218,12 +1448,12 @@ msgstr ""
 "hvis den forsvarende enhed har 100% resistens mod skadestypen."
 
 #. [topic]
-#: data/core/help.cfg:249
+#: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "Tid på døgnet"
 
 #. [topic]
-#: data/core/help.cfg:253
+#: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1236,7 +1466,7 @@ msgstr ""
 " Neutrale enheder er uberørt af tidspunkt på dagen."
 
 #. [topic]
-#: data/core/help.cfg:256
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1252,54 +1482,54 @@ msgstr ""
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
+#: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Morgengry"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:257 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Morgen"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:258 data/core/macros/schedules.cfg:29
+#: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "Eftermiddag"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:259 data/core/macros/schedules.cfg:39
+#: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "Skumring"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:260 data/core/macros/schedules.cfg:51
+#: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "Første vagt"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:261 data/core/macros/schedules.cfg:64
+#: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "Anden vagt"
 
 #. [topic]
-#: data/core/help.cfg:263
+#: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr "Husk at nogle scenarier foregår under jorden hvor det altid er nat!"
 
 #. [topic]
-#: data/core/help.cfg:268
+#: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "Erfaring og forfremmelse"
 
 #. [topic]
-#: data/core/help.cfg:269
+#: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1312,7 +1542,7 @@ msgstr ""
 "for level 2, 24 for level 3 osv..."
 
 #. [topic]
-#: data/core/help.cfg:271
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1330,7 +1560,7 @@ msgstr ""
 "til."
 
 #. [topic]
-#: data/core/help.cfg:273
+#: data/core/help.cfg:292
 #, fuzzy
 msgid ""
 "\n"
@@ -1359,12 +1589,12 @@ msgstr ""
 "er ofte mere brugbart at forfremme sine enheder på lavere niveau."
 
 #. [topic]
-#: data/core/help.cfg:278
+#: data/core/help.cfg:299
 msgid "Healing"
 msgstr "Helbredelse"
 
 #. [topic]
-#: data/core/help.cfg:279
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1380,7 +1610,7 @@ msgstr ""
 "muligheder for at helbrede dine enheder, alle foregår i starten af din tur."
 
 #. [topic]
-#: data/core/help.cfg:281
+#: data/core/help.cfg:302
 #, fuzzy
 msgid ""
 "\n"
@@ -1394,7 +1624,7 @@ msgstr ""
 "helbredt 2 HP i starten af sin næste tur."
 
 #. [topic]
-#: data/core/help.cfg:282
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1403,7 +1633,7 @@ msgstr ""
 "Landsbyer: En enhed der starter sin tur i en landsby får helbredt 8 HP."
 
 #. [topic]
-#: data/core/help.cfg:283
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "\n"
@@ -1415,7 +1645,7 @@ msgstr ""
 "eksempel trolde) får automatisk helbredt 8 liv i starten af hver runde."
 
 #. [topic]
-#: data/core/help.cfg:284
+#: data/core/help.cfg:305
 #, fuzzy
 msgid ""
 "\n"
@@ -1430,7 +1660,7 @@ msgstr ""
 "liv per runde, eller forhindrer gift i at gøre skade på en enhed."
 
 #. [topic]
-#: data/core/help.cfg:285
+#: data/core/help.cfg:306
 #, fuzzy
 msgid ""
 "\n"
@@ -1444,7 +1674,7 @@ msgstr ""
 "enheder (udover effekten ved helbredelse hvis enheder også har den evne)."
 
 #. [topic]
-#: data/core/help.cfg:287
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1460,12 +1690,12 @@ msgstr ""
 "scenarier."
 
 #. [topic]
-#: data/core/help.cfg:292
+#: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "Indtjening og vedligehold"
 
 #. [topic]
-#: data/core/help.cfg:293
+#: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1478,7 +1708,7 @@ msgstr ""
 "Vedligeholdelse."
 
 #. [topic]
-#: data/core/help.cfg:295
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -1495,7 +1725,7 @@ msgstr ""
 "vedligeholdelsesudgifter trækkes fra dette, som beskrevet nedenfor."
 
 #. [topic]
-#: data/core/help.cfg:297
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -1517,7 +1747,7 @@ msgstr ""
 "vedligeholdelse."
 
 #. [topic]
-#: data/core/help.cfg:299
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -1532,7 +1762,7 @@ msgstr ""
 "per runde."
 
 #. [topic]
-#: data/core/help.cfg:300
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1551,12 +1781,12 @@ msgstr ""
 "(så som Konrad) vil næsten altid også være en leder."
 
 #. [topic]
-#: data/core/help.cfg:305
+#: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "Opsummering"
 
 #. [topic]
-#: data/core/help.cfg:306
+#: data/core/help.cfg:330
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1572,17 +1802,17 @@ msgstr ""
 "det sjovt og held og lykke!"
 
 #. [topic]
-#: data/core/help.cfg:311
+#: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr "Bidragydere"
 
 #. [topic]
-#: data/core/help.cfg:317
+#: data/core/help.cfg:341
 msgid "License"
 msgstr "Licens"
 
 #. [topic]
-#: data/core/help.cfg:325
+#: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1595,7 +1825,7 @@ msgstr ""
 "tilfældigt når en enhed rekrutteres."
 
 #. [topic]
-#: data/core/help.cfg:327
+#: data/core/help.cfg:352
 #, fuzzy
 msgid ""
 "\n"
@@ -1613,7 +1843,7 @@ msgstr ""
 "<ref>dst=traits_strong text=Strong</ref>."
 
 #. [topic]
-#: data/core/help.cfg:331
+#: data/core/help.cfg:356
 #, fuzzy
 msgid ""
 "\n"
@@ -1630,19 +1860,19 @@ msgstr ""
 "<ref>dst=traits_undead text=Undead</ref>.\n"
 
 #. [topic]
-#: data/core/help.cfg:336
+#: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "Intelligens"
 
 #. [topic]
-#: data/core/help.cfg:337
+#: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligente enheder skal bruge 20 % mindre erfaring end sædvanligt for at "
 "blive forfremmet."
 
 #. [topic]
-#: data/core/help.cfg:339
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -1661,18 +1891,18 @@ msgstr ""
 "eventuelt tilbagekalde enheder med mere egnede karaktertræk."
 
 #. [topic]
-#: data/core/help.cfg:344
+#: data/core/help.cfg:370
 msgid "Quick"
 msgstr "Hurtig"
 
 #. [topic]
-#: data/core/help.cfg:345
+#: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Hurtige enheder har 1 ekstra bevægelsespoint, men 5 % mindre liv end normalt."
 
 #. [topic]
-#: data/core/help.cfg:347
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -1693,17 +1923,17 @@ msgstr ""
 "derfor ikke nær så gode til at holde stillinger."
 
 #. [topic]
-#: data/core/help.cfg:352
+#: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "Ukuelig"
 
 #. [topic]
-#: data/core/help.cfg:353
+#: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "Ukuelige enheder har 4 liv og 1 liv ekstra per niveau end normalt."
 
 #. [topic]
-#: data/core/help.cfg:355
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -1722,12 +1952,12 @@ msgstr ""
 "til at holde strategiske positioner over for modstanderne."
 
 #. [topic]
-#: data/core/help.cfg:360
+#: data/core/help.cfg:386
 msgid "Strong"
 msgstr "Stærk"
 
 #. [topic]
-#: data/core/help.cfg:361
+#: data/core/help.cfg:387
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1736,7 +1966,7 @@ msgstr ""
 "liv mere."
 
 #. [topic]
-#: data/core/help.cfg:363
+#: data/core/help.cfg:389
 msgid ""
 "\n"
 "\n"
@@ -1753,24 +1983,24 @@ msgstr ""
 "for at gøre et angreb dødeligt."
 
 #. [topic]
-#: data/core/help.cfg:368
+#: data/core/help.cfg:394
 msgid "Fearless"
 msgstr "Frygløs"
 
 #. [topic]
-#: data/core/help.cfg:369
+#: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "Aversion mod lys eller mørke betyder ikke noget for disse modige individer."
 
 # kan også være trofast
 #. [topic]
-#: data/core/help.cfg:374
+#: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "Loyal"
 
 #. [topic]
-#: data/core/help.cfg:375
+#: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1781,7 +2011,7 @@ msgstr ""
 "Loyale enheder har ikke denne omkostning."
 
 #. [topic]
-#: data/core/help.cfg:377
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -1803,12 +2033,12 @@ msgstr ""
 "enheder eller at sende dem ud i en tåbelig død."
 
 #. [topic]
-#: data/core/help.cfg:382
+#: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "Udød"
 
 #. [topic]
-#: data/core/help.cfg:383
+#: data/core/help.cfg:409
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1817,7 +2047,7 @@ msgstr ""
 "på dem."
 
 #. [topic]
-#: data/core/help.cfg:385
+#: data/core/help.cfg:411
 msgid ""
 "\n"
 "\n"
@@ -1834,12 +2064,12 @@ msgstr ""
 "fjender som bruger gift i forbindelse med deres angreb."
 
 #. [topic]
-#: data/core/help.cfg:390
+#: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr "Mekaniske"
 
 #. [topic]
-#: data/core/help.cfg:391
+#: data/core/help.cfg:417
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1848,7 +2078,7 @@ msgstr ""
 "ikke på dem."
 
 #. [topic]
-#: data/core/help.cfg:393
+#: data/core/help.cfg:419
 msgid ""
 "\n"
 "\n"
@@ -1863,19 +2093,19 @@ msgstr ""
 "effekt på dem."
 
 #. [topic]
-#: data/core/help.cfg:398
+#: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "Behændig"
 
 #. [topic]
-#: data/core/help.cfg:399
+#: data/core/help.cfg:425
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Behændige enheder giver 1 mere i skade for hvert succesfuldt skud med en bue."
 
 #. [topic]
-#: data/core/help.cfg:401
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "\n"
@@ -1892,12 +2122,12 @@ msgstr ""
 "ekstra skadespoint med hver pil."
 
 #. [topic]
-#: data/core/help.cfg:406
+#: data/core/help.cfg:432
 msgid "Healthy"
 msgstr "Sund"
 
 #. [topic]
-#: data/core/help.cfg:407
+#: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1906,7 +2136,7 @@ msgstr ""
 "kan hvile selv når de er på farten."
 
 #. [topic]
-#: data/core/help.cfg:409
+#: data/core/help.cfg:435
 #, fuzzy
 msgid ""
 "\n"
@@ -1920,7 +2150,7 @@ msgstr ""
 "runde de ikke kæmper."
 
 #. [topic]
-#: data/core/help.cfg:417
+#: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit's defensive capability in combat.\n"
@@ -1931,12 +2161,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:423
+#: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:428
+#: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1955,12 +2185,12 @@ msgstr ""
 "De fleste enheder har på græseng et forsvar på 30-40 %."
 
 #. [topic]
-#: data/core/help.cfg:433
+#: data/core/help.cfg:462
 msgid "Road"
 msgstr "Vej"
 
 #. [topic]
-#: data/core/help.cfg:436
+#: data/core/help.cfg:465
 #, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1972,12 +2202,12 @@ msgstr ""
 "<ref>dst=terrain_grassland text=Græseng</ref>."
 
 #. [topic]
-#: data/core/help.cfg:441
+#: data/core/help.cfg:472
 msgid "Forest"
 msgstr "Skov"
 
 #. [topic]
-#: data/core/help.cfg:448
+#: data/core/help.cfg:479
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2010,12 +2240,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:453
+#: data/core/help.cfg:486
 msgid "Hills"
 msgstr "Bakker"
 
 #. [topic]
-#: data/core/help.cfg:458
+#: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2037,12 +2267,12 @@ msgstr ""
 "begrænset til 40 %. Dværge har 60 % forsvar i bakker."
 
 #. [topic]
-#: data/core/help.cfg:463
+#: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "Bjerge"
 
 #. [topic]
-#: data/core/help.cfg:468
+#: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2065,12 +2295,12 @@ msgstr ""
 "De fleste enheder har en 60 % forsvarsbonus i bjerge, mens dværge har 70 %."
 
 #. [topic]
-#: data/core/help.cfg:473
+#: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "Sump"
 
 #. [topic]
-#: data/core/help.cfg:478
+#: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2091,12 +2321,12 @@ msgstr ""
 "har alle normalt 60 %."
 
 #. [topic]
-#: data/core/help.cfg:483
+#: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "Lavt vand"
 
 #. [topic]
-#: data/core/help.cfg:488
+#: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2118,12 +2348,12 @@ msgstr ""
 "havmænd har 60 %."
 
 #. [topic]
-#: data/core/help.cfg:493
+#: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "Dybt vand"
 
 #. [topic]
-#: data/core/help.cfg:498
+#: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2139,12 +2369,12 @@ msgstr ""
 "bevægelse."
 
 #. [topic]
-#: data/core/help.cfg:503
+#: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:508
+#: data/core/help.cfg:551
 #, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
@@ -2161,12 +2391,12 @@ msgstr ""
 "De fleste enheder har 20 til 40 % forsvar i sne."
 
 #. [topic]
-#: data/core/help.cfg:513
+#: data/core/help.cfg:558
 msgid "Castle"
 msgstr "Borg"
 
 #. [topic]
-#: data/core/help.cfg:520
+#: data/core/help.cfg:565
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2189,12 +2419,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:525
+#: data/core/help.cfg:572
 msgid "Sand"
 msgstr "Sand"
 
 #. [topic]
-#: data/core/help.cfg:530
+#: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2209,12 +2439,12 @@ msgstr ""
 "De fleste enheder har 20-40 % forsvar i sand."
 
 #. [topic]
-#: data/core/help.cfg:535
+#: data/core/help.cfg:584
 msgid "Desert"
 msgstr "Ørken"
 
 #. [topic]
-#: data/core/help.cfg:538
+#: data/core/help.cfg:587
 #, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -2225,12 +2455,12 @@ msgstr ""
 "er de identiske. Se <ref>dst=terrain_sand text=Sand</ref>."
 
 #. [topic]
-#: data/core/help.cfg:543
+#: data/core/help.cfg:594
 msgid "Cave"
 msgstr "Hule"
 
 #. [topic]
-#: data/core/help.cfg:548
+#: data/core/help.cfg:599
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -2254,12 +2484,12 @@ msgstr ""
 "De fleste enheder har en 20-40 % forsvarsbonus i huler, mens dværge har 50 %."
 
 #. [topic]
-#: data/core/help.cfg:553
+#: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "Stenhule"
 
 #. [topic]
-#: data/core/help.cfg:558
+#: data/core/help.cfg:611
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2285,12 +2515,12 @@ msgstr ""
 "begrænset til 40 %. Dværge har 60 %."
 
 #. [topic]
-#: data/core/help.cfg:563
+#: data/core/help.cfg:618
 msgid "Illuminated Cave"
 msgstr "Oplyst hule"
 
 #. [topic]
-#: data/core/help.cfg:566
+#: data/core/help.cfg:621
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2303,12 +2533,12 @@ msgstr ""
 "opfører dette terræn sig på samme måde som normalt huleterræn."
 
 #. [topic]
-#: data/core/help.cfg:571
+#: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "Champignonskov"
 
 #. [topic]
-#: data/core/help.cfg:576
+#: data/core/help.cfg:633
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2332,12 +2562,12 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
-#: data/core/help.cfg:581 src/terrain.cpp:146
+#: data/core/help.cfg:640 src/terrain.cpp:146
 msgid "Village"
 msgstr "Landsby"
 
 #. [topic]
-#: data/core/help.cfg:588
+#: data/core/help.cfg:647
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2362,12 +2592,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:595
+#: data/core/help.cfg:656
 msgid "Submerged Village"
 msgstr "Undervandslandsby"
 
 #. [topic]
-#: data/core/help.cfg:600
+#: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2390,12 +2620,12 @@ msgstr ""
 "enheder normalt har en lav forsvarsevne."
 
 #. [topic]
-#: data/core/help.cfg:605
+#: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:608
+#: data/core/help.cfg:671
 #, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
@@ -2408,12 +2638,12 @@ msgstr ""
 "enheder som er i stand til at flyve forcere denne terræntype."
 
 #. [topic]
-#: data/core/help.cfg:613
+#: data/core/help.cfg:678
 msgid "Lava"
 msgstr "Lava"
 
 #. [topic]
-#: data/core/help.cfg:616
+#: data/core/help.cfg:681
 #, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
@@ -2431,12 +2661,12 @@ msgstr ""
 "kaotiske enhder."
 
 #. [topic]
-#: data/core/help.cfg:621
+#: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "Vadested"
 
 #. [topic]
-#: data/core/help.cfg:624
+#: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2452,12 +2682,12 @@ msgstr ""
 "defensive- og bevægelsesbonus."
 
 #. [topic]
-#: data/core/help.cfg:629
+#: data/core/help.cfg:698
 msgid "Bridge"
 msgstr "Bro"
 
 #. [topic]
-#: data/core/help.cfg:634
+#: data/core/help.cfg:703
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2483,13 +2713,13 @@ msgstr ""
 "landenhed ikke kan være på et brofelt på samme tid."
 
 #. [topic]
-#: data/core/help.cfg:639
+#: data/core/help.cfg:710
 #, fuzzy
 msgid "Impassable"
 msgstr "Ufremkommelig bjerg"
 
 #. [topic]
-#: data/core/help.cfg:642
+#: data/core/help.cfg:713
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2499,12 +2729,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:653
+#: data/core/help.cfg:726
 msgid "General commands"
 msgstr "Generelle kommandoer"
 
 #. [topic]
-#: data/core/help.cfg:658
+#: data/core/help.cfg:731
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2515,7 +2745,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:662
+#: data/core/help.cfg:735
 #, fuzzy
 msgid ""
 "\n"
@@ -2531,7 +2761,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:665
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2550,7 +2780,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:668
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2561,7 +2791,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:671
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2572,7 +2802,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:674
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2583,7 +2813,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:677
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -2594,7 +2824,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:680
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2605,7 +2835,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:683
+#: data/core/help.cfg:756
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2616,7 +2846,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:684
+#: data/core/help.cfg:757
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -2625,12 +2855,12 @@ msgstr ""
 "Gem spillet og forlad scenariet (uden prompt)."
 
 #. [topic]
-#: data/core/help.cfg:690
+#: data/core/help.cfg:765
 msgid "Multiplayer commands"
 msgstr "Flerspiller kommandoer"
 
 #. [topic]
-#: data/core/help.cfg:694
+#: data/core/help.cfg:769
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2642,7 +2872,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:697
+#: data/core/help.cfg:772
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2659,7 +2889,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:700
+#: data/core/help.cfg:775
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2674,7 +2904,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:703
+#: data/core/help.cfg:778
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2687,7 +2917,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:704
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -2696,12 +2926,12 @@ msgstr ""
 "Slå stilhed til/fra for alle observatører."
 
 #. [topic]
-#: data/core/help.cfg:709
+#: data/core/help.cfg:786
 msgid "Debug mode commands"
 msgstr "Fejlfindingskommandoer"
 
 #. [topic]
-#: data/core/help.cfg:713
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2712,7 +2942,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:716
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2723,7 +2953,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:719
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2735,7 +2965,7 @@ msgstr ""
 
 # A GameState is used to encapsulate a certain state of a game
 #. [topic]
-#: data/core/help.cfg:722
+#: data/core/help.cfg:799
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2746,7 +2976,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:725
+#: data/core/help.cfg:802
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2757,7 +2987,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:728
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2768,7 +2998,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:729
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3429,12 +3659,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "I dette øjeblik strømmer der gift igennem årene på denne enhed."
 
 #. [object]
-#: data/core/macros/items.cfg:294
+#: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "Vievand"
 
 #. [object]
-#: data/core/macros/items.cfg:297
+#: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
@@ -3443,86 +3673,86 @@ msgstr ""
 "afslutningen af det nuværende scenarie."
 
 #. [object]
-#: data/core/macros/items.cfg:298
+#: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Jeg kan ikke bruge denne ting! Lad en anden bruge den."
 
 #. [object]
-#: data/core/macros/items.cfg:333
+#: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "Styrkemikstur"
 
 #. [object]
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "Styrkes gives til den der drikker."
 
 #. [object]
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "Forrådnelsesmikstur"
 
 #. [object]
-#: data/core/macros/items.cfg:380
+#: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "Den stakkels enhed drak noget virkelig skidt."
 
 #. [object]
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "Livets ring"
 
 #. [object]
-#: data/core/macros/items.cfg:418
+#: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Denne ring vil helbrede bæreren en lille smule hver runde."
 
 #. [object]
-#: data/core/macros/items.cfg:455
+#: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "Sløvhedsring"
 
 #. [object]
-#: data/core/macros/items.cfg:458
+#: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "Bæreren af denne ring bliver sløvet."
 
 #. [object]
-#: data/core/macros/items.cfg:493
+#: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "Bevægelsesstav"
 
 #. [object]
-#: data/core/macros/items.cfg:496
+#: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "Denne stav vil give bæreren hurtig bevægelse."
 
 #. [object]
-#: data/core/macros/items.cfg:497
+#: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "Kun magiske væsner kan bruge sådan et objekt."
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Only the mermen can use this item!"
 msgstr "Kun havmænd kan bruge denne genstand!"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:518
+#: data/core/macros/items.cfg:514
 msgid "Storm Trident"
 msgstr "Stormtrefork"
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:517
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Denne trefork tillader en havmand at skyde elektriske lyn på sine fjender!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:521
 msgid "storm trident"
 msgstr "stormtrefork"
 
@@ -5049,34 +5279,44 @@ msgid "race^Elves"
 msgstr "Elver"
 
 #. [race]
-#: data/core/units.cfg:94
+#: data/core/units.cfg:100
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the latter’s "
 "unusually long life - most, unless claimed by illness, accident or war, live "
-"a full two centuries. While some elves possessing a high magical aptitude "
-"have been known to live an additional full century, most elves begin to grow "
-"physically frail approaching their twentieth decade and pass away within a "
-"few decades after. Elves are naturally imbued with magic to a small degree. "
-"Though most are unable to channel it directly, its latent presence gives "
-"them their keen senses and long life. Many elves have magic-driven talents "
-"such as marksmanship or stealth, allowing them to achieve tasks that most "
-"normal beings would find astonishing. Those elves that learn to wield this "
-"power in more general ways can become truly formidable in its use. Many "
-"choose to use their gift to heal others.\n"
+"a full two and a half centuries. While some elves possessing a high magical "
+"aptitude have been known to live an additional full century, most elves "
+"begin to grow physically frail at some point between 250 and 300 years of "
+"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"\n"
+"Elves are naturally imbued with magic to a small degree. Though most are "
+"unable to channel it directly, its latent presence gives them their keen "
+"senses and long life. Many elves have magic-driven talents such as "
+"marksmanship or stealth, allowing them to achieve tasks that most normal "
+"beings would find astonishing. Those elves that learn to wield this power in "
+"more general ways can become truly formidable in its use. Many choose to use "
+"their gift to heal others.\n"
+"\n"
+"A few elves, venturing far down the paths of magic and mysticism, become "
+"sensitive to the presence of cold iron and can even be burned by it. Elvish "
+"legend hints that this was more common in the far past.\n"
 "\n"
 "Elves spend much of their time honing their talents and skills. Those not "
 "adept at the magical arts typically devote their time honing their physical "
 "skills. As a result, elves excel at archery, which is perhaps their most "
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
-"unexplained affection for unspoiled nature. They often feel uncomfortable in "
-"open unvegetated spaces, which leads them to make their homes in the forests "
-"of the Great Continent, such as Aethenwood in the southwest and Wesmere in "
-"the northwest. Elves are the eldest race of the continent, with the possible "
-"exception of trolls. Many of their settlements cannot be reliably dated, "
-"undoubtedly having existed for over a millennium."
+"intense affection for unspoiled nature. They often feel uncomfortable in "
+"open unvegetated spaces. They live primarily in the forests of the Great "
+"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
+"the great northern woods of which the Lintanir Forest is the southernmost "
+"edge. \n"
+"\n"
+"Elves are the eldest race of the continent, with the possible exception of "
+"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
+"having existed for over a millennium."
 msgstr ""
 "Sammenlignet med mennesker er elver noget højere, mere behændige men mindre "
 "kraftige. De har spidse ører, lys hud og normalt blondt hår. Få forskelle "
@@ -5106,52 +5346,52 @@ msgstr ""
 "have værende eksisterende i mere end et årtusinde."
 
 #. [race]: description=
-#: data/core/units.cfg:103
+#: data/core/units.cfg:109
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: description=
-#: data/core/units.cfg:104
+#: data/core/units.cfg:110
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: description=
-#: data/core/units.cfg:105
+#: data/core/units.cfg:111
 msgid "race^Goblins"
 msgstr "Gobliner"
 
 #. [race]: description=
-#: data/core/units.cfg:117
+#: data/core/units.cfg:123
 msgid "race^Gryphon"
 msgstr "Grif"
 
 #. [race]: description=
-#: data/core/units.cfg:118
+#: data/core/units.cfg:124
 msgid "race+female^Gryphon"
 msgstr "Grif"
 
 #. [race]: description=
-#: data/core/units.cfg:119
+#: data/core/units.cfg:125
 msgid "race^Gryphons"
 msgstr "Griffer"
 
 #. [race]
-#: data/core/units.cfg:127
+#: data/core/units.cfg:133
 msgid "race^Human"
 msgstr "Menneske"
 
 #. [race]
-#: data/core/units.cfg:128
+#: data/core/units.cfg:134
 msgid "race+female^Human"
 msgstr "Menneske"
 
 #. [race]
-#: data/core/units.cfg:129
+#: data/core/units.cfg:135
 msgid "race^Humans"
 msgstr "Mennesker"
 
 #. [race]
-#: data/core/units.cfg:136
+#: data/core/units.cfg:142
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5230,105 +5470,106 @@ msgstr ""
 "hinanden."
 
 #. [race]: description=
-#: data/core/units.cfg:143
+#: data/core/units.cfg:149
 msgid "race^Saurian"
 msgstr "Øgle"
 
 #. [race]: description=
-#: data/core/units.cfg:144
+#: data/core/units.cfg:150
 msgid "race+female^Saurian"
 msgstr "Øgle"
 
 #. [race]: description=
-#: data/core/units.cfg:145
+#: data/core/units.cfg:151
 msgid "race^Saurians"
 msgstr "Øgler"
 
 #. [race]: description=
-#: data/core/units.cfg:154
+#: data/core/units.cfg:160
 msgid "race^Mechanical"
 msgstr "Mekanisk"
 
 #. [race]: description=
-#: data/core/units.cfg:155
+#: data/core/units.cfg:161
 msgid "race+plural^Mechanical"
 msgstr "Mekaniske"
 
 #. [race]: description=
-#: data/core/units.cfg:164
+#: data/core/units.cfg:170
 msgid "race^Merman"
 msgstr "Havmand"
 
 #. [race]: description=
-#: data/core/units.cfg:165
+#: data/core/units.cfg:171
 msgid "race^Mermaid"
 msgstr "Havfrue"
 
 #. [race]: description=
-#: data/core/units.cfg:166
+#: data/core/units.cfg:172
 msgid "race^Mermen"
 msgstr "Havmænd"
 
 #. [race]: description=
-#: data/core/units.cfg:174
+#: data/core/units.cfg:180
 msgid "race^Monster"
 msgstr "Monster"
 
 #. [race]: description=
-#: data/core/units.cfg:175
+#: data/core/units.cfg:181
 msgid "race^Monsters"
 msgstr "Monstre"
 
 #. [race]: description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:188
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:189
 msgid "race^Nagani"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:184
+#: data/core/units.cfg:190
 msgid "race^Nagas"
 msgstr "Nagaer"
 
 #. [race]: description=
-#: data/core/units.cfg:192
+#: data/core/units.cfg:198
 msgid "race^Ogre"
 msgstr "Ogretrold"
 
 #. [race]: description=
-#: data/core/units.cfg:193
+#: data/core/units.cfg:199
 msgid "race+female^Ogre"
 msgstr "Ogretrold"
 
 #. [race]: description=
-#: data/core/units.cfg:194
+#: data/core/units.cfg:200
 msgid "race^Ogres"
 msgstr "Ogretrolde"
 
 #. [race]
-#: data/core/units.cfg:202
+#: data/core/units.cfg:208
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]
-#: data/core/units.cfg:203
+#: data/core/units.cfg:209
 msgid "race+female^Orc"
 msgstr "Ork"
 
 #. [race]
-#: data/core/units.cfg:204
+#: data/core/units.cfg:210
 msgid "race^Orcs"
 msgstr "Orker"
 
 #. [race]
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
+#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans.  They are warlike, savage, and cruel by nature. "
+"and stronger than humans. They are warlike, savage, and cruel by nature. "
 "Their blood is darker and thicker than that of normal humans and they have "
 "little care for personal hygiene or their personal appearance. Although Orcs "
 "are violent even among themselves creatures, they are pack-oriented; an orc "
@@ -5438,22 +5679,23 @@ msgstr ""
 "specialisere sig indenfor andre våbenarter, såsom buen eller snigmord."
 
 #. [race]
-#: data/core/units.cfg:221
+#: data/core/units.cfg:227
 msgid "race^Troll"
 msgstr "Trold"
 
 #. [race]
-#: data/core/units.cfg:222
+#: data/core/units.cfg:228
 msgid "race+female^Troll"
 msgstr "Trold"
 
 #. [race]
-#: data/core/units.cfg:223
+#: data/core/units.cfg:229
 msgid "race^Trolls"
 msgstr "Trolde"
 
 #. [race]
-#: data/core/units.cfg:229
+#: data/core/units.cfg:235
+#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5473,8 +5715,8 @@ msgid ""
 "their home cave. This is until they finally pass away as their bodies "
 "themselves slowly turn into lifeless statues of stone.\n"
 "\n"
-"Trolls are seen by many as being little more than a yet another race of "
-"savage monsters. This common misconception is in part perpetuated by orcs to "
+"Trolls are seen by many as being little more than yet another race of savage "
+"monsters. This common misconception is in part perpetuated by orcs to "
 "persuade trolls to join their armies. Because they are rather simple and do "
 "not understand the ways of other races or sometimes can even tell them "
 "apart, it is usually easy for an orcish band to convince a group of trolls "
@@ -5526,22 +5768,22 @@ msgstr ""
 "Wesnoth, og hvor orkgrupper kan ses rejse omkring."
 
 #. [race]
-#: data/core/units.cfg:241
+#: data/core/units.cfg:247
 msgid "race^Undead"
 msgstr "Udød"
 
 #. [race]
-#: data/core/units.cfg:242
+#: data/core/units.cfg:248
 msgid "race+female^Undead"
 msgstr "Udød"
 
 #. [race]
-#: data/core/units.cfg:243
+#: data/core/units.cfg:249
 msgid "race+plural^Undead"
 msgstr "Udøde"
 
 #. [race]
-#: data/core/units.cfg:249
+#: data/core/units.cfg:255
 #, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -5592,24 +5834,24 @@ msgstr ""
 "var de ikke fuldstændig ukendte af elver og dværge før dette tidspunkt."
 
 #. [race]: description=
-#: data/core/units.cfg:257
+#: data/core/units.cfg:263
 #, fuzzy
 msgid "race^Wolf"
 msgstr "Elv"
 
 #. [race]: description=
-#: data/core/units.cfg:258
+#: data/core/units.cfg:264
 #, fuzzy
 msgid "race^Wolves"
 msgstr "Elver"
 
 #. [race]: description=
-#: data/core/units.cfg:266
+#: data/core/units.cfg:272
 msgid "race^Wose"
 msgstr "Træsjæl"
 
 #. [race]: description=
-#: data/core/units.cfg:267
+#: data/core/units.cfg:273
 msgid "race^Woses"
 msgstr "Træsjæle"
 
@@ -6421,16 +6663,6 @@ msgstr ""
 "en flod kan tildele store tab. Elver kan bruge kanten af en skov på en "
 "lignende måde, og dværge kan gøre det samme med bjerge."
 
-#. [object]
-#: data/scenario-test.cfg:250
-msgid "Anti-Warlord Weaponry activated!"
-msgstr ""
-
-#. [object]
-#: data/scenario-test.cfg:273 data/scenario-test.cfg:290
-msgid "Anti-Warlord Weaponry deactivated."
-msgstr ""
-
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
@@ -6460,8 +6692,8 @@ msgstr "Afslut scenarie"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
-#: src/unit.cpp:2826
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2623
+#: src/unit.cpp:2797
 msgid "HP"
 msgstr "L"
 
@@ -6769,7 +7001,7 @@ msgid "Do you still want to download it?"
 msgstr "Vil du stadig hente den?"
 
 #: src/addon_management.cpp:471 src/addon_management.cpp:545
-#: src/multiplayer.cpp:337 src/multiplayer_ui.cpp:73
+#: src/multiplayer.cpp:343 src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "Forbindelsen afbrudt"
 
@@ -7020,7 +7252,7 @@ msgstr "Udvidelsesmodul slettet"
 msgid "Add-on could not be deleted properly:"
 msgstr "Udvidelsesmodul ikke ikke slettes -- en fil blev ikke fundet."
 
-#: src/ai.cpp:1650
+#: src/ai.cpp:1655
 msgid "Unknown unit type : "
 msgstr "Ukendt enhedstype : "
 
@@ -8925,19 +9157,19 @@ msgstr "Navn:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ukendt scenarie: '$scenario|'"
 
-#: src/playmp_controller.cpp:197
-msgid "Undoing moves not yet transmited to server."
+#: src/playmp_controller.cpp:205
+msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:277
+#: src/playmp_controller.cpp:285
 msgid "End scenario"
 msgstr "Afslut scenarie"
 
-#: src/playmp_controller.cpp:381
+#: src/playmp_controller.cpp:389
 msgid "Waiting for next scenario..."
 msgstr "Afventer næste scenarie..."
 
-#: src/playmp_controller.cpp:505
+#: src/playmp_controller.cpp:513
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -9048,7 +9280,7 @@ msgstr ""
 "En netværksfejl er opstået og spillet kan ikke fortsættes. Ønsker du at "
 "gemme spillet?"
 
-#: src/playsingle_controller.cpp:646
+#: src/playsingle_controller.cpp:652
 msgid "It is now $name|'s turn"
 msgstr "Det er nu $name|s runde"
 
@@ -9328,31 +9560,31 @@ msgstr "Ukendt enhedstype '$type|'"
 msgid "Unknown unit type '$type|'"
 msgstr "Ukendt enhedstype '$type|'"
 
-#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
+#: src/unit.cpp:2580 src/unit.cpp:2785 src/unit.cpp:2841
 msgid " and "
 msgstr " og "
 
-#: src/unit.cpp:2620
+#: src/unit.cpp:2591
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2656
 msgid "moves"
 msgstr "bevægelser"
 
-#: src/unit.cpp:2703 src/unit.cpp:2841
+#: src/unit.cpp:2674 src/unit.cpp:2812
 msgid "XP to advance"
 msgstr "Erfaring til forfremmelse"
 
-#: src/unit.cpp:2833
+#: src/unit.cpp:2804
 msgid " move"
 msgstr " bevægelse"
 
-#: src/unit.cpp:2849
+#: src/unit.cpp:2820
 msgid "$effect_description per level"
 msgstr "$effect_description per niveau"
 
-#: src/unit.cpp:2879
+#: src/unit.cpp:2850
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9537,9 +9769,6 @@ msgstr "Slå sending af resumer til"
 #, fuzzy
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr "Vær vært for et spil uden at bruge en server"
-
-#~ msgid "Local Game"
-#~ msgstr "Lokalt spil"
 
 #~ msgid ""
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"

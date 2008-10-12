@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-07 16:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:33+0200\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -61,6 +61,230 @@ msgstr ""
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
 msgstr "подземље"
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:29
+#, fuzzy
+msgid "define ai location"
+msgstr "Индонежански превод"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:35
+#, fuzzy
+msgid "Location name?"
+msgstr "Локална игра"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:45
+msgid "Range in Hexfields?"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:59
+msgid "enable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:73
+msgid "disable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:87
+#, fuzzy
+msgid "Give new orders"
+msgstr "Одустани"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:131
+msgid "Command $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:161
+msgid "Which ally should i command?"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:228
+msgid "How important is this command?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:232
+msgid "It is very important.(value 90)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:239
+msgid "It is important.(value 50)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:246
+msgid "It is not so important.(value 25)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:253
+msgid "It has the importance ..."
+msgstr ""
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:259
+#, fuzzy
+msgid "value: "
+msgstr "Име: "
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:327
+msgid ""
+"Which kind of order do you want me to obey?\n"
+"@$ai_controller.current_orders"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:338
+msgid "#I revoke all your commands!"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:383
+#, fuzzy
+msgid "Defeat an enemy Leader!"
+msgstr ""
+"победа:\n"
+"@Поразиш ли противничке вође"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:392
+msgid "Defeat $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:415
+msgid "I am already attacking $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:430
+msgid "Which enemy Leaders do you want me to defeat?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:440
+msgid "Protect an allied leader!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:447
+msgid "Protect $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:471
+msgid "I am already protecting $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:498
+msgid "Which allied leader should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:509
+msgid "Defend a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:517
+msgid "Defend the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:540
+msgid "I am allready defending $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:557
+msgid "Which location should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:568
+msgid "Go to a location!(only the leader)"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:576
+msgid "Goto the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:597
+msgid "I am allready going to $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:611
+msgid "To which location shall i move?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:622
+msgid "Avoid a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:630
+msgid "Avoid the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:651
+msgid ""
+"I am allready ordered to avoid $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:664
+msgid "Which location shall i avoid?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:732
+msgid "Send your army to a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:740
+msgid "Move to the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:784
+msgid ""
+"I am allready ordered to send all men to $ai_controller.locations[$location]."
+"name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:793
+msgid "Which location shall i send my men to?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:810
+msgid ""
+"@I don't want to be in command any more! Take care of yourselves! (Disables "
+"AI_CONTROLLER)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:824
+msgid "@Execute my orders!"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -403,7 +627,13 @@ msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсијски (јужнокаталонски) превод"
 
 #. [about]
-#: data/core/about.cfg:1996
+#: data/core/about.cfg:1993
+#, fuzzy
+msgid "RACV's Translation"
+msgstr "Кинески превод"
+
+#. [about]
+#: data/core/about.cfg:2000
 msgid "Bots"
 msgstr "Ботови"
 
@@ -420,14 +650,14 @@ msgstr "Увод"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:27 data/core/help.cfg:126
+#: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "Играње"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]
 #. [topic]
-#: data/core/help.cfg:33 data/core/help.cfg:323 src/menu_events.cpp:997
+#: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:997
 msgid "Traits"
 msgstr "Особине"
 
@@ -450,13 +680,13 @@ msgstr "Својства оружја"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:67 data/core/help.cfg:414
+#: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "Терен"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:74 data/core/help.cfg:647
+#: data/core/help.cfg:74 data/core/help.cfg:720
 msgid "Commands"
 msgstr "Наредбе"
 
@@ -489,12 +719,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:110
+#: data/core/help.cfg:111
 msgid "Unknown Unit"
 msgstr "непозната јединица"
 
 #. [topic]
-#: data/core/help.cfg:113
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -507,12 +737,12 @@ msgstr ""
 "допуштено да видите њен опис."
 
 #. [topic]
-#: data/core/help.cfg:118
+#: data/core/help.cfg:119
 msgid "Overview"
 msgstr "Преглед"
 
 #. [topic]
-#: data/core/help.cfg:121
+#: data/core/help.cfg:122
 msgid ""
 "\n"
 "\n"
@@ -531,12 +761,12 @@ msgstr ""
 "је игру лако научити, али изазовно њоме загосподарити."
 
 #. [topic]
-#: data/core/help.cfg:132
+#: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "Темељи играња"
 
 #. [topic]
-#: data/core/help.cfg:133
+#: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -551,7 +781,7 @@ msgstr ""
 "околностима и изузецима, можете испратити убачене везе."
 
 #. [topic]
-#: data/core/help.cfg:135
+#: data/core/help.cfg:137
 msgid ""
 "\n"
 "\n"
@@ -572,7 +802,7 @@ msgstr ""
 "врло изазован, можете се одлучити да почнете од <italic>text=лаког</italic>."
 
 #. [topic]
-#: data/core/help.cfg:138
+#: data/core/help.cfg:140
 #, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -587,12 +817,12 @@ msgstr ""
 "<ref>dst=abilities text=способностима</ref>."
 
 #. [topic]
-#: data/core/help.cfg:143
+#: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "О игри"
 
 #. [topic]
-#: data/core/help.cfg:144
+#: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -610,7 +840,7 @@ msgstr ""
 "Интернетом, можете играти са људима широм света."
 
 #. [topic]
-#: data/core/help.cfg:146
+#: data/core/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -627,12 +857,12 @@ msgstr ""
 "сценаријима."
 
 #. [topic]
-#: data/core/help.cfg:151
+#: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr "Победа и пораз"
 
 #. [topic]
-#: data/core/help.cfg:152
+#: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -649,7 +879,7 @@ msgstr ""
 "потеза, итд."
 
 #. [topic]
-#: data/core/help.cfg:154
+#: data/core/help.cfg:157
 msgid ""
 "\n"
 "\n"
@@ -666,12 +896,12 @@ msgstr ""
 "саиграчима."
 
 #. [topic]
-#: data/core/help.cfg:159
+#: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "Унајмљивање и сазивање"
 
 #. [topic]
-#: data/core/help.cfg:160
+#: data/core/help.cfg:165
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -696,7 +926,7 @@ msgstr ""
 "„Унајми“ да је унајмите."
 
 #. [topic]
-#: data/core/help.cfg:162
+#: data/core/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -714,7 +944,7 @@ msgstr ""
 "тренутно на располагању."
 
 #. [topic]
-#: data/core/help.cfg:164
+#: data/core/help.cfg:169
 #, fuzzy
 msgid ""
 "\n"
@@ -728,7 +958,7 @@ msgstr ""
 "text=особине</ref>, које утичу на њихове карактеристике."
 
 #. [topic]
-#: data/core/help.cfg:166
+#: data/core/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -743,7 +973,7 @@ msgstr ""
 "преживеле из претходних сценарија."
 
 #. [topic]
-#: data/core/help.cfg:168
+#: data/core/help.cfg:173
 #, fuzzy
 msgid ""
 "\n"
@@ -759,12 +989,12 @@ msgstr ""
 "и издаци'</ref> за више детаља."
 
 #. [topic]
-#: data/core/help.cfg:173
+#: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "Куглице"
 
 #. [topic]
-#: data/core/help.cfg:174
+#: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -773,37 +1003,37 @@ msgstr ""
 "јединице под вашом контролом, куглица је:"
 
 #. [topic]
-#: data/core/help.cfg:175
+#: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "зелена, ако се јединица није померила у току потеза,"
 
 #. [topic]
-#: data/core/help.cfg:176
+#: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "жута, ако се јесте померила, али се још може кретати или напасти, и"
 
 #. [topic]
-#: data/core/help.cfg:177
+#: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "црвена, ако је истрошила сву покретљивост за овај потез."
 
 #. [topic]
-#: data/core/help.cfg:178
+#: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Куглица је плава ако је јединица савезник, којег не контролишете."
 
 #. [topic]
-#: data/core/help.cfg:179
+#: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Непријатељске јединице немају овакве куглице."
 
 #. [topic]
-#: data/core/help.cfg:184
+#: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "Ударпоени и искуство"
 
 #. [topic]
-#: data/core/help.cfg:185
+#: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -815,7 +1045,7 @@ msgstr ""
 "почињу без искуства, и добијају га у борби против непријатеља."
 
 #. [topic]
-#: data/core/help.cfg:189
+#: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -825,7 +1055,7 @@ msgstr ""
 "текуће вредности, и максимума који јединица може имати."
 
 #. [topic]
-#: data/core/help.cfg:190
+#: data/core/help.cfg:199
 #, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -839,12 +1069,12 @@ msgstr ""
 "<ref>dst=experience_and_advancement text=напредовању</ref>."
 
 #. [topic]
-#: data/core/help.cfg:195
+#: data/core/help.cfg:206
 msgid "Movement"
 msgstr "Кретање"
 
 #. [topic]
-#: data/core/help.cfg:196
+#: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -873,7 +1103,7 @@ msgstr ""
 "покретљивост, али ће јединица и даље моћи да нападне."
 
 #. [topic]
-#: data/core/help.cfg:198
+#: data/core/help.cfg:209
 msgid ""
 "\n"
 "\n"
@@ -899,7 +1129,7 @@ msgstr ""
 "модификаторе'</italic>."
 
 #. [topic]
-#: data/core/help.cfg:200
+#: data/core/help.cfg:211
 #, fuzzy
 msgid ""
 "\n"
@@ -921,7 +1151,7 @@ msgstr ""
 "text='чаркаши'</ref> могу игнорисати надзорне појасеве."
 
 #. [topic]
-#: data/core/help.cfg:202
+#: data/core/help.cfg:213
 msgid ""
 "\n"
 "\n"
@@ -936,12 +1166,12 @@ msgstr ""
 "могао померити када на мапи не би било ваших јединица да их блокирају."
 
 #. [topic]
-#: data/core/help.cfg:207
+#: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "Покров и магла рата"
 
 #. [topic]
-#: data/core/help.cfg:210
+#: data/core/help.cfg:223
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -982,12 +1212,12 @@ msgstr ""
 "очувати могућност опозива."
 
 #. [topic]
-#: data/core/help.cfg:215
+#: data/core/help.cfg:230
 msgid "Combat"
 msgstr "Борба"
 
 #. [topic]
-#: data/core/help.cfg:216
+#: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -1008,7 +1238,7 @@ msgstr ""
 "одступни, обично путем лукова, копаља или ватрокугли."
 
 #. [topic]
-#: data/core/help.cfg:218
+#: data/core/help.cfg:233
 msgid ""
 "\n"
 "\n"
@@ -1019,7 +1249,7 @@ msgstr ""
 "<header>text='Редослед и број удара'</header>"
 
 #. [topic]
-#: data/core/help.cfg:220
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1041,7 +1271,7 @@ msgstr ""
 "само двапут, али наносећи 9 штете при поготку."
 
 #. [topic]
-#: data/core/help.cfg:222
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "\n"
@@ -1052,7 +1282,7 @@ msgstr ""
 "<header>text='Изгледи за погодак'</header>"
 
 #. [topic]
-#: data/core/help.cfg:224
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -1075,7 +1305,7 @@ msgstr ""
 "нападач налази."
 
 #. [topic]
-#: data/core/help.cfg:226
+#: data/core/help.cfg:241
 #, fuzzy
 msgid ""
 "\n"
@@ -1094,7 +1324,7 @@ msgstr ""
 "а оштрооки, када се користе офанзивно, бар 60%."
 
 #. [topic]
-#: data/core/help.cfg:228
+#: data/core/help.cfg:243
 msgid ""
 "\n"
 "\n"
@@ -1105,7 +1335,7 @@ msgstr ""
 "<header>text=Штета</header>"
 
 #. [topic]
-#: data/core/help.cfg:230
+#: data/core/help.cfg:245
 #, fuzzy
 msgid ""
 "\n"
@@ -1128,7 +1358,7 @@ msgstr ""
 "погледајте <italic>text='Рачунање штете'</italic>."
 
 #. [topic]
-#: data/core/help.cfg:232
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -1146,12 +1376,12 @@ msgstr ""
 "нападач, али и оно које наноси бранилац."
 
 #. [topic]
-#: data/core/help.cfg:237
+#: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "Видови штете и отпорности"
 
 #. [topic]
-#: data/core/help.cfg:238
+#: data/core/help.cfg:254
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1166,7 +1396,7 @@ msgstr ""
 "нанети."
 
 #. [topic]
-#: data/core/help.cfg:240
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1185,7 +1415,7 @@ msgstr ""
 "погођена таквим нападом."
 
 #. [topic]
-#: data/core/help.cfg:242
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1199,7 +1429,7 @@ msgstr ""
 "рањиви на удар и ватру, и изузетно рањиви на волшебну штету."
 
 #. [topic]
-#: data/core/help.cfg:244
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1213,12 +1443,12 @@ msgstr ""
 "важи чак и када је бранилац 100% отпоран на неки вид штете."
 
 #. [topic]
-#: data/core/help.cfg:249
+#: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "Доба дана"
 
 #. [topic]
-#: data/core/help.cfg:253
+#: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1231,7 +1461,7 @@ msgstr ""
 "- неутралне јединице нису под утицајем доба дана."
 
 #. [topic]
-#: data/core/help.cfg:256
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1247,42 +1477,42 @@ msgstr ""
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
+#: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "зора"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:257 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "јутро"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:258 data/core/macros/schedules.cfg:29
+#: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "поподне"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:259 data/core/macros/schedules.cfg:39
+#: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "сумрак"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:260 data/core/macros/schedules.cfg:51
+#: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "прва стража"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:261 data/core/macros/schedules.cfg:64
+#: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "друга стража"
 
 #. [topic]
-#: data/core/help.cfg:263
+#: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1291,12 +1521,12 @@ msgstr ""
 "тама!"
 
 #. [topic]
-#: data/core/help.cfg:268
+#: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "Искуство и напредовање"
 
 #. [topic]
-#: data/core/help.cfg:269
+#: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1309,7 +1539,7 @@ msgstr ""
 "за ниво 1, 16 за ниво 2, 24 за ниво 3, и тако даље."
 
 #. [topic]
-#: data/core/help.cfg:271
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1326,7 +1556,7 @@ msgstr ""
 "случајевима, даће вам се да изаберете правац напредовања."
 
 #. [topic]
-#: data/core/help.cfg:273
+#: data/core/help.cfg:292
 #, fuzzy
 msgid ""
 "\n"
@@ -1354,12 +1584,12 @@ msgstr ""
 "тако да је обично корисније да радите на унапређењу јединица нижег нивоа."
 
 #. [topic]
-#: data/core/help.cfg:278
+#: data/core/help.cfg:299
 msgid "Healing"
 msgstr "Лечење"
 
 #. [topic]
-#: data/core/help.cfg:279
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1376,7 +1606,7 @@ msgstr ""
 "преузмете команду."
 
 #. [topic]
-#: data/core/help.cfg:281
+#: data/core/help.cfg:302
 #, fuzzy
 msgid ""
 "\n"
@@ -1390,7 +1620,7 @@ msgstr ""
 "у току потеза, повратиће 2 УП на почетку следећег потеза."
 
 #. [topic]
-#: data/core/help.cfg:282
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1399,7 +1629,7 @@ msgstr ""
 "Села: Јединица која почетак потеза дочека у селу попуниће 8 УП."
 
 #. [topic]
-#: data/core/help.cfg:283
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "\n"
@@ -1411,7 +1641,7 @@ msgstr ""
 "тролови) аутоматски добијају 8 УП у сваком потезу."
 
 #. [topic]
-#: data/core/help.cfg:284
+#: data/core/help.cfg:305
 #, fuzzy
 msgid ""
 "\n"
@@ -1426,7 +1656,7 @@ msgstr ""
 "потезу, или спречавати отров да оштети отровану јединицу."
 
 #. [topic]
-#: data/core/help.cfg:285
+#: data/core/help.cfg:306
 #, fuzzy
 msgid ""
 "\n"
@@ -1440,7 +1670,7 @@ msgstr ""
 "(као приоритетно над лечењем, ако јединица има и ту способност)."
 
 #. [topic]
-#: data/core/help.cfg:287
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1455,12 +1685,12 @@ msgstr ""
 "опција. Коначно, јединице бивају потпуно излечене између сценарија."
 
 #. [topic]
-#: data/core/help.cfg:292
+#: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "Приход и издаци"
 
 #. [topic]
-#: data/core/help.cfg:293
+#: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1472,7 +1702,7 @@ msgstr ""
 "из сценарија у сценарио. Ово је медаља са две стране: приход и издаци."
 
 #. [topic]
-#: data/core/help.cfg:295
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -1489,7 +1719,7 @@ msgstr ""
 "одузимају се издаци, како је наведено испод."
 
 #. [topic]
-#: data/core/help.cfg:297
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -1510,7 +1740,7 @@ msgstr ""
 "по потезу."
 
 #. [topic]
-#: data/core/help.cfg:299
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -1524,7 +1754,7 @@ msgstr ""
 "10 села, нето приход би био 10 златника по потезу."
 
 #. [topic]
-#: data/core/help.cfg:300
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1543,12 +1773,12 @@ msgstr ""
 "лично представља (нпр. Конрад) готово увек је вођ."
 
 #. [topic]
-#: data/core/help.cfg:305
+#: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "Да заокружимо"
 
 #. [topic]
-#: data/core/help.cfg:306
+#: data/core/help.cfg:330
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1563,17 +1793,17 @@ msgstr ""
 "неопходно да заиграте поход „Наследник престола“. Забавите се, и срећно!"
 
 #. [topic]
-#: data/core/help.cfg:311
+#: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr "Доприносиоци"
 
 #. [topic]
-#: data/core/help.cfg:317
+#: data/core/help.cfg:341
 msgid "License"
 msgstr "Услови коришћења"
 
 #. [topic]
-#: data/core/help.cfg:325
+#: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1586,7 +1816,7 @@ msgstr ""
 "унајмљивању јединице."
 
 #. [topic]
-#: data/core/help.cfg:327
+#: data/core/help.cfg:352
 #, fuzzy
 msgid ""
 "\n"
@@ -1604,7 +1834,7 @@ msgstr ""
 "text=кршност</ref>."
 
 #. [topic]
-#: data/core/help.cfg:331
+#: data/core/help.cfg:356
 #, fuzzy
 msgid ""
 "\n"
@@ -1622,19 +1852,19 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:336
+#: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "оштроумност"
 
 #. [topic]
-#: data/core/help.cfg:337
+#: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Оштроумним јединицама потребно је 20% мање искуства него обично да би "
 "напредовале."
 
 #. [topic]
-#: data/core/help.cfg:339
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -1653,18 +1883,18 @@ msgstr ""
 "вам је боље сазивати јединице са пожељнијим особинама."
 
 #. [topic]
-#: data/core/help.cfg:344
+#: data/core/help.cfg:370
 msgid "Quick"
 msgstr "хитрост"
 
 #. [topic]
-#: data/core/help.cfg:345
+#: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Хитре јединице имају 1 додатан поен на кретање, али 5% мање УП него обично."
 
 #. [topic]
-#: data/core/help.cfg:347
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -1684,17 +1914,17 @@ msgstr ""
 "хитрости, и стога су мање погодне за држање положајâ под сталним нападом."
 
 #. [topic]
-#: data/core/help.cfg:352
+#: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "жилавост"
 
 #. [topic]
-#: data/core/help.cfg:353
+#: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "Жилаве јединице имају 4 УП плус 1 УП по нивоу више него обично."
 
 #. [topic]
-#: data/core/help.cfg:355
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -1713,12 +1943,12 @@ msgstr ""
 "положаја ван руку противника."
 
 #. [topic]
-#: data/core/help.cfg:360
+#: data/core/help.cfg:386
 msgid "Strong"
 msgstr "кршност"
 
 #. [topic]
-#: data/core/help.cfg:361
+#: data/core/help.cfg:387
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1727,7 +1957,7 @@ msgstr ""
 "и имају 1 УП више."
 
 #. [topic]
-#: data/core/help.cfg:363
+#: data/core/help.cfg:389
 msgid ""
 "\n"
 "\n"
@@ -1744,23 +1974,23 @@ msgstr ""
 "штете потребно да се оштећујући удар претвори у завршни."
 
 #. [topic]
-#: data/core/help.cfg:368
+#: data/core/help.cfg:394
 msgid "Fearless"
 msgstr "неустрашивост"
 
 #. [topic]
-#: data/core/help.cfg:369
+#: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "Несклоност било светлу било тами, нема утицаја на ове храбре појединце."
 
 #. [topic]
-#: data/core/help.cfg:374
+#: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "оданост"
 
 #. [topic]
-#: data/core/help.cfg:375
+#: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1770,7 +2000,7 @@ msgstr ""
 "потеза, бројевно једнаке њиховом нивоу. Одане јединице немају таквих захтева."
 
 #. [topic]
-#: data/core/help.cfg:377
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -1791,12 +2021,12 @@ msgstr ""
 "отпуштати одане јединице, или их слати у бесмислену смрт."
 
 #. [topic]
-#: data/core/help.cfg:382
+#: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "немртвост"
 
 #. [topic]
-#: data/core/help.cfg:383
+#: data/core/help.cfg:409
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1805,7 +2035,7 @@ msgstr ""
 "њих."
 
 #. [topic]
-#: data/core/help.cfg:385
+#: data/core/help.cfg:411
 msgid ""
 "\n"
 "\n"
@@ -1822,12 +2052,12 @@ msgstr ""
 "противницима који своје нападе подржавају отровима."
 
 #. [topic]
-#: data/core/help.cfg:390
+#: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr "механичност"
 
 #. [topic]
-#: data/core/help.cfg:391
+#: data/core/help.cfg:417
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1836,7 +2066,7 @@ msgstr ""
 "њих."
 
 #. [topic]
-#: data/core/help.cfg:393
+#: data/core/help.cfg:419
 msgid ""
 "\n"
 "\n"
@@ -1850,12 +2080,12 @@ msgstr ""
 "нису збиља живе, црпљење, отров и куга не утичу на њих."
 
 #. [topic]
-#: data/core/help.cfg:398
+#: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "спретност"
 
 #. [topic]
-#: data/core/help.cfg:399
+#: data/core/help.cfg:425
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
@@ -1863,7 +2093,7 @@ msgstr ""
 "одступној борби."
 
 #. [topic]
-#: data/core/help.cfg:401
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "\n"
@@ -1880,12 +2110,12 @@ msgstr ""
 "Такви вилењаци наносе додатан поен штете сваком својом стрелом."
 
 #. [topic]
-#: data/core/help.cfg:406
+#: data/core/help.cfg:432
 msgid "Healthy"
 msgstr "здравље"
 
 #. [topic]
-#: data/core/help.cfg:407
+#: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1894,7 +2124,7 @@ msgstr ""
 "одмарати чак и док путују."
 
 #. [topic]
-#: data/core/help.cfg:409
+#: data/core/help.cfg:435
 #, fuzzy
 msgid ""
 "\n"
@@ -1908,7 +2138,7 @@ msgstr ""
 "додатна ударпоена после сваког потеза у коме се нису бориле."
 
 #. [topic]
-#: data/core/help.cfg:417
+#: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit's defensive capability in combat.\n"
@@ -1919,12 +2149,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:423
+#: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:428
+#: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1942,12 +2172,12 @@ msgstr ""
 "Већина јединица има одбрану од 30 до 40% у равници."
 
 #. [topic]
-#: data/core/help.cfg:433
+#: data/core/help.cfg:462
 msgid "Road"
 msgstr "друм"
 
 #. [topic]
-#: data/core/help.cfg:436
+#: data/core/help.cfg:465
 #, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1959,12 +2189,12 @@ msgstr ""
 "text=равница</ref>."
 
 #. [topic]
-#: data/core/help.cfg:441
+#: data/core/help.cfg:472
 msgid "Forest"
 msgstr "шума"
 
 #. [topic]
-#: data/core/help.cfg:448
+#: data/core/help.cfg:479
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1997,12 +2227,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:453
+#: data/core/help.cfg:486
 msgid "Hills"
 msgstr "брда"
 
 #. [topic]
-#: data/core/help.cfg:458
+#: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2024,12 +2254,12 @@ msgstr ""
 "40%. Патуљци уживају чак 60% заштите у брдима."
 
 #. [topic]
-#: data/core/help.cfg:463
+#: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "планине"
 
 #. [topic]
-#: data/core/help.cfg:468
+#: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2051,12 +2281,12 @@ msgstr ""
 "Већина јединица има око 60% заштите у планини, а патуљци уживају 70%."
 
 #. [topic]
-#: data/core/help.cfg:473
+#: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "мочвара"
 
 #. [topic]
-#: data/core/help.cfg:478
+#: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2076,12 +2306,12 @@ msgstr ""
 "морејци, нагајци и сауријанци уживају чак 60%."
 
 #. [topic]
-#: data/core/help.cfg:483
+#: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "плитка вода"
 
 #. [topic]
-#: data/core/help.cfg:488
+#: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2103,12 +2333,12 @@ msgstr ""
 "морејци уживају 60%"
 
 #. [topic]
-#: data/core/help.cfg:493
+#: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "дубока вода"
 
 #. [topic]
-#: data/core/help.cfg:498
+#: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2123,12 +2353,12 @@ msgstr ""
 "И морејци и нагајци имају 50% заштите у дубокој води, уз пуну покретљивост."
 
 #. [topic]
-#: data/core/help.cfg:503
+#: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:508
+#: data/core/help.cfg:551
 #, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
@@ -2145,12 +2375,12 @@ msgstr ""
 "Већина јединица има 20 до 40% заштите на снегу."
 
 #. [topic]
-#: data/core/help.cfg:513
+#: data/core/help.cfg:558
 msgid "Castle"
 msgstr "замак"
 
 #. [topic]
-#: data/core/help.cfg:520
+#: data/core/help.cfg:565
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2172,12 +2402,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:525
+#: data/core/help.cfg:572
 msgid "Sand"
 msgstr "песак"
 
 #. [topic]
-#: data/core/help.cfg:530
+#: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2192,12 +2422,12 @@ msgstr ""
 "Већина јединица добије 20 до 40% заштите у песку."
 
 #. [topic]
-#: data/core/help.cfg:535
+#: data/core/help.cfg:584
 msgid "Desert"
 msgstr "пустиња"
 
 #. [topic]
-#: data/core/help.cfg:538
+#: data/core/help.cfg:587
 #, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -2208,12 +2438,12 @@ msgstr ""
 "су у оквиру игре истоветне. Види <ref>dst=terrain_sand text=песак</ref>."
 
 #. [topic]
-#: data/core/help.cfg:543
+#: data/core/help.cfg:594
 msgid "Cave"
 msgstr "пећина"
 
 #. [topic]
-#: data/core/help.cfg:548
+#: data/core/help.cfg:599
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -2236,12 +2466,12 @@ msgstr ""
 "Већина јединица добија 20 до 40% заштите у пећинама, док патуљци имају 50%."
 
 #. [topic]
-#: data/core/help.cfg:553
+#: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "стеновита пећина"
 
 #. [topic]
-#: data/core/help.cfg:558
+#: data/core/help.cfg:611
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2266,12 +2496,12 @@ msgstr ""
 "патуљци чак 60%."
 
 #. [topic]
-#: data/core/help.cfg:563
+#: data/core/help.cfg:618
 msgid "Illuminated Cave"
 msgstr "обасјана пећина"
 
 #. [topic]
-#: data/core/help.cfg:566
+#: data/core/help.cfg:621
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2284,12 +2514,12 @@ msgstr ""
 "обичан пећински терен."
 
 #. [topic]
-#: data/core/help.cfg:571
+#: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "гљиварски гај"
 
 #. [topic]
-#: data/core/help.cfg:576
+#: data/core/help.cfg:633
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2313,12 +2543,12 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
-#: data/core/help.cfg:581 src/terrain.cpp:146
+#: data/core/help.cfg:640 src/terrain.cpp:146
 msgid "Village"
 msgstr "село"
 
 #. [topic]
-#: data/core/help.cfg:588
+#: data/core/help.cfg:647
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2341,12 +2571,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:595
+#: data/core/help.cfg:656
 msgid "Submerged Village"
 msgstr "подводно село"
 
 #. [topic]
-#: data/core/help.cfg:600
+#: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2369,12 +2599,12 @@ msgstr ""
 "јединице тај постотак обично низак."
 
 #. [topic]
-#: data/core/help.cfg:605
+#: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:608
+#: data/core/help.cfg:671
 #, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
@@ -2387,12 +2617,12 @@ msgstr ""
 "играња тиче, само летачке јединице могу прећи преко оваквог терена."
 
 #. [topic]
-#: data/core/help.cfg:613
+#: data/core/help.cfg:678
 msgid "Lava"
 msgstr "лава"
 
 #. [topic]
-#: data/core/help.cfg:616
+#: data/core/help.cfg:681
 #, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
@@ -2409,12 +2639,12 @@ msgstr ""
 "законитим јединицама предност у нападу, а одузима је хаотичним."
 
 #. [topic]
-#: data/core/help.cfg:621
+#: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "речни газ"
 
 #. [topic]
-#: data/core/help.cfg:624
+#: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2430,12 +2660,12 @@ msgstr ""
 "стоји на њему."
 
 #. [topic]
-#: data/core/help.cfg:629
+#: data/core/help.cfg:698
 msgid "Bridge"
 msgstr "мост"
 
 #. [topic]
-#: data/core/help.cfg:634
+#: data/core/help.cfg:703
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2460,13 +2690,13 @@ msgstr ""
 "пливајућа и копнена јединица ипак не могу стајати заједно на пољу моста."
 
 #. [topic]
-#: data/core/help.cfg:639
+#: data/core/help.cfg:710
 #, fuzzy
 msgid "Impassable"
 msgstr "непролазна планина"
 
 #. [topic]
-#: data/core/help.cfg:642
+#: data/core/help.cfg:713
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2476,12 +2706,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:653
+#: data/core/help.cfg:726
 msgid "General commands"
 msgstr "Опште наредбе"
 
 #. [topic]
-#: data/core/help.cfg:658
+#: data/core/help.cfg:731
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2491,7 +2721,7 @@ msgstr ""
 "чисти поруке у ћаскању.\n"
 
 #. [topic]
-#: data/core/help.cfg:662
+#: data/core/help.cfg:735
 #, fuzzy
 msgid ""
 "\n"
@@ -2507,7 +2737,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:665
+#: data/core/help.cfg:738
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2526,7 +2756,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:668
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2537,7 +2767,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:671
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2548,7 +2778,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:674
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2559,7 +2789,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:677
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -2570,7 +2800,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:680
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2581,7 +2811,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:683
+#: data/core/help.cfg:756
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2592,7 +2822,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:684
+#: data/core/help.cfg:757
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -2601,12 +2831,12 @@ msgstr ""
 "напушта сценарио уз чување игре (без упита)."
 
 #. [topic]
-#: data/core/help.cfg:690
+#: data/core/help.cfg:765
 msgid "Multiplayer commands"
 msgstr "Вишеиграчке наредбе"
 
 #. [topic]
-#: data/core/help.cfg:694
+#: data/core/help.cfg:769
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2619,7 +2849,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:697
+#: data/core/help.cfg:772
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2636,7 +2866,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:700
+#: data/core/help.cfg:775
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2651,7 +2881,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:703
+#: data/core/help.cfg:778
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2664,7 +2894,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:704
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -2673,12 +2903,12 @@ msgstr ""
 "обрће укљученост посматрача у писање и разговор."
 
 #. [topic]
-#: data/core/help.cfg:709
+#: data/core/help.cfg:786
 msgid "Debug mode commands"
 msgstr "Исправљачке наредбе"
 
 #. [topic]
-#: data/core/help.cfg:713
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2689,7 +2919,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:716
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2700,7 +2930,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:719
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2711,7 +2941,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:722
+#: data/core/help.cfg:799
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2722,7 +2952,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:725
+#: data/core/help.cfg:802
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2733,7 +2963,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:728
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2744,7 +2974,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:729
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3390,12 +3620,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Отров тече венама ове јединице баш у овом тренутку."
 
 #. [object]
-#: data/core/macros/items.cfg:294
+#: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "света водица"
 
 #. [object]
-#: data/core/macros/items.cfg:297
+#: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
@@ -3404,85 +3634,85 @@ msgstr ""
 "сценарија."
 
 #. [object]
-#: data/core/macros/items.cfg:298
+#: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Нисам погодан да носим ово! Нека је други узме."
 
 #. [object]
-#: data/core/macros/items.cfg:333
+#: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "напитак снаге"
 
 #. [object]
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "Даје снагу испијачу."
 
 #. [object]
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "напитак распада"
 
 #. [object]
-#: data/core/macros/items.cfg:380
+#: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "Ова јадна јединица испи нешто заиста лоше."
 
 #. [object]
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "прстен обнављања"
 
 #. [object]
-#: data/core/macros/items.cfg:418
+#: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Овај прстен ће помало лечити носиоца у сваком потезу."
 
 #. [object]
-#: data/core/macros/items.cfg:455
+#: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "прстен успорења"
 
 #. [object]
-#: data/core/macros/items.cfg:458
+#: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "Носилац ово прстена бива успорен."
 
 #. [object]
-#: data/core/macros/items.cfg:493
+#: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "штап жустрине"
 
 #. [object]
-#: data/core/macros/items.cfg:496
+#: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "Овај штап ће подарити носиоцу жустрину кретања."
 
 #. [object]
-#: data/core/macros/items.cfg:497
+#: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "Само магична створења могу користити такав предмет."
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Only the mermen can use this item!"
 msgstr "Само морејци могу користити овај предмет!"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:518
+#: data/core/macros/items.cfg:514
 msgid "Storm Trident"
 msgstr "олујни трозубац"
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:517
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Овим трозупцем морејац може испаљивати електричне муње на непријатеље!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:521
 msgid "storm trident"
 msgstr "олујни трозубац"
 
@@ -4981,34 +5211,44 @@ msgid "race^Elves"
 msgstr "вилењаци"
 
 #. [race]
-#: data/core/units.cfg:94
+#: data/core/units.cfg:100
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the latter’s "
 "unusually long life - most, unless claimed by illness, accident or war, live "
-"a full two centuries. While some elves possessing a high magical aptitude "
-"have been known to live an additional full century, most elves begin to grow "
-"physically frail approaching their twentieth decade and pass away within a "
-"few decades after. Elves are naturally imbued with magic to a small degree. "
-"Though most are unable to channel it directly, its latent presence gives "
-"them their keen senses and long life. Many elves have magic-driven talents "
-"such as marksmanship or stealth, allowing them to achieve tasks that most "
-"normal beings would find astonishing. Those elves that learn to wield this "
-"power in more general ways can become truly formidable in its use. Many "
-"choose to use their gift to heal others.\n"
+"a full two and a half centuries. While some elves possessing a high magical "
+"aptitude have been known to live an additional full century, most elves "
+"begin to grow physically frail at some point between 250 and 300 years of "
+"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"\n"
+"Elves are naturally imbued with magic to a small degree. Though most are "
+"unable to channel it directly, its latent presence gives them their keen "
+"senses and long life. Many elves have magic-driven talents such as "
+"marksmanship or stealth, allowing them to achieve tasks that most normal "
+"beings would find astonishing. Those elves that learn to wield this power in "
+"more general ways can become truly formidable in its use. Many choose to use "
+"their gift to heal others.\n"
+"\n"
+"A few elves, venturing far down the paths of magic and mysticism, become "
+"sensitive to the presence of cold iron and can even be burned by it. Elvish "
+"legend hints that this was more common in the far past.\n"
 "\n"
 "Elves spend much of their time honing their talents and skills. Those not "
 "adept at the magical arts typically devote their time honing their physical "
 "skills. As a result, elves excel at archery, which is perhaps their most "
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
-"unexplained affection for unspoiled nature. They often feel uncomfortable in "
-"open unvegetated spaces, which leads them to make their homes in the forests "
-"of the Great Continent, such as Aethenwood in the southwest and Wesmere in "
-"the northwest. Elves are the eldest race of the continent, with the possible "
-"exception of trolls. Many of their settlements cannot be reliably dated, "
-"undoubtedly having existed for over a millennium."
+"intense affection for unspoiled nature. They often feel uncomfortable in "
+"open unvegetated spaces. They live primarily in the forests of the Great "
+"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
+"the great northern woods of which the Lintanir Forest is the southernmost "
+"edge. \n"
+"\n"
+"Elves are the eldest race of the continent, with the possible exception of "
+"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
+"having existed for over a millennium."
 msgstr ""
 "Наспрам људи, вилењаци су нешто виши растом, окретнији, али нежније грађе. "
 "Уши су им незнатно зашиљене, тен блед, а коса углавном плава. Мало је "
@@ -5037,52 +5277,52 @@ msgstr ""
 "проценити старост, која се засигурно протеже више од миленијума."
 
 #. [race]: description=
-#: data/core/units.cfg:103
+#: data/core/units.cfg:109
 msgid "race^Goblin"
 msgstr "гоблин"
 
 #. [race]: description=
-#: data/core/units.cfg:104
+#: data/core/units.cfg:110
 msgid "race+female^Goblin"
 msgstr "гоблинка"
 
 #. [race]: description=
-#: data/core/units.cfg:105
+#: data/core/units.cfg:111
 msgid "race^Goblins"
 msgstr "гоблини"
 
 #. [race]: description=
-#: data/core/units.cfg:117
+#: data/core/units.cfg:123
 msgid "race^Gryphon"
 msgstr "грифон"
 
 #. [race]: description=
-#: data/core/units.cfg:118
+#: data/core/units.cfg:124
 msgid "race+female^Gryphon"
 msgstr "грифонка"
 
 #. [race]: description=
-#: data/core/units.cfg:119
+#: data/core/units.cfg:125
 msgid "race^Gryphons"
 msgstr "грифони"
 
 #. [race]
-#: data/core/units.cfg:127
+#: data/core/units.cfg:133
 msgid "race^Human"
 msgstr "човек"
 
 #. [race]
-#: data/core/units.cfg:128
+#: data/core/units.cfg:134
 msgid "race+female^Human"
 msgstr "човек"
 
 #. [race]
-#: data/core/units.cfg:129
+#: data/core/units.cfg:135
 msgid "race^Humans"
 msgstr "људи"
 
 #. [race]
-#: data/core/units.cfg:136
+#: data/core/units.cfg:142
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5157,105 +5397,106 @@ msgstr ""
 "мане ових дружина међусобно надопуњују."
 
 #. [race]: description=
-#: data/core/units.cfg:143
+#: data/core/units.cfg:149
 msgid "race^Saurian"
 msgstr "сауријанац"
 
 #. [race]: description=
-#: data/core/units.cfg:144
+#: data/core/units.cfg:150
 msgid "race+female^Saurian"
 msgstr "сауријанка"
 
 #. [race]: description=
-#: data/core/units.cfg:145
+#: data/core/units.cfg:151
 msgid "race^Saurians"
 msgstr "сауријанци"
 
 #. [race]: description=
-#: data/core/units.cfg:154
+#: data/core/units.cfg:160
 msgid "race^Mechanical"
 msgstr "механички"
 
 #. [race]: description=
-#: data/core/units.cfg:155
+#: data/core/units.cfg:161
 msgid "race+plural^Mechanical"
 msgstr "механички"
 
 #. [race]: description=
-#: data/core/units.cfg:164
+#: data/core/units.cfg:170
 msgid "race^Merman"
 msgstr "морејац"
 
 #. [race]: description=
-#: data/core/units.cfg:165
+#: data/core/units.cfg:171
 msgid "race^Mermaid"
 msgstr "морејка"
 
 #. [race]: description=
-#: data/core/units.cfg:166
+#: data/core/units.cfg:172
 msgid "race^Mermen"
 msgstr "морејци"
 
 #. [race]: description=
-#: data/core/units.cfg:174
+#: data/core/units.cfg:180
 msgid "race^Monster"
 msgstr "чудовиште"
 
 #. [race]: description=
-#: data/core/units.cfg:175
+#: data/core/units.cfg:181
 msgid "race^Monsters"
 msgstr "чудовишта"
 
 #. [race]: description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:188
 msgid "race^Naga"
 msgstr "нагајац"
 
 #. [race]: description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:189
 msgid "race^Nagani"
 msgstr "нагајка"
 
 #. [race]: description=
-#: data/core/units.cfg:184
+#: data/core/units.cfg:190
 msgid "race^Nagas"
 msgstr "нагајци"
 
 #. [race]: description=
-#: data/core/units.cfg:192
+#: data/core/units.cfg:198
 msgid "race^Ogre"
 msgstr "огр"
 
 #. [race]: description=
-#: data/core/units.cfg:193
+#: data/core/units.cfg:199
 msgid "race+female^Ogre"
 msgstr "огрица"
 
 #. [race]: description=
-#: data/core/units.cfg:194
+#: data/core/units.cfg:200
 msgid "race^Ogres"
 msgstr "огрови"
 
 #. [race]
-#: data/core/units.cfg:202
+#: data/core/units.cfg:208
 msgid "race^Orc"
 msgstr "орк"
 
 #. [race]
-#: data/core/units.cfg:203
+#: data/core/units.cfg:209
 msgid "race+female^Orc"
 msgstr "оркиња"
 
 #. [race]
-#: data/core/units.cfg:204
+#: data/core/units.cfg:210
 msgid "race^Orcs"
 msgstr "оркови"
 
 #. [race]
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
+#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans.  They are warlike, savage, and cruel by nature. "
+"and stronger than humans. They are warlike, savage, and cruel by nature. "
 "Their blood is darker and thicker than that of normal humans and they have "
 "little care for personal hygiene or their personal appearance. Although Orcs "
 "are violent even among themselves creatures, they are pack-oriented; an orc "
@@ -5362,22 +5603,23 @@ msgstr ""
 "убијање из потаје."
 
 #. [race]
-#: data/core/units.cfg:221
+#: data/core/units.cfg:227
 msgid "race^Troll"
 msgstr "трол"
 
 #. [race]
-#: data/core/units.cfg:222
+#: data/core/units.cfg:228
 msgid "race+female^Troll"
 msgstr "тролкиња"
 
 #. [race]
-#: data/core/units.cfg:223
+#: data/core/units.cfg:229
 msgid "race^Trolls"
 msgstr "тролови"
 
 #. [race]
-#: data/core/units.cfg:229
+#: data/core/units.cfg:235
+#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5397,8 +5639,8 @@ msgid ""
 "their home cave. This is until they finally pass away as their bodies "
 "themselves slowly turn into lifeless statues of stone.\n"
 "\n"
-"Trolls are seen by many as being little more than a yet another race of "
-"savage monsters. This common misconception is in part perpetuated by orcs to "
+"Trolls are seen by many as being little more than yet another race of savage "
+"monsters. This common misconception is in part perpetuated by orcs to "
 "persuade trolls to join their armies. Because they are rather simple and do "
 "not understand the ways of other races or sometimes can even tell them "
 "apart, it is usually easy for an orcish band to convince a group of trolls "
@@ -5448,22 +5690,22 @@ msgstr ""
 "Веснота, и куда год се крећу орковске хорде."
 
 #. [race]
-#: data/core/units.cfg:241
+#: data/core/units.cfg:247
 msgid "race^Undead"
 msgstr "немртав"
 
 #. [race]
-#: data/core/units.cfg:242
+#: data/core/units.cfg:248
 msgid "race+female^Undead"
 msgstr "немртва"
 
 #. [race]
-#: data/core/units.cfg:243
+#: data/core/units.cfg:249
 msgid "race+plural^Undead"
 msgstr "немртви"
 
 #. [race]
-#: data/core/units.cfg:249
+#: data/core/units.cfg:255
 #, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -5515,24 +5757,24 @@ msgstr ""
 "вилењацима и патуљцима."
 
 #. [race]: description=
-#: data/core/units.cfg:257
+#: data/core/units.cfg:263
 #, fuzzy
 msgid "race^Wolf"
 msgstr "вилењак"
 
 #. [race]: description=
-#: data/core/units.cfg:258
+#: data/core/units.cfg:264
 #, fuzzy
 msgid "race^Wolves"
 msgstr "вилењаци"
 
 #. [race]: description=
-#: data/core/units.cfg:266
+#: data/core/units.cfg:272
 msgid "race^Wose"
 msgstr "ивер"
 
 #. [race]: description=
-#: data/core/units.cfg:267
+#: data/core/units.cfg:273
 msgid "race^Woses"
 msgstr "ивери"
 
@@ -6315,16 +6557,6 @@ msgstr ""
 "обале може нанети жестоке губитке. Вилењацима слично користи руб шуме, а "
 "патуљцима планински обронци."
 
-#. [object]
-#: data/scenario-test.cfg:250
-msgid "Anti-Warlord Weaponry activated!"
-msgstr ""
-
-#. [object]
-#: data/scenario-test.cfg:273 data/scenario-test.cfg:290
-msgid "Anti-Warlord Weaponry deactivated."
-msgstr ""
-
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
@@ -6356,8 +6588,8 @@ msgstr "Крај"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
-#: src/unit.cpp:2826
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2623
+#: src/unit.cpp:2797
 msgid "HP"
 msgstr "УП"
 
@@ -6672,7 +6904,7 @@ msgid "Do you still want to download it?"
 msgstr "Желите ли још увек да га преузмете?"
 
 #: src/addon_management.cpp:471 src/addon_management.cpp:545
-#: src/multiplayer.cpp:337 src/multiplayer_ui.cpp:73
+#: src/multiplayer.cpp:343 src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "Веза је истекла."
 
@@ -6923,7 +7155,7 @@ msgstr "Додатак обрисан"
 msgid "Add-on could not be deleted properly:"
 msgstr "Додатак не може бити обрисан — нема датотеке."
 
-#: src/ai.cpp:1650
+#: src/ai.cpp:1655
 msgid "Unknown unit type : "
 msgstr "Непознат тип јединице: "
 
@@ -8826,20 +9058,20 @@ msgstr "Име:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непознат сценарио: ‘$scenario|’"
 
-#: src/playmp_controller.cpp:197
-msgid "Undoing moves not yet transmited to server."
+#: src/playmp_controller.cpp:205
+msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
 # намерно кратко, на уском дугмету
-#: src/playmp_controller.cpp:277
+#: src/playmp_controller.cpp:285
 msgid "End scenario"
 msgstr "Крај"
 
-#: src/playmp_controller.cpp:381
+#: src/playmp_controller.cpp:389
 msgid "Waiting for next scenario..."
 msgstr "Чекам на наредни сценарио..."
 
-#: src/playmp_controller.cpp:505
+#: src/playmp_controller.cpp:513
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8963,7 +9195,7 @@ msgstr ""
 "Мрежна веза је прекинута и игра се не може наставити. Желите ли да сачувате "
 "игру?"
 
-#: src/playsingle_controller.cpp:646
+#: src/playsingle_controller.cpp:652
 msgid "It is now $name|'s turn"
 msgstr "На потезу је $name"
 
@@ -9243,31 +9475,31 @@ msgstr "Непознат тип јединице ‘$type|’"
 msgid "Unknown unit type '$type|'"
 msgstr "Непознат тип јединице ‘$type|’"
 
-#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
+#: src/unit.cpp:2580 src/unit.cpp:2785 src/unit.cpp:2841
 msgid " and "
 msgstr " и "
 
-#: src/unit.cpp:2620
+#: src/unit.cpp:2591
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2656
 msgid "moves"
 msgstr "кретњи"
 
-#: src/unit.cpp:2703 src/unit.cpp:2841
+#: src/unit.cpp:2674 src/unit.cpp:2812
 msgid "XP to advance"
 msgstr "ИП за напредовање"
 
-#: src/unit.cpp:2833
+#: src/unit.cpp:2804
 msgid " move"
 msgstr " покрет"
 
-#: src/unit.cpp:2849
+#: src/unit.cpp:2820
 msgid "$effect_description per level"
 msgstr "$effect_description по нивоу"
 
-#: src/unit.cpp:2879
+#: src/unit.cpp:2850
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9455,9 +9687,6 @@ msgstr "Укључи слање сажетака"
 #, fuzzy
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr "Будите домаћин игри без коришћења сервера"
-
-#~ msgid "Local Game"
-#~ msgstr "Локална игра"
 
 #~ msgid ""
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"

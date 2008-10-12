@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-07 16:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:33+0200\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -63,6 +63,230 @@ msgstr ""
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
 msgstr "地下"
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:29
+#, fuzzy
+msgid "define ai location"
+msgstr "印度尼西亚语"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:35
+#, fuzzy
+msgid "Location name?"
+msgstr "本机游戏"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:45
+msgid "Range in Hexfields?"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:59
+msgid "enable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:73
+msgid "disable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:87
+#, fuzzy
+msgid "Give new orders"
+msgstr "取消"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:131
+msgid "Command $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:161
+msgid "Which ally should i command?"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:228
+msgid "How important is this command?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:232
+msgid "It is very important.(value 90)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:239
+msgid "It is important.(value 50)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:246
+msgid "It is not so important.(value 25)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:253
+msgid "It has the importance ..."
+msgstr ""
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:259
+#, fuzzy
+msgid "value: "
+msgstr "名称："
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:327
+msgid ""
+"Which kind of order do you want me to obey?\n"
+"@$ai_controller.current_orders"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:338
+msgid "#I revoke all your commands!"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:383
+#, fuzzy
+msgid "Defeat an enemy Leader!"
+msgstr ""
+"胜利条件：\n"
+"@打败敌人的领袖(们)"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:392
+msgid "Defeat $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:415
+msgid "I am already attacking $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:430
+msgid "Which enemy Leaders do you want me to defeat?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:440
+msgid "Protect an allied leader!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:447
+msgid "Protect $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:471
+msgid "I am already protecting $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:498
+msgid "Which allied leader should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:509
+msgid "Defend a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:517
+msgid "Defend the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:540
+msgid "I am allready defending $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:557
+msgid "Which location should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:568
+msgid "Go to a location!(only the leader)"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:576
+msgid "Goto the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:597
+msgid "I am allready going to $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:611
+msgid "To which location shall i move?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:622
+msgid "Avoid a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:630
+msgid "Avoid the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:651
+msgid ""
+"I am allready ordered to avoid $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:664
+msgid "Which location shall i avoid?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:732
+msgid "Send your army to a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:740
+msgid "Move to the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:784
+msgid ""
+"I am allready ordered to send all men to $ai_controller.locations[$location]."
+"name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:793
+msgid "Which location shall i send my men to?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:810
+msgid ""
+"@I don't want to be in command any more! Take care of yourselves! (Disables "
+"AI_CONTROLLER)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:824
+msgid "@Execute my orders!"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -406,7 +630,13 @@ msgid "Valencian (southern Catalan) Translation"
 msgstr " (西班牙)南加泰罗尼亚语"
 
 #. [about]
-#: data/core/about.cfg:1996
+#: data/core/about.cfg:1993
+#, fuzzy
+msgid "RACV's Translation"
+msgstr "简体中文"
+
+#. [about]
+#: data/core/about.cfg:2000
 msgid "Bots"
 msgstr "电脑"
 
@@ -423,14 +653,14 @@ msgstr "游戏介绍"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:27 data/core/help.cfg:126
+#: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "游戏玩法"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]
 #. [topic]
-#: data/core/help.cfg:33 data/core/help.cfg:323 src/menu_events.cpp:997
+#: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:997
 msgid "Traits"
 msgstr "特质"
 
@@ -453,13 +683,13 @@ msgstr "武器特性"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:67 data/core/help.cfg:414
+#: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "地形"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:74 data/core/help.cfg:647
+#: data/core/help.cfg:74 data/core/help.cfg:720
 msgid "Commands"
 msgstr "指令"
 
@@ -490,12 +720,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:110
+#: data/core/help.cfg:111
 msgid "Unknown Unit"
 msgstr "未知单位"
 
 #. [topic]
-#: data/core/help.cfg:113
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -508,12 +738,12 @@ msgstr ""
 "示在这里。"
 
 #. [topic]
-#: data/core/help.cfg:118
+#: data/core/help.cfg:119
 msgid "Overview"
 msgstr "概述"
 
 #. [topic]
-#: data/core/help.cfg:121
+#: data/core/help.cfg:122
 msgid ""
 "\n"
 "\n"
@@ -530,12 +760,12 @@ msgstr ""
 "略，是一个易学却不易专的游戏。"
 
 #. [topic]
-#: data/core/help.cfg:132
+#: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "游戏基本玩法"
 
 #. [topic]
-#: data/core/help.cfg:133
+#: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -548,7 +778,7 @@ msgstr ""
 "外，请跟随文中的网络链接。"
 
 #. [topic]
-#: data/core/help.cfg:135
+#: data/core/help.cfg:137
 msgid ""
 "\n"
 "\n"
@@ -567,7 +797,7 @@ msgstr ""
 "诺之战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
 
 #. [topic]
-#: data/core/help.cfg:138
+#: data/core/help.cfg:140
 #, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -581,12 +811,12 @@ msgstr ""
 "非常有用。"
 
 #. [topic]
-#: data/core/help.cfg:143
+#: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "关于本游戏"
 
 #. [topic]
-#: data/core/help.cfg:144
+#: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -602,7 +832,7 @@ msgstr ""
 "上网，则可以和其他能上网的人对战。"
 
 #. [topic]
-#: data/core/help.cfg:146
+#: data/core/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -617,12 +847,12 @@ msgstr ""
 "谨慎，确保最精良的部队存活下来，能够在战役中的下一幕里继续战斗。"
 
 #. [topic]
-#: data/core/help.cfg:151
+#: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr "胜利和失败"
 
 #. [topic]
-#: data/core/help.cfg:152
+#: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -636,7 +866,7 @@ msgstr ""
 "或者解决一个迷题，或者与敌人对抗并坚持一定回合数。"
 
 #. [topic]
-#: data/core/help.cfg:154
+#: data/core/help.cfg:157
 msgid ""
 "\n"
 "\n"
@@ -651,12 +881,12 @@ msgstr ""
 "戏存档选项，也可以（在多人游戏中）和其他玩家交流。然后才按下那个按钮继续。"
 
 #. [topic]
-#: data/core/help.cfg:159
+#: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "征募与召回"
 
 #. [topic]
-#: data/core/help.cfg:160
+#: data/core/help.cfg:165
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -678,7 +908,7 @@ msgstr ""
 "单位可以查看他的数据，然后点征兵按钮就可征募。"
 
 #. [topic]
-#: data/core/help.cfg:162
+#: data/core/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -694,7 +924,7 @@ msgstr ""
 "能超出您所拥有的金币数量。"
 
 #. [topic]
-#: data/core/help.cfg:164
+#: data/core/help.cfg:169
 #, fuzzy
 msgid ""
 "\n"
@@ -707,7 +937,7 @@ msgstr ""
 "新兵有两个随机的<ref>dst=traits text=特质</ref>，对其数据稍有影响。"
 
 #. [topic]
-#: data/core/help.cfg:166
+#: data/core/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -721,7 +951,7 @@ msgstr ""
 "景中生还者的清单。召回一律花费20金币。"
 
 #. [topic]
-#: data/core/help.cfg:168
+#: data/core/help.cfg:173
 #, fuzzy
 msgid ""
 "\n"
@@ -736,49 +966,49 @@ msgstr ""
 "<ref>dst=income_and_upkeep text='收入与维护费'</ref>"
 
 #. [topic]
-#: data/core/help.cfg:173
+#: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "行动指示灯"
 
 #. [topic]
-#: data/core/help.cfg:174
+#: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr "您的单位的能量条上有一个行动指示灯。环状图标可能为："
 
 #. [topic]
-#: data/core/help.cfg:175
+#: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "绿色，表明该单位本回合没有移动过，"
 
 #. [topic]
-#: data/core/help.cfg:176
+#: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "黄色，表明本单位移动过了，但还可以继续移动或攻击，"
 
 #. [topic]
-#: data/core/help.cfg:177
+#: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "红色，表明该单位已经用完了自己本回合的移动点数。"
 
 #. [topic]
-#: data/core/help.cfg:178
+#: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "蓝色，表明这是一个不能控制的友军单位。"
 
 #. [topic]
-#: data/core/help.cfg:179
+#: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "敌人单位的生命条上方没有环状图标。"
 
 #. [topic]
-#: data/core/help.cfg:184
+#: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "生命值和经验值"
 
 #. [topic]
-#: data/core/help.cfg:185
+#: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -789,7 +1019,7 @@ msgstr ""
 "一定的经验值（XP）。新征募的单位没有经验值，与敌人战斗之后才会获得经验值。"
 
 #. [topic]
-#: data/core/help.cfg:189
+#: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -799,7 +1029,7 @@ msgstr ""
 "值）。"
 
 #. [topic]
-#: data/core/help.cfg:190
+#: data/core/help.cfg:199
 #, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -812,12 +1042,12 @@ msgstr ""
 "text=升级</ref>时经验条会显示为白色。"
 
 #. [topic]
-#: data/core/help.cfg:195
+#: data/core/help.cfg:206
 msgid "Movement"
 msgstr "移动"
 
 #. [topic]
-#: data/core/help.cfg:196
+#: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -842,7 +1072,7 @@ msgstr ""
 "庄时也会花完所有移动点数，但仍然能够攻击。"
 
 #. [topic]
-#: data/core/help.cfg:198
+#: data/core/help.cfg:209
 msgid ""
 "\n"
 "\n"
@@ -865,7 +1095,7 @@ msgstr ""
 "阅读<italic>text='地形影响'</italic>部分。"
 
 #. [topic]
-#: data/core/help.cfg:200
+#: data/core/help.cfg:211
 #, fuzzy
 msgid ""
 "\n"
@@ -884,7 +1114,7 @@ msgstr ""
 "只有<ref>dst=ability_skirmisher text='游击'</ref>能力可以忽视控制区域的影响。"
 
 #. [topic]
-#: data/core/help.cfg:202
+#: data/core/help.cfg:213
 msgid ""
 "\n"
 "\n"
@@ -898,12 +1128,12 @@ msgstr ""
 "不影响对手移动的情况下，对让可以移动到的区域。"
 
 #. [topic]
-#: data/core/help.cfg:207
+#: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "战场黑幕和战争迷雾"
 
 #. [topic]
-#: data/core/help.cfg:210
+#: data/core/help.cfg:223
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -931,12 +1161,12 @@ msgstr ""
 "域附近的战场黑幕和迷雾（忽略敌人部队和敌人控制区域）。"
 
 #. [topic]
-#: data/core/help.cfg:215
+#: data/core/help.cfg:230
 msgid "Combat"
 msgstr "战斗"
 
 #. [topic]
-#: data/core/help.cfg:216
+#: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -955,7 +1185,7 @@ msgstr ""
 "或尖利的牙齿；远程，武器通常是弓，矛和火球。"
 
 #. [topic]
-#: data/core/help.cfg:218
+#: data/core/help.cfg:233
 msgid ""
 "\n"
 "\n"
@@ -966,7 +1196,7 @@ msgstr ""
 "<header>text='攻击顺序与次数'</header>"
 
 #. [topic]
-#: data/core/help.cfg:220
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -986,7 +1216,7 @@ msgstr ""
 "伤害，兽人步兵9-2的进攻表明他只能进攻2次（但每次击中敌人会造成9点伤害）。"
 
 #. [topic]
-#: data/core/help.cfg:222
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "\n"
@@ -997,7 +1227,7 @@ msgstr ""
 "<header>text='命中几率'</header>"
 
 #. [topic]
-#: data/core/help.cfg:224
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -1017,7 +1247,7 @@ msgstr ""
 "该精灵在反击中击中攻击者的几率取决于攻击者所处的地形。"
 
 #. [topic]
-#: data/core/help.cfg:226
+#: data/core/help.cfg:241
 #, fuzzy
 msgid ""
 "\n"
@@ -1035,7 +1265,7 @@ msgstr ""
 "总是有70%的命中几率，而精准射击在进攻中也无视地形，且最少有60%的命中几率。"
 
 #. [topic]
-#: data/core/help.cfg:228
+#: data/core/help.cfg:243
 msgid ""
 "\n"
 "\n"
@@ -1047,7 +1277,7 @@ msgstr ""
 
 # sometimes there are quotations in "text='Time of Day'", for example, but sometimes there aren't, as in "text=resistance". what's the difference? and shall i use quotations in a likewise manner in translation?
 #. [topic]
-#: data/core/help.cfg:230
+#: data/core/help.cfg:245
 #, fuzzy
 msgid ""
 "\n"
@@ -1069,7 +1299,7 @@ msgstr ""
 "<italic>text='伤害计算'</italic>。"
 
 #. [topic]
-#: data/core/help.cfg:232
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -1086,12 +1316,12 @@ msgstr ""
 "的进攻方和防守方都输出双倍的伤害。"
 
 #. [topic]
-#: data/core/help.cfg:237
+#: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "伤害种类和抗性"
 
 #. [topic]
-#: data/core/help.cfg:238
+#: data/core/help.cfg:254
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1103,7 +1333,7 @@ msgstr ""
 "火焰，寒冷和奥术攻击。不同的单位对不同的伤害有不同的抗性。"
 
 #. [topic]
-#: data/core/help.cfg:240
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1120,7 +1350,7 @@ msgstr ""
 "击中时增加100%的伤害。"
 
 #. [topic]
-#: data/core/help.cfg:242
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1134,7 +1364,7 @@ msgstr ""
 "伤害。"
 
 #. [topic]
-#: data/core/help.cfg:244
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1147,12 +1377,12 @@ msgstr ""
 "每次成功的攻击都至少会造成1点的伤害，即使防御者对这种攻击有100%的抗性。"
 
 #. [topic]
-#: data/core/help.cfg:249
+#: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "时刻"
 
 #. [topic]
-#: data/core/help.cfg:253
+#: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1165,7 +1395,7 @@ msgstr ""
 " 中立单位不受时间的影响。"
 
 #. [topic]
-#: data/core/help.cfg:256
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1180,54 +1410,54 @@ msgstr ""
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
+#: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "黎明"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:257 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "上午"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:258 data/core/macros/schedules.cfg:29
+#: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "下午"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:259 data/core/macros/schedules.cfg:39
+#: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "黄昏"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:260 data/core/macros/schedules.cfg:51
+#: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "前半夜"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:261 data/core/macros/schedules.cfg:64
+#: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "后半夜"
 
 #. [topic]
-#: data/core/help.cfg:263
+#: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr "记住，有些场景是发生在地下的，那里一直是晚上。"
 
 #. [topic]
-#: data/core/help.cfg:268
+#: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "经验值和升级"
 
 #. [topic]
-#: data/core/help.cfg:269
+#: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1239,7 +1469,7 @@ msgstr ""
 "8点，2等级单位16点，3等级单位24点等等。"
 
 #. [topic]
-#: data/core/help.cfg:271
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1254,7 +1484,7 @@ msgstr ""
 "足够的经验值就可立即升级，生命全满。有些情况下，您还会遇到升级选项。"
 
 #. [topic]
-#: data/core/help.cfg:273
+#: data/core/help.cfg:292
 #, fuzzy
 msgid ""
 "\n"
@@ -1280,12 +1510,12 @@ msgstr ""
 "般会更有用处。"
 
 #. [topic]
-#: data/core/help.cfg:278
+#: data/core/help.cfg:299
 msgid "Healing"
 msgstr "治疗"
 
 #. [topic]
-#: data/core/help.cfg:279
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1300,7 +1530,7 @@ msgstr ""
 "多种其他的治疗方式，全部都在您开始一回合的行动之前发生。"
 
 #. [topic]
-#: data/core/help.cfg:281
+#: data/core/help.cfg:302
 #, fuzzy
 msgid ""
 "\n"
@@ -1313,7 +1543,7 @@ msgstr ""
 "休息： 单位在本回合不移动、攻击或被攻击，则会在下回合恢复2点生命值。"
 
 #. [topic]
-#: data/core/help.cfg:282
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1322,7 +1552,7 @@ msgstr ""
 "村庄：每回和开始时在村庄中的单位可以恢复8点生命值。"
 
 #. [topic]
-#: data/core/help.cfg:283
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "\n"
@@ -1334,7 +1564,7 @@ msgstr ""
 "复8点生命值。"
 
 #. [topic]
-#: data/core/help.cfg:284
+#: data/core/help.cfg:305
 #, fuzzy
 msgid ""
 "\n"
@@ -1348,7 +1578,7 @@ msgstr ""
 "盟军单位4点或8点的生命值，或阻止毒药发作。"
 
 #. [topic]
-#: data/core/help.cfg:285
+#: data/core/help.cfg:306
 #, fuzzy
 msgid ""
 "\n"
@@ -1361,7 +1591,7 @@ msgstr ""
 "单位的中毒效果（如过本单位还有治疗能力，则治愈优先于治疗）。"
 
 #. [topic]
-#: data/core/help.cfg:287
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1375,12 +1605,12 @@ msgstr ""
 "会自动选择最优治疗方式。最后，单位能在过场时完全恢复生命值。"
 
 #. [topic]
-#: data/core/help.cfg:292
+#: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "收入和维护费用"
 
 #. [topic]
-#: data/core/help.cfg:293
+#: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1391,7 +1621,7 @@ msgstr ""
 "的金币携带到下一幕。影响金币的主要是两个方面：收入和维护费用。"
 
 #. [topic]
-#: data/core/help.cfg:295
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -1407,7 +1637,7 @@ msgstr ""
 "入。维护费用由您的收入来支付。以下是详细信息。"
 
 #. [topic]
-#: data/core/help.cfg:297
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -1426,7 +1656,7 @@ msgstr ""
 "二个一级的单位和十个村庄，您就得支付每回合2个金币的维护费用。"
 
 #. [topic]
-#: data/core/help.cfg:299
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -1440,7 +1670,7 @@ msgstr ""
 "您的收入将会是每回合10个金币。"
 
 #. [topic]
-#: data/core/help.cfg:300
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1456,12 +1686,12 @@ msgstr ""
 "（如在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
 
 #. [topic]
-#: data/core/help.cfg:305
+#: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "总结"
 
 #. [topic]
-#: data/core/help.cfg:306
+#: data/core/help.cfg:330
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1475,17 +1705,17 @@ msgstr ""
 "经有足够的经验去玩《继位者之战》这个战役了。祝您好运，玩得开心！"
 
 #. [topic]
-#: data/core/help.cfg:311
+#: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr "制作人"
 
 #. [topic]
-#: data/core/help.cfg:317
+#: data/core/help.cfg:341
 msgid "License"
 msgstr "授权"
 
 #. [topic]
-#: data/core/help.cfg:325
+#: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1496,7 +1726,7 @@ msgstr ""
 "质。特质会细微的修正单位的属性。通常征募的单位会获得随机的特质。"
 
 #. [topic]
-#: data/core/help.cfg:327
+#: data/core/help.cfg:352
 #, fuzzy
 msgid ""
 "\n"
@@ -1513,7 +1743,7 @@ msgstr ""
 "ref>和<ref>dst=traits_strong text=强壮</ref>。"
 
 #. [topic]
-#: data/core/help.cfg:331
+#: data/core/help.cfg:356
 #, fuzzy
 msgid ""
 "\n"
@@ -1531,17 +1761,17 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:336
+#: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "聪慧"
 
 #. [topic]
-#: data/core/help.cfg:337
+#: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "拥有聪慧特质的单位每次升级所需的经验值比通常情况少20%。"
 
 #. [topic]
-#: data/core/help.cfg:339
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -1559,17 +1789,17 @@ msgstr ""
 "的单位。"
 
 #. [topic]
-#: data/core/help.cfg:344
+#: data/core/help.cfg:370
 msgid "Quick"
 msgstr "迅捷"
 
 #. [topic]
-#: data/core/help.cfg:345
+#: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr "拥有迅捷特质的单位有1点移动点数奖励，但是会减少5%的生命值。"
 
 #. [topic]
-#: data/core/help.cfg:347
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -1587,17 +1817,17 @@ msgstr ""
 "质的单位不如没有该特质的单位强壮，在守卫重要地形时没有那些单位好。"
 
 #. [topic]
-#: data/core/help.cfg:352
+#: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "坚韧"
 
 #. [topic]
-#: data/core/help.cfg:353
+#: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "坚韧特质的单位每升1级多加1点HP,并有天生的额外4点生命值。"
 
 #. [topic]
-#: data/core/help.cfg:355
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -1614,12 +1844,12 @@ msgstr ""
 "有坚韧特质的单位通常用来占据战略有利地形。"
 
 #. [topic]
-#: data/core/help.cfg:360
+#: data/core/help.cfg:386
 msgid "Strong"
 msgstr "强壮"
 
 #. [topic]
-#: data/core/help.cfg:361
+#: data/core/help.cfg:387
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1628,7 +1858,7 @@ msgstr ""
 "伤害。"
 
 #. [topic]
-#: data/core/help.cfg:363
+#: data/core/help.cfg:389
 msgid ""
 "\n"
 "\n"
@@ -1644,22 +1874,22 @@ msgstr ""
 "壮特质的单位的作用。"
 
 #. [topic]
-#: data/core/help.cfg:368
+#: data/core/help.cfg:394
 msgid "Fearless"
 msgstr "无畏"
 
 #. [topic]
-#: data/core/help.cfg:369
+#: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "拥有无畏特质的单位的攻击力不会因为白天或黑夜时段的不适而下降。"
 
 #. [topic]
-#: data/core/help.cfg:374
+#: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "忠诚"
 
 #. [topic]
-#: data/core/help.cfg:375
+#: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1669,7 +1899,7 @@ msgstr ""
 "的维护费用。忠诚特质的单位不需要。"
 
 #. [topic]
-#: data/core/help.cfg:377
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -1688,19 +1918,19 @@ msgstr ""
 "死。"
 
 #. [topic]
-#: data/core/help.cfg:382
+#: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "不死"
 
 #. [topic]
-#: data/core/help.cfg:383
+#: data/core/help.cfg:409
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "拥有不死特质的单位免疫毒素,吸血和瘟疫。"
 
 #. [topic]
-#: data/core/help.cfg:385
+#: data/core/help.cfg:411
 msgid ""
 "\n"
 "\n"
@@ -1716,19 +1946,19 @@ msgstr ""
 "量。"
 
 #. [topic]
-#: data/core/help.cfg:390
+#: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr "机械"
 
 #. [topic]
-#: data/core/help.cfg:391
+#: data/core/help.cfg:417
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "拥有机械特质的单位免疫毒素、吸血和瘟疫也不起作用。"
 
 #. [topic]
-#: data/core/help.cfg:393
+#: data/core/help.cfg:419
 msgid ""
 "\n"
 "\n"
@@ -1742,18 +1972,18 @@ msgstr ""
 "血、毒素和瘟疫对他们不起作用"
 
 #. [topic]
-#: data/core/help.cfg:398
+#: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "灵巧"
 
 #. [topic]
-#: data/core/help.cfg:399
+#: data/core/help.cfg:425
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr "拥有灵敏特质的单位每次成功远程攻击后造成1点的额外伤害。"
 
 #. [topic]
-#: data/core/help.cfg:401
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "\n"
@@ -1768,19 +1998,19 @@ msgstr ""
 "的精灵超过了他们的兄弟。这些精灵每次用箭攻击都会造成1点的额外伤害。"
 
 #. [topic]
-#: data/core/help.cfg:406
+#: data/core/help.cfg:432
 msgid "Healthy"
 msgstr "活力"
 
 #. [topic]
-#: data/core/help.cfg:407
+#: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr "矮人们以活力著称，有些强壮的矮人甚至可以在移动同时休息"
 
 #. [topic]
-#: data/core/help.cfg:409
+#: data/core/help.cfg:435
 #, fuzzy
 msgid ""
 "\n"
@@ -1794,7 +2024,7 @@ msgstr ""
 "值."
 
 #. [topic]
-#: data/core/help.cfg:417
+#: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit's defensive capability in combat.\n"
@@ -1805,12 +2035,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:423
+#: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:428
+#: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1827,12 +2057,12 @@ msgstr ""
 "大多数单位在草原上有30%到40%的闪避几率。"
 
 #. [topic]
-#: data/core/help.cfg:433
+#: data/core/help.cfg:462
 msgid "Road"
 msgstr "道路"
 
 #. [topic]
-#: data/core/help.cfg:436
+#: data/core/help.cfg:465
 #, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1843,12 +2073,12 @@ msgstr ""
 "<ref>dst=terrain_grassland text=草原</ref>没有两样。"
 
 #. [topic]
-#: data/core/help.cfg:441
+#: data/core/help.cfg:472
 msgid "Forest"
 msgstr "森林"
 
 #. [topic]
-#: data/core/help.cfg:448
+#: data/core/help.cfg:479
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1876,12 +2106,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:453
+#: data/core/help.cfg:486
 msgid "Hills"
 msgstr "丘陵"
 
 #. [topic]
-#: data/core/help.cfg:458
+#: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1900,12 +2130,12 @@ msgstr ""
 "在丘陵地带大多数单位有50%的闪避几率，不过骑兵则被限制在40%，而矮人却享有60%。"
 
 #. [topic]
-#: data/core/help.cfg:463
+#: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "山岭"
 
 #. [topic]
-#: data/core/help.cfg:468
+#: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1924,12 +2154,12 @@ msgstr ""
 "在山岭中大多数单位有60%的闪避几率，而矮人则有70%。"
 
 #. [topic]
-#: data/core/help.cfg:473
+#: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "沼泽"
 
 #. [topic]
-#: data/core/help.cfg:478
+#: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1947,12 +2177,12 @@ msgstr ""
 "在沼泽中大多数单位有30%的闪避几率，人鱼，娜迦和蜥蜴人通常则有60%。"
 
 #. [topic]
-#: data/core/help.cfg:483
+#: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "浅水"
 
 #. [topic]
-#: data/core/help.cfg:488
+#: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1971,12 +2201,12 @@ msgstr ""
 "在浅水中大多数单位有20%到30%的闪避几率，但娜迦和人鱼则有60%。"
 
 #. [topic]
-#: data/core/help.cfg:493
+#: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "深水"
 
 #. [topic]
-#: data/core/help.cfg:498
+#: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1990,12 +2220,12 @@ msgstr ""
 "在深水中人鱼和娜迦都有50%的闪避几率，并且能自由移动。"
 
 #. [topic]
-#: data/core/help.cfg:503
+#: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:508
+#: data/core/help.cfg:551
 #, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
@@ -2011,12 +2241,12 @@ msgstr ""
 "在雪地大多数单位有20%到40%的闪避几率。"
 
 #. [topic]
-#: data/core/help.cfg:513
+#: data/core/help.cfg:558
 msgid "Castle"
 msgstr "城堡"
 
 #. [topic]
-#: data/core/help.cfg:520
+#: data/core/help.cfg:565
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2036,12 +2266,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:525
+#: data/core/help.cfg:572
 msgid "Sand"
 msgstr "沙地"
 
 #. [topic]
-#: data/core/help.cfg:530
+#: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2055,12 +2285,12 @@ msgstr ""
 "在沙地中大多数单位获得20%到40%的闪避几率。"
 
 #. [topic]
-#: data/core/help.cfg:535
+#: data/core/help.cfg:584
 msgid "Desert"
 msgstr "沙漠"
 
 #. [topic]
-#: data/core/help.cfg:538
+#: data/core/help.cfg:587
 #, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -2071,12 +2301,12 @@ msgstr ""
 "<ref>dst=terrain_sand text=沙地</ref>。"
 
 #. [topic]
-#: data/core/help.cfg:543
+#: data/core/help.cfg:594
 msgid "Cave"
 msgstr "洞穴"
 
 #. [topic]
-#: data/core/help.cfg:548
+#: data/core/help.cfg:599
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -2096,12 +2326,12 @@ msgstr ""
 "大部分兵种在洞穴中有20%到40%的闪避几率，而矮人则有50%。"
 
 #. [topic]
-#: data/core/help.cfg:553
+#: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "岩石洞穴"
 
 #. [topic]
-#: data/core/help.cfg:558
+#: data/core/help.cfg:611
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2123,13 +2353,13 @@ msgstr ""
 "大部分兵种在岩石洞穴中有50%的闪避几率；骑兵只有40%，而矮人则有60%。"
 
 #. [topic]
-#: data/core/help.cfg:563
+#: data/core/help.cfg:618
 msgid "Illuminated Cave"
 msgstr "明亮的洞穴"
 
 # not very pleased with "lawful"
 #. [topic]
-#: data/core/help.cfg:566
+#: data/core/help.cfg:621
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2143,12 +2373,12 @@ msgstr ""
 "大部分兵种在洞穴中的闪避几率在20%至40%之间，矮人则有50%。"
 
 #. [topic]
-#: data/core/help.cfg:571
+#: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #. [topic]
-#: data/core/help.cfg:576
+#: data/core/help.cfg:633
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2169,12 +2399,12 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
-#: data/core/help.cfg:581 src/terrain.cpp:146
+#: data/core/help.cfg:640 src/terrain.cpp:146
 msgid "Village"
 msgstr "村庄"
 
 #. [topic]
-#: data/core/help.cfg:588
+#: data/core/help.cfg:647
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2195,12 +2425,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:595
+#: data/core/help.cfg:656
 msgid "Submerged Village"
 msgstr "水中的村庄"
 
 #. [topic]
-#: data/core/help.cfg:600
+#: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2219,12 +2449,12 @@ msgstr ""
 "那迦和人鱼在水中村庄有60%的闪避率, 然而陆地为家的单位只得到较低程度的保护."
 
 #. [topic]
-#: data/core/help.cfg:605
+#: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:608
+#: data/core/help.cfg:671
 #, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
@@ -2236,12 +2466,12 @@ msgstr ""
 "在游戏中，只有那些能飞过峡谷的单位可以通过这种地形。"
 
 #. [topic]
-#: data/core/help.cfg:613
+#: data/core/help.cfg:678
 msgid "Lava"
 msgstr "熔岩"
 
 #. [topic]
-#: data/core/help.cfg:616
+#: data/core/help.cfg:681
 #, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
@@ -2257,12 +2487,12 @@ msgstr ""
 "的攻击加乘。"
 
 #. [topic]
-#: data/core/help.cfg:621
+#: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "河滩"
 
 #. [topic]
-#: data/core/help.cfg:624
+#: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2276,12 +2506,12 @@ msgstr ""
 "动最有利的一种。"
 
 #. [topic]
-#: data/core/help.cfg:629
+#: data/core/help.cfg:698
 msgid "Bridge"
 msgstr "桥梁"
 
 #. [topic]
-#: data/core/help.cfg:634
+#: data/core/help.cfg:703
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2303,13 +2533,13 @@ msgstr ""
 "同时占领同一座桥。"
 
 #. [topic]
-#: data/core/help.cfg:639
+#: data/core/help.cfg:710
 #, fuzzy
 msgid "Impassable"
 msgstr "高不可攀的大山"
 
 #. [topic]
-#: data/core/help.cfg:642
+#: data/core/help.cfg:713
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2319,12 +2549,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:653
+#: data/core/help.cfg:726
 msgid "General commands"
 msgstr "常规指令"
 
 #. [topic]
-#: data/core/help.cfg:658
+#: data/core/help.cfg:731
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2335,7 +2565,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:662
+#: data/core/help.cfg:735
 #, fuzzy
 msgid ""
 "\n"
@@ -2352,7 +2582,7 @@ msgstr ""
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
 #. [topic]
-#: data/core/help.cfg:665
+#: data/core/help.cfg:738
 #, fuzzy
 msgid ""
 "\n"
@@ -2371,7 +2601,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:668
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2382,7 +2612,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:671
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2393,7 +2623,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:674
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2404,7 +2634,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:677
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -2415,7 +2645,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:680
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2426,7 +2656,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:683
+#: data/core/help.cfg:756
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2437,7 +2667,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:684
+#: data/core/help.cfg:757
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -2446,12 +2676,12 @@ msgstr ""
 "保存游戏并退出当前场景（无提示窗口）。"
 
 #. [topic]
-#: data/core/help.cfg:690
+#: data/core/help.cfg:765
 msgid "Multiplayer commands"
 msgstr "多人对战指令"
 
 #. [topic]
-#: data/core/help.cfg:694
+#: data/core/help.cfg:769
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2463,7 +2693,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:697
+#: data/core/help.cfg:772
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2479,7 +2709,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:700
+#: data/core/help.cfg:775
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2493,7 +2723,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:703
+#: data/core/help.cfg:778
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2506,7 +2736,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:704
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -2515,12 +2745,12 @@ msgstr ""
 "屏蔽/取消屏蔽所有观察者。"
 
 #. [topic]
-#: data/core/help.cfg:709
+#: data/core/help.cfg:786
 msgid "Debug mode commands"
 msgstr "除错模式指令"
 
 #. [topic]
-#: data/core/help.cfg:713
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2532,7 +2762,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:716
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2543,7 +2773,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:719
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2554,7 +2784,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:722
+#: data/core/help.cfg:799
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2565,7 +2795,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:725
+#: data/core/help.cfg:802
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2576,7 +2806,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:728
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2587,7 +2817,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:729
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3212,97 +3442,97 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "毒素此刻正渗透到这个单位的全身。"
 
 #. [object]
-#: data/core/macros/items.cfg:294
+#: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "圣水"
 
 #. [object]
-#: data/core/macros/items.cfg:297
+#: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一幕开始."
 
 #. [object]
-#: data/core/macros/items.cfg:298
+#: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "我不适合用这件物品！让别人去用吧。"
 
 #. [object]
-#: data/core/macros/items.cfg:333
+#: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "力量药剂"
 
 #. [object]
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "饮用者获得力量。"
 
 #. [object]
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "衰退药剂"
 
 #. [object]
-#: data/core/macros/items.cfg:380
+#: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "这个可怜的家伙喝了一些不好的东西。"
 
 #. [object]
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "恢复戒指"
 
 #. [object]
-#: data/core/macros/items.cfg:418
+#: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "戒指会让持有人每回合恢复一些生命值。"
 
 #. [object]
-#: data/core/macros/items.cfg:455
+#: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "迟缓戒指"
 
 #. [object]
-#: data/core/macros/items.cfg:458
+#: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "戒指持有人行动变慢。"
 
 #. [object]
-#: data/core/macros/items.cfg:493
+#: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "疾速法杖"
 
 #. [object]
-#: data/core/macros/items.cfg:496
+#: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "法杖让持有者加速移动。"
 
 #. [object]
-#: data/core/macros/items.cfg:497
+#: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "只有懂得魔法的人才可以使用本物品。"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Only the mermen can use this item!"
 msgstr "只有人鱼可以使用本物品！"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:518
+#: data/core/macros/items.cfg:514
 msgid "Storm Trident"
 msgstr "风暴三叉戟"
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:517
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "这柄三叉戟能让人鱼向敌人射出闪电。"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:521
 msgid "storm trident"
 msgstr "风暴三叉戟"
 
@@ -4736,83 +4966,92 @@ msgid "race^Elves"
 msgstr "精灵"
 
 #. [race]
-#: data/core/units.cfg:94
+#: data/core/units.cfg:100
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the latter’s "
 "unusually long life - most, unless claimed by illness, accident or war, live "
-"a full two centuries. While some elves possessing a high magical aptitude "
-"have been known to live an additional full century, most elves begin to grow "
-"physically frail approaching their twentieth decade and pass away within a "
-"few decades after. Elves are naturally imbued with magic to a small degree. "
-"Though most are unable to channel it directly, its latent presence gives "
-"them their keen senses and long life. Many elves have magic-driven talents "
-"such as marksmanship or stealth, allowing them to achieve tasks that most "
-"normal beings would find astonishing. Those elves that learn to wield this "
-"power in more general ways can become truly formidable in its use. Many "
-"choose to use their gift to heal others.\n"
+"a full two and a half centuries. While some elves possessing a high magical "
+"aptitude have been known to live an additional full century, most elves "
+"begin to grow physically frail at some point between 250 and 300 years of "
+"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"\n"
+"Elves are naturally imbued with magic to a small degree. Though most are "
+"unable to channel it directly, its latent presence gives them their keen "
+"senses and long life. Many elves have magic-driven talents such as "
+"marksmanship or stealth, allowing them to achieve tasks that most normal "
+"beings would find astonishing. Those elves that learn to wield this power in "
+"more general ways can become truly formidable in its use. Many choose to use "
+"their gift to heal others.\n"
+"\n"
+"A few elves, venturing far down the paths of magic and mysticism, become "
+"sensitive to the presence of cold iron and can even be burned by it. Elvish "
+"legend hints that this was more common in the far past.\n"
 "\n"
 "Elves spend much of their time honing their talents and skills. Those not "
 "adept at the magical arts typically devote their time honing their physical "
 "skills. As a result, elves excel at archery, which is perhaps their most "
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
-"unexplained affection for unspoiled nature. They often feel uncomfortable in "
-"open unvegetated spaces, which leads them to make their homes in the forests "
-"of the Great Continent, such as Aethenwood in the southwest and Wesmere in "
-"the northwest. Elves are the eldest race of the continent, with the possible "
-"exception of trolls. Many of their settlements cannot be reliably dated, "
-"undoubtedly having existed for over a millennium."
+"intense affection for unspoiled nature. They often feel uncomfortable in "
+"open unvegetated spaces. They live primarily in the forests of the Great "
+"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
+"the great northern woods of which the Lintanir Forest is the southernmost "
+"edge. \n"
+"\n"
+"Elves are the eldest race of the continent, with the possible exception of "
+"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
+"having existed for over a millennium."
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:103
+#: data/core/units.cfg:109
 msgid "race^Goblin"
 msgstr "地精"
 
 #. [race]: description=
-#: data/core/units.cfg:104
+#: data/core/units.cfg:110
 msgid "race+female^Goblin"
 msgstr "地精"
 
 #. [race]: description=
-#: data/core/units.cfg:105
+#: data/core/units.cfg:111
 msgid "race^Goblins"
 msgstr "地精"
 
 #. [race]: description=
-#: data/core/units.cfg:117
+#: data/core/units.cfg:123
 msgid "race^Gryphon"
 msgstr "狮鹫"
 
 #. [race]: description=
-#: data/core/units.cfg:118
+#: data/core/units.cfg:124
 msgid "race+female^Gryphon"
 msgstr "狮鹫"
 
 #. [race]: description=
-#: data/core/units.cfg:119
+#: data/core/units.cfg:125
 msgid "race^Gryphons"
 msgstr "狮鹫"
 
 #. [race]
-#: data/core/units.cfg:127
+#: data/core/units.cfg:133
 msgid "race^Human"
 msgstr "人类"
 
 #. [race]
-#: data/core/units.cfg:128
+#: data/core/units.cfg:134
 msgid "race+female^Human"
 msgstr "人类"
 
 #. [race]
-#: data/core/units.cfg:129
+#: data/core/units.cfg:135
 msgid "race^Humans"
 msgstr "人类"
 
 #. [race]
-#: data/core/units.cfg:136
+#: data/core/units.cfg:142
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -4854,105 +5093,105 @@ msgid ""
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:143
+#: data/core/units.cfg:149
 msgid "race^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: description=
-#: data/core/units.cfg:144
+#: data/core/units.cfg:150
 msgid "race+female^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: description=
-#: data/core/units.cfg:145
+#: data/core/units.cfg:151
 msgid "race^Saurians"
 msgstr "蜥蜴人"
 
 #. [race]: description=
-#: data/core/units.cfg:154
+#: data/core/units.cfg:160
 msgid "race^Mechanical"
 msgstr "机械"
 
 #. [race]: description=
-#: data/core/units.cfg:155
+#: data/core/units.cfg:161
 msgid "race+plural^Mechanical"
 msgstr "机械"
 
 #. [race]: description=
-#: data/core/units.cfg:164
+#: data/core/units.cfg:170
 msgid "race^Merman"
 msgstr "人鱼"
 
 #. [race]: description=
-#: data/core/units.cfg:165
+#: data/core/units.cfg:171
 msgid "race^Mermaid"
 msgstr "人鱼"
 
 #. [race]: description=
-#: data/core/units.cfg:166
+#: data/core/units.cfg:172
 msgid "race^Mermen"
 msgstr "人鱼"
 
 #. [race]: description=
-#: data/core/units.cfg:174
+#: data/core/units.cfg:180
 msgid "race^Monster"
 msgstr "怪物"
 
 #. [race]: description=
-#: data/core/units.cfg:175
+#: data/core/units.cfg:181
 msgid "race^Monsters"
 msgstr "怪物"
 
 #. [race]: description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:188
 msgid "race^Naga"
 msgstr "娜迦"
 
 #. [race]: description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:189
 msgid "race^Nagani"
 msgstr "娜迦"
 
 #. [race]: description=
-#: data/core/units.cfg:184
+#: data/core/units.cfg:190
 msgid "race^Nagas"
 msgstr "娜迦"
 
 #. [race]: description=
-#: data/core/units.cfg:192
+#: data/core/units.cfg:198
 msgid "race^Ogre"
 msgstr "食人魔"
 
 #. [race]: description=
-#: data/core/units.cfg:193
+#: data/core/units.cfg:199
 msgid "race+female^Ogre"
 msgstr "食人魔"
 
 #. [race]: description=
-#: data/core/units.cfg:194
+#: data/core/units.cfg:200
 msgid "race^Ogres"
 msgstr "食人魔"
 
 #. [race]
-#: data/core/units.cfg:202
+#: data/core/units.cfg:208
 msgid "race^Orc"
 msgstr "半兽人"
 
 #. [race]
-#: data/core/units.cfg:203
+#: data/core/units.cfg:209
 msgid "race+female^Orc"
 msgstr "半兽人"
 
 #. [race]
-#: data/core/units.cfg:204
+#: data/core/units.cfg:210
 msgid "race^Orcs"
 msgstr "半兽人"
 
 #. [race]
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans.  They are warlike, savage, and cruel by nature. "
+"and stronger than humans. They are warlike, savage, and cruel by nature. "
 "Their blood is darker and thicker than that of normal humans and they have "
 "little care for personal hygiene or their personal appearance. Although Orcs "
 "are violent even among themselves creatures, they are pack-oriented; an orc "
@@ -5009,22 +5248,22 @@ msgid ""
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:221
+#: data/core/units.cfg:227
 msgid "race^Troll"
 msgstr "巨魔"
 
 #. [race]
-#: data/core/units.cfg:222
+#: data/core/units.cfg:228
 msgid "race+female^Troll"
 msgstr "巨魔"
 
 #. [race]
-#: data/core/units.cfg:223
+#: data/core/units.cfg:229
 msgid "race^Trolls"
 msgstr "巨魔"
 
 #. [race]
-#: data/core/units.cfg:229
+#: data/core/units.cfg:235
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5044,8 +5283,8 @@ msgid ""
 "their home cave. This is until they finally pass away as their bodies "
 "themselves slowly turn into lifeless statues of stone.\n"
 "\n"
-"Trolls are seen by many as being little more than a yet another race of "
-"savage monsters. This common misconception is in part perpetuated by orcs to "
+"Trolls are seen by many as being little more than yet another race of savage "
+"monsters. This common misconception is in part perpetuated by orcs to "
 "persuade trolls to join their armies. Because they are rather simple and do "
 "not understand the ways of other races or sometimes can even tell them "
 "apart, it is usually easy for an orcish band to convince a group of trolls "
@@ -5063,22 +5302,22 @@ msgid ""
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:241
+#: data/core/units.cfg:247
 msgid "race^Undead"
 msgstr "不死族"
 
 #. [race]
-#: data/core/units.cfg:242
+#: data/core/units.cfg:248
 msgid "race+female^Undead"
 msgstr "不死族"
 
 #. [race]
-#: data/core/units.cfg:243
+#: data/core/units.cfg:249
 msgid "race+plural^Undead"
 msgstr "不死族"
 
 #. [race]
-#: data/core/units.cfg:249
+#: data/core/units.cfg:255
 #, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -5110,24 +5349,24 @@ msgstr ""
 "回。它们无意识，是反抗自然的存在。只知道听从召唤者的命令。"
 
 #. [race]: description=
-#: data/core/units.cfg:257
+#: data/core/units.cfg:263
 #, fuzzy
 msgid "race^Wolf"
 msgstr "精灵"
 
 #. [race]: description=
-#: data/core/units.cfg:258
+#: data/core/units.cfg:264
 #, fuzzy
 msgid "race^Wolves"
 msgstr "精灵"
 
 #. [race]: description=
-#: data/core/units.cfg:266
+#: data/core/units.cfg:272
 msgid "race^Wose"
 msgstr "树人"
 
 #. [race]: description=
-#: data/core/units.cfg:267
+#: data/core/units.cfg:273
 msgid "race^Woses"
 msgstr "树人"
 
@@ -5852,16 +6091,6 @@ msgstr ""
 "很少有单位在水中有高防御值；沿岸排成一条线的攻击者可以给对手造成巨大的伤害。"
 "精灵和矮人可以类似地使用森林、山地边界。"
 
-#. [object]
-#: data/scenario-test.cfg:250
-msgid "Anti-Warlord Weaponry activated!"
-msgstr ""
-
-#. [object]
-#: data/scenario-test.cfg:273 data/scenario-test.cfg:290
-msgid "Anti-Warlord Weaponry deactivated."
-msgstr ""
-
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
@@ -5891,8 +6120,8 @@ msgstr "结束场景"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
-#: src/unit.cpp:2826
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2623
+#: src/unit.cpp:2797
 msgid "HP"
 msgstr "生命值"
 
@@ -6200,7 +6429,7 @@ msgid "Do you still want to download it?"
 msgstr "您真的想下载这个游戏？"
 
 #: src/addon_management.cpp:471 src/addon_management.cpp:545
-#: src/multiplayer.cpp:337 src/multiplayer_ui.cpp:73
+#: src/multiplayer.cpp:343 src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "连接超时"
 
@@ -6447,7 +6676,7 @@ msgstr "插件已删除"
 msgid "Add-on could not be deleted properly:"
 msgstr "无法删除插件——没有找到某个文件。"
 
-#: src/ai.cpp:1650
+#: src/ai.cpp:1655
 msgid "Unknown unit type : "
 msgstr "未知单位"
 
@@ -8329,19 +8558,19 @@ msgstr "名称："
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知场景： '"
 
-#: src/playmp_controller.cpp:197
-msgid "Undoing moves not yet transmited to server."
+#: src/playmp_controller.cpp:205
+msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:277
+#: src/playmp_controller.cpp:285
 msgid "End scenario"
 msgstr "结束本场景"
 
-#: src/playmp_controller.cpp:381
+#: src/playmp_controller.cpp:389
 msgid "Waiting for next scenario..."
 msgstr "等待下一幕游戏开始..."
 
-#: src/playmp_controller.cpp:505
+#: src/playmp_controller.cpp:513
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8441,7 +8670,7 @@ msgid ""
 "want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。您想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:646
+#: src/playsingle_controller.cpp:652
 msgid "It is now $name|'s turn"
 msgstr "轮到$name|了"
 
@@ -8719,31 +8948,31 @@ msgstr "未知单位种类 '$type|'"
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
+#: src/unit.cpp:2580 src/unit.cpp:2785 src/unit.cpp:2841
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2620
+#: src/unit.cpp:2591
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2656
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2703 src/unit.cpp:2841
+#: src/unit.cpp:2674 src/unit.cpp:2812
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2833
+#: src/unit.cpp:2804
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2849
+#: src/unit.cpp:2820
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2879
+#: src/unit.cpp:2850
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -8921,9 +9150,6 @@ msgstr "开启摘要上传模式"
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr ""
 #~ "使用内置的服务器做主机. 支持的不是很好. 最好用专用的服务器'wesnothd'."
-
-#~ msgid "Local Game"
-#~ msgstr "本机游戏"
 
 #~ msgid ""
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"

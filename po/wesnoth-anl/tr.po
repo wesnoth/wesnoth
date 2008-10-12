@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-09 23:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:35+0200\n"
 "PO-Revision-Date: 2008-10-04 19:14+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -189,6 +189,13 @@ msgid "Return to menu"
 msgstr "Menüye dön"
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:15
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+msgid "Peasants"
+msgstr "Köylüler"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
 msgid ""
 "Peasants are your workers. Depending on the terrain, right-clicking on a "
@@ -200,6 +207,13 @@ msgstr ""
 "araziyi şekillendirebilir veya toprağa birşeyler ekebilirsiniz."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:25
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+msgid "Mages"
+msgstr "Büyücüler"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
@@ -209,6 +223,13 @@ msgstr ""
 "çiftliklerinizin ve askerlerinizin gelişmesine katkıda bulunurlar."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:35
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+msgid "Farms"
+msgstr "Tarlalar"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
@@ -216,6 +237,13 @@ msgid ""
 msgstr ""
 "Tarlalar sadece çayırlık alanlar ekilerek elde edilir. Bir köylüyü bir "
 "tarlaya götürerek ekini biçip altın kazanabilirsiniz."
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:45
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+msgid "Villages"
+msgstr "Köyler"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
@@ -229,6 +257,13 @@ msgstr ""
 "kurabilirsiniz."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:55
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+msgid "Mines"
+msgstr "Madenler"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
@@ -236,6 +271,13 @@ msgid ""
 msgstr ""
 "Madenler sadece dağlarda ve tepelerde kurulabilir. Madenlerdeki bir köylü "
 "her elin başında bir miktar altın kazanmanızı sağlar."
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:65
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+msgid "Universities"
+msgstr "Üniversiteler"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
@@ -251,6 +293,15 @@ msgstr ""
 "belirleyebilirsiniz."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:75
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
+msgid "Diplomacy"
+msgstr "Diplomasi"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
 msgid ""
 "Right-clicking on your leader when in a univerity allows you to select "
@@ -258,6 +309,17 @@ msgid ""
 msgstr ""
 "Üniversitede bulunan liderinize sağ tıklayıp diplomatik seçeneklerden birini "
 "seçebilirsiniz."
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:85
+msgid "Help"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:101
+#, fuzzy
+msgid "A New Land - Help"
+msgstr "4o - Yeni Bir Ülke"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
@@ -268,41 +330,6 @@ msgstr "Bir konu seçiniz."
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
 msgid "Done"
 msgstr "Bitti"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
-msgid "Peasants"
-msgstr "Köylüler"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
-msgid "Mages"
-msgstr "Büyücüler"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
-msgid "Farms"
-msgstr "Tarlalar"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
-msgid "Villages"
-msgstr "Köyler"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
-msgid "Mines"
-msgstr "Madenler"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
-msgid "Universities"
-msgstr "Üniversiteler"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
-msgid "Diplomacy"
-msgstr "Diplomasi"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
@@ -332,7 +359,7 @@ msgid ""
 msgstr ""
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:188
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
 msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
@@ -341,7 +368,7 @@ msgstr ""
 "Tarımsal bilgini paşlaş"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:193
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
 msgid ""
 "$player_name\n"
 "Share knowledge of mining"
@@ -350,7 +377,7 @@ msgstr ""
 "Madencilik bilgini paylaş"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
 msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
@@ -359,18 +386,25 @@ msgstr ""
 "Askeri bilgini paylaş"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+msgid "Diplomatic Options"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
 msgstr "Ne yapayım?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 msgid "Nothing"
 msgstr "Hiçbir şey"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:233
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
 msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
@@ -379,18 +413,18 @@ msgstr ""
 "Başka bir oyuncuya 20 altın ver"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:243
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
 msgstr "Kime bağış yapacaksınız?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
 msgstr "Geri"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:266
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
 msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
@@ -399,12 +433,12 @@ msgstr ""
 "Araştırmasında bir müttefikine yardım et"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:276
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
 msgstr "Bilgini kiminle paylaşacaksın?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:313
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
 msgid ""
 "Negotiate with the Dwarves\n"
 "Lets you recruit a Dwarvish unit\n"
@@ -417,7 +451,7 @@ msgstr ""
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:339
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
 msgid ""
 "Negotiate with the Elves\n"
 "Lets you recruit an Elvish unit\n"
@@ -430,7 +464,13 @@ msgstr ""
 "$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
+msgid "Negotiation Complete"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
 msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -439,7 +479,7 @@ msgstr ""
 "kardeşlerimi askere almak istersiniz?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:397
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
 msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -447,10 +487,34 @@ msgstr ""
 "Görüşmemiz tamamlandı. Elfler yanınızda memnuniyetle savaşacak. Bizden "
 "kimleri askere almak istersiniz?"
 
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
+msgid "Choose New Recruit"
+msgstr ""
+
+#. [message]: speaker=unit
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:208
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:225
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
+msgid "Study Complete"
+msgstr ""
+
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
 msgstr "Hangi birim türünü askere alabilmeyi istersiniz?"
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:54
+msgid "Oversee Research"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
+msgid "Research"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:99
@@ -551,6 +615,11 @@ msgstr "Artık özgürsün!"
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Ağdan kurtardığınız birim size katılmayı kabul etti."
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
+msgid "Get to Work!"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43

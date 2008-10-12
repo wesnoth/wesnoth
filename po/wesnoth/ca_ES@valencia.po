@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-07 16:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:33+0200\n"
 "PO-Revision-Date: 2008-10-12 10:10+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -67,6 +67,230 @@ msgstr ""
 msgid "Underground"
 msgstr "Sota terra"
 
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:29
+#, fuzzy
+msgid "define ai location"
+msgstr "Traducció a l'indonesi"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:35
+#, fuzzy
+msgid "Location name?"
+msgstr "Partida local"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:45
+msgid "Range in Hexfields?"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:59
+msgid "enable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:73
+msgid "disable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:87
+#, fuzzy
+msgid "Give new orders"
+msgstr "Cancel·la"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:131
+msgid "Command $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:161
+msgid "Which ally should i command?"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:228
+msgid "How important is this command?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:232
+msgid "It is very important.(value 90)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:239
+msgid "It is important.(value 50)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:246
+msgid "It is not so important.(value 25)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:253
+msgid "It has the importance ..."
+msgstr ""
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:259
+#, fuzzy
+msgid "value: "
+msgstr "Nom: "
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:327
+msgid ""
+"Which kind of order do you want me to obey?\n"
+"@$ai_controller.current_orders"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:338
+msgid "#I revoke all your commands!"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:383
+#, fuzzy
+msgid "Defeat an enemy Leader!"
+msgstr ""
+"Victòria:\n"
+"@Derrota els líders enemics"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:392
+msgid "Defeat $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:415
+msgid "I am already attacking $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:430
+msgid "Which enemy Leaders do you want me to defeat?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:440
+msgid "Protect an allied leader!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:447
+msgid "Protect $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:471
+msgid "I am already protecting $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:498
+msgid "Which allied leader should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:509
+msgid "Defend a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:517
+msgid "Defend the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:540
+msgid "I am allready defending $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:557
+msgid "Which location should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:568
+msgid "Go to a location!(only the leader)"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:576
+msgid "Goto the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:597
+msgid "I am allready going to $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:611
+msgid "To which location shall i move?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:622
+msgid "Avoid a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:630
+msgid "Avoid the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:651
+msgid ""
+"I am allready ordered to avoid $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:664
+msgid "Which location shall i avoid?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:732
+msgid "Send your army to a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:740
+msgid "Move to the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:784
+msgid ""
+"I am allready ordered to send all men to $ai_controller.locations[$location]."
+"name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:793
+msgid "Which location shall i send my men to?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:810
+msgid ""
+"@I don't want to be in command any more! Take care of yourselves! (Disables "
+"AI_CONTROLLER)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:824
+msgid "@Execute my orders!"
+msgstr ""
+
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:302
@@ -89,8 +313,8 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Berserk:\n"
-"Tant si s'usa ofensiva com defensivament, este atac allarga la lluita fins "
-"a la mort d'un dels dos combatents, o fins que s'hagen produït 30 rondes "
+"Tant si s'usa ofensiva com defensivament, este atac allarga la lluita fins a "
+"la mort d'un dels dos combatents, o fins que s'hagen produït 30 rondes "
 "d'atacs."
 
 #. [chance_to_hit]
@@ -411,7 +635,13 @@ msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
 #. [about]
-#: data/core/about.cfg:1996
+#: data/core/about.cfg:1993
+#, fuzzy
+msgid "RACV's Translation"
+msgstr "Traducció al xinès"
+
+#. [about]
+#: data/core/about.cfg:2000
 msgid "Bots"
 msgstr "Robots"
 
@@ -428,14 +658,14 @@ msgstr "Introducció"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:27 data/core/help.cfg:126
+#: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "Joc"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]
 #. [topic]
-#: data/core/help.cfg:33 data/core/help.cfg:323 src/menu_events.cpp:997
+#: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:997
 msgid "Traits"
 msgstr "Trets"
 
@@ -458,13 +688,13 @@ msgstr "Atacs especials"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:67 data/core/help.cfg:414
+#: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "Terrenys"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:74 data/core/help.cfg:647
+#: data/core/help.cfg:74 data/core/help.cfg:720
 msgid "Commands"
 msgstr "Ordres"
 
@@ -498,12 +728,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:110
+#: data/core/help.cfg:111
 msgid "Unknown Unit"
 msgstr "Unitat desconeguda"
 
 #. [topic]
-#: data/core/help.cfg:113
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -516,12 +746,12 @@ msgstr ""
 "per tal de poder-ne veure la descripció."
 
 #. [topic]
-#: data/core/help.cfg:118
+#: data/core/help.cfg:119
 msgid "Overview"
 msgstr "Descripció"
 
 #. [topic]
-#: data/core/help.cfg:121
+#: data/core/help.cfg:122
 msgid ""
 "\n"
 "\n"
@@ -541,12 +771,12 @@ msgstr ""
 "d'aprendre però tot un repte si es vol dominar."
 
 #. [topic]
-#: data/core/help.cfg:132
+#: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "Fonaments del joc"
 
 #. [topic]
-#: data/core/help.cfg:133
+#: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -554,14 +784,14 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Estes pàgines resumeixen tot el que necessiteu saber per jugar a Batalla "
-"per Wesnoth. S'explica com jugar i els mecanismes bàsics que hi ha darrera "
-"el joc. Mentre jugueu, s'anirà afegint nova informació a mesura que "
-"descobriu nous aspectes. Recordeu que això és només un resum. Per a "
-"situacions especials o excepcions, seguiu els enllaços que s'inclouen."
+"Estes pàgines resumeixen tot el que necessiteu saber per jugar a Batalla per "
+"Wesnoth. S'explica com jugar i els mecanismes bàsics que hi ha darrera el "
+"joc. Mentre jugueu, s'anirà afegint nova informació a mesura que descobriu "
+"nous aspectes. Recordeu que això és només un resum. Per a situacions "
+"especials o excepcions, seguiu els enllaços que s'inclouen."
 
 #. [topic]
-#: data/core/help.cfg:135
+#: data/core/help.cfg:137
 msgid ""
 "\n"
 "\n"
@@ -583,7 +813,7 @@ msgstr ""
 "italic>."
 
 #. [topic]
-#: data/core/help.cfg:138
+#: data/core/help.cfg:140
 #, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -598,12 +828,12 @@ msgstr ""
 "<ref>dst=abilities text='habilitats'</ref> per primera vegada."
 
 #. [topic]
-#: data/core/help.cfg:143
+#: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "Quant a Wesnoth"
 
 #. [topic]
-#: data/core/help.cfg:144
+#: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -621,7 +851,7 @@ msgstr ""
 "connexió a internet, podreu jugar amb gent de tot el món."
 
 #. [topic]
-#: data/core/help.cfg:146
+#: data/core/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -638,12 +868,12 @@ msgstr ""
 "de reincorporar-les en escenaris posteriors."
 
 #. [topic]
-#: data/core/help.cfg:151
+#: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr "Victòria i derrota"
 
 #. [topic]
-#: data/core/help.cfg:152
+#: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -654,7 +884,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:154
+#: data/core/help.cfg:157
 msgid ""
 "\n"
 "\n"
@@ -665,12 +895,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:159
+#: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "Recluta i reincorpora"
 
 #. [topic]
-#: data/core/help.cfg:160
+#: data/core/help.cfg:165
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -696,7 +926,7 @@ msgstr ""
 "<italic>text='D\\'acord'</italic>, reclutareu la unitat seleccionada."
 
 #. [topic]
-#: data/core/help.cfg:162
+#: data/core/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -715,7 +945,7 @@ msgstr ""
 "que tingueu."
 
 #. [topic]
-#: data/core/help.cfg:164
+#: data/core/help.cfg:169
 #, fuzzy
 msgid ""
 "\n"
@@ -729,7 +959,7 @@ msgstr ""
 "aleatoris que modifiquen les seues estadístiques."
 
 #. [topic]
-#: data/core/help.cfg:166
+#: data/core/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -745,7 +975,7 @@ msgstr ""
 "escenaris anteriors."
 
 #. [topic]
-#: data/core/help.cfg:168
+#: data/core/help.cfg:173
 #, fuzzy
 msgid ""
 "\n"
@@ -762,12 +992,12 @@ msgstr ""
 "informació."
 
 #. [topic]
-#: data/core/help.cfg:173
+#: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "Orbes"
 
 #. [topic]
-#: data/core/help.cfg:174
+#: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -776,37 +1006,37 @@ msgstr ""
 "que estan sota el vostre control, este orbe pot ser:"
 
 #. [topic]
-#: data/core/help.cfg:175
+#: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "Verd, si encara no s'ha desplaçat."
 
 #. [topic]
-#: data/core/help.cfg:176
+#: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "Groc, si s'ha mogut però encara pot continuar o atacar."
 
 #. [topic]
-#: data/core/help.cfg:177
+#: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "Vermell, si ja ha esgotat els seus moviments en este torn."
 
 #. [topic]
-#: data/core/help.cfg:178
+#: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "L'orbe és blau si la unitat és aliada però no la controleu."
 
 #. [topic]
-#: data/core/help.cfg:179
+#: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Les unitats enemigues no tenen orbe."
 
 #. [topic]
-#: data/core/help.cfg:184
+#: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "Salut i experiència"
 
 #. [topic]
-#: data/core/help.cfg:185
+#: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -820,7 +1050,7 @@ msgstr ""
 "rivals."
 
 #. [topic]
-#: data/core/help.cfg:189
+#: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -830,7 +1060,7 @@ msgstr ""
 "nombres (el valor actual i el valor màxim que pot tenir la unitat)."
 
 #. [topic]
-#: data/core/help.cfg:190
+#: data/core/help.cfg:199
 #, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -844,12 +1074,12 @@ msgstr ""
 "s'anirà emblanquint a mesura que s'aprope a l'avanç de nivell."
 
 #. [topic]
-#: data/core/help.cfg:195
+#: data/core/help.cfg:206
 msgid "Movement"
 msgstr "Moviment"
 
 #. [topic]
-#: data/core/help.cfg:196
+#: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -880,7 +1110,7 @@ msgstr ""
 "unitat, però encara li és permès d'atacar."
 
 #. [topic]
-#: data/core/help.cfg:198
+#: data/core/help.cfg:209
 msgid ""
 "\n"
 "\n"
@@ -906,7 +1136,7 @@ msgstr ""
 "italic>."
 
 #. [topic]
-#: data/core/help.cfg:200
+#: data/core/help.cfg:211
 #, fuzzy
 msgid ""
 "\n"
@@ -922,13 +1152,13 @@ msgstr ""
 "\n"
 "Un altre factor a tenir en compte són les  zones de control. Cada unitat "
 "genera una zona de control sobre els hexàgons que té al voltant. Si una "
-"unitat enemiga entra en esta zona, acaba el seu moviment. Aprendre com "
-"fer servir les zones de control és un avantatge important a Wesnoth ja que "
-"només les unitats amb l'habilitat d'<ref>dst=ability_skirmisher "
-"text='esquivar'</ref> poden ignorar estes zones."
+"unitat enemiga entra en esta zona, acaba el seu moviment. Aprendre com fer "
+"servir les zones de control és un avantatge important a Wesnoth ja que només "
+"les unitats amb l'habilitat d'<ref>dst=ability_skirmisher text='esquivar'</"
+"ref> poden ignorar estes zones."
 
 #. [topic]
-#: data/core/help.cfg:202
+#: data/core/help.cfg:213
 msgid ""
 "\n"
 "\n"
@@ -943,12 +1173,12 @@ msgstr ""
 "vostres unitats no estiguessin al mapa."
 
 #. [topic]
-#: data/core/help.cfg:207
+#: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "Ocultació i boira de guerra"
 
 #. [topic]
-#: data/core/help.cfg:210
+#: data/core/help.cfg:223
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -973,21 +1203,20 @@ msgstr ""
 "En alguns escenaris hi haurà parts del mapa amagades. Hi ha dos mecanismes "
 "que es poden utilitzar per separat o conjuntament. L'ocultació amaga tan el "
 "terreny com qualsevol unitat a la localització. No obtant això, un cop "
-"netejada, sempre podreu veure esta localització. La boira de batalla "
-"només amaga les unitats i la propietats dels llogarets (que no siguen "
-"vostres o dels aliats). La boira de batalla es neteja temporalment quan "
-"teniu unitats a prop, però torna quan estes marxen. Les unitats netegen "
-"tant l'ocultació com la boira de guerra. Cada unitat neteja les "
-"localitzacions adjacents al moviment d'un torn (ignorant les zones de "
-"control i les unitats enemigues)."
+"netejada, sempre podreu veure esta localització. La boira de batalla només "
+"amaga les unitats i la propietats dels llogarets (que no siguen vostres o "
+"dels aliats). La boira de batalla es neteja temporalment quan teniu unitats "
+"a prop, però torna quan estes marxen. Les unitats netegen tant l'ocultació "
+"com la boira de guerra. Cada unitat neteja les localitzacions adjacents al "
+"moviment d'un torn (ignorant les zones de control i les unitats enemigues)."
 
 #. [topic]
-#: data/core/help.cfg:215
+#: data/core/help.cfg:230
 msgid "Combat"
 msgstr "Combat"
 
 #. [topic]
-#: data/core/help.cfg:216
+#: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -1009,7 +1238,7 @@ msgstr ""
 "o ullals; i a distància, amb arcs, llances o boles de foc."
 
 #. [topic]
-#: data/core/help.cfg:218
+#: data/core/help.cfg:233
 msgid ""
 "\n"
 "\n"
@@ -1020,7 +1249,7 @@ msgstr ""
 "<header>text='Orde i nombre dels atacs'</header>"
 
 #. [topic]
-#: data/core/help.cfg:220
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1044,7 +1273,7 @@ msgstr ""
 "mena de ferida a l'adversari."
 
 #. [topic]
-#: data/core/help.cfg:222
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "\n"
@@ -1055,7 +1284,7 @@ msgstr ""
 "<header>text='Possibilitat de colpejar'</header>"
 
 #. [topic]
-#: data/core/help.cfg:224
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -1072,14 +1301,14 @@ msgstr ""
 "La possibilitat de colpejar una unitat està basada únicament en el seu grau "
 "de defensa en el terreny en el que es troba. Podeu veure la seua defensa a "
 "la barra d'estat o bé fent clic amb el botó dret sobre una unitat i "
-"seleccionant l'opció <italic>text='Descriu la unitat'</italic>. Per "
-"exemple, els elfs tenen un grau de defensa del 70% als boscos, que vol dir "
-"que si una unitat els ataca només tindrà un 30% de possibilitats d'encertar. "
-"De la mateixa manera, les possibilitats dels elfs de colpejar l'enemic "
-"dependran del terreny en que es trobi l'atacant."
+"seleccionant l'opció <italic>text='Descriu la unitat'</italic>. Per exemple, "
+"els elfs tenen un grau de defensa del 70% als boscos, que vol dir que si una "
+"unitat els ataca només tindrà un 30% de possibilitats d'encertar. De la "
+"mateixa manera, les possibilitats dels elfs de colpejar l'enemic dependran "
+"del terreny en que es trobi l'atacant."
 
 #. [topic]
-#: data/core/help.cfg:226
+#: data/core/help.cfg:241
 #, fuzzy
 msgid ""
 "\n"
@@ -1091,15 +1320,14 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Hi ha dos excepcions a esta regla: <ref>dst=weaponspecial_magical "
-"text='els atacs màgics'</ref>, i l'habilitat de "
-"<ref>dst=weaponspecial_marksman text='tirador'</ref>. Els atacs màgics "
-"sempre tenen un 70% de possibilitats de colpejar, siga quin siga el "
-"terreny, mentre que amb l'habilitat de tirador les possibilitats són del 60% "
-"sempre que s'usi ofensivament."
+"Hi ha dos excepcions a esta regla: <ref>dst=weaponspecial_magical text='els "
+"atacs màgics'</ref>, i l'habilitat de <ref>dst=weaponspecial_marksman "
+"text='tirador'</ref>. Els atacs màgics sempre tenen un 70% de possibilitats "
+"de colpejar, siga quin siga el terreny, mentre que amb l'habilitat de "
+"tirador les possibilitats són del 60% sempre que s'usi ofensivament."
 
 #. [topic]
-#: data/core/help.cfg:228
+#: data/core/help.cfg:243
 msgid ""
 "\n"
 "\n"
@@ -1110,7 +1338,7 @@ msgstr ""
 "<header>text=Mal</header>"
 
 #. [topic]
-#: data/core/help.cfg:230
+#: data/core/help.cfg:245
 #, fuzzy
 msgid ""
 "\n"
@@ -1134,7 +1362,7 @@ msgstr ""
 "d'atac."
 
 #. [topic]
-#: data/core/help.cfg:232
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -1152,12 +1380,12 @@ msgstr ""
 "per l'atacant i pel defensor quan la unitat amb esta habilitat ataca."
 
 #. [topic]
-#: data/core/help.cfg:237
+#: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "Tipus de mal i resistència"
 
 #. [topic]
-#: data/core/help.cfg:238
+#: data/core/help.cfg:254
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -1167,11 +1395,11 @@ msgid ""
 msgstr ""
 "A Wesnoth hi ha tres tipus de mal associats amb atacs físics: tallant, "
 "perforant i impactant. D'altra banda, també hi ha tres tipus de mal "
-"associats a la màgia: foc, fred i arcà. Cada unitat té resistències a "
-"estos atacs que alteren el mal que poden rebre."
+"associats a la màgia: foc, fred i arcà. Cada unitat té resistències a estos "
+"atacs que alteren el mal que poden rebre."
 
 #. [topic]
-#: data/core/help.cfg:240
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1185,12 +1413,12 @@ msgstr ""
 "\n"
 "Les resistències funcionen de manera molt simple: si una unitat té una "
 "resistència del 40% contra un cert tipus de mal, aleshores patirà un 40% "
-"menys de mal quan siga colpejada per este tipus. A més, és possible "
-"tindre debilitat; si una unitat té -100% de resistència contra un determinat "
-"tipus de mal, patirà un 100% més de mal quan siga colpejada."
+"menys de mal quan siga colpejada per este tipus. A més, és possible tindre "
+"debilitat; si una unitat té -100% de resistència contra un determinat tipus "
+"de mal, patirà un 100% més de mal quan siga colpejada."
 
 #. [topic]
-#: data/core/help.cfg:242
+#: data/core/help.cfg:258
 msgid ""
 "\n"
 "\n"
@@ -1205,7 +1433,7 @@ msgstr ""
 "els atacs arcans."
 
 #. [topic]
-#: data/core/help.cfg:244
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1219,12 +1447,12 @@ msgstr ""
 "s'aplica fins i tot si el defensor té un 100% de resistència al tipus de mal."
 
 #. [topic]
-#: data/core/help.cfg:249
+#: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "Hora del dia"
 
 #. [topic]
-#: data/core/help.cfg:253
+#: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1237,7 +1465,7 @@ msgstr ""
 " Les unitats neutrals no es veuen afectades per l'hora del dia."
 
 #. [topic]
-#: data/core/help.cfg:256
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1253,42 +1481,42 @@ msgstr ""
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
+#: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Alba"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:257 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Matí"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:258 data/core/macros/schedules.cfg:29
+#: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "Migdia"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:259 data/core/macros/schedules.cfg:39
+#: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "Vespre"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:260 data/core/macros/schedules.cfg:51
+#: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "Nit"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:261 data/core/macros/schedules.cfg:64
+#: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "Matinada"
 
 #. [topic]
-#: data/core/help.cfg:263
+#: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1297,12 +1525,12 @@ msgstr ""
 "de nit."
 
 #. [topic]
-#: data/core/help.cfg:268
+#: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "Experiència i avançament"
 
 #. [topic]
-#: data/core/help.cfg:269
+#: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1316,7 +1544,7 @@ msgstr ""
 "de 3..."
 
 #. [topic]
-#: data/core/help.cfg:271
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1334,7 +1562,7 @@ msgstr ""
 "opcions per avançar."
 
 #. [topic]
-#: data/core/help.cfg:273
+#: data/core/help.cfg:292
 #, fuzzy
 msgid ""
 "\n"
@@ -1370,12 +1598,12 @@ msgstr ""
 "part d'unitats simplement guanyen la bonificació als punts de vida màxims."
 
 #. [topic]
-#: data/core/help.cfg:278
+#: data/core/help.cfg:299
 msgid "Healing"
 msgstr "Curació"
 
 #. [topic]
-#: data/core/help.cfg:279
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1387,12 +1615,12 @@ msgstr ""
 "En combat, les unitats inevitablement prendran mal. Quan una unitat "
 "<ref>dst=experience_and_advancement text='avança de nivell'</ref>, serà "
 "curada completament. Això pot passar després d'acabar de lluitar contra un "
-"enemic, siga o no el teu torn. Wesnoth oferix moltes altres maneres de "
-"curar les unitats, i totes tenen lloc al començament del vostre torn, abans "
-"de passar a l'acció."
+"enemic, siga o no el teu torn. Wesnoth oferix moltes altres maneres de curar "
+"les unitats, i totes tenen lloc al començament del vostre torn, abans de "
+"passar a l'acció."
 
 #. [topic]
-#: data/core/help.cfg:281
+#: data/core/help.cfg:302
 #, fuzzy
 msgid ""
 "\n"
@@ -1406,7 +1634,7 @@ msgstr ""
 "atacada, recuperarà 2 punts de vida al següent torn."
 
 #. [topic]
-#: data/core/help.cfg:282
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1416,7 +1644,7 @@ msgstr ""
 "les seues ferides."
 
 #. [topic]
-#: data/core/help.cfg:283
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "\n"
@@ -1425,11 +1653,11 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regenerates text='Regeneració'</ref>: certes unitats amb "
-"esta habilitat (com els trols) recuperen automàticament 8 punts de vida "
-"cada torn."
+"esta habilitat (com els trols) recuperen automàticament 8 punts de vida cada "
+"torn."
 
 #. [topic]
-#: data/core/help.cfg:284
+#: data/core/help.cfg:305
 #, fuzzy
 msgid ""
 "\n"
@@ -1445,7 +1673,7 @@ msgstr ""
 "verí faci mal."
 
 #. [topic]
-#: data/core/help.cfg:285
+#: data/core/help.cfg:306
 #, fuzzy
 msgid ""
 "\n"
@@ -1460,7 +1688,7 @@ msgstr ""
 "esta habilitat)."
 
 #. [topic]
-#: data/core/help.cfg:287
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1477,12 +1705,12 @@ msgstr ""
 "campanya."
 
 #. [topic]
-#: data/core/help.cfg:292
+#: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "Guanys i manteniment"
 
 #. [topic]
-#: data/core/help.cfg:293
+#: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1495,7 +1723,7 @@ msgstr ""
 "este tema: els guanys i el manteniment."
 
 #. [topic]
-#: data/core/help.cfg:295
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -1513,7 +1741,7 @@ msgstr ""
 "mostra a continuació."
 
 #. [topic]
-#: data/core/help.cfg:297
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -1526,15 +1754,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"El manteniment també és força fàcil d'entendre. Cada unitat requerix un "
-"cert manteniment igual al seu nivell. Podeu tenir tants nivells d'unitats "
-"com llogarets controlats. Tanmateix, per cada nivell per sobre del nombre de "
+"El manteniment també és força fàcil d'entendre. Cada unitat requerix un cert "
+"manteniment igual al seu nivell. Podeu tenir tants nivells d'unitats com "
+"llogarets controlats. Tanmateix, per cada nivell per sobre del nombre de "
 "llogarets que tingueu, haureu de pagar una moneda d'or per torn. Per "
 "exemple, si teniu dotze unitats de nivell 1, i deu llogarets, tindreu que "
 "pagar dos monedes d'or de manteniment cada torn."
 
 #. [topic]
-#: data/core/help.cfg:299
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -1549,7 +1777,7 @@ msgstr ""
 "d'or per torn."
 
 #. [topic]
-#: data/core/help.cfg:300
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1568,12 +1796,12 @@ msgstr ""
 "(com Konrad) gairebé sempre són líders."
 
 #. [topic]
-#: data/core/help.cfg:305
+#: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "Conclusions"
 
 #. [topic]
-#: data/core/help.cfg:306
+#: data/core/help.cfg:330
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1589,17 +1817,17 @@ msgstr ""
 "necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
 
 #. [topic]
-#: data/core/help.cfg:311
+#: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr "Col·laboradors"
 
 #. [topic]
-#: data/core/help.cfg:317
+#: data/core/help.cfg:341
 msgid "License"
 msgstr "Llicència"
 
 #. [topic]
-#: data/core/help.cfg:325
+#: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1612,7 +1840,7 @@ msgstr ""
 "aleatòriament en el moment de reclutar."
 
 #. [topic]
-#: data/core/help.cfg:327
+#: data/core/help.cfg:352
 #, fuzzy
 msgid ""
 "\n"
@@ -1630,7 +1858,7 @@ msgstr ""
 "<ref>dst=traits_strong text='fort'</ref>."
 
 #. [topic]
-#: data/core/help.cfg:331
+#: data/core/help.cfg:356
 #, fuzzy
 msgid ""
 "\n"
@@ -1648,19 +1876,19 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:336
+#: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "Intel·ligent"
 
 #. [topic]
-#: data/core/help.cfg:337
+#: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Les unitats intel·ligents necessiten un 20% menys d'experiència per pujar de "
 "nivell."
 
 #. [topic]
-#: data/core/help.cfg:339
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -1680,19 +1908,19 @@ msgstr ""
 "termini."
 
 #. [topic]
-#: data/core/help.cfg:344
+#: data/core/help.cfg:370
 msgid "Quick"
 msgstr "Ràpid"
 
 #. [topic]
-#: data/core/help.cfg:345
+#: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Les unitats ràpides tenen un punt de moviment extra, però un 5% menys de "
 "vida de lo normal."
 
 #. [topic]
-#: data/core/help.cfg:347
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -1706,25 +1934,25 @@ msgstr ""
 "\n"
 "\n"
 "La rapidesa és un dels trets més notables, particularment en unitats lentes "
-"com ara els trols o la infanteria pesada. Les unitats amb este tret "
-"guanyen una considerable mobilitat en terrenys escabrosos. Recordeu també "
-"que les unitats ràpides són menys resistents, i per tant, no són tan bones "
-"per mantenir posicions."
+"com ara els trols o la infanteria pesada. Les unitats amb este tret guanyen "
+"una considerable mobilitat en terrenys escabrosos. Recordeu també que les "
+"unitats ràpides són menys resistents, i per tant, no són tan bones per "
+"mantenir posicions."
 
 #. [topic]
-#: data/core/help.cfg:352
+#: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "Resistent"
 
 #. [topic]
-#: data/core/help.cfg:353
+#: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Les unitats resistents tenen 4 punts de vida més del que és habitual, més un "
 "altre punt per cada nivell."
 
 #. [topic]
-#: data/core/help.cfg:355
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -1737,18 +1965,18 @@ msgstr ""
 "\n"
 "\n"
 "Les unitats resistents poden ser molt útils en totes les etapes de la "
-"campanya, i és un tret vàlid per a totes les unitats. Este tret ajuda molt "
-"a unitats que, o bé tenen pocs punts de vida, o bé tenen ja una bona "
-"defensa. Les unitats resistents són especialment vàlides per mantenir "
-"posicions davant l'oponent."
+"campanya, i és un tret vàlid per a totes les unitats. Este tret ajuda molt a "
+"unitats que, o bé tenen pocs punts de vida, o bé tenen ja una bona defensa. "
+"Les unitats resistents són especialment vàlides per mantenir posicions "
+"davant l'oponent."
 
 #. [topic]
-#: data/core/help.cfg:360
+#: data/core/help.cfg:386
 msgid "Strong"
 msgstr "Fort"
 
 #. [topic]
-#: data/core/help.cfg:361
+#: data/core/help.cfg:387
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1757,7 +1985,7 @@ msgstr ""
 "punts més de vida."
 
 #. [topic]
-#: data/core/help.cfg:363
+#: data/core/help.cfg:389
 msgid ""
 "\n"
 "\n"
@@ -1774,23 +2002,23 @@ msgstr ""
 "petit augment del mal és capaç de convertir un cop fort en un cop mortal."
 
 #. [topic]
-#: data/core/help.cfg:368
+#: data/core/help.cfg:394
 msgid "Fearless"
 msgstr "Intrèpid"
 
 #. [topic]
-#: data/core/help.cfg:369
+#: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "L'aversió a la llum o la foscor no té cap influència sobre aquestos valents."
 
 #. [topic]
-#: data/core/help.cfg:374
+#: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "Lleial"
 
 #. [topic]
-#: data/core/help.cfg:375
+#: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1801,7 +2029,7 @@ msgstr ""
 "de pagar res per estes unitats."
 
 #. [topic]
-#: data/core/help.cfg:377
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -1815,21 +2043,20 @@ msgstr ""
 "\n"
 "\n"
 "Durant les campanyes, certes unitats poden optar per unir-se a vos per "
-"decisió propia. Estes unitats són marcades amb el tret 'lleial'. Encara "
-"que pot ser necessari pagar per tal de reincorporar-les, no caldrà mai pagar "
-"el seu cost de manteniment. Este fet les convertix en unitats amb un "
-"valor incalculable en campanyes llargues, en els moments en que anem més "
-"escassos de recursos. Este tret no s'assigna mai a unitats reclutades, "
-"així que no seria gaire encertat acomiadar-les o enviar-les a una mort "
-"inútil."
+"decisió propia. Estes unitats són marcades amb el tret 'lleial'. Encara que "
+"pot ser necessari pagar per tal de reincorporar-les, no caldrà mai pagar el "
+"seu cost de manteniment. Este fet les convertix en unitats amb un valor "
+"incalculable en campanyes llargues, en els moments en que anem més escassos "
+"de recursos. Este tret no s'assigna mai a unitats reclutades, així que no "
+"seria gaire encertat acomiadar-les o enviar-les a una mort inútil."
 
 #. [topic]
-#: data/core/help.cfg:382
+#: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "No mort"
 
 #. [topic]
-#: data/core/help.cfg:383
+#: data/core/help.cfg:409
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1838,7 +2065,7 @@ msgstr ""
 "habilitats de plaga i drena."
 
 #. [topic]
-#: data/core/help.cfg:385
+#: data/core/help.cfg:411
 msgid ""
 "\n"
 "\n"
@@ -1849,18 +2076,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"En general, els no morts tenen únicament este tret. Com que estes "
-"unitats estan formades pels cossos dels morts, el verí no té cap efecte "
-"sobre elles. Este fet convertix els no morts en el pitjor enemic "
-"d'aquells que usen algun tipus de verí en els seus atacs."
+"En general, els no morts tenen únicament este tret. Com que estes unitats "
+"estan formades pels cossos dels morts, el verí no té cap efecte sobre elles. "
+"Este fet convertix els no morts en el pitjor enemic d'aquells que usen algun "
+"tipus de verí en els seus atacs."
 
 #. [topic]
-#: data/core/help.cfg:390
+#: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr "Mecànic"
 
 #. [topic]
-#: data/core/help.cfg:391
+#: data/core/help.cfg:417
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1869,7 +2096,7 @@ msgstr ""
 "habilitats de plaga i drena."
 
 #. [topic]
-#: data/core/help.cfg:393
+#: data/core/help.cfg:419
 msgid ""
 "\n"
 "\n"
@@ -1879,12 +2106,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:398
+#: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "Destre"
 
 #. [topic]
-#: data/core/help.cfg:399
+#: data/core/help.cfg:425
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
@@ -1892,7 +2119,7 @@ msgstr ""
 "des de la distància."
 
 #. [topic]
-#: data/core/help.cfg:401
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "\n"
@@ -1903,18 +2130,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Només els elfs poden posseir este tret. La gent elfa és coneguda per la "
-"seua estranya gràcia, i la seua facilitat increïble pel tir amb arc. Alguns, "
-"a més, estan dotats d'un talent natural que excedix el dels seus germans. "
+"Només els elfs poden posseir este tret. La gent elfa és coneguda per la seua "
+"estranya gràcia, i la seua facilitat increïble pel tir amb arc. Alguns, a "
+"més, estan dotats d'un talent natural que excedix el dels seus germans. "
 "Estos elfs infligeixen un punt addicional de mal amb cada fletxa."
 
 #. [topic]
-#: data/core/help.cfg:406
+#: data/core/help.cfg:432
 msgid "Healthy"
 msgstr "Sà"
 
 #. [topic]
-#: data/core/help.cfg:407
+#: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1923,7 +2150,7 @@ msgstr ""
 "resistents i poden descansar fins i tot mentre viatgen."
 
 #. [topic]
-#: data/core/help.cfg:409
+#: data/core/help.cfg:435
 msgid ""
 "\n"
 "\n"
@@ -1932,7 +2159,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:417
+#: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit's defensive capability in combat.\n"
@@ -1940,12 +2167,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:423
+#: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:428
+#: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1965,12 +2192,12 @@ msgstr ""
 "La majoria d'unitats tenen una defensa d'entre un 30% i un 40% a les prades."
 
 #. [topic]
-#: data/core/help.cfg:433
+#: data/core/help.cfg:462
 msgid "Road"
 msgstr "Camí"
 
 #. [topic]
-#: data/core/help.cfg:436
+#: data/core/help.cfg:465
 #, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1982,12 +2209,12 @@ msgstr ""
 "idèntics a les <ref>dst=terrain_grassland text=prades</ref>."
 
 #. [topic]
-#: data/core/help.cfg:441
+#: data/core/help.cfg:472
 msgid "Forest"
 msgstr "Bosc"
 
 #. [topic]
-#: data/core/help.cfg:448
+#: data/core/help.cfg:479
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -2023,12 +2250,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:453
+#: data/core/help.cfg:486
 msgid "Hills"
 msgstr "Colls"
 
 #. [topic]
-#: data/core/help.cfg:458
+#: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2052,12 +2279,12 @@ msgstr ""
 "de defensa."
 
 #. [topic]
-#: data/core/help.cfg:463
+#: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "Muntanyes"
 
 #. [topic]
-#: data/core/help.cfg:468
+#: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2082,12 +2309,12 @@ msgstr ""
 "la seua part, obtenen una defensa millorada fins al 70%."
 
 #. [topic]
-#: data/core/help.cfg:473
+#: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "Pantà"
 
 #. [topic]
-#: data/core/help.cfg:478
+#: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2099,22 +2326,21 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 "Els pantans representen qualsevol tipus de terra mullada. Este terreny "
-"alentix gairebé a tothom, impossibilitant així les opcions de defensa. "
-"Només les races preparades físicament per navegar per l'aigua poden "
-"desplaçar-se per les zones pantanoses amb destresa. Aquells que fan vida al "
-"pantà també poden arribar a emprar-lo per cobrir-se defensivament en "
-"combat.\n"
+"alentix gairebé a tothom, impossibilitant així les opcions de defensa. Només "
+"les races preparades físicament per navegar per l'aigua poden desplaçar-se "
+"per les zones pantanoses amb destresa. Aquells que fan vida al pantà també "
+"poden arribar a emprar-lo per cobrir-se defensivament en combat.\n"
 "\n"
 "La majoria d'unitats tenen una defensa del 30% als pantans. Sirènids, nagues "
 "i sauris gaudeixen, en general, d'una defensa que volta el 60%."
 
 #. [topic]
-#: data/core/help.cfg:483
+#: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "Aigua baixa"
 
 #. [topic]
-#: data/core/help.cfg:488
+#: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2126,8 +2352,8 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
-"Este terreny representa qualsevol zona amb aigua suficient com per arribar "
-"a la cintura d'un home. L'aigua baixa no només pot alentir a qualsevol, sinó "
+"Este terreny representa qualsevol zona amb aigua suficient com per arribar a "
+"la cintura d'un home. L'aigua baixa no només pot alentir a qualsevol, sinó "
 "que també deixa sense defenses. Els nans, a causa de la seua estatura, ho "
 "tenen molt difícil en estos terrenys. D'altra banda, les races amb cossos "
 "especialment preparats per nedar en són l'excepció, ja que reben una "
@@ -2137,12 +2363,12 @@ msgstr ""
 "Sirènids i nagues, en canvi, gaudeixen d'un 60%."
 
 #. [topic]
-#: data/core/help.cfg:493
+#: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "Aigua profunda"
 
 #. [topic]
-#: data/core/help.cfg:498
+#: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2158,12 +2384,12 @@ msgstr ""
 "capacitat de moviment."
 
 #. [topic]
-#: data/core/help.cfg:503
+#: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:508
+#: data/core/help.cfg:551
 #, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
@@ -2180,12 +2406,12 @@ msgstr ""
 "La majoria de les unitats tenen entre un 20% i un 40% de defensa a la tundra."
 
 #. [topic]
-#: data/core/help.cfg:513
+#: data/core/help.cfg:558
 msgid "Castle"
 msgstr "Castell"
 
 #. [topic]
-#: data/core/help.cfg:520
+#: data/core/help.cfg:565
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2208,12 +2434,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:525
+#: data/core/help.cfg:572
 msgid "Sand"
 msgstr "Sorra"
 
 #. [topic]
-#: data/core/help.cfg:530
+#: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2229,12 +2455,12 @@ msgstr ""
 "La majoria d'unitats tenen entre un 20% i un 40% de defensa a la sorra."
 
 #. [topic]
-#: data/core/help.cfg:535
+#: data/core/help.cfg:584
 msgid "Desert"
 msgstr "Desert"
 
 #. [topic]
-#: data/core/help.cfg:538
+#: data/core/help.cfg:587
 #, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -2246,12 +2472,12 @@ msgstr ""
 "<ref>dst=terrain_sand text=sorra</ref>."
 
 #. [topic]
-#: data/core/help.cfg:543
+#: data/core/help.cfg:594
 msgid "Cave"
 msgstr "Cova"
 
 #. [topic]
-#: data/core/help.cfg:548
+#: data/core/help.cfg:599
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -2267,20 +2493,20 @@ msgstr ""
 "La cova representa qualsevol caverna sota terra amb prou lloc com per que hi "
 "passi una unitat. La majoria no estan familiaritzades amb el terreny, i és "
 "per això que es veuen alentides i amb un defensa reduïda. Nans i trols, que "
-"fan de les coves les seues cases, no tenen gaires dificultats per moure-s'hi. "
-"Especialment els nans, que gràcies a la seua estatura no es troben amb tants "
-"obstacles com les altres races.\n"
+"fan de les coves les seues cases, no tenen gaires dificultats per moure-"
+"s'hi. Especialment els nans, que gràcies a la seua estatura no es troben amb "
+"tants obstacles com les altres races.\n"
 "\n"
 "La majoria d'unitats tenen entre un 20% i un 40% de defense a les coves, "
 "mentre que els nans tenen un 50%."
 
 #. [topic]
-#: data/core/help.cfg:553
+#: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "Cova rocosa"
 
 #. [topic]
-#: data/core/help.cfg:558
+#: data/core/help.cfg:611
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2298,8 +2524,8 @@ msgstr ""
 "porta partícules erosionants que escaven la roca. S'assembla a una flaca "
 "caverna subterrània que reduïx l'eficiència de la majoria d'unitats, però "
 "millora la defensa. Els nans i els trolls, que són els principals colons de "
-"les coves, es mouen per este terreny amb relativa facilitat. Els nans "
-"tenen el major avantatge al moure's per este terreny, degut a la seua grandària "
+"les coves, es mouen per este terreny amb relativa facilitat. Els nans tenen "
+"el major avantatge al moure's per este terreny, degut a la seua grandària "
 "petita.\n"
 "\n"
 "La major part d'unitats tenen sobre el 50% de defensa en coves rocoses, "
@@ -2307,12 +2533,12 @@ msgstr ""
 "de defensa a les coves rocoses."
 
 #. [topic]
-#: data/core/help.cfg:563
+#: data/core/help.cfg:618
 msgid "Illuminated Cave"
 msgstr "Cova il·luminada"
 
 #. [topic]
-#: data/core/help.cfg:566
+#: data/core/help.cfg:621
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2321,18 +2547,18 @@ msgid ""
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
 "La cova il·luminada és una zona dins la caverna on la llum de la superfície "
-"enlluerna l'opressiva foscor. Açò es traduix en una bonificació a l'atac "
-"de les unitats legals i en l'eliminació de la bonificació a l'atac de les "
+"enlluerna l'opressiva foscor. Açò es traduix en una bonificació a l'atac de "
+"les unitats legals i en l'eliminació de la bonificació a l'atac de les "
 "unitats caòtiques. A tots els altres efectes, però, este terreny és "
 "funcionalment idèntic al terreny normal de cova."
 
 #. [topic]
-#: data/core/help.cfg:571
+#: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "Boscatge de bolets"
 
 #. [topic]
-#: data/core/help.cfg:576
+#: data/core/help.cfg:633
 #, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2347,24 +2573,24 @@ msgid ""
 msgstr ""
 "Els boscatges de bolets són enormes boscos subterranis de bolets gegants, "
 "que prosperen en la humida foscor. La majoria d'unitats tenen moltes "
-"dificultats obrint-se pas per este terreny, donat que la terra està plena "
-"de bolets xicotets; tanmateix, hi ha abundància de protecció darrere dels "
-"brots més grans. Les unitats muntades, però, esdevenen completament "
-"empantanegades i manquen d'una adequada llibertat de moviments en combat. "
-"Les unitats no mortes tenen una afinitat natural al decaïment i lluiten amb "
-"prou eficàcia en els boscatges de bolets.\n"
+"dificultats obrint-se pas per este terreny, donat que la terra està plena de "
+"bolets xicotets; tanmateix, hi ha abundància de protecció darrere dels brots "
+"més grans. Les unitats muntades, però, esdevenen completament empantanegades "
+"i manquen d'una adequada llibertat de moviments en combat. Les unitats no "
+"mortes tenen una afinitat natural al decaïment i lluiten amb prou eficàcia "
+"en els boscatges de bolets.\n"
 "\n"
 "La majoria d'unitats tenen d'un 50% a un 60% de defensa en els boscatges, "
 "però la cavalleria només té un 20%."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
-#: data/core/help.cfg:581 src/terrain.cpp:146
+#: data/core/help.cfg:640 src/terrain.cpp:146
 msgid "Village"
 msgstr "Llogaret"
 
 #. [topic]
-#: data/core/help.cfg:588
+#: data/core/help.cfg:647
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2390,12 +2616,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:595
+#: data/core/help.cfg:656
 msgid "Submerged Village"
 msgstr "Llogaret submergit"
 
 #. [topic]
-#: data/core/help.cfg:600
+#: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2409,12 +2635,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:605
+#: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:608
+#: data/core/help.cfg:671
 #, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
@@ -2428,12 +2654,12 @@ msgstr ""
 "poden creuar este terreny."
 
 #. [topic]
-#: data/core/help.cfg:613
+#: data/core/help.cfg:678
 msgid "Lava"
 msgstr "Lava"
 
 #. [topic]
-#: data/core/help.cfg:616
+#: data/core/help.cfg:681
 #, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
@@ -2445,19 +2671,19 @@ msgid ""
 "from chaotic units."
 msgstr ""
 "Els perills d'intentar passar per sobre de la lava són obvis. Així doncs, "
-"este terreny només pot ser travessat per aquelles unitats que puguen volar "
-"a una alçada considerable. A més, el magma també emet un considerable "
+"este terreny només pot ser travessat per aquelles unitats que puguen volar a "
+"una alçada considerable. A més, el magma també emet un considerable "
 "resplendor que il·lumina l'àrea per damunt seu. Açò proporciona una "
 "bonificació a l'atac de les unitats legals i els el lleva a les unitats "
 "caòtiques."
 
 #. [topic]
-#: data/core/help.cfg:621
+#: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "Gual"
 
 #. [topic]
-#: data/core/help.cfg:624
+#: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2468,17 +2694,17 @@ msgid ""
 msgstr ""
 "Quan un riu és poc profund, creuar-lo és trivial per a les unitats "
 "terrestres. A més, qualsevol criatura adaptada a l'aigua té mobilitat "
-"completa fins i tot en estes zones. Pel que fa al joc, un gual equival o "
-"bé a prada o bé a aigua baixa, el que millor bonificació de defensa i "
-"moviment oferisca a la unitat."
+"completa fins i tot en estes zones. Pel que fa al joc, un gual equival o bé "
+"a prada o bé a aigua baixa, el que millor bonificació de defensa i moviment "
+"oferisca a la unitat."
 
 #. [topic]
-#: data/core/help.cfg:629
+#: data/core/help.cfg:698
 msgid "Bridge"
 msgstr "Pont"
 
 #. [topic]
-#: data/core/help.cfg:634
+#: data/core/help.cfg:703
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2505,13 +2731,13 @@ msgstr ""
 "unitat nedadora i una terrestre no poden ocupar un pont al mateix temps."
 
 #. [topic]
-#: data/core/help.cfg:639
+#: data/core/help.cfg:710
 #, fuzzy
 msgid "Impassable"
 msgstr "Muntanya impassable"
 
 #. [topic]
-#: data/core/help.cfg:642
+#: data/core/help.cfg:713
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2521,12 +2747,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:653
+#: data/core/help.cfg:726
 msgid "General commands"
 msgstr "Ordres generals"
 
 #. [topic]
-#: data/core/help.cfg:658
+#: data/core/help.cfg:731
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2537,7 +2763,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:662
+#: data/core/help.cfg:735
 #, fuzzy
 msgid ""
 "\n"
@@ -2553,7 +2779,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:665
+#: data/core/help.cfg:738
 #, fuzzy
 msgid ""
 "\n"
@@ -2571,7 +2797,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:668
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2579,7 +2805,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:671
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2587,7 +2813,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:674
+#: data/core/help.cfg:747
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2598,7 +2824,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:677
+#: data/core/help.cfg:750
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -2609,7 +2835,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:680
+#: data/core/help.cfg:753
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2620,7 +2846,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:683
+#: data/core/help.cfg:756
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2631,7 +2857,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:684
+#: data/core/help.cfg:757
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -2640,12 +2866,12 @@ msgstr ""
 "Alça la partida i abandona l'escenari (sense confirmació)."
 
 #. [topic]
-#: data/core/help.cfg:690
+#: data/core/help.cfg:765
 msgid "Multiplayer commands"
 msgstr "Ordres multijugador"
 
 #. [topic]
-#: data/core/help.cfg:694
+#: data/core/help.cfg:769
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2654,7 +2880,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:697
+#: data/core/help.cfg:772
 #, fuzzy
 msgid ""
 "\n"
@@ -2670,7 +2896,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:700
+#: data/core/help.cfg:775
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2680,7 +2906,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:703
+#: data/core/help.cfg:778
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2693,7 +2919,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:704
+#: data/core/help.cfg:779
 #, fuzzy
 msgid ""
 "\n"
@@ -2704,12 +2930,12 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:709
+#: data/core/help.cfg:786
 msgid "Debug mode commands"
 msgstr "Ordres del mode depuració"
 
 #. [topic]
-#: data/core/help.cfg:713
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2717,7 +2943,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:716
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2725,7 +2951,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:719
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2733,7 +2959,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:722
+#: data/core/help.cfg:799
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2741,7 +2967,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:725
+#: data/core/help.cfg:802
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2749,7 +2975,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:728
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2757,7 +2983,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:729
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -2891,8 +3117,8 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "Fermesa:\n"
-"Les resistències d'esta unitat es doblen quan defensa, fins a un màxim "
-"d'un 50%,Esta unitat rep la meitat de mal quan no ha iniciat l'atac."
+"Les resistències d'esta unitat es doblen quan defensa, fins a un màxim d'un "
+"50%,Esta unitat rep la meitat de mal quan no ha iniciat l'atac."
 
 #. [leadership]
 #: data/core/macros/abilities.cfg:113 data/core/macros/abilities.cfg:136
@@ -2975,8 +3201,8 @@ msgstr ""
 "Il·lumina:\n"
 "Esta unitat il·lumina l'àrea que l'envolta, fent que les unitats legals "
 "lluitin millor, i les caòtiques pitjor.\n"
-"Qualsevol unitat adjacent a esta lluitarà com ho faria al vespre quan és "
-"de nit, i com ho faria al alba durant la vesprada."
+"Qualsevol unitat adjacent a esta lluitarà com ho faria al vespre quan és de "
+"nit, i com ho faria al alba durant la vesprada."
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:377
@@ -3023,13 +3249,11 @@ msgid ""
 "loses all its remaining movement."
 msgstr ""
 "Emboscada:\n"
-"Esta unitat pot amagar-se al bosc i passar inadvertida pels seus "
-"enemics.\n"
+"Esta unitat pot amagar-se al bosc i passar inadvertida pels seus enemics.\n"
 "\n"
-"Les unitats enemigues no podran veure ni atacar esta unitat quan estiga "
-"al bosc, excepte si hi ha unitats enemigues al costat. Si alguna unitat "
-"enemiga descobrix l'emboscada, esta perdrà immediatament el moviment "
-"restant."
+"Les unitats enemigues no podran veure ni atacar esta unitat quan estiga al "
+"bosc, excepte si hi ha unitats enemigues al costat. Si alguna unitat enemiga "
+"descobrix l'emboscada, esta perdrà immediatament el moviment restant."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:416
@@ -3050,9 +3274,9 @@ msgstr ""
 "Sigil:\n"
 "Esta unitat és invisible durant la nit.\n"
 "\n"
-"Les unitats enemigues no poden veure ni atacar esta unitat durant la nit. "
-"Si el sigil és descobert per alguna unitat enemiga, esta perdrà "
-"immediatament el moviment restant."
+"Les unitats enemigues no poden veure ni atacar esta unitat durant la nit. Si "
+"el sigil és descobert per alguna unitat enemiga, esta perdrà immediatament "
+"el moviment restant."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:422
@@ -3105,11 +3329,11 @@ msgid ""
 "immediately loses all its remaining movement."
 msgstr ""
 "Submersió:\n"
-"Esta unitat pot amagar-se en aigües profundes i passar inadvertida als "
-"seus enemics.\n"
+"Esta unitat pot amagar-se en aigües profundes i passar inadvertida als seus "
+"enemics.\n"
 "\n"
-"Les unitats enemigues no podran veure ni atacar esta unitat quan estiga "
-"en aigües profundes, excepte si hi ha unitats enemigues adjacents. Si alguna "
+"Les unitats enemigues no podran veure ni atacar esta unitat quan estiga en "
+"aigües profundes, excepte si hi ha unitats enemigues adjacents. Si alguna "
 "unitat enemiga descobrix la submersió, perdrà immediatament el moviment "
 "restant."
 
@@ -3149,8 +3373,8 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "Punyalada:\n"
-"Este atac causa el doble de mal si hi ha una unitat enemiga de l'objectiu "
-"al costat oposat de l'objectiu, i aquella unitat no està incapacitada (per "
+"Este atac causa el doble de mal si hi ha una unitat enemiga de l'objectiu al "
+"costat oposat de l'objectiu, i aquella unitat no està incapacitada (per "
 "exemple, convertida en pedra)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
@@ -3177,9 +3401,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Plaga:\n"
-"Quan una unitat mor per un atac de plaga, esta és reemplaçada per un "
-"cadàver ambulant del bàndol de l'atacant. No funciona amb unitats que "
-"estiguen en llogarets o que siguen no mortes."
+"Quan una unitat mor per un atac de plaga, esta és reemplaçada per un cadàver "
+"ambulant del bàndol de l'atacant. No funciona amb unitats que estiguen en "
+"llogarets o que siguen no mortes."
 
 #: data/core/macros/abilities.cfg:603
 msgid "slows"
@@ -3194,11 +3418,10 @@ msgid ""
 "is selected."
 msgstr ""
 "Alentir:\n"
-"Este atac alentix l'objectiu fins la fi del torn. Això reduïx a la "
-"meitat el mal que causen els seus atacs, i reduïx a la meitat la velocitat "
-"de desplaçament. Es pot identificar una unitat alentida per la icona d'un "
-"cargol que apareix a la barra d'informació lateral quan esta és "
-"seleccionada."
+"Este atac alentix l'objectiu fins la fi del torn. Això reduïx a la meitat el "
+"mal que causen els seus atacs, i reduïx a la meitat la velocitat de "
+"desplaçament. Es pot identificar una unitat alentida per la icona d'un "
+"cargol que apareix a la barra d'informació lateral quan esta és seleccionada."
 
 #: data/core/macros/abilities.cfg:614
 msgid "stones"
@@ -3211,8 +3434,8 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Petrifica:\n"
-"Este atac pot convertir els enemics en pedra. Les unitats petrificades no "
-"es poden moure ni atacar."
+"Este atac pot convertir els enemics en pedra. Les unitats petrificades no es "
+"poden moure ni atacar."
 
 #: data/core/macros/abilities.cfg:625
 msgid "marksman"
@@ -3270,8 +3493,8 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "Drena:\n"
-"Esta unitat drena energia de les unitats amb vida, curant-se a ella "
-"mateixa la meitat de la quantitat drenada (arrodonint cap avall)."
+"Esta unitat drena energia de les unitats amb vida, curant-se a ella mateixa "
+"la meitat de la quantitat drenada (arrodonint cap avall)."
 
 #: data/core/macros/abilities.cfg:699
 msgid "poison"
@@ -3336,8 +3559,8 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
-"Amb esta moneda d'or, desitjo que esta batalla acabi en una ràpida i "
-"segura victòria."
+"Amb esta moneda d'or, desitjo que esta batalla acabi en una ràpida i segura "
+"victòria."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:55
@@ -3402,99 +3625,99 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Un verí es filtra per les venes d'esta unitat en estos moments."
 
 #. [object]
-#: data/core/macros/items.cfg:294
+#: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "Aigua sagrada"
 
 #. [object]
-#: data/core/macros/items.cfg:297
+#: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:298
+#: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "No estic qualificat per utilitzar-ho! Deixaré que algú altre l'agafi."
 
 #. [object]
-#: data/core/macros/items.cfg:333
+#: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "Poció de força"
 
 #. [object]
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "Dona una força extraordinària a qui la beu."
 
 #. [object]
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "Poció de decaïment"
 
 #. [object]
-#: data/core/macros/items.cfg:380
+#: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "Esta unitat ha begut alguna cosa realment dolenta."
 
 #. [object]
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "Anell de regeneració"
 
 #. [object]
-#: data/core/macros/items.cfg:418
+#: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Esta anell curarà al seu portador una mica cada torn."
 
 #. [object]
-#: data/core/macros/items.cfg:455
+#: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "Anell d'alentiment"
 
 #. [object]
-#: data/core/macros/items.cfg:458
+#: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "El portador d'este anell anirà més lent."
 
 #. [object]
-#: data/core/macros/items.cfg:493
+#: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "Bastó de la rapidesa"
 
 #. [object]
-#: data/core/macros/items.cfg:496
+#: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "Este bastó concedirà al seu portador moviments més ràpids."
 
 #. [object]
-#: data/core/macros/items.cfg:497
+#: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "Només éssers màgics poden portar este objecte."
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Only the mermen can use this item!"
 msgstr "Només els sirènids poden usar este objecte!"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:518
+#: data/core/macros/items.cfg:514
 msgid "Storm Trident"
 msgstr "Trident de la tormenta"
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:517
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Este trident permet als sirènids disparar míssils elèctrics contra els "
-"seus enemics."
+"Este trident permet als sirènids disparar míssils elèctrics contra els seus "
+"enemics."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:521
 msgid "storm trident"
 msgstr "trident de la tormenta"
 
@@ -4326,22 +4549,22 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" L'atac arcà d'esta unitat causa un mal enorme contra criatures màgiques, "
-"i fins i tot també contra certes unitats vivents."
+" L'atac arcà d'esta unitat causa un mal enorme contra criatures màgiques, i "
+"fins i tot també contra certes unitats vivents."
 
 #: data/core/macros/special-notes.cfg:14
 #, fuzzy
 msgid " This unit is capable of basic healing."
 msgstr ""
-" Esta unitat és capaç de guarir les unitats al seu voltant i curar-les "
-"del verí."
+" Esta unitat és capaç de guarir les unitats al seu voltant i curar-les del "
+"verí."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Esta unitat és capaç de guarir les unitats al seu voltant i curar-les "
-"del verí."
+" Esta unitat és capaç de guarir les unitats al seu voltant i curar-les del "
+"verí."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4364,8 +4587,8 @@ msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
-" La fermesa d'esta unitat reduïx el dany rebut d'alguns atacs, però "
-"només quan defèn."
+" La fermesa d'esta unitat reduïx el dany rebut d'alguns atacs, però només "
+"quan defèn."
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
@@ -4403,8 +4626,8 @@ msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" En terreny boscós, l'habilitat d'emboscada d'esta unitat deixa esta "
-"unitat invisible als enemics, excepte si està immediatament adjacent o no ha "
+" En terreny boscós, l'habilitat d'emboscada d'esta unitat deixa esta unitat "
+"invisible als enemics, excepte si està immediatament adjacent o no ha "
 "revelat la seua posició atacant."
 
 #: data/core/macros/special-notes.cfg:44
@@ -4437,8 +4660,8 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Cada vegada que s'empra el seu atac berserk, esta unitat continua "
-"atacant fins que ella o l'enemic jeu mort."
+" Cada vegada que s'empra el seu atac berserk, esta unitat continua atacant "
+"fins que ella o l'enemic jeu mort."
 
 #: data/core/macros/special-notes.cfg:59
 #, fuzzy
@@ -4496,8 +4719,8 @@ msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Els atacs d'eixam d'esta unitat esdevendran menys mortífers segons els "
-"seus membres siguen ferits."
+" Els atacs d'eixam d'esta unitat esdevendran menys mortífers segons els seus "
+"membres siguen ferits."
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
@@ -4520,16 +4743,16 @@ msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
-" La llargària de l'arma d'esta unitat li permet atacar primer en melé, "
-"fins i tot quan defèn."
+" La llargària de l'arma d'esta unitat li permet atacar primer en melé, fins "
+"i tot quan defèn."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Les víctimes del verí d'esta unitat continuaran rebent dany fins que "
-"siguen curats en un llogaret o per alguna unitat que cure."
+" Les víctimes del verí d'esta unitat continuaran rebent dany fins que siguen "
+"curats en un llogaret o per alguna unitat que cure."
 
 #. [trait]
 #: data/core/macros/traits.cfg:8
@@ -4912,83 +5135,92 @@ msgid "race^Elves"
 msgstr "Elfs"
 
 #. [race]
-#: data/core/units.cfg:94
+#: data/core/units.cfg:100
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the latter’s "
 "unusually long life - most, unless claimed by illness, accident or war, live "
-"a full two centuries. While some elves possessing a high magical aptitude "
-"have been known to live an additional full century, most elves begin to grow "
-"physically frail approaching their twentieth decade and pass away within a "
-"few decades after. Elves are naturally imbued with magic to a small degree. "
-"Though most are unable to channel it directly, its latent presence gives "
-"them their keen senses and long life. Many elves have magic-driven talents "
-"such as marksmanship or stealth, allowing them to achieve tasks that most "
-"normal beings would find astonishing. Those elves that learn to wield this "
-"power in more general ways can become truly formidable in its use. Many "
-"choose to use their gift to heal others.\n"
+"a full two and a half centuries. While some elves possessing a high magical "
+"aptitude have been known to live an additional full century, most elves "
+"begin to grow physically frail at some point between 250 and 300 years of "
+"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"\n"
+"Elves are naturally imbued with magic to a small degree. Though most are "
+"unable to channel it directly, its latent presence gives them their keen "
+"senses and long life. Many elves have magic-driven talents such as "
+"marksmanship or stealth, allowing them to achieve tasks that most normal "
+"beings would find astonishing. Those elves that learn to wield this power in "
+"more general ways can become truly formidable in its use. Many choose to use "
+"their gift to heal others.\n"
+"\n"
+"A few elves, venturing far down the paths of magic and mysticism, become "
+"sensitive to the presence of cold iron and can even be burned by it. Elvish "
+"legend hints that this was more common in the far past.\n"
 "\n"
 "Elves spend much of their time honing their talents and skills. Those not "
 "adept at the magical arts typically devote their time honing their physical "
 "skills. As a result, elves excel at archery, which is perhaps their most "
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
-"unexplained affection for unspoiled nature. They often feel uncomfortable in "
-"open unvegetated spaces, which leads them to make their homes in the forests "
-"of the Great Continent, such as Aethenwood in the southwest and Wesmere in "
-"the northwest. Elves are the eldest race of the continent, with the possible "
-"exception of trolls. Many of their settlements cannot be reliably dated, "
-"undoubtedly having existed for over a millennium."
+"intense affection for unspoiled nature. They often feel uncomfortable in "
+"open unvegetated spaces. They live primarily in the forests of the Great "
+"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
+"the great northern woods of which the Lintanir Forest is the southernmost "
+"edge. \n"
+"\n"
+"Elves are the eldest race of the continent, with the possible exception of "
+"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
+"having existed for over a millennium."
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:103
+#: data/core/units.cfg:109
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: description=
-#: data/core/units.cfg:104
+#: data/core/units.cfg:110
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: description=
-#: data/core/units.cfg:105
+#: data/core/units.cfg:111
 msgid "race^Goblins"
 msgstr "Goblins"
 
 #. [race]: description=
-#: data/core/units.cfg:117
+#: data/core/units.cfg:123
 msgid "race^Gryphon"
 msgstr "Griu"
 
 #. [race]: description=
-#: data/core/units.cfg:118
+#: data/core/units.cfg:124
 msgid "race+female^Gryphon"
 msgstr "Griu"
 
 #. [race]: description=
-#: data/core/units.cfg:119
+#: data/core/units.cfg:125
 msgid "race^Gryphons"
 msgstr "Grius"
 
 #. [race]
-#: data/core/units.cfg:127
+#: data/core/units.cfg:133
 msgid "race^Human"
 msgstr "Humà"
 
 #. [race]
-#: data/core/units.cfg:128
+#: data/core/units.cfg:134
 msgid "race+female^Human"
 msgstr "Humana"
 
 #. [race]
-#: data/core/units.cfg:129
+#: data/core/units.cfg:135
 msgid "race^Humans"
 msgstr "Humans"
 
 #. [race]
-#: data/core/units.cfg:136
+#: data/core/units.cfg:142
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5030,107 +5262,107 @@ msgid ""
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:143
+#: data/core/units.cfg:149
 msgid "race^Saurian"
 msgstr "Sauri"
 
 #. [race]: description=
-#: data/core/units.cfg:144
+#: data/core/units.cfg:150
 msgid "race+female^Saurian"
 msgstr "Sauria"
 
 #. [race]: description=
-#: data/core/units.cfg:145
+#: data/core/units.cfg:151
 msgid "race^Saurians"
 msgstr "Sauris"
 
 #. [race]: description=
-#: data/core/units.cfg:154
+#: data/core/units.cfg:160
 msgid "race^Mechanical"
 msgstr "Mecànic"
 
 #. [race]: description=
-#: data/core/units.cfg:155
+#: data/core/units.cfg:161
 msgid "race+plural^Mechanical"
 msgstr "Mecànics"
 
 #. [race]: description=
-#: data/core/units.cfg:164
+#: data/core/units.cfg:170
 msgid "race^Merman"
 msgstr "Sirènid"
 
 #. [race]: description=
-#: data/core/units.cfg:165
+#: data/core/units.cfg:171
 msgid "race^Mermaid"
 msgstr "Sirena"
 
 #. [race]: description=
-#: data/core/units.cfg:166
+#: data/core/units.cfg:172
 msgid "race^Mermen"
 msgstr "Sirènids"
 
 #. [race]: description=
-#: data/core/units.cfg:174
+#: data/core/units.cfg:180
 msgid "race^Monster"
 msgstr "Monstre"
 
 #. [race]: description=
-#: data/core/units.cfg:175
+#: data/core/units.cfg:181
 msgid "race^Monsters"
 msgstr "Monstres"
 
 #. [race]: description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:188
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:189
 msgid "race^Nagani"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:184
+#: data/core/units.cfg:190
 msgid "race^Nagas"
 msgstr "Nagues"
 
 #. [race]: description=
-#: data/core/units.cfg:192
+#: data/core/units.cfg:198
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #. [race]: description=
-#: data/core/units.cfg:193
+#: data/core/units.cfg:199
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "Ogra"
 
 #. [race]: description=
-#: data/core/units.cfg:194
+#: data/core/units.cfg:200
 msgid "race^Ogres"
 msgstr "Ogres"
 
 #. [race]
-#: data/core/units.cfg:202
+#: data/core/units.cfg:208
 msgid "race^Orc"
 msgstr "Orc"
 
 #. [race]
-#: data/core/units.cfg:203
+#: data/core/units.cfg:209
 #, fuzzy
 msgid "race+female^Orc"
 msgstr "Orca"
 
 #. [race]
-#: data/core/units.cfg:204
+#: data/core/units.cfg:210
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #. [race]
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans.  They are warlike, savage, and cruel by nature. "
+"and stronger than humans. They are warlike, savage, and cruel by nature. "
 "Their blood is darker and thicker than that of normal humans and they have "
 "little care for personal hygiene or their personal appearance. Although Orcs "
 "are violent even among themselves creatures, they are pack-oriented; an orc "
@@ -5187,22 +5419,22 @@ msgid ""
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:221
+#: data/core/units.cfg:227
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]
-#: data/core/units.cfg:222
+#: data/core/units.cfg:228
 msgid "race+female^Troll"
 msgstr "Trol"
 
 #. [race]
-#: data/core/units.cfg:223
+#: data/core/units.cfg:229
 msgid "race^Trolls"
 msgstr "Trols"
 
 #. [race]
-#: data/core/units.cfg:229
+#: data/core/units.cfg:235
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5222,8 +5454,8 @@ msgid ""
 "their home cave. This is until they finally pass away as their bodies "
 "themselves slowly turn into lifeless statues of stone.\n"
 "\n"
-"Trolls are seen by many as being little more than a yet another race of "
-"savage monsters. This common misconception is in part perpetuated by orcs to "
+"Trolls are seen by many as being little more than yet another race of savage "
+"monsters. This common misconception is in part perpetuated by orcs to "
 "persuade trolls to join their armies. Because they are rather simple and do "
 "not understand the ways of other races or sometimes can even tell them "
 "apart, it is usually easy for an orcish band to convince a group of trolls "
@@ -5241,22 +5473,22 @@ msgid ""
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:241
+#: data/core/units.cfg:247
 msgid "race^Undead"
 msgstr "No mort"
 
 #. [race]
-#: data/core/units.cfg:242
+#: data/core/units.cfg:248
 msgid "race+female^Undead"
 msgstr "No morta"
 
 #. [race]
-#: data/core/units.cfg:243
+#: data/core/units.cfg:249
 msgid "race+plural^Undead"
 msgstr "No morts"
 
 #. [race]
-#: data/core/units.cfg:249
+#: data/core/units.cfg:255
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5285,24 +5517,24 @@ msgid ""
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:257
+#: data/core/units.cfg:263
 #, fuzzy
 msgid "race^Wolf"
 msgstr "Elf"
 
 #. [race]: description=
-#: data/core/units.cfg:258
+#: data/core/units.cfg:264
 #, fuzzy
 msgid "race^Wolves"
 msgstr "Elfs"
 
 #. [race]: description=
-#: data/core/units.cfg:266
+#: data/core/units.cfg:272
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: description=
-#: data/core/units.cfg:267
+#: data/core/units.cfg:273
 msgid "race^Woses"
 msgstr "Woses"
 
@@ -5814,8 +6046,8 @@ msgstr "- Rei Konrad, 552AW"
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"No tingueu por de retirar-vos i reagrupar-vos; sovint esta és la clau de "
-"la victòria."
+"No tingueu por de retirar-vos i reagrupar-vos; sovint esta és la clau de la "
+"victòria."
 
 #. [tip]
 #: data/hardwired/tips.cfg:112
@@ -5832,8 +6064,8 @@ msgid ""
 msgstr ""
 "A la major part de batalles rebreu una bonificació d'or per acabar aviat, "
 "depenent del nombre de llogarets del mapa i del nombre de torns.que hàgiu "
-"empleat. Sempre obtindreu més diners d'esta manera que capturant "
-"llogarets i esperant que finalitzin els torns."
+"empleat. Sempre obtindreu més diners d'esta manera que capturant llogarets i "
+"esperant que finalitzin els torns."
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -5933,8 +6165,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"L'especialitat 'alentix' fa que les unitats enemigues siguen més lentes, i "
-"a més reduïx a la meitat el mal que fan en tots els seus atacs."
+"L'especialitat 'alentix' fa que les unitats enemigues siguen més lentes, i a "
+"més reduïx a la meitat el mal que fan en tots els seus atacs."
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
@@ -6049,16 +6281,6 @@ msgid ""
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
 
-#. [object]
-#: data/scenario-test.cfg:250
-msgid "Anti-Warlord Weaponry activated!"
-msgstr ""
-
-#. [object]
-#: data/scenario-test.cfg:273 data/scenario-test.cfg:290
-msgid "Anti-Warlord Weaponry deactivated."
-msgstr ""
-
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
@@ -6088,8 +6310,8 @@ msgstr "Fi de l'escenari"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
-#: src/unit.cpp:2826
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2623
+#: src/unit.cpp:2797
 msgid "HP"
 msgstr "HP"
 
@@ -6395,7 +6617,7 @@ msgid "Do you still want to download it?"
 msgstr "Esteu segur que voleu descarregar-vos-el?"
 
 #: src/addon_management.cpp:471 src/addon_management.cpp:545
-#: src/multiplayer.cpp:337 src/multiplayer_ui.cpp:73
+#: src/multiplayer.cpp:343 src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "Connexió perduda."
 
@@ -6644,7 +6866,7 @@ msgstr "Extensió eliminada"
 msgid "Add-on could not be deleted properly:"
 msgstr "No s'ha pogut eliminar l'extensió; no s'ha trobat el fitxer."
 
-#: src/ai.cpp:1650
+#: src/ai.cpp:1655
 msgid "Unknown unit type : "
 msgstr "Tipus d'unitat desconegut: "
 
@@ -7038,8 +7260,7 @@ msgstr "No ha estat possible escriure al fitxer."
 #: src/generate_report.cpp:104
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
-"Esta unitat és invisible. No pot ser vista ni atacada per unitats "
-"enemigues."
+"Esta unitat és invisible. No pot ser vista ni atacada per unitats enemigues."
 
 #: src/generate_report.cpp:104
 msgid "invisible: "
@@ -7067,9 +7288,9 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Esta unitat està enverinada. Perdrà 8 punts de vida cada torn fins que "
-"trobi una cura al verí en un llogaret o d'una unitat amiga amb l'habilitat "
-"de curació.\n"
+"Esta unitat està enverinada. Perdrà 8 punts de vida cada torn fins que trobi "
+"una cura al verí en un llogaret o d'una unitat amiga amb l'habilitat de "
+"curació.\n"
 "\n"
 "Les unitats no poden morir només a causa del verí, que només reuirà els "
 "punts de vida fins a 1."
@@ -7080,8 +7301,7 @@ msgstr "enverinat: "
 
 #: src/generate_report.cpp:121
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Esta unitat ha estat convertida en pedra. No es pot moure ni atacar."
+msgstr "Esta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
 #: src/generate_report.cpp:121
 msgid "stone: "
@@ -7352,8 +7572,7 @@ msgstr "Esteu segur que voleu acomiadar-la?"
 
 #: src/menu_events.cpp:111
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"Senyor, esta unitat és experimentada; fins i tot ha avançat de nivell!"
+msgstr "Senyor, esta unitat és experimentada; fins i tot ha avançat de nivell!"
 
 #: src/menu_events.cpp:115
 msgid "My lord, this unit is close to advancing a level! "
@@ -7955,8 +8174,8 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"El servidor requerix la versió '$version1', però esteu fent servir la "
-"versió '$version2'."
+"El servidor requerix la versió '$version1', però esteu fent servir la versió "
+"'$version2'."
 
 #: src/multiplayer.cpp:172
 msgid "Server-side redirect loop"
@@ -8542,19 +8761,19 @@ msgstr "Nom:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: «$scenario|»"
 
-#: src/playmp_controller.cpp:197
-msgid "Undoing moves not yet transmited to server."
+#: src/playmp_controller.cpp:205
+msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:277
+#: src/playmp_controller.cpp:285
 msgid "End scenario"
 msgstr "Fi de l'escenari"
 
-#: src/playmp_controller.cpp:381
+#: src/playmp_controller.cpp:389
 msgid "Waiting for next scenario..."
 msgstr "Esperant el següent escenari..."
 
-#: src/playmp_controller.cpp:505
+#: src/playmp_controller.cpp:513
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8652,7 +8871,7 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu alçar la partida?"
 
-#: src/playsingle_controller.cpp:646
+#: src/playsingle_controller.cpp:652
 msgid "It is now $name|'s turn"
 msgstr "És el torn de $name|."
 
@@ -8933,31 +9152,31 @@ msgstr "Tipus d'unitat «$type|» desconegut"
 msgid "Unknown unit type '$type|'"
 msgstr "Tipus d'unitat «$type|» desconegut"
 
-#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
+#: src/unit.cpp:2580 src/unit.cpp:2785 src/unit.cpp:2841
 msgid " and "
 msgstr " i "
 
-#: src/unit.cpp:2620
+#: src/unit.cpp:2591
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2656
 msgid "moves"
 msgstr "moviments"
 
-#: src/unit.cpp:2703 src/unit.cpp:2841
+#: src/unit.cpp:2674 src/unit.cpp:2812
 msgid "XP to advance"
 msgstr "punt d'experiència per avançar"
 
-#: src/unit.cpp:2833
+#: src/unit.cpp:2804
 msgid " move"
 msgstr " moviment"
 
-#: src/unit.cpp:2849
+#: src/unit.cpp:2820
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2879
+#: src/unit.cpp:2850
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -9135,9 +9354,6 @@ msgstr "Permetre la pujada de resums"
 #, fuzzy
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr "Serveix una partida sense usar el servidor"
-
-#~ msgid "Local Game"
-#~ msgstr "Partida local"
 
 #~ msgid ""
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"

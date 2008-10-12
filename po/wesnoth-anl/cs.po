@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-09 23:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:35+0200\n"
 "PO-Revision-Date: 2008-09-16 10:47+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -199,6 +199,13 @@ msgid "Return to menu"
 msgstr "Zpět do menu"
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:15
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+msgid "Peasants"
+msgstr "Sedláci"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
 msgid ""
 "Peasants are your workers. Depending on the terrain, right-clicking on a "
@@ -211,6 +218,13 @@ msgstr ""
 "univerzity."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:25
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+msgid "Mages"
+msgstr "Mágové"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
 msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
@@ -220,6 +234,13 @@ msgstr ""
 "pokroky v těžbě, farmaření a verbování."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:35
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+msgid "Farms"
+msgstr "Farmy"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
@@ -227,6 +248,13 @@ msgid ""
 msgstr ""
 "Farmy mohou být založeny jen na loukách. Sedlák umístěný na farmě začne "
 "automaticky sklízet a zhodnocovat plodiny."
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:45
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+msgid "Villages"
+msgstr "Vesnice"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
@@ -240,6 +268,13 @@ msgstr ""
 "založit univerzitu."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:55
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+msgid "Mines"
+msgstr "Doly"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
@@ -247,6 +282,13 @@ msgid ""
 msgstr ""
 "Doly mohou být postaveny v kopcích nebo horách. Sedlák umístěný v dole "
 "automaticky vytěží zlato na začátku tvého tahu."
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:65
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+msgid "Universities"
+msgstr "Univerzity"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
@@ -262,6 +304,15 @@ msgstr ""
 "univezitě můžeš změnit výzkumný cíl."
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:75
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
+msgid "Diplomacy"
+msgstr "Diplomacie"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
 msgid ""
 "Right-clicking on your leader when in a univerity allows you to select "
@@ -269,6 +320,17 @@ msgid ""
 msgstr ""
 "Kliknutí pravým tlačítkem na tvého vůdce umístěného v univerzitě ti "
 "zpřístupní diplomacii."
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:85
+msgid "Help"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:101
+#, fuzzy
+msgid "A New Land - Help"
+msgstr "4p - Nová země"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
@@ -279,41 +341,6 @@ msgstr "Vyber téma."
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
 msgid "Done"
 msgstr "Hotovo"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
-msgid "Peasants"
-msgstr "Sedláci"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
-msgid "Mages"
-msgstr "Mágové"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
-msgid "Farms"
-msgstr "Farmy"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
-msgid "Villages"
-msgstr "Vesnice"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
-msgid "Mines"
-msgstr "Doly"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
-msgid "Universities"
-msgstr "Univerzity"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
-msgid "Diplomacy"
-msgstr "Diplomacie"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
@@ -352,7 +379,7 @@ msgstr ""
 "poučit tě v této zásadní záležitosti."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:188
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
 msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
@@ -361,7 +388,7 @@ msgstr ""
 "Sdílet poznání zemědělství"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:193
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
 msgid ""
 "$player_name\n"
 "Share knowledge of mining"
@@ -370,7 +397,7 @@ msgstr ""
 "Sdílet poznání těžby"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
 msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
@@ -379,18 +406,25 @@ msgstr ""
 "Sdílet poznání válečnictví"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+msgid "Diplomatic Options"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
 msgstr "Co mám udělat?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 msgid "Nothing"
 msgstr "Nic"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:233
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
 msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
@@ -399,18 +433,18 @@ msgstr ""
 "Zaslat 20 zlatých jinému hráči"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:243
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
 msgstr "Komu daruješ peníze?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
 msgstr "Zpět"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:266
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
 msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
@@ -419,12 +453,12 @@ msgstr ""
 "Pomoz spojenci s jeho výzkumem"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:276
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
 msgstr "S kým se podělíš o vědomosti?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:313
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
 msgid ""
 "Negotiate with the Dwarves\n"
 "Lets you recruit a Dwarvish unit\n"
@@ -437,7 +471,7 @@ msgstr ""
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:339
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
 msgid ""
 "Negotiate with the Elves\n"
 "Lets you recruit an Elvish unit\n"
@@ -450,7 +484,13 @@ msgstr ""
 "$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
+msgid "Negotiation Complete"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
 msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -459,7 +499,7 @@ msgstr ""
 "bratrů chceš verbovat? "
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:397
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
 msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -467,10 +507,34 @@ msgstr ""
 "Jsme domluveni - elfové ti poskytnou pomoc v této bitvě. Které z našeho rodu "
 "by sis přál verbovat?"
 
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
+msgid "Choose New Recruit"
+msgstr ""
+
+#. [message]: speaker=unit
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:208
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:225
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
+msgid "Study Complete"
+msgstr ""
+
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
 msgstr "Jakou jednotku by jsi chtěl verbovat?"
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:54
+msgid "Oversee Research"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
+msgid "Research"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:99
@@ -569,6 +633,11 @@ msgstr "Osvobodím tě!"
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Osvobodil jsi tyto tvory ze sítě. Chtějí se k tobě přidat."
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
+msgid "Get to Work!"
+msgstr ""
 
 # Pův.: "Co mám udělat, můj vládče?"
 #. [message]: speaker=unit

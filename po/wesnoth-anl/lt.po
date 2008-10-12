@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-09-09 23:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:35+0200\n"
 "PO-Revision-Date: 2008-10-09 21:59+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -169,12 +169,26 @@ msgid "Return to menu"
 msgstr "Grįžti į meniu"
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:15
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+msgid "Peasants"
+msgstr "Valstiečiai"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
 msgid ""
 "Peasants are your workers. Depending on the terrain, right-clicking on a "
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:25
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+msgid "Mages"
+msgstr "Magai"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
@@ -184,11 +198,25 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:35
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+msgid "Farms"
+msgstr "Fermos"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
 msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:45
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+msgid "Villages"
+msgstr "Kaimai"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
@@ -199,11 +227,25 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:55
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+msgid "Mines"
+msgstr "Kasyklos"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
 msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+
+#. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:65
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+msgid "Universities"
+msgstr "Universitetai"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
@@ -215,11 +257,31 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
+#. [option]: speaker=narrator
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:75
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
+msgid "Diplomacy"
+msgstr "Diplomatija"
+
+#. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
 msgid ""
 "Right-clicking on your leader when in a univerity allows you to select "
 "special diplomatic options."
 msgstr ""
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:85
+msgid "Help"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:101
+#, fuzzy
+msgid "A New Land - Help"
+msgstr "4ž – Nauja šalis"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
@@ -230,41 +292,6 @@ msgstr "Pasirinkite temą."
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
 msgid "Done"
 msgstr "Baigta"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
-msgid "Peasants"
-msgstr "Valstiečiai"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
-msgid "Mages"
-msgstr "Magai"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
-msgid "Farms"
-msgstr "Fermos"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
-msgid "Villages"
-msgstr "Kaimai"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
-msgid "Mines"
-msgstr "Kasyklos"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
-msgid "Universities"
-msgstr "Universitetai"
-
-#. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:154
-msgid "Diplomacy"
-msgstr "Diplomatija"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
@@ -294,7 +321,7 @@ msgid ""
 msgstr ""
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:188
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
 msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
@@ -303,7 +330,7 @@ msgstr ""
 "Dalintis žemdirbystės žiniomis"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:193
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
 msgid ""
 "$player_name\n"
 "Share knowledge of mining"
@@ -312,7 +339,7 @@ msgstr ""
 "Dalintis kalnakasybos žiniomis"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:198
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
 msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
@@ -321,48 +348,55 @@ msgstr ""
 "Dalintis karinėmis žiniomis"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+msgid "Diplomatic Options"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
 msgstr "Ką aš turiu daryti?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 msgid "Nothing"
 msgstr "Nieko"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:233
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
 msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:243
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
 msgstr ""
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
 msgstr "Atgal"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:266
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
 msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:276
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
 msgstr "Su kuo jūs dalinsitės žiniomis?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:313
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
 msgid ""
 "Negotiate with the Dwarves\n"
 "Lets you recruit a Dwarvish unit\n"
@@ -371,7 +405,7 @@ msgid ""
 msgstr ""
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:339
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
 msgid ""
 "Negotiate with the Elves\n"
 "Lets you recruit an Elvish unit\n"
@@ -380,22 +414,52 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:375
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
+msgid "Negotiation Complete"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
 msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:397
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
 msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
 
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
+msgid "Choose New Recruit"
+msgstr ""
+
+#. [message]: speaker=unit
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:208
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:225
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
+msgid "Study Complete"
+msgstr ""
+
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
+msgstr ""
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:54
+msgid "Oversee Research"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
+msgid "Research"
 msgstr ""
 
 #. [message]: speaker=unit
@@ -471,6 +535,11 @@ msgstr "Išlaisvinkime tave!"
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
 msgstr "Jūs išlaisvinote būtybę iš voratinklio ir ji sutinka jums padėti."
+
+#. [set_menu_item]
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
+msgid "Get to Work!"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-07 16:13+0200\n"
+"POT-Creation-Date: 2008-10-12 14:33+0200\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -58,6 +58,230 @@ msgstr ""
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
 msgstr "Sub terra"
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:29
+#, fuzzy
+msgid "define ai location"
+msgstr "Reditio indonesica"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:35
+#, fuzzy
+msgid "Location name?"
+msgstr "Lusum Restituere"
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:45
+msgid "Range in Hexfields?"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:59
+msgid "enable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:73
+msgid "disable ai_controller"
+msgstr ""
+
+#. [set_menu_item]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:87
+#, fuzzy
+msgid "Give new orders"
+msgstr "Abrogare"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:131
+msgid "Command $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:161
+msgid "Which ally should i command?"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:228
+msgid "How important is this command?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:232
+msgid "It is very important.(value 90)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:239
+msgid "It is important.(value 50)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:246
+msgid "It is not so important.(value 25)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:253
+msgid "It has the importance ..."
+msgstr ""
+
+#. [text_input]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:259
+#, fuzzy
+msgid "value: "
+msgstr "Nomen:"
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:327
+msgid ""
+"Which kind of order do you want me to obey?\n"
+"@$ai_controller.current_orders"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:338
+msgid "#I revoke all your commands!"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:383
+#, fuzzy
+msgid "Defeat an enemy Leader!"
+msgstr ""
+"Victoria:\n"
+"@Ducem ducesve hostium vincere"
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:392
+msgid "Defeat $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:415
+msgid "I am already attacking $ai_controller.enemy_leaders[$enemy].id|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:430
+msgid "Which enemy Leaders do you want me to defeat?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:440
+msgid "Protect an allied leader!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:447
+msgid "Protect $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:471
+msgid "I am already protecting $ai_controller.friend_leaders[$friend].id"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:498
+msgid "Which allied leader should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:509
+msgid "Defend a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:517
+msgid "Defend the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:540
+msgid "I am allready defending $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:557
+msgid "Which location should i protect?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:568
+msgid "Go to a location!(only the leader)"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:576
+msgid "Goto the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:597
+msgid "I am allready going to $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:611
+msgid "To which location shall i move?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:622
+msgid "Avoid a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:630
+msgid "Avoid the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:651
+msgid ""
+"I am allready ordered to avoid $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:664
+msgid "Which location shall i avoid?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:732
+msgid "Send your army to a location!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:740
+msgid "Move to the $ai_controller.locations[$location].name|!"
+msgstr ""
+
+#. [value]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:784
+msgid ""
+"I am allready ordered to send all men to $ai_controller.locations[$location]."
+"name|!"
+msgstr ""
+
+#. [message]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:793
+msgid "Which location shall i send my men to?"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:810
+msgid ""
+"@I don't want to be in command any more! Take care of yourselves! (Disables "
+"AI_CONTROLLER)"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:824
+msgid "@Execute my orders!"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -410,7 +634,13 @@ msgid "Valencian (southern Catalan) Translation"
 msgstr "Reditio slovena"
 
 #. [about]
-#: data/core/about.cfg:1996
+#: data/core/about.cfg:1993
+#, fuzzy
+msgid "RACV's Translation"
+msgstr "Reditio serica"
+
+#. [about]
+#: data/core/about.cfg:2000
 msgid "Bots"
 msgstr "Automata"
 
@@ -428,14 +658,14 @@ msgstr "Prooemium"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:27 data/core/help.cfg:126
+#: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "Lusus"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]
 #. [topic]
-#: data/core/help.cfg:33 data/core/help.cfg:323 src/menu_events.cpp:997
+#: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:997
 msgid "Traits"
 msgstr "Lineamenta"
 
@@ -458,13 +688,13 @@ msgstr "Praecipua Telorum"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:67 data/core/help.cfg:414
+#: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "Agri"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:74 data/core/help.cfg:647
+#: data/core/help.cfg:74 data/core/help.cfg:720
 msgid "Commands"
 msgstr "Imperii"
 
@@ -496,13 +726,13 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:110
+#: data/core/help.cfg:111
 #, fuzzy
 msgid "Unknown Unit"
 msgstr "Missio incognita"
 
 #. [topic]
-#: data/core/help.cfg:113
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -511,12 +741,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:118
+#: data/core/help.cfg:119
 msgid "Overview"
 msgstr "Prospectus"
 
 #. [topic]
-#: data/core/help.cfg:121
+#: data/core/help.cfg:122
 msgid ""
 "\n"
 "\n"
@@ -537,12 +767,12 @@ msgstr ""
 "est in eo dominari."
 
 #. [topic]
-#: data/core/help.cfg:132
+#: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "Elementa lusoris"
 
 #. [topic]
-#: data/core/help.cfg:133
+#: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -557,7 +787,7 @@ msgstr ""
 "sequere ligamina inclusa."
 
 #. [topic]
-#: data/core/help.cfg:135
+#: data/core/help.cfg:137
 msgid ""
 "\n"
 "\n"
@@ -579,7 +809,7 @@ msgstr ""
 "<italic>text=Facilis</italic> incipere velis."
 
 #. [topic]
-#: data/core/help.cfg:138
+#: data/core/help.cfg:140
 #, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
@@ -594,12 +824,12 @@ msgstr ""
 "primum inveneas."
 
 #. [topic]
-#: data/core/help.cfg:143
+#: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "De Lusu"
 
 #. [topic]
-#: data/core/help.cfg:144
+#: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -618,7 +848,7 @@ msgstr ""
 "potes."
 
 #. [topic]
-#: data/core/help.cfg:146
+#: data/core/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -634,12 +864,12 @@ msgstr ""
 "milites optimos ad utendum in missionibus posterioribus stipendii."
 
 #. [topic]
-#: data/core/help.cfg:151
+#: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:152
+#: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -650,7 +880,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:154
+#: data/core/help.cfg:157
 msgid ""
 "\n"
 "\n"
@@ -661,12 +891,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:159
+#: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "Conscriptio et Reevocatio"
 
 #. [topic]
-#: data/core/help.cfg:160
+#: data/core/help.cfg:165
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -692,7 +922,7 @@ msgstr ""
 "'conscribere' premere ut eam conscribas."
 
 #. [topic]
-#: data/core/help.cfg:162
+#: data/core/help.cfg:167
 msgid ""
 "\n"
 "\n"
@@ -709,7 +939,7 @@ msgstr ""
 "non potest plus aurum dare quam habes in conscribendo."
 
 #. [topic]
-#: data/core/help.cfg:164
+#: data/core/help.cfg:169
 #, fuzzy
 msgid ""
 "\n"
@@ -723,7 +953,7 @@ msgstr ""
 "habent quae abilitates eorum mutant."
 
 #. [topic]
-#: data/core/help.cfg:166
+#: data/core/help.cfg:171
 msgid ""
 "\n"
 "\n"
@@ -738,7 +968,7 @@ msgstr ""
 "et tibi dat elencho omnium unitatum superessendum ex missionibus praeviis."
 
 #. [topic]
-#: data/core/help.cfg:168
+#: data/core/help.cfg:173
 #, fuzzy
 msgid ""
 "\n"
@@ -754,12 +984,12 @@ msgstr ""
 "text='Merces Impensaque'</ref> si plures nuntios vis."
 
 #. [topic]
-#: data/core/help.cfg:173
+#: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "Orbes"
 
 #. [topic]
-#: data/core/help.cfg:174
+#: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -768,37 +998,37 @@ msgstr ""
 "a te controlatae est:"
 
 #. [topic]
-#: data/core/help.cfg:175
+#: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "viridis si nondum mota est hoc tractu,"
 
 #. [topic]
-#: data/core/help.cfg:176
+#: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "fulvus si iam mota est, sed etiamnun moveri oppugnareve potest, aut"
 
 #. [topic]
-#: data/core/help.cfg:177
+#: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "ruber si omni motu huius tractus iam usa est."
 
 #. [topic]
-#: data/core/help.cfg:178
+#: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Orbis est caeruleus si unitas socia est, non a te controlata."
 
 #. [topic]
-#: data/core/help.cfg:179
+#: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Unitates hostium orbe super palum energiae carent."
 
 #. [topic]
-#: data/core/help.cfg:184
+#: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "Puncta Salutis et Experientiae"
 
 #. [topic]
-#: data/core/help.cfg:185
+#: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -811,7 +1041,7 @@ msgstr ""
 "non habet puncta experientiae, et ea meret in proelio contra hostes."
 
 #. [topic]
-#: data/core/help.cfg:189
+#: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -821,7 +1051,7 @@ msgstr ""
 "numeris (vis praesens et vis maxima quam unitas habere potest)."
 
 #. [topic]
-#: data/core/help.cfg:190
+#: data/core/help.cfg:199
 #, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -835,12 +1065,12 @@ msgstr ""
 "<ref>dst=experience_and_advancement text='promotura est'</ref>."
 
 #. [topic]
-#: data/core/help.cfg:195
+#: data/core/help.cfg:206
 msgid "Movement"
 msgstr "Motus"
 
 #. [topic]
-#: data/core/help.cfg:196
+#: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -869,7 +1099,7 @@ msgstr ""
 "movere, sed oppugnare potest."
 
 #. [topic]
-#: data/core/help.cfg:198
+#: data/core/help.cfg:209
 msgid ""
 "\n"
 "\n"
@@ -895,7 +1125,7 @@ msgstr ""
 "<italic>text='Immutationes Agri'</italic>."
 
 #. [topic]
-#: data/core/help.cfg:200
+#: data/core/help.cfg:211
 #, fuzzy
 msgid ""
 "\n"
@@ -917,7 +1147,7 @@ msgstr ""
 "praetermittere possunt."
 
 #. [topic]
-#: data/core/help.cfg:202
+#: data/core/help.cfg:213
 msgid ""
 "\n"
 "\n"
@@ -932,12 +1162,12 @@ msgstr ""
 "obstantes non essent in charta."
 
 #. [topic]
-#: data/core/help.cfg:207
+#: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "Integumentum et Caligo Belli"
 
 #. [topic]
-#: data/core/help.cfg:210
+#: data/core/help.cfg:223
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -970,12 +1200,12 @@ msgstr ""
 "(praetermittens zona imperii et unitates hostium)."
 
 #. [topic]
-#: data/core/help.cfg:215
+#: data/core/help.cfg:230
 msgid "Combat"
 msgstr "Certamen"
 
 #. [topic]
-#: data/core/help.cfg:216
+#: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -998,7 +1228,7 @@ msgstr ""
 "et globis ignis."
 
 #. [topic]
-#: data/core/help.cfg:218
+#: data/core/help.cfg:233
 msgid ""
 "\n"
 "\n"
@@ -1009,7 +1239,7 @@ msgstr ""
 "<header>text='Ordo et numerus oppugnationum'</header>"
 
 #. [topic]
-#: data/core/help.cfg:220
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1032,7 +1262,7 @@ msgstr ""
 "bis oppugnare potest (quamquam cum IX punctis damni quandocumque ferit)."
 
 #. [topic]
-#: data/core/help.cfg:222
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "\n"
@@ -1043,7 +1273,7 @@ msgstr ""
 "<header>text='Probabilitas icti'</header>"
 
 #. [topic]
-#: data/core/help.cfg:224
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -1066,7 +1296,7 @@ msgstr ""
 "ex agro in quo stat unitas oppugnans."
 
 #. [topic]
-#: data/core/help.cfg:226
+#: data/core/help.cfg:241
 #, fuzzy
 msgid ""
 "\n"
@@ -1086,7 +1316,7 @@ msgstr ""
 "semper saltem LX pro cento probilitatem habent ferire, neglegentes agrum."
 
 #. [topic]
-#: data/core/help.cfg:228
+#: data/core/help.cfg:243
 msgid ""
 "\n"
 "\n"
@@ -1097,7 +1327,7 @@ msgstr ""
 "<header>text=Damnus</header>"
 
 #. [topic]
-#: data/core/help.cfg:230
+#: data/core/help.cfg:245
 #, fuzzy
 msgid ""
 "\n"
@@ -1121,7 +1351,7 @@ msgstr ""
 "italic> ex elencho elegendi oppugnationem."
 
 #. [topic]
-#: data/core/help.cfg:232
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -1139,12 +1369,12 @@ msgstr ""
 "faciunt si unitas incurrens oppugnat."
 
 #. [topic]
-#: data/core/help.cfg:237
+#: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "Genera Damni et Repugnantia"
 
 #. [topic]
-#: data/core/help.cfg:238
+#: data/core/help.cfg:254
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -1160,7 +1390,7 @@ msgstr ""
 "quae accipiunt a generibus quibusdam damni."
 
 #. [topic]
-#: data/core/help.cfg:240
+#: data/core/help.cfg:256
 msgid ""
 "\n"
 "\n"
@@ -1179,7 +1409,7 @@ msgstr ""
 "damnum C pro cento augebitur cum feriatur hoc genere."
 
 #. [topic]
-#: data/core/help.cfg:242
+#: data/core/help.cfg:258
 #, fuzzy
 msgid ""
 "\n"
@@ -1194,7 +1424,7 @@ msgstr ""
 "damnum Concussus vel Ignis, et valde nuda contra damnum Sanctum."
 
 #. [topic]
-#: data/core/help.cfg:244
+#: data/core/help.cfg:260
 msgid ""
 "\n"
 "\n"
@@ -1208,12 +1438,12 @@ msgstr ""
 "C pro cento contra hoc genus habet."
 
 #. [topic]
-#: data/core/help.cfg:249
+#: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "Tempus Diei"
 
 #. [topic]
-#: data/core/help.cfg:253
+#: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1228,7 +1458,7 @@ msgstr ""
 " Filios crepusculi dies et nox non afficiunt."
 
 #. [topic]
-#: data/core/help.cfg:256
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1244,42 +1474,42 @@ msgstr ""
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:256 data/core/macros/schedules.cfg:7
+#: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Aurora"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:257 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Antemeridiem"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:258 data/core/macros/schedules.cfg:29
+#: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "Postmeridiem"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:259 data/core/macros/schedules.cfg:39
+#: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "Vesper"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:260 data/core/macros/schedules.cfg:51
+#: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "Vigilia Prima"
 
 #. [time]
 #. [topic]
-#: data/core/help.cfg:261 data/core/macros/schedules.cfg:64
+#: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "Vigilia Secunda"
 
 #. [topic]
-#: data/core/help.cfg:263
+#: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1287,12 +1517,12 @@ msgstr ""
 "Habeto in mente: nonnullae missiones sub terra occurunt, ubi semper nox est!"
 
 #. [topic]
-#: data/core/help.cfg:268
+#: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "Experientia et Promotiones Gradu"
 
 #. [topic]
-#: data/core/help.cfg:269
+#: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1305,7 +1535,7 @@ msgstr ""
 "gradu I, XVI ex gradu II, XXIV ex gradu III, cet."
 
 #. [topic]
-#: data/core/help.cfg:271
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1322,7 +1552,7 @@ msgstr ""
 "eligere ex elencho optionum promotionis."
 
 #. [topic]
-#: data/core/help.cfg:273
+#: data/core/help.cfg:292
 #, fuzzy
 msgid ""
 "\n"
@@ -1353,12 +1583,12 @@ msgstr ""
 "Unitates complures tantum bonum in punctis salutis maximis accipiunt."
 
 #. [topic]
-#: data/core/help.cfg:278
+#: data/core/help.cfg:299
 msgid "Healing"
 msgstr "Restauratio Salutis"
 
 #. [topic]
-#: data/core/help.cfg:279
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
@@ -1374,7 +1604,7 @@ msgstr ""
 "unitatum praebet, omnes in initio tractus tui occurrunt, priusquam egeris."
 
 #. [topic]
-#: data/core/help.cfg:281
+#: data/core/help.cfg:302
 #, fuzzy
 msgid ""
 "\n"
@@ -1388,7 +1618,7 @@ msgstr ""
 "tractu proximo medebitur."
 
 #. [topic]
-#: data/core/help.cfg:282
+#: data/core/help.cfg:303
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1397,7 +1627,7 @@ msgstr ""
 "Pagi: Unitas quae tractus in pago incipit VIII PS medebitur."
 
 #. [topic]
-#: data/core/help.cfg:283
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "\n"
@@ -1409,7 +1639,7 @@ msgstr ""
 "troglodytae) medentur VIII PS omni tractu."
 
 #. [topic]
-#: data/core/help.cfg:284
+#: data/core/help.cfg:305
 #, fuzzy
 msgid ""
 "\n"
@@ -1424,7 +1654,7 @@ msgstr ""
 "fere IV vel VIII PS pro tractu, aut damnum Veneni unitatis illiusimpediunt. "
 
 #. [topic]
-#: data/core/help.cfg:285
+#: data/core/help.cfg:306
 #, fuzzy
 msgid ""
 "\n"
@@ -1438,7 +1668,7 @@ msgstr ""
 "medetionis, si etiam hanc facultatem habet)."
 
 #. [topic]
-#: data/core/help.cfg:287
+#: data/core/help.cfg:308
 msgid ""
 "\n"
 "\n"
@@ -1453,12 +1683,12 @@ msgstr ""
 "omnis unitas qui supervivit missionem plene sanabitur."
 
 #. [topic]
-#: data/core/help.cfg:292
+#: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "Merces Impensaque"
 
 #. [topic]
-#: data/core/help.cfg:293
+#: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1471,7 +1701,7 @@ msgstr ""
 "Mercedes Impensamque."
 
 #. [topic]
-#: data/core/help.cfg:295
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -1488,7 +1718,7 @@ msgstr ""
 "infra descripturum est."
 
 #. [topic]
-#: data/core/help.cfg:297
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -1508,7 +1738,7 @@ msgstr ""
 "primo et decem pagos, solvere debes II nummos omni tractu ut impensas."
 
 #. [topic]
-#: data/core/help.cfg:299
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -1522,7 +1752,7 @@ msgstr ""
 "et decem pagorum, Merces tuus consequens decem nummi pro tractu sit."
 
 #. [topic]
-#: data/core/help.cfg:300
+#: data/core/help.cfg:323
 #, fuzzy
 msgid ""
 "\n"
@@ -1540,12 +1770,12 @@ msgstr ""
 "missione altera Heredis Throni) habent plerumque lineamentum Fidelis."
 
 #. [topic]
-#: data/core/help.cfg:305
+#: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "Conclusio"
 
 #. [topic]
-#: data/core/help.cfg:306
+#: data/core/help.cfg:330
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -1561,17 +1791,17 @@ msgstr ""
 "ludas. Iocum habeto, et bonam fortunam!"
 
 #. [topic]
-#: data/core/help.cfg:311
+#: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:317
+#: data/core/help.cfg:341
 msgid "License"
 msgstr "Potestas"
 
 #. [topic]
-#: data/core/help.cfg:325
+#: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1584,7 +1814,7 @@ msgstr ""
 "fortuite unitati cum conscribatur."
 
 #. [topic]
-#: data/core/help.cfg:327
+#: data/core/help.cfg:352
 #, fuzzy
 msgid ""
 "\n"
@@ -1602,7 +1832,7 @@ msgstr ""
 "<ref>dst=traits_strong text=Fortis</ref>."
 
 #. [topic]
-#: data/core/help.cfg:331
+#: data/core/help.cfg:356
 #, fuzzy
 msgid ""
 "\n"
@@ -1619,19 +1849,19 @@ msgstr ""
 "<ref>dst=traits_dextrous text=Sollers</ref>."
 
 #. [topic]
-#: data/core/help.cfg:336
+#: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "Argutus"
 
 #. [topic]
-#: data/core/help.cfg:337
+#: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Unitates argutae egent XX pro cento minus experientiae quam solita est ut "
 "promoveantur."
 
 #. [topic]
-#: data/core/help.cfg:339
+#: data/core/help.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -1650,12 +1880,12 @@ msgstr ""
 "habes, fortasse velis unitates revocare qui meliora lineamenta possident."
 
 #. [topic]
-#: data/core/help.cfg:344
+#: data/core/help.cfg:370
 msgid "Quick"
 msgstr "Celer"
 
 #. [topic]
-#: data/core/help.cfg:345
+#: data/core/help.cfg:371
 #, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
@@ -1663,7 +1893,7 @@ msgstr ""
 "quam solita."
 
 #. [topic]
-#: data/core/help.cfg:347
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -1684,18 +1914,18 @@ msgstr ""
 "tenendo."
 
 #. [topic]
-#: data/core/help.cfg:352
+#: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "Mollis"
 
 #. [topic]
-#: data/core/help.cfg:353
+#: data/core/help.cfg:379
 #, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "Unitates molles decem pro cento et tres PS plures quam solita habent."
 
 #. [topic]
-#: data/core/help.cfg:355
+#: data/core/help.cfg:381
 msgid ""
 "\n"
 "\n"
@@ -1714,12 +1944,12 @@ msgstr ""
 "idonea contra hostes."
 
 #. [topic]
-#: data/core/help.cfg:360
+#: data/core/help.cfg:386
 msgid "Strong"
 msgstr "Fortis"
 
 #. [topic]
-#: data/core/help.cfg:361
+#: data/core/help.cfg:387
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1728,7 +1958,7 @@ msgstr ""
 "concursu, et I PS adiunctum habent."
 
 #. [topic]
-#: data/core/help.cfg:363
+#: data/core/help.cfg:389
 msgid ""
 "\n"
 "\n"
@@ -1745,22 +1975,22 @@ msgstr ""
 "est ut efficiatur ex ictu nocenti ictus occidens."
 
 #. [topic]
-#: data/core/help.cfg:368
+#: data/core/help.cfg:394
 msgid "Fearless"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:369
+#: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:374
+#: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "Fidelis"
 
 #. [topic]
-#: data/core/help.cfg:375
+#: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1771,7 +2001,7 @@ msgstr ""
 "non subeunt."
 
 #. [topic]
-#: data/core/help.cfg:377
+#: data/core/help.cfg:403
 msgid ""
 "\n"
 "\n"
@@ -1792,12 +2022,12 @@ msgstr ""
 "tales unitates dimittere aut in mortem stultem mittere."
 
 #. [topic]
-#: data/core/help.cfg:382
+#: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "Inmortuum"
 
 #. [topic]
-#: data/core/help.cfg:383
+#: data/core/help.cfg:409
 #, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
@@ -1805,7 +2035,7 @@ msgid ""
 msgstr "Unitates Inmortuae immunes sunt contra venenum."
 
 #. [topic]
-#: data/core/help.cfg:385
+#: data/core/help.cfg:411
 msgid ""
 "\n"
 "\n"
@@ -1822,12 +2052,12 @@ msgstr ""
 "hostes qui veneno in oppugnatione utuntur."
 
 #. [topic]
-#: data/core/help.cfg:390
+#: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:391
+#: data/core/help.cfg:417
 #, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
@@ -1835,7 +2065,7 @@ msgid ""
 msgstr "Unitates Inmortuae immunes sunt contra venenum."
 
 #. [topic]
-#: data/core/help.cfg:393
+#: data/core/help.cfg:419
 msgid ""
 "\n"
 "\n"
@@ -1845,12 +2075,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:398
+#: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "Sollers"
 
 #. [topic]
-#: data/core/help.cfg:399
+#: data/core/help.cfg:425
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
@@ -1858,7 +2088,7 @@ msgstr ""
 "procul."
 
 #. [topic]
-#: data/core/help.cfg:401
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "\n"
@@ -1875,20 +2105,20 @@ msgstr ""
 "punctum adiunctum omni saggita efficiunt."
 
 #. [topic]
-#: data/core/help.cfg:406
+#: data/core/help.cfg:432
 #, fuzzy
 msgid "Healthy"
 msgstr "sanus"
 
 #. [topic]
-#: data/core/help.cfg:407
+#: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:409
+#: data/core/help.cfg:435
 msgid ""
 "\n"
 "\n"
@@ -1897,7 +2127,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:417
+#: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit's defensive capability in combat.\n"
@@ -1905,12 +2135,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:423
+#: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:428
+#: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1928,12 +2158,12 @@ msgstr ""
 "Plurimae unitates defensum XXX vel XL pro cento in Campis."
 
 #. [topic]
-#: data/core/help.cfg:433
+#: data/core/help.cfg:462
 msgid "Road"
 msgstr "Via"
 
 #. [topic]
-#: data/core/help.cfg:436
+#: data/core/help.cfg:465
 #, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
@@ -1944,12 +2174,12 @@ msgstr ""
 "ludi, Viae sunt <ref>dst=terrain_grassland text=Campis</ref> consimiles."
 
 #. [topic]
-#: data/core/help.cfg:441
+#: data/core/help.cfg:472
 msgid "Forest"
 msgstr "Silva"
 
 #. [topic]
-#: data/core/help.cfg:448
+#: data/core/help.cfg:479
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1981,12 +2211,12 @@ msgstr ""
 "fere recibunt tantum defensum XXX pro cento in silvis."
 
 #. [topic]
-#: data/core/help.cfg:453
+#: data/core/help.cfg:486
 msgid "Hills"
 msgstr "Colles"
 
 #. [topic]
-#: data/core/help.cfg:458
+#: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2009,12 +2239,12 @@ msgstr ""
 "limitantur a XL. Nani gaudent habere defensum LX in collibus."
 
 #. [topic]
-#: data/core/help.cfg:463
+#: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "Montes"
 
 #. [topic]
-#: data/core/help.cfg:468
+#: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2035,12 +2265,12 @@ msgstr ""
 "Unitates plurimae defensum circa LX pro cento in montibus, Nani LXX."
 
 #. [topic]
-#: data/core/help.cfg:473
+#: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "Palus"
 
 #. [topic]
-#: data/core/help.cfg:478
+#: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2061,12 +2291,12 @@ msgstr ""
 "Nagae et Lacertae fere gaudent LX."
 
 #. [topic]
-#: data/core/help.cfg:483
+#: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "Aqua"
 
 #. [topic]
-#: data/core/help.cfg:488
+#: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2088,12 +2318,12 @@ msgstr ""
 "et Nerei LX."
 
 #. [topic]
-#: data/core/help.cfg:493
+#: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "Gurges"
 
 #. [topic]
-#: data/core/help.cfg:498
+#: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2108,12 +2338,12 @@ msgstr ""
 "Nerei et Nagae recipiunt defensum L pro cento in gurgitibus, cum motu pleno."
 
 #. [topic]
-#: data/core/help.cfg:503
+#: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:508
+#: data/core/help.cfg:551
 #, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
@@ -2130,12 +2360,12 @@ msgstr ""
 "Plurimae unitates defensum XX ad XL pro cento habent in nive."
 
 #. [topic]
-#: data/core/help.cfg:513
+#: data/core/help.cfg:558
 msgid "Castle"
 msgstr "Castellum"
 
 #. [topic]
-#: data/core/help.cfg:520
+#: data/core/help.cfg:565
 #, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -2157,12 +2387,12 @@ msgstr ""
 "Unitates plurimae defensum LX in castello habent."
 
 #. [topic]
-#: data/core/help.cfg:525
+#: data/core/help.cfg:572
 msgid "Sand"
 msgstr "Harena"
 
 #. [topic]
-#: data/core/help.cfg:530
+#: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2177,12 +2407,12 @@ msgstr ""
 "Unitates plurimi defensum XX ad XL pro cento in Harena recipiunt."
 
 #. [topic]
-#: data/core/help.cfg:535
+#: data/core/help.cfg:584
 msgid "Desert"
 msgstr "Desertum"
 
 #. [topic]
-#: data/core/help.cfg:538
+#: data/core/help.cfg:587
 #, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
@@ -2193,12 +2423,12 @@ msgstr ""
 "sed in ludo omnes idem sunt. Vide <ref>dst=terrain_sand text=Harenam</ref>."
 
 #. [topic]
-#: data/core/help.cfg:543
+#: data/core/help.cfg:594
 msgid "Cave"
 msgstr "Caverna"
 
 #. [topic]
-#: data/core/help.cfg:548
+#: data/core/help.cfg:599
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -2220,12 +2450,12 @@ msgstr ""
 "Unitates plurimae defensum XX ad XL in Cavernis habent, nani L."
 
 #. [topic]
-#: data/core/help.cfg:553
+#: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "Caverna Saxosa"
 
 #. [topic]
-#: data/core/help.cfg:558
+#: data/core/help.cfg:611
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2249,12 +2479,12 @@ msgstr ""
 "equitates tantum XL. Nani habent XL pro cento defensum in his cavernis."
 
 #. [topic]
-#: data/core/help.cfg:563
+#: data/core/help.cfg:618
 msgid "Illuminated Cave"
 msgstr "Caverna Illustrata"
 
 #. [topic]
-#: data/core/help.cfg:566
+#: data/core/help.cfg:621
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2269,12 +2499,12 @@ msgstr ""
 "Plurimae unitates defensum XX ad XL in Cavernis habent, sed nani L."
 
 #. [topic]
-#: data/core/help.cfg:571
+#: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "Nemus Fungorum"
 
 #. [topic]
-#: data/core/help.cfg:576
+#: data/core/help.cfg:633
 #, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2299,12 +2529,12 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
-#: data/core/help.cfg:581 src/terrain.cpp:146
+#: data/core/help.cfg:640 src/terrain.cpp:146
 msgid "Village"
 msgstr "Pagus"
 
 #. [topic]
-#: data/core/help.cfg:588
+#: data/core/help.cfg:647
 #, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2327,13 +2557,13 @@ msgstr ""
 "tantum XL."
 
 #. [topic]
-#: data/core/help.cfg:595
+#: data/core/help.cfg:656
 #, fuzzy
 msgid "Submerged Village"
 msgstr "Pagus Desertus"
 
 #. [topic]
-#: data/core/help.cfg:600
+#: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2347,12 +2577,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:605
+#: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:608
+#: data/core/help.cfg:671
 #, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
@@ -2365,12 +2595,12 @@ msgstr ""
 "unitates volantes hoc agrum transire possunt."
 
 #. [topic]
-#: data/core/help.cfg:613
+#: data/core/help.cfg:678
 msgid "Lava"
 msgstr "Saxa liquefacta"
 
 #. [topic]
-#: data/core/help.cfg:616
+#: data/core/help.cfg:681
 #, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
@@ -2387,12 +2617,12 @@ msgstr ""
 "dat bonum in oppugnatione filiis lucis et tollit bonum filiis tenebrarum."
 
 #. [topic]
-#: data/core/help.cfg:621
+#: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "Vadum Fluminis"
 
 #. [topic]
-#: data/core/help.cfg:624
+#: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2407,12 +2637,12 @@ msgstr ""
 "et motus pro unitate in eo."
 
 #. [topic]
-#: data/core/help.cfg:629
+#: data/core/help.cfg:698
 msgid "Bridge"
 msgstr "Pons"
 
 #. [topic]
-#: data/core/help.cfg:634
+#: data/core/help.cfg:703
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2439,13 +2669,13 @@ msgstr ""
 "sunt."
 
 #. [topic]
-#: data/core/help.cfg:639
+#: data/core/help.cfg:710
 #, fuzzy
 msgid "Impassable"
 msgstr "Montes Inexsuperabiles"
 
 #. [topic]
-#: data/core/help.cfg:642
+#: data/core/help.cfg:713
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2455,12 +2685,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:653
+#: data/core/help.cfg:726
 msgid "General commands"
 msgstr "Imperia Vulgaria"
 
 #. [topic]
-#: data/core/help.cfg:658
+#: data/core/help.cfg:731
 #, fuzzy
 msgid ""
 "\n"
@@ -2471,7 +2701,7 @@ msgstr ""
 "Tollere nuntios sermonis."
 
 #. [topic]
-#: data/core/help.cfg:662
+#: data/core/help.cfg:735
 #, fuzzy
 msgid ""
 "\n"
@@ -2485,7 +2715,7 @@ msgstr ""
 "Ratio finita est cum lusum finitum est."
 
 #. [topic]
-#: data/core/help.cfg:665
+#: data/core/help.cfg:738
 #, fuzzy
 msgid ""
 "\n"
@@ -2501,7 +2731,7 @@ msgstr ""
 "illam imperat hoc imperium dare debet. Si pars non datur, 'i' adsumitur."
 
 #. [topic]
-#: data/core/help.cfg:668
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2509,7 +2739,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:671
+#: data/core/help.cfg:744
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2517,7 +2747,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:674
+#: data/core/help.cfg:747
 #, fuzzy
 msgid ""
 "\n"
@@ -2528,7 +2758,7 @@ msgstr ""
 "Scrinium remonstrare."
 
 #. [topic]
-#: data/core/help.cfg:677
+#: data/core/help.cfg:750
 #, fuzzy
 msgid ""
 "\n"
@@ -2539,7 +2769,7 @@ msgstr ""
 "Monstrare elenchum electionis adumbrationum."
 
 #. [topic]
-#: data/core/help.cfg:680
+#: data/core/help.cfg:753
 #, fuzzy
 msgid ""
 "\n"
@@ -2550,7 +2780,7 @@ msgstr ""
 "Missionem finire (sine incitationibus)"
 
 #. [topic]
-#: data/core/help.cfg:683
+#: data/core/help.cfg:756
 #, fuzzy
 msgid ""
 "\n"
@@ -2561,7 +2791,7 @@ msgstr ""
 "Lusum servare (sine incitationibus)."
 
 #. [topic]
-#: data/core/help.cfg:684
+#: data/core/help.cfg:757
 #, fuzzy
 msgid ""
 "\n"
@@ -2571,12 +2801,12 @@ msgstr ""
 "Lusum servare et missionem finire (sine incitationibus)."
 
 #. [topic]
-#: data/core/help.cfg:690
+#: data/core/help.cfg:765
 msgid "Multiplayer commands"
 msgstr "Imperia plurum lusorum"
 
 #. [topic]
-#: data/core/help.cfg:694
+#: data/core/help.cfg:769
 #, fuzzy
 msgid ""
 "\n"
@@ -2589,7 +2819,7 @@ msgstr ""
 "inscriptio PI qua utitur illud nomen utentis."
 
 #. [topic]
-#: data/core/help.cfg:697
+#: data/core/help.cfg:772
 #, fuzzy
 msgid ""
 "\n"
@@ -2604,7 +2834,7 @@ msgstr ""
 "(scribe hic cognomen lusoris ver spectatoris)."
 
 #. [topic]
-#: data/core/help.cfg:700
+#: data/core/help.cfg:775
 #, fuzzy
 msgid ""
 "\n"
@@ -2619,7 +2849,7 @@ msgstr ""
 "cum connexione vel aliis habet."
 
 #. [topic]
-#: data/core/help.cfg:703
+#: data/core/help.cfg:778
 #, fuzzy
 msgid ""
 "\n"
@@ -2632,7 +2862,7 @@ msgstr ""
 "nomina utentum mutorum."
 
 #. [topic]
-#: data/core/help.cfg:704
+#: data/core/help.cfg:779
 #, fuzzy
 msgid ""
 "\n"
@@ -2642,13 +2872,13 @@ msgstr ""
 "Facere mutos spectatores vel permittere sermonem."
 
 #. [topic]
-#: data/core/help.cfg:709
+#: data/core/help.cfg:786
 #, fuzzy
 msgid "Debug mode commands"
 msgstr "Imperia Vulgaria"
 
 #. [topic]
-#: data/core/help.cfg:713
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2656,7 +2886,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:716
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2664,7 +2894,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:719
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2672,7 +2902,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:722
+#: data/core/help.cfg:799
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2680,7 +2910,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:725
+#: data/core/help.cfg:802
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2688,7 +2918,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:728
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2696,7 +2926,7 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:729
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3354,97 +3584,97 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Venenum per venas huius unitatis in hoc momento fluit."
 
 #. [object]
-#: data/core/macros/items.cfg:294
+#: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "Aqua Sancta"
 
 #. [object]
-#: data/core/macros/items.cfg:297
+#: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:298
+#: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Non idoneus sum, ut hanc rem utor! Alter eam sumat."
 
 #. [object]
-#: data/core/macros/items.cfg:333
+#: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "Potio Fortitudinis"
 
 #. [object]
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "Fortitudo bibenti datur."
 
 #. [object]
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "Potio Ruinae"
 
 #. [object]
-#: data/core/macros/items.cfg:380
+#: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "Haec unitas misera aliquid permalum bibit."
 
 #. [object]
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "Annulus Regenerationis"
 
 #. [object]
-#: data/core/macros/items.cfg:418
+#: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Hic annulus ei qui eum fert omni loco ordine aliquantulum curat."
 
 #. [object]
-#: data/core/macros/items.cfg:455
+#: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "Annulus Lentitatis"
 
 #. [object]
-#: data/core/macros/items.cfg:458
+#: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "Qui hunc annulum fert lentus fit."
 
 #. [object]
-#: data/core/macros/items.cfg:493
+#: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "Virga Celeritatis"
 
 #. [object]
-#: data/core/macros/items.cfg:496
+#: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "Haec virga ei qui eam fert motum celere dabit."
 
 #. [object]
-#: data/core/macros/items.cfg:497
+#: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "Tantum qui naturam magicam habet talem rem uti potest."
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Only the mermen can use this item!"
 msgstr "Tantum Nereides hanc rem uti possunt!"
 
-#: data/core/macros/items.cfg:516
+#: data/core/macros/items.cfg:512
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:518
+#: data/core/macros/items.cfg:514
 msgid "Storm Trident"
 msgstr "Trident Tempestatum"
 
 #. [object]
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:517
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Hic trident Nereium permittit fulmina in hostes conicere."
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:521
 msgid "storm trident"
 msgstr "tridens tempestatum"
 
@@ -4517,91 +4747,100 @@ msgid "race^Elves"
 msgstr "Nani"
 
 #. [race]
-#: data/core/units.cfg:94
+#: data/core/units.cfg:100
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
 "differences between humans and elves are more pronounced than the latter’s "
 "unusually long life - most, unless claimed by illness, accident or war, live "
-"a full two centuries. While some elves possessing a high magical aptitude "
-"have been known to live an additional full century, most elves begin to grow "
-"physically frail approaching their twentieth decade and pass away within a "
-"few decades after. Elves are naturally imbued with magic to a small degree. "
-"Though most are unable to channel it directly, its latent presence gives "
-"them their keen senses and long life. Many elves have magic-driven talents "
-"such as marksmanship or stealth, allowing them to achieve tasks that most "
-"normal beings would find astonishing. Those elves that learn to wield this "
-"power in more general ways can become truly formidable in its use. Many "
-"choose to use their gift to heal others.\n"
+"a full two and a half centuries. While some elves possessing a high magical "
+"aptitude have been known to live an additional full century, most elves "
+"begin to grow physically frail at some point between 250 and 300 years of "
+"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"\n"
+"Elves are naturally imbued with magic to a small degree. Though most are "
+"unable to channel it directly, its latent presence gives them their keen "
+"senses and long life. Many elves have magic-driven talents such as "
+"marksmanship or stealth, allowing them to achieve tasks that most normal "
+"beings would find astonishing. Those elves that learn to wield this power in "
+"more general ways can become truly formidable in its use. Many choose to use "
+"their gift to heal others.\n"
+"\n"
+"A few elves, venturing far down the paths of magic and mysticism, become "
+"sensitive to the presence of cold iron and can even be burned by it. Elvish "
+"legend hints that this was more common in the far past.\n"
 "\n"
 "Elves spend much of their time honing their talents and skills. Those not "
 "adept at the magical arts typically devote their time honing their physical "
 "skills. As a result, elves excel at archery, which is perhaps their most "
 "important method of warfare. Most elvish troops carry a bow and no other "
 "race can rival their archers in speed and accuracy. All elves also share an "
-"unexplained affection for unspoiled nature. They often feel uncomfortable in "
-"open unvegetated spaces, which leads them to make their homes in the forests "
-"of the Great Continent, such as Aethenwood in the southwest and Wesmere in "
-"the northwest. Elves are the eldest race of the continent, with the possible "
-"exception of trolls. Many of their settlements cannot be reliably dated, "
-"undoubtedly having existed for over a millennium."
+"intense affection for unspoiled nature. They often feel uncomfortable in "
+"open unvegetated spaces. They live primarily in the forests of the Great "
+"Continent; the Aethenwood in the southwest, Wesmere in the northwest, and "
+"the great northern woods of which the Lintanir Forest is the southernmost "
+"edge. \n"
+"\n"
+"Elves are the eldest race of the continent, with the possible exception of "
+"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
+"having existed for over a millennium."
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:103
+#: data/core/units.cfg:109
 #, fuzzy
 msgid "race^Goblin"
 msgstr "Troglodyta"
 
 #. [race]: description=
-#: data/core/units.cfg:104
+#: data/core/units.cfg:110
 #, fuzzy
 msgid "race+female^Goblin"
 msgstr "Troglodyta"
 
 #. [race]: description=
-#: data/core/units.cfg:105
+#: data/core/units.cfg:111
 msgid "race^Goblins"
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:117
+#: data/core/units.cfg:123
 #, fuzzy
 msgid "race^Gryphon"
 msgstr "Troglodyta"
 
 #. [race]: description=
-#: data/core/units.cfg:118
+#: data/core/units.cfg:124
 #, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Troglodyta"
 
 #. [race]: description=
-#: data/core/units.cfg:119
+#: data/core/units.cfg:125
 #, fuzzy
 msgid "race^Gryphons"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:127
+#: data/core/units.cfg:133
 #, fuzzy
 msgid "race^Human"
 msgstr "Homines"
 
 #. [race]
-#: data/core/units.cfg:128
+#: data/core/units.cfg:134
 #, fuzzy
 msgid "race+female^Human"
 msgstr "Homines"
 
 #. [race]
-#: data/core/units.cfg:129
+#: data/core/units.cfg:135
 #, fuzzy
 msgid "race^Humans"
 msgstr "Homines"
 
 #. [race]
-#: data/core/units.cfg:136
+#: data/core/units.cfg:142
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -4643,120 +4882,120 @@ msgid ""
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:143
+#: data/core/units.cfg:149
 #, fuzzy
 msgid "race^Saurian"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:144
+#: data/core/units.cfg:150
 #, fuzzy
 msgid "race+female^Saurian"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:145
+#: data/core/units.cfg:151
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:154
+#: data/core/units.cfg:160
 msgid "race^Mechanical"
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:155
+#: data/core/units.cfg:161
 #, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "Fur"
 
 #. [race]: description=
-#: data/core/units.cfg:164
+#: data/core/units.cfg:170
 #, fuzzy
 msgid "race^Merman"
 msgstr "Homines"
 
 #. [race]: description=
-#: data/core/units.cfg:165
+#: data/core/units.cfg:171
 #, fuzzy
 msgid "race^Mermaid"
 msgstr "Homines"
 
 #. [race]: description=
-#: data/core/units.cfg:166
+#: data/core/units.cfg:172
 msgid "race^Mermen"
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:174
+#: data/core/units.cfg:180
 #, fuzzy
 msgid "race^Monster"
 msgstr "Nani"
 
 #. [race]: description=
-#: data/core/units.cfg:175
+#: data/core/units.cfg:181
 msgid "race^Monsters"
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:188
 #, fuzzy
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:189
 #, fuzzy
 msgid "race^Nagani"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:184
+#: data/core/units.cfg:190
 #, fuzzy
 msgid "race^Nagas"
 msgstr "Naga"
 
 #. [race]: description=
-#: data/core/units.cfg:192
+#: data/core/units.cfg:198
 #, fuzzy
 msgid "race^Ogre"
 msgstr "Troglodyta"
 
 #. [race]: description=
-#: data/core/units.cfg:193
+#: data/core/units.cfg:199
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "Troglodyta"
 
 #. [race]: description=
-#: data/core/units.cfg:194
+#: data/core/units.cfg:200
 msgid "race^Ogres"
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:202
+#: data/core/units.cfg:208
 #, fuzzy
 msgid "race^Orc"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:203
+#: data/core/units.cfg:209
 #, fuzzy
 msgid "race+female^Orc"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:204
+#: data/core/units.cfg:210
 #, fuzzy
 msgid "race^Orcs"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans.  They are warlike, savage, and cruel by nature. "
+"and stronger than humans. They are warlike, savage, and cruel by nature. "
 "Their blood is darker and thicker than that of normal humans and they have "
 "little care for personal hygiene or their personal appearance. Although Orcs "
 "are violent even among themselves creatures, they are pack-oriented; an orc "
@@ -4813,25 +5052,25 @@ msgid ""
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:221
+#: data/core/units.cfg:227
 #, fuzzy
 msgid "race^Troll"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:222
+#: data/core/units.cfg:228
 #, fuzzy
 msgid "race+female^Troll"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:223
+#: data/core/units.cfg:229
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Troglodyta"
 
 #. [race]
-#: data/core/units.cfg:229
+#: data/core/units.cfg:235
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -4851,8 +5090,8 @@ msgid ""
 "their home cave. This is until they finally pass away as their bodies "
 "themselves slowly turn into lifeless statues of stone.\n"
 "\n"
-"Trolls are seen by many as being little more than a yet another race of "
-"savage monsters. This common misconception is in part perpetuated by orcs to "
+"Trolls are seen by many as being little more than yet another race of savage "
+"monsters. This common misconception is in part perpetuated by orcs to "
 "persuade trolls to join their armies. Because they are rather simple and do "
 "not understand the ways of other races or sometimes can even tell them "
 "apart, it is usually easy for an orcish band to convince a group of trolls "
@@ -4870,24 +5109,24 @@ msgid ""
 msgstr ""
 
 #. [race]
-#: data/core/units.cfg:241
+#: data/core/units.cfg:247
 msgid "race^Undead"
 msgstr "Inmortuum"
 
 #. [race]
-#: data/core/units.cfg:242
+#: data/core/units.cfg:248
 #, fuzzy
 msgid "race+female^Undead"
 msgstr "Inmortuum"
 
 #. [race]
-#: data/core/units.cfg:243
+#: data/core/units.cfg:249
 #, fuzzy
 msgid "race+plural^Undead"
 msgstr "Inmortuum"
 
 #. [race]
-#: data/core/units.cfg:249
+#: data/core/units.cfg:255
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -4916,25 +5155,25 @@ msgid ""
 msgstr ""
 
 #. [race]: description=
-#: data/core/units.cfg:257
+#: data/core/units.cfg:263
 #, fuzzy
 msgid "race^Wolf"
 msgstr "Nani"
 
 #. [race]: description=
-#: data/core/units.cfg:258
+#: data/core/units.cfg:264
 #, fuzzy
 msgid "race^Wolves"
 msgstr "Nani"
 
 #. [race]: description=
-#: data/core/units.cfg:266
+#: data/core/units.cfg:272
 #, fuzzy
 msgid "race^Wose"
 msgstr "Nani"
 
 #. [race]: description=
-#: data/core/units.cfg:267
+#: data/core/units.cfg:273
 #, fuzzy
 msgid "race^Woses"
 msgstr "Nani"
@@ -5701,16 +5940,6 @@ msgid ""
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
 
-#. [object]
-#: data/scenario-test.cfg:250
-msgid "Anti-Warlord Weaponry activated!"
-msgstr ""
-
-#. [object]
-#: data/scenario-test.cfg:273 data/scenario-test.cfg:290
-msgid "Anti-Warlord Weaponry deactivated."
-msgstr ""
-
 #. [menu]
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
@@ -5741,8 +5970,8 @@ msgstr "Missio remota"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2652
-#: src/unit.cpp:2826
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2623
+#: src/unit.cpp:2797
 msgid "HP"
 msgstr "PS"
 
@@ -6055,7 +6284,7 @@ msgid "Do you still want to download it?"
 msgstr "Visne vere hunc lusum delere?"
 
 #: src/addon_management.cpp:471 src/addon_management.cpp:545
-#: src/multiplayer.cpp:337 src/multiplayer_ui.cpp:73
+#: src/multiplayer.cpp:343 src/multiplayer_ui.cpp:73
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
@@ -6307,7 +6536,7 @@ msgstr "Adiunctum Inauguratur"
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
-#: src/ai.cpp:1650
+#: src/ai.cpp:1655
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Missio incognita"
@@ -8270,21 +8499,21 @@ msgstr "Nomen:"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Missio incognita: '"
 
-#: src/playmp_controller.cpp:197
-msgid "Undoing moves not yet transmited to server."
+#: src/playmp_controller.cpp:205
+msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:277
+#: src/playmp_controller.cpp:285
 #, fuzzy
 msgid "End scenario"
 msgstr "Missio remota"
 
-#: src/playmp_controller.cpp:381
+#: src/playmp_controller.cpp:389
 #, fuzzy
 msgid "Waiting for next scenario..."
 msgstr "Exspecto initium lusus..."
 
-#: src/playmp_controller.cpp:505
+#: src/playmp_controller.cpp:513
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8382,7 +8611,7 @@ msgid ""
 "want to save the game?"
 msgstr "Disiunctio retis accedit et lusus non pergit. Visne lusum servare?"
 
-#: src/playsingle_controller.cpp:646
+#: src/playsingle_controller.cpp:652
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Imperium nunc habes"
@@ -8680,34 +8909,34 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2609 src/unit.cpp:2814 src/unit.cpp:2870
+#: src/unit.cpp:2580 src/unit.cpp:2785 src/unit.cpp:2841
 #, fuzzy
 msgid " and "
 msgstr "Harena"
 
-#: src/unit.cpp:2620
+#: src/unit.cpp:2591
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2685
+#: src/unit.cpp:2656
 #, fuzzy
 msgid "moves"
 msgstr "Puncta motus"
 
-#: src/unit.cpp:2703 src/unit.cpp:2841
+#: src/unit.cpp:2674 src/unit.cpp:2812
 msgid "XP to advance"
 msgstr "PE ad promotionem"
 
-#: src/unit.cpp:2833
+#: src/unit.cpp:2804
 #, fuzzy
 msgid " move"
 msgstr "Puncta motus"
 
-#: src/unit.cpp:2849
+#: src/unit.cpp:2820
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2879
+#: src/unit.cpp:2850
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -8883,10 +9112,6 @@ msgstr "Potestatem facere summaria mittendi"
 #, fuzzy
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr "Lusus hospes esse sine moderatro"
-
-#, fuzzy
-#~ msgid "Local Game"
-#~ msgstr "Lusum Restituere"
 
 #, fuzzy
 #~ msgid ""
