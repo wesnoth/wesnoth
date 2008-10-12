@@ -116,6 +116,7 @@ unit::unit(const unit& o):
            alpha_(o.alpha_),
 
            unit_formula_(o.unit_formula_),
+           unit_loop_formula_(o.unit_loop_formula_),
            formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
 
            recruits_(o.recruits_),
@@ -199,6 +200,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	gender_(),
 	alpha_(),
 	unit_formula_(),
+	unit_loop_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -276,6 +278,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	gender_(),
 	alpha_(),
 	unit_formula_(),
+	unit_loop_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -381,6 +384,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
 	alpha_(),
 	unit_formula_(),
+	unit_loop_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -479,6 +483,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
 	alpha_(),
 	unit_formula_(),
+	unit_loop_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -1474,6 +1479,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	//support for unit formulas and unit-specyfic variables in [ai_vars]
 	unit_formula_ = cfg["formula"];
+	unit_loop_formula_ = cfg["loop_formula"];
 
 	const config* ai_vars = cfg.child("ai_vars");
 	if (ai_vars)
@@ -1641,6 +1647,9 @@ void unit::write(config& cfg) const
 	//support for unit formulas and unit-specyfic variables in [ai_vars]
 	if (has_formula())
 		cfg["formula"] = unit_formula_;
+
+	if (has_loop_formula())
+		cfg["loop_formula"] = unit_loop_formula_;
 
 
 	if (formula_vars_ && formula_vars_->empty() == false)

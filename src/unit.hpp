@@ -289,7 +289,9 @@ public:
 
 	const game_logic::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }
 	bool has_formula() const { return !unit_formula_.empty(); }
+	bool has_loop_formula() const { return !unit_loop_formula_.empty(); }
 	const std::string& get_formula() const { return unit_formula_; }
+	const std::string& get_loop_formula() const { return unit_loop_formula_; }
 
 	void reset_modifications();
 	void backup_state();
@@ -376,6 +378,7 @@ private:
 	fixed_t alpha_;
 
 	std::string unit_formula_;
+	std::string unit_loop_formula_;
 	game_logic::map_formula_callable_ptr formula_vars_;
 
 	std::vector<std::string> recruits_;
