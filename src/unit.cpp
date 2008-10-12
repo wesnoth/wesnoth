@@ -1867,40 +1867,30 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 #ifdef LOW_MEM
 	params.image= absolute_image();
 	params.image_diagonal= absolute_image();
+	bool facing_west = false;
+	params.image_mod +="~FL(horizontal)";
+#else
+	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
 #endif
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
+	if(facing_ == gamemap::location::SOUTH_WEST || facing_ == gamemap::location::SOUTH_EAST || facing_ == gamemap::location::SOUTH ) {
+		params.image_mod +="~FL(vertical)";
+	}
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
 
 
 
-#ifndef LOW_MEM
-	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
-#else
-	bool facing_west = false;
-#endif
 	const gamemap::location dst = loc.get_direction(facing_);
 	const int xsrc = disp.get_location_x(loc);
 	const int ysrc = disp.get_location_y(loc);
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
-	const int drawing_order = gamemap::get_drawing_order(loc);
-
-
-	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
-		frame_begin_time_ = anim_->get_current_frame_begin_time();
-		if(!adjusted_params.sound.empty()) {
-			sound::play_sound(adjusted_params.sound);
-		}
-		if(!adjusted_params.text.empty()  ) {
-			game_display::get_singleton()->float_label(loc,adjusted_params.text,
-			(adjusted_params.text_color & 0x00FF0000) >> 16,
-			(adjusted_params.text_color & 0x0000FF00) >> 8,
-			(adjusted_params.text_color & 0x000000FF) >> 0);
-		}
-	}
-
 	int d2 = disp.hex_size() / 2;
+
+
+
+
 	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + d2;
 	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + d2;
 
@@ -1926,24 +1916,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		unit_anim_halo_ = halo::add(x + dx, y+ dy,
 			adjusted_params.halo, gamemap::location(-1, -1),
 			facing_west ? halo::HREVERSE : halo::NORMAL);
-	}
-
-
-	image::locator image_loc = image::locator();
-	if(facing_ != gamemap::location::NORTH && facing_ != gamemap::location::SOUTH) {
-		image_loc = adjusted_params.image_diagonal;
-	}
-	if(image_loc.is_void()|| image_loc.get_filename() == "") { // invalid diag image, or not diagonal
-		image_loc = adjusted_params.image;
-	}
-	if(image_loc.is_void()|| image_loc.get_filename() == "") {
-		image_loc = absolute_image();
-	}
-	image_loc = image::locator(image_loc,adjusted_params.image_mod);
-
-	surface image(image::get_image(image_loc, image::SCALED_TO_ZOOM));
-	if(image == NULL) {
-		image = still_image(true);
 	}
 
 
@@ -1985,18 +1957,12 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	// FIXME: Use the hack to draw ellipses in the unit layer
 	// but with a different drawing_order, so it's rendered behind/above unit
+	const int drawing_order = gamemap::get_drawing_order(loc);
 
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, drawing_order-10,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back));
-	}
-
-	if (image != NULL) {
-		const int tmp_x = adjusted_params.x +x - image->w/2;
-		const int tmp_y = adjusted_params.y +y - image->h/2;
-		disp.render_unit_image(tmp_x, tmp_y, fake, drawing_order, image, facing_west, false,
-				ftofxp(adjusted_params.highlight_ratio), adjusted_params.blend_with, adjusted_params.blend_ratio, adjusted_params.submerge);
 	}
 
 	if (ellipse_front != NULL) {
@@ -2126,6 +2092,11 @@ bool unit::invalidate(const gamemap::location &loc)
 			params.blend_ratio = 0.25;
 		}
 		params.image_mod = image_mods();
+		if(facing_ == gamemap::location::SOUTH_WEST ||
+				facing_ == gamemap::location::SOUTH_EAST ||
+			       	facing_ == gamemap::location::SOUTH ) {
+			params.image_mod +="~FL(vertical)";
+		}
 
                 //get_animation()->update_last_draw_time();
 		frame_parameters adjusted_params= get_animation()->get_current_params(params);

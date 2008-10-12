@@ -757,7 +757,7 @@ void unit_animation::redraw(const frame_parameters& value)
 {
 
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	//unit_anim_.redraw(value,true);
+	unit_anim_.redraw(value,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.redraw( value);
 	}
