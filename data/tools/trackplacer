@@ -165,26 +165,43 @@ class TrackEditor:
         hbox1.pack_start(radiobox, expand=False, fill=False, padding=0)
         radiobox.show()
 
-        button = gtk.RadioButton(None, "journey")
+        button = gtk.RadioButton(None)
         button.set_active(True)
         button.connect("toggled", self.button_callback, "JOURNEY")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
         button.show()
-   	
-        button = gtk.RadioButton(button, "battle")
+        radiobox.pack_start(self.journey_image,
+                            expand=False, fill=False, padding=0) 
+        self.journey_image.show()
+
+
+        button = gtk.RadioButton(button)
         button.connect("toggled", self.button_callback, "BATTLE")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
         button.show()
-   	
-        button = gtk.RadioButton(button, "rest")
+        radiobox.pack_start(self.battle_image,
+                            expand=False, fill=False, padding=0) 
+        self.battle_image.show()
+
+        # The rest button and its label
+        button = gtk.RadioButton(button)
         button.connect("toggled", self.button_callback, "REST")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
         button.show()
+        radiobox.pack_start(self.rest_image,
+                            expand=False, fill=False, padding=0) 
+        self.rest_image.show()
 
-        button = gtk.RadioButton(button, "delete")
+        # The delete button and its label
+        button = gtk.RadioButton(button)
         button.connect("toggled", self.button_callback, "DELETE")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
         button.show()
+        delimage = gtk.Image()
+        delimage.set_from_stock(gtk.STOCK_DELETE, gtk.ICON_SIZE_SMALL_TOOLBAR)
+        radiobox.pack_start(delimage,
+                            expand=False, fill=False, padding=0) 
+        delimage.show()
 
         # A quit button
         button = gtk.Button("Quit")
