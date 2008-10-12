@@ -194,19 +194,21 @@ class TrackEditor:
             xs = self.map_width - x
         if ys == -1:
             ys = self.map_height - y
-        self.map.copy_area(x, y, xs, ys, self.pixmap, x, y)
+        self.pixmap.draw_drawable(self.default_gc, self.map, x, y, x, y, xs, ys)
+
 
     # Create a new backing pixmap of the appropriate size
     def configure_event(self, widget, event):
         x, y, width, height = widget.get_allocation()
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
+        self.default_gc = self.drawing_area.get_style().fg_gc[gtk.STATE_NORMAL]
         self.refresh_map()
         return True
 
     # Redraw the screen from the backing pixmap
     def expose_event(self, widget, event):
         x , y, width, height = event.area
-        widget.window.draw_drawable(widget.get_style().fg_gc[gtk.STATE_NORMAL],
+        widget.window.draw_drawable(self.default_gc,
                                     self.pixmap, x, y, x, y, width, height)
         return False
 
