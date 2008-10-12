@@ -474,6 +474,12 @@ private:
 		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 
 		unit_map::iterator unit_it = ai_.get_info().units.find(src);
+		if( unit_it == ai_.get_info().units.end() ) {
+			std::ostringstream str;
+			str << "shortest_path function: expected unit at location (" << (src.x+1) << "," << (src.y+1) << ")";
+			throw formula_error( str.str(), "", "", 0);
+		}
+
 		if( (ai_.get_possible_moves().count(src) > 0) ) {
 			std::map<gamemap::location,paths>::const_iterator path = ai_.get_possible_moves().find(src);
 
@@ -1575,7 +1581,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				if(unit != get_info().units.end()) {
 					unit->second.set_movement(0);
 				} else {
-					throw formula_error("Incorrect result of calling the move() formula", "", "", 0);;
+					throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
 				}
 				made_move = true;
 			}
