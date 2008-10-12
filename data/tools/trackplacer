@@ -104,7 +104,7 @@ class JourneyTrack:
         for (tag, xt, yt) in self.track:
             if x >= xt - d and x <= xt + d and y >= yt - d and y <= yt + d:
                 candidates.append(ind)
-                ind += 1
+            ind += 1
         return candidates
     def append(self, tag, x, y):
         "Append a feature to the track."
@@ -112,9 +112,10 @@ class JourneyTrack:
     def remove(self, x, y):
         "Remove a feature from the track."
         ind = self.find(x, y)
+        print "Deleting ", ind
         if ind:
             # Prefer to delete the most recent feature
-            self.track = self.track[:ind[-1]] + self.track[ind[-1]:]
+            self.track = self.track[:ind[-1]] + self.track[ind[-1]+1:]
     def snap_to(self, x, y, d=vision_distance):
         "Snap a location to a nearby track feature, if there is one."
         candidates = []
@@ -125,6 +126,8 @@ class JourneyTrack:
             return candidates[0]
         else:
             return None
+    def __str__(self):
+        return self.filename + ": " + `self.track`
 
 class ModalFileSelector:
     def __init__(self, default, blocker=False):
@@ -344,12 +347,13 @@ class TrackEditor:
             rect = self.bounding_box((x, y))
             self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
                                        rect[0], rect[1], rect[2], rect[3])
-            self.journey.track.append((self.action, x, y))
+            self.journey.track.append((self.action, int(x), int(y)))
         elif feature and self.action == "DELETE":
             rect = self.bounding_box(feature)
             self.refresh_map(*rect)
             self.journey.remove(feature[0], feature[1])
         widget.queue_draw_area(rect[0], rect[1], rect[2], rect[3])
+        self.log("Track is %s" % self.journey)
 
     def button_press_event(self, widget, event):
         if event.button == 1 and self.pixmap != None:
