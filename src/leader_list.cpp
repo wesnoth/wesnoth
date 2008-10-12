@@ -263,7 +263,7 @@ std::string leader_list_manager::get_gender() const
 
 std::string leader_list_manager::get_RC_suffix(const std::string& unit_colour) const {
 #ifdef LOW_MEM
-	return ""
+	return "";
 #else
  	return "~RC("+unit_colour+">"+lexical_cast<std::string>(colour_+1) +")";
 #endif
