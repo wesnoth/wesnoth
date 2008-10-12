@@ -2,9 +2,9 @@
 """
 trackplacer -- map journey track editor.
 
-usage: trackplacesr [-vh?] [filename]
+usage: trackplacer [-vh?] [filename]
 
-If the filename is not specified, tracplacer will pop up a file selector.
+If the filename is not specified, trackplacer will pop up a file selector.
 
 Can be started with a map image, in which case we're editing a new journey.
 Can be started with a track file. A track file is a text file interpreted
@@ -36,6 +36,8 @@ import gtk
 import wesnoth.wmltools
 
 # All dependencies on the shape of the data tree live here
+# The code does no semantic interpretation of these icons at all;
+# to add new ones, just fill in a dictionary entry.
 imagedir = "data/core/images/"
 default_map = imagedir + "maps/wesnoth.png"
 icon_dictionary = {
@@ -43,11 +45,13 @@ icon_dictionary = {
     "BATTLE":  imagedir + "misc/new-battle.png",
     "REST":    imagedir + "misc/flag-red.png",
     }
+icon_presentation_order = ("JOURNEY", "BATTLE", "REST")
+
 
 # Size of the rectangle around the mouse pointer within which the code
 # will seek tracking dots. Should be about (N-1)/2 where N is the
 # pixel radius of the journey dot.  For this and other reasons, it's
-# helpful id the tracking dot and other icons all have a square
+# helpful if the tracking dot and other icons all have a square
 # aspect ratio and an odd number of pixels on the sise, so each has
 # a well-defined center pixel.
 vision_distance = 5
@@ -195,7 +199,10 @@ class TrackEditor:
         self.action_dictionary = {}
         try:
             for (action, filename) in icon_dictionary.items():
-                self.action_dictionary[action] = TrackEditorIcon(action, filename)
+                icon = TrackEditorIcon(action, filename)
+                self.log("%s icon has size %d, %d" % \
+                         (action, icon.icon_width, icon.icon_height))
+                self.action_dictionary[action] = icon
         except:
             self.fatal_error("error while reading icons")
 
@@ -213,14 +220,14 @@ class TrackEditor:
         vbox.add(hbox1)
         hbox1.show()
 
-        # A radiobutton array
+        # The radiobutton array on the left
         radiobox = gtk.HBox()
         hbox1.pack_start(radiobox, expand=False, fill=False, padding=0)
         radiobox.show()
 
         # Fake icon-labeled buttons with liberal use of labels...
         basebutton = None
-        for action in ("JOURNEY", "BATTLE", "REST"):
+        for action in icon_presentation_order:
             icon = self.action_dictionary[action]
             button = gtk.RadioButton(basebutton)
             if not basebutton:
@@ -250,21 +257,33 @@ class TrackEditor:
         radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
         spacer.show()
 
+        # The coordinate display in the middle
+        self.coordbuf = gtk.TextBuffer()
+        self.coordwin = gtk.TextView(self.coordbuf)
+        self.coordwin.set_editable(False)
+        hbox1.pack_start(self.coordwin, expand=True, fill=False, padding=0)
+        self.coordwin.show()
+
+        # The button array on the right
+        buttonbox = gtk.HBox()
+        hbox1.pack_end(buttonbox, expand=False, fill=False, padding=0)
+        buttonbox.show()
+
         # A quit button
         button = gtk.Button("Quit")
-        hbox1.pack_end(button, expand=False, fill=False, padding=10)
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
         button.connect_object("clicked", lambda w: w.destroy(), window)
         button.show()
 
         # A save button
         button = gtk.Button("Save")
-        hbox1.pack_end(button, expand=False, fill=False, padding=10)
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
         button.connect_object("clicked", lambda w: w.destroy(), window)
         button.show()
 
         # A help button
         button = gtk.Button("Help")
-        hbox1.pack_end(button, expand=False, fill=False, padding=10)
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
         button.connect_object("clicked", lambda w: w.destroy(), window)
         button.show()
 
@@ -311,6 +330,10 @@ class TrackEditor:
 
     def draw_feature(self, x, y, icon):
         "Draw specified icon on the map."
+        self.log("Drawing action=%s, dest_x=%d dest_y=%d width=%d height=%d" % \
+              (icon.action,
+               x-icon.icon_width/2, y-icon.icon_height/2,
+               icon.icon_width, icon.icon_height))
         self.pixmap.draw_pixbuf(self.default_gc,
                                 icon.icon,
                                 0, 0,
@@ -368,7 +391,8 @@ class TrackEditor:
         else:
             x = event.x
             y = event.y
-            state = event.state
+        self.coordbuf.set_text("(%d, %d)" % (x, y))
+        state = event.state
 
         # Lets you draw pixels by dragging, not the effect we want.
         #if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:
