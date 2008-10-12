@@ -31,10 +31,13 @@ import gtk
 import wesnoth.wmltools
 
 # All dependencies on the shape of the data tree live here
-default_map = "data/core/images/maps/wesnoth.png"
-journey_icon = "data/core/images/misc/new-journey.png"
-battle_icon = "data/core/images/misc/new-battle.png"
-rest_icon =  "data/core/images/misc/flag-red.png"
+imagedir = "data/core/images/"
+default_map = imagedir + "maps/wesnoth.png"
+icon_dictionary = {
+    "JOURNEY": imagedir + "misc/new-journey.png",
+    "BATTLE":  imagedir + "misc/new-battle.png",
+    "REST":    imagedir + "misc/flag-red.png",
+    }
 
 # Size of the rectangle around the mouse pointer within which the code
 # will seek tracking dots. Should be about (N-1)/2 where N is the
@@ -153,6 +156,12 @@ class ModalFileSelector:
         self.filename = self.filew.get_filename()
         self.filew.destroy()
 
+class TrackEditorIcon:
+    def __init__(self, action, filename):
+        self.action = action
+        self.image = gtk.Image()
+        self.image.set_from_file(filename)
+
 class TrackEditor:
     def __init__(self, filename=None, verbose=False):
         self.verbose = verbose
@@ -173,13 +182,10 @@ class TrackEditor:
         except gtk.Gerror:
             self.fatal_error("Error while reading background map %s" % self.journey.filename)
         # Now get the icons we'll need for scribbling on the map with.
+        action_dictionary = {}
         try:
-            self.journey_image = gtk.Image()
-            self.journey_image.set_from_file(journey_icon)
-            self.battle_image = gtk.Image()
-            self.battle_image.set_from_file(battle_icon)
-            self.rest_image = gtk.Image()
-            self.rest_image.set_from_file(rest_icon)
+            for (action, filename) in icon_dictionary.items():
+                action_dictionary[action] = TrackEditorIcon(action, filename)
         except:
             self.fatal_error("error while reading icons")
 
@@ -203,43 +209,21 @@ class TrackEditor:
         radiobox.show()
 
         # Fake icon-labeled buttons with liberal use of labels...
-
-        # The journey button and its label.
-        button = gtk.RadioButton(None)
-        button.set_active(True)
-        button.connect("toggled", self.button_callback, "JOURNEY")
-        radiobox.pack_start(button, expand=True, fill=True, padding=0)
-        button.show()
-        radiobox.pack_start(self.journey_image,
-                            expand=False, fill=False, padding=0) 
-        self.journey_image.show()
-        spacer = gtk.Label("  ")
-        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
-        spacer.show()
-
-        # The battle button and its label
-        button = gtk.RadioButton(button)
-        button.connect("toggled", self.button_callback, "BATTLE")
-        radiobox.pack_start(button, expand=True, fill=True, padding=0)
-        button.show()
-        radiobox.pack_start(self.battle_image,
-                            expand=False, fill=False, padding=0) 
-        self.battle_image.show()
-        spacer = gtk.Label("  ")
-        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
-        spacer.show()
-
-        # The rest button and its label
-        button = gtk.RadioButton(button)
-        button.connect("toggled", self.button_callback, "REST")
-        radiobox.pack_start(button, expand=True, fill=True, padding=0)
-        button.show()
-        radiobox.pack_start(self.rest_image,
-                            expand=False, fill=False, padding=0) 
-        self.rest_image.show()
-        spacer = gtk.Label("  ")
-        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
-        spacer.show()
+        basebutton = None
+        for icon in action_dictionary.values():
+            button = gtk.RadioButton(basebutton)
+            if not basebutton:
+                button.set_active(True)
+                basebutton = button
+            button.connect("toggled", self.button_callback, icon.action)
+            radiobox.pack_start(button, expand=True, fill=True, padding=0)
+            button.show()
+            radiobox.pack_start(icon.image,
+                                expand=False, fill=False, padding=0) 
+            icon.image.show()
+            spacer = gtk.Label("  ")
+            radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
+            spacer.show()
 
         # The delete button and its label
         button = gtk.RadioButton(button)
