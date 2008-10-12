@@ -36,6 +36,14 @@ journey_icon = "data/core/images/misc/new-journey.png"
 battle_icon = "data/core/images/misc/new-battle.png"
 rest_icon =  "data/core/images/misc/flag-red.png"
 
+# Size of the rectangle around the mouse pointer within which the code
+# will seek tracking dots. Should be about (N-1)/2 where N is the
+# pixel radius of the journey dot.  For this and other reasons, it's
+# helpful id the tracking dot and other icons all have a square
+# aspect ratio and an odd number of pixels on the sise, so each has
+# a well-defibed center pixel.
+see_distance = 5
+
 class ReadException(exceptions.Exception):
     "Exception thrown while reading a track file."
     def __init__(self, message, filename, lineno):
@@ -277,32 +285,35 @@ class TrackEditor:
             ys = self.map_height - y
         self.pixmap.draw_drawable(self.default_gc, self.map, x, y, x, y, xs, ys)
 
-
-    # Create a new backing pixmap of the appropriate size
     def configure_event(self, widget, event):
+        "Create a new backing pixmap of the appropriate size."
         x, y, width, height = widget.get_allocation()
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
         self.default_gc = self.drawing_area.get_style().fg_gc[gtk.STATE_NORMAL]
         self.refresh_map()
         return True
 
-    # Redraw the screen from the backing pixmap
     def expose_event(self, widget, event):
+        "Redraw the screen from the backing pixmap"
         x , y, width, height = event.area
         widget.window.draw_drawable(self.default_gc,
                                     self.pixmap, x, y, x, y, width, height)
         return False
 
-    # Draw a rectangle on the screen
-    def draw_brush(self, widget, x, y):
-        rect = (int(x-5), int(y-5), 10, 10)
-        self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
-                                   rect[0], rect[1], rect[2], rect[3])
+    def draw_icon(self, widget, x, y):
+        "Draw or erase a track dot."
+        rect = (int(x-see_distance), int(y-see_distance), see_distance*2, see_distance*2)
+        if self.action == "DELETE":
+            self.refresh_map(*rect)
+        else:
+            self.pixmap.draw_rectangle(widget.get_style().black_gc, True,
+                                       rect[0], rect[1], rect[2], rect[3])
+            self.journey.track.append(self.action)
         widget.queue_draw_area(rect[0], rect[1], rect[2], rect[3])
 
     def button_press_event(self, widget, event):
         if event.button == 1 and self.pixmap != None:
-            self.draw_brush(widget, event.x, event.y)
+            self.draw_icon(widget, event.x, event.y)
         return True
 
     def motion_notify_event(self, widget, event):
@@ -313,8 +324,9 @@ class TrackEditor:
             y = event.y
             state = event.state
 
-        if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:
-            self.draw_brush(widget, x, y)
+        # Lets you draw pixels by dragging, not the effect we want.
+        #if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:
+        #    self.draw_icon(widget, x, y)
 
         return True
 
