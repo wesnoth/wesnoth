@@ -182,7 +182,6 @@ class JourneyTrack:
     def remove(self, x, y):
         "Remove a feature from the track."
         ind = self.find(x, y)
-        print "Deleting ", ind
         if ind:
             # Prefer to delete the most recent feature
             self.track = self.track[:ind[-1]] + self.track[ind[-1]+1:]
@@ -233,6 +232,11 @@ class TrackEditorIcon:
         self.icon = gtk.gdk.pixbuf_new_from_file(path)
         self.icon_width = self.icon.get_width()
         self.icon_height = self.icon.get_height()
+    def bounding_box(self, x, y):
+        "Return a bounding box for this icon when centered at (x, y)."
+        # The +1 is a slop factor allowing for even-sized icons
+        return (x-self.icon_width/2, y-self.icon_height/2,
+                    self.icon_width+1, self.icon_height+1)
 
 class TrackEditor:
     def __init__(self, path=None, verbose=False):
@@ -245,6 +249,7 @@ class TrackEditor:
             self.last_read = path
         self.log("Initial track is %s" % self.journey)
         self.action = "JOURNEY"
+        self.last_x = self.last_y = None 
 
         # Backing pixmap for drawing area
         self.pixmap = None
@@ -407,9 +412,7 @@ class TrackEditor:
 
 
         window.show()
-
         gtk.main()
-
         self.log("initialization successful")
 
     def button_callback(self, widget, data=None):
@@ -425,20 +428,20 @@ class TrackEditor:
             ys = self.map_height - y
         self.pixmap.draw_drawable(self.default_gc, self.map, x, y, x, y, xs, ys)
 
-    def draw_feature(self, widget, x, y, action, erase=False):
+    def erase_feature(self, widget, x, y, action):
+        "Erase specified icon from the map."
+        icon = self.action_dictionary[action]
+        rect = icon.bounding_box(x, y)
+        self.log("Erasing action=%s, dest=%s" % (icon.action, rect))
+        self.refresh_map(*rect)
+        widget.queue_draw_area(*rect)
+
+    def draw_feature(self, widget, x, y, action):
         "Draw specified icon on the map."
         icon = self.action_dictionary[action]
-        if erase:
-            # The +1 is a slop factor allowing for even-sized icons
-            rect = (x-icon.icon_width/2, y-icon.icon_height/2,
-                    icon.icon_width+1, icon.icon_height+1)
-            self.log("Erasing action=%s, dest=%s" % (icon.action, rect))
-            self.refresh_map(*rect)
-        else:
-            rect = (x-icon.icon_width/2, y-icon.icon_height/2,
-                    icon.icon_width, icon.icon_height)
-            self.log("Drawing action=%s, dest=%s" % (icon.action, rect))
-            self.pixmap.draw_pixbuf(self.default_gc, icon.icon, 0, 0, *rect)
+        rect = icon.bounding_box(x, y)
+        self.log("Drawing action=%s, dest=%s" % (icon.action, rect))
+        self.pixmap.draw_pixbuf(self.default_gc, icon.icon, 0, 0, *rect)
         widget.queue_draw_area(*rect)
         
     def configure_event(self, widget, event):
@@ -473,12 +476,14 @@ class TrackEditor:
             if not feature and self.action != "DELETE":
                 self.draw_feature(widget, x, y, self.action)
                 self.journey.track.append((self.action, x, y))
+                self.last_x = x
+                self.last_y = y
             elif feature and self.action == "DELETE":
                 candidates = self.journey.find(x, y)
                 if len(candidates) == 1:
                     # Prefer to delete the most recent candidate
                     (action, x, y) = self.journey.track[candidates[-1]]
-                    self.draw_feature(widget, x, y, action, erase=True)
+                    self.erase_feature(widget, x, y, action)
                     self.journey.remove(x, y)
             self.log("Track is %s" % self.journey)
         return True
@@ -492,10 +497,18 @@ class TrackEditor:
         self.coordwin.set_text("(%d, %d)" % (x, y))
         state = event.state
 
-        # Lets you draw pixels by dragging, not the effect we want.
-        #if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:
-        #    self.button_left_click(widget, x, y)
-
+        # This code enables dragging icons.
+        if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:            
+            if self.last_x and self.last_y:
+                candidates = self.journey.find(self.last_x, self.last_y)
+                if candidates:
+                    most_recent_candidate = candidates[-1]
+                    (action, lx, ly) = self.journey.track[most_recent_candidate]
+                    self.erase_feature(widget, lx, ly, action)
+                    self.journey.track[most_recent_candidate] = (action, x, y)
+                    self.draw_feature(widget, x, y, action)
+                    self.last_x, self.last_y = x, y
+                    self.log("Track is %s" % self.journey)
         return True
 
     #
