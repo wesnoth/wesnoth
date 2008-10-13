@@ -78,9 +78,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	//move "invalid" terrains to the end 
 	size_t size = terrains_.size();
 	for (size_t i = 0; i < size; ++i) {
-		std::cerr << "C" << terrains_[i] << map_.get_terrain_string(terrains_[i]);
 		if (is_invalid_terrain(terrains_[i])) {
-			std::cerr << "Invalid" << map_.get_terrain_string(terrains_[i]);
 			terrains_.push_back(terrains_[i]);
 			terrains_.erase(terrains_.begin() + i);
 			size--;
