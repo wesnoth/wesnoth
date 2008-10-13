@@ -12,7 +12,7 @@ the main screen, click the Help button.
 Can be started with a map image, in which case we're editing a new journey.
 Can be started with a track file. A track file is a text file interpreted
 line-by-line; each line is interpreted as whitespace-separated fields.
-The first field of the first line must be FILE, and the second field
+The first field of the first line must be MAP, and the second field
 of that line must be valid filename.  Subsequent lines must have three
 fields each: an action tag (JOURNEY, BATTLE, or REST) and two numeric
 coordinate fields.
@@ -21,7 +21,15 @@ A journey is an object containing a map file name and a (possibly empty)
 track. This program exists to visually edit journeys represented in track
 files.
 
+Normally, trackplacer assumes it is running within a Battle for
+Wesnoth source tree and changes directory to the root of the
+tree. Paths saved in track files are relative to the tree root. All
+pathnames in help and error messages are also relativized to that
+root.
+
 The -v option enables verbose logging to standard error.
+
+The -d option sets the root directory to use.
 
 The -h or -? options display this summary.
 """
@@ -37,11 +45,6 @@ The Quit button will ask for confirmation if you have unsaved changes.
 
 The Help button displays this message.
 '''
-
-# TODO:
-# 1. Test reading and writing of track files
-# 2. Write track-to-macro tool.
-# 3. Implement save-handler stub.
 
 import sys, os, exceptions, getopt
 
@@ -72,56 +75,61 @@ icon_presentation_order = ("JOURNEY", "BATTLE", "REST")
 # a well-defined center pixel.
 vision_distance = 12
 
-class ReadException(exceptions.Exception):
+class IOException(exceptions.Exception):
     "Exception thrown while reading a track file."
-    def __init__(self, message, filename, lineno=None):
+    def __init__(self, message, path, lineno=None):
         self.message = message
-        self.filename = filename
+        self.path = path
         self.lineno = lineno
 
 class JourneyTrack:
     "Represent a journey track on a map."
     def __init__(self):
-        self.filename = None	# Map background of the journey
+        self.mapfile = None	# Map background of the journey
         self.track = []		# List of (action, x, y) tuples
         self.modifications = 0
         self.initial_track = []
     def write(self, fp):
         "Record a journey track."
-        fp.write("FILE %s\n" % self.filename)
-        for location in self.track:
-            fp.write("%s %d %d\n" % location)
+        if fp.name.endswith(".trk"):
+            fp.write("MAP %s\n" % self.mapfile)
+            for location in self.track:
+                fp.write("%s %d %d\n" % location)
+        elif fp.name.endswith(".cfg"):
+            sys.stderr.write(".cfg eriting is not yet implemented.")
+        else:
+            raise IOException("File must have a .trk or .cfg extension.", fp.name)
     def read(self, fp):
         "Initialize a journey from map and track information."
         if type(fp) == type(""):
             try:
                 fp = open(fp)
             except IOError:
-                raise ReadException("Cannot read file.", fp)
+                raise IOException("Cannot read file.", fp)
         if self.track:
-            raise ReadException("Reading with track nonempty.", fp.name)
+            raise IOException("Reading with track nonempty.", fp.name)
         if fp.name.endswith(".png") or fp.name.endswith(".jpg"):
-            self.filename = fp.name
+            self.mapfile = fp.name
             return
         if not fp.name.endswith(".trk"):
-            raise ReadException("Cannot read this filetype.", fp.name)
+            raise IOException("Cannot read this filetype.", fp.name)
         header = fp.readline().split()
-        if header[0] != 'FILE':
-            raise ReadException("Missing FILE element.", fp.name, 1)
+        if header[0] != 'MAP':
+            raise IOException("Missing MAP element.", fp.name, 1)
         else:
-            self.filename = header[1]
+            self.path = header[1]
         while (i, line) in enumerate(fp):
             fields = line.split()
             if len(fields) != 3:
-                raise ReadException("Ill-formed track file line.", fp.name, i+1)
+                raise IOException("Ill-formed track file line.", fp.name, i+1)
             (tag, x, y) = fields
             if tag not in ("JOURNEY", "BATTLE", "REST"):
-                raise ReadException("Invalid tag field on track file line.", fp.name, i+1)
+                raise IOException("Invalid tag field on track file line.", fp.name, i+1)
             try:
                 x = int(x)
                 y = int(y)
             except ValuError:
-                raise ReadException("Invalid coordinate field.", fp.name, i+1)
+                raise IOException("Invalid coordinate field.", fp.name, i+1)
             self.initial_track.append((tag, x, y))
         self.track = self.initial_track
     def has_unsaved_changes(self):
@@ -160,64 +168,70 @@ class JourneyTrack:
         else:
             return None
     def __str__(self):
-        return self.filename + ": " + `self.track`
+        return self.mapfile + ": " + `self.track`
 
 class ModalFileSelector:
     def __init__(self, default, legend):
         self.default = default
-        self.filename = None
+        self.path = None
         # Create a new file selection widget
         self.filew = gtk.FileSelection(legend)
         self.filew.set_modal(True);
 
         self.filew.ok_button.connect("clicked", self.selection_ok)
         self.filew.cancel_button.connect("clicked", self.selection_canceled)
-        self.filew.set_filename(self.default)
+        if self.default:
+            self.filew.set_filename(self.default)
         self.filew.run()
 
     def selection_canceled(self, widget):
-        self.filename = None
+        self.path = None
         self.filew.destroy()
 
     def selection_ok(self, widget):
-        self.filename = self.filew.get_filename()
+        self.path = self.filew.get_filename()
+        if self.path.startswith(os.getcwd()):
+            self.path = self.path[len(os.getcwd())+1:]
         self.filew.destroy()
 
 class TrackEditorIcon:
-    def __init__(self, action, filename):
+    def __init__(self, action, path):
         self.action = action
         # We need an image for the toolbar...
         self.image = gtk.Image()
-        self.image.set_from_file(filename)
+        self.image.set_from_file(path)
         # ...and a pixbuf for drawing on the map with.
-        self.icon = gtk.gdk.pixbuf_new_from_file(filename)
+        self.icon = gtk.gdk.pixbuf_new_from_file(path)
         self.icon_width = self.icon.get_width()
         self.icon_height = self.icon.get_height()
 
 class TrackEditor:
-    def __init__(self, filename=None, verbose=False):
+    def __init__(self, path=None, verbose=False):
         self.verbose = verbose
         # Initialize our info about the map and track 
         self.journey = JourneyTrack()
-        self.journey.read(filename)
+        self.last_read = None
+        self.journey.read(path)
+        if path.endswith(".trk"):
+            self.last_read = path
         self.action = "JOURNEY"
         # Backing pixmap for drawing area
         self.pixmap = None
 
         # Grab the map into a pixmap
-        self.log("about to read map %s" % self.journey.filename)
+        self.log("about to read map %s" % self.journey.mapfile)
         try:
-            self.map = gtk.gdk.pixbuf_new_from_file(self.journey.filename)
+            self.map = gtk.gdk.pixbuf_new_from_file(self.journey.mapfile)
             self.map_width = self.map.get_width()
             self.map_height = self.map.get_height()
             self.map = self.map.render_pixmap_and_mask()[0]
-        except gtk.Gerror:
-            self.fatal_error("Error while reading background map %s" % self.journey.filename)
+        except gtk.gobject.Gerror:
+            self.fatal_error("Error while reading background map %s" % self.journey.mapfile)
         # Now get the icons we'll need for scribbling on the map with.
         self.action_dictionary = {}
         try:
-            for (action, filename) in icon_dictionary.items():
-                icon = TrackEditorIcon(action, filename)
+            for (action, path) in icon_dictionary.items():
+                icon = TrackEditorIcon(action, path)
                 self.log("%s icon has size %d, %d" % \
                          (action, icon.icon_width, icon.icon_height))
                 self.action_dictionary[action] = icon
@@ -294,7 +308,7 @@ class TrackEditor:
         # A save button
         button = gtk.Button("Save")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        #button.connect_object("clicked", self.save_handler, window)
+        button.connect_object("clicked", self.save_handler, window)
         button.show()
 
         # A help button
@@ -448,6 +462,46 @@ class TrackEditor:
         w.run()
         w.destroy()
 
+    def save_handler(self, w):
+        "Save track data,"
+        if not self.journey.has_unsaved_changes():
+            w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                                  flags=gtk.DIALOG_DESTROY_WITH_PARENT,
+                                  buttons=gtk.BUTTONS_OK)
+            w.set_markup("You have no unsaved changes.")
+            w.run()
+            w.destroy()
+        else:
+            w = ModalFileSelector(default=self.last_read, legend="Save track to file")
+            if not w.path.endswith(".trk") and not w.path.endswith(".cfg"):
+                raise IOException("File must have a .trk or .cfg extension.", w.path)
+            if w.path != self.last_read and os.path.exists(w.path):
+                self.save_check = gtk.Dialog(title="Really overwrite?",
+                                             parent=None, 
+                                             flags=gtk.DIALOG_MODAL,
+                                             buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
+                                                      gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
+                label = gtk.Label("Overwrite existing data in %s?" % w.path)
+                self.save_check.vbox.pack_start(label)
+                label.show()
+                self.save_check.connect("response",
+                                        self.conditional_save_handler)
+                self.save_check.run()
+                # After conditional_save handler fires
+                if not self.save_confirm:
+                    return
+            self.log("Writing track data to %s" % w.path)
+            try:
+                fp = open(w.path, "w")
+            except IOError:
+                raise IOException("Cannot write file.", w.path)
+            self.journey.write(fp)
+            fp.close()
+
+    def conditional_save_handler(self, widget, id):
+        self.save_confirm = (id == gtk.RESPONSE_ACCEPT)            
+        self.save_check.destroy()
+
     def log(self, msg):
         "Notify user of error and die."
         if self.verbose:
@@ -479,25 +533,28 @@ if __name__ == "__main__":
     else:
         wesnoth.wmltools.pop_to_top("trackplacer")
     if arguments:
-        TrackEditor(filename=arguments[0], verbose=verbose)
+        try:
+            TrackEditor(path=arguments[0], verbose=verbose)
+        except IOException, e:
+            sys.stderr.write(e.message + "\n")
     else:
         while True:
             try:
                 selector = ModalFileSelector(default=default_map,
                                              legend="Track or map file to read")
-                if not selector.filename:
+                if not selector.path:
                     break
-                TrackEditor(selector.filename, verbose=verbose)
-            except ReadException, e:
+                TrackEditor(selector.path, verbose=verbose)
+            except IOException, e:
                 w = gtk.MessageDialog(type=gtk.MESSAGE_ERROR,
                                       flags=gtk.DIALOG_DESTROY_WITH_PARENT,
                                       buttons=gtk.BUTTONS_OK)
                 if e.lineno:
-                    errloc = '"%s", line %d:' % (e.filename, e.lineno)
+                    errloc = '"%s", line %d:' % (e.path, e.lineno)
                     # Emacs friendliness
                     sys.stderr.write(errloc + " " + e.message + "\n")
                 else:
-                    errloc = e.filename + ":"
+                    errloc = e.path + ":"
                 w.set_markup(errloc + "\n\n" + e.message)
                 w.run()
                 w.destroy()
