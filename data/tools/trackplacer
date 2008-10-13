@@ -240,7 +240,7 @@ class TrackEditor:
 
         # Window-layout time
         window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        window.set_name ("Test Input")
+        window.set_name ("trackplacer")
 
         vbox = gtk.VBox(False, 0)
         window.add(vbox)
@@ -317,12 +317,37 @@ class TrackEditor:
         button.connect_object("clicked", self.help_handler, window)
         button.show()
 
-        # Create the drawing area
+        # Create the drawing area on a viewport that scrolls if needed.
+        # Most of the hair here is in trying to query the height
+        # and depth of the widgets surrounding the scrolling area.
+        # The window frame size constants are guesses; they can vary
+        # according to your window manager's policy.  They're only used
+        # if the map is too large to fit on the screen.
+        WINDOW_FRAME_WIDTH = 8
+        WINDOW_FRAME_HEIGHT = 28
+        #screen_width = gtk.gdk.screen_width()
+        #screen_height = gtk.gdk.screen_height()
+        screen_width = 640
+        screen_height = 480
+        self.log("Map size = (%d,%d)" % (self.map_width, self.map_height))
+        self.log("Screen size = (%d,%d)" % (screen_width, screen_height))
+        hbox1_width, hbox1_height = hbox1.size_request() 
+        self.log("Control box size = (%d,%d)" % (hbox1_width, hbox1_height))
+        x_frame_width = WINDOW_FRAME_WIDTH
+        y_frame_width = WINDOW_FRAME_HEIGHT + hbox1_height
+        # No, I don't know why the +2 is needed.  Black magic.... 
+        s_w = min(screen_width -x_frame_width, self.map_width+2) 
+        s_h = min(screen_height-y_frame_width, self.map_height+2)
+        self.log("Scroller size = (%s,%s)" % (s_w, s_h))
+        scroller = gtk.ScrolledWindow()
+        scroller.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroller.set_size_request(s_w, s_h)
         self.drawing_area = gtk.DrawingArea()
         self.drawing_area.set_size_request(self.map_width, self.map_height)
-        vbox.pack_start(self.drawing_area, expand=True, fill=True, padding=0)
-
+        scroller.add_with_viewport(self.drawing_area)
+        vbox.pack_start(scroller, expand=True, fill=True, padding=0)
         self.drawing_area.show()
+        scroller.show()
 
         # Signals used to handle backing pixmap
         self.drawing_area.connect("expose_event", self.expose_event)
