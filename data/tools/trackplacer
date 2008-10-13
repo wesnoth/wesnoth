@@ -280,7 +280,9 @@ class TrackEditor:
 
         window.connect("destroy", lambda w: gtk.main_quit())
 
-        # FIXME: make thw control box fixed-size
+        tooltips = gtk.Tooltips()
+
+        # FIXME: make the control box fixed-size
         controls = gtk.HBox()
         vbox.add(controls)
         controls.show()
@@ -304,6 +306,8 @@ class TrackEditor:
             radiobox.pack_start(icon.image,
                                 expand=False, fill=False, padding=0) 
             icon.image.show()
+            tooltips.set_tip(button, "Place %s events." % action.lower())
+            tooltips.set_tip(icon.image, "Place %s events." % action.lower())
             spacer = gtk.Label("  ")
             radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
             spacer.show()
@@ -318,6 +322,8 @@ class TrackEditor:
         radiobox.pack_start(delimage,
                             expand=False, fill=False, padding=0) 
         delimage.show()
+        tooltips.set_tip(button, "Remove events.")
+        tooltips.set_tip(delimage, "Remove events.")
         spacer = gtk.Label("  ")
         radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
         spacer.show()
@@ -336,6 +342,7 @@ class TrackEditor:
         button = gtk.Button("Quit")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
         button.connect_object("clicked", self.conditional_quit, window)
+        tooltips.set_tip(button, "Leave this program.")
         button.show()
 
         # A save button
@@ -344,6 +351,7 @@ class TrackEditor:
         button.connect_object("clicked",
                               lambda w: self.save_handler(".trk", w),
                               window)
+        tooltips.set_tip(button, "Save track in .trk format.")
         button.show()
 
         # A write-cfg button
@@ -352,12 +360,14 @@ class TrackEditor:
         button.connect_object("clicked",
                               lambda w: self.save_handler(".cfg", w),
                               window)
+        tooltips.set_tip(button, "Save track in .cfg format.")
         button.show()
 
         # A help button
         button = gtk.Button("Help")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
         button.connect_object("clicked", self.help_handler, window)
+        tooltips.set_tip(button, "See a help message describing the controls.")
         button.show()
 
         # Create the drawing area on a viewport that scrolls if needed.
