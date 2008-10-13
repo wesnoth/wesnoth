@@ -143,10 +143,6 @@ display::~display()
 void display::reload_map()
 {
 	builder_.reload_map();
-	SDL_Rect m = map_area();
-	if (!hex_clicked_on(m.x + m.w, m.y + m.h).valid()) {
-		scroll_to_tile(gamemap::location(0, 0), WARP);
-	}
 }
 
 const SDL_Rect& display::max_map_area() const
