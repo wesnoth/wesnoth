@@ -157,7 +157,7 @@ class JourneyTrack:
             try:
                 x = int(x)
                 y = int(y)
-            except ValuError:
+            except ValueError:
                 raise IOException("Invalid coordinate field.", fp.name, i+1)
             self.initial_track.append((tag, x, y))
         fp.close()
@@ -553,7 +553,13 @@ class TrackEditor:
             w.run()
             w.destroy()
         else:
-            w = ModalFileSelector(default=self.last_read, legend="Save track to file")
+            dflt = None
+            if self.last_read:
+                if ext == ".trk":
+                    dflt = self.last_read
+                else:
+                    dflt = self.last_read.replace(".trk", ".cfg")
+            w = ModalFileSelector(default=dflt, legend="Save track to file")
             if not w.path.endswith(ext):
                 raise IOException("File must have a %s extension."%ext, w.path)
             if w.path != self.last_read and os.path.exists(w.path):
@@ -608,15 +614,16 @@ if __name__ == "__main__":
         elif opt in ('-v', '--verbose'):
             verbose=True
 
+    here = os.getcwd()
     if top:
         os.chdir(top)
     else:
         wesnoth.wmltools.pop_to_top("trackplacer")
     if arguments:
         try:
-            TrackEditor(path=arguments[0], verbose=verbose)
+            TrackEditor(path=os.path.join(here, arguments[0]), verbose=verbose)
         except IOException, e:
-            sys.stderr.write(e.message + "\n")
+            sys.stderr.write(('"%s", line %d: ' % (e.path, e.lineno)) + e.message + "\n")
     else:
         while True:
             try:
