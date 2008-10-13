@@ -4,7 +4,10 @@ trackplacer -- map journey track editor.
 
 usage: trackplacer [-vh?] [filename]
 
-If the filename is not specified, trackplacer will pop up a file selector.
+If the filename is not specified, trackplacer will enter a loop in which it
+repeatedly pops up a file selector.  Canceling the file selecct ends the
+program; Selecting a file takes you to a main screen.  For command help on
+the main screen, click the Help button.
 
 Can be started with a map image, in which case we're editing a new journey.
 Can be started with a track file. A track file is a text file interpreted
@@ -15,16 +18,31 @@ fields each: an action tag (JOURNEY, BATTLE, or REST) and two numeric
 coordinate fields.
 
 A journey is an object containing a map file name and a (possibly empty)
-track. This program exists to visually edit journeys.
+track. This program exists to visually edit journeys represented in track
+files.
 
 The -v option enables verbose logging to standard error.
 
 The -h or -? options display this summary.
 """
 
+gui_help = '''\
+This is trackplacer, an editor for visually editing journey tracks on Battle For Wesnoth maps.
+
+The radio buttons near the top left corner control which icon is placed by a left click, except that the when the trashcan is selected a left click deletes already-placed icons.
+
+The Save button pops up a file selector asking you to supply a filename to which the track should be saved.  If you specify a file with a .trk extension the data will be saved in track format, which trackplacer can reload or edit. Any other file extension will raise an error.
+
+The Quit button will ask for confirmation if you have unsaved changes.
+
+The Help button displays this message.
+'''
+
 # TODO:
 # 1. Test reading and writing of track files
 # 2. Write track-to-macro tool.
+# 3. Reject .cfg files selected for read.
+# 4. Implement save-handler stub.
 
 import sys, os, exceptions, getopt
 
@@ -277,13 +295,13 @@ class TrackEditor:
         # A save button
         button = gtk.Button("Save")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", lambda w: w.destroy(), window)
+        #button.connect_object("clicked", self.save_handler, window)
         button.show()
 
         # A help button
         button = gtk.Button("Help")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", lambda w: w.destroy(), window)
+        button.connect_object("clicked", self.help_handler, window)
         button.show()
 
         # Create the drawing area
@@ -421,6 +439,15 @@ class TrackEditor:
             sys.exit(0)
         elif id == gtk.RESPONSE_REJECT:
             self.quit_check.destroy()
+
+    def help_handler(self, w):
+        "Display help."
+        w = gtk.MessageDialog(type=gtk.MESSAGE_ERROR,
+                              flags=gtk.DIALOG_DESTROY_WITH_PARENT,
+                              buttons=gtk.BUTTONS_OK)
+        w.set_markup(gui_help)
+        w.run()
+        w.destroy()
 
     def log(self, msg):
         "Notify user of error and die."
