@@ -1745,6 +1745,9 @@ void unit::write(config& cfg) const
 
 }
 
+void unit::add_formula_var(std::string str, variant var) {
+	formula_vars_->add(str, var);
+}
 
 const surface unit::still_image(bool scaled) const
 {
