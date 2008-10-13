@@ -39,7 +39,9 @@ This is trackplacer, an editor for visually editing journey tracks on Battle For
 
 The radio buttons near the top left corner control which icon is placed by a left click, except that the when the trashcan is selected a left click deletes already-placed icons.
 
-The Save button pops up a file selector asking you to supply a filename to which the track should be saved.  If you specify a file with a .trk extension the data will be saved in track format, which trackplacer can reload or edit. Any other file extension will raise an error.
+The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .trk format, which trackplacer can reload or edit. Any other extension than .trk on the filenae will raise an error.
+
+The Write button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
 
 The Quit button will ask for confirmation if you have unsaved changes.
 
@@ -339,7 +341,17 @@ class TrackEditor:
         # A save button
         button = gtk.Button("Save")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.save_handler, window)
+        button.connect_object("clicked",
+                              lambda w: self.save_handler(".trk", w),
+                              window)
+        button.show()
+
+        # A write-cfg button
+        button = gtk.Button("Write")
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked",
+                              lambda w: self.save_handler(".cfg", w),
+                              window)
         button.show()
 
         # A help button
@@ -521,9 +533,9 @@ class TrackEditor:
         w.run()
         w.destroy()
 
-    def save_handler(self, w):
+    def save_handler(self, ext, w):
         "Save track data,"
-        if not self.journey.has_unsaved_changes():
+        if ext == ".trk" and not self.journey.has_unsaved_changes():
             w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
                                   flags=gtk.DIALOG_DESTROY_WITH_PARENT,
                                   buttons=gtk.BUTTONS_OK)
@@ -532,8 +544,8 @@ class TrackEditor:
             w.destroy()
         else:
             w = ModalFileSelector(default=self.last_read, legend="Save track to file")
-            if not w.path.endswith(".trk") and not w.path.endswith(".cfg"):
-                raise IOException("File must have a .trk or .cfg extension.", w.path)
+            if not w.path.endswith(ext):
+                raise IOException("File must have a %s extension."%ext, w.path)
             if w.path != self.last_read and os.path.exists(w.path):
                 self.save_check = gtk.Dialog(title="Really overwrite?",
                                              parent=None, 
