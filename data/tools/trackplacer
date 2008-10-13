@@ -44,6 +44,8 @@ The Save button pops up a file selector asking you to supply a filename to which
 The Quit button will ask for confirmation if you have unsaved changes.
 
 The Help button displays this message.
+
+Design and implementation by Eric S. Raymond, October 2008.
 '''
 
 import sys, os, exceptions, getopt
@@ -248,13 +250,14 @@ class TrackEditor:
 
         window.connect("destroy", lambda w: gtk.main_quit())
 
-        hbox1 = gtk.HBox()
-        vbox.add(hbox1)
-        hbox1.show()
+        # FIXME: make thw control box fixed-size
+        controls = gtk.HBox()
+        vbox.add(controls)
+        controls.show()
 
         # The radiobutton array on the left
         radiobox = gtk.HBox()
-        hbox1.pack_start(radiobox, expand=False, fill=False, padding=0)
+        controls.pack_start(radiobox, expand=False, fill=False, padding=0)
         radiobox.show()
 
         # Fake icon-labeled buttons with liberal use of labels...
@@ -291,12 +294,12 @@ class TrackEditor:
 
         # The coordinate display in the middle
         self.coordwin = gtk.Label()
-        hbox1.pack_start(self.coordwin, expand=True, fill=False, padding=0)
+        controls.pack_start(self.coordwin, expand=True, fill=False, padding=0)
         self.coordwin.show()
 
         # The button array on the right
         buttonbox = gtk.HBox()
-        hbox1.pack_end(buttonbox, expand=False, fill=False, padding=0)
+        controls.pack_end(buttonbox, expand=False, fill=False, padding=0)
         buttonbox.show()
 
         # A quit button
@@ -331,10 +334,10 @@ class TrackEditor:
         screen_height = 480
         self.log("Map size = (%d,%d)" % (self.map_width, self.map_height))
         self.log("Screen size = (%d,%d)" % (screen_width, screen_height))
-        hbox1_width, hbox1_height = hbox1.size_request() 
-        self.log("Control box size = (%d,%d)" % (hbox1_width, hbox1_height))
+        controls_width, controls_height = controls.size_request() 
+        self.log("Control box size = (%d,%d)"%(controls_width, controls_height))
         x_frame_width = WINDOW_FRAME_WIDTH
-        y_frame_width = WINDOW_FRAME_HEIGHT + hbox1_height
+        y_frame_width = WINDOW_FRAME_HEIGHT + controls_height
         # No, I don't know why the +2 is needed.  Black magic.... 
         s_w = min(screen_width -x_frame_width, self.map_width+2) 
         s_h = min(screen_height-y_frame_width, self.map_height+2)
