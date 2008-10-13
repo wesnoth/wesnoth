@@ -126,7 +126,8 @@ if __name__ == "__main__":
                 if options.verbose:
                     sys.stderr.write("Creating tarball %(tarname)s.\n" %
                         locals())
-                os.system("tar cjf %(tarname)s %(dirname)s" % locals())
+                os.system("tar cjf %(tarname)s -C %(cdir)s %(name)s" %
+                    locals())
 
     def get_info(name):
         """
