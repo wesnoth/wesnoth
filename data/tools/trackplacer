@@ -117,8 +117,8 @@ class JourneyTrack:
         if header[0] != 'MAP':
             raise IOException("Missing MAP element.", fp.name, 1)
         else:
-            self.path = header[1]
-        while (i, line) in enumerate(fp):
+            self.mapfile = header[1]
+        for (i, line) in enumerate(fp):
             fields = line.split()
             if len(fields) != 3:
                 raise IOException("Ill-formed track file line.", fp.name, i+1)
@@ -225,7 +225,7 @@ class TrackEditor:
             self.map_width = self.map.get_width()
             self.map_height = self.map.get_height()
             self.map = self.map.render_pixmap_and_mask()[0]
-        except gtk.gobject.Gerror:
+        except:
             self.fatal_error("Error while reading background map %s" % self.journey.mapfile)
         # Now get the icons we'll need for scribbling on the map with.
         self.action_dictionary = {}
@@ -380,6 +380,8 @@ class TrackEditor:
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
         self.default_gc = self.drawing_area.get_style().fg_gc[gtk.STATE_NORMAL]
         self.refresh_map()
+        for (action, x, y) in self.journey.track:
+            self.draw_feature(widget, x, y, action)
         return True
 
     def expose_event(self, widget, event):
