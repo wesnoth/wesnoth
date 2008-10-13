@@ -93,7 +93,7 @@ class JourneyTrack:
         self.track = []		# List of (action, x, y) tuples
         self.modifications = 0
         self.initial_track = []
-    def write(self, fp):
+    def write(self, fp, prefix="JOURNEY_"):
         "Record a journey track."
         if fp.name.endswith(".trk"):
             fp.write("MAP %s\n" % self.mapfile)
@@ -112,7 +112,7 @@ class JourneyTrack:
             if self.track[-1][0] not in segmenters:
                 endpoints.append(len(self.track)-1)
             for (i, e) in enumerate(endpoints):
-                fp.write("#define STAGE_%d\n" % (i+1,))
+                fp.write("#define %sSTAGE_%d\n" % (prefix, i+1,))
                 for j in range(0, e+1):
                     age="OLD"
                     if i == 0 or j > endpoints[i-1]:
@@ -120,7 +120,7 @@ class JourneyTrack:
                     waypoint = (age,) + tuple(self.track[j])
                     fp.write("    {%s_%s %d %d}\n" % waypoint)
                 fp.write("#enddef\n\n")
-            fp.write("#define STAGE_COMPLETE\n")
+            fp.write("#define %sCOMPLETE\n" % prefix)
             for j in range(len(self.track)):
                 waypoint = self.track[j]
                 fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
