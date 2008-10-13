@@ -67,6 +67,8 @@ class JourneyTrack:
     def __init__(self):
         self.filename = None	# Map background of the journey
         self.track = []		# List of (action, x, y) tuples
+        self.modifications = 0
+        self.initial_track = []
     def write(self, fp):
         "Record a journey track."
         fp.write("FILE %s\n" % self.filename)
@@ -103,7 +105,10 @@ class JourneyTrack:
                 y = int(y)
             except ValuError:
                 raise ReadException("invalid coordinate field", fp.name, i+1)
-            self.track.append((tag, x, y))
+            self.initial_track.append((tag, x, y))
+        self.track = self.initial_track
+    def has_unsaved_changes(self):
+        return self.track != self.initial_track
     def __getitem__(self, n):
         return self.track[n]
     def __setitem__(self, n, v):
@@ -266,7 +271,7 @@ class TrackEditor:
         # A quit button
         button = gtk.Button("Quit")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", lambda w: w.destroy(), window)
+        button.connect_object("clicked", self.conditional_quit, window)
         button.show()
 
         # A save button
@@ -353,10 +358,6 @@ class TrackEditor:
                                     self.pixmap, x, y, x, y, width, height)
         return False
 
-    def bounding_box(self, p, d=vision_distance):
-        "Return a feature-containing rangle around a pixel."
-        return (int(p[0]-d), int(p[1]-d), d*2, d*2)
-
     def button_press_event(self, widget, event):
         if event.button == 1 and self.pixmap != None:
             x = int(event.x)
@@ -396,6 +397,30 @@ class TrackEditor:
         #    self.button_left_click(widget, x, y)
 
         return True
+
+    #
+    # These two functions implement a civilized quit confirmation that
+    # prompts you if you have unnsaved changes 
+    #
+    def conditional_quit(self, w):
+        if self.journey.has_unsaved_changes():
+            self.quit_check = gtk.Dialog(title="Really quit?",
+                           parent=None, 
+                           flags=gtk.DIALOG_MODAL,
+                           buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
+                                    gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
+            label = gtk.Label("Track has unsaved changes. OK to quit?")
+            self.quit_check.vbox.pack_start(label)
+            label.show()
+            self.quit_check.connect("response", self.conditional_quit_handler)
+            self.quit_check.run()
+        else:
+            sys.exit(0)
+    def conditional_quit_handler(self, widget, id):
+        if id == gtk.RESPONSE_ACCEPT:
+            sys.exit(0)
+        elif id == gtk.RESPONSE_REJECT:
+            self.quit_check.destroy()
 
     def log(self, msg):
         "Notify user of error and die."
