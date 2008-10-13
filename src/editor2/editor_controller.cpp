@@ -375,6 +375,50 @@ void editor_controller::generate_map_dialog()
 	}
 }
 
+void editor_controller::apply_mask_dialog()
+{
+	std::string fn = get_map_context().get_filename();
+	if (fn.empty()) {
+		fn = default_dir_;
+	}
+	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a mask to apply"));
+	if (res == 0) {
+		try {
+			editor_map mask = editor_map::load_from_file(game_config_, fn);
+			editor_action_apply_mask a(mask);
+			perform_refresh(a);
+		} catch (editor_map_load_exception& e) {
+			gui::message_dialog(gui(), _("Error loading mask"), e.what()).show();
+			return;
+		} catch (editor_action_exception& e) {
+			gui::message_dialog(gui(), _("Error"), e.what()).show();
+			return;
+		}
+	}
+}
+
+void editor_controller::create_mask_to_dialog()
+{
+	std::string fn = get_map_context().get_filename();
+	if (fn.empty()) {
+		fn = default_dir_;
+	}
+	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose target map"));
+	if (res == 0) {
+		try {
+			editor_map map = editor_map::load_from_file(game_config_, fn);
+			editor_action_create_mask a(map);
+			perform_refresh(a);
+		} catch (editor_map_load_exception& e) {
+			gui::message_dialog(gui(), _("Error loading map"), e.what()).show();
+			return;
+		} catch (editor_action_exception& e) {
+			gui::message_dialog(gui(), _("Error"), e.what()).show();
+			return;
+		}
+	}
+}
+
 void editor_controller::resize_map_dialog()
 {
 	gui2::teditor_resize_map dialog;
@@ -609,6 +653,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SELECT_NONE:
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_GENERATE:
+		case HOTKEY_EDITOR_MAP_APPLY_MASK:
+		case HOTKEY_EDITOR_MAP_CREATE_MASK_TO:
 		case HOTKEY_EDITOR_REFRESH:
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
@@ -740,6 +786,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_GENERATE:
 			generate_map_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_APPLY_MASK:
+			apply_mask_dialog();
+			return true;
+		case HOTKEY_EDITOR_MAP_CREATE_MASK_TO:
+			create_mask_to_dialog();
 			return true;
 		case HOTKEY_EDITOR_MAP_RESIZE:
 			resize_map_dialog();

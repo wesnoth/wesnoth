@@ -28,7 +28,7 @@
 #define EDITOR2_ACTION_BASE_HPP_INCLUDED
 
 #include "editor_common.hpp"
-
+#include "../gettext.hpp"
 #include <string>
 
 
@@ -96,7 +96,7 @@ class editor_action
 //TODO: add messages etc
 struct editor_action_exception : public editor_exception
 {
-	editor_action_exception(const char* msg) 
+	editor_action_exception(const std::string& msg) 
 	: editor_exception(msg)
 	{
 	}
@@ -106,7 +106,7 @@ struct editor_action_exception : public editor_exception
 struct editor_action_not_implemented : public editor_action_exception
 {
 	editor_action_not_implemented()
-	: editor_action_exception("Action not implemented")
+	: editor_action_exception(_("Action not implemented"))
 	{
 	}
 };
@@ -115,7 +115,7 @@ struct editor_action_not_implemented : public editor_action_exception
 struct editor_action_creation_fail : public editor_action_exception
 {
 	editor_action_creation_fail()
-	: editor_action_exception("Error creating action object")
+	: editor_action_exception(_("Error creating action object"))
 	{
 	}
 };

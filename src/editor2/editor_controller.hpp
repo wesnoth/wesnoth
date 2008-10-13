@@ -110,6 +110,12 @@ class editor_controller : public controller_base,
 		/** Display a generate random map dialog and process user input. */
 		void generate_map_dialog();
 
+		/** Display an apply mask dialog and process user input. */
+		void apply_mask_dialog();
+
+		/** Display an apply mask dialog and process user input. */
+		void create_mask_to_dialog();
+
 		/** Display a load map dialog and process user input. */
 		void resize_map_dialog();
 		

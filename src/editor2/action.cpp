@@ -289,7 +289,6 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 
 editor_action_deselect* editor_action_select_all::perform(map_context& mc) const
 {
-	
 	std::set<gamemap::location> current = mc.get_map().selection();
 	mc.get_map().select_all();
 	std::set<gamemap::location> all = mc.get_map().selection();
@@ -308,7 +307,6 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 
 editor_action_select* editor_action_select_none::perform(map_context& mc) const
 {
-	
 	std::set<gamemap::location> current = mc.get_map().selection();
 	mc.get_map().clear_selection();
 	mc.set_everything_changed();
@@ -336,6 +334,18 @@ void editor_action_resize_map::perform_without_undo(map_context& mc) const
 {
 	mc.get_map().resize(x_size_, y_size_, x_offset_, y_offset_, fill_);
 	mc.set_needs_reload();
+}
+
+void editor_action_apply_mask::perform_without_undo(map_context& mc) const
+{
+	mc.get_map().overlay(mask_, config(), 0, 0);
+	mc.set_needs_terrain_rebuild();
+}
+
+void editor_action_create_mask::perform_without_undo(map_context& mc) const
+{
+	mc.get_map() = editor_map(mc.get_map().mask_to(target_));
+	mc.set_needs_terrain_rebuild();
 }
 
 void editor_action_rotate_map::perform_without_undo(map_context& /*mc*/) const

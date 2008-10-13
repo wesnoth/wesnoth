@@ -50,6 +50,13 @@ editor_map::editor_map(const config& /*terrain_cfg*/, const gamemap& map)
 	sanity_check();
 }
 
+editor_map::editor_map(const gamemap& map)
+	: gamemap(map)
+	, selection_()
+{
+	sanity_check();
+}
+
 editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
 {
 	std::string map_string = read_file(filename);
@@ -62,13 +69,13 @@ editor_map editor_map::load_from_file(const config& game_config, const std::stri
 		return new_map;
 	} catch (gamemap::incorrect_format_exception& e) {
 		WRN_ED << "format error in load map " << filename << "\n";
-		std::string message = _("There was a format error while loading the map:");
+		std::string message = _("There was a format error while loading the file:");
 		message += "\n";
 		message += e.msg_;
 		throw editor_map_load_exception(filename, message);
 	} catch (twml_exception& e) {
 		WRN_ED << "wml error in load map " << filename << "\n";
-		std::string message = _("There was a wml error while loading the map:");
+		std::string message = _("There was a wml error while loading the file:");
 		message += "\n";
 		message += e.user_message;
 		throw editor_map_load_exception(filename, message);
@@ -255,6 +262,23 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 		}
 	}
 	sanity_check();
+}
+
+gamemap editor_map::mask_to(const gamemap& target) const
+{
+	if (target.w() != w() || target.h() != h()) {
+		throw editor_action_exception(_("The size of the target map is different from the current map"));
+	}
+	gamemap mask(target);
+	gamemap::location iter;
+	for (iter.x = 0 ; iter.x < w(); ++iter.x) {
+		for (iter.y = 0; iter.y < h(); ++iter.y) {
+			if (target.get_terrain(iter) == get_terrain(iter)) {
+				mask.set_terrain(iter, t_translation::FOGGED);
+			}
+		}
+	}
+	return mask;
 }
 
 void editor_map::swap_starting_position(int x1, int y1, int x2, int y2)

@@ -403,6 +403,30 @@ class editor_action_rotate_map : public editor_action
 		int angle_;
 };
 
+class editor_action_apply_mask : public editor_action
+{
+	public:
+		editor_action_apply_mask(const gamemap& mask)
+		: mask_(mask)
+		{
+		}
+		void perform_without_undo(map_context& mc) const;
+	private:
+		gamemap mask_;
+};
+
+class editor_action_create_mask : public editor_action
+{
+	public:
+		editor_action_create_mask(const gamemap& target)
+		: target_(target)
+		{
+		}
+		void perform_without_undo(map_context& mc) const;
+	private:
+		gamemap target_;
+};
+
 //plot a route between two points
 class editor_action_plot_route : public editor_action_location_terrain
 {

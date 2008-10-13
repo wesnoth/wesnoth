@@ -63,6 +63,8 @@ public:
 	
 	editor_map(const config& terrain_cfg, const gamemap& map);
 	
+	explicit editor_map(const gamemap& map);
+	
 	static editor_map load_from_file(const config& game_config, const std::string& filename);
 	
 	~editor_map();
@@ -138,16 +140,12 @@ public:
 	 */
 	void resize(int width, int height, int x_offset, int y_offset,
 		t_translation::t_terrain filler = t_translation::NONE_TERRAIN);
-
-	/** 
-	 * Flip the map along the X axis. Seems somewhat broken, was so in the old editor.
+	
+	/**
+	 * A sort-of diff operation returning a mask that, when applied to the current editor_map,
+	 * will transform it into the target map.
 	 */
-	void flip_x();
-
-	/** 
-	 * Flip the map along the Y axis. Seems somewhat broken, was so in the old editor.
-	 */
-	void flip_y();
+	gamemap mask_to(const gamemap& target) const;
 
 protected:
 	void swap_starting_position(int x1, int y1, int x2, int y2);
