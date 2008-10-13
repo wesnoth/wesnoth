@@ -164,8 +164,13 @@ void map_context::load_map(const config& game_config, const std::string& filenam
 
 void map_context::set_map(const editor_map& map)
 {
+	if (map_.h() != map.h() || map_.w() != map.w()) {
+		set_needs_reload();
+	} else {
+		set_needs_terrain_rebuild();
+	}
 	map_ = map;
-	set_needs_reload();
+	
 }
 
 void map_context::perform_action(const editor_action& action)
