@@ -315,6 +315,9 @@ if have_X:
 installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir python_site_packages_dir")
 for d in installdirs:
     env[d] = os.path.join(env["prefix"], env[d])
+if not os.path.isabs(env["prefix"]):
+    print "Warning: prefix is set to relative dir. destdir setting will be ignored."
+    env["destdir"] = ""
 
 if env["PLATFORM"] == 'win32':
     env.Append(LIBS = ["wsock32", "intl", "z"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
