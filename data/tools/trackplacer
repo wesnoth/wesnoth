@@ -332,6 +332,9 @@ class TrackEditor:
         self.drawing_area.connect("motion_notify_event", self.motion_notify_event)
         self.drawing_area.connect("button_press_event", self.button_press_event)
 
+        self.drawing_area.connect("leave_notify_event",
+                                  lambda w, e: self.coordwin.set_text(""))
+
         self.drawing_area.set_events(gtk.gdk.EXPOSURE_MASK
                                 | gtk.gdk.LEAVE_NOTIFY_MASK
                                 | gtk.gdk.BUTTON_PRESS_MASK
