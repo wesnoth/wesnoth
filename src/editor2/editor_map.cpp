@@ -271,8 +271,8 @@ gamemap editor_map::mask_to(const gamemap& target) const
 	}
 	gamemap mask(target);
 	gamemap::location iter;
-	for (iter.x = 0 ; iter.x < w(); ++iter.x) {
-		for (iter.y = 0; iter.y < h(); ++iter.y) {
+	for (iter.x = -border_size(); iter.x < w() + border_size(); ++iter.x) {
+		for (iter.y = -border_size(); iter.y < h() + border_size(); ++iter.y) {
 			if (target.get_terrain(iter) == get_terrain(iter)) {
 				mask.set_terrain(iter, t_translation::FOGGED);
 			}
