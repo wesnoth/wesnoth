@@ -372,6 +372,27 @@ private:
 	}
 };
 
+class index_of_function : public function_expression {
+public:
+	explicit index_of_function(const args_list& args)
+	     : function_expression("index_of", args, 2, 2)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const variant value = args()[0]->evaluate(variables);
+		const variant list = args()[1]->evaluate(variables);
+
+		for(size_t i = 0; i < list.num_elements(); i++ ) {
+			if( list[i] == value) {
+				return variant(i);
+			}
+		}
+
+		return variant( -1 );
+	}
+};
+
 
 class choose_function : public function_expression {
 public:
@@ -888,6 +909,7 @@ functions_map& get_functions_map() {
 		FUNCTION(null);
 		FUNCTION(refcount);
 		FUNCTION(loc);
+		FUNCTION(index_of);
 		FUNCTION(keys);
 		FUNCTION(values);
 		FUNCTION(tolist);
