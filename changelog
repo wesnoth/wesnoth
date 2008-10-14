@@ -17,6 +17,9 @@ Version 1.5.5+svn:
  * WML engine:
    * Created the "consider attack" and "unconsider attack" events. (bug
    #12375)
+   * Added "border" parameter to [terrain_mask] that overlays on the border
+     in addition to the playable map area. The used mask must have the same
+     border_size as the map (i.e. currently 1), else this will be ignored.
 
 Version 1.5.5:
  * Campaigns:
