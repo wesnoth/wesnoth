@@ -266,7 +266,7 @@ class CrossRef:
         try:
             pattern = re.compile(os.sep + pattern + "$")
         except sre_constants.error:
-            print >>sys.stderr, "macroscope: confused by %s" % pattern
+            print >>sys.stderr, "wmlscope: confused by %s" % pattern
             return None
         key = None
         for trial in self.fileref:
@@ -337,6 +337,17 @@ class CrossRef:
                         if namespace not in self.properties:
                             self.properties[namespace] = {}
                         self.properties[namespace][prop] = value
+                    m = re.search("# *wmlscope: prune (.*)", line)
+                    if m:
+                        name = m.group(1)
+                        if warnlevel >= 2:
+                            print '"%s", line %d: pruning definitions of %s' \
+                                  % (filename, n+1, name )
+                        if name not in self.xref:
+                            print >>sys.stderr, "wmlscope: can't prune undefined macro %s" % name
+                        else:
+                            self.xref[name] = self.xref[name][:1]
+                        continue
                     if "# wmlscope: start ignoring" in line:
                         if warnlevel > 1:
                             print '"%s", line %d: starting ignoring' \
