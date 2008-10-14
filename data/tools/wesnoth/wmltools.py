@@ -14,7 +14,7 @@ def pop_to_top(whoami):
     upwards.reverse()
     for pathpart in upwards:
         # Loose match because people have things like git trees.
-        if pathpart.find("wesnoth"):
+        if os.path.basename(pathpart).find("wesnoth") > -1:
             break
         else:
             os.chdir("..")
