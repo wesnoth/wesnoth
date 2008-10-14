@@ -195,8 +195,8 @@ class JourneyTrack:
         self.track.append((action, x, y))
     def remove(self, x, y):
         "Remove a feature from the track."
-        ind = self.find(x, y)
-        if ind:
+        found = self.find(x, y)
+        if found:
             # Prefer to delete the most recent feature
             self.track = self.track[:ind[-1]] + self.track[ind[-1]+1:]
     def __str__(self):
@@ -454,15 +454,17 @@ class TrackEditor:
     def erase_feature(self, widget, (action, x, y)):
         "Erase specified icon from the map."
         neighbors = self.neighbors((action, x, y))
+        # Erase all nearby features that might have been damaged.
         for (na, nx, ny) in neighbors:
             rect = self.box((na, nx, ny))
             self.log("Erasing action=%s, dest=%s" % (na, rect))
             self.refresh_map(*rect)
             widget.queue_draw_area(*rect)
+        # Redraw all nearby features except what we're erasing.
         for (na, nx, ny) in neighbors:
             if x != nx and y != ny:
-                self.log("Redrawing action=%s, dest=%s" % (icon.action, rect))
-                self.draw_feature(widget, (naction, nx, ny)) 
+                self.log("Redrawing action=%s" % ((na, nx, ny),))
+                self.draw_feature(widget, (na, nx, ny)) 
 
     def draw_feature(self, widget, (action, x, y)):
         "Draw specified icon on the map."
@@ -523,14 +525,13 @@ class TrackEditor:
         state = event.state
 
         # This code enables dragging icons.
-        # if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:            
-        #    if candidates:
-        #        most_recent_candidate = candidates[-1]
-        #        (action, lx, ly) = self.journey.track[most_recent_candidate]
-        #        self.erase_feature(widget, lx, ly, action)
-        #        self.journey.track[most_recent_candidate] = (action, x, y)
-        #        self.draw_feature(widget, x, y, action)
-        #        self.log("Track is %s" % self.journey)
+        if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:            
+           if self.selected is not None:
+               (action, lx, ly) = self.journey.track[self.selected]
+               self.erase_feature(widget, (action, lx, ly))
+               self.journey.track[self.selected] = (action, x, y)
+               self.draw_feature(widget, (action, x, y))
+               self.log("Track is %s" % self.journey)
         return True
 
     #
