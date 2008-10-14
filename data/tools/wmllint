@@ -616,18 +616,19 @@ def sanity_check(filename, lines):
             textdomains.append(i+1)
         elif "wmllint: no translatables":
             no_text = True
-    if not textdomains and not no_text:
-        print '"%s", line 1: no textdomain string' % filename
-    elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
-        pass
-    elif len(textdomains) > 1:
-        print '"%s", line %d: multiple textdomain strings on lines %s' % \
-              (filename, textdomains[0], ", ".join(map(str, textdomains)))
-    else:
-        w = textdomains[0]
-        print '"%s", line %d: single textdomain declaration not on line 1.' % \
-              (filename, w)
-        lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
+    if not no_text:
+        if not textdomains:
+            print '"%s", line 1: no textdomain string' % filename
+        elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
+            pass
+        elif len(textdomains) > 1:
+            print '"%s", line %d: multiple textdomain strings on lines %s' % \
+                  (filename, textdomains[0], ", ".join(map(str, textdomains)))
+        else:
+            w = textdomains[0]
+            print '"%s", line %d: single textdomain declaration not on line 1.' % \
+                  (filename, w)
+            lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
     return lines
 
 def consistency_check():
