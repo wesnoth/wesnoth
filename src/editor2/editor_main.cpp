@@ -16,7 +16,7 @@
 #include "editor_common.hpp"
 #include "editor_controller.hpp"
 #include "editor_main.hpp"
-#include "editor_map.hpp"
+#include "map_context.hpp"
 
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
@@ -34,13 +34,12 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 		hotkey::deactivate_all_scopes();
 		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
-		editor_map* map = NULL;
+		std::auto_ptr<map_context> mc(NULL);
 		std::string map_error;
 		if (!filename.empty()) {
 			try {
-				map = new editor_map(editor_map::load_from_file(game_conf, filename));
-				LOG_ED << "Map loaded. " << map->w() << " by " << map->h() << "\n";
-				map->sanity_check();
+				mc.reset(new map_context(game_conf, filename));
+				LOG_ED << "Map loaded. " << mc->get_map().w() << " by " << mc->get_map().h() << "\n";
 			} catch (editor_map_load_exception& e) {
 				std::stringstream ss;
 				ss << "\"" << boost::replace_all_copy(filename, "\\", "\\\\") << "\"";
@@ -48,11 +47,10 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 				ss << e.what();
 				map_error = ss.str();
 				ERR_ED << map_error << "\n";
-				delete map;
-				map = NULL;
+				mc.reset();
 			}
 		}
-		editor_controller editor(game_conf, video, map);
+		editor_controller editor(game_conf, video, mc.get());
 		if (!map_error.empty()) {
 			gui::message_dialog(editor.gui(), _("Error loading map"), map_error).show();
 		}

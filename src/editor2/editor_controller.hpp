@@ -66,7 +66,7 @@ class editor_controller : public controller_base,
 	private boost::noncopyable
 {
 	public:
-		editor_controller(const config &game_config, CVideo& video, editor_map* init_map = NULL);
+		editor_controller(const config &game_config, CVideo& video, map_context* init_map_context = NULL);
 		~editor_controller();
 		
 		EXIT_STATUS main_loop();

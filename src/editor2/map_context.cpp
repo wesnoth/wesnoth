@@ -45,6 +45,21 @@ map_context::map_context(const editor_map& map)
 {
 }
 
+map_context::map_context(const config& game_config, const std::string& filename)
+	: map_(editor_map::load_from_file(game_config, filename)) //will throw on error
+	, filename_(filename)
+	, undo_stack_()
+	, redo_stack_()
+	, actions_since_save_(0)
+	, starting_position_label_locs_()
+	, needs_reload_(false)
+	, needs_terrain_rebuild_(false)
+	, needs_labels_reset_(false)
+	, changed_locations_()
+	, everything_changed_(false)
+{
+}
+
 map_context::~map_context()
 {
 	clear_stack(undo_stack_);

@@ -39,6 +39,13 @@ public:
 	 */
 	map_context(const editor_map& map);
 	
+	/**
+	 * Create map_context from a map file. If the map cannot be
+	 * loaded, an exception will be thrown and the object will
+	 * not be constructed.
+	 */
+	map_context(const config& game_config, const std::string& filename);
+	
 	~map_context();
 	
 	/**

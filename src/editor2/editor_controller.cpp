@@ -54,7 +54,7 @@ namespace {
 
 namespace editor2 {
 
-editor_controller::editor_controller(const config &game_config, CVideo& video, editor_map* init_map /*=NULL*/)
+editor_controller::editor_controller(const config &game_config, CVideo& video, map_context* init_map_context /*=NULL*/)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base(get_map())
 	, rng_(NULL)
@@ -83,10 +83,10 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, e
 	, auto_update_transitions_(utils::string_bool(preferences::get(prefkey_auto_update_transitions), true))
 	, default_dir_(preferences::get(prefkey_default_dir))
 {
-	if (init_map == NULL) {
+	if (init_map_context == NULL) {
 		map_context_ = new map_context(editor_map(game_config, 44, 33, t_translation::GRASS_LAND));
 	} else {
-		map_context_ = new map_context(*init_map);
+		map_context_ = init_map_context;
 	}
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
