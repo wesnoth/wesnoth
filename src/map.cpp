@@ -487,22 +487,21 @@ std::string gamemap::write() const
 	return header + "\n\n" + data;
 }
 
-void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
+void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
 {
 	const config::child_list& rules = rules_cfg.get_children("rule");
+	int actual_border = (m.border_size() == border_size()) && border ? border_size() : 0;
 
-	const int xstart = std::max<int>(0, -xpos);
-	const int ystart = std::max<int>(0, -ypos-((xpos & 1) ? 1 : 0));
-	const int xend = std::min<int>(m.w(),w()-xpos);
-	const int yend = std::min<int>(m.h(),h()-ypos);
+	const int xstart = std::max<int>(-actual_border, -xpos - actual_border);
+	const int ystart = std::max<int>(-actual_border, -ypos - actual_border - ((xpos & 1) ? 1 : 0));
+	const int xend = std::min<int>(m.w() + actual_border, w() + actual_border - xpos);
+	const int yend = std::min<int>(m.h() + actual_border, h() + actual_border - ypos);
 	for(int x1 = xstart; x1 < xend; ++x1) {
 		for(int y1 = ystart; y1 < yend; ++y1) {
 			const int x2 = x1 + xpos;
 			const int y2 = y1 + ypos +
 				((xpos & 1) && (x1 & 1) ? 1 : 0);
-			if (y2 < 0 || y2 >= h()) {
-				continue;
-			}
+
 			const t_translation::t_terrain t = m[x1][y1 + m.border_size_];
 			const t_translation::t_terrain current = (*this)[x2][y2 + border_size_];
 

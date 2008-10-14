@@ -101,7 +101,7 @@ public:
 		bool operator!=(const location& a) const { return !operator==(a); }
 
 		// Adds an absolute location to a "delta" location
-		// This is not the mathematically correct bahviur, it is neither
+		// This is not the mathematically correct behviour, it is neither
 		// commutative nor associative. Negative coordinates may give strange
 		// results. It is retained because terain builder code relies in this
 		// broken behaviour. Best avoid.
@@ -203,7 +203,7 @@ public:
 	std::string write() const;
 
 	/** Overlays another map onto this one at the given position. */
-	void overlay(const gamemap& m, const config& rules, const int x=0, const int y=0);
+	void overlay(const gamemap& m, const config& rules, int x=0, int y=0, bool border=false);
 
 	/** Effective map width. */
 	int w() const { return w_; }
@@ -317,11 +317,11 @@ public:
 
 	/**
 	 * Tries to merge old and new terrain using the merge_settings config
-     * Relevant parameters are "layer" and "replace_conflicting"
-     * "layer" specifies the layer that should be replaced (base or overlay, default is both). 
-     * If "replace_conflicting" is true the new terrain will replace the old one if merging failed
-     * (using the default base if new terrain is an overlay terrain)
-     * Will return the resulting terrain or NONE_TERRAIN if merging failed
+	 * Relevant parameters are "layer" and "replace_conflicting"
+	 * "layer" specifies the layer that should be replaced (base or overlay, default is both). 
+	 * If "replace_conflicting" is true the new terrain will replace the old one if merging failed
+	 * (using the default base if new terrain is an overlay terrain)
+	 * Will return the resulting terrain or NONE_TERRAIN if merging failed
 	 */
     t_translation::t_terrain merge_terrains(const t_translation::t_terrain old_t, const t_translation::t_terrain new_t, const tmerge_mode mode, bool replace_if_failed = false);
 	

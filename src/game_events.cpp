@@ -1734,8 +1734,8 @@ namespace {
 			e.show(*screen);
 			return;
 		}
-
-		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y);
+		bool border = utils::string_bool(cfg["border"]);
+		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
 		handler.rebuild_screen() = true;
 	}
 
