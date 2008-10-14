@@ -307,6 +307,7 @@ class CrossRef:
         self.properties = {}
         self.unit_ids = {}
         ignoreflag = False
+        conditionalsflag = False
         if warnlevel >=2:
             print "*** Beginning definition-gathering pass..."
         for (namespace, filename) in self.filelist.generator():
@@ -348,6 +349,16 @@ class CrossRef:
                         else:
                             self.xref[name] = self.xref[name][:1]
                         continue
+                    if "# wmlscope: start conditionals" in line:
+                        if warnlevel > 1:
+                            print '"%s", line %d: starting conditionals' \
+                                  % (filename, n+1)
+                        conditionalsflag = True
+                    elif "# wmlscope: stop conditionals" in line:
+                        if warnlevel > 1:
+                            print '"%s", line %d: stopping conditionals' \
+                                  % (filename, n+1)
+                        conditionalsflag = False
                     if "# wmlscope: start ignoring" in line:
                         if warnlevel > 1:
                             print '"%s", line %d: starting ignoring' \
@@ -374,6 +385,8 @@ class CrossRef:
                         if name in self.xref:
                             for defn in self.xref[name]:
                                 if not self.visible_from(defn, filename, n+1):
+                                    continue
+                                elif conditionalsflag:
                                     continue
                                 elif defn.hash != here.hash:
                                     print >>sys.stderr, \

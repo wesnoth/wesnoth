@@ -32,23 +32,30 @@
 # property, then treat it as non-exporting.
 #
 # You can tell wmlscope to ignore stretches of config files
-# with the following magic comments?
+# with the following magic comments:
 #
 #     # wmlscope: start ignoring
 #     # wmlscope: stop ignoring
 #
-# This tool does catch one kind of implicit reference: if an attack name
-# is specified but no icon is given, the attack icon will default to
-# a name generated from the attack name.  This behavior can be suppressed
-# by adding a magic comment containing the string "no-icon" to the name= line.
+# Similarly, you can tell wmlscope to ignore multiple or duplicate macro
+# definitions in a range of lines with the following magic comments:
 #
-# The collowing magic comment:
+#     # wmlscope: start conditionals
+#     # wmlscope: stop conditionals
+#
+# The following magic comment:
 #
 #     # prune FOOBAR
 #
 # will cause wmlscope to forget about all but one of the definitions of FOOBAR
 # it has seen.  This will be useful mainly for symbols that have different
 # definitions enabled by an #ifdef. 
+#
+#
+# This tool does catch one kind of implicit reference: if an attack name
+# is specified but no icon is given, the attack icon will default to
+# a name generated from the attack name.  This behavior can be suppressed
+# by adding a magic comment containing the string "no-icon" to the name= line.
 #
 # The checking done by this tool has a couple of flaws:
 #
