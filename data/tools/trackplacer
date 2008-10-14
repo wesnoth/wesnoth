@@ -111,6 +111,7 @@ class JourneyTrack:
             fp.write("# Hand-hack strictly at your own risk\n")
             fp.write("#\n")
             fp.write("# trackplacer: map=%s\n" % self.mapfile)
+            fp.write("# wmllint: no text\n")
             fp.write("#\n")
             index_tuples = zip(range(len(self.track)), self.track)
             index_tuples = filter(lambda (i, (a, x, y)): a in segmenters,

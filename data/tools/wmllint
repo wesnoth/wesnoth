@@ -80,6 +80,10 @@
 # You can prevent file conversions with a comment containing
 # "wmllint: noconvert" on the same line as the filename.
 #
+# You can suppress complaints about files without an initial textdoman line
+# by embedding the magic comment "# wmllint: no translatables" in the file.
+# of course, it's a good idea to be sure this assertion is actually true.
+#
 # You can skip checks on unbalanced WML (e.g. in a macro definition) by
 # bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
 # Note that this will also disable stack-based validation on the span
@@ -606,10 +610,13 @@ def sanity_check(filename, lines):
             pass
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
+    no_text = False
     for i in range(len(lines)):
         if "#textdomain" in lines[i]:
             textdomains.append(i+1)
-    if not textdomains:
+        elif "wmllint: no translatables":
+            no_text = True
+    if not textdomains and not no_text:
         print '"%s", line 1: no textdomain string' % filename
     elif textdomains[0] == 1:	# Multiples are OK if first is on line 1
         pass
