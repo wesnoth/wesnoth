@@ -39,13 +39,13 @@ This is trackplacer, an editor for visually editing journey tracks on Battle For
 
 The radio buttons near the top left corner control which icon is placed by a left click, except that the when the trashcan is selected a left click deletes already-placed icons.
 
-The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .trk format, which trackplacer can reload or edit. Any other extension than .trk on the filenae will raise an error.
+The Animate button clears the icons off the map and places them with a delay after each placement, so you can see what order they are drawn in.
 
-The Write button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
-
-The Quit button will ask for confirmation if you have unsaved changes.
+The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
 
 The Help button displays this message.
+
+The Quit button ends your session, asking for confirmation if you have unsaved changes.
 
 Design and implementation by Eric S. Raymond, October 2008.
 '''
@@ -191,7 +191,15 @@ class JourneyTrack:
         return candidates
     def insert(self, (action, x, y)):
         "Append a feature to the track."
-        # FIXME: implement smarter insertion
+        neighbors = self.neighbors(x, y)
+        # There are two or more markers and we're not nearest the end one
+        if len(neighbors) >= 2 and neighbors[0][0] != len(neighbors)-1:
+            closest = neighbors[0]
+            next_closest = neighbors[1]
+            # If the neighbors are adjacent, insert between them 
+            if abs(closest[0] - next_closest[0]) == 1: 
+                self.track.insert(closest[0], (action, x, y))
+        # Otherwise, append
         self.track.append((action, x, y))
     def remove(self, x, y):
         "Remove a feature from the track."
@@ -279,14 +287,14 @@ class TrackEditor:
             self.fatal_error("error while reading icons")
 
         # Window-layout time
-        window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        window.set_name ("trackplacer")
+        self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+        self.window.set_name ("trackplacer")
 
         vbox = gtk.VBox(False, 0)
-        window.add(vbox)
+        self.window.add(vbox)
         vbox.show()
 
-        window.connect("destroy", lambda w: gtk.main_quit())
+        self.window.connect("destroy", lambda w: gtk.main_quit())
 
         tooltips = gtk.Tooltips()
 
@@ -349,22 +357,29 @@ class TrackEditor:
         # A quit button
         button = gtk.Button("Quit")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.conditional_quit, window)
+        button.connect_object("clicked", self.conditional_quit, self.window)
         tooltips.set_tip(button, "Leave this program.")
-        button.show()
-
-        # A save button
-        button = gtk.Button("Save")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.save_handler, window)
-        tooltips.set_tip(button, "Save track in .cfg format.")
         button.show()
 
         # A help button
         button = gtk.Button("Help")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.help_handler, window)
+        button.connect_object("clicked", self.help_handler, self.window)
         tooltips.set_tip(button, "See a help message describing the controls.")
+        button.show()
+
+        # A save button
+        button = gtk.Button("Save")
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked", self.save_handler, self.window)
+        tooltips.set_tip(button, "Save track in .cfg format.")
+        button.show()
+
+        # An animate button
+        button = gtk.Button("Animate")
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked", self.animate_handler, self.window)
+        tooltips.set_tip(button, "Animate dot-drawing as in a story part.")
         button.show()
 
         # Create the drawing area on a viewport that scrolls if needed.
@@ -415,7 +430,7 @@ class TrackEditor:
                                 | gtk.gdk.POINTER_MOTION_HINT_MASK)
 
 
-        window.show()
+        self.window.show()
         gtk.main()
         self.log("initialization successful")
 
@@ -475,19 +490,30 @@ class TrackEditor:
                                 0, 0, *rect)
         widget.queue_draw_area(*rect)
 
+    def redraw(self, widget, delay=0):
+        "Redraw the map and tracks."
+        self.refresh_map()
+        for item in self.journey.track:
+            self.draw_feature(widget, item)
+            if delay:
+                time.sleep(delay)
+                self.expose_event(widget)
+                gtk.main_iteration(False)
+
     def configure_event(self, widget, event):
         "Create a new backing pixmap of the appropriate size."
         x, y, width, height = widget.get_allocation()
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
         self.default_gc = self.drawing_area.get_style().fg_gc[gtk.STATE_NORMAL]
-        self.refresh_map()
-        for item in self.journey.track:
-            self.draw_feature(widget, item)
+        self.redraw(widget)
         return True
 
-    def expose_event(self, widget, event):
+    def expose_event(self, widget, event=None):
         "Redraw the screen from the backing pixmap"
-        x , y, width, height = event.area
+        if event:
+            x , y, width, height = event.area
+        else:
+            x, y, width, height = widget.get_allocation()
         widget.window.draw_drawable(self.default_gc,
                                     self.pixmap, x, y, x, y, width, height)
         return False
@@ -558,15 +584,6 @@ class TrackEditor:
         elif id == gtk.RESPONSE_REJECT:
             self.quit_check.destroy()
 
-    def help_handler(self, w):
-        "Display help."
-        w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                              flags=gtk.DIALOG_DESTROY_WITH_PARENT,
-                              buttons=gtk.BUTTONS_OK)
-        w.set_markup(gui_help)
-        w.run()
-        w.destroy()
-
     def save_handler(self, w):
         "Save track data,"
         if not self.journey.has_unsaved_changes():
@@ -606,6 +623,21 @@ class TrackEditor:
     def conditional_save_handler(self, widget, id):
         self.save_confirm = (id == gtk.RESPONSE_ACCEPT)            
         self.save_check.destroy()
+
+    def help_handler(self, w):
+        "Display help."
+        w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                              flags=gtk.DIALOG_DESTROY_WITH_PARENT,
+                              buttons=gtk.BUTTONS_OK)
+        w.set_markup(gui_help)
+        w.run()
+        w.destroy()
+
+    def animate_handler(self, w):
+        "Animate dot placing as though on a storyboard."
+        self.refresh_map()
+        self.expose_event(self.drawing_area)
+        self.redraw(self.drawing_area, 0.5)
 
     def log(self, msg):
         "Notify user of error and die."
