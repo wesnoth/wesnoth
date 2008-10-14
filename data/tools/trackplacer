@@ -50,7 +50,7 @@ The Help button displays this message.
 Design and implementation by Eric S. Raymond, October 2008.
 '''
 
-import sys, os, re, time, exceptions, getopt
+import sys, os, re, math, time, exceptions, getopt
 
 import pygtk
 pygtk.require('2.0')
@@ -71,20 +71,29 @@ icon_dictionary = {
 icon_presentation_order = ("JOURNEY", "BATTLE", "REST")
 segmenters = ("BATTLE","REST")
 
-# Size of the rectangle around the mouse pointer within which the code
-# will seek tracking dots. Should be about (N-1)/2 where N is the
-# pixel radius of the largest icon.  For this and other reasons, it's
-# helpful if the tracking dot and other icons all have a square
-# aspect ratio and an odd number of pixels on the sise, so each has
-# a well-defined center pixel.
-vision_distance = 12
-
 class IOException(exceptions.Exception):
     "Exception thrown while reading a track file."
     def __init__(self, message, path, lineno=None):
         self.message = message
         self.path = path
         self.lineno = lineno
+
+# Basic functions for bashing points and rectangles
+
+def distance(x1, y1, x2, y2):
+    "Euclidean distance."
+    return math.sqrt((x1 - x2)**2 + abs(y1 - y2)**2)
+
+def within(x, y, (l, t, r, d)):
+    "Is point within specified rectangle?"
+    if x >= l and x < l + r and y >= t and y < t + d:
+        return True
+    return False
+
+def overlaps((x, y, xd, yd), rect):
+    "Do two rectangles overlap?"
+    return within(x, y, rect) or within(x+xd-1, y, rect) or \
+           within(x, y+yd-1, rect) or within(x+xd-1, y+yd+1, rect)
 
 class JourneyTrack:
     "Represent a journey track on a map."
@@ -167,34 +176,29 @@ class JourneyTrack:
         return self.track[n]
     def __setitem__(self, n, v):
         self.track[n] = v
-    def find(self, x, y, d=vision_distance):
-        "Find all track actions near a given point."
-        candidates = []
-        ind = 0
-        for (tag, xt, yt) in self.track:
-            if x >= xt - d and x <= xt + d and y >= yt - d and y <= yt + d:
-                candidates.append(ind)
-            ind += 1
+    def neighbors(self, x, y):
+        "Return list of neighbors, enumerated and sorted by distance."
+        candidates = zip(range(len(self.track)), self.track)
+        candidates.sort(lambda (i1, (a1, x1, y1)), (i2, (a2, x2, y2)): cmp(distance(x, y, x1, y1), distance(x, y, x2, y2)))
         return candidates
-    def append(self, tag, x, y):
+
+    def find(self, x, y):
+        "Find all track actions at given point."
+        candidates = []
+        for (i, (tag, xt, yt)) in enumerate(self.track):
+            if x == xt and y == yt:
+                candidates.append(i)
+        return candidates
+    def insert(self, (action, x, y)):
         "Append a feature to the track."
-        self.track.append((tag, x, y))
+        # FIXME: implement smarter insertion
+        self.track.append((action, x, y))
     def remove(self, x, y):
         "Remove a feature from the track."
         ind = self.find(x, y)
         if ind:
             # Prefer to delete the most recent feature
             self.track = self.track[:ind[-1]] + self.track[ind[-1]+1:]
-    def snap_to(self, x, y, d=vision_distance):
-        "Snap a location to a nearby track feature, if there is one."
-        candidates = []
-        for (tag, xt, yt) in self.track:
-            if x >= xt - d and x <= xt + d and y >= yt - d and y <= yt + d:
-                candidates.append((xt, yt))
-        if len(candidates) == 1:
-            return candidates[0]
-        else:
-            return None
     def __str__(self):
         return self.mapfile + ": " + `self.track`
 
@@ -249,7 +253,7 @@ class TrackEditor:
             self.last_read = path
         self.log("Initial track is %s" % self.journey)
         self.action = "JOURNEY"
-        self.last_x = self.last_y = None 
+        self.selected = None
 
         # Backing pixmap for drawing area
         self.pixmap = None
@@ -428,20 +432,45 @@ class TrackEditor:
             ys = self.map_height - y
         self.pixmap.draw_drawable(self.default_gc, self.map, x, y, x, y, xs, ys)
 
-    def erase_feature(self, widget, x, y, action):
-        "Erase specified icon from the map."
-        icon = self.action_dictionary[action]
-        rect = icon.bounding_box(x, y)
-        self.log("Erasing action=%s, dest=%s" % (icon.action, rect))
-        self.refresh_map(*rect)
-        widget.queue_draw_area(*rect)
+    def box(self, (action, x, y)):
+        "Compute the bounding box for an icon of type ACTION at X, Y."
+        return self.action_dictionary[action].bounding_box(x, y)
 
-    def draw_feature(self, widget, x, y, action):
+    def snap_to(self, x, y):
+        "Snap a location to the nearest feature whose bounding box holds it."
+        self.log("Neighbors of %d, %d are %s" % (x, y, self.journey.neighbors(x, y)))
+        for (i, item) in self.journey.neighbors(x, y):
+            if within(x, y, self.box(item)):
+                return i
+        else:
+            return None
+
+    def neighbors(self, (action, x, y)):
+        "Return all track items with bounding boxes overlapping this one:"
+        rect = self.action_dictionary[action].bounding_box(x, y)
+        return filter(lambda item: overlaps(rect, self.box(item)),
+                      self.journey.track)
+
+    def erase_feature(self, widget, (action, x, y)):
+        "Erase specified icon from the map."
+        neighbors = self.neighbors((action, x, y))
+        for (na, nx, ny) in neighbors:
+            rect = self.box((na, nx, ny))
+            self.log("Erasing action=%s, dest=%s" % (na, rect))
+            self.refresh_map(*rect)
+            widget.queue_draw_area(*rect)
+        for (na, nx, ny) in neighbors:
+            if x != nx and y != ny:
+                self.log("Redrawing action=%s, dest=%s" % (icon.action, rect))
+                self.draw_feature(widget, (naction, nx, ny)) 
+
+    def draw_feature(self, widget, (action, x, y)):
         "Draw specified icon on the map."
-        icon = self.action_dictionary[action]
-        rect = icon.bounding_box(x, y)
-        self.log("Drawing action=%s, dest=%s" % (icon.action, rect))
-        self.pixmap.draw_pixbuf(self.default_gc, icon.icon, 0, 0, *rect)
+        rect = self.box((action, x, y))
+        self.log("Drawing action=%s, dest=%s" % (action, rect))
+        self.pixmap.draw_pixbuf(self.default_gc,
+                                self.action_dictionary[action].icon,
+                                0, 0, *rect)
         widget.queue_draw_area(*rect)
         
     def configure_event(self, widget, event):
@@ -450,8 +479,8 @@ class TrackEditor:
         self.pixmap = gtk.gdk.Pixmap(widget.window, width, height)
         self.default_gc = self.drawing_area.get_style().fg_gc[gtk.STATE_NORMAL]
         self.refresh_map()
-        for (action, x, y) in self.journey.track:
-            self.draw_feature(widget, x, y, action)
+        for item in self.journey.track:
+            self.draw_feature(widget, item)
         return True
 
     def expose_event(self, widget, event):
@@ -465,26 +494,22 @@ class TrackEditor:
         if event.button == 1 and self.pixmap != None:
             x = int(event.x)
             y = int(event.y)
-            feature = self.journey.snap_to(x, y)
+            self.selected = self.snap_to(x, y)
             # Skip the redraw in half the cases
-            self.log("Action %s at (%d, %d): feature = %s" % (self.action, x, y, feature))
-            if (feature == None) and (self.action == "DELETE"):
+            self.log("Action %s at (%d, %d): feature = %s" % (self.action, x, y, self.selected))
+            if (self.selected == None) and (self.action == "DELETE"):
                 return
-            if (feature != None) and (self.action != "DELETE"):
+            if (self.selected != None) and (self.action != "DELETE"):
                 return
             # Actual drawing and mutation of the journey track happens here
-            if not feature and self.action != "DELETE":
-                self.draw_feature(widget, x, y, self.action)
-                self.journey.track.append((self.action, x, y))
-                self.last_x = x
-                self.last_y = y
-            elif feature and self.action == "DELETE":
-                candidates = self.journey.find(x, y)
-                if len(candidates) == 1:
-                    # Prefer to delete the most recent candidate
-                    (action, x, y) = self.journey.track[candidates[-1]]
-                    self.erase_feature(widget, x, y, action)
-                    self.journey.remove(x, y)
+            if not self.selected and self.action != "DELETE":
+                self.draw_feature(widget, (self.action, x, y))
+                self.journey.insert((self.action, x, y))
+            elif self.selected != None and self.action == "DELETE":
+                (action, x, y) = self.journey.track[self.selected]
+                self.log("Deletion snapped to feature %d %s" % (self.selected,(action,x,y)))
+                self.erase_feature(widget, (action, x, y))
+                self.journey.remove(x, y)
             self.log("Track is %s" % self.journey)
         return True
 
@@ -498,17 +523,14 @@ class TrackEditor:
         state = event.state
 
         # This code enables dragging icons.
-        if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:            
-            if self.last_x and self.last_y:
-                candidates = self.journey.find(self.last_x, self.last_y)
-                if candidates:
-                    most_recent_candidate = candidates[-1]
-                    (action, lx, ly) = self.journey.track[most_recent_candidate]
-                    self.erase_feature(widget, lx, ly, action)
-                    self.journey.track[most_recent_candidate] = (action, x, y)
-                    self.draw_feature(widget, x, y, action)
-                    self.last_x, self.last_y = x, y
-                    self.log("Track is %s" % self.journey)
+        # if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:            
+        #    if candidates:
+        #        most_recent_candidate = candidates[-1]
+        #        (action, lx, ly) = self.journey.track[most_recent_candidate]
+        #        self.erase_feature(widget, lx, ly, action)
+        #        self.journey.track[most_recent_candidate] = (action, x, y)
+        #        self.draw_feature(widget, x, y, action)
+        #        self.log("Track is %s" % self.journey)
         return True
 
     #
