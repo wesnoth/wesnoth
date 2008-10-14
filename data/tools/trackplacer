@@ -103,7 +103,7 @@ class JourneyTrack:
         self.mapfile = None	# Map background of the journey
         self.track = []		# List of (action, x, y) tuples
         self.modifications = 0
-        self.initial_track = []
+        self.saved_track = []
     def write(self, fp, prefix="JOURNEY_"):
         "Record a journey track."
         if fp.name.endswith(".cfg"):
@@ -133,6 +133,7 @@ class JourneyTrack:
                 fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
             fp.write("#enddef\n\n")
             fp.close()
+            self.saved_track = self.track[:]
         else:
             raise IOException("File must have a .trk or .cfg extension.", fp.name)
     def read(self, fp):
@@ -160,7 +161,7 @@ class JourneyTrack:
                     tag = m.group(1)
                     x = int(m.group(2))
                     y = int(m.group(3))
-                    self.initial_track.append((tag, x, y))
+                    self.saved_track.append((tag, x, y))
                 except ValueError:
                     raise IOException("Invalid coordinate field.", fp.name, i+1)
             m = re.search(property_re, line)
@@ -171,9 +172,9 @@ class JourneyTrack:
         else:
             raise IOException("Missing map declaration.", fp.name)
         fp.close()
-        self.track = self.initial_track[:]
+        self.track = self.saved_track[:]
     def has_unsaved_changes(self):
-        return self.track != self.initial_track
+        return self.track != self.saved_track
     def __getitem__(self, n):
         return self.track[n]
     def __setitem__(self, n, v):
@@ -233,6 +234,7 @@ class ModalFileSelector:
 
     def selection_ok(self, widget):
         self.path = self.filew.get_filename()
+        # Relativize file path to current directory
         if self.path.startswith(os.getcwd()):
             self.path = self.path[len(os.getcwd())+1:]
         self.filew.destroy()
@@ -260,7 +262,7 @@ class TrackEditor:
         self.journey = JourneyTrack()
         self.last_read = None
         self.journey.read(path)
-        if path.endswith(".trk"):
+        if path.endswith(".cfg"):
             self.last_read = path
         self.log("Initial track is %s" % self.journey)
         self.action = "JOURNEY"
@@ -621,6 +623,8 @@ class TrackEditor:
                 fp = open(w.path, "w")
             except IOError:
                 raise IOException("Cannot write file.", w.path)
+            if not self.journey.mapfile:
+                self.journey.mapfile = w.path 
             self.journey.write(fp)
 
     def conditional_save_handler(self, widget, id):
