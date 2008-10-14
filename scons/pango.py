@@ -15,6 +15,7 @@ def CheckPango(context, backend):
             env["PKGCONFIG_FLAGS"] = "--define-variable=prefix=" + gtkdir
 
     try:
+        env["ENV"]["PKG_CONFIG_PATH"] = environ.get("PKG_CONFIG_PATH")
         env.ParseConfig("pkg-config --libs --cflags $PKGCONFIG_FLAGS pango" + backend)
         context.Result("yes")
         return True
