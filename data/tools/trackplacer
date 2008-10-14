@@ -43,6 +43,8 @@ The Animate button clears the icons off the map and places them with a delay aft
 
 The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
 
+The rule for adding markers to the track is as follows: if the two markers closest to the mouse pointer are adjacent on the track, insert the new marker between them in the track order. Otherwise, append it to the end of the track.
+
 The Help button displays this message.
 
 The Quit button ends your session, asking for confirmation if you have unsaved changes.
@@ -197,8 +199,9 @@ class JourneyTrack:
             closest = neighbors[0]
             next_closest = neighbors[1]
             # If the neighbors are adjacent, insert between them 
-            if abs(closest[0] - next_closest[0]) == 1: 
-                self.track.insert(closest[0], (action, x, y))
+            if abs(closest[0] - next_closest[0]) == 1:
+                self.track.insert(max(closest[0], next_closest[0]), (action, x, y))
+                return
         # Otherwise, append
         self.track.append((action, x, y))
     def remove(self, x, y):
