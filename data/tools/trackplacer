@@ -198,7 +198,7 @@ class JourneyTrack:
         found = self.find(x, y)
         if found:
             # Prefer to delete the most recent feature
-            self.track = self.track[:ind[-1]] + self.track[ind[-1]+1:]
+            self.track = self.track[:found[-1]] + self.track[found[-1]+1:]
     def __str__(self):
         return self.mapfile + ": " + `self.track`
 
@@ -425,7 +425,7 @@ class TrackEditor:
             self.action = data
 
     def refresh_map(self, x=0, y=0, xs=-1, ys=-1):
-        "Refresh part of the drawing area with the apprpriate map rectangle."
+        "Refresh part of the drawing area with the appropriate map rectangle."
         if xs == -1:
             xs = self.map_width - x
         if ys == -1:
@@ -474,7 +474,7 @@ class TrackEditor:
                                 self.action_dictionary[action].icon,
                                 0, 0, *rect)
         widget.queue_draw_area(*rect)
-        
+
     def configure_event(self, widget, event):
         "Create a new backing pixmap of the appropriate size."
         x, y, width, height = widget.get_allocation()
@@ -536,7 +536,7 @@ class TrackEditor:
 
     #
     # These two functions implement a civilized quit confirmation that
-    # prompts you if you have unnsaved changes 
+    # prompts you if you have unsaved changes 
     #
     def conditional_quit(self, w):
         if self.journey.has_unsaved_changes():
