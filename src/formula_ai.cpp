@@ -528,10 +528,34 @@ private:
 class set_var_callable : public formula_callable {
 	std::string key_;
 	variant value_;
+	variant get_value(const std::string& /*key*/) const { return variant(); }
+public:
+	set_var_callable(const std::string& key, const variant& value)
+	  : key_(key), value_(value)
+	{}
+
+	const std::string& key() const { return key_; }
+	variant value() const { return value_; }
+};
+
+class set_var_function : public function_expression {
+public:
+	explicit set_var_function(const args_list& args)
+	  : function_expression("set_var", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		return variant(new set_var_callable(args()[0]->evaluate(variables).as_string(), args()[1]->evaluate(variables)));
+	}
+};
+
+class set_unit_var_callable : public formula_callable {
+	std::string key_;
+	variant value_;
 	gamemap::location loc_;
 	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
-	set_var_callable(const std::string& key, const variant& value, const gamemap::location loc)
+	set_unit_var_callable(const std::string& key, const variant& value, const gamemap::location loc)
 	  : key_(key), value_(value), loc_(loc)
 	{}
 
@@ -540,17 +564,14 @@ public:
 	const gamemap::location loc() const { return loc_; }
 };
 
-class set_var_function : public function_expression {
+class set_unit_var_function : public function_expression {
 public:
-	explicit set_var_function(const args_list& args)
-	  : function_expression("set_var", args, 2, 3)
+	explicit set_unit_var_function(const args_list& args)
+	  : function_expression("set_unit_var", args, 3, 3)
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		if( args().size() == 2 ) {
-			return variant(new set_var_callable(args()[0]->evaluate(variables).as_string(), args()[1]->evaluate(variables), gamemap::location::null_location ));
-		}
-		return variant(new set_var_callable(args()[0]->evaluate(variables).as_string(), args()[1]->evaluate(variables), convert_variant<location_callable>(args()[2]->evaluate(variables))->loc()));
+		return variant(new set_unit_var_callable(args()[0]->evaluate(variables).as_string(), args()[1]->evaluate(variables), convert_variant<location_callable>(args()[2]->evaluate(variables))->loc()));
 	}
 };
 
@@ -1184,6 +1205,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new unit_moves_function(args, ai_));
 	} else if(fn == "set_var") {
 		return expression_ptr(new set_var_function(args));
+	} else if(fn == "set_unit_var") {
+		return expression_ptr(new set_unit_var_function(args));
 	} else if(fn == "fallback") {
 		return expression_ptr(new fallback_function(args));
 	} else if(fn == "units_can_reach") {
@@ -1568,6 +1591,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		const ai::attack_analysis* attack_analysis = try_convert_variant<ai::attack_analysis>(*i);
 		const recruit_callable* recruit_command = try_convert_variant<recruit_callable>(*i);
 		const set_var_callable* set_var_command = try_convert_variant<set_var_callable>(*i);
+		const set_unit_var_callable* set_unit_var_command = try_convert_variant<set_unit_var_callable>(*i);
 		const fallback_callable* fallback_command = try_convert_variant<fallback_callable>(*i);
 
 		prepare_move();
@@ -1701,21 +1725,20 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				made_move = true;
 			}
 		} else if(set_var_command) {
-			if (set_var_command->loc() == gamemap::location::null_location) {
-				std::cerr << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
-				vars_.add(set_var_command->key(), set_var_command->value());
-			} else {
-				std::cerr << "setting unit var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
-				unit_map::iterator unit = units_.find(set_var_command->loc());
-				if(unit != units_.end()) {
-					if( unit->second.side() == get_info().team_num ) {
-						unit->second.add_formula_var(set_var_command->key(), set_var_command->value());
-					}
-				} else {
-					std::ostringstream str;
-					str << "set_var function: expected unit at location (" << (set_var_command->loc().x+1) << "," << (set_var_command->loc().y+1) << ")";
-					throw formula_error( str.str(), "", "", 0);
+			std::cerr << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
+			vars_.add(set_var_command->key(), set_var_command->value());
+			made_move = true;
+		} else if(set_unit_var_command) {
+			std::cerr << "setting unit var: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
+			unit_map::iterator unit = units_.find(set_unit_var_command->loc());
+			if(unit != units_.end()) {
+				if( unit->second.side() == get_info().team_num ) {
+					unit->second.add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				}
+			} else {
+				std::ostringstream str;
+				str << "set_var function: expected unit at location (" << (set_unit_var_command->loc().x+1) << "," << (set_unit_var_command->loc().y+1) << ")";
+				throw formula_error( str.str(), "", "", 0);
 			}
 			made_move = true;
 		} else if(i->is_string() && i->as_string() == "recruit") {
