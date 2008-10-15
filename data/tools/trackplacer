@@ -43,6 +43,8 @@ The Animate button clears the icons off the map and places them with a delay aft
 
 The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
 
+The Properties button pops up a list of track properties - key/value pairs associated with the track.  All tracks have the property "map" with their associated map name as the value.  One other property is interpreted: "prefix" is the prefix to give macro names in the generated track file.
+
 The rule for adding markers to the track is as follows: if the two markers closest to the mouse pointer are adjacent on the track, insert the new marker between them in the track order. Otherwise, append it to the end of the track.
 
 The Help button displays this message.
@@ -104,12 +106,12 @@ class JourneyTrack:
         self.track = []		# List of (action, x, y) tuples
         self.modifications = 0
         self.saved_track = []
-        self.properties = {}
+        self.properties = {'prefix' : 'JOURNEY'}
     def write(self, fp):
         "Record a journey track."
         if fp.name.endswith(".cfg"):
             fp.write("# Edited by trackplacer on %s.\n"%time.ctime(time.time()))
-            fp.write("# Hand-hack strictly at your own risk\n")
+            fp.write("# Hand-hack strictly at your own risk.\n")
             fp.write("#\n")
             for (key, val) in self.properties.items():
                 fp.write("# trackplacer: %s=%s\n" % (key, val))
@@ -121,7 +123,7 @@ class JourneyTrack:
             endpoints = map(lambda (i, t): i, index_tuples)
             if self.track[-1][0] not in segmenters:
                 endpoints.append(len(self.track)-1)
-            prefix = self.properties.get("prefix", "JOURNEY")
+            prefix = self.properties["prefix"]
             for (i, e) in enumerate(endpoints):
                 fp.write("#define %s_STAGE_%d\n" % (prefix, i+1,))
                 for j in range(0, e+1):
@@ -336,7 +338,7 @@ class TrackEditor:
         # A quit button
         button = gtk.Button("Quit")
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.conditional_quit, self.window)
+        button.connect_object("clicked", self.quit, self.window)
         tooltips.set_tip(button, "Leave this program.")
         button.show()
 
@@ -345,6 +347,13 @@ class TrackEditor:
         buttonbox.pack_end(button, expand=False, fill=False, padding=10)
         button.connect_object("clicked", self.help_handler, self.window)
         tooltips.set_tip(button, "See a help message describing the controls.")
+        button.show()
+
+        # A properties button
+        button = gtk.Button("Properties")
+        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
+        button.connect_object("clicked", self.properties_handler, self.window)
+        tooltips.set_tip(button, "Set properties of the track.")
         button.show()
 
         # A save button
@@ -543,7 +552,7 @@ class TrackEditor:
     # These two functions implement a civilized quit confirmation that
     # prompts you if you have unsaved changes 
     #
-    def conditional_quit(self, w):
+    def quit(self, w):
         if self.journey.has_unsaved_changes():
             self.quit_check = gtk.Dialog(title="Really quit?",
                            parent=None, 
@@ -629,6 +638,48 @@ class TrackEditor:
         w.set_markup(gui_help)
         w.run()
         w.destroy()
+
+    def properties_handler(self, w):
+        "Display a dialog for editing track properties."
+        w = gtk.Dialog(title="Track properties editor",
+                       parent=None, 
+                       flags=gtk.DIALOG_MODAL,
+                       buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
+                                gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
+        label = gtk.Label("You can enter a key/value pair for a new property on the last line.")
+        label.show()
+        w.vbox.pack_start(label)
+        table = gtk.Table(len(self.journey.properties)+1, 2)
+        table.show()
+        w.vbox.pack_start(table)
+        keys = self.journey.properties.keys()
+        keys.sort()
+        labels = []
+        entries = []
+        for (i, key) in enumerate(keys):
+            labels.append(gtk.Label(key))
+            labels[-1].show()
+            table.attach(labels[-1], 0, 1, i, i+1)
+            entries.append(gtk.Entry())
+            entries[-1].set_text(self.journey.properties[key])
+            entries[-1].set_width_chars(50)
+            entries[-1].show()
+            table.attach(entries[-1], 1, 2, i, i+1)
+        new_key = gtk.Entry()
+        new_key.set_width_chars(12)
+        new_key.show()
+        table.attach(new_key, 0, 1, len(keys)+1, len(keys)+2)
+        new_value = gtk.Entry()
+        new_value.set_width_chars(50)
+        table.attach(new_value, 1, 2, len(keys)+1, len(keys)+2)
+        new_value.show()
+        response = w.run()
+        w.destroy()
+        if response == gtk.RESPONSE_ACCEPT:
+            for (label, entry) in zip(labels, entries):
+                self.journey.properties[label.get_text()] = entry.get_text()
+        if new_key.get_text() and new_label.get_text():
+            self.journey.properties[new_key.get_text()] = new_entry.get_text()
 
     def animate_handler(self, w):
         "Animate dot placing as though on a storyboard."
