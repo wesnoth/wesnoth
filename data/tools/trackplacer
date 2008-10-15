@@ -114,6 +114,7 @@ class JourneyTracks:
         self.track_list = []
         self.properties = {}
         self.modified = False
+        self.before = self.after = ""
     def selected_track(self):
         "Select a track for modification"
         return self.tracks[self.selected_id]
@@ -122,12 +123,14 @@ class JourneyTracks:
     def write(self, fp):
         "Record a set of named journey tracks."
         if fp.name.endswith(".cfg"):
-            fp.write("# Edited by trackplacer on %s.\n"%time.ctime(time.time()))
-            fp.write("# Hand-hack strictly at your own risk.\n")
+            fp.write(self.before)
+            fp.write("# trackplacer: tracks begin\n\n")
+            fp.write("# Hand-hack this section strictly at your own risk.\n\n")
             fp.write("#\n")
+            if not self.before and not self.after:
+                fp.write("#\n# wmllint: no translatables\n\n")
             for (key, val) in self.properties.items():
                 fp.write("# trackplacer: %s=%s\n" % (key, val))
-            fp.write("# wmllint: no translatables\n")
             fp.write("#\n")
             for (name, track) in self.tracks.items():
                 index_tuples = zip(range(len(track)), track)
@@ -150,6 +153,8 @@ class JourneyTracks:
                     waypoint = track[j]
                     fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
                 fp.write("#enddef\n\n")
+            fp.write("# trackplacer: tracks end\n")
+            fp.write(self.after)
             fp.close()
             self.modified = False
         else:
@@ -174,7 +179,21 @@ class JourneyTracks:
                                  + " +([0-9]+) +([0-9]+)}")
         property_re = re.compile("# *trackplacer: ([^=]+)=(.*)")
         define_re = re.compile("#define ([^_]*)")
+        state = "before"
         for line in fp:
+            # This is how we ignore stuff outside of track sections
+            if state == "before":
+                if line.startswith("# trackplacer: tracks begin"):
+                    state = "tracks"	# And fall through...
+                else:
+                    self.before += line
+                    continue
+            elif state == "after":
+                self.after += line
+                continue
+            elif line.startswith("# trackplacer: tracks end"):
+                state = "after"
+                continue
             # Which track are we appending to?
             m = re.search(define_re, line)
             if m:
@@ -208,7 +227,7 @@ class JourneyTracks:
     def __getitem__(self, n):
         return self.tracks[self.selected_id][n]
     def __setitem__(self, n, v):
-        self.trackself.tracks[self.selected_id][n] = v
+        self.tracks[self.selected_id][n] = v
     def has_unsaved_changes(self):
         return self.modified
     def neighbors(self, x, y):
@@ -489,14 +508,14 @@ class TrackEditor:
         "Return all track items with bounding boxes overlapping this one:"
         rect = self.selected_dictionary[action].bounding_box(x, y)
         return filter(lambda item: overlaps(rect, self.box(item)),
-                      self.journey.flattened())
+                      self.journey.selected_track())
 
     def erase_feature(self, widget, (action, x, y)):
         "Erase specified (active) icon from the map."
         # Erase all nearby features that might have been damaged.
         save_select = self.journey.selected_id
-        for (id, track) in self.journey.tracks:
-            self.journey.set_selected_id(id)
+        for (id, track) in self.journey.tracks.items():
+            self.journey.set_selected_track(id)
             neighbors = self.neighbors((action, x, y))
             for (na, nx, ny) in neighbors:
                 rect = self.box((na, nx, ny))
@@ -508,7 +527,7 @@ class TrackEditor:
                 if x != nx and y != ny:
                     self.log("Redrawing action=%s" % ((na, nx, ny),))
                     self.draw_feature(widget, (na, nx, ny)) 
-        self.journey.set_selected_id(save_select)
+        self.journey.set_selected_track(save_select)
 
     def draw_feature(self, widget, (action, x, y), selected):
         "Draw specified icon on the map."
@@ -570,7 +589,7 @@ class TrackEditor:
                 self.draw_feature(widget, (self.action, x, y), True)
                 self.journey.insert((self.action, x, y))
             elif self.selected != None and self.action == "DELETE":
-                (action, x, y) = self.journey.track[self.selected]
+                (action, x, y) = self.journey[self.selected]
                 self.log("Deletion snapped to feature %d %s" % (self.selected,(action,x,y)))
                 self.erase_feature(widget, (action, x, y))
                 self.journey.remove(x, y)
@@ -589,11 +608,11 @@ class TrackEditor:
         # This code enables dragging icons.
         if state & gtk.gdk.BUTTON1_MASK and self.pixmap != None:            
            if self.selected is not None:
-               (action, lx, ly) = self.journey.track[self.selected]
+               (action, lx, ly) = self.journey[self.selected]
                self.erase_feature(widget, (action, lx, ly))
-               self.journey.track[self.selected] = (action, x, y)
-               self.jouney.modified = True
-               self.draw_feature(widget, (action, x, y))
+               self.journey[self.selected] = (action, x, y)
+               self.journey.modified = True
+               self.draw_feature(widget, (action, x, y), True)
                self.log("Track is %s" % self.journey)
         return True
 
