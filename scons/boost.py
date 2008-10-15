@@ -5,7 +5,7 @@ from glob import glob
 import re
 
 def find_boost(env):
-    prefixes = [env["prefix"]]
+    prefixes = [env["prefix"], "C:\\Boost"]
     include = find_include(prefixes, "boost/config.hpp", "", not env["host"])
     if include:
         prefix, includefile = include[0]
