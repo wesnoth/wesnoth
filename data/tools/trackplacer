@@ -606,7 +606,7 @@ class TrackEditor:
                 filename = filename[len(os.getcwd())+1:]
 
             # Request overwrite confirmation if this is a save-as
-            if filename != self.last_read:
+            if os.path.exists(filename) and filename != self.last_read:
                 save_check = gtk.Dialog(title="Really overwrite?",
                                              parent=None, 
                                              flags=gtk.DIALOG_MODAL,
