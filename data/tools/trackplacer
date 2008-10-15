@@ -296,36 +296,32 @@ class TrackEditor:
         for action in icon_presentation_order:
             icon = self.action_dictionary[action]
             button = gtk.RadioButton(basebutton)
+            bbox = gtk.HBox()
+            button.add(bbox)
+            bbox.add(icon.image)
+            icon.image.show()
+            bbox.show()
             if not basebutton:
                 button.set_active(True)
                 basebutton = button
             button.connect("toggled", self.button_callback, icon.action)
             radiobox.pack_start(button, expand=True, fill=True, padding=0)
             button.show()
-            radiobox.pack_start(icon.image,
-                                expand=False, fill=False, padding=0) 
-            icon.image.show()
             tooltips.set_tip(button, "Place %s events." % action.lower())
-            tooltips.set_tip(icon.image, "Place %s events." % action.lower())
-            spacer = gtk.Label("  ")
-            radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
-            spacer.show()
 
         # The delete button and its label
         button = gtk.RadioButton(button)
+        delimage = gtk.Image()
+        delimage.set_from_stock(gtk.STOCK_DELETE, gtk.ICON_SIZE_SMALL_TOOLBAR)
+        bbox = gtk.HBox()
+        button.add(bbox)
+        bbox.add(delimage)
+        delimage.show()
+        bbox.show()
         button.connect("toggled", self.button_callback, "DELETE")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
         button.show()
-        delimage = gtk.Image()
-        delimage.set_from_stock(gtk.STOCK_DELETE, gtk.ICON_SIZE_SMALL_TOOLBAR)
-        radiobox.pack_start(delimage,
-                            expand=False, fill=False, padding=0) 
-        delimage.show()
         tooltips.set_tip(button, "Remove events.")
-        tooltips.set_tip(delimage, "Remove events.")
-        spacer = gtk.Label("  ")
-        radiobox.pack_start(spacer, expand=False, fill=False, padding=0)
-        spacer.show()
 
         # The coordinate display in the middle
         self.coordwin = gtk.Label()
@@ -575,7 +571,7 @@ class TrackEditor:
             w.destroy()
         else:
             # Request save file name
-            dialog = gtk.FileChooserDialog("Save track file",
+            dialog = gtk.FileChooserDialog("Save track macros",
                                            None,
                                            gtk.FILE_CHOOSER_ACTION_SAVE,
                                            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -586,7 +582,7 @@ class TrackEditor:
             dialog.set_show_hidden(False)
 
             sfilter = gtk.FileFilter()
-            sfilter.set_name("Track file")
+            sfilter.set_name("Track files")
             sfilter.add_pattern("*.cfg")
             dialog.add_filter(sfilter)
 
