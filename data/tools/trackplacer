@@ -104,13 +104,15 @@ class JourneyTrack:
         self.track = []		# List of (action, x, y) tuples
         self.modifications = 0
         self.saved_track = []
-    def write(self, fp, prefix="JOURNEY_"):
+        self.properties = {}
+    def write(self, fp):
         "Record a journey track."
         if fp.name.endswith(".cfg"):
             fp.write("# Edited by trackplacer on %s.\n"%time.ctime(time.time()))
             fp.write("# Hand-hack strictly at your own risk\n")
             fp.write("#\n")
-            fp.write("# trackplacer: map=%s\n" % self.mapfile)
+            for (key, val) in self.properties.items():
+                fp.write("# trackplacer: %s=%s\n" % (key, val))
             fp.write("# wmllint: no translatables\n")
             fp.write("#\n")
             index_tuples = zip(range(len(self.track)), self.track)
@@ -119,8 +121,9 @@ class JourneyTrack:
             endpoints = map(lambda (i, t): i, index_tuples)
             if self.track[-1][0] not in segmenters:
                 endpoints.append(len(self.track)-1)
+            prefix = self.properties.get("prefix", "JOURNEY")
             for (i, e) in enumerate(endpoints):
-                fp.write("#define %sSTAGE_%d\n" % (prefix, i+1,))
+                fp.write("#define %s_STAGE_%d\n" % (prefix, i+1,))
                 for j in range(0, e+1):
                     age="OLD"
                     if i == 0 or j > endpoints[i-1]:
@@ -128,7 +131,7 @@ class JourneyTrack:
                     waypoint = (age,) + tuple(self.track[j])
                     fp.write("    {%s_%s %d %d}\n" % waypoint)
                 fp.write("#enddef\n\n")
-            fp.write("#define %sCOMPLETE\n" % prefix)
+            fp.write("#define %s_COMPLETE\n" % prefix)
             for j in range(len(self.track)):
                 waypoint = self.track[j]
                 fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
@@ -147,14 +150,13 @@ class JourneyTrack:
         if self.track:
             raise IOException("Reading with track nonempty.", fp.name)
         if fp.name.endswith(".png") or fp.name.endswith(".jpg"):
-            self.mapfile = fp.name
+            self.mapfile = self.properties['map'] = fp.name
             return
         if not fp.name.endswith(".cfg"):
             raise IOException("Cannot read this filetype.", fp.name)
         waypoint_re = re.compile("{NEW_(" + "|".join(icon_presentation_order) + ")" \
                                  + " +([0-9]+) +([0-9]+)}")
         property_re = re.compile("# *trackplacer: ([^=]+)=(.*)")
-        self.properties = {}
         for line in fp:
             m = re.search(waypoint_re, line)
             if m:
