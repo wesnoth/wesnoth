@@ -217,33 +217,6 @@ class JourneyTrack:
     def __str__(self):
         return self.mapfile + ": " + `self.track`
 
-class ModalFileSelector:
-    def __init__(self, default, legend):
-        self.default = default
-        self.path = None
-        # Create a new file selection widget
-        self.filew = gtk.FileSelection(legend)
-        self.filew.set_modal(True);
-
-        self.filew.ok_button.connect("clicked", self.selection_ok)
-        self.filew.cancel_button.connect("clicked", self.selection_canceled)
-        if self.default:
-            self.filew.set_filename(self.default)
-        self.filew.hide_fileop_buttons()
-        self.filew.complete(".cfg")
-        self.filew.run()
-
-    def selection_canceled(self, widget):
-        self.path = None
-        self.filew.destroy()
-
-    def selection_ok(self, widget):
-        self.path = self.filew.get_filename()
-        # Relativize file path to current directory
-        if self.path.startswith(os.getcwd()):
-            self.path = self.path[len(os.getcwd())+1:]
-        self.filew.destroy()
-
 class TrackEditorIcon:
     def __init__(self, action, path):
         self.action = action
@@ -584,15 +557,12 @@ class TrackEditor:
             label = gtk.Label("Track has unsaved changes. OK to quit?")
             self.quit_check.vbox.pack_start(label)
             label.show()
-            self.quit_check.connect("response", self.conditional_quit_handler)
-            self.quit_check.run()
+            response = self.quit_check.run()
+            self.quit_check.destroy()
+            if response == gtk.RESPONSE_ACCEPT:
+                sys.exit(0)
         else:
             sys.exit(0)
-    def conditional_quit_handler(self, widget, id):
-        if id == gtk.RESPONSE_ACCEPT:
-            sys.exit(0)
-        elif id == gtk.RESPONSE_REJECT:
-            self.quit_check.destroy()
 
     def save_handler(self, w):
         "Save track data,"
@@ -604,39 +574,56 @@ class TrackEditor:
             w.run()
             w.destroy()
         else:
-            w = ModalFileSelector(default=self.last_read,
-                                  legend="Save track to file")
-            if not w.path:
+            # Request save file name
+            dialog = gtk.FileChooserDialog("Save track file",
+                                           None,
+                                           gtk.FILE_CHOOSER_ACTION_SAVE,
+                                           (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+                                            gtk.STOCK_SAVE, gtk.RESPONSE_OK))
+            dialog.set_default_response(gtk.RESPONSE_CANCEL)
+            if self.last_read:
+                dialog.set_filename(self.last_read)
+            dialog.set_show_hidden(False)
+
+            sfilter = gtk.FileFilter()
+            sfilter.set_name("Track file")
+            sfilter.add_pattern("*.cfg")
+            dialog.add_filter(sfilter)
+
+            response = dialog.run()
+            filename = dialog.get_filename()
+            dialog.destroy()
+            if response == gtk.RESPONSE_CANCEL:
                 return
-            if not w.path.endswith(".cfg"):
-                raise IOException("File must have a .cfg extension.", w.path)
-            if w.path != self.last_read and os.path.exists(w.path):
-                self.save_check = gtk.Dialog(title="Really overwrite?",
+
+            # Relativize file path to current directory
+            if filename.startswith(os.getcwd()):
+                filename = filename[len(os.getcwd())+1:]
+
+            # Request overwrite confirmation if this is a save-as
+            if filename != self.last_read:
+                save_check = gtk.Dialog(title="Really overwrite?",
                                              parent=None, 
                                              flags=gtk.DIALOG_MODAL,
                                              buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
                                                       gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
-                label = gtk.Label("Overwrite existing data in %s?" % w.path)
-                self.save_check.vbox.pack_start(label)
+                label = gtk.Label("Overwrite existing data in %s?" % filename)
+                save_check.vbox.pack_start(label)
                 label.show()
-                self.save_check.connect("response",
-                                        self.conditional_save_handler)
-                self.save_check.run()
-                # After conditional_save handler fires
-                if not self.save_confirm:
+                response = save_check.run()
+                save_check.destroy()
+                if response == gtk.RESPONSE_REJECT:
                     return
-            self.log("Writing track data to %s" % w.path)
-            try:
-                fp = open(w.path, "w")
-            except IOError:
-                raise IOException("Cannot write file.", w.path)
-            if not self.journey.mapfile:
-                self.journey.mapfile = w.path 
-            self.journey.write(fp)
 
-    def conditional_save_handler(self, widget, id):
-        self.save_confirm = (id == gtk.RESPONSE_ACCEPT)            
-        self.save_check.destroy()
+            # Actual I/O
+            self.log("Writing track data to %s" % filename)
+            try:
+                fp = open(filename, "w")
+            except IOError:
+                raise IOException("Cannot write file.", filename)
+            if not self.journey.mapfile:
+                self.journey.mapfile = filename 
+            self.journey.write(fp)
 
     def help_handler(self, w):
         "Display help."
@@ -695,11 +682,57 @@ if __name__ == "__main__":
     else:
         while True:
             try:
-                selector = ModalFileSelector(default=default_map,
-                                             legend="Track or map file to read")
-                if not selector.path:
-                    break
-                TrackEditor(selector.path, verbose=verbose)
+                dialog = gtk.FileChooserDialog("Open track file",
+                                               None,
+                                               gtk.FILE_CHOOSER_ACTION_OPEN,
+                                               (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+                                                gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+                dialog.set_default_response(gtk.RESPONSE_OK)
+                dialog.set_filename(default_map)
+                dialog.set_show_hidden(False)
+
+                ofilter = gtk.FileFilter()
+                ofilter.set_name("Images and Tracks")
+                ofilter.add_mime_type("image/png")
+                ofilter.add_mime_type("image/jpeg")
+                ofilter.add_mime_type("image/gif")
+                ofilter.add_pattern("*.png")
+                ofilter.add_pattern("*.jpg")
+                ofilter.add_pattern("*.gif")
+                ofilter.add_pattern("*.tif")
+                ofilter.add_pattern("*.xpm")
+                ofilter.add_pattern("*.cfg")
+                dialog.add_filter(ofilter)
+
+                ofilter = gtk.FileFilter()
+                ofilter.set_name("Images only")
+                ofilter.add_mime_type("image/png")
+                ofilter.add_mime_type("image/jpeg")
+                ofilter.add_mime_type("image/gif")
+                ofilter.add_pattern("*.png")
+                ofilter.add_pattern("*.jpg")
+                ofilter.add_pattern("*.gif")
+                ofilter.add_pattern("*.tif")
+                ofilter.add_pattern("*.xpm")
+                dialog.add_filter(ofilter)
+
+                ofilter = gtk.FileFilter()
+                ofilter.set_name("Tracks only")
+                ofilter.add_pattern("*.cfg")
+                dialog.add_filter(ofilter)
+
+                response = dialog.run()
+                if response == gtk.RESPONSE_OK:
+                    filename = dialog.get_filename()
+                elif response == gtk.RESPONSE_CANCEL:
+                    sys.exit(0)
+                dialog.destroy()
+
+                # Relativize file path to current directory
+                if filename.startswith(os.getcwd()):
+                    filename = filename[len(os.getcwd())+1:]
+
+                TrackEditor(filename, verbose=verbose)
             except IOException, e:
                 w = gtk.MessageDialog(type=gtk.MESSAGE_ERROR,
                                       flags=gtk.DIALOG_DESTROY_WITH_PARENT,
