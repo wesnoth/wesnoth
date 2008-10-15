@@ -67,10 +67,15 @@ import wesnoth.wmltools
 # to add new ones, just fill in a dictionary entry.
 imagedir = "data/core/images/"
 default_map = imagedir + "maps/wesnoth.png"
-icon_dictionary = {
+selected_icon_dictionary = {
     "JOURNEY": imagedir + "misc/new-journey.png",
     "BATTLE":  imagedir + "misc/new-battle.png",
     "REST":    imagedir + "misc/flag-red.png",
+    }
+unselected_icon_dictionary = {
+    "JOURNEY": imagedir + "misc/dot-white.png",
+    "BATTLE":  imagedir + "misc/cross-white.png",
+    "REST":    imagedir + "misc/flag-white.png",
     }
 icon_presentation_order = ("JOURNEY", "BATTLE", "REST")
 segmenters = ("BATTLE","REST")
@@ -99,16 +104,23 @@ def overlaps((x, y, xd, yd), rect):
     return within(x, y, rect) or within(x+xd-1, y, rect) or \
            within(x, y+yd-1, rect) or within(x+xd-1, y+yd+1, rect)
 
-class JourneyTrack:
-    "Represent a journey track on a map."
+class JourneyTracks:
+    "Represent a set of named journey tracks on a map."
     def __init__(self):
-        self.mapfile = None	# Map background of the journey
-        self.track = []		# List of (action, x, y) tuples
+        self.mapfile = None		# Map background of the journey
+        self.tracks = {}		# Dict of lists of (action, x, y) tuples
+        self.selected_id = None
         self.modifications = 0
-        self.saved_track = []
-        self.properties = {'prefix' : 'JOURNEY'}
+        self.track_list = []
+        self.properties = {}
+        self.modified = False
+    def selected_track(self):
+        "Select a track for modification"
+        return self.tracks[self.selected_id]
+    def set_selected_track(self, name):
+        self.selected_id = name
     def write(self, fp):
-        "Record a journey track."
+        "Record a set of named journey tracks."
         if fp.name.endswith(".cfg"):
             fp.write("# Edited by trackplacer on %s.\n"%time.ctime(time.time()))
             fp.write("# Hand-hack strictly at your own risk.\n")
@@ -117,29 +129,29 @@ class JourneyTrack:
                 fp.write("# trackplacer: %s=%s\n" % (key, val))
             fp.write("# wmllint: no translatables\n")
             fp.write("#\n")
-            index_tuples = zip(range(len(self.track)), self.track)
-            index_tuples = filter(lambda (i, (a, x, y)): a in segmenters,
-                                  index_tuples)
-            endpoints = map(lambda (i, t): i, index_tuples)
-            if self.track[-1][0] not in segmenters:
-                endpoints.append(len(self.track)-1)
-            prefix = self.properties["prefix"]
-            for (i, e) in enumerate(endpoints):
-                fp.write("#define %s_STAGE_%d\n" % (prefix, i+1,))
-                for j in range(0, e+1):
-                    age="OLD"
-                    if i == 0 or j > endpoints[i-1]:
-                        age = "NEW"
-                    waypoint = (age,) + tuple(self.track[j])
-                    fp.write("    {%s_%s %d %d}\n" % waypoint)
+            for (name, track) in self.tracks.items():
+                index_tuples = zip(range(len(track)), track)
+                index_tuples = filter(lambda (i, (a, x, y)): a in segmenters,
+                                      index_tuples)
+                endpoints = map(lambda (i, t): i, index_tuples)
+                if track[-1][0] not in segmenters:
+                    endpoints.append(len(track)-1)
+                for (i, e) in enumerate(endpoints):
+                    fp.write("#define %s_STAGE_%d\n" % (name, i+1,))
+                    for j in range(0, e+1):
+                        age="OLD"
+                        if i == 0 or j > endpoints[i-1]:
+                            age = "NEW"
+                        waypoint = (age,) + tuple(track[j])
+                        fp.write("    {%s_%s %d %d}\n" % waypoint)
+                    fp.write("#enddef\n\n")
+                fp.write("#define %s_COMPLETE\n" % name)
+                for j in range(len(track)):
+                    waypoint = track[j]
+                    fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
                 fp.write("#enddef\n\n")
-            fp.write("#define %s_COMPLETE\n" % prefix)
-            for j in range(len(self.track)):
-                waypoint = self.track[j]
-                fp.write("    {OLD_%s %d %d}\n" % tuple(waypoint))
-            fp.write("#enddef\n\n")
             fp.close()
-            self.saved_track = self.track[:]
+            self.modified = False
         else:
             raise IOException("File must have a .trk or .cfg extension.", fp.name)
     def read(self, fp):
@@ -149,56 +161,71 @@ class JourneyTrack:
                 fp = open(fp)
             except IOError:
                 raise IOException("Cannot read file.", fp)
-        if self.track:
-            raise IOException("Reading with track nonempty.", fp.name)
+        if self.tracks:
+            raise IOException("Reading with tracks nonempty.", fp.name)
         if fp.name.endswith(".png") or fp.name.endswith(".jpg"):
             self.mapfile = self.properties['map'] = fp.name
+            self.selected_id = "JOURNEY"
+            self.tracks[self.selected_id] = []
             return
         if not fp.name.endswith(".cfg"):
             raise IOException("Cannot read this filetype.", fp.name)
         waypoint_re = re.compile("{NEW_(" + "|".join(icon_presentation_order) + ")" \
                                  + " +([0-9]+) +([0-9]+)}")
         property_re = re.compile("# *trackplacer: ([^=]+)=(.*)")
+        define_re = re.compile("#define ([^_]*)")
         for line in fp:
+            # Which track are we appending to?
+            m = re.search(define_re, line)
+            if m:
+                self.selected_id = m.group(1)
+                if self.selected_id not in self.track_list:
+                    self.track_list.append(self.selected_id)
+                    self.tracks[self.selected_id] = []
+                continue
+            # Is this a track marker?
             m = re.search(waypoint_re, line)
             if m:
                 try:
                     tag = m.group(1)
                     x = int(m.group(2))
                     y = int(m.group(3))
-                    self.saved_track.append((tag, x, y))
+                    self.tracks[self.selected_id].append((tag, x, y))
+                    continue
                 except ValueError:
                     raise IOException("Invalid coordinate field.", fp.name, i+1)
+            # Is it a property setting?
             m = re.search(property_re, line)
             if m:
                 self.properties[m.group(1)] = m.group(2)
+                continue
         if "map" in self.properties:
             self.mapfile = self.properties['map']
         else:
             raise IOException("Missing map declaration.", fp.name)
         fp.close()
-        self.track = self.saved_track[:]
-    def has_unsaved_changes(self):
-        return self.track != self.saved_track
+        self.modified = False
     def __getitem__(self, n):
-        return self.track[n]
+        return self.tracks[self.selected_id][n]
     def __setitem__(self, n, v):
-        self.track[n] = v
+        self.trackself.tracks[self.selected_id][n] = v
+    def has_unsaved_changes(self):
+        return self.modified
     def neighbors(self, x, y):
-        "Return list of neighbors, enumerated and sorted by distance."
-        candidates = zip(range(len(self.track)), self.track)
+        "Return list of neighbors on selected track, enumerated and sorted by distance."
+        neighbors = []
+        candidates = zip(range(len(self.selected_track())), self.selected_track())
         candidates.sort(lambda (i1, (a1, x1, y1)), (i2, (a2, x2, y2)): cmp(distance(x, y, x1, y1), distance(x, y, x2, y2)))
         return candidates
-
     def find(self, x, y):
-        "Find all track actions at given point."
+        "Find all actions at the given pointin in the selected track."
         candidates = []
-        for (i, (tag, xt, yt)) in enumerate(self.track):
+        for (i, (tag, xt, yt)) in enumerate(self.selected_track()):
             if x == xt and y == yt:
                 candidates.append(i)
         return candidates
     def insert(self, (action, x, y)):
-        "Append a feature to the track."
+        "Insert a feature in the selected track."
         neighbors = self.neighbors(x, y)
         # There are two or more markers and we're not nearest the end one
         if len(neighbors) >= 2 and neighbors[0][0] != len(neighbors)-1:
@@ -206,18 +233,21 @@ class JourneyTrack:
             next_closest = neighbors[1]
             # If the neighbors are adjacent, insert between them 
             if abs(closest[0] - next_closest[0]) == 1:
-                self.track.insert(max(closest[0], next_closest[0]), (action, x, y))
+                self.selected_track().insert(max(closest[0], next_closest[0]), (action, x, y))
                 return
         # Otherwise, append
-        self.track.append((action, x, y))
+        self.selected_track().append((action, x, y))
+        self.modified = True
     def remove(self, x, y):
-        "Remove a feature from the track."
+        "Remove a feature from the selected track."
         found = self.find(x, y)
         if found:
             # Prefer to delete the most recent feature
-            self.track = self.track[:found[-1]] + self.track[found[-1]+1:]
+            track = self.selected_track()
+            track = track[:found[-1]] + track[found[-1]+1:]
+            self.modified = True
     def __str__(self):
-        return self.mapfile + ": " + `self.track`
+        return self.mapfile + ": " + `self.tracks`
 
 class TrackEditorIcon:
     def __init__(self, action, path):
@@ -239,7 +269,7 @@ class TrackEditor:
     def __init__(self, path=None, verbose=False):
         self.verbose = verbose
         # Initialize our info about the map and track 
-        self.journey = JourneyTrack()
+        self.journey = JourneyTracks()
         self.last_read = None
         self.journey.read(path)
         if path.endswith(".cfg"):
@@ -261,13 +291,19 @@ class TrackEditor:
         except:
             self.fatal_error("Error while reading background map %s" % self.journey.mapfile)
         # Now get the icons we'll need for scribbling on the map with.
-        self.action_dictionary = {}
         try:
-            for (action, path) in icon_dictionary.items():
+            self.selected_dictionary = {}
+            for (action, path) in selected_icon_dictionary.items():
                 icon = TrackEditorIcon(action, path)
-                self.log("%s icon has size %d, %d" % \
+                self.log("selected %s icon has size %d, %d" % \
                          (action, icon.icon_width, icon.icon_height))
-                self.action_dictionary[action] = icon
+                self.selected_dictionary[action] = icon
+            self.unselected_dictionary = {}
+            for (action, path) in unselected_icon_dictionary.items():
+                icon = TrackEditorIcon(action, path)
+                self.log("unselected %s icon has size %d, %d" % \
+                         (action, icon.icon_width, icon.icon_height))
+                self.unselected_dictionary[action] = icon
         except:
             self.fatal_error("error while reading icons")
 
@@ -296,7 +332,7 @@ class TrackEditor:
         # Fake icon-labeled buttons with liberal use of labels...
         basebutton = None
         for action in icon_presentation_order:
-            icon = self.action_dictionary[action]
+            icon = self.selected_dictionary[action]
             button = gtk.RadioButton(basebutton)
             bbox = gtk.HBox()
             button.add(bbox)
@@ -437,10 +473,11 @@ class TrackEditor:
 
     def box(self, (action, x, y)):
         "Compute the bounding box for an icon of type ACTION at X, Y."
-        return self.action_dictionary[action].bounding_box(x, y)
+        # Assumers selected and unselected icons are the same size
+        return self.selected_dictionary[action].bounding_box(x, y)
 
     def snap_to(self, x, y):
-        "Snap a location to the nearest feature whose bounding box holds it."
+        "Snap a location to the nearest feature on the selected track whose bounding box holds it."
         self.log("Neighbors of %d, %d are %s" % (x, y, self.journey.neighbors(x, y)))
         for (i, item) in self.journey.neighbors(x, y):
             if within(x, y, self.box(item)):
@@ -450,43 +487,54 @@ class TrackEditor:
 
     def neighbors(self, (action, x, y)):
         "Return all track items with bounding boxes overlapping this one:"
-        rect = self.action_dictionary[action].bounding_box(x, y)
+        rect = self.selected_dictionary[action].bounding_box(x, y)
         return filter(lambda item: overlaps(rect, self.box(item)),
-                      self.journey.track)
+                      self.journey.flattened())
 
     def erase_feature(self, widget, (action, x, y)):
-        "Erase specified icon from the map."
-        neighbors = self.neighbors((action, x, y))
+        "Erase specified (active) icon from the map."
         # Erase all nearby features that might have been damaged.
-        for (na, nx, ny) in neighbors:
-            rect = self.box((na, nx, ny))
-            self.log("Erasing action=%s, dest=%s" % (na, rect))
-            self.refresh_map(*rect)
-            widget.queue_draw_area(*rect)
-        # Redraw all nearby features except what we're erasing.
-        for (na, nx, ny) in neighbors:
-            if x != nx and y != ny:
-                self.log("Redrawing action=%s" % ((na, nx, ny),))
-                self.draw_feature(widget, (na, nx, ny)) 
+        save_select = self.journey.selected_id
+        for (id, track) in self.journey.tracks:
+            self.journey.set_selected_id(id)
+            neighbors = self.neighbors((action, x, y))
+            for (na, nx, ny) in neighbors:
+                rect = self.box((na, nx, ny))
+                self.log("Erasing action=%s, dest=%s" % (na, rect))
+                self.refresh_map(*rect)
+                widget.queue_draw_area(*rect)
+            # Redraw all nearby features except what we're erasing.
+            for (na, nx, ny) in neighbors:
+                if x != nx and y != ny:
+                    self.log("Redrawing action=%s" % ((na, nx, ny),))
+                    self.draw_feature(widget, (na, nx, ny)) 
+        self.journey.set_selected_id(save_select)
 
-    def draw_feature(self, widget, (action, x, y)):
+    def draw_feature(self, widget, (action, x, y), selected):
         "Draw specified icon on the map."
         rect = self.box((action, x, y))
         self.log("Drawing action=%s, dest=%s" % (action, rect))
-        self.pixmap.draw_pixbuf(self.default_gc,
-                                self.action_dictionary[action].icon,
-                                0, 0, *rect)
+        if selected:
+            icon = self.selected_dictionary[action].icon
+        else:
+            icon = self.unselected_dictionary[action].icon
+        self.pixmap.draw_pixbuf(self.default_gc, icon, 0, 0, *rect)
         widget.queue_draw_area(*rect)
 
     def redraw(self, widget, delay=0):
         "Redraw the map and tracks."
         self.refresh_map()
-        for item in self.journey.track:
-            self.draw_feature(widget, item)
-            if delay:
-                time.sleep(delay)
-                self.expose_event(widget)
-                gtk.main_iteration(False)
+        # Draw all unselected tracks before the selected one,
+        # so any icons coinciding will be drawn in the right order.
+        for selected in (False, True):
+            for (id, track) in self.journey.tracks.items():
+                if (id == self.journey.selected_id) == selected:
+                    for item in self.journey.tracks[id]:
+                        self.draw_feature(widget, item, selected)
+                        if delay:
+                            time.sleep(delay)
+                            self.expose_event(widget)
+                            gtk.main_iteration(False)
 
     def configure_event(self, widget, event):
         "Create a new backing pixmap of the appropriate size."
@@ -519,7 +567,7 @@ class TrackEditor:
                 return
             # Actual drawing and mutation of the journey track happens here
             if not self.selected and self.action != "DELETE":
-                self.draw_feature(widget, (self.action, x, y))
+                self.draw_feature(widget, (self.action, x, y), True)
                 self.journey.insert((self.action, x, y))
             elif self.selected != None and self.action == "DELETE":
                 (action, x, y) = self.journey.track[self.selected]
@@ -544,14 +592,11 @@ class TrackEditor:
                (action, lx, ly) = self.journey.track[self.selected]
                self.erase_feature(widget, (action, lx, ly))
                self.journey.track[self.selected] = (action, x, y)
+               self.jouney.modified = True
                self.draw_feature(widget, (action, x, y))
                self.log("Track is %s" % self.journey)
         return True
 
-    #
-    # These two functions implement a civilized quit confirmation that
-    # prompts you if you have unsaved changes 
-    #
     def quit(self, w):
         if self.journey.has_unsaved_changes():
             self.quit_check = gtk.Dialog(title="Really quit?",
