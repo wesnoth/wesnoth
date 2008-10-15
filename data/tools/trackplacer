@@ -229,6 +229,8 @@ class ModalFileSelector:
         self.filew.cancel_button.connect("clicked", self.selection_canceled)
         if self.default:
             self.filew.set_filename(self.default)
+        self.filew.hide_fileop_buttons()
+        self.filew.complete(".cfg")
         self.filew.run()
 
     def selection_canceled(self, widget):
@@ -604,6 +606,8 @@ class TrackEditor:
         else:
             w = ModalFileSelector(default=self.last_read,
                                   legend="Save track to file")
+            if not w.path:
+                return
             if not w.path.endswith(".cfg"):
                 raise IOException("File must have a .cfg extension.", w.path)
             if w.path != self.last_read and os.path.exists(w.path):
