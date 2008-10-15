@@ -30,8 +30,8 @@ BOOST_AUTO_TEST_CASE( test_move )
 
 	scenario.play();
 
-	// Remember that gamemap::location() handles automaticaly transition to 1 based from 0 based locations
-	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), gamemap::location(14,4));
+	// Remember that map_location() handles automaticaly transition to 1 based from 0 based locations
+	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), map_location(14,4));
 }
 
 BOOST_AUTO_TEST_CASE( test_move_teleport_bug )
@@ -42,9 +42,9 @@ BOOST_AUTO_TEST_CASE( test_move_teleport_bug )
 
 	scenario.play();
 
-	// Remember that gamemap::location() handles automaticaly transition to 1 based from 0 based locations
+	// Remember that map_location() handles automaticaly transition to 1 based from 0 based locations
 	// we should land to same place as previus test as 19,7 is 2 moves to same direction
-	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), gamemap::location(14,4));
+	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), map_location(14,4));
 }
 
 

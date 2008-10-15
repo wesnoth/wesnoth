@@ -40,12 +40,12 @@ public:
 	terrain_filter& operator=(const terrain_filter &other);
 
 	//match: returns true if and only if the given location matches this filter
-	bool match(const gamemap::location& loc);
-	virtual bool operator()(const gamemap::location& loc) { return this->match(loc); }
+	bool match(const map_location& loc);
+	virtual bool operator()(const map_location& loc) { return this->match(loc); }
 
 	//get_locations: gets all locations on the map that match this filter
 	// @param locs - out parameter containing the results
-	void get_locations(std::set<gamemap::location>& locs);
+	void get_locations(std::set<map_location>& locs);
 
 	//restrict: limits the allowed radius size and also limits nesting
 	// The purpose to limit the time spent for WML handling
@@ -56,7 +56,7 @@ public:
 	void flatten(const bool flat_tod=true) { flat_ = flat_tod; }
 
 private:
-	bool match_internal(const gamemap::location& loc, const bool ignore_xy);
+	bool match_internal(const map_location& loc, const bool ignore_xy);
 
 	const vconfig& cfg_; //config contains WML for a Standard Location Filter
 	const gamemap& map_;
@@ -80,10 +80,10 @@ private:
 		t_translation::t_match *parsed_terrain;
 
 		//adjacent_matches: optimize handling of [filter_adjacent_location] for get_locations()
-		std::vector< std::set<gamemap::location> > *adjacent_matches;
+		std::vector< std::set<map_location> > *adjacent_matches;
 
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
-		std::vector< std::pair<terrain_filter, std::map<gamemap::location,bool> > > adjacent_match_cache;
+		std::vector< std::pair<terrain_filter, std::map<map_location,bool> > > adjacent_match_cache;
 	};
 
 	terrain_filter_cache cache_;

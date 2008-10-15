@@ -42,7 +42,7 @@ class unit_type_data;
 
 #define RECRUIT_POS -2
 
-bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc);
+bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location loc);
 
 struct end_level_exception;
 
@@ -61,7 +61,7 @@ struct end_level_exception;
  * On success, the return string is empty.
  */
 std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
-		unit u, gamemap::location& recruit_location,const bool is_recall,
+		unit u, map_location& recruit_location,const bool is_recall,
 		const bool show=false,const bool need_castle=true,
 		const bool full_movement=false,const bool wml_triggered=false);
 
@@ -103,9 +103,9 @@ public:
 
 		std::string plague_type; /**< The plague type used by the attack, if any. */
 
-		unit_stats(const unit &u, const gamemap::location& u_loc,
+		unit_stats(const unit &u, const map_location& u_loc,
 				   int u_attack_num, bool attacking,
-				   const unit &opp, const gamemap::location& opp_loc,
+				   const unit &opp, const map_location& opp_loc,
 				   const attack_type *opp_weapon,
 				   const unit_map& units,
 				   const std::vector<team>& teams,
@@ -124,7 +124,7 @@ public:
 	 */
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 				   const gamestatus& status,
-				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+				   const map_location& attacker_loc, const map_location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double aggression = 0.0, const combatant *prev_def = NULL, const unit* attacker_ptr=NULL);
 
 	/** Used by the AI which caches unit_stats */
@@ -156,13 +156,13 @@ private:
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
 								const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 								const gamestatus& status,
-								const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+								const map_location& attacker_loc, const map_location& defender_loc,
 								double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status,
-							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc, const combatant *prev_def);
+							   const map_location& attacker_loc, const map_location& defender_loc, const combatant *prev_def);
 
 	/** Statistics of the units. */
 	unit_stats *attacker_stats_, *defender_stats_;
@@ -176,8 +176,8 @@ class attack {
 	public:
 	    attack(game_display& gui, const gamemap& map,
             std::vector<team>& teams,
-            gamemap::location attacker,
-            gamemap::location defender,
+            map_location attacker,
+            map_location defender,
             int attack_with,
             int defend_with,
             unit_map& units,
@@ -191,8 +191,8 @@ class attack {
 		game_display& gui_;
 		const gamemap& map_;
 		std::vector<team>& teams_;
-		gamemap::location attacker_;
-		gamemap::location defender_;
+		map_location attacker_;
+		map_location defender_;
 		int attack_with_;
 		int defend_with_;
 		unit_map& units_;
@@ -220,14 +220,14 @@ class attack {
  * Given the location of a village, will return the 0-based index
  * of the team that currently owns it, and -1 if it is unowned.
  */
-int village_owner(const gamemap::location& loc, const std::vector<team>& teams);
+int village_owner(const map_location& loc, const std::vector<team>& teams);
 
 /**
  * Makes it so the village at the given location
  * is owned by the given 0-based team number.
  * Returns true if getting the village triggered a mutating event.
  */
-bool get_village(const gamemap::location& loc, game_display& disp,
+bool get_village(const map_location& loc, game_display& disp,
                  std::vector<team>& teams, size_t team_num,
                  const unit_map& units, int *time_bonus = NULL);
 
@@ -260,7 +260,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
  * (with traits and items retained).
  */
 unit get_advanced_unit(unit_map& units,
-                  const gamemap::location& loc, const std::string& advance_to);
+                  const map_location& loc, const std::string& advance_to);
 
 /**
  * Function which will advance the unit at loc to 'advance_to'.
@@ -269,17 +269,17 @@ unit get_advanced_unit(unit_map& units,
  * that we're going to delete, since deletion would invalidate the reference.
  */
 void advance_unit(unit_map& units,
-                  gamemap::location loc, const std::string& advance_to);
+                  map_location loc, const std::string& advance_to);
 
 /**
  * function which tests if the unit at loc is currently affected by leadership.
  * (i.e. has a higher-level 'leadership' unit next to it).
  * If it does, then the location of the leader unit will be returned,
- * Otherwise gamemap::location::null_location will be returned.
+ * Otherwise map_location::null_location will be returned.
  * If 'bonus' is not NULL, the % bonus will be stored in it.
  */
-gamemap::location under_leadership(const unit_map& units,
-                                   const gamemap::location& loc, int* bonus=NULL);
+map_location under_leadership(const unit_map& units,
+                                   const map_location& loc, int* bonus=NULL);
 
 /**
  * Checks to see if a side has won, and will throw
@@ -295,7 +295,7 @@ void check_victory(unit_map& units, std::vector<team>& teams, display& disp);
  */
 time_of_day timeofday_at(const gamestatus& status,
                               const unit_map& units,
-                              const gamemap::location& loc,
+                              const map_location& loc,
 			      const gamemap& map);
 
 /**
@@ -304,7 +304,7 @@ time_of_day timeofday_at(const gamestatus& status,
  */
 int combat_modifier(const gamestatus& status,
 			const unit_map& units,
-			const gamemap::location& loc,
+			const map_location& loc,
 			unit_type::ALIGNMENT alignment,
 			bool is_fearless,
 			const gamemap& map);
@@ -312,7 +312,7 @@ int combat_modifier(const gamestatus& status,
 /** Records information to be able to undo a movement. */
 struct undo_action {
 	undo_action(const unit& u,
-		const std::vector<gamemap::location>& rt,
+		const std::vector<map_location>& rt,
 		int sm, int timebonus = 0, int orig = -1) :
 			route(rt),
 			starting_moves(sm),
@@ -323,7 +323,7 @@ struct undo_action {
 			countdown_time_bonus(timebonus)
 			{}
 
-	undo_action(const unit& u, const gamemap::location& loc, const int pos) :
+	undo_action(const unit& u, const map_location& loc, const int pos) :
 		route(),
 		starting_moves(),
 		original_village_owner(),
@@ -333,10 +333,10 @@ struct undo_action {
 		countdown_time_bonus(1)
 		{}
 
-	std::vector<gamemap::location> route;
+	std::vector<map_location> route;
 	int starting_moves;
 	int original_village_owner;
-	gamemap::location recall_loc;
+	map_location recall_loc;
 	int recall_pos; // set to RECRUIT_POS for an undo-able recruit
 	unit affected_unit;
 	int countdown_time_bonus;
@@ -356,9 +356,9 @@ typedef std::deque<undo_action> undo_list;
 size_t move_unit(game_display* disp,
 				const gamemap& map,
 				unit_map& units, std::vector<team>& teams,
-				std::vector<gamemap::location> steps,
+				std::vector<map_location> steps,
 				replay* move_recorder, undo_list* undos,
-				gamemap::location *next_unit = NULL,
+				map_location *next_unit = NULL,
 				bool continue_move = false, bool should_clear_shroud=true);
 
 /** Function which recalculates the fog. */
@@ -385,7 +385,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
  * Will return true iff the unit at 'loc' has any possible moves
  * it can do (including attacking etc).
  */
-bool unit_can_move(const gamemap::location& loc, const unit_map& units,
+bool unit_can_move(const map_location& loc, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams);
 
 
@@ -407,8 +407,8 @@ namespace victory_conditions {
  * an external check should be made to make sure the opposite unit
  * isn't also the attacker.
  */
-bool backstab_check(const gamemap::location& attacker_loc,
-	const gamemap::location& defender_loc,
+bool backstab_check(const map_location& attacker_loc,
+	const map_location& defender_loc,
 	const unit_map& units, const std::vector<team>& teams);
 
 #endif

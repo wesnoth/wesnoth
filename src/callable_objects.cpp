@@ -22,7 +22,7 @@ variant location_callable::get_value(const std::string& key) const
 	} else if(key == "y") {
 		return variant(loc_.y+1);
 	} else if(key == "adjacent_locs") {
-		gamemap::location adj[6];
+		map_location adj[6];
 		get_adjacent_tiles(loc_, adj);
 
 		std::vector<variant> v;
@@ -51,7 +51,7 @@ int location_callable::do_compare(const game_logic::formula_callable* callable) 
 		return formula_callable::do_compare(callable);
 	}
 
-	const gamemap::location& other_loc = loc_callable->loc();
+	const map_location& other_loc = loc_callable->loc();
 	if(other_loc.x != loc_.x) {
 		return loc_.x - other_loc.x;
 	}

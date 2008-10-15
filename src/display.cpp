@@ -199,11 +199,11 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 }
 
 // This function use the screen as reference
-const gamemap::location display::hex_clicked_on(int xclick, int yclick) const
+const map_location display::hex_clicked_on(int xclick, int yclick) const
 {
 	const SDL_Rect& rect = map_area();
 	if(point_in_rect(xclick,yclick,rect) == false) {
-		return gamemap::location();
+		return map_location();
 	}
 
 	xclick -= rect.x;
@@ -214,7 +214,7 @@ const gamemap::location display::hex_clicked_on(int xclick, int yclick) const
 
 
 // This function use the rect of map_area as reference
-const gamemap::location display::pixel_position_to_hex(int x, int y) const
+const map_location display::pixel_position_to_hex(int x, int y) const
 {
 	// adjust for the border
 	x -= static_cast<int>(theme_.border().size * hex_width());
@@ -263,7 +263,7 @@ const gamemap::location display::pixel_position_to_hex(int x, int y) const
 		}
 	}
 
-	return gamemap::location(x_base + x_modifier - offset, y_base + y_modifier - offset);
+	return map_location(x_base + x_modifier - offset, y_base + y_modifier - offset);
 
 	
 	// NOTE: This code to get nearest_hex and second_nearest_hex
@@ -280,59 +280,59 @@ const gamemap::location display::pixel_position_to_hex(int x, int y) const
 		const int y_offset = y - centery;
 		if(y_offset > 0) {
 			if(x_offset > y_offset/2) {
-				*nearest_hex = gamemap::location::SOUTH_EAST;
+				*nearest_hex = map_location::SOUTH_EAST;
 				if(second_nearest_hex != NULL) {
 					if(x_offset/2 > y_offset) {
-						*second_nearest_hex = gamemap::location::NORTH_EAST;
+						*second_nearest_hex = map_location::NORTH_EAST;
 					} else {
-						*second_nearest_hex = gamemap::location::SOUTH;
+						*second_nearest_hex = map_location::SOUTH;
 					}
 				}
 			} else if(-x_offset > y_offset/2) {
-				*nearest_hex = gamemap::location::SOUTH_WEST;
+				*nearest_hex = map_location::SOUTH_WEST;
 				if(second_nearest_hex != NULL) {
 					if(-x_offset/2 > y_offset) {
-						*second_nearest_hex = gamemap::location::NORTH_WEST;
+						*second_nearest_hex = map_location::NORTH_WEST;
 					} else {
-						*second_nearest_hex = gamemap::location::SOUTH;
+						*second_nearest_hex = map_location::SOUTH;
 					}
 				}
 			} else {
-				*nearest_hex = gamemap::location::SOUTH;
+				*nearest_hex = map_location::SOUTH;
 				if(second_nearest_hex != NULL) {
 					if(x_offset > 0) {
-						*second_nearest_hex = gamemap::location::SOUTH_EAST;
+						*second_nearest_hex = map_location::SOUTH_EAST;
 					} else {
-						*second_nearest_hex = gamemap::location::SOUTH_WEST;
+						*second_nearest_hex = map_location::SOUTH_WEST;
 					}
 				}
 			}
 		} else { // y_offset <= 0
 			if(x_offset > -y_offset/2) {
-				*nearest_hex = gamemap::location::NORTH_EAST;
+				*nearest_hex = map_location::NORTH_EAST;
 				if(second_nearest_hex != NULL) {
 					if(x_offset/2 > -y_offset) {
-						*second_nearest_hex = gamemap::location::SOUTH_EAST;
+						*second_nearest_hex = map_location::SOUTH_EAST;
 					} else {
-						*second_nearest_hex = gamemap::location::NORTH;
+						*second_nearest_hex = map_location::NORTH;
 					}
 				}
 			} else if(-x_offset > -y_offset/2) {
-				*nearest_hex = gamemap::location::NORTH_WEST;
+				*nearest_hex = map_location::NORTH_WEST;
 				if(second_nearest_hex != NULL) {
 					if(-x_offset/2 > -y_offset) {
-						*second_nearest_hex = gamemap::location::SOUTH_WEST;
+						*second_nearest_hex = map_location::SOUTH_WEST;
 					} else {
-						*second_nearest_hex = gamemap::location::NORTH;
+						*second_nearest_hex = map_location::NORTH;
 					}
 				}
 			} else {
-				*nearest_hex = gamemap::location::NORTH;
+				*nearest_hex = map_location::NORTH;
 				if(second_nearest_hex != NULL) {
 					if(x_offset > 0) {
-						*second_nearest_hex = gamemap::location::NORTH_EAST;
+						*second_nearest_hex = map_location::NORTH_EAST;
 					} else {
-						*second_nearest_hex = gamemap::location::NORTH_WEST;
+						*second_nearest_hex = map_location::NORTH_WEST;
 					}
 				}
 			}
@@ -354,11 +354,11 @@ void display::rect_of_hexes::iterator::operator++()
 // begin is top left, and end is after bottom right
 display::rect_of_hexes::iterator display::rect_of_hexes::begin()
 {
-	return iterator(gamemap::location(left, top[left & 1]), *this);
+	return iterator(map_location(left, top[left & 1]), *this);
 }
 display::rect_of_hexes::iterator display::rect_of_hexes::end()
 {
-	return iterator(gamemap::location(right+1, top[(right+1) & 1]), *this);
+	return iterator(map_location(right+1, top[(right+1) & 1]), *this);
 }
 
 const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
@@ -394,23 +394,23 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	return res;
 }
 
-int display::get_location_x(const gamemap::location& loc) const
+int display::get_location_x(const map_location& loc) const
 {
 	return static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - xpos_);
 }
 
-int display::get_location_y(const gamemap::location& loc) const
+int display::get_location_y(const map_location& loc) const
 {
 	return static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0));
 }
 
-gamemap::location display::minimap_location_on(int x, int y)
+map_location display::minimap_location_on(int x, int y)
 {
 	//TODO: don't return location for this,
 	// instead directly scroll to the clicked pixel position
 
 	if (!point_in_rect(x, y, minimap_area())) {
-		return gamemap::location();
+		return map_location();
 	}
 
 	// we transfom the coordinates from minimap to the full map image
@@ -420,7 +420,7 @@ gamemap::location display::minimap_location_on(int x, int y)
 	int px = (x - minimap_location_.x) * map_.w()*hex_width() / minimap_location_.w;
 	int py = (y - minimap_location_.y) * map_.h()*hex_size() / minimap_location_.h;
 
-	gamemap::location loc = pixel_position_to_hex(px, py);
+	map_location loc = pixel_position_to_hex(px, py);
 	if (loc.x < 0)
 		loc.x = 0;
 	else if (loc.x >= map_.w())
@@ -543,11 +543,11 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
-std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
+std::vector<std::string> display::get_fog_shroud_graphics(const map_location& loc)
 {
 	std::vector<std::string> res;
 
-	gamemap::location adjacent[6];
+	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	t_translation::t_terrain tiles[6];
 
@@ -618,7 +618,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	return res;
 }
 
-std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
+std::vector<surface> display::get_terrain_images(const map_location &loc,
 						     const std::string timeid,
 		image::TYPE image_type,
 		ADJACENT_TERRAIN_TYPE terrain_type)
@@ -947,13 +947,13 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	}
 }
 
-void display::draw_text_in_hex(const gamemap::location& loc, 
+void display::draw_text_in_hex(const map_location& loc, 
 		const tdrawing_layer layer, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
 
-	const int drawing_order = gamemap::get_drawing_order(loc);
+	const int drawing_order = loc.get_drawing_order();
 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor()
 #ifdef USE_TINY_GUI
@@ -978,10 +978,10 @@ void display::draw_text_in_hex(const gamemap::location& loc,
 	drawing_buffer_add(layer, drawing_order, tblit(x, y, text_surf));
 }
 
-void display::clear_hex_overlay(const gamemap::location& loc)
+void display::clear_hex_overlay(const map_location& loc)
 {
 	if(! hex_overlay_.empty()) {
-		std::map<gamemap::location, surface>::iterator itor = hex_overlay_.find(loc);
+		std::map<map_location, surface>::iterator itor = hex_overlay_.find(loc);
 		if(itor != hex_overlay_.end()) {
 			hex_overlay_.erase(itor);
 		}
@@ -1052,14 +1052,14 @@ void display::render_unit_image(int x, int y, const bool /*fake_unit*/,
 
 }
 
-void display::select_hex(gamemap::location hex)
+void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
 	selectedHex_ = hex;
 	invalidate(selectedHex_);
 }
 
-void display::highlight_hex(gamemap::location hex)
+void display::highlight_hex(map_location hex)
 {
 	invalidate(mouseoverHex_);
 	mouseoverHex_ = hex;
@@ -1200,7 +1200,7 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-void display::add_highlighted_loc(const gamemap::location &hex)
+void display::add_highlighted_loc(const map_location &hex)
 {
 	// Only invalidate and insert if this is a new addition,
 	// for efficiency.
@@ -1216,9 +1216,9 @@ void display::clear_highlighted_locs()
 	highlighted_locations_.clear();
 }
 
-void display::remove_highlighted_loc(const gamemap::location &hex)
+void display::remove_highlighted_loc(const map_location &hex)
 {
-	std::set<gamemap::location>::iterator it = highlighted_locations_.find(hex);
+	std::set<map_location>::iterator it = highlighted_locations_.find(hex);
 	// Only invalidate and remove if the hex was found, for efficiency.
 	if (it != highlighted_locations_.end()) {
 		highlighted_locations_.erase(it);
@@ -1238,7 +1238,7 @@ void display::announce(const std::string message, const SDL_Color& colour)
 				 font::CENTER_ALIGN);
 }
 
-void display::draw_border(const gamemap::location& loc, const int xpos, const int ypos)
+void display::draw_border(const map_location& loc, const int xpos, const int ypos)
 {
 	/**
 	 * at the moment the border must be between 0.0 and 0.5
@@ -1246,7 +1246,7 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 	 * This way this code doesn't need modifications for other border sizes.
 	 */
 
-	const int drawing_order = gamemap::get_drawing_order(loc);
+	const int drawing_order = loc.get_drawing_order();
 
 	// First handle the corners :
 	if(loc.x == -1 && loc.y == -1) { // top left corner
@@ -1445,7 +1445,7 @@ void display::set_default_zoom()
 	}
 }
 
-bool display::tile_on_screen(const gamemap::location& loc)
+bool display::tile_on_screen(const map_location& loc)
 {
 	int x = get_location_x(loc);
 	int y = get_location_y(loc);
@@ -1533,29 +1533,29 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	}
 }
 
-void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
+void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
 {
 	if(map_.on_board(loc) == false) {
 		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
 		return;
 	}
 
-	std::vector<gamemap::location> locs;
+	std::vector<map_location> locs;
 	locs.push_back(loc);
 	scroll_to_tiles(locs, scroll_type, check_fogged);
 }
 
-void display::scroll_to_tiles(gamemap::location loc1, gamemap::location loc2,
+void display::scroll_to_tiles(map_location loc1, map_location loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged,
 			      double add_spacing)
 {
-	std::vector<gamemap::location> locs;
+	std::vector<map_location> locs;
 	locs.push_back(loc1);
 	locs.push_back(loc2);
 	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing);
 }
 
-void display::scroll_to_tiles(const std::vector<gamemap::location>& locs,
+void display::scroll_to_tiles(const std::vector<map_location>& locs,
                               SCROLL_TYPE scroll_type, bool check_fogged,
 			      bool only_if_possible, double add_spacing)
 {
@@ -1567,7 +1567,7 @@ void display::scroll_to_tiles(const std::vector<gamemap::location>& locs,
 	bool valid = false;
 	bool first_tile_on_screen = false;
 
-	for(std::vector<gamemap::location>::const_iterator itor = locs.begin(); itor != locs.end() ; itor++) {
+	for(std::vector<map_location>::const_iterator itor = locs.begin(); itor != locs.end() ; itor++) {
 		if(map_.on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
 
@@ -1847,7 +1847,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, clip_rect);
-	foreach (gamemap::location loc, invalidated_) {
+	foreach (map_location loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 		const bool on_map = map_.on_board(loc);
@@ -1864,10 +1864,10 @@ void display::draw_invalidated() {
 	}
 }
 
-void display::draw_hex(const gamemap::location& loc) {
+void display::draw_hex(const map_location& loc) {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	int drawing_order = gamemap::get_drawing_order(loc);
+	int drawing_order = loc.get_drawing_order();
 	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = map_.on_board(loc);	
 	const bool off_map_tile = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
@@ -1893,7 +1893,7 @@ void display::draw_hex(const gamemap::location& loc) {
 
 	// Add the top layer overlay surfaces
 	if(!hex_overlay_.empty()) {
-		std::map<gamemap::location, surface>::const_iterator itor = hex_overlay_.find(loc);
+		std::map<map_location, surface>::const_iterator itor = hex_overlay_.find(loc);
 		if(itor != hex_overlay_.end())
 			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, itor->second));
 	}
@@ -1955,7 +1955,7 @@ void display::draw_hex(const gamemap::location& loc) {
 	}		
 }
 
-image::TYPE display::get_image_type(const gamemap::location& /*loc*/) {
+image::TYPE display::get_image_type(const map_location& /*loc*/) {
 	return image::SCALED_TO_HEX;
 }
 
@@ -2173,7 +2173,7 @@ void display::invalidate_all()
 	update_rect(map_area());
 }
 
-bool display::invalidate(const gamemap::location& loc)
+bool display::invalidate(const map_location& loc)
 {
 	if(invalidateAll_)
 		return false;
@@ -2181,12 +2181,12 @@ bool display::invalidate(const gamemap::location& loc)
 	return invalidated_.insert(loc).second;
 }
 
-bool display::invalidate(const std::set<gamemap::location>& locs)
+bool display::invalidate(const std::set<map_location>& locs)
 {
 	if(invalidateAll_)
 		return false;
 	bool ret = false;
-	foreach (const gamemap::location& loc, locs) {
+	foreach (const map_location& loc, locs) {
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;

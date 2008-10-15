@@ -158,12 +158,12 @@ void gamestatus::add_time_area(const config& cfg)
 	area.id   = cfg["id"];
 	area.xsrc = cfg["x"];
 	area.ysrc = cfg["y"];
-	std::vector<gamemap::location> const& locs = parse_location_range(area.xsrc, area.ysrc);
+	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
 	time_of_day::parse_times(cfg, area.times);
 }
 
-void gamestatus::add_time_area(const std::string& id, const std::set<gamemap::location>& locs,
+void gamestatus::add_time_area(const std::string& id, const std::set<map_location>& locs,
                                const config& time_cfg)
 {
 	areas_.push_back(area_time_of_day());
@@ -277,7 +277,7 @@ time_of_day gamestatus::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn()-1);
 }
 
-time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
+time_of_day gamestatus::get_time_of_day(int illuminated, const map_location& loc, int n_turn) const
 {
 	time_of_day res = get_time_of_day_turn(n_turn);
 
@@ -300,7 +300,7 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 	return res;
 }
 
-time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc) const
+time_of_day gamestatus::get_time_of_day(int illuminated, const map_location& loc) const
 {
 	return get_time_of_day(illuminated,loc,turn());
 }
@@ -459,7 +459,7 @@ game_state::game_state()  :
 		replay_data(),
 		starting_pos(),
 		snapshot(),
-		last_selected(gamemap::location::null_location),
+		last_selected(map_location::null_location),
 		rng_(),
 		variables(),
 		temporaries(),
@@ -486,7 +486,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		replay_data(),
 		starting_pos(),
 		snapshot(),
-		last_selected(gamemap::location::null_location),
+		last_selected(map_location::null_location),
 		rng_(cfg),
 		variables(),
 		temporaries(),

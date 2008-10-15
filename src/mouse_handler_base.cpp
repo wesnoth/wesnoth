@@ -84,7 +84,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 		// thus, we need to check if the LMB/MMB is still down
 		minimap_scrolling_ = ((SDL_GetMouseState(NULL,NULL) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
 		if(minimap_scrolling_) {
-			const gamemap::location& loc = gui().minimap_location_on(x,y);
+			const map_location& loc = gui().minimap_location_on(x,y);
 			if(loc.valid()) {
 				if(loc != last_hex_) {
 					last_hex_ = loc;
@@ -151,7 +151,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	} else if (is_middle_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			// clicked on a hex on the minimap? then initiate minimap scrolling
-			const gamemap::location& loc = gui().minimap_location_on(event.x,event.y);
+			const map_location& loc = gui().minimap_location_on(event.x,event.y);
 			minimap_scrolling_ = false;
 			if(loc.valid()) {
 				minimap_scrolling_ = true;
@@ -216,7 +216,7 @@ bool mouse_handler_base::right_click_show_menu(int /*x*/, int /*y*/, const bool 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 {
 	// clicked on a hex on the minimap? then initiate minimap scrolling
-	const gamemap::location& loc = gui().minimap_location_on(x, y);
+	const map_location& loc = gui().minimap_location_on(x, y);
 	minimap_scrolling_ = false;
 	if(loc.valid()) {
 		minimap_scrolling_ = true;

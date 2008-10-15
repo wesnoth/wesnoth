@@ -34,14 +34,14 @@ See the COPYING file for more details.
 
 #define LOG_PF LOG_STREAM(info, engine)
 
-static gamemap::location find_vacant(const gamemap& map,
+static map_location find_vacant(const gamemap& map,
 		const unit_map& units,
-		const gamemap::location& loc, int depth,
+		const map_location& loc, int depth,
 		VACANT_TILE_TYPE vacancy,
-		std::set<gamemap::location>& touched)
+		std::set<map_location>& touched)
 	{
 		if(touched.count(loc))
-			return gamemap::location();
+			return map_location();
 
 		touched.insert(loc);
 
@@ -49,46 +49,46 @@ static gamemap::location find_vacant(const gamemap& map,
 		    (vacancy == VACANT_ANY || map.is_castle(loc))) {
 			return loc;
 		} else if(depth == 0) {
-			return gamemap::location();
+			return map_location();
 		} else {
-			gamemap::location adj[6];
+			map_location adj[6];
 			get_adjacent_tiles(loc,adj);
 			for(int i = 0; i != 6; ++i) {
 				if(!map.on_board(adj[i]) || (vacancy == VACANT_CASTLE && !map.is_castle(adj[i])))
 					continue;
 
-				const gamemap::location res =
+				const map_location res =
 					find_vacant(map, units, adj[i], depth - 1, vacancy, touched);
 
 				if (map.on_board(res))
 					return res;
 			}
 
-			return gamemap::location();
+			return map_location();
 		}
 	}
 
-gamemap::location find_vacant_tile(const gamemap& map,
+map_location find_vacant_tile(const gamemap& map,
 								   const unit_map& units,
-								   const gamemap::location& loc,
+								   const map_location& loc,
 								   VACANT_TILE_TYPE vacancy)
 {
 	for(int i = 1; i != 50; ++i) {
-		std::set<gamemap::location> touch;
-		const gamemap::location res = find_vacant(map,units,loc,i,vacancy,touch);
+		std::set<map_location> touch;
+		const map_location res = find_vacant(map,units,loc,i,vacancy,touch);
 		if(map.on_board(res))
 			return res;
 	}
 
-	return gamemap::location();
+	return map_location();
 }
 
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams,
-               gamemap::location const &loc, team const &viewing_team, unsigned int side, bool see_all)
+               map_location const &loc, team const &viewing_team, unsigned int side, bool see_all)
 {
-	gamemap::location locs[6];
+	map_location locs[6];
 	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
@@ -105,7 +105,7 @@ bool enemy_zoc(gamemap const &map,
 }
 
 static void find_routes(const gamemap& map, const unit_map& units,
-		const unit& u, const gamemap::location& loc,
+		const unit& u, const map_location& loc,
 		int move_left, paths::routes_map& routes,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
@@ -115,7 +115,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	team const &current_team = teams[u.side()-1];
 
 	// Find adjacent tiles
-	std::vector<gamemap::location> locs(6);
+	std::vector<map_location> locs(6);
 	get_adjacent_tiles(loc,&locs[0]);
 
 	// Check for teleporting units -- we must be on a vacant village
@@ -127,8 +127,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 		// If we are on a village, search all known empty friendly villages
 		// that we can teleport to
-		const std::set<gamemap::location>& villages = current_team.villages();
-		for(std::set<gamemap::location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
+		const std::set<map_location>& villages = current_team.villages();
+		for(std::set<map_location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
 			if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(*t))
 					&& (ignore_units || find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end())) {
 				locs.push_back(*t);
@@ -137,8 +137,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	}
 
 	// Iterate over all adjacent tiles
-	for(std::vector<gamemap::location>::const_iterator i=locs.begin(); i != locs.end(); ++i) {
-		const gamemap::location& currentloc = *i;
+	for(std::vector<map_location>::const_iterator i=locs.begin(); i != locs.end(); ++i) {
+		const map_location& currentloc = *i;
 
 		if (!map.on_board(currentloc))
 			continue;
@@ -203,7 +203,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 }
 
 paths::paths(gamemap const &map, unit_map const &units, 
-		gamemap::location const &loc, std::vector<team> const &teams, 
+		map_location const &loc, std::vector<team> const &teams, 
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team, 
 		int additional_turns, bool see_all, bool ignore_units) :
 	routes()
@@ -236,7 +236,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 	const team& unit_team = teams[u.side()-1];
 	bool zoc = false;
 
-	for (std::vector<gamemap::location>::const_iterator i = rt.steps.begin();
+	for (std::vector<map_location>::const_iterator i = rt.steps.begin();
 		i !=rt.steps.end(); i++) {
 		bool last_step = (i+1 == rt.steps.end());
 		
@@ -294,7 +294,7 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 {
 }
 
-double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double so_far) const
+double shortest_path_calculator::cost(const map_location& /*src*/,const map_location& loc, const double so_far) const
 {
 	assert(map_.on_board(loc));
 
@@ -374,7 +374,7 @@ emergency_path_calculator::emergency_path_calculator(const unit& u, const gamema
 {
 }
 
-double emergency_path_calculator::cost(const gamemap::location&,const gamemap::location& loc, const double) const
+double emergency_path_calculator::cost(const map_location&,const map_location& loc, const double) const
 {
 	assert(map_.on_board(loc));
 

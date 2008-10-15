@@ -123,9 +123,9 @@ public:
 	void speak();
 	void whisper();
 	void shout();
-	void recruit(const bool browse, const unsigned int team_num, const gamemap::location& last_hex);
-	void repeat_recruit(const unsigned int team_num, const gamemap::location& last_hex);
-	void recall(const unsigned int team_num, const gamemap::location& last_hex);
+	void recruit(const bool browse, const unsigned int team_num, const map_location& last_hex);
+	void repeat_recruit(const unsigned int team_num, const map_location& last_hex);
+	void recall(const unsigned int team_num, const map_location& last_hex);
 	void undo(const unsigned int team_num);
 	void redo(const unsigned int team_num);
 	void show_enemy_moves(bool ignore_units, const unsigned int team_num);
@@ -155,7 +155,7 @@ public:
 
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
 	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
-	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target,
+	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
 		bool continue_move, const unsigned int team_num, mouse_handler& mousehandler);
 	void do_speak();
 	void do_search(const std::string& new_search);
@@ -175,7 +175,7 @@ private:
 	friend class console_handler;
 				
 	//void do_speak(const std::string& message, bool allies_only);
-	void do_recruit(const std::string& name, const unsigned int team_num, const gamemap::location& last_hex);
+	void do_recruit(const std::string& name, const unsigned int team_num, const map_location& last_hex);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
@@ -197,7 +197,7 @@ private:
 	undo_list& redo_stack_;
 	gui::floating_textbox textbox_info_;
 	std::string last_search_;
-	gamemap::location last_search_hit_;
+	map_location last_search_hit_;
 
 	std::string last_recruit_;
 };

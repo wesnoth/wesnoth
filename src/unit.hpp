@@ -45,10 +45,10 @@ public:
 
 	bool empty() const;
 
-	std::pair<int,gamemap::location> highest(const std::string& key, int def=0) const;
-	std::pair<int,gamemap::location> lowest(const std::string& key, int def=100) const;
+	std::pair<int,map_location> highest(const std::string& key, int def=0) const;
+	std::pair<int,map_location> lowest(const std::string& key, int def=100) const;
 
-	std::vector<std::pair<config*,gamemap::location> > cfgs;
+	std::vector<std::pair<config*,map_location> > cfgs;
 };
 
 
@@ -144,7 +144,7 @@ public:
 	void end_turn();
 	void new_level();
 	/** Called on every draw */
-	void refresh(const game_display& disp,const gamemap::location& loc) {
+	void refresh(const game_display& disp,const map_location& loc) {
 		if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {
 			set_standing( loc);
 			return;
@@ -170,7 +170,7 @@ public:
 	bool has_goto() const { return get_goto().valid(); }
 	bool emits_zoc() const { return emit_zoc_ && !incapacitated();}
 	/* cfg: standard unit filter */
-	bool matches_filter(const vconfig& cfg,const gamemap::location& loc,bool use_flat_tod=false) const;
+	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
 	void add_overlay(const std::string& overlay) { overlays_.push_back(overlay); }
 	void remove_overlay(const std::string& overlay) { overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end()); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
@@ -191,7 +191,7 @@ public:
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }
 
-	int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const { return resistance_against(attack,attacker,loc); }
+	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
 
 	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
 	const surface still_image(bool scaled = false) const;
@@ -199,27 +199,27 @@ public:
 	 * draw a unit, fake is used for temporary unit not in unit_map (so we can
 	 * skip functions assuming that)
 	 */
-	void redraw_unit(game_display& disp, const gamemap::location& loc, const bool fake = false);
+	void redraw_unit(game_display& disp, const map_location& loc, const bool fake = false);
 	/** Clear unit_halo_ and unit_anim_halo_ */
 	void clear_haloes();
 
 
-	void set_standing(const gamemap::location& loc, bool with_bars = true);
-	void set_idling(const game_display& disp,const gamemap::location& loc);
-	void set_selecting(const game_display& disp,const gamemap::location& loc);
+	void set_standing(const map_location& loc, bool with_bars = true);
+	void set_idling(const game_display& disp,const map_location& loc);
+	void set_selecting(const game_display& disp,const map_location& loc);
 	unit_animation* get_animation() {  return anim_;};
 	const unit_animation* get_animation() const {  return anim_;};
-	void set_facing(gamemap::location::DIRECTION dir);
-	gamemap::location::DIRECTION facing() const { return facing_; }
+	void set_facing(map_location::DIRECTION dir);
+	map_location::DIRECTION facing() const { return facing_; }
 
-	bool invalidate(const gamemap::location &loc);
+	bool invalidate(const map_location &loc);
 	const t_string& traits_description() const { return traits_description_; }
 	std::vector<std::string> get_traits_list() const;
 
 	int cost () const { return unit_value_; }
 
-	const gamemap::location& get_goto() const { return goto_; }
-	void set_goto(const gamemap::location& new_goto) { goto_ = new_goto; }
+	const map_location& get_goto() const { return goto_; }
+	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
 
 	int upkeep() const;
 	bool loyal() const {return cfg_["upkeep"]=="loyal"; }
@@ -231,8 +231,8 @@ public:
 	bool is_healthy() const { return is_healthy_; }
 	int movement_cost(const t_translation::t_terrain terrain) const;
 	int defense_modifier(t_translation::t_terrain terrain, int recurse_count=0) const;
-	int resistance_against(const std::string& damage_name,bool attacker,const gamemap::location& loc) const;
-	int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const
+	int resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const;
+	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
 		{return resistance_against(damage_type.type(), attacker, loc);};
 
 	//return resistances without any abililities applied
@@ -256,15 +256,15 @@ public:
 	const t_string& modification_description(const std::string& type) const;
 
 	bool move_interrupted() const { return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0; }
-	const gamemap::location& get_interrupted_move() const { return interrupted_move_; }
-	void set_interrupted_move(const gamemap::location& interrupted_move) { interrupted_move_ = interrupted_move; }
+	const map_location& get_interrupted_move() const { return interrupted_move_; }
+	void set_interrupted_move(const map_location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
 	/** States for animation. */
 	enum STATE {
 		STATE_STANDING,   /** anim must fit in a hex */
 		STATE_FORGET,     /** animation will be automaticaly replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
-	void start_animation(const int start_time , const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
+	void start_animation(const int start_time , const map_location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
 	const std::string& absolute_image() const { return cfg_["image"]; }
@@ -277,11 +277,11 @@ public:
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
 
-	const unit_animation* choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int damage=0,const unit_animation::hit_type hit_type = unit_animation::INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
+	const unit_animation* choose_animation(const game_display& disp, const map_location& loc,const std::string& event,const int damage=0,const unit_animation::hit_type hit_type = unit_animation::INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
-	bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
-	unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
-	std::vector<std::string> ability_tooltips(const gamemap::location& loc) const;
+	bool get_ability_bool(const std::string& ability, const map_location& loc) const;
+	unit_ability_list get_abilities(const std::string& ability, const map_location& loc) const;
+	std::vector<std::string> ability_tooltips(const map_location& loc) const;
 	std::vector<std::string> unit_ability_tooltips() const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
@@ -304,7 +304,7 @@ public:
 		{ return race_->generate_name(string_gender(cfg_["gender"]), rng); }
 
 	// Only see_all=true use caching
-	bool invisible(const gamemap::location& loc,
+	bool invisible(const map_location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
 
 	/** Mark this unit as clone so it can be insterted to unit_map */
@@ -333,14 +333,14 @@ public:
 
 private:
 
-	bool internal_matches_filter(const vconfig& cfg,const gamemap::location& loc,
+	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,
 		bool use_flat_tod) const;
 	/*
 	 * cfg: an ability WML structure
 	 */
-	bool ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
-	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
-	bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
+	bool ability_active(const std::string& ability,const config& cfg,const map_location& loc) const;
+	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc) const;
+	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const
 	{return resistance_filter_matches(cfg, attacker, damage_type.type()); };
@@ -404,11 +404,11 @@ private:
 	std::string role_;
 	std::string ai_special_;
 	std::vector<attack_type> attacks_;
-	gamemap::location::DIRECTION facing_;
+	map_location::DIRECTION facing_;
 
 	t_string traits_description_;
 	int unit_value_;
-	gamemap::location goto_, interrupted_move_;
+	map_location goto_, interrupted_move_;
 	bool flying_, is_fearless_, is_healthy_;
 
 	string_map modification_descriptions_;
@@ -429,13 +429,13 @@ private:
 
 	config modifications_;
 
-	friend void attack_type::set_specials_context(const gamemap::location& loc, const gamemap::location&, const unit& un, bool) const;
+	friend void attack_type::set_specials_context(const map_location& loc, const map_location&, const unit& un, bool) const;
 	const unit_map* units_;
 	const gamemap* map_;
 	const gamestatus* gamestatus_;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
-	mutable std::map<gamemap::location, bool> invisibility_cache_;
+	mutable std::map<map_location, bool> invisibility_cache_;
 
 	/**
 	 * Clears the cache.
@@ -473,12 +473,12 @@ int team_units(const unit_map& units, unsigned int team_num);
 int team_upkeep(const unit_map& units, unsigned int team_num);
 unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
-		const gamemap::location loc,
+		const map_location loc,
 		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team,
 		bool see_all=false);
 unit_map::const_iterator find_visible_unit(const unit_map& units,
-		const gamemap::location loc,
+		const map_location loc,
 		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team,
 		bool see_all=false);
@@ -509,13 +509,13 @@ team_data calculate_team_data(const class team& tm, int side, const unit_map& un
  */
 struct temporary_unit_placer
 {
-	temporary_unit_placer(unit_map& m, const gamemap::location& loc, unit& u);
+	temporary_unit_placer(unit_map& m, const map_location& loc, unit& u);
 	~temporary_unit_placer();
 
 private:
 	unit_map& m_;
-	const gamemap::location& loc_;
-	std::pair<gamemap::location,unit> *temp_;
+	const map_location& loc_;
+	std::pair<map_location,unit> *temp_;
 };
 
 /**

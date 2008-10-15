@@ -55,7 +55,7 @@ namespace dialogs
 
 void advance_unit(const gamemap& map,
                   unit_map& units,
-                  gamemap::location loc,
+                  map_location loc,
                   game_display& gui,
 		  bool random_choice,
 		  const bool add_replay_event)
@@ -151,7 +151,7 @@ void advance_unit(const gamemap& map,
 	}
 }
 
-bool animate_unit_advancement(unit_map& units, gamemap::location loc, game_display& gui, size_t choice)
+bool animate_unit_advancement(unit_map& units, map_location loc, game_display& gui, size_t choice)
 {
 	const events::command_disabler cmd_disabler;
 
@@ -188,7 +188,7 @@ bool animate_unit_advancement(unit_map& units, gamemap::location loc, game_displ
 
 		amla_unit.get_experience(-amla_unit.max_experience()); // subtract xp required
 		amla_unit.add_modification("advance",*mod_options[choice - options.size()]);
-		units.replace(new std::pair<gamemap::location,unit>(loc,amla_unit));
+		units.replace(new std::pair<map_location,unit>(loc,amla_unit));
 
 		LOG_NG << "firing post_advance event (AMLA)\n";
 		game_events::fire("post_advance",loc);
@@ -863,7 +863,7 @@ void unit_preview_pane::draw_contents()
 		for(std::vector<attack_type>::const_iterator at_it = det.attacks.begin();
 		    at_it != det.attacks.end(); ++at_it) {
 			// specials_context seems not needed here
-			//at_it->set_specials_context(gamemap::location(),u);
+			//at_it->set_specials_context(map_location(),u);
 
 			// see generate_report() in generate_report.cpp
 			text << "<245,230,193>" << at_it->name()

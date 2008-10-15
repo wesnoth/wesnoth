@@ -134,14 +134,14 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	return res_;
 }
 
-void cave_map_generator::build_chamber(gamemap::location loc, std::set<gamemap::location>& locs, size_t size, size_t jagged)
+void cave_map_generator::build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged)
 {
 	if(size == 0 || locs.count(loc) != 0 || !on_board(loc))
 		return;
 
 	locs.insert(loc);
 
-	gamemap::location adj[6];
+	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
 		if((rand() % 100) < (100l - static_cast<long>(jagged))) {
@@ -197,7 +197,7 @@ void cave_map_generator::generate_chambers()
 		}
 
 		chamber new_chamber;
-		new_chamber.center = gamemap::location(x,y);
+		new_chamber.center = map_location(x,y);
 		build_chamber(new_chamber.center,new_chamber.locs,chamber_size,jagged_edges);
 
 		new_chamber.items = (**i).child("items");
@@ -227,7 +227,7 @@ void cave_map_generator::generate_chambers()
 
 void cave_map_generator::place_chamber(const chamber& c)
 {
-	for(std::set<gamemap::location>::const_iterator i = c.locs.begin(); i != c.locs.end(); ++i) {
+	for(std::set<map_location>::const_iterator i = c.locs.begin(); i != c.locs.end(); ++i) {
 		set_terrain(*i,clear_);
 	}
 
@@ -258,7 +258,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		}
 		const std::string loc_var = cfg["store_location_as"];
 
-		std::set<gamemap::location>::const_iterator loc = c.locs.begin();
+		std::set<map_location>::const_iterator loc = c.locs.begin();
 		std::advance(loc,index);
 
 		char xbuf[50];
@@ -312,7 +312,7 @@ struct passage_path_calculator : cost_calculator
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 
-	virtual double cost(const gamemap::location& src,const gamemap::location& loc, const double so_far) const;
+	virtual double cost(const map_location& src,const map_location& loc, const double so_far) const;
 private:
 	const t_translation::t_map& map_;
 	t_translation::t_terrain wall_;
@@ -320,7 +320,7 @@ private:
 	size_t windiness_;
 };
 
-double passage_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double) const
+double passage_path_calculator::cost(const map_location& /*src*/,const map_location& loc, const double) const
 {
 	assert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
 	        !map_.empty() && size_t(loc.y) < map_.front().size());
@@ -356,16 +356,16 @@ void cave_map_generator::place_passage(const passage& p)
 
 	const size_t jagged = atoi(p.cfg["jagged"].c_str());
 
-	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
-		std::set<gamemap::location> locs;
+	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
+		std::set<map_location> locs;
 		build_chamber(*i,locs,width,jagged);
-		for(std::set<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+		for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 			set_terrain(*j,clear_);
 		}
 	}
 }
 
-void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_terrain t)
+void cave_map_generator::set_terrain(map_location loc, t_translation::t_terrain t)
 {
 	if(on_board(loc)) {
 		if(t == clear_ &&
@@ -381,7 +381,7 @@ void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_ter
 	}
 }
 
-void cave_map_generator::place_castle(const std::string& side, gamemap::location loc)
+void cave_map_generator::place_castle(const std::string& side, map_location loc)
 {
 	const int starting_position = lexical_cast_default<int>(side, -1);
 	if(starting_position != -1) {
@@ -391,7 +391,7 @@ void cave_map_generator::place_castle(const std::string& side, gamemap::location
 		starting_positions_[starting_position] = coord;
 	}
 
-	gamemap::location adj[6];
+	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
 		set_terrain(adj[n],castle_);

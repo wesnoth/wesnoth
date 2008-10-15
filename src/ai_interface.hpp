@@ -33,7 +33,7 @@ class ai_interface : public game_logic::formula_callable {
 public:
 
 	/** A convenient typedef for the often used 'location' object. */
-	typedef gamemap::location location;
+	typedef map_location location;
 
 	/** The standard way in which a map of possible moves is recorded. */
 	typedef std::multimap<location,location> move_map;

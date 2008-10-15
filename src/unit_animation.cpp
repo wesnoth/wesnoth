@@ -172,7 +172,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
-		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
+		const map_location::DIRECTION d = map_location::parse_direction(*i);
 		directions_.push_back(d);
 	}
 	config::const_child_iterator itor;
@@ -218,7 +218,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 
 }
 
-int unit_animation::matches(const game_display &disp,const gamemap::location& loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
+int unit_animation::matches(const game_display &disp,const map_location& loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {
 	int result = base_score_;
 	if(!event.empty()&&!event_.empty()) {
@@ -257,7 +257,7 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 			result++;
 		}
 		if(!secondary_unit_filter_.empty()) {
-			const gamemap::location facing_loc = loc.get_direction(my_unit->facing());
+			const map_location facing_loc = loc.get_direction(my_unit->facing());
 			unit_map::const_iterator unit;
 			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
 				if(unit->first == facing_loc) {
@@ -709,7 +709,7 @@ int unit_animation::get_begin_time() const
 	return result;
 }
 
-void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
+void unit_animation::start_animation(int start_time,const map_location &src, const map_location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
 {
 		unit_anim_.accelerate = accelerate;
 		new_animation_frame();
@@ -727,7 +727,7 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 	}
 }
 
-void unit_animation::update_parameters(const gamemap::location &src, const gamemap::location &dst)
+void unit_animation::update_parameters(const map_location &src, const map_location &dst)
 {
 	unit_anim_.update_parameters(src, dst);
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
@@ -798,7 +798,7 @@ unit_animation::particule::~particule()
 }
 
 void unit_animation::particule::start_animation(int start_time,
-	const gamemap::location &src, const gamemap::location &dst,
+	const map_location &src, const map_location &dst,
 	bool cycles)
 {
 	halo::remove(halo_id_);
@@ -806,7 +806,7 @@ void unit_animation::particule::start_animation(int start_time,
 	parameters_.duration(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles);
 	last_frame_begin_time_ = get_begin_time() -1;
-	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
+	if(src != map_location::null_location || dst != map_location::null_location) {
 		src_ = src;
 		dst_ = dst;
 	}
@@ -814,16 +814,16 @@ void unit_animation::particule::start_animation(int start_time,
 
 
 
-void unit_animation::particule::update_parameters(const gamemap::location &src, const gamemap::location &dst)
+void unit_animation::particule::update_parameters(const map_location &src, const map_location &dst)
 {
-	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
+	if(src != map_location::null_location || dst != map_location::null_location) {
 		src_ = src;
 		dst_ = dst;
 	}
 }
 
 void unit_animator::add_animation(unit* animated_unit,const std::string& event,
-		const gamemap::location &src , const int value,bool with_bars,bool cycles,
+		const map_location &src , const int value,bool with_bars,bool cycles,
 		const std::string text,const Uint32 text_color,
 		const unit_animation::hit_type hit_type,
 		const attack_type* attack, const attack_type* second_attack, int swing_num)
@@ -846,7 +846,7 @@ if(!tmp.animation) return;
 	animated_units_.push_back(tmp);
 }
 void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::string& event,
-		const gamemap::location &src , const int value,bool with_bars,bool cycles,
+		const map_location &src , const int value,bool with_bars,bool cycles,
 		const std::string text,const Uint32 text_color,
 		const unit_animation::hit_type hit_type,
 		const attack_type* attack, const attack_type* second_attack, int swing_num)

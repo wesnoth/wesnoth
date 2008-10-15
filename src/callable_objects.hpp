@@ -61,7 +61,7 @@ public: \
 
 class terrain_callable : public game_logic::formula_callable {
 public:
-	typedef gamemap::location location;
+	typedef map_location location;
 	terrain_callable(const terrain_type& t, const location loc)
 	  : loc_(loc), t_(t)
 	{}
@@ -84,7 +84,7 @@ CALLABLE_WRAPPER_INPUT_END
 		std::vector<variant> vars;
 		for(int i = 0;i < w; i++) {
 			for(int j = 0;j < h; j++) {
-				const gamemap::location loc(i,j);
+				const map_location loc(i,j);
 				vars.push_back(variant(new terrain_callable(object_.get_terrain_info(loc), loc)));
 			}
 		}
@@ -95,7 +95,7 @@ CALLABLE_WRAPPER_INPUT_END
 CALLABLE_WRAPPER_END
 
 class location_callable : public game_logic::formula_callable {
-	gamemap::location loc_;
+	map_location loc_;
 
 	variant get_value(const std::string& key) const;
 
@@ -103,18 +103,18 @@ class location_callable : public game_logic::formula_callable {
 	int do_compare(const game_logic::formula_callable* callable) const;
 
 public:
-	explicit location_callable(const gamemap::location& loc) : loc_(loc)
+	explicit location_callable(const map_location& loc) : loc_(loc)
 	{}
-	explicit location_callable(int x, int y) : loc_(gamemap::location(x,y))
+	explicit location_callable(int x, int y) : loc_(map_location(x,y))
 	{}
 
-	const gamemap::location& loc() const { return loc_; }
+	const map_location& loc() const { return loc_; }
 
 	void serialize_to_string(std::string& str) const;
 };
 
 class move_callable : public game_logic::formula_callable {
-	gamemap::location src_, dst_;
+	map_location src_, dst_;
 	variant get_value(const std::string& key) const {
 		if(key == "src") {
 			return variant(new location_callable(src_));
@@ -129,16 +129,16 @@ class move_callable : public game_logic::formula_callable {
 		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
 	}
 public:
-	move_callable(const gamemap::location& src, const gamemap::location& dst) :
+	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
 	{}
 
-	const gamemap::location& src() const { return src_; }
-	const gamemap::location& dst() const { return dst_; }
+	const map_location& src() const { return src_; }
+	const map_location& dst() const { return dst_; }
 };
 
 class move_partial_callable : public game_logic::formula_callable {
-	gamemap::location src_, dst_;
+	map_location src_, dst_;
 	variant get_value(const std::string& key) const {
 		if(key == "src") {
 			return variant(new location_callable(src_));
@@ -153,16 +153,16 @@ class move_partial_callable : public game_logic::formula_callable {
 		inputs->push_back(game_logic::formula_input("dst", game_logic::FORMULA_READ_ONLY));
 	}
 public:
-	move_partial_callable(const gamemap::location& src, const gamemap::location& dst) :
+	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
 	{}
 
-	const gamemap::location& src() const { return src_; }
-	const gamemap::location& dst() const { return dst_; }
+	const map_location& src() const { return src_; }
+	const map_location& dst() const { return dst_; }
 };
 
 class move_map_callable : public game_logic::formula_callable {
-	typedef std::multimap<gamemap::location, gamemap::location> move_map;
+	typedef std::multimap<map_location, map_location> move_map;
 	const move_map& srcdst_;
 	const move_map& dstsrc_;
 
@@ -179,7 +179,7 @@ public:
 
 class attack_type_callable : public game_logic::formula_callable {
 public:
-	typedef gamemap::location location;
+	typedef map_location location;
 	attack_type_callable(const attack_type attack)
 	  : att_(attack)
 	{}
@@ -193,7 +193,7 @@ private:
 
 class unit_callable : public game_logic::formula_callable {
 public:
-	typedef gamemap::location location;
+	typedef map_location location;
 	unit_callable(const std::pair<location, unit>& pair)
 	  : loc_(pair.first), u_(pair.second)
 	{}

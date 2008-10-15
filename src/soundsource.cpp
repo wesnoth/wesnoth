@@ -92,7 +92,7 @@ void manager::update_positions()
 	}
 }
 
-void manager::add_location(const std::string &id, const gamemap::location &loc)
+void manager::add_location(const std::string &id, const map_location &loc)
 {
 	positional_source_iterator it = _sources.find(id);
 
@@ -135,7 +135,7 @@ void positional_source::update(unsigned int time, const display &disp)
 		}
 
 		int distance_volume = DISTANCE_SILENT;
-		for(std::vector<gamemap::location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
+		for(std::vector<map_location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
 			int v = calculate_volume(*i, disp);
 			if(v < distance_volume) {
 				distance_volume = v;
@@ -152,7 +152,7 @@ void positional_source::update(unsigned int time, const display &disp)
 void positional_source::update_positions(unsigned int time, const display &disp)
 {
 	int distance_volume = DISTANCE_SILENT;
-	for(std::vector<gamemap::location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
+	for(std::vector<map_location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
 		if(disp.shrouded(*i) || (_check_fogged && disp.fogged(*i)))
 			continue;
 
@@ -169,13 +169,13 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 	}
 }
 
-int positional_source::calculate_volume(const gamemap::location &loc, const display &disp)
+int positional_source::calculate_volume(const map_location &loc, const display &disp)
 {
 	assert(_range > 0);
 	assert(_faderange > 0);
 
 	SDL_Rect area = disp.map_area();
-	gamemap::location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
+	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
 	size_t distance = distance_between(loc, center);
 
 	if(distance <= _range) {
@@ -185,7 +185,7 @@ int positional_source::calculate_volume(const gamemap::location &loc, const disp
 	return static_cast<int>(( ( (distance - _range) / (double) _faderange) * DISTANCE_SILENT));
 }
 
-void positional_source::add_location(const gamemap::location &loc)
+void positional_source::add_location(const map_location &loc)
 {
 	_locations.push_back(loc);
 }

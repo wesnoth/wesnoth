@@ -149,7 +149,7 @@ public:
 	config snapshot;
 
 	/** the last location where a select event fired. */
-	gamemap::location last_selected;
+	map_location last_selected;
 
 private:
   rand_rng::simple_rng rng_ ;
@@ -185,7 +185,7 @@ public:
 	/** Returns time of day object for current turn. */
 	time_of_day get_time_of_day() const;
 	time_of_day get_previous_time_of_day() const;
-	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc) const;
+	time_of_day get_time_of_day(int illuminated, const map_location& loc) const;
 
 	/**
 	 * Returns time of day object in the turn.
@@ -193,7 +193,7 @@ public:
 	 * It first tries to look for specified. If no area time specified in
 	 * location, it returns global time.
 	 */
-	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
+	time_of_day get_time_of_day(int illuminated, const map_location& loc, int n_turn) const;
 
 	/**
 	 * Sets global time of day in this turn.
@@ -236,7 +236,7 @@ public:
 	 * @param locs                Set of locations to be affected.
 	 * @param time_cfg            Config object containing [time] information.
 	 */
-	void add_time_area(const std::string& id, const std::set<gamemap::location>& locs,
+	void add_time_area(const std::string& id, const std::set<map_location>& locs,
 	                   const config& time_cfg);
 
 	/**
@@ -281,7 +281,7 @@ private:
 		std::string xsrc, ysrc;
 		std::string id;
 		std::vector<time_of_day> times;
-		std::set<gamemap::location> hexes;
+		std::set<map_location> hexes;
 	};
 
 	std::vector<area_time_of_day> areas_;

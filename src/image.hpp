@@ -104,15 +104,15 @@ namespace image {
 			value(const char *filename, const std::string& modifications);
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
-			value(const std::string& filename, const gamemap::location& loc, const std::string& modifications);
-			value(const std::string& filename, const gamemap::location& loc, int center_x, int center_y, const std::string& modifications);
+			value(const std::string& filename, const map_location& loc, const std::string& modifications);
+			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
 
 			type type_;
 			std::string filename_;
-			gamemap::location loc_;
+			map_location loc_;
 			std::string modifications_;
 			int center_x_;
 			int center_y_;
@@ -128,8 +128,8 @@ namespace image {
 		locator(const char *filename, const std::string& modifications);
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
-		locator(const std::string& filename, const gamemap::location& loc, const std::string& modifications="");
-		locator(const std::string& filename, const gamemap::location& loc, int center_x, int center_y, const std::string& modifications="");
+		locator(const std::string& filename, const map_location& loc, const std::string& modifications="");
+		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="");
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
@@ -137,7 +137,7 @@ namespace image {
 		bool operator<(const locator &a) const { return index_ < a.index_; }
 
 		const std::string &get_filename() const { return val_.filename_; }
-		const gamemap::location& get_loc() const { return val_.loc_ ; }
+		const map_location& get_loc() const { return val_.loc_ ; }
 		const std::string& get_modifications() const {return val_.modifications_;}
 		type get_type() const { return val_.type_; };
 		// const int get_index() const { return index_; };

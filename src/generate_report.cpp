@@ -42,7 +42,7 @@ report generate_report(TYPE type,
                        const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
                        unsigned int current_side, unsigned int playing_side,
-                       const gamemap::location& loc, const gamemap::location& mouseover, const gamemap::location& displayed_unit_hex,
+                       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
                        const gamestatus& status, const std::set<std::string>& observers,
                        const config& level)
 {
@@ -233,7 +233,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		std::vector<attack_type>& attacks = u->second.attacks();
 		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
-			at_it->set_specials_context(u->first,gamemap::location(),u->second);
+			at_it->set_specials_context(u->first,map_location(),u->second);
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";
@@ -388,7 +388,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.villages << "/";
 		if (current_team.uses_shroud()) {
 			int unshrouded_villages = 0;
-			std::vector<gamemap::location>::const_iterator i = map.villages().begin();
+			std::vector<map_location>::const_iterator i = map.villages().begin();
 			for (; i != map.villages().end(); i++) {
 				if (!current_team.shrouded(*i))
 					 unshrouded_villages++;

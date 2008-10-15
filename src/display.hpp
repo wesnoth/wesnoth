@@ -144,34 +144,34 @@ public:
 	 * location of the hex that this pixel corresponds to.
 	 * Returns an invalid location if the mouse isn't over any valid location.
 	 */
-	const gamemap::location hex_clicked_on(int x, int y) const;
+	const map_location hex_clicked_on(int x, int y) const;
 
 	/**
 	 * given x,y co-ordinates of a pixel on the map, will return the
 	 * location of the hex that this pixel corresponds to.
 	 * Returns an invalid location if the mouse isn't over any valid location.
 	 */
-	const gamemap::location pixel_position_to_hex(int x, int y) const;
+	const map_location pixel_position_to_hex(int x, int y) const;
 
 	/**
 	 * given x,y co-ordinates of the mouse, will return the location of the
 	 * hex in the minimap that the mouse is currently over, or an invalid
 	 * location if the mouse isn't over the minimap.
 	 */
-	gamemap::location minimap_location_on(int x, int y);
+	map_location minimap_location_on(int x, int y);
 
-	const gamemap::location& selected_hex() { return selectedHex_; }
-	const gamemap::location& mouseover_hex() { return mouseoverHex_; }
+	const map_location& selected_hex() { return selectedHex_; }
+	const map_location& mouseover_hex() { return mouseoverHex_; }
 
-	virtual void select_hex(gamemap::location hex);
-	virtual void highlight_hex(gamemap::location hex);
+	virtual void select_hex(map_location hex);
+	virtual void highlight_hex(map_location hex);
 
 	/** Function to invalidate the game status displayed on the sidebar. */
 	void invalidate_game_status() { invalidateGameStatus_ = true; }
 
 	/** Functions to get the on-screen positions of hexes. */
-	int get_location_x(const gamemap::location& loc) const;
-	int get_location_y(const gamemap::location& loc) const;
+	int get_location_x(const map_location& loc) const;
+	int get_location_y(const map_location& loc) const;
 
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
@@ -185,16 +185,16 @@ public:
 
 		/**  very simple iterator to walk into the rect_of_hexes */
 		struct iterator {
-			iterator(gamemap::location loc, rect_of_hexes& rect)
+			iterator(map_location loc, rect_of_hexes& rect)
 				: loc_(loc), rect_(rect){};
 
 			/** increment y first, then when reaching bottom, increment x */
 			void operator++();
 			bool operator!=(const iterator &that) const {return that.loc_ != loc_;};
-			const gamemap::location& operator*() const {return loc_;};
+			const map_location& operator*() const {return loc_;};
 
 			private:
-				gamemap::location loc_;
+				map_location loc_;
 				rect_of_hexes& rect_;
 		};
 
@@ -209,11 +209,11 @@ public:
 	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());};
 
 	/** Returns true if location (x,y) is covered in shroud. */
-	bool shrouded(const gamemap::location& loc) const {
+	bool shrouded(const map_location& loc) const {
 		return viewpoint_ && viewpoint_->shrouded(loc);
 	}
 	/** Returns true if location (x,y) is covered in fog. */
-	bool fogged(const gamemap::location& loc) const { 
+	bool fogged(const map_location& loc) const { 
 		return viewpoint_ && viewpoint_->fogged(loc);
 	}
 
@@ -261,9 +261,9 @@ public:
 	void invalidate_all();
 
 	/** Function to invalidate a specific tile for redrawing. */
-	bool invalidate(const gamemap::location& loc);
+	bool invalidate(const map_location& loc);
 	
-	bool invalidate(const std::set<gamemap::location>& locs);
+	bool invalidate(const std::set<map_location>& locs);
 	
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
@@ -280,7 +280,7 @@ public:
 	 * Per-location invalidation called by invalidate_animations()
 	 * defaults to no action, overriden by derived classes
 	 */
-	virtual void invalidate_animations_location(const gamemap::location& /*loc*/) {}
+	virtual void invalidate_animations_location(const map_location& /*loc*/) {}
 
 	const gamemap& get_map()const { return map_;}
 
@@ -294,8 +294,8 @@ public:
 	 * These functions require a prerendered surface.
 	 * Since they are drawn at the top, they are not influenced by TOD, shroud etc.
 	 */
-	void set_hex_overlay(const gamemap::location& loc, surface image) { hex_overlay_[loc] = image; }
-	void clear_hex_overlay(const gamemap::location& loc);
+	void set_hex_overlay(const map_location& loc, surface image) { hex_overlay_[loc] = image; }
+	void clear_hex_overlay(const map_location& loc);
 
 	void set_selected_hex_overlay(const surface& image) { selected_hex_overlay_ = image; }
 	void clear_selected_hex_overlay() { selected_hex_overlay_ = NULL; }
@@ -376,11 +376,11 @@ public:
 	 * it is pure highlighting. These hexes will be highlighted
 	 * slightly darker than the currently selected hex.
 	 */
-	void add_highlighted_loc(const gamemap::location &hex);
+	void add_highlighted_loc(const map_location &hex);
 
 	void clear_highlighted_locs();
 
-	void remove_highlighted_loc(const gamemap::location &hex);
+	void remove_highlighted_loc(const map_location &hex);
 
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
@@ -410,7 +410,7 @@ public:
 	 * WARP jumps to loc; SCROLL uses scroll speed;
 	 * ONSCREEN only scrolls if x,y is offscreen
 	 */
-	void scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
+	void scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
 	/**
 	 * Scroll such that location loc1 is on-screen.
@@ -418,12 +418,12 @@ public:
 	 * but this is not guaranteed. For ONSCREEN scrolls add_spacing
 	 * sets the desired minimum distance from the border in hexes.
 	 */
-	void scroll_to_tiles(gamemap::location loc1, gamemap::location loc2,
+	void scroll_to_tiles(map_location loc1, map_location loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 			     double add_spacing=0.0);
 
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
-	void scroll_to_tiles(const std::vector<gamemap::location>& locs,
+	void scroll_to_tiles(const std::vector<map_location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 	                     bool only_if_possible=false,
 			     double add_spacing=0.0);
@@ -432,7 +432,7 @@ public:
 	events::generic_event &scroll_event() const { return _scroll_event; }
 
 	/** Check if a tile is fully on screen. */
-	bool tile_on_screen(const gamemap::location& loc);
+	bool tile_on_screen(const map_location& loc);
 
 	/** 
 	 * Draws invalidated items.
@@ -506,13 +506,13 @@ protected:
 	/**
 	 * Redraws a single gamemap location.
 	 */
-	virtual void draw_hex(const gamemap::location& loc);
+	virtual void draw_hex(const map_location& loc);
 	
 	/**
 	 * @returns the image type to be used for the passed hex
 	 * (mostly to do with brightening like for mouseover)
 	 */
-	virtual image::TYPE get_image_type(const gamemap::location& loc);
+	virtual image::TYPE get_image_type(const map_location& loc);
 
 	/**
 	 * Update time of day member to the tod to be used in the current drawing
@@ -535,19 +535,19 @@ protected:
 	 * @param xpos	the on-screen pixels x coordinate of the tile
 	 * @param ypos	the on-screen pixels y coordinate of the tile
 	 */
-	virtual void draw_border(const gamemap::location& loc,
+	virtual void draw_border(const map_location& loc,
 		const int xpos, const int ypos);
 
 	void draw_minimap();
 
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
-	std::vector<surface> get_terrain_images(const gamemap::location &loc,
+	std::vector<surface> get_terrain_images(const map_location &loc,
 					const std::string timeid,
 					image::TYPE type,
 					ADJACENT_TERRAIN_TYPE terrain_type);
 
-	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
+	std::vector<std::string> get_fog_shroud_graphics(const map_location& loc);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
@@ -592,13 +592,13 @@ protected:
 	reports::report reports_[reports::NUM_REPORTS];
 	std::map<reports::TYPE, std::string> report_;
 	std::vector<gui::button> buttons_;
-	std::set<gamemap::location> invalidated_;
-	std::map<gamemap::location, surface> hex_overlay_;
+	std::set<map_location> invalidated_;
+	std::map<map_location, surface> hex_overlay_;
 	surface selected_hex_overlay_;
 	surface mouseover_hex_overlay_;
-	gamemap::location selectedHex_;
-	gamemap::location mouseoverHex_;
-	std::set<gamemap::location> highlighted_locations_;
+	map_location selectedHex_;
+	map_location mouseoverHex_;
+	std::set<map_location> highlighted_locations_;
 	CKey keys_;
 
 public:
@@ -690,7 +690,7 @@ public:
 	 * The font size is adjusted to the zoom factor
 	 * and divided by 2 for tiny-gui.
 	 */
-	void draw_text_in_hex(const gamemap::location& loc,
+	void draw_text_in_hex(const map_location& loc,
 		const tdrawing_layer layer, const std::string& text, size_t font_size,
 		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 
@@ -754,8 +754,8 @@ protected:
 	 * for drawing using the z-order.
 	 * (1000 are just to weight the y compare to x)
 	 */
-	struct ordered_draw : public std::binary_function<gamemap::location, gamemap::location, bool> {
-		bool operator()(gamemap::location a, gamemap::location b) {
+	struct ordered_draw : public std::binary_function<map_location, map_location, bool> {
+		bool operator()(map_location a, map_location b) {
 			return (a.y*2 + a.x%2) * 1024 + a.x < (b.y*2 + b.x%2) * 1024 + b.x;
 		}
 	};

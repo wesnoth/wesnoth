@@ -220,7 +220,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	role_(),
 	ai_special_(),
 	attacks_(),
-	facing_(gamemap::location::SOUTH_EAST),
+	facing_(map_location::SOUTH_EAST),
 	traits_description_(),
 	unit_value_(),
 	goto_(),
@@ -298,7 +298,7 @@ unit::unit(const config& cfg,bool use_traits) :
 	role_(),
 	ai_special_(),
 	attacks_(),
-	facing_(gamemap::location::SOUTH_EAST),
+	facing_(map_location::SOUTH_EAST),
 	traits_description_(),
 	unit_value_(),
 	goto_(),
@@ -404,7 +404,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	role_(),
 	ai_special_(),
 	attacks_(),
-	facing_(gamemap::location::SOUTH_EAST),
+	facing_(map_location::SOUTH_EAST),
 	traits_description_(),
 	unit_value_(),
 	goto_(),
@@ -503,7 +503,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	role_(),
 	ai_special_(),
 	attacks_(),
-	facing_(gamemap::location::SOUTH_EAST),
+	facing_(map_location::SOUTH_EAST),
 	traits_description_(),
 	unit_value_(),
 	goto_(),
@@ -932,14 +932,14 @@ void unit::end_turn()
 	}
 	set_state("not_moved","");
 	// Clear interrupted move
-	set_interrupted_move(gamemap::location());
+	set_interrupted_move(map_location());
 }
 void unit::new_level()
 {
 	ai_special_ = "";
 
 	// Set the goto-command to be going to no-where
-	goto_ = gamemap::location();
+	goto_ = map_location();
 
 	remove_temporary_modifications();
 
@@ -1031,7 +1031,7 @@ void unit::remove_ability_by_id(const std::string &ability)
 	}
 }
 
-bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
+bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod) const
 {
 	bool matches = true;
 
@@ -1071,7 +1071,7 @@ bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool
 	return matches;
 }
 
-bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
+bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod) const
 {
 	const t_string& t_id = cfg["id"];
 	const t_string& t_description = cfg["description"];
@@ -1301,17 +1301,17 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 
 	if (cfg.has_child("filter_adjacent")) {
 		assert(units_ && map_ && gamestatus_);
-		gamemap::location adjacent[6];
+		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		vconfig::child_list::const_iterator i, i_end;
 		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
 		for (i = adj_filt.begin(), i_end = adj_filt.end(); i != i_end; ++i) {
 			int match_count=0;
-			static std::vector<gamemap::location::DIRECTION> default_dirs
-				= gamemap::location::parse_directions("n,ne,se,s,sw,nw");
-			std::vector<gamemap::location::DIRECTION> dirs = (*i).has_attribute("adjacent")
-				? gamemap::location::parse_directions((*i)["adjacent"]) : default_dirs;
-			std::vector<gamemap::location::DIRECTION>::const_iterator j, j_end = dirs.end();
+			static std::vector<map_location::DIRECTION> default_dirs
+				= map_location::parse_directions("n,ne,se,s,sw,nw");
+			std::vector<map_location::DIRECTION> dirs = (*i).has_attribute("adjacent")
+				? map_location::parse_directions((*i)["adjacent"]) : default_dirs;
+			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units_->find(adjacent[*j]);
 				if (unit_itor == units_->end()
@@ -1354,7 +1354,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 	if(cfg.has_attribute("formula")) {
-		const unit_callable callable(std::pair<gamemap::location, unit>(loc,*this));
+		const unit_callable callable(std::pair<map_location, unit>(loc,*this));
 		const game_logic::formula form(cfg["formula"]);
 		if(!form.execute(callable).as_bool()) {
 			return false;
@@ -1414,8 +1414,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		variables_.clear();
 	}
 
-	facing_ = gamemap::location::parse_direction(cfg["facing"]);
-	if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::SOUTH_EAST;
+	facing_ = map_location::parse_direction(cfg["facing"]);
+	if(facing_ == map_location::NDIRECTIONS) facing_ = map_location::SOUTH_EAST;
 
 	recruits_ = utils::split(cfg["recruits"]);
 	if(recruits_.size() == 1 && recruits_.front() == "") {
@@ -1697,7 +1697,7 @@ void unit::write(config& cfg) const
 	if(can_recruit())
 		cfg["canrecruit"] = "yes";
 
-	cfg["facing"] = gamemap::location::write_direction(facing_);
+	cfg["facing"] = map_location::write_direction(facing_);
 
 	cfg["goto_x"] = lexical_cast_default<std::string>(goto_.x+1);
 	cfg["goto_y"] = lexical_cast_default<std::string>(goto_.y+1);
@@ -1768,10 +1768,10 @@ const surface unit::still_image(bool scaled) const
 	return unit_image;
 }
 
-void unit::set_standing(const gamemap::location& loc, bool with_bars)
+void unit::set_standing(const map_location& loc, bool with_bars)
 {
 	game_display * disp =  game_display::get_singleton();
-	gamemap::location arr[6];
+	map_location arr[6];
 	get_adjacent_tiles(loc, arr);
 	if (preferences::show_standing_animations()&& !incapacitated()) {
 		start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
@@ -1783,12 +1783,12 @@ void unit::set_standing(const gamemap::location& loc, bool with_bars)
 
 
 
-void unit::set_idling(const game_display &disp,const gamemap::location& loc)
+void unit::set_idling(const game_display &disp,const map_location& loc)
 {
 	start_animation(INT_MAX,loc,choose_animation(disp,loc,"idling"),true,false,"",0,STATE_FORGET);
 }
 
-void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
+void unit::set_selecting(const game_display &disp,const map_location& loc)
 {
 	if (preferences::show_standing_animations()) {
 		start_animation(INT_MAX,loc,choose_animation(disp,loc,"selected"),true,false,"",0,STATE_FORGET);
@@ -1797,7 +1797,7 @@ void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 	}
 }
 
-void unit::start_animation(const int start_time, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
+void unit::start_animation(const int start_time, const map_location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
 {
 	const game_display * disp =  game_display::get_singleton();
     // everything except standing select and idle
@@ -1822,14 +1822,14 @@ void unit::start_animation(const int start_time, const gamemap::location &loc,co
 }
 
 
-void unit::set_facing(gamemap::location::DIRECTION dir) {
-	if(dir != gamemap::location::NDIRECTIONS) {
+void unit::set_facing(map_location::DIRECTION dir) {
+	if(dir != map_location::NDIRECTIONS) {
 		facing_ = dir;
 	}
 	// Else look at yourself (not available so continue to face the same direction)
 }
 
-void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const bool fake)
+void unit::redraw_unit(game_display& disp, const map_location& loc, const bool fake)
 {
 	const gamemap & map = disp.get_map();
 	if(!loc.valid() || hidden_ || disp.fogged(loc)
@@ -1882,10 +1882,10 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 	bool facing_west = false;
 	params.image_mod +="~FL(horizontal)";
 #else
-	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
+	bool facing_west = facing_ == map_location::NORTH_WEST || facing_ == map_location::SOUTH_WEST;
 #endif
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
-	if(facing_ == gamemap::location::SOUTH_WEST || facing_ == gamemap::location::SOUTH_EAST || facing_ == gamemap::location::SOUTH ) {
+	if(facing_ == map_location::SOUTH_WEST || facing_ == map_location::SOUTH_EAST || facing_ == map_location::SOUTH ) {
 		params.image_mod +="~FL(vertical)";
 	}
 
@@ -1893,7 +1893,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 
 
-	const gamemap::location dst = loc.get_direction(facing_);
+	const map_location dst = loc.get_direction(facing_);
 	const int xsrc = disp.get_location_x(loc);
 	const int ysrc = disp.get_location_y(loc);
 	const int xdst = disp.get_location_x(dst);
@@ -1908,7 +1908,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
-		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
+		unit_halo_ = halo::add(0, 0, image_halo(), map_location(-1, -1));
 	}
 	if(unit_halo_ != halo::NO_HALO && image_halo().empty()) {
 		halo::remove(unit_halo_);
@@ -1926,7 +1926,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 		int dy = static_cast<int>(adjusted_params.halo_y * disp.get_zoom_factor());
 		if (facing_west) dx = -dx;
 		unit_anim_halo_ = halo::add(x + dx, y+ dy,
-			adjusted_params.halo, gamemap::location(-1, -1),
+			adjusted_params.halo, map_location(-1, -1),
 			facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
 
@@ -1969,7 +1969,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc, const b
 
 	// FIXME: Use the hack to draw ellipses in the unit layer
 	// but with a different drawing_order, so it's rendered behind/above unit
-	const int drawing_order = gamemap::get_drawing_order(loc);
+	const int drawing_order = loc.get_drawing_order();
 
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
@@ -2073,7 +2073,7 @@ void unit::clear_haloes()
 		unit_anim_halo_ = halo::NO_HALO;
 	}
 }
-bool unit::invalidate(const gamemap::location &loc)
+bool unit::invalidate(const map_location &loc)
 {
 	bool result = false;
 
@@ -2104,9 +2104,9 @@ bool unit::invalidate(const gamemap::location &loc)
 			params.blend_ratio = 0.25;
 		}
 		params.image_mod = image_mods();
-		if(facing_ == gamemap::location::SOUTH_WEST ||
-				facing_ == gamemap::location::SOUTH_EAST ||
-			       	facing_ == gamemap::location::SOUTH ) {
+		if(facing_ == map_location::SOUTH_WEST ||
+				facing_ == map_location::SOUTH_EAST ||
+			       	facing_ == map_location::SOUTH ) {
 			params.image_mod +="~FL(vertical)";
 		}
 
@@ -2118,7 +2118,7 @@ bool unit::invalidate(const gamemap::location &loc)
 
 	if (abilities_affects_adjacent())
 	{
-		gamemap::location arr[6];
+		map_location arr[6];
 		get_adjacent_tiles(loc, arr);
 		for (unsigned int i = 0; i < 6; i++) {
 			result |= game_display::get_singleton()->invalidate(arr[i]);
@@ -2312,7 +2312,7 @@ bool unit::resistance_filter_matches(const config& cfg,bool attacker,const std::
 }
 
 
-int unit::resistance_against(const std::string& damage_name,bool attacker,const gamemap::location& loc) const
+int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const
 {
 	int res = 0;
 
@@ -2325,7 +2325,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	}
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
-	for(std::vector<std::pair<config*,gamemap::location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
+	for(std::vector<std::pair<config*,map_location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
 		if(!resistance_filter_matches(*i->first,attacker,damage_name)) {
 			i = resistance_abilities.cfgs.erase(i);
 		} else {
@@ -2880,7 +2880,7 @@ const t_string& unit::modification_description(const std::string& type) const
 
 
 
-const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int value,const unit_animation::hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
+const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,const int value,const unit_animation::hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -2962,7 +2962,7 @@ void unit::ambush() const
 	}
 }
 
-bool unit::invisible(const gamemap::location& loc,
+bool unit::invisible(const map_location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all) const
 {
 	// Fetch from cache
@@ -2971,7 +2971,7 @@ bool unit::invisible(const gamemap::location& loc,
 	 * Maybe add a second cache if the see_all=false become more frequent.
 	 */
 	if(see_all) {
-		std::map<gamemap::location, bool>::const_iterator itor = invisibility_cache_.find(loc);
+		std::map<map_location, bool>::const_iterator itor = invisibility_cache_.find(loc);
 		if(itor != invisibility_cache_.end()) {
 			return itor->second;
 		}
@@ -3056,7 +3056,7 @@ unit_map::const_iterator team_leader(unsigned int side, const unit_map& units)
 }
 
 unit_map::iterator find_visible_unit(unit_map& units,
-		const gamemap::location loc,
+		const map_location loc,
 		const gamemap& map,
 		  const std::vector<team>& teams, const team& current_team,
 		bool see_all)
@@ -3077,7 +3077,7 @@ unit_map::iterator find_visible_unit(unit_map& units,
 }
 
 unit_map::const_iterator find_visible_unit(const unit_map& units,
-		const gamemap::location loc,
+		const map_location loc,
 		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team,
 		bool see_all)
@@ -3110,11 +3110,11 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	return res;
 }
 
-temporary_unit_placer::temporary_unit_placer(unit_map& m, const gamemap::location& loc, unit& u)
+temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
 	: m_(m), loc_(loc), temp_(m.extract(loc))
 {
 	u.clone();
-	m.add(new std::pair<gamemap::location,unit>(loc,u));
+	m.add(new std::pair<map_location,unit>(loc,u));
 }
 
 temporary_unit_placer::~temporary_unit_placer()

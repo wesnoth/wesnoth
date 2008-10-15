@@ -275,7 +275,7 @@ namespace dfool {
 	LOG_STREAM(info, ai)<<"\tdistance: "<<closest_distance<<"\n";
 
 	if(closest_distance != -1) {
-	  gamemap::location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
+	  map_location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
 	  if(to != closest_move.second)
 	    return(false);	// Something unexpected happened
 	}
@@ -309,12 +309,12 @@ namespace dfool {
 
       int t = atoi((**mem)["turn"].c_str());
 
-      gamemap::location l(atoi((**mem)["x"].c_str())-1,atoi((**mem)["y"].c_str())-1);
+      map_location l(atoi((**mem)["x"].c_str())-1,atoi((**mem)["y"].c_str())-1);
       add_unit_sighting(u,l,t);
     }
   }
 
-  void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
+  void unit_memory::add_unit_sighting(unit u, map_location l, size_t t){
     size_t unit_id= u.underlying_id();
     // Check if this unit has already been seen
     size_t i,j;
@@ -389,20 +389,20 @@ namespace dfool {
 
   void unit_memory::known_map(unit_map& u, size_t turn){
     size_t i;
-    std::map<gamemap::location,size_t> turn_used;
+    std::map<map_location,size_t> turn_used;
     for(i=0;i<units_.size();i++){
-      gamemap::location l = locations_[i];
+      map_location l = locations_[i];
       size_t t = turn_used[l];
       if(turns_[i] >= turn && turns_[i] >= t){
 	   //      std::cout<<"turn_used: "<< t <<"\n";
 	 //      std::cout<<"turn: "<< turns_[i] <<"\n";
 	  turn_used[l] = t;
 	  if(t != 0){
-	    u.replace(new std::pair<gamemap::location,unit>(l,units_[i]));
+	    u.replace(new std::pair<map_location,unit>(l,units_[i]));
 	  }else{
 	    std::cout<<"id: "<< ids_[i] <<"\n";
 
-	    u.add(new std::pair<gamemap::location,unit>(l,units_[i]));
+	    u.add(new std::pair<map_location,unit>(l,units_[i]));
 	  }
       }
     }
@@ -656,8 +656,8 @@ namespace dfool {
     }
     std::cout<<"coords:"<<coord[0]<<","<<coord[1]<<"\n";
     std::cout<<"coords:"<<coord[2]<<","<<coord[3]<<"\n";
-    gamemap::location a(coord[0]-1,coord[1]-1);
-    gamemap::location b(coord[2]-1,coord[3]-1);
+    map_location a(coord[0]-1,coord[1]-1);
+    map_location b(coord[2]-1,coord[3]-1);
     std::cout<<"a "<<a.x<<","<<a.y<<"\n";
     std::cout<<"b "<<b.x<<","<<b.y<<"\n";
     int distance = distance_between(a,b);

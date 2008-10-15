@@ -99,7 +99,7 @@ namespace {
 	};
 } //end anonymous namespace
 
-bool terrain_filter::match_internal(const gamemap::location& loc, const bool ignore_xy)
+bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy)
 {
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == NULL) {
@@ -123,13 +123,13 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 			variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 			if(!vi.is_valid) return false;
 			if(vi.explicit_index) {
-				if(gamemap::location(vi.as_container(),NULL) != loc) {
+				if(map_location(vi.as_container(),NULL) != loc) {
 					return false;
 				}
 			} else {
 				variable_info::array_range a_range;
 				for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
-					if(gamemap::location(**a_range.first,NULL) == loc) {
+					if(map_location(**a_range.first,NULL) == loc) {
 						break;
 					}
 				}
@@ -150,7 +150,7 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 
 	//Allow filtering on adjacent locations
 	if(cfg_.has_child("filter_adjacent_location")) {
-		gamemap::location adjacent[6];
+		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_cfgs.begin();
@@ -159,25 +159,25 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 			vconfig::child_list::difference_type index = i - i_begin;
 			std::string adj_dirs = (*i).has_attribute("adjacent") ? (*i)["adjacent"]
 				: "n,ne,se,s,sw,nw";
-			static std::vector<gamemap::location::DIRECTION> default_dirs
-				= gamemap::location::parse_directions("n,ne,se,s,sw,nw");
-			std::vector<gamemap::location::DIRECTION> dirs = (*i).has_attribute("adjacent")
-				? gamemap::location::parse_directions((*i)["adjacent"]) : default_dirs;
-			std::vector<gamemap::location::DIRECTION>::const_iterator j, j_end = dirs.end();
+			static std::vector<map_location::DIRECTION> default_dirs
+				= map_location::parse_directions("n,ne,se,s,sw,nw");
+			std::vector<map_location::DIRECTION> dirs = (*i).has_attribute("adjacent")
+				? map_location::parse_directions((*i)["adjacent"]) : default_dirs;
+			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
-				gamemap::location &adj = adjacent[*j];
+				map_location &adj = adjacent[*j];
 				if(map_.on_board(adj)) {
 					if(cache_.adjacent_matches == NULL) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
 							const vconfig& adj_cfg = adj_cfgs[cache_.adjacent_match_cache.size()];
-							std::pair<terrain_filter, std::map<gamemap::location,bool> > amc_pair(
+							std::pair<terrain_filter, std::map<map_location,bool> > amc_pair(
 								terrain_filter(adj_cfg, *this),
-								std::map<gamemap::location,bool>());
+								std::map<map_location,bool>());
 							cache_.adjacent_match_cache.push_back(amc_pair);
 						}
 						terrain_filter &amc_filter = cache_.adjacent_match_cache[index].first;
-						std::map<gamemap::location,bool> &amc = cache_.adjacent_match_cache[index].second;
-						std::map<gamemap::location,bool>::iterator lookup = amc.find(adj);
+						std::map<map_location,bool> &amc = cache_.adjacent_match_cache[index].second;
+						std::map<map_location,bool>::iterator lookup = amc.find(adj);
 						if(lookup == amc.end()) {
 							if(amc_filter(adj)) {
 								amc[adj] = true;
@@ -190,7 +190,7 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 						}
 					} else {
 						assert(index < std::distance(cache_.adjacent_matches->begin(), cache_.adjacent_matches->end()));
-						std::set<gamemap::location> &amc = (*cache_.adjacent_matches)[index];
+						std::set<map_location> &amc = (*cache_.adjacent_matches)[index];
 						if(amc.find(adj) != amc.end()) {
 							++match_count;
 						}
@@ -264,13 +264,13 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 	return true;
 }
 
-bool terrain_filter::match(const gamemap::location& loc)
+bool terrain_filter::match(const map_location& loc)
 {
 	if(cfg_["x"] == "recall" && cfg_["y"] == "recall") {
 		return !map_.on_board(loc);
 	}
-	std::set<gamemap::location> hexes;
-	std::vector<gamemap::location> loc_vec(1, loc);
+	std::set<map_location> hexes;
+	std::vector<map_location> loc_vec(1, loc);
 
 	//handle radius
 	size_t radius = lexical_cast_default<size_t>(cfg_["radius"], 0);
@@ -287,7 +287,7 @@ bool terrain_filter::match(const gamemap::location& loc)
 	}
 
 	size_t loop_count = 0;
-	std::set<gamemap::location>::const_iterator i;
+	std::set<map_location>::const_iterator i;
 	for(i = hexes.begin(); i != hexes.end(); ++i) {
 		bool matches = match_internal(*i, false);
 
@@ -320,7 +320,7 @@ bool terrain_filter::match(const gamemap::location& loc)
 			return true;
 		}
 		if(++loop_count > max_loop_) {
-			std::set<gamemap::location>::const_iterator temp = i;
+			std::set<map_location>::const_iterator temp = i;
 			if(++temp != hexes.end()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
 				<< ", aborting\n";
@@ -331,15 +331,15 @@ bool terrain_filter::match(const gamemap::location& loc)
 	return false;
 }
 
-void terrain_filter::get_locations(std::set<gamemap::location>& locs)
+void terrain_filter::get_locations(std::set<map_location>& locs)
 {
-	std::vector<gamemap::location> xy_vector = parse_location_range(cfg_["x"],cfg_["y"], &map_);
-	std::set<gamemap::location> xy_set(xy_vector.begin(), xy_vector.end());
+	std::vector<map_location> xy_vector = parse_location_range(cfg_["x"],cfg_["y"], &map_);
+	std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
 	if(xy_set.empty()) {
 		//consider all locations on the map
 		for(int x=0; x < map_.w(); x++) {
 			for(int y=0; y < map_.h(); y++) {
-				xy_set.insert(gamemap::location(x,y));
+				xy_set.insert(map_location(x,y));
 			}
 		}
 	}
@@ -349,7 +349,7 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 		if(!vi.is_valid) {
 			xy_set.clear();
 		} else if(vi.explicit_index) {
-			gamemap::location test_loc(vi.as_container(),NULL);
+			map_location test_loc(vi.as_container(),NULL);
 			if(xy_set.count(test_loc)) {
 				xy_set.clear();
 				xy_set.insert(test_loc);
@@ -357,10 +357,10 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 				xy_set.clear();
 			}
 		} else {
-			std::set<gamemap::location> findin_locs;
+			std::set<map_location> findin_locs;
 			variable_info::array_range a_range;
 			for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
-				gamemap::location test_loc(**a_range.first,NULL);
+				map_location test_loc(**a_range.first,NULL);
 				if(xy_set.count(test_loc)) {
 					findin_locs.insert(test_loc);
 				}
@@ -372,11 +372,11 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 	//handle location filter
 	if(cfg_.has_child("filter_adjacent_location")) {
 		if(cache_.adjacent_matches == NULL) {
-			cache_.adjacent_matches = new std::vector<std::set<gamemap::location> >();
+			cache_.adjacent_matches = new std::vector<std::set<map_location> >();
 		}
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		for (unsigned i = 0; i < adj_cfgs.size(); ++i) {
-			std::set<gamemap::location> adj_set;
+			std::set<map_location> adj_set;
 			/* GCC-3.3 doesn't like operator[] so use at which has the same result */
 			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set);
 			cache_.adjacent_matches->push_back(adj_set);
@@ -387,7 +387,7 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 			}
 		}
 	}
-	std::set<gamemap::location>::iterator loc_itor = xy_set.begin();
+	std::set<map_location>::iterator loc_itor = xy_set.begin();
 	while(loc_itor != xy_set.end()) {
 		if(match_internal(*loc_itor, true)) {
 			++loc_itor;
@@ -412,9 +412,9 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 
 		//handle [and]
 		if(cond_name == "and") {
-			std::set<gamemap::location> intersect_hexes;
+			std::set<map_location> intersect_hexes;
 			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes);
-			std::set<gamemap::location>::iterator intersect_itor = xy_set.begin();
+			std::set<map_location>::iterator intersect_itor = xy_set.begin();
 			while(intersect_itor != xy_set.end()) {
 				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
 					xy_set.erase(*intersect_itor++);
@@ -425,10 +425,10 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 		}
 		//handle [or]
 		else if(cond_name == "or") {
-			std::set<gamemap::location> union_hexes;
+			std::set<map_location> union_hexes;
 			terrain_filter(cond_cfg, *this).get_locations(union_hexes);
 			//xy_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
-			std::set<gamemap::location>::iterator insert_itor = union_hexes.begin();
+			std::set<map_location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
 				xy_set.insert(*insert_itor++);
 			}
@@ -436,9 +436,9 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 		}
 		//handle [not]
 		else if(cond_name == "not") {
-			std::set<gamemap::location> removal_hexes;
+			std::set<map_location> removal_hexes;
 			terrain_filter(cond_cfg, *this).get_locations(removal_hexes);
-			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
+			std::set<map_location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				xy_set.erase(*erase_itor++);
 			}

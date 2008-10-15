@@ -51,7 +51,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 			surface surf(NULL);
 
-			const gamemap::location loc(x,y);
+			const map_location loc(x,y);
 			if(map.on_board(loc)) {
 				const bool shrouded = vw != NULL && vw->shrouded(loc);
 				// shrouded hex are not considered fogged (no need to fog a black image)

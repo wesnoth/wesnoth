@@ -76,17 +76,17 @@ public:
 	unit_map(const unit_map &that);
 	unit_map &operator =(const unit_map &that);
 	/** A unit map with a copy of a single unit in it. */
-	explicit unit_map(const gamemap::location &loc, const unit &u);
+	explicit unit_map(const map_location &loc, const unit &u);
 	~unit_map();
 	
 	/**
 	 * Keyed with unit's underlying_id. bool flag is whether the following pair
 	 * pointer is valid. pointer to pair used to imitate a map<location, unit>
 	 */
-	typedef std::map<size_t,std::pair<bool, std::pair<gamemap::location,unit>*> > umap;
+	typedef std::map<size_t,std::pair<bool, std::pair<map_location,unit>*> > umap;
 	
 	/** Maps locations to the underlying_id() of the unit at that location. */
-	typedef std::map<gamemap::location, size_t> lmap;
+	typedef std::map<map_location, size_t> lmap;
 		
 	struct const_unit_iterator;	
 	struct unit_xy_iterator;
@@ -109,8 +109,8 @@ public:
 		unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
 		unit_iterator(umap::iterator i, unit_map* map) : counter_(map), i_(i), map_(map) { }
 					
-		std::pair<gamemap::location,unit> *operator->() const;
-		std::pair<gamemap::location,unit>& operator*() const;
+		std::pair<map_location,unit> *operator->() const;
+		std::pair<map_location,unit>& operator*() const;
 
 		unit_iterator operator++();
 		unit_iterator operator++(int);
@@ -151,8 +151,8 @@ public:
 		const_unit_iterator(const const_unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
 		const_unit_iterator(umap::const_iterator i, const unit_map* map): counter_(map), i_(i), map_(map) { }
 		
-		const std::pair<gamemap::location,unit>* operator->() const;
-		const std::pair<gamemap::location,unit>& operator*() const;
+		const std::pair<map_location,unit>* operator->() const;
+		const std::pair<map_location,unit>& operator*() const;
 
 		const_unit_iterator operator++();
 
@@ -201,14 +201,14 @@ public:
 			counter_(i.map_), 
 			i_(i.i_), 
 			map_(i.map_),
-			loc_(i.valid() ? i.loc_ : gamemap::location())
+			loc_(i.valid() ? i.loc_ : map_location())
 			{ 
 			}
 			
-		unit_xy_iterator(umap::iterator i, unit_map* map, gamemap::location loc): counter_(map), i_(i), map_(map), loc_(loc) { }
+		unit_xy_iterator(umap::iterator i, unit_map* map, map_location loc): counter_(map), i_(i), map_(map), loc_(loc) { }
 		
-		std::pair<gamemap::location,unit>* operator->() const;
-		std::pair<gamemap::location,unit>& operator*() const;
+		std::pair<map_location,unit>* operator->() const;
+		std::pair<map_location,unit>& operator*() const;
 
 		unit_xy_iterator operator++();
 
@@ -232,7 +232,7 @@ public:
 		umap::iterator i_;	
 		unit_map* map_;
 		
-		gamemap::location loc_;	
+		map_location loc_;	
 	};
 	
 	struct const_unit_xy_iterator
@@ -248,13 +248,13 @@ public:
 		{ 
 		}
 							
-		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, gamemap::location loc): counter_(map), i_(i), map_(map), loc_(loc)  { }
+		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, map_location loc): counter_(map), i_(i), map_(map), loc_(loc)  { }
 					
 		const_unit_xy_iterator(const unit_xy_iterator &i) : 
 			counter_(i.map_), 
 			i_(i.i_), 
 			map_(i.map_),
-			loc_(i.valid() ? i.loc_ : gamemap::location())
+			loc_(i.valid() ? i.loc_ : map_location())
 		{
 		}
 
@@ -262,12 +262,12 @@ public:
 			counter_(i.map_), 
 			i_(i.i_), 
 			map_(i.map_),
-			loc_(i.valid() ? i.loc_ : gamemap::location())
+			loc_(i.valid() ? i.loc_ : map_location())
 		{
 		}
 
-		const std::pair<gamemap::location,unit>* operator->() const;
-		const std::pair<gamemap::location,unit>& operator*() const;
+		const std::pair<map_location,unit>* operator->() const;
+		const std::pair<map_location,unit>& operator*() const;
 
 		const_unit_xy_iterator operator++();
 
@@ -289,7 +289,7 @@ public:
 		umap::const_iterator i_;	
 		const unit_map* map_;
 		
-		gamemap::location loc_;	
+		map_location loc_;	
 	};
 	
 	/**
@@ -308,8 +308,8 @@ public:
 		{
 		}
 		
-		std::pair<gamemap::location,unit>* operator->();
-		std::pair<gamemap::location,unit>& operator*();
+		std::pair<map_location,unit>* operator->();
+		std::pair<map_location,unit>& operator*();
 		
 		bool valid();
 		
@@ -319,7 +319,7 @@ public:
 		umap::iterator i_;
 		unit_map* map_;
 				
-		gamemap::location loc_;		
+		map_location loc_;		
 	};
 	
 	struct const_xy_accessor
@@ -337,8 +337,8 @@ public:
 		{
 		}
 		
-		const std::pair<gamemap::location,unit>* operator->();
-		const std::pair<gamemap::location,unit>& operator*();
+		const std::pair<map_location,unit>* operator->();
+		const std::pair<map_location,unit>& operator*();
 		
 		bool valid();
 		
@@ -348,14 +348,14 @@ public:
 		umap::const_iterator i_;
 		const unit_map* map_;
 				
-		gamemap::location loc_;		
+		map_location loc_;		
 	};
 	
 	/**
 	 * Return object can be implicitly converted to any of the other iterators
 	 * or accessors
 	 */
-	unit_iterator find(const gamemap::location &loc) ;
+	unit_iterator find(const map_location &loc) ;
 	unit_iterator find(const size_t& id);
 	unit_iterator find(const std::string& id);
 	
@@ -363,11 +363,11 @@ public:
 	 * Return object can be implicity converted to any of the other const
 	 * iterators or accessors
 	 */
-	const_unit_iterator find(const gamemap::location &loc) const;
+	const_unit_iterator find(const map_location &loc) const;
 	const_unit_iterator find(const size_t& id) const;
 	const_unit_iterator find(const std::string& id) const;
 	
-	size_t count(const gamemap::location &loc) const {
+	size_t count(const map_location &loc) const {
 		return lmap_.count(loc);
 	}
 
@@ -412,19 +412,19 @@ public:
 	void clear();
 
 	/** Extract (like erase, but don't delete). */
-	std::pair<gamemap::location,unit> *extract(const gamemap::location &loc);
+	std::pair<map_location,unit> *extract(const map_location &loc);
 
 	/**
 	 * Map owns pointer after this.  Loc must be currently empty. unit's
 	 * underlying_id should not be present in the map already
 	 */
-	void add(std::pair<gamemap::location,unit> *p);
+	void add(std::pair<map_location,unit> *p);
 
 	/** Like add, but loc must be occupied (implicitly erased). */
-	void replace(std::pair<gamemap::location,unit> *p);
+	void replace(std::pair<map_location,unit> *p);
 
 	void erase(xy_accessor pos);
-	size_t erase(const gamemap::location &loc);
+	size_t erase(const map_location &loc);
 
 	void swap(unit_map& o) {
 		map_.swap(o.map_);

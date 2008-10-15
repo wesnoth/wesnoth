@@ -56,11 +56,11 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<t_string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
-	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
+	void set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
-	void set_specials_context(const gamemap::location& loc,const gamemap::location& dloc, const unit& un, bool attacker =true) const;
+	void set_specials_context(const map_location& loc,const map_location& dloc, const unit& un, bool attacker =true) const;
 
 	bool has_special_by_id(const std::string& special) const;
 
@@ -72,7 +72,7 @@ public:
 
 	config& get_cfg() { return cfg_; }
 	const config& get_cfg() const { return cfg_; }
-	mutable gamemap::location aloc_,dloc_;
+	mutable map_location aloc_,dloc_;
 	mutable bool attacker_;
 	mutable const unit_map* unitmap_;
 	mutable const gamemap* map_;
@@ -90,7 +90,7 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	const unit_animation* animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
+	const unit_animation* animation(const game_display& disp, const map_location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
 	// made public to ease backward compatibility for WML syntax
 	// to be removed (with all corresponding code once 1.3.6 is reached
 	std::vector<unit_animation> animation_;

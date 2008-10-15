@@ -79,35 +79,35 @@ public:
 	 * Useful for flood fill or magic wand selection
 	 * @return a contigious set of locations that will always contain at least the starting element
 	 */
-	std::set<gamemap::location> get_contigious_terrain_tiles(const gamemap::location& start) const;
+	std::set<map_location> get_contigious_terrain_tiles(const map_location& start) const;
 	
 	/**
 	 * Set labels for staring positions in the given display object.
 	 * @return the locations where the labels were added
 	 */
-	std::set<gamemap::location> set_starting_position_labels(display& disp);
+	std::set<map_location> set_starting_position_labels(display& disp);
 	
 	/**
 	 * @return true when the location is part of the selection, false otherwise
 	 */
-	bool in_selection(const gamemap::location& loc) const;
+	bool in_selection(const map_location& loc) const;
 	
 	/**
 	 * Add a location to the selection. The location should be valid (i.e. on the map)
 	 * @return true if the selected hexes set was modified
 	 */
-	bool add_to_selection(const gamemap::location& loc);
+	bool add_to_selection(const map_location& loc);
 	
 	/**
 	 * Remove a location to the selection. The location does not actually have to be selected
 	 * @return true if the selected hexes set was modified
 	 */
-	bool remove_from_selection(const gamemap::location& loc);
+	bool remove_from_selection(const map_location& loc);
 	
 	/**
 	 * Return the selection set.
 	 */
-	const std::set<gamemap::location> selection() const { return selection_; }
+	const std::set<map_location> selection() const { return selection_; }
 	
 	/**
 	 * Clear the selection
@@ -162,7 +162,7 @@ protected:
 	/**
 	 * The selected hexes
 	 */
-	std::set<gamemap::location> selection_;
+	std::set<map_location> selection_;
 };
 
 

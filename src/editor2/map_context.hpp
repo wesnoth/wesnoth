@@ -62,20 +62,20 @@ public:
 	 * Draw a terrain on a single location on the map. 
 	 * Sets the refresh flags accordingly.
 	 */
-	void draw_terrain(t_translation::t_terrain terrain, const gamemap::location& loc, 
+	void draw_terrain(t_translation::t_terrain terrain, const map_location& loc, 
 		bool one_layer_only = false);
 		
 	/**
 	 * Actual drawing function used by both overloaded variants of draw_terrain.
 	 */
-	void draw_terrain_actual(t_translation::t_terrain terrain, const gamemap::location& loc,
+	void draw_terrain_actual(t_translation::t_terrain terrain, const map_location& loc,
 		bool one_layer_only = false);
 	
 	/**
 	 * Draw a terrain on a set of locations on the map. 
 	 * Sets the refresh flags accordingly.
 	 */
-	void draw_terrain(t_translation::t_terrain terrain, const std::set<gamemap::location>& locs, 
+	void draw_terrain(t_translation::t_terrain terrain, const std::set<map_location>& locs, 
 		bool one_layer_only = false);
 
 	/**
@@ -109,10 +109,10 @@ public:
 	 */
 	void set_needs_labels_reset(bool value=true) { needs_labels_reset_ = value; }
 	
-	const std::set<gamemap::location> changed_locations() const { return changed_locations_; }
+	const std::set<map_location> changed_locations() const { return changed_locations_; }
 	void clear_changed_locations();
-	void add_changed_location(const gamemap::location& loc);
-	void add_changed_location(const std::set<gamemap::location>& locs);
+	void add_changed_location(const map_location& loc);
+	void add_changed_location(const std::set<map_location>& locs);
 	void set_everything_changed();
 	bool everything_changed() const;
 	
@@ -252,7 +252,7 @@ protected:
 	/**
 	 * Cache of set starting position labels. Necessary for removing them.
 	 */
-	std::set<gamemap::location> starting_position_label_locs_;
+	std::set<map_location> starting_position_label_locs_;
 	
 	/**
 	 * Refresh flag indicating the map in this context should be completely reloaded by the display
@@ -269,7 +269,7 @@ protected:
 	 */
 	bool needs_labels_reset_;
 	
-	std::set<gamemap::location> changed_locations_;
+	std::set<map_location> changed_locations_;
 	bool everything_changed_;
 };
 

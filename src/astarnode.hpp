@@ -33,14 +33,14 @@ public:
 	}
 
 	double g, h;  // g: already traveled time, h: estimated time still to travel
-	gamemap::location loc;
+	map_location loc;
 	a_star_node* nodeParent;
 	bool isInCloseList;
 
-	void initNode(gamemap::location const &pos, gamemap::location const &dst,
-	              double cost, a_star_node *parent, std::set<gamemap::location> const *teleports);
+	void initNode(map_location const &pos, map_location const &dst,
+	              double cost, a_star_node *parent, std::set<map_location> const *teleports);
 
-	inline double heuristic(const gamemap::location& src, const gamemap::location& dst)
+	inline double heuristic(const map_location& src, const map_location& dst)
 	{
 		// We will mainly use the distances in hexes
 		// but we substract a tiny bonus for shorter Euclidean distance
@@ -75,7 +75,7 @@ class a_star_world
 public:
 	void resize_IFN(size_t parWidth, size_t parHeight);
 	void clear();
-	a_star_node* getNodeFromLocation(gamemap::location const &loc, bool& isCreated);
+	a_star_node* getNodeFromLocation(map_location const &loc, bool& isCreated);
 	a_star_world();
 	~a_star_world();
 };

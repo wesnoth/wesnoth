@@ -570,7 +570,7 @@ void editor_controller::refresh_after_action(bool drag_part)
 				get_map_context().set_needs_terrain_rebuild(false);
 				gui().invalidate_all();
 			} else {
-				foreach (const gamemap::location& loc, get_map_context().changed_locations()) {
+				foreach (const map_location& loc, get_map_context().changed_locations()) {
 					gui().rebuild_terrain(loc);
 				}
 				gui().invalidate(get_map_context().changed_locations());
@@ -950,7 +950,7 @@ void editor_controller::update_mouse_action_highlights()
 	DBG_ED << __func__ << "\n";
 	int x, y;
 	SDL_GetMouseState(&x, &y);
-	gamemap::location hex_clicked = gui().hex_clicked_on(x,y);
+	map_location hex_clicked = gui().hex_clicked_on(x,y);
 	get_mouse_action()->update_brush_highlights(gui(), hex_clicked);
 }
 
@@ -1051,7 +1051,7 @@ void editor_controller::redo()
 void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
-	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
+	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (get_map().on_board_with_border(drag_from_hex_) && is_dragging()) {
 		editor_action* a = NULL;
 		bool partial = false;
@@ -1100,7 +1100,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click\n";
 	if (mouse_handler_base::left_click(x, y, browse)) return true;
 	LOG_ED << "Left click, after generic handling\n";
-	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
+	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_left(*gui_, x, y);
@@ -1128,7 +1128,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click\n";
 	if (mouse_handler_base::right_click(x, y, browse)) return true;
 	LOG_ED << "Right click, after generic handling\n";
-	gamemap::location hex_clicked = gui().hex_clicked_on(x, y);
+	map_location hex_clicked = gui().hex_clicked_on(x, y);
 	if (!get_map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_right(*gui_, x, y);

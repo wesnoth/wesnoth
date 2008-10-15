@@ -34,7 +34,7 @@ struct move_cost_calculator : cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 	                     const unit_map& units,
-	                     const gamemap::location& loc,
+	                     const map_location& loc,
 						 const ai::move_map& dstsrc,
 						 const ai::move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), units_(units),
@@ -42,14 +42,14 @@ struct move_cost_calculator : cost_calculator
 		avoid_enemies_(u.usage() == "scout")
 	{}
 
-	virtual double cost(const gamemap::location&, const gamemap::location& loc, const double) const
+	virtual double cost(const map_location&, const map_location& loc, const double) const
 	{
 		/*
 		if(!map_.on_board(loc))
 			return 1000.0;
 
 		// if this unit can move to that location this turn, it has a very very low cost
-		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator Itor;
+		typedef std::multimap<map_location,map_location>::const_iterator Itor;
 		std::pair<Itor,Itor> range = dstsrc_.equal_range(loc);
 		while(range.first != range.second) {
 			if(range.first->second == loc_) {
@@ -83,7 +83,7 @@ private:
 	const gamemap& map_;
 	const unit_map& units_;
 //	mutable std::map<t_translation::t_terrain,int> move_type_;
-	const gamemap::location loc_;
+	const map_location loc_;
 	const ai::move_map dstsrc_, enemy_dstsrc_;
 	const bool avoid_enemies_;
 };
@@ -101,9 +101,9 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		const double threat = power_projection(leader->first,enemy_dstsrc);
 		if(threat > 0.0) {
 			//find the location of enemy threats
-			std::set<gamemap::location> threats;
+			std::set<map_location> threats;
 
-			gamemap::location adj[6];
+			map_location adj[6];
 			get_adjacent_tiles(leader->first,adj);
 			for(size_t n = 0; n != 6; ++n) {
 				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj[n]);
@@ -119,7 +119,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			assert(threats.empty() == false);
 
 			const double value = threat/double(threats.size());
-			for(std::set<gamemap::location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
+			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
 				targets.push_back(target(*i,value,target::THREAT));
 			}
@@ -198,7 +198,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	return targets;
 }
 
-gamemap::location ai::form_group(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
+map_location ai::form_group(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
 {
 	if(route.empty()) {
 		return location();
@@ -242,7 +242,7 @@ gamemap::location ai::form_group(const std::vector<location>& route, const move_
 void ai::enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
 {
 	for(std::vector<location>::const_iterator i = route.begin(); i != route.end(); ++i) {
-		gamemap::location adj[6];
+		map_location adj[6];
 		get_adjacent_tiles(*i,adj);
 		for(size_t n = 0; n != 6; ++n) {
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj[n]);
@@ -389,7 +389,7 @@ double ai::compare_groups(const std::set<location>& our_group, const std::set<lo
 	return a/b;
 }
 
-std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
+std::pair<map_location,map_location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
 	log_scope2(ai, "choosing move");
 
@@ -448,7 +448,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		if (cur_route.move_left < locStopValue)
 		{
 			// if this unit can move to that location this turn, it has a very very low cost
-			typedef std::multimap<gamemap::location,gamemap::location>::const_iterator multimapItor;
+			typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
 			std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
 			while (locRange.first != locRange.second) {
 				if (locRange.first->second == u->first) {
@@ -533,7 +533,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			if (cur_route.move_left < locStopValue)
 			{
 				// if this unit can move to that location this turn, it has a very very low cost
-				typedef std::multimap<gamemap::location,gamemap::location>::const_iterator multimapItor;
+				typedef std::multimap<map_location,map_location>::const_iterator multimapItor;
 				std::pair<multimapItor,multimapItor> locRange = dstsrc.equal_range(u->first);
 				while (locRange.first != locRange.second) {
 					if (locRange.first->second == u->first) {
@@ -620,7 +620,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		}
 	}
 
-	std::map<gamemap::location,paths> dummy_possible_moves;
+	std::map<map_location,paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
@@ -804,9 +804,9 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 
 struct keep_value {
 	size_t value;
-	gamemap::location loc;
+	map_location loc;
 
-	keep_value(size_t v, const gamemap::location& l) : value(v), loc(l)
+	keep_value(size_t v, const map_location& l) : value(v), loc(l)
 	{}
 	bool operator<(const keep_value& val) const 
 	{
@@ -825,8 +825,8 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 		return;
 	}
 
-	std::map<gamemap::location,paths> possible_moves;
-	std::map<gamemap::location,paths>::iterator path_itor = possible_moves.insert(std::make_pair(leader->first, paths())).first;
+	std::map<map_location,paths> possible_moves;
+	std::map<map_location,paths>::iterator path_itor = possible_moves.insert(std::make_pair(leader->first, paths())).first;
 
 	// Guess how many units we want to recruit
 	const int number_of_recruit = current_team().gold() / 15;
@@ -850,7 +850,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 						std::make_pair(*i,
 							a_star_search(leader->first, *i, 10000.0, &cost_calc,map_.w(), map_.h()))).first;
 
-				std::set<gamemap::location> checked_hexes;
+				std::set<map_location> checked_hexes;
 				const int distance = route->second.steps.size()-1;
 				checked_hexes.insert(*i);
 				const int free_slots = count_free_hexes_in_castle(*i, checked_hexes);
@@ -862,7 +862,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 						(current_team().is_enemy(u->second.side())?4:2)
 					:0);
 				const int enemy = leader->second.total_movement() * enemy_dstsrc.count(*i);
-				gamemap::location target;
+				map_location target;
 				if (distance > leader->second.movement_left())
 				{
 					target = route->second.steps[leader->second.movement_left()+1];
@@ -889,7 +889,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 }
 
-int ai::count_free_hexes_in_castle(const gamemap::location& loc, std::set<gamemap::location>& checked_hexes)
+int ai::count_free_hexes_in_castle(const map_location& loc, std::set<map_location>& checked_hexes)
 {
 	int ret = 0;
 	location adj[6];

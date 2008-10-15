@@ -20,10 +20,11 @@
 class config;
 class gamestatus;
 class unit;
-class vconfig;
 class unit_map;
+class vconfig;
 
 #include "terrain.hpp"
+#include "map_location.hpp"
 
 #include "serialization/string_utils.hpp"
 
@@ -63,88 +64,14 @@ public:
 		incorrect_format_exception(const char* msg) : msg_(msg) {}
 		const char* const msg_;
 	};
-
-	/** Represents a location on the map. */
-	struct location {
-		/** Valid directions which can be moved in our hexagonal world. */
-		enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
-		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
-
-		static DIRECTION parse_direction(const std::string& str);
-
-		/**
-		 * Parse_directions takes a comma-separated list, and filters out any
-		 * invalid directions
-		 */
-		static std::vector<DIRECTION> parse_directions(const std::string& str);
-		static std::string write_direction(DIRECTION dir);
-
-		location() : x(-1000), y(-1000) {}
-		location(int x, int y) : x(x), y(y) {}
-		location(const config& cfg, const variable_set *variables);
-
-		void write(config& cfg) const;
-
-		inline bool valid() const { return x >= 0 && y >= 0; }
-
-		inline bool valid(const int parWidth, const int parHeight) const
-		{
-			return ((x >= 0) && (y >= 0) && (x < parWidth) && (y < parHeight));
-		}
-
-		int x, y;
-		bool matches_range(const std::string& xloc, const std::string& yloc) const;
-
-		// Inlining those for performance reasons
-		bool operator<(const location& a) const { return x < a.x || (x == a.x && y < a.y); }
-		bool operator==(const location& a) const { return x == a.x && y == a.y; }
-		bool operator!=(const location& a) const { return !operator==(a); }
-
-		// Adds an absolute location to a "delta" location
-		// This is not the mathematically correct behviour, it is neither
-		// commutative nor associative. Negative coordinates may give strange
-		// results. It is retained because terain builder code relies in this
-		// broken behaviour. Best avoid.
-		location legacy_negation() const;
-		location legacy_sum(const location &a) const;
-		location& legacy_sum_assign(const location &a);
-		location legacy_difference(const location &a) const;
-		location &legacy_difference_assign(const location &a);
-
-		// Location arithmetic operations treating the locations as vectors in
-		// a hex-based space. These operations form an abelian group, i.e. 
-		// everything works as you would expect addition and substraction to 
-		// work, with associativity and commutativity.
-		location vector_negation() const;
-		location vector_sum(const location &a) const;
-		location& vector_sum_assign(const location &a);
-		location vector_difference(const location &a) const;
-		location &vector_difference_assign(const location &a);
-
-		// Do n step in the direction d 
-		location get_direction(DIRECTION d, int n = 1) const;
-		DIRECTION get_relative_dir(location loc) const;
-		static DIRECTION get_opposite_dir(DIRECTION d);
-
-		static const location null_location;
-	};
-
-	/**
-	 * Drawing order, copied from ordered_draw in display.hpp.
-	 *
-	 * This returns the order in which the units should be drawn so they overlap 
-	 * propererly.
-	 */
-	static int get_drawing_order (const gamemap::location& loc )
-			{ return (loc.y * 2 + loc.x % 2) * 1024+loc.x; }
        
-	const t_translation::t_list& underlying_mvt_terrain(const location& loc) const
+	const t_translation::t_list& underlying_mvt_terrain(const map_location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }
-	const t_translation::t_list& underlying_def_terrain(const location& loc) const
+	const t_translation::t_list& underlying_def_terrain(const map_location& loc) const
 		{ return underlying_def_terrain(get_terrain(loc)); }
-	const t_translation::t_list& underlying_union_terrain(const location& loc) const
+	const t_translation::t_list& underlying_union_terrain(const map_location& loc) const
 		{ return underlying_union_terrain(get_terrain(loc)); }
-	std::string get_terrain_string(const location& loc) const
+	std::string get_terrain_string(const map_location& loc) const
 		{ return get_terrain_string(get_terrain(loc)); }
 	bool is_village(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_village(); }
@@ -155,13 +82,13 @@ public:
 	bool is_keep(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_keep(); }
 
-	bool is_village(const location& loc) const
+	bool is_village(const map_location& loc) const
 		{ return on_board(loc) && is_village(get_terrain(loc)); }
-	int gives_healing(const location& loc) const
+	int gives_healing(const map_location& loc) const
 		{ return on_board(loc) ?  gives_healing(get_terrain(loc)) : 0; }
-	bool is_castle(const location& loc) const
+	bool is_castle(const map_location& loc) const
 		{ return on_board(loc) && is_castle(get_terrain(loc)); }
-	bool is_keep(const location& loc) const
+	bool is_keep(const map_location& loc) const
 		{ return on_board(loc) && is_keep(get_terrain(loc)); }
 		
 	enum tborder {
@@ -191,6 +118,7 @@ public:
 	 * @param data			      The mapdata to load.
 	 */
 	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
+
 	virtual ~gamemap();
 
 	/**
@@ -220,7 +148,7 @@ public:
 	/** Real height of the map, including borders */
 	int total_height() const { return total_height_; }
 
-	const t_translation::t_terrain operator[](const gamemap::location& loc) const
+	const t_translation::t_terrain operator[](const map_location& loc) const
 		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
 
 	/**
@@ -229,18 +157,18 @@ public:
 	 * Hexes off the map may be looked up, and their 'emulated' terrain will
 	 * also be returned.  This allows proper drawing of the edges of the map.
 	 */
-	t_translation::t_terrain get_terrain(const location& loc) const;
+	t_translation::t_terrain get_terrain(const map_location& loc) const;
 
 	/** Writes the terrain at loc to cfg. */
-	void write_terrain(const gamemap::location &loc, config& cfg) const;
+	void write_terrain(const map_location &loc, config& cfg) const;
 
 
 	/** Manipulate starting positions of the different sides. */
-	const location& starting_position(int side) const;
-	int is_starting_position(const location& loc) const;
+	const map_location& starting_position(int side) const;
+	int is_starting_position(const map_location& loc) const;
 	int num_valid_starting_positions() const;
 
-	void set_starting_position(int side, const location& loc);
+	void set_starting_position(int side, const map_location& loc);
 
 	/**
 	 * Tell if a location is on the map. 
@@ -248,8 +176,8 @@ public:
 	 * Should be called before indexing using [].
 	 * @todo inline for performace? -- Ilor
 	 */
-	bool on_board(const location& loc) const;
-	bool on_board_with_border(const location& loc) const;
+	bool on_board(const map_location& loc) const;
+	bool on_board_with_border(const map_location& loc) const;
 
 	/** Tell if the map is of 0 size. */
 	bool empty() const
@@ -258,7 +186,7 @@ public:
 	}
 
 	/** Return a list of the locations of villages on the map. */
-	const std::vector<location>& villages() const { return villages_; }
+	const std::vector<map_location>& villages() const { return villages_; }
 
 	/**
 	 * Get the corresponding terrain_type information object
@@ -267,7 +195,7 @@ public:
 	const terrain_type& get_terrain_info(const t_translation::t_terrain terrain) const;
 
 	/** Shortcut to get_terrain_info(get_terrain(loc)). */
-	const terrain_type& get_terrain_info(const location &loc) const
+	const terrain_type& get_terrain_info(const map_location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
 
 	/** Gets the list of terrains. */
@@ -278,7 +206,7 @@ public:
 	 * Clobbers over the terrain at location 'loc', with the given terrain.
 	 * Uses mode and replace_if_failed like merge_terrains().
 	 */
-	void set_terrain(const location& loc, const t_translation::t_terrain terrain, const tmerge_mode mode=BOTH, bool replace_if_failed = false);
+	void set_terrain(const map_location& loc, const t_translation::t_terrain terrain, const tmerge_mode mode=BOTH, bool replace_if_failed = false);
 
 	/**
 	 * Returns a list of the frequencies of different terrain types on the map,
@@ -292,7 +220,7 @@ public:
 	 * Needed by the editor to make tiles at the border update correctly when
 	 * drawing other tiles.
 	 */
-	void remove_from_border_cache(const location &loc)
+	void remove_from_border_cache(const map_location &loc)
 		{ borderCache_.erase(loc); }
 
 	/**
@@ -332,7 +260,7 @@ protected:
 	 * The size of the starting positions array is MAX_PLAYERS + 1, 
 	 * because the positions themselves are numbered from 1.
 	 */
-	location startingPositions_[MAX_PLAYERS+1];
+	map_location startingPositions_[MAX_PLAYERS+1];
 
 	/**
 	 * Clears the border cache, needed for the editor
@@ -356,9 +284,9 @@ private:
 
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_terrain, terrain_type> tcodeToTerrain_;
-	std::vector<location> villages_;
+	std::vector<map_location> villages_;
 
-	mutable std::map<location, t_translation::t_terrain> borderCache_;
+	mutable std::map<map_location, t_translation::t_terrain> borderCache_;
 	mutable std::map<t_translation::t_terrain, size_t> terrainFrequencyCache_;
 
 protected:
@@ -381,16 +309,9 @@ private:
 class viewpoint
 {
 public:
-	virtual bool shrouded(const gamemap::location& loc) const = 0;
-	virtual bool fogged(const gamemap::location& loc) const = 0;
+	virtual bool shrouded(const map_location& loc) const = 0;
+	virtual bool fogged(const map_location& loc) const = 0;
 	virtual ~viewpoint() {};
 };
-
-/** Parses ranges of locations into a vector of locations. */
-std::vector<gamemap::location> parse_location_range(const std::string& xvals,
-	const std::string& yvals, const gamemap *const map=NULL);
-
-/** Dumps a position on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
 
 #endif

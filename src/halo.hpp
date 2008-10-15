@@ -48,7 +48,7 @@ const int NO_HALO = 0;
  * shroud is active.  (Note it will be shown with the fog active.) 
  * If it is not attached to an item, the location should be set to -1, -1
  */
-int add(int x, int y, const std::string& image, const gamemap::location& loc,
+int add(int x, int y, const std::string& image, const map_location& loc,
 		ORIENTATION orientation=NORMAL, bool infinite=true);
 
 /** Set the position of an existing haloing effect, according to its handle. */
@@ -68,7 +68,7 @@ struct remover
  * Which haloes are rendered is determined by invalidated_locations and the
  * internal state in the control sets (in halo.cpp).
  */
-void unrender(std::set<gamemap::location> invalidated_locations);
+void unrender(std::set<map_location> invalidated_locations);
 void render();
 
 } // end namespace halo

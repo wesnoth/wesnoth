@@ -46,18 +46,18 @@ public:
 	/**
 	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
-	void move(editor_display& disp, const gamemap::location& hex);
+	void move(editor_display& disp, const map_location& hex);
 	
 	/**
 	 * Unconditionally update the brush highlights for the current tool when hex is the center location
 	 */
-	void update_brush_highlights(editor_display& disp, const gamemap::location& hex);
+	void update_brush_highlights(editor_display& disp, const map_location& hex);
 		
 	/**
 	 * Locations that would be affected by a click, used by move to update highlights. Defauts to higlight the mouseover hex.
 	 * Maybe also used for actually performing the action in click() or drag().
 	 */
-	virtual std::set<gamemap::location> affected_hexes(editor_display& disp, const gamemap::location& hex);
+	virtual std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 	
 	/**
 	 * A click, possibly the beginning of a drag. Must be overriden.
@@ -124,7 +124,7 @@ protected:
 	/**
 	 * The hex previously used in move operations
 	 */
-	gamemap::location previous_move_hex_;
+	map_location previous_move_hex_;
 	
 	/**
 	 * Key presses, used for modifiers (alt, shift) in some operations
@@ -154,17 +154,17 @@ public:
 	/**
 	 * The affected hexes of a brush action are the result of projecting the current brush on the mouseover hex
 	 */
-	std::set<gamemap::location> affected_hexes(editor_display& disp, const gamemap::location& hex);	
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);	
 	
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
+	virtual editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) = 0;
 	
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
-	virtual editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes) = 0;
+	virtual editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes) = 0;
 
 	/**
 	 * Calls click_perform_left()
@@ -202,7 +202,7 @@ protected:
 	 * The previous hex dragged into.
 	 * @todo keep a set of all "visited" locations to reduce action count in long drags that hit the same hexes multiple times?
 	 */
-	gamemap::location previous_drag_hex_;
+	map_location previous_drag_hex_;
 	
 private:
 	/**
@@ -210,7 +210,7 @@ private:
 	 * The drags differ only in the worker function called, which should be
 	 * passed as the template parameter. This exists only to avoid copy-pasting code.
 	 */
-	template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<gamemap::location>&)>
+	template <editor_action* (brush_drag_mouse_action::*perform_func)(editor_display&, const std::set<map_location>&)>
 	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
@@ -240,12 +240,12 @@ public:
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
 
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
 
 	void set_mouse_overlay(editor_display& disp);
 	
@@ -268,7 +268,7 @@ public:
 	/**
 	 * Overriden to allow special behaviour based on modifier keys
 	 */
-	std::set<gamemap::location> affected_hexes(editor_display& disp, const gamemap::location& hex);
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 	
 	/**
 	 * Force a fake "move" event to update brush overlay on key event
@@ -278,12 +278,12 @@ public:
 	/**
 	 * Left click/drag selects
 	 */
-	editor_action* click_perform_left(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes);
 
 	/**
 	 * Right click/drag deselects
 	 */
-	editor_action* click_perform_right(editor_display& disp, const std::set<gamemap::location>& hexes);
+	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
 	
 	virtual void set_mouse_overlay(editor_display& disp);
 };
@@ -302,7 +302,7 @@ public:
 	/**
 	 * Show an outline of where the paste will go
 	 */
-	std::set<gamemap::location> affected_hexes(editor_display& disp, const gamemap::location& hex);
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 	
 	/**
 	 * Return a paste with offset action
@@ -340,7 +340,7 @@ public:
 	/**
 	 * Tiles that will be painted to, possibly use modifier keys here
 	 */
-	std::set<gamemap::location> affected_hexes(editor_display& disp, const gamemap::location& hex);
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
 	
 	/**
 	 * Left / right click fills with the respective terrain

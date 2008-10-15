@@ -840,9 +840,9 @@ void encounter_recallable_units(game_state& gamestate){
 void encounter_map_terrain(gamemap& map){
 	for (int map_x = 0; map_x < map.w(); map_x++) {
 		for (int map_y = 0; map_y < map.h(); map_y++) {
-			const t_translation::t_terrain t = map.get_terrain(gamemap::location(map_x, map_y));
+			const t_translation::t_terrain t = map.get_terrain(map_location(map_x, map_y));
 			preferences::encountered_terrains().insert(t);
-			const t_translation::t_list& underlaying_list = map.underlying_union_terrain(gamemap::location(map_x, map_y));
+			const t_translation::t_list& underlaying_list = map.underlying_union_terrain(map_location(map_x, map_y));
 			for (std::vector<t_translation::t_terrain>::const_iterator ut = underlaying_list.begin(); ut != underlaying_list.end(); ut++) {
 				preferences::encountered_terrains().insert(*ut);
 			};

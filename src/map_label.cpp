@@ -30,9 +30,9 @@ namespace {
 //or the tile below is obscured. This is because in the case where the tile
 //itself is visible, but the tile below is obscured, the bottom half of the
 //tile will still be shrouded, and the label being drawn looks weird
-static bool is_shrouded(const display& disp, const gamemap::location& loc)
+static bool is_shrouded(const display& disp, const map_location& loc)
 {
-	return disp.shrouded(loc) || disp.shrouded(gamemap::location(loc.x,loc.y+1));
+	return disp.shrouded(loc) || disp.shrouded(map_location(loc.x,loc.y+1));
 }
 
 map_labels::map_labels(const display& disp,
@@ -85,7 +85,7 @@ void map_labels::read(const config& cfg, const variable_set *variables)
 
 	const config::child_list& items = cfg.get_children("label");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const gamemap::location loc(**i, variables);
+		const map_location loc(**i, variables);
 		terrain_label* label = new terrain_label(*this, **i, variables);
 		add_label(loc, label);
 	}
@@ -98,7 +98,7 @@ size_t map_labels::get_max_chars()
 	return max_label_size;
 }
 
-const terrain_label* map_labels::get_label(const gamemap::location& loc, const std::string& team_name)
+const terrain_label* map_labels::get_label(const map_location& loc, const std::string& team_name)
 {
 	team_label_map::const_iterator label_map = labels_.find(team_name);
 	if (label_map != labels_.end()) {
@@ -109,7 +109,7 @@ const terrain_label* map_labels::get_label(const gamemap::location& loc, const s
 	return NULL;
 }
 
-const terrain_label* map_labels::get_label(const gamemap::location& loc)
+const terrain_label* map_labels::get_label(const map_location& loc)
 {
 	const terrain_label* res = get_label(loc, team_name());
 	// no such team label, we try global label, except if it's what we just did
@@ -145,7 +145,7 @@ void map_labels::set_team(const team* team)
 }
 
 
-const terrain_label* map_labels::set_label(const gamemap::location& loc,
+const terrain_label* map_labels::set_label(const map_location& loc,
 					   const std::string& text,
 					   const std::string team_name,
 					   const SDL_Color colour)
@@ -214,7 +214,7 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 	return res;
 }
 
-void map_labels::add_label(const gamemap::location& loc,
+void map_labels::add_label(const map_location& loc,
 	const terrain_label* new_label)
 {
 	team_label_map::const_iterator labs = labels_.find(new_label->team_name());
@@ -226,7 +226,7 @@ void map_labels::add_label(const gamemap::location& loc,
 		assert(labs != labels_.end());
 	}
 
-	const_cast<label_map&>(labs->second).insert(std::pair<gamemap::location,const terrain_label*>(loc,new_label));
+	const_cast<label_map&>(labs->second).insert(std::pair<map_location,const terrain_label*>(loc,new_label));
 }
 
 void map_labels::clear(const std::string& team_name)
@@ -284,7 +284,7 @@ void map_labels::recalculate_labels()
 	}
 }
 
-bool map_labels::visible_global_label(const gamemap::location& loc) const
+bool map_labels::visible_global_label(const map_location& loc) const
 {
 	const team_label_map::const_iterator glabels = labels_.find(team_name());
 	return glabels == labels_.end()
@@ -306,7 +306,7 @@ void map_labels::recalculate_shroud()
 /// creating new label
 terrain_label::terrain_label(const std::string& text,
 							 const std::string& team_name,
-							 const gamemap::location& loc,
+							 const map_location& loc,
 							 const map_labels& parent,
 							 const SDL_Color colour)  :
 		handle_(0),
@@ -357,7 +357,7 @@ terrain_label::~terrain_label()
 
 void terrain_label::read(const config& cfg, const variable_set *variables)
 {
-	loc_ = gamemap::location(cfg, variables);
+	loc_ = map_location(cfg, variables);
 	SDL_Color colour = font::LABEL_COLOUR;
 	std::string tmp_colour = cfg["colour"];
 
@@ -413,7 +413,7 @@ bool terrain_label::fogged() const
 	return fogged_;
 }
 
-const gamemap::location& terrain_label::location() const
+const map_location& terrain_label::location() const
 {
 	return loc_;
 }
@@ -488,8 +488,8 @@ void terrain_label::draw()
 	if (visible())
 	{
 
-		const gamemap::location loc_nextx(loc_.x+1,loc_.y);
-		const gamemap::location loc_nexty(loc_.x,loc_.y+1);
+		const map_location loc_nextx(loc_.x+1,loc_.y);
+		const map_location loc_nexty(loc_.x,loc_.y+1);
 		const int xloc = (parent_->disp().get_location_x(loc_) +
 				parent_->disp().get_location_x(loc_nextx)*2)/3;
 		const int yloc = parent_->disp().get_location_y(loc_nexty) - font::SIZE_NORMAL;

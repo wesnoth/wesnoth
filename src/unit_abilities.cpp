@@ -117,7 +117,7 @@ static bool affects_side(const config& cfg, const std::vector<team>& teams, size
 }
 
 
-bool unit::get_ability_bool(const std::string& ability, const gamemap::location& loc) const
+bool unit::get_ability_bool(const std::string& ability, const map_location& loc) const
 {
 	const config* abilities = cfg_.child("abilities");
 	if(abilities) {
@@ -131,7 +131,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 	}
 
 	assert(units_);
-	gamemap::location adjacent[6];
+	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
@@ -153,7 +153,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 
 	return false;
 }
-unit_ability_list unit::get_abilities(const std::string& ability, const gamemap::location& loc) const
+unit_ability_list unit::get_abilities(const std::string& ability, const map_location& loc) const
 {
 	unit_ability_list res;
 
@@ -164,13 +164,13 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 		     i_end = list.end(); i != i_end; ++i) {
 			if (ability_active(ability, **i, loc) &&
 			    ability_affects_self(ability, **i, loc))
-				res.cfgs.push_back(std::pair<config*, gamemap::location>
+				res.cfgs.push_back(std::pair<config*, map_location>
 					(*i, loc));
 		}
 	}
 
 	assert(units_ != NULL);
-	gamemap::location adjacent[6];
+	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
@@ -185,7 +185,7 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 			if (unit_abilities::affects_side(**j, teams_manager::get_teams(), side(), it->second.side()) &&
 			    it->second.ability_active(ability, **j, adjacent[i]) &&
 			    ability_affects_adjacent(ability, **j, i, loc))
-				res.cfgs.push_back(std::pair<config*, gamemap::location>
+				res.cfgs.push_back(std::pair<config*, map_location>
 					(*j, adjacent[i]));
 		}
 	}
@@ -246,7 +246,7 @@ std::vector<std::string> unit::get_ability_list() const
 	return res;
 }
 
-std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) const
+std::vector<std::string> unit::ability_tooltips(const map_location& loc) const
 {
 	std::vector<std::string> res;
 
@@ -285,7 +285,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 	}
 	/*
 	assert(units_ != NULL);
-	gamemap::location adjacent[6];
+	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
@@ -348,7 +348,7 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 	return (cache != 0);
 }
 
-bool unit::ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const
+bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
 	assert(units_ && map_ && gamestatus_);
@@ -357,7 +357,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 		if (!matches_filter(afilter,loc, cache_illuminates(illuminates, ability)))
 			return false;
 
-	gamemap::location adjacent[6];
+	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	config::child_list::const_iterator i, i_end;
 	const config::child_list& adj_filt = cfg.get_children("filter_adjacent");
@@ -365,9 +365,9 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		for (std::vector<std::string>::const_iterator j = dirs.begin(),
 		     j_end = dirs.end(); j != j_end; ++j) {
-			gamemap::location::DIRECTION index =
-				gamemap::location::parse_direction(*j);
-			if (index == gamemap::location::NDIRECTIONS)
+			map_location::DIRECTION index =
+				map_location::parse_direction(*j);
+			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units_->find(adjacent[index]);
 			if (unit == units_->end())
@@ -382,8 +382,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		for (std::vector<std::string>::const_iterator j = dirs.begin(),
 		     j_end = dirs.end(); j != j_end; ++j) {
-			gamemap::location::DIRECTION index = gamemap::location::parse_direction(*j);
-			if (index == gamemap::location::NDIRECTIONS) {
+			map_location::DIRECTION index = map_location::parse_direction(*j);
+			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
 			/* GCC-3.3 doesn't accept vconfig(*i) in adj_filter */
@@ -402,7 +402,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const gamemap::location& loc) const
+bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc) const
 {
 	int illuminates = -1;
 
@@ -428,7 +428,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
+bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
 	config const *filter = cfg.child("filter_self");
@@ -452,16 +452,16 @@ bool unit_ability_list::empty() const
 	return cfgs.empty();
 }
 
-std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& key, int def) const
+std::pair<int,map_location> unit_ability_list::highest(const std::string& key, int def) const
 {
 	if(cfgs.empty()) {
-		return std::make_pair(def,gamemap::location::null_location);
+		return std::make_pair(def,map_location::null_location);
 	}
-	gamemap::location best_loc = gamemap::location::null_location;
+	map_location best_loc = map_location::null_location;
 	int abs_max = -10000;
 	int flat = -10000;
 	int stack = 0;
-	for (std::vector< std::pair<config*, gamemap::location> >::const_iterator i = cfgs.begin(),
+	for (std::vector< std::pair<config*, map_location> >::const_iterator i = cfgs.begin(),
 	     i_end = cfgs.end(); i != i_end; ++i) {
 		std::string const &text = (*i->first)[key];
 		int value = lexical_cast_default<int>(text);
@@ -482,16 +482,16 @@ std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& k
 	}
 	return std::make_pair(flat + stack, best_loc);
 }
-std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& key, int def) const
+std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, int def) const
 {
 	if(cfgs.empty()) {
-		return std::make_pair(def,gamemap::location::null_location);
+		return std::make_pair(def,map_location::null_location);
 	}
-	gamemap::location best_loc = gamemap::location::null_location;
+	map_location best_loc = map_location::null_location;
 	int abs_max = 10000;
 	int flat = 10000;
 	int stack = 0;
-	for (std::vector< std::pair<config*, gamemap::location> >::const_iterator i = cfgs.begin(),
+	for (std::vector< std::pair<config*, map_location> >::const_iterator i = cfgs.begin(),
 	     i_end = cfgs.end(); i != i_end; ++i) {
 		std::string const &text = (*i->first)[key];
 		int value = lexical_cast_default<int>(text);
@@ -579,7 +579,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 		for (config::child_list::const_iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (special_active(**i, true))
-				res.cfgs.push_back(std::pair<config*, gamemap::location>
+				res.cfgs.push_back(std::pair<config*, map_location>
 					(*i, attacker_ ? aloc_ : dloc_));
 		}
 	}
@@ -590,7 +590,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 		for (config::child_list::const_iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (other_attack_->special_active(**i, false))
-				res.cfgs.push_back(std::pair<config*, gamemap::location>
+				res.cfgs.push_back(std::pair<config*, map_location>
 					(*i, attacker_ ? dloc_ : aloc_));
 		}
 	}
@@ -756,7 +756,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			}
 		}
 	}
-	gamemap::location adjacent[6];
+	map_location adjacent[6];
 	if(attacker_) {
 		get_adjacent_tiles(aloc_,adjacent);
 	} else {
@@ -768,9 +768,9 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		for (std::vector<std::string>::const_iterator j = dirs.begin(),
 		     j_end = dirs.end(); j != j_end; ++j) {
-			gamemap::location::DIRECTION index =
-				gamemap::location::parse_direction(*j);
-			if (index == gamemap::location::NDIRECTIONS)
+			map_location::DIRECTION index =
+				map_location::parse_direction(*j);
+			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = unitmap_->find(adjacent[index]);
 			if (unit == unitmap_->end() ||
@@ -784,9 +784,9 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		for (std::vector<std::string>::const_iterator j = dirs.begin(),
 		     j_end = dirs.end(); j != j_end; ++j) {
-			gamemap::location::DIRECTION index =
-				gamemap::location::parse_direction(*j);
-			if (index == gamemap::location::NDIRECTIONS)
+			map_location::DIRECTION index =
+				map_location::parse_direction(*j);
+			if (index == map_location::NDIRECTIONS)
 				continue;
 			/* GCC-3.3 doesn't accept vconfig(*i) in adj_filter */
 			const vconfig& v = vconfig(*i);
@@ -840,7 +840,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 		return true;
 	return false;
 }
-void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
+void attack_type::set_specials_context(const map_location& aloc,const map_location& dloc,
                               const unit_map* unitmap,
 							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* /*teams*/, bool attacker,const attack_type* other_attack) const
@@ -854,7 +854,7 @@ void attack_type::set_specials_context(const gamemap::location& aloc,const gamem
 	other_attack_ = other_attack;
 }
 
-void attack_type::set_specials_context(const gamemap::location& loc, const gamemap::location& dloc, const unit& un, bool attacker) const
+void attack_type::set_specials_context(const map_location& loc, const map_location& dloc, const unit& un, bool attacker) const
 {
 	aloc_ = loc;
 	dloc_ = dloc;
@@ -872,7 +872,7 @@ namespace unit_abilities
 {
 
 
-individual_effect::individual_effect(value_modifier t,int val,config* abil,const gamemap::location& l) :
+individual_effect::individual_effect(value_modifier t,int val,config* abil,const map_location& l) :
 	type(),
 	value(0),
 	ability(NULL),
@@ -881,7 +881,7 @@ individual_effect::individual_effect(value_modifier t,int val,config* abil,const
 	set(t,val,abil,l);
 }
 
-void individual_effect::set(value_modifier t,int val,config* abil,const gamemap::location& l)
+void individual_effect::set(value_modifier t,int val,config* abil,const map_location& l)
 {
 	type=t;
 	value=val;
@@ -901,7 +901,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 	individual_effect set_effect;
 
-	for (std::vector< std::pair<config*, gamemap::location> >::const_iterator
+	for (std::vector< std::pair<config*, map_location> >::const_iterator
 	     i = list.cfgs.begin(), i_end = list.cfgs.end(); i != i_end; ++i) {
 		const config& cfg = (*i->first);
 		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];

@@ -18,8 +18,8 @@ See the COPYING file for more details.
 
 #include <cassert>
 
-void a_star_node::initNode(gamemap::location const &pos, gamemap::location const &dst,
-                           double cost, a_star_node *parent, std::set<gamemap::location> const *teleports)
+void a_star_node::initNode(map_location const &pos, map_location const &dst,
+                           double cost, a_star_node *parent, std::set<map_location> const *teleports)
 {
 	isInCloseList = false;
 	loc = pos;
@@ -29,7 +29,7 @@ void a_star_node::initNode(gamemap::location const &pos, gamemap::location const
 	//if there are teleport locations, correct the heuristic to take them into account
 	if (teleports != NULL) {
 		double srch = h, dsth = h;
-		std::set<gamemap::location>::const_iterator i;
+		std::set<map_location>::const_iterator i;
 		for(i = teleports->begin(); i != teleports->end(); ++i) {
 			const double new_srch = heuristic(pos, *i);
 			const double new_dsth = heuristic(*i, dst);
@@ -150,7 +150,7 @@ void a_star_world::clear()
 	pool_->clear();
 }
 
-a_star_node *a_star_world::getNodeFromLocation(gamemap::location const &loc, bool &isCreated)
+a_star_node *a_star_world::getNodeFromLocation(map_location const &loc, bool &isCreated)
 {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(loc.valid());

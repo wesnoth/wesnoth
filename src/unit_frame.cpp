@@ -336,13 +336,13 @@ bool frame_builder::need_update() const
 	return false;
 }
 
-void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::location & src,const gamemap::location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const
+void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
 	const int xdst = game_display::get_singleton()->get_location_x(dst);
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
-	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
+	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
@@ -360,7 +360,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		}
 	}
 	image::locator image_loc;
-	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
+	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = image::locator(current_data.image_diagonal,current_data.image_mod);
 	} 
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
@@ -376,11 +376,11 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
 	if (image != NULL) {
-		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
-		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
+		bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
+		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 		game_display::get_singleton()->render_unit_image(x + current_data.x- image->w/2,
 			       	y  + current_data.y- image->h/2, false,
-			       	gamemap::get_drawing_order(src), image, facing_west, false,
+			       	src.get_drawing_order(), image, facing_west, false,
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
@@ -390,55 +390,55 @@ void unit_frame::redraw(const int frame_time,bool first_time,const gamemap::loca
 		halo::ORIENTATION orientation;
 		switch(direction)
 		{
-			case gamemap::location::NORTH:
-			case gamemap::location::NORTH_EAST:
+			case map_location::NORTH:
+			case map_location::NORTH_EAST:
 				orientation = halo::NORMAL;
 				break;
-			case gamemap::location::SOUTH_EAST:
-			case gamemap::location::SOUTH:
+			case map_location::SOUTH_EAST:
+			case map_location::SOUTH:
 				orientation = halo::VREVERSE;
 				break;
-			case gamemap::location::SOUTH_WEST:
+			case map_location::SOUTH_WEST:
 				orientation = halo::HVREVERSE;
 				break;
-			case gamemap::location::NORTH_WEST:
+			case map_location::NORTH_WEST:
 				orientation = halo::HREVERSE;
 				break;
-			case gamemap::location::NDIRECTIONS:
+			case map_location::NDIRECTIONS:
 			default:
 				orientation = halo::NORMAL;
 				break;
 		}
-		if(direction != gamemap::location::SOUTH_WEST && direction != gamemap::location::NORTH_WEST) {
+		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
 			*halo_id = halo::add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo,
-					gamemap::location(-1, -1),
+					map_location(-1, -1),
 					orientation);
 		} else {
 			*halo_id = halo::add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
 					current_data.halo,
-					gamemap::location(-1, -1),
+					map_location(-1, -1),
 					orientation);
 		}
 	}
 }
-bool unit_frame::invalidate(const bool force,const int frame_time,const gamemap::location & src,const gamemap::location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
+bool unit_frame::invalidate(const bool force,const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
 {
 	game_display* disp = game_display::get_singleton();
 	const int xsrc = disp->get_location_x(src);
 	const int ysrc = disp->get_location_y(src);
 	const int xdst = disp->get_location_x(dst);
 	const int ydst = disp->get_location_y(dst);
-	const gamemap::location::DIRECTION direction = src.get_relative_dir(dst);
+	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
 	//unused var - int d2 = disp->hex_size() / 2;
 
 	image::locator image_loc;
-	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
+	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = current_data.image_diagonal;
 	} 
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal

@@ -38,7 +38,7 @@ class unit_animation
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
+		int matches(const game_display &disp,const map_location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
@@ -53,8 +53,8 @@ class unit_animation
                 int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); };
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
-		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0,const bool accelerate = true);
-		void update_parameters(const gamemap::location &src, const gamemap::location &dst);
+		void start_animation(int start_time,const map_location &src = map_location::null_location, const map_location &dst = map_location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0,const bool accelerate = true);
+		void update_parameters(const map_location &src, const map_location &dst);
                 void pause_animation();
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
@@ -87,16 +87,16 @@ class unit_animation
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
 			void redraw( const frame_parameters& value,const bool primary=false);
 			bool invalidate(const frame_parameters& value, const bool primary = false) const;
-			void start_animation(int start_time,const gamemap::location& src,const  gamemap::location& dst, bool cycles=false);
-			void update_parameters(const gamemap::location& src,const  gamemap::location& dst);
+			void start_animation(int start_time,const map_location& src,const  map_location& dst, bool cycles=false);
+			void update_parameters(const map_location& src,const  map_location& dst);
 			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
 			bool accelerate;
 		private:
 
 			//animation params that can be locally overridden by frames
 			frame_builder parameters_;
-			gamemap::location src_;
-			gamemap::location dst_;
+			map_location src_;
+			map_location dst_;
 			int halo_id_;
 			int last_frame_begin_time_;
 
@@ -104,7 +104,7 @@ class unit_animation
 		t_translation::t_list terrain_types_;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
-		std::vector<gamemap::location::DIRECTION> directions_;
+		std::vector<map_location::DIRECTION> directions_;
 		int frequency_;
 		int base_score_;
 		std::vector<std::string> event_;
@@ -128,14 +128,14 @@ class unit_animator
 
 
 		void add_animation(unit* animated_unit,const std::string& event,
-				const gamemap::location &src = gamemap::location::null_location,
+				const map_location &src = map_location::null_location,
 				const int value=0,bool with_bars = false,bool cycles = false,
 				const std::string text="",const Uint32 text_color=0,
 				const unit_animation::hit_type hit_type = unit_animation::INVALID,
 				const attack_type* attack=NULL, const attack_type* second_attack = NULL,
 				int swing_num =0);
 		void replace_anim_if_invalid(unit* animated_unit,const std::string& event,
-				const gamemap::location &src = gamemap::location::null_location,
+				const map_location &src = map_location::null_location,
 				const int value=0,bool with_bars = false,bool cycles = false,
 				const std::string text="",const Uint32 text_color=0,
 				const unit_animation::hit_type hit_type = unit_animation::INVALID,
@@ -171,7 +171,7 @@ class unit_animator
 			const unit_animation * animation;
 			std::string text;
 			Uint32 text_color;
-			gamemap::location src;
+			map_location src;
 			bool with_bars;
 			bool cycles;
 		};

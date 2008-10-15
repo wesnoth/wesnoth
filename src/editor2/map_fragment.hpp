@@ -33,12 +33,12 @@ struct tile_info
 	/**
 	 * Create a tile info -- the constructor grabs required data from the map
 	 */
-	tile_info(const gamemap& map, const gamemap::location& offset)
+	tile_info(const gamemap& map, const map_location& offset)
 	: offset(offset), terrain(map.get_terrain(offset))
 	{
 	}
 	
-	gamemap::location offset;
+	map_location offset;
 	t_translation::t_terrain terrain;
 };
 
@@ -56,17 +56,17 @@ class map_fragment
 		/**
 		 * Create a map fragment from the specified locations on the map.
 		 */
-		map_fragment(const gamemap& map, const std::set<gamemap::location>& area);
+		map_fragment(const gamemap& map, const std::set<map_location>& area);
 		
 		/**
 		 * Add a single location and pull its info from the map.
 		 */
-		void add_tile(const gamemap& map, const gamemap::location& loc);
+		void add_tile(const gamemap& map, const map_location& loc);
 		
 		/**
 		 * Add many locations and pull their info from the map.
 		 */
-		void add_tiles(const gamemap& map, const std::set<gamemap::location>& loc);
+		void add_tiles(const gamemap& map, const std::set<map_location>& loc);
 		
 		/**
 		 * Get the tile_info vector.
@@ -76,38 +76,38 @@ class map_fragment
 		/**
 		 * Get the area covered by this map fragment.
 		 */
-		std::set<gamemap::location> get_area() const;
+		std::set<map_location> get_area() const;
 		
 		/**
 		 * Get the area covered by this map fragment, shifted by an offset.
 		 */
-		std::set<gamemap::location> get_offset_area(const gamemap::location& offset) const;
+		std::set<map_location> get_offset_area(const map_location& offset) const;
 		
 		/**
 		 * Paste the map fragment into the map, treating loc as the (0,0) point (offset).
 		 */
-		void paste_into(gamemap& map, const gamemap::location& loc) const;
+		void paste_into(gamemap& map, const map_location& loc) const;
 		
 		/**
 		 * Shift all tiles in the map fragment by the specified offset.
 		 */
-		void shift(const gamemap::location& offset);
+		void shift(const map_location& offset);
 		
 		/**
 		 * Return a location at the top left corner of this fragment's
 		 * bounding rectangle
 		 */
-		gamemap::location top_left_boundary() const;
+		map_location top_left_boundary() const;
 
 		/**
 		 * Get the center of the map fragment, bounds-wise.
 		 */
-		gamemap::location center_of_bounds() const;
+		map_location center_of_bounds() const;
 
 		/**
 		 * Get the center of the map fragment, mass-wise.
 		 */
-		gamemap::location center_of_mass() const;
+		map_location center_of_mass() const;
 		
 		/**
 		 * Shift the map fragment so that all locations have nonnegative coordinates
@@ -159,7 +159,7 @@ class map_fragment
 		 * The data of this map_fragment
 		 */
 		std::vector<tile_info> items_;
-		std::set<gamemap::location> area_;
+		std::set<map_location> area_;
 };
 
 } //end namespace editor2

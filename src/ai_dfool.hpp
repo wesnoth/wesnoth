@@ -50,7 +50,7 @@ namespace dfool {
   class unit_memory{
   public:
     unit_memory(const config& cfg);
-    void add_unit_sighting(unit u, gamemap::location l, size_t t);
+    void add_unit_sighting(unit u, map_location l, size_t t);
     void remove_unit_sighting(size_t id);
     //void purge(int turn = -1); // Clean outdated entries
     void write(config& temp);
@@ -62,7 +62,7 @@ namespace dfool {
     std::vector<unit> units_;
     unit_list ids_;
     std::vector<size_t> turns_;
-    std::vector<gamemap::location> locations_;
+    std::vector<map_location> locations_;
   };
 
   class evaluator{

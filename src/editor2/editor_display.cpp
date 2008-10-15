@@ -30,13 +30,13 @@ editor_display::editor_display(CVideo& video, const editor_map& map,
     clear_screen();
 }
 
-void editor_display::add_brush_loc(const gamemap::location& hex)
+void editor_display::add_brush_loc(const map_location& hex)
 {
 	brush_locations_.insert(hex);
 	invalidate(hex);
 }
 
-void editor_display::set_brush_locs(const std::set<gamemap::location>& hexes)
+void editor_display::set_brush_locs(const std::set<map_location>& hexes)
 {
 	invalidate(brush_locations_);
 	brush_locations_ = hexes;
@@ -49,13 +49,13 @@ void editor_display::clear_brush_locs()
 	brush_locations_.clear();
 }
 
-void editor_display::remove_brush_loc(const gamemap::location& hex)
+void editor_display::remove_brush_loc(const map_location& hex)
 {
 	brush_locations_.erase(hex);
 	invalidate(hex);
 }
 
-void editor_display::rebuild_terrain(const gamemap::location &loc) {
+void editor_display::rebuild_terrain(const map_location &loc) {
     builder_.rebuild_terrain(loc);
 }
 
@@ -63,7 +63,7 @@ void editor_display::pre_draw()
 {
 }
 
-image::TYPE editor_display::get_image_type(const gamemap::location& loc)
+image::TYPE editor_display::get_image_type(const map_location& loc)
 {
 	if (brush_locations_.find(loc) != brush_locations_.end()) {
         return image::BRIGHTENED;
@@ -75,11 +75,11 @@ image::TYPE editor_display::get_image_type(const gamemap::location& loc)
     return image::SCALED_TO_HEX;
 }
 
-void editor_display::draw_hex(const gamemap::location& loc)
+void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	int drawing_order = gamemap::get_drawing_order(loc);
+	int drawing_order = loc.get_drawing_order();
 	tblit blit(xpos, ypos);
 	display::draw_hex(loc);
 	if (map().on_board_with_border(loc)) {

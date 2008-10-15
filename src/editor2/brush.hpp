@@ -49,7 +49,7 @@ public:
 	 * Get a set of locations affected (i.e. under the brush) when the center (hotspot)
 	 * is in given location
 	 */
-	std::set<gamemap::location> project(const gamemap::location& hotspot) const;
+	std::set<map_location> project(const map_location& hotspot) const;
 	
 	/**
 	 * @return the name of this brush
@@ -65,7 +65,7 @@ protected:
 	/**
 	 * The relative locations of the brush
 	 */
-	std::set<gamemap::location> relative_tiles_;
+	std::set<map_location> relative_tiles_;
 	
 	std::string name_;
 	std::string image_;

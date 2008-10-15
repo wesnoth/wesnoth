@@ -34,17 +34,17 @@ class unit_map;
  */
 namespace unit_display
 {
-bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams);
+bool unit_visible_on_path( const std::vector<map_location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams);
 
 /** Display a unit moving along a given path. */
-void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams);
+void move_unit(const std::vector<map_location>& path, unit& u, const std::vector<team>& teams);
 
 /**
  * Show a unit fading out.
  *
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
-void unit_die( const gamemap::location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL, unit * winner=NULL);
+void unit_die( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL, unit * winner=NULL);
 
 /**
  *  Make the unit on tile 'a' attack the unit on tile 'b'.
@@ -56,17 +56,17 @@ void unit_die( const gamemap::location& loc, unit& u, const attack_type* attack=
  *                                removed from the playing field.
  */
 void unit_attack(
-                 const gamemap::location& a, const gamemap::location& b, int damage,
+                 const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		 int swing,std::string hit_text,bool drain,std::string att_text);
-void unit_recruited(gamemap::location& loc);
+void unit_recruited(map_location& loc);
 
 /**
  *  Set healer_loc to an invalid location if there are no healers.
  *
  *  This will use a poisoning anim if healing<0.
  */
-void unit_healing(unit& healed,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing);
+void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::iterator> healers, int healing);
 }
 
 #endif

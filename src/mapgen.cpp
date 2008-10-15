@@ -55,7 +55,7 @@ config map_generator::create_scenario(const std::vector<std::string>& args)
 typedef std::vector<std::vector<int> > height_map;
 typedef t_translation::t_map terrain_map;
 
-typedef gamemap::location location;
+typedef map_location location;
 
 /**
  * Generate a height-map.
@@ -471,13 +471,13 @@ bool is_valid_terrain::operator()(int x, int y) const
 }
 
 static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y,
-						 size_t min_distance, const std::vector<gamemap::location>& other_castles, int highest_ranking)
+						 size_t min_distance, const std::vector<map_location>& other_castles, int highest_ranking)
 {
-	const gamemap::location loc(x,y);
+	const map_location loc(x,y);
 
 	size_t avg_distance = 0, lowest_distance = 1000;
 
-	for(std::vector<gamemap::location>::const_iterator c = other_castles.begin(); c != other_castles.end(); ++c) {
+	for(std::vector<map_location>::const_iterator c = other_castles.begin(); c != other_castles.end(); ++c) {
 		const size_t distance = distance_between(loc,*c);
 		if(distance < 6) {
 			return 0;
@@ -537,16 +537,16 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 
 typedef std::map<t_translation::t_terrain, t_translation::t_list> tcode_list_cache;
 
-static gamemap::location place_village(const t_translation::t_map& map,
+static map_location place_village(const t_translation::t_map& map,
 	const size_t x, const size_t y, const size_t radius, const config& cfg,
 	tcode_list_cache &adj_liked_cache)
 {
-	const gamemap::location loc(x,y);
-	std::set<gamemap::location> locs;
+	const map_location loc(x,y);
+	std::set<map_location> locs;
 	get_tiles_radius(loc,radius,locs);
-	gamemap::location best_loc;
+	map_location best_loc;
 	size_t best_rating = 0;
-	for(std::set<gamemap::location>::const_iterator i = locs.begin();
+	for(std::set<map_location>::const_iterator i = locs.begin();
 			i != locs.end(); ++i) {
 
 		if(i->x < 0 || i->y < 0 || i->x >= static_cast<long>(map.size()) ||
@@ -569,8 +569,8 @@ static gamemap::location place_village(const t_translation::t_map& map,
 			}
 
 			size_t rating = atoi((*child)["rating"].c_str());
-			gamemap::location adj[6];
-			get_adjacent_tiles(gamemap::location(i->x,i->y),adj);
+			map_location adj[6];
+			get_adjacent_tiles(map_location(i->x,i->y),adj);
 			for(size_t n = 0; n != 6; ++n) {
 				if(adj[n].x < 0 || adj[n].y < 0 ||
 						adj[n].x >= static_cast<long>(map.size()) ||
@@ -584,7 +584,7 @@ static gamemap::location place_village(const t_translation::t_map& map,
 			}
 
 			if(rating > best_rating) {
-				best_loc = gamemap::location(i->x,i->y);
+				best_loc = map_location(i->x,i->y);
 				best_rating = rating;
 			}
 		}
@@ -713,7 +713,7 @@ t_translation::t_terrain terrain_converter::convert_to() const
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
 						         size_t max_lakes, size_t nvillages, size_t castle_size, size_t nplayers, bool roads_between_castles,
-								 std::map<gamemap::location,std::string>* labels, const config& cfg)
+								 std::map<map_location,std::string>* labels, const config& cfg)
 {
 	log_scope("map generation");
 
@@ -811,10 +811,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
 
-						const gamemap::location loc(r->x-width/3,r->y-height/3);
+						const map_location loc(r->x-width/3,r->y-height/3);
 
 						if(((r - river.begin())%name_frequency) == name_frequency/2) {
-							labels->insert(std::pair<gamemap::location,std::string>(loc,name));
+							labels->insert(std::pair<map_location,std::string>(loc,name));
 						}
 
 						river_names.insert(std::pair<location,std::string>(loc,base_name));
@@ -852,9 +852,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					}
 
 					if(!touches_other_lake) {
-						const gamemap::location loc(x-width/3,y-height/3);
+						const map_location loc(x-width/3,y-height/3);
 						labels->erase(loc);
-						labels->insert(std::pair<gamemap::location,std::string>(loc,name));
+						labels->insert(std::pair<map_location,std::string>(loc,name));
 					}
 
 					for(i = locs.begin(); i != locs.end(); ++i) {
@@ -1109,7 +1109,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						on_bridge = true;
 						const std::string& name = generate_name(name_generator,"bridge_name");
 						const location loc(x-width/3,y-height/3);
-						labels->insert(std::pair<gamemap::location,std::string>(loc,name));
+						labels->insert(std::pair<map_location,std::string>(loc,name));
 						bridges.insert(loc);
 					}
 
@@ -1131,7 +1131,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
 					if(labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
-						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
+						labels->insert(std::pair<map_location,std::string>(map_location(x-width/3,y-height/3),name));
 						name_count = 0;
 					}
 
@@ -1218,7 +1218,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				const size_t x = (vx + add_x) - 1;
 				const size_t y = (vy + add_y) - 1;
 
-				const gamemap::location res = place_village(terrain,x,y,2,cfg,adj_liked_cache);
+				const map_location res = place_village(terrain,x,y,2,cfg,adj_liked_cache);
 
 				if(res.x >= static_cast<long>(width) / 3 &&
 						res.x  < static_cast<long>(width * 2) / 3 &&
@@ -1238,9 +1238,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 							villages.insert(res);
 
 							if(labels != NULL && naming_cfg.empty() == false) {
-								const gamemap::location loc(res.x-width/3,res.y-height/3);
+								const map_location loc(res.x-width/3,res.y-height/3);
 
-								gamemap::location adj[6];
+								map_location adj[6];
 								get_adjacent_tiles(loc,adj);
 
 								std::string name_type = "village_name";
@@ -1307,7 +1307,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 								}
 
 								used_names.insert(name);
-								labels->insert(std::pair<gamemap::location,std::string>(loc,name));
+								labels->insert(std::pair<map_location,std::string>(loc,name));
 							}
 						}
 					}

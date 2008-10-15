@@ -27,9 +27,9 @@ See the COPYING file for more details.
 #define LOG_PF LOG_STREAM(info, engine)
 #define DBG_PF LOG_STREAM(debug, engine)
 
-typedef std::vector<gamemap::location> vector_location;
+typedef std::vector<map_location> vector_location;
 typedef std::vector<a_star_node*> vector_a_star_node;
-typedef std::set<gamemap::location> set_location;
+typedef std::set<map_location> set_location;
 
 // heaps give the biggest element for free, so we want the biggest element to
 // have the smallest cost
@@ -37,10 +37,10 @@ static bool compare_lt_a_star_node(const a_star_node* node1, const a_star_node* 
 	return node1->g + node1->h > node2->g + node2->h;
 }
 
-static void a_star_init(gamemap::location const &src, gamemap::location const &dst,
+static void a_star_init(map_location const &src, map_location const &dst,
                         vector_a_star_node &openList, a_star_world &aStarGameWorld,
                         const size_t parWidth, const size_t parHeight,
-                        vector_location &vectLocation, std::set<gamemap::location> const *teleports,
+                        vector_location &vectLocation, std::set<map_location> const *teleports,
                         size_t &parNbTeleport)
 {
 	bool locIsCreated;
@@ -74,10 +74,10 @@ static void a_star_init(gamemap::location const &src, gamemap::location const &d
 		std::copy(teleports->begin(), teleports->end(), &vectLocation[6]);
 }
 
-static void a_star_explore_neighbours(gamemap::location const &dst, const double stop_at,
+static void a_star_explore_neighbours(map_location const &dst, const double stop_at,
                                       cost_calculator const *costCalculator,
                                       const size_t parWidth, const size_t parHeight,
-                                      std::set<gamemap::location> const *teleports,
+                                      std::set<map_location> const *teleports,
                                       vector_location &vectLocation, vector_a_star_node &openList,
                                       a_star_world &aStarGameWorld,
                                       a_star_node *parCurNode, const size_t parNbTeleport)
@@ -103,7 +103,7 @@ static void a_star_explore_neighbours(gamemap::location const &dst, const double
 
 	for (size_t i = 0; i != locSize; ++i)
 	{
-		const gamemap::location&  locLocation = vectLocation[i];
+		const map_location&  locLocation = vectLocation[i];
 
 		if (locLocation.valid(int(parWidth), int(parHeight)) == false)
 			continue;
@@ -140,9 +140,9 @@ static void a_star_explore_neighbours(gamemap::location const &dst, const double
 			std::push_heap(openList_begin, openList_end - (locNbAdded - 1), compare_lt_a_star_node);
 }
 
-paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,
+paths::route a_star_search(map_location const &src, map_location const &dst,
                            double stop_at, cost_calculator const *costCalculator, const size_t parWidth,
-                           const size_t parHeight, std::set<gamemap::location> const *teleports)
+                           const size_t parHeight, std::set<map_location> const *teleports)
 {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(parWidth, parHeight));
@@ -216,8 +216,8 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	return locRoute;
 }
 
-static void get_tiles_radius_internal(const gamemap::location& a, size_t radius,
-	std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
+static void get_tiles_radius_internal(const map_location& a, size_t radius,
+	std::set<map_location>& res, std::map<map_location,int>& visited)
 {
 	visited[a] = radius;
 	res.insert(a);
@@ -226,7 +226,7 @@ static void get_tiles_radius_internal(const gamemap::location& a, size_t radius,
 		return;
 	}
 
-	gamemap::location adj[6];
+	map_location adj[6];
 	get_adjacent_tiles(a,adj);
 	for(size_t i = 0; i != 6; ++i) {
 		if(visited.count(adj[i]) == 0 || visited[adj[i]] < int(radius)-1) {
@@ -235,17 +235,17 @@ static void get_tiles_radius_internal(const gamemap::location& a, size_t radius,
 	}
 }
 
-void get_tiles_radius(const gamemap::location& a, size_t radius,
-					  std::set<gamemap::location>& res)
+void get_tiles_radius(const map_location& a, size_t radius,
+					  std::set<map_location>& res)
 {
-	std::map<gamemap::location,int> visited;
+	std::map<map_location,int> visited;
 	get_tiles_radius_internal(a,radius,res,visited);
 }
 
-void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &locs,
-                      size_t radius, std::set<gamemap::location> &res, xy_pred *pred)
+void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
+                      size_t radius, std::set<map_location> &res, xy_pred *pred)
 {
-	typedef std::set<gamemap::location> location_set;
+	typedef std::set<map_location> location_set;
 	location_set not_visited(locs.begin(), locs.end()), must_visit, filtered_out;
 	++radius;
 
@@ -253,10 +253,10 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 		location_set::const_iterator it = not_visited.begin(), it_end = not_visited.end();
 		std::copy(it,it_end,std::inserter(res,res.end()));
 		for(; it != it_end; ++it) {
-			gamemap::location adj[6];
+			map_location adj[6];
 			get_adjacent_tiles(*it, adj);
 			for(size_t i = 0; i != 6; ++i) {
-				gamemap::location const &loc = adj[i];
+				map_location const &loc = adj[i];
 				if(map.on_board(loc) && !res.count(loc) && !filtered_out.count(loc)) {
 					if(!pred || (*pred)(loc)) {
 						must_visit.insert(loc);

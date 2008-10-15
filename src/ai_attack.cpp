@@ -89,7 +89,7 @@ void ai::do_attack_analysis(
 		bool backstab = false, slow = false;
 		std::vector<attack_type>& attacks = unit_itor->second.attacks();
 		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
-			a->set_specials_context(gamemap::location(),gamemap::location(),
+			a->set_specials_context(map_location(),map_location(),
 															&units_,&map_,&state_,&teams_,true,NULL);
 			if(a->get_special_bool("backstab")) {
 				backstab = true;
@@ -113,7 +113,7 @@ void ai::do_attack_analysis(
                bool is_flanked = false;
                int enemy_units_around = 0;
                int accessible_tiles = 0;
-               gamemap::location adj[6];
+               map_location adj[6];
                get_adjacent_tiles(current_unit, adj);
 
                size_t tile;
@@ -278,7 +278,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	assert(defend_it != units.end());
 
 	// See if the target is a threat to our leader or an ally's leader.
-	gamemap::location adj[6];
+	map_location adj[6];
 	get_adjacent_tiles(target,adj);
 	size_t tile;
 	for(tile = 0; tile != 6; ++tile) {
@@ -330,7 +330,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		std::pair<gamemap::location,unit> *up = units.extract(m->first);
+		std::pair<map_location,unit> *up = units.extract(m->first);
 		up->first = m->second;
 		units.add(up);
 
@@ -466,7 +466,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	// Restore the units to their original positions.
 	for (m = movements.begin(); m != movements.end(); ++m) {
-		std::pair<gamemap::location,unit> *up = units.extract(m->second);
+		std::pair<map_location,unit> *up = units.extract(m->second);
 		up->first = m->first;
 		units.add(up);
 	}
@@ -604,13 +604,13 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	return res;
 }
 
-double ai::power_projection(const gamemap::location& loc,  const move_map& dstsrc, bool use_terrain) const
+double ai::power_projection(const map_location& loc,  const move_map& dstsrc, bool use_terrain) const
 {
-	gamemap::location used_locs[6];
+	map_location used_locs[6];
 	int ratings[6];
 	int num_used_locs = 0;
 
-	gamemap::location locs[6];
+	map_location locs[6];
 	get_adjacent_tiles(loc,locs);
 
 	const int lawful_bonus = state_.get_time_of_day().lawful_bonus;
@@ -637,11 +637,11 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 		typedef std::pair<Itor,Itor> Range;
 		Range its = dstsrc.equal_range(locs[i]);
 
-		gamemap::location* const beg_used = used_locs;
-		gamemap::location* end_used = used_locs + num_used_locs;
+		map_location* const beg_used = used_locs;
+		map_location* end_used = used_locs + num_used_locs;
 
 		int best_rating = 0;
-		gamemap::location best_unit;
+		map_location best_unit;
 
 		for(Itor it = its.first; it != its.second; ++it) {
 			const unit_map::const_iterator u = units_.find(it->second);
@@ -675,7 +675,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 			int defense = use_terrain ? 100 - un.defense_modifier(terrain) : 50;
 			int rating = hp * defense * most_damage * village_bonus / 200;
 			if(rating > best_rating) {
-				gamemap::location *pos = std::find(beg_used, end_used, it->second);
+				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.
 				if (pos == end_used || rating >= ratings[pos - beg_used]) {
 					best_rating = rating;
@@ -685,7 +685,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 		}
 
 		if (!best_unit.valid()) continue;
-		gamemap::location *pos = std::find(beg_used, end_used, best_unit);
+		map_location *pos = std::find(beg_used, end_used, best_unit);
 		int index = pos - beg_used;
 		if (index == num_used_locs)
 			++num_used_locs;
@@ -709,12 +709,12 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
  * There is no real hope for us: we should try to do some damage to the enemy.
  * We can spend some cycles here, since it's rare.
  */
-bool ai::desperate_attack(const gamemap::location &loc)
+bool ai::desperate_attack(const map_location &loc)
 {
 	const unit &u = units_.find(loc)->second;
 	LOG_AI << "desperate attack by '" << u.type_id() << "' " << loc << "\n";
 
-	gamemap::location adj[6];
+	map_location adj[6];
 	get_adjacent_tiles(loc, adj);
 
 	double best_kill_prob = 0.0;

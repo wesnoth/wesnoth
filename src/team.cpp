@@ -461,7 +461,7 @@ team::team(const config& cfg, int gold) :
 	// Load in the villages the side controls at the start
 	const config::child_list& villages = cfg.get_children("village");
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-		villages_.insert(gamemap::location(**v,game_events::get_state_of_game()));
+		villages_.insert(map_location(**v,game_events::get_state_of_game()));
 	}
 
 	countdown_time_=lexical_cast_default<int>(cfg["countdown_time"],0);
@@ -476,7 +476,7 @@ void team::write(config& cfg) const
 	cfg["gold"] = str_cast(gold_);
 
 	// Write village locations
-	for(std::set<gamemap::location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
+	for(std::set<map_location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
 		t->write(cfg.add_child("village"));
 	}
 
@@ -486,13 +486,13 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = str_cast(action_bonus_count_);
 }
 
-bool team::get_village(const gamemap::location& loc)
+bool team::get_village(const map_location& loc)
 {
 	villages_.insert(loc);
 	return game_events::fire("capture",loc);
 }
 
-void team::lose_village(const gamemap::location& loc)
+void team::lose_village(const map_location& loc)
 {
 	if(owns_village(loc)) {
 		villages_.erase(villages_.find(loc));
@@ -692,7 +692,7 @@ void team::set_ai_parameters(const config::child_list& ai_parameters)
 	}
 }
 
-bool team::shrouded(const gamemap::location& loc) const
+bool team::shrouded(const map_location& loc) const
 {
 	if(!teams)
 		return shroud_.value(loc.x+1,loc.y+1);
@@ -700,7 +700,7 @@ bool team::shrouded(const gamemap::location& loc) const
 	return shroud_.shared_value(ally_shroud(*teams),loc.x+1,loc.y+1);
 }
 
-bool team::fogged(const gamemap::location& loc) const
+bool team::fogged(const map_location& loc) const
 {
 	if(shrouded(loc)) return true;
 
@@ -992,7 +992,7 @@ void team::log_recruitable(){
 }
 
 namespace player_teams {
-int village_owner(const gamemap::location& loc)
+int village_owner(const map_location& loc)
 {
 	if(! teams) {
 		return -1;

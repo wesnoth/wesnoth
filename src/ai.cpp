@@ -53,7 +53,7 @@
 #define WRN_AI LOG_STREAM(warn, ai)
 #define ERR_AI LOG_STREAM(err, ai)
 
-typedef util::array<gamemap::location,6> adjacent_tiles_array;
+typedef util::array<map_location,6> adjacent_tiles_array;
 
 /** A trivial ai that sits around doing absolutely nothing. */
 class idle_ai : public ai_interface {
@@ -483,7 +483,7 @@ void ai_interface::log_message(const std::string& msg)
 }
 
 
-gamemap::location ai_interface::move_unit(location from, location to,
+map_location ai_interface::move_unit(location from, location to,
 		std::map<location,paths>& possible_moves)
 {
 	const location loc = move_unit_partial(from,to,possible_moves);
@@ -500,7 +500,7 @@ gamemap::location ai_interface::move_unit(location from, location to,
 	return loc;
 }
 
-gamemap::location ai_interface::move_unit_partial(location from, location to,
+map_location ai_interface::move_unit_partial(location from, location to,
 		std::map<location,paths>& possible_moves)
 {
 	LOG_AI << "ai_interface::move_unit " << from << " -> " << to << '\n';
@@ -616,14 +616,14 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 				unit_display::move_unit(steps,up->second,info_.teams);
 			} else if(steps.size()>1) {
 				unit_map::iterator up = info_.units.find(u_it->first);
-				std::vector<gamemap::location>::const_reverse_iterator last_step = steps.rbegin();
-				std::vector<gamemap::location>::const_reverse_iterator before_last = last_step +1;
+				std::vector<map_location>::const_reverse_iterator last_step = steps.rbegin();
+				std::vector<map_location>::const_reverse_iterator before_last = last_step +1;
 				up->second.set_facing(before_last->get_relative_dir(*last_step));
 			}
 		}
 	}
 
-	std::pair<gamemap::location,unit> *p = info_.units.extract(u_it->first);
+	std::pair<map_location,unit> *p = info_.units.extract(u_it->first);
 
 	p->first = to;
 	info_.units.add(p);
@@ -699,7 +699,7 @@ bool ai::multistep_move_possible(const location& from,
 	return false;
 }
 
-gamemap::location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
+map_location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
 	std::map<location,paths> temp_possible_moves;
 	std::map<location,paths>* possible_moves_ptr = &possible_moves;
@@ -709,7 +709,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 
 		// If the leader isn't on its keep, and we can move to the keep
 		// and still make our planned movement, then try doing that.
-		const gamemap::location& start_pos = nearest_keep(i->first);
+		const map_location& start_pos = nearest_keep(i->first);
 
 		// If we can make it back to the keep and then to our original destination, do so.
 		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
@@ -759,7 +759,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 	}
 }
 
-bool ai::attack_close(const gamemap::location& loc) const
+bool ai::attack_close(const map_location& loc) const
 {
 	for(std::set<location>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		if(distance_between(*i,loc) < 4) {
@@ -779,14 +779,14 @@ void ai::attack_enemy(const location& attacking_unit, const location& target,
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-		const std::set<gamemap::location>* remove_destinations) const
+		const std::set<map_location>* remove_destinations) const
 {
   calculate_moves(info_.units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void ai_interface::calculate_moves(const unit_map& units, std::map<location,paths>& res, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
-	     const std::set<gamemap::location>* remove_destinations,
+	     const std::set<map_location>* remove_destinations,
 		bool see_all
           ) const
 {
@@ -821,7 +821,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			dstsrc.insert(trivial_mv);
 		}
 		const bool teleports = un_it->second.get_ability_bool("teleport",un_it->first);
-		res.insert(std::pair<gamemap::location,paths>(
+		res.insert(std::pair<map_location,paths>(
 		                un_it->first,paths(info_.map,units,
 					 un_it->first,info_.teams,false,teleports,
 									current_team(),0,see_all)));
@@ -864,7 +864,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 	}
 }
 
-void ai::remove_unit_from_moves(const gamemap::location& loc, move_map& srcdst, move_map& dstsrc)
+void ai::remove_unit_from_moves(const map_location& loc, move_map& srcdst, move_map& dstsrc)
 {
 	srcdst.erase(loc);
 	for(move_map::iterator i = dstsrc.begin(); i != dstsrc.end(); ) {
@@ -880,12 +880,12 @@ namespace {
 
 /** A structure for storing an item we're trying to protect. */
 struct protected_item {
-	protected_item(double value, int radius, const gamemap::location& loc) :
+	protected_item(double value, int radius, const map_location& loc) :
 		value(value), radius(radius), loc(loc) {}
 
 	double value;
 	int radius;
-	gamemap::location loc;
+	map_location loc;
 };
 
 }
@@ -918,7 +918,7 @@ void ai::find_threats()
 		items.push_back(protected_item(
 					lexical_cast_default<double>((**i)["value"], 1.0),
 					lexical_cast_default<int>((**i)["radius"], 20),
-					gamemap::location(**i, &get_info().game_state_)));
+					map_location(**i, &get_info().game_state_)));
 	}
 
 	// Look for directions to protect a unit.
@@ -1009,17 +1009,17 @@ void ai::do_move()
 	}
 
 	// Execute goto-movements - first collect gotos in a list
-	std::vector<gamemap::location> gotos;
+	std::vector<map_location> gotos;
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if(ui->second.get_goto() == ui->first) {
-			ui->second.set_goto(gamemap::location());
+			ui->second.set_goto(map_location());
 		} else if(ui->second.side() == team_num_ && map_.on_board(ui->second.get_goto())) {
 			gotos.push_back(ui->first);
 		}
 	}
 
-	for(std::vector<gamemap::location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
+	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units_.find(*g);
 		int closest_distance = -1;
 		std::pair<location,location> closest_move;
@@ -1119,7 +1119,7 @@ void ai::do_move()
 	}
 }
 
-bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst,
+bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map& srcdst,
 		const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
 	int ticks = SDL_GetTicks();
@@ -1268,7 +1268,7 @@ void ai_interface::attack_enemy(const location u,
 	}
 }
 
-bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
+bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 		const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	// Find units in need of healing.
@@ -1322,7 +1322,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,
 	return false;
 }
 
-bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un,
+bool ai::should_retreat(const map_location& loc, const unit_map::const_iterator un,
 		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc,
 		double caution)
 {
@@ -1344,18 +1344,18 @@ bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iter
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
+bool ai::retreat_units(std::map<map_location,paths>& possible_moves,
 		const move_map& srcdst, const move_map& dstsrc,
 		const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	// Get versions of the move map that assume that all units are at full movement
-	std::map<gamemap::location,paths> dummy_possible_moves;
+	std::map<map_location,paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
 			false, true, &avoided_locations());
 
-	gamemap::location leader_adj[6];
+	map_location leader_adj[6];
 	if(leader != units_.end()) {
 		get_adjacent_tiles(leader->first,leader_adj);
 	}
@@ -1380,7 +1380,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
 				// just try to get to the best defensive hex.
 				typedef move_map::const_iterator Itor;
 				std::pair<Itor,Itor> itors = srcdst.equal_range(i->first);
-				gamemap::location best_pos, best_defensive(i->first);
+				map_location best_pos, best_defensive(i->first);
 				double best_rating = 0.0;
 				int best_defensive_rating = i->second.defense_modifier(map_.get_terrain(i->first))
 					- (map_.is_village(i->first) ? 10 : 0);
@@ -1396,7 +1396,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
 					// We rate the power balance of a hex based on our power projection
 					// compared to theirs, multiplying their power projection by their
 					// chance to hit us on the hex we're planning to flee to.
-					const gamemap::location& hex = itors.first->second;
+					const map_location& hex = itors.first->second;
 					const int defense = i->second.defense_modifier(map_.get_terrain(hex));
 					const double our_power = power_projection(hex,dstsrc);
 					const double their_power = power_projection(hex,enemy_dstsrc) * double(defense)/100.0;
@@ -1448,7 +1448,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves,
 	return false;
 }
 
-bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
+bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::const_iterator leader)
 {
@@ -1500,9 +1500,9 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 		} else {
 			// Search to see if there are any enemy units next to the tile
 			// which really should be attacked now the move is done.
-			gamemap::location adj[6];
+			map_location adj[6];
 			get_adjacent_tiles(arrived_at,adj);
-			gamemap::location target;
+			map_location target;
 
 			for(int n = 0; n != 6; ++n) {
 				const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
@@ -1692,14 +1692,14 @@ void ai::analyze_potential_recruit_combat()
 namespace {
 
 struct target_comparer_distance {
-	target_comparer_distance(const gamemap::location& loc) : loc_(loc) {}
+	target_comparer_distance(const map_location& loc) : loc_(loc) {}
 
 	bool operator()(const ai::target& a, const ai::target& b) const {
 		return distance_between(a.loc,loc_) < distance_between(b.loc,loc_);
 	}
 
 private:
-	gamemap::location loc_;
+	map_location loc_;
 };
 
 }
@@ -1842,7 +1842,7 @@ void ai::do_recruitment()
 				bool closest = true;
 				for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
 					const int index = i - teams_.begin() + 1;
-					const gamemap::location& loc = map_.starting_position(index);
+					const map_location& loc = map_.starting_position(index);
 					if(loc != start_pos && distance_between(loc,*v) < distance) {
 						closest = false;
 						break;
@@ -1909,7 +1909,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 		return;
 	}
 
-	const gamemap::location dst(*goal, &get_info().game_state_);
+	const map_location dst(*goal, &get_info().game_state_);
 	if (!dst.valid()) {
 		ERR_AI << "Invalid goal\n";
 		return;
@@ -1936,11 +1936,11 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	const paths leader_paths(map_, units_, leader->first,
 			teams_, false, false, current_team());
 
-	std::map<gamemap::location,paths> possible_moves;
-	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
+	std::map<map_location,paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
 
-	gamemap::location loc;
-	for(std::vector<gamemap::location>::const_iterator itor = route.steps.begin();
+	map_location loc;
+	for(std::vector<map_location>::const_iterator itor = route.steps.begin();
 			itor != route.steps.end(); ++itor) {
 
 		if(leader_paths.routes.count(*itor) == 1 &&
@@ -1967,8 +1967,8 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 	const paths leader_paths(map_, units_, leader->first,
 			teams_, false, false, current_team());
 
-	std::map<gamemap::location,paths> possible_moves;
-	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
+	std::map<map_location,paths> possible_moves;
+	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
 
 	if(current_team().gold() < 20 && is_accessible(leader->first,enemy_dstsrc) == false) {
 		// See if we want to ward any enemy units off from getting our villages.
@@ -2013,7 +2013,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 	// If they can, then move off it, so that they can recruit if they want.
 	if(nearest_keep(leader->first) == leader->first) {
 		const location keep = leader->first;
-		std::pair<gamemap::location,unit> *temp_leader;
+		std::pair<map_location,unit> *temp_leader;
 
 		temp_leader = units_.extract(keep);
 
@@ -2055,7 +2055,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 	// We didn't move: are we in trouble?
 	leader = find_leader(units_,team_num_);
 	if (!leader->second.has_moved() && leader->second.attacks_left()) {
-		std::map<gamemap::location,paths> dummy_possible_moves;
+		std::map<map_location,paths> dummy_possible_moves;
 		move_map fullmove_srcdst;
 		move_map fullmove_dstsrc;
 		calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true,&avoided_locations());
@@ -2073,7 +2073,7 @@ bool ai::leader_can_reach_keep()
 		return false;
 	}
 
-	const gamemap::location& start_pos = nearest_keep(leader->first);
+	const map_location& start_pos = nearest_keep(leader->first);
 	if(start_pos.valid() == false) {
 		return false;
 	}
@@ -2089,7 +2089,7 @@ bool ai::leader_can_reach_keep()
 	return leader_paths.routes.count(start_pos) > 0;
 }
 
-int ai::rate_terrain(const unit& u, const gamemap::location& loc)
+int ai::rate_terrain(const unit& u, const map_location& loc)
 {
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
@@ -2119,7 +2119,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	return rating;
 }
 
-const ai::defensive_position& ai::best_defensive_position(const gamemap::location& loc,
+const ai::defensive_position& ai::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	const unit_map::const_iterator itor = units_.find(loc);
@@ -2167,7 +2167,7 @@ const ai::defensive_position& ai::best_defensive_position(const gamemap::locatio
 
 bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
 {
-	gamemap::location adj[6];
+	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
 		if(dstsrc.count(adj[n]) > 0) {
@@ -2179,16 +2179,16 @@ bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
 }
 
 
-const std::set<gamemap::location>& ai::keeps()
+const std::set<map_location>& ai::keeps()
 {
 	if(keeps_.empty()) {
 		// Generate the list of keeps:
 		// iterate over the entire map and find all keeps.
 		for(size_t x = 0; x != size_t(map_.w()); ++x) {
 			for(size_t y = 0; y != size_t(map_.h()); ++y) {
-				const gamemap::location loc(x,y);
+				const map_location loc(x,y);
 				if(map_.is_keep(loc)) {
-					gamemap::location adj[6];
+					map_location adj[6];
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
 						if(map_.is_castle(adj[n])) {
@@ -2204,17 +2204,17 @@ const std::set<gamemap::location>& ai::keeps()
 	return keeps_;
 }
 
-const gamemap::location& ai::nearest_keep(const gamemap::location& loc)
+const map_location& ai::nearest_keep(const map_location& loc)
 {
-	const std::set<gamemap::location>& keeps = this->keeps();
+	const std::set<map_location>& keeps = this->keeps();
 	if(keeps.empty()) {
-		static const gamemap::location dummy;
+		static const map_location dummy;
 		return dummy;
 	}
 
-	const gamemap::location* res = NULL;
+	const map_location* res = NULL;
 	int closest = -1;
-	for(std::set<gamemap::location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
+	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
 		const int distance = distance_between(*i,loc);
 		if(res == NULL || distance < closest) {
 			closest = distance;
@@ -2225,7 +2225,7 @@ const gamemap::location& ai::nearest_keep(const gamemap::location& loc)
 	return *res;
 }
 
-const std::set<gamemap::location>& ai::avoided_locations()
+const std::set<map_location>& ai::avoided_locations()
 {
 	if(avoid_.empty()) {
 		const config::child_list& avoids = current_team().ai_parameters().get_children("avoid");

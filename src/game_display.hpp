@@ -74,7 +74,7 @@ public:
 	 * If a unit is in the location, and there is no unit in the currently
 	 * highlighted hex, the unit will be displayed in the sidebar.
 	 */
-	virtual void select_hex(gamemap::location hex);
+	virtual void select_hex(map_location hex);
 
 	/**
 	 * Function to highlight a location.
@@ -83,14 +83,14 @@ public:
 	 * Selection is used when a unit has been clicked on, while highlighting is
 	 * used when a location has been moused over.
 	 */
-	virtual void highlight_hex(gamemap::location hex);
+	virtual void highlight_hex(map_location hex);
 
 	/**
 	 * Change the unit to be displayed in the sidebar.
 	 *
 	 * This is used when selecting or highlighting is not wanted.
 	 */
-	void display_unit_hex(gamemap::location hex);
+	void display_unit_hex(map_location hex);
 
 	/**
 	 * Sets the paths that are currently displayed as available
@@ -116,17 +116,17 @@ public:
 	void set_route(const paths::route* route);
 
 	/** Function to float a label above a tile */
-	void float_label(const gamemap::location& loc, const std::string& text,
+	void float_label(const map_location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
 	/**
 	 * Function to return 2 half-hex footsteps images for the given location.
 	 * Only loc is on the current route set by set_route.
 	 */
-	std::vector<surface> footsteps_images(const gamemap::location& loc);
+	std::vector<surface> footsteps_images(const map_location& loc);
 
 	/** Draws the movement info (turns available) for a given location. */
-	void draw_movement_info(const gamemap::location& loc);
+	void draw_movement_info(const map_location& loc);
 
 	const gamestatus &get_game_status() { return status_; }
 	void draw_report(reports::TYPE report_num);
@@ -135,7 +135,7 @@ public:
 	void invalidate_unit() { invalidateUnit_ = true; }
 
 	/** Same as invalidate_unit() if moving the displayed unit. */
-	void invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst);
+	void invalidate_unit_after_move(const map_location& src, const map_location& dst);
 
 protected:
 	/**
@@ -147,23 +147,23 @@ protected:
 	 * This function runs through invalidated_ and returns a vector of tiles
 	 * containing units, sorted according to a custom ordering
 	 */
-	std::vector<gamemap::location> get_invalidated_unit_locations();
+	std::vector<map_location> get_invalidated_unit_locations();
 	
 	/**
 	 * Hex brightening for game - take units into account
 	 */
-	image::TYPE get_image_type(const gamemap::location& loc);
+	image::TYPE get_image_type(const map_location& loc);
 	
 	/**
 	 * Draws units on specified hexes
 	 */
-	void redraw_units(const std::vector<gamemap::location>& invalidated_unit_locations);
+	void redraw_units(const std::vector<map_location>& invalidated_unit_locations);
 	
 	void draw_invalidated();
 	
 	void post_commit();
 	
-	void draw_hex(const gamemap::location& loc);
+	void draw_hex(const map_location& loc);
 	
 	void update_time_of_day();
 	
@@ -175,22 +175,22 @@ protected:
 	/**
 	 * Extra game per-location invalidation (village ownership)
 	 */
-	void invalidate_animations_location(const gamemap::location& loc);
+	void invalidate_animations_location(const map_location& loc);
 	
 	virtual void draw_minimap_units();
 
 public:
 	/** Temporarily place a unit on map (moving: can overlap others). */
-	void place_temporary_unit(unit &u, const gamemap::location& loc);
+	void place_temporary_unit(unit &u, const map_location& loc);
 	void remove_temporary_unit();
 
 	/** Set the attack direction indicator. */
-	void set_attack_indicator(const gamemap::location& src, const gamemap::location& dst);
+	void set_attack_indicator(const map_location& src, const map_location& dst);
 	void clear_attack_indicator();
 
 	/** Function to get attack direction suffix. */
 	std::string attack_indicator_direction() const { 
-		return gamemap::location::write_direction(
+		return map_location::write_direction(
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
 
@@ -200,15 +200,15 @@ public:
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const gamemap::location& loc, const std::string& image, 
+	void add_overlay(const map_location& loc, const std::string& image, 
 		const std::string& halo="", const std::string& team_name="",
 		const std::string& fogged="yes");
 
 	/** remove_overlay will remove all overlays on a tile. */
-	void remove_overlay(const gamemap::location& loc);
+	void remove_overlay(const map_location& loc);
 
 	/** remove_single_overlay will remove a single overlay from a tile */
-	void remove_single_overlay(const gamemap::location& loc, const std::string& toDelete);
+	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
 
 	/** Function to serialize overlay data. */
 	void write_overlays(config& cfg) const;
@@ -243,7 +243,7 @@ public:
 	 *
 	 * It is used in debug mode, typically to show AI plans.
 	 */
-	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
+	static void debug_highlight(const map_location& loc, fixed_t amount);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	/** The viewing team is the team currently viewing the game. */
@@ -294,16 +294,16 @@ private:
 	void draw_game_status();
 
 	// This surface must be freed by the caller
-	surface get_flag(const gamemap::location& loc);
+	surface get_flag(const map_location& loc);
 
 	unit_map& units_;
 
 	unit *temp_unit_;
-	gamemap::location temp_unit_loc_;
+	map_location temp_unit_loc_;
 
 	// Locations of the attack direction indicator's parts
-	gamemap::location attack_indicator_src_;
-	gamemap::location attack_indicator_dst_;
+	map_location attack_indicator_src_;
+	map_location attack_indicator_dst_;
 
 	/**
 	 * Finds the start and end rows on the energy bar image.
@@ -324,7 +324,7 @@ private:
 	void invalidate_route();
 
 	bool invalidateUnit_;
-	gamemap::location displayedUnitHex_;
+	map_location displayedUnitHex_;
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
@@ -337,7 +337,7 @@ private:
 		bool fogged;
 	};
 
-	typedef std::multimap<gamemap::location,overlay> overlay_map;
+	typedef std::multimap<map_location,overlay> overlay_map;
 
 	overlay_map overlays_;
 
@@ -368,7 +368,7 @@ private:
 	surface tod_hex_mask1, tod_hex_mask2;
 
 	// Tiles lit for showing where unit(s) can reach
-	typedef std::map<gamemap::location,unsigned int> reach_map;
+	typedef std::map<map_location,unsigned int> reach_map;
 	reach_map reach_map_;
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
@@ -377,7 +377,7 @@ private:
 	tgame_mode game_mode_;
 
 	// For debug mode
-	static std::map<gamemap::location,fixed_t> debugHighlights_;
+	static std::map<map_location,fixed_t> debugHighlights_;
 
 	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
@@ -386,7 +386,7 @@ private:
 	 * the tiles invalidated at last redraw, 
 	 * to simplify the cleaning up of tiles left by units
 	 */
-	std::set<gamemap::location> previous_invalidated_;
+	std::set<map_location> previous_invalidated_;
 	static game_display * singleton_;
 };
 

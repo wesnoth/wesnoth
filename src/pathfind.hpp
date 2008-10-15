@@ -35,21 +35,21 @@ class unit_map;
 #include <functional>
 
 
-class xy_pred : public std::unary_function<gamemap::location const&, bool>
+class xy_pred : public std::unary_function<map_location const&, bool>
 {
 public:
-	virtual bool operator()(gamemap::location const&) = 0;
+	virtual bool operator()(map_location const&) = 0;
 protected:
 	virtual ~xy_pred() {}
 };
 
 /** Function which, given a location, will find all tiles within 'radius' of that tile */
-void get_tiles_radius(const gamemap::location& a, size_t radius,
-					  std::set<gamemap::location>& res);
+void get_tiles_radius(const map_location& a, size_t radius,
+					  std::set<map_location>& res);
 
 /** Function which, given a set of locations, will find all tiles within 'radius' of those tiles */
-void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& locs, size_t radius,
-					  std::set<gamemap::location>& res, xy_pred *pred=NULL);
+void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs, size_t radius,
+					  std::set<map_location>& res, xy_pred *pred=NULL);
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
@@ -60,20 +60,20 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
  * and must have a path of that terrain type to loc.
  * If no valid location can be found, it will return a null location.
  */
-gamemap::location find_vacant_tile(const gamemap& map,
+map_location find_vacant_tile(const gamemap& map,
                                    const unit_map& un,
-                                   const gamemap::location& loc,
+                                   const map_location& loc,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
 /** Function which determines if a given location is in an enemy zone of control. */
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
-               std::vector<team> const &teams, gamemap::location const &loc,
+               std::vector<team> const &teams, map_location const &loc,
                team const &viewing_team, unsigned int side, bool see_all=false);
 
 struct cost_calculator
 {
-	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far) const = 0;
+	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const = 0;
 	virtual ~cost_calculator() {}
 	inline double getNoPathValue() const { return (42424242.0); }
 };
@@ -96,7 +96,7 @@ struct paths
 	// viewing_team is usually current team, except for Show Enemy Moves etc.
 	paths(gamemap const &map,
 	      unit_map const &units,
-	      gamemap::location const &loc, std::vector<team> const &teams,
+	      map_location const &loc, std::vector<team> const &teams,
 	      bool force_ignore_zocs,bool allow_teleport,
 		 const team &viewing_team,int additional_turns = 0,
 		 bool see_all = false, bool ignore_units = false);
@@ -105,7 +105,7 @@ struct paths
 	struct route
 	{
 		route() : steps(), move_left(0), waypoints() {}
-		std::vector<gamemap::location> steps;
+		std::vector<map_location> steps;
 		int move_left; // movement unit will have left at end of the route.
 		struct waypoint
 		{
@@ -118,17 +118,17 @@ struct paths
 			bool capture;
 			bool invisible;
 		};
-		std::map<gamemap::location, waypoint> waypoints;
+		std::map<map_location, waypoint> waypoints;
 	};
 
-	typedef std::map<gamemap::location,route> routes_map;
+	typedef std::map<map_location,route> routes_map;
 	routes_map routes;
 };
 
-paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,
+paths::route a_star_search(map_location const &src, map_location const &dst,
                            double stop_at, cost_calculator const *costCalculator,
                            const size_t parWidth, const size_t parHeight,
-                           std::set<gamemap::location> const *teleports = NULL);
+                           std::set<map_location> const *teleports = NULL);
 
 /**
  * Function which, given a unit and a route the unit can move on,
@@ -144,7 +144,7 @@ struct shortest_path_calculator : cost_calculator
 	shortest_path_calculator(const unit& u, const team& t, const unit_map& units,
                              const std::vector<team>& teams, const gamemap& map,
                              bool ignore_unit = false, bool ignore_defense_ = false);
-	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far) const;
+	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
 
 private:
 	unit const &unit_;
@@ -165,7 +165,7 @@ private:
 struct emergency_path_calculator : cost_calculator
 {
 	emergency_path_calculator(const unit& u, const gamemap& map);
-	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far) const;
+	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
 
 private:
 	unit const &unit_;

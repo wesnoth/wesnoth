@@ -93,8 +93,8 @@ private:
 		const args_list& arguments = args();
 		const expression_ptr& exp_p = arguments[0];
 		variant my_variant = exp_p->evaluate(variables);
-		const gamemap::location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const map_location loc1 = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location loc2 = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		return variant(distance_between(loc1, loc2));
 	}
 };
@@ -107,11 +107,11 @@ public:
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		int best = 1000000;
-		const std::vector<gamemap::location>& villages = ai_.get_info().map.villages();
-		const std::set<gamemap::location>& my_villages = ai_.current_team().villages();
-		for(std::vector<gamemap::location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
+		const std::vector<map_location>& villages = ai_.get_info().map.villages();
+		const std::set<map_location>& my_villages = ai_.current_team().villages();
+		for(std::vector<map_location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
 			int distance = distance_between(loc, *i);
 			if(distance < best) {
 				if(my_villages.count(*i) == 0) {
@@ -134,14 +134,14 @@ public:
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		variant items = args()[1]->evaluate(variables); 
 		int best = 1000000;
 		int best_i = -1;
 
 		for(size_t i = 0; i < items.num_elements(); ++i) {
 
-			const gamemap::location move_loc = convert_variant<location_callable>(items[i])->loc();
+			const map_location move_loc = convert_variant<location_callable>(items[i])->loc();
 			int distance = distance_between(loc, move_loc);
 
 			if(distance < best) {
@@ -168,7 +168,7 @@ public:
 
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		int best = 1000000;
 		int best_i = -1;
 
@@ -215,7 +215,7 @@ private:
 
 		for(int i = 0; i < w; ++i)
 			for(int j = 0; j < h; ++j) {
-				if(ai_.current_team().shrouded(gamemap::location(i,j)))
+				if(ai_.current_team().shrouded(map_location(i,j)))
 					vars.push_back(variant(new location_callable(i,j)));
 			}
 
@@ -234,7 +234,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		std::vector<variant> vars;
-		const gamemap::location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		int range_s = args()[1]->evaluate(variables).as_int();
 		if (range_s < 0) {
 			WRN_AI << "close_enemies_function: range is negative (" << range_s << ")\n";
@@ -371,7 +371,7 @@ private:
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
 		for(size_t n = 0; n != analysis->movements.size(); ++n) {
-			std::pair<gamemap::location,unit>* pair = units_with_moves.extract(analysis->movements[n].first);
+			std::pair<map_location,unit>* pair = units_with_moves.extract(analysis->movements[n].first);
 			pair->first = analysis->movements[n].second;
 			units_with_moves.add(pair);
 		}
@@ -413,15 +413,15 @@ private:
 };
 
 class recruit_callable : public formula_callable {
-	gamemap::location loc_;
+	map_location loc_;
 	std::string type_;
 	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
-	recruit_callable(const gamemap::location& loc, const std::string& type)
+	recruit_callable(const map_location& loc, const std::string& type)
 	  : loc_(loc), type_(type)
 	{}
 
-	const gamemap::location& loc() const { return loc_; }
+	const map_location& loc() const { return loc_; }
 	const std::string& type() const { return type_; }
 };
 
@@ -450,7 +450,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		const std::string type = args()[0]->evaluate(variables).as_string();
-		gamemap::location loc;
+		map_location loc;
 		if(args().size() >= 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		}
@@ -470,8 +470,8 @@ private:
 
 		std::vector<variant> locations;
 
-		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 
 		unit_map::iterator unit_it = ai_.get_info().units.find(src);
 		if( unit_it == ai_.get_info().units.end() ) {
@@ -481,12 +481,12 @@ private:
 		}
 
 		if( (ai_.get_possible_moves().count(src) > 0) ) {
-			std::map<gamemap::location,paths>::const_iterator path = ai_.get_possible_moves().find(src);
+			std::map<map_location,paths>::const_iterator path = ai_.get_possible_moves().find(src);
 
 			shortest_path_calculator calc(unit_it->second, ai_.current_team(), ai_.get_info().units, ai_.get_info().teams, ai_.get_info().map);
 			paths::route route = a_star_search(src, dst, 1000.0, &calc, ai_.get_info().map.w(), ai_.get_info().map.h());
 
-			for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+			for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 				locations.push_back( variant( new location_callable(*loc_iter) ));
 			}
 		}
@@ -504,8 +504,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		std::cerr << "move(): " << src << ", " << dst << ")\n";
 		return variant(new move_callable(src, dst));
 	}
@@ -518,8 +518,8 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		std::cerr << "move_partial(): " << src << ", " << dst << ")\n";
 		return variant(new move_partial_callable(src, dst));
 	}
@@ -552,16 +552,16 @@ private:
 class set_unit_var_callable : public formula_callable {
 	std::string key_;
 	variant value_;
-	gamemap::location loc_;
+	map_location loc_;
 	variant get_value(const std::string& /*key*/) const { return variant(); }
 public:
-	set_unit_var_callable(const std::string& key, const variant& value, const gamemap::location loc)
+	set_unit_var_callable(const std::string& key, const variant& value, const map_location loc)
 	  : key_(key), value_(value), loc_(loc)
 	{}
 
 	const std::string& key() const { return key_; }
 	variant value() const { return value_; }
-	const gamemap::location loc() const { return loc_; }
+	const map_location loc() const { return loc_; }
 };
 
 class set_unit_var_function : public function_expression {
@@ -599,7 +599,7 @@ private:
 };
 
 class attack_callable : public formula_callable {
-	gamemap::location move_from_, src_, dst_;
+	map_location move_from_, src_, dst_;
 	battle_context bc_;
 	variant get_value(const std::string& key) const {
 		if(key == "attacker") {
@@ -620,8 +620,8 @@ class attack_callable : public formula_callable {
 	}
 public:
 	attack_callable(const formula_ai& ai,
-					const gamemap::location& move_from,
-					const gamemap::location& src, const gamemap::location& dst,
+					const map_location& move_from,
+					const map_location& src, const map_location& dst,
 	                int weapon)
 	  : move_from_(move_from), src_(src), dst_(dst),
 		bc_(ai.get_info().map, ai.get_info().teams, ai.get_info().units,
@@ -630,9 +630,9 @@ public:
 	{
 	}
 
-	const gamemap::location& move_from() const { return move_from_; }
-	const gamemap::location& src() const { return src_; }
-	const gamemap::location& dst() const { return dst_; }
+	const map_location& move_from() const { return move_from_; }
+	const map_location& src() const { return src_; }
+	const map_location& dst() const { return dst_; }
 	int weapon() const { return bc_.get_attacker_stats().attack_num; }
 	int defender_weapon() const { return bc_.get_defender_stats().attack_num; }
 };
@@ -645,9 +645,9 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		const gamemap::location move_from = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		const gamemap::location src = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
-		const gamemap::location dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
+		const map_location move_from = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location src = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
 			std::cerr << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
@@ -668,11 +668,11 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap();
 
-		gamemap::location loc;
+		map_location loc;
 		if(args().size() == 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		} else {
-			loc = gamemap::location( args()[1]->evaluate(variables).as_int() - 1,
+			loc = map_location( args()[1]->evaluate(variables).as_int() - 1,
 			                        args()[2]->evaluate(variables).as_int() - 1 );
 		}
 		return variant(m.is_village(loc));
@@ -689,13 +689,13 @@ private:
 	variant execute(const formula_callable& variables) const {
 
 		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap(); 
-		const std::set<gamemap::location>& my_villages = ai_.current_team().villages();
+		const std::set<map_location>& my_villages = ai_.current_team().villages();
 
-		gamemap::location loc;
+		map_location loc;
 		if(args().size() == 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		} else {
-			loc = gamemap::location( args()[1]->evaluate(variables).as_int() - 1,  
+			loc = map_location( args()[1]->evaluate(variables).as_int() - 1,  
 					args()[2]->evaluate(variables).as_int() - 1 ); 
 		} 
 
@@ -742,7 +742,7 @@ private:
 			return variant(&vars);
 		}
 
-		const gamemap::location& loc = convert_variant<location_callable>(res)->loc();
+		const map_location& loc = convert_variant<location_callable>(res)->loc();
 		const formula_ai::move_map& srcdst = ai_.srcdst();
 		typedef formula_ai::move_map::const_iterator Itor;
 		std::pair<Itor,Itor> range = srcdst.equal_range(loc);
@@ -797,7 +797,7 @@ private:
 
 		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
 		const unit_type_callable* u_type = try_convert_variant<unit_type_callable>(u);
-		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
+		const map_location& loc = convert_variant<location_callable>(loc_var)->loc();
 
 		if (u_call)
 		{
@@ -842,7 +842,7 @@ private:
 
 		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
 		const unit_type_callable* u_type = try_convert_variant<unit_type_callable>(u);
-		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
+		const map_location& loc = convert_variant<location_callable>(loc_var)->loc();
 
 		if (u_call)
 		{
@@ -887,7 +887,7 @@ private:
 		//we can pass to this function either unit_callable or unit_type callable
 		const unit_callable* u_call = try_convert_variant<unit_callable>(u);
 		const unit_type_callable* u_type = try_convert_variant<unit_type_callable>(u);
-		const gamemap::location& loc = convert_variant<location_callable>(loc_var)->loc();
+		const map_location& loc = convert_variant<location_callable>(loc_var)->loc();
 
 		if (u_call)
 		{
@@ -949,7 +949,7 @@ private:
 			const unit& defender = u_defender->get_unit();
 			int best = 0;
 			for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
-				const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+				const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, map_location()), 100) * i->num_attacks();
 				if(dmg > best)
 					best = dmg;
 			}
@@ -1010,7 +1010,7 @@ private:
 				const unit& defender = u_defender->get_unit();
 
 				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, map_location()), 100) * i->num_attacks();
 					if ( i->range() == "melee")
 					{
 						if(dmg > best_melee)
@@ -1030,7 +1030,7 @@ private:
 				def_attacks = defender.attacks();
 
 				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, map_location()), 100) * i->num_attacks();
 					if ( i->range() == "melee")
 					{
 						if(dmg > best_melee)
@@ -1069,7 +1069,7 @@ private:
 				def_attacks_tmp = defender.attacks();
 
 				for(std::vector<attack_type>::const_iterator i = def_attacks.begin(); i != def_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					const int dmg = round_damage(i->damage(), attacker.damage_from(*i, false, map_location()), 100) * i->num_attacks();
 					if ( i->range() == "melee")
 					{
 						if(dmg > best_melee)
@@ -1096,7 +1096,7 @@ private:
 				const unit& defender = u_defender->get_unit();
 
 				for(std::vector<attack_type>::const_iterator i = att_attacks.begin(); i != att_attacks.end(); ++i) {
-					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, gamemap::location()), 100) * i->num_attacks();
+					const int dmg = round_damage(i->damage(), defender.damage_from(*i, false, map_location()), 100) * i->num_attacks();
 					if ( i->range() == "melee")
 					{
 						if(dmg > best_melee)
@@ -1600,9 +1600,9 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 			unit_map::iterator unit_it = units_.find(move->src());
 			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
-				std::map<gamemap::location,paths>::iterator path = possible_moves_.find(move->src());
+				std::map<map_location,paths>::iterator path = possible_moves_.find(move->src());
 
-				gamemap::location destination = move->dst();
+				map_location destination = move->dst();
 
 				//check if destination is within unit's reach
 				if( path->second.routes.count(move->dst()) == 0) {
@@ -1613,7 +1613,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 					int movement = unit_it->second.movement_left();
 					
-					for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+					for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
 				
 						if ( move_cost > movement ) {
@@ -1638,9 +1638,9 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 			unit_map::iterator unit_it = units_.find(move_partial->src());
 			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
-				std::map<gamemap::location,paths>::iterator path = possible_moves_.find(move_partial->src());
+				std::map<map_location,paths>::iterator path = possible_moves_.find(move_partial->src());
 
-				gamemap::location destination = move_partial->dst();
+				map_location destination = move_partial->dst();
 
 				//check if destination is within unit's reach
 				if( path->second.routes.count(move_partial->dst()) == 0) {
@@ -1651,7 +1651,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 					int movement = unit_it->second.movement_left();
 					
-					for (std::vector<gamemap::location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+					for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
 				
 						if ( move_cost > movement ) {
@@ -1690,8 +1690,8 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if ( ( unit == units_.end() ) || (unit->second.attacks_left() == 0) )
 				continue;
 
-			const gamemap::location& src = attack_analysis->movements.front().second;
-			const gamemap::location& dst = attack_analysis->target;
+			const map_location& src = attack_analysis->movements.front().second;
+			const map_location& dst = attack_analysis->target;
 
 			//now check if location to which we want to move is still unoccupied
 			unit = units_.find(src);
@@ -1803,9 +1803,9 @@ void formula_ai::do_recruitment()
 namespace {
 template<typename Container>
 variant villages_from_set(const Container& villages,
-				          const std::set<gamemap::location>* exclude=NULL) {
+				          const std::set<map_location>* exclude=NULL) {
 	std::vector<variant> vars;
-	foreach(const gamemap::location& loc, villages) {
+	foreach(const map_location& loc, villages) {
 		if(exclude && exclude->count(loc)) {
 			continue;
 		}
@@ -2057,9 +2057,9 @@ variant formula_ai::get_keeps() const
 		std::vector<variant> vars;
 		for(size_t x = 0; x != size_t(get_info().map.w()); ++x) {
 			for(size_t y = 0; y != size_t(get_info().map.h()); ++y) {
-				const gamemap::location loc(x,y);
+				const map_location loc(x,y);
 				if(get_info().map.is_keep(loc)) {
-					gamemap::location adj[6];
+					map_location adj[6];
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
 						if(get_info().map.is_castle(adj[n])) {
@@ -2076,14 +2076,14 @@ variant formula_ai::get_keeps() const
 	return keeps_cache_;
 }
 
-bool formula_ai::can_attack(const gamemap::location unit_loc, 
-		const gamemap::location enemy_loc) const {
+bool formula_ai::can_attack(const map_location unit_loc, 
+		const map_location enemy_loc) const {
 	move_map::iterator i;
 	std::pair<move_map::iterator, 
 			  move_map::iterator> unit_moves;
 	unit_moves = srcdst_.equal_range(unit_loc);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
-		gamemap::location diff(((*i).second).vector_difference(enemy_loc));
+		map_location diff(((*i).second).vector_difference(enemy_loc));
 		if((abs(diff.x) <= 1) && (abs(diff.y) <= 1)) {
 			return true;
 		}

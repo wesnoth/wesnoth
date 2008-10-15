@@ -33,7 +33,7 @@ class game_state;
 class map_labels
 {
 public:
-	typedef std::map<gamemap::location,const terrain_label*> label_map;
+	typedef std::map<map_location,const terrain_label*> label_map;
 	typedef std::map<std::string,label_map> team_label_map;
 
 	map_labels(const display& disp, const gamemap& map, const team*);
@@ -45,15 +45,15 @@ public:
 
 	static size_t get_max_chars();
 
-	const terrain_label* get_label(const gamemap::location& loc, const std::string& team_name);
+	const terrain_label* get_label(const map_location& loc, const std::string& team_name);
 	// search a team-only label, if fails then try public labels
-	const terrain_label* get_label(const gamemap::location& loc);
-	const terrain_label* set_label(const gamemap::location& loc,
+	const terrain_label* get_label(const map_location& loc);
+	const terrain_label* set_label(const map_location& loc,
 							   const std::string& text,
 							   const std::string team = "",
 							   const SDL_Color colour = font::NORMAL_COLOUR);
 
-	void add_label(const gamemap::location&,
+	void add_label(const map_location&,
 				   const terrain_label*);
 
 	void clear(const std::string&);
@@ -61,7 +61,7 @@ public:
 	void scroll(double xmove, double ymove);
 
 	void recalculate_labels();
-	bool visible_global_label(const gamemap::location&) const;
+	bool visible_global_label(const map_location&) const;
 
 	void recalculate_shroud();
 
@@ -92,7 +92,7 @@ class terrain_label
 public:
 	terrain_label(const std::string&,
 				  const std::string&,
-				  const gamemap::location&,
+				  const map_location&,
 				  const map_labels&,
 				  const SDL_Color colour = font::NORMAL_COLOUR);
 
@@ -110,7 +110,7 @@ public:
 	const std::string& text() const;
 	const std::string& team_name() const;
 	bool fogged() const;
-	const gamemap::location& location() const;
+	const map_location& location() const;
 	const SDL_Colour& colour() const;
 
 	void set_text(const std::string&);
@@ -141,7 +141,7 @@ private:
 	SDL_Color	colour_;
 
 	const map_labels* parent_;
-	gamemap::location loc_;
+	map_location loc_;
 
 };
 

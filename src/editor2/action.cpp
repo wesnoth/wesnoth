@@ -124,20 +124,20 @@ void editor_action_chain::perform_without_undo(map_context& mc) const
 	}
 }
 
-bool editor_action_area::add_location(const gamemap::location& loc)
+bool editor_action_area::add_location(const map_location& loc)
 {
 	return area_.insert(loc).second;
 }
-void editor_action_area::add_locations(const std::set<gamemap::location>& locs)
+void editor_action_area::add_locations(const std::set<map_location>& locs)
 {
 	area_.insert(locs.begin(), locs.end());
 }
-void editor_action_area::extend(const editor_map& /*map*/, const std::set<gamemap::location>& locs)
+void editor_action_area::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
 	area_.insert(locs.begin(), locs.end());
 }
 
-void editor_action_paste::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+void editor_action_paste::extend(const editor_map& map, const std::set<map_location>& locs)
 {
 	paste_.add_tiles(map, locs);
 }
@@ -182,7 +182,7 @@ void editor_action_paint_area::perform_without_undo(map_context& mc) const
 
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
-	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
+	std::set<map_location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
 	std::auto_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
@@ -190,7 +190,7 @@ editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 }
 void editor_action_fill::perform_without_undo(map_context& mc) const
 {
-	std::set<gamemap::location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
+	std::set<map_location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 }
@@ -199,7 +199,7 @@ editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
 	int old_player = mc.get_map().is_starting_position(loc_) + 1;
-	gamemap::location old_loc = mc.get_map().starting_position(player_);
+	map_location old_loc = mc.get_map().starting_position(player_);
 	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
 	if (old_player != -1) {
 		// If another player was starting at the location, we actually perform two actions, so the undo is an action_chain.
@@ -207,8 +207,8 @@ editor_action* editor_action_starting_position::perform(map_context& mc) const
 		undo_chain->append_action(new editor_action_starting_position(loc_, old_player));
 		undo_chain->append_action(new editor_action_starting_position(old_loc, player_));
 		undo.reset(undo_chain);
-		LOG_ED << "ssp actual: " << old_player << " to " << gamemap::location() << "\n";
-		mc.get_map().set_starting_position(old_player, gamemap::location());
+		LOG_ED << "ssp actual: " << old_player << " to " << map_location() << "\n";
+		mc.get_map().set_starting_position(old_player, map_location());
 	} else {
 		undo.reset(new editor_action_starting_position(old_loc, player_));
 	}
@@ -221,15 +221,15 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 {
 	int old_player = mc.get_map().is_starting_position(loc_);
 	if (old_player != -1) {
-		mc.get_map().set_starting_position(old_player, gamemap::location());
+		mc.get_map().set_starting_position(old_player, map_location());
 	}
 	mc.get_map().set_starting_position(player_, loc_);
 	mc.set_needs_labels_reset();
 }
 
-void editor_action_select::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+void editor_action_select::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	foreach (const gamemap::location& loc, locs) {
+	foreach (const map_location& loc, locs) {
 		LOG_ED << "Checking " << loc << "\n";
 		if (map.in_selection(loc)) {
 			LOG_ED << "Extending by " << loc << "\n";
@@ -239,8 +239,8 @@ void editor_action_select::extend(const editor_map& map, const std::set<gamemap:
 }
 editor_action* editor_action_select::perform(map_context& mc) const
 {
-	std::set<gamemap::location> undo_locs;
-	foreach (const gamemap::location& loc, area_) {
+	std::set<map_location> undo_locs;
+	foreach (const map_location& loc, area_) {
 		if (!mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
@@ -251,15 +251,15 @@ editor_action* editor_action_select::perform(map_context& mc) const
 }
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
-	foreach (const gamemap::location& loc, area_) {
+	foreach (const map_location& loc, area_) {
 		mc.get_map().add_to_selection(loc);
 		mc.add_changed_location(loc);
 	}
 }
 
-void editor_action_deselect::extend(const editor_map& map, const std::set<gamemap::location>& locs)
+void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	foreach (const gamemap::location& loc, locs) {
+	foreach (const map_location& loc, locs) {
 		LOG_ED << "Checking " << loc << "\n";
 		if (!map.in_selection(loc)) {
 			LOG_ED << "Extending by " << loc << "\n";
@@ -269,8 +269,8 @@ void editor_action_deselect::extend(const editor_map& map, const std::set<gamema
 }
 editor_action* editor_action_deselect::perform(map_context& mc) const
 {
-	std::set<gamemap::location> undo_locs;
-	foreach (const gamemap::location& loc, area_) {
+	std::set<map_location> undo_locs;
+	foreach (const map_location& loc, area_) {
 		if (mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
@@ -281,7 +281,7 @@ editor_action* editor_action_deselect::perform(map_context& mc) const
 }
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
-	foreach (const gamemap::location& loc, area_) {
+	foreach (const map_location& loc, area_) {
 		mc.get_map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}
@@ -289,10 +289,10 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 
 editor_action_deselect* editor_action_select_all::perform(map_context& mc) const
 {
-	std::set<gamemap::location> current = mc.get_map().selection();
+	std::set<map_location> current = mc.get_map().selection();
 	mc.get_map().select_all();
-	std::set<gamemap::location> all = mc.get_map().selection();
-	std::set<gamemap::location> undo_locs;
+	std::set<map_location> all = mc.get_map().selection();
+	std::set<map_location> undo_locs;
 	std::set_difference(all.begin(), all.end(), 
 		current.begin(), current.end(), 
 		std::inserter(undo_locs, undo_locs.begin()));
@@ -307,7 +307,7 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 
 editor_action_select* editor_action_select_none::perform(map_context& mc) const
 {
-	std::set<gamemap::location> current = mc.get_map().selection();
+	std::set<map_location> current = mc.get_map().selection();
 	mc.get_map().clear_selection();
 	mc.set_everything_changed();
 	return new editor_action_select(current);
@@ -372,11 +372,11 @@ editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 
 void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 {
-	std::vector<gamemap::location> shuffle;
+	std::vector<map_location> shuffle;
 	std::copy(area_.begin(), area_.end(), std::inserter(shuffle, shuffle.begin()));
 	std::random_shuffle(shuffle.begin(), shuffle.end());
-	std::vector<gamemap::location>::const_iterator shuffle_it = shuffle.begin();
-	std::set<gamemap::location>::const_iterator orig_it = area_.begin();
+	std::vector<map_location>::const_iterator shuffle_it = shuffle.begin();
+	std::set<map_location>::const_iterator orig_it = area_.begin();
 	while (orig_it != area_.end()) {
 		t_translation::t_terrain tmp = mc.get_map().get_terrain(*orig_it);
 		mc.draw_terrain(mc.get_map().get_terrain(*shuffle_it), *orig_it);

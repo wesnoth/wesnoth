@@ -52,29 +52,29 @@ public:
 	               const config& starting_pos, bool include_replay = true);
 
 	void add_start();
-	void add_recruit(int unit_index, const gamemap::location& loc);
-	void add_recall(int unit_index, const gamemap::location& loc);
+	void add_recruit(int unit_index, const map_location& loc);
+	void add_recall(int unit_index, const map_location& loc);
 	void add_disband(int unit_index);
 	void add_countdown_update(int value,int team);
-	void add_movement(const gamemap::location& a, const gamemap::location& b);
-	void add_attack(const gamemap::location& a, const gamemap::location& b,
+	void add_movement(const map_location& a, const map_location& b);
+	void add_attack(const map_location& a, const map_location& b,
 	                int att_weapon, int def_weapon);
 	void choose_option(int index);
 	void text_input(std::string input);
 	void set_random_value(const std::string& choice);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&);
-	void add_rename(const std::string& name, const gamemap::location& loc);
+	void add_rename(const std::string& name, const map_location& loc);
 	void end_turn();
 	void add_event(const std::string& name,
-		const gamemap::location& loc=gamemap::location::null_location);
-	void add_unit_checksum(const gamemap::location& loc,config* const cfg);
-	void add_checksum_check(const gamemap::location& loc);
+		const map_location& loc=map_location::null_location);
+	void add_unit_checksum(const map_location& loc,config* const cfg);
+	void add_checksum_check(const map_location& loc);
 	/**
 	 * Adds an advancement to the replay, the following option command
 	 * determines which advancement option has been choosen
 	 */
-	void add_advancement(const gamemap::location& loc);
+	void add_advancement(const map_location& loc);
 
 	void add_chat_message_location();
 	void speak(const config& cfg);
@@ -120,7 +120,7 @@ public:
 private:
 	//generic for add_movement and add_attack
 	void add_pos(const std::string& type,
-	             const gamemap::location& a, const gamemap::location& b);
+	             const map_location& a, const map_location& b);
 
 	void add_value(const std::string& type, int value);
 

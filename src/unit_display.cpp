@@ -35,7 +35,7 @@
 
 #define LOG_DP LOG_STREAM(info, display)
 
-static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
@@ -63,7 +63,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 	events::pump();
 }
 
-static void move_unit_between(const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
@@ -84,7 +84,7 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 	target_time -= target_time%150;
 	if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
 	animator.wait_until(target_time);
-	gamemap::location arr[6];
+	map_location arr[6];
 	get_adjacent_tiles(a, arr);
 	unsigned int i;
 	for (i = 0; i < 6; i++) {
@@ -99,7 +99,7 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 namespace unit_display
 {
 
-bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
+bool unit_visible_on_path( const std::vector<map_location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(disp);
@@ -115,7 +115,7 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 	return false;
 }
 
-void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
+void move_unit(const std::vector<map_location>& path, unit& u, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(!path.empty());
@@ -151,7 +151,7 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 				// prevent the unit from dissappearing if we scroll here with i == 0
 				disp->place_temporary_unit(temp_unit,path[i]);
 				// scroll in as much of the remaining path as possible
-				std::vector<gamemap::location> remaining_path;
+				std::vector<map_location> remaining_path;
 				for(size_t j = i; j < path.size(); j++) {
 					remaining_path.push_back(path[j]);
 				}
@@ -178,7 +178,7 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 	}
 }
 
-void unit_die(const gamemap::location& loc, unit& loser,
+void unit_die(const map_location& loc, unit& loser,
 		const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
 	game_display* disp = game_display::get_singleton();
@@ -202,14 +202,14 @@ void unit_die(const gamemap::location& loc, unit& loser,
 
 
 void unit_attack(
-                 const gamemap::location& a, const gamemap::location& b, int damage,
+                 const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text,bool drain,std::string att_text)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || preferences::show_combat() == false) return;
 	unit_map& units = disp->get_units();
-	disp->select_hex(gamemap::location::null_location);
+	disp->select_hex(map_location::null_location);
 	const bool hide = disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b));
 
 	if(!hide) {
@@ -232,7 +232,7 @@ void unit_attack(
 
 
 	unit_animator animator;
-	const gamemap::location leader_loc = under_leadership(units,a);
+	const map_location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 
 	{
@@ -278,7 +278,7 @@ void unit_attack(
 }
 
 
-void unit_recruited(gamemap::location& loc)
+void unit_recruited(map_location& loc)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() ||disp->fogged(loc)) return;
@@ -289,7 +289,7 @@ void unit_recruited(gamemap::location& loc)
 	disp->scroll_to_tile(loc,game_display::ONSCREEN);
 	disp->draw();
 	u->second.set_hidden(false);
-	u->second.set_facing(static_cast<gamemap::location::DIRECTION>(rand()%gamemap::location::NDIRECTIONS));
+	u->second.set_facing(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS));
 	unit_animator animator;
 	animator.add_animation(&u->second,"recruited",loc);
 	animator.start_animations();
@@ -298,7 +298,7 @@ void unit_recruited(gamemap::location& loc)
 	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
-void unit_healing(unit& healed,gamemap::location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
+void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->fogged(healed_loc)) return;

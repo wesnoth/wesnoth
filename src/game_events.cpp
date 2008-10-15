@@ -210,7 +210,7 @@ namespace game_events {
 		return cmd.compare(0, strlen("filter"),"filter") == 0;
 	}
 
-	static bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc);
+	static bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc);
 	static bool matches_special_filter(const config* cfg, const vconfig filter);
 
 	game_state* get_state_of_game()
@@ -253,7 +253,7 @@ namespace game_events {
 		const vconfig::child_list& have_location = cond.get_children("have_location");
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
-			std::set<gamemap::location> res;
+			std::set<map_location> res;
 			assert(game_map != NULL && units != NULL && status_ptr != NULL);
 			terrain_filter(*v, *game_map, *status_ptr, *units).get_locations(res);
 
@@ -407,15 +407,15 @@ namespace {
 
 } // end anonymous namespace (3)
 
-static gamemap::location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
+static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
 {
 	int x = lexical_cast_default(cfg["x"], defaultx) - 1;
 	int y = lexical_cast_default(cfg["y"], defaulty) - 1;
 
-	return gamemap::location(x, y);
+	return map_location(x, y);
 }
 
-static std::vector<gamemap::location> multiple_locs(const vconfig cfg)
+static std::vector<map_location> multiple_locs(const vconfig cfg)
 {
 	return parse_location_range(cfg["x"],cfg["y"]);
 }
@@ -433,8 +433,8 @@ namespace {
 		const size_t index = side_num-1;
 
 		if(index < teams->size()) {
-			const std::vector<gamemap::location>& locs = multiple_locs(cfg);
-			for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+			const std::vector<map_location>& locs = multiple_locs(cfg);
+			for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 				if(remove) {
 					(*teams)[index].clear_shroud(*j);
 				} else {
@@ -474,14 +474,14 @@ namespace {
 
 		// We have found a unit that matches the filter
 		if(u != units->end()) {
-			const gamemap::location dst = cfg_to_loc(cfg);
+			const map_location dst = cfg_to_loc(cfg);
 			if(dst != u->first && game_map->on_board(dst)) {
-				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst);
+				const map_location vacant_dst = find_vacant_tile(*game_map,*units,dst);
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
 
 					(screen)->invalidate(u->first);
-					std::pair<gamemap::location,unit> *up = units->extract(u->first);
+					std::pair<map_location,unit> *up = units->extract(u->first);
 					up->first = vacant_dst;
 					units->add(up);
 					unit_mutations++;
@@ -640,7 +640,7 @@ namespace {
 	WML_HANDLER_FUNCTION(scroll_to,/*handler*/,/*event_info*/,cfg)
 	{
 		assert(state_of_game != NULL);
-		const gamemap::location loc = cfg_to_loc(cfg);
+		const map_location loc = cfg_to_loc(cfg);
 		std::string check_fogged = cfg["check_fogged"];
 		(screen)->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
@@ -666,7 +666,7 @@ namespace {
 		assert(status_ptr != NULL);
 		assert(state_of_game != NULL);
 
-		const gamemap::location loc = cfg_to_loc(cfg, -999, -999);
+		const map_location loc = cfg_to_loc(cfg, -999, -999);
 		const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
 		const time_of_day tod = turn ? status_ptr->get_time_of_day(0,loc,turn) : status_ptr->get_time_of_day(0,loc);
 
@@ -883,9 +883,9 @@ namespace {
 			unit dummy_unit(units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender,variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
-			std::vector<gamemap::location> path;
-			gamemap::location src;
-			gamemap::location dst;
+			std::vector<map_location> path;
+			map_location src;
+			map_location dst;
 			for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 				if(i==0){
 					src.x = atoi(xvals[i].c_str())-1;
@@ -1500,7 +1500,7 @@ namespace {
 						ui->set_game_context(units,game_map,status_ptr,teams);
 						scoped_recall_unit auto_store("this_unit", player_id,
 								(ui - player->available_units.begin()));
-						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
+						if(game_events::unit_matches_filter(*ui, filter,map_location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
 							break;
@@ -1518,7 +1518,7 @@ namespace {
 						ui->set_game_context(units,game_map,status_ptr,teams);
 						scoped_recall_unit auto_store("this_unit", pi->first,
 								(ui - pi->second.available_units.begin()));
-						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
+						if(game_events::unit_matches_filter(*ui, filter,map_location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
 							break;
@@ -1536,7 +1536,7 @@ namespace {
 	{
 		std::string img = cfg["image"];
 		assert(state_of_game != NULL);
-		gamemap::location loc = cfg_to_loc(cfg);
+		map_location loc = cfg_to_loc(cfg);
 
 		if(!loc.valid()) {
 			loc = event_info.loc1;
@@ -1577,7 +1577,7 @@ namespace {
 	WML_HANDLER_FUNCTION(hide_unit,/*handler*/,/*event_info*/,cfg)
 	{
 		// Hiding units
-		const gamemap::location loc = cfg_to_loc(cfg);
+		const map_location loc = cfg_to_loc(cfg);
 		unit_map::iterator u = units->find(loc);
 		if(u != units->end()) {
 			u->second.set_hidden(true);
@@ -1588,7 +1588,7 @@ namespace {
 
 	WML_HANDLER_FUNCTION(unhide_unit,/*handler*/,/*event_info*/,cfg)
 	{
-		const gamemap::location loc = cfg_to_loc(cfg);
+		const map_location loc = cfg_to_loc(cfg);
 		unit_map::iterator u;
 		// Unhide all for backward compatibility
 		for(u =  units->begin(); u != units->end() ; u++) {
@@ -1601,7 +1601,7 @@ namespace {
 	// Adding new items
 	WML_HANDLER_FUNCTION(item,/*handler*/,/*event_info*/,cfg)
 	{
-		gamemap::location loc = cfg_to_loc(cfg);
+		map_location loc = cfg_to_loc(cfg);
 		std::string img = cfg["image"];
 		std::string halo = cfg["halo"];
 		std::string team_name = cfg["team_name"];
@@ -1657,7 +1657,7 @@ namespace {
 			}
 
 			for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
-				gamemap::location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
+				map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
 				spec.location(loc);
 			}
 
@@ -1673,7 +1673,7 @@ namespace {
 	// Changing the terrain
 	WML_HANDLER_FUNCTION(terrain,handler,/*event_info*/,cfg)
 	{
-		const std::vector<gamemap::location> locs = multiple_locs(cfg);
+		const std::vector<map_location> locs = multiple_locs(cfg);
 
 		std::string terrain_type = cfg["terrain"];
 		assert(state_of_game != NULL);
@@ -1690,7 +1690,7 @@ namespace {
 				mode = gamemap::OVERLAY;
 			}
 
-			for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
+			for(std::vector<map_location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
 				const t_translation::t_terrain old_terrain = game_map->get_terrain(*loc);
 				const t_translation::t_terrain new_terrain = game_map->merge_terrains(old_terrain, terrain, mode, utils::string_bool(cfg["replace_if_failed"]) );
 				if (new_terrain != t_translation::NONE_TERRAIN) {
@@ -1721,7 +1721,7 @@ namespace {
 	// Creating a mask of the terrain
 	WML_HANDLER_FUNCTION(terrain_mask,handler,/*event_info*/,cfg)
 	{
-		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
+		map_location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
 
@@ -1748,7 +1748,7 @@ namespace {
 		assert(state_of_game != NULL);
 		unit new_unit(units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
 		preferences::encountered_units().insert(new_unit.type_id());
-		gamemap::location loc = cfg_to_loc(cfg);
+		map_location loc = cfg_to_loc(cfg);
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
@@ -1761,7 +1761,7 @@ namespace {
 				(*teams)[new_unit.side() - 1].set_current_player(new_unit.name());
 
 			units->erase(loc);
-			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
+			units->add(new std::pair<map_location,unit>(loc,new_unit));
 			unit_mutations++;
 			if(game_map->is_village(loc)) {
 				get_village(loc,*screen,*teams,new_unit.side()-1,*units);
@@ -1822,8 +1822,8 @@ namespace {
 				DBG_NG << "checking unit against filter...\n";
 				u->set_game_context(units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
-				if(game_events::unit_matches_filter(*u, unit_filter, gamemap::location())) {
-					gamemap::location loc = cfg_to_loc(cfg);
+				if(game_events::unit_matches_filter(*u, unit_filter, map_location())) {
+					map_location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 					unit_mutations++;
@@ -1849,7 +1849,7 @@ namespace {
 		std::string caption = cfg["name"];
 		std::string text;
 
-		gamemap::location loc;
+		map_location loc;
 		if(!filter.null()) {
 			for(unit_map::const_iterator u = units->begin(); u != units->end(); ++u) {
 				if(game_events::unit_matches_filter(u, filter)) {
@@ -2031,16 +2031,16 @@ namespace {
 	}
 
 
-	typedef std::map<gamemap::location, int> recursion_counter;
+	typedef std::map<map_location, int> recursion_counter;
 
 	class recursion_preventer {
 		static recursion_counter counter_;
 		static const int max_recursion = 10;
-		gamemap::location loc_;
+		map_location loc_;
 		bool too_many_recursions_;
 
 		public:
-		recursion_preventer(gamemap::location& loc) :
+		recursion_preventer(map_location& loc) :
 			loc_(loc),
 			too_many_recursions_(false)
 		{
@@ -2070,7 +2070,7 @@ namespace {
 	WML_HANDLER_FUNCTION(kill,handler,event_info,cfg)
 	{
 		// Use (x,y) iteration, because firing events ruins unit_map iteration
-		for(gamemap::location loc(0,0); loc.x < game_map->w(); ++loc.x) {
+		for(map_location loc(0,0); loc.x < game_map->w(); ++loc.x) {
 			for(loc.y = 0; loc.y < game_map->h(); ++loc.y) {
 				unit_map::iterator un = units->find(loc);
 				if(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
@@ -2128,7 +2128,7 @@ namespace {
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 					j->set_game_context(units,game_map,status_ptr,teams);
 					scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
-					if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
+					if(game_events::unit_matches_filter(*j, cfg,map_location())) {
 						j = avail_units.erase(j);
 					} else {
 						++j;
@@ -2141,7 +2141,7 @@ namespace {
 	// Fire any events
 	WML_HANDLER_FUNCTION(fire_event,/*handler*/,/*event_info*/,cfg)
 	{
-		gamemap::location loc1,loc2;
+		map_location loc1,loc2;
 		config data;
 		if (cfg.has_child("primary_unit")) {
 			vconfig u = cfg.child("primary_unit");
@@ -2261,7 +2261,7 @@ namespace {
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 					j->set_game_context(units,game_map,status_ptr,teams);
 					scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
-					if(game_events::unit_matches_filter(*j, filter,gamemap::location()) == false) {
+					if(game_events::unit_matches_filter(*j, filter,map_location()) == false) {
 						++j;
 						continue;
 					}
@@ -2296,14 +2296,14 @@ namespace {
 			const unit u(units,game_map,status_ptr,teams,var, false);
 
 			preferences::encountered_units().insert(u.type_id());
-			gamemap::location loc(var, game_events::get_state_of_game());
+			map_location loc(var, game_events::get_state_of_game());
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);
 				}
 
 				units->erase(loc);
-				units->add(new std::pair<gamemap::location,unit>(loc,u));
+				units->add(new std::pair<map_location,unit>(loc,u));
 				unit_mutations++;
 
 				std::string text = cfg["text"];
@@ -2424,7 +2424,7 @@ namespace {
 		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 
-		const gamemap::location& loc = game_map->starting_position(side_num);
+		const map_location& loc = game_map->starting_position(side_num);
 		assert(state_of_game != NULL);
 		config &loc_store = state_of_game->get_variable_cfg(variable);
 		loc_store.clear();
@@ -2454,9 +2454,9 @@ namespace {
 		config to_store;
 		variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
 
-		std::vector<gamemap::location> locs = game_map->villages();
+		std::vector<map_location> locs = game_map->villages();
 
-		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+		for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 			bool matches = false;
 			if(cfg.has_attribute("side")) { 	/** @deprecated, use owner_side instead */
 				lg::wml_error << "side key is no longer accepted in [store_villages],"
@@ -2490,13 +2490,13 @@ namespace {
 			variable="location";
 		}
 
-		std::set<gamemap::location> res;
+		std::set<map_location> res;
 		terrain_filter filter(cfg, *game_map, *status_ptr, *units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(res);
 
 		state_of_game->clear_variable_cfg(variable);
-		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end(); ++j) {
+		for(std::set<map_location>::const_iterator j = res.begin(); j != res.end(); ++j) {
 			config &loc_store = state_of_game->add_variable_cfg(variable);
 			j->write(loc_store);
 			game_map->write_terrain(*j, loc_store);
@@ -2519,9 +2519,9 @@ namespace {
 		// and so the village will become neutral.
 		const size_t team_num = size_t(side_num-1);
 
-		const std::vector<gamemap::location> locs(multiple_locs(cfg));
+		const std::vector<map_location> locs(multiple_locs(cfg));
 
-		for(std::vector<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+		for(std::vector<map_location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 			if(game_map->is_village(*i)) {
 				get_village(*i,*screen,*teams,team_num,*units);
 			}
@@ -2905,7 +2905,7 @@ namespace {
 			LOG_DP << "scrolling to speaker..\n";
 			(screen)->highlight_hex(speaker->first);
 			const int offset_from_center = std::max<int>(0, speaker->first.y - 1);
-			(screen)->scroll_to_tile(gamemap::location(speaker->first.x,offset_from_center));
+			(screen)->scroll_to_tile(map_location(speaker->first.x,offset_from_center));
 			(screen)->highlight_hex(speaker->first);
 
 			if(image.empty()) {
@@ -2931,7 +2931,7 @@ namespace {
 			}
 			LOG_DP << "done scrolling to speaker...\n";
 		} else {
-			(screen)->highlight_hex(gamemap::location::null_location);
+			(screen)->highlight_hex(map_location::null_location);
 		}
 		(screen)->draw(false);
 
@@ -3096,7 +3096,7 @@ namespace {
 			status_ptr->remove_time_area(id);
 		}
 		else {
-			std::set<gamemap::location> locs;
+			std::set<map_location> locs;
 			terrain_filter filter(cfg, *game_map, *status_ptr, *units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
@@ -3390,7 +3390,7 @@ namespace game_events {
 		return matches;
 	}
 
-	bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc)
+	bool unit_matches_filter(const unit& u, const vconfig filter,const map_location& loc)
 	{
 		return u.matches_filter(filter,loc);
 	}
@@ -3597,12 +3597,12 @@ namespace game_events {
 		return unit_mutations;
 	}
 
-	entity_location::entity_location(gamemap::location loc, const size_t id)
-		: location(loc), id_(id)
+	entity_location::entity_location(map_location loc, const size_t id)
+		: map_location(loc), id_(id)
 	{}
 
 	entity_location::entity_location(unit_map::iterator itor)
-		: location(itor->first), id_(itor->second.underlying_id())
+		: map_location(itor->first), id_(itor->second.underlying_id())
 	{}
 
 	bool entity_location::matches_unit(const unit& u) const

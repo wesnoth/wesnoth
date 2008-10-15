@@ -53,8 +53,8 @@ const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 battle_prediction_pane::battle_prediction_pane(display &disp, 
 		const battle_context& bc, const gamemap& map, const 
 		std::vector<team>& teams, const unit_map& units, 
-		const gamestatus& status, const gamemap::location& attacker_loc, 
-		const gamemap::location& defender_loc) :
+		const gamestatus& status, const map_location& attacker_loc, 
+		const map_location& defender_loc) :
 	gui::preview_pane(disp.video()), 
 	disp_(disp), 
 	bc_(bc), 
@@ -155,8 +155,8 @@ battle_prediction_pane::battle_prediction_pane(display &disp,
 }
 
 void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& stats,
-										  const unit& u, const gamemap::location& u_loc, float u_unscathed,
-										  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
+										  const unit& u, const map_location& u_loc, float u_unscathed,
+										  const unit& opp, const map_location& opp_loc, const attack_type *opp_weapon,
 											  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
 									      int& left_strings_width, int& right_strings_width, int& strings_width)
 {

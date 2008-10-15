@@ -27,12 +27,12 @@ public:
 
 	bool in_editor() const { return true; }
 
-	void add_brush_loc(const gamemap::location& hex);
-	void set_brush_locs(const std::set<gamemap::location>& hexes); 
+	void add_brush_loc(const map_location& hex);
+	void set_brush_locs(const std::set<map_location>& hexes); 
 	void clear_brush_locs();
-	void remove_brush_loc(const gamemap::location& hex);
+	void remove_brush_loc(const map_location& hex);
 	const editor_map& map() const { return static_cast<const editor_map&>(map_); }
-	void rebuild_terrain(const gamemap::location &loc);
+	void rebuild_terrain(const map_location &loc);
 	void set_toolbar_hint(const std::string value) { toolbar_hint_ = value; }
 
 protected:
@@ -40,14 +40,14 @@ protected:
 	/**
 	* The editor uses different rules for terrain highligting (e.g. selections)
 	*/
-	image::TYPE get_image_type(const gamemap::location& loc);
+	image::TYPE get_image_type(const map_location& loc);
 	
-	void draw_hex(const gamemap::location& loc);
+	void draw_hex(const map_location& loc);
 	
 	const SDL_Rect& get_clip_rect();
 	void draw_sidebar();
 	
-	std::set<gamemap::location> brush_locations_;
+	std::set<map_location> brush_locations_;
 	std::string toolbar_hint_;
 };
 

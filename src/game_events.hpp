@@ -67,8 +67,8 @@ namespace game_events
 		variable::manager variable_manager;
 	};
 
-	struct entity_location : public gamemap::location {
-		entity_location(gamemap::location loc, const size_t id=0);
+	struct entity_location : public map_location {
+		entity_location(map_location loc, const size_t id=0);
 		explicit entity_location(unit_map::iterator itor);
 		bool requires_unit() const;
 		bool matches_unit(const unit& u) const;
@@ -282,13 +282,13 @@ namespace game_events
 	 * Events may have up to two arguments, both of which must be locations.
 	 */
 	bool fire(const std::string& event,
-			const entity_location& loc1=gamemap::location::null_location,
-			const entity_location& loc2=gamemap::location::null_location,
+			const entity_location& loc1=map_location::null_location,
+			const entity_location& loc2=map_location::null_location,
 			const config& data=config());
 
 	void raise(const std::string& event,
-			const entity_location& loc1=gamemap::location::null_location,
-			const entity_location& loc2=gamemap::location::null_location,
+			const entity_location& loc1=map_location::null_location,
+			const entity_location& loc2=map_location::null_location,
 			const config& data=config());
 
 	bool conditional_passed(const unit_map* units,

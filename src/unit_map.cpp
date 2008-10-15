@@ -27,15 +27,15 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define DBG_NG LOG_STREAM(debug, engine)
 
-typedef std::pair<std::string, std::pair<bool, std::pair<gamemap::location, unit>*> > umap_pair;
+typedef std::pair<std::string, std::pair<bool, std::pair<map_location, unit>*> > umap_pair;
 
-unit_map::unit_map(const gamemap::location &loc, const unit &u) :
+unit_map::unit_map(const map_location &loc, const unit &u) :
 	map_(),
 	lmap_(),
 	num_iters_(0),
 	num_invalid_(0)
 {
-	add(new std::pair<gamemap::location,unit>(loc, u));
+	add(new std::pair<map_location,unit>(loc, u));
 }
 
 unit_map::unit_map(const unit_map &that) :
@@ -55,7 +55,7 @@ unit_map &unit_map::operator=(const unit_map &that)
 	num_invalid_ = 0;
 	for (umap::const_iterator i = that.map_.begin(); i != that.map_.end(); i++) {
 		if (i->second.first) {
-			add(new std::pair<gamemap::location,unit>(i->second.second->first, i->second.second->second));
+			add(new std::pair<map_location,unit>(i->second.second->first, i->second.second->second));
 		}
 	}
 	return *this;
@@ -67,13 +67,13 @@ unit_map::~unit_map()
 	delete_all();
 }
 
-std::pair<gamemap::location,unit>* unit_map::unit_iterator::operator->() const
+std::pair<map_location,unit>* unit_map::unit_iterator::operator->() const
 {
 	assert(valid());
 	return i_->second.second;
 }
 
-std::pair<gamemap::location,unit>& unit_map::unit_iterator::operator*() const
+std::pair<map_location,unit>& unit_map::unit_iterator::operator*() const
 {
 	assert(valid());
 	return *i_->second.second;
@@ -105,13 +105,13 @@ unit_map::unit_iterator unit_map::unit_iterator::operator++(int){
 }
 
 // Due to unit <-> unit_map dependencies, must be out of line.
-const std::pair<gamemap::location,unit>* unit_map::const_unit_iterator::operator->() const
+const std::pair<map_location,unit>* unit_map::const_unit_iterator::operator->() const
 {
 	assert(valid());
 	return i_->second.second;
 }
 
-const std::pair<gamemap::location,unit>& unit_map::const_unit_iterator::operator*() const
+const std::pair<map_location,unit>& unit_map::const_unit_iterator::operator*() const
 {
 	assert(valid());
 	return *i_->second.second;
@@ -160,18 +160,18 @@ unit_map::unit_xy_iterator::unit_xy_iterator(const unit_iterator &i) :
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
 
-std::pair<gamemap::location,unit>* unit_map::unit_xy_iterator::operator->() const
+std::pair<map_location,unit>* unit_map::unit_xy_iterator::operator->() const
 {
 	assert(valid());
 	return i_->second.second;
 }
 
-std::pair<gamemap::location,unit>& unit_map::unit_xy_iterator::operator*() const
+std::pair<map_location,unit>& unit_map::unit_xy_iterator::operator*() const
 {
 	assert(valid());
 	return *i_->second.second;
@@ -198,7 +198,7 @@ unit_map::unit_xy_iterator unit_map::unit_xy_iterator::operator++(int){
 	assert(i_ != map_->map_.end());
 
 	umap::iterator iter(i_);
-	gamemap::location pre_loc = loc_;
+	map_location pre_loc = loc_;
 	++i_;
 	while (i_ != map_->map_.end() && !valid()) {
 		++i_;
@@ -219,7 +219,7 @@ unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const unit_iterator &i)
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
@@ -227,16 +227,16 @@ unit_map::const_unit_xy_iterator::const_unit_xy_iterator(const const_unit_iterat
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
-const std::pair<gamemap::location,unit>* unit_map::const_unit_xy_iterator::operator->() const {
+const std::pair<map_location,unit>* unit_map::const_unit_xy_iterator::operator->() const {
 	assert(valid());
 	return i_->second.second;
 }
 
-const std::pair<gamemap::location,unit>& unit_map::const_unit_xy_iterator::operator*() const {
+const std::pair<map_location,unit>& unit_map::const_unit_xy_iterator::operator*() const {
 	assert(valid());
 	return *i_->second.second;
 }
@@ -261,7 +261,7 @@ unit_map::const_unit_xy_iterator unit_map::const_unit_xy_iterator::operator++(in
 
 	assert(i_ != map_->map_.end());
 
-	gamemap::location pre_loc = loc_;
+	map_location pre_loc = loc_;
 
 	umap::const_iterator iter(i_);
 	++i_;
@@ -285,7 +285,7 @@ unit_map::xy_accessor::xy_accessor(const unit_iterator &i) :
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
@@ -293,17 +293,17 @@ unit_map::xy_accessor::xy_accessor(const unit_xy_iterator &i) :
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
 
-std::pair<gamemap::location,unit>* unit_map::xy_accessor::operator->() {
+std::pair<map_location,unit>* unit_map::xy_accessor::operator->() {
 	if (!valid()) { assert(0); }
 	return i_->second.second;
 }
 
-std::pair<gamemap::location,unit>& unit_map::xy_accessor::operator*() {
+std::pair<map_location,unit>& unit_map::xy_accessor::operator*() {
 	if (!valid()) { assert(0); }
 	return *i_->second.second;
 }
@@ -329,7 +329,7 @@ unit_map::const_xy_accessor::const_xy_accessor(const const_unit_iterator &i) :
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
@@ -337,7 +337,7 @@ unit_map::const_xy_accessor::const_xy_accessor(const unit_iterator &i) :
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
@@ -345,7 +345,7 @@ unit_map::const_xy_accessor::const_xy_accessor(const const_unit_xy_iterator &i) 
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
@@ -353,16 +353,16 @@ unit_map::const_xy_accessor::const_xy_accessor(const unit_xy_iterator &i) :
 	counter_(i.map_),
 	i_(i.i_),
 	map_(i.map_),
-	loc_(i.valid() ? i->first : gamemap::location())
+	loc_(i.valid() ? i->first : map_location())
 {
 }
 
-const std::pair<gamemap::location,unit>* unit_map::const_xy_accessor::operator->() {
+const std::pair<map_location,unit>* unit_map::const_xy_accessor::operator->() {
 	if (!valid()) { assert(0); }
 	return i_->second.second;
 }
 
-const std::pair<gamemap::location,unit>& unit_map::const_xy_accessor::operator*() {
+const std::pair<map_location,unit>& unit_map::const_xy_accessor::operator*() {
 	if (!valid()) { assert(0); }
 	return *i_->second.second;
 }
@@ -385,7 +385,7 @@ bool unit_map::const_xy_accessor::valid() {
 }
 
 
-unit_map::unit_iterator unit_map::find(const gamemap::location &loc) {
+unit_map::unit_iterator unit_map::find(const map_location &loc) {
 	lmap::const_iterator i = lmap_.find(loc);
 	if (i == lmap_.end()) {
 		return unit_iterator(map_.end(), this);
@@ -398,7 +398,7 @@ unit_map::unit_iterator unit_map::find(const gamemap::location &loc) {
 }
 
 
-unit_map::const_unit_iterator unit_map::find(const gamemap::location &loc) const {
+unit_map::const_unit_iterator unit_map::find(const map_location &loc) const {
 	lmap::const_iterator iter = lmap_.find(loc);
 	if (iter == lmap_.end()) {
 		return const_unit_iterator(map_.end(), this);
@@ -472,7 +472,7 @@ unit_map::unit_iterator unit_map::begin() {
 }
 
 
-void unit_map::add(std::pair<gamemap::location,unit> *p)
+void unit_map::add(std::pair<map_location,unit> *p)
 {
 	size_t unit_id = p->second.underlying_id();
 	umap::iterator iter = map_.find(unit_id);
@@ -509,7 +509,7 @@ void unit_map::add(std::pair<gamemap::location,unit> *p)
 	assert(res.second);
 }
 
-void unit_map::replace(std::pair<gamemap::location,unit> *p)
+void unit_map::replace(std::pair<map_location,unit> *p)
 {
 	if (erase(p->first) != 1)
 		assert(0);
@@ -530,14 +530,14 @@ void unit_map::delete_all()
 	map_.clear();
 }
 
-std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &loc)
+std::pair<map_location,unit> *unit_map::extract(const map_location &loc)
 {
 	lmap::iterator i = lmap_.find(loc);
 	if (i == lmap_.end())
 		return NULL;
 
 	umap::iterator iter = map_.find(i->second);
-	std::pair<gamemap::location,unit> *res = iter->second.second;
+	std::pair<map_location,unit> *res = iter->second.second;
 
 	DBG_NG << "Extract unit " << i->second << "\n";
 	invalidate(iter);
@@ -546,7 +546,7 @@ std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &lo
 	return res;
 }
 
-size_t unit_map::erase(const gamemap::location &loc)
+size_t unit_map::erase(const map_location &loc)
 {
 	lmap::iterator i = lmap_.find(loc);
 	if (i == lmap_.end())

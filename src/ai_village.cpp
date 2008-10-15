@@ -100,20 +100,20 @@
 
 namespace {
 	/** Location of the keep the closest to our leader. */
-	gamemap::location keep_loc = gamemap::location::null_location;
+	map_location keep_loc = map_location::null_location;
 	/** Locaton of our leader. */
-	gamemap::location leader_loc = gamemap::location::null_location;
+	map_location leader_loc = map_location::null_location;
 	/** The best possible location for our leader if it can't reach a village. */
-	gamemap::location best_leader_loc = gamemap::location::null_location;
+	map_location best_leader_loc = map_location::null_location;
 
 	/** debug log level for AI enabled? */
 	bool debug = false;
 
-	typedef std::map<gamemap::location /* unit location */, 
-		std::vector<gamemap::location /* villages we can reach */> > treachmap;
+	typedef std::map<map_location /* unit location */, 
+		std::vector<map_location /* villages we can reach */> > treachmap;
 
-	typedef std::vector<std::pair<gamemap::location /* destination */, 
-		gamemap::location /* start */ > > tmoves;
+	typedef std::vector<std::pair<map_location /* destination */, 
+		map_location /* start */ > > tmoves;
 }
 
 /** Dispatches all units to their best location. */
@@ -134,7 +134,7 @@ static bool dispatch_village_simple(
 
 /** Removes a village for all units, returns true if anything is deleted. */
 static bool remove_village(
-	treachmap& reachmap, tmoves& moves, const gamemap::location& village);
+	treachmap& reachmap, tmoves& moves, const map_location& village);
 
 /** Removes a unit which can't reach any village anymore. */
 static treachmap::iterator remove_unit(
@@ -150,19 +150,19 @@ static void full_dispatch(treachmap& reachmap, tmoves& moves);
 /** Shows which villages every unit can reach (debug function). */
 static void dump_reachmap(treachmap& reachmap);
 
-bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
+bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 		const move_map& dstsrc, const move_map& enemy_dstsrc, 
 		unit_map::iterator &leader)
 {
 	DBG_AI << "deciding which villages we want...\n";
 	const int ticks = SDL_GetTicks();
-	best_leader_loc = gamemap::location::null_location;
+	best_leader_loc = map_location::null_location;
 	if(leader != units_.end()) {
 		keep_loc = nearest_keep(leader->first);
 		leader_loc = leader->first;
 	} else {
-		keep_loc = gamemap::location::null_location;
-		leader_loc = gamemap::location::null_location;
+		keep_loc = map_location::null_location;
+		leader_loc = map_location::null_location;
 	}
 
 	debug = (!lg::debug.dont_log(lg::ai));
@@ -174,7 +174,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 
 		if(u_itor->second.side() == team_num_ 
 				&& u_itor->second.movement_left()) {
-			reachmap.insert(std::make_pair(u_itor->first,	std::vector<gamemap::location>()));
+			reachmap.insert(std::make_pair(u_itor->first,	std::vector<map_location>()));
 		}
 	}
 
@@ -241,7 +241,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 
 	if(leader_move.second.valid()) {
 		if(units_.count(leader_move.first) == 0) {
-			gamemap::location loc = move_unit(leader_move.second,leader_move.first,possible_moves);
+			map_location loc = move_unit(leader_move.second,leader_move.first,possible_moves);
 			++moves_made;
 			// Update leader iterator, since we moved it.
 			leader = units_.find(loc);
@@ -254,9 +254,9 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
 void ai::find_villages(
 	treachmap& reachmap,
 	tmoves& moves,
-	const std::multimap<gamemap::location,gamemap::location>& dstsrc,
-	const std::map<gamemap::location,paths>& possible_moves,
-	const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const
+	const std::multimap<map_location,map_location>& dstsrc,
+	const std::map<map_location,paths>& possible_moves,
+	const std::multimap<map_location,map_location>& enemy_dstsrc) const
 
 {
 	std::map<location, double> vulnerability;
@@ -268,12 +268,12 @@ void ai::find_villages(
 	
 	// When a unit is dispatched we need to make sure we don't
 	// dispatch this unit a second time, so store them here.
-	std::vector<gamemap::location> dispatched_units;
-	for(std::multimap<gamemap::location, gamemap::location>::const_iterator 
+	std::vector<map_location> dispatched_units;
+	for(std::multimap<map_location, map_location>::const_iterator 
 			j = dstsrc.begin();
 			j != dstsrc.end(); ++j) {
 
-		const gamemap::location& current_loc = j->first;
+		const map_location& current_loc = j->first;
 
 		if(j->second == leader_loc) {
 			if(passive_leader) {
@@ -314,7 +314,7 @@ void ai::find_villages(
 
 		// If it is a neutral village, and we have no leader,
 		// then the village is of no use to us, and we don't want it.
-		if(!owned && leader_loc == gamemap::location::null_location) {
+		if(!owned && leader_loc == map_location::null_location) {
 			continue;
 		}
 
@@ -350,10 +350,10 @@ void ai::find_villages(
 
 		// If the next and previous destination differs from our current destination, 
 		// we're the only one who can reach the village -> dispatch.
-		std::multimap<gamemap::location, gamemap::location>::const_iterator next = j;
+		std::multimap<map_location, map_location>::const_iterator next = j;
 		++next; // j + 1 fails
 		const bool at_begin = (j == dstsrc.begin());
-		std::multimap<gamemap::location, gamemap::location>::const_iterator prev = j; //FIXME seems not to work
+		std::multimap<map_location, map_location>::const_iterator prev = j; //FIXME seems not to work
 		if(!at_begin) {
 			--prev;
 		}
@@ -443,7 +443,7 @@ static bool dispatch_unit_simple(treachmap& reachmap, tmoves& moves)
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
 		if(itor->second.size() == 1) {
-			const gamemap::location village = itor->second[0];
+			const map_location village = itor->second[0];
 			result = true;
 
 			DBG_AI << "Dispatched unit at " << itor->first << " to village " << village << '\n';
@@ -491,13 +491,13 @@ static bool dispatch_village_simple(
 		dispatched = false;
 
 		// build the reverse map
-		std::map<gamemap::location /*village location*/, 
-			std::vector<gamemap::location /* units that can reach it*/> >reversemap;
+		std::map<map_location /*village location*/, 
+			std::vector<map_location /* units that can reach it*/> >reversemap;
 
 		treachmap::const_iterator itor = reachmap.begin();
 		for(;itor != reachmap.end(); ++itor) {
 
-			for(std::vector<gamemap::location>::const_iterator 
+			for(std::vector<map_location>::const_iterator 
 					v_itor = itor->second.begin();
 			 		v_itor != itor->second.end(); ++v_itor) {
 
@@ -512,7 +512,7 @@ static bool dispatch_village_simple(
 		while(itor != reversemap.end()) {
 			if(itor->second.size() == 1) {
 				// One unit can reach this village.
-				const gamemap::location village = itor->first;
+				const map_location village = itor->first;
 				dispatched = true;
 				result = true;
 
@@ -534,7 +534,7 @@ static bool dispatch_village_simple(
 }
 
 static bool remove_village(
-	treachmap& reachmap, tmoves& moves, const gamemap::location& village)
+	treachmap& reachmap, tmoves& moves, const map_location& village)
 {
 	bool result = false;
 	treachmap::iterator itor = reachmap.begin();
@@ -555,7 +555,7 @@ static treachmap::iterator remove_unit(
 {
 	assert(unit->second.empty());
 
-	if(unit->first == leader_loc && best_leader_loc != gamemap::location::null_location) {
+	if(unit->first == leader_loc && best_leader_loc != map_location::null_location) {
 		DBG_AI << "Dispatch leader at " << leader_loc << " closer to the keep at " 
 			<< best_leader_loc << '\n';
 
@@ -584,9 +584,9 @@ static void dispatch_complex(
 		return;
 	}
 
-	std::vector<gamemap::location> units(unit_count);
+	std::vector<map_location> units(unit_count);
 	std::vector<size_t> villages_per_unit(unit_count);
-	std::vector<gamemap::location> villages;
+	std::vector<map_location> villages;
 	std::vector<size_t> units_per_village(village_count);
 
 	// We want to test the units, the ones who can reach the least
@@ -609,7 +609,7 @@ static void dispatch_complex(
 
 			size_t v_index;
 			// find the index of the v in the villages
-			std::vector<gamemap::location>::const_iterator v_itor = 
+			std::vector<map_location>::const_iterator v_itor = 
 				std::find(villages.begin(), villages.end(), itor->second[v]);
 			if(v_itor == villages.end()) {
 				v_index = villages.size(); // will be the last element after push_back.
@@ -698,8 +698,8 @@ static void dispatch_complex(
 				std::vector<bool>::iterator first = std::find(result.begin(), result.end(), true);
 				std::vector<bool>::iterator second = std::find(first + 1, result.end(), true);
 
-				const gamemap::location village1 = villages[first - result.begin()];
-				const gamemap::location village2 = villages[second - result.begin()];
+				const map_location village1 = villages[first - result.begin()];
+				const map_location village2 = villages[second - result.begin()];
 
 				const bool perfect = (src_itor->first == 2 && 
 					dst_itor->first == 2 && 
@@ -749,7 +749,7 @@ static void dispatch_complex(
 	//   - dispatch and ready
 	// - is it's result better as the last best
 	//   - store
-	std::vector<std::pair<gamemap::location, gamemap::location> > best_result;
+	std::vector<std::pair<map_location, map_location> > best_result;
 
 	// Bruteforcing all possible permutations can result in a slow game.
 	// So there needs to be a balance between the best possible result and
@@ -771,7 +771,7 @@ static void dispatch_complex(
 		while(std::next_permutation(perm.begin(), perm.end())) {
 
 			// Get result for current permutation.
-			std::vector<std::pair<gamemap::location,gamemap::location> > result;
+			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < max_options; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.push_back(std::make_pair(villages[perm[u]], units[u]));
@@ -791,7 +791,7 @@ static void dispatch_complex(
 		std::copy(best_result.begin(), best_result.end(), std::back_inserter(moves));
 
 		// Clean up the reachmap for dispatched units.
-		for(std::vector<std::pair<gamemap::location, gamemap::location> >::const_iterator 
+		for(std::vector<std::pair<map_location, map_location> >::const_iterator 
 				itor = best_result.begin(); itor != best_result.end(); ++itor) {
 			reachmap.erase(itor->second);
 		}
@@ -810,7 +810,7 @@ static void dispatch_complex(
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 			// Get result for current permutation.
-			std::vector<std::pair<gamemap::location,gamemap::location> > result;
+			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < unit_count; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.push_back(std::make_pair(villages[perm[u]], units[u]));
@@ -832,7 +832,7 @@ static void dispatch_complex(
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
-		for(std::vector<std::pair<gamemap::location, gamemap::location> >::const_iterator 
+		for(std::vector<std::pair<map_location, map_location> >::const_iterator 
 				itor = best_result.begin(); itor != best_result.end(); ++itor) {
 			reachmap.erase(itor->second);
 		}
@@ -853,7 +853,7 @@ static void dispatch_complex(
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 			// Get result for current permutation.
-			std::vector<std::pair<gamemap::location,gamemap::location> > result;
+			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t v = 0; v < village_count; ++v) {
 				if(matrix[perm[v]][v]) {
 					result.push_back(std::make_pair(villages[v], units[perm[v]]));
@@ -875,7 +875,7 @@ static void dispatch_complex(
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
-		for(std::vector<std::pair<gamemap::location, gamemap::location> >::const_iterator 
+		for(std::vector<std::pair<map_location, map_location> >::const_iterator 
 				itor = best_result.begin(); itor != best_result.end(); ++itor) {
 			reachmap.erase(itor->second);
 		}
@@ -913,7 +913,7 @@ static void dump_reachmap(treachmap& reachmap)
 			std::cerr << "\tNone";
 		}
 
-		for(std::vector<gamemap::location>::const_iterator 
+		for(std::vector<map_location>::const_iterator 
 				v_itor = itor->second.begin();
 				v_itor != itor->second.end(); ++v_itor) {
 
@@ -972,20 +972,20 @@ int main()
 {
 	const size_t max_matrix = 100;
 	std::vector</*unit*/std::vector</*village*/bool> > matrix(max_matrix, std::vector<bool>(max_matrix, false));
-	std::vector<gamemap::location> villages(max_matrix);
-	std::vector<gamemap::location> units(max_matrix);
+	std::vector<map_location> villages(max_matrix);
+	std::vector<map_location> units(max_matrix);
 
 	srand(10);
 	for(size_t i = 0; i < max_matrix; ++i) {
 		for(size_t j = 0; j < max_matrix; ++j) {
 			matrix[i][j] = ((rand() % 3) == 0);
-			villages[i] = gamemap::location(rand() % 100, rand() % 100);
-			units[i] = gamemap::location(rand() % 100, rand() % 100);
+			villages[i] = map_location(rand() % 100, rand() % 100);
+			units[i] = map_location(rand() % 100, rand() % 100);
 		}
 	}
 
 	// Permutations for 0 are quite senseless.
-	std::vector<std::pair<gamemap::location,gamemap::location> > best_result;
+	std::vector<std::pair<map_location,map_location> > best_result;
 	for(size_t option = 1; option < max_matrix; ++option) {
 		// Set up the permuation 
 		std::vector<size_t> perm (option, 0);
@@ -997,7 +997,7 @@ int main()
 		while(std::next_permutation(perm.begin(), perm.end())) {
 
 			// Get result for current permutation.
-			std::vector<std::pair<gamemap::location,gamemap::location> > result;
+			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < option; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.push_back(std::make_pair(villages[perm[u]], units[u]));

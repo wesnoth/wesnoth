@@ -72,22 +72,22 @@ protected:
 
 	virtual void do_move();
 
-	virtual bool do_combat(std::map<gamemap::location,paths>& possible_moves,
+	virtual bool do_combat(std::map<map_location,paths>& possible_moves,
 			const move_map& srcdst, const move_map& dstsrc,
 			const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves,
+	virtual bool get_villages(std::map<map_location,paths>& possible_moves,
 			const move_map& dstsrc, const move_map& enemy_dstsrc,
 			unit_map::iterator &leader);
-	virtual bool get_healing(std::map<gamemap::location,paths>& possible_moves,
+	virtual bool get_healing(std::map<map_location,paths>& possible_moves,
 			const move_map& srcdst, const move_map& enemy_dstsrc);
-	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves,
+	virtual bool retreat_units(std::map<map_location,paths>& possible_moves,
 			const move_map& srcdst, const move_map& dstsrc,
 			const move_map& enemy_dstsrc, unit_map::const_iterator leader);
-	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves,
+	virtual bool move_to_targets(std::map<map_location,paths>& possible_moves,
 			move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc,
 			unit_map::const_iterator leader);
 
-	virtual bool should_retreat(const gamemap::location& loc,
+	virtual bool should_retreat(const map_location& loc,
 			const unit_map::const_iterator un, const move_map& srcdst,
 			const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
@@ -102,9 +102,9 @@ protected:
 
 	virtual bool recruit_usage(const std::string& usage);
 
-	virtual bool desperate_attack(const gamemap::location &loc);
+	virtual bool desperate_attack(const map_location &loc);
 
-	void remove_unit_from_moves(const gamemap::location& u, move_map& srcdst, move_map& dstsrc);
+	void remove_unit_from_moves(const map_location& u, move_map& srcdst, move_map& dstsrc);
 
 	/** Find enemy units that threaten our valuable assets. */
 	void find_threats();
@@ -169,8 +169,8 @@ public:
 		variant get_value(const std::string& key) const;
 		void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-		gamemap::location target;
-		std::vector<std::pair<gamemap::location,gamemap::location> > movements;
+		map_location target;
+		std::vector<std::pair<map_location,map_location> > movements;
 
 		/** The value of the unit being targeted. */
 		double target_value;
@@ -243,7 +243,7 @@ protected:
 	 * The other has a 8-2 attack, and has 30/40 hp, and can defend at 60% on the adjacent mountain.
 	 * The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
 	 */
-	virtual double power_projection(const gamemap::location& loc, const move_map& dstsrc,
+	virtual double power_projection(const map_location& loc, const move_map& dstsrc,
 			bool use_terrain=true) const;
 
 	virtual std::vector<attack_analysis> analyze_targets(
@@ -338,7 +338,7 @@ protected:
 	/** Functions to deal with keeps. */
 	const std::set<location>& keeps();
 	const location& nearest_keep(const location& loc);
-	int count_free_hexes_in_castle(const gamemap::location& loc, std::set<gamemap::location>&);
+	int count_free_hexes_in_castle(const map_location& loc, std::set<map_location>&);
 
 	void evaluate_recruiting_value(unit_map::iterator leader);
 
@@ -370,12 +370,12 @@ protected:
 
 private:
 	void find_villages(/*std::vector<unit_map::const_iterator>& our_units,
-		std::vector<std::vector<gamemap::location> >& reachable_villages, */
-		std::map<gamemap::location /*unit location*/, std::vector<gamemap::location /* villages we can reach*/> >& reachmap,
-		std::vector<std::pair<gamemap::location,gamemap::location> >& moves,
-		const std::multimap<gamemap::location,gamemap::location>& dstsrc,
-		const std::map<gamemap::location,paths>& possible_moves,
-		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
+		std::vector<std::vector<map_location> >& reachable_villages, */
+		std::map<map_location /*unit location*/, std::vector<map_location /* villages we can reach*/> >& reachmap,
+		std::vector<std::pair<map_location,map_location> >& moves,
+		const std::multimap<map_location,map_location>& dstsrc,
+		const std::map<map_location,paths>& possible_moves,
+		const std::multimap<map_location,map_location>& enemy_dstsrc) const;
 	
 	bool recruiting_prefered_;
 	static const int min_recruiting_value_to_force_recruit = 28;

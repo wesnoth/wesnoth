@@ -54,7 +54,7 @@
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
 
-std::map<gamemap::location,fixed_t> game_display::debugHighlights_;
+std::map<map_location,fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
@@ -205,7 +205,7 @@ void game_display::adjust_colours(int r, int g, int b)
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
-void game_display::select_hex(gamemap::location hex)
+void game_display::select_hex(map_location hex)
 {
 	if(hex.valid() && fogged(hex)) {
 		return;
@@ -215,7 +215,7 @@ void game_display::select_hex(gamemap::location hex)
 	display_unit_hex(hex);
 }
 
-void game_display::highlight_hex(gamemap::location hex)
+void game_display::highlight_hex(map_location hex)
 {
 	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]);
 	if (u != units_.end()) {
@@ -237,7 +237,7 @@ void game_display::highlight_hex(gamemap::location hex)
 }
 
 
-void game_display::display_unit_hex(gamemap::location hex)
+void game_display::display_unit_hex(map_location hex)
 {
 	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]);
 	if (u != units_.end()) {
@@ -246,7 +246,7 @@ void game_display::display_unit_hex(gamemap::location hex)
 	}
 }
 
-void game_display::invalidate_unit_after_move(const gamemap::location& src, const gamemap::location& dst)
+void game_display::invalidate_unit_after_move(const map_location& src, const map_location& dst)
 {
 	if (src == displayedUnitHex_) {
 		displayedUnitHex_ = dst;
@@ -283,9 +283,9 @@ void game_display::pre_draw() {
 	prune_chat_messages();
 }
 
-std::vector<gamemap::location> game_display::get_invalidated_unit_locations() {
-	std::vector<gamemap::location> unit_locations;
-	foreach (const gamemap::location& loc, invalidated_) {
+std::vector<map_location> game_display::get_invalidated_unit_locations() {
+	std::vector<map_location> unit_locations;
+	foreach (const map_location& loc, invalidated_) {
 		if ((temp_unit_ && temp_unit_loc_ == loc) || units_.find(loc) != units_.end()) {
 			unit_locations.push_back(loc);
 		}		
@@ -295,7 +295,7 @@ std::vector<gamemap::location> game_display::get_invalidated_unit_locations() {
 	return unit_locations;
 }
 
-image::TYPE game_display::get_image_type(const gamemap::location& loc) {
+image::TYPE game_display::get_image_type(const map_location& loc) {
 	// We highlight hex under the mouse, or under a selected unit.
 	if (map_.on_board(loc)) {
 		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
@@ -316,7 +316,7 @@ void game_display::draw_invalidated()
 {
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
-	std::vector<gamemap::location> unit_invals = get_invalidated_unit_locations();
+	std::vector<map_location> unit_invals = get_invalidated_unit_locations();
 	redraw_units(unit_invals);
 }
 
@@ -325,14 +325,14 @@ void game_display::post_commit()
 	halo::render();
 }
 
-void game_display::draw_hex(const gamemap::location& loc)
+void game_display::draw_hex(const map_location& loc)
 {
 	const bool on_map = map_.on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 	const bool is_fogged = fogged(loc);
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	int drawing_order = gamemap::get_drawing_order(loc);
+	int drawing_order = loc.get_drawing_order();
 	tblit blit(xpos, ypos);
 	
 	image::TYPE image_type = get_image_type(loc);
@@ -411,11 +411,11 @@ void game_display::update_time_of_day()
 	tod_ = status_.get_time_of_day();
 }
 
-void game_display::redraw_units(const std::vector<gamemap::location>& invalidated_unit_locations)
+void game_display::redraw_units(const std::vector<map_location>& invalidated_unit_locations)
 {
 	// Units can overlap multiple hexes, so we need
 	// to redraw them last and in the good sequence.
-	foreach (gamemap::location loc, invalidated_unit_locations) {
+	foreach (map_location loc, invalidated_unit_locations) {
 		unit_map::iterator u_it = units_.find(loc);
 		if (u_it != units_.end()) {
 			u_it->second.redraw_unit(*this, loc);
@@ -606,12 +606,12 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 	}
 }
 
-void game_display::draw_movement_info(const gamemap::location& loc)
+void game_display::draw_movement_info(const map_location& loc)
 {
-	const int drawing_order = gamemap::get_drawing_order(loc);
+	const int drawing_order = loc.get_drawing_order();
 
 	// Search if there is a waypoint here
-	std::map<gamemap::location, paths::route::waypoint>::iterator w = route_.waypoints.find(loc);
+	std::map<map_location, paths::route::waypoint>::iterator w = route_.waypoints.find(loc);
 
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.waypoints.end()
@@ -666,7 +666,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 	}
 }
 
-std::vector<surface> game_display::footsteps_images(const gamemap::location& loc)
+std::vector<surface> game_display::footsteps_images(const map_location& loc)
 {
 	std::vector<surface> res;
 
@@ -674,7 +674,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		return res; // no real "route"
 	}
 
-	std::vector<gamemap::location>::const_iterator i =
+	std::vector<map_location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
 
 	if( i == route_.steps.end()) {
@@ -712,10 +712,10 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		}
 
 		// In function of the half, use the incoming or outgoing direction
-		gamemap::location::DIRECTION dir = (i+(h-1))->get_relative_dir(*(i+h));
+		map_location::DIRECTION dir = (i+(h-1))->get_relative_dir(*(i+h));
 
 		std::string rotate;
-		if (dir > gamemap::location::SOUTH_EAST) {
+		if (dir > map_location::SOUTH_EAST) {
 			// No image, take the opposite direction and do a 180 rotation
 			dir = i->get_opposite_dir(dir);
 			rotate = "~FL(horiz)~FL(vert)";
@@ -734,7 +734,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	return res;
 }
 
-surface game_display::get_flag(const gamemap::location& loc)
+surface game_display::get_flag(const map_location& loc)
 {
 	t_translation::t_terrain terrain = map_.get_terrain(loc);
 
@@ -822,7 +822,7 @@ void game_display::process_reachmap_changes()
 
 void game_display::invalidate_route()
 {
-	for(std::vector<gamemap::location>::const_iterator i = route_.steps.begin();
+	for(std::vector<map_location>::const_iterator i = route_.steps.begin();
 	    i != route_.steps.end(); ++i) {
 		invalidate(*i);
 	}
@@ -842,7 +842,7 @@ void game_display::set_route(const paths::route* route)
 	invalidate_route();
 }
 
-void game_display::float_label(const gamemap::location& loc, const std::string& text,
+void game_display::float_label(const map_location& loc, const std::string& text,
 						  int red, int green, int blue)
 {
 	if(preferences::show_floating_labels() == false || fogged(loc)) {
@@ -898,7 +898,7 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 	return calculate_energy_bar(surf);
 }
 
-void game_display::invalidate_animations_location(const gamemap::location& loc) {
+void game_display::invalidate_animations_location(const map_location& loc) {
 	if (map_.is_village(loc)) {
 		const int owner = player_teams::village_owner(loc);
 		if (owner >= 0 && flags_[owner].need_update()
@@ -930,13 +930,13 @@ void game_display::invalidate_animations()
 	new_animation_frame();
 }
 
-void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)
+void game_display::debug_highlight(const map_location& loc, fixed_t amount)
 {
 	assert(game_config::debug);
 	debugHighlights_[loc] += amount;
 }
 
-void game_display::place_temporary_unit(unit &u, const gamemap::location& loc)
+void game_display::place_temporary_unit(unit &u, const map_location& loc)
 {
 	temp_unit_ = &u;
 	temp_unit_loc_ = loc;
@@ -953,7 +953,7 @@ void game_display::remove_temporary_unit()
 	temp_unit_ = NULL;
 }
 
-void game_display::set_attack_indicator(const gamemap::location& src, const gamemap::location& dst)
+void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
 {
 	if (attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
 		invalidate(attack_indicator_src_);
@@ -969,10 +969,10 @@ void game_display::set_attack_indicator(const gamemap::location& src, const game
 
 void game_display::clear_attack_indicator()
 {
-	set_attack_indicator(gamemap::location::null_location, gamemap::location::null_location);
+	set_attack_indicator(map_location::null_location, map_location::null_location);
 }
 
-void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo,const std::string& team_name,const std::string& fogged)
+void game_display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name,const std::string& fogged)
 {
 	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
@@ -981,7 +981,7 @@ void game_display::add_overlay(const gamemap::location& loc, const std::string& 
 	overlays_.insert(overlay_map::value_type(loc,item));
 }
 
-void game_display::remove_overlay(const gamemap::location& loc)
+void game_display::remove_overlay(const map_location& loc)
 {
 	typedef overlay_map::const_iterator Itor;
 	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
@@ -993,7 +993,7 @@ void game_display::remove_overlay(const gamemap::location& loc)
 	overlays_.erase(loc);
 }
 
-void game_display::remove_single_overlay(const gamemap::location& loc, const std::string& toDelete)
+void game_display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
 	//Iterate through the values with key of loc
 	typedef overlay_map::iterator Itor;

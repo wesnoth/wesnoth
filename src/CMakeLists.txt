@@ -107,6 +107,7 @@ SET(libwesnoth-core_STAT_SRC
     gettext.cpp
     log.cpp
     map.cpp
+    map_location.cpp
     md5.cpp
     thread.cpp
     tstring.cpp

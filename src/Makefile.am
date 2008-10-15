@@ -307,6 +307,7 @@ libwesnoth_core_a_SOURCES = \
 	gettext.cpp \
 	log.cpp \
 	map.cpp \
+	map_location.cpp \
 	md5.cpp \
 	thread.cpp \
 	tstring.cpp \

@@ -70,7 +70,7 @@ class editor_action_extendable : public editor_action
 		 * same as would be with separate undo actions for every part of
 		 * the drag.
 		 */
-		virtual void extend(const editor_map& map, const std::set<gamemap::location>& locs) = 0;
+		virtual void extend(const editor_map& map, const std::set<map_location>& locs) = 0;
 };
 
 /**
@@ -171,12 +171,12 @@ class editor_action_chain : public editor_action
 class editor_action_location : public editor_action
 {
   public:
-        editor_action_location(gamemap::location loc)
+        editor_action_location(map_location loc)
         : loc_(loc)
         {
         }
     protected:
-        gamemap::location loc_;
+        map_location loc_;
 };
 
 /** Base class for actions which in addition to acting on a hex, 
@@ -185,7 +185,7 @@ class editor_action_location : public editor_action
 class editor_action_location_terrain : public editor_action_location
 {
     public:
-        editor_action_location_terrain(gamemap::location loc, 
+        editor_action_location_terrain(map_location loc, 
 			t_translation::t_terrain t)
         : editor_action_location(loc), t_(t)
         {
@@ -200,15 +200,15 @@ class editor_action_location_terrain : public editor_action_location
 class editor_action_area : public editor_action_extendable
 {
     public:
-        editor_action_area(const std::set<gamemap::location>& area)
+        editor_action_area(const std::set<map_location>& area)
         : area_(area)
         {
         }
-		bool add_location(const gamemap::location& loc);
-		void add_locations(const std::set<gamemap::location>& locs);
-		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
+		bool add_location(const map_location& loc);
+		void add_locations(const std::set<map_location>& locs);
+		void extend(const editor_map& map, const std::set<map_location>& locs);
     protected:
-		std::set<gamemap::location> area_;
+		std::set<map_location> area_;
 };
 
 /**
@@ -217,15 +217,15 @@ class editor_action_area : public editor_action_extendable
 class editor_action_paste : public editor_action_extendable
 {
     public:
-        editor_action_paste(const map_fragment& paste, const gamemap::location& offset = gamemap::location(0,0))
+        editor_action_paste(const map_fragment& paste, const map_location& offset = map_location(0,0))
         : offset_(offset), paste_(paste)
         {
         }
         editor_action_paste* perform(map_context& mc) const;
         void perform_without_undo(map_context& mc) const;
-		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
+		void extend(const editor_map& map, const std::set<map_location>& locs);
     protected:
-		gamemap::location offset_;
+		map_location offset_;
         map_fragment paste_;
 };
 
@@ -237,7 +237,7 @@ class editor_action_paste : public editor_action_extendable
 class editor_action_paint_hex : public editor_action_location_terrain
 {
     public:
-        editor_action_paint_hex(const gamemap::location& loc, t_translation::t_terrain t)
+        editor_action_paint_hex(const map_location& loc, t_translation::t_terrain t)
         : editor_action_location_terrain(loc, t)
         {
         }
@@ -251,7 +251,7 @@ class editor_action_paint_hex : public editor_action_location_terrain
 class editor_action_paint_area : public editor_action_area
 {
     public:
-        editor_action_paint_area(const std::set<gamemap::location>& area, 
+        editor_action_paint_area(const std::set<map_location>& area, 
 			t_translation::t_terrain t, bool one_layer=false)
         : editor_action_area(area), t_(t), one_layer_(one_layer)
         {
@@ -269,7 +269,7 @@ class editor_action_paint_area : public editor_action_area
 class editor_action_fill : public editor_action_location_terrain
 {
     public:
-        editor_action_fill(gamemap::location loc, 
+        editor_action_fill(map_location loc, 
 			t_translation::t_terrain t, bool one_layer=false)
         : editor_action_location_terrain(loc, t), one_layer_(one_layer)
         {
@@ -286,7 +286,7 @@ class editor_action_fill : public editor_action_location_terrain
 class editor_action_starting_position : public editor_action_location
 {
     public:
-        editor_action_starting_position(gamemap::location loc, int player)
+        editor_action_starting_position(map_location loc, int player)
         : editor_action_location(loc), player_(player)
         {
         }
@@ -302,11 +302,11 @@ class editor_action_starting_position : public editor_action_location
 class editor_action_select : public editor_action_area
 {
 	public:
-		editor_action_select(const std::set<gamemap::location>& area)
+		editor_action_select(const std::set<map_location>& area)
 		: editor_action_area(area)
 		{
 		}
-		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
+		void extend(const editor_map& map, const std::set<map_location>& locs);
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 };
@@ -317,11 +317,11 @@ class editor_action_select : public editor_action_area
 class editor_action_deselect : public editor_action_area
 {
 	public:
-		editor_action_deselect(const std::set<gamemap::location>& area)
+		editor_action_deselect(const std::set<map_location>& area)
 		: editor_action_area(area)
 		{
 		}
-		void extend(const editor_map& map, const std::set<gamemap::location>& locs);
+		void extend(const editor_map& map, const std::set<map_location>& locs);
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 };
@@ -431,8 +431,8 @@ class editor_action_create_mask : public editor_action
 class editor_action_plot_route : public editor_action_location_terrain
 {
 	public:
-		editor_action_plot_route(gamemap::location l1, 
-			t_translation::t_terrain t, gamemap::location l2)
+		editor_action_plot_route(map_location l1, 
+			t_translation::t_terrain t, map_location l2)
 		: editor_action_location_terrain(l1, t)
 		, loc2_(l2)
 		{
@@ -440,7 +440,7 @@ class editor_action_plot_route : public editor_action_location_terrain
 		editor_action_paste* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 	protected:
-		gamemap::location loc2_;
+		map_location loc2_;
 };
 
 /**
@@ -449,7 +449,7 @@ class editor_action_plot_route : public editor_action_location_terrain
 class editor_action_shuffle_area : public editor_action_area
 {
 	public:
-		editor_action_shuffle_area(const std::set<gamemap::location>& area)
+		editor_action_shuffle_area(const std::set<map_location>& area)
 		: editor_action_area(area)
 		{
 		}

@@ -98,7 +98,7 @@ public:
 	 * @return      Returns a pointer list of animated images corresponding
 	 *              to the parameters, or NULL if there is none.
 	 */
-	const imagelist *get_terrain_at(const gamemap::location &loc,
+	const imagelist *get_terrain_at(const map_location &loc,
 			const std::string &tod, ADJACENT_TERRAIN_TYPE const terrain_type);
 
 	/** Updates the animation at a given tile.
@@ -108,7 +108,7 @@ public:
 	 *
 	 * @retval      true: this tile must be redrawn.
 	 */
-	bool update_animation(const gamemap::location &loc);
+	bool update_animation(const map_location &loc);
 
 	/** Performs a "quick-rebuild" of the terrain in a given location.
 	 * The "quick-rebuild" is no proper rebuild: it only clears the
@@ -117,7 +117,7 @@ public:
 	 *
 	 * @param loc   the location where to rebuild terrains
 	 */
-	void rebuild_terrain(const gamemap::location &loc);
+	void rebuild_terrain(const map_location &loc);
 
 	/** Performs a complete rebuild of the list of terrain graphics
 	 * attached to a map.
@@ -226,7 +226,7 @@ public:
 			images()
 			{};
 
-		terrain_constraint(gamemap::location loc) : 
+		terrain_constraint(map_location loc) : 
 			loc(loc),
 			terrain_types_match(),
 			set_flag(),
@@ -235,7 +235,7 @@ public:
 			images()
 			{};
 
-		gamemap::location loc;
+		map_location loc;
 		t_translation::t_match terrain_types_match;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
@@ -308,7 +308,7 @@ private:
 	/**
 	 * The list of constraints attached to a terrain_graphics WML rule.
 	 */
-	typedef std::map<gamemap::location, terrain_constraint> constraint_set;
+	typedef std::map<map_location, terrain_constraint> constraint_set;
 
 	/**
 	 * The in-memory representation of a [terrain_graphics] WML rule.
@@ -329,10 +329,10 @@ private:
 
 		/**
 		 * The location on which this map may match.
-		 * Set to a valid gamemap::location if the "x" and "y" parameters
+		 * Set to a valid map_location if the "x" and "y" parameters
 		 * of the [terrain_graphics] rule are set.
 		 */
-		gamemap::location location_constraints;
+		map_location location_constraints;
 
 		/**
 		 * The probability of this rule to match, when all conditions
@@ -374,11 +374,11 @@ private:
 		 * @return		A reference to the tile at this location.
 		 *
 		 */
-		tile &operator[](const gamemap::location &loc);
+		tile &operator[](const map_location &loc);
 		/**
 		 * a const variant of operator[]
 		 */
-		const tile &operator[] (const gamemap::location &loc) const;
+		const tile &operator[] (const map_location &loc) const;
 
 		/**
 		 * Tests if a location is on the map.
@@ -387,7 +387,7 @@ private:
 		 *
 		 * @return		true if loc is on the map, false otherwise.
 		 */
-		bool on_map(const gamemap::location &loc) const;
+		bool on_map(const map_location &loc) const;
 
 		/**
 		 * Resets the whole tile map
@@ -585,7 +585,7 @@ private:
 	 *                      describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const t_translation::t_match& type,
+			const map_location &loc, const t_translation::t_match& type,
 			const config& global_images);
 
 	/**
@@ -600,10 +600,10 @@ private:
 	 *                      describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const config &cfg,
+			const map_location &loc, const config &cfg,
 			const config& global_images);
 
-	typedef std::multimap<int, gamemap::location> anchormap;
+	typedef std::multimap<int, map_location> anchormap;
 
 	/**
 	 * Parses a map string (the map= element of a [terrain_graphics] rule,
@@ -696,7 +696,7 @@ private:
 	 * @param type_checked The constraint which we already know that its
 	 *                  terrain types matches.
 	 */
-	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
+	bool rule_matches(const building_rule &rule, const map_location &loc,
 			const int rule_index, const constraint_set::const_iterator type_checked) const;
 
 	/**
@@ -707,7 +707,7 @@ private:
 	 * @param rule      The rule to apply
 	 * @param loc       The location to which to apply the rule.
 	 */
-	void apply_rule(const building_rule &rule, const gamemap::location &loc);
+	void apply_rule(const building_rule &rule, const map_location &loc);
 
 	/**
 	 * Calculates the list of terrains, and fills the tile_map_ member,
@@ -729,7 +729,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<t_translation::t_terrain, std::vector<gamemap::location> > terrain_by_type_map;
+	typedef std::map<t_translation::t_terrain, std::vector<map_location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

@@ -208,14 +208,14 @@ void play_controller::init_managers(){
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
-static int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)
+static int placing_score(const config& side, const gamemap& map, const map_location& pos)
 {
 	int positions = 0, liked = 0;
 	const t_translation::t_list terrain = t_translation::read_list(side["terrain_liked"]);
 
 	for(int i = pos.x-8; i != pos.x+8; ++i) {
 		for(int j = pos.y-8; j != pos.y+8; ++j) {
-			const gamemap::location pos(i,j);
+			const map_location pos(i,j);
 			if(map.on_board(pos)) {
 				++positions;
 				if(std::count(terrain.begin(),terrain.end(),map[pos])) {
@@ -238,7 +238,7 @@ struct placing_info {
 	}
 
 	int side, score;
-	gamemap::location pos;
+	map_location pos;
 };
 
 static bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
@@ -252,7 +252,7 @@ void play_controller::place_sides_in_preferred_locations(gamemap& map, const con
 	for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		const int side_num = s - sides.begin() + 1;
 		for(int p = 1; p <= num_pos; ++p) {
-			const gamemap::location& pos = map.starting_position(p);
+			const map_location& pos = map.starting_position(p);
 			const int score = placing_score(**s,map,pos);
 			placing_info obj;
 			obj.side = side_num;
@@ -264,7 +264,7 @@ void play_controller::place_sides_in_preferred_locations(gamemap& map, const con
 
 	std::sort(placings.begin(),placings.end());
 	std::set<int> placed;
-	std::set<gamemap::location> positions_taken;
+	std::set<map_location> positions_taken;
 
 	for(std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && placed.size() != sides.size(); ++i) {
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
@@ -409,7 +409,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
 	gamestate_.set_variable("side_number",player_number_str.str());
-	gamestate_.last_selected = gamemap::location::null_location;
+	gamestate_.last_selected = map_location::null_location;
 
 	/*
 		Normally, events must not be actively fired through replays, because
@@ -537,7 +537,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			if(gamestate_.last_selected.valid() && wml_commands_[i]->needs_select) {
 				recorder.add_event("select", gamestate_.last_selected);
 			}
-			gamemap::location const& menu_hex = mouse_handler_.get_last_hex();
+			map_location const& menu_hex = mouse_handler_.get_last_hex();
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
 			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
 				// The event has mutated the gamestate
@@ -826,7 +826,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			std::vector<std::string> newitems;
 
 			char buf[50];
-			const gamemap::location& hex = mouse_handler_.get_last_hex();
+			const map_location& hex = mouse_handler_.get_last_hex();
 			snprintf(buf,sizeof(buf),"%d",hex.x+1);
 			gamestate_.set_variable("x1", buf);
 			snprintf(buf,sizeof(buf),"%d",hex.y+1);

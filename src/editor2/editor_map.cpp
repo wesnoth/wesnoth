@@ -112,7 +112,7 @@ void editor_map::sanity_check()
 			++errors;
 		}
 	}
-	foreach (const location& loc, selection_) {
+	foreach (const map_location& loc, selection_) {
 		if (!on_board_with_border(loc)) {
 			ERR_ED << "Off-map tile in selection: " << loc << "\n";
 		}
@@ -122,16 +122,16 @@ void editor_map::sanity_check()
 	}
 }
 
-std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamemap::location& start) const
+std::set<map_location> editor_map::get_contigious_terrain_tiles(const map_location& start) const
 {
 	t_translation::t_terrain terrain = get_terrain(start);
-	std::set<gamemap::location> result;
-	std::deque<gamemap::location> queue;
+	std::set<map_location> result;
+	std::deque<map_location> queue;
 	result.insert(start);
 	queue.push_back(start);
 	//this is basically a breadth-first search along adjacent hexes
 	do {
-		gamemap::location adj[6];
+		map_location adj[6];
 		get_adjacent_tiles(queue.front(), adj);
 		for (int i = 0; i < 6; ++i) {
 			if (on_board_with_border(adj[i]) && get_terrain(adj[i]) == terrain
@@ -145,9 +145,9 @@ std::set<gamemap::location> editor_map::get_contigious_terrain_tiles(const gamem
 	return result;
 }
 	
-std::set<gamemap::location> editor_map::set_starting_position_labels(display& disp)
+std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 {
-	std::set<gamemap::location> label_locs;
+	std::set<map_location> label_locs;
 	std::string label = _("Player");
 	label += " ";
 	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
@@ -159,17 +159,17 @@ std::set<gamemap::location> editor_map::set_starting_position_labels(display& di
 	return label_locs;
 }
 
-bool editor_map::in_selection(const gamemap::location& loc) const
+bool editor_map::in_selection(const map_location& loc) const
 {
 	return selection_.find(loc) != selection_.end();
 }
 
-bool editor_map::add_to_selection(const gamemap::location& loc)
+bool editor_map::add_to_selection(const map_location& loc)
 {
 	return on_board_with_border(loc) ? selection_.insert(loc).second : false;
 }
 
-bool editor_map::remove_from_selection(const gamemap::location& loc)
+bool editor_map::remove_from_selection(const map_location& loc)
 {
 	return selection_.erase(loc);
 }
@@ -181,11 +181,11 @@ void editor_map::clear_selection()
 
 void editor_map::invert_selection()
 {
-	std::set<gamemap::location> new_selection;
+	std::set<map_location> new_selection;
 	for (int x = -1; x < w() + 1; ++x) {
 		for (int y = -1; y < h() + 1; ++y) {
-			if (selection_.find(gamemap::location(x, y)) == selection_.end()) {
-				new_selection.insert(gamemap::location(x, y));
+			if (selection_.find(map_location(x, y)) == selection_.end()) {
+				new_selection.insert(map_location(x, y));
 			}
 		}
 	}
@@ -206,7 +206,7 @@ bool editor_map::everything_selected() const
 
 void editor_map::sanitize_selection()
 {
-	std::set<location>::iterator it = selection_.begin();
+	std::set<map_location>::iterator it = selection_.begin();
 	while (it != selection_.end()) {
 		if (on_board_with_border(*it)) {
 			++it;
@@ -255,7 +255,7 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	// fix the starting positions
 	if(x_offset || y_offset) {
 		for(size_t i = 0; i < MAX_PLAYERS+1; ++i) {
-			if(startingPositions_[i] != gamemap::location()) {
+			if(startingPositions_[i] != map_location()) {
 				startingPositions_[i].x -= x_offset;
 				startingPositions_[i].y -= y_offset;
 			}
@@ -270,7 +270,7 @@ gamemap editor_map::mask_to(const gamemap& target) const
 		throw editor_action_exception(_("The size of the target map is different from the current map"));
 	}
 	gamemap mask(target);
-	gamemap::location iter;
+	map_location iter;
 	for (iter.x = -border_size(); iter.x < w() + border_size(); ++iter.x) {
 		for (iter.y = -border_size(); iter.y < h() + border_size(); ++iter.y) {
 			if (target.get_terrain(iter) == get_terrain(iter)) {
@@ -283,13 +283,13 @@ gamemap editor_map::mask_to(const gamemap& target) const
 
 void editor_map::swap_starting_position(int x1, int y1, int x2, int y2)
 {
-	int pos1 = is_starting_position(location(x1, y1));
-	int pos2 = is_starting_position(location(x2, y2));
+	int pos1 = is_starting_position(map_location(x1, y1));
+	int pos2 = is_starting_position(map_location(x2, y2));
 	if(pos1 != -1) {
-		set_starting_position(pos1 + 1, location(x2, y2));
+		set_starting_position(pos1 + 1, map_location(x2, y2));
 	}
 	if(pos2 != -1) {
-		set_starting_position(pos2 + 1, location(x1, y1));
+		set_starting_position(pos2 + 1, map_location(x1, y1));
 	}
 }
 

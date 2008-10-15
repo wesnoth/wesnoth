@@ -144,10 +144,10 @@ protected:
 	/** Drag start position y */
 	int drag_from_y_;
 	/** Drag start map location */
-	gamemap::location drag_from_hex_;
+	map_location drag_from_hex_;
 
 	/** last highlighted hex */
-	gamemap::location last_hex_;
+	map_location last_hex_;
 	
 	/** Show context menu flag */
 	bool show_menu_;

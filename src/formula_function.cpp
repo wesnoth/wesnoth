@@ -763,7 +763,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables) const {
-		return variant(new location_callable(gamemap::location(args()[0]->evaluate(variables).as_int()-1, args()[1]->evaluate(variables).as_int()-1)));
+		return variant(new location_callable(map_location(args()[0]->evaluate(variables).as_int()-1, args()[1]->evaluate(variables).as_int()-1)));
 	}
 };
 

@@ -43,7 +43,7 @@ class effect
 {
 public:
 	effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
-			const gamemap::location& loc, ORIENTATION, bool infinite);
+			const map_location& loc, ORIENTATION, bool infinite);
 
 	void set_location(int x, int y);
 
@@ -53,9 +53,9 @@ public:
 	bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 	bool need_update() const { return images_.need_update(); }
 	bool does_change() const { return !images_.does_not_change(); }
-	bool on_location(const std::set<gamemap::location>& locations) const;
+	bool on_location(const std::set<map_location>& locations) const;
 
-	void add_overlay_location(std::set<gamemap::location>& locations);
+	void add_overlay_location(std::set<map_location>& locations);
 private:
 
 	const std::string& current_image() { return images_.get_current_frame(); }
@@ -69,10 +69,10 @@ private:
 	SDL_Rect rect_;
 
 	/** The location of the center of the halo. */
-	gamemap::location loc_;
+	map_location loc_;
 
 	/** All locations over which the halo lies. */
-	std::vector<gamemap::location> overlayed_hexes_;
+	std::vector<map_location> overlayed_hexes_;
 };
 
 std::map<int, effect> haloes;
@@ -106,7 +106,7 @@ std::set<int> deleted_haloes;
 std::set<int> changing_haloes;
 
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
-		const gamemap::location& loc, ORIENTATION orientation, bool infinite) :
+		const map_location& loc, ORIENTATION orientation, bool infinite) :
 	images_(img), 
 	orientation_(orientation), 
 	x_(xpos), 
@@ -127,7 +127,7 @@ effect::effect(int xpos, int ypos, const animated<std::string>::anim_description
 
 void effect::set_location(int x, int y)
 {
-	const gamemap::location zero_loc(0,0);
+	const map_location zero_loc(0,0);
 	int new_x = x - disp->get_location_x(zero_loc);
 	int new_y = y - disp->get_location_y(zero_loc);
 	if (new_x != x_ || new_y != y_) {
@@ -173,7 +173,7 @@ bool effect::render()
 		surf_.assign(flop_surface(surf_));
 	}
 
-	const gamemap::location zero_loc(0,0);
+	const map_location zero_loc(0,0);
 	const int screenx = disp->get_location_x(zero_loc);
 	const int screeny = disp->get_location_y(zero_loc);
 
@@ -230,7 +230,7 @@ void effect::unrender()
 
 	// Due to scrolling, the location of the rendered halo 
 	// might have changed; recalculate
-	const gamemap::location zero_loc(0,0);
+	const map_location zero_loc(0,0);
 	const int screenx = disp->get_location_x(zero_loc);
 	const int screeny = disp->get_location_y(zero_loc);
 
@@ -242,9 +242,9 @@ void effect::unrender()
 	update_rect(rect_);
 }
 
-bool effect::on_location(const std::set<gamemap::location>& locations) const
+bool effect::on_location(const std::set<map_location>& locations) const
 {
-	for(std::vector<gamemap::location>::const_iterator itor = overlayed_hexes_.begin();
+	for(std::vector<map_location>::const_iterator itor = overlayed_hexes_.begin();
 			itor != overlayed_hexes_.end(); ++itor) {
 		if(locations.find(*itor) != locations.end()) {
 			return true;
@@ -253,9 +253,9 @@ bool effect::on_location(const std::set<gamemap::location>& locations) const
 	return false;
 }
 
-void effect::add_overlay_location(std::set<gamemap::location>& locations)
+void effect::add_overlay_location(std::set<map_location>& locations)
 {
-	for(std::vector<gamemap::location>::const_iterator itor = overlayed_hexes_.begin();
+	for(std::vector<map_location>::const_iterator itor = overlayed_hexes_.begin();
 			itor != overlayed_hexes_.end(); ++itor) {
 
 		locations.insert(*itor);
@@ -280,7 +280,7 @@ manager::~manager()
 	disp = old;
 }
 
-int add(int x, int y, const std::string& image, const gamemap::location& loc,
+int add(int x, int y, const std::string& image, const map_location& loc,
 		ORIENTATION orientation, bool infinite)
 {
 	const int id = halo_id++;
@@ -329,7 +329,7 @@ void remove(int handle)
 	deleted_haloes.insert(handle);
 }
 
-void unrender(std::set<gamemap::location> invalidated_locations)
+void unrender(std::set<map_location> invalidated_locations)
 {
 	assert(invalidated_haloes.size() == 0);
 	if(preferences::show_haloes() == false || haloes.size() == 0) {

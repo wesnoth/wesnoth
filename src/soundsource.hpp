@@ -45,7 +45,7 @@ class positional_source {
 	unsigned int _faderange;
 	bool _check_fogged;
 	std::string _files;
-	std::vector<gamemap::location> _locations;
+	std::vector<map_location> _locations;
 
 	// Last assigned id; this can, of course, overflow, but I'd
 	// never expect to see 4 billions sound sources being created...
@@ -63,11 +63,11 @@ class positional_source {
 	void update(unsigned int time, const display &disp);
 	void update_positions(unsigned int time, const display &disp);
 
-	void add_location(const gamemap::location &loc);
-	void remove_location(const gamemap::location &loc);
-	void replace_location(const gamemap::location &oldloc, const gamemap::location &newloc);
+	void add_location(const map_location &loc);
+	void remove_location(const map_location &loc);
+	void replace_location(const map_location &oldloc, const map_location &newloc);
 	
-	int calculate_volume(const gamemap::location &loc, const display &disp);
+	int calculate_volume(const map_location &loc, const display &disp);
 };
 
 class manager : public events::observer {
@@ -93,7 +93,7 @@ public:
 	void remove(const std::string &id);
 	void update();
 
-	void add_location(const std::string &id, const gamemap::location &loc);
+	void add_location(const std::string &id, const map_location &loc);
 };
 
 /*
@@ -111,7 +111,7 @@ class sourcespec {
 	int faderange;
 	bool check_fogged;
 
-	std::vector<gamemap::location> locations;
+	std::vector<map_location> locations;
 
 public:
 	sourcespec(const std::string &id_, 
@@ -138,7 +138,7 @@ public:
 		return *this;
 	}
 
-	sourcespec& location(const gamemap::location &loc) {
+	sourcespec& location(const map_location &loc) {
 		locations.push_back(loc);
 		return *this;
 	}

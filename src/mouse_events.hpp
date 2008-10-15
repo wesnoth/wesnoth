@@ -42,12 +42,12 @@ public:
 
 	int get_path_turns() const { return path_turns_; }
 	paths get_current_paths() { return current_paths_; }
-	const gamemap::location& get_last_hex() const { return last_hex_; }
-	gamemap::location get_selected_hex() const { return selected_hex_; }
+	const map_location& get_last_hex() const { return last_hex_; }
+	map_location get_selected_hex() const { return selected_hex_; }
 	bool get_undo() const { return undo_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
 	void set_current_paths(paths new_paths);
-	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }
+	void set_selected_hex(map_location hex) { selected_hex_ = hex; }
 	void deselect_hex();
 	void invalidate_reachmap() { reachmap_invalid_ = true; }
 
@@ -55,7 +55,7 @@ public:
 	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
-	paths::route get_route(unit_map::const_iterator un, gamemap::location go_to, team &team);
+	paths::route get_route(unit_map::const_iterator un, map_location go_to, team &team);
 protected:
 	/** 
 	 * Due to the way this class is constructed we can assume that the
@@ -75,7 +75,7 @@ protected:
 	void mouse_motion(int x, int y, const bool browse, bool update=false);
 	bool right_click_show_menu(int x, int y, const bool browse);	
 	bool left_click(int x, int y, const bool browse);
-	void select_hex(const gamemap::location& hex, const bool browse);
+	void select_hex(const map_location& hex, const bool browse);
 	void clear_undo_stack();
 	bool move_unit_along_current_route(bool check_shroud, bool attackmove=false);
 	// wrapper to catch bad_alloc so this should be called
@@ -83,9 +83,9 @@ protected:
 	// the real function but can throw bad_alloc
 	bool attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender);
 	void show_attack_options(unit_map::const_iterator u);
-	gamemap::location current_unit_attacks_from(const gamemap::location& loc);
-	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
-	unit_map::iterator find_unit(const gamemap::location& hex);
+	map_location current_unit_attacks_from(const map_location& loc);
+	unit_map::const_iterator find_unit(const map_location& hex) const;
+	unit_map::iterator find_unit(const map_location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
 	game_display* gui_;
@@ -97,10 +97,10 @@ private:
 
 	// previous highlighted hexes
 	// the hex of the selected unit and empty hex are "free"
-	gamemap::location previous_hex_;
-	gamemap::location previous_free_hex_;
-	gamemap::location selected_hex_;
-	gamemap::location next_unit_;
+	map_location previous_hex_;
+	map_location previous_free_hex_;
+	map_location selected_hex_;
+	map_location next_unit_;
 	paths::route current_route_;
 	paths current_paths_;
 	bool enemy_paths_;

@@ -224,7 +224,7 @@ namespace events{
 		std::vector<std::string> items;
 		items.push_back(heading);
 
-		std::vector<gamemap::location> locations_list;
+		std::vector<map_location> locations_list;
 		std::vector<unit> units_list;
 
 		int selected = 0;
@@ -335,7 +335,7 @@ namespace events{
 		} // this will kill the dialog before scrolling
 
 		if(selected >= 0 && selected < int(locations_list.size())) {
-			const gamemap::location& loc = locations_list[selected];
+			const map_location& loc = locations_list[selected];
 			gui_->scroll_to_tile(loc,game_display::WARP);
 			gui_->select_hex(loc);
 		}
@@ -821,7 +821,7 @@ private:
 		return false;
 	}
 
-	void menu_handler::recruit(const bool browse, const unsigned int team_num, const gamemap::location& last_hex)
+	void menu_handler::recruit(const bool browse, const unsigned int team_num, const map_location& last_hex)
 	{
 		if(browse)
 			return;
@@ -890,13 +890,13 @@ private:
 		}
 	}
 
-	void menu_handler::repeat_recruit(const unsigned int team_num, const gamemap::location& last_hex)
+	void menu_handler::repeat_recruit(const unsigned int team_num, const map_location& last_hex)
 	{
 		if(last_recruit_.empty() == false)
 			do_recruit(last_recruit_, team_num, last_hex);
 	}
 
-	void menu_handler::do_recruit(const std::string& name, const int unsigned team_num, const gamemap::location& last_hex)
+	void menu_handler::do_recruit(const std::string& name, const int unsigned team_num, const map_location& last_hex)
 	{
 		team& current_team = teams_[team_num-1];
 
@@ -927,7 +927,7 @@ private:
 			//create a unit with traits
 			recorder.add_recruit(recruit_num, last_hex);
 			unit new_unit(&units_,&map_,&status_,&teams_,&(u_type->second),team_num,true);
-			gamemap::location loc = last_hex;
+			map_location loc = last_hex;
 			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,false,(gui_!=NULL));
 			if(msg.empty()) {
 				current_team.spend_gold(u_type->second.cost());
@@ -960,7 +960,7 @@ private:
 		}
 	}
 
-	void menu_handler::recall(const unsigned int team_num, const gamemap::location& last_hex)
+	void menu_handler::recall(const unsigned int team_num, const map_location& last_hex)
 	{
 		if(utils::string_bool(level_["disallow_recall"])) {
 			gui::message_dialog(*gui_,"",_("You are separated from your soldiers and may not recall them")).show();
@@ -1078,7 +1078,7 @@ private:
 				} else {
 					LOG_NG << "recall index: " << res << "\n";
 					unit& un = recall_list[res];
-					gamemap::location loc = last_hex;
+					map_location loc = last_hex;
 					recorder.add_recall(res,loc);
 					un.set_game_context(&units_,&map_,&status_,&teams_);
 					const std::string err = recruit_unit(map_,team_num,units_,un,loc,true,(gui_!=NULL));
@@ -1165,7 +1165,7 @@ private:
 		} else {
 			// Undo a move action
 			const int starting_moves = action.starting_moves;
-			std::vector<gamemap::location> route = action.route;
+			std::vector<map_location> route = action.route;
 			std::reverse(route.begin(),route.end());
 			const unit_map::iterator u = units_.find(route.front());
 			const unit_map::iterator u_end = units_.find(route.back());
@@ -1187,8 +1187,8 @@ private:
 			action.starting_moves = u->second.movement_left();
 
 			unit_display::move_unit(route,u->second,teams_);
-			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
-			up->second.set_goto(gamemap::location());
+			std::pair<map_location,unit> *up = units_.extract(u->first);
+			up->second.set_goto(map_location());
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
@@ -1252,7 +1252,7 @@ private:
 		} else if(action.is_recruit()) {
 			// Redo recruit action
 			team& current_team = teams_[team_num-1];
-			gamemap::location loc = action.recall_loc;
+			map_location loc = action.recall_loc;
 			const std::string name = action.affected_unit.type_id();
 
 			//search for the unit to be recruited in recruits
@@ -1294,7 +1294,7 @@ private:
 		} else {
 			// Redo movement action
 			const int starting_moves = action.starting_moves;
-			std::vector<gamemap::location> route = action.route;
+			std::vector<map_location> route = action.route;
 			const unit_map::iterator u = units_.find(route.front());
 			if(u == units_.end()) {
 				assert(false);
@@ -1304,8 +1304,8 @@ private:
 			action.starting_moves = u->second.movement_left();
 
 			unit_display::move_unit(route,u->second,teams_);
-			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
-			up->second.set_goto(gamemap::location());
+			std::pair<map_location,unit> *up = units_.extract(u->first);
+			up->second.set_goto(map_location());
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
@@ -1542,7 +1542,7 @@ private:
 
 			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false);
 			chosen.new_turn();
-			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),chosen));
+			units_.add(new std::pair<map_location,unit>(mousehandler.get_last_hex(),chosen));
 
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
@@ -1618,7 +1618,7 @@ private:
 		move_unit_to_loc(i,i->second.get_interrupted_move(),true, team_num, mousehandler);
 	}
 
-	void menu_handler::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move, const unsigned int team_num, mouse_handler& mousehandler)
+	void menu_handler::move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target, bool continue_move, const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		assert(ui != units_.end());
 
@@ -2622,7 +2622,7 @@ private:
 		if(last_search_.empty()) return;
 
 		bool found = false;
-		gamemap::location loc = last_search_hit_;
+		map_location loc = last_search_hit_;
 		//If this is a location search, just center on that location.
 		std::vector<std::string> args = utils::split(last_search_, ',');
 		if(args.size() == 2) {
@@ -2630,14 +2630,14 @@ private:
 			x = lexical_cast_default<int>(args[0], 0)-1;
 			y = lexical_cast_default<int>(args[1], 0)-1;
 			if(x >= 0 && x < map_.w() && y >= 0 && y < map_.h()) {
-				loc = gamemap::location(x,y);
+				loc = map_location(x,y);
 				found = true;
 			}
 		}
 		//Start scanning the game map
 		if(loc.valid() == false)
-			loc = gamemap::location(map_.w()-1,map_.h()-1);
-		gamemap::location start = loc;
+			loc = map_location(map_.w()-1,map_.h()-1);
+		map_location start = loc;
 		while (!found) {
 			//Move to the next location
 			loc.x = (loc.x + 1) % map_.w();
@@ -2680,7 +2680,7 @@ private:
 			gui_->scroll_to_tile(loc,game_display::ONSCREEN,false);
 			gui_->highlight_hex(loc);
 		} else {
-			last_search_hit_ = gamemap::location();
+			last_search_hit_ = map_location();
 			//Not found, inform the player
 			utils::string_map symbols;
 			symbols["search"] = last_search_;
@@ -2957,7 +2957,7 @@ private:
 			}
 
 			menu_handler_.units_.erase(mouse_handler_.get_last_hex());
-			menu_handler_.units_.add(new std::pair<gamemap::location,unit>(
+			menu_handler_.units_.add(new std::pair<map_location,unit>(
 				mouse_handler_.get_last_hex(),
 				unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,&i->second,1,false)));
 			menu_handler_.gui_->invalidate(mouse_handler_.get_last_hex());

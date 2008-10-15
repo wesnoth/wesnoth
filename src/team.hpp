@@ -130,11 +130,11 @@ public:
 
 	void write(config& cfg) const;
 
-	bool get_village(const gamemap::location&);
-	void lose_village(const gamemap::location&);
+	bool get_village(const map_location&);
+	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
-	const std::set<gamemap::location>& villages() const { return villages_; }
-	bool owns_village(const gamemap::location& loc) const
+	const std::set<map_location>& villages() const { return villages_; }
+	bool owns_village(const map_location& loc) const
 		{ return villages_.count(loc) > 0; }
 
 	int gold() const { return gold_; }
@@ -263,15 +263,15 @@ public:
 
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
-	bool shrouded(const gamemap::location& loc) const;
-	bool fogged(const gamemap::location& loc) const;
+	bool shrouded(const map_location& loc) const;
+	bool fogged(const map_location& loc) const;
 
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
-	bool clear_shroud(const gamemap::location& loc) { return shroud_.clear(loc.x+1,loc.y+1); }
-	void place_shroud(const gamemap::location& loc) { shroud_.place(loc.x+1,loc.y+1); }
-	bool clear_fog(const gamemap::location& loc) { return fog_.clear(loc.x+1,loc.y+1); }
+	bool clear_shroud(const map_location& loc) { return shroud_.clear(loc.x+1,loc.y+1); }
+	void place_shroud(const map_location& loc) { shroud_.place(loc.x+1,loc.y+1); }
+	bool clear_fog(const map_location& loc) { return fog_.clear(loc.x+1,loc.y+1); }
 	void refog() { fog_.reset(); }
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
 	void set_fog(bool fog) { fog_.set_enabled(fog); }
@@ -310,7 +310,7 @@ private:
 	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
 
 	int gold_;
-	std::set<gamemap::location> villages_;
+	std::set<map_location> villages_;
 
 	shroud_map shroud_, fog_;
 
@@ -342,7 +342,7 @@ struct teams_manager {
 };
 
 namespace player_teams {
-	int village_owner(const gamemap::location& loc);
+	int village_owner(const map_location& loc);
 }
 
 bool is_observer();

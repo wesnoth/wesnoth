@@ -484,7 +484,7 @@ scoped_wml_variable::~scoped_wml_variable()
 
 void scoped_xy_unit::activate()
 {
-	unit_map::const_iterator itor = umap_.find(gamemap::location(x_,y_));
+	unit_map::const_iterator itor = umap_.find(map_location(x_,y_));
 	if(itor != umap_.end()) {
 		config tmp_cfg;
 		itor->second.write(tmp_cfg);

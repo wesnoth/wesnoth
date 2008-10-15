@@ -345,7 +345,7 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 	return generate_map(args);
 }
 
-std::string default_map_generator::generate_map(const std::vector<std::string>& /*args*/, std::map<gamemap::location,std::string>* labels)
+std::string default_map_generator::generate_map(const std::vector<std::string>& /*args*/, std::map<map_location,std::string>* labels)
 {
 	// the random generator thinks odd widths are nasty, so make them even
 	if (is_odd(width_))
@@ -377,7 +377,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 	// A map generator can fail so try a few times to get a map before aborting.
 	std::string map;
 	// Keep a copy of labels as it can be written to by the map generator func
-	std::map<gamemap::location,std::string> labels_copy;
+	std::map<map_location,std::string> labels_copy;
 	int tries = 10;
 	do {
 		if (labels) {
@@ -406,12 +406,12 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 
 	DBG_NG << "got scenario data...\n";
 
-	std::map<gamemap::location,std::string> labels;
+	std::map<map_location,std::string> labels;
 	DBG_NG << "generating map...\n";
 	res["map_data"] = generate_map(args,&labels);
 	DBG_NG << "done generating map..\n";
 
-	for(std::map<gamemap::location,std::string>::const_iterator i =
+	for(std::map<map_location,std::string>::const_iterator i =
 			labels.begin(); i != labels.end(); ++i) {
 
 		if(i->first.x >= 0 && i->first.y >= 0 &&

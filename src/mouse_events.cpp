@@ -89,7 +89,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 	
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	
-	const gamemap::location new_hex = gui().hex_clicked_on(x,y);
+	const map_location new_hex = gui().hex_clicked_on(x,y);
 	
 	if(new_hex != last_hex_) {
 		update = true;
@@ -143,7 +143,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
 		// we search if there is an attack possibility and where
-		gamemap::location attack_from = current_unit_attacks_from(new_hex);
+		map_location attack_from = current_unit_attacks_from(new_hex);
 
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
@@ -175,7 +175,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		// the destination is the pointed hex or the adjacent hex
 		// used to attack it
-		gamemap::location dest;
+		map_location dest;
 		unit_map::const_iterator dest_un;
 		if (attack_from.valid()) {
 			dest = attack_from;
@@ -216,7 +216,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				enemy_paths_ = true;
 			} else {
 				//unit is on our team, show path if the unit has one
-				const gamemap::location go_to = un->second.get_goto();
+				const map_location go_to = un->second.get_goto();
 				if(map_.on_board(go_to)) {
 					paths::route route = get_route(un, go_to, current_team());
 					gui().set_route(&route);
@@ -237,37 +237,37 @@ unit_map::iterator mouse_handler::selected_unit()
 	}
 }
 
-unit_map::iterator mouse_handler::find_unit(const gamemap::location& hex)
+unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 {
 	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
 }
 
-unit_map::const_iterator mouse_handler::find_unit(const gamemap::location& hex) const
+unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 {
 	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
 }
 
-gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::location& loc)
+map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
 	if(current == units_.end() || current->second.side() != team_num_
 		|| current->second.attacks_left()==0) {
-		return gamemap::location();
+		return map_location();
 	}
 
 	const unit_map::const_iterator enemy = find_unit(loc);
 	if(enemy == units_.end() || current_team().is_enemy(enemy->second.side()) == false
 		|| enemy->second.incapacitated())
 	{
-		return gamemap::location();
+		return map_location();
 	}
 
-	const gamemap::location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
-	const gamemap::location::DIRECTION second_preferred = loc.get_relative_dir(previous_free_hex_);
+	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
+	const map_location::DIRECTION second_preferred = loc.get_relative_dir(previous_free_hex_);
 
 	int best_rating = 100;//smaller is better
-	gamemap::location res;
-	gamemap::location adj[6];
+	map_location res;
+	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 
 	for(size_t n = 0; n != 6; ++n) {
@@ -280,7 +280,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 		}
 
 		if(current_paths_.routes.count(adj[n])) {
-			static const size_t NDIRECTIONS = gamemap::location::NDIRECTIONS;
+			static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
 			unsigned int difference = abs(int(preferred - n));
 			if(difference > NDIRECTIONS/2) {
 				difference = NDIRECTIONS - difference;
@@ -300,16 +300,16 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 	return res;
 }
 
-paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::location go_to, team &team)
+paths::route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const shortest_path_calculator calc(un->second,team,units_,teams_,map_);
 
-	std::set<gamemap::location> allowed_teleports;
+	std::set<map_location> allowed_teleports;
 
 	if(un->second.get_ability_bool("teleport",un->first)) {
 		// search all known empty friendly villages
-		for(std::set<gamemap::location>::const_iterator i = team.villages().begin();
+		for(std::set<map_location>::const_iterator i = team.villages().begin();
 				i != team.villages().end(); ++i) {
 			if (viewing_team().is_enemy(un->second.side()) && viewing_team().fogged(*i))
 				continue;
@@ -337,7 +337,7 @@ bool mouse_handler::right_click_show_menu(int /*x*/, int /*y*/, const bool brows
 	// The first right-click cancel the selection if any,
 	// the second open the context menu
 	if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
-		select_hex(gamemap::location(), browse);
+		select_hex(map_location(), browse);
 		return false;
 	} else {
 		return true;
@@ -353,21 +353,21 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	
 	//we use the last registered highlighted hex
 	//since it's what update our global state
-	gamemap::location hex = last_hex_;
+	map_location hex = last_hex_;
 
 	unit_map::iterator u = find_unit(selected_hex_);
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
 	if(u != units_.end() && !browse && selected_hex_ == hex && u->second.side() == team_num_) {
-		u->second.set_goto(gamemap::location());
+		u->second.set_goto(map_location());
 	}
 
 	unit_map::iterator clicked_u = find_unit(hex);
 
-	const gamemap::location src = selected_hex_;
+	const map_location src = selected_hex_;
 	paths orig_paths = current_paths_;
-	const gamemap::location& attack_from = current_unit_attacks_from(hex);
+	const map_location& attack_from = current_unit_attacks_from(hex);
 
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
@@ -384,7 +384,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			if(u != units_.end() && u->second.side() == team_num_ &&
 				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 				//if shroud or fog is active, rememember units and after attack check if someone isn't seen
-				std::set<gamemap::location> known_units;
+				std::set<map_location> known_units;
 
 				if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
 					 for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
@@ -457,7 +457,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	return false;
 }
 
-void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) {
+void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	selected_hex_ = hex;
 	gui().select_hex(hex);
 	gui().clear_attack_indicator();
@@ -496,7 +496,7 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 }
 
 void mouse_handler::deselect_hex() {
-	select_hex(gamemap::location(), true);
+	select_hex(map_location(), true);
 }
 
 void mouse_handler::clear_undo_stack()
@@ -508,7 +508,7 @@ void mouse_handler::clear_undo_stack()
 
 bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attackmove)
 {
-	const std::vector<gamemap::location> steps = current_route_.steps;
+	const std::vector<map_location> steps = current_route_.steps;
 	if(steps.empty()) {
 		return false;
 	}
@@ -517,8 +517,8 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	gui().set_route(NULL);
 
 	// do not keep the hex highlighted that we started from
-	selected_hex_ = gamemap::location();
-	gui().select_hex(gamemap::location());
+	selected_hex_ = map_location();
+	gui().select_hex(map_location());
 
 	// will be invalid after the move
 	current_paths_ = paths();
@@ -539,7 +539,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	redo_stack_.clear();
 
 	assert(moves <= steps.size());
-	const gamemap::location& dst = steps[moves-1];
+	const map_location& dst = steps[moves-1];
 	const unit_map::const_iterator u = units_.find(dst);
 
 	//u may be equal to units_.end() in the case of e.g. a [teleport]
@@ -574,8 +574,8 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 {
 	//we must get locations by value instead of by references, because the iterators
 	//may become invalidated later
-	const gamemap::location attacker_loc = attacker->first;
-	const gamemap::location defender_loc = defender->first;
+	const map_location attacker_loc = attacker->first;
+	const map_location defender_loc = defender->first;
 
 	std::vector<std::string> items;
 
@@ -635,7 +635,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	//make it so that when we attack an enemy, the attacking unit
 	//is again shown in the status bar, so that we can easily
 	//compare between the attacking and defending unit
-	gui().highlight_hex(gamemap::location());
+	gui().highlight_hex(map_location());
 	gui().draw(true,true);
 
 	attack_prediction_displayer ap_displayer(gui(), bc_vector, map_, teams_, units_, status_, attacker_loc, defender_loc);
@@ -662,7 +662,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		const battle_context::unit_stats &att = bc_vector[res].get_attacker_stats();
 		const battle_context::unit_stats &def = bc_vector[res].get_defender_stats();
 
-		attacker->second.set_goto(gamemap::location());
+		attacker->second.set_goto(map_location());
 		clear_undo_stack();
 		redo_stack_.clear();
 

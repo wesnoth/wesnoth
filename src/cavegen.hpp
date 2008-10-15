@@ -48,21 +48,21 @@ private:
 		{
 		}
 
-		gamemap::location center;
-		std::set<gamemap::location> locs;
+		map_location center;
+		std::set<map_location> locs;
 		config* items;
 	};
 
 	struct passage {
-		passage(gamemap::location s, gamemap::location d, const config& c)
+		passage(map_location s, map_location d, const config& c)
 			: src(s), dst(d), cfg(c)
 		{}
-		gamemap::location src, dst;
+		map_location src, dst;
 		config cfg;
 	};
 
 	void generate_chambers();
-	void build_chamber(gamemap::location loc, std::set<gamemap::location>& locs, size_t size, size_t jagged);
+	void build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged);
 
 	void place_chamber(const chamber& c);
 	void place_items(const chamber& c, config::all_children_iterator i1, config::all_children_iterator i2);
@@ -70,15 +70,15 @@ private:
 	void place_passage(const passage& p);
 
 	// Note we assume a border size of 1.
-	bool on_board(const gamemap::location& loc) const 
+	bool on_board(const map_location& loc) const 
 	{
 		return loc.x > 0 && loc.y > 0 &&
 			loc.x < static_cast<long>(width_ - 2) &&
 			loc.y < static_cast<long>(height_ - 2); 
 	}
 
-	void set_terrain(gamemap::location loc, t_translation::t_terrain t);
-	void place_castle(const std::string& side, gamemap::location loc);
+	void set_terrain(map_location loc, t_translation::t_terrain t);
+	void place_castle(const std::string& side, map_location loc);
 
 	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;
 	t_translation::t_map map_;

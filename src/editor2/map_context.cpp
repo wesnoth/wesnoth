@@ -67,7 +67,7 @@ map_context::~map_context()
 }
 
 void map_context::draw_terrain(t_translation::t_terrain terrain, 
-	const gamemap::location& loc, bool one_layer_only)
+	const map_location& loc, bool one_layer_only)
 {
     if (!one_layer_only) {
         terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
@@ -76,7 +76,7 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
 }
 
 void map_context::draw_terrain_actual(t_translation::t_terrain terrain, 
-	const gamemap::location& loc, bool one_layer_only)
+	const map_location& loc, bool one_layer_only)
 {
 	if (!map_.on_board_with_border(loc)) {
 		//requests for painting off the map are ignored in set_terrain anyway,
@@ -98,12 +98,12 @@ void map_context::draw_terrain_actual(t_translation::t_terrain terrain,
 }
 
 void map_context::draw_terrain(t_translation::t_terrain terrain, 
-	const std::set<gamemap::location>& locs, bool one_layer_only)
+	const std::set<map_location>& locs, bool one_layer_only)
 {
     if (!one_layer_only) {
         terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
     }
-	foreach (const gamemap::location& loc, locs) {
+	foreach (const map_location& loc, locs) {
 		draw_terrain_actual(terrain, loc, one_layer_only);
 	}
 }
@@ -114,14 +114,14 @@ void map_context::clear_changed_locations()
 	changed_locations_.clear();
 }
 
-void map_context::add_changed_location(const gamemap::location& loc)
+void map_context::add_changed_location(const map_location& loc)
 {
 	if (!everything_changed()) {
 		changed_locations_.insert(loc);
 	}
 }
 
-void map_context::add_changed_location(const std::set<gamemap::location>& locs)
+void map_context::add_changed_location(const std::set<map_location>& locs)
 {
 	if (!everything_changed()) {
 		changed_locations_.insert(locs.begin(), locs.end());
@@ -140,7 +140,7 @@ bool map_context::everything_changed() const
 
 void map_context::clear_starting_position_labels(display& disp)
 {
-	foreach (const gamemap::location& loc, starting_position_label_locs_) {
+	foreach (const map_location& loc, starting_position_label_locs_) {
 		disp.labels().set_label(loc, "");
 	}
 	starting_position_label_locs_.clear();
@@ -148,7 +148,7 @@ void map_context::clear_starting_position_labels(display& disp)
 	
 void map_context::set_starting_position_labels(display& disp)
 {
-	std::set<gamemap::location> new_label_locs = map_.set_starting_position_labels(disp);
+	std::set<map_location> new_label_locs = map_.set_starting_position_labels(disp);
 	starting_position_label_locs_.insert(new_label_locs.begin(), new_label_locs.end());
 }
 

@@ -601,7 +601,7 @@ static PyObject* wrapper_unit_damage_from( wesnoth_unit* unit, PyObject* args )
 	if ( !PyArg_ParseTuple( args, OBVALUE, &wesnoth_attacktype_type, &attack ) )
 		return NULL;
 	u_check;
-	static gamemap::location no_loc;
+	static map_location no_loc;
 	return Py_BuildValue(INTVALUE,unit->unit_->damage_from(*attack->attack_type_,true,no_loc));
 }
 
@@ -720,7 +720,7 @@ static PyTypeObject wesnoth_unit_type = {
 
 typedef struct {
 	PyObject_HEAD
-	gamemap::location* location_;
+	map_location* location_;
 } wesnoth_location;
 
 static void wesnoth_location_dealloc(wesnoth_location* self)
@@ -828,11 +828,11 @@ static PyTypeObject wesnoth_location_type = {
 	NULL
 };
 
-static PyObject *wrap_location(const gamemap::location& loc)
+static PyObject *wrap_location(const map_location& loc)
 {
 	wesnoth_location* location;
 	location = reinterpret_cast<wesnoth_location*>(PyObject_NEW(wesnoth_location, &wesnoth_location_type));
-	location->location_ = new gamemap::location(loc.x, loc.y);
+	location->location_ = new map_location(loc.x, loc.y);
 	return reinterpret_cast<PyObject*>(location);
 }
 
@@ -1408,7 +1408,7 @@ PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
 	if (x < 0 || x >= running_instance->get_info().map.w()) Py_RETURN_NONE;
 	if (y < 0 || y >= running_instance->get_info().map.h()) Py_RETURN_NONE;
 
-	gamemap::location loc(x,y);
+	map_location loc(x,y);
 	return wrap_location(loc);
 }
 
@@ -1602,7 +1602,7 @@ PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* /*self*/, PyObject* ar
 
 	gamemap const &map = running_instance->get_info().map;
 	PyObject* list = PyList_New(0);
-	gamemap::location loc[6];
+	map_location loc[6];
 	get_adjacent_tiles(*where->location_,loc);
 	for ( int tile = 0; tile < 6; tile++ )
 		if (loc[tile].valid(map.w(), map.h()))
@@ -1711,9 +1711,9 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 	// We need to temporarily move our unit to where the attack calculation
 	// is supposed to take place.
-	std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
-	std::pair<gamemap::location,unit> *backup = temp;
-	std::pair<gamemap::location,unit> replace(*from->location_,*self->unit_);
+	std::pair<map_location,unit> *temp = inf.units.extract(*from->location_);
+	std::pair<map_location,unit> *backup = temp;
+	std::pair<map_location,unit> replace(*from->location_,*self->unit_);
 	inf.units.add(&replace);
 
 	battle_context bc(
@@ -1883,7 +1883,7 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* from;
 	// loc initialises to x=-1000, y=-1000. i.e. temporarily moves the unit off the map
-	gamemap::location loc;
+	map_location loc;
 	wesnoth_location* to = reinterpret_cast<wesnoth_location*>(wrap_location(loc));
 
 	if (!PyArg_ParseTuple(args, CC("O!|O!"), &wesnoth_location_type, &from,
@@ -1919,15 +1919,15 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 
 	// Temporarily move our unit to the specified location, storing any
 	// unit that might happen to be there already.
-	std::pair<gamemap::location,unit> *temp = inf.units.extract(*to->location_);
-	std::pair<gamemap::location,unit> *backup = temp;
-	std::pair<gamemap::location,unit> *original = inf.units.extract(*from->location_);
-	std::pair<gamemap::location,unit> test(*to->location_, u_it->second);
+	std::pair<map_location,unit> *temp = inf.units.extract(*to->location_);
+	std::pair<map_location,unit> *backup = temp;
+	std::pair<map_location,unit> *original = inf.units.extract(*from->location_);
+	std::pair<map_location,unit> test(*to->location_, u_it->second);
 	inf.units.add(&test);
 
 	ai_interface::move_map test_src_dst;
 	ai_interface::move_map test_dst_src;
-	std::map<gamemap::location, paths> possible_moves;
+	std::map<map_location, paths> possible_moves;
 
 	running_instance->calculate_moves(inf.units, possible_moves, test_src_dst, test_dst_src, true);
 

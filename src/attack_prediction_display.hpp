@@ -32,7 +32,7 @@ public:
 	battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
 						   const std::vector<team>& teams, const unit_map& units,
 						   const gamestatus& status,
-						   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
+						   const map_location& attacker_loc, const map_location& defender_loc);
 
 	// This method is called to draw the dialog contents.
 	void draw_contents();
@@ -50,8 +50,8 @@ private:
 	const std::vector<team>& teams_;
 	const unit_map& units_;
 	const gamestatus& status_;
-	const gamemap::location& attacker_loc_;
-	const gamemap::location& defender_loc_;
+	const map_location& attacker_loc_;
+	const map_location& defender_loc_;
 	const unit& attacker_;
 	const unit& defender_;
 
@@ -83,8 +83,8 @@ private:
 	// This method builds the strings describing the unit damage modifiers.
 	// Read the code to understand the arguments.
 	void get_unit_strings(const battle_context::unit_stats& stats,
-					  const unit& u, const gamemap::location& u_loc, float u_unscathed,
-					  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
+					  const unit& u, const map_location& u_loc, float u_unscathed,
+					  const unit& opp, const map_location& opp_loc, const attack_type *opp_weapon,
 					  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
 				      int& left_strings_width, int& right_strings_width, int& strings_width);
 
@@ -132,7 +132,7 @@ public:
 	attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
 							    const std::vector<team>& teams, const unit_map& units,
 							    const gamestatus& status,
-								const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
+								const map_location& attacker_loc, const map_location& defender_loc)
 			: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status),
 			  attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
 	// This method is called when the button is pressed.
@@ -145,8 +145,8 @@ private:
 	const std::vector<team>& teams_;
 	const unit_map& units_;
 	const gamestatus& status_;
-	const gamemap::location& attacker_loc_;
-	const gamemap::location& defender_loc_;
+	const map_location& attacker_loc_;
+	const map_location& defender_loc_;
 };
 
 #endif

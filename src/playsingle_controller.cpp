@@ -256,7 +256,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	// Find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui_->add_overlay(gamemap::location(**overlay, game_events::get_state_of_game()), (**overlay)["image"], (**overlay)["halo"], (**overlay)["team_name"], (**overlay)["fogged"]);
+		gui_->add_overlay(map_location(**overlay, game_events::get_state_of_game()), (**overlay)["image"], (**overlay)["halo"], (**overlay)["team_name"], (**overlay)["fogged"]);
 	}
 
 	victory_conditions::set_victory_when_enemies_defeated(
@@ -659,17 +659,17 @@ void playsingle_controller::show_turn_dialog(){
 
 void playsingle_controller::execute_gotos(){
 	// Execute goto-movements - first collect gotos in a list
-	std::vector<gamemap::location> gotos;
+	std::vector<map_location> gotos;
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if(ui->second.get_goto() == ui->first)
-			ui->second.set_goto(gamemap::location());
+			ui->second.set_goto(map_location());
 
 		if(ui->second.side() == player_number_ && map_.on_board(ui->second.get_goto()))
 			gotos.push_back(ui->first);
 	}
 
-	for(std::vector<gamemap::location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
+	for(std::vector<map_location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units_.find(*g);
 		menu_handler_.move_unit_to_loc(ui,ui->second.get_goto(),false, player_number_, mouse_handler_);
 	}
