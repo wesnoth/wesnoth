@@ -129,9 +129,9 @@ class JourneyTracks:
         self.tracks = {}		# Dict of lists of (action, x, y) tuples
         self.selected_id = None
         self.modifications = 0
-        self.track_list = []
+        self.track_order = []
         self.properties = {}
-        self.modified = False
+        self.modified = 0
         self.before = self.after = ""
     def selected_track(self):
         "Select a track for modification"
@@ -142,15 +142,16 @@ class JourneyTracks:
         "Record a set of named journey tracks."
         if fp.name.endswith(".cfg"):
             fp.write(self.before)
-            fp.write("# trackplacer: tracks begin\n\n")
-            fp.write("# Hand-hack this section strictly at your own risk.\n\n")
+            fp.write("# trackplacer: tracks begin\n#\n")
+            fp.write("# Hand-hack this section strictly at your own risk.\n")
             fp.write("#\n")
             if not self.before and not self.after:
                 fp.write("#\n# wmllint: no translatables\n\n")
             for (key, val) in self.properties.items():
                 fp.write("# trackplacer: %s=%s\n" % (key, val))
             fp.write("#\n")
-            for (name, track) in self.tracks.items():
+            for name in self.track_order:
+                track = self.tracks[name]
                 index_tuples = zip(range(len(track)), track)
                 index_tuples = filter(lambda (i, (a, x, y)): a in segmenters,
                                       index_tuples)
@@ -174,7 +175,7 @@ class JourneyTracks:
             fp.write("# trackplacer: tracks end\n")
             fp.write(self.after)
             fp.close()
-            self.modified = False
+            self.modified = 0
         else:
             raise IOException("File must have a .trk or .cfg extension.", fp.name)
     def read(self, fp):
@@ -216,8 +217,8 @@ class JourneyTracks:
             m = re.search(define_re, line)
             if m:
                 self.selected_id = m.group(1)
-                if self.selected_id not in self.track_list:
-                    self.track_list.append(self.selected_id)
+                if self.selected_id not in self.track_order:
+                    self.track_order.append(self.selected_id)
                     self.tracks[self.selected_id] = []
                 continue
             # Is this a track marker?
@@ -241,27 +242,27 @@ class JourneyTracks:
         else:
             raise IOException("Missing map declaration.", fp.name)
         fp.close()
-        self.modified = False
+        self.modified = 0
     def __getitem__(self, n):
         return self.tracks[self.selected_id][n]
     def __setitem__(self, n, v):
         if self.tracks[self.selected_id][n] != v:
-            self.modified = True
+            self.modified += 1
         self.tracks[self.selected_id][n] = v
     def add_track(self, name):
-        if name not in self.track_list:
+        if name not in self.track_order:
             self.tracks[name] = []
-            self.track_list.append(name)
-            self.modified = True
+            self.track_order.append(name)
+            self.modified += 1
     def remove_track(self, name):
-        if name in self.track_list:
+        if name in self.track_order:
             del self.tracks[name]
-            self.track_list.remove(name)
-            self.modified = True
+            self.track_order.remove(name)
+            self.modified += 1
     def rename_track(self, oldname, newname):
         if oldname in self.tracklist and newname not in self.tracklist:
             self.tracks[newname] = self.tracks[oldname]
-            self.track_list[self.track_list.index(oldname)] = newname
+            self.track_order[self.track_order.index(oldname)] = newname
     def has_unsaved_changes(self):
         return self.modified
     def neighbors(self, x, y):
@@ -290,7 +291,7 @@ class JourneyTracks:
                 return
         # Otherwise, append
         self.selected_track().append((action, x, y))
-        self.modified = True
+        self.modified += 1
     def remove(self, x, y):
         "Remove a feature from the selected track."
         found = self.find(x, y)
@@ -298,7 +299,7 @@ class JourneyTracks:
             # Prefer to delete the most recent feature
             track = self.selected_track()
             track = track[:found[-1]] + track[found[-1]+1:]
-            self.modified = True
+            self.modified += 1
     def __str__(self):
         return self.mapfile + ": " + `self.tracks`
 
@@ -388,7 +389,7 @@ class TracksEditor:
         self.log("Initial track is %s" % self.journey)
         self.action = "JOURNEY"
         self.selected = None
-        self.visible_set = self.journey.track_list[:]
+        self.visible_set = self.journey.track_order[:]
 
         # Backing pixmap for drawing area
         self.pixmap = None
@@ -723,7 +724,7 @@ class TracksEditor:
                (action, lx, ly) = self.journey[self.selected]
                self.erase_feature(widget, (action, lx, ly))
                self.journey[self.selected] = (action, x, y)
-               self.journey.modified = True
+               self.journey.modified += 1
                self.draw_feature(widget, (action, x, y), True)
                self.log("Track is %s" % self.journey)
         return True
@@ -833,7 +834,7 @@ class TracksEditor:
         self.visibility.vbox.add(self.trackbox)
         self.trackbox.show()
         basebutton = gtk.RadioButton()	# Dummy, don't show it.
-        for (i, track_id) in enumerate(self.journey.track_list):
+        for (i, track_id) in enumerate(self.journey.track_order):
             TrackController(self, track_id, self.trackbox, basebutton)
         addbox = gtk.HBox()
         addbox.show()
@@ -889,7 +890,7 @@ class TracksEditor:
         self.track_select(w, track_id)
     def track_visibility_revert(self, w, response_id):
         "On response or window distruction, restore visibility set."
-        self.visible_set = self.journey.track_list
+        self.visible_set = self.journey.track_order
         self.redraw(self.drawing_area, delay=0.05)
         self.visibility.destroy()
 
