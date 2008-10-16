@@ -258,6 +258,10 @@ class JourneyTracks:
             del self.tracks[name]
             self.track_list.remove(name)
             self.modified = True
+    def rename_track(self, oldname, newname):
+        if oldname in self.tracklist and newname not in self.tracklist:
+            self.tracks[newname] = self.tracks[oldname]
+            self.tracklist[self.track_list.index(oldname)] = newname
     def has_unsaved_changes(self):
         return self.modified
     def neighbors(self, x, y):
@@ -330,7 +334,7 @@ class TrackController:
                                 "Select %s for editing" % track_id)
         self.radiobutton.show()
         self.hbox.add(self.radiobutton)
-        self.checkbox = gtk.CheckButton(track_id)
+        self.checkbox = gtk.CheckButton()
         self.checkbox.set_active(track_id in editor.visible_set)
         self.checkbox.connect("toggled",
                               editor.track_visibility_callback, track_id)
@@ -338,7 +342,13 @@ class TrackController:
         editor.tooltips.set_tip(self.checkbox,
                                 "Toggle visibility of %s" % track_id)
         self.checkbox.show()
-
+        self.rename = gtk.Entry()
+        self.rename.set_text(track_id)
+        self.rename.connect("activate", self.track_rename_handler, track_id)
+        editor.tooltips.set_tip(self.rename,
+                                "Change name of track %s" % track_id)
+        self.rename.show()
+        self.hbox.add(self.rename)
         # We really should have been able to do this:
         # self.deleter = gtk.Button(stock=gtk.STOCK_DELETE, label="")
         # Instead, we have to writhe and faint in coils because the
@@ -360,6 +370,10 @@ class TrackController:
     def track_delete_handler(self, w, track_id):
         self.editor.journey.remove_track(track_id)
         self.hbox.hide()
+        del self.editor.controller[track_id]
+    def track_rename_handler(self, w, track_id):
+        editor.journey.rename(track_id, w.get_text())
+        self.editor.controller[w.get_text()] = self.editor.controller[track_id]
         del self.editor.controller[track_id]
 
 class TracksEditor:
@@ -803,7 +817,7 @@ class TracksEditor:
 
     def tracks_handler(self, w):
         "Modify the visible set of tracks."
-        self.visibility = gtk.Dialog(title="Edit track visibility.",
+        self.visibility = gtk.Dialog(title="Edit track visibility",
                                      buttons=(gtk.STOCK_OK,
                                               gtk.RESPONSE_ACCEPT))
         label = gtk.Label("The radiobuttons select a track for editing.")
@@ -818,11 +832,9 @@ class TracksEditor:
         self.trackbox = gtk.VBox()
         self.visibility.vbox.add(self.trackbox)
         self.trackbox.show()
-        basebutton = gtk.RadioButton()
+        basebutton = gtk.RadioButton()	# Dummy, don't show it.
         for (i, track_id) in enumerate(self.journey.track_list):
             TrackController(self, track_id, self.trackbox, basebutton)
-            #if basebutton == None:
-            #    basebutton = self.controller[track_id].radiobutton
         addbox = gtk.HBox()
         addbox.show()
         addlabel = gtk.Label("Add New Track:")
@@ -832,8 +844,8 @@ class TracksEditor:
         addentry.show()
         addbox.add(addentry)
         addentry.connect("activate",
-                         lambda: TrackController(self,
-                                                 addentry.get_text().
+                         lambda w: TrackController(self,
+                                                 addentry.get_text(),
                                                  self.trackbox,
                                                  basebutton))
         self.visibility.vbox.add(addbox)
