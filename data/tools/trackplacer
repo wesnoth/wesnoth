@@ -251,7 +251,7 @@ class JourneyTracks:
     def add_track(self, name):
         if name not in self.track_list:
             self.tracks[name] = []
-            self.tracklist.append(name)
+            self.track_list.append(name)
             self.modified = True
     def remove_track(self, name):
         if name in self.track_list:
@@ -261,7 +261,7 @@ class JourneyTracks:
     def rename_track(self, oldname, newname):
         if oldname in self.tracklist and newname not in self.tracklist:
             self.tracks[newname] = self.tracks[oldname]
-            self.tracklist[self.track_list.index(oldname)] = newname
+            self.track_list[self.track_list.index(oldname)] = newname
     def has_unsaved_changes(self):
         return self.modified
     def neighbors(self, x, y):
@@ -843,23 +843,25 @@ class TracksEditor:
         addentry = gtk.Entry()
         addentry.show()
         addbox.add(addentry)
-        addentry.connect("activate",
-                         lambda w: TrackController(self,
-                                                 addentry.get_text(),
-                                                 self.trackbox,
-                                                 basebutton))
+        addentry.connect("activate", self.track_add_callback, basebutton)
         self.visibility.vbox.add(addbox)
         self.visibility.connect("response", self.track_visibility_revert)
         self.visibility.show()
+    def track_select(self, w, track_id):
+        "Make the specified track the selected one for editing."
+        self.journey.set_selected_track(track_id)
+        self.controller[track_id].checkbox.set_active(True)
+        self.controller[track_id].radiobutton.set_active(True)
+        if track_id not in self.visible_set:
+            self.track_visibility_callback(self.controller[track_id], track_id)
+        else:
+            self.redraw(self.drawing_area, delay=0.05)
     def track_activity_callback(self, w, track_id):
+        "Called (twice) when a track activity radiobutton is toggled."
         if w.get_active():
-            self.journey.set_selected_track(track_id)
-            self.controller[track_id].checkbox.set_active(True)
-            if track_id not in self.visible_set:
-                self.track_visibility_callback(w, track_id)
-            else:
-                self.redraw(self.drawing_area, delay=0.05)
+            self.track_select(w, track_id)
     def track_visibility_callback(self, w, track_id):
+        "Called when a track visibility checkbutton is toggled."
         if len(self.visible_set) <= 1 and track_id in self.visible_set:
             w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
                                   flags=gtk.DIALOG_DESTROY_WITH_PARENT,
@@ -878,8 +880,15 @@ class TracksEditor:
         if self.journey.selected_id not in self.visible_set:
             self.journey.set_selected_track(self.visible_set[-1])
         self.redraw(self.drawing_area, delay=0.05)
+    def track_add_callback(self, w, basebutton):
+        "Add a new track, and the controller for it, and select it."
+        track_id = w.get_text()
+        w.set_text("")
+        TrackController(self, track_id, self.trackbox, basebutton)
+        self.journey.add_track(track_id)
+        self.track_select(w, track_id)
     def track_visibility_revert(self, w, response_id):
-        "On response or window distruction, restire visibility set."
+        "On response or window distruction, restore visibility set."
         self.visible_set = self.journey.track_list
         self.redraw(self.drawing_area, delay=0.05)
         self.visibility.destroy()
