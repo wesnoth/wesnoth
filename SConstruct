@@ -467,16 +467,10 @@ env.Alias("install-wesnoth", [
                 install_data, install_manual])
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
-         env.Alias("install-wesnoth",
-            env.Install(icondir,
-                            "icons/wesnoth-icon-Mac.png"))
+         env.InstallData("icondir", "wesnoth", "icons/wesnoth-icon-Mac.png")
      else:
-         env.Alias("install-wesnoth",
-            env.Install(icondir,
-                            "icons/wesnoth-icon.png"))
-     env.Alias("install-wesnoth",
-         env.Install(desktopdir,
-                         "icons/wesnoth.desktop"))
+         env.InstallData("icondir", "wesnoth", "icons/wesnoth-icon.png")
+     env.InstallData("desktopdir", "wesnoth", "icons/wesnoth.desktop")
 InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # Python tools

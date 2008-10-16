@@ -69,10 +69,15 @@ def hard_link(dest, src, symlink = False):
 HardLink = ActionFactory(hard_link,
                          lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
+def InstallData(env, datadir, component, source):
+    installdir = os.path.join(env["destdir"], env[datadir].lstrip("/"))
+    env.Alias("install-" + component, env.Install(installdir, source))
+
 def generate(env):
     #env.AddMethod(InstallWithSuffix)
     from SCons.Script.SConscript import SConsEnvironment
     SConsEnvironment.InstallWithSuffix = InstallWithSuffix
+    SConsEnvironment.InstallData = InstallData
 
     env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})
 
