@@ -189,8 +189,8 @@ class JourneyTracks:
             raise IOException("Reading with tracks nonempty.", fp.name)
         if fp.name.endswith(".png") or fp.name.endswith(".jpg"):
             self.mapfile = self.properties['map'] = fp.name
-            self.selected_id = "JOURNEY"
-            self.tracks[self.selected_id] = []
+            self.add_track("JOURNEY")
+            self.modified = 0
             return
         if not fp.name.endswith(".cfg"):
             raise IOException("Cannot read this filetype.", fp.name)
@@ -301,10 +301,10 @@ class JourneyTracks:
             self.tracks[self.selected_id] = track[:found[-1]] + track[found[-1]+1:]
             self.modified += 1
     def __str__(self):
-        rep = self.mapfile + ":n"
+        rep = self.mapfile + `self.track_order`+ "\n"
         for name in self.track_order:
             track = self.tracks[name]
-            rep += name + ": " + `track` + "\n"
+            rep += name + ": " + `track` + ":\n"
         return rep
 
 class TrackEditorIcon:
