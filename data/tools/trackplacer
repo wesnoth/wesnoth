@@ -53,7 +53,7 @@ This is trackplacer, an editor for visually editing sets of journey tracks on Ba
 
 You are editing or creating a set of named tracks; at any given time there will one track that is selected for editing.  For campaigns with a linear narrative there will be only one track, always selected, and you will not have to concern yourself about its name.  If your campaign has a non-linear structure, you will want to create one track for each segment.
 
-The radio buttons near the top left corner control which icon is placed by a left click, except that the when the trashcan is selected a left click deletes already-placed icons. Every time you place an icon, it is added to the currently selected track.
+The radio buttons near the top left corner control which icon is placed by a left click.  The two rightmost are special; when the trashcan is clicked a left click deletes already-placed icons, and the convert/copy icon tries to copy a nearby icon from an unselected track onto the selected one, preserving its pixel coordinates exactly. Every time you place an icon, it is added to the currently selected track.
 
 The rule for adding markers to the selected track is as follows: if the two markers closest to the mouse pointer are adjacent on the track, insert the new marker between them in the track order. Otherwise, append it to the end of the track.
 
@@ -458,7 +458,7 @@ class TracksEditor:
             button.connect("toggled", self.button_callback, icon.action)
             radiobox.pack_start(button, expand=True, fill=True, padding=0)
             button.show()
-            self.tooltips.set_tip(button, "Place %s events." % action.lower())
+            self.tooltips.set_tip(button, "Place %s markers" % action.lower())
 
         # The delete button and its label
         button = gtk.RadioButton(button)
@@ -472,7 +472,21 @@ class TracksEditor:
         button.connect("toggled", self.button_callback, "DELETE")
         radiobox.pack_start(button, expand=True, fill=True, padding=0)
         button.show()
-        self.tooltips.set_tip(button, "Remove events.")
+        self.tooltips.set_tip(button, "Remove markers")
+
+        # The copy button and its label
+        button = gtk.RadioButton(button)
+        copyimage = gtk.Image()
+        copyimage.set_from_stock(gtk.STOCK_CONVERT, gtk.ICON_SIZE_SMALL_TOOLBAR)
+        bbox = gtk.HBox()
+        button.add(bbox)
+        bbox.add(copyimage)
+        copyimage.show()
+        bbox.show()
+        button.connect("toggled", self.button_callback, "COPY")
+        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        button.show()
+        self.tooltips.set_tip(button, "Copy marker from an old track")
 
         # The coordinate display in the middle
         self.coordwin = gtk.Label()
@@ -649,7 +663,8 @@ class TracksEditor:
         self.refresh_map()
         # Draw all unselected tracks before the selected one,
         # so any icons coinciding will be drawn in the right order.
-        for (id, track) in self.journey.tracks.items():
+        for id in self.journey.track_order:
+            track = self.journey.tracks[id]
             if id in self.visible_set and id != self.journey.selected_id:
                 for item in self.journey.tracks[id]:
                     self.draw_feature(widget, item, False)
@@ -658,7 +673,8 @@ class TracksEditor:
                         self.expose_event(widget)
                         while gtk.events_pending():
                             gtk.main_iteration(False)
-        for (id, track) in self.journey.tracks.items():
+        for id in self.journey.track_order:
+            track = self.journey.tracks[id]
             if id in self.visible_set and id == self.journey.selected_id:
                 for item in self.journey.tracks[id]:
                     self.draw_feature(widget, item, True)
@@ -695,6 +711,23 @@ class TracksEditor:
             self.selected = self.snap_to(x, y)
             # Skip the redraw in half the cases
             self.log("Action %s at (%d, %d): feature = %s" % (self.action, x, y, self.selected))
+            if self.selected == None and self.action == "COPY":
+                save_selected = self.journey.selected_id
+                most_recent = None
+                for name in self.journey.track_order:
+                    if name != save_selected:
+                        self.journey.set_selected_track(name)
+                        possible = self.snap_to(x, y)
+                        if possible is not None:
+                            print "Found possible on", name
+                            most_recent = (name, possible, self.journey[possible])
+                self.journey.set_selected_track(save_selected)
+                if most_recent:
+                    (nn, np, (an, xn, yn)) = most_recent
+                    self.log("Copy feature: %s[%d] = %s" % (nn, np, (an,xn,yn)))
+                    (self.action, x, y) = (an, xn, yn)
+                else:
+                    return
             if (self.selected == None) and (self.action == "DELETE"):
                 return
             if (self.selected != None) and (self.action != "DELETE"):
