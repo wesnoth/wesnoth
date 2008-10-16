@@ -63,7 +63,7 @@ The Save button pops up a file selector asking you to supply a filename to which
 
 The Properties button pops up a list of track properties - key/value pairs associated with the track.  All tracks have the property "map" with their associated map name as the value.
 
-The Tracks button pops up a list of checkboxes, one for each track.  You can shange the state of the checkboxes to control which tracks are visible. The radiobuttons can be used to select a track for editing.
+The Tracks button pops up a list of controls, one for each track.  You can change the state of the checkboxes to control which tracks are visible. The radiobuttons can be used to select a track for editing.  You can also add and rename tracks here.  Hover over the controls for tooltips.
 
 The Help button displays this message.
 
@@ -706,6 +706,7 @@ class TracksEditor:
 
     def button_press_event(self, widget, event):
         if event.button == 1 and self.pixmap != None:
+            a = self.action
             x = int(event.x)
             y = int(event.y)
             self.selected = self.snap_to(x, y)
@@ -725,23 +726,23 @@ class TracksEditor:
                 if most_recent:
                     (nn, np, (an, xn, yn)) = most_recent
                     self.log("Copy feature: %s[%d] = %s" % (nn, np, (an,xn,yn)))
-                    (self.action, x, y) = (an, xn, yn)
+                    (a, x, y) = (an, xn, yn)
                 else:
                     return
-            if (self.selected == None) and (self.action == "DELETE"):
+            if (self.selected == None) and (a == "DELETE"):
                 return
-            if (self.selected != None) and (self.action != "DELETE"):
+            if (self.selected != None) and (a != "DELETE"):
                 return
             # Actual drawing and mutation of the journey track happens here
-            if not self.selected and self.action != "DELETE":
-                self.draw_feature(widget, (self.action, x, y), True)
-                self.journey.insert((self.action, x, y))
-            elif self.selected != None and self.action == "DELETE":
-                (action, x, y) = self.journey[self.selected]
-                self.log("Deletion snapped to feature %d %s" % (self.selected,(action,x,y)))
-                self.erase_feature(widget, (action, x, y))
+            if not self.selected and a != "DELETE":
+                self.draw_feature(widget, (a, x, y), True)
+                self.journey.insert((a, x, y))
+            elif self.selected != None and a == "DELETE":
+                (a, x, y) = self.journey[self.selected]
+                self.log("Deletion snapped to feature %d %s" % (self.selected,(a,x,y)))
+                self.erase_feature(widget, (a, x, y))
                 self.journey.remove(x, y)
-            self.log("Track is %s" % self.journey)
+            self.log("Tracks are %s" % self.journey)
         return True
 
     def motion_notify_event(self, widget, event):
@@ -761,7 +762,7 @@ class TracksEditor:
                self.journey[self.selected] = (action, x, y)
                self.journey.modified += 1
                self.draw_feature(widget, (action, x, y), True)
-               self.log("Track is %s" % self.journey)
+               self.log("Tracks are %s" % self.journey)
         return True
 
     def quit(self, w):
