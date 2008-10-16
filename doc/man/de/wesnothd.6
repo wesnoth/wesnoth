@@ -33,9 +33,10 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .
 .SH BESCHREIBUNG
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Verwaltet Battle for Wesnoth Mehrspieler Partien. Auf
+http://www.wesnoth.org/wiki/ServerAdministration sind die Befehle zu finden,
+die der Server von einem Wesnoth\-Client (/query ...) oder über eine
+FIFO\-Datei entgegen nimmt.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -93,8 +94,9 @@ Schlüssel="\fIWert\fP,\fIWert\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+Kompletter oder relativer Pfad zu einer (gzip\-komprimierten) Datei, die der
+Server lesen und schreiben kann. Bans werden in diese Datei gespeichert und
+beim Start vom Server eingelesen.
 .TP 
 \fBconnections_allowed\fP
 Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
@@ -107,9 +109,10 @@ Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
+können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht
+angegeben, wird die einkompilierte Voreinstellung verwendet (Standardwert:
+/var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -127,8 +130,8 @@ Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt
 per Konvention mit `admin '.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
+»restart«\-Befehl zu starten. (Kann nur über die FIFO angefordert werden.)
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
@@ -156,24 +159,25 @@ sollen. Verhält sich in Bezug auf Wildcards genauso wie
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Eine Markierung, um A tag to define convenient keywords for
+temporary ban time lengths.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+Der Name, um die Ban\-Zeit zu referenzieren.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
+s (Sekunden), m (Minuten), h (Stunden), D (Tage), M (Monate) oder Y (Jahre)
+und %d für eine Nummer steht. Falls keine Zeitdefinition verwendet wird,
+werden Minuten (m) angenommen. Beispiel: time="1D12h30m" steht für eine
+Ban\-Zeit von einem Tag, 12 Stunden und 30 Minuten.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein
+Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
+den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
+bei \fB[redirect]\fP akzeptiert.
 .
 .SH AUTOR
 .
