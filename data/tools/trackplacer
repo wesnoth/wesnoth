@@ -628,7 +628,9 @@ class TracksEditor:
             for (na, nx, ny) in neighbors:
                 if x != nx and y != ny:
                     self.log("Redrawing action=%s" % ((na, nx, ny),))
-                    self.draw_feature(widget, (na, nx, ny)) 
+                    self.draw_feature(widget,
+                                      (na, nx, ny),
+                                      save_select == self.journey.selected_id) 
         self.journey.set_selected_track(save_select)
 
     def draw_feature(self, widget, (action, x, y), selected):
