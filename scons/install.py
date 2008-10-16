@@ -69,8 +69,8 @@ def hard_link(dest, src, symlink = False):
 HardLink = ActionFactory(hard_link,
                          lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
-def InstallData(env, datadir, component, source):
-    installdir = os.path.join(env["destdir"], env[datadir].lstrip("/"))
+def InstallData(env, datadir, component, source, subdir = ""):
+    installdir = os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)
     env.Alias("install-" + component, env.Install(installdir, source))
 
 def generate(env):

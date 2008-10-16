@@ -430,7 +430,6 @@ clientside = filter(lambda x : x, [wesnoth, cutter, exploder])
 daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
-localized_man_dirs = {}
 
 def CopyFilter(fn):
     "Filter out data-tree things that shouldn't be installed."
@@ -438,18 +437,14 @@ def CopyFilter(fn):
 
 env["copy_filter"] = CopyFilter
 
-for lang in filter(CopyFilter, os.listdir("doc/man")):
-     sourcedir = os.path.join("doc/man", lang)
-     if os.path.isdir(sourcedir):
-          targetdir = os.path.join(mandir, lang, "man6")
-          localized_man_dirs[sourcedir] = targetdir
+linguas = Split(open("po/LINGUAS").read())
 
-def InstallLocalizedManPage(alias, page, env):
-    actions = []
-    for (sourcedir, targetdir) in localized_man_dirs.items():
-        sourcefile = os.path.join(sourcedir, page)
-        if os.path.isfile(sourcefile):
-            env.Alias(alias, env.Install(targetdir, sourcefile))
+def InstallManpages(env, component):
+    env.InstallData("mandir", component, os.path.join("doc", "man", component + ".6"), "man6")
+    for lingua in linguas:
+        manpage = os.path.join("doc", "man", lingua, component + ".6")
+        if os.path.exists(manpage):
+            env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
 
 # Now the actual installation productions
 
@@ -461,17 +456,14 @@ install_manual = env.InstallFiltered(Dir(env.subst(docdir)),
 env.AlwaysBuild(install_data, install_manual)
 
 # The game and associated resources
-env.Alias("install-wesnoth", [
-    env.InstallWithSuffix(bindir, wesnoth),
-    env.Install(os.path.join(mandir, "man6"), "doc/man/wesnoth.6"),
-                install_data, install_manual])
+env.Alias("install-wesnoth", [env.InstallWithSuffix(bindir, wesnoth), install_data, install_manual])
+InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
          env.InstallData("icondir", "wesnoth", "icons/wesnoth-icon-Mac.png")
      else:
          env.InstallData("icondir", "wesnoth", "icons/wesnoth-icon.png")
      env.InstallData("desktopdir", "wesnoth", "icons/wesnoth.desktop")
-InstallLocalizedManPage("install-wesnoth", "wesnoth.6", env)
 
 # Python tools
 env.Alias("install-pytools", [
@@ -483,16 +475,8 @@ env.Alias("install-pytools", [
 
 # Wesnoth MP server install
 install_wesnothd = env.InstallWithSuffix(bindir, wesnothd)
-env.Alias("install-wesnothd", [
-                           install_wesnothd,
-                           env.Install(os.path.join(mandir, "man6"), "doc/man/wesnothd.6")
-                           ])
-for lang in filter(CopyFilter, os.listdir("doc/man")):
-    sourcefile = os.path.join("doc/man", lang, "wesnothd.6")
-    if os.path.isfile(sourcefile):
-        targetdir = os.path.join(mandir, lang, "man6")
-        env.Alias('install-wesnothd',
-            env.Install(targetdir, sourcefile))
+env.Alias("install-wesnothd", install_wesnothd)
+InstallManpages(env, "wesnothd")
 if not access(fifodir, F_OK):
     env.AddPostAction(install_wesnothd, [
         Mkdir(fifodir),
