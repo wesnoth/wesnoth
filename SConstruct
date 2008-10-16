@@ -443,20 +443,15 @@ def InstallManpages(env, component):
     env.InstallData("mandir", component, os.path.join("doc", "man", component + ".6"), "man6")
     for lingua in linguas:
         manpage = os.path.join("doc", "man", lingua, component + ".6")
-        if os.path.exists(manpage):
-            env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
+        env.InstallData("mandir", component, manpage, os.path.join(lingua, "man6"))
 
 # Now the actual installation productions
 
-install_data = env.InstallFiltered(Dir(env.subst(datadir)),
-                               map(Dir, installable_subs))
-
-install_manual = env.InstallFiltered(Dir(env.subst(docdir)),
-                                     Dir("doc/manual"))
-env.AlwaysBuild(install_data, install_manual)
+env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
+env.InstallData("docdir",  "wesnoth", Dir("doc/manual"))
 
 # The game and associated resources
-env.Alias("install-wesnoth", [env.InstallWithSuffix(bindir, wesnoth), install_data, install_manual])
+env.Alias("install-wesnoth", env.InstallWithSuffix(bindir, wesnoth))
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
@@ -466,12 +461,8 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("desktopdir", "wesnoth", "icons/wesnoth.desktop")
 
 # Python tools
-env.Alias("install-pytools", [
-    env.Install(bindir,
-                map(lambda tool: 'data/tools/' + tool, pythontools)),
-    env.Install(python_site_packages_dir,
-                map(lambda module: 'data/tools/wesnoth/' + module, pythonmodules)),
-    ])
+env.InstallData("bindir", "pytools", map(lambda tool: os.path.join("data", "tools", tool), pythontools))
+env.InstallData("python_site_packages_dir", "pytools", map(lambda module: os.path.join("data", "tools", "wesnoth", module), pythonmodules))
 
 # Wesnoth MP server install
 install_wesnothd = env.InstallWithSuffix(bindir, wesnothd)

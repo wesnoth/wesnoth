@@ -70,8 +70,19 @@ HardLink = ActionFactory(hard_link,
                          lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
 def InstallData(env, datadir, component, source, subdir = ""):
-    installdir = os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)
-    env.Alias("install-" + component, env.Install(installdir, source))
+    installdir = Dir(env.subst(os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)))
+    sources = map(str, Flatten(env.subst(source)))
+    dirs = []
+    for source in sources:
+        if os.path.exists(source):
+            if os.path.isfile(source):
+                env.Alias("install-" + component, env.Install(installdir, source))
+            else:
+                dirs.append(Dir(source))
+    if dirs:
+        install = env.InstallFiltered(installdir, dirs)
+        AlwaysBuild(install)
+        env.Alias("install-" + component, install)
 
 def generate(env):
     #env.AddMethod(InstallWithSuffix)
