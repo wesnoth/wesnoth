@@ -63,7 +63,7 @@ The Save button pops up a file selector asking you to supply a filename to which
 
 The Properties button pops up a list of track properties - key/value pairs associated with the track.  All tracks have the property "map" with their associated map name as the value.
 
-The Tracks button pops up a list of checkboxes, one for each track.  You can shange the state of the checkboxes to control which tracks are visible.
+The Tracks button pops up a list of checkboxes, one for each track.  You can shange the state of the checkboxes to control which tracks are visible. The radiobuttons can be used to select a track for editing.
 
 The Help button displays this message.
 
@@ -750,23 +750,45 @@ class TrackEditor:
         self.visibility.vbox.pack_start(label)
         self.visibility_toggles = {}
         label.show()
+        label = gtk.Label("(Radiobuttons select a track for editing.)")
+        self.visibility.vbox.pack_start(label)
+        self.visibility_toggles = {}
+        label.show()
+        basebutton = None
         for (i, track_id) in enumerate(self.journey.track_list):
-            button = gtk.CheckButton(track_id)
-            button.set_active(track_id in self.visible_set)
-            button.connect("toggled", self.track_visibility_callback, track_id)
-            button.show()
-            self.visibility.vbox.add(button)
-            self.visibility_toggles[track_id] = lambda x: button.set_active(x)
+            h = gtk.HBox()
+            self.visibility.vbox.add(h)
+            h.show()
+            radiobutton = gtk.RadioButton(basebutton)
+            if basebutton == None:
+                basebutton = radiobutton
+            radiobutton.set_active(track_id == self.journey.selected_id)
+            radiobutton.connect("toggled", self.track_activity_callback, track_id)
+            radiobutton.show()
+            h.add(radiobutton)
+            checkbox = gtk.CheckButton(track_id)
+            checkbox.set_active(track_id in self.visible_set)
+            checkbox.connect("toggled", self.track_visibility_callback,track_id)
+            h.add(checkbox)
+            checkbox.show()
+            self.visibility_toggles[track_id] = checkbox
         self.visibility.show()
         self.visibility.connect("response", self.track_visibility_revert)
-        #self.visibility.connect("destroy", self.track_visibility_revert)
+    def track_activity_callback(self, w, track_id):
+        if w.get_active():
+            self.journey.set_selected_track(track_id)
+            self.visibility_toggles[track_id].set_active(True)
+            if track_id not in self.visible_set:
+                self.track_visibility_callback(w, track_id)
+            else:
+                self.redraw(self.drawing_area, delay=0.05)
     def track_visibility_callback(self, w, track_id):
         if len(self.visible_set) <= 1 and track_id in self.visible_set:
             w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
                                   flags=gtk.DIALOG_DESTROY_WITH_PARENT,
                                   buttons=gtk.BUTTONS_OK)
             w.set_markup("At least one track must remain visible.")
-            self.visibility_toggles[track_id](True)
+            self.visibility_toggles[track_id].set_active(True)
             w.run()
             w.destroy()
             return
