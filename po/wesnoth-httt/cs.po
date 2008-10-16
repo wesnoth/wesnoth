@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-12 14:35+0200\n"
-"PO-Revision-Date: 2008-09-23 13:40+0100\n"
+"PO-Revision-Date: 2008-10-12 17:36+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -216,7 +216,7 @@ msgstr "Vyprší počet kol"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:35
 msgid "Early finish bonus."
-msgstr ""
+msgstr "Bonus za rychlé vítězství."
 
 #. [side]: type=Commander
 #. [side]: type=Fighter
@@ -576,7 +576,10 @@ msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat the enemy leader\n"
 "`(special bonus)"
-msgstr "Poraz všechny nepřátelské vůdce"
+msgstr ""
+"<255,255,255>Alternativní cíl:\n"
+"@Poraz všechny nepřátelské vůdce\n"
+"`(zvláštní bonus)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:39
@@ -1069,6 +1072,9 @@ msgid ""
 "@Defeat all enemy leaders\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternativní cíl:\n"
+"@Poraz všechny nepřátelské vůdce\n"
+"`(bonus za rychlé dokončení)"
 
 #. [side]: type=Orcish Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:58
@@ -1532,6 +1538,9 @@ msgid ""
 "@Defeat Muff Malal\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternativní cíl:\n"
+"@Poraz Muff Malala\n"
+"`(bonus za rychlé dokončení)"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:60
@@ -1634,12 +1643,14 @@ msgstr "Ostrov zatracení"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat all enemy leaders\n"
 "`(special bonus)"
-msgstr "Poraz všechny nepřátelské vůdce"
+msgstr ""
+"<255,255,255>Alternativní cíl:\n"
+"@Poraz všechny nepřátelské vůdce\n"
+"`(zvláštní bonus)"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:41
@@ -2672,13 +2683,18 @@ msgstr "Údolí smrti - princeznina pomsta"
 msgid "Survive for two days"
 msgstr "Přežij dva dny"
 
+# kolik jich je?
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:24
+#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Eradicate the liches\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternativní cíl:\n"
+"@Znič liche\n"
+"`(bonus za rychlé dokončení)"
 
 #. [side]: type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
@@ -6696,8 +6712,8 @@ msgid ""
 "<255,255,255>Optional objective:\n"
 "@Help the Wose fend off the undead attack"
 msgstr ""
-"<0,0,255>Pomoz stromovému lidu odrazit útok nemrtvých\n"
-"<0,0,255>( Bonusový úkol )"
+"<255,255,255>Bonusový cíl:\n"
+"@Pomoz stromovému lidu odrazit útok nemrtvých"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -7341,17 +7357,17 @@ msgstr "Zkouška klanů"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:20
-#, fuzzy
 msgid "Defeat 25 enemy units"
-msgstr "Poraz 25 jednotek"
+msgstr "Poraz 25 nepřátelských jednotek"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all enemy leaders"
-msgstr "Poraz všechny nepřátelské vůdce"
+msgstr ""
+"<255,255,255>Bonusový cíl:\n"
+"@Poraz všechny nepřátelské vůdce"
 
 #. [side]: type=Grand Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:71
