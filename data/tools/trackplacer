@@ -189,7 +189,8 @@ class JourneyTracks:
             raise IOException("Reading with tracks nonempty.", fp.name)
         if fp.name.endswith(".png") or fp.name.endswith(".jpg"):
             self.mapfile = self.properties['map'] = fp.name
-            self.add_track("JOURNEY")
+            self.selected_id = "JOURNEY"
+            self.add_track(self.selected_id)
             self.modified = 0
             return
         if not fp.name.endswith(".cfg"):
