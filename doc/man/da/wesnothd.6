@@ -33,9 +33,9 @@ wesnothhd \- Kampen om \fBWesnoth\fP flerspiller netværksdæmon
 .
 .SH BESKRIVELSE
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Håndterer flerspillers\-sessioner af Kampen om Wesnoth. Se
+http://www.wesnoth.org/wiki/ServerAdministration for hvilke kommandoer
+serveren accepterer via wesnoth\-klienten (/query ...) eller fifoen.
 .
 .SH TILVALG
 .
@@ -92,8 +92,9 @@ nøgle="\fIværdi\fP,\fIværdi\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+Fuld eller relativ sti til en (gzip\-pakket) fil som serveren kan læse og
+skrive til.  Karantæner vil blive gemt i denne fil, og indlæst når serveren
+startes igen.
 .TP 
 \fBconnections_allowed\fP
 Antallet af tilladte forbindelser fra samme IP. \fB0\fP betyder
@@ -106,9 +107,9 @@ hvis intet er anført) er:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+Stien til fifoen som du kan sende serverkommandoer til (svarende til /query
+\&... fra wesnoth).  Hvis den ikke er angivet er standard den angivne
+compile\-time sti (standard: /var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 Antallet af tilladte beskeder i \fBmessages_time_period\fP. (Standard: \fB4\fP)
@@ -125,8 +126,8 @@ Adgangskoden der giver administratorrettigheder. Starter normalt med `admin
 \&'.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+Kommandoen som serveren anvender til at starte en ny serverproces via
+`restart'\-kommandoen. (kan alene sendes via fifoen.)
 .TP 
 \fBversions_accepted\fP
 En kommasepareret liste af versionsstrenge som accepteres af serveren. `*'
@@ -152,19 +153,19 @@ En kommasepareret liste af versioner som omdirigeres. Fungerer på samme måde
 som \fBversions_accepted\fP i forhold til wildcard patterns.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Et mærke der kan definere praktiske nøgleord for midlertidige
+længder af karantænetider.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+Navnet der refererer til karantænetiden.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+Definiton af tidslængden.  Formatet er: %d[%s[%d%s[...]]] hvor %s er s
+(sekunder), m (minutter), h (timer), D (dage), M (måneder) eller Y (år) og
+%d er et tal.  Hvis ingen tidsændrer er angivet anvendes (m)
+minutter. Eksempel: tidslængde="1D12h30m" medfører en karantænetid på 1 dag,
+12 timer og 30 minutter.
 .RE
 .P
 \fB[proxy]\fP Et mærke som fortæller serveren den skal fungere som en proxy og
