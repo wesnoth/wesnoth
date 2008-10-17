@@ -254,11 +254,15 @@ class JourneyTracks:
         if name not in self.track_order:
             self.tracks[name] = []
             self.track_order.append(name)
+            if self.selected_id is None:
+                self.selected_id = name
             self.modified += 1
     def remove_track(self, name):
         if name in self.track_order:
             del self.tracks[name]
             self.track_order.remove(name)
+            if not self.track_order:
+                self.add_track("JOURNEY")
             self.modified += 1
     def rename_track(self, oldname, newname):
         if oldname in self.tracklist and newname not in self.tracklist:
@@ -374,6 +378,10 @@ class TrackController:
         self.deleter.show()
         editor.controller[track_id] = self
     def track_delete_handler(self, w, track_id):
+        if track_id in self.editor.visible_set:
+            self.editor.visible_set.remove(track_id)
+        # FIXME: This redaw fails when we delete the last track.
+        self.editor.redraw(self.editor.drawing_area, delay=0.25)
         self.editor.journey.remove_track(track_id)
         self.hbox.hide()
         del self.editor.controller[track_id]
@@ -710,6 +718,11 @@ class TracksEditor:
         return False
 
     def button_press_event(self, widget, event):
+        if self.journey.selected_track() is None:
+            w = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+            w.set_markup("No track to edit!")
+            w.run()
+            return
         if event.button == 1 and self.pixmap != None:
             a = self.action
             x = int(event.x)
