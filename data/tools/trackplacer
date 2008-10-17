@@ -644,6 +644,8 @@ class TracksEditor:
         # Erase all nearby features that might have been damaged.
         save_select = self.journey.selected_id
         for (id, track) in self.journey.tracks.items():
+            if id not in self.visible_set:
+                continue
             self.journey.set_selected_track(id)
             neighbors = self.neighbors((action, x, y))
             for (na, nx, ny) in neighbors:
@@ -933,7 +935,9 @@ class TracksEditor:
             self.visible_set.append(track_id)
         self.log("Visibility set is now %s" % self.visible_set)
         if self.journey.selected_id not in self.visible_set:
+            self.controller[track_id].radiobutton.set_active(False)
             self.journey.set_selected_track(self.visible_set[-1])
+            self.controller[self.visible_set[-1]].radiobutton.set_active(True)
         self.redraw(self.drawing_area, delay=0.05)
     def track_add_callback(self, w, basebutton):
         "Add a new track, and the controller for it, and select it."
