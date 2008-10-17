@@ -1606,6 +1606,7 @@ editor2::EXIT_STATUS game_controller::start_editor(const std::string& filename)
     cache_.add_define("EDITOR2");
 	load_game_cfg();
     const binary_paths_manager bin_paths_manager(game_config_);
+	::init_textdomains(game_config_);
 	return editor2::start(game_config_, video_, filename);
 }
 #endif
