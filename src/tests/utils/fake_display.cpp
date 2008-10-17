@@ -20,6 +20,7 @@
 #include "config.hpp"
 #include "unit_types.hpp"
 #include "gamestatus.hpp"
+#include "map.hpp"
 
 namespace test_utils {
 
