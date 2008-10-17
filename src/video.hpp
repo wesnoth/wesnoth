@@ -18,6 +18,8 @@
 #include "SDL.h"
 #include "sdl_utils.hpp"
 
+#include <boost/utility.hpp>
+
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN
 #define VIDEO_MEMORY SDL_HWSURFACE
@@ -34,7 +36,7 @@ void update_rect(size_t x, size_t y, size_t w, size_t h);
 void update_rect(const SDL_Rect& rect);
 void update_whole_screen();
 
-class CVideo {
+class CVideo : private boost::noncopyable {
      public:
 		 enum FAKE_TYPES {
 			 NO_FAKE,
