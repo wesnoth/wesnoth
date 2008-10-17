@@ -564,7 +564,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return menu_handler_.current_unit(mouse_handler_) != units_.end();
 
 	case hotkey::HOTKEY_RENAME_UNIT:
-		return !events::commands_disabled && !browse_ &&
+		return !events::commands_disabled &&
 			menu_handler_.current_unit(mouse_handler_) != units_.end() &&
 			!(menu_handler_.current_unit(mouse_handler_)->second.unrenamable()) &&
 			menu_handler_.current_unit(mouse_handler_)->second.side() == gui_->viewing_team()+1 &&
