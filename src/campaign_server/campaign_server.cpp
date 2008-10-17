@@ -676,6 +676,7 @@ namespace {
 
 int main(int argc, char**argv)
 {
+	game_config::path = get_cwd();
 	lg::timestamps(true);
 	try {
 		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
