@@ -1,8 +1,8 @@
 #
-# Catalan translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
-# This file is distributed under the same license as the Battle for
-# Wesnoth package.
+# Catalan translations for Battle for Wesnoth.
+# Copyright © 2008 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth
+# package.
 #
 # Dan Rosàs Garcia, 2004.
 # Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006, 2007, 2008.
@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:44+0200\n"
-"PO-Revision-Date: 2008-03-02 13:57+0100\n"
+"PO-Revision-Date: 2008-10-17 22:30+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,9 +40,8 @@ msgstr "Mapa animat"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:69
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "Campanya"
+msgstr "Mostra l'animació de la pantalla de presentació"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:76
@@ -57,7 +56,7 @@ msgstr "Mostra els combats"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:98
 msgid "Only Run Safe Python AIs"
-msgstr ""
+msgstr "Utilitza només les IA en Python segures"
 
 #. [time]
 #. [illuminated_time]
@@ -68,15 +67,13 @@ msgstr "Sota terra"
 
 #. [set_menu_item]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:30
-#, fuzzy
 msgid "define ai location"
-msgstr "Traducció a l'indonesi"
+msgstr ""
 
 #. [text_input]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:36
-#, fuzzy
 msgid "Location name?"
-msgstr "Partida local"
+msgstr "Nom de la ubicació?"
 
 #. [text_input]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:46
@@ -95,9 +92,8 @@ msgstr ""
 
 #. [set_menu_item]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:88
-#, fuzzy
 msgid "Give new orders"
-msgstr "Cancel·la"
+msgstr ""
 
 #. [value]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:132
@@ -136,9 +132,8 @@ msgstr ""
 
 #. [text_input]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:260
-#, fuzzy
 msgid "value: "
-msgstr "Nom: "
+msgstr "valor: "
 
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:328
@@ -154,11 +149,8 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:384
-#, fuzzy
 msgid "Defeat an enemy Leader!"
-msgstr ""
-"Victòria:\n"
-"@Derrota els líders enemics"
+msgstr "Derrota un líder enemic!"
 
 #. [value]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:393
@@ -288,9 +280,8 @@ msgstr ""
 #. [option]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:825
 msgid "@Execute my orders!"
-msgstr ""
+msgstr "@Executa les ordres!"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:302
 #: src/actions.cpp:1055 src/actions.cpp:1326
@@ -335,10 +326,10 @@ msgstr ""
 "l'habilitat defensiva de la unitat atacada."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:89
+#: data/campaigns/Under_the_Burning_Suns/scenarios/scen2_alt/challenge.cfg:89
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
-msgstr "primer atac"
+msgstr "iniciatiu"
 
 #. [firststrike]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
@@ -347,7 +338,7 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
-"Primer atac:\n"
+"Iniciatiu:\n"
 "Aquesta unitat sempre ataca primer, encara que estigui defensant."
 
 #. [about]
@@ -383,7 +374,7 @@ msgstr "Disseny de campanyes"
 #. [about]
 #: data/core/about.cfg:586
 msgid "Multiplayer Maps and Balancing"
-msgstr "Mapes i balanceig multijugador"
+msgstr "Mapes i balanceig del mode multijugador"
 
 #. [about]
 #: data/core/about.cfg:627
@@ -398,13 +389,12 @@ msgstr "Altres contribucions"
 #. [about]
 #: data/core/about.cfg:842
 msgid "Internationalization Managers"
-msgstr "Coordinació traduccions"
+msgstr "Coordinació de les traduccions"
 
 #. [about]
 #: data/core/about.cfg:867
-#, fuzzy
 msgid "English strings edition"
-msgstr "Traducció a l'anglès (Gran Bretanya)"
+msgstr "Edició del text en anglès"
 
 #. [about]
 #: data/core/about.cfg:874
@@ -413,9 +403,8 @@ msgstr "Traducció a l'afrikaans"
 
 #. [about]
 #: data/core/about.cfg:890
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Traducció al serbi"
+msgstr "Traducció l'àrab"
 
 #. [about]
 #: data/core/about.cfg:897
@@ -439,15 +428,13 @@ msgstr "Traducció al xinès"
 
 #. [about]
 #: data/core/about.cfg:1001
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Traducció al xinès"
+msgstr "Traducció al xinès (Taiwan)"
 
 #. [about]
 #: data/core/about.cfg:1008
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Traducció al català"
+msgstr "Traducció al croat"
 
 #. [about]
 #: data/core/about.cfg:1015
@@ -496,9 +483,8 @@ msgstr "Traducció al francès"
 
 #. [about]
 #: data/core/about.cfg:1368
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Traducció al tagal"
+msgstr "Traducció al friülès"
 
 #. [about]
 #: data/core/about.cfg:1375
@@ -552,9 +538,8 @@ msgstr "Traducció al llatí"
 
 #. [about]
 #: data/core/about.cfg:1651
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Traducció al llatí"
+msgstr "Traducció al letó"
 
 #. [about]
 #: data/core/about.cfg:1658
@@ -563,9 +548,8 @@ msgstr "Traducció al lituà"
 
 #. [about]
 #: data/core/about.cfg:1666
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Traducció a l'indonesi"
+msgstr "Traducció al macedònic"
 
 #. [about]
 #: data/core/about.cfg:1673
@@ -589,9 +573,8 @@ msgstr "Traducció al portuguès (Brasil)"
 
 #. [about]
 #: data/core/about.cfg:1786
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Traducció a l'estonià"
+msgstr "Traducció al romanès"
 
 #. [about]
 #: data/core/about.cfg:1794
@@ -631,13 +614,12 @@ msgstr "Traducció al turc"
 #. [about]
 #: data/core/about.cfg:1980
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Traducció al valencià"
+msgstr "Traducció al valencià (català meridional)"
 
 #. [about]
 #: data/core/about.cfg:1993
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Traducció al xinès"
+msgstr "Traducció a l'idioma de la RACV"
 
 #. [about]
 #: data/core/about.cfg:2000
@@ -661,7 +643,6 @@ msgstr "Introducció"
 msgid "Gameplay"
 msgstr "Joc"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [section]
 #. [topic]
 #: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:997
@@ -813,7 +794,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -823,8 +803,8 @@ msgid ""
 msgstr ""
 "Mentre jugueu, recordeu que si poseu el punter del ratolí sobre alguns dels "
 "elements de la pantalla, com la barra d'estat, apareixerà una descripció "
-"explicativa. Això pot ser especialment útil quan trobeu noves "
-"<ref>dst=abilities text='habilitats'</ref> per primera vegada."
+"explicativa. Això pot ser especialment útil quan trobeu noves <ref>dst='.."
+"abilities_section' text='habilitats'</ref> per primera vegada."
 
 #. [topic]
 #: data/core/help.cfg:145
@@ -847,7 +827,7 @@ msgstr ""
 "contra l'ordinador o amb amics agafant el control d'un bàndol diferent a "
 "cada torn (modalitat tots a una). Si el vostre ordinador està en xarxa, "
 "podeu jugar amb la resta d'ordinadors que en formin part. I si disposeu de "
-"connexió a internet, podreu jugar amb gent de tot el món."
+"connexió a Internet, podreu jugar amb gent de tot el món."
 
 #. [topic]
 #: data/core/help.cfg:148
@@ -900,7 +880,6 @@ msgstr "Recluta i reincorpora"
 
 #. [topic]
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -914,15 +893,17 @@ msgid ""
 "recruit it."
 msgstr ""
 "Cada bàndol comença amb un líder a la seva torre. Al començament de cada "
-"batalla, i de vegades en mig d'aquesta, necessitareu reclutar unitats pel "
-"vostre exèrcit. Per tal de fer-ho, heu de tenir al vostre líder (per exemple "
-"Konrad a Hereu al Tron) a la torre del castell. Aleshores, podreu reclutar "
-"ja sigui triant <italic>text='Recluta'</italic> des del menú o fent clic amb "
-"el botó dret sobre un hexàgon i seleccionant <italic>text='Recluta'</"
-"italic>. Això mostrarà el diàleg de reclutament, que llistarà les unitats "
-"disponibles i el seu cost en monedes d'or. Si feu clic sobre una unitat "
-"veureu les seves estadístiques a l'esquerra. Fent clic sobre el botó "
-"<italic>text='D\\'acord'</italic>, reclutareu la unitat seleccionada."
+"batalla, i de vegades enmig d'aquesta, necessitareu reclutar <ref>dst='.."
+"units' text='unitats'</ref> pel vostre exèrcit. Per tal de fer-ho, heu de "
+"tenir al vostre líder (per exemple Konrad a la campanya Hereu al Tron) a la "
+"torre d'un <ref>dst='terrain_castle' text='castell'</ref>. Aleshores, podreu "
+"reclutar ja sigui triant <italic>text='Recluta'</italic> des del menú o fent "
+"clic amb el botó dret sobre un hexàgon i seleccionant "
+"<italic>text='Recluta'</italic>. Això mostrarà el diàleg de reclutament que "
+"llistarà les unitats disponibles i el seu cost en monedes d'or. Si feu clic "
+"sobre una unitat veureu les seves estadístiques a l'esquerra. Fent clic "
+"sobre el botó <italic>text='Recluta'</italic>, reclutareu la unitat "
+"seleccionada."
 
 #. [topic]
 #: data/core/help.cfg:167
@@ -945,7 +926,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -954,8 +934,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unitats reclutades tenen dos <ref>dst=traits text='trets'</ref> "
-"aleatoris que modifiquen les seves estadístiques."
+"Les unitats reclutades tenen dos <ref>dst='..traits_section' text='trets'</"
+"ref> aleatoris que modifiquen les seves estadístiques."
 
 #. [topic]
 #: data/core/help.cfg:171
@@ -975,7 +955,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -986,8 +965,8 @@ msgstr ""
 "\n"
 "\n"
 "Recordeu que les unitats no només costen diners a l'hora de reclutar i "
-"reincorporar, sinó que també requereixen diners de manteniment. Veure "
-"<ref>dst=income_and_upkeep text='guanys i manteniment'</ref> per a més "
+"reincorporar, sinó que també requereixen diners de manteniment. Vegeu "
+"<ref>dst='income_and_upkeep' text='guanys i manteniment'</ref> per a més "
 "informació."
 
 #. [topic]
@@ -1060,7 +1039,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -1070,7 +1048,8 @@ msgstr ""
 "Els punts de vida també s'indiquen mitjançant la barra d'energia que hi ha "
 "al costat de cada unitat, que pot ser verda, groga o vermella. Una unitat "
 "amb al menys un punt d'experiència tindrà una barra de color blau que "
-"s'anirà emblanquint a mesura que s'apropi a l'avanç de nivell."
+"s'anirà emblanquint a mesura que s'apropi a "
+"l'<ref>dst='experience_and_advancement' text='avançament de nivell'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:206
@@ -1136,7 +1115,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1149,11 +1127,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Un altre factor a tenir en compte són les  zones de control. Cada unitat "
+"Un altre factor a tenir en compte són les zones de control. Cada unitat "
 "genera una zona de control sobre els hexàgons que té al voltant. Si una "
 "unitat enemiga entra en aquesta zona, acaba el seu moviment. Aprendre com "
 "fer servir les zones de control és un avantatge important a Wesnoth ja que "
-"només les unitats amb l'habilitat d'<ref>dst=ability_skirmisher "
+"només les unitats amb l'habilitat d'<ref>dst='ability_skirmisher' "
 "text='esquivar'</ref> poden ignorar aquestes zones."
 
 #. [topic]
@@ -1201,7 +1179,7 @@ msgid ""
 msgstr ""
 "En alguns escenaris hi haurà parts del mapa amagades. Hi ha dos mecanismes "
 "que es poden utilitzar per separat o conjuntament. L'ocultació amaga tan el "
-"terreny com qualsevol unitat a la localització. No obtant això, un cop "
+"terreny com qualsevol unitat a la localització. No obstant això, un cop "
 "netejada, sempre podreu veure aquesta localització. La boira de batalla "
 "només amaga les unitats i la propietats dels llogarets (que no siguin "
 "vostres o dels aliats). La boira de batalla es neteja temporalment quan "
@@ -1232,7 +1210,7 @@ msgstr ""
 "en hexàgons adjacents. Feu clic sobre la vostra unitat, i després feu clic a "
 "la unitat que voleu atacar: us moureu fins a ella, i quan estigueu al costat "
 "començarà l'atac. L'atacant i el defensor alternen els cops fins que "
-"cadascún d'ells els esgota. L'atacant serà sempre qui triï una de les seves "
+"cadascun d'ells els esgota. L'atacant serà sempre qui triï una de les seves "
 "armes i l'adversari s'haurà de defensar amb una arma del mateix tipus. Hi ha "
 "dos tipus d'atacs: melé, que normalment implica armes com espases, destrals "
 "o ullals; i a distància, amb arcs, llances o boles de foc."
@@ -1309,7 +1287,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1320,9 +1297,9 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Hi ha dos excepcions a aquesta regla: <ref>dst=weaponspecial_magical "
+"Hi ha dos excepcions a aquesta regla: <ref>dst='weaponspecial_magical' "
 "text='els atacs màgics'</ref>, i l'habilitat de "
-"<ref>dst=weaponspecial_marksman text='tirador'</ref>. Els atacs màgics "
+"<ref>dst='weaponspecial_marksman' text='tirador'</ref>. Els atacs màgics "
 "sempre tenen un 70% de possibilitats de colpejar, sigui quin sigui el "
 "terreny, mentre que amb l'habilitat de tirador les possibilitats són del 60% "
 "sempre que s'usi ofensivament."
@@ -1340,7 +1317,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1356,15 +1332,14 @@ msgstr ""
 "\n"
 "Cada vegada que es colpeja, es causa un mal base depenent de l'atac. Per "
 "exemple, un lluitador elf amb un atac d'espasa de 5-4 causa un mal base de 5 "
-"punts. Això es veu modificat per dos factors: "
-"<ref>dst=damage_types_and_resistance text='resistència'</ref> i "
-"<ref>dst=time_of_day text='hora del dia'</ref>. Per veure com es veu afectat "
-"el mal base, seleccioneu <italic>text='Càlcul de mal'</italic> al diàleg "
-"d'atac."
+"punts. Això es veu modificat per dos factors: la "
+"<ref>dst='damage_types_and_resistance' text='resistència'</ref> i "
+"l'<ref>dst='time_of_day' text='hora del dia'</ref>. Per veure com es veu "
+"afectat el mal base, seleccioneu <italic>text='Càlcul de mal'</italic> al "
+"diàleg d'atac."
 
 #. [topic]
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1375,10 +1350,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Algunes unitats tenen <ref>dst=abilities text='habilitats'</ref> que poden "
-"afectar el mal infligit en combat. La més comuna és la "
-"<ref>dst=ability_charge text='càrrega'</ref>, la qual dobla el mal causat "
-"per l'atacant i pel defensor quan la unitat amb aquesta habilitat ataca."
+"Algunes unitats tenen <ref>dst='..abilities_section' text='habilitats'</ref> "
+"que poden afectar el mal infligit en combat. La més comuna és la "
+"<ref>dst='weaponspecial_charge' text='càrrega'</ref>, la qual dobla el mal "
+"causat per l'atacant i pel defensor quan la unitat amb aquesta habilitat "
+"ataca."
 
 #. [topic]
 #: data/core/help.cfg:253
@@ -1476,7 +1452,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Es pot observer l'hora del dia actual a la barra d'estat de la dreta, sota "
+"Es pot observar l'hora del dia actual a la barra d'estat de la dreta, sota "
 "el minimapa. Pel cicle de dia/nit habitual, matí i migdia són com dia, "
 "mentre que matinada equival a nit:\n"
 
@@ -1564,7 +1540,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1582,21 +1557,17 @@ msgstr ""
 "\n"
 "\n"
 "Tot i que la majoria d'unitats tenen tres nivells, no totes hi arriben. "
-"Algunes unitats (com els <ref>dst=unit_Mage text='mags'</ref>) en poden "
+"Algunes unitats (com els <ref>dst='unit_Mage' text='mags'</ref>) en poden "
 "tenir quatre. Quan una unitat ha assolit el seu nivell màxim, pot tenir "
 "disponible un Avançament Després del Nivell Màxim (també conegut com AMLA, "
 "de l'anglès <italic>text='After Maximum Level Advancement'</italic>). L'AMLA "
 "modificarà la unitat cada vegada que assoleixi l'experiència requerida, però "
 "continuarà tenint el mateix nivell. L'efecte típic d'un AMLA és l'augment de "
 "3 punts al màxim de vida de la unitat. El primer AMLA s'obtindrà normalment "
-"als 100 punts d'experiència (80 per les unitats intel·ligents). De totes "
+"als 150 punts d'experiència (120 per a les unitats intel·ligents). De totes "
 "maneres, l'obtenció dels AMLA esdevé progressivament més difícil per cada "
 "AMLA que rebi la unitat, i per tant, sovint és més útil intentar fer avançar "
-"les unitats de menys nivell.\n"
-"\n"
-"Noteu que només un reduït nombre d'unitats, com per exemple els necròfags, "
-"recuperarà realment punts de vida gràcies als efectes d'un AMLA. La major "
-"part d'unitats simplement guanyen la bonificació als punts de vida màxims."
+"les unitats de nivell inferior."
 
 #. [topic]
 #: data/core/help.cfg:299
@@ -1605,7 +1576,6 @@ msgstr "Curació"
 
 #. [topic]
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1614,15 +1584,14 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "En combat, les unitats inevitablement prendran mal. Quan una unitat "
-"<ref>dst=experience_and_advancement text='avança de nivell'</ref>, serà "
+"<ref>dst='experience_and_advancement' text='avança de nivell'</ref>, serà "
 "curada completament. Això pot passar després d'acabar de lluitar contra un "
-"enemic, sigui o no el teu torn. Wesnoth ofereix moltes altres maneres de "
+"enemic, sigui o no el vostre torn. Wesnoth ofereix moltes altres maneres de "
 "curar les unitats, i totes tenen lloc al començament del vostre torn, abans "
 "de passar a l'acció."
 
 #. [topic]
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1631,8 +1600,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Repòs: una unitat que no es mou de la seva posició, i ni ataca ni és "
-"atacada, recuperarà 2 punts de vida al següent torn."
+"Repòs: una unitat que no es mou de la seva posició, ni ataca, ni és atacada, "
+"recuperarà 2 punts de vida al següent torn."
 
 #. [topic]
 #: data/core/help.cfg:303
@@ -1646,20 +1615,18 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text='Regeneració'</ref>: certes unitats amb "
+"<ref>dst='ability_regenerates' text='Regeneració'</ref>: certes unitats amb "
 "aquesta habilitat (com els trols) recuperen automàticament 8 punts de vida "
 "cada torn."
 
 #. [topic]
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1668,14 +1635,14 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Unitats guaridores: les unitats amb l'habilitat <ref>dst=ability_heals "
-"text=guareix</ref>, poden curar a totes les unitats amigues adjacents, "
-"normalment entre 4 i 8 punts de vida per torn. També poden prevenir que el "
-"verí faci mal."
+"Unitats curadores: les unitats amb l'habilitat de <ref>dst='ability_heals "
+"+4' text='curació'</ref>, poden curar a totes les unitats amigues adjacents, "
+"normalment entre <ref>dst='ability_heals +4' text='4'</ref> i "
+"<ref>dst='ability_heals +8' text='8'</ref> punts de vida per torn. També "
+"poden prevenir que el verí faci mal."
 
 #. [topic]
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1683,9 +1650,9 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Unitats curadores: les unitats amb l'habilitat de <ref>dst=ability_cures "
-"text=cura</ref> poden curar dels efectes del verí a totes les unitats "
-"amigues adjacents (amb prioritat sobre guarir, si és que també posseeixen "
+"Unitats guaridores: les unitats amb l'habilitat de <ref>dst='ability_cures' "
+"text='guarició'</ref> poden curar dels efectes del verí a totes les unitats "
+"amigues adjacents (amb prioritat sobre curar, si és que també posseeixen "
 "aquesta habilitat)."
 
 #. [topic]
@@ -1700,8 +1667,8 @@ msgstr ""
 "\n"
 "\n"
 "El repòs es pot combinar amb altres mètodes per curar, però no passa el "
-"mateix amb els llogarets, la regeneració o les unitats guaridores i "
-"curadores: en aquests casos es triarà la millor opció. Per acabar, recordeu "
+"mateix amb els llogarets, la regeneració o les unitats curadors i "
+"guaridores: en aquests casos es triarà la millor opció. Per acabar, recordeu "
 "que les unitats recuperen tota la seva vida entre els escenaris d'una "
 "campanya."
 
@@ -1803,7 +1770,6 @@ msgstr "Conclusions"
 
 #. [topic]
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1813,9 +1779,10 @@ msgid ""
 msgstr ""
 "Això conclou els fonaments bàsics de Wesnoth. Per continuar aprenent més "
 "sobre el joc, us pot interessar llegir Estratègia bàsica, o familiaritzar-"
-"vos vosaltres mateixos amb els <ref>dst=traits text='trets'</ref> i les "
-"<ref>dst=abilities text='habilitats'</ref>, però ara ja sabeu tot el que "
-"necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
+"vos vosaltres mateixos amb els <ref>dst='..traits_section' text='trets'</"
+"ref> i les <ref>dst='..abilities_section' text='habilitats'</ref>, però ara "
+"ja sabeu tot el que necessiteu per jugar la campanya Hereu al tron. Divertiu-"
+"vos, i bona sort!"
 
 #. [topic]
 #: data/core/help.cfg:335
@@ -1842,7 +1809,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1854,13 +1820,12 @@ msgstr ""
 "\n"
 "\n"
 "Els trets disponibles per a tots als que no siguin no morts són "
-"<ref>dst=traits_intelligent text='intel·ligent'</ref>, <ref>dst=traits_quick "
-"text='ràpid'</ref>, <ref>dst=traits_resilient text='resistent'</ref>, i "
-"<ref>dst=traits_strong text='fort'</ref>."
+"<ref>dst='traits_intelligent' text='intel·ligència'</ref>, "
+"<ref>'dst=traits_quick' text='rapidesa'</ref>, <ref>dst='traits_resilient' "
+"text='robustesa'</ref>, i <ref>dst='traits_strong' text='fortalesa'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1871,15 +1836,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Altres trets que poden ser assignats són <ref>dst=traits_dextrous "
-"text=destre</ref>, <ref>dst=traits_loyal text=lleial</ref>, i "
-"<ref>dst=traits_undead text='no mort'</ref>.\n"
+"Altres trets que poden ser assignats són <ref>dst='traits_dextrous' "
+"text='destresa'</ref>, <ref>dst='traits_loyal' text='lleialtat'</ref>, i "
+"<ref>dst='traits_undead' text='no mort'</ref>.\n"
 "\n"
 
 #. [topic]
 #: data/core/help.cfg:362
 msgid "Intelligent"
-msgstr "Intel·ligent"
+msgstr "Intel·ligència"
 
 #. [topic]
 #: data/core/help.cfg:363
@@ -1911,7 +1876,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:370
 msgid "Quick"
-msgstr "Ràpid"
+msgstr "Rapidesa"
 
 #. [topic]
 #: data/core/help.cfg:371
@@ -1943,13 +1908,13 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:378
 msgid "Resilient"
-msgstr "Resistent"
+msgstr "Robustesa"
 
 #. [topic]
 #: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
-"Les unitats resistents tenen 4 punts de vida més del que és habitual, més un "
+"Les unitats robustes tenen 4 punts de vida més del que és habitual, més un "
 "altre punt per cada nivell."
 
 #. [topic]
@@ -1965,16 +1930,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unitats resistents poden ser molt útils en totes les etapes de la "
+"Les unitats robustes poden ser molt útils en totes les etapes de la "
 "campanya, i és un tret vàlid per a totes les unitats. Aquest tret ajuda molt "
 "a unitats que, o bé tenen pocs punts de vida, o bé tenen ja una bona "
-"defensa. Les unitats resistents són especialment vàlides per mantenir "
-"posicions davant l'oponent."
+"defensa. A més, són especialment vàlides per mantenir posicions davant "
+"l'adversari."
 
 #. [topic]
 #: data/core/help.cfg:386
 msgid "Strong"
-msgstr "Fort"
+msgstr "Fortalesa"
 
 #. [topic]
 #: data/core/help.cfg:387
@@ -2005,18 +1970,18 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:394
 msgid "Fearless"
-msgstr "Intrèpid"
+msgstr "Intrepidesa"
 
 #. [topic]
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
-"L'aversió a la llum o la foscor no té cap influència sobre aquestos valents."
+"L'aversió a la llum o la foscor no té cap influència sobre aquests valents."
 
 #. [topic]
 #: data/core/help.cfg:400
 msgid "Loyal"
-msgstr "Lleial"
+msgstr "Lleialtat"
 
 #. [topic]
 #: data/core/help.cfg:401
@@ -2044,7 +2009,7 @@ msgstr ""
 "\n"
 "\n"
 "Durant les campanyes, certes unitats poden optar per unir-se a vos per "
-"decisió propia. Aquestes unitats són marcades amb el tret 'lleial'. Encara "
+"decisió pròpia. Aquestes unitats són marcades amb el tret 'lleial'. Encara "
 "que pot ser necessari pagar per tal de reincorporar-les, no caldrà mai pagar "
 "el seu cost de manteniment. Aquest fet les converteix en unitats amb un "
 "valor incalculable en campanyes llargues, en els moments en que anem més "
@@ -2110,7 +2075,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:424
 msgid "Dextrous"
-msgstr "Destre"
+msgstr "Destresa"
 
 #. [topic]
 #: data/core/help.cfg:425
@@ -2140,7 +2105,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:432
 msgid "Healthy"
-msgstr "Sà"
+msgstr "Salut"
 
 #. [topic]
 #: data/core/help.cfg:433
@@ -2171,7 +2136,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:450
 msgid "Flat"
-msgstr ""
+msgstr "Plana"
 
 #. [topic]
 #: data/core/help.cfg:455
@@ -2200,7 +2165,6 @@ msgstr "Camí"
 
 #. [topic]
 #: data/core/help.cfg:465
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
@@ -2208,7 +2172,7 @@ msgid ""
 msgstr ""
 "Els camins són rutes marcades de terra, formades pels mateixos viatgers "
 "després de passar-hi repetidament. Pel que fa al joc, els camins són "
-"idèntics a les <ref>dst=terrain_grassland text=prades</ref>."
+"idèntics a les planes <ref>dst='terrain_flat' text='planes'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:472
@@ -2254,7 +2218,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:486
 msgid "Hills"
-msgstr "Colls"
+msgstr "Turons"
 
 #. [topic]
 #: data/core/help.cfg:491
@@ -2269,14 +2233,14 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"Els colls són un terreny abrupte i amb prou pujades i baixades com per "
+"Els turons són un terreny abrupte i amb prou pujades i baixades com per "
 "proporcionar una mica de cobertura. Per a la majoria de tropes són zones "
 "difícils de travessar. Només nans, trols i orcs estan suficientment "
 "familiaritzats com per passar-hi sense ser alentits. La cavalleria, en "
 "canvi, té tants problemes que qualsevol millora defensiva es veu negada per "
 "la seva ineptitud en aquest terreny.\n"
 "\n"
-" La majoria d'unitats tenen aproximadament un 50% de defensa als colls, "
+" La majoria d'unitats tenen aproximadament un 50% de defensa als turons, "
 "mentre que la cavalleria està limitada al 40%. Els nans gaudeixen d'un 60% "
 "de defensa."
 
@@ -2452,7 +2416,7 @@ msgid ""
 msgstr ""
 "La sorra és un terreny de travessia dificultosa a causa de la seva "
 "inestabilitat. A més, deixa a les unitats desprotegides davant d'un possible "
-"atac. Una exepció, però, són les races sauries que amb els seus amples peus "
+"atac. Una excepció, però, són les races sauries que amb els seus amples peus "
 "i la pell de serp, poden fins i tot arribar a habitar aquestes zones.\n"
 "\n"
 "La majoria d'unitats tenen entre un 20% i un 40% de defensa a la sorra."
@@ -2464,7 +2428,6 @@ msgstr "Desert"
 
 #. [topic]
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -2472,7 +2435,7 @@ msgid ""
 msgstr ""
 "Els deserts tenen una composició diferent als petits munts de sorra o les "
 "platges, però a efectes pràctics del joc són equivalents. Vegeu "
-"<ref>dst=terrain_sand text=sorra</ref>."
+"<ref>dst='terrain_sand' text='sorra'</ref>."
 
 #. [topic]
 #: data/core/help.cfg:594
@@ -2500,7 +2463,7 @@ msgstr ""
 "s'hi. Especialment els nans, que gràcies a la seva estatura no es troben amb "
 "tants obstacles com les altres races.\n"
 "\n"
-"La majoria d'unitats tenen entre un 20% i un 40% de defense a les coves, "
+"La majoria d'unitats tenen entre un 20% i un 40% de defensa a les coves, "
 "mentre que els nans tenen un 50%."
 
 #. [topic]
@@ -2526,13 +2489,13 @@ msgstr ""
 "El terreny de coves rocoses es forma per l'acció de l'aigua i el vent, que "
 "porta partícules erosionants que escaven la roca. S'assembla a una flaca "
 "caverna subterrània que redueix l'eficiència de la majoria d'unitats, però "
-"millora la defensa. Els nans i els trolls, que són els principals colons de "
+"millora la defensa. Els nans i els trols, que són els principals colons de "
 "les coves, es mouen per aquest terreny amb relativa facilitat. Els nans "
 "tenen el major avantatge al moure's per aquest terreny, degut a la seva mida "
 "petita.\n"
 "\n"
 "La major part d'unitats tenen sobre el 50% de defensa en coves rocoses, "
-"mentre que la cavalleria està limitada al 40%. Els nans disfruten d'un 60% "
+"mentre que la cavalleria està limitada al 40%. Els nans gaudeixen d'un 60% "
 "de defensa a les coves rocoses."
 
 #. [topic]
@@ -2586,7 +2549,6 @@ msgstr ""
 "La majoria d'unitats tenen d'un 50% a un 60% de defensa en els boscatges, "
 "però la cavalleria només té un 20%."
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]
 #: data/core/help.cfg:640 src/terrain.cpp:146
 msgid "Village"
@@ -2608,7 +2570,7 @@ msgid ""
 msgstr ""
 "Els llogarets són petits nuclis de població, ja siguin humans o d'altres "
 "races. Gairebé totes les unitats, fins i tot la cavalleria, poden desplaçar-"
-"s'hi cómodament. A més, la majoria d'unitats que hi estacionen, es "
+"s'hi còmodament. A més, la majoria d'unitats que hi estacionen, es "
 "beneficien d'una bonificació defensiva. Els llogarets també disposen dels "
 "recursos necessaris per curar ferides, i per tant, les unitats poden "
 "recuperar fins a 8 punts de vida per cada torn que hi passin, o bé eliminar "
@@ -2640,7 +2602,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:668
 msgid "Unwalkable"
-msgstr ""
+msgstr "Impenetrable"
 
 #. [topic]
 #: data/core/help.cfg:671
@@ -2652,7 +2614,7 @@ msgid ""
 "capable of flying can cross this terrain."
 msgstr ""
 "Una gorja és un terreny espadat que arriba fins a profunditats desconegudes. "
-"Aquests abismes tenen parets escarpades que costarien dies d'travessar. A "
+"Aquests abismes tenen parets escarpades que costarien dies de travessar. A "
 "efectes de joc, només les unitats capaces de volar per sobre de les gorges "
 "poden creuar aquest terreny."
 
@@ -2735,9 +2697,8 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:710
-#, fuzzy
 msgid "Impassable"
-msgstr "Muntanya impassable"
+msgstr "Impassable"
 
 #. [topic]
 #: data/core/help.cfg:713
@@ -2767,7 +2728,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:735
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2776,8 +2736,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Activa el mode de depuració (no funciona en multijugador).Vegeu "
-"<ref>dst=debug_commands text='ordres del mode depuració'</ref>.\n"
+"Activa el mode de depuració (no funciona en multijugador). Vegeu "
+"<ref>dst='debug_commands' text='ordres del mode depuració'</ref>.\n"
 "El mode de depuració es desactiva sortint del joc o amb l'opció «:nodebug».\n"
 "\n"
 
@@ -2917,20 +2877,18 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Silencia un observador especific. Si no s'especifica cap nom, es mostren els "
+"Silencia un observador específic. Si no s'especifica cap nom, es mostren els "
 "noms del usuaris silenciats.\n"
 "\n"
 
 #. [topic]
 #: data/core/help.cfg:779
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Activa o desactiva el silenci dels observadors.\n"
-"\n"
+"Activa o desactiva el silenci dels observadors."
 
 #. [topic]
 #: data/core/help.cfg:786
@@ -2944,6 +2902,9 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Crea una unitat del tipus especificat al hexàgon seleccionat.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:793
@@ -2952,6 +2913,9 @@ msgid ""
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
+"\n"
+"Activa la boira/ocultació per al bàndol actual.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:796
@@ -2960,6 +2924,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Afegeix la quantitat especificada d'or al bàndol actual.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:799
@@ -2976,6 +2943,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostra una variable de l'estat del joc.\n"
+"\n"
 
 #. [topic]
 #: data/core/help.cfg:805
@@ -2996,13 +2966,12 @@ msgstr ""
 #. [heals]
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr "guareix +4"
+msgstr "curació +4"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "sana"
+msgstr "curació +4"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:16
@@ -3016,25 +2985,25 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guareix +4:\n"
-"Permet a la unitat guarir unitats amigues adjacents al principi de cada "
+"Curació +4:\n"
+"Permet a la unitat curar unitats amigues adjacents al principi de cada "
 "torn.\n"
 "\n"
 "Cada unitat pot recuperar fins a 4 punts de vida per torn, o bé veure aturat "
 "l'efecte d'un enverinament.\n"
-"Una unitat enverinada no pot ser curada del seu verí per un guaridor, i "
-"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de cura."
+"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
+"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
+"guarició."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr "guareix +8"
+msgstr "curació +8"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "sana"
+msgstr "curació +8"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:36
@@ -3048,25 +3017,25 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guareix +8:\n"
-"Aquesta unitat combina herbes medicinals amb màgia per tal de guarir les "
+"Curació +8:\n"
+"Aquesta unitat combina herbes medicinals amb màgia per tal de curar les "
 "unitats més ràpidament del que seria possible al camp de batalla.\n"
 "\n"
 "Cada unitat pot recuperar fins a 8 punts de vida per torn, o bé veure aturat "
 "l'efecte d'un enverinament.\n"
-"Una unitat enverinada no pot ser curada del seu verí per un guaridor, i "
-"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de cura."
+"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
+"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
+"guarició."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
-msgstr "cura"
+msgstr "guarició"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "intrèpida"
+msgstr "guarició"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:54
@@ -3075,20 +3044,19 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Cura:\n"
-"Un curador pot curar unitats enverinades, encara que aquestes no rebran cap "
-"guariment addicional durant el torn en que es recuperi del verí."
+"Guarició:\n"
+"Un guaridor pot tenir cura d'unitats enverinades, encara que aquestes no "
+"rebran cap recuperació addicional durant el torn en que es tracti el verí."
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr "regenera"
+msgstr "regeneració"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
-msgstr "regenera"
+msgstr "regeneració"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:79
@@ -3108,7 +3076,6 @@ msgstr "fermesa"
 
 #. [resistance]
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "fermesa"
 
@@ -3134,7 +3101,6 @@ msgstr "lideratge"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "lideratge"
 
@@ -3162,13 +3128,12 @@ msgstr ""
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:346
 msgid "skirmisher"
-msgstr "esquiva"
+msgstr "fustigació"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
-msgstr "esquiva"
+msgstr "fustigació"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:349
@@ -3177,20 +3142,19 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Esquiva:\n"
+"Fustigació:\n"
 "Aquesta unitat és hàbil movent-se entre els enemics ràpidament. Ignora totes "
 "les zones de control."
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:362
 msgid "illuminates"
-msgstr "il·lumina"
+msgstr "il·luminació"
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
-msgstr "il·lumina"
+msgstr "il·luminació"
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:367
@@ -3202,7 +3166,7 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Il·lumina:\n"
+"Il·luminació:\n"
 "Aquesta unitat il·lumina l'àrea que l'envolta, fent que les unitats legals "
 "lluitin millor, i les caòtiques pitjor.\n"
 "Qualsevol unitat adjacent a aquesta lluitarà com ho faria al vespre quan és "
@@ -3215,32 +3179,29 @@ msgstr "teletransport"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "intel·ligent"
+msgstr "teletransport"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:380
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "Teletransport:\n"
-"Aquesta unitat pot teletransportar-se entre dos llogarets amics de manera "
-"instantània."
+"Aquesta unitat pot teletransportar-se entre dos llogarets amics de "
+"utilitzant només un sol moviment."
 
 #. [hides]
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
 msgid "ambush"
-msgstr "embosca"
+msgstr "emboscada"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "lleial"
+msgstr "emboscada"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3286,20 +3247,18 @@ msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "sigil"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
 msgid "concealment"
-msgstr "dissimula"
+msgstr "dissimulació"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
-msgstr "dissimula"
+msgstr "dissimulació"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
@@ -3320,9 +3279,8 @@ msgstr "submersió"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "forta"
+msgstr "submersió"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3346,13 +3304,12 @@ msgstr ""
 #. [dummy]
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
-msgstr "alimenta"
+msgstr "necrofàgia"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "intrèpida"
+msgstr "necrofàgia"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:499
@@ -3361,6 +3318,9 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Necrofàgia:\n"
+"Aquesta unitat guanya 1 punt extra de vida cada vegada que mata una unitat "
+"vivent."
 
 #: data/core/macros/abilities.cfg:523
 msgid "+1 max HP"
@@ -3368,10 +3328,9 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:565
 msgid "backstab"
-msgstr "punyala"
+msgstr "punyalada"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3379,9 +3338,9 @@ msgid ""
 "incapacitated (e.g. turned to stone)."
 msgstr ""
 "Punyalada:\n"
-"Aquest atac causa el doble de mal si hi ha una unitat enemiga de l'objectiu "
-"al costat oposat de l'objectiu, i aquella unitat no està incapacitada (per "
-"exemple, convertida en pedra)."
+"Quan s'utilitza ofensivament, aquest atac causa el doble de mal si hi ha una "
+"unitat enemiga de l'objectiu al costat oposat, i aquesta unitat no està "
+"incapacitada (per exemple, convertida en pedra)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3413,7 +3372,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:603
 msgid "slows"
-msgstr "alenteix"
+msgstr "alentidor"
 
 #: data/core/macros/abilities.cfg:605
 msgid ""
@@ -3432,7 +3391,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:614
 msgid "stones"
-msgstr "petrifica"
+msgstr "petrificador"
 
 #: data/core/macros/abilities.cfg:616
 msgid ""
@@ -3491,7 +3450,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
-msgstr "drena"
+msgstr "drenador"
 
 #: data/core/macros/abilities.cfg:679
 msgid ""
@@ -3517,13 +3476,13 @@ msgstr ""
 "Verí:\n"
 "Aquest atac enverina criatures vives. Les unitats enverinades perden 8 punts "
 "de vida cada torn fins que són curades o bé fins que arriben a només 1 punt "
-"de vida.El verí no pot mater per si mateix una unitat."
+"de vida. El verí no pot matar per si mateix una unitat."
 
 #. [advancement]
 #: data/core/macros/amla.cfg:10
 #, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Bonificació HP màxim +3, XP maxim +20%"
+msgstr "Bonificació HP màxim +3, XP màxim +20%"
 
 #. [advancement]
 #: data/core/macros/amla.cfg:38
@@ -3596,15 +3555,13 @@ msgstr "No vull demanar cap desig."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Cova il·luminada"
+msgstr "Agafeu-ho"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Cova il·luminada"
+msgstr "Deixeu-ho"
 
 #. [object]
 #: data/core/macros/items.cfg:218
@@ -4560,11 +4517,8 @@ msgstr ""
 "i fins i tot també contra certes unitats vivents."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Aquesta unitat és capaç de guarir les unitats al seu voltant i curar-les "
-"del verí."
+msgstr " Aquesta unitat és capaç de fer cures bàsiques."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4595,7 +4549,7 @@ msgid ""
 "while defending."
 msgstr ""
 " La fermesa d'aquesta unitat redueix el dany rebut d'alguns atacs, però "
-"només quan defèn."
+"només quan defensa."
 
 #: data/core/macros/special-notes.cfg:29
 #, fuzzy
@@ -4727,7 +4681,7 @@ msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Els atacs d'eixam d'aquesta unitat esdevendran menys mortífers segons els "
+" Els atacs d'eixam d'aquesta unitat esdevindran menys mortífers segons els "
 "seus membres siguen ferits."
 
 #: data/core/macros/special-notes.cfg:80
@@ -4736,7 +4690,7 @@ msgid ""
 "not affect defensive retaliation."
 msgstr ""
 " Un atac de càrrega dobla tant el dany causat com el rebut; açò, tanmateix, "
-"no afecta els contraatacs quan la unitat defèn."
+"no afecta els contraatacs quan la unitat defensa."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
@@ -4752,7 +4706,7 @@ msgid ""
 "in defense."
 msgstr ""
 " La llargària de l'arma d'aquesta unitat li permet atacar primer en melé, "
-"fins i tot quan defèn."
+"fins i tot quan defensa."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
@@ -4785,7 +4739,7 @@ msgstr "no mort"
 #. [trait]
 #: data/core/macros/traits.cfg:23
 msgid "female^undead"
-msgstr "no mort"
+msgstr "no morta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
@@ -4845,17 +4799,17 @@ msgstr "intel·ligent"
 #. [trait]
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
-msgstr "resistent"
+msgstr "robust"
 
 #. [trait]
 #: data/core/macros/traits.cfg:114
 msgid "female^resilient"
-msgstr "resistent"
+msgstr "robusta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
-msgstr "sà"
+msgstr "sa"
 
 #. [trait]
 #: data/core/macros/traits.cfg:133
@@ -4886,37 +4840,32 @@ msgstr "Lluita sense desavantatges en els moments desfavorables del dia"
 #. [trait]
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "feble"
 
 #. [trait]
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "no mort"
+msgstr "feble"
 
 #. [trait]
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "alenteix"
+msgstr "lent"
 
 #. [trait]
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "lleial"
+msgstr "lenta"
 
 #. [trait]
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Mitjà"
+msgstr "totxo"
 
 #. [trait]
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "intrèpida"
+msgstr "totxa"
 
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
@@ -5341,7 +5290,6 @@ msgstr "Ogre"
 
 #. [race]: description=
 #: data/core/units.cfg:199
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Ogra"
 
@@ -5357,7 +5305,6 @@ msgstr "Orc"
 
 #. [race]
 #: data/core/units.cfg:209
-#, fuzzy
 msgid "race+female^Orc"
 msgstr "Orca"
 
@@ -5526,15 +5473,13 @@ msgstr ""
 
 #. [race]: description=
 #: data/core/units.cfg:263
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Elf"
+msgstr "Llop"
 
 #. [race]: description=
 #: data/core/units.cfg:264
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Elfs"
+msgstr "Llops"
 
 #. [race]: description=
 #: data/core/units.cfg:272
@@ -5660,7 +5605,7 @@ msgstr "$name|bini,$name|bó,Camp de $name"
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|a,$name de munt,$name,El bosc de $name"
+msgstr "$name|a,$name de munt,La fageda de $name,El bosc de $name"
 
 #. [language]
 #: data/hardwired/english.cfg:29
@@ -5671,7 +5616,7 @@ msgstr "Mont $name,$name de dalt,$name,Coll de $name,Turó de $name"
 #: data/hardwired/english.cfg:30
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr "Can $name,El $name,Sant $name,$name,$name,$name,$name"
+msgstr "Can $name,El $name,Sant $name,Puig$name,$name,$name,$name"
 
 #. [language]
 #: data/hardwired/english.cfg:33
@@ -5805,7 +5750,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Alt senyor Kalenz, 470AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -6165,7 +6110,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- El Rotlle de Xantal, 516AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -6315,7 +6260,6 @@ msgstr "Fi del torn"
 msgid "End Scenario"
 msgstr "Fi de l'escenari"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:213 src/unit.cpp:2635
@@ -6323,7 +6267,6 @@ msgstr "Fi de l'escenari"
 msgid "HP"
 msgstr "HP"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:214
@@ -6489,27 +6432,24 @@ msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 #: src/actions.cpp:1055 src/actions.cpp:1326
-#, fuzzy
 msgid "female^poisoned"
-msgstr "no mort"
+msgstr "enverinada"
 
 #: src/actions.cpp:1060 src/actions.cpp:1331
-#, fuzzy
 msgid "female^slowed"
-msgstr "lleial"
+msgstr "alentida"
 
 #: src/actions.cpp:1060 src/actions.cpp:1331
 msgid "slowed"
-msgstr "alentit "
+msgstr "alentit"
 
 #: src/actions.cpp:1067 src/actions.cpp:1338
-#, fuzzy
 msgid "female^stone"
-msgstr "forta"
+msgstr "petrificada"
 
 #: src/actions.cpp:1067 src/actions.cpp:1338
 msgid "stone"
-msgstr "pedra"
+msgstr "petrificat"
 
 #: src/actions.cpp:2402
 msgid "Ambushed!"
@@ -6564,46 +6504,44 @@ msgid "MB"
 msgstr "MiB"
 
 #: src/addon_management.cpp:372
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:405
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "Campanya"
 
 #: src/addon_management.cpp:407
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Escenari"
 
 #: src/addon_management.cpp:409
 msgid "addon_type^MP Era"
-msgstr ""
+msgstr "Era MJ"
 
 #: src/addon_management.cpp:411
 msgid "addon_type^MP Faction"
-msgstr ""
+msgstr "Facció MJ"
 
 #: src/addon_management.cpp:413
 msgid "addon_type^MP Map-pack"
-msgstr ""
+msgstr "Paquet de mapes MJ"
 
 #: src/addon_management.cpp:415
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Escenari remot"
+msgstr "Escenari MJ"
 
 #: src/addon_management.cpp:417
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "Campanya (MJ)"
 
 #: src/addon_management.cpp:419
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "Recursos"
 
 #: src/addon_management.cpp:421
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(desconegut)"
 
 #: src/addon_management.cpp:450
 msgid "Dependencies"
@@ -6617,8 +6555,10 @@ msgid ""
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Aquesta extensió requereix les següents addicionals dependències:"
-msgstr[1] "Aquesta extensió requereix les següents addicionals dependències:"
+msgstr[0] ""
+"Aquest complement requereix la següent dependència que encara no heu "
+"instal·lat:"
+msgstr[1] "Aquest complement requereix les següents dependències addicionals:"
 
 #: src/addon_management.cpp:456
 msgid "Do you still want to download it?"
@@ -6639,7 +6579,7 @@ msgstr "Termes"
 
 #: src/addon_management.cpp:516
 msgid "Sending add-on"
-msgstr "S'està descarregant l'extensió..."
+msgstr "S'està enviat el complement"
 
 #: src/addon_management.cpp:520 src/addon_management.cpp:547
 msgid "The server responded with an error: \""
@@ -6651,9 +6591,8 @@ msgid "Response"
 msgstr "Resposta"
 
 #: src/addon_management.cpp:579
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "S'està descarregant l'extensió..."
+msgstr "S'està descarregant el complement «$addon_title|»..."
 
 #: src/addon_management.cpp:593
 msgid ""
@@ -6665,18 +6604,16 @@ msgid "Unchecked script files found:"
 msgstr ""
 
 #: src/addon_management.cpp:652
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "L'extensió ha estat instal·lada correctament."
+msgstr "El complement «$addon_title|» s'ha instal·lat satisfactòriament."
 
 #: src/addon_management.cpp:654
 msgid "Add-on Installed"
-msgstr "Extensió instal·lada"
+msgstr "Complement instal·lat"
 
 #: src/addon_management.cpp:712
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "S'està descarregant l'extensió..."
+msgstr "Complements desactualitzats"
 
 #: src/addon_management.cpp:714
 msgid ""
@@ -6702,14 +6639,12 @@ msgid "Name"
 msgstr "Nom"
 
 #: src/addon_management.cpp:737
-#, fuzzy
 msgid "New version"
-msgstr "Versió"
+msgstr "Versió nova"
 
 #: src/addon_management.cpp:737
-#, fuzzy
 msgid "Old version"
-msgstr "Versió"
+msgstr "Versió antiga"
 
 #: src/addon_management.cpp:738 src/addon_management.cpp:939
 msgid "Author"
@@ -6720,36 +6655,32 @@ msgid "Size"
 msgstr "Mida"
 
 #: src/addon_management.cpp:792
-#, fuzzy
 msgid "Update Add-ons"
-msgstr "Obté extensions"
+msgstr "Actualitza els complements"
 
 #: src/addon_management.cpp:793
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Seleccioneu el complement que desitgeu actualitzar:"
 
 #: src/addon_management.cpp:807
-#, fuzzy
 msgid "Update all"
-msgstr "Paret de cova"
+msgstr "Actualitza'ls tots"
 
 #: src/addon_management.cpp:862
-#, fuzzy
 msgid "Update failed"
-msgstr "Paret de cova"
+msgstr "L'actualització ha fallat"
 
 #: src/addon_management.cpp:864
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Les següents extensions contenien errors i no s'han pogut carregar:"
-msgstr[1] "Les següents extensions contenien errors i no s'han pogut carregar:"
+msgstr[0] "Els següent complement no s'ha pogut descarregar satisfactòriament:"
+msgstr[1] ""
+"Els següents complements no s'han pogut descarregar satisfactòriament:"
 
 #: src/addon_management.cpp:873
-#, fuzzy
 msgid "Update succeeded"
-msgstr "Obté extensions"
+msgstr ""
 
 #: src/addon_management.cpp:874
 msgid "Add-on updated successfully."
@@ -6760,23 +6691,20 @@ msgid "All add-ons updated successfully."
 msgstr ""
 
 #: src/addon_management.cpp:898
-#, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "Connectant amb el servidor..."
+msgstr "Connectant amb el servidor de complements..."
 
 #: src/addon_management.cpp:901
 msgid "Could not connect to host."
 msgstr "No ha estat possible connectar al servidor."
 
 #: src/addon_management.cpp:909
-#, fuzzy
 msgid "Requesting list of add-ons"
-msgstr "S'està sol·licitant la llista d'extensions"
+msgstr "S'està sol·licitant la llista de complements"
 
 #: src/addon_management.cpp:922
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Error de comunicació amb el servidor."
+msgstr "S'ha produït un error de comunicació amb el servidor."
 
 #: src/addon_management.cpp:938 src/titlescreen.cpp:321
 msgid "Version"
@@ -6793,23 +6721,23 @@ msgstr "Tipus"
 
 #: src/addon_management.cpp:1006
 msgid "Publish add-on: "
-msgstr "Publica extensió: "
+msgstr "Publica un complement: "
 
 #: src/addon_management.cpp:1012
 msgid "Delete add-on: "
-msgstr "Esborra extensió: "
+msgstr "Esborra un complement: "
 
 #: src/addon_management.cpp:1018
 msgid "There are no add-ons available for download from this server."
-msgstr "No hi ha extensions disponibles per a descarregar en aquest servidor."
+msgstr "No hi ha complements disponibles per a descarregar en aquest servidor."
 
 #: src/addon_management.cpp:1025
 msgid "Get Add-ons"
-msgstr "Obté extensions"
+msgstr "Obté complements"
 
 #: src/addon_management.cpp:1026
 msgid "Choose the add-on to download."
-msgstr "Trieu l'extensió que voleu descarregar."
+msgstr "Trieu el complement que voleu descarregar."
 
 #: src/addon_management.cpp:1038 src/dialogs.cpp:670 src/menu_events.cpp:1051
 #: src/menu_events.cpp:1520
@@ -6825,13 +6753,12 @@ msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
 #: src/addon_management.cpp:1074
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
 "S'ha produït un error mentre es creaven els fitxers necessaris per "
-"instal·lar aquesta extensió."
+"instal·lar aquest complement."
 
 #: src/addon_management.cpp:1092 src/addon_management.cpp:1147
 #: src/dialogs.cpp:280 src/dialogs.cpp:288 src/menu_events.cpp:601
@@ -6840,22 +6767,20 @@ msgid "Error"
 msgstr "Error"
 
 #: src/addon_management.cpp:1093
-#, fuzzy
 msgid "You have no add-ons installed."
-msgstr "No teniu cap extensió instal·lada."
+msgstr "No teniu cap complement instal·lat."
 
 #: src/addon_management.cpp:1105
 msgid "Choose the add-on to remove."
-msgstr "Trieu l'extensió que voleu eliminar."
+msgstr "Trieu el complement que voleu eliminar."
 
 #: src/addon_management.cpp:1105
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "S'està descarregant l'extensió..."
+msgstr "S'està descarregant el complement..."
 
 #: src/addon_management.cpp:1117
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr "Esteu segur que voleu eliminar l'extensió «$addon|»?"
+msgstr "Esteu segur que voleu eliminar el complement «$addon|»?"
 
 #: src/addon_management.cpp:1122
 msgid "Confirm"
@@ -6863,16 +6788,15 @@ msgstr "Confirma"
 
 #: src/addon_management.cpp:1134
 msgid "Add-on '$addon|' deleted."
-msgstr "S'ha eliminat l'extensió «$addon|»."
+msgstr "S'ha eliminat el complement «$addon|»."
 
 #: src/addon_management.cpp:1139
 msgid "Add-on deleted"
-msgstr "Extensió eliminada"
+msgstr "Complement eliminat"
 
 #: src/addon_management.cpp:1148
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "No s'ha pogut eliminar l'extensió; no s'ha trobat el fitxer."
+msgstr "No s'ha pogut eliminar correctament el complement:"
 
 #: src/ai.cpp:1655
 msgid "Unknown unit type : "
@@ -6892,7 +6816,7 @@ msgstr "Defensor"
 
 #: src/attack_prediction_display.cpp:139
 msgid "Expected Battle Result (HP)"
-msgstr "Resultat esperat (PV)"
+msgstr "Resultat esperat (HP)"
 
 #: src/attack_prediction_display.cpp:231
 msgid " resistance vs "
@@ -7078,9 +7002,8 @@ msgid "Show replay"
 msgstr "Mostra la repetició"
 
 #: src/dialogs.cpp:681
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Cancel·la"
+msgstr "Cancel·la les ordres"
 
 #: src/dialogs.cpp:684 src/multiplayer_create.cpp:88
 msgid "OK"
@@ -7147,9 +7070,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
 #: src/game.cpp:1038
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "No hi ha objectius"
+msgstr "No hi ha campanyes disponibles.\n"
 
 #: src/game.cpp:1042
 msgid "Play a campaign"
@@ -7175,14 +7097,12 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1247
-#, fuzzy
 msgid "Don't show again"
-msgstr "No tornis a preguntar."
+msgstr "No tornis a mostrar-ho."
 
 #: src/game.cpp:1319
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "S'ha produït un error durant la partida: "
+msgstr "S'ha produït un error mentre s'iniciava el servidor: "
 
 #: src/game.cpp:1321 src/playcampaign.cpp:103 src/playcampaign.cpp:388
 msgid "The game could not be loaded: "
@@ -7205,11 +7125,11 @@ msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
 #: src/game.cpp:1505
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Les següents extensions contenien errors i no s'han pogut carregar:"
-msgstr[1] "Les següents extensions contenien errors i no s'han pogut carregar:"
+msgstr[0] "El complement següent contenia errors i no s'ha pogut carregar:"
+msgstr[1] ""
+"Els complements següents contenien errors i no s'han pogut carregar:"
 
 #: src/game.cpp:1512
 msgid "ERROR DETAILS:"
@@ -7228,9 +7148,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 
 #: src/game.cpp:1933
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "S'està descarregant l'extensió..."
+msgstr "S'estan cercant els complements instal·lats..."
 
 #: src/game.cpp:1942
 msgid "Loading title screen."
@@ -7299,7 +7218,7 @@ msgid ""
 msgstr ""
 "Aquesta unitat està enverinada. Perdrà 8 punts de vida cada torn fins que "
 "trobi una cura al verí en un llogaret o d'una unitat amiga amb l'habilitat "
-"de curació.\n"
+"de guarició.\n"
 "\n"
 "Les unitats no poden morir només a causa del verí, que només reuirà els "
 "punts de vida fins a 1."
@@ -7342,14 +7261,14 @@ msgstr[0] "atac"
 msgstr[1] "atacs"
 
 #: src/generate_report.cpp:275
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "atac"
+msgstr ""
 
 #: src/generate_report.cpp:281
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "mal"
+msgstr ""
 
 #: src/generate_report.cpp:292
 msgid "weapon range: "
@@ -7505,7 +7424,7 @@ msgstr "Següent"
 
 #: src/intro.cpp:106
 msgid "Skip"
-msgstr "Ometre"
+msgstr "Omet"
 
 #: src/intro.cpp:386
 msgid "The End"
@@ -7518,7 +7437,7 @@ msgstr "Idioma per defecte del sistema"
 #: src/leader_list.cpp:141 src/multiplayer_connect.cpp:220
 #: src/multiplayer_connect.cpp:272
 msgid "gender^Random"
-msgstr "Aleatòri"
+msgstr "Aleatori"
 
 #: src/leader_list.cpp:151 src/multiplayer_connect.cpp:216
 #: src/multiplayer_connect.cpp:268
@@ -7572,9 +7491,8 @@ msgid "Do you really want to dismiss him?"
 msgstr "Esteu segur que voleu acomiadar-lo?"
 
 #: src/menu_events.cpp:108
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Senyor, aquesta unitat està a punt de pujar de nivell!"
+msgstr "Senyor, aquesta unitat és lleial i no requereix manteniment!"
 
 #: src/menu_events.cpp:109 src/menu_events.cpp:112 src/menu_events.cpp:116
 msgid "Do you really want to dismiss her?"
@@ -7594,9 +7512,8 @@ msgid "Statistics"
 msgstr "Estadístiques"
 
 #: src/menu_events.cpp:212 src/menu_events.cpp:994
-#, fuzzy
 msgid "Level^Lvl."
-msgstr "Nv."
+msgstr "Niv."
 
 #: src/menu_events.cpp:215
 msgid "unit list^Traits"
@@ -7833,7 +7750,7 @@ msgstr "Raça"
 
 #: src/menu_events.cpp:1513
 msgid "Create Unit (Debug!)"
-msgstr "Crea unitat (depuració!)"
+msgstr "Crea una unitat (depuració!)"
 
 #: src/menu_events.cpp:1573
 msgid "Place Label"
@@ -7984,14 +7901,13 @@ msgid "Visualize the screen refresh procedure."
 msgstr ""
 
 #: src/menu_events.cpp:2295
-#, fuzzy
 msgid "Save game."
-msgstr "Desa partida"
+msgstr "Desa la partida."
 
 #: src/menu_events.cpp:2297
 #, fuzzy
 msgid "Quit game."
-msgstr "Surt del joc"
+msgstr "Surt del joc."
 
 #: src/menu_events.cpp:2301
 msgid "Save and quit."
@@ -8049,9 +7965,8 @@ msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
 #: src/menu_events.cpp:2332
-#, fuzzy
 msgid "Create a unit."
-msgstr "Crea partida"
+msgstr "Crea una unitat."
 
 #: src/menu_events.cpp:2334
 #, fuzzy
@@ -8136,9 +8051,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
 #: src/menu_events.cpp:2827
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Crea unitat (depuració!)"
+msgstr "Tria l'escenari (depuració!)"
 
 #: src/menu_events.cpp:2840
 msgid "Debug mode activated!"
@@ -8201,14 +8115,12 @@ msgid "Request password reminder for this username"
 msgstr ""
 
 #: src/multiplayer.cpp:198
-#, fuzzy
 msgid "Choose a different username"
-msgstr "Entra al servidor oficial"
+msgstr "Trieu un nom d'usuari diferent"
 
 #: src/multiplayer.cpp:215
-#, fuzzy
 msgid "Login"
-msgstr "Nom: "
+msgstr "Entrada"
 
 #: src/multiplayer.cpp:217 src/multiplayer_create.cpp:331
 #: src/multiplayer_lobby.cpp:792
@@ -8221,7 +8133,7 @@ msgstr "Heu d'entrar en aquest servidor"
 
 #: src/multiplayer.cpp:240
 msgid "Login: "
-msgstr "Nom: "
+msgstr "Nom d'usuari: "
 
 #: src/multiplayer_connect.cpp:87 src/multiplayer_connect.cpp:501
 #: src/multiplayer_connect.cpp:628
@@ -8263,9 +8175,8 @@ msgid "(Reserved for $playername)"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:827
-#, fuzzy
 msgid "Reserved"
-msgstr "Reserva: "
+msgstr "Reservat"
 
 #: src/multiplayer_connect.cpp:828
 msgid "--give--"
@@ -8367,9 +8278,10 @@ msgstr "Mapa a jugar:"
 msgid "Use map settings"
 msgstr "Paràmetres per defecte"
 
+# NOTA: Aquest string no pot ser gaire llarg.
 #: src/multiplayer_create.cpp:83
 msgid "Random start time"
-msgstr "Moment de començament aleatori"
+msgstr "Començament aleatori"
 
 #: src/multiplayer_create.cpp:84
 msgid "Fog Of War"
@@ -8465,9 +8377,8 @@ msgid "Share None"
 msgstr "No compartir"
 
 #: src/multiplayer_create.cpp:213
-#, fuzzy
 msgid "No eras found."
-msgstr "No s'han trobat eres"
+msgstr "No s'han trobat eres."
 
 #: src/multiplayer_create.cpp:214
 msgid "No eras found"
@@ -8475,7 +8386,7 @@ msgstr "No s'han trobat eres"
 
 #: src/multiplayer_create.cpp:227
 msgid "$login's game"
-msgstr "Partida d'en/na $login"
+msgstr "La partida d'en/na $login"
 
 #: src/multiplayer_create.cpp:286
 msgid "Invalid era selected"
@@ -8541,9 +8452,8 @@ msgid "--no games open--"
 msgstr "--no hi ha partides obertes--"
 
 #: src/multiplayer_lobby.cpp:155
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Era desconeguda"
+msgstr " (Era desconeguda)"
 
 #: src/multiplayer_lobby.cpp:432
 msgid "Unknown era: $era_id"
@@ -8674,7 +8584,7 @@ msgstr "Trieu el vostre bàndol:"
 
 #: src/multiplayer_wait.cpp:312
 msgid "Starting position: "
-msgstr ""
+msgstr "Posició inicial: "
 
 #: src/network.cpp:110
 msgid "invalid network handle"
@@ -9052,12 +8962,11 @@ msgstr "Carrega"
 
 #: src/titlescreen.cpp:371
 msgid "TitleScreen button^Add-ons"
-msgstr "Extensions"
+msgstr "Complements"
 
 #: src/titlescreen.cpp:373
-#, fuzzy
 msgid "TitleScreen button^Editor"
-msgstr "Surt"
+msgstr "Editor"
 
 #: src/titlescreen.cpp:375
 msgid "TitleScreen button^Language"
@@ -9146,9 +9055,8 @@ msgid "Upload statistics"
 msgstr "Envia les estadístiques"
 
 #: src/titlescreen.cpp:460
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "Batalla per Wesnoth"
+msgstr "Ajuda de Wesnoth"
 
 #: src/titlescreen.cpp:461
 msgid "Help Wesnoth by sending us information"
@@ -9215,7 +9123,7 @@ msgstr ""
 
 #: src/unit_types.cpp:1009
 msgid "chaotic"
-msgstr "caòtica"
+msgstr "caòtic"
 
 #: src/unit_types.cpp:1009
 msgid "lawful"
@@ -9226,19 +9134,16 @@ msgid "neutral"
 msgstr "neutral"
 
 #: src/unit_types.cpp:1010
-#, fuzzy
 msgid "female^chaotic"
-msgstr "mecànica"
+msgstr "caòtica"
 
 #: src/unit_types.cpp:1010
-#, fuzzy
 msgid "female^lawful"
 msgstr "lleial"
 
 #: src/unit_types.cpp:1010
-#, fuzzy
 msgid "female^neutral"
-msgstr "no mort"
+msgstr "neutral"
 
 #: src/upload_log.cpp:320
 msgid ""
@@ -9278,30 +9183,8 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "Ice"
 #~ msgstr "Gel"
 
-#, fuzzy
-#~ msgid ""
-#~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
-#~ msgstr ""
-#~ "El gel representa tota aquella zona d'aigua gelada. En el joc, és "
-#~ "equivalent a la <ref>dst=terrain_tundra text='neu'</ref>. Cal destacar "
-#~ "que les unitats nedadores, fins i tot aquelles que poden respirar sota "
-#~ "l'aigua, no poden nedar per sota del gel."
-
 #~ msgid "Savanna"
 #~ msgstr "Sabana"
-
-#, fuzzy
-#~ msgid ""
-#~ "Savannas are plains of tall grass, found in the warmer climates of the "
-#~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
-#~ msgstr ""
-#~ "La sabana consisteix en una praderia d'herbes altes que es pot trobar als "
-#~ "climes més càlids. A efectes pràctics del joc, la sabana és igual que la "
-#~ "<ref>dst=terrain_grassland text='prada'</ref>."
 
 #~ msgid "Chasm"
 #~ msgstr "Abisme"
@@ -9327,24 +9210,8 @@ msgstr "Permetre la pujada de resums"
 #~ "Avís: s'ha produït un error en carregar els fitxers de configuració del "
 #~ "joc: '"
 
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "Traducció a l'estonià"
-
-#, fuzzy
-#~ msgid "Connect to add-ons server"
-#~ msgstr "Connecta a un servidor"
-
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
-#~ msgstr "Ara us connectareu amb el servidor per descarregar extensions."
-
 #~ msgid "Server: "
 #~ msgstr "Servidor: "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "S'està descarregant l'extensió..."
 
 #~ msgid "Join Official Server"
 #~ msgstr "Entra al servidor oficial"
@@ -9355,16 +9222,8 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "Connect to Server"
 #~ msgstr "Connecta amb el servidor"
 
-#, fuzzy
-#~ msgid "Join a different server"
-#~ msgstr "Entra al servidor oficial"
-
 #~ msgid "Host Networked Game"
 #~ msgstr "Servir partida en xarxa"
-
-#, fuzzy
-#~ msgid "Host a game using dedicated server 'wesnothd'"
-#~ msgstr "Serveix una partida sense usar el servidor"
 
 #~ msgid ""
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"
@@ -9395,57 +9254,13 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "Choose host to connect to: "
 #~ msgstr "Trieu el servidor: "
 
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "Traducció a l'estonià"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "Traducció al portuguès"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Filtre: "
-
-#, fuzzy
-#~ msgid "Map"
-#~ msgstr "Zap"
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "Elimina extensions"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "moviments"
-
 #~ msgid "Level"
 #~ msgstr "Nivell"
-
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "IA predeterminada"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "Nom:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "Cancel·la"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "Ordre desconeguda."
 
 #~ msgid "Usage: control <side> <nick>"
 #~ msgstr "Forma d'ús: control <bàndol> <sobrenom>"
 
 #~ msgid "Screenshot"
-#~ msgstr "captura"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
 #~ msgstr "captura"
 
 #~ msgid "Add a nick to your friends list. Usage: /list addfriend <nick>"
@@ -9487,736 +9302,8 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "Join a server or hosted game"
 #~ msgstr "Connecta a un servidor o partida"
 
-#~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-#~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-
 #~ msgid "Vacant Slots:"
 #~ msgstr "Places lliures:"
-
-#~ msgid ""
-#~ "Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin "
-#~ "Ka,Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,"
-#~ "Valnirra,Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
-#~ msgstr ""
-#~ "Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin "
-#~ "Ka,Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,"
-#~ "Valnirra,Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
-
-#~ msgid ""
-#~ "Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,"
-#~ "Trithaithus,Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,"
-#~ "Augaithing,Anthaas,Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,"
-#~ "Trithdurol,Glamcatil,Augthail,Trithduril,Dulthalos,Glamthasol,Aldrsol,"
-#~ "Glamaithol,Glamalil,Analus,Nardril,Augating,Dulaithsol,Aldrlos,Alalus,"
-#~ "Aigcatsol,Ancatas,Trithdris,Pelatol,Aigthasil,Anthais,Narcatis,Trithatil,"
-#~ "Aigaithing,Althail,Trithaithil,Naraithol,Duldrlos,Gomatas,Alcatis,"
-#~ "Naraithsil,Althalos,Aigdursol,Glamalsil,Nardrus,Aigalis,Aldurlos,"
-#~ "Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,Glamthaas,Dulcatsol,"
-#~ "Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,Peldrsol,Pelalsol,"
-#~ "Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,Augdris,Anthasol,"
-#~ "Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,Pelalis,Gomatlos,"
-#~ "Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,Gomcatil,"
-#~ "Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
-#~ "Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
-#~ "Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,"
-#~ "Trithdring,Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,"
-#~ "Dulaithlos,Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,"
-#~ "Trithcatlos,Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,"
-#~ "Aldurol,Aigatsil,Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,"
-#~ "Althaol,Aldrsol,Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,"
-#~ "Glamthaol,Ancatus,Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,"
-#~ "Naraithsil,Aldris,Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,"
-#~ "Aigdurlos,Aigaithol,Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,"
-#~ "Anthaing,Aigcatis,Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,"
-#~ "Gomdursil,Nardras,Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,"
-#~ "Anatol,Augdrsil,Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,"
-#~ "Augaling,Alating,Glamatil,Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,"
-#~ "Gomdursol,Naraithus,Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,"
-#~ "Aigduras,Nardrol,Nardurol,Pelalil,Gomalil,Aigatis,Analil,Dulthaus,"
-#~ "Gomaithil,Alduras,Trithduril,Ancatol,Alduras,Pelduril,Narcatsol,Pelating,"
-#~ "Dulcatsil,Augatol,Glamthasil,Gomthasol,Naraithsil,Alatsil,Dulcatol,"
-#~ "Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,Trithatas,Aigthais,"
-#~ "Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,Gomdras,Naraithsol,"
-#~ "Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,Gomating,"
-#~ "Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
-#~ "Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
-#~ "Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,"
-#~ "Augcatsil,Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,"
-#~ "Pelaling,Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,"
-#~ "Augthalos,Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,"
-#~ "Triththail,Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,"
-#~ "Glamalsil,Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,"
-#~ "Dulatsol,Naralus,Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,"
-#~ "Naraithil,Aigatsil,Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,"
-#~ "Pelcatlos,Glamduris,Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,"
-#~ "Pelthasil,Gomatis,Aldril,Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,"
-#~ "Narduras,Dulaithlos,Duldris,Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,"
-#~ "Anduril,Alaithol,Aigalis,Trithaithas,Aigcatil,Trithaithil,Naraithing,"
-#~ "Augatsol,Trithaithol,Dulalsil,Dulthasol,Glamcatas,Glamthaol,Gomaithsol,"
-#~ "Dulaithing,Naratlos,Naraithol,Gomthasol,Ancatas,Aigcatsil,Pelduris,"
-#~ "Trithdrus,Andurus,Trithdring,Glamthaas,Aigcating,Nardrsol,Glamaithol,"
-#~ "Dulaithsol,Althaus,Augduras,Aigaithas,Gomdurlos,Glamalus,Gomdrsil,"
-#~ "Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,Glamaling,Dulduras,"
-#~ "Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,Trithduring,"
-#~ "Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,Naratlos,"
-#~ "Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
-#~ "Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
-#~ "Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
-#~ "Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
-#~ "Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
-#~ "Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
-#~ "Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,"
-#~ "Glamcatil,Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,"
-#~ "Narcatis,Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,"
-#~ "Aigatsil,Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,"
-#~ "Narcatol,Augatlos,Pelaithil,Gomaithsol,Augaithsil"
-#~ msgstr ""
-#~ "Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,"
-#~ "Trithaithus,Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,"
-#~ "Augaithing,Anthaas,Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,"
-#~ "Trithdurol,Glamcatil,Augthail,Trithduril,Dulthalos,Glamthasol,Aldrsol,"
-#~ "Glamaithol,Glamalil,Analus,Nardril,Augating,Dulaithsol,Aldrlos,Alalus,"
-#~ "Aigcatsol,Ancatas,Trithdris,Pelatol,Aigthasil,Anthais,Narcatis,Trithatil,"
-#~ "Aigaithing,Althail,Trithaithil,Naraithol,Duldrlos,Gomatas,Alcatis,"
-#~ "Naraithsil,Althalos,Aigdursol,Glamalsil,Nardrus,Aigalis,Aldurlos,"
-#~ "Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,Glamthaas,Dulcatsol,"
-#~ "Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,Peldrsol,Pelalsol,"
-#~ "Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,Augdris,Anthasol,"
-#~ "Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,Pelalis,Gomatlos,"
-#~ "Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,Gomcatil,"
-#~ "Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
-#~ "Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
-#~ "Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,"
-#~ "Trithdring,Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,"
-#~ "Dulaithlos,Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,"
-#~ "Trithcatlos,Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,"
-#~ "Aldurol,Aigatsil,Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,"
-#~ "Althaol,Aldrsol,Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,"
-#~ "Glamthaol,Ancatus,Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,"
-#~ "Naraithsil,Aldris,Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,"
-#~ "Aigdurlos,Aigaithol,Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,"
-#~ "Anthaing,Aigcatis,Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,"
-#~ "Gomdursil,Nardras,Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,"
-#~ "Anatol,Augdrsil,Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,"
-#~ "Augaling,Alating,Glamatil,Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,"
-#~ "Gomdursol,Naraithus,Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,"
-#~ "Aigduras,Nardrol,Nardurol,Pelalil,Gomalil,Aigatis,Analil,Dulthaus,"
-#~ "Gomaithil,Alduras,Trithduril,Ancatol,Alduras,Pelduril,Narcatsol,Pelating,"
-#~ "Dulcatsil,Augatol,Glamthasil,Gomthasol,Naraithsil,Alatsil,Dulcatol,"
-#~ "Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,Trithatas,Aigthais,"
-#~ "Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,Gomdras,Naraithsol,"
-#~ "Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,Gomating,"
-#~ "Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
-#~ "Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
-#~ "Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,"
-#~ "Augcatsil,Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,"
-#~ "Pelaling,Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,"
-#~ "Augthalos,Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,"
-#~ "Triththail,Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,"
-#~ "Glamalsil,Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,"
-#~ "Dulatsol,Naralus,Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,"
-#~ "Naraithil,Aigatsil,Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,"
-#~ "Pelcatlos,Glamduris,Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,"
-#~ "Pelthasil,Gomatis,Aldril,Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,"
-#~ "Narduras,Dulaithlos,Duldris,Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,"
-#~ "Anduril,Alaithol,Aigalis,Trithaithas,Aigcatil,Trithaithil,Naraithing,"
-#~ "Augatsol,Trithaithol,Dulalsil,Dulthasol,Glamcatas,Glamthaol,Gomaithsol,"
-#~ "Dulaithing,Naratlos,Naraithol,Gomthasol,Ancatas,Aigcatsil,Pelduris,"
-#~ "Trithdrus,Andurus,Trithdring,Glamthaas,Aigcating,Nardrsol,Glamaithol,"
-#~ "Dulaithsol,Althaus,Augduras,Aigaithas,Gomdurlos,Glamalus,Gomdrsil,"
-#~ "Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,Glamaling,Dulduras,"
-#~ "Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,Trithduring,"
-#~ "Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,Naratlos,"
-#~ "Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
-#~ "Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
-#~ "Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
-#~ "Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
-#~ "Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
-#~ "Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
-#~ "Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,"
-#~ "Glamcatil,Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,"
-#~ "Narcatis,Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,"
-#~ "Aigatsil,Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,"
-#~ "Narcatol,Augatlos,Pelaithil,Gomaithsol,Augaithsil"
-
-#~ msgid ""
-#~ "Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
-#~ "Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
-#~ "Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
-#~ "Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
-#~ "Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
-#~ "Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
-#~ "Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
-#~ "Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,"
-#~ "Lómythien,Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,"
-#~ "Fadrielia,Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,"
-#~ "Anilmarith,Sáng,Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,"
-#~ "Fil-Gathiel,Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,"
-#~ "Eäriolith,Celarandra,Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,"
-#~ "Anaraclya,Mithradë,Eowylia,Celindë,Legádë,Amiolith,Urilmawiel,Elvil-"
-#~ "Gawien,Thrulith,Padriedith,Viowiel,Elrithradith,Elvánia,Violindë,Lómániel,"
-#~ "Pong,Mithralindë,Amithrawien,Mil-Gathiel,Celioniel,Uryrith,Soniel,"
-#~ "Lómulindë,Eärilmathien,Hódia,Tithrathien,Tówiel,Glowiel,Aniorith,Uniong,"
-#~ "Tinorfithien,Madrieclya,Sadrierith,Vówien,Reniel,Legil-Galindë,Amewien,"
-#~ "Nithrarith,Vebrithien,Ril-Gawien,Fólindë,Galebrindra,Pilindë,Nithraniel,"
-#~ "Gólia,Medien,Munia,Cithralith,Eärithrang,Throng,Eledë,Cithrawen,"
-#~ "Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,Lómebriniel,Ceclya,"
-#~ "Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,Eowebridith,Eärarawien,"
-#~ "Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,Elrithiel,"
-#~ "Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-Galia,"
-#~ "Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
-#~ "Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
-#~ "Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,"
-#~ "Glorfilith,Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,"
-#~ "Elrebridith,Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,"
-#~ "Isendra,Lómudia,Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,"
-#~ "Amil-Garith,Belowen,Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,"
-#~ "Fáwien,Lómithrarith,Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,"
-#~ "Módë,Hunia,Tinaraniel,Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,"
-#~ "Sithrang,Celadë,Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,"
-#~ "Tiniolith,Elelith,Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,"
-#~ "Náviel,Amithrawien,Caluclya,Galothiel,Paralindë,Celorfing,Elránia,"
-#~ "Mebriwiel,Anebriniel,Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,"
-#~ "Celylia,Thrithrandra,Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,"
-#~ "Elrilmathien,Unionia,Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,"
-#~ "Celéng,Isil-Garith,Lómudia,Thrérith,Amadrielindë,Eladrielia,Amuviel,"
-#~ "Legadrieclya,Legilmadith,Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,"
-#~ "Filmaclya,Naraniel,Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,"
-#~ "Legadrieniel,Galundra,Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,"
-#~ "Anundra,Lómorith,Delararith,Anywien,Saradith,Galédë,Háwien,Celérith,"
-#~ "Niothien,Elvilmathiel,Hewen,Isóthien,Hóthiel,Celebriviel,Moniel,"
-#~ "Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,Sethien,Sioclya,Hodia,"
-#~ "Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,Legithrania,Calewiel,"
-#~ "Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,Mádia,Isadrieng,"
-#~ "Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,Belithrawien,Amil-"
-#~ "Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,Terith,Calang,"
-#~ "Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,Lómilmawiel,"
-#~ "Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,Celorfiwien,"
-#~ "Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,Elrorfidia,"
-#~ "Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,Unebridë,"
-#~ "Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,Vorfiwiel,"
-#~ "Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
-#~ "Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
-#~ "Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
-#~ "Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
-#~ "Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
-#~ "Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
-#~ "Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
-#~ "Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
-#~ "Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
-#~ "Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
-#~ "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
-#~ "Eowathiel,Iséng,Legondra,Celorfilindë"
-#~ msgstr ""
-#~ "Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
-#~ "Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
-#~ "Belaraviel,Vódia,Vadriewen,Legadien,Glithiel,Nowen,Elviondra,Cithrania,"
-#~ "Isithradien,Legithrandra,Tilmaclya,Galadriethien,Rorfiviel,Thryng,Unindra,"
-#~ "Lómeniel,Deliowen,Corfiviel,Eärániel,Eärélia,Feclya,Vorfing,Tinóng,Celith,"
-#~ "Celelith,Sadrienia,Deléthien,Uradriedia,Pulia,Lómuthiel,Elvyniel,Réviel,"
-#~ "Parandra,Galaraniel,Til-Gandra,Isilindë,Belendra,Galorfiwiel,Mil-Gathien,"
-#~ "Lómilindë,Elvithrang,Uránia,Cádë,Eäradriedien,Belarania,Legelith,"
-#~ "Lómythien,Legethiel,Godien,Goclya,Elywen,Githrawiel,Galowen,Glilmawiel,"
-#~ "Fadrielia,Galedien,Miowen,Tinorfilith,Amuwen,Silmathiel,Hódia,Hiwien,"
-#~ "Anilmarith,Sáng,Amionia,Miowiel,Gadrieclya,Celódith,Amorith,Amodë,Thrália,"
-#~ "Fil-Gathiel,Eäréwiel,Delil-Ganiel,Unynia,Belithraniel,Caladrieng,"
-#~ "Eäriolith,Celarandra,Elorfing,Sothien,Amiwen,Deloviel,Celália,Glália,"
-#~ "Anaraclya,Mithradë,Eowylia,Celindë,Legádë,Amiolith,Urilmawiel,Elvil-"
-#~ "Gawien,Thrulith,Padriedith,Viowiel,Elrithradith,Elvánia,Violindë,Lómániel,"
-#~ "Pong,Mithralindë,Amithrawien,Mil-Gathiel,Celioniel,Uryrith,Soniel,"
-#~ "Lómulindë,Eärilmathien,Hódia,Tithrathien,Tówiel,Glowiel,Aniorith,Uniong,"
-#~ "Tinorfithien,Madrieclya,Sadrierith,Vówien,Reniel,Legil-Galindë,Amewien,"
-#~ "Nithrarith,Vebrithien,Ril-Gawien,Fólindë,Galebrindra,Pilindë,Nithraniel,"
-#~ "Gólia,Medien,Munia,Cithralith,Eärithrang,Throng,Eledë,Cithrawen,"
-#~ "Thrithradia,Calóniel,Elilmalia,Rindra,Eladriedë,Lómebriniel,Ceclya,"
-#~ "Calówien,Hiodë,Calewen,Gebririth,Tinerith,Sarandra,Eowebridith,Eärarawien,"
-#~ "Eluviel,Sendra,Héclya,Sálindë,Fódë,Throlith,Varawiel,Elrithiel,"
-#~ "Celebriniel,Hythien,Myndra,Urithralindë,Calándra,Delorfilindë,Fil-Galia,"
-#~ "Gloviel,Eowidien,Delebrinia,Puthien,Elvádia,Elrilindë,Legadriedë,"
-#~ "Vithraniel,Módia,Lómithradë,Elradrierith,Hythiel,Glilmadien,Thradia,"
-#~ "Vadrierith,Beliolia,Gil-Gawien,Lómuniel,Milindë,Elóndra,Elvyviel,"
-#~ "Glorfilith,Pebridien,Galándra,Fulindë,Galiothiel,Gléndra,Calánia,Eowedith,"
-#~ "Elrebridith,Anuthiel,Gioviel,Mywiel,Tinawiel,Hedia,Amebrilindë,Eärewen,"
-#~ "Isendra,Lómudia,Tiorith,Lómorfing,Anythien,Eowil-Galindë,Thrithraniel,"
-#~ "Amil-Garith,Belowen,Elynia,Elvithrathien,Tinálindë,Helith,Beladriewien,"
-#~ "Fáwien,Lómithrarith,Calorfiniel,Galéwiel,Lómebriclya,Lómolith,Anáthien,"
-#~ "Módë,Hunia,Tinaraniel,Vithrang,Pil-Gadia,Eluviel,Fáthiel,Elarawiel,Unénia,"
-#~ "Sithrang,Celadë,Beladrielith,Elriwen,Meclya,Pádia,Lómóndra,Elvil-Gawien,"
-#~ "Tiniolith,Elelith,Thraraviel,Eowarawien,Giowen,Eärorfiwien,Amarang,Newen,"
-#~ "Náviel,Amithrawien,Caluclya,Galothiel,Paralindë,Celorfing,Elránia,"
-#~ "Mebriwiel,Anebriniel,Tilmaviel,Fadriendra,Unulindë,Haviel,Elilmawien,"
-#~ "Celylia,Thrithrandra,Lómiclya,Féthiel,Celália,Eowalia,Huclya,Horfiwien,"
-#~ "Elrilmathien,Unionia,Gioniel,Elrilmandra,Delararith,Uraclya,Huthien,"
-#~ "Celéng,Isil-Garith,Lómudia,Thrérith,Amadrielindë,Eladrielia,Amuviel,"
-#~ "Legadrieclya,Legilmadith,Belebrindra,Lómódë,Uniolia,Gadrieviel,Galilmadia,"
-#~ "Filmaclya,Naraniel,Calilmalith,Hil-Gania,Anuthien,Elviniel,Elebrindra,"
-#~ "Legadrieniel,Galundra,Anylindë,Celówien,Thridith,Niolia,Falindë,Milith,"
-#~ "Anundra,Lómorith,Delararith,Anywien,Saradith,Galédë,Háwien,Celérith,"
-#~ "Niothien,Elvilmathiel,Hewen,Isóthien,Hóthiel,Celebriviel,Moniel,"
-#~ "Elithradien,Vorficlya,Glebrithien,Golindë,Viwiel,Sethien,Sioclya,Hodia,"
-#~ "Taradien,Fadrienia,Githrania,Calil-Galith,Elréthiel,Legithrania,Calewiel,"
-#~ "Isebridien,Thredien,Tinudia,Tinadriethien,Galithrathien,Mádia,Isadrieng,"
-#~ "Celárith,Isebrinia,Amorfilith,Sédith,Eärudë,Eärenia,Belithrawien,Amil-"
-#~ "Gadith,Vadrieviel,Lómilmathiel,Tinebrithiel,Eowilindë,Terith,Calang,"
-#~ "Celararith,Glodith,Siorith,Beladriewen,Fioniel,Amulia,Nydith,Lómilmawiel,"
-#~ "Gáviel,Belulindë,Legorfidë,Unáthien,Porfindra,Calithraclya,Celorfiwien,"
-#~ "Analia,Elithraclya,Delóndra,Unóndra,Nilmadia,Riothien,Guviel,Elrorfidia,"
-#~ "Horfinia,Uriolia,Delithrathiel,Legéniel,Calebriwien,Delorfithien,Unebridë,"
-#~ "Legeng,Thrinia,Galolindë,Galyniel,Vorfirith,Syniel,Harawiel,Vorfiwiel,"
-#~ "Porfiwien,Isithrarith,Maraclya,Amadriendra,Gilia,Fadriedith,Amedë,"
-#~ "Celidien,Legolith,Unuviel,Nil-Gang,Celithradith,Pindra,Póviel,Elil-Gang,"
-#~ "Galebrilia,Tathiel,Unadrieng,Isithrawiel,Amadrielia,Nawen,Tang,Cydia,"
-#~ "Silmaclya,Cadriewen,Threbriniel,Urilmadia,Thruthien,Ureclya,Galólia,"
-#~ "Sithrawen,Elródith,Throthiel,Lómedia,Pawen,Legilmawiel,Legebrilia,Urárith,"
-#~ "Unilmadia,Morfilindë,Iseviel,Améthien,Gloclya,Cing,Legithralindë,Isáwen,"
-#~ "Sothiel,Eowiowien,Uruthien,Amadriewen,Vóng,Róng,Eärilmadë,Anówien,Tuniel,"
-#~ "Tarathiel,Lómynia,Celiodë,Pil-Gadien,Belithrawiel,Gathien,Anang,Vorfing,"
-#~ "Tinarathien,Fil-Gawien,Amilmadia,Amithraniel,Cethien,Gloclya,Hyclya,"
-#~ "Isithradë,Legidia,Celálindë,Galil-Gania,Tinil-Gania,Eowyniel,Cólindë,"
-#~ "Belaclya,Narania,Gewen,Elorfithien,Sadrierith,Aning,Tadrierith,Deléthien,"
-#~ "Eowathiel,Iséng,Legondra,Celorfilindë"
-
-#~ msgid ""
-#~ "Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,"
-#~ "Owaecyn,Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,"
-#~ "Yryrcyn,Glynvan,Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,"
-#~ "Bladoc,Addreonyc,Rheoran,Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,"
-#~ "Caraennyn,Careorraent,Gwor,Cin,Goc,Glydd,Oweomyr,Carraent,Gubryn,Gannyn,"
-#~ "Aethadry,Aethonnyn,Blygwyn,Laellyn,Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,"
-#~ "Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,Owarcyn,Daeddry,Mubryn,Gwymyr,"
-#~ "Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,Addraecyn,Morcyn,Vugwyn,Rhenry,"
-#~ "Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,Gwaec,Rycyn,Rhobryn,Gwyddry,"
-#~ "Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,Owecyn,Blydd,Owinyc,"
-#~ "Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,Geodry,Midry,"
-#~ "Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,Aethenvan,"
-#~ "Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,Yrannyn,"
-#~ "Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,Addrenyc,"
-#~ "Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,Rharcyn,"
-#~ "Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,Gwudoc,"
-#~ "Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
-#~ "Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
-#~ "Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
-#~ "Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
-#~ "Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,"
-#~ "Ruddry,Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,"
-#~ "Cararyn,Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,"
-#~ "Aethoddyn,Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,"
-#~ "Maddyn,Gecyn,Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,"
-#~ "Saellyn,Surcyn,Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,"
-#~ "Addrocyn,Aethydry,Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,"
-#~ "Owaedry,Teor,Ceonnyn,Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,"
-#~ "Gwumyr,Owinvan,Maennyn,Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,"
-#~ "Aethanry,Lec,Blanry,Vaddyn,Modd,Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,"
-#~ "Saran,Gullyn,Owollyn,Aethiddry,Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,"
-#~ "Careoryn,Gegwyn,Gleddry,Tennyn,Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,"
-#~ "Yraryn,Oweor,Daellyn,Mec,Lannyn,Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,"
-#~ "Bledoc,Caregwyn,Tuddry,Careobryn,Addrenyc,Aethellyn,Veodry,Meonnyn,"
-#~ "Myrraent,Addraer,Aethun,Coc,Sarraent,Rheollyn,Reodry,Blucyn,Caedry,Mudoc,"
-#~ "Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,Owoddry,Owugwyn,Tarcyn,Owuddyn,"
-#~ "Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,Yrunnyn,Glircyn,Aetherraent,"
-#~ "Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,Rygwyn,Gagwyn,Addrynvan,"
-#~ "Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,Gwenyc,Corcyn,Gaebryn,"
-#~ "Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,Aethercyn,Caryn,"
-#~ "Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,Gwaec,Seorcyn,"
-#~ "Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,Vyrcyn,Terraent,"
-#~ "Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,Glumyr,Rheodd,"
-#~ "Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,Dadoc,Sellyn,"
-#~ "Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,Gaedry,Rhodry,"
-#~ "Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,Aethibryn,Gwaec,"
-#~ "Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,Gwycyn,Blebryn,"
-#~ "Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,Aethercyn,Middry,"
-#~ "Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,Car,Taemyr,"
-#~ "Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,Cubryn,"
-#~ "Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
-#~ "Gwaeddyn,Saenvan,Todd,Tegwyn"
-#~ msgstr ""
-#~ "Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,"
-#~ "Owaecyn,Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,"
-#~ "Yryrcyn,Glynvan,Ryddry,Saemyr,Dibryn,Owuddry,Gloddyn,Gladoc,Yroddry,"
-#~ "Bladoc,Addreonyc,Rheoran,Tiryn,Glynry,Rhaemyr,Gweddyn,Cemyr,Mimyr,"
-#~ "Caraennyn,Careorraent,Gwor,Cin,Goc,Glydd,Oweomyr,Carraent,Gubryn,Gannyn,"
-#~ "Aethadry,Aethonnyn,Blygwyn,Laellyn,Carudoc,Ladoc,Blercyn,Carocyn,Aetheoc,"
-#~ "Rumyr,Gaercyn,Careogwyn,Caryn,Careddry,Owarcyn,Daeddry,Mubryn,Gwymyr,"
-#~ "Blaedry,Owaryn,Addreddry,Owaryn,Taedoc,Addraecyn,Morcyn,Vugwyn,Rhenry,"
-#~ "Blullyn,Dycyn,Daeddry,Blydd,Seddyn,Teoddyn,Gwaec,Rycyn,Rhobryn,Gwyddry,"
-#~ "Tudoc,Roddyn,Oweran,Ceoddyn,Blubryn,Glonry,Sedry,Owecyn,Blydd,Owinyc,"
-#~ "Gwuran,Yryllyn,Tunvan,Gwan,Carac,Cebryn,Murcyn,Ronry,Geodry,Midry,"
-#~ "Gweogwyn,Aethec,Blinvan,Rhyrraent,Aethaeryn,Seoddry,Caradoc,Aethenvan,"
-#~ "Sanyc,Aethaec,Gwumyr,Teorcyn,Lenvan,Rabryn,Yrynyc,Murcyn,Mydoc,Yrannyn,"
-#~ "Rhobryn,Oworraent,Owac,Vuddyn,Gwellyn,Glaercyn,Yregwyn,Oweorcyn,Addrenyc,"
-#~ "Rhaedoc,Carocyn,Rhonvan,Owercyn,Dadd,Corcyn,Addrocyn,Yreryn,Tinry,Rharcyn,"
-#~ "Rar,Addroryn,Tabryn,Blinvan,Addrunvan,Derraent,Leogwyn,Virraent,Gwudoc,"
-#~ "Lercyn,Glarraent,Caren,Liryn,Gwegwyn,Ligwyn,Gwybryn,Lin,Veoddyn,Owodd,"
-#~ "Cariddry,Glonvan,Gymyr,Aethuc,Careonvan,Aethudry,Addreoddyn,Gweocyn,Vonry,"
-#~ "Rhygwyn,Rhyrcyn,Rhur,Deonyc,Veocyn,Siryn,Teobryn,Yraec,Gweodry,Caroran,"
-#~ "Caraedry,Vaennyn,Moddry,Vaeddyn,Caredd,Siddry,Aethacyn,Rheorraent,Rhubryn,"
-#~ "Addrurcyn,Sodry,Rhunyc,Gweodd,Reoddyn,Vinyc,Glydoc,Sodd,Dyddyn,Dinnyn,"
-#~ "Ruddry,Addraryn,Gwollyn,Rurcyn,Glinry,Blyr,Aetharcyn,Blybryn,Addraercyn,"
-#~ "Cararyn,Carygwyn,Menvan,Caric,Turraent,Oworcyn,Gwennyn,Meorraent,Ludoc,"
-#~ "Aethoddyn,Glyc,Oworan,Simyr,Aethugwyn,Gwynnyn,Glunry,Cynyc,Addregwyn,"
-#~ "Maddyn,Gecyn,Deollyn,Gwidoc,Meon,Goc,Sudd,Yredd,Addredry,Caeran,Vobryn,"
-#~ "Saellyn,Surcyn,Taercyn,Labryn,Yran,Ceomyr,Caroddyn,Deodd,Glunvan,Gwoddyn,"
-#~ "Addrocyn,Aethydry,Carygwyn,Aethynyc,Aetheorcyn,Taec,Rocyn,Laellyn,Tinvan,"
-#~ "Owaedry,Teor,Ceonnyn,Rynry,Lunnyn,Myn,Rynnyn,Dac,Owaddyn,Vyc,Bliddry,Gur,"
-#~ "Gwumyr,Owinvan,Maennyn,Veogwyn,Blenvan,Owur,Curyn,Gleoddyn,Aethec,"
-#~ "Aethanry,Lec,Blanry,Vaddyn,Modd,Gaddry,Yrinvan,Blidd,Rheran,Veomyr,Owadd,"
-#~ "Saran,Gullyn,Owollyn,Aethiddry,Gloddry,Carullyn,Secyn,Manyc,Romyr,Vinvan,"
-#~ "Careoryn,Gegwyn,Gleddry,Tennyn,Manry,Syran,Gor,Ceoddry,Aethobryn,Yrunvan,"
-#~ "Yraryn,Oweor,Daellyn,Mec,Lannyn,Owyran,Lemyr,Rhaedoc,Yrullyn,Syryn,Bludry,"
-#~ "Bledoc,Caregwyn,Tuddry,Careobryn,Addrenyc,Aethellyn,Veodry,Meonnyn,"
-#~ "Myrraent,Addraer,Aethun,Coc,Sarraent,Rheollyn,Reodry,Blucyn,Caedry,Mudoc,"
-#~ "Sydd,Carygwyn,Cadry,Gwucyn,Ten,Ron,Lan,Owoddry,Owugwyn,Tarcyn,Owuddyn,"
-#~ "Rhenvan,Tanry,Aetheonyc,Caraddry,Blaec,Yrunnyn,Glircyn,Aetherraent,"
-#~ "Rheoddyn,Cennyn,Ginvan,Gweoran,Gumyr,Blymyr,Rygwyn,Gagwyn,Addrynvan,"
-#~ "Rherraent,Yrymyr,Laran,Rubryn,Ceoc,Gwodd,Gwadoc,Gwenyc,Corcyn,Gaebryn,"
-#~ "Gwydoc,Yrumyr,Caregwyn,Rheollyn,Rhollyn,Gliddyn,Owedry,Aethercyn,Caryn,"
-#~ "Saec,Vogwyn,Lorraent,Mygwyn,Cac,Mac,Tarcyn,Tenvan,Ronry,Gwaec,Seorcyn,"
-#~ "Soran,Luddry,Addreran,Yranvan,Gwidoc,Ceonry,Glacyn,Varcyn,Vyrcyn,Terraent,"
-#~ "Blillyn,Run,Ligwyn,Rhyllyn,Sercyn,Denvan,Convan,Owogwyn,Gar,Glumyr,Rheodd,"
-#~ "Cicyn,Blac,Daedoc,Gweodoc,Addreorcyn,Caercyn,Rhynyc,Lunnyn,Dadoc,Sellyn,"
-#~ "Aethaeran,Gydoc,Sodry,Tyddyn,Rhaerraent,Gan,Lunvan,Saercyn,Gaedry,Rhodry,"
-#~ "Taenvan,Radd,Caror,Monry,Mugwyn,Meollyn,Glun,Moran,Rybryn,Aethibryn,Gwaec,"
-#~ "Addryllyn,Caebryn,Cinry,Ranvan,Blemyr,Addriddyn,Rhugwyn,Gwycyn,Blebryn,"
-#~ "Yranvan,Teddyn,Vaedry,Addreoddry,Taedd,Cyryn,Yrirraent,Aethercyn,Middry,"
-#~ "Lurraent,Bleollyn,Aethircyn,Ven,Modd,Ceoryn,Carercyn,Lonnyn,Car,Taemyr,"
-#~ "Owidry,Geddyn,Aethunry,Yreddyn,Addribryn,Suc,Gleran,Addredry,Cubryn,"
-#~ "Veocyn,Caryn,Demyr,Tudd,Romyr,Lenvan,Glillyn,Sennyn,Rhanry,Blennyn,"
-#~ "Gwaeddyn,Saenvan,Todd,Tegwyn"
-
-#~ msgid ""
-#~ "Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
-#~ "Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
-#~ "Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
-#~ "Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,"
-#~ "Nera,Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,"
-#~ "Elulonna,Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,"
-#~ "Brera,Meanoic,Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,"
-#~ "Nyll,Clillyra,Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,"
-#~ "Lolonna,Lycla,Merydda,Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,"
-#~ "Merubrylla,Clwdda,Gwerka,Saessa,Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,"
-#~ "Dyssa,Cassa,Relyan,Gworyan,Dwdda,Alengwen,Lill,Raebrylla,Elwra,Joll,"
-#~ "Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,Merina,Rilonna,Gwangwen,Gwussa,"
-#~ "Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,Elaedda,Sull,Elyngwen,Mwbrylla,"
-#~ "Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,Clilyan,Daenoic,Naell,Brynoic,"
-#~ "Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,Dulonna,Gwirka,Dollyra,"
-#~ "Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,Ysyrka,Alearka,Jiryan,"
-#~ "Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,Gwonoic,Gwobrylla,"
-#~ "Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,Sallyra,"
-#~ "Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,Meraelyan,"
-#~ "Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,Merona,"
-#~ "Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,Myra,"
-#~ "Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,Dangwen,"
-#~ "Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,Aluryan,"
-#~ "Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
-#~ "Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
-#~ "Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
-#~ "Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,"
-#~ "Ysell,Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,"
-#~ "Jacla,Nungwen,Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,"
-#~ "Merella,Ysylyan,Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,"
-#~ "Merydda,Cibrylla,Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,"
-#~ "Dwbrylla,Dybrylla,Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,"
-#~ "Merall,Clill,Clungwen,Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,"
-#~ "Clara,Meradda,Dwra,Nolla,Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,"
-#~ "Rara,Cwngwen,Dara,Ysura,Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,"
-#~ "Mwlyan,Meralonna,Lerka,Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,"
-#~ "Sanoic,Ysanoic,Cyllyra,Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,"
-#~ "Nwllyra,Ysycla,Swngwen,Nyvyan,Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,"
-#~ "Laenoic,Mullyra,Judda,Mycla,Brassa,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,"
-#~ "Senoic,Rwngwen,Merwlla,Brera,Saeniver,Deassa,Meranoic,Bronoic,Aleacla,"
-#~ "Mavyan,Alora,Jarka,Elaelonna,Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,"
-#~ "Silonna,Ysealyan,Alora,Revyan,Cera,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,"
-#~ "Mavyan,Jull,Syllyra,Swlyan,Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,"
-#~ "Raera,Gwedda,Lodda,Brell,Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,"
-#~ "Alabrylla,Nealonna,Alolla,Rirka,Jyniver,Elearka,Jaevyan,Melonna,Alengwen,"
-#~ "Sura,Cissa,Mossa,Norka,Nangwen,Saerka,Elycla,Della,Merallyra,Elyllyra,"
-#~ "Elenoic,Alussa,Elwngwen,Calla,Merina,Jynoic,Ysealonna,Sussa,Sulyan,Mossa,"
-#~ "Dissa,Daedda,Merinoic,Searka,Rella,Sira,Clillyra,Alwna,Lulla,Nulyan,"
-#~ "Jwlyan,Swnoic,Clongwen,Alalla,Siryan,Braedda,Jealla,Gwwna,Gwullyra,"
-#~ "Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,Alabrylla,Deassa,Jovyan,"
-#~ "Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,Jana,"
-#~ "Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
-#~ msgstr ""
-#~ "Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
-#~ "Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
-#~ "Clarka,Clwlla,Cira,Lylla,Elavyan,Meroniver,Lwlla,Reacla,Neallyra,Mudda,"
-#~ "Brirka,Alyryan,Reangwen,Sorka,Nalyan,Ysilyan,Realla,Lyna,Rwllyra,Elyrka,"
-#~ "Nera,Gwwcla,Caella,Gwwvyan,Nuvyan,Sona,Merolla,Nyssa,Sera,Lwryan,Ysell,"
-#~ "Elulonna,Raerka,Saell,Dwnoic,Clissa,Medda,Lessa,Rwllyra,Ledda,Jeabrylla,"
-#~ "Brera,Meanoic,Lelyan,Clobrylla,Brellyra,Nucla,Jalyan,Dydda,Cyvyan,Revyan,"
-#~ "Nyll,Clillyra,Langwen,Jyvyan,Saellyra,Sera,Sara,Rucla,Ryngwen,Cicla,"
-#~ "Lolonna,Lycla,Merydda,Naecla,Aleara,Rwlla,Curyan,Lina,Mylla,Rarka,"
-#~ "Merubrylla,Clwdda,Gwerka,Saessa,Brungwen,Jonoic,Elalonna,Elwlonna,Lidda,"
-#~ "Dyssa,Cassa,Relyan,Gworyan,Dwdda,Alengwen,Lill,Raebrylla,Elwra,Joll,"
-#~ "Brerka,Mengwen,Caevyan,Mwnoic,Nivyan,Merina,Rilonna,Gwangwen,Gwussa,"
-#~ "Lealonna,Cwdda,Jaerka,Jassa,Sassa,Elerka,Elaedda,Sull,Elyngwen,Mwbrylla,"
-#~ "Livyan,Maecla,Cwlonna,Ysodda,Elurka,Clylla,Clilyan,Daenoic,Naell,Brynoic,"
-#~ "Syssa,Nulla,Merebrylla,Breabrylla,Call,Jycla,Dulonna,Gwirka,Dollyra,"
-#~ "Alybrylla,Elaell,Jura,Dalla,Mereangwen,Cinoic,Naell,Ysyrka,Alearka,Jiryan,"
-#~ "Ysonoic,Ysycla,Merilyan,Brorka,Jull,Alwllyra,Cealonna,Gwonoic,Gwobrylla,"
-#~ "Brellyra,Curyan,Moniver,Cleall,Elara,Lylyan,Daelyan,Relyan,Sallyra,"
-#~ "Cleacla,Alalonna,Elealla,Ysyssa,Clacla,Rilyan,Jeniver,Aleaniver,Meraelyan,"
-#~ "Gweacla,Jwll,Elealla,Lirka,Milonna,Lealyan,Messa,Nabrylla,Lollyra,Merona,"
-#~ "Meressa,Bravyan,Elaevyan,Ceryan,Mereaniver,Ysaenoic,Gwaessa,Alearka,Myra,"
-#~ "Nobrylla,Jona,Jyrka,Cyniver,Lulyan,Rerka,Swlla,Nybrylla,Yswniver,Dangwen,"
-#~ "Gwicla,Yseacla,Eleanoic,Mwngwen,Neavyan,Larka,Brealonna,Gwycla,Aluryan,"
-#~ "Meacla,Brona,Jyvyan,Brwra,Coryan,Cudda,Elivyan,Nyryan,Alyra,Alilonna,"
-#~ "Merana,Merylyan,Cydda,Diniver,Merolyan,Myll,Rwlonna,Gweacla,Ysylla,"
-#~ "Alaebrylla,Naebrylla,Clenoic,Daengwen,Reana,Alynoic,Jissa,Myvyan,Brora,"
-#~ "Alaryan,Rengwen,Clavyan,Ryna,Jull,Brollyra,Brobrylla,Ysedda,Alingwen,"
-#~ "Ysell,Jealla,Liryan,Merurka,Elallyra,Clinoic,Ninoic,Merudda,Gwongwen,"
-#~ "Jacla,Nungwen,Clalla,Gwona,Gwaera,Rora,Ninoic,Brycla,Clwvyan,Clurka,Clill,"
-#~ "Merella,Ysylyan,Rwdda,Lelonna,Yselonna,Claella,Clallyra,Dassa,Clealyan,"
-#~ "Merydda,Cibrylla,Deanoic,Claenoic,Rassa,Gwwvyan,Cucla,Lwnoic,Aluniver,"
-#~ "Dwbrylla,Dybrylla,Merissa,Ysealyan,Clydda,Maeniver,Dallyra,Nessa,Gwydda,"
-#~ "Merall,Clill,Clungwen,Ysongwen,Cucla,Jora,Elyniver,Meana,Sallyra,Ysinoic,"
-#~ "Clara,Meradda,Dwra,Nolla,Nera,Merealonna,Clibrylla,Alaeniver,Nonoic,Jacla,"
-#~ "Rara,Cwngwen,Dara,Ysura,Sulonna,Dissa,Clona,Ralonna,Cwvyan,Mulyan,Lungwen,"
-#~ "Mwlyan,Meralonna,Lerka,Noryan,Curyan,Mealyan,Nera,Sylyan,Merivyan,Lwnoic,"
-#~ "Sanoic,Ysanoic,Cyllyra,Ysyrka,Cleanoic,Bronoic,Devyan,Ysaerka,Rwngwen,"
-#~ "Nwllyra,Ysycla,Swngwen,Nyvyan,Cleana,Merylyan,Alwlyan,Lassa,Locla,Meniver,"
-#~ "Laenoic,Mullyra,Judda,Mycla,Brassa,Ysacla,Elacla,Muryan,Clollyra,Ysanoic,"
-#~ "Senoic,Rwngwen,Merwlla,Brera,Saeniver,Deassa,Meranoic,Bronoic,Aleacla,"
-#~ "Mavyan,Alora,Jarka,Elaelonna,Merwryan,Lengwen,Alilonna,Meangwen,Claelyan,"
-#~ "Silonna,Ysealyan,Alora,Revyan,Cera,Merwnoic,Dicla,Laeryan,Alubrylla,Lycla,"
-#~ "Mavyan,Jull,Syllyra,Swlyan,Elaessa,Caena,Cluvyan,Breryan,Laeniver,Jorka,"
-#~ "Raera,Gwedda,Lodda,Brell,Rybrylla,Meanoic,Niryan,Cylla,Bricla,Cudda,"
-#~ "Alabrylla,Nealonna,Alolla,Rirka,Jyniver,Elearka,Jaevyan,Melonna,Alengwen,"
-#~ "Sura,Cissa,Mossa,Norka,Nangwen,Saerka,Elycla,Della,Merallyra,Elyllyra,"
-#~ "Elenoic,Alussa,Elwngwen,Calla,Merina,Jynoic,Ysealonna,Sussa,Sulyan,Mossa,"
-#~ "Dissa,Daedda,Merinoic,Searka,Rella,Sira,Clillyra,Alwna,Lulla,Nulyan,"
-#~ "Jwlyan,Swnoic,Clongwen,Alalla,Siryan,Braedda,Jealla,Gwwna,Gwullyra,"
-#~ "Merengwen,Molyan,Dwna,Lunoic,Brealla,Ruryan,Alabrylla,Deassa,Jovyan,"
-#~ "Subrylla,Breana,Ysura,Alolonna,Nealla,Nessa,Swvyan,Cora,Luryan,Jana,"
-#~ "Meraecla,Jeanoic,Sena,Alolla,Jaena,Julonna"
-
-#~ msgid ""
-#~ "Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
-#~ "Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,"
-#~ "Anexir,Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,"
-#~ "Jezzix,Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,"
-#~ "Flixta,Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,"
-#~ "Xartrez,Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,"
-#~ "Hesz,Xasz,Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,"
-#~ "Ssorix,Ssexur,Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,"
-#~ "Lixeez,Sklizle,Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,"
-#~ "Sailik,Salanix,Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
-#~ msgstr ""
-#~ "Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
-#~ "Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,"
-#~ "Anexir,Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,"
-#~ "Jezzix,Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,"
-#~ "Flixta,Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,"
-#~ "Xartrez,Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,"
-#~ "Hesz,Xasz,Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,"
-#~ "Ssorix,Ssexur,Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,"
-#~ "Lixeez,Sklizle,Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,"
-#~ "Sailik,Salanix,Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
-
-#~ msgid ""
-#~ "Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
-#~ "Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
-#~ "Barinthus,Llyr,Lir,Aigaion,Melicertes,Dylan,Tanaoa,Tikitiki,Alastyn,Apam,"
-#~ "Natat,Vourukasa,Vodnik,Faro,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,"
-#~ "Atlahua,Jamm,Vizi,Ember,Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimir,Enki,"
-#~ "Makara,Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,"
-#~ "Nudimmud,Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
-#~ msgstr ""
-#~ "Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
-#~ "Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
-#~ "Barinthus,Llyr,Lir,Aigaion,Melicertes,Dylan,Tanaoa,Tikitiki,Alastyn,Apam,"
-#~ "Natat,Vourukasa,Vodnik,Faro,Nun,Habaek,Apsu,Abzu,Absu,Sisiutl,Atlaua,"
-#~ "Atlahua,Jamm,Vizi,Ember,Toniwha,Apalala,Dhakhan,Nechtan,Elcmar,Mimir,Enki,"
-#~ "Makara,Aremata,Rorua,Popoa,Tinirau,Tini,Rau,Kinilau,Sinilau,Tinilau,"
-#~ "Nudimmud,Tagaloa,Labuna,Jin,Laut,Raja,Ikatere,Nuada,Nudd,Ludd"
-
-#~ msgid ""
-#~ "Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,"
-#~ "Rân,Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
-#~ "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
-#~ "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
-#~ msgstr ""
-#~ "Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,"
-#~ "Rân,Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
-#~ "Thelxiepia,Aglaopheme,Pisinoe,Molpe,Leucosia,Ligia,Parthenope,Himeropa,"
-#~ "Calypso,Electra,Galatea,Ved-Ava,Vete-ema,Veen emo,Vatea,Diktynna"
-
-#~ msgid ""
-#~ "Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
-#~ "Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
-#~ "Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,"
-#~ "Sassalia,Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,"
-#~ "Grissilai,Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,"
-#~ "Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,"
-#~ "Huzi,Poniazal,Klez,Zlek,Trixzed"
-#~ msgstr ""
-#~ "Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
-#~ "Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
-#~ "Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,"
-#~ "Sassalia,Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,"
-#~ "Grissilai,Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,"
-#~ "Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,"
-#~ "Huzi,Poniazal,Klez,Zlek,Trixzed"
-
-#~ msgid ""
-#~ "Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,"
-#~ "Saxrireii,Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,"
-#~ "Vilail,Aleiss,Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,"
-#~ "Ineii,Inaloss,Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,"
-#~ "Slell,Soill,Sorkol,Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,"
-#~ "Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,"
-#~ "Zlek,Trixoz"
-#~ msgstr ""
-#~ "Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,"
-#~ "Saxrireii,Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,"
-#~ "Vilail,Aleiss,Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,"
-#~ "Ineii,Inaloss,Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,"
-#~ "Slell,Soill,Sorkol,Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,"
-#~ "Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,"
-#~ "Zlek,Trixoz"
-
-#~ msgid ""
-#~ "Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,"
-#~ "Markaak,Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,"
-#~ "Kingrok,Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,"
-#~ "Borkuk,Orkut,Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,"
-#~ "Kramak,Goruk,Krog,Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,"
-#~ "Koruck,Gurm,Kayrak,Urkar"
-#~ msgstr ""
-#~ "Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,"
-#~ "Markaak,Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,"
-#~ "Kingrok,Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,"
-#~ "Borkuk,Orkut,Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,"
-#~ "Kramak,Goruk,Krog,Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,"
-#~ "Koruck,Gurm,Kayrak,Urkar"
-
-#~ msgid ""
-#~ "Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,"
-#~ "Goshnak,Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,"
-#~ "Hunk,Goshnak,Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,"
-#~ "Prodush,Pidush,Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,"
-#~ "Prarg,Hurag,Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,"
-#~ "Eronk,Erulo,Rok,Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,"
-#~ "Groshnak,Eronk,Prilg,Erik,Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,"
-#~ "Vrik,Boshnak,Prong,Rugdish,Erulo,Palo,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,"
-#~ "Bogdush,Erurag,Vadush,Eruurk,Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,"
-#~ "Vraurk,Prarbag,Hidush,Ruol,Grugdish,Prodash,Gridish,Pulo,Bik,Rinak,Halg,"
-#~ "Erudish,Pirbag,Gank,Galo,Burk,Hunk,Bagdish,Pink,Bort,Gridash,Valo,Eruol,"
-#~ "Radash,Erarg,Vigor,Vudish,Vak,Grirg,Groshnak,Pronak,Punk,Grigar,Prolg,"
-#~ "Pigdush,Ging,Vong,Hulg,Bashnak,Vork,Ruol,Vogdish,Rinak,Gagar,Borg,Virt,"
-#~ "Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,Vrirt,Gurt,Erarag,Rugar,Pridish,"
-#~ "Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,Granak,Vrodish,Hoshnak,"
-#~ "Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,Rok,Bolg,Vrishnak,"
-#~ "Vilo,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,Grork,Grong,"
-#~ "Erogdish,Rolo,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,Biol,Vrudish,"
-#~ "Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,Badush,Rodish,"
-#~ "Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,Vonak,Eradish,"
-#~ "Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,Eragor,Rarbag,"
-#~ "Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,Porg,"
-#~ "Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,"
-#~ "Virag,Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,"
-#~ "Prashnak,Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,"
-#~ "Ginak,Huol,Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,"
-#~ "Erishnak,Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,"
-#~ "Bidush,Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,"
-#~ "Vrork,Rak,Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,"
-#~ "Priol,Rodush,Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,"
-#~ "Raurk,Puurk,Rark,Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,"
-#~ "Vrugdush,Rarag,Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hogar,"
-#~ "Hadush,Budush,Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,"
-#~ "Bilg,Vrart,Prunak,Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,"
-#~ "Buurk,Pagdish,Hirg,Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,"
-#~ "Vilg,Pulo,Gunak,Paol,Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,"
-#~ "Vragor,Rigor,Bung,Prourk,Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,"
-#~ "Vadish,Grilo,Ruol,Vrodish,Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,"
-#~ "Port,Bok,Porbag,Grilo,Bung,Grugar,Rak,Gulo,Grork,Bik,Grodish,Polg,Pung,"
-#~ "Grarbag,Vurg,Vurbag,Pung,Prolo,Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,"
-#~ "Gragor,Varbag,Erogdush,Erorbag,Bidish,Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,"
-#~ "Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,Hurk,Purg,Hilg,Vrudish,Grurk,"
-#~ "Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,Varag,Huurk,Vadush,Grok,Rank,"
-#~ "Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,Hudish,Gashnak,Ragdish,"
-#~ "Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
-#~ msgstr ""
-#~ "Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,"
-#~ "Goshnak,Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,"
-#~ "Hunk,Goshnak,Bogor,Varbag,Hort,Graol,Gork,Vrugdush,Gagor,Gadash,Prong,"
-#~ "Prodush,Pidush,Grorag,Grolg,Pung,Hurbag,Bink,Grort,Erugar,Vilo,Pagor,Vak,"
-#~ "Prarg,Hurag,Eragdush,Gulg,Pragdush,Grugdush,Erirg,Gridush,Hulo,Vrogar,"
-#~ "Eronk,Erulo,Rok,Prurk,Prurg,Grulo,Prirg,Prugar,Bogar,Prudish,Prunk,"
-#~ "Groshnak,Eronk,Prilg,Erik,Rodush,Vulo,Pork,Prilo,Horbag,Bong,Prarag,Vourk,"
-#~ "Vrik,Boshnak,Prong,Rugdish,Erulo,Palo,Vrik,Hak,Vrurg,Gurbag,Vrang,Pilg,"
-#~ "Bogdush,Erurag,Vadush,Eruurk,Vank,Ruk,Vrogor,Vrurg,Bagar,Vink,Prinak,"
-#~ "Vraurk,Prarbag,Hidush,Ruol,Grugdish,Prodash,Gridish,Pulo,Bik,Rinak,Halg,"
-#~ "Erudish,Pirbag,Gank,Galo,Burk,Hunk,Bagdish,Pink,Bort,Gridash,Valo,Eruol,"
-#~ "Radash,Erarg,Vigor,Vudish,Vak,Grirg,Groshnak,Pronak,Punk,Grigar,Prolg,"
-#~ "Pigdush,Ging,Vong,Hulg,Bashnak,Vork,Ruol,Vogdish,Rinak,Gagar,Borg,Virt,"
-#~ "Bunak,Hushnak,Ganak,Barbag,Vralo,Hidash,Vrirt,Gurt,Erarag,Rugar,Pridish,"
-#~ "Prugdish,Eruol,Vriurk,Grudash,Vurg,Eriol,Bok,Granak,Vrodish,Hoshnak,"
-#~ "Grogdish,Bork,Hushnak,Hagdush,Parag,Eriurk,Vuk,Rirg,Rok,Bolg,Vrishnak,"
-#~ "Vilo,Vragar,Budush,Gruk,Bidish,Praurk,Gunak,Hinak,Hak,Grork,Grong,"
-#~ "Erogdish,Rolo,Vadash,Pulg,Vilg,Vrodash,Vurg,Gink,Grilg,Birt,Biol,Vrudish,"
-#~ "Hagor,Vragdush,Vogor,Vulg,Erong,Rashnak,Garag,Grink,Vogdish,Badush,Rodish,"
-#~ "Gradash,Erart,Purbag,Pralo,Grigar,Badush,Priurk,Rink,Puurk,Vonak,Eradish,"
-#~ "Vridash,Podush,Pruurk,Pronk,Hiol,Gushnak,Gugdish,Hashnak,Eragor,Rarbag,"
-#~ "Gagdush,Granak,Budush,Vilg,Hort,Pulg,Gaol,Podash,Punak,Gogdush,Porg,"
-#~ "Pogdish,Prigar,Gushnak,Prarbag,Gagar,Bogor,Gogdish,Eranak,Gralo,Palg,"
-#~ "Virag,Grishnak,Rank,Hing,Grak,Pirbag,Prarag,Virag,Hink,Buk,Burg,Prodish,"
-#~ "Prashnak,Ragar,Purag,Bugdish,Vigdish,Grogdish,Huol,Hank,Gruurk,Rak,Rudash,"
-#~ "Ginak,Huol,Erigdush,Vraurk,Prool,Pragor,Grirag,Vishnak,Grorg,Eronk,Vraurk,"
-#~ "Erishnak,Erunk,Bilo,Hodush,Vrork,Eriurk,Vrarbag,Hagar,Vorg,Pidush,Pigdish,"
-#~ "Bidush,Prashnak,Virag,Bunk,Vrurg,Hong,Rik,Hirg,Rushnak,Gink,Hadish,Vilo,"
-#~ "Vrork,Rak,Huk,Ronak,Vrulg,Vilg,Rogdish,Prodash,Erirt,Gragar,Gigor,Burag,"
-#~ "Priol,Rodush,Rirg,Vruurk,Barag,Podish,Vunak,Hork,Grilg,Bogdish,Vadash,"
-#~ "Raurk,Puurk,Rark,Ronak,Grogar,Hashnak,Bink,Grodish,Hidish,Bagar,Erinak,"
-#~ "Vrugdush,Rarag,Eragdish,Hirag,Vrolo,Hogor,Erirbag,Vruol,Gulg,Pralo,Hogar,"
-#~ "Hadush,Budush,Hadash,Gigor,Goshnak,Hugor,Hudash,Biol,Vrurg,Pradish,Pralg,"
-#~ "Bilg,Vrart,Prunak,Prigdish,Vrung,Vrugdush,Grudash,Ging,Puk,Graol,Prigor,"
-#~ "Buurk,Pagdish,Hirg,Prang,Eragor,Gralg,Prart,Vrolo,Prark,Pashnak,Pradish,"
-#~ "Vilg,Pulo,Gunak,Paol,Gridash,Erirag,Bart,Burag,Vrinak,Vushnak,Prilo,"
-#~ "Vragor,Rigor,Bung,Prourk,Vrork,Burg,Erugdush,Bogdish,Prurg,Prigor,Binak,"
-#~ "Vadish,Grilo,Ruol,Vrodish,Pinak,Pradish,Eragor,Higdush,Parag,Pink,Vrong,"
-#~ "Port,Bok,Porbag,Grilo,Bung,Grugar,Rak,Gulo,Grork,Bik,Grodish,Polg,Pung,"
-#~ "Grarbag,Vurg,Vurbag,Pung,Prolo,Voshnak,Ruk,Vigdish,Vradash,Vrarg,Gong,"
-#~ "Gragor,Varbag,Erogdush,Erorbag,Bidish,Prirt,Hadush,Rirk,Vrurt,Hing,Gronk,"
-#~ "Rung,Girt,Gronk,Vigar,Prugar,Raol,Eronk,Hurk,Purg,Hilg,Vrudish,Grurk,"
-#~ "Gigor,Grurg,Polg,Erurag,Erudush,Vadush,Vrulg,Varag,Huurk,Vadush,Grok,Rank,"
-#~ "Bashnak,Praol,Vrarg,Grigor,Hank,Hool,Rang,Grolg,Hudish,Gashnak,Ragdish,"
-#~ "Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
-
-#~ msgid ""
-#~ "Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
-#~ "Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
-#~ "Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
-#~ "Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
-#~ "Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
-#~ "Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
-#~ "Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
-#~ "Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
-#~ "Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,"
-#~ "Bludebalmen,Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,"
-#~ "Brendumadoak,Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,"
-#~ "Boladrumbadrum,Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
-#~ msgstr ""
-#~ "Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
-#~ "Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
-#~ "Munnamdulbon,Monlamwimdan,Dulwulmendom,Delmduelmdelom,Mundionalafla,"
-#~ "Laffalialomdium,Rithramcamhan,Bregalad,Orofarnië,Lassemista,Carnimirië,"
-#~ "Tumtonnongatum,Tumtentantarun,Tantondernintan,Bombempomgontor,"
-#~ "Pomtamkomtrobum,Brommantendronnor,Dammantongonnur,Brumennarunom,"
-#~ "Dumdumdumatum,Tumtumgamtomtom,Tondenkontenkon,Bumbadadabum,Dabumdabumtam,"
-#~ "Bomtanbomkenton,Bomtanbomtonum,Brumbendublun,Brenbasnudnem,Temtunnongetem,"
-#~ "Debundbemun,Diblembumnde,Bremdebubde,Pambedrumne,Drongnoblemdu,"
-#~ "Bludebalmen,Temtundembenn,Lefnublemdde,Libleddnumm,Mundumblemdum,"
-#~ "Brendumadoak,Dulmandarook,Brummdlebroak,Troombadoom,Gulladroamadoak,"
-#~ "Boladrumbadrum,Elmaroomadrum,Gumabeladrelm,Grelmadrumbumadum,Wudadoonopl"
-
-#~ msgid ""
-#~ "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,"
-#~ "Bal,Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
-#~ msgstr ""
-#~ "Serra,Vil·la,Castell,Mus,Ibn,Illa,Trai,Eva,Aigües,Terra,Sal,Fall,Torre,"
-#~ "Almin,Sed,Pou,Aix,Vina,Camp,Tortes,Nius,Aus,Xaic,Estel,Sac,Ros,Masia,"
-#~ "Pobla,Nova,Riu,Coves,Sant,Gràcia,Madina,Bou"
 
 #~ msgid "Damage Taken"
 #~ msgstr "Mal rebut"
@@ -10237,19 +9324,6 @@ msgstr "Permetre la pujada de resums"
 
 #~ msgid "Removed from friends list: "
 #~ msgstr "Esborrat de la llista d'amics: "
-
-#, fuzzy
-#~ msgid ""
-#~ "Poisoned units lose 8 hitpoints every turn, but they will not die from "
-#~ "poison: poison will never reduce them below 1 hitpoint. Poisoned units "
-#~ "next to a healer will not lose hitpoints on their next turn. If they are "
-#~ "in a village or next to a unit with the 'cures' ability, the poison will "
-#~ "be completely cured on their next turn."
-#~ msgstr ""
-#~ "Les unitats enverinades perden 8 punts de vida cada torn, però no moriran "
-#~ "mai a causa del verí. Aquest no redueix la vida per sota de 1. Tanmateix, "
-#~ "poden ser curades als llogarets, o mitjançant unitats amb l'habilitat de "
-#~ "«cura»."
 
 #~ msgid "Contributors"
 #~ msgstr "Col·laboradors"
@@ -10432,9 +9506,6 @@ msgstr "Permetre la pujada de resums"
 
 #~ msgid "Tropical Forest"
 #~ msgstr "Bosc tropical"
-
-#~ msgid "Snow Hills"
-#~ msgstr "Colls nevats"
 
 #~ msgid "Dunes"
 #~ msgstr "Dunes"

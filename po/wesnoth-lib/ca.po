@@ -1,6 +1,6 @@
 #
-# Catalan translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
+# Catalan translations for Battle for Wesnoth.
+# Copyright © 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth
 # package.
 #
@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:45+0200\n"
-"PO-Revision-Date: 2008-03-01 21:36+0100\n"
+"PO-Revision-Date: 2008-10-17 22:30+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -133,15 +133,13 @@ msgstr "Bosc tropical"
 
 #. [terrain]
 #: data/core/terrain.cfg:449
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Bosc"
+msgstr "Turons boscosos"
 
 #. [terrain]
 #: data/core/terrain.cfg:459
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Colls nevats"
+msgstr "Turons boscosos nevats"
 
 #. [terrain]
 #: data/core/terrain.cfg:473 data/core/terrain.cfg:482
@@ -157,7 +155,7 @@ msgstr "Sabana"
 #. [terrain]
 #: data/core/terrain.cfg:513
 msgid "Snow Hills"
-msgstr "Colls nevats"
+msgstr "Turons nevats"
 
 #. [terrain]
 #: data/core/terrain.cfg:523
@@ -167,7 +165,7 @@ msgstr "Dunes"
 #. [terrain]
 #: data/core/terrain.cfg:533
 msgid "Hills"
-msgstr "Colls"
+msgstr "Turons"
 
 #. [terrain]
 #: data/core/terrain.cfg:545 data/core/terrain.cfg:554
@@ -223,9 +221,8 @@ msgstr "Cova"
 
 #. [terrain]
 #: data/core/terrain.cfg:701
-#, fuzzy
 msgid "Cave path"
-msgstr "Cova il·luminada"
+msgstr "Camí de cova"
 
 #. [terrain]
 #: data/core/terrain.cfg:710
@@ -274,9 +271,8 @@ msgstr "Gual"
 
 #. [terrain]
 #: data/core/terrain.cfg:1045
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Costaner"
+msgstr "Escull costaner"
 
 #. [terrain]
 #: data/core/terrain.cfg:1059
@@ -295,9 +291,8 @@ msgstr "Paret de cova"
 
 #. [terrain]
 #: data/core/terrain.cfg:1086
-#, fuzzy
 msgid "Wall"
-msgstr "Paret de cova"
+msgstr "Mur"
 
 #. [terrain]
 #: data/core/terrain.cfg:1096
@@ -306,24 +301,25 @@ msgstr "Buit"
 
 #. [terrain]
 #: data/core/terrain.cfg:1109
+#, fuzzy
 msgid "Flat"
-msgstr ""
+msgstr "Pla"
 
 #. [terrain]
 #: data/core/terrain.cfg:1116
+#, fuzzy
 msgid "Frozen"
-msgstr ""
+msgstr "Gelat"
 
 #. [terrain]
 #: data/core/terrain.cfg:1123
-#, fuzzy
 msgid "Impassable"
-msgstr "Muntanyes impassables"
+msgstr "Impassable"
 
 #. [terrain]
 #: data/core/terrain.cfg:1130
 msgid "Unwalkable"
-msgstr ""
+msgstr "Impracticable"
 
 #. [label]
 #. [column]
@@ -331,34 +327,32 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Continua movent"
+msgstr "Connecta al servidor"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
+#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Us connectareu a un servidor per descarregar complements."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Servidor:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Actualitza transicions"
+msgstr "Actualitza els complements"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Suprimeix"
+msgstr "Suprimeix complements"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:201
@@ -366,9 +360,8 @@ msgstr "Suprimeix"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Connecta"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
@@ -392,36 +385,30 @@ msgstr "Genera mapa aleatori"
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Generador de mapes"
+msgstr "Següent generador"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Dreceres de teclat"
+msgstr "Configuració"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:101
-#, fuzzy
 msgid "Generate"
-msgstr "Genera nou mapa"
+msgstr "Genera"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
 msgid "New Map"
 msgstr "Nou mapa"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:123
 msgid "Width:"
 msgstr "Amplada:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:124
 msgid "Height:"
@@ -430,51 +417,50 @@ msgstr "Alçada:"
 #. [button]
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
-msgstr "Nou mapa"
+msgstr "Crea un mapa nou"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
+#, fuzzy
 msgid "Resize Map"
-msgstr "Redimensiona el mapa"
+msgstr "Canvia la mida del mapa"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
 #, fuzzy
 msgid "New width:"
-msgstr "Amplada:"
+msgstr "Amplada nova:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
 #, fuzzy
 msgid "Old width:"
-msgstr "Amplada:"
+msgstr "Amplada antiga:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:81
 #: data/gui/default/window/editor_resize_map.cfg:130
 msgid "2000"
-msgstr ""
+msgstr "2000"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:82
 #: data/gui/default/window/editor_resize_map.cfg:131
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
 #, fuzzy
 msgid "New height:"
-msgstr "Alçada:"
+msgstr "Alçada nova:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
 #, fuzzy
 msgid "Old height:"
-msgstr "Alçada:"
+msgstr "Alçada antiga:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
@@ -491,14 +477,12 @@ msgstr ""
 #: data/gui/default/window/editor_resize_map.cfg:265
 #, fuzzy
 msgid "Resize map"
-msgstr "Redimensiona el mapa"
+msgstr "Canvia la mida del mapa"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Dreceres de teclat"
+msgstr "Configuració de l'editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
@@ -508,9 +492,8 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Següent unitat"
+msgstr "Següent"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
@@ -524,29 +507,25 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
-#, fuzzy
 msgid "Red:"
-msgstr "Refés"
+msgstr "Vermell:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
-#, fuzzy
 msgid "Green:"
-msgstr "Freqüència:"
+msgstr "Verd:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Blau:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:208
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
 msgid "OK"
 msgstr "D'acord"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:228
 #: src/game_preferences_display.cpp:202
@@ -558,7 +537,7 @@ msgstr "Aplica"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
@@ -568,7 +547,6 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
-#, fuzzy
 msgid "Change language"
 msgstr "Canvia l'idioma"
 
@@ -582,52 +560,50 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:148
 #, fuzzy
 msgid "View List"
-msgstr "Llista d'amics"
+msgstr "Visualitza la llista"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
-#, fuzzy
 msgid "Create Game"
-msgstr "Desa la partida"
+msgstr ""
 
 #. [label]
 #. [text_box]
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Nom de la partida:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
-msgstr "Jugadors:"
+msgstr "Jugadors: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Mida del mapa: "
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Era:"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "Escala per defecte"
+msgstr ""
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
+#, fuzzy
 msgid "Set Password"
-msgstr ""
+msgstr "Estableix la contrasenya"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Mapa a jugar:"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:315
@@ -638,12 +614,13 @@ msgstr ""
 #: data/gui/default/window/mp_create_game.cfg:333
 #, fuzzy
 msgid "Number of turns"
-msgstr "Nombre de colls:"
+msgstr "Nombre de torns"
 
 #. [slider]
 #: data/gui/default/window/mp_create_game.cfg:356
+#, fuzzy
 msgid "Unlimited"
-msgstr ""
+msgstr "Il·limitat"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:374
@@ -654,12 +631,12 @@ msgstr "Llogaret"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:414
 msgid "Experience modifier"
-msgstr ""
+msgstr "Modificador d'experiència"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
-msgstr ""
+msgstr "Boira de guerra"
 
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:495
@@ -668,22 +645,20 @@ msgstr ""
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:537
-#, fuzzy
 msgid "Create game"
-msgstr "Nou mapa"
+msgstr ""
 
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:79
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Opcions multijugador"
+msgstr "Multijugador"
 
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Entrada:"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:136
@@ -712,9 +687,8 @@ msgstr ""
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
-#, fuzzy
 msgid "Local Game"
-msgstr "Carrega una partida"
+msgstr "Partida local"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:170
@@ -724,54 +698,48 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/mp_method_selection.cfg:205
 msgid "Ok"
-msgstr ""
+msgstr "D'acord"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
-#, fuzzy
 msgid "Name"
-msgstr "Nom: "
+msgstr "Nom"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
-msgstr ""
+msgstr "Adreça"
 
 #. [button]
 #: data/gui/default/window/mp_server_list.cfg:198
-#, fuzzy
 msgid "Select"
-msgstr "Selecciona-ho tot"
+msgstr "Selecciona"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Habilita els diàlegs"
+msgstr "Tutorial"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Campanya"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
-msgstr "Camí"
+msgstr "Carrega"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Complements"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
-#, fuzzy
 msgid "Editor"
-msgstr "Surt de l'editor"
+msgstr "Editor"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
 #: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
@@ -781,9 +749,8 @@ msgstr "Preferències"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Crèdits"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:659
 #: src/hotkeys.cpp:940
@@ -1083,7 +1050,7 @@ msgstr "Mostra el joc en pantalla completa o en finestra"
 
 #: src/game_preferences_display.cpp:312
 msgid "Make units move and fight faster"
-msgstr "Les unitats es mouen i lliuten més ràpid"
+msgstr "Les unitats es mouen i lluiten més ràpid"
 
 #: src/game_preferences_display.cpp:329
 msgid "Units move and fight speed"
@@ -1279,13 +1246,12 @@ msgid "Load Game"
 msgstr "Carrega una partida"
 
 #: src/gui/dialogs/mp_create_game.cpp:87
-#, fuzzy
 msgid "Load Game..."
-msgstr "Carrega una partida"
+msgstr "S'està carrega la partida..."
 
 #: src/gui/dialogs/title_screen.cpp:76
 msgid "Version"
-msgstr ""
+msgstr "Versió"
 
 #: src/gui/widgets/canvas.cpp:295
 msgid "Line doesn't fit on canvas."
@@ -1304,14 +1270,12 @@ msgid "Text doesn't start on canvas."
 msgstr ""
 
 #: src/gui/widgets/helper.cpp:170
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:122
-#, fuzzy
 msgid "No default gui defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:248
 msgid "Window not defined."
@@ -1325,24 +1289,23 @@ msgstr ""
 #: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:275
 #, fuzzy
 msgid "No resolution defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr "No hi ha cap resolució definida."
 
 #: src/gui/widgets/settings.cpp:456
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:636
 #, fuzzy
 msgid "No scrollbar defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr "No s'ha definit la barra de desplaçament."
 
 #: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:344
 #: src/gui/widgets/window_builder.cpp:927
 #: src/gui/widgets/window_builder.cpp:1134
 #, fuzzy
 msgid "No grid defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr "No s'ha definit la graella."
 
 #: src/gui/widgets/window_builder.cpp:471
 msgid "A row must have a column."
@@ -1353,9 +1316,8 @@ msgid "Number of columns differ."
 msgstr ""
 
 #: src/gui/widgets/window_builder.cpp:696
-#, fuzzy
 msgid "No list defined."
-msgstr "No s'ha indicat cap servidor."
+msgstr ""
 
 #: src/gui/widgets/window_builder.cpp:699
 msgid "A 'list_definition' should contain one row."
@@ -1415,9 +1377,8 @@ msgid "Screenshot"
 msgstr "Captura de pantalla"
 
 #: src/hotkeys.cpp:69
-#, fuzzy
 msgid "Map Screenshot"
-msgstr "Captura de pantalla"
+msgstr "Captura de pantalla del mapa"
 
 #: src/hotkeys.cpp:70
 msgid "Accelerated"
@@ -1578,16 +1539,15 @@ msgstr "Desa el mapa"
 #: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Save Map As"
-msgstr "Desa el mapa"
+msgstr "Anomena i desa el mapa"
 
 #: src/hotkeys.cpp:119
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Desfés tots els canvis"
 
 #: src/hotkeys.cpp:120
-#, fuzzy
 msgid "Map Information"
-msgstr "Generador de mapes"
+msgstr "Informació del mapa"
 
 #: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
@@ -1607,9 +1567,8 @@ msgid "Fill Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:126
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Selecciona-ho tot"
+msgstr "Eina de selecció"
 
 #: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
@@ -1897,7 +1856,7 @@ msgstr "Dreceres de teclat"
 #: src/preferences_display.cpp:239 src/preferences_display.cpp:307
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Prem la tecla dessitjada"
+msgstr "Prem la tecla desitjada"
 
 #: src/preferences_display.cpp:258
 msgid "Action"
@@ -2026,10 +1985,6 @@ msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està de
 #~ msgid "Delay transition updates"
 #~ msgstr "Retarda l'actualització de transicions"
 
-#, fuzzy
-#~ msgid "Invert Selection"
-#~ msgstr "Gira la selecció"
-
 #~ msgid "Cave Lit"
 #~ msgstr "Cova il·luminada"
 
@@ -2040,22 +1995,6 @@ msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està de
 #~ msgstr ""
 #~ "S'ha trobat un terreny que no és vàlid, probablement amb el format de la "
 #~ "versió 1.2. Terreny: "
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "No s'ha indicat cap servidor."
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "No s'ha indicat cap servidor."
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "No s'ha indicat cap servidor."
-
-#, fuzzy
-#~ msgid "No default label defined."
-#~ msgstr "No s'ha indicat cap servidor."
 
 #~ msgid "Save replays on SP victory or SP/MP defeat."
 #~ msgstr "Desa la repetició en guanyar (monojugador) o perdre"
