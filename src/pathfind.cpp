@@ -24,6 +24,7 @@ See the COPYING file for more details.
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
 #include "wml_exception.hpp"

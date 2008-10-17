@@ -17,7 +17,8 @@
 #include "config.hpp"
 #include "color_range.hpp"
 #include "game_config.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
+#include "viewpoint.hpp"
 
 struct time_of_day;
 

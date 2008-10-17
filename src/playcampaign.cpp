@@ -31,6 +31,7 @@
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "log.hpp"
+#include "map_exception.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "game_errors.hpp"
@@ -103,7 +104,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
 		gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
-	} catch(gamemap::incorrect_format_exception& e) {
+	} catch(incorrect_map_format_exception& e) {
 		gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(twml_exception& e) {
 		e.show(disp);
@@ -390,7 +391,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		} catch(game::game_error& e) {
 			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
 			return QUIT;
-		} catch(gamemap::incorrect_format_exception& e) {
+		} catch(incorrect_map_format_exception& e) {
 			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 			return QUIT;
 		} catch(config::error& e) {

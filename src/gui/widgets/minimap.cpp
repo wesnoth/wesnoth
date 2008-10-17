@@ -15,6 +15,7 @@
 #include "gui/widgets/minimap.hpp"
 
 #include "map.hpp"
+#include "map_exception.hpp"
 #include "log.hpp"
 #include "../../minimap.hpp"
 
@@ -68,7 +69,7 @@ void tminimap::draw_map(surface& surface)
 
 		blit_surface(surf, NULL, surface, &rect);
 
-	} catch (gamemap::incorrect_format_exception& e) {
+	} catch (incorrect_map_format_exception& e) {
 		ERR_C << "Error while loading the map: " << e.msg_ << '\n';
 	}
 }

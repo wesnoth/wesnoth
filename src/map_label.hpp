@@ -16,7 +16,7 @@
 #define MAP_LABEL_HPP_INCLUDED
 
 class config;
-#include "map.hpp"
+#include "map_location.hpp"
 #include "font.hpp"
 
 #include "serialization/string_utils.hpp"

@@ -17,7 +17,7 @@
 #ifndef UNIT_ABILITIES_HPP_INCLUDED
 #define UNIT_ABILITIES_HPP_INCLUDED
 
-#include "map.hpp"
+#include "map_location.hpp"
 
 class unit_ability_list;
 

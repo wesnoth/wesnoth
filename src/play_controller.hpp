@@ -24,6 +24,7 @@
 #include "halo.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
+#include "map.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "preferences_display.hpp"

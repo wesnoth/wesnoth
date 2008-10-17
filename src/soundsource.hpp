@@ -19,7 +19,7 @@
 #include <vector>
 
 #include "generic_event.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 
 class display;
 

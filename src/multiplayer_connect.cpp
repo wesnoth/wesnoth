@@ -27,6 +27,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "multiplayer_connect.hpp"
 #include "statistics.hpp"
 #include "show_dialog.hpp"

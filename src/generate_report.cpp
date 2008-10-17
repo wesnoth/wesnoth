@@ -25,6 +25,7 @@
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
+#include "map.hpp"
 #include "marked-up_text.hpp"
 #include "reports.hpp"
 #include "game_preferences.hpp"

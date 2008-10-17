@@ -22,6 +22,7 @@
 #include "events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "mapgen.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"

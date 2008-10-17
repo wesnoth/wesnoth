@@ -16,7 +16,7 @@
 
 #include "unit_animation.hpp"
 #include "config.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "portrait.hpp"
 #include "race.hpp"
 #include "util.hpp"

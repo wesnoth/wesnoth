@@ -22,6 +22,9 @@
 #include "image.hpp"
 #include "team.hpp"
 
+class gamestatus;
+class unit_map;
+
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
 namespace reports {

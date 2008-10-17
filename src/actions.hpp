@@ -32,7 +32,7 @@ class team;
 class unit_type_data;
 
 #include "global.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "unit_types.hpp"

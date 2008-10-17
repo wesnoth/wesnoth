@@ -27,6 +27,8 @@
 #include "help.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "map.hpp"
+#include "map_exception.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
@@ -483,7 +485,7 @@ void save_preview_pane::draw_contents()
 				if(map_surf != NULL) {
 					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
 				}
-			} catch(gamemap::incorrect_format_exception& e) {
+			} catch(incorrect_map_format_exception& e) {
 				ERR_CF << "map could not be loaded: " << e.msg_ << '\n';
 			} catch(twml_exception& e) {
 				ERR_CF << "map could not be loaded: " << e.dev_message << '\n';

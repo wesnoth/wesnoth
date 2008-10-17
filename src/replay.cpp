@@ -30,6 +30,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "map_label.hpp"
 #include "menu_events.hpp"
 #include "pathfind.hpp"

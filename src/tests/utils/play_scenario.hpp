@@ -17,7 +17,7 @@
 
 #include "tests/utils/fake_event_source.hpp"
 
-#include "map.hpp"
+#include "map_location.hpp"
 
 #include <string>
 

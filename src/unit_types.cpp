@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"

@@ -22,6 +22,7 @@
 
 #include "ai.hpp"
 #include "log.hpp"
+#include "map.hpp"
 
 #include <cassert>
 #include <numeric>

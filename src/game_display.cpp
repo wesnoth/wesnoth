@@ -32,6 +32,7 @@
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "game_preferences.hpp"
@@ -138,6 +139,17 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 	}
 	image::set_team_colors(&side_colors);
 	clear_screen();
+}
+
+game_display* game_display::create_dummy_display(CVideo& video)
+{
+	static unit_map dummy_umap;
+	static config dummy_cfg;
+	static gamemap dummy_map(dummy_cfg, "");
+	static gamestatus dummy_status(dummy_cfg, 0);
+	static std::vector<team> dummy_teams;
+	return new game_display(dummy_umap, video, dummy_map, dummy_status,
+			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg);
 }
 
 game_display::~game_display()

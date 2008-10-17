@@ -306,12 +306,4 @@ private:
 	tusage usage_;
 };
 
-class viewpoint
-{
-public:
-	virtual bool shrouded(const map_location& loc) const = 0;
-	virtual bool fogged(const map_location& loc) const = 0;
-	virtual ~viewpoint() {};
-};
-
 #endif

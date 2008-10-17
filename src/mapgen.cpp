@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "mapgen.hpp"
 #include "pathfind.hpp"
 #include "race.hpp"

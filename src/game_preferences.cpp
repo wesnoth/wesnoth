@@ -24,6 +24,7 @@
 #include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "network.hpp" // ping_timeout
 #include "sound.hpp"
 #include "settings.hpp"

@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "terrain_filter.hpp"
 #include "util.hpp"
 

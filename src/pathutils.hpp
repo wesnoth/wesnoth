@@ -17,7 +17,7 @@ See the COPYING file for more details.
 #ifndef PATHUTILS_H_INCLUDED
 #define PATHUTILS_H_INCLUDED
 
-#include "map.hpp"
+#include "map_location.hpp"
 
 /** Function which tells if two locations are adjacent. */
 bool tiles_adjacent(const map_location& a, const map_location& b);

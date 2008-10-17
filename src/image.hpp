@@ -15,7 +15,7 @@
 #ifndef IMAGE_HPP_INCLUDED
 #define IMAGE_HPP_INCLUDED
 
-#include "map.hpp"
+#include "map_location.hpp"
 #include "sdl_utils.hpp"
 
 #include "SDL.h"

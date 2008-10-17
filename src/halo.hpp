@@ -19,7 +19,7 @@
 
 class display;
 
-#include "map.hpp"
+#include "map_location.hpp"
 #include <set>
 #include <string>
 

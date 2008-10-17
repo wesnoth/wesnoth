@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "halo.hpp"
 #include "pathutils.hpp"
 #include "unit.hpp"

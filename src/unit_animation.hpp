@@ -16,7 +16,7 @@
 
 #include "animated.hpp"
 #include "config.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "unit_frame.hpp"
 
 #include <climits>

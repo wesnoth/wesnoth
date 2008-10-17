@@ -16,7 +16,7 @@
 #define GAME_EVENTS_H_INCLUDED
 
 #include "config.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "soundsource.hpp"
 #include "variable.hpp"
 #include "unit_map.hpp"

@@ -20,7 +20,7 @@
 class config;
 class display;
 
-#include "map.hpp"
+#include "map_location.hpp"
 
 #include <map>
 #include <string>

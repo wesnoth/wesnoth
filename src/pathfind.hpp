@@ -24,7 +24,7 @@ class gamestatus;
 class unit;
 class unit_map;
 
-#include "map.hpp"
+#include "map_location.hpp"
 #include "pathutils.hpp"
 #include "team.hpp"
 

@@ -17,6 +17,7 @@ See the COPYING file for more details.
 
 #include "astarnode.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
 

@@ -15,7 +15,7 @@
 #ifndef TERRAIN_FILTER_H_INCLUDED
 #define TERRAIN_FILTER_H_INCLUDED
 
-#include "map.hpp"
+#include "map_location.hpp"
 #include "pathfind.hpp"
 
 class config;

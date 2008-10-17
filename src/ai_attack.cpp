@@ -23,6 +23,7 @@
 #include "attack_prediction.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
+#include "map.hpp"
 #include "log.hpp"
 
 #include <cassert>

@@ -34,6 +34,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_exception.hpp"
 #include "menu_events.hpp"
 #include "portrait.hpp"
 #include "replay.hpp"
@@ -1727,7 +1728,7 @@ namespace {
 
 		try {
 			mask.read(cfg["mask"]);
-		} catch(gamemap::incorrect_format_exception&) {
+		} catch(incorrect_map_format_exception&) {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 			return;
 		} catch(twml_exception& e) {

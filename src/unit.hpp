@@ -19,12 +19,13 @@
 
 #include "config.hpp"
 #include "formula_callable.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "portrait.hpp"
 #include "race.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
+#include "variable.hpp"
 
 class game_display;
 class gamestatus;

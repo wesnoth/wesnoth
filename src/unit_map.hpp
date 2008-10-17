@@ -19,7 +19,7 @@
 
 class unit;
 #include <cstring>
-#include "map.hpp"
+#include "map_location.hpp"
 
 // We used to just open-code a std::map<location,unit>,
 // but as unit gained weight leading up to 1.1.3,

@@ -32,6 +32,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "map.hpp"
 #include "minimap.hpp"
 #include "pathfind.hpp"
 #include "preferences.hpp"

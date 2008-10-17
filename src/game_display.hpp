@@ -44,8 +44,12 @@ public:
 			const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg,
 			const config& cfg, const config& level);
+			
+	static game_display* create_dummy_display(CVideo& video);
+	
 	~game_display();
 	static game_display* get_singleton() { return singleton_ ;}
+
 
 	/**
 	 * Update lighting settings.

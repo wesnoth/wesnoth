@@ -43,6 +43,7 @@
 #include "language.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "map_exception.hpp"
 #include "widgets/menu.hpp"
 #include "marked-up_text.hpp"
 #include "multiplayer.hpp"
@@ -407,20 +408,11 @@ game_controller::game_controller(int argc, char** argv) :
 game_display& game_controller::disp()
 {
 	if(disp_.get() == NULL) {
-
 		if(get_video_surface() == NULL) {
 			throw CVideo::error();
 		}
-
-		static unit_map dummy_umap;
-		static config dummy_cfg;
-		static gamemap dummy_map(dummy_cfg, "");
-		static gamestatus dummy_status(dummy_cfg, 0);
-		static std::vector<team> dummy_teams;
-		disp_.assign(new game_display(dummy_umap, video_, dummy_map, dummy_status,
-			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg));
+		disp_.assign(game_display::create_dummy_display(video_));
 	}
-
 	return *disp_.get();
 }
 
@@ -1339,7 +1331,7 @@ bool game_controller::play_multiplayer()
 		} else {
 			ERR_CONFIG << "caught config::error\n";
 		}
-	} catch(gamemap::incorrect_format_exception& e) {
+	} catch(incorrect_map_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(game::load_game_exception& e) {
 		//this will make it so next time through the title screen loop, this game is loaded

@@ -20,14 +20,9 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_location.hpp"
-#include "pathfind.hpp"
-#include "serialization/string_utils.hpp"
-#include "serialization/parser.hpp"
-#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <cassert>

@@ -21,6 +21,7 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
+#include "map_exception.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
@@ -460,7 +461,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 						+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");
 				}
 				games_.back().map_info += " - " + games_.back().map_info_size;
-			} catch(gamemap::incorrect_format_exception &e) {
+			} catch(incorrect_map_format_exception &e) {
 				ERR_CF << "illegal map: " << e.msg_ << "\n";
 				verified = false;
 			} catch(twml_exception& e) {

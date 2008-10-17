@@ -27,6 +27,7 @@
 #include "help.hpp"
 #include "image.hpp"
 #include "language.hpp"
+#include "map.hpp"
 #include "marked-up_text.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"

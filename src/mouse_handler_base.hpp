@@ -15,8 +15,9 @@
 
 #ifndef MOUSE_HANDLER_BASE_H_INCLUDED
 #define MOUSE_HANDLER_BASE_H_INCLUDED
+
 #include "display.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "SDL.h"
 
 namespace events {

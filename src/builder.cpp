@@ -22,6 +22,7 @@
 #include "builder.hpp"
 #include "config.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "pathutils.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"

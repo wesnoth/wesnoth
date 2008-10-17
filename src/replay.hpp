@@ -22,7 +22,7 @@
 
 #include "config.hpp"
 #include "gamestatus.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "random.hpp"
 
 class config_writer;

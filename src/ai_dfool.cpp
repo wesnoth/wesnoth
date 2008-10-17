@@ -314,7 +314,7 @@ namespace dfool {
     }
   }
 
-  void unit_memory::add_unit_sighting(unit u, map_location l, size_t t){
+  void unit_memory::add_unit_sighting(const unit& u, const map_location& l, size_t t){
     size_t unit_id= u.underlying_id();
     // Check if this unit has already been seen
     size_t i,j;

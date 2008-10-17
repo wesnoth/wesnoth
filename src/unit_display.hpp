@@ -20,7 +20,7 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
-#include "map.hpp"
+#include "map_location.hpp"
 
 class attack_type;
 class team;

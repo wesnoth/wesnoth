@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_exception.hpp"
 #include "pathfind.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/parser.hpp"
@@ -188,10 +189,10 @@ void gamemap::read(const std::string& data)
 		symbols["border_size_val"] = "0";
 		VALIDATE(border_size_ == 0, vgettext(msg.c_str(), symbols));
 	} else if(usage == "") {
-		throw incorrect_format_exception("Map has a header but no usage");
+		throw incorrect_map_format_exception("Map has a header but no usage");
 	} else {
 		std::string msg = "Map has a header but an unknown usage:" + usage;
-		throw incorrect_format_exception(msg.c_str());
+		throw incorrect_map_format_exception(msg.c_str());
 	}
 
 	/* The third parameter is required for MSVC++ 6.0 */
@@ -203,7 +204,7 @@ void gamemap::read(const std::string& data)
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
 		// Since all codepaths test for this, it's the least work.
-		throw incorrect_format_exception(e.message.c_str());
+		throw incorrect_map_format_exception(e.message.c_str());
 	}
 
 	// Convert the starting positions to the array
@@ -217,7 +218,7 @@ void gamemap::read(const std::string& data)
 		// so the offset 0 in the array is never used.
 		if(itor->first < 1 || itor->first >= MAX_PLAYERS+1) {
 			ERR_CF << "Starting position " << itor->first << " out of range\n";
-			throw incorrect_format_exception("Illegal starting position found"
+			throw incorrect_map_format_exception("Illegal starting position found"
 				" in map. The scenario cannot be loaded.");
 		}
 
@@ -239,7 +240,7 @@ void gamemap::read(const std::string& data)
 				if(!try_merge_terrains(tiles_[x][y])) {
 					ERR_CF << "Illegal character in map: (" << t_translation::write_terrain_code(tiles_[x][y])
 						   << ") '" << tiles_[x][y] << "'\n";
-					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
+					throw incorrect_map_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 				}
 			}
 

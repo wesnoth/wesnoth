@@ -23,7 +23,7 @@
 #include "global.hpp"
 
 #include "ai_interface.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "unit_map.hpp"
 #include "unit.hpp"
 
@@ -50,7 +50,7 @@ namespace dfool {
   class unit_memory{
   public:
     unit_memory(const config& cfg);
-    void add_unit_sighting(unit u, map_location l, size_t t);
+    void add_unit_sighting(const unit& u, const map_location& l, size_t t);
     void remove_unit_sighting(size_t id);
     //void purge(int turn = -1); // Clean outdated entries
     void write(config& temp);

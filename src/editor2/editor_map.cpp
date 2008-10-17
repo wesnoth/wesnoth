@@ -19,6 +19,7 @@
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
 #include "../gettext.hpp"
+#include "../map_exception.hpp"
 #include "../pathutils.hpp"
 #include "../wml_exception.hpp"
 
@@ -67,7 +68,7 @@ editor_map editor_map::load_from_file(const config& game_config, const std::stri
 	try {
 		editor_map new_map(game_config, map_string);
 		return new_map;
-	} catch (gamemap::incorrect_format_exception& e) {
+	} catch (incorrect_map_format_exception& e) {
 		WRN_ED << "format error in load map " << filename << "\n";
 		std::string message = _("There was a format error while loading the file:");
 		message += "\n";

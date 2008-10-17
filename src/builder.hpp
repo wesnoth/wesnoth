@@ -22,7 +22,7 @@
 
 #include "animated.hpp"
 #include "image.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 
 #include <map>
 #include <set>

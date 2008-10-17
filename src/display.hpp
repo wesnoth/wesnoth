@@ -43,7 +43,7 @@ class unit_map;
 #include "generic_event.hpp"
 #include "image.hpp"
 #include "key.hpp"
-#include "map.hpp"
+#include "map_location.hpp"
 #include "map_label.hpp"
 #include "reports.hpp"
 #include "time_of_day.hpp"

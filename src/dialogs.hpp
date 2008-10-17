@@ -22,7 +22,7 @@ class unit;
 class unit_map;
 class unit_type;
 
-#include "map.hpp"
+#include "map_location.hpp"
 #include "construct_dialog.hpp"
 #include "events.hpp"
 
