@@ -71,7 +71,7 @@ HardLink = ActionFactory(hard_link,
 
 def InstallData(env, datadir, component, source, subdir = ""):
     installdir = Dir(env.subst(os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)))
-    sources = map(Entry, Flatten([env.subst(source)]))
+    sources = map(Entry, Flatten([source]))
     dirs = []
     for source in sources:
         if source.exists():
