@@ -140,6 +140,8 @@ class JourneyTracks:
         self.selected_id = name
     def write(self, fp):
         "Record a set of named journey tracks."
+        #if os.stat(fp.name).st_mtime > self.time_last_read:
+        #    raise IOException("File was modified since last read.", fp.name)
         if fp.name.endswith(".cfg"):
             fp.write(self.before)
             fp.write("# trackplacer: tracks begin\n#\n")
@@ -244,6 +246,7 @@ class JourneyTracks:
         else:
             raise IOException("Missing map declaration.", fp.name)
         fp.close()
+        #self.time_last_read = time.time()
         self.modified = 0
     def __getitem__(self, n):
         return self.tracks[self.selected_id][n]
@@ -294,6 +297,7 @@ class JourneyTracks:
             # If the neighbors are adjacent, insert between them 
             if abs(closest[0] - next_closest[0]) == 1:
                 self.selected_track().insert(max(closest[0], next_closest[0]), (action, x, y))
+                self.modified += 1
                 return
         # Otherwise, append
         self.selected_track().append((action, x, y))
