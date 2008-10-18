@@ -161,7 +161,7 @@ class JourneyTracks:
                 if track[-1][0] not in segmenters:
                     endpoints.append(len(track)-1)
                 for (i, e) in enumerate(endpoints):
-                    fp.write("#define %s_STAGE_%d\n" % (name, i+1,))
+                    fp.write("#define %s_STAGE%d\n" % (name, i+1,))
                     for j in range(0, e+1):
                         age="OLD"
                         if i == 0 or j > endpoints[i-1]:
@@ -200,7 +200,7 @@ class JourneyTracks:
         waypoint_re = re.compile("{NEW_(" + "|".join(icon_presentation_order) + ")" \
                                  + " +([0-9]+) +([0-9]+)}")
         property_re = re.compile("# *trackplacer: ([^=]+)=(.*)")
-        define_re = re.compile("#define ([^_]*)")
+        define_re = re.compile("#define (.*)_STAGE[0-9]+")
         state = "before"
         for line in fp:
             # This is how we ignore stuff outside of track sections
