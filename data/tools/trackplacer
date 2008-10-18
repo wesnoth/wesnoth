@@ -57,6 +57,8 @@ The radio buttons near the top left corner control which icon is placed by a lef
 
 The rule for adding markers to the selected track is as follows: if the two markers closest to the mouse pointer are adjacent on the track, insert the new marker between them in the track order. Otherwise, append it to the end of the track.
 
+Click the right button to examine features overlapping the pointer.  Each marker on both selected and unselected tracks will be reported.
+
 The Animate button clears the icons off the map and places them with a delay after each placement, so you can see what order they are drawn in.  If you have multiple tracks, only those currently visible will be animated.
 
 The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
@@ -321,8 +323,11 @@ class ContextPopup:
         self.window.set_transient_for(None)
         self.window.set_position(gtk.WIN_POS_CENTER_ALWAYS)
         self.window.set_name("trackplacer info")
+        self.frame=gtk.Frame()
+        self.window.add(self.frame)
+        self.frame.show()
         self.vbox = gtk.VBox(False, 0)
-        self.window.add(self.vbox)
+        self.frame.add(self.vbox)
         self.vbox.show()
         self.window.show()
         self.position = gtk.Label()
@@ -330,6 +335,27 @@ class ContextPopup:
         self.position.show()
     def inform(self, x, y):
         self.position.set_text("At (%d, %d):" % (x, y))
+        save_selected = self.editor.journey.selected_id
+        local = []
+        for name in self.editor.journey.track_order:
+            # Gather info
+            self.editor.journey.set_selected_track(name)
+            possible = self.editor.snap_to(x, y)
+            if possible is not None:
+                local.append((name, possible, self.editor.journey[possible]))
+            self.editor.journey.set_selected_track(save_selected)
+        # Display it
+        if local:
+            for (name, index, (action, x, y)) in local:
+                legend = "%s at (%d, %d) is %s[%d]" \
+                         % (action.capitalize(), x,y, name, index)
+                label = gtk.Label(legend)
+                label.show()
+                self.vbox.add(label)
+        else:
+            label = gtk.Label("No features")
+            label.show()
+            self.vbox.add(label)
     def destroy(self):
         self.window.destroy()
 
