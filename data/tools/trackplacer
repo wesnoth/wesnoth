@@ -427,8 +427,8 @@ class TrackController:
     def track_delete_handler(self, w, track_id):
         if track_id in self.editor.visible_set:
             self.editor.visible_set.remove(track_id)
-        if track_id == self.journey.selected_id:
-            self.editor.select_track(w, self.editor.visible_set[-1]) 
+        if track_id == self.editor.journey.selected_id:
+            self.editor.track_select(w, self.editor.visible_set[-1]) 
         # FIXME: This redraw fails when we delete the last track.
         self.editor.redraw(self.editor.drawing_area)
         self.editor.journey.remove_track(track_id)
@@ -735,6 +735,8 @@ class TracksEditor:
         "Redraw the map and tracks."
         self.refresh_map()
         for id in self.journey.track_order:
+            if id not in self.visible_set:
+                continue
             track = self.journey.tracks[id]
             for item in self.journey.tracks[id]:
                 self.draw_feature(widget, item, id == self.journey.selected_track())
