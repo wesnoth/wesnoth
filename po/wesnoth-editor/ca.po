@@ -1,6 +1,6 @@
 #
-# Catalan translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth development team
+# Catalan translations for Battle for Wesnoth.
+# Copyright © 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth
 # package.
 #
@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-05 20:18+0200\n"
-"PO-Revision-Date: 2008-03-01 17:41+0100\n"
+"PO-Revision-Date: 2008-10-18 17:11+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -76,12 +76,12 @@ msgstr ""
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radi d'un hexàgon"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radi de 2 hexàgons"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
@@ -113,7 +113,7 @@ msgstr ""
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:26
 msgid "Click to paste."
-msgstr ""
+msgstr "Cliqueu per enganxar."
 
 #. [menu]
 #: data/themes/editor2.cfg:120
@@ -128,7 +128,7 @@ msgstr "Edita"
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [label]
 #: data/themes/editor2.cfg:252
@@ -137,27 +137,27 @@ msgstr "llogarets"
 
 #: src/editor2/editor_controller.cpp:103
 msgid "Quit Editor"
-msgstr "Surt"
+msgstr "Tanca l'editor"
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Fatal error"
-msgstr ""
+msgstr "Error fatal"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Segur que voleu sortir?"
 
 #: src/editor2/editor_controller.cpp:244
 msgid "There are unsaved changes in the map."
-msgstr ""
+msgstr "Hi ha canvis al mapa que no heu desat."
 
 #: src/editor2/editor_controller.cpp:246
 msgid "Quit"
-msgstr ""
+msgstr "Surt"
 
 #: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: src/editor2/editor_controller.cpp:256
 msgid "No editor time-of-day found"
@@ -165,11 +165,11 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:289
 msgid "There are unsaved changes in the map"
-msgstr ""
+msgstr "Hi ha canvis al mapa que no heu desat."
 
 #: src/editor2/editor_controller.cpp:290
 msgid "Do you want to discard all changes you made to the map?"
-msgstr ""
+msgstr "Voleu descartar tots els canvis que heu fet al mapa?"
 
 #: src/editor2/editor_controller.cpp:303
 msgid "Choose a Map to Load"
@@ -185,11 +185,11 @@ msgstr "Ja existeix un mapa amb aquest nom. Voleu sobreescriure'l? "
 
 #: src/editor2/editor_controller.cpp:358
 msgid "No random map generators found"
-msgstr ""
+msgstr "No s'han trobat generadors de mapes aleatoris"
 
 #: src/editor2/editor_controller.cpp:369
 msgid "Map creation failed."
-msgstr ""
+msgstr "S'ha produït un error en la creació del mapa."
 
 #: src/editor2/editor_controller.cpp:458
 msgid "Map saved."
@@ -201,15 +201,15 @@ msgstr "No s'ha pogut desar el mapa: $msg"
 
 #: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
 msgid "Error loading map"
-msgstr ""
+msgstr "S'ha produït un error en carregar el mapa"
 
 #: src/editor2/editor_controller.cpp:810
 msgid "Undo"
-msgstr "Desfès"
+msgstr "Desfés"
 
 #: src/editor2/editor_controller.cpp:812
 msgid "Can't Undo"
-msgstr ""
+msgstr "No es pot desfer"
 
 #: src/editor2/editor_controller.cpp:816
 msgid "Redo"
@@ -217,7 +217,7 @@ msgstr "Refés"
 
 #: src/editor2/editor_controller.cpp:818
 msgid "Can't Redo"
-msgstr ""
+msgstr "No es pot refer"
 
 #: src/editor2/editor_map.cpp:57
 msgid "Empty map file or file not found"
@@ -244,13 +244,12 @@ msgid "BG"
 msgstr "SP"
 
 #: src/editor2/mouse_action.cpp:380
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Jugador"
+msgstr "Cap"
 
 #: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
-msgstr ""
+msgstr "Trieu el jugador"
 
 #: src/editor2/mouse_action.cpp:388
 msgid ""
@@ -260,7 +259,7 @@ msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:113
 msgid "Custom setting"
-msgstr ""
+msgstr "Paràmetre personalitzat"
 
 #~ msgid "Settings"
 #~ msgstr "Preferències"

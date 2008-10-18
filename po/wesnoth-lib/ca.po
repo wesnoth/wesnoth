@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:45+0200\n"
-"PO-Revision-Date: 2008-10-17 22:30+0200\n"
+"PO-Revision-Date: 2008-10-18 13:58+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -301,13 +301,11 @@ msgstr "Buit"
 
 #. [terrain]
 #: data/core/terrain.cfg:1109
-#, fuzzy
 msgid "Flat"
-msgstr "Pla"
+msgstr "Plana"
 
 #. [terrain]
 #: data/core/terrain.cfg:1116
-#, fuzzy
 msgid "Frozen"
 msgstr "Gelat"
 
@@ -332,7 +330,6 @@ msgstr "Connecta al servidor"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr "Us connectareu a un servidor per descarregar complements."
 
@@ -422,7 +419,6 @@ msgstr "Crea un mapa nou"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
-#, fuzzy
 msgid "Resize Map"
 msgstr "Canvia la mida del mapa"
 
@@ -475,7 +471,6 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
 msgstr "Canvia la mida del mapa"
 
@@ -542,7 +537,7 @@ msgstr "Idioma"
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Trieu el vostre idioma:"
 
 #. [button]
 #: data/gui/default/window/language_selection.cfg:121
@@ -554,18 +549,17 @@ msgstr "Canvia l'idioma"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Us connectareu al servidor multijugador."
 
 #. [button]
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
 msgstr "Visualitza la llista"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
-msgstr ""
+msgstr "Crea una partida"
 
 #. [label]
 #. [text_box]
@@ -592,11 +586,10 @@ msgstr "Era:"
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
 msgid "Default"
-msgstr ""
+msgstr "Per defecte"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
-#, fuzzy
 msgid "Set Password"
 msgstr "Estableix la contrasenya"
 
@@ -608,25 +601,22 @@ msgstr "Mapa a jugar:"
 #. [toggle_button]
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
-msgstr ""
+msgstr "Utilitza els paràmetres per defecte"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:333
-#, fuzzy
 msgid "Number of turns"
 msgstr "Nombre de torns"
 
 #. [slider]
 #: data/gui/default/window/mp_create_game.cfg:356
-#, fuzzy
 msgid "Unlimited"
 msgstr "Il·limitat"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:374
-#, fuzzy
 msgid "Village gold"
-msgstr "Llogaret"
+msgstr "Or dels llogarets"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:414
@@ -646,7 +636,7 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:537
 msgid "Create game"
-msgstr ""
+msgstr "Crea una partida"
 
 #. [label]
 #. [grid]
@@ -658,32 +648,32 @@ msgstr "Multijugador"
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr "Entrada:"
+msgstr "Nom d'usuari:"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:136
 msgid "Join Official Server"
-msgstr ""
+msgstr "Entra al servidor oficial"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Entra al servidor oficial de Wesnoth per partides multijugador"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:148
 msgid "Join a different server"
-msgstr ""
+msgstr "Entra a un altre servidor"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Serveix una partida en xarxa"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd"
-msgstr ""
+msgstr "Serveix una partida utilitzar un servidor dedicat «wesnothd»"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
@@ -694,6 +684,7 @@ msgstr "Partida local"
 #: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Juga una partida multijugador contra l'IA o compartint la mateixa màquina"
 
 #. [button]
 #: data/gui/default/window/mp_method_selection.cfg:205
@@ -1255,15 +1246,15 @@ msgstr "Versió"
 
 #: src/gui/widgets/canvas.cpp:295
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "La línia no s'ajusta al llenç."
 
 #: src/gui/widgets/canvas.cpp:430
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "El rectangle no s'ajusta al llenç."
 
 #: src/gui/widgets/canvas.cpp:786
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "La mida del tipus de lletra del text és 0."
 
 #: src/gui/widgets/canvas.cpp:851
 msgid "Text doesn't start on canvas."
@@ -1275,11 +1266,11 @@ msgstr ""
 
 #: src/gui/widgets/settings.cpp:122
 msgid "No default gui defined."
-msgstr ""
+msgstr "No s'ha definit la interfície predeterminada."
 
 #: src/gui/widgets/settings.cpp:248
 msgid "Window not defined."
-msgstr ""
+msgstr "No s'ha definit la finestra."
 
 #: src/gui/widgets/settings.cpp:312
 msgid ""
@@ -1287,7 +1278,6 @@ msgid ""
 msgstr ""
 
 #: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:275
-#, fuzzy
 msgid "No resolution defined."
 msgstr "No hi ha cap resolució definida."
 
@@ -1296,28 +1286,26 @@ msgid "No state or draw section defined."
 msgstr ""
 
 #: src/gui/widgets/settings.cpp:636
-#, fuzzy
 msgid "No scrollbar defined."
 msgstr "No s'ha definit la barra de desplaçament."
 
 #: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:344
 #: src/gui/widgets/window_builder.cpp:927
 #: src/gui/widgets/window_builder.cpp:1134
-#, fuzzy
 msgid "No grid defined."
 msgstr "No s'ha definit la graella."
 
 #: src/gui/widgets/window_builder.cpp:471
 msgid "A row must have a column."
-msgstr ""
+msgstr "Una fila ha de tenir una columna."
 
 #: src/gui/widgets/window_builder.cpp:472
 msgid "Number of columns differ."
-msgstr ""
+msgstr "El nombre de columnes difereix."
 
 #: src/gui/widgets/window_builder.cpp:696
 msgid "No list defined."
-msgstr ""
+msgstr "No s'ha definit la llista."
 
 #: src/gui/widgets/window_builder.cpp:699
 msgid "A 'list_definition' should contain one row."
@@ -1522,11 +1510,11 @@ msgstr "Omet animació"
 
 #: src/hotkeys.cpp:112
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Surt"
 
 #: src/hotkeys.cpp:114
 msgid "Partial Undo"
-msgstr ""
+msgstr "Desfés parcialment"
 
 #: src/hotkeys.cpp:116
 msgid "Load Map"
@@ -1537,7 +1525,6 @@ msgid "Save Map"
 msgstr "Desa el mapa"
 
 #: src/hotkeys.cpp:118
-#, fuzzy
 msgid "Save Map As"
 msgstr "Anomena i desa el mapa"
 
@@ -1554,17 +1541,16 @@ msgid "Swap fore- and background terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:123
-#, fuzzy
 msgid "Next Tool"
-msgstr "Següent torn"
+msgstr "Eina següent"
 
 #: src/hotkeys.cpp:124
 msgid "Paint Tool"
-msgstr ""
+msgstr "Eina de pintar"
 
 #: src/hotkeys.cpp:125
 msgid "Fill Tool"
-msgstr ""
+msgstr "Eina d'emplenar"
 
 #: src/hotkeys.cpp:126
 msgid "Selection Tool"
@@ -1575,14 +1561,12 @@ msgid "Set Starting Positions Tool"
 msgstr ""
 
 #: src/hotkeys.cpp:129
-#, fuzzy
 msgid "Next Brush"
-msgstr "Següent torn"
+msgstr "Pinzell següent"
 
 #: src/hotkeys.cpp:130
-#, fuzzy
 msgid "Default Brush"
-msgstr "Escala per defecte"
+msgstr "Pinzell predeterminat"
 
 #: src/hotkeys.cpp:131
 msgid "Cut"
@@ -1602,12 +1586,11 @@ msgstr "Selecciona-ho tot"
 
 #: src/hotkeys.cpp:137
 msgid "Select Inverse"
-msgstr ""
+msgstr "Inverteix la selecció"
 
 #: src/hotkeys.cpp:139
-#, fuzzy
 msgid "Select None"
-msgstr "Selecciona-ho tot"
+msgstr "No seleccionis res"
 
 #: src/hotkeys.cpp:141
 msgid "Rotate Clipboard Clockwise"
@@ -1627,59 +1610,51 @@ msgstr ""
 
 #: src/hotkeys.cpp:149
 msgid "Rotate Selection"
-msgstr "Gira la selecció"
+msgstr ""
 
 #: src/hotkeys.cpp:151
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Emplena la selecció"
+msgstr ""
 
 #: src/hotkeys.cpp:153
 msgid "Fill Selection"
 msgstr "Emplena la selecció"
 
 #: src/hotkeys.cpp:155
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Gira la selecció"
+msgstr ""
 
 #: src/hotkeys.cpp:157
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
 #: src/hotkeys.cpp:161
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Carrega un mapa"
+msgstr ""
 
 #: src/hotkeys.cpp:163
-#, fuzzy
 msgid "Generate Map"
-msgstr "Genera nou mapa"
+msgstr "Genera un mapa"
 
 #: src/hotkeys.cpp:165
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Aplica a la màscara"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
 msgid "Create Mask"
-msgstr "Desa la partida"
+msgstr "Crea una màscara"
 
 #: src/hotkeys.cpp:169
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Visualització"
+msgstr "Refresca la pantalla"
 
 #: src/hotkeys.cpp:171
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Actualitza transicions"
+msgstr "Actualitza les transicions del terreny"
 
 #: src/hotkeys.cpp:173
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Actualitza transicions"
+msgstr "Actualitza les transicions del terreny automàticament"
 
 #: src/hotkeys.cpp:175
 msgid "Refresh Image Cache"
@@ -1687,12 +1662,11 @@ msgstr "Refresca la cau de les imatges"
 
 #: src/hotkeys.cpp:177
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Dibuixa les coordenades dels hexàgons"
 
 #: src/hotkeys.cpp:179
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Dibuixa el terreny"
+msgstr "Dibuixa els codis del terreny"
 
 #: src/hotkeys.cpp:184
 msgid "Delay Shroud Updates"
@@ -1732,16 +1706,15 @@ msgstr "Canvia l'idioma"
 
 #: src/hotkeys.cpp:194
 msgid "Enter user command"
-msgstr "Introdueix una comanda"
+msgstr "Introdueix una ordre d'usuari"
 
 #: src/hotkeys.cpp:195
-#, fuzzy
 msgid "Custom command"
-msgstr "Introdueix una comanda"
+msgstr "Ordre personalitzada"
 
 #: src/hotkeys.cpp:196
 msgid "Run AI formula"
-msgstr ""
+msgstr "Executa una fórmula de l'IA"
 
 #: src/hotkeys.cpp:197
 msgid "Clear messages"
@@ -1760,19 +1733,16 @@ msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
 #: src/hotkeys.cpp:895
-#, fuzzy
 msgid "Map-Screenshot"
-msgstr "Captura de pantalla"
+msgstr "Captura de pantalla del mapa"
 
 #: src/hotkeys.cpp:902
-#, fuzzy
 msgid "Screenshot done"
-msgstr "Captura de pantalla"
+msgstr "S'ha fet la captura de pantalla"
 
 #: src/hotkeys.cpp:904
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "Captura de pantalla"
+msgstr "Ha fallat la captura de pantalla"
 
 # Hmm, cal el «Window» a l'original?
 #: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
@@ -1854,9 +1824,8 @@ msgid "Hotkey Settings"
 msgstr "Dreceres de teclat"
 
 #: src/preferences_display.cpp:239 src/preferences_display.cpp:307
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Prem la tecla desitjada"
+msgstr "Premeu la tecla desitjada (o cancel·leu amb la tecla d'escapada)"
 
 #: src/preferences_display.cpp:258
 msgid "Action"
@@ -1871,9 +1840,8 @@ msgid "Change Hotkey"
 msgstr "Canvia la tecla"
 
 #: src/preferences_display.cpp:273
-#, fuzzy
 msgid "Clear Hotkey"
-msgstr "Canvia la tecla"
+msgstr "Esborra la tecla"
 
 #: src/preferences_display.cpp:340
 msgid "This Hotkey is already in use."

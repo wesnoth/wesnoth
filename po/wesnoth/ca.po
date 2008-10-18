@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:44+0200\n"
-"PO-Revision-Date: 2008-10-17 22:30+0200\n"
+"PO-Revision-Date: 2008-10-18 13:59+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -6627,11 +6627,11 @@ msgstr[1] ""
 
 #: src/addon_management.cpp:723
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "No s'han trobat actualitzacions de cap complement en aquest servidor."
 
 #: src/addon_management.cpp:723
 msgid "No add-ons to update"
-msgstr ""
+msgstr "No hi ha complements per actualitzar"
 
 #: src/addon_management.cpp:737 src/addon_management.cpp:938
 #: src/dialogs.cpp:645 src/menu_events.cpp:211 src/menu_events.cpp:993
@@ -7086,9 +7086,8 @@ msgid "Select difficulty level:"
 msgstr "Seleccioneu el nivell de dificultat:"
 
 #: src/game.cpp:1242
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "Esteu segur que voleu acomiadar-la?"
+msgstr "Segur que voleu iniciar el servidor?"
 
 #: src/game.cpp:1243
 msgid ""
@@ -7195,13 +7194,12 @@ msgid "invisible: "
 msgstr "invisible: "
 
 #: src/generate_report.cpp:109
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
 "Aquesta unitat ha estat alentida. Només farà la meitat del mal normal quan "
-"ataqui."
+"ataqui, i el cost de desplaçament serà el doble."
 
 #: src/generate_report.cpp:109
 msgid "slowed: "
@@ -7220,7 +7218,7 @@ msgstr ""
 "trobi una cura al verí en un llogaret o d'una unitat amiga amb l'habilitat "
 "de guarició.\n"
 "\n"
-"Les unitats no poden morir només a causa del verí, que només reuirà els "
+"Les unitats no poden morir només a causa del verí, que només reduirà els "
 "punts de vida fins a 1."
 
 #: src/generate_report.cpp:114
@@ -7242,7 +7240,7 @@ msgstr "Resistències: "
 
 #: src/generate_report.cpp:178
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Atc / Def)"
 
 #: src/generate_report.cpp:197 src/multiplayer_create.cpp:400
 msgid "Experience Modifier: "
@@ -7263,12 +7261,12 @@ msgstr[1] "atacs"
 #: src/generate_report.cpp:275
 #, no-c-format
 msgid "tooltip^% accuracy"
-msgstr ""
+msgstr "% precisió"
 
 #: src/generate_report.cpp:281
 #, no-c-format
 msgid "tooltip^% parry"
-msgstr ""
+msgstr "% aturada"
 
 #: src/generate_report.cpp:292
 msgid "weapon range: "
@@ -7769,9 +7767,8 @@ msgid "Search"
 msgstr "Cerca"
 
 #: src/menu_events.cpp:1862
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "No hi ha objectius"
+msgstr "Actualment aquesta ordre no està disponible."
 
 #: src/menu_events.cpp:1873
 msgid ""
@@ -7780,9 +7777,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1978
-#, fuzzy
 msgid " No help available."
-msgstr "No hi ha objectius"
+msgstr " L'ajuda no està disponible."
 
 #: src/menu_events.cpp:2116
 msgid ""
@@ -7802,59 +7798,47 @@ msgstr ""
 
 #: src/menu_events.cpp:2124
 msgid "Mute an observer."
-msgstr ""
+msgstr "Silencia un observador."
 
 #: src/menu_events.cpp:2126
 msgid "Mute all observers."
-msgstr ""
+msgstr "Silencia tots els observadors."
 
 #: src/menu_events.cpp:2130
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "Envia una emoció o acció personal al xat. Forma d'ús: /me <missatge>"
+msgstr "Envia una emoció o acció personal al xat."
 
 #: src/menu_events.cpp:2133
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 "Envia un missatge privat. Durant la partida, no podeu enviar missatges a "
-"jugadors que controlin qualsevol bàndol. Forma d'ús: /whisper <sobrenom> "
-"<missatge>"
+"jugadors que no controlin un bàndol."
 
 #: src/menu_events.cpp:2139
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Canvia el nivell de detall del registre d'un domini."
 
 #: src/menu_events.cpp:2141
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr ""
-"Afegeix un jugador a la vostra llista d'ignorats. Forma d'ús: /list ignore "
-"<sobrenom>"
+msgstr "Afegeix un sobrenom a la vostra llista d'ignorats."
 
 #: src/menu_events.cpp:2143
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Afegit a la llista d'amics: "
+msgstr "Afegeix un sobrenom a la llista d'amics: "
 
 #: src/menu_events.cpp:2145
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Esborra un jugador a la vostra llista d'amics. Forma d'ús: /list remove "
-"<sobrenom>"
+msgstr "Esborra un jugador de la llista d'amics o ignorats."
 
 #: src/menu_events.cpp:2147
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Mostra la llista d'amics i ignorats. Forma d'ús: /list display"
+msgstr "Mostra la llista d'amics i ignorats."
 
 #: src/menu_events.cpp:2150
-#, fuzzy
 msgid "Display version information."
-msgstr "No s'ha trobat la informació sobre les eres."
+msgstr "Mostra la informació de la versió del joc."
 
 #: src/menu_events.cpp:2152
 msgid "Register your nick"
@@ -7878,7 +7862,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2283
 msgid "Refresh gui."
-msgstr ""
+msgstr "Actualitza la interfície d'usuari."
 
 #: src/menu_events.cpp:2285
 msgid "Switch a side to/from AI control."
@@ -7889,12 +7873,8 @@ msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
 #: src/menu_events.cpp:2290
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Esborra els missatges del xat.\n"
-"\n"
+msgstr "Esborra els missatges del xat."
 
 #: src/menu_events.cpp:2292
 msgid "Visualize the screen refresh procedure."
@@ -7905,13 +7885,12 @@ msgid "Save game."
 msgstr "Desa la partida."
 
 #: src/menu_events.cpp:2297
-#, fuzzy
 msgid "Quit game."
 msgstr "Surt del joc."
 
 #: src/menu_events.cpp:2301
 msgid "Save and quit."
-msgstr ""
+msgstr "Desa i surt."
 
 #: src/menu_events.cpp:2304
 msgid "Ignore replay errors."
@@ -7922,23 +7901,20 @@ msgid "Disable autosaves."
 msgstr ""
 
 #: src/menu_events.cpp:2308
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Esperant el següent escenari..."
+msgstr "Avança al següent escenari, o l'escenari identificat per «id»"
 
 #: src/menu_events.cpp:2311
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "S'està descarregant el següent nivell..."
+msgstr "Trieu el següent escenari"
 
 #: src/menu_events.cpp:2314
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Ordres del mode depuració"
+msgstr "Activa el mode depuració."
 
 #: src/menu_events.cpp:2316
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Desactiva el mode depuració."
 
 #: src/menu_events.cpp:2318
 msgid "Set the command used by the custom command hotkey"
@@ -8276,7 +8252,7 @@ msgstr "Mapa a jugar:"
 
 #: src/multiplayer_create.cpp:82 src/multiplayer_lobby.cpp:273
 msgid "Use map settings"
-msgstr "Paràmetres per defecte"
+msgstr "Utilitza els paràmetres per defecte"
 
 # NOTA: Aquest string no pot ser gaire llarg.
 #: src/multiplayer_create.cpp:83
@@ -8507,11 +8483,11 @@ msgstr "Sala de joc"
 
 #: src/multiplayer_lobby.cpp:673
 msgid "Observe Game"
-msgstr "Observa partida"
+msgstr "Observa la partida"
 
 #: src/multiplayer_lobby.cpp:674
 msgid "Join Game"
-msgstr "Unir-se"
+msgstr "Uneix-te"
 
 #: src/multiplayer_lobby.cpp:676
 msgid "Quick Replays"
@@ -8578,9 +8554,8 @@ msgid "No multiplayer sides found"
 msgstr "No s'ha trobat cap bàndol."
 
 #: src/multiplayer_wait.cpp:312
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Trieu el vostre bàndol:"
+msgstr "Trieu la vostra facció:"
 
 #: src/multiplayer_wait.cpp:312
 msgid "Starting position: "
@@ -8613,18 +8588,16 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "S'ha trobat un terreny amb cost de desplaçament inferior a 1."
 
 #: src/play_controller.cpp:103
-#, fuzzy
 msgid "Loading level"
-msgstr "S'està carregant la pantalla principal."
+msgstr "S'està carregant el nivell"
 
 #: src/play_controller.cpp:124
 msgid "Initializing teams"
 msgstr "S'estan inicialitzant els equips"
 
 #: src/play_controller.cpp:145
-#, fuzzy
 msgid "Loading units"
-msgstr "S'està llegint els fitxers de les unitats."
+msgstr "S'estan carregant les unitats"
 
 #: src/play_controller.cpp:152 src/play_controller.cpp:160
 msgid "Initializing display"
@@ -8880,9 +8853,8 @@ msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
 #: src/serialization/parser.cpp:356
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error a $pos"
+msgstr "$error, valor «$value» a $pos"
 
 #: src/statistics_dialog.cpp:68 src/statistics_dialog.cpp:123
 msgid "Recruits"
@@ -9063,9 +9035,8 @@ msgid "Help Wesnoth by sending us information"
 msgstr "Ajudeu Wesnoth enviant informació de les partides"
 
 #: src/unit.cpp:615
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Tipus d'unitat «$type|» desconegut"
+msgstr "Tipus d'unitat «$type|» desconegut mentre s'estaven generant els trets"
 
 #: src/unit.cpp:817
 msgid "Unknown unit type '$type|'"
@@ -9112,14 +9083,14 @@ msgstr[0] "cop"
 msgstr[1] "cops"
 
 #: src/unit_types.cpp:224
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% accuracy"
-msgstr "atac"
+msgstr "% precisió"
 
 #: src/unit_types.cpp:234
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% aturada"
 
 #: src/unit_types.cpp:1009
 msgid "chaotic"
