@@ -674,6 +674,12 @@ class TracksEditor:
         self.pixmap.draw_pixbuf(self.default_gc, icon, 0, 0, *rect)
         widget.queue_draw_area(*rect)
 
+    def flush(self, widget):
+        "Force pending events out."
+        self.expose_event(widget)
+        while gtk.events_pending():
+            gtk.main_iteration(False)
+
     def redraw(self, widget, delay=0):
         "Redraw the map and tracks."
         self.refresh_map()
@@ -686,6 +692,7 @@ class TracksEditor:
                     self.draw_feature(widget, item, False)
                     if delay:
                         time.sleep(delay)
+                        self.flush(widget)
         for id in self.journey.track_order:
             track = self.journey.tracks[id]
             if id in self.visible_set and id == self.journey.selected_id:
@@ -693,9 +700,8 @@ class TracksEditor:
                     self.draw_feature(widget, item, True)
                     if delay:
                         time.sleep(delay)
-        self.expose_event(widget)
-        while gtk.events_pending():
-            gtk.main_iteration(False)
+                        self.flush(widget)
+        self.flush(widget)
 
     def configure_event(self, widget, event):
         "Create a new backing pixmap of the appropriate size."
