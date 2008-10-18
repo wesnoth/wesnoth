@@ -1128,6 +1128,7 @@ bool game_controller::goto_editor()
 			return false;
 		}
 	}
+	loaded_game_ = "";
 	return true;
 }
 #endif

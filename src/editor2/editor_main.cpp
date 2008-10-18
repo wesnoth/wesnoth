@@ -51,6 +51,7 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 			}
 		}
 		editor_controller editor(game_conf, video, mc.get());
+		mc.release();
 		if (!map_error.empty()) {
 			gui::message_dialog(editor.gui(), _("Error loading map"), map_error).show();
 		}
