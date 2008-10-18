@@ -215,8 +215,9 @@ class JourneyTracks:
                 state = "after"
                 continue
             # Which track are we appending to?
+            # Ignore _COMPLETE macros, they're generated.
             m = re.search(define_re, line)
-            if m:
+            if m and "_COMPLETE" not in line:
                 self.selected_id = m.group(1)
                 if self.selected_id not in self.track_order:
                     self.track_order.append(self.selected_id)
@@ -685,9 +686,6 @@ class TracksEditor:
                     self.draw_feature(widget, item, False)
                     if delay:
                         time.sleep(delay)
-                        self.expose_event(widget)
-                        while gtk.events_pending():
-                            gtk.main_iteration(False)
         for id in self.journey.track_order:
             track = self.journey.tracks[id]
             if id in self.visible_set and id == self.journey.selected_id:
@@ -695,9 +693,7 @@ class TracksEditor:
                     self.draw_feature(widget, item, True)
                     if delay:
                         time.sleep(delay)
-                        self.expose_event(widget)
-                        while gtk.events_pending():
-                            gtk.main_iteration(False)
+        self.expose_event(widget)
         while gtk.events_pending():
             gtk.main_iteration(False)
 
@@ -912,7 +908,7 @@ class TracksEditor:
         if track_id not in self.visible_set:
             self.track_visibility_callback(self.controller[track_id], track_id)
         else:
-            self.redraw(self.drawing_area, delay=0.05)
+            self.redraw(self.drawing_area)
     def track_activity_callback(self, w, track_id):
         "Called (twice) when a track activity radiobutton is toggled."
         if w.get_active():
@@ -938,7 +934,8 @@ class TracksEditor:
             self.controller[track_id].radiobutton.set_active(False)
             self.journey.set_selected_track(self.visible_set[-1])
             self.controller[self.visible_set[-1]].radiobutton.set_active(True)
-        self.redraw(self.drawing_area, delay=0.05)
+        else:
+            self.redraw(self.drawing_area)
     def track_add_callback(self, w, basebutton):
         "Add a new track, and the controller for it, and select it."
         track_id = w.get_text()
@@ -949,7 +946,7 @@ class TracksEditor:
     def track_visibility_revert(self, w, response_id):
         "On response or window distruction, restore visibility set."
         self.visible_set = self.journey.track_order
-        self.redraw(self.drawing_area, delay=0.05)
+        self.redraw(self.drawing_area)
         self.visibility.destroy()
 
     def properties_handler(self, w):
