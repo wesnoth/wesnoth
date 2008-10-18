@@ -314,6 +314,25 @@ class JourneyTracks:
             rep += name + ": " + `track` + ":\n"
         return rep
 
+class ContextPopup:
+    def __init__(self, editor):
+        self.editor = editor
+        self.window = gtk.Window(gtk.WINDOW_POPUP)
+        self.window.set_transient_for(None)
+        self.window.set_position(gtk.WIN_POS_CENTER_ALWAYS)
+        self.window.set_name("trackplacer info")
+        self.vbox = gtk.VBox(False, 0)
+        self.window.add(self.vbox)
+        self.vbox.show()
+        self.window.show()
+        self.position = gtk.Label()
+        self.vbox.pack_start(self.position, expand=False, fill=False)
+        self.position.show()
+    def inform(self, x, y):
+        self.position.set_text("At (%d, %d):" % (x, y))
+    def destroy(self):
+        self.window.destroy()
+
 class TrackEditorIcon:
     def __init__(self, action, path):
         self.action = action
@@ -382,8 +401,10 @@ class TrackController:
     def track_delete_handler(self, w, track_id):
         if track_id in self.editor.visible_set:
             self.editor.visible_set.remove(track_id)
-        # FIXME: This redaw fails when we delete the last track.
-        self.editor.redraw(self.editor.drawing_area, delay=0.25)
+        if track_id == self.journey.selected_id:
+            self.editor.select_track(w, self.editor.visible_set[-1]) 
+        # FIXME: This redraw fails when we delete the last track.
+        self.editor.redraw(self.editor.drawing_area)
         self.editor.journey.remove_track(track_id)
         self.hbox.hide()
         del self.editor.controller[track_id]
@@ -406,9 +427,8 @@ class TracksEditor:
         self.action = "JOURNEY"
         self.selected = None
         self.visible_set = self.journey.track_order[:]
-
-        # Backing pixmap for drawing area
-        self.pixmap = None
+        self.context_popup = None
+        self.pixmap = None        # Backing pixmap for drawing area
 
         # Grab the map into a pixmap
         self.log("about to read map %s" % self.journey.mapfile)
@@ -594,12 +614,15 @@ class TracksEditor:
         self.drawing_area.connect("motion_notify_event", self.motion_notify_event)
         self.drawing_area.connect("button_press_event", self.button_press_event)
 
+        self.drawing_area.connect("button_release_event", self.button_release_event)
+
         self.drawing_area.connect("leave_notify_event",
                                   lambda w, e: self.coordwin.set_text(""))
 
         self.drawing_area.set_events(gtk.gdk.EXPOSURE_MASK
                                 | gtk.gdk.LEAVE_NOTIFY_MASK
                                 | gtk.gdk.BUTTON_PRESS_MASK
+                                | gtk.gdk.BUTTON_RELEASE_MASK
                                 | gtk.gdk.POINTER_MOTION_MASK
                                 | gtk.gdk.POINTER_MOTION_HINT_MASK)
 
@@ -771,8 +794,15 @@ class TracksEditor:
                 self.erase_feature(widget, (a, x, y))
                 self.journey.remove(x, y)
             self.log("Tracks are %s" % self.journey)
-        # If we ever implement a context menu for button 3, it goes here.
+        # Event button 3 - query
+        if event.button == 3:
+            self.context_popup = ContextPopup(self)
+            self.context_popup.inform(x, y)
         return True
+
+    def button_release_event(self, widget, event):
+        if self.context_popup is not None:
+            self.context_popup.destroy()
 
     def motion_notify_event(self, widget, event):
         if event.is_hint:
