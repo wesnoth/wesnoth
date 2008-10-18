@@ -57,7 +57,7 @@ The radio buttons near the top left corner control which icon is placed by a lef
 
 The rule for adding markers to the selected track is as follows: if the two markers closest to the mouse pointer are adjacent on the track, insert the new marker between them in the track order. Otherwise, append it to the end of the track.
 
-The Animate button clears the icons off the map and places them with a delay after each placement, so you can see what order they are drawn in.  If you have multiple tracks, only those currently visible will be edited.
+The Animate button clears the icons off the map and places them with a delay after each placement, so you can see what order they are drawn in.  If you have multiple tracks, only those currently visible will be animated.
 
 The Save button pops up a file selector asking you to supply a filename to which the track should be saved in .cfg format, as a series of macros suitable for inclusion in WML. Any other extension than .cfg on the filename will raise an error.
 
@@ -140,8 +140,6 @@ class JourneyTracks:
         self.selected_id = name
     def write(self, fp):
         "Record a set of named journey tracks."
-        #if os.stat(fp.name).st_mtime > self.time_last_read:
-        #    raise IOException("File was modified since last read.", fp.name)
         if fp.name.endswith(".cfg"):
             fp.write(self.before)
             fp.write("# trackplacer: tracks begin\n#\n")
@@ -246,7 +244,6 @@ class JourneyTracks:
         else:
             raise IOException("Missing map declaration.", fp.name)
         fp.close()
-        #self.time_last_read = time.time()
         self.modified = 0
     def __getitem__(self, n):
         return self.tracks[self.selected_id][n]
@@ -402,6 +399,7 @@ class TracksEditor:
         self.journey = JourneyTracks()
         self.last_read = None
         self.journey.read(path)
+        self.time_last_io = time.time()
         if path.endswith(".cfg"):
             self.last_read = path
         self.log("Initial track is %s" % self.journey)
@@ -849,14 +847,27 @@ class TracksEditor:
             if filename.startswith(os.getcwd()):
                 filename = filename[len(os.getcwd())+1:]
 
-            # Request overwrite confirmation if this is a save-as
-            if os.path.exists(filename) and filename != self.last_read:
+            # Request overwrite confirmation in some circumstances
+            confirmation_required = None
+            if os.path.exists(filename):
+                if filename != self.last_read:
+                    confirmation_required = "You have requested saving "\
+                                            "to a file other than %s, " \
+                                            "and that file already exists." \
+                                            % self.last_read
+                elif os.stat(filename).st_mtime > self.time_last_io:
+                    confirmation_required = "File has changed "\
+                                            "since last read or written." 
+            if confirmation_required:
+                confirmation_required += "\nReally overwrite %s?" % filename
                 save_check = gtk.Dialog(title="Really overwrite?",
                                              parent=None, 
                                              flags=gtk.DIALOG_MODAL,
-                                             buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
-                                                      gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
-                label = gtk.Label("Overwrite existing data in %s?" % filename)
+                                             buttons=(gtk.STOCK_CANCEL,
+                                                      gtk.RESPONSE_REJECT,
+                                                      gtk.STOCK_OK,
+                                                      gtk.RESPONSE_ACCEPT))
+                label = gtk.Label(confirmation_required)
                 save_check.vbox.pack_start(label)
                 label.show()
                 response = save_check.run()
@@ -873,6 +884,7 @@ class TracksEditor:
             if not self.journey.mapfile:
                 self.journey.mapfile = filename 
             self.journey.write(fp)
+            self.time_last_io = time.time()
 
     def help_handler(self, w):
         "Display help."
