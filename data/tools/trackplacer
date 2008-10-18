@@ -734,24 +734,16 @@ class TracksEditor:
     def redraw(self, widget, delay=0):
         "Redraw the map and tracks."
         self.refresh_map()
-        # Draw all unselected tracks before the selected one,
-        # so any icons coinciding will be drawn in the right order.
         for id in self.journey.track_order:
             track = self.journey.tracks[id]
-            if id in self.visible_set and id != self.journey.selected_id:
-                for item in self.journey.tracks[id]:
-                    self.draw_feature(widget, item, False)
-                    if delay:
-                        time.sleep(delay)
-                        self.flush(widget)
-        for id in self.journey.track_order:
-            track = self.journey.tracks[id]
-            if id in self.visible_set and id == self.journey.selected_id:
-                for item in self.journey.tracks[id]:
-                    self.draw_feature(widget, item, True)
-                    if delay:
-                        time.sleep(delay)
-                        self.flush(widget)
+            for item in self.journey.tracks[id]:
+                self.draw_feature(widget, item, id == self.journey.selected_track())
+                if delay:
+                    time.sleep(delay)
+                    self.flush(widget)
+        # To ensure items on selected track are on top, redraw them
+        for item in self.journey.selected_track():
+            self.draw_feature(widget, item, True)
         self.flush(widget)
 
     def configure_event(self, widget, event):
