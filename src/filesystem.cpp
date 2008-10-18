@@ -607,7 +607,13 @@ static std::string read_stream(std::istream& s)
 	return ss.str();
 }
 
-std::istream *istream_file(std::string fname)
+std::istream *istream_file(const std::string& fname, bool relative_from_game_path /*=true*/)
+{
+	std::string fname2(fname);
+	return istream_file(fname2, relative_from_game_path);
+}
+
+std::istream *istream_file(std::string& fname, bool relative_from_game_path /*=true*/)
 {
 	LOG_FS << "streaming " << fname << " for reading.\n";
 	if (fname.empty())
@@ -616,10 +622,10 @@ std::istream *istream_file(std::string fname)
 		return new std::ifstream();
 	}
 #ifndef _WIN32
-	if (fname[0] != '/') {
+	if (relative_from_game_path && fname[0] != '/') {
 #else
 	// Check if not start with driver letter
-	if (!std::isalpha(fname[0])) {
+	if (relative_from_game_path && !std::isalpha(fname[0])) {
 #endif
 		if (!game_config::path.empty())
 			fname = game_config::path + "/" + fname;
@@ -634,9 +640,15 @@ std::istream *istream_file(std::string fname)
 
 }
 
-std::string read_file(std::string const &fname)
+std::string read_file(const std::string &fname, bool relative_from_game_path /*=true*/)
 {
-	scoped_istream s = istream_file(fname);
+	scoped_istream s = istream_file(fname, relative_from_game_path);
+	return read_stream(*s);
+}
+
+std::string read_file(std::string &fname, bool relative_from_game_path /*=true*/)
+{
+	scoped_istream s = istream_file(fname, relative_from_game_path);
 	return read_stream(*s);
 }
 

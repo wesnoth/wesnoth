@@ -60,7 +60,7 @@ editor_map::editor_map(const gamemap& map)
 
 editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
 {
-	std::string map_string = read_file(filename);
+	std::string map_string = read_file(filename, false);
 	if (map_string.empty()) {
 		std::string message = _("Empty map file or file not found");
 		throw editor_map_load_exception(filename, message);
