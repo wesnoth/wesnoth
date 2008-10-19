@@ -500,6 +500,69 @@ class TracksEditor:
         vbox.add(controls)
         controls.show()
 
+        # Someday, when set_icon_widget() works correctly on RadioToolButtons,
+        # ee can replace most of what's below witn this.
+        if 0:
+            # Set up toolbar style
+            toolbar = gtk.Toolbar()
+            toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
+            toolbar.set_style(gtk.TOOLBAR_BOTH)
+            toolbar.set_border_width(1)
+            vbox.add(toolbar)
+            toolbar.show()
+
+            # Marker selection
+            basebutton = None
+            for action in icon_presentation_order:
+                icon = self.selected_dictionary[action]
+                button = gtk.RadioToolButton(basebutton)
+                button.set_icon_widget(icon.image)
+                if not basebutton:
+                    button.set_active(True)
+                    basebutton = button
+                button.connect("toggled", self.button_callback, icon.action)
+                button.show()
+                self.tooltips.set_tip(button, "Place %s markers" % action.lower())
+
+            # Toolbar elements.
+            quit = gtk.ToolButton(gtk.STOCK_QUIT)
+            toolbar.insert(quit, -1)
+            self.tooltips.set_tip(quit, "Leave this program.")
+            quit.connect("clicked", self.quit)
+            quit.show()
+
+            help = gtk.ToolButton(gtk.STOCK_HELP)
+            toolbar.insert(help, -1)
+            self.tooltips.set_tip(quit, "Get command help for this program.")
+            help.connect("clicked", self.help_handler)
+            help.show()
+
+            save = gtk.ToolButton(gtk.STOCK_SAVE)
+            toolbar.insert(save, -1)
+            self.tooltips.set_tip(save, "Save journey tracks.")
+            help.connect("clicked", self.save_handler)
+            save.show()
+
+            properties = gtk.ToolButton(gtk.STOCK_PROPERTIES)
+            toolbar.insert(properties, -1)
+            self.tooltips.set_tip(properties, "St properties of the tracks.")
+            help.connect("clicked", self.properties_handler)
+            properties.show()
+
+            animate = gtk.ToolButton(gtk.STOCK_REFRESH)
+            animate.set_label(label="Animate")
+            toolbar.insert(animate, -1)
+            self.tooltips.set_tip(animate, "Animate tracks as in story parts.")
+            help.connect("clicked", self.animate_handler)
+            animate.show()
+
+            tracks = gtk.ToolButton(gtk.STOCK_INDEX)
+            tracks.set_label(label="Tracks")
+            toolbar.insert(tracks, -1)
+            self.tooltips.set_tip(tracks, "Tracks tracks as in story parts.")
+            help.connect("clicked", self.tracks_handler)
+            tracks.show()
+
         # The radiobutton array on the left
         radiobox = gtk.HBox()
         controls.pack_start(radiobox, expand=False, fill=False, padding=0)
