@@ -160,8 +160,9 @@ class JourneyTracks:
                 endpoints = map(lambda (i, t): i, index_tuples)
                 if track[-1][0] not in segmenters:
                     endpoints.append(len(track)-1)
+                outname = name.replace(" ", "_").upper()
                 for (i, e) in enumerate(endpoints):
-                    fp.write("#define %s_STAGE%d\n" % (name, i+1,))
+                    fp.write("#define %s_STAGE%d\n" % (outname, i+1,))
                     for j in range(0, e+1):
                         age="OLD"
                         if i == 0 or j > endpoints[i-1]:
