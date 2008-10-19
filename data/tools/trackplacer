@@ -740,12 +740,11 @@ class TracksEditor:
     def redraw(self, widget, delay=0):
         "Redraw the map and tracks."
         self.refresh_map()
-        for id in self.journey.track_order:
-            if id not in self.visible_set:
+        for track_id in self.journey.track_order:
+            if track_id not in self.visible_set:
                 continue
-            track = self.journey.tracks[id]
-            for item in self.journey.tracks[id]:
-                self.draw_feature(widget, item, id == self.journey.selected_track())
+            for item in self.journey.tracks[track_id]:
+                self.draw_feature(widget, item, track_id == self.journey.selected_id)
                 if delay:
                     time.sleep(delay)
                     self.flush(widget)
