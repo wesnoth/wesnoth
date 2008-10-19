@@ -611,6 +611,7 @@ class TracksEditor:
         about.connect("clicked", self.about_handler)
         about.show()
 
+        # FIXNE: This code is a nasty mess.  There must be a better way.
         # Create the drawing area on a viewport that scrolls if needed.
         # Most of the hair here is in trying to query the height
         # and depth of the widgets surrounding the scrolling area.
@@ -673,11 +674,7 @@ class TracksEditor:
 
     def refresh_map(self, x=0, y=0, xs=-1, ys=-1):
         "Refresh part of the drawing area with the appropriate map rectangle."
-        if xs == -1:
-            xs = self.map_width - x
-        if ys == -1:
-            ys = self.map_height - y
-        self.log("Refreshing map in (%d, %d, %d, %d, %d, %d}" % (x, y, x, y, xs, ys))
+        self.log("Refreshing map in (%d, %d, %d, %d, %d, %d}" % (x,y,x,y,xs,ys))
         self.pixmap.draw_drawable(self.default_gc, self.map, x, y, x, y, xs, ys)
 
     def box(self, (action, x, y)):
