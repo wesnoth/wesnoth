@@ -70,8 +70,6 @@ The Tracks button pops up a list of controls, one for each track.  You can chang
 The Help button displays this message.
 
 The Quit button ends your session, asking for confirmation if you have unsaved changes.
-
-Design and implementation by Eric S. Raymond, October 2008.
 '''
 
 import sys, os, re, math, time, exceptions, getopt
@@ -495,80 +493,23 @@ class TracksEditor:
 
         self.tooltips = gtk.Tooltips()
 
-        # FIXME: make the control box fixed-size
-        controls = gtk.HBox()
-        vbox.add(controls)
-        controls.show()
+        # Set up toolbar style
+        toolbar = gtk.Toolbar()
+        toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
+        toolbar.set_style(gtk.TOOLBAR_BOTH)
+        toolbar.set_border_width(1)
+        vbox.add(toolbar)
+        toolbar.show()
 
-        # Someday, when set_icon_widget() works correctly on RadioToolButtons,
-        # ee can replace most of what's below witn this.
-        if 0:
-            # Set up toolbar style
-            toolbar = gtk.Toolbar()
-            toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
-            toolbar.set_style(gtk.TOOLBAR_BOTH)
-            toolbar.set_border_width(1)
-            vbox.add(toolbar)
-            toolbar.show()
-
-            # Marker selection
-            basebutton = None
-            for action in icon_presentation_order:
-                icon = self.selected_dictionary[action]
-                button = gtk.RadioToolButton(basebutton)
-                button.set_icon_widget(icon.image)
-                if not basebutton:
-                    button.set_active(True)
-                    basebutton = button
-                button.connect("toggled", self.button_callback, icon.action)
-                button.show()
-                self.tooltips.set_tip(button, "Place %s markers" % action.lower())
-
-            # Toolbar elements.
-            quit = gtk.ToolButton(gtk.STOCK_QUIT)
-            toolbar.insert(quit, -1)
-            self.tooltips.set_tip(quit, "Leave this program.")
-            quit.connect("clicked", self.quit)
-            quit.show()
-
-            help = gtk.ToolButton(gtk.STOCK_HELP)
-            toolbar.insert(help, -1)
-            self.tooltips.set_tip(quit, "Get command help for this program.")
-            help.connect("clicked", self.help_handler)
-            help.show()
-
-            save = gtk.ToolButton(gtk.STOCK_SAVE)
-            toolbar.insert(save, -1)
-            self.tooltips.set_tip(save, "Save journey tracks.")
-            help.connect("clicked", self.save_handler)
-            save.show()
-
-            properties = gtk.ToolButton(gtk.STOCK_PROPERTIES)
-            toolbar.insert(properties, -1)
-            self.tooltips.set_tip(properties, "St properties of the tracks.")
-            help.connect("clicked", self.properties_handler)
-            properties.show()
-
-            animate = gtk.ToolButton(gtk.STOCK_REFRESH)
-            animate.set_label(label="Animate")
-            toolbar.insert(animate, -1)
-            self.tooltips.set_tip(animate, "Animate tracks as in story parts.")
-            help.connect("clicked", self.animate_handler)
-            animate.show()
-
-            tracks = gtk.ToolButton(gtk.STOCK_INDEX)
-            tracks.set_label(label="Tracks")
-            toolbar.insert(tracks, -1)
-            self.tooltips.set_tip(tracks, "Tracks tracks as in story parts.")
-            help.connect("clicked", self.tracks_handler)
-            tracks.show()
-
-        # The radiobutton array on the left
+        # Toolbar widget has a fit when we try to pack these separately. 
+        radiobox1 = gtk.ToolItem()
         radiobox = gtk.HBox()
-        controls.pack_start(radiobox, expand=False, fill=False, padding=0)
+        radiobox1.add(radiobox)
+        radiobox1.show()
         radiobox.show()
+        toolbar.insert(radiobox1, -1)
 
-        # Fake icon-labeled buttons with liberal use of labels...
+        # Marker selection
         basebutton = None
         for action in icon_presentation_order:
             icon = self.selected_dictionary[action]
@@ -582,7 +523,7 @@ class TracksEditor:
                 button.set_active(True)
                 basebutton = button
             button.connect("toggled", self.button_callback, icon.action)
-            radiobox.pack_start(button, expand=True, fill=True, padding=0)
+            radiobox.pack_start(button, padding=7)
             button.show()
             self.tooltips.set_tip(button, "Place %s markers" % action.lower())
 
@@ -596,7 +537,7 @@ class TracksEditor:
         delimage.show()
         bbox.show()
         button.connect("toggled", self.button_callback, "DELETE")
-        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        radiobox.pack_start(button, padding=7)
         button.show()
         self.tooltips.set_tip(button, "Remove markers")
 
@@ -610,61 +551,60 @@ class TracksEditor:
         copyimage.show()
         bbox.show()
         button.connect("toggled", self.button_callback, "COPY")
-        radiobox.pack_start(button, expand=True, fill=True, padding=0)
+        radiobox.pack_start(button, padding=7)
         button.show()
         self.tooltips.set_tip(button, "Copy marker from an old track")
 
-        # The coordinate display in the middle
-        self.coordwin = gtk.Label()
-        controls.pack_start(self.coordwin, expand=True, fill=False, padding=0)
-        self.coordwin.show()
+        # Other toolbar elements.
+        spacer = gtk.SeparatorToolItem()
+        toolbar.add(spacer)
+        spacer.set_draw(False)
+        spacer.set_expand(True)
+        spacer.show()
 
-        # The button array on the right
-        buttonbox = gtk.HBox()
-        controls.pack_end(buttonbox, expand=False, fill=False, padding=0)
-        buttonbox.show()
+        quit = gtk.ToolButton(gtk.STOCK_QUIT)
+        toolbar.insert(quit, -1)
+        self.tooltips.set_tip(quit, "Leave this program.")
+        quit.connect("clicked", self.quit)
+        quit.show()
 
-        # A quit button
-        button = gtk.Button("Quit")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.quit, self.window)
-        self.tooltips.set_tip(button, "Leave this program.")
-        button.show()
+        save = gtk.ToolButton(gtk.STOCK_SAVE)
+        toolbar.insert(save, -1)
+        self.tooltips.set_tip(save, "Save journey tracks.")
+        save.connect("clicked", self.save_handler)
+        save.show()
 
-        # A help button
-        button = gtk.Button("Help")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.help_handler, self.window)
-        self.tooltips.set_tip(button, "See a help message describing the controls.")
-        button.show()
+        properties = gtk.ToolButton(gtk.STOCK_PROPERTIES)
+        toolbar.insert(properties, -1)
+        self.tooltips.set_tip(properties, "St properties of the tracks.")
+        properties.connect("clicked", self.properties_handler)
+        properties.show()
 
-        # A tracks button
-        button = gtk.Button("Tracks")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.tracks_handler, self.window)
-        self.tooltips.set_tip(button, "Select tracks to be displayed.")
-        button.show()
+        animate = gtk.ToolButton(gtk.STOCK_REFRESH)
+        animate.set_label(label="Animate")
+        toolbar.insert(animate, -1)
+        self.tooltips.set_tip(animate, "Animate tracks as in story parts.")
+        animate.connect("clicked", self.animate_handler)
+        animate.show()
 
-        # A properties button
-        button = gtk.Button("Properties")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.properties_handler, self.window)
-        self.tooltips.set_tip(button, "Set properties of the track.")
-        button.show()
+        tracks = gtk.ToolButton(gtk.STOCK_INDEX)
+        tracks.set_label(label="Tracks")
+        toolbar.insert(tracks, -1)
+        self.tooltips.set_tip(tracks, "Tracks tracks as in story parts.")
+        tracks.connect("clicked", self.tracks_handler)
+        tracks.show()
 
-        # A save button
-        button = gtk.Button("Save")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.save_handler, self.window)
-        self.tooltips.set_tip(button, "Save track in .cfg format.")
-        button.show()
+        help = gtk.ToolButton(gtk.STOCK_HELP)
+        toolbar.insert(help, -1)
+        self.tooltips.set_tip(quit, "Get command help for this program.")
+        help.connect("clicked", self.help_handler)
+        help.show()
 
-        # An animate button
-        button = gtk.Button("Animate")
-        buttonbox.pack_end(button, expand=False, fill=False, padding=10)
-        button.connect_object("clicked", self.animate_handler, self.window)
-        self.tooltips.set_tip(button, "Animate dot-drawing as in a story part.")
-        button.show()
+        about = gtk.ToolButton(gtk.STOCK_ABOUT)
+        toolbar.insert(about, -1)
+        self.tooltips.set_tip(quit, "See credits for this program.")
+        about.connect("clicked", self.about_handler)
+        about.show()
 
         # Create the drawing area on a viewport that scrolls if needed.
         # Most of the hair here is in trying to query the height
@@ -678,7 +618,7 @@ class TracksEditor:
         screen_height = gtk.gdk.screen_height()
         self.log("Map size = (%d,%d)" % (self.map_width, self.map_height))
         self.log("Screen size = (%d,%d)" % (screen_width, screen_height))
-        controls_width, controls_height = controls.size_request() 
+        controls_width, controls_height = toolbar.size_request() 
         self.log("Control box size = (%d,%d)"%(controls_width, controls_height))
         x_frame_width = WINDOW_FRAME_WIDTH
         y_frame_width = WINDOW_FRAME_HEIGHT + controls_height
@@ -706,8 +646,8 @@ class TracksEditor:
 
         self.drawing_area.connect("button_release_event", self.button_release_event)
 
-        self.drawing_area.connect("leave_notify_event",
-                                  lambda w, e: self.coordwin.set_text(""))
+        #self.drawing_area.connect("leave_notify_event",
+        #                          lambda w, e: self.coordwin.set_text(""))
 
         self.drawing_area.set_events(gtk.gdk.EXPOSURE_MASK
                                 | gtk.gdk.LEAVE_NOTIFY_MASK
@@ -894,7 +834,7 @@ class TracksEditor:
         else:
             x = event.x
             y = event.y
-        self.coordwin.set_text("(%d, %d)" % (x, y))
+        #self.coordwin.set_text("(%d, %d)" % (x, y))
         state = event.state
 
         # This code enables dragging icons wit h the middle button.
@@ -1006,6 +946,15 @@ class TracksEditor:
                               flags=gtk.DIALOG_DESTROY_WITH_PARENT,
                               buttons=gtk.BUTTONS_OK)
         w.set_markup(gui_help)
+        w.run()
+        w.destroy()
+
+    def about_handler(self, w):
+        "Display about information."
+        w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                              flags=gtk.DIALOG_DESTROY_WITH_PARENT,
+                              buttons=gtk.BUTTONS_OK)
+        w.set_markup("By Eric S. Raymond for the Wesnoth project, October 2008")
         w.run()
         w.destroy()
 
