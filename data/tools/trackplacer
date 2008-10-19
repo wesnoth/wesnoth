@@ -49,8 +49,6 @@ GUI.
 '''
 
 gui_help = '''\
-This is trackplacer, an editor for visually editing sets of journey tracks on Battle For Wesnoth maps.
-
 You are editing or creating a set of named tracks; at any given time there will one track that is selected for editing.  For campaigns with a linear narrative there will be only one track, always selected, and you will not have to concern yourself about its name.  If your campaign has a non-linear structure, you will want to create one track for each segment.
 
 The radio buttons near the top left corner control which icon is placed by a left click.  The two rightmost are special; when the trashcan is clicked a left click deletes already-placed icons, and the convert/copy icon tries to copy a nearby icon from an unselected track onto the selected one, preserving its pixel coordinates exactly. Every time you place an icon, it is added to the currently selected track.  You may also drag icons with the middle button.
@@ -71,6 +69,13 @@ The Help button displays this message.
 
 The Quit button ends your session, asking for confirmation if you have unsaved changes.
 '''
+
+gui_about = '''\
+This is trackplacer, an editor for visually editing sets of journey tracks on Battle For Wesnoth maps.
+
+By Eric S. Raymond for the Wesnoth project, October 2008
+'''
+
 
 import sys, os, re, math, time, exceptions, getopt
 
@@ -590,7 +595,7 @@ class TracksEditor:
         tracks = gtk.ToolButton(gtk.STOCK_INDEX)
         tracks.set_label(label="Tracks")
         toolbar.insert(tracks, -1)
-        self.tooltips.set_tip(tracks, "Tracks tracks as in story parts.")
+        self.tooltips.set_tip(tracks, "Add, edit, delete and rename tracks.")
         tracks.connect("clicked", self.tracks_handler)
         tracks.show()
 
@@ -954,7 +959,7 @@ class TracksEditor:
         w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
                               flags=gtk.DIALOG_DESTROY_WITH_PARENT,
                               buttons=gtk.BUTTONS_OK)
-        w.set_markup("By Eric S. Raymond for the Wesnoth project, October 2008")
+        w.set_markup(gui_about)
         w.run()
         w.destroy()
 
