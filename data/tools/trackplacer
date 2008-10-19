@@ -73,7 +73,7 @@ The Quit button ends your session, asking for confirmation if you have unsaved c
 gui_about = '''\
 This is trackplacer, an editor for visually editing sets of journey tracks on Battle For Wesnoth maps.
 
-By Eric S. Raymond for the Wesnoth project, October 2008
+By Eric S. Raymond for the Battle For Wesnoth project, October 2008
 '''
 
 
@@ -558,7 +558,7 @@ class TracksEditor:
         button.connect("toggled", self.button_callback, "COPY")
         radiobox.pack_start(button, padding=7)
         button.show()
-        self.tooltips.set_tip(button, "Copy marker from an old track")
+        self.tooltips.set_tip(button, "Copy marker from an unselected track")
 
         # Other toolbar elements.
         spacer = gtk.SeparatorToolItem()
