@@ -658,7 +658,7 @@ namespace {
 			(screen)->scroll_to_tile(u->first,game_display::SCROLL,utils::string_bool(check_fogged,false));
 		}
 	}
-	
+
 	// store time of day config in a WML variable; useful for those who
 	// are too lazy to calculate the corresponding time of day for a given turn,
 	// or if the turn / time-of-day sequence mutates in a scenario.
@@ -1797,7 +1797,7 @@ namespace {
 		bool unit_recalled = false;
 		config temp_config(cfg.get_config());
 		// Prevent the recall unit filter from using the location as a criterion
-		
+
 		/**
 		 * @todo FIXME: we should design the WML to avoid these types of
 		 * collisions; filters should be named consistently and always have a
@@ -2099,6 +2099,20 @@ namespace {
 						if (fire_event)
 						{
 							game_events::fire("die", death_loc, death_loc);
+
+							char buf[50];
+							snprintf(buf,sizeof(buf),"%d",event_info.loc1.x+1);
+							state_of_game->set_variable("x1", buf);
+
+							snprintf(buf,sizeof(buf),"%d",event_info.loc1.y+1);
+							state_of_game->set_variable("y1", buf);
+
+							snprintf(buf,sizeof(buf),"%d",event_info.loc2.x+1);
+							state_of_game->set_variable("x2", buf);
+
+							snprintf(buf,sizeof(buf),"%d",event_info.loc2.y+1);
+							state_of_game->set_variable("y2", buf);
+
 							un = units->find(death_loc);
 							if(un != units->end() && death_loc.matches_unit(un->second)) {
 								units->erase(un);
@@ -2140,7 +2154,7 @@ namespace {
 	}
 
 	// Fire any events
-	WML_HANDLER_FUNCTION(fire_event,/*handler*/,/*event_info*/,cfg)
+	WML_HANDLER_FUNCTION(fire_event,/*handler*/,event_info,cfg)
 	{
 		map_location loc1,loc2;
 		config data;
@@ -2161,6 +2175,19 @@ namespace {
 			data.add_child("second", cfg.child("secondary_attack").get_parsed_config());
 		}
 		game_events::fire(cfg["name"],loc1,loc2,data);
+
+		char buf[50];
+		snprintf(buf,sizeof(buf),"%d",event_info.loc1.x+1);
+		state_of_game->set_variable("x1", buf);
+
+		snprintf(buf,sizeof(buf),"%d",event_info.loc1.y+1);
+		state_of_game->set_variable("y1", buf);
+
+		snprintf(buf,sizeof(buf),"%d",event_info.loc2.x+1);
+		state_of_game->set_variable("x2", buf);
+
+		snprintf(buf,sizeof(buf),"%d",event_info.loc2.y+1);
+		state_of_game->set_variable("y2", buf);
 	}
 
 	// Setting of menu items
