@@ -122,10 +122,16 @@ def within(x, y, (l, t, r, d)):
         return True
     return False
 
-def overlaps((x, y, xd, yd), rect):
+def overlaps((x1,y1,x1d,y1d),(x2,y2,x2d,y2d)):
     "Do two rectangles overlap?"
-    return within(x, y, rect) or within(x+xd-1, y, rect) or \
-           within(x, y+yd-1, rect) or within(x+xd-1, y+yd+1, rect)
+    return within(x1, y1, (x2, y2, x2, y2d)) or \
+           within(x1+x1d-1, y1, (x2, y2, x2, y2d)) or \
+           within(x1, y1+y1d-1, (x2, y2, x2, y2d)) or \
+           within(x1+x1d-1, y1+y1d+1, (x2, y2, x2, y2d)) or \
+           within(x2, y2, (x1, y1, x1, y1d)) or \
+           within(x2+x2d-2, y2, (x1, y1, x1, y1d)) or \
+           within(x2, y2+y2d-2, (x1, y1, x1, y1d)) or \
+           within(x2+x2d-2, y2+y2d+2, (x1, y1, x1, y1d))
 
 class JourneyTracks:
     "Represent a set of named journey tracks on a map."
@@ -348,7 +354,7 @@ class ContextPopup:
                 if within(x, y, self.editor.box(item)):
                     stagecount = 0
                     for i in range(possible):
-                        (action, x, y) = self.editor.journey[i]
+                        (action, xn, yn) = self.editor.journey[i]
                         if action in segmenters:
                             stagecount += 1
                     local.append((name, possible, self.editor.journey[possible], stagecount))
