@@ -344,15 +344,20 @@ class ContextPopup:
         for name in self.editor.journey.track_order:
             # Gather info
             self.editor.journey.set_selected_track(name)
-            possible = self.editor.snap_to(x, y)
-            if possible is not None:
-                local.append((name, possible, self.editor.journey[possible]))
+            for (possible, item) in self.editor.journey.neighbors(x, y):
+                if within(x, y, self.editor.box(item)):
+                    stagecount = 0
+                    for i in range(possible):
+                        (action, x, y) = self.editor.journey[i]
+                        if action in segmenters:
+                            stagecount += 1
+                    local.append((name, possible, self.editor.journey[possible], stagecount))
             self.editor.journey.set_selected_track(save_selected)
         # Display it
         if local:
-            for (name, index, (action, x, y)) in local:
-                legend = "%s at (%d, %d) is %s[%d]" \
-                         % (action.capitalize(), x,y, name, index)
+            for (name, index, (action, x, y), sc) in local:
+                legend = "%s at (%d, %d) is %s[%d], stage %d" \
+                         % (action.capitalize(), x,y, name, index, sc+1)
                 label = gtk.Label(legend)
                 label.show()
                 self.vbox.add(label)
@@ -652,8 +657,7 @@ class TracksEditor:
 
         self.drawing_area.connect("button_release_event", self.button_release_event)
 
-        #self.drawing_area.connect("leave_notify_event",
-        #                          lambda w, e: self.coordwin.set_text(""))
+        self.drawing_area.connect("leave_notify_event", self.leave_area_event)
 
         self.drawing_area.set_events(gtk.gdk.EXPOSURE_MASK
                                 | gtk.gdk.LEAVE_NOTIFY_MASK
@@ -848,6 +852,11 @@ class TracksEditor:
                self.draw_feature(widget, (action, x, y), True)
                self.log("Tracks are %s" % self.journey)
         return True
+
+    def leave_area_event(self, w, e):
+        if self.context_popup:
+            self.context_popup.destroy()
+        #self.coordwin.set_text(""))
 
     def quit(self, w):
         if self.journey.has_unsaved_changes():
