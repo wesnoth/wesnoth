@@ -770,7 +770,7 @@ def hack_syntax(filename, lines):
             lines[i] = lines[i].replace("FLAG_RED_CENTERED", "NEW_REST")    
         elif "{FLAG_WHITE_CENTERED" in lines[i]:
             lines[i] = lines[i].replace("FLAG_WHITE_CENTERED", "OLD_REST")
-        elif "{DOT " in lines[i]:
+        elif "{DOT " in lines[i] or "CROSS" in lines[i]:
             m = re.search("{(DOT|CROSS) ([0-9]+) ([0-9]+)}", lines[i])
             if m:
                 n = m.group(1)
