@@ -1176,7 +1176,7 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 	time_taken = SDL_GetTicks() - ticks;
 	LOG_AI << "analysis took " << time_taken << " ticks\n";
 
-	if(choice_rating > current_team().caution()) {
+	if(choice_rating > 0.0 /*current_team().caution()*/) {
 		location from   = choice_it->movements[0].first;
 		location to     = choice_it->movements[0].second;
 		location target_loc = choice_it->target;

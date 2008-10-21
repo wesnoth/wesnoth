@@ -157,7 +157,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		if (u->second.can_recruit() && current_team().is_enemy(u->second.side())
 		&& !u->second.invisible(u->first, units_, teams_)) {
 			assert(map_.on_board(u->first));
-			LOG_AI << "found enemy leader target... " << u->first << " with value: " << current_team().leader_value() << "\n";
+			LOG_AI << "found enemy leader (side: " << u->second.side() << ") target... " << u->first << " with value: " << current_team().leader_value() << "\n";
 			targets.push_back(target(u->first,current_team().leader_value(),target::LEADER));
 		}
 
@@ -439,7 +439,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 
 		assert(map_.on_board(tg->loc));
 
-		const double locStopValue = 500.0;
+		const double locStopValue = std::min(tg->value / best_rating, 500.0);
 		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
 		if (cur_route.move_left == cost_calc.getNoPathValue())
