@@ -1127,8 +1127,8 @@ bool game_controller::goto_editor()
 		if (start_editor(loaded_game_) == editor2::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
+		loaded_game_ = "";	
 	}
-	loaded_game_ = "";
 	return true;
 }
 #endif
