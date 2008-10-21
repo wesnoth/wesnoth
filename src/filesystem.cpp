@@ -452,7 +452,12 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 	const char* const appdata = getenv("APPDATA");
 #else
 	const char* appdata = "";
-#endif
+#endif /*APPDATA_USERDATA*/
+	if (path.size() > 2 && path[1] == ':') {
+		//allow absolute path override 
+		game_config::preferences_dir = path;
+		return;
+	}	
 	if (strlen(appdata) > 0)
 	{
 		if (path.empty())
@@ -465,7 +470,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 		if (path.empty())
 		{
 			path = "userdata";
-		}
+		}	
 #ifndef APPDATA_USERDATA
 		else
 		{
@@ -474,7 +479,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 			game_config::preferences_dir = appdata + std::string("/") + path;
 			return;
 		}
-#endif
+#endif /*APPDATA_USERDATA*/
 		char buf[512];
 		const char* const res = getcwd(buf,sizeof(buf));
 		if (res == NULL)
@@ -489,7 +494,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 		}
 	}
 
-#else
+#else /*_WIN32*/
 	if (path.empty()) {
 		path = PREFERENCES_DIR;
 	}
@@ -511,7 +516,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 	game_config::preferences_dir = home + path;
 #endif
 
-#endif
+#endif /*_WIN32*/
 	user_data_dir = setup_user_data_dir();
 }
 
@@ -1017,7 +1022,9 @@ scoped_istream& scoped_istream::operator=(std::istream *s)
 
 scoped_istream::~scoped_istream()
 {
+	std::cerr << "deleting stream";
 	delete stream;
+	std::cerr << " ok\n";
 }
 
 scoped_ostream& scoped_ostream::operator=(std::ostream *s)
