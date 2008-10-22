@@ -61,7 +61,7 @@
 static void exit_sighup(int signal) {
 	assert(signal == SIGHUP);
 	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
-	exit(1);
+	exit(-1);
 }
 
 static void exit_sigint(int signal) {
@@ -73,7 +73,7 @@ static void exit_sigint(int signal) {
 static void exit_sigterm(int signal) {
 	assert(signal == SIGTERM);
 	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
-	exit(1);
+	exit(-1);
 }
 
 namespace {
