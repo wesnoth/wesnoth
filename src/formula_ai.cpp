@@ -23,9 +23,9 @@
 #include "log.hpp"
 #include "attack_prediction.hpp"
 
-#define LOG_AI LOG_STREAM(info, ai)
-#define WRN_AI LOG_STREAM(warn, ai)
-#define ERR_AI LOG_STREAM(err, ai)
+#define LOG_AI LOG_STREAM(info, formula_ai)
+#define WRN_AI LOG_STREAM(warn, formula_ai)
+#define ERR_AI LOG_STREAM(err, formula_ai)
 
 namespace {
 using namespace game_logic;
@@ -506,7 +506,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
-		std::cerr << "move(): " << src << ", " << dst << ")\n";
+		LOG_AI << "move(): " << src << ", " << dst << ")\n";
 		return variant(new move_callable(src, dst));
 	}
 };
@@ -520,7 +520,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
-		std::cerr << "move_partial(): " << src << ", " << dst << ")\n";
+		LOG_AI << "move_partial(): " << src << ", " << dst << ")\n";
 		return variant(new move_partial_callable(src, dst));
 	}
 };
@@ -650,7 +650,7 @@ private:
 		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables).as_int() : -1;
 		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
-			std::cerr << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
+			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
 			return variant();
 		}
 		return variant(new attack_callable(ai_, move_from, src, dst, weapon));
@@ -1366,14 +1366,14 @@ void formula_ai::handle_exception(game_logic::formula_error& e)
 
 void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation)
 {
-	std::cerr << failed_operation << ": " << e.formula_ << std::endl;
+	LOG_AI << failed_operation << ": " << e.formula_ << std::endl;
 	display_message(failed_operation + ": " + e.formula_);
 	//if line number = 0, don't display info about filename and line number
 	if (e.line_ != 0) {
-		std::cerr << e.type_ << " in " << e.filename_ << ":" << e.line_ << std::endl;
+		LOG_AI << e.type_ << " in " << e.filename_ << ":" << e.line_ << std::endl;
 		display_message(e.type_ + " in " + e.filename_ + ":" + boost::lexical_cast<std::string>(e.line_));
 	} else {
-		std::cerr << e.type_ << std::endl;
+		LOG_AI << e.type_ << std::endl;
 		display_message(e.type_);
 	}
 }
@@ -1560,7 +1560,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 
 	move_maps_valid_ = false;
 
-	std::cerr << "do move...\n";
+	LOG_AI << "do move...\n";
 	const variant var = formula_->execute(variables);
 
 	return execute_variant(var);
@@ -1596,7 +1596,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 		prepare_move();
 		if(move) {
-			std::cerr << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
+			LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
 
 			unit_map::iterator unit_it = units_.find(move->src());
 			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
@@ -1634,7 +1634,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				made_move = true;
 			}
 		} else if(move_partial) {
-			std::cerr << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
+			LOG_AI << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
 
 			unit_map::iterator unit_it = units_.find(move_partial->src());
 			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
@@ -1676,7 +1676,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			if(attack->move_from() != attack->src()) {
 				move_unit(attack->move_from(), attack->src(), possible_moves_);
 			}
-			std::cerr << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
+			LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
 			game_events::fire("consider attack", attack->src(), attack->dst());
 			attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
 			made_move = true;
@@ -1720,16 +1720,16 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			}
 			made_move = true;
 		} else if(recruit_command) {
-			std::cerr << "RECRUIT: '" << recruit_command->type() << "'\n";
+			LOG_AI << "RECRUIT: '" << recruit_command->type() << "'\n";
 			if(recruit(recruit_command->type(), recruit_command->loc())) {
 				made_move = true;
 			}
 		} else if(set_var_command) {
-			std::cerr << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
+			LOG_AI << "setting var: " << set_var_command->key() << " -> " << set_var_command->value().to_debug_string() << "\n";
 			vars_.add(set_var_command->key(), set_var_command->value());
 			made_move = true;
 		} else if(set_unit_var_command) {
-			std::cerr << "setting unit var: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
+			LOG_AI << "setting unit var: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
 			unit_map::iterator unit = units_.find(set_unit_var_command->loc());
 			if(unit != units_.end()) {
 				if( unit->second.side() == get_info().team_num ) {
@@ -1762,7 +1762,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else {
 			//this information is unneded when evaluating formulas form commandline
 			if (!commandline) {
-				std::cerr << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
+				LOG_AI << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
 			}
 		}
 	}
