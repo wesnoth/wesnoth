@@ -29,6 +29,7 @@
 #include <cassert>
 
 #define LOG_AI LOG_STREAM(info, ai)
+#define ERR_AI LOG_STREAM(err, ai)
 
 const int max_positions = 10000;
 
@@ -181,6 +182,12 @@ void ai::do_attack_analysis(
 				}
 			}
 
+			unit_ability_list abil = unit_itor->second.get_abilities("leadership",tiles[j]);
+			int best_leadership_bonus = abil.highest("value").first;
+			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
+			if (leadership_bonus > 1.1)
+			    ERR_AI << unit_itor->second.name() << " is getting leadership " << leadership_bonus << "\n";
+
 			// Check to see whether this move would be a backstab.
 			int backstab_bonus = 1;
 			double surround_bonus = 1.0;
@@ -201,14 +208,16 @@ void ai::do_attack_analysis(
 						backstab_bonus = 2;
 					}
 
-					surround_bonus = 1.2;
+					// No surround bonus if target is skirmisher
+					if (!itor->second.get_ability_bool("skirmisker", itor->first))
+						surround_bonus = 1.2;
 				}
 
 
 			}
 
 			// See if this position is the best rated we've seen so far.
-			const int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus;
+			const int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus;
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
@@ -392,6 +401,9 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		cost += (double(up->second.experience())/double(up->second.max_experience()))*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
+
+		// add half of cost for poisoned unit so it might get chance to heal
+		avg_losses += cost * utils::string_bool(up->second.get_state("poisoned")) /2;
 
 		// Double reward to emphasize getting onto villages if they survive.
 		if (on_village) {
