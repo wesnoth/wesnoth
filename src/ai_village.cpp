@@ -345,7 +345,8 @@ void ai::find_villages(
 		}
 
 		const unit& un = u->second;
-		if(un.hitpoints() < (threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
+		const size_t threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
+		if(un.hitpoints() < (threat_multipler*threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
 			continue;
 		}
 
