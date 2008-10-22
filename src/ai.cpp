@@ -1128,13 +1128,32 @@ void ai::do_move()
 
 	// Recruitment phase and leader movement phase.
 	if(leader != units_.end()) {
-
 		if(!passive_leader) {
+			map_location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
+			leader = find_leader(units_,team_num_);
+			if (leader->first != before
+				&& leader->second.movement_left() > 0
+				&& recruiting_preferred_)
+			{
+				recruiting_preferred_ = 2;
+				do_move();
+				return;
+			}
 		}
 
 		if (map_.is_keep(leader->first))
-			do_recruitment();
+		{
+			if (do_recruitment())
+			{
+				do_move();
+				return;
+			} else if (recruiting_preferred_){
+				recruiting_preferred_ = 2;
+				do_move();
+				return;
+			}
+		}
 
 		if(!passive_leader) {
 			move_leader_after_recruit(srcdst,dstsrc,enemy_dstsrc);
