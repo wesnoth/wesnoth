@@ -714,6 +714,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
 					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
 					targets.push_back(target(*j,value*4.0,target::MASS));
+					best_target = targets.end() - 1;
 				}
 			}
 
@@ -772,6 +773,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
 		targets.push_back(target(best->first,best_target->value));
+		best_target = targets.end() - 1;
 		return std::pair<location,location>(best->first,best->first);
 	}
 
@@ -860,7 +862,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 			}
 
 
-			// The leader can't move to his keep, try to move to the closest map_location
+			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
 			for(std::set<map_location>::iterator i = keeps().begin();
 					i != keeps().end(); ++i) {
