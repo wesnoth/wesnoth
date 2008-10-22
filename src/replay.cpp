@@ -450,6 +450,8 @@ void replay::add_chat_log_entry(const config* speak, std::stringstream& str, con
 		return;
 	}
 	const config& cfg = *speak;
+	if (!preferences::show_lobby_join(cfg["description"], cfg["message"])) return;
+	if (preferences::is_ignored(cfg["description"])) return;
 	const std::string& team_name = cfg["team_name"];
 	if(team_name == "" || team_name == team) {
 		if(team_name == "") {
