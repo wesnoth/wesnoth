@@ -91,7 +91,7 @@ protected:
 			const unit_map::const_iterator un, const move_map& srcdst,
 			const move_map& dstsrc, const move_map& enemy_dstsrc, double caution);
 
-	virtual void do_recruitment();
+	virtual bool do_recruitment();
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
 	virtual void move_leader_after_recruit(const move_map& srcdst,
@@ -377,7 +377,7 @@ private:
 		const std::map<map_location,paths>& possible_moves,
 		const std::multimap<map_location,map_location>& enemy_dstsrc) const;
 	
-	bool recruiting_prefered_;
+	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;
 };
 

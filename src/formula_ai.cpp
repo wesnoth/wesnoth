@@ -1771,10 +1771,10 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 }
 
 
-void formula_ai::do_recruitment()
+bool formula_ai::do_recruitment()
 {
 	if(!recruit_formula_) {
-		return;
+		return false;
 	}
 
 	variant var = recruit_formula_->execute(*this);
@@ -1787,17 +1787,19 @@ void formula_ai::do_recruitment()
 		vars.push_back(var);
 	}
 
+	bool ret = false;
 	for(std::vector<variant>::const_iterator i = vars.begin(); i != vars.end(); ++i) {
 		if(!i->is_string()) {
-			return;
+			return false;
 		}
 
 		if(!recruit(i->as_string())) {
-			return;
+			return ret;
 		}
+		ret = true;
 	}
 
-	do_recruitment();
+	return do_recruitment();
 }
 
 namespace {

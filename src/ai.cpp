@@ -175,18 +175,20 @@ protected:
 		}
 	}
 
-	void do_recruitment() {
+	bool do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
-	if (!options.empty()) {
+		if (!options.empty()) {
 			const int choice = (rand()%options.size());
 		        std::set<std::string>::const_iterator i = options.begin();
 		        std::advance(i,choice);
 
 			const bool res = recruit(*i);
 			if(res) {
-				do_recruitment();
+				return do_recruitment();
 			}
+			return true;
 		}
+		return false;
 	}
 };
 
@@ -296,7 +298,7 @@ ai::ai(ai_interface::info& info) :
 	avoid_(),
 	unit_stats_cache_(),
 	attack_depth_(0),
-	recruiting_prefered_(false)
+	recruiting_preferred_(0)
 {}
 
 void ai::new_turn()
@@ -971,10 +973,31 @@ void ai::play_turn()
 
 void ai::evaluate_recruiting_value(unit_map::iterator leader)
 {
-	const int gold = current_team().gold();
-//	const int unit_price = current_team().average_recruit_price();
-//	recruiting_prefered_ = (gold/unit_price) > min_recruiting_value_to_force_recruit && !map_.is_keep();
-	recruiting_prefered_ = gold > min_recruiting_value_to_force_recruit && !map_.is_keep(leader->first);
+	if (recruiting_preferred_ == 2)
+	{
+		recruiting_preferred_ = 0;
+		return;
+	}
+	if (current_team().num_pos_recruits_to_force()< 0.01f)
+	{
+		return;
+	}
+
+	float free_slots = 0.0f;
+	if (map_.is_keep(leader->first))
+	{
+		std::set<location> checked_hexes;
+		checked_hexes.insert(leader->first);
+		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
+	}
+	const float gold = current_team().gold();
+	const float unit_price = current_team().average_recruit_price();
+	recruiting_preferred_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
+	DBG_AI << "recruiting preferred: " << (recruiting_preferred_?"yes":"no") << 
+		" units to recruit: " << (gold/unit_price) << 
+		" unit_price: " << unit_price <<
+		" free slots: " << free_slots <<
+		" limit: " << current_team().num_pos_recruits_to_force() << "\n";
 }
 
 void ai::do_move()
@@ -1157,7 +1180,7 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 		LOG_AI << "attack option rated at " << rating << " ("
 			<< current_team().aggression() << ")\n";
 
-		if (recruiting_prefered_)
+		if (recruiting_preferred_)
 		{
 			unit_map::unit_iterator u = units_.find(it->movements[0].first);
 			if (u != units_.end()
@@ -1814,11 +1837,11 @@ void ai::analyze_potential_recruit_movements()
 	}
 }
 
-void ai::do_recruitment()
+bool ai::do_recruitment()
 {
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end()) {
-		return;
+		return false;
 	}
 
 	const location& start_pos = nearest_keep(leader->first);
@@ -1892,12 +1915,16 @@ void ai::do_recruitment()
 		options.push_back("");
 	}
 	// Buy units as long as we have room and can afford it.
+        bool ret = false;
 	while (recruit_usage(options[rand()%options.size()])) {
+		ret = true;
 		options = current_team().recruitment_pattern();
 		if (options.empty()) {
 			options.push_back("");
 		}
 	}
+
+	return ret;
 }
 
 void ai::move_leader_to_goals( const move_map& enemy_dstsrc)

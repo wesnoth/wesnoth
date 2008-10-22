@@ -262,7 +262,7 @@ void ai::find_villages(
 {
 	std::map<location, double> vulnerability;
 
-	const bool passive_leader = recruiting_prefered_ ||  
+	const bool passive_leader = recruiting_preferred_ ||  
 		utils::string_bool(current_team().ai_parameters()["passive_leader"]);
 
 	size_t min_distance = 100000;

@@ -853,7 +853,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 					:0);
 				const int enemy = (power_projection(*i, enemy_dstsrc) * 8 * leader->second.total_movement())/leader->second.hitpoints();
 				int multiturn_move_penalty = 0;
-				if (recruiting_prefered_)
+				if (recruiting_preferred_)
 					multiturn_move_penalty = 2;
 
 				const int distance_value = (distance > leader->second.movement_left()? 
