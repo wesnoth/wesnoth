@@ -677,8 +677,14 @@ double ai::power_projection(const map_location& loc,  const move_map& dstsrc, bo
 			int most_damage = 0;
 			for(std::vector<attack_type>::const_iterator att =
 			    un.attacks().begin(); att != un.attacks().end(); ++att) {
+                               int poison_bonus = 0;
+
+                               if (att->get_special_bool("poison", true))
+                                       poison_bonus = 800 * (1.0 -
+                                                       std::pow(0.7,
+                                                               static_cast<double>(att->num_attacks())));
 				int damage = att->damage() * att->num_attacks() *
-				             (100 + tod_modifier);
+				             (100 + tod_modifier) + poison_bonus;
 				if(damage > most_damage) {
 					most_damage = damage;
 				}
