@@ -1262,6 +1262,15 @@ void ai_interface::attack_enemy(const location u,
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 
+	if(!info_.units.count(u))
+	{
+		ERR_AI << "attempt to attack without attacker\n";
+	}
+	if (!info_.units.count(target)) 
+	{
+		ERR_AI << "attempt to attack without defender\n";
+	}
+
 	if(info_.units.count(u) && info_.units.count(target)) {
 		if(info_.units.find(target)->second.incapacitated()) {
 			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
@@ -1522,6 +1531,8 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 		if(move.second.valid() == false) {
 			return true;
 		}
+		assert (map_.on_board(move.first)
+			&& map_.on_board(move.second));
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
