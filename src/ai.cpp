@@ -2405,15 +2405,15 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
   if( ai_algo.size() )
     {
       AINameMap::const_iterator itor = ais.find(ai_key);
-      std::cout << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
+      LOG_AI << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
       if(itor == ais.end())
 	{
-	  std::cout << "manager did not find AI - creating..." << std::endl ;
+	  LOG_AI << "manager did not find AI - creating..." << std::endl ;
 	  ai_obj = create_ai(ai_algo, ai_info) ;
-	  std::cout << "Asking newly created AI if it wants to be managed." << std::endl ;
+	  LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl ;
 	  if( ai_obj->manager_manage_ai() )
 	    {
-	      std::cout << "AI has requested itself be managed: " << ai_algo << std::endl ;
+	      LOG_AI << "AI has requested itself be managed: " << ai_algo << std::endl ;
 	      AINameMap::value_type new_ai_pair( ai_key, ai_obj ) ;
 	      itor = ais.insert(new_ai_pair).first ;
 	    }
@@ -2421,7 +2421,7 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
       else
 	{
 	  // AI was found - so return it
-	  std::cout << "Reusing managed AI" << std::endl ;
+	  LOG_AI << "Reusing managed AI" << std::endl ;
 	  ai_obj = itor->second ;
 	}
     }
