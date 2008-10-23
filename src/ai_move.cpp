@@ -95,6 +95,10 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 	std::vector<target> targets;
 
+	std::map<location,paths> friends_possible_moves;
+	move_map friends_srcdst, friends_dstsrc;
+	calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
+
 	//if enemy units are in range of the leader, then we target the enemies who are in range.
 	if(has_leader) {
 		const double threat = power_projection(leader->first,enemy_dstsrc);
@@ -125,6 +129,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		}
 	}
 
+	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
 	if(has_leader && current_team().village_value() > 0.0) {
 		const std::vector<location>& villages = map_.villages();
 		for(std::vector<location>::const_iterator t =
@@ -134,14 +139,27 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			bool get_village = true;
 			for(size_t i = 0; i != teams_.size(); ++i) {
 				if(!current_team().is_enemy(i+1) && teams_[i].owns_village(*t)) {
+					// check if our village is threatened
+					if (is_accessible(*t, enemy_dstsrc))
+					{
+						// Our village is threated by enemy
+						// We calculate enemy_power/our_power and multiple village value with that
+						// to get value for adding more defense
+						const double enemy = power_projection(*t, enemy_dstsrc)*1.7;
+						const double our = power_projection(*t, friends_dstsrc);
+						const double value = current_team().village_value()*our/enemy;
+						add_target(target(*t, value, target::SUPPORT));
+					}
 					get_village = false;
 					break;
 				}
 			}
 
 			if(get_village) {
-				LOG_AI << "found village target... " << *t << " with value: " << current_team().village_value() << "\n";
-				targets.push_back(target(*t,current_team().village_value(),target::VILLAGE));
+				double value = current_team().village_value();
+				value *= 1.0 - static_cast<double>(distance_between(*t,leader->first))/corner_distance;
+				ERR_AI << "found village target... " << *t << " with value: " << value << " distance: " << static_cast<double>(distance_between(*t,leader->first)) << "\n";
+				targets.push_back(target(*t,value,target::VILLAGE));
 			}
 		}
 	}
