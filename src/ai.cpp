@@ -1208,6 +1208,7 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 
 	std::vector<attack_analysis>::iterator choice_it = analysis.end();
 	double choice_rating = -1000.0;
+	double vuln = 0.0;
 	for(std::vector<attack_analysis>::iterator it = analysis.begin();
 			it != analysis.end(); ++it) {
 
@@ -1231,6 +1232,7 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 		if(rating > choice_rating) {
 			choice_it = it;
 			choice_rating = rating;
+			vuln = it->vulnerability/it->support;
 		}
 	}
 
@@ -1252,6 +1254,9 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 			                     << from << '\n';
 			return true;
 		}
+
+		if (vuln > 1.5)
+			add_target(target(to, vuln,target::SUPPORT));
 
 		// Recalc appropriate weapons here: AI uses approximations.
 		game_events::fire("consider attack", to, target_loc);
