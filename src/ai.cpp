@@ -1239,7 +1239,10 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 	time_taken = SDL_GetTicks() - ticks;
 	LOG_AI << "analysis took " << time_taken << " ticks\n";
 
-	if(choice_rating > 0.0 /*current_team().caution()*/) {
+	// suokko tested the rating against current_team().caution()
+	// Bad mistake -- the AI became extremely reluctant to attack anything.
+	// Documenting this in case someone has this bright idea again...*don't*...
+	if(choice_rating > 0.0) {
 		location from   = choice_it->movements[0].first;
 		location to     = choice_it->movements[0].second;
 		location target_loc = choice_it->target;
@@ -1518,6 +1521,13 @@ bool ai::retreat_units(std::map<map_location,paths>& possible_moves,
 					LOG_AI << "retreating '" << i->second.type_id() << "' " << i->first
 					       << " -> " << best_pos << '\n';
 					move_unit(i->first,best_pos,possible_moves);
+#ifdef SUOKKO
+					// FIXME: This was in sukko's r29531 but backed out.
+					// Is it correct?
+					i->second.set_movement(0);
+					if (best_rating < 0.0)
+						add_target(target(best_pos, -3.0*best_rating, target::SUPPORT));
+#endif
 					return true;
 				}
 			}
@@ -1579,11 +1589,24 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 		if (u_it == units_.end() || u_it->second.incapacitated()) {
 			LOG_STREAM(warn, ai) << "stolen or incapacitated\n";
 		} else {
+			// FIXME: sukko's r29531 inserted the following line, is it correct?
+ 			// u_it->second.set_movement(0);
 			// Search to see if there are any enemy units next to the tile
 			// which really should be attacked now the move is done.
 			map_location adj[6];
 			get_adjacent_tiles(arrived_at,adj);
 			map_location target;
+#ifdef SUOKKO
+			// FIXME: This code was in sukko's r29531 and was backed out. Correct?
+			int selected = -1;
+			boost::scoped_ptr<battle_context> bc_sel;
+
+			double harm_weight = 2.0 + current_team().caution();
+			if (chosen->type == target::THREAT
+			    || chosen->type == target::BATTLE_AID)
+			  harm_weight -= 1.0;
+			harm_weight =  current_team().aggression() - harm_weight;
+#endif
 
 			for(int n = 0; n != 6; ++n) {
 				const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
@@ -1595,14 +1618,36 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 					// Current behavior is to only make risk-free attacks.
 					game_events::fire("consider attack", arrived_at, adj[n]);
 					battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
+#ifndef SUOKKO
 					if (bc.get_defender_stats().damage == 0) {
 						attack_enemy(arrived_at, adj[n], bc.get_attacker_stats().attack_num,
 								bc.get_defender_stats().attack_num);
 						break;
 					}
+#else
+					// FIXME: This code was in sukko's r29531. Correct?
+					const double value = (bc.get_defender_combatant().hp_dist[0] - bc.get_attacker_combatant().hp_dist[0]*harm_weight)*u_it->second.max_hitpoints()/2
+						+ (bc.get_defender_combatant().average_hp() - bc.get_attacker_combatant().average_hp() * harm_weight);
+
+					if (value > 0.0
+						&& (selected == -1 
+							|| bc_sel->better_attack(bc,harm_weight)))
+					{
+						// Select attack target
+						bc_sel.reset(new battle_context(bc));
+						selected = n;
+					}
+#endif
 					game_events::fire("unconsider attack", arrived_at, adj[n]);
 				}
 			}
+#ifdef SUOKKO
+			// FIXME: This code was in sukko's r29531 and was backed out. Correct?
+			if (selected >= 0) {
+				attack_enemy(arrived_at, adj[selected], bc_sel->get_attacker_stats().attack_num,
+						bc_sel->get_defender_stats().attack_num);
+			}
+#endif
 		}
 
 		// Don't allow any other units to move onto the tile
@@ -2097,6 +2142,8 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 
 					if(p.routes.count(i->first)) {
 						move_unit(leader->first,current_loc,possible_moves);
+						// FIXME: suokko's r29531 included this line
+						// leader->second.set_movement(0);
 						return;
 					}
 				}

@@ -223,7 +223,7 @@ void ai::do_attack_analysis(
 			}
 
 			// Find out how vulnerable we are to attack from enemy units in this hex.
-			//FIXME: suokko multiplied this by a constant 1.5. Should this be done?  
+			//FIXME: suokko's r29531 multiplied this by a constant 1.5. ?  
 			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
 			// Calculate how much support we have on this hex from allies.
@@ -233,14 +233,30 @@ void ai::do_attack_analysis(
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
+#ifdef SUOKKO
+			//FIXME: this code was in sukko's r29531  Correct?
+			// scale vulnerability to 60 hp unit
+			if(cur_position >= 0 && rating < best_rating
+					&& (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints() - 
+						(support*surround_bonus*30.0)/unit_itor->second.max_hitpoints()
+						> best_vulnerability - best_support) {
+				continue;
+			}
+#else
 			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
 				continue;
 			}
-
+#endif
 			cur_position = j;
 			best_rating = rating;
+#ifdef SUOKKO
+			//FIXME: this code was in sukko's r29531  Correct?
+			best_vulnerability = (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints();
+			best_support = (support*surround_bonus*30.0)/unit_itor->second.max_hitpoints();
+#else
 			best_vulnerability = vulnerability/surround_bonus;
 			best_support = support*surround_bonus;
+#endif
 		}
 
 		if(cur_position != -1) {
@@ -347,6 +363,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		if (up->second.can_recruit()) {
 			uses_leader = true;
+			// FIXME: suokko's r29531 omitted this line
 			leader_threat = false;
 		}
 
@@ -508,8 +525,14 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		// into sub-optimal terrain.
 		// Calculate the 'exposure' of our units to risk.
 
+#ifdef SUOKKO
+		//FIXME: this code was in sukko's r29531  Correct?
+		const double exposure_mod = uses_leader ? ai_obj.current_team().caution()* 8.0 : ai_obj.current_team().caution() * 4.0;
+		const double exposure = exposure_mod*resources_used*((terrain_quality - alternative_terrain_quality)/10)*vulnerability/std::max<double>(0.01,support);
+#else
 		const double exposure_mod = uses_leader ? 2.0 : ai_obj.current_team().caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/std::max<double>(0.01,support);
+#endif
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
 			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
 		if(uses_leader) {

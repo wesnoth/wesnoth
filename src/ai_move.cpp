@@ -121,7 +121,12 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 			assert(threats.empty() == false);
 
+#ifdef SUOKKO
+			//FIXME: sukko's veraion 29531 included this change.  Correct?
+			const double value = threat*lexical_cast_default<double>(current_team().ai_parameters()["protect_leader"], 3.0)/leader->second.hitpoints();
+#else
 			const double value = threat/double(threats.size());
+#endif
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
 				targets.push_back(target(*i,value,target::THREAT));
@@ -346,6 +351,9 @@ bool ai::move_group(const location& dst, const std::vector<location>& route, con
 			if(res != best_loc) {
 				return true;
 			}
+
+			// FIXME: suokko's r29531 included the following line.  Correct?
+			// units_.find(best_loc)->second.set_movement(0);
 
 			preferred_moves.erase(std::find(preferred_moves.begin(),preferred_moves.end(),best_loc));
 
