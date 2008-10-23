@@ -992,14 +992,20 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
 	}
 
 	float free_slots = 0.0f;
+	const float gold = current_team().gold();
+	const float unit_price = current_team().average_recruit_price();
 	if (map_.is_keep(leader->first))
 	{
 		std::set<location> checked_hexes;
 		checked_hexes.insert(leader->first);
 		free_slots = count_free_hexes_in_castle(leader->first, checked_hexes);
+	} else {
+               map_location loc = nearest_keep(leader->first);
+               if (units_.find(loc) == units_.end() && gold/unit_price > 1.0f)
+               {
+                       free_slots -= current_team().num_pos_recruits_to_force();
+               }
 	}
-	const float gold = current_team().gold();
-	const float unit_price = current_team().average_recruit_price();
 	recruiting_preferred_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
 	DBG_AI << "recruiting preferred: " << (recruiting_preferred_?"yes":"no") << 
 		" units to recruit: " << (gold/unit_price) << 
