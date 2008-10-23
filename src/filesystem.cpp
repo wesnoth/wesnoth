@@ -1022,9 +1022,9 @@ scoped_istream& scoped_istream::operator=(std::istream *s)
 
 scoped_istream::~scoped_istream()
 {
-	std::cerr << "deleting stream";
+	DBG_FS <<"deleting stream";
 	delete stream;
-	std::cerr << " ok\n";
+	DBG_FS << " ok\n";
 }
 
 scoped_ostream& scoped_ostream::operator=(std::ostream *s)
