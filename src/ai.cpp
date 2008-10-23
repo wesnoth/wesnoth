@@ -47,6 +47,7 @@
 #include <cassert>
 #include <fstream>
 
+#include <boost/scoped_ptr.hpp>
 
 #define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)
@@ -291,6 +292,7 @@ ai::ai(ai_interface::info& info) :
 	state_(info.state),
 	consider_combat_(true),
 	additional_targets_(),
+	info_(info),
 	unit_movement_scores_(),
 	not_recommended_units_(),
 	unit_combat_scores_(),
@@ -298,8 +300,11 @@ ai::ai(ai_interface::info& info) :
 	avoid_(),
 	unit_stats_cache_(),
 	attack_depth_(0),
-	recruiting_preferred_(0)
-{}
+	recruiting_preferred_(0),
+	master_(info_.master)
+{
+       info_.master = false;
+}
 
 void ai::new_turn()
 {
@@ -315,6 +320,7 @@ void ai::new_turn()
 	avoid_.clear();
 	unit_stats_cache_.clear();
 	attack_depth_ = 0;
+	ai_manager::get_ai("formula_ai", info_)->new_turn();
 	ai_interface::new_turn();
 }
 
@@ -1007,6 +1013,11 @@ void ai::do_move()
 	invalidate_defensive_position_cache();
 
 	raise_user_interact();
+
+       // Formula AI is first going to move everything that it can
+
+//     if (master_)
+//             static_cast<formula_ai*>(ai_manager::get_ai("formula_ai", info_).get())->play_turn();
 
 	typedef paths::route route;
 
@@ -1872,6 +1883,16 @@ bool ai::do_recruitment()
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end()) {
 		return false;
+	}
+
+	raise_user_interact();
+	// Let formula ai to do recruiting first
+	if (master_)
+	{
+        	if(static_cast<formula_ai*>(ai_manager::get_ai("formula_ai",info_).get())->do_recruitment()) {
+                	LOG_AI << "Recruitment done by formula_ai\n";
+                	return true;
+        	}
 	}
 
 	const location& start_pos = nearest_keep(leader->first);

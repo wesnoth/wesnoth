@@ -176,6 +176,7 @@ private:
 
 	game_logic::candidate_move_set candidate_moves_;
 	bool use_eval_lists_;
+	friend class ai;
 };
 
 #endif

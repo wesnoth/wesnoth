@@ -295,6 +295,8 @@ protected:
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
 
+ai_interface::info info_;
+
 	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
 
 	/**
@@ -379,6 +381,8 @@ private:
 	
 	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;
+protected:
+	bool master_;
 };
 
 class ai_manager {

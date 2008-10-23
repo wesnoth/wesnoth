@@ -1449,9 +1449,12 @@ void formula_ai::make_candidate_moves() {
 		int best_score = (*best_move)->get_score();
 		// If no evals > 0, fallback
 		if(best_score < 0) {
-			ai_interface* fallback = create_ai("", get_info());
-			fallback->play_turn();
-			return;
+			if (master_)
+			{
+				ai_interface* fallback = create_ai("", get_info());
+				fallback->play_turn();
+				return;
+			}
 		}
 		// Otherwise, make the best scoring move
 		game_logic::map_formula_callable callable(this);
@@ -1470,9 +1473,11 @@ void formula_ai::make_candidate_moves() {
 	}
 
 	// After all candidate moves have been exhausted, fallback
-	ai_interface* fallback = create_ai("", get_info());
-	fallback->play_turn();
-
+	if (master_)
+	{
+		ai_interface* fallback = create_ai("", get_info());
+		fallback->play_turn();
+	}
 }
 
 
@@ -1550,8 +1555,10 @@ void formula_ai::prepare_move() const
 bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if(!formula_) {
-		ai_interface* fallback = create_ai("", get_info());
-		fallback->play_turn();
+		if(master_) {
+			ai_interface* fallback = create_ai("", get_info());
+			fallback->play_turn();
+		}
 		return false;
 	}
 
@@ -1744,15 +1751,18 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(i->is_string() && i->as_string() == "end_turn") {
 			return false;
 		} else if(fallback_command) {
-			if(fallback_command->key() == "human")
+			if (master_)
 			{
-				//we want give control of the side to human for the rest of this turn
-				throw fallback_ai_to_human_exception();
-			} else
-			{
-				ai_interface* fallback = create_ai(fallback_command->key(), get_info());
-				if(fallback) {
-					fallback->play_turn();
+				if(fallback_command->key() == "human")
+				{
+					//we want give control of the side to human for the rest of this turn
+					throw fallback_ai_to_human_exception();
+				} else
+				{
+					ai_interface* fallback = create_ai(fallback_command->key(), get_info());
+					if(fallback) {
+						fallback->play_turn();
+					}
 				}
 			}
 			return false;

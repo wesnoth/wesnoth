@@ -47,7 +47,8 @@ public:
 		info(game_display& disp, gamemap& map, unit_map& units,
 			std::vector<team>& teams, unsigned int team_num, gamestatus& state, class turn_info& turn_data, class game_state& game_state)
 			: disp(disp), map(map), units(units), teams(teams),
-			  team_num(team_num), state(state), turn_data_(turn_data), game_state_(game_state)		{}
+			  team_num(team_num), state(state), turn_data_(turn_data), game_state_(game_state), master(true)
+		{}
 
 		/** The display object, used to draw the moves the AI makes. */
 		game_display& disp;
@@ -80,6 +81,7 @@ public:
 
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;
+		bool master;
 	};
 
 	/**
