@@ -1277,44 +1277,32 @@ void ai_interface::attack_enemy(const location u,
 	if(!info_.units.count(u))
 	{
 		ERR_AI << "attempt to attack without attacker\n";
+		return;
 	}
 	if (!info_.units.count(target)) 
 	{
 		ERR_AI << "attempt to attack without defender\n";
+		return;
 	}
 
-	if(info_.units.count(u) && info_.units.count(target)) {
-		if(info_.units.find(target)->second.incapacitated()) {
-			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
-			return;
-		}
-		if(!info_.units.find(u)->second.attacks_left()) {
-			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
-			return;
-		}
+	if(info_.units.find(target)->second.incapacitated()) {
+		LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
+		return;
+	}
+	if(!info_.units.find(u)->second.attacks_left()) {
+		LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
+		return;
+	}
 
-    	if(weapon >= 0) {
-			recorder.add_attack(u,target,weapon,def_weapon);
-		}
-		try {
-			attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
-					info_.units, info_.state);
-		}
-		catch (end_level_exception&)
-		{
-			dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
-
-			const unit_map::const_iterator defender = info_.units.find(target);
-			if(defender != info_.units.end()) {
-				const size_t defender_team = size_t(defender->second.side()) - 1;
-				if(defender_team < info_.teams.size()) {
-					dialogs::advance_unit(info_.map, info_.units,
-							target, info_.disp, !info_.teams[defender_team].is_human());
-				}
-			}
-
-			throw;
-		}
+	if(weapon >= 0) {
+		recorder.add_attack(u,target,weapon,def_weapon);
+	}
+	try {
+		attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon,
+				info_.units, info_.state);
+	}
+	catch (end_level_exception&)
+	{
 		dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
 
 		const unit_map::const_iterator defender = info_.units.find(target);
@@ -1326,9 +1314,21 @@ void ai_interface::attack_enemy(const location u,
 			}
 		}
 
-		check_victory(info_.units,info_.teams, info_.disp);
-		raise_enemy_attacked();
+		throw;
 	}
+	dialogs::advance_unit(info_.map,info_.units,u,info_.disp,true);
+
+	const unit_map::const_iterator defender = info_.units.find(target);
+	if(defender != info_.units.end()) {
+		const size_t defender_team = size_t(defender->second.side()) - 1;
+		if(defender_team < info_.teams.size()) {
+			dialogs::advance_unit(info_.map, info_.units,
+					target, info_.disp, !info_.teams[defender_team].is_human());
+		}
+	}
+
+	check_victory(info_.units,info_.teams, info_.disp);
+	raise_enemy_attacked();
 }
 
 bool ai::get_healing(std::map<map_location,paths>& possible_moves,
