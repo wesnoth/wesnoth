@@ -1453,8 +1453,8 @@ void formula_ai::make_candidate_moves() {
 			{
 				ai_interface* fallback = create_ai("", get_info());
 				fallback->play_turn();
-				return;
 			}
+			return;
 		}
 		// Otherwise, make the best scoring move
 		game_logic::map_formula_callable callable(this);
