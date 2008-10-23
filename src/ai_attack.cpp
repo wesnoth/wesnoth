@@ -223,6 +223,7 @@ void ai::do_attack_analysis(
 			}
 
 			// Find out how vulnerable we are to attack from enemy units in this hex.
+			//FIXME: suokko multiplied this by a constant 1.5. Should this be done?  
 			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
 			// Calculate how much support we have on this hex from allies.
@@ -491,11 +492,12 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		aggression = 1.0;
 	}
 
+	//FIXME: One of suokko's reverted changes removed this.  Should it be gone?
 	// Only use the leader if we do a serious amount of damage,
 	// compared to how much they do to us.
 	if(uses_leader && aggression > -4.0) {
-		LOG_AI << "uses leader..\n";
-		aggression = -4.0;
+               LOG_AI << "uses leader..\n";
+               aggression = -4.0;
 	}
 
 	double value = chance_to_kill*target_value - avg_losses*(1.0-aggression);

@@ -622,6 +622,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 				const int distance = distance_between(*i,best_target->loc);
 				const int defense = best->second.defense_modifier(map_.get_terrain(*i));
+				//FIXME: suokko multiplied by 10 * current_team().caution(). ?
 				const double vulnerability = power_projection(*i,enemy_dstsrc);
 
 				if(best_loc.valid() == false || defense < best_defense || (defense == best_defense && vulnerability < best_vulnerability)) {
@@ -656,7 +657,9 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 		//if any point along the path is too dangerous for our single unit, then we hold back
 		for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i) {
 
+			//FIXME: suokko multiplied by 10 * current_team().caution(). ?
 			const double threat = power_projection(*i,enemy_dstsrc);
+			//FIXME: sukko doubled the power-projection them in the second test.  ?
 			if((threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_dstsrc)) ||
 			   (i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side()))) {
 				dangerous = true;
@@ -715,6 +718,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
 				const int distance = distance_between(target_loc,i->second);
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
+				//FIXME: suokko multiplied by 10 * current_team().caution(). ?
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
 				if(best_loc.valid() == false || (threat < std::max<double>(best_threat,max_acceptable_threat) && distance < best_distance)) {

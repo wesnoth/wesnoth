@@ -913,6 +913,7 @@ void ai::find_threats()
 	std::vector<protected_item> items;
 
 	// We want to protect our leader.
+	// FIXME: suokko tweaked these from (1.0, 20)->(2.0,15).  Should this have been kept?
 	const unit_map::const_iterator leader = find_leader(units_,team_num_);
 	if(leader != units_.end()) {
 		items.push_back(protected_item(
@@ -1258,6 +1259,7 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 		// is still alive, then also summon reinforcements
 		if(choice_it->movements.size() == 1 && units_.count(target_loc)) {
 			LOG_AI << "found reinforcement target... " << target_loc << "\n";
+			//FIXME: sukko raised this value to 5.0.  Is that correct?
 			add_target(target(target_loc,3.0,target::BATTLE_AID));
 		}
 

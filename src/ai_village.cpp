@@ -234,6 +234,9 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 				if(new_unit != units_.end() &&
 						power_projection(i->first,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
 					LOG_AI << "found support target... " << new_unit->first << "\n";
+					//FIXME: sukko tweaked the constant 1.0 to the formula:
+					//25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints()
+					//Is this an improvement?
 					add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}
@@ -345,7 +348,9 @@ void ai::find_villages(
 		}
 
 		const unit& un = u->second;
-		const size_t threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
+		//FIXME: suokko turned this 2:1 to 1.5:1.0.  
+		//and dropped the second term of the multiplication.  Is that better?
+		const double threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
 		if(un.hitpoints() < (threat_multipler*threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
 			continue;
 		}
