@@ -543,8 +543,9 @@ map_location ai_interface::move_unit_partial(location from, location to,
 		}
 
 		if(rt != p.routes.end()) {
-			if (static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size())
+			if (static_cast<size_t>(u_it->second.movement_left()) >= rt->second.steps.size()) {
 		  		LOG_AI<<"Trying to move unit without enough move points left\n";
+			}
 			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
