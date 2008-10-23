@@ -1,20 +1,22 @@
 # Danish translation of wesnoth-trow (da.po)
 # Dansk oversættelse for wesnoth-trow (da.po).
-# Copyright (C) 2007 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2007, 2008 Wesnoth development team and Joe Hansen.
+# This file is distributed under the same license as the Wesnoth package.
 # Joe Hansen <joedalton2@yahoo.dk>, 2007, 2008.
 #
 # the Brown Hills -> De Brune Bakker
 # the Swamp of Esten -> Estensumpen
 # Southbay -> Southbay (men måske et dansk navn godt kunne bruges her)
-# lord -> lensherre (fyrste er også overvejet)
+# The Oldwood Forest -> Oldwoodskoven
+# lord -> lensherre (fyrste er også overvejet for onde karakterer)
+# the Ruby of Fire -> Ildrubinen
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3\n"
+"Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:46+0200\n"
-"PO-Revision-Date: 2008-02-18 22:43+0200\n"
+"PO-Revision-Date: 2008-10-19 22:43+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -139,9 +141,8 @@ msgstr "Prins Haldric"
 
 #. [side]: type=Noble Youth, type=Noble Fighter
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:36
-#, fuzzy
 msgid "Haldric"
-msgstr "Haldric."
+msgstr "Haldric"
 
 #. [side]: type=Wesfolk Outcast
 #. [unit_type]: race=human
@@ -166,7 +167,7 @@ msgstr "Kong Eldaric 4."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:156
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:71
 msgid "Defeat the Wesfolk Leader"
-msgstr "Besejr Wesfolk lederen"
+msgstr "Besejr Wesfolk-lederen"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:265
@@ -269,8 +270,8 @@ msgid ""
 "Look, a little princeling and his merry men! We'll teach you a lesson for "
 "what your kind did to us!"
 msgstr ""
-"Se et lille prinsebarn og hans følge! Vi giver dig en lession i hvad din "
-"slag har gjort imod os!"
+"Se et lille prinsebarn og hans følge! Vi giver dig en lektie i hvad din "
+"slags har gjort imod os!"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:130
@@ -332,7 +333,7 @@ msgid ""
 "hope."
 msgstr ""
 "Du har været på denne ø for længe. Jeg garanterer dig, at orkerne "
-"eksisterer. Nu er der nok et halvt dusin porte til orkernes hjemland. Det er "
+"eksisterer. Nu er der nok et halvt dusin porte til orkernes hjemland. Der er "
 "intet håb."
 
 #. [message]: speaker=King Eldaric IV
@@ -358,7 +359,7 @@ msgid ""
 "merciful."
 msgstr ""
 "Du kan gå. Sørg for ikke at genere os igen. Du kan påkalde dig overgivelse "
-"en gang men hvis vi mødes igen, vil jeg ikke være så nådig."
+"en gang, men hvis vi mødes igen, vil jeg ikke være så nådig."
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:204
@@ -368,7 +369,7 @@ msgstr "Vi er løbet tør for tid... Høsten er ødelagt, vi kommer til at sulte
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:215
 msgid "Die, Wesfolk scum!"
-msgstr "Dø, Wesfolk taber!"
+msgstr "Dø, Wesfolk-taber!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:227
@@ -383,7 +384,7 @@ msgstr "Nederlaget"
 #. [side]: type=Noble Fighter
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:28
 msgid "Stormvale"
-msgstr ""
+msgstr "Stormvale"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:61
@@ -418,7 +419,7 @@ msgstr "Tan-Rarbag"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:39
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:64
 msgid "Orcs"
-msgstr ""
+msgstr "Orker"
 
 #. [side]: type=Orcish Warrior
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:85
@@ -468,7 +469,7 @@ msgstr "Kong Eldaric 4.s død"
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:168
 msgid "Orcs kill the Wesfolk Leader"
-msgstr "Orkerne dræber Wesfolks leder"
+msgstr "Orkerne dræber Wesfolk-lederen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:183
@@ -477,7 +478,7 @@ msgid ""
 "long before the first orcish scouts are spotted. War has come to the valley."
 msgstr ""
 "Sommeren bliver til efterår, og kong Eldaric befæster sine grænser. Det "
-"varer ikke længe før, at de første orkerspejdere bliver opdaget. Krig er "
+"varer ikke længe før, at de første orkspejdere bliver opdaget. Krig er "
 "kommet til dalen."
 
 #. [message]: speaker=King Eldaric IV
@@ -682,7 +683,7 @@ msgstr "En rystende flugt"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 msgid "Refugees"
-msgstr ""
+msgstr "Flygtninge"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:34
@@ -749,7 +750,7 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:132
 msgid "Father, I wish you were here..."
-msgstr "Far, jeg ville ønske du var her..."
+msgstr "Far, jeg ville ønske, at du var her..."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:137
@@ -786,8 +787,8 @@ msgid ""
 "I'm Prince Haldric, we have little time to talk. We must make haste through "
 "the pass... What are you?"
 msgstr ""
-"Jeg er prins Haldric, vi har ikke meget tid at tale i. Vi skal hurtigt "
-"igennem passet... Hvad er du?"
+"Jeg er prins Haldric, vi har ikke tid til småsnak. Vi skal hurtigt igennem "
+"passet... Hvad er du?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:186
@@ -811,8 +812,8 @@ msgid ""
 "Orcs! It's been a long time since I felt the satisfying crunch of one of "
 "those under my axe. Time for a fight!"
 msgstr ""
-"Orker! Det er lang tid siden jeg har følt fornøjelsen ved at knuse en af dem "
-"under min økse. Tid til kamp!"
+"Orker! Det er lang tid siden, jeg har følt fornøjelsen ved at knuse en af "
+"dem under min økse. Tid til kamp!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:201
@@ -858,13 +859,13 @@ msgid ""
 "there now."
 msgstr ""
 "Tja skal jeg gå sydøst på flodvejen eller sydvest igennem Midland? Flodvejen "
-"krydser Estensumpen, så jeg tvivler på at selv orker vil tage dertil. "
-"Midland var et godt sted men hvem ved hvad der sker der nu."
+"krydser Estensumpen, så jeg tvivler på, at selv orker vil tage dertil. "
+"Midland var et godt sted, men hvem ved, hvad der sker der nu."
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:269
 msgid "I think I'll take the River Road..."
-msgstr "Jeg tror jeg tager flodvejen..."
+msgstr "Jeg tror, jeg tager flodvejen..."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:273
@@ -886,7 +887,7 @@ msgstr "Vi går igennem Midland..."
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:293
 msgid "I suspect that the Midlands might be in ruins by now."
-msgstr "Jeg har en mistanke om at Midland er i ruiner nu."
+msgstr "Jeg har en mistanke om, at Midland er i ruiner nu."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:298
@@ -932,12 +933,12 @@ msgstr "Dø, menneske."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:365
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:425
 msgid "Uh-oh!"
-msgstr "Uh-oh"
+msgstr "Uh-oh!"
 
 #. [message]: speaker=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:417
 msgid "I'll not go so easily!"
-msgstr "Jeg går ikke så nemt!"
+msgstr "Jeg dør ikke så nemt!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:435
@@ -946,8 +947,8 @@ msgid ""
 "Hmm, I guess that this is the last I'll see of my home... and my father. "
 "(Sigh)"
 msgstr ""
-"Vi er kommet igennem passet. I det mindste ved jeg nu at orkerne kan "
-"besejres. Jeg må vist regne med at det er det sidste jeg har set til mit "
+"Vi er kommet igennem passet. I det mindste ved jeg nu, at orkerne kan "
+"besejres. Jeg må vist regne med, at det er det sidste, jeg har set til mit "
 "hjem.... og min far. (Suk)"
 
 #. [message]: speaker=Prince Haldric
@@ -958,7 +959,7 @@ msgid ""
 "Clearwater Port."
 msgstr ""
 "Vi bør være i stand til at nå Southbay. Det er den største by på øen. Vi bør "
-"kunne holde stand der. Hvis det mislykkes er der altid Clearwater Havn."
+"kunne holde stand der. Hvis det mislykkes, er der altid Clearwater Havn."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:4
@@ -975,7 +976,7 @@ msgstr "Cleon"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:79
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:107
 msgid "Cultists"
-msgstr ""
+msgstr "Kultmedlemmer"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:58
@@ -1039,7 +1040,7 @@ msgid ""
 "spring and fall."
 msgstr ""
 "Det lover ikke godt. Denne modbydelige sump og dets vanvittige kult... Før "
-"dette skete, plejede vi at rydde sumpen hver efterår og forår."
+"dette skete, plejede vi at rydde sumpen hvert efterår og forår."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:176
@@ -1047,7 +1048,7 @@ msgid ""
 "I suppose with the rampaging bands of murderous orcs roaming about that "
 "hasn't been done in a while."
 msgstr ""
-"Jeg kan regne ud at med de horder af morderiske orker rendende rundt så er "
+"Jeg kan regne ud, at med de horder af morderiske orker rendende rundt, så er "
 "det ikke sket i et stykke tid."
 
 #. [message]: speaker=Burin the Lost
@@ -1072,7 +1073,7 @@ msgstr "Vent. Jeg tror jeg kan høre noget... til våben!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:235
 msgid "Careful, you don't know what's lurking in there!"
-msgstr "Vær forsigtig, du ved ikke hvad der kan gemme sig derinde!"
+msgstr "Vær forsigtig, du ved ikke, hvad der kan gemme sig derinde!"
 
 #. [unit]: type=White Mage
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:241
@@ -1085,7 +1086,7 @@ msgid ""
 "Back you vile--- Oh, sorry I thought you were undead. When are those goofs "
 "in Clearwater Port going to clear the swamp again?"
 msgstr ""
-"Tilbage onde--- oh, undskyd jeg troede du var en udød. Hvornår sørger de "
+"Tilbage onde--- oh, undskyd jeg troede, du var en udød. Hvornår sørger de "
 "tåbelige folk i Clearwater Havn for at rydde sumpen igen?"
 
 #. [message]: speaker=Prince Haldric
@@ -1097,7 +1098,7 @@ msgstr "Måske rydder de den et stykke tid efter, at UNDERGANGEN er indtruffet!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:262
 msgid "Oooh! I take it you wouldn't mind if I helped out?"
 msgstr ""
-"Oooh! Jeg tager det som udtryk for at i ikke vil sige nej til lidt hjælp?"
+"Oooh! Jeg tager det som udtryk for, at i ikke vil sige nej til lidt hjælp?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:277
@@ -1175,7 +1176,7 @@ msgid ""
 "they haven't met the main body of our forces yet."
 msgstr ""
 "Så vidt jeg ved herre. Vi har en stor hær, og de tog alle egnede mænd og "
-"drenge ind i hæren da jeg tog af sted. Orkernes hær er enorm, men de har "
+"drenge ind i hæren, da jeg tog af sted. Orkernes hær er enorm, men de har "
 "ikke mødt vores hovedstyrke endnu."
 
 #. [message]: speaker=Prince Haldric
@@ -1185,9 +1186,9 @@ msgid ""
 "risk it and go through the Oldwood forest, then make a break for Clearwater "
 "Port or Southbay."
 msgstr ""
-"Vi kan ikke gå tilbage, og vejen foran os er blokeret. Jeg antager at vi må "
-"tage risikoen ved at gå igennem Oldwood skoven, og derfra til Clearwater "
-"Havn eller Southbay."
+"Vi kan ikke gå tilbage, og vejen foran os er blokeret. Jeg antager, at vi må "
+"tage risikoen ved at gå igennem Oldwoodskoven, og derfra til Clearwater Havn "
+"eller Southbay."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:462
@@ -1217,7 +1218,7 @@ msgid ""
 "We have run out of time... We'll be trapped in this swamp when winter "
 "arrives!"
 msgstr ""
-"Vi er løbet ud af tid... Vi er fanget i denne sump når vinteren kommer!"
+"Vi er løbet tør for tid... Vi er fanget i denne sump, når vinteren kommer!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:4
@@ -1255,9 +1256,9 @@ msgid ""
 "civilized way to fight a war! Look there, there are still orcs about... To "
 "arms!"
 msgstr ""
-"Det er som vi frygtede, orkerne har hærget Midland. Dette er ikke en "
+"Det er, som vi frygtede, orkerne har hærget Midland. Dette er ikke en "
 "civiliseret måde at udkæmpe en krig på! Se der, der er stadig orker i "
-"området ... gør våbene klar!"
+"området ... gør våbenene klar!"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:172
@@ -1267,7 +1268,7 @@ msgstr "Ok! Angrib!"
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:177
 msgid "Feel my wrath, you orcish scum!"
-msgstr "Føl min vrede, din orkiske afskum!"
+msgstr "Føl min vrede, dit orkiske afskum!"
 
 #. [message]: speaker=Tan-Vrodis
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:183
@@ -1279,7 +1280,7 @@ msgstr "MENNESKER... jeg kan se mennesker!"
 msgid ""
 "Ha, Hogar! You said we wouldn't see any action this far back from the front."
 msgstr ""
-"Ha, Hogar! Du sagde at vi ikke ville opleve noget her så langt væk fra "
+"Ha, Hogar! Du sagde, at vi ikke ville opleve noget her så langt væk fra "
 "fronten."
 
 #. [message]: speaker=Tan-Hogar
@@ -1290,7 +1291,7 @@ msgstr "Luk munden! Bare på dem."
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:212
 msgid "SE - The Oldwood. Enter at Your Own Risk!"
-msgstr "SØ- Oldwoodskoven. Indgang på egen risiko!"
+msgstr "SØ - Oldwoodskoven. Indgang på egen risiko!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:232
@@ -1323,7 +1324,7 @@ msgstr "Vrogar"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:287
 msgid "How'd they get behind us? I hate to miss such tasty meat."
 msgstr ""
-"Hvordan kom de bag os? Jeg hader at gå glip at sådant et lækkert måltid."
+"Hvordan kom de bag os? Jeg hader at gå glip af sådant et lækkert måltid."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:290
@@ -1339,7 +1340,7 @@ msgstr "Armbrøst"
 #. [message]: speaker=Tan-Hogar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:309
 msgid "Better him than me! Reserves!"
-msgstr "Heller ham end mig! Reserverer!"
+msgstr "Hellere ham end mig! Reserverer!"
 
 #. [message]: speaker=Tan-Bok
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:330
@@ -1378,7 +1379,7 @@ msgid ""
 "orcish army had already passed my position."
 msgstr ""
 "De løb min post over ende. Jeg blev alvorligt ramt i hovedet. Da jeg kom til "
-"bevidsthed var orkernes hær allerede rejst videre."
+"bevidsthed, var orkernes hær allerede rejst videre."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:384
@@ -1392,7 +1393,7 @@ msgid ""
 "last! I only wish I was there!"
 msgstr ""
 "Southbay falder ikke uden et ordentlig slag, sir. De vil stå imod til det "
-"sidste! Jeg ville bare ønske at jeg kunne være der!"
+"sidste! Jeg ville bare ønske, at jeg kunne være der!"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:394
@@ -1401,7 +1402,7 @@ msgid ""
 "to risk it and go through the Oldwood forest, then make a break for "
 "Clearwater Port."
 msgstr ""
-"Tja, vi kan ikke gå tilbage, og vejen foran er blokeret... Jeg er bange for "
+"Tja, vi kan ikke gå tilbage, og vejen foran er blokeret... Jeg er bange for, "
 "at vi må forsøge at gå igennem Oldwoodskoven og derfra til Clearwater Havn."
 
 #. [message]: speaker=Burin the Lost
@@ -1419,7 +1420,8 @@ msgid ""
 "We have run out of time... We'll be trapped in the midlands when winter "
 "comes!"
 msgstr ""
-"Tiden er løbet fra os... Vi vil blive fanget i Midland når vinteren kommer!"
+"Tiden er løbet fra os... Vi bliver indesluttet i Midland, når vinteren "
+"kommer!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:4
@@ -1492,7 +1494,7 @@ msgid ""
 "overhead, blocking almost all of the light... The ominous noises of the deep "
 "woods echo all around."
 msgstr ""
-"Haldrics gruppe er i midten af Oldwoodskoven. Vejen snævrer ind og er ikke "
+"Haldrics gruppe er i midten af Oldwoodskoven. Vejen snævre ind og er ikke "
 "meget andet end et lille spor. Skovens grene dækker højt over dem, og bloker "
 "næsten alt lys... Lydene fra skoven kan høres hele vejen rundt."
 
@@ -1502,7 +1504,7 @@ msgid ""
 "Will this evil forest ever end! There are mosquitoes as big as my fist in "
 "here, and these nasty old trees are giving me the creeps."
 msgstr ""
-"Stopper denne onde skov da aldrig! Der er myg så store som min knytnæve og "
+"Stopper denne onde skov da aldrig! Der er myg så store som min knytnæve, og "
 "disse grimme gamle træer giver mig kuldegysninger."
 
 #. [message]: speaker=Lady Outlaw
@@ -1511,18 +1513,18 @@ msgid ""
 "This isn't so bad. Haldric's kind are such a suspicious lot when it comes to "
 "these sorts of things."
 msgstr ""
-"Det er ikke så galt. Haldrics slags en flok mistænkelige bande når det "
+"Det er ikke så galt. Haldrics slags er nogle mistænkelige nogle, når det "
 "drejer sig om den her slags ting."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:213
 msgid "Quiet. Listen, I think I hear something."
-msgstr "Stille. Hør, jeg tror der er noget."
+msgstr "Stille. Hør, jeg tror, der er noget."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:217
 msgid "All I hear are more tree-foes!"
-msgstr "Alt hvad jeg kan høre er flere træ-fjender!"
+msgstr "Alt hvad jeg kan høre er flere træfjender!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:221
@@ -1566,7 +1568,7 @@ msgid ""
 "The temple has already been looted, but the entrance to its catacombs seems "
 "to be blocked by a wall of magical energy."
 msgstr ""
-"Templet er allerede plyndret, men indgangen til katabomberne er spærret af "
+"Templet er allerede plyndret, men indgangen til katakomberne er spærret af "
 "en væg af magisk energi."
 
 #. [message]: speaker=Tan-Rugar
@@ -1578,7 +1580,7 @@ msgstr "Dumme stinkende træer, vi skal vise jer!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:269
 msgid "Chop 'em down. It's cool in these woods, I think we need a fire!"
 msgstr ""
-"Hug dem ned. Det er koldt i disse skove, jeg tror vi skal bruge et bål!"
+"Hug dem ned. Det er koldt i disse skove, jeg tror, vi skal bruge et bål!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:280
@@ -1586,7 +1588,7 @@ msgid ""
 "Without the help of these tree-folk we'll be trapped in these woods till we "
 "die! There will be nothing to hold the orcs back!"
 msgstr ""
-"Uden hjælp fra disse træfolk er vi fanget her i skoven til vi dør! Der vil "
+"Uden hjælp fra disse træfolk er vi fanget her i skoven, til vi dør! Der vil "
 "ikke være nogen til at stoppe orkerne!"
 
 #. [message]: speaker=Burin the Lost
@@ -1619,8 +1621,8 @@ msgid ""
 "Well, I suspect you won't have to worry about my kind for much longer. The "
 "orcs have come, and they are taking this Isle!"
 msgstr ""
-"Tja, jeg tror ikke at i skal være urolige for mit folk meget længere. "
-"Orkerne er kommet, og de overtager øen.!"
+"Tja, jeg tror ikke, at i skal være urolige for mit folk meget længere. "
+"Orkerne er kommet, og de overtager øen!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:309
@@ -1629,8 +1631,8 @@ msgid ""
 "orcs are gone as well. We were here before all others, and I suspect that we "
 "will be here in the end."
 msgstr ""
-"Hmmm- mit folk var her før dit, og vi vil være her efter at orkerne har "
-"forladt stedet igen. Vi var her før alle andre og jeg tror vi vil være her "
+"Hmmm- mit folk var her før dit, og vi vil være her efter, at orkerne har "
+"forladt stedet igen. Vi var her før alle andre, og jeg tror, vi vil være her "
 "til slut."
 
 #. [message]: speaker=Prince Haldric
@@ -1646,10 +1648,10 @@ msgid ""
 "people some time ago one of your kings trapped an evil Lich in the catacombs "
 "of the temple at the heart of the wood. We were there, we were watching."
 msgstr ""
-"Mit folk er bundet til skoven, vi vil ikke være til hjælp uden for skovens "
-"grænser. Men måske kan vi være dig til hjælp alligevel. I en krig dit folk "
-"udkæmpede for lang tid siden tog en af jeres konger en ond lich til fange i "
-"templets katakomber. Vi var der, vi observerede."
+"Mit folk er bundet til skoven, vi vil ikke være til nogen hjælp uden for "
+"skovens grænser. Men måske kan vi være dig til hjælp alligevel. I en krig "
+"dit folk udkæmpede for lang tid siden tog en af jeres konger en ond lich til "
+"fange i templets katakomber. Vi var der, vi observerede."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:321
@@ -1657,8 +1659,8 @@ msgid ""
 "After we drove your kind off we figured out how to break the spell that "
 "holds the Evil in the catacombs, and keeps others from entering them."
 msgstr ""
-"Efter at i var blevet fordrevet fandt vi ud af hvordan magien der holder det "
-"onde i katakomberne kan brydes."
+"Efter at i var blevet fordrevet, fandt vi ud af hvordan magien der holder "
+"det onde i katakomberne kan brydes."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:325
@@ -1671,8 +1673,8 @@ msgid ""
 "The Lich was carrying a powerful artifact. We know, we can feel it. This "
 "artifact may aid you in your quest."
 msgstr ""
-"Lichen bærer en magtfuld artifact. Vi ved det, fordi vi kan føle det. Denne "
-"artifact kan hjælpe dig i din mission."
+"Lichen bærer en kraftfuld artefakt. Vi ved det, fordi vi kan føle det. Denne "
+"artefakt kan hjælpe dig i din mission."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:333
@@ -1681,14 +1683,14 @@ msgid ""
 "it with us from the east. We thought it was lost in the war with your "
 "people, when Lich-Lord Lenvan fell!"
 msgstr ""
-"Han må mene ildrubinen. Det var vores mest magtfulde artifact. Vi tog den "
+"Han må mene Ildrubinen. Det var vores mest magtfulde artefakt. Vi tog den "
 "med da vi kom fra øst. Vi troede den var tabt i krigen mod jeres folk, da "
-"Lichlensherren Lenvan faldt!"
+"lichlensherren Lenvan faldt!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:337
 msgid "At this point we need all of the help we can get!"
-msgstr "På dette tidspunkt har vi brug for al den hjælp vi kan få!"
+msgstr "På dette tidspunkt har vi brug for al den hjælp, vi kan få!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:341
@@ -1734,8 +1736,8 @@ msgid ""
 msgstr ""
 "Udover at tabe krigen i vest, så var vores flygtningekrig mod dit folk og "
 "disse orker, ikke så dårlig en ide. Lich-lensherren Lenvan var en af vores "
-"største ledere. Han stod i spidsen for vores flugt mod vest. Jeg tror ikke "
-"at han er alt for glad efter at han har været nede i det hul i så lang tid."
+"største ledere. Han stod i spidsen for vores flugt mod vest. Jeg tror ikke, "
+"at han er alt for glad, efter at han har været nede i det hul i så lang tid."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:367
@@ -1755,7 +1757,7 @@ msgid ""
 "return in a few days."
 msgstr ""
 "Vi bør gemme diskussionen til senere. Jeg kan stadig være til gang for dig. "
-"Jeg kan spejde vejen foran os. Vi har behov for at vide om vi kan komme til "
+"Jeg kan spejde vejen foran os. Vi har behov for at vide, om vi kan komme til "
 "Southbay. Jeg returnerer om nogle få dage."
 
 #. [message]: speaker=Prince Haldric
@@ -1781,7 +1783,7 @@ msgstr "Lichlensherre Lenvan"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:119
 msgid "Undead"
-msgstr ""
+msgstr "Udød"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:147
@@ -1816,12 +1818,12 @@ msgstr "Fangarm"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:109
 msgid "Defeat the Lich-Lord and"
-msgstr "Besejr Lichlensherren og"
+msgstr "Besejr lichlensherren og"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:113
 msgid "Retrieve the Fire Ruby (with Prince Haldric)"
-msgstr "Få fat i ildrubinen (med prins Haldric)"
+msgstr "Få fat i Ildrubinen (med prins Haldric)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:132
@@ -1830,8 +1832,8 @@ msgid ""
 "below the temple, buried deep in the bedrock, in the very roots of the world "
 "itself. In the distance Haldric hears a booming voice."
 msgstr ""
-"Med en barsk nysgerrighed begynder prins Haldic og hans følgeskab turen ned "
-"i katakomberne under templet, begravet dybt i jorden, i selve roden af "
+"Med en opmærksom nysgerrighed begynder prins Haldric og hans følgeskab turen "
+"ned i katakomberne under templet, begravet dybt i jorden, i selve roden af "
 "verden. I det fjerne kan Haldric høre en høj stemme."
 
 #. [message]: speaker=Lich-Lord Lenvan
@@ -1874,8 +1876,8 @@ msgid ""
 "What's that! No! The tree-folk are sealing us back in here. They must think "
 "that we've failed. We're trapped."
 msgstr ""
-"Det er det! Nej! Træfolket spærrer os inde her. De må tro vi har fejlet. Vi "
-"er fanget."
+"Det var det! Nej! Træfolket spærrer os inde her. De må tro, vi har fejlet. "
+"Vi er fanget."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:198
@@ -1891,12 +1893,12 @@ msgstr "Jeg kan ikke li' synet af den pøl."
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:240
 msgid "It looks scary, but it's good for you."
-msgstr "Den ser angstfremkaldende ud, men den er godt for dig."
+msgstr "Den ser angstfremkaldende ud, men det er godt for dig."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:261
 msgid "You already have the Fire Ruby."
-msgstr "Du har allerede ildrubinen."
+msgstr "Du har allerede Ildrubinen."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:285
@@ -1905,9 +1907,9 @@ msgid ""
 "apple, and burns with an internal fire, which is refracted through its "
 "faces. You can feel the power flowing from it..."
 msgstr ""
-"Da du åbner kisten ser du den Ildrubinen. Den er på størrelse med et æble, "
-"og brænder fra en indre ild, som genspejler sig igennem rubinen. Du kan "
-"mærke magten der flyder igennem den..."
+"Da du åbner kisten, ser du Ildrubinen. Den er på størrelse med et æble, og "
+"brænder fra en indre ild, som genspejler sig igennem rubinen. Du kan mærke "
+"magten der flyder igennem den..."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:291
@@ -1931,7 +1933,7 @@ msgid ""
 "I'm glad that's over! We have the Ruby of Fire, and that Lich-Lord is now a "
 "pile of dust, let's get out of these catacombs!"
 msgstr ""
-"Jeg er glad for det er forbi! Vi har ildrubinen, og lichlensherren er nu en "
+"Jeg er glad for, det er forbi! Vi har Ildrubinen, og lichlensherren er nu en "
 "bunke støv, lad os komme ud af disse katakomber!"
 
 #. [message]: speaker=Prince Haldric
@@ -1954,14 +1956,13 @@ msgstr "Overraskende træagtig"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:37
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:58
-#, fuzzy
 msgid "Treefolk"
-msgstr "Wesfolk"
+msgstr "Træfolk"
 
 #. [side]: type=Wose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:43
 msgid "Theylook-Thesame-Toyou"
-msgstr "Deser-Påsammemåde-Fordig"
+msgstr "Deser-ensud-fordig"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:84
@@ -1986,10 +1987,10 @@ msgid ""
 "It is late into the fall, and the first snows should fall any day. Prince "
 "Haldric has returned to his forest keep, and is pondering what to do next..."
 msgstr ""
-"Prins Haldric er kommet frem fra lichlensherrens katakomb med ildrubinen. "
+"Prins Haldric er kommet frem fra lichlensherrens katakomb med Ildrubinen. "
 "Skoven er speciel lys denne dag, men der er en kold vind. Det er sent "
-"efterår, og den første sne kan falde hvad dag det skal være. Prins Haldric "
-"er returneret til sit skovborgtårn og overvejer hvad han skal gøre nu..."
+"efterår, og den første sne kan falde hver dag det skal være. Prins Haldric "
+"er returneret til sit skovborgtårn, og overvejer hvad han skal gøre nu..."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:112
@@ -2006,7 +2007,7 @@ msgid ""
 "Yes, it was a tough battle, but we prevailed. Now, I'm having a problem. I "
 "know not what I should do next."
 msgstr ""
-"Ja det var et hårdt slag men til sidst kom vi ud øverst. Nu har jeg et "
+"Ja, det var et hårdt slag, men til sidst kom vi ud sejrigt. Nu har jeg et "
 "problem. Jeg er usikker på, hvad jeg skal gøre nu."
 
 #. [message]: speaker=Prince Haldric
@@ -2045,7 +2046,7 @@ msgstr ""
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:157
 msgid "You thought that I ran away, didn't you?"
-msgstr "Du troede jeg stak af, gjorde du ikke?"
+msgstr "Du troede, jeg stak af, gjorde du ikke?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:161
@@ -2080,7 +2081,7 @@ msgid ""
 "infernal swamp. But, one question remains."
 msgstr ""
 "Jeg har bestemt ikke noget imod tanken om at orkerne render forvirret rundt "
-"i den modbydelige sump. Men et spørgsmål resterer."
+"i den modbydelige sump. Men et spørgsmål er tilbage."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:181
@@ -2091,7 +2092,7 @@ msgstr "Hvad?"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:185
 msgid "Can I trust you, and your information? I don't even know your name."
 msgstr ""
-"Kan jeg stole på dig, og dine informationer? Jeg kender end ikke dit navn"
+"Kan jeg stole på dig, og dine informationer? Jeg kender end ikke dit navn."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:191
@@ -2122,7 +2123,7 @@ msgstr ""
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:207
 msgid "I propose we join forces, and make a break for Clearwater Port."
-msgstr "Jeg foreslår at vi slår os sammen og forsøger at nå Clearwater Havn."
+msgstr "Jeg foreslår, at vi slår os sammen og forsøger at nå Clearwater Havn."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:211
@@ -2130,8 +2131,8 @@ msgid ""
 "Well, I certainly don't mind the thought of the orcs floundering around that "
 "infernal swamp. But, some questions remain."
 msgstr ""
-"Jeg har bestemt ikke noget imod tanken om at orkerne render forvirret rundt "
-"i den modbydelige sump. Men nogle spørgsmål resterer."
+"Jeg har bestemt ikke noget imod tanken om, at orkerne render forvirret rundt "
+"i den modbydelige sump. Men nogle spørgsmål er ubesvaret."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:215
@@ -2146,9 +2147,9 @@ msgid ""
 "human years. The art of Necromancy allowed our best and brightest to live "
 "forever, and our worst got to serve as mindless slaves."
 msgstr ""
-"Haldric, vi er et ældgammelt folk som levede i et land fyldt op med alle "
-"slags mennesker og bæster. Vi havde brug for en vision der gik ud over det "
-"korte liv det enkelte menneske har. Nekromancy tillod vores bedste og "
+"Haldric, vi er et ældgammelt folk, som levede i et land fyldt op med alle "
+"slags mennesker og bæster. Vi havde brug for en vision, der gik ud over det "
+"korte liv det enkelte menneske har. Åndemaneri tillod vores bedste og "
 "dygtigste at leve evigt, og de andre at leve som utænkende slaver."
 
 #. [message]: speaker=Lady Outlaw
@@ -2157,8 +2158,8 @@ msgid ""
 "Other than losing our war back west, then our refugee war to your people, "
 "and this orc thing, it wasn't such a bad deal."
 msgstr ""
-"Udover at tabe vores krig tilbage mod vest så vores flygtningekrig mod dit "
-"folk og denne ork ting, så var det ikke så slemt en ting."
+"Udover at tabe vores krig tilbage mod vest og så vores flygtningekrig mod "
+"dit folk og denne orkting, så var det ikke så dårlig en handel."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:227
@@ -2187,7 +2188,7 @@ msgstr ""
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:244
 msgid "Bah, have it your way!"
-msgstr "Bah, det bliver på din måde!"
+msgstr "Bah, som du vil!"
 
 #. [unit]: type=$lady_store.type
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:254
@@ -2264,7 +2265,7 @@ msgstr "Clearwater Havn"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:30
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:57
 msgid "Humans"
-msgstr ""
+msgstr "Mennesker"
 
 #. [then]
 #. [side]: type=Lieutenant
@@ -2343,7 +2344,7 @@ msgstr "Kommandør Aethyrs død"
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:252
 msgid "Miss the Last Ship"
-msgstr "Undgå det sidste skib"
+msgstr "Kom for sent til det sidste skib"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:262
@@ -2368,7 +2369,7 @@ msgid ""
 "trapped in this city for the winter if the port freezes over."
 msgstr ""
 "Løjtnant, hvem har kommandoen her? Og hvor er skibene? Vi risikerer at blive "
-"fanget i byen vinteren over hvis havnen fryser til."
+"fanget i byen vinteren over, hvis havnen fryser til."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:278
@@ -2427,10 +2428,10 @@ msgid ""
 "before the last of the people can be evacuated."
 msgstr ""
 "Vi holder kun byen indtil den sidste flygtning er væk. Dig min herre er frit "
-"stillet til at trække dig tilbage med den næste skib som ankommer. Men hvis "
+"stillet til at trække dig tilbage, med den næste skib som ankommer. Men hvis "
 "jeg må være ærlig min herre, så er vores forsvar tyndslidt og vi kan bruge "
-"al den hjælp vi kan få til at holde murene. Ellers frygter jeg at vi bliver "
-"løbet over ende før de sidste kan blive evakueret."
+"al den hjælp, vi kan få til at holde murene. Ellers frygter jeg, at vi "
+"bliver løbet over ende, før de sidste kan blive evakueret."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:303
@@ -2442,7 +2443,7 @@ msgid ""
 msgstr ""
 "Tja vi er de sidste flygtninge fra vores land, da orkerne er lige i hælene "
 "på os! Vi har Wesfolk med os. De har været i vores tjeneste. De skal også "
-"evakueres. Vi har rejst langt og har mange sårede, men vi vil hjælpe med at "
+"evakueres. Vi har rejst langt og har mange sårede, men vi vil hjælpe med, at "
 "forsvare disse mure i så lang tid vi kan."
 
 #. [message]: speaker=Commander Aethyr
@@ -2459,7 +2460,7 @@ msgstr ""
 msgid ""
 "Yes. Be sure that it is understood that these are our allies and friends."
 msgstr ""
-"Ja. Vær sikker på, at det er forstået, at disse er vores allierede og venner."
+"Ja. Vær sikker på, at det er forstået, at de er vores allierede og venner."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:318
@@ -2470,7 +2471,7 @@ msgstr "Ja herre!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:323
 msgid "Yes sir, indeed! You need us to help hold out until the ships arrive."
 msgstr ""
-"Ja herre, i den grad! Du behøver os for at kunne holde ud indtil skibene "
+"Ja herre, i den grad! Du behøver os, for at kunne holde ud indtil skibene "
 "ankommer."
 
 #. [message]: speaker=Burin the Lost
@@ -2489,7 +2490,7 @@ msgid ""
 "boatloads. Until then, let us make those orcs pay dearly for every inch of "
 "our land. For our homes, for our people, for our fallen king!"
 msgstr ""
-"På posterne! Vi burde være i stand til at evakuere alle i tre yderligere "
+"På posterne! Vi burde være i stand til at evakuere alle med tre yderligere "
 "skibsrejser. Indtil da, så lad orkerne betale dyrt for hver meter af vores "
 "land. For vores hjem, for vores folk, for vores døde konge!"
 
@@ -2505,7 +2506,7 @@ msgid ""
 "you irregular..."
 msgstr ""
 "»Også disse Wesfolk? Det vil være... noget originalt.« Bah! Jeg skal vise dig "
-"noget originalt..."
+"noget uortodoks..."
 
 #. [message]: speaker=Ut'Tan-Vrork
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:363
@@ -2513,7 +2514,7 @@ msgid ""
 "Push 'em into the sea! They're in our winter homes! Heh...Tan-Vragar, I 'm "
 "sure they will enjoy your little surprise!"
 msgstr ""
-"Træng dem i havet! De er i vores vinterhjem! Oh... Tan-Vragar, Jeg håber de "
+"Træng dem i havet! De er i vores vinterhjem! Oh... Tan-Vragar, Jeg håber, de "
 "kan li' din lille overraskelse!"
 
 #. [event]
@@ -2537,7 +2538,7 @@ msgstr "Eriol"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:399
 msgid "An ode to ye, on yer way, I hope you have a brighter day!"
-msgstr "En sang til eder, på eders vej, jeg håber du har en gladere dag!"
+msgstr "En sang til eder, på eders vej, jeg håber, du har en gladere dag!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:420
@@ -2555,7 +2556,7 @@ msgid ""
 "My lord, the first ship has arrived! Prince Haldric, if you and your men "
 "must leave for Southbay just go to the pier to board the ship."
 msgstr ""
-"Min herre, det første skib er ankommet! Prins Haldric hvis du og dine mænd "
+"Min herre, det første skib er ankommet! Prins Haldric, hvis du og dine mænd "
 "må forlade Southbay så gå til landgangsbroen for at gå om bord på skibet."
 
 #. [message]: speaker=Commander Aethyr
@@ -2573,7 +2574,7 @@ msgid ""
 "want to leave for Southbay just go to the pier to board the ship."
 msgstr ""
 "Min herre, det andet skib er ankommet! Prins Haldric hvis du og dine mænd "
-"ønsker at forlade Southbya så gå til landgangsbroen for at entre skibet."
+"ønsker at forlade Southbay så gå til landgangsbroen for at entre skibet."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:703
@@ -2606,7 +2607,7 @@ msgstr "Min herre, det sidste skib tager af sted. Vi er fanget!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:918
 msgid "My lord, the ship isn't here yet. Come help us defend against the orcs."
 msgstr ""
-"Lensherre skibet er her ikke endnu. Hjælp os med forsvaret mod orkerne."
+"Lensherre, skibet er her ikke endnu. Hjælp os med forsvaret mod orkerne."
 
 #. [message]: speaker=Commander Aethyr
 #. [message]: speaker=narrator
@@ -2618,14 +2619,14 @@ msgid ""
 "Haldric must go to lead you to the ship. Until then, help us defend against "
 "the orcs."
 msgstr ""
-"Unddrag dig ikke din pligt soldat. Når båden ankommer er så er det at prins "
+"Unddrag dig ikke din pligt soldat. Når båden ankommer, så er det at prins "
 "Haldric må gå for at føre dig til skibet. Indtil da så hjælp os med at "
 "forsvare os mod orkerne."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:948
 msgid "Let me have peace in Death! My love, I'll be there soo-"
-msgstr "Lad mig få fred i døden! Min elskede jeg er der snart-"
+msgstr "Lad mig få fred i døden! Min elskede, jeg er der snart-"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:953
@@ -2638,7 +2639,7 @@ msgid ""
 "We've escaped from the orcs before we were trapped by the ice! Now, on to "
 "Southbay."
 msgstr ""
-"Vi er undsluppet fra orkerne før vi blev fanget af isen! Nu mod Southbay."
+"Vi er sluppet fra orkerne, før vi blev fanget af isen! Nu mod Southbay."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:972
@@ -2661,8 +2662,8 @@ msgid ""
 "You have the Ruby of Fire, but you have no idea what it does, correct? You "
 "know that Lich you have petrified just outside of Southbay-"
 msgstr ""
-"Du har ildrubinen, men du har ingen ide om hvad den gør korrekt? Du ved den "
-"lich som du har forstenet lige uden for Southbay-"
+"Du har Ildrubinen, men du har ingen ide om, hvad den gør, korrekt? Du ved "
+"den lich, som du har forstenet lige uden for Southbay-"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:992
@@ -2682,7 +2683,7 @@ msgid ""
 msgstr ""
 "Emm, ja... Han var Caror, ærkerival til den dyrbare afgåede lichlensherre "
 "Lenvan. Han hungrede efter rubinen og studerede den. Den eneste kopi af hans "
-"arbejde bogen Ild og Mørke blev tilintetgjort sammen med ham."
+"arbejde bogen »Ild og mørke« blev tilintetgjort sammen med ham."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1002
@@ -2718,7 +2719,7 @@ msgid ""
 msgstr ""
 "Nej. Disse monstre slog min familie ihjel. Min kone, mine døtre. Der er "
 "intet tilbage for mig. Jeg bliver. Når orkerne endelig fravristes Clearwater "
-"Havn vil der ikke være andet end murbrokker tilbage!"
+"Havn, vil der ikke være andet end murbrokker tilbage!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1022
@@ -2726,8 +2727,8 @@ msgid ""
 "The peasant farmers seem to like you. Who knows, maybe they'll be of some "
 "help."
 msgstr ""
-"Bønderne ser ud til at kunne li' dig. Hvem ved måske kan de være til en form "
-"for hjælp."
+"Bønderne ser ud til, at kunne li' dig. Hvem ved, måske kan de være til en "
+"form for hjælp."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1027
@@ -2735,13 +2736,13 @@ msgid ""
 "Resources are scarce, we need all of the help we can get. Be brave and fight "
 "hard, my friend!"
 msgstr ""
-"Resourcerne er få vi har brug for al den hjælp vi kan få. Vær modig og kæmp "
-"hårdt min ven!"
+"Ressourcerne er få, vi har brug for al den hjælp, vi kan få. Vær modig og "
+"kæmp hårdt min ven!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:4
 msgid "Fallen Lich Point"
-msgstr "Sted hvor lichen faldt"
+msgstr "Stedet hvor lichen faldt"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:35
@@ -2779,14 +2780,14 @@ msgid ""
 "Da big bosses said we'd be in da city by winter. Bosses wrong, human-worms "
 "still there, and I'm a tinkin- -"
 msgstr ""
-"De store chefer sagde at vi ville være i byen til vintertid. Chefer galt på "
-"den, menneskeorme er der stadig og jeg tænker- -"
+"De store chefer sagde, at vi ville være i byen til vintertid. Chefer galt på "
+"den, menneskeorme er der stadig, og jeg tænker- -"
 
 #. [message]: speaker=Ut'Tan-Grilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:221
 msgid "Wait! I see a ship! Humans is coming! Smash 'em good!"
 msgstr ""
-"Vent! Jeg kan se et skip! mennesker kommer! Smadr dem godt og grundigt!"
+"Vent! Jeg kan se et skib! Mennesker kommer! Smadr dem godt og grundigt!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:240
@@ -2794,8 +2795,8 @@ msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich-Lord "
 "Caror's Book of Fire and Darkness, and flee into the Sewers of Southbay."
 msgstr ""
-"Prins Haldric er ankommet ved den faldne lich for at overtage lichens ild- "
-"og mørkebog og flygte ind i kloakkerne under Southbay."
+"Prins Haldric er ankommet ved stedet for den faldne lich for at overtage "
+"lichens »Ild- og mørkebog« og flygte ind i kloakkerne under Southbay."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:264
@@ -2820,7 +2821,7 @@ msgstr "Ohh."
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:276
 msgid "Just get the book, I think I should be able to translate it."
-msgstr "Bare få fat i bogen jeg tror jeg kan oversætte den."
+msgstr "Bare få fat i bogen, jeg tror jeg kan oversætte den."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:280
@@ -2865,13 +2866,13 @@ msgid ""
 msgstr ""
 "INSKRIPTION: Denne monolit blev rejst af mig, <FJERNET>, stortroldmand hos "
 "Den Grønne Øs folk. I dens sten er lichlensherrens magt bundet. For at "
-"fjerne trolddommen skal en adelige fra kongernes linje sige følgende "
+"fjerne trolddommen skal en adelig fra kongernes linje sige følgende "
 "sætning..."
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:363
 msgid "I think I'll say that magic phrase."
-msgstr "Jeg tror jeg siger den der magiske sætning."
+msgstr "Jeg tror, jeg siger den der magiske sætning."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:374
@@ -2885,7 +2886,7 @@ msgstr ""
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:378
 msgid "Hmph! You're just happy because that monolith proves your paternity!"
-msgstr "Hmmm! Du er kun glad fordi den monolit har bevidst din ædle byrd!"
+msgstr "Hmmm! Du er kun glad, fordi den monolit har bevidst din ædle byrd!"
 
 #. [message]: speaker=Lich-Lord Caror
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:382
@@ -2900,12 +2901,12 @@ msgstr "Nej du vil ikke du mørkets soldat!"
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:392
 msgid "I think I'll wait a while before uttering any magic phrases."
-msgstr "Jeg tror jeg venter med at sige magiske fraser."
+msgstr "Jeg tror, jeg venter et øjeblik, før jeg siger nogen magiske fraser."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:397
 msgid "We have more pressing matters to deal with before we free that Lich."
-msgstr "Vi har mere presserende ting at se til før vi befrier den lich."
+msgstr "Vi har mere presserende ting at se til, før vi befrier den lich."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:402
@@ -2915,7 +2916,7 @@ msgstr "Bange for at du opdager, at du ikke har blåt blod?"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:412
 msgid "This sounds like a job for Prince Haldric, hopefully."
-msgstr "Dette lyder som et arbejde for prins Haldric, forhåbentlig."
+msgstr "Dette lyder, som et arbejde for prins Haldric, forhåbentlig."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:425
@@ -2989,7 +2990,7 @@ msgstr "Så tæt på. Så tæt på."
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:594
 msgid "I found the book in what was left of his robes! Let's get out of here!"
-msgstr "Jeg fandt bogen i hvad der var tilbage af hans tøj! Lad os komme ud!"
+msgstr "Jeg fandt bogen, i hvad der var tilbage af hans tøj! Lad os komme ud!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:647
@@ -3004,7 +3005,7 @@ msgstr "Kloak - Fare gå ikke ind!"
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:5
 msgid "Sewer of Southbay"
-msgstr "Southbay kloaksystem"
+msgstr "Southbays kloaksystem"
 
 #. [side]: type=Arch Mage
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:37
@@ -3015,7 +3016,7 @@ msgstr "Daellyn den Røde"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:67
 msgid "Red Wizards"
-msgstr ""
+msgstr "Røde troldmænd"
 
 #. [side]: type=Arch Mage
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:59
@@ -3070,7 +3071,7 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:162
 msgid "This is the far end of that river bed. Legend has it- -"
-msgstr "Dette er den fjerne ende af flodseng. Sagnet siger- -"
+msgstr "Dette er den fjerne ende af den flodseng. Sagnet siger- -"
 
 #. [message]: speaker=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:166
@@ -3087,14 +3088,14 @@ msgid ""
 "Can you feel it, brother? This one bears the Ruby of Fire. After all our "
 "time searching, it has come to us!"
 msgstr ""
-"Kan du føle den bror? Ham her har ildrubinen. Efter så lang tids søgen så er "
+"Kan du føle den bror? Ham her har Ildrubinen. Efter så lang tids søgen så er "
 "den kommet til os!"
 
 #. [message]: speaker=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:174
 msgid ""
 "The brothers Red will finally ascend to power. We must have it. Get them!"
-msgstr "De røde brøde vil endelig få magten. Vi må få fat i den. På dem!"
+msgstr "De røde brøde vil endelig få magten. Vi må få fat på den. På dem!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:182
@@ -3108,7 +3109,7 @@ msgid ""
 "happens to be strong in the ways of magic can sense that ruby? Elilmaldur-"
 "Rithrandil felt it, and so did Lich-Lord Caror, now these two."
 msgstr ""
-"Haldric, jeg har en stærk forudanelse. Har du bemærket at alt som er magisk "
+"Haldric, jeg har en stærk forudanelse. Har du bemærket, at alt som er magisk "
 "stærkt kan mærke rubinen? Elilmaldur-Rithrandil kunne mærke den, og det "
 "samme kunne lichlensherren Caror, nu også de to her."
 
@@ -3121,7 +3122,7 @@ msgid ""
 msgstr ""
 "Vi fik fat i lichlensherrens bog, og jeg kan fysisk føle magten fra rubinen, "
 "selv når den er i min oppakning. Lad os finde ud af hvad den kan, før vi "
-"beslutter hvad der skal ske med den."
+"beslutter, hvad der skal ske med den."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:215
@@ -3159,7 +3160,7 @@ msgid ""
 "It's not very Heroic if Prince Haldric isn't the one to lead his band from "
 "the Sewers of Southbay."
 msgstr ""
-"Det er ikke særlig helteagtigt hvis prins Haldric ikke er den som anføre "
+"Det er ikke særlig helteagtigt, hvis ikke prins Haldric er den som fører "
 "gruppen ud af Southbays kloakker."
 
 #. [message]: speaker=narrator
@@ -3170,7 +3171,7 @@ msgstr "Fare forude!"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:390
 msgid "Ahead, so far it's been danger everywhere."
-msgstr "Fremad så langt har der været farer overalt."
+msgstr "Fremad, indtil nu har der været farer overalt."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:401
@@ -3180,7 +3181,7 @@ msgstr "Endelig mod Southbay!"
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:4
 msgid "Southbay in Winter"
-msgstr "Southbay vintertid"
+msgstr "Southbay om vinteren"
 
 #. [side]: type=Grand Knight
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:39
@@ -3215,7 +3216,7 @@ msgid ""
 "honorable man, and so are you. Aren't you the king now?"
 msgstr ""
 "Jeg kendte dig som dreng, og dit folk går foran dig. Din far var en ærefuld "
-"mand og det er du også. Er du ikke konge nu?"
+"mand, og det er du også. Er du ikke konge nu?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:108
@@ -3231,7 +3232,7 @@ msgid ""
 msgstr ""
 "Det er sandt. Det er hårde tider min unge prins. Du har gjort din far stolt. "
 "Meget bedre end mit eftermæle, en død opdagelsesrejsende og et manglende "
-"fjols! Det er passende at min blodlinje bør ende med mit kongedømme."
+"fjols! Det er passende, at min blodlinje bør ende med mit kongedømme."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:116
@@ -3259,7 +3260,7 @@ msgid ""
 "She and her people have been of great service to me. Open the gates, let "
 "them in."
 msgstr ""
-"Hun og hendes folk har været til stor gavn for mig. Åben portene, lad dem "
+"Hun og hendes folk har været til stor gavn for mig. Åbn portene, lad dem "
 "komme ind."
 
 #. [message]: speaker=King Addroran IX
@@ -3284,10 +3285,10 @@ msgid ""
 "your eldest son that you will let all of the Wesfolk who may come into the "
 "city, and to allow them to participate in what must happen next."
 msgstr ""
-"Og fordi kan kan forsøde aftalen. Jeg kan redde livet for alle der er "
-"tilbage på denne ø. Jeg vil afsløre hvordan hvis du sværger på sjælen for "
-"din ældste søn at du vil lade alle fra Wesfolk komme ind i byen og deltage i "
-"hvad der så skal ske."
+"Og fordi jeg kan forsøde aftalen. Jeg kan redde livet, for alle der er "
+"tilbage på denne ø. Jeg vil afsløre hvordan, hvis du sværger på sjælen for "
+"din ældste søn, at du vil lade alle fra Wesfolk komme ind i byen, og deltage "
+"i hvad der så skal ske."
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:145
@@ -3300,8 +3301,8 @@ msgid ""
 "First, I CAN translate the book that will allow Haldric to use the Ruby of "
 "Fire. The artifact should help with what must come."
 msgstr ""
-"For det første kan jeg oversætte bogen som vil lade Haldric anvende "
-"ildrubinen. Artefakten bør kunne hjælpe med hvad der måtte komme."
+"For det første kan jeg oversætte bogen, som vil lade Haldric anvende "
+"Ildrubinen. Artefakten bør kunne hjælpe med, hvad der måtte komme."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:153
@@ -3310,12 +3311,12 @@ msgid ""
 "your son's navigator and companion. Believe me, you must go east."
 msgstr ""
 "For det andet kender jeg vejen til de mystiske lande mod øst. Addroran jeg "
-"var din søns navigatør og følgeskab. Tro mig du må gå mod øst."
+"var din søns navigatør og følgesvend. Tro mig, du må gå mod øst."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:157
 msgid "Compan- - What?"
-msgstr "Følgesk- - Hvad?"
+msgstr "Følgesv- - Hvad?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:161
@@ -3331,7 +3332,7 @@ msgid ""
 msgstr ""
 "Jeg var navigatøren. Haldric, dit folk kom hertil for lang tid siden ved en "
 "tilfældighed, men mit folk kom her med et formål. I ville alle stadig holde "
-"får og leve i græshytter hvis det ikke havde været for mit folk."
+"får og leve i græshytter, hvis det ikke havde været for mit folk."
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:169
@@ -3354,7 +3355,7 @@ msgid ""
 msgstr ""
 "Det er ikke heltetid. Du må mod øst fordi mit folk kom fra vest, som er "
 "fyldt med alskens slags fjender og monstre. Der er bogstaveligt talt ikke "
-"plads der. Hvis du tror at vi var slemme, så skulle du se det som kommer "
+"plads der. Hvis du tror, at vi var slemme, så skulle du se det, som kommer "
 "efter os. I bliver slaver eller dør."
 
 #. [message]: speaker=Lady Jessica
@@ -3366,10 +3367,10 @@ msgid ""
 "their numbers are limitless, and you have no way to stop more orcs from "
 "coming."
 msgstr ""
-"Lær af mit folks historie. Hvis vi flygtede mens endnu en af vores store "
-"byer stod, så kunne vi have taget øen med lethed. Men vi kæmpede til den "
-"bitre ende. Der kan ikke være noget kompromis med orkerne, deres antal er "
-"uden ende, og du kan intet gøre for at stoppe flere orkers ankomst."
+"Lær af mit folks historie. Hvis vi havde flygtet mens endnu en af vores "
+"store byer stod, så kunne vi have taget øen med lethed. Men vi kæmpede til "
+"den bitre ende. Der kan ikke være noget kompromis med orkerne, deres antal "
+"er uden ende, og du kan intet gøre for at stoppe flere orkers ankomst."
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:181
@@ -3396,8 +3397,8 @@ msgid ""
 "for the sake of all who can be evacuated. That means that it shall fall on "
 "Haldric and you to lead the evacuation."
 msgstr ""
-"Nej. Flygt og flygt mod øst. Det er min pligt at holde denne by i så lang "
-"tid jeg kan for at hjælpe alle som kan blive evakueret. Det betyder at det "
+"Nej. Flygt og flygt mod øst. Det er min pligt, at holde denne by i så lang "
+"tid jeg kan, for at hjælpe alle som kan blive evakueret. Det betyder, at det "
 "hænger på Haldric og dig at lede evakueringen."
 
 #. [message]: speaker=Prince Haldric
@@ -3407,7 +3408,7 @@ msgid ""
 "will bear the flag of Southbay. A new throne and new lands await you in the "
 "east."
 msgstr ""
-"Min konge der vil være et nyt kongedømme mod øst og hovedparten af flåden "
+"Min konge, der vil være et nyt kongedømme mod øst og hovedparten af flåden "
 "vil hejse Southbays flag. En ny trone og et nyt land venter dig mod øst."
 
 #. [message]: speaker=King Addroran IX
@@ -3418,10 +3419,10 @@ msgid ""
 "blood. We old men are still of some value. We will make the orcs pay dearly "
 "when they come to take this place!"
 msgstr ""
-"Min blodlinje er end med mine sønner, og jeg er gammel. Lad skibene tage "
+"Min blodlinje er endt med mine sønner, og jeg er gammel. Lad skibene tage "
 "kvinderne, børn og de unge mænd først. Et nyt kongedømme må fødes med "
 "livskraftig blod. Vi gamle mænd har stadig en værdi. Vi vil lade orkerne "
-"betale dyrt når de kommer for dette sted!"
+"betale dyrt, når de kommer for at erobre dette sted!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:201
@@ -3429,14 +3430,15 @@ msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
 "Kings of Southbay! Jessica, about that book?"
 msgstr ""
-"Hvis der ikke er en anden vej. Må barderne for evigt synge om modet hos "
-"Southbays konger! Jessica vedrørende bogen?"
+"Hvis der ikke er nogen anden måde. Må barderne for evigt synge om modet hos "
+"Southbays konger! Jessica, vedrørende bogen?"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:205
 msgid ""
 "I'll begin my translation. Oh, and you should seal up the sewer entrance."
-msgstr "Jeg begynder min oversættelse. Oh husk du bør forsegle kloakindgangen."
+msgstr ""
+"Jeg begynder min oversættelse. Oh, husk du bør forsegle kloakindgangen."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:4
@@ -3493,7 +3495,7 @@ msgid ""
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
 "Flere måneder gik. Jessica har oversat lichlensherre Carors ild- og "
-"mørkebog. Prins Haldric er travlt optaget med at afsløre ildrubinens "
+"mørkebog. Prins Haldric er travlt optaget med at afsløre Ildrubinens "
 "hemmeligheder."
 
 #. [message]: speaker=Prince Haldric
@@ -3507,8 +3509,8 @@ msgid ""
 "Ouch! Hot, hot, hot! Gee, somebody should really attach this thing to a "
 "scepter or something! I think I'll save it for closer-ranged combat for now."
 msgstr ""
-"Av av! Varm, varm, varm! Nogen burde virkelig hæfte den her tingest til en "
-"scepter eller noget lignende! Jeg tror jeg gemmer den til nærkamp for nu."
+"Av av! Varm, varm, varm! Nogen burde virkelig hæfte den her tingest til et "
+"scepter eller noget lignende! Jeg tror, jeg gemmer den til nærkamp for nu."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:308
@@ -3521,8 +3523,8 @@ msgid ""
 "Humph. Fool of a boy's just gonna burn us all up. Humans, always playing at "
 "being wizards."
 msgstr ""
-"Det fjols af den dreng vil bare brænde os alle op. Mennesker altid leger de "
-"at de er troldmænd."
+"Det fjols af den dreng vil bare brænde os alle op. Mennesker, altid leger "
+"de, at de er troldmænd."
 
 #. [message]: speaker=Southbay Guard 1
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:316
@@ -3534,7 +3536,7 @@ msgstr "Orker spottet! De har indtaget fronten! Til våben! Til våben!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:320
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:725
 msgid "For the glory of Southbay!"
-msgstr "Til Southbays ære!"
+msgstr "For Southbays ære!"
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:324
@@ -3543,7 +3545,7 @@ msgid ""
 "orcs. The ships aren't ready yet. We must defeat this army of orcs to buy us "
 "more time. Try not to kill us all with that ruby!"
 msgstr ""
-"Prins Haldric jeg koncentrerer mig om at holde Southbay. Du må besejre "
+"Prins Haldric, jeg koncentrerer mig om at holde Southbay. Du må besejre "
 "orkerne. Skibene er ikke klar endnu. Vi må besejre denne orkhær for at give "
 "os mere tid. Prøv nu at undgå at dræbe os alle med den rubin!"
 
@@ -3655,8 +3657,8 @@ msgid ""
 "I sense, I sense the Ruby of Fire."
 msgstr ""
 "Kong Addroran, din tid er kommet. Gør dig klar til at møde din skaber. Hvis "
-"du er heldig vil jeg måske genoplive dig fra de døde for min egen "
-"fornøjelses skyld. Oh, hvad er dette? Jeg kan føle ildrubinen."
+"du er heldig, vil jeg måske genoplive dig fra de døde for min egen "
+"fornøjelses skyld. Oh, hvad er dette? Jeg kan føle Ildrubinen."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:445
@@ -3695,7 +3697,7 @@ msgstr "Far! Kom... til os..."
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:465
 msgid "His older brother was more attractive..."
-msgstr "Han ældre bror var mere attraktiv..."
+msgstr "Hans ældre bror var mere attraktiv..."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:508
@@ -3738,7 +3740,7 @@ msgstr "Ny Southbay"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:645
 msgid "They sealed it, there is no escape for you!"
-msgstr "Der har lukket ringen, der er ingen udvej for dig!"
+msgstr "De har lukket ringen, der er ingen udvej for dig!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:659
@@ -3748,7 +3750,7 @@ msgstr "Jeg er færdig."
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:663
 msgid "We needed him to hold Southbay. We're done for!"
-msgstr "Vi havde behov for at han kunne holde Southbay. Vi er færdige!"
+msgstr "Vi havde brug for, at han kunne holde Southbay. Vi er færdige!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:676
@@ -3771,8 +3773,8 @@ msgid ""
 "that are to the east."
 msgstr ""
 "Med hjælp fra havets folk, og mit kendskab til en ø, som kan være et godt "
-"sted at samle proviant, skulle vi være i stand til at påvirke rejsen mod det "
-"land som ligger mod øst."
+"sted at samle proviant, skulle vi være i stand til, at begynde på rejsen mod "
+"det land som ligger mod øst."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:688
@@ -3781,7 +3783,7 @@ msgid ""
 "capital is named, betrayed my people. To make matters worse, he knows that "
 "you have that ruby."
 msgstr ""
-"Hvad jeg ikke kan li' er at Lichlensherren Jevyan, som vores hovedstad er "
+"Hvad jeg ikke kan li' er, at lichlensherren Jevyan, som vores hovedstad er "
 "opkaldt efter, forrådte mit folk. For at gøre tingene endnu værre så ved "
 "han, at du har rubinen."
 
@@ -3791,7 +3793,7 @@ msgid ""
 "There's not much we can do about that now. I dub this fine ship the Eldaric, "
 "in honor of my father. About that island..."
 msgstr ""
-"Der er ikke meget vi kan gøre ved det nu. Jeg navngiver dette skib Eldaric, "
+"Der er ikke meget, vi kan gøre ved det nu. Jeg navngiver dette skib Eldaric, "
 "Til ære for min far. Nu omkring den der ø..."
 
 #. [message]: speaker=Burin the Lost
@@ -3828,7 +3830,7 @@ msgstr "Kegrid"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:67
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:97
 msgid "Drakes"
-msgstr ""
+msgstr "Hestedrager"
 
 #. [side]: type=Drake Flameheart
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:61
@@ -3847,7 +3849,7 @@ msgid ""
 "port that appears to be deserted."
 msgstr ""
 "Efter et stykke tid på havet ses en ø i horisonten. Eldaric ligger til ved "
-"en primitiv havn som ser ud til at være forladt."
+"en primitiv havn, som ser ud til at være forladt."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:200
@@ -3860,8 +3862,8 @@ msgid ""
 "This is the Elder Prince's island all right. We had a heck of a time "
 "pacifying the Drakes who live here. Oh my, it looks like they've rearmed!"
 msgstr ""
-"Dette er prins Elders ø kan jeg se. Vi havde en stor opgave med at "
-"pacificere hestedragerne som bor her. Oh nej, det ser ud som om de har "
+"Dette er prins Elders ø, kan jeg se. Vi havde en stor opgave med at "
+"pacificere hestedragerne, som bor her. Oh nej, det ser ud som om, at de har "
 "oprustet!"
 
 #. [message]: speaker=Prince Haldric
@@ -3873,7 +3875,7 @@ msgstr ""
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:212
 msgid "(whispered) I don't think diplomacy is going to work."
-msgstr "(hvisket) Jeg tror ikke at diplomati vil virke."
+msgstr "(Hvisket) Jeg tror ikke, at diplomati vil virke."
 
 #. [message]: speaker=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:216
@@ -3887,7 +3889,7 @@ msgstr ""
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:220
 msgid "(whispered) Do I need to say, 'I told you so'?"
-msgstr "(hvisket) Skal jeg sige det, jeg sagde det jo?"
+msgstr "(Hvisket) Er det nødvendigt at sige: »Jeg sagde det jo?«"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:235
@@ -3908,8 +3910,8 @@ msgid ""
 "Well, it looks like their warriors have given up the fight. We should be "
 "able to re-provision the ships now."
 msgstr ""
-"Hmm, det ser ud til at deres krigere har opgivet kampen. Vi skulle nu have "
-"mulighed for at proviantere skibene."
+"Hmm, det ser ud til, at deres krigere har opgivet kampen. Vi skulle nu have "
+"mulighed for at skaffe forsyninger til skibene."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:261
@@ -3917,7 +3919,7 @@ msgid ""
 "The nice thing is, they'll go back to guarding this island after we're gone "
 "for a while. It'll make a good way of preventing others from following us."
 msgstr ""
-"Fordelen er, at de vil vende tilbage og bevogte øen efter at vi er væk. Det "
+"Fordelen er, at de vil vende tilbage og bevogte øen, efter at vi er væk. Det "
 "er en god måde at forhindre andre i at følge efter os."
 
 #. [message]: speaker=Prince Haldric
@@ -3935,7 +3937,8 @@ msgid ""
 "I'm sure they'll eventually evacuate. Just like us right now."
 msgstr ""
 "De ser temmelig intelligente ud. De er i hvert fald krigeriske og talrige. "
-"Jeg er sikker på at de til sidst vil evakuere sig selv. På samme måde som os."
+"Jeg er sikker på, at de til sidst vil evakuere sig selv. På samme måde som "
+"os."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:273
@@ -3974,7 +3977,7 @@ msgstr "Abraxas"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:94
 msgid "Naga"
-msgstr ""
+msgstr "Naga"
 
 #. [side]: type=Naga Warrior
 #. [event]
@@ -4000,13 +4003,13 @@ msgid ""
 "group of small windswept islands to regroup."
 msgstr ""
 "Efter en række særdeles hårde storme har Eldaric taget vand ind, og det "
-"meste af flåden er blevet spredt. Lensherre Typhon foreslår at lave et stop "
-"ved en lille gruppe vindomsuste øer for at omgruppere."
+"meste af flåden er blevet spredt. Lensherre Typhon foreslår at samles ved en "
+"lille gruppe vindomsuste øer for at omgruppere."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:182
 msgid "I don't think I can take much more of this. I'm feeling ill!"
-msgstr "Jeg tror ikke jeg kan klare meget mere af dette. Jeg føler mig syg!"
+msgstr "Jeg tror ikke, jeg kan klare meget mere af dette. Jeg føler mig syg!"
 
 #. [message]: speaker=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:187
@@ -4015,9 +4018,9 @@ msgid ""
 "the only place to stop with soft sand beaches to make landfall... The Nagas "
 "like to scavenge metal from ships that they capture here."
 msgstr ""
-"Vær forsigtig, disse øer er ikke sikre. Vi er i Nagaterritorium. Men dette "
-"sted er det eneste sted med blødt sand hvor vi kan gå i land... Nagaerne kan "
-"li' at indsamle metal fra skibe de fanger her."
+"Vær forsigtig, disse øer er ikke sikre. Vi er i nagaterritorium. Men dette "
+"sted er det eneste sted med blødt sand, hvor vi kan gå i land... Nagaerne "
+"kan li' at indsamle metal fra skibe, de fanger her."
 
 #. [message]: speaker=Xamalia
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:192
@@ -4047,31 +4050,32 @@ msgstr "Slangen Toothey"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:292
 msgid "We've defeated the nagas. The fleet should be able to regroup here."
-msgstr "Vi har besejret nagaerne. Flåden bør kunne regruppere her igen."
+msgstr "Vi har besejret nagaerne. Flåden bør kunne omgruppere her igen."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:297
 msgid ""
 "The next time we see land, it should be the great continent to the east."
-msgstr "Næste gang vi ser land bør det være et stort kontinent mod øst."
+msgstr "Næste gang vi ser land, bør det være et stort kontinent mod øst."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:302
 msgid ""
 "I'll be glad when this voyage is over. We're almost there. Almost there."
-msgstr "Jeg er glad for at denne rejse er forbi. Vi er der næsten. Næsten."
+msgstr "Jeg er glad for, at denne rejse er forbi. Vi er der næsten. Næsten."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:334
 msgid "I think we're being followed..."
-msgstr "Jeg tror vi bliver forfulgt..."
+msgstr "Jeg tror, vi bliver forfulgt..."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:342
 msgid ""
 "We were too slow... The fleet will be scattered to the four corners of the "
 "world!"
-msgstr "Vi var for langsomme... Flåden bliver spredt i de fire verdenshjørner!"
+msgstr ""
+"Vi var for langsomme... Flåden bliver spredt i alle fire verdenshjørner!"
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:4
@@ -4090,7 +4094,7 @@ msgstr "Glimir"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:58
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:76
 msgid "Continentals"
-msgstr ""
+msgstr "Fra fastlandet"
 
 #. [side]: type=Dwarvish Stalwart
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:52
@@ -4135,7 +4139,7 @@ msgid ""
 "north? There are hills and mountains as good as any here in the south!"
 msgstr ""
 "Vores land fyldes op, og vores miner når til bunden af verden. Vi har vundet "
-"krigen imod de tingester som lever i mørket. Ved hvilken ret kræver du alle "
+"krigen, imod de tingester som lever i mørket. Ved hvilken ret kræver du alle "
 "skove i verden, og al land syd for Den Store Flod, og tvinger os ind i "
 "bakkerne og bjergene i nord? Der er bakker og bjerge lige så gode her i syd!"
 
@@ -4187,7 +4191,7 @@ msgid ""
 "diplomacy then. Haldric, we should avoid calling upon too many units, and "
 "avoid fighting them. There has to be a peaceful resolution to this."
 msgstr ""
-"Hmm, og du har øvet dig på den tale i dagevis. Jeg tror at det var "
+"Hmm, og du har øvet dig på den tale i dagevis. Jeg tror, at det var "
 "diplomatiet. Haldric vi bør undgå at tilkalde for mange enheder, og undgå at "
 "kæmpe imod dem. Der må være en fredelig løsning på dette."
 
@@ -4206,9 +4210,9 @@ msgid ""
 "My people are too far south. I don't know what's going on here. I'll stick "
 "with you until the end. You've been a good friend. Just no more sea voyages."
 msgstr ""
-"Mit folk er for langt mod syd. Jeg ved ikke hvad der foregår her. Jeg holder "
-"mig til dig indtil afslutningen. Du har været en god ven. Bare ikke flere "
-"havsejladser."
+"Mit folk er for langt mod syd. Jeg ved ikke, hvad der foregår her. Jeg "
+"holder mig til dig indtil afslutningen. Du har været en god ven. Bare ikke "
+"flere havsejladser."
 
 #. [side]: type=Elvish Shyde
 #. [event]
@@ -4233,9 +4237,9 @@ msgid ""
 "interesting when he stopped by."
 msgstr ""
 "Historierne er sande. Der må være dværgekolonister i De Brune Bakker. Vi "
-"fangede denne gruppe i gang med at fælde træ tæt på bugten. Så så vi en "
+"fangede denne gruppe i gang med at fælde træ tæt på bugten. Derpå så vi en "
 "mængde skibe. Ikke som før, med den fyr fra Southbay og hans enlige skib. "
-"Det var altid interessant når han kom forbi."
+"Det var altid interessant, når han kom forbi."
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:236
@@ -4243,7 +4247,7 @@ msgid ""
 "We thought we were being invaded. We, erm, put our differences aside with "
 "the dwarves, for the moment, and decided to deal with this first."
 msgstr ""
-"Vi troede vi blev invaderet. Vi, hmm, satte vores uenigheder med dværgene "
+"Vi troede, vi blev invaderet. Vi, hmm, satte vores uenigheder med dværgene "
 "til side - for nu - og besluttede at håndtere dette først."
 
 #. [message]: speaker=Lord Dionli
@@ -4253,7 +4257,7 @@ msgid ""
 "spare you. For on this day the Council of Lords is meeting in a forest not "
 "far from here."
 msgstr ""
-"Dette er foruroligende tendenser. Menneske, det er kun ved ren held at jeg "
+"Dette er foruroligende tendenser. Menneske, det er kun ved ren held, at jeg "
 "er her til at redde dig. På denne dag mødes lensherrerådet i en skov ikke "
 "langt herfra."
 
@@ -4274,7 +4278,7 @@ msgid ""
 "prepare to return to the north."
 msgstr ""
 "Hvad dig angår dværg, så returner til De Brune Bakker. Gør dit folk klar til "
-"at returnere til nord."
+"at returnere mod nord."
 
 #. [message]: speaker=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:256
@@ -4299,7 +4303,7 @@ msgid ""
 "(whispered) Maybe it'd be best if you didn't mention our little friend "
 "following us..."
 msgstr ""
-"(hvisket) Måske er det bedst, hvis du ikke nævner vores lille ven, som "
+"(Hvisket) Måske er det bedst, hvis du ikke nævner vores lille ven, som "
 "følger os..."
 
 #. [message]: speaker=Lord Typhon
@@ -4331,9 +4335,9 @@ msgid ""
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Må strømmene føre dig hurtigt frem min ven. (hvisker) Jessica send besked om "
+"Må strømmene føre dig hurtigt frem min ven. (Hvisket) Jessica send besked om "
 "at en tredjedel af flåden skal returnere til Den Grønne Ø, for at lede efter "
-"flere overlevende. Hvis de kommer tilbage så giv dem besked om at returnere "
+"flere overlevende. Hvis de kommer tilbage så giv dem besked om at returnere, "
 "indtil der ikke findes flere overlevende."
 
 #. [message]: speaker=Prince Haldric
@@ -4345,10 +4349,11 @@ msgid ""
 "Make haste, return before it is time to meet with these, what are they? Ahh, "
 "elves."
 msgstr ""
-"(hvisker) Bemand skibene med skeletter, og giv dem de tilbageværende "
+"(Hvisket) Bemand skibene med skeletter, og giv dem de tilbageværende "
 "forsyninger. Giv besked til lensherre Typhon. Sikre dig at ikke mere end en "
-"tredjedel af flåden sendes af sted. Vi kan ikke forsyne orkerne med en klar "
-"flåde. Skynd dig, returner før mødet med hvem var det nu? Ahh, elverne."
+"tredjedel af flåden sendes af sted. Vi må ikke forsyne orkerne med en "
+"operationsklar flåde. Skynd dig, returner før mødet med hvem var det nu? "
+"Ahh, elverne."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:319
@@ -4362,12 +4367,12 @@ msgstr ""
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:363
 msgid "I bet this wasn't the welcome you were expecting."
-msgstr "Jeg vil vædde på at det ikke var den velkomst du forventede."
+msgstr "Jeg vil vædde på, at det ikke var den velkomst, du forventede."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:4
 msgid "The Ka'lian"
-msgstr "The Ka'ilian"
+msgstr "The Ka'lian"
 
 #. [side]: type=Elvish Shyde
 #. [side]: type=Elvish Champion
@@ -4379,7 +4384,7 @@ msgstr "The Ka'ilian"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:56
 msgid "Elves"
-msgstr ""
+msgstr "Elvere"
 
 #. [side]: type=Elvish Champion
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:44
@@ -4391,7 +4396,7 @@ msgstr "Lensherre Logalmier"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:55
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:53
 msgid "Lord Aryad"
-msgstr "Lenserre Aryad"
+msgstr "Lensherre Aryad"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:134
@@ -4402,7 +4407,7 @@ msgstr "Lensherre El'Isomithir"
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:140
 msgid "I think I'll fight the dragon!"
-msgstr "Jeg tror jeg vil bekæmpe dragen!"
+msgstr "Jeg tror, jeg vil bekæmpe dragen!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:152
@@ -4417,7 +4422,7 @@ msgstr "Umm, du har allerede besejret dragen, Haldric."
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:179
 msgid "Let's get those saurians and nagas on that beach!"
-msgstr "På de øgler og nagaer på stranden!"
+msgstr "På de øgler og nagaer på den strand!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:191
@@ -4427,7 +4432,7 @@ msgstr "Disse koldblodede monstre skal mærke min vrede!"
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:208
 msgid "Umm, you already cleared the beach."
-msgstr "Ummm du har allerede ryddet stranden."
+msgstr "Ummm, du har allerede ryddet stranden."
 
 #. [option]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:218
@@ -4452,7 +4457,7 @@ msgstr "Lad os give disse sjæle fred på Den Forbandede Ø!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:268
 msgid "Undead. Bah! We're pros at fighting them."
-msgstr "Udøde. Ha! Vi forstå at bekæmpe dem."
+msgstr "Udøde. Ha! Vi forstår at bekæmpe dem."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:284
@@ -4471,9 +4476,9 @@ msgid ""
 "the Dragon of the Green Swamp and its saurian minions. If you can defeat "
 "him, you will have truly earned your place in this land."
 msgstr ""
-"Jeg frygter at min slags er for venlig over for dig. Jeg kræver at du skal "
+"Jeg frygter, at min slags er for venlig over for dig. Jeg kræver, at du skal "
 "kæmpe mod dragen i Den Grønne Sump og dens øglefølgeskab. Hvis du kan "
-"besejre ham så har du i sandhed fortjent din plads i dette land."
+"besejre ham, så har du i sandhed fortjent din plads i dette land."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:325
@@ -4504,7 +4509,7 @@ msgid ""
 "curse. Their souls still haunt that place and no elf will go there. You "
 "should clear this isle, and put their souls to rest."
 msgstr ""
-"For lang tid siden faldt en klan af elver på Tårenes Ø under et mørkt åg. "
+"For lang tid siden faldt en klan af elvere på Tårenes Ø under et mørkt åg. "
 "Deres sjæle hjemsøger stadig stedet og ingen elv vil besøge øen. Du bør "
 "rydde øen og give deres sjæle fred."
 
@@ -4531,7 +4536,7 @@ msgstr "Endelig kan vores forfædres sjæle hvile. Tak."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:403
 msgid "Our beaches are free again. I knew I could trust you, Haldric."
 msgstr ""
-"Vores strande er frie igen. Jeg vidste jeg kunne stole på dig, Haldric."
+"Vores strande er frie igen. Jeg vidste, jeg kunne stole på dig, Haldric."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:413
@@ -4539,7 +4544,8 @@ msgid ""
 "Haldric and his companions find themselves before the Ka'lian, or the "
 "Council of Elven Lords."
 msgstr ""
-"Haldric og hans kompagnoner finder dem selv foran Ka'lian (Elvernes råd)."
+"Haldric og hans kompagnoner finder dem selv stående foran Ka'lian (Elvernes "
+"Råd)."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:426
@@ -4552,7 +4558,7 @@ msgid ""
 "They are of the same people as the Prince of Southbay. They come as "
 "refugees. I can see a use for them."
 msgstr ""
-"De er af samme slags som prinsen af Southbay. De kommer som flygtninge Jeg "
+"De er af samme slags som prinsen af Southbay. De kommer som flygtninge. Jeg "
 "kan se et formål med dem."
 
 #. [message]: speaker=Lord Aryad
@@ -4560,7 +4566,7 @@ msgstr ""
 msgid ""
 "What use would that be? What need could we have for the shortliveds here?"
 msgstr ""
-"Hvad skulle det formål være? Hvilken brug har vi for det korttidslevende her?"
+"Hvad skulle det formål være? Hvilken brug har vi for de korttidslevende her?"
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:438
@@ -4569,7 +4575,7 @@ msgid ""
 "grow like weeds when in an empty field. There is trouble brewing."
 msgstr ""
 "Dværgene er kommet til De Brune Bakker. Selv om de lever i lang tid, så gror "
-"de som ukrudt på en tom mark. Der er ballade under opsejling."
+"de som ukrudt på en tom mark. Der er problemer under opsejling."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:442
@@ -4578,9 +4584,9 @@ msgid ""
 "of Southbay was good, he was a credit to his people. Maybe these ones are "
 "made of the same stuff."
 msgstr ""
-"Det er bedre at være den største blandt tre end den mindre af to. Prinsen af "
-"Southbay var god, han var et gode for sit folk. Måske er disse lavet af det "
-"samme stof."
+"Det er bedre, at være den største blandt tre end den mindste af to. Prinsen "
+"af Southbay var god, han var et forbillede for sit folk. Måske er disse "
+"lavet af det samme stof."
 
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:446
@@ -4594,9 +4600,9 @@ msgid ""
 "We come seeking a new home, since our island to the west and north is now "
 "forfeit."
 msgstr ""
-"Vores folk kommer i fredelig hensigt. Der var krig i vores hjemland. Vi er "
-"flygninge. Vi er på udkig efter et nyt hjem, siden vores ø i vest og nord nu "
-"er tabt."
+"Vores folk kommer med fredelige hensigter. Der var krig i vores hjemland. Vi "
+"er flygtninge. Vi er på udkig efter et nyt hjem, siden vores ø i vest og "
+"nord nu er tabt."
 
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:454
@@ -4623,13 +4629,13 @@ msgid ""
 "I suggest that we grant these humans the plains to the north and south of "
 "the great river."
 msgstr ""
-"Jeg forestår at vi giver disse mennesker stepperne mod nord og syd for Den "
+"Jeg forestår, at vi giver disse mennesker stepperne mod nord og syd for Den "
 "Store Flod."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:466
 msgid "They should be put to the test before such a grant is made."
-msgstr "De bør tage testen før et sådant ønske opfyldes."
+msgstr "De bør tage testen, før et sådant ønske opfyldes."
 
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:470
@@ -4655,9 +4661,9 @@ msgid ""
 "which quest do you wish to undertake first?"
 msgstr ""
 "Nå menneske. Hver af os lensherrer har en specifik mission til dig. Hvis du "
-"fuldfører dem alle vil du blive tildelt alle vores stepper og bakkerne syd "
+"fuldfører dem alle, vil du blive tildelt alle vores stepper og bakkerne syd "
 "for Den Store Flod. Hvis ikke vil du blive tvunget til at tage af sted. Så "
-"hvilken mission ønsker ud at begynde på først?"
+"hvilken mission ønsker du at begynde på først?"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:510
@@ -4665,7 +4671,8 @@ msgid ""
 "Very good, but this is just the start, human. There is still much more for "
 "you to do."
 msgstr ""
-"Fint, men det er kun starten menneske. De er stadig meget mere du skal gøre."
+"Fint, men det er kun starten, menneske. Der er stadig meget mere, du skal "
+"gøre."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:538
@@ -4675,12 +4682,12 @@ msgstr "Du er sejrrig igen. Du kan nu indtage din plads i dette land."
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:566
 msgid "Ahh, my young prince, you're not as soft as I thought."
-msgstr "Ahh, min unge prins, du er ikke så blød som jeg troede."
+msgstr "Ahh, min unge prins, du er ikke så blød, som jeg troede."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:593
 msgid "You were successful, Prince Haldric. I knew you could do it."
-msgstr "Du havde succes, prins Haldric. Jeg vidste du kunne."
+msgstr "Du havde succes, prins Haldric. Jeg vidste, du kunne."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:598
@@ -4715,7 +4722,7 @@ msgid ""
 "Fair enough. I decree a 'Pact of Mutual Aid' between our peoples. But, "
 "aren't you setting us in conflict with the Dwarves?"
 msgstr ""
-"Det er rimeligt nok. Jeg erklærer at vi har en fælles »hjælpepagt«. Men "
+"Det er rimeligt nok. Jeg erklærer, at vi har en fælles »hjælpepagt«. Men "
 "sætter du os ikke i konflikt med dværgene?"
 
 #. [message]: speaker=Lord Logalmier
@@ -4725,7 +4732,7 @@ msgid ""
 "They are your resources to guard now. In the future we would be willing to "
 "trade with you."
 msgstr ""
-"Nej. Dværgene har returneret tilbage mod nord. Men mennesker graver også. "
+"Nej. Dværgene er returneret tilbage mod nord. Men mennesker graver også. "
 "Ikke? Det er nu dine ressourcer at vogte over. I fremtiden vil vi være "
 "villige til at handle med dig."
 
@@ -4740,7 +4747,7 @@ msgid ""
 "It's Commander Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there?"
 msgstr ""
-"Det er kommandør Aethyr fra Clearwater Havn. Jeg var sikker på at du omkom "
+"Det er kommandør Aethyr fra Clearwater Havn. Jeg var sikker på, at du omkom "
 "under kampene der?"
 
 #. [message]: speaker=Commander Aethyr
@@ -4751,7 +4758,7 @@ msgid ""
 "my men conked me on the head, then I woke up at sea."
 msgstr ""
 "Nej. Jeg anførte de sidste overlevende fra Clearwater Havn. Vi var stillet "
-"op til den sidste modstand ved fyrtårnet da et af vores skibe ankom. En af "
+"op til den sidste modstand ved fyrtårnet, da et af vores skibe ankom. En af "
 "mine mænd slog mig oven på hovedet, så vågnede jeg op til havs."
 
 #. [message]: speaker=Commander Aethyr
@@ -4760,7 +4767,7 @@ msgid ""
 "I come bearing news. Some 'old friends' have decided to make an appearance. "
 "You should go 'greet' them."
 msgstr ""
-"Jeg kommer med nyheder. Nogel gamle venner har besluttet at møde op. Du bør "
+"Jeg kommer med nyheder. Nogle gamle venner har besluttet at møde op. Du bør "
 "gå dem i møde og hilse på dem."
 
 #. [message]: speaker=Lady Jessica
@@ -4782,13 +4789,14 @@ msgstr "Dragen"
 msgid "Irix"
 msgstr "Irix"
 
+# har ikke fundet nogen god oversættelse for den her.
 #. [side]: type=Saurian Flanker
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:42
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:75
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:108
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:142
 msgid "Lizardoids"
-msgstr ""
+msgstr "Firben"
 
 #. [side]: type=Saurian Flanker
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:69
@@ -4829,7 +4837,7 @@ msgstr ""
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:240
 msgid "Flies, flies, everywhere! Ack!"
-msgstr "Fluer, fluer, allesteder! Ack!"
+msgstr "Fluer, fluer, alle steder! Ack!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:245
@@ -4847,8 +4855,8 @@ msgid ""
 "I'm glad that's over. The elves certainly aren't taking it easy on us. It's "
 "a miracle any of us are alive at all."
 msgstr ""
-"Jeg er glad for at det er over. Elverne er ikke flinke ved os. Det er et "
-"mirakel at nogle af os er i live i det hele taget."
+"Jeg er glad for, at det er over. Elverne er ikke flinke ved os. Det er et "
+"mirakel, at nogle af os er i live i det hele taget."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:263
@@ -4858,7 +4866,7 @@ msgstr "Jeg kalder dig stadig ikke »dragebanemand«."
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:302
 msgid "Watch for the big mudcrawlers. They divide when you kill them."
-msgstr "Hold øje med de store dyndspringere. De deler sig når du dræber dem."
+msgstr "Hold øje med de store dyndspringere. De deler sig, når du dræber dem."
 
 #. [then]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:340
@@ -4869,7 +4877,7 @@ msgstr "Shek'kahan"
 #. [message]: speaker=Shek'kahan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:349
 msgid "It is unwise to trifle with dragons, boy!"
-msgstr "Det er uklogt at tage let på drager min dreng!"
+msgstr "Det er uklogt at tage let på drager, min dreng!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:353
@@ -4938,7 +4946,7 @@ msgstr "Tirasch"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:67
 msgid "Monsters"
-msgstr ""
+msgstr "Monstre"
 
 #. [side]: type=Saurian Flanker
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:61
@@ -4953,7 +4961,7 @@ msgid ""
 "the saurians hard at work there."
 msgstr ""
 "Efter en lang rejse befinder prins Haldric og hans følgeskab sig på en "
-"solrig strand. Mens det normalt ville være en fornøjelse, finder de at "
+"solrig strand. Mens det normalt ville være en fornøjelse, finder de, at "
 "øglerne arbejder hårdt på stranden."
 
 #. [message]: speaker=Ssirk
@@ -4964,7 +4972,7 @@ msgstr "Monstre! Vi invaderes af monstre."
 #. [message]: speaker=Tirasch
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:143
 msgid "We must hold the beach until we can call our naga friends."
-msgstr "Vi må holde stranden indtil vores nagavenner når frem."
+msgstr "Vi må holde stranden, indtil vores nagavenner når frem."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:148
@@ -5048,9 +5056,8 @@ msgstr "Erart"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:68
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:120
-#, fuzzy
 msgid "Trolls"
-msgstr "Tromas"
+msgstr "Trolde"
 
 #. [side]: type=Troll Warrior
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:62
@@ -5086,14 +5093,14 @@ msgid ""
 "elven guide leads them to a gaping cave mouth, and they descend into the "
 "darkness."
 msgstr ""
-"Det tager ikke lang tid før Haldric og sine kompagnoner kommer til De Brune "
-"Bakker. En elver guide fører dem til en huleindgang, og de påbgynder "
+"Det tager ikke lang tid før Haldric og hans kompagnoner kommer til De Brune "
+"Bakker. En elverspejder fører dem til en huleindgang, og de påbegynder "
 "nedstigningen i mørket."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:275
 msgid "Does anybody actually know anything about trolls?"
-msgstr "Er der nogen som rent faktisk ved noget om trolde?"
+msgstr "Er der nogen, som rent faktisk ved noget om trolde?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:280
@@ -5111,8 +5118,8 @@ msgid ""
 "safe to say that the elves wouldn't have sent us down here if they were at "
 "all friendly."
 msgstr ""
-"Hmm... Behøver vi virkelig at vide så meget om troldene? Jeg tror, det er "
-"sikkert at sige, at elvene ikke ville have sendt os herned hvis de i det "
+"Hmm... Behøver vi virkelig, at vide så meget om troldene? Jeg tror, det er "
+"sikkert at sige, at elvene ikke ville have sendt os herned, hvis de i det "
 "hele taget er venlige."
 
 #. [message]: speaker=Prince Haldric
@@ -5197,7 +5204,7 @@ msgid ""
 "After a short trip by sea, Haldric arrives on the elves' cursed Isle of "
 "Tears. A fog hangs in the air."
 msgstr ""
-"Efter en kort rejse til havs ankommer Haldric på elvernes Tårernes Ø. En "
+"Efter en kort rejse til havs ankommer Haldric til elvernes Tårernes Ø. En "
 "tåge hænger i luften."
 
 #. [message]: speaker=Burin the Lost
@@ -5207,7 +5214,7 @@ msgid ""
 "far. Who'd have thought, a nautical dwarf."
 msgstr ""
 "Jeg sagde ikke flere skibe. Snydemennesker! Aah, jeg har været med dig "
-"indtil nu. Hvem ville have troet en nautisk dværg."
+"indtil nu. Hvem ville have troet, en nautisk dværg."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:333
@@ -5256,7 +5263,7 @@ msgstr "Jeg forbander dig og dine. Må i aldrig få fred."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:401
 msgid "My soul will haunt this place until the end of time! A curse upon you!"
 msgstr ""
-"Min sjæl vil hjemsøge dete sted indtil verdens ende! En forbandelse ligger "
+"Min sjæl vil hjemsøge dette sted indtil verdens ende! En forbandelse ligger "
 "over dig!"
 
 #. [message]: speaker=Prince Haldric
@@ -5295,7 +5302,6 @@ msgstr "Jessica gemmer sig"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:113
-#, fuzzy
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
@@ -5303,22 +5309,21 @@ msgid ""
 "and never real at all."
 msgstr ""
 "Så en forbandelse har fulgt dem fra deres gamle hjem. Mine rytter har "
-"rapporteret at orker er gået i land. Orker her, for første gang i "
-"århundreder."
+"rapporteret, at orker er gået i land. Orker! Trædræberne i vores mest "
+"legendariske sagn. Nogle troede at de kun blev brugt til at skræmme børn, og "
+"derfor slet ikke virkelige."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:117
-#, fuzzy
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
 msgstr ""
 "Og han bærer en magtfuld artefakt. Orkerne vil ikke kunne mærke det. Der er "
-"en større magt på spil her."
+"en magt på spil her, som vi ikke kender."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:121
-#, fuzzy
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
@@ -5338,7 +5343,6 @@ msgstr "Men vi talte om en pagt med denne Haldric og de mænd fra vest-nord..."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:129
-#, fuzzy
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
 "people are of secondary importance to our own needs. As Lord Aryad said, 'If "
@@ -5353,17 +5357,17 @@ msgstr ""
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:137
 msgid "(Sigh) Agreed."
-msgstr "(suk) Ok."
+msgstr "(Suk) Okay."
 
 #. [message]: speaker=Jessica in Hiding
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:146
 msgid "(whispered) Some friends. I must tell Haldric."
-msgstr "(hvisket) hvilke venner. Jeg må kontakte Haldric."
+msgstr "(Hvisket) Hvilke venner. Jeg må kontakte Haldric."
 
 #. [scenario]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:4
 msgid "The Vanguard"
-msgstr "Vanguard"
+msgstr "Forposten"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:38
@@ -5394,12 +5398,12 @@ msgstr ""
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:222
 msgid "Haldric, the elves, we can't trust them!"
-msgstr "Haldric elverne vi kan ikke stole på dem!"
+msgstr "Haldric, elverne vi kan ikke stole på dem!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:227
 msgid "I could have told you that."
-msgstr "Det kunne jeg have fortatl dig."
+msgstr "Det kunne jeg have fortalt dig."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:231
@@ -5407,7 +5411,7 @@ msgid ""
 "Haldric, it's bad. The elves are having second thoughts. They think we might "
 "be more trouble than we're worth. We have to defeat these orcs decisively."
 msgstr ""
-"Haldric det er slemt. Elverne er ved at fortryde. De tror vi giver mere "
+"Haldric det er slemt. Elverne er ved at fortryde. De tror, vi giver mere "
 "ballade end vi er værd. Vi må besejre orkerne med maner."
 
 #. [message]: speaker=Prince Haldric
@@ -5434,8 +5438,8 @@ msgid ""
 "has the advantage."
 msgstr ""
 "Jevyan er her... hans følgesvende flagermusen. Han vil ikke lade en så "
-"lukrativ beløning som ildrubinen slippe ud af hans hænder. Specielt ikke når "
-"han ser, at han har en fordel."
+"lukrativ belønning som Ildrubinen slippe ud af hans hænder. Specielt ikke "
+"når han ser, at han har en fordel."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:247
@@ -5443,7 +5447,7 @@ msgid ""
 "I have a plan. Jessica, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
-"Jeg har en plan. Jessica huske du det troldehul? Her tag ildrubinen gem den "
+"Jeg har en plan. Jessica huske du det troldehul? Her tag Ildrubinen, gem den "
 "i hullet."
 
 #. [message]: speaker=Lady Jessica
@@ -5481,8 +5485,8 @@ msgid ""
 "beachhead. If they capture our ships all is lost. We will be crushed under a "
 "tide of orcs."
 msgstr ""
-"Vi er et folk af flygtninge. Vi må trænge deres fortrop tilbage og sikker "
-"vores brohovede. Hvis de erobrer vores skibe er alt tabt. Vi vil blive knust "
+"Vi er et folk af flygtninge. Vi må trænge deres fortrop tilbage og sikre "
+"vores brohoved. Hvis de erobrer vores skibe, er alt tabt. Vi vil blive knust "
 "under en flodbølge af orker."
 
 #. [message]: speaker=narrator
@@ -5496,13 +5500,13 @@ msgid ""
 "Drop the gold where it is! We've paid our friends enough. There are humans "
 "about, I can smell 'em!"
 msgstr ""
-"Lig guldet hvor det er! Vi har betalt vores venner nok. Der er mennesker i "
+"Læg guldet hvor det er! Vi har betalt vores venner nok. Der er mennesker i "
 "nærheden, jeg kan lugte dem!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:308
 msgid "We have run out of time... We'll never beat the orcs to the beach."
-msgstr "Vi er løbet tør for tid... Vi vil aldrig når stranden før orkerne."
+msgstr "Vi er løbet tør for tid... Vi vil aldrig nå stranden før orkerne."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:326
@@ -5545,7 +5549,7 @@ msgstr ""
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:408
 msgid "We must block the human advance!"
-msgstr "Vi må blokere menneskenes fremskridt!"
+msgstr "Vi må blokere menneskenes fremmarch!"
 
 #. [message]: speaker=Tan-Erirt
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:429
@@ -5559,7 +5563,7 @@ msgid ""
 "destroys them and captures the ships. I hope Jessica makes it back soon."
 msgstr ""
 "Vi har besejret deres forpost. Vi må møde flåden, før Jevyan ødelægger den "
-"eller erobrer den. Jeg håber Jessica snart kommer tilbage."
+"eller erobrer den. Jeg håber, Jessica snart kommer tilbage."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:524
@@ -5617,7 +5621,7 @@ msgid ""
 "voyage. Hmm, it seems that most of the ships are staying at sea."
 msgstr ""
 "Herre nogle skibe har lagt til... De ser ud til at have taget skade under "
-"rejsen. Hmm det ser ud til at de fleste skibe bliver på havet."
+"rejsen. Hmm det ser ud til, at de fleste skibe bliver på havet."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:228
@@ -5626,7 +5630,7 @@ msgid ""
 "defeat these monsters before everybody starves at sea, or before Jevyan "
 "launches an attack with his fleet."
 msgstr ""
-"De har sikkert set røgen fra orkernes bål. Vi må besejre disse monstre før "
+"De har sikkert set røgen fra orkernes bål. Vi må besejre disse monstre, før "
 "alle sulter på havet, eller før Jevyan starter et angreb med sin flåde."
 
 #. [message]: speaker=Commander Aethyr
@@ -5656,7 +5660,7 @@ msgstr "Nej, til ære for alle folk fra nordvest! Angrib!"
 #. [message]: speaker=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:249
 msgid "Bah! Puny human-worm, we will stomp you under our heels!"
-msgstr "Bah! Ynkelige menneskeorme vi vil trampe jer ned under vores hæle!"
+msgstr "Bah! Ynkelige menneskeorme, vi vil trampe jer ned under vores hæle!"
 
 #. [message]: speaker=General Heravan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:253
@@ -5671,7 +5675,7 @@ msgid ""
 "undead corpse will lay it at my feet."
 msgstr ""
 "Overgiv dig, dreng! Du kan ikke besejre mig- Hmm, hvad er dette? Du har lært "
-"at bruge ildrubinens magt. Det gør en forskel, dit udøde lig vil aflevere "
+"at bruge Ildrubinens magt. Det gør en forskel, dit udøde lig vil aflevere "
 "rubinen for mine fødder."
 
 #. [message]: speaker=Prince Haldric
@@ -5681,7 +5685,7 @@ msgid ""
 "war, but you're the real monster! You sacrificed your own people to preserve "
 "your immortal un-life."
 msgstr ""
-"Det må vi se. Den tåbelige Southbay prins gjorde en fejl ved at starte den "
+"Det må vi se. Den tåbelige Southbay-prins gjorde en fejl ved at starte den "
 "her krig, men du er det virkelige monster! Du ofrede dit eget folk for din "
 "egen udødelighed."
 
@@ -5710,7 +5714,8 @@ msgstr "Hmm de udelod »eller orkerne vil spise jer« delen."
 msgid ""
 "I'm back, things went well! Haldric, I sure hope you know what you're doing."
 msgstr ""
-"Jeg er tilbage, det gik godt! Haldric, jeg håber virkelig du ved hvad du gør."
+"Jeg er tilbage, det gik godt! Haldric, jeg håber virkelig, du ved hvad du "
+"gør."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:416
@@ -5719,7 +5724,7 @@ msgid ""
 "glad you made it back in one piece."
 msgstr ""
 "Umm, vi taler om det senere. Jeg er en smule optaget i øjeblikket. Jeg er "
-"glad for du kom tilbage i et stykke."
+"glad for, du kom tilbage i et stykke."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:420
@@ -5852,7 +5857,7 @@ msgid ""
 "secure our place in this new land. Then if the orcs return, hopefully "
 "they'll go looking for our not-so-loyal elven allies first."
 msgstr ""
-"Vi vil overbevise Jevyan om, at vi gav elverne ildrubinen for at sikre vores "
+"Vi vil overbevise Jevyan om, at vi gav elverne Ildrubinen for at sikre vores "
 "nye land. Hvis orkerne returnerer, vil de forhåbentlig først kigge på vores "
 "ikke så loyale elverallierede."
 
@@ -5873,9 +5878,9 @@ msgid ""
 "assault must fall on somebody else or we will not survive it. Who knows, "
 "maybe I won't even come to their aid at all -"
 msgstr ""
-"Ja og vi kommer måske til deres undsætning. Vi må veje vores muligheder når "
+"Ja og vi kommer måske til deres undsætning. Vi må veje vores muligheder, når "
 "og hvis tiden kommer. Hvis orkerne kommer igen i stort tal, så må deres "
-"hovedangreb ramme nogle andre end os ellers overlever vi ikke. Hvem ved "
+"hovedangreb ramme nogle andre end os, ellers overlever vi ikke. Hvem ved "
 "måske kommer jeg slet ikke til deres undsætning - "
 
 #. [message]: speaker=Lady Jessica
@@ -5885,7 +5890,7 @@ msgid ""
 "turned your back on your pact with the elves. It's not like you can tell "
 "people what I overheard."
 msgstr ""
-"Mange ville kalde dig for en kujon hvis du blev væk. De ville sige, at du "
+"Mange ville kalde dig for en kujon, hvis du blev væk. De ville sige, at du "
 "vendte vores pagt med elverne ryggen. Det er jo ikke sådan, at du kan "
 "fortælle folk hvad jeg hørte."
 
@@ -5911,10 +5916,10 @@ msgid ""
 "point. Jessica, you're going to forge a very official looking treaty, in "
 "which we give the elves the Ruby of Fire, in return for our place here."
 msgstr ""
-"Jeg vil være død. Jeg mener, vi kan jo ikke bare sige, at jeg gav ildrubinen "
+"Jeg vil være død. Jeg mener, vi kan jo ikke bare sige, at jeg gav Ildrubinen "
 "væk eller sendte et brev til Jevyan. Vi siger det - men det er ikke pointen. "
 "Jessica du skal forfalske et meget officielt lignende dokument, i hvilket vi "
-"overlader ildrubinen til elverne i bytte for dette sted."
+"overlader Ildrubinen til elverne i bytte for dette sted."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:144
@@ -5925,7 +5930,7 @@ msgid ""
 "to read my undead mind..."
 msgstr ""
 "Jeg har tænkt mig at møde Jevyan, og hvis rygterne om hans magt er sande vil "
-"han samle den traktat op fra mit mishandlet lig. Så ødelægger du Jevyan når "
+"han samle den traktat op fra mit mishandlet lig. Så ødelægger du Jevyan, når "
 "rygtet om traktaten har nået orkerne, men før han har en chance for at læse "
 "min udøde hukommelse..."
 
@@ -5958,8 +5963,8 @@ msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
 "bodies, right Jessica?"
 msgstr ""
-"Jeg vil aldrig lade dig slippe af sted med det her, sir! Det bliver over "
-"vores lig, ikke Jessica?"
+"Jeg vil aldrig lade dig slippe af sted med det her! Det bliver over vores "
+"lig, ikke Jessica?"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:193
@@ -6020,7 +6025,7 @@ msgid ""
 "getting the treaty. We will honor your sacrifice."
 msgstr ""
 "Udmærket. Hvis du ikke kan afskrækkes. Husk, du SKAL myrdes af Jevyan selv. "
-"Vi kan ikke have at en orkanalfabet eller tanketom skelet få fat i "
+"Vi kan ikke have, at en orkanalfabet eller tanketom skelet få fat i "
 "traktaten. Vi vil ære dit offer."
 
 #. [message]: speaker=Commander Aethyr
@@ -6030,7 +6035,7 @@ msgid ""
 "to me. I want to rest in the ground, not be some mindless undead slave for "
 "all eternity!"
 msgstr ""
-"Ær mig ved at ødelægge Jevyan! Helst før kan gøre unaturlige ting ved mig. "
+"Ær mig ved at knuse Jevyan! Helst før han kan gøre unaturlige ting ved mig. "
 "Jeg ønsker at blive i jorden, ikke at være en tanketom udød slave i evighed!"
 
 #. [message]: speaker=Prince Haldric
@@ -6047,8 +6052,8 @@ msgid ""
 "death'?"
 msgstr ""
 "Vi må være forsigtig med at lade en af orklederne undslippe tilbage til Den "
-"Grønne Ø med kendskab til at elverne »har« ildrubinen. Sheesh... Hvad er det "
-"med jeres slags iver for en »ærefuld død«?"
+"Grønne Ø med kendskab til at elverne »har« Ildrubinen. Sheesh... Hvad er det "
+"med jeres iver for en »ærefuld død«?"
 
 #. [side]: type=Ancient Lich
 #. [side]: type=Orcish Warlord
@@ -6057,9 +6062,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:122
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:159
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:197
-#, fuzzy
 msgid "Evil"
-msgstr "Eriol"
+msgstr "Ond"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:79
@@ -6084,12 +6088,12 @@ msgstr "Tan-Prodash"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:274
 msgid "Commander Aethyr sacrifices himself to Lich-Lord Jevyan and"
-msgstr "Kommandør Aethyr ofrer sig selv til Lichlensherren Jevyan og"
+msgstr "Kommandør Aethyr ofrer sig selv til lichlensherren Jevyan og"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:278
 msgid "Destroy Lich-Lord Jevyan and"
-msgstr "Ødelæg Lichlensherre Jevyan og"
+msgstr "Ødelæg lichlensherre Jevyan og"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:282
@@ -6118,7 +6122,7 @@ msgstr ""
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:317
 msgid "You cannot win. Give me the Ruby of Fire and I will go in peace."
-msgstr "Du kan ikke vinde. Giv mig ildrubinen og jeg går i fred."
+msgstr "Du kan ikke vinde. Giv mig Ildrubinen og jeg går i fred."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:321
@@ -6127,7 +6131,7 @@ msgid ""
 "the Ruby of Fire."
 msgstr ""
 "Det slutter her Jevyan. Selv hvis jeg troede på dig, kunne jeg ikke give dig "
-"ildrubinen."
+"Ildrubinen."
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:326
@@ -6135,7 +6139,7 @@ msgid ""
 "Bah! Even if you have learned to conceal the power of the Ruby of Fire you "
 "will deliver it unto me in death!"
 msgstr ""
-"Bah! Selv hvis du har afsløret ildrubinens magt vil du overlade mig den i "
+"Bah! Selv hvis du har afsløret Ildrubinens magt, vil du overlade mig den i "
 "døden!"
 
 #. [message]: speaker=Lady Jessica
@@ -6145,8 +6149,8 @@ msgid ""
 "give the elves the Ruby of Fire. We just signed a treaty with the elves "
 "ensuring our place here."
 msgstr ""
-"Du er et fjols Jevyan. Hvordan tror du vi fik dette sted? Vi måtte overlade "
-"ildrubinen til elverne. Vi indgik en traktat med elverne som sikrede os "
+"Du er et fjols Jevyan. Hvordan tror du, vi fik dette sted? Vi måtte overlade "
+"Ildrubinen til elverne. Vi indgik en traktat med elverne, som sikrede os "
 "dette område."
 
 #. [message]: speaker=Lich-Lord Jevyan
@@ -6175,9 +6179,9 @@ msgid ""
 "me. I'm no wizard. All I got is my axe. Heh, heh. It's all I need - prepare "
 "to die, orcish scum!"
 msgstr ""
-"Tåbelige menneske, du bør ikke give sådant legetøj til elver! Bah! Det "
+"Tåbelige menneske, du bør ikke give sådant legetøj til elvere! Bah! Det "
 "betyder ikke noget for mig. Jeg er ingen troldmand. Jeg har min økse. Ha, "
-"ha. Det er hvad jeg skal bruge - gør dig klar for døden orkafskum!"
+"ha. Det er hvad jeg skal bruge - gør dig klar til at dø orkafskum!"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:351
@@ -6197,7 +6201,7 @@ msgstr "For alle de gode mennesker i Clearwater Havn!"
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:364
 msgid "For the honor of Southbay!"
-msgstr "Til Soutbays ære!"
+msgstr "Til Southbays ære!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:368
@@ -6219,23 +6223,23 @@ msgid ""
 "I hate it when my prey gets chatty! Get them, it's a long boat ride back "
 "home!"
 msgstr ""
-"Jeg hader det når mit bytte blive snaksagelig! På dem, det er en lang "
+"Jeg hader det, når mit bytte bliver snakkesagelig! På dem, det er en lang "
 "sejltur hjem!"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:381
 msgid "We shall soon see if you have the Ruby of Fire!"
-msgstr "Vi vil snart se om du har ildrubinen!"
+msgstr "Vi vil snart se, om du har Ildrubinen!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:390
 msgid "(whispered) Commander, you remember the plan right?"
-msgstr "(hvisket) Kommandør, du kan huske planen ikke?"
+msgstr "(Hvisket) Kommandør, du kan huske planen ikke?"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:394
 msgid "(whispered) Yes, sir. I am ready."
-msgstr "(hvisket) Ja herre. Jeg er klar."
+msgstr "(Hvisket) Ja herre. Jeg er klar."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:405
@@ -6296,7 +6300,7 @@ msgstr "Slået, af mennesker?"
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:540
 msgid "Fight on, you cowardly orcish worms!"
-msgstr "Kæmp videre, i kujonagtige orme orker!"
+msgstr "Kæmp videre, i kujonagtige ormeorker!"
 
 #. [message]: speaker=Tan-Vragish
 #. [message]: speaker=Ut'Tan-Grorag
@@ -6311,20 +6315,20 @@ msgid ""
 "Da old bag of bones has been crushed, and our cause is lost. We know da "
 "elfses have da fire ruby. Retreat!"
 msgstr ""
-"Den gamle sæk knogler er knust og vores mission er mislykket. Vi ved at "
-"elverne har ildrubinen. Tilbagetrækning!"
+"Den gamle sæk knogler er knust og vores mission er mislykket. Vi ved, at "
+"elverne har Ildrubinen. Tilbagetrækning!"
 
 #. [message]: speaker=Ut'Tan-Grorag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:554
 msgid "Da elfses have the fire ruby, we must flee. To da ships!"
-msgstr "De elver har ildrubinen, vi må flygte. Til skibene!"
+msgstr "De elvere har Ildrubinen, vi må flygte. Til skibene!"
 
 #. [message]: speaker=Tan-Erinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:561
 msgid ""
 "We have many kinsmen on the Green Isle- we will return for the Ruby of Fire!"
 msgstr ""
-"Vi har mange artsfæller på Den Grønne Ø - Vi kommer tilbage efter ildrubinen!"
+"Vi har mange artsfæller på Den Grønne Ø - Vi kommer tilbage efter Ildrubinen!"
 
 #. [message]: speaker=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:568
@@ -6332,7 +6336,7 @@ msgid ""
 "We must get back to the Green Isle. The elfses have the Ruby of Fire and our "
 "assault has been stopped."
 msgstr ""
-"Vi må tilbage til Den Grønne Ø. Elverne har Ildrubinen og vores angreb er "
+"Vi må tilbage til Den Grønne Ø. Elverne har Ildrubinen, og vores angreb er "
 "stoppet."
 
 #. [message]: speaker=Prince Haldric
@@ -6343,7 +6347,7 @@ msgid ""
 "the brunt of the next invasion."
 msgstr ""
 "Planen gik på, at nogle orker skulle nå tilbage til Den Grønne Ø for at "
-"fortælle deres artsfæller, at elverne har ildrubinen, så vi ikke skulle lide "
+"fortælle deres artsfæller, at elverne har Ildrubinen, så vi ikke skulle lide "
 "under den næste invasion."
 
 #. [message]: speaker=Prince Haldric
@@ -6362,8 +6366,8 @@ msgid ""
 "Aethyr! No! He was critical for convincing Jevyan that the elves have the "
 "Ruby of Fire."
 msgstr ""
-"Aethyr! Nej! Han var kritisk omkring at overbevise Jevyan om, at elverne har "
-"ildrubinen."
+"Aethyr! Nej! Han var kritisk for at overbevise Jevyan om, at elverne har "
+"Ildrubinen."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:695
@@ -6389,7 +6393,7 @@ msgid ""
 "No. Why? You fools, you gave the Ruby of Fire to the elves. But that won't "
 "save you from me. I will destroy you, then I will deal with the elves."
 msgstr ""
-"Nej. Hvorfor? Dit fjols, du gav ildrubinen til elverne. Men det redder dig "
+"Nej. Hvorfor? Dit fjols, du gav Ildrubinen til elverne. Men det redder dig "
 "ikke fra mig. Jeg ødelægger dig, og så tager jeg mig af elverne."
 
 #. [message]: speaker=Prince Haldric
@@ -6423,12 +6427,12 @@ msgstr "Den gamle sæk knogler er væk, men du har ikke slået os endnu!"
 #. [message]: speaker=Ut'Tan-Grorag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:786
 msgid "We took yer home, now we'll take yer lives!"
-msgstr "Vi tog jeres hjem og nu tager vi jeres liv!"
+msgstr "Vi tog jeres hjem, og nu tager vi jeres liv!"
 
 #. [message]: speaker=Tan-Erinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:790
 msgid "The elfses have da fire ruby, and you have nothing!"
-msgstr "Elverne har ildrubinen, og du har intet!"
+msgstr "Elverne har Ildrubinen, og du har intet!"
 
 #. [message]: speaker=Tan-Prodash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:794
@@ -6471,8 +6475,8 @@ msgid ""
 "It's the Haldric! Jevyan, you never said you came to destroy this monster. "
 "We will help you."
 msgstr ""
-"Det er Haldric! Jevyan, du fortalte ikke at du ville komme og ødelægge dette "
-"monster. Vi vil hjælpe dig."
+"Det er Haldric! Jevyan, du fortalte ikke, at du ville komme og ødelægge "
+"dette monster. Vi vil hjælpe dig."
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1049
@@ -6524,7 +6528,7 @@ msgid ""
 "Our strength is waning, and our foes grow stronger by the hour. The battle "
 "is lost!"
 msgstr ""
-"Vores styrke bliver svagere, og vores fjende bliver stærker time for time. "
+"Vores styrke bliver svagere, og vores fjende bliver stærkere time for time. "
 "Slaget er tabt!"
 
 #. [scenario]
@@ -6535,7 +6539,7 @@ msgstr "Epilog"
 #. [side]: type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:25
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnothianer"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:143
@@ -6568,9 +6572,9 @@ msgid ""
 "Jessica and I share. I must have your word that what I say will never be "
 "uttered again."
 msgstr ""
-"Men onde gerninger er udført fra alle sider. Der er en hemmelighed som kun "
-"Jessica og jeg deler. I må give mig jeres ord på, at det jeg siger aldrig "
-"vil blive sagt igen."
+"Men onde gerninger er udført fra alle sider. Der er nu en hemmelighed som "
+"kun Jessica og jeg deler. I må give mig jeres ord på, at det jeg siger "
+"aldrig vil blive sagt igen."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:170
@@ -6602,7 +6606,7 @@ msgid ""
 "The elves don't have the Ruby of Fire. We perpetrated a ruse on the orcs. If "
 "they return they will come looking for the elves."
 msgstr ""
-"Elverne har ikke ildrubinen. Vi begik en list mod orkerne. Hvis de kommer "
+"Elverne har ikke Ildrubinen. Vi begik en list mod orkerne. Hvis de kommer "
 "tilbage, vil de lede efter elverne."
 
 #. [message]: speaker=Lady Jessica
@@ -6619,7 +6623,7 @@ msgid ""
 "Humph. I suspected as much -- from both the elves and you. Humans and elves "
 "always think they're so clever!"
 msgstr ""
-"Hmmm. Jeg mistænkte det -- både fra elverne og dig. Mennesker og elver tror "
+"Hmmm. Jeg mistænkte det -- både fra elverne og dig. Mennesker og elvere tror "
 "altid, at de er så kloge!"
 
 #. [message]: speaker=Minister Edmond
@@ -6653,7 +6657,7 @@ msgid ""
 "have to rely on elven charity if we are to survive this first winter."
 msgstr ""
 "Orkerne er få, men elverne er ikke vænnet til krig. Desuden er vi afhængig "
-"af elvernes gavmildhed hvis vi skal overleve den første vinter."
+"af elvernes gavmildhed, hvis vi skal overleve den første vinter."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:221
@@ -6729,7 +6733,7 @@ msgstr "Glimrende."
 msgid ""
 "I suppose I am King Haldric now. Hmm... but what to call this new kingdom?"
 msgstr ""
-"Jeg antager at jeg er kong Haldric nu. Hmm... men hvad skal jeg kalde dette "
+"Jeg antager, at jeg er kong Haldric nu. Hmm... men hvad skal jeg kalde dette "
 "nye kongedømme?"
 
 #. [message]: speaker=Lady Jessica
@@ -6740,7 +6744,7 @@ msgstr "Må jeg komme med et forslag?"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:277
 msgid "Sure."
-msgstr "Ok."
+msgstr "Okay."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:281
@@ -6761,7 +6765,7 @@ msgid ""
 "Hmm. 'Wesnoth'. I like it. Yes, 'Wesnoth' would be fine. So I am the first "
 "King of Wesnoth!"
 msgstr ""
-"Hmmm. 'Wesnoth'. Jeg kan li' det. Ja, 'Wesnoth' er glimrende. Så bliver jeg "
+"Hmmm. »Wesnoth«. Jeg kan li' det. Ja, »Wesnoth« er glimrende. Så bliver jeg "
 "den første konge af Wesnoth!"
 
 #. [message]: speaker=Lady Jessica
@@ -6777,7 +6781,7 @@ msgid ""
 "building a true 'Kingdom of Wesnoth'. Come, we have much work to do."
 msgstr ""
 "Der er mange Wesfolk blandt de tilbageværende i mit folk. Vi må forblive "
-"forenet under et flag. Jeg har brug for dig ved min side hvis de skal være "
+"forenet under et flag. Jeg har brug for dig ved min side, hvis de skal være "
 "håb om at bygge et ægte »Wesnoth kongedømme«."
 
 #. [message]: speaker=Lady Jessica
@@ -6794,7 +6798,7 @@ msgid ""
 "truth."
 msgstr ""
 "I senere tid sang barderne om »Pagtens ødelæggelse«, en episk fortælling om "
-"Haldrics forræderi over for elverne. De ville hviske og tiske om prisen han "
+"Haldrics forræderi over for elverne. De ville hviske og tiske om prisen, han "
 "og hans efterfølgere skulle komme til at betale uden at kende den fulde "
 "sandhed."
 
@@ -6837,9 +6841,9 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"Rangen som adelig kommandør holdes af dem som anfører grupper i krig.Med "
+"Rangen som adelig kommandør holdes af dem som anfører grupper i krig. Med "
 "deres lederegenskaber giver de lavere rangerede enheder, de er i nærheden "
-"af, bedre kampegenskaber. Kommandørerer er bedst med deres sværd, selvom de "
+"af, bedre kampegenskaber. Kommandører er bedst med deres sværd, selvom de "
 "også bærer en bue, der kan bruges i nødstilfælde. Hvis kommandøren dør tabes "
 "slaget."
 
@@ -6885,9 +6889,8 @@ msgid ""
 "level units."
 msgstr ""
 "De adelige ledere af mange tropper, lensherrer er specielt stærke i nærkamp, "
-"og har også evner med buen. Som kommandørerer har lensherrer "
-"lederegenskaber, og forøger kampevnerne hos nærvedstående lavere rangerende "
-"enheder."
+"og har også evner med buen. Som kommandører har lensherrer lederegenskaber, "
+"og forøger kampevnerne hos nærvedstående lavere rangerende enheder."
 
 #. [unit_type]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:4
@@ -6900,7 +6903,7 @@ msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
 msgstr ""
-"I dag er han en ung mand, med sin iver over for kronen søger han at bliver "
+"I dag er han en ung mand, med sin iver over for kronen søger han at blive "
 "lensherre -- for at blive en del af eliten."
 
 #. [attack]: type=impact
@@ -6919,7 +6922,7 @@ msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
 msgstr ""
-"Iskold og smuk, men hendes evige, ungdommelige skÃžnhed kommer af at drikke "
+"Iskold og smuk, men hendes evige, ungdommelige skønhed kommer af at drikke "
 "de levendes blod."
 
 #. [attack]: type=blade
@@ -6930,7 +6933,7 @@ msgstr "blodkys"
 #. [attack]: type=pierce
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:35
 msgid "curse"
-msgstr "forband"
+msgstr "forbandelse"
 
 #. [unit_type]: race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:4
@@ -6945,8 +6948,8 @@ msgid ""
 "units, thereby increasing their fighting efficiency."
 msgstr ""
 "Som ledere af menneskenes kongedømme er kongerne ansvarlig for styrelse og "
-"beskyttelse af deres undersåttere. Konger kan koordinere angrebene fra "
-"niveau 1 og 2 enheder og dermed øge deres kampeffektivitet."
+"beskyttelse af deres undersåtter. Konger kan koordinere angrebene fra niveau "
+"1 og 2 enheder og dermed øge deres kampeffektivitet."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:31
@@ -6968,7 +6971,7 @@ msgid ""
 "in her veins and in the battlefield she has earned valuable experience, "
 "which continues increasing with time, as does her natural leadership."
 msgstr ""
-"Født i Wesfolk aristokratiet, blev hun og hendes folk udelukket fra "
+"Født i Wesfolk-aristokratiet, blev hun og hendes folk udelukket fra "
 "samfundet af deres lensherrer, som forrådte deres loyalitet, da en krig mod "
 "Haldrics folk blev tabt. Denne fredløse bevarer stadig sin adelighed i sine "
 "årer, og på slagmarken har hun opnået værdifuld erfaring, som stadig forøges "
@@ -7002,7 +7005,7 @@ msgid ""
 "in her veins and in the battlefield she has earned valuable experience, "
 "which she can lend to her people for turning a fight in their favour."
 msgstr ""
-"Født i Wesfolk aristokratiet, blev hun og hendes folk udelukket fra "
+"Født i Wesfolk-aristokratiet, blev hun og hendes folk udelukket fra "
 "samfundet af deres lensherrer, som forrådte deres loyalitet, da en krig mod "
 "Haldrics folk blev tabt. Denne fredløse bevarer stadig sin adelighed i sine "
 "årer, og på slagmarken har hun opnået værdifuld erfaring, som hun kan låne "
@@ -7071,7 +7074,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:9
 msgid "I can't be finished yet... I still have so much more to do."
-msgstr "Jeg kan ikke være førdig nu... Jeg har stadig meget at gøre."
+msgstr "Jeg kan ikke være færdig nu... Jeg har stadig meget at gøre."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:23
@@ -7089,7 +7092,7 @@ msgid ""
 "Bah! I'm not dying today! (POOF! The Lady Outlaw vanishes in a puff of "
 "smoke.)"
 msgstr ""
-"Bah! Jeg dør ikke i dag! (PUUF! Den kvindlige fredløse forsvinder i en sky "
+"Bah! Jeg dør ikke i dag! (PUUF! Den kvindelige fredløse forsvinder i en sky "
 "af røg.)"
 
 #. [message]: speaker=unit
@@ -7157,7 +7160,7 @@ msgid ""
 msgstr ""
 "Efter en lang kamp blev en fred nået. Vi fik det meste af øen, mens Wesfolk "
 "blev trængt tilbage til marginale områder af landet. I kampen mod deres "
-"vilde legioner blev vi stærkere. Det var fra denne krig at vi første gang "
+"vilde legioner blev vi stærkere. Det var fra denne krig, at vi første gang "
 "opnåede en viden om magi."
 
 #. [part]
@@ -7196,7 +7199,7 @@ msgid ""
 msgstr ""
 "Efterhånden øgedes vores evner som navigatører. Så en dag returnerede den "
 "stærke kronprins fra Southbay fra en lang rejse med en indtagende historie. "
-"Han sagde at der var land mod øst som kunne nås ved aggressivt at sejle mod "
+"Han sagde, at der var land mod øst som kunne nås ved aggressivt at sejle mod "
 "øst og nord, og dermed kompensere for strømmen mod syd."
 
 #. [part]
@@ -7208,7 +7211,7 @@ msgid ""
 "suspicion cast upon him. He conspired to start a war of distraction with the "
 "poor Wesfolk kingdoms and their Lich-Lords."
 msgstr ""
-"Det var ikke lang tid efter at den samme kronprins som opdagede landet mod "
+"Det var ikke lang tid efter, at den samme kronprins som opdagede landet mod "
 "øst blev syg og døde under mystiske omstændigheder. Hans yngre bror, den "
 "næste i kronrækken, blev irriteret over de mistænkelige øjne som faldt på "
 "ham. Han overvejede at starte en afledningskrig mod det fattige Wesfolk "
@@ -7255,7 +7258,7 @@ msgstr "Jeg synes stadig at jeg bør kaldes 'Dragens banemand'."
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:16
 msgid "Not in my lifetime."
-msgstr "Ikke i min livstid"
+msgstr "Ikke mens jeg lever."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:32
@@ -7283,7 +7286,7 @@ msgstr "Tænk ikke på det."
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:73
 msgid "Too bad that this isn't going as well as the beach... I miss the beach."
 msgstr ""
-"Det er ærgerligt at det ikke går lige så godt her som ved stranden... jeg "
+"Det er ærgerligt, at det ikke går lige så godt her som ved stranden... jeg "
 "savner stranden."
 
 #. [message]: speaker=Lady Jessica
@@ -7292,8 +7295,8 @@ msgid ""
 "Haldric, just before we arrived here I got word that the your 'third of a "
 "fleet' has departed for our old home, the Green Isle."
 msgstr ""
-"Haldric, lige før vi ankom her modtog jeg nyt om at din 'tredjedel af "
-"flåden' er afgået til vores gamle hjem, Den Grønne Ø."
+"Haldric, lige før vi ankom her modtog jeg nyt om at din »tredjedel af flåden« "
+"er afgået til vores gamle hjem, Den Grønne Ø."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:93
@@ -7308,8 +7311,8 @@ msgid ""
 "out with, and Southbay still stands. This is excellent news. As per your "
 "orders a third of the fleet has headed back out."
 msgstr ""
-"Haldric, der er kommet bud om at flåden er returneret fra vores gamle hjem."
-"De kom tilbage med en næsten så stor flåde som vi startede ud med, og "
+"Haldric, der er kommet bud om, at flåden er returneret fra vores gamle hjem."
+"De kom tilbage med en næsten så stor flåde, som vi startede ud med, og "
 "Southbay modstår stadig. Dette er vidunderligt nyt. Efter dine ordre er 1/3 "
 "af flåden på vej tilbage."
 
@@ -7319,7 +7322,8 @@ msgid ""
 "That is excellent news indeed. Our numbers have doubled. Now on to the "
 "business at hand."
 msgstr ""
-"Det var da glædelige nyhder. Vores antal er fordoblet. Nu igang med arbejdet."
+"Det var da glædelige nyheder. Vores antal er fordoblet. Nu i gang med "
+"arbejdet."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nohome.cfg:5
@@ -7329,7 +7333,7 @@ msgid ""
 "the southern pass. Haldric has left the lands of his home, and before him "
 "stretches the vast expanse of the southern kingdoms of his people."
 msgstr ""
-"Så det blev en realitet at prins Haldric måtte forlade sit hjem, for aldrig "
+"Så det blev en realitet, at prins Haldric måtte forlade sit hjem, for aldrig "
 "at returnere. Med hjælp fra sin fars ædle offer undslap han igennem det "
 "sydlige pas. Haldric har forladt sit hjemland, og foran ham ligger hans "
 "folks sydlige kongedømmer."
@@ -7373,8 +7377,8 @@ msgid ""
 "mysterious island that Lady Jessica has mentioned, and even more exotic "
 "lands even further to the East."
 msgstr ""
-"Flere dage senere tager prins Haldric afsted i sit skib Eldaric, hans hjem "
-"og ø er tabt for ham for evigt. I sit hjerte ved han at han aldrig vil se "
+"Flere dage senere tager prins Haldric af sted i sit skib Eldaric, hans hjem "
+"og ø er tabt for ham for evigt. I sit hjerte ved han, at han aldrig vil se "
 "sin dal igen. Foran ham ligger et enormt stormfyldt hav, og en ukendt ø, "
 "nævnt af Lady Jessica, og yderlige eksotiske lande længere mod øst."
 
@@ -7388,10 +7392,10 @@ msgid ""
 "left of that foothold by now."
 msgstr ""
 "Øen som kong Haldric og hans mandskab er på vej mod var øjensynlig på et "
-"tidspunkt en vulkan som nu er ved at synke i havet. Det lykkedes den tidlige "
-"kongelige prinsen af Southbay at etablere en adgang til øen, på trods af "
-"øens fjendtlige reptile befolkning. Der er ikke meget tilbage af denne "
-"adgang."
+"tidspunkt en vulkan, som nu er ved at synke i havet. Det lykkedes den "
+"tidlige kongelige prins af Southbay at etablere adgang til øen, på trods af "
+"øens fjendtlige reptile befolkning. Der er ikke meget tilbage af dette "
+"brohoved."
 
 #~ msgid "female^Outlaw Princess"
 #~ msgstr "fredsløs prinsesse"
