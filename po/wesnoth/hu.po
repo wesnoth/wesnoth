@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:44+0200\n"
-"PO-Revision-Date: 2008-08-30 11:52+0200\n"
+"PO-Revision-Date: 2008-10-23 12:31+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian\n"
+"Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -907,7 +907,6 @@ msgstr "Toborzás és visszahívás"
 
 #. [topic]
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -929,8 +928,8 @@ msgstr ""
 "jobb kattintásra megjelenő menüből válaszd a <italic>text=Toborzás</"
 "italic>t. Ezzel megnyílik a toborzásmenü, ahol fel vannak sorolva a "
 "toborozható egységek, valamint az, hogy melyik mennyibe kerül. Ha egy "
-"egységre rákattintasz, akkor a bal oldalon megjelennek a részletes adatai, "
-"az Oké gombra kattintva pedig meg is veheted a kiválasztott egységet."
+"egységre rákattintasz, akkor a bal oldalon megjelennek a részletes adatai, a "
+"Rendben gombra kattintva pedig meg is veheted a kiválasztott egységet."
 
 #. [topic]
 #: data/core/help.cfg:167
@@ -1427,10 +1426,10 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 "A Wesnothban a fizikai jellegű támadásokhoz köthető sebzéseknek három típusa "
-"van: Penge, Páncéltörés és Ütés. Emellett három további sebzéstípus is "
-"létezik, ezek a mágikus támadásokhoz tartoznak: Tűz, Hideg és Földöntúli. A "
-"különböző egységeknek lehet bizonyos fokú ellenállásuk, ami módosítja az "
-"adott sebzéstípustól elszenvedett sebzés mértékét."
+"van: Vágás, Szúrás és Ütés. Emellett három további sebzéstípus is létezik, "
+"ezek a mágikus támadásokhoz tartoznak: Tűz, Hideg és Földöntúli. A különböző "
+"egységeknek lehet bizonyos fokú ellenállásuk, ami módosítja az adott "
+"sebzéstípustól elszenvedett sebzés mértékét."
 
 #. [topic]
 #: data/core/help.cfg:256
@@ -1462,9 +1461,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Például a csontvázaknak nagy az ellenállásuk a penge és a páncéltörés "
-"sebzésekkel szemben, de jól sebezhetőek ütés és tűz sebzéstípussal, és "
-"különösen jól sebezhetőek földöntúli támadásokkal."
+"Például a csontvázaknak nagy az ellenállásuk a vágó és a szúró sebzésekkel "
+"szemben, de jól sebezhetőek ütés és tűz sebzéstípussal, és különösen jól "
+"sebezhetőek földöntúli támadásokkal."
 
 #. [topic]
 #: data/core/help.cfg:260
@@ -2035,7 +2034,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:394
 msgid "Fearless"
-msgstr "Bátor"
+msgstr "Vakmerő"
 
 #. [topic]
 #: data/core/help.cfg:395
@@ -4968,12 +4967,12 @@ msgstr "Képes pihenni, miközben mozog"
 #. [trait]
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
 msgid "fearless"
-msgstr "bátor"
+msgstr "vakmerő"
 
 #. [trait]
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
 msgid "female^fearless"
-msgstr "bátor"
+msgstr "vakmerő"
 
 #. [trait]
 #: data/core/macros/traits.cfg:153 data/core/macros/traits.cfg:166
@@ -5093,7 +5092,6 @@ msgstr "Perzsekények"
 
 #. [race]
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5162,11 +5160,11 @@ msgstr ""
 "sárkányokra. Egy átlagos felnőtt perzsekény körülbelül három méter magas, és "
 "könnyen eléri egy ember és egy ló együttes súlyát. A bőrüket kemény "
 "pikkelyek fedik, így ellenállnak a legtöbb fizikai támadásnak, kivéve a "
-"páncéltörő és a hideg sebzéseket. A legtöbb perzsekény repülésre született, "
-"így nagy távolságokat képesek gyorsan megtenni. Ugyanakkor nagy súlyuk "
-"némileg korlátozza repülési képességeiket, emiatt a levegőben kissé suták. "
-"Ahol lehetséges, kihasználják a terep adottságait, és a dombokat, hegyeket, "
-"fákat felszállóállásként használják, hogy nagyobb magasságot és sebességet "
+"szúró és a hideg sebzéseket. A legtöbb perzsekény repülésre született, így "
+"nagy távolságokat képesek gyorsan megtenni. Ugyanakkor nagy súlyuk némileg "
+"korlátozza repülési képességeiket, emiatt a levegőben kissé suták. Ahol "
+"lehetséges, kihasználják a terep adottságait, és a dombokat, hegyeket, fákat "
+"felszállóállásként használják, hogy nagyobb magasságot és sebességet "
 "érhessenek el. Ellenségeik szerencséjére elég ügyetlen lények, és meglepően "
 "lassúak a csatában. Ez, ötvözve a nagy méretükkel, könnyű célponttá teszi "
 "őket azok számára, akiknek mégis van bátorságuk megtámadni őket.\n"
@@ -5325,7 +5323,7 @@ msgstr ""
 "Emberi mértékkel nézve a törpök eléggé apró termetűek, de egyáltalán nem "
 "törékenyek. Szívós és erőteljes harcosaikat kontinensszerte egyaránt félik "
 "és tisztelik a harcban tanúsított bátorságukért. Ráadásul a törpök jól "
-"boldogulnak a számok világában, és híresek késművességükről is. A törp "
+"boldogulnak a számok világában, és híresek kézművességükről is. A törp "
 "kovácsok halálos fegyvereikkel és nehézpáncélzataikkal szereztek maguknak "
 "nevet. Ezeknek a felszereléseknek párját ritkító a minőségük, talán csak a "
 "perzsekény fegyverkovácsok remekei veszik fel velük a harcot.A törpöket "
@@ -5616,12 +5614,12 @@ msgstr "Nagák"
 #. [race]: description=
 #: data/core/units.cfg:198
 msgid "race^Ogre"
-msgstr "Óriás"
+msgstr "Ogre"
 
 #. [race]: description=
 #: data/core/units.cfg:199
 msgid "race+female^Ogre"
-msgstr "Óriás "
+msgstr "Ogre"
 
 #. [race]: description=
 #: data/core/units.cfg:200
@@ -6083,12 +6081,12 @@ msgstr "távolsági harc"
 #. [language]
 #: data/hardwired/english.cfg:37
 msgid "blade"
-msgstr "penge"
+msgstr "vágás"
 
 #. [language]
 #: data/hardwired/english.cfg:38
 msgid "pierce"
-msgstr "páncéltörés"
+msgstr "szúrás"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -6260,7 +6258,7 @@ msgid ""
 msgstr ""
 "A www.wesnoth.org honlapon találhatsz stratégiai útmutatókat, technikai "
 "segítséget, Wesnoth történetét és még sok mást. A Magyar Wesnoth Közösségi "
-"Portál címe: http://users.cwi.hu/wesnoth"
+"Portál címe: http://wesnoth.fsf.hu/"
 
 #. [tip]
 #: data/hardwired/tips.cfg:40
@@ -6318,11 +6316,11 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"Hatféle támadás létezik: páncéltörés, penge, ütés, tűz, hideg, és "
-"földöntúli. A különböző egységek az egyes támadásokkal szemben különböző "
-"mértékben védettek. Kattints a jobb gombbal egy egységre, és válaszd ki az "
-"'Egység leírását', hogy lásd, mely támadásokkal szemben ellenálló, és "
-"melyeket tanácsos inkább kerülnie."
+"Hatféle támadás létezik: szúrás, vágás, ütés, tűz, hideg, és földöntúli. A "
+"különböző egységek az egyes támadásokkal szemben különböző mértékben "
+"védettek. Kattints a jobb gombbal egy egységre, és válaszd ki az 'Egység "
+"leírását', hogy lásd, mely támadásokkal szemben ellenálló, és melyeket "
+"tanácsos inkább kerülnie."
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -6442,8 +6440,8 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"A lovas egységek ellenállnak a pengés és ütő fegyvereknek, de sebezhetőek "
-"páncéltörő fegyverekkel, többek közt nyilakkal és dárdákkal."
+"A lovas egységek ellenállnak a vágó és ütő fegyvereknek, de sebezhetőek "
+"szúrófegyverekkel, többek közt nyilakkal és lándzsákkal."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -6540,7 +6538,7 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"A csontvázak ellenállnak a páncéltörő, a pengés és a hideg támadásoknak, de "
+"A csontvázak ellenállnak a szúró, a vágó és a hideg támadásoknak, de "
 "sebezhetőek ütő, tűz és földöntúli támadásokkal."
 
 #. [tip]
@@ -7532,7 +7530,7 @@ msgstr "Mégsem"
 
 #: src/dialogs.cpp:684 src/multiplayer_create.cpp:88
 msgid "OK"
-msgstr "Oké"
+msgstr "Rendben"
 
 #: src/dialogs.cpp:685 src/dialogs.cpp:1176 src/dialogs.cpp:1278
 #: src/multiplayer_connect.cpp:1038 src/multiplayer_create.cpp:87
@@ -8804,7 +8802,7 @@ msgstr "Játék létrehozása"
 
 #: src/multiplayer_create.cpp:64
 msgid "Time limit"
-msgstr "Időhatár"
+msgstr "Időkorlát"
 
 #: src/multiplayer_create.cpp:77
 msgid "Name of game:"
@@ -9193,7 +9191,7 @@ msgstr "Vissza a kezdéshez"
 
 #: src/play_controller.cpp:799
 msgid "Back to turn "
-msgstr "Vissza a körhöz"
+msgstr "Vissza ehhez a körhöz: "
 
 #: src/playcampaign.cpp:140 src/playcampaign.cpp:175
 msgid "Defeat"
@@ -9747,70 +9745,3 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:327
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
-
-#~ msgid "Grassland"
-#~ msgstr "Mezőség"
-
-#~ msgid "Snow"
-#~ msgstr "Hó"
-
-#~ msgid "Ice"
-#~ msgstr "Jég"
-
-#, fuzzy
-#~ msgid ""
-#~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
-#~ msgstr ""
-#~ "A jég bármiféle befagyott vizet jelölhet. A játékmenet szempontjából "
-#~ "teljesen azonos a <ref>dst=terrain_tundra text=Hó</ref>val. Megjegyzendő, "
-#~ "hogy az úszni képes egységek, még ha a víz alatt is megélnek, a jég alatt "
-#~ "nem tudnak úszni."
-
-#~ msgid "Savanna"
-#~ msgstr "Szavanna"
-
-#, fuzzy
-#~ msgid ""
-#~ "Savannas are plains of tall grass, found in the warmer climates of the "
-#~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
-#~ msgstr ""
-#~ "A szavannák magas fűvel benőtt rétek, melyek melegebb éghajlati "
-#~ "körülmények közt alakulnak ki. A játékmenet szempontjából megegyeznek a "
-#~ "<ref>dst=terrain_grassland text=Mezőséggel</ref>."
-
-#~ msgid "Chasm"
-#~ msgstr "Szakadék"
-
-#~ msgid "Cave Wall"
-#~ msgstr "Barlangfal"
-
-#~ msgid ""
-#~ "Cave walls are made of solid stone, renowned for its ability to impede "
-#~ "even the most determined traveler."
-#~ msgstr ""
-#~ "A barlangfal áthatolhatatlan kőből készült, és híres arról, hogy a "
-#~ "legeltökéltebb utazót is képes feltartóztatni."
-
-#~ msgid ""
-#~ "Impassable mountains are so tall and steep that they are constantly "
-#~ "wreathed in cloud. To cross such mountains is practically impossible. "
-#~ "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#~ "heights."
-#~ msgstr ""
-#~ "A megmászhatatlan hegyvidék olyan magas és meredek, hogy állandóan a "
-#~ "felhőkbe burkolózik. Az ilyen hegyeken gyakorlatilag lehetetlen átkelni. "
-#~ "Még a repülő egységek sem tudnak eligazodni a csipkézett csúcsok között "
-#~ "ilyen páratlan magasságokban."
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Harc Wesnothért"
-
-#~ msgid "No multiplayer sides available in this game"
-#~ msgstr "Nincs többjátékos oldal ebben a játékban"
-
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr "Figyelem: Hiba a konfigurációs fájlok betöltésekor: '"
