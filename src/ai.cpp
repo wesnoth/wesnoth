@@ -1359,6 +1359,8 @@ bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
 			double best_vulnerability = 100000.0;
+			// Make leader units more unlikely to move to vulnerable villages 
+			const double leader_penalty = (u.can_recruit()?2.0:1.0);
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
@@ -1375,8 +1377,9 @@ bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 				++it.first;
 			}
 
-			// If we have found an eligible village:
-			if(best_loc != it.second) {
+			// If we have found an eligible village,
+			// and we can move there without expecting to get whacked next turn:
+			if(best_loc != it.second && best_vulnerability*leader_penalty < u.hitpoints()) {
 				const location& src = best_loc->first;
 				const location& dst = best_loc->second;
 
