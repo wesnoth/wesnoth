@@ -158,7 +158,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			if(get_village) {
 				double value = current_team().village_value();
 				value *= 1.0 - static_cast<double>(distance_between(*t,leader->first))/corner_distance;
-				DBG_AI << "found village target... " << *t << " with value: " << value << " distance: " << static_cast<double>(distance_between(*t,leader->first)) << "\n";
+				LOG_AI << "found village target... " << *t << " with value: " << value << " distance: " << static_cast<double>(distance_between(*t,leader->first)) << "\n";
 				targets.push_back(target(*t,value,target::VILLAGE));
 			}
 		}
