@@ -514,7 +514,7 @@ class TracksEditor:
         toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
         toolbar.set_style(gtk.TOOLBAR_BOTH)
         toolbar.set_border_width(1)
-        vbox.add(toolbar)
+        vbox.pack_start(toolbar, expand = False)
         toolbar.show()
 
         # Toolbar widget has a fit when we try to pack these separately. 
