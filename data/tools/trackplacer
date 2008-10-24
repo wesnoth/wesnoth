@@ -500,7 +500,6 @@ class TracksEditor:
         # Window-layout time
         self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         self.window.set_name ("trackplacer")
-        self.window.maximize()
 
         vbox = gtk.VBox(False, 0)
         self.window.add(vbox)
@@ -515,7 +514,7 @@ class TracksEditor:
         toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
         toolbar.set_style(gtk.TOOLBAR_BOTH)
         toolbar.set_border_width(1)
-        vbox.pack_start(toolbar, expand = False)
+        vbox.add(toolbar)
         toolbar.show()
 
         # Toolbar widget has a fit when we try to pack these separately. 
@@ -646,6 +645,7 @@ class TracksEditor:
         self.log("Scroller size = (%s,%s)" % (s_w, s_h))
         scroller = gtk.ScrolledWindow()
         scroller.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroller.set_size_request(s_w, s_h)
         self.drawing_area = gtk.DrawingArea()
         self.drawing_area.set_size_request(self.map_width, self.map_height)
         scroller.add_with_viewport(self.drawing_area)
