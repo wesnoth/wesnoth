@@ -622,31 +622,28 @@ class TracksEditor:
         about.connect("clicked", self.about_handler)
         about.show()
 
-        # Create the drawing area on a viewport that scrolls if needed.
-        screen_width = gtk.gdk.screen_width()
-        screen_height = gtk.gdk.screen_height()
-        scroller = gtk.ScrolledWindow()
-        scroller.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        # Create the drawing area on a viewport that scrolls, if needed.
         self.drawing_area = gtk.DrawingArea()
         self.drawing_area.set_size_request(self.map_width, self.map_height)
-        scroller.add_with_viewport(self.drawing_area)
-        vbox.pack_start(scroller, expand=True, fill=True, padding=0)
-
+        screen_width = gtk.gdk.screen_width()
+        screen_height = gtk.gdk.screen_height()
         if self.map_width < 0.75 * screen_width and self.map_height < 0.75 * screen_width:
             # Screen is large relative to the image.  Grab enough
             # space to display the wntire map.  and never scroll.
-            # There should be enough space around the edges for window decorations,
-            # task bars, etc.
-            #
-            # No, I don't know why the +2 is needed here. Black magic...
-            scroller.set_size_request(self.map_width+2, self.map_height+2)
+            # There should be enough space around the edges for window
+            # decorations, task bars, etc.
+            vbox.pack_start(self.drawing_area, expand=True, fill=True, padding=0)
+            self.drawing_area.show()
         else:
             # Screen is small.  Grab all the space the window manager will
             # give us and deal with scrolling.
+            scroller = gtk.ScrolledWindow()
+            scroller.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            scroller.add_with_viewport(self.drawing_area)
+            vbox.pack_start(scroller, expand=False, fill=True, padding=0)
             self.window.maximize()
-
-        self.drawing_area.show()
-        scroller.show()
+            self.drawing_area.show()
+            scroller.show()
 
         # Signals used to handle backing pixmap
         self.drawing_area.connect("expose_event", self.expose_event)
