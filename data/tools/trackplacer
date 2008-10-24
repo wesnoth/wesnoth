@@ -759,8 +759,9 @@ class TracksEditor:
                     time.sleep(delay)
                     self.flush(widget)
         # To ensure items on selected track are on top, redraw them
-        for item in self.journey.selected_track():
-            self.draw_feature(widget, item, True)
+        if self.journey.track_order:
+            for item in self.journey.selected_track():
+                self.draw_feature(widget, item, True)
         self.flush(widget)
 
     def configure_event(self, widget, event):
