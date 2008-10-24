@@ -622,34 +622,29 @@ class TracksEditor:
         about.connect("clicked", self.about_handler)
         about.show()
 
-        # FIXNE: This code is a nasty mess.  There must be a better way.
         # Create the drawing area on a viewport that scrolls if needed.
-        # Most of the hair here is in trying to query the height
-        # and depth of the widgets surrounding the scrolling area.
-        # The window frame size constants are guesses; they can vary
-        # according to your window manager's policy.  They're only used
-        # if the map is too large to fit on the screen.
-        WINDOW_FRAME_WIDTH = 8
-        WINDOW_FRAME_HEIGHT = 28
         screen_width = gtk.gdk.screen_width()
         screen_height = gtk.gdk.screen_height()
-        self.log("Map size = (%d,%d)" % (self.map_width, self.map_height))
-        self.log("Screen size = (%d,%d)" % (screen_width, screen_height))
-        controls_width, controls_height = toolbar.size_request() 
-        self.log("Control box size = (%d,%d)"%(controls_width, controls_height))
-        x_frame_width = WINDOW_FRAME_WIDTH
-        y_frame_width = WINDOW_FRAME_HEIGHT + controls_height
-        # No, I don't know why the +2 is needed.  Black magic.... 
-        s_w = min(screen_width -x_frame_width, self.map_width+2) 
-        s_h = min(screen_height-y_frame_width, self.map_height+2)
-        self.log("Scroller size = (%s,%s)" % (s_w, s_h))
         scroller = gtk.ScrolledWindow()
         scroller.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scroller.set_size_request(s_w, s_h)
         self.drawing_area = gtk.DrawingArea()
         self.drawing_area.set_size_request(self.map_width, self.map_height)
         scroller.add_with_viewport(self.drawing_area)
         vbox.pack_start(scroller, expand=True, fill=True, padding=0)
+
+        if self.map_width < 0.75 * screen_width and self.map_height < 0.75 * screen_width:
+            # Screen is large relative to the image.  Grab enough
+            # space to display the wntire map.  and never scroll.
+            # There should be enough space around the edges for window decorations,
+            # task bars, etc.
+            #
+            # No, I don't know why the +2 is needed here. Black magic...
+            scroller.set_size_request(self.map_width+2, self.map_height+2)
+        else:
+            # Screen is small.  Grab all the space the window manager will
+            # give us and deal with scrolling.
+            self.window.maximize()
+
         self.drawing_area.show()
         scroller.show()
 
