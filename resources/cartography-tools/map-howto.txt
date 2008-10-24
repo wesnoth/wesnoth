@@ -1,3 +1,7 @@
+= Wesnoth Map Construction HOWTO =
+
+=- Overview ==
+
 This directory contains the resources needed to edit the Wesnoth main
 map and variants thereof with the GIMP.
 
@@ -23,12 +27,59 @@ To generate maps, simply enable the layers you want and save with the
 appropriate file extension.  GIMP will tell you it has to flatten
 the layer stack; that's OK.
 
+== Techniques ==
+
 Here's a link to Kestenvarn's tutorial on mapmaking and the associated
 forum thread:
 
 http://www.wesnoth.org/forum/viewtopic.php?f=18&t=10131
 
 It assumes Photoshop, but some of the advice transfers to GIMP.
+
+Here's some more GIMP-specific advice on emulating the style of the
+main Wesnoth map:
+
+1. Draw your land outline with a hard white brush.
+
+2. Select a width-3 pencil.  Dip it in the bluish-gray color of the
+   land-sea border.
+
+3. Select the land region with Select By Color.
+
+4. Use Edit -> Stroke Selection to draw your land-sea border.
+
+5. Fill the sea with a sea color from the main map.  Select it.
+
+6. Drop the pencil width to 1. Shrnking the selection by 5 or 6
+   pixels.
+
+7. Edit -> Stroke on selection.  You now have a contour line
+   following the coast.
+
+8. Bucket-fill your coastal margin with some color not on the map.
+
+9. Shrink the selection another 5 or 6 pixels and repeat the stroke
+   You now have a double tidal contour line.
+
+10. Delete all white and merge the result onto a copy of the plain
+   parchment layer.
+
+11. Select the parchment (land) parts and copy them with a new layer.
+    Call this "Elevation".
+
+12. Decide where you're going to place your mountains. Draw them
+    (or frankenstein them from the main map) onto a new "Topography"
+    layer.
+
+13. Stack Topography on top of Elevation; select Elevation foe
+    editing.  Use the Burn and Dodge tools to texture the parchment,
+    dargening low areas and lightening high ones so they merge
+    visually with your mountain bases.
+
+Now you've got your base map.  The rest is pasting bits from old
+Forest, swamp, and Workshop layers.
+
+== Recipes ==
 
 The campaign maps in mainline need slightly varying maps depending on
 the date; also, some of them have campaign-specific features.  Here's
@@ -76,7 +127,7 @@ Sceptre_of_Fire (25YW):
    Wesnoth late labels (this should be fixed -- not all cities would be settled then)
 
 Son_Of_The_Black_Eye (842YW):
-   Has its own custom map
+   All Layers named "Farth North".
 
 The_Hammer_of_Thursagan (550YW):
    Wesnoth late labels
