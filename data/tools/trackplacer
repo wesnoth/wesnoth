@@ -640,7 +640,7 @@ class TracksEditor:
             scroller = gtk.ScrolledWindow()
             scroller.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
             scroller.add_with_viewport(self.drawing_area)
-            vbox.pack_start(scroller, expand=False, fill=True, padding=0)
+            vbox.pack_start(scroller)
             self.window.maximize()
             self.drawing_area.show()
             scroller.show()
