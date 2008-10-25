@@ -21,6 +21,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -130,21 +131,21 @@ class topic_text
 	mutable topic_generator *generator_;
 public:
 	~topic_text();
-	topic_text(): 
+	topic_text():
 		parsed_text_(),
-		generator_(NULL) 
+		generator_(NULL)
 	{
 	}
 
-	topic_text(std::string const &t): 
+	topic_text(std::string const &t):
 		parsed_text_(),
-		generator_(new text_topic_generator(t)) 
+		generator_(new text_topic_generator(t))
 	{
 	}
 
-	explicit topic_text(topic_generator *g): 
+	explicit topic_text(topic_generator *g):
 		parsed_text_(),
-		generator_(g) 
+		generator_(g)
 	{
 	}
 	topic_text &operator=(topic_generator *g);
@@ -157,14 +158,14 @@ public:
 struct topic
 {
 	topic() :
-		title(), 
+		title(),
 		id(),
 		text()
 	{
 	}
 
 	topic(const std::string &_title, const std::string &_id) :
-		title(_title), 
+		title(_title),
 		id(_id),
 		text()
 	{
@@ -187,8 +188,8 @@ typedef std::list<topic> topic_list;
 
 /// A section contains topics and sections along with title and ID.
 struct section {
-	section() : 
-		title(""), 
+	section() :
+		title(""),
 		id(""),
 		topics(),
 		sections(),
@@ -1157,32 +1158,45 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	    i != unit_type_data::types().end(); ++i) {
 		const unit_type &type = (*i).second;
 		if (description_type(type) == FULL_DESCRIPTION) {
-			std::vector<std::string> descriptions = type.ability_tooltips();
-			std::vector<std::string>::const_iterator desc_it = descriptions.begin();
-			for (std::vector<t_string>::const_iterator it = type.abilities().begin();
-				 it != type.abilities().end(); ++it, ++desc_it) {
-				if (ability_description.find(*it) == ability_description.end()) {
-					//new ability, generate a description
-					std::string description;
-					if(desc_it != descriptions.end()) {
-						description = *desc_it;
-					}
-					const size_t colon_pos = description.find(':');
-					if (colon_pos != std::string::npos) {
-						// Remove the first colon and the following newline.
-						description.erase(0, colon_pos + 2);
-					}
-					ability_description[*it] = description;
-				}
 
-				if (!type.hide_help()) {
-					//add a link in the list of units having this ability
-					std::string type_name = type.type_name();
-					std::string ref_id = unit_prefix +  type.id();
-					//we put the translated name at the beginning of the hyperlink,
-					//so the automatic alphabetic sorting of std::set can use it
-					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
-					ability_units[*it].insert(link);
+			std::vector<t_string> const* abil_vecs[2];
+			abil_vecs[0] = &type.abilities();
+			abil_vecs[1] = &type.adv_abilities();
+
+			std::vector<std::string> const* desc_vecs[2];
+			desc_vecs[0] = &type.ability_tooltips();
+			desc_vecs[1] = &type.adv_ability_tooltips();
+
+			for(int i=0; i<2; ++i) {
+				std::vector<t_string> const& abil_vec = *abil_vecs[i];
+				std::vector<std::string> const& desc_vec = *desc_vecs[i];
+				for(int j=0; j < abil_vec.size(); ++j) {
+					t_string const& abil_name = abil_vec[j];
+					if (ability_description.find(abil_name) == ability_description.end()) {
+						//new ability, generate a descripion
+						if(j >= desc_vec.size()) {
+							ability_description[abil_name] = "";
+						} else {
+							std::string const& abil_desc = desc_vec[j];
+							const size_t colon_pos = abil_desc.find(':');
+							if(colon_pos != std::string::npos && colon_pos + 1 < abil_desc.length()) {
+								// Remove the first colon and the following newline.
+								ability_description[abil_name] = abil_desc.substr(colon_pos + 2);
+							} else {
+								ability_description[abil_name] = abil_desc;
+							}
+						}
+					}
+
+					if (!type.hide_help()) {
+						//add a link in the list of units having this ability
+						std::string type_name = type.type_name();
+						std::string ref_id = unit_prefix +  type.id();
+						//we put the translated name at the beginning of the hyperlink,
+						//so the automatic alphabetic sorting of std::set can use it
+						std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
+						ability_units[abil_name].insert(link);
+					}
 				}
 			}
 		}
@@ -1219,7 +1233,7 @@ public:
 	virtual std::string operator()() const {
 		// this will force the lazy loading to build this unit
 		unit_type_data::types().find(type_.id(), unit_type::WITHOUT_ANIMATIONS);
-		
+
 		std::stringstream ss;
 		std::string clear_stringstream;
 		const std::string detailed_description = type_.unit_description();
@@ -1333,6 +1347,23 @@ public:
 			ss << _("Abilities: ");
 			for(std::vector<t_string>::const_iterator ability_it = type_.abilities().begin(),
 				 ability_end = type_.abilities().end();
+				 ability_it != ability_end; ++ability_it) {
+				const std::string ref_id = "ability_" + ability_it->base_str();
+				std::string lang_ability = gettext(ability_it->c_str());
+				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
+				   << "'</ref>";
+				if (ability_it + 1 != ability_end)
+					ss << ", ";
+			}
+			ss << "\n";
+		}
+
+		// Print the extra AMLA upgrage abilities, cross-reference them
+		// to their respective topics.
+		if (!type_.adv_abilities().empty()) {
+			ss << _("Ability Upgrades: ");
+			for(std::vector<t_string>::const_iterator ability_it = type_.adv_abilities().begin(),
+				 ability_end = type_.adv_abilities().end();
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = "ability_" + ability_it->base_str();
 				std::string lang_ability = gettext(ability_it->c_str());
@@ -1741,8 +1772,8 @@ section::~section()
 }
 
 section::section(const section &sec) :
-	title(sec.title), 
-	id(sec.id), 
+	title(sec.title),
+	id(sec.id),
 	topics(sec.topics),
 	sections(),
 	level(sec.level)
@@ -1788,11 +1819,11 @@ void section::clear()
 help_menu::help_menu(CVideo &video, section const &toplevel, int max_height) :
 	gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::bluebg_style),
 	visible_items_(),
-	toplevel_(toplevel), 
+	toplevel_(toplevel),
 	expanded_(),
 	restorer_(),
 	rect_(),
-	chosen_topic_(NULL), 
+	chosen_topic_(NULL),
 	selected_item_(&toplevel, "")
 {
 	silent_ = true; //silence the default menu sounds
@@ -2041,10 +2072,10 @@ help_text_area::item::item(surface surface, int x, int y, const std::string _tex
 help_text_area::item::item(surface surface, int x, int y, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
 	rect(),
-	surf(surface), 
-	text(""), 
-	ref_to(""), 
-	floating(_floating), 
+	surf(surface),
+	text(""),
+	ref_to(""),
+	floating(_floating),
 	box(_box), align(alignment)
 {
 	rect.x = x;
@@ -2168,7 +2199,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 #endif
 	} else {
 		add_text_item(text, dst);
-	}	
+	}
 }
 
 void help_text_area::handle_img_cfg(const config &cfg)
@@ -2558,7 +2589,7 @@ help_browser::help_browser(display &disp, const section &toplevel) :
 	disp_(disp),
 	menu_(disp.video(),
 	toplevel),
-	text_area_(disp.video(), toplevel), toplevel_(toplevel), 
+	text_area_(disp.video(), toplevel), toplevel_(toplevel),
 	ref_cursor_(false),
 	back_topics_(),
 	forward_topics_(),

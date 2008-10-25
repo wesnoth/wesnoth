@@ -860,9 +860,9 @@ bool game_controller::load_game()
 		game_config::scoped_preproc_define dificulty_def(cfg["difficulty"]);
 
 		const std::string& campaign_define = cfg["campaign_define"];
-	
+
 		game_config::scoped_preproc_define campaign_define_def(campaign_define, !campaign_define.empty());
-		
+
 		game_config::scoped_preproc_define campaign_type_def("MULTIPLAYER", campaign_define.empty() && (cfg["campaign_type"] == "multiplayer"));
 
 
@@ -1232,7 +1232,7 @@ bool game_controller::play_multiplayer()
 
 			if (res == 2 && preferences::mp_server_warning_disabled() < 2)
 			{
-				gui::dialog d(disp(), _("Do you really want to start the server?"), 
+				gui::dialog d(disp(), _("Do you really want to start the server?"),
 					_("The server will run in a background process until all users have disconnected.")
 					, gui::OK_CANCEL);
 				bool checked = preferences::mp_server_warning_disabled() != 1;
@@ -1409,7 +1409,7 @@ void game_controller::reset_translations()
 void game_controller::load_game_cfg()
 {
 	gui::set_background_dirty();
-	if (!game_config_.empty() 
+	if (!game_config_.empty()
 			&& old_defines_map_ == cache_.get_preproc_map())
 		return; // game_config already holds requested config in memory
 	old_defines_map_ = cache_.get_preproc_map();
@@ -1418,7 +1418,7 @@ void game_controller::load_game_cfg()
 	// The loadscreen will erase the titlescreen
 	// NOTE: even without loadscreen, needed after MP lobby
 	try {
-		/** 
+		/**
 		 * Read all game configs
 		 * First we should load data/
 		 * Then handle terrains so that they are last loaded from data/

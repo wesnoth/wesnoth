@@ -111,7 +111,7 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 	const std::vector<std::string> filter_name = utils::split(cfg["name"]);
 	const std::vector<std::string> filter_type = utils::split(cfg["type"]);
 	const std::string filter_special = cfg["special"];
-	
+
 	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
 
@@ -299,9 +299,9 @@ bool attack_type::has_special_by_id(const std::string& special) const
 	return false;
 }
 
-unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) : 
-	moveCosts_(), 
-	defenseMods_(), 
+unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) :
+	moveCosts_(),
+	defenseMods_(),
 	parent_(parent),
 	cfg_()
 {
@@ -565,7 +565,9 @@ unit_type::unit_type() :
 	race_(NULL),
 	alpha_(),
 	abilities_(),
+	adv_abilities_(),
 	ability_tooltips_(),
+	adv_ability_tooltips_(),
 	zoc_(false),
 	hide_help_(false),
 	advances_to_(),
@@ -585,36 +587,38 @@ unit_type::unit_type() :
 }
 
 unit_type::unit_type(const unit_type& o) :
-	cfg_(o.cfg_), 
-	id_(o.id_), 
-	type_name_(o.type_name_), 
-	description_(o.description_), 
-	hitpoints_(o.hitpoints_), 
-	level_(o.level_), 
+	cfg_(o.cfg_),
+	id_(o.id_),
+	type_name_(o.type_name_),
+	description_(o.description_),
+	hitpoints_(o.hitpoints_),
+	level_(o.level_),
 	movement_(o.movement_),
 	max_attacks_(o.max_attacks_),
-	cost_(o.cost_), 
-	usage_(o.usage_), 
-	undead_variation_(o.undead_variation_), 
-	image_(o.image_), 
-	image_profile_(o.image_profile_), 
-	flag_rgb_(o.flag_rgb_), 
-	num_traits_(o.num_traits_), 
-	variations_(o.variations_), 
-	race_(o.race_), 
-	alpha_(o.alpha_), 
+	cost_(o.cost_),
+	usage_(o.usage_),
+	undead_variation_(o.undead_variation_),
+	image_(o.image_),
+	image_profile_(o.image_profile_),
+	flag_rgb_(o.flag_rgb_),
+	num_traits_(o.num_traits_),
+	variations_(o.variations_),
+	race_(o.race_),
+	alpha_(o.alpha_),
 	abilities_(o.abilities_),
-	ability_tooltips_(o.ability_tooltips_), 
+	adv_abilities_(o.adv_abilities_),
+	ability_tooltips_(o.ability_tooltips_),
+	adv_ability_tooltips_(o.adv_ability_tooltips_),
 	zoc_(o.zoc_),
-	hide_help_(o.hide_help_), 
-	advances_to_(o.advances_to_), 
-	advances_from_(o.advances_from_), 
-	experience_needed_(o.experience_needed_), 
-	alignment_(o.alignment_), 
-	movementType_(o.movementType_), 
-	possibleTraits_(o.possibleTraits_), 
-	genders_(o.genders_), 
-	animations_(o.animations_), 
+	hide_help_(o.hide_help_),
+	advances_to_(o.advances_to_),
+	advances_from_(o.advances_from_),
+	experience_needed_(o.experience_needed_),
+	alignment_(o.alignment_),
+	movementType_(o.movementType_),
+	possibleTraits_(o.possibleTraits_),
+	genders_(o.genders_),
+	animations_(o.animations_),
     build_status_(o.build_status_),
 	portraits_(o.portraits_)
 {
@@ -650,7 +654,9 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	race_(NULL),
 	alpha_(),
 	abilities_(),
+	adv_abilities_(),
 	ability_tooltips_(),
+	adv_ability_tooltips_(),
 	zoc_(false),
 	hide_help_(false),
 	advances_to_(),
@@ -839,13 +845,29 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
 				if((**k)["name"] != "") {
 					abilities_.push_back((**k)["name"]);
-					//FIXME: female name cause double entries in help
-					/*abilities_.push_back(
-						genders_.front() == unit_race::MALE || (**k)["female_name"].empty() ?
-						(**k)["name"] :
-						(**k)["female_name"]
-					);*/
 					ability_tooltips_.push_back((**k)["description"]);
+				}
+			}
+		}
+	}
+
+	for(config::const_child_itors adv_itors = cfg.child_range("advancement");
+	adv_itors.first != adv_itors.second; ++adv_itors.first)
+	{
+		for(config::const_child_itors eff_itors = (**adv_itors.first).child_range("effect");
+		eff_itors.first != eff_itors.second; ++eff_itors.first)
+		{
+			const config* abil_cfg = (**eff_itors.first).child("abilities");
+			if(!abil_cfg || (**eff_itors.first)["apply_to"] != "new_ability") {
+				continue;
+			}
+			const config::child_map& abi = abil_cfg->all_children();
+			for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
+				for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+					if((**k)["name"] != "") {
+						adv_abilities_.push_back((**k)["name"]);
+						adv_ability_tooltips_.push_back((**k)["description"]);
+					}
 				}
 			}
 		}
