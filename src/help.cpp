@@ -21,7 +21,6 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
-#include "foreach.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
