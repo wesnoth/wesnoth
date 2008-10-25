@@ -182,7 +182,13 @@ class JourneyTracks:
                         fp.write(marker)
                     fp.write("#enddef\n\n")
                     fp.write("#define %s_END\n" % stagename)
-                    fp.write(marker)
+                    for j in range(0, e+1):
+                        age="OLD"
+                        if j == endpoints[i]:
+                            age = "NEW"
+                        waypoint = (age,) + tuple(track[j])
+                        marker = "    {%s_%s %d %d}\n" % waypoint
+                        fp.write(marker)
                     fp.write("#enddef\n\n")
                 fp.write("#define %s_COMPLETE\n" % name)
                 for j in range(len(track)):
