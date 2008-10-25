@@ -374,14 +374,14 @@ class save_preview_pane : public gui::preview_pane
 {
 public:
 	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
-			const std::vector<save_info>& info,
-			const std::vector<config*>& summaries,
+			const std::vector<save_info>& info, 
+			const std::vector<config*>& summaries, 
 			const gui::filter_textbox& textbox) :
-		gui::preview_pane(video),
-		game_config_(&game_config),
-		map_(map), info_(&info),
-		summaries_(&summaries),
-		index_(0),
+		gui::preview_pane(video), 
+		game_config_(&game_config), 
+		map_(map), info_(&info), 
+		summaries_(&summaries), 
+		index_(0), 
 		map_cache_(),
 		textbox_(textbox)
 	{
@@ -498,7 +498,7 @@ void save_preview_pane::draw_contents()
 		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
 		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
 	}
-
+    
 	char* old_locale = std::setlocale(LC_TIME, get_locale().localename.c_str());
 	char time_buf[256] = {0};
 	const save_info& save = (*info_)[index_];
@@ -688,7 +688,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	delete_save save_deleter(disp,*filter,games,summaries);
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
-
+	
 	lmenu.add_button(delete_button,
 		game_config::small_gui ? gui::dialog::BUTTON_HELP : gui::dialog::BUTTON_EXTRA);
 
@@ -907,16 +907,16 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp,
+units_list_preview_pane::units_list_preview_pane(game_display& disp, 
 		const gamemap* map, const unit& u, TYPE type, bool on_left_side) :
-	unit_preview_pane(disp, map, NULL, type, on_left_side),
+	unit_preview_pane(disp, map, NULL, type, on_left_side), 
 	units_(&unit_store_),
 	unit_store_(1, u)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(game_display& disp,
-		const gamemap* map, std::vector<unit>& units,
+units_list_preview_pane::units_list_preview_pane(game_display& disp, 
+		const gamemap* map, std::vector<unit>& units, 
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(disp, map, filter, type, on_left_side),
 	units_(&units),
@@ -1021,10 +1021,6 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	}
 
 	det.abilities = t->abilities();
-
-	// for now, we will just list advancement abilities along with the others
-	const std::vector<t_string> &adv_abils = t->adv_abilities();
-	std::copy(adv_abils.begin(), adv_abils.end(), std::back_inserter(det.abilities));
 
 	det.hitpoints = t->hitpoints();
 	det.max_hitpoints = t->hitpoints();
