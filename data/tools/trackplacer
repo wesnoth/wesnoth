@@ -171,13 +171,18 @@ class JourneyTracks:
                     endpoints.append(len(track)-1)
                 outname = name.replace(" ", "_").upper()
                 for (i, e) in enumerate(endpoints):
-                    fp.write("#define %s_STAGE%d\n" % (outname, i+1,))
+                    stagename = "%s_STAGE%d" % (outname, i+1,)
+                    fp.write("#define %s\n" % stagename)
                     for j in range(0, e+1):
                         age="OLD"
                         if i == 0 or j > endpoints[i-1]:
                             age = "NEW"
                         waypoint = (age,) + tuple(track[j])
-                        fp.write("    {%s_%s %d %d}\n" % waypoint)
+                        marker = "    {%s_%s %d %d}\n" % waypoint
+                        fp.write(marker)
+                    fp.write("#enddef\n\n")
+                    fp.write("#define %s_END\n" % stagename)
+                    fp.write(marker)
                     fp.write("#enddef\n\n")
                 fp.write("#define %s_COMPLETE\n" % name)
                 for j in range(len(track)):
