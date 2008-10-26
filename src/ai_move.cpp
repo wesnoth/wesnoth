@@ -850,8 +850,8 @@ namespace {
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() 
-		|| leader->second.incapacitated() 
+	if(leader == units_.end()
+		|| leader->second.incapacitated()
 		|| leader->second.movement_left() == 0) {
 		return;
 	}
@@ -871,9 +871,9 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 			int best_value = INT_MAX - 1;
 			map_location best_target;
 
-			const shortest_path_calculator cost_calc(leader->second, 
-					current_team(), 
-					units_, teams_, 
+			const shortest_path_calculator cost_calc(leader->second,
+					current_team(),
+					units_, teams_,
 					map_);
 
 			std::set<map_location> allowed_teleports;
@@ -890,7 +890,6 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 					allowed_teleports.insert(*vil);
 				}
 			}
-
 
 			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
@@ -915,9 +914,9 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 				const int tactical_value = distance_between(center, *i);
 				const int empty_slots = leader->second.total_movement() * std::max(number_of_recruit - free_slots,0);
 				unit_map::const_iterator u = units_.find(*i);
-				const int reserved_penalty = leader->second.total_movement() * 
-					(u != units_.end() 
-					 && &teams_[u->second.side()-1] != &current_team() 
+				const int reserved_penalty = leader->second.total_movement() *
+					(u != units_.end()
+					 && &teams_[u->second.side()-1] != &current_team()
 					 && !u->second.invisible(u->first, units_, teams_)
 					 ?(current_team().is_enemy(u->second.side())?6:3)
 					 :0);
@@ -947,15 +946,24 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 
 				map_location target;
 
-				target = std::find_if(route->second.waypoints.begin(),
+				std::map<map_location, paths::route::waypoint>::iterator target_it = std::find_if(route->second.waypoints.begin(),
 						route->second.waypoints.end(),
-						match_turn(1))->first;
+						match_turn(1));
+				if(target_it != route->second.waypoints.end()) {
+					target = target_it->first;
+				} else if(*i == leader->first) {
+					target = leader->first;
+				} else {
+					ERR_AI << "ai::move_leader_to_keep - leader at " << leader->first
+					<< " could not find path to keep at " << *i << std::endl;
+					continue;
+				}
 
 				int multiturn_move_penalty = 0;
 				if (recruiting_preferred_)
 					multiturn_move_penalty = 2;
 
-				const int distance_value = (distance > leader->second.movement_left()? 
+				const int distance_value = (distance > leader->second.movement_left()?
 						((distance - leader->second.movement_left())/leader->second.total_movement()+multiturn_move_penalty)*leader->second.total_movement() : 0);
 				value += distance_value;
 
@@ -964,15 +972,15 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 
 				best_value = value;
 				best_target = target;
-				DBG_AI << "Considering keep: " << *i << 
-					" empty slots: " << empty_slots << 
-					" distance: " << distance << 
-					" enemy: " << enemy << 
-					" tactical_value: " << tactical_value << 
-					" reserved_penalty: " << reserved_penalty << 
+				DBG_AI << "Considering keep: " << *i <<
+					" empty slots: " << empty_slots <<
+					" distance: " << distance <<
+					" enemy: " << enemy <<
+					" tactical_value: " << tactical_value <<
+					" reserved_penalty: " << reserved_penalty <<
 					" target: " << target <<
 					" value: " << value <<
-					" route: " << route->second.steps.size() << " " << route->second.move_left << 	
+					" route: " << route->second.steps.size() << " " << route->second.move_left <<
 					"\n";
 			}
 
@@ -996,8 +1004,8 @@ int ai::count_free_hexes_in_castle(const map_location& loc, std::set<map_locatio
 		if (map_.is_castle(adj[n])) {
 			const unit_map::const_iterator u = units_.find(adj[n]);
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
-			if (u == units_.end() 
-				|| (current_team().is_enemy(u->second.side()) 
+			if (u == units_.end()
+				|| (current_team().is_enemy(u->second.side())
 					&& u->second.invisible(adj[n], units_, teams_))
 				|| ((&teams_[u->second.side()-1]) == &current_team()
 					&& u->second.movement_left() > 0)) {
