@@ -833,20 +833,6 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 	}
 }
 
-namespace {
-        struct match_turn{
-                match_turn(int turn) : turn_(turn)
-                {
-                }
-                bool operator()(const std::map<map_location, paths::route::waypoint>::value_type& way)
-                {
-                        return way.second.turns == turn_;
-                }
-                private:
-                int& turn_;
-        };
-}
-
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
@@ -945,10 +931,13 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 						map_) * leader->second.total_movement();
 
 				map_location target;
-
-				std::map<map_location, paths::route::waypoint>::iterator target_it = std::find_if(route->second.waypoints.begin(),
-						route->second.waypoints.end(),
-						match_turn(1));
+				std::map<map_location, paths::route::waypoint>::iterator target_it,
+					target_end = route->second.waypoints.end();
+				for(target_it = route->second.waypoints.begin(); target_it != target_end; ++target_it) {
+					if(target_it->second.turns == 1) {
+						break;
+					}
+				}
 				if(target_it != route->second.waypoints.end()) {
 					target = target_it->first;
 				} else if(*i == leader->first) {
