@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-/** 
- * @file pathfind.hpp 
+/**
+ * @file pathfind.hpp
  * This module contains various pathfinding functions and utilities.
  */
 
@@ -78,7 +78,7 @@ struct cost_calculator
 	inline double getNoPathValue() const { return (42424242.0); }
 };
 
-/** 
+/**
  * Object which contains all the possible locations a unit can move to,
  * with associated best routes to those locations.
  */
@@ -124,6 +124,8 @@ struct paths
 	typedef std::map<map_location,route> routes_map;
 	routes_map routes;
 };
+
+std::ostream& operator << (std::ostream& os, const paths::route& rt);
 
 paths::route a_star_search(map_location const &src, map_location const &dst,
                            double stop_at, cost_calculator const *costCalculator,

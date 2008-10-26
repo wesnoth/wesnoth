@@ -21,6 +21,7 @@ See the COPYING file for more details.
 #include "global.hpp"
 
 #include "astarnode.hpp"
+#include "foreach.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -203,9 +204,9 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	}
 }
 
-paths::paths(gamemap const &map, unit_map const &units, 
-		map_location const &loc, std::vector<team> const &teams, 
-		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team, 
+paths::paths(gamemap const &map, unit_map const &units,
+		map_location const &loc, std::vector<team> const &teams,
+		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units) :
 	routes()
 {
@@ -240,7 +241,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 	for (std::vector<map_location>::const_iterator i = rt.steps.begin();
 		i !=rt.steps.end(); i++) {
 		bool last_step = (i+1 == rt.steps.end());
-		
+
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || map.on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost(map[*(i+1)]);
@@ -258,7 +259,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 			bool invisible = u.invisible(*i,units,teams,false);
 
 			rt.waypoints[*i] = paths::route::waypoint(turns, zoc, capture, invisible);
-			
+
 			if (last_step) break; // finished and we used dummy move_cost
 
 			movement = u.total_movement();
@@ -332,7 +333,7 @@ double shortest_path_calculator::cost(const map_location& /*src*/,const map_loca
 				other_unit_subcost = 1;
 		}
 	}
-	
+
 	// Compute how many movement points are left in the game turn
 	// needed to reach the previous hex.
 	// total_movement_ is not zero, thanks to the pathfinding heuristic
@@ -380,4 +381,37 @@ double emergency_path_calculator::cost(const map_location&,const map_location& l
 	assert(map_.on_board(loc));
 
 	return unit_.movement_cost(map_[loc]);
+}
+
+std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
+	outstream << "\n[route]\n\tsteps=\"";
+	bool first_loop = true;
+	foreach(map_location const& loc, rt.steps) {
+		if(first_loop) {
+			first_loop = false;
+		} else {
+			outstream << "->";
+		}
+		outstream << '(' << loc << ')';
+	}
+	outstream << "\"\n\tmove_left=\"" << rt.move_left << "\"\n";
+	foreach(map_location const& loc, rt.steps) {
+		if(first_loop) {
+			first_loop = false;
+		} else {
+			outstream << "->";
+		}
+		outstream << '(' << loc << ')';
+	}
+	typedef std::pair<map_location, paths::route::waypoint> loc_waypoint;
+	foreach(loc_waypoint const& lw, rt.waypoints) {
+		outstream << "\t[waypoint]\n\t\tx,y=\"" << lw.first
+		<< "\"\n\t\tturns=\"" << lw.second.turns
+		<< "\"\n\t\tzoc=\"" << (lw.second.zoc?"yes":"no")
+		<< "\"\n\t\tcapture=\"" << (lw.second.capture?"yes":"no")
+		<< "\"\n\t\tinvisible=\"" << (lw.second.invisible?"yes":"no")
+		<< "\"\n\t[/waypoint]\n";
+	}
+	outstream << "[/route]";
+	return outstream;
 }

@@ -955,7 +955,8 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 					target = leader->first;
 				} else {
 					ERR_AI << "ai::move_leader_to_keep - leader at " << leader->first
-					<< " could not find path to keep at " << *i << std::endl;
+					<< " has no valid waypoint in route to keep at " << *i
+					<< route->second << std::endl;
 					continue;
 				}
 
