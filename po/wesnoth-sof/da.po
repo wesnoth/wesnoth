@@ -1,14 +1,14 @@
 # #-#-#-#-#  wesnoth-Sceptre_of_Fire (Battle for Wesnoth)  #-#-#-#-#
 # Danish translations for Campaign Sceptre of Fire.
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2007.
+# Joe Hansen <joedalton2@yahoo.dk>, 2007, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-12 14:36+0200\n"
-"PO-Revision-Date: 2007-12-27 20:50+0200\n"
+"PO-Revision-Date: 2008-10-25 20:50+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -95,9 +95,8 @@ msgstr "Kampagnedesign"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:41
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Kampagnedesign"
+msgstr "Kampagnevedligeholdelse"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:47
@@ -126,7 +125,7 @@ msgstr "Rugnur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:18
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:29
 msgid "Allies"
-msgstr ""
+msgstr "Allierede"
 
 #. [side]: type=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
@@ -152,7 +151,7 @@ msgstr ""
 "Men jeg er her ikke for at fortælle hvordan juvelen indhæftet i den blev "
 "bragt over havet af Haldric den Store. Jeg vil heller ikke fortække "
 "historien om Garard 1., og de udfordringer han stod over for, eller "
-"historien om Konrad konge af Wesnoth i kraft af scepteren."
+"historien om Konrad konge af Wesnoth i kraft af scepteret."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:95
@@ -200,6 +199,9 @@ msgid ""
 "@Defeat Glildur\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternativt mål:\n"
+"@Besejr Glildur\n"
+"`(tidlig afslutningsbonus)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:137
@@ -449,8 +451,8 @@ msgid ""
 "my reign as king is ended."
 msgstr ""
 "Udmærket. Jeg har sølvet her, klar til afskibning, og jeg vil sende en over "
-"med selve stenen. Han vil blive hos dig mens du fremstiller scepteren, og "
-"sikrer at opgaven bliver løst til tiden. Jeg forventer den færdig før min "
+"med selve stenen. Han vil blive hos dig, mens du fremstiller scepteret, og "
+"sikre, at opgaven bliver løst til tiden. Jeg forventer den færdig, før min "
 "tid som konge er slut."
 
 #. [unit]: type=Dragoon
@@ -615,22 +617,22 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:543
 msgid "Die, humans, in the name of Landar!"
-msgstr ""
+msgstr "Dø, mennesker, i Landars navn!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:547
 msgid "Landar? Who is this 'Landar' you speak of?"
-msgstr ""
+msgstr "Landar? Hvem er den her »Landar«, som du snakker om?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:564
 msgid "Die, dwarvish scum, in the name of Landar!"
-msgstr ""
+msgstr "Dø, dværgeafskum, i Landars navn!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:568
 msgid "Yer precious Landar can kiss my axe."
-msgstr ""
+msgstr "Din kære Landard kan kysse min økse."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:604
@@ -639,7 +641,7 @@ msgid ""
 "trust you to keep my property secure, the deal's off."
 msgstr ""
 "Du tillod en karavane med MINE penge at blive fanget! Hvis jeg ikke kan "
-"stole på at du har styr på mine ejendele så er handelen aflyst."
+"stole på, at du har styr på mine ejendele, så er handelen aflyst."
 
 #. [scenario]
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
@@ -690,7 +692,7 @@ msgstr "Baglurs død"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:125
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:559
 msgid "Early finish bonus."
-msgstr ""
+msgstr "Bonus for tidlig afgørelse."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:142
@@ -1159,7 +1161,7 @@ msgid ""
 "Haldric wants it. And he has nothing to do, he will be fine with wasting 25 "
 "years of his life on this task."
 msgstr ""
-"Ja. Han er den eneste som jeg kender der kan fremstille scepteren på den "
+"Ja. Han er den eneste, som jeg kender, der kan fremstille scepteret, på den "
 "måde Haldric ønsker. Og han har ikke noget at lave, han vil have det ok med "
 "at anvende 25 år af sit liv på denne opgave."
 
@@ -1629,7 +1631,7 @@ msgid ""
 "drawing up plans for the sceptre immediately."
 msgstr ""
 "Hm... en meget interessatn juvel. Jeg kan mærke dens magiske kraft. Jeg vil "
-"øjeblikkeligt påbegynde planer for scepteren."
+"øjeblikkeligt påbegynde planer for scepteret."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:203
@@ -1669,8 +1671,8 @@ msgid ""
 "You try my patience, Durstorn. You know yours aren't acceptable, but you "
 "have to give me something or I can't make the sceptre!"
 msgstr ""
-"Du tester min tålmodighed Durstorn. Du ved at dine materialer ikke er gode "
-"nok, men du skal levere materialer ellers kan jeg ikke lave scepteren!"
+"Du tester min tålmodighed Durstorn. Du ved, at dine materialer ikke er gode "
+"nok, men du skal levere materialer, ellers kan jeg ikke lave scepteret!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:223
@@ -1774,7 +1776,7 @@ msgid ""
 "Bring the necessary gold and coal to create the sceptre to the starting "
 "castle"
 msgstr ""
-"Saml det nødvendige guld og kul for at skabe scepteren til startborgen."
+"Saml det nødvendige guld og kul for at skabe scepteret til startborgen."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:229
@@ -1878,7 +1880,7 @@ msgstr "Her er guldet."
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:820
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:879
 msgid "Trolls"
-msgstr ""
+msgstr "Trolde"
 
 #. [scenario]
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:3
@@ -1924,8 +1926,8 @@ msgid ""
 "That makes sense, I guess you would to plan the sceptre's design... what in "
 "particular do you want him to do?"
 msgstr ""
-"Det giver mening, jeg antager at i vil planlægge scepterens design... hvad "
-"specielt ønsker du han skal gøre?"
+"Det giver mening, jeg antager, at i vil planlægge scepterets design... hvad "
+"specielt ønsker du, han skal gøre?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:153
@@ -1933,7 +1935,7 @@ msgid ""
 "I need to make the plans for the sceptre, then have him cut the ruby to "
 "match them."
 msgstr ""
-"Jeg skal have tegnet planerne for scepteren, derpå skal han slibe rubinen i "
+"Jeg skal have tegnet planerne for scepteret, derpå skal han slibe rubinen i "
 "overensstemmelse hermed."
 
 #. [message]: speaker=Durstorn
@@ -2147,7 +2149,7 @@ msgstr "Glonoin"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:52
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:93
 msgid "Enemies"
-msgstr ""
+msgstr "Fjender"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:98
@@ -2183,7 +2185,7 @@ msgstr "Durstorns død"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:515
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:578
 msgid "No early finish bonus."
-msgstr ""
+msgstr "Ingen bonus for tidlig afgørelse."
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:201
@@ -2599,7 +2601,7 @@ msgid ""
 msgstr ""
 "I denne periode fremstillede Thursagan ildscepteret. Først sleb han juvelen. "
 "Herefter lagde han den, guld og det kolde stål ind i flammernes hjerte. "
-"Scepteren var skabt, men noget var ikke som det skulle være. Uanset hvilke "
+"Scepteret var skabt, men noget var ikke som det skulle være. Uanset hvilke "
 "indgraveringer han indskrev på den så opfyldte det ikke det oprindelige "
 "formål."
 
@@ -2622,7 +2624,7 @@ msgid ""
 "materials he has here, but he has the final plans for it, and all the jewels "
 "and gold he needs. Shouldn't we leave now?"
 msgstr ""
-"Thursagan har nået en konklusion. Han kan ikke fremstille scepteren med de "
+"Thursagan har nået en konklusion. Han kan ikke fremstille scepteret, med de "
 "materialer han har her, men han har de endelige planer for den, og alle de "
 "juveler og guld han skal bruge. Skal vi ikke tage af sted nu?"
 
@@ -2651,7 +2653,7 @@ msgid ""
 msgstr ""
 "Hold kæft Baglur! Du ved ikke hvad du taler om. Jeg har analyseret "
 "situationen og vi er fortabt. Vores bedste håb er at overgive os. Måske hvis "
-"vi giver elverne planerne for scepteren vil de lade os overleve."
+"vi giver elverne planerne for scepteret, vil de lade os overleve."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:226
@@ -2662,7 +2664,7 @@ msgid ""
 msgstr ""
 "Hold kæft Rugnur! Du ved ikke hvad du taler om. Jeg har analyseret "
 "situationen og vi er fortabt. Vores bedste håb er at overgive os. Måske hvis "
-"vi giver elverne planerne for scepteren vil de lade os overleve."
+"vi giver elverne planerne for scepteret, vil de lade os overleve."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:232
@@ -2692,10 +2694,10 @@ msgid ""
 "Baglur's. Krawg's done more for its existence than you have! And yet, you "
 "still get the profits from selling it to Haldric."
 msgstr ""
-"Du har ikke autoritet over mig Durstorn. Og jeg ville ikke give scepteren "
-"til dem selv om du havde. Det er ikke din at give, det er min, og Rugnurs og "
-"Baglurs. Krawgs har gjort mere for dens eksistens end du har! Og alligevel "
-"får du profitten fra den ved at sælge til Haldric."
+"Du har ikke autoritet over mig Durstorn. Og jeg ville ikke give scepteret "
+"til dem, selv om du havde. Det er ikke din at give, det er min, og Rugnurs "
+"og Baglurs. Krawgs har gjort mere for dens eksistens end du har! Og "
+"alligevel får du profitten fra den ved at sælge til Haldric."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:244
@@ -2704,7 +2706,7 @@ msgid ""
 "if you won't give the sceptre to the elves, I'll take it from you!"
 msgstr ""
 "Så hvad, ønsker i alle at dø? Okay med mig, men jeg dør ikke med dig! Og "
-"hvis du ikke giver scepteren til elverne, så tager jeg den fra dig!"
+"hvis du ikke giver scepteret til elverne, så tager jeg den fra dig!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:249
@@ -3182,7 +3184,7 @@ msgid ""
 "It looks magic, and it looks hot enough to make the Sceptre."
 msgstr ""
 "Se jeg har fundet noget her. Det ligner en smedje, opvarmet af lava. Den ser "
-"magisk ud, og den virker varm nok til at kunne lave scepteren."
+"magisk ud, og den virker varm nok til at kunne lave scepteret."
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:286
@@ -3197,7 +3199,7 @@ msgstr "Flyt Thursagan til smedjen"
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:295
 msgid "Defend Thursagan until the sceptre is complete"
-msgstr "Forsvar Thuragan indtil scepteren er færdig"
+msgstr "Forsvar Thuragan indtil scepteret er færdig"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:321
@@ -3266,7 +3268,7 @@ msgstr "Flammernes huler"
 #. [side]: type=Dwarvish Fighter
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:26
 msgid "Dwarves"
-msgstr ""
+msgstr "Dværge"
 
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -3275,7 +3277,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:105
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:128
 msgid "Orcs"
-msgstr ""
+msgstr "Orker"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:139
@@ -3591,7 +3593,7 @@ msgstr ""
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:145
 msgid "Well, was the Sceptre completed? Do you have it? Give it to me!"
-msgstr "Blev scepteren færdiggjort? Har du den? Giv den til mig!"
+msgstr "Blev scepteret færdiggjort? Har du den? Giv den til mig!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:149
@@ -3623,7 +3625,7 @@ msgstr ""
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:161
 msgid "Why were you returning without the sceptre, then?"
-msgstr "Hvorfor vendte du tilbage uden scepteren?"
+msgstr "Hvorfor vendte du tilbage uden scepteret?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:165
@@ -3635,7 +3637,7 @@ msgid ""
 "were immediately followed by hundreds of elves."
 msgstr ""
 "Vi var under belejring af elvere, i et dværgefort som ikke var Rugnurs. "
-"Scepteren kunne ikke færdiggøres der, men det kunne ske i en hule som lå "
+"Scepteret kunne ikke færdiggøres der, men det kunne ske i en hule som lå "
 "nordøst for fortet. Rugnur sendte mig tilbage med beskeden om at den var "
 "færdig, men han og alle dværgene tog ind i hulerne og blev fulgt af flere "
 "hundrede elvere."
@@ -3646,8 +3648,8 @@ msgid ""
 "If the sceptre was not completed in your sight, what makes you so sure it "
 "exists?"
 msgstr ""
-"Hvis scepteren ikke blev færdiggjort foran dig, hvad gør dig så sikker på at "
-"den eksisterer?"
+"Hvis scepteret ikke blev færdiggjort foran dig, hvad gør dig så sikker på, "
+"at den eksisterer?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:173
@@ -3689,14 +3691,14 @@ msgstr "Hvad i alverden siger han?"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:218
-#, fuzzy
 msgid ""
 "He says that he has seen the Sceptre. Rugnur had it, but he lost it in the "
 "caves. He came to tell you, so that you would know that the dwarves did "
 "fulfill their promise."
 msgstr ""
-"Han siger at han har set scepteren. Rugnur har den, men har mistet den i "
-"hulerne. Han kommer for at fortælle dig, at dværgene holdt deres løfte."
+"Han siger, at han har set scepteret. Rugnur havde den, men har mistet den i "
+"hulerne. Han kommer for at fortælle dig det, så at du ved, at dværgene holdt "
+"deres løfte."
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:223
@@ -3710,7 +3712,7 @@ msgid ""
 "I don't know where it is, the makers are dead, and orcs have probably "
 "already found it and hid it somewhere else."
 msgstr ""
-"Jeg forstår... hvad ønsker du jeg skal gøre nu? Scepteren er fremstillet, "
+"Jeg forstår... hvad ønsker du jeg skal gøre nu? Scepteret er fremstillet, "
 "ja, men jeg ved ikke hvor den er og dem som lavede den er døde, og orker har "
 "måske allerede fundet den og gemt den et andet sted."
 
@@ -3725,7 +3727,7 @@ msgstr ""
 "Jeg ved det ikke. Jeg overbringer kun nyheden. Jeg skabte den ikke eller "
 "forstår dens fulde omfang. Men mit råd vil være ikke at gøre noget. Jeg tror "
 "ikke du finder den, selvom du sendte 100 hære for at lede efter den. Men "
-"skriv i historiebøgerne at scepteren eksisterer."
+"skriv i historiebøgerne at scepteret eksisterer."
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:235
@@ -3754,7 +3756,7 @@ msgid ""
 "of the Northlands, unfound but undestroyed, moved around by Orcs who never "
 "understood its true power."
 msgstr ""
-"Scepteren skulle ikke findes før mange generationer efter Haldric 2., i "
+"Scepteret skulle ikke findes før mange generationer efter Haldric 2., i "
 "tiden for Asheviere under den mørke dronning. I den tid lå den i de nordlige "
 "landes huler; skjult men uskadt og flyttet rundt af orkerne som aldrig "
 "forstod dens sande magt."
