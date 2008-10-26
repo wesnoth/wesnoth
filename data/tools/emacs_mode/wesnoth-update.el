@@ -59,11 +59,16 @@
 ;; available to `wesnoth-mode'.
 
 ;;; History:
+;; 0.1.1
+;; * Provide means for increased performance when referencing attributes and
+;;   tags.
+;; * Gather project macro information for the local buffer only, instead of
+;;   from files in the directory.
 ;; 0.1
 ;; * Initial version
 
 ;;; Code:
-(defvar wesnoth-update-version "0.1"
+(defvar wesnoth-update-version "0.1.1"
   "Version of `wesnoth-update'.")
 
 (defcustom wesnoth-root-directory nil
@@ -97,6 +102,16 @@ This is relative to the wesnoth directory in `wesnoth-root-directory.'.")
 
 (defvar wesnoth-local-macro-data '()
   "All macro definitions available in the current project.")
+
+(defvar wesnoth-tag-hash-table (make-hash-table :test 'equal
+						:size 350)
+  "Hash table of known WML tag data.")
+
+(defun wesnoth-create-wml-hash-table ()
+  "Handle generation of `wesnoth-tag-hash-table'."
+  (clrhash wesnoth-tag-hash-table)
+  (dolist (tag wesnoth-tag-data)
+    (puthash (car tag) (cdr tag) wesnoth-tag-hash-table)))
 
 (defun wesnoth-file-cfg-p (file)
   "Return non-nil if FILE has a '.cfg' extension."
@@ -215,14 +230,14 @@ SUBTAG and ATTRIBUTE are a children of TAG to be added."
 (defmacro wesnoth-determine-macro-information (macro-list)
   "Process the buffer, retrieving macro definition information.
 MACRO-LIST is the variable to append macro information."
-  `(progn
+  `(save-excursion
      (goto-char (point-min))
      (while (search-forward-regexp
 	     "#define \\(\\(\\w\\|_\\)+\\)\\([\t ]+\\(\\w\\|_\\)+\\)?"
 	     (point-max) t)
        (beginning-of-line)
-       (add-to-list ,macro-list (list (match-string 1)
-				      (when (match-string 3) t)))
+       (add-to-list ,macro-list (list (match-string-no-properties 1)
+				      (not (null (match-string 3)))))
        (end-of-line))))
 
 (defun wesnoth-determine-macro-builtins ()
@@ -271,15 +286,13 @@ Path to WML information included in wesnoth is set by
     (write-file (expand-file-name (format "wesnoth-wml-data.el")
 				  (wesnoth-output-path)))
     (load "wesnoth-wml-data"))
+  (wesnoth-create-wml-hash-table)
   (message "Updating WML information...done"))
 
 (defun wesnoth-update-project-information ()
   "Update WML macro information for the current project."
   (interactive)
-  (wesnoth-determine-details (wesnoth-cfg-files-in-dir default-directory)
-			     (lambda ()
-			       (wesnoth-determine-macro-information
-				'wesnoth-local-macro-data))))
+  (wesnoth-determine-macro-information 'wesnoth-local-macro-data))
 
 (defun wesnoth-update-teach-wesnoth-mode (file-or-dir)
   "Update WML tag and attribute information for the current project.
