@@ -2084,7 +2084,7 @@ void python_ai::invoke(std::string name)
 	python_code +=
 		"import sys\n"
 		"backup = sys.path[:]\n"
-		"sys.path.append(\"" + game_config::path + "/data/ais\")\n"
+		"sys.path.append(\"" + game_config::path + "/data/ai/python\")\n"
 		"sys.path.append(\"" + game_config::path + "/data/tools/wesnoth\")\n"
 		"try:\n"
 		"\timport " + name + "\n"
@@ -2132,7 +2132,7 @@ void python_ai::play_turn()
 		std::cerr << "\"" << script_name << "\" is not a valid script name.\n";
 		return;
 	}
-	std::string script = get_binary_file_location("data", "ais/" + script_name);
+	std::string script = get_binary_file_location("data", "ai/python" + script_name);
 
 	PyErr_Clear();
 
@@ -2142,7 +2142,7 @@ void python_ai::play_turn()
 	std::string path(".");
 	if (!game_config::path.empty()) path = game_config::path;
 	LOG_AI << "Executing Python script \"" << script << "\".\n";
-	LOG_AI << "Python path: \"" << path << "/data/ais" << "\"\n";
+	LOG_AI << "Python path: \"" << path << "/data/ai/python" << "\"\n";
 	// Run the python script. We actually execute a short inline python script,
 	// which sets up the module search path to the data path,
 	// runs the script, and then resets the path.
@@ -2157,7 +2157,7 @@ void python_ai::play_turn()
 		"\texcept IOError:\n"
 		"\t\tsys.stderr.write(\"Python: Could not create pyerr.txt in current directory.\\n\")\n"
 	  	"\tbackup = sys.path[:]\n"
-		"\tsys.path.append(\"" + path + "/data/ais\")\n"
+		"\tsys.path.append(\"" + path + "/data/ai/python\")\n"
 		"\tsys.path.append(\"data/ais\")\n"
 		"\ttry:\n"
 		"\t\timport parse, safe\n"

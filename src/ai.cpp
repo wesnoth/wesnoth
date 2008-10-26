@@ -206,7 +206,7 @@ static std::vector<std::string> get_available_py_scripts()
   const std::vector<std::string>& paths = get_binary_paths("data");
   for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
     std::vector<std::string> files;
-    get_files_in_dir(*i + "ais", &files, NULL, ENTIRE_FILE_PATH);
+    get_files_in_dir(*i + "ai/python", &files, NULL, ENTIRE_FILE_PATH);
     for(std::vector<std::string>::const_iterator j = files.begin(); j != files.end(); ++j) {
       // file ends with .py
       if (j->substr(j->length() - 3) == ".py") {
