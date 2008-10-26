@@ -512,7 +512,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 		std::map<location,paths>& possible_moves)
 {
 	LOG_AI << "ai_interface::move_unit " << from << " -> " << to << '\n';
-
+	assert(to.valid() && to.x <= MAX_MAP_AREA && to.y <= MAX_MAP_AREA);
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
 
@@ -811,7 +811,7 @@ void ai_interface::calculate_moves(const unit_map& units, std::map<location,path
 			continue;
 		}
 		// Discount incapacitated units
-		if(un_it->second.incapacitated() 
+		if(un_it->second.incapacitated()
 			|| un_it->second.movement_left() == 0) {
 			continue;
 		}
@@ -1008,8 +1008,8 @@ void ai::evaluate_recruiting_value(unit_map::iterator leader)
                }
 	}
 	recruiting_preferred_ = (gold/unit_price) - free_slots > current_team().num_pos_recruits_to_force();
-	DBG_AI << "recruiting preferred: " << (recruiting_preferred_?"yes":"no") << 
-		" units to recruit: " << (gold/unit_price) << 
+	DBG_AI << "recruiting preferred: " << (recruiting_preferred_?"yes":"no") <<
+		" units to recruit: " << (gold/unit_price) <<
 		" unit_price: " << unit_price <<
 		" free slots: " << free_slots <<
 		" limit: " << current_team().num_pos_recruits_to_force() << "\n";
@@ -1296,7 +1296,7 @@ void ai_interface::attack_enemy(const location u,
 		ERR_AI << "attempt to attack without attacker\n";
 		return;
 	}
-	if (!info_.units.count(target)) 
+	if (!info_.units.count(target))
 	{
 		ERR_AI << "attempt to attack without defender\n";
 		return;
@@ -1368,7 +1368,7 @@ bool ai::get_healing(std::map<map_location,paths>& possible_moves,
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
 			double best_vulnerability = 100000.0;
-			// Make leader units more unlikely to move to vulnerable villages 
+			// Make leader units more unlikely to move to vulnerable villages
 			const double leader_penalty = (u.can_recruit()?2.0:1.0);
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
@@ -1631,7 +1631,7 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 						+ (bc.get_defender_combatant().average_hp() - bc.get_attacker_combatant().average_hp() * harm_weight);
 
 					if (value > 0.0
-						&& (selected == -1 
+						&& (selected == -1
 							|| bc_sel->better_attack(bc,harm_weight)))
 					{
 						// Select attack target
