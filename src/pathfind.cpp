@@ -395,14 +395,6 @@ std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
 		outstream << '(' << loc << ')';
 	}
 	outstream << "\"\n\tmove_left=\"" << rt.move_left << "\"\n";
-	foreach(map_location const& loc, rt.steps) {
-		if(first_loop) {
-			first_loop = false;
-		} else {
-			outstream << "->";
-		}
-		outstream << '(' << loc << ')';
-	}
 	typedef std::pair<map_location, paths::route::waypoint> loc_waypoint;
 	foreach(loc_waypoint const& lw, rt.waypoints) {
 		outstream << "\t[waypoint]\n\t\tx,y=\"" << lw.first
