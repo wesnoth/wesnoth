@@ -22,9 +22,6 @@ Version 1.5.5+svn:
  * Units:
    * Balancing changes:
      * Gave the Goblin Pillager the same bite attack as the Wolf Rider.
- * WML engine:
-   * Created the "consider attack" and "unconsider attack" events. (bug
-   #12375)
    * Added "border" parameter to [terrain_mask] that overlays on the border
      in addition to the playable map area. The used mask must have the same
      border_size as the map (i.e. currently 1), else this will be ignored.

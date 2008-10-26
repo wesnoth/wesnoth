@@ -1563,7 +1563,6 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 
 	info& inf = running_instance->get_info();
 
-	game_events::fire("consider attack", *from->location_, *to->location_);
 	battle_context bc(
 		inf.map,
 		inf.teams,

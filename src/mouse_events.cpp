@@ -581,7 +581,6 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 	std::vector<std::string> items;
 
 	std::vector<battle_context> bc_vector;
-	game_events::fire("consider attack", attacker_loc, defender_loc);
 	unsigned int i, best = 0;
 	for (i = 0; i < attacker->second.attacks().size(); i++) {
 		// skip weapons with attack_weight=0
@@ -699,7 +698,6 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 		return true;
 	} else {
-		game_events::fire("unconsider attack", attacker_loc, defender_loc);
 		return false;
 	}
 }

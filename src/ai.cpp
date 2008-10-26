@@ -115,7 +115,6 @@ protected:
 
 				if(best_defense != -1) {
 					move_unit(best_movement.second,best_movement.first,possible_moves);
-					game_events::fire("consider attack", best_movement.first, i->first);
 					battle_context bc(get_info().map, get_info().teams,
 									  get_info().units, get_info().state,
 									  best_movement.first,
@@ -754,7 +753,6 @@ map_location ai::move_unit(location from, location to, std::map<location,paths>&
 				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
-					game_events::fire("consider attack", res, itor->first);
 					battle_context bc(map_, teams_, units_, state_,
 									  res, *adj_i, -1, -1, current_team().aggression());
 					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
@@ -1263,7 +1261,6 @@ bool ai::do_combat(std::map<map_location,paths>& possible_moves, const move_map&
 			add_target(target(to, vuln,target::SUPPORT));
 
 		// Recalc appropriate weapons here: AI uses approximations.
-		game_events::fire("consider attack", to, target_loc);
 		battle_context bc(map_, teams_, units_, state_,
 						  to, target_loc, -1, -1,
 						  current_team().aggression());
@@ -1617,7 +1614,6 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 				if(enemy != units_.end() &&
 					current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 					// Current behavior is to only make risk-free attacks.
-					game_events::fire("consider attack", arrived_at, adj[n]);
 					battle_context bc(map_, teams_, units_, state_, arrived_at, adj[n], -1, -1, 100.0);
 #ifndef SUOKKO
 					if (bc.get_defender_stats().damage == 0) {
@@ -1639,7 +1635,6 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 						selected = n;
 					}
 #endif
-					game_events::fire("unconsider attack", arrived_at, adj[n]);
 				}
 			}
 #ifdef SUOKKO
