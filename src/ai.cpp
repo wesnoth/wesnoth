@@ -378,11 +378,16 @@ bool ai::recruit_usage(const std::string& usage)
 	if (found) {
 		LOG_AI << "No available units to recruit that come under the price.\n";
 	} else if (usage != "")	{
-		const std::string warning = "Trying to recruit a: " + usage + " but no "
-			"unit of that type (usage=) is available. Check the recruit and "
-		  "[ai] recruitment_pattern keys for team '" + current_team().name() + "' against the usage key "
-			"of the units in question! Removing invalid recruitment_pattern "
-			"entry and continuing...\n";
+	  //FIXME: This message should be suppressed when WML author
+	  //chooses the default recruitment pattern.
+	  const std::string warning = "At difficulty level " + 
+			state_.sog().difficulty + ", trying to recruit a: " + 
+			usage + " but no unit of that type (usage=) is "
+			"available. Check the recruit and [ai] "
+			"recruitment_pattern keys for team '" + 
+			current_team().name() + "' against the usage key of the"
+			"units in question! Removing invalid "
+			" recruitment_pattern entry and continuing...\n";
 		WRN_AI << warning;
 		lg::wml_error << warning;
 		return current_team().remove_recruitment_pattern_entry(usage);
