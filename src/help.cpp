@@ -1169,7 +1169,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			for(int i=0; i<2; ++i) {
 				std::vector<t_string> const& abil_vec = *abil_vecs[i];
 				std::vector<std::string> const& desc_vec = *desc_vecs[i];
-				for(int j=0; j < abil_vec.size(); ++j) {
+				for(size_t j=0; j < abil_vec.size(); ++j) {
 					t_string const& abil_name = abil_vec[j];
 					if (ability_description.find(abil_name) == ability_description.end()) {
 						//new ability, generate a descripion
