@@ -70,7 +70,7 @@ static void exit_sighup(int signal) {
 static void exit_sigint(int signal) {
 	assert(signal == SIGINT);
 	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
-	exit(1);
+	exit(0);
 }
 
 static void exit_sigterm(int signal) {

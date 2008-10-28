@@ -34,9 +34,11 @@ do
 	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
 	echo "started $VERSION campaignd with command: '$COMMAND' at: $DATE"
 	$COMMAND &> $SERVERBASE/logs/campaignd.$DATE
+	EXIT_CODE="$?"
+	echo "$EXIT_CODE"
 	mv gmon.out gmon.$DATE.out &> /dev/null
-	[ "$?" != "0" ] || exit
-	[ "$?" != "1" ] || die "File I/O error."
-	[ "$?" != "2" ] || die "Could not parse config file."
-	[ "$?" != "3" ] || die "Could not bind to port."
+	[ "$EXIT_CODE" != "0" ] || exit
+	[ "$EXIT_CODE" != "1" ] || die "File I/O error."
+	[ "$EXIT_CODE" != "2" ] || die "Could not parse config file."
+	[ "$EXIT_CODE" != "3" ] || die "Could not bind to port."
 done
