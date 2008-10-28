@@ -149,9 +149,10 @@ class JourneyTracks:
         return self.tracks[self.selected_id]
     def set_selected_track(self, name):
         self.selected_id = name
-    def write(self, fp):
+    def write(self, filename):
         "Record a set of named journey tracks."
-        if fp.name.endswith(".cfg"):
+        if filename.endswith(".cfg"):
+            fp = open(filename, "w")
             fp.write(self.before)
             fp.write("# trackplacer: tracks begin\n#\n")
             fp.write("# Hand-hack this section strictly at your own risk.\n")
@@ -918,7 +919,7 @@ class TracksEditor:
                 return
 
             # Relativize file path to current directory
-            if filename.startswith(os.getcwd()):
+            if filename.startswith(os.getcwd() + os.sep):
                 filename = filename[len(os.getcwd())+1:]
 
             # Request overwrite confirmation in some circumstances
@@ -952,13 +953,17 @@ class TracksEditor:
             # Actual I/O
             self.log("Writing track data to %s" % filename)
             try:
-                fp = open(filename, "w")
+                self.journey.write(filename)
+                if not self.journey.mapfile:
+                    self.journey.mapfile = filename 
+                self.time_last_io = time.time()
             except IOError:
-                raise IOException("Cannot write file.", filename)
-            if not self.journey.mapfile:
-                self.journey.mapfile = filename 
-            self.journey.write(fp)
-            self.time_last_io = time.time()
+                w = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                                      flags=gtk.DIALOG_DESTROY_WITH_PARENT,
+                                      buttons=gtk.BUTTONS_OK)
+                w.set_markup("Cannot write" + filename)
+                w.run()
+                w.destroy()
 
     def help_handler(self, w):
         "Display help."
@@ -1200,7 +1205,7 @@ if __name__ == "__main__":
                 dialog.destroy()
 
                 # Relativize file path to current directory
-                if filename.startswith(os.getcwd()):
+                if filename.startswith(os.getcwd() + os.sep):
                     filename = filename[len(os.getcwd())+1:]
 
                 TracksEditor(filename, verbose=verbose)
