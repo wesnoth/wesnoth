@@ -986,7 +986,7 @@ class TracksEditor:
     def tracks_handler(self, w):
         "Modify the visible set of tracks."
         self.visibility = gtk.Dialog(title="Edit track visibility",
-                                     buttons=(gtk.STOCK_OK,
+                                     buttons=(gtk.STOCK_CLOSE,
                                               gtk.RESPONSE_ACCEPT))
         label = gtk.Label("The radiobuttons select a track for editing.")
         self.visibility.vbox.pack_start(label)
@@ -1003,6 +1003,19 @@ class TracksEditor:
         basebutton = gtk.RadioButton()	# Dummy, don't show it.
         for (i, track_id) in enumerate(self.journey.track_order):
             TrackController(self, track_id, self.trackbox, basebutton)
+        movebox = gtk.HBox()
+        label = gtk.Label("The up and down buttons change the track order.")
+        self.visibility.vbox.pack_start(label)
+        label.show()
+        upbutton = gtk.Button(stock=gtk.STOCK_GO_UP)
+        movebox.pack_start(upbutton, expand=True, fill=True)
+        upbutton.connect("clicked", lambda w: self.track_move(backward=True))
+        upbutton.show()
+        downbutton = gtk.Button(stock=gtk.STOCK_GO_DOWN)
+        movebox.pack_start(downbutton, expand=True, fill=True)
+        downbutton.connect("clicked", lambda w: self.track_move(backward=False))
+        downbutton.show()
+        movebox.show()
         addbox = gtk.HBox()
         addbox.show()
         addlabel = gtk.Label("Add New Track:")
@@ -1012,9 +1025,20 @@ class TracksEditor:
         addentry.show()
         addbox.add(addentry)
         addentry.connect("activate", self.track_add_callback, basebutton)
+        self.visibility.vbox.add(movebox)
         self.visibility.vbox.add(addbox)
         self.visibility.connect("response", self.track_visibility_revert)
         self.visibility.show()
+    def track_move(self, backward):
+        where = self.journey.track_order.index(self.journey.selected_id)
+        if backward:
+            where += (len(self.journey.track_order) - 1)
+        else:
+            where += 1
+        where %= len(self.journey.track_order)
+        self.journey.track_order.remove(self.journey.selected_id)
+        self.journey.track_order.insert(where, self.journey.selected_id)
+        self.trackbox.reorder_child(self.controller[self.journey.selected_id].hbox, where)
     def track_select(self, w, track_id):
         "Make the specified track the selected one for editing."
         self.journey.set_selected_track(track_id)
