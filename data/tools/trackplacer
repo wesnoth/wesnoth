@@ -1142,7 +1142,7 @@ if __name__ == "__main__":
         try:
             filename = os.path.join(here, arguments[0])
             # Relativize file path to current directory
-            if filename.startswith(os.getcwd()):
+            if filename.startswith(os.getcwd() + os.sep):
                 filename = filename[len(os.getcwd())+1:]
             TracksEditor(path=filename, verbose=verbose)
         except IOException, e:
