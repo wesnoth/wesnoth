@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-05-03 12:50+0200\n"
-"PO-Revision-Date: 2008-10-10 12:57+0100\n"
+"PO-Revision-Date: 2008-10-23 15:15+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -118,10 +118,10 @@ msgid ""
 "dissatisfied with the King's rule. Being preoccupied with the great wars, "
 "the King was unable to send adequate forces to protect the frontier."
 msgstr ""
-"Na Era da Desorde, durante o reinado do Rei Garard II, os pobos fronteirizos "
-"de Delwyn e Dallben na provincia de Annuvin estaban moi descontentos co Rei. "
-"Preocupado polas grandes guerras, o Rei non era capaz de enviar forzas "
-"dabondo para protexer a fronteira."
+"Na Era da Desorde, durante o reinado do Rei Garard II, as poboacións "
+"fronteirizas de Delwyn e Dallben na provincia de Annuvin estaban moi "
+"descontentas co Rei. Preocupado polas grandes guerras, o Rei non era capaz "
+"de enviar forzas dabondo para protexer a fronteira."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:26
@@ -1586,7 +1586,7 @@ msgstr ""
 "unha fortaleza. Acostumaban protexer a esta área dos inimigos de Wesnoth; "
 "nunca imaxinei que se acubillarían nelas inimigos de Wesnoth."
 
-# pitcher é o nome dunha unidade a cabalo, non un tipo de unidade
+# pitcher é o nome dun personaxe a cabalo, non un tipo de unidade
 #. [event]: description=Pitcher 20 14}, description=Pitcher 28 18}, description=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:158
 msgid "Pitcher"
@@ -1712,12 +1712,10 @@ msgstr ""
 "Tropas, ás armas! Esta escoura labrega pensa que está por riba da lei. "
 "Ensinémoslle a lei!"
 
-# Ouch! O lume queima! Non pisedes o lume!
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:298
-#, fuzzy
 msgid "Ow! Fire hot! No step in fire!"
-msgstr "          pisa o lume!"
+msgstr "Ouch! O lume queima! Non pasedes polo lume!"
 
 #. [message]: description=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:318
@@ -1768,10 +1766,8 @@ msgstr ""
 "humanas que rodeaban Weldyn e as rexións costeiras de Elensefar foran "
 "seguras dunha vez por todas."
 
-# had been carved in deed as well as in name.???
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:20
-#, fuzzy
 msgid ""
 "The grand army of Wesnoth, personally led by the High Council of Archmagi, "
 "scoured the plains of all manner of hostile creature, be it beast, orc, or "
@@ -1783,7 +1779,7 @@ msgstr ""
 "Arquimagos, limpou as chairas de todo tipo de criatura hostil, xa fora "
 "besta, orco, ou elfo. A cidade-estado de Elensefar foi unida formalmente ó "
 "reino e os establecementos espalláronse rapidamente. O país de Wesnoth "
-"foi                ."
+"estableceuse de feito e foi recoñecido."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:24
@@ -2288,10 +2284,8 @@ msgstr ""
 "mando de Asheviere de que todo o país estaba maldito. Retirouse rápidamente "
 "á fronteira tradicional e dispuxo fortes defensas cara o oeste."
 
-# bitter humor??
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:27
-#, fuzzy
 msgid ""
 "Baldras had just crossed the Great River when rumors of night-stalkers "
 "filtered through his ranks. With bitter humor he realized that Lord "
@@ -2299,9 +2293,9 @@ msgid ""
 "during his resistance."
 msgstr ""
 "Baldras acababa de cruzar o Gran Río cando se coaron rumores de asexadores "
-"nocturnos entre as súas filas. Con          humor amargo         deuse conta "
-"de que os homes do Señor Maddock estiveran usando con éxito as tácticas que "
-"Baldras dominou e usou durante a súa resistencia."
+"nocturnos entre as súas filas. Cun riso sardónico deuse conta de que os "
+"homes do Señor Maddock estiveran usando con éxito as tácticas que Baldras "
+"dominou e usou durante a súa resistencia."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:30
@@ -2394,6 +2388,7 @@ msgstr ""
 "Morte. No proceso recollen unha boa parte do poder do Cabaleiro, incluindo a "
 "súa habilidade para dirixir ós inferiores.          "
 
+# espada FIXADO
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Death_Squire.cfg:32
 msgid "sword"
@@ -2421,12 +2416,14 @@ msgstr ""
 "pode ser bastante mortífera, e a súa condición de bandido deulles unha "
 "lixeira mestría ca espada curta."
 
+# espada curta FIXADO
 #. [attack]: type=blade
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:26
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
 msgid "short sword"
 msgstr "espada curta"
 
+# mísil máxico FIXADO
 #. [attack]: type=cold
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
 msgid "magic missile"
@@ -2671,18 +2668,16 @@ msgstr ""
 msgid "Peasant Huntsman"
 msgstr "Labrego mestre cazador"
 
-# wamp-rats??
 #. [unit]
 #: data/campaigns/Liberty/units/Villagers.cfg:136
-#, fuzzy
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They can bullseye wamprats and track anything that moves "
 "in their territory."
 msgstr ""
 "Os mestres cazadores pasaron as súas vidas nos bosques e brañas no seu fogar "
-"do ermo. Poden                e rastrexar calquera cousa que se desprace "
-"polo seu territorio."
+"do ermo. Poden apuntarlle a unha rata e acadarlle e tamén rastrexar calquera "
+"cousa que se desprace polo seu territorio."
 
 # Amuleto sagrado FIXADO
 #. [object]
@@ -2705,6 +2700,7 @@ msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."
 msgstr "Hai unha ara rara aquí e un colgante nela. Non quero tocalo."
 
+# amuleto sagrado FIXADO
 #. [effect]: type=arcane
 #: data/campaigns/Liberty/utils/utils.cfg:79
 msgid "holy ankh"
