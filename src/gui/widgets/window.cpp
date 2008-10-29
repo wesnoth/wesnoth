@@ -375,6 +375,7 @@ void twindow::layout()
 		// Too wide and we can wrap, try that.
 		if(static_cast<size_t>(size.x) > settings::screen_width && can_wrap()) {
 			DBG_G_L << "twindow " << __func__ << ": start wrapping.\n";
+			disable_cache = true;
 			if(set_width_constrain(settings::screen_width
 					-  conf->left_border - conf->right_border)) {
 
@@ -383,6 +384,7 @@ void twindow::layout()
 					<< ": After wrapping : " << size << ".\n";
 			} else {
 				DBG_G_L << "twindow " << __func__ << ": wrapping failed.\n";
+				disable_cache = false;
 			}
 		}
 
@@ -444,6 +446,7 @@ void twindow::layout()
 
 	// Make sure the contrains are cleared, they might be partially set.
 	clear_width_constrain();
+	disable_cache = false;
 	need_layout_ = false;
 }
 

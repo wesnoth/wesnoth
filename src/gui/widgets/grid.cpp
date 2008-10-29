@@ -27,6 +27,8 @@
 
 namespace gui2 {
 
+	bool disable_cache = false;
+
 tgrid::tgrid(const unsigned rows, const unsigned cols) :
 	rows_(rows),
 	cols_(cols),
@@ -726,14 +728,19 @@ tpoint tgrid::tchild::get_best_size() const
 			<< ".\n";
 		return border_space();
 	}
-
-#if DISABLE_CACHE
+#if 0 // HACK
+#if disable_cache
 	if(true) {
 #else	
 	if(widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
 #endif	
 		best_size_ = widget_->get_best_size() + border_space();
 	}
+#else
+if(disable_cache || widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
+	best_size_ = widget_->get_best_size() + border_space();
+}
+#endif // HACK
 
 	DBG_G_L << "tgrid::tchild:"
 		<< " has widget " << true
@@ -978,10 +985,18 @@ tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width,
 		tpoint (tchild::*size_proc_max)(const tpoint&) const,
 		const tpoint& maximum_size) const
 {
+#if 0 // HACK
 #if DISABLE_CACHE
 	height.clear();
 	width.clear();
 #endif	
+#else 
+if(disable_cache) {
+	height.clear();
+	width.clear();
+}
+#endif // HACK
+
 	if(height.empty() || width.empty() || maximum_size != tpoint(0, 0)) {
 
 		DBG_G_L << "tgrid: calculate " << id << " size.\n";

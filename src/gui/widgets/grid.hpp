@@ -22,6 +22,15 @@
 
 namespace gui2 {
 
+	/**
+	 * Helper variable for the layout system.
+	 * 
+	 * @todo This is a kind of hack to make the layout engine work properly.
+	 * Wrapping needs the cache disabled but the scrollbars need it enabled. 
+	 * But the entire layout code needs a review and probably a rewrite...
+	 */ 
+	extern bool disable_cache;
+
 /**
  * Base container class.
  *
