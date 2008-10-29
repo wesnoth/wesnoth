@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-16 23:44+0200\n"
-"PO-Revision-Date: 2008-10-10 12:58+0100\n"
+"PO-Revision-Date: 2008-10-23 01:12+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -93,9 +93,8 @@ msgstr ""
 
 #. [set_menu_item]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:88
-#, fuzzy
 msgid "Give new orders"
-msgstr "Cancelar"
+msgstr ""
 
 #. [value]
 #: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:132
@@ -4594,7 +4593,6 @@ msgstr ""
 
 # aldea, ribeira, vila, auga
 # vella, longa, nova, forte
-# vilanova, vilavella, vilar, forte, aldealonga, ribeiravella, ribeiranova, ribeiralonga, arealonga,
 #: data/core/macros/names.cfg:58
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
@@ -6032,7 +6030,6 @@ msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
 # nome de vila con ponte sobre un río
-# riba de xxx, ribas de xxx, beira xxx
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
@@ -6888,12 +6885,10 @@ msgstr "xogar turno"
 msgid "Next Side"
 msgstr "Seguinte bando"
 
-# xogar turno do bando
 #. [menu]: type=image
 #: data/themes/macros.cfg:147
-#, fuzzy
 msgid "play side turn"
-msgstr "Rematar o Turno da Unidade"
+msgstr "xogar turno do bando"
 
 #. [menu]
 #: data/themes/macros.cfg:163
@@ -9447,7 +9442,7 @@ msgstr ""
 #: src/serialization/parser.cpp:280 src/serialization/parser.cpp:304
 #, fuzzy
 msgid "Unterminated quoted string"
-msgstr "Etiqueta [element] non terminada"
+msgstr "Cadea entrecomiñada non terminada"
 
 #: src/serialization/parser.cpp:327
 msgid " included from "
