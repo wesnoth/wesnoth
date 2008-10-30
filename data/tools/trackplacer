@@ -222,8 +222,9 @@ class JourneyTracks:
         waypoint_re = re.compile("{NEW_(" + "|".join(icon_presentation_order) + ")" \
                                  + " +([0-9]+) +([0-9]+)}")
         property_re = re.compile("# *trackplacer: ([^=]+)=(.*)")
-        define_re = re.compile("#define (.*)_STAGE[0-9]+")
+        define_re = re.compile("#define (.*)_STAGE[0-9]+(_END|_COMPLETE)?")
         state = "before"
+        ignore = False
         for line in fp:
             # This is how we ignore stuff outside of track sections
             if state == "before":
@@ -239,17 +240,17 @@ class JourneyTracks:
                 state = "after"
                 continue
             # Which track are we appending to?
-            # Ignore _COMPLETE macros, they're generated.
             m = re.search(define_re, line)
-            if m and "_COMPLETE" not in line:
+            if m:
                 self.selected_id = m.group(1)
+                ignore = m.group(2)
                 if self.selected_id not in self.track_order:
                     self.track_order.append(self.selected_id)
                     self.tracks[self.selected_id] = []
                 continue
             # Is this a track marker?
             m = re.search(waypoint_re, line)
-            if m:
+            if m and not ignore:
                 try:
                     tag = m.group(1)
                     x = int(m.group(2))
