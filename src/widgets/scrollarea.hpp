@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file widgets/scrollarea.hpp
-//!
+/** @file widgets/scrollarea.hpp */
 
 #ifndef SCROLLAREA_HPP_INCLUDED
 #define SCROLLAREA_HPP_INCLUDED
@@ -28,8 +27,10 @@ namespace gui {
 class scrollarea : public widget
 {
 public:
-	//! Create a zone with automatic handling of scrollbar.
-//! @todo FIXME: parameterlist ??
+	/**
+	 * Create a zone with automatic handling of scrollbar.
+	 * @todo FIXME: parameterlist ??
+	 */
 	//- \param d the display object
 	//- \param pane the widget where wheel events take place
 	scrollarea(CVideo &video, bool auto_join=true);
