@@ -31,11 +31,12 @@
 
 #include "game_config.hpp"
 
-//! Test networking to prevent bugs there.
-//! Try to create all kind of unlikely error conditions
-//! Some test should lock management_mutex from worker to settup stress test
-//! It is like that this will need some threading also :(
-
+/**
+ * Test networking to prevent bugs there.
+ * Try to create all kind of unlikely error conditions
+ * Some test should lock management_mutex from worker to settup stress test
+ * It is like that this will need some threading also :(
+ */
 
 BOOST_AUTO_TEST_SUITE( test_network )
 
