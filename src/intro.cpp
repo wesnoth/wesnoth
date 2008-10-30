@@ -12,8 +12,11 @@
    See the COPYING file for more details.
 */
 
-//! @file intro.cpp 
-//! Introduction sequence at start of a scenario, End-screen after end of campaign.
+/**
+ * @file intro.cpp 
+ * Introduction sequence at start of a scenario, End-screen after end of
+ * campaign.
+ */
 
 #include "global.hpp"
 
@@ -43,7 +46,7 @@
 static bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario);
 
-//! Show an introduction sequence at the start of a scenario.
+/** Show an introduction sequence at the start of a scenario. */
 void show_intro(display &disp, const config& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
@@ -78,10 +81,12 @@ void show_intro(display &disp, const config& data, const config& level)
 	LOG_NG << "intro sequence finished...\n";
 }
 
-//! show_intro_part() is split into two parts, the second part can cause
-//! an utils::invalid_utf8_exception exception and it's to much code
-//! to indent. The solution is not very clean but the entire routine could
-//! use a cleanup.
+/**
+ * show_intro_part() is split into two parts, the second part can cause
+ * an utils::invalid_utf8_exception exception and it's to much code
+ * to indent. The solution is not very clean but the entire routine could
+ * use a cleanup.
+ */
 static bool show_intro_part_helper(display &disp, const config& part,
 		int textx, int texty,
 		gui::button& next_button, gui::button& skip_button,
@@ -321,7 +326,7 @@ static bool show_intro_part_helper(display &disp, const config& part,
 			}
 
 			// Output the character
-			//! @todo  FIXME: this is broken: it does not take kerning into account.
+			/** @todo  FIXME: this is broken: it does not take kerning into account. */
 			std::string tmp;
 			tmp.append(itor.substr().first, itor.substr().second);
 			if(lang_rtl)
@@ -373,7 +378,7 @@ static bool show_intro_part_helper(display &disp, const config& part,
 	return true;
 }
 
-//! Black screen with "The End", shown at the end of a campaign.
+/** Black screen with "The End", shown at the end of a campaign. */
 void the_end(display &disp)
 {
 	SDL_Rect area = screen_area();
