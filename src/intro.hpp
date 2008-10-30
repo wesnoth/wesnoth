@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file intro.hpp 
-//!
+/** @file intro.hpp */
 
 #ifndef INTRO_HPP_INCLUDED
 #define INTRO_HPP_INCLUDED
