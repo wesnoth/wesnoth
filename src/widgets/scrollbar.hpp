@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file widgets/scrollbar.hpp
-//!
+/** @file widgets/scrollbar.hpp */
 
 #ifndef SCROLLBAR_HPP_INCLUDED
 #define SCROLLBAR_HPP_INCLUDED
@@ -28,12 +27,14 @@ namespace gui {
 
 class scrollarea;
 
-//! Scrollbar
+/** Scrollbar */
 class scrollbar : public widget
 {
 public:
-	//! Create a scrollbar.
-//! @todo FIXME: parameterlist ??
+	/**
+	 * Create a scrollbar.
+	 * @todo FIXME: parameterlist ??
+	 */
 	//- @param d         the display object
 	//- @param pane      the widget where wheel events take place
 	//- @param callback  a callback interface for warning that the grip has been moved
@@ -41,41 +42,42 @@ public:
 
 	virtual void hide(bool value = true);
 
-	//! Determine where the scrollbar is.
-	//!
-	//! @return  the position.
-	//! @retval  returns 0 if the scrollbar is at the top,
-	//! @retval  returns (full_size - shown_size) if it is at the bottom.
-	//!
+	/**
+	 * Determine where the scrollbar is.
+	 *
+	 * @return  the position.
+	 * @retval  returns 0 if the scrollbar is at the top,
+	 * @retval  returns (full_size - shown_size) if it is at the bottom.
+	 */
 	unsigned get_position() const;
 
 	unsigned get_max_position() const;
 
-	//! Manually update the scrollbar.
+	/** Manually update the scrollbar. */
 	void set_position(unsigned pos);
 
-	//! Ensure the viewport contains the position.
+	/** Ensure the viewport contains the position. */
 	void adjust_position(unsigned pos);
 
-	//! Move the scrollbar.
+	/** Move the scrollbar. */
 	void move_position(int dep);
 
-	//! Set the relative size of the grip.
+	/** Set the relative size of the grip. */
 	void set_shown_size(unsigned h);
 
-	//! Set the relative size of the scrollbar.
+	/** Set the relative size of the scrollbar. */
 	void set_full_size(unsigned h);
 
-	//! Set scroll rate.
+	/** Set scroll rate. */
 	void set_scroll_rate(unsigned r);
 
-	//! Return true if the scrollbar has a valid size.
+	/** Return true if the scrollbar has a valid size. */
 	bool is_valid_height(int height) const;
 
-	//! Scrolls down one step
+	/** Scrolls down one step */
 	void scroll_down();
 
-	//! Scrolls up one step
+	/** Scrolls up one step */
 	void scroll_up();
 
 protected:

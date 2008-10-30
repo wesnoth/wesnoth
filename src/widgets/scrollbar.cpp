@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file widgets/scrollbar.cpp
-//!
+/** @file widgets/scrollbar.cpp */
 
 #include "global.hpp"
 
