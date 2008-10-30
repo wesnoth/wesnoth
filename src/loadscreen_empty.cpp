@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file loadscreen_empty.cpp
-//!
+/** @file loadscreen_empty.cpp */
 
 #include "loadscreen.hpp"
 
