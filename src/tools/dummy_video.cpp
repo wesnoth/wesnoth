@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file tools/dummy_video.cpp
-//!
+/** @file tools/dummy_video.cpp */
 
 #include "../video.hpp"
 
