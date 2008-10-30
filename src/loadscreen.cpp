@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file loadscreen.cpp
-//! Screen with logo and "Loading ..."-progressbar during program-startup.
+/**
+ * @file loadscreen.cpp
+ * Screen with logo and "Loading ..."-progressbar during program-startup.
+ */
 
 #include "loadscreen.hpp"
 
@@ -84,19 +86,19 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 }
 void loadscreen::set_progress(const int percentage, const std::string &text, const bool commit)
 {
-	//! Saturate percentage.
+	// Saturate percentage.
 	prcnt_ = percentage < MIN_PERCENTAGE ? MIN_PERCENTAGE: percentage > MAX_PERCENTAGE ? MAX_PERCENTAGE: percentage;
 	// Set progress bar parameters:
 	int fcr =  21, fcg =  53, fcb =  80;		// RGB-values for finished piece.
 	int lcr =  21, lcg =  22, lcb =  24;		// Leftover piece.
 	int bcr = 188, bcg = 176, bcb = 136;		// Border color.
-	int bw = 1;								//!< Border width.
-	int bispw = 1;								//!< Border inner spacing width.
+	int bw = 1;								//< Border width.
+	int bispw = 1;								//< Border inner spacing width.
 	bw = 2*(bw+bispw) > screen_.getx() ? 0: 2*(bw+bispw) > screen_.gety() ? 0: bw;
-	int scrx = screen_.getx() - 2*(bw+bispw);	//!< Available width.
-	int scry = screen_.gety() - 2*(bw+bispw);	//!< Available height.
-	int pbw = scrx/2;							//!< Used width.
-	int pbh = scry/16;							//!< Used heigth.
+	int scrx = screen_.getx() - 2*(bw+bispw);	//< Available width.
+	int scry = screen_.gety() - 2*(bw+bispw);	//< Available height.
+	int pbw = scrx/2;							//< Used width.
+	int pbh = scry/16;							//< Used heigth.
 	int	lightning_thickness = 2;
 	
 	surface const gdis = screen_.getSurface();
@@ -182,8 +184,8 @@ void loadscreen::increment_progress(const int percentage, const std::string &tex
 
 void loadscreen::clear_screen(const bool commit)
 {
-	int scrx = screen_.getx();					//!< Screen width.
-	int scry = screen_.gety();					//!< Screen height.
+	int scrx = screen_.getx();					//< Screen width.
+	int scry = screen_.gety();					//< Screen height.
 	SDL_Rect area = {0, 0, scrx, scry};		// Screen area.
 	surface const disp(screen_.getSurface());	// Screen surface.
 	// Make everything black.
