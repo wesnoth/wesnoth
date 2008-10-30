@@ -223,10 +223,20 @@ namespace {
 		switch(o)
 		{
 			case EQUAL: case NOT_EQUAL: {			
-				for(size_t i = 0; result == true && i < csize; ++i) {
+				for(size_t i = 0; i < csize; ++i) {
 					unsigned int const& lvalue = lc[i];
 					unsigned int const& rvalue = rc[i];
-					result = result && (o == EQUAL ? lvalue == rvalue : lvalue != rvalue);
+					if(o == NOT_EQUAL) {
+						if((result = (lvalue != rvalue))) {
+							return true;
+						}
+						continue;
+					} else {
+						result = result && lvalue == rvalue;
+						if(!result) {
+							break;
+						}
+					}
 				}
 				break;
 			}
@@ -252,27 +262,27 @@ bool operator==(const version_info& l, const version_info& r)
 
 bool operator!=(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, NOT_EQUAL) && l.special_version() != r.special_version();
+	return version_numbers_comparison_internal(l, r, NOT_EQUAL) || l.special_version() != r.special_version();
 }
 
 bool operator<(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, LT) ||
-	       (l == r && ((l.special_version().empty() && r.special_version().empty()) ||
-	                   (l.special_version().empty() && !r.special_version().empty()) ||
-	                   (l.special_version() < r.special_version())
-	                  )
-	       );
+	return version_numbers_comparison_internal(l, r, LT) || (
+		version_numbers_comparison_internal(l, r, EQUAL) && (
+			(l.special_version().empty() && !r.special_version().empty()) ||
+			(l.special_version() < r.special_version())
+		)
+	);
 }
 
 bool operator>(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, GT) ||
-	       (l == r && ((r.special_version().empty() && l.special_version().empty()) ||
-	                   (r.special_version().empty() && !l.special_version().empty()) ||
-	                   (l.special_version() > r.special_version())
-	                  )
-	       );
+	return version_numbers_comparison_internal(l, r, GT) || (
+		version_numbers_comparison_internal(l, r, EQUAL) && (
+			(r.special_version().empty() && !l.special_version().empty()) ||
+			(l.special_version() > r.special_version())
+		)
+	);
 }
 
 bool operator<=(const version_info& l, const version_info& r)
