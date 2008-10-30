@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file tools/key_test.cpp
-//! Keyboard-test - Standalone-Utility
+/**
+ * @file tools/key_test.cpp
+ * Keyboard-test - Standalone-Utility
+ */
 
 #include "key.h"
 #include "video.hpp"
