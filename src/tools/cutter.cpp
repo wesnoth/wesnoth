@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file tools/cutter.cpp
-//! Standalone-Utility for images / tiles
+/**
+ * @file tools/cutter.cpp
+ * Standalone-Utility for images / tiles
+ */
 
 #include "../sdl_utils.hpp"
 #include "../game_config.hpp"
