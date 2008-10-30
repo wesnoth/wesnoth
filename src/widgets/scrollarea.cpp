@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file widgets/scrollarea.cpp
-//!
+/** @file widgets/scrollarea.cpp */
 
 #include "global.hpp"
 
