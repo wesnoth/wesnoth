@@ -2,11 +2,13 @@
 #ifndef WESCONFIG_H_INCLUDED
 #define WESCONFIG_H_INCLUDED
 
-//! @file wesconfig.h
-//! Some defines: VERSION, PACKAGE, MIN_SAVEGAME_VERSION
-//!
-//! This file should only be modified by the packager of the tarball
-//! before and after each release.
+/**
+ * @file wesconfig.h
+ * Some defines: VERSION, PACKAGE, MIN_SAVEGAME_VERSION
+ *
+ * This file should only be modified by the packager of the tarball
+ * before and after each release.
+ */
 
 // We are building with scons, so Python cannot be absent. 
 // this definition has to be done somewhere else or the normal builds
