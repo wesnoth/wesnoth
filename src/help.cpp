@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file help.cpp
-//! Routines for showing the help-dialog.
+/**
+ * @file help.cpp
+ * Routines for showing the help-dialog.
+ */
 
 #include "global.hpp"
 
@@ -3011,26 +3013,32 @@ std::string get_first_word(const std::string &s)
 	return s.substr(0, first_word_end);
 }
 
-//! Open the help browser, show topic with id show_topic.
-//!
-//! If show_topic is the empty string, the default topic will be shown.
+/**
+ * Open the help browser, show topic with id show_topic.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
 void show_help(display &disp, const std::string& show_topic, int xloc, int yloc)
 {
 	show_help(disp, toplevel, show_topic, xloc, yloc);
 }
 
-//! Open the help browser, show unit with id unit_id.
-//!
-//! If show_topic is the empty string, the default topic will be shown.
+/**
+ * Open the help browser, show unit with id unit_id.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
 void show_unit_help(display &disp, const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
 	show_help(disp, toplevel, hidden_symbol(hidden) + unit_prefix + show_topic, xloc, yloc);
 }
 
-//! Open a help dialog using a toplevel other than the default.
-//!
-//! This allows for complete customization of the contents,
-//! although not in a very easy way.
+/**
+ * Open a help dialog using a toplevel other than the default.
+ *
+ * This allows for complete customization of the contents, although not in a
+ * very easy way.
+ */
 void show_help(display &disp, const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
