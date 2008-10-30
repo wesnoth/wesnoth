@@ -12,8 +12,10 @@
    See the COPYING file for more details.
 */
 
-//! @file network.cpp
-//! Networking
+/**
+ * @file network.cpp
+ * Networking
+ */
 
 #include "global.hpp"
 
@@ -92,7 +94,7 @@ connection_map connections;
 
 network::connection connection_id = 1;
 
-//! Stores the time of the last server ping we received.
+/** Stores the time of the last server ping we received. */
 time_t last_ping, last_ping_check = 0;
 
 } // end anon namespace
@@ -146,10 +148,12 @@ static void check_error()
 	}
 }
 
-//! Check whether too much time since the last server ping has passed and we
-//! timed out. If the last check is too long ago reset the last_ping to 'now'.
-//! This happens when we "freeze" the client one way or another or we just
-//! didn't try to receive data.
+/**
+ * Check whether too much time since the last server ping has passed and we
+ * timed out. If the last check is too long ago reset the last_ping to 'now'.
+ * This happens when we "freeze" the client one way or another or we just
+ * didn't try to receive data.
+ */
 static void check_timeout()
 {
 	if (network::nconnections() == 0) {
@@ -207,9 +211,11 @@ network_worker_pool::manager* worker_pool_man = NULL;
 
 namespace network {
 
-//! Amount of seconds after the last server ping when we assume to have timed out.
-//! When set to '0' ping timeout isn't checked.
-//! Gets set in preferences::manager according to the preferences file.
+/**
+ * Amount of seconds after the last server ping when we assume to have timed out.
+ * When set to '0' ping timeout isn't checked.
+ * Gets set in preferences::manager according to the preferences file.
+ */
 unsigned int ping_timeout = 0;
 
 connection_stats::connection_stats(int sent, int received, int connected_at)
@@ -501,8 +507,10 @@ connection accept_connection()
 	// The initial handshake is a 4 byte value, which is 0 for a new connection,
 	// or the handle of the connection if it's trying to recover a lost connection.
 
-	//! A list of all the sockets which have connected,
-	//! but haven't had their initial handshake received.
+	/**
+	 * A list of all the sockets which have connected,
+	 * but haven't had their initial handshake received.
+	 */
 	static std::vector<TCPsocket> pending_sockets;
 	static SDLNet_SocketSet pending_socket_set = 0;
 
@@ -1016,9 +1024,11 @@ void send_file(const std::string& filename, connection connection_num, const std
 	
 }
 
-//! @todo Note the gzipped parameter should be removed later, we want to send
-//! all data gzipped. This can be done once the campaign server is also updated
-//! to work with gzipped data.
+/**
+ * @todo Note the gzipped parameter should be removed later, we want to send
+ * all data gzipped. This can be done once the campaign server is also updated
+ * to work with gzipped data.
+ */
 size_t send_data(const config& cfg, connection connection_num, const bool gzipped, const std::string& packet_type)
 {
 	DBG_NW << "in send_data()...\n";
@@ -1089,7 +1099,7 @@ void process_send_queue(connection, size_t)
 	check_error();
 }
 
-//! @todo Note the gzipped parameter should be removed later.
+/** @todo Note the gzipped parameter should be removed later. */
 void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped, const std::string& packet_type)
 {
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {

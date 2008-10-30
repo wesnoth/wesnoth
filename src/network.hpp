@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file network.hpp
-//!
+/** @file network.hpp */
 
 #ifndef NETWORK_HPP_INCLUDED
 #define NETWORK_HPP_INCLUDED
@@ -73,14 +72,16 @@ void set_raw_data_only();
 typedef int connection;
 connection const null_connection = 0;
 
-//! A server manager causes listening on a given port
-//! to occur for the duration of its lifetime.
+/**
+ * A server manager causes listening on a given port
+ * to occur for the duration of its lifetime.
+ */
 struct server_manager {
 
-	//! Parameter to pass to the constructor.
-	enum CREATE_SERVER { MUST_CREATE_SERVER,	//!< Will throw exception on failure
-	                     TRY_CREATE_SERVER,	//!< Will swallow failure
-	                     NO_SERVER };			//!< Won't try to create a server at all
+	/** Parameter to pass to the constructor. */
+	enum CREATE_SERVER { MUST_CREATE_SERVER,    /**< Will throw exception on failure. */
+	                     TRY_CREATE_SERVER,     /**< Will swallow failure. */
+	                     NO_SERVER };           /**< Won't try to create a server at all. */
 
 	// Throws error.
 	server_manager(int port, CREATE_SERVER create_server=MUST_CREATE_SERVER);
@@ -95,37 +96,49 @@ private:
 };
 
 
-//! The number of peers we are connected to.
+/** The number of peers we are connected to. */
 size_t nconnections();
 
-//! If we are currently accepting connections.
+/** If we are currently accepting connections. */
 bool is_server();
 
-//! Function to attempt to connect to a remote host.
-//! Returns the new connection on success, or 0 on failure.
-//! Throws error.
+/**
+ * Function to attempt to connect to a remote host.
+ * 
+ * @returns                       The new connection on success, or 0 on failure.
+ * @throw error
+ */
 connection connect(const std::string& host, int port=15000);
 
 connection connect(const std::string& host, int port, threading::waiter& waiter);
 
-//! Function to accept a connection from a remote host.
-//! If no host is attempting to connect, it will return 0 immediately.
-//! Otherwise returns the new connection.
-//! Throws error.
+/**
+ * Function to accept a connection from a remote host.
+ *
+ * If no host is attempting to connect, it will return 0 immediately.
+ * Otherwise returns the new connection.
+ * 
+ * @throw error
+ */
 connection accept_connection();
 
-//! Function to disconnect from a certain host,
-//! or close all connections if connection_num is 0.
-//! Returns true if the connection was disconnected.
-//! Returns false on failure to disconnect, since the socket is
-//! in the middle of sending/receiving data.
-//! The socket will be closed when it has finished its send/receive.
+/**
+ * Function to disconnect from a certain host,
+ * or close all connections if connection_num is 0.
+ * Returns true if the connection was disconnected.
+ * Returns false on failure to disconnect, since the socket is
+ * in the middle of sending/receiving data.
+ * The socket will be closed when it has finished its send/receive.
+ */
 bool disconnect(connection connection_num=0, bool force=false);
 
-//! Function to queue a disconnection.
-//! Next time receive_data is called, it will generate an error
-//! on the given connection (and presumably then the handling of the error
-//! will include closing the connection).
+/**
+ * Function to queue a disconnection.
+ *
+ * Next time receive_data is called, it will generate an error
+ * on the given connection (and presumably then the handling of the error
+ * will include closing the connection).
+ */
 void queue_disconnect(connection connection_num);
 
 std::string get_bandwidth_stats();
@@ -151,39 +164,47 @@ struct bandwidth_in {
 typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
 
 
-
-//! Function to receive data from either a certain connection,
-//! or all connections if connection_num is 0.
-//! Will store the data received in cfg.
-//! Times out after timeout milliseconds.
-//! Returns the connection that data was received from,
-//! or 0 if timeout occurred.
-//! Throws error if an error occurred.
+/**
+ * Function to receive data from either a certain connection,
+ * or all connections if connection_num is 0.
+ * Will store the data received in cfg.
+ * Times out after timeout milliseconds.
+ * 
+ * @returns                       The connection that data was received from,
+ *                                or 0 if timeout occurred.
+ *
+ * @throw error                   If an error occurred.
+ */
 connection receive_data(config& cfg, connection connection_num=0, bool* gzipped = 0, bandwidth_in_ptr* b = 0);
 connection receive_data(config& cfg, connection connection_num, unsigned int timeout, bandwidth_in_ptr* b = 0);
 connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* = 0);
 
 void send_file(const std::string&, connection, const std::string& packet_type = "unknown");
 
-//! Function to send data down a given connection,
-//! or broadcast to all peers if connection_num is 0.
-//! Throws error.
+/**
+ * Function to send data down a given connection,
+ * or broadcast to all peers if connection_num is 0.
+ *
+ * @throw error
+ */
 size_t send_data(const config& cfg, connection connection_num /*= 0*/, 
 		const bool gzipped, const std::string& packet_type = "unknown");
 
 void send_raw_data(const char* buf, int len, connection connection_num, 
 		const std::string& packet_type = "unknown");
 
-//! Function to send any data that is in a connection's send_queue,
-//! up to a maximum of 'max_size' bytes --
-//! or the entire send queue if 'max_size' bytes is 0.
+/**
+ * Function to send any data that is in a connection's send_queue,
+ * up to a maximum of 'max_size' bytes --
+ * or the entire send queue if 'max_size' bytes is 0.
+ */
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 
-//! Function to send data to all peers except 'connection_num'.
+/** Function to send data to all peers except 'connection_num'. */
 void send_data_all_except(const config& cfg, connection connection_num, 
 		const bool gzipped, const std::string& packet_type = "unknown");
 
-//! Function to get the remote ip address of a socket.
+/** Function to get the remote ip address of a socket. */
 std::string ip_address(connection connection_num);
 
 struct connection_stats
@@ -231,11 +252,11 @@ struct statistics
 	size_t current_max;
 };
 
-//! Function to see the number of bytes being processed on the current socket.
+/** Function to see the number of bytes being processed on the current socket. */
 statistics get_send_stats(connection handle);
 statistics get_receive_stats(connection handle);
 
-//! Amount of seconds after the last server ping when we assume to have timed out.
+/** Amount of seconds after the last server ping when we assume to have timed out. */
 extern unsigned int ping_timeout;
 } // network namespace
 
