@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file widgets/scrollpane.hpp
+/** @file widgets/scrollpane.hpp */
 
 #ifndef SCROLLPANE_HPP_INCLUDED
 #define SCROLLPANE_HPP_INCLUDED
@@ -26,7 +26,7 @@
 
 namespace gui {
 
-//! Scrollpane.
+/** Scrollpane. */
 class scrollpane : public scrollarea
 {
 public:
@@ -40,8 +40,10 @@ public:
 		int z_order;
 	};
 
-	//! Create a scrollpane.
-//! @todo FIXME: parameterlist ??
+	/**
+	 * Create a scrollpane.
+	 * @todo FIXME: parameterlist ??
+	 */
 	//- @param d the display object
 	//- @param pane the widget where wheel events take place
 	//- @param callback a callback interface for warning that the grip has been moved
