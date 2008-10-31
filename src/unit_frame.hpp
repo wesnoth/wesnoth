@@ -83,7 +83,8 @@ class frame_parameters{
 	offset(0),
 	submerge(0.0),
 	x(0),
-	y(0)
+	y(0),
+	drawing_layer(0)
 	{};
 
 	image::locator image;
@@ -103,6 +104,7 @@ class frame_parameters{
 	double submerge;
 	int x;
 	int y;
+	int drawing_layer;
 } ;
 /**
  * keep most parameters in a separate class to simplify handling of large
@@ -128,7 +130,8 @@ class frame_builder {
 		offset_(""),
 		submerge_(""),
 		x_(""),
-		y_("")
+		y_(""),
+		drawing_layer_("")
 	{};
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */
@@ -144,6 +147,7 @@ class frame_builder {
 		frame_builder & submerge(const std::string& submerge);
 		frame_builder & x(const std::string& x);
 		frame_builder & y(const std::string& y);
+		frame_builder & drawing_layer(const std::string& drawing_layer);
 		/** getters for the different parameters */
 		const frame_parameters parameters(int current_time) const ;
 
@@ -169,6 +173,7 @@ class frame_builder {
 		progressive_double submerge_;
 		progressive_int x_;
 		progressive_int y_;
+		progressive_int drawing_layer_;
 
 };
 

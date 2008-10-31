@@ -450,42 +450,49 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& leading_anims = expanded_cfg.get_children("leading_anim");
 	for(anim_itor = leading_anims.begin(); anim_itor != leading_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="leading";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
 	const config::child_list& recruit_anims = expanded_cfg.get_children("recruit_anim");
 	for(anim_itor = recruit_anims.begin(); anim_itor != recruit_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="recruited";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
 	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
 	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="standing,default";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
 	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
 	for(anim_itor = idle_anims.begin(); anim_itor != idle_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="idling";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
 	const config::child_list& levelin_anims = expanded_cfg.get_children("levelin_anim");
 	for(anim_itor = levelin_anims.begin(); anim_itor != levelin_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="levelin";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
 	const config::child_list& levelout_anims = expanded_cfg.get_children("levelout_anim");
 	for(anim_itor = levelout_anims.begin(); anim_itor != levelout_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="levelout";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
 	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
 	for(anim_itor = healing_anims.begin(); anim_itor != healing_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="healing";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
 	}
@@ -493,6 +500,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& healed_anims = expanded_cfg.get_children("healed_anim");
 	for(anim_itor = healed_anims.begin(); anim_itor != healed_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="healed";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		(**anim_itor)["value"]=(**anim_itor)["healing"];
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().sub_anims_["_healed_sound"] = particule();
@@ -503,6 +511,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
 	for(anim_itor = poison_anims.begin(); anim_itor != poison_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="poisoned";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().sub_anims_["_poison_sound"] = particule();
@@ -517,12 +526,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		}
 		(**anim_itor)["apply_to"] ="movement";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
 	const config::child_list& defends = expanded_cfg.get_children("defend");
 	for(anim_itor = defends.begin(); anim_itor != defends.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="defend";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		if(!(**anim_itor)["damage"].empty()) {
 			(**anim_itor)["value"]=(**anim_itor)["damage"];
 			animations.push_back(unit_animation(**anim_itor));
@@ -547,11 +558,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& attack_anims = expanded_cfg.get_children("attack_anim");
 	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
 		(**d)["apply_to"] ="attack";
+		(**d)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		if((**d)["offset"].empty() && (**d).get_children("missile_frame").empty()) {
 			(**d)["offset"] ="0~0.6,0.6~0";
 		}
 		if(!(**d).get_children("missile_frame").empty()) {
 			if( (**d)["missile_offset"].empty())(**d)["missile_offset"] = "0~0.8";
+			if( (**d)["missile_layer"].empty())(**d)["missile_layer"] = lexical_cast<std::string>(display::LAYER_UNIT_MISSILE_DEFAULT-display::LAYER_UNIT_FIRST);
 			config tmp;
 			tmp["duration"]="1";
 			(**d).add_child("missile_frame",tmp);
@@ -565,6 +578,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& deaths = expanded_cfg.get_children("death");
 	for(anim_itor = deaths.begin(); anim_itor != deaths.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="death";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 		image::locator image_loc = animations.back().get_last_frame().parameters(0).image;
 		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight("1~0:600"));
@@ -579,6 +593,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
 	for(anim_itor = victory_anims.begin(); anim_itor != victory_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="victory";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	// Always have a victory animation
@@ -586,15 +601,18 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
 	for(anim_itor = extra_anims.begin(); anim_itor != extra_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] =(**anim_itor)["flag"];
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
 	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
 	for(anim_itor = teleports.begin(); anim_itor != teleports.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="pre_teleport";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().unit_anim_.remove_frames_after(0);
 		(**anim_itor)["apply_to"] ="post_teleport";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().unit_anim_.remove_frames_until(0);
 	}

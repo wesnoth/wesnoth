@@ -323,23 +323,6 @@ public:
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all() { builder_.rebuild_all(); }
 
-	/**
-	 * Draw the image of a unit at a certain location.
-	 * x,y: pixel location on screen to draw the unit
-	 * image: the image of the unit
-	 * reverse: if the unit should be flipped across the x axis
-	 * greyscale: used when the unit is stoned
-	 * alpha: the merging to use with the background
-	 * blendto: blend to this colour using blend_ratio
-	 * submerged: the amount of the unit out of 1.0 that is submerged
-	 *            (presumably under water) and thus shouldn't be drawn
-	 */
-	void render_unit_image(int x, int y, const bool fake_unit,
-			const int drawing_order, surface image,
-			bool hreverse=false, bool greyscale=false,
-			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
-			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
-
 	const theme::menu* menu_pressed();
 	
 	/**
@@ -652,18 +635,20 @@ public:
 		                            * Layer which holds stuff that needs to be
 		                            * sorted out further, but under units.
 		                            */
-		LAYER_UNIT_BG,             /**< Used for the ellipse behind the unit. */
 		LAYER_UNIT_FIRST,          /**< Reserve layeres to be selected for WML. */
-		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_UNIT_FG,             /**< 
-		                            * Used for the ellipse in front of the
-		                            * unit.
-		                            */
-		LAYER_UNIT_FAKE,           /**< The fake unit is drawn on this layer. */
-		LAYER_TERRAIN_FG,          /**< 
+		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
+		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
+		LAYER_TERRAIN_FG = LAYER_UNIT_FIRST+50, /**< 
 		                            * Layer for the terrain drawn in front of
 		                            * the unit.
 		                            */
+		LAYER_UNIT_MOVE_DEFAULT=LAYER_UNIT_FIRST+60/**<default layer for drawing moving units */,
+		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**< 
+		                            * Used for the ellipse in front of the
+		                            * unit.
+		                            */
+		LAYER_UNIT_MISSILE_DEFAULT = LAYER_UNIT_FIRST+90, /**< default layer for missile frames*/
+		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
 		LAYER_TERRAIN_TMP_FG,      /**< 
 		                            * Layer which holds stuff that needs to be
 		                            * sorted out further, but on top of units.
@@ -684,6 +669,23 @@ public:
 		                            * size the vector.
 		                            */
 		};
+
+	/**
+	 * Draw the image of a unit at a certain location.
+	 * x,y: pixel location on screen to draw the unit
+	 * image: the image of the unit
+	 * reverse: if the unit should be flipped across the x axis
+	 * greyscale: used when the unit is stoned
+	 * alpha: the merging to use with the background
+	 * blendto: blend to this colour using blend_ratio
+	 * submerged: the amount of the unit out of 1.0 that is submerged
+	 *            (presumably under water) and thus shouldn't be drawn
+	 */
+	void render_unit_image(int x, int y, const display::tdrawing_layer drawing_layer,
+			const int drawing_order, surface image,
+			bool hreverse=false, bool greyscale=false,
+			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
+			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.

@@ -174,7 +174,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	offset_(""),
 	submerge_(""),
 	x_(""),
-	y_("")
+	y_(""),
+	drawing_layer_("")
 {
 	image(image::locator(cfg[frame_string+"image"]),cfg[frame_string+"image_mod"]);
 	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]),cfg[frame_string+"image_mod"]);
@@ -204,6 +205,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	submerge(cfg[frame_string+"submerge"]);
 	x(cfg[frame_string+"x"]);
 	y(cfg[frame_string+"y"]);
+	drawing_layer(cfg[frame_string+"layer"]);
 
 }
 
@@ -227,6 +229,7 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.submerge = submerge_.get_current_element(current_time);
 	result.x = x_.get_current_element(current_time);
 	result.y = y_.get_current_element(current_time);
+	result.drawing_layer = drawing_layer_.get_current_element(current_time);
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image ,const std::string & image_mod)
@@ -276,6 +279,7 @@ void frame_builder::recalculate_duration()
 	submerge_=progressive_double(submerge_.get_original(),duration_);
 	x_=progressive_int(x_.get_original(),duration_);
 	y_=progressive_int(y_.get_original(),duration_);
+	drawing_layer_=progressive_int(drawing_layer_.get_original(),duration_);
 }
 frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
 {
@@ -308,6 +312,11 @@ frame_builder & frame_builder::y(const std::string& y)
 	y_=progressive_int(y,duration_);
 	return *this;
 }
+frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
+{
+	drawing_layer_=progressive_int(drawing_layer,duration_);
+	return *this;
+}
 bool frame_builder::does_not_change() const
 {
 	return halo_.does_not_change() &&
@@ -318,7 +327,8 @@ bool frame_builder::does_not_change() const
 		offset_.does_not_change() &&
 		submerge_.does_not_change() &&
 		x_.does_not_change() &&
-		y_.does_not_change();
+		y_.does_not_change() &&
+		drawing_layer_.does_not_change();
 }
 bool frame_builder::need_update() const
 {
@@ -330,7 +340,8 @@ bool frame_builder::need_update() const
 			!offset_.does_not_change() ||
 			!submerge_.does_not_change() ||
 			!x_.does_not_change() ||
-			!y_.does_not_change() ) {
+			!y_.does_not_change() ||
+			!drawing_layer_.does_not_change() ) {
 			return true;
 	}
 	return false;
@@ -379,7 +390,8 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 		game_display::get_singleton()->render_unit_image(x + current_data.x- image->w/2,
-			       	y  + current_data.y- image->h/2, false,
+			       	y  + current_data.y- image->h/2,
+			       	(display::tdrawing_layer)(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src.get_drawing_order(), image, facing_west, false,
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
@@ -566,6 +578,9 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	/** the engine provide y modification for terrain with height adjust and flying units */
 	result.y = current_val.y?current_val.y:animation_val.y; 
 	result.y += engine_val.y;
+
+	assert(engine_val.drawing_layer == 0);
+	result.drawing_layer = current_val.drawing_layer?current_val.drawing_layer:animation_val.drawing_layer;
 
 	return result;
 }
