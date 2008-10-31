@@ -218,6 +218,8 @@ twindow build(CVideo& video, const std::string& type)
 
 	log_scope2(gui, "Window builder: building grid for window");
 
+	window.set_easy_close(definition->easy_close);
+
 	const unsigned rows = definition->grid->rows;
 	const unsigned cols = definition->grid->cols;
 
@@ -292,6 +294,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	height(cfg["height"]),
 	vertical_placement(get_v_align(cfg["vertical_placement"])),
 	horizontal_placement(get_h_align(cfg["horizontal_placement"])),
+	easy_close(utils::string_bool(cfg["easy_close"])),
 	definition(cfg["definition"]),
 	grid(0)
 {
@@ -323,6 +326,27 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   The vertical placement of the window.
  *     horizontal_placement (h_align = "")
  *                                   The horizontal placement of the window.
+ *
+ *     easy_close (bool = false)     Does the window need easy close behaviour?
+ *                                   Easy close behaviour means that any mouse
+ *                                   click will close the dialog. Note certain
+ *                                   widgets will automatically disable this
+ *                                   behaviour since they need to process the
+ *                                   clicks as well, for example buttons do need
+ *                                   a click and a missclick on button shouldn't
+ *                                   close the dialog. NOTE with some widgets
+ *                                   this behaviour depends on their contents
+ *                                   (like scrolling labels) so the behaviour
+ *                                   might get changed depending on the data in
+ *                                   the dialog. NOTE the default behaviour
+ *                                   might be changed since it will be disabled
+ *                                   when can't be used due to widgets which use
+ *                                   the mouse, including buttons, so it might
+ *                                   be wise to set the behaviour explicitly
+ *                                   when not wanted and no mouse using widgets
+ *                                   are available. This means enter, escape or
+ *                                   an external source needs to be used to
+ *                                   close the dialog (which is valid).
  *
  *     definition (string = "default")
  *                                   Definition of the window which we want to 

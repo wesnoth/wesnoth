@@ -110,6 +110,8 @@ public:
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;
+
+		bool easy_close;
 		
 		std::string definition;
 	

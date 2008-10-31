@@ -99,7 +99,9 @@ twindow::twindow(CVideo& video,
 	x_(x),
 	y_(y),
 	w_(w),
-	h_(h)
+	h_(h),
+	easy_close_(false),
+	easy_close_blocker_()
 {
 	// We load the config in here as exception.
 	// Our caller did update the screen size so no need for us to do that again.
@@ -357,6 +359,20 @@ SDL_Rect twindow::get_client_rect() const
 	return result;
 
 }
+void twindow::add_easy_close_blocker(const std::string& id)
+{
+	// avoid duplicates.
+	remove_easy_close_blocker(id);
+
+	easy_close_blocker_.push_back(id);
+}
+
+void twindow::remove_easy_close_blocker(const std::string& id)
+{
+	easy_close_blocker_.erase(
+		std::remove(easy_close_blocker_.begin(), easy_close_blocker_.end(), id), 
+		easy_close_blocker_.end());
+}
 
 void twindow::layout()
 {
@@ -526,6 +542,13 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 
 	help_popup_.set_size(help_popup_rect);
 	help_popup_.set_visible();
+}
+
+void twindow::easy_close()
+{
+	if(easy_close_ && easy_close_blocker_.empty()) {
+		set_retval(OK);
+	}
 }
 
 void twindow::draw(surface& /*surf*/, const bool /*force*/, 

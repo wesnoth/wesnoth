@@ -194,17 +194,29 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			switch(event.button.button) {
 
+				/*
+				 * All button clicks should trigger easy_close() unfortunately
+				 * the scrollwheel also produceses click events, thus the
+				 * function is moved to all cases.
+				 *
+				 * Note the engine makes sure easy close is disabled when a
+				 * widget needs to process the click so calling it
+				 * unconditionally is safe.
+				 */
 				case SDL_BUTTON_LEFT : 
 					DBG_G_E << "Event: Left button up.\n";
 					mouse_button_up(event, mouse_over, left_);
+					easy_close();
 					break;
 				case SDL_BUTTON_MIDDLE :
 					DBG_G_E << "Event: Middle button up.\n";
 					mouse_button_up(event, mouse_over, middle_);
+					easy_close();
 					break;
 				case SDL_BUTTON_RIGHT :
 					DBG_G_E << "Event: Right button up.\n";
 					mouse_button_up(event, mouse_over, right_);
+					easy_close();
 					break;
 				default:
 					// cast to avoid being printed as char.

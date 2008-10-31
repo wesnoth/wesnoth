@@ -219,6 +219,25 @@ public:
 	/** Inherited from tpanel. */
 	SDL_Rect get_client_rect() const;
 
+	/**
+	 * Register a widget that prevents easy closing.
+	 *
+	 * Duplicate registration are ignored. See easy_close_ for more info.
+	 *
+	 * @param id                  The id of the widget to register.
+	 */
+	void add_easy_close_blocker(const std::string& id);
+
+	/**
+	 * Unregister a widget the prevents easy closing.
+	 *
+	 * Removing a non registered id is allowed but will do nothing. See
+	 * easy_close_ for more info.
+	 *
+	 * @param id                  The id of the widget to register.
+	 */
+	void remove_easy_close_blocker(const std::string& id);
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
@@ -231,6 +250,8 @@ public:
 		{ retval_ = retval; if(close_window) close(); }
 
 	void set_owner(tdialog* owner) { owner_ = owner; }
+
+	void set_easy_close(const bool easy_close) { easy_close_ = easy_close; }
 
 private:
 
@@ -311,6 +332,20 @@ private:
 	/** The formula to calulate the height of the dialog. */
 	tformula<unsigned>h_;
 
+	/** 
+	 * Do we want to have easy close behaviour?
+	 *
+	 * Easy closing means that whenever a mouse click is done the dialog will be
+	 * closed. The widgets in the window may override this behaviour by
+	 * registering themselves as blockers. These items will be stored in
+	 * easy_close_blocker_. So in order to do an easy close the boolean needs to
+	 * be true and the vector empty.
+	 */
+	bool easy_close_;
+
+	/** The list with items which prevent the easy close behaviour. */
+	std::vector<std::string> easy_close_blocker_;
+
 	/** Layouts the window. */
 	void layout();
 
@@ -325,6 +360,9 @@ private:
 
 	/** Inherited from tevent_handler. */
 	void do_remove_help_popup() { help_popup_.set_visible(false); }
+
+	/** Inherited from tevent_handler. */
+	void easy_close();
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
