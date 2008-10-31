@@ -44,6 +44,9 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return state_; }
 
+	/** Inherited from tcontrol. */
+	bool does_block_easy_close() const { return false; }
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_can_wrap(const bool wrap) {  can_wrap_ = wrap; }

@@ -50,6 +50,9 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return ENABLED; }
 
+	/** Inherited from tcontrol. */
+	bool does_block_easy_close() const { return false; }
+
 private:
 
 	/**

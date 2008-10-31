@@ -53,6 +53,31 @@ void tcontrol::set_members(const std::map<
 	}
 }
 
+void tcontrol::set_block_easy_close(const bool block)
+{
+	twindow* window = get_window();
+	if(!window) {
+		/*
+		 * This can happen in a listbox when the row data is manipulated before
+		 * the listbox is finalized. In that case that widget should do set the
+		 * state in its finalizer.
+		 */
+		DBG_GUI << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
+			"No window set, this might be a bug.\n";
+		return;
+	}
+
+	if(block) {
+		if(id().empty()) {
+			set_id(get_uid());
+		}
+		window->add_easy_close_blocker(id());
+	} else if(!id().empty()) {
+		// It might never have been enabled so the id might be empty.
+		window->remove_easy_close_blocker(id());
+	}
+}
+
 void tcontrol::mouse_hover(tevent_handler& event)
 {
 	DBG_G_E << "Control: mouse hover.\n"; 
@@ -250,6 +275,15 @@ void tcontrol::set_size(const SDL_Rect& rect)
 
 	// update the state of the canvas after the sizes have been set.
 	update_canvas();
+}
+
+void tcontrol::set_visible(const bool visible)
+{ 
+	if(visible_ != visible) { 
+		visible_ = visible;
+		set_block_easy_close(visible_ && does_block_easy_close());
+		set_dirty();
+	} 
 }
 
 void tcontrol::set_label(const t_string& label)

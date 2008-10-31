@@ -125,6 +125,15 @@ public:
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);
 
+	/** 
+	 * Inherited from tcontrol.
+	 *
+	 * NOTE normally containers don't block, but their children may. But
+	 * normally the state for the children is set as well so we don't need to
+	 * delegate the request to our children.
+	 */
+	bool does_block_easy_close() const { return false; }
+
 	/***** **** ***** ***** wrappers to the grid **** ********* *****/
 
 	tgrid::iterator begin() { return grid_.begin(); }

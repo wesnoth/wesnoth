@@ -53,6 +53,9 @@ public:
 	unsigned get_state() const { return 0; }
 
 	/** Inherited from tcontrol. */
+	bool does_block_easy_close() const { return false; }
+
+	/** Inherited from tcontrol. */
 	void draw(surface& surface, const bool force = false, 
 		const bool invalidate_background = false);
 

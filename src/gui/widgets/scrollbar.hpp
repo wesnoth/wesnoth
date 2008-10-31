@@ -122,6 +122,9 @@ public:
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tcontrol. */
+	bool does_block_easy_close() const { return true; }
+
+	/** Inherited from tcontrol. */
 	void set_size(const SDL_Rect& rect);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

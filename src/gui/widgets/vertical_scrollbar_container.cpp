@@ -433,6 +433,10 @@ void tvertical_scrollbar_container_::finalize_setup()
 	find_scrollbar_grid();
 	content_find_grid();
 
+	// Set the easy close status.
+	/** @todo needs more testing. */
+	set_block_easy_close(get_visible() && get_active() && does_block_easy_close());
+
 	// Call the virtual function to subclasses can do their finalization part.
 	finalize();
 }

@@ -33,6 +33,9 @@ Version 1.5.5+svn:
      in addition to the playable map area. The used mask must have the same
      border_size as the map (i.e. currently 1), else this will be ignored.
    * Restore x1, y1, x2, and y2 after events fired from events.
+ * User interface:
+   * The new widget library now also supports closing a dialog with a mouse
+     click without a close button.
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
 

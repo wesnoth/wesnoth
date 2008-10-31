@@ -47,6 +47,9 @@ public:
 	unsigned get_state() const { return 0; }
 
 	/** Inherited from tcontrol. */
+	bool does_block_easy_close() const { return false; }
+
+	/** Inherited from tcontrol. */
 	tpoint get_best_size() const 
 		{ return best_size_ != tpoint(0, 0) ? best_size_ : tcontrol::get_best_size(); }
 

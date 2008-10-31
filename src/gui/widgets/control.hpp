@@ -73,6 +73,31 @@ protected:
 
 public:
 
+	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
+
+	/**
+	 * Adds or removes a widget to/from the easy close block list.
+	 *
+	 * For adding to the block list an id is required, if not set it will get
+	 * one.
+	 *
+	 * @param block               If true it's added to the blocklist, removed
+	 *                            otherwise.
+	 */
+	void set_block_easy_close(const bool block = true);
+
+	/**
+	 * Does the widget block the easy close feature?
+	 *
+	 * NOTE widgets that return true here, probably also need to make
+	 * modifications to their set_state() function. Easy close blocking _must_
+	 * be disabled when the widget is disabled or not visible. (The tcontrol
+	 * class handles the visibility part.)
+	 *
+	 * @returns                   Whether or not it blocks.
+	 */
+	virtual bool does_block_easy_close() const = 0;
+
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherted from tevent_executor. */
@@ -164,8 +189,7 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	bool get_visible() const { return visible_; }
-	void set_visible(const bool visible = true) 
-		{ if(visible_ != visible) { visible_ = visible; set_dirty();} }
+	void set_visible(const bool visible = true);
 
 	bool get_use_tooltip_on_label_overflow() const { return use_tooltip_on_label_overflow_; }
 	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true) 
