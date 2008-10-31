@@ -584,7 +584,17 @@ class TracksEditor:
         button.show()
         self.tooltips.set_tip(button, "Copy marker from an unselected track")
 
-        # Other toolbar elements.
+        # Sigh - causes elements to jumop around in the toolbar,
+        # because when it's not there the application wants the
+        # extra space for buttons.
+        #self.coordwin = gtk.Label("")
+        #coordwrapper = gtk.ToolItem()
+        #coordwrapper.add(self.coordwin)
+        #toolbar.add(coordwrapper)
+        #coordwrapper.set_expand(True)
+        #self.coordwin.show()
+        #coordwrapper.show()
+
         spacer = gtk.SeparatorToolItem()
         toolbar.add(spacer)
         spacer.set_draw(False)
@@ -868,7 +878,7 @@ class TracksEditor:
     def leave_area_event(self, w, e):
         if self.context_popup:
             self.context_popup.destroy()
-        #self.coordwin.set_text(""))
+        #self.coordwin.set_text("")
 
     def quit(self, w):
         if self.journey.has_unsaved_changes():
