@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 12:00+0100\n"
-"PO-Revision-Date: 2008-10-12 17:36+0100\n"
+"PO-Revision-Date: 2008-10-31 15:35+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -571,14 +571,13 @@ msgstr "Vydrž až do konce kol"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:26
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat the enemy leader\n"
 "`(special bonus)"
 msgstr ""
 "<255,255,255>Alternativní cíl:\n"
-"@Poraz všechny nepřátelské vůdce\n"
+"@Poraz nepřátelského vůdce\n"
 "`(zvláštní bonus)"
 
 #. [objective]: condition=lose
@@ -5535,6 +5534,8 @@ msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all Death Knights first"
 msgstr ""
+"<255,255,255>Bonusový cíl:\n"
+"@Poraz nejprve všechny rytíře smrit"
 
 #. [side]: type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:85
@@ -6185,6 +6186,8 @@ msgid ""
 "<255,255,255>Optional objective:\n"
 "@Rescue the sergeant"
 msgstr ""
+"<255,255,255>Bonusový cíl:\n"
+"@Zachraň seržanta"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1124
@@ -6712,7 +6715,6 @@ msgstr "Najdi východ z podzemí a doveď k němu Konráda"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
-#, fuzzy
 msgid ""
 "<255,255,255>Optional objective:\n"
 "@Help the Wose fend off the undead attack"

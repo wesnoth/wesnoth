@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 20:51+0100\n"
-"PO-Revision-Date: 2008-10-12 17:26+0100\n"
+"PO-Revision-Date: 2008-10-31 16:15+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -346,7 +346,7 @@ msgstr "Připoj se na server"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Nyní se připojíš na server s rozšířeními, abys nějaké stáhl."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -510,9 +510,8 @@ msgstr ""
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Další jednotka"
+msgstr "Další"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
@@ -527,17 +526,17 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
 msgid "Red:"
-msgstr ""
+msgstr "Červená:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:146
 msgid "Green:"
-msgstr ""
+msgstr "Zelená:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Modrá:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -587,7 +586,7 @@ msgstr "Seznam jednotek"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
-msgstr ""
+msgstr "Vytvoř hru"
 
 #. [label]
 #. [text_box]
@@ -776,6 +775,7 @@ msgstr "Editor"
 msgid "Preferences"
 msgstr "Nastavení"
 
+# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 #, fuzzy
@@ -1275,7 +1275,6 @@ msgid "Load Game"
 msgstr "Načti hru"
 
 #: src/gui/dialogs/mp_create_game.cpp:87
-#, fuzzy
 msgid "Load Game..."
 msgstr "Načti hru..."
 
@@ -1575,7 +1574,7 @@ msgstr "Ulož mapu jako"
 
 #: src/hotkeys.cpp:119
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Vrátit všechny změny"
 
 #: src/hotkeys.cpp:120
 #, fuzzy
@@ -1719,9 +1718,8 @@ msgid "Draw Hex Coordinates"
 msgstr ""
 
 #: src/hotkeys.cpp:179
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Nakresli terén"
+msgstr "Zobrazuj kódy terénu"
 
 #: src/hotkeys.cpp:184
 msgid "Delay Shroud Updates"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 20:51+0100\n"
-"PO-Revision-Date: 2008-10-04 14:38+0100\n"
+"PO-Revision-Date: 2008-10-31 18:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -407,9 +407,8 @@ msgstr "Valencijský překlad (jižní Katalánie)"
 
 #. [about]
 #: data/core/about.cfg:1993
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Čínský překlad"
+msgstr ""
 
 #. [about]
 #: data/core/about.cfg:2000
@@ -1138,7 +1137,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1149,10 +1147,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Několik málo jednotek má speciální <ref>dst=abilities text=schopnosti</ref>, "
-"které ovlivňují poškození během boje. Nejběžnější z nich je schopnost "
-"<ref>dst=weaponspecial_charge text=Výpadu</ref>, která zvyšuje poškození jak "
-"útočníka tak obránce, pokud útočí jednotka s touto schopností."
+"Několik jednotek má speciální <ref>dst'..=abilities_section' "
+"text='schopnosti'</ref>, které ovlivňují poškození během boje. Nejběžnější z "
+"nich je schopnost <ref>dst='weaponspecial_charge' text='výpadu'</ref>, která "
+"zvyšuje poškození jak útočníka, tak obránce, pokud útočí jednotka s touto "
+"schopností."
 
 #. [topic]
 #: data/core/help.cfg:253
@@ -1341,7 +1340,6 @@ msgstr ""
 # Pamatujte, že jen velmi malé množství jednotek, například Požírači mrtvol, se mohou pomocí AMLA léčit jako při povýšení. Většina jednotek pouze získá bonus k maximálnímu počtu životů.
 #. [topic]
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1359,7 +1357,7 @@ msgstr ""
 "\n"
 "\n"
 "Přestože většina jednotek má tři úrovně, není to vždy pravidlem. Některé "
-"jednotky (např. <ref>dst=unit_Mage text=Mágové</ref>) mohou mít čtyři. "
+"jednotky (např. <ref>dst='unit_Mage' text='Mágové'</ref>) mohou mít čtyři. "
 "Jakmile jednotka dosáhne své maximální úrovně, může získat schopnost dalšího "
 "rozvoje (After Maximum Level Advancement - AMLA). AMLA bude měnit nějaké "
 "vlastnosti jednotky pokaždé, kdy jednotka dosáhne počtu zkušenostních bodů "
@@ -1377,7 +1375,6 @@ msgstr "Uzdravování"
 
 #. [topic]
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1386,9 +1383,9 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Během boje dojde nevyhnutelně také k poškození vašich jednotek. Pokud "
-"jednotka <ref>dst=experience_and_advancement text=povýší</ref>, pak dojde k "
-"jejímu plnému uzdravení. To může nastat po boji s nepřítelem, ať už je to "
-"váš tah, nebo ne. Wesnoth nabízí různé další možnosti pro uzdravení "
+"jednotka <ref>dst='experience_and_advancement' text='povýší'</ref>, pak "
+"dojde k jejímu plnému uzdravení. To může nastat po boji s nepřítelem, ať už "
+"je to váš tah, nebo ne. Wesnoth nabízí různé další možnosti pro uzdravení "
 "jednotek, k většině z nich dochází na začátku vašeho tahu, před tím, než "
 "převezmete ovládání."
 
@@ -1938,7 +1935,6 @@ msgstr "Plochý"
 
 #. [topic]
 #: data/core/help.cfg:455
-#, fuzzy
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1948,7 +1944,7 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"Louka představuje otevřenou rovinu ať už kultivovanou, upravenou pro "
+"Louka představuje otevřenou rovinu - ať už kultivovanou, upravenou pro "
 "pastevectví, nebo divokou. Je to otevřená krajina, velmi snadná pro pohyb, "
 "ale je zde těžké se bránit. Typickou jednotkou, pro kterou je tato krajina "
 "nejlepší je jezdectvo, nebo velmi hbité jednotky, které dávají přednost "
@@ -2512,7 +2508,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:735
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2784,13 +2779,11 @@ msgstr "ošetření"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "zdravá"
+msgstr "ošetření"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -2804,8 +2797,8 @@ msgstr ""
 "Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
 "tahu.\n"
 "\n"
-"Jedna zraněná jednotka se může za jeden tah vyléčit až o 4 životy nebo se jí "
-"může na jeden tah zastavit působení jedu.\n"
+"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
+"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
 "Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
 "vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
@@ -2816,9 +2809,8 @@ msgstr "léčení"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "zdravá"
+msgstr "léčení"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:36
@@ -2850,9 +2842,8 @@ msgstr "uzdravování"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "nebojácná"
+msgstr "uzdravování"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:54
@@ -2872,7 +2863,6 @@ msgstr "regenerace"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "regenerace"
 
@@ -2894,7 +2884,6 @@ msgstr "vytrvalost"
 
 #. [resistance]
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "vytrvalost"
 
@@ -2920,7 +2909,6 @@ msgstr "velení"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "velení"
 
@@ -2954,7 +2942,6 @@ msgstr "průbojnost"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "průbojnost"
 
@@ -2976,7 +2963,6 @@ msgstr "osvětlení"
 
 #. [illuminates]
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "osvětlení"
 
@@ -3004,9 +2990,8 @@ msgstr "teleportace"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "chytrá"
+msgstr "teleportace"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:380
@@ -3026,9 +3011,8 @@ msgstr "přepadení"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "zákonná"
+msgstr "přepadení"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3072,7 +3056,6 @@ msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "noční lovec"
 
@@ -3083,7 +3066,6 @@ msgstr "skrývání"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
 msgstr "skrývání"
 
@@ -3113,9 +3095,8 @@ msgstr "ponoření"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "silná"
+msgstr "ponoření"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3142,9 +3123,8 @@ msgstr "krmení"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "nebojácná"
+msgstr "krmení"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:499
@@ -3345,7 +3325,7 @@ msgstr ""
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unecessary and can be removed."
-msgstr ""
+msgstr "Makro VICTORY_AND_DEFEAT_MUSIC je nepotřebné a může být odstraněno."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3396,14 +3376,13 @@ msgstr "Nic si nepřeji."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Přijatá"
+msgstr "Vezmu si to"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
 msgid "Leave it"
-msgstr ""
+msgstr "Nechám to být"
 
 #. [object]
 #: data/core/macros/items.cfg:218
@@ -4396,7 +4375,6 @@ msgstr ""
 "některými typy útoků, ale pouze při obraně."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -4680,37 +4658,32 @@ msgstr "Bojuje v nepříznivé denní době bez postihu"
 #. [trait]
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "slabý"
 
 #. [trait]
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "nemrtvá"
+msgstr "slabá"
 
 #. [trait]
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "zpomalení"
+msgstr "pomalý"
 
 #. [trait]
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "věrná"
+msgstr "pomalá"
 
 #. [trait]
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Střední"
+msgstr "hloupý"
 
 #. [trait]
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "nebojácná"
+msgstr "hloupá"
 
 #. [color_range]
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
@@ -5545,10 +5518,9 @@ msgstr "Nemrtvá"
 msgid "race+plural^Undead"
 msgstr "Nemrtví"
 
-# Ten původní první odstaves je fakt slabý ... pořád se to opakuje dokola.
+# Ten původní první odstavec je fakt slabý ... pořád se to opakuje dokola.
 #. [race]
 #: data/core/units.cfg:255
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5599,15 +5571,13 @@ msgstr ""
 
 #. [race]: description=
 #: data/core/units.cfg:263
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Elf"
+msgstr "Vlk"
 
 #. [race]: description=
 #: data/core/units.cfg:264
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Stromový lid"
+msgstr "Vlci"
 
 #. [race]: description=
 #: data/core/units.cfg:272
@@ -5647,7 +5617,7 @@ msgstr "Těžká"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "Noční můra"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -6017,7 +5987,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -6797,10 +6766,11 @@ msgstr "Stahuji rozšíření: $addon_title|..."
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"Rozšíření obsahuje neplatný název souboru nebo složky a nebude instalováno."
 
 #: src/addon_management.cpp:645
 msgid "Unchecked script files found:"
-msgstr ""
+msgstr "Nalezeny nezkontrolované skripty:"
 
 #: src/addon_management.cpp:652
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -6860,7 +6830,7 @@ msgstr "Aktualizace rozšíření"
 
 #: src/addon_management.cpp:793
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Vyberte rozšíření k aktualizaci:"
 
 #: src/addon_management.cpp:807
 msgid "Update all"
@@ -8027,13 +7997,12 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Napiš, co děláš, nebo jak se cítíš, do chatu."
 
 #: src/menu_events.cpp:2133
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 "Pošli soukromou zprávu. Nelze poslat hráči, který nehraje za některou stranu "
-"v právě běžící hře."
+"ve stejné hře jako vy (právě běžící)."
 
 #: src/menu_events.cpp:2139
 msgid "Change the log level of a log domain."
@@ -9404,27 +9373,84 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
 
-#, fuzzy
 #~ msgid "define ai location"
-#~ msgstr "Estonský překlad"
+#~ msgstr "Definovat pozici pro AI"
 
-#, fuzzy
-#~ msgid "Location name?"
-#~ msgstr "Místní hra"
+#~ msgid "Range in Hexfields?"
+#~ msgstr "Poloměr okolí? (v políčcích)"
 
-#, fuzzy
-#~ msgid "Give new orders"
-#~ msgstr "Zrušit příkazy"
+#~ msgid "Command $ai_controller.friend_leaders[$friend].id"
+#~ msgstr "Ovládat stranu $ai_controller.friend_leaders[$friend].id"
 
-#, fuzzy
+#~ msgid "Which ally should i command?"
+#~ msgstr "Kterému spojenci si přejete vydat rozkazy?"
+
+#~ msgid "How important is this command?"
+#~ msgstr "Jak důležitý je tento příkaz?"
+
+#~ msgid "It is very important.(value 90)"
+#~ msgstr "Velmi důležitý. (hodnota 90)"
+
+#~ msgid "It is important.(value 50)"
+#~ msgstr "Důležitý. (hodnota 50)"
+
+#~ msgid "It is not so important.(value 25)"
+#~ msgstr "Nepříliš důležitý. (hodnota 25)"
+
+#~ msgid "It has the importance ..."
+#~ msgstr "Má hodnotu…"
+
 #~ msgid "value: "
-#~ msgstr "Jméno: "
+#~ msgstr "hodnota: "
 
-#, fuzzy
+#~ msgid "#I revoke all your commands!"
+#~ msgstr "#Ruším všechny tvé příkazy!"
+
 #~ msgid "Defeat an enemy Leader!"
+#~ msgstr "Znič nepřátelského vůdce!"
+
+#~ msgid "Protect an allied leader!"
+#~ msgstr "Chraň spojeneckého vůdce!"
+
+#~ msgid "Which allied leader should i protect?"
+#~ msgstr "Kterého spojeneckého vůdce mám chránit?"
+
+#~ msgid "Defend a location!"
+#~ msgstr "Drž pozici!"
+
+#~ msgid "Which location should i protect?"
+#~ msgstr "Kterou pozici mám bránit?"
+
+#~ msgid "Go to a location!(only the leader)"
+#~ msgstr "Jdi na pozici! (pouze vůdce)"
+
+#~ msgid "To which location shall i move?"
+#~ msgstr "Na kterou pozici se mám přesunout?"
+
+#~ msgid "Avoid a location!"
+#~ msgstr "Vyhýbej se pozici!"
+
+#~ msgid ""
+#~ "I am allready ordered to avoid $ai_controller.locations[$location].name|!"
 #~ msgstr ""
-#~ "Vítězství:\n"
-#~ "@Znič nepřátelské(ho) vůdce"
+#~ "Již mám příkaz vyhýbat se $ai_controller.locations[$location].name|!"
+
+#~ msgid "Which location shall i avoid?"
+#~ msgstr "Které oblasti se mám vyhýbat?"
+
+#~ msgid "Send your army to a location!"
+#~ msgstr "Pošli svou armádu na pozici!"
+
+#~ msgid "Which location shall i send my men to?"
+#~ msgstr "Na kterou pozici mám své vojsko vyslat?"
+
+#~ msgid ""
+#~ "@I don't want to be in command any more! Take care of yourselves! "
+#~ "(Disables AI_CONTROLLER)"
+#~ msgstr "@Už se o tebe nechci starat! Řiď se sám! (Ruší AI_CONTROLLER)"
+
+#~ msgid "@Execute my orders!"
+#~ msgstr "@Proveď mé příkazy!"
 
 #~ msgid "Grassland"
 #~ msgstr "Louka"
