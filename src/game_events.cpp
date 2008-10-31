@@ -2999,6 +2999,42 @@ namespace {
 
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
+				// We whether we can show the new dialog.
+				if(gui2::new_widgets && options.empty() && speaker != units->end()) {
+					// Get the portrait and if found proceed to use the new dialog.
+					gui2::twindow window = gui2::build((screen)->video(), "message_test_left");
+
+					// Use an ugly hack, if the spacer has the wanted best_size we use the
+					// bigger image otherwise the smaller one.
+					gui2::tspacer* spacer =
+						dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
+
+					unsigned image_size = 200;
+					if(spacer && spacer->get_best_size().x == 500) {
+						image_size = 400;
+					}
+
+					const tportrait* portrait = 
+						speaker->second.portrait(image_size, tportrait::LEFT);
+					if(portrait) {
+
+						const t_string message = cfg["message"];
+						const std::string image = portrait ? portrait->image : "";
+						const bool mirror = portrait ? portrait->mirror : false;
+
+						window.canvas(1).set_variable("portrait_image", variant(image));
+						window.canvas(1).set_variable("portrait_mirror", variant(mirror));
+
+						gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
+						assert(label);
+						label->set_label(message);
+
+						window.show();
+
+						return;
+					}
+				}
+
 				const t_string msg = cfg["message"];
 				const std::string duration_str = cfg["duration"];
 				const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
