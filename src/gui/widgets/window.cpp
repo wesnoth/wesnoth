@@ -109,9 +109,11 @@ twindow::twindow(CVideo& video,
 	load_config();
 
 	tooltip_.set_definition("default");
+	tooltip_.set_parent(this);
 	tooltip_.set_visible(false);
 
 	help_popup_.set_definition("default");
+	help_popup_.set_parent(this);
 	help_popup_.set_visible(false);
 }
 

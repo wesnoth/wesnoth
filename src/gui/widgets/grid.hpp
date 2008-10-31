@@ -133,13 +133,15 @@ public:
 	 * @param id                  The id of the widget to free.
 	 * @param widget              The widget to put in the grid.
 	 * @parem recurse             Do we want to decent into the child grids.
+	 * @parem new_parent          The new parent for the swapped out widget.
 	 *
 	 * returns                    The widget which got removed (the parent of
 	 *                            the widget is cleared). If no widget found
 	 *                            and thus not replace NULL will returned.
 	 */
 	twidget* swap_child(
-		const std::string& id, twidget* widget, const bool recurse);
+		const std::string& id, twidget* widget, const bool recurse,
+		twidget* new_parent = NULL);
 
 	/**
 	 * Removes and frees a widget in a cell.

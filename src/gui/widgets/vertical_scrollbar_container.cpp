@@ -409,7 +409,7 @@ void tvertical_scrollbar_container_::show_scrollbar(const bool show)
 
 		tgrid* tmp = new tgrid();
         scrollbar_grid_ = dynamic_cast<tgrid*>
-			(grid().swap_child("_scrollbar_grid", tmp, true));
+			(grid().swap_child("_scrollbar_grid", tmp, true, this));
 	}
 }
 

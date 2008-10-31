@@ -99,7 +99,8 @@ void tgrid::set_child(twidget* widget, const unsigned row,
 }
 
 twidget* tgrid::swap_child(
-		const std::string& id, twidget* widget, const bool recurse)
+		const std::string& id, twidget* widget, const bool recurse,
+		twidget* new_parent)
 {
 	assert(widget);
 
@@ -124,7 +125,7 @@ twidget* tgrid::swap_child(
 		// When find the widget there should be a widget.
 		twidget* old = child.widget();
 		assert(old);
-		old->set_parent(NULL);
+		old->set_parent(new_parent);
 
 		widget->set_parent(this);
 		child.set_widget(widget);
