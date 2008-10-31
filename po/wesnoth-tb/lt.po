@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 12:01+0100\n"
-"PO-Revision-Date: 2008-10-10 17:22+0300\n"
+"PO-Revision-Date: 2008-10-31 18:33+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -56,8 +56,8 @@ msgid ""
 "experienced players.)"
 msgstr ""
 "Piktasis magas grasina mažam kaimui Maghre ir jo gyventojams. Kaimo magas "
-"Bdžarnas paprašo savo brolio pagalbos, bet ne viskas vysta kaip planuota. Ar "
-"galite padėti?\n"
+"Bdžarnas paprašo savo brolio pagalbos, bet ne viskas vyksta kaip planuota. "
+"Ar galite padėti?\n"
 "\n"
 "(Pradedantysis lygis, 4 scenarijai; „Sunki“ versija gali būti iššaukianti ir "
 "labiau patyrusiems žaidėjams.)"
@@ -111,6 +111,12 @@ msgid ""
 "and their children even the bright day. But the nearest lord was more than a "
 "day's ride distant, and messengers sent to seek his help did not return."
 msgstr ""
+"Skeletai ir zombiai užmušinėjo galvijus ir degino laukus. „Bijokite ir "
+"pakluskite Magui Mordakui!“ jie šaukė negailestingais balsais, kai darė savo "
+"piktus darbus. Žmonės išnyko iš nutolusių fermų. Vyrai ir moterys pradėjo "
+"bijoti nakties, o jų vaikai netgi šviesios dienos. Bet artimiausias valdovas "
+"buvo toliau, nei diena jojimo, o pasiuntiniai, siųsti ieškoti jo pagalbos, "
+"negrįžo."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:47
@@ -141,6 +147,8 @@ msgid ""
 "Heeding the call of his amulet, Arne gathered such men as he could and "
 "hurried to Maghre to help Bjarn."
 msgstr ""
+"Atsakydamas į savo amuleto šaukimą, Arne surinko tokius vyrus, kokius tik "
+"sugebėjo ir nuskubėjo į Maghre pagelbėti Bdžarnui."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:104
@@ -282,6 +290,8 @@ msgid ""
 "I can feel Mordak's foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days' ride."
 msgstr ""
+"Aš jaučiu piktą Mordako prisilietimą prie paslėptų žemės ir oro srovių. Jis "
+"yra kažkur į šiaurę nuo čia, sakyčiau, kad nedaugiau nei dvi dienos jojimo."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:343
@@ -289,6 +299,8 @@ msgid ""
 "I will lead my men, and such villagers as can keep up with us, north to slay "
 "this Mordak! What will you do?"
 msgstr ""
+"Aš vesiu savo vyrus ir tuos kaimiečius, kurie gali neatsilikti nuo mūsų, į "
+"šiaurę, kad nužudyčiau šitą Mordaką! Ką tu darysi?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:347
@@ -305,7 +317,9 @@ msgstr ""
 msgid ""
 "Bjarn should be in position by now. Press them, distract the adept so Bjarn "
 "can spring his trap!"
-msgstr "Bdžarnas jau turėtų būti vietoje. Įdomu ar jam nieko nenutiko?"
+msgstr ""
+"Bdžarnas jau turėtų būti vietoje. Paspauskite juos, atitraukite žinovo "
+"dėmesį, kad Bdžarnas galėtų "
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:366
@@ -497,6 +511,8 @@ msgid ""
 "Curses! If they had been an hour slower our master's reinforcements would "
 "already be here to meet us."
 msgstr ""
+"Prakeikimai! Jei jie būtų bent valanda lėtesni, mūsų šeimininko "
+"pastiprinimai jau būtų čia ir patiktų mus."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:371
@@ -599,6 +615,8 @@ msgid ""
 "Aye. We think there's a nest of them north-east of here. They've captured my "
 "brother."
 msgstr ""
+"Taip. Mes manome, kad jų irštva yra į šiaurės rytus nuo čia. Jie pagrobė "
+"mano brolį."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:457
@@ -606,6 +624,8 @@ msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
 msgstr ""
+"Aš didžiai nekenčiu jų rūšies. Aš seksiu ir kovosiu prieš juos kartu su "
+"jumis, jei leisite."
 
 #. [message]: type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:461
@@ -676,9 +696,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:544
-#, fuzzy
 msgid "Catch the kidnappers"
-msgstr "Eime, vyrai, pagaukime tuos pagrobėjus!"
+msgstr "Pagaukite pagrobėjus"
 
 #. [terrain]
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
@@ -1046,6 +1065,8 @@ msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
+"Tuoj po jūsų išvykimo mus apspito orkai. Išvykus pusei Maghre vyrų, mes "
+"negalėjome jų sustabdyti."
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:197
@@ -1090,6 +1111,8 @@ msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
 msgstr ""
+"Privalau grįžti atgal ir uždirbinėti pragyvenimui. Bet mes turime savo "
+"amuletus, mažasis brolau. Jei vėl būsi apsuptas, aš ateisiu."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:250
@@ -1119,6 +1142,9 @@ msgid ""
 "people of Maghre had to work very hard, but felt better knowing Arne's men "
 "would be their firm allies in troubled times."
 msgstr ""
+"Daug metų užtruko kaimo ir aplinkinių fermų atstatymas. Maghre žmonės turėjo "
+"labai sunkiai dirbti, tačiau jie jautėsi geriau, žinodami, kad Arne vyrai "
+"bus patikimi jų sąjungininkai neramiais laikais."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:15
@@ -1128,6 +1154,10 @@ msgid ""
 "even mention Arne's name together with that of the famous elvish lord "
 "Kalenz, but this is a different story..."
 msgstr ""
+"Arne ir jo vyrai paliko kaimą būdami tikri, kad Bdžarnas tinkamai jam "
+"vadovaus. Savo kelionėse jie sutiko daug iššūkių ir mūšių. Kai kurie "
+"pasakojimai netgi pamini Arne vardą kartu su žymiojo elfų valdovo Kalenzo "
+"vardu, bet tai jau yra kita istorija..."
 
 #~ msgid ""
 #~ "Hurry, we have to track them down. Maybe we can still get them. They have "

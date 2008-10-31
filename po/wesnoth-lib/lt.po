@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 20:51+0100\n"
-"PO-Revision-Date: 2008-10-09 21:01+0300\n"
+"PO-Revision-Date: 2008-10-25 01:59+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -588,9 +588,8 @@ msgstr "Era:"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
-msgstr "Numatytas didinimas"
+msgstr "Numatyta"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
@@ -1053,7 +1052,7 @@ msgstr "Rodyti dalinių neveiklumo animacijas"
 
 #: src/game_preferences_display.cpp:338
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Nustatyti dalinių neveiklumo animacijų dažnumą"
 
 #: src/game_preferences_display.cpp:343
 msgid "Set maximum number of automatic saves to be retained"
@@ -1061,7 +1060,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:347
 msgid "Do not animate AI units moving"
-msgstr "Neanimuoti judančius DI dalinius"
+msgstr "Neanimuoti judančių DI dalinių"
 
 #: src/game_preferences_display.cpp:355
 msgid "Overlay a grid onto the map"
@@ -1281,9 +1280,8 @@ msgid ""
 msgstr ""
 
 #: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:277
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Nebuvo nurodytas joks serveris."
+msgstr "Neapibrėžta raiška."
 
 #: src/gui/widgets/settings.cpp:456
 #, fuzzy
@@ -1298,9 +1296,8 @@ msgstr "Nebuvo nurodytas joks serveris."
 #: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:368
 #: src/gui/widgets/window_builder.cpp:951
 #: src/gui/widgets/window_builder.cpp:1158
-#, fuzzy
 msgid "No grid defined."
-msgstr "Nebuvo nurodytas joks serveris."
+msgstr "Neapibrėžtas tinklelis."
 
 #: src/gui/widgets/window_builder.cpp:495
 msgid "A row must have a column."
@@ -1311,9 +1308,8 @@ msgid "Number of columns differ."
 msgstr "Skiriasi stulpelių skaičius."
 
 #: src/gui/widgets/window_builder.cpp:720
-#, fuzzy
 msgid "No list defined."
-msgstr "Nebuvo nurodytas joks serveris."
+msgstr "Neapibrėžtas joks sąrašas."
 
 #: src/gui/widgets/window_builder.cpp:723
 msgid "A 'list_definition' should contain one row."
@@ -1546,7 +1542,7 @@ msgstr "Žemėlapio informacija"
 
 #: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Sukeisti priekinio plano ir fono vietoves"
 
 #: src/hotkeys.cpp:123
 msgid "Next Tool"
@@ -1647,12 +1643,11 @@ msgstr "Generuoti žemėlapį"
 
 #: src/hotkeys.cpp:165
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Pritaikyti kaukę"
 
 #: src/hotkeys.cpp:167
-#, fuzzy
 msgid "Create Mask"
-msgstr "Sukurti žaidimą"
+msgstr "Sukurti kaukę"
 
 #: src/hotkeys.cpp:169
 msgid "Refresh Display"

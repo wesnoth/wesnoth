@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2008-10-12 14:33+0300\n"
-"PO-Revision-Date: 2008-10-09 18:26+0300\n"
+"PO-Revision-Date: 2008-10-14 19:10+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,7 @@ msgstr "B<-e, --editor>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "tiesiogiai paleidžia integruotą žemėlapių redaktorių."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -335,13 +335,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"paleidžia žaidimą be jokių užlaikymų grafikos testavimui. B<--nogui> "
-"automatiškai tai įgalina."
+"paleidžia žaidimą be jokių užlaikymų grafikos testavimui. Tai yra "
+"automatiškai įgalinta naudojant B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132
@@ -848,6 +847,8 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
+"nustato maksimalų darbinių gijų, kurios bus sukurtos, skaičių. Jei nustatyta "
+"B<0>, tai nebus jokių apribojimų (numatyta: B<0>)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:88

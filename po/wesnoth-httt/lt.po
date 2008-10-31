@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 12:00+0100\n"
-"PO-Revision-Date: 2008-10-07 19:01+0300\n"
+"PO-Revision-Date: 2008-10-31 18:47+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -545,12 +545,14 @@ msgstr "Atsilaikykite iki ėjimų pabaigos"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:26
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat the enemy leader\n"
 "`(special bonus)"
-msgstr "Nugalėkite visus priešų vadus"
+msgstr ""
+"<255,255,255>Alternatyvus tikslas:\n"
+"@Nugalėkite visus priešo vadus\n"
+"`(speciali premija)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:39
@@ -988,6 +990,9 @@ msgid ""
 "@Defeat all enemy leaders\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternatyvus tikslas:\n"
+"@Nugalėkite visus priešo vadus\n"
+"`(ankstyvo pabaigimo premija)"
 
 #. [side]: type=Orcish Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:58
@@ -1410,6 +1415,9 @@ msgid ""
 "@Defeat Muff Malal\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternatyvus tikslas:\n"
+"@Nugalėkite Muff Malalą\n"
+"`(ankstyvo pabaigimo premija)"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:60
@@ -1495,12 +1503,14 @@ msgstr "Prakeiktųjų sala"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat all enemy leaders\n"
 "`(special bonus)"
-msgstr "Nugalėkite visus priešų vadus"
+msgstr ""
+"<255,255,255>Alternatyvus tikslas:\n"
+"@Nugalėkite priešo vadą\n"
+"`(speciali premija)"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:41
@@ -1540,7 +1550,7 @@ msgstr "Haf-Malas"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:152
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:101
 msgid "Undead"
-msgstr ""
+msgstr "Nemirėliai"
 
 #. [side]: type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:94
@@ -2415,9 +2425,8 @@ msgstr "Owarynas"
 
 #. [message]: speaker=Ronry
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:339
-#, fuzzy
 msgid "I'll seize their keep, my Lady!"
-msgstr "Aš užgrobsiu jų stovyklą, mano ponia!"
+msgstr "Aš užgrobsiu jų bokštą, mano ponia!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:371
@@ -2451,6 +2460,9 @@ msgid ""
 "@Eradicate the liches\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternatyvus tikslas:\n"
+"@Išnaikinkite ličus\n"
+"`(ankstyvo pabaigimo premija)"
 
 #. [side]: type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
@@ -4905,6 +4917,8 @@ msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all Death Knights first"
 msgstr ""
+"<255,255,255>Premijinis tikslas:\n"
+"@Pirmiau nugalėkite visus Mirties riterius"
 
 #. [side]: type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:85
@@ -5572,9 +5586,8 @@ msgstr "Ėjimai pasibaigs nepasiekus miško"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:45
-#, fuzzy
 msgid "Note: your encampment will be dismantled after the first turn.\n"
-msgstr "Po pirmojo ėjimo jūsų stovykla bus demontuota"
+msgstr "Dėmesio: jūsų stovykla bus išardyta po pirmojo ėjimo.\n"
 
 #. [side]: type=Commander
 #. [side]: type=Elvish Lord
@@ -5633,9 +5646,8 @@ msgstr ""
 
 #. [unit]: type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:377
-#, fuzzy
 msgid "Telerandor"
-msgstr "Delfadoras"
+msgstr "Telerandoras"
 
 #. [message]: speaker=Telerandor
 #. [message]: speaker=Glarilon
@@ -5646,11 +5658,10 @@ msgstr "Mano valdovai! Aš pagaliau jus radau."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:399
-#, fuzzy
 msgid ""
 "Greetings, Telerandor, herald of Lintanir! Why have you been searching for "
 "us?"
-msgstr "Sveikinimai, Eoniharai, senas drauge! Kodėl tu ieškojai mūsų?"
+msgstr "Sveikinimai, Telerandorai, Lintaniro šaukly! Kodėl tu ieškojai mūsų?"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:404
@@ -5893,12 +5904,12 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:4
 msgid "Underground Channels"
-msgstr ""
+msgstr "Požeminiai kanalai"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:23
 msgid "Find the exit from the underground and move Konrad to it"
-msgstr ""
+msgstr "Raskite išėjimą iš požemio ir nuveskite Konradą prie jo"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
@@ -5915,7 +5926,7 @@ msgstr "Pasibaigia ėjimai"
 #. [side]: type=Saurian Oracle
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:79
 msgid "Szerkz"
-msgstr ""
+msgstr "Szerkzas"
 
 #. [side]: type=Ancient Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:97
@@ -5925,12 +5936,12 @@ msgstr "Muff Argulakas"
 #. [side]: type=Ancient Wose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:115
 msgid "Haralamdum"
-msgstr ""
+msgstr "Haralamdumas"
 
 #. [side]: type=Elvish Sylph
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:135
 msgid "Bona-Melodia"
-msgstr ""
+msgstr "Bona-Melodia"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:174
@@ -6445,20 +6456,20 @@ msgstr "Nugalėkite 25 priešo dalinius"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all enemy leaders"
-msgstr "Nugalėkite visus priešų vadus"
+msgstr ""
+"<255,255,255>Premijinis tikslas:\n"
+"@Nugalėkite visus priešų vadus"
 
 #. [side]: type=Grand Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:100
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:129
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:158
-#, fuzzy
 msgid "Plainsmen"
-msgstr "Sniego lygumos"
+msgstr "Lygumų gyventojai"
 
 #. [then]
 #. [side]: type=Grand Knight
@@ -6599,7 +6610,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:283
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:287
 msgid "Aye."
-msgstr "Ai."
+msgstr "Taip."
 
 #. [message]: speaker=Lord Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:304
@@ -7528,9 +7539,3 @@ msgstr ""
 
 #~ msgid "Eonihar"
 #~ msgstr "Eoniharas"
-
-#~ msgid ""
-#~ "At last, friends, we have almost reached the home of my people, the North "
-#~ "Elves."
-#~ msgstr ""
-#~ "Pagaliau, draugai, mes beveik pasiekėme mano tautos, Šiaurės elfų, namus"
