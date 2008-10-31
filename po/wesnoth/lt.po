@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 12:12+0100\n"
+"POT-Creation-Date: 2008-10-31 20:51+0100\n"
 "PO-Revision-Date: 2008-10-09 21:38+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
@@ -58,230 +58,6 @@ msgstr "Paleisti tik saugius Pythono DI"
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
 msgstr "Požemis"
-
-#. [set_menu_item]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:30
-#, fuzzy
-msgid "define ai location"
-msgstr "Indoneziečių vertimas"
-
-#. [text_input]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:36
-#, fuzzy
-msgid "Location name?"
-msgstr "Įkelti žaidimą"
-
-#. [text_input]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:46
-msgid "Range in Hexfields?"
-msgstr ""
-
-#. [set_menu_item]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:60
-msgid "enable ai_controller"
-msgstr ""
-
-#. [set_menu_item]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:74
-msgid "disable ai_controller"
-msgstr ""
-
-#. [set_menu_item]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:88
-#, fuzzy
-msgid "Give new orders"
-msgstr "Atšaukti"
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:132
-msgid "Command $ai_controller.friend_leaders[$friend].id"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:162
-msgid "Which ally should i command?"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:229
-msgid "How important is this command?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:233
-msgid "It is very important.(value 90)"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:240
-msgid "It is important.(value 50)"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:247
-msgid "It is not so important.(value 25)"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:254
-msgid "It has the importance ..."
-msgstr ""
-
-#. [text_input]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:260
-#, fuzzy
-msgid "value: "
-msgstr "Vardas: "
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:328
-msgid ""
-"Which kind of order do you want me to obey?\n"
-"@$ai_controller.current_orders"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:339
-msgid "#I revoke all your commands!"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:384
-#, fuzzy
-msgid "Defeat an enemy Leader!"
-msgstr ""
-"Pergalė:\n"
-"@Nugalėkite priešų vadus"
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:393
-msgid "Defeat $ai_controller.enemy_leaders[$enemy].id|!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:416
-msgid "I am already attacking $ai_controller.enemy_leaders[$enemy].id|!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:431
-msgid "Which enemy Leaders do you want me to defeat?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:441
-msgid "Protect an allied leader!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:448
-msgid "Protect $ai_controller.friend_leaders[$friend].id"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:472
-msgid "I am already protecting $ai_controller.friend_leaders[$friend].id"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:499
-msgid "Which allied leader should i protect?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:510
-msgid "Defend a location!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:518
-msgid "Defend the $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:541
-msgid "I am allready defending $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:558
-msgid "Which location should i protect?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:569
-msgid "Go to a location!(only the leader)"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:577
-msgid "Goto the $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:598
-msgid "I am allready going to $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:612
-msgid "To which location shall i move?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:623
-msgid "Avoid a location!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:631
-msgid "Avoid the $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:652
-msgid ""
-"I am allready ordered to avoid $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:665
-msgid "Which location shall i avoid?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:733
-msgid "Send your army to a location!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:741
-msgid "Move to the $ai_controller.locations[$location].name|!"
-msgstr ""
-
-#. [value]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:785
-msgid ""
-"I am allready ordered to send all men to $ai_controller.locations[$location]."
-"name|!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:794
-msgid "Which location shall i send my men to?"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:811
-msgid ""
-"@I don't want to be in command any more! Take care of yourselves! (Disables "
-"AI_CONTROLLER)"
-msgstr ""
-
-#. [option]
-#: data/campaigns/Legend_of_Wesmere/utils/ai_controller.cfg:825
-msgid "@Execute my orders!"
-msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -8224,3 +8000,25 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 #: src/upload_log.cpp:327
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
+
+#, fuzzy
+#~ msgid "define ai location"
+#~ msgstr "Indoneziečių vertimas"
+
+#, fuzzy
+#~ msgid "Location name?"
+#~ msgstr "Įkelti žaidimą"
+
+#, fuzzy
+#~ msgid "Give new orders"
+#~ msgstr "Atšaukti"
+
+#, fuzzy
+#~ msgid "value: "
+#~ msgstr "Vardas: "
+
+#, fuzzy
+#~ msgid "Defeat an enemy Leader!"
+#~ msgstr ""
+#~ "Pergalė:\n"
+#~ "@Nugalėkite priešų vadus"
