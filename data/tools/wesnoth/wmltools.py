@@ -350,23 +350,23 @@ class CrossRef:
                             self.xref[name] = self.xref[name][:1]
                         continue
                     if "# wmlscope: start conditionals" in line:
-                        if warnlevel > 1:
+                        if warnlevel > 0:
                             print '"%s", line %d: starting conditionals' \
                                   % (filename, n+1)
                         conditionalsflag = True
                     elif "# wmlscope: stop conditionals" in line:
-                        if warnlevel > 1:
+                        if warnlevel > 0:
                             print '"%s", line %d: stopping conditionals' \
                                   % (filename, n+1)
                         conditionalsflag = False
                     if "# wmlscope: start ignoring" in line:
-                        if warnlevel > 1:
-                            print '"%s", line %d: starting ignoring' \
+                        if warnlevel > 0:
+                            print '"%s", line %d: starting ignoring (definition pass)' \
                                   % (filename, n+1)
                         ignoreflag = True
                     elif "# wmlscope: stop ignoring" in line:
-                        if warnlevel > 1:
-                            print '"%s", line %d: stopping ignoring' \
+                        if warnlevel > 0:
+                            print '"%s", line %d: stopping ignoring (definition pass)' \
                                   % (filename, n+1)
                         ignoreflag = False
                     elif ignoreflag:
@@ -403,7 +403,9 @@ class CrossRef:
                     elif state == "macro_header" and line.strip() and line.strip()[0] != "#":
                         state = "macro_body"
                     if state == "macro_header":
-                        here.docstring += line.lstrip()[1:]
+                        # Ignore macro header commends that are pragmas
+                        if "wmlscope" not in line and "wmllint:" not in line:
+                            here.docstring += line.lstrip()[1:]
                     if state in ("macro_header", "macro_body"):
                         here.hash.update(line)
                     elif line.strip().startswith("#undef"):
@@ -454,6 +456,7 @@ class CrossRef:
                 rfp = open(fn)
                 attack_name = None
                 beneath = 0
+                ignoreflag = False
                 for (n, line) in enumerate(rfp):
                     if line.strip().startswith("#define"):
                         formals = line.strip().split()[2:]
@@ -461,6 +464,16 @@ class CrossRef:
                         formals = []
                     comment = ""
                     if '#' in line:
+                        if "# wmlscope: start ignoring" in line:
+                            if warnlevel > 0:
+                                print '"%s", line %d: starting ignoring (reference pass)' \
+                                      % (fn, n+1)
+                            ignoreflag = True
+                        elif "# wmlscope: stop ignoring" in line:
+                            if warnlevel > 0:
+                                print '"%s", line %d: stopping ignoring (reference pass)' \
+                                      % (fn, n+1)
+                            ignoreflag = False
                         m = re.search("# *wmlscope: warnlevel ([0-9]*)", line)
                         if m:
                             warnlevel = int(m.group(1))
@@ -471,7 +484,7 @@ class CrossRef:
                         line = fields[0]
                         if len(fields) > 1:
                             comment = fields[1]
-                    if not line:
+                    if ignoreflag or not line:
                         continue
                     # Find references to macros
                     for match in re.finditer(CrossRef.macro_reference, line):
