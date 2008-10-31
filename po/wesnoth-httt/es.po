@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-16 23:46+0200\n"
+"POT-Creation-Date: 2008-10-31 12:00+0100\n"
 "PO-Revision-Date: 2008-02-05 15:28+0100\n"
 "Last-Translator: Sergi March <sergi.march@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -250,7 +250,7 @@ msgstr "Konrad"
 #. [side]: type=Dwarvish Lord
 #. [side]: type=Grand Knight
 #. [side]: type=Fighter
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Champion
 #. [side]: type=Elvish Druid
 #. [side]
 #. [side]: type=Ancient Wose
@@ -333,7 +333,7 @@ msgstr "Knafa-Tan"
 msgid "Maga-Knafa"
 msgstr "Maga-Knafa"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Champion
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:202
 msgid "Galdrad"
 msgstr "Galdrad"
@@ -3419,9 +3419,10 @@ msgstr "¡Lo hemos cruzado sanos y salvos! ¿Dónde vamos ahora?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:413
+#, fuzzy
 msgid ""
 "If we are to have any hope of penetrating into Knalga, we must continue "
-"north to seek help from the Dwarves of the Deep Mountains in the north."
+"north to seek help from the Dwarves of the Heart Mountains in the north."
 msgstr ""
 "Si queremos tener alguna posibilidad de entrar en Knalga, debemos continuar "
 "al norte para buscar la ayuda de los enanos de las Montañas Profundas."
@@ -6536,10 +6537,11 @@ msgstr ""
 
 #. [unit]: type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:377
-msgid "Eonihar"
-msgstr "Eonihar"
+#, fuzzy
+msgid "Telerandor"
+msgstr "Delfador"
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #. [message]: speaker=Glarilon
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:394
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:539
@@ -6548,10 +6550,13 @@ msgstr "¡Mis señores! Os he encontrado al fin."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:399
-msgid "Greetings, Eonihar, old friend! Why have you been searching for us?"
+#, fuzzy
+msgid ""
+"Greetings, Telerandor, herald of Lintanir! Why have you been searching for "
+"us?"
 msgstr "¡Buenas, Eonihar, mi viejo amigo! ¿Por qué nos buscáis?"
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:404
 msgid ""
 "When my lord learned of your coming, he sent riders out looking for you! "
@@ -6565,7 +6570,7 @@ msgstr ""
 msgid "Trouble? What kind of trouble?"
 msgstr "¿Peligro? ¿Qué tipo de peligro?"
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:414
 #, fuzzy
 msgid ""
@@ -6582,7 +6587,7 @@ msgstr ""
 msgid "I only hope we can avoid them. We will have to bear north-east."
 msgstr "Espero que podamos evitarlos. Giraremos hacia el noreste."
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:423
 msgid ""
 "That is not all, my lord. The foul orcs have heard of the coming of these "
@@ -6622,7 +6627,7 @@ msgstr ""
 "de vuestro lado hasta que consiguiésemos escapar de estas tierras, ¡y lo "
 "mantendré!"
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:439
 msgid ""
 "Sir, madam, there is no time to lose! You must make it east, to the home of "
@@ -6641,7 +6646,7 @@ msgstr ""
 "haciendo la guerra en esta misma llanura que tenemos delante. ¿Proponéis "
 "acaso que volemos hasta los grandes bosques del este?"
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:447
 msgid ""
 "My lord, you must rush across the field before the main host of each army "
@@ -6661,7 +6666,7 @@ msgstr "Temía que dijerais eso."
 msgid "Come then, Konrad, let us go. We will do what must be done."
 msgstr "Vamos, Konrad, marchémonos. Haremos lo que tenemos que hacer."
 
-#. [message]: speaker=Eonihar
+#. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:459
 msgid ""
 "My lord has begun assembling a party of elves to come and escort you into "
@@ -8836,6 +8841,9 @@ msgstr ""
 "Huyendo hacia Aethenwood, más allá de la frontera sudoccidental de Wesnoth, "
 "Delfador puso al pequeño Konrad bajo la protección de los elfos, viendo con "
 "tristeza cómo el reino de terror de Asheviere se empezaba a extender..."
+
+#~ msgid "Eonihar"
+#~ msgstr "Eonihar"
 
 #~ msgid ""
 #~ "At last, friends, we have almost reached the home of my people, the North "

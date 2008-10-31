@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-12 14:37+0200\n"
+"POT-Creation-Date: 2008-10-31 12:01+0100\n"
 "PO-Revision-Date: 2008-10-03 19:59+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -110,7 +110,7 @@ msgstr "Bayrağı Dalgalandırmak"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:27
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:40
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:17
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:39
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:41
 msgid "Deoran"
 msgstr "Deoran"
 
@@ -135,7 +135,7 @@ msgstr "Deoran"
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:31
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:44
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:20
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:42
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:44
 msgid "South Guard"
 msgstr "Güney Karakolu"
 
@@ -185,7 +185,7 @@ msgstr "Nehir kalesini araştır"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:201
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:249
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:332
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:790
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:505
 msgid "Death of Deoran"
 msgstr "Deoran'ın ölümü"
 
@@ -207,7 +207,6 @@ msgstr "Deoran'ın ölümü"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:209
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:257
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:344
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:806
 msgid "Time runs out"
 msgstr "Ellerin bitimi"
 
@@ -368,7 +367,7 @@ msgstr "Urza Matin’i öldür"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:205
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:253
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:336
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:794
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:509
 msgid "Death of Sir Gerrick"
 msgstr "Bay Gerik’in ölümü"
 
@@ -623,7 +622,7 @@ msgid "My days of pillage and plunder are over! My brothers will avenge me..."
 msgstr "Talan ve yağma günlerim sona erdi! Kardeşlerim intikamımı alacak..."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:632
+#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:637
 msgid ""
 "He is dead! Congratulations, commander. We thought we would never see "
 "reinforcements - Did Sir Loris send you from Westin?"
@@ -632,7 +631,7 @@ msgstr ""
 "düşünmemiştik -  Sizi Vestin'den Bay Loris mi gönderdi?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:637
+#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:642
 msgid ""
 "No. I have been sent by King Haldric to take command of the South Guard. The "
 "King has heard no news in weeks. How long have you and your men been shut up "
@@ -643,7 +642,7 @@ msgstr ""
 "zamandır bu hisarda kapalı duruyorsunuz?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:642
+#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:647
 msgid ""
 "Almost two months. Sir Loris took one of our patrols along the Westin road "
 "and never returned; and the next night, bandits struck and killed eight of "
@@ -656,7 +655,7 @@ msgstr ""
 "Kralın adam göndereceğini hiç ummuyorduk."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:648
+#: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:653
 msgid ""
 "This is worse than even my darkest fears. We must ride to Westin at once, "
 "and hope that Sir Loris is there and well! Come men! Ride for Westin!"
@@ -825,7 +824,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:328
-msgid "Kill Urza Nalmath, the bandit leader."
+#, fuzzy
+msgid "Kill Urza Nalmath, the bandit leader"
 msgstr "Haydutbaşı Urza Nalmat'ı öldür."
 
 #. [objective]: condition=lose
@@ -840,7 +840,7 @@ msgstr "Haydutbaşı Urza Nalmat'ı öldür."
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:646
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:284
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:340
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:798
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:513
 msgid "Death of Minister Hylas"
 msgstr "Bakan Haylas'ın ölümü"
 
@@ -877,7 +877,7 @@ msgstr ""
 "dönüp Haldrik'e kaybımızı anlatmalıyım..."
 
 #. [message]: speaker=Urza Nalmath
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:446
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:455
 msgid ""
 "Now the Guard will feel the wrath of my new friends! It is time for the dead "
 "to wage war! Rise, warriors!"
@@ -886,12 +886,12 @@ msgstr ""
 "sürdürecek! Mezarlarınızdan kalkın cengaverlerim!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:451
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:460
 msgid "What devilry is this?! Those are no living men that fight for him!"
 msgstr "Nasıl şeytanlık bu?! Askerleri canlı değil!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:455
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:464
 msgid ""
 "He has made some pact with the undead. How could a mere brigand have gained "
 "such great powers?"
@@ -900,12 +900,12 @@ msgstr ""
 "güçlere sahip olabiliyor?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:459
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:468
 msgid "However he has done this fell thing, we must defeat him!"
 msgstr "Bu korkunç şeyi nasıl yapmışsa yapmış, bizim onu yok etmemiz lazım!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:466
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:475
 msgid ""
 "Not only will Minister Hylas's arcane attack melt undead bones, but he can "
 "also heal wounded units near him."
@@ -915,32 +915,33 @@ msgstr ""
 "iyileştirebilir."
 
 #. [message]: speaker=Urza Nalmath
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:486
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:499
 msgid "Leave nothing standing! Burn their villages down and kill them all!"
 msgstr "Taş üstüne taş bırakmayın! Köylerini yakın ve hepsini öldürün!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:490
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:503
 msgid "We will avenge your brother's death!"
 msgstr "Kardeşinin ölümünün intikamını alacağız!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:494
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:507
 msgid "They are burning our villages! We must stop them!"
 msgstr "Köylerimizi yakıyorlar! Onları durdurmalıyız!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:533
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:546
 msgid "My brother has died unavenged! What have we done!?"
 msgstr "Kardeşimin intikamnı alamadım! Ne yaptık biz!?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:538
-msgid "Commander, how can a bandit have summoned undead?"
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:556
+#, fuzzy
+msgid "How can a bandit have summoned undead?"
 msgstr "Kumandan, bir haydut nasıl yarı ölüleri çağırabilir?"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:543
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:561
 msgid ""
 "Just before the bandit raids began, an ambassador came to Sir Loris from the "
 "elves of the Aethenwood west of here. He asked that a knight be sent to "
@@ -951,12 +952,12 @@ msgstr ""
 "gönderilmesini istedi."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:548
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:566
 msgid "And did Sir Loris go to the elves?"
 msgstr "Ve Bay Loris eflerle mi gitti?"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:553
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:571
 msgid ""
 "No. He suspected the elves of some trickery and made no reply to them. "
 "Perhaps they know the origin of these dead warriors we now face."
@@ -966,7 +967,7 @@ msgstr ""
 "evvelden biliyorlardı."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:558
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:576
 msgid ""
 "My men have been trained to fight the living. I do not know that we can "
 "protect the city from foes so dark as these. I shall go meet the elves and "
@@ -978,7 +979,7 @@ msgstr ""
 "olmayacağını öğreneceğim."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:563
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:581
 msgid ""
 "I will accompany you, my lord. I have studied the arts of holy magic and my "
 "skill may be of some use against the dark ones."
@@ -987,7 +988,7 @@ msgstr ""
 "almıştım. Benim yeteneklerim bu karanlık şeylere karşı belki bir işe yarar."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:568
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:586
 msgid ""
 "Deoran sent a rider to request mounted reinforcements and set out at once "
 "towards the Aethenwood..."
@@ -1104,7 +1105,7 @@ msgstr ""
 "Ne yaptık biz?! Yarı ölü dostlarımız bile bu kumandanın karşısında duramıyor!"
 
 #. [message]: role=second
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:246
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:251
 msgid ""
 "I hope that's the last of the bandits! How many more of these foul undead "
 "must we fight?"
@@ -1113,7 +1114,7 @@ msgstr ""
 "ölülerle?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:253
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:258
 msgid ""
 "If we are to check the advance of the dead, I must reach the home of the "
 "elves!"
@@ -1122,64 +1123,64 @@ msgstr ""
 "ulaşmam lazım!"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:268
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:273
 msgid "Linderion"
 msgstr "Linderyon"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:269
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:274
 msgid "Mithalwe"
 msgstr "Mitalve"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:270
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:275
 msgid "Sidaurios"
 msgstr "Sidoryos"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:271
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:276
 msgid "Eltenmir"
 msgstr "Eltenmir"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:272
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:277
 msgid "Vardanos"
 msgstr "Vardanos"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:273
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:278
 msgid "Talchar"
 msgstr "Talçar"
 
 #. [unit]: type=Elvish Shyde, type=Elvish Druid
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:282
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:287
 msgid "Ethiliel"
 msgstr "Etilyel"
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:296
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:301
 msgid "Halt! Who has entered our citadel without leave?"
 msgstr "Dur! İzin almadan kaleye giren kim?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:301
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:306
 msgid "De..."
 msgstr "De..."
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:306
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:311
 msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
 msgstr "Topraklarımıza girmenin cezası ölümdür, onun için dikkatli konuş."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:312
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:317
 msgid "Deora..."
 msgstr "Deora..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:317
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:322
 msgid ""
 "Stay a moment. This man wears the colors of Wesnoth, and Kalenz told us not "
 "all the folk of Wesnoth are foes of the elves. Tell us, then, what brings "
@@ -1190,7 +1191,7 @@ msgstr ""
 "kutsal Elrat kalesine getiren nedir?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:322
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:327
 msgid ""
 "My lady, we have come to the elves to seek guidance. Bandits and criminals "
 "in our land have summoned the dead to help them plunder our farms and "
@@ -1204,7 +1205,7 @@ msgstr ""
 "hiç bir insan ayak basmamıştı."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:327
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:332
 msgid ""
 "The elves know of the great southern forest, and have walked its paths many "
 "times. What would you do, Deoran?"
@@ -1213,7 +1214,7 @@ msgstr ""
 "vardır. İsteğin nedir, Deoran?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:332
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:337
 msgid ""
 "I would lead my men south of the river to find the source of these beings of "
 "darkness that we might destroy it. For surely, ere that be done, we cannot "
@@ -1224,7 +1225,7 @@ msgstr ""
 "dayanamayız."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:337
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:342
 msgid ""
 "Indeed you are brave to face such foes. But I fear that alone you will fail "
 "and fall. One elf now lives who remembers the secrets of the undead that we "
@@ -1238,7 +1239,7 @@ msgstr ""
 "Sizi ona götürürüm."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:343
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:348
 msgid "My thanks, lady."
 msgstr "Teşekkür ederim, hanımefendi."
 
@@ -1267,7 +1268,7 @@ msgstr "Mal Akayi"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:100
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:135
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:76
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:78
 msgid "Undead"
 msgstr "Yarı Ölüler"
 
@@ -1426,27 +1427,27 @@ msgstr ""
 "Bu lanetli yarı ölülere katılmayacağım! Beni derinlere gömün arkadaşlarım..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:288
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:293
 msgid "You shall not die in vain! My bodyguard will avenge you!"
 msgstr "Sen boş yere ölmeyeceksin! Benim koruyucum senin intikamını alacak!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:293
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:298
 msgid "You have a bodyguard?!"
 msgstr "Senin bir koruyucun mu var?!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:298
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:303
 msgid "You have a bodyguard?!!"
 msgstr "Senin bir koruyucun mu var?!!"
 
 #. [unit]: type=Elvish Ranger
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:351
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:356
 msgid "Elvish Bodyguard"
 msgstr "Elf Koruyucu"
 
 #. [message]: speaker=Elvish Bodyguard
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:374
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:383
 msgid ""
 "We stand ready, my lady, to protect you! We shall lead these men of Wesnoth "
 "into the fray!"
@@ -1454,17 +1455,17 @@ msgstr ""
 "Hanımefendi, sizi koruyacağız. Wesnoth'lu bu insanlara da yol göstereceğiz."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:386
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:395
 msgid "For my lady I fall..."
 msgstr "Hanımefendi başaramadım..."
 
 #. [message]: speaker=Mal A'kai
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:398
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:407
 msgid "Finally, release! Thank you, my friends..."
 msgstr "Sonunda, özgürüm! Teşekkürler size, arkadaşlarım..."
 
 #. [message]: speaker=Jera Ilras
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:443
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:457
 msgid ""
 "You're too late! You'll never find our stronghold, and even if you did, what "
 "can you do against the dead!"
@@ -1473,42 +1474,42 @@ msgstr ""
 "yapabilirsin ki!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:448
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:462
 msgid "You, at least, will trouble us no more!"
 msgstr "En azından, sen artık sorun olmayacaksın!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:500
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:519
 msgid "Mebrin! Are you there? We have come to seek your aid!"
 msgstr "Mebrin! Orda mısın? Senden yardım istemeye geldik!"
 
 #. [message]: speaker=narrator
 #. [message]: speaker=Kramak
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:505
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:516
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:524
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:535
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:365
 msgid "..."
 msgstr "(ses yok)"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:511
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:530
 msgid "Mebrin! Where are you?!"
 msgstr "Mebrin! Neredesin?!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:522
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:541
 msgid ""
 "His home is empty... There are footprints leading away to the south... What "
 "can have happened here?"
 msgstr "Evi boş... Güneye giden ayak izleri var... Burada neler olmuş, acaba?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:527
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:546
 msgid "Maybe whoever summoned these undead knows where he is?"
 msgstr "Bu yarı ölüleri kim çağırmışsa o biliyor olabilir mi?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:532
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:551
 msgid ""
 "There is no blood here, yet no Mebrin. Someone must have kidnapped him. But "
 "the undead would have slain him and made him one of them. Who then can have "
@@ -1518,12 +1519,12 @@ msgstr ""
 "onu öldürür ve kendilerinden biri yaparlardı. O zaman kim götürmüş olabilir?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:537
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:556
 msgid "Maybe the bandits who have been summoning the undead took him?"
 msgstr "Bu yarı ölüleri çağıran Haydutlar götürmüş olmasın?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:543
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:562
 msgid ""
 "We must follow these footprints into the woods! Whoever took our greatest "
 "sage must pay! Nothing will stop the vengeance of the elves!"
@@ -1532,7 +1533,7 @@ msgstr ""
 "götürmüşse bunu ödeyecek! Elflerin intikamını hiç birşey durduramaz!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:548
+#: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:567
 msgid ""
 "Well, vengeance or no, if you will lead us into the forest, we will follow "
 "you and battle the undead!"
@@ -1559,8 +1560,8 @@ msgstr "Grut"
 
 #. [side]: type=Lich
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:130
-msgid "Mal M'brin"
-msgstr "Mal Embrin"
+msgid "?"
+msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:201
@@ -1838,7 +1839,7 @@ msgstr "Yarı ölü kaynağını bul ve yok et"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:587
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:802
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:517
 msgid "Death of Urza Afalas"
 msgstr "Urza Afalas'ın ölümü"
 
@@ -1869,7 +1870,7 @@ msgstr "Urza Afalas'ın ölümü"
 #. [message]: speaker=Urza Afalas
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:679
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:820
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1044
 msgid "Now I pay for my crimes. But how many others will also suffer for them?"
 msgstr ""
 "Ben artık suçlarımın cezasını ödüyorum. Ama daha kaç kişi onlar için eziyet "
@@ -1893,7 +1894,7 @@ msgid "Graar!"
 msgstr "Groar!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:738
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:736
 msgid ""
 "Well! That was easier than I thought it'd be. Looks like the undead aren't "
 "so tough after all!"
@@ -1902,45 +1903,81 @@ msgstr ""
 "dayanıklı değilmiş!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:743
-msgid ""
-"Indeed. The dark king has fallen. Now that the elves have abandoned us, our "
-"lives depend on Urza Afalas. Will you lead us from this accursed forest?"
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:741
+msgid "Indeed. The dark king has fallen."
 msgstr ""
-"Öyle. Kara kral düştü. Elfler de bizi terk etti, artık yaşamımız Urza "
-"Afalas'a bağlı. Bize bu lanetli ormanda yol gösterecek misin?"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:747
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:745
 msgid ""
-"What choice do I have? My life is in as much danger as yours. I will lead "
-"you and your men back to the lands of Wesnoth if you will grant me pardon."
+"I'm afraid it is not so. This was not the real Mebrin we destroyed, but a "
+"mere phantom. He resides in catacombs deep underneath the castle, but they "
+"cannot be entered without magical means."
+msgstr ""
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:750
+msgid ""
+"We spared your life in order to defeat the source of these undead, and now "
+"you tell us we cannot even reach it?! Ethiliel could have dispelled these "
+"magical wards if we hadn't fallen for your lies!"
+msgstr ""
+
+#. [message]: speaker=Urza Afalas
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:754
+msgid ""
+"If I had told you, you and the elves would have killed me! I didn't have a "
+"choice!"
+msgstr ""
+
+#. [message]: speaker=Sir Gerrick
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:758
+msgid "Maybe we should correct the mistake now."
+msgstr ""
+
+#. [message]: speaker=Urza Afalas
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:762
+#, fuzzy
+msgid ""
+"Then you would surely be lost in these woods forever at the mercy of the "
+"undead. I can lead you and your men back to the lands of Wesnoth if you will "
+"grant me pardon."
 msgstr ""
 "Başka çare var mı? Benim hayatımda en az sizin ki kadar tehlikede. Eğer bana "
 "bir özrü garanti ederseniz sizi ve adamlarınızı Wesnoth topraklarına geri "
 "götürebilirim."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:751
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:767
 msgid ""
-"I cannot promise clemency, as that decision must be made by the council at "
-"Westin, but I will plead your case."
+"Now that the elves have abandoned us, that seems to be our only choice. But "
+"what about Mebrin? The undead will keep attacking our homes unless we root "
+"them out at the source."
 msgstr ""
-"Sana müsamaha gösterilmesi için söz veremem, çünkü senin hakkında kararı "
-"Vestin'deki konsey verecek, ama seni savunurum."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:755
-msgid "More than that I cannot ask."
-msgstr "Bundan daha fazlasını isteyemem."
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:771
+msgid ""
+"I do not know. But if we cannot storm his underground fortress we must flee "
+"or wait here and certainly perish fighting him on his own terms. I know that "
+"he will march to ravage your city of Westin with all his might soon, and "
+"that the city cannot hold out against such a force unprepared."
+msgstr ""
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:776
+msgid ""
+"Then we shall retreat back towards Westin and prepare for the oncoming "
+"battle. I only hope our only chance at victory was not lost today."
+msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:766
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:787
 msgid "We have beaten them both, criminals and undead!"
 msgstr "Haydutlar ve yarı ölüler, her ikisini de yendik."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:771
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:792
 msgid ""
 "We should make haste to return to Wesnoth before the harvest. Fall has "
 "already been upon us for some time."
@@ -1948,7 +1985,7 @@ msgstr ""
 "Harman zamanı gelmeden Wesnoth'a geri dönmeliyiz. Sonbahar gelmek üzere."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:775
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:796
 msgid ""
 "Do not be so hasty; great mages are no mere tricksters to be defeated so "
 "easily. I fear that there are tunnels and catacombs buried beneath his "
@@ -1962,15 +1999,22 @@ msgstr ""
 "şeytanın evini temizlemek istiyorsak, karanlığa dalmalı ve onu orada "
 "yenmeliyiz."
 
+#. [message]: speaker=Ethiliel
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:800
+msgid ""
+"There are strong magical wards placed here that would prevent you from "
+"entering, but I am capable of opening them to let us all pass."
+msgstr ""
+
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:780
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:805
 msgid "My men are not dwarves! How are we to fight in catacombs and tunnels?"
 msgstr ""
 "Benim adamlarım cüce değil! Yeraltı mezarlıklarında ve tünellerde nasıl "
 "savaşırız?"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:784
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:809
 msgid ""
 "Someone must take news back to Wesnoth of this new evil that lurks near our "
 "borders. Who knows how many more of these undead are hiding in the forest."
@@ -1980,7 +2024,7 @@ msgstr ""
 "gizleniyordur..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:788
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:813
 msgid ""
 "Go, Sir Gerrick, and take with you an escort of elves, if Ethiliel will "
 "permit it."
@@ -1988,12 +2032,12 @@ msgstr ""
 "Gidin Bay Gerik. Eğer Etilyel izin verirse, yanınıza bir de elf gurubu alın."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:792
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:817
 msgid "Indeed I do. My kinsfolk will protect you and your message!"
 msgstr "Elbette veririm. Soydaşlarım seni ve haberlerini koruyacaklar!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:796
+#: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:821
 msgid ""
 "Fare well, Deoran! I will be there to greet you when you return to Kerlath "
 "Province."
@@ -2281,201 +2325,107 @@ msgid "The Long March"
 msgstr "Uzun Yürüyüş"
 
 #. [side]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:101
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:103
 msgid "Elves"
 msgstr "Elfler"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:120
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:302
 msgid "Fssth"
 msgstr "Fıssıt"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:123
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:127
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:305
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:309
 msgid "Wizzi"
 msgstr "Fizzi"
 
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:490
-msgid ""
-"We have to go even further west. There are elves living to the north, and I "
-"don't think they'll receive us too kindly!"
-msgstr ""
-"Daha da batıya gitmeliyiz. Kuzeyde yaşayan elfler var ve bize dostça "
-"davranacaklarını düşünmüyorum!"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:491
-msgid "Come on! Hurry!"
-msgstr "Haydi! Acele edin!"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:492
-msgid "Keep moving!"
-msgstr "İlerlemeye devam!"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:493
-msgid "We're almost there!"
-msgstr "Neredeyse vardık!"
-
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:494
-msgid "Just a little further!"
-msgstr "Biraz daha öteye!"
-
-#. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:688
-msgid "You humans have kidnaped Mebrin the Sage. You will pay for your crimes."
-msgstr ""
-"Siz insanlar Bilge Mebrin’i kaçırdınız. Suçunuzun cezasını çekeceksiniz."
-
-#. [message]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:692
-msgid ""
-"Your sage Mebrin is the criminal. He practices necromancy and has turned "
-"himself into a lich. By the laws of Wesnoth, the punishment for his crimes "
-"is death!"
-msgstr ""
-"Bilge Mebrin’iniz suç işledi. Nekromanlığı denemeye kalktı ve bir umacıya "
-"dönüştü. Wesnoth yasalarına göre bu suçun cezası ölümdür."
-
-#. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:697
-msgid ""
-"It is you who is a criminal and who is in a company of criminals. We will "
-"not let you kill Mebrin!"
-msgstr ""
-"Asıl suçlular haydut arkadaşlarınız ve sizlersiniz. Mebrin’i öldürmenize "
-"izin vermeyeceğiz!"
-
-#. [message]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:701
-msgid ""
-"I was a fool to waste my words on you. Prepare to meet your beloved Mebrin - "
-"or should I say Mal M'brin - in hell, elves!"
-msgstr ""
-"Ben boşa mı konuşuyorum? Aziz Mebrin’inize kavuşmaya hazırlanın, Elfler! "
-"Yoksa cehennemlik Mal Embrin mi demeleydim?"
-
-#. [message]: race=elf
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:714
-msgid "Get them!"
-msgstr "Getirin onları!"
-
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:732
-msgid ""
-"Deoran and Urza Afalas led their men quickly from the ruins of Mal M'brin's "
-"fortress..."
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:449
+#, fuzzy
+msgid "Deoran and Urza Afalas led their men quickly from Mebrin's fortress..."
 msgstr ""
 "Deoran ve Urza Afalas adamlarını hızlıca Mal Embrin’in kalesinin "
 "yıkıntılarından çıkardılar."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:738
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:468
 msgid "Will this forest ever end? How can we know what path to take?!"
 msgstr "Bu orman bitmeyecek mi? Ne kadar yol aldığımızı nasıl bileceğiz?!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:742
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:472
 msgid ""
-"You have to follow me! There are many false paths in these woods. Some are "
-"dead ends, others are even worse!"
+"You have to follow me! I have often travelled these woods avoiding the elves "
+"with my comrades, and I know a secret path through it."
 msgstr ""
-"Beni takip etmelisiniz! Ormanda bir sürü yanlış yol vardır. Bazıları bir "
-"yere çıkmazken bazılarının sonu gerçekten kötü biter!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:746
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:476
 msgid "Can we trust him? His people are murderers and thieves!"
 msgstr "Ona güvenebilir miyiz? Adamları katiller ve hırsızlar!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:750
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:480
 msgid ""
 "Do we have any choice? Our food is running out, and it will be winter soon..."
 msgstr "Başka çaremiz var mı? Erzakımız bitiyor ve kış kapıda..."
 
-#. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:771
-msgid ""
-"This way! The only ford is a bit west of here, and the path to the north "
-"will lead you into trouble!"
-msgstr ""
-"Bu taraftan! Tek kale buranın batısında, kuzeye giden yol sizi tehlikeye "
-"götürür."
-
-#. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:776
-msgid ""
-"I think we should head north. The road leads north, and the ford is north. "
-"Why does he want us to head west?"
-msgstr ""
-"Bence kuzeye gitmeliyiz. Yol kuzeye gidiyor ve kale de kuzeyde. Bizi niye "
-"batıya götürmek istiyor?"
-
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:780
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:484
 msgid ""
-"Beware! I sense that there are undead monsters who have escaped Mal M'brin's "
-"control running around in that area."
+"Beware! I sense that there are many undead creatures chasing us. We should "
+"move quickly."
 msgstr ""
-"Dikkat, gözünüzü dört açın! Bu çevrede Mal Embrin’in denetiminden kaçmış "
-"yarı ölü yaratıkların varlığını hissediyorum."
+
+#. [message]: speaker=Urza Afalas
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:488
+msgid "Let us go quickly, then. I will show you the way."
+msgstr ""
+
+#. [message]: speaker=Urza Afalas
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:495
+msgid ""
+"Remember that these woods are crawling with elves, and I don't think they'll "
+"receive us too kindly. Stay on the path and perhaps we can avoid at least "
+"most of them."
+msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:786
-msgid "Make your way to the north edge of the woods"
-msgstr "Ormanın kuzey kenarına ulaş"
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:501
+#, fuzzy
+msgid "Move Deoran through the woods and over the river"
+msgstr "Deoran'ı kuzey ormanlarındaki Elf şehrine götür"
+
+#. [objectives]
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:521
+msgid ""
+"At the start of each turn, Urza Afalas will reveal as much of the secret "
+"path as is within his vision range."
+msgstr ""
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:889
-msgid "Hurry! There are bandits in these woods!"
-msgstr "Çabuk! Ormanda haydutlar var!"
-
-#. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:893
-msgid "Why should that worry us?! Aren't you their leader?"
-msgstr "Bu bizi niye endişelendirsin ki? Sen onların lideri değil misin?"
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:707
+msgid "Just a little further!"
+msgstr "Biraz daha öteye!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:897
-msgid "We're bandits, after all. Not all of them are loyal to me."
-msgstr "Eninde sonunda biz haydutuz. Hiçbiri bana sadık değildir."
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:726
+msgid "We're almost there!"
+msgstr "Neredeyse vardık!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:911
-msgid "The river is just ahead!"
-msgstr "Nehir hemen önümüzde!"
-
-#. [message]: type=Trapper
-#. [message]: type=Poacher
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:938
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:942
-msgid "The elves payed us well to kill you."
-msgstr "Elfler sizi öldürmemiz için para verdi."
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:745
+msgid "Come on! Hurry!"
+msgstr "Haydi! Acele edin!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:946
-msgid "You bastards!"
-msgstr "Vay Alçaklar!"
-
-#. [message]: type=Thief
-#. [message]: type=Rogue
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:950
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:954
-msgid "You would have done the same to us if you were in our place!"
-msgstr "Bizim yerimizde siz olsaydınız aynını bize siz yapardınız!"
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:764
+msgid "Keep moving!"
+msgstr "İlerlemeye devam!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:958
-msgid "I probably would have..."
-msgstr "Büyük ihtimalle..."
-
-#. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:971
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:788
 msgid ""
 "From here you can see the banks of the river! Across it we will find the sun "
 "again, and an end to these cursed trees!"
@@ -2483,57 +2433,73 @@ msgstr ""
 "Buradan nehrin kıyısını görebilirsin! Nehri geçince bu lanetli orman sona "
 "erecek ve tekrar güneşi görebileceğiz!"
 
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:984
-msgid "Jesa"
-msgstr "Jesa"
+#. [message]: race=elf
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:842
+#, fuzzy
+msgid ""
+"You humans have kidnapped Mebrin the Sage. You will pay for your crimes."
+msgstr ""
+"Siz insanlar Bilge Mebrin’i kaçırdınız. Suçunuzun cezasını çekeceksiniz."
 
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:987
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:992
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:997
-msgid "Plinth"
-msgstr "Plint"
+#. [message]
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:846
+#, fuzzy
+msgid ""
+"Your sage Mebrin is the criminal. He practices necromancy and now commands "
+"an army of undead. By the laws of Wesnoth, the punishment for his crimes is "
+"death!"
+msgstr ""
+"Bilge Mebrin’iniz suç işledi. Nekromanlığı denemeye kalktı ve bir umacıya "
+"dönüştü. Wesnoth yasalarına göre bu suçun cezası ölümdür."
 
-#. [event]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:991
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:996
-msgid "Urien"
-msgstr "Uryen"
+#. [message]: race=elf
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:855
+msgid ""
+"It is you who is a criminal and who is in a company of criminals. We will "
+"not let you kill Mebrin!"
+msgstr ""
+"Asıl suçlular haydut arkadaşlarınız ve sizlersiniz. Mebrin’i öldürmenize "
+"izin vermeyeceğiz!"
 
-#. [message]: speaker=Plinth
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1002
+#. [message]: race=elf
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:889
 msgid "We cannot allow you bandits and criminals to pass through our lands!"
 msgstr ""
 "Sizin gibi haydutların ve suçluların bölgemizden geçmesine izin veremeyiz!"
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1006
-msgid "But we have slain the undead - we wish only to return to our homes!"
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:893
+#, fuzzy
+msgid "We wish only to return to our homes!"
 msgstr "Ama biz yarı ölüyü öldürdük - biz sadece evimize dönmek istiyoruz!"
 
-#. [message]: speaker=Plinth
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1010
+#. [message]: race=elf
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:902
 msgid "Nevertheless, we will have vengeance for Mebrin!!"
 msgstr "Ne olursa olsun, Mebrin’in intikamını alacağız!!"
 
+#. [message]: race=elf
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:936
+msgid "Get them!"
+msgstr "Getirin onları!"
+
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1024
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1071
 msgid "Thank heaven we have escaped that awful forest!"
 msgstr "Tanrıya şükürler olsun ki o korkunç ormandan çıktık!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1028
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1075
 msgid "Indeed, Afalas, you've earned my trust today."
 msgstr "Gerçekten. Sen bugün benim güvenimi kazandın, Afalas."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1032
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1079
 msgid "I can only hope for mercy when I return to Westin."
 msgstr "Vestin’e döndüğümde sadece hoşgörülü davranmalarını umabilirim."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1037
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1084
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr ""
 "Fakat Deoran ve adamlarının arkasından çökmekte olan kara bir bulut vardı..."
@@ -2547,6 +2513,7 @@ msgstr "Derinliklere Doğru"
 #. [side]: type=Ancient Lich
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:54
+#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
 msgid "Mal M'Brin"
 msgstr "Mal Embrin"
 
@@ -3104,7 +3071,7 @@ msgstr ""
 "yeterince zaman kazandırabilmişizdir!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:272
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:276
 msgid ""
 "We will crush Westin as we have crushed you! No one shall stand between us "
 "and our home."
@@ -3199,11 +3166,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
 msgid "The Tides of War"
 msgstr "Savaş Eğilimleri"
-
-#. [side]: type=Ancient Lich
-#: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:51
-msgid "Mal Feras"
-msgstr "Mal Feras"
 
 #. [then]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:147
@@ -4101,3 +4063,105 @@ msgstr ""
 "Wesnoth Şövalyesi Komutan Deoran, Kral Haldrik tarafından bir konsey için "
 "başkent Veldin’e çağrıldı. Rüzgar bulutları ülkede fırtına biçiyordu ve "
 "herkomutan şiddekle saldıran havaya ihtiyaç duyardı..."
+
+#~ msgid "Mal M'brin"
+#~ msgstr "Mal Embrin"
+
+#~ msgid ""
+#~ "Indeed. The dark king has fallen. Now that the elves have abandoned us, "
+#~ "our lives depend on Urza Afalas. Will you lead us from this accursed "
+#~ "forest?"
+#~ msgstr ""
+#~ "Öyle. Kara kral düştü. Elfler de bizi terk etti, artık yaşamımız Urza "
+#~ "Afalas'a bağlı. Bize bu lanetli ormanda yol gösterecek misin?"
+
+#~ msgid ""
+#~ "I cannot promise clemency, as that decision must be made by the council "
+#~ "at Westin, but I will plead your case."
+#~ msgstr ""
+#~ "Sana müsamaha gösterilmesi için söz veremem, çünkü senin hakkında kararı "
+#~ "Vestin'deki konsey verecek, ama seni savunurum."
+
+#~ msgid "More than that I cannot ask."
+#~ msgstr "Bundan daha fazlasını isteyemem."
+
+#~ msgid ""
+#~ "We have to go even further west. There are elves living to the north, and "
+#~ "I don't think they'll receive us too kindly!"
+#~ msgstr ""
+#~ "Daha da batıya gitmeliyiz. Kuzeyde yaşayan elfler var ve bize dostça "
+#~ "davranacaklarını düşünmüyorum!"
+
+#~ msgid ""
+#~ "I was a fool to waste my words on you. Prepare to meet your beloved "
+#~ "Mebrin - or should I say Mal M'brin - in hell, elves!"
+#~ msgstr ""
+#~ "Ben boşa mı konuşuyorum? Aziz Mebrin’inize kavuşmaya hazırlanın, Elfler! "
+#~ "Yoksa cehennemlik Mal Embrin mi demeleydim?"
+
+#~ msgid ""
+#~ "You have to follow me! There are many false paths in these woods. Some "
+#~ "are dead ends, others are even worse!"
+#~ msgstr ""
+#~ "Beni takip etmelisiniz! Ormanda bir sürü yanlış yol vardır. Bazıları bir "
+#~ "yere çıkmazken bazılarının sonu gerçekten kötü biter!"
+
+#~ msgid ""
+#~ "This way! The only ford is a bit west of here, and the path to the north "
+#~ "will lead you into trouble!"
+#~ msgstr ""
+#~ "Bu taraftan! Tek kale buranın batısında, kuzeye giden yol sizi tehlikeye "
+#~ "götürür."
+
+#~ msgid ""
+#~ "I think we should head north. The road leads north, and the ford is "
+#~ "north. Why does he want us to head west?"
+#~ msgstr ""
+#~ "Bence kuzeye gitmeliyiz. Yol kuzeye gidiyor ve kale de kuzeyde. Bizi niye "
+#~ "batıya götürmek istiyor?"
+
+#~ msgid ""
+#~ "Beware! I sense that there are undead monsters who have escaped Mal "
+#~ "M'brin's control running around in that area."
+#~ msgstr ""
+#~ "Dikkat, gözünüzü dört açın! Bu çevrede Mal Embrin’in denetiminden kaçmış "
+#~ "yarı ölü yaratıkların varlığını hissediyorum."
+
+#~ msgid "Make your way to the north edge of the woods"
+#~ msgstr "Ormanın kuzey kenarına ulaş"
+
+#~ msgid "Hurry! There are bandits in these woods!"
+#~ msgstr "Çabuk! Ormanda haydutlar var!"
+
+#~ msgid "Why should that worry us?! Aren't you their leader?"
+#~ msgstr "Bu bizi niye endişelendirsin ki? Sen onların lideri değil misin?"
+
+#~ msgid "We're bandits, after all. Not all of them are loyal to me."
+#~ msgstr "Eninde sonunda biz haydutuz. Hiçbiri bana sadık değildir."
+
+#~ msgid "The river is just ahead!"
+#~ msgstr "Nehir hemen önümüzde!"
+
+#~ msgid "The elves payed us well to kill you."
+#~ msgstr "Elfler sizi öldürmemiz için para verdi."
+
+#~ msgid "You bastards!"
+#~ msgstr "Vay Alçaklar!"
+
+#~ msgid "You would have done the same to us if you were in our place!"
+#~ msgstr "Bizim yerimizde siz olsaydınız aynını bize siz yapardınız!"
+
+#~ msgid "I probably would have..."
+#~ msgstr "Büyük ihtimalle..."
+
+#~ msgid "Jesa"
+#~ msgstr "Jesa"
+
+#~ msgid "Plinth"
+#~ msgstr "Plint"
+
+#~ msgid "Urien"
+#~ msgstr "Uryen"
+
+#~ msgid "Mal Feras"
+#~ msgstr "Mal Feras"

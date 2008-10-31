@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-16 23:44+0200\n"
+"POT-Creation-Date: 2008-10-31 12:12+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -286,8 +286,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:302
-#: src/actions.cpp:1055 src/actions.cpp:1326
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
+#: src/actions.cpp:1056 src/actions.cpp:1327
 msgid "poisoned"
 msgstr "venenita"
 
@@ -2765,7 +2765,7 @@ msgstr ""
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
-"<ref>dst='debug_commands text'='Debug mode commands'</ref>.\n"
+"<ref>dst='debug_commands' text='Debug mode commands'</ref>.\n"
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
@@ -3511,6 +3511,11 @@ msgstr ""
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
+msgstr ""
+
+#. [deprecated_message]
+#: data/core/macros/deprecated-utils.cfg:21
+msgid "VICTORY_AND_DEFEAT_MUSIC is unecessary and can be removed."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -5486,7 +5491,12 @@ msgid "Hard"
 msgstr "Malsimpla"
 
 #. [language]
-#: data/hardwired/english.cfg:10
+#: data/hardwired/english.cfg:6
+msgid "Nightmare"
+msgstr ""
+
+#. [language]
+#: data/hardwired/english.cfg:11
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -5499,7 +5509,7 @@ msgstr ""
 "Nokto: -25% Damaĝo"
 
 #. [language]
-#: data/hardwired/english.cfg:11
+#: data/hardwired/english.cfg:12
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
@@ -5508,7 +5518,7 @@ msgstr ""
 "kondiĉoj"
 
 #. [language]
-#: data/hardwired/english.cfg:15
+#: data/hardwired/english.cfg:16
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -5521,108 +5531,108 @@ msgstr ""
 "Nokto: +25% de damaĝo"
 
 #. [language]
-#: data/hardwired/english.cfg:18
+#: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Ponto $name,Vadejo $name"
 
 #. [language]
-#: data/hardwired/english.cfg:19
+#: data/hardwired/english.cfg:20
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name ŝoseo, $name montpasejo,$name vojo"
 
 #. [language]
-#: data/hardwired/english.cfg:20
+#: data/hardwired/english.cfg:21
 msgid "$name River,River $name"
 msgstr "Rivero $name"
 
 #. [language]
-#: data/hardwired/english.cfg:21
+#: data/hardwired/english.cfg:22
 msgid "$name Forest,$name's Forest"
 msgstr "Arbarao $name"
 
 #. [language]
-#: data/hardwired/english.cfg:22
+#: data/hardwired/english.cfg:23
 msgid "$name Lake"
 msgstr "Lago $name"
 
 #. [language]
-#: data/hardwired/english.cfg:23
+#: data/hardwired/english.cfg:24
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|sepulti, urbo|$name,tono|$name"
 
 #. [language]
-#: data/hardwired/english.cfg:24
+#: data/hardwired/english.cfg:25
 msgid "$name|harbor,$name|port"
 msgstr "Porto $name"
 
 #. [language]
-#: data/hardwired/english.cfg:25
+#: data/hardwired/english.cfg:26
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|,$name|vadejo,$name|kruciĝo,$river|vadejo,$rivero|kunfluejo"
 
 #. [language]
-#: data/hardwired/english.cfg:26
+#: data/hardwired/english.cfg:27
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
 #. [language]
-#: data/hardwired/english.cfg:27
+#: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|,$name|,$name|kampo"
 
 #. [language]
-#: data/hardwired/english.cfg:28
+#: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|ham,$name|ton,$name|wood,$name Arbaro"
 
 #. [language]
-#: data/hardwired/english.cfg:29
+#: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|urbo,$name|burgo,$name|,$name|monto,$name|monteto"
 
 #. [language]
-#: data/hardwired/english.cfg:30
+#: data/hardwired/english.cfg:31
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
 #. [language]
-#: data/hardwired/english.cfg:33
+#: data/hardwired/english.cfg:34
 msgid "melee"
 msgstr "de proksime"
 
 #. [language]
-#: data/hardwired/english.cfg:34
+#: data/hardwired/english.cfg:35
 msgid "ranged"
 msgstr "distance"
 
 #. [language]
-#: data/hardwired/english.cfg:37
+#: data/hardwired/english.cfg:38
 msgid "blade"
 msgstr "klingo"
 
 #. [language]
-#: data/hardwired/english.cfg:38
+#: data/hardwired/english.cfg:39
 msgid "pierce"
 msgstr "piko"
 
 #. [language]
-#: data/hardwired/english.cfg:39
+#: data/hardwired/english.cfg:40
 msgid "impact"
 msgstr "frapo"
 
 #. [language]
-#: data/hardwired/english.cfg:40
+#: data/hardwired/english.cfg:41
 msgid "fire"
 msgstr "fajro"
 
 #. [language]
-#: data/hardwired/english.cfg:41
+#: data/hardwired/english.cfg:42
 msgid "cold"
 msgstr "frosto"
 
 #. [language]
-#: data/hardwired/english.cfg:42
+#: data/hardwired/english.cfg:43
 msgid "arcane"
 msgstr ""
 
@@ -6365,8 +6375,8 @@ msgstr "Pocio de putro"
 msgid "Skip animation"
 msgstr ""
 
-#: src/about.cpp:52 src/multiplayer_connect.cpp:499
-#: src/multiplayer_connect.cpp:626 src/multiplayer_wait.cpp:544
+#: src/about.cpp:52 src/multiplayer_connect.cpp:500
+#: src/multiplayer_connect.cpp:627 src/multiplayer_wait.cpp:544
 msgid "+"
 msgstr "+"
 
@@ -6374,94 +6384,94 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:195 src/help.cpp:3028 src/menu_events.cpp:331
+#: src/about.cpp:195 src/help.cpp:3067 src/menu_events.cpp:331
 #: src/menu_events.cpp:358 src/statistics_dialog.cpp:112
 msgid "Close"
 msgstr "Fermu"
 
-#: src/actions.cpp:151
+#: src/actions.cpp:152
 msgid "You don't have a leader to recruit with."
 msgstr "Vi ne havas komandanton, tial ne eblas varbi."
 
-#: src/actions.cpp:158
+#: src/actions.cpp:159
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Por ke vi povu varbi aŭ alvoki milit-unuojn, vi devas havi en fortreso "
 "komandanton."
 
-#: src/actions.cpp:177
+#: src/actions.cpp:178
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Vi ne havas en fortreso lokon, kien vi povu varbi milit-unuon."
 
-#: src/actions.cpp:276 src/actions.cpp:299 src/actions.cpp:304
+#: src/actions.cpp:277 src/actions.cpp:300 src/actions.cpp:305
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:283
+#: src/actions.cpp:284
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 # undead
-#: src/actions.cpp:1055 src/actions.cpp:1326
+#: src/actions.cpp:1056 src/actions.cpp:1327
 #, fuzzy
 msgid "female^poisoned"
 msgstr "nemortinta"
 
-#: src/actions.cpp:1060 src/actions.cpp:1331
+#: src/actions.cpp:1061 src/actions.cpp:1332
 #, fuzzy
 msgid "female^slowed"
 msgstr "lojala"
 
-#: src/actions.cpp:1060 src/actions.cpp:1331
+#: src/actions.cpp:1061 src/actions.cpp:1332
 msgid "slowed"
 msgstr "malrapidiga"
 
-#: src/actions.cpp:1067 src/actions.cpp:1338
+#: src/actions.cpp:1068 src/actions.cpp:1339
 #, fuzzy
 msgid "female^stone"
 msgstr "potenca"
 
-#: src/actions.cpp:1067 src/actions.cpp:1338
+#: src/actions.cpp:1068 src/actions.cpp:1339
 msgid "stone"
 msgstr "ŝtono"
 
-#: src/actions.cpp:2402
+#: src/actions.cpp:2403
 msgid "Ambushed!"
 msgstr "Atako!"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2410
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2448
+#: src/actions.cpp:2449
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2451
+#: src/actions.cpp:2452
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2456
+#: src/actions.cpp:2457
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2457
+#: src/actions.cpp:2458
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2459
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unuoj videblas! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2467
+#: src/actions.cpp:2468
 msgid "(press $hotkey to keep moving)"
 msgstr "(premu $hotkey por daŭrigi)"
 
@@ -6469,7 +6479,7 @@ msgstr "(premu $hotkey por daŭrigi)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:366 src/dialogs.cpp:1200
+#: src/addon_management.cpp:366 src/dialogs.cpp:1202
 msgid "KB"
 msgstr "KB"
 
@@ -6613,7 +6623,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:737 src/addon_management.cpp:938
-#: src/dialogs.cpp:645 src/menu_events.cpp:211 src/menu_events.cpp:993
+#: src/dialogs.cpp:647 src/menu_events.cpp:211 src/menu_events.cpp:993
 msgid "Name"
 msgstr "Nomo"
 
@@ -6700,7 +6710,7 @@ msgstr "Versio"
 msgid "Downloads"
 msgstr "Enŝutoj"
 
-#: src/addon_management.cpp:939 src/help.cpp:1374 src/menu_events.cpp:210
+#: src/addon_management.cpp:939 src/help.cpp:1407 src/menu_events.cpp:210
 #: src/menu_events.cpp:992 src/menu_events.cpp:1491
 msgid "Type"
 msgstr "Tipo"
@@ -6728,7 +6738,7 @@ msgstr ""
 msgid "Choose the add-on to download."
 msgstr "Elektu kampanjon, kiun vi volas alŝuti."
 
-#: src/addon_management.cpp:1038 src/dialogs.cpp:670 src/menu_events.cpp:1051
+#: src/addon_management.cpp:1038 src/dialogs.cpp:672 src/menu_events.cpp:1051
 #: src/menu_events.cpp:1520
 msgid "Filter: "
 msgstr "Filtrilo:"
@@ -6749,8 +6759,8 @@ msgid ""
 msgstr "Okazis eraro dum kreo de instaldosieroj."
 
 #: src/addon_management.cpp:1092 src/addon_management.cpp:1147
-#: src/dialogs.cpp:280 src/dialogs.cpp:288 src/menu_events.cpp:601
-#: src/multiplayer_create.cpp:534
+#: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:601
+#: src/multiplayer_create.cpp:536
 msgid "Error"
 msgstr "Eraro"
 
@@ -6790,11 +6800,11 @@ msgstr "Aldonaĵo forigita"
 msgid "Add-on could not be deleted properly:"
 msgstr "Aldonaĵo ne forigeblas - dosiero mankas."
 
-#: src/ai.cpp:1655
+#: src/ai.cpp:1782
 msgid "Unknown unit type : "
 msgstr "Nekonata speco de unuo: "
 
-#: src/ai_move.cpp:77
+#: src/ai_move.cpp:76
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
 
@@ -6846,35 +6856,35 @@ msgstr ""
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
-#: src/config_adapter.cpp:159
+#: src/config_adapter.cpp:160
 msgid "Duplicate side definition for side '$side|' found."
 msgstr ""
 
-#: src/dialogs.cpp:118
+#: src/dialogs.cpp:120
 msgid "Advance Unit"
 msgstr "Avanco de milit-unuo"
 
-#: src/dialogs.cpp:119
+#: src/dialogs.cpp:121
 msgid "What should our victorious unit become?"
 msgstr "Kio fariĝu via venka milit-unuo?"
 
-#: src/dialogs.cpp:219
+#: src/dialogs.cpp:221
 msgid "No objectives available"
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/dialogs.cpp:244
+#: src/dialogs.cpp:246
 msgid "Save Game"
 msgstr "Savu ludon"
 
-#: src/dialogs.cpp:254
+#: src/dialogs.cpp:256
 msgid "Quit Game"
 msgstr "Fini la ludon"
 
-#: src/dialogs.cpp:259
+#: src/dialogs.cpp:261
 msgid "Ignore All"
 msgstr "Ignori ĉiujn"
 
-#: src/dialogs.cpp:281
+#: src/dialogs.cpp:283
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -6882,92 +6892,92 @@ msgstr ""
 "Nomoj de savitaj ludoj ne povas enhavi punktokomoj, oblikvaj frakcostrekoj. "
 "Bonvolu elektu alian nomon."
 
-#: src/dialogs.cpp:289
+#: src/dialogs.cpp:291
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Nomoj de savitaj ludoj ne povas fini per '.gz'. Bonvolu elekti alian nomon."
 
-#: src/dialogs.cpp:297
+#: src/dialogs.cpp:299
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Savita ludo kun sama nomo jam ekzistas. Ĉu vi volas reskribi ĝin?"
 
-#: src/dialogs.cpp:298 src/menu_events.cpp:589 src/playcampaign.cpp:423
+#: src/dialogs.cpp:300 src/menu_events.cpp:589 src/playcampaign.cpp:424
 msgid "Name: "
 msgstr "Nomo:"
 
-#: src/dialogs.cpp:299
+#: src/dialogs.cpp:301
 msgid "Overwrite?"
 msgstr "Traskribi?"
 
-#: src/dialogs.cpp:336
+#: src/dialogs.cpp:338
 msgid "Do you really want to delete this game?"
 msgstr "Reale vi volas forviŝi ĉi tiun savitan ludon?"
 
-#: src/dialogs.cpp:338
+#: src/dialogs.cpp:340
 msgid "Don't ask me again!"
 msgstr "Ne demandu denove!"
 
-#: src/dialogs.cpp:505
+#: src/dialogs.cpp:507
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %J"
 
-#: src/dialogs.cpp:525
+#: src/dialogs.cpp:527
 msgid "#(Invalid)"
 msgstr "#(Nevalida)"
 
-#: src/dialogs.cpp:539
+#: src/dialogs.cpp:541
 msgid "Campaign: $campaign_name"
 msgstr "Kampanjo: $campaign_name"
 
-#: src/dialogs.cpp:546
+#: src/dialogs.cpp:548
 msgid "Multiplayer"
 msgstr "Komuna ludo"
 
-#: src/dialogs.cpp:548
+#: src/dialogs.cpp:550
 msgid "Tutorial"
 msgstr "Trejnado"
 
-#: src/dialogs.cpp:556 src/menu_events.cpp:575
+#: src/dialogs.cpp:558 src/menu_events.cpp:575
 msgid "replay"
 msgstr "registro"
 
-#: src/dialogs.cpp:558 src/menu_events.cpp:577
+#: src/dialogs.cpp:560 src/menu_events.cpp:577
 msgid "Turn"
 msgstr "turno"
 
-#: src/dialogs.cpp:560
+#: src/dialogs.cpp:562
 msgid "Scenario Start"
 msgstr "Komenco de scenejo"
 
-#: src/dialogs.cpp:563
+#: src/dialogs.cpp:565
 msgid "Difficulty: "
 msgstr "Komplikeco:"
 
-#: src/dialogs.cpp:565
+#: src/dialogs.cpp:567
 msgid "Version: "
 msgstr "Versio:"
 
-#: src/dialogs.cpp:589 src/dialogs.cpp:605
+#: src/dialogs.cpp:591 src/dialogs.cpp:607
 msgid "%b %d %y"
 msgstr "%t.  %m. %j"
 
-#: src/dialogs.cpp:595
+#: src/dialogs.cpp:597
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:600
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:601
+#: src/dialogs.cpp:603
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:629
+#: src/dialogs.cpp:631
 msgid "No Saved Games"
 msgstr "Nenio estas registrita"
 
-#: src/dialogs.cpp:630
+#: src/dialogs.cpp:632
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -6977,79 +6987,79 @@ msgstr ""
 "Ne eblas alŝuti ludon, ĉar nenia estas savita.\n"
 "(Ludo saviĝas aŭtomate post trairo de scenejo)"
 
-#: src/dialogs.cpp:645
+#: src/dialogs.cpp:647
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:662 src/multiplayer_create.cpp:106
+#: src/dialogs.cpp:664 src/multiplayer_create.cpp:108
 msgid "Load Game"
 msgstr "Legi ludon"
 
-#: src/dialogs.cpp:663
+#: src/dialogs.cpp:665
 msgid "Choose the game to load"
 msgstr "Elektu ludon, kiun vi povas legi"
 
-#: src/dialogs.cpp:677
+#: src/dialogs.cpp:679
 msgid "Show replay"
 msgstr "Montru registron"
 
-#: src/dialogs.cpp:681
+#: src/dialogs.cpp:683
 #, fuzzy
 msgid "Cancel orders"
 msgstr "Nuligo"
 
-#: src/dialogs.cpp:684 src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:686 src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:685 src/dialogs.cpp:1176 src/dialogs.cpp:1278
-#: src/multiplayer_connect.cpp:1038 src/multiplayer_create.cpp:87
+#: src/dialogs.cpp:687 src/dialogs.cpp:1178 src/dialogs.cpp:1280
+#: src/multiplayer_connect.cpp:1039 src/multiplayer_create.cpp:89
 #: src/multiplayer_wait.cpp:193
 msgid "Cancel"
 msgstr "Nuligo"
 
-#: src/dialogs.cpp:688
+#: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr "Forviŝu registritan"
 
-#: src/dialogs.cpp:744
+#: src/dialogs.cpp:746
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:840 src/help.cpp:1243
+#: src/dialogs.cpp:842 src/help.cpp:1259
 msgid "level"
 msgstr "Nivelo"
 
-#: src/dialogs.cpp:853 src/help.cpp:1348
+#: src/dialogs.cpp:855 src/help.cpp:1381
 msgid "HP: "
 msgstr "Sano:"
 
-#: src/dialogs.cpp:856
+#: src/dialogs.cpp:858
 msgid "XP: "
 msgstr "Spertoj:"
 
-#: src/dialogs.cpp:860 src/help.cpp:1349
+#: src/dialogs.cpp:862 src/help.cpp:1382
 msgid "Moves: "
 msgstr "Movoj:"
 
-#: src/game.cpp:581 src/game.cpp:1364
+#: src/game.cpp:573 src/game.cpp:1357
 msgid "The Battle for Wesnoth"
 msgstr "Batalo pri Vesnot"
 
-#: src/game.cpp:863
+#: src/game.cpp:855
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Atentu: La dosiero kiun vi volis alŝuti estas damaĝita. Sed malgraŭ tio mi "
 "provos daŭrigi.\n"
 
-#: src/game.cpp:903 src/multiplayer_connect.cpp:1572
+#: src/game.cpp:895 src/multiplayer_connect.cpp:1573
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/game.cpp:909 src/multiplayer_connect.cpp:1579
+#: src/game.cpp:901 src/multiplayer_connect.cpp:1580
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7057,102 +7067,102 @@ msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/game.cpp:929 src/game.cpp:932 src/multiplayer_connect.cpp:1550
+#: src/game.cpp:921 src/game.cpp:924 src/multiplayer_connect.cpp:1551
 msgid "The file you have tried to load is corrupt: '"
 msgstr "La dosiero, kiun vi volis ŝarĝi, estas damaĝita: '"
 
-#: src/game.cpp:935
+#: src/game.cpp:927
 msgid "File I/O Error while reading the game"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game.cpp:1038
+#: src/game.cpp:1030
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/game.cpp:1042
+#: src/game.cpp:1034
 msgid "Play a campaign"
 msgstr "Ludi kampanjon"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1075
 msgid "Difficulty"
 msgstr "Komplikeco"
 
-#: src/game.cpp:1084
+#: src/game.cpp:1076
 msgid "Select difficulty level:"
 msgstr "Elektu nivelon:"
 
-#: src/game.cpp:1242
+#: src/game.cpp:1235
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Ĉu vi vere volas likvidi ŝin?"
 
-#: src/game.cpp:1243
+#: src/game.cpp:1236
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1247
+#: src/game.cpp:1240
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ne demandu denove!"
 
-#: src/game.cpp:1319
+#: src/game.cpp:1312
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game.cpp:1321 src/playcampaign.cpp:103 src/playcampaign.cpp:388
+#: src/game.cpp:1314 src/playcampaign.cpp:104 src/playcampaign.cpp:389
 msgid "The game could not be loaded: "
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game.cpp:1323 src/playcampaign.cpp:105 src/playcampaign.cpp:391
+#: src/game.cpp:1316 src/playcampaign.cpp:106 src/playcampaign.cpp:392
 msgid "Error while playing the game: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game.cpp:1343 src/playcampaign.cpp:107 src/playcampaign.cpp:394
+#: src/game.cpp:1336 src/playcampaign.cpp:108 src/playcampaign.cpp:395
 msgid "The game map could not be loaded: "
 msgstr "Ne eblis alŝuti ludmapon:"
 
-#: src/game.cpp:1409 src/game.cpp:1530
+#: src/game.cpp:1402 src/game.cpp:1523
 msgid "Error loading game configuration files: '"
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1410 src/game.cpp:1531
+#: src/game.cpp:1403 src/game.cpp:1524
 msgid "' (The game will now exit)"
 msgstr "' (Ludo nun finiĝas)"
 
-#: src/game.cpp:1505
+#: src/game.cpp:1498
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 msgstr[1] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 
-#: src/game.cpp:1512
+#: src/game.cpp:1505
 msgid "ERROR DETAILS:"
 msgstr "DETALOJ DE ERARO:"
 
-#: src/game.cpp:1540
+#: src/game.cpp:1533
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1919
+#: src/game.cpp:1913
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1925
+#: src/game.cpp:1919
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1933
+#: src/game.cpp:1927
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/game.cpp:1942
+#: src/game.cpp:1936
 msgid "Loading title screen."
 msgstr ""
 
@@ -7161,15 +7171,15 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr "Ne valida koloro"
 
-#: src/game_events.cpp:983
+#: src/game_events.cpp:984
 msgid "Victory:"
 msgstr "Venko se:"
 
-#: src/game_events.cpp:986
+#: src/game_events.cpp:987
 msgid "Defeat:"
 msgstr "Malvenko se:"
 
-#: src/game_events.cpp:2220
+#: src/game_events.cpp:2248
 msgid "[store_unit] missing required [filter] tag\n"
 msgstr ""
 
@@ -7178,7 +7188,7 @@ msgstr ""
 msgid "No time of day has been defined."
 msgstr ""
 
-#: src/gamestatus.cpp:748 src/gamestatus.cpp:750 src/playcampaign.cpp:422
+#: src/gamestatus.cpp:748 src/gamestatus.cpp:750 src/playcampaign.cpp:423
 msgid " replay"
 msgstr " registrado"
 
@@ -7186,16 +7196,16 @@ msgstr " registrado"
 msgid "Could not write to file"
 msgstr "Mi ne povas registri en dosieron."
 
-#: src/generate_report.cpp:104
+#: src/generate_report.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Tiu ĉi milit-unuo estas nevidebla. Kontraŭlo povas ĝin nek vidi nek ataki."
 
-#: src/generate_report.cpp:104
+#: src/generate_report.cpp:105
 msgid "invisible: "
 msgstr "nevidebla:"
 
-#: src/generate_report.cpp:109
+#: src/generate_report.cpp:110
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -7204,11 +7214,11 @@ msgstr ""
 "Tiu ĉi milit-unuo estis malrapidigita. Ĝi moviĝas per duona rapido, kaj en "
 "batalo havas unu atakon malpli."
 
-#: src/generate_report.cpp:109
+#: src/generate_report.cpp:110
 msgid "slowed: "
 msgstr "malrapidigita:"
 
-#: src/generate_report.cpp:114
+#: src/generate_report.cpp:115
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7222,210 +7232,215 @@ msgstr ""
 "\n"
 "Veneno ne mortigos la milit-unuon. Kaj SP de milit-unuo ne falos sub 1."
 
-#: src/generate_report.cpp:114
+#: src/generate_report.cpp:115
 msgid "poisoned: "
 msgstr "venenigita:"
 
-#: src/generate_report.cpp:121
+#: src/generate_report.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ĉi tiu milit-unuo ŝtoniĝis. Eblas nek moviĝi nek batali."
 
-#: src/generate_report.cpp:121
+#: src/generate_report.cpp:122
 msgid "stone: "
 msgstr "ŝtonigita:"
 
-#: src/generate_report.cpp:176
+#: src/generate_report.cpp:177
 msgid "Resistances: "
 msgstr "Rezisto:"
 
-#: src/generate_report.cpp:178
+#: src/generate_report.cpp:179
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/generate_report.cpp:197 src/multiplayer_create.cpp:400
+#: src/generate_report.cpp:198 src/multiplayer_create.cpp:402
 msgid "Experience Modifier: "
 msgstr "Modifikatoro de spertoj:"
 
-#: src/generate_report.cpp:268
+#: src/generate_report.cpp:269
 #, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "tuta damaĝo"
 msgstr[1] "tuta damaĝo"
 
-#: src/generate_report.cpp:269
+#: src/generate_report.cpp:270
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/generate_report.cpp:275
+#: src/generate_report.cpp:276
 #, fuzzy, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "tuta damaĝo"
 
-#: src/generate_report.cpp:281
+#: src/generate_report.cpp:282
 #, fuzzy, no-c-format
 msgid "tooltip^% parry"
 msgstr "tuta damaĝo"
 
-#: src/generate_report.cpp:292
+#: src/generate_report.cpp:293
 msgid "weapon range: "
 msgstr ""
 
-#: src/generate_report.cpp:293
+#: src/generate_report.cpp:294
 msgid "damage type: "
 msgstr "damaĝ-speco"
 
-#: src/generate_report.cpp:314
+#: src/generate_report.cpp:315
 msgid "vs"
 msgstr "kontraŭ"
 
-#: src/generate_report.cpp:364
+#: src/generate_report.cpp:365
 msgid "Lawful units: "
 msgstr "Ordemaj milit-unuoj:"
 
-#: src/generate_report.cpp:366
+#: src/generate_report.cpp:367
 msgid "Neutral units: "
 msgstr "Neŭtralaj milit-unuoj:"
 
-#: src/generate_report.cpp:367
+#: src/generate_report.cpp:368
 msgid "Chaotic units: "
 msgstr "Kaosaj milit-unuoj:"
 
-#: src/generate_report.cpp:514
+#: src/generate_report.cpp:515
 msgid "Observers:"
 msgstr "Spektantoj:"
 
-#: src/help.cpp:61
+#: src/help.cpp:64
 msgid "Help"
 msgstr "Helpo"
 
-#: src/help.cpp:1132
+#: src/help.cpp:1135
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Unuoj havantaj tiun specialan atakon'</header>"
 
-#: src/help.cpp:1195
+#: src/help.cpp:1211
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unuoj havantaj tiun kapablon'</header>"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1279
 msgid "Advances from: "
 msgstr "Avanca de: "
 
-#: src/help.cpp:1292
+#: src/help.cpp:1308
 msgid "Advances to: "
 msgstr "Avancu al: "
 
-#: src/help.cpp:1323 src/help.cpp:1573 src/help.cpp:1624
+#: src/help.cpp:1339 src/help.cpp:1606 src/help.cpp:1657
 msgid "race^Miscellaneous"
 msgstr "Diversaj"
 
-#: src/help.cpp:1325
+#: src/help.cpp:1341
 msgid "Race: "
 msgstr "Raso:"
 
-#: src/help.cpp:1332
+#: src/help.cpp:1348
 msgid "Abilities: "
 msgstr "Kapabloj:"
 
-#: src/help.cpp:1350
+#: src/help.cpp:1365
+#, fuzzy
+msgid "Ability Upgrades: "
+msgstr "Kapabloj:"
+
+#: src/help.cpp:1383
 msgid "Cost: "
 msgstr "Kostoj:"
 
-#: src/help.cpp:1351
+#: src/help.cpp:1384
 msgid "Alignment: "
 msgstr "Aparteneco:"
 
-#: src/help.cpp:1357
+#: src/help.cpp:1390
 msgid "Required XP: "
 msgstr "Bezonataj spertoj:"
 
-#: src/help.cpp:1366
+#: src/help.cpp:1399
 msgid "unit help^Attacks"
 msgstr "Atakoj"
 
-#: src/help.cpp:1373
+#: src/help.cpp:1406
 msgid "unit help^Name"
 msgstr "Nomo"
 
-#: src/help.cpp:1375
+#: src/help.cpp:1408
 msgid "Strikes"
 msgstr "Batoj"
 
-#: src/help.cpp:1376
+#: src/help.cpp:1409
 msgid "Range"
 msgstr "Efikdistanco"
 
-#: src/help.cpp:1377
+#: src/help.cpp:1410
 msgid "Special"
 msgstr "Speciale"
 
-#: src/help.cpp:1427
+#: src/help.cpp:1460
 msgid "Resistances"
 msgstr "Rezistoj"
 
-#: src/help.cpp:1431
+#: src/help.cpp:1464
 msgid "Attack Type"
 msgstr "Ataktipo"
 
-#: src/help.cpp:1432
+#: src/help.cpp:1465
 msgid "Resistance"
 msgstr "Rezisto"
 
-#: src/help.cpp:1469
+#: src/help.cpp:1502
 msgid "Terrain Modifiers"
 msgstr "Influo de tereno"
 
-#: src/help.cpp:1473
+#: src/help.cpp:1506
 msgid "Terrain"
 msgstr "Tereno"
 
-#: src/help.cpp:1474
+#: src/help.cpp:1507
 msgid "Defense"
 msgstr "Defendo"
 
-#: src/help.cpp:1475
+#: src/help.cpp:1508
 msgid "Movement Cost"
 msgstr "Kosto de movo"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1663
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unuoj de tiu raso'</header>"
 
-#: src/help.cpp:2564 src/menu_events.cpp:554
+#: src/help.cpp:2597 src/menu_events.cpp:554
 msgid " < Back"
 msgstr "< Reen"
 
-#: src/help.cpp:2565
+#: src/help.cpp:2598
 msgid "Forward >"
 msgstr "Plu >"
 
-#: src/help.cpp:2677
+#: src/help.cpp:2710
 msgid "Reference to unknown topic: "
 msgstr "Referenco al nekonata temo:"
 
-#: src/help.cpp:2931
+#: src/help.cpp:2964
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3031
+#: src/help.cpp:3070
 msgid "The Battle for Wesnoth Help"
 msgstr "Instrukcioj al Batalo por Vesnot"
 
-#: src/help.cpp:3087
+#: src/help.cpp:3126
 msgid "Parse error when parsing help text: "
 msgstr "Eraro ĉe analizado de helpteksto:"
 
-#: src/intro.cpp:105
+#: src/intro.cpp:110
 msgid "Next"
 msgstr "Sekva"
 
-#: src/intro.cpp:106
+#: src/intro.cpp:111
 msgid "Skip"
 msgstr "Saltu"
 
-#: src/intro.cpp:386
+#: src/intro.cpp:391
 msgid "The End"
 msgstr "Fino"
 
@@ -7433,18 +7448,18 @@ msgstr "Fino"
 msgid "System default language"
 msgstr "Laŭnorma lingvo"
 
-#: src/leader_list.cpp:141 src/multiplayer_connect.cpp:220
-#: src/multiplayer_connect.cpp:272
+#: src/leader_list.cpp:141 src/multiplayer_connect.cpp:221
+#: src/multiplayer_connect.cpp:273
 msgid "gender^Random"
 msgstr "Hazarda"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:216
-#: src/multiplayer_connect.cpp:268
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:217
+#: src/multiplayer_connect.cpp:269
 msgid "Female ♀"
 msgstr "Ino ♀"
 
-#: src/leader_list.cpp:155 src/multiplayer_connect.cpp:218
-#: src/multiplayer_connect.cpp:270
+#: src/leader_list.cpp:155 src/multiplayer_connect.cpp:219
+#: src/multiplayer_connect.cpp:271
 msgid "Male ♂"
 msgstr "Malino ♂"
 
@@ -7456,32 +7471,32 @@ msgstr "Hazarda"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:224
+#: src/loadscreen.cpp:226
 msgid "Verifying cache."
 msgstr ""
 
-#: src/loadscreen.cpp:243
+#: src/loadscreen.cpp:245
 msgid "Reading cache."
 msgstr ""
 
-#: src/loadscreen.cpp:262
+#: src/loadscreen.cpp:264
 msgid "Reading unit files."
 msgstr "Legado de dosieroj de militunuoj."
 
-#: src/loadscreen.cpp:281
+#: src/loadscreen.cpp:283
 msgid "Reading files and creating cache."
 msgstr ""
 
-#: src/map.cpp:166
+#: src/map.cpp:167
 msgid "A map without a header is not supported"
 msgstr ""
 
-#: src/mapgen.cpp:721
+#: src/mapgen.cpp:722
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
 #: src/menu_events.cpp:63 src/menu_events.cpp:731 src/menu_events.cpp:733
-#: src/play_controller.cpp:789 src/playcampaign.cpp:116
+#: src/play_controller.cpp:789 src/playcampaign.cpp:117
 msgid "Auto-Save"
 msgstr "Aŭtomata konservado"
 
@@ -7543,11 +7558,11 @@ msgstr "ontri"
 msgid "Leader"
 msgstr "Gvidanto"
 
-#: src/menu_events.cpp:384 src/multiplayer_connect.cpp:1023
+#: src/menu_events.cpp:384 src/multiplayer_connect.cpp:1024
 msgid "Team"
 msgstr "Teamo"
 
-#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1034
+#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1035
 #: src/multiplayer_wait.cpp:538
 msgid "Gold"
 msgstr "Oro"
@@ -7564,7 +7579,7 @@ msgstr "Unuoj"
 msgid "Upkeep"
 msgstr "Elspezoj"
 
-#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:1035
+#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:1036
 #: src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "Enspezo"
@@ -7631,7 +7646,7 @@ msgstr "Konservita"
 msgid "The game has been saved"
 msgstr "La ludo estis konservita"
 
-#: src/menu_events.cpp:601 src/playcampaign.cpp:569
+#: src/menu_events.cpp:601 src/playcampaign.cpp:570
 msgid "The game could not be saved"
 msgstr "Oni ne sukcesis registri la ludon"
 
@@ -8099,8 +8114,8 @@ msgstr "Aliĝu al servilo de Vesnot"
 msgid "Login"
 msgstr "Aliĝo:"
 
-#: src/multiplayer.cpp:217 src/multiplayer_create.cpp:331
-#: src/multiplayer_lobby.cpp:792
+#: src/multiplayer.cpp:217 src/multiplayer_create.cpp:333
+#: src/multiplayer_lobby.cpp:793
 msgid "Password: "
 msgstr "Pasvorto:"
 
@@ -8112,118 +8127,118 @@ msgstr "Al ĉi servilo vi devas aliĝi"
 msgid "Login: "
 msgstr "Aliĝo:"
 
-#: src/multiplayer_connect.cpp:87 src/multiplayer_connect.cpp:501
-#: src/multiplayer_connect.cpp:628
+#: src/multiplayer_connect.cpp:88 src/multiplayer_connect.cpp:502
+#: src/multiplayer_connect.cpp:629
 msgid "Normal"
 msgstr "Normala"
 
-#: src/multiplayer_connect.cpp:497 src/multiplayer_connect.cpp:624
+#: src/multiplayer_connect.cpp:498 src/multiplayer_connect.cpp:625
 #: src/multiplayer_wait.cpp:534 src/multiplayer_wait.cpp:542
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:497 src/multiplayer_connect.cpp:624
+#: src/multiplayer_connect.cpp:498 src/multiplayer_connect.cpp:625
 #: src/multiplayer_wait.cpp:534 src/multiplayer_wait.cpp:545
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:581
+#: src/multiplayer_connect.cpp:582
 #, fuzzy
 msgid "Default AI"
 msgstr "Standarda"
 
-#: src/multiplayer_connect.cpp:657
+#: src/multiplayer_connect.cpp:658
 msgid "(Vacant slot)"
 msgstr "(Vaka loko)"
 
-#: src/multiplayer_connect.cpp:665
+#: src/multiplayer_connect.cpp:666
 msgid "Anonymous local player"
 msgstr "Anonima loka ludanto"
 
-#: src/multiplayer_connect.cpp:687
+#: src/multiplayer_connect.cpp:688
 msgid "Computer player"
 msgstr "Komputilo"
 
-#: src/multiplayer_connect.cpp:690
+#: src/multiplayer_connect.cpp:691
 msgid "(Empty slot)"
 msgstr "(Vaka loko)"
 
-#: src/multiplayer_connect.cpp:697
+#: src/multiplayer_connect.cpp:698
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:828
 #, fuzzy
 msgid "Reserved"
 msgstr "Servilo:"
 
-#: src/multiplayer_connect.cpp:828
+#: src/multiplayer_connect.cpp:829
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:950
+#: src/multiplayer_connect.cpp:951
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "En ĉi tiu lodo estas difinita nenia flanko krom la hazarda"
 
-#: src/multiplayer_connect.cpp:974
+#: src/multiplayer_connect.cpp:975
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Mi ne kapablas trovi komandanton por frakcio $faction"
 
-#: src/multiplayer_connect.cpp:1011
+#: src/multiplayer_connect.cpp:1012
 #, fuzzy
 msgid "Game Lobby: "
 msgstr "Atendejo"
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1031
 msgid "Player/Type"
 msgstr "Ludanto/Speco"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1032
 msgid "Faction"
 msgstr "Frakcio"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1033
 msgid "Team/Gender"
 msgstr "Teamo/Sekso"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1034
 msgid "Color"
 msgstr "Koloro"
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1038
 msgid "I'm Ready"
 msgstr "Mi pretas"
 
-#: src/multiplayer_connect.cpp:1048
+#: src/multiplayer_connect.cpp:1049
 msgid "The scenario is invalid because it has no sides."
 msgstr "La scenejo ne validas, ĉar flankoj ne estas difinitaj."
 
-#: src/multiplayer_connect.cpp:1439
+#: src/multiplayer_connect.cpp:1440
 msgid "Network Player"
 msgstr "Reta ludanto"
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1441
 msgid "Local Player"
 msgstr "Loka ludanto"
 
-#: src/multiplayer_connect.cpp:1441
+#: src/multiplayer_connect.cpp:1442
 msgid "Computer Player"
 msgstr "Komputilo"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1443
 msgid "Empty"
 msgstr "Nenio"
 
-#: src/multiplayer_connect.cpp:1558
+#: src/multiplayer_connect.cpp:1559
 msgid "This is not a multiplayer save"
 msgstr "Tio ĉi estas ne savita reta ludo"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Cannot find era $era"
 msgstr "Mi ne kapablas trovi eraon $era"
 
-#: src/multiplayer_connect.cpp:1699
+#: src/multiplayer_connect.cpp:1700
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8231,289 +8246,289 @@ msgstr ""
 "Venko:\n"
 "@Venku aliajn komandantojn"
 
-#: src/multiplayer_connect.cpp:1759
+#: src/multiplayer_connect.cpp:1760
 msgid "Waiting for players to join..."
 msgstr "Mi atendas aliĝon de ludantoj..."
 
-#: src/multiplayer_create.cpp:51 src/multiplayer_lobby.cpp:675
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:676
 msgid "Create Game"
 msgstr "Kreu ludon"
 
-#: src/multiplayer_create.cpp:64
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr ""
 
-#: src/multiplayer_create.cpp:77
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "Nomo de ludo:"
 
-#: src/multiplayer_create.cpp:80
+#: src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "Erao:"
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "Mapo por ludo:"
 
-#: src/multiplayer_create.cpp:82 src/multiplayer_lobby.cpp:273
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:274
 msgid "Use map settings"
 msgstr "Uzu pozicion el mapo"
 
-#: src/multiplayer_create.cpp:83
+#: src/multiplayer_create.cpp:85
 msgid "Random start time"
 msgstr "Hazarda komenc-tempo"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "Nebulo"
 
-#: src/multiplayer_create.cpp:85 src/multiplayer_lobby.cpp:548
-#: src/multiplayer_lobby.cpp:554
+#: src/multiplayer_create.cpp:87 src/multiplayer_lobby.cpp:549
+#: src/multiplayer_lobby.cpp:555
 msgid "Shroud"
 msgstr "Malkovro de mapo"
 
-#: src/multiplayer_create.cpp:86
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "Spektantoj"
 
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "Denove kreu"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "Alĝustigoj..."
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr ""
 
-#: src/multiplayer_create.cpp:107
+#: src/multiplayer_create.cpp:109
 msgid "Load Game..."
 msgstr "Legado de ludo..."
 
-#: src/multiplayer_create.cpp:143
+#: src/multiplayer_create.cpp:145
 msgid "The maximum number of turns the game can last"
 msgstr "Maksimuma nombro de movoj"
 
-#: src/multiplayer_create.cpp:146
+#: src/multiplayer_create.cpp:148
 msgid "Enables user time limit"
 msgstr ""
 
-#: src/multiplayer_create.cpp:152
+#: src/multiplayer_create.cpp:154
 msgid "Longest time allowed for first turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:158
+#: src/multiplayer_create.cpp:160
 msgid "Longest time possible for any turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:164
+#: src/multiplayer_create.cpp:166
 msgid "Time for general tasks each turn (seconds)"
 msgstr ""
 
-#: src/multiplayer_create.cpp:170
+#: src/multiplayer_create.cpp:172
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:177
 msgid "The amount of income each village yields per turn"
 msgstr "Enspezo el ĉiu vilaĝo por unu turno"
 
-#: src/multiplayer_create.cpp:181
+#: src/multiplayer_create.cpp:183
 msgid "The amount of experience a unit needs to advance"
 msgstr "Aro de spertoj, kiujn la milit-unuo bezonas por avanco"
 
-#: src/multiplayer_create.cpp:184
+#: src/multiplayer_create.cpp:186
 msgid "Use scenario specific settings"
 msgstr "Uzu agordojn de konkreta scenejo"
 
-#: src/multiplayer_create.cpp:187
+#: src/multiplayer_create.cpp:189
 msgid "Randomize time of day in begin"
 msgstr ""
 
-#: src/multiplayer_create.cpp:190
+#: src/multiplayer_create.cpp:192
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "La malamikaj milit-unuoj videblas nur en atingodistanco de propraj milit-"
 "unuoj"
 
-#: src/multiplayer_create.cpp:193
+#: src/multiplayer_create.cpp:195
 msgid "The map is unknown until your units explore it"
 msgstr "Mapo estas nevidebla, ĝis viaj milit-unuoj esploros ĝin."
 
-#: src/multiplayer_create.cpp:196
+#: src/multiplayer_create.cpp:198
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permesi al neludantoj observi la ludon"
 
-#: src/multiplayer_create.cpp:200
+#: src/multiplayer_create.cpp:202
 msgid "Share View"
 msgstr "Komuna rigardo"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:203
 msgid "Share Maps"
 msgstr "Komuna mapo"
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:204
 msgid "Share None"
 msgstr "Nenio komuna"
 
-#: src/multiplayer_create.cpp:213
+#: src/multiplayer_create.cpp:215
 msgid "No eras found."
 msgstr "Neniu erao troveblas."
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "Mi ne kapablas trovi eraojn"
 
-#: src/multiplayer_create.cpp:227
+#: src/multiplayer_create.cpp:229
 msgid "$login's game"
 msgstr "ludas $login"
 
-#: src/multiplayer_create.cpp:286
+#: src/multiplayer_create.cpp:288
 msgid "Invalid era selected"
 msgstr "Elektita ne valida erao"
 
-#: src/multiplayer_create.cpp:325
+#: src/multiplayer_create.cpp:327
 msgid "You must enter a name."
 msgstr "Vi devas doni nomon."
 
-#: src/multiplayer_create.cpp:330
+#: src/multiplayer_create.cpp:332
 msgid "Set Password"
 msgstr ""
 
-#: src/multiplayer_create.cpp:331
+#: src/multiplayer_create.cpp:333
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
 
-#: src/multiplayer_create.cpp:339
+#: src/multiplayer_create.cpp:341
 msgid "Turns: "
 msgstr "turnoj:"
 
-#: src/multiplayer_create.cpp:341
+#: src/multiplayer_create.cpp:343
 msgid "Unlimited Turns"
 msgstr "Nelimigitaj movoj"
 
-#: src/multiplayer_create.cpp:369
+#: src/multiplayer_create.cpp:371
 msgid "Init. Limit: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:374
+#: src/multiplayer_create.cpp:376
 msgid "Turn Bonus: "
 msgstr "Bonifiko por movo:"
 
-#: src/multiplayer_create.cpp:378
+#: src/multiplayer_create.cpp:380
 #, fuzzy
 msgid "Reservoir: "
 msgstr "Servilo:"
 
-#: src/multiplayer_create.cpp:383
+#: src/multiplayer_create.cpp:385
 msgid "Action Bonus: "
 msgstr "Bonifiko pro agoj:"
 
-#: src/multiplayer_create.cpp:390
+#: src/multiplayer_create.cpp:392
 msgid "Village Gold: "
 msgstr "Oro/Vilaĝo:"
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 msgid "Exp. Mod.: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:531
+#: src/multiplayer_create.cpp:533
 msgid "Players: "
 msgstr "Ludantoj:"
 
-#: src/multiplayer_create.cpp:532
+#: src/multiplayer_create.cpp:534
 msgid "Size: "
 msgstr "Grandeco:"
 
-#: src/multiplayer_lobby.cpp:120
+#: src/multiplayer_lobby.cpp:121
 msgid "--no games open--"
 msgstr "--neniu malfermita ludo--"
 
-#: src/multiplayer_lobby.cpp:155
+#: src/multiplayer_lobby.cpp:156
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "Nekonata erao"
 
-#: src/multiplayer_lobby.cpp:432
+#: src/multiplayer_lobby.cpp:433
 msgid "Unknown era: $era_id"
 msgstr "Nekonata erao: $era_id"
 
-#: src/multiplayer_lobby.cpp:436
+#: src/multiplayer_lobby.cpp:437
 msgid "Unknown era"
 msgstr "Nekonata erao"
 
-#: src/multiplayer_lobby.cpp:497
+#: src/multiplayer_lobby.cpp:498
 msgid "Remote scenario"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:504
+#: src/multiplayer_lobby.cpp:505
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nekonata scenejo: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:508
+#: src/multiplayer_lobby.cpp:509
 msgid "Unknown scenario"
 msgstr "Nekonata scenejo"
 
-#: src/multiplayer_lobby.cpp:513
+#: src/multiplayer_lobby.cpp:514
 msgid "Reloaded game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:529
+#: src/multiplayer_lobby.cpp:530
 msgid "Turn "
 msgstr "Movo"
 
-#: src/multiplayer_lobby.cpp:533
+#: src/multiplayer_lobby.cpp:534
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vaka loko"
 msgstr[1] "Vaka loko"
 
-#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:790
+#: src/multiplayer_lobby.cpp:537 src/multiplayer_lobby.cpp:791
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:544
+#: src/multiplayer_lobby.cpp:545
 msgid "Fog"
 msgstr "Nebulo"
 
-#: src/multiplayer_lobby.cpp:558
+#: src/multiplayer_lobby.cpp:559
 msgid "none"
 msgstr "nenio"
 
-#: src/multiplayer_lobby.cpp:668 src/multiplayer_wait.cpp:192
+#: src/multiplayer_lobby.cpp:669 src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "Atendejo"
 
-#: src/multiplayer_lobby.cpp:673
+#: src/multiplayer_lobby.cpp:674
 msgid "Observe Game"
 msgstr "Observu ludon"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:675
 msgid "Join Game"
 msgstr "Aliĝu al ludo"
 
-#: src/multiplayer_lobby.cpp:676
+#: src/multiplayer_lobby.cpp:677
 #, fuzzy
 msgid "Quick Replays"
 msgstr " registrado"
 
-#: src/multiplayer_lobby.cpp:678
+#: src/multiplayer_lobby.cpp:679
 msgid "Preferences"
 msgstr "Preferencoj"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:681
 msgid "Quit"
 msgstr "Fino"
 
-#: src/multiplayer_lobby.cpp:686
+#: src/multiplayer_lobby.cpp:687
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:791
+#: src/multiplayer_lobby.cpp:792
 msgid "Joining this game requires a password."
 msgstr ""
 
@@ -8570,29 +8585,29 @@ msgstr "Elektu vian flankon:"
 msgid "Starting position: "
 msgstr ""
 
-#: src/network.cpp:110
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "ne valida reta nomo"
 
-#: src/network.cpp:143
+#: src/network.cpp:145
 msgid "Client disconnected"
 msgstr "Kliento malligiĝis"
 
-#: src/network.cpp:172
+#: src/network.cpp:176
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/network.cpp:569
+#: src/network.cpp:577
 msgid "Could not add socket to socket set"
 msgstr "Mi ne povas aldoni kontaktingon"
 
-#: src/network.cpp:582
+#: src/network.cpp:590
 msgid "Could not send initial handshake"
 msgstr "Mi ne povas sendi konektpeton."
 
-#: src/pathfind.cpp:309
+#: src/pathfind.cpp:311
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
@@ -8626,60 +8641,60 @@ msgstr "Reen al komenco"
 msgid "Back to turn "
 msgstr "Reen al antaŭa movo"
 
-#: src/playcampaign.cpp:140 src/playcampaign.cpp:175
+#: src/playcampaign.cpp:141 src/playcampaign.cpp:176
 msgid "Defeat"
 msgstr "Malvenko"
 
-#: src/playcampaign.cpp:141 src/playcampaign.cpp:176
+#: src/playcampaign.cpp:142 src/playcampaign.cpp:177
 msgid "You have been defeated!"
 msgstr "Vi malvenkis!"
 
-#: src/playcampaign.cpp:398
+#: src/playcampaign.cpp:399
 msgid "Error while reading the WML: "
 msgstr "Eraro dum legado de WML:"
 
-#: src/playcampaign.cpp:424
+#: src/playcampaign.cpp:425
 #, fuzzy
 msgid "Save Replay"
 msgstr "Registri reludon"
 
-#: src/playcampaign.cpp:429
+#: src/playcampaign.cpp:430
 msgid "The replay could not be saved"
 msgstr ""
 
-#: src/playcampaign.cpp:446
+#: src/playcampaign.cpp:447
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:467
+#: src/playcampaign.cpp:468
 msgid "Downloading next scenario..."
 msgstr "Elŝutas sekvan scenejon..."
 
-#: src/playcampaign.cpp:560
+#: src/playcampaign.cpp:561
 msgid "Do you want to save your game?"
 msgstr "Ĉu vi volas savi vian ludon?"
 
-#: src/playcampaign.cpp:561
+#: src/playcampaign.cpp:562
 msgid "Name:"
 msgstr "Nomo:"
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:586
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nekonata scenejo: '$scenario|'"
 
-#: src/playmp_controller.cpp:205
+#: src/playmp_controller.cpp:211
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:285
+#: src/playmp_controller.cpp:291
 msgid "End scenario"
 msgstr "Fini scenejon"
 
-#: src/playmp_controller.cpp:389
+#: src/playmp_controller.cpp:395
 msgid "Waiting for next scenario..."
 msgstr "Atendu sekvan scenejon..."
 
-#: src/playmp_controller.cpp:513
+#: src/playmp_controller.cpp:519
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -9084,54 +9099,54 @@ msgstr ""
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
-#: src/unit_types.cpp:203 src/unit_types.cpp:269
+#: src/unit_types.cpp:204 src/unit_types.cpp:270
 #, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "vundiĝoj"
 msgstr[1] "vundiĝoj"
 
-#: src/unit_types.cpp:213 src/unit_types.cpp:276
+#: src/unit_types.cpp:214 src/unit_types.cpp:277
 #, fuzzy
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "batoj"
 msgstr[1] "batoj"
 
-#: src/unit_types.cpp:224
+#: src/unit_types.cpp:225
 #, fuzzy, no-c-format
 msgid "% accuracy"
 msgstr "tuta damaĝo"
 
-#: src/unit_types.cpp:234
+#: src/unit_types.cpp:235
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1009
+#: src/unit_types.cpp:1032
 msgid "chaotic"
 msgstr "kaosema"
 
-#: src/unit_types.cpp:1009
+#: src/unit_types.cpp:1032
 msgid "lawful"
 msgstr "ordema"
 
-#: src/unit_types.cpp:1009
+#: src/unit_types.cpp:1032
 msgid "neutral"
 msgstr "neŭtrala"
 
-#: src/unit_types.cpp:1010
+#: src/unit_types.cpp:1033
 #, fuzzy
 msgid "female^chaotic"
 msgstr "mekanika"
 
-#: src/unit_types.cpp:1010
+#: src/unit_types.cpp:1033
 #, fuzzy
 msgid "female^lawful"
 msgstr "lojala"
 
 # undead
-#: src/unit_types.cpp:1010
+#: src/unit_types.cpp:1033
 #, fuzzy
 msgid "female^neutral"
 msgstr "nemortinta"

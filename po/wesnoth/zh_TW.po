@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-16 23:44+0200\n"
+"POT-Creation-Date: 2008-10-31 12:12+0100\n"
 "PO-Revision-Date: 2008-08-13 01:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -287,8 +287,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:302
-#: src/actions.cpp:1055 src/actions.cpp:1326
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
+#: src/actions.cpp:1056 src/actions.cpp:1327
 msgid "poisoned"
 msgstr "中毒"
 
@@ -2553,7 +2553,7 @@ msgstr ""
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
-"<ref>dst='debug_commands text'='Debug mode commands'</ref>.\n"
+"<ref>dst='debug_commands' text='Debug mode commands'</ref>.\n"
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
@@ -3337,6 +3337,11 @@ msgstr ""
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
+msgstr ""
+
+#. [deprecated_message]
+#: data/core/macros/deprecated-utils.cfg:21
+msgid "VICTORY_AND_DEFEAT_MUSIC is unecessary and can be removed."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -5388,7 +5393,12 @@ msgid "Hard"
 msgstr "困難"
 
 #. [language]
-#: data/hardwired/english.cfg:10
+#: data/hardwired/english.cfg:6
+msgid "Nightmare"
+msgstr ""
+
+#. [language]
+#: data/hardwired/english.cfg:11
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -5401,14 +5411,14 @@ msgstr ""
 "晚上：-25% 傷害值"
 
 #. [language]
-#: data/hardwired/english.cfg:11
+#: data/hardwired/english.cfg:12
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr "中立角色的傷害值日夜都一樣"
 
 #. [language]
-#: data/hardwired/english.cfg:15
+#: data/hardwired/english.cfg:16
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -5421,109 +5431,109 @@ msgstr ""
 "晚上：+25% 傷害值"
 
 #. [language]
-#: data/hardwired/english.cfg:18
+#: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name橋,$name渡口"
 
 #. [language]
-#: data/hardwired/english.cfg:19
+#: data/hardwired/english.cfg:20
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name's大道,$name隘口,$name小路"
 
 #. [language]
-#: data/hardwired/english.cfg:20
+#: data/hardwired/english.cfg:21
 msgid "$name River,River $name"
 msgstr "$name河,$name河"
 
 #. [language]
-#: data/hardwired/english.cfg:21
+#: data/hardwired/english.cfg:22
 msgid "$name Forest,$name's Forest"
 msgstr "$name森林,$name森林"
 
 #. [language]
-#: data/hardwired/english.cfg:22
+#: data/hardwired/english.cfg:23
 msgid "$name Lake"
 msgstr "$name湖"
 
 #. [language]
-#: data/hardwired/english.cfg:23
+#: data/hardwired/english.cfg:24
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|伯裏,$name|漢,$name|頓"
 
 #. [language]
-#: data/hardwired/english.cfg:24
+#: data/hardwired/english.cfg:25
 msgid "$name|harbor,$name|port"
 msgstr "$name|哈勃,$name|波特"
 
 #. [language]
-#: data/hardwired/english.cfg:25
+#: data/hardwired/english.cfg:26
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|漢,$name|福德,$name|克勞斯,$river|福德,$river|克勞斯"
 
 #. [language]
-#: data/hardwired/english.cfg:26
+#: data/hardwired/english.cfg:27
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|布裏奇,$river|布裏奇,$river|布裏奇,$name|漢,$name|布裏奇"
 
 #. [language]
-#: data/hardwired/english.cfg:27
+#: data/hardwired/english.cfg:28
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|漢,$name|頓,$name|菲爾德"
 
 #. [language]
-#: data/hardwired/english.cfg:28
+#: data/hardwired/english.cfg:29
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|漢,$name|頓,$name|伍德,$name弗裏斯特"
 
 #. [language]
-#: data/hardwired/english.cfg:29
+#: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|漢,$name|伯裏,$name|頓,$name|希爾,$name|克裏斯特"
 
 #. [language]
-#: data/hardwired/english.cfg:30
+#: data/hardwired/english.cfg:31
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|漢,$name|伯裏,$name|頓,$name|蒙特,$name|蒙特,$name|克利夫,$name|克利夫"
 
 #. [language]
-#: data/hardwired/english.cfg:33
+#: data/hardwired/english.cfg:34
 msgid "melee"
 msgstr "近戰"
 
 #. [language]
-#: data/hardwired/english.cfg:34
+#: data/hardwired/english.cfg:35
 msgid "ranged"
 msgstr "遠攻"
 
 #. [language]
-#: data/hardwired/english.cfg:37
+#: data/hardwired/english.cfg:38
 msgid "blade"
 msgstr "劍刃"
 
 #. [language]
-#: data/hardwired/english.cfg:38
+#: data/hardwired/english.cfg:39
 msgid "pierce"
 msgstr "穿刺"
 
 #. [language]
-#: data/hardwired/english.cfg:39
+#: data/hardwired/english.cfg:40
 msgid "impact"
 msgstr "衝擊"
 
 #. [language]
-#: data/hardwired/english.cfg:40
+#: data/hardwired/english.cfg:41
 msgid "fire"
 msgstr "火焰"
 
 #. [language]
-#: data/hardwired/english.cfg:41
+#: data/hardwired/english.cfg:42
 msgid "cold"
 msgstr "寒冷"
 
 #. [language]
-#: data/hardwired/english.cfg:42
+#: data/hardwired/english.cfg:43
 msgid "arcane"
 msgstr "秘法"
 
@@ -6247,8 +6257,8 @@ msgstr "視角"
 msgid "Skip animation"
 msgstr "省略動畫"
 
-#: src/about.cpp:52 src/multiplayer_connect.cpp:499
-#: src/multiplayer_connect.cpp:626 src/multiplayer_wait.cpp:544
+#: src/about.cpp:52 src/multiplayer_connect.cpp:500
+#: src/multiplayer_connect.cpp:627 src/multiplayer_wait.cpp:544
 msgid "+"
 msgstr "+"
 
@@ -6256,93 +6266,93 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:195 src/help.cpp:3028 src/menu_events.cpp:331
+#: src/about.cpp:195 src/help.cpp:3067 src/menu_events.cpp:331
 #: src/menu_events.cpp:358 src/statistics_dialog.cpp:112
 msgid "Close"
 msgstr "關閉"
 
-#: src/actions.cpp:151
+#: src/actions.cpp:152
 msgid "You don't have a leader to recruit with."
 msgstr "您没有領袖，無法征兵。"
 
-#: src/actions.cpp:158
+#: src/actions.cpp:159
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "您的領袖必須在主堡裏才能招募或召回單位。"
 
-#: src/actions.cpp:177
+#: src/actions.cpp:178
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，無法招募。"
 
-#: src/actions.cpp:276 src/actions.cpp:299 src/actions.cpp:304
+#: src/actions.cpp:277 src/actions.cpp:300 src/actions.cpp:305
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "選擇了一個無效的武器，可能是Python AI選擇的。"
 
-#: src/actions.cpp:283
+#: src/actions.cpp:284
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "傳出了一個無效的武器，可能是Python AI造成的。"
 
-#: src/actions.cpp:1055 src/actions.cpp:1326
+#: src/actions.cpp:1056 src/actions.cpp:1327
 #, fuzzy
 msgid "female^poisoned"
 msgstr "不死"
 
-#: src/actions.cpp:1060 src/actions.cpp:1331
+#: src/actions.cpp:1061 src/actions.cpp:1332
 #, fuzzy
 msgid "female^slowed"
 msgstr "忠誠"
 
-#: src/actions.cpp:1060 src/actions.cpp:1331
+#: src/actions.cpp:1061 src/actions.cpp:1332
 msgid "slowed"
 msgstr "減速"
 
-#: src/actions.cpp:1067 src/actions.cpp:1338
+#: src/actions.cpp:1068 src/actions.cpp:1339
 #, fuzzy
 msgid "female^stone"
 msgstr "强壯"
 
-#: src/actions.cpp:1067 src/actions.cpp:1338
+#: src/actions.cpp:1068 src/actions.cpp:1339
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2402
+#: src/actions.cpp:2403
 msgid "Ambushed!"
 msgstr "遭到伏撃！"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2410
 msgid "Failed teleport! Exit not empty"
 msgstr "傳送失敗!出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2448
+#: src/actions.cpp:2449
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "發現同盟單位"
 msgstr[1] "發現$friends個友好單位"
 
-#: src/actions.cpp:2451
+#: src/actions.cpp:2452
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "發現敵方單位！"
 msgstr[1] "發現$enemies個敵方單位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2456
+#: src/actions.cpp:2457
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1個同盟單位"
 msgstr[1] "$friends個友好單位"
 
-#: src/actions.cpp:2457
+#: src/actions.cpp:2458
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1個敵方單位"
 msgstr[1] "$enemies個敵方單位"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2459
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "發現非我方控制單位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2467
+#: src/actions.cpp:2468
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey鍵繼續移動）"
 
@@ -6350,7 +6360,7 @@ msgstr "（按$hotkey鍵繼續移動）"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:366 src/dialogs.cpp:1200
+#: src/addon_management.cpp:366 src/dialogs.cpp:1202
 msgid "KB"
 msgstr "KB"
 
@@ -6492,7 +6502,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:737 src/addon_management.cpp:938
-#: src/dialogs.cpp:645 src/menu_events.cpp:211 src/menu_events.cpp:993
+#: src/dialogs.cpp:647 src/menu_events.cpp:211 src/menu_events.cpp:993
 msgid "Name"
 msgstr "名稱"
 
@@ -6581,7 +6591,7 @@ msgstr "版本"
 msgid "Downloads"
 msgstr "下載數"
 
-#: src/addon_management.cpp:939 src/help.cpp:1374 src/menu_events.cpp:210
+#: src/addon_management.cpp:939 src/help.cpp:1407 src/menu_events.cpp:210
 #: src/menu_events.cpp:992 src/menu_events.cpp:1491
 msgid "Type"
 msgstr "類型"
@@ -6606,7 +6616,7 @@ msgstr "取得模組"
 msgid "Choose the add-on to download."
 msgstr "選擇要下載的模組。"
 
-#: src/addon_management.cpp:1038 src/dialogs.cpp:670 src/menu_events.cpp:1051
+#: src/addon_management.cpp:1038 src/dialogs.cpp:672 src/menu_events.cpp:1051
 #: src/menu_events.cpp:1520
 msgid "Filter: "
 msgstr "過濾： "
@@ -6627,8 +6637,8 @@ msgid ""
 msgstr "安裝這個戰役所需文件創建錯誤。"
 
 #: src/addon_management.cpp:1092 src/addon_management.cpp:1147
-#: src/dialogs.cpp:280 src/dialogs.cpp:288 src/menu_events.cpp:601
-#: src/multiplayer_create.cpp:534
+#: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:601
+#: src/multiplayer_create.cpp:536
 msgid "Error"
 msgstr "錯誤"
 
@@ -6667,11 +6677,11 @@ msgstr "模組已移除"
 msgid "Add-on could not be deleted properly:"
 msgstr "無法移除模組 -- 有個檔案遺失。"
 
-#: src/ai.cpp:1655
+#: src/ai.cpp:1782
 msgid "Unknown unit type : "
 msgstr "未知單位"
 
-#: src/ai_move.cpp:77
+#: src/ai_move.cpp:76
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr "移動力耗費為0，可能有一種地形不耗移動力。"
 
@@ -6723,125 +6733,125 @@ msgstr "不受傷的幾率"
 msgid "Damage Calculations"
 msgstr "攻撃計算"
 
-#: src/config_adapter.cpp:159
+#: src/config_adapter.cpp:160
 msgid "Duplicate side definition for side '$side|' found."
 msgstr "發現重復的陣營定義： '$side|'"
 
-#: src/dialogs.cpp:118
+#: src/dialogs.cpp:120
 msgid "Advance Unit"
 msgstr "單位升級"
 
-#: src/dialogs.cpp:119
+#: src/dialogs.cpp:121
 msgid "What should our victorious unit become?"
 msgstr "該單位將升級為"
 
-#: src/dialogs.cpp:219
+#: src/dialogs.cpp:221
 msgid "No objectives available"
 msgstr "無有效目標"
 
-#: src/dialogs.cpp:244
+#: src/dialogs.cpp:246
 msgid "Save Game"
 msgstr "儲存遊戲"
 
-#: src/dialogs.cpp:254
+#: src/dialogs.cpp:256
 msgid "Quit Game"
 msgstr "退出遊戲"
 
-#: src/dialogs.cpp:259
+#: src/dialogs.cpp:261
 msgid "Ignore All"
 msgstr "全部忽略"
 
-#: src/dialogs.cpp:281
+#: src/dialogs.cpp:283
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "檔案名稱不能包含冒號，斜綫或反斜綫。請選擇一個不同的名字。"
 
-#: src/dialogs.cpp:289
+#: src/dialogs.cpp:291
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "檔案名稱不能包含'.gz'。請選擇一個不同的名字。"
 
-#: src/dialogs.cpp:297
+#: src/dialogs.cpp:299
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "檔案已存在，要覆蓋嗎？"
 
-#: src/dialogs.cpp:298 src/menu_events.cpp:589 src/playcampaign.cpp:423
+#: src/dialogs.cpp:300 src/menu_events.cpp:589 src/playcampaign.cpp:424
 msgid "Name: "
 msgstr "名稱："
 
-#: src/dialogs.cpp:299
+#: src/dialogs.cpp:301
 msgid "Overwrite?"
 msgstr "覆蓋？"
 
-#: src/dialogs.cpp:336
+#: src/dialogs.cpp:338
 msgid "Do you really want to delete this game?"
 msgstr "您確定要删除這個遊戲嗎？"
 
-#: src/dialogs.cpp:338
+#: src/dialogs.cpp:340
 msgid "Don't ask me again!"
 msgstr "不要再問我！"
 
-#: src/dialogs.cpp:505
+#: src/dialogs.cpp:507
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:525
+#: src/dialogs.cpp:527
 msgid "#(Invalid)"
 msgstr "#（無效的）"
 
-#: src/dialogs.cpp:539
+#: src/dialogs.cpp:541
 msgid "Campaign: $campaign_name"
 msgstr "戰役: $campaign_name"
 
-#: src/dialogs.cpp:546
+#: src/dialogs.cpp:548
 msgid "Multiplayer"
 msgstr "多人對戰"
 
-#: src/dialogs.cpp:548
+#: src/dialogs.cpp:550
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/dialogs.cpp:556 src/menu_events.cpp:575
+#: src/dialogs.cpp:558 src/menu_events.cpp:575
 msgid "replay"
 msgstr "遊戲錄影"
 
-#: src/dialogs.cpp:558 src/menu_events.cpp:577
+#: src/dialogs.cpp:560 src/menu_events.cpp:577
 msgid "Turn"
 msgstr "回合"
 
-#: src/dialogs.cpp:560
+#: src/dialogs.cpp:562
 msgid "Scenario Start"
 msgstr "場景開始"
 
-#: src/dialogs.cpp:563
+#: src/dialogs.cpp:565
 msgid "Difficulty: "
 msgstr "難度： "
 
-#: src/dialogs.cpp:565
+#: src/dialogs.cpp:567
 msgid "Version: "
 msgstr "版本： "
 
-#: src/dialogs.cpp:589 src/dialogs.cpp:605
+#: src/dialogs.cpp:591 src/dialogs.cpp:607
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:595
+#: src/dialogs.cpp:597
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:600
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:601
+#: src/dialogs.cpp:603
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:629
+#: src/dialogs.cpp:631
 msgid "No Saved Games"
 msgstr "没有存檔"
 
-#: src/dialogs.cpp:630
+#: src/dialogs.cpp:632
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -6850,174 +6860,174 @@ msgstr ""
 "没有存檔，無法載入。\n"
 "（當您完成一個場景時會自動存檔）"
 
-#: src/dialogs.cpp:645
+#: src/dialogs.cpp:647
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:662 src/multiplayer_create.cpp:106
+#: src/dialogs.cpp:664 src/multiplayer_create.cpp:108
 msgid "Load Game"
 msgstr "載入遊戲"
 
-#: src/dialogs.cpp:663
+#: src/dialogs.cpp:665
 msgid "Choose the game to load"
 msgstr "選擇要載入的遊戲"
 
-#: src/dialogs.cpp:677
+#: src/dialogs.cpp:679
 msgid "Show replay"
 msgstr "顯示遊戲錄影"
 
-#: src/dialogs.cpp:681
+#: src/dialogs.cpp:683
 #, fuzzy
 msgid "Cancel orders"
 msgstr "取消"
 
-#: src/dialogs.cpp:684 src/multiplayer_create.cpp:88
+#: src/dialogs.cpp:686 src/multiplayer_create.cpp:90
 msgid "OK"
 msgstr "確定"
 
-#: src/dialogs.cpp:685 src/dialogs.cpp:1176 src/dialogs.cpp:1278
-#: src/multiplayer_connect.cpp:1038 src/multiplayer_create.cpp:87
+#: src/dialogs.cpp:687 src/dialogs.cpp:1178 src/dialogs.cpp:1280
+#: src/multiplayer_connect.cpp:1039 src/multiplayer_create.cpp:89
 #: src/multiplayer_wait.cpp:193
 msgid "Cancel"
 msgstr "取消"
 
-#: src/dialogs.cpp:688
+#: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr "删除存檔"
 
-#: src/dialogs.cpp:744
+#: src/dialogs.cpp:746
 msgid "Profile"
 msgstr "資料"
 
-#: src/dialogs.cpp:840 src/help.cpp:1243
+#: src/dialogs.cpp:842 src/help.cpp:1259
 msgid "level"
 msgstr "等級"
 
-#: src/dialogs.cpp:853 src/help.cpp:1348
+#: src/dialogs.cpp:855 src/help.cpp:1381
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:856
+#: src/dialogs.cpp:858
 msgid "XP: "
 msgstr "經驗值："
 
-#: src/dialogs.cpp:860 src/help.cpp:1349
+#: src/dialogs.cpp:862 src/help.cpp:1382
 msgid "Moves: "
 msgstr "移動： "
 
-#: src/game.cpp:581 src/game.cpp:1364
+#: src/game.cpp:573 src/game.cpp:1357
 msgid "The Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:863
+#: src/game.cpp:855
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您試圖載入的文件已損壞。繼續嘗試載入。\n"
 
-#: src/game.cpp:903 src/multiplayer_connect.cpp:1572
+#: src/game.cpp:895 src/multiplayer_connect.cpp:1573
 msgid "This save is from a version too old to be loaded."
 msgstr "這個存檔是由一個太早期的遊戲版本保存的，現在的版本無法載入。"
 
-#: src/game.cpp:909 src/multiplayer_connect.cpp:1579
+#: src/game.cpp:901 src/multiplayer_connect.cpp:1580
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "這個存檔來自於不同版本的遊戲。您仍然要載入嗎？"
 
-#: src/game.cpp:929 src/game.cpp:932 src/multiplayer_connect.cpp:1550
+#: src/game.cpp:921 src/game.cpp:924 src/multiplayer_connect.cpp:1551
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您試圖載入的文件已損壞： '"
 
-#: src/game.cpp:935
+#: src/game.cpp:927
 msgid "File I/O Error while reading the game"
 msgstr "當讀取遊戲時發生文件I/O錯誤。"
 
-#: src/game.cpp:1038
+#: src/game.cpp:1030
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "無有效目標"
 
-#: src/game.cpp:1042
+#: src/game.cpp:1034
 msgid "Play a campaign"
 msgstr "戰役"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1075
 msgid "Difficulty"
 msgstr "難度"
 
-#: src/game.cpp:1084
+#: src/game.cpp:1076
 msgid "Select difficulty level:"
 msgstr "選擇難度："
 
-#: src/game.cpp:1242
+#: src/game.cpp:1235
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "您確定想解聘她？"
 
-#: src/game.cpp:1243
+#: src/game.cpp:1236
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1247
+#: src/game.cpp:1240
 #, fuzzy
 msgid "Don't show again"
 msgstr "不要再問我！"
 
-#: src/game.cpp:1319
+#: src/game.cpp:1312
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "遊戲執行出錯： "
 
-#: src/game.cpp:1321 src/playcampaign.cpp:103 src/playcampaign.cpp:388
+#: src/game.cpp:1314 src/playcampaign.cpp:104 src/playcampaign.cpp:389
 msgid "The game could not be loaded: "
 msgstr "無法加載遊戲： "
 
-#: src/game.cpp:1323 src/playcampaign.cpp:105 src/playcampaign.cpp:391
+#: src/game.cpp:1316 src/playcampaign.cpp:106 src/playcampaign.cpp:392
 msgid "Error while playing the game: "
 msgstr "遊戲執行出錯： "
 
-#: src/game.cpp:1343 src/playcampaign.cpp:107 src/playcampaign.cpp:394
+#: src/game.cpp:1336 src/playcampaign.cpp:108 src/playcampaign.cpp:395
 msgid "The game map could not be loaded: "
 msgstr "無法加載遊戲地圖： "
 
-#: src/game.cpp:1409 src/game.cpp:1530
+#: src/game.cpp:1402 src/game.cpp:1523
 msgid "Error loading game configuration files: '"
 msgstr "載入遊戲配置文件時出錯： '"
 
-#: src/game.cpp:1410 src/game.cpp:1531
+#: src/game.cpp:1403 src/game.cpp:1524
 msgid "' (The game will now exit)"
 msgstr "' （現在將退出遊戲）"
 
-#: src/game.cpp:1505
+#: src/game.cpp:1498
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下附加戰役有錯誤，無法加載："
 msgstr[1] "以下附加戰役有錯誤，無法加載："
 
-#: src/game.cpp:1512
+#: src/game.cpp:1505
 msgid "ERROR DETAILS:"
 msgstr "錯誤細節："
 
-#: src/game.cpp:1540
+#: src/game.cpp:1533
 msgid "Loading data files"
 msgstr "讀取數據文件"
 
-#: src/game.cpp:1919
+#: src/game.cpp:1913
 msgid "Loading game configuration."
 msgstr "載入遊戲配置。"
 
-#: src/game.cpp:1925
+#: src/game.cpp:1919
 msgid "Re-initialize fonts for the current language."
 msgstr "為當前語言重置字體。"
 
-#: src/game.cpp:1933
+#: src/game.cpp:1927
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "發送模組"
 
-#: src/game.cpp:1942
+#: src/game.cpp:1936
 msgid "Loading title screen."
 msgstr "讀取主畫面。"
 
@@ -7025,15 +7035,15 @@ msgstr "讀取主畫面。"
 msgid "Invalid color range: "
 msgstr "無效顔色"
 
-#: src/game_events.cpp:983
+#: src/game_events.cpp:984
 msgid "Victory:"
 msgstr "勝利："
 
-#: src/game_events.cpp:986
+#: src/game_events.cpp:987
 msgid "Defeat:"
 msgstr "失敗："
 
-#: src/game_events.cpp:2220
+#: src/game_events.cpp:2248
 msgid "[store_unit] missing required [filter] tag\n"
 msgstr ""
 
@@ -7042,7 +7052,7 @@ msgstr ""
 msgid "No time of day has been defined."
 msgstr "没有定制時間."
 
-#: src/gamestatus.cpp:748 src/gamestatus.cpp:750 src/playcampaign.cpp:422
+#: src/gamestatus.cpp:748 src/gamestatus.cpp:750 src/playcampaign.cpp:423
 msgid " replay"
 msgstr "遊戲錄影"
 
@@ -7050,26 +7060,26 @@ msgstr "遊戲錄影"
 msgid "Could not write to file"
 msgstr "無法寫入文件"
 
-#: src/generate_report.cpp:104
+#: src/generate_report.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "本單位不可見。敵人看不見他，也不能攻撃他。"
 
-#: src/generate_report.cpp:104
+#: src/generate_report.cpp:105
 msgid "invisible: "
 msgstr "隱形： "
 
-#: src/generate_report.cpp:109
+#: src/generate_report.cpp:110
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr "本單位被减速了，攻撃因此减半。"
 
-#: src/generate_report.cpp:109
+#: src/generate_report.cpp:110
 msgid "slowed: "
 msgstr "减速： "
 
-#: src/generate_report.cpp:114
+#: src/generate_report.cpp:115
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7083,209 +7093,214 @@ msgstr ""
 "\n"
 "單位不會因中毒而死。毒素只能使單位的生命值降到1。"
 
-#: src/generate_report.cpp:114
+#: src/generate_report.cpp:115
 msgid "poisoned: "
 msgstr "中毒： "
 
-#: src/generate_report.cpp:121
+#: src/generate_report.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "本單位已石化。不能攻撃或移動。"
 
-#: src/generate_report.cpp:121
+#: src/generate_report.cpp:122
 msgid "stone: "
 msgstr "石化： "
 
-#: src/generate_report.cpp:176
+#: src/generate_report.cpp:177
 msgid "Resistances: "
 msgstr "抗性"
 
-#: src/generate_report.cpp:178
+#: src/generate_report.cpp:179
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/generate_report.cpp:197 src/multiplayer_create.cpp:400
+#: src/generate_report.cpp:198 src/multiplayer_create.cpp:402
 msgid "Experience Modifier: "
 msgstr "經驗值修正： "
 
-#: src/generate_report.cpp:268
+#: src/generate_report.cpp:269
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "點傷害"
 msgstr[1] "點傷害"
 
-#: src/generate_report.cpp:269
+#: src/generate_report.cpp:270
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "次攻撃"
 msgstr[1] "次攻撃"
 
-#: src/generate_report.cpp:275
+#: src/generate_report.cpp:276
 #, fuzzy, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "次攻撃"
 
-#: src/generate_report.cpp:281
+#: src/generate_report.cpp:282
 #, fuzzy, no-c-format
 msgid "tooltip^% parry"
 msgstr "點傷害"
 
-#: src/generate_report.cpp:292
+#: src/generate_report.cpp:293
 msgid "weapon range: "
 msgstr "武器攻撃範圍："
 
-#: src/generate_report.cpp:293
+#: src/generate_report.cpp:294
 msgid "damage type: "
 msgstr "傷害類型："
 
-#: src/generate_report.cpp:314
+#: src/generate_report.cpp:315
 msgid "vs"
 msgstr "vs"
 
-#: src/generate_report.cpp:364
+#: src/generate_report.cpp:365
 msgid "Lawful units: "
 msgstr "守序單位： "
 
-#: src/generate_report.cpp:366
+#: src/generate_report.cpp:367
 msgid "Neutral units: "
 msgstr "中立單位： "
 
-#: src/generate_report.cpp:367
+#: src/generate_report.cpp:368
 msgid "Chaotic units: "
 msgstr "渾沌單位： "
 
-#: src/generate_report.cpp:514
+#: src/generate_report.cpp:515
 msgid "Observers:"
 msgstr "觀察者："
 
-#: src/help.cpp:61
+#: src/help.cpp:64
 msgid "Help"
 msgstr "幫助"
 
-#: src/help.cpp:1132
+#: src/help.cpp:1135
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='擁有這種武器特性的單位:'</header>"
 
-#: src/help.cpp:1195
+#: src/help.cpp:1211
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='擁有這種技能的單位：'</header>"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1279
 msgid "Advances from: "
 msgstr "升級自："
 
-#: src/help.cpp:1292
+#: src/help.cpp:1308
 msgid "Advances to: "
 msgstr "升級為： "
 
-#: src/help.cpp:1323 src/help.cpp:1573 src/help.cpp:1624
+#: src/help.cpp:1339 src/help.cpp:1606 src/help.cpp:1657
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help.cpp:1325
+#: src/help.cpp:1341
 msgid "Race: "
 msgstr "種族"
 
-#: src/help.cpp:1332
+#: src/help.cpp:1348
 msgid "Abilities: "
 msgstr "能力： "
 
-#: src/help.cpp:1350
+#: src/help.cpp:1365
+#, fuzzy
+msgid "Ability Upgrades: "
+msgstr "能力： "
+
+#: src/help.cpp:1383
 msgid "Cost: "
 msgstr "價格："
 
-#: src/help.cpp:1351
+#: src/help.cpp:1384
 msgid "Alignment: "
 msgstr "攻撃屬性： "
 
-#: src/help.cpp:1357
+#: src/help.cpp:1390
 msgid "Required XP: "
 msgstr "升級所需經驗值： "
 
-#: src/help.cpp:1366
+#: src/help.cpp:1399
 msgid "unit help^Attacks"
 msgstr "攻撃"
 
-#: src/help.cpp:1373
+#: src/help.cpp:1406
 msgid "unit help^Name"
 msgstr "名稱"
 
-#: src/help.cpp:1375
+#: src/help.cpp:1408
 msgid "Strikes"
 msgstr "輸出"
 
-#: src/help.cpp:1376
+#: src/help.cpp:1409
 msgid "Range"
 msgstr "範圍"
 
-#: src/help.cpp:1377
+#: src/help.cpp:1410
 msgid "Special"
 msgstr "特質"
 
-#: src/help.cpp:1427
+#: src/help.cpp:1460
 msgid "Resistances"
 msgstr "抗性"
 
-#: src/help.cpp:1431
+#: src/help.cpp:1464
 msgid "Attack Type"
 msgstr "攻撃類型"
 
-#: src/help.cpp:1432
+#: src/help.cpp:1465
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help.cpp:1469
+#: src/help.cpp:1502
 msgid "Terrain Modifiers"
 msgstr "地形影響"
 
-#: src/help.cpp:1473
+#: src/help.cpp:1506
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help.cpp:1474
+#: src/help.cpp:1507
 msgid "Defense"
 msgstr "閃避幾率"
 
-#: src/help.cpp:1475
+#: src/help.cpp:1508
 msgid "Movement Cost"
 msgstr "移動點數耗費"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1663
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='這個種族的單位'</header>"
 
-#: src/help.cpp:2564 src/menu_events.cpp:554
+#: src/help.cpp:2597 src/menu_events.cpp:554
 msgid " < Back"
 msgstr " < 後退"
 
-#: src/help.cpp:2565
+#: src/help.cpp:2598
 msgid "Forward >"
 msgstr "前進 >"
 
-#: src/help.cpp:2677
+#: src/help.cpp:2710
 msgid "Reference to unknown topic: "
 msgstr "引用未知主題： "
 
-#: src/help.cpp:2931
+#: src/help.cpp:2964
 msgid "corrupted original file"
 msgstr "原始文件出錯"
 
-#: src/help.cpp:3031
+#: src/help.cpp:3070
 msgid "The Battle for Wesnoth Help"
 msgstr "韋諾之戰說明"
 
-#: src/help.cpp:3087
+#: src/help.cpp:3126
 msgid "Parse error when parsing help text: "
 msgstr "分析幫助文本時語法錯誤： "
 
-#: src/intro.cpp:105
+#: src/intro.cpp:110
 msgid "Next"
 msgstr "下一步"
 
-#: src/intro.cpp:106
+#: src/intro.cpp:111
 msgid "Skip"
 msgstr "跳過"
 
-#: src/intro.cpp:386
+#: src/intro.cpp:391
 msgid "The End"
 msgstr "結束"
 
@@ -7293,18 +7308,18 @@ msgstr "結束"
 msgid "System default language"
 msgstr "系統預設語言"
 
-#: src/leader_list.cpp:141 src/multiplayer_connect.cpp:220
-#: src/multiplayer_connect.cpp:272
+#: src/leader_list.cpp:141 src/multiplayer_connect.cpp:221
+#: src/multiplayer_connect.cpp:273
 msgid "gender^Random"
 msgstr "隨機"
 
-#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:216
-#: src/multiplayer_connect.cpp:268
+#: src/leader_list.cpp:151 src/multiplayer_connect.cpp:217
+#: src/multiplayer_connect.cpp:269
 msgid "Female ♀"
 msgstr "女性 ♀"
 
-#: src/leader_list.cpp:155 src/multiplayer_connect.cpp:218
-#: src/multiplayer_connect.cpp:270
+#: src/leader_list.cpp:155 src/multiplayer_connect.cpp:219
+#: src/multiplayer_connect.cpp:271
 msgid "Male ♂"
 msgstr "男性 ♂"
 
@@ -7316,32 +7331,32 @@ msgstr "隨機"
 msgid "?"
 msgstr "？"
 
-#: src/loadscreen.cpp:224
+#: src/loadscreen.cpp:226
 msgid "Verifying cache."
 msgstr "驗證暫存。"
 
-#: src/loadscreen.cpp:243
+#: src/loadscreen.cpp:245
 msgid "Reading cache."
 msgstr "載入暫存。"
 
-#: src/loadscreen.cpp:262
+#: src/loadscreen.cpp:264
 msgid "Reading unit files."
 msgstr "載入部隊資料。"
 
-#: src/loadscreen.cpp:281
+#: src/loadscreen.cpp:283
 msgid "Reading files and creating cache."
 msgstr "載入資料並新增暫存。"
 
-#: src/map.cpp:166
+#: src/map.cpp:167
 msgid "A map without a header is not supported"
 msgstr "不支援不含標題的地圖"
 
-#: src/mapgen.cpp:721
+#: src/mapgen.cpp:722
 msgid "Random maps with an odd width aren't supported."
 msgstr "不支援寬度為奇數的隨機地圖(?)"
 
 #: src/menu_events.cpp:63 src/menu_events.cpp:731 src/menu_events.cpp:733
-#: src/play_controller.cpp:789 src/playcampaign.cpp:116
+#: src/play_controller.cpp:789 src/playcampaign.cpp:117
 msgid "Auto-Save"
 msgstr "自動存檔"
 
@@ -7403,11 +7418,11 @@ msgstr "移動到"
 msgid "Leader"
 msgstr "英雄"
 
-#: src/menu_events.cpp:384 src/multiplayer_connect.cpp:1023
+#: src/menu_events.cpp:384 src/multiplayer_connect.cpp:1024
 msgid "Team"
 msgstr "團隊"
 
-#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1034
+#: src/menu_events.cpp:385 src/multiplayer_connect.cpp:1035
 #: src/multiplayer_wait.cpp:538
 msgid "Gold"
 msgstr "金幣"
@@ -7424,7 +7439,7 @@ msgstr "單位"
 msgid "Upkeep"
 msgstr "支出"
 
-#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:1035
+#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:1036
 #: src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "收入"
@@ -7497,7 +7512,7 @@ msgstr "已儲存"
 msgid "The game has been saved"
 msgstr "遊戲已儲存"
 
-#: src/menu_events.cpp:601 src/playcampaign.cpp:569
+#: src/menu_events.cpp:601 src/playcampaign.cpp:570
 msgid "The game could not be saved"
 msgstr "無法儲存遊戲"
 
@@ -7986,8 +8001,8 @@ msgstr "連接到官方伺服器"
 msgid "Login"
 msgstr "登録名： "
 
-#: src/multiplayer.cpp:217 src/multiplayer_create.cpp:331
-#: src/multiplayer_lobby.cpp:792
+#: src/multiplayer.cpp:217 src/multiplayer_create.cpp:333
+#: src/multiplayer_lobby.cpp:793
 msgid "Password: "
 msgstr "密碼:"
 
@@ -7999,115 +8014,115 @@ msgstr "您必須登録這個伺服器"
 msgid "Login: "
 msgstr "登録名： "
 
-#: src/multiplayer_connect.cpp:87 src/multiplayer_connect.cpp:501
-#: src/multiplayer_connect.cpp:628
+#: src/multiplayer_connect.cpp:88 src/multiplayer_connect.cpp:502
+#: src/multiplayer_connect.cpp:629
 msgid "Normal"
 msgstr "普通"
 
-#: src/multiplayer_connect.cpp:497 src/multiplayer_connect.cpp:624
+#: src/multiplayer_connect.cpp:498 src/multiplayer_connect.cpp:625
 #: src/multiplayer_wait.cpp:534 src/multiplayer_wait.cpp:542
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_connect.cpp:497 src/multiplayer_connect.cpp:624
+#: src/multiplayer_connect.cpp:498 src/multiplayer_connect.cpp:625
 #: src/multiplayer_wait.cpp:534 src/multiplayer_wait.cpp:545
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_connect.cpp:581
+#: src/multiplayer_connect.cpp:582
 msgid "Default AI"
 msgstr "預設AI"
 
-#: src/multiplayer_connect.cpp:657
+#: src/multiplayer_connect.cpp:658
 msgid "(Vacant slot)"
 msgstr "（空位）"
 
-#: src/multiplayer_connect.cpp:665
+#: src/multiplayer_connect.cpp:666
 msgid "Anonymous local player"
 msgstr "單機匿名玩家"
 
-#: src/multiplayer_connect.cpp:687
+#: src/multiplayer_connect.cpp:688
 msgid "Computer player"
 msgstr "電腦玩家"
 
-#: src/multiplayer_connect.cpp:690
+#: src/multiplayer_connect.cpp:691
 msgid "(Empty slot)"
 msgstr "（空位）"
 
-#: src/multiplayer_connect.cpp:697
+#: src/multiplayer_connect.cpp:698
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:828
 #, fuzzy
 msgid "Reserved"
 msgstr "蓄水池:"
 
-#: src/multiplayer_connect.cpp:828
+#: src/multiplayer_connect.cpp:829
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:950
+#: src/multiplayer_connect.cpp:951
 msgid "Only random sides in the current era."
 msgstr "使用此時代僅允許隨機陣營"
 
-#: src/multiplayer_connect.cpp:974
+#: src/multiplayer_connect.cpp:975
 msgid "Unable to find a leader type for faction $faction"
 msgstr "找不到$faction集團的領袖類型"
 
-#: src/multiplayer_connect.cpp:1011
+#: src/multiplayer_connect.cpp:1012
 msgid "Game Lobby: "
 msgstr "遊戲大廳："
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1031
 msgid "Player/Type"
 msgstr "玩家/類型"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1032
 msgid "Faction"
 msgstr "部隊"
 
-#: src/multiplayer_connect.cpp:1032
+#: src/multiplayer_connect.cpp:1033
 msgid "Team/Gender"
 msgstr "隊伍/性別"
 
-#: src/multiplayer_connect.cpp:1033
+#: src/multiplayer_connect.cpp:1034
 msgid "Color"
 msgstr "顏色"
 
-#: src/multiplayer_connect.cpp:1037
+#: src/multiplayer_connect.cpp:1038
 msgid "I'm Ready"
 msgstr "準備就緒"
 
-#: src/multiplayer_connect.cpp:1048
+#: src/multiplayer_connect.cpp:1049
 msgid "The scenario is invalid because it has no sides."
 msgstr "由於没有選擇陣營，本地圖無法使用。"
 
-#: src/multiplayer_connect.cpp:1439
+#: src/multiplayer_connect.cpp:1440
 msgid "Network Player"
 msgstr "網絡玩家"
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1441
 msgid "Local Player"
 msgstr "單機玩家"
 
-#: src/multiplayer_connect.cpp:1441
+#: src/multiplayer_connect.cpp:1442
 msgid "Computer Player"
 msgstr "電腦玩家"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1443
 msgid "Empty"
 msgstr "空位"
 
-#: src/multiplayer_connect.cpp:1558
+#: src/multiplayer_connect.cpp:1559
 msgid "This is not a multiplayer save"
 msgstr "這不是多人對戰的存檔"
 
-#: src/multiplayer_connect.cpp:1678
+#: src/multiplayer_connect.cpp:1679
 msgid "Cannot find era $era"
 msgstr "找不到$era時期"
 
-#: src/multiplayer_connect.cpp:1699
+#: src/multiplayer_connect.cpp:1700
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8115,284 +8130,284 @@ msgstr ""
 "勝利條件：\n"
 "@打敗敵人的領袖(們)"
 
-#: src/multiplayer_connect.cpp:1759
+#: src/multiplayer_connect.cpp:1760
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
-#: src/multiplayer_create.cpp:51 src/multiplayer_lobby.cpp:675
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:676
 msgid "Create Game"
 msgstr "創造遊戲"
 
-#: src/multiplayer_create.cpp:64
+#: src/multiplayer_create.cpp:66
 msgid "Time limit"
 msgstr "時限"
 
-#: src/multiplayer_create.cpp:77
+#: src/multiplayer_create.cpp:79
 msgid "Name of game:"
 msgstr "遊戲名："
 
-#: src/multiplayer_create.cpp:80
+#: src/multiplayer_create.cpp:82
 msgid "Era:"
 msgstr "時期："
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:83
 msgid "Map to play:"
 msgstr "選擇遊戲地圖："
 
-#: src/multiplayer_create.cpp:82 src/multiplayer_lobby.cpp:273
+#: src/multiplayer_create.cpp:84 src/multiplayer_lobby.cpp:274
 msgid "Use map settings"
 msgstr "使用地圖設定"
 
-#: src/multiplayer_create.cpp:83
+#: src/multiplayer_create.cpp:85
 msgid "Random start time"
 msgstr "隨機開始時間"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:86
 msgid "Fog Of War"
 msgstr "戰爭迷霧"
 
-#: src/multiplayer_create.cpp:85 src/multiplayer_lobby.cpp:548
-#: src/multiplayer_lobby.cpp:554
+#: src/multiplayer_create.cpp:87 src/multiplayer_lobby.cpp:549
+#: src/multiplayer_lobby.cpp:555
 msgid "Shroud"
 msgstr "戰場黑幕"
 
-#: src/multiplayer_create.cpp:86
+#: src/multiplayer_create.cpp:88
 msgid "Observers"
 msgstr "觀察者"
 
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:91
 msgid "Regenerate"
 msgstr "重新生成"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:92
 msgid "Settings..."
 msgstr "設置..."
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:93
 msgid "Set Password..."
 msgstr "設定密碼..."
 
-#: src/multiplayer_create.cpp:107
+#: src/multiplayer_create.cpp:109
 msgid "Load Game..."
 msgstr "載入遊戲..."
 
-#: src/multiplayer_create.cpp:143
+#: src/multiplayer_create.cpp:145
 msgid "The maximum number of turns the game can last"
 msgstr "遊戲允許的最大回合數"
 
-#: src/multiplayer_create.cpp:146
+#: src/multiplayer_create.cpp:148
 msgid "Enables user time limit"
 msgstr "開啓玩家時限"
 
-#: src/multiplayer_create.cpp:152
+#: src/multiplayer_create.cpp:154
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "首回合最長時限（秒）"
 
-#: src/multiplayer_create.cpp:158
+#: src/multiplayer_create.cpp:160
 msgid "Longest time possible for any turn (seconds)"
 msgstr "任意回合最長時限（秒）"
 
-#: src/multiplayer_create.cpp:164
+#: src/multiplayer_create.cpp:166
 msgid "Time for general tasks each turn (seconds)"
 msgstr "每回合普通任務時限（秒）"
 
-#: src/multiplayer_create.cpp:170
+#: src/multiplayer_create.cpp:172
 msgid "Time for each attack, recruit, and capture"
 msgstr "每次攻撃、征募和占領時限"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:177
 msgid "The amount of income each village yields per turn"
 msgstr "每村莊每回合創造的收入"
 
-#: src/multiplayer_create.cpp:181
+#: src/multiplayer_create.cpp:183
 msgid "The amount of experience a unit needs to advance"
 msgstr "一個單位升級所需的經驗值"
 
-#: src/multiplayer_create.cpp:184
+#: src/multiplayer_create.cpp:186
 msgid "Use scenario specific settings"
 msgstr "使用場景設置"
 
-#: src/multiplayer_create.cpp:187
+#: src/multiplayer_create.cpp:189
 msgid "Randomize time of day in begin"
 msgstr "制定開始時間:"
 
-#: src/multiplayer_create.cpp:190
+#: src/multiplayer_create.cpp:192
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "敵人單位在進入您單位的移動範圍之前不可見"
 
-#: src/multiplayer_create.cpp:193
+#: src/multiplayer_create.cpp:195
 msgid "The map is unknown until your units explore it"
 msgstr "在您探索地圖之前，地圖不可見"
 
-#: src/multiplayer_create.cpp:196
+#: src/multiplayer_create.cpp:198
 msgid "Allow users who are not playing to watch the game"
 msgstr "允許非玩家用户觀看遊戲"
 
-#: src/multiplayer_create.cpp:200
+#: src/multiplayer_create.cpp:202
 msgid "Share View"
 msgstr "共享視圖"
 
-#: src/multiplayer_create.cpp:201
+#: src/multiplayer_create.cpp:203
 msgid "Share Maps"
 msgstr "共享地圖"
 
-#: src/multiplayer_create.cpp:202
+#: src/multiplayer_create.cpp:204
 msgid "Share None"
 msgstr "無共享"
 
-#: src/multiplayer_create.cpp:213
+#: src/multiplayer_create.cpp:215
 msgid "No eras found."
 msgstr "没有找到這個時代。"
 
-#: src/multiplayer_create.cpp:214
+#: src/multiplayer_create.cpp:216
 msgid "No eras found"
 msgstr "没有找到這個時代"
 
-#: src/multiplayer_create.cpp:227
+#: src/multiplayer_create.cpp:229
 msgid "$login's game"
 msgstr "$login的遊戲"
 
-#: src/multiplayer_create.cpp:286
+#: src/multiplayer_create.cpp:288
 msgid "Invalid era selected"
 msgstr "所選時期無效"
 
-#: src/multiplayer_create.cpp:325
+#: src/multiplayer_create.cpp:327
 msgid "You must enter a name."
 msgstr "您必須輸入名字。"
 
-#: src/multiplayer_create.cpp:330
+#: src/multiplayer_create.cpp:332
 msgid "Set Password"
 msgstr "設定密碼"
 
-#: src/multiplayer_create.cpp:331
+#: src/multiplayer_create.cpp:333
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr "設定您的密碼，以便讓您所等待的玩家進入，並不受他人干擾。"
 
-#: src/multiplayer_create.cpp:339
+#: src/multiplayer_create.cpp:341
 msgid "Turns: "
 msgstr "回合數： "
 
-#: src/multiplayer_create.cpp:341
+#: src/multiplayer_create.cpp:343
 msgid "Unlimited Turns"
 msgstr "無限回合"
 
-#: src/multiplayer_create.cpp:369
+#: src/multiplayer_create.cpp:371
 msgid "Init. Limit: "
 msgstr "時間限制："
 
-#: src/multiplayer_create.cpp:374
+#: src/multiplayer_create.cpp:376
 msgid "Turn Bonus: "
 msgstr "回合奬勵： "
 
-#: src/multiplayer_create.cpp:378
+#: src/multiplayer_create.cpp:380
 msgid "Reservoir: "
 msgstr "蓄水池:"
 
-#: src/multiplayer_create.cpp:383
+#: src/multiplayer_create.cpp:385
 msgid "Action Bonus: "
 msgstr "行動奬勵："
 
-#: src/multiplayer_create.cpp:390
+#: src/multiplayer_create.cpp:392
 msgid "Village Gold: "
 msgstr "村莊金幣： "
 
-#: src/multiplayer_create.cpp:398
+#: src/multiplayer_create.cpp:400
 msgid "Exp. Mod.: "
 msgstr "經驗 模式.: "
 
-#: src/multiplayer_create.cpp:531
+#: src/multiplayer_create.cpp:533
 msgid "Players: "
 msgstr "玩家： "
 
-#: src/multiplayer_create.cpp:532
+#: src/multiplayer_create.cpp:534
 msgid "Size: "
 msgstr "大小"
 
-#: src/multiplayer_lobby.cpp:120
+#: src/multiplayer_lobby.cpp:121
 msgid "--no games open--"
 msgstr "—當前没有已建立的遊戲—"
 
-#: src/multiplayer_lobby.cpp:155
+#: src/multiplayer_lobby.cpp:156
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "未知時代"
 
-#: src/multiplayer_lobby.cpp:432
+#: src/multiplayer_lobby.cpp:433
 msgid "Unknown era: $era_id"
 msgstr "未知時代: $era_id"
 
-#: src/multiplayer_lobby.cpp:436
+#: src/multiplayer_lobby.cpp:437
 msgid "Unknown era"
 msgstr "未知時代"
 
-#: src/multiplayer_lobby.cpp:497
+#: src/multiplayer_lobby.cpp:498
 msgid "Remote scenario"
 msgstr "遠程場景"
 
-#: src/multiplayer_lobby.cpp:504
+#: src/multiplayer_lobby.cpp:505
 msgid "Unknown scenario: $scenario_id"
 msgstr "未知場景: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:508
+#: src/multiplayer_lobby.cpp:509
 msgid "Unknown scenario"
 msgstr "未知場景"
 
-#: src/multiplayer_lobby.cpp:513
+#: src/multiplayer_lobby.cpp:514
 msgid "Reloaded game"
 msgstr "已載入的遊戲"
 
-#: src/multiplayer_lobby.cpp:529
+#: src/multiplayer_lobby.cpp:530
 msgid "Turn "
 msgstr "回合"
 
-#: src/multiplayer_lobby.cpp:533
+#: src/multiplayer_lobby.cpp:534
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空位："
 msgstr[1] "空位："
 
-#: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:790
+#: src/multiplayer_lobby.cpp:537 src/multiplayer_lobby.cpp:791
 msgid "Password Required"
 msgstr "需要密碼"
 
-#: src/multiplayer_lobby.cpp:544
+#: src/multiplayer_lobby.cpp:545
 msgid "Fog"
 msgstr "迷霧"
 
-#: src/multiplayer_lobby.cpp:558
+#: src/multiplayer_lobby.cpp:559
 msgid "none"
 msgstr "無"
 
-#: src/multiplayer_lobby.cpp:668 src/multiplayer_wait.cpp:192
+#: src/multiplayer_lobby.cpp:669 src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "遊戲大廳"
 
-#: src/multiplayer_lobby.cpp:673
+#: src/multiplayer_lobby.cpp:674
 msgid "Observe Game"
 msgstr "觀察遊戲"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:675
 msgid "Join Game"
 msgstr "加入遊戲"
 
-#: src/multiplayer_lobby.cpp:676
+#: src/multiplayer_lobby.cpp:677
 msgid "Quick Replays"
 msgstr "快速播放"
 
-#: src/multiplayer_lobby.cpp:678
+#: src/multiplayer_lobby.cpp:679
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:681
 msgid "Quit"
 msgstr "退出"
 
-#: src/multiplayer_lobby.cpp:686
+#: src/multiplayer_lobby.cpp:687
 msgid "Skip quickly to the active turn when observing"
 msgstr "觀察遊戲時快速跳至當前進行中的回合"
 
-#: src/multiplayer_lobby.cpp:791
+#: src/multiplayer_lobby.cpp:792
 msgid "Joining this game requires a password."
 msgstr "加入此遊戲需要密碼."
 
@@ -8449,29 +8464,29 @@ msgstr "選擇陣營："
 msgid "Starting position: "
 msgstr ""
 
-#: src/network.cpp:110
+#: src/network.cpp:112
 msgid "invalid network handle"
 msgstr "無效網絡連結"
 
-#: src/network.cpp:143
+#: src/network.cpp:145
 msgid "Client disconnected"
 msgstr "客户端斷開連接"
 
-#: src/network.cpp:172
+#: src/network.cpp:176
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] "至少$timeout 秒都没能與伺服器取得聯繫。連接超時。"
 msgstr[1] "至少$timeout秒都没能與服務器取得聯系。連接超時。"
 
-#: src/network.cpp:569
+#: src/network.cpp:577
 msgid "Could not add socket to socket set"
 msgstr "無法向套接字(socket)集合中添加遊戲要用的套接字"
 
-#: src/network.cpp:582
+#: src/network.cpp:590
 msgid "Could not send initial handshake"
 msgstr "不能發送初始化連接信息"
 
-#: src/pathfind.cpp:309
+#: src/pathfind.cpp:311
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到耗費移動力小於1的地形"
 
@@ -8505,59 +8520,59 @@ msgstr "回到開始"
 msgid "Back to turn "
 msgstr "回到回合"
 
-#: src/playcampaign.cpp:140 src/playcampaign.cpp:175
+#: src/playcampaign.cpp:141 src/playcampaign.cpp:176
 msgid "Defeat"
 msgstr "失敗"
 
-#: src/playcampaign.cpp:141 src/playcampaign.cpp:176
+#: src/playcampaign.cpp:142 src/playcampaign.cpp:177
 msgid "You have been defeated!"
 msgstr "您被打敗了！"
 
-#: src/playcampaign.cpp:398
+#: src/playcampaign.cpp:399
 msgid "Error while reading the WML: "
 msgstr "讀取 WML 檔案時出錯： "
 
-#: src/playcampaign.cpp:424
+#: src/playcampaign.cpp:425
 msgid "Save Replay"
 msgstr "儲存遊戲錄影"
 
-#: src/playcampaign.cpp:429
+#: src/playcampaign.cpp:430
 msgid "The replay could not be saved"
 msgstr "無法儲存遊戲錄影"
 
-#: src/playcampaign.cpp:446
+#: src/playcampaign.cpp:447
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "這一幕結束了。您想繼續這個任務嗎?"
 
-#: src/playcampaign.cpp:467
+#: src/playcampaign.cpp:468
 msgid "Downloading next scenario..."
 msgstr "正在下載下一幕……"
 
-#: src/playcampaign.cpp:560
+#: src/playcampaign.cpp:561
 msgid "Do you want to save your game?"
 msgstr "您想儲存遊戲嗎？"
 
-#: src/playcampaign.cpp:561
+#: src/playcampaign.cpp:562
 msgid "Name:"
 msgstr "名稱："
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:586
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知任務： '"
 
-#: src/playmp_controller.cpp:205
+#: src/playmp_controller.cpp:211
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:285
+#: src/playmp_controller.cpp:291
 msgid "End scenario"
 msgstr "結束本任務"
 
-#: src/playmp_controller.cpp:389
+#: src/playmp_controller.cpp:395
 msgid "Waiting for next scenario..."
 msgstr "等待下一幕遊戲開始..."
 
-#: src/playmp_controller.cpp:513
+#: src/playmp_controller.cpp:519
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8963,51 +8978,51 @@ msgstr "每級 $effect_description"
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
-#: src/unit_types.cpp:203 src/unit_types.cpp:269
+#: src/unit_types.cpp:204 src/unit_types.cpp:270
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "傷害"
 msgstr[1] "傷害"
 
-#: src/unit_types.cpp:213 src/unit_types.cpp:276
+#: src/unit_types.cpp:214 src/unit_types.cpp:277
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "打撃"
 msgstr[1] "打撃"
 
-#: src/unit_types.cpp:224
+#: src/unit_types.cpp:225
 #, no-c-format
 msgid "% accuracy"
 msgstr ""
 
-#: src/unit_types.cpp:234
+#: src/unit_types.cpp:235
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1009
+#: src/unit_types.cpp:1032
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:1009
+#: src/unit_types.cpp:1032
 msgid "lawful"
 msgstr "守序"
 
-#: src/unit_types.cpp:1009
+#: src/unit_types.cpp:1032
 msgid "neutral"
 msgstr "中立"
 
-#: src/unit_types.cpp:1010
+#: src/unit_types.cpp:1033
 #, fuzzy
 msgid "female^chaotic"
 msgstr "機械"
 
-#: src/unit_types.cpp:1010
+#: src/unit_types.cpp:1033
 #, fuzzy
 msgid "female^lawful"
 msgstr "忠誠"
 
-#: src/unit_types.cpp:1010
+#: src/unit_types.cpp:1033
 #, fuzzy
 msgid "female^neutral"
 msgstr "不死"

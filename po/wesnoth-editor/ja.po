@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-05 20:18+0200\n"
+"POT-Creation-Date: 2008-10-31 12:12+0100\n"
 "PO-Revision-Date: 2008-02-18 23:48+0900\n"
 "Last-Translator: Naoki IIMURA <amatubu@gmail.com>\n"
 "Language-Team: none\n"
@@ -70,6 +70,11 @@ msgstr "村"
 msgid "castle"
 msgstr "城"
 
+#. [editor_group]
+#: data/core/editor-groups.cfg:77
+msgid "special"
+msgstr ""
+
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
@@ -93,7 +98,7 @@ msgstr ""
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
 msgid ""
-"Use left/right mouse button to draw fore-/background terrain. Hold ALT to "
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only"
 msgstr ""
 
@@ -158,6 +163,7 @@ msgid "Quit"
 msgstr ""
 
 #: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
+#: src/editor2/editor_controller.cpp:394 src/editor2/editor_controller.cpp:416
 msgid "Error"
 msgstr ""
 
@@ -193,55 +199,73 @@ msgstr ""
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:458
-msgid "Map saved."
-msgstr "マップを保存しました。"
+#: src/editor2/editor_controller.cpp:384
+#, fuzzy
+msgid "Choose a mask to apply"
+msgstr "読み込むマップを選択"
 
-#: src/editor2/editor_controller.cpp:463
-msgid "Could not save the map: $msg"
-msgstr "マップを保存できませんでした: $msg"
+#: src/editor2/editor_controller.cpp:391
+msgid "Error loading mask"
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:477 src/editor2/editor_main.cpp:57
+#: src/editor2/editor_controller.cpp:406
+msgid "Choose target map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:413 src/editor2/editor_controller.cpp:521
+#: src/editor2/editor_main.cpp:56
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:810
+#: src/editor2/editor_controller.cpp:502
+msgid "Map saved."
+msgstr "マップを保存しました。"
+
+#: src/editor2/editor_controller.cpp:507
+msgid "Could not save the map: $msg"
+msgstr "マップを保存できませんでした: $msg"
+
+#: src/editor2/editor_controller.cpp:862
 msgid "Undo"
 msgstr "やり直す"
 
-#: src/editor2/editor_controller.cpp:812
+#: src/editor2/editor_controller.cpp:864
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:816
+#: src/editor2/editor_controller.cpp:868
 msgid "Redo"
 msgstr "元に戻す"
 
-#: src/editor2/editor_controller.cpp:818
+#: src/editor2/editor_controller.cpp:870
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:57
+#: src/editor2/editor_map.cpp:65
 msgid "Empty map file or file not found"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:65
-msgid "There was a format error while loading the map:"
+#: src/editor2/editor_map.cpp:73
+msgid "There was a format error while loading the file:"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:71
-msgid "There was a wml error while loading the map:"
+#: src/editor2/editor_map.cpp:79
+msgid "There was a wml error while loading the file:"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:144 src/editor2/mouse_action.cpp:383
+#: src/editor2/editor_map.cpp:152 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "プレイヤー"
 
-#: src/editor2/editor_palettes.cpp:495
+#: src/editor2/editor_map.cpp:271
+msgid "The size of the target map is different from the current map"
+msgstr ""
+
+#: src/editor2/editor_palettes.cpp:503
 msgid "FG"
 msgstr "FG"
 
-#: src/editor2/editor_palettes.cpp:497
+#: src/editor2/editor_palettes.cpp:505
 msgid "BG"
 msgstr "BG"
 

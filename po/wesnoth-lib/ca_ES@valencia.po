@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-16 23:45+0200\n"
+"POT-Creation-Date: 2008-10-31 11:59+0100\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -245,78 +245,79 @@ msgstr "Cova rocosa"
 #: data/core/terrain.cfg:781 data/core/terrain.cfg:792
 #: data/core/terrain.cfg:805 data/core/terrain.cfg:816
 #: data/core/terrain.cfg:826 data/core/terrain.cfg:837
-#: data/core/terrain.cfg:848 data/core/terrain.cfg:859
-#: data/core/terrain.cfg:870 data/core/terrain.cfg:881
-#: data/core/terrain.cfg:894 data/core/terrain.cfg:905
-#: data/core/terrain.cfg:916 data/core/terrain.cfg:927
-#: data/core/terrain.cfg:938 data/core/terrain.cfg:949
-#: data/core/terrain.cfg:960 data/core/terrain.cfg:973
-#: data/core/terrain.cfg:988 data/core/terrain.cfg:999
+#: data/core/terrain.cfg:848 data/core/terrain.cfg:860
+#: data/core/terrain.cfg:871 data/core/terrain.cfg:882
+#: data/core/terrain.cfg:893 data/core/terrain.cfg:906
+#: data/core/terrain.cfg:917 data/core/terrain.cfg:928
+#: data/core/terrain.cfg:939 data/core/terrain.cfg:950
+#: data/core/terrain.cfg:961 data/core/terrain.cfg:972
+#: data/core/terrain.cfg:985 data/core/terrain.cfg:1000
+#: data/core/terrain.cfg:1011
 msgid "Village"
 msgstr "Llogaret"
 
 #. [terrain]
-#: data/core/terrain.cfg:1014
+#: data/core/terrain.cfg:1026
 msgid "Deep Water"
 msgstr "Aigua profunda"
 
 #. [terrain]
-#: data/core/terrain.cfg:1024
+#: data/core/terrain.cfg:1036
 msgid "Shallow Water"
 msgstr "Aigua baixa"
 
 #. [terrain]
-#: data/core/terrain.cfg:1034
+#: data/core/terrain.cfg:1046
 msgid "River Ford"
 msgstr "Gual"
 
 #. [terrain]
-#: data/core/terrain.cfg:1045
+#: data/core/terrain.cfg:1057
 msgid "Coastal Reef"
 msgstr "Trieu costaner"
 
 #. [terrain]
-#: data/core/terrain.cfg:1059
+#: data/core/terrain.cfg:1071
 msgid "Impassable Mountains"
 msgstr "Muntanyes impassables"
 
 #. [terrain]
-#: data/core/terrain.cfg:1068
+#: data/core/terrain.cfg:1080
 msgid "Impassable Desert Mountains"
 msgstr "Muntanyes desèrtiques impassables"
 
 #. [terrain]
-#: data/core/terrain.cfg:1077
+#: data/core/terrain.cfg:1089
 msgid "Cave Wall"
 msgstr "Paret de cova"
 
 #. [terrain]
-#: data/core/terrain.cfg:1086
+#: data/core/terrain.cfg:1098
 msgid "Wall"
 msgstr "Mur"
 
 #. [terrain]
-#: data/core/terrain.cfg:1096
+#: data/core/terrain.cfg:1108
 msgid "Void"
 msgstr "Buit"
 
 #. [terrain]
-#: data/core/terrain.cfg:1109
+#: data/core/terrain.cfg:1121
 msgid "Flat"
 msgstr "Plana"
 
 #. [terrain]
-#: data/core/terrain.cfg:1116
+#: data/core/terrain.cfg:1128
 msgid "Frozen"
 msgstr "Gelat"
 
 #. [terrain]
-#: data/core/terrain.cfg:1123
+#: data/core/terrain.cfg:1135
 msgid "Impassable"
 msgstr "Impassable"
 
 #. [terrain]
-#: data/core/terrain.cfg:1130
+#: data/core/terrain.cfg:1142
 msgid "Unwalkable"
 msgstr "Impracticable"
 
@@ -360,6 +361,7 @@ msgstr "Suprimix complements"
 msgid "Connect"
 msgstr "Connecta"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
@@ -397,18 +399,21 @@ msgstr "Configuració"
 msgid "Generate"
 msgstr "Genera"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
 msgid "New Map"
 msgstr "Nou mapa"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:123
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:124
 msgid "Width:"
 msgstr "Amplada:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:124
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:125
 msgid "Height:"
 msgstr "Alçada:"
 
@@ -418,6 +423,7 @@ msgstr "Alçada:"
 msgid "Create new map"
 msgstr "Crea un mapa nou"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
 msgid "Resize Map"
@@ -475,6 +481,7 @@ msgstr ""
 msgid "Resize map"
 msgstr "Canvia la grandària del mapa"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
 msgid "Editor Settings"
@@ -516,12 +523,14 @@ msgstr "Verd:"
 msgid "Blue:"
 msgstr "Blau:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:208
 #: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
 msgid "OK"
 msgstr "D'acord"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:228
 #: src/game_preferences_display.cpp:202
@@ -732,6 +741,7 @@ msgstr "Complements"
 msgid "Editor"
 msgstr "Editor"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
 #: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
@@ -743,6 +753,7 @@ msgstr "Preferències"
 msgid "Credits"
 msgstr "Crèdits"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:659
 #: src/hotkeys.cpp:940
@@ -787,11 +798,11 @@ msgstr "Nom: "
 msgid "Creation of the directory failed."
 msgstr "No s'ha pogut crear el directori."
 
-#: src/game_preferences.cpp:280
+#: src/game_preferences.cpp:281
 msgid "No server has been defined."
 msgstr "No s'ha indicat cap servidor."
 
-#: src/game_preferences.cpp:344
+#: src/game_preferences.cpp:345
 msgid "player"
 msgstr "jugador"
 
@@ -1746,67 +1757,67 @@ msgid "Screenshot failed"
 msgstr "Ha fallat la captura de pantalla"
 
 # Hmm, cal el «Window» a l'original?
-#: src/mapgen_dialog.cpp:112 src/preferences_display.cpp:229
+#: src/mapgen_dialog.cpp:113 src/preferences_display.cpp:229
 msgid "Close Window"
 msgstr "Tanca"
 
-#: src/mapgen_dialog.cpp:115
+#: src/mapgen_dialog.cpp:116
 msgid "Map Generator"
 msgstr "Generador de mapes"
 
-#: src/mapgen_dialog.cpp:122
+#: src/mapgen_dialog.cpp:123
 msgid "Players:"
 msgstr "Jugadors:"
 
-#: src/mapgen_dialog.cpp:125
+#: src/mapgen_dialog.cpp:126
 msgid "Number of Hills:"
 msgstr "Nombre de colls:"
 
-#: src/mapgen_dialog.cpp:126
+#: src/mapgen_dialog.cpp:127
 msgid "Max Hill Size:"
 msgstr "Grandària màxima dels colls:"
 
-#: src/mapgen_dialog.cpp:127
+#: src/mapgen_dialog.cpp:128
 msgid "Villages:"
 msgstr "Llogarets:"
 
-#: src/mapgen_dialog.cpp:128
+#: src/mapgen_dialog.cpp:129
 msgid "Castle Size:"
 msgstr "Grandària del castell:"
 
-#: src/mapgen_dialog.cpp:129
+#: src/mapgen_dialog.cpp:130
 msgid "Landform:"
 msgstr "Perfil:"
 
-#: src/mapgen_dialog.cpp:247
+#: src/mapgen_dialog.cpp:248
 msgid "Roads Between Castles"
 msgstr "Camí entre castells"
 
-#: src/mapgen_dialog.cpp:307
+#: src/mapgen_dialog.cpp:308
 msgid "/1000 tiles"
 msgstr "cada 1000 hexàgons"
 
-#: src/mapgen_dialog.cpp:317
+#: src/mapgen_dialog.cpp:318
 msgid "Coastal"
 msgstr "Costaner"
 
-#: src/mapgen_dialog.cpp:317
+#: src/mapgen_dialog.cpp:318
 msgid "Inland"
 msgstr "Interior"
 
-#: src/mapgen_dialog.cpp:317
+#: src/mapgen_dialog.cpp:318
 msgid "Island"
 msgstr "Illa"
 
-#: src/marked-up_text.cpp:365
+#: src/marked-up_text.cpp:331
 msgid "The maximum text width is less than 1."
 msgstr "L'amplada màxima del text és inferior a 1."
 
-#: src/minimap.cpp:82
+#: src/minimap.cpp:83
 msgid "Could not get image for terrain: $terrain."
 msgstr "No s'ha pogut obtindre la imatge del terreny: $terrain."
 
-#: src/minimap.cpp:106 src/minimap.cpp:118
+#: src/minimap.cpp:107 src/minimap.cpp:119
 msgid "Error creating or aquiring an image."
 msgstr "S'ha produït un error en crear o adquirir una imatge."
 
