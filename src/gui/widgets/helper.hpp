@@ -132,6 +132,16 @@ void restore_background(const surface& restorer,
  */
 t_string missing_widget(const std::string& id);
 
+/**
+ * Gets an unique id for a widget.
+ *
+ * The id will have extra leading underscores so it's in the private range and
+ * can't collide with user defined ids.
+ *
+ * @returns                       The id.
+ */
+std::string get_uid();
+
 } // namespace gui2
 
 #endif
