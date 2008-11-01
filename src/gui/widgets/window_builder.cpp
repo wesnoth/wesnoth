@@ -1107,8 +1107,12 @@ twidget* tbuilder_spacer::build() const
 
 	init_control(spacer);
 
-	if(width_ || height_) {
-		spacer->set_best_size(tpoint(width_, height_));
+	const game_logic::map_formula_callable& size = get_screen_size_variables();
+	const unsigned width = width_(size);
+	const unsigned height = height_(size);
+
+	if(width || height) {
+		spacer->set_best_size(tpoint(width, height));
 	}
 
 	DBG_GUI << "Window builder: placed spacer '" << id << "' with defintion '" 

@@ -273,21 +273,25 @@ public:
  * zero the spacer functions as a fixed size spacer.
  *
  * @start_table = config
- *     width (unsigned = 0)            The width of the spacer.
- *     height (unsigned = 0)           The height of the spacer.
+ *     width (f_unsigned = 0)          The width of the spacer.
+ *     height (f_unsigned = 0)         The height of the spacer.
  * @end_table
+ *
+ * The variable available are the same as for the window resolution see 
+ * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
+ * items.
  */
 	tbuilder_spacer(const config& cfg) :
 		tbuilder_control(cfg),
-		width_(lexical_cast_default<unsigned>(cfg["width"])),
-		height_(lexical_cast_default<unsigned>(cfg["height"]))
+		width_(cfg["width"]),
+		height_(cfg["height"])
 	{}
 
 	twidget* build () const;
 
 private:
-	unsigned width_;
-	unsigned height_;
+	tformula<unsigned> width_;
+	tformula<unsigned> height_;
 };
 
 struct tbuilder_text_box : public tbuilder_control
