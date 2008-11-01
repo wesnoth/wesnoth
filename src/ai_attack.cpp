@@ -218,7 +218,7 @@ void ai::do_attack_analysis(
 			}
 
 			// See if this position is the best rated we've seen so far.
-			const int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus;
+			const int rating = static_cast<int>(rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus * leadership_bonus);
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
@@ -706,9 +706,9 @@ double ai::power_projection(const map_location& loc,  const move_map& dstsrc, bo
                                int poison_bonus = 0;
 
                                if (att->get_special_bool("poison", true))
-                                       poison_bonus = 800 * (1.0 -
+                                       poison_bonus = static_cast<int>(800 * (1.0 -
                                                        std::pow(0.7,
-                                                               static_cast<double>(att->num_attacks())));
+                                                               static_cast<double>(att->num_attacks()))));
 				int damage = att->damage() * att->num_attacks() *
 				             (100 + tod_modifier) + poison_bonus;
 				if(damage > most_damage) {

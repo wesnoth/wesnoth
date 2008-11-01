@@ -910,7 +910,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 				int value = empty_slots + tactical_value + reserved_penalty;
 
 				// do enemy power projection so we know where enemy is
-				int enemy = leader->second.hitpoints() - (power_projection(*i, enemy_dstsrc) * 3);
+				int enemy = static_cast<int>(leader->second.hitpoints() - (power_projection(*i, enemy_dstsrc) * 3));
 				if (enemy > 0)
 					enemy = ((leader->second.hitpoints() - enemy)*leader->second.total_movement()*4 / leader->second.hitpoints())*-1;
 				else
