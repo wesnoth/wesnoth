@@ -574,6 +574,12 @@ timage::timage(const config& cfg) :
  *                                      the y (or x) value of the image. (This
  *                                      means x and y are evaluated after the
  *                                      width and height.)
+ *     image_original_width unsigned    The width of the image as stored on
+ *                                      disk, can be used to set x or w
+ *                                      (also y and h can be set).
+ *     image_original_height unsigned   The height of the image as stored on
+ *                                      disk, can be used to set y or h
+ *                                      (also x and y can be set).
  * @end_table
  * Also the general variables are available, see [[#general_variables|Line]].
  *
@@ -632,10 +638,14 @@ void timage::draw(surface& canvas,
 		// so leave silently.
 		return;
 	}
-	unsigned w = w_(variables);
-	unsigned h = h_(variables);
 
 	game_logic::map_formula_callable local_variables(variables);
+	local_variables.add("image_original_width", variant(image_->w));
+	local_variables.add("image_original_height", variant(image_->h));
+
+	unsigned w = w_(local_variables);
+	unsigned h = h_(local_variables);
+
 	local_variables.add("image_width", variant(w ? w : image_->w));
 	local_variables.add("image_height", variant(h ? h : image_->h));
 	const unsigned x = x_(local_variables);
