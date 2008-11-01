@@ -19,6 +19,10 @@ lint:
 	# Check for obsolete WML, broken references, consistency.
 	./wmllint --dryrun $(MAINLINE) $(UMC)
 
+spellcheck:
+	# Check for obsolete WML, broken references, consistency.
+	./wmllint --future --dryrun $(MAINLINE) $(UMC)
+
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(MAINLINE) $(UMC)

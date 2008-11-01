@@ -93,6 +93,18 @@
 # replair them) with "wmllint: display on", and re-enable them with
 # "wmllint: display off".  The repair attempts (only) may also be
 # suppressed with the --stringfreeze option.
+#
+# A magic comment of the form "wmllint: general spellings word1
+# word2..."  will declare the tokens word1, word2, etc. to be
+# acceptable spellings for anywhere in the Wesnoth tree that the
+# spellchecker should rever flag.  If the keyword "general" is replaced
+# by "local", the spelling exceptions apply only until the end of the
+# current file. If the keyword "general" is replaced
+# by "directory", the spelling exceptions apply to all files below 
+# the parent directory 
+#
+# A coment containing "no spellcheck" disable spellchecking on the
+# line where it occurs.
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -276,6 +288,15 @@ translatables = (\
                "translator_comment",
                "user_team_name",
                )
+
+# Declare a few common English contractions that pyenchant
+# inexplicably knows nothing of.
+declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
+                                "heh",
+                                "melee", "arcane", "day/night", "hitpoints",
+                                "HP", "XP", "AI", "L0", "L1", "L2", "L3", "YW",
+                                "faugh",	# Handy archaism
+                                ]}
 
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
@@ -494,15 +515,28 @@ def sanity_check(filename, lines):
                     pass	# Ignore ill-formed integer literals
         except TypeError:
             pass
-    # Interpret magic comments for setting the usage pattern of units.
-    # This copes with some wacky UtBS units that are defined with
-    # variant-spawning macros.  The prototype comment looks like this:
-    #wmllint: usage of "Desert Fighter" is fighter 
+    # Interpret various magic comments
     for i in range(len(lines)):
+        # Interpret magic comments for setting the usage pattern of units.
+        # This copes with some wacky UtBS units that are defined with
+        # variant-spawning macros.  The prototype comment looks like this:
+        #wmllint: usage of "Desert Fighter" is fighter 
         m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
         if m:
             usage[m.group(1)] = m.group(2).strip()
             unit_types.append(m.group(1))
+        # Accumulate global spelling exceptions
+        words = re.search("wmllint: general spellings? (.*)", lines[i])
+        if words:
+            for word in words.group(1).split():
+                declared_spellings["GLOBAL"].append(word.lower())
+        words = re.search("wmllint: directory spellings? (.*)", lines[i])
+        if words:
+            fdir = os.path.dirname(filename)
+            if fdir not in declared_spellings:
+                declared_spellings[fdir] = []
+            for word in words.group(1).split():
+                declared_spellings[fdir].append(word.lower())
     # Consistency-check the id= attributes in [side], [unit], [recall],
     # and [message] scopes, also correctness-check translation marks and look
     # for double spaces at end of sentence.
@@ -570,9 +604,9 @@ def sanity_check(filename, lines):
                 if '{' in value and "+" not in value:
                     print '"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1)
-                if future and re.search("[.,!?]  ", lines[i]):
-                    print '"%s", line %d: extraneous space in translatable string'\
-                          % (filename, i+1)
+                #if future and re.search("[.,!?]  ", lines[i]):
+                #    print '"%s", line %d: extraneous space in translatable string'\
+                #          % (filename, i+1)
             # Check correctness of translation marks and descriptions
             if key.startswith("#"):	# FIXME: parse_attribute is confused.
                 pass
@@ -608,6 +642,8 @@ def sanity_check(filename, lines):
                     lines[i] = lines[i].replace("_", "", 1)
         except TypeError:
             pass
+    # Now that we know who's present, register all these names as spellings
+    declared_spellings[filename] = map(lambda x: x.lower(), present)
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
@@ -1296,8 +1332,100 @@ if __name__ == '__main__':
                         sys.stderr.write("wmllint: internal error on %s\n" % fn)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
                         raise exc_type, exc_value, exc_traceback
-        # Constency-check everything we got from the file scans
-        consistency_check()
+        if not clean and not revert and future:
+            # Consistency-check everything we got from the file scans
+            consistency_check()
+            # Attempt a spell-check
+            try:
+                import enchant
+                d = enchant.Dict("en_US")
+                for word in declared_spellings["GLOBAL"]:
+                    d.add_to_session(word.lower())
+                for dir in arguments:
+                    ofp = None
+                    for fn in allcfgfiles(dir):
+                        if verbose >= 2:
+                            print fn + ":"
+                        # Accept declared spellings for this file
+                        # and for all directories above it.
+                        local_spellings = []
+                        up = fn
+                        while True:
+                            if not up or up == os.sep:
+                                break
+                            else:
+                                local_spellings += declared_spellings.get(up,[])
+                                up = os.path.dirname(up)
+                        map(d.add_to_session, local_spellings)
+                        for nav in WmlIterator(filename=fn):
+                            # Recognize local spelling exceptions
+                            if not nav.element and "#" in nav.text:
+                                comment = nav.text[nav.text.index("#")-1:]
+                                words = re.search("wmllint: local spellings? (.*)", comment)
+                                if words:
+                                    for word in words.group(1).split():
+                                        word = word.lower()
+                                        d.add_to_session(word)
+                                        local_spellings.append(word)
+                            # Spell-check message and story parts
+                            if nav.element in ("message=", "story=", "description="):
+                                (key, prefix, value, comment) = parse_attribute(nav.text)
+                                if "no spellcheck" in comment:
+                                    continue
+                                if value.startswith("_"):
+                                    value = value[1:].strip()
+                                value = string_strip(value)
+                                value = value.replace("...", " ")
+                                value = value.replace("female^", " ")
+                                value = value.replace("male^", " ")
+                                value = value.lower()
+                                value = re.sub(r'" *\+\s*_ *"', "", value)
+                                for token in value.split():
+                                    while token and token[0] in " \t(@*'":
+                                        token = token[1:]
+                                    while token and token[-1] in "-*').,:;?! \t":
+                                        token = token[:-1]
+                                    if token.startswith("$"):
+                                        continue
+                                    if token.startswith("%"):
+                                        continue
+                                    if token and token[0].isdigit():
+                                        continue
+                                    if not token:
+                                        continue
+                                    token = string_strip(token)
+                                    if d.check(token):
+                                        continue
+                                    elif token.endswith("'s") and d.check(token[:-2]):
+                                        continue
+                                    elif token.endswith("s'") and d.check(token[:-2]):
+                                        continue
+                                    if "-" in token:
+                                        parts = token.split("-")
+                                        if filter(lambda w: not w or d.check(w), parts) == parts:
+                                            continue
+                                    if re.match("hm+", token):
+                                        continue
+                                    if re.match("a+[ur]+g+h*", token):
+                                        continue
+                                    if re.match("ha(ha)*", token):
+                                        continue
+                                    if re.match("ah+", token):
+                                        continue
+                                    if re.match("no+", token):
+                                        continue
+                                    print nav.whereami(), 'possible misspelling "%s"' % token
+                            # Take exceptions from name, id, and type fields
+                            if nav.element in ("name=", "id=", "type="):
+                                (key, prefix, value, comment) = parse_attribute(nav.text)
+                                value = string_strip(value)
+                                if value:
+                                    d.add_to_session(value)
+                                    local_spellings.append(value)
+                        #for word in local_spellings:
+                        #    d.remove_from_session(word)
+            except ImportError:
+                sys.stderr.write("wmllint: spell check unavailable, install python-enchant to enable\n")
     except KeyboardInterrupt:
         print "Aborted"
 

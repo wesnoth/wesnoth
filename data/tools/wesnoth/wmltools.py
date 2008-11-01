@@ -77,6 +77,8 @@ class Forest:
                 os.path.walk(dir,
                          lambda arg, dir, names: subtree.extend(map(lambda x: os.path.normpath(os.path.join(dir, x)), names)),
                          None)
+            # Always look at _main.cfg first
+            subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
             self.forest.append(subtree)
         for i in range(len(self.forest)):
             self.forest[i] = filter(lambda x: ".svn" not in x and ".git" not in x, self.forest[i])
@@ -350,22 +352,22 @@ class CrossRef:
                             self.xref[name] = self.xref[name][:1]
                         continue
                     if "# wmlscope: start conditionals" in line:
-                        if warnlevel > 0:
+                        if warnlevel > 1:
                             print '"%s", line %d: starting conditionals' \
                                   % (filename, n+1)
                         conditionalsflag = True
                     elif "# wmlscope: stop conditionals" in line:
-                        if warnlevel > 0:
+                        if warnlevel > 1:
                             print '"%s", line %d: stopping conditionals' \
                                   % (filename, n+1)
                         conditionalsflag = False
                     if "# wmlscope: start ignoring" in line:
-                        if warnlevel > 0:
+                        if warnlevel > 1:
                             print '"%s", line %d: starting ignoring (definition pass)' \
                                   % (filename, n+1)
                         ignoreflag = True
                     elif "# wmlscope: stop ignoring" in line:
-                        if warnlevel > 0:
+                        if warnlevel > 1:
                             print '"%s", line %d: stopping ignoring (definition pass)' \
                                   % (filename, n+1)
                         ignoreflag = False
@@ -465,12 +467,12 @@ class CrossRef:
                     comment = ""
                     if '#' in line:
                         if "# wmlscope: start ignoring" in line:
-                            if warnlevel > 0:
+                            if warnlevel > 1:
                                 print '"%s", line %d: starting ignoring (reference pass)' \
                                       % (fn, n+1)
                             ignoreflag = True
                         elif "# wmlscope: stop ignoring" in line:
-                            if warnlevel > 0:
+                            if warnlevel > 1:
                                 print '"%s", line %d: stopping ignoring (reference pass)' \
                                       % (fn, n+1)
                             ignoreflag = False
