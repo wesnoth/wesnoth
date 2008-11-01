@@ -22,6 +22,10 @@
 class surface;
 class t_string;
 
+namespace game_logic {
+class map_formula_callable;
+} // namespace game_logic
+
 namespace gui2 {
 
 /**
@@ -141,6 +145,15 @@ t_string missing_widget(const std::string& id);
  * @returns                       The id.
  */
 std::string get_uid();
+
+/** 
+ * Gets a formula object with the screen size.
+ *
+ * @returns                       Formula object with the screen_width and
+ *                                screen_height variable set to the current
+ *                                values of these in settings.
+ */
+game_logic::map_formula_callable get_screen_size_variables();
 
 } // namespace gui2
 

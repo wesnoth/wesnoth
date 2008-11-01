@@ -14,6 +14,7 @@
 
 #include "gui/widgets/helper.hpp"
 
+#include "formula_callable.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/settings.hpp"
 #include "sdl_utils.hpp"
@@ -178,6 +179,15 @@ std::string get_uid()
 
 	return "____" + lexical_cast<std::string>(id);
 
+}
+
+game_logic::map_formula_callable get_screen_size_variables()
+{
+	game_logic::map_formula_callable result;
+	result.add("screen_width", variant(settings::screen_width));
+	result.add("screen_height", variant(settings::screen_height));
+
+	return result;
 }
 
 } // namespace gui2

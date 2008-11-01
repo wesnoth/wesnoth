@@ -454,9 +454,7 @@ void twindow::layout()
 
 		set_size(create_rect(position, size));
 	} else {
-		game_logic::map_formula_callable variables;
-		variables.add("screen_width", variant(settings::screen_width));
-		variables.add("screen_height", variant(settings::screen_height));
+		game_logic::map_formula_callable variables = get_screen_size_variables(); 
 
 		set_size(::create_rect(
 			x_(variables), y_(variables), w_(variables), h_(variables)));
