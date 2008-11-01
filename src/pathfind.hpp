@@ -174,4 +174,14 @@ private:
 	gamemap const &map_;
 };
 
+/**
+ * Function which doesn't take anything into account. Used by
+ * move_unit_fake for the last-chance case.
+ */
+struct dummy_path_calculator : cost_calculator
+{
+	dummy_path_calculator(const unit& u, const gamemap& map);
+	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
+};
+
 #endif

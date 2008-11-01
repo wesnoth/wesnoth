@@ -383,6 +383,15 @@ double emergency_path_calculator::cost(const map_location&,const map_location& l
 	return unit_.movement_cost(map_[loc]);
 }
 
+dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
+{
+}
+
+double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
+{
+	return 0.0;
+}
+
 std::ostream& operator << (std::ostream& outstream, const paths::route& rt) {
 	outstream << "\n[route]\n\tsteps=\"";
 	bool first_loop = true;

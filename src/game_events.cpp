@@ -919,7 +919,15 @@ namespace {
 
 					route = a_star_search(src, dst, 10000, &calc,
 							game_map->w(), game_map->h());
-					assert(route.steps.size() > 0);
+					if(route.steps.size() == 0) {
+						// This would occur when trying to do a MUF of a unit
+						// over locations which are unreachable to it (infinite movement
+						// costs). This really cannot fail.
+						WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
+						dummy_path_calculator calc(dummy_unit, *game_map);
+						route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
+						assert(route.steps.size() > 0);
+					}
 				}
 				unit_display::move_unit(route.steps, dummy_unit, *teams);
 
