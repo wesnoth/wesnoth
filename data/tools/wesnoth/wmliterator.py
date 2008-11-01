@@ -175,7 +175,7 @@ Element Types:
     if text.startswith('#ifdef'):
         return (['#ifdef'],)*2
     elif text.startswith('#ifndef'):
-        return (['#ifdef'],)*2
+        return (['#ifndef'],)*2
     elif text.startswith('#else'):
         if not closeScope(scopes, '#else', fname, lineno):
             printScopeError('#else', fname, lineno)
@@ -247,12 +247,17 @@ Important Attributes:
            always 1, unless text contains a multi-line quoted string
     lineno - a zero-based line index marking where this text begins
     """
-    def __init__(self, lines=[], filename=None, begin=-1, endScope=None):
+    def __init__(self, lines=None, filename=None, begin=-1, endScope=None):
         "Initialize a new WmlIterator."
-        if not lines and filename:
-            ifp = open(filename)
-            lines = ifp.readlines()
-            ifp.close()
+        if lines is None:
+            lines = []
+            if filename:
+                try:
+                    ifp = open(filename)
+                    lines = ifp.readlines()
+                    ifp.close()
+                except Exception:
+                    printError(filename, 'error opening file')
         self.lines = lines
         self.fname = filename
         self.reset()
