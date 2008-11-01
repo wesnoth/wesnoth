@@ -83,6 +83,14 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         test_program += \
             "#if BOOST_VERSION < %d\n#error Boost version is too old!\n#endif\n" \
             % (major * 100000 + minor * 100 + sub_minor)
+
+    if boost_lib == "unit_test_framework":
+        test_program += """
+        boost::unit_test::test_suite* init_unit_test_suite ( int, char**)
+        {
+        }
+        \n"""
+
     test_program += """
         int main()
         {
