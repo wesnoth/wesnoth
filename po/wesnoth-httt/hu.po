@@ -1,4 +1,4 @@
-# translation of hu-httt.po to Hungarian
+# translation of hu.po to Hungarian
 # Hungarian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -6,16 +6,16 @@
 #
 # Automatically generated, 2004.
 # Széll Tamás <tomi@digiflex.hu>, 2005.
-# Barthalos Márton <barthalosmarton@yahoo.com>, 2007.
+# Barthalos Márton <barthalosmarton@yahoo.com>, 2007, 2008.
 # Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2007, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu-httt\n"
+"Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 12:00+0100\n"
-"PO-Revision-Date: 2008-03-01 08:38+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2008-10-24 22:51+0200\n"
+"Last-Translator: Barthalos Márton <barthalosmarton@yahoo.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -213,7 +213,7 @@ msgstr "Túlléped a körök számát"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:35
 msgid "Early finish bonus."
-msgstr ""
+msgstr "Jutalom a korai befejezésért"
 
 #. [side]: type=Commander
 #. [side]: type=Fighter
@@ -279,7 +279,7 @@ msgstr "Konrad"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:139
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:157
 msgid "Rebels"
-msgstr ""
+msgstr "Lázadók"
 
 #. [unit]: type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:67
@@ -322,9 +322,8 @@ msgstr "Urug-Telfar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:494
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:526
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:560
-#, fuzzy
 msgid "Orcs"
-msgstr "Marcus"
+msgstr "Orkok"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:163
@@ -348,14 +347,13 @@ msgstr "Chantal"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:238
-#, fuzzy
 msgid ""
 "Sixteen years into her rule, Asheviere turned her attention to the wood "
 "elves living in the great forest southwest of Wesnoth, whom she despised. "
 "Orcish mercenaries were hired and dispatched to bring about their ruin."
 msgstr ""
 "Uralkodásának tizenhatodik évében Asheviere az általa megvetett tündék felé "
-"fordította a figyelmét, akik a Wesnothtól délnyugatra lévő erdőkben éltek. "
+"fordította a figyelmét, akik a Wesnothtól délnyugatra fekvő erdőkben éltek. "
 "Orkokból zsoldoshadsereget fogadott, és elküldte őket, hogy végezzenek az "
 "erdők bátor lakóival."
 
@@ -506,9 +504,8 @@ msgstr "Delfador, ne halj meg! Életben kell maradnod!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:375
-#, fuzzy
 msgid "Ugh!"
-msgstr "Uhh"
+msgstr "Ahh!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:386
@@ -518,7 +515,6 @@ msgstr "Ó, jaj! Kifutottunk az időből, nekik pedig megérkezett az erősíté
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:405
-#, fuzzy
 msgid "Die, villain, die!"
 msgstr "Most meghalsz, te gazfickó!"
 
@@ -572,12 +568,14 @@ msgstr "Kitartasz a körök lejártáig"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:26
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat the enemy leader\n"
 "`(special bonus)"
-msgstr "Legyőzöd valamennyi ellenséges vezért"
+msgstr ""
+"<255,255,255>Másik lehetőség a győzelemre:\n"
+"@Legyőzöd az ellenséges vezért\n"
+"`(kiemelt jutalom)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:39
@@ -636,14 +634,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:168
-#, fuzzy
 msgid ""
 "Konrad, this is Kaylan, one of the mightiest of the horse lords, and one of "
 "the few who is willing to oppose the Dark Crown. Rumor has it that his lance "
 "has slain fifty men and a hundred orcs."
 msgstr ""
-"Konrad! Ő Kaylan, a leghatalmasabb lovas urak egyike, és egyike azon "
-"keveseknek, akik szembeszállnak a sötét koronával. Azt beszélik, dárdája már "
+"Konrad! Ő Kaylan, a leghatalmasabb lovas urak egyike, és egy azon kevesek "
+"közül, akik szembeszállnak a Sötét Koronával. Azt beszélik, kopjája már "
 "ötven embernek és száz orknak okozta a halálát."
 
 #. [message]: speaker=Sir Kaylan
@@ -864,7 +861,7 @@ msgid ""
 msgstr ""
 "Kockára tetted az életed, hogy megvédd a városunkat. Cserébe neked "
 "adományozom a városom egyik legkiválóbb védőjét. Simyr, lépj előre. Légy "
-"dárdáddal az ifjú Konrad herceg szolgálatára. Segíts neki visszaállítani az "
+"kopjáddal az ifjú Konrad herceg szolgálatára. Segíts neki visszaállítani az "
 "ország rendjét."
 
 #. [message]: speaker=Simyr
@@ -1087,6 +1084,9 @@ msgid ""
 "@Defeat all enemy leaders\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Másik lehetőség a győzelemre:\n"
+"@Legyőzöd az összes ellenséges vezért\n"
+"`(jutalom a korai befejezésért)"
 
 #. [side]: type=Orcish Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:58
@@ -1554,6 +1554,9 @@ msgid ""
 "@Defeat Muff Malal\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Másik lehetőség a győzelemre:\n"
+"@Legyőzöd Muff Malalt\n"
+"`(jutalom a korai befejezésért)"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:60
@@ -1659,12 +1662,14 @@ msgstr "Az elátkozottak szigete"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat all enemy leaders\n"
 "`(special bonus)"
-msgstr "Legyőzöd valamennyi ellenséges vezért"
+msgstr ""
+"<255,255,255>Másik lehetőség a győzelemre:\n"
+"@Legyőzöd az összes ellenséges vezért\n"
+"`(kiemelt jutalom)"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:41
@@ -1711,7 +1716,7 @@ msgstr "Haf-Mal"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:152
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:101
 msgid "Undead"
-msgstr ""
+msgstr "Élőholt"
 
 #. [side]: type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:94
@@ -1928,7 +1933,7 @@ msgstr "Agadla"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:93
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:136
 msgid "Evil"
-msgstr ""
+msgstr "Gonosz"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:96
@@ -2717,6 +2722,9 @@ msgid ""
 "@Eradicate the liches\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Másik lehetőség a győzelemre:\n"
+"@Kiirtod a delevényeket\n"
+"`(jutalom a korai befejezésért)"
 
 #. [side]: type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
@@ -3069,7 +3077,7 @@ msgid ""
 msgstr ""
 "A grifftojásokból kikelő griff-fiókákból szelíd griffeket nevelhetünk, "
 "amelyek majd nekünk szolgálnak. Amikor már elég nagyok, felnyergeljük őket, "
-"és csatasorba állítjuk a saját griff-lovasainkat!"
+"és csatasorba állítjuk a saját grifflovasainkat!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:259
@@ -3190,9 +3198,8 @@ msgstr "Gaga-Breuk"
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:122
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:168
-#, fuzzy
 msgid "Monsters"
-msgstr "Monry"
+msgstr "Szörnyek"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:184
@@ -3278,7 +3285,6 @@ msgstr "Hogy érted ezt, Delfador?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:228
-#, fuzzy
 msgid ""
 "I mustered men to fight against the traitor-king, and of course Asheviere "
 "too, for she was behind it all. We met them; not here, but on the road from "
@@ -3287,7 +3293,8 @@ msgid ""
 "had little choice but to end his life."
 msgstr ""
 "Összegyűjtöttem a férfiakat, hogy megküzdjünk a trónbitorlóval és persze "
-"Asheviere-rel, mert az egész mögött ő állt. Túlerőben voltak, talán négyszer "
+"Asheviere-rel, mert az egész mögött ő állt. Összecsaptunk velük; nem itt, "
+"hanem még az úton Weldynből jövet, Tathnál. Túlerőben voltak, talán négyszer "
 "is annyian, mint mi. A csata hevében a fiú, az az ostoba, rámrontott, ádázul "
 "vagdalkozva maga körül. Nem volt más választásom, meg kellett ölnöm."
 
@@ -4309,7 +4316,7 @@ msgstr "Húha... Na, csak szelíden. Remek... Megy ez... Na, rajta!"
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:638
 msgid "You can now recruit fearsome Gryphon Riders!"
-msgstr "Most már félelmetes griff-lovasokat is toborozhatsz!"
+msgstr "Most már félelmetes grifflovasokat is toborozhatsz!"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:643
@@ -4417,15 +4424,14 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:213
-#, fuzzy
 msgid ""
 "I am of the merfolk, dweller of the vast oceans! Do not ask me what I am "
 "doing in a cave. My lord can be somewhat eccentric. We are fighting at the "
 "side of your fellow cave-dwellers to drive back the orcs and trolls."
 msgstr ""
-"Én egy sellő vagyok, a végtelen tengerek lakója. Ne kérdezd, mit keresek "
-"ebben a barlangban, a hadvezérem kissé szeszélyes. Együtt harcolunk a "
-"barlanglakó társaiddal, hogy visszaszorítsuk a orkokat és a trollokat."
+"Én sellő vagyok, a végtelen tengerek lakója. Ne kérdezd, mit keresek ebben a "
+"barlangban, a hadvezérem kissé szeszélyes. Együtt harcolunk a barlanglakó "
+"társaiddal, hogy visszaszorítsuk a orkokat és a trollokat."
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:217
@@ -4735,7 +4741,7 @@ msgstr ""
 "Ahogy Konrad és Delafador végigment egy szűk folyosón, a katakombák "
 "útvesztője után a fagyos sötétség fogadta őket. A nagy feketeség súlya alatt "
 "csaknem összeroppantak. A lámpák pislákolni kezdtek, aztán ki is aludtak, és "
-"még a vén mágus botja is csak alig tudott elegendő fényt adni."
+"még a vén mágus botja is csak alig-alig tudott elegendő fényt adni."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:54
@@ -4753,7 +4759,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:91
 msgid "Humans"
-msgstr ""
+msgstr "Emberek"
 
 #. [side]: type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:98
@@ -4815,7 +4821,7 @@ msgstr "Troll"
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:239
 msgid "Goblin Knight"
-msgstr "Koboldlovag"
+msgstr "Kobold lovag"
 
 #. [message]: type=Goblin Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:326
@@ -5562,7 +5568,7 @@ msgid ""
 msgstr ""
 "Úgy nőttem föl, hogy mást sem hallottam, csak hogy anyám parancsokat "
 "osztogat, és hadseregeket irányítgat. Kislányként elbújtam a trónteremben, "
-"amikor fogadta a hadvezéreit. Most már tudom, hogy emberek vére szárad a "
+"amikor fogadta a tábornokait. Most már tudom, hogy emberek vére szárad a "
 "lelkén... egész városokat lemészároltatott!"
 
 #. [message]: speaker=Li'sar
@@ -5618,7 +5624,7 @@ msgstr "Holtláp"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:21
 msgid "Defeat the Lich Lord Aimucasur"
-msgstr "Legyőzöd Aimucasurt, a villi főurat"
+msgstr "Legyőzöd Aimucasurt, a delevény nagyurat"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:26
@@ -5626,6 +5632,8 @@ msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all Death Knights first"
 msgstr ""
+"<255,255,255>További jutalomért:\n"
+"@Először legyőzöd az összes halállovagot"
 
 #. [side]: type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:85
@@ -5658,9 +5666,9 @@ msgid ""
 "This land is cursed. Liches have existed here for ages, luring adventurers "
 "and soldiers to their deaths and amassing great armies and fortunes."
 msgstr ""
-"Átok ül ezen a vidéken. A villik már időtlen idők óta itt tanyáznak, ezalatt "
-"óvatlan kalandorok és katonák százait csalták lépre és ölték meg, hogy "
-"hatalmas élőholt sereget és vagyont halmozzanak fel."
+"Átok ül ezen a vidéken. A delevények már időtlen idők óta itt tanyáznak, "
+"ezalatt óvatlan kalandorok és katonák százait csalták lépre és ölték meg, "
+"hogy hatalmas élőholt sereget és vagyont halmozzanak fel."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:195
@@ -5678,9 +5686,9 @@ msgid ""
 "must be particularly powerful, since Death Knights are usually strong-willed "
 "spirits on their own."
 msgstr ""
-"Úgy tűnik, ezek a halállovagok a villi főúr kegyencei. Mivel a halállovagok "
-"általában igen erős akaratú lelkek, ennek a villinek különösen nagy lehet az "
-"ereje, ha uralma alá tudta őket hajtani."
+"Úgy tűnik, ezek a halállovagok a delevény nagyúr kegyencei. Mivel a "
+"halállovagok általában igen erős akaratú lelkek, ennek a delevénynek "
+"különösen nagy lehet az ereje, ha uralma alá tudta őket hajtani."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:203
@@ -5730,8 +5738,8 @@ msgid ""
 "significantly, and it is seething in anger towards you."
 msgstr ""
 "Ahogy az utolsó halállovag is elesik, fülsiketítő rivallás tör elő a "
-"villiből. Nyilvánvalóan jócskán kiszívta az erejét, hogy ilyen erős lelkeket "
-"irányított, de most az ellened táplált dühtől forrong."
+"delevényből. Nyilvánvalóan jócskán kiszívta az erejét, hogy ilyen erős "
+"lelkeket irányított, de most az ellened táplált dühtől forrong."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:307
@@ -5741,11 +5749,11 @@ msgid ""
 "giant cloud of dust bellows out as the remnants of the Lich's once-mortal "
 "skin and centuries of grime and gristle are lodged loose for the last time."
 msgstr ""
-"A végső csapás lesújtott a villire, és ahogy megsemmisült, egy kis "
+"A végső csapás lesújtott a delevényre, és ahogy megsemmisült, egy kis "
 "energiahullám tört ki belőle. Az utolsó halállovag csöndesen és élettelenül "
 "a földre hullott. Egy hatalmas porfelhő alatt sűrű ködbe burkolóztak az "
-"egykoron halálos villi maradványai, melyekre hosszú századok mocska rakódott "
-"le."
+"egykoron halálos delevény maradványai, melyekre hosszú századok mocska "
+"rakódott le."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:314
@@ -5755,11 +5763,11 @@ msgid ""
 "cloud of dust bellows out as the remnants of the Lich's once-mortal skin and "
 "centuries of grime and gristle are lodged loose for the last time."
 msgstr ""
-"A végső csapás lesújtott a villire, és ahogy megsemmisült, egy kis "
+"A végső csapás lesújtott a delevényre, és ahogy megsemmisült, egy kis "
 "energiahullám tört ki belőle. A halállovagok csöndesen és élettelenül a "
 "földre hulltak. Egy hatalmas porfelhő alatt sűrű ködbe burkolóztak az "
-"egykoron halálos villi maradványai, melyekre hosszú századok mocska rakódott "
-"le."
+"egykoron halálos delevény maradványai, melyekre hosszú századok mocska "
+"rakódott le."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:323
@@ -5769,10 +5777,10 @@ msgid ""
 "once-mortal skin and centuries of grime and gristle are lodged loose for the "
 "last time."
 msgstr ""
-"A végső csapás lesújtott a villire, és ahogy megsemmisült, egy kis "
+"A végső csapás lesújtott a delevényre, és ahogy megsemmisült, egy kis "
 "energiahullám tört ki belőle. Egy hatalmas porfelhő alatt sűrű ködbe "
-"burkolóztak az egykoron halálos villi maradványai, melyekre hosszú századok "
-"mocska rakódott le."
+"burkolóztak az egykoron halálos delevény maradványai, melyekre hosszú "
+"századok mocska rakódott le."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:329
@@ -5785,8 +5793,8 @@ msgid ""
 "Aimucasur? So you know of this Lich Lord? Did you know him? He was a "
 "powerful mage?"
 msgstr ""
-"Aimucasur? Tehát te tudsz erről a villi főúrról? Ismerted? Nagyhatalmú mágus "
-"volt?"
+"Aimucasur? Tehát te tudsz erről a delevény nagyúrról? Ismerted? Nagyhatalmú "
+"mágus volt?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:337
@@ -5838,9 +5846,8 @@ msgstr "Eljutsz a folyó végére"
 #. [side]: type=Saurian Oracle
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:136
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:83
-#, fuzzy
 msgid "Drakes"
-msgstr "Dafeis"
+msgstr "Perzsekények"
 
 #. [unit]: type=Injured Sergeant
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:264
@@ -5849,7 +5856,6 @@ msgstr "Warven"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:277
-#, fuzzy
 msgid ""
 "The party traveled up the river for days, sometimes walking through the "
 "shallow water, sometimes swimming, helped by the Merfolk."
@@ -5928,8 +5934,8 @@ msgid ""
 "appointed some of his most powerful minions to guard the swamps. We must not "
 "go that way!"
 msgstr ""
-"Nem javaslom. Egyszer régen egy villi, aki harcban állt a népemmel, kiküldte "
-"a legerősebb csatlósait, hogy őrizzék a mocsarat. Nem mehetünk arra!"
+"Nem javaslom. Egyszer régen egy delevény, aki harcban állt a népemmel, "
+"kiküldte a legerősebb csatlósait, hogy őrizzék a mocsarat. Nem mehetünk arra!"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:318
@@ -6270,9 +6276,9 @@ msgid ""
 "we might try to rescue the sergeant stranded on the cliff. However, I make "
 "no promises."
 msgstr ""
-"A legfőbb célunk továbbra is az, hogy mi magunk életben maradjunk. De amint "
-"tudunk nélkülözni néhány egységet, megpróbáljuk megmenteni. De nem ígérek "
-"semmit."
+"A legfőbb célunk továbbra is az, hogy mi magunk életben maradjunk. Ám amint "
+"tudunk nélkülözni néhány egységet, megpróbáljuk megmenteni az őrmestert. De "
+"nem ígérek semmit."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1063
@@ -6295,6 +6301,8 @@ msgid ""
 "<255,255,255>Optional objective:\n"
 "@Rescue the sergeant"
 msgstr ""
+"<255,255,255>Választható célkitűzés:\n"
+"@Megmented az őrmestert"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1124
@@ -6321,7 +6329,6 @@ msgstr ""
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1136
-#, fuzzy
 msgid "Princess Li'sar - here? Your Highness, I am yours to command!"
 msgstr "Li'sar hercegnő? Itt? Felség, rendelkezz velem!"
 
@@ -6435,12 +6442,11 @@ msgstr "Az északi tündék földjén"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:20
-#, fuzzy
 msgid ""
 "Konrad must reach the Lintanir Forest to the east and hold that position "
 "until the turn is over"
 msgstr ""
-"Konrad elér a tündék erdejébe, és tartani tudja a helyzetét a kör végéig"
+"Konrad elér a Lintanir-erdőbe, és tartani tudja a helyzetét a kör végéig"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:40
@@ -6449,9 +6455,8 @@ msgstr "Túlléped a körök számát, mielőtt elérsz az erdőbe"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:45
-#, fuzzy
 msgid "Note: your encampment will be dismantled after the first turn.\n"
-msgstr "Az első kör után táborbontás lesz"
+msgstr "Figyelem: A táborodat az első kör után lebontják.\n"
 
 #. [side]: type=Commander
 #. [side]: type=Elvish Lord
@@ -6463,7 +6468,7 @@ msgstr "Az első kör után táborbontás lesz"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:54
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:180
 msgid "Allies"
-msgstr ""
+msgstr "Szövetségesek"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:71
@@ -6487,6 +6492,9 @@ msgid ""
 "the North Elves. I was born not far east of here...more years ago than I "
 "care to remember."
 msgstr ""
+"Végre, barátaim, már majdnem ott vagyunk a Lintanir-erdőben, az északi "
+"tündék otthonában. A közelben születtem, kicsit keletre innen... sokkal több "
+"éve, mint amennyire emlékezhetek."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:353
@@ -6550,15 +6558,14 @@ msgstr "Baj? Miféle baj?"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:414
-#, fuzzy
 msgid ""
 "We have sighted a great host to the south, a host of the men of Wesnoth. And "
 "we believe they are looking for you! There is not a moment to lose. You must "
 "make haste, east to Lintanir. Only there will you be safe!"
 msgstr ""
 "Egy óriási sereget észleltünk délre, a wesnothiak seregét. És szerintünk "
-"titeket keresnek! Nincs vesztegetni való időnk, gyorsan be a tündék "
-"erdejébe! Csak ott lesztek biztonságban!"
+"titeket keresnek! Nincs vesztegetni való időtök, gyorsan gyerünk keletre a "
+"Lintanirba! Csak ott lesztek biztonságban!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:419
@@ -6760,21 +6767,19 @@ msgstr "Ott vannak! Roham!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:653
-#, fuzzy
 msgid "There you are! You must come quickly east to Lintanir!!"
-msgstr "Hát, itt vagytok! Siessetek gyorsan keletre, a tündék hazájába!"
+msgstr "Hát, itt vagytok! Siessetek gyorsan keletre, a Lintanirba!"
 
 #. [message]: speaker=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:667
-#, fuzzy
 msgid ""
 "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
 "take shelter here until the battle passes. If you stay with me here for a "
 "little while, we will all be safe."
 msgstr ""
-"Üdvözlet, tündék barátja! Isten hozott Emetriában! Itt kell meghúzódnotok, "
-"amíg véget nem ér a csata. Ha egy darabig itt maradtok velem, mind "
-"biztonságban leszünk."
+"Üdvözlet, tündék barátja! Isten hozott Emetriában, a lintaniri erődömben! "
+"Itt kell meghúzódnotok, amíg véget nem ér a csata. Ha egy darabig itt "
+"maradtok velem, mind biztonságban leszünk."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:671
@@ -6812,13 +6817,12 @@ msgstr "Barátaim, tündék barátai, most már biztonságban vagytok!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:756
-#, fuzzy
 msgid ""
 "El'rien, we have the Scepter of Fire with us! We must escort them to "
 "Elensiria!"
 msgstr ""
 "El'rien, nálunk van a Tűz Jogara! Konradot és az embereit el kell kísérnünk "
-"Elensiába!"
+"Elensiriába!"
 
 #. [message]: speaker=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:760
@@ -6839,13 +6843,12 @@ msgstr "Megtalálod a kijáratot a felszín felé, és odalépsz Konraddal"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
-#, fuzzy
 msgid ""
 "<255,255,255>Optional objective:\n"
 "@Help the Wose fend off the undead attack"
 msgstr ""
-"<0,0,255>Segítesz a fapásztoroknak, hogy elhárítsák az élőholtak támadását\n"
-"<0,0,255>(választható célkitűzés)"
+"<255,255,255>Választható célkitűzés:\n"
+"@Segítesz a fapásztornak elhárítani az élőholtak támadását"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -6916,7 +6919,6 @@ msgstr "Everlore"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:98
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century - a generation in the way your race counts time - since any "
@@ -6924,8 +6926,8 @@ msgid ""
 msgstr ""
 "Üdvözöllek a fővárosunkban! Érezd magad megtisztelve! Már egy fél évszázad "
 "telt el - vagy ahogy ti emberek mondjátok, fölnőtt egy nemzedék - mióta a "
-"tündék bárki emberfiában megbíztak volna annyira, hogy beengedjék a "
-"városukba."
+"tündék bárki emberfiában megbíztak volna annyira, hogy beengedjék ide, "
+"Elensiriába."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:102
@@ -7508,26 +7510,25 @@ msgstr "A klánok próbája"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:20
-#, fuzzy
 msgid "Defeat 25 enemy units"
-msgstr "Legyőzöl 25 egységet"
+msgstr "Legyőzöl 25 ellenséges egységet"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all enemy leaders"
-msgstr "Legyőzöd valamennyi ellenséges vezért"
+msgstr ""
+"<255,255,255>További jutalomért:\n"
+"@Legyőzöd az összes ellenséges vezért"
 
 #. [side]: type=Grand Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:100
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:129
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:158
-#, fuzzy
 msgid "Plainsmen"
-msgstr "Hófödte fennsíkok"
+msgstr "síkföldi emberek"
 
 #. [then]
 #. [side]: type=Grand Knight
@@ -7577,13 +7578,12 @@ msgstr "Mit akarnak ezek a betolakodók? Egy biztos, nem mi hívtuk őket ide."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:215
-#, fuzzy
 msgid ""
 "We come in peace! We wish for you to aid us in our struggle against "
 "Asheviere, the evil Queen."
 msgstr ""
-"Békével jöttünk! Arra kérünk, segítsetek a gonosz anyakirálynő, Asheviere "
-"elleni küzdelmünkben."
+"Békével jöttünk! Arra kérünk, segítsetek a gonosz királynő, Asheviere elleni "
+"küzdelmünkben."
 
 #. [message]: speaker=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:219
@@ -8604,7 +8604,6 @@ msgstr "megbabonázott páncél"
 
 #. [value]
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:197
-#, fuzzy
 msgid ""
 "The Void Armor grants the following resistances:\n"
 "blade:  50%\n"
@@ -8613,9 +8612,9 @@ msgid ""
 "fire:  +10%"
 msgstr ""
 "A megbabonázott páncél a következő ellenállásokat biztosítja:\n"
-"penge: 50%\n"
-"páncéltörés: 50%\n"
-"ütés: 60%\n"
+"vágás: 50%\n"
+"szúrás: 40%\n"
+"ütés: 40%\n"
 "tűz: +10%"
 
 #. [object]
@@ -8828,49 +8827,3 @@ msgstr ""
 
 #~ msgid "Eonihar"
 #~ msgstr "Eonihar"
-
-#~ msgid ""
-#~ "At last, friends, we have almost reached the home of my people, the North "
-#~ "Elves."
-#~ msgstr ""
-#~ "Barátaim! Végre, nemsokára megérkezünk az otthonomba, az északi tündék "
-#~ "földjére."
-
-#~ msgid "Elder Mage"
-#~ msgstr "Vén Mágus"
-
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power a little diminished from "
-#~ "wearying years of battle. Nevertheless they remain feared on the "
-#~ "battlefield on account of their powerful lightning bolts."
-#~ msgstr ""
-#~ "A vén mágusok valaha volt erejét már kissé megtépázta a kimerítő háborúk "
-#~ "hosszú sora, ám erőteljes villámaik miatt még mindig rettegik őket a "
-#~ "harcmezőn."
-
-#~ msgid "staff"
-#~ msgstr "bot"
-
-#~ msgid "lightning"
-#~ msgstr "villám"
-
-#~ msgid "Defeat the enemy leader (Bonus)"
-#~ msgstr "Legyőzöd az ellenséges vezért (bónusz)"
-
-#~ msgid "Defeat all enemy leaders (Bonus)"
-#~ msgstr "Legyőzöd mindkét ellenséges vezért (bónusz)"
-
-#~ msgid "Defeat Muff Malal (Bonus)"
-#~ msgstr "Legyőzöd Muff Malalt (Bónusz)"
-
-#~ msgid "Eradicate the Liches (Bonus)"
-#~ msgstr "Elpusztítod a villiket (bónusz)"
-
-#~ msgid "Defeat the Death Knights (Bonus)"
-#~ msgstr "Legyőzöd a halállovagokat (bónusz)"
-
-#~ msgid "<0,0,255>Rescue the sergeant ( Optional objective )"
-#~ msgstr "<0,0,255>Megmented az őrmestert (választható célkitűzés)"
-
-#~ msgid "Defeat Enemy Leaders (Bonus)"
-#~ msgstr "Legyőzöd az ellenséges vezéreket (bónusz)"
