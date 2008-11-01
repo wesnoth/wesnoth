@@ -76,8 +76,6 @@ class unit_animation
 				animated<unit_frame>(start_time),
 				accelerate(true),
 				parameters_(),
-				src_(),
-				dst_(),
 				halo_id_(0),
 				last_frame_begin_time_(0)
 				{};
@@ -85,18 +83,15 @@ class unit_animation
 			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
-			void redraw( const frame_parameters& value,const bool primary=false);
-			bool invalidate(const frame_parameters& value, const bool primary = false) const;
-			void start_animation(int start_time,const map_location& src,const  map_location& dst, bool cycles=false);
-			void update_parameters(const map_location& src,const  map_location& dst);
+			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
+			bool invalidate(const frame_parameters& value,const map_location &src, const map_location &dst,  const bool primary = false) const;
+			void start_animation(int start_time, bool cycles=false);
 			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
 			bool accelerate;
 		private:
 
 			//animation params that can be locally overridden by frames
 			frame_builder parameters_;
-			map_location src_;
-			map_location dst_;
 			int halo_id_;
 			int last_frame_begin_time_;
 
@@ -115,6 +110,9 @@ class unit_animation
 		std::vector<int> swing_num_;
 		std::map<std::string,particule> sub_anims_;
 		particule unit_anim_;
+		/* these are drawing parameters, but for efficiancy reason they are in the anim and not in the particle */
+		map_location src_;
+		map_location dst_;
 };
 
 class unit_animator

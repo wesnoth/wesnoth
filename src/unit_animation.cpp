@@ -141,7 +141,9 @@ unit_animation::unit_animation(int start_time,
 		hits_(),
 		swing_num_(),
 		sub_anims_(),
-		unit_anim_(start_time)
+		unit_anim_(start_time),
+		src_(),
+		dst_()
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
@@ -160,7 +162,9 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	hits_(),
 	swing_num_(),
 	sub_anims_(),
-	unit_anim_(cfg,frame_string)
+	unit_anim_(cfg,frame_string),
+	src_(),
+	dst_()
 {
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 	config::child_map::const_iterator frame_itor =cfg.all_children().begin();
@@ -642,8 +646,6 @@ unit_animation::particule::particule(
 		animated<unit_frame>(),
 		accelerate(true),
 		parameters_(cfg,frame_string),
-		src_(),
-		dst_(),
 		halo_id_(0),
 		last_frame_begin_time_(0)
 {
@@ -731,8 +733,10 @@ int unit_animation::get_begin_time() const
 void unit_animation::start_animation(int start_time,const map_location &src, const map_location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
 {
 		unit_anim_.accelerate = accelerate;
+		src_ = src;
+		dst_ = dst;
 		new_animation_frame();
-	unit_anim_.start_animation(start_time, src, dst, cycles);
+	unit_anim_.start_animation(start_time, cycles);
 	if(!text.empty()) {
 		particule crude_build;
 		crude_build.add_frame(1,frame_builder());
@@ -742,17 +746,14 @@ void unit_animation::start_animation(int start_time,const map_location &src, con
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.accelerate = accelerate;
-		anim_itor->second.start_animation(start_time,src,dst,cycles);
+		anim_itor->second.start_animation(start_time,cycles);
 	}
 }
 
 void unit_animation::update_parameters(const map_location &src, const map_location &dst)
 {
-	unit_anim_.update_parameters(src, dst);
-	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.update_parameters(src,dst);
-	}
+	src_ = src;
+	dst_ = dst;
 }
 void unit_animation::pause_animation()
 {
@@ -776,9 +777,9 @@ void unit_animation::redraw(const frame_parameters& value)
 {
 
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	unit_anim_.redraw(value,true);
+	unit_anim_.redraw(value,src_,dst_,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		anim_itor->second.redraw( value);
+		anim_itor->second.redraw( value,src_,dst_);
 	}
 }
 bool unit_animation::invalidate(const frame_parameters& value) const
@@ -786,28 +787,28 @@ bool unit_animation::invalidate(const frame_parameters& value) const
 
 	bool result = false;
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
-	result |= unit_anim_.invalidate(value,true);
+	result |= unit_anim_.invalidate(value,src_,dst_,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		result |= anim_itor->second.invalidate(value);
+		result |= anim_itor->second.invalidate(value,src_,dst_);
 	}
 	return result;
 }
-void unit_animation::particule::redraw(const frame_parameters& value,const bool primary)
+void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src_,dst_,&halo_id_,default_val,value,primary);
+		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value,primary);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src_,dst_,&halo_id_,default_val,value,primary);
+		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value,primary);
 	}
 }
-bool unit_animation::particule::invalidate(const frame_parameters& value,const bool primary ) const
+bool unit_animation::particule::invalidate(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary ) const
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	return current_frame.invalidate(need_update(),get_current_frame_time(),src_,dst_,default_val,value,primary);
+	return current_frame.invalidate(need_update(),get_current_frame_time(),src,dst,default_val,value,primary);
 }
 
 unit_animation::particule::~particule()
@@ -816,30 +817,15 @@ unit_animation::particule::~particule()
 	halo_id_ = halo::NO_HALO;
 }
 
-void unit_animation::particule::start_animation(int start_time,
-	const map_location &src, const map_location &dst,
-	bool cycles)
+void unit_animation::particule::start_animation(int start_time, bool cycles)
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
 	parameters_.duration(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles);
 	last_frame_begin_time_ = get_begin_time() -1;
-	if(src != map_location::null_location || dst != map_location::null_location) {
-		src_ = src;
-		dst_ = dst;
-	}
 }
 
-
-
-void unit_animation::particule::update_parameters(const map_location &src, const map_location &dst)
-{
-	if(src != map_location::null_location || dst != map_location::null_location) {
-		src_ = src;
-		dst_ = dst;
-	}
-}
 
 void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 		const map_location &src , const int value,bool with_bars,bool cycles,
