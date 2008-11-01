@@ -189,6 +189,10 @@ if env["fast"]:
     SetOption('max_drift', 1)
     SetOption('implicit_cache', 1)
 
+if not os.path.isabs(env["prefix"]):
+    print "Warning: prefix is set to relative dir. destdir setting will be ignored."
+    env["destdir"] = ""
+
 #
 # Check some preconditions
 #
@@ -202,10 +206,11 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-conf = Configure(env, custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig"]), config_h = "config.h",
+configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig"]), config_h = "config.h",
     log_file="build/config.log", conf_dir="build/sconf_temp")
 
 if env["prereqs"]:
+    conf = env.Configure(**configure_args)
     if env["gettextdir"]:
         env.AppendUnique(CPPPATH = [os.path.join(env["gettextdir"], "include")],
                          LIBPATH = [os.path.join(env["gettextdir"], "lib")],
@@ -245,7 +250,16 @@ if env["prereqs"]:
         if conf.CheckLibWithHeader("mysqlpp", "mysql++/mysql++.h", "C++"):
             env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
 
+    if env["python"]:
+        env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
+
+    env = conf.Finish()
+
+    test_env = env.Clone()
+    conf = test_env.Configure(**configure_args)
+
     have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework', require_version = "1.33.0") or Warning("Unit tests are disabled because their prerequisites are not met.")
+    test_env = conf.Finish()
 
 #    have_boost_asio = \
 #        conf.CheckBoost("system", require_version = "1.35.0") and \
@@ -254,8 +268,6 @@ if env["prereqs"]:
 #    
 #    env["have_boost_asio"] = have_boost_asio;
 
-    if env["python"]:
-        env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
 else:
     have_client_prereqs = True
     have_X = False
@@ -263,9 +275,7 @@ else:
         have_X = True
     have_server_prereqs = True
     have_test_prereqs = True
-
-env.Append(CPPPATH = ["#/", "#/src"])
-
+    test_env = env.Clone()
 
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
@@ -275,58 +285,57 @@ if not have_msgfmt:
 if not env['nls']:
      print "NLS catalogue installation is disabled."
 
-env = conf.Finish()
-
 #
 # Implement configuration switches
 #
 
-if "gnulink" in env["TOOLS"]:
-    env.Append(LINKFLAGS = "-Wl,--as-needed")
+for env in [test_env, env]:
+    env.Append(CPPPATH = ["#/", "#/src"])
 
-env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
+    if "gnulink" in env["TOOLS"]:
+        env.Append(LINKFLAGS = "-Wl,--as-needed")
 
-if "gcc" in env["TOOLS"]:
-    env.AppendUnique(CXXFLAGS = Split("-W -Wall -ansi"))
-    if env['strict']:
-        env.AppendUnique(CXXFLAGS = "-Werror")
-    else:
-        env.AppendUnique(CXXFLAGS = Split("-Wno-unused -Wno-sign-compare"))
+    env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
-    env["OPT_FLAGS"] = "-O2"
-    env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+    if "gcc" in env["TOOLS"]:
+        env.AppendUnique(CXXFLAGS = Split("-W -Wall -ansi -Wno-unused -Wno-sign-compare"))
+        if env['strict']:
+            env.AppendUnique(CXXFLAGS = "-Werror")
 
-if "suncc" in env["TOOLS"]:
-    env["OPT_FLAGS"] = "-g0"
-    env["DEBUG_FLAGS"] = "-g"
+        env["OPT_FLAGS"] = "-O2"
+        env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
 
-if env['gui'] == 'tiny':
-    env.Append(CPPDEFINES = "USE_TINY_GUI")
+    if "suncc" in env["TOOLS"]:
+        env["OPT_FLAGS"] = "-g0"
+        env["DEBUG_FLAGS"] = "-g"
 
-if env['lowmem']:
-    env.Append(CPPDEFINES = "LOW_MEM")
+    if env['gui'] == 'tiny':
+        env.Append(CPPDEFINES = "USE_TINY_GUI")
 
-if env['internal_data']:
-    env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
+    if env['lowmem']:
+        env.Append(CPPDEFINES = "LOW_MEM")
 
-if not env["editor"]:
-    env.Append(CPPDEFINES = "DISABLE_EDITOR2")
+    if env['internal_data']:
+        env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
-if have_X:
-    env.Append(CPPDEFINES = "_X11")
+    if not env["editor"]:
+        env.Append(CPPDEFINES = "DISABLE_EDITOR2")
+
+    if have_X:
+        env.Append(CPPDEFINES = "_X11")
 
 # Simulate autools-like behavior of prefix on various paths
-installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir python_site_packages_dir")
-for d in installdirs:
-    env[d] = os.path.join(env["prefix"], env[d])
-if not os.path.isabs(env["prefix"]):
-    print "Warning: prefix is set to relative dir. destdir setting will be ignored."
-    env["destdir"] = ""
+    installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir python_site_packages_dir")
+    for d in installdirs:
+        env[d] = os.path.join(env["prefix"], env[d])
 
-if env["PLATFORM"] == 'win32':
-    env.Append(LIBS = ["wsock32", "intl", "z"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
-if env["PLATFORM"] == 'darwin':            # Mac OS X
-    env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
+    if env["PLATFORM"] == 'win32':
+        env.Append(LIBS = ["wsock32", "intl", "z"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
+    if env["PLATFORM"] == 'darwin':            # Mac OS X
+        env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
+
+if not env['static_test']:
+    test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
 if os.path.exists('.git'):
     try:
@@ -344,7 +353,7 @@ else:
     except:
         env["svnrev"] = ""
 
-Export(Split("env have_client_prereqs have_server_prereqs have_test_prereqs"))
+Export(Split("env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
@@ -356,18 +365,13 @@ builds = {
     "profile"       : dict(CXXFLAGS   = "-pg", LINKFLAGS = "-pg")
     }
 builds["glibcxx_debug"].update(builds["debug"])
-env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
 build = env["build"]
 
-env.AppendUnique(**builds[build])
-env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get('LDFLAGS', []))
-env.MergeFlags(env["extra_flags_" + build])
-
-test_env = env.Clone()
-if not env['static_test']:
-    test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
-test_env.AppendUnique(CXXFLAGS = "-Wno-unused")
-Export("test_env")
+for env in [test_env, env]:
+    env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
+    env.AppendUnique(**builds[build])
+    env.Append(CXXFLAGS = os.environ.get('CXXFLAGS', []), LINKFLAGS = os.environ.get('LDFLAGS', []))
+    env.MergeFlags(env["extra_flags_" + build])
 
 if build == "base":
     build_dir = ""
@@ -377,7 +381,7 @@ else:
 if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
 else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
 Export("build_suffix")
-SConscript("src/SConscript", build_dir = build_dir, exports = "env", duplicate = False)
+SConscript("src/SConscript", build_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
 binary_nodes = map(eval, binaries)
 all = env.Alias("all", map(Alias, binaries))
