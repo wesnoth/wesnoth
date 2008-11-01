@@ -3,25 +3,26 @@ Version 1.5.5+svn:
    * trackplacer is a pygtk tool that makes it possible to visually edit
      the journey tracks on Wesnoth campaign maps.
  * Campaigns
-  * Descent into Darkness
-   * Added a set of story art.
-   * Made Malin's side use the ostensibly obscure undead flags after his banishment
+   * Descent into Darkness
+     * Added a set of story art.
+     * Made Malin's side use the ostensibly obscure undead flags after his banishment
    * Legend of Wesmere
      * Newly added to mainline: Intermediate level, 24 scenarios.
+   * Son of the Black Eye
+     * The new experimental gold carryover system is now supported by this
+       campaign as well; the choice appears in the difficulty level menu when
+       starting the campaign
    * The South Guard
      * Rewrote 'The Long March'.
    * Under the Burning Suns
      * Made use of the undead flag for undead sides
-   * The new experimental gold carryover system is now supported in Son of the
-     Black Eye as well: the choice appears in the difficulty level menu when
-     starting the campaign.
- * Help menu
-   * ability upgrades for max-level advancements are now listed (bug #10337)
  * Editor2
    * Changed the base-terrain key modifier to shift from alt.
      This fixes an issue with some window managers grabbing the event.
    * Added basic mask applying feature
    * Added basic mask creation ("diff") feature
+ * Help menu
+   * ability upgrades for max-level advancements are now listed (bug #10337)
  * Language and i18n:
    * updated translations: Catalan, Czech, Danish, Finnish, Galician, German,
      Hungarian, Italian, Lithuanian, Racv, Slovak, Turkish
@@ -42,6 +43,8 @@ Version 1.5.5+svn:
      click without a close button.
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
+   * fixed crashes on move_unit_fake with unit types which cannot move
+     over terrains that are part of the path
    * fixed the parts of the undead flags which were not TC'd
 
 Version 1.5.5:
