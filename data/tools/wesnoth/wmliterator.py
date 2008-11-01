@@ -146,8 +146,9 @@ Element Types:
     keys: either "key=" or ("key1=", "key2=") for multi-assignment
         key= - does not affect the scope
         key1,key2= - multi-assignment returns multiple elements
-    directives: one of "#ifdef", "#else", "#endif", "#define", "#enddef"
+    directives: one of "#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"
         #ifdef - opens a scope
+        #ifndef - opens a scope
         #else - closes a scope, also opens a new scope
         #endif - closes a scope
         #define - opens a scope
@@ -172,6 +173,8 @@ Element Types:
     text = text.lstrip()
     commentSearch = 1
     if text.startswith('#ifdef'):
+        return (['#ifdef'],)*2
+    elif text.startswith('#ifndef'):
         return (['#ifdef'],)*2
     elif text.startswith('#else'):
         if not closeScope(scopes, '#else', fname, lineno):
@@ -223,7 +226,10 @@ Element Types:
 
 class WmlIterator(object):
     """Return an iterable WML navigation object.
-    note: if changes are made to lines while iterating, this may produce
+    Initialize with a list of lines or a file; if the the line list is
+    empty and the filename is specified, lines will be read from the file.
+
+    Note: if changes are made to lines while iterating, this may produce
     unexpected results. In such case, seek() to the linenumber of a
     scope behind where changes were made.
 Important Attributes:
@@ -241,10 +247,14 @@ Important Attributes:
            always 1, unless text contains a multi-line quoted string
     lineno - a zero-based line index marking where this text begins
     """
-    def __init__(self, lines, fname=None, begin=-1, endScope=None):
-        "Initialize a new WmlIterator"
+    def __init__(self, lines=[], filename=None, begin=-1, endScope=None):
+        "Initialize a new WmlIterator."
+        if not lines and filename:
+            ifp = open(filename)
+            lines = ifp.readlines()
+            ifp.close()
         self.lines = lines
-        self.fname = fname
+        self.fname = filename
         self.reset()
         self.seek(begin)
 
@@ -286,6 +296,10 @@ Important Attributes:
         while self.lineno + self.span - 1 < lineno:
             self.next()
         return self
+
+    def whereami(self):
+        """Emit a locator string compatible with Emacs compilation mode."""
+        return '"%s", line %d:' % (self.fname, self.lineno+1)
 
     def hasNext(self):
         """Some loops may wish to check this method instead of calling next()
