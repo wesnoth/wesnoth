@@ -1365,15 +1365,15 @@ void formula_ai::handle_exception(game_logic::formula_error& e)
 
 void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation)
 {
-	LOG_AI << failed_operation << ": " << e.formula_ << std::endl;
-	display_message(failed_operation + ": " + e.formula_);
+	LOG_AI << failed_operation << ": " << e.formula << std::endl;
+	display_message(failed_operation + ": " + e.formula);
 	//if line number = 0, don't display info about filename and line number
-	if (e.line_ != 0) {
-		LOG_AI << e.type_ << " in " << e.filename_ << ":" << e.line_ << std::endl;
-		display_message(e.type_ + " in " + e.filename_ + ":" + boost::lexical_cast<std::string>(e.line_));
+	if (e.line != 0) {
+		LOG_AI << e.type << " in " << e.filename << ":" << e.line << std::endl;
+		display_message(e.type + " in " + e.filename + ":" + boost::lexical_cast<std::string>(e.line));
 	} else {
-		LOG_AI << e.type_ << std::endl;
-		display_message(e.type_);
+		LOG_AI << e.type << std::endl;
+		display_message(e.type);
 	}
 }
 
@@ -1406,8 +1406,8 @@ void formula_ai::play_turn()
 				make_move(formula, callable);
 			}
 			catch(formula_error& e) {
-				if(e.filename_ == "formula")
-					e.line_ = 0;
+				if(e.filename == "formula")
+					e.line = 0;
 				handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
 			}
 
@@ -1421,8 +1421,8 @@ void formula_ai::play_turn()
 					while ( make_move(loop_formula, callable) ) {}
 				}
 				catch(formula_error& e) {
-					if(e.filename_ == "formula")
-						e.line_ = 0;
+					if(e.filename == "formula")
+						e.line = 0;
 					handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
 				}
 			}
@@ -1505,7 +1505,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		return v.to_debug_string();
 	}
 	catch(formula_error& e) {
-		e.line_ = 0;
+		e.line = 0;
 		handle_exception(e);
 		throw;
 	}

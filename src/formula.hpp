@@ -60,15 +60,25 @@ private:
 
 struct formula_error
 {
-	formula_error() : type_(), formula_(), filename_(), line_(0) 
+	formula_error() 
+		: type()
+		, formula()
+		, filename()
+		, line(0) 
 	{}
-	formula_error(const std::string& type, const std::string& formula, const std::string& file, int line) : 
-	type_(type), formula_(formula), filename_(file), line_(line) 
+
+	formula_error(const std::string& type, const std::string& formula, 
+			const std::string& file, int line) 
+		: type(type)
+		, formula(formula)
+		, filename(file)
+		, line(line) 
 	{}
-	std::string type_;
-	std::string formula_;
-	std::string filename_;
-	int line_;
+
+	std::string type;
+	std::string formula;
+	std::string filename;
+	int line;
 };
 
 }

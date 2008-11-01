@@ -2132,9 +2132,9 @@ int main(int argc, char** argv)
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 	} catch(game_logic::formula_error& e) {
-		std::cerr << "Formula error found in " << e.filename_ << ":" << e.line_
-			<< "\nIn formula " << e.formula_
-			<< "\nError: " << e.type_
+		std::cerr << "Formula error found in " << e.filename << ":" << e.line
+			<< "\nIn formula " << e.formula
+			<< "\nError: " << e.type
 			<< "\n\nGame will be aborted.\n";
 	}
 

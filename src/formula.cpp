@@ -723,7 +723,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 								 				parse_expression(tok+1,i2-1,symbols)));
 						}
 						catch (formula_error& e){
-							throw formula_error( e.type_, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
+							throw formula_error( e.type, tokens_to_string(i1, i2-1), *i1->filename, i1->line_number );
 						}
 					}
 				}
@@ -761,7 +761,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 					return expression_ptr( create_function(std::string(i1->begin,i1->end),args,symbols) );
 				}
 				catch(formula_error& e) {
-					throw formula_error(e.type_, tokens_to_string(begin,end), *i1->filename, i1->line_number);
+					throw formula_error(e.type, tokens_to_string(begin,end), *i1->filename, i1->line_number);
 				}
 			}
 		}
@@ -776,7 +776,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 								 parse_expression(op+1,i2,symbols)));
 		}
 		catch(formula_error& e)	{
-			throw formula_error( e.type_, tokens_to_string(begin,end-1), *op->filename, op->line_number);
+			throw formula_error( e.type, tokens_to_string(begin,end-1), *op->filename, op->line_number);
 		}
 	}
 
