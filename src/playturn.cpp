@@ -202,8 +202,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		if (controller == "ai"){
 			teams_[side_index].make_ai();
 			teams_[side_index].set_current_player("ai"+side_str);
-			if(have_leader)
-				leader->second.rename("ai"+side_str);
+			if(have_leader) leader->second.rename("ai"+side_str);
 
 
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -256,17 +255,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			case 0:
 				teams_[side_index].make_ai();
 				teams_[side_index].set_current_player("ai"+side_str);
-				if(have_leader)
-					leader->second.rename("ai"+side_str);
+				if(have_leader) leader->second.rename("ai"+side_str);
 
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
-			//we don't have to test have_leader as action > 0 mean have_leader == true
 			case 1:
 				teams_[side_index].make_human();
 				teams_[side_index].set_current_player("human"+side_str);
-				leader->second.rename("human"+side_str);
+				if(have_leader) leader->second.rename("human"+side_str);
 
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -285,7 +282,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					} else {
 						teams_[side_index].make_ai();
 						teams_[side_index].set_current_player("ai"+side_str);
-						leader->second.rename("ai"+side_str);
+						if(have_leader) leader->second.rename("ai"+side_str);
 					}
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				}
