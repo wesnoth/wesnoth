@@ -28,6 +28,7 @@
 #include "game_display.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
+#include "formula.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
@@ -2130,6 +2131,11 @@ int main(int argc, char** argv)
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
+	} catch(game_logic::formula_error& e) {
+		std::cerr << "Formula error found in " << e.filename_ << ":" << e.line_
+			<< "\nIn formula " << e.formula_
+			<< "\nError: " << e.type_
+			<< "\n\nGame will be aborted.\n";
 	}
 
 	return 0;
