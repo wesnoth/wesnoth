@@ -1,0 +1,196 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2007 wesnothd "Taistelu Wesnothista \-monipelipalvelin"
+.
+.SH NIMI
+.
+wesnothd ? Taistelu \fBWesnothista\fP \-moninpelipalvelin
+.
+.SH TIIVISTELMƒ
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpolku\fP\|] [\|\fB\-p\fP \fIportti\fP\|] [\|\fB\-t\fP
+\fIluku\fP\|] [\|\fB\-T\fP \fIluku\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH KUVAUS
+.
+Hallitsee Taistelu Wesnothista \-moninpelej‰. Osoitteessa
+http://www.wesnoth.org/wiki/ServerAdministration on lista komennoista, jotka
+palvelin hyv‰ksyy pelin kautta (/query ...) tai FIFOsta.
+.
+.SH VALITSIMET
+.
+.TP 
+\fB\-c\ \fP\fIpolku\fP\fB,\ \-\-config\fP\fI\ polku\fP
+Kertoo wesnothdille k‰ytett‰v‰n asetustiedoston sijainnin. Osiossa
+\fBPALVELIMEN ASETUKSET\fP alla kerrotaan sen syntaksi. Palvelinprosessin saa
+lukemaan asetustiedoston uudestaan l‰hett‰m‰ll‰ sille SIGHUPin.
+.TP 
+\fB\-d, \-\-daemon\fP
+K‰ynnist‰‰ wesnothdin taustaprosessina.
+.TP 
+\fB\-h, \-\-help\fP
+Kertoo, mit‰ komentorivivalitsimet tekev‰t.
+.TP 
+\fB\-\-log\-\fP\fItaso\fP\fB=\fP\fIaihealue1\fP\fB,\fP\fIaihealue2\fP\fB,\fP\fI...\fP
+Asettaa vakavuusasteen lokin aihealueille. Sana \fBall\fP vastaa kaikkia
+aihealueita. K‰ytett‰viss‰ olevat tasot: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. Oletuksena k‰ytet‰‰n \fBsever\fP\-aihealueella tasoa \fBinfo\fP ja
+muualla tasoa \fBerror\fP.
+.TP 
+\fB\-p\ \fP\fIportti\fP\fB,\ \-\-port\fP\fI\ portti\fP
+Sitoo palvelimen annettuun porttiin. Oletuksena k‰ytet‰‰n porttia \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIluku\fP\fB,\ \-\-threads\fP\fI\ luku\fP
+Asettaa verkkoyhteyksi‰ odottavien tyˆl‰iss‰ikeiden enimm‰ism‰‰r‰n (oletus:
+\fB5\fP,\ maksimi:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIluku\fP\fB,\ \-\-max\-threads\fP\fI\ luku\fP
+Asettaa luotavien tyˆl‰iss‰ikeiden enimm‰ism‰‰r‰n. Arvo \fB0\fP poistaa
+rajoituksen. (Oletus on \fB0\fP.)
+.TP 
+\fB\-V, \-\-version\fP
+N‰ytt‰‰ versionumeron ja lopettaa.
+.TP 
+\fB\-v, \-\-verbose\fP
+Laittaa vianj‰ljityslokin kirjoittamisen p‰‰lle.
+.
+.SH "PALVELIMEN ASETUKSET"
+.
+.SS "Yleinen syntaksi on:"
+.
+.P
+[\fItagi\fP]
+.IP
+avain="\fIarvo\fP"
+.IP
+avain="\fIarvo\fP,\fIarvo\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Globaalit avaimet:"
+.
+.TP 
+\fBban_save_file\fP
+T‰ydellinen tai suhteellinen polku (gzip\-pakattuun) tiedostoon, jota
+palvelin voi lukea ja kirjoittaa. Estot tallennetaan t‰h‰n tiedostoon ja
+luetaan siit‰ palvelimen k‰ynnistyess‰.
+.TP 
+\fBconnections_allowed\fP
+Sallittujen yhteyksien m‰‰r‰ samasta IP:st‰. Arvo \fB0\fP poistaa
+rajoituksen. (Oletus on \fB5\fP.)
+.TP 
+\fBdisallow_names\fP
+Nimet tai nimimerkit, joita palvelin ei hyv‰ksy. Jokerimerkeist‰ toimivat
+?*? ja ???. Lis‰tietoja: \fBglob\fP(7). Oletusarvot (k‰ytˆss‰ kun muita ei ole
+annettu) ovat:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+Polku FIFOon, jonne voi kirjoittaa palvelinkomentoja (samoja kuin komennolla
+/query wesnothista). Jos j‰tetty m‰‰rittelem‰tt‰, k‰ytet‰‰n k‰‰nnˆn aikana
+m‰‰ritelty‰ polkua (oletus: /var/run/socket/wesnothd/socket).
+.TP 
+\fBmax_messages\fP
+Sallittu m‰‰r‰ viestej‰ ajanjaksossa, joka on m‰‰ritelty asetuksella
+\fBmessages_time_period\fP. (Oletus on \fB4\fP.)
+.TP 
+\fBmessages_time_period\fP
+Ajanjakso (sekunneissa), jota k‰ytet‰‰n viestitulvinnan
+havaitsemisessa. (Oletus on \fB10\fP.)
+.TP 
+\fBmotd\fP
+P‰iv‰n viesti.
+.TP 
+\fBpasswd\fP
+Salasana, jolla saa yll‰pit‰j‰n oikeudet. Alkaa yleens‰ sanalla ?admin?.
+.TP 
+\fBrestart_command\fP
+Komento, jota palvelin k‰ytt‰‰ k‰ynnist‰‰kseen uuden palvelinprosessin
+?restart?\-komennosta. (Annettavissa vain FIFOn kautta.)
+.TP 
+\fBversions_accepted\fP
+Pilkuilla eroteltu lista palvelimen hyv‰ksymist‰
+versiomerkkijonoista. Jokerimerkeist‰ toimivat ?*? ja ???. (Oletus on
+palvelimen versiota vastaava wesnothin versio.)
+.br
+Esimerkki: \fBversions_accepted="*"\fP hyv‰ksyy mink‰ tahansa version.
+.
+.SS "Globaalit tagit:"
+.
+.P
+\fB[redirect]\fP T‰ll‰ tagilla m‰‰ritell‰‰n palvelin, jolle uudelleenohjataan
+tietyt asiakasversiot.
+.RS
+.TP 
+\fBhost\fP
+Osoite palvelimelle, johon ohjataan.
+.TP 
+\fBport\fP
+Portti, johon yhdistet‰‰n.
+.TP 
+\fBversion\fP
+Pilkuilla eroteltu lista versioista, jotka uudelleenohjataan. Jokerimerkit
+toimivat samoin kuin asetuksessa \fBversions_accepted\fP.
+.RE
+.P
+\fB[ban_time]\fP T‰ll‰ tagilla m‰‰ritell‰‰n helppok‰yttˆisi‰ avainsanoja
+v‰liaikaisten estojen pituuksille.
+.RS
+.TP 
+\fBname\fP
+Estoajasta k‰ytett‰v‰ nimi.
+.TP 
+\fBtime\fP
+Ajan pituuden m‰‰ritelm‰. Muoto on: %d[%s[%d%s[...]]] jossa %s on s
+(sekunteja), m (minuutteja), h (tunteja), D (p‰ivi‰), M (kuukausia) tai Y
+(vuosia) ja %d on luku. Jos ajanm‰‰rett‰ ei anneta, k‰ytet‰‰n oletuksena
+minuutteja. Esimerkki: time="1D12h30m" luo estoajan, joka kest‰‰ 1 p‰iv‰n,
+12 tuntia ja 30 minuuttia.
+.RE
+.P
+\fB[proxy]\fP T‰ll‰ tagilla k‰sket‰‰n palvelinta toimimaan v‰lityspalvelimena
+ja ohjaamaan asiakkaiden pyynnˆt m‰‰r‰tylle palvelimelle. Hyv‰ksyy samat
+avaimet kuin \fB[redirect]\fP.
+.
+.SH TEKIJƒT
+.
+Kirjoittanut David White <davidnwhite@verizon.net>. Muokannut Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> ja
+Soliton <soliton.de@gmail.com>. T‰m‰n manuaalin alkuper‰isversion
+kirjoitti Cyril Bouthors <cyril@bouthors.org>.
+Suomentanut Wesnothin suomennosryhm‰
+(http://www.wesnoth.org/wiki/FinnishTranslation).
+.br
+K‰y virallisella kotisivulla: http://www.wesnoth.org/
+.
+.SH TEKIJƒNOIKEUS
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH "KATSO MY÷S"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
