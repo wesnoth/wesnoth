@@ -21,6 +21,7 @@
 #include "generic_event.hpp"
 #include "map_location.hpp"
 
+class config;
 class display;
 
 namespace soundsource {
@@ -68,18 +69,22 @@ public:
 	void replace_location(const map_location &oldloc, const map_location &newloc);
 	
 	int calculate_volume(const map_location &loc, const display &disp);
+	
+	/**
+	 * Serializes attributes as WML config.
+	 * @param cfg A reference to a [sound_source] tag object.
+	 */
+	void write_config(config& cfg) const;
 };
 
 class manager : public events::observer {
 
 	typedef std::map<std::string, positional_source *> positional_source_map;
-	typedef positional_source_map::iterator positional_source_iterator;
+	typedef positional_source_map::iterator            positional_source_iterator;
+	typedef positional_source_map::const_iterator      positional_source_const_iterator;
 
 	positional_source_map sources_;
 	const display &disp_;
-
-	// checks which sound sources are visible
-	void update_positions();
 
 public:
 	manager(const display &disp);
@@ -94,6 +99,15 @@ public:
 	void update();
 
 	void add_location(const std::string &id, const map_location &loc);
+	
+	// checks which sound sources are visible
+	void update_positions();
+	
+	/**
+	 * Serializes information into cfg as new childs of key
+	 * "sound_source", appendend to existing content.
+	 */
+	void write_sourcespecs(config& cfg) const;
 };
 
 /**
@@ -117,7 +131,7 @@ class sourcespec
 	std::vector<map_location> locations_;
 
 public:
-	/** Constructor. */
+	/** Parameter-list constructor. */
 	sourcespec(const std::string& id, const std::string& files, int min_delay, int chance) :
 		id_(id),
 		files_(files),
@@ -129,6 +143,9 @@ public:
 		check_fogged_(false),
 		locations_()
 	{}
+	
+	/** WML constructor. */
+	sourcespec(const config& cfg);
 	
 	/**
 	 * Serializes information into cfg as a new (appended)

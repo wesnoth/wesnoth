@@ -20,11 +20,15 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "foreach.hpp"
+#include "log.hpp"
 #include "pathutils.hpp"
+#include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "util.hpp"
 
+#define DEFAULT_CHANCE				100
+#define DEFAULT_DELAY				1000
 #define DEFAULT_FULL_RANGE			3
 #define DEFAULT_FADE_RANGE			14
 
@@ -107,6 +111,16 @@ void manager::add_location(const std::string &id, const map_location &loc)
 		(*it).second->add_location(loc);
 }
 
+void manager::write_sourcespecs(config& cfg) const
+{
+	for(positional_source_const_iterator i = sources_.begin(); i != sources_.end(); ++i) {
+		assert(i->second);
+		
+		config& child = cfg.add_child("sound_source");
+		child["id"] = i->first;
+		i->second->write_config(child);
+	}
+}
 
 positional_source::positional_source(const sourcespec &spec) :
 	last_played_(0),
@@ -202,33 +216,59 @@ void positional_source::add_location(const map_location &loc)
 	locations_.push_back(loc);
 }
 
-void sourcespec::write(config& cfg) const
+void positional_source::write_config(config& cfg) const
 {
-	config& info = cfg.add_child("sound_source");
+	cfg["sounds"] = this->files_;
+	cfg["delay"] = str_cast<unsigned int>(this->min_delay_);
+	cfg["chance"] = str_cast<unsigned int>(this->chance_);
+	cfg["check_fogged"] = this->check_fogged_ ? "yes" : "no";
 	
-	info["id"] = this->id_;
-	info["sounds"] = this->files_;
-	info["delay"] = str_cast<int>(this->min_delay_);
-	info["chance"] = str_cast<int>(this->chance_);
-	info["check_fogged"] = this->check_fogged_ ? "yes" : "no";
-	
-	info["x"] = info["y"] = "";
+	cfg["x"] = cfg["y"] = "";
 	bool first_loc = true;
 	
 	foreach(const map_location& loc, this->locations_) {
 		if(!first_loc) {
-			info["x"] += ",";
-			info["y"] += ",";
+			cfg["x"] += ",";
+			cfg["y"] += ",";
 		} else {
 			first_loc = false;
 		}
-		info["x"] += str_cast<int>(loc.x);
-		info["y"] += str_cast<int>(loc.y);
+		cfg["x"] += str_cast<unsigned int>(loc.x);
+		cfg["y"] += str_cast<unsigned int>(loc.y);
 	}
 	
-	info["loop"] = str_cast<int>(this->loops_);
-	info["full_range"] = str_cast<int>(this->range_);
-	info["fade_range"] = str_cast<int>(this->faderange_);
+	cfg["loop"] = str_cast<unsigned int>(this->loops_);
+	cfg["full_range"] = str_cast<unsigned int>(this->range_);
+	cfg["fade_range"] = str_cast<unsigned int>(this->faderange_);
+}
+
+sourcespec::sourcespec(const config& cfg) :
+	id_(cfg["id"]),
+	files_(cfg["sounds"]),
+	min_delay_(lexical_cast_default<int>(cfg["delay"], DEFAULT_DELAY)),
+	chance_(lexical_cast_default<int>(cfg["chance"], DEFAULT_CHANCE)),
+	loops_(lexical_cast_default<int>(cfg["loop"], 0)),
+	range_(lexical_cast_default<int>(cfg["full_range"], 3)),
+	faderange_(lexical_cast_default<int>(cfg["fade_range"], 14)),
+	check_fogged_(utils::string_bool(cfg["check_fogged"], true)),
+	locations_()
+{
+	const std::vector<std::string>& vx = utils::split(cfg["x"]);
+	const std::vector<std::string>& vy = utils::split(cfg["y"]);
+	
+	if(vx.empty() || vy.empty()) {
+		lg::wml_error << "missing sound source locations";
+	}
+
+	if(vx.size() != vy.size()) {
+		lg::wml_error << "mismatched number of sound source location coordinates";
+	}
+	else {
+		for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
+			map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
+			locations_.push_back(loc);
+		}
+	}
 }
 
 } // namespace soundsource
