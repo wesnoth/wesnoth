@@ -1649,25 +1649,20 @@ namespace {
 
 			soundsource::sourcespec spec(id, sounds, lexical_cast_default<int>(delay, 1000), lexical_cast_default<int>(chance, 100));
 
-			spec.loop(lexical_cast_default<int>(loop, 0));
+			spec.set_loops(lexical_cast_default<int>(loop, 0));
+			spec.set_check_fogged(utils::string_bool(play_fogged, true));
 
 			if(!full_range.empty()) {
-				spec.full_range(lexical_cast<int>(full_range));
+				spec.set_full_range(lexical_cast<int>(full_range));
 			}
 
 			if(!fade_range.empty()) {
-				spec.fade_range(lexical_cast<int>(fade_range));
-			}
-
-			if(play_fogged.empty()) {
-				spec.check_fog(true);
-			} else {
-				spec.check_fog(utils::string_bool(play_fogged));
+				spec.set_fade_range(lexical_cast<int>(fade_range));
 			}
 
 			for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
 				map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
-				spec.location(loc);
+				spec.add_location(loc);
 			}
 
 			(soundsources)->add(spec);

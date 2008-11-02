@@ -17,31 +17,36 @@
 #include <cassert>
 #include <cstdlib>
 
+#include "config.hpp"
 #include "display.hpp"
+#include "foreach.hpp"
 #include "pathutils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
+#include "util.hpp"
 
+#define DEFAULT_FULL_RANGE			3
+#define DEFAULT_FADE_RANGE			14
 
 namespace soundsource {
 
 unsigned int positional_source::last_id = 0;
 
 manager::manager(const display &disp) : 
-	_sources(),
-	_disp(disp) 
+	sources_(),
+	disp_(disp) 
 {
-	_disp.scroll_event().attach_handler(this);
+	disp_.scroll_event().attach_handler(this);
 	update_positions();
 }
 
 manager::~manager()
 {
-	for(positional_source_iterator it = _sources.begin(); it != _sources.end(); ++it) {
+	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
 		delete (*it).second;
 	}
 
-	_sources.clear();
+	sources_.clear();
 }
 
 void manager::handle_generic_event(const std::string &event_name)
@@ -54,8 +59,8 @@ void manager::add(const sourcespec &spec)
 {
 	positional_source_iterator it;
 
-	if((it = _sources.find(spec.id)) == _sources.end()) {
-		_sources[spec.id] = new positional_source(spec);
+	if((it = sources_.find(spec.id())) == sources_.end()) {
+		sources_[spec.id()] = new positional_source(spec);
 	} else {
 		delete (*it).second;
 		(*it).second = new positional_source(spec);
@@ -66,11 +71,11 @@ void manager::remove(const std::string &id)
 {
 	positional_source_iterator it;
 
-	if((it = _sources.find(id)) == _sources.end())
+	if((it = sources_.find(id)) == sources_.end())
 		return;
 	else {
 		delete (*it).second;
-		_sources.erase(it);
+		sources_.erase(it);
 	}
 }
 
@@ -78,8 +83,8 @@ void manager::update()
 {
 	unsigned int time = SDL_GetTicks();
 
-	for(positional_source_iterator it = _sources.begin(); it != _sources.end(); ++it) {
-		(*it).second->update(time, _disp);
+	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
+		(*it).second->update(time, disp_);
 	}
 }
 
@@ -87,55 +92,62 @@ void manager::update_positions()
 {
 	unsigned int time = SDL_GetTicks();
 
-	for(positional_source_iterator it = _sources.begin(); it != _sources.end(); ++it) {
-		(*it).second->update_positions(time, _disp);
+	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
+		(*it).second->update_positions(time, disp_);
 	}
 }
 
 void manager::add_location(const std::string &id, const map_location &loc)
 {
-	positional_source_iterator it = _sources.find(id);
+	positional_source_iterator it = sources_.find(id);
 
-	if(it == _sources.end())
+	if(it == sources_.end())
 		return;
 	else
 		(*it).second->add_location(loc);
 }
 
 
-positional_source::positional_source(const sourcespec &spec) 
-				: _last_played(0), _min_delay(spec.min_delay), _chance(spec.chance), _loops(spec.loops),
-					_id(last_id++), _range(spec.range), _faderange(spec.faderange), 
-					_check_fogged(spec.check_fogged), _files(spec.files), _locations(spec.locations)
+positional_source::positional_source(const sourcespec &spec) :
+	last_played_(0),
+	min_delay_(spec.minimum_delay()),
+	chance_(spec.chance()),
+	loops_(spec.loops()),
+	id_(last_id++),
+	range_(spec.full_range()),
+	faderange_(spec.fade_range()),
+	check_fogged_(spec.check_fogged()),
+	files_(spec.files()),
+	locations_(spec.get_locations())
 {
-	assert(_range > 0);
-	assert(_faderange > 0);
+	assert(range_ > 0);
+	assert(faderange_ > 0);
 }
 
 positional_source::~positional_source()
 {
-	sound::reposition_sound(_id, DISTANCE_SILENT);
+	sound::reposition_sound(id_, DISTANCE_SILENT);
 }
 
 void positional_source::update(unsigned int time, const display &disp)
 {
-	if(time - _last_played < _min_delay || sound::is_sound_playing(_id))
+	if(time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
 		return;
 
 	unsigned int i = rand() % 100 + 1;
 
-	if(i <= _chance) {
-		_last_played = time;
+	if(i <= chance_) {
+		last_played_ = time;
 
 		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
-		if(_locations.size() == 0) {
-			sound::play_sound_positioned(_files, _id, _loops, 0);	// max volume
+		if(locations_.size() == 0) {
+			sound::play_sound_positioned(files_, id_, loops_, 0);	// max volume
 			return;
 		}
 
 		int distance_volume = DISTANCE_SILENT;
-		for(std::vector<map_location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
+		for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
 			int v = calculate_volume(*i, disp);
 			if(v < distance_volume) {
 				distance_volume = v;
@@ -145,15 +157,15 @@ void positional_source::update(unsigned int time, const display &disp)
 		if(distance_volume >= DISTANCE_SILENT)
 			return;
 
-		sound::play_sound_positioned(_files, _id, _loops, distance_volume);
+		sound::play_sound_positioned(files_, id_, loops_, distance_volume);
 	}
 }
 
 void positional_source::update_positions(unsigned int time, const display &disp)
 {
 	int distance_volume = DISTANCE_SILENT;
-	for(std::vector<map_location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
-		if(disp.shrouded(*i) || (_check_fogged && disp.fogged(*i)))
+	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
+		if(disp.shrouded(*i) || (check_fogged_ && disp.fogged(*i)))
 			continue;
 
 		int v = calculate_volume(*i, disp);
@@ -162,8 +174,8 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 		}
 	}
 
-	if(sound::is_sound_playing(_id)) {
-		sound::reposition_sound(_id, distance_volume);
+	if(sound::is_sound_playing(id_)) {
+		sound::reposition_sound(id_, distance_volume);
 	} else {
 		update(time, disp);
 	}
@@ -171,23 +183,52 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 
 int positional_source::calculate_volume(const map_location &loc, const display &disp)
 {
-	assert(_range > 0);
-	assert(_faderange > 0);
+	assert(range_ > 0);
+	assert(faderange_ > 0);
 
 	SDL_Rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
 	size_t distance = distance_between(loc, center);
 
-	if(distance <= _range) {
+	if(distance <= range_) {
 		return 0;
 	}
 
-	return static_cast<int>(( ( (distance - _range) / (double) _faderange) * DISTANCE_SILENT));
+	return static_cast<int>(( ( (distance - range_) / (double) faderange_) * DISTANCE_SILENT));
 }
 
 void positional_source::add_location(const map_location &loc)
 {
-	_locations.push_back(loc);
+	locations_.push_back(loc);
+}
+
+void sourcespec::write(config& cfg) const
+{
+	config& info = cfg.add_child("sound_source");
+	
+	info["id"] = this->id_;
+	info["sounds"] = this->files_;
+	info["delay"] = str_cast<int>(this->min_delay_);
+	info["chance"] = str_cast<int>(this->chance_);
+	info["check_fogged"] = this->check_fogged_ ? "yes" : "no";
+	
+	info["x"] = info["y"] = "";
+	bool first_loc = true;
+	
+	foreach(const map_location& loc, this->locations_) {
+		if(!first_loc) {
+			info["x"] += ",";
+			info["y"] += ",";
+		} else {
+			first_loc = false;
+		}
+		info["x"] += str_cast<int>(loc.x);
+		info["y"] += str_cast<int>(loc.y);
+	}
+	
+	info["loop"] = str_cast<int>(this->loops_);
+	info["full_range"] = str_cast<int>(this->range_);
+	info["fade_range"] = str_cast<int>(this->faderange_);
 }
 
 } // namespace soundsource
