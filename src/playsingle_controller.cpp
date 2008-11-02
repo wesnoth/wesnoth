@@ -258,6 +258,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
 		gui_->add_overlay(map_location(**overlay, game_events::get_state_of_game()), (**overlay)["image"], (**overlay)["halo"], (**overlay)["team_name"], (**overlay)["fogged"]);
 	}
+	
+	// Read sound sources
+	assert(soundsources_manager_ != NULL);
+	const config::child_list& snd_sources = level_.get_children("sound_source");
+	for(config::child_list::const_iterator i = snd_sources.begin(); i != snd_sources.end(); ++i) {
+		assert(*i != NULL);
+		soundsource::sourcespec spec(**i);
+		soundsources_manager_->add(spec);
+	}
 
 	victory_conditions::set_victory_when_enemies_defeated(
 						level_["victory_when_enemies_defeated"] != "no");
