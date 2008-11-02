@@ -434,8 +434,6 @@ if env['nls']:
     installable_subs.append("translations")
 if env["dummy_locales"]:
     installable_subs.append("locales")
-clientside = filter(lambda x : x, [wesnoth, cutter, exploder])
-daemons = filter(lambda x : x, [wesnothd, campaignd])
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
 
