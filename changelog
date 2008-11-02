@@ -46,6 +46,8 @@ Version 1.5.5+svn:
      less than adequate
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
+   * Fixed a flaw which caused sound sources to be forgotten after saving
+     and loading a game (bug #11495).
    * fixed crashes on move_unit_fake with unit types which cannot move
      over terrains that are part of the path
    * fixed the parts of the undead flags which were not TC'd
