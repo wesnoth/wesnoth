@@ -1625,48 +1625,10 @@ namespace {
 
 	WML_HANDLER_FUNCTION(sound_source,/*handler*/,/*event_info*/,cfg)
 	{
-		std::string sounds = cfg["sounds"];
-		std::string id = cfg["id"];
-		std::string delay = cfg["delay"];
-		std::string chance = cfg["chance"];
-		std::string play_fogged = cfg["check_fogged"];
-		std::string x = cfg["x"];
-		std::string y = cfg["y"];
-		std::string loop = cfg["loop"];
-		std::string full_range = cfg["full_range"];
-		std::string fade_range = cfg["fade_range"];
-
 		assert(state_of_game != NULL);
-
-		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
-			const std::vector<std::string>& vx = utils::split(x);
-			const std::vector<std::string>& vy = utils::split(y);
-
-			if(vx.size() != vy.size()) {
-				lg::wml_error << "invalid number of sound source location coordinates";
-				return;
-			}
-
-			soundsource::sourcespec spec(id, sounds, lexical_cast_default<int>(delay, 1000), lexical_cast_default<int>(chance, 100));
-
-			spec.set_loops(lexical_cast_default<int>(loop, 0));
-			spec.set_check_fogged(utils::string_bool(play_fogged, true));
-
-			if(!full_range.empty()) {
-				spec.set_full_range(lexical_cast<int>(full_range));
-			}
-
-			if(!fade_range.empty()) {
-				spec.set_fade_range(lexical_cast<int>(fade_range));
-			}
-
-			for(unsigned int i = 0; i < std::min(vx.size(), vy.size()); ++i) {
-				map_location loc(lexical_cast<int>(vx[i]), lexical_cast<int>(vy[i]));
-				spec.add_location(loc);
-			}
-
-			(soundsources)->add(spec);
-		}
+		assert(soundsources != NULL);
+		soundsource::sourcespec spec(cfg.get_parsed_config());
+		(soundsources)->add(spec);
 	}
 
 	WML_HANDLER_FUNCTION(remove_sound_source,/*handler*/,/*event_info*/,cfg)
@@ -3553,6 +3515,9 @@ namespace game_events {
 		}
 
 		cfg["unit_wml_ids"] = ids.str();
+
+		if(soundsources != NULL)
+			(soundsources)->write_sourcespecs(cfg);
 
 		if(screen != NULL)
 			(screen)->write_overlays(cfg);
