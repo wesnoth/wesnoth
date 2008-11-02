@@ -121,8 +121,8 @@ public:
 		min_delay(min_delay_),
 		chance(chance_),
 		loops(0), 
-		range(1), 
-		faderange(range), 
+		range(3), 
+		faderange(14), 
 		check_fogged(false), 
 		locations()
 	{ 
