@@ -41,6 +41,9 @@ Version 1.5.5+svn:
  * User interface:
    * The new widget library now also supports closing a dialog with a mouse
      click without a close button.
+ * WML engine:
+   * Fixed sound sources' default fade and full volume ranges; they were
+     less than adequate
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
    * fixed crashes on move_unit_fake with unit types which cannot move
