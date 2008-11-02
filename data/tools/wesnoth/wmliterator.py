@@ -24,7 +24,7 @@ import sys, re, copy
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w\|\}]))(\[.*?\])')
-macroOpenPattern = re.compile(r'(\{[^\s\}]*)')
+macroOpenPattern = re.compile(r'(\{[^\s\}\{]*)')
 macroClosePattern = re.compile(r'\}')
 
 silenceErrors = {}
