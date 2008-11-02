@@ -22,7 +22,9 @@ install-data-hook:
 	for i in $(MAN_LANG); do \
 		mkdir -p $(DESTDIR)$(mandir)/$$i/man6 ; \
 		for j in $(INSTALL_MAN_PAGES); do \
-			$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(DESTDIR)$(mandir)/$$i/man6/$$j ; \
+			if test -f $(srcdir)/$$i/$$j; then \
+				$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(DESTDIR)$(mandir)/$$i/man6/$$j ; \
+			fi \
 		done \
 	done
 
@@ -48,8 +50,6 @@ dist-hook:
 	for i in $(MAN_LANG); do \
 		mkdir -p $(distdir)/$$i ; \
 		for j in $(MAN_PAGES); do \
-			if test -f $(srcdir)/$$i/$$j; then \
-				$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(DESTDIR)$(mandir)/$$i/man6/$$j ; \
-			fi \
+			$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(distdir)/$$i/$$j ; \
 		done \
 	done
