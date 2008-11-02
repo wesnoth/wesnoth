@@ -44,11 +44,6 @@ def InstallFilteredHook(target, source, env):
         shutil.copy2(str(source), target)
     return None
 
-def InstallWithSuffix(env, target, source):
-    if not source:
-        return source
-    return env.InstallAs(os.path.join(target, source[0].name + env["program_suffix"]), source)
-
 from SCons.Action import ActionFactory
 from shutil import copy2
 def hard_link(dest, src, symlink = False):
@@ -69,6 +64,16 @@ def hard_link(dest, src, symlink = False):
 HardLink = ActionFactory(hard_link,
                          lambda dest, src: 'Hardlinking %s to %s' % (src, dest))
 
+def InstallBinary(env, source):
+    if not source:
+        return source
+
+    binary = source[0].name
+    installdir = env.subst(os.path.join(env["destdir"], env["bindir"].lstrip("/")))
+    env.Alias("install-" + binary, 
+        env.InstallAs(os.path.join(installdir, binary + env["program_suffix"]), source)
+    )
+
 def InstallData(env, datadir, component, source, subdir = ""):
     installdir = Dir(env.subst(os.path.join(env["destdir"], env[datadir].lstrip("/"), subdir)))
     sources = map(Entry, Flatten([source]))
@@ -87,7 +92,7 @@ def InstallData(env, datadir, component, source, subdir = ""):
 def generate(env):
     #env.AddMethod(InstallWithSuffix)
     from SCons.Script.SConscript import SConsEnvironment
-    SConsEnvironment.InstallWithSuffix = InstallWithSuffix
+    SConsEnvironment.InstallBinary = InstallBinary
     SConsEnvironment.InstallData = InstallData
 
     env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook)})

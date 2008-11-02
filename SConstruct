@@ -459,7 +459,7 @@ env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
 env.InstallData("docdir",  "wesnoth", Dir("doc/manual"))
 
 # The game and associated resources
-env.Alias("install-wesnoth", env.InstallWithSuffix(bindir, wesnoth))
+env.InstallBinary(wesnoth)
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      if sys.platform == "darwin":
@@ -473,23 +473,24 @@ env.InstallData("bindir", "pytools", map(lambda tool: os.path.join("data", "tool
 env.InstallData("python_site_packages_dir", "pytools", map(lambda module: os.path.join("data", "tools", "wesnoth", module), pythonmodules))
 
 # Wesnoth MP server install
-install_wesnothd = env.InstallWithSuffix(bindir, wesnothd)
-env.Alias("install-wesnothd", install_wesnothd)
+env.InstallBinary(wesnothd)
 InstallManpages(env, "wesnothd")
 if not access(fifodir, F_OK):
-    env.AddPostAction(install_wesnothd, [
+    fifodir = env.Command(fifodir, [], [
         Mkdir(fifodir),
         Chmod(fifodir, 0700),
         Action("chown %s:%s %s" %
                (env["server_uid"], env["server_gid"], fifodir)),
         ])
+    AlwaysBuild(fifodir)
+    env.Alias("install-wesnothd", fifodir)
 
 # Wesnoth campaign server
-env.Alias("install-campaignd", env.InstallWithSuffix(bindir, campaignd))
+env.InstallBinary(campaignd)
 
 # And the artists' tools
-env.Alias("install-cutter", env.InstallWithSuffix(bindir, cutter))
-env.Alias("install-exploder", env.InstallWithSuffix(bindir, exploder))
+env.InstallBinary(cutter)
+env.InstallBinary(exploder)
 
 # Compute things for default install based on which targets have been created.
 install = env.Alias('install', [])
