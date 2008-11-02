@@ -406,7 +406,7 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 <div> <br/> </div>
 <div id="footer">
 <div id="footnote">
-&copy; 2003-2005 The Battle for Wesnoth<br/>
+&copy; 2003-2008 The Battle for Wesnoth<br/>
 <br/>
 <a href="http://validator.w3.org/check?uri=referer"><img
 src="http://www.w3.org/Icons/valid-xhtml10"
