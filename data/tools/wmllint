@@ -1217,8 +1217,6 @@ def spellcheck(fn, d):
                 # No match? Strip posessive suffixes and try again.
                 elif lowered.endswith("'s") and d.check(lowered[:-2]):
                     continue
-                elif lowered.endswith("s'") and d.check(lowered[:-2]):
-                    continue
                 # Hyphenated compounds need all their parts good
                 if "-" in lowered:
                     parts = lowered.split("-")
