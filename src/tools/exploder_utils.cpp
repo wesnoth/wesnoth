@@ -18,22 +18,24 @@
 #include <png.h>
 
 exploder_point::exploder_point(const std::string &s)
+	: x(0)
+	, y(0)
 {
 	std::vector<std::string> items = utils::split(s);
-	if(items.size() != 2) {
-		x = y = 0;
-	} else {
+	if(items.size() == 2) {
 		x = atoi(items[0].c_str());
 		y = atoi(items[1].c_str());
 	}
 }
 
 exploder_rect::exploder_rect(const std::string &s)
+	: x(0)
+	, y(0)
+	, w(0)
+	, h(0)
 {
 	std::vector<std::string> items = utils::split(s);
-	if(items.size() != 4) {
-		x = y = w = h = 0;
-	} else {
+	if(items.size() == 4) {
 		x = atoi(items[0].c_str());
 		y = atoi(items[1].c_str());
 		w = atoi(items[2].c_str());
