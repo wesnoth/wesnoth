@@ -470,34 +470,18 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y;
 	if (image != NULL) {
-		// optimization for most common case
-		//FIXME : don't work for 72x72 images not fitting in a hex
-		if(x==xsrc && y == ysrc && 
-				image->w  == disp->hex_size() &&
-				image->h  == disp->hex_size()) {
-
-			// if we need to update ourselve because we changed, invalidate our hex
-			// and return whether or not our hex was invalidated
-			 if(force || need_update()){
-				 return disp->invalidate(src);
-			 }
-			// if not, then do nothing, either our hex has been invalidated for other reasons, and we did not do it
-			// or it wasn't and we don't want to do it
-			return false;
-		} else {
-			// if we need to update ourselve because we changed, invalidate our hexes
-			// and return whether or not our hexs was invalidated
-			const SDL_Rect r = {x,y,image->w,image->h};
-			if(force || need_update()){
-				return disp->invalidate_locations_in_rect(r);
-			}
-			// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
-			if(disp->rectangle_need_update(r)) {
-				return disp->invalidate_locations_in_rect(r);
-			}
-			return false;
-
+		// if we need to update ourselve because we changed, invalidate our hexes
+		// and return whether or not our hexs was invalidated
+		const SDL_Rect r = {x,y,image->w,image->h};
+		if(force || need_update()){
+			return disp->invalidate_locations_in_rect(r);
 		}
+		// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
+		if(disp->rectangle_need_update(r)) {
+			return disp->invalidate_locations_in_rect(r);
+		}
+		return false;
+
 
 	}
 	return false;
