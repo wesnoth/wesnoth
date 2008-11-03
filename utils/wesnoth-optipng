@@ -89,7 +89,7 @@ optimize_imgfile()
 			total_savings_size=$((${total_savings_size}+${png_savings_size}))
 			total_savings_filecount=$((1+${total_savings_filecount}))
 			mv -f ${1}.new ${1}
-			echo "  saved: ${png_savings_size} bytes, total saved: $((${total_savings_size}/1024)) KB"
+			echo "  saved: ${png_savings_size} bytes, total saved: $((${total_savings_size}/1024)) KiB"
 		else
 			rm -f ${1}.new
 			echo "  already optimized"
@@ -106,9 +106,9 @@ print_statistics()
 	# Print overall statistics
 	if [ "$total_savings_filecount" -gt 0 ]; then
 		echo "Overall statistics (only for files with a smaller recompressed size):"
-		echo "  Original size: $((${total_original_size}/1024)) KB on ${total_savings_filecount} files"
-		echo " Optimized size: $(((${total_original_size}-${total_savings_size})/1024)) KB"
-		echo "   Total saving: $((${total_savings_size}/1024)) KB = $((${total_savings_size}*100/${total_original_size}))% decrease"
+		echo "  Original size: $((${total_original_size}/1024)) KiB on ${total_savings_filecount} files"
+		echo " Optimized size: $(((${total_original_size}-${total_savings_size})/1024)) KiB"
+		echo "   Total saving: $((${total_savings_size}/1024)) KiB = $((${total_savings_size}*100/${total_original_size}))% decrease"
 	else
 		echo "No files were recompressed."
 	fi

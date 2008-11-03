@@ -56,10 +56,10 @@ files.each { | file|
 		totalSavedBytes = totalSavedBytes + savedBytes
 		totalSavedFiles = totalSavedFiles.succ
 		output = `mv "#{file}.new.png" -v "#{file}"`
-		puts ",\nsaved: #{savedBytes} bytes, total saved: #{totalSavedBytes/1024} KB"
+		puts ",\nsaved: #{savedBytes} bytes, total saved: #{totalSavedBytes/1024} KiB"
 	else
 		File.unlink("#{file}.new.png");
 	end
 }
 
-puts "\ntotal saved: #{totalSavedBytes/1024} KB, #{totalSavedFiles} files\n";
+puts "\ntotal saved: #{totalSavedBytes/1024} KiB, #{totalSavedFiles} files\n";

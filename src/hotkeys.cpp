@@ -898,7 +898,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			int size = disp.screenshot(filename, map_screenshot);
 			if (size > 0) {
 				std::stringstream res;
-				res << filename << " ( " << size/1000000 <<" "<< (size/1000)%1000 << " KB )";
+				res << filename << " ( " << size/1000000 <<" "<< (size/1000)%1000 << " kB )";
 				gui::dialog(disp,_("Screenshot done"),res.str(),gui::MESSAGE).show();
 			} else
 				gui::dialog(disp,_("Screenshot failed"),"",gui::MESSAGE).show();
