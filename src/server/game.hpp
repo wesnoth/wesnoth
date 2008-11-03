@@ -157,6 +157,7 @@ private:
 	bool is_legal_command(const simple_wml::node& command, bool is_player);
 	//! Function which returns true iff 'player' is on 'team'.
 	bool is_on_team(const simple_wml::string_span& team, const network::connection player) const;
+	std::string has_same_ip(const std::string& ip) const;
 
 	//! Function which should be called every time a player ends their turn
 	//! (i.e. [end_turn] received). This will update the 'turn' attribute for

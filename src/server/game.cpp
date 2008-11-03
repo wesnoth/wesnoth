@@ -879,12 +879,12 @@ void game::add_player(const network::connection player, bool observer) {
 	}
 	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
+	std::string clones = has_same_ip(network::ip_address(player));
 	bool became_observer = false;
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
-		send_server_message((user->second.name()
-				+ " has joined the game.").c_str(), player);
+		send_and_record_server_message((user->second.name() + " has joined the game.").c_str(), player);
 	} else if (!allow_observers()) {
 		return; //false;
 	} else {
@@ -899,6 +899,10 @@ void game::add_player(const network::connection player, bool observer) {
 		send_data(observer_join, player);
 	}
 	DBG_GAME << debug_player_info();
+
+	if (!clones.empty()) {
+		send_and_record_server_message((user->second.name() + " has the same IP as: " + clones).c_str());
+	}
 	// Send the user the game data.
 	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
 	simple_wml::string_span level_data = level_.output_compressed();
@@ -1115,6 +1119,23 @@ bool game::is_on_team(const simple_wml::string_span& team, const network::connec
 	}
 
 	return false;
+}
+
+std::string game::has_same_ip(const std::string& ip) const {
+	user_vector users = all_game_users();
+	std::string clones;
+	bool first = true;
+	for (user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
+		if (ip == network::ip_address(*i)) {
+			if (!first) clones += ", ";
+			else first = false;
+			const player_map::const_iterator pl = player_info_->find(*i);
+			if (pl != player_info_->end()) {
+				clones += pl->second.name();
+			}
+		}
+	}
+	return clones;
 }
 
 //! Send [observer] tags of all the observers in the game to the user or
