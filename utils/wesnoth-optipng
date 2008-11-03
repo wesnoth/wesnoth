@@ -1,15 +1,19 @@
 #!/bin/sh
 #
 #  Script to strip ICC profiles from all png images and to recompress them
-#  afterwards via optipng
+#  afterwards via optipng and advdef
 #
-#  Run-time requirements: ImageMagick, OptiPNG
+#  Run-time requirements: ImageMagick, OptiPNG, Advdef (part of AdvanceCOMP)
 #
 #  Copyright (C) 2004 by Crossbow/Miyo <miyo@iki.fi>
 #  Copyright (C) 2005 by Isaac Clerencia <isaac@warp.es>
 #  * (Ruby-ification and some features)
 #  Copyright (C) 2008 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+#                     and Fabio Pedretti <fabio.ped@libero.it>
 #  * (De-ruby-ification and some other features)
+#  * (Added advdef support)
+#  * (Don't use .stripped files anymore)
+#  * (Improved final statistics)
 #
 #  Part of the Battle for Wesnoth Project <http://www.wesnoth.org>
 #
@@ -24,6 +28,7 @@
 current_file=""
 # Default optimization process nice
 opti_nice=19
+total_original_size=0
 total_savings_size=0
 total_savings_filecount=0
 
@@ -32,20 +37,25 @@ total_savings_filecount=0
 report_absent_tool()
 {
     echo "$1 is not present in PATH. $(basename ${0}) requires it in order to work properly."
+    if [ -n "$2" ]; then
+    	echo "You can obtain $1 at <${2}>."
+    fi
     exit -1
 }
 
 user_int()
 {
 	if [ -n "${current_file}" ]; then
-		rm -f ${current_file}.stripped
-		#echo "Removing temp file ${current_file}.stripped..."
-		rm -f ${current_file}.new
 		#echo "Removing temp file ${current_file}.new..."
+		rm -f ${current_file}.new
 	fi
-	if [ -z "$just_overall_statistics" ]; then
-		echo "Stopped by user request."
-	fi
+
+	echo
+	echo "Stopped by user request."
+	echo
+
+	print_statistics
+
 	exit
 }
 
@@ -60,9 +70,13 @@ optimize_imgfile()
 
 	echo "* processing ${1} (nice = ${2})..."
 
-	nice -n $2 convert -strip ${1} ${1}.stripped
-	nice -n $2 optipng -q -o5 -nb -nc -np ${1}.stripped -out ${1}.new
-	rm -f ${1}.stripped
+	nice -n $2 convert -strip ${1} ${1}.new
+	nice -n $2 optipng -q -o5 -nb -nc -np ${1}.new
+	# Sometimes lower compression level gives a better compression
+	nice -n $2 advdef -z -4 ${1}.new > /dev/null
+	nice -n $2 advdef -z -3 ${1}.new > /dev/null
+	nice -n $2 advdef -z -2 ${1}.new > /dev/null
+	nice -n $2 advdef -z -1 ${1}.new > /dev/null
 
 	if [ -e ${1} ] && [ -e ${1}.new ]; then
 		# Compare output size with original and print per-file statistics
@@ -71,6 +85,7 @@ optimize_imgfile()
 
 		if [ "$old_png_size" -gt "$new_png_size" ]; then
 			local png_savings_size=$((${old_png_size}-${new_png_size}))
+			total_original_size=$((${total_original_size}+${old_png_size}))
 			total_savings_size=$((${total_savings_size}+${png_savings_size}))
 			total_savings_filecount=$((1+${total_savings_filecount}))
 			mv -f ${1}.new ${1}
@@ -84,6 +99,19 @@ optimize_imgfile()
 	fi
 	
 	echo -ne "\n"
+}
+
+print_statistics()
+{
+	# Print overall statistics
+	if [ "$total_savings_filecount" -gt 0 ]; then
+		echo "Overall statistics (only for files with a smaller recompressed size):"
+		echo "  Original size: $((${total_original_size}/1024)) KB on ${total_savings_filecount} files"
+		echo " Optimized size: $(((${total_original_size}-${total_savings_size})/1024)) KB"
+		echo "   Total saving: $((${total_savings_size}/1024)) KB = $((${total_savings_size}*100/${total_original_size}))% decrease"
+	else
+		echo "No files were recompressed."
+	fi
 }
 
 ####### ACTUAL SCRIPT #######
@@ -108,8 +136,10 @@ Switches:
 
   --help / -h   Displays this help text.
 
-This utility requires OptiPNG and ImageMagick's convert utility to be
-installed and available in PATH.
+This tool requires OptiPNG (http://www.cs.toronto.edu/~cosmin/pngtech/optipng/),
+Advdef (http://advancemame.sourceforge.net/comp-readme.html) and ImageMagick's
+convert utility (http://www.imagemagick.org/script/convert.php) to be installed
+and available in PATH.
 EOSTREAM
 		exit 0
 	fi
@@ -117,9 +147,14 @@ EOSTREAM
 done
 
 # Probe optipng
-nice -n $opti_nice optipng -v 2> /dev/null 1> /dev/null || report_absent_tool optipng
+nice -n $opti_nice optipng -v 2> /dev/null 1> /dev/null ||
+	report_absent_tool optipng 'http://www.cs.toronto.edu/~cosmin/pngtech/optipng/'
 # Probe IM's convert
-nice -n $opti_nice convert --help 2> /dev/null 1> /dev/null || report_absent_tool convert
+nice -n $opti_nice convert --help 2> /dev/null 1> /dev/null ||
+	report_absent_tool convert 'http://www.imagemagick.org'
+# Probe advdef
+nice -n $opti_nice advdef --help 2> /dev/null 1> /dev/null ||
+	report_absent_tool advdef 'http://advancemame.sourceforge.net/comp-readme.html'
 
 # Set-up a trap to avoid leaving orphan tempfiles behind.
 trap user_int HUP INT TERM
@@ -129,6 +164,6 @@ for f in $filelist; do
 	optimize_imgfile $f $opti_nice
 done
 
-# Print overall statistics
-echo "*** Total saved: $((${total_savings_size}/1024)) KB on ${total_savings_filecount} files"
+print_statistics
+
 exit 0
