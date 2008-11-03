@@ -33,7 +33,8 @@ namespace test_utils {
 		id_(id),
 		source_(),
 		game_config_(get_test_config_ref()),	
-		current_time_(80)
+		current_time_(80),
+		end_pos_()
 	{
 		add_initial_signals();
 	}
