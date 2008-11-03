@@ -1140,6 +1140,104 @@ def translator(filename, mapxforms, textxform):
     else:
         return None
 
+def spellcheck(fn, d):
+    "Spell-check a file using an Enchant dictionary object."
+    local_spellings = []
+    # Accept declared spellings for this file
+    # and for all directories above it.
+    up = fn
+    while True:
+        if not up or up == os.sep:
+            break
+        else:
+            local_spellings += declared_spellings.get(up,[])
+            up = os.path.dirname(up)
+    map(d.add_to_session, local_spellings)
+    for nav in WmlIterator(filename=fn):
+        # Recognize local spelling exceptions
+        if not nav.element and "#" in nav.text:
+            comment = nav.text[nav.text.index("#")-1:]
+            words = re.search("wmllint: local spellings? (.*)", comment)
+            if words:
+                for word in words.group(1).split():
+                    word = word.lower()
+                    d.add_to_session(word)
+                    local_spellings.append(word)
+        # Spell-check message and story parts
+        if nav.element in ("message=", "story=", "description="):
+            (key, prefix, value, comment) = parse_attribute(nav.text)
+            if "no spellcheck" in comment:
+                continue
+            if value.startswith("_"):
+                value = value[1:].strip()
+            value = string_strip(value)
+            value = value.replace("...", " ")
+            #value = value.replace("_ ", " ")
+            #value = value.replace(" _", " ")
+            value = value.replace("female^", " ")
+            value = value.replace("male^", " ")
+            if '<' in value:
+                value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
+                value = re.sub("<[0-9,]+>", "", value)
+            value = value.lower()
+            value = re.sub(r'" *\+\s*_ *"', "", value)
+            for token in value.split():
+                if d.check(token):
+                    continue
+                while token and token[0] in " \t(`@*'":
+                    token = token[1:]
+                while token and token[-1] in "-*').,:;?!& \t":
+                    token = token[:-1]
+                if token.startswith("$"):
+                    continue
+                if token.startswith("%"):
+                    continue
+                if token and token[0].isdigit():
+                    continue
+                if not token:
+                    continue
+                token = string_strip(token)
+                if token and d.check(token):
+                    continue
+                elif token.endswith("'s") and d.check(token[:-2]):
+                    continue
+                elif token.endswith("s'") and d.check(token[:-2]):
+                    continue
+                if "-" in token:
+                    parts = token.split("-")
+                    if filter(lambda w: not w or d.check(w), parts) == parts:
+                        continue
+                if re.match("[+-][0-9]", token):
+                    continue
+                if re.match("hm+", token):
+                    continue
+                if re.match("a+[ur]*g+h*", token):
+                    continue
+                if re.match("(mu)?ha(ha)*", token):
+                    continue
+                if re.match("ah+", token):
+                    continue
+                if re.match("no+", token):
+                    continue
+                if re.match("no+", token):
+                    continue
+                if re.match("um+", token):
+                    continue
+                if re.match("aw+", token):
+                    continue
+                if re.match("o+h+", token):
+                    continue
+                print nav.whereami(), 'possible misspelling "%s"' % token
+        # Take exceptions from name, id, and type fields
+        if nav.element in ("name=", "id=", "type="):
+            (key, prefix, value, comment) = parse_attribute(nav.text)
+            value = string_strip(value)
+            if value:
+                d.add_to_session(value)
+                local_spellings.append(value)
+    #for word in local_spellings:
+    #    d.remove_from_session(word)
+
 vctypes = (".svn", ".git")
 
 def interesting(fn):
@@ -1355,101 +1453,7 @@ if __name__ == '__main__':
                     for fn in allcfgfiles(dir):
                         if verbose >= 2:
                             print fn + ":"
-                        # Accept declared spellings for this file
-                        # and for all directories above it.
-                        local_spellings = []
-                        up = fn
-                        while True:
-                            if not up or up == os.sep:
-                                break
-                            else:
-                                local_spellings += declared_spellings.get(up,[])
-                                up = os.path.dirname(up)
-                        map(d.add_to_session, local_spellings)
-                        for nav in WmlIterator(filename=fn):
-                            # Recognize local spelling exceptions
-                            if not nav.element and "#" in nav.text:
-                                comment = nav.text[nav.text.index("#")-1:]
-                                words = re.search("wmllint: local spellings? (.*)", comment)
-                                if words:
-                                    for word in words.group(1).split():
-                                        word = word.lower()
-                                        d.add_to_session(word)
-                                        local_spellings.append(word)
-                            # Spell-check message and story parts
-                            if nav.element in ("message=", "story=", "description="):
-                                (key, prefix, value, comment) = parse_attribute(nav.text)
-                                if "no spellcheck" in comment:
-                                    continue
-                                if value.startswith("_"):
-                                    value = value[1:].strip()
-                                value = string_strip(value)
-                                value = value.replace("...", " ")
-                                #value = value.replace("_ ", " ")
-                                #value = value.replace(" _", " ")
-                                value = value.replace("female^", " ")
-                                value = value.replace("male^", " ")
-                                if '<' in value:
-                                    value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
-                                    value = re.sub("<[0-9,]+>", "", value)
-                                value = value.lower()
-                                value = re.sub(r'" *\+\s*_ *"', "", value)
-                                for token in value.split():
-                                    if d.check(token):
-                                        continue
-                                    while token and token[0] in " \t(`@*'":
-                                        token = token[1:]
-                                    while token and token[-1] in "-*').,:;?!& \t":
-                                        token = token[:-1]
-                                    if token.startswith("$"):
-                                        continue
-                                    if token.startswith("%"):
-                                        continue
-                                    if token and token[0].isdigit():
-                                        continue
-                                    if not token:
-                                        continue
-                                    token = string_strip(token)
-                                    if token and d.check(token):
-                                        continue
-                                    elif token.endswith("'s") and d.check(token[:-2]):
-                                        continue
-                                    elif token.endswith("s'") and d.check(token[:-2]):
-                                        continue
-                                    if "-" in token:
-                                        parts = token.split("-")
-                                        if filter(lambda w: not w or d.check(w), parts) == parts:
-                                            continue
-                                    if re.match("[+-][0-9]", token):
-                                        continue
-                                    if re.match("hm+", token):
-                                        continue
-                                    if re.match("a+[ur]*g+h*", token):
-                                        continue
-                                    if re.match("(mu)?ha(ha)*", token):
-                                        continue
-                                    if re.match("ah+", token):
-                                        continue
-                                    if re.match("no+", token):
-                                        continue
-                                    if re.match("no+", token):
-                                        continue
-                                    if re.match("um+", token):
-                                        continue
-                                    if re.match("aw+", token):
-                                        continue
-                                    if re.match("o+h+", token):
-                                        continue
-                                    print nav.whereami(), 'possible misspelling "%s"' % token
-                            # Take exceptions from name, id, and type fields
-                            if nav.element in ("name=", "id=", "type="):
-                                (key, prefix, value, comment) = parse_attribute(nav.text)
-                                value = string_strip(value)
-                                if value:
-                                    d.add_to_session(value)
-                                    local_spellings.append(value)
-                        #for word in local_spellings:
-                        #    d.remove_from_session(word)
+                        spellcheck(fn, d)
             except ImportError:
                 sys.stderr.write("wmllint: spell check unavailable, install python-enchant to enable\n")
     except KeyboardInterrupt:
