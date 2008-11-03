@@ -294,7 +294,8 @@ translatables = (\
 # Declare a few common English contractions that pyenchant
 # inexplicably knows nothing of.
 declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
-                                "heh", "aide-de-camp", "teleportation",
+                                "heh", "ack",
+                                "aide-de-camp", "teleportation",
                                 "hellspawn", "hurrah", "crafters", "bided",
                                 "overmatched", "stygian", "numbskulls",
                                 "axe", "greatsword", "ballista", "glaive",
@@ -1157,6 +1158,8 @@ def spellcheck(fn, d):
             local_spellings += declared_spellings.get(up,[])
             up = os.path.dirname(up)
     local_spellings = filter(lambda w: not d.check(w), local_spellings)
+    #if local_spellings:
+    #    print "%s: inherited local spellings: %s" % (fn, local_spellings)
     map(d.add_to_session, local_spellings)
     # Process this individual file
     for nav in WmlIterator(filename=fn):
@@ -1168,8 +1171,14 @@ def spellcheck(fn, d):
             if words:
                 for word in words.group(1).split():
                     word = word.lower()
-                    d.add_to_session(word)
-                    local_spellings.append(word)
+                    if not d.check(word):
+                        d.add_to_session(word)
+                        local_spellings.append(word)
+                    #else:
+                    #    print nav.whereami(), " %s already declared" % word
+    #if local_spellings:
+    #    print "%s: with this file's local spellings: %s" % (fn, local_spellings)
+    for nav in WmlIterator(filename=fn):
         # Spell-check message and story parts
         if nav.element in ("message=", "story=", "description="):
             (key, prefix, value, comment) = parse_attribute(nav.text)
@@ -1251,13 +1260,15 @@ def spellcheck(fn, d):
                 if re.match("o+h+", lowered):
                     continue
                 print nav.whereami(), 'possible misspelling "%s"' % token
-        # Take exceptions from name, id, and type fields
+        # Take exceptions from the id fields
         if nav.element == "id=":
             (key, prefix, value, comment) = parse_attribute(nav.text)
-            value = string_strip(value)
-            if value:
+            value = string_strip(value).lower()
+            if value and not d.check(value):
                 d.add_to_session(value)
                 local_spellings.append(value)
+    #if local_spellings:
+    #    print "%s: slated for removal: %s" % (fn, local_spellings)
     #for word in local_spellings:
     #    d.remove_from_session(word)
 
