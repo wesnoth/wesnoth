@@ -1154,6 +1154,7 @@ def spellcheck(fn, d):
             up = os.path.dirname(up)
     map(d.add_to_session, local_spellings)
     for nav in WmlIterator(filename=fn):
+        #print "element=%s, text=%s" % (nav.element, `nav.text`)
         # Recognize local spelling exceptions
         if not nav.element and "#" in nav.text:
             comment = nav.text[nav.text.index("#"):]
@@ -1170,6 +1171,10 @@ def spellcheck(fn, d):
                 continue
             if value.startswith("_"):
                 value = value[1:].strip()
+            # Remove line continuations, they interfere with string-stripping
+            value = value.strip()
+            if value.endswith("+"):
+                value = value[:-1].rstrip()
             value = string_strip(value)
             value = value.replace("...", " ")
             value = value.replace("''", "")
@@ -1183,17 +1188,11 @@ def spellcheck(fn, d):
             for token in value.split():
                 if d.check(token):
                     continue
-                while token and token[0] in " \t(`@*'_":
+                while token and token[0] in " \t(`@*'%_":
                     token = token[1:]
                 while token and token[-1] in "_-*').,:;?!& \t":
                     token = token[:-1]
-                if token.startswith("%"):
-                    continue
-                if token.startswith("$"):
-                    continue
-                if token and token[0].isdigit():
-                    continue
-                if not token:
+                if not token or token.startswith("$") or token[0].isdigit():
                     continue
                 token = string_strip(token)
                 if token and d.check(token):
@@ -1446,6 +1445,10 @@ if __name__ == '__main__':
             try:
                 import enchant
                 d = enchant.Dict("en_US")
+                checker = d.provider.desc
+                if checker.endswith(" Provider"):
+                    checker = checker[:-9]
+                print "# Spell-checking with", checker
                 for word in declared_spellings["GLOBAL"]:
                     d.add_to_session(word.lower())
                 for dir in arguments:
