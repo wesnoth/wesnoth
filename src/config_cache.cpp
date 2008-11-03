@@ -393,7 +393,9 @@ namespace game_config {
 	config_cache_transaction::state config_cache_transaction::state_ = FREE;
 	config_cache_transaction* config_cache_transaction::active_ = 0;
 	
-	config_cache_transaction::config_cache_transaction() : define_filenames_()
+	config_cache_transaction::config_cache_transaction() 
+		: define_filenames_()
+		, active_map_()
 	{
 		assert(state_ == FREE);
 		state_ = NEW;
