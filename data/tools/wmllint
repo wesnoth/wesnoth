@@ -1189,26 +1189,37 @@ def spellcheck(fn, d):
             # Fold continued lines
             value = re.sub(r'" *\+\s*_ *"', "", value)
             for token in value.split():
+                # Try it with simple lowercasing first
                 lowered = token.lower()
                 if d.check(lowered):
                     continue
+                # Strip leading punctuastion and grotty Wesnoth highlighters
                 while lowered and lowered[0] in " \t(`@*'%_":
                     lowered = lowered[1:]
+                # Not interested in interpolations or numeric literals
+                if not lowered or lowered.startswith("$"):
+                    continue
+                # Suffix handling
                 while lowered and lowered[-1] in "_-*').,:;?!& \t":
                     lowered = lowered[:-1]
+                # Not interested in interpolations or numeric literals
                 if not lowered or lowered.startswith("$") or lowered[0].isdigit():
                     continue
+               # Nuke balanced string quotes if present
                 lowered = string_strip(lowered)
                 if lowered and d.check(lowered):
                     continue
+                # No match? Strip posessive suffixes and try again.
                 elif lowered.endswith("'s") and d.check(lowered[:-2]):
                     continue
                 elif lowered.endswith("s'") and d.check(lowered[:-2]):
                     continue
+                # Hyphenated compounds need all their parts good
                 if "-" in lowered:
                     parts = lowered.split("-")
                     if filter(lambda w: not w or d.check(w), parts) == parts:
                         continue
+                # Modifier literals aren't interesting
                 if re.match("[+-][0-9]", lowered):
                     continue
                 # Match various onomatopoetic exclamations of variable form
