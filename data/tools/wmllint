@@ -1199,7 +1199,12 @@ def spellcheck(fn, d):
                 # Not interested in interpolations or numeric literals
                 if not lowered or lowered.startswith("$"):
                     continue
-                # Suffix handling
+                # Suffix handling. Done in two passes because some
+                # Dwrven dialect words end in a single quote
+                while lowered and lowered[-1] in "_-*).,:;?!& \t":
+                    lowered = lowered[:-1]
+                if lowered and d.check(lowered):
+                    continue;
                 while lowered and lowered[-1] in "_-*').,:;?!& \t":
                     lowered = lowered[:-1]
                 # Not interested in interpolations or numeric literals
