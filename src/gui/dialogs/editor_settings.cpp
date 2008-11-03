@@ -39,7 +39,7 @@ teditor_settings::teditor_settings()
 : redraw_callback_(),
 tods_(), current_tod_(0),
 current_tod_label_(NULL), current_tod_image_(NULL),
-custom_tod_toggle_(NULL), 
+custom_tod_toggle_(NULL), custom_tod_auto_refresh_(NULL),
 custom_tod_toggle_field_(register_bool("custom_tod_toggle", false)),
 custom_tod_red_(NULL), custom_tod_green_(NULL), custom_tod_blue_(NULL),
 custom_tod_red_field_(register_integer("custom_tod_red", false)),
