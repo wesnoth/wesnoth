@@ -3,6 +3,9 @@
   !define MULTIUSER_EXECUTIONLEVEL Highest
   !define MULTIUSER_MUI
   !define MULTIUSER_INSTALLMODE_COMMANDLINE
+  !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
+  !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUENAME ""
+  !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth %version"
   !include "MultiUser.nsh"
   !include "MUI2.nsh"
 
@@ -12,12 +15,6 @@
   ;Name and file
   Name "Battle for Wesnoth"
   OutFile "wesnoth-%version-win32.exe"
-
-  ;Default installation folder
-  InstallDir "$PROGRAMFILES\Battle for Wesnoth %version"
-  
-  ;Get installation folder from registry if available
-  InstallDirRegKey HKCU "Software\Battle for Wesnoth\%version" ""
 
 ;--------------------------------
 ;Variables
@@ -34,7 +31,7 @@
 ;Language Selection Dialog Settings
 
   ;Remember the installer language
-  !define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
+  !define MUI_LANGDLL_REGISTRY_ROOT "SHCTX" 
   !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
   !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
@@ -48,7 +45,7 @@
   !insertmacro MUI_PAGE_DIRECTORY
 
   ;Start Menu Folder Page Configuration
-  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU" 
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX" 
   !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
   
@@ -147,7 +144,7 @@ Section "Battle for Wesnoth" BfWSection
   %NSIS_INSTALL_FILES
   
   ;Store installation folder
-  WriteRegStr HKCU "Software\Battle for Wesnoth\%version" "" $INSTDIR
+  WriteRegStr SHCTX "Software\Battle for Wesnoth\%version" "" $INSTDIR
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -210,8 +207,8 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
 
-  DeleteRegKey /ifempty HKCU "Software\Battle for Wesnoth\%version"
-  DeleteRegKey /ifempty HKCU "Software\Battle for Wesnoth"
+  DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth\%version"
+  DeleteRegKey /ifempty SHCTX "Software\Battle for Wesnoth"
 
 SectionEnd
 
