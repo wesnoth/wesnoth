@@ -306,6 +306,10 @@ Important Attributes:
         """Emit a locator string compatible with Emacs compilation mode."""
         return '"%s", line %d:' % (self.fname, self.lineno+1)
 
+    def ancestors(self):
+        """Return a list of tags enclosing this location."""
+        return tuple(map(lambda x: x.element, self.scopes))
+
     def hasNext(self):
         """Some loops may wish to check this method instead of calling next()
         and handling StopIteration... note: inaccurate for ScopeIterators"""

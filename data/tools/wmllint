@@ -136,6 +136,8 @@ linechanges = (
         ("canyon=", "unwalkable="),
         # This changed after 1.5.2
         ("advanceto=", "advances_to="),
+        # This changed after 1.5.5, to enable mechanical spellchecking
+        ("sabre", "saber"),
         )
 
 def validate_stack(stack, filename, lineno):
@@ -295,6 +297,8 @@ declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "heh", "aide-de-camp", "teleportation",
                                 "hellspawn", "hurrah", "crafters", "bided",
                                 "overmatched", "stygian", "numbskulls",
+                                "axe", "greatsword", "ballista", "glaive",
+                                "morningstar",
                                 # game jargon
                                 "melee", "arcane", "day/night",
                                 "hitpoint", "hitpoints", "FFA",
@@ -1152,7 +1156,9 @@ def spellcheck(fn, d):
         else:
             local_spellings += declared_spellings.get(up,[])
             up = os.path.dirname(up)
+    local_spellings = filter(lambda w: not d.check(w), local_spellings)
     map(d.add_to_session, local_spellings)
+    # Process this individual file
     for nav in WmlIterator(filename=fn):
         #print "element=%s, text=%s" % (nav.element, `nav.text`)
         # Recognize local spelling exceptions
@@ -1246,7 +1252,7 @@ def spellcheck(fn, d):
                     continue
                 print nav.whereami(), 'possible misspelling "%s"' % token
         # Take exceptions from name, id, and type fields
-        if nav.element in ("name=", "id=", "type="):
+        if nav.element == "id=":
             (key, prefix, value, comment) = parse_attribute(nav.text)
             value = string_strip(value)
             if value:
