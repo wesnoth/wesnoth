@@ -241,7 +241,8 @@ stats::stats() :
 	new_expected_damage_inflicted(0), 
 	new_expected_damage_taken(0), 
 	new_turn_expected_damage_inflicted(0), 
-	new_turn_expected_damage_taken(0)
+	new_turn_expected_damage_taken(0),
+	save_id()
 {}
 
 stats::stats(const config& cfg) :
