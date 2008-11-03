@@ -292,10 +292,19 @@ translatables = (\
 # Declare a few common English contractions that pyenchant
 # inexplicably knows nothing of.
 declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
-                                "heh",
-                                "melee", "arcane", "day/night", "hitpoints",
-                                "HP", "XP", "AI", "L0", "L1", "L2", "L3", "YW",
-                                "faugh",	# Handy archaism
+                                "heh", "aide-de-camp", "teleportation",
+                                "hellspawn", "hurrah", "crafters", "bided",
+                                "overmatched", "stygian", "numbskulls",
+                                # game jargon
+                                "melee", "arcane", "day/night",
+                                "hitpoint", "hitpoints", "FFA",
+                                "HP", "XP", "AI", "ZOC", "YW",
+                                "L0", "L1", "L2", "L3",
+                                # archaisms
+                                "faugh", "hewn", "leapt", "dreamt", "spilt",
+                                "grandmam", "grandsire", "grandsires",
+                                "scry", "scrying", "scryed",
+                                "princeling", "wilderlands", "ensorcels"
                                 ]}
 
 def sanity_check(filename, lines):
@@ -1376,14 +1385,21 @@ if __name__ == '__main__':
                                     value = value[1:].strip()
                                 value = string_strip(value)
                                 value = value.replace("...", " ")
+                                #value = value.replace("_ ", " ")
+                                #value = value.replace(" _", " ")
                                 value = value.replace("female^", " ")
                                 value = value.replace("male^", " ")
+                                if '<' in value:
+                                    value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
+                                    value = re.sub("<[0-9,]+>", "", value)
                                 value = value.lower()
                                 value = re.sub(r'" *\+\s*_ *"', "", value)
                                 for token in value.split():
-                                    while token and token[0] in " \t(@*'":
+                                    if d.check(token):
+                                        continue
+                                    while token and token[0] in " \t(`@*'":
                                         token = token[1:]
-                                    while token and token[-1] in "-*').,:;?! \t":
+                                    while token and token[-1] in "-*').,:;?!& \t":
                                         token = token[:-1]
                                     if token.startswith("$"):
                                         continue
@@ -1394,7 +1410,7 @@ if __name__ == '__main__':
                                     if not token:
                                         continue
                                     token = string_strip(token)
-                                    if d.check(token):
+                                    if token and d.check(token):
                                         continue
                                     elif token.endswith("'s") and d.check(token[:-2]):
                                         continue
@@ -1404,15 +1420,25 @@ if __name__ == '__main__':
                                         parts = token.split("-")
                                         if filter(lambda w: not w or d.check(w), parts) == parts:
                                             continue
+                                    if re.match("[+-][0-9]", token):
+                                        continue
                                     if re.match("hm+", token):
                                         continue
-                                    if re.match("a+[ur]+g+h*", token):
+                                    if re.match("a+[ur]*g+h*", token):
                                         continue
-                                    if re.match("ha(ha)*", token):
+                                    if re.match("(mu)?ha(ha)*", token):
                                         continue
                                     if re.match("ah+", token):
                                         continue
                                     if re.match("no+", token):
+                                        continue
+                                    if re.match("no+", token):
+                                        continue
+                                    if re.match("um+", token):
+                                        continue
+                                    if re.match("aw+", token):
+                                        continue
+                                    if re.match("o+h+", token):
                                         continue
                                     print nav.whereami(), 'possible misspelling "%s"' % token
                             # Take exceptions from name, id, and type fields
