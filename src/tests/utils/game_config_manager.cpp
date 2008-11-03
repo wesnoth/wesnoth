@@ -49,6 +49,10 @@ namespace test_utils {
 		}
 		public:
 		game_config_manager()
+			: cfg_()
+			, paths_manager_()
+			, hotkey_manager_()
+			, font_manager_()
 		{
 #ifdef _WIN32
 			std::setlocale(LC_ALL, "English");
