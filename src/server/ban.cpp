@@ -102,8 +102,9 @@ namespace wesnothd {
 		end_time_(0),
 		start_time_(0),
 		reason_(),
-		who_banned_(who_banned_default_)
-
+		who_banned_(who_banned_default_),
+		group_(),
+		nick_()
 	{
 		ip_mask pair = parse_ip(ip);
 		ip_ = pair.first;
@@ -116,6 +117,8 @@ namespace wesnothd {
 				   const std::string& who_banned, 
 				   const std::string& group,
 				   const std::string& nick) :
+		ip_(0),
+		mask_(0),
 		ip_text_(ip),
 		end_time_(end_time), 
 		start_time_(time(0)),
@@ -136,7 +139,9 @@ namespace wesnothd {
 		end_time_(0),
 		start_time_(0),
 		reason_(),
-		who_banned_(who_banned_default_)
+		who_banned_(who_banned_default_),
+		group_(),
+		nick_()
 	{
 		read(cfg);
 	}
@@ -655,7 +660,14 @@ namespace wesnothd {
 		write();
 	}
 	
-	ban_manager::ban_manager() : bans_(), time_queue_(), ban_times_(), ban_help_(), filename_(), dirty_(false)
+	ban_manager::ban_manager() 
+		: bans_()
+		, deleted_bans_()
+		, time_queue_()
+		, ban_times_()
+		, ban_help_()
+		, filename_()
+		, dirty_(false)
 	{
 		init_ban_help();
 	}	
