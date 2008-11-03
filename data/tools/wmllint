@@ -1169,13 +1169,16 @@ def spellcheck(fn, d):
             (key, prefix, value, comment) = parse_attribute(nav.text)
             if "no spellcheck" in comment:
                 continue
+            # Strip off translation marks
             if value.startswith("_"):
                 value = value[1:].strip()
-            # Remove line continuations, they interfere with string-stripping
+            # Strip off line continuations, they interfere with string-stripping
             value = value.strip()
             if value.endswith("+"):
                 value = value[:-1].rstrip()
+            # Strip off string quotes
             value = string_strip(value)
+            # Discard extraneous stuff 
             value = value.replace("...", " ")
             value = value.replace("''", "")
             value = value.replace("female^", " ")
@@ -1183,48 +1186,49 @@ def spellcheck(fn, d):
             if '<' in value:
                 value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
                 value = re.sub("<[0-9,]+>", "", value)
-            value = value.lower()
+            # Fold continued lines
             value = re.sub(r'" *\+\s*_ *"', "", value)
             for token in value.split():
-                if d.check(token):
+                lowered = token.lower()
+                if d.check(lowered):
                     continue
-                while token and token[0] in " \t(`@*'%_":
-                    token = token[1:]
-                while token and token[-1] in "_-*').,:;?!& \t":
-                    token = token[:-1]
-                if not token or token.startswith("$") or token[0].isdigit():
+                while lowered and lowered[0] in " \t(`@*'%_":
+                    lowered = lowered[1:]
+                while lowered and lowered[-1] in "_-*').,:;?!& \t":
+                    lowered = lowered[:-1]
+                if not lowered or lowered.startswith("$") or lowered[0].isdigit():
                     continue
-                token = string_strip(token)
-                if token and d.check(token):
+                lowered = string_strip(lowered)
+                if lowered and d.check(lowered):
                     continue
-                elif token.endswith("'s") and d.check(token[:-2]):
+                elif lowered.endswith("'s") and d.check(lowered[:-2]):
                     continue
-                elif token.endswith("s'") and d.check(token[:-2]):
+                elif lowered.endswith("s'") and d.check(lowered[:-2]):
                     continue
-                if "-" in token:
-                    parts = token.split("-")
+                if "-" in lowered:
+                    parts = lowered.split("-")
                     if filter(lambda w: not w or d.check(w), parts) == parts:
                         continue
-                if re.match("[+-][0-9]", token):
+                if re.match("[+-][0-9]", lowered):
                     continue
                 # Match various onomatopoetic exclamations of variable form
-                if re.match("hm+", token):
+                if re.match("hm+", lowered):
                     continue
-                if re.match("a+[ur]*g+h*", token):
+                if re.match("a+[ur]*g+h*", lowered):
                     continue
-                if re.match("(mu)?ha(ha)*", token):
+                if re.match("(mu)?ha(ha)*", lowered):
                     continue
-                if re.match("ah+", token):
+                if re.match("ah+", lowered):
                     continue
-                if re.match("no+", token):
+                if re.match("no+", lowered):
                     continue
-                if re.match("no+", token):
+                if re.match("no+", lowered):
                     continue
-                if re.match("um+", token):
+                if re.match("um+", lowered):
                     continue
-                if re.match("aw+", token):
+                if re.match("aw+", lowered):
                     continue
-                if re.match("o+h+", token):
+                if re.match("o+h+", lowered):
                     continue
                 print nav.whereami(), 'possible misspelling "%s"' % token
         # Take exceptions from name, id, and type fields
@@ -1438,7 +1442,7 @@ if __name__ == '__main__':
                         sys.stderr.write("wmllint: internal error on %s\n" % fn)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
                         raise exc_type, exc_value, exc_traceback
-        if not clean and not revert and future:
+        if not clean and not revert:
             # Consistency-check everything we got from the file scans
             consistency_check()
             # Attempt a spell-check
