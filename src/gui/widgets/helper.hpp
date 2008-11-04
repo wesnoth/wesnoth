@@ -149,6 +149,16 @@ std::string get_uid();
 /** 
  * Gets a formula object with the screen size.
  *
+ * @param variable                A formula object in which the screen_width
+ *                                and screen_height variable will set to the
+ *                                current values of these in settings. It
+ *                                modifies the object send.
+ */
+void get_screen_size_variables(game_logic::map_formula_callable& variable);
+
+/** 
+ * Gets a formula object with the screen size.
+ *
  * @returns                       Formula object with the screen_width and
  *                                screen_height variable set to the current
  *                                values of these in settings.

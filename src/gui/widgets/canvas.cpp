@@ -913,6 +913,7 @@ void tcanvas::draw(const bool force)
 	}
 
 	if(dirty_) {
+		get_screen_size_variables(variables_);
 		variables_.add("width",variant(w_));
 		variables_.add("height",variant(h_));
 	}

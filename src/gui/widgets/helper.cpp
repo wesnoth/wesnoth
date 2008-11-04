@@ -181,11 +181,16 @@ std::string get_uid()
 
 }
 
+void get_screen_size_variables(game_logic::map_formula_callable& variable)
+{
+	variable.add("screen_width", variant(settings::screen_width));
+	variable.add("screen_height", variant(settings::screen_height));
+}
+
 game_logic::map_formula_callable get_screen_size_variables()
 {
 	game_logic::map_formula_callable result;
-	result.add("screen_width", variant(settings::screen_width));
-	result.add("screen_height", variant(settings::screen_height));
+	get_screen_size_variables(result);
 
 	return result;
 }
