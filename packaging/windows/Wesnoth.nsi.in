@@ -3,6 +3,8 @@
   !define MULTIUSER_EXECUTIONLEVEL Highest
   !define MULTIUSER_MUI
   !define MULTIUSER_INSTALLMODE_COMMANDLINE
+  !define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
+  !define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_VALUENAME ""
   !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
   !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUENAME ""
   !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth %version"
@@ -168,8 +170,8 @@ SectionEnd
 
 Function .onInit
 
-  !insertmacro MUI_LANGDLL_DISPLAY
   !insertmacro MULTIUSER_INIT
+  !insertmacro MUI_LANGDLL_DISPLAY
 
 FunctionEnd
 
