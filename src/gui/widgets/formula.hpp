@@ -88,7 +88,7 @@ inline T tformula<T>::operator() (const game_logic::map_formula_callable& variab
 {
 	if(has_formula()) {
 		const T& result = execute(variables);
-		LOG_STREAM_INDENT(debug, gui_draw) << "Formula: execute '" << formula_ 
+		LOG_G_D << "Formula: execute '" << formula_ 
 			<< "' result '" << result
 			<< "'.\n";
 		return result;
