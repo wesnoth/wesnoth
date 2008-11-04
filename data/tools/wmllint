@@ -98,11 +98,11 @@
 # A magic comment of the form "wmllint: general spellings word1
 # word2..."  will declare the tokens word1, word2, etc. to be
 # acceptable spellings for anywhere in the Wesnoth tree that the
-# spellchecker should rever flag.  If the keyword "general" is replaced
-# by "local", the spelling exceptions apply only until the end of the
-# current file. If the keyword "general" is replaced
-# by "directory", the spelling exceptions apply to all files below 
-# the parent directory 
+# spellchecker should rever flag.  If the keyword "general" is
+# replaced by "local", the spelling exceptions apply only in the
+# current file. If the keyword "general" is replaced by "directory",
+# the spelling exceptions apply to all files below the parent
+# directory.
 #
 # A coment containing "no spellcheck" disable spellchecking on the
 # line where it occurs.
