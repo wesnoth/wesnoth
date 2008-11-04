@@ -33,6 +33,7 @@
 #   * double space after punctuation in translatable strings.
 #   * unknown races or movement types in units
 #   * unknown base units
+#   * misspellings in message and description strings
 #
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
@@ -77,7 +78,7 @@
 # You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
 #
-# You can prevent file conversions with a comment containing
+# You can prevent filename conversions with a comment containing
 # "wmllint: noconvert" on the same line as the filename.
 #
 # You can suppress complaints about files without an initial textdoman line
@@ -564,6 +565,7 @@ def sanity_check(filename, lines):
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
+    capitalization_error = re.compile("(?<=[.!?])  +[a-z]")
     markcheck = True
     translation_mark = re.compile(r'_ *"')
     for i in range(len(lines)):
@@ -642,6 +644,9 @@ def sanity_check(filename, lines):
                           % (filename, i+1)
                     if not stringfreeze:
                         lines[i] = sentence_end.sub(" ", lines[i])
+                if capitalization_error.search(lines[i]):
+                    print '"%s", line %d: probable capitalization or punctuation error' \
+                          % (filename, i+1)
             else:
                 if in_scenario and key == "id":
                     if in_person:
