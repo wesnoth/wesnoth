@@ -2967,21 +2967,13 @@ namespace {
 				// We whether we can show the new dialog.
 				if(gui2::new_widgets && options.empty() && speaker != units->end()) {
 					// Get the portrait and if found proceed to use the new dialog.
-					gui2::twindow window = gui2::build((screen)->video(), "message_test_left");
-
-					// Use an ugly hack, if the spacer has the wanted best_size we use the
-					// bigger image otherwise the smaller one.
-					gui2::tspacer* spacer =
-						dynamic_cast<gui2::tspacer*>(window.find_widget("image_place_holder", false));
-
-					unsigned image_size = 200;
-					if(spacer && spacer->get_best_size().x == 500) {
-						image_size = 400;
-					}
 
 					const tportrait* portrait = 
-						speaker->second.portrait(image_size, tportrait::LEFT);
+						speaker->second.portrait(400, tportrait::LEFT);
 					if(portrait) {
+
+						gui2::twindow window = 
+							gui2::build((screen)->video(), "message_test_left"); 
 
 						const t_string message = cfg["message"];
 						const std::string image = portrait ? portrait->image : "";
