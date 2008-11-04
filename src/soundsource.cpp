@@ -27,12 +27,12 @@
 #include "soundsource.hpp"
 #include "util.hpp"
 
-#define DEFAULT_CHANCE				100
-#define DEFAULT_DELAY				1000
-#define DEFAULT_FULL_RANGE			3
-#define DEFAULT_FADE_RANGE			14
-
 namespace soundsource {
+
+const unsigned DEFAULT_CHANCE           = 100;
+const unsigned DEFAULT_DELAY            = 1000;
+const unsigned DEFAULT_FULL_RANGE       = 3;
+const unsigned DEFAULT_FADE_RANGE       = 14;
 
 unsigned int positional_source::last_id = 0;
 
