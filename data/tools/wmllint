@@ -295,11 +295,12 @@ translatables = (\
 # inexplicably knows nothing of.
 declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "heh", "ack",
-                                "aide-de-camp", "teleportation",
+                                "aide-de-camp",
+                                "teleport", "teleportation", "terraform",
                                 "hellspawn", "hurrah", "crafters", "bided",
                                 "overmatched", "stygian", "numbskulls",
                                 "axe", "greatsword", "ballista", "glaive",
-                                "morningstar",
+                                "morningstar", "wildlands",
                                 # game jargon
                                 "melee", "arcane", "day/night",
                                 "hitpoint", "hitpoints", "FFA",
@@ -1174,8 +1175,8 @@ def spellcheck(fn, d):
                     if not d.check(word):
                         d.add_to_session(word)
                         local_spellings.append(word)
-                    #else:
-                    #    print nav.whereami(), " %s already declared" % word
+                    else:
+                        print nav.whereami(), " %s already declared" % word
     #if local_spellings:
     #    print "%s: with this file's local spellings: %s" % (fn, local_spellings)
     for nav in WmlIterator(filename=fn):
@@ -1259,6 +1260,8 @@ def spellcheck(fn, d):
                     continue
                 if re.match("o+h+", lowered):
                     continue
+                if re.match("s+h+", lowered):
+                    continue
                 print nav.whereami(), 'possible misspelling "%s"' % token
         # Take exceptions from the id fields
         if nav.element == "id=":
@@ -1269,8 +1272,8 @@ def spellcheck(fn, d):
                 local_spellings.append(value)
     #if local_spellings:
     #    print "%s: slated for removal: %s" % (fn, local_spellings)
-    #for word in local_spellings:
-    #    d.remove_from_session(word)
+    for word in local_spellings:
+        d.remove_from_session(word)
 
 vctypes = (".svn", ".git")
 
