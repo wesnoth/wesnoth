@@ -307,7 +307,7 @@ Important Attributes:
         return '"%s", line %d:' % (self.fname, self.lineno+1)
 
     def ancestors(self):
-        """Return a list of tags enclosing this location."""
+        """Return a list of tags enclosing this location, outermost first."""
         return tuple(map(lambda x: x.element, self.scopes))
 
     def hasNext(self):
