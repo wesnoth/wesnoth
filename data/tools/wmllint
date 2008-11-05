@@ -1187,7 +1187,7 @@ def spellcheck(fn, d):
     map(d.add_to_session, local_spellings)
 
     def printError(nav, *misc):
-        """Emit an errror locator compatible with Emacs compilation mode."""
+        """Emit an error locator compatible with Emacs compilation mode."""
         if nav.lineno == -1:
             print >>sys.stderr, '"%s":' % nav.fname
         else:
@@ -1210,7 +1210,7 @@ def spellcheck(fn, d):
                         d.add_to_session(word)
                         local_spellings.append(word)
                     else:
-                        print nav.whereami(), " %s already declared" % word
+                        printError(nav, " %s already declared" % word)
     #if local_spellings:
     #    print "%s: with this file's local spellings: %s" % (fn,local_spellings)
 
