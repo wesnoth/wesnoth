@@ -2210,7 +2210,7 @@ namespace {
 		vconfig filter = cfg.child("filter");
 		if(filter.null()) {
 			filter = &empty_filter;
-			lg::wml_error << _("[store_unit] missing required [filter] tag\n");
+			lg::wml_error << "[store_unit] missing required [filter] tag\n";
 		}
 
 		std::string variable = cfg["variable"];
