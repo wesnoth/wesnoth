@@ -1316,7 +1316,10 @@ def spellcheck(fn, d):
     #if local_spellings:
     #    print "%s: slated for removal: %s" % (fn, local_spellings)
     for word in local_spellings:
-        d.remove_from_session(word)
+        try:
+            d.remove_from_session(word)
+        except AttributeError:
+            print "Caught AttributeError when trying to remove %s from dict" % word
 
 vctypes = (".svn", ".git")
 
