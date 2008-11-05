@@ -262,6 +262,7 @@ unit_movetypes = []
 races = []
 unit_races = []
 
+# Attributes that should have translation marks
 translatables = (\
                "abbrev",
                "cannot_use_message",
@@ -284,13 +285,14 @@ translatables = (\
                "set_description",
                "story",
                "summary",
-               "text",
+               "text", 
                "title",
                "title2",
                "tooltip",
                "translator_comment",
                "user_team_name",
                )
+
 spellcheck_these = (\
     "cannot_use_message=",
     "caption=",
@@ -300,7 +302,7 @@ spellcheck_these = (\
     "note=",
     "story=",
     "summary=",
-    #"text=",
+    "text=",
     "title=",
     "title2=",
     "tooltip=",
@@ -1199,10 +1201,25 @@ def spellcheck(fn, d):
                     else:
                         print nav.whereami(), " %s already declared" % word
     #if local_spellings:
-    #    print "%s: with this file's local spellings: %s" % (fn, local_spellings)
-    for nav in WmlIterator(filename=fn):
+    #    print "%s: with this file's local spellings: %s" % (fn,local_spellings)
+
+    def printError(nav, *misc):
+        """Emit an errror locator compatible with Emacs compilation mode."""
+        if nav.lineno == -1:
+            print >>sys.stderr, '"%s":' % nav.fname
+        else:
+            print >>sys.stderr, '"%s", line %d:' % (nav.fname, nav.lineno+1)
+        for item in misc:
+            print >>sys.stderr, item,
+        print >>sys.stderr #terminate line
+
+    for nav in WmlIterator(filename=fn, onerr=printError):
         # Spell-check message and story parts
         if nav.element in spellcheck_these:
+            # Special case, beyond us until we can do better filtering.
+            if nav.element == 'text=' and '[help]' in nav.ancestors():
+                continue
+            # Spell-check the attruibute value
             (key, prefix, value, comment) = parse_attribute(nav.text)
             if "no spellcheck" in comment:
                 continue
@@ -1225,6 +1242,9 @@ def spellcheck(fn, d):
                 value = re.sub("<[0-9,]+>", "", value)
             # Fold continued lines
             value = re.sub(r'" *\+\s*_ *"', "", value)
+            # It would be nice to use pyenchant's tokenizer here, but we can't
+            # because it wants to strip the trailing quotes we need to spot
+            # the Dwarcvish-accent words.
             for token in value.split():
                 # Try it with simple lowercasing first
                 lowered = token.lower()
@@ -1283,7 +1303,7 @@ def spellcheck(fn, d):
                     continue
                 if re.match("s+h+", lowered):
                     continue
-                print nav.whereami(), 'possible misspelling "%s"' % token
+                nav.onerr(nav, 'possible misspelling "%s"' % token)
         # Take exceptions from the id fields
         if nav.element == "id=":
             (key, prefix, value, comment) = parse_attribute(nav.text)

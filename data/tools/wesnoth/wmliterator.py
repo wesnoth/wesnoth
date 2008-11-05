@@ -92,7 +92,7 @@ Important Attributes:
            always 1, unless text contains a multi-line quoted string
     lineno - a zero-based line index marking where this text begins
     """
-    def __init__(self, lines=None, filename=None, begin=-1, endScope=None):
+    def __init__(self, lines=None, filename=None, begin=-1, onerr=None):
         "Initialize a new WmlIterator."
         self.fname = filename
         if lines is None:
@@ -103,8 +103,9 @@ Important Attributes:
                     lines = ifp.readlines()
                     ifp.close()
                 except Exception:
-                    self.printError('error opening file')
+                    self.onerr(self, 'error opening file')
         self.lines = lines
+        self.onerr = onerr
         self.reset()
         self.seek(begin)
 
@@ -123,7 +124,7 @@ Important Attributes:
                 endquote = text.find('"', beginofend)
                 if endquote < 0:
                     if self.lineno + span >= len(lines):
-                        self.printError('reached EOF due to unterminated string at line', self.lineno+1)
+                        self.onerr(self, 'reached EOF due to unterminated string')
                         return text, span
                     text += lines[self.lineno + span]
                     span += 1
@@ -150,7 +151,7 @@ Important Attributes:
                 if ((isOpener(elem) and closerElement != '[/'+elem[1:]
                      and '+'+closerElement != elem[1]+'[/'+elem[2:])
                 or (elem.startswith('{') and closerElement.find('macro')<0)):
-                    self.printError('reached', closerElement, 'before closing scope', elem)
+                    self.onerr(self, 'reached', closerElement, 'before closing scope', elem)
                     scopes.append(closed) # to reduce additional errors (hopefully)
             return True
         except IndexError:
@@ -244,16 +245,9 @@ Important Attributes:
                 resultElements.append(elem)
         return resultElements, openedScopes
 
-    def printError(self, *misc):
-        """Print error associated with a given file."""
-        print >>sys.stderr, self.whereami(),
-        for item in misc:
-            print >>sys.stderr, item,
-        print >>sys.stderr #terminate line
-
     def printScopeError(self, elementType):
         """Print out warning if a scope was unable to close"""
-        self.printError('attempt to close empty scope at', elementType)
+        self.onerr(self, 'attempt to close empty scope at', elementType)
 
     def __iter__(self):
         """The magic iterator method"""
@@ -294,13 +288,6 @@ Important Attributes:
             self.next()
         return self
 
-    def whereami(self):
-        """Emit a locator string compatible with Emacs compilation mode."""
-        if self.lineno == -1:
-            return '"%s":' % self.fname
-        else:
-            return '"%s", line %d:' % (self.fname, self.lineno+1)
-
     def ancestors(self):
         """Return a list of tags enclosing this location, outermost first."""
         return tuple(map(lambda x: x.element, self.scopes))
@@ -337,7 +324,7 @@ Important Attributes:
         note: May raise StopIteration"""
         if not self.hasNext():
             if self.scopes:
-                self.printError("reached EOF with open scopes", self.scopes)
+                self.onerr(self, "reached EOF with open scopes", self.scopes)
             raise StopIteration
         self.lineno = self.lineno + self.span
         self.text, self.span = self.parseQuotes(self.lines)
@@ -364,6 +351,30 @@ Important Attributes:
         scopeItor = self.scopes[-1].copy()
         scopeItor.endScope = self.scopes[-1]
         return scopeItor
+
+
+if 0:
+     # This is Sapient's original error hook.  If you use it, pleaae
+     # paste it into your application so it doesn't have to be carried
+     # by all .pyc copies nade from this module.  You probably also
+     # want to change the message prefix from "wmliterator" to
+     # something else.     
+     def printErrorNoDups(nav, *misc):
+        """Print error associated with a given file; avoid printing duplicates"""
+        if nav.fname:
+            if not hasattr(nav, 'silenceErrors'):
+                nav.silenceErrors = {}
+            silenceValue = ' '.join(map(str, misc))
+            if nav.fname not in silenceErrors:
+                print >>sys.stderr, nav.fname
+                silenceErrors[nav.fname] = set()
+            elif silenceValue in silenceErrors[nav.fname]:
+                return # do not print a duplicate error for this file
+            silenceErrors[nav.fname].add(silenceValue)
+        print >>sys.stderr, 'wmliterator:',
+        for item in misc:
+            print >>sys.stderr, item,
+        print >>sys.stderr #terminate line
 
 if __name__ == '__main__':
     """Perform a test run on a file or directory"""
