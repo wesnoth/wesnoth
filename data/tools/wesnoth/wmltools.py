@@ -375,11 +375,16 @@ class CrossRef:
                         continue
                     if line.strip().startswith("#define"):
                         tokens = line.split()
-                        name = tokens[1]
-                        here = Reference(namespace, filename, n+1, line, args=tokens[2:])
-                        here.hash = md5.new()
-                        here.docstring = line.lstrip()[8:]	# Strip off #define_
-                        state = "macro_header"
+                        if len(tokens) < 2:
+                            print >>sys.stderr, \
+                                  '"%s", line %d: malformed #define' \
+                                  % (filename, n+1)
+                        else:
+                            name = tokens[1]
+                            here = Reference(namespace, filename, n+1, line, args=tokens[2:])
+                            here.hash = md5.new()
+                            here.docstring = line.lstrip()[8:]	# Strip off #define_
+                            state = "macro_header"
                         continue
                     elif state != 'outside' and line.strip().endswith("#enddef"):
                         here.hash.update(line)
