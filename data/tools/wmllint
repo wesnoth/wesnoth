@@ -1185,8 +1185,19 @@ def spellcheck(fn, d):
     #if local_spellings:
     #    print "%s: inherited local spellings: %s" % (fn, local_spellings)
     map(d.add_to_session, local_spellings)
+
+    def printError(nav, *misc):
+        """Emit an errror locator compatible with Emacs compilation mode."""
+        if nav.lineno == -1:
+            print >>sys.stderr, '"%s":' % nav.fname
+        else:
+            print >>sys.stderr, '"%s", line %d:' % (nav.fname, nav.lineno+1)
+        for item in misc:
+            print >>sys.stderr, item,
+        print >>sys.stderr #terminate line
+
     # Process this individual file
-    for nav in WmlIterator(filename=fn):
+    for nav in WmlIterator(filename=fn, onerr=printError):
         #print "element=%s, text=%s" % (nav.element, `nav.text`)
         # Recognize local spelling exceptions
         if not nav.element and "#" in nav.text:
@@ -1202,16 +1213,6 @@ def spellcheck(fn, d):
                         print nav.whereami(), " %s already declared" % word
     #if local_spellings:
     #    print "%s: with this file's local spellings: %s" % (fn,local_spellings)
-
-    def printError(nav, *misc):
-        """Emit an errror locator compatible with Emacs compilation mode."""
-        if nav.lineno == -1:
-            print >>sys.stderr, '"%s":' % nav.fname
-        else:
-            print >>sys.stderr, '"%s", line %d:' % (nav.fname, nav.lineno+1)
-        for item in misc:
-            print >>sys.stderr, item,
-        print >>sys.stderr #terminate line
 
     for nav in WmlIterator(filename=fn, onerr=printError):
         # Spell-check message and story parts
