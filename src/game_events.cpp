@@ -149,7 +149,7 @@ static void show_wml_errors()
 	lg::wml_error.clear();
 
 	// Show the messages collected
-	std::string caption = "Deprecated WML found";
+	std::string caption = "Invalid WML found";
 	for(std::map<std::string, int>::const_iterator itor = messages.begin();
 			itor != messages.end(); ++itor) {
 
