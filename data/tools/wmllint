@@ -1216,7 +1216,9 @@ def spellcheck(fn, d):
     for nav in WmlIterator(filename=fn, onerr=printError):
         # Spell-check message and story parts
         if nav.element in spellcheck_these:
-            # Special case, beyond us until we can do better filtering.
+            # Special case, beyond us until we can do better filtering..
+            # There is lots of strange stuff in thext- attributes in the
+            # helpfile(s).
             if nav.element == 'text=' and '[help]' in nav.ancestors():
                 continue
             # Spell-check the attruibute value
@@ -1244,7 +1246,7 @@ def spellcheck(fn, d):
             value = re.sub(r'" *\+\s*_ *"', "", value)
             # It would be nice to use pyenchant's tokenizer here, but we can't
             # because it wants to strip the trailing quotes we need to spot
-            # the Dwarcvish-accent words.
+            # the Dwarvish-accent words.
             for token in value.split():
                 # Try it with simple lowercasing first
                 lowered = token.lower()
@@ -1257,7 +1259,7 @@ def spellcheck(fn, d):
                 if not lowered or lowered.startswith("$"):
                     continue
                 # Suffix handling. Done in two passes because some
-                # Dwrven dialect words end in a single quote
+                # Dwarvish dialect words end in a single quote
                 while lowered and lowered[-1] in "_-*).,:;?!& \t":
                     lowered = lowered[:-1]
                 if lowered and d.check(lowered):
