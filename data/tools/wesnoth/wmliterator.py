@@ -48,32 +48,6 @@ def wmlfindin(element, scopeElement, wmlItor):
                 return itor
     return None
 
-def parseQuotes(lines, fname, lineno):
-    """Return the line or multiline text if a quote spans multiple lines"""
-    text = lines[lineno]
-    span = 1
-    begincomment = text.find('#')
-    if begincomment < 0:
-        begincomment = None
-    beginquote = text[:begincomment].find('"')
-    while beginquote >= 0:
-        endquote = -1
-        beginofend = beginquote+1
-        while endquote < 0:
-            endquote = text.find('"', beginofend)
-            if endquote < 0:
-                if lineno + span >= len(lines):
-                    printError(fname, 'reached EOF due to unterminated string at line', lineno+1)
-                    return text, span
-                text += lines[lineno + span]
-                span += 1
-                beginofend = text.rfind('\n', beginofend, len(text)-1)
-        begincomment = text.find('#', endquote+1)
-        if begincomment < 0:
-            begincomment = None
-        beginquote = text[:begincomment].find('"', endquote+1)
-    return text, span
-
 def isDirective(elem):
     "Identify things that shouldn't be indented."
     if isinstance(elem, WmlIterator):
@@ -152,6 +126,32 @@ Important Attributes:
         self.fname = filename
         self.reset()
         self.seek(begin)
+
+    def parseQuotes(self, lines):
+        """Return the line or multiline text if a quote spans multiple lines"""
+        text = lines[self.lineno]
+        span = 1
+        begincomment = text.find('#')
+        if begincomment < 0:
+            begincomment = None
+        beginquote = text[:begincomment].find('"')
+        while beginquote >= 0:
+            endquote = -1
+            beginofend = beginquote+1
+            while endquote < 0:
+                endquote = text.find('"', beginofend)
+                if endquote < 0:
+                    if self.lineno + span >= len(lines):
+                        printError(self.fname, 'reached EOF due to unterminated string at line', self.lineno+1)
+                        return text, span
+                    text += lines[self.lineno + span]
+                    span += 1
+                    beginofend = text.rfind('\n', beginofend, len(text)-1)
+            begincomment = text.find('#', endquote+1)
+            if begincomment < 0:
+                begincomment = None
+            beginquote = text[:begincomment].find('"', endquote+1)
+        return text, span
 
     def closeScope(self, scopes, closerElement):
         """Close the most recently opened scope. Return false if not enough scopes.
@@ -345,7 +345,7 @@ Important Attributes:
                 printError(self.fname, "reached EOF with open scopes", self.scopes)
             raise StopIteration
         self.lineno = self.lineno + self.span
-        self.text, self.span = parseQuotes(self.lines, self.fname, self.lineno)
+        self.text, self.span = self.parseQuotes(self.lines)
         self.scopes.extend(self.nextScopes)
         self.element, nextScopes = self.parseElements(self.text)
         self.nextScopes = []
