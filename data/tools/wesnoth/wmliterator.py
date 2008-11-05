@@ -136,94 +136,6 @@ def printScopeError(elementType, fname, lineno):
     """Print out warning if a scope was unable to close"""
     printError(fname, 'attempt to close empty scope at', elementType, 'line', lineno+1)
 
-def parseElements(text, fname, lineno, scopes):
-    """Remove any closed scopes, return a list of element names
-    and list of new unclosed scopes    
-Element Types:
-    tags: one of "[tag_name]" or "[/tag_name]"
-        [tag_name] - opens a scope
-        [/tag_name] - closes a scope
-    keys: either "key=" or ("key1=", "key2=") for multi-assignment
-        key= - does not affect the scope
-        key1,key2= - multi-assignment returns multiple elements
-    directives: one of "#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"
-        #ifdef - opens a scope
-        #ifndef - opens a scope
-        #else - closes a scope, also opens a new scope
-        #endif - closes a scope
-        #define - opens a scope
-        #enddef - closes a scope
-    macro calls: "{MACRO_NAME}"
-        {MACRO_NAME - opens a scope
-        } - closes a scope (not an element)
-    """
-    closeMacroType = 'end of macro'
-    elements = [] #(elementType, sortPos, scopeDelta)
-    # first remove any quoted strings
-    beginquote = text.find('"')
-    while beginquote >= 0:
-        endquote = text.find('"', beginquote+1)
-        if endquote < 0:
-            text = text[:beginquote]
-            beginquote = -1 #terminate loop
-        else:
-            text = text[:beginquote] + text[endquote+1:]
-            beginquote = text.find('"')
-    # next remove any comments
-    text = text.lstrip()
-    commentSearch = 1
-    if text.startswith('#ifdef'):
-        return (['#ifdef'],)*2
-    elif text.startswith('#ifndef'):
-        return (['#ifndef'],)*2
-    elif text.startswith('#else'):
-        if not closeScope(scopes, '#else', fname, lineno):
-            printScopeError('#else', fname, lineno)
-        return (['#else'],)*2
-    elif text.startswith('#endif'):
-        if not closeScope(scopes, '#endif', fname, lineno):
-            printScopeError('#endif', fname, lineno)            
-        return ['#endif'], []
-    elif text.startswith('#define'):
-        return (['#define'],)*2
-    elif text.find('#enddef') >= 0:
-        elements.append(('#enddef', text.find('#enddef'), -1))
-    else:
-        commentSearch = 0
-    begincomment = text.find('#', commentSearch)
-    if begincomment >= 0:
-        text = text[:begincomment]
-    #now find elements in a loop
-    for m in tagPattern.finditer(text):
-        delta = 1
-        if isCloser(m.group(2)):
-            delta = -1
-        elements.append((m.group(2), m.start(), delta))
-    for m in keyPattern.finditer(text):
-        for i, k in enumerate(keySplit.split(m.group(0))):
-            if k:
-                elements.append((k+'=', m.start()+i, 0))
-    for m in macroOpenPattern.finditer(text):
-        elements.append((m.group(1)+'}', m.start(), 1))
-    for m in macroClosePattern.finditer(text):
-        elements.append((closeMacroType, m.start(), -1))
-    #sort by start position
-    elements.sort(key=lambda x:x[1])
-    resultElements = []
-    openedScopes = []
-    for elem, sortPos, scopeDelta in elements:
-        while scopeDelta < 0:
-            if not(closeScope(openedScopes, elem, fname, lineno)\
-            or closeScope(scopes, elem, fname, lineno)):
-                printScopeError(elem, fname, lineno)
-            scopeDelta += 1
-        while scopeDelta > 0:
-            openedScopes.append(elem)
-            scopeDelta -= 1
-        if elem != closeMacroType:
-            resultElements.append(elem)
-    return resultElements, openedScopes
-
 class WmlIterator(object):
     """Return an iterable WML navigation object.
     Initialize with a list of lines or a file; if the the line list is
@@ -262,6 +174,94 @@ Important Attributes:
         self.fname = filename
         self.reset()
         self.seek(begin)
+
+    def parseElements(self, text):
+        """Remove any closed scopes, return a list of element names
+        and list of new unclosed scopes    
+    Element Types:
+        tags: one of "[tag_name]" or "[/tag_name]"
+            [tag_name] - opens a scope
+            [/tag_name] - closes a scope
+        keys: either "key=" or ("key1=", "key2=") for multi-assignment
+            key= - does not affect the scope
+            key1,key2= - multi-assignment returns multiple elements
+        directives: one of "#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"
+            #ifdef - opens a scope
+            #ifndef - opens a scope
+            #else - closes a scope, also opens a new scope
+            #endif - closes a scope
+            #define - opens a scope
+            #enddef - closes a scope
+        macro calls: "{MACRO_NAME}"
+            {MACRO_NAME - opens a scope
+            } - closes a scope (not an element)
+        """
+        closeMacroType = 'end of macro'
+        elements = [] #(elementType, sortPos, scopeDelta)
+        # first remove any quoted strings
+        beginquote = text.find('"')
+        while beginquote >= 0:
+            endquote = text.find('"', beginquote+1)
+            if endquote < 0:
+                text = text[:beginquote]
+                beginquote = -1 #terminate loop
+            else:
+                text = text[:beginquote] + text[endquote+1:]
+                beginquote = text.find('"')
+        # next remove any comments
+        text = text.lstrip()
+        commentSearch = 1
+        if text.startswith('#ifdef'):
+            return (['#ifdef'],)*2
+        elif text.startswith('#ifndef'):
+            return (['#ifndef'],)*2
+        elif text.startswith('#else'):
+            if not closeScope(self.scopes, '#else', self.fname, self.lineno):
+                printScopeError('#else', self.fname, self.lineno)
+            return (['#else'],)*2
+        elif text.startswith('#endif'):
+            if not closeScope(self.scopes, '#endif', self.fname, self.lineno):
+                printScopeError('#endif', self.fname, self.lineno)            
+            return ['#endif'], []
+        elif text.startswith('#define'):
+            return (['#define'],)*2
+        elif text.find('#enddef') >= 0:
+            elements.append(('#enddef', text.find('#enddef'), -1))
+        else:
+            commentSearch = 0
+        begincomment = text.find('#', commentSearch)
+        if begincomment >= 0:
+            text = text[:begincomment]
+        #now find elements in a loop
+        for m in tagPattern.finditer(text):
+            delta = 1
+            if isCloser(m.group(2)):
+                delta = -1
+            elements.append((m.group(2), m.start(), delta))
+        for m in keyPattern.finditer(text):
+            for i, k in enumerate(keySplit.split(m.group(0))):
+                if k:
+                    elements.append((k+'=', m.start()+i, 0))
+        for m in macroOpenPattern.finditer(text):
+            elements.append((m.group(1)+'}', m.start(), 1))
+        for m in macroClosePattern.finditer(text):
+            elements.append((closeMacroType, m.start(), -1))
+        #sort by start position
+        elements.sort(key=lambda x:x[1])
+        resultElements = []
+        openedScopes = []
+        for elem, sortPos, scopeDelta in elements:
+            while scopeDelta < 0:
+                if not(closeScope(openedScopes, elem, self.fname, self.lineno)\
+                or closeScope(self.scopes, elem, self.fname, self.lineno)):
+                    printScopeError(elem, self.fname, self.lineno)
+                scopeDelta += 1
+            while scopeDelta > 0:
+                openedScopes.append(elem)
+                scopeDelta -= 1
+            if elem != closeMacroType:
+                resultElements.append(elem)
+        return resultElements, openedScopes
 
     def __iter__(self):
         """The magic iterator method"""
@@ -347,7 +347,7 @@ Important Attributes:
         self.lineno = self.lineno + self.span
         self.text, self.span = parseQuotes(self.lines, self.fname, self.lineno)
         self.scopes.extend(self.nextScopes)
-        self.element, nextScopes = parseElements(self.text, self.fname, self.lineno, self.scopes)
+        self.element, nextScopes = self.parseElements(self.text)
         self.nextScopes = []
         for elem in nextScopes:
 	    # remember scopes by storing a copy of the iterator
