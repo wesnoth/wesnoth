@@ -95,28 +95,6 @@ def isOpener(elem):
         elem = elem.element
     return elem.startswith("[") and not isCloser(elem)
 
-def closeScope(scopes, closerElement, fname, lineno):
-    """Close the most recently opened scope. Return false if not enough scopes.
-    note: directives close all the way back to the last open directive
-    non-directives cannot close a directive and will no-op in that case."""
-    try:
-        if isDirective(closerElement):
-            while not isDirective(scopes.pop()):
-                pass
-        elif not isDirective(scopes[-1]):
-            closed = scopes.pop()
-            elem = closed
-            if isinstance(closed, WmlIterator):
-                elem = closed.element
-            if ((isOpener(elem) and closerElement != '[/'+elem[1:]
-                 and '+'+closerElement != elem[1]+'[/'+elem[2:])
-            or (elem.startswith('{') and closerElement.find('macro')<0)):
-                printError(fname, 'reached', closerElement, 'at line', lineno+1, 'before closing scope', elem, '(%d)'%lineno)
-                scopes.append(closed) # to reduce additional errors (hopefully)
-        return True
-    except IndexError:
-        return False
-
 def printError(fname, *misc):
     """Print error associated with a given file; avoid printing duplicates"""
     if fname:
@@ -175,6 +153,28 @@ Important Attributes:
         self.reset()
         self.seek(begin)
 
+    def closeScope(self, scopes, closerElement):
+        """Close the most recently opened scope. Return false if not enough scopes.
+        note: directives close all the way back to the last open directive
+        non-directives cannot close a directive and will no-op in that case."""
+        try:
+            if isDirective(closerElement):
+                while not isDirective(scopes.pop()):
+                    pass
+            elif not isDirective(scopes[-1]):
+                closed = scopes.pop()
+                elem = closed
+                if isinstance(closed, WmlIterator):
+                    elem = closed.element
+                if ((isOpener(elem) and closerElement != '[/'+elem[1:]
+                     and '+'+closerElement != elem[1]+'[/'+elem[2:])
+                or (elem.startswith('{') and closerElement.find('macro')<0)):
+                    printError(self.fname, 'reached', closerElement, 'at line', self.lineno+1, 'before closing scope', elem, '(%d)'% self.lineno)
+                    scopes.append(closed) # to reduce additional errors (hopefully)
+            return True
+        except IndexError:
+            return False
+
     def parseElements(self, text):
         """Remove any closed scopes, return a list of element names
         and list of new unclosed scopes    
@@ -216,11 +216,11 @@ Important Attributes:
         elif text.startswith('#ifndef'):
             return (['#ifndef'],)*2
         elif text.startswith('#else'):
-            if not closeScope(self.scopes, '#else', self.fname, self.lineno):
+            if not self.closeScope(self.scopes, '#else'):
                 printScopeError('#else', self.fname, self.lineno)
             return (['#else'],)*2
         elif text.startswith('#endif'):
-            if not closeScope(self.scopes, '#endif', self.fname, self.lineno):
+            if not self.closeScope(self.scopes, '#endif'):
                 printScopeError('#endif', self.fname, self.lineno)            
             return ['#endif'], []
         elif text.startswith('#define'):
@@ -252,8 +252,8 @@ Important Attributes:
         openedScopes = []
         for elem, sortPos, scopeDelta in elements:
             while scopeDelta < 0:
-                if not(closeScope(openedScopes, elem, self.fname, self.lineno)\
-                or closeScope(self.scopes, elem, self.fname, self.lineno)):
+                if not(self.closeScope(openedScopes, elem)\
+                        or self.closeScope(self.scopes, elem)):
                     printScopeError(elem, self.fname, self.lineno)
                 scopeDelta += 1
             while scopeDelta > 0:
