@@ -291,6 +291,21 @@ translatables = (\
                "translator_comment",
                "user_team_name",
                )
+spellcheck_these = (\
+    "cannot_use_message=",
+    "caption=",
+    "description=",
+    "description_inactive=",
+    "message=",
+    "note=",
+    "story=",
+    "summary=",
+    #"text=",
+    #"title=",
+    "title2=",
+    "tooltip=",
+    )
+
 
 # Declare a few common English contractions that pyenchant
 # inexplicably knows nothing of.
@@ -1186,7 +1201,7 @@ def spellcheck(fn, d):
     #    print "%s: with this file's local spellings: %s" % (fn, local_spellings)
     for nav in WmlIterator(filename=fn):
         # Spell-check message and story parts
-        if nav.element in ("message=", "story=", "description="):
+        if nav.element in spellcheck_these:
             (key, prefix, value, comment) = parse_attribute(nav.text)
             if "no spellcheck" in comment:
                 continue
