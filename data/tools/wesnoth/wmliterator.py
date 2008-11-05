@@ -69,25 +69,6 @@ def isOpener(elem):
         elem = elem.element
     return elem.startswith("[") and not isCloser(elem)
 
-def printError(fname, *misc):
-    """Print error associated with a given file; avoid printing duplicates"""
-    if fname:
-        silenceValue = ' '.join(map(str, misc))
-        if fname not in silenceErrors:
-            print >>sys.stderr, fname
-            silenceErrors[fname] = set()
-        elif silenceValue in silenceErrors[fname]:
-            return # do not print a duplicate error for this file
-        silenceErrors[fname].add(silenceValue)
-    print >>sys.stderr, 'wmliterator:',
-    for item in misc:
-        print >>sys.stderr, item,
-    print >>sys.stderr #terminate line
-        
-def printScopeError(elementType, fname, lineno):
-    """Print out warning if a scope was unable to close"""
-    printError(fname, 'attempt to close empty scope at', elementType, 'line', lineno+1)
-
 class WmlIterator(object):
     """Return an iterable WML navigation object.
     Initialize with a list of lines or a file; if the the line list is
@@ -113,17 +94,17 @@ Important Attributes:
     """
     def __init__(self, lines=None, filename=None, begin=-1, endScope=None):
         "Initialize a new WmlIterator."
+        self.fname = filename
         if lines is None:
             lines = []
             if filename:
                 try:
-                    ifp = open(filename)
+                    ifp = open(self.fname)
                     lines = ifp.readlines()
                     ifp.close()
                 except Exception:
-                    printError(filename, 'error opening file')
+                    self.printError('error opening file')
         self.lines = lines
-        self.fname = filename
         self.reset()
         self.seek(begin)
 
@@ -142,7 +123,7 @@ Important Attributes:
                 endquote = text.find('"', beginofend)
                 if endquote < 0:
                     if self.lineno + span >= len(lines):
-                        printError(self.fname, 'reached EOF due to unterminated string at line', self.lineno+1)
+                        self.printError('reached EOF due to unterminated string at line', self.lineno+1)
                         return text, span
                     text += lines[self.lineno + span]
                     span += 1
@@ -169,7 +150,7 @@ Important Attributes:
                 if ((isOpener(elem) and closerElement != '[/'+elem[1:]
                      and '+'+closerElement != elem[1]+'[/'+elem[2:])
                 or (elem.startswith('{') and closerElement.find('macro')<0)):
-                    printError(self.fname, 'reached', closerElement, 'at line', self.lineno+1, 'before closing scope', elem, '(%d)'% self.lineno)
+                    self.printError('reached', closerElement, 'at line', self.lineno+1, 'before closing scope', elem, '(%d)'% self.lineno)
                     scopes.append(closed) # to reduce additional errors (hopefully)
             return True
         except IndexError:
@@ -217,12 +198,12 @@ Important Attributes:
             return (['#ifndef'],)*2
         elif text.startswith('#else'):
             if not self.closeScope(self.scopes, '#else'):
-                printScopeError('#else', self.fname, self.lineno)
+                self.printScopeError('#else')
             return (['#else'],)*2
         elif text.startswith('#endif'):
             if not self.closeScope(self.scopes, '#endif'):
-                printScopeError('#endif', self.fname, self.lineno)            
-            return ['#endif'], []
+                self.printScopeError('#endif')
+                return ['#endif'], []
         elif text.startswith('#define'):
             return (['#define'],)*2
         elif text.find('#enddef') >= 0:
@@ -254,7 +235,7 @@ Important Attributes:
             while scopeDelta < 0:
                 if not(self.closeScope(openedScopes, elem)\
                         or self.closeScope(self.scopes, elem)):
-                    printScopeError(elem, self.fname, self.lineno)
+                    self.printScopeError(elem)
                 scopeDelta += 1
             while scopeDelta > 0:
                 openedScopes.append(elem)
@@ -262,6 +243,25 @@ Important Attributes:
             if elem != closeMacroType:
                 resultElements.append(elem)
         return resultElements, openedScopes
+
+    def printError(self, *misc):
+        """Print error associated with a given file; avoid printing duplicates"""
+        if self.fname:
+            silenceValue = ' '.join(map(str, misc))
+            if self.fname not in silenceErrors:
+                print >>sys.stderr, self.fname
+                silenceErrors[self.fname] = set()
+            elif silenceValue in silenceErrors[self.fname]:
+                return # do not print a duplicate error for this file
+            silenceErrors[self.fname].add(silenceValue)
+        print >>sys.stderr, 'wmliterator:',
+        for item in misc:
+            print >>sys.stderr, item,
+        print >>sys.stderr #terminate line
+
+    def printScopeError(self, elementType):
+        """Print out warning if a scope was unable to close"""
+        self.printError('attempt to close empty scope at', elementType, 'line', self.lineno+1)
 
     def __iter__(self):
         """The magic iterator method"""
@@ -342,7 +342,7 @@ Important Attributes:
         note: May raise StopIteration"""
         if not self.hasNext():
             if self.scopes:
-                printError(self.fname, "reached EOF with open scopes", self.scopes)
+                self.printError("reached EOF with open scopes", self.scopes)
             raise StopIteration
         self.lineno = self.lineno + self.span
         self.text, self.span = self.parseQuotes(self.lines)
