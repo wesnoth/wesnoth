@@ -150,7 +150,7 @@ Important Attributes:
                 if ((isOpener(elem) and closerElement != '[/'+elem[1:]
                      and '+'+closerElement != elem[1]+'[/'+elem[2:])
                 or (elem.startswith('{') and closerElement.find('macro')<0)):
-                    self.printError('reached', closerElement, 'at line', self.lineno+1, 'before closing scope', elem, '(%d)'% self.lineno)
+                    self.printError('reached', closerElement, 'before closing scope', elem)
                     scopes.append(closed) # to reduce additional errors (hopefully)
             return True
         except IndexError:
@@ -245,23 +245,15 @@ Important Attributes:
         return resultElements, openedScopes
 
     def printError(self, *misc):
-        """Print error associated with a given file; avoid printing duplicates"""
-        if self.fname:
-            silenceValue = ' '.join(map(str, misc))
-            if self.fname not in silenceErrors:
-                print >>sys.stderr, self.fname
-                silenceErrors[self.fname] = set()
-            elif silenceValue in silenceErrors[self.fname]:
-                return # do not print a duplicate error for this file
-            silenceErrors[self.fname].add(silenceValue)
-        print >>sys.stderr, 'wmliterator:',
+        """Print error associated with a given file."""
+        print >>sys.stderr, self.whereami(),
         for item in misc:
             print >>sys.stderr, item,
         print >>sys.stderr #terminate line
 
     def printScopeError(self, elementType):
         """Print out warning if a scope was unable to close"""
-        self.printError('attempt to close empty scope at', elementType, 'line', self.lineno+1)
+        self.printError('attempt to close empty scope at', elementType)
 
     def __iter__(self):
         """The magic iterator method"""
@@ -304,7 +296,10 @@ Important Attributes:
 
     def whereami(self):
         """Emit a locator string compatible with Emacs compilation mode."""
-        return '"%s", line %d:' % (self.fname, self.lineno+1)
+        if self.lineno == -1:
+            return '"%s":' % self.fname
+        else:
+            return '"%s", line %d:' % (self.fname, self.lineno+1)
 
     def ancestors(self):
         """Return a list of tags enclosing this location, outermost first."""
