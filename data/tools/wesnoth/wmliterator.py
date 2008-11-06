@@ -74,6 +74,11 @@ class WmlIterator(object):
     Initialize with a list of lines or a file; if the the line list is
     empty and the filename is specified, lines will be read from the file.
 
+    This is meant to be subclassed.  It needs a printError method  but
+    does not have one.  The method should take any number of string arguments,
+    compose them into an error notification, and deliver it.  It may fire
+    more than once during the instance lifetime.
+
     Note: if changes are made to lines while iterating, this may produce
     unexpected results. In such case, seek() to the linenumber of a
     scope behind where changes were made.
@@ -92,7 +97,7 @@ Important Attributes:
            always 1, unless text contains a multi-line quoted string
     lineno - a zero-based line index marking where this text begins
     """
-    def __init__(self, lines=None, filename=None, begin=-1, onerr=None):
+    def __init__(self, lines=None, filename=None, begin=-1):
         "Initialize a new WmlIterator."
         self.fname = filename
         if lines is None:
@@ -103,9 +108,8 @@ Important Attributes:
                     lines = ifp.readlines()
                     ifp.close()
                 except Exception:
-                    self.onerr(self, 'error opening file')
+                    self.printError('error opening file')
         self.lines = lines
-        self.onerr = onerr
         self.reset()
         self.seek(begin)
 
@@ -124,7 +128,7 @@ Important Attributes:
                 endquote = text.find('"', beginofend)
                 if endquote < 0:
                     if self.lineno + span >= len(lines):
-                        self.onerr(self, 'reached EOF due to unterminated string')
+                        self.printError('reached EOF due to unterminated string')
                         return text, span
                     text += lines[self.lineno + span]
                     span += 1
@@ -151,7 +155,7 @@ Important Attributes:
                 if ((isOpener(elem) and closerElement != '[/'+elem[1:]
                      and '+'+closerElement != elem[1]+'[/'+elem[2:])
                 or (elem.startswith('{') and closerElement.find('macro')<0)):
-                    self.onerr(self, 'reached', closerElement, 'before closing scope', elem)
+                    self.printError('reached', closerElement, 'before closing scope', elem)
                     scopes.append(closed) # to reduce additional errors (hopefully)
             return True
         except IndexError:
@@ -247,7 +251,7 @@ Important Attributes:
 
     def printScopeError(self, elementType):
         """Print out warning if a scope was unable to close"""
-        self.onerr(self, 'attempt to close empty scope at', elementType)
+        self.printError('attempt to close empty scope at', elementType)
 
     def __iter__(self):
         """The magic iterator method"""
@@ -324,7 +328,7 @@ Important Attributes:
         note: May raise StopIteration"""
         if not self.hasNext():
             if self.scopes:
-                self.onerr(self, "reached EOF with open scopes", self.scopes)
+                self.printError("reached EOF with open scopes", self.scopes)
             raise StopIteration
         self.lineno = self.lineno + self.span
         self.text, self.span = self.parseQuotes(self.lines)
