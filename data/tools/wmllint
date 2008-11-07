@@ -347,7 +347,7 @@ class WmllintIterator(WmlIterator):
 
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
-    for nav in WmllintIterator(filename, lines):
+    for nav in WmllintIterator(lines, filename):
         # Check for things marked translated that aren't strings
         if "_" in nav.text and not "wmllint: ignore" in nav.text:
             m = re.search(r'[=(]\s*_\s+("?)', nav.text)
@@ -358,43 +358,23 @@ def sanity_check(filename, lines):
     # Sanity-check abilities and traits against notes macros.
     # Note: This check is disabled on units derived via [base_unit].
     # Also, build dictionaries of unit movement types and races
-    in_unit_type = False
-    in_theme = False
-    in_filter_attack = False
-    in_base_unit = False
-    unit_race = None
-    for i in range(len(lines)):
-        if "[filter_attack]" in lines[i]:
-            in_filter_attack = True
-            continue
-        elif "[/filter_attack]" in lines[i]:
-            in_filter_attack = False
-            continue
-        if "[base_unit]" in lines[i]:
-            in_base_unit = True
-            continue
-        elif "[/base_unit]" in lines[i]:
-            in_base_unit = False
-            continue
-        elif "[theme]" in lines[i]:
-            in_theme = True
-            continue
-        elif "[/theme]" in lines[i]:
-            in_theme = False
-            continue
-        elif "[unit_type]" in lines[i]:
+    in_unit_type = None
+    for nav in WmllintIterator(lines, filename):
+        #print "Element = %s, text = %s" % (nav.element, `nav.text`)
+        if nav.element == "[unit_type]":
+            unit_race = ""
             unit_id = ""
             base_unit = ""
             traits = []
             notes = []
             has_special_notes = False
-            in_unit_type = i+1
+            in_unit_type = nav.lineno+1
             continue
-        elif "[/unit_type]" in lines[i]:
+        elif nav.element == "[/unit_type]":
             #print '"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes)
             if unit_id and base_unit:
-                derived_units.append((filename, i+1, unit_id, base_unit))
+                derived_units.append((filename, nav.lineno+1, unit_id, base_unit))
             if unit_id and not base_unit:
                 missing_notes = []
                 for trait in traits:
@@ -417,7 +397,7 @@ def sanity_check(filename, lines):
                 if not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                          % (filename, in_unit_type, unit_id)
-                if not in_theme and not base_unit and not unit_race:
+                if not "[theme]" in nav.ancestors() and not "[base_unit]" in nav.ancestors() and not unit_race:
                     print '"%s", line %d: unit %s has no race' \
                          % (filename, in_unit_type, unit_id)
             in_unit_type = None
@@ -427,16 +407,16 @@ def sanity_check(filename, lines):
             base_unit = ""
             has_special_notes = False
             unit_race = None
-        if in_unit_type and not in_filter_attack:
+        if '[unit_type]' in nav.ancestors() and not "[filter_attack]" in nav.ancestors():
             try:
-                (key, prefix, value, comment) = parse_attribute(lines[i])
+                (key, prefix, value, comment) = parse_attribute(nav.text)
                 if key == "id":
                     if value[0] == "_":
                         value = value[1:].strip()
-                    if not unit_id and not in_base_unit:
+                    if not unit_id and not "[base_unit]" in nav.ancestors():
                         unit_id = value
                         unit_types.append(unit_id)
-                    if not base_unit and in_base_unit:
+                    if not base_unit and "[base_unit]" in nav.ancestors():
                         base_unit = value
                 elif key == "usage":
                     assert(unit_id)
@@ -444,25 +424,25 @@ def sanity_check(filename, lines):
                 elif key == "movement_type":
                     if '{' not in value:
                         assert(unit_id)
-                        unit_movetypes.append((unit_id, filename, i+1, value))
+                        unit_movetypes.append((unit_id, filename, nav.lineno+1, value))
                 elif key == "race":
                     if '{' not in value:
                         assert(unit_id)
                         unit_race = value
-                        unit_races.append((unit_id, filename, i+1, unit_race))
+                        unit_races.append((unit_id, filename, nav.lineno+1, unit_race))
                 elif key == "advances_to":
                     assert(unit_id)
                     advancements = value
                     if advancements.strip() != "null":
-                        advances.append((unit_id, filename, i+1, advancements))
+                        advances.append((unit_id, filename, nav.lineno+1, advancements))
             except TypeError:
                 pass
-            if "{SPECIAL_NOTES}" in lines[i]:
+            if "{SPECIAL_NOTES}" in nav.text:
                 has_special_notes = True
             for (p, q) in notepairs:
-                if p in lines[i]:
+                if p in nav.text:
                     traits.append(p)
-                if q in lines[i]:
+                if q in nav.text:
                     notes.append(q)
     # Collect information on defined movement types
     in_movetype = False
@@ -1309,7 +1289,7 @@ def spellcheck(fn, d):
                     continue
                 if re.match("s+h+", lowered):
                     continue
-                nav.onerr(nav, 'possible misspelling "%s"' % token)
+                nav.printError('possible misspelling "%s"' % token)
         # Take exceptions from the id fields
         if nav.element == "id=":
             (key, prefix, value, comment) = parse_attribute(nav.text)
