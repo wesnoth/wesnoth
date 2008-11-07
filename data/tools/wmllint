@@ -340,14 +340,14 @@ class WmllintIterator(WmlIterator):
         if self.lineno == -1:
             print >>sys.stderr, '"%s":' % self.fname
         else:
-            print >>sys.stderr, '"%s", line %d:' % (self.fname, self.lineno+1)
+            print >>sys.stderr, '"%s", line %d:' % (self.fname, self.lineno+1),
         for item in misc:
             print >>sys.stderr, item,
         print >>sys.stderr #terminate line
 
 def sanity_check(filename, lines):
     "Perform sanity and consistency checks on input lines."
-    for nav in WmllintIterator(filename=fn):
+    for nav in WmllintIterator(filename, lines):
         # Check for things marked translated that aren't strings
         if "_" in nav.text and not "wmllint: ignore" in nav.text:
             m = re.search(r'[=(]\s*_\s+("?)', nav.text)
