@@ -115,28 +115,16 @@ Important Attributes:
 
     def parseQuotes(self, lines):
         """Return the line or multiline text if a quote spans multiple lines"""
-        text = lines[self.lineno]
-        span = 1
-        begincomment = text.find('#')
-        if begincomment < 0:
-            begincomment = None
-        beginquote = text[:begincomment].find('"')
-        while beginquote >= 0:
-            endquote = -1
-            beginofend = beginquote+1
-            while endquote < 0:
-                endquote = text.find('"', beginofend)
-                if endquote < 0:
-                    if self.lineno + span >= len(lines):
-                        self.printError('reached EOF due to unterminated string')
-                        return text, span
-                    text += lines[self.lineno + span]
-                    span += 1
-                    beginofend = text.rfind('\n', beginofend, len(text)-1)
-            begincomment = text.find('#', endquote+1)
-            if begincomment < 0:
-                begincomment = None
-            beginquote = text[:begincomment].find('"', endquote+1)
+        text = ""
+        span = 0
+        try:
+            while True:
+                text += lines[self.lineno + span]
+                span += 1
+                if text.count('"') % 2 == 0:
+                    break
+        except IndexError:
+            self.printError('unclosed string beginning here')
         return text, span
 
     def closeScope(self, scopes, closerElement):
@@ -400,7 +388,7 @@ if __name__ == '__main__':
         f = open(fname)
         itor = WmlIterator(f.readlines())
         for i in itor:
-            pass
+            print "Element = %s, text = %s, ancestors = %s" % (`i.element`, `i.text`, i.ancestors())
         f.close()
         print itor.lineno + itor.span, 'lines read.'
     if not didSomething:
