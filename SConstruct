@@ -74,7 +74,6 @@ opts.AddOptions(
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     EnumOption('gui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs)', "normal", ["normal", "tiny"]),
-    BoolOption('static', 'Set to enable static building of Wesnoth', False),
     BoolOption('strict', 'Set to strict compilation', False),
     BoolOption('static_test', 'Staticaly build against boost test (Not supported yet)', False),
     BoolOption('verbose', 'Emit progress messages during data installation.', False),
