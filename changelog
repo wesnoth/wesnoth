@@ -39,6 +39,13 @@ Version 1.5.5+svn:
    * updated DejaVuSans to 2.27
  * Multiplayer:
    * New multiplayer map: 4p Underworld.
+ * Music and sound effects:
+   * Fixed sound sources' default fade and full volume ranges; they were
+     less than adequate
+   * Renamed music files:
+     * nr-sad.ogg -> sad.ogg
+     * main_menu.ogg -> transcience.ogg
+     * main_menu_new.ogg -> main_menu.ogg
  * Units:
    * Balancing changes:
      * Gave the Goblin Pillager the same bite attack as the Wolf Rider.
@@ -49,9 +56,6 @@ Version 1.5.5+svn:
  * User interface:
    * The new widget library now also supports closing a dialog with a mouse
      click without a close button.
- * WML engine:
-   * Fixed sound sources' default fade and full volume ranges; they were
-     less than adequate
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
    * Fixed a flaw which caused sound sources to be forgotten after saving
