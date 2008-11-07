@@ -89,13 +89,16 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	// Get the available groups and add them to the structure
     const config::child_list& groups = cfg.get_children("editor_group");
 	config::child_list::const_iterator g_itor = groups.begin();
+	std::set<std::string> group_names;
 	for(; g_itor != groups.end(); ++ g_itor) {
-		terrain_groups_.push_back(terrain_group(**g_itor, gui));
-
-		// By default the 'all'-button is pressed
-		if(terrain_groups_.back().id == "all") {
-			terrain_groups_.back().button.set_check(true);
-			checked_group_btn_ = &terrain_groups_.back().button;
+		if (group_names.find((**g_itor)["id"]) == group_names.end()) {
+			terrain_groups_.push_back(terrain_group(**g_itor, gui));
+			group_names.insert(terrain_groups_.back().id);
+			// By default the 'all'-button is pressed
+			if(terrain_groups_.back().id == "all") {
+				terrain_groups_.back().button.set_check(true);
+				checked_group_btn_ = &terrain_groups_.back().button;
+			}
 		}
 	}
 	// The rest of the code assumes this is a valid pointer
