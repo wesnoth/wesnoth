@@ -117,9 +117,9 @@ std::ostream& metrics::games(std::ostream& out)
 	out << "Games have been terminated in the following ways:\n";
 	for(std::map<std::string,int>::const_iterator i = terminations_.begin(); i != terminations_.end(); ++i) {
 		out << i->first << ": " << i->second << "\n";
-		++n;
+		n += i->second;
 	}
-	out << "Total number of finished games = " << n;
+	out << "Total number of games = " << n;
 
 	return out;
 }
