@@ -32,8 +32,8 @@
 struct move_cost_calculator : cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
-	                     const unit_map& units,
-	                     const map_location& loc,
+			     const unit_map& units,
+			     const map_location& loc,
 						 const ai::move_map& dstsrc,
 						 const ai::move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), units_(units),
@@ -206,7 +206,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			}
 
 			const double distance = abs(j->loc.x - i->loc.x) +
-			                        abs(j->loc.y - i->loc.y);
+						abs(j->loc.y - i->loc.y);
 			new_values.back() += j->value/(distance*distance);
 		}
 	}
@@ -836,148 +836,50 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end()
-		|| leader->second.incapacitated()
-		|| leader->second.movement_left() == 0) {
+	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
 	}
-
+  	
+	// Find where the leader can move
+	const paths leader_paths(map_, units_, leader->first,
+	   	 teams_, false, false, current_team());
+	const map_location& start_pos = nearest_keep(leader->first);
+  	
 	std::map<map_location,paths> possible_moves;
-	std::map<map_location,paths>::iterator path_itor = possible_moves.insert(std::make_pair(leader->first, paths())).first;
-
-	// Guess how many units we want to recruit
-	const int number_of_recruit = current_team().gold() / current_team().average_recruit_price();
+	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
 
 	// If the leader is not on his starting location, move him there.
-	if (number_of_recruit)
-	{
-		{
+	if(leader->first != start_pos) {
+		const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
+		if(itor != leader_paths.routes.end() && units_.count(start_pos) == 0) {
+			move_unit(leader->first,start_pos,possible_moves);
+		} else {
 			// Make a map of the possible locations the leader can move to,
 			// ordered by the distance from the keep.
-			int best_value = INT_MAX - 1;
-			map_location best_target;
-
-			const shortest_path_calculator cost_calc(leader->second,
-					current_team(),
-					units_, teams_,
-					map_);
-
-			std::set<map_location> allowed_teleports;
-
-			if(leader->second.get_ability_bool("teleport",leader->first)) {
-				// search all known empty friendly villages
-				for(std::set<map_location>::const_iterator vil = current_team().villages().begin();
-						vil != current_team().villages().end(); ++vil) {
-
-					unit_map::const_iterator occupant = units_.find(*vil);
-					if (occupant != units_.end() && occupant != leader)
-						continue;
-
-					allowed_teleports.insert(*vil);
-				}
-			}
-
+			std::multimap<int,map_location> moves_toward_keep;
+  	
 			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
-			for(std::set<map_location>::iterator i = keeps().begin();
-					i != keeps().end(); ++i) {
+			const int current_distance = distance_between(leader->first,start_pos);
+			for(paths::routes_map::const_iterator i = leader_paths.routes.begin();
+			    i != leader_paths.routes.end(); ++i) {
+  		
+				const int new_distance = distance_between(i->first,start_pos);
+				if(new_distance < current_distance) {
+					moves_toward_keep.insert(std::pair<int,map_location>(new_distance,i->first));
+			 	}
+	 		}
 
-				const double limit = std::min(10000, best_value + 1);
-				paths::routes_map::iterator route = path_itor->second.routes.insert(
-						std::make_pair(*i,
-							a_star_search(leader->first, *i, limit, &cost_calc,map_.w(), map_.h(), &allowed_teleports
-								))).first;
-				if (route->second.steps.empty())
-				{
-					path_itor->second.routes.erase(route);
-					continue;
+			// Find the first location which we can move to,
+			// without the threat of enemies.
+			for(std::multimap<int,map_location>::const_iterator j = moves_toward_keep.begin();
+		    	j != moves_toward_keep.end(); ++j) {
+
+				if(enemy_dstsrc.count(j->second) == 0) {
+					move_unit(leader->first,j->second,possible_moves);
+					break;
 				}
-
-				std::set<map_location> checked_hexes;
-				checked_hexes.insert(*i);
-				const int free_slots = count_free_hexes_in_castle(*i, checked_hexes);
-				map_location center(map_.w()/2, map_.h()/2);
-				const int tactical_value = distance_between(center, *i);
-				const int empty_slots = leader->second.total_movement() * std::max(number_of_recruit - free_slots,0);
-				unit_map::const_iterator u = units_.find(*i);
-				const int reserved_penalty = leader->second.total_movement() *
-					(u != units_.end()
-					 && &teams_[u->second.side()-1] != &current_team()
-					 && !u->second.invisible(u->first, units_, teams_)
-					 ?(current_team().is_enemy(u->second.side())?6:3)
-					 :0);
-
-				int value = empty_slots + tactical_value + reserved_penalty;
-
-				// do enemy power projection so we know where enemy is
-				int enemy = static_cast<int>(leader->second.hitpoints() - (power_projection(*i, enemy_dstsrc) * 3));
-				if (enemy > 0)
-					enemy = ((leader->second.hitpoints() - enemy)*leader->second.total_movement()*4 / leader->second.hitpoints())*-1;
-				else
-					enemy = (enemy * leader->second.total_movement() * -4)/leader->second.hitpoints();
-
-				value += enemy;
-
-
-				// Make first quess if this is worth calculateing
-				if (value + static_cast<int>(route->second.steps.size()) - 1 >= best_value)
-					continue;
-
-				int distance = route_turns_to_complete(leader->second,
-						route->second,
-						current_team(),
-						units_,
-						teams_,
-						map_) * leader->second.total_movement();
-
-				map_location target;
-				std::map<map_location, paths::route::waypoint>::iterator target_it,
-					target_end = route->second.waypoints.end();
-				for(target_it = route->second.waypoints.begin(); target_it != target_end; ++target_it) {
-					if(target_it->second.turns == 1) {
-						break;
-					}
-				}
-				if(target_it != route->second.waypoints.end()) {
-					target = target_it->first;
-				} else if(*i == leader->first) {
-					target = leader->first;
-				} else {
-					ERR_AI << "ai::move_leader_to_keep - leader at " << leader->first
-					<< " has no valid waypoint in route to keep at " << *i
-					<< route->second << std::endl;
-					continue;
-				}
-
-				int multiturn_move_penalty = 0;
-				if (recruiting_preferred_)
-					multiturn_move_penalty = 2;
-
-				const int distance_value = (distance > leader->second.movement_left()?
-						((distance - leader->second.movement_left())/leader->second.total_movement()+multiturn_move_penalty)*leader->second.total_movement() : 0);
-				value += distance_value;
-
-				if (value >= best_value)
-					continue;
-
-				best_value = value;
-				best_target = target;
-				DBG_AI << "Considering keep: " << *i <<
-					" empty slots: " << empty_slots <<
-					" distance: " << distance <<
-					" enemy: " << enemy <<
-					" tactical_value: " << tactical_value <<
-					" reserved_penalty: " << reserved_penalty <<
-					" target: " << target <<
-					" value: " << value <<
-					" route: " << route->second.steps.size() << " " << route->second.move_left <<
-					"\n";
 			}
-
-			// Find the location with the best value
-			if (leader->first != best_target
-					&& best_target != location::null_location)
-				move_unit(leader->first,best_target,possible_moves);
 		}
 	}
 }
