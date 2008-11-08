@@ -618,7 +618,11 @@ map_location ai_interface::move_unit_partial(location from, location to,
 				}
 			}
 
-			steps.push_back(to); // Add the destination to the steps
+			if(steps.empty() || steps.back() != to) {
+				//Add the destination to the end of the steps if it's not
+				//already there.
+				steps.push_back(to);
+			}
 
 			if(show_move && unit_display::unit_visible_on_path(steps,
 						u_it->second, info_.units,info_.teams)) {
