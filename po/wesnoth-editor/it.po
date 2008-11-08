@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 12:12+0100\n"
-"PO-Revision-Date: 2008-10-11 02:14+0200\n"
+"PO-Revision-Date: 2008-11-06 00:30+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -72,22 +72,22 @@ msgstr "castello"
 #. [editor_group]
 #: data/core/editor-groups.cfg:77
 msgid "special"
-msgstr ""
+msgstr "speciale"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
-msgstr ""
+msgstr "Esagono singolo"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Raggio 1 esagono"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Raggio 2 esagoni"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
@@ -119,7 +119,7 @@ msgstr ""
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:26
 msgid "Click to paste."
-msgstr ""
+msgstr "Fai clic per incollare."
 
 #. [menu]
 #: data/themes/editor2.cfg:120
@@ -134,7 +134,7 @@ msgstr "Modifica"
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mappa"
 
 #. [label]
 #: data/themes/editor2.cfg:252
@@ -199,14 +199,12 @@ msgid "Map creation failed."
 msgstr "La creazione della mappa non è riuscita."
 
 #: src/editor2/editor_controller.cpp:384
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Scegli una mappa da caricare"
+msgstr "Scegli una maschera da applicare"
 
 #: src/editor2/editor_controller.cpp:391
-#, fuzzy
 msgid "Error loading mask"
-msgstr "Errore di caricamento della mappa"
+msgstr "Errore di caricamento della maschera"
 
 #: src/editor2/editor_controller.cpp:406
 #, fuzzy
@@ -247,15 +245,12 @@ msgid "Empty map file or file not found"
 msgstr ""
 
 #: src/editor2/editor_map.cpp:73
-#, fuzzy
 msgid "There was a format error while loading the file:"
-msgstr ""
-"Si è verificato un errore di formato durante il caricamento della mappa:"
+msgstr "Si è verificato un errore di formato durante il caricamento del file:"
 
 #: src/editor2/editor_map.cpp:79
-#, fuzzy
 msgid "There was a wml error while loading the file:"
-msgstr "Si è verificato un errore di wml durante il caricamento della mappa:"
+msgstr "Si è verificato un errore di wml durante il caricamento del file:"
 
 #: src/editor2/editor_map.cpp:152 src/editor2/mouse_action.cpp:383
 msgid "Player"
@@ -263,7 +258,7 @@ msgstr "Giocatore"
 
 #: src/editor2/editor_map.cpp:271
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "La dimensione della mappa destinazione è diversa da quella attuale"
 
 #: src/editor2/editor_palettes.cpp:503
 msgid "FG"
