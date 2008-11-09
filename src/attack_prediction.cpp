@@ -30,6 +30,10 @@
 // -DCHECK for testing correctness
 // (run tools/wesnoth-attack-sim.c --check on output)
 #if defined(BENCHMARK) || defined(CHECK)
+#include <time.h> 	 
+#include <sys/time.h> 	 
+#include <stdio.h> 	 
+#include <stdlib.h> 	 
 #endif
 
 #ifdef ATTACK_PREDICTION_DEBUG

@@ -369,7 +369,7 @@ std::string copy_from_clipboard(const bool mouse)
 
 #endif
 #ifdef _WIN32
-
+#include <windows.h>
 #define CLIPBOARD_FUNCS_DEFINED
 
 void handle_system_event(const SDL_Event& )
@@ -440,7 +440,7 @@ std::string copy_from_clipboard(const bool)
 #endif
 
 #ifdef __BEOS__
-
+#include <Clipboard.h>
 #define CLIPBOARD_FUNCS_DEFINED
 
 void copy_to_clipboard(const std::string& text, const bool)
@@ -478,6 +478,7 @@ std::string copy_from_clipboard(const bool)
 #ifdef __APPLE__
 #define CLIPBOARD_FUNCS_DEFINED
 
+#include <Carbon/Carbon.h>
 
 void copy_to_clipboard(const std::string& text, const bool)
 {

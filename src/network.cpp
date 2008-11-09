@@ -37,8 +37,12 @@
 #undef INADDR_ANY
 #undef INADDR_BROADCAST
 #undef INADDR_NONE
+#include <windows.h>
 #else
+#include <sys/types.h> 	 
+#include <sys/socket.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>  // for TCP_NODELAY
 #ifdef __BEOS__
 #include <socket.h>
 #else
