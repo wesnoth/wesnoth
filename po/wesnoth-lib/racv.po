@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 20:51+0100\n"
+"POT-Creation-Date: 2008-11-09 21:11+0100\n"
 "PO-Revision-Date: 2008-09-21 19:29+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -377,8 +377,8 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:150
-#: src/construct_dialog.cpp:153
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -409,19 +409,19 @@ msgstr "Generar nou mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:102
 msgid "New Map"
 msgstr "Nou mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:124
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "Amplària:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:125
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
 msgstr "Altura:"
 
@@ -434,7 +434,7 @@ msgstr "Nou mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:146
 msgid "Resize Map"
 msgstr "Redimensionar el mapa"
 
@@ -493,7 +493,7 @@ msgstr "Redimensionar el mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:100
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Atalls de teclat"
@@ -540,14 +540,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:208
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
+#: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Acceptar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:228
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:188
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -772,7 +772,7 @@ msgstr "Eixir de l'editor"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:49 src/hotkeys.cpp:75
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -783,1094 +783,1094 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:659
-#: src/hotkeys.cpp:940
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:646
+#: src/hotkeys.cpp:927
 msgid "Quit"
 msgstr "Eixir"
 
-#: src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:128
 msgid "Yes"
 msgstr "Sí"
 
-#: src/construct_dialog.cpp:146
+#: src/construct_dialog.cpp:129
 msgid "No"
 msgstr "No"
 
-#: src/construct_dialog.cpp:156
+#: src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "Tancar"
 
-#: src/filechooser.cpp:62
+#: src/filechooser.cpp:58
 msgid "File: "
 msgstr "Archiu:"
 
-#: src/filechooser.cpp:65
+#: src/filechooser.cpp:61
 msgid "Delete File"
 msgstr "Suprimir archiu"
 
-#: src/filechooser.cpp:67 src/filechooser.cpp:192
+#: src/filechooser.cpp:63 src/filechooser.cpp:188
 msgid "New Folder"
 msgstr "Nova carpeta"
 
-#: src/filechooser.cpp:180
+#: src/filechooser.cpp:176
 msgid "Deletion of the file failed."
 msgstr "No ha segut possible borrar l'archiu."
 
-#: src/filechooser.cpp:193
+#: src/filechooser.cpp:189
 msgid "Name: "
 msgstr "Nom:"
 
-#: src/filechooser.cpp:198
+#: src/filechooser.cpp:194
 msgid "Creation of the directory failed."
 msgstr "Ha fallat la creació del directori"
 
-#: src/game_preferences.cpp:281
+#: src/game_preferences.cpp:269
 msgid "No server has been defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/game_preferences.cpp:345
+#: src/game_preferences.cpp:333
 msgid "player"
 msgstr "jugador"
 
-#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+#: src/game_preferences_display.cpp:150 src/hotkeys.cpp:54
 msgid "Toggle Full Screen"
 msgstr "Activar Pantalla Completa"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:151
 msgid "Accelerated Speed"
 msgstr "Velocitat accelerada"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:152
 msgid "Skip AI Moves"
 msgstr "Ometre els moviments de la IA"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:153
 msgid "Show Grid"
 msgstr "Mostrar la quadrícula"
 
-#: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:154 src/game_preferences_display.cpp:336
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Guardar Repetició de victòries d'un Jug./Multijug. o derrotes Multijug."
 
-#: src/game_preferences_display.cpp:169 src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:155 src/game_preferences_display.cpp:339
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Borrar auto-guardats en les victòries d'un Jug./Multijug. o derrotes "
 "Multijug."
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:156
 msgid "Do Not Show Lobby Joins"
 msgstr "No mostrar incorporacions a la sala de joc"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:157
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Mostrar només incorporacions d'amics a la sala de joc"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:158
 msgid "Show All Lobby Joins"
 msgstr "Mostrar totes les incorporacions a la sala de joc"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:159
 msgid "Sort Lobby List"
 msgstr "Ordenar la llista de partides de la sala de joc"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:160
 msgid "Iconize Lobby List"
 msgstr "Minimisar la llista de partides de la sala de joc"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:161
 msgid "Set path to wesnothd"
 msgstr ""
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:162
 msgid "Friends List"
 msgstr "Llista d'amics"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:163
 msgid "Multiplayer Options"
 msgstr "Opcions multijugador"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:164
 msgid "Add As Friend"
 msgstr "Afegir com amic"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:165
 msgid "Add As Ignore"
 msgstr "Afegir com ignorat"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:166
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:167
 msgid "Show Floating Labels"
 msgstr "Mostrar etiquetes flotants"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:168
 msgid "Turn Dialog"
 msgstr "Activar els diàlecs"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:169
 msgid "Turn Bell"
 msgstr "Activar el timbre"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:170
 msgid "Show Team Colors"
 msgstr "Mostrar els colors del bando"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:171
 msgid "Show Color Cursors"
 msgstr "Mostrar cursors de colors"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:172
 msgid "Show Haloing Effects"
 msgstr "Mostrar efectes d'halo"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:173
 msgid "Change Resolution"
 msgstr "Canviar la resolució"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:174
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:175
 msgid "Hotkeys"
 msgstr "Atalls de teclat"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:176
 msgid "Adjust Gamma"
 msgstr "Ajustar claritat"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:177
 msgid "Reverse Time Graphics"
 msgstr "Invertir els gràfics de temps"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:179
 msgid "Sound effects"
 msgstr "Activar els efectes de sò"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:180
 msgid "Music"
 msgstr "Activar la música"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:181
 msgid "Chat Timestamping"
 msgstr "Marca horària en el chat"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:182
 msgid "sound^Advanced Options"
 msgstr "Opcions alvançades"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:183
 msgid "sound^Standard Options"
 msgstr "Opcions estàndart"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:184
 msgid "User Interface Sounds"
 msgstr "Sons de l'interfaç de l'usuari"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:187
 msgid "Custom"
 msgstr "Personalisat"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:189
 msgid "Show Unit Idle Animations"
 msgstr "Mostrar les animacions de les unitats inactives"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:191
 msgid "Music Volume:"
 msgstr "Volum de la música:"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:191
 msgid "SFX Volume:"
 msgstr "Volum dels efectes de sò:"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:192
 msgid "UI Sound Volume:"
 msgstr "Volum de l'interfaç de l'usuari"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:193
 msgid "Bell Volume:"
 msgstr "Volum de la campana:"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:193
 msgid "Scroll Speed:"
 msgstr "Velocitat de desplaçament:"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:194
 msgid "Gamma:"
 msgstr "Claritat:"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:196
 msgid "Sample Rate (Hz):"
 msgstr "Velocitat de refresc (Hz):"
 
-#: src/game_preferences_display.cpp:211
+#: src/game_preferences_display.cpp:197
 msgid "Frequency:"
 msgstr "Freqüència:"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:221
 msgid "Sound effects on/off"
 msgstr "Encendre/apagar els efectes de sò"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:225
 msgid "Change the sound effects volume"
 msgstr "Canviar el volum dels efectes de sò"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:228
 msgid "Music on/off"
 msgstr "Encendre/apagar la música"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:232
 msgid "Change the music volume"
 msgstr "Canviar el volum de la música"
 
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:238
 msgid "Change the bell volume"
 msgstr "Canviar el volum de la campana"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:241
 msgid "Turn menu and button sounds on/off"
 msgstr "Activar/desactivar els sons del menú i dels botons"
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:245
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Canviar el volum del sò per a les pulsacions dels botons, etc."
 
-#: src/game_preferences_display.cpp:261
+#: src/game_preferences_display.cpp:247
 msgid "Change the sample rate"
 msgstr "Velocitat de refresc definit per l'usuari"
 
-#: src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:256
 msgid "User defined sample rate"
 msgstr "Velocitat de refresc definida per l'usuari"
 
-#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:265 src/game_preferences_display.cpp:269
 msgid "Change the buffer size"
 msgstr "Canvia el tamany del buffer"
 
-#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:835
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:821
 msgid "Buffer Size: "
 msgstr "Tamany del buffer:"
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:274
 msgid "Change the speed of scrolling around the map"
 msgstr "Canviar la velocitat de desplaçament entorn al mapa"
 
-#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:295
+#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:281
 msgid "Set the amount of chat lines shown"
 msgstr "Establir el número de llínees de chat"
 
-#: src/game_preferences_display.cpp:298
+#: src/game_preferences_display.cpp:284
 msgid "Add a timestamp to chat messages"
 msgstr "Afegir una marca horària als mensages de chat"
 
-#: src/game_preferences_display.cpp:301 src/game_preferences_display.cpp:306
+#: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:292
 msgid "Change the brightness of the display"
 msgstr "Canviar la claritat de la pantalla"
 
-#: src/game_preferences_display.cpp:309
+#: src/game_preferences_display.cpp:295
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Mostrar el joc a pantalla completa o en finestra"
 
-#: src/game_preferences_display.cpp:312
+#: src/game_preferences_display.cpp:298
 msgid "Make units move and fight faster"
 msgstr "Les unitats es mouen i lluiten més ràpit"
 
-#: src/game_preferences_display.cpp:329
+#: src/game_preferences_display.cpp:315
 msgid "Units move and fight speed"
 msgstr "Moviment de les unitats i velocitat de lluita"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:318
 msgid "Show unit idle animations"
 msgstr "Mostrar les animacions de les unitats inactives"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:324
 msgid "Set the frequency of unit idle animations"
 msgstr "Establir la freqüència de les animacions de les unitats inactives"
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:329
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 "Establir el número màxim de guardats automàtics que han de ser conservats"
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:333
 msgid "Do not animate AI units moving"
 msgstr "Ometre les animacions de la IA"
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:341
 msgid "Overlay a grid onto the map"
 msgstr "Mostrar una quadrícula sobre el mapa"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:344
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Ordenar per grups la llista de jugadors de la sala de joc"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:347
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Mostrar icons davant dels noms dels jugadors en la sala de joc"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "No mostrar mensages quan entren jugadors en el joc multijugador"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:352
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Mostrar mensages als teus amics que entren en el joc multijugador"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:354
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Mostrar mensages a qualsevol jugador que entra en el joc multijugador"
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
 msgstr "Vore i editar la teua llista d'amics i ignorats"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:358
 msgid "Back to the multiplayer options"
 msgstr "Retornar a les opcions multijugador"
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:359
 msgid "Add this username to your friends list"
 msgstr "Afegir est usuari a la teua llista d'amics"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:360
 msgid "Add this username to your ignores list"
 msgstr "Afegir est usuari a la teua llista d'ignorats"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:361
 msgid "Remove this username from your list"
 msgstr "Borrar a est usuari de la teua llista"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:364
 msgid "Insert a username"
 msgstr "Insertar un nom d'usuari"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:367
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Mostrar el dany infligit a les unitats"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
 msgstr "Canviar la resolució del joc"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:370
 msgid "Change the theme the game runs with"
 msgstr "Canviar el tema del joc"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:373
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Mostrar un diàlec al començament de la tanda"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:376
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Fer sonar un timbre al començament de la tanda"
 
-#: src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:379
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Mostrar un círcul de diferent color segons el bando de l'unitat"
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:382
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Tria si el sol (l'astre) es mou d'esquerra a dreta o de dreta a esquerra"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:385
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Utilisar cursor de colors (pot ser més lent)"
 
-#: src/game_preferences_display.cpp:402
+#: src/game_preferences_display.cpp:388
 msgid "Use graphical special effects (may be slower)"
 msgstr "Activar efectes gràfics especials (pot ser més lent)"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:390
 msgid "View and configure keyboard shortcuts"
 msgstr "Configurar els atalls de teclat"
 
-#: src/game_preferences_display.cpp:698
+#: src/game_preferences_display.cpp:684
 msgid "Speed: "
 msgstr "Velocitat:"
 
-#: src/game_preferences_display.cpp:703 src/game_preferences_display.cpp:705
+#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Auto-Saves: "
 msgstr "Auto-Guardats màxims:"
 
-#: src/game_preferences_display.cpp:703
+#: src/game_preferences_display.cpp:689
 msgid "infinite"
 msgstr "infinit"
 
-#: src/game_preferences_display.cpp:885
+#: src/game_preferences_display.cpp:871
 msgid "Chat Lines: "
 msgstr "Llínees de chat: "
 
-#: src/game_preferences_display.cpp:907 src/game_preferences_display.cpp:915
+#: src/game_preferences_display.cpp:893 src/game_preferences_display.cpp:901
 msgid "Invalid username"
 msgstr "Nom d'usuari invàlit"
 
-#: src/game_preferences_display.cpp:987
+#: src/game_preferences_display.cpp:973
 msgid "yes"
 msgstr "sí"
 
-#: src/game_preferences_display.cpp:989
+#: src/game_preferences_display.cpp:975
 msgid "no"
 msgstr "no"
 
-#: src/game_preferences_display.cpp:1020
+#: src/game_preferences_display.cpp:1006
 msgid "(empty list)"
 msgstr "(llista buida)"
 
-#: src/game_preferences_display.cpp:1139
+#: src/game_preferences_display.cpp:1125
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/game_preferences_display.cpp:1140
+#: src/game_preferences_display.cpp:1126
 msgid "Prefs section^Display"
 msgstr "Visualisació"
 
-#: src/game_preferences_display.cpp:1141
+#: src/game_preferences_display.cpp:1127
 msgid "Prefs section^Sound"
 msgstr "Sò"
 
-#: src/game_preferences_display.cpp:1142
+#: src/game_preferences_display.cpp:1128
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/game_preferences_display.cpp:1143
+#: src/game_preferences_display.cpp:1129
 msgid "Advanced section^Advanced"
 msgstr "Alvançat"
 
-#: src/game_preferences_display.cpp:1178
+#: src/game_preferences_display.cpp:1164
 msgid "Saved Theme Preference: "
 msgstr "Tema actual: "
 
-#: src/game_preferences_display.cpp:1184
+#: src/game_preferences_display.cpp:1170
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El canvi de tema es farà efectiu al tornar a carregar o en la pròxima "
 "partida."
 
-#: src/game_preferences_display.cpp:1188
+#: src/game_preferences_display.cpp:1174
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hi ha temes coneguts. Intenta canviar-los des d'un joc existent."
 
-#: src/game_preferences_display.cpp:1230
+#: src/game_preferences_display.cpp:1216
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:86 src/hotkeys.cpp:76
+#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:63
 msgid "Load Game"
 msgstr "Carregar una partida"
 
-#: src/gui/dialogs/mp_create_game.cpp:87
+#: src/gui/dialogs/mp_create_game.cpp:76
 #, fuzzy
 msgid "Load Game..."
 msgstr "Carregar una partida"
 
-#: src/gui/dialogs/title_screen.cpp:76
+#: src/gui/dialogs/title_screen.cpp:71
 msgid "Version"
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:295
+#: src/gui/widgets/canvas.cpp:290
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:430
+#: src/gui/widgets/canvas.cpp:425
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:786
+#: src/gui/widgets/canvas.cpp:791
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:851
+#: src/gui/widgets/canvas.cpp:856
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:170
+#: src/gui/widgets/helper.cpp:165
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:122
+#: src/gui/widgets/settings.cpp:115
 #, fuzzy
 msgid "No default gui defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:248
+#: src/gui/widgets/settings.cpp:241
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:312
+#: src/gui/widgets/settings.cpp:305
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:277
+#: src/gui/widgets/settings.cpp:417 src/gui/widgets/window_builder.cpp:272
 #, fuzzy
 msgid "No resolution defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:456
+#: src/gui/widgets/settings.cpp:449
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:636
+#: src/gui/widgets/settings.cpp:629
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:368
-#: src/gui/widgets/window_builder.cpp:951
-#: src/gui/widgets/window_builder.cpp:1158
+#: src/gui/widgets/settings.cpp:785 src/gui/widgets/window_builder.cpp:363
+#: src/gui/widgets/window_builder.cpp:946
+#: src/gui/widgets/window_builder.cpp:1157
 #, fuzzy
 msgid "No grid defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/window_builder.cpp:495
+#: src/gui/widgets/window_builder.cpp:490
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:496
+#: src/gui/widgets/window_builder.cpp:491
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:720
+#: src/gui/widgets/window_builder.cpp:715
 #, fuzzy
 msgid "No list defined."
 msgstr "No s'ha definit cap servidor"
 
-#: src/gui/widgets/window_builder.cpp:723
+#: src/gui/widgets/window_builder.cpp:718
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:742
+#: src/gui/widgets/window_builder.cpp:737
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1089
+#: src/gui/widgets/window_builder.cpp:1084
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:44
 msgid "Next Unit"
 msgstr "Unitat següent"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:45
 msgid "Previous Unit"
 msgstr "Unitat anterior"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:46
 msgid "Hold Position"
 msgstr "Mantindre la posició"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:47
 msgid "End Unit Turn"
 msgstr "Fi de la tanda de l'unitat"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:48
 msgid "Leader"
 msgstr "Líder"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:49
 msgid "Undo"
 msgstr "Desfer"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:50
 msgid "Redo"
 msgstr "Refer"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:51
 msgid "Zoom In"
 msgstr "Acostar"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:52
 msgid "Zoom Out"
 msgstr "Alluntar"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:53
 msgid "Default Zoom"
 msgstr "Escala predeterminada"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:55 src/hotkeys.cpp:882
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:56
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:57
 msgid "Accelerated"
 msgstr "Accelerat"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:58
 msgid "Unit Description"
 msgstr "Descriure la unitat"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:59
 msgid "Rename Unit"
 msgstr "Renomenar la unitat"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:60
 msgid "Save Game"
 msgstr "Guardar la partida"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:61
 msgid "Save Replay"
 msgstr "Guardar la repetició"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:62
 msgid "Save The Map"
 msgstr "Guardar el mapa"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:64
 msgid "Recruit"
 msgstr "Reclutar"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:65
 msgid "Repeat Recruit"
 msgstr "Repetir reclutació"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:66
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:67
 msgid "End Turn"
 msgstr "Fi de la tanda"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:68
 msgid "Toggle Grid"
 msgstr "Activar la quadrícula"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:69
 msgid "Mouse Scrolling"
 msgstr "Desplaçament del ratolí"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:70
 msgid "Status Table"
 msgstr "Taula d'estat"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:71
 msgid "Mute"
 msgstr "Mut"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:72
 msgid "Speak"
 msgstr "Parlar"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:73
 msgid "Create Unit (Debug!)"
 msgstr "Crear una unitat (¡Depurar!)"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:74
 msgid "Change Unit Side (Debug!)"
 msgstr "Canviar de bando (¡Depurar!)"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:76
 msgid "Scenario Objectives"
 msgstr "Objectius de l'escenari"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:77
 msgid "Unit List"
 msgstr "Llista d'unitats"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:78
 msgid "Statistics"
 msgstr "Estadístiques"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:79
 msgid "Quit Game"
 msgstr "Eixir"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:80
 msgid "Set Team Label"
 msgstr "Posar etiqueta d'equip"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:81
 msgid "Set Label"
 msgstr "Posar una etiqueta"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:82
 msgid "Clear Labels"
 msgstr "Borrar les etiquetes"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:83
 msgid "Show Enemy Moves"
 msgstr "Mostrar moviments enemics"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:84
 msgid "Best Possible Enemy Moves"
 msgstr "Millors moviments enemics possibles"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:85
 msgid "Play"
 msgstr "Reproduir"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:86
 msgid "Reset"
 msgstr "Reiniciar"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:87
 msgid "Stop"
 msgstr "Parar"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:88
 msgid "Next Turn"
 msgstr "Següent tanda"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:89
 msgid "Next Side"
 msgstr "Bando següent"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:91
 msgid "Full map"
 msgstr "Tot el mapa"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:93
 msgid "Each team"
 msgstr "Cada equip"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:95
 msgid "Team 1"
 msgstr "Equip 1"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:96
 msgid "Skip animation"
 msgstr "Ometre animació"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:99
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:101
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:103
 msgid "Load Map"
 msgstr "Carregar un mapa"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:104
 msgid "Save Map"
 msgstr "Guardar el mapa"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:105
 #, fuzzy
 msgid "Save Map As"
 msgstr "Guardar el mapa"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:106
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:107
 #, fuzzy
 msgid "Map Information"
 msgstr "Generador de mapes"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:109
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:110
 #, fuzzy
 msgid "Next Tool"
 msgstr "Següent tanda"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:111
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:112
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Seleccionar-ho tot"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:115
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:116
 #, fuzzy
 msgid "Next Brush"
 msgstr "Següent tanda"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:117
 #, fuzzy
 msgid "Default Brush"
 msgstr "Escala predeterminada"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:118
 msgid "Cut"
 msgstr "Tallar"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:119
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:120
 msgid "Paste"
 msgstr "Apegar"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:122
 msgid "Select All"
 msgstr "Seleccionar-ho tot"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:124
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Select None"
 msgstr "Seleccionar-ho tot"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:128
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:130
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:132
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:134
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:136
 msgid "Rotate Selection"
 msgstr "Rotar selecció"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:138
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Omplir la selecció"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:140
 msgid "Fill Selection"
 msgstr "Omplir la selecció"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:142
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Rotar selecció"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:144
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:148
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Carregar un mapa"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:150
 #, fuzzy
 msgid "Generate Map"
 msgstr "Generar nou mapa"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:152
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:154
 #, fuzzy
 msgid "Create Mask"
 msgstr "Guardar la partida"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Visualisació"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:158
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Actualisar transicions"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:160
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualisar transicions"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:162
 msgid "Refresh Image Cache"
 msgstr "Refrescar la caché de les imàgens"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:164
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:166
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Dibuixar el terreny"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:171
 msgid "Delay Shroud Updates"
 msgstr "Retardar el refresc de zones obscures"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:172
 msgid "Update Shroud Now"
 msgstr "Refrescar les zones obscures"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:173
 msgid "Continue Move"
 msgstr "Continua movent"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:174
 msgid "Find Label or Unit"
 msgstr "Trobar una etiqueta o unitat"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:175
 msgid "Speak to Ally"
 msgstr "Parlar als aliats"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:176
 msgid "Speak to All"
 msgstr "Parlar a tot lo món"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:177
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:178
 msgid "View Chat Log"
 msgstr "Vore el registre del chat"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:179
 msgid "Change the language"
 msgstr "Canvia l'idioma"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:181
 msgid "Enter user command"
 msgstr "Introduïx un comandament"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:182
 #, fuzzy
 msgid "Custom command"
 msgstr "Introduïx un comandament"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:183
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:184
 msgid "Clear messages"
 msgstr "Borrar mensages"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:186
 msgid "User-Command#2"
 msgstr "Orde-Usuari#2"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:187
 msgid "User-Command#3"
 msgstr "Orde-Usuari#3"
 
-#: src/hotkeys.cpp:659 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:646 src/hotkeys.cpp:927
 msgid "Do you really want to quit?"
 msgstr "¿Segur que vols eixir?"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:882
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:889
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Captura de pantalla"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Captura de pantalla"
 
-#: src/mapgen_dialog.cpp:113 src/preferences_display.cpp:229
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:217
 msgid "Close Window"
 msgstr "Tancar"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:112
 msgid "Map Generator"
 msgstr "Generador de mapes"
 
-#: src/mapgen_dialog.cpp:123
+#: src/mapgen_dialog.cpp:119
 msgid "Players:"
 msgstr "Jugadors:"
 
-#: src/mapgen_dialog.cpp:126
+#: src/mapgen_dialog.cpp:122
 msgid "Number of Hills:"
 msgstr "Número de tossals:"
 
-#: src/mapgen_dialog.cpp:127
+#: src/mapgen_dialog.cpp:123
 msgid "Max Hill Size:"
 msgstr "Altura màxima dels tossals:"
 
-#: src/mapgen_dialog.cpp:128
+#: src/mapgen_dialog.cpp:124
 msgid "Villages:"
 msgstr "Aldees:"
 
-#: src/mapgen_dialog.cpp:129
+#: src/mapgen_dialog.cpp:125
 msgid "Castle Size:"
 msgstr "Tamany del castell:"
 
-#: src/mapgen_dialog.cpp:130
+#: src/mapgen_dialog.cpp:126
 msgid "Landform:"
 msgstr "Perfil:"
 
-#: src/mapgen_dialog.cpp:248
+#: src/mapgen_dialog.cpp:244
 msgid "Roads Between Castles"
 msgstr "Camins entre castells"
 
-#: src/mapgen_dialog.cpp:308
+#: src/mapgen_dialog.cpp:304
 msgid "/1000 tiles"
 msgstr "cada 1000 hexàgons"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Coastal"
 msgstr "Coster"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Inland"
 msgstr "Interior"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Island"
 msgstr "Illa"
 
-#: src/marked-up_text.cpp:331
+#: src/marked-up_text.cpp:330
 msgid "The maximum text width is less than 1."
 msgstr "L'amplària màxima del text és menor que 1."
 
-#: src/minimap.cpp:83
+#: src/minimap.cpp:82
 msgid "Could not get image for terrain: $terrain."
 msgstr "No és posible obtindre l'image per al terreny: $terrain."
 
-#: src/minimap.cpp:107 src/minimap.cpp:119
+#: src/minimap.cpp:106 src/minimap.cpp:118
 msgid "Error creating or aquiring an image."
 msgstr "Erro al crear o adquirir una image."
 
-#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
+#: src/preferences_display.cpp:73 src/preferences_display.cpp:106
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1879,54 +1879,54 @@ msgstr ""
 "No ha segut possible canviar el modo de vídeo. La pantalla ha d'admetre una "
 "resolució de 1024x768x16 per a poder jugar a pantalla completa."
 
-#: src/preferences_display.cpp:233
+#: src/preferences_display.cpp:221
 msgid "Hotkey Settings"
 msgstr "Atalls de teclat"
 
-#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
+#: src/preferences_display.cpp:227 src/preferences_display.cpp:295
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Pulsa la tecla desijada"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:246
 msgid "Action"
 msgstr "Acció"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:246
 msgid "Binding"
 msgstr "Enllaç"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:258
 msgid "Change Hotkey"
 msgstr "Canviar la tecla"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:261
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Canviar la tecla"
 
-#: src/preferences_display.cpp:340
+#: src/preferences_display.cpp:328
 msgid "This Hotkey is already in use."
 msgstr "Esta tecla ya s'usa."
 
-#: src/preferences_display.cpp:352
+#: src/preferences_display.cpp:340
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:431
+#: src/preferences_display.cpp:419
 msgid "There are no alternative video modes available"
 msgstr "No hi ha modos de vídeo alternatius disponibles"
 
-#: src/preferences_display.cpp:460
+#: src/preferences_display.cpp:448
 msgid "Choose Resolution"
 msgstr "Triar la resolució"
 
-#: src/show_dialog.cpp:375
+#: src/show_dialog.cpp:357
 msgid "Error"
 msgstr "Erro"
 
-#: src/terrain_translation.cpp:688
+#: src/terrain_translation.cpp:687
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
@@ -1934,7 +1934,7 @@ msgstr ""
 "S'ha trobat un terreny ab una cadena de més de 4 caracteres, el terreny "
 "afectat és:"
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:49
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1942,11 +1942,11 @@ msgstr ""
 "Ha ocorregut un erro degut a un posible WML invàlit\n"
 " El mensage d'erro és :"
 
-#: src/wml_exception.cpp:54
+#: src/wml_exception.cpp:51
 msgid "When reporting the bug please include the following error message :"
 msgstr "Per favor, quan informe de l'erro incloga el següent mensage d'erro :"
 
-#: src/wml_exception.cpp:72
+#: src/wml_exception.cpp:69
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -1954,7 +1954,7 @@ msgstr ""
 "En la secció '[$section|]' on '$primary_key| = $primary_value' la clau "
 "obligatòria '$key|' no s'ha establit."
 
-#: src/wml_exception.cpp:75
+#: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la secció '[$section|]' la clau obligatòria '$key|' no s'ha establit."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 20:51+0100\n"
+"POT-Creation-Date: 2008-11-09 21:11+0100\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -383,8 +383,8 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:150
-#: src/construct_dialog.cpp:153
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "בטל"
 
@@ -415,19 +415,19 @@ msgstr "יצירת מפה חדשה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:102
 msgid "New Map"
 msgstr "מפה חדשה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:124
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "רוחב:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:125
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
 msgstr "גובה:"
 
@@ -440,7 +440,7 @@ msgstr "יצירת מפה חדשה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:146
 msgid "Resize Map"
 msgstr "שנה גודל מפה"
 
@@ -499,7 +499,7 @@ msgstr "שנה גודל מפה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:100
 #, fuzzy
 msgid "Editor Settings"
 msgstr "מקשי קיצור"
@@ -545,14 +545,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:208
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
+#: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "אשר"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:228
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:188
 msgid "Apply"
 msgstr ""
 
@@ -776,7 +776,7 @@ msgstr "צא מהעורך"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:49 src/hotkeys.cpp:75
 msgid "Preferences"
 msgstr "העדפות"
 
@@ -787,1111 +787,1111 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:659
-#: src/hotkeys.cpp:940
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:646
+#: src/hotkeys.cpp:927
 msgid "Quit"
 msgstr "צא"
 
-#: src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:128
 msgid "Yes"
 msgstr "כן"
 
-#: src/construct_dialog.cpp:146
+#: src/construct_dialog.cpp:129
 msgid "No"
 msgstr "לא"
 
-#: src/construct_dialog.cpp:156
+#: src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "סגור"
 
-#: src/filechooser.cpp:62
+#: src/filechooser.cpp:58
 msgid "File: "
 msgstr ""
 
-#: src/filechooser.cpp:65
+#: src/filechooser.cpp:61
 msgid "Delete File"
 msgstr "מחק קובץ"
 
-#: src/filechooser.cpp:67 src/filechooser.cpp:192
+#: src/filechooser.cpp:63 src/filechooser.cpp:188
 msgid "New Folder"
 msgstr ""
 
-#: src/filechooser.cpp:180
+#: src/filechooser.cpp:176
 msgid "Deletion of the file failed."
 msgstr "מחיקת קובץ נכשלה"
 
-#: src/filechooser.cpp:193
+#: src/filechooser.cpp:189
 msgid "Name: "
 msgstr ""
 
-#: src/filechooser.cpp:198
+#: src/filechooser.cpp:194
 #, fuzzy
 msgid "Creation of the directory failed."
 msgstr "מחיקת קובץ נכשלה"
 
-#: src/game_preferences.cpp:281
+#: src/game_preferences.cpp:269
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:345
+#: src/game_preferences.cpp:333
 msgid "player"
 msgstr "שחקן"
 
-#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+#: src/game_preferences_display.cpp:150 src/hotkeys.cpp:54
 msgid "Toggle Full Screen"
 msgstr "החלף מצב מסך מלא"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:151
 msgid "Accelerated Speed"
 msgstr "מהירות מואצת"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:152
 msgid "Skip AI Moves"
 msgstr "דלג על הצגת מהלכי המחשב"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:153
 msgid "Show Grid"
 msgstr "הצג סריג"
 
-#: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:154 src/game_preferences_display.cpp:336
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:169 src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:155 src/game_preferences_display.cpp:339
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:156
 #, fuzzy
 msgid "Do Not Show Lobby Joins"
 msgstr "הראה הצטרפות ללובי"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:157
 #, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "הראה הצטרפות ללובי"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:158
 #, fuzzy
 msgid "Show All Lobby Joins"
 msgstr "הראה הצטרפות ללובי"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:159
 #, fuzzy
 msgid "Sort Lobby List"
 msgstr "הראה הצטרפות ללובי"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:160
 #, fuzzy
 msgid "Iconize Lobby List"
 msgstr "הראה הצטרפות ללובי"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:161
 msgid "Set path to wesnothd"
 msgstr ""
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:162
 msgid "Friends List"
 msgstr ""
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:163
 msgid "Multiplayer Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:164
 msgid "Add As Friend"
 msgstr ""
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:165
 msgid "Add As Ignore"
 msgstr ""
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:166
 #, fuzzy
 msgid "Remove"
 msgstr "שחזור פעולה"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:167
 msgid "Show Floating Labels"
 msgstr "הצג תגיות מרחפות"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:168
 msgid "Turn Dialog"
 msgstr "הודעת תור"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:169
 msgid "Turn Bell"
 msgstr "צלצול תור"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:170
 msgid "Show Team Colors"
 msgstr "הצג צבעי צוותים"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:171
 msgid "Show Color Cursors"
 msgstr "הצג סמנים ציבעוניים"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:172
 msgid "Show Haloing Effects"
 msgstr "הצג אפקט הילה"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:173
 #, fuzzy
 msgid "Change Resolution"
 msgstr "בחירת רזולוציה"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:174
 msgid "Theme"
 msgstr "ערכת נושא"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:175
 msgid "Hotkeys"
 msgstr "מקשי קיצור"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:176
 msgid "Adjust Gamma"
 msgstr "כוון גאמא"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:177
 msgid "Reverse Time Graphics"
 msgstr "הפוך כיוון תנועת השמש"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:179
 msgid "Sound effects"
 msgstr "אפקטים של צליל"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:180
 msgid "Music"
 msgstr "מוסיקה"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:181
 msgid "Chat Timestamping"
 msgstr "חתימת זמן בשיחה"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:182
 msgid "sound^Advanced Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:183
 msgid "sound^Standard Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:184
 msgid "User Interface Sounds"
 msgstr ""
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:187
 #, fuzzy
 msgid "Custom"
 msgstr "גזור"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:189
 msgid "Show Unit Idle Animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:191
 msgid "Music Volume:"
 msgstr "עוצמת מוסיקה:"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:191
 msgid "SFX Volume:"
 msgstr "עוצמת אפקטים מיוחדים:"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:192
 #, fuzzy
 msgid "UI Sound Volume:"
 msgstr "עוצמת אפקטים מיוחדים:"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:193
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "עוצמת אפקטים מיוחדים:"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:193
 msgid "Scroll Speed:"
 msgstr "מהירות גלילה:"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:194
 msgid "Gamma:"
 msgstr "גאמה:"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:196
 msgid "Sample Rate (Hz):"
 msgstr ""
 
-#: src/game_preferences_display.cpp:211
+#: src/game_preferences_display.cpp:197
 msgid "Frequency:"
 msgstr ""
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:221
 msgid "Sound effects on/off"
 msgstr "אפקטים של צליל - מופעל/לא מופעל"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:225
 msgid "Change the sound effects volume"
 msgstr "עדכון עוצמת האפקטים הקוליים"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:228
 msgid "Music on/off"
 msgstr "מוסיקה - מופעל/לא מופעל"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:232
 msgid "Change the music volume"
 msgstr "עדכון עוצמת המוסיקה"
 
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:238
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "עדכון עוצמת המוסיקה"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:241
 msgid "Turn menu and button sounds on/off"
 msgstr ""
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:245
 msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
-#: src/game_preferences_display.cpp:261
+#: src/game_preferences_display.cpp:247
 #, fuzzy
 msgid "Change the sample rate"
 msgstr "החלף שפה"
 
-#: src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:256
 #, fuzzy
 msgid "User defined sample rate"
 msgstr "החלף שפה"
 
-#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:265 src/game_preferences_display.cpp:269
 #, fuzzy
 msgid "Change the buffer size"
 msgstr "עדכון עוצמת המוסיקה"
 
-#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:835
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:821
 msgid "Buffer Size: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:274
 msgid "Change the speed of scrolling around the map"
 msgstr "עדכון מהירות גלילת המפה"
 
-#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:295
+#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:281
 msgid "Set the amount of chat lines shown"
 msgstr "קבע את מספר שורות השיחה שיראו"
 
-#: src/game_preferences_display.cpp:298
+#: src/game_preferences_display.cpp:284
 msgid "Add a timestamp to chat messages"
 msgstr "הוסף חותמת זמן להודעות שיחה"
 
-#: src/game_preferences_display.cpp:301 src/game_preferences_display.cpp:306
+#: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:292
 msgid "Change the brightness of the display"
 msgstr "עדכון בהירות התצוגה"
 
-#: src/game_preferences_display.cpp:309
+#: src/game_preferences_display.cpp:295
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "בחירת משחק בחלון או במסך מלא"
 
-#: src/game_preferences_display.cpp:312
+#: src/game_preferences_display.cpp:298
 msgid "Make units move and fight faster"
 msgstr "גורם ליחידות לנוע ולהלחם מהר יותר"
 
-#: src/game_preferences_display.cpp:329
+#: src/game_preferences_display.cpp:315
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "גורם ליחידות לנוע ולהלחם מהר יותר"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:318
 #, fuzzy
 msgid "Show unit idle animations"
 msgstr "דלג על האנימציה"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:324
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:329
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:333
 msgid "Do not animate AI units moving"
 msgstr "ללא הנפשת תנועת יחידות של המחשב"
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:341
 msgid "Overlay a grid onto the map"
 msgstr "הצגת סריג על גבי המפה"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:344
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:347
 #, fuzzy
 msgid "Show icons in front of the player names in the lobby."
 msgstr "הראה הודעות על שחקנים שמצטרפים ללובי של משחקים מרובי שחקנים"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:350
 #, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "הראה הודעות על שחקנים שמצטרפים ללובי של משחקים מרובי שחקנים"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:352
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "הראה הודעות על שחקנים שמצטרפים ללובי של משחקים מרובי שחקנים"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:354
 #, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "הראה הודעות על שחקנים שמצטרפים ללובי של משחקים מרובי שחקנים"
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:358
 msgid "Back to the multiplayer options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:359
 msgid "Add this username to your friends list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:360
 msgid "Add this username to your ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:361
 msgid "Remove this username from your list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:364
 msgid "Insert a username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:367
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "כאשר יחידה נפגעת, הצג מעליה מלל לתיאור הנזק שנגרם"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
 msgstr "שינוי רזולוצית המשחק"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:370
 msgid "Change the theme the game runs with"
 msgstr "שנה ערכת הנושא איתה רץ המשחק"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:373
 msgid "Display a dialog at the beginning of your turn"
 msgstr "הצג תיבת דו-שיח בתחילת תורך"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:376
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "השמע צליל כשמגיע תורך"
 
-#: src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:379
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "הצג מעגל צבעוני סביב הבסיס של כל יחידה כך שיציג את הצד המופעל"
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:382
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "בחירת תנועת השמש משמאל לימין או מימין לשמאל"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:385
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "השתמש בסמני עכבר צבעוניים (עלול להיות איטי)"
 
-#: src/game_preferences_display.cpp:402
+#: src/game_preferences_display.cpp:388
 msgid "Use graphical special effects (may be slower)"
 msgstr "השתמש באפקטים גרפיים מיוחדים (עלול להיות איטי)"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:390
 msgid "View and configure keyboard shortcuts"
 msgstr "תצוגת ועדכון מקשי קיצור"
 
-#: src/game_preferences_display.cpp:698
+#: src/game_preferences_display.cpp:684
 #, fuzzy
 msgid "Speed: "
 msgstr "מהירות גלילה:"
 
-#: src/game_preferences_display.cpp:703 src/game_preferences_display.cpp:705
+#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Auto-Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:703
+#: src/game_preferences_display.cpp:689
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:885
+#: src/game_preferences_display.cpp:871
 msgid "Chat Lines: "
 msgstr "שורות שיחה: "
 
-#: src/game_preferences_display.cpp:907 src/game_preferences_display.cpp:915
+#: src/game_preferences_display.cpp:893 src/game_preferences_display.cpp:901
 msgid "Invalid username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:987
+#: src/game_preferences_display.cpp:973
 msgid "yes"
 msgstr "כן"
 
-#: src/game_preferences_display.cpp:989
+#: src/game_preferences_display.cpp:975
 msgid "no"
 msgstr "לא"
 
-#: src/game_preferences_display.cpp:1020
+#: src/game_preferences_display.cpp:1006
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1139
+#: src/game_preferences_display.cpp:1125
 msgid "Prefs section^General"
 msgstr "כללי"
 
-#: src/game_preferences_display.cpp:1140
+#: src/game_preferences_display.cpp:1126
 msgid "Prefs section^Display"
 msgstr "תצוגה"
 
-#: src/game_preferences_display.cpp:1141
+#: src/game_preferences_display.cpp:1127
 msgid "Prefs section^Sound"
 msgstr "צליל"
 
-#: src/game_preferences_display.cpp:1142
+#: src/game_preferences_display.cpp:1128
 msgid "Prefs section^Multiplayer"
 msgstr "משחק רב-משתתפים"
 
-#: src/game_preferences_display.cpp:1143
+#: src/game_preferences_display.cpp:1129
 msgid "Advanced section^Advanced"
 msgstr "מתקדם"
 
-#: src/game_preferences_display.cpp:1178
+#: src/game_preferences_display.cpp:1164
 msgid "Saved Theme Preference: "
 msgstr "העדפות השמורות של ערכת הנושא : "
 
-#: src/game_preferences_display.cpp:1184
+#: src/game_preferences_display.cpp:1170
 msgid "New theme will take effect on next new or loaded game."
 msgstr "השינוי לערכת הנושא החדשה יתרחש במשחק חדש הבא או אחרי טעינת המשחק הבאה."
 
-#: src/game_preferences_display.cpp:1188
+#: src/game_preferences_display.cpp:1174
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "אין ערכות נושא ידועות. נסה לשנות מתוך משחק קיים."
 
-#: src/game_preferences_display.cpp:1230
+#: src/game_preferences_display.cpp:1216
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:86 src/hotkeys.cpp:76
+#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:63
 msgid "Load Game"
 msgstr "טען משחק"
 
-#: src/gui/dialogs/mp_create_game.cpp:87
+#: src/gui/dialogs/mp_create_game.cpp:76
 #, fuzzy
 msgid "Load Game..."
 msgstr "טען משחק"
 
-#: src/gui/dialogs/title_screen.cpp:76
+#: src/gui/dialogs/title_screen.cpp:71
 msgid "Version"
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:295
+#: src/gui/widgets/canvas.cpp:290
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:430
+#: src/gui/widgets/canvas.cpp:425
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:786
+#: src/gui/widgets/canvas.cpp:791
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:851
+#: src/gui/widgets/canvas.cpp:856
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:170
+#: src/gui/widgets/helper.cpp:165
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:122
+#: src/gui/widgets/settings.cpp:115
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:248
+#: src/gui/widgets/settings.cpp:241
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:312
+#: src/gui/widgets/settings.cpp:305
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:277
+#: src/gui/widgets/settings.cpp:417 src/gui/widgets/window_builder.cpp:272
 #, fuzzy
 msgid "No resolution defined."
 msgstr "יצירת מפה נכשלה."
 
-#: src/gui/widgets/settings.cpp:456
+#: src/gui/widgets/settings.cpp:449
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:636
+#: src/gui/widgets/settings.cpp:629
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "יצירת מפה נכשלה."
 
-#: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:368
-#: src/gui/widgets/window_builder.cpp:951
-#: src/gui/widgets/window_builder.cpp:1158
+#: src/gui/widgets/settings.cpp:785 src/gui/widgets/window_builder.cpp:363
+#: src/gui/widgets/window_builder.cpp:946
+#: src/gui/widgets/window_builder.cpp:1157
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:495
+#: src/gui/widgets/window_builder.cpp:490
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:496
+#: src/gui/widgets/window_builder.cpp:491
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:720
+#: src/gui/widgets/window_builder.cpp:715
 #, fuzzy
 msgid "No list defined."
 msgstr "יצירת מפה נכשלה."
 
-#: src/gui/widgets/window_builder.cpp:723
+#: src/gui/widgets/window_builder.cpp:718
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:742
+#: src/gui/widgets/window_builder.cpp:737
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1089
+#: src/gui/widgets/window_builder.cpp:1084
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:44
 msgid "Next Unit"
 msgstr "היחידה הבאה"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:45
 msgid "Previous Unit"
 msgstr "היחידה הקודמת"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:46
 msgid "Hold Position"
 msgstr "המתן במקום"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:47
 msgid "End Unit Turn"
 msgstr "סיים את תור היחידה"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:48
 msgid "Leader"
 msgstr "מנהיג"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:49
 msgid "Undo"
 msgstr "ביטול פעולה"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:50
 msgid "Redo"
 msgstr "שחזור פעולה"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:51
 msgid "Zoom In"
 msgstr "הגדלה"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:52
 msgid "Zoom Out"
 msgstr "הקטנה"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:53
 msgid "Default Zoom"
 msgstr "גודל רגיל"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:55 src/hotkeys.cpp:882
 msgid "Screenshot"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:56
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:57
 msgid "Accelerated"
 msgstr "מואץ"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:58
 msgid "Unit Description"
 msgstr "תיאור היחידה"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:59
 msgid "Rename Unit"
 msgstr "שנה שם יחידה"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:60
 msgid "Save Game"
 msgstr "שמור משחק"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:61
 #, fuzzy
 msgid "Save Replay"
 msgstr "שמירת מקשי קיצור"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:62
 #, fuzzy
 msgid "Save The Map"
 msgstr "שמור מפה"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:64
 msgid "Recruit"
 msgstr "גייס"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:65
 msgid "Repeat Recruit"
 msgstr "חזור על גיוס"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:66
 msgid "Recall"
 msgstr "החזר"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:67
 msgid "End Turn"
 msgstr "סוף תור"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:68
 msgid "Toggle Grid"
 msgstr "הצגת/כיבוי סריג"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:69
 msgid "Mouse Scrolling"
 msgstr ""
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:70
 msgid "Status Table"
 msgstr "טבלת מצב"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:71
 msgid "Mute"
 msgstr "השתק"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:72
 msgid "Speak"
 msgstr "דבר"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:73
 msgid "Create Unit (Debug!)"
 msgstr "צור יחידה (דיבג!)"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:74
 msgid "Change Unit Side (Debug!)"
 msgstr "החלפת צדדים של יחידה (דיבג!)"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:76
 msgid "Scenario Objectives"
 msgstr "מטרות התרחיש"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:77
 msgid "Unit List"
 msgstr "רשימת יחידות"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:78
 msgid "Statistics"
 msgstr "סטטיסטיקה"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:79
 msgid "Quit Game"
 msgstr "צא מהמשחק"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:80
 #, fuzzy
 msgid "Set Team Label"
 msgstr "קביעת תגית"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:81
 msgid "Set Label"
 msgstr "קביעת תגית"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:82
 msgid "Clear Labels"
 msgstr "נקה תגית"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:83
 msgid "Show Enemy Moves"
 msgstr "הראה תנועות אוייב"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:84
 msgid "Best Possible Enemy Moves"
 msgstr "מהלכי האויב המיטביים"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:85
 msgid "Play"
 msgstr "הרץ"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:86
 msgid "Reset"
 msgstr "התחל מחדש"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:87
 msgid "Stop"
 msgstr "עצור"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:88
 msgid "Next Turn"
 msgstr "התור הבא"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:89
 msgid "Next Side"
 msgstr "הצד הבא"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:91
 #, fuzzy
 msgid "Full map"
 msgstr "הפיכת מפה"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:93
 msgid "Each team"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:95
 msgid "Team 1"
 msgstr ""
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:96
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:99
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:101
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:103
 msgid "Load Map"
 msgstr "טען מפה"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:104
 msgid "Save Map"
 msgstr "שמור מפה"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:105
 #, fuzzy
 msgid "Save Map As"
 msgstr "שמור מפה"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:106
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:107
 #, fuzzy
 msgid "Map Information"
 msgstr "יצירת מפה"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:109
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:110
 #, fuzzy
 msgid "Next Tool"
 msgstr "התור הבא"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:111
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:112
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Selection Tool"
 msgstr "בחר הכל"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:115
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:116
 #, fuzzy
 msgid "Next Brush"
 msgstr "התור הבא"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:117
 #, fuzzy
 msgid "Default Brush"
 msgstr "גודל רגיל"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:118
 msgid "Cut"
 msgstr "גזור"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:119
 msgid "Copy"
 msgstr "העתק"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:120
 msgid "Paste"
 msgstr "הדבק"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:122
 msgid "Select All"
 msgstr "בחר הכל"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:124
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Select None"
 msgstr "בחר הכל"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:128
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:130
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:132
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:134
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:136
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:138
 #, fuzzy
 msgid "Flip Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:140
 msgid "Fill Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:142
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "מלא את הבחירה"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:144
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:148
 #, fuzzy
 msgid "Rotate Map"
 msgstr "טען מפה"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:150
 #, fuzzy
 msgid "Generate Map"
 msgstr "יצירת מפה חדשה"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:152
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:154
 #, fuzzy
 msgid "Create Mask"
 msgstr "שמור משחק"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Refresh Display"
 msgstr "תצוגה"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:158
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:160
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:162
 msgid "Refresh Image Cache"
 msgstr "רענן מטמון דמויות"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:164
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:166
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "צייר קרקע"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:171
 msgid "Delay Shroud Updates"
 msgstr "השהיית עדכון הסתרה"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:172
 msgid "Update Shroud Now"
 msgstr "עדכון הסתרה מיידי"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:173
 msgid "Continue Move"
 msgstr "המשך תנועה"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:174
 msgid "Find Label or Unit"
 msgstr "חיפוש תגית או יחידה"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:175
 msgid "Speak to Ally"
 msgstr "דבר לבן ברית"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:176
 msgid "Speak to All"
 msgstr "דבר לכולם"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:177
 msgid "Help"
 msgstr "עזרה"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:178
 msgid "View Chat Log"
 msgstr "הצג רישום שיחות"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:179
 msgid "Change the language"
 msgstr "החלף שפה"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:181
 msgid "Enter user command"
 msgstr "הכנס פקודת משתמש"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:182
 #, fuzzy
 msgid "Custom command"
 msgstr "הכנס פקודת משתמש"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:183
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:184
 #, fuzzy
 msgid "Clear messages"
 msgstr "נקה תגית"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:186
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:187
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:659 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:646 src/hotkeys.cpp:927
 msgid "Do you really want to quit?"
 msgstr "האם באמת ברצונך לצאת?"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:882
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:889
 #, fuzzy
 msgid "Screenshot done"
 msgstr "צילום מסך"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "צילום מסך"
 
-#: src/mapgen_dialog.cpp:113 src/preferences_display.cpp:229
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:217
 msgid "Close Window"
 msgstr "סגור חלון"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:112
 msgid "Map Generator"
 msgstr "יצירת מפה"
 
-#: src/mapgen_dialog.cpp:123
+#: src/mapgen_dialog.cpp:119
 msgid "Players:"
 msgstr "שחקנים:"
 
-#: src/mapgen_dialog.cpp:126
+#: src/mapgen_dialog.cpp:122
 msgid "Number of Hills:"
 msgstr "מספר הגבעות:"
 
-#: src/mapgen_dialog.cpp:127
+#: src/mapgen_dialog.cpp:123
 msgid "Max Hill Size:"
 msgstr "גובה גבעה מירבי:"
 
-#: src/mapgen_dialog.cpp:128
+#: src/mapgen_dialog.cpp:124
 msgid "Villages:"
 msgstr "כפרים:"
 
-#: src/mapgen_dialog.cpp:129
+#: src/mapgen_dialog.cpp:125
 #, fuzzy
 msgid "Castle Size:"
 msgstr "גובה גבעה מירבי:"
 
-#: src/mapgen_dialog.cpp:130
+#: src/mapgen_dialog.cpp:126
 msgid "Landform:"
 msgstr "סוג קרקע:"
 
-#: src/mapgen_dialog.cpp:248
+#: src/mapgen_dialog.cpp:244
 msgid "Roads Between Castles"
 msgstr "דרכים בין הטירות"
 
-#: src/mapgen_dialog.cpp:308
+#: src/mapgen_dialog.cpp:304
 msgid "/1000 tiles"
 msgstr "/1000 מרצפות"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Coastal"
 msgstr "חופי"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Inland"
 msgstr "יבשתי"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Island"
 msgstr "אי"
 
-#: src/marked-up_text.cpp:331
+#: src/marked-up_text.cpp:330
 msgid "The maximum text width is less than 1."
 msgstr ""
 
-#: src/minimap.cpp:83
+#: src/minimap.cpp:82
 msgid "Could not get image for terrain: $terrain."
 msgstr ""
 
-#: src/minimap.cpp:107 src/minimap.cpp:119
+#: src/minimap.cpp:106 src/minimap.cpp:118
 msgid "Error creating or aquiring an image."
 msgstr ""
 
-#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
+#: src/preferences_display.cpp:73 src/preferences_display.cpp:106
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1901,76 +1901,76 @@ msgstr ""
 "לנקודת מסך על מנת להריץ את המשחק באופן חלונאי. התצוגה שלך חייבת לתמוך במצב "
 "של 1024x768x16 כדי להריץ את המשחק על מסך מלא."
 
-#: src/preferences_display.cpp:233
+#: src/preferences_display.cpp:221
 msgid "Hotkey Settings"
 msgstr "מקשי קיצור"
 
-#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
+#: src/preferences_display.cpp:227 src/preferences_display.cpp:295
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "הקש על מקש הקיצור הרצוי"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:246
 msgid "Action"
 msgstr "פעולה"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:246
 msgid "Binding"
 msgstr "הצמדה למקש"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:258
 msgid "Change Hotkey"
 msgstr "עדכון מקש קיצור"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:261
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "עדכון מקש קיצור"
 
-#: src/preferences_display.cpp:340
+#: src/preferences_display.cpp:328
 msgid "This Hotkey is already in use."
 msgstr "מקש קיצור זה כבר נמצא בשימוש."
 
-#: src/preferences_display.cpp:352
+#: src/preferences_display.cpp:340
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:431
+#: src/preferences_display.cpp:419
 msgid "There are no alternative video modes available"
 msgstr "אין מצבי תצוגה חלופיים זמינים"
 
-#: src/preferences_display.cpp:460
+#: src/preferences_display.cpp:448
 msgid "Choose Resolution"
 msgstr "בחירת רזולוציה"
 
-#: src/show_dialog.cpp:375
+#: src/show_dialog.cpp:357
 msgid "Error"
 msgstr "שגיאה"
 
-#: src/terrain_translation.cpp:688
+#: src/terrain_translation.cpp:687
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:49
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
 
-#: src/wml_exception.cpp:54
+#: src/wml_exception.cpp:51
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 
-#: src/wml_exception.cpp:72
+#: src/wml_exception.cpp:69
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
 
-#: src/wml_exception.cpp:75
+#: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 

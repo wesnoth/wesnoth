@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 12:12+0100\n"
+"POT-Creation-Date: 2008-11-09 21:11+0100\n"
 "PO-Revision-Date: 2007-12-09 18:53+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -92,21 +92,21 @@ msgid "Hex Line NW-SE"
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
+#: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only"
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:16
+#: data/core/editor2-tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain"
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:21
+#: data/core/editor2-tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:26
+#: data/core/editor2-tool-hints.cfg:30
 msgid "Click to paste."
 msgstr ""
 
@@ -138,149 +138,149 @@ msgstr ""
 msgid "villages"
 msgstr "wioski"
 
-#: src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:90
 msgid "Quit Editor"
 msgstr "Wyjście z edytora"
 
-#: src/editor2/editor_controller.cpp:233
+#: src/editor2/editor_controller.cpp:220
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:241
+#: src/editor2/editor_controller.cpp:228
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:244
+#: src/editor2/editor_controller.cpp:231
 msgid "There are unsaved changes in the map."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:246
+#: src/editor2/editor_controller.cpp:233
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
-#: src/editor2/editor_controller.cpp:394 src/editor2/editor_controller.cpp:416
+#: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
+#: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
 msgid "Error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:256
+#: src/editor2/editor_controller.cpp:243
 msgid "No editor time-of-day found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:289
+#: src/editor2/editor_controller.cpp:276
 msgid "There are unsaved changes in the map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:290
+#: src/editor2/editor_controller.cpp:277
 msgid "Do you want to discard all changes you made to the map?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:303
+#: src/editor2/editor_controller.cpp:290
 msgid "Choose a Map to Load"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor2/editor_controller.cpp:338
+#: src/editor2/editor_controller.cpp:325
 msgid "Save the Map As"
 msgstr "Zapisz Mapę Jako"
 
-#: src/editor2/editor_controller.cpp:342
+#: src/editor2/editor_controller.cpp:329
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
 
-#: src/editor2/editor_controller.cpp:358
+#: src/editor2/editor_controller.cpp:345
 msgid "No random map generators found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:369
+#: src/editor2/editor_controller.cpp:356
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:384
+#: src/editor2/editor_controller.cpp:371
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor2/editor_controller.cpp:391
+#: src/editor2/editor_controller.cpp:378
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:406
+#: src/editor2/editor_controller.cpp:393
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:413 src/editor2/editor_controller.cpp:521
-#: src/editor2/editor_main.cpp:56
+#: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
+#: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:502
+#: src/editor2/editor_controller.cpp:489
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor2/editor_controller.cpp:507
+#: src/editor2/editor_controller.cpp:494
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
-#: src/editor2/editor_controller.cpp:862
+#: src/editor2/editor_controller.cpp:849
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/editor2/editor_controller.cpp:864
+#: src/editor2/editor_controller.cpp:851
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:868
+#: src/editor2/editor_controller.cpp:855
 msgid "Redo"
 msgstr "Ponów"
 
-#: src/editor2/editor_controller.cpp:870
+#: src/editor2/editor_controller.cpp:857
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:65
+#: src/editor2/editor_map.cpp:62
 msgid "Empty map file or file not found"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:73
+#: src/editor2/editor_map.cpp:70
 msgid "There was a format error while loading the file:"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:79
+#: src/editor2/editor_map.cpp:76
 msgid "There was a wml error while loading the file:"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:152 src/editor2/mouse_action.cpp:383
+#: src/editor2/editor_map.cpp:149 src/editor2/mouse_action.cpp:379
 msgid "Player"
 msgstr "Gracz"
 
-#: src/editor2/editor_map.cpp:271
+#: src/editor2/editor_map.cpp:268
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor2/editor_palettes.cpp:503
+#: src/editor2/editor_palettes.cpp:494
 msgid "FG"
 msgstr "FG"
 
-#: src/editor2/editor_palettes.cpp:505
+#: src/editor2/editor_palettes.cpp:496
 msgid "BG"
 msgstr "BG"
 
-#: src/editor2/mouse_action.cpp:380
+#: src/editor2/mouse_action.cpp:376
 #, fuzzy
 msgid "(Player)^None"
 msgstr "Gracz"
 
-#: src/editor2/mouse_action.cpp:387
+#: src/editor2/mouse_action.cpp:383
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:388
+#: src/editor2/mouse_action.cpp:384
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:113
+#: src/gui/dialogs/editor_settings.cpp:105
 msgid "Custom setting"
 msgstr ""
 

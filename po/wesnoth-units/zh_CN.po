@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 11:59+0100\n"
+"POT-Creation-Date: 2008-11-09 21:11+0100\n"
 "PO-Revision-Date: 2008-02-22 10:15+1000\n"
 "Last-Translator: luojie <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -25,7 +25,7 @@ msgid "Blood Bat"
 msgstr "血色蝙蝠"
 
 #. [unit_type]: race=bats
-#: data/core/units/bats/Bat_Blood.cfg:20
+#: data/core/units/bats/Bat_Blood.cfg:19
 msgid ""
 "Blood Bats are so-named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -38,7 +38,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:175
+#: data/core/units/bats/Bat_Blood.cfg:174
+#: data/core/units/bats/Bat_Dread.cfg:29
 #: data/core/units/bats/Bat_Vampire.cfg:174
 #: data/core/units/monsters/Wolf.cfg:49
 #: data/core/units/monsters/Cave_Spider.cfg:34
@@ -49,6 +50,21 @@ msgstr ""
 #: data/core/units/goblins/Direwolf_Rider.cfg:33
 msgid "fangs"
 msgstr "尖牙"
+
+#. [unit_type]: race=bats
+#: data/core/units/bats/Bat_Dread.cfg:4
+#, fuzzy
+msgid "Dread Bat"
+msgstr "吸血蝙蝠"
+
+#. [unit_type]: race=bats
+#: data/core/units/bats/Bat_Dread.cfg:25
+msgid ""
+"Dread Bats are fast and can drain the blood of those they attack, thereby "
+"healing themselves, even to the point where they become stronger than they "
+"began the battle. Bloated with blood they have grown to a huge size and can "
+"feast on bigger and tougher victims."
+msgstr ""
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -95,10 +111,11 @@ msgstr "海盗船"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
+#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
-"onboard are more than happy to help relieve other ships of their weighty "
-"cargo."
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo."
 msgstr ""
 "如果说运输船是羊，海盗船就是狼。船上的海道们很乐意帮那些满载货物独自远离海岸"
 "航行的船只卸下货物，避免超载……"
@@ -128,7 +145,7 @@ msgid "Armageddon Drake"
 msgstr "末日龙战士"
 
 #. [unit_type]: race=drake
-#: data/core/units/drakes/Armageddon.cfg:26
+#: data/core/units/drakes/Armageddon.cfg:27
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the common man. The "
@@ -145,7 +162,7 @@ msgstr ""
 #: data/core/units/gryphons/Gryphon_Master.cfg:29
 #: data/core/units/gryphons/Gryphon.cfg:28 data/core/units/drakes/Fire.cfg:70
 #: data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
+#: data/core/units/drakes/Armageddon.cfg:84
 #: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:42
 #: data/core/units/undead/Corpse_Necrophage.cfg:28
@@ -160,7 +177,7 @@ msgstr "爪"
 #: data/core/units/drakes/Flare.cfg:91 data/core/units/drakes/Fire.cfg:79
 #: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
 #: data/core/units/drakes/Glider.cfg:84
-#: data/core/units/drakes/Armageddon.cfg:92
+#: data/core/units/drakes/Armageddon.cfg:93
 #: data/core/units/drakes/Flameheart.cfg:87
 #: data/core/units/drakes/Hurricane.cfg:101 data/core/units/drakes/Sky.cfg:100
 #: data/core/units/drakes/Blademaster.cfg:77
@@ -193,8 +210,8 @@ msgstr ""
 #: data/core/units/elves/High_Lord.cfg:61 data/core/units/elves/Hero.cfg:23
 #: data/core/units/elves/Champion.cfg:24 data/core/units/elves/Fighter.cfg:24
 #: data/core/units/elves/Sharpshooter.cfg:50
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:82
+#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:30
+#: data/core/units/nagas/Fighter.cfg:26 data/core/units/drakes/Flare.cfg:82
 #: data/core/units/drakes/Enforcer.cfg:67
 #: data/core/units/drakes/Warrior.cfg:72
 #: data/core/units/drakes/Gladiator.cfg:66
@@ -202,7 +219,7 @@ msgstr ""
 #: data/core/units/drakes/Blademaster.cfg:68
 #: data/core/units/drakes/Clasher.cfg:77
 #: data/core/units/humans/Woodsman_Ranger.cfg:45
-#: data/core/units/humans/Loyalist_Longbowman.cfg:26
+#: data/core/units/humans/Loyalist_Longbowman.cfg:27
 #: data/core/units/humans/Loyalist_General.cfg:43
 #: data/core/units/humans/Loyalist_Sergeant.cfg:34
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
@@ -288,7 +305,7 @@ msgstr ""
 #: data/core/units/drakes/Clasher.cfg:86
 #: data/core/units/humans/Horseman.cfg:24
 #: data/core/units/humans/Loyalist_Javelineer.cfg:28
-#: data/core/units/humans/Loyalist_Spearman.cfg:62
+#: data/core/units/humans/Loyalist_Spearman.cfg:63
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:28
 #: data/core/units/goblins/Spearman.cfg:38
@@ -565,7 +582,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:31
-#: data/core/units/dwarves/Ulfserker.cfg:31
+#: data/core/units/dwarves/Ulfserker.cfg:32
 msgid "berserker frenzy"
 msgstr "狂血暴击"
 
@@ -575,11 +592,12 @@ msgid "Dwarvish Dragonguard"
 msgstr "矮人龙卫士"
 
 #. [unit_type]: race=dwarf
-#: data/core/units/dwarves/Dragonguard.cfg:19
+#: data/core/units/dwarves/Dragonguard.cfg:20
+#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
-"weapon of choice, these strange staves that belch fire and death. Others "
+"weapon of choice, these strange staffs that belch fire and death. Others "
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
@@ -594,9 +612,9 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
 #: data/core/units/orcs/Slayer.cfg:27
-#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Dragonguard.cfg:26
 #: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Thunderguard.cfg:26
 #: data/core/units/humans/Outlaw_Assassin.cfg:28
 #: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/humans/Woodsman_Trapper.cfg:70
@@ -604,13 +622,13 @@ msgstr ""
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/humans/Woodsman_Huntsman.cfg:36
 #: data/core/units/humans/Woodsman_Poacher.cfg:36
-#: data/core/units/undead/Skele_Banebow.cfg:30
+#: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
 msgstr "匕首"
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Dragonguard.cfg:34
+#: data/core/units/dwarves/Dragonguard.cfg:35
 msgid "dragonstaff"
 msgstr "龙枪"
 
@@ -633,14 +651,14 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/undead/Skele_Deathblade.cfg:149
-#: data/core/units/undead/Skele_Revenant.cfg:29
+#: data/core/units/undead/Skele_Revenant.cfg:30
 #: data/core/units/undead/Skeleton.cfg:106
 #: data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
 msgstr "斧"
 
 #. [attack]: type=impact
-#: data/core/units/dwarves/Steelclad.cfg:38
+#: data/core/units/dwarves/Steelclad.cfg:39
 #: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
@@ -669,7 +687,7 @@ msgstr ""
 #: data/core/units/dwarves/Guardsman.cfg:40
 #: data/core/units/dwarves/Sentinel.cfg:48
 #: data/core/units/humans/Loyalist_Javelineer.cfg:39
-#: data/core/units/humans/Loyalist_Spearman.cfg:74
+#: data/core/units/humans/Loyalist_Spearman.cfg:75
 msgid "javelin"
 msgstr "标枪"
 
@@ -691,7 +709,7 @@ msgstr ""
 "族的力量。"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Steelclad.cfg:29
+#: data/core/units/dwarves/Steelclad.cfg:30
 #: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:46
 msgid "battle axe"
@@ -708,7 +726,7 @@ msgid "Dwarvish Runemaster"
 msgstr "矮人符文大师"
 
 #. [unit_type]: race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:19
+#: data/core/units/dwarves/Runemaster.cfg:20
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
 "surface of an object, which by their mere presence somehow imbue it with "
@@ -719,12 +737,12 @@ msgstr ""
 "用符文的大师在战斗中很少见，但是他们使用起符文来十分可怕。"
 
 #. [attack]: type=impact
-#: data/core/units/dwarves/Runemaster.cfg:24
+#: data/core/units/dwarves/Runemaster.cfg:25
 msgid "runic hammer"
 msgstr "符文锤"
 
 #. [attack]: type=fire
-#: data/core/units/dwarves/Runemaster.cfg:34
+#: data/core/units/dwarves/Runemaster.cfg:35
 #, fuzzy
 msgid "lightning bolt"
 msgstr "闪电箭"
@@ -770,7 +788,7 @@ msgid "Dwarvish Steelclad"
 msgstr "矮人铁甲兵"
 
 #. [unit_type]: race=dwarf
-#: data/core/units/dwarves/Steelclad.cfg:19
+#: data/core/units/dwarves/Steelclad.cfg:20
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
@@ -783,12 +801,13 @@ msgstr "矮人雷霆战士"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
+#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
 "afar through the apparatus of these strange wands they carried into battle. "
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
-"made moreso by the secrecy which dwarves hold about their workings."
+"made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
 "当韦诺大陆的人类第一次碰到矮人时，他们被矮人雷霆战士的力量所迷惑。这些战士能"
 "从远处用奇怪的“棒子”来进行致命的打击。那“雷棒”震耳欲聋的声音就使人畏惧，也使"
@@ -796,7 +815,7 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:50
-#: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderguard.cfg:35
 msgid "thunderstick"
 msgstr "雷霆之枪"
 
@@ -806,10 +825,11 @@ msgid "Dwarvish Thunderguard"
 msgstr "矮人雷霆守卫"
 
 #. [unit_type]: race=dwarf
-#: data/core/units/dwarves/Thunderguard.cfg:20
+#: data/core/units/dwarves/Thunderguard.cfg:21
+#, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
-"strange staves of wood and iron that make a thunderous noise in their anger. "
+"strange staffs of wood and iron that make a thunderous noise in their anger. "
 "The machinations behind this weaponry are a mystery, a secret taken to the "
 "grave by the dwarves of Knalga who wield them, and are assumed to have even "
 "forged them. The most that is known are reports of dwarves pouring a strange "
@@ -833,7 +853,7 @@ msgid "Dwarvish Ulfserker"
 msgstr "矮人双手斧战士"
 
 #. [unit_type]: race=dwarf
-#: data/core/units/dwarves/Ulfserker.cfg:19
+#: data/core/units/dwarves/Ulfserker.cfg:20
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
@@ -875,14 +895,14 @@ msgstr ""
 #: data/core/units/elves/Fighter.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:79
 #: data/core/units/humans/Woodsman_Ranger.cfg:54
-#: data/core/units/humans/Loyalist_Longbowman.cfg:35
+#: data/core/units/humans/Loyalist_Longbowman.cfg:36
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:36
 #: data/core/units/humans/Woodsman_Huntsman.cfg:45
 #: data/core/units/humans/Woodsman_Poacher.cfg:45
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
 #: data/core/units/undead/Skeleton_Archer.cfg:40
-#: data/core/units/undead/Skele_Banebow.cfg:39
+#: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 msgid "bow"
 msgstr "弓"
@@ -988,7 +1008,7 @@ msgstr ""
 #: data/core/units/merfolk/Priestess.cfg:62
 #: data/core/units/merfolk/Enchantress.cfg:24
 #: data/core/units/merfolk/Initiate.cfg:28
-#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:54
+#: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:55
 #: data/core/units/humans/Mage_White.cfg:121
 #: data/core/units/humans/Mage_Great.cfg:30
 #: data/core/units/humans/Mage_Elder.cfg:25
@@ -1000,12 +1020,12 @@ msgid "staff"
 msgstr "法杖"
 
 #. [attack]: type=impact
-#: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:65
+#: data/core/units/elves/Druid.cfg:61 data/core/units/elves/Shyde.cfg:66
 msgid "ensnare"
 msgstr "诱捕"
 
 #. [attack]: type=pierce
-#: data/core/units/elves/Druid.cfg:73 data/core/units/elves/Shyde.cfg:77
+#: data/core/units/elves/Druid.cfg:73 data/core/units/elves/Shyde.cfg:78
 msgid "thorns"
 msgstr "荆棘"
 
@@ -1312,7 +1332,7 @@ msgid "female^Elvish Shyde"
 msgstr "精灵仙子"
 
 #. [unit_type]: race=elf
-#: data/core/units/elves/Shyde.cfg:21
+#: data/core/units/elves/Shyde.cfg:22
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -1323,7 +1343,7 @@ msgstr ""
 "引，是精灵森林的守护者，是精灵族之优雅与神秘的化身。"
 
 #. [attack]: type=impact
-#: data/core/units/elves/Shyde.cfg:52 data/core/units/elves/Sylph.cfg:27
+#: data/core/units/elves/Shyde.cfg:53 data/core/units/elves/Sylph.cfg:27
 msgid "faerie touch"
 msgstr "仙境之触"
 
@@ -1426,11 +1446,12 @@ msgstr "地精骑士"
 
 #. [unit_type]: race=wolf
 #: data/core/units/goblins/Knight.cfg:20
+#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
 "is simply that they are the elite of the wolf riders, likely promoted to "
-"their position by their success in some temerarious raid.\n"
+"their position by their success in some audacious raid.\n"
 "\n"
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
@@ -1558,10 +1579,11 @@ msgstr "狮鹫大师"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
+#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
+"earth-bound tremble, for these mighty birds of prey may strike from anywhere."
 msgstr ""
 "狮鹫大师很善于利用狮鹫飞行，狮鹫就是他们身体的一部分。这种特殊的关系让陆战部"
 "队的内心感到振颤，因为这对强大的搭档可以从任何方位展开进攻。"
@@ -1722,7 +1744,7 @@ msgstr ""
 "的身影。"
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
 #: data/core/units/humans/Loyalist_Bowman.cfg:25
 msgid "short sword"
 msgstr "短剑"
@@ -1746,8 +1768,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [attack]: type=fire
 #: data/core/units/orcs/Crossbowman.cfg:33
-#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
-#: data/core/units/orcs/Slurbow.cfg:45
+#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:38
+#: data/core/units/orcs/Slurbow.cfg:47
 #: data/core/units/humans/Loyalist_Duelist.cfg:81
 #: data/core/units/humans/Loyalist_General.cfg:52
 #: data/core/units/humans/Loyalist_Sergeant.cfg:43
@@ -1767,6 +1789,7 @@ msgstr "骑兵"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
+#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1775,7 +1798,7 @@ msgid ""
 "melee.\n"
 "\n"
 "Cavalrymen are very useful for taking and holding positions on open ground, "
-"for screening friendly soldiers, and also for scoutwork."
+"for screening friendly soldiers, and also for scouting work."
 msgstr ""
 "骑兵与骑手的不同在于其战术和装备。骑兵身着更厚实的铠甲，并携带剑和盾，而不是"
 "长枪。他们不使用冲锋的战术，而是在灵巧的移动中用剑砍杀，马与马背上的骑兵都是"
@@ -1834,7 +1857,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:72
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-msgid "sabre"
+#, fuzzy
+msgid "saber"
 msgstr "军刀"
 
 #. [unit_type]: race=human
@@ -1844,6 +1868,7 @@ msgstr "剑客"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
+#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -1851,7 +1876,7 @@ msgid ""
 "reliably dodge any offensive move is a luxury only afforded to the fit of "
 "body, and then only to those who endure rigorous training.\n"
 "\n"
-"Outfitted with only a dagger and sabre, fencers are light on their feet and "
+"Outfitted with only a dagger and saber, fencers are light on their feet and "
 "useful in many situations where their armor-bound peers are at a "
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the weight of their full armor."
@@ -2008,7 +2033,7 @@ msgid "Longbowman"
 msgstr "长弓手"
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Loyalist_Longbowman.cfg:20
+#: data/core/units/humans/Loyalist_Longbowman.cfg:21
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
 "wield. It takes great strength to draw one, and the added range and power it "
@@ -2165,7 +2190,7 @@ msgid "Spearman"
 msgstr "矛兵"
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Loyalist_Spearman.cfg:19
+#: data/core/units/humans/Loyalist_Spearman.cfg:20
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -2203,7 +2228,7 @@ msgid "Mage"
 msgstr "法师"
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Mage.cfg:24
+#: data/core/units/humans/Mage.cfg:25
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2237,13 +2262,13 @@ msgstr ""
 "法师身体虚弱，不善近身战斗，但他们的魔法能力在战争中仍然十分有用。"
 
 #. [attack]: type=fire
-#: data/core/units/humans/Mage.cfg:63
+#: data/core/units/humans/Mage.cfg:64
 #: data/core/units/humans/Mage_Silver.cfg:45
 msgid "missile"
 msgstr "魔法飞弹"
 
 #. [female]
-#: data/core/units/humans/Mage.cfg:167
+#: data/core/units/humans/Mage.cfg:168
 msgid "female^Mage"
 msgstr "法师"
 
@@ -2510,7 +2535,7 @@ msgstr ""
 "战，而是喜欢在夜幕掩护之下行动。"
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
+#: data/core/units/humans/Outlaw_Footpad.cfg:34
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:36
@@ -2592,7 +2617,7 @@ msgid "Footpad"
 msgstr "走卒"
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Outlaw_Footpad.cfg:19
+#: data/core/units/humans/Outlaw_Footpad.cfg:20
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2606,7 +2631,7 @@ msgstr ""
 "骚扰敌人，特别是在夜幕的掩护之下。"
 
 #. [attack]: type=impact
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Footpad.cfg:25
 #: data/core/units/humans/Outlaw_Ruffian.cfg:23
 #: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:26 data/core/units/trolls/Hero.cfg:26
@@ -2614,12 +2639,12 @@ msgid "club"
 msgstr "木棒"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:165
+#: data/core/units/humans/Outlaw_Footpad.cfg:166
 msgid "female^Footpad"
 msgstr "走卒"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:168
+#: data/core/units/humans/Outlaw_Footpad.cfg:169
 msgid ""
 "female^These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2802,9 +2827,10 @@ msgstr "山民"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:19
+#, fuzzy
 msgid ""
-"Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
-"living where the human world verges on the wilderness. Wits and woodcraft "
+"Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
+"a living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
 "山民是猎人,伐木工,烧炭工,和其他在人类社会边缘的荒野中艰难度日的人们. 智慧和关"
@@ -2850,10 +2876,11 @@ msgstr "偷猎者"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
+#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
-"travelling through the wild will need a few poachers in their employ, not "
+"traveling through the wild will need a few poachers in their employ, not "
 "merely for hunting but for lending a hand in any serious fight.\n"
 "\n"
 "Because of their experience, these hunters are unusually capable at night, "
@@ -2957,7 +2984,7 @@ msgstr ""
 "灾的全部武器。"
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Siren.cfg:40
+#: data/core/units/merfolk/Siren.cfg:41
 #: data/core/units/merfolk/Enchantress.cfg:33
 #: data/core/units/merfolk/Initiate.cfg:37
 msgid "water spray"
@@ -2995,7 +3022,7 @@ msgstr ""
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
+#: data/core/units/merfolk/Triton.cfg:25 data/core/units/merfolk/Triton.cfg:33
 #: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:35
 msgid "trident"
@@ -3061,11 +3088,12 @@ msgstr "人鱼标枪兵"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
+#, fuzzy
 msgid ""
-"Those mermen who master the art of javelinry can become nearly as effective "
-"as an archer - though the heft of their weapons impedes their range, the "
-"impact of one is considerably greater. In the water, the mobility of the "
-"mermen more than makes up for this when facing foes who cannot swim."
+"Those mermen who master the art of the javelin can become nearly as "
+"effective as an archer - though the heft of their weapons impedes their "
+"range, the impact of one is considerably greater. In the water, the mobility "
+"of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
 "掌握了掷标枪术的人鱼就像弓箭手一样——虽然他们武器沉重，影响了射程，但造成的伤"
 "害也大得多。在水中，人鱼的机动性完全弥补了这种不足，特别是在对付不会游泳的敌"
@@ -3138,7 +3166,7 @@ msgstr ""
 "示：女妖的攻击是魔法攻击，总是有很高的命中率。"
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Siren.cfg:28
+#: data/core/units/merfolk/Siren.cfg:29
 msgid "naia touch"
 msgstr "水仙之触"
 
@@ -3149,13 +3177,14 @@ msgstr "人鱼矛兵"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
+#, fuzzy
 msgid ""
-"Archery is little favored by the mermen, for whom javelinry serves a similar "
-"function. Though thrown javelins are of little use under the water, they are "
-"extremely effective at the surface, where their weight allows them to plunge "
-"several feet below the water while retaining enough momentum to wreak "
-"damage. They are also useful in melee, even deep under the surface, which is "
-"something that certainly cannot be said of arrows."
+"Archery is little favored by the mermen, for whom use of javelins serves a "
+"similar function. Though thrown javelins are of little use under the water, "
+"they are extremely effective at the surface, where their weight allows them "
+"to plunge several feet below the water while retaining enough momentum to "
+"wreak damage. They are also useful in melee, even deep under the surface, "
+"which is something that certainly cannot be said of arrows."
 msgstr ""
 "人鱼不太爱使用箭术，因为投掷标枪跟射箭功能相同。虽然投掷标枪在水下用的很少，"
 "在水面以上却非常有效，因为标枪沉重，可以射入水中数尺而保持杀伤力。矛在近战中"
@@ -3167,7 +3196,7 @@ msgid "Merman Triton"
 msgstr "人鱼三叉戟战士"
 
 #. [unit_type]: race=merman
-#: data/core/units/merfolk/Triton.cfg:19
+#: data/core/units/merfolk/Triton.cfg:20
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -3300,7 +3329,7 @@ msgid "fist"
 msgstr "拳头"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Mudcrawler.cfg:46
+#: data/core/units/monsters/Mudcrawler.cfg:47
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 msgid "mud glob"
 msgstr "黏土块"
@@ -3333,7 +3362,7 @@ msgid "Mudcrawler"
 msgstr "黏土怪"
 
 #. [unit_type]: race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:19
+#: data/core/units/monsters/Mudcrawler.cfg:20
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -3418,7 +3447,7 @@ msgid "Naga Fighter"
 msgstr "娜迦战士"
 
 #. [unit_type]: race=naga
-#: data/core/units/nagas/Fighter.cfg:20
+#: data/core/units/nagas/Fighter.cfg:21
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them a whole world forbidden to land dwellers. "
@@ -3431,7 +3460,7 @@ msgstr ""
 "惧。他们小巧，而且有点脆弱，但常常比敌人更灵活。"
 
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:63
+#: data/core/units/nagas/Fighter.cfg:77
 msgid "Nagini Fighter"
 msgstr "娜迦战士"
 
@@ -3441,7 +3470,7 @@ msgid "Naga Myrmidon"
 msgstr "娜迦忠勇武士"
 
 #. [unit_type]: race=naga
-#: data/core/units/nagas/Myrmidon.cfg:20
+#: data/core/units/nagas/Myrmidon.cfg:21
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -3454,14 +3483,15 @@ msgstr ""
 "是强大的敌手，善于游泳的天性更是赋予他们致命的机动性。"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:67
+#: data/core/units/nagas/Myrmidon.cfg:68
 msgid "Nagini Myrmidon"
 msgstr "娜迦忠勇武士"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:70
+#: data/core/units/nagas/Myrmidon.cfg:71
+#, fuzzy
 msgid ""
-"The most practiced of the nagini blademasters are initiated into the caste "
+"The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
 "the snakes which they resemble, and dance away from attacks with grace. Not "
 "only are they potent enemies on any open terrain, but their ability to swim "
@@ -3497,8 +3527,9 @@ msgstr "娜迦勇士"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:69
+#, fuzzy
 msgid ""
-"Many of the young warriors of the nagini aspire for the day when they merit "
+"Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
 "unlike that of the Orcs and other races, for they have begun to learn the "
 "art of using their serpentine form to best effect, twisting and turning to "
@@ -3685,10 +3716,11 @@ msgid "Orcish Slurbow"
 msgstr "兽人重弩手"
 
 #. [unit_type]: race=orc
-#: data/core/units/orcs/Slurbow.cfg:21
+#: data/core/units/orcs/Slurbow.cfg:23
+#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
-"much more intricate device, complete with a hand-turned cranequin to recock "
+"much more intricate device, complete with a hand-turned cranequin to re-cock "
 "the weapon, and often with a multi-ply arc, of laminate wood or bone, "
 "driving the projectile. Such a device is much easier to work with, and much "
 "more powerful than simpler crossbows; it is also completely beyond orcish "
@@ -4072,7 +4104,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Walking.cfg:25
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:119
-#: data/core/units/undead/Necro_Lich.cfg:59
+#: data/core/units/undead/Necro_Lich.cfg:60
 #: data/core/units/undead/Corpse_Soulless.cfg:26
 msgid "touch"
 msgstr "触碰"
@@ -4108,14 +4140,14 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
-#: data/core/units/undead/Necro_Lich.cfg:71
+#: data/core/units/undead/Necro_Lich.cfg:72
 msgid "chill tempest"
 msgstr "冷冻风暴"
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:59
-#: data/core/units/undead/Necro_Lich.cfg:83
+#: data/core/units/undead/Necro_Lich.cfg:84
 #: data/core/units/undead/Necromancer.cfg:51
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:47
 msgid "shadow wave"
@@ -4254,7 +4286,7 @@ msgid "Lich"
 msgstr "巫妖"
 
 #. [unit_type]: race=undead
-#: data/core/units/undead/Necro_Lich.cfg:24
+#: data/core/units/undead/Necro_Lich.cfg:25
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4309,12 +4341,12 @@ msgid "female^Necromancer"
 msgstr "死灵法师"
 
 #. [unit_type]: race=undead
-#: data/core/units/undead/Skele_Banebow.cfg:4
+#: data/core/units/undead/Skele_Banebow.cfg:5
 msgid "Banebow"
 msgstr "毁灭射手"
 
 #. [unit_type]: race=undead
-#: data/core/units/undead/Skele_Banebow.cfg:17
+#: data/core/units/undead/Skele_Banebow.cfg:18
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4420,7 +4452,7 @@ msgid "Revenant"
 msgstr "亡魂"
 
 #. [unit_type]: race=undead
-#: data/core/units/undead/Skele_Revenant.cfg:17
+#: data/core/units/undead/Skele_Revenant.cfg:18
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "

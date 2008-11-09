@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 20:51+0100\n"
+"POT-Creation-Date: 2008-11-09 21:11+0100\n"
 "PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -378,8 +378,8 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:150
-#: src/construct_dialog.cpp:153
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
+#: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -410,19 +410,19 @@ msgstr "إنشاء خريطة جديدة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:102
 msgid "New Map"
 msgstr "خريطة جديدة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:124
+#: data/gui/default/window/editor_new_map.cfg:46 src/mapgen_dialog.cpp:120
 msgid "Width:"
 msgstr "العرض:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:125
+#: data/gui/default/window/editor_new_map.cfg:73 src/mapgen_dialog.cpp:121
 msgid "Height:"
 msgstr "الطول:"
 
@@ -435,7 +435,7 @@ msgstr "إنشاء خريطة جديدة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:159
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:146
 msgid "Resize Map"
 msgstr "إعادة تحجيم الخريطة"
 
@@ -494,7 +494,7 @@ msgstr "إعادة تحجيم الخريطة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:100
 #, fuzzy
 msgid "Editor Settings"
 msgstr "تفضيلتات مفتاح الاختصار"
@@ -541,14 +541,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:208
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:149
+#: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
 #: data/gui/default/window/editor_settings.cfg:228
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:188
 msgid "Apply"
 msgstr "تطبيق"
 
@@ -773,7 +773,7 @@ msgstr "مغادرة المحرّر"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:63 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:49 src/hotkeys.cpp:75
 msgid "Preferences"
 msgstr "تفضيلات"
 
@@ -784,1087 +784,1087 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:659
-#: src/hotkeys.cpp:940
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:646
+#: src/hotkeys.cpp:927
 msgid "Quit"
 msgstr "مغادرة"
 
-#: src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:128
 msgid "Yes"
 msgstr "نعم"
 
-#: src/construct_dialog.cpp:146
+#: src/construct_dialog.cpp:129
 msgid "No"
 msgstr "لا"
 
-#: src/construct_dialog.cpp:156
+#: src/construct_dialog.cpp:139
 msgid "Close"
 msgstr "غلق"
 
-#: src/filechooser.cpp:62
+#: src/filechooser.cpp:58
 msgid "File: "
 msgstr "الملف:"
 
-#: src/filechooser.cpp:65
+#: src/filechooser.cpp:61
 msgid "Delete File"
 msgstr "حذف الملف"
 
-#: src/filechooser.cpp:67 src/filechooser.cpp:192
+#: src/filechooser.cpp:63 src/filechooser.cpp:188
 msgid "New Folder"
 msgstr "مجلّد جديد"
 
-#: src/filechooser.cpp:180
+#: src/filechooser.cpp:176
 msgid "Deletion of the file failed."
 msgstr "فشل حذف الملف"
 
-#: src/filechooser.cpp:193
+#: src/filechooser.cpp:189
 msgid "Name: "
 msgstr "الإسم:"
 
-#: src/filechooser.cpp:198
+#: src/filechooser.cpp:194
 msgid "Creation of the directory failed."
 msgstr "فشل حذف المجلد"
 
-#: src/game_preferences.cpp:281
+#: src/game_preferences.cpp:269
 msgid "No server has been defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/game_preferences.cpp:345
+#: src/game_preferences.cpp:333
 msgid "player"
 msgstr "لاعب"
 
-#: src/game_preferences_display.cpp:164 src/hotkeys.cpp:67
+#: src/game_preferences_display.cpp:150 src/hotkeys.cpp:54
 msgid "Toggle Full Screen"
 msgstr "ملء الشاشة"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:151
 msgid "Accelerated Speed"
 msgstr "حركة متسارعة"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:152
 msgid "Skip AI Moves"
 msgstr "تخطي حركات الذكاء الإصطناعي"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:153
 msgid "Show Grid"
 msgstr "إظهار الشبكة"
 
-#: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:154 src/game_preferences_display.cpp:336
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "حذف الإعادة في حالة انتصار في ل.و/ع.ل أو هزيمة في ع.ل"
 
-#: src/game_preferences_display.cpp:169 src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:155 src/game_preferences_display.cpp:339
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "احذف المحفوظات التلقائية في حالة انتصار في ل.و/ع.ل أو هزيمة في ع.ل"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:156
 msgid "Do Not Show Lobby Joins"
 msgstr "عدم الإعلان باللاعبين الداخلين"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:157
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "الإعلان بالداخلين من الأصدقاء فقط"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:158
 msgid "Show All Lobby Joins"
 msgstr "الإعلان بجميع الداخلين"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:159
 msgid "Sort Lobby List"
 msgstr "فرز قائمة الداخلين"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:160
 msgid "Iconize Lobby List"
 msgstr "جعل قائمة المدخل على شكل إيقونات"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:161
 msgid "Set path to wesnothd"
 msgstr ""
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:162
 msgid "Friends List"
 msgstr "قائمة الأصدقاء"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:163
 msgid "Multiplayer Options"
 msgstr "خيارات اللعب العديد اللاعبين"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:164
 msgid "Add As Friend"
 msgstr "إضافته كصديق"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:165
 msgid "Add As Ignore"
 msgstr "إضافته كمُهمَل"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:166
 msgid "Remove"
 msgstr "حذف"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:167
 msgid "Show Floating Labels"
 msgstr "إظهار اللصائق الطافية"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:168
 msgid "Turn Dialog"
 msgstr "الرسالة في بداية الدور"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:169
 msgid "Turn Bell"
 msgstr "جرس الإعلان بالدور"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:170
 msgid "Show Team Colors"
 msgstr "إظهار ألوان الفرق"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:171
 msgid "Show Color Cursors"
 msgstr "استعمال مؤشر ملوّن"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:172
 msgid "Show Haloing Effects"
 msgstr "إظهار تأثيرات الهالو"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:173
 msgid "Change Resolution"
 msgstr "تغيير الإستبانة"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:174
 msgid "Theme"
 msgstr "السمة"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:175
 msgid "Hotkeys"
 msgstr "مفتاح الاختصار"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:176
 msgid "Adjust Gamma"
 msgstr "تسوية الجاما"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:177
 msgid "Reverse Time Graphics"
 msgstr "قلب مبيان الزمن"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:179
 msgid "Sound effects"
 msgstr "المؤثرات الصوتية"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:180
 msgid "Music"
 msgstr "الموسيقى"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:181
 msgid "Chat Timestamping"
 msgstr "إظهار زمن الحديث"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:182
 msgid "sound^Advanced Options"
 msgstr "تفضيلات متقدمة للصوت"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:183
 msgid "sound^Standard Options"
 msgstr "تفضيلات عادية للصوت"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:184
 msgid "User Interface Sounds"
 msgstr "أصوات واجهة المُستخدِم"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:187
 msgid "Custom"
 msgstr "مخصص"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:189
 msgid "Show Unit Idle Animations"
 msgstr "إظهار تحريكات الوحدات الساكنة"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:191
 msgid "Music Volume:"
 msgstr "مستوى صوت الموسيقى:"
 
-#: src/game_preferences_display.cpp:205
+#: src/game_preferences_display.cpp:191
 msgid "SFX Volume:"
 msgstr "مستوى صوت التأثيرات الخاصة:"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:192
 msgid "UI Sound Volume:"
 msgstr "مستوى صوت أصوات الواجهة:"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:193
 msgid "Bell Volume:"
 msgstr "مستوى صوت الجرس:"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:193
 msgid "Scroll Speed:"
 msgstr "سرعة اللف:"
 
-#: src/game_preferences_display.cpp:208
+#: src/game_preferences_display.cpp:194
 msgid "Gamma:"
 msgstr "جاما:"
 
-#: src/game_preferences_display.cpp:210
+#: src/game_preferences_display.cpp:196
 msgid "Sample Rate (Hz):"
 msgstr "معدًل الإعتيان (Hz):"
 
-#: src/game_preferences_display.cpp:211
+#: src/game_preferences_display.cpp:197
 msgid "Frequency:"
 msgstr "التردد:"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:221
 msgid "Sound effects on/off"
 msgstr "التأثيرات الصوتية مفتوح/مغلق"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:225
 msgid "Change the sound effects volume"
 msgstr "تغيير مستوى صوت التأثيرات الصوتية"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:228
 msgid "Music on/off"
 msgstr "الموسيقى مفتوح/مغلق"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:232
 msgid "Change the music volume"
 msgstr "تغيير مستوى صوت الموسيقى"
 
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:238
 msgid "Change the bell volume"
 msgstr "تغيير مستوى صوت الجرس"
 
-#: src/game_preferences_display.cpp:255
+#: src/game_preferences_display.cpp:241
 msgid "Turn menu and button sounds on/off"
 msgstr "فتح/غلق صوت الأزرار و القائم"
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:245
 msgid "Change the sound volume for button clicks, etc."
 msgstr "تغيير مستوى صوت الضغط على الأزرار إلخ.."
 
-#: src/game_preferences_display.cpp:261
+#: src/game_preferences_display.cpp:247
 msgid "Change the sample rate"
 msgstr "تغيير معدل الإعتيان"
 
-#: src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:256
 msgid "User defined sample rate"
 msgstr "تحديد المُستخدِم لمعدل الإعتيان"
 
-#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:265 src/game_preferences_display.cpp:269
 msgid "Change the buffer size"
 msgstr "تغيير حجم الصوان"
 
-#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:835
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:821
 msgid "Buffer Size: "
 msgstr "حجم الصوان:"
 
-#: src/game_preferences_display.cpp:288
+#: src/game_preferences_display.cpp:274
 msgid "Change the speed of scrolling around the map"
 msgstr "تغيير سرعة لفّ الخريطة"
 
-#: src/game_preferences_display.cpp:293 src/game_preferences_display.cpp:295
+#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:281
 msgid "Set the amount of chat lines shown"
 msgstr "تحديد عدد أسطر الحديث المُظهَرَة"
 
-#: src/game_preferences_display.cpp:298
+#: src/game_preferences_display.cpp:284
 msgid "Add a timestamp to chat messages"
 msgstr "إظافة الزمن إلى رسائل الحديث"
 
-#: src/game_preferences_display.cpp:301 src/game_preferences_display.cpp:306
+#: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:292
 msgid "Change the brightness of the display"
 msgstr "تغيير سطوع الشاشة"
 
-#: src/game_preferences_display.cpp:309
+#: src/game_preferences_display.cpp:295
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "الإختيار بين نمط الشاشة المليءة و النافذة"
 
-#: src/game_preferences_display.cpp:312
+#: src/game_preferences_display.cpp:298
 msgid "Make units move and fight faster"
 msgstr "تسريع تنقل و تقاتل الوحدات"
 
-#: src/game_preferences_display.cpp:329
+#: src/game_preferences_display.cpp:315
 msgid "Units move and fight speed"
 msgstr "سرعة حركة و تقاتل الوحدات"
 
-#: src/game_preferences_display.cpp:332
+#: src/game_preferences_display.cpp:318
 msgid "Show unit idle animations"
 msgstr "إظهار تحريكات الوحدات الساكنة"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:324
 msgid "Set the frequency of unit idle animations"
 msgstr "تحديد تردد تحريكات الوحدات الساكنة"
 
-#: src/game_preferences_display.cpp:343
+#: src/game_preferences_display.cpp:329
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "تحديد العدد الأقصى للمحفوظات التلقائية المحتفظ به"
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:333
 msgid "Do not animate AI units moving"
 msgstr "عدم تحريك وحدات الذكاء الإصطناعي في تنقلاته"
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:341
 msgid "Overlay a grid onto the map"
 msgstr "وضع شبكة على الخريطة"
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:344
 msgid "Sort the player list in the lobby by player groups"
 msgstr "فرز اللاعبين الموجودين في المدخل على شكل أفواج"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:347
 msgid "Show icons in front of the player names in the lobby."
 msgstr "إظهار إيقونات أمام أسماء اللاعبين في المدخل"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "عدم الإعلان بوصول اللاعبين إلى المدخل"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:352
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "الإعلان بدخول أصدقائك بواسطة رسائل"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:354
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "الإعلان بدخول جميع اللاعبين بواسطة رسائل"
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
 msgstr "رؤية و ضبط قائمة الأصدقاء و المهمولين"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:358
 msgid "Back to the multiplayer options"
 msgstr "الرجوع إلى تعديلات النمط العديد اللاعبين"
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:359
 msgid "Add this username to your friends list"
 msgstr "إضافة هذا الإسم إلى قائمة الأصدقاء"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:360
 msgid "Add this username to your ignores list"
 msgstr "إضافة إسم هذا اللاعب إلى قائمة المهمولين"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:361
 msgid "Remove this username from your list"
 msgstr "حذف إسم هذا اللاعب من قائمتك"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:364
 msgid "Insert a username"
 msgstr "أدخل اسم المُستخدِم"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:367
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "إظهار قيم الأضرار التي تصيب الوحدات بواسطة أعداد فوقها"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
 msgstr "تغيير استبانة اللعبة"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:370
 msgid "Change the theme the game runs with"
 msgstr "تغيير سمة اللعبة"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:373
 msgid "Display a dialog at the beginning of your turn"
 msgstr "إظهار رسالة في بداية دورك"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:376
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "سمع صوت الجرس عند بداية دورك"
 
-#: src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:379
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "إظهار دوائر ملونة تحت كل وحدة تشير إلى طرفها"
 
-#: src/game_preferences_display.cpp:396
+#: src/game_preferences_display.cpp:382
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "إختيار منحى حركة الشمس(من اليسار إلى اليمين أو العكس)"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:385
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "استعمال مؤشرات الفأرة ملونة(قد تكون أبظأ)"
 
-#: src/game_preferences_display.cpp:402
+#: src/game_preferences_display.cpp:388
 msgid "Use graphical special effects (may be slower)"
 msgstr "استعمال مؤثرات رسومية(قد تكون اللعبة أبطأ)"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:390
 msgid "View and configure keyboard shortcuts"
 msgstr "رؤية و ضبط مفاتيح الاختصا"
 
-#: src/game_preferences_display.cpp:698
+#: src/game_preferences_display.cpp:684
 msgid "Speed: "
 msgstr "السرعة:"
 
-#: src/game_preferences_display.cpp:703 src/game_preferences_display.cpp:705
+#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Auto-Saves: "
 msgstr "أقصى عدد للمحفوظات الآلية"
 
-#: src/game_preferences_display.cpp:703
+#: src/game_preferences_display.cpp:689
 msgid "infinite"
 msgstr "غَيْرُ مُتَناهٍ"
 
-#: src/game_preferences_display.cpp:885
+#: src/game_preferences_display.cpp:871
 msgid "Chat Lines: "
 msgstr "أسطر الحديث:"
 
-#: src/game_preferences_display.cpp:907 src/game_preferences_display.cpp:915
+#: src/game_preferences_display.cpp:893 src/game_preferences_display.cpp:901
 msgid "Invalid username"
 msgstr "اسم غير صالح"
 
-#: src/game_preferences_display.cpp:987
+#: src/game_preferences_display.cpp:973
 msgid "yes"
 msgstr "نعم"
 
-#: src/game_preferences_display.cpp:989
+#: src/game_preferences_display.cpp:975
 msgid "no"
 msgstr "لا"
 
-#: src/game_preferences_display.cpp:1020
+#: src/game_preferences_display.cpp:1006
 msgid "(empty list)"
 msgstr "(قائمة فارغة)"
 
-#: src/game_preferences_display.cpp:1139
+#: src/game_preferences_display.cpp:1125
 msgid "Prefs section^General"
 msgstr "عامّ"
 
-#: src/game_preferences_display.cpp:1140
+#: src/game_preferences_display.cpp:1126
 msgid "Prefs section^Display"
 msgstr "فيديو"
 
-#: src/game_preferences_display.cpp:1141
+#: src/game_preferences_display.cpp:1127
 msgid "Prefs section^Sound"
 msgstr "صوت"
 
-#: src/game_preferences_display.cpp:1142
+#: src/game_preferences_display.cpp:1128
 msgid "Prefs section^Multiplayer"
 msgstr "عديد اللاعبين"
 
-#: src/game_preferences_display.cpp:1143
+#: src/game_preferences_display.cpp:1129
 msgid "Advanced section^Advanced"
 msgstr "تفضيلات متقدمة"
 
-#: src/game_preferences_display.cpp:1178
+#: src/game_preferences_display.cpp:1164
 msgid "Saved Theme Preference: "
 msgstr "السمة المفضلة المحفوظة:"
 
-#: src/game_preferences_display.cpp:1184
+#: src/game_preferences_display.cpp:1170
 msgid "New theme will take effect on next new or loaded game."
 msgstr "سيتم العمل بهذه السمة عند التحميل أو اللعبة الجديدة اللاحقة"
 
-#: src/game_preferences_display.cpp:1188
+#: src/game_preferences_display.cpp:1174
 msgid "No known themes. Try changing from within an existing game."
 msgstr "ليست هناك أية سمة معروفة.حاول تبديلها انطلاقا من لعبة جارية."
 
-#: src/game_preferences_display.cpp:1230
+#: src/game_preferences_display.cpp:1216
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:86 src/hotkeys.cpp:76
+#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:63
 msgid "Load Game"
 msgstr "تحميل لعبة"
 
-#: src/gui/dialogs/mp_create_game.cpp:87
+#: src/gui/dialogs/mp_create_game.cpp:76
 #, fuzzy
 msgid "Load Game..."
 msgstr "تحميل لعبة"
 
-#: src/gui/dialogs/title_screen.cpp:76
+#: src/gui/dialogs/title_screen.cpp:71
 msgid "Version"
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:295
+#: src/gui/widgets/canvas.cpp:290
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:430
+#: src/gui/widgets/canvas.cpp:425
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:786
+#: src/gui/widgets/canvas.cpp:791
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:851
+#: src/gui/widgets/canvas.cpp:856
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:170
+#: src/gui/widgets/helper.cpp:165
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/settings.cpp:122
+#: src/gui/widgets/settings.cpp:115
 #, fuzzy
 msgid "No default gui defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/settings.cpp:248
+#: src/gui/widgets/settings.cpp:241
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:312
+#: src/gui/widgets/settings.cpp:305
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:424 src/gui/widgets/window_builder.cpp:277
+#: src/gui/widgets/settings.cpp:417 src/gui/widgets/window_builder.cpp:272
 #, fuzzy
 msgid "No resolution defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/settings.cpp:456
+#: src/gui/widgets/settings.cpp:449
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/settings.cpp:636
+#: src/gui/widgets/settings.cpp:629
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/settings.cpp:792 src/gui/widgets/window_builder.cpp:368
-#: src/gui/widgets/window_builder.cpp:951
-#: src/gui/widgets/window_builder.cpp:1158
+#: src/gui/widgets/settings.cpp:785 src/gui/widgets/window_builder.cpp:363
+#: src/gui/widgets/window_builder.cpp:946
+#: src/gui/widgets/window_builder.cpp:1157
 #, fuzzy
 msgid "No grid defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/window_builder.cpp:495
+#: src/gui/widgets/window_builder.cpp:490
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:496
+#: src/gui/widgets/window_builder.cpp:491
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:720
+#: src/gui/widgets/window_builder.cpp:715
 #, fuzzy
 msgid "No list defined."
 msgstr "لم يُحدَد أيّ خادم"
 
-#: src/gui/widgets/window_builder.cpp:723
+#: src/gui/widgets/window_builder.cpp:718
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:742
+#: src/gui/widgets/window_builder.cpp:737
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1089
+#: src/gui/widgets/window_builder.cpp:1084
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:44
 msgid "Next Unit"
 msgstr "الوحدة التالية"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:45
 msgid "Previous Unit"
 msgstr "الوحدة السابقة"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:46
 msgid "Hold Position"
 msgstr "البقاء على ذلك الوضع"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:47
 msgid "End Unit Turn"
 msgstr "إنهاء دور الوحدة"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:48
 msgid "Leader"
 msgstr "القائد"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:49
 msgid "Undo"
 msgstr "تراجع"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:50
 msgid "Redo"
 msgstr "إعادة"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:51
 msgid "Zoom In"
 msgstr "تكبير"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:52
 msgid "Zoom Out"
 msgstr "تصغير"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:53
 msgid "Default Zoom"
 msgstr "التكبير الأصلي"
 
-#: src/hotkeys.cpp:68 src/hotkeys.cpp:895
+#: src/hotkeys.cpp:55 src/hotkeys.cpp:882
 msgid "Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:56
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:57
 msgid "Accelerated"
 msgstr "سريع"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:58
 msgid "Unit Description"
 msgstr "وصف الوحدة"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:59
 msgid "Rename Unit"
 msgstr "إعادة تسمية الوحدة"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:60
 msgid "Save Game"
 msgstr "حفظ اللعبة"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:61
 msgid "Save Replay"
 msgstr "حفظ الإعادة"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:62
 msgid "Save The Map"
 msgstr "حفظ الخريطة"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:64
 msgid "Recruit"
 msgstr "تجنيد"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:65
 msgid "Repeat Recruit"
 msgstr "إعادة التجنيد"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:66
 msgid "Recall"
 msgstr "استدعاء"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:67
 msgid "End Turn"
 msgstr "إنهاء الدور"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:68
 msgid "Toggle Grid"
 msgstr "شبكة"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:69
 msgid "Mouse Scrolling"
 msgstr "لفّ الفأرة"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:70
 msgid "Status Table"
 msgstr "جدول الحالات"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:71
 msgid "Mute"
 msgstr "اكتم"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:72
 msgid "Speak"
 msgstr "تكلم"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:73
 msgid "Create Unit (Debug!)"
 msgstr "خلق وحدة (تنقيح!)"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:74
 msgid "Change Unit Side (Debug!)"
 msgstr "تغيير طرف الوحدة (تنقيح!)"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:76
 msgid "Scenario Objectives"
 msgstr "أهداف السِيناريُو"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:77
 msgid "Unit List"
 msgstr "قائمة الوحدات"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:78
 msgid "Statistics"
 msgstr "إحصائيات"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:79
 msgid "Quit Game"
 msgstr "مغادرة اللعبة"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:80
 msgid "Set Team Label"
 msgstr "وضع لصيقة مرئية من طرف الفريق فقط"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:81
 msgid "Set Label"
 msgstr "وضع لصيقة"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:82
 msgid "Clear Labels"
 msgstr "محو اللصائق"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:83
 msgid "Show Enemy Moves"
 msgstr "إظهار تنقلات العدو"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:84
 msgid "Best Possible Enemy Moves"
 msgstr "أفضل تنقل ممكن للعدوّ"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:85
 msgid "Play"
 msgstr "إلعب"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:86
 msgid "Reset"
 msgstr "إعادة التنضيد"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:87
 msgid "Stop"
 msgstr "وقوف"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:88
 msgid "Next Turn"
 msgstr "الدور التالي"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:89
 msgid "Next Side"
 msgstr "الطرف التالي"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:91
 msgid "Full map"
 msgstr "خريطة كاملة"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:93
 msgid "Each team"
 msgstr "كل فريق"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:95
 msgid "Team 1"
 msgstr "الفريق 1"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:96
 msgid "Skip animation"
 msgstr "تخطّي التحريكة"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:99
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:101
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:103
 msgid "Load Map"
 msgstr "تحميل خريطة"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:104
 msgid "Save Map"
 msgstr "حفظ الخريطة"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:105
 #, fuzzy
 msgid "Save Map As"
 msgstr "حفظ الخريطة"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:106
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:107
 #, fuzzy
 msgid "Map Information"
 msgstr "مُوَلِّد الخرائط"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:109
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:110
 #, fuzzy
 msgid "Next Tool"
 msgstr "الدور التالي"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:111
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:112
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Selection Tool"
 msgstr "انتقاء الكل"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:115
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:116
 #, fuzzy
 msgid "Next Brush"
 msgstr "الدور التالي"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:117
 #, fuzzy
 msgid "Default Brush"
 msgstr "التكبير الأصلي"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:118
 msgid "Cut"
 msgstr "قصّ"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:119
 msgid "Copy"
 msgstr "نسخ"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:120
 msgid "Paste"
 msgstr "إلصاق"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:122
 msgid "Select All"
 msgstr "انتقاء الكل"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:124
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Select None"
 msgstr "انتقاء الكل"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:128
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:130
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:132
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:134
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:136
 msgid "Rotate Selection"
 msgstr "إدارة المنتقى"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:138
 #, fuzzy
 msgid "Flip Selection"
 msgstr "ملء المنتقى"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:140
 msgid "Fill Selection"
 msgstr "ملء المنتقى"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:142
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "إدارة المنتقى"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:144
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:148
 #, fuzzy
 msgid "Rotate Map"
 msgstr "تحميل خريطة"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:150
 #, fuzzy
 msgid "Generate Map"
 msgstr "إنشاء خريطة جديدة"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:152
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:154
 #, fuzzy
 msgid "Create Mask"
 msgstr "حفظ اللعبة"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Refresh Display"
 msgstr "فيديو"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:158
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "تجديد الإنتقال بين الخانات"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:160
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "تجديد الإنتقال بين الخانات"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:162
 msgid "Refresh Image Cache"
 msgstr "تحديث مخبإ الصورة"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:164
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:166
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "رسم الأرضية"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:171
 msgid "Delay Shroud Updates"
 msgstr "تأخير تجديد الحُجُب"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:172
 msgid "Update Shroud Now"
 msgstr "تحديث الحجب الآن"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:173
 msgid "Continue Move"
 msgstr "متابعة الحركة"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:174
 msgid "Find Label or Unit"
 msgstr "العثور على لصيقة أو وحدة"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:175
 msgid "Speak to Ally"
 msgstr "تكليم الحليف"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:176
 msgid "Speak to All"
 msgstr "تكليم الجميع"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:177
 msgid "Help"
 msgstr "مساعدة"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:178
 msgid "View Chat Log"
 msgstr "إظهار تاريخ الحديث"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:179
 msgid "Change the language"
 msgstr "تغيير اللغة"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:181
 msgid "Enter user command"
 msgstr "إدخال أمر المُستَخدِم"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:182
 #, fuzzy
 msgid "Custom command"
 msgstr "إدخال أمر المُستَخدِم"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:183
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:184
 msgid "Clear messages"
 msgstr "محو الرسائل"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:186
 msgid "User-Command#2"
 msgstr "أمر المُستخدِم #2"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:187
 msgid "User-Command#3"
 msgstr "أمر المُستخدِم #3"
 
-#: src/hotkeys.cpp:659 src/hotkeys.cpp:940
+#: src/hotkeys.cpp:646 src/hotkeys.cpp:927
 msgid "Do you really want to quit?"
 msgstr "أتريد فعلاً المغادرة؟"
 
-#: src/hotkeys.cpp:895
+#: src/hotkeys.cpp:882
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:889
 #, fuzzy
 msgid "Screenshot done"
 msgstr "لقطة شاشة"
 
-#: src/hotkeys.cpp:904
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "لقطة شاشة"
 
-#: src/mapgen_dialog.cpp:113 src/preferences_display.cpp:229
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:217
 msgid "Close Window"
 msgstr "غلق النافدة"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:112
 msgid "Map Generator"
 msgstr "مُوَلِّد الخرائط"
 
-#: src/mapgen_dialog.cpp:123
+#: src/mapgen_dialog.cpp:119
 msgid "Players:"
 msgstr "اللاعبون:"
 
-#: src/mapgen_dialog.cpp:126
+#: src/mapgen_dialog.cpp:122
 msgid "Number of Hills:"
 msgstr "عدد التلال"
 
-#: src/mapgen_dialog.cpp:127
+#: src/mapgen_dialog.cpp:123
 msgid "Max Hill Size:"
 msgstr "الحجم الأقصى للتلال"
 
-#: src/mapgen_dialog.cpp:128
+#: src/mapgen_dialog.cpp:124
 msgid "Villages:"
 msgstr "القرى"
 
-#: src/mapgen_dialog.cpp:129
+#: src/mapgen_dialog.cpp:125
 msgid "Castle Size:"
 msgstr "حجم القصر"
 
-#: src/mapgen_dialog.cpp:130
+#: src/mapgen_dialog.cpp:126
 msgid "Landform:"
 msgstr "نوع الخريطة"
 
-#: src/mapgen_dialog.cpp:248
+#: src/mapgen_dialog.cpp:244
 msgid "Roads Between Castles"
 msgstr "الطرق العابرة بين القصور"
 
-#: src/mapgen_dialog.cpp:308
+#: src/mapgen_dialog.cpp:304
 msgid "/1000 tiles"
 msgstr "1000/ خانة"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Coastal"
 msgstr "ساحلي"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Inland"
 msgstr "داخِلِيّ"
 
-#: src/mapgen_dialog.cpp:318
+#: src/mapgen_dialog.cpp:314
 msgid "Island"
 msgstr "جزيرة"
 
-#: src/marked-up_text.cpp:331
+#: src/marked-up_text.cpp:330
 msgid "The maximum text width is less than 1."
 msgstr "العرض الأقصى للنص أقل من 1"
 
-#: src/minimap.cpp:83
+#: src/minimap.cpp:82
 msgid "Could not get image for terrain: $terrain."
 msgstr "تعذر الحصول على صورة للأرضية:terrain$"
 
-#: src/minimap.cpp:107 src/minimap.cpp:119
+#: src/minimap.cpp:106 src/minimap.cpp:118
 msgid "Error creating or aquiring an image."
 msgstr "خطأ عند خلق أو اكتساب صورة"
 
-#: src/preferences_display.cpp:85 src/preferences_display.cpp:118
+#: src/preferences_display.cpp:73 src/preferences_display.cpp:106
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1873,70 +1873,70 @@ msgstr ""
 "تعذر تبدييل نمط الفيديو.يجب ضبط منظّم النوافذ في (16 bits per pixel) للعب "
 "داخل نافذة.على شاشتك أن تتحمل 1024x768x16  للعب بنمط الشاشة المليئة."
 
-#: src/preferences_display.cpp:233
+#: src/preferences_display.cpp:221
 msgid "Hotkey Settings"
 msgstr "تفضيلتات مفتاح الاختصار"
 
-#: src/preferences_display.cpp:239 src/preferences_display.cpp:307
+#: src/preferences_display.cpp:227 src/preferences_display.cpp:295
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "اضغط على المفتاح المُراد"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:246
 msgid "Action"
 msgstr "إجراء"
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:246
 msgid "Binding"
 msgstr "ربط أزرار"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:258
 msgid "Change Hotkey"
 msgstr "تغيير مفتاح الاختصار"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:261
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "تغيير مفتاح الاختصار"
 
-#: src/preferences_display.cpp:340
+#: src/preferences_display.cpp:328
 msgid "This Hotkey is already in use."
 msgstr "هذا المفتاح مُستعمَلٌ"
 
-#: src/preferences_display.cpp:352
+#: src/preferences_display.cpp:340
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:431
+#: src/preferences_display.cpp:419
 msgid "There are no alternative video modes available"
 msgstr "ليس هناك نمط فيديو آخر."
 
-#: src/preferences_display.cpp:460
+#: src/preferences_display.cpp:448
 msgid "Choose Resolution"
 msgstr "تغيير الاستبانة"
 
-#: src/show_dialog.cpp:375
+#: src/show_dialog.cpp:357
 msgid "Error"
 msgstr "خطأ"
 
-#: src/terrain_translation.cpp:688
+#: src/terrain_translation.cpp:687
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "عُثِرَ على أرضية ممثلة بواسطة مقطع مكون من  أكثر من 4 محارف.الأرضية هي:"
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:49
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr "خطأ راجع إلى WML غير صالح(غالبا).نص الخطأ:"
 
-#: src/wml_exception.cpp:54
+#: src/wml_exception.cpp:51
 msgid "When reporting the bug please include the following error message :"
 msgstr "عند تقرير الخلل ، المرجو تضمين ما يلي:"
 
-#: src/wml_exception.cpp:72
+#: src/wml_exception.cpp:69
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -1944,7 +1944,7 @@ msgstr ""
 "لم يحدد المفتاح الإجباري '$key|' في الفقرة '[$section|]' حيث '$primary_key| "
 "= $primary_value'"
 
-#: src/wml_exception.cpp:75
+#: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة '[$section|]'"
 

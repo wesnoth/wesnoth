@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-31 12:12+0100\n"
+"POT-Creation-Date: 2008-11-09 21:11+0100\n"
 "PO-Revision-Date: 2008-10-31 18:50+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -91,21 +91,21 @@ msgid "Hex Line NW-SE"
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:6 data/core/editor2-tool-hints.cfg:11
+#: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only"
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:16
+#: data/core/editor2-tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain"
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:21
+#: data/core/editor2-tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -113,7 +113,7 @@ msgid ""
 msgstr ""
 
 #. [editor2_tool_hint]
-#: data/core/editor2-tool-hints.cfg:26
+#: data/core/editor2-tool-hints.cfg:30
 msgid "Click to paste."
 msgstr "Spragtelėkite, kad padėti."
 
@@ -137,144 +137,144 @@ msgstr "Žemėlapis"
 msgid "villages"
 msgstr "kaimai"
 
-#: src/editor2/editor_controller.cpp:103
+#: src/editor2/editor_controller.cpp:90
 msgid "Quit Editor"
 msgstr "Išjungti redaktorių"
 
-#: src/editor2/editor_controller.cpp:233
+#: src/editor2/editor_controller.cpp:220
 msgid "Fatal error"
 msgstr "Kritinė klaida"
 
-#: src/editor2/editor_controller.cpp:241
+#: src/editor2/editor_controller.cpp:228
 msgid "Do you really want to quit?"
 msgstr "Ar tikrai norite išjungti?"
 
-#: src/editor2/editor_controller.cpp:244
+#: src/editor2/editor_controller.cpp:231
 msgid "There are unsaved changes in the map."
 msgstr "Žemėlapyje yra neišsaugotų pakeitimų."
 
-#: src/editor2/editor_controller.cpp:246
+#: src/editor2/editor_controller.cpp:233
 msgid "Quit"
 msgstr "Išjungti"
 
-#: src/editor2/editor_controller.cpp:256 src/editor2/editor_controller.cpp:358
-#: src/editor2/editor_controller.cpp:394 src/editor2/editor_controller.cpp:416
+#: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
+#: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
 msgid "Error"
 msgstr "Klaida"
 
-#: src/editor2/editor_controller.cpp:256
+#: src/editor2/editor_controller.cpp:243
 msgid "No editor time-of-day found"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:289
+#: src/editor2/editor_controller.cpp:276
 msgid "There are unsaved changes in the map"
 msgstr "Žemėlapyje yra neišsaugotų pakeitimų"
 
-#: src/editor2/editor_controller.cpp:290
+#: src/editor2/editor_controller.cpp:277
 msgid "Do you want to discard all changes you made to the map?"
 msgstr "Ar norite atsisakyti visų pakeitimų, kuriuos padarėte žemėlapyje?"
 
-#: src/editor2/editor_controller.cpp:303
+#: src/editor2/editor_controller.cpp:290
 msgid "Choose a Map to Load"
 msgstr "Pasirinkite žemėlapį įkėlimui"
 
-#: src/editor2/editor_controller.cpp:338
+#: src/editor2/editor_controller.cpp:325
 msgid "Save the Map As"
 msgstr "Išsaugoti žemėlapį kaip"
 
-#: src/editor2/editor_controller.cpp:342
+#: src/editor2/editor_controller.cpp:329
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Žemėlapis jau egzistuoja. Ar norite jį perrašyti?"
 
-#: src/editor2/editor_controller.cpp:358
+#: src/editor2/editor_controller.cpp:345
 msgid "No random map generators found"
 msgstr "Nerasta atsitiktinių žemėlapių generatorių"
 
-#: src/editor2/editor_controller.cpp:369
+#: src/editor2/editor_controller.cpp:356
 msgid "Map creation failed."
 msgstr "Žemėlapio sukūrimas nepavyko."
 
-#: src/editor2/editor_controller.cpp:384
+#: src/editor2/editor_controller.cpp:371
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Pasirinkite žemėlapį įkėlimui"
 
-#: src/editor2/editor_controller.cpp:391
+#: src/editor2/editor_controller.cpp:378
 #, fuzzy
 msgid "Error loading mask"
 msgstr "Klaida, įkeliant žemėlapį"
 
-#: src/editor2/editor_controller.cpp:406
+#: src/editor2/editor_controller.cpp:393
 #, fuzzy
 msgid "Choose target map"
 msgstr "Pasirinkite žaidėją"
 
-#: src/editor2/editor_controller.cpp:413 src/editor2/editor_controller.cpp:521
-#: src/editor2/editor_main.cpp:56
+#: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
+#: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
 msgstr "Klaida, įkeliant žemėlapį"
 
-#: src/editor2/editor_controller.cpp:502
+#: src/editor2/editor_controller.cpp:489
 msgid "Map saved."
 msgstr "Žemėlapis išsaugotas."
 
-#: src/editor2/editor_controller.cpp:507
+#: src/editor2/editor_controller.cpp:494
 msgid "Could not save the map: $msg"
 msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
 
-#: src/editor2/editor_controller.cpp:862
+#: src/editor2/editor_controller.cpp:849
 msgid "Undo"
 msgstr "Atšaukti"
 
-#: src/editor2/editor_controller.cpp:864
+#: src/editor2/editor_controller.cpp:851
 msgid "Can't Undo"
 msgstr "Negalima atšaukti"
 
-#: src/editor2/editor_controller.cpp:868
+#: src/editor2/editor_controller.cpp:855
 msgid "Redo"
 msgstr "Atstatyti"
 
-#: src/editor2/editor_controller.cpp:870
+#: src/editor2/editor_controller.cpp:857
 msgid "Can't Redo"
 msgstr "Negalima pakartoti"
 
-#: src/editor2/editor_map.cpp:65
+#: src/editor2/editor_map.cpp:62
 msgid "Empty map file or file not found"
 msgstr "Tuščias žemėlapio failas arba failas nerastas"
 
-#: src/editor2/editor_map.cpp:73
+#: src/editor2/editor_map.cpp:70
 msgid "There was a format error while loading the file:"
 msgstr "Įkeliant failą rasta formato klaida:"
 
-#: src/editor2/editor_map.cpp:79
+#: src/editor2/editor_map.cpp:76
 msgid "There was a wml error while loading the file:"
 msgstr "Įkeliant failą rasta wml klaida:"
 
-#: src/editor2/editor_map.cpp:152 src/editor2/mouse_action.cpp:383
+#: src/editor2/editor_map.cpp:149 src/editor2/mouse_action.cpp:379
 msgid "Player"
 msgstr "Žaidėjas"
 
-#: src/editor2/editor_map.cpp:271
+#: src/editor2/editor_map.cpp:268
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor2/editor_palettes.cpp:503
+#: src/editor2/editor_palettes.cpp:494
 msgid "FG"
 msgstr "Priešakinis planas"
 
-#: src/editor2/editor_palettes.cpp:505
+#: src/editor2/editor_palettes.cpp:496
 msgid "BG"
 msgstr "Fonas"
 
-#: src/editor2/mouse_action.cpp:380
+#: src/editor2/mouse_action.cpp:376
 msgid "(Player)^None"
 msgstr "Joks"
 
-#: src/editor2/mouse_action.cpp:387
+#: src/editor2/mouse_action.cpp:383
 msgid "Choose player"
 msgstr "Pasirinkite žaidėją"
 
-#: src/editor2/mouse_action.cpp:388
+#: src/editor2/mouse_action.cpp:384
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
@@ -282,6 +282,6 @@ msgstr ""
 "Kuris žaidėjas turi čia pradėti? Galite naudoti 1-9 ir delete mygtukus, kad "
 "nustatytumėte/išvalytumėte pradžios pozicijas."
 
-#: src/gui/dialogs/editor_settings.cpp:113
+#: src/gui/dialogs/editor_settings.cpp:105
 msgid "Custom setting"
 msgstr ""
