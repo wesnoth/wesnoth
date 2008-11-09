@@ -29,7 +29,7 @@
 #include "addon_checks.hpp"
 #include "server/input_stream.hpp"
 
-
+#include <csignal>
 
 #include <boost/iostreams/filter/gzip.hpp>
 
