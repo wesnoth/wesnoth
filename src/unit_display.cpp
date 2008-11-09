@@ -15,6 +15,7 @@
 /** @file unit_display.cpp */
 
 #include "global.hpp"
+#include "unit_display.hpp"
 
 #include "game_preferences.hpp"
 #include "log.hpp"

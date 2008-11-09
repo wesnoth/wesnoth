@@ -19,6 +19,7 @@
  */
 
 #include "global.hpp"
+#include "config_adapter.hpp"
 
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"

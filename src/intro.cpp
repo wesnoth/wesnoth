@@ -19,6 +19,7 @@
  */
 
 #include "global.hpp"
+#include "intro.hpp"
 
 #include "display.hpp"
 #include "gettext.hpp"

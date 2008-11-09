@@ -13,6 +13,7 @@
 */
 
 #include "global.hpp"
+#include "minimap.hpp"
 
 #include "gettext.hpp"
 #include "image.hpp"

@@ -20,6 +20,8 @@
  */
 
 
+#include "serialization/parser.hpp"
+
 #include "config.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"

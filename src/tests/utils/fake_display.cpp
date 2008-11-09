@@ -12,6 +12,7 @@
    See the COPYING file for more details.
 */
 
+#include "fake_display.hpp"
 
 #include "gamestatus.hpp"
 #include "map.hpp"
