@@ -243,7 +243,7 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 	}
 
 	if(leader_move.second.valid()) {
-		if(units_.count(leader_move.first) == 0) {
+		if(units_.count(leader_move.first) == 0 && map_.is_village(leader_move.first)) {
 			map_location loc = move_unit(leader_move.second,leader_move.first,possible_moves);
 			++moves_made;
 			// Update leader iterator, since we moved it.
