@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:12+0100\n"
+"POT-Creation-Date: 2008-11-09 22:45+0100\n"
 "PO-Revision-Date: 2008-03-02 10:04+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -1662,6 +1662,11 @@ msgid ""
 "`(special bonus)"
 msgstr "Derrota tots els líders enemics"
 
+#. [objectives]
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:33
+msgid "No gold carried over to the next scenario."
+msgstr ""
+
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:41
 msgid ""
@@ -1716,22 +1721,22 @@ msgid "Jarmal-Gorg"
 msgstr "Jarmal-Gorg"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:178
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:173
 msgid "Kalba"
 msgstr "Kalba"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:179
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:174
 msgid "Gnaba"
 msgstr "Gnaba"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:185
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:180
 msgid "Whew, I survived. But now where am I? Is this island inhabited?"
 msgstr "Vaja, he sobreviscut! Però, on soc? Aquesta illa és habitada?"
 
 #. [message]: speaker=Kalba
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:189
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:184
 #, fuzzy
 msgid ""
 "We have heard only the worst things about this place, my lord. It is said "
@@ -1743,16 +1748,17 @@ msgstr ""
 "erma."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:193
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:188
+#, fuzzy
 msgid ""
-"Let's hope these rumors are not true! I have none of my men with me! How "
-"could I defend myself?"
+"Let's hope these rumors are not true! I have none of my men or gold with me! "
+"How could I defend myself?"
 msgstr ""
 "Tant de bo no siguin més que rumors! Però, no tinc a cap dels meus homes amb "
 "mi! Com em defensaré?"
 
 #. [message]: speaker=Kalba
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:197
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:192
 msgid ""
 "There are still some bands of humans hiding on the island, my lord. If you "
 "recruit some of them to help, we might have some hope of holding off the "
@@ -1762,17 +1768,26 @@ msgstr ""
 "alguna possibilitat d'aturar els no morts."
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:200
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:195
 msgid "Delurin"
 msgstr "Delurin"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:213
-msgid "Maybe we can make a deal! Help us defeat those evil creatures!"
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:210
+#, fuzzy
+msgid ""
+"Maybe we can make a deal! Help us defeat those evil creatures! You may use "
+"our gold reserves to lead us!"
 msgstr "Fem un tracte! Ajudeu-nos a derrotar aquestes malvades criatures."
 
+#. [message]: speaker=narrator
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:220
+#, fuzzy
+msgid "You receive 100 pieces of gold!"
+msgstr "Reps 300 monedes d'or!"
+
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:221
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:228
 msgid ""
 "There are some ancient temples to the southwest; I wonder what might be "
 "inside them!"
@@ -1781,32 +1796,32 @@ msgstr ""
 "interior."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:235
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:242
 msgid "The temple seems to be empty."
 msgstr "El temple sembla estar buit."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:250
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:308
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:315
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Sembla que algú s'amagava dins el temple!"
 
 #. [unit]: type=Mage of Light
 #. [unit]: type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:266
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:254
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:261
 msgid "Moremirmu"
 msgstr "Moremirmu"
 
 #. [effect]
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:278
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:276
 #, fuzzy
 msgid "holy sword"
 msgstr "espasa"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:285
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:292
 msgid ""
 "I was hiding in this holy place, planning how to defeat the evil undead. Now "
 "with your help, I can destroy them."
@@ -1815,12 +1830,12 @@ msgstr ""
 "podem destruir."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:289
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:296
 msgid "Join us, wise one. We welcome your aid!"
 msgstr "Uniu-vos a nosaltres, savi. La vostra ajuda és benvinguda!"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:293
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:300
 msgid ""
 "If we eradicate the undead blight on these islands, I will surely go with "
 "you. Otherwise, I plan to finish my task here before moving on."
@@ -1830,24 +1845,24 @@ msgstr ""
 "cap altre lloc."
 
 #. [unit]: type=Revenant
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:321
 msgid "Xakae"
 msgstr "Xakae"
 
 #. [message]: speaker=Xakae
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:332
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:339
 msgid "Surprise! Searching for magi, and all I get is these foul humans!"
 msgstr ""
 "Sorpresa! Jo que buscava mags, i tot el que trobo són aquests humans ben "
 "folls."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:399
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:406
 msgid "Fight on against the undead without me, friends!"
 msgstr "Lluiteu contra els no morts sense mi, amics meus!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:478
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:476
 msgid ""
 "We have wrested control of the island from the evil undead! Now all we have "
 "to do is wait for the ship to arrive, so we can make our way to Elensefar!"
@@ -1856,7 +1871,7 @@ msgstr ""
 "vaixell per viatjar a Elensefar!"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:493
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:490
 msgid ""
 "Together we have vanquished the foul undead! Come, I will join you on your "
 "noble quest."
@@ -1865,7 +1880,13 @@ msgstr ""
 "missió."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:517
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:506
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:553
+msgid "You regain your lost troops and $isle_damned_starting_gold gold!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:524
 msgid ""
 "Thank goodness we have found you, sir! Come aboard quickly, we shall take "
 "you away from this horrible island!"
@@ -1874,7 +1895,7 @@ msgstr ""
 "d'aquesta horrible illa."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:521
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:528
 msgid ""
 "It's a shame complete victory could not be ours, but thank goodness I am "
 "rescued! On to Elensefar!"
@@ -1883,7 +1904,7 @@ msgstr ""
 "ser rescatat! En marxa, rumb a Elensefar!"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:531
+#: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:538
 msgid ""
 "Thank you for your assistance here brothers. I will stay to continue "
 "resisting the foul undead. May fate be with you in your noble quest, and may "
