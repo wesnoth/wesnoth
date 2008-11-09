@@ -460,11 +460,16 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 
 		assert(map_.on_board(tg->loc));
 
-		const double locStopValue = std::min(tg->value / best_rating, 500.0);
+		// locStopValue controls how quickly we give up on the A* search, due
+		// to it seeming futile. Be very cautious about changing this value,
+		// as it can cause the AI to give up on searches and just do nothing.
+		const double locStopValue = 500.0;
 		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
-		if (cur_route.move_left == cost_calc.getNoPathValue())
+		if (cur_route.move_left == cost_calc.getNoPathValue()) {
+			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg->value << "/" << best_rating << "\n";
 			continue;
+		}
 
 		if (cur_route.move_left < locStopValue)
 		{
