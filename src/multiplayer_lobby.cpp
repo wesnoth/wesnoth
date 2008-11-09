@@ -18,20 +18,13 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
-#include "filesystem.hpp"
-#include "game_display.hpp"
 #include "map_exception.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
-#include "replay.hpp"
-#include "wml_separators.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "playmp_controller.hpp"
-#include "show_dialog.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
 

@@ -16,11 +16,9 @@
 
 #include "font.hpp"
 #include "marked-up_text.hpp"
-#include "sdl_utils.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 
-#include <vector>
 
 static bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 {

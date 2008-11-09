@@ -12,11 +12,8 @@
 */
 
 #include "editor_display.hpp"
-#include "editor_common.hpp"
 
-#include "../foreach.hpp"
 
-#include <cassert>
 
 namespace editor2 {
 

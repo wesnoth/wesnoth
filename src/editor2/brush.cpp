@@ -13,12 +13,10 @@
 */
 
 #include "brush.hpp"
-#include "editor_map.hpp"
 
 #include "../foreach.hpp"
 #include "../pathutils.hpp"
 
-#include <vector>
 
 namespace editor2 {
 

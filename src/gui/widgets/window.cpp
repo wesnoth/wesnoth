@@ -21,13 +21,10 @@
 
 #include "cursor.hpp"
 #include "font.hpp"
-#include "log.hpp"
 #include "preferences.hpp"
 #include "titlescreen.hpp"
-#include "tstring.hpp"
 #include "video.hpp"
 
-#include <cassert>
 
 namespace gui2{
 

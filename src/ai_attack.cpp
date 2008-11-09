@@ -21,12 +21,9 @@
 
 #include "ai.hpp"
 #include "attack_prediction.hpp"
-#include "game_config.hpp"
-#include "gamestatus.hpp"
 #include "map.hpp"
 #include "log.hpp"
 
-#include <cassert>
 
 #define LOG_AI LOG_STREAM(info, ai)
 #define ERR_AI LOG_STREAM(err, ai)

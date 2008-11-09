@@ -14,25 +14,15 @@
 
 #include "global.hpp"
 
-#include "construct_dialog.hpp"
 #include "dialogs.hpp"
-#include "game_display.hpp"
-#include "game_events.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "leader_list.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "multiplayer.hpp"
 #include "multiplayer_wait.hpp"
-#include "replay.hpp"
 #include "statistics.hpp"
-#include "util.hpp"
-#include "video.hpp"
 #include "wml_separators.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <cassert>
 
 #define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)

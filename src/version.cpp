@@ -12,16 +12,12 @@
    See the COPYING file for more details.
 */
 
-#include "foreach.hpp"
 #include "version.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <functional>
 #include <cassert>
-#include <sstream>
 #include <stdexcept>
 
-#include <iostream>
 
 version_info::version_info(const version_info& o)
 	: nums_                 (o.nums_),

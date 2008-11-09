@@ -19,22 +19,14 @@
 
 #include "global.hpp"
 
-#include "color_range.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "sdl_utils.hpp"
-#include "util.hpp"
-#include "serialization/string_utils.hpp"
 
 #include "SDL_image.h"
 
-#include <cassert>
-#include <iostream>
-#include <map>
-#include <string>
 
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)

@@ -19,16 +19,12 @@
 #include "mapgen_dialog.hpp"
 
 #include "display.hpp"
-#include "events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "mapgen.hpp"
 #include "marked-up_text.hpp"
 #include "show_dialog.hpp"
-#include "video.hpp"
 
-#include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 
 #define DBG_NG LOG_STREAM(debug, engine)

@@ -16,18 +16,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "display.hpp"
-#include "events.hpp"
 #include "filesystem.hpp"
-#include "gettext.hpp"
-#include "key.hpp"
 #include "marked-up_text.hpp"
-#include "show_dialog.hpp"
 #include "wml_separators.hpp"
 #include "widgets/file_menu.hpp"
 
-#include <sstream>
-#include <cstdio>
 
 namespace {
 	std::vector<std::string> empty_string_vector;

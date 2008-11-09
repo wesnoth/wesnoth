@@ -22,14 +22,10 @@
 
 #include "binary_or_text.hpp"
 #include "config.hpp"
-#include "filesystem.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
 
-#include <sstream>
 
-#include <boost/bind.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log)

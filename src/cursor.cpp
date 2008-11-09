@@ -20,17 +20,11 @@
 #include "global.hpp"
 
 #include "cursor.hpp"
-#include "game_config.hpp"
 #include "image.hpp"
 #include "preferences_display.hpp"
-#include "scoped_resource.hpp"
-#include "sdl_utils.hpp"
 #include "video.hpp"
 
-#include "SDL.h"
 
-#include <iostream>
-#include <vector>
 
 static bool use_colour_cursors()
 {

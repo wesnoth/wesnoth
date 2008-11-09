@@ -15,12 +15,8 @@
 /** @file unit_map.cpp */
 
 #include "unit.hpp"
-#include "unit_map.hpp"
 #include "log.hpp"
-#include "random.hpp"
 
-#include <sstream>
-#include <cassert>
 
 #define ERR_NG LOG_STREAM(err, engine)
 #define WRN_NG LOG_STREAM(warn, engine)

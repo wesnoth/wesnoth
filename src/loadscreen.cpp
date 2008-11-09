@@ -25,8 +25,6 @@
 #include "gettext.hpp"
 #include "filesystem.hpp"
 
-#include <iostream>
-#include <cassert>
 
 #include <SDL_image.h>
 

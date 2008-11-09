@@ -15,9 +15,7 @@
 #include "gui/widgets/grid.hpp"
 
 #include "foreach.hpp"
-#include "log.hpp"
 
-#include <cassert>
 #include <numeric>
 
 // Disable the size caching for now, it gives problems with the new wrapping

@@ -18,42 +18,22 @@
  */
 
 #include "global.hpp"
-#include "actions.hpp"
-#include "construct_dialog.hpp"
-#include "game_display.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
-#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "image.hpp"
-#include "language.hpp"
-#include "log.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "menu_events.hpp"
-#include "portrait.hpp"
 #include "replay.hpp"
-#include "serialization/string_utils.hpp"
 #include "sound.hpp"
-#include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
-#include "wml_exception.hpp"
 
-#include "SDL_timer.h"
 
-#include <cassert>
-#include <cstdlib>
-#include <deque>
-#include <iostream>
-#include <iterator>
-#include <set>
-#include <string>
 
 #include <boost/scoped_ptr.hpp>
 

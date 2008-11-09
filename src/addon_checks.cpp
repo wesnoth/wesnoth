@@ -16,8 +16,6 @@
 #include "global.hpp"
 #include "addon_checks.hpp"
 #include "config.hpp"
-#include <algorithm>
-#include <cstring>
 
 static bool two_dots(char a, char b)
 {

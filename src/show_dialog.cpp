@@ -16,31 +16,13 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "config.hpp"
-#include "construct_dialog.hpp"
-#include "cursor.hpp"
 #include "display.hpp"
-#include "events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
-#include "hotkeys.hpp"
-#include "image.hpp"
-#include "key.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "language.hpp"
-#include "sdl_utils.hpp"
-#include "tooltips.hpp"
-#include "video.hpp"
-#include "widgets/button.hpp"
-#include "widgets/menu.hpp"
-#include "widgets/progressbar.hpp"
-#include "widgets/textbox.hpp"
 
-#include "SDL_ttf.h"
 
-#include <iostream>
-#include <numeric>
 
 #define ERR_DP LOG_STREAM(err, display)
 #define LOG_DP LOG_STREAM(info, display)

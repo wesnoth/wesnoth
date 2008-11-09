@@ -41,11 +41,7 @@
 
 #include "config.hpp"
 #include "random.hpp"
-#include "util.hpp"
 
-#include <cassert>
-#include <cstdio>
-#include <sstream>
 
 namespace {
   rand_rng::rng *random_generator = NULL ;

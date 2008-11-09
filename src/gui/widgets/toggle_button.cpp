@@ -15,10 +15,8 @@
 #include "gui/widgets/toggle_button.hpp"
 
 #include "foreach.hpp"
-#include "gui/widgets/canvas.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "log.hpp"
 
 namespace gui2 {
 

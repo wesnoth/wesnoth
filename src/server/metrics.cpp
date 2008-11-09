@@ -22,7 +22,6 @@
 #include "metrics.hpp"
 
 #include <algorithm>
-#include <time.h>
 #include <iostream>
 
 struct compare_samples_to_stringspan {

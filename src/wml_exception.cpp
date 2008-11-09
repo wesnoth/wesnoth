@@ -20,12 +20,9 @@
 #include "global.hpp"
 #include "wml_exception.hpp"
 
-#include "display.hpp"
 #include "gettext.hpp"
 #include "show_dialog.hpp"
 
-#include <cassert>
-#include <sstream>
 
 void wml_exception(const char* cond, const char* file, 
 	const int line, const char* function, const t_string& message)

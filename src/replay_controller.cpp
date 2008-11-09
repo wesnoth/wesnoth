@@ -15,27 +15,11 @@
 
 #include "global.hpp"
 
-#include "ai_interface.hpp"
 #include "config_adapter.hpp"
-#include "cursor.hpp"
-#include "filesystem.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "game_events.hpp"
-#include "halo.hpp"
-#include "help.hpp"
-#include "intro.hpp"
 #include "log.hpp"
-#include "map_create.hpp"
-#include "preferences_display.hpp"
-#include "replay.hpp"
 #include "replay_controller.hpp"
-#include "sound.hpp"
-#include "tooltips.hpp"
-#include "video.hpp"
 
-#include <iostream>
-#include <iterator>
 
 #define DBG_NG LOG_STREAM(debug, engine)
 #define DBG_REPLAY LOG_STREAM(debug, replay)

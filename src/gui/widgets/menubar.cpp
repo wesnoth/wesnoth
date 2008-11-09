@@ -14,10 +14,6 @@
 
 #include "gui/widgets/menubar.hpp"
 
-#include "foreach.hpp"
-#include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/toggle_panel.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

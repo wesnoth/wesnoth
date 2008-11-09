@@ -12,18 +12,13 @@
 */
 #include "global.hpp"
 
-#include <algorithm>
 #include <boost/lexical_cast.hpp>
-#include <cmath>
 #include <iostream>
 #include <set>
-#include <vector>
 
 //#include "foreach.hpp"
-#include "formula.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
-#include "formula_tokenizer.hpp"
 #include "map_utils.hpp"
 
 namespace game_logic

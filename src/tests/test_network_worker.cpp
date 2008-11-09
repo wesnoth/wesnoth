@@ -14,19 +14,12 @@
 
 #include "utils/test_support.hpp"
 
-#include <string>
-#include <SDL.h>
-#include <iostream>
-#include <algorithm>
-#include <cstdlib>
 
 #include "utils/auto_parameterized.hpp"
 #include "utils/predicate.hpp"
 
-#include "network.hpp"
 #include "network_worker.hpp"
 #include "thread.hpp"
-#include "config.hpp"
 #include "filesystem.hpp"
 
 #include "game_config.hpp"

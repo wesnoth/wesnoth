@@ -24,8 +24,6 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 
-#include <cassert>
-#include <iostream>
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define WRN_NG LOG_STREAM(warn, engine)

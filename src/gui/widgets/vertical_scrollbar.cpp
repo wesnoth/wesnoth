@@ -14,9 +14,7 @@
 
 #include "gui/widgets/vertical_scrollbar.hpp"
 
-#include "log.hpp"
 
-#include <cassert>
 
 namespace gui2 {
 

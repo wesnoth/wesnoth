@@ -16,15 +16,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include <iostream>
 
 #include "config_cache.hpp"
-#include "filesystem.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
-#include "gettext.hpp"
 
-#include "serialization/preprocessor.hpp"
 
 #include "tests/utils/game_config_manager.hpp"
 

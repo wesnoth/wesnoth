@@ -15,9 +15,7 @@
 
 #include "mouse_events.hpp"
 
-#include "attack_prediction.hpp"
 #include "attack_prediction_display.hpp"
-#include "cursor.hpp"
 #include "dialogs.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -25,17 +23,10 @@
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
-#include "preferences_display.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
-#include "show_dialog.hpp"
-#include "unit_abilities.hpp"
 #include "wml_separators.hpp"
-#include "unit_display.hpp"
-#include "sdl_utils.hpp"
 
-#include <cassert>
-#include <cstdlib>
 
 namespace events{
 

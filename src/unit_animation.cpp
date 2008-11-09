@@ -14,25 +14,10 @@
 
 #include "global.hpp"
 
-#include "color_range.hpp"
-#include "game_display.hpp"
-#include "game_config.hpp"
-#include "gettext.hpp"
-#include "log.hpp"
 #include "map.hpp"
 #include "halo.hpp"
-#include "pathutils.hpp"
 #include "unit.hpp"
-#include "unit_animation.hpp"
-#include "unit_types.hpp"
-#include "variable.hpp"
-#include "sound.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <algorithm>
-#include <climits>
-#include <cstdlib>
-#include <iostream>
 
 struct tag_name_manager {
 	tag_name_manager() : names() {

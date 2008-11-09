@@ -16,7 +16,6 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
 
 #define WRN_CF LOG_STREAM(warn, config)

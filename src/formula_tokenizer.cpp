@@ -12,7 +12,6 @@
 */
 
 #include <sstream>
-#include <iostream>
 
 #include <boost/regex.hpp>
 

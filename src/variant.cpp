@@ -1,18 +1,14 @@
 #include "global.hpp"
 
 #include <cmath>
-#include <set>
-#include <stdlib.h>
 #include <iostream>
 #include <string.h>
 
 #include "boost/lexical_cast.hpp"
 
 #include "formatter.hpp"
-#include "formula.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
-#include "variant.hpp"
 
 namespace {
 std::string variant_type_to_string(variant::TYPE type) {

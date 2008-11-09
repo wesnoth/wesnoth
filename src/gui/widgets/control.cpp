@@ -12,11 +12,9 @@
    see the copying file for more details.
 */
 
-#include "gui/widgets/control.hpp"
 
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

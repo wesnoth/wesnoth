@@ -15,15 +15,11 @@
 #include "global.hpp"
 
 #include "ai.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "variable.hpp"
 #include "wml_exception.hpp"
 
-#include <cassert>
-#include <iostream>
 
 #define LOG_AI LOG_STREAM(info, ai)
 #define DBG_AI LOG_STREAM(debug, ai)

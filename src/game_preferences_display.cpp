@@ -15,28 +15,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "cursor.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "hotkeys.hpp"
-#include "marked-up_text.hpp"
 #include "preferences_display.hpp"
-#include "construct_dialog.hpp"
-#include "video.hpp"
 #include "wml_separators.hpp"
-#include "widgets/button.hpp"
-#include "widgets/label.hpp"
-#include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
-#include "widgets/textbox.hpp"
-#include "scoped_resource.hpp"
-#include "theme.hpp"
 
-#include <vector>
-#include <string>
 
 namespace preferences {
 

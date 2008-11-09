@@ -21,25 +21,15 @@
 
 #define GETTEXT_DOMAIN "wesnoth"
 
-#include "config.hpp"
 #include "construct_dialog.hpp"
-#include "display.hpp"
-#include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
-#include "filesystem.hpp"
 #include "serialization/parser.hpp"
-#include "team.hpp"
-#include "tstring.hpp"
 #include "upload_log.hpp"
 #include "wesconfig.h"
-#include "wml_separators.hpp"
 
-#include "SDL_net.h"
 
-#include <vector>
-#include <string>
 
 #define TARGET_HOST "stats.wesnoth.org"
 #define TARGET_URL "/upload.cgi"

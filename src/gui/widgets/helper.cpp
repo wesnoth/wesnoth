@@ -14,13 +14,7 @@
 
 #include "gui/widgets/helper.hpp"
 
-#include "formula_callable.hpp"
-#include "gettext.hpp"
 #include "gui/widgets/settings.hpp"
-#include "sdl_utils.hpp"
-#include "serialization/string_utils.hpp"
-#include "tstring.hpp"
-#include "log.hpp"
 
 #include "SDL_ttf.h"
 

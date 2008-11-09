@@ -17,17 +17,10 @@
 #include "widgets/textbox.hpp"
 #include "clipboard.hpp"
 #include "font.hpp"
-#include "language.hpp"
 #include "log.hpp"
-#include "sdl_utils.hpp"
-#include "serialization/string_utils.hpp"
 #include "video.hpp"
 
-#include "SDL.h"
 
-#include <algorithm>
-#include <cctype>
-#include <cstring>
 
 #define WRN_DISPLAY LOG_STREAM(warn, display)
 #define DBG_G LOG_STREAM(debug, general)

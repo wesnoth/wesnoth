@@ -14,33 +14,19 @@
 
 #include "global.hpp"
 
-#include "construct_dialog.hpp"
 #include "dialogs.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "md5.hpp"
 #include "multiplayer.hpp"
-#include "multiplayer_ui.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"
-#include "multiplayer_create.hpp"
 #include "playmp_controller.hpp"
-#include "network.hpp"
 #include "playcampaign.hpp"
-#include "game_preferences.hpp"
-#include "preferences_display.hpp"
-#include "random.hpp"
-#include "replay.hpp"
-#include "video.hpp"
-#include "statistics.hpp"
-#include "serialization/string_utils.hpp"
 #include "upload_log.hpp"
-#include "wml_separators.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 

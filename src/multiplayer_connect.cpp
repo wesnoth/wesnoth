@@ -21,21 +21,14 @@
 
 #include "ai.hpp"
 #include "dialogs.hpp"
-#include "font.hpp"
-#include "game_config.hpp"
-#include "game_events.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "multiplayer_connect.hpp"
 #include "statistics.hpp"
-#include "show_dialog.hpp"
 #include "unit_id.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_separators.hpp"
 
-#include <cassert>
 #include <boost/bind.hpp>
 
 #define LOG_NW LOG_STREAM(info, network)

@@ -12,15 +12,9 @@
    see the copying file for more details.
 */
 
-#include "gui/widgets/widget.hpp"
 
-#include "filesystem.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
 
-#include <cassert>
 
 namespace gui2 {
 

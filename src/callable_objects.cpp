@@ -13,7 +13,6 @@
 
 
 #include "callable_objects.hpp"
-#include "pathutils.hpp"
 
 variant location_callable::get_value(const std::string& key) const
 {

@@ -16,20 +16,13 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
 #include "font.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
-#include "language.hpp"
 #include "log.hpp"
-#include "sdl_utils.hpp"
 #include "theme.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
-#include <cassert>
-#include <cstdlib>
-#include <sstream>
 
 #define DBG_DP LOG_STREAM(debug, display)
 #define LOG_DP LOG_STREAM(info, display)

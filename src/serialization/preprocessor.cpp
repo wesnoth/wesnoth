@@ -25,14 +25,7 @@
 #include "../log.hpp"
 #include "../wesconfig.h"
 #include "binary_or_text.hpp"
-#include "preprocessor.hpp"
-#include "string_utils.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <iostream>
-#include <sstream>
-#include <vector>
 
 #include <boost/bind.hpp>
 
@@ -54,7 +47,6 @@ bool preproc_define::operator<(preproc_define const &v) const {
 	return linenum < v.linenum;
 }
 
-#include <list>
 void preproc_define::write_argument(config_writer& writer, const std::string& arg) const
 {
 	

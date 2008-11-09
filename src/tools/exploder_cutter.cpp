@@ -14,10 +14,8 @@
 
 #include "exploder_cutter.hpp"
 #include "filesystem.hpp"
-#include "sdl_utils.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
 #include "SDL_image.h"
 
 cutter::cutter() 

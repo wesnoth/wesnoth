@@ -20,39 +20,18 @@
 #include "global.hpp"
 
 #include "about.hpp"
-#include "cursor.hpp"
-#include "display.hpp"
-#include "events.hpp"
-#include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
-#include "image.hpp"
-#include "language.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
 #include "log.hpp"
-#include "sdl_utils.hpp"
 #include "sound.hpp"
-#include "construct_dialog.hpp"
 #include "unit.hpp"
-#include "video.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
-#include "widgets/button.hpp"
-#include "widgets/menu.hpp"
-#include "widgets/scrollbar.hpp"
-#include "widgets/widget.hpp"
 
-#include <algorithm>
-#include <iostream>
-#include <list>
-#include <locale>
-#include <map>
 #include <queue>
-#include <set>
-#include <sstream>
 
 #define DBG_HELP LOG_STREAM(debug, help)
 #define LOG_HELP LOG_STREAM(info, help)

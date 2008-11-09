@@ -29,8 +29,6 @@
 #pragma warning( disable : 4786 )
 #endif
 #include <fstream>
-#include <sstream>   // ostrstream
-#include <ctime>     // for localtime
 #include <cassert>
 #include "mailer.h"
 #include "base64.h"

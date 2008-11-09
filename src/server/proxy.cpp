@@ -16,7 +16,6 @@
 
 #include "proxy.hpp"
 
-#include <map>
 
 namespace
 {

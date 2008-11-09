@@ -16,12 +16,7 @@
 
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

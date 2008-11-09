@@ -16,8 +16,6 @@
 
 #include "reports.hpp"
 
-#include <cassert>
-#include <map>
 
 namespace {
 	const std::string report_names[] = {

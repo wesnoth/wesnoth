@@ -19,12 +19,8 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "filechooser.hpp"
-#include "video.hpp"
 #include "widgets/file_menu.hpp"
-#include "filesystem.hpp"
 
-#include <vector>
-#include <string>
 
 namespace dialogs
 {

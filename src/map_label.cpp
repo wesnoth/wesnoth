@@ -15,12 +15,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
-#include "font.hpp"
-#include "language.hpp"
-#include "map_label.hpp"
 
-#include <cassert>
-#include <vector>
 
 namespace {
 	const size_t max_label_size = 32;

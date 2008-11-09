@@ -17,10 +17,8 @@
 #include "global.hpp"
 #include "sound.hpp"
 #include "halo.hpp"
-#include <cassert>
 // NOTE: global.hpp must be first!
 
-#include "display.hpp"
 #define UNIT_FRAME_H_PART2
 #include "unit_frame.hpp"
 

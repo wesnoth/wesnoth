@@ -16,28 +16,16 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "config.hpp"
-#include "filesystem.hpp"
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
-#include "hotkeys.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "network.hpp" // ping_timeout
-#include "sound.hpp"
 #include "settings.hpp"
-#include "util.hpp"
-#include "video.hpp" // non_interactive()
 #include "wml_exception.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <cstdlib>
-#include <iostream>
-#include <iterator>
-#include <sstream>
 
 namespace {
 

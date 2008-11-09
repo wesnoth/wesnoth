@@ -14,19 +14,11 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
 #include "construct_dialog.hpp"
-#include "game_display.hpp"
-#include "font.hpp"
-#include "marked-up_text.hpp"
 #include "gettext.hpp"
-#include "game_config.hpp"
-#include "image.hpp"
 #include "log.hpp"
 #include "multiplayer_ui.hpp"
-#include "network.hpp"
 #include "sound.hpp"
-#include "video.hpp"
 #include "replay.hpp"
 #include "wml_separators.hpp"
 

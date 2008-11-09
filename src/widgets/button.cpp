@@ -23,7 +23,6 @@
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
-#include "serialization/string_utils.hpp"
 
 #define ERR_DP LOG_STREAM(err, display)
 

@@ -19,23 +19,13 @@
  * Read/Write & analyse WML- and config-files.
  */
 
-#include "serialization/parser.hpp"
 
 #include "config.hpp"
-#include "filesystem.hpp"
 #include "gettext.hpp"
-#include "language.hpp"
 #include "loadscreen.hpp"
-#include "log.hpp"
-#include "util.hpp"
 #include "wesconfig.h"
-#include "serialization/binary_wml.hpp"
-#include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/tokenizer.hpp"
 
-#include <cassert>
-#include <sstream>
 #include <stack>
 
 #include <boost/iostreams/filtering_stream.hpp>

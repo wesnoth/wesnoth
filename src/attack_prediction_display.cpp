@@ -16,17 +16,10 @@
 #include "attack_prediction_display.hpp"
 
 #include "attack_prediction.hpp"
-#include "dialogs.hpp"
-#include "game_events.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "marked-up_text.hpp"
-#include "show_dialog.hpp"
 #include "unit_abilities.hpp"
-#include "wml_separators.hpp"
-#include "unit_display.hpp"
 
-#include <cstdlib>
 // Conversion routine for both unscatched and damage change percentage.
 static void format_prob(char str_buf[10], const float prob)
 {

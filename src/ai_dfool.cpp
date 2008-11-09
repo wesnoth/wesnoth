@@ -18,9 +18,7 @@
 
 #include "ai_dfool.hpp"
 #include "log.hpp"
-#include "variable.hpp"
 
-#include <set>
 
 namespace dfool {
   void dfool_ai::play_turn(){

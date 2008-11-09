@@ -18,8 +18,6 @@
 
 #include "widgets/scrollarea.hpp"
 
-#include <algorithm>
-#include <iostream>
 
 namespace gui {
 

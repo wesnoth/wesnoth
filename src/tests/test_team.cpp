@@ -14,7 +14,6 @@
 
 #include "utils/test_support.hpp"
 
-#include "team.hpp"
 
 BOOST_AUTO_TEST_SUITE( teams )
 

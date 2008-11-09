@@ -23,7 +23,6 @@
 #include "font.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
-#include "team.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 

@@ -18,17 +18,12 @@
 
 #include "game_config.hpp"
 #include "font.hpp"
-#include "image.hpp"
 #include "language.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
-#include "sdl_utils.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <algorithm>
-#include <cassert>
 #include <numeric>
 
 namespace gui {

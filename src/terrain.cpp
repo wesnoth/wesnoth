@@ -16,15 +16,8 @@
 
 #include "config.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "terrain.hpp"
-#include "serialization/string_utils.hpp"
-#include "tstring.hpp"
-#include "wml_exception.hpp"
 
-#include <algorithm>
-#include <cstdlib>
-#include <iostream>
 
 
 terrain_type::terrain_type() :

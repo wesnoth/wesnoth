@@ -19,12 +19,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "gui/widgets/settings.hpp"
-#include "log.hpp"
-#include "wml_exception.hpp"
 
 #define ERR_CONFIG LOG_STREAM(err, config)
 

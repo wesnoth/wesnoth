@@ -28,13 +28,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/vertical_scrollbar.hpp"
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
-#include "util.hpp"
-#include "wml_exception.hpp"
 
-#include <cassert>
 
 namespace gui2 {
 

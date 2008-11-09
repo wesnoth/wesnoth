@@ -12,15 +12,9 @@
    See the COPYING file for more details.
 */
 
-#include "action_base.hpp"
-#include "editor_common.hpp"
 #include "editor_controller.hpp"
-#include "editor_main.hpp"
-#include "map_context.hpp"
 
 #include "../construct_dialog.hpp"
-#include "../gettext.hpp"
-#include "../hotkeys.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 

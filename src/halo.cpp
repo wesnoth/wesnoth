@@ -23,15 +23,7 @@
 #include "display.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
-#include "image.hpp"
-#include "sdl_utils.hpp"
-#include "util.hpp"
-#include "video.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <map>
 
 namespace halo
 {

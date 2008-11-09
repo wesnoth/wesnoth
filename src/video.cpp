@@ -19,11 +19,7 @@
 
 #include "global.hpp"
 
-#include <stdio.h>
-#include <iostream>
-#include <vector>
 
-#include "events.hpp"
 #include "font.hpp"
 #include "image.hpp"
 #include "log.hpp"
@@ -37,7 +33,6 @@
 
 #if (TEST_VIDEO_ON==1)
 
-#include <stdlib.h>
 
 // Testprogram takes three args: x-res y-res colour-depth
 int main( int argc, char** argv )

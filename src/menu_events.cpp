@@ -21,13 +21,8 @@
 
 #include "global.hpp"
 
-#include "construct_dialog.hpp"
 #include "dialogs.hpp"
-#include "foreach.hpp"
 #include "formula_ai.hpp"
-#include "game_display.hpp"
-#include "game_config.hpp"
-#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
@@ -35,22 +30,13 @@
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
-#include "playturn.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "statistics_dialog.hpp"
-#include "team.hpp"
 #include "unit_display.hpp"
-#include "unit_types.hpp"
 #include "wml_separators.hpp"
-#include "util.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <sstream>
 
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)

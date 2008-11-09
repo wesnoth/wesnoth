@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include <iostream>
 #include "time.hpp"
 #include "global.hpp"
 #include "SDL.h"

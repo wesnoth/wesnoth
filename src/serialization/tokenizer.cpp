@@ -16,12 +16,8 @@
 
 #include "global.hpp"
 
-#include "util.hpp"
 #include "serialization/tokenizer.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <iostream>
-#include <sstream>
 
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),

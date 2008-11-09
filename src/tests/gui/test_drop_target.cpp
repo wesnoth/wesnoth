@@ -15,8 +15,6 @@
 #include "tests/utils/test_support.hpp"
 
 
-#include <algorithm>
-#include <vector>
 
 #include <boost/bind.hpp>
 

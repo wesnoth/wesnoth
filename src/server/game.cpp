@@ -19,13 +19,7 @@
 #include "../map.hpp" // gamemap::MAX_PLAYERS
 
 #include "game.hpp"
-#include "player.hpp"
 
-#include <algorithm>
-#include <iostream>
-#include <memory>
-#include <cassert>
-#include <sstream>
 
 #define ERR_GAME LOG_STREAM(err, mp_server)
 #define WRN_GAME LOG_STREAM(warn, mp_server)

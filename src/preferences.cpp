@@ -21,22 +21,14 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "config.hpp"
 #include "filesystem.hpp"
-#include "gettext.hpp"
 #include "gui/widgets/settings.hpp"
 #include "hotkeys.hpp"
-#include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <cstdlib>
-#include <iostream>
-#include <iterator>
-#include <sstream>
 
 namespace {
 

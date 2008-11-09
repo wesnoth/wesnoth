@@ -19,13 +19,9 @@
  * and saves addons under data/.
  */
 
-#include "config.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "network.hpp"
 #include "network_worker.hpp"
-#include "util.hpp"
-#include "scoped_resource.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
@@ -33,24 +29,14 @@
 #include "addon_checks.hpp"
 #include "server/input_stream.hpp"
 
-#include "SDL.h"
 
-#include <iostream>
-#include <map>
-#include <algorithm>	// Required for gcc 4.3.0
 
 #include <boost/iostreams/filter/gzip.hpp>
-#include <cstdio>
-#include <csignal>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
 #if !(defined(_WIN32))
 #include <errno.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <sys/types.h>
 #endif
 
 #define LOG_CS lg::err(lg::network, false)

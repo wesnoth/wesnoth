@@ -14,13 +14,8 @@
 
 #include "gui/dialogs/addon_connect.hpp"
 
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "log.hpp"
-#include "wml_exception.hpp"
 
 namespace gui2 {
 

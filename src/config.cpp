@@ -20,14 +20,8 @@
 
 #include "global.hpp"
 
-#include <algorithm>
-#include <sstream>
-#include <string.h>
-#include <ostream>
 #include "config.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
-#include "util.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 

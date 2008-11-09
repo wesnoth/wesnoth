@@ -18,20 +18,9 @@
 
 #include "widgets/menu.hpp"
 
-#include "language.hpp"
 #include "font.hpp"
-#include "image.hpp"
-#include "marked-up_text.hpp"
-#include "sdl_utils.hpp"
-#include "SDL.h"
-#include "SDL_image.h"
 #include "video.hpp"
-#include "wml_separators.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <numeric>
 
 namespace gui {
 

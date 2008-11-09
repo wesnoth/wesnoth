@@ -19,40 +19,26 @@
 
 #include "global.hpp"
 
-#include "serialization/binary_wml.hpp"
-#include "config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "network.hpp"
 #include "network_worker.hpp"
 #include "thread.hpp"
 
 #include "filesystem.hpp"
 
-#include "SDL_net.h"
 
-#include <algorithm>
-#include <cassert>
 #include <cerrno>
 #include <queue>
-#include <iostream>
 #include <iomanip>
 #include <set>
-#include <vector>
-#include <ctime>
 
 #include <signal.h>
-#include <string.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #undef INADDR_ANY
 #undef INADDR_BROADCAST
 #undef INADDR_NONE
-#include <windows.h>
 #else
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
-#include <netinet/tcp.h>  // for TCP_NODELAY
 #ifdef __BEOS__
 #include <socket.h>
 #else

@@ -13,9 +13,6 @@
 */
 
 #include "user_handler.hpp"
-#include <cstdlib>
-#include <ctime>
-#include <sstream> 
 
 
 bool user_handler::send_mail(const std::string& to_user,

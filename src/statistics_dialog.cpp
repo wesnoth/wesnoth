@@ -15,12 +15,10 @@
 
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
-#include "statistics.hpp"
 #include "statistics_dialog.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"
 
-#include <sstream>
 
 namespace {
 std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m, unsigned int team)

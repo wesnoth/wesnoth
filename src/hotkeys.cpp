@@ -16,29 +16,16 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "config.hpp"
 #include "construct_dialog.hpp"
-#include "display.hpp"
-#include "events.hpp"
 #include "hotkeys.hpp"
-#include "game_config.hpp"
-#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
 #include "preferences_display.hpp"
-#include "show_dialog.hpp"
-#include "util.hpp"
-#include "video.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
-#include "SDL.h"
 
-#include <algorithm>
-#include <cstdlib>
-#include <map>
 
 #define ERR_G LOG_STREAM(err, general)
 #define LOG_G LOG_STREAM(info, general)

@@ -17,25 +17,13 @@
  * Note: this is a near-straight rip from the old editor.
 */
 
-#include "editor_common.hpp"
 #include "editor_palettes.hpp"
-#include "editor_layout.hpp"
 
-#include "../config.hpp"
-#include "../sdl_utils.hpp"
-#include "../serialization/string_utils.hpp"
 #include "../foreach.hpp"
-#include "../image.hpp"
-#include "../reports.hpp"
 #include "../gettext.hpp"
 #include "../tooltips.hpp"
-#include "../util.hpp"
-#include "../video.hpp"
 
-#include "SDL.h"
-#include "SDL_keysym.h"
 
-#include <cassert>
 
 namespace editor2 {
 

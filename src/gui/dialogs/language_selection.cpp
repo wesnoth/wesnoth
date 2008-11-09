@@ -16,14 +16,9 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
 #include "language.hpp"
-#include "log.hpp"
 #include "preferences.hpp"
-#include "video.hpp"
-#include "wml_exception.hpp"
 
 namespace gui2 {
 

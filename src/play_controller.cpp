@@ -21,18 +21,13 @@
 #include "play_controller.hpp"
 #include "dialogs.hpp"
 #include "config_adapter.hpp"
-#include "game_display.hpp"
-#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "sound.hpp"
-#include "team.hpp"
 #include "unit_id.hpp"
 #include "terrain_filter.hpp"
-#include "variable.hpp"
 
-#include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
 

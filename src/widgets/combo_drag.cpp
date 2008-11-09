@@ -15,10 +15,6 @@
 #include "global.hpp"
 
 #include "widgets/combo_drag.hpp"
-#include "widgets/drop_target.hpp"
-#include "display.hpp"
-#include "show_dialog.hpp"
-#include "video.hpp"
 
 
 

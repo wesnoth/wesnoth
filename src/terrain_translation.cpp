@@ -24,7 +24,6 @@
 #include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
-#include <iostream>
 
 #define ERR_G  LOG_STREAM(err, general)
 #define WRN_G  LOG_STREAM(warn, general)

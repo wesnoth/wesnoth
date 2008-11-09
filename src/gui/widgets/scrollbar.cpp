@@ -16,9 +16,7 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/event_handler.hpp"
-#include "log.hpp"
 
-#include <cassert>
 
 namespace gui2 {
 

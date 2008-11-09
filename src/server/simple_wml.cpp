@@ -1,13 +1,9 @@
-#include <assert.h>
-#include <algorithm>
 #include <iostream>
 #include <sstream>
-#include <string>
 
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
-#include "../serialization/binary_wml.hpp"
 #include "simple_wml.hpp"
 
 namespace simple_wml {

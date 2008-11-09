@@ -26,21 +26,14 @@
 #include "scoped_resource.hpp"
 #include "log.hpp"
 #include "network_worker.hpp"
-#include "network.hpp"
 #include "filesystem.hpp"
 #include "thread.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
-#include <algorithm>
-#include <cassert>
 #include <cerrno>
-#include <cstring>
 #include <deque>
-#include <iostream>
-#include <map>
-#include <vector>
 
 #ifdef USE_SENDFILE
 #include <sys/sendfile.h>
@@ -49,7 +42,6 @@
 #define HAVE_POLL_H
 #endif
 
-#include <boost/iostreams/filter/gzip.hpp>
 
 #ifdef __AMIGAOS4__
 #include <unistd.h>

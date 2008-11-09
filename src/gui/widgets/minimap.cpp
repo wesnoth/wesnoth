@@ -16,7 +16,6 @@
 
 #include "map.hpp"
 #include "map_exception.hpp"
-#include "log.hpp"
 #include "../../minimap.hpp"
 
 #define ERR_C LOG_STREAM_INDENT(err, config)

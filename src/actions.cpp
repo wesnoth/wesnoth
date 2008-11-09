@@ -17,33 +17,21 @@
  * Recruiting, Fighting.
  */
 
-#include "actions.hpp"
 #include "attack_prediction.hpp"
-#include "game_config.hpp"
-#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
-#include "halo.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
-#include "pathfind.hpp"
-#include "random.hpp"
 #include "replay.hpp"
-#include "sound.hpp"
 #include "statistics.hpp"
 #include "unit_abilities.hpp"
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
-#include "wml_separators.hpp"
-#include "serialization/binary_wml.hpp"
-#include "serialization/parser.hpp"
 
-#include <cassert>
 
 #include <boost/scoped_ptr.hpp>
 

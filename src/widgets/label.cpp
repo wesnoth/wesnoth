@@ -16,7 +16,6 @@
 
 #include "widgets/label.hpp"
 #include "marked-up_text.hpp"
-#include "video.hpp"
 
 namespace gui {
 

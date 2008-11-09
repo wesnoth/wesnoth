@@ -13,20 +13,13 @@
 */
 
 #include "global.hpp"
-#include "events.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
-#include "random.hpp"
 #include "sound.hpp"
 
-#include "SDL.h"
 #include "SDL_mixer.h"
 
-#include <cassert>
-#include <iostream>
-#include <map>
 #include <list>
 
 #define LOG_AUDIO LOG_STREAM(info, audio)

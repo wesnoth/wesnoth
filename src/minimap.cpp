@@ -18,8 +18,6 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "map_exception.hpp"
-#include "minimap.hpp"
 #include "team.hpp"
 #include "wml_exception.hpp"
 

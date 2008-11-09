@@ -13,17 +13,12 @@
 */
 
 #include "action.hpp"
-#include "editor_map.hpp"
 #include "map_context.hpp"
 
 #include "../display.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
-#include "../gettext.hpp"
-#include "../pathutils.hpp"
 
-#include <cassert>
-#include <deque>
 
 
 namespace editor2 {

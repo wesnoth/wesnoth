@@ -16,16 +16,13 @@
 #include "playmp_controller.hpp"
 
 #include "dialogs.hpp"
-#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "playturn.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
 
-#include "SDL.h"
 
-#include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
 

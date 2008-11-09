@@ -14,11 +14,9 @@
 
 #include "gui/widgets/scroll_label.hpp"
 
-#include "foreach.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/spacer.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

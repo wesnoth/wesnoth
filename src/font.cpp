@@ -20,23 +20,15 @@
 #include "font.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "sdl_utils.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
 #include "marked-up_text.hpp"
 
-#include <algorithm>
-#include <cstdio>
-#include <iostream>
 #include <list>
-#include <map>
 #include <set>
-#include <sstream>
 #include <stack>
-#include <string>
 
 #include <fontconfig/fontconfig.h>
 

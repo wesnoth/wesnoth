@@ -17,9 +17,7 @@
 #include "foreach.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

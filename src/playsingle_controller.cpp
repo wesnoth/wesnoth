@@ -19,18 +19,13 @@
  *  Logic for single-player game.
  */
 
-#include <boost/intrusive_ptr.hpp>
 #include "playsingle_controller.hpp"
 
-#include "construct_dialog.hpp"
 #include "ai.hpp"
-#include "ai_interface.hpp"
-#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "playturn.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
 

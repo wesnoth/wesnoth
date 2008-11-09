@@ -17,12 +17,9 @@
 #include "filesystem.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/string_utils.hpp"
 
 #include "ban.hpp"
 
-#include <sstream>
-#include <algorithm>
 
 #include <boost/bind.hpp>
 

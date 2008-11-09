@@ -12,9 +12,7 @@
    see the copying file for more details.
 */
 
-#include "gui/widgets/spacer.hpp"
 
-#include "log.hpp"
 
 namespace gui2 {
 

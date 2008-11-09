@@ -21,12 +21,9 @@
 
 #include "global.hpp"
 
-#include <cctype>
-#include <sstream>
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "wctype.h"
 
 #define ERR_GENERAL LOG_STREAM(err, general)
 

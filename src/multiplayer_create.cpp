@@ -19,13 +19,9 @@
 
 #include "global.hpp"
 
-#include "game_display.hpp"
-#include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
 #include "construct_dialog.hpp"
 #include "settings.hpp"
-#include "show_dialog.hpp"
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "map_create.hpp"
@@ -33,13 +29,9 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "video.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 
-#include <cassert>
-#include <memory>
 
 #define ERR_CF LOG_STREAM(err, config)
 

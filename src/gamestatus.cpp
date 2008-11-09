@@ -19,35 +19,21 @@
 
 #include "global.hpp"
 
-#include "filesystem.hpp"
-#include "foreach.hpp"
-#include "game_config.hpp"
-#include "game_errors.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "game_preferences.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
-#include "time_of_day.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
-#include <algorithm>
-#include <cstdio>
-#include <iostream>
-#include <iterator>
-#include <sstream>
 #ifndef _MSC_VER
 #include <sys/time.h>
 #endif
-#include <time.h>
 
 #define DBG_NG lg::debug(lg::engine)
 #define LOG_NG lg::info(lg::engine)

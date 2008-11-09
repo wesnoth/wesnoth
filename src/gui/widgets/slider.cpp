@@ -16,9 +16,7 @@
 
 #include "foreach.hpp"
 #include "formatter.hpp"
-#include "log.hpp"
 
-#include <cassert>
 
 namespace gui2 {
 

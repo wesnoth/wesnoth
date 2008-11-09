@@ -18,7 +18,6 @@
  */
 
 #include "global.hpp"
-#include "config.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"

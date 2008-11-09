@@ -14,7 +14,6 @@
 
 #include "gui/widgets/label.hpp"
 
-#include "log.hpp"
 
 namespace gui2 {
 

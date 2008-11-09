@@ -19,16 +19,9 @@
  * More documentation at the end of the file.
  */
 
-#include "gui/widgets/event_handler.hpp"
 
 #include "clipboard.hpp"
-#include "config.hpp"
-#include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
-#include "serialization/parser.hpp"
-#include "tstring.hpp"
-#include "variable.hpp"
 
 namespace gui2{
 

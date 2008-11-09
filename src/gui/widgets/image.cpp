@@ -15,7 +15,6 @@
 #include "gui/widgets/image.hpp"
 
 #include "../../image.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

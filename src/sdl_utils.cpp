@@ -20,16 +20,8 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "log.hpp"
-#include "sdl_utils.hpp"
 #include "video.hpp"
 
-#include <algorithm>
-#include <string.h>
-#include <cassert>
-#include <cmath>
-#include <iostream>
-#include <map>
 
 SDL_Color int_to_color(const Uint32 rgb) {
 	SDL_Color to_return = {

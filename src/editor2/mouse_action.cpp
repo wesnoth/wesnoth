@@ -14,14 +14,10 @@
 
 #include "action.hpp"
 #include "brush.hpp"
-#include "editor_common.hpp"
 #include "editor_display.hpp"
 #include "mouse_action.hpp"
 
 #include "../construct_dialog.hpp"
-#include "../foreach.hpp"
-#include "../gettext.hpp"
-#include "../pathutils.hpp"
 
 namespace editor2 {
 

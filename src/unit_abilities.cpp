@@ -20,12 +20,8 @@
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 
-#include "log.hpp"
-#include "pathutils.hpp"
 #include "terrain_filter.hpp"
-#include "variable.hpp"
 
-#include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
 

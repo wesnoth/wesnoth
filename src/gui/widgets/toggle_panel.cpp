@@ -16,7 +16,6 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

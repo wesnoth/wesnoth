@@ -23,7 +23,6 @@
 // These files may vary from platform to platform, 
 // since these functions are NOT ANSI-conforming functions. 
 // They may have to be altered to port to new platforms
-#include <sys/types.h>
 
 //for mkdir
 #include <sys/stat.h>
@@ -45,23 +44,15 @@ BPath be_path;
 #endif
 
 // for getenv
-#include <cstdlib>
 #include <cerrno>
-#include <string>
-#include <cstring>
-#include <algorithm>
 #include <fstream>
-#include <iostream>
 #include <iomanip>
-#include <sstream>
 #include <set>
 
-#include "wesconfig.h"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "scoped_resource.hpp"
 #include "loadscreen.hpp"
 
 #define DBG_FS LOG_STREAM(debug, filesystem)

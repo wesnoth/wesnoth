@@ -21,25 +21,13 @@
 #include "global.hpp"
 
 #include "display.hpp"
-#include "events.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
-#include "intro.hpp"
-#include "font.hpp"
-#include "key.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "sdl_utils.hpp"
 #include "sound.hpp"
-#include "video.hpp"
-#include "widgets/button.hpp"
 #include "game_events.hpp"
 #include "language.hpp"
 
-#include <cstdlib>
-#include <sstream>
-#include <vector>
 
 #define LOG_NG LOG_STREAM(info, engine)
 

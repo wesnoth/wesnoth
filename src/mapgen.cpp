@@ -26,21 +26,8 @@
 #include "mapgen.hpp"
 #include "pathfind.hpp"
 #include "race.hpp"
-#include "scoped_resource.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cctype>
-#include <cmath>
-#include <cstdlib>
-#include <iostream>
-#include <set>
-#include <sstream>
-#include <string>
-#include <ctime>
-#include <vector>
 
 #define ERR_CF LOG_STREAM(err, config)
 #define ERR_NG LOG_STREAM(err, engine)

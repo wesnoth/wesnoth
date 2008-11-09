@@ -14,28 +14,15 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
-#include "util.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "wesconfig.h" //without this DUMMYLOCALES break
 
-#include <algorithm>
-#include <cassert>
-#include <cctype>
-#include <cerrno>
-#include <cstring>
-#include <clocale>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
 #include <stdexcept>
 
 #include <boost/scoped_array.hpp>

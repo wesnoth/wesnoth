@@ -13,9 +13,6 @@
 
 #include "action.hpp"
 #include "editor_controller.hpp"
-#include "editor_display.hpp"
-#include "editor_layout.hpp"
-#include "editor_map.hpp"
 #include "editor_palettes.hpp"
 #include "mouse_action.hpp"
 
@@ -23,27 +20,17 @@
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
 #include "gui/dialogs/editor_settings.hpp"
-#include "gui/widgets/button.hpp"
 #include "gui/widgets/window.hpp"
 
 #include "../config_adapter.hpp"
-#include "../construct_dialog.hpp"
-#include "../cursor.hpp"
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
-#include "../font.hpp"
 #include "../foreach.hpp"
-#include "../gettext.hpp"
-#include "../hotkeys.hpp"
 #include "../map_create.hpp"
 #include "../mapgen.hpp"
-#include "../preferences.hpp"
 #include "../random.hpp"
-#include "../serialization/string_utils.hpp"
 
-#include "SDL.h"
 
-#include <memory>
 
 #include <boost/bind.hpp>
 

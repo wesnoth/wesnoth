@@ -20,37 +20,16 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "cursor.hpp"
-#include "game_display.hpp"
-#include "events.hpp"
-#include "filesystem.hpp"
-#include "font.hpp"
 #include "foreach.hpp"
-#include "game_config.hpp"
-#include "gettext.hpp"
 #include "halo.hpp"
-#include "hotkeys.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
-#include "minimap.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
-#include "sdl_utils.hpp"
 #include "sound.hpp"
-#include "team.hpp"
-#include "theme.hpp"
-#include "tooltips.hpp"
-#include "unit_display.hpp"
 
-#include "SDL_image.h"
 
-#include <algorithm>
-#include <cassert>
-#include <cmath>
-#include <iostream>
-#include <sstream>
 
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)

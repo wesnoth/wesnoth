@@ -14,17 +14,12 @@
 
 #include "global.hpp"
 
-#include <iostream>
-#include <math.h>
 
 //#include "foreach.hpp"
 #include "callable_objects.hpp"
-#include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "log.hpp"
-#include "map.hpp"
 
-#include "SDL.h"
 
 #define DBG_NG LOG_STREAM(debug, engine)
 

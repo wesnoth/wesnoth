@@ -21,9 +21,6 @@
 #include "sound.hpp"
 #include "video.hpp"
 
-#include <algorithm>
-#include <iostream>
-#include <sstream>
 
 namespace {
 	const std::string slider_image = "buttons/slider.png";

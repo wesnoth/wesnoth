@@ -14,7 +14,6 @@
 
 #include "gui/widgets/container.hpp"
 
-#include "log.hpp"
 
 namespace gui2 {
 

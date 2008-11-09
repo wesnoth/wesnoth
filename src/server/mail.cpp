@@ -1,4 +1,3 @@
-#include "mail.hpp"
 #include "user_handler.hpp"
 
 void mailer::load_mail_cfg(const config& c) {

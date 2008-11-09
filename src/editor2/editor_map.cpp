@@ -18,13 +18,10 @@
 #include "../display.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
-#include "../gettext.hpp"
 #include "../map_exception.hpp"
 #include "../pathutils.hpp"
 #include "../wml_exception.hpp"
 
-#include <cassert>
-#include <deque>
 
 
 namespace editor2 {

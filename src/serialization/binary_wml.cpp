@@ -25,9 +25,6 @@
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"
 
-#include <algorithm>
-#include <iostream>
-#include <sstream>
 
 #define ERR_CF LOG_STREAM(err, config)
 

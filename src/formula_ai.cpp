@@ -12,13 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include <boost/regex.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "actions.hpp"
 #include "menu_events.hpp"
 #include "formula_ai.hpp"
-#include "pathutils.hpp"
 #include "log.hpp"
 #include "attack_prediction.hpp"
 

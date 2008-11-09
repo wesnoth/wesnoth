@@ -21,25 +21,16 @@
 #include "global.hpp"
 
 #include "playcampaign.hpp"
-#include "config.hpp"
-#include "filesystem.hpp"
-#include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "map_create.hpp"
 #include "playmp_controller.hpp"
-#include "playsingle_controller.hpp"
-#include "replay.hpp"
 #include "replay_controller.hpp"
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
-#include "game_errors.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
 
-#include <cassert>
-#include <map>
 
 #define LOG_G LOG_STREAM(info, general)
 #define LOG_NG LOG_STREAM(info, engine)

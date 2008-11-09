@@ -14,18 +14,13 @@
 
 #include "global.hpp"
 
-#include <cassert>
-#include <cstdlib>
 
-#include "config.hpp"
 #include "display.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
-#include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
-#include "util.hpp"
 
 namespace soundsource {
 

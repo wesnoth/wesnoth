@@ -20,7 +20,6 @@
 #include "global.hpp"
 
 #include "dialogs.hpp"
-#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -35,13 +34,10 @@
 #include "minimap.hpp"
 #include "replay.hpp"
 #include "thread.hpp"
-#include "unit.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 #include "wml_exception.hpp"
 
-#include <assert.h>
-#include <clocale>
 
 //#ifdef _WIN32
 //#include "locale.h"

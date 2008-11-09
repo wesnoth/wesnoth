@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include <iostream>
 #include "tests/utils/fake_event_source.hpp"
 
 #include "mouse_handler_base.hpp"

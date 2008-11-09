@@ -20,15 +20,10 @@
 
 #include "global.hpp"
 
-#include <sstream>
-#include "config_adapter.hpp"
-#include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "team.hpp"
 #include "wml_exception.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)

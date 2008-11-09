@@ -17,11 +17,8 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "gui/widgets/event_handler.hpp"
-#include "log.hpp"
-#include "serialization/string_utils.hpp"
 #include "game_preferences.hpp"
 
-#include <numeric>
 
 namespace gui2 {
 

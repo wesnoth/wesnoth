@@ -17,37 +17,27 @@
  * Artificial intelligence - The computer commands the enemy.
  */
 
-#include "ai.hpp"
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
 #ifdef HAVE_PYTHON
 //#include "python_ai.hpp"
 #include "ai_python.hpp"
 #endif
-#include "actions.hpp"
 #include "array.hpp"
-#include "callable_objects.hpp"
 #include "dialogs.hpp"
-#include "foreach.hpp"
 #include "formula_ai.hpp"
-#include "game_config.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
-#include "unit.hpp"
-#include "playturn.hpp"
 #include "wml_exception.hpp"
 
-#include <cassert>
 #include <fstream>
 
-#include <boost/scoped_ptr.hpp>
 
 #define DBG_AI LOG_STREAM(debug, ai)
 #define LOG_AI LOG_STREAM(info, ai)

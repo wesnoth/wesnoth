@@ -15,9 +15,7 @@
 #include "widgets/drop_target.hpp"
 
 #include <boost/bind.hpp>
-#include <algorithm>
 
-#include <iostream>
 namespace gui {
 
 	drop_target::drop_groups drop_target::groups_;

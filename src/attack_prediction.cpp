@@ -24,19 +24,12 @@
 
 #include "attack_prediction.hpp"
 
-#include <cassert>
-#include <cstring> // For memset
-#include <vector>
 
 
 // Compile with -O3 -DBENCHMARK for speed testing,
 // -DCHECK for testing correctness
 // (run tools/wesnoth-attack-sim.c --check on output)
 #if defined(BENCHMARK) || defined(CHECK)
-#include <time.h>
-#include <sys/time.h>
-#include <stdio.h>
-#include <stdlib.h>
 #endif
 
 #ifdef ATTACK_PREDICTION_DEBUG

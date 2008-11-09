@@ -18,13 +18,10 @@
  */
 
 #include "action.hpp"
-#include "editor_common.hpp"
 #include "map_context.hpp"
 
 #include "../foreach.hpp"
 
-#include <algorithm>
-#include <memory>
 
 namespace editor2 {
 

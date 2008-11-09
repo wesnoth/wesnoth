@@ -23,7 +23,6 @@
 //
 
 #include <string>
-#include <vector>
 #include "compat.h"
 
 namespace jwsmtp {

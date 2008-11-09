@@ -15,20 +15,10 @@
 #include "gui/dialogs/mp_connect.hpp"
 
 #include "foreach.hpp"
-#include "game_config.hpp"
 #include "game_preferences.hpp"
-#include "gui/dialogs/dialog.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/widget.hpp"
-#include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "log.hpp"
-#include "video.hpp"
-#include "wml_exception.hpp"
 
 namespace gui2 {
 

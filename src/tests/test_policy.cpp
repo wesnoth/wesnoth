@@ -21,7 +21,6 @@
 #define TEST_POLICY_DEBUG 0
 
 #if TEST_POLICY_DEBUG
-#include <iostream>
 #endif
 
 BOOST_AUTO_TEST_SUITE( policy )

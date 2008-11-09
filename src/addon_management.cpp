@@ -16,8 +16,6 @@
 #include "global.hpp"
 
 #include "addon_management.hpp"
-#include "config.hpp"
-#include "construct_dialog.hpp"
 #include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
@@ -28,17 +26,11 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "marked-up_text.hpp"
-#include "network.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
 #include "wml_separators.hpp"
 
-#include <algorithm>
-#include <cstring>
-#include <map>
-#include <stdexcept>
 
 #define DEFAULT_CAMPAIGND_PORT				15003
 

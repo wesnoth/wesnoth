@@ -18,17 +18,11 @@
 #include "log.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
-#include "util.hpp"
-#include "serialization/string_utils.hpp"
 #include "wesconfig.h"
 #ifdef HAVE_REVISION
 #include "revision.hpp"
 #endif /* HAVE_REVISION */
 
-#include <cstdlib>
-#include <string>
-#include <sstream>
-#include <ostream>
 
 #define DBG_NG LOG_STREAM(debug, engine)
 #define ERR_NG LOG_STREAM(err, engine)

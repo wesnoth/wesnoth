@@ -15,17 +15,13 @@
 
 #include "tests/utils/play_scenario.hpp"
 #include "tests/utils/game_config_manager.hpp"
-#include "tests/utils/fake_event_source.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include "map.hpp"
 #include "gamestatus.hpp"
 #include "playcampaign.hpp"
 #include "upload_log.hpp"
 
-#include "events.hpp"
 
-#include <boost/bind.hpp>
 
 
 namespace test_utils {

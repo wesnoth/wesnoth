@@ -23,9 +23,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
 

@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "map.hpp"
 
-#include <cassert>
 #include <numeric>
 
 #define DBG_AI LOG_STREAM(debug, ai) 

@@ -20,8 +20,6 @@
 
 #include "global.hpp"
 
-#include <sstream>
-#include <vector>
 #include <map>
 
 #include "tstring.hpp"

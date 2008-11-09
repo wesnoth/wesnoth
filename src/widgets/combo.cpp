@@ -17,7 +17,6 @@
 #include "widgets/combo.hpp"
 #include "display.hpp"
 #include "show_dialog.hpp"
-#include "video.hpp"
 
 
 namespace gui {

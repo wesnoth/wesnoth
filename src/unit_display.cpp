@@ -16,22 +16,10 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
-#include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "events.hpp"
-#include "game_config.hpp"
-#include "gamestatus.hpp"
-#include "halo.hpp"
-#include "image.hpp"
 #include "log.hpp"
-#include "scoped_resource.hpp"
-#include "sound.hpp"
-#include "unit_display.hpp"
 #include "mouse_events.hpp"
 
-#include <cassert>
-#include <climits>
 
 #define LOG_DP LOG_STREAM(info, display)
 

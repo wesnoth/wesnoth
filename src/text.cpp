@@ -16,15 +16,10 @@
 
 #include "gui/widgets/helper.hpp"
 #include "font.hpp"
-#include "language.hpp"
-#include "serialization/string_utils.hpp"
 
-#include "SDL_ttf.h"
 
 #include <cassert>
-#include <cstring>
 
-#include <cairo.h>
 
 namespace font {
 

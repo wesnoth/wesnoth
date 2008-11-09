@@ -24,14 +24,9 @@
 #include "gettext.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
-#include "log.hpp"
-#include "serialization/parser.hpp"
 #include "../../text.hpp"
-#include "variant.hpp"
 #include "wml_exception.hpp"
 
-#include <algorithm>
-#include <cassert>
 
 namespace gui2 {
 

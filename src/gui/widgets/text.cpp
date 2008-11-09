@@ -16,8 +16,6 @@
 
 #include "clipboard.hpp"
 #include "gui/widgets/event_handler.hpp"
-#include "log.hpp"
-#include "serialization/string_utils.hpp"
 
 namespace gui2 {
 

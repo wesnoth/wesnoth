@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "../sdl_utils.hpp"
 #include "../game_config.hpp"
-#include "exploder_utils.hpp"
 #include "exploder_composer.hpp"
 
 namespace {

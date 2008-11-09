@@ -20,16 +20,8 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "log.hpp"
 #include "map.hpp"
-#include "map_location.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cctype>
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)

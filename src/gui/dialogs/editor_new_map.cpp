@@ -14,20 +14,7 @@
 
 #include "gui/dialogs/editor_new_map.hpp"
 
-#include "foreach.hpp"
 #include "gui/dialogs/field.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/listbox.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "preferences.hpp"
-#include "video.hpp"
-#include "wml_exception.hpp"
 
 namespace gui2 {
 

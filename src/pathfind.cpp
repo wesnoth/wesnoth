@@ -20,19 +20,12 @@ See the COPYING file for more details.
 
 #include "global.hpp"
 
-#include "astarnode.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "map.hpp"
-#include "pathfind.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
 
-#include <cassert>
-#include <cmath>
-#include <iostream>
 
 #define LOG_PF LOG_STREAM(info, engine)
 

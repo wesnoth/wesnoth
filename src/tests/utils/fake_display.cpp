@@ -12,13 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include <iostream>
-#include "tests/utils/fake_display.hpp"
 
-#include "game_display.hpp"
-#include "video.hpp"
-#include "config.hpp"
-#include "unit_types.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
 

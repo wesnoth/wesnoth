@@ -19,39 +19,19 @@
 
 #include "global.hpp"
 
-#include "foreach.hpp"
-#include "game_config.hpp"
-#include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "pathfind.hpp"
-#include "random.hpp"
-#include "unit.hpp"
 #include "unit_id.hpp"
-#include "unit_types.hpp"
 #include "unit_abilities.hpp"
-#include "serialization/string_utils.hpp"
 #include "halo.hpp"
-#include "game_display.hpp"
 #include "gamestatus.hpp"
 #include "actions.hpp"
 #include "game_events.hpp"
-#include "sound.hpp"
-#include "sdl_utils.hpp"
 #include "terrain_filter.hpp"
-#include "variable.hpp"
 #include "callable_objects.hpp"
 #include "formula.hpp"
 
-#include <cassert>
-#include <climits>
-#include <ctime>
-#include <algorithm>
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
-#include <iterator>
 
 #define DBG_UT LOG_STREAM(debug, engine)
 #define LOG_UT LOG_STREAM(info, engine)

@@ -21,35 +21,18 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
-#include "ai_interface.hpp"
 #include "dialogs.hpp"
-#include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "filesystem.hpp"
-#include "game_config.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "map_label.hpp"
 #include "menu_events.hpp"
-#include "pathfind.hpp"
 #include "replay.hpp"
-#include "show_dialog.hpp"
-#include "sound.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
-#include "util.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
-#include <deque>
-#include <iostream>
-#include <set>
-#include <sstream>
 
 #define DBG_REPLAY LOG_STREAM(debug, replay)
 #define LOG_REPLAY LOG_STREAM(info, replay)

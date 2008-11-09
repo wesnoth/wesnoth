@@ -18,14 +18,7 @@
 
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/widget.hpp"
-#include "gui/widgets/window.hpp"
-#include "gui/widgets/window_builder.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "log.hpp"
 #include "mapgen.hpp"
-#include "wml_exception.hpp"
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 

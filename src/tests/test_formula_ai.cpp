@@ -15,7 +15,6 @@
 #include "utils/test_support.hpp"
 
 
-#include "map.hpp"
 
 #include "tests/utils/play_scenario.hpp"
 

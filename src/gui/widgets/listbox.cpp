@@ -15,14 +15,10 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "foreach.hpp"
-#include "gui/widgets/event_handler.hpp"
-#include "gui/widgets/helper.hpp"
 #include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/spacer.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 
 namespace gui2 {
 

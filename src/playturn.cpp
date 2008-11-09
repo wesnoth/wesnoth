@@ -14,19 +14,12 @@
 
 #include "playturn.hpp"
 
-#include "config.hpp"
 #include "construct_dialog.hpp"
-#include "game_display.hpp"
-#include "game_config.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
 #include "replay.hpp"
-#include "sound.hpp"
-#include "team.hpp"
-#include "unit.hpp"
 
 turn_info::turn_info(game_state& state_of_game,
                      const gamestatus& status, game_display& gui, gamemap& map,

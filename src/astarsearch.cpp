@@ -19,11 +19,7 @@ See the COPYING file for more details.
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
-#include "util.hpp"
 
-#include <cassert>
-#include <cmath>
-#include <iostream>
 
 #define LOG_PF LOG_STREAM(info, engine)
 #define DBG_PF LOG_STREAM(debug, engine)

@@ -19,22 +19,12 @@
 
 #include "global.hpp"
 
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "unit_types.hpp"
-#include "util.hpp"
-#include "serialization/string_utils.hpp"
-#include "color_range.hpp"
-#include "game_display.hpp"
-#include "wml_exception.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cstdlib>
-#include <iostream>
 
 #define ERR_CONFIG LOG_STREAM(err, config)
 #define DBG_UT LOG_STREAM(debug, engine)

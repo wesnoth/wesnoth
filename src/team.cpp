@@ -20,17 +20,10 @@
 #include "global.hpp"
 
 #include "game_events.hpp"
-#include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "network.hpp"
-#include "team.hpp"
-#include "serialization/string_utils.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cstdlib>
-#include <sstream>
 
 #define LOG_NG LOG_STREAM(info, engine)
 

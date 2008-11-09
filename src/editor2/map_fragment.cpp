@@ -16,8 +16,6 @@
 
 #include "../foreach.hpp"
 
-#include <sstream>
-#include <vector>
 
 namespace editor2 {
 

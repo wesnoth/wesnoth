@@ -17,20 +17,13 @@
  * Implementation of settings.hpp.
  */
 
-#include "gui/widgets/settings.hpp"
 
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "gui/widgets/helper.hpp"
 #include "gui/widgets/window.hpp"
-#include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "util.hpp"
-#include "video.hpp"
-#include "wml_exception.hpp"
 
-#include <cassert>
 
 namespace gui2 {
 

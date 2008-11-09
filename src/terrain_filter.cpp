@@ -15,19 +15,11 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "config.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "terrain_filter.hpp"
-#include "util.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cctype>
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
