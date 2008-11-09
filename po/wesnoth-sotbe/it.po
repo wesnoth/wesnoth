@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-10-31 12:00+0100\n"
-"PO-Revision-Date: 2008-03-23 12:11+0100\n"
+"PO-Revision-Date: 2008-11-09 14:24+0100\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -82,13 +82,12 @@ msgstr ""
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:30
 msgid "Campaign Design"
-msgstr ""
+msgstr "Progettazione della campagna"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:41
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Completamento e manutenzione"
+msgstr "Manutenzione della campagna"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:51
@@ -98,7 +97,7 @@ msgstr "Assistenza al testo, grammatica e WML"
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:57
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "Grafica e lavoro artistico"
 
 #. [scenario]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:4
@@ -177,7 +176,7 @@ msgstr "Fine dei turni"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:45
 msgid "Early finish bonus."
-msgstr ""
+msgstr "Premio per completamento veloce."
 
 #. [side]: type=Orcish Leader
 #. [modify_side]
@@ -547,7 +546,7 @@ msgstr "Sconfiggi Lanbec'h"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:246
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:37
 msgid "No early finish bonus."
-msgstr ""
+msgstr "Nessun premio per il completamento veloce."
 
 #. [side]: type=General
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:57
@@ -749,17 +748,16 @@ msgstr "Kwili"
 #. [side]: type=Dwarvish Lord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:100
 msgid "Dwarves"
-msgstr ""
+msgstr "Nani"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:133
-#, fuzzy
 msgid ""
 "We have almost crossed the mountains. We're close to the lands of the free "
 "tribes. So far so good."
 msgstr ""
-"Bene, abbiamo quasi attraversato le montagne. Adesso le terre delle tribù "
-"libere sono vicine. Fin qui tutto bene."
+"Abbiamo quasi attraversato le montagne. Adesso le terre delle tribù libere "
+"sono vicine. Fin qui tutto bene."
 
 #. [message]: speaker=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:137
@@ -1122,7 +1120,7 @@ msgstr "Etheliel"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:95
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:110
 msgid "Elves"
-msgstr ""
+msgstr "Elfi"
 
 #. [side]: type=Orcish Slayer
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:77
@@ -1526,7 +1524,7 @@ msgstr "Na-Mana"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:162
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:191
 msgid "Undead"
-msgstr ""
+msgstr "Non-morti"
 
 #. [side]: type=Lich
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:188
@@ -2620,7 +2618,7 @@ msgstr ""
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:193
 msgid "Thank you."
-msgstr ""
+msgstr "Grazie."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:197
@@ -2665,7 +2663,7 @@ msgstr "Salvare Inarix"
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:31
 msgid "Destroy the southern part of the bridge"
-msgstr ""
+msgstr "Distruggi la parte meridionale del ponte"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:35
@@ -2854,19 +2852,18 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:499
-#, fuzzy
 msgid "I'm ready, Chief!"
-msgstr "Eccomi, capo!"
+msgstr "Sono pronto, capo!"
 
 #. [option]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:508
 msgid "Let her blow!"
-msgstr "Fatelo saltare!"
+msgstr "Fatela saltare!"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:513
 msgid "Bye bye, $unit.name|!"
-msgstr ""
+msgstr "Addio, $unit.name|!"
 
 #. [message]: speaker=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:525
@@ -2876,17 +2873,17 @@ msgstr ""
 #. [message]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:539
 msgid "No, wait!"
-msgstr ""
+msgstr "No, aspetta!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:546
 msgid "Aaaaaaaargh!"
-msgstr ""
+msgstr "Aaaaaaaargh!"
 
 #. [option]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:562
 msgid "Wait a moment."
-msgstr ""
+msgstr "Un momento."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:567
@@ -3027,7 +3024,7 @@ msgstr ""
 #. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:255
 msgid "How?"
-msgstr ""
+msgstr "Come?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:260
@@ -3171,15 +3168,13 @@ msgstr "Flar'Tar"
 
 #. [side]: type=General
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:86
-#, fuzzy
 msgid "Arthur"
-msgstr "Angthur"
+msgstr "Arturo"
 
 #. [side]: type=Lieutenant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:105
-#, fuzzy
 msgid "Hank"
-msgstr "Harman"
+msgstr "Hank"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:118
@@ -3513,21 +3508,18 @@ msgstr "Ritorno a casa"
 
 #. [side]: type=General
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:86
-#, fuzzy
 msgid "Telthys"
-msgstr "Generale Telthys"
+msgstr "Telthys"
 
 #. [side]: type=General
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:117
-#, fuzzy
 msgid "Fredrick"
-msgstr "Generale Federico"
+msgstr "Federico"
 
 #. [side]: type=General
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:132
-#, fuzzy
 msgid "Georgy"
-msgstr "Gork"
+msgstr "Giorgino"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:146
@@ -3635,14 +3627,13 @@ msgstr "Perfetto."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:301
-#, fuzzy
 msgid "Uh, Chief..."
-msgstr "Bene, capo."
+msgstr "Uh, capo..."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:306
 msgid "...yes, Grüü?"
-msgstr ""
+msgstr "...sì, Grüü?"
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:311
@@ -3873,7 +3864,7 @@ msgstr "Braga"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:108
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:122
 msgid "Rebels"
-msgstr ""
+msgstr "Ribelli"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:91
@@ -3887,9 +3878,8 @@ msgstr "Ragvan"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:129
-#, fuzzy
 msgid "Kergai"
-msgstr "Orga"
+msgstr "Kergai"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:147
@@ -4000,9 +3990,8 @@ msgstr ""
 #. [message]: speaker=Kergai
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:233
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:238
-#, fuzzy
 msgid "Right!"
-msgstr "Rugh"
+msgstr "Giusto!"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:243
@@ -4014,7 +4003,7 @@ msgstr ""
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:248
 msgid "Yeah!"
-msgstr ""
+msgstr "Sì!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:263
@@ -4183,12 +4172,12 @@ msgstr "Orga"
 #. [side]: type=Orcish Grunt
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:103
 msgid "Knorgh"
-msgstr ""
+msgstr "Knorgh"
 
 #. [side]: type=Orcish Grunt
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:117
 msgid "Nofhug"
-msgstr ""
+msgstr "Nofhug"
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:130
