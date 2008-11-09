@@ -37,7 +37,7 @@ public:
 	version_info(const std::string&);  /**< String constructor. */
 
 	/** Simple list constructor. */
-	version_info(unsigned int major, unsigned int minor, unsigned int revision_level, bool sane,
+	version_info(unsigned int major, unsigned int minor, unsigned int revision_level, bool sane = true,
 	             char special_separator='\0', const std::string& special=std::string());
 
 	/** Assignment operator. */
