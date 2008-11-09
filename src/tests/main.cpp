@@ -15,6 +15,7 @@
 
 #define BOOST_TEST_MODULE wesnoth unit tests master suite
 #if BOOST_VERSION < 103400
+#include <boost/test/auto_unit_test.hpp>
 #else
 #include <boost/test/unit_test.hpp>
 #endif
@@ -88,6 +89,7 @@ struct wesnoth_global_fixture {
 };
 
 #if BOOST_VERSION < 103400
+#include <boost/test/auto_unit_test.hpp>
 
 #define BOOST_GLOBAL_FIXTURE(name)\
 boost::scoped_ptr<name> global_fix;\
