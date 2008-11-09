@@ -21,11 +21,11 @@
 #define UNIT_DISPLAY_HPP_INCLUDED
 
 #include "map_location.hpp"
+#include "unit_map.hpp"
 
 class attack_type;
 class team;
 class unit;
-class unit_map;
 
 /**
  *  Contains a number of free functions which display units
