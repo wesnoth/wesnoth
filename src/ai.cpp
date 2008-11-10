@@ -35,6 +35,7 @@
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
+#include "menu_events.hpp"
 
 #include <fstream>
 
