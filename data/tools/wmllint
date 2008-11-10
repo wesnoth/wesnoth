@@ -847,7 +847,20 @@ def hack_syntax(filename, lines):
                     n = "NEW_BATTLE"
                 x = int(m.group(2)) + 5
                 y = int(m.group(3)) + 5
-                lines[i] = lines[i][:m.start(0)] +("{%s %d %d}" % (n, x, y)) + lines[i][m.end(0):] 
+                lines[i] = lines[i][:m.start(0)] +("{%s %d %d}" % (n, x, y)) + lines[i][m.end(0):]
+    # Fix bare strings containing single quotes; these confuse wesnoth-mode.el
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        elif "'" in lines[i]:
+            try:
+                (key, prefix, value, comment) = parse_attribute(lines[i])
+                if "'" in value and value[0].isalpha() and value[-1].isalpha():
+                    lines[i] = prefix + '"' + value + '"' + comment + "\n"
+                    if verbose:
+                        print '"%s", line %d: quote-enclosing attribute value.'%(filename, i+1)
+            except TypeError:
+                pass
     # More syntax transformations would go here.
     return lines
 
@@ -1506,7 +1519,7 @@ if __name__ == '__main__':
                         sys.stderr.write("wmllint: internal error on %s\n" % fn)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
                         raise exc_type, exc_value, exc_traceback
-        if not clean and not revert:
+        if not clean and not diffs and not revert:
             # Consistency-check everything we got from the file scans
             consistency_check()
             # Attempt a spell-check
