@@ -1373,14 +1373,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	name_ = cfg["name"];
 	std::string custom_unit_desc = cfg["description"];
 
+	id_ = cfg["id"];
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
-	id_ = cfg["id"];
-	if (id_.empty()) {
-		std::stringstream ss;
-		ss << type_ << "-" << underlying_id_;
-		id_ = ss.str();
-	}
 
 	role_ = cfg["role"];
 	ai_special_ = cfg["ai_special"];
@@ -2993,6 +2988,11 @@ bool unit::invisible(const map_location& loc,
 void unit::set_underlying_id() {
 	if(underlying_id_ == 0){
 		underlying_id_ = n_unit::id_manager::instance().next_id();
+	}
+	if (id_.empty()) {
+		std::stringstream ss;
+		ss << (type_.empty()?"Unit":type_) << "-" << underlying_id_;
+		id_ = ss.str();
 	}
 }
 
