@@ -64,6 +64,8 @@ int cached_zoom = 0;
 
 namespace image {
 
+std::list<int> dummy_list;
+
 template<typename T>
 void cache_type<T>::flush()
 {
