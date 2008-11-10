@@ -43,13 +43,13 @@ def attr_strip(value):
     value = value.strip()
     return string_strip(value)
 
-def parse_attribute(str):
+def parse_attribute(line):
     "Parse a WML key-value pair from a line."
-    if '=' not in str:
+    if '=' not in line or line.find("#") > -1 and line.find("#") < line.find("="):
         return None
-    where = str.find("=")
-    leader = str[:where]
-    after = str[where+1:]
+    where = line.find("=")
+    leader = line[:where]
+    after = line[where+1:]
     after = after.lstrip()
     if "#" in after:
         where = after.find("#")
