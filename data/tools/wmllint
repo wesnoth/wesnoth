@@ -337,7 +337,7 @@ class WmllintIterator(WmlIterator):
     "Fold an Emacs-compatible error reporter into WmlIterator."
     def printError(self, *misc):
         """Emit an error locator compatible with Emacs compilation mode."""
-        if self.lineno == -1:
+        if not hasattr(self, 'lineno') or self.lineno == -1:
             print >>sys.stderr, '"%s":' % self.fname
         else:
             print >>sys.stderr, '"%s", line %d:' % (self.fname, self.lineno+1),
@@ -1227,7 +1227,7 @@ def spellcheck(fn, d):
                 value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
                 value = re.sub("<[0-9,]+>", "", value)
             # Fold continued lines
-            value = re.sub(r'" *\+\s*_ *"', "", value)
+            value = re.sub(r'" *\+\s*_? *"', "", value)
             # It would be nice to use pyenchant's tokenizer here, but we can't
             # because it wants to strip the trailing quotes we need to spot
             # the Dwarvish-accent words.
