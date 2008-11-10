@@ -11,6 +11,7 @@ Version 1.5.5+svn:
        their names hidden until you attack them (patch #1109).
    * Legend of Wesmere
      * Newly added to mainline: Intermediate level, 24 scenarios.
+       (Imported from wesnoth-umc-dev.)
    * Son of the Black Eye
      * The new experimental gold carryover system is now supported by this
        campaign as well; the choice appears in the difficulty level menu when
@@ -27,6 +28,8 @@ Version 1.5.5+svn:
  * Graphics:
    * New or updated unit frames: Troll Shaman, Naga Fighter.
    * New idle animations: Deathblade, Orcish Assassin.
+   * Fixed some parts of alternative flag sets which were not correctly
+     team colored.
  * Help menu:
    * ability upgrades for max-level advancements are now listed (bug #10337)
  * Language and i18n:
@@ -40,8 +43,8 @@ Version 1.5.5+svn:
  * Multiplayer:
    * New multiplayer map: 4p Underworld.
  * Music and sound effects:
-   * Fixed sound sources' default fade and full volume ranges; they were
-     less than adequate
+   * Changed sound sources' default fade and full volume ranges to 3 and 14
+     hexes respectively; the former defaults were less than adequate.
    * Renamed music files:
      * nr-sad.ogg -> sad.ogg
      * main_menu.ogg -> transcience.ogg
@@ -49,6 +52,8 @@ Version 1.5.5+svn:
  * Units:
    * Balancing changes:
      * Gave the Goblin Pillager the same bite attack as the Wolf Rider.
+   * New units: Dread Bat, Royal Warrior (character)
+ * WML engine:
    * Added "border" parameter to [terrain_mask] that overlays on the border
      in addition to the playable map area. The used mask must have the same
      border_size as the map (i.e. currently 1), else this will be ignored.
@@ -62,7 +67,6 @@ Version 1.5.5+svn:
      and loading a game (bug #11495).
    * fixed crashes on move_unit_fake with unit types which cannot move
      over terrains that are part of the path
-   * fixed the parts of the undead flags which were not TC'd
 
 Version 1.5.5:
  * Campaigns:
