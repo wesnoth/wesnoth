@@ -856,9 +856,11 @@ def hack_syntax(filename, lines):
             try:
                 (key, prefix, value, comment) = parse_attribute(lines[i])
                 if "'" in value and value[0].isalpha() and value[-1].isalpha():
-                    lines[i] = prefix + '"' + value + '"' + comment + "\n"
-                    if verbose:
-                        print '"%s", line %d: quote-enclosing attribute value.'%(filename, i+1)
+                    newtext = prefix + '"' + value + '"' + comment + "\n"
+                    if lines[i] != newtext:
+                        lines[i] = newtext
+                        if verbose:
+                            print '"%s", line %d: quote-enclosing attribute value.'%(filename, i+1)
             except TypeError:
                 pass
     # More syntax transformations would go here.
