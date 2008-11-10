@@ -19,18 +19,18 @@
 
 #include "global.hpp"
 
+#include "actions.hpp"
+#include "callable_objects.hpp"
+#include "formula.hpp"
+#include "game_events.hpp"
 #include "game_preferences.hpp"
+#include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "halo.hpp"
 #include "log.hpp"
 #include "unit_id.hpp"
 #include "unit_abilities.hpp"
-#include "halo.hpp"
-#include "gamestatus.hpp"
-#include "actions.hpp"
-#include "game_events.hpp"
 #include "terrain_filter.hpp"
-#include "callable_objects.hpp"
-#include "formula.hpp"
 
 
 #define DBG_UT LOG_STREAM(debug, engine)
@@ -1370,15 +1370,17 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	variation_ = cfg["variation"];
 
-	id_ = cfg["id"];
-	if (id_.empty()) {
-		id_ = cfg["type"].c_str();
-	}
 	name_ = cfg["name"];
 	std::string custom_unit_desc = cfg["description"];
 
 	underlying_id_ = lexical_cast_default<size_t>(cfg["underlying_id"],0);
 	set_underlying_id();
+	id_ = cfg["id"];
+	if (id_.empty()) {
+		std::stringstream ss;
+		ss << type_ << "-" << underlying_id_;
+		id_ = ss.str();
+	}
 
 	role_ = cfg["role"];
 	ai_special_ = cfg["ai_special"];
