@@ -42,10 +42,13 @@ namespace image {
 #else
 	const int tile_size = 72;
 #endif
-	// Iterators from this dummy list are needed to ensure that iterator member of cache_item
-	// is always non-singular iterator thus avoiding
-	// "Copy-contruct from singular iterator" error
-	// when libstdc++ debug mode is enabled.
+	/**
+	 * Iterators from this dummy list are needed to ensure that iterator member
+	 * of cache_item is always non-singular iterator thus avoiding
+	 * "Copy-contruct from singular iterator" error when libstdc++ debug mode
+	 * is enabled. Note copying a singular iterator is undefined behaviour by
+	 * the C++ standard.
+	 */
 	extern std::list<int> dummy_list;
 
 	template<typename T>
@@ -53,14 +56,14 @@ namespace image {
 		cache_item() : 
 			loaded(false), 
 			item() ,
-			position(dummy_list.begin())
+			position(dummy_list.end())
 		{
 		}
 
 		cache_item(T item) : 
 			loaded(true), 
 			item(item),
-			position(dummy_list.begin())
+			position(dummy_list.end())
 		{
 		}
 
