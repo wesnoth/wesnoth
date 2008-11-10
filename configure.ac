@@ -150,6 +150,16 @@ fi
 
 AM_CONDITIONAL([LOWMEM], [test "x$lowmem" = "xyes"])
 
+AC_ARG_ENABLE([debug-window-layout],
+			  AS_HELP_STRING([--enable-debug-window-layout], [add the debug option to allow the generation of debug layout files in dot format]),
+	      [debug_window_layout=$enableval],
+	      [debug_window_layout=no])
+
+if test "x$debug_window_layout" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DDEBUG_WINDOW_LAYOUT_GRAPHS"
+fi
+
 DATADIR=$PACKAGE
 AC_ARG_WITH([datadir-name],
             AS_HELP_STRING([--with-datadir-name@<:@=DIR@:>@], [change name of data directory @<:@wesnoth@:>@]),

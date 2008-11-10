@@ -37,6 +37,9 @@
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+#include "gui/widgets/debug.hpp"
+#endif
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -351,6 +354,12 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
 			game_config::mp_debug = true;
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+		 } else if (val.substr(0, 18) == "--debug-dot-level=") {
+			 gui2::tdebug_layout_graph::set_level(val.substr(18));
+		 } else if (val.substr(0, 19) == "--debug-dot-domain=") {
+			 gui2::tdebug_layout_graph::set_level(val.substr(19));
+#endif
 		} else if(val == "--no-delay") {
 			game_config::no_delay = true;
 		} else if (val.substr(0, 6) == "--log-") {
@@ -1688,6 +1697,28 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
 			<< "  -d, --debug                  enables additional command mode options in-game.\n"
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+			<< "  --debug-dot-level=<level1>,<level2>,...\n"
+			<< "                               sets the level of the debug dot files.\n"
+			<< "                               These files are used for debugging the widgets\n"
+			<< "                               especially the for the layout engine. When enabled\n"
+			<< "                               the engine will produce dot files which can be\n"
+			<< "                               converted to images with the dot tool.\n"
+			<< "                               Available levels:\n"
+			<< "                               - child : generate the data about the grid cells.\n"
+			<< "                               - size  : generate the size info of the widget.\n"
+			<< "                               - state : generate the state info of the widget.\n"
+			<< "  --debug-dot-domain=<domain1>,<domain2>,...\n"
+			<< "                               sets the domain of the debug dot files.\n"
+			<< "                               see --debug-dot-level for more info.\n"
+			<< "                               Available domains:\n"
+			<< "                               show   : generate the data when the dialog is\n"
+			<< "                                        about to be shown.\n"
+			<< "                               layout : generate the data during the layout\n"
+			<< "                                        phase (might result in multiple files. \n"
+			<< "                               The data can also be generated when the F12 is\n"
+			<< "                               pressed in a dialog.\n"
+#endif
 			<< "  --dummylocales               enables dummy locales for switching to non-system\n"
 			<< "                               locales.\n"
 #ifndef DISABLE_EDITOR2

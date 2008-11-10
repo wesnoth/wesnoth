@@ -39,6 +39,7 @@ namespace gui2 {
  */
 class tgrid : public virtual twidget
 {
+	friend class tdebug_layout_graph;
 public:
 
 	tgrid(const unsigned rows = 0, const unsigned cols = 0); 

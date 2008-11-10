@@ -29,6 +29,7 @@ namespace gui2 {
  */
 class tcontainer_ : public tcontrol
 {
+	friend class tdebug_layout_graph;
 public:
 	tcontainer_(const unsigned canvas_count) :
 		tcontrol(canvas_count),

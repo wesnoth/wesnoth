@@ -259,6 +259,7 @@ private:
  */
 class twidget : public virtual tevent_executor
 {
+	friend class tdebug_layout_graph;
 public:
 	twidget() : 
 		id_(""), 

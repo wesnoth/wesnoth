@@ -77,6 +77,7 @@ wesnoth_source = \
 	gui/dialogs/mp_method_selection.cpp \
 	gui/dialogs/title_screen.cpp \
 	gui/widgets/button.cpp \
+	gui/widgets/debug.cpp \
 	gui/widgets/canvas.cpp \
 	gui/widgets/control.cpp \
 	gui/widgets/container.cpp \

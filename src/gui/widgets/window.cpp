@@ -21,6 +21,9 @@
 
 #include "cursor.hpp"
 #include "font.hpp"
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+#include "gui/widgets/debug.hpp"
+#endif
 #include "preferences.hpp"
 #include "titlescreen.hpp"
 #include "video.hpp"
@@ -75,30 +78,33 @@ twindow::twindow(CVideo& video,
 		const bool automatic_placement, 
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
-		const std::string& definition) :
-	tpanel(),
-	tevent_handler(),
-	video_(video),
-	status_(NEW),
-	retval_(0),
-	owner_(0),
-	need_layout_(true),
-	resized_(true),
-	suspend_drawing_(true),
-	top_level_(false),
-	window_(),
-	restorer_(),
-	tooltip_(),
-	help_popup_(),
-	automatic_placement_(automatic_placement),
-	horizontal_placement_(horizontal_placement),
-	vertical_placement_(vertical_placement),
-	x_(x),
-	y_(y),
-	w_(w),
-	h_(h),
-	easy_close_(false),
-	easy_close_blocker_()
+		const std::string& definition)
+	: tpanel()
+	, tevent_handler()
+	, video_(video)
+	, status_(NEW)
+	, retval_(0)
+	, owner_(0)
+	, need_layout_(true)
+	, resized_(true)
+	, suspend_drawing_(true)
+	, top_level_(false)
+	, window_()
+	, restorer_()
+	, tooltip_()
+	, help_popup_()
+	, automatic_placement_(automatic_placement)
+	, horizontal_placement_(horizontal_placement)
+	, vertical_placement_(vertical_placement)
+	, x_(x)
+	, y_(y)
+	, w_(w)
+	, h_(h)
+	, easy_close_(false)
+	, easy_close_blocker_()
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	, debug_layout_(new tdebug_layout_graph(this))
+#endif
 {
 	// We load the config in here as exception.
 	// Our caller did update the screen size so no need for us to do that again.
@@ -185,7 +191,11 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 
 int twindow::show(const bool restore, void* /*flip_function*/)
 {
-	log_scope2(gui_draw, "Window: show.");	
+	log_scope2(gui_draw, "Window: show.");
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	debug_layout_->generate_dot_file("show");
+#endif	
 
 	assert(status_ == NEW);
 
@@ -339,6 +349,12 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		set_retval(CANCEL);
 		handled = true;
 	}
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	if(key == SDLK_F12) {
+		debug_layout_->generate_dot_file("manual");
+		handled = true;
+	}
+#endif	
 }
 
 SDL_Rect twindow::get_client_rect() const
@@ -457,6 +473,9 @@ void twindow::layout()
 			x_(variables), y_(variables), w_(variables), h_(variables)));
 	}
 
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	debug_layout_->generate_dot_file("layout_finished");
+#endif	
 	// Make sure the contrains are cleared, they might be partially set.
 	clear_width_constrain();
 	disable_cache = false;
@@ -554,5 +573,11 @@ void twindow::draw(surface& /*surf*/, const bool /*force*/,
 	assert(false);
 }
 
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+twindow::~twindow() 
+{
+	delete debug_layout_; 
+}
+#endif	
 } // namespace gui2
 

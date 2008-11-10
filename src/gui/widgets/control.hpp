@@ -28,6 +28,7 @@ namespace gui2 {
 /** Base class for all visible items. */
 class tcontrol : public virtual twidget
 {
+	friend class tdebug_layout_graph;
 public:
 
 	tcontrol(const unsigned canvas_count);

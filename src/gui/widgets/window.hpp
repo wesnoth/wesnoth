@@ -38,6 +38,7 @@ class CVideo;
 namespace gui2{
 
 class tdialog;
+class tdebug_layout_graph;
 
 /**
  * base class of top level items, the only item 
@@ -45,6 +46,7 @@ class tdialog;
  */
 class twindow : public tpanel, public tevent_handler
 {
+	friend class tdebug_layout_graph;
 public:
 	twindow(CVideo& video,
 		tformula<unsigned>x,
@@ -375,6 +377,14 @@ private:
 	 */
 	void draw(surface& surface, const bool force = false, 
 			const bool invalidate_background = false);
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	tdebug_layout_graph* debug_layout_;
+	
+public:
+	// The destructor only needs to delete the debug_layout_ so declared here.
+	~twindow();
+#endif
 };
 
 } // namespace gui2
