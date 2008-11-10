@@ -294,14 +294,22 @@ public:
 	 * These functions require a prerendered surface.
 	 * Since they are drawn at the top, they are not influenced by TOD, shroud etc.
 	 */
-	void set_hex_overlay(const map_location& loc, surface image) { hex_overlay_[loc] = image; }
+	void set_hex_overlay(const map_location& loc, const surface& image) 
+		{ hex_overlay_[loc] = image; }
+
 	void clear_hex_overlay(const map_location& loc);
 
-	void set_selected_hex_overlay(const surface& image) { selected_hex_overlay_ = image; }
-	void clear_selected_hex_overlay() { selected_hex_overlay_ = NULL; }
+	void set_selected_hex_overlay(const surface& image) 
+		{ selected_hex_overlay_ = image; }
 
-	void set_mouseover_hex_overlay(const surface& image) { mouseover_hex_overlay_ = image; }
-	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
+	void clear_selected_hex_overlay() 
+		{ selected_hex_overlay_ = NULL; }
+
+	void set_mouseover_hex_overlay(const surface& image) 
+		{ mouseover_hex_overlay_ = image; }
+
+	void clear_mouseover_hex_overlay() 
+		{ mouseover_hex_overlay_ = NULL; }
 
 	/**
 	 * Debug function to toggle the "sunset" mode.
