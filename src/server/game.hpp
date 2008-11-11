@@ -60,7 +60,7 @@ public:
 	//! Ban and kick a user by name. He doesn't need to be in this game.
 	network::connection ban_user(const simple_wml::node& ban, const player_map::const_iterator banner);
 
-	void add_player(const network::connection player, bool observer = false);
+	bool add_player(const network::connection player, bool observer = false);
 	bool remove_player(const network::connection player, const bool disconnect=false);
 
 	//! Adds players and observers into one vector and returns that.
