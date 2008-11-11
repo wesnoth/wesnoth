@@ -1752,20 +1752,22 @@ void server::process_data_lobby(const network::connection sock,
 			lobby_.send_server_message("Incorrect password.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
-		} else if (observer && !(*g)->allow_observers()) {
-			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
-				<< game_id << ") which doesn't allow observers.\n";
-			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers.", sock);
-			send_doc(games_and_users_list_, sock);
-			return;
 		} else if (!(*g)->level_init()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join uninitialized game:\t\"" << (*g)->name()
 				<< "\" (" << game_id << ").\n";
 			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers.", sock);
+			lobby_.send_server_message("Attempt to join an uninitialized game.", sock);
+			send_doc(games_and_users_list_, sock);
+			return;
+		}
+		bool joined = (*g)->add_player(sock, observer);
+		if (!joined) {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
+				<< game_id << ") which doesn't allow observers.\n";
+			send_doc(leave_game_doc, sock);
+			lobby_.send_server_message("Attempt to observe a game that doesn't allow observers. (You probably joined the game shortly after it filled up.)", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
@@ -1773,7 +1775,6 @@ void server::process_data_lobby(const network::connection sock,
 			<< "\tjoined game:\t\"" << (*g)->name()
 			<< "\" (" << game_id << (observer ? ") as an observer.\n" : ").\n");
 		lobby_.remove_player(sock);
-		(*g)->add_player(sock, observer);
 		(*g)->describe_slots();
 
 		//send notification of changes to the game and user

@@ -898,22 +898,22 @@ bool game::end_turn() {
 	return true;
 }
 
-void game::add_player(const network::connection player, bool observer) {
+bool game::add_player(const network::connection player, bool observer) {
 	if(is_member(player)) {
 		ERR_GAME << "ERROR: Player is already in this game. (socket: "
 			<< player << ")\n";
-		return;
+		return false;
 	}
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) {
 		observers_.push_back(player);
-		return;
+		return true;
 	}
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
 			<< owner_ << ")\n";
-		return;
+		return false;
 	}
 	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
@@ -924,7 +924,7 @@ void game::add_player(const network::connection player, bool observer) {
 		players_.push_back(player);
 		send_and_record_server_message((user->second.name() + " has joined the game.").c_str(), player);
 	} else if (!allow_observers()) {
-		return; //false;
+		return false;
 	} else {
 		if (!observer) became_observer = true;
 		DBG_GAME << "adding observer...\n";
@@ -964,6 +964,7 @@ void game::add_player(const network::connection player, bool observer) {
 		// in case someone took the last slot right before this player
 		send_server_message("You are an observer.", player);
 	}
+	return true;
 }
 
 bool game::remove_player(const network::connection player, const bool disconnect) {

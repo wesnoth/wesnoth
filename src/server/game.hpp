@@ -82,12 +82,17 @@ public:
 	 */
 	network::connection ban_user(const simple_wml::node& ban, const player_map::const_iterator banner);
 
-	void add_player(const network::connection player, bool observer = false);
+	/**
+	 * Add a user to the game.
+	 *
+	 * @return                    True iff the user successfully joined the game.
+	 */
+	bool add_player(const network::connection player, bool observer = false);
 
 	/**
 	 * Removes a user from the game.
 	 *
-	 * @return                    True iff the game ends that is if there are
+	 * @return                    True iff the game ends. That is, if there are
 	 *                            no more players or the host left on a not yet
 	 *                            started game.
 	 */
@@ -131,7 +136,7 @@ public:
 	/**
 	 * Set the description to the number of available slots.
 	 *
-	 * @Returns                   True iff the number of slots has changed.
+	 * @returns                   True iff the number of slots has changed.
 	 */
 	bool describe_slots();
 
