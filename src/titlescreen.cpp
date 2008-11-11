@@ -142,10 +142,20 @@ static void read_tips_of_day(config& tips_of_day)
 		ERR_CONFIG << "Could not read data/hardwired/tips.cfg\n";
 	}
 
-	//we shuffle the tips after each initial loading
+	//we shuffle the tips after each initial loading. We only shuffle if
+	//the upload_log preference has been set. If it hasn't been set, it's the
+	//user's first time playing since this feature has been added, so we'll
+	//leave the tips in their default order, which will always contain a tip
+	//regarding the upload log first, so the user sees it.
 	config::child_itors tips = tips_of_day.child_range("tip");
-	if (tips.first != tips.second) {
+	if (tips.first != tips.second && preferences::has_upload_log()) {
 		std::random_shuffle(tips.first, tips.second);
+	}
+
+	//Make sure that the upload log preference is set, if it's not already, so
+	//that we know next time we've already seen the message about uploads.
+	if(!preferences::has_upload_log()) {
+		preferences::set_upload_log(preferences::upload_log);
 	}
 }
 

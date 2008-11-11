@@ -690,14 +690,19 @@ void set_flip_time(bool value)
 	preferences::set("flip_time", value ? "yes" : "no");
 }
 
+bool has_upload_log()
+{
+	return preferences::get("upload_log_new").empty() == false;
+}
+
 bool upload_log()
 {
-	return utils::string_bool(preferences::get("upload_log"), false);
+	return utils::string_bool(preferences::get("upload_log_new"), true);
 }
 
 void set_upload_log(bool value)
 {
-	preferences::set("upload_log", value ? "yes" : "no");
+	preferences::set("upload_log_new", value ? "yes" : "no");
 }
 
 std::string upload_id()

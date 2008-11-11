@@ -31,8 +31,8 @@
 
 
 
-#define TARGET_HOST "stats.wesnoth.org"
-#define TARGET_URL "/upload.cgi"
+#define TARGET_HOST "www.wesnoth.org"
+#define TARGET_URL "/cgi-bin/upload"
 #define TARGET_PORT 80
 
 struct upload_log::thread_info upload_log::thread_;
@@ -106,6 +106,11 @@ static int upload_logs(void *_ti)
 				send_string(sock, "\n\n");
 				send_string(sock, contents.c_str());
 
+				// As long as we can actually send the data, delete the file.
+				// Even if the server gives a bad response, we don't want to
+				// be sending the same bad data over and over to the server.
+				delete_directory(*i);
+
 				if (SDLNet_TCP_Recv(sock, response, sizeof(response))
 					!= sizeof(response))
 					break;
@@ -115,7 +120,6 @@ static int upload_logs(void *_ti)
 				if (memcmp(response+8, " 2", strlen(" 2")) != 0)
 					break;
 
-				delete_directory(*i);
 				SDLNet_TCP_Close(sock);
 				sock = NULL;
 			}
