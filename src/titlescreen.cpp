@@ -155,7 +155,7 @@ static void read_tips_of_day(config& tips_of_day)
 	//Make sure that the upload log preference is set, if it's not already, so
 	//that we know next time we've already seen the message about uploads.
 	if(!preferences::has_upload_log()) {
-		preferences::set_upload_log(preferences::upload_log);
+		preferences::set_upload_log(preferences::upload_log());
 	}
 }
 
