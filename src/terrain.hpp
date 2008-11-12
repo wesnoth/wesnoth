@@ -111,6 +111,8 @@ private:
 	bool village_, castle_, keep_;
 
 	bool overlay_, combined_;
+	bool overrides_submerge_;
+
 	t_translation::t_terrain editor_default_base_;
 	bool hide_in_editor_;
 };
