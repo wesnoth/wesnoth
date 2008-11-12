@@ -52,6 +52,9 @@
 			<Add library="gobject-2.0" />
 			<Add library="fontconfig" />
 		</Linker>
+		<Unit filename="..\..\packaging\windows\wesnoth.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="..\..\src\about.cpp" />
 		<Unit filename="..\..\src\actions.cpp" />
 		<Unit filename="..\..\src\addon_checks.cpp" />

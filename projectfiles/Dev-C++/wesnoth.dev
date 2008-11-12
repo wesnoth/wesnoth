@@ -1,19 +1,19 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=199
+UnitCount=200
 Type=0
 Ver=1
 ObjFiles=
 Includes=..\..\src;..\..\src\sdl_ttf;..\..\src\serialization;..\..\src\widgets
 Libs=
-ResourceIncludes=
+ResourceIncludes=..\..\packaging\windows
 MakeIncludes=
 Compiler=_@@_
 CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@__@@_
 Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpango-1.0_@@_-lpangocairo-1.0_@@_-lcairo_@@_-lgobject-2.0_@@_-lfontconfig_@@_
 IsCpp=1
-Icon=..\..\packaging\windows\wesnoth-icon.ico
+Icon=
 ExeOutput=..\..
 ObjectOutput=
 OverrideOutput=0
@@ -26,6 +26,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0010000001000000010100
+OverrideOutputName=wesnoth_dc.exe
 
 [Unit27]
 FileName=..\..\src\image.cpp
@@ -858,11 +859,11 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit200]
-FileName=..\..\src\widgets\scrollbar.hpp
+FileName=..\..\packaging\windows\wesnoth.rc
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
-Link=1
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=

@@ -13,7 +13,6 @@ Compiler=
 CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-mthreads_@@_-fexceptions_@@_-O3_@@_-march=native_@@__@@_
 Linker=-mthreads_@@_-lmingw32_@@_-lmingwthrd_@@_-lSDLmain _@@_-lSDL _@@_-lboost_iostreams_dw2_@@_-lintl_@@_-lSDL_net_@@_-lws2_32_@@_-lz_@@_
 IsCpp=1
-Icon=..\..\packaging\windows\wesnoth_editor-icon.ico
 ExeOutput=..\..
 ObjectOutput=
 OverrideOutput=0
@@ -26,7 +25,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000001000000010100
-OverrideOutputName=wesnothd.exe
+OverrideOutputName=wesnothd_dc.exe
 
 [Unit37]
 FileName=..\..\src\image.cpp
