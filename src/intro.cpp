@@ -162,7 +162,7 @@ bool show_intro_part(display &disp, const config& part,
 #endif
 
 	// Darken the area for the text and buttons to be drawn on
-	if(show_title == false) {
+	if(part["story"].empty() == false) {
 		draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
 	}
 
