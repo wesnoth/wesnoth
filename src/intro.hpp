@@ -18,6 +18,7 @@
 #define INTRO_HPP_INCLUDED
 
 class config;
+class vconfig;
 class display;
 #include "SDL.h"
 
@@ -35,7 +36,7 @@ class display;
 //
 //each part of the sequence will be displayed in turn, with the
 //user able to go to the next part, or skip it entirely.
-void show_intro(display &disp, const config& data, const config& level);
+void show_intro(display &disp, const vconfig& data, const config& level);
 
 void the_end(display &disp);
 

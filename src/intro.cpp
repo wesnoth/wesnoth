@@ -20,7 +20,7 @@
 
 #include "global.hpp"
 #include "intro.hpp"
-
+#include "variable.hpp"
 #include "display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -29,14 +29,13 @@
 #include "game_events.hpp"
 #include "language.hpp"
 
-
 #define LOG_NG LOG_STREAM(info, engine)
 
-static bool show_intro_part(display &disp, const config& part,
+static bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario);
 
 /** Show an introduction sequence at the start of a scenario. */
-void show_intro(display &disp, const config& data, const config& level)
+void show_intro(display &disp, const vconfig& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
 
@@ -48,21 +47,20 @@ void show_intro(display &disp, const config& data, const config& level)
 
 	const std::string& scenario = level["name"];
 
-	for(config::all_children_iterator i = data.ordered_begin();
+	for(vconfig::all_children_iterator i = data.ordered_begin();
 			i != data.ordered_end() && showing; i++) {
-		std::pair<const std::string*, const config*> item = *i;
+		std::pair<const std::string, const vconfig> item = *i;
 
-		if(*item.first == "part") {
-			showing = show_intro_part(disp, (*item.second), scenario);
-		} else if(*item.first == "if") {
+		if(item.first == "part") {
+			showing = show_intro_part(disp, item.second, scenario);
+		} else if(item.first == "if") {
 			const std::string type = game_events::conditional_passed(
 				NULL, item.second) ? "then":"else";
-			const config* const thens = (*item.second).child(type);
-			if(thens == NULL) {
+			const vconfig selection = item.second.child(type);
+			if(selection.empty()) {
 				LOG_NG << "no intro story this way...\n";
 				return;
 			}
-			const config& selection = *thens;
 			show_intro(disp, selection, level);
 		}
 	}
@@ -76,12 +74,12 @@ void show_intro(display &disp, const config& data, const config& level)
  * to indent. The solution is not very clean but the entire routine could
  * use a cleanup.
  */
-static bool show_intro_part_helper(display &disp, const config& part,
+static bool show_intro_part_helper(display &disp, const vconfig& part,
 		int textx, int texty,
 		gui::button& next_button, gui::button& skip_button,
 		CKey& key);
 
-bool show_intro_part(display &disp, const config& part,
+bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario)
 {
 	LOG_NG << "showing intro part\n";
@@ -189,24 +187,24 @@ bool show_intro_part(display &disp, const config& part,
 
 	if(!background.null()) {
 		// Draw images
-		const config::child_list& images = part.get_children("image");
+		const vconfig::child_list& images = part.get_children("image");
 
 		bool pass = false;
 
-		for(std::vector<config*>::const_iterator i = images.begin(); i != images.end(); ++i){
-			const std::string& image_name = (**i)["file"];
+		for(vconfig::child_list::const_iterator i = images.begin(); i != images.end(); ++i){
+			const std::string& image_name = (*i)["file"];
 			if(image_name == "") continue;
 			surface img(image::get_image(image_name));
 			if(img.null()) continue;
 
-			const std::string& xloc = (**i)["x"];
-			const std::string& yloc = (**i)["y"];
-			const std::string& delay_str = (**i)["delay"];
+			const std::string& xloc = (*i)["x"];
+			const std::string& yloc = (*i)["y"];
+			const std::string& delay_str = (*i)["delay"];
 			const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
 			const int x = static_cast<int>(atoi(xloc.c_str())*scale);
 			const int y = static_cast<int>(atoi(yloc.c_str())*scale);
 
-			if (utils::string_bool((**i)["scaled"])){
+			if (utils::string_bool((*i)["scaled"])){
 				img = scale_surface(img, static_cast<int>(img->w*scale), static_cast<int>(img->h*scale));
 			}
 
@@ -216,7 +214,7 @@ bool show_intro_part(display &disp, const config& part,
 			image_rect.w = img->w;
 			image_rect.h = img->h;
 
-			if (utils::string_bool((**i)["centered"])){
+			if (utils::string_bool((*i)["centered"])){
 				image_rect.x -= image_rect.w/2;
 				image_rect.y -= image_rect.h/2;
 			}
@@ -265,7 +263,7 @@ bool show_intro_part(display &disp, const config& part,
 	}
 }
 
-static bool show_intro_part_helper(display &disp, const config& part,
+static bool show_intro_part_helper(display &disp, const vconfig& part,
 		int textx, int texty,
 		gui::button& next_button, gui::button& skip_button,
 		CKey& key)

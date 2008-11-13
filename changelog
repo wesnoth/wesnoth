@@ -70,6 +70,8 @@ Version 1.5.5+svn:
      in addition to the playable map area. The used mask must have the same
      border_size as the map (i.e. currently 1), else this will be ignored.
    * Restore x1, y1, x2, and y2 after events fired from events.
+   * WML variable expansion can be used inside story [part] tags
+     (feature request #10398).
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
    * Fixed a flaw which caused sound sources to be forgotten after saving
