@@ -164,6 +164,7 @@ upload_log::~upload_log()
 		config_["format_version"] = "1";
 		config_["id"] = preferences::upload_id();
 		config_["serial"] = lexical_cast<std::string>(time(NULL)) + file_name(filename_);
+		config_["language"] = preferences::language();
 
 #ifdef _WIN32
 		config_["platform"] = "Windows";
