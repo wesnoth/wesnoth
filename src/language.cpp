@@ -33,6 +33,10 @@
 extern "C" int _putenv(const char*);
 #endif
 
+#ifdef __APPLE__
+#include <cerrno>
+#endif
+
 #define DBG_FS LOG_STREAM(debug, filesystem)
 #define DBG_GENERAL LOG_STREAM(debug, general)
 #define LOG_GENERAL LOG_STREAM(debug, general)
