@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:12+0100\n"
+"POT-Creation-Date: 2008-11-14 22:25+0100\n"
 "PO-Revision-Date: 2008-10-20 21:54+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -300,7 +300,7 @@ msgstr "Resiste ata que Dacyn volte en dous días"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:87
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:89
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:131
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:115
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:106
@@ -336,13 +336,13 @@ msgstr ""
 "Mirade. Ó leste. Os non mortos aproxímanse! Pero agardade... Sinto algo... "
 "Non poden verme..."
 
-#. [set_variable]
+#. [event]
 #. [variable]
 #. [side]: type=Lich
 #. [side]: type=Ancient Lich
 #. [unit]: type=Ancient Lich
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:190
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:241
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:174
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:224
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:84
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:29
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:210
@@ -435,7 +435,7 @@ msgstr "Move a Gweddry á trapela"
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:91
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:93
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:135
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:136
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:110
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:106
@@ -1288,7 +1288,7 @@ msgstr "Derrota ó líder dos non mortos"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:95
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:140
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:97
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:119
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:198
@@ -3133,7 +3133,7 @@ msgid "The Duel"
 msgstr "O Duelo"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:127
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:128
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:45
 msgid "Defeat Mal-Ravanal"
 msgstr "Derrota a Mal-Ravanal"
@@ -3208,17 +3208,17 @@ msgstr "Mal-Drakanal"
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:86
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:99
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:112
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:210
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:193
 msgid "?"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:143
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:144
 msgid "Letting any enemy unit on to your keep"
 msgstr "Deixarlle entrar a unha unidade inimiga na túa torre"
 
 #. [message]: speaker=Mal-Drakanal
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:163
 #, fuzzy
 msgid ""
 "You people are fools! You rejected my master's offer to duel... very well, "
@@ -3235,63 +3235,63 @@ msgstr ""
 "ha ha ha! Para xogar limpo, dirémosvos todos os nosos nomes."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:167
 msgid "Remember, we have to kill Mal-Ravanal. He's here somewhere..."
 msgstr "Lembra, temos que matar a Mal-Ravanal. Está aquí nalgures..."
 
-#. [set_variable]
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:170
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:169
 msgid "Mal-Hadanak"
 msgstr "Mal-Hadanak"
 
-#. [set_variable]
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:174
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:170
 msgid "Mal-Katklagad"
 msgstr "Mal-Katklagad"
 
-#. [set_variable]
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:178
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:171
 msgid "Mal-Xaskanat"
 msgstr "Mal-Xaskanat"
 
-#. [set_variable]
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:182
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:172
 msgid "Mal-Akranbral"
 msgstr "Mal-Akranbral"
 
-#. [set_variable]
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:186
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:173
 msgid "Mal-Larakan"
 msgstr "Mal-Larakan"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:243
 msgid "(whispered) There he is!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:267
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:250
 msgid "(whispered) That isn't him..."
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:279
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:262
 #, fuzzy
 msgid "You dare to attack me? Now you will pay!"
 msgstr "Atréveste a ATACARME?!? Volve xunta o teu mestre!"
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:297
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:280
 msgid "How did you know...?"
 msgstr "Como sabias...?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:317
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:300
 msgid "Kill the king!"
 msgstr "Mata ó rei!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:321
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:304
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr "Mataron a Konrad... agora, incluso se salvamos Weldyn, Wesnoth caiu."
 

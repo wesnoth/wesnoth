@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 22:45+0100\n"
+"POT-Creation-Date: 2008-11-14 22:24+0100\n"
 "PO-Revision-Date: 2008-06-06 13:39+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -3276,13 +3276,23 @@ msgstr ", maks. KP +25%"
 msgid "Max HP bonus +"
 msgstr "Maks. EP preemia +"
 
-#: data/core/macros/carryover-utils.cfg:49
+#: data/core/macros/carryover-utils.cfg:47
+#, fuzzy
+msgid "Early finish bonus."
+msgstr "Varase lõpetamise preemia: "
+
+#: data/core/macros/carryover-utils.cfg:50
+#, fuzzy
+msgid "No early finish bonus."
+msgstr "Varase lõpetamise preemia: "
+
+#: data/core/macros/carryover-utils.cfg:55
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/carryover-utils.cfg:54
+#: data/core/macros/carryover-utils.cfg:59
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -5697,6 +5707,20 @@ msgstr "müstiline"
 #. [tip]
 #: data/hardwired/tips.cfg:3
 msgid ""
+"Battle for Wesnoth automatically sends anonymized statistics about your game "
+"advancement to a server where they are stored. This enables several "
+"features, and allows us to improve Wesnoth. To learn more about this or "
+"disable it, click the envelope in the bottom-right corner."
+msgstr ""
+
+#. [tip]
+#: data/hardwired/tips.cfg:4
+msgid "Wesnoth Developers"
+msgstr ""
+
+#. [tip]
+#: data/hardwired/tips.cfg:7
+msgid ""
 "Don't neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
@@ -5706,12 +5730,12 @@ msgstr ""
 "nõrgaks."
 
 #. [tip]
-#: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "- Great Mage Delfador, 516YW"
 msgstr "- Suur võlur Delfador, 516 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:11
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
 "possible hexes your adversary can actually move to (assuming your units stay "
@@ -5724,24 +5748,24 @@ msgstr ""
 "üksusteni."
 
 #. [tip]
-#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
-#: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
-#: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
-#: data/hardwired/tips.cfg:56 data/hardwired/tips.cfg:60
-#: data/hardwired/tips.cfg:64 data/hardwired/tips.cfg:68
-#: data/hardwired/tips.cfg:80 data/hardwired/tips.cfg:84
-#: data/hardwired/tips.cfg:96 data/hardwired/tips.cfg:116
-#: data/hardwired/tips.cfg:140 data/hardwired/tips.cfg:144
-#: data/hardwired/tips.cfg:148 data/hardwired/tips.cfg:156
-#: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
-#: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
-#: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
-#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
+#: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
+#: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:36
+#: data/hardwired/tips.cfg:40 data/hardwired/tips.cfg:56
+#: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
+#: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
+#: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
+#: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
+#: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
+#: data/hardwired/tips.cfg:180 data/hardwired/tips.cfg:184
+#: data/hardwired/tips.cfg:188 data/hardwired/tips.cfg:196
+#: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 msgid "- The Wesnoth Tactical Guide"
 msgstr "Wesnothi taktikajuhis"
 
 #. [tip]
-#: data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:15
 msgid ""
 "Units with the 'intelligent' trait need fewer experience points to level up. "
 "Early in a campaign, try to give killing blows to these units so you can get "
@@ -5752,12 +5776,12 @@ msgstr ""
 "nii saad endale varakult kõrgema taseme üksused."
 
 #. [tip]
-#: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
+#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
 msgid "- King Konrad, 536YW"
 msgstr "- Kuningas Konrad, 536 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:15
+#: data/hardwired/tips.cfg:19
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
@@ -5768,12 +5792,12 @@ msgstr ""
 "liikumisulatust vaid ühe väljaga mistahes suunas."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
+#: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "-  Gweddry mälestused, 627 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:19
+#: data/hardwired/tips.cfg:23
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
@@ -5784,7 +5808,7 @@ msgstr ""
 "paigutamine võib anda mõne küla sinu käsutusse käigu võrra varem."
 
 #. [tip]
-#: data/hardwired/tips.cfg:23
+#: data/hardwired/tips.cfg:27
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "'Status Table' will let you know how your enemies are doing, and how you are "
@@ -5794,7 +5818,7 @@ msgstr ""
 "su vastastel läheb ning kuidas sinul nendega võrreldes."
 
 #. [tip]
-#: data/hardwired/tips.cfg:27
+#: data/hardwired/tips.cfg:31
 msgid ""
 "Units with the 'quick' trait move one extra hex per turn. This can be very "
 "important when moving through difficult terrain such as water or caves. It "
@@ -5805,12 +5829,12 @@ msgstr ""
 "määrata, kas saad teha ühe või kaks sammu."
 
 #. [tip]
-#: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
+#: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
 msgid "- High Lord Kalenz, 470YW"
 msgstr "- Isand Kalenz, 470 W.a.j.  "
 
 #. [tip]
-#: data/hardwired/tips.cfg:31
+#: data/hardwired/tips.cfg:35
 msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
@@ -5820,7 +5844,7 @@ msgstr ""
 "pisiasjad oluliseks!"
 
 #. [tip]
-#: data/hardwired/tips.cfg:35
+#: data/hardwired/tips.cfg:39
 msgid ""
 "It is usually better to start the next scenario in a campaign with lower-"
 "level units that are about to level up than with those same units at a "
@@ -5831,7 +5855,7 @@ msgstr ""
 "üksustega."
 
 #. [tip]
-#: data/hardwired/tips.cfg:39
+#: data/hardwired/tips.cfg:43
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
@@ -5840,12 +5864,12 @@ msgstr ""
 "Wesnothi ajaloo ja palju muudki."
 
 #. [tip]
-#: data/hardwired/tips.cfg:40
+#: data/hardwired/tips.cfg:44
 msgid "- The Wesnoth Community"
 msgstr "Wesnothi kogukond"
 
 #. [tip]
-#: data/hardwired/tips.cfg:43
+#: data/hardwired/tips.cfg:47
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -5854,24 +5878,24 @@ msgstr ""
 "üksusi päev ja öö ei mõjuta."
 
 #. [tip]
-#: data/hardwired/tips.cfg:44
+#: data/hardwired/tips.cfg:48
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr "- Kuninglik sõjaterminoloogia kogumik, II köide, 212 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:47
+#: data/hardwired/tips.cfg:51
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr "Ka hea plaan võib nurjuda, kui ründad valel ajal."
 
 #. [tip]
-#: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
-#: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
+#: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
+#: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Taktikalise analüüsi käsiraamat, köide I - Haldric II, 42 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:51
+#: data/hardwired/tips.cfg:55
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
 "what you're facing. In this case, long-range scouting units are worth their "
@@ -5884,7 +5908,7 @@ msgstr ""
 "näevad nii kaugele, kui nad saavad ühe käiguga liikuda"
 
 #. [tip]
-#: data/hardwired/tips.cfg:55
+#: data/hardwired/tips.cfg:59
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -5897,7 +5921,7 @@ msgstr ""
 "rünnakutele ta hästi vastu peab ja millised teda kõige enam mõjutavad."
 
 #. [tip]
-#: data/hardwired/tips.cfg:59
+#: data/hardwired/tips.cfg:63
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -5909,7 +5933,7 @@ msgstr ""
 "paremas ülaservas."
 
 #. [tip]
-#: data/hardwired/tips.cfg:63
+#: data/hardwired/tips.cfg:67
 #, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
@@ -5924,7 +5948,7 @@ msgstr ""
 "veedab käigu külas või leiab abi tervendavalt üksuselt."
 
 #. [tip]
-#: data/hardwired/tips.cfg:67
+#: data/hardwired/tips.cfg:71
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
@@ -5935,7 +5959,7 @@ msgstr ""
 "ehitada üles võimsa ja kogenud sõjaväe."
 
 #. [tip]
-#: data/hardwired/tips.cfg:71
+#: data/hardwired/tips.cfg:75
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -5950,7 +5974,7 @@ msgstr ""
 "eirata."
 
 #. [tip]
-#: data/hardwired/tips.cfg:75
+#: data/hardwired/tips.cfg:79
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -5962,12 +5986,12 @@ msgstr ""
 "täpsed üksused tabavad rünnakul olles alati vähemalt 60% tõenäosusega."
 
 #. [tip]
-#: data/hardwired/tips.cfg:76
+#: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Taktikalise analüüsi käsiraamat, II köide - Haldric II, 43 W.a.j. "
 
 #. [tip]
-#: data/hardwired/tips.cfg:79
+#: data/hardwired/tips.cfg:83
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
@@ -5976,7 +6000,7 @@ msgstr ""
 "tervenevad sellest."
 
 #. [tip]
-#: data/hardwired/tips.cfg:83
+#: data/hardwired/tips.cfg:87
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
@@ -5987,7 +6011,7 @@ msgstr ""
 "võrra."
 
 #. [tip]
-#: data/hardwired/tips.cfg:87
+#: data/hardwired/tips.cfg:91
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
@@ -5997,12 +6021,12 @@ msgstr ""
 "mujal, kuid ratsaüksustele need kohad kaitse-eeliseid ei paku."
 
 #. [tip]
-#: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
+#: data/hardwired/tips.cfg:92 data/hardwired/tips.cfg:172
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Söör Kaylan, 498 W.a.j. "
 
 #. [tip]
-#: data/hardwired/tips.cfg:91
+#: data/hardwired/tips.cfg:95
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -6012,12 +6036,12 @@ msgstr ""
 "haavatavad torkerelvadega, nagu näiteks vibud ja odad."
 
 #. [tip]
-#: data/hardwired/tips.cfg:92
+#: data/hardwired/tips.cfg:96
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Söör Kaylan, 502 W.a.j. "
 
 #. [tip]
-#: data/hardwired/tips.cfg:95
+#: data/hardwired/tips.cfg:99
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -6029,7 +6053,7 @@ msgstr ""
 "või 4 KP nulltaseme üksuse eest."
 
 #. [tip]
-#: data/hardwired/tips.cfg:99
+#: data/hardwired/tips.cfg:103
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
@@ -6038,7 +6062,7 @@ msgstr ""
 "küngastel, mägedes ja koobastes."
 
 #. [tip]
-#: data/hardwired/tips.cfg:103
+#: data/hardwired/tips.cfg:107
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -6047,7 +6071,7 @@ msgstr ""
 "ründamise asemel oota olukorra paranemist ja ründa siis."
 
 #. [tip]
-#: data/hardwired/tips.cfg:107
+#: data/hardwired/tips.cfg:111
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -6056,23 +6080,23 @@ msgstr ""
 "üksusi mingisse suunda vastast pidurdama."
 
 #. [tip]
-#: data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112
 msgid "- King Konrad, 552YW"
 msgstr "- Kuningas Konrad, 552 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:111
+#: data/hardwired/tips.cfg:115
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr "Ära pelga taanduda ja jõudu koguda - see on sageli võidu võtmeks."
 
 #. [tip]
-#: data/hardwired/tips.cfg:112
+#: data/hardwired/tips.cfg:116
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, 123 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:115
+#: data/hardwired/tips.cfg:119
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -6085,7 +6109,7 @@ msgstr ""
 "ja ajanormi täis lastes."
 
 #. [tip]
-#: data/hardwired/tips.cfg:119
+#: data/hardwired/tips.cfg:123
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -6097,7 +6121,7 @@ msgstr ""
 "mõned liitlased võivad anda sulle võimaluse enda lossist sõdalasi värvata."
 
 #. [tip]
-#: data/hardwired/tips.cfg:123
+#: data/hardwired/tips.cfg:127
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -6106,7 +6130,7 @@ msgstr ""
 "haavatavad löögirelvade, tule ja müstiliste rünnakutega."
 
 #. [tip]
-#: data/hardwired/tips.cfg:127
+#: data/hardwired/tips.cfg:131
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -6116,7 +6140,7 @@ msgstr ""
 "tasemele jõuda."
 
 #. [tip]
-#: data/hardwired/tips.cfg:131
+#: data/hardwired/tips.cfg:135
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
@@ -6127,22 +6151,22 @@ msgstr ""
 "kaitsepositsiooni."
 
 #. [tip]
-#: data/hardwired/tips.cfg:135
+#: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr "Kasuta teisi üksusi haavatute varjamiseks, et nad saaks taastuda."
 
 #. [tip]
-#: data/hardwired/tips.cfg:136
+#: data/hardwired/tips.cfg:140
 msgid "- Princess Li'sar, 515YW"
 msgstr "- Printsess Li'sar, 515 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:139
+#: data/hardwired/tips.cfg:143
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Tutvu kiirklahvidega Eelistuste menüüs."
 
 #. [tip]
-#: data/hardwired/tips.cfg:143
+#: data/hardwired/tips.cfg:147
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -6151,14 +6175,14 @@ msgstr ""
 "tagasi võtta, vajutades 'u'."
 
 #. [tip]
-#: data/hardwired/tips.cfg:147
+#: data/hardwired/tips.cfg:151
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr "Vastase üksuse käiguvõimalusi näed, kui viid hiirekursori nende peale."
 
 #. [tip]
-#: data/hardwired/tips.cfg:151
+#: data/hardwired/tips.cfg:155
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -6167,12 +6191,12 @@ msgstr ""
 "ise võitlemata."
 
 #. [tip]
-#: data/hardwired/tips.cfg:152
+#: data/hardwired/tips.cfg:156
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "- Chantali käsikiri, 516 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:155
+#: data/hardwired/tips.cfg:159
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -6181,17 +6205,17 @@ msgstr ""
 "ründevõimet käigu lõpuni poole võrra."
 
 #. [tip]
-#: data/hardwired/tips.cfg:159
+#: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Müstilised rünnakud on väga tõhusad kooljate vastu."
 
 #. [tip]
-#: data/hardwired/tips.cfg:160
+#: data/hardwired/tips.cfg:164
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- Suur teadmamees Dacyn, 626 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:163
+#: data/hardwired/tips.cfg:167
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -6200,7 +6224,7 @@ msgstr ""
 "võib see otsustada võitluse tulemuse."
 
 #. [tip]
-#: data/hardwired/tips.cfg:167
+#: data/hardwired/tips.cfg:171
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -6209,7 +6233,7 @@ msgstr ""
 "suudavad tappa ühe hoobiga."
 
 #. [tip]
-#: data/hardwired/tips.cfg:171
+#: data/hardwired/tips.cfg:175
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -6223,7 +6247,7 @@ msgstr ""
 "anda madalama taseme üksustele järgmine tase."
 
 #. [tip]
-#: data/hardwired/tips.cfg:175
+#: data/hardwired/tips.cfg:179
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
 "are limited by its maximum movement. Remember this when deciding what unit "
@@ -6234,7 +6258,7 @@ msgstr ""
 "luureüksust mingi kindla maastiku jaoks."
 
 #. [tip]
-#: data/hardwired/tips.cfg:179
+#: data/hardwired/tips.cfg:183
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -6243,7 +6267,7 @@ msgstr ""
 "näeb hiirekursori viimisega ikoonile või sõnale."
 
 #. [tip]
-#: data/hardwired/tips.cfg:183
+#: data/hardwired/tips.cfg:187
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -6255,7 +6279,7 @@ msgstr ""
 "kasutatakse sõjakäikude raskusastmete häälestamiseks."
 
 #. [tip]
-#: data/hardwired/tips.cfg:187
+#: data/hardwired/tips.cfg:191
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -6266,12 +6290,12 @@ msgstr ""
 "ta tappa ja saada kogemuspunkte."
 
 #. [tip]
-#: data/hardwired/tips.cfg:188
+#: data/hardwired/tips.cfg:192
 msgid "- Queen Li'sar, 528YW"
 msgstr "- Kuninganna Li'sar, 528 W.a.j."
 
 #. [tip]
-#: data/hardwired/tips.cfg:191
+#: data/hardwired/tips.cfg:195
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -6281,7 +6305,7 @@ msgstr ""
 "ikkagi soov teha, kasuta menüüvalikut 'Viivita udu uuendamisega'."
 
 #. [tip]
-#: data/hardwired/tips.cfg:195
+#: data/hardwired/tips.cfg:199
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
@@ -6290,7 +6314,7 @@ msgstr ""
 "võib selle hõivamine olla mõistlik."
 
 #. [tip]
-#: data/hardwired/tips.cfg:199
+#: data/hardwired/tips.cfg:203
 msgid ""
 "Few units have good defences in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -6329,8 +6353,8 @@ msgstr "Lõpeta stsenaarium"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2615
-#: src/unit.cpp:2789
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2612
+#: src/unit.cpp:2786
 msgid "HP"
 msgstr "EP"
 
@@ -6791,7 +6815,7 @@ msgstr "Lisamoodulite nimekirja küsimine"
 msgid "An error occurred while communicating with the server."
 msgstr "Viga serveriga suhtlemisel."
 
-#: src/addon_management.cpp:930 src/titlescreen.cpp:321
+#: src/addon_management.cpp:930 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Versioon"
 
@@ -6885,7 +6909,7 @@ msgstr "Lisamoodul kustutatud."
 msgid "Add-on could not be deleted properly:"
 msgstr "Lisamooduli kustutamine ebaõnnestus - faili ei leitud."
 
-#: src/ai.cpp:1776
+#: src/ai.cpp:1777
 msgid "Unknown unit type : "
 msgstr "Tundmatu üksusetüüp: "
 
@@ -7126,19 +7150,19 @@ msgstr "KP:"
 msgid "Moves: "
 msgstr "Käike:"
 
-#: src/game.cpp:574 src/game.cpp:1358
+#: src/game.cpp:583 src/game.cpp:1367
 msgid "The Battle for Wesnoth"
 msgstr "Wesnothi Lahing"
 
-#: src/game.cpp:856
+#: src/game.cpp:865
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Hoiatus: Fail, mida sa proovisid laadida, on vigane. Laen ikkagi.\n"
 
-#: src/game.cpp:896 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:905 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
 msgstr "See salvestus on pärit mängu liiga vanast versioonist."
 
-#: src/game.cpp:902 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:911 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7146,99 +7170,99 @@ msgstr ""
 "See salvestus on pärit mängu mõnest teisest versioonist. Kas sa tahad "
 "proovida seda laadida?"
 
-#: src/game.cpp:922 src/game.cpp:925 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:931 src/game.cpp:934 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Fail, mida sa proovisid laadida, on vigane."
 
-#: src/game.cpp:928
+#: src/game.cpp:937
 msgid "File I/O Error while reading the game"
 msgstr "Mängu lugedes tekkis faili S/V-viga"
 
-#: src/game.cpp:1031
+#: src/game.cpp:1040
 msgid "No campaigns are available.\n"
 msgstr "Sõjakäike ei leitud.\n"
 
-#: src/game.cpp:1035
+#: src/game.cpp:1044
 msgid "Play a campaign"
 msgstr "Mängi sõjakäiku"
 
-#: src/game.cpp:1076
+#: src/game.cpp:1085
 msgid "Difficulty"
 msgstr "Raskusaste"
 
-#: src/game.cpp:1077
+#: src/game.cpp:1086
 msgid "Select difficulty level:"
 msgstr "Vali raskusaste:"
 
-#: src/game.cpp:1236
+#: src/game.cpp:1245
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Kas sa tõesti tahad teda vallandada?"
 
-#: src/game.cpp:1237
+#: src/game.cpp:1246
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1241
+#: src/game.cpp:1250
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ära seda enam küsi!"
 
-#: src/game.cpp:1313
+#: src/game.cpp:1322
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Mängimise ajal tekkis viga: "
 
-#: src/game.cpp:1315 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1324 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "Mängu laadimine ebaõnnestus."
 
-#: src/game.cpp:1317 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1326 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Mängimise ajal tekkis viga: "
 
-#: src/game.cpp:1337 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1346 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "Mängu kaarti ei õnnestunud laadida:"
 
-#: src/game.cpp:1403 src/game.cpp:1524
+#: src/game.cpp:1412 src/game.cpp:1533
 msgid "Error loading game configuration files: '"
 msgstr "Mängu sätetefailide laadimisel tekkis viga: '"
 
-#: src/game.cpp:1404 src/game.cpp:1525
+#: src/game.cpp:1413 src/game.cpp:1534
 msgid "' (The game will now exit)"
 msgstr "'(Mäng läheb nüüd kinni)"
 
-#: src/game.cpp:1499
+#: src/game.cpp:1508
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Järgnev lisamoodul andis laadimisel vea:"
 msgstr[1] "Järgnevad lisamoodulid andsid laadimisel vea:"
 
-#: src/game.cpp:1506
+#: src/game.cpp:1515
 msgid "ERROR DETAILS:"
 msgstr "VEAINFO:"
 
-#: src/game.cpp:1534
+#: src/game.cpp:1543
 msgid "Loading data files"
 msgstr "Laen andmefaile"
 
-#: src/game.cpp:1914
+#: src/game.cpp:1945
 msgid "Loading game configuration."
 msgstr "Mängu sätete laadimine."
 
-#: src/game.cpp:1920
+#: src/game.cpp:1951
 msgid "Re-initialize fonts for the current language."
 msgstr "Algväärtusta keele kirjastiilid"
 
-#: src/game.cpp:1928
+#: src/game.cpp:1959
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Lisamooduli saatmine"
 
-#: src/game.cpp:1937
+#: src/game.cpp:1968
 msgid "Loading title screen."
 msgstr "Laen tiitellehte"
 
@@ -7501,15 +7525,15 @@ msgstr "Wesnothi Lahingu käsiraamat"
 msgid "Parse error when parsing help text: "
 msgstr "Abiteksti avamise viga: "
 
-#: src/intro.cpp:99
+#: src/intro.cpp:97
 msgid "Next"
 msgstr "Edasi"
 
-#: src/intro.cpp:100
+#: src/intro.cpp:98
 msgid "Skip"
 msgstr "Jäta vahele"
 
-#: src/intro.cpp:380
+#: src/intro.cpp:376
 msgid "The End"
 msgstr "Lõpp"
 
@@ -8867,38 +8891,38 @@ msgstr[1] ""
 "Sa alustad järgmist stsenaariumi $gold kuldrahaga või sealse miinimumsummaga "
 "vastavalt sellele, kumb on suurem."
 
-#: src/playsingle_controller.cpp:347
+#: src/playsingle_controller.cpp:346
 msgid "Game Over"
 msgstr "Mäng on läbi"
 
-#: src/playsingle_controller.cpp:348
+#: src/playsingle_controller.cpp:347
 msgid "The game is over."
 msgstr "Mäng on läbi."
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:440
 msgid "Scenario Report"
 msgstr "Stsenaariumi raport"
 
-#: src/playsingle_controller.cpp:443
+#: src/playsingle_controller.cpp:442
 msgid "Victory"
 msgstr "Võit"
 
-#: src/playsingle_controller.cpp:444
+#: src/playsingle_controller.cpp:443
 msgid "You have emerged victorious!"
 msgstr "Sa oled võitnud!"
 
-#: src/playsingle_controller.cpp:491 src/playsingle_controller.cpp:536
+#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:535
 msgid "The file you have tried to load is corrupt"
 msgstr "Fail, mida sa proovisid laadida, on vigane"
 
-#: src/playsingle_controller.cpp:501
+#: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Võrguühendus katkes ja mäng ei saa jätkuda. Kas soovid seda mängu salvestada?"
 
-#: src/playsingle_controller.cpp:656
+#: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
 msgstr "Praegu käib mängija $name"
 
@@ -9047,123 +9071,123 @@ msgstr "Oma küla"
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size peab olema vahemikus 0.0 kuni 0.5."
 
-#: src/titlescreen.cpp:367
+#: src/titlescreen.cpp:377
 msgid "TitleScreen button^Tutorial"
 msgstr "Mänguõpetus"
 
-#: src/titlescreen.cpp:368
+#: src/titlescreen.cpp:378
 msgid "TitleScreen button^Campaign"
 msgstr "Sõjakäigud"
 
-#: src/titlescreen.cpp:369
+#: src/titlescreen.cpp:379
 msgid "TitleScreen button^Multiplayer"
 msgstr "Mitmekesi mängimine"
 
-#: src/titlescreen.cpp:370
+#: src/titlescreen.cpp:380
 msgid "TitleScreen button^Load"
 msgstr "Lae mäng"
 
-#: src/titlescreen.cpp:371
+#: src/titlescreen.cpp:381
 msgid "TitleScreen button^Add-ons"
 msgstr "Lisamoodulid"
 
-#: src/titlescreen.cpp:373
+#: src/titlescreen.cpp:383
 #, fuzzy
 msgid "TitleScreen button^Editor"
 msgstr "Välju"
 
-#: src/titlescreen.cpp:375
+#: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
 msgstr "Keel"
 
-#: src/titlescreen.cpp:376
+#: src/titlescreen.cpp:386
 msgid "TitleScreen button^Preferences"
 msgstr "Eelistused"
 
-#: src/titlescreen.cpp:377
+#: src/titlescreen.cpp:387
 msgid "TitleScreen button^Credits"
 msgstr "Tegijad"
 
-#: src/titlescreen.cpp:378
+#: src/titlescreen.cpp:388
 msgid "TitleScreen button^Quit"
 msgstr "Välju"
 
-#: src/titlescreen.cpp:381
+#: src/titlescreen.cpp:391
 msgid "TitleScreen button^Previous"
 msgstr "Eelmine"
 
-#: src/titlescreen.cpp:382
+#: src/titlescreen.cpp:392
 msgid "TitleScreen button^Next"
 msgstr "Järgmine"
 
-#: src/titlescreen.cpp:383
+#: src/titlescreen.cpp:393
 msgid "TitleScreen button^Help"
 msgstr "Abiinfo"
 
-#: src/titlescreen.cpp:385
+#: src/titlescreen.cpp:395
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Aita Wesnothi tegijaid"
 
-#: src/titlescreen.cpp:387
+#: src/titlescreen.cpp:397
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Mänguga tutvumiseks alusta õpetusest"
 
-#: src/titlescreen.cpp:388
+#: src/titlescreen.cpp:398
 msgid "Start a new single player campaign"
 msgstr "Alusta uut üksikmängija sõjakäiku"
 
-#: src/titlescreen.cpp:389
+#: src/titlescreen.cpp:399
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "Mängige mitmekesi (ühe arvuti taga, kohtvõrgus, Internetis...)"
 
-#: src/titlescreen.cpp:390
+#: src/titlescreen.cpp:400
 msgid "Load a saved game"
 msgstr "Lae salvestatud mäng"
 
-#: src/titlescreen.cpp:391
+#: src/titlescreen.cpp:401
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Lae alla kasutajate loodud sõjakäike, ajastuid või kaarte."
 
-#: src/titlescreen.cpp:393
+#: src/titlescreen.cpp:403
 msgid "Start the map editor"
 msgstr ""
 
-#: src/titlescreen.cpp:395
+#: src/titlescreen.cpp:405
 msgid "Change the language"
 msgstr "Muuda kasutatavat keelt"
 
-#: src/titlescreen.cpp:396
+#: src/titlescreen.cpp:406
 msgid "Configure the game's settings"
 msgstr "Muuda mängu sätteid"
 
-#: src/titlescreen.cpp:397
+#: src/titlescreen.cpp:407
 msgid "View the credits"
 msgstr "Vaata mängu arendajate nimekirja"
 
-#: src/titlescreen.cpp:398
+#: src/titlescreen.cpp:408
 msgid "Quit the game"
 msgstr "Välju mängust"
 
-#: src/titlescreen.cpp:399
+#: src/titlescreen.cpp:409
 msgid "Show next tip of the day"
 msgstr "Näita järgmist vihjet"
 
-#: src/titlescreen.cpp:400
+#: src/titlescreen.cpp:410
 msgid "Show Battle for Wesnoth help"
 msgstr "Näita Wesnothi Lahingu abiteavet"
 
-#: src/titlescreen.cpp:401
+#: src/titlescreen.cpp:411
 msgid "Upload statistics"
 msgstr "Üleslaadimise statistika"
 
-#: src/titlescreen.cpp:460
+#: src/titlescreen.cpp:470
 #, fuzzy
 msgid "Help Wesnoth"
 msgstr "Wesnothi Lahing"
 
-#: src/titlescreen.cpp:461
+#: src/titlescreen.cpp:471
 msgid "Help Wesnoth by sending us information"
 msgstr "Aita Wesnothi projekti, saates meile teavet"
 
@@ -9176,31 +9200,31 @@ msgstr "Vigane üksusetüüp '$type|'"
 msgid "Unknown unit type '$type|'"
 msgstr "Vigane üksusetüüp '$type|'"
 
-#: src/unit.cpp:2572 src/unit.cpp:2777 src/unit.cpp:2833
+#: src/unit.cpp:2569 src/unit.cpp:2774 src/unit.cpp:2830
 msgid " and "
 msgstr " ja "
 
-#: src/unit.cpp:2583
+#: src/unit.cpp:2580
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2648
+#: src/unit.cpp:2645
 msgid "moves"
 msgstr "käiku"
 
-#: src/unit.cpp:2666 src/unit.cpp:2804
+#: src/unit.cpp:2663 src/unit.cpp:2801
 msgid "XP to advance"
 msgstr "KP uue tasemeni"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2793
 msgid " move"
 msgstr " käik"
 
-#: src/unit.cpp:2812
+#: src/unit.cpp:2809
 msgid "$effect_description per level"
 msgstr "$effect_description taseme kohta"
 
-#: src/unit.cpp:2842
+#: src/unit.cpp:2839
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9253,7 +9277,7 @@ msgstr "ustav"
 msgid "female^neutral"
 msgstr "kooljas"
 
-#: src/upload_log.cpp:310
+#: src/upload_log.cpp:323
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -9265,19 +9289,19 @@ msgstr ""
 "saad aidata meil mängu paremaks teha, lubades mängul saata anonüümseid "
 "kokkuvõtteid oma mängudest Wesnothi tegijaile.\n"
 
-#: src/upload_log.cpp:311
+#: src/upload_log.cpp:324
 msgid "Summaries are stored here:"
 msgstr "Kokkuvõtted salvestatakse: "
 
-#: src/upload_log.cpp:313
+#: src/upload_log.cpp:326
 msgid "You can view the results at:"
 msgstr "Tulemusi saab näha: "
 
-#: src/upload_log.cpp:315
+#: src/upload_log.cpp:328
 msgid "Help us make Wesnoth better for you!"
 msgstr "Aita meil Wesnothi paremaks teha!"
 
-#: src/upload_log.cpp:317
+#: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Lülita kokkuvõtete saatmine sisse"
 

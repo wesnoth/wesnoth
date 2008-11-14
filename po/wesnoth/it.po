@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 22:45+0100\n"
+"POT-Creation-Date: 2008-11-14 22:24+0100\n"
 "PO-Revision-Date: 2008-11-14 00:20+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -3404,7 +3404,17 @@ msgstr ", MAX XP +25%"
 msgid "Max HP bonus +"
 msgstr "Bonus PF Massimo +"
 
-#: data/core/macros/carryover-utils.cfg:49
+#: data/core/macros/carryover-utils.cfg:47
+#, fuzzy
+msgid "Early finish bonus."
+msgstr "Bonus sui turni risparmiati: "
+
+#: data/core/macros/carryover-utils.cfg:50
+#, fuzzy
+msgid "No early finish bonus."
+msgstr "Bonus sui turni risparmiati: "
+
+#: data/core/macros/carryover-utils.cfg:55
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -3413,7 +3423,7 @@ msgstr ""
 "Il 40% dell'oro al termine con cui si termina viene portato nello scenario "
 "successivo."
 
-#: data/core/macros/carryover-utils.cfg:54
+#: data/core/macros/carryover-utils.cfg:59
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -5897,6 +5907,20 @@ msgstr "esoterico"
 #. [tip]
 #: data/hardwired/tips.cfg:3
 msgid ""
+"Battle for Wesnoth automatically sends anonymized statistics about your game "
+"advancement to a server where they are stored. This enables several "
+"features, and allows us to improve Wesnoth. To learn more about this or "
+"disable it, click the envelope in the bottom-right corner."
+msgstr ""
+
+#. [tip]
+#: data/hardwired/tips.cfg:4
+msgid "Wesnoth Developers"
+msgstr ""
+
+#. [tip]
+#: data/hardwired/tips.cfg:7
+msgid ""
 "Don't neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
@@ -5906,12 +5930,12 @@ msgstr ""
 "troppo basso per sopravvivere alle future battaglie."
 
 #. [tip]
-#: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "- Great Mage Delfador, 516YW"
 msgstr "- Gran mago Delfador, 516AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:11
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
 "possible hexes your adversary can actually move to (assuming your units stay "
@@ -5925,24 +5949,24 @@ msgstr ""
 "unità ferite o deboli durante il turno successivo."
 
 #. [tip]
-#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
-#: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
-#: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
-#: data/hardwired/tips.cfg:56 data/hardwired/tips.cfg:60
-#: data/hardwired/tips.cfg:64 data/hardwired/tips.cfg:68
-#: data/hardwired/tips.cfg:80 data/hardwired/tips.cfg:84
-#: data/hardwired/tips.cfg:96 data/hardwired/tips.cfg:116
-#: data/hardwired/tips.cfg:140 data/hardwired/tips.cfg:144
-#: data/hardwired/tips.cfg:148 data/hardwired/tips.cfg:156
-#: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
-#: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
-#: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
-#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
+#: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
+#: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:36
+#: data/hardwired/tips.cfg:40 data/hardwired/tips.cfg:56
+#: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
+#: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
+#: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
+#: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
+#: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
+#: data/hardwired/tips.cfg:180 data/hardwired/tips.cfg:184
+#: data/hardwired/tips.cfg:188 data/hardwired/tips.cfg:196
+#: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- La guida tattica di Wesnoth"
 
 #. [tip]
-#: data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:15
 msgid ""
 "Units with the 'intelligent' trait need fewer experience points to level up. "
 "Early in a campaign, try to give killing blows to these units so you can get "
@@ -5953,12 +5977,12 @@ msgstr ""
 "grazia a queste unità, in modo da avere presto qualche unità di alto livello."
 
 #. [tip]
-#: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
+#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
 msgid "- King Konrad, 536YW"
 msgstr "- Re Konrad, 536AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:15
+#: data/hardwired/tips.cfg:19
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
@@ -5970,12 +5994,12 @@ msgstr ""
 "direzione."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
+#: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Memorie di Gweddry, 627AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:19
+#: data/hardwired/tips.cfg:23
 msgid ""
 "You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
@@ -5987,7 +6011,7 @@ msgstr ""
 "volte puoi guadagnare un villaggio un turno prima."
 
 #. [tip]
-#: data/hardwired/tips.cfg:23
+#: data/hardwired/tips.cfg:27
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "'Status Table' will let you know how your enemies are doing, and how you are "
@@ -5998,7 +6022,7 @@ msgstr ""
 "bene tu stia facendo in confronto."
 
 #. [tip]
-#: data/hardwired/tips.cfg:27
+#: data/hardwired/tips.cfg:31
 msgid ""
 "Units with the 'quick' trait move one extra hex per turn. This can be very "
 "important when moving through difficult terrain such as water or caves. It "
@@ -6010,12 +6034,12 @@ msgstr ""
 "potersi muovere di un esagono o di due."
 
 #. [tip]
-#: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
+#: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
 msgid "- High Lord Kalenz, 470YW"
 msgstr "- Gran signore Kalenz, 470AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:31
+#: data/hardwired/tips.cfg:35
 msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
@@ -6025,7 +6049,7 @@ msgstr ""
 "importanti quando gli scenari diventano più difficili!"
 
 #. [tip]
-#: data/hardwired/tips.cfg:35
+#: data/hardwired/tips.cfg:39
 msgid ""
 "It is usually better to start the next scenario in a campaign with lower-"
 "level units that are about to level up than with those same units at a "
@@ -6036,7 +6060,7 @@ msgstr ""
 "unità al livello superiore."
 
 #. [tip]
-#: data/hardwired/tips.cfg:39
+#: data/hardwired/tips.cfg:43
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
@@ -6045,12 +6069,12 @@ msgstr ""
 "strategia di Wesnoth e molto altro."
 
 #. [tip]
-#: data/hardwired/tips.cfg:40
+#: data/hardwired/tips.cfg:44
 msgid "- The Wesnoth Community"
 msgstr "- La comunità di Wesnoth"
 
 #. [tip]
-#: data/hardwired/tips.cfg:43
+#: data/hardwired/tips.cfg:47
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -6060,12 +6084,12 @@ msgstr ""
 "giorno e della notte."
 
 #. [tip]
-#: data/hardwired/tips.cfg:44
+#: data/hardwired/tips.cfg:48
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr "- Compendio reale di terminologia di battaglia - Volume II 212AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:47
+#: data/hardwired/tips.cfg:51
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
@@ -6073,13 +6097,13 @@ msgstr ""
 "giorno sbagliato."
 
 #. [tip]
-#: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
-#: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
+#: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
+#: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
 msgstr "- Manuale di analisi tattica volume I - Haldric II, 42AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:51
+#: data/hardwired/tips.cfg:55
 msgid ""
 "If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
 "what you're facing. In this case, long-range scouting units are worth their "
@@ -6093,7 +6117,7 @@ msgstr ""
 "dove riescono a muoversi in un turno."
 
 #. [tip]
-#: data/hardwired/tips.cfg:55
+#: data/hardwired/tips.cfg:59
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -6107,7 +6131,7 @@ msgstr ""
 "è più vulnerabile."
 
 #. [tip]
-#: data/hardwired/tips.cfg:59
+#: data/hardwired/tips.cfg:63
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -6120,7 +6144,7 @@ msgstr ""
 "a destra dello schermo."
 
 #. [tip]
-#: data/hardwired/tips.cfg:63
+#: data/hardwired/tips.cfg:67
 #, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
@@ -6136,7 +6160,7 @@ msgstr ""
 "passa un turno in un villaggio o di fianco ad un'unità con l'abilità «Cura»."
 
 #. [tip]
-#: data/hardwired/tips.cfg:67
+#: data/hardwired/tips.cfg:71
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
@@ -6147,7 +6171,7 @@ msgstr ""
 "esperta e potente nel combattimento."
 
 #. [tip]
-#: data/hardwired/tips.cfg:71
+#: data/hardwired/tips.cfg:75
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -6163,7 +6187,7 @@ msgstr ""
 "abbastanza esperti da potersi muovere liberamente in queste zone."
 
 #. [tip]
-#: data/hardwired/tips.cfg:75
+#: data/hardwired/tips.cfg:79
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -6177,12 +6201,12 @@ msgstr ""
 "di colpire quando attaccano."
 
 #. [tip]
-#: data/hardwired/tips.cfg:76
+#: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Manuale di analisi tattica volume II - Haldric II, 43AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:79
+#: data/hardwired/tips.cfg:83
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
@@ -6191,7 +6215,7 @@ msgstr ""
 "all'inizio del loro turno."
 
 #. [tip]
-#: data/hardwired/tips.cfg:83
+#: data/hardwired/tips.cfg:87
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
@@ -6202,7 +6226,7 @@ msgstr ""
 "del turno successivo."
 
 #. [tip]
-#: data/hardwired/tips.cfg:87
+#: data/hardwired/tips.cfg:91
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
@@ -6213,12 +6237,12 @@ msgstr ""
 "cavallo non riceve vantaggi difensivi da villaggi o castelli."
 
 #. [tip]
-#: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
+#: data/hardwired/tips.cfg:92 data/hardwired/tips.cfg:172
 msgid "- Sir Kaylan, 498YW"
 msgstr "- Sir Kaylan, 498AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:91
+#: data/hardwired/tips.cfg:95
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -6228,12 +6252,12 @@ msgstr ""
 "impatto, ma sono vulnerabili alle armi a perforazione, inclusi archi e lance."
 
 #. [tip]
-#: data/hardwired/tips.cfg:92
+#: data/hardwired/tips.cfg:96
 msgid "- Sir Kaylan, 502YW"
 msgstr "- Sir Kaylan, 502AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:95
+#: data/hardwired/tips.cfg:99
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
@@ -6246,7 +6270,7 @@ msgstr ""
 "di livello zero."
 
 #. [tip]
-#: data/hardwired/tips.cfg:99
+#: data/hardwired/tips.cfg:103
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
@@ -6255,7 +6279,7 @@ msgstr ""
 "nani si muovo e combattono bene sulle colline, sulle montagne e nelle grotte."
 
 #. [tip]
-#: data/hardwired/tips.cfg:103
+#: data/hardwired/tips.cfg:107
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -6265,7 +6289,7 @@ msgstr ""
 "per attaccare."
 
 #. [tip]
-#: data/hardwired/tips.cfg:107
+#: data/hardwired/tips.cfg:111
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -6274,12 +6298,12 @@ msgstr ""
 "mandare le unità sacrificabili per ritardare le unità nemiche."
 
 #. [tip]
-#: data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112
 msgid "- King Konrad, 552YW"
 msgstr "- Re Konrad, 552AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:111
+#: data/hardwired/tips.cfg:115
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
@@ -6287,12 +6311,12 @@ msgstr ""
 "della vittoria."
 
 #. [tip]
-#: data/hardwired/tips.cfg:112
+#: data/hardwired/tips.cfg:116
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, 123AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:115
+#: data/hardwired/tips.cfg:119
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -6305,7 +6329,7 @@ msgstr ""
 "catturando i villaggi attendendo la fine dei turni."
 
 #. [tip]
-#: data/hardwired/tips.cfg:119
+#: data/hardwired/tips.cfg:123
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -6319,7 +6343,7 @@ msgstr ""
 "unità."
 
 #. [tip]
-#: data/hardwired/tips.cfg:123
+#: data/hardwired/tips.cfg:127
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
@@ -6328,7 +6352,7 @@ msgstr ""
 "e da freddo, ma vulnerabili alle armi da impatto, da fuoco o esoteriche."
 
 #. [tip]
-#: data/hardwired/tips.cfg:127
+#: data/hardwired/tips.cfg:131
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
@@ -6338,7 +6362,7 @@ msgstr ""
 "unità a guadagnare esperienza più rapidamente."
 
 #. [tip]
-#: data/hardwired/tips.cfg:131
+#: data/hardwired/tips.cfg:135
 msgid ""
 "Try to avoid moving next to unoccupied villages. An enemy unit may move into "
 "the village and attack you, while enjoying the defense and healing of the "
@@ -6349,22 +6373,22 @@ msgstr ""
 "difensivo e le cure del villaggio."
 
 #. [tip]
-#: data/hardwired/tips.cfg:135
+#: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr "Usa linee di unità per difendere le unità ferite e per farle curare."
 
 #. [tip]
-#: data/hardwired/tips.cfg:136
+#: data/hardwired/tips.cfg:140
 msgid "- Princess Li'sar, 515YW"
 msgstr "- Principessa Li'sar, 515AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:139
+#: data/hardwired/tips.cfg:143
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Leggi la lista delle scorciatoie nel menù delle preferenze."
 
 #. [tip]
-#: data/hardwired/tips.cfg:143
+#: data/hardwired/tips.cfg:147
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -6373,7 +6397,7 @@ msgstr ""
 "aggiuntiva, puoi annullare la tua mossa premendo il tasto «u»."
 
 #. [tip]
-#: data/hardwired/tips.cfg:147
+#: data/hardwired/tips.cfg:151
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -6382,7 +6406,7 @@ msgstr ""
 "mouse sull'unità."
 
 #. [tip]
-#: data/hardwired/tips.cfg:151
+#: data/hardwired/tips.cfg:155
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -6391,12 +6415,12 @@ msgstr ""
 "le tue battaglie senza bisogno di attaccare di persona."
 
 #. [tip]
-#: data/hardwired/tips.cfg:152
+#: data/hardwired/tips.cfg:156
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "- La pergamena di Chantal, 516AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:155
+#: data/hardwired/tips.cfg:159
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -6405,17 +6429,17 @@ msgstr ""
 "che essi causano a ogni attacco."
 
 #. [tip]
-#: data/hardwired/tips.cfg:159
+#: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
 msgstr "L'attacco esoterico è molto potente contro i non-morti."
 
 #. [tip]
-#: data/hardwired/tips.cfg:160
+#: data/hardwired/tips.cfg:164
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- Gran saggio Dacyn, 626AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:163
+#: data/hardwired/tips.cfg:167
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -6424,7 +6448,7 @@ msgstr ""
 "questo fatto può capovolgere l'esito di una battaglia."
 
 #. [tip]
-#: data/hardwired/tips.cfg:167
+#: data/hardwired/tips.cfg:171
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -6433,7 +6457,7 @@ msgstr ""
 "possono uccidere con un solo colpo."
 
 #. [tip]
-#: data/hardwired/tips.cfg:171
+#: data/hardwired/tips.cfg:175
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -6448,7 +6472,7 @@ msgstr ""
 "cercare di far avanzare le tue unità di livello più basso."
 
 #. [tip]
-#: data/hardwired/tips.cfg:175
+#: data/hardwired/tips.cfg:179
 msgid ""
 "On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
 "are limited by its maximum movement. Remember this when deciding what unit "
@@ -6460,7 +6484,7 @@ msgstr ""
 "per perlustrare i specifici tipi di terreno."
 
 #. [tip]
-#: data/hardwired/tips.cfg:179
+#: data/hardwired/tips.cfg:183
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -6469,7 +6493,7 @@ msgstr ""
 "menù a comparsa. Poni il mouse sopra qualcosa per ottenerne una descrizione."
 
 #. [tip]
-#: data/hardwired/tips.cfg:183
+#: data/hardwired/tips.cfg:187
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -6483,7 +6507,7 @@ msgstr ""
 "delle campagne."
 
 #. [tip]
-#: data/hardwired/tips.cfg:187
+#: data/hardwired/tips.cfg:191
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -6494,12 +6518,12 @@ msgstr ""
 "abbastanza perché l'unità più giovane possa sferrare un colpo mortale."
 
 #. [tip]
-#: data/hardwired/tips.cfg:188
+#: data/hardwired/tips.cfg:192
 msgid "- Queen Li'sar, 528YW"
 msgstr "- Regina Li'sar, 528AW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:191
+#: data/hardwired/tips.cfg:195
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -6511,7 +6535,7 @@ msgstr ""
 "di annullare la mossa."
 
 #. [tip]
-#: data/hardwired/tips.cfg:195
+#: data/hardwired/tips.cfg:199
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
@@ -6520,7 +6544,7 @@ msgstr ""
 "tale terreno lo priverai del beneficio."
 
 #. [tip]
-#: data/hardwired/tips.cfg:199
+#: data/hardwired/tips.cfg:203
 msgid ""
 "Few units have good defences in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -6560,8 +6584,8 @@ msgstr "Fine scenario"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2615
-#: src/unit.cpp:2789
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2612
+#: src/unit.cpp:2786
 msgid "HP"
 msgstr "PF"
 
@@ -7010,7 +7034,7 @@ msgstr "Sto richiedendo la lista delle estensioni"
 msgid "An error occurred while communicating with the server."
 msgstr "Errore durante la comunicazione con il server."
 
-#: src/addon_management.cpp:930 src/titlescreen.cpp:321
+#: src/addon_management.cpp:930 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Versione"
 
@@ -7102,7 +7126,7 @@ msgstr "Estensione eliminata"
 msgid "Add-on could not be deleted properly:"
 msgstr "Non è stato possibile eliminare completamente l'estensione:"
 
-#: src/ai.cpp:1776
+#: src/ai.cpp:1777
 msgid "Unknown unit type : "
 msgstr "Tipo di unità sconosciuto: "
 
@@ -7346,22 +7370,22 @@ msgstr "PE: "
 msgid "Moves: "
 msgstr "Mosse: "
 
-#: src/game.cpp:574 src/game.cpp:1358
+#: src/game.cpp:583 src/game.cpp:1367
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:856
+#: src/game.cpp:865
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Attenzione: Il file che hai provato a caricare è danneggiato. Cerco di "
 "caricarlo comunque.\n"
 
-#: src/game.cpp:896 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:905 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
 
-#: src/game.cpp:902 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:911 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7369,96 +7393,96 @@ msgstr ""
 "Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
 "caricarlo?"
 
-#: src/game.cpp:922 src/game.cpp:925 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:931 src/game.cpp:934 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Il file che hai provato a caricare è danneggiato: '"
 
-#: src/game.cpp:928
+#: src/game.cpp:937
 msgid "File I/O Error while reading the game"
 msgstr "Errore di I/O di un file durante la lettura del gioco"
 
-#: src/game.cpp:1031
+#: src/game.cpp:1040
 msgid "No campaigns are available.\n"
 msgstr "Nessuna campagna disponibile.\n"
 
-#: src/game.cpp:1035
+#: src/game.cpp:1044
 msgid "Play a campaign"
 msgstr "Gioca una campagna"
 
-#: src/game.cpp:1076
+#: src/game.cpp:1085
 msgid "Difficulty"
 msgstr "Difficoltà"
 
-#: src/game.cpp:1077
+#: src/game.cpp:1086
 msgid "Select difficulty level:"
 msgstr "Seleziona il livello di difficoltà"
 
-#: src/game.cpp:1236
+#: src/game.cpp:1245
 msgid "Do you really want to start the server?"
 msgstr "Vuoi davvero avviare il server?"
 
-#: src/game.cpp:1237
+#: src/game.cpp:1246
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1241
+#: src/game.cpp:1250
 msgid "Don't show again"
 msgstr "Non mostrare più"
 
-#: src/game.cpp:1313
+#: src/game.cpp:1322
 msgid "Error while starting server: "
 msgstr "Errore durante l'avvio del server: "
 
-#: src/game.cpp:1315 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1324 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "La partita non può essere caricata: "
 
-#: src/game.cpp:1317 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1326 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Errore mentre si gioca la partita: "
 
-#: src/game.cpp:1337 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1346 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "La mappa non può essere caricata: "
 
-#: src/game.cpp:1403 src/game.cpp:1524
+#: src/game.cpp:1412 src/game.cpp:1533
 msgid "Error loading game configuration files: '"
 msgstr "Errore durante il caricamento dei file di configurazione: «"
 
-#: src/game.cpp:1404 src/game.cpp:1525
+#: src/game.cpp:1413 src/game.cpp:1534
 msgid "' (The game will now exit)"
 msgstr "» (Partita in fase di chiusura.)"
 
-#: src/game.cpp:1499
+#: src/game.cpp:1508
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La seguente estensione ha degli errori e non può essere caricata:"
 msgstr[1] ""
 "Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
-#: src/game.cpp:1506
+#: src/game.cpp:1515
 msgid "ERROR DETAILS:"
 msgstr "DETTAGLI DELL'ERRORE:"
 
-#: src/game.cpp:1534
+#: src/game.cpp:1543
 msgid "Loading data files"
 msgstr "Caricamento file di dati"
 
-#: src/game.cpp:1914
+#: src/game.cpp:1945
 msgid "Loading game configuration."
 msgstr "Caricamento della configurazione di gioco."
 
-#: src/game.cpp:1920
+#: src/game.cpp:1951
 msgid "Re-initialize fonts for the current language."
 msgstr "Reimpostazione dei font per la lingua corrente."
 
-#: src/game.cpp:1928
+#: src/game.cpp:1959
 msgid "Searching for installed add-ons."
 msgstr "Controllo delle estensioni installate."
 
-#: src/game.cpp:1937
+#: src/game.cpp:1968
 msgid "Loading title screen."
 msgstr "Caricamento schermata dei titoli"
 
@@ -7722,15 +7746,15 @@ msgstr "Aiuto per The Battle for Wesnoth"
 msgid "Parse error when parsing help text: "
 msgstr "Errore durante il controllo del testo della guida: "
 
-#: src/intro.cpp:99
+#: src/intro.cpp:97
 msgid "Next"
 msgstr "Prossimo"
 
-#: src/intro.cpp:100
+#: src/intro.cpp:98
 msgid "Skip"
 msgstr "Salta"
 
-#: src/intro.cpp:380
+#: src/intro.cpp:376
 msgid "The End"
 msgstr "Fine"
 
@@ -9063,31 +9087,31 @@ msgstr[1] ""
 "Inizierai il prossimo scenario con un capitale di $gold monete, o con l'oro "
 "minimo iniziale, se è di più."
 
-#: src/playsingle_controller.cpp:347
+#: src/playsingle_controller.cpp:346
 msgid "Game Over"
 msgstr "Partita finita"
 
-#: src/playsingle_controller.cpp:348
+#: src/playsingle_controller.cpp:347
 msgid "The game is over."
 msgstr "La partita è finita."
 
-#: src/playsingle_controller.cpp:441
+#: src/playsingle_controller.cpp:440
 msgid "Scenario Report"
 msgstr "Risultati dello scenario"
 
-#: src/playsingle_controller.cpp:443
+#: src/playsingle_controller.cpp:442
 msgid "Victory"
 msgstr "Vittoria"
 
-#: src/playsingle_controller.cpp:444
+#: src/playsingle_controller.cpp:443
 msgid "You have emerged victorious!"
 msgstr "Ne sei uscito vincente!"
 
-#: src/playsingle_controller.cpp:491 src/playsingle_controller.cpp:536
+#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:535
 msgid "The file you have tried to load is corrupt"
 msgstr "Il file che hai provato a caricare è danneggiato"
 
-#: src/playsingle_controller.cpp:501
+#: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9095,7 +9119,7 @@ msgstr ""
 "Si è verificata una disconnessione dalla rete e la partita non potrà "
 "proseguire. Vuoi salvare la partita?"
 
-#: src/playsingle_controller.cpp:656
+#: src/playsingle_controller.cpp:655
 msgid "It is now $name|'s turn"
 msgstr "Adesso è il turno di «$name|»"
 
@@ -9255,71 +9279,71 @@ msgstr "border_size dev'essere tra 0.0 e 0.5."
 
 # Il carattere ^ separa la descrizione per i traduttore (commento) dal testo da
 # tradurre.  Bisogna tradurre SOLO quello che segue il carattere "^".
-#: src/titlescreen.cpp:367
+#: src/titlescreen.cpp:377
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutorial"
 
-#: src/titlescreen.cpp:368
+#: src/titlescreen.cpp:378
 msgid "TitleScreen button^Campaign"
 msgstr "Campagna"
 
-#: src/titlescreen.cpp:369
+#: src/titlescreen.cpp:379
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multigiocatore"
 
-#: src/titlescreen.cpp:370
+#: src/titlescreen.cpp:380
 msgid "TitleScreen button^Load"
 msgstr "Carica"
 
-#: src/titlescreen.cpp:371
+#: src/titlescreen.cpp:381
 msgid "TitleScreen button^Add-ons"
 msgstr "Estensioni"
 
-#: src/titlescreen.cpp:373
+#: src/titlescreen.cpp:383
 msgid "TitleScreen button^Editor"
 msgstr "Editor"
 
-#: src/titlescreen.cpp:375
+#: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
 msgstr "Lingua"
 
-#: src/titlescreen.cpp:376
+#: src/titlescreen.cpp:386
 msgid "TitleScreen button^Preferences"
 msgstr "Preferenze"
 
-#: src/titlescreen.cpp:377
+#: src/titlescreen.cpp:387
 msgid "TitleScreen button^Credits"
 msgstr "Riconoscimenti"
 
-#: src/titlescreen.cpp:378
+#: src/titlescreen.cpp:388
 msgid "TitleScreen button^Quit"
 msgstr "Esci"
 
-#: src/titlescreen.cpp:381
+#: src/titlescreen.cpp:391
 msgid "TitleScreen button^Previous"
 msgstr "Precedente"
 
-#: src/titlescreen.cpp:382
+#: src/titlescreen.cpp:392
 msgid "TitleScreen button^Next"
 msgstr "Successivo"
 
-#: src/titlescreen.cpp:383
+#: src/titlescreen.cpp:393
 msgid "TitleScreen button^Help"
 msgstr "Aiuto"
 
-#: src/titlescreen.cpp:385
+#: src/titlescreen.cpp:395
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Aiuta Wesnoth"
 
-#: src/titlescreen.cpp:387
+#: src/titlescreen.cpp:397
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Inizia il corso per familiarizzare con il gioco"
 
-#: src/titlescreen.cpp:388
+#: src/titlescreen.cpp:398
 msgid "Start a new single player campaign"
 msgstr "Inizia una campagna a giocatore singolo"
 
-#: src/titlescreen.cpp:389
+#: src/titlescreen.cpp:399
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -9327,52 +9351,52 @@ msgstr ""
 "Partita multigiocatore (stessa postazione, LAN o Internet) o uno scenario "
 "singolo contro l'AI"
 
-#: src/titlescreen.cpp:390
+#: src/titlescreen.cpp:400
 msgid "Load a saved game"
 msgstr "Carica una partita salvata"
 
-#: src/titlescreen.cpp:391
+#: src/titlescreen.cpp:401
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Scarica campagne, ere o mappe non ufficiali"
 
-#: src/titlescreen.cpp:393
+#: src/titlescreen.cpp:403
 msgid "Start the map editor"
 msgstr "Avvia l'editor delle mappe"
 
-#: src/titlescreen.cpp:395
+#: src/titlescreen.cpp:405
 msgid "Change the language"
 msgstr "Cambia la lingua"
 
-#: src/titlescreen.cpp:396
+#: src/titlescreen.cpp:406
 msgid "Configure the game's settings"
 msgstr "Configura le impostazioni del gioco"
 
-#: src/titlescreen.cpp:397
+#: src/titlescreen.cpp:407
 msgid "View the credits"
 msgstr "Guarda i riconoscimenti"
 
-#: src/titlescreen.cpp:398
+#: src/titlescreen.cpp:408
 msgid "Quit the game"
 msgstr "Esci dal gioco"
 
-#: src/titlescreen.cpp:399
+#: src/titlescreen.cpp:409
 msgid "Show next tip of the day"
 msgstr "Mostra il prossimo suggerimento del giorno"
 
-#: src/titlescreen.cpp:400
+#: src/titlescreen.cpp:410
 msgid "Show Battle for Wesnoth help"
 msgstr "Mostra la guida di Wesnoth"
 
-#: src/titlescreen.cpp:401
+#: src/titlescreen.cpp:411
 msgid "Upload statistics"
 msgstr "Invia le statistiche"
 
-#: src/titlescreen.cpp:460
+#: src/titlescreen.cpp:470
 #, fuzzy
 msgid "Help Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/titlescreen.cpp:461
+#: src/titlescreen.cpp:471
 msgid "Help Wesnoth by sending us information"
 msgstr "Aiuta Wesnoth mandandoci delle informazioni"
 
@@ -9385,31 +9409,31 @@ msgstr "Tipo di unità «$type|» sconosciuto"
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo di unità «$type|» sconosciuto"
 
-#: src/unit.cpp:2572 src/unit.cpp:2777 src/unit.cpp:2833
+#: src/unit.cpp:2569 src/unit.cpp:2774 src/unit.cpp:2830
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2583
+#: src/unit.cpp:2580
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2648
+#: src/unit.cpp:2645
 msgid "moves"
 msgstr "mosse"
 
-#: src/unit.cpp:2666 src/unit.cpp:2804
+#: src/unit.cpp:2663 src/unit.cpp:2801
 msgid "XP to advance"
 msgstr "PE per avanzare"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2793
 msgid " move"
 msgstr " mossa"
 
-#: src/unit.cpp:2812
+#: src/unit.cpp:2809
 msgid "$effect_description per level"
 msgstr "$effect_description per livello"
 
-#: src/unit.cpp:2842
+#: src/unit.cpp:2839
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9462,7 +9486,7 @@ msgstr "leale"
 msgid "female^neutral"
 msgstr "non-morta"
 
-#: src/upload_log.cpp:310
+#: src/upload_log.cpp:323
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -9474,19 +9498,19 @@ msgstr ""
 "partite: puoi aiutarci a migliorare il gioco dandoci il permesso di mandare "
 "queste liste (in maniera anonima) a wesnoth.org.\n"
 
-#: src/upload_log.cpp:311
+#: src/upload_log.cpp:324
 msgid "Summaries are stored here:"
 msgstr "I sommari sono salvati qua:"
 
-#: src/upload_log.cpp:313
+#: src/upload_log.cpp:326
 msgid "You can view the results at:"
 msgstr "Puoi vedere i risultati a:"
 
-#: src/upload_log.cpp:315
+#: src/upload_log.cpp:328
 msgid "Help us make Wesnoth better for you!"
 msgstr "Aiutaci a migliorare Wesnoth!"
 
-#: src/upload_log.cpp:317
+#: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
