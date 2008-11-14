@@ -205,21 +205,17 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig"]), config_h = "config.h",
+configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext"]), config_h = "config.h",
     log_file="build/config.log", conf_dir="build/sconf_temp")
 
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
-    if env["gettextdir"]:
-        env.AppendUnique(CPPPATH = [os.path.join(env["gettextdir"], "include")],
-                         LIBPATH = [os.path.join(env["gettextdir"], "lib")],
-                         LIBS = ["intl"])
     have_server_prereqs = \
         conf.CheckCPlusPlus(gcc_version = "3.3") and \
+        conf.CheckGettextLibintl() and \
         conf.CheckBoost("iostreams", require_version = "1.33.0") and \
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
-        conf.CheckCHeader("libintl.h", "<>") and \
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') or Die("Base prerequisites are not met.")
 

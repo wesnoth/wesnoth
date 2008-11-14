@@ -3,6 +3,7 @@ from os.path import join
 import os
 from SCons.Builder import Builder
 from SCons.Util    import WhereIs
+from config_check_utils import find_include
 
 def exists():
     return True
@@ -56,3 +57,42 @@ def generate(env):
         action = "$PO4A_TRANSLATE -f $PO4A_FORMAT -L $PO4A_CHARSET -m ${SOURCES[0]} -p ${SOURCES[1]} -l $TARGET"
         )
     env["BUILDERS"]["Po4aTranslate"] = po4a_translate
+
+def CheckGettextLibintl(context):
+    env = context.env
+    backup = env.Clone().Dictionary()
+    context.Message("Checking for Gettext's libintl... ")
+
+    test_program = """
+        #include <libintl.h>
+
+        int main()
+        {
+            textdomain("test");
+            char* text = gettext("foo");
+        }
+        \n"""
+
+    if not env.get("gettextdir") and context.TryLink(test_program, ".c"):
+        context.Result("libc built-in")
+        return True
+
+    prefixes = [env["prefix"]]
+    if env.get("gettextdir"):
+        prefixes = [env["gettextdir"]] + prefixes
+    includes = find_include(prefixes, "libintl.h", "", not env["host"])
+    if includes:
+        env.AppendUnique(
+            CPPPATH = [join(includes[0][0], "include")],
+            LIBPATH = [join(includes[0][0], "lib")]
+        )
+    env.AppendUnique(LIBS = ["intl"])
+    if context.TryLink("/* exteral libintl*/\n" + test_program, ".c"):
+        context.Result("external")
+        return True
+
+    context.Result("no")
+    env.Replace(**backup)
+    return False
+
+config_checks = { "CheckGettextLibintl" : CheckGettextLibintl }
