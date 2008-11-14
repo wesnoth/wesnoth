@@ -1278,7 +1278,7 @@ static PyGetSetDef gamestatus_getseters[] = {
 static PyTypeObject wesnoth_gamestatus_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,						   /* ob_size*/
-	CC("wesnoth.team"),		   /* tp_name*/
+	CC("wesnoth.gamestatus"),		   /* tp_name*/
 	sizeof(wesnoth_gamestatus),  /* tp_basicsize*/
 	0,						   /* tp_itemsize*/
 	0,						   /* tp_dealloc*/
