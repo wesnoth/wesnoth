@@ -156,8 +156,9 @@ class CrossRefLister(CrossRef):
             else:
                 print "Resource %s is used in %d files:" % (defloc, nrefs)
             defloc.dump_references()
+
     def unresdump(self):
-        "Report unresolved references arity mismatches, duplicate unit IDs."
+        "Report unresolved references, arity mismatches, duplicate unit IDs."
         # First the unresolved references
         if len(self.unresolved) == 0 and len(self.missing) == 0:
             print "# No unresolved references"
@@ -183,6 +184,21 @@ class CrossRefLister(CrossRef):
                     for (ln, args) in refs:
                         print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), m.args, args)))
 
+    def undersized(self):
+        "Report undersized images that cannot be safely overlaid on a hex."
+        try:
+            from PIL import Image
+            for (namespace, filename) in xref.filelist.generator():
+                if filename.endswith(".png"):
+                    try:
+                        im = Image.open(filename)
+                        (x, y) = im.size
+                        if x <= 60 or y <= 60:
+                            print "%s: %d by %d" % (filename, x, y)
+                    except IOError:
+                        sys.stderr.write("%s: PIL internal error\n" % filename)
+        except ImportError:
+            sys.stderr.write("Install Python Imaging Library to enable size check.\n")
     def duplicates(self, exportonly):
         "Dump duplicate unit IDs."
         duplicate_latch = False
@@ -196,6 +212,7 @@ class CrossRefLister(CrossRef):
                 print "%s: occurs %d times as unit ID" % (key, len(value))
                 for ref in value:
                     print "%s: exported=%s" % (ref, self.exports(ref.namespace))
+
     def typelist(self, branch):
         "Dump actual and formal arguments for macros in specified file"
         already_seen = []
@@ -228,6 +245,7 @@ class CrossRefLister(CrossRef):
         sorted.sort()
         for uid in sorted:
             print "unit", uid
+
     def unchecked(self, fp):
         "List all macro definitions with untyped formals."
         unchecked = []
@@ -252,6 +270,7 @@ class CrossRefLister(CrossRef):
             unchecked.sort(lambda a, b: cmp(a[1], b[1]))
             for (name, defn) in unchecked:
                 print "%s: %s(%s)" % (defn, name, ", ".join(defn.args))
+
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
@@ -452,6 +471,7 @@ Usage: macroscope [options] dirpath
         if definitions:
             xref.deflist(predicate)
         if unresolved:
+            #xref.undersized()
             xref.unresdump()
             xref.duplicates(exportonly=True)
     
