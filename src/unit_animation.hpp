@@ -59,7 +59,7 @@ class unit_animation
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw(const frame_parameters& value);
-		bool invalidate(const frame_parameters& value ) const;
+		bool invalidate(const frame_parameters& value );
 
 	friend class unit;
 	protected:
@@ -77,14 +77,15 @@ class unit_animation
 				accelerate(true),
 				parameters_(),
 				halo_id_(0),
-				last_frame_begin_time_(0)
+				last_frame_begin_time_(0),
+				invalidated_(false)
 				{};
 			explicit particule(const config& cfg,const std::string frame_string ="frame");
 			virtual ~particule();
 			bool need_update() const;
 			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
-			bool invalidate(const frame_parameters& value,const map_location &src, const map_location &dst,  const bool primary = false) const;
+			bool invalidate(const frame_parameters& value,const map_location &src, const map_location &dst,  const bool primary = false);
 			void start_animation(int start_time, bool cycles=false);
 			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
 			bool accelerate;
@@ -94,6 +95,8 @@ class unit_animation
 			frame_builder parameters_;
 			int halo_id_;
 			int last_frame_begin_time_;
+			// optimisation
+			bool invalidated_;
 
 	};
 		t_translation::t_list terrain_types_;

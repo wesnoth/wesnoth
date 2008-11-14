@@ -632,7 +632,8 @@ unit_animation::particule::particule(
 		accelerate(true),
 		parameters_(cfg,frame_string),
 		halo_id_(0),
-		last_frame_begin_time_(0)
+		last_frame_begin_time_(0),
+		invalidated_(false)
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	config::const_child_iterator itor;
@@ -767,11 +768,11 @@ void unit_animation::redraw(const frame_parameters& value)
 		anim_itor->second.redraw( value,src_,dst_);
 	}
 }
-bool unit_animation::invalidate(const frame_parameters& value) const
+bool unit_animation::invalidate(const frame_parameters& value)
 {
 
 	bool result = false;
-	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.begin();
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
 	result |= unit_anim_.invalidate(value,src_,dst_,true);
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		result |= anim_itor->second.invalidate(value,src_,dst_);
@@ -780,6 +781,7 @@ bool unit_animation::invalidate(const frame_parameters& value) const
 }
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary)
 {
+	invalidated_=false;
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
@@ -789,11 +791,13 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value,primary);
 	}
 }
-bool unit_animation::particule::invalidate(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary ) const
+bool unit_animation::particule::invalidate(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary )
 {
+	if(invalidated_) return false;
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	return current_frame.invalidate(need_update(),get_current_frame_time(),src,dst,default_val,value,primary);
+	invalidated_ = current_frame.invalidate(need_update(),get_current_frame_time(),src,dst,default_val,value,primary);
+	return invalidated_;
 }
 
 unit_animation::particule::~particule()

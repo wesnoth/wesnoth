@@ -265,7 +265,11 @@ void game_display::pre_draw() {
 	previous_invalidated_.swap(invalidated_);
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
 	// call invalidate_animation again to deal with new conflict arising from the merge
-	invalidate_animations();
+	// no conflict, if a hex was invalidated last turn but not this turn, then 
+	// * case of no unit in neighbour hex=> no propagation
+	// * case of unit in hex but was there last turn=>its hexes are invalidated too
+	// * case of unit inhex not there last turn => it moved, so was invalidated previously
+	// invalidate_animations();
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
