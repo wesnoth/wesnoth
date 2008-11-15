@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "mouse_events.hpp"
 
+int debug;
 
 #define LOG_DP LOG_STREAM(info, display)
 
@@ -195,6 +196,7 @@ void unit_attack(
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text,bool drain,std::string att_text)
 {
+	debug = 1;
 	game_display* disp = game_display::get_singleton();
 	if(!disp || preferences::show_combat() == false) return;
 	unit_map& units = disp->get_units();
@@ -264,6 +266,7 @@ void unit_attack(
 	if(leader_loc.valid() && leader_loc != att->first && leader_loc != def->first) leader->second.set_standing(leader_loc);
 	att->second.set_standing(a);
 	def->second.set_standing(b);
+	debug = 0;
 }
 
 

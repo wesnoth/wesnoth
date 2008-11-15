@@ -223,7 +223,7 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.blend_with = blend_with_;
 	result.blend_ratio = blend_ratio_.get_current_element(current_time);
 	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0);
-	result.offset = offset_.get_current_element(current_time);
+	result.offset = offset_.get_current_element(current_time,-1000);
 	result.submerge = submerge_.get_current_element(current_time);
 	result.x = x_.get_current_element(current_time);
 	result.y = y_.get_current_element(current_time);
@@ -548,7 +548,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	if(primary && engine_val.highlight_ratio != 1.0) result.highlight_ratio = result.highlight_ratio +engine_val.highlight_ratio - 1.0; // selected unit
 
 	assert(engine_val.offset == 0);
-	result.offset = current_val.offset?current_val.offset:animation_val.offset;
+	result.offset = (current_val.offset!=-1000)?current_val.offset:animation_val.offset;
+	if(result.offset == -1000) result.offset = 0.0;
 
 	/** engine provides a submerge for units in water */
 	result.submerge = current_val.submerge?current_val.submerge:animation_val.submerge;

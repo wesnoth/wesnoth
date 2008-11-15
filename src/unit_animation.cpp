@@ -18,7 +18,6 @@
 #include "halo.hpp"
 #include "unit.hpp"
 
-
 struct tag_name_manager {
 	tag_name_manager() : names() {
 		names.push_back("animation");
@@ -815,7 +814,6 @@ void unit_animation::particule::start_animation(int start_time, bool cycles)
 	last_frame_begin_time_ = get_begin_time() -1;
 }
 
-
 void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 		const map_location &src , const int value,bool with_bars,bool cycles,
 		const std::string text,const Uint32 text_color,
@@ -832,7 +830,7 @@ void unit_animator::add_animation(unit* animated_unit,const std::string& event,
 	tmp.with_bars= with_bars;
 	tmp.cycles = cycles;
 	tmp.animation = animated_unit->choose_animation(*disp,src,event,value,hit_type,attack,second_attack,swing_num);
-if(!tmp.animation) return;
+	if(!tmp.animation) return;
 
 
 
@@ -868,14 +866,14 @@ void unit_animator::start_animations()
 	int begin_time = INT_MAX;
 	std::vector<anim_elem>::iterator anim;
 	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
-	       if(anim->my_unit->get_animation()) {
-			   if(anim->animation) {
-				   begin_time = std::min<int>(begin_time,anim->animation->get_begin_time());
-			   } else  {
-				   begin_time = std::min<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
-			   }
-		   }
-    }
+		if(anim->my_unit->get_animation()) {
+			if(anim->animation) {
+				begin_time = std::min<int>(begin_time,anim->animation->get_begin_time());
+			} else  {
+				begin_time = std::min<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
+			}
+		}
+	}
 	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 		if(anim->animation) {
 			anim->my_unit->start_animation(begin_time,anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
