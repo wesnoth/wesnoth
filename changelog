@@ -65,6 +65,10 @@ Version 1.5.5+svn:
      now the text's background drawn.
    * The new widget library now also supports closing a dialog with a mouse
      click without a close button.
+   * The new widget library now has rudimentary support for wrapping long
+     texts.
+   * Added experimental support to show the new style dialogs when units
+     talk in game. (Only available when starting with --new-widgets.)
  * WML engine:
    * Added "border" parameter to [terrain_mask] that overlays on the border
      in addition to the playable map area. The used mask must have the same
