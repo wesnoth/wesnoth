@@ -99,9 +99,9 @@ bool language_def::operator== (const language_def& a) const
 
 bool language_def::available() const
 {
-#ifdef _WIN32
-	// Under windows all locales are available and testing for it seems to fail
-	// so just return true.
+#if defined(_WIN32) || defined(__APPLE__)
+	// Under windows and OSX all locales are available and testing for it seems
+	// to fail so just return true.
 	return true;
 #endif
 
