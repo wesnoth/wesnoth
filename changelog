@@ -76,8 +76,6 @@ Version 1.5.5+svn:
    * fixed addon update version logic (patch #1110)
    * Fixed a flaw which caused sound sources to be forgotten after saving
      and loading a game (bug #11495).
-   * Fixed composed terrains not inheriting the base's submerge value when
-     the overlay doesn't impose one of its own.
    * fixed crashes on move_unit_fake with unit types which cannot move
      over terrains that are part of the path
    * Generic units get unique non-underlying ids again (bug #12558).

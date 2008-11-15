@@ -18,6 +18,8 @@
 #include "gettext.hpp"
 #include "terrain.hpp"
 
+
+
 terrain_type::terrain_type() :
 		minimap_image_("void"), 
 		minimap_image_overlay_("void"), 
@@ -42,7 +44,6 @@ terrain_type::terrain_type() :
 		keep_(false),
 		overlay_(false), 
 		combined_(false),
-		overrides_submerge_(false),
 		editor_default_base_(t_translation::VOID_TERRAIN),
 		hide_in_editor_(false)
 {}
@@ -71,7 +72,6 @@ terrain_type::terrain_type(const config& cfg) :
 		keep_(utils::string_bool(cfg["recruit_from"])),
 		overlay_(number_.base == t_translation::NO_LAYER),
 		combined_(false),
-		overrides_submerge_(!cfg["submerge"].empty()),
 		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"])),
 		hide_in_editor_(utils::string_bool(cfg["hidden"], false))
 {
@@ -167,7 +167,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	def_type_(overlay.def_type_),
 	union_type_(),
 	height_adjust_(overlay.height_adjust_),
-	submerge_(overlay.overrides_submerge_ ? overlay.submerge_ : base.submerge_),
+	submerge_(overlay.submerge_),
 	light_modification_(base.light_modification_ + overlay.light_modification_),
 	heals_(std::max<int>(base.heals_, overlay.heals_)),
 	income_description_(),
@@ -180,7 +180,6 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	keep_(base.keep_ || overlay.keep_),
 	overlay_(false), 
 	combined_(true),
-	overrides_submerge_(base.overrides_submerge_ || overlay.overrides_submerge_),
 	editor_default_base_(),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
