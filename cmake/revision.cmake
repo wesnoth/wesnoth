@@ -9,6 +9,6 @@ if(SVN_VERSION MATCHES [0-9]+.*)
 
   if(NOT OLD_VERSION MATCHES ".*\"${SVN_VERSION}\".*")
     file(WRITE revision-stamp "#define REVISION \"${SVN_VERSION}\"\n")
-  endif(NOT OLD_VERSION MATCHES ".*${SVN_VERSION}.*")
+  endif(NOT OLD_VERSION MATCHES ".*\"${SVN_VERSION}\".*")
 
 endif(SVN_VERSION MATCHES [0-9]+.*)
