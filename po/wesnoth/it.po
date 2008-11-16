@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-14 22:24+0100\n"
-"PO-Revision-Date: 2008-11-14 00:20+0100\n"
+"PO-Revision-Date: 2008-11-16 16:33+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -631,7 +631,7 @@ msgstr ""
 "\n"
 "Le campagne consistono in una serie di scenari che si susseguono raccontando "
 "una storia. Nelle campagne è necessaria una maggiore attenzione nel "
-"preservare le proprie truppe migliori, in modo da poterle utilizzare negli "
+"preservare le proprie truppe migliori, in modo da poterle usare negli "
 "scenari successivi della campagna."
 
 #. [topic]
@@ -721,8 +721,8 @@ msgstr ""
 "Se premi col destro su un esagono del castello e premi recluta, la nuova "
 "unità apparirà in quella posizione. Altrimenti, apparirà in una posizione "
 "libera vicino alla fortezza. Puoi reclutare un numero di unità pari al "
-"numero degli esagoni liberi nel tuo castello e non puoi utilizzare più oro "
-"di quello che ne hai effettivamente."
+"numero degli esagoni liberi nel tuo castello e non puoi usare più oro di "
+"quello che ne hai effettivamente."
 
 #. [topic]
 #: data/core/help.cfg:169
@@ -796,7 +796,7 @@ msgstr ""
 #. [topic]
 #: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
-msgstr "rossa se ha utilizzato tutto il suo movimento per questo turno."
+msgstr "rossa se ha usato tutto il suo movimento per questo turno."
 
 #. [topic]
 #: data/core/help.cfg:185
@@ -836,9 +836,9 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
-"I punti ferita e i punti esperienza vengono indicati nel pannello di stato, "
-"utilizzando due numeri (il valore corrente e il valore massimo che un'unità "
-"può avere)."
+"I punti ferita e i punti esperienza vengono indicati nel pannello di stato "
+"con due numeri (il valore attuale e il valore massimo che un'unità può "
+"avere)."
 
 #. [topic]
 #: data/core/help.cfg:199
@@ -2586,7 +2586,6 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:735
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2941,7 +2940,6 @@ msgstr "rigenerazione"
 
 #. [regenerate]
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "rigenerazione"
 
@@ -2963,7 +2961,6 @@ msgstr "fermezza"
 
 #. [resistance]
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "fermezza"
 
@@ -2989,7 +2986,6 @@ msgstr "comando"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "comando"
 
@@ -2997,7 +2993,6 @@ msgstr "comando"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3009,13 +3004,13 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Comando:\n"
-"Questa unità può guidare le unità amiche che lo circondano facendole "
-"combattere meglio.\n"
+"Questa unità può guidare le unità del suo esercito che lo circondano "
+"facendole combattere meglio.\n"
 "\n"
-"Le unità amiche di livello inferiore adiacenti a questa unità infliggeranno "
-"più danni in battaglia. Quando un'unità di un alleato adiacente e di un "
-"livello più basso combatte, i suoi attacchi causano un danno del 25% "
-"maggiore rispetto al proprio livello."
+"Le unità di livello inferiore adiacenti ad essa infliggeranno più danni in "
+"battaglia. Quando un'unità alleata adiacente e di un livello più basso "
+"combatte, i suoi attacchi causano un danno maggiorato del 25% moltiplicato "
+"per la differenza tra i livelli."
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:346
@@ -3024,7 +3019,6 @@ msgstr "incursore"
 
 #. [skirmisher]
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "incursore"
 
@@ -3073,9 +3067,8 @@ msgstr "teletrasporto"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "intelligente"
+msgstr "teletrasporto"
 
 #. [teleport]
 #: data/core/macros/abilities.cfg:380
@@ -3095,9 +3088,8 @@ msgstr "imboscata"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "leale"
+msgstr "imboscata"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3142,7 +3134,6 @@ msgstr ""
 
 #. [hides]
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "agguato notturno"
 
@@ -3153,7 +3144,6 @@ msgstr "occultamento"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
 msgstr "occultamento"
 
@@ -3181,13 +3171,12 @@ msgstr ""
 #. [hides]
 #: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:473
 msgid "submerge"
-msgstr "sommersione"
+msgstr "immersione"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "forte"
+msgstr "immersione"
 
 #. [hides]
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3199,7 +3188,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Sommersione:\n"
+"Immersione:\n"
 "Questa unità può nascondersi nelle acque profonde e non può essere "
 "individuata dai nemici.\n"
 "\n"
@@ -3215,9 +3204,8 @@ msgstr "nutrimento"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "impavida"
+msgstr "nutrimento"
 
 #. [dummy]
 #: data/core/macros/abilities.cfg:499
@@ -3330,7 +3318,6 @@ msgid "swarm"
 msgstr "sciame"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3340,9 +3327,9 @@ msgid ""
 msgstr ""
 "Sciame:\n"
 "Il numero di colpi di questo attacco diminuisce quando l'unità è ferita. Il "
-"numero di colpi è proporzionale alla % di PF/PF Max che l'unità possiede. "
-"Per esempio un'unità con 3/4 dei suoi massimi punti ferita otterrebbe 3/4 "
-"del numero di colpi."
+"numero di colpi è proporzionale alla percentuale del massimo di PF che "
+"l'unità possiede. Per esempio un'unità con 3/4 dei suoi massimi punti ferita "
+"otterrebbe 3/4 del numero di colpi."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -3435,7 +3422,7 @@ msgstr ""
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:22
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-msgstr ""
+msgstr "VICTORY_AND_DEFEAT_MUSIC non è necessario e può essere rimosso."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3516,7 +3503,7 @@ msgstr "Veleno"
 #. [object]
 #: data/core/macros/items.cfg:259
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr "Il veleno scorre nelle vene di questa unità ora."
+msgstr "Il veleno scorre nelle vene di questa unità proprio ora."
 
 #. [object]
 #: data/core/macros/items.cfg:293
@@ -3535,8 +3522,7 @@ msgstr ""
 #. [object]
 #: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr ""
-"Non sono adatto per usare di questo oggetto! Fallo prendere da qualcun altro."
+msgstr "Non sono adatto per usare questo oggetto! Che lo prenda qualcun altro."
 
 #. [object]
 #: data/core/macros/items.cfg:332
@@ -5756,7 +5742,7 @@ msgstr "Difficile"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "Incubo"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -5916,7 +5902,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "Sviluppatori di Wesnoth"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -6139,7 +6125,7 @@ msgid ""
 "right corner of the screen."
 msgstr ""
 "Il terreno su cui si trova la tua unità determina la probabilità che gli "
-"avversari hanno di colpirla. La capacità difensiva per l'unità correntemente "
+"avversari hanno di colpirla. La capacità difensiva per l'unità attualmente "
 "selezionata, in base al terreno su cui si trova, è mostrata sul lato in alto "
 "a destra dello schermo."
 
@@ -6501,7 +6487,7 @@ msgid ""
 "can adjust campaign difficulty."
 msgstr ""
 "Puoi mandare al progetto Wesnoth un rapporto anonimo dei tuoi progressi "
-"utilizzando il pulsante «Aiuta Wesnoth» (indicato dall'icona di una busta "
+"usando il pulsante «Aiuta Wesnoth» (indicato dall'icona di una busta "
 "nell'angolo in basso a destra della schermata iniziale del gioco). Queste "
 "informazioni sono essenziali per permetterci di calibrare la difficoltà "
 "delle campagne."
@@ -6741,8 +6727,7 @@ msgstr "Non hai un condottiero con cui reclutare."
 #: src/actions.cpp:147
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Il tuo condottiero deve essere nella fortezza per reclutare o richiamare "
-"unità."
+"Il condottiero deve essere nella fortezza per reclutare o richiamare unità."
 
 #: src/actions.cpp:166
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -8162,7 +8147,7 @@ msgstr "Rimuove il giocatore dall'elenco di amici o utenti da ignorare."
 
 #: src/menu_events.cpp:2133
 msgid "Show your ignores and friends list."
-msgstr "Mostra il tuo elenco di amici e utenti da ignorare."
+msgstr "Mostra l'elenco degli amici e degli utenti da ignorare."
 
 #: src/menu_events.cpp:2136
 msgid "Display version information."
@@ -8170,7 +8155,7 @@ msgstr "Mostra informazioni sulla versione."
 
 #: src/menu_events.cpp:2138
 msgid "Register your nick"
-msgstr ""
+msgstr "Registra il tuo nome"
 
 #: src/menu_events.cpp:2140
 msgid "Drop your nick."
@@ -8229,14 +8214,12 @@ msgid "Disable autosaves."
 msgstr "Disabilita i salvataggi automatici."
 
 #: src/menu_events.cpp:2294
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Avanza al prossimo scenario."
+msgstr "Avanza al prossimo scenario o allo scenario identificato da «id»"
 
 #: src/menu_events.cpp:2297
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Scaricamento scenario successivo..."
+msgstr "Scegli lo scenario successivo"
 
 #: src/menu_events.cpp:2300
 msgid "Turn debug mode on."
@@ -8357,9 +8340,8 @@ msgstr ""
 "Non posso cambiare il controllo della fazione fuori dai limiti: «$side»."
 
 #: src/menu_events.cpp:2813
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Crea unità (Debug!)"
+msgstr "Scegli scenario (Debug!)"
 
 #: src/menu_events.cpp:2826
 msgid "Debug mode activated!"
@@ -8422,14 +8404,12 @@ msgid "Request password reminder for this username"
 msgstr ""
 
 #: src/multiplayer.cpp:184
-#, fuzzy
 msgid "Choose a different username"
-msgstr "Collegati a un server diverso"
+msgstr "iScegli un nome utente diverso"
 
 #: src/multiplayer.cpp:201
-#, fuzzy
 msgid "Login"
-msgstr "Login: "
+msgstr "Login"
 
 #: src/multiplayer.cpp:203 src/multiplayer_create.cpp:325
 #: src/multiplayer_lobby.cpp:786
@@ -8481,12 +8461,11 @@ msgstr "(Casella Vuota)"
 
 #: src/multiplayer_connect.cpp:691
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(Riservata per $playername)"
 
 #: src/multiplayer_connect.cpp:821
-#, fuzzy
 msgid "Reserved"
-msgstr "Riserva:"
+msgstr "Riservata"
 
 #: src/multiplayer_connect.cpp:822
 msgid "--give--"
@@ -8494,7 +8473,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:944
 msgid "Only random sides in the current era."
-msgstr "Solo schieramenti casuali nell'era corrente."
+msgstr "Solo schieramenti casuali nell'era attuale."
 
 #: src/multiplayer_connect.cpp:968
 msgid "Unable to find a leader type for faction $faction"
@@ -8890,9 +8869,8 @@ msgid "No multiplayer sides found"
 msgstr "Nessuna fazione per il gioco in rete trovata"
 
 #: src/multiplayer_wait.cpp:302
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Scegli il tuo esercito:"
+msgstr "Scegli la tua fazione:"
 
 #: src/multiplayer_wait.cpp:302
 msgid "Starting position: "
@@ -9207,59 +9185,52 @@ msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
 #: src/serialization/parser.cpp:348
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error su $pos"
+msgstr "$error, valore «$value» in $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
-#, fuzzy
 msgid "Recruits"
-msgstr "Recluta"
+msgstr "Reclute"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:128
-#, fuzzy
 msgid "Recalls"
-msgstr "Richiama"
+msgstr "Richiami"
 
 #: src/statistics_dialog.cpp:74 src/statistics_dialog.cpp:135
-#, fuzzy
 msgid "Advancements"
-msgstr "Avanzamento unità"
+msgstr "Avanzamenti"
 
 #: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:142
 msgid "Losses"
 msgstr "Perdite"
 
 #: src/statistics_dialog.cpp:83 src/statistics_dialog.cpp:149
-#, fuzzy
 msgid "Kills"
-msgstr "Colline"
+msgstr "Uccisioni"
 
 #: src/statistics_dialog.cpp:103
 msgid "Details"
 msgstr "Dettagli"
 
 #: src/statistics_dialog.cpp:155
-#, fuzzy
 msgid "Damage"
-msgstr "danno"
+msgstr "Danni"
 
 #: src/statistics_dialog.cpp:156
 msgid "Over All"
-msgstr ""
+msgstr "Totale"
 
 #: src/statistics_dialog.cpp:158
-#, fuzzy
 msgid "This Turn"
-msgstr "Turno"
+msgstr "Questo turno"
 
 #: src/statistics_dialog.cpp:162 src/statistics_dialog.cpp:174
 msgid "Inflicted"
-msgstr ""
+msgstr "Inflitti"
 
 #: src/statistics_dialog.cpp:167 src/statistics_dialog.cpp:179
 msgid "Taken"
-msgstr ""
+msgstr "Subiti"
 
 #: src/terrain.cpp:144
 msgid "Allied village"
@@ -9392,18 +9363,18 @@ msgid "Upload statistics"
 msgstr "Invia le statistiche"
 
 #: src/titlescreen.cpp:470
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "Battle for Wesnoth"
+msgstr "Aiuta Wesnoth"
 
 #: src/titlescreen.cpp:471
 msgid "Help Wesnoth by sending us information"
 msgstr "Aiuta Wesnoth mandandoci delle informazioni"
 
 #: src/unit.cpp:595
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Tipo di unità «$type|» sconosciuto"
+msgstr ""
+"Tipo di unità «$type|» sconosciuto durante la generazione delle "
+"caratteristiche"
 
 #: src/unit.cpp:797
 msgid "Unknown unit type '$type|'"
@@ -9472,19 +9443,16 @@ msgid "neutral"
 msgstr "neutrale"
 
 #: src/unit_types.cpp:1023
-#, fuzzy
 msgid "female^chaotic"
-msgstr "meccanica"
+msgstr "caotica"
 
 #: src/unit_types.cpp:1023
-#, fuzzy
 msgid "female^lawful"
-msgstr "leale"
+msgstr "legale"
 
 #: src/unit_types.cpp:1023
-#, fuzzy
 msgid "female^neutral"
-msgstr "non-morta"
+msgstr "neutrale"
 
 #: src/upload_log.cpp:323
 msgid ""
