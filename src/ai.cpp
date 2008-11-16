@@ -1546,27 +1546,26 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 			targets = find_targets(leader,enemy_dstsrc);
 			targets.insert(targets.end(),additional_targets_.begin(),
 			                             additional_targets_.end());
+			LOG_AI << "Found " << targets.size() << " targets\n"; 
 			if(targets.empty()) {
 				return false;
 			}
 		}
 
-		LOG_AI << "choosing move...\n";
+		LOG_AI << "choosing move with " << targets.size() << " targets\n";
 		std::pair<location,location> move = choose_move(targets, srcdst,
 				dstsrc, enemy_dstsrc);
+		LOG_AI << "choose_move ends with " << targets.size() << " targets\n";
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
 				ittg != targets.end(); ++ittg) {
 			assert(map_.on_board(ittg->loc));
 		}
 
-		if(move.first.valid() == false) {
+		if(move.first.valid() == false || move.second.valid() == false) {
 			break;
 		}
 
-		if(move.second.valid() == false) {
-			return true;
-		}
 		assert (map_.on_board(move.first)
 			&& map_.on_board(move.second));
 
