@@ -2,18 +2,6 @@ Main issues with UtBS were identified by fabi in
 https://mail.gna.org/public/wesnoth-dev/2008-11/msg00007.html
 I have attached to each one a proposed disposition.
 
-- A bug in the ALMA of the main character causes all the players units
-  to have no upkeep (bug report: https://gna.org/bugs/index.php?12260)
-
-  Disposition: Remove the custom AMLAs for Kaleh.  These were a hack
-  by rhuvaen, not part of the original UtBS.  They push the WML engine
-  bryond its limits, notably in bad interactions with the help system.
-
-- In scenario 4 the game slows down more and more with every new
-  turn. (bug report: https://gna.org/bugs/index.php?11745)
-
-  Disposition: Solved by removing the camouflage AMLA.
-
 - In scenario 2 units take damage from dehydration during daytime,
   strange behaviour of this have been reported.
 
